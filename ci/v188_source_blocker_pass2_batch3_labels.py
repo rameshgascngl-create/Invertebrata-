@@ -14,7 +14,6 @@ def callout_group(items):
     parts.append('</g>')
     return ''.join(parts)
 
-# (callout number, callout-circle x/y, exact endpoint x/y)
 C={
 'amoeba':[(1,70,90,625,180),(2,70,150,360,215),(3,70,210,275,250),(4,70,270,455,165)],
 'paramecium':[(1,70,95,300,180),(2,70,155,315,260),(3,690,110,410,210),(4,690,170,445,215)],
@@ -63,20 +62,37 @@ L={
 
 CSS='''<style id="v188-pass2-batch3-callout-css">.v188-pass2-legend{font-size:.86rem;line-height:1.42;margin:.42rem .2rem .1rem;color:var(--text)}.v188-pass2-legend:empty:before{content:attr(data-legend-en)}html[lang="ta"] .v188-pass2-legend:empty:before{content:attr(data-legend-ta)}@media(max-width:420px){.v188-pass2-legend{font-size:.81rem}}</style>'''
 
-def patch_figure(html,pid):
+ASSIGN_RE=re.compile(r'^(?P<prefix>.*\+)(?P<json>"(?:\\.|[^"\\])*")(?P<suffix>\s*;\s*)$',re.M)
+
+def patch_markup(markup,pid):
     pat=rf'(<figure\b[^>]*data-v188-plate="{re.escape(pid)}"[^>]*>)([\s\S]*?)(</figure>)'
-    m=re.search(pat,html)
-    if not m: raise SystemExit(f'Batch-3 figure not found: {pid}')
+    m=re.search(pat,markup)
+    if not m: return markup,0
     opening,body,closing=m.groups()
     if 'data-source-pass2-labels="1"' in opening: raise SystemExit(f'Pass2 labels already applied: {pid}')
     if '</svg>' not in body: raise SystemExit(f'No SVG terminator: {pid}')
-    overlay=callout_group(C[pid])
-    body=body.replace('</svg>',overlay+'</svg>',1)
+    body=body.replace('</svg>',callout_group(C[pid])+'</svg>',1)
     en,ta=L[pid]
-    legend=f'<div class="v188-figure-legend v188-pass2-legend" data-legend-en="{en}" data-legend-ta="{ta}"></div>'
-    body=body+legend
+    body+=f'<div class="v188-figure-legend v188-pass2-legend" data-legend-en="{en}" data-legend-ta="{ta}"></div>'
     opening=opening[:-1]+' data-source-pass2-labels="1">'
-    return html[:m.start()]+opening+body+closing+html[m.end():]
+    return markup[:m.start()]+opening+body+closing+markup[m.end():],1
+
+def patch_assignments(source):
+    seen={pid:0 for pid in C}
+    def repl(m):
+        import json
+        try: markup=json.loads(m.group('json'))
+        except Exception: return m.group(0)
+        changed=False
+        for pid in C:
+            markup,n=patch_markup(markup,pid)
+            if n: seen[pid]+=n; changed=True
+        if not changed: return m.group(0)
+        return m.group('prefix')+json.dumps(markup,ensure_ascii=False)+m.group('suffix')
+    out=ASSIGN_RE.sub(repl,source)
+    bad={k:v for k,v in seen.items() if v!=1}
+    if bad: raise SystemExit('Batch-3 figure occurrence mismatch: '+repr(bad))
+    return out
 
 def main(root):
     root=Path(root).resolve()
@@ -84,8 +100,7 @@ def main(root):
     for p in files:
         s=p.read_text(encoding='utf-8')
         if 'id="v188-pass2-batch3-callout-css"' in s: raise SystemExit('Pass2 Batch-3 CSS already applied')
-        for pid in C:
-            s=patch_figure(s,pid)
+        s=patch_assignments(s)
         if '</head>' in s: s=s.replace('</head>',CSS+'\n</head>',1)
         else: s=s.replace('</style>', '</style>\n'+CSS,1)
         p.write_text(s,encoding='utf-8',newline='\n')
