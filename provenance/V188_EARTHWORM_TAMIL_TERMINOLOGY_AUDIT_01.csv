@@ -1,0 +1,40 @@
+Figure,English Term,Previous Tamil,Accepted/Corrected Tamil,Status,Evidence/Reason
+earthworm-external-r2,Earthworm,மண்புழு,மண்புழு,PASS,Accepted Tamil lesson uses மண்புழு.
+earthworm-external-r2,External morphology,புற அமைப்பு,புற அமைப்பு,PASS,Existing academic Tamil wording is consistent with morphology context.
+earthworm-external-r2,Seta / setae,,சீட்டா / சீட்டாக்கள்,PASS,Accepted Annelida Tamil lesson/glossary uses சீட்டா and identifies it as the Earthworm/Oligochaeta locomotory bristle term.
+earthworm-external-r2,Clitellum,,கிளிட்டெல்லம்,TERMINOLOGY REVIEW PENDING,p.30 requires the concept but the located accepted Tamil Annelida lesson does not establish a definitive displayed Tamil figure term.
+earthworm-external-r2,Segmentation,,உடற்கண்ட அமைப்பு,PASS,Accepted Tamil Annelida lesson uses உடற்கண்ட அமைப்பு/கண்டங்கள் for metameric segmentation.
+earthworm-digestive-r2,Digestive system,செரிமான அமைப்பு,செரிமான அமைப்பு,PASS,Meaning is academically equivalent; no contrary accepted lesson term found.
+earthworm-digestive-r2,Buccal cavity,,,TERMINOLOGY REVIEW PENDING,No definitive Earthworm-specific accepted Tamil term located in the accepted lesson evidence.
+earthworm-digestive-r2,Pharynx,,,TERMINOLOGY REVIEW PENDING,No definitive Earthworm-specific accepted Tamil term located; do not import terminology from another organism automatically.
+earthworm-digestive-r2,Oesophagus,,,TERMINOLOGY REVIEW PENDING,Accepted Earthworm lesson evidence inspected does not resolve a displayed Tamil term.
+earthworm-digestive-r2,Crop,,,TERMINOLOGY REVIEW PENDING,Accepted Earthworm lesson evidence inspected does not resolve a displayed Tamil term.
+earthworm-digestive-r2,Gizzard,,,TERMINOLOGY REVIEW PENDING,Accepted Earthworm lesson evidence inspected does not resolve a displayed Tamil term.
+earthworm-digestive-r2,Intestine,,,TERMINOLOGY REVIEW PENDING,Accepted Earthworm lesson evidence inspected does not resolve a displayed Tamil term.
+earthworm-digestive-r2,Typhlosole,,,TERMINOLOGY REVIEW PENDING,p.30 identifies typhlosole but accepted Tamil lesson evidence inspected does not establish a definitive Tamil figure term.
+earthworm-vascular-r2,Blood vascular system,இரத்த நாள அமைப்பு,இரத்த ஓட்ட மண்டலம்,CORRECTED,Accepted Tamil Annelida lesson explicitly uses மூடிய இரத்த ஓட்ட மண்டலம்; system caption should follow that lesson terminology.
+earthworm-vascular-r2,Dorsal blood vessel,,,TERMINOLOGY REVIEW PENDING,Accepted Tamil lesson establishes circulation generally but not the displayed Earthworm-specific term.
+earthworm-vascular-r2,Ventral blood vessel,,,TERMINOLOGY REVIEW PENDING,Accepted Tamil lesson establishes circulation generally but not the displayed Earthworm-specific term.
+earthworm-vascular-r2,Aortic arches / hearts,,,TERMINOLOGY REVIEW PENDING,No definitive accepted Tamil displayed term established by the inspected project evidence.
+earthworm-nervous,Nervous system,,நரம்பு மண்டலம்,PASS,Accepted Tamil Annelida lesson explicitly uses நரம்பு மண்டலம்.
+earthworm-nervous,Cerebral ganglia,,,TERMINOLOGY REVIEW PENDING,Accepted lesson mentions anterior ganglia conceptually but does not establish a definitive displayed Tamil term.
+earthworm-nervous,Circumpharyngeal connectives,,,TERMINOLOGY REVIEW PENDING,Not resolved by accepted Tamil lesson evidence inspected.
+earthworm-nervous,Ventral nerve cord,,வயிற்றுப்புற நரம்புநாண்,PASS,Accepted Tamil Annelida lesson explicitly uses வயிற்றுப்புற நரம்புநாண்.
+earthworm-nervous,Segmental ganglia,,,TERMINOLOGY REVIEW PENDING,Concept is supported but definitive displayed Tamil term is not established by accepted evidence inspected.
+earthworm-excretory-r2,Nephridia,நெஃப்ரிடியா,நெஃப்ரிடியா,PASS,Accepted Tamil Annelida lesson uses நெஃப்ரிடியா.
+earthworm-excretory-r2,Metanephridium,,மெட்டானெஃப்ரிடியம்,PASS,Accepted Tamil glossary uses மெட்டானெஃப்ரிடியம்.
+earthworm-excretory-r2,Septal nephridia,,,TERMINOLOGY REVIEW PENDING,p.30 distinguishes the type but accepted Tamil lesson does not establish a definitive displayed term.
+earthworm-excretory-r2,Integumentary nephridia,,,TERMINOLOGY REVIEW PENDING,p.30 distinguishes the type but accepted Tamil lesson does not establish a definitive displayed term.
+earthworm-excretory-r2,Pharyngeal nephridia,,,TERMINOLOGY REVIEW PENDING,p.30 distinguishes the type but accepted Tamil lesson does not establish a definitive displayed term.
+earthworm-excretory-r2,Enteronephric,,,TERMINOLOGY REVIEW PENDING,Technical discharge term not resolved by accepted Tamil lesson evidence inspected.
+earthworm-excretory-r2,Exonephric,,,TERMINOLOGY REVIEW PENDING,Technical discharge term not resolved by accepted Tamil lesson evidence inspected.
+earthworm-excretory-r2,Nephridiopore,,,TERMINOLOGY REVIEW PENDING,Definitive displayed Tamil term not established by accepted evidence inspected.
+earthworm-reproductive-r2,Reproductive landmarks,இனப்பெருக்க வெளிப்புற அடையாளங்கள்,இனப்பெருக்க வெளிப்புற அடையாளங்கள்,PASS,Current conservative plate accurately describes its accepted p.30-supported scope.
+earthworm-reproductive-r2,Male genital pore,,,TERMINOLOGY REVIEW PENDING,p.30 supports the landmark/segment but accepted Tamil lesson evidence does not establish a definitive displayed term.
+earthworm-reproductive-r2,Female genital pore,,,TERMINOLOGY REVIEW PENDING,p.30 supports the landmark/segment but accepted Tamil lesson evidence does not establish a definitive displayed term.
+earthworm-reproductive-r2,Testes,,,TERMINOLOGY REVIEW PENDING,Internal reproductive scope itself remains REFERENCE RESOLUTION REQUIRED.
+earthworm-reproductive-r2,Seminal vesicles,,,TERMINOLOGY REVIEW PENDING,Internal reproductive scope itself remains REFERENCE RESOLUTION REQUIRED.
+earthworm-reproductive-r2,Vasa deferentia,,,TERMINOLOGY REVIEW PENDING,Internal reproductive scope itself remains REFERENCE RESOLUTION REQUIRED.
+earthworm-reproductive-r2,Ovaries,,,TERMINOLOGY REVIEW PENDING,Internal reproductive scope itself remains REFERENCE RESOLUTION REQUIRED.
+earthworm-reproductive-r2,Oviducts,,,TERMINOLOGY REVIEW PENDING,Internal reproductive scope itself remains REFERENCE RESOLUTION REQUIRED.
+earthworm-reproductive-r2,Spermathecae,,,TERMINOLOGY REVIEW PENDING,Internal reproductive scope itself remains REFERENCE RESOLUTION REQUIRED.
