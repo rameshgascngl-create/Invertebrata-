@@ -1,8 +1,8 @@
 name: INVERTEBRATA v1.8.8 Corrected Debug APK
 
+# Illustration-development gate: do not build on source pushes.
+# Re-enable/dispatch only after SVG CREATION + EMBEDDING + BIOLOGICAL/SOURCE AUDIT pass.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
