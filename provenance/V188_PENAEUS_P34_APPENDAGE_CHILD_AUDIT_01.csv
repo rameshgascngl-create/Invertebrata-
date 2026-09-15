@@ -1,0 +1,5 @@
+Child Figure,Appendage Group,Structures,Body/Segment Attachment,Modification,Biology,Leaders,EN,TA,Status
+PENAEUS-03-OVERVIEW,Serial/body-region overview,"Cephalic → thoracic → abdominal appendage sequence","Cephalic region; thoracic region; abdominal somites I–VI","Sensory/feeding → food-handling/walking → swimming/tail fan",PASS,PASS,PASS,TERMINOLOGY REVIEW PENDING,PENDING
+PENAEUS-03-CEPHALIC,Cephalic,"Antennule; antenna; mandible; maxillula; maxilla",Cephalic serial attachment,"Sensory/equilibrium; sensory; jaw; food handling; food handling",PASS,PASS,PASS,TERMINOLOGY REVIEW PENDING,PENDING
+PENAEUS-03-THORACIC,Thoracic,"Maxillipeds I–III; pereiopods I–V",Eight thoracic appendage pairs in teaching sequence,"Food handling followed by walking/feeding specialisation",PASS,PASS,PASS,TERMINOLOGY REVIEW PENDING,PENDING
+PENAEUS-03-ABDOMINAL,Abdominal,"Pleopods I–V; uropods",Pleopods on abdominal somites I–V; uropods on somite VI,"Swimming; uropods with telson form tail fan",PASS,PASS,PASS,TERMINOLOGY REVIEW PENDING,PENDING
