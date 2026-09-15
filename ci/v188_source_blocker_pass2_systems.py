@@ -43,28 +43,58 @@ ASC_TS=r'''<g class="v188-pass2-ascaris-ts"><circle cx="245" cy="210" r="8" fill
 ASTER_AB=r'''<g class="v188-pass2-asterias-aboral"><path d="M330 145q-12-18-24 0m24 0q12-18 24 0" fill="none" stroke="#303030" stroke-width="1.5"/><path d="M350 120q0 18-10 28q10 10 20 0q-10-10-10-28" fill="none" stroke="#303030" stroke-width="1.3"/><path d="M330 145L90 320M350 120L90 365" stroke="#303030" stroke-width="1"/><g fill="#fffefa" stroke="#303030"><circle cx="90" cy="320" r="11"/><circle cx="90" cy="365" r="11"/></g><g fill="#222" stroke="none" font-family="sans-serif" font-size="13" text-anchor="middle"><text x="90" y="325">1</text><text x="90" y="370">2</text></g></g>'''
 CSS='''<style id="v188-pass2-system-css">.v188-pass2-system-legend{font-size:.86rem;line-height:1.42;margin:.42rem .2rem .1rem;color:var(--text)}.v188-pass2-system-legend:empty:before{content:attr(data-legend-en)}html[lang="ta"] .v188-pass2-system-legend:empty:before{content:attr(data-legend-ta)}@media(max-width:420px){.v188-pass2-system-legend{font-size:.81rem}}</style>'''
 
-def replace_whole(s,oldpid,newfigure):
-    pat,m=getfig(s,oldpid)
-    return s[:m.start()]+newfigure+s[m.end():]
+ASSIGN_RE=re.compile(r'^(?P<prefix>.*\+)(?P<json>"(?:\\.|[^"\\])*")(?P<suffix>\s*;\s*)$',re.M)
+
+def replace_whole_markup(markup,oldpid,newfigure):
+    pat,m=getfig(markup,oldpid)
+    return markup[:m.start()]+newfigure+markup[m.end():],1
+
+def patch_markup(markup,counts):
+    ops=[
+      ('nereis-digestive',lambda x: inject(x,'nereis-digestive',NEREIS_DIG,'1 Mouth; 2 Buccal cavity; 3 Rectum before anus. Existing eversible pharynx/jaws, oesophagus and intestine are retained.','1 வாய்; 2 Buccal cavity; 3 anus-க்கு முன் rectum. ஏற்கனவே உள்ள eversible pharynx/jaws, oesophagus, intestine மாற்றப்படவில்லை.')),
+      ('nereis-nervous',lambda x: inject(x,'nereis-nervous',NEREIS_NER,'1 Subpharyngeal ganglion at the junction of circumpharyngeal connectives with the ventral ganglionated cord.','1 Circumpharyngeal connectives மற்றும் ventral ganglionated cord இணையும் subpharyngeal ganglion.')),
+      ('penaeus-respiratory',lambda x: inject(x,'penaeus-respiratory',PEN_RESP,'1 Gill axis/branchial unit related to thoracic appendage base; 2 directed water current passes over phyllobranchiate lamellae in the branchial chamber.','1 Thoracic appendage அடிப்பகுதியுடன் தொடர்புடைய gill/branchial unit; 2 branchial chamber-இல் phyllobranchiate lamellae மீது நீரோட்டம் செல்கிறது.')),
+      ('PENAEUS-09-R1',lambda x: inject(x,'PENAEUS-09-R1',PEN_REP,'1 Petasma — male external copulatory structure; 2 Thelycum — female ventral thoracic spermatophore-receiving structure. Finer duct microtopology is not asserted.','1 பெட்டாஸ்மா — ஆண் வெளிப்புற copulatory structure; 2 தெலிக்கம் — பெண் ventral thoracic spermatophore-receiving structure. நுண்ணிய duct அமைப்பு புதிதாகக் கூறப்படவில்லை.')),
+      ('fasciola-external',lambda x: inject(x,'fasciola-external',FAS_EXT,'1 Anterior cone; 2 genital-pore region between/near the anterior sucker complex; 3 posterior end. Oral and ventral suckers remain as previously labelled.','1 Anterior cone; 2 genital-pore பகுதி; 3 posterior end. Oral sucker மற்றும் ventral sucker முன்பிருந்தபடி பாதுகாக்கப்பட்டுள்ளன.')),
+      ('fasciola-excretory',lambda x: inject(x,'fasciola-excretory',FAS_EXC,'1 Excretory bladder receiving the main collecting system before the posterior excretory pore.','1 posterior excretory pore-க்கு முன் main collecting system சேரும் excretory bladder.')),
+      ('sycon-ls',lambda x: inject(x,'sycon-ls',SYCON_LS,'1 Pinacoderm (outer layer); 2 mesohyl between layers; 3 choanocyte-lined radial canal / choanoderm. Canal topology remains governed by the protected master flow plate.','1 Pinacoderm (வெளிப்புற அடுக்கு); 2 mesohyl; 3 choanocyte-lined radial canal / choanoderm. கால்வாய் topology மாற்றப்படவில்லை.')),
+      ('ascaris-external',lambda x: inject(x,'ascaris-external',ASC_EXT,'1 Lateral line marking the longitudinal excretory-canal region. Three lips and female-straight/male-curved posterior dimorphism remain the external-scope identifiers.','1 நீள excretory-canal பகுதியைக் குறிக்கும் lateral line. Three lips மற்றும் female-straight / male-curved posterior வேறுபாடு பாதுகாக்கப்பட்டுள்ளது.')),
+      ('ascaris-ts',lambda x: inject(x,'ascaris-ts',ASC_TS,'1 Pseudocoel; 2 paired lateral excretory-canal region. Cuticle/hypodermis/longitudinal muscle, intestine, uteri and dorsal/ventral nerve cords remain as previously shown.','1 Pseudocoel; 2 paired lateral excretory-canal பகுதி. ஏற்கனவே உள்ள body-wall, intestine, uteri மற்றும் nerve-cord அமைப்புகள் மாற்றப்படவில்லை.')),
+      ('asterias-aboral',lambda x: inject(x,'asterias-aboral',ASTER_AB,'1 Pedicellaria; 2 papula (dermal branchia/skin gill). Spines, madreporite and anus remain in the existing aboral plate; no independent body-wall master is created.','1 Pedicellaria; 2 papula (dermal branchia / skin gill). Spines, madreporite, anus ஏற்கனவே உள்ள aboral plate-இல் தொடர்கின்றன; தனி body-wall plate உருவாக்கப்படவில்லை.')),
+    ]
+    out=markup
+    for pid,fn in ops:
+        if f'data-v188-plate="{pid}"' in out:
+            out=fn(out); counts[pid]+=1
+    if 'data-v188-plate="fasciola-life-cycle"' in out:
+        out=inject(out,'fasciola-life-cycle',FAS_CYCLE,'Egg → miracidium → sporocyst (S) → redia (R) in snail → cercaria → metacercaria on vegetation → definitive-host ingestion → adult in bile duct → eggs.','Egg → miracidium → snail-இல் sporocyst (S) → redia (R) → cercaria → தாவரத்தில் metacercaria → definitive host உட்கொள்ளல் → bile duct adult → eggs.')
+        out=replace_literal_in_figure(out,'fasciola-life-cycle','<text x="380" y="25">Snail stages</text>','<text x="380" y="25">Sporocyst → redia in snail</text>')
+        counts['fasciola-life-cycle']+=1
+    if 'data-v188-plate="NEREIS-06-N1"' in out:
+        out,_=replace_whole_markup(out,'NEREIS-06-N1',NEREIS_EXC); counts['NEREIS-06-N1']+=1
+    return out
+
+def patch_assignments(source):
+    import json
+    expected=['nereis-digestive','nereis-nervous','NEREIS-06-N1','penaeus-respiratory','PENAEUS-09-R1','fasciola-external','fasciola-excretory','fasciola-life-cycle','sycon-ls','ascaris-external','ascaris-ts','asterias-aboral']
+    counts={k:0 for k in expected}
+    def repl(m):
+        try: markup=json.loads(m.group('json'))
+        except Exception: return m.group(0)
+        new=patch_markup(markup,counts)
+        if new==markup: return m.group(0)
+        return m.group('prefix')+json.dumps(new,ensure_ascii=False)+m.group('suffix')
+    out=ASSIGN_RE.sub(repl,source)
+    bad={k:v for k,v in counts.items() if v!=1}
+    if bad: raise SystemExit('Pass2 system figure occurrence mismatch: '+repr(bad))
+    return out
 
 def main(root):
     root=Path(root).resolve(); files=[root/'academic_payload/index.html',root/'app/src/main/assets/www/index.html']
     for p in files:
         s=p.read_text(encoding='utf-8')
         if 'id="v188-pass2-system-css"' in s: raise SystemExit('Pass2 systems already applied')
-        s=inject(s,'nereis-digestive',NEREIS_DIG,'1 Mouth; 2 Buccal cavity; 3 Rectum before anus. Existing eversible pharynx/jaws, oesophagus and intestine are retained.','1 வாய்; 2 Buccal cavity; 3 anus-க்கு முன் rectum. ஏற்கனவே உள்ள eversible pharynx/jaws, oesophagus, intestine மாற்றப்படவில்லை.')
-        s=inject(s,'nereis-nervous',NEREIS_NER,'1 Subpharyngeal ganglion at the junction of circumpharyngeal connectives with the ventral ganglionated cord.','1 Circumpharyngeal connectives மற்றும் ventral ganglionated cord இணையும் subpharyngeal ganglion.')
-        s=replace_whole(s,'NEREIS-06-N1',NEREIS_EXC)
-        s=inject(s,'penaeus-respiratory',PEN_RESP,'1 Gill axis/branchial unit related to thoracic appendage base; 2 directed water current passes over phyllobranchiate lamellae in the branchial chamber.','1 Thoracic appendage அடிப்பகுதியுடன் தொடர்புடைய gill/branchial unit; 2 branchial chamber-இல் phyllobranchiate lamellae மீது நீரோட்டம் செல்கிறது.')
-        s=inject(s,'PENAEUS-09-R1',PEN_REP,'1 Petasma — male external copulatory structure; 2 Thelycum — female ventral thoracic spermatophore-receiving structure. Finer duct microtopology is not asserted.','1 பெட்டாஸ்மா — ஆண் வெளிப்புற copulatory structure; 2 தெலிக்கம் — பெண் ventral thoracic spermatophore-receiving structure. நுண்ணிய duct அமைப்பு புதிதாகக் கூறப்படவில்லை.')
-        s=inject(s,'fasciola-external',FAS_EXT,'1 Anterior cone; 2 genital-pore region between/near the anterior sucker complex; 3 posterior end. Oral and ventral suckers remain as previously labelled.','1 Anterior cone; 2 genital-pore பகுதி; 3 posterior end. Oral sucker மற்றும் ventral sucker முன்பிருந்தபடி பாதுகாக்கப்பட்டுள்ளன.')
-        s=inject(s,'fasciola-excretory',FAS_EXC,'1 Excretory bladder receiving the main collecting system before the posterior excretory pore.','1 posterior excretory pore-க்கு முன் main collecting system சேரும் excretory bladder.')
-        s=inject(s,'fasciola-life-cycle',FAS_CYCLE,'Egg → miracidium → sporocyst (S) → redia (R) in snail → cercaria → metacercaria on vegetation → definitive-host ingestion → adult in bile duct → eggs.','Egg → miracidium → snail-இல் sporocyst (S) → redia (R) → cercaria → தாவரத்தில் metacercaria → definitive host உட்கொள்ளல் → bile duct adult → eggs.')
-        s=replace_literal_in_figure(s,'fasciola-life-cycle','<text x="380" y="25">Snail stages</text>','<text x="380" y="25">Sporocyst → redia in snail</text>')
-        s=inject(s,'sycon-ls',SYCON_LS,'1 Pinacoderm (outer layer); 2 mesohyl between layers; 3 choanocyte-lined radial canal / choanoderm. Canal topology remains governed by the protected master flow plate.','1 Pinacoderm (வெளிப்புற அடுக்கு); 2 mesohyl; 3 choanocyte-lined radial canal / choanoderm. கால்வாய் topology மாற்றப்படவில்லை.')
-        s=inject(s,'ascaris-external',ASC_EXT,'1 Lateral line marking the longitudinal excretory-canal region. Three lips and female-straight/male-curved posterior dimorphism remain the external-scope identifiers.','1 நீள excretory-canal பகுதியைக் குறிக்கும் lateral line. Three lips மற்றும் female-straight / male-curved posterior வேறுபாடு பாதுகாக்கப்பட்டுள்ளது.')
-        s=inject(s,'ascaris-ts',ASC_TS,'1 Pseudocoel; 2 paired lateral excretory-canal region. Cuticle/hypodermis/longitudinal muscle, intestine, uteri and dorsal/ventral nerve cords remain as previously shown.','1 Pseudocoel; 2 paired lateral excretory-canal பகுதி. ஏற்கனவே உள்ள body-wall, intestine, uteri மற்றும் nerve-cord அமைப்புகள் மாற்றப்படவில்லை.')
-        s=inject(s,'asterias-aboral',ASTER_AB,'1 Pedicellaria; 2 papula (dermal branchia/skin gill). Spines, madreporite and anus remain in the existing aboral plate; no independent body-wall master is created.','1 Pedicellaria; 2 papula (dermal branchia / skin gill). Spines, madreporite, anus ஏற்கனவே உள்ள aboral plate-இல் தொடர்கின்றன; தனி body-wall plate உருவாக்கப்படவில்லை.')
+        s=patch_assignments(s)
         if '</head>' in s: s=s.replace('</head>',CSS+'\n</head>',1)
         else: s=s.replace('</style>','</style>\n'+CSS,1)
         p.write_text(s,encoding='utf-8',newline='\n')
