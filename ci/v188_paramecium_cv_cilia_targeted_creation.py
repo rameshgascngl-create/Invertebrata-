@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import re,sys
+# Previously confirmed NOT YET CREATED; authoritative p5. Existing external/oral plate remains untouched.
+NEW='''<figure class="sys-fig v188-pencil-plate v188-paramecium-remediation" data-v188-plate="PARAMECIUM-CV-CILIA-N1"><figcaption><strong>Paramecium — contractile-vacuole and ciliary organisation</strong><span class="ta-explain" lang="ta">TERMINOLOGY REVIEW PENDING</span></figcaption><svg class="sys-svg" viewBox="0 0 760 470" role="img" aria-label="Paramecium showing body ciliation and anterior and posterior contractile vacuoles with radiating collecting canals" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="470" fill="#fffefa"/><g fill="none" stroke="#303030" stroke-linecap="round" stroke-linejoin="round"><path d="M245 55Q160 140 200 315Q250 410 420 380Q565 350 580 215Q565 80 425 50Q315 30 245 55Z" stroke-width="3.2"/><g stroke-width=".9" opacity=".8"><path d="M220 65l-18-18M255 52l-10-22M300 45v-23M350 43l4-23M400 47l10-22M455 60l18-18M505 85l20-14M545 125l22-8M570 170l23-3M575 220l23 3M565 270l22 8M545 315l20 14M510 350l18 18M465 375l10 22M415 385l3 23M360 390l-4 23M305 385l-10 22M255 365l-18 18M220 330l-21 12M200 285l-23 5M195 235l-23 0M200 185l-23-5M210 130l-21-12"/></g><circle cx="285" cy="115" r="18" stroke-width="2"/><circle cx="495" cy="320" r="18" stroke-width="2"/><g stroke-width="1.5"><path d="M285 115l0-55m0 55l45-35m-45 35l55 5m-55-5l40 40m-40-40l-5 55m5-55l-45 35"/><path d="M495 320l0-55m0 55l45-35m-45 35l55 5m-55-5l40 40m-40-40l-5 55m5-55l-45 35"/></g><g stroke-width="1"><path d="M285 115L70 90"/><path d="M495 320L680 320"/><path d="M210 235L70 235"/></g></g><g fill="#222" font-family="sans-serif" font-size="13"><text x="10" y="85">Anterior contractile vacuole + radiating collecting canals</text><text x="515" y="350">Posterior contractile vacuole + collecting canals</text><text x="10" y="230">Body cilia arranged over pellicular surface</text></g></svg><div class="v188-figure-legend" data-legend-en="Body cilia provide coordinated locomotion; anterior and posterior contractile vacuoles receive water through radiating collecting canals and periodically expel it for osmoregulation." data-legend-ta="TERMINOLOGY REVIEW PENDING"></div></figure>'''
+def main(root):
+ ps=[Path(root)/'academic_payload/index.html',Path(root)/'app/src/main/assets/www/index.html']
+ for p in ps:
+  s=p.read_text(encoding='utf-8')
+  m=re.search(r'<figure[^>]*data-v188-plate="paramecium"[\s\S]*?</figure>',s)
+  if not m:raise SystemExit('active Paramecium anchor missing')
+  s=s[:m.end()]+NEW+s[m.end():];p.write_text(s,encoding='utf-8')
+ if ps[0].read_bytes()!=ps[1].read_bytes():raise SystemExit('payload copies diverged')
+ print('Paramecium independent CV/ciliary plate created; existing oral/external plate untouched; BUILD_ELIGIBLE=NO')
+if __name__=='__main__':main(sys.argv[1] if len(sys.argv)>1 else '.')
