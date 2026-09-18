@@ -13,7 +13,8 @@
   "superseded_commits": [
     "77a9f0610564c7e2513fc3ea552c90f7656f0adb",
     "3523f3493f92bf3a7b176a9bff86f524499eefd2",
-    "70c1b32e517e8711eafc055d611c34b0d0f1992a"
+    "70c1b32e517e8711eafc055d611c34b0d0f1992a",
+    "6bcd3961aaf67db02799c2f5f589dd832d50d36f"
   ],
   "steps": [
     {
@@ -46,8 +47,8 @@
     {
       "step": 4,
       "path": "ci/reconcile_v188_svg_batch2.py",
-      "governing_commit": "6bcd3961aaf67db02799c2f5f589dd832d50d36f",
-      "git_blob": "5114abd6b5d15915b205abf3c5fc84d6923ca913",
+      "governing_commit": "8bb44d8ee4d2c9ae57869aa9ac812ef7d92180ee",
+      "git_blob": "a716562c70db61fbf91a9a73d19bde8372e95f0d",
       "mode": "native",
       "accepted": true,
       "superseded": false
