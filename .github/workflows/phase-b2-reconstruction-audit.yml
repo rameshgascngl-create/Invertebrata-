@@ -1,4 +1,4 @@
-name: INVERTEBRATA Phase B2 Step4 URL Diagnostic
+name: INVERTEBRATA Phase B2 Step4 Assertion Validation
 
 on:
   push:
@@ -7,12 +7,13 @@ on:
     paths:
       - .github/workflows/phase-b2-reconstruction-audit.yml
       - ci/phase_b2_action_audit.py
+      - ci/reconcile_v188_svg_batch2.py
 
 permissions:
   contents: read
 
 jobs:
-  phase-b2-step4-url-diagnostic:
+  phase-b2-step4-assertion-validation:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -22,49 +23,34 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Verify baseline and canonical ZIP
+      - name: Validate narrowed Batch-2 security assertion
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/phase-b2-url-diagnostic/preflight"
-          python ci/phase_b2_action_audit.py preflight \
+          mkdir -p "$RUNNER_TEMP/phase-b2-step4-validation"
+          git diff 04f556ca3df937583c2d2f54619225cfeba97b23..HEAD -- ci/reconcile_v188_svg_batch2.py > "$RUNNER_TEMP/phase-b2-step4-validation/BATCH2_SECURITY_ASSERTION.patch"
+          python ci/phase_b2_action_audit.py validate-step4-security-patch \
             --repo "$GITHUB_WORKSPACE" \
-            --out "$RUNNER_TEMP/phase-b2-url-diagnostic/preflight"
+            --out "$RUNNER_TEMP/phase-b2-step4-validation"
 
-      - name: Reconstruct through Step 3 and enumerate HTTP(S) occurrences
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/phase-b2-url-diagnostic/diagnostic"
-          python ci/phase_b2_action_audit.py diagnose-step4-url \
-            --repo "$GITHUB_WORKSPACE" \
-            --out "$RUNNER_TEMP/phase-b2-url-diagnostic/diagnostic"
-
-      - name: Collect diagnostic evidence
+      - name: Collect validation harness integrity
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/phase-b2-url-diagnostic/artifacts"
-          if [ -d "$RUNNER_TEMP/phase-b2-url-diagnostic/preflight" ]; then
-            cp -a "$RUNNER_TEMP/phase-b2-url-diagnostic/preflight/." "$RUNNER_TEMP/phase-b2-url-diagnostic/artifacts/"
-          fi
-          if [ -d "$RUNNER_TEMP/phase-b2-url-diagnostic/diagnostic" ]; then
-            cp -a "$RUNNER_TEMP/phase-b2-url-diagnostic/diagnostic/." "$RUNNER_TEMP/phase-b2-url-diagnostic/artifacts/"
-          fi
           {
             echo "AUDIT_BRANCH=${GITHUB_REF_NAME}"
             echo "AUDIT_COMMIT=${GITHUB_SHA}"
             echo "RELEASE_WORKFLOW_BLOB=$(git hash-object .github/workflows/invertebrata-v188-debug.yml)"
             echo "GRADLE_INVOKED=NO"
             echo "APK_GENERATED=NO"
-          } > "$RUNNER_TEMP/phase-b2-url-diagnostic/artifacts/DIAGNOSTIC_HARNESS_INTEGRITY.txt"
+          } > "$RUNNER_TEMP/phase-b2-step4-validation/VALIDATION_HARNESS_INTEGRITY.txt"
 
-      - name: Upload Step4 URL diagnostic
+      - name: Upload Step4 assertion validation
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: INVERTEBRATA-PHASE-B2-STEP4-URL-DIAGNOSTIC
-          path: ${{ runner.temp }}/phase-b2-url-diagnostic/artifacts/
+          name: INVERTEBRATA-PHASE-B2-STEP4-ASSERTION-VALIDATION
+          path: ${{ runner.temp }}/phase-b2-step4-validation/
           if-no-files-found: error
           retention-days: 30
