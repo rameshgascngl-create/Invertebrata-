@@ -34,6 +34,7 @@ EXPECTED_STEP4_BLOB = "a716562c70db61fbf91a9a73d19bde8372e95f0d"
 
 AUDIT_ALLOWED_DIFFS = {
     ".github/workflows/phase-b2-reconstruction-audit.yml",
+    ".github/workflows/phase-b2-post-routing-audit.yml",
     "ci/phase_b2_action_audit.py",
 }
 
