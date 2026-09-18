@@ -1,0 +1,78 @@
+name: INVERTEBRATA Contextual Enlargement Candidate Audit
+
+on:
+  push:
+    branches:
+      - audit/contextual-enlargement-routing-20260918
+    paths:
+      - .github/workflows/contextual-enlargement-routing-audit.yml
+      - ci/reconcile_v188.py
+      - ci/v188_accepted_transform_manifest.json
+
+permissions:
+  contents: read
+
+jobs:
+  reconstruct-routing-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout isolated audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify candidate scope and release controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object ci/reconcile_v188.py)" = "a6c27042df66a728b320db8d9c26fce660ebc669"
+          test "$(git hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          python - <<'PY'
+          import json
+          m=json.load(open('ci/v188_accepted_transform_manifest.json',encoding='utf-8'))
+          assert len(m['steps'])==19
+          assert [s['step'] for s in m['steps']]==list(range(1,20))
+          s2=[s for s in m['steps'] if s['step']==2][0]
+          assert s2['git_blob']=='a6c27042df66a728b320db8d9c26fce660ebc669'
+          assert sum(1 for s in m['steps'] if s['governing_commit'] in set(m.get('superseded_commits',[])))==0
+          PY
+
+      - name: Reconstruct full 19-step candidate from canonical ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/contextual-routing"
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/contextual-routing/work" \
+            --output "$RUNNER_TEMP/contextual-routing/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html" \
+            | tee "$RUNNER_TEMP/contextual-routing/RECONSTRUCTION_LOG.txt"
+
+      - name: Verify routing source fragment
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path(__import__('os').environ['RUNNER_TEMP'])/'contextual-routing/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html'
+          s=p.read_text(encoding='utf-8')
+          old="const generatedFigure=event.target.closest('.textbook-visuals .sys-fig');"
+          new="const generatedFigure=event.target.closest('.sys-fig');"
+          assert old not in s
+          assert s.count(new)==1
+          assert "fig.classList.add('contextual-theory-figure');" in s
+          assert "insertAdjacentElement('afterend',fig)" in s
+          assert "if(f&&(e.key==='Enter'||e.key===' ')){e.preventDefault();f.click();}" in s
+          print('ROUTING_SELECTOR_PATCH=PASS')
+          print('RECONSTRUCTED_SHA256='+__import__('hashlib').sha256(p.read_bytes()).hexdigest())
+          PY
+
+      - name: Upload exact targeted-validation candidate
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-CONTEXTUAL-ENLARGEMENT-CANDIDATE
+          path: ${{ runner.temp }}/contextual-routing/
+          if-no-files-found: error
+          retention-days: 30
