@@ -653,7 +653,7 @@ def diagnose_step4_url(repo: Path, out: Path) -> int:
     # Classify HTML resource-loading constructs separately from mere strings.
     remote_loads = []
     load_pat = re.compile(
-        r'<(?:script|img|iframe|link|source)\\b[^>]*(?:src|href)\\s*=\\s*["\'](https?://[^"\']+)["\']',
+        r'<(?:script|img|iframe|link|source)\b[^>]*(?:src|href)\s*=\s*["\'](https?://[^"\']+)["\']',
         re.I,
     )
     for m in load_pat.finditer(payload):
@@ -661,7 +661,7 @@ def diagnose_step4_url(repo: Path, out: Path) -> int:
 
     js_network = []
     js_pat = re.compile(
-        r'\\b(?:fetch|XMLHttpRequest|WebSocket)\\s*\\([^\\n]{0,300}?https?://[^\\s"\'<>]+',
+        r'\b(?:fetch|XMLHttpRequest|WebSocket)\s*\([^\n]{0,300}?https?://[^\s"\'<>]+',
         re.I,
     )
     for m in js_pat.finditer(payload):
