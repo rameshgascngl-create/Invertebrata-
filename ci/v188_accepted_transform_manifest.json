@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "project": "INVERTEBRATA",
+  "version": "1.8.8",
+  "canonical_zip": {
+    "path": "INVERTEBRATA_v1.8.7_RECONCILED_ANDROID_SOURCE.zip",
+    "sha256": "281e5f80a14f80df6ad87427a8e29859050f35430ec3158ad52b84ae607df1a3"
+  },
+  "matrix": {
+    "path": "provenance/V188_SOURCE_GATE_MATRIX_02.csv",
+    "rows": 76
+  },
+  "superseded_commits": [
+    "77a9f0610564c7e2513fc3ea552c90f7656f0adb",
+    "3523f3493f92bf3a7b176a9bff86f524499eefd2",
+    "70c1b32e517e8711eafc055d611c34b0d0f1992a"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "path": "ci/reconcile_r2.py",
+      "governing_commit": "b1833264bad70203f4ee146047254e9c5c5204ca",
+      "git_blob": "20266f27c5ca76cf9c33d9f172254914e6c1cf54",
+      "mode": "native_r2",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 2,
+      "path": "ci/reconcile_v188.py",
+      "governing_commit": "b1d5278339e45e6b359d4d3d60b467f12bd0d95d",
+      "git_blob": "a13c43a4634847e155f50abc2f1ef1ca63753c5d",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 3,
+      "path": "ci/reconcile_v188_svg_batch1.py",
+      "governing_commit": "23d9c2fb2fd45f07a69f84e10217fa6c14b3e5a4",
+      "git_blob": "53fdf94cbf5bf1ee922ebcaebe8e8f1a3a4539b5",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 4,
+      "path": "ci/reconcile_v188_svg_batch2.py",
+      "governing_commit": "6bcd3961aaf67db02799c2f5f589dd832d50d36f",
+      "git_blob": "5114abd6b5d15915b205abf3c5fc84d6923ca913",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 5,
+      "path": "ci/reconcile_v188_pencil_atlas_master.py",
+      "governing_commit": "edddef3ed89744751b3c46967b027027ed8bed27",
+      "git_blob": "9339694db6847759506d6191b9b2a5669cc3c627",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 6,
+      "path": "ci/v188_pencil_atlas_completion_batch3.py",
+      "governing_commit": "dc0f43d1aad1b6e2431badcd0b812c192aef42e1",
+      "git_blob": "6630fd1f4105bd80eb72af9e941926f28da7a28e",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 7,
+      "path": "ci/reconcile_v188_earthworm_remediation.py",
+      "governing_commit": "237a4a3a01f95aa32be4cc3827d4c0531950f5a3",
+      "git_blob": "48ef74fdf9b2f42a8e09ce85e089f98b0b631b30",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 8,
+      "path": "ci/reconcile_v188_earthworm_tamil_terms_01.py",
+      "governing_commit": "b0bcdef3e628eb68c2206169d5aedceea9cad394",
+      "git_blob": "de3afc592903f20c272169788c64f8033751fb38",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 9,
+      "path": "ci/v188_penaeus_targeted_rectification.py",
+      "governing_commit": "4a1a8ed552a3629f407114eda816583d021d96e2",
+      "git_blob": "4df396379059635fbabdc9aa2bb0dbf756f46344",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 10,
+      "path": "ci/v188_obelia_targeted_remediation.py",
+      "governing_commit": "7c6e9b9c911f556f12818f2decac0e3cfc7ee74a",
+      "git_blob": "162ca934b629a576e08f45625745cd4e83489457",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 11,
+      "path": "ci/v188_nereis_targeted_remediation.py",
+      "governing_commit": "f3d3331ced8a1374bea5897ae5f6cd30b348681b",
+      "git_blob": "f08448ca48b051712d049aca3a03bd3bc2399f27",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 12,
+      "path": "ci/v188_pila_targeted_remediation.py",
+      "governing_commit": "b4c31e6e1f73b4006da09c21ca1ba22f98ffdc51",
+      "git_blob": "9fb39db0cd22ac86f6e2478be246ef990c835aa8",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 13,
+      "path": "ci/v188_asterias_targeted_remediation.py",
+      "governing_commit": "28b062761b9759835b79ca8cf173ec41515c76f6",
+      "git_blob": "687804c9eee10b6ecfef48d5eba5e5ce33c67d4c",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 14,
+      "path": "ci/v188_fasciola_ascaris_targeted_remediation.py",
+      "governing_commit": "362dd0632fd45aa50a5e1562270360e070e7a583",
+      "git_blob": "e4361b7f65d9a304578a3dda2da2acd16dd2ca90",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 15,
+      "path": "ci/v188_paramecium_cv_cilia_targeted_creation.py",
+      "governing_commit": "525b6f0c202d4fb03943d980e4d67588b03a3a7c",
+      "git_blob": "1d605464677c554de7d637c34391d02f336638f4",
+      "mode": "serialized_surrogate",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 16,
+      "path": "ci/v188_source_blocker_pass2_batch3_labels.py",
+      "governing_commit": "08cb7fa08ada4ee04a4fcf1e8e9d4074b1c09086",
+      "git_blob": "f1d9b9802afe9e8a62a62d289ddf3742b15654d8",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 17,
+      "path": "ci/v188_source_blocker_pass2_systems.py",
+      "governing_commit": "a5799a3110e3adc851071e3844de697b8398ce4e",
+      "git_blob": "111c2905f7c8a4eb3747fcdb5f532ed01b1e5445",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 18,
+      "path": "ci/v188_source_blocker_pass2_integrity.py",
+      "governing_commit": "1ee876c290befd01afdbfee8f83007b717f2c305",
+      "git_blob": "d5d4896b788fa93c3aeda474225d4b11f2c2583a",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    },
+    {
+      "step": 19,
+      "path": "ci/v188_source_blocker_pass2_terminology.py",
+      "governing_commit": "1a2185cb852d3cedba781a99fb561bf9bdedaef5",
+      "git_blob": "7a43af2a37e63ce7d3e5b9083174552808d4958b",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
+    }
+  ]
+}
