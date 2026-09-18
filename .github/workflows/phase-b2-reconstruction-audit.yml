@@ -13,11 +13,8 @@ permissions:
 
 jobs:
   phase-b2-reconstruction-audit:
-    if: github.ref == 'refs/heads/audit/phase-b2-reconstruction-20260918'
     runs-on: ubuntu-24.04
     timeout-minutes: 35
-    env:
-      PHASE_B2_ROOT: ${{ runner.temp }}/phase-b2
     steps:
       - name: Checkout isolated audit branch
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -29,10 +26,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$PHASE_B2_ROOT/preflight"
+          mkdir -p "$RUNNER_TEMP/phase-b2/preflight"
           python ci/phase_b2_action_audit.py preflight \
             --repo "$GITHUB_WORKSPACE" \
-            --out "$PHASE_B2_ROOT/preflight"
+            --out "$RUNNER_TEMP/phase-b2/preflight"
 
       - name: Run A — clean accepted 19-step reconstruction
         shell: bash
@@ -41,7 +38,7 @@ jobs:
           python ci/phase_b2_action_audit.py run \
             --repo "$GITHUB_WORKSPACE" \
             --label A \
-            --out "$PHASE_B2_ROOT/run-a"
+            --out "$RUNNER_TEMP/phase-b2/run-a"
 
       - name: Run B — independent clean accepted 19-step reconstruction
         shell: bash
@@ -50,31 +47,31 @@ jobs:
           python ci/phase_b2_action_audit.py run \
             --repo "$GITHUB_WORKSPACE" \
             --label B \
-            --out "$PHASE_B2_ROOT/run-b"
+            --out "$RUNNER_TEMP/phase-b2/run-b"
 
       - name: Determinism and cross-run Matrix 02 comparison
         shell: bash
         run: |
           set -euo pipefail
           python ci/phase_b2_action_audit.py compare \
-            --a "$PHASE_B2_ROOT/run-a" \
-            --b "$PHASE_B2_ROOT/run-b" \
-            --out "$PHASE_B2_ROOT/comparison"
+            --a "$RUNNER_TEMP/phase-b2/run-a" \
+            --b "$RUNNER_TEMP/phase-b2/run-b" \
+            --out "$RUNNER_TEMP/phase-b2/comparison"
 
       - name: Collect Phase B2 evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$PHASE_B2_ROOT/artifacts"
-          if [ -d "$PHASE_B2_ROOT/preflight" ]; then cp -a "$PHASE_B2_ROOT/preflight/." "$PHASE_B2_ROOT/artifacts/"; fi
-          if [ -d "$PHASE_B2_ROOT/run-a" ]; then
-            find "$PHASE_B2_ROOT/run-a" -maxdepth 1 -type f -exec cp {} "$PHASE_B2_ROOT/artifacts/" \;
+          mkdir -p "$RUNNER_TEMP/phase-b2/artifacts"
+          if [ -d "$RUNNER_TEMP/phase-b2/preflight" ]; then cp -a "$RUNNER_TEMP/phase-b2/preflight/." "$RUNNER_TEMP/phase-b2/artifacts/"; fi
+          if [ -d "$RUNNER_TEMP/phase-b2/run-a" ]; then
+            find "$RUNNER_TEMP/phase-b2/run-a" -maxdepth 1 -type f -exec cp {} "$RUNNER_TEMP/phase-b2/artifacts/" \;
           fi
-          if [ -d "$PHASE_B2_ROOT/run-b" ]; then
-            find "$PHASE_B2_ROOT/run-b" -maxdepth 1 -type f -exec cp {} "$PHASE_B2_ROOT/artifacts/" \;
+          if [ -d "$RUNNER_TEMP/phase-b2/run-b" ]; then
+            find "$RUNNER_TEMP/phase-b2/run-b" -maxdepth 1 -type f -exec cp {} "$RUNNER_TEMP/phase-b2/artifacts/" \;
           fi
-          if [ -d "$PHASE_B2_ROOT/comparison" ]; then cp -a "$PHASE_B2_ROOT/comparison/." "$PHASE_B2_ROOT/artifacts/"; fi
+          if [ -d "$RUNNER_TEMP/phase-b2/comparison" ]; then cp -a "$RUNNER_TEMP/phase-b2/comparison/." "$RUNNER_TEMP/phase-b2/artifacts/"; fi
           {
             echo "AUDIT_BRANCH=${GITHUB_REF_NAME}"
             echo "AUDIT_COMMIT=${GITHUB_SHA}"
@@ -83,7 +80,7 @@ jobs:
             echo "GRADLE_INVOKED=NO"
             echo "APK_GENERATED=NO"
             echo "AAB_GENERATED=NO"
-          } > "$PHASE_B2_ROOT/artifacts/AUDIT_HARNESS_INTEGRITY.txt"
+          } > "$RUNNER_TEMP/phase-b2/artifacts/AUDIT_HARNESS_INTEGRITY.txt"
 
       - name: Upload Phase B2 audit evidence
         if: always()
