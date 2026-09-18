@@ -593,11 +593,125 @@ def preflight(repo: Path, out: Path) -> int:
     return 0 if record["pass"] else 4
 
 
+
+def diagnose_step4_url(repo: Path, out: Path) -> int:
+    """Reconstruct only through accepted Step 3, then enumerate URL-like strings
+    in the exact payload that Step 4 receives. No source mutation is persisted.
+    """
+    out.mkdir(parents=True, exist_ok=True)
+    driver = import_driver(repo)
+    state = driver.preflight(repo)
+    manifest = state["manifest"]
+    canonical = state["canonical"]
+
+    actual_zip_sha = sha256_file(canonical)
+    zip_blob = git("hash-object", str(canonical.relative_to(repo)), cwd=repo)
+    if actual_zip_sha != EXPECTED_ZIP_SHA256:
+        raise RuntimeError(f"canonical ZIP SHA-256 mismatch: {actual_zip_sha}")
+    if zip_blob != EXPECTED_ZIP_BLOB:
+        raise RuntimeError(f"canonical ZIP Git blob mismatch: {zip_blob}")
+
+    work = out / "work"
+    if work.exists():
+        shutil.rmtree(work)
+    work.mkdir()
+    source_root = driver.safe_extract_zip(canonical, work / "extracted")
+
+    step_log = []
+    for step in manifest["steps"][:3]:
+        output = driver.execute_step(repo, source_root, step, work)
+        step_log.append({
+            "step": step["step"],
+            "script": step["path"],
+            "governing_commit": step["governing_commit"],
+            "git_blob": step["git_blob"],
+            "output": output,
+        })
+
+    a, b = driver.payload_paths(source_root)
+    if a.read_bytes() != b.read_bytes():
+        raise RuntimeError("payload copies diverged after Step 3")
+    payload = a.read_text(encoding="utf-8")
+
+    token_re = re.compile(r'https?://[^\\s"\'<>]+')
+    hits = []
+    for m in token_re.finditer(payload):
+        start = max(0, m.start() - 180)
+        end = min(len(payload), m.end() + 180)
+        context = payload[start:end].replace("\n", "\\n")
+        hits.append({
+            "scheme": "https" if m.group(0).startswith("https://") else "http",
+            "value": m.group(0),
+            "offset": m.start(),
+            "context": context,
+        })
+
+    # Also record generic occurrences even if punctuation made the URL regex stop early.
+    raw_https_offsets = [m.start() for m in re.finditer("https://", payload)]
+    raw_http_offsets = [m.start() for m in re.finditer("http://", payload)]
+
+    # Classify HTML resource-loading constructs separately from mere strings.
+    remote_loads = []
+    load_pat = re.compile(
+        r'<(?:script|img|iframe|link|source)\\b[^>]*(?:src|href)\\s*=\\s*["\'](https?://[^"\']+)["\']',
+        re.I,
+    )
+    for m in load_pat.finditer(payload):
+        remote_loads.append({"url": m.group(1), "context": m.group(0)})
+
+    js_network = []
+    js_pat = re.compile(
+        r'\\b(?:fetch|XMLHttpRequest|WebSocket)\\s*\\([^\\n]{0,300}?https?://[^\\s"\'<>]+',
+        re.I,
+    )
+    for m in js_pat.finditer(payload):
+        js_network.append(m.group(0))
+
+    report = {
+        "canonical_zip_sha256": actual_zip_sha,
+        "canonical_zip_git_blob": zip_blob,
+        "steps_executed": [x["step"] for x in step_log],
+        "step_log": step_log,
+        "payload_sha256_after_step3": sha256_file(a),
+        "payload_size_after_step3": a.stat().st_size,
+        "raw_https_occurrences": len(raw_https_offsets),
+        "raw_http_occurrences": len(raw_http_offsets),
+        "url_like_hits": hits,
+        "remote_resource_loads": remote_loads,
+        "javascript_network_calls": js_network,
+    }
+    (out / "STEP3_URL_DIAGNOSTIC.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    with (out / "STEP3_URL_DIAGNOSTIC.txt").open("w", encoding="utf-8") as fh:
+        fh.write(f"PAYLOAD_SHA256_AFTER_STEP3={report['payload_sha256_after_step3']}\n")
+        fh.write(f"RAW_HTTPS_OCCURRENCES={report['raw_https_occurrences']}\n")
+        fh.write(f"RAW_HTTP_OCCURRENCES={report['raw_http_occurrences']}\n")
+        fh.write(f"REMOTE_RESOURCE_LOADS={len(remote_loads)}\n")
+        fh.write(f"JAVASCRIPT_NETWORK_CALLS={len(js_network)}\n\n")
+        for i, hit in enumerate(hits, 1):
+            fh.write(f"[{i}] {hit['value']}\nOFFSET={hit['offset']}\nCONTEXT={hit['context']}\n\n")
+
+    print(json.dumps({
+        "payload_sha256_after_step3": report["payload_sha256_after_step3"],
+        "raw_https_occurrences": report["raw_https_occurrences"],
+        "raw_http_occurrences": report["raw_http_occurrences"],
+        "remote_resource_loads": len(remote_loads),
+        "javascript_network_calls": len(js_network),
+        "urls": [x["value"] for x in hits],
+    }, ensure_ascii=False, sort_keys=True))
+    return 0
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p = sub.add_parser("preflight")
+    p.add_argument("--repo", type=Path, default=Path("."))
+    p.add_argument("--out", type=Path, required=True)
+
+    p = sub.add_parser("diagnose-step4-url")
     p.add_argument("--repo", type=Path, default=Path("."))
     p.add_argument("--out", type=Path, required=True)
 
@@ -615,6 +729,8 @@ def main() -> None:
     repo = args.repo.resolve() if hasattr(args, "repo") else None
     if args.cmd == "preflight":
         raise SystemExit(preflight(repo, args.out.resolve()))
+    if args.cmd == "diagnose-step4-url":
+        raise SystemExit(diagnose_step4_url(repo, args.out.resolve()))
     if args.cmd == "run":
         raise SystemExit(run_once(repo, args.label, args.out.resolve()))
     if args.cmd == "compare":
