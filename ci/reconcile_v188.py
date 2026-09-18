@@ -12,6 +12,18 @@ files=[root/'academic_payload/index.html',root/'app/src/main/assets/www/index.ht
 for p in files:
     s=p.read_text(encoding='utf-8')
     require(sha(p)==OLD_PAYLOAD,'unexpected academic payload before v1.8.8 patch')
+
+    # Preserve the app's existing delegated theory-figure enlargement path while
+    # widening its semantic selector from ancestry-dependent placement to the
+    # figure's stable instructional class. Contextual relocation may move a
+    # .sys-fig out of .textbook-visuals; the root-level delegated handler must
+    # continue to recognize the same figure after that DOM move.
+    old_zoom_selector="const generatedFigure=event.target.closest('.textbook-visuals .sys-fig');"
+    new_zoom_selector="const generatedFigure=event.target.closest('.sys-fig');"
+    require(s.count(old_zoom_selector)==1,'unexpected theory enlargement selector before v1.8.8 patch')
+    s=s.replace(old_zoom_selector,new_zoom_selector,1)
+    require(old_zoom_selector not in s and s.count(new_zoom_selector)==1,'theory enlargement selector routing patch failed')
+
     marker='</style>'
     require(marker in s,'style terminator missing')
     css=r'''
