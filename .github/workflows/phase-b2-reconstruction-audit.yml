@@ -1,0 +1,117 @@
+name: INVERTEBRATA Phase B2 Corrected Verifier Audit
+
+on:
+  push:
+    branches:
+      - audit/phase-b2-harness-fix-20260918
+    paths:
+      - .github/workflows/phase-b2-reconstruction-audit.yml
+      - ci/phase_b2_action_audit.py
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  phase-b2-corrected-verifier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout isolated audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Phase B2 precondition verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/phase-b2/preflight"
+          python ci/phase_b2_action_audit.py preflight \
+            --repo "$GITHUB_WORKSPACE" \
+            --out "$RUNNER_TEMP/phase-b2/preflight"
+
+      - name: Download preserved prior Run-A evidence
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/phase-b2/prior"
+          curl --fail --location --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/10556873946/zip" \
+            -o "$RUNNER_TEMP/phase-b2/prior/prior.zip"
+          unzip -q "$RUNNER_TEMP/phase-b2/prior/prior.zip" -d "$RUNNER_TEMP/phase-b2/prior/evidence"
+          test -f "$RUNNER_TEMP/phase-b2/prior/evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html"
+
+      - name: Validate corrected parser, SVG scanner, and five Penaeus rows
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py harness-validate \
+            --repo "$GITHUB_WORKSPACE" \
+            --prior-html "$RUNNER_TEMP/phase-b2/prior/evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html" \
+            --out "$RUNNER_TEMP/phase-b2/harness-validation"
+
+      - name: Fresh Run A from canonical ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py run \
+            --repo "$GITHUB_WORKSPACE" \
+            --label A \
+            --out "$RUNNER_TEMP/phase-b2/run-a"
+
+      - name: Fresh independent Run B from canonical ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py run \
+            --repo "$GITHUB_WORKSPACE" \
+            --label B \
+            --out "$RUNNER_TEMP/phase-b2/run-b"
+
+      - name: Determinism and cross-run comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py compare \
+            --a "$RUNNER_TEMP/phase-b2/run-a" \
+            --b "$RUNNER_TEMP/phase-b2/run-b" \
+            --out "$RUNNER_TEMP/phase-b2/comparison"
+
+      - name: Collect complete Phase B2 evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/phase-b2/artifacts"
+          for d in preflight harness-validation run-a run-b comparison; do
+            if [ -d "$RUNNER_TEMP/phase-b2/$d" ]; then
+              find "$RUNNER_TEMP/phase-b2/$d" -maxdepth 1 -type f -exec cp {} "$RUNNER_TEMP/phase-b2/artifacts/" \;
+            fi
+          done
+          {
+            echo "AUDIT_BRANCH=${GITHUB_REF_NAME}"
+            echo "AUDIT_COMMIT=${GITHUB_SHA}"
+            echo "AUTHORITATIVE_BASELINE=e185e592ef5d02b6fd5d2ce65888591bea32ed27"
+            echo "AUDIT_HELPER_BLOB=$(git hash-object ci/phase_b2_action_audit.py)"
+            echo "RELEASE_WORKFLOW_BLOB=$(git hash-object .github/workflows/invertebrata-v188-debug.yml)"
+            echo "STEP4_BLOB=$(git hash-object ci/reconcile_v188_svg_batch2.py)"
+            echo "GRADLE_INVOKED=NO"
+            echo "APK_GENERATED=NO"
+            echo "AAB_GENERATED=NO"
+          } > "$RUNNER_TEMP/phase-b2/artifacts/AUDIT_HARNESS_INTEGRITY.txt"
+
+      - name: Upload corrected Phase B2 audit evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-PHASE-B2-CORRECTED-VERIFIER
+          path: ${{ runner.temp }}/phase-b2/artifacts/
+          if-no-files-found: error
+          retention-days: 30
