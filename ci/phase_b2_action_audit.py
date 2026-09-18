@@ -703,6 +703,179 @@ def diagnose_step4_url(repo: Path, out: Path) -> int:
     }, ensure_ascii=False, sort_keys=True))
     return 0
 
+
+def validate_step4_security_patch(repo: Path, out: Path) -> int:
+    """Validate only the narrowed Batch-2 offline-safety assertion.
+
+    Reconstruct through accepted Steps 1-3, execute the patched Step 4 once,
+    prove the accepted local appassets CSP is permitted, and prove unapproved
+    remote HTTP(S) or iframe/eval constructs are still rejected.
+    """
+    out.mkdir(parents=True, exist_ok=True)
+    driver = import_driver(repo)
+
+    canonical = repo / "INVERTEBRATA_v1.8.7_RECONCILED_ANDROID_SOURCE.zip"
+    if sha256_file(canonical) != EXPECTED_ZIP_SHA256:
+        raise RuntimeError("canonical ZIP SHA-256 mismatch")
+    if git("hash-object", canonical.name, cwd=repo) != EXPECTED_ZIP_BLOB:
+        raise RuntimeError("canonical ZIP Git blob mismatch")
+
+    manifest = json.loads((repo / "ci/v188_accepted_transform_manifest.json").read_text(encoding="utf-8"))
+    if len(manifest["steps"]) != 19:
+        raise RuntimeError("accepted manifest is not 19 steps")
+
+    # Phase-B1 identity is required for steps 1-3; Step 4 is intentionally the
+    # audit-branch remediation candidate under test.
+    for step in manifest["steps"][:3]:
+        observed = git("hash-object", step["path"], cwd=repo)
+        if observed != step["git_blob"]:
+            raise RuntimeError(f"pre-Step4 accepted blob drift at step {step['step']}: {observed}")
+
+    work = out / "work"
+    if work.exists():
+        shutil.rmtree(work)
+    work.mkdir()
+    source_root = driver.safe_extract_zip(canonical, work / "extracted")
+
+    exec_log = []
+    for step in manifest["steps"][:3]:
+        output = driver.execute_step(repo, source_root, step, work)
+        exec_log.append({
+            "step": step["step"],
+            "script": step["path"],
+            "git_blob": step["git_blob"],
+            "exit_code": 0,
+            "output": output,
+        })
+
+    a, b = driver.payload_paths(source_root)
+    before_step4 = a.read_text(encoding="utf-8")
+    trusted_csp = "img-src 'self' data: blob: https://appassets.androidplatform.net;"
+    exact_https = "https://appassets.androidplatform.net"
+    if before_step4.count(exact_https) != 1:
+        raise RuntimeError(f"expected exactly one appassets HTTPS origin before Step4, found {before_step4.count(exact_https)}")
+    if before_step4.count(trusted_csp) != 1:
+        raise RuntimeError("accepted appassets origin is not confined to the expected CSP directive")
+
+    # Execute the patched Step 4 directly.  The persisted Phase-B1 manifest is
+    # deliberately not changed during this narrow remediation audit.
+    patched_step4 = repo / "ci/reconcile_v188_svg_batch2.py"
+    cp = subprocess.run(
+        [sys.executable, str(patched_step4), str(source_root)],
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    exec_log.append({
+        "step": 4,
+        "script": "ci/reconcile_v188_svg_batch2.py",
+        "git_blob": git("hash-object", "ci/reconcile_v188_svg_batch2.py", cwd=repo),
+        "exit_code": cp.returncode,
+        "output": cp.stdout,
+    })
+    if cp.returncode != 0:
+        raise RuntimeError(f"patched Step 4 failed ({cp.returncode}):\\n{cp.stdout}")
+
+    a, b = driver.payload_paths(source_root)
+    if a.read_bytes() != b.read_bytes():
+        raise RuntimeError("payload copies diverged after patched Step 4")
+    payload = a.read_text(encoding="utf-8")
+
+    # Import the patched assertion and exercise it independently.
+    spec = importlib.util.spec_from_file_location("batch2_patched", patched_step4)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("cannot import patched Batch-2 module")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    # Accepted payload must pass.
+    mod.assert_offline_safety(payload)
+
+    negative_cases = {
+        "external_https_image": payload + '\\n<img src="https://example.invalid/x.png">\\n',
+        "external_http_image": payload + '\\n<img src="http://example.invalid/x.png">\\n',
+        "iframe": payload + '\\n<iframe src="about:blank"></iframe>\\n',
+        "eval": payload + '\\n<script>eval("1")</script>\\n',
+        "new_function": payload + '\\n<script>new Function("return 1")</script>\\n',
+        "second_appassets_occurrence": payload + '\\nhttps://appassets.androidplatform.net\\n',
+    }
+    negative_results = {}
+    for name, sample in negative_cases.items():
+        rejected = False
+        message = ""
+        try:
+            mod.assert_offline_safety(sample)
+        except SystemExit as e:
+            rejected = True
+            message = str(e)
+        negative_results[name] = {"rejected": rejected, "message": message}
+        if not rejected:
+            raise RuntimeError(f"offline assertion negative test did not reject: {name}")
+
+    # Independent structural checks: the single HTTPS occurrence is the trusted
+    # local CSP origin; no remote-loading HTML element is present.
+    remote_load_pat = re.compile(
+        r'<(?:script|img|iframe|link|source)\\b[^>]*(?:src|href)\\s*=\\s*["\\'](https?://[^"\\']+)["\\']',
+        re.I,
+    )
+    remote_loads = [m.group(1) for m in remote_load_pat.finditer(payload)]
+    all_https = [m.start() for m in re.finditer("https://", payload)]
+    all_http = [m.start() for m in re.finditer("http://", payload)]
+    svg_ns_count = payload.count("http://www.w3.org/2000/svg")
+
+    report = {
+        "canonical_zip_sha256": sha256_file(canonical),
+        "payload_sha256_before_step4": hashlib.sha256(before_step4.encode("utf-8")).hexdigest(),
+        "payload_sha256_after_step4": sha256_file(a),
+        "patched_step4_blob": git("hash-object", "ci/reconcile_v188_svg_batch2.py", cwd=repo),
+        "steps_1_to_4": exec_log,
+        "trusted_local_origin": exact_https,
+        "trusted_csp_directive": trusted_csp,
+        "trusted_origin_occurrences_after_step4": payload.count(exact_https),
+        "raw_https_occurrences_after_step4": len(all_https),
+        "raw_http_occurrences_after_step4": len(all_http),
+        "svg_namespace_occurrences_after_step4": svg_ns_count,
+        "remote_resource_loads": remote_loads,
+        "negative_security_tests": negative_results,
+        "accepted_payload_assertion": "PASS",
+        "academic_content_patch": "NONE — assertion only",
+    }
+    report["pass"] = (
+        payload.count(exact_https) == 1
+        and len(all_https) == 1
+        and not remote_loads
+        and all(x["rejected"] for x in negative_results.values())
+    )
+
+    (out / "BATCH2_SECURITY_ASSERTION_VALIDATION.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\\n",
+        encoding="utf-8",
+    )
+    (out / "BATCH2_SECURITY_ASSERTION_VALIDATION.txt").write_text(
+        "\\n".join([
+            f"TRUSTED_LOCAL_ORIGIN={exact_https}",
+            f"TRUSTED_ORIGIN_OCCURRENCES={payload.count(exact_https)}",
+            f"RAW_HTTPS_OCCURRENCES={len(all_https)}",
+            f"REMOTE_RESOURCE_LOADS={len(remote_loads)}",
+            f"NEGATIVE_SECURITY_TESTS={'PASS' if all(x['rejected'] for x in negative_results.values()) else 'FAIL'}",
+            f"PATCHED_STEP4_EXECUTION={'PASS' if cp.returncode == 0 else 'FAIL'}",
+            f"VALIDATION={'PASS' if report['pass'] else 'FAIL'}",
+            "",
+        ]),
+        encoding="utf-8",
+    )
+    print(json.dumps({
+        "trusted_local_origin": exact_https,
+        "trusted_origin_occurrences": payload.count(exact_https),
+        "raw_https_occurrences": len(all_https),
+        "remote_resource_loads": len(remote_loads),
+        "negative_security_tests": negative_results,
+        "patched_step4_exit_code": cp.returncode,
+        "pass": report["pass"],
+    }, sort_keys=True))
+    return 0 if report["pass"] else 5
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -712,6 +885,10 @@ def main() -> None:
     p.add_argument("--out", type=Path, required=True)
 
     p = sub.add_parser("diagnose-step4-url")
+    p.add_argument("--repo", type=Path, default=Path("."))
+    p.add_argument("--out", type=Path, required=True)
+
+    p = sub.add_parser("validate-step4-security-patch")
     p.add_argument("--repo", type=Path, default=Path("."))
     p.add_argument("--out", type=Path, required=True)
 
@@ -731,6 +908,8 @@ def main() -> None:
         raise SystemExit(preflight(repo, args.out.resolve()))
     if args.cmd == "diagnose-step4-url":
         raise SystemExit(diagnose_step4_url(repo, args.out.resolve()))
+    if args.cmd == "validate-step4-security-patch":
+        raise SystemExit(validate_step4_security_patch(repo, args.out.resolve()))
     if args.cmd == "run":
         raise SystemExit(run_once(repo, args.label, args.out.resolve()))
     if args.cmd == "compare":
