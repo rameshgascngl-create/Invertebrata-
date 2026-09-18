@@ -816,7 +816,7 @@ def validate_step4_security_patch(repo: Path, out: Path) -> int:
     # Independent structural checks: the single HTTPS occurrence is the trusted
     # local CSP origin; no remote-loading HTML element is present.
     remote_load_pat = re.compile(
-        r'<(?:script|img|iframe|link|source)\\b[^>]*(?:src|href)\\s*=\\s*["\\'](https?://[^"\\']+)["\\']',
+        r"<(?:script|img|iframe|link|source)\b[^>]*(?:src|href)\s*=\s*['\"](https?://[^'\"]+)['\"]",
         re.I,
     )
     remote_loads = [m.group(1) for m in remote_load_pat.finditer(payload)]
