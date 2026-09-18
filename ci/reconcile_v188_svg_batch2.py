@@ -11,6 +11,19 @@ M={'u2-sycon': ['sycon_external', 'sycon_ls', 'sycon_spicules'], 'u3-fasciola': 
 PDFREF={
 'sycon':'p13–14','fasciola':'p22','ascaris':'p26','earthworm':'p31','penaeus':'p35','pila':'p42','asterias':'p45–46','obelia':'p17','nereis':'p30'}
 
+TRUSTED_LOCAL_CSP = "img-src 'self' data: blob: https://appassets.androidplatform.net;"
+SVG_NAMESPACE = 'http://www.w3.org/2000/svg'
+
+def assert_offline_safety(payload):
+ # The Android WebViewAssetLoader origin is a local in-app origin, not a remote
+ # dependency.  Permit it only in the single accepted CSP img-src directive.
+ if payload.count(TRUSTED_LOCAL_CSP) != 1:
+  raise SystemExit('trusted local appassets CSP occurrence mismatch')
+ scrub=payload.replace(SVG_NAMESPACE,'').replace(TRUSTED_LOCAL_CSP,'')
+ forbidden=['<iframe','eval(','new Function(','http://','https://']
+ for token in forbidden:
+  if token in scrub: raise SystemExit('forbidden token after batch2: '+token)
+
 def main(root):
  root=Path(root).resolve(); targets=[root/'academic_payload/index.html',root/'app/src/main/assets/www/index.html']
  injection='<script id="v188-pencil-batch2">\n'+ '\n'.join("window.ORG_SYSTEM_DIAGRAMS[%s]=(window.ORG_SYSTEM_DIAGRAMS[%s]||'')+%s;"%(json.dumps(lesson),json.dumps(lesson),json.dumps(''.join(P[k] for k in keys),ensure_ascii=False)) for lesson,keys in M.items())+'\n</script>\n'
@@ -22,10 +35,7 @@ def main(root):
   s=s.replace(anchor,injection+anchor,1); p.write_text(s,encoding='utf-8',newline='\n')
  if targets[0].read_bytes()!=targets[1].read_bytes(): raise SystemExit('payload copies diverged')
  payload=targets[0].read_text(encoding='utf-8')
- forbidden=['<iframe','eval(','new Function(','http://','https://']
- scrub=payload.replace('http://www.w3.org/2000/svg','')
- for token in forbidden:
-  if token in scrub: raise SystemExit('forbidden token after batch2: '+token)
+ assert_offline_safety(payload)
  rows=[]
  def add(org,lesson,key,fig,pdf,status='PASS',notes='Source/static audit only; physical-device QA not performed.'):
   tamil='PASS' if 'lang="ta"' in fig and 'ta-explain' in fig else 'PENDING'
