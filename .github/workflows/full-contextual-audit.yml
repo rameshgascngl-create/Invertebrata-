@@ -88,18 +88,18 @@ jobs:
           test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
           test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/v188_accepted_transform_manifest.json)" = "149c2f860f86bb810a98ce6bf1a3bc7a53c7a351"
           test "$(git -C "$RUNNER_TEMP/main-repo" hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
-          cat > "$RUNNER_TEMP/evidence/FULL_CONTEXTUAL_SOURCE_FREEZE.txt" <<'EOF'
-ACADEMIC SOURCE CHANGED — NO
-FIGURE INVENTORY CHANGED — NO
-CONTEXTUAL PLACEMENT SOURCE CHANGED — NO
-OVERLAY-HISTORY SOURCE CHANGED — NO
-RELEASE WORKFLOW CHANGED — NO
-BUILD PIPELINE RECONCILIATION STARTED — NO
-GRADLE INVOKED — NO
-APK GENERATED — NO
-AAB GENERATED — NO
-DEVICE QA STARTED — NO
-EOF
+          printf '%s\n' \
+            'ACADEMIC SOURCE CHANGED — NO' \
+            'FIGURE INVENTORY CHANGED — NO' \
+            'CONTEXTUAL PLACEMENT SOURCE CHANGED — NO' \
+            'OVERLAY-HISTORY SOURCE CHANGED — NO' \
+            'RELEASE WORKFLOW CHANGED — NO' \
+            'BUILD PIPELINE RECONCILIATION STARTED — NO' \
+            'GRADLE INVOKED — NO' \
+            'APK GENERATED — NO' \
+            'AAB GENERATED — NO' \
+            'DEVICE QA STARTED — NO' \
+            > "$RUNNER_TEMP/evidence/FULL_CONTEXTUAL_SOURCE_FREEZE.txt"
 
       - name: Upload raw contextual evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
