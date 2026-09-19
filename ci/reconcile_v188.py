@@ -85,11 +85,14 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
    Object.keys(families).forEach(function(k){var f=families[k],a=f.some(function(w){return cap.indexOf(w)>=0;}),b=f.some(function(w){return txt.indexOf(w)>=0;});if(a&&b)n+=7;});
    return n;
  }
+ function isDefaultVisibleSubsection(sec){
+   return !sec.closest('details:not([open])');
+ }
  function contextualizePane(pane){
    var visuals=pane.querySelector('.textbook-visuals');
    if(!visuals||visuals.dataset.v188Done==='1')return;
    var figures=Array.from(visuals.querySelectorAll('figure.sys-fig'));
-   var sections=Array.from(pane.querySelectorAll('.textbook-detail .textbook-subsection'));
+   var sections=Array.from(pane.querySelectorAll('.textbook-detail .textbook-subsection')).filter(isDefaultVisibleSubsection);
    figures.forEach(function(fig,index){
      fig.classList.add('contextual-theory-figure');
      fig.setAttribute('role','button'); fig.setAttribute('tabindex','0');
@@ -102,7 +105,7 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
      if(best&&bestScore>=3)best.insertAdjacentElement('afterend',fig);
      else {
        var detail=pane.querySelector('.textbook-detail');
-       if(detail){var subs=detail.querySelectorAll('.textbook-subsection');var anchor=subs[Math.min(index,Math.max(0,subs.length-1))];if(anchor)anchor.insertAdjacentElement('afterend',fig);else detail.appendChild(fig);}
+       if(detail){var anchor=sections[Math.min(index,Math.max(0,sections.length-1))];if(anchor)anchor.insertAdjacentElement('afterend',fig);else detail.appendChild(fig);}
      }
    });
    visuals.classList.add('contextualized-figures'); visuals.dataset.v188Done='1';
@@ -117,6 +120,9 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
 </script>
 '''
     s=s.replace(body,js+'\n'+body,1)
+    require("function isDefaultVisibleSubsection(sec)" in s,'contextual visibility eligibility helper missing')
+    require("closest('details:not([open])')" in s,'closed-details visibility guard missing')
+    require(".filter(isDefaultVisibleSubsection)" in s,'contextual subsection visibility filter missing')
     p.write_text(s,encoding='utf-8',newline='\n')
 
 require(sha(files[0])==sha(files[1]),'payload copies diverged')
