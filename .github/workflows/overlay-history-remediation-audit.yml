@@ -34,7 +34,7 @@ jobs:
           STEP2_BLOB="$(git hash-object ci/reconcile_v188.py)"
           RELEASE_BLOB="$(git hash-object .github/workflows/invertebrata-v188-debug.yml)"
           test "$MAIN_HEAD" = "d840590d8a045c035f95487d8b956eb0e992260a"
-          test "$STEP2_BLOB" = "8284621280e9c43deddf1a30b47669d0349bf876"
+          test "$STEP2_BLOB" = "1161c46184c3d69530c1cad74db774734b4947af"
           test "$RELEASE_BLOB" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
           python - <<'PY'
           import json
@@ -42,8 +42,8 @@ jobs:
           assert len(m['steps'])==19
           assert [s['step'] for s in m['steps']]==list(range(1,20))
           s2=[s for s in m['steps'] if s['step']==2][0]
-          assert s2['governing_commit']=='bf322d4e42e0412ee3e468edb137894b5c139cbf'
-          assert s2['git_blob']=='8284621280e9c43deddf1a30b47669d0349bf876'
+          assert s2['governing_commit']=='731afba26e919dc6ae2b3db7108207d647096235'
+          assert s2['git_blob']=='1161c46184c3d69530c1cad74db774734b4947af'
           assert sum(1 for s in m['steps'] if s['governing_commit'] in set(m.get('superseded_commits',[])))==0
           PY
           git diff --name-only d840590d8a045c035f95487d8b956eb0e992260a..HEAD > "$RUNNER_TEMP/candidate/BRANCH_CHANGED_FILES.txt"
@@ -154,9 +154,9 @@ jobs:
               f"BRANCH={os.environ['GITHUB_REF_NAME']}",
               f"BRANCH_HEAD={os.environ['GITHUB_SHA']}",
               "AUTHORITATIVE_MAIN=d840590d8a045c035f95487d8b956eb0e992260a",
-              "IMPLEMENTATION_COMMIT=bf322d4e42e0412ee3e468edb137894b5c139cbf",
-              "CANDIDATE_MANIFEST_COMMIT=b81755f142ae9e7879e84ef24bb1956532a94ac6",
-              "STEP2_GIT_BLOB=8284621280e9c43deddf1a30b47669d0349bf876",
+              "IMPLEMENTATION_COMMIT=731afba26e919dc6ae2b3db7108207d647096235",
+              "CANDIDATE_MANIFEST_COMMIT=cb084e53d745c8974270aff5c52ee558d7c8c968",
+              "STEP2_GIT_BLOB=1161c46184c3d69530c1cad74db774734b4947af",
               f"STEP2_SHA256={step2sha}",
               f"CANDIDATE_HTML_SHA256={htmlsha}",
               f"CANDIDATE_HTML_SIZE={htmlsize}",
