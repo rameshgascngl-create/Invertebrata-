@@ -43,7 +43,7 @@ jobs:
             sha256sum ci/reconcile_v188.py
           } | tee "$RUNNER_TEMP/neutral-fallback/SOURCE_STATE.txt"
           git diff 8416ec813a7b8bb783896a4c4024ef22c1b401ad..HEAD -- ci/reconcile_v188.py ci/v188_accepted_transform_manifest.json > "$RUNNER_TEMP/neutral-fallback/AUTHORIZED_DIFF.patch"
-          test "$(git hash-object ci/reconcile_v188.py)" = "800967a036fd9ab078356c94e5063e93b7c6e508"
+          test "$(git hash-object ci/reconcile_v188.py)" = "35f288d6c30d98816140d08f7e8b20aa09522bf5"
           test "$(git hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
 
       - name: Verify 19-step audit manifest
@@ -56,8 +56,8 @@ jobs:
           assert len(m['steps'])==19
           assert [s['step'] for s in m['steps']]==list(range(1,20))
           s2=[s for s in m['steps'] if s['step']==2][0]
-          assert s2['git_blob']=='800967a036fd9ab078356c94e5063e93b7c6e508'
-          assert s2['governing_commit']=='a0d0e185b9b21d43214322f95ff6386f262688c0'
+          assert s2['git_blob']=='35f288d6c30d98816140d08f7e8b20aa09522bf5'
+          assert s2['governing_commit']=='0a53426f98a75b62dd9c85e667c2dfbf190e87ba'
           assert sum(1 for s in m['steps'] if s['governing_commit'] in set(m.get('superseded_commits',[])))==0
           print('MANIFEST_19_OF_19=PASS')
           PY
@@ -87,7 +87,9 @@ jobs:
             "closest('details:not([open])')",
             ".filter(isDefaultVisibleNode)",
             "else if(isDefaultVisibleNode(visuals))",
-            "var neutralAnchor=isDefaultVisibleNode(detail)?detail:pane;",
+            "function neutralFallbackAnchor(pane,detail)",
+            "data-v188-neutral-fallback",
+            "neutralFallbackAnchor(pane,detail).appendChild(fig);",
             "const generatedFigure=event.target.closest('.sys-fig');",
           ]
           for token in required: assert token in s, token
