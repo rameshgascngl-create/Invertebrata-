@@ -88,6 +88,17 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
  function isDefaultVisibleNode(node){
    return !!node&&!node.closest('details:not([open])');
  }
+ function neutralFallbackAnchor(pane,detail){
+   var parent=isDefaultVisibleNode(detail)?detail:pane;
+   var anchor=Array.from(parent.children).find(function(node){return node.classList&&node.classList.contains('v188-neutral-figure-anchor');});
+   if(!anchor){
+     anchor=document.createElement('div');
+     anchor.className='textbook-visuals v188-neutral-figure-anchor';
+     anchor.setAttribute('data-v188-neutral-fallback','1');
+     parent.appendChild(anchor);
+   }
+   return anchor;
+ }
  function contextualizePane(pane){
    var visuals=pane.querySelector('.textbook-visuals');
    if(!visuals||visuals.dataset.v188Done==='1')return;
@@ -109,10 +120,10 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
        // academically unrelated subsection association.
      } else {
        // Neutral fallback B: only when the original visual container itself is
-       // hidden, move the same figure to a default-visible lesson-level anchor.
+       // hidden, move the same figure into an explicit default-visible lesson-level
+       // visual anchor, rather than placing it immediately after an unrelated subsection.
        var detail=pane.querySelector('.textbook-detail');
-       var neutralAnchor=isDefaultVisibleNode(detail)?detail:pane;
-       neutralAnchor.appendChild(fig);
+       neutralFallbackAnchor(pane,detail).appendChild(fig);
      }
    });
    visuals.classList.add('contextualized-figures'); visuals.dataset.v188Done='1';
@@ -131,7 +142,9 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
     require("closest('details:not([open])')" in s,'closed-details placement guard missing')
     require(".filter(isDefaultVisibleNode)" in s,'contextual candidate visibility filter missing')
     require("else if(isDefaultVisibleNode(visuals))" in s,'neutral original-container fallback missing')
-    require("var neutralAnchor=isDefaultVisibleNode(detail)?detail:pane;" in s,'neutral lesson-level fallback missing')
+    require("function neutralFallbackAnchor(pane,detail)" in s,'explicit neutral lesson-level anchor helper missing')
+    require("data-v188-neutral-fallback" in s,'explicit neutral lesson-level anchor marker missing')
+    require("neutralFallbackAnchor(pane,detail).appendChild(fig);" in s,'neutral lesson-level fallback missing')
     require("subs[Math.min(index" not in s,'prohibited index-based contextual fallback survived')
     p.write_text(s,encoding='utf-8',newline='\n')
 
