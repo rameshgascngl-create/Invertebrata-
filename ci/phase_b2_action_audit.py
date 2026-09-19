@@ -964,8 +964,6 @@ def integrity_audit(repo: Path, source_root: Path, final_html: str, out_json: Pa
     )
     step2_blob = git("hash-object", "ci/reconcile_v188.py", cwd=repo)
     step2_sha256 = sha256_file(repo / "ci/reconcile_v188.py")
-    step2_blob = git("hash-object", "ci/reconcile_v188.py", cwd=repo)
-    step2_sha256 = sha256_file(repo / "ci/reconcile_v188.py")
     step4_blob = git("hash-object", "ci/reconcile_v188_svg_batch2.py", cwd=repo)
     step4_sha256 = sha256_file(repo / "ci/reconcile_v188_svg_batch2.py")
 
@@ -1261,6 +1259,8 @@ def preflight(repo: Path, out: Path) -> int:
     release_blob = git("hash-object", ".github/workflows/invertebrata-v188-debug.yml", cwd=repo)
     zip_blob = git("hash-object", "INVERTEBRATA_v1.8.7_RECONCILED_ANDROID_SOURCE.zip", cwd=repo)
     zip_sha = sha256_file(repo / "INVERTEBRATA_v1.8.7_RECONCILED_ANDROID_SOURCE.zip")
+    step2_blob = git("hash-object", "ci/reconcile_v188.py", cwd=repo)
+    step2_sha256 = sha256_file(repo / "ci/reconcile_v188.py")
     step4_blob = git("hash-object", "ci/reconcile_v188_svg_batch2.py", cwd=repo)
     step4_sha256 = sha256_file(repo / "ci/reconcile_v188_svg_batch2.py")
     branch = os.environ.get("GITHUB_REF_NAME", "")
