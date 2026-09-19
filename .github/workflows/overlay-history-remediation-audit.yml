@@ -1,0 +1,226 @@
+name: INVERTEBRATA Overlay History Remediation Audit
+
+on:
+  push:
+    branches:
+      - remediation/visual-overlay-history-return-20260919
+    paths:
+      - .github/workflows/overlay-history-remediation-audit.yml
+      - ci/reconcile_v188.py
+      - ci/v188_accepted_transform_manifest.json
+      - ci/overlay_history_remediation_audit.py
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reconstruct-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout remediation branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify remediation scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/candidate"
+          MAIN_HEAD="$(git rev-parse origin/main)"
+          STEP2_BLOB="$(git hash-object ci/reconcile_v188.py)"
+          RELEASE_BLOB="$(git hash-object .github/workflows/invertebrata-v188-debug.yml)"
+          test "$MAIN_HEAD" = "d840590d8a045c035f95487d8b956eb0e992260a"
+          test "$STEP2_BLOB" = "8284621280e9c43deddf1a30b47669d0349bf876"
+          test "$RELEASE_BLOB" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          python - <<'PY'
+          import json
+          m=json.load(open('ci/v188_accepted_transform_manifest.json',encoding='utf-8'))
+          assert len(m['steps'])==19
+          assert [s['step'] for s in m['steps']]==list(range(1,20))
+          s2=[s for s in m['steps'] if s['step']==2][0]
+          assert s2['governing_commit']=='bf322d4e42e0412ee3e468edb137894b5c139cbf'
+          assert s2['git_blob']=='8284621280e9c43deddf1a30b47669d0349bf876'
+          assert sum(1 for s in m['steps'] if s['governing_commit'] in set(m.get('superseded_commits',[])))==0
+          PY
+          git diff --name-only d840590d8a045c035f95487d8b956eb0e992260a..HEAD > "$RUNNER_TEMP/candidate/BRANCH_CHANGED_FILES.txt"
+          python - <<'PY'
+          from pathlib import Path
+          allowed={
+            'ci/reconcile_v188.py',
+            'ci/v188_accepted_transform_manifest.json',
+            'ci/overlay_history_remediation_audit.py',
+            '.github/workflows/overlay-history-remediation-audit.yml',
+          }
+          changed={x.strip() for x in Path(__import__('os').environ['RUNNER_TEMP']).joinpath('candidate/BRANCH_CHANGED_FILES.txt').read_text().splitlines() if x.strip()}
+          unexpected=sorted(changed-allowed)
+          assert not unexpected, unexpected
+          PY
+
+      - name: Reconstruct authoritative baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree add --detach "$RUNNER_TEMP/baseline-repo" d840590d8a045c035f95487d8b956eb0e992260a
+          python "$RUNNER_TEMP/baseline-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/baseline-repo" \
+            --work-dir "$RUNNER_TEMP/baseline-work" \
+            --output "$RUNNER_TEMP/candidate/BASELINE_AUTHORITATIVE.html" \
+            | tee "$RUNNER_TEMP/candidate/BASELINE_RECONSTRUCTION.log"
+          test "$(sha256sum "$RUNNER_TEMP/candidate/BASELINE_AUTHORITATIVE.html" | awk '{print $1}')" = "62bc38edec4c0256d14952c79c106ac91698a035d441937399f756e28c0d1b95"
+          test "$(stat -c %s "$RUNNER_TEMP/candidate/BASELINE_AUTHORITATIVE.html")" = "2387111"
+
+      - name: Reconstruct candidate twice independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/candidate-work-a" \
+            --output "$RUNNER_TEMP/candidate/CANDIDATE_A.html" \
+            | tee "$RUNNER_TEMP/candidate/CANDIDATE_A_RECONSTRUCTION.log"
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/candidate-work-b" \
+            --output "$RUNNER_TEMP/candidate/CANDIDATE_B.html" \
+            | tee "$RUNNER_TEMP/candidate/CANDIDATE_B_RECONSTRUCTION.log"
+          cmp "$RUNNER_TEMP/candidate/CANDIDATE_A.html" "$RUNNER_TEMP/candidate/CANDIDATE_B.html"
+          sha256sum "$RUNNER_TEMP/candidate/CANDIDATE_A.html" "$RUNNER_TEMP/candidate/CANDIDATE_B.html" | tee "$RUNNER_TEMP/candidate/CANDIDATE_RECONSTRUCTION_SHA256.txt"
+
+      - name: Prove source-integrity boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff d840590d8a045c035f95487d8b956eb0e992260a..HEAD -- ci/reconcile_v188.py > "$RUNNER_TEMP/candidate/OVERLAY_HISTORY_REMEDIATION_DIFF.txt"
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'candidate'
+          base=(root/'BASELINE_AUTHORITATIVE.html').read_text(encoding='utf-8')
+          cand=(root/'CANDIDATE_A.html').read_text(encoding='utf-8')
+
+          def segment(text,start,end):
+              a=text.index(start);b=text.index(end,a)+len(end);return text[a:b]
+          def segment_before(text,start,end_before):
+              a=text.index(start);b=text.index(end_before,a);return text[a:b]
+          def replace_once(text,old,new):
+              assert text.count(old)==1,(old[:80],text.count(old))
+              return text.replace(old,new,1)
+
+          base_state=segment(base,"    let historyReady = false;","    const historyMarker = 'invertebrate-virtual-lab-v5';")
+          cand_state=segment(cand,"    let historyReady = false;","    const historyMarker = 'invertebrate-virtual-lab-v5';")
+          base_open=segment_before(base,"    function openTheoryVisualNode(source,titleText){","\n\n    function openSyllabusVisual()")
+          cand_open=segment_before(cand,"    function visualReturnTrigger(source){","\n\n    function openSyllabusVisual()")
+          base_close=segment_before(base,"    function closeSyllabusVisual(fromPopstate){","\n\n    function textbookDetailedMarkup")
+          cand_close=segment_before(cand,"    function closeSyllabusVisual(fromPopstate){","\n\n    function textbookDetailedMarkup")
+          base_pop=segment_before(base,"    window.addEventListener('popstate',function(event){","\n\n    /* --- Context-aware offline audio explanation")
+          cand_pop=segment_before(cand,"    window.addEventListener('popstate',function(event){","\n\n    /* --- Context-aware offline audio explanation")
+
+          normalized=cand
+          for old,new in [(cand_state,base_state),(cand_open,base_open),(cand_close,base_close),(cand_pop,base_pop)]:
+              normalized=replace_once(normalized,old,new)
+          assert normalized==base, 'candidate differs from authoritative baseline outside overlay-history routing blocks'
+
+          marker='<script id="v188-contextual-atlas">'
+          def contextual(t):
+              a=t.index(marker);b=t.index('</script>',a)+len('</script>');return t[a:b]
+          bh=hashlib.sha256(contextual(base).encode()).hexdigest()
+          ch=hashlib.sha256(contextual(cand).encode()).hexdigest()
+          assert bh==ch
+
+          step2=Path('ci/reconcile_v188.py').read_bytes()
+          step2sha=hashlib.sha256(step2).hexdigest()
+          htmlsha=hashlib.sha256((root/'CANDIDATE_A.html').read_bytes()).hexdigest()
+          htmlsize=(root/'CANDIDATE_A.html').stat().st_size
+          integrity=f"""ACADEMIC_PAYLOAD_CHANGED=NO
+FIGURE_INVENTORY_CHANGED=NO
+SVG_ARTWORK_CHANGED=NO
+CAPTIONS_CHANGED=NO
+CONTEXTUAL_SCORER_CHANGED=NO
+RELEVANCE_THRESHOLD_CHANGED=NO
+CONTEXTUAL_PLACEMENT_BEHAVIOR_CHANGED=NO
+RELEASE_WORKFLOW_CHANGED=NO
+CONTEXTUAL_ATLAS_SHA256_BASELINE={bh}
+CONTEXTUAL_ATLAS_SHA256_CANDIDATE={ch}
+NORMALIZED_CANDIDATE_EQUALS_AUTHORITATIVE_BASELINE=YES
+"""
+          (root/'OVERLAY_HISTORY_SOURCE_INTEGRITY.txt').write_text(integrity,encoding='utf-8')
+          identity=f"""BRANCH={os.environ['GITHUB_REF_NAME']}
+BRANCH_HEAD={os.environ['GITHUB_SHA']}
+AUTHORITATIVE_MAIN=d840590d8a045c035f95487d8b956eb0e992260a
+IMPLEMENTATION_COMMIT=bf322d4e42e0412ee3e468edb137894b5c139cbf
+CANDIDATE_MANIFEST_COMMIT=b81755f142ae9e7879e84ef24bb1956532a94ac6
+STEP2_GIT_BLOB=8284621280e9c43deddf1a30b47669d0349bf876
+STEP2_SHA256={step2sha}
+CANDIDATE_HTML_SHA256={htmlsha}
+CANDIDATE_HTML_SIZE={htmlsize}
+PRODUCTION_CHANGED_FILES=ci/reconcile_v188.py;ci/v188_accepted_transform_manifest.json
+RELEASE_WORKFLOW_BLOB=8a5a851a17669fc5d7e26c076cce4b2fcd1e04df
+"""
+          (root/'OVERLAY_HISTORY_CANDIDATE_IDENTITY.txt').write_text(identity,encoding='utf-8')
+          print(identity)
+          PY
+
+      - name: Upload candidate source
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: overlay-history-remediation-candidate-source
+          path: ${{ runner.temp }}/candidate/
+          if-no-files-found: error
+          retention-days: 30
+
+  interaction-audit:
+    needs: reconstruct-candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Checkout remediation branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Download candidate source
+        uses: actions/download-artifact@v4
+        with:
+          name: overlay-history-remediation-candidate-source
+          path: ${{ runner.temp }}/candidate
+
+      - name: Install Playwright library
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve installed Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Run targeted and full 82-figure audits
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          cp "$RUNNER_TEMP/candidate/OVERLAY_HISTORY_REMEDIATION_DIFF.txt" "$RUNNER_TEMP/evidence/"
+          cp "$RUNNER_TEMP/candidate/OVERLAY_HISTORY_SOURCE_INTEGRITY.txt" "$RUNNER_TEMP/evidence/"
+          cp "$RUNNER_TEMP/candidate/OVERLAY_HISTORY_CANDIDATE_IDENTITY.txt" "$RUNNER_TEMP/evidence/"
+          python ci/overlay_history_remediation_audit.py \
+            --html "$RUNNER_TEMP/candidate/CANDIDATE_A.html" \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME" \
+            --identity "$RUNNER_TEMP/evidence/OVERLAY_HISTORY_CANDIDATE_IDENTITY.txt" \
+            --integrity "$RUNNER_TEMP/evidence/OVERLAY_HISTORY_SOURCE_INTEGRITY.txt"
+
+      - name: Upload remediation evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-OVERLAY-HISTORY-REMEDIATION-EVIDENCE
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
