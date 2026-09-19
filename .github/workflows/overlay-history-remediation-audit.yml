@@ -135,31 +135,35 @@ jobs:
           step2sha=hashlib.sha256(step2).hexdigest()
           htmlsha=hashlib.sha256((root/'CANDIDATE_A.html').read_bytes()).hexdigest()
           htmlsize=(root/'CANDIDATE_A.html').stat().st_size
-          integrity=f"""ACADEMIC_PAYLOAD_CHANGED=NO
-FIGURE_INVENTORY_CHANGED=NO
-SVG_ARTWORK_CHANGED=NO
-CAPTIONS_CHANGED=NO
-CONTEXTUAL_SCORER_CHANGED=NO
-RELEVANCE_THRESHOLD_CHANGED=NO
-CONTEXTUAL_PLACEMENT_BEHAVIOR_CHANGED=NO
-RELEASE_WORKFLOW_CHANGED=NO
-CONTEXTUAL_ATLAS_SHA256_BASELINE={bh}
-CONTEXTUAL_ATLAS_SHA256_CANDIDATE={ch}
-NORMALIZED_CANDIDATE_EQUALS_AUTHORITATIVE_BASELINE=YES
-"""
+          integrity="\\n".join([
+              "ACADEMIC_PAYLOAD_CHANGED=NO",
+              "FIGURE_INVENTORY_CHANGED=NO",
+              "SVG_ARTWORK_CHANGED=NO",
+              "CAPTIONS_CHANGED=NO",
+              "CONTEXTUAL_SCORER_CHANGED=NO",
+              "RELEVANCE_THRESHOLD_CHANGED=NO",
+              "CONTEXTUAL_PLACEMENT_BEHAVIOR_CHANGED=NO",
+              "RELEASE_WORKFLOW_CHANGED=NO",
+              f"CONTEXTUAL_ATLAS_SHA256_BASELINE={bh}",
+              f"CONTEXTUAL_ATLAS_SHA256_CANDIDATE={ch}",
+              "NORMALIZED_CANDIDATE_EQUALS_AUTHORITATIVE_BASELINE=YES",
+              ""
+          ])
           (root/'OVERLAY_HISTORY_SOURCE_INTEGRITY.txt').write_text(integrity,encoding='utf-8')
-          identity=f"""BRANCH={os.environ['GITHUB_REF_NAME']}
-BRANCH_HEAD={os.environ['GITHUB_SHA']}
-AUTHORITATIVE_MAIN=d840590d8a045c035f95487d8b956eb0e992260a
-IMPLEMENTATION_COMMIT=bf322d4e42e0412ee3e468edb137894b5c139cbf
-CANDIDATE_MANIFEST_COMMIT=b81755f142ae9e7879e84ef24bb1956532a94ac6
-STEP2_GIT_BLOB=8284621280e9c43deddf1a30b47669d0349bf876
-STEP2_SHA256={step2sha}
-CANDIDATE_HTML_SHA256={htmlsha}
-CANDIDATE_HTML_SIZE={htmlsize}
-PRODUCTION_CHANGED_FILES=ci/reconcile_v188.py;ci/v188_accepted_transform_manifest.json
-RELEASE_WORKFLOW_BLOB=8a5a851a17669fc5d7e26c076cce4b2fcd1e04df
-"""
+          identity="\\n".join([
+              f"BRANCH={os.environ['GITHUB_REF_NAME']}",
+              f"BRANCH_HEAD={os.environ['GITHUB_SHA']}",
+              "AUTHORITATIVE_MAIN=d840590d8a045c035f95487d8b956eb0e992260a",
+              "IMPLEMENTATION_COMMIT=bf322d4e42e0412ee3e468edb137894b5c139cbf",
+              "CANDIDATE_MANIFEST_COMMIT=b81755f142ae9e7879e84ef24bb1956532a94ac6",
+              "STEP2_GIT_BLOB=8284621280e9c43deddf1a30b47669d0349bf876",
+              f"STEP2_SHA256={step2sha}",
+              f"CANDIDATE_HTML_SHA256={htmlsha}",
+              f"CANDIDATE_HTML_SIZE={htmlsize}",
+              "PRODUCTION_CHANGED_FILES=ci/reconcile_v188.py;ci/v188_accepted_transform_manifest.json",
+              "RELEASE_WORKFLOW_BLOB=8a5a851a17669fc5d7e26c076cce4b2fcd1e04df",
+              ""
+          ])
           (root/'OVERLAY_HISTORY_CANDIDATE_IDENTITY.txt').write_text(identity,encoding='utf-8')
           print(identity)
           PY
