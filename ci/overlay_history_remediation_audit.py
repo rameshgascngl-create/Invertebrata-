@@ -37,7 +37,7 @@ async def open_chapter(page,lesson):
       const s=history.state&&history.state.view&&history.state.view.chapter;
       const v=window.__invLastStudyView&&window.__invLastStudyView.view&&window.__invLastStudyView.view.chapter;
       return s===lesson||v===lesson;
-    }""",lesson,timeout=5000)
+    }""",arg=lesson,timeout=5000)
     await wait_frames(page,2)
 
 async def inventory(page):
@@ -209,7 +209,7 @@ async def ordinary_navigation_back(page,lesson_a,lesson_b):
     before=await page.evaluate("""()=>({chapter:history.state?.view?.chapter||window.__invLastStudyView?.view?.chapter||null,overlay:!!history.state?.v188VisualOverlay})""")
     await page.evaluate("history.back()")
     try:
-        await page.wait_for_function("lesson=>history.state?.view?.chapter===lesson",lesson_a,timeout=4000)
+        await page.wait_for_function("lesson=>history.state?.view?.chapter===lesson",arg=lesson_a,timeout=4000)
         await wait_frames(page,3)
     except Exception:
         pass
