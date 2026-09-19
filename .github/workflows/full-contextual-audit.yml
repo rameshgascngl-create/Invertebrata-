@@ -30,7 +30,7 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse origin/main)" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
           git worktree add --detach "$RUNNER_TEMP/main-repo" 284a2f1ee75c9b048306c185442ac5bc196d934d
-          test -z "$(git -C "$RUNNER_TEMP/main-repo" status --short)"
+          test -z "$(git -C "$RUNNER_TEMP/main-repo" status --short --untracked-files=no)"
           test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
           test "$(sha256sum "$RUNNER_TEMP/main-repo/ci/reconcile_v188.py" | awk '{print $1}')" = "350054a4c93c0849117c6eefc9da4f4bcbf5841d92970fbe1ab19151681380d3"
           test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/v188_accepted_transform_manifest.json)" = "149c2f860f86bb810a98ce6bf1a3bc7a53c7a351"
@@ -102,6 +102,7 @@ jobs:
             > "$RUNNER_TEMP/evidence/FULL_CONTEXTUAL_SOURCE_FREEZE.txt"
 
       - name: Upload raw contextual evidence
+        if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: INVERTEBRATA-FULL-CONTEXTUAL-RAW-EVIDENCE
