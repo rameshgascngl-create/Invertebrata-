@@ -1,0 +1,110 @@
+name: INVERTEBRATA Full Contextual Audit Raw Evidence
+
+on:
+  push:
+    branches:
+      - audit/full-contextual-20260919
+    paths:
+      - .github/workflows/full-contextual-audit.yml
+      - ci/full_contextual_preflight.py
+      - ci/full_contextual_extract.py
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify main freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse origin/main)" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
+          git worktree add --detach "$RUNNER_TEMP/main-repo" 284a2f1ee75c9b048306c185442ac5bc196d934d
+          test -z "$(git -C "$RUNNER_TEMP/main-repo" status --short)"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$(sha256sum "$RUNNER_TEMP/main-repo/ci/reconcile_v188.py" | awk '{print $1}')" = "350054a4c93c0849117c6eefc9da4f4bcbf5841d92970fbe1ab19151681380d3"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/v188_accepted_transform_manifest.json)" = "149c2f860f86bb810a98ce6bf1a3bc7a53c7a351"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          mkdir -p "$RUNNER_TEMP/evidence"
+          git diff --name-only 284a2f1ee75c9b048306c185442ac5bc196d934d..HEAD > "$RUNNER_TEMP/evidence/AUDIT_BRANCH_CHANGED_FILES.txt"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          allowed={
+            "ci/full_contextual_preflight.py",
+            "ci/full_contextual_extract.py",
+            ".github/workflows/full-contextual-audit.yml",
+          }
+          p=Path(os.environ["RUNNER_TEMP"])/"evidence/AUDIT_BRANCH_CHANGED_FILES.txt"
+          changed={x.strip() for x in p.read_text().splitlines() if x.strip()}
+          assert not changed-allowed, sorted(changed-allowed)
+          PY
+
+      - name: Reconstruct and verify authoritative source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/full_contextual_preflight.py \
+            --repo-root "$RUNNER_TEMP/main-repo" \
+            --out "$RUNNER_TEMP/evidence"
+
+      - name: Install Playwright library
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Extract complete 82-figure contextual evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/full_contextual_extract.py \
+            --html "$RUNNER_TEMP/evidence/AUTHORITATIVE_FULL_CONTEXTUAL_AUDIT.html" \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME"
+
+      - name: Verify source freeze after audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse origin/main)" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
+          test -z "$(git -C "$RUNNER_TEMP/main-repo" status --short)"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/v188_accepted_transform_manifest.json)" = "149c2f860f86bb810a98ce6bf1a3bc7a53c7a351"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          cat > "$RUNNER_TEMP/evidence/FULL_CONTEXTUAL_SOURCE_FREEZE.txt" <<'EOF'
+ACADEMIC SOURCE CHANGED — NO
+FIGURE INVENTORY CHANGED — NO
+CONTEXTUAL PLACEMENT SOURCE CHANGED — NO
+OVERLAY-HISTORY SOURCE CHANGED — NO
+RELEASE WORKFLOW CHANGED — NO
+BUILD PIPELINE RECONCILIATION STARTED — NO
+GRADLE INVOKED — NO
+APK GENERATED — NO
+AAB GENERATED — NO
+DEVICE QA STARTED — NO
+EOF
+
+      - name: Upload raw contextual evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-FULL-CONTEXTUAL-RAW-EVIDENCE
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
