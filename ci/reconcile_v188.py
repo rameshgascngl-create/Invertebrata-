@@ -24,6 +24,161 @@ for p in files:
     s=s.replace(old_zoom_selector,new_zoom_selector,1)
     require(old_zoom_selector not in s and s.count(new_zoom_selector)==1,'theory enlargement selector routing patch failed')
 
+    # Phase-B2 overlay history/scroll-return remediation.
+    # The authoritative app has one central popstate router. The old explicit
+    # close path hid the overlay before history.back(), so by the time popstate
+    # arrived the router no longer recognized an overlay unwind and ordinary
+    # lesson-history restoration could rerender an earlier snapshot. Patch the
+    # shared overlay history path only: retain the overlay until popstate,
+    # consume the transient history transition first, then restore the exact
+    # pre-overlay scroll/focus context. Contextual placement/scoring below is
+    # intentionally untouched.
+    old_history_state="""    let historyReady = false;
+    let restoringHistory = false;
+    let overlayHistoryPushed = false;
+    const historyMarker = 'invertebrate-virtual-lab-v5';"""
+    new_history_state="""    let historyReady = false;
+    let restoringHistory = false;
+    let activeVisualReturnState = null;
+    let visualHistoryEntryActive = false;
+    let visualHistoryUnwindPending = false;
+    const historyMarker = 'invertebrate-virtual-lab-v5';"""
+    require(s.count(old_history_state)==1,'unexpected overlay history state before Phase-B2 remediation')
+    s=s.replace(old_history_state,new_history_state,1)
+
+    old_open_visual="""    function openTheoryVisualNode(source,titleText){
+      const overlay=root.querySelector('#invSyllabusVisualOverlay');const viewport=root.querySelector('#invSyllabusVisualViewport');const title=root.querySelector('#invSyllabusVisualTitle');if(!source||!overlay||!viewport)return;
+      const clone=source.cloneNode(true);clone.removeAttribute('style');clone.classList.add('theory-zoom-media');if(source.closest&&source.closest('.v183-audited-plate'))clone.classList.add('v183-audited-svg');
+      if(mobileLiteMode&&clone.querySelectorAll){clone.querySelectorAll('.syllabus-hitbox-layer').forEach(function(n){n.remove();});}
+      viewport.replaceChildren(clone);if(title)title.textContent=titleText||localText('Figure','வரைபடம்');overlay.hidden=false;overlay.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden';syllabusVisualState.scale=1;syllabusVisualState.x=0;syllabusVisualState.y=0;requestAnimationFrame(function(){fitSyllabusVisualMedia();applySyllabusVisualTransform();});
+      try{window.history.pushState({marker:historyMarker,overlayOpen:true},'');overlayHistoryPushed=true;}catch(error){overlayHistoryPushed=false;}
+    }"""
+    new_open_visual="""    function visualReturnTrigger(source){
+      if(!source||!source.closest)return null;
+      const active=document.activeElement;
+      if(active&&active!==document.body&&active!==document.documentElement&&!active.closest('#invSyllabusVisualOverlay'))return active;
+      return source.closest('.sys-fig,.figure-zoom-button,.inline-syllabus-visual,#invTheoryVisual');
+    }
+    function visualReturnFigureId(source){
+      const fig=source&&source.closest?source.closest('figure[data-v188-plate]'):null;
+      return fig?fig.getAttribute('data-v188-plate'):null;
+    }
+    function restoreVisualReturnState(returnState){
+      if(!returnState)return;
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          try{window.scrollTo(returnState.scrollX,returnState.scrollY);}catch(error){}
+          let target=returnState.triggerElement;
+          if((!target||!document.contains(target))&&returnState.figureId){
+            target=Array.from(root.querySelectorAll('figure[data-v188-plate]')).find(function(node){
+              return node.getAttribute('data-v188-plate')===returnState.figureId;
+            })||null;
+          }
+          if(target&&target.focus){
+            try{target.focus({preventScroll:true});}catch(error){try{target.focus();window.scrollTo(returnState.scrollX,returnState.scrollY);}catch(innerError){}}
+          }
+        });
+      });
+    }
+    function finalizeSyllabusVisualClose(){
+      const returnState=activeVisualReturnState;
+      activeVisualReturnState=null;
+      visualHistoryEntryActive=false;
+      visualHistoryUnwindPending=false;
+      const overlay=root.querySelector('#invSyllabusVisualOverlay');
+      const viewport=root.querySelector('#invSyllabusVisualViewport');
+      if(overlay){overlay.hidden=true;overlay.setAttribute('aria-hidden','true');}
+      if(viewport)viewport.replaceChildren();
+      document.documentElement.style.overflow='';
+      document.body.style.overflow='';
+      syllabusVisualState.pointers.clear();
+      restoreVisualReturnState(returnState);
+    }
+    function openTheoryVisualNode(source,titleText){
+      const overlay=root.querySelector('#invSyllabusVisualOverlay');const viewport=root.querySelector('#invSyllabusVisualViewport');const title=root.querySelector('#invSyllabusVisualTitle');if(!source||!overlay||!viewport)return;
+      const figureId=visualReturnFigureId(source);
+      activeVisualReturnState={figureId:figureId,scrollX:window.scrollX,scrollY:window.scrollY,triggerElement:visualReturnTrigger(source),chapterId:state.chapter};
+      visualHistoryEntryActive=false;
+      visualHistoryUnwindPending=false;
+      const clone=source.cloneNode(true);clone.removeAttribute('style');clone.classList.add('theory-zoom-media');if(source.closest&&source.closest('.v183-audited-plate'))clone.classList.add('v183-audited-svg');
+      if(mobileLiteMode&&clone.querySelectorAll){clone.querySelectorAll('.syllabus-hitbox-layer').forEach(function(n){n.remove();});}
+      viewport.replaceChildren(clone);if(title)title.textContent=titleText||localText('Figure','வரைபடம்');overlay.hidden=false;overlay.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden';syllabusVisualState.scale=1;syllabusVisualState.x=0;syllabusVisualState.y=0;requestAnimationFrame(function(){fitSyllabusVisualMedia();applySyllabusVisualTransform();});
+      try{
+        const base=(window.history.state&&typeof window.history.state==='object')?window.history.state:{};
+        window.history.pushState(Object.assign({},base,{marker:historyMarker,v188VisualOverlay:true,figureId:figureId}),'');
+        visualHistoryEntryActive=true;
+      }catch(error){visualHistoryEntryActive=false;}
+    }"""
+    require(s.count(old_open_visual)==1,'unexpected openTheoryVisualNode before Phase-B2 remediation')
+    s=s.replace(old_open_visual,new_open_visual,1)
+
+    old_close_visual="""    function closeSyllabusVisual(fromPopstate){
+      const overlay=root.querySelector('#invSyllabusVisualOverlay');
+      const viewport=root.querySelector('#invSyllabusVisualViewport');
+      if(overlay){overlay.hidden=true;overlay.setAttribute('aria-hidden','true');}
+      if(viewport)viewport.replaceChildren();
+      document.documentElement.style.overflow='';
+      document.body.style.overflow='';
+      syllabusVisualState.pointers.clear();
+      if(overlayHistoryPushed&&!fromPopstate){
+        overlayHistoryPushed=false;
+        try { window.history.back(); } catch (error) { /* no-op: nothing to unwind */ }
+      } else {
+        overlayHistoryPushed=false;
+      }
+    }"""
+    new_close_visual="""    function closeSyllabusVisual(fromPopstate){
+      const overlay=root.querySelector('#invSyllabusVisualOverlay');
+      if(!overlay||overlay.hidden)return;
+      if(!fromPopstate&&visualHistoryEntryActive){
+        visualHistoryUnwindPending=true;
+        try{window.history.back();return;}catch(error){visualHistoryUnwindPending=false;}
+      }
+      finalizeSyllabusVisualClose();
+    }"""
+    require(s.count(old_close_visual)==1,'unexpected closeSyllabusVisual before Phase-B2 remediation')
+    s=s.replace(old_close_visual,new_close_visual,1)
+
+    old_popstate="""    window.addEventListener('popstate',function(event){
+      const openOverlay=root.querySelector('#invSyllabusVisualOverlay');
+      if(openOverlay&&!openOverlay.hidden){
+        closeSyllabusVisual(true);
+        return;
+      }
+      if (!event.state||event.state.marker!==historyMarker) return;
+      restoringHistory=true;
+      restoreNavigationSnapshot(event.state);
+      restoringHistory=false;
+      if (event.state.sentinel&&historyReady) {
+        window.setTimeout(function(){
+          try { window.history.pushState(navigationSnapshot(false),''); } catch (error) { historyReady=false; }
+        },0);
+      }
+    });"""
+    new_popstate="""    window.addEventListener('popstate',function(event){
+      const openOverlay=root.querySelector('#invSyllabusVisualOverlay');
+      if(visualHistoryEntryActive&&(visualHistoryUnwindPending||(openOverlay&&!openOverlay.hidden))){
+        visualHistoryUnwindPending=false;
+        finalizeSyllabusVisualClose();
+        return;
+      }
+      if (!event.state||event.state.marker!==historyMarker) return;
+      restoringHistory=true;
+      restoreNavigationSnapshot(event.state);
+      restoringHistory=false;
+      if (event.state.sentinel&&historyReady) {
+        window.setTimeout(function(){
+          try { window.history.pushState(navigationSnapshot(false),''); } catch (error) { historyReady=false; }
+        },0);
+      }
+    });"""
+    require(s.count(old_popstate)==1,'unexpected central popstate router before Phase-B2 remediation')
+    s=s.replace(old_popstate,new_popstate,1)
+    require('overlayHistoryPushed' not in s,'legacy overlay history flag survived Phase-B2 remediation')
+    require(s.count('v188VisualOverlay:true')==1,'overlay history marker not materialized exactly once')
+    require(s.count('visualHistoryUnwindPending')>=5,'overlay unwind state not wired through shared history path')
+    require(s.count('finalizeSyllabusVisualClose();')>=2,'overlay close finalizer not shared by close and popstate')
+
     marker='</style>'
     require(marker in s,'style terminator missing')
     css=r'''
