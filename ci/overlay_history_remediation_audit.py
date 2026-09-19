@@ -240,14 +240,16 @@ async def targeted(browser,html,out):
                 rows.append(await activation_record(page,plate,lesson,method,"explicit",i,"targeted-repeat"))
         for i,close in enumerate(("browser_back","explicit","browser_back","explicit","android_back"),1):
             rows.append(await activation_record(page,plate,lesson,"click",close,i,"targeted-back-alternation"))
-    nav=await ordinary_navigation_back(page,p2l[TARGETS[1]],p2l[TARGETS[3]])
+    await context.close()
+    nav_context,nav_page,nav_errors=await prepare_page(browser,html)
+    nav=await ordinary_navigation_back(nav_page,p2l[TARGETS[1]],p2l[TARGETS[3]])
+    await nav_context.close()
     passed=all(r["result"]=="PASS" for r in rows) and nav["pass"]
-    data={"pass":passed,"rows":rows,"ordinary_navigation_back":nav,"runtime_errors":errors}
+    data={"pass":passed,"rows":rows,"ordinary_navigation_back":nav,"runtime_errors":errors+nav_errors}
     (out/"OVERLAY_HISTORY_TARGETED_AUDIT.json").write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
     fields=["phase","figure_id","chapter","activation_method","close_method","iteration","pre_scroll_x","pre_scroll_y","post_scroll_x","post_scroll_y","delta_x","delta_y","pre_history_length","overlay_history_length","post_close_history_length","overlay_count","overlay_identity","overlay_marker_while_open","overlay_marker_after_close","chapter_before","chapter_after","chapter_preserved","runtime_plate_count","result"]
     with (out/"OVERLAY_HISTORY_TARGETED_AUDIT.csv").open("w",encoding="utf-8",newline="") as f:
         w=csv.DictWriter(f,fieldnames=fields,extrasaction="ignore");w.writeheader();w.writerows(rows)
-    await context.close()
     return data
 
 async def full_run(browser,html,label,out):
@@ -288,7 +290,9 @@ async def full_run(browser,html,label,out):
         revisit[lesson]={}
         for plate in bylesson[lesson]:
             revisit[lesson][plate]=await page.locator(f'figure[data-v188-plate="{plate}"]').count()
-    nav=await ordinary_navigation_back(page,lesson_order[0],lesson_order[1])
+    nav_context,nav_page,nav_errors=await prepare_page(browser,html)
+    nav=await ordinary_navigation_back(nav_page,lesson_order[0],lesson_order[1])
+    await nav_context.close()
     summary={
       "run":label,
       "inventory_occurrences":len(ids),"unique_plate_ids":len(counts),
@@ -306,7 +310,7 @@ async def full_run(browser,html,label,out):
       "below_threshold_contextual_placements":sum(m["placement_mode"]=="contextual" and m["candidate_score"]<3 for m in matrix),
       "ordinary_lesson_back":nav,
       "failed_figures":[m["figure_id"] for m in matrix if m["result"]!="PASS"],
-      "runtime_errors":errors,
+      "runtime_errors":errors+nav_errors,
     }
     summary["pass"]=all([
       summary["inventory_occurrences"]==EXPECTED_INVENTORY,summary["unique_plate_ids"]==EXPECTED_INVENTORY,
