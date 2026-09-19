@@ -256,27 +256,56 @@ async def ordinary_nav_observation(page,first,second):
     return {"first":first,"second":second,"before":before,"after":after}
 
 async def ordinary_regression(browser,baseline_html,candidate_html):
-    pairs=[
-      ("u1-paramecium","u2-sycon"),
-      ("u3-obelia","u4-fasciola"),
-      ("u6-earthworm","u9-pila"),
+    # Discover the real chapter-button IDs from the rendered application rather
+    # than imposing guessed lesson IDs. The production source is not modified.
+    bc0,bp0,be0=await prepare_page(browser,baseline_html)
+    cc0,cp0,ce0=await prepare_page(browser,candidate_html)
+    baseline_buttons=await bp0.locator("button[data-open-chapter]").evaluate_all("(els)=>els.map(e=>e.dataset.openChapter)")
+    candidate_buttons=await cp0.locator("button[data-open-chapter]").evaluate_all("(els)=>els.map(e=>e.dataset.openChapter)")
+    await bc0.close();await cc0.close()
+    if baseline_buttons!=candidate_buttons or len(candidate_buttons)<2:
+        return {
+          "pass":False,
+          "reason":"chapter-button inventory differs between pre-remediation baseline and promoted authoritative source",
+          "baseline_buttons":baseline_buttons,
+          "authoritative_buttons":candidate_buttons,
+          "baseline_errors":be0,
+          "authoritative_errors":ce0,
+          "cases":[]
+        }
+
+    n=len(candidate_buttons)
+    raw_pairs=[
+      (candidate_buttons[0],candidate_buttons[1]),
+      (candidate_buttons[max(0,n//2-1)],candidate_buttons[min(n-1,n//2)]),
+      (candidate_buttons[-2],candidate_buttons[-1]),
     ]
+    pairs=[]
+    for pair in raw_pairs:
+        if pair[0]!=pair[1] and pair not in pairs:
+            pairs.append(pair)
+
     rows=[]
     for first,second in pairs:
         bc,bp,be=await prepare_page(browser,baseline_html)
         cc,cp,ce=await prepare_page(browser,candidate_html)
         b=await ordinary_nav_observation(bp,first,second)
-        c=await ordinary_nav_observation(cp,first,second)
+        auth=await ordinary_nav_observation(cp,first,second)
         await bc.close();await cc.close()
         same=(
-          b["before"]["chapter"]==c["before"]["chapter"] and
-          b["after"]["chapter"]==c["after"]["chapter"] and
-          b["before"]["overlay"]==c["before"]["overlay"]==False and
-          b["after"]["overlay"]==c["after"]["overlay"]==False and
+          b["before"]["chapter"]==auth["before"]["chapter"] and
+          b["after"]["chapter"]==auth["after"]["chapter"] and
+          b["before"]["overlay"]==auth["before"]["overlay"]==False and
+          b["after"]["overlay"]==auth["after"]["overlay"]==False and
           not be and not ce
         )
-        rows.append({"pair":[first,second],"baseline":b,"authoritative":c,"baseline_errors":be,"authoritative_errors":ce,"pass":same})
-    return {"pass":all(r["pass"] for r in rows),"cases":rows}
+        rows.append({"pair":[first,second],"baseline":b,"authoritative":auth,"baseline_errors":be,"authoritative_errors":ce,"pass":same})
+    return {
+      "pass":all(r["pass"] for r in rows),
+      "baseline_buttons":baseline_buttons,
+      "authoritative_buttons":candidate_buttons,
+      "cases":rows
+    }
 
 async def full_run(browser,html,label):
     context,page,errors=await prepare_page(browser,html)
