@@ -85,11 +85,14 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
    Object.keys(families).forEach(function(k){var f=families[k],a=f.some(function(w){return cap.indexOf(w)>=0;}),b=f.some(function(w){return txt.indexOf(w)>=0;});if(a&&b)n+=7;});
    return n;
  }
+ function isDefaultVisibleNode(node){
+   return !!node&&!node.closest('details:not([open])');
+ }
  function contextualizePane(pane){
    var visuals=pane.querySelector('.textbook-visuals');
    if(!visuals||visuals.dataset.v188Done==='1')return;
    var figures=Array.from(visuals.querySelectorAll('figure.sys-fig'));
-   var sections=Array.from(pane.querySelectorAll('.textbook-detail .textbook-subsection'));
+   var sections=Array.from(pane.querySelectorAll('.textbook-detail .textbook-subsection')).filter(isDefaultVisibleNode);
    figures.forEach(function(fig,index){
      fig.classList.add('contextual-theory-figure');
      fig.setAttribute('role','button'); fig.setAttribute('tabindex','0');
@@ -100,9 +103,16 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
      var best=null,bestScore=0;
      sections.forEach(function(sec){var sc=score(cap.toLowerCase(),sec.innerText.toLowerCase());if(sc>bestScore){bestScore=sc;best=sec;}});
      if(best&&bestScore>=3)best.insertAdjacentElement('afterend',fig);
-     else {
+     else if(isDefaultVisibleNode(visuals)){
+       // Neutral fallback A: retain the same figure in its lesson's original
+       // default-visible instructional visual container. Do not force an
+       // academically unrelated subsection association.
+     } else {
+       // Neutral fallback B: only when the original visual container itself is
+       // hidden, move the same figure to a default-visible lesson-level anchor.
        var detail=pane.querySelector('.textbook-detail');
-       if(detail){var subs=detail.querySelectorAll('.textbook-subsection');var anchor=subs[Math.min(index,Math.max(0,subs.length-1))];if(anchor)anchor.insertAdjacentElement('afterend',fig);else detail.appendChild(fig);}
+       var neutralAnchor=isDefaultVisibleNode(detail)?detail:pane;
+       neutralAnchor.appendChild(fig);
      }
    });
    visuals.classList.add('contextualized-figures'); visuals.dataset.v188Done='1';
@@ -117,6 +127,12 @@ html,body,#widget,#inv-type-lab-v4,#inv-type-lab-v4 .theory-mount,#inv-type-lab-
 </script>
 '''
     s=s.replace(body,js+'\n'+body,1)
+    require("function isDefaultVisibleNode(node)" in s,'default-visible placement guard missing')
+    require("closest('details:not([open])')" in s,'closed-details placement guard missing')
+    require(".filter(isDefaultVisibleNode)" in s,'contextual candidate visibility filter missing')
+    require("else if(isDefaultVisibleNode(visuals))" in s,'neutral original-container fallback missing')
+    require("var neutralAnchor=isDefaultVisibleNode(detail)?detail:pane;" in s,'neutral lesson-level fallback missing')
+    require("subs[Math.min(index" not in s,'prohibited index-based contextual fallback survived')
     p.write_text(s,encoding='utf-8',newline='\n')
 
 require(sha(files[0])==sha(files[1]),'payload copies diverged')
