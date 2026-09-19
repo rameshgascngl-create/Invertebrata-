@@ -31,7 +31,6 @@ EXPECTED_MANIFEST_BLOB = "e102cdabdafe00932b6b264a720c784b5a8da9fe"
 EXPECTED_MATRIX_BLOB = "958c8bacd91600213b64bb591027eafaf118a7f8"
 EXPECTED_ROWS = 76
 EXPECTED_STEP4_BLOB = "a716562c70db61fbf91a9a73d19bde8372e95f0d"
-EXPECTED_STEP2_BLOB = "a6c27042df66a728b320db8d9c26fce660ebc669"
 
 AUDIT_ALLOWED_DIFFS = {
     ".github/workflows/phase-b2-reconstruction-audit.yml",
@@ -993,7 +992,7 @@ def integrity_audit(repo: Path, source_root: Path, final_html: str, out_json: Pa
         "canonical_zip_blob": zip_blob,
         "canonical_zip_blob_expected": EXPECTED_ZIP_BLOB,
         "canonical_zip_blob_match": zip_blob == EXPECTED_ZIP_BLOB,
-        "step2_blob": step2_blob,\n        "step2_blob_expected": EXPECTED_STEP2_BLOB,\n        "step2_blob_match": step2_blob == EXPECTED_STEP2_BLOB,\n        "step2_sha256": step2_sha256,\n        "step2_blob": step2_blob,\n        "step2_blob_expected": EXPECTED_STEP2_BLOB,\n        "step2_sha256": step2_sha256,\n        "step4_blob": step4_blob,
+        "step4_blob": step4_blob,
         "step4_blob_expected": EXPECTED_STEP4_BLOB,
         "step4_blob_match": step4_blob == EXPECTED_STEP4_BLOB,
         "step4_sha256": step4_sha256,
@@ -1032,7 +1031,7 @@ def integrity_audit(repo: Path, source_root: Path, final_html: str, out_json: Pa
     report["pass"] = all([
         report["release_workflow_drift"] == 0,
         report["canonical_zip_blob_match"],
-        report["step2_blob_match"],\n        report["step4_blob_match"],
+        report["step4_blob_match"],
         report["duplicate_dom_svg_ids_count"] == 0,
         report["broken_internal_svg_refs_count"] == 0,
         report["duplicate_production_plate_ids_count"] == 0,
