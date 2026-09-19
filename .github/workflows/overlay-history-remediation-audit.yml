@@ -215,6 +215,7 @@ jobs:
           cp "$RUNNER_TEMP/candidate/OVERLAY_HISTORY_CANDIDATE_IDENTITY.txt" "$RUNNER_TEMP/evidence/"
           python ci/overlay_history_remediation_audit.py \
             --html "$RUNNER_TEMP/candidate/CANDIDATE_A.html" \
+            --baseline "$RUNNER_TEMP/candidate/BASELINE_AUTHORITATIVE.html" \
             --out "$RUNNER_TEMP/evidence" \
             --chromium "$CHROME" \
             --identity "$RUNNER_TEMP/evidence/OVERLAY_HISTORY_CANDIDATE_IDENTITY.txt" \
