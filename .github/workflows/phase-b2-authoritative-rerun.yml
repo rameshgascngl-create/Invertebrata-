@@ -1,0 +1,227 @@
+name: INVERTEBRATA Authoritative Phase B2 Rerun
+
+on:
+  push:
+    branches:
+      - audit/phase-b2-authoritative-rerun-20260919
+    paths:
+      - .github/workflows/phase-b2-authoritative-rerun.yml
+      - ci/phase_b2_action_audit.py
+      - ci/phase_b2_render_shard.py
+      - ci/phase_b2_aggregate_audit.py
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Authoritative main and working-tree preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/source"
+          MAIN_HEAD="$(git rev-parse origin/main)"
+          STATUS="$(git status --porcelain)"
+          STEP2_BLOB="$(git hash-object ci/reconcile_v188.py)"
+          RELEASE_BLOB="$(git hash-object .github/workflows/invertebrata-v188-debug.yml)"
+          MANIFEST_BLOB="$(git hash-object ci/v188_accepted_transform_manifest.json)"
+          test "$MAIN_HEAD" = "d840590d8a045c035f95487d8b956eb0e992260a"
+          test -z "$STATUS"
+          test "$STEP2_BLOB" = "35f288d6c30d98816140d08f7e8b20aa09522bf5"
+          test "$RELEASE_BLOB" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          test "$MANIFEST_BLOB" = "92270e415b29662a827efffc6744896e869f13b0"
+          {
+            echo "MAIN_HEAD=$MAIN_HEAD"
+            echo "AUDIT_BRANCH=$GITHUB_REF_NAME"
+            echo "AUDIT_HEAD=$GITHUB_SHA"
+            echo "WORKTREE_CLEAN=YES"
+            echo "STEP2_BLOB=$STEP2_BLOB"
+            echo "MANIFEST_BLOB=$MANIFEST_BLOB"
+            echo "RELEASE_WORKFLOW_BLOB=$RELEASE_BLOB"
+          } > "$RUNNER_TEMP/source/MAIN_PREFLIGHT.txt"
+
+      - name: Validate audit helper syntax
+        run: python -m py_compile ci/phase_b2_action_audit.py ci/phase_b2_render_shard.py ci/phase_b2_aggregate_audit.py
+
+      - name: Phase B2 source preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py preflight --repo "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/source/preflight"
+
+      - name: Fresh source Run A
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py run --repo "$GITHUB_WORKSPACE" --label A --out "$RUNNER_TEMP/source/run-a"
+
+      - name: Fresh source Run B
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py run --repo "$GITHUB_WORKSPACE" --label B --out "$RUNNER_TEMP/source/run-b"
+
+      - name: Determinism comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_action_audit.py compare --a "$RUNNER_TEMP/source/run-a" --b "$RUNNER_TEMP/source/run-b" --out "$RUNNER_TEMP/source/comparison"
+          python - <<'PY'
+          import json, os, pathlib
+          root=pathlib.Path(os.environ["RUNNER_TEMP"])/"source"
+          a=json.loads((root/"run-a/RUN_A_SUMMARY.json").read_text())
+          b=json.loads((root/"run-b/RUN_B_SUMMARY.json").read_text())
+          expected="62bc38edec4c0256d14952c79c106ac91698a035d441937399f756e28c0d1b95"
+          assert a["authoritative_html_sha256"]==expected and b["authoritative_html_sha256"]==expected
+          assert a["authoritative_html_size"]==2387111 and b["authoritative_html_size"]==2387111
+          assert a["source_tree_manifest_sha256"]=="dc97bc03842122b3d41b9a818e1d49c28d0bbe6fb9ef279d949e93b25e8d791f"
+          assert b["source_tree_manifest_sha256"]=="dc97bc03842122b3d41b9a818e1d49c28d0bbe6fb9ef279d949e93b25e8d791f"
+          assert a["matrix_pass"]==76 and b["matrix_pass"]==76
+          PY
+
+      - name: Collect source audit artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/source/artifact"
+          cp "$RUNNER_TEMP/source/MAIN_PREFLIGHT.txt" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/preflight/CANONICAL_ZIP_SHA256_VERIFICATION.json" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-a/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-a/RUN_A_SUMMARY.json" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-b/RUN_B_SUMMARY.json" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-a/RUN_A_MATRIX02_RECONSTRUCTION.csv" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-b/RUN_B_MATRIX02_RECONSTRUCTION.csv" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-a/RUN_A_FULL_SOURCE_INTEGRITY.json" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-b/RUN_B_FULL_SOURCE_INTEGRITY.json" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-a/RUN_A_19_STEP_EXECUTION_LOG.jsonl" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-b/RUN_B_19_STEP_EXECUTION_LOG.jsonl" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-a/RUN_A_SHA256_MANIFEST.txt" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/run-b/RUN_B_SHA256_MANIFEST.txt" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/comparison/DETERMINISM_COMPARISON.json" "$RUNNER_TEMP/source/artifact/"
+          cp "$RUNNER_TEMP/source/comparison/DETERMINISM_COMPARISON.txt" "$RUNNER_TEMP/source/artifact/"
+
+      - name: Upload source audit
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: phase-b2-authoritative-source
+          path: ${{ runner.temp }}/source/artifact/
+          if-no-files-found: error
+          retention-days: 30
+
+  render-audit:
+    needs: source-audit
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Download authoritative source
+        uses: actions/download-artifact@v4
+        with:
+          name: phase-b2-authoritative-source
+          path: ${{ runner.temp }}/source
+
+      - name: Install Playwright library
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve installed Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Run full-scope render shard twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_render_shard.py \
+            --html "$RUNNER_TEMP/source/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html" \
+            --out "$RUNNER_TEMP/render-shard-${{ matrix.shard }}" \
+            --shard-index "${{ matrix.shard }}" \
+            --shard-count 8 \
+            --chromium "$CHROME"
+
+      - name: Upload render shard evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: phase-b2-render-shard-${{ matrix.shard }}
+          path: ${{ runner.temp }}/render-shard-${{ matrix.shard }}/
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate:
+    needs: [source-audit,render-audit]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Download source evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: phase-b2-authoritative-source
+          path: ${{ runner.temp }}/source
+
+      - name: Download all render shard evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: phase-b2-render-shard-*
+          path: ${{ runner.temp }}/shards
+          merge-multiple: false
+
+      - name: Aggregate authoritative Phase B2 evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/phase_b2_aggregate_audit.py \
+            --source "$RUNNER_TEMP/source" \
+            --shards "$RUNNER_TEMP/shards" \
+            --main-preflight "$RUNNER_TEMP/source/MAIN_PREFLIGHT.txt" \
+            --out "$RUNNER_TEMP/final"
+
+      - name: Collect complete evidence package
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/package"
+          cp -R "$RUNNER_TEMP/final/." "$RUNNER_TEMP/package/" 2>/dev/null || true
+          mkdir -p "$RUNNER_TEMP/package/source-raw" "$RUNNER_TEMP/package/render-raw"
+          cp -R "$RUNNER_TEMP/source/." "$RUNNER_TEMP/package/source-raw/" 2>/dev/null || true
+          cp -R "$RUNNER_TEMP/shards/." "$RUNNER_TEMP/package/render-raw/" 2>/dev/null || true
+
+      - name: Upload complete authoritative Phase B2 evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-PHASE-B2-AUTHORITATIVE-RERUN
+          path: ${{ runner.temp }}/package/
+          if-no-files-found: error
+          retention-days: 30
