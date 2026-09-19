@@ -96,6 +96,7 @@ for p in files:
     }
     function openTheoryVisualNode(source,titleText){
       const overlay=root.querySelector('#invSyllabusVisualOverlay');const viewport=root.querySelector('#invSyllabusVisualViewport');const title=root.querySelector('#invSyllabusVisualTitle');if(!source||!overlay||!viewport)return;
+      if(!overlay.hidden)return;
       const figureId=visualReturnFigureId(source);
       activeVisualReturnState={figureId:figureId,scrollX:window.scrollX,scrollY:window.scrollY,triggerElement:visualReturnTrigger(source),chapterId:state.chapter};
       visualHistoryEntryActive=false;
@@ -176,6 +177,7 @@ for p in files:
     s=s.replace(old_popstate,new_popstate,1)
     require('overlayHistoryPushed' not in s,'legacy overlay history flag survived Phase-B2 remediation')
     require(s.count('v188VisualOverlay:true')==1,'overlay history marker not materialized exactly once')
+    require(s.count('if(!overlay.hidden)return;')>=1,'duplicate overlay-open guard missing')
     require(s.count('visualHistoryUnwindPending')>=5,'overlay unwind state not wired through shared history path')
     require(s.count('finalizeSyllabusVisualClose();')>=2,'overlay close finalizer not shared by close and popstate')
 
