@@ -1,0 +1,67 @@
+name: INVERTEBRATA Phase B2 After Routing Correction
+
+on:
+  push:
+    branches:
+      - audit/phase-b2-after-routing-20260919
+    paths:
+      - .github/workflows/phase-b2-after-routing.yml
+      - ci/phase_b2_action_audit.py
+
+permissions:
+  contents: read
+
+jobs:
+  phase-b2-after-routing:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Checkout isolated audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate audit helper syntax
+        run: python -m py_compile ci/phase_b2_action_audit.py
+
+      - name: Preflight
+        run: |
+          mkdir -p "$RUNNER_TEMP/phase-b2/preflight"
+          python ci/phase_b2_action_audit.py preflight --repo "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/phase-b2/preflight"
+
+      - name: Fresh Run A
+        run: python ci/phase_b2_action_audit.py run --repo "$GITHUB_WORKSPACE" --label A --out "$RUNNER_TEMP/phase-b2/run-a"
+
+      - name: Fresh Run B
+        run: python ci/phase_b2_action_audit.py run --repo "$GITHUB_WORKSPACE" --label B --out "$RUNNER_TEMP/phase-b2/run-b"
+
+      - name: Compare
+        run: python ci/phase_b2_action_audit.py compare --a "$RUNNER_TEMP/phase-b2/run-a" --b "$RUNNER_TEMP/phase-b2/run-b" --out "$RUNNER_TEMP/phase-b2/comparison"
+
+      - name: Collect evidence
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/phase-b2/artifacts"
+          for d in preflight run-a run-b comparison; do
+            if [ -d "$RUNNER_TEMP/phase-b2/$d" ]; then find "$RUNNER_TEMP/phase-b2/$d" -maxdepth 1 -type f -exec cp {} "$RUNNER_TEMP/phase-b2/artifacts/" \;; fi
+          done
+          {
+            echo "AUDIT_BRANCH=${GITHUB_REF_NAME}"
+            echo "AUDIT_COMMIT=${GITHUB_SHA}"
+            echo "MAIN_BASELINE=8416ec813a7b8bb783896a4c4024ef22c1b401ad"
+            echo "STEP2_BLOB=$(git hash-object ci/reconcile_v188.py)"
+            echo "STEP4_BLOB=$(git hash-object ci/reconcile_v188_svg_batch2.py)"
+            echo "RELEASE_WORKFLOW_BLOB=$(git hash-object .github/workflows/invertebrata-v188-debug.yml)"
+            echo "GRADLE_INVOKED=NO"
+            echo "APK_GENERATED=NO"
+          } > "$RUNNER_TEMP/phase-b2/artifacts/AUDIT_HARNESS_INTEGRITY.txt"
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-PHASE-B2-AFTER-ROUTING
+          path: ${{ runner.temp }}/phase-b2/artifacts/
+          if-no-files-found: error
+          retention-days: 30
