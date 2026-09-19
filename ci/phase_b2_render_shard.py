@@ -125,8 +125,27 @@ async def close_overlay(page,mode):
     if mode in ("enter","space"): await page.keyboard.press("Escape")
     elif mode=="touch": await page.locator("#invSyllabusVisualClose").tap(timeout=5000,no_wait_after=True)
     else: await page.locator("#invSyllabusVisualClose").click(timeout=5000,no_wait_after=True)
-    await page.wait_for_timeout(80)
-    return await page.evaluate("""before=>({
+
+    # Closing the overlay calls history.back(); Chromium can deliver the matching
+    # popstate/scroll-restoration asynchronously. The first harness sampled after
+    # only 80 ms and sometimes captured an intermediate scroll position even
+    # though the page later returned to the original position. Wait through a
+    # minimum grace period and require three stable samples before recording the
+    # close/return result. This changes audit timing only, never application code.
+    await page.wait_for_timeout(250)
+    samples=[]
+    last=await page.evaluate("scrollY")
+    stable=0
+    for _ in range(12):
+        await page.wait_for_timeout(50)
+        current=await page.evaluate("scrollY")
+        samples.append(current)
+        if current==last: stable+=1
+        else: stable=0
+        last=current
+        if stable>=3: break
+
+    state=await page.evaluate("""before=>({
       hidden:document.querySelector('#invSyllabusVisualOverlay').hidden,
       scroll_before:before,scroll_after:scrollY,scroll_delta:scrollY-before,
       active_tag:document.activeElement?.tagName||null,
@@ -134,6 +153,9 @@ async def close_overlay(page,mode):
       active_plate:document.activeElement?.getAttribute?.('data-v188-plate')||null,
       active_hidden:!!document.activeElement?.closest?.('[hidden]')
     })""",before)
+    state["stabilized_scroll_samples"]=samples
+    state["stabilization_complete"]=stable>=3
+    return state
 
 async def activation(page,plate,mode):
     f=page.locator(f'figure[data-v188-plate="{plate}"]')
@@ -152,6 +174,8 @@ async def activation(page,plate,mode):
       "opened":ov["visible"],"overlay_count":ov["count"],"overlay_identity":ov["identity"],
       "space_scroll_delta":open_scroll-before if mode=="space" else None,
       "close_hidden":cl["hidden"],"close_scroll_delta":cl["scroll_delta"],
+      "close_stabilization_complete":cl["stabilization_complete"],
+      "close_scroll_samples":cl["stabilized_scroll_samples"],
       "focus_return_valid":not cl["active_hidden"],
       "active_after_close":{"tag":cl["active_tag"],"id":cl["active_id"],"plate":cl["active_plate"]}
     }
@@ -228,7 +252,9 @@ async def audit_run(html,output:Path,label:str,shard:int,shards:int,chrome:str):
                     for mode in ("click","touch","enter","space"):
                         checks += [rec[f"{mode}_opened"],rec[f"{mode}_overlay_count"]==1,
                                    rec[f"{mode}_overlay_identity"],rec[f"{mode}_close_hidden"],
-                                   rec[f"{mode}_focus_return_valid"]]
+                                   rec[f"{mode}_focus_return_valid"],
+                                   rec[f"{mode}_close_stabilization_complete"],
+                                   rec[f"{mode}_close_scroll_delta"]==0]
                     checks += [rec["space_space_scroll_delta"]==0]
                     if rec["placement_mode"]=="contextual": checks += [rec["candidate_score"]>=THRESHOLD]
                     rec["result"]="PASS" if all(checks) else "FAIL"
@@ -300,7 +326,8 @@ async def audit_run(html,output:Path,label:str,shard:int,shards:int,chrome:str):
           "runtime_duplicates":sum(r.get("rendered_instance_count")!=1 or r.get("post_revisit_rendered_count")!=1 for r in rows),
           "failed_figures":[r["figure_id"] for r in rows if r["result"]!="PASS"],
           "anchor_checks":anchor_checks,"semantic_fixtures":fixtures,"sycon_cycles":sycon,
-          "runtime_errors":runtime_errors
+          "runtime_errors":runtime_errors,
+          "audit_harness_close_scroll_sampling":"stabilized_after_history_popstate"
         }
         summary["pass"]=(
           len(all_ids)==EXPECTED_INVENTORY and len(set(all_ids))==EXPECTED_INVENTORY and
