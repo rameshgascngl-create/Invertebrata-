@@ -1,0 +1,256 @@
+name: INVERTEBRATA Authoritative Overlay-History Promotion Phase-B2 Audit
+
+on:
+  push:
+    branches:
+      - audit/overlay-history-authoritative-phase-b2-20260919
+    paths:
+      - .github/workflows/authoritative-overlay-history-phase-b2.yml
+      - ci/authoritative_reconstruction_audit.py
+      - ci/authoritative_phase_b2_audit.py
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  authoritative-reconstruction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout audit harness branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify authoritative main and promotion scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          MAIN_HEAD="$(git rev-parse origin/main)"
+          test "$MAIN_HEAD" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
+
+          git worktree add --detach "$RUNNER_TEMP/main-repo" 284a2f1ee75c9b048306c185442ac5bc196d934d
+          git worktree add --detach "$RUNNER_TEMP/baseline-repo" d840590d8a045c035f95487d8b956eb0e992260a
+
+          test -z "$(git -C "$RUNNER_TEMP/main-repo" status --short)"
+          test -z "$(git -C "$RUNNER_TEMP/baseline-repo" status --short)"
+
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$(sha256sum "$RUNNER_TEMP/main-repo/ci/reconcile_v188.py" | awk '{print $1}')" = "350054a4c93c0849117c6eefc9da4f4bcbf5841d92970fbe1ab19151681380d3"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/v188_accepted_transform_manifest.json)" = "149c2f860f86bb810a98ce6bf1a3bc7a53c7a351"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])
+          main=root/"main-repo"
+          m=json.loads((main/"ci/v188_accepted_transform_manifest.json").read_text(encoding="utf-8"))
+          assert len(m["steps"])==19
+          assert [x["step"] for x in m["steps"]]==list(range(1,20))
+          s2=[x for x in m["steps"] if x["step"]==2][0]
+          assert s2["git_blob"]=="1161c46184c3d69530c1cad74db774734b4947af"
+          assert s2["governing_commit"]=="731afba26e919dc6ae2b3db7108207d647096235"
+          excluded=set(m.get("superseded_commits",[]))
+          assert sum(1 for x in m["steps"] if x["governing_commit"] in excluded)==0
+
+          def g(*args):
+              return subprocess.check_output(["git","-C",str(main),*args],text=True).strip()
+
+          identity={
+            "starting_main":"d840590d8a045c035f95487d8b956eb0e992260a",
+            "promotion_branch":"promote/overlay-history-return-20260919",
+            "promotion_branch_premerge_head":"8213726eb83ce360c21d8d76361a6a81914f8b92",
+            "implementation_promotion_commit":"35dc7d9df68ac611fc5be77a582e0073e546566f",
+            "manifest_promotion_commit":"23b2614bae6c0e368d12859e51333382df4f73d5",
+            "provenance_commit":"8213726eb83ce360c21d8d76361a6a81914f8b92",
+            "pull_request":2,
+            "new_authoritative_main":"284a2f1ee75c9b048306c185442ac5bc196d934d",
+            "audited_implementation_commit":"731afba26e919dc6ae2b3db7108207d647096235",
+            "audited_manifest_commit":"cb084e53d745c8974270aff5c52ee558d7c8c968",
+            "reconcile_v188_git_blob":g("hash-object","ci/reconcile_v188.py"),
+            "reconcile_v188_sha256":"350054a4c93c0849117c6eefc9da4f4bcbf5841d92970fbe1ab19151681380d3",
+            "manifest_git_blob":g("hash-object","ci/v188_accepted_transform_manifest.json"),
+            "provenance_git_blob":g("hash-object","provenance/V188_OVERLAY_HISTORY_PROMOTION_20260919.md"),
+            "release_workflow_git_blob":g("hash-object",".github/workflows/invertebrata-v188-debug.yml"),
+            "accepted_transforms":len(m["steps"]),
+            "superseded_executable_transforms":0,
+            "remediation_branch_was_merged_wholesale":False,
+            "working_tree_clean":not bool(g("status","--short")),
+          }
+          (root/"evidence/OVERLAY_HISTORY_PROMOTION_IDENTITY.json").write_text(json.dumps(identity,indent=2),encoding="utf-8")
+          PY
+
+          git -C "$RUNNER_TEMP/main-repo" diff d840590d8a045c035f95487d8b956eb0e992260a..284a2f1ee75c9b048306c185442ac5bc196d934d -- \
+            ci/reconcile_v188.py \
+            ci/v188_accepted_transform_manifest.json \
+            provenance/V188_OVERLAY_HISTORY_PROMOTION_20260919.md \
+            > "$RUNNER_TEMP/evidence/OVERLAY_HISTORY_PROMOTION_DIFF.txt"
+
+          cp "$RUNNER_TEMP/main-repo/provenance/V188_OVERLAY_HISTORY_PROMOTION_20260919.md" \
+             "$RUNNER_TEMP/evidence/OVERLAY_HISTORY_PROVENANCE.md"
+
+          cat > "$RUNNER_TEMP/evidence/OVERLAY_HISTORY_WORKFLOW_FREEZE.txt" <<'EOF'
+          RELEASE_WORKFLOW_CHANGED=NO
+          RELEASE_WORKFLOW_PATH=.github/workflows/invertebrata-v188-debug.yml
+          RELEASE_WORKFLOW_GIT_BLOB=8a5a851a17669fc5d7e26c076cce4b2fcd1e04df
+          GRADLE_INVOKED=NO
+          APK_GENERATED=NO
+          AAB_GENERATED=NO
+          DEVICE_QA_STARTED=NO
+          BUILD_PIPELINE_RECONCILIATION_STARTED=NO
+          EOF
+
+          cat > "$RUNNER_TEMP/evidence/OVERLAY_HISTORY_PROMOTION_REPORT.md" <<'EOF'
+          # INVERTEBRATA — Controlled Overlay-History Remediation Promotion
+
+          - Starting authoritative main: d840590d8a045c035f95487d8b956eb0e992260a
+          - Fresh promotion branch: promote/overlay-history-return-20260919
+          - Implementation promotion commit: 35dc7d9df68ac611fc5be77a582e0073e546566f
+          - Manifest promotion commit: 23b2614bae6c0e368d12859e51333382df4f73d5
+          - Provenance commit: 8213726eb83ce360c21d8d76361a6a81914f8b92
+          - Merge PR: #2
+          - New authoritative main: 284a2f1ee75c9b048306c185442ac5bc196d934d
+          - Promoted Step-2 Git blob: 1161c46184c3d69530c1cad74db774734b4947af
+          - Promoted Step-2 SHA-256: 350054a4c93c0849117c6eefc9da4f4bcbf5841d92970fbe1ab19151681380d3
+          - Promoted manifest Git blob: 149c2f860f86bb810a98ce6bf1a3bc7a53c7a351
+          - Release workflow Git blob: 8a5a851a17669fc5d7e26c076cce4b2fcd1e04df
+          - The remediation branch was not merged wholesale.
+          - Audit helper files and temporary remediation workflow infrastructure were not promoted to main.
+          EOF
+
+      - name: Reconstruct pre-remediation authoritative baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/baseline-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/baseline-repo" \
+            --work-dir "$RUNNER_TEMP/baseline-work" \
+            --output "$RUNNER_TEMP/evidence/PRE_REMEDIATION_AUTHORITATIVE.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/PRE_REMEDIATION_AUTHORITATIVE.html" | awk '{print $1}')" = "62bc38edec4c0256d14952c79c106ac91698a035d441937399f756e28c0d1b95"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/PRE_REMEDIATION_AUTHORITATIVE.html")" = "2387111"
+
+      - name: Reconstruct promoted authoritative source twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/authoritative_reconstruction_audit.py \
+            --repo-root "$RUNNER_TEMP/main-repo" \
+            --out "$RUNNER_TEMP/evidence"
+
+      - name: Prove source-integrity and contextual freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"evidence"
+          base=(root/"PRE_REMEDIATION_AUTHORITATIVE.html").read_text(encoding="utf-8")
+          cand=(root/"AUTHORITATIVE_RECONSTRUCTED_A.html").read_text(encoding="utf-8")
+
+          def segment(text,start,end):
+              a=text.index(start);b=text.index(end,a)+len(end);return text[a:b]
+          def segment_before(text,start,end_before):
+              a=text.index(start);b=text.index(end_before,a);return text[a:b]
+          def replace_once(text,old,new):
+              assert text.count(old)==1,(old[:100],text.count(old))
+              return text.replace(old,new,1)
+
+          base_state=segment(base,"    let historyReady = false;","    const historyMarker = 'invertebrate-virtual-lab-v5';")
+          cand_state=segment(cand,"    let historyReady = false;","    const historyMarker = 'invertebrate-virtual-lab-v5';")
+          base_open=segment_before(base,"    function openTheoryVisualNode(source,titleText){","\n\n    function openSyllabusVisual()")
+          cand_open=segment_before(cand,"    function visualReturnTrigger(source){","\n\n    function openSyllabusVisual()")
+          base_close=segment_before(base,"    function closeSyllabusVisual(fromPopstate){","\n\n    function textbookDetailedMarkup")
+          cand_close=segment_before(cand,"    function closeSyllabusVisual(fromPopstate){","\n\n    function textbookDetailedMarkup")
+          base_pop=segment_before(base,"    window.addEventListener('popstate',function(event){","\n\n    /* --- Context-aware offline audio explanation")
+          cand_pop=segment_before(cand,"    window.addEventListener('popstate',function(event){","\n\n    /* --- Context-aware offline audio explanation")
+
+          normalized=cand
+          for old,new in [(cand_state,base_state),(cand_open,base_open),(cand_close,base_close),(cand_pop,base_pop)]:
+              normalized=replace_once(normalized,old,new)
+          assert normalized==base, "authoritative candidate differs from pre-remediation source outside audited history-routing blocks"
+
+          marker='<script id="v188-contextual-atlas">'
+          def contextual(t):
+              a=t.index(marker);b=t.index('</script>',a)+len('</script>');return t[a:b]
+          bh=hashlib.sha256(contextual(base).encode()).hexdigest()
+          ch=hashlib.sha256(contextual(cand).encode()).hexdigest()
+          assert bh==ch=="005c2e130b35454fd56b7b5b3ce6295a51adc33dea7b258c312f6f312b4597d2"
+
+          integrity="\n".join([
+            "ACADEMIC PAYLOAD CHANGED — NO",
+            "FIGURE INVENTORY CHANGED — NO",
+            "SVG ARTWORK CHANGED — NO",
+            "CAPTIONS CHANGED — NO",
+            "CONTEXTUAL SCORER CHANGED — NO",
+            "THRESHOLD CHANGED — NO",
+            "CONTEXTUAL PLACEMENT BEHAVIOR CHANGED — NO",
+            "RELEASE WORKFLOW CHANGED — NO",
+            f"CONTEXTUAL_ATLAS_SHA256_BASELINE={bh}",
+            f"CONTEXTUAL_ATLAS_SHA256_AUTHORITATIVE={ch}",
+            "NORMALIZED_AUTHORITATIVE_EQUALS_PRE_REMEDIATION_BASELINE=YES",
+            ""
+          ])
+          (root/"PHASE_B2_SOURCE_INTEGRITY.txt").write_text(integrity,encoding="utf-8")
+          PY
+
+      - name: Upload reconstruction and promotion evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: authoritative-overlay-history-reconstruction-inputs
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
+
+  authoritative-phase-b2:
+    needs: authoritative-reconstruction
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout audit harness branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Download authoritative reconstruction evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: authoritative-overlay-history-reconstruction-inputs
+          path: ${{ runner.temp }}/evidence
+
+      - name: Install Playwright library
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve installed Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Run complete authoritative Phase-B2 twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/authoritative_phase_b2_audit.py \
+            --html "$RUNNER_TEMP/evidence/AUTHORITATIVE_RECONSTRUCTED_A.html" \
+            --baseline "$RUNNER_TEMP/evidence/PRE_REMEDIATION_AUTHORITATIVE.html" \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME" \
+            --integrity "$RUNNER_TEMP/evidence/PHASE_B2_SOURCE_INTEGRITY.txt"
+
+      - name: Upload final controlled promotion evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-OVERLAY-HISTORY-PROMOTION-AUTHORITATIVE-PHASE-B2
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
