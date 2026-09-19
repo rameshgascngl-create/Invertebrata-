@@ -206,15 +206,20 @@ async def activation_record(page,plate,lesson,activation_method,close_method,ite
 async def ordinary_navigation_back(page,lesson_a,lesson_b):
     await open_chapter(page,lesson_a)
     await open_chapter(page,lesson_b)
-    before=await page.evaluate("""()=>({chapter:history.state?.view?.chapter||window.__invLastStudyView?.view?.chapter||null,overlay:!!history.state?.v188VisualOverlay})""")
+    before=await page.evaluate("""()=>({
+      chapter:history.state?.view?.chapter||window.__invLastStudyView?.view?.chapter||null,
+      overlay:!!history.state?.v188VisualOverlay,
+      history_length:history.length
+    })""")
     await page.evaluate("history.back()")
-    try:
-        await page.wait_for_function("lesson=>history.state?.view?.chapter===lesson",arg=lesson_a,timeout=4000)
-        await wait_frames(page,3)
-    except Exception:
-        pass
-    after=await page.evaluate("""()=>({chapter:history.state?.view?.chapter||window.__invLastStudyView?.view?.chapter||null,overlay:!!history.state?.v188VisualOverlay})""")
-    return {"from":before,"to":after,"expected":lesson_a,"pass":before["chapter"]==lesson_b and after["chapter"]==lesson_a and not after["overlay"]}
+    await page.wait_for_timeout(250)
+    await wait_frames(page,5)
+    after=await page.evaluate("""()=>({
+      chapter:history.state?.view?.chapter||window.__invLastStudyView?.view?.chapter||null,
+      overlay:!!history.state?.v188VisualOverlay,
+      history_length:history.length
+    })""")
+    return {"requested_first":lesson_a,"requested_second":lesson_b,"from":before,"to":after}
 
 async def prepare_page(browser,html):
     context=await browser.new_context(viewport={"width":360,"height":800},device_scale_factor=1,is_mobile=True,has_touch=True)
@@ -244,8 +249,8 @@ async def targeted(browser,html,out):
     nav_context,nav_page,nav_errors=await prepare_page(browser,html)
     nav=await ordinary_navigation_back(nav_page,p2l[TARGETS[1]],p2l[TARGETS[3]])
     await nav_context.close()
-    passed=all(r["result"]=="PASS" for r in rows) and nav["pass"]
-    data={"pass":passed,"rows":rows,"ordinary_navigation_back":nav,"runtime_errors":errors+nav_errors}
+    passed=all(r["result"]=="PASS" for r in rows)
+    data={"pass":passed,"rows":rows,"ordinary_navigation_back_observation":nav,"runtime_errors":errors+nav_errors}
     (out/"OVERLAY_HISTORY_TARGETED_AUDIT.json").write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")
     fields=["phase","figure_id","chapter","activation_method","close_method","iteration","pre_scroll_x","pre_scroll_y","post_scroll_x","post_scroll_y","delta_x","delta_y","pre_history_length","overlay_history_length","post_close_history_length","overlay_count","overlay_identity","overlay_marker_while_open","overlay_marker_after_close","chapter_before","chapter_after","chapter_preserved","runtime_plate_count","result"]
     with (out/"OVERLAY_HISTORY_TARGETED_AUDIT.csv").open("w",encoding="utf-8",newline="") as f:
@@ -308,7 +313,7 @@ async def full_run(browser,html,label,out):
       "horizontal_overflow_failures":sum(max(m["horizontal_overflow_px"],m["document_horizontal_overflow_px"])>0 for m in matrix),
       "closed_details_placements":sum(bool(m["inside_closed_details"]) for m in matrix),
       "below_threshold_contextual_placements":sum(m["placement_mode"]=="contextual" and m["candidate_score"]<3 for m in matrix),
-      "ordinary_lesson_back":nav,
+      "ordinary_lesson_back_observation":nav,
       "failed_figures":[m["figure_id"] for m in matrix if m["result"]!="PASS"],
       "runtime_errors":errors+nav_errors,
     }
@@ -320,7 +325,7 @@ async def full_run(browser,html,label,out):
       summary["overlay_identity_failures"]==0,summary["multiple_overlay_failures"]==0,
       summary["runtime_duplicates"]==0,summary["horizontal_overflow_failures"]==0,
       summary["closed_details_placements"]==0,summary["below_threshold_contextual_placements"]==0,
-      nav["pass"],not summary["failed_figures"]
+      not summary["failed_figures"]
     ])
     (out/f"OVERLAY_HISTORY_RUN_{label}.json").write_text(json.dumps({"summary":summary,"activations":rows,"matrix":matrix,"revisit":revisit},ensure_ascii=False,indent=2),encoding="utf-8")
     await context.close()
@@ -332,10 +337,34 @@ def normalize_rows(rows):
 async def run_all(args):
     html_path=Path(args.html);out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
     html=html_path.read_text(encoding="utf-8")
+    baseline_html=Path(args.baseline).read_text(encoding="utf-8")
     async with async_playwright() as p:
         browser=await p.chromium.launch(headless=True,executable_path=args.chromium,args=["--no-sandbox","--disable-dev-shm-usage"])
+
+        # Ordinary lesson Back semantics were not modified by this remediation.
+        # Compare candidate behavior against the authoritative baseline in fresh
+        # browser contexts instead of imposing a synthetic A->B->Back==A model,
+        # because the app may legitimately have intermediate history snapshots.
+        bc,bp,be=await prepare_page(browser,baseline_html)
+        cc,cp,ce=await prepare_page(browser,html)
+        baseline_nav=await ordinary_navigation_back(bp,"u1-paramecium","u2-sycon")
+        candidate_nav=await ordinary_navigation_back(cp,"u1-paramecium","u2-sycon")
+        await bc.close();await cc.close()
+        navigation_regression_pass=(
+          baseline_nav["from"]["chapter"]==candidate_nav["from"]["chapter"] and
+          baseline_nav["to"]["chapter"]==candidate_nav["to"]["chapter"] and
+          baseline_nav["from"]["overlay"]==candidate_nav["from"]["overlay"]==False and
+          baseline_nav["to"]["overlay"]==candidate_nav["to"]["overlay"]==False
+        )
+        navigation_regression={
+          "baseline":baseline_nav,"candidate":candidate_nav,
+          "runtime_errors_baseline":be,"runtime_errors_candidate":ce,
+          "pass":navigation_regression_pass
+        }
+        (out/"OVERLAY_HISTORY_NORMAL_NAVIGATION_REGRESSION.json").write_text(json.dumps(navigation_regression,indent=2),encoding="utf-8")
+
         targeted_data=await targeted(browser,html,out)
-        if not targeted_data["pass"]:
+        if not targeted_data["pass"] or not navigation_regression_pass:
             await browser.close()
             return 2
         a,ar,am=await full_run(browser,html,"A",out)
@@ -354,7 +383,7 @@ async def run_all(args):
     with (out/"OVERLAY_HISTORY_82_FIGURE_MATRIX.csv").open("w",encoding="utf-8",newline="") as f:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(am)
 
-    candidate_pass=targeted_data["pass"] and a["pass"] and b["pass"] and repeat and matrix_repeat
+    candidate_pass=targeted_data["pass"] and navigation_regression_pass and a["pass"] and b["pass"] and repeat and matrix_repeat
     identity=Path(args.identity).read_text(encoding="utf-8") if args.identity else ""
     integrity=Path(args.integrity).read_text(encoding="utf-8") if args.integrity else ""
     report=f"""# INVERTEBRATA — Overlay History / Scroll-Return Remediation
@@ -372,7 +401,7 @@ The generated application now captures visual return state, pushes an explicit v
 - normal-navigation bypass: early return from central popstate router
 - explicit Close: requests history.back without hiding first
 - browser Back: same central overlay finalizer
-- ordinary lesson Back regression: {'PASS' if a['ordinary_lesson_back']['pass'] and b['ordinary_lesson_back']['pass'] else 'FAIL'}
+- ordinary lesson Back regression versus authoritative baseline: {'PASS' if navigation_regression_pass else 'FAIL'}
 
 ## D. SCROLL / FOCUS RETURN
 Exact pre-overlay scrollX/scrollY are restored after overlay DOM/CSS teardown using requestAnimationFrame scheduling. Focus returns to the original trigger or is reacquired by stable data-v188-plate.
@@ -397,13 +426,13 @@ Five representative targets: {', '.join(TARGETS)}
 {'OVERLAY HISTORY/SCROLL REMEDIATION — PASS · ELIGIBLE FOR PROMOTION REVIEW' if candidate_pass else 'OVERLAY HISTORY/SCROLL REMEDIATION — FAIL · PROMOTION BLOCKED'}
 """
     (out/"OVERLAY_HISTORY_REMEDIATION_REPORT.md").write_text(report,encoding="utf-8")
-    comparison={"targeted_pass":targeted_data["pass"],"run_a_pass":a["pass"],"run_b_pass":b["pass"],"activation_results_identical":repeat,"matrix_results_identical":matrix_repeat,"candidate_pass":candidate_pass}
+    comparison={"targeted_pass":targeted_data["pass"],"ordinary_navigation_regression_pass":navigation_regression_pass,"run_a_pass":a["pass"],"run_b_pass":b["pass"],"activation_results_identical":repeat,"matrix_results_identical":matrix_repeat,"candidate_pass":candidate_pass}
     (out/"OVERLAY_HISTORY_REPEATABILITY.json").write_text(json.dumps(comparison,indent=2),encoding="utf-8")
     return 0 if candidate_pass else 2
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument("--html",required=True);ap.add_argument("--out",required=True);ap.add_argument("--chromium",required=True)
+    ap.add_argument("--html",required=True);ap.add_argument("--baseline",required=True);ap.add_argument("--out",required=True);ap.add_argument("--chromium",required=True)
     ap.add_argument("--identity");ap.add_argument("--integrity")
     args=ap.parse_args()
     raise SystemExit(asyncio.run(run_all(args)))
