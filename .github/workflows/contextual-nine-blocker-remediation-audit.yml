@@ -1,0 +1,228 @@
+name: INVERTEBRATA Nine-Blocker Contextual Remediation Audit
+
+on:
+  push:
+    branches:
+      - remediation/contextual-nine-blockers-20260920
+    paths:
+      - .github/workflows/contextual-nine-blocker-remediation-audit.yml
+      - ci/v188_contextual_blocker_remap_20260920.json
+      - ci/v188_contextual_blocker_remediator_20260920.py
+      - ci/v188_contextual_blocker_remediation_audit.py
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout isolated remediation branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Authoritative preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          MAIN_HEAD="$(git rev-parse origin/main)"
+          test "$MAIN_HEAD" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
+          git worktree add --detach "$RUNNER_TEMP/main-repo" "$MAIN_HEAD"
+          test -z "$(git -C "$RUNNER_TEMP/main-repo" status --short)"
+
+          STEP2_BLOB="$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/reconcile_v188.py)"
+          MANIFEST_BLOB="$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/v188_accepted_transform_manifest.json)"
+          WORKFLOW_BLOB="$(git -C "$RUNNER_TEMP/main-repo" hash-object .github/workflows/invertebrata-v188-debug.yml)"
+          STEP2_SHA="$(sha256sum "$RUNNER_TEMP/main-repo/ci/reconcile_v188.py" | awk '{print $1}')"
+
+          test "$STEP2_BLOB" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$STEP2_SHA" = "350054a4c93c0849117c6eefc9da4f4bcbf5841d92970fbe1ab19151681380d3"
+          test "$MANIFEST_BLOB" = "149c2f860f86bb810a98ce6bf1a3bc7a53c7a351"
+          test "$WORKFLOW_BLOB" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          test "$(sha256sum "$RUNNER_TEMP/main-repo/INVERTEBRATA_v1.8.7_RECONCILED_ANDROID_SOURCE.zip" | awk '{print $1}')" = "281e5f80a14f80df6ad87427a8e29859050f35430ec3158ad52b84ae607df1a3"
+
+          {
+            echo "MAIN_HEAD=$MAIN_HEAD"
+            echo "AUTHORITATIVE_WORKTREE_CLEAN=YES"
+            echo "STEP2_BLOB=$STEP2_BLOB"
+            echo "STEP2_SHA256=$STEP2_SHA"
+            echo "MANIFEST_BLOB=$MANIFEST_BLOB"
+            echo "RELEASE_WORKFLOW_BLOB=$WORKFLOW_BLOB"
+            echo "SOURCE_EDITS_TO_MAIN=NO"
+          } | tee "$RUNNER_TEMP/evidence/CONTEXTUAL_NINE_BLOCKER_PREFLIGHT.txt"
+
+      - name: Verify remediation branch scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-only 284a2f1ee75c9b048306c185442ac5bc196d934d..HEAD | sort > "$RUNNER_TEMP/evidence/BRANCH_CHANGED_FILES.txt"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          allowed={
+            ".github/workflows/contextual-nine-blocker-remediation-audit.yml",
+            "ci/v188_contextual_blocker_remap_20260920.json",
+            "ci/v188_contextual_blocker_remediator_20260920.py",
+            "ci/v188_contextual_blocker_remediation_audit.py",
+          }
+          p=Path(os.environ["RUNNER_TEMP"])/"evidence/BRANCH_CHANGED_FILES.txt"
+          changed={x.strip() for x in p.read_text().splitlines() if x.strip()}
+          assert changed<=allowed,(changed-allowed)
+          forbidden={
+            "ci/reconcile_v188.py",
+            "ci/v188_accepted_transform_manifest.json",
+            ".github/workflows/invertebrata-v188-debug.yml",
+          }
+          assert not (changed&forbidden),changed&forbidden
+          PY
+          git diff 284a2f1ee75c9b048306c185442ac5bc196d934d..HEAD -- \
+            ci/v188_contextual_blocker_remap_20260920.json \
+            ci/v188_contextual_blocker_remediator_20260920.py \
+            > "$RUNNER_TEMP/evidence/CONTEXTUAL_NINE_BLOCKER_DIFF.txt"
+
+      - name: Fresh authoritative reconstruction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/main-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/main-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruction" \
+            --output "$RUNNER_TEMP/evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html"
+
+          test "$(sha256sum "$RUNNER_TEMP/evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html" | awk '{print $1}')" = "9d4a0e5b6bd23e8fd6cd7e148100bb6017374d2cd9dea45098007eff0c899f65"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html")" = "2389584"
+
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])
+          source_root=next((root/"reconstruction/extracted").iterdir())
+          rows=[]
+          for p in sorted(x for x in source_root.rglob("*") if x.is_file()):
+              rel=p.relative_to(source_root).as_posix()
+              h=hashlib.sha256(p.read_bytes()).hexdigest()
+              rows.append((rel,p.stat().st_size,h))
+          text="".join(f"{h}  {size}  {rel}\n" for rel,size,h in rows)
+          mh=hashlib.sha256(text.encode()).hexdigest()
+          assert mh=="1009eb7f5179ac0968781d7310a4eae12fc83a792cade67c5e684926c87df6d8",mh
+          html=(root/"evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html").read_text(encoding="utf-8")
+          marker='<script id="v188-contextual-atlas">'
+          a=html.index(marker);b=html.index("</script>",a)+len("</script>")
+          ah=hashlib.sha256(html[a:b].encode()).hexdigest()
+          assert ah=="005c2e130b35454fd56b7b5b3ce6295a51adc33dea7b258c312f6f312b4597d2",ah
+          with (root/"evidence/CONTEXTUAL_NINE_BLOCKER_PREFLIGHT.txt").open("a",encoding="utf-8") as f:
+              f.write("HTML_SHA256=9d4a0e5b6bd23e8fd6cd7e148100bb6017374d2cd9dea45098007eff0c899f65\n")
+              f.write("HTML_SIZE=2389584\n")
+              f.write("SOURCE_TREE_MANIFEST="+mh+"\n")
+              f.write("CONTEXTUAL_ATLAS_SHA256="+ah+"\n")
+          PY
+
+      - name: Generate isolated nine-blocker candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/v188_contextual_blocker_remediator_20260920.py \
+            --input "$RUNNER_TEMP/evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html" \
+            --mapping ci/v188_contextual_blocker_remap_20260920.json \
+            --output "$RUNNER_TEMP/evidence/CONTEXTUAL_NINE_BLOCKER_CANDIDATE.html" \
+            --report "$RUNNER_TEMP/evidence/CONTEXTUAL_NINE_BLOCKER_CANDIDATE_IDENTITY.json"
+
+      - name: Source freeze proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"evidence"
+          baseline=(root/"AUTHORITATIVE_RECONSTRUCTED_SOURCE.html").read_text(encoding="utf-8")
+          candidate=(root/"CONTEXTUAL_NINE_BLOCKER_CANDIDATE.html").read_text(encoding="utf-8")
+          marker='<script id="v188-contextual-blocker-remap-20260920">'
+          a=candidate.index(marker);b=candidate.index("</script>",a)+len("</script>")
+          normalized=candidate[:a]+candidate[b+1:]
+          assert normalized==baseline
+
+          atlas='<script id="v188-contextual-atlas">'
+          ba=baseline.index(atlas);bb=baseline.index("</script>",ba)+len("</script>")
+          ca=candidate.index(atlas);cb=candidate.index("</script>",ca)+len("</script>")
+          bh=hashlib.sha256(baseline[ba:bb].encode()).hexdigest()
+          ch=hashlib.sha256(candidate[ca:cb].encode()).hexdigest()
+          assert bh==ch=="005c2e130b35454fd56b7b5b3ce6295a51adc33dea7b258c312f6f312b4597d2"
+
+          lines=[
+            "ACADEMIC_SOURCE_CHANGED=NO",
+            "FIGURE_MARKUP_CHANGED=NO",
+            "CAPTIONS_CHANGED=NO",
+            "LABELS_CHANGED=NO",
+            "SVG_ARTWORK_CHANGED=NO",
+            "CONTEXTUAL_SCORER_CHANGED=NO",
+            "RELEVANCE_THRESHOLD_CHANGED=NO",
+            "GENERIC_CONTEXTUAL_ATLAS_CHANGED=NO",
+            "OVERLAY_HISTORY_SOURCE_CHANGED=NO",
+            "ACCEPTED_TRANSFORM_MANIFEST_CHANGED=NO",
+            "RELEASE_WORKFLOW_CHANGED=NO",
+            "AUTHORIZED_MUTATION_CLASS=NINE_FIGURE_CONTEXTUAL_DESTINATION_MAPPING_ONLY",
+            "CONTEXTUAL_ATLAS_SHA256="+ch,
+            "NORMALIZED_CANDIDATE_EQUALS_AUTHORITATIVE_SOURCE=YES",
+            ""
+          ]
+          (root/"CONTEXTUAL_NINE_BLOCKER_SOURCE_INTEGRITY.txt").write_text("\n".join(lines),encoding="utf-8")
+          PY
+
+      - name: Install Playwright library
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve installed Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Audit candidate in real application
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/v188_contextual_blocker_remediation_audit.py \
+            --authoritative "$RUNNER_TEMP/evidence/AUTHORITATIVE_RECONSTRUCTED_SOURCE.html" \
+            --candidate "$RUNNER_TEMP/evidence/CONTEXTUAL_NINE_BLOCKER_CANDIDATE.html" \
+            --mapping ci/v188_contextual_blocker_remap_20260920.json \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME"
+
+      - name: End-state freeze check
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse origin/main)" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
+          test -z "$(git -C "$RUNNER_TEMP/main-repo" status --short)"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object ci/v188_accepted_transform_manifest.json)" = "149c2f860f86bb810a98ce6bf1a3bc7a53c7a351"
+          test "$(git -C "$RUNNER_TEMP/main-repo" hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          cat > "$RUNNER_TEMP/evidence/CONTEXTUAL_NINE_BLOCKER_RELEASE_BOUNDARY.txt" <<'EOF'
+          MAIN_MODIFIED=NO
+          STEP2_MODIFIED=NO
+          ACCEPTED_TRANSFORM_MANIFEST_MODIFIED=NO
+          OVERLAY_HISTORY_SOURCE_MODIFIED=NO
+          RELEASE_WORKFLOW_MODIFIED=NO
+          GRADLE_INVOKED=NO
+          APK_GENERATED=NO
+          AAB_GENERATED=NO
+          DEVICE_QA_STARTED=NO
+          BUILD_PIPELINE_RECONCILIATION_STARTED=NO
+          EOF
+
+      - name: Upload remediation candidate evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-NINE-BLOCKER-CONTEXTUAL-REMEDIATION
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
