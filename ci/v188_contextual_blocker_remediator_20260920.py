@@ -131,7 +131,9 @@ function applyPane(pane){{
     var anchor=section;
     rules.forEach(function(rule){{
       var fig=figures.get(rule.figure_id);
-      anchor.insertAdjacentElement('afterend',fig);
+      if(fig.previousElementSibling!==anchor){{
+        anchor.insertAdjacentElement('afterend',fig);
+      }}
       fig.dataset.v188ContextualRemap='heading:'+targetHeading;
       anchor=fig;
     }});
