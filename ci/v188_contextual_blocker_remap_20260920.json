@@ -1,0 +1,125 @@
+{
+  "schema": "v188-contextual-blocker-remap-1",
+  "authoritative_main": "284a2f1ee75c9b048306c185442ac5bc196d934d",
+  "authoritative_html_sha256": "9d4a0e5b6bd23e8fd6cd7e148100bb6017374d2cd9dea45098007eff0c899f65",
+  "contextual_atlas_sha256": "005c2e130b35454fd56b7b5b3ce6295a51adc33dea7b258c312f6f312b4597d2",
+  "permitted_figure_ids": [
+    "peripatus",
+    "penaeus-nervous",
+    "penaeus-reproductive",
+    "PENAEUS-08-N1",
+    "PENAEUS-09-R1",
+    "PILA-NER-R1",
+    "asterias-oral",
+    "asterias-aboral",
+    "cephalopod"
+  ],
+  "remaps": [
+    {
+      "figure_id": "peripatus",
+      "current_lesson": "u4-modes-life",
+      "target_lesson": "u4-peripatus",
+      "current_destination": "Tubicolous",
+      "target_mode": "NEUTRAL_ORIGINAL_CONTAINER",
+      "target_heading": null,
+      "reference_anchor": "p.35",
+      "reason": "Peripatus external morphology and affinity characters must not be presented as a tubicolous annelid life mode. The dedicated Peripatus lesson has no single default-visible subsection that honestly carries the whole affinity/external-morphology plate, so lesson-level neutral placement is safer."
+    },
+    {
+      "figure_id": "penaeus-nervous",
+      "current_lesson": "u4-penaeus",
+      "target_lesson": "u4-penaeus",
+      "current_destination": "Appendage roster worth memorising",
+      "target_mode": "NEUTRAL_ORIGINAL_CONTAINER",
+      "target_heading": null,
+      "reference_anchor": "p.34",
+      "reason": "The plate depicts supra-oesophageal ganglion, circum-oesophageal connectives and ventral nerve cord. The exact nervous-system theory is not default-visible; appendage enumeration is academically wrong."
+    },
+    {
+      "figure_id": "penaeus-reproductive",
+      "current_lesson": "u4-penaeus",
+      "target_lesson": "u4-penaeus",
+      "current_destination": "Appendage roster worth memorising",
+      "target_mode": "NEUTRAL_ORIGINAL_CONTAINER",
+      "target_heading": null,
+      "reference_anchor": "p.34",
+      "reason": "Internal gonad, gonoduct and genital-aperture organisation is not appendage theory. No honest default-visible internal reproductive subsection exists."
+    },
+    {
+      "figure_id": "PENAEUS-08-N1",
+      "current_lesson": "u4-penaeus",
+      "target_lesson": "u4-penaeus",
+      "current_destination": "Names",
+      "target_mode": "NEUTRAL_ORIGINAL_CONTAINER",
+      "target_heading": null,
+      "reference_anchor": "p.34",
+      "reason": "Antennal/green-gland excretory anatomy must not be attached to nomenclature. The exact excretory subsection is disclosure-hidden, while the visible Internal subsection does not teach antennal glands."
+    },
+    {
+      "figure_id": "PENAEUS-09-R1",
+      "current_lesson": "u4-penaeus",
+      "target_lesson": "u4-penaeus",
+      "current_destination": "Appendage roster worth memorising",
+      "target_mode": "NEUTRAL_ORIGINAL_CONTAINER",
+      "target_heading": null,
+      "reference_anchor": "p.34",
+      "reason": "Male/female internal reproductive organisation is not an appendage roster. The visible petasma mention is insufficient to contextualize internal genital anatomy."
+    },
+    {
+      "figure_id": "PILA-NER-R1",
+      "current_lesson": "u5-pila",
+      "target_lesson": "u5-pila",
+      "current_destination": "Reproduction",
+      "target_mode": "NEUTRAL_ORIGINAL_CONTAINER",
+      "target_heading": null,
+      "reference_anchor": "p.41",
+      "reason": "Ganglia, visceral loop, statocyst, osphradium and eye/tentacle do not illustrate reproduction. The exact nervous-system subsection is not default-visible; the visible senses subsection is too narrow for the full plate."
+    },
+    {
+      "figure_id": "asterias-oral",
+      "current_lesson": "u5-asterias",
+      "target_lesson": "u5-asterias",
+      "current_destination": "Reproduction and repair",
+      "target_mode": "CONTEXTUAL_VISIBLE_MATCH",
+      "target_heading": "External",
+      "reference_anchor": "p.44 only",
+      "reason": "The oral surface plate depicts mouth, ambulacral grooves and tube feet. The default-visible External subsection explicitly treats the oral face and is the honest external-morphology parent."
+    },
+    {
+      "figure_id": "asterias-aboral",
+      "current_lesson": "u5-asterias",
+      "target_lesson": "u5-asterias",
+      "current_destination": "Reproduction and repair",
+      "target_mode": "CONTEXTUAL_VISIBLE_MATCH",
+      "target_heading": "External",
+      "reference_anchor": "p.44 only",
+      "reason": "The aboral surface plate depicts madreporite, anus, spines and papulae. The default-visible External subsection explicitly treats the aboral face and is the correct broad external-morphology context."
+    },
+    {
+      "figure_id": "cephalopod",
+      "current_lesson": "u5-cephalopods",
+      "target_lesson": "u5-cephalopods",
+      "current_destination": "Circulatory efficiency",
+      "target_mode": "NEUTRAL_ORIGINAL_CONTAINER",
+      "target_heading": null,
+      "reference_anchor": "p.43",
+      "reason": "The representative plate depicts mantle, head/eye, funnel and arms/tentacles. No default-visible subsection teaches the whole external body plan; Circulatory efficiency is misleading and Locomotion would falsely narrow the plate to the funnel."
+    }
+  ],
+  "frozen_review_ids": [
+    "paramecium",
+    "PARAMECIUM-CV-CILIA-N1",
+    "sycon-spicules",
+    "obelia-zooids",
+    "master-sycon-canal"
+  ],
+  "frozen_existing_neutral_ids": [
+    "physalia",
+    "earthworm-external-r2",
+    "earthworm-digestive-r2",
+    "earthworm-reproductive-r2",
+    "nereis-circulatory",
+    "pest-ipm",
+    "gastropod-torsion"
+  ]
+}
