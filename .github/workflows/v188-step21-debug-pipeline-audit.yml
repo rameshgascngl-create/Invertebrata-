@@ -1,0 +1,136 @@
+name: INVERTEBRATA Step-21 Debug Pipeline Reconciliation Audit
+
+on:
+  push:
+    branches:
+      - integration/accepted-step21-version-identity-20260921
+    paths:
+      - ci/v188_product_version_identity_step21.py
+      - ci/v188_accepted_transform_manifest.json
+      - ci/reconstruct_v188_accepted_source.py
+      - .github/workflows/invertebrata-v188-debug.yml
+      - .github/workflows/v188-step21-debug-pipeline-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  source-only-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      EXPECTED_HTML_SHA256: 392924cc3e854bbd2c91b3ec974959de23efa147a1ee9463494c85396a6b573f
+      EXPECTED_HTML_SIZE: "2393951"
+      EXPECTED_TREE_MANIFEST_SHA256: d9011b499f1c484fd844ea1d37a26dad612c372cea17c5dcb628bfc8dbfcb767
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Static wiring audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          python - <<'PY' | tee "$RUNNER_TEMP/evidence/STATIC.txt"
+          from pathlib import Path
+          s=Path(".github/workflows/invertebrata-v188-debug.yml").read_text()
+          trigger=s.split("permissions:",1)[0]
+          assert "workflow_dispatch:" in trigger
+          assert "push:" not in trigger
+          assert "pull_request:" not in trigger
+          assert "EXPECTED_TRANSFORMS: \"21\"" in s
+          assert "392924cc3e854bbd2c91b3ec974959de23efa147a1ee9463494c85396a6b573f" in s
+          assert "d9011b499f1c484fd844ea1d37a26dad612c372cea17c5dcb628bfc8dbfcb767" in s
+          assert s.count("reconstruct_v188_accepted_source.py reconstruct") == 2
+          assert "assembleDebug" in s
+          assert "assembleRelease" not in s
+          print("MANUAL_ONLY=PASS")
+          print("EXPECTED_TRANSFORMS=21")
+          print("STEP21_HTML_PIN=PASS")
+          print("STEP21_TREE_PIN=PASS")
+          print("DOUBLE_RECONSTRUCTION=PASS")
+          print("DEBUG_ONLY_BUILD_WIRING=PASS")
+          print("GRADLE_INVOKED=NO")
+          print("APK_GENERATED=NO")
+          PY
+
+      - name: Accepted-source preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py preflight --repo-root "$GITHUB_WORKSPACE" | tee "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "PHASE_B1_PREFLIGHT=PASS" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "ACCEPTED_TRANSFORMS_AVAILABLE=21" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "SUPERSEDED_EXECUTABLE_TRANSFORMS=0" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+
+      - name: Reconstruction Run A
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-A" \
+            --output "$RUNNER_TEMP/evidence/RUN_A.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=21" "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_A.log"
+
+      - name: Reconstruction Run B
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-B" \
+            --output "$RUNNER_TEMP/evidence/RUN_B.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=21" "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_B.log"
+
+      - name: Authoritative identity audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp "$RUNNER_TEMP/evidence/RUN_A.html" "$RUNNER_TEMP/evidence/RUN_B.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/RUN_A.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/RUN_A.html")" = "$EXPECTED_HTML_SIZE"
+          python - <<'PY' | tee "$RUNNER_TEMP/evidence/IDENTITY.txt"
+          import hashlib, os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"])
+          def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          def manifest(work):
+              root=next((Path(work)/"extracted").iterdir())
+              rows=[]
+              for p in sorted(x for x in root.rglob("*") if x.is_file()):
+                  rel=p.relative_to(root).as_posix()
+                  rows.append((rel,p.stat().st_size,sha(p)))
+              text="".join(f"{h}  {size}  {rel}\n" for rel,size,h in rows)
+              return hashlib.sha256(text.encode()).hexdigest(),text,len(rows)
+          ma,ta,na=manifest(rt/"reconstruct-A")
+          mb,tb,nb=manifest(rt/"reconstruct-B")
+          assert ma==mb==os.environ["EXPECTED_TREE_MANIFEST_SHA256"], (ma,mb)
+          assert ta==tb
+          assert na==nb==42
+          print("AUTHORITATIVE_HTML_SHA256="+os.environ["EXPECTED_HTML_SHA256"])
+          print("AUTHORITATIVE_HTML_SIZE="+os.environ["EXPECTED_HTML_SIZE"])
+          print("SOURCE_TREE_MANIFEST_SHA256="+ma)
+          print("SOURCE_TREE_FILE_COUNT="+str(na))
+          print("ACCEPTED_TRANSFORMS_EXECUTED=21")
+          print("SUPERSEDED_TRANSFORMS_EXECUTED=0")
+          print("BYTE_IDENTICAL_RECONSTRUCTION=PASS")
+          print("DEBUG_PIPELINE_RECONCILIATION=PASS")
+          print("GRADLE_INVOKED=NO")
+          print("APK_GENERATED=NO")
+          PY
+
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-v1.8.8-STEP21-DEBUG-PIPELINE-AUDIT
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
