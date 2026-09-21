@@ -1,0 +1,256 @@
+name: INVERTEBRATA Step-22 Taxonomy Zoom Acceptance
+
+on:
+  push:
+    branches:
+      - remediation/v188-taxonomy-zoom-step22-20260921
+    paths:
+      - ci/v188_taxonomy_zoom_step22.py
+      - ci/v188_accepted_transform_manifest.json
+      - ci/reconstruct_v188_accepted_source.py
+      - ci/step22_full_regression_audit.py
+      - ci/step22_taxonomy_runtime_audit.py
+      - .github/workflows/v188-step22-taxonomy-zoom-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  authoritative-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      STEP21_INPUT_SHA256: 392924cc3e854bbd2c91b3ec974959de23efa147a1ee9463494c85396a6b573f
+      STEP21_INPUT_SIZE: "2393951"
+      STEP22_OUTPUT_SHA256: e59475a6a45d8b52568fded3cc2ff916c0d717454dd3fe894193399d2c8fd7e6
+      STEP22_OUTPUT_SIZE: "2400517"
+
+    steps:
+      - name: Checkout Step-22 branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Establish frozen comparison worktrees
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          test "$(git rev-parse origin/main)" = "8ee31c87a171c3ff53ad7ddbdeb4f6a3d5a7c1b8"
+          git worktree add --detach "$RUNNER_TEMP/step19-repo" 284a2f1ee75c9b048306c185442ac5bc196d934d
+          git worktree add --detach "$RUNNER_TEMP/step21-repo" 8ee31c87a171c3ff53ad7ddbdeb4f6a3d5a7c1b8
+          {
+            echo "MAIN_HEAD=$(git rev-parse origin/main)"
+            echo "STEP19_HEAD=$(git -C "$RUNNER_TEMP/step19-repo" rev-parse HEAD)"
+            echo "STEP21_HEAD=$(git -C "$RUNNER_TEMP/step21-repo" rev-parse HEAD)"
+            echo "STEP22_HEAD=$(git rev-parse HEAD)"
+          } | tee "$RUNNER_TEMP/evidence/PREFLIGHT_HEADS.txt"
+
+      - name: Verify frozen identities and 22-step manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$(git hash-object ci/v188_contextual_academic_remap_step20.py)" = "3247e5c2dac58f9c779c6282ca4203722daa206c"
+          test "$(git hash-object ci/v188_product_version_identity_step21.py)" = "39f14aee0f47e9576db1892a1851ca0358d8ebd6"
+          test "$(git hash-object ci/v188_taxonomy_zoom_step22.py)" = "2f87e075ce96a7b4cf645ea683c1abd7c47383af"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"])
+          old=json.loads((rt/"step21-repo/ci/v188_accepted_transform_manifest.json").read_text())
+          new=json.loads(Path("ci/v188_accepted_transform_manifest.json").read_text())
+          assert len(old["steps"])==21
+          assert len(new["steps"])==22
+          assert old["steps"]==new["steps"][:21], "Steps 1-21 changed"
+          s=new["steps"][21]
+          assert s["step"]==22
+          assert s["path"]=="ci/v188_taxonomy_zoom_step22.py"
+          assert s["governing_commit"]=="7c061b392325506484d1f7d58773c3c5b950b082"
+          assert s["git_blob"]=="2f87e075ce96a7b4cf645ea683c1abd7c47383af"
+          assert s["accepted"] is True and s["superseded"] is False
+          print("STEPS_1_21_UNCHANGED=PASS")
+          print("ACCEPTED_TRANSFORM_COUNT=22")
+          PY
+          python ci/reconstruct_v188_accepted_source.py preflight --repo-root "$GITHUB_WORKSPACE" | tee "$RUNNER_TEMP/evidence/STEP22_PREFLIGHT.txt"
+          grep -Fx "PHASE_B1_PREFLIGHT=PASS" "$RUNNER_TEMP/evidence/STEP22_PREFLIGHT.txt"
+          grep -Fx "ACCEPTED_TRANSFORMS_AVAILABLE=22" "$RUNNER_TEMP/evidence/STEP22_PREFLIGHT.txt"
+          grep -Fx "SUPERSEDED_EXECUTABLE_TRANSFORMS=0" "$RUNNER_TEMP/evidence/STEP22_PREFLIGHT.txt"
+
+      - name: Reconstruct Step-19 comparison input
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/step19-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/step19-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruct-step19" \
+            --output "$RUNNER_TEMP/evidence/STEP19.html" \
+            | tee "$RUNNER_TEMP/evidence/STEP19.log"
+
+      - name: Reconstruct accepted Step-21 baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/step21-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/step21-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruct-step21" \
+            --output "$RUNNER_TEMP/evidence/STEP21.html" \
+            | tee "$RUNNER_TEMP/evidence/STEP21.log"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/STEP21.html" | awk '{print $1}')" = "$STEP21_INPUT_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/STEP21.html")" = "$STEP21_INPUT_SIZE"
+
+      - name: Direct Step-22 fail-closed transform
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRCROOT="$(find "$RUNNER_TEMP/reconstruct-step21/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          test -n "$SRCROOT"
+          cp -a "$SRCROOT" "$RUNNER_TEMP/direct-step22"
+          python ci/v188_taxonomy_zoom_step22.py "$RUNNER_TEMP/direct-step22" | tee "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_INPUT_SHA256=$STEP21_INPUT_SHA256" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_AUTHORISED_MUTATION_SITES=4" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_TAXONOMY_LAYOUTS=EN,TA" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_TAXONOMY_PLATES=2_PER_LANGUAGE" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_SYS_SVG_OVERLAY_FILTER=DISABLED" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_TAXONOMY_MAX_ZOOM=200%" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_OUTPUT_SHA256=$STEP22_OUTPUT_SHA256" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          grep -Fx "STEP22_OUTPUT_SIZE=$STEP22_OUTPUT_SIZE" "$RUNNER_TEMP/evidence/STEP22_DIRECT.log"
+          cp "$RUNNER_TEMP/direct-step22/academic_payload/index.html" "$RUNNER_TEMP/evidence/STEP22_DIRECT.html"
+
+      - name: Clean 22-step reconstruction Run A
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-A" \
+            --output "$RUNNER_TEMP/evidence/STEP22_RUN_A.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=22" "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_A.log"
+
+      - name: Clean 22-step reconstruction Run B
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-B" \
+            --output "$RUNNER_TEMP/evidence/STEP22_RUN_B.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=22" "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_B.log"
+
+      - name: Verify Step-22 deterministic source identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp "$RUNNER_TEMP/evidence/STEP22_DIRECT.html" "$RUNNER_TEMP/evidence/STEP22_RUN_A.html"
+          cmp "$RUNNER_TEMP/evidence/STEP22_RUN_A.html" "$RUNNER_TEMP/evidence/STEP22_RUN_B.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/STEP22_RUN_A.html" | awk '{print $1}')" = "$STEP22_OUTPUT_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/STEP22_RUN_A.html")" = "$STEP22_OUTPUT_SIZE"
+          python - <<'PY' | tee "$RUNNER_TEMP/evidence/STEP22_SOURCE_IDENTITY.txt"
+          import hashlib, os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"])
+          def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          def manifest(work):
+              roots=[p for p in (Path(work)/"extracted").iterdir() if p.is_dir()]
+              assert len(roots)==1, roots
+              root=roots[0];rows=[]
+              for p in sorted(x for x in root.rglob("*") if x.is_file()):
+                  rel=p.relative_to(root).as_posix()
+                  rows.append((rel,p.stat().st_size,sha(p)))
+              payload="".join(f"{h}  {size}  {rel}\n" for rel,size,h in rows)
+              return hashlib.sha256(payload.encode()).hexdigest(),payload,len(rows)
+          ma,ta,na=manifest(rt/"reconstruct-A")
+          mb,tb,nb=manifest(rt/"reconstruct-B")
+          assert ma==mb
+          assert ta==tb
+          assert na==nb==42,(na,nb)
+          print("STEP22_OUTPUT_SHA256="+sha(rt/"evidence/STEP22_RUN_A.html"))
+          print("STEP22_OUTPUT_SIZE="+str((rt/"evidence/STEP22_RUN_A.html").stat().st_size))
+          print("RUN_A_TREE_MANIFEST_SHA256="+ma)
+          print("RUN_B_TREE_MANIFEST_SHA256="+mb)
+          print("SOURCE_TREE_FILE_COUNT="+str(na))
+          print("BYTE_IDENTICAL_RECONSTRUCTION=PASS")
+          PY
+
+      - name: Install browser audit dependency
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Full Phase-B2 and 82-figure regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/step22_full_regression_audit.py \
+            --step19 "$RUNNER_TEMP/evidence/STEP19.html" \
+            --step21a "$RUNNER_TEMP/evidence/STEP22_RUN_A.html" \
+            --step21b "$RUNNER_TEMP/evidence/STEP22_RUN_B.html" \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME"
+
+      - name: Targeted taxonomy and zoom runtime audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/step22_taxonomy_runtime_audit.py \
+            --html "$RUNNER_TEMP/evidence/STEP22_RUN_A.html" \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME"
+
+      - name: Final Step-22 acceptance gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          ev=Path(os.environ["RUNNER_TEMP"])/"evidence"
+          full=json.loads((ev/"STEP22_FULL_REGRESSION_AUDIT.json").read_text())
+          tax=json.loads((ev/"STEP22_TAXONOMY_RUNTIME_AUDIT.json").read_text())
+          assert full["pass"] is True
+          assert full["inventory"]["step21_occurrences"]==82
+          assert full["inventory"]["step21_unique"]==82
+          assert full["non_target_drift_count"]==0
+          assert full["phase_b2_A"]["pass"] is True
+          assert full["phase_b2_B"]["pass"] is True
+          assert full["full_contextual_audit_pass"] is True
+          assert full["blocker_c_remediation_pass"]==9
+          assert tax["pass"] is True
+          assert tax["language_layout_pass"] is True
+          assert tax["taxonomy_zoom_pass"] is True
+          assert tax["shared_sys_svg"]["pass"] is True
+          assert not tax["runtime_errors"]
+          print("STEP22_ACCEPTANCE=PASS")
+          print("PHASE_B2_REGRESSION=PASS")
+          print("FULL_CONTEXTUAL_AUDIT=PASS")
+          print("BLOCKER_C_REMEDIATION=9/9 PASS")
+          print("FIGURE_INVENTORY=82/82")
+          print("NON_TARGET_PLACEMENT_DRIFT=0")
+          print("TAXONOMY_EN_LAYOUT=PASS")
+          print("TAXONOMY_TA_LAYOUT=PASS")
+          print("TAXONOMY_ZOOM_CAP_200=PASS")
+          print("SHARED_SYS_SVG_ZOOM_HARDENING=PASS")
+          print("DEVICE_QA_BLOCKER_SOURCE_REMEDIATION=PASS")
+          print("BUILD_PIPELINE_RECONCILIATION=BLOCKED_PENDING_STEP22_PROMOTION")
+          PY
+
+      - name: Upload Step-22 acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-STEP22-TAXONOMY-ZOOM-ACCEPTANCE
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
