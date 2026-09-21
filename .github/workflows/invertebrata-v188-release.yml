@@ -107,12 +107,13 @@ jobs:
           cmp "$ROOT_B/academic_payload/index.html" "$ROOT_B/app/src/main/assets/www/index.html"
           grep -q "versionCode 18800" "$ROOT_A/app/build.gradle"
           grep -q "versionName '1.8.8'" "$ROOT_A/app/build.gradle"
-          grep -q 'applicationId "com.gasczoology.invertebratelab"' "$ROOT_A/app/build.gradle"
+          grep -q "applicationId 'com.gasczoology.invertebratelab'" "$ROOT_A/app/build.gradle"
           grep -q 'minSdk 24' "$ROOT_A/app/build.gradle"
           grep -q 'targetSdk 36' "$ROOT_A/app/build.gradle"
           grep -q 'android:allowBackup="false"' "$ROOT_A/app/src/main/AndroidManifest.xml"
           grep -q 'android:usesCleartextTraffic="false"' "$ROOT_A/app/src/main/AndroidManifest.xml"
           ! grep -q 'android.permission.INTERNET' "$ROOT_A/app/src/main/AndroidManifest.xml"
+          grep -q 'WebView.setWebContentsDebuggingEnabled(false);' "$ROOT_A/app/src/main/java/com/gasczoology/invertebratelab/MainActivity.java"
 
           python - "$ROOT_A" "$ROOT_B" "$RUNNER_TEMP/evidence" "$EXPECTED_TREE_MANIFEST_SHA256" <<'PY'
           import hashlib
