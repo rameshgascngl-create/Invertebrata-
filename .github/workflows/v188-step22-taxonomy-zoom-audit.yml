@@ -22,8 +22,8 @@ jobs:
     env:
       STEP21_INPUT_SHA256: 392924cc3e854bbd2c91b3ec974959de23efa147a1ee9463494c85396a6b573f
       STEP21_INPUT_SIZE: "2393951"
-      STEP22_OUTPUT_SHA256: e59475a6a45d8b52568fded3cc2ff916c0d717454dd3fe894193399d2c8fd7e6
-      STEP22_OUTPUT_SIZE: "2400517"
+      STEP22_OUTPUT_SHA256: 128e5644f9167fabe02d6d30913df8f338ae65eecb845b56d46f1ac5b641508c
+      STEP22_OUTPUT_SIZE: "2400664"
 
     steps:
       - name: Checkout Step-22 branch
@@ -54,7 +54,7 @@ jobs:
           test "$(git hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
           test "$(git hash-object ci/v188_contextual_academic_remap_step20.py)" = "3247e5c2dac58f9c779c6282ca4203722daa206c"
           test "$(git hash-object ci/v188_product_version_identity_step21.py)" = "39f14aee0f47e9576db1892a1851ca0358d8ebd6"
-          test "$(git hash-object ci/v188_taxonomy_zoom_step22.py)" = "2f87e075ce96a7b4cf645ea683c1abd7c47383af"
+          test "$(git hash-object ci/v188_taxonomy_zoom_step22.py)" = "512d44826059f078e096e4495012973d92ad96fb"
           python - <<'PY'
           import json, os
           from pathlib import Path
@@ -67,8 +67,8 @@ jobs:
           s=new["steps"][21]
           assert s["step"]==22
           assert s["path"]=="ci/v188_taxonomy_zoom_step22.py"
-          assert s["governing_commit"]=="7c061b392325506484d1f7d58773c3c5b950b082"
-          assert s["git_blob"]=="2f87e075ce96a7b4cf645ea683c1abd7c47383af"
+          assert s["governing_commit"]=="fe871f60b78f0450ba23aa0616f0fad7c501c60d"
+          assert s["git_blob"]=="512d44826059f078e096e4495012973d92ad96fb"
           assert s["accepted"] is True and s["superseded"] is False
           print("STEPS_1_21_UNCHANGED=PASS")
           print("ACCEPTED_TRANSFORM_COUNT=22")
