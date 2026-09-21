@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
-      EXPECTED_HTML_SHA256: bdb39d4fa1f438c5de83fc9a84ab33905016854c1f641227dbc23063c14c2c46
+      EXPECTED_HTML_SHA256: 392924cc3e854bbd2c91b3ec974959de23efa147a1ee9463494c85396a6b573f
       EXPECTED_HTML_SIZE: "2393951"
-      EXPECTED_TREE_MANIFEST_SHA256: dbcf20925081e3ba67e3a2e4110f8c5fff619d237c262a8bd47d507de3358544
-      EXPECTED_TRANSFORMS: "20"
+      EXPECTED_TREE_MANIFEST_SHA256: d9011b499f1c484fd844ea1d37a26dad612c372cea17c5dcb628bfc8dbfcb767
+      EXPECTED_TRANSFORMS: "21"
     steps:
       - name: Checkout accepted pipeline branch
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -105,7 +105,7 @@ jobs:
               "SOURCE_TREE_MANIFEST_SHA256="+ha+"\n"
               "SOURCE_TREE_FILE_COUNT="+str(na)+"\n"
               "BYTE_IDENTICAL_RECONSTRUCTION=PASS\n"
-              "ACCEPTED_TRANSFORMS_EXECUTED=20\n"
+              "ACCEPTED_TRANSFORMS_EXECUTED=21\n"
               "SUPERSEDED_TRANSFORMS_EXECUTED=0\n"
               "BUILD_PIPELINE_RECONCILIATION=PASS\n"
           )
