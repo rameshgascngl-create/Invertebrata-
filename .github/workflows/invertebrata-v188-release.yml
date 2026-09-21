@@ -31,15 +31,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "\${{ github.ref }}" = "refs/heads/main"
-          test "\${{ inputs.device_qa_gate }}" = "DEVICE_QA_PASS"
-          printf '%s' "\${{ inputs.debug_apk_sha256 }}" | grep -Eq '^[0-9A-Fa-f]{64}$'
+          test "${{ github.ref }}" = "refs/heads/main"
+          test "${{ inputs.device_qa_gate }}" = "DEVICE_QA_PASS"
+          printf '%s' "${{ inputs.debug_apk_sha256 }}" | grep -Eq '^[0-9A-Fa-f]{64}$'
           mkdir -p "$RUNNER_TEMP/evidence"
           {
-            echo "SOURCE_REF=\${{ github.ref }}"
-            echo "SOURCE_COMMIT=\${{ github.sha }}"
+            echo "SOURCE_REF=${{ github.ref }}"
+            echo "SOURCE_COMMIT=${{ github.sha }}"
             echo "DEVICE_QA_GATE=PASS"
-            echo "QA_PASSED_DEBUG_APK_SHA256=\${{ inputs.debug_apk_sha256 }}"
+            echo "QA_PASSED_DEBUG_APK_SHA256=${{ inputs.debug_apk_sha256 }}"
           } > "$RUNNER_TEMP/evidence/RELEASE_GATE.txt"
 
       - name: Checkout
@@ -96,7 +96,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ROOT_A="\${{ steps.runa.outputs.root }}"
+          ROOT_A="${{ steps.runa.outputs.root }}"
           ROOT_B="$(find "$RUNNER_TEMP/reconstruct-B/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
           test -n "$ROOT_B"
           cmp "$RUNNER_TEMP/evidence/RUN_A.html" "$RUNNER_TEMP/evidence/RUN_B.html"
@@ -157,11 +157,11 @@ jobs:
       - name: Require permanent Invertebrata signing identity
         shell: bash
         env:
-          KS_B64: \${{ secrets.KS_B64 }}
-          KS_PASS: \${{ secrets.KS_PASS }}
-          KEY_ALIAS: \${{ secrets.KEY_ALIAS }}
-          KEY_PASS: \${{ secrets.KEY_PASS }}
-          EXPECTED_CERT_SHA256: \${{ secrets.INVERTEBRATA_RELEASE_CERT_SHA256 }}
+          KS_B64: ${{ secrets.KS_B64 }}
+          KS_PASS: ${{ secrets.KS_PASS }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.KEY_PASS }}
+          EXPECTED_CERT_SHA256: ${{ secrets.INVERTEBRATA_RELEASE_CERT_SHA256 }}
         run: |
           set -euo pipefail
           test -n "$KS_B64"
@@ -222,7 +222,7 @@ jobs:
 
       - name: Clean production release build
         shell: bash
-        working-directory: \${{ steps.runa.outputs.root }}
+        working-directory: ${{ steps.runa.outputs.root }}
         run: |
           set -euo pipefail
           gradle wrapper --gradle-version 8.14.3 --distribution-type bin
@@ -232,11 +232,11 @@ jobs:
       - name: Sign APK and AAB with permanent release key
         id: sign
         shell: bash
-        working-directory: \${{ steps.runa.outputs.root }}
+        working-directory: ${{ steps.runa.outputs.root }}
         env:
-          KS_PASS: \${{ secrets.KS_PASS }}
-          KEY_ALIAS: \${{ secrets.KEY_ALIAS }}
-          KEY_PASS: \${{ secrets.KEY_PASS }}
+          KS_PASS: ${{ secrets.KS_PASS }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.KEY_PASS }}
         run: |
           set -euo pipefail
           unsigned_apk="$(find app/build/outputs/apk/release -type f -name '*.apk' -print -quit)"
@@ -274,9 +274,9 @@ jobs:
       - name: Verify actual signed production artifacts
         shell: bash
         env:
-          APK: \${{ steps.sign.outputs.apk }}
-          AAB: \${{ steps.sign.outputs.aab }}
-          EXPECTED_CERT_SHA256: \${{ secrets.INVERTEBRATA_RELEASE_CERT_SHA256 }}
+          APK: ${{ steps.sign.outputs.apk }}
+          AAB: ${{ steps.sign.outputs.aab }}
+          EXPECTED_CERT_SHA256: ${{ secrets.INVERTEBRATA_RELEASE_CERT_SHA256 }}
         run: |
           set -euo pipefail
 
@@ -348,8 +348,8 @@ jobs:
         with:
           name: INVERTEBRATA-v1.8.8-SIGNED-PRODUCTION
           path: |
-            \${{ steps.sign.outputs.apk }}
-            \${{ steps.sign.outputs.aab }}
+            ${{ steps.sign.outputs.apk }}
+            ${{ steps.sign.outputs.aab }}
           if-no-files-found: error
           retention-days: 30
 
@@ -358,6 +358,6 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: INVERTEBRATA-v1.8.8-PRODUCTION-RELEASE-EVIDENCE
-          path: \${{ runner.temp }}/evidence/
+          path: ${{ runner.temp }}/evidence/
           if-no-files-found: warn
           retention-days: 30
