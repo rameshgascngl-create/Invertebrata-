@@ -1,0 +1,237 @@
+name: INVERTEBRATA Step-21 Version Identity Acceptance
+
+on:
+  push:
+    branches:
+      - remediation/v188-version-identity-step21-20260921
+    paths:
+      - ci/v188_product_version_identity_step21.py
+      - ci/v188_accepted_transform_manifest.json
+      - ci/reconstruct_v188_accepted_source.py
+      - ci/step21_acceptance_audit.py
+      - .github/workflows/v188-step21-version-identity-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  authoritative-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      STEP20_INPUT_SHA256: bdb39d4fa1f438c5de83fc9a84ab33905016854c1f641227dbc23063c14c2c46
+      STEP20_INPUT_SIZE: "2393951"
+      STEP21_OUTPUT_SHA256: 392924cc3e854bbd2c91b3ec974959de23efa147a1ee9463494c85396a6b573f
+      STEP21_OUTPUT_SIZE: "2393951"
+
+    steps:
+      - name: Checkout Step-21 branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Establish frozen worktrees
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          MAIN_HEAD="$(git rev-parse origin/main)"
+          test "$MAIN_HEAD" = "5129fa8528bc770e8cb0093caa84ea899bfdd15b"
+          git worktree add --detach "$RUNNER_TEMP/step19-repo" 284a2f1ee75c9b048306c185442ac5bc196d934d
+          git worktree add --detach "$RUNNER_TEMP/step20-repo" 5129fa8528bc770e8cb0093caa84ea899bfdd15b
+          {
+            echo "MAIN_HEAD=$MAIN_HEAD"
+            echo "STEP19_REPO_HEAD=$(git -C "$RUNNER_TEMP/step19-repo" rev-parse HEAD)"
+            echo "STEP20_REPO_HEAD=$(git -C "$RUNNER_TEMP/step20-repo" rev-parse HEAD)"
+            echo "STEP21_BRANCH_HEAD=$(git rev-parse HEAD)"
+          } | tee "$RUNNER_TEMP/evidence/STEP21_PREFLIGHT.txt"
+
+      - name: Verify frozen identities and 21-step manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$(git hash-object ci/v188_contextual_academic_remap_step20.py)" = "3247e5c2dac58f9c779c6282ca4203722daa206c"
+          test "$(git hash-object ci/v188_product_version_identity_step21.py)" = "39f14aee0f47e9576db1892a1851ca0358d8ebd6"
+          test "$(git hash-object ci/v188_accepted_transform_manifest.json)" = "56053ba991446981ac53f11f619a6b58b3396896"
+          test "$(git hash-object ci/reconstruct_v188_accepted_source.py)" = "40b45ca6b6e6368dab2484fafd17642af39e4fa2"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          old=json.loads(Path("$RUNNER_TEMP/step20-repo/ci/v188_accepted_transform_manifest.json").read_text())
+          new=json.loads(Path("ci/v188_accepted_transform_manifest.json").read_text())
+          assert len(old["steps"]) == 20
+          assert len(new["steps"]) == 21
+          assert old["steps"] == new["steps"][:20], "Steps 1-20 changed"
+          assert new["steps"][20] == {
+              "step":21,
+              "path":"ci/v188_product_version_identity_step21.py",
+              "governing_commit":"b7796d31079f213218c2c12fd5119ab75499405f",
+              "git_blob":"39f14aee0f47e9576db1892a1851ca0358d8ebd6",
+              "mode":"native",
+              "accepted":True,
+              "superseded":False,
+          }
+          print("STEPS_1_20_UNCHANGED=PASS")
+          print("ACCEPTED_TRANSFORM_COUNT=21")
+          PY
+
+      - name: Reconstruct authoritative Step-19 comparison input
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/step19-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/step19-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruct-step19" \
+            --output "$RUNNER_TEMP/evidence/STEP19.html" \
+            | tee "$RUNNER_TEMP/evidence/STEP19.log"
+
+      - name: Reconstruct authoritative Step-20 input
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/step20-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/step20-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruct-step20" \
+            --output "$RUNNER_TEMP/evidence/STEP20.html" \
+            | tee "$RUNNER_TEMP/evidence/STEP20.log"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/STEP20.html" | awk '{print $1}')" = "$STEP20_INPUT_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/STEP20.html")" = "$STEP20_INPUT_SIZE"
+
+      - name: Direct Step-21 fail-closed assertion pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRCROOT="$(find "$RUNNER_TEMP/reconstruct-step20/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          cp -a "$SRCROOT" "$RUNNER_TEMP/direct-step21"
+          python ci/v188_product_version_identity_step21.py "$RUNNER_TEMP/direct-step21" \
+            | tee "$RUNNER_TEMP/evidence/STEP21_DIRECT.log"
+          grep -Fx "STEP21_INPUT_SHA256=$STEP20_INPUT_SHA256" "$RUNNER_TEMP/evidence/STEP21_DIRECT.log"
+          grep -Fx "STEP21_AUTHORIZED_MUTATIONS=4" "$RUNNER_TEMP/evidence/STEP21_DIRECT.log"
+          grep -Fx "STEP21_LIVE_PRODUCT_VERSION=1.8.8" "$RUNNER_TEMP/evidence/STEP21_DIRECT.log"
+          grep -Fx "STEP21_HISTORICAL_VERSION_COMMENTS_PRESERVED=7" "$RUNNER_TEMP/evidence/STEP21_DIRECT.log"
+          grep -Fx "STEP21_OUTPUT_SHA256=$STEP21_OUTPUT_SHA256" "$RUNNER_TEMP/evidence/STEP21_DIRECT.log"
+          grep -Fx "STEP21_OUTPUT_SIZE=$STEP21_OUTPUT_SIZE" "$RUNNER_TEMP/evidence/STEP21_DIRECT.log"
+          cp "$RUNNER_TEMP/direct-step21/academic_payload/index.html" "$RUNNER_TEMP/evidence/STEP21_DIRECT.html"
+
+      - name: Clean 21-step reconstruction Run A
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-A" \
+            --output "$RUNNER_TEMP/evidence/STEP21_RUN_A.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=21" "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_A.log"
+
+      - name: Clean 21-step reconstruction Run B
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-B" \
+            --output "$RUNNER_TEMP/evidence/STEP21_RUN_B.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=21" "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_B.log"
+
+      - name: Determinism, version identity and tree equivalence
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp "$RUNNER_TEMP/evidence/STEP21_DIRECT.html" "$RUNNER_TEMP/evidence/STEP21_RUN_A.html"
+          cmp "$RUNNER_TEMP/evidence/STEP21_RUN_A.html" "$RUNNER_TEMP/evidence/STEP21_RUN_B.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/STEP21_RUN_A.html" | awk '{print $1}')" = "$STEP21_OUTPUT_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/STEP21_RUN_A.html")" = "$STEP21_OUTPUT_SIZE"
+          grep -F "INVERTEBRATA Theory Learning Resource v1.8.8" "$RUNNER_TEMP/evidence/STEP21_RUN_A.html"
+          grep -F "<strong>v1.8.8</strong> · Student textbook edition" "$RUNNER_TEMP/evidence/STEP21_RUN_A.html"
+          grep -F "INVERTEBRATA_ILLUSTRATION_RELEASE={version:'1.8.8'" "$RUNNER_TEMP/evidence/STEP21_RUN_A.html"
+          grep -F "version:'1.8.8'," "$RUNNER_TEMP/evidence/STEP21_RUN_A.html"
+          ! grep -F "INVERTEBRATA Theory Learning Resource v1.8.3" "$RUNNER_TEMP/evidence/STEP21_RUN_A.html"
+          python - <<'PY' | tee "$RUNNER_TEMP/evidence/STEP21_RECONSTRUCTION_IDENTITY.txt"
+          import hashlib, os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"])
+          def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          def manifest(work):
+              root=next((Path(work)/"extracted").iterdir())
+              rows=[]
+              for p in sorted(x for x in root.rglob("*") if x.is_file()):
+                  rel=p.relative_to(root).as_posix()
+                  rows.append((rel,p.stat().st_size,sha(p)))
+              text="".join(f"{h}  {size}  {rel}\n" for rel,size,h in rows)
+              return hashlib.sha256(text.encode()).hexdigest(),text,len(rows)
+          ma,ta,na=manifest(rt/"reconstruct-A")
+          mb,tb,nb=manifest(rt/"reconstruct-B")
+          assert ma==mb
+          assert ta==tb
+          assert na==nb==42
+          print("STEP21_OUTPUT_SHA256="+sha(rt/"evidence/STEP21_RUN_A.html"))
+          print("STEP21_OUTPUT_SIZE="+str((rt/"evidence/STEP21_RUN_A.html").stat().st_size))
+          print("RUN_A_TREE_MANIFEST_SHA256="+ma)
+          print("RUN_B_TREE_MANIFEST_SHA256="+mb)
+          print("SOURCE_TREE_FILE_COUNT="+str(na))
+          print("BYTE_IDENTICAL_RECONSTRUCTION=PASS")
+          PY
+
+      - name: Install browser audit dependency
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Run Phase-B2 and full contextual regression on Step-21 output
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/step21_acceptance_audit.py \
+            --step19 "$RUNNER_TEMP/evidence/STEP19.html" \
+            --step21a "$RUNNER_TEMP/evidence/STEP21_RUN_A.html" \
+            --step21b "$RUNNER_TEMP/evidence/STEP21_RUN_B.html" \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME"
+
+      - name: Final Step-21 acceptance gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          ev=Path(os.environ["RUNNER_TEMP"])/"evidence"
+          a=json.loads((ev/"STEP21_ACCEPTANCE_AUDIT.json").read_text())
+          assert a["pass"] is True
+          assert a["inventory"]["step21_occurrences"] == 82
+          assert a["inventory"]["step21_unique"] == 82
+          assert a["non_target_drift_count"] == 0
+          assert a["phase_b2_A"]["pass"] is True
+          assert a["phase_b2_B"]["pass"] is True
+          assert a["full_contextual_audit_pass"] is True
+          assert a["blocker_c_remediation_pass"] == 9
+          print("STEP21_ACCEPTANCE=PASS")
+          print("PHASE_B2_REGRESSION=PASS")
+          print("FULL_CONTEXTUAL_AUDIT=PASS")
+          print("BLOCKER_C_REMEDIATION=9/9 PASS")
+          print("FIGURE_INVENTORY=82/82")
+          print("NON_TARGET_PLACEMENT_DRIFT=0")
+          print("BUILD_PIPELINE_RECONCILIATION=BLOCKED_PENDING_STEP21_PROMOTION")
+          PY
+
+      - name: Upload Step-21 acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-STEP21-VERSION-IDENTITY-ACCEPTANCE
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
