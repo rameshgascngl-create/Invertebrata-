@@ -213,8 +213,8 @@
     {
       "step": 22,
       "path": "ci/v188_taxonomy_zoom_step22.py",
-      "governing_commit": "7c061b392325506484d1f7d58773c3c5b950b082",
-      "git_blob": "2f87e075ce96a7b4cf645ea683c1abd7c47383af",
+      "governing_commit": "fe871f60b78f0450ba23aa0616f0fad7c501c60d",
+      "git_blob": "512d44826059f078e096e4495012973d92ad96fb",
       "mode": "native",
       "accepted": true,
       "superseded": false
