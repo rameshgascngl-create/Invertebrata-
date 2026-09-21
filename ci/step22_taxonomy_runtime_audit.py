@@ -57,8 +57,9 @@ async def taxonomy_snapshot(page,lang):
     }""",lang)
 
 async def open_rank_and_zoom(page,lang,out):
-    fig=page.locator(f'.theory-pane[lang="{lang}"] .v188-taxonomy-clean-figure').first
-    await fig.scroll_into_view_if_needed()
+    rank=page.locator(f'.theory-pane[lang="{lang}"] [data-v188-taxonomy-plate="ranks"]').first
+    await rank.scroll_into_view_if_needed()
+    fig=rank.locator('xpath=ancestor::figure[1]')
     await fig.click(no_wait_after=True)
     await page.wait_for_function("""()=>{const o=document.querySelector('#invSyllabusVisualOverlay');return o&&!o.hidden}""",timeout=5000)
     await frames(page,4)
@@ -106,7 +107,7 @@ async def audit_shared_sys_svg(page):
     }""")
     await page.evaluate("""()=>window.__invHandleAndroidBack()""")
     await page.wait_for_function("""()=>document.querySelector('#invSyllabusVisualOverlay')?.hidden===true""",timeout=5000)
-    snap["pass"]=snap["inlineFilter"]=="none" and snap["inlineFill"]=="#f3ead8" and snap["inlineStroke"]=="#2b2b2b"
+    snap["pass"]=snap["inlineFilter"]=="none" and snap["computedFill"]=="rgb(243, 234, 216)" and snap["computedStroke"]=="rgb(43, 43, 43)"
     return snap
 
 async def main_async(args):
