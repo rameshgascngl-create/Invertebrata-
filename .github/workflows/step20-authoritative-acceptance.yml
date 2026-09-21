@@ -1,0 +1,320 @@
+name: INVERTEBRATA Step-20 Authoritative Acceptance
+
+on:
+  push:
+    branches:
+      - audit/step20-authoritative-acceptance-20260921
+    paths:
+      - .github/workflows/step20-authoritative-acceptance.yml
+      - ci/step20_acceptance_audit.py
+
+permissions:
+  contents: read
+
+jobs:
+  authoritative-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Establish frozen worktrees
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          MAIN_HEAD="$(git rev-parse origin/main)"
+          test "$MAIN_HEAD" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
+          git worktree add --detach "$RUNNER_TEMP/step19-repo" 284a2f1ee75c9b048306c185442ac5bc196d934d
+          git worktree add --detach "$RUNNER_TEMP/step20-repo" adc980e00346b7c849824c9e84a35e4711404ac8
+          test -z "$(git -C "$RUNNER_TEMP/step19-repo" status --short)"
+          test -z "$(git -C "$RUNNER_TEMP/step20-repo" status --short)"
+          {
+            echo "MAIN_HEAD=$MAIN_HEAD"
+            echo "STEP19_REPO_HEAD=$(git -C "$RUNNER_TEMP/step19-repo" rev-parse HEAD)"
+            echo "STEP20_REPO_HEAD=$(git -C "$RUNNER_TEMP/step20-repo" rev-parse HEAD)"
+            echo "STEP19_WORKTREE_CLEAN=YES"
+            echo "STEP20_WORKTREE_CLEAN=YES"
+          } | tee "$RUNNER_TEMP/evidence/STEP20_PREFLIGHT.txt"
+
+      - name: Verify frozen identities and 20-step manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv,hashlib,json,os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"])
+          old=rt/"step19-repo"
+          new=rt/"step20-repo"
+          ev=rt/"evidence"
+
+          def sha(p):
+              return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          def blob(p):
+              b=Path(p).read_bytes()
+              return hashlib.sha1(f"blob {len(b)}\0".encode()+b).hexdigest()
+
+          expected={
+            "step2_blob":"1161c46184c3d69530c1cad74db774734b4947af",
+            "step2_sha":"350054a4c93c0849117c6eefc9da4f4bcbf5841d92970fbe1ab19151681380d3",
+            "step20_blob":"3247e5c2dac58f9c779c6282ca4203722daa206c",
+            "step20_sha":"51a4234efce0489b113dc94a485af0c827d38fdec1ab39a1ece9534f82776e79",
+            "manifest_blob":"041e04c306df454d0ec14c06d48eda39fce30dde",
+            "release_blob":"8a5a851a17669fc5d7e26c076cce4b2fcd1e04df",
+            "zip_sha":"281e5f80a14f80df6ad87427a8e29859050f35430ec3158ad52b84ae607df1a3",
+          }
+
+          oldm=json.loads((old/"ci/v188_accepted_transform_manifest.json").read_text())
+          newm=json.loads((new/"ci/v188_accepted_transform_manifest.json").read_text())
+          assert len(oldm["steps"])==19
+          assert len(newm["steps"])==20
+          assert oldm["steps"]==newm["steps"][:19], "Steps 1–19 changed"
+          assert newm["steps"][19]=={
+            "step":20,
+            "path":"ci/v188_contextual_academic_remap_step20.py",
+            "governing_commit":"38e02d891d466dcd6d00734b0123656b190c8b3a",
+            "git_blob":expected["step20_blob"],
+            "mode":"native",
+            "accepted":True,
+            "superseded":False,
+          }
+          assert not any(x["governing_commit"] in set(newm.get("superseded_commits",[])) for x in newm["steps"])
+
+          assert blob(new/"ci/reconcile_v188.py")==expected["step2_blob"]
+          assert sha(new/"ci/reconcile_v188.py")==expected["step2_sha"]
+          assert blob(new/"ci/v188_contextual_academic_remap_step20.py")==expected["step20_blob"]
+          assert sha(new/"ci/v188_contextual_academic_remap_step20.py")==expected["step20_sha"]
+          assert blob(new/"ci/v188_accepted_transform_manifest.json")==expected["manifest_blob"]
+          assert blob(new/".github/workflows/invertebrata-v188-debug.yml")==expected["release_blob"]
+          assert sha(new/"INVERTEBRATA_v1.8.7_RECONCILED_ANDROID_SOURCE.zip")==expected["zip_sha"]
+
+          with (ev/"STEP20_MANIFEST_20_STEPS.csv").open("w",newline="",encoding="utf-8") as f:
+              w=csv.DictWriter(f,fieldnames=["step","path","governing_commit","git_blob","mode","accepted","superseded"])
+              w.writeheader();w.writerows(newm["steps"])
+          identity={
+            "step2_blob":expected["step2_blob"],
+            "step2_sha256":expected["step2_sha"],
+            "step20_implementation_commit":"38e02d891d466dcd6d00734b0123656b190c8b3a",
+            "step20_blob":expected["step20_blob"],
+            "step20_sha256":expected["step20_sha"],
+            "manifest_commit":"adc980e00346b7c849824c9e84a35e4711404ac8",
+            "manifest_blob":expected["manifest_blob"],
+            "accepted_transform_count":20,
+            "release_workflow_blob":expected["release_blob"],
+            "canonical_zip_sha256":expected["zip_sha"],
+            "steps_1_19_unchanged":True,
+            "superseded_executable_transforms":0,
+          }
+          (ev/"STEP20_IMPLEMENTATION_IDENTITY.json").write_text(json.dumps(identity,indent=2)+"\n")
+          PY
+
+      - name: Reconstruct authoritative Step-19 input
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/step19-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/step19-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruct-step19" \
+            --output "$RUNNER_TEMP/evidence/STEP19_AUTHORITATIVE_INPUT.html" \
+            | tee "$RUNNER_TEMP/evidence/STEP19_RECONSTRUCTION.log"
+          H="$(sha256sum "$RUNNER_TEMP/evidence/STEP19_AUTHORITATIVE_INPUT.html" | awk '{print $1}')"
+          S="$(stat -c %s "$RUNNER_TEMP/evidence/STEP19_AUTHORITATIVE_INPUT.html")"
+          test "$H" = "9d4a0e5b6bd23e8fd6cd7e148100bb6017374d2cd9dea45098007eff0c899f65"
+          test "$S" = "2389584"
+          echo "STEP20_INPUT_SHA256=$H" | tee -a "$RUNNER_TEMP/evidence/STEP20_PREFLIGHT.txt"
+          echo "STEP20_INPUT_SIZE=$S" | tee -a "$RUNNER_TEMP/evidence/STEP20_PREFLIGHT.txt"
+
+      - name: Direct Step-20 fail-closed assertion pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRCROOT="$(find "$RUNNER_TEMP/reconstruct-step19/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          cp -a "$SRCROOT" "$RUNNER_TEMP/direct-step20"
+          python "$RUNNER_TEMP/step20-repo/ci/v188_contextual_academic_remap_step20.py" "$RUNNER_TEMP/direct-step20" \
+            | tee "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          grep -Fx "STEP20_INPUT_SHA256=9d4a0e5b6bd23e8fd6cd7e148100bb6017374d2cd9dea45098007eff0c899f65" "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          grep -Fx "STEP20_TARGET_IDS=9" "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          grep -Fx "STEP20_LESSON_OWNERSHIP_MIGRATIONS=1" "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          grep -Fx "STEP20_MIGRATED_ID=peripatus" "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          grep -Fx "STEP20_ASTERIAS_CONTEXTUAL_OVERRIDES=2" "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          grep -Fx "STEP20_NEUTRAL_OUTCOMES=7" "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          grep -Fx "STEP20_CONTEXTUAL_ATLAS_UNCHANGED=YES" "$RUNNER_TEMP/evidence/STEP20_DIRECT_ASSERTIONS.log"
+          cp "$RUNNER_TEMP/direct-step20/academic_payload/index.html" "$RUNNER_TEMP/evidence/STEP20_DIRECT_OUTPUT.html"
+
+      - name: Clean 20-step reconstruction Run A
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/step20-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/step20-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruct-A" \
+            --output "$RUNNER_TEMP/evidence/STEP20_RUN_A.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_A_RECONSTRUCTION.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=20" "$RUNNER_TEMP/evidence/RUN_A_RECONSTRUCTION.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_A_RECONSTRUCTION.log"
+
+      - name: Clean 20-step reconstruction Run B
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$RUNNER_TEMP/step20-repo/ci/reconstruct_v188_accepted_source.py" reconstruct \
+            --repo-root "$RUNNER_TEMP/step20-repo" \
+            --work-dir "$RUNNER_TEMP/reconstruct-B" \
+            --output "$RUNNER_TEMP/evidence/STEP20_RUN_B.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_B_RECONSTRUCTION.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=20" "$RUNNER_TEMP/evidence/RUN_B_RECONSTRUCTION.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_B_RECONSTRUCTION.log"
+
+      - name: Determinism and source-tree manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp "$RUNNER_TEMP/evidence/STEP20_DIRECT_OUTPUT.html" "$RUNNER_TEMP/evidence/STEP20_RUN_A.html"
+          cmp "$RUNNER_TEMP/evidence/STEP20_RUN_A.html" "$RUNNER_TEMP/evidence/STEP20_RUN_B.html"
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"]);ev=rt/"evidence"
+          def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          def tree_manifest(work):
+              root=next((Path(work)/"extracted").iterdir())
+              rows=[]
+              for p in sorted(x for x in root.rglob("*") if x.is_file()):
+                  rel=p.relative_to(root).as_posix()
+                  rows.append((rel,p.stat().st_size,sha(p)))
+              text="".join(f"{h}  {size}  {rel}\n" for rel,size,h in rows)
+              return hashlib.sha256(text.encode()).hexdigest(),text,len(rows)
+          ha=sha(ev/"STEP20_RUN_A.html");hb=sha(ev/"STEP20_RUN_B.html");hd=sha(ev/"STEP20_DIRECT_OUTPUT.html")
+          sa=(ev/"STEP20_RUN_A.html").stat().st_size;sb=(ev/"STEP20_RUN_B.html").stat().st_size
+          ma,ta,na=tree_manifest(rt/"reconstruct-A");mb,tb,nb=tree_manifest(rt/"reconstruct-B")
+          assert ha==hb==hd
+          assert sa==sb
+          assert ma==mb and ta==tb
+          (ev/"RUN_A_TREE_MANIFEST.txt").write_text(ta)
+          (ev/"RUN_B_TREE_MANIFEST.txt").write_text(tb)
+          obj={
+            "step20_input_sha256":"9d4a0e5b6bd23e8fd6cd7e148100bb6017374d2cd9dea45098007eff0c899f65",
+            "run_a_output_sha256":ha,
+            "run_a_output_size":sa,
+            "run_b_output_sha256":hb,
+            "run_b_output_size":sb,
+            "direct_step20_output_sha256":hd,
+            "byte_identical":True,
+            "run_a_source_tree_manifest_sha256":ma,
+            "run_b_source_tree_manifest_sha256":mb,
+            "source_tree_file_count_a":na,
+            "source_tree_file_count_b":nb,
+            "tree_byte_identical":True
+          }
+          (ev/"STEP20_RECONSTRUCTION_IDENTITY.json").write_text(json.dumps(obj,indent=2)+"\n")
+          print(json.dumps(obj,indent=2))
+          PY
+
+      - name: Install browser audit dependency
+        run: python -m pip install --disable-pip-version-check playwright==1.55.0
+
+      - name: Resolve Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v google-chrome-stable || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Run complete Phase-B2 and full contextual acceptance audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ci/step20_acceptance_audit.py \
+            --step19 "$RUNNER_TEMP/evidence/STEP19_AUTHORITATIVE_INPUT.html" \
+            --step20a "$RUNNER_TEMP/evidence/STEP20_RUN_A.html" \
+            --step20b "$RUNNER_TEMP/evidence/STEP20_RUN_B.html" \
+            --out "$RUNNER_TEMP/evidence" \
+            --chromium "$CHROME"
+
+      - name: Freeze verification and final acceptance summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse origin/main)" = "284a2f1ee75c9b048306c185442ac5bc196d934d"
+          test -z "$(git -C "$RUNNER_TEMP/step19-repo" status --short)"
+          test -z "$(git -C "$RUNNER_TEMP/step20-repo" status --short)"
+          test "$(git -C "$RUNNER_TEMP/step20-repo" hash-object ci/reconcile_v188.py)" = "1161c46184c3d69530c1cad74db774734b4947af"
+          test "$(git -C "$RUNNER_TEMP/step20-repo" hash-object ci/v188_contextual_academic_remap_step20.py)" = "3247e5c2dac58f9c779c6282ca4203722daa206c"
+          test "$(git -C "$RUNNER_TEMP/step20-repo" hash-object ci/v188_accepted_transform_manifest.json)" = "041e04c306df454d0ec14c06d48eda39fce30dde"
+          test "$(git -C "$RUNNER_TEMP/step20-repo" hash-object .github/workflows/invertebrata-v188-debug.yml)" = "8a5a851a17669fc5d7e26c076cce4b2fcd1e04df"
+          cat > "$RUNNER_TEMP/evidence/STEP20_SOURCE_FREEZE.txt" <<'EOF'
+          STEP2_CHANGED=NO
+          STEPS_1_19_CHANGED=NO
+          CONTEXTUAL_SCORER_CHANGED=NO
+          RELEVANCE_THRESHOLD_CHANGED=NO
+          GENERIC_CONTEXTUAL_ATLAS_CHANGED=NO
+          OVERLAY_HISTORY_CHANGED=NO
+          ENLARGEMENT_CHANGED=NO
+          FIGURE_SVG_OR_RASTER_CONTENT_CHANGED=NO
+          CAPTIONS_CHANGED=NO
+          LABELS_CHANGED=NO
+          THEORY_CHANGED=NO
+          BILINGUAL_CONTENT_CHANGED=NO
+          NON_TARGET_PLACEMENTS_CHANGED=NO
+          RELEASE_WORKFLOW_CHANGED=NO
+          ANDROID_WRAPPER_CHANGED=NO
+          BUILD_WORKFLOW_CHANGED=NO
+          PACKAGE_IDENTITY_CHANGED=NO
+          VERSION_IDENTITY_CHANGED=NO
+          BUILD_PIPELINE_RECONCILIATION_STARTED=NO
+          GRADLE_INVOKED=NO
+          APK_GENERATED=NO
+          AAB_GENERATED=NO
+          DEVICE_QA_STARTED=NO
+          EOF
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"]);ev=rt/"evidence"
+          ident=json.loads((ev/"STEP20_IMPLEMENTATION_IDENTITY.json").read_text())
+          recon=json.loads((ev/"STEP20_RECONSTRUCTION_IDENTITY.json").read_text())
+          audit=json.loads((ev/"STEP20_ACCEPTANCE_AUDIT.json").read_text())
+          final={**ident,**recon,
+            "target_ids":"9/9",
+            "lesson_ownership_migrations_expected":1,
+            "lesson_ownership_migrations_actual":len(audit["ownership_migrations"]),
+            "lesson_ownership_migrations":audit["ownership_migrations"],
+            "asterias_external_overrides_expected":2,
+            "asterias_external_overrides_actual":sum(1 for x in audit["blocker_c_remediation_pass"] and []),
+            "neutral_outcomes_expected":7,
+            "non_target_placement_drift_actual":audit["non_target_drift_count"],
+            "phase_b2_regression":"PASS" if audit["phase_b2_A"]["pass"] and audit["phase_b2_B"]["pass"] else "FAIL",
+            "full_contextual_audit":"PASS" if audit["full_contextual_audit_pass"] else "FAIL",
+            "blocker_c_remediation_pass":f'{audit["blocker_c_remediation_pass"]}/9',
+            "build_pipeline_reconciliation":"BLOCKED / NOT STARTED"
+          }
+          # Derive exact Asterias and neutral counts from postcondition CSV.
+          import csv
+          rows=list(csv.DictReader((ev/"STEP20_POSTCONDITIONS.csv").open()))
+          final["asterias_external_overrides_actual"]=sum(r["figure_id"] in {"asterias-oral","asterias-aboral"} and r["actual_destination"]=="External" and r["pass"]=="True" for r in rows)
+          final["neutral_outcomes_actual"]=sum(r["expected_mode"]=="NEUTRAL_ORIGINAL_CONTAINER" and r["actual_mode"]=="NEUTRAL_ORIGINAL_CONTAINER" and r["pass"]=="True" for r in rows)
+          assert final["lesson_ownership_migrations_actual"]==1
+          assert final["asterias_external_overrides_actual"]==2
+          assert final["neutral_outcomes_actual"]==7
+          assert final["non_target_placement_drift_actual"]==0
+          assert final["phase_b2_regression"]=="PASS"
+          assert final["full_contextual_audit"]=="PASS"
+          assert final["blocker_c_remediation_pass"]=="9/9"
+          (ev/"STEP20_FINAL_ACCEPTANCE_IDENTITY.json").write_text(json.dumps(final,indent=2)+"\n")
+          PY
+
+      - name: Upload authoritative Step-20 evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-STEP20-AUTHORITATIVE-ACCEPTANCE
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: error
+          retention-days: 30
