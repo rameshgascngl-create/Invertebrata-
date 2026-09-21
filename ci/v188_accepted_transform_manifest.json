@@ -191,6 +191,15 @@
       "mode": "native",
       "accepted": true,
       "superseded": false
+    },
+    {
+      "step": 20,
+      "path": "ci/v188_contextual_academic_remap_step20.py",
+      "governing_commit": "38e02d891d466dcd6d00734b0123656b190c8b3a",
+      "git_blob": "3247e5c2dac58f9c779c6282ca4203722daa206c",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
     }
   ]
 }
