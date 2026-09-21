@@ -3,7 +3,7 @@
 INVERTEBRATA v1.8.8 accepted-source reconstruction driver.
 
 Purpose:
-- verify the frozen canonical input and the accepted 20-step transform manifest;
+- verify the frozen canonical input and the accepted 21-step transform manifest;
 - apply accepted transformations exactly once;
 - adapt legacy raw-HTML targeted remediations to JSON-serialized
   window.ORG_SYSTEM_DIAGRAMS[...] assignments without changing their accepted markup;
@@ -85,10 +85,10 @@ def load_manifest(repo_root: Path) -> dict:
     obj = json.loads(path.read_text(encoding="utf-8"))
     steps = obj.get("steps")
     require(isinstance(steps, list), "manifest steps must be a list")
-    require(len(steps) == 20, f"manifest must contain exactly 20 steps, found {len(steps)}")
+    require(len(steps) == 21, f"manifest must contain exactly 21 steps, found {len(steps)}")
     nums = [s.get("step") for s in steps]
-    require(nums == list(range(1, 21)), f"manifest step order invalid: {nums}")
-    require(len({s.get("path") for s in steps}) == 20, "manifest contains duplicate executable paths")
+    require(nums == list(range(1, 22)), f"manifest step order invalid: {nums}")
+    require(len({s.get("path") for s in steps}) == 21, "manifest contains duplicate executable paths")
     excluded = set(obj.get("superseded_commits", []))
     for s in steps:
         require(s.get("accepted") is True, f"step {s.get('step')}: accepted flag is not true")
@@ -316,7 +316,7 @@ def reconstruct(repo_root: Path, work_dir: Path, output: Path) -> None:
             "stdout": log.strip(),
         })
 
-    require(len(executed) == 20, f"expected 20 executed transforms, found {len(executed)}")
+    require(len(executed) == 21, f"expected 21 executed transforms, found {len(executed)}")
     final_a, final_b = payload_paths(source_root)
     require(final_a.read_bytes() == final_b.read_bytes(), "final academic payload copies diverged")
 
@@ -342,7 +342,7 @@ def main() -> None:
     if args.command == "preflight":
         preflight(repo_root)
         print("PHASE_B1_PREFLIGHT=PASS")
-        print("ACCEPTED_TRANSFORMS_AVAILABLE=20")
+        print("ACCEPTED_TRANSFORMS_AVAILABLE=21")
         print("SUPERSEDED_EXECUTABLE_TRANSFORMS=0")
         print(f"MATRIX_ROWS={EXPECTED_MATRIX_ROWS}")
         return
