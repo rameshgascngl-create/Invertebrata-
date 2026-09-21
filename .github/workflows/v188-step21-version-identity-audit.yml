@@ -57,9 +57,10 @@ jobs:
           test "$(git hash-object ci/v188_accepted_transform_manifest.json)" = "56053ba991446981ac53f11f619a6b58b3396896"
           test "$(git hash-object ci/reconstruct_v188_accepted_source.py)" = "40b45ca6b6e6368dab2484fafd17642af39e4fa2"
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
-          old=json.loads(Path("$RUNNER_TEMP/step20-repo/ci/v188_accepted_transform_manifest.json").read_text())
+          rt=Path(os.environ["RUNNER_TEMP"])
+          old=json.loads((rt/"step20-repo/ci/v188_accepted_transform_manifest.json").read_text())
           new=json.loads(Path("ci/v188_accepted_transform_manifest.json").read_text())
           assert len(old["steps"]) == 20
           assert len(new["steps"]) == 21
