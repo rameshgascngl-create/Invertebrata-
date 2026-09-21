@@ -200,6 +200,15 @@
       "mode": "native",
       "accepted": true,
       "superseded": false
+    },
+    {
+      "step": 21,
+      "path": "ci/v188_product_version_identity_step21.py",
+      "governing_commit": "b7796d31079f213218c2c12fd5119ab75499405f",
+      "git_blob": "39f14aee0f47e9576db1892a1851ca0358d8ebd6",
+      "mode": "native",
+      "accepted": true,
+      "superseded": false
     }
   ]
 }
