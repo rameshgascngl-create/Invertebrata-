@@ -1,7 +1,6 @@
-name: INVERTEBRATA v1.8.8 Corrected Debug APK
+name: INVERTEBRATA v1.8.8 Accepted-Source Debug APK
 
-# Illustration-development gate: do not build on source pushes.
-# Re-enable/dispatch only after SVG CREATION + EMBEDDING + BIOLOGICAL/SOURCE AUDIT pass.
+# Manual build only. The source gate must pass before Gradle is installed or invoked.
 on:
   workflow_dispatch:
 
@@ -11,86 +10,176 @@ permissions:
 jobs:
   build-v188:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
-      SOURCE_ZIP: INVERTEBRATA_v1.8.7_RECONCILED_ANDROID_SOURCE.zip
-      SOURCE_SHA256: 281e5f80a14f80df6ad87427a8e29859050f35430ec3158ad52b84ae607df1a3
+      EXPECTED_HTML_SHA256: bdb39d4fa1f438c5de83fc9a84ab33905016854c1f641227dbc23063c14c2c46
+      EXPECTED_HTML_SIZE: "2393951"
+      EXPECTED_TREE_MANIFEST_SHA256: dbcf20925081e3ba67e3a2e4110f8c5fff619d237c262a8bd47d507de3358544
+      EXPECTED_TRANSFORMS: "20"
     steps:
-      - name: Checkout
+      - name: Checkout accepted pipeline branch
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-      - name: Verify and extract frozen source
-        id: src
+
+      - name: Accepted-transform preflight
         shell: bash
         run: |
           set -euo pipefail
-          test "$(sha256sum "$SOURCE_ZIP" | awk '{print $1}')" = "$SOURCE_SHA256"
-          mkdir -p "$RUNNER_TEMP/src"
-          unzip -q "$SOURCE_ZIP" -d "$RUNNER_TEMP/src"
-          settings="$(find "$RUNNER_TEMP/src" -name settings.gradle -print -quit)"
-          test -n "$settings"
-          echo "root=$(dirname "$settings")" >> "$GITHUB_OUTPUT"
-      - name: Apply proven R2 Android shell reconciliation
+          mkdir -p "$RUNNER_TEMP/evidence"
+          python ci/reconstruct_v188_accepted_source.py preflight \
+            | tee "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "PHASE_B1_PREFLIGHT=PASS" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "ACCEPTED_TRANSFORMS_AVAILABLE=$EXPECTED_TRANSFORMS" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "SUPERSEDED_EXECUTABLE_TRANSFORMS=0" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "MATRIX_ROWS=76" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+
+      - name: Reconstruct accepted source Run A
+        id: runa
         shell: bash
         run: |
           set -euo pipefail
-          python ci/reconcile_r2.py "${{ steps.src.outputs.root }}" "$RUNNER_TEMP/r2.zip"
-          test "$(sha256sum "$RUNNER_TEMP/r2.zip" | awk '{print $1}')" = "3f3ffd5d0b03da74b9f7b85cfc755883594aea3141149b1131ee11963d9a184a"
-      - name: Apply v1.8.8 mobile display correction
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-A" \
+            --output "$RUNNER_TEMP/evidence/RUN_A.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=$EXPECTED_TRANSFORMS" "$RUNNER_TEMP/evidence/RUN_A.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_A.log"
+          root="$(find "$RUNNER_TEMP/reconstruct-A/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          test -n "$root"
+          echo "root=$root" >> "$GITHUB_OUTPUT"
+
+      - name: Reconstruct accepted source Run B
+        id: runb
         shell: bash
         run: |
           set -euo pipefail
-          python ci/reconcile_v188.py "${{ steps.src.outputs.root }}" | tee "$RUNNER_TEMP/v188-payload.txt"
-          cd "${{ steps.src.outputs.root }}"
-          sha256sum -c provenance/SOURCE_MANIFEST_SHA256.txt
-          grep -q "versionCode 18800" app/build.gradle
-          grep -q "versionName '1.8.8'" app/build.gradle
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-B" \
+            --output "$RUNNER_TEMP/evidence/RUN_B.html" \
+            | tee "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "ACCEPTED_TRANSFORMS_EXECUTED=$EXPECTED_TRANSFORMS" "$RUNNER_TEMP/evidence/RUN_B.log"
+          grep -Fx "SUPERSEDED_TRANSFORMS_EXECUTED=0" "$RUNNER_TEMP/evidence/RUN_B.log"
+          root="$(find "$RUNNER_TEMP/reconstruct-B/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          test -n "$root"
+          echo "root=$root" >> "$GITHUB_OUTPUT"
+
+      - name: Authoritative source identity gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp "$RUNNER_TEMP/evidence/RUN_A.html" "$RUNNER_TEMP/evidence/RUN_B.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/RUN_A.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/RUN_A.html")" = "$EXPECTED_HTML_SIZE"
+          cmp "$RUNNER_TEMP/evidence/RUN_A.html" "${{ steps.runa.outputs.root }}/academic_payload/index.html"
+          cmp "${{ steps.runa.outputs.root }}/academic_payload/index.html" "${{ steps.runa.outputs.root }}/app/src/main/assets/www/index.html"
+          grep -q "versionCode 18800" "${{ steps.runa.outputs.root }}/app/build.gradle"
+          grep -q "versionName '1.8.8'" "${{ steps.runa.outputs.root }}/app/build.gradle"
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          rt=Path(os.environ["RUNNER_TEMP"])
+          expected=os.environ["EXPECTED_TREE_MANIFEST_SHA256"]
+          def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          def manifest(work):
+              roots=[p for p in (Path(work)/"extracted").iterdir() if p.is_dir()]
+              assert len(roots)==1, roots
+              root=roots[0]
+              rows=[]
+              for p in sorted(x for x in root.rglob("*") if x.is_file()):
+                  rel=p.relative_to(root).as_posix()
+                  rows.append((rel,p.stat().st_size,sha(p)))
+              text="".join(f"{h}  {size}  {rel}\n" for rel,size,h in rows)
+              return hashlib.sha256(text.encode()).hexdigest(),text,len(rows)
+          ha,ta,na=manifest(rt/"reconstruct-A")
+          hb,tb,nb=manifest(rt/"reconstruct-B")
+          assert ha==hb==expected, (ha,hb,expected)
+          assert ta==tb
+          (rt/"evidence/RUN_A_TREE_MANIFEST.txt").write_text(ta)
+          (rt/"evidence/RUN_B_TREE_MANIFEST.txt").write_text(tb)
+          (rt/"evidence/SOURCE_GATE.txt").write_text(
+              "AUTHORITATIVE_HTML_SHA256="+os.environ["EXPECTED_HTML_SHA256"]+"\n"
+              "AUTHORITATIVE_HTML_SIZE="+os.environ["EXPECTED_HTML_SIZE"]+"\n"
+              "SOURCE_TREE_MANIFEST_SHA256="+ha+"\n"
+              "SOURCE_TREE_FILE_COUNT="+str(na)+"\n"
+              "BYTE_IDENTICAL_RECONSTRUCTION=PASS\n"
+              "ACCEPTED_TRANSFORMS_EXECUTED=20\n"
+              "SUPERSEDED_TRANSFORMS_EXECUTED=0\n"
+              "BUILD_PIPELINE_RECONCILIATION=PASS\n"
+          )
+          print((rt/"evidence/SOURCE_GATE.txt").read_text())
+          PY
+
       - name: Set up Java 17
         uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9
         with:
           distribution: temurin
           java-version: '17'
+
       - name: Set up Android SDK
         uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699
         with:
           packages: ''
+
       - name: Install Android 36 tools
         shell: bash
         run: |
           set -euo pipefail
           yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+          test -x "$ANDROID_HOME/build-tools/36.0.0/aapt"
+          test -x "$ANDROID_HOME/build-tools/36.0.0/apksigner"
+
       - name: Set up Gradle 8.14.3
         uses: gradle/actions/setup-gradle@017a9effdb900e5b5b2fddfb590a105619dca3c3
         with:
           gradle-version: '8.14.3'
           cache-read-only: true
-      - name: Restore wrapper and build corrected APK
+
+      - name: Build debug APK from accepted source
         shell: bash
-        working-directory: ${{ steps.src.outputs.root }}
+        working-directory: ${{ steps.runa.outputs.root }}
         run: |
           set -euo pipefail
           gradle wrapper --gradle-version 8.14.3 --distribution-type bin
           chmod +x gradlew
           ./gradlew --no-daemon clean lint test assembleDebug --stacktrace
-      - name: Verify and stage APK
+
+      - name: Verify and stage debug APK
         shell: bash
-        working-directory: ${{ steps.src.outputs.root }}
+        working-directory: ${{ steps.runa.outputs.root }}
         run: |
           set -euo pipefail
           apk=app/build/outputs/apk/debug/app-debug.apk
           test -f "$apk"
           mkdir -p "$RUNNER_TEMP/out"
-          cp "$apk" "$RUNNER_TEMP/out/INVERTEBRATA-v1.8.8-CORRECTED-DEBUG.apk"
-          sha256sum "$RUNNER_TEMP/out/INVERTEBRATA-v1.8.8-CORRECTED-DEBUG.apk" | tee "$RUNNER_TEMP/out/SHA256.txt"
-          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging "$apk" | tee "$RUNNER_TEMP/out/BADGING.txt"
-          grep -q "package: name='com.gasczoology.invertebratelab' versionCode='18800' versionName='1.8.8'" "$RUNNER_TEMP/out/BADGING.txt"
-          cp "$RUNNER_TEMP/v188-payload.txt" "$RUNNER_TEMP/out/V188_PAYLOAD.txt"
-      - name: Upload corrected debug APK
+          cp "$apk" "$RUNNER_TEMP/out/INVERTEBRATA-v1.8.8-ACCEPTED-DEBUG.apk"
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$apk" | tee "$RUNNER_TEMP/out/BADGING.txt"
+          grep -q "package: name='com.gasczoology.invertebratelab'" "$RUNNER_TEMP/out/BADGING.txt"
+          grep -q "versionCode='18800'" "$RUNNER_TEMP/out/BADGING.txt"
+          grep -q "versionName='1.8.8'" "$RUNNER_TEMP/out/BADGING.txt"
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump permissions "$apk" | tee "$RUNNER_TEMP/out/PERMISSIONS.txt"
+          ! grep -q "android.permission.INTERNET" "$RUNNER_TEMP/out/PERMISSIONS.txt"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$apk" | tee "$RUNNER_TEMP/out/APKSIGNER.txt"
+          sha256sum "$RUNNER_TEMP/out/INVERTEBRATA-v1.8.8-ACCEPTED-DEBUG.apk" | tee "$RUNNER_TEMP/out/SHA256.txt"
+          cp "$RUNNER_TEMP/evidence/SOURCE_GATE.txt" "$RUNNER_TEMP/out/SOURCE_GATE.txt"
+          cp "$RUNNER_TEMP/evidence/RUN_A.log" "$RUNNER_TEMP/out/RUN_A_RECONSTRUCTION.log"
+
+      - name: Upload accepted debug APK
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: INVERTEBRATA-v1.8.8-CORRECTED-DEBUG
+          name: INVERTEBRATA-v1.8.8-ACCEPTED-DEBUG
           path: ${{ runner.temp }}/out/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload source-gate evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-v1.8.8-SOURCE-GATE-EVIDENCE
+          path: ${{ runner.temp }}/evidence/
           if-no-files-found: error
           retention-days: 30
