@@ -14,8 +14,11 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
-      EXPECTED_HTML_SHA256: bdb39d4fa1f438c5de83fc9a84ab33905016854c1f641227dbc23063c14c2c46
-      EXPECTED_HTML_SIZE: "2393951"
+      BASE_HTML_SHA256: bdb39d4fa1f438c5de83fc9a84ab33905016854c1f641227dbc23063c14c2c46
+      BASE_HTML_SIZE: "2393951"
+      EXPECTED_HTML_SHA256: 7f3dfbb64bc2c966b528a6d17245ef5e0e6277ff605ef6ccdeb7d9f0cabfdd00
+      EXPECTED_HTML_SIZE: "2475518"
+      V189_PAYLOAD_REL: payload/v189_clean_academic/index.html
 
     steps:
       - name: Checkout
@@ -49,41 +52,65 @@ jobs:
           gradle-version: '8.14.3'
           cache-read-only: true
 
-      - name: Reconstruct frozen accepted academic source
+      - name: Reconstruct frozen accepted v1.8.8 base source
         id: source
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/evidence"
-          python ci/reconstruct_v188_accepted_source.py preflight --repo-root "$GITHUB_WORKSPACE"             | tee "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          python ci/reconstruct_v188_accepted_source.py preflight --repo-root "$GITHUB_WORKSPACE" \
+            | tee "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
           grep -Fx "PHASE_B1_PREFLIGHT=PASS" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
           grep -Fx "ACCEPTED_TRANSFORMS_AVAILABLE=20" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
 
-          python ci/reconstruct_v188_accepted_source.py reconstruct             --repo-root "$GITHUB_WORKSPACE"             --work-dir "$RUNNER_TEMP/reconstruct-v189"             --output "$RUNNER_TEMP/evidence/AUTHORITATIVE.html"             | tee "$RUNNER_TEMP/evidence/RECONSTRUCT.txt"
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-v189" \
+            --output "$RUNNER_TEMP/evidence/V188_BASE.html" \
+            | tee "$RUNNER_TEMP/evidence/RECONSTRUCT.txt"
 
           ROOT="$(find "$RUNNER_TEMP/reconstruct-v189/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
           test -n "$ROOT"
           test -f "$ROOT/settings.gradle"
           echo "root=$ROOT" >> "$GITHUB_OUTPUT"
 
-          test "$(sha256sum "$RUNNER_TEMP/evidence/AUTHORITATIVE.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
-          test "$(stat -c %s "$RUNNER_TEMP/evidence/AUTHORITATIVE.html")" = "$EXPECTED_HTML_SIZE"
-          cmp "$RUNNER_TEMP/evidence/AUTHORITATIVE.html" "$ROOT/academic_payload/index.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/V188_BASE.html" | awk '{print $1}')" = "$BASE_HTML_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/V188_BASE.html")" = "$BASE_HTML_SIZE"
+          cmp "$RUNNER_TEMP/evidence/V188_BASE.html" "$ROOT/academic_payload/index.html"
           cmp "$ROOT/academic_payload/index.html" "$ROOT/app/src/main/assets/www/index.html"
+          {
+            echo "V188_BASE_RECONSTRUCTION=PASS"
+            echo "V188_BASE_SHA256=$BASE_HTML_SHA256"
+          } > "$RUNNER_TEMP/evidence/V188_BASE_GATE.txt"
 
-      - name: Apply v1.8.9 Android-shell patch and stage frontend dist
+      - name: Reconcile authoritative v1.8.9 payload and apply Android-shell patch
         shell: bash
         run: |
           set -euo pipefail
           ROOT="${{ steps.source.outputs.root }}"
+          PAYLOAD="$GITHUB_WORKSPACE/$V189_PAYLOAD_REL"
 
-          python ci/patch_v189_android_shell.py "$ROOT"             | tee "$RUNNER_TEMP/evidence/V189_PATCH.txt"
+          test -f "$PAYLOAD"
+          test "$(sha256sum "$PAYLOAD" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+          test "$(stat -c %s "$PAYLOAD")" = "$EXPECTED_HTML_SIZE"
+          grep -Fq "INVERTEBRATA v1.8.9 Clean Academic Edition" "$PAYLOAD"
 
+          cp "$PAYLOAD" "$ROOT/academic_payload/index.html"
+          cp "$PAYLOAD" "$ROOT/app/src/main/assets/www/index.html"
           mkdir -p "$ROOT/frontend/dist"
-          cp "$ROOT/academic_payload/index.html" "$ROOT/frontend/dist/index.html"
+          cp "$PAYLOAD" "$ROOT/frontend/dist/index.html"
 
-          cmp "$ROOT/academic_payload/index.html" "$ROOT/frontend/dist/index.html"
-          cmp "$ROOT/frontend/dist/index.html" "$ROOT/app/src/main/assets/www/index.html"
+          cmp "$PAYLOAD" "$ROOT/academic_payload/index.html"
+          cmp "$PAYLOAD" "$ROOT/app/src/main/assets/www/index.html"
+          cmp "$PAYLOAD" "$ROOT/frontend/dist/index.html"
+
+          python ci/patch_v189_android_shell.py "$ROOT" \
+            | tee "$RUNNER_TEMP/evidence/V189_PATCH.txt"
+
+          cmp "$PAYLOAD" "$ROOT/academic_payload/index.html"
+          cmp "$PAYLOAD" "$ROOT/frontend/dist/index.html"
+          cmp "$PAYLOAD" "$ROOT/app/src/main/assets/www/index.html"
+          test "$(sha256sum "$ROOT/frontend/dist/index.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
 
           grep -q "versionCode 18900" "$ROOT/app/build.gradle"
           grep -q "versionName '1.8.9'" "$ROOT/app/build.gradle"
@@ -102,6 +129,13 @@ jobs:
 
           grep -q "version '8.13.0'" "$ROOT/build.gradle"
           ! grep -Eq "com.android.application.*version ['\"]9\." "$ROOT/build.gradle"
+
+          {
+            echo "V189_CLEAN_ACADEMIC_PAYLOAD=PASS"
+            echo "V189_PAYLOAD_SHA256=$EXPECTED_HTML_SHA256"
+            echo "V189_PAYLOAD_SIZE=$EXPECTED_HTML_SIZE"
+            echo "V189_PAYLOAD_SOURCE=$V189_PAYLOAD_REL"
+          } > "$RUNNER_TEMP/evidence/V189_PAYLOAD_GATE.txt"
 
       - name: Clean release build
         shell: bash
@@ -183,6 +217,7 @@ jobs:
             echo "R8_MAPPING=PASS"
             echo "SYNCED_WEB_ASSET=PASS"
             echo "PACKAGED_VERSION_1_8_9=PASS"
+            echo "V189_CLEAN_ACADEMIC_PAYLOAD=PASS"
             echo "OFFLINE_LOCAL_ORIGIN_STATIC_ASSERTION=PASS"
             echo "BILINGUAL_STATIC_ASSERTION=PASS"
             echo "LOCALSTORAGE_STATIC_ASSERTION=PASS"
