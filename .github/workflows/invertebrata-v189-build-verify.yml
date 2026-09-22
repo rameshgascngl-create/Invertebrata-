@@ -225,6 +225,88 @@ jobs:
             echo "PHYSICAL_DEVICE_RUNTIME_SMOKE=NOT_PERFORMED_IN_THIS_CI_JOB"
           } | tee "$RUNNER_TEMP/evidence/FINAL.txt"
 
+
+      - name: Create installable v1.8.9 device-QA candidate
+        id: qa
+        shell: bash
+        run: |
+          set -euo pipefail
+          UNSIGNED="${{ steps.verify.outputs.apk }}"
+          QA_DIR="$RUNNER_TEMP/device-qa"
+          mkdir -p "$QA_DIR"
+
+          PASS="$(openssl rand -hex 24)"
+          echo "::add-mask::$PASS"
+
+          keytool -genkeypair -noprompt \
+            -keystore "$QA_DIR/device-qa.jks" \
+            -storepass "$PASS" \
+            -keypass "$PASS" \
+            -alias device_qa \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 3650 \
+            -dname "CN=INVERTEBRATA v1.8.9 CI Device QA,OU=Zoology,O=GASC Nagercoil,C=IN"
+
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -f -p 4 \
+            "$UNSIGNED" \
+            "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA-aligned.apk"
+
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" sign \
+            --ks "$QA_DIR/device-qa.jks" \
+            --ks-pass "pass:$PASS" \
+            --ks-key-alias device_qa \
+            --key-pass "pass:$PASS" \
+            --out "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA.apk" \
+            "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA-aligned.apk"
+
+          rm -f "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA-aligned.apk" "$QA_DIR/device-qa.jks"
+
+          QA_APK="$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA.apk"
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -v 4 "$QA_APK" \
+            > "$RUNNER_TEMP/evidence/DEVICE_QA_ZIPALIGN.txt"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$QA_APK" \
+            | tee "$RUNNER_TEMP/evidence/DEVICE_QA_APKSIGNER.txt"
+
+          grep -F "Verified using v2 scheme (APK Signature Scheme v2): true" \
+            "$RUNNER_TEMP/evidence/DEVICE_QA_APKSIGNER.txt"
+          grep -F "Verified using v3 scheme (APK Signature Scheme v3): true" \
+            "$RUNNER_TEMP/evidence/DEVICE_QA_APKSIGNER.txt"
+
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$QA_APK" \
+            | tee "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "package: name='com.gasczoology.invertebratelab'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "versionCode='18900'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "versionName='1.8.9'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "targetSdkVersion:'36'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+
+          unzip -p "$QA_APK" assets/www/index.html > "$RUNNER_TEMP/evidence/DEVICE_QA_INDEX.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/DEVICE_QA_INDEX.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/DEVICE_QA_INDEX.html")" = "$EXPECTED_HTML_SIZE"
+
+          QA_SHA="$(sha256sum "$QA_APK" | awk '{print $1}')"
+          {
+            echo "DEVICE_QA_CANDIDATE=PASS"
+            echo "DEVICE_QA_APK_SHA256=$QA_SHA"
+            echo "DEVICE_QA_PAYLOAD_SHA256=$EXPECTED_HTML_SHA256"
+            echo "DEVICE_QA_VERSION_NAME=1.8.9"
+            echo "DEVICE_QA_VERSION_CODE=18900"
+            echo "DEVICE_QA_SIGNATURE=EPHEMERAL_CI_TEST_KEY"
+            echo "PRODUCTION_SIGNING=NOT_PERFORMED"
+            echo "PHYSICAL_DEVICE_RUNTIME_QA=PENDING"
+          } | tee "$RUNNER_TEMP/evidence/DEVICE_QA_GATE.txt"
+
+          echo "apk=$QA_APK" >> "$GITHUB_OUTPUT"
+          echo "sha256=$QA_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Upload installable device-QA candidate
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-v1.8.9-DEVICE-QA
+          path: ${{ steps.qa.outputs.apk }}
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload verified release build
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
