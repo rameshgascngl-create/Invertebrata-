@@ -1,0 +1,30 @@
+name: Native foundation check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  compile-native-foundation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile Kotlin and run JVM unit tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
+      - name: Prohibit legacy runtime in native module
+        run: |
+          if grep -RniE 'WebView|android\.webkit|<script|javascript:' native-app/app/src/main; then
+            echo 'Legacy browser runtime detected in native module' >&2
+            exit 1
+          fi
+          if grep -Rni '<uses-permission[^>]*INTERNET' native-app/app/src/main/AndroidManifest.xml; then
+            echo 'Unexpected INTERNET permission' >&2
+            exit 1
+          fi
