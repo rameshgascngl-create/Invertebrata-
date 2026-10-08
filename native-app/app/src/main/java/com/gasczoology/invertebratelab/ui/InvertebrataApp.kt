@@ -64,73 +64,155 @@ private object Routes {
 fun InvertebrataApp(viewModel: MainViewModel) {
     val language by viewModel.language.collectAsState()
     val academicState by viewModel.academicState.collectAsState()
+    val persisted by viewModel.persistedLearning.collectAsState()
+
+    // Never construct navigation until the disk record and academic corpus load.
+    // Remember only the initial route; later writes cannot reset the NavHost.
+    val corpus = academicState as? AcademicLoadState.Ready
+    val stored = persisted as? PersistedLearningLoadState.Ready
+    if (corpus == null || stored == null) {
+        when (academicState) {
+            is AcademicLoadState.Failure ->
+                ErrorScreen((academicState as AcademicLoadState.Failure).reason, language)
+            else -> LoadingScreen(language)
+        }
+        return
+    }
+    val units = corpus.units
+    val state = stored.state.validatedAgainst(units)
+    val chapters = units.flatMap { it.chapters }
+    val questions = chapters.flatMap { it.a5Questions }
+    val startRoute = remember { Routes.restoredDestination(state) }
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Routes.HOME) {
+    fun selectedQuestionState(question: A5Question, revealed: Boolean = false): NativeLearningState {
+        val chapter = chapters.first { it.id == question.chapterId }
+        return state.copy(
+            destination = StudyDestination.PRACTICE,
+            unitNumber = chapter.unitNumber,
+            chapterId = chapter.id,
+            questionId = question.id,
+            answerRevealed = revealed,
+        )
+    }
+
+    fun backOrRoute(fallback: String) {
+        if (!navController.popBackStack()) navController.navigate(fallback) {
+            launchSingleTop = true
+        }
+    }
+
+    NavHost(
+        navController = navController,
+        startDestination = startRoute,
+        modifier = Modifier.semantics { testTagsAsResourceId = true },
+    ) {
         composable(Routes.HOME) {
-            when (val state = academicState) {
-                AcademicLoadState.Loading -> LoadingScreen(language)
-                is AcademicLoadState.Failure -> ErrorScreen(state.reason, language)
-                is AcademicLoadState.Ready -> HomeScreen(
-                    units = state.units,
-                    language = language,
-                    onLanguageChange = viewModel::setLanguage,
-                    onUnit = { navController.navigate(Routes.unit(it)) },
-                    onAssessment = { navController.navigate(Routes.ASSESSMENT) },
-                )
-            }
+            HomeScreen(
+                units = units,
+                language = language,
+                onLanguageChange = viewModel::setLanguage,
+                onUnit = { number ->
+                    viewModel.persistLearning(state.copy(
+                        destination = StudyDestination.UNIT,
+                        unitNumber = number, chapterId = "", questionId = "",
+                        answerRevealed = false,
+                    )) { navController.navigate(Routes.unit(number)) }
+                },
+                onAssessment = {
+                    val selected = questions.firstOrNull { it.id == state.questionId }
+                        ?: questions.first()
+                    viewModel.persistLearning(
+                        selectedQuestionState(selected,
+                            state.answerRevealed && state.questionId == selected.id)
+                    ) { navController.navigate(Routes.ASSESSMENT) }
+                },
+            )
         }
         composable(
             route = Routes.UNIT,
             arguments = listOf(navArgument("unitNumber") { type = NavType.IntType }),
         ) { entry ->
-            when (val state = academicState) {
-                AcademicLoadState.Loading -> LoadingScreen(language)
-                is AcademicLoadState.Failure -> ErrorScreen(state.reason, language)
-                is AcademicLoadState.Ready -> {
-                    val number = entry.arguments?.getInt("unitNumber")
-                    val unit = state.units.singleOrNull { it.number == number }
-                    if (unit == null) {
-                        ErrorScreen("Invalid unit", language)
-                    } else {
-                        UnitScreen(
-                            unit = unit,
-                            language = language,
-                            onBack = { navController.popBackStack() },
-                            onChapter = { navController.navigate(Routes.chapter(it)) },
-                        )
-                    }
-                }
+            val number = entry.arguments?.getInt("unitNumber")
+            val unit = units.singleOrNull { it.number == number }
+            if (unit == null) {
+                ErrorScreen("Invalid unit", language)
+            } else {
+                UnitScreen(
+                    unit = unit,
+                    language = language,
+                    onBack = {
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.HOME, chapterId = "",
+                            questionId = "", answerRevealed = false,
+                        )) { backOrRoute(Routes.HOME) }
+                    },
+                    onChapter = { chapterId ->
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.CHAPTER,
+                            unitNumber = unit.number, chapterId = chapterId,
+                            questionId = "", answerRevealed = false,
+                        )) { navController.navigate(Routes.chapter(chapterId)) }
+                    },
+                )
             }
         }
         composable(
             route = Routes.CHAPTER,
             arguments = listOf(navArgument("chapterId") { type = NavType.StringType }),
         ) { entry ->
-            when (val state = academicState) {
-                AcademicLoadState.Loading -> LoadingScreen(language)
-                is AcademicLoadState.Failure -> ErrorScreen(state.reason, language)
-                is AcademicLoadState.Ready -> {
-                    val id = entry.arguments?.getString("chapterId")
-                    val chapter = state.units.flatMap { it.chapters }.singleOrNull { it.id == id }
-                    if (chapter == null) {
-                        ErrorScreen("Invalid chapter", language)
-                    } else {
-                        ChapterScreen(chapter, language) { navController.popBackStack() }
-                    }
-                }
+            val id = entry.arguments?.getString("chapterId")
+            val chapter = chapters.singleOrNull { it.id == id }
+            if (chapter == null) {
+                ErrorScreen("Invalid chapter", language)
+            } else {
+                ChapterScreen(
+                    chapter = chapter,
+                    language = language,
+                    onBack = {
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.UNIT,
+                            unitNumber = chapter.unitNumber,
+                            chapterId = "", questionId = "", answerRevealed = false,
+                        )) { backOrRoute(Routes.unit(chapter.unitNumber)) }
+                    },
+                    revealedQuestionId = if (state.answerRevealed) state.questionId else "",
+                    onToggle = { question ->
+                        val revealed = if (question.id == state.questionId)
+                            !state.answerRevealed else true
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.CHAPTER,
+                            unitNumber = chapter.unitNumber, chapterId = chapter.id,
+                            questionId = question.id, answerRevealed = revealed,
+                        ))
+                    },
+                )
             }
         }
         composable(Routes.ASSESSMENT) {
-            when (val state = academicState) {
-                AcademicLoadState.Loading -> LoadingScreen(language)
-                is AcademicLoadState.Failure -> ErrorScreen(state.reason, language)
-                is AcademicLoadState.Ready -> AssessmentScreen(
-                    questions = state.units.flatMap { it.chapters }.flatMap { it.a5Questions },
-                    language = language,
-                    onBack = { navController.popBackStack() },
-                )
-            }
+            AssessmentScreen(
+                questions = questions,
+                currentQuestionId = state.questionId,
+                answerRevealed = state.answerRevealed,
+                language = language,
+                onBack = {
+                    viewModel.persistLearning(state.copy(
+                        destination = StudyDestination.HOME, chapterId = "",
+                        questionId = "", answerRevealed = false,
+                    )) { backOrRoute(Routes.HOME) }
+                },
+                onPrevious = { question ->
+                    viewModel.persistLearning(selectedQuestionState(question))
+                },
+                onNext = { question ->
+                    viewModel.persistLearning(selectedQuestionState(question))
+                },
+                onToggle = { question ->
+                    val revealed = if (question.id == state.questionId)
+                        !state.answerRevealed else true
+                    viewModel.persistLearning(selectedQuestionState(question, revealed))
+                },
+            )
         }
     }
 }
