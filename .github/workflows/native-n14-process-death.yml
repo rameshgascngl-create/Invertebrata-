@@ -1,0 +1,43 @@
+name: Native N1.4 process-death recovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - native/v193-compose-migration-20261008
+
+jobs:
+  api34-native-process-death:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify actual PID termination and native restoration
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-native-n14-process-death.sh
+      - name: Publish detailed process-death diagnostics regardless of result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-n14-api34-pid-and-recovery
+          path: qa-evidence/n14/
+          if-no-files-found: warn
