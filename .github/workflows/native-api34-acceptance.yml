@@ -1,0 +1,66 @@
+name: Native API 34 UI acceptance
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - native/v193-compose-migration-20261008
+
+jobs:
+  api34-native-ui-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run native Compose UI tests on actual API 34 emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: |
+            set +e
+            mkdir -p qa-evidence
+            adb shell settings put system font_scale 1.0
+            gradle -p native-app :app:connectedDebugAndroidTest --stacktrace -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUiAcceptanceTest
+            normal_exit=$?
+            cp -a native-app/app/build/outputs/androidTest-results/connected qa-evidence/normal-test-results 2>/dev/null || true
+            cp -a native-app/app/build/reports/androidTests/connected qa-evidence/normal-reports 2>/dev/null || true
+
+            adb shell settings put system font_scale 2.0
+            adb shell am force-stop com.gasczoology.invertebratelab
+            gradle -p native-app :app:connectedDebugAndroidTest --rerun-tasks --stacktrace -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeTamilLargeTextAcceptanceTest
+            large_text_exit=$?
+            cp -a native-app/app/build/outputs/androidTest-results/connected qa-evidence/tamil-200-test-results 2>/dev/null || true
+            cp -a native-app/app/build/reports/androidTests/connected qa-evidence/tamil-200-reports 2>/dev/null || true
+
+            adb logcat -d -v threadtime > qa-evidence/logcat.txt 2>&1 || true
+            adb exec-out screencap -p > qa-evidence/final-screen.png 2>/dev/null || true
+            adb shell uiautomator dump /sdcard/qa-window.xml >/dev/null 2>&1 || true
+            adb pull /sdcard/qa-window.xml qa-evidence/window.xml >/dev/null 2>&1 || true
+            printf 'normal=%s\ntamil200=%s\n' "$normal_exit" "$large_text_exit" | tee qa-evidence/result.txt
+            if [ "$normal_exit" -ne 0 ] || [ "$large_text_exit" -ne 0 ]; then
+              exit 1
+            fi
+      - name: Upload API 34 evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-api34-n13-ui-evidence
+          path: qa-evidence/
+          if-no-files-found: warn
