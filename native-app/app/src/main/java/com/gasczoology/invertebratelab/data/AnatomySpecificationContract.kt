@@ -70,6 +70,10 @@ object AnatomySpecificationContract {
             require(edge.fromId != edge.toId)
         }
         if (plate.status == AcademicWorkStatus.ACCEPTED) {
+            require(plate.features.none {
+                it.geometryKey.startsWith("pending-") ||
+                    it.touchTargetKey.startsWith("pending-")
+            }) { "Unmapped geometry or touch regions cannot be academically accepted" }
             val record = requireNotNull(plate.review) { "Missing independent anatomy review" }
             require(record.exactReference.isNotBlank())
             require(record.biologicalReviewer.isNotBlank() && record.tamilReviewer.isNotBlank())
