@@ -113,7 +113,11 @@ class NativeUiAcceptanceTest {
             rule.onNodeWithTag("a5-toggle-" + question.id).performScrollTo().performClick()
             assertEquals(5, question.answerPoints.size)
             for ((pointIndex, point) in question.answerPoints.withIndex()) {
-                rule.onNodeWithTag("a5-point-" + question.id + "-" + (pointIndex + 1))
+                val pointTag = "a5-point-" + question.id + "-" + (pointIndex + 1)
+                // Preserve exact-text assertions while making the real scroller
+                // expose an off-screen answer point to the merged semantics tree.
+                rule.onNodeWithTag(pointTag, useUnmergedTree = true).performScrollTo()
+                rule.onNodeWithTag(pointTag)
                     .assertTextEquals((pointIndex + 1).toString() + ". " + point.english)
             }
             if (index < allQuestions.lastIndex) {
@@ -141,7 +145,9 @@ class NativeUiAcceptanceTest {
         val fifth = questions[4]
         rule.onNodeWithTag("a5-question-" + fifth.id).assertTextEquals(fifth.question.tamil)
         rule.onNodeWithTag("a5-toggle-" + fifth.id).performScrollTo().performClick()
-        rule.onNodeWithTag("a5-point-" + fifth.id + "-1")
+        val tamilPointTag = "a5-point-" + fifth.id + "-1"
+        rule.onNodeWithTag(tamilPointTag, useUnmergedTree = true).performScrollTo()
+        rule.onNodeWithTag(tamilPointTag)
             .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
 
         try {
@@ -149,8 +155,11 @@ class NativeUiAcceptanceTest {
                 it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             }
             waitFor("native-assessment")
-            rule.onNodeWithTag("a5-question-" + fifth.id).assertTextEquals(fifth.question.tamil)
-            rule.onNodeWithTag("a5-point-" + fifth.id + "-1")
+            val tamilQuestionTag = "a5-question-" + fifth.id
+            rule.onNodeWithTag(tamilQuestionTag, useUnmergedTree = true).performScrollTo()
+            rule.onNodeWithTag(tamilQuestionTag).assertTextEquals(fifth.question.tamil)
+            rule.onNodeWithTag(tamilPointTag, useUnmergedTree = true).performScrollTo()
+            rule.onNodeWithTag(tamilPointTag)
                 .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
             rule.onNodeWithText("5 / 86").assertExists()
         } finally {
