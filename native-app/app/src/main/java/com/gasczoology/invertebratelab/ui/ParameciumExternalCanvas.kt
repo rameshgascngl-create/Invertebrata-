@@ -32,6 +32,7 @@ import com.gasczoology.invertebratelab.data.ParameciumAnatomyDraft
 import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
 import com.gasczoology.invertebratelab.data.ParameciumCytoproctRidgeCandidate
 import com.gasczoology.invertebratelab.data.ParameciumReviewHighlightContract
+import com.gasczoology.invertebratelab.data.ParameciumN23DReviewDossier
 import com.gasczoology.invertebratelab.data.ParameciumSchematicContour
 import com.gasczoology.invertebratelab.data.ParameciumExternalEvidence
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
@@ -46,6 +47,9 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
     val plate = ParameciumAnatomyDraft.plates.single { it.plateId == "external-cilia" }
     var selectedId by rememberSaveable { mutableStateOf("pellicle") }
     val chosen = plate.features.single { it.id == selectedId }
+    // Read-only source traceability: zero authenticated human approvals are
+    // present. Evidence links never become accepted geometric coordinates.
+    val reviewTask = ParameciumN23DReviewDossier.forFeature(selectedId)
 
     Column(
         modifier = modifier.fillMaxWidth().testTag("n23b-external-preview"),
@@ -211,6 +215,29 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
             (if (language == AppLanguage.TAMIL) "தேர்ந்தெடுத்த உறுப்பு: "
                 else "Highlighted structure: ") + chosen.label.value(language),
             modifier = Modifier.testTag("n23b-selected-label"),
+        )
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "N2.3D1 மதிப்பாய்வு நிலை — உயிரியல்: 0/5; தமிழ்: 0/5; நேரடி சாதனச் சோதனை: நிலுவை"
+            else "N2.3D1 review records — biology: 0/5; Tamil: 0/5; physical-device QA: pending",
+            modifier = Modifier.testTag("n23d-review-summary"),
+        )
+        Text(
+            (if (language == AppLanguage.TAMIL)
+                "ஆதாரத்தில் உறுதியான தகவல்: " else "Source supports: ") +
+                reviewTask.primary.establishes.value(language),
+            modifier = Modifier.testTag("n23d-source-support"),
+        )
+        Text(
+            (if (language == AppLanguage.TAMIL)
+                "இன்னும் உறுதியாகாதவை: " else "Not yet established: ") +
+                reviewTask.primary.doesNotEstablish.value(language),
+            modifier = Modifier.testTag("n23d-source-limit"),
+        )
+        Text(
+            "Reference: " + reviewTask.primary.exactLocator +
+                " — " + reviewTask.primary.referenceUrl,
+            modifier = Modifier.testTag("n23d-source-locator"),
         )
         if (selectedId == "cytoproct") {
             Text(

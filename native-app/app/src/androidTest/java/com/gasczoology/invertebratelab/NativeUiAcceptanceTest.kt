@@ -297,6 +297,11 @@ class NativeUiAcceptanceTest {
             .assertTextEquals("Highlighted structure: Oral groove")
         rule.onNodeWithTag("n23c3-oral-geometry-limit", useUnmergedTree = true)
             .assertExists()
+        rule.onNodeWithTag("n23d-review-summary", useUnmergedTree = true)
+            .performScrollTo()
+            .assertTextEquals("N2.3D1 review records — biology: 0/5; Tamil: 0/5; physical-device QA: pending")
+        rule.onNodeWithTag("n23d-source-limit", useUnmergedTree = true)
+            .performScrollTo().assertExists()
         rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
             .performScrollTo()
         rule.waitForIdle()
@@ -442,6 +447,11 @@ class NativeTamilLargeTextAcceptanceTest {
         val oral = rule.onNodeWithTag("n23b-select-oral-groove", useUnmergedTree = true)
         oral.performScrollTo().performClick()
         rule.onNodeWithTag("n23c3-oral-geometry-limit", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("n23d-review-summary", useUnmergedTree = true)
+            .performScrollTo()
+            .assertTextEquals("N2.3D1 மதிப்பாய்வு நிலை — உயிரியல்: 0/5; தமிழ்: 0/5; நேரடி சாதனச் சோதனை: நிலுவை")
+        rule.onNodeWithTag("n23d-source-support", useUnmergedTree = true)
             .performScrollTo().assertExists()
     }
 
