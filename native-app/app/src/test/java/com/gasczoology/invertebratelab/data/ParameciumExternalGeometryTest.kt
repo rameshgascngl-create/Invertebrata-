@@ -37,6 +37,66 @@ class ParameciumExternalGeometryTest {
     }
 
     @Test
+    fun viewportUsesOneScaleAndCentersContentWithoutDistortion() {
+        val wide = PrototypeCanvasViewport.fit(1080f, 280f)
+        assertEquals(280f / 600f, wide.scale, 0.0001f)
+        assertEquals(0f, wide.top, 0.0001f)
+        assertEquals((1080f - 1000f * wide.scale) / 2f, wide.left, 0.0001f)
+        assertEquals(wide.scale * 1000f, wide.contentWidth, 0.0001f)
+        assertEquals(wide.scale * 600f, wide.contentHeight, 0.0001f)
+
+        val tall = PrototypeCanvasViewport.fit(400f, 800f)
+        assertEquals(0.4f, tall.scale, 0.0001f)
+        assertEquals(0f, tall.left, 0.0001f)
+        assertEquals(280f, tall.top, 0.0001f)
+        assertEquals(400f, tall.contentWidth, 0.0001f)
+        assertEquals(240f, tall.contentHeight, 0.0001f)
+    }
+
+    @Test
+    fun canvasHitsMatchDrawnHotspotsAcrossPortraitAndLandscape() {
+        val sizes = listOf(1080f to 280f, 400f to 800f,
+            350f to 280f, 1000f to 600f, 1200f to 800f)
+        for ((width, height) in sizes) {
+            val view = PrototypeCanvasViewport.fit(width, height)
+            for (area in ParameciumExternalGeometry.hotspots) {
+                val refX = area.x * ParameciumExternalGeometry.REFERENCE_WIDTH
+                val refY = area.y * ParameciumExternalGeometry.REFERENCE_HEIGHT
+                val screen = view.referenceToCanvas(refX, refY)
+                val actual = view.canvasToReference(screen.first, screen.second)
+                assertEquals(refX, actual!!.first, 0.0002f)
+                assertEquals(refY, actual.second, 0.0002f)
+                assertEquals(area.featureId,
+                    ParameciumExternalGeometry.hitCanvas(
+                        screen.first, screen.second, width, height))
+            }
+            assertNull(ParameciumExternalGeometry.hitCanvas(0f, 0f, width, height))
+        }
+    }
+
+    @Test
+    fun marginTapsInvalidDimensionsAndDistantPointsDoNotSelectOrgans() {
+        val tall = PrototypeCanvasViewport.fit(400f, 800f)
+        assertNull(tall.canvasToReference(200f, 200f))
+        assertNull(ParameciumExternalGeometry.hitCanvas(200f, 200f, 400f, 800f))
+        assertNull(ParameciumExternalGeometry.hitCanvas(200f, 700f, 400f, 800f))
+        assertNull(ParameciumExternalGeometry.hitCanvas(20f, 400f, 400f, 800f))
+        val wide = PrototypeCanvasViewport.fit(1080f, 280f)
+        assertNull(wide.canvasToReference(15f, 100f))
+        assertNull(ParameciumExternalGeometry.hitCanvas(15f, 100f, 1080f, 280f))
+        assertNull(ParameciumExternalGeometry.hitCanvas(
+            Float.NaN, 100f, 1080f, 280f))
+        assertNull(ParameciumExternalGeometry.hitCanvas(
+            100f, 100f, 0f, 280f))
+        assertThrows(IllegalArgumentException::class.java) {
+            PrototypeCanvasViewport.fit(Float.POSITIVE_INFINITY, 280f)
+        }
+        assertThrows(IllegalArgumentException::class.java) {
+            PrototypeCanvasViewport.fit(400f, -2f)
+        }
+    }
+
+    @Test
     fun prototypeCoordinatesRemainWithinCanvasAndUniquelyAssigned() {
         assertTrue(ParameciumExternalGeometry.hotspots.all {
             it.x in 0f..1f && it.y in 0f..1f && it.radius in 0.01f..0.25f

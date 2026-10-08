@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.ParameciumAnatomyDraft
 import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
+import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
 
 /**
  * N2.3B1 native Canvas PROTOTYPE, not an accepted anatomical plate.
@@ -66,18 +67,20 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                         val width = size.width.toFloat()
                         val height = size.height.toFloat()
                         if (width > 0f && height > 0f) {
-                            ParameciumExternalGeometry.hitNormalized(
-                                offset.x / width, offset.y / height
+                            ParameciumExternalGeometry.hitCanvas(
+                                offset.x, offset.y, width, height,
                             )?.let { selectedId = it }
                         }
                     }
                 },
         ) {
             drawRect(Color(0xFFF4FBFA))
-            val horizontalScale = size.width / ParameciumExternalGeometry.REFERENCE_WIDTH
-            val verticalScale = size.height / ParameciumExternalGeometry.REFERENCE_HEIGHT
+            // Uniform scale + centered letterboxing. Pointer input shares the
+            // precise inverse transform to avoid distorted anatomy or false taps.
+            val viewport = PrototypeCanvasViewport.fit(size.width, size.height)
             withTransform({
-                scale(horizontalScale, verticalScale, pivot = Offset.Zero)
+                translate(viewport.left, viewport.top)
+                scale(viewport.scale, viewport.scale, pivot = Offset.Zero)
             }) {
                 val silhouette = Path().apply {
                     moveTo(156f, 280f)
@@ -136,13 +139,14 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
 
                 // Trichocysts: short cortical rods, not cilia or food vacuoles.
                 for (i in 0..6) {
-                    val x = 275f + i * 19f
-                    val y = 355f + (i % 2) * 18f
+                    val x = 255f + i * 18f
+                    // Cortical position is approximate and requires plate review.
+                    val y = 418f + (i % 2) * 11f
                     drawLine(
                         if (selectedId == "trichocysts") Color(0xFFB55B16)
                         else Color(0xFF387C83),
                         start = Offset(x, y),
-                        end = Offset(x + 15f, y - 22f),
+                        end = Offset(x + 10f, y - 18f),
                         strokeWidth = if (selectedId == "trichocysts") 7f else 4f,
                     )
                 }

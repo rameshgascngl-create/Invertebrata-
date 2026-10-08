@@ -15,13 +15,18 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToIndex
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.click
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.geometry.Offset
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
 import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
+import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
+import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
 import com.gasczoology.invertebratelab.data.ValidatedA5AssetRepository
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -257,6 +262,36 @@ class NativeUiAcceptanceTest {
             .performScrollTo()
         rule.onNodeWithTag("n23b-selected-label")
             .assertTextEquals("Highlighted structure: Oral groove")
+    }
+
+    @Test
+    fun provisionalCanvasDirectTapUsesSameFittedCoordinatesAsDrawing() {
+        englishHome()
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("unit-1").performClick()
+        waitFor("native-unit-1")
+        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
+        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        waitFor("native-chapter-u1-paramecium")
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(12)
+        waitFor("n23b-external-preview")
+        val canvas = rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+        canvas.performScrollTo()
+        val location = ParameciumExternalGeometry.hotspots.single {
+            it.featureId == "cytoproct"
+        }
+        canvas.performTouchInput {
+            val viewport = PrototypeCanvasViewport.fit(
+                size.width.toFloat(), size.height.toFloat())
+            val point = viewport.referenceToCanvas(
+                location.x * ParameciumExternalGeometry.REFERENCE_WIDTH,
+                location.y * ParameciumExternalGeometry.REFERENCE_HEIGHT)
+            click(Offset(point.first, point.second))
+        }
+        rule.onNodeWithTag("n23b-selected-label", useUnmergedTree = true)
+            .performScrollTo()
+        rule.onNodeWithTag("n23b-selected-label")
+            .assertTextEquals("Highlighted structure: Cytoproct (cell anus)")
     }
 
     @Test
