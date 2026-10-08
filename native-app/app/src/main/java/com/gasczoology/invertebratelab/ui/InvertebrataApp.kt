@@ -21,12 +21,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
@@ -36,10 +35,13 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.gasczoology.invertebratelab.AcademicLoadState
 import com.gasczoology.invertebratelab.MainViewModel
+import com.gasczoology.invertebratelab.PersistedLearningLoadState
 import com.gasczoology.invertebratelab.data.A5Question
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.Chapter
+import com.gasczoology.invertebratelab.data.NativeLearningState
+import com.gasczoology.invertebratelab.data.StudyDestination
 
 private object Routes {
     const val HOME = "home"
@@ -49,6 +51,13 @@ private object Routes {
 
     fun unit(number: Int) = "unit/" + number
     fun chapter(id: String) = "chapter/" + id
+
+    fun restoredDestination(state: NativeLearningState): String = when (state.destination) {
+        StudyDestination.HOME -> HOME
+        StudyDestination.UNIT -> unit(state.unitNumber)
+        StudyDestination.CHAPTER -> chapter(state.chapterId)
+        StudyDestination.PRACTICE -> ASSESSMENT
+    }
 }
 
 @Composable
