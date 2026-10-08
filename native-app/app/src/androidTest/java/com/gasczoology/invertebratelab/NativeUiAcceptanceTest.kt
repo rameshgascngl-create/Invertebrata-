@@ -19,12 +19,16 @@ import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.AcademicUnit
+import com.gasczoology.invertebratelab.data.NativeLearningRepository
+import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.ValidatedA5AssetRepository
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlinx.coroutines.runBlocking
 
 /**
  * N1.3 device-level acceptance, executed on the installed native Android app.
@@ -34,6 +38,16 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class NativeUiAcceptanceTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    // Isolation only: persistence intentionally survives individual instrumentation
+    // tests, so each existing N1.3 assertion needs a clean navigation fixture.
+    @Before fun resetLearningPosition() {
+        runBlocking {
+            NativeLearningRepository(InstrumentationRegistry.getInstrumentation().targetContext)
+                .save(NativeLearningState())
+        }
+        rule.activityRule.scenario.recreate()
+    }
 
     private val units: List<AcademicUnit> by lazy {
         ValidatedA5AssetRepository(InstrumentationRegistry.getInstrumentation().targetContext).load()
