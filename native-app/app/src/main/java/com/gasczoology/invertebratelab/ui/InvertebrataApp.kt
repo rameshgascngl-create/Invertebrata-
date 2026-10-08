@@ -312,7 +312,13 @@ private fun UnitScreen(
 }
 
 @Composable
-private fun ChapterScreen(chapter: Chapter, language: AppLanguage, onBack: () -> Unit) {
+private fun ChapterScreen(
+    chapter: Chapter,
+    language: AppLanguage,
+    onBack: () -> Unit,
+    revealedQuestionId: String,
+    onToggle: (A5Question) -> Unit,
+) {
     Scaffold { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding).testTag("native-chapter-" + chapter.id),
@@ -320,27 +326,38 @@ private fun ChapterScreen(chapter: Chapter, language: AppLanguage, onBack: () ->
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             item {
-                OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
+                OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) {
+                    Text(label(language, "Back", "பின்செல்"))
+                }
                 Text(label(language, "Chapter: ", "அத்தியாயம்: ") + chapter.id)
                 Text(label(language, "Validated five-mark questions",
                     "சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினாக்கள்"))
             }
             items(chapter.a5Questions, key = { it.id }) { question ->
-                QuestionCard(question, language)
+                QuestionCard(
+                    question = question,
+                    language = language,
+                    showAnswer = question.id == revealedQuestionId,
+                    onToggle = { onToggle(question) },
+                )
             }
         }
     }
 }
 
 @Composable
-private fun QuestionCard(question: A5Question, language: AppLanguage) {
-    var showAnswer by rememberSaveable(question.id) { mutableStateOf(false) }
+private fun QuestionCard(
+    question: A5Question,
+    language: AppLanguage,
+    showAnswer: Boolean,
+    onToggle: () -> Unit,
+) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.fillMaxWidth().testTag("a5-card-" + question.id)) {
         Text(question.id)
         Text(question.question.value(language),
             modifier = Modifier.testTag("a5-question-" + question.id))
-        OutlinedButton(onClick = { showAnswer = !showAnswer },
+        OutlinedButton(onClick = onToggle,
             modifier = Modifier.heightIn(min = 48.dp).testTag("a5-toggle-" + question.id)) {
             Text(if (showAnswer) label(language, "Hide answer", "விடையை மறை")
                 else label(language, "Show five answer points", "ஐந்து விடைக் குறிப்புகளைக் காட்டு"))
