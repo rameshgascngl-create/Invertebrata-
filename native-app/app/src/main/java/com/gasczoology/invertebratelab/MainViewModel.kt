@@ -8,6 +8,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.LanguagePreferenceRepository
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
 import com.gasczoology.invertebratelab.data.NativeLearningState
+import com.gasczoology.invertebratelab.data.NativeCurriculumManifest
 import com.gasczoology.invertebratelab.data.ValidatedA5AssetRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -53,7 +54,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     init {
         viewModelScope.launch(Dispatchers.IO) {
             _academicState.value = try {
-                AcademicLoadState.Ready(academicRepository.load())
+                academicRepository.load().let { units ->
+                    NativeCurriculumManifest.validateAgainst(units)
+                    AcademicLoadState.Ready(units)
+                }
             } catch (error: Exception) {
                 // Never show a partial or substituted assessment corpus.
                 AcademicLoadState.Failure(error.message ?: "A5 corpus could not be validated")
