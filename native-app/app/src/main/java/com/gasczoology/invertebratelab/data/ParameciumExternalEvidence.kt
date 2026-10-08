@@ -45,10 +45,13 @@ object ParameciumExternalEvidence {
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC10143506/"
     private const val CAUDATUM_MORPHOLOGY =
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC8208649/"
-    private const val CYTOPROCT_COMPARISON =
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2634414/"
+    // Direct species-authenticated microscopic record, DOI 10.7295/W9CIL39181.
+    private const val CAUDATUM_CYTOPROCT =
+        "https://www.cellimagelibrary.org/images/39181"
+    private const val CYTOPROCT_PRIMARY_STUDY =
+        "https://pubmed.ncbi.nlm.nih.gov/4364579/"
     private const val CORTICAL_IMAGE =
-        "https://flagella.crbs.ucsd.edu/images/36755"
+        "https://www.cellimagelibrary.org/images/36755"
 
     val records: List<ParameciumFeatureEvidence> = listOf(
         ParameciumFeatureEvidence(
@@ -74,10 +77,10 @@ object ParameciumExternalEvidence {
         ),
         ParameciumFeatureEvidence(
             featureId = "cytoproct",
-            biologicalClaim = "A cytoproct is the site of egestion; the comparative cortical review places it on the ventral surface.",
-            sourceUrl = CYTOPROCT_COMPARISON,
-            exactLocator = "Figure 1 and surrounding paragraph on cortical organization (P. tetraurelia)",
-            scope = ParameciumSourceScope.COMPARATIVE_OTHER_SPECIES,
+            biologicalClaim = "In P. caudatum the cytoproct is an egestion ridge along the posterior suture on the ventral cell surface. A thin section cannot establish this Canvas marker's exact whole-cell coordinates.",
+            sourceUrl = CAUDATUM_CYTOPROCT,
+            exactLocator = "Cell Image Library CIL:39181, electron-microscope description; Allen and Wolf (1974), J Cell Sci 14:611-631",
+            scope = ParameciumSourceScope.CAUDATUM,
         ),
         ParameciumFeatureEvidence(
             featureId = "trichocysts",
@@ -92,6 +95,7 @@ object ParameciumExternalEvidence {
         "$CAUDATUM_MORPHOLOGY ; Figure 1B (P. caudatum, posterior pointed)",
         "$RESEARCH_REVIEW ; Figure 1A-C (species morphology and cortical organelles)",
         "$UG_REFERENCE ; External features, PDF slide 5 (rounded anterior, tapered posterior)",
+        "$CYTOPROCT_PRIMARY_STUDY ; Allen and Wolf 1974, cytoproct of P. caudatum; PMID 4364579",
     )
 
     fun validateAgainst(plate: NativeAnatomyPlate) {
@@ -108,7 +112,11 @@ object ParameciumExternalEvidence {
                 it.sourceUrl.startsWith("https://") &&
                 !it.positionReviewed && !it.tamilReviewed
         })
-        require(records.any { it.scope == ParameciumSourceScope.COMPARATIVE_OTHER_SPECIES })
+        // No comparative-only species evidence is allowed to stand for a
+        // P. caudatum organ in the specimen-specific review packet.
+        require(records.all { it.scope == ParameciumSourceScope.CAUDATUM })
+        require(records.single { it.featureId == "cytoproct" }.sourceUrl ==
+            CAUDATUM_CYTOPROCT)
         require(orientationReferences.size >= 2)
     }
 

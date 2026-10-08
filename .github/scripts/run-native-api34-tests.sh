@@ -34,6 +34,19 @@ if [ "$normal_exit" -ne 0 ]; then
     exit 1
 fi
 
+# N2.3B4: capture the REAL instrumented native Canvas, fail if missing.
+# These emulator screenshots are visual-review aids, not physical-device QA.
+anatomy_dir="/sdcard/Android/data/com.gasczoology.invertebratelab/files/native-anatomy-evidence"
+if ! adb shell test -s "$anatomy_dir/paramecium-normal-oral-groove.png"; then
+    normal_exit=ANATOMY_SCREENSHOT_MISSING
+    exit 1
+fi
+if ! adb pull "$anatomy_dir/paramecium-normal-oral-groove.png" \
+    qa-evidence/paramecium-normal-oral-groove.png; then
+    normal_exit=ANATOMY_SCREENSHOT_PULL_FAILED
+    exit 1
+fi
+
 if ! adb shell settings put system font_scale 2.0; then
     large_text_exit=DEVICE_CONFIG_FAILED
     exit 1
@@ -52,3 +65,16 @@ cp -a native-app/app/build/reports/androidTests/connected \
 if [ "$large_text_exit" -ne 0 ]; then
     exit 1
 fi
+
+if ! adb shell test -s "$anatomy_dir/paramecium-tamil200-cytoproct.png"; then
+    large_text_exit=ANATOMY_TAMIL200_SCREENSHOT_MISSING
+    exit 1
+fi
+if ! adb pull "$anatomy_dir/paramecium-tamil200-cytoproct.png" \
+    qa-evidence/paramecium-tamil200-cytoproct.png; then
+    large_text_exit=ANATOMY_TAMIL200_SCREENSHOT_PULL_FAILED
+    exit 1
+fi
+sha256sum qa-evidence/paramecium-normal-oral-groove.png \
+    qa-evidence/paramecium-tamil200-cytoproct.png \
+    > qa-evidence/anatomy-screenshot-sha256.txt

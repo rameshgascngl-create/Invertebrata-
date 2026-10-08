@@ -1,6 +1,9 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
+import android.graphics.Bitmap
+import java.io.File
+import java.io.FileOutputStream
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -35,6 +38,29 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlinx.coroutines.runBlocking
+
+/**
+ * Save genuine device-rendered screenshots of the Canvas, not a generated or
+ * screenshot-traced anatomy substitute. Captures are technical review evidence.
+ */
+private fun saveN23bReviewScreenshot(fileName: String) {
+    val instrumentation = InstrumentationRegistry.getInstrumentation()
+    val image = requireNotNull(instrumentation.uiAutomation.takeScreenshot()) {
+        "Android UiAutomation failed to capture anatomical review screenshot"
+    }
+    try {
+        val root = requireNotNull(instrumentation.targetContext.getExternalFilesDir(null))
+        val directory = File(root, "native-anatomy-evidence")
+        check(directory.isDirectory || directory.mkdirs()) { "Cannot create screenshot directory" }
+        FileOutputStream(File(directory, fileName)).use { output ->
+            check(image.compress(Bitmap.CompressFormat.PNG, 100, output)) {
+                "Failed to encode Canvas QA screenshot"
+            }
+        }
+    } finally {
+        image.recycle()
+    }
+}
 
 /**
  * N1.3 device-level acceptance, executed on the installed native Android app.
@@ -266,6 +292,10 @@ class NativeUiAcceptanceTest {
             .performScrollTo()
         rule.onNodeWithTag("n23b-selected-label")
             .assertTextEquals("Highlighted structure: Oral groove")
+        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+            .performScrollTo()
+        rule.waitForIdle()
+        saveN23bReviewScreenshot("paramecium-normal-oral-groove.png")
     }
 
     @Test
@@ -395,6 +425,10 @@ class NativeTamilLargeTextAcceptanceTest {
             .performScrollTo()
         rule.onNodeWithTag("n23b-selected-label")
             .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
+        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+            .performScrollTo()
+        rule.waitForIdle()
+        saveN23bReviewScreenshot("paramecium-tamil200-cytoproct.png")
     }
 
     @Test

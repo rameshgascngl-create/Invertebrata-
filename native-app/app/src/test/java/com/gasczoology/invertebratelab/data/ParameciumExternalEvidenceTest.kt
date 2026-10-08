@@ -21,10 +21,15 @@ class ParameciumExternalEvidenceTest {
             it.sourceUrl.startsWith("https://") &&
                 it.exactLocator.isNotBlank() && it.biologicalClaim.isNotBlank()
         })
-        assertEquals(ParameciumSourceScope.COMPARATIVE_OTHER_SPECIES,
+        assertEquals(ParameciumSourceScope.CAUDATUM,
             records.single { it.featureId == "cytoproct" }.scope)
+        assertEquals("https://www.cellimagelibrary.org/images/39181",
+            records.single { it.featureId == "cytoproct" }.sourceUrl)
+        assertTrue(records.all { it.scope == ParameciumSourceScope.CAUDATUM })
         assertEquals(ParameciumSourceScope.CAUDATUM,
             records.single { it.featureId == "trichocysts" }.scope)
+        assertEquals("https://www.cellimagelibrary.org/images/36755",
+            records.single { it.featureId == "trichocysts" }.sourceUrl)
     }
 
     @Test
