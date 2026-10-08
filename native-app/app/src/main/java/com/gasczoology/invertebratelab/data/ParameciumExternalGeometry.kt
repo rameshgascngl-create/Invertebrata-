@@ -61,6 +61,56 @@ class PrototypeCanvasViewport private constructor(
     }
 }
 
+/** Explicit orientation-linked, original Bézier geometry; still a schematic. */
+data class PrototypePoint(val x: Float, val y: Float) {
+    init {
+        require(x.isFinite() && y.isFinite() && x in 0f..1000f && y in 0f..600f)
+    }
+}
+
+data class PrototypeCubicSegment(
+    val control1: PrototypePoint,
+    val control2: PrototypePoint,
+    val end: PrototypePoint,
+)
+
+/**
+ * N2.3B3 original contours: blunt anterior left, tapered posterior right.
+ * These are hand-authored candidates, NOT reconstructed microscopy coordinates.
+ */
+object ParameciumSchematicContour {
+    val anterior = PrototypePoint(155f, 275f)
+    val posteriorTip = PrototypePoint(874f, 307f)
+    val segments: List<PrototypeCubicSegment> = listOf(
+        PrototypeCubicSegment(
+            PrototypePoint(125f, 190f), PrototypePoint(220f, 120f),
+            PrototypePoint(360f, 105f)),
+        PrototypeCubicSegment(
+            PrototypePoint(540f, 85f), PrototypePoint(720f, 125f),
+            PrototypePoint(815f, 228f)),
+        PrototypeCubicSegment(
+            PrototypePoint(839f, 255f), PrototypePoint(859f, 288f),
+            posteriorTip),
+        PrototypeCubicSegment(
+            PrototypePoint(823f, 387f), PrototypePoint(735f, 451f),
+            PrototypePoint(615f, 477f)),
+        PrototypeCubicSegment(
+            PrototypePoint(475f, 515f), PrototypePoint(330f, 488f),
+            PrototypePoint(226f, 417f)),
+        PrototypeCubicSegment(
+            PrototypePoint(165f, 370f), PrototypePoint(145f, 322f),
+            anterior),
+    )
+
+    init {
+        require(segments.size == 6 && segments.last().end == anterior)
+        require(segments[2].end == posteriorTip)
+        require(anterior.x < 175f && posteriorTip.x > 850f)
+        require(anterior.x < posteriorTip.x)
+        require(segments.all { it.end.x in 0f..1000f })
+    }
+}
+
 object ParameciumExternalGeometry {
     const val REFERENCE_WIDTH = 1000f
     const val REFERENCE_HEIGHT = 600f
@@ -71,7 +121,7 @@ object ParameciumExternalGeometry {
         PrototypeHotspot("pellicle", 0.30f, 0.27f, 0.087f),
         PrototypeHotspot("somatic-cilia", 0.64f, 0.165f, 0.085f),
         PrototypeHotspot("oral-groove", 0.55f, 0.705f, 0.085f),
-        PrototypeHotspot("cytoproct", 0.76f, 0.666f, 0.073f),
+        PrototypeHotspot("cytoproct", 0.776f, 0.70f, 0.073f),
         PrototypeHotspot("trichocysts", 0.31f, 0.70f, 0.075f),
     )
 

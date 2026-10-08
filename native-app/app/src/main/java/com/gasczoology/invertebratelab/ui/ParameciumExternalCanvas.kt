@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.ParameciumAnatomyDraft
 import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
+import com.gasczoology.invertebratelab.data.ParameciumSchematicContour
+import com.gasczoology.invertebratelab.data.ParameciumExternalEvidence
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
 
 /**
@@ -53,6 +55,17 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
         Text(if (language == AppLanguage.TAMIL)
             "உறுப்புகளின் இடம், தலைப்புகள், தமிழ் சொற்கள் அறிவியல் மதிப்பாய்வுக்கு உட்பட்டவை. தேர்வு செய்ய உறுப்பைத் தொடவும் அல்லது கீழுள்ள பொத்தானைப் பயன்படுத்தவும்."
         else "Provisional organ positions and Tamil terminology: scientific review pending. Tap a marked region or use the accessible buttons below.")
+
+        // The orientation is explicitly stated to avoid a figure being read
+        // with reversed anterior/posterior or dorsal/ventral axes.
+        val proposedView = ParameciumExternalEvidence.view
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "முன்புறம் (வட்டம்) ←   பின்புறம் (கூர்மை) →   வாய்ப்புறம்: கீழ்ப்பக்கம்"
+            else "Anterior (rounded) ←   Posterior (tapered) →   Oral/ventral side: bottom",
+            modifier = Modifier.testTag("n23b-orientation"),
+        )
+        require(!proposedView.orientationVerifiedAgainstFigure)
 
         Canvas(
             modifier = Modifier.fillMaxWidth().height(280.dp)
@@ -83,12 +96,15 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 scale(viewport.scale, viewport.scale, pivot = Offset.Zero)
             }) {
                 val silhouette = Path().apply {
-                    moveTo(156f, 280f)
-                    cubicTo(118f, 190f, 214f, 118f, 376f, 105f)
-                    cubicTo(574f, 76f, 767f, 150f, 823f, 266f)
-                    cubicTo(866f, 350f, 791f, 435f, 624f, 480f)
-                    cubicTo(477f, 524f, 331f, 491f, 232f, 425f)
-                    cubicTo(166f, 378f, 152f, 327f, 156f, 280f)
+                    // One coordinate source for the silhouette, test constraints
+                    // and declared rounded-anterior / tapered-posterior orientation.
+                    val contour = ParameciumSchematicContour
+                    moveTo(contour.anterior.x, contour.anterior.y)
+                    for (part in contour.segments) {
+                        cubicTo(part.control1.x, part.control1.y,
+                            part.control2.x, part.control2.y,
+                            part.end.x, part.end.y)
+                    }
                     close()
                 }
                 drawPath(silhouette, Color(0xFFD3F1EC))
@@ -134,7 +150,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     if (selectedId == "cytoproct") Color(0xFFB55B16)
                     else Color(0xFF276A6D),
                     radius = if (selectedId == "cytoproct") 13f else 8f,
-                    center = Offset(756f, 400f),
+                    center = Offset(776f, 420f),
                 )
 
                 // Trichocysts: short cortical rods, not cilia or food vacuoles.
@@ -148,6 +164,19 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                         start = Offset(x, y),
                         end = Offset(x + 10f, y - 18f),
                         strokeWidth = if (selectedId == "trichocysts") 7f else 4f,
+                    )
+                }
+
+                // Longer posterior cilia, the characteristic caudal tuft of
+                // P. caudatum. These original strokes are schematic and unreviewed.
+                for (i in -3..3) {
+                    drawLine(
+                        color = if (selectedId == "somatic-cilia")
+                            Color(0xFFB55B16) else Color(0xFF357F82),
+                        start = Offset(872f, 307f + i * 2f),
+                        end = Offset(910f + (3 - kotlin.math.abs(i)) * 5f,
+                            307f + i * 16f),
+                        strokeWidth = if (selectedId == "somatic-cilia") 4f else 2.5f,
                     )
                 }
 

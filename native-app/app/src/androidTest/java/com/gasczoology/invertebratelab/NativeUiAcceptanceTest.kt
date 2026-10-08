@@ -243,6 +243,10 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(12)
         waitFor("n23b-external-preview")
         rule.onNodeWithTag("n23b-external-canvas").assertExists()
+        rule.onNodeWithTag("n23b-orientation", useUnmergedTree = true)
+            .assertTextEquals(
+                "Anterior (rounded) ←   Posterior (tapered) →   Oral/ventral side: bottom"
+            )
 
         // Test the actual native 48 dp Compose controls rather than tapping by coordinates.
         val cilia = rule.onNodeWithTag("n23b-select-somatic-cilia", useUnmergedTree = true)
@@ -379,6 +383,10 @@ class NativeTamilLargeTextAcceptanceTest {
             rule.onAllNodesWithTag("n23b-external-preview")
                 .fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("n23b-orientation", useUnmergedTree = true)
+            .assertTextEquals(
+                "முன்புறம் (வட்டம்) ←   பின்புறம் (கூர்மை) →   வாய்ப்புறம்: கீழ்ப்பக்கம்"
+            )
         val target = rule.onNodeWithTag("n23b-select-cytoproct", useUnmergedTree = true)
         target.performScrollTo()
         target.assertHeightIsAtLeast(48.dp)
