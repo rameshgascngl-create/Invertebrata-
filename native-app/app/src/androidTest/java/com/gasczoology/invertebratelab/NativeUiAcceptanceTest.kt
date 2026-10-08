@@ -48,14 +48,20 @@ private fun saveN23bReviewScreenshot(fileName: String) {
 
     // Record the *current visible native screen* straight into persistent
     // emulator QA storage before instrumentation package cleanup.
-    val folder = "/sdcard/Download/native-anatomy-evidence"
-    val command = "mkdir -p '$folder' && screencap -p '$folder/$fileName' " +
-        "&& test -s '$folder/$fileName' && echo QA_CAPTURE_OK"
-    val output = ParcelFileDescriptor.AutoCloseInputStream(
-        InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(command)
-    ).use { it.readBytes().toString(Charsets.UTF_8) }
-    check("QA_CAPTURE_OK" in output) {
-        "Cannot capture or verify actual native Canvas screenshot on emulator"
+    val file = "/sdcard/Download/native-anatomy-evidence/$fileName"
+    val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
+    // UiAutomationConnection executes argv directly (no host shell parser).
+    // The QA directory is created in CI BEFORE instrumentation starts.
+    // Never use &&, pipes or shell quotes here.
+    ParcelFileDescriptor.AutoCloseInputStream(
+        automation.executeShellCommand("screencap -p $file")
+    ).use { it.readBytes() }
+
+    val sizeText = ParcelFileDescriptor.AutoCloseInputStream(
+        automation.executeShellCommand("stat -c %s $file")
+    ).use { it.readBytes().toString(Charsets.UTF_8).trim() }
+    check((sizeText.toLongOrNull() ?: 0L) > 1000L) {
+        "Required emulator screenshot is missing or truncated: $file"
     }
 }
 

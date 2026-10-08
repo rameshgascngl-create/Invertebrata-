@@ -20,6 +20,13 @@ if ! adb shell settings put system font_scale 1.0; then
     exit 1
 fi
 
+# Create durable screenshot destination *before* running instrumentation.
+# Android UiAutomation executes raw argv and cannot evaluate shell compounds.
+if ! adb shell mkdir -p /sdcard/Download/native-anatomy-evidence; then
+    normal_exit=ANATOMY_SCREENSHOT_DIR_FAILED
+    exit 1
+fi
+
 gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
   -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUiAcceptanceTest
 normal_exit=$?
