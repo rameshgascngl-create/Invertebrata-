@@ -280,12 +280,14 @@ class NativeUiAcceptanceTest {
         val location = ParameciumExternalGeometry.hotspots.single {
             it.featureId == "cytoproct"
         }
+        // SemanticsNode has measured root bounds; TouchInjectionScope does
+        // not expose a `size` property under this Compose UI testing version.
+        val bounds = canvas.fetchSemanticsNode().boundsInRoot
+        val viewport = PrototypeCanvasViewport.fit(bounds.width, bounds.height)
+        val point = viewport.referenceToCanvas(
+            location.x * ParameciumExternalGeometry.REFERENCE_WIDTH,
+            location.y * ParameciumExternalGeometry.REFERENCE_HEIGHT)
         canvas.performTouchInput {
-            val viewport = PrototypeCanvasViewport.fit(
-                size.width.toFloat(), size.height.toFloat())
-            val point = viewport.referenceToCanvas(
-                location.x * ParameciumExternalGeometry.REFERENCE_WIDTH,
-                location.y * ParameciumExternalGeometry.REFERENCE_HEIGHT)
             click(Offset(point.first, point.second))
         }
         rule.onNodeWithTag("n23b-selected-label", useUnmergedTree = true)

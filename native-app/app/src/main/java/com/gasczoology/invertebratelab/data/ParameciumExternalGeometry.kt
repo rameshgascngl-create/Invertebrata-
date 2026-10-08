@@ -25,7 +25,7 @@ data class PrototypeHotspot(
  * Letterbox bars are not interactive anatomical regions.
  * Coordinates are in native Canvas pixels; no Android dependencies.
  */
-data class PrototypeCanvasViewport private constructor(
+class PrototypeCanvasViewport private constructor(
     val canvasWidth: Float,
     val canvasHeight: Float,
     val scale: Float,
