@@ -83,12 +83,46 @@ if ! grep -Fq "a5-question-$qid" "$evidence/ui-before.xml" ||
 fi
 
 adb shell dumpsys activity processes > "$evidence/processes-before-home.txt"
-adb shell input keyevent KEYCODE_HOME
-uid="$(adb shell dumpsys package "$package" | grep -m1 -oE 'userId=[0-9]+' | cut -d= -f2 | tr -d '\r' || true)"
+
+# Resolve the exact installed package UID through PackageManager. Independently
+# cross-check the UID against ActivityManager's record for the observed app PID.
+# The old dumpsys-package userId grep silently returned empty on API 34.
+adb shell cmd package list packages -U --user 0 "$package" \
+    > "$evidence/package-uid-query.txt" 2>&1 || true
+pkg_uid="$(awk -v pkg="$package" '
+    $1 == "package:" pkg {
+        for (i=2; i<=NF; i++) {
+            if ($i ~ /^uid:[0-9]+$/) {
+                sub(/^uid:/, "", $i)
+                print $i
+                exit
+            }
+        }
+    }
+' "$evidence/package-uid-query.txt")"
+proc_uid="$(awk -v pid="$old_pid" -v pkg="$package" '
+    $1 == "*APP*" && $2 == "UID" && $3 ~ /^[0-9]+$/ {
+        for (i=4; i<=NF; i++) {
+            if (index($i, pid ":" pkg "/") == 1) {
+                print $3
+                exit
+            }
+        }
+    }
+' "$evidence/processes-before-home.txt")"
+printf 'old_pid=%s\npackage_uid=%s\nprocess_record_uid=%s\n' \
+    "$old_pid" "$pkg_uid" "$proc_uid" > "$evidence/uid-crosscheck.txt"
+if [[ -n "$pkg_uid" && -n "$proc_uid" && "$pkg_uid" != "$proc_uid" ]]; then
+    result=BACKGROUND_UID_MISMATCH
+    exit 1
+fi
+uid="${pkg_uid:-$proc_uid}"
 if [[ ! "$uid" =~ ^[0-9]+$ ]]; then
     result=BACKGROUND_UID_UNAVAILABLE
     exit 1
 fi
+
+adb shell input keyevent KEYCODE_HOME
 
 # ActivityManager's process-state API gives stronger evidence than merely
 # assuming the HOME key successfully backgrounded the application.
