@@ -31,6 +31,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.ParameciumAnatomyDraft
 import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
 import com.gasczoology.invertebratelab.data.ParameciumCytoproctRidgeCandidate
+import com.gasczoology.invertebratelab.data.ParameciumReviewHighlightContract
 import com.gasczoology.invertebratelab.data.ParameciumSchematicContour
 import com.gasczoology.invertebratelab.data.ParameciumExternalEvidence
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
@@ -158,7 +159,8 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 drawPath(cytoproctPath,
                     if (selectedId == "cytoproct") Color(0xFFB55B16)
                     else Color(0xFF276A6D),
-                    style = Stroke(width = if (selectedId == "cytoproct") 11f else 7f),
+                    style = Stroke(width = if (selectedId == "cytoproct")
+                        ParameciumReviewHighlightContract.SELECTED_RIDGE_STROKE else 7f),
                 )
 
                 // N2.3C1 DRAFT: subpellicular cortical trichocysts sampled
@@ -197,9 +199,9 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 }?.let { area ->
                     drawCircle(
                         Color(0xFFE28D3E),
-                        radius = 19f,
+                        radius = ParameciumReviewHighlightContract.radiusFor(selectedId),
                         center = Offset(area.x * 1000f, area.y * 600f),
-                        style = Stroke(width = 5f),
+                        style = Stroke(width = ParameciumReviewHighlightContract.RING_STROKE),
                     )
                 }
             }
@@ -216,6 +218,14 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     "மூடிய நிலையில் செல் கழிவு வெளியேறும் பகுதி மேடுபோலத் தோன்றும். இவ்வரைபடத்தில் அதன் துல்லியமான இடம் இன்னும் சரிபார்க்கப்படவில்லை."
                 else "Closed cytoproct shown schematically as a ridge; its exact position has not been verified against a whole-cell micrograph.",
                 modifier = Modifier.testTag("n23c2-cytoproct-evidence-limit"),
+            )
+        }
+        if (selectedId == "oral-groove") {
+            Text(
+                if (language == AppLanguage.TAMIL)
+                    "வாய்ப்பள்ளம் வாய்ப்புறத்தில் அமைந்துள்ளது. இவ்வரைபடத்தில் காட்டியுள்ள அதன் வளைவும் துல்லியமான இடமும் முழுச் செல் நுண்ணோக்கிப் படத்துடன் இன்னும் சரிபார்க்கப்படவில்லை."
+                else "The oral groove lies on the oral/ventral surface. Its curve and exact position in this schematic have not been validated against whole-cell microscopy.",
+                modifier = Modifier.testTag("n23c3-oral-geometry-limit"),
             )
         }
         // Explicit large semantic touch targets; Canvas gesture is supplementary.

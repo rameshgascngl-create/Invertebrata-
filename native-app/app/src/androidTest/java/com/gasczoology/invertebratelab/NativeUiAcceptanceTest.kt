@@ -295,6 +295,8 @@ class NativeUiAcceptanceTest {
             .performScrollTo()
         rule.onNodeWithTag("n23b-selected-label")
             .assertTextEquals("Highlighted structure: Oral groove")
+        rule.onNodeWithTag("n23c3-oral-geometry-limit", useUnmergedTree = true)
+            .assertExists()
         rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
             .performScrollTo()
         rule.waitForIdle()
@@ -436,6 +438,11 @@ class NativeTamilLargeTextAcceptanceTest {
             .performScrollTo()
         rule.waitForIdle()
         saveN23bReviewScreenshot("paramecium-tamil200-cytoproct.png")
+        // Assert the new geometry disclaimer can also be reached in Tamil at 200%.
+        val oral = rule.onNodeWithTag("n23b-select-oral-groove", useUnmergedTree = true)
+        oral.performScrollTo().performClick()
+        rule.onNodeWithTag("n23c3-oral-geometry-limit", useUnmergedTree = true)
+            .performScrollTo().assertExists()
     }
 
     @Test

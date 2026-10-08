@@ -148,6 +148,81 @@ object ParameciumCytoproctRidgeCandidate {
     }
 }
 
+
+/**
+ * N2.3C3 -- visual-review geometry, not specimen-derived measurements.
+ *
+ * A whole-cell P. caudatum phase-contrast image (Richard Allen, Fig 0)
+ * locates the oral region. Allen Fig 22 is an oral-region transverse section.
+ * Neither source establishes calibrated XY coordinates or an approved
+ * longitudinal oral-groove contour for this hand-drawn Canvas.
+ */
+object ParameciumOralReferenceComparison {
+    const val WHOLE_CELL_URL =
+        "https://www6.pbrc.hawaii.edu/allen/ch10a/00-pca.html"
+    const val ORAL_TRANSVERSE_URL =
+        "https://www6.pbrc.hawaii.edu/allen/ch10a/22-pca740131-54.html"
+
+    fun verifyNoPrematureGeometryApproval() {
+        val plate = ParameciumAnatomyDraft.plates.single {
+            it.plateId == "external-cilia"
+        }
+        val feature = plate.features.single { it.id == "oral-groove" }
+        val record = ParameciumExternalEvidence.records.single {
+            it.featureId == "oral-groove"
+        }
+        require(plate.status == AcademicWorkStatus.DRAFT_UNVERIFIED &&
+            plate.review == null)
+        require(feature.geometryKey.startsWith("pending-") &&
+            feature.touchTargetKey.startsWith("pending-"))
+        require(record.scope == ParameciumSourceScope.CAUDATUM &&
+            !record.positionReviewed && !record.tamilReviewed)
+        require(!ParameciumExternalEvidence.view.orientationVerifiedAgainstFigure)
+    }
+}
+
+/**
+ * The orange target ring must not conceal the tiny highlighted cytoproct
+ * ridge. Pixel clearance is calculated in the common 1000x600 reference
+ * coordinate system before viewport scaling; existing organ positions
+ * and all touch hotspots remain unchanged.
+ */
+object ParameciumReviewHighlightContract {
+    const val DEFAULT_RADIUS = 19f
+    const val CYTOPROCT_RADIUS = 34f
+    const val RING_STROKE = 5f
+    const val SELECTED_RIDGE_STROKE = 11f
+
+    fun radiusFor(featureId: String): Float =
+        if (featureId == "cytoproct") CYTOPROCT_RADIUS else DEFAULT_RADIUS
+
+    /**
+     * The quadratic Bezier is in the convex hull of start/control/end.
+     * Thus the farthest control point supplies a conservative bound.
+     */
+    fun cytoproctRidgeClearance(): Float {
+        val ridge = ParameciumCytoproctRidgeCandidate
+        val hotspot = ParameciumExternalGeometry.hotspots.single {
+            it.featureId == "cytoproct"
+        }
+        val cx = hotspot.x * ParameciumExternalGeometry.REFERENCE_WIDTH
+        val cy = hotspot.y * ParameciumExternalGeometry.REFERENCE_HEIGHT
+        val farthest = listOf(ridge.start, ridge.control, ridge.end).maxOf {
+            val dx = it.x - cx
+            val dy = it.y - cy
+            kotlin.math.sqrt(dx * dx + dy * dy)
+        }
+        return CYTOPROCT_RADIUS - RING_STROKE / 2f -
+            SELECTED_RIDGE_STROKE / 2f - farthest
+    }
+
+    fun verifyVisualAndAcademicGuard() {
+        ParameciumCytoproctRidgeCandidate.verifySchematicContract()
+        ParameciumOralReferenceComparison.verifyNoPrematureGeometryApproval()
+        require(cytoproctRidgeClearance() >= 8f)
+    }
+}
+
 object ParameciumExternalGeometry {
     const val REFERENCE_WIDTH = 1000f
     const val REFERENCE_HEIGHT = 600f
