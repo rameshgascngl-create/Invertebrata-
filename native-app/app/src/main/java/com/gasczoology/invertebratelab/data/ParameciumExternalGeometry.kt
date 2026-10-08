@@ -101,9 +101,20 @@ object ParameciumExternalGeometry {
         ) return null
         val view = PrototypeCanvasViewport.fit(width, height)
         val point = view.canvasToReference(x, y) ?: return null
-        val refX = point.first
-        val refY = point.second
-        return hotspots.asSequence()
+        return hitAtReference(point.first, point.second)
+    }
+
+    /**
+     * Both public hit APIs use the same CIRCULAR radius in undistorted
+     * reference-space units (1000x600), not independent normalized circles.
+     */
+    fun hitNormalized(x: Float, y: Float): String? {
+        if (!x.isFinite() || !y.isFinite() || x !in 0f..1f || y !in 0f..1f) return null
+        return hitAtReference(x * REFERENCE_WIDTH, y * REFERENCE_HEIGHT)
+    }
+
+    private fun hitAtReference(refX: Float, refY: Float): String? =
+        hotspots.asSequence()
             .map { area ->
                 val dx = refX - area.x * REFERENCE_WIDTH
                 val dy = refY - area.y * REFERENCE_HEIGHT
@@ -114,16 +125,6 @@ object ParameciumExternalGeometry {
                 squaredDistance <= radius * radius
             }
             .minByOrNull { it.second }?.first?.featureId
-    }
-
-    /** Returns null outside valid circular prototype landmarks; never guesses an organ. */
-    fun hitNormalized(x: Float, y: Float): String? {
-        if (!x.isFinite() || !y.isFinite() || x !in 0f..1f || y !in 0f..1f) return null
-        return hotspots.asSequence()
-            .map { it to ((x - it.x) * (x - it.x) + (y - it.y) * (y - it.y)) }
-            .filter { (area, d2) -> d2 <= area.radius * area.radius }
-            .minByOrNull { it.second }?.first?.featureId
-    }
 
     init {
         validateAgainst(ParameciumAnatomyDraft.plates.single {

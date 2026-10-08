@@ -97,6 +97,47 @@ class ParameciumExternalGeometryTest {
     }
 
     @Test
+    fun normalizedAndRealCanvasTapsShareExactlyTheSameReferenceSpaceHitModel() {
+        val widthsAndHeights = listOf(
+            360f to 280f, 1080f to 280f, 400f to 800f, 1000f to 600f,
+        )
+        for ((width, height) in widthsAndHeights) {
+            val fitted = PrototypeCanvasViewport.fit(width, height)
+            for (area in ParameciumExternalGeometry.hotspots) {
+                val refRadius = area.radius * ParameciumExternalGeometry.REFERENCE_HEIGHT
+                // Just inside, at, and just outside the circular hit boundary.
+                for (fraction in listOf(0f, 0.50f, 0.98f, 1.02f, 1.20f)) {
+                    val xRef = area.x * ParameciumExternalGeometry.REFERENCE_WIDTH +
+                        fraction * refRadius
+                    val yRef = area.y * ParameciumExternalGeometry.REFERENCE_HEIGHT
+                    val normalizedX = xRef / ParameciumExternalGeometry.REFERENCE_WIDTH
+                    val normalizedY = yRef / ParameciumExternalGeometry.REFERENCE_HEIGHT
+                    val (pixelX, pixelY) = fitted.referenceToCanvas(xRef, yRef)
+                    assertEquals(
+                        "Mismatch for " + area.featureId + " at fraction " + fraction,
+                        ParameciumExternalGeometry.hitCanvas(
+                            pixelX, pixelY, width, height),
+                        ParameciumExternalGeometry.hitNormalized(
+                            normalizedX, normalizedY),
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun normalizedCoordinatesDoNotOverSelectAlongLongerReferenceXAxis() {
+        // Previously normalized space declared this a pellicle hit (0.07 < 0.087)
+        // while native pixel input rejected it (70 reference pixels > 52.2).
+        val formerFalsePositiveX = 0.37f
+        val y = 0.27f
+        assertNull(ParameciumExternalGeometry.hitNormalized(formerFalsePositiveX, y))
+        val fit = PrototypeCanvasViewport.fit(360f, 280f)
+        val (px, py) = fit.referenceToCanvas(370f, 162f)
+        assertNull(ParameciumExternalGeometry.hitCanvas(px, py, 360f, 280f))
+    }
+
+    @Test
     fun prototypeCoordinatesRemainWithinCanvasAndUniquelyAssigned() {
         assertTrue(ParameciumExternalGeometry.hotspots.all {
             it.x in 0f..1f && it.y in 0f..1f && it.radius in 0.01f..0.25f
