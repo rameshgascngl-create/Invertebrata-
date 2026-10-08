@@ -374,10 +374,15 @@ private fun QuestionCard(
 @Composable
 private fun AssessmentScreen(
     questions: List<A5Question>,
+    currentQuestionId: String,
+    answerRevealed: Boolean,
     language: AppLanguage,
     onBack: () -> Unit,
+    onPrevious: (A5Question) -> Unit,
+    onNext: (A5Question) -> Unit,
+    onToggle: (A5Question) -> Unit,
 ) {
-    var index by rememberSaveable { mutableIntStateOf(0) }
+    val currentIndex = questions.indexOfFirst { it.id == currentQuestionId }.coerceAtLeast(0)
     Scaffold { padding ->
         Column(
             modifier = Modifier.fillMaxSize().padding(padding)
@@ -385,21 +390,32 @@ private fun AssessmentScreen(
                 .padding(20.dp).testTag("native-assessment"),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
+            OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) {
+                Text(label(language, "Back", "பின்செல்"))
+            }
             Text(label(language, "Five-mark self-study", "ஐந்து மதிப்பெண் சுயபயிற்சி"))
-            Text((index + 1).toString() + " / " + questions.size)
+            Text((currentIndex + 1).toString() + " / " + questions.size)
             if (questions.isNotEmpty()) {
-                val question = questions[index.coerceIn(0, questions.lastIndex)]
+                val question = questions[currentIndex]
                 Text(label(language, "Chapter: ", "அத்தியாயம்: ") + question.chapterId)
-                QuestionCard(question, language)
+                QuestionCard(
+                    question = question, language = language,
+                    showAnswer = answerRevealed, onToggle = { onToggle(question) },
+                )
                 Spacer(Modifier.height(8.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    OutlinedButton(onClick = { index -= 1 }, enabled = index > 0,
-                        modifier = Modifier.heightIn(min = 48.dp).testTag("assessment-prev")) {
+                    OutlinedButton(
+                        onClick = { onPrevious(questions[currentIndex - 1]) },
+                        enabled = currentIndex > 0,
+                        modifier = Modifier.heightIn(min = 48.dp).testTag("assessment-prev"),
+                    ) {
                         Text(label(language, "Previous", "முந்தையது"))
                     }
-                    Button(onClick = { index += 1 }, enabled = index < questions.lastIndex,
-                        modifier = Modifier.heightIn(min = 48.dp).testTag("assessment-next")) {
+                    Button(
+                        onClick = { onNext(questions[currentIndex + 1]) },
+                        enabled = currentIndex < questions.lastIndex,
+                        modifier = Modifier.heightIn(min = 48.dp).testTag("assessment-next"),
+                    ) {
                         Text(label(language, "Next", "அடுத்தது"))
                     }
                 }
