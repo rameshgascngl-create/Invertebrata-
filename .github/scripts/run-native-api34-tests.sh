@@ -36,7 +36,9 @@ fi
 
 # N2.3B4: capture the REAL instrumented native Canvas, fail if missing.
 # These emulator screenshots are visual-review aids, not physical-device QA.
-anatomy_dir="/sdcard/Android/data/com.gasczoology.invertebratelab/files/native-anatomy-evidence"
+# Persist across instrumentation teardown and any test-package cleanup.
+# The instrumentation process copies PNGs here before each test finishes.
+anatomy_dir="/sdcard/Download/native-anatomy-evidence"
 if ! adb shell test -s "$anatomy_dir/paramecium-normal-oral-groove.png"; then
     normal_exit=ANATOMY_SCREENSHOT_MISSING
     exit 1

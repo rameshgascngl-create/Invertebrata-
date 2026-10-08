@@ -1,9 +1,7 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
-import android.graphics.Bitmap
-import java.io.File
-import java.io.FileOutputStream
+import android.os.ParcelFileDescriptor
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -44,21 +42,20 @@ import kotlinx.coroutines.runBlocking
  * screenshot-traced anatomy substitute. Captures are technical review evidence.
  */
 private fun saveN23bReviewScreenshot(fileName: String) {
-    val instrumentation = InstrumentationRegistry.getInstrumentation()
-    val image = requireNotNull(instrumentation.uiAutomation.takeScreenshot()) {
-        "Android UiAutomation failed to capture anatomical review screenshot"
-    }
-    try {
-        val root = requireNotNull(instrumentation.targetContext.getExternalFilesDir(null))
-        val directory = File(root, "native-anatomy-evidence")
-        check(directory.isDirectory || directory.mkdirs()) { "Cannot create screenshot directory" }
-        FileOutputStream(File(directory, fileName)).use { output ->
-            check(image.compress(Bitmap.CompressFormat.PNG, 100, output)) {
-                "Failed to encode Canvas QA screenshot"
-            }
-        }
-    } finally {
-        image.recycle()
+    // This is an emulator-only academic review screenshot, not an anatomy source.
+    check(fileName == "paramecium-normal-oral-groove.png" ||
+        fileName == "paramecium-tamil200-cytoproct.png")
+
+    // Record the *current visible native screen* straight into persistent
+    // emulator QA storage before instrumentation package cleanup.
+    val folder = "/sdcard/Download/native-anatomy-evidence"
+    val command = "mkdir -p '$folder' && screencap -p '$folder/$fileName' " +
+        "&& test -s '$folder/$fileName' && echo QA_CAPTURE_OK"
+    val output = ParcelFileDescriptor.AutoCloseInputStream(
+        InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(command)
+    ).use { it.readBytes().toString(Charsets.UTF_8) }
+    check("QA_CAPTURE_OK" in output) {
+        "Cannot capture or verify actual native Canvas screenshot on emulator"
     }
 }
 
