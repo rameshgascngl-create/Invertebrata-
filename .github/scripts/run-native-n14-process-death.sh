@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+# Android API 34 N1.4. This driver must prove a genuine backgrounded-process
+# termination. am force-stop is intentionally prohibited.
+set -euo pipefail
+package="com.gasczoology.invertebratelab"
+runner="$package.test/androidx.test.runner.AndroidJUnitRunner"
+qid="u1-paramecium-A5-1"
+evidence="qa-evidence/n14"
+mkdir -p "$evidence"
+result="NOT_STARTED"
+old_pid=""
+new_pid=""
+uid=""
+uid_state=""
+
+capture_failure_evidence() {
+    local exit_status=$?
+    {
+      printf 'status=%s\nexit=%s\noriginal_pid=%s\nnew_pid=%s\nuid=%s\nlast_uid_state=%s\n' \
+        "$result" "$exit_status" "$old_pid" "$new_pid" "$uid" "$uid_state"
+    } > "$evidence/decision.txt"
+    adb shell dumpsys activity processes > "$evidence/activity-manager-processes.txt" 2>&1 || true
+    adb shell dumpsys activity activities > "$evidence/activity-manager-activities.txt" 2>&1 || true
+    adb shell ps -A -o PID,NAME > "$evidence/ps-final.txt" 2>&1 || true
+    adb logcat -d -v threadtime -s N14_PROGRESS:I AndroidRuntime:E ActivityManager:I '*:S' \
+       > "$evidence/logcat.txt" 2>&1 || true
+    adb exec-out screencap -p > "$evidence/screenshot.png" 2>/dev/null || true
+    adb shell uiautomator dump /sdcard/n14-current.xml > "$evidence/uiautomator-output.txt" 2>&1 || true
+    adb pull /sdcard/n14-current.xml "$evidence/ui-hierarchy.xml" >/dev/null 2>&1 || true
+    # Only filenames and file lengths, never private DataStore bytes.
+    adb shell run-as "$package" ls -l files/datastore \
+        > "$evidence/datastore-metadata.txt" 2>&1 || true
+}
+trap capture_failure_evidence EXIT
+
+instrument() {
+    local test_class="$1" log_path="$2"
+    adb shell am instrument -w -r -e class "$test_class" "$runner" | tee "$log_path"
+    grep -q 'INSTRUMENTATION_CODE: -1' "$log_path"
+    if grep -Eq 'FAILURES!!!|INSTRUMENTATION_RESULT: shortMsg=|INSTRUMENTATION_FAILED' "$log_path"; then
+        return 1
+    fi
+}
+
+# Build and install *this commit*, separately from the legacy HTML shell.
+gradle -p native-app :app:installDebug :app:installDebugAndroidTest --stacktrace \
+    > "$evidence/install.log" 2>&1 || { result=COMPILE_OR_INSTALL_FAILURE; exit 1; }
+
+# Setup traverses the actual Kotlin Compose UI and verifies the DataStore commit.
+if ! instrument "$package.NativeProcessDeathSetupTest" "$evidence/setup-instrumentation.txt"; then
+    result=SETUP_OR_DATASTORE_ASSERTION_FAILURE
+    exit 1
+fi
+
+# Test frameworks may close the Activity on teardown. Relaunch the real app
+# through its launcher intent, then obtain the original native process PID.
+adb shell am start -W -a android.intent.action.MAIN \
+    -c android.intent.category.LAUNCHER -n "$package/.MainActivity" \
+    > "$evidence/initial-launch.txt" 2>&1
+
+get_pid() {
+    adb shell pidof -s "$package" 2>/dev/null | tr -d '\r' | awk '{print $1}'
+}
+for attempt in {1..20}; do
+    old_pid="$(get_pid)"
+    if [[ "$old_pid" =~ ^[0-9]+$ ]]; then break; fi
+    sleep 1
+done
+if [[ ! "$old_pid" =~ ^[0-9]+$ ]]; then
+    result=PRE_KILL_PID_UNAVAILABLE
+    exit 1
+fi
+printf '%s\n' "$old_pid" > "$evidence/original-pid.txt"
+
+# A native Compose semantics tag must be exposed to Android accessibility
+# through testTagsAsResourceId, not observed by OCR or screen coordinates.
+adb shell uiautomator dump /sdcard/n14-before.xml > "$evidence/ui-before-command.txt" 2>&1
+adb pull /sdcard/n14-before.xml "$evidence/ui-before.xml" >/dev/null
+if ! grep -Fq "a5-question-$qid" "$evidence/ui-before.xml" ||
+   ! grep -Fq "a5-point-$qid-1" "$evidence/ui-before.xml"; then
+    result=PRE_KILL_UI_ASSERTION_FAILURE
+    exit 1
+fi
+
+adb shell dumpsys activity processes > "$evidence/processes-before-home.txt"
+adb shell input keyevent KEYCODE_HOME
+uid="$(adb shell dumpsys package "$package" | grep -m1 -oE 'userId=[0-9]+' | cut -d= -f2 | tr -d '\r' || true)"
+if [[ ! "$uid" =~ ^[0-9]+$ ]]; then
+    result=BACKGROUND_UID_UNAVAILABLE
+    exit 1
+fi
+
+# ActivityManager's process-state API gives stronger evidence than merely
+# assuming the HOME key successfully backgrounded the application.
+background_verified=0
+for attempt in {1..25}; do
+    uid_state="$(adb shell am get-uid-state "$uid" 2>&1 | tr -d '\r' || true)"
+    printf 'attempt=%s state=%s\n' "$attempt" "$uid_state" >> "$evidence/uid-state-poll.txt"
+    if echo "$uid_state" | grep -Eiq 'CACHED|BACKGROUND|LAST_ACTIVITY|SERVICE' &&
+       ! echo "$uid_state" | grep -Eiq 'TOP|FOREGROUND|BOUND_TOP'; then
+        background_verified=1
+        break
+    fi
+    sleep 1
+done
+adb shell dumpsys activity activities > "$evidence/activities-after-home.txt"
+adb shell dumpsys activity processes > "$evidence/processes-after-home.txt"
+if [[ "$background_verified" != "1" ]]; then
+    result=INVALID_BACKGROUND_PREREQUISITE
+    exit 1
+fi
+
+# No force-stop, kill -9 or system process restart is permitted.
+adb shell am kill "$package" > "$evidence/am-kill.txt" 2>&1
+gone=0
+for attempt in {1..25}; do
+    adb shell ps -A -o PID,NAME > "$evidence/processes-after-kill.txt"
+    if ! awk -v target="$old_pid" 'NR>1 && $1==target {found=1} END {exit !found}' \
+         "$evidence/processes-after-kill.txt"; then
+        gone=1
+        break
+    fi
+    sleep 1
+done
+if [[ "$gone" != "1" ]]; then
+    result=INVALID_PROCESS_KILL_ATTEMPT
+    exit 1
+fi
+
+adb shell am start -W -a android.intent.action.MAIN \
+    -c android.intent.category.LAUNCHER -n "$package/.MainActivity" \
+    > "$evidence/relaunch.txt" 2>&1
+for attempt in {1..20}; do
+    new_pid="$(get_pid)"
+    if [[ "$new_pid" =~ ^[0-9]+$ && "$new_pid" != "$old_pid" ]]; then break; fi
+    sleep 1
+done
+if [[ ! "$new_pid" =~ ^[0-9]+$ || "$new_pid" == "$old_pid" ]]; then
+    result=PROCESS_RELAUNCH_PID_FAILURE
+    exit 1
+fi
+printf '%s\n' "$new_pid" > "$evidence/new-pid.txt"
+
+# This second instrumentation run does not rewrite the fixture. It verifies
+# the recovered screen and DataStore after a *different* process is observed.
+if ! instrument "$package.NativeProcessDeathVerifyTest" "$evidence/verify-instrumentation.txt"; then
+    result=GENUINE_STATE_RESTORATION_FAILURE
+    exit 1
+fi
+result=PASS
