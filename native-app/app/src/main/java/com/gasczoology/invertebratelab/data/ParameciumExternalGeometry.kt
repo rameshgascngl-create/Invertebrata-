@@ -111,6 +111,43 @@ object ParameciumSchematicContour {
     }
 }
 
+/**
+ * N2.3C2: a CANDIDATE illustration of the closed cytoproct ridge.
+ *
+ * P. caudatum reference: CIL:39181, a TEM SECTION showing a ridge along
+ * the ventral posterior suture. A thin section DOES NOT establish the exact
+ * whole-cell xy coordinates. These three points are schematic and unapproved.
+ */
+object ParameciumCytoproctRidgeCandidate {
+    const val SOURCE_URL = "https://www.cellimagelibrary.org/images/39181"
+    val start = PrototypePoint(765f, 412f)
+    val control = PrototypePoint(775f, 423f)
+    val end = PrototypePoint(787f, 428f)
+
+    fun verifySchematicContract() {
+        val plate = ParameciumAnatomyDraft.plates.single { it.plateId == "external-cilia" }
+        val feature = plate.features.single { it.id == "cytoproct" }
+        val evidence = ParameciumExternalEvidence.records.single { it.featureId == "cytoproct" }
+        val hotspot = ParameciumExternalGeometry.hotspots.single { it.featureId == "cytoproct" }
+        require(evidence.sourceUrl == SOURCE_URL &&
+            evidence.scope == ParameciumSourceScope.CAUDATUM &&
+            !evidence.positionReviewed && !evidence.tamilReviewed)
+        require(plate.status == AcademicWorkStatus.DRAFT_UNVERIFIED && plate.review == null)
+        require(feature.geometryKey.startsWith("pending-") &&
+            feature.touchTargetKey.startsWith("pending-"))
+        // The existing touch hotspot must cover the draft ridge; retain its
+        // accessible 48dp alternate control and exact location.
+        val cx = hotspot.x * ParameciumExternalGeometry.REFERENCE_WIDTH
+        val cy = hotspot.y * ParameciumExternalGeometry.REFERENCE_HEIGHT
+        val r = hotspot.radius * ParameciumExternalGeometry.REFERENCE_HEIGHT
+        require(listOf(start, control, end).all {
+            val dx = it.x - cx
+            val dy = it.y - cy
+            dx * dx + dy * dy < r * r
+        })
+    }
+}
+
 object ParameciumExternalGeometry {
     const val REFERENCE_WIDTH = 1000f
     const val REFERENCE_HEIGHT = 600f

@@ -331,6 +331,8 @@ class NativeUiAcceptanceTest {
             .performScrollTo()
         rule.onNodeWithTag("n23b-selected-label")
             .assertTextEquals("Highlighted structure: Cytoproct (cell anus)")
+        rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
+            .assertExists()
     }
 
     @Test
@@ -428,6 +430,8 @@ class NativeTamilLargeTextAcceptanceTest {
             .performScrollTo()
         rule.onNodeWithTag("n23b-selected-label")
             .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
+        rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
+            .assertExists()
         rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
             .performScrollTo()
         rule.waitForIdle()

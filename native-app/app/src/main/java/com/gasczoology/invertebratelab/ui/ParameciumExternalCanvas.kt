@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.ParameciumAnatomyDraft
 import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
+import com.gasczoology.invertebratelab.data.ParameciumCytoproctRidgeCandidate
 import com.gasczoology.invertebratelab.data.ParameciumSchematicContour
 import com.gasczoology.invertebratelab.data.ParameciumExternalEvidence
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
@@ -145,12 +146,19 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     style = Stroke(width = if (selectedId == "oral-groove") 14f else 9f),
                 )
 
-                // Cytoproct is depicted as a small separate surface opening.
-                drawCircle(
+                // N2.3C2: illustrate the CLOSED cytoproct as a short
+                // ventral posterior ridge, not a permanently open round hole.
+                // The TEM source supports morphology, NOT these xy coordinates.
+                val ridge = ParameciumCytoproctRidgeCandidate
+                val cytoproctPath = Path().apply {
+                    moveTo(ridge.start.x, ridge.start.y)
+                    quadraticBezierTo(ridge.control.x, ridge.control.y,
+                        ridge.end.x, ridge.end.y)
+                }
+                drawPath(cytoproctPath,
                     if (selectedId == "cytoproct") Color(0xFFB55B16)
                     else Color(0xFF276A6D),
-                    radius = if (selectedId == "cytoproct") 13f else 8f,
-                    center = Offset(776f, 420f),
+                    style = Stroke(width = if (selectedId == "cytoproct") 11f else 7f),
                 )
 
                 // N2.3C1 DRAFT: subpellicular cortical trichocysts sampled
@@ -202,6 +210,14 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 else "Highlighted structure: ") + chosen.label.value(language),
             modifier = Modifier.testTag("n23b-selected-label"),
         )
+        if (selectedId == "cytoproct") {
+            Text(
+                if (language == AppLanguage.TAMIL)
+                    "மூடிய நிலையில் செல் கழிவு வெளியேறும் பகுதி மேடுபோலத் தோன்றும். இவ்வரைபடத்தில் அதன் துல்லியமான இடம் இன்னும் சரிபார்க்கப்படவில்லை."
+                else "Closed cytoproct shown schematically as a ridge; its exact position has not been verified against a whole-cell micrograph.",
+                modifier = Modifier.testTag("n23c2-cytoproct-evidence-limit"),
+            )
+        }
         // Explicit large semantic touch targets; Canvas gesture is supplementary.
         for (feature in plate.features) {
             OutlinedButton(
