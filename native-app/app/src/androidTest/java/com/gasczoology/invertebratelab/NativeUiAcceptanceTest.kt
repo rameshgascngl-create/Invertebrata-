@@ -21,6 +21,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
 import com.gasczoology.invertebratelab.data.NativeLearningState
+import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ValidatedA5AssetRepository
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -161,6 +162,52 @@ class NativeUiAcceptanceTest {
     }
 
     @Test
+    fun parameciumDraftIsReachableInEnglishAndTamilWithoutChangingA5() {
+        val draft = NativeLessonDrafts.paramecium
+        englishHome()
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("unit-1").performClick()
+        waitFor("native-unit-1")
+        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
+        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        waitFor("native-chapter-u1-paramecium")
+
+        val chapter = units.first().chapters.single { it.id == "u1-paramecium" }
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(1)
+        rule.onNodeWithTag("a5-question-" + chapter.a5Questions.first().id)
+            .assertTextEquals(chapter.a5Questions.first().question.english)
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
+        rule.onNodeWithTag("n22-draft-notice").assertExists()
+        rule.onNodeWithText("Teaching lesson — editorial draft").assertExists()
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
+        rule.onNodeWithTag("n22-section-identity-and-habitat").assertExists()
+        rule.onNodeWithText(draft.sections.first().paragraphs.first().english).assertExists()
+
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(0)
+        rule.onNodeWithText("Back").performClick()
+        waitFor("native-unit-1")
+        rule.onNodeWithTag("native-unit-1").performScrollToIndex(0)
+        rule.onNodeWithText("Back").performClick()
+        waitFor("native-home")
+        rule.onNodeWithTag("language-tamil").performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("unit-1").performClick()
+        waitFor("native-unit-1")
+        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
+        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        waitFor("native-chapter-u1-paramecium")
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
+        rule.onNodeWithText("கற்பித்தல் பாடம் — ஆசிரியர் மதிப்பாய்வு நிலுவை")
+            .assertExists()
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
+        rule.onNodeWithText(draft.sections.first().paragraphs.first().tamil).assertExists()
+    }
+
+    @Test
     fun primaryActionSemanticsAndTouchTargetsArePresent() {
         englishHome()
         for (tag in listOf("language-english", "language-tamil", "unit-1", "a5-assessment")) {
@@ -214,5 +261,36 @@ class NativeTamilLargeTextAcceptanceTest {
             rule.onNodeWithTag("a5-point-" + first.id + "-" + (index + 1))
                 .assertTextEquals((index + 1).toString() + ". " + point.tamil)
         }
+    }
+
+    @Test
+    fun parameciumDraftSectionsAreScrollableAtActualTamil200Percent() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertTrue(context.resources.configuration.fontScale >= 1.95f)
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("language-tamil").performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes()
+                .isNotEmpty()
+        }
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("unit-1").performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-unit-1").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
+        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-chapter-u1-paramecium")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
+        rule.onNodeWithTag("n22-draft-notice").assertExists()
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
+        rule.onNodeWithTag("n22-section-identity-and-habitat").assertExists()
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(10)
+        rule.onNodeWithTag("n22-section-classroom-observation").assertExists()
     }
 }
