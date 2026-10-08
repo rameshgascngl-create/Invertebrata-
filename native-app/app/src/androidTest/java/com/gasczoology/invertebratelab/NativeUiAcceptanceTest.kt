@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
+import androidx.compose.ui.test.assertExists
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -21,6 +22,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.ValidatedA5AssetRepository
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -169,6 +171,10 @@ class NativeTamilLargeTextAcceptanceTest {
             InstrumentationRegistry.getInstrumentation().targetContext
         ).load()
         val first = units.first().chapters.first().a5Questions.first()
+        val fontScale = InstrumentationRegistry.getInstrumentation().targetContext
+            .resources.configuration.fontScale
+        assertTrue("Expected actual 200% font scale, found " + fontScale,
+            fontScale >= 1.95f)
 
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
