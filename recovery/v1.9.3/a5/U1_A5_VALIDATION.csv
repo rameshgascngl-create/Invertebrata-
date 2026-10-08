@@ -1,0 +1,16 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: U1_A5_VALIDATION.csv>index,question_id,unit,chapter,scientific_verdict_original,tamil_verdict_original,corrections,supporting_reference,final_status
+0,u1-intro-A5-1,U1,u1-intro,FAIL,FAIL,Incomplete rank sequence and irrelevant 'key/slogan' point; Tamil fragmentary.,OpenStax Biology 2e §20.1 Organizing Life on Earth; ICZN Article 61 and Type FAQ,PASS
+1,u1-intro-A5-2,U1,u1-intro,FAIL,FAIL,‘No shared unique organelle set’ is not a valid reason; Tamil incomplete.,OpenStax Biology 2e Ch.28 Introduction; OpenStax Concepts of Biology §15.2,PASS
+2,u1-protozoa-A5-1,U1,u1-protozoa,PASS,FAIL,Core facts recognizable but too compressed for five marks; modern-status note added.,OpenStax Biology 2e §§23.2–23.3,PASS
+3,u1-protozoa-A5-2,U1,u1-protozoa,PASS,FAIL,Core contrast recognizable but fifth point vague; modern Ciliophora/Apicomplexa framing added.,OpenStax Biology 2e §23.3 Groups of Protists,PASS
+4,u1-paramecium-A5-1,U1,u1-paramecium,PASS,FAIL,Core sequence scientifically sound but answer and Tamil were underdeveloped.,"OpenStax Biology 2e §23.3; Stock et al., J Cell Sci 2002, PMID 12006618",PASS
+5,u1-paramecium-A5-2,U1,u1-paramecium,PASS,FAIL,Core conjugation sequence sound but Tamil lacked full semantic equivalence.,OpenStax Biology 2e §23.3 Groups of Protists,PASS
+6,u1-proto-parasites-A5-1,U1,u1-proto-parasites,FAIL,FAIL,Original answer consisted of headings/placeholders rather than organism-specific comparison.,CDC DPDx Amebiasis; CDC Sleeping Sickness; CDC DPDx Leishmaniasis,PASS
+7,u1-proto-parasites-A5-2,U1,u1-proto-parasites,PASS,FAIL,Main vector-borne principle correct; expanded transmission and control explanation.,CDC Sleeping Sickness — Causes/About,PASS
+8,u1-nutrition-A5-1,U1,u1-nutrition,PASS,FAIL,Four categories correct but examples/explanations missing.,OpenStax Biology 2e §23.2 Characteristics of Protists; §23.4 Ecology of Protists,PASS
+9,u1-nutrition-A5-2,U1,u1-nutrition,FAIL,FAIL,Original falsely implied holozoic feeding universally requires a cytostome.,OpenStax Biology 2e §§23.2–23.3,PASS
+10,u1-host-parasite-A5-1,U1,u1-host-parasite,PASS,FAIL,Comparison headings were scientifically appropriate but not an adequate five-mark answer.,CDC DPDx Amebiasis; CDC DPDx Malaria,PASS
+11,u1-host-parasite-A5-2,U1,u1-host-parasite,PASS,FAIL,Blood-stage link correct; inflammatory mechanism and periodicity qualified.,CDC DPDx Malaria,PASS
+12,u1-locomotion-A5-1,U1,u1-locomotion,PASS,FAIL,Comparison categories sound but too skeletal for five marks.,OpenStax Biology 2e §23.2; §4.5 Cytoskeleton,PASS
+13,u1-locomotion-A5-2,U1,u1-locomotion,FAIL,FAIL,Paramecium was incorrectly matched to a 'film' rather than freshwater swimming habitat.,OpenStax Biology 2e §23.2; CDC DPDx Amebiasis,PASS
