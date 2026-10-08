@@ -28,7 +28,9 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
-          target: google_apis
+          # AOSP API 34 avoids the Pixel Launcher ANR documented in N1.4 run 37743762398.
+          # Keep architecture, assertions, PID checks and emulator API unchanged.
+          target: default
           arch: x86_64
           profile: pixel_6
           disable-animations: true
