@@ -2,6 +2,9 @@ name: Native foundation check
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - native/v193-compose-migration-20261008
 
 jobs:
   compile-native-foundation:
