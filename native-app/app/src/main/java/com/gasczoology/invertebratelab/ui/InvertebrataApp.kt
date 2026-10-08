@@ -20,6 +20,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -418,10 +419,14 @@ private fun AssessmentScreen(
     onToggle: (A5Question) -> Unit,
 ) {
     val currentIndex = questions.indexOfFirst { it.id == currentQuestionId }.coerceAtLeast(0)
+    val assessmentScroll = rememberScrollState()
+    // Never leave the next question outside the visible/merged accessibility tree.
+    // Answer reveal is the same question ID and must not trigger a scroll reset.
+    LaunchedEffect(currentQuestionId) { assessmentScroll.scrollTo(0) }
     Scaffold { padding ->
         Column(
             modifier = Modifier.fillMaxSize().padding(padding)
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(assessmentScroll)
                 .padding(20.dp).testTag("native-assessment"),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {

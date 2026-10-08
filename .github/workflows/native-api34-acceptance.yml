@@ -28,7 +28,9 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
-          target: google_apis
+          # Use the same API 34 AOSP image as the proven N1.4 gate.
+          # Google APIs Pixel Launcher ANR was captured in run 37762054797.
+          target: default
           arch: x86_64
           profile: pixel_6
           disable-animations: true
