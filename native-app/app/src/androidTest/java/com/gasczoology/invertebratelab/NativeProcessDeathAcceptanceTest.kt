@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab
 
 import android.util.Log
+import android.content.pm.ActivityInfo
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
@@ -113,6 +114,21 @@ class NativeProcessDeathVerifyTest {
         }
         rule.onNodeWithTag("a5-point-" + fifth.id + "-1")
             .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
+        try {
+            rule.activityRule.scenario.onActivity {
+                it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            }
+            rule.waitUntil(timeoutMillis = 20_000L) {
+                rule.onAllNodesWithTag("native-assessment").fetchSemanticsNodes().isNotEmpty()
+            }
+            rule.onNodeWithTag("a5-question-" + fifth.id).assertTextEquals(fifth.question.tamil)
+            rule.onNodeWithTag("a5-point-" + fifth.id + "-1")
+                .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
+        } finally {
+            rule.activityRule.scenario.onActivity {
+                it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }
+        }
         runBlocking {
             withTimeout(15_000L) {
                 val state = NativeLearningRepository(context).learningState.first()
