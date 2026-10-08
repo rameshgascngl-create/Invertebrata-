@@ -227,6 +227,39 @@ class NativeUiAcceptanceTest {
     }
 
     @Test
+    fun nativeParameciumCanvasButtonsHighlightTheExpectedBilingualOrgan() {
+        englishHome()
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("unit-1").performClick()
+        waitFor("native-unit-1")
+        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
+        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        waitFor("native-chapter-u1-paramecium")
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(12)
+        waitFor("n23b-external-preview")
+        rule.onNodeWithTag("n23b-external-canvas").assertExists()
+
+        // Test the actual native 48 dp Compose controls rather than tapping by coordinates.
+        val cilia = rule.onNodeWithTag("n23b-select-somatic-cilia", useUnmergedTree = true)
+        cilia.performScrollTo()
+        cilia.assertHasClickAction()
+        cilia.assertHeightIsAtLeast(48.dp)
+        cilia.performClick()
+        rule.onNodeWithTag("n23b-selected-label", useUnmergedTree = true)
+            .performScrollTo()
+        rule.onNodeWithTag("n23b-selected-label")
+            .assertTextEquals("Highlighted structure: Somatic cilia")
+
+        val groove = rule.onNodeWithTag("n23b-select-oral-groove", useUnmergedTree = true)
+        groove.performScrollTo()
+        groove.performClick()
+        rule.onNodeWithTag("n23b-selected-label", useUnmergedTree = true)
+            .performScrollTo()
+        rule.onNodeWithTag("n23b-selected-label")
+            .assertTextEquals("Highlighted structure: Oral groove")
+    }
+
+    @Test
     fun primaryActionSemanticsAndTouchTargetsArePresent() {
         englishHome()
         for (tag in listOf("language-english", "language-tamil", "unit-1", "a5-assessment")) {
@@ -281,6 +314,44 @@ class NativeTamilLargeTextAcceptanceTest {
                 .assertTextEquals((index + 1).toString() + ". " + point.tamil)
         }
     }
+    @Test
+    fun tamilTwoHundredPercentCanvasControlsRemainReachable() {
+        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
+        assertTrue(targetContext.resources.configuration.fontScale >= 1.95f)
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("language-tamil").performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes()
+                .isNotEmpty()
+        }
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("unit-1").performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-unit-1").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
+        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-chapter-u1-paramecium")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(12)
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("n23b-external-preview")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        val target = rule.onNodeWithTag("n23b-select-cytoproct", useUnmergedTree = true)
+        target.performScrollTo()
+        target.assertHeightIsAtLeast(48.dp)
+        target.performClick()
+        rule.onNodeWithTag("n23b-selected-label", useUnmergedTree = true)
+            .performScrollTo()
+        rule.onNodeWithTag("n23b-selected-label")
+            .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
+    }
+
     @Test
     fun parameciumDraftSectionsAreScrollableAtActualTamil200Percent() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext

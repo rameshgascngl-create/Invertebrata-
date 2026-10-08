@@ -376,6 +376,11 @@ private fun ChapterScreen(
                             .distinct().forEach { source -> Text(source) }
                     }
                 }
+                if (chapter.id == "u1-paramecium") {
+                    item(key = "n23b-external-canvas") {
+                        ParameciumExternalCanvas(language)
+                    }
+                }
             }
         }
     }
