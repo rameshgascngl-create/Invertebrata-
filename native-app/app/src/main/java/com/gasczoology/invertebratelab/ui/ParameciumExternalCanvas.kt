@@ -153,17 +153,20 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     center = Offset(776f, 420f),
                 )
 
-                // Trichocysts: short cortical rods, not cilia or food vacuoles.
-                for (i in 0..6) {
-                    val x = 255f + i * 18f
-                    // Cortical position is approximate and requires plate review.
-                    val y = 418f + (i % 2) * 11f
+                // N2.3C1 DRAFT: subpellicular cortical trichocysts sampled
+                // along the native cell outline. Arc spacing is illustrative
+                // and NOT a microscopy-validated density or organ position.
+                for (i in 0 until 44) {
+                    val distance = measure.length * (i + 0.5f) / 44f
+                    val at = measure.getPosition(distance)
+                    val tangent = measure.getTangent(distance)
+                    val inward = Offset(-tangent.y, tangent.x)
                     drawLine(
                         if (selectedId == "trichocysts") Color(0xFFB55B16)
                         else Color(0xFF387C83),
-                        start = Offset(x, y),
-                        end = Offset(x + 10f, y - 18f),
-                        strokeWidth = if (selectedId == "trichocysts") 7f else 4f,
+                        start = at + inward * 10f,
+                        end = at + inward * 32f,
+                        strokeWidth = if (selectedId == "trichocysts") 6f else 3.5f,
                     )
                 }
 
