@@ -178,6 +178,14 @@ class NativeUiAcceptanceTest {
 class NativeTamilLargeTextAcceptanceTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
 
+    @Before fun resetLearningPosition() {
+        runBlocking {
+            NativeLearningRepository(InstrumentationRegistry.getInstrumentation().targetContext)
+                .save(NativeLearningState())
+        }
+        rule.activityRule.scenario.recreate()
+    }
+
     @Test
     fun tamilNavigationAndFullAnswerRemainReachableAtTwoHundredPercent() {
         val units = ValidatedA5AssetRepository(
