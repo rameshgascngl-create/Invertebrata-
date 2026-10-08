@@ -33,30 +33,7 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-boot-timeout: 900
-          script: |
-            set +e
-            mkdir -p qa-evidence
-            adb shell settings put system font_scale 1.0
-            gradle -p native-app :app:connectedDebugAndroidTest --stacktrace -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUiAcceptanceTest
-            normal_exit=$?
-            cp -a native-app/app/build/outputs/androidTest-results/connected qa-evidence/normal-test-results 2>/dev/null || true
-            cp -a native-app/app/build/reports/androidTests/connected qa-evidence/normal-reports 2>/dev/null || true
-
-            adb shell settings put system font_scale 2.0
-            adb shell am force-stop com.gasczoology.invertebratelab
-            gradle -p native-app :app:connectedDebugAndroidTest --rerun-tasks --stacktrace -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeTamilLargeTextAcceptanceTest
-            large_text_exit=$?
-            cp -a native-app/app/build/outputs/androidTest-results/connected qa-evidence/tamil-200-test-results 2>/dev/null || true
-            cp -a native-app/app/build/reports/androidTests/connected qa-evidence/tamil-200-reports 2>/dev/null || true
-
-            adb logcat -d -v threadtime > qa-evidence/logcat.txt 2>&1 || true
-            adb exec-out screencap -p > qa-evidence/final-screen.png 2>/dev/null || true
-            adb shell uiautomator dump /sdcard/qa-window.xml >/dev/null 2>&1 || true
-            adb pull /sdcard/qa-window.xml qa-evidence/window.xml >/dev/null 2>&1 || true
-            printf 'normal=%s\ntamil200=%s\n' "$normal_exit" "$large_text_exit" | tee qa-evidence/result.txt
-            if [ "$normal_exit" -ne 0 ] || [ "$large_text_exit" -ne 0 ]; then
-              exit 1
-            fi
+          script: bash .github/scripts/run-native-api34-tests.sh
       - name: Upload API 34 evidence even on failure
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,7 +1,6 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
-import androidx.compose.ui.test.assertExists
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
