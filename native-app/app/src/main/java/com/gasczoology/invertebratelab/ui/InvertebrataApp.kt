@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -166,20 +167,20 @@ private fun HomeScreen(
                     "நேட்டிவ் Kotlin பதிப்பு · சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினாக்கள்"))
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
-                        modifier = Modifier.testTag("language-english")) { Text("English") }
+                        modifier = Modifier.heightIn(min = 48.dp).testTag("language-english")) { Text("English") }
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.TAMIL) },
-                        modifier = Modifier.testTag("language-tamil")) { Text("தமிழ்") }
+                        modifier = Modifier.heightIn(min = 48.dp).testTag("language-tamil")) { Text("தமிழ்") }
                 }
             }
             items(units, key = { it.number }) { unit ->
                 Button(onClick = { onUnit(unit.number) },
-                    modifier = Modifier.fillMaxWidth().testTag("unit-" + unit.number)) {
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("unit-" + unit.number)) {
                     Text(unit.title.value(language) + " · " + unit.chapters.size.toString() +
                         label(language, " chapters", " அத்தியாயங்கள்"))
                 }
             }
             item {
-                Button(onClick = onAssessment, modifier = Modifier.fillMaxWidth().testTag("a5-assessment")) {
+                Button(onClick = onAssessment, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("a5-assessment")) {
                     Text(label(language, "Five-mark practice · 86 questions", "ஐந்து மதிப்பெண் பயிற்சி · 86 வினாக்கள்"))
                 }
             }
@@ -201,14 +202,14 @@ private fun UnitScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             item {
-                OutlinedButton(onClick = onBack) { Text(label(language, "Back", "பின்செல்")) }
+                OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
                 Text(unit.title.value(language))
                 Text(label(language, "Select a chapter to study its validated questions.",
                     "சரிபார்க்கப்பட்ட வினாக்களைப் படிக்க ஓர் அத்தியாயத்தைத் தேர்ந்தெடுக்கவும்."))
             }
             items(unit.chapters, key = { it.id }) { chapter ->
                 Button(onClick = { onChapter(chapter.id) },
-                    modifier = Modifier.fillMaxWidth().testTag("chapter-" + chapter.id)) {
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chapter-" + chapter.id)) {
                     Column {
                         Text(chapter.id)
                         Text(chapter.a5Questions.first().question.value(language))
@@ -228,7 +229,7 @@ private fun ChapterScreen(chapter: Chapter, language: AppLanguage, onBack: () ->
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             item {
-                OutlinedButton(onClick = onBack) { Text(label(language, "Back", "பின்செல்")) }
+                OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
                 Text(label(language, "Chapter: ", "அத்தியாயம்: ") + chapter.id)
                 Text(label(language, "Validated five-mark questions",
                     "சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினாக்கள்"))
@@ -249,7 +250,7 @@ private fun QuestionCard(question: A5Question, language: AppLanguage) {
         Text(question.question.value(language),
             modifier = Modifier.testTag("a5-question-" + question.id))
         OutlinedButton(onClick = { showAnswer = !showAnswer },
-            modifier = Modifier.testTag("a5-toggle-" + question.id)) {
+            modifier = Modifier.heightIn(min = 48.dp).testTag("a5-toggle-" + question.id)) {
             Text(if (showAnswer) label(language, "Hide answer", "விடையை மறை")
                 else label(language, "Show five answer points", "ஐந்து விடைக் குறிப்புகளைக் காட்டு"))
         }
@@ -276,7 +277,7 @@ private fun AssessmentScreen(
                 .padding(20.dp).testTag("native-assessment"),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            OutlinedButton(onClick = onBack) { Text(label(language, "Back", "பின்செல்")) }
+            OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
             Text(label(language, "Five-mark self-study", "ஐந்து மதிப்பெண் சுயபயிற்சி"))
             Text((index + 1).toString() + " / " + questions.size)
             if (questions.isNotEmpty()) {
@@ -286,11 +287,11 @@ private fun AssessmentScreen(
                 Spacer(Modifier.height(8.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     OutlinedButton(onClick = { index -= 1 }, enabled = index > 0,
-                        modifier = Modifier.testTag("assessment-prev")) {
+                        modifier = Modifier.heightIn(min = 48.dp).testTag("assessment-prev")) {
                         Text(label(language, "Previous", "முந்தையது"))
                     }
                     Button(onClick = { index += 1 }, enabled = index < questions.lastIndex,
-                        modifier = Modifier.testTag("assessment-next")) {
+                        modifier = Modifier.heightIn(min = 48.dp).testTag("assessment-next")) {
                         Text(label(language, "Next", "அடுத்தது"))
                     }
                 }
