@@ -41,6 +41,7 @@ import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.Chapter
 import com.gasczoology.invertebratelab.data.NativeLearningState
+import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.StudyDestination
 
 private object Routes {
@@ -319,6 +320,7 @@ private fun ChapterScreen(
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
 ) {
+    val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
     Scaffold { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding).testTag("native-chapter-" + chapter.id),
@@ -340,6 +342,39 @@ private fun ChapterScreen(
                     showAnswer = question.id == revealedQuestionId,
                     onToggle = { onToggle(question) },
                 )
+            }
+            if (lessonDraft != null) {
+                item(key = "n22-draft-heading") {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.fillMaxWidth().testTag("n22-draft-notice")) {
+                        Text(label(language, "Teaching lesson — editorial draft",
+                            "கற்பித்தல் பாடம் — ஆசிரியர் மதிப்பாய்வு நிலுவை"))
+                        Text(label(language,
+                            "Science and Tamil reviews are pending. This material is not yet approved as the final syllabus lesson.",
+                            "அறிவியல் மற்றும் தமிழ் மதிப்பாய்வுகள் இன்னும் முடியவில்லை. இது இறுதியாக அங்கீகரிக்கப்பட்ட பாடம் அல்ல."))
+                        Text(lessonDraft.title.value(language))
+                    }
+                }
+                items(lessonDraft.sections, key = { "n22-" + it.id }) { section ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.fillMaxWidth().testTag("n22-section-" + section.id),
+                    ) {
+                        Text(section.heading.value(language))
+                        section.paragraphs.forEach { paragraph ->
+                            Text(paragraph.value(language))
+                        }
+                    }
+                }
+                item(key = "n22-references") {
+                    Column(verticalArrangement = Arrangement.spacedBy(6.dp),
+                        modifier = Modifier.fillMaxWidth().testTag("n22-references")) {
+                        Text(label(language, "Scientific reading and verification sources:",
+                            "அறிவியல் மேலாய்வுக்கான மூலநூல்கள்:"))
+                        lessonDraft.sections.flatMap { it.scientificSources }
+                            .distinct().forEach { source -> Text(source) }
+                    }
+                }
             }
         }
     }
