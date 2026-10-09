@@ -1,0 +1,36 @@
+name: Native N2.3E3 physical-device QA APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - native/v193-compose-migration-20261008
+
+permissions:
+  contents: read
+
+jobs:
+  native-e3-qa-debug-apk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Assemble native Kotlin debug APK (never production)
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Independently verify native QA artifact
+        run: bash ci/n23e3_verify_native_debug_apk.sh
+      - name: Upload QA APK, audit and checksum
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N23E3-native-Kotlin-physical-device-QA-${{ github.sha }}
+          path: qa-evidence/n23e3/
+          if-no-files-found: error
+          retention-days: 30
