@@ -285,8 +285,6 @@ private fun HomeScreen(
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.TAMIL) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag("language-tamil")) { Text("தமிழ்") }
                 }
-            }
-            item {
                 Button(onClick = onParamecium,
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("r1-home-open-paramecium")) {
