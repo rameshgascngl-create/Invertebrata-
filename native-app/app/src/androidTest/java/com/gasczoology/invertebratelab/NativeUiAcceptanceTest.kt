@@ -384,6 +384,32 @@ class NativeUiAcceptanceTest {
     }
 
     @Test
+    fun interactiveParameciumLabOpensWithFiveProcessesAnatomyAndNarration() {
+        englishHome()
+        rule.onNodeWithTag("r1-home-open-paramecium").performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-tab-simulate").performClick()
+        rule.onNodeWithTag("r1-process-osmoregulation").assertExists()
+        rule.onNodeWithTag("r1-stage-title")
+            .assertTextEquals("Stage 1/4 — Water enters")
+        rule.onNodeWithTag("r1-next").performScrollTo().performClick()
+        rule.onNodeWithTag("r1-stage-title")
+            .assertTextEquals("Stage 2/4 — Collecting network")
+        rule.onNodeWithTag("r1-process-conjugation")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r1-stage-title")
+            .assertTextEquals("Stage 1/4 — Compatible cells pair")
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r1-atlas-oral").performScrollTo().performClick()
+        rule.onNodeWithTag("r1-atlas-select-food-vacuole")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r1-atlas-selected").assertTextEquals("Food vacuole")
+        rule.onNodeWithTag("r1-tab-listen").performScrollTo().performClick()
+        rule.onNodeWithTag("r1-narrate-macronucleus")
+            .performScrollTo().assertHasClickAction()
+    }
+
+    @Test
     fun primaryActionSemanticsAndTouchTargetsArePresent() {
         englishHome()
         for (tag in listOf("language-english", "language-tamil", "unit-1", "a5-assessment")) {
