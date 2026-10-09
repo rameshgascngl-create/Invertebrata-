@@ -339,6 +339,10 @@ class NativeUiAcceptanceTest {
             .assertTextEquals("N2.3D1 review records — biology: 0/5; Tamil: 0/5; physical-device QA: pending")
         rule.onNodeWithTag("n23d-source-limit", useUnmergedTree = true)
             .performScrollTo().assertExists()
+        rule.onNodeWithTag("n23e2-source-access", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("n23e2-image-rights", useUnmergedTree = true)
+            .performScrollTo().assertExists()
         rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
             .performScrollTo()
         rule.waitForIdle()
@@ -497,6 +501,10 @@ class NativeTamilLargeTextAcceptanceTest {
             .performScrollTo()
             .assertTextEquals("N2.3D1 மதிப்பாய்வு நிலை — உயிரியல்: 0/5; தமிழ்: 0/5; நேரடி சாதனச் சோதனை: நிலுவை")
         rule.onNodeWithTag("n23d-source-support", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("n23e2-source-access", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("n23e2-image-rights", useUnmergedTree = true)
             .performScrollTo().assertExists()
     }
 

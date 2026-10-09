@@ -34,6 +34,9 @@ import com.gasczoology.invertebratelab.data.ParameciumCytoproctRidgeCandidate
 import com.gasczoology.invertebratelab.data.ParameciumReviewHighlightContract
 import com.gasczoology.invertebratelab.data.ParameciumN23DReviewDossier
 import com.gasczoology.invertebratelab.data.ParameciumN23EReviewerHandoff
+import com.gasczoology.invertebratelab.data.ParameciumN23E2EvidenceIntake
+import com.gasczoology.invertebratelab.data.E2ImageRights
+import com.gasczoology.invertebratelab.data.E2SourceAccess
 import com.gasczoology.invertebratelab.data.ParameciumSchematicContour
 import com.gasczoology.invertebratelab.data.ParameciumExternalEvidence
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
@@ -52,6 +55,13 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
     // present. Evidence links never become accepted geometric coordinates.
     val reviewTask = ParameciumN23DReviewDossier.forFeature(selectedId)
     val humanHandoff = ParameciumN23EReviewerHandoff.forFeature(selectedId)
+    // Offline lookup only: descriptive metadata must never certify specimen xy.
+    val e2Audit = ParameciumN23E2EvidenceIntake
+    val e2Source = when (selectedId) {
+        "cytoproct" -> e2Audit.reference("cil-39181-cytoproct")
+        "trichocysts" -> e2Audit.reference("cil-36755-trichocysts")
+        else -> e2Audit.reference("sacred-heart-type-study")
+    }
 
     Column(
         modifier = modifier.fillMaxWidth().testTag("n23b-external-preview"),
@@ -258,6 +268,32 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 "நிபுணர் உயிரியல் ஒப்புதல்: 0/5; தமிழ் ஒப்புதல்: 0/5; நேரடி மதிப்பாய்வு நிலுவை"
             else "Independent biology approvals: 0/5; Tamil approvals: 0/5; human inspection pending",
             modifier = Modifier.testTag("n23e-review-status"),
+        )
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "N2.3E2 ஆதார அணுகல்: " +
+                    (if (e2Source.access == E2SourceAccess.SEARCH_INDEX_METADATA_ONLY)
+                        "தேடல் குறியீட்டுத் தகவல் மட்டுமே; முதன்மைப் படத்திற்கான நேரடி மதிப்பாய்வு நிலுவை."
+                    else "ஆதார விளக்க உரை சரிபார்க்கப்பட்டது; பட ஒப்புதல் நிலுவை.")
+            else "N2.3E2 source access: " +
+                (if (e2Source.access == E2SourceAccess.SEARCH_INDEX_METADATA_ONLY)
+                    "indexed metadata only; direct reference-image inspection pending."
+                else "source description retrieved; image-level inspection pending."),
+            modifier = Modifier.testTag("n23e2-source-access"),
+        )
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "பட உரிமை: " + when (e2Source.rights) {
+                    E2ImageRights.PUBLIC_DOMAIN_REPORTED_ON_RECORD -> "பதிவில் பொதுச் சொத்து; மீண்டும் உறுதிசெய்ய வேண்டும்."
+                    E2ImageRights.COPYRIGHT_PERMISSION_REQUIRED -> "பயன்படுத்த உரிய அனுமதி தேவை."
+                    else -> "பட மறுபயன்பாட்டுக்கான உரிமை உறுதிப்படுத்தப்படவில்லை."
+                }
+            else "Image rights: " + when (e2Source.rights) {
+                E2ImageRights.PUBLIC_DOMAIN_REPORTED_ON_RECORD -> "record states public domain; reconfirm before reuse."
+                E2ImageRights.COPYRIGHT_PERMISSION_REQUIRED -> "permission required for reproduction."
+                else -> "reuse rights not established for this reference."
+            },
+            modifier = Modifier.testTag("n23e2-image-rights"),
         )
         if (selectedId == "cytoproct") {
             Text(
