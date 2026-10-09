@@ -1,8 +1,10 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
-import android.graphics.BitmapFactory
-import android.os.ParcelFileDescriptor
+import android.content.ContentValues
+import android.graphics.Bitmap
+import android.os.Environment
+import android.provider.MediaStore
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -44,64 +46,84 @@ import kotlinx.coroutines.runBlocking
  * screenshot-traced anatomy substitute. Captures are technical review evidence.
  */
 private fun saveN23bReviewScreenshot(fileName: String) {
-    // This is an emulator-only academic review screenshot, not an anatomy source.
     check(fileName == "paramecium-normal-oral-groove.png" ||
         fileName == "paramecium-tamil200-cytoproct.png")
 
-    // Record the *current visible native screen* straight into persistent
-    // emulator QA storage before instrumentation package cleanup.
+    val instrumentation = InstrumentationRegistry.getInstrumentation()
+    val automation = instrumentation.uiAutomation
+    val targetContext = instrumentation.targetContext
+    val activePackage = automation.rootInActiveWindow?.packageName?.toString()
+    // Capture the actual Android display in-process, not a shell screencap
+    // command that may show the launcher after app focus unexpectedly changes.
+    val bitmap = checkNotNull(automation.takeScreenshot()) {
+        "UiAutomation did not return a hardware display screenshot"
+    }
     val file = "/sdcard/Download/native-anatomy-evidence/$fileName"
-    val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
-    // UiAutomationConnection executes argv directly (no host shell parser).
-    // The QA directory is created in CI BEFORE instrumentation starts.
-    // Never use &&, pipes or shell quotes here.
-    ParcelFileDescriptor.AutoCloseInputStream(
-        automation.executeShellCommand("screencap -p $file")
-    ).use { it.readBytes() }
 
-    val sizeText = ParcelFileDescriptor.AutoCloseInputStream(
-        automation.executeShellCommand("stat -c %s $file")
-    ).use { it.readBytes().toString(Charsets.UTF_8).trim() }
-    check((sizeText.toLongOrNull() ?: 0L) > 1000L) {
-        "Required emulator screenshot is missing or truncated: $file"
+    // Store the captured REAL display image using scoped Android MediaStore.
+    // The file remains available to adb pull after instrumentation teardown.
+    // We store even invalid images to preserve diagnostics.
+    val resolver = targetContext.contentResolver
+    val values = ContentValues().apply {
+        put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+        put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
+        put(MediaStore.MediaColumns.RELATIVE_PATH,
+            Environment.DIRECTORY_DOWNLOADS + "/native-anatomy-evidence/")
+        put(MediaStore.MediaColumns.IS_PENDING, 1)
     }
-    // The screenshot, not just the off-screen Compose semantics node, must
-    // contain visible schematic artwork. CI previously accepted a Tamil 200%
-    // text-only image, which cannot support anatomical visual inspection.
-    val bytes = ParcelFileDescriptor.AutoCloseInputStream(
-        automation.executeShellCommand("cat $file")
-    ).use { it.readBytes() }
-    val bitmap = checkNotNull(BitmapFactory.decodeByteArray(bytes, 0, bytes.size)) {
-        "Captured native UI evidence is not a decodable PNG: $file"
+    val uri = checkNotNull(resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)) {
+        "Could not allocate a persistent PNG in MediaStore: $file"
     }
-    var samples = 0
-    var canvasBackground = 0
-    var cellFill = 0
-    var graphite = 0
-    var selectedHighlight = 0
-    for (y in 0 until bitmap.height step 14) {
-        for (x in 0 until bitmap.width step 14) {
-            val rgb = bitmap.getPixel(x, y) and 0x00FFFFFF
-            if (rgb == 0x00FBFAF6) canvasBackground++
-            if (rgb == 0x00F1EFE9) cellFill++
-            if (rgb == 0x0044413F || rgb == 0x00302E2C ||
-                rgb == 0x008A8580) graphite++
-            if (rgb == 0x00B55B16 || rgb == 0x00E28D3E) selectedHighlight++
-            samples++
+    try {
+        checkNotNull(resolver.openOutputStream(uri, "w")) {
+            "Could not open MediaStore PNG output stream: $file"
+        }.use { output ->
+            check(bitmap.compress(Bitmap.CompressFormat.PNG, 100, output)) {
+                "Failed to encode the genuine Android screenshot: $file"
+            }
         }
-    }
-    bitmap.recycle()
-    // More than an exposed sliver of the Canvas must be captured for review.
-    check(canvasBackground * 100 >= samples * 12 &&
-        cellFill * 100 >= samples * 6 && graphite >= 8) {
-        "Insufficient anatomical Canvas area in $file: " +
-            "paper=$canvasBackground, graphite=$graphite, cell=$cellFill, samples=$samples"
-    }
-    if (fileName == "paramecium-tamil200-cytoproct.png") {
-        check(selectedHighlight >= 4) {
-            "Selected cytoproct highlight is not visible in Tamil 200% PNG: " +
-                "highlight=$selectedHighlight, samples=$samples"
+        val published = ContentValues().apply {
+            put(MediaStore.MediaColumns.IS_PENDING, 0)
         }
+        check(resolver.update(uri, published, null, null) == 1) {
+            "Could not publish the genuine screenshot to Downloads: $file"
+        }
+
+        var samples = 0
+        var canvasBackground = 0
+        var cellFill = 0
+        var graphite = 0
+        var selectedHighlight = 0
+        for (y in 0 until bitmap.height step 14) {
+            for (x in 0 until bitmap.width step 14) {
+                val rgb = bitmap.getPixel(x, y) and 0x00FFFFFF
+                if (rgb == 0x00FBFAF6) canvasBackground++
+                if (rgb == 0x00F1EFE9) cellFill++
+                if (rgb == 0x0044413F || rgb == 0x00302E2C ||
+                    rgb == 0x008A8580) graphite++
+                if (rgb == 0x00B55B16 || rgb == 0x00E28D3E) selectedHighlight++
+                samples++
+            }
+        }
+        // Compose semantics alone can remain queryable when the foreground
+        // application changes. A launcher screenshot must NEVER pass atlas QA.
+        check(activePackage == targetContext.packageName) {
+            "Wrong foreground window in anatomical screenshot: " +
+                "active=$activePackage expected=${targetContext.packageName}; PNG=$file"
+        }
+        check(canvasBackground * 100 >= samples * 12 &&
+            cellFill * 100 >= samples * 6 && graphite >= 8) {
+            "Insufficient anatomical Canvas area in $file: " +
+                "paper=$canvasBackground, graphite=$graphite, cell=$cellFill, samples=$samples"
+        }
+        if (fileName == "paramecium-tamil200-cytoproct.png") {
+            check(selectedHighlight >= 4) {
+                "Selected cytoproct highlight is not visible in Tamil 200% PNG: " +
+                    "highlight=$selectedHighlight, samples=$samples"
+            }
+        }
+    } finally {
+        bitmap.recycle()
     }
 }
 
