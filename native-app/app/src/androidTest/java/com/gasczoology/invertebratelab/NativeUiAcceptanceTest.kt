@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
+import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
@@ -62,6 +63,32 @@ private fun saveN23bReviewScreenshot(fileName: String) {
     ).use { it.readBytes().toString(Charsets.UTF_8).trim() }
     check((sizeText.toLongOrNull() ?: 0L) > 1000L) {
         "Required emulator screenshot is missing or truncated: $file"
+    }
+    // The screenshot, not just the off-screen Compose semantics node, must
+    // contain visible schematic artwork. CI previously accepted a Tamil 200%
+    // text-only image, which cannot support anatomical visual inspection.
+    val bytes = ParcelFileDescriptor.AutoCloseInputStream(
+        automation.executeShellCommand("cat $file")
+    ).use { it.readBytes() }
+    val bitmap = checkNotNull(BitmapFactory.decodeByteArray(bytes, 0, bytes.size)) {
+        "Captured native UI evidence is not a decodable PNG: $file"
+    }
+    var samples = 0
+    var canvasBackground = 0
+    var cellFill = 0
+    for (y in 0 until bitmap.height step 14) {
+        for (x in 0 until bitmap.width step 14) {
+            val rgb = bitmap.getPixel(x, y) and 0x00FFFFFF
+            if (rgb == 0x00F4FBFA) canvasBackground++
+            if (rgb == 0x00D3F1EC) cellFill++
+            samples++
+        }
+    }
+    bitmap.recycle()
+    check(canvasBackground * 100 >= samples * 4 &&
+        cellFill * 100 >= samples) {
+        "Canvas absent from actual screenshot $file: " +
+            "background=$canvasBackground, cell=$cellFill, samples=$samples"
     }
 }
 
@@ -439,6 +466,11 @@ class NativeTamilLargeTextAcceptanceTest {
             .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
         rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
             .assertExists()
+        // At 200% font scale, the selection/status text can scroll the
+        // drawing completely off screen. Re-anchor above the Canvas before
+        // capturing it; the PNG pixel check rejects text-only evidence.
+        rule.onNodeWithTag("n23b-orientation", useUnmergedTree = true)
+            .performScrollTo()
         rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
             .performScrollTo()
         rule.waitForIdle()
