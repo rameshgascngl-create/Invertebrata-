@@ -466,13 +466,13 @@ class NativeTamilLargeTextAcceptanceTest {
             .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
         rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
             .assertExists()
-        // At 200% font scale, the selection/status text can scroll the
-        // drawing completely off screen. Re-anchor above the Canvas before
-        // capturing it; the PNG pixel check rejects text-only evidence.
-        rule.onNodeWithTag("n23b-orientation", useUnmergedTree = true)
-            .performScrollTo()
-        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
-            .performScrollTo()
+        // At 200% font scale, descendant performScrollTo() may leave this
+        // tall LazyColumn item positioned at its lower, text-only region.
+        // Reset the native list to its actual Canvas item (index 12) so the
+        // schematic is present on screen before recording visual evidence.
+        // The independent PNG pixel assertions remain mandatory.
+        rule.onNodeWithTag("native-chapter-u1-paramecium")
+            .performScrollToIndex(12)
         rule.waitForIdle()
         saveN23bReviewScreenshot("paramecium-tamil200-cytoproct.png")
         // Assert the new geometry disclaimer can also be reached in Tamil at 200%.
