@@ -19,6 +19,7 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToIndex
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.click
+import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.geometry.Offset
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -76,19 +77,28 @@ private fun saveN23bReviewScreenshot(fileName: String) {
     var samples = 0
     var canvasBackground = 0
     var cellFill = 0
+    var selectedHighlight = 0
     for (y in 0 until bitmap.height step 14) {
         for (x in 0 until bitmap.width step 14) {
             val rgb = bitmap.getPixel(x, y) and 0x00FFFFFF
             if (rgb == 0x00F4FBFA) canvasBackground++
             if (rgb == 0x00D3F1EC) cellFill++
+            if (rgb == 0x00B55B16 || rgb == 0x00E28D3E) selectedHighlight++
             samples++
         }
     }
     bitmap.recycle()
-    check(canvasBackground * 100 >= samples * 4 &&
-        cellFill * 100 >= samples) {
-        "Canvas absent from actual screenshot $file: " +
+    // More than an exposed sliver of the Canvas must be captured for review.
+    check(canvasBackground * 100 >= samples * 12 &&
+        cellFill * 100 >= samples * 6) {
+        "Insufficient anatomical Canvas area in $file: " +
             "background=$canvasBackground, cell=$cellFill, samples=$samples"
+    }
+    if (fileName == "paramecium-tamil200-cytoproct.png") {
+        check(selectedHighlight >= 4) {
+            "Selected cytoproct highlight is not visible in Tamil 200% PNG: " +
+                "highlight=$selectedHighlight, samples=$samples"
+        }
     }
 }
 
@@ -466,13 +476,16 @@ class NativeTamilLargeTextAcceptanceTest {
             .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
         rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
             .assertExists()
-        // At 200% font scale, descendant performScrollTo() may leave this
-        // tall LazyColumn item positioned at its lower, text-only region.
-        // Reset the native list to its actual Canvas item (index 12) so the
-        // schematic is present on screen before recording visual evidence.
-        // The independent PNG pixel assertions remain mandatory.
-        rule.onNodeWithTag("native-chapter-u1-paramecium")
-            .performScrollToIndex(12)
+        // Start at the Canvas item, then scroll the native LazyColumn by
+        // a measured fraction of its real viewport height. At 200% Tamil
+        // text, index alignment alone displays only the silhouette's top.
+        val chapterScroll = rule.onNodeWithTag("native-chapter-u1-paramecium")
+        chapterScroll.performScrollToIndex(12)
+        val visibleHeight = chapterScroll.fetchSemanticsNode().boundsInRoot.height
+        chapterScroll.performTouchInput {
+            swipeUp(startY = visibleHeight * 0.75f,
+                endY = visibleHeight * 0.43f, durationMillis = 800L)
+        }
         rule.waitForIdle()
         saveN23bReviewScreenshot("paramecium-tamil200-cytoproct.png")
         // Assert the new geometry disclaimer can also be reached in Tamil at 200%.
