@@ -122,6 +122,76 @@ object NativeLessonDrafts {
                 scientificSources = listOf(OPENSTAX, PARA_REVIEW)
             ),
             LessonSection(
+                id = "systematics-and-species",
+                heading = BilingualText("Systematics and limits of traditional Protozoa",
+                    "வகைப்பாடும் பாரம்பரிய புரோட்டோசோவா கருத்தின் வரம்புகளும்"),
+                paragraphs = listOf(
+                    BilingualText(
+                        "Paramecium caudatum belongs to the eukaryotic alveolates (SAR group), phylum Ciliophora and class Oligohymenophorea. Many classification schemes place the genus in order Peniculida. Classical zoology textbooks frequently place ciliates within Protozoa; this is a historical teaching framework, not a single monophyletic animal group.",
+                        "பாரமீசியம் கௌடேட்டம் யூகேரியோட்டுகளில் SAR தொகுதியைச் சேர்ந்த ஆல்வியோலேட்டுகளுள் அமைந்துள்ளது. இது Ciliophora தொகுதியிலும் Oligohymenophorea வகுப்பிலும் அடங்குகிறது; பல நவீன முறைகளில் Peniculida வரிசையில் வைக்கப்படுகிறது. பழைய பாடநூல்களின் ‘புரோட்டோசோவா’ ஒரே இயற்கையான பரிணாமக் குழு அல்ல."),
+                    BilingualText(
+                        "The reference species matters: a feature shown for a different Paramecium species cannot automatically be claimed as validated in P. caudatum. A whole-cell light micrograph, a transverse electron-microscope section and a stylized teaching illustration answer different anatomical questions.",
+                        "ஆய்வுக்குரிய இனத்தைத் துல்லியமாகக் குறிப்பிட வேண்டும். வேறு பாரமீசியம் இனத்தில் காணப்பட்ட உறுப்பை P. caudatum இலும் அப்படியே உறுதிசெய்ய முடியாது. முழுச் செல் ஒளிநுண்ணோக்கிப் படம், எலக்ட்ரான் நுண்ணோக்கிக் குறுக்குவெட்டு, விளக்க வரைபடம் ஆகியவை வேறுபட்ட உடலமைப்புக் கேள்விகளுக்குப் பதில் தருகின்றன.")
+                ),
+                scientificSources = listOf(PARA_REVIEW, OPENSTAX)
+            ),
+            LessonSection(
+                id = "oral-apparatus-details",
+                heading = BilingualText("Oral apparatus and food-vacuole route",
+                    "வாய்ப்புற அமைப்பும் உணவுக் குமிழ் செல்லும் பாதையும்"),
+                paragraphs = listOf(
+                    BilingualText(
+                        "The oral groove, vestibule, cytostome and cytopharynx are related but distinct structures. Oral ciliary currents move bacteria and other suitably sized suspended particles toward the cytostome. New food vacuoles form near the cytopharyngeal region; the groove itself must not be described as a permanent digestive cavity.",
+                        "வாய்ப்பள்ளம், வெஸ்டிப்யூல், சைட்டோஸ்டோம், சைட்டோஃபாரிங்ஸ் ஆகியவை தொடர்புடைய தனித்தனி அமைப்புகள். வாய்ப்புறக் குறுஇழை ஓட்டம் பாக்டீரியா போன்ற சிறுதுகள்களை சைட்டோஸ்டோம் நோக்கிக் கொண்டு செல்கிறது. சைட்டோஃபாரிங்ஸ் அருகே புதிய உணவுக் குமிழ்கள் உருவாகின்றன; வாய்ப்பள்ளமே நிரந்தரச் செரிமான அறை அல்ல."),
+                    BilingualText(
+                        "Vacuoles move through the cytoplasm as acidification and digestive events proceed. The organism assimilates useful molecules, while the cytoproct is a specialized egestion site for indigestible residue. Its normally closed cortical appearance should not be drawn as an always-open hole.",
+                        "சைட்டோபிளாஸ்மத்தில் உணவுக் குமிழ்கள் நகரும் போது அமிலத்தன்மை மாற்றங்களும் செரிமான நிகழ்வுகளும் நடக்கின்றன. பயன்படும் மூலக்கூறுகள் உறிஞ்சப்படுகின்றன; செரியாத எச்சங்கள் செல் கழிவுவெளியேற்றப் பகுதி வழியாக வெளியேறுகின்றன. இயல்பில் மூடியிருக்கும் அதன் புறப்படல அமைப்பை நிரந்தரத் திறந்த துளையாக வரையக்கூடாது.")
+                ),
+                scientificSources = listOf(ORAL_ULTRASTRUCTURE, PARA_REVIEW)
+            ),
+            LessonSection(
+                id = "cortical-avoidance-response",
+                heading = BilingualText("Cortical organization and avoidance response",
+                    "புறப்படல ஒழுங்கமைவும் தடையைத் தவிர்க்கும் எதிர்வினையும்"),
+                paragraphs = listOf(
+                    BilingualText(
+                        "Basal bodies anchor cilia in the cortex; neighboring ciliary units coordinate effective and recovery strokes. Changes in membrane excitability and calcium-dependent ciliary activity can trigger ciliary reversal and a brief backward swim before the cell changes direction.",
+                        "செல் புறப்படலத்தில் அடித்தளத் துகள்கள் குறுஇழைகளைத் தாங்குகின்றன. அருகிலுள்ள குறுஇழைகள் செயல்திறன் அடியும் மீள்நிலை அடியும் ஒருங்கிணைந்து செய்கின்றன. படல மின்னூட்ட மாற்றங்களும் கால்சியம் சார்ந்த அசைவு மாற்றங்களும் குறுஇழைத் திசையைத் திருப்பி, செல் சிறிது பின்னோக்கி நீந்தி திசைமாற உதவலாம்."),
+                    BilingualText(
+                        "A moving schematic may use exaggerated cilia and slowed beat cycles to reveal metachronal coordination. Such animation explains the sequence; it cannot supply a measured native beat frequency, a microscopy-calibrated number of cilia or an experimentally verified migration speed.",
+                        "மெட்டாக்ரோனல் ஒருங்கிணைப்பைக் காட்ட விளக்க இயக்கப்படத்தில் குறுஇழைகள் பெரிதாக்கப்பட்டும் அசைவு மெதுவாக்கப்பட்டும் இருக்கலாம். இக்காட்சி உண்மையான அசைவு அதிர்வெண், குறுஇழைகளின் அளவிடப்பட்ட எண்ணிக்கை அல்லது நீந்தும் வேகத்தை நிரூபிக்காது.")
+                ),
+                scientificSources = listOf(SWIMMING_REVIEW, PROTIST_MOVEMENT, PARA_REVIEW)
+            ),
+            LessonSection(
+                id = "asexual-division-process",
+                heading = BilingualText("Binary fission: cytological sequence",
+                    "இருபிளவு: செல்நிலை நிகழ்வுகளின் வரிசை"),
+                paragraphs = listOf(
+                    BilingualText(
+                        "During vegetative transverse binary fission, nuclear and cortical components must be apportioned to the daughter cells. The germline micronucleus undergoes mitotic division; the somatic macronucleus divides by a distinct process often described as amitosis, followed by transverse cytokinesis.",
+                        "வளர்ச்சிநிலைக் குறுக்குத் திசை இருபிளவில் உட்கரு மற்றும் புறப்படல அமைப்புகள் இரு மகள் செல்களுக்கும் பகிரப்படுகின்றன. சிற்றுட்கரு மைட்டாசிஸ் மூலம் பிரிகிறது; பேருட்கரு பெரும்பாலும் அமிட்டாசிஸ் எனப்படும் வேறுபட்ட முறையில் பிரிந்து, பின்னர் குறுக்குச் சைட்டோகைனிசிஸ் நடைபெறுகிறது."),
+                    BilingualText(
+                        "Unlike conjugation, binary fission directly generates two descendants from one parent cell. The inherited cytoplasmic and cortical organization continues to mature after separation; an animation should not imply that every structure is built instantaneously during the final cleavage.",
+                        "இணைவிலிருந்து மாறுபட்டு இருபிளவில் ஒரே தாய்செல்லிலிருந்து இரண்டு மகள் செல்கள் உருவாகின்றன. பிரிவுக்குப் பின்னரும் புறப்படல மற்றும் சைட்டோபிளாஸ்ம அமைப்புகள் முதிர்ச்சியடைகின்றன; இறுதி பிரிவின்போதே அனைத்து அமைப்புகளும் கணநேரத்தில் உருவாவதாக இயக்கப்படம் காட்டக்கூடாது.")
+                ),
+                scientificSources = listOf(PARA_REVIEW, OPENSTAX)
+            ),
+            LessonSection(
+                id = "laboratory-reasoning",
+                heading = BilingualText("Practical interpretation, evidence and misconceptions",
+                    "செய்முறை விளக்கம், ஆதாரம், பொதுவான தவறான கருத்துகள்"),
+                paragraphs = listOf(
+                    BilingualText(
+                        "In a live preparation, learners may see the cell outline, swimming path and large vacuoles, but a light-microscope view rarely resolves every subpellicular organ. Microscopic observations must be separated from inferred organ functions and from features shown solely on schematic teaching plates.",
+                        "உயிர்மாதிரியில் மாணவர்கள் செல் எல்லை, நீந்தும் பாதை மற்றும் பெரிய நுண்குமிழ்களைப் பார்க்கலாம். ஆனால் ஒளிநுண்ணோக்கியில் பெல்லிக்கிளின் கீழுள்ள அனைத்து நுண் உறுப்புகளும் தெளிவாகத் தெரியாது. நேரடியாகக் கண்ட அமைப்புகளையும் ஊகித்த பணிகளையும் விளக்க வரைபடத்தில் மட்டும் காட்டியவற்றையும் வேறுபடுத்த வேண்டும்."),
+                    BilingualText(
+                        "Ask students to predict the effects of hypotonic freshwater on water balance, explain how coordinated ciliary beats create movement, and distinguish a food vacuole from a contractile vacuole. Check that conjugation is treated as genetic exchange rather than instantaneous population multiplication.",
+                        "குறைந்த கரைசல் செறிவுடைய நன்னீரில் நீர்ச்சமநிலை எப்படி மாறும், குறுஇழைகளின் ஒருங்கிணைந்த அசைவு எவ்வாறு நகர்த்தும், உணவுக் குமிழுக்கும் சுருங்கும் நுண்குமிழுக்கும் வேறுபாடு என்ன என்பதைக் கணிக்கச் சொல்லவும். இணைவை உடனடி செல் எண்ணிக்கைப் பெருக்கம் என மாணவர்கள் தவறாகக் கருதுகிறார்களா என்பதையும் சோதிக்கவும்.")
+                ),
+                scientificSources = listOf(OPENSTAX, OSMO_REVIEW, PARA_REVIEW)
+            ),
+            LessonSection(
                 id = "classroom-observation",
                 heading = BilingualText("Microscopy: evidence and questions",
                     "நுண்ணோக்கி: கவனிப்பும் வினாக்களும்"),

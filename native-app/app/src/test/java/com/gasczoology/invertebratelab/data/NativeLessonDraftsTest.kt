@@ -23,6 +23,11 @@ class NativeLessonDraftsTest {
             "osmoregulation",
             "nuclear-dimorphism",
             "conjugation",
+            "systematics-and-species",
+            "oral-apparatus-details",
+            "cortical-avoidance-response",
+            "asexual-division-process",
+            "laboratory-reasoning",
             "classroom-observation",
         ), lesson.sections.map { it.id })
         assertTrue(lesson.sections.all { it.paragraphs.size >= 2 })
@@ -45,7 +50,7 @@ class NativeLessonDraftsTest {
                 it.english.isNotBlank() && it.tamil.isNotBlank()
             })
         }
-        assertTrue(lesson.sections.sumOf { it.paragraphs.size } >= 16)
+        assertTrue(lesson.sections.sumOf { it.paragraphs.size } >= 26)
     }
 
     @Test
