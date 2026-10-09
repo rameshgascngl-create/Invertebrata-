@@ -116,11 +116,11 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
             Text(bi(language,"Reference species: Paramecium caudatum. Teaching draft; diagram geometry and Tamil terminology are awaiting independent academic review.",
                 "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம். கற்பித்தல் வரைவு; உடலமைப்பு இடங்களும் தமிழ் சொற்களும் தனி நிபுணர் மதிப்பாய்வுக்காகக் காத்திருக்கின்றன."),
                 modifier=Modifier.testTag("r1-review-warning"))
-            Row(modifier=Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
-                horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+            Column(modifier=Modifier.fillMaxWidth(),
+                verticalArrangement=Arrangement.spacedBy(6.dp)) {
                 for(section in listOf("study","anatomy","simulate","listen","practice")) {
                     OutlinedButton(onClick={tab=section},
-                        modifier=Modifier.heightIn(min=48.dp).testTag("r1-tab-"+section)) {
+                        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-tab-"+section)) {
                         Text(when(section) {
                             "study" -> bi(language,"Study","பாடம்")
                             "anatomy" -> bi(language,"Anatomy","உடலமைப்பு")
@@ -205,11 +205,11 @@ private fun AtlasSection(language:AppLanguage,speak:(BilingualText)->Unit) {
     var selected by rememberSaveable { mutableStateOf("oral-groove") }
     Text(bi(language,"Explore anatomical plates","உடலமைப்புப் படங்களை ஆராய்க"),
         modifier=Modifier.testTag("r1-atlas-heading"))
-    Row(modifier=Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
-        horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+    Column(modifier=Modifier.fillMaxWidth(),
+        verticalArrangement=Arrangement.spacedBy(6.dp)) {
         for(p in listOf("external","oral","vacuole","internal")) {
             OutlinedButton(onClick={panel=p;if(p!="external")selected=nodes(p).first().id},
-                modifier=Modifier.heightIn(min=48.dp).testTag("r1-atlas-"+p)) {
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-atlas-"+p)) {
                 Text(when(p) {
                     "external" -> bi(language,"External/cilia","வெளிப்புறம்")
                     "oral" -> bi(language,"Oral feeding","உணவமைப்பு")
@@ -335,26 +335,26 @@ private fun SimulatorSection(
         model.stages.size.toString()+" — "+stage.heading.value(language),
         modifier=Modifier.testTag("r1-stage-title"))
     Text(stage.explanation.value(language),modifier=Modifier.testTag("r1-stage-explanation"))
-    Row(modifier=Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
-        horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+    Column(modifier=Modifier.fillMaxWidth(),
+        verticalArrangement=Arrangement.spacedBy(6.dp)) {
         OutlinedButton(onClick={onStep(model.previous(step));onPlaying(false)},
-            modifier=Modifier.heightIn(min=48.dp).testTag("r1-prev")) {
+            modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-prev")) {
             Text(bi(language,"Previous","முந்தையது"))
         }
         Button(onClick={
             if(step==model.stages.lastIndex)onStep(0)
             onPlaying(!playing)
         },
-            modifier=Modifier.heightIn(min=48.dp).testTag("r1-play")) {
+            modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-play")) {
             Text(if(playing)bi(language,"Pause","இடைநிறுத்து")
                 else bi(language,"Play","இயக்கு"))
         }
         OutlinedButton(onClick={onStep(model.advance(step));onPlaying(false)},
-            modifier=Modifier.heightIn(min=48.dp).testTag("r1-next")) {
+            modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-next")) {
             Text(bi(language,"Next","அடுத்தது"))
         }
         OutlinedButton(onClick={onStep(0);onPlaying(false)},
-            modifier=Modifier.heightIn(min=48.dp).testTag("r1-replay")) {
+            modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-replay")) {
             Text(bi(language,"Replay","மீளியக்கு"))
         }
     }
