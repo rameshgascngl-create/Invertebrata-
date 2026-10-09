@@ -33,6 +33,7 @@ import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
 import com.gasczoology.invertebratelab.data.ParameciumCytoproctRidgeCandidate
 import com.gasczoology.invertebratelab.data.ParameciumReviewHighlightContract
 import com.gasczoology.invertebratelab.data.ParameciumN23DReviewDossier
+import com.gasczoology.invertebratelab.data.ParameciumN23EReviewerHandoff
 import com.gasczoology.invertebratelab.data.ParameciumSchematicContour
 import com.gasczoology.invertebratelab.data.ParameciumExternalEvidence
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
@@ -50,6 +51,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
     // Read-only source traceability: zero authenticated human approvals are
     // present. Evidence links never become accepted geometric coordinates.
     val reviewTask = ParameciumN23DReviewDossier.forFeature(selectedId)
+    val humanHandoff = ParameciumN23EReviewerHandoff.forFeature(selectedId)
 
     Column(
         modifier = modifier.fillMaxWidth().testTag("n23b-external-preview"),
@@ -238,6 +240,24 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
             "Reference: " + reviewTask.primary.exactLocator +
                 " — " + reviewTask.primary.referenceUrl,
             modifier = Modifier.testTag("n23d-source-locator"),
+        )
+        Text(
+            (if (language == AppLanguage.TAMIL) "N2.3E1 நிபுணர் மதிப்பாய்வுக் கேள்வி: "
+                else "N2.3E1 expert-review question: ") +
+                humanHandoff.reviewQuestion.value(language),
+            modifier = Modifier.testTag("n23e-review-question"),
+        )
+        Text(
+            (if (language == AppLanguage.TAMIL) "ஆதாரத்தின் வரம்பு: "
+                else "Evidence limitation: ") +
+                humanHandoff.evidenceBoundary.value(language),
+            modifier = Modifier.testTag("n23e-review-boundary"),
+        )
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "நிபுணர் உயிரியல் ஒப்புதல்: 0/5; தமிழ் ஒப்புதல்: 0/5; நேரடி மதிப்பாய்வு நிலுவை"
+            else "Independent biology approvals: 0/5; Tamil approvals: 0/5; human inspection pending",
+            modifier = Modifier.testTag("n23e-review-status"),
         )
         if (selectedId == "cytoproct") {
             Text(
