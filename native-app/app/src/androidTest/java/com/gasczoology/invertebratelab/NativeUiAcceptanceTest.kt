@@ -592,17 +592,20 @@ class NativeTamilLargeTextAcceptanceTest {
             .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
         rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
             .assertExists()
-        // Start at the Canvas item, then scroll the native LazyColumn by
-        // a measured fraction of its real viewport height. At 200% Tamil
-        // text, index alignment alone displays only the silhouette's top.
+        // A fixed fractional swipe is brittle when the teaching text grows.
+        // Scroll the *actual drawing* fully into the Android viewport and
+        // assert visibility before making the genuine screenshot. Keep the
+        // existing paper, cell, graphite and selected-highlight pixel gates.
         val chapterScroll = rule.onNodeWithTag("native-chapter-u1-paramecium")
         chapterScroll.performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
-        val visibleHeight = chapterScroll.fetchSemanticsNode().boundsInRoot.height
-        chapterScroll.performTouchInput {
-            swipeUp(startY = visibleHeight * 0.75f,
-                endY = visibleHeight * 0.43f, durationMillis = 800L)
-        }
+        val pencilCanvas = rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+        pencilCanvas.performScrollTo()
         rule.waitForIdle()
+        val canvasBounds = pencilCanvas.fetchSemanticsNode().boundsInRoot
+        val scrollerBounds = chapterScroll.fetchSemanticsNode().boundsInRoot
+        assertTrue("Pencil Canvas must fit within the visible Tamil 200% viewport",
+            canvasBounds.top >= scrollerBounds.top - 1f &&
+            canvasBounds.bottom <= scrollerBounds.bottom + 1f)
         saveN23bReviewScreenshot("paramecium-tamil200-cytoproct.png")
         // Assert the new geometry disclaimer can also be reached in Tamil at 200%.
         val oral = rule.onNodeWithTag("n23b-select-oral-groove", useUnmergedTree = true)
