@@ -82,5 +82,21 @@ Implement R1 Paramecium as an actual native interactive Zoology lesson, not a mo
   improve the next anatomical panel with sourced species-specific accuracy.
 - See `native-app/reviews/R12_PARAMECIUM_CVC_MECHANISM_REVIEW_AND_DEVICE_QA.md`.
 
+## R1.3 — Original graphite-pencil atlas (2026-10-09)
+- Baseline R1.2 exact SHA: `17c65fd1449d94de7f757b8124bb6c573cb8a293`. Native Compose external atlas now
+  renders original pencil contours, clipped hatching, cytoplasm stippling,
+  nucleus forms, separate food and contractile vacuoles, cilia, trichocysts,
+  caudal tuft and oral apparatus detail. Atlas miniatures use graphite tones.
+- Existing silhouette control points and five interactive hotspots are unchanged;
+  the scientific status remains DRAFT_UNVERIFIED.
+- Screenshot QA adapted to BLACK/WHITE palette, preserving >=12% paper and
+  >=6% filled-cell coverage, adding graphite pixel detection and retaining
+  the original selected-highlight check. Test and workflow gate weakening forbidden.
+- Stock reference served as **style inspiration only**. No stock asset copied
+  or traced. Details in `native-app/reviews/R13_PENCIL_ATLAS_STYLE_REVIEW.md`.
+- No academic approval issued: biology 0/5, Tamil 0/5, physical-device QA
+  not performed. Debug APK only; signed production release HOLD.
+- R1.3 CI accepted ONLY when 4 workflows pass on one exact commit.
+
 ## Update discipline
 After EACH true educational implementation commit, update this ledger with (1) exact HEAD and changed native feature paths; (2) newly authored full lessons, count out of 44; (3) which organism modules actually work, count out of nine; (4) working diagrams and simulations; (5) speech and Tamil coverage; (6) source/reviewer decisions; (7) device and CI evidence; (8) blocking scientific inaccuracies and precise next work. Do not equate green GitHub CI with subject-matter completion. Do not erase unresolved issues, invent reviewer signoffs, or release another QA-only milestone as though it were the requested product.

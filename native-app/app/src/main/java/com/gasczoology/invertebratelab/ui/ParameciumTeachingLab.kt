@@ -308,31 +308,31 @@ private fun VacuoleAtlasSection(
         val w = size.width
         val h = size.height
         val unit = minOf(w, h)
-        drawRect(Color(0xFFF4FBFA))
+        drawRect(PencilAtlasPalette.paper)
         parameciumCell(Offset(w * .5f, h * .5f), w * .82f, h * .76f)
         for (feature in ParameciumVacuolePlate.landmarks) {
             val center = Offset(w * feature.x, h * feature.y)
             val selectedFeature = feature.id == landmark.id
             if (feature.organId == "contractile-vacuole") {
                 val radius = unit * .042f
-                drawCircle(Color(0xFF167EAB), radius = radius,
+                drawCircle(PencilAtlasPalette.graphite, radius = radius,
                     center = center, style = Stroke(3.5f))
                 // Six representative arms, NOT the verified number or density.
                 for (i in 0 until 6) {
                     val angle = i * 2 * PI / 6
                     val dir = Offset(cos(angle).toFloat(), sin(angle).toFloat())
-                    drawLine(Color(0xFF58A6BF),
+                    drawLine(PencilAtlasPalette.mid,
                         center + dir * (radius + 3f),
                         center + dir * (radius + unit * .045f), 3f)
                 }
             } else {
                 // Digestive food vacuole is amber and lacks radial collecting arms.
-                drawCircle(Color(0xFFE8B976), radius = unit * .054f, center = center)
-                drawCircle(Color(0xFF9B6826), radius = unit * .054f,
+                drawCircle(PencilAtlasPalette.cell, radius = unit * .054f, center = center)
+                drawCircle(PencilAtlasPalette.graphite, radius = unit * .054f,
                     center = center, style = Stroke(3f))
-                drawCircle(Color(0xFF9B6826), radius = unit * .011f,
+                drawCircle(PencilAtlasPalette.graphite, radius = unit * .011f,
                     center = center + Offset(-unit * .014f, unit * .012f))
-                drawCircle(Color(0xFF9B6826), radius = unit * .008f,
+                drawCircle(PencilAtlasPalette.graphite, radius = unit * .008f,
                     center = center + Offset(unit * .018f, -unit * .013f))
             }
             if (selectedFeature) {
@@ -342,8 +342,8 @@ private fun VacuoleAtlasSection(
         }
     }
     Text(bi(language,
-        "Blue radial systems: contractile-vacuole complexes for water balance. Amber vesicle: food vacuole for intracellular digestion.",
-        "நீல ஆர அமைப்புகள்: நீர்ச்சமநிலைக்கான சுருங்கும் நுண்குமிழ் தொகுதிகள். மஞ்சள்-பழுப்பு குமிழ்: செல்லுக்குள் செரிமானத்திற்கான உணவுக் குமிழ்."),
+        "Graphite radial forms indicate contractile vacuoles; the granular round vesicle indicates a digestive food vacuole.",
+        "கருநிற ஆர அமைப்புகள் சுருங்கும் நுண்குமிழ்களைக் குறிக்கின்றன; புள்ளியிட்ட தனி வட்டக்குமிழ் செரிமான உணவுக் குமிழ்."),
         modifier = Modifier.testTag("r11-vacuole-distinction"))
     CvcMechanismReviewInset(language, speak)
     Text(bi(language, "Selected landmark: ", "தேர்ந்தெடுத்த அமைப்பு: ") +
@@ -410,7 +410,7 @@ private fun CvcMechanismReviewInset(
         val center = Offset(w * .5f, h * .57f)
         val radius = unit * .12f
         val pore = Offset(center.x, h * .14f)
-        drawRect(Color(0xFFF4FBFA))
+        drawRect(PencilAtlasPalette.paper)
         // Cortex boundary: the opening belongs to the membrane, not the cytoproct.
         drawLine(Color(0xFF146E76), Offset(w * .10f, pore.y),
             Offset(pore.x - unit * .035f, pore.y), 4f)
@@ -437,7 +437,7 @@ private fun CvcMechanismReviewInset(
                 drawCircle(Color(0xFF88A7B6), radius = unit * .007f, center = pos)
             }
         }
-        drawCircle(Color(0xFF167EAB), radius = radius, center = center,
+        drawCircle(PencilAtlasPalette.graphite, radius = radius, center = center,
             style = Stroke(4f))
         drawCircle(Color(0xFF8FD5EC), radius = radius * phase.lumenFraction,
             center = center)
@@ -503,7 +503,7 @@ private fun AtlasSketch(panel:String, points:List<AtlasNode>, selected:String,
             }
         }) {
         val w=size.width;val h=size.height
-        drawRect(Color(0xFFF4FBFA))
+        drawRect(PencilAtlasPalette.paper)
         parameciumCell(Offset(w*.5f,h*.5f),w*.80f,h*.76f)
         when(panel) {
             "oral" -> {
@@ -522,9 +522,9 @@ private fun AtlasSketch(panel:String, points:List<AtlasNode>, selected:String,
                 }
             }
             else -> {
-                drawOval(Color(0xFFACA4D4),topLeft=Offset(w*.37f,h*.33f),
+                drawOval(PencilAtlasPalette.hatch,topLeft=Offset(w*.37f,h*.33f),
                     size=Size(w*.25f,h*.23f))
-                drawCircle(Color(0xFF745DA7),radius=h*.05f,center=Offset(w*.63f,h*.44f))
+                drawCircle(PencilAtlasPalette.graphite,radius=h*.05f,center=Offset(w*.63f,h*.44f))
                 drawCircle(Color(0xFF57AFC8),radius=h*.10f,center=Offset(w*.34f,h*.64f))
             }
         }
@@ -650,7 +650,7 @@ private fun ProcessSketch(process:ParameciumProcess,progress:Float,language:AppL
             "Schematic visualization changes with stage; read the stage explanation below",
             "நிலைக்கு ஏற்ப மாறும் விளக்க வரைபடம்; நிலை விளக்கம் கீழே உள்ளது") }) {
         val w=size.width;val h=size.height;val center=Offset(w*.5f,h*.5f)
-        drawRect(Color(0xFFF4FBFA))
+        drawRect(PencilAtlasPalette.paper)
         if(process==ParameciumProcess.CONJUGATION) {
             parameciumCell(Offset(w*.5f,h*.34f),w*.60f,h*.26f)
             parameciumCell(Offset(w*.5f,h*.67f),w*.60f,h*.26f)
@@ -725,8 +725,16 @@ private fun ProcessSketch(process:ParameciumProcess,progress:Float,language:AppL
 }
 
 private fun DrawScope.parameciumCell(center:Offset,w:Float,h:Float) {
-    drawOval(Color(0xFFD2F0E8),topLeft=Offset(center.x-w/2,center.y-h/2),
-        size=Size(w,h))
-    drawOval(Color(0xFF146E76),topLeft=Offset(center.x-w/2,center.y-h/2),
-        size=Size(w,h),style=Stroke(4f))
+    val top=Offset(center.x-w/2,center.y-h/2)
+    drawOval(PencilAtlasPalette.cell,topLeft=top,size=Size(w,h))
+    drawOval(PencilAtlasPalette.hatch,topLeft=top,size=Size(w,h),
+        style=Stroke(7f))
+    drawOval(PencilAtlasPalette.graphite,topLeft=top,size=Size(w,h),
+        style=Stroke(3.2f))
+    for(i in 0 until 40) {
+        val a=2*PI*i/40
+        drawCircle(PencilAtlasPalette.mid,radius=1.5f,
+            center=Offset(center.x+cos(a).toFloat()*w*.30f,
+                center.y+sin(a).toFloat()*h*.30f))
+    }
 }

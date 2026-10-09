@@ -77,12 +77,15 @@ private fun saveN23bReviewScreenshot(fileName: String) {
     var samples = 0
     var canvasBackground = 0
     var cellFill = 0
+    var graphite = 0
     var selectedHighlight = 0
     for (y in 0 until bitmap.height step 14) {
         for (x in 0 until bitmap.width step 14) {
             val rgb = bitmap.getPixel(x, y) and 0x00FFFFFF
-            if (rgb == 0x00F4FBFA) canvasBackground++
-            if (rgb == 0x00D3F1EC) cellFill++
+            if (rgb == 0x00FBFAF6) canvasBackground++
+            if (rgb == 0x00F1EFE9) cellFill++
+            if (rgb == 0x0044413F || rgb == 0x00302E2C ||
+                rgb == 0x008A8580) graphite++
             if (rgb == 0x00B55B16 || rgb == 0x00E28D3E) selectedHighlight++
             samples++
         }
@@ -90,9 +93,9 @@ private fun saveN23bReviewScreenshot(fileName: String) {
     bitmap.recycle()
     // More than an exposed sliver of the Canvas must be captured for review.
     check(canvasBackground * 100 >= samples * 12 &&
-        cellFill * 100 >= samples * 6) {
+        cellFill * 100 >= samples * 6 && graphite >= 8) {
         "Insufficient anatomical Canvas area in $file: " +
-            "background=$canvasBackground, cell=$cellFill, samples=$samples"
+            "paper=$canvasBackground, graphite=$graphite, cell=$cellFill, samples=$samples"
     }
     if (fileName == "paramecium-tamil200-cytoproct.png") {
         check(selectedHighlight >= 4) {
@@ -308,6 +311,8 @@ class NativeUiAcceptanceTest {
         waitFor("native-chapter-u1-paramecium")
         rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
         waitFor("n23b-external-preview")
+        rule.onNodeWithTag("r13-pencil-atlas-style", useUnmergedTree = true)
+            .performScrollTo().assertExists()
         rule.onNodeWithTag("n23b-external-canvas").assertExists()
         rule.onNodeWithTag("n23b-orientation", useUnmergedTree = true)
             .assertTextEquals(

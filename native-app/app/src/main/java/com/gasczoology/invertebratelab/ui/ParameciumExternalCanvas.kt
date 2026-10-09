@@ -42,7 +42,7 @@ import com.gasczoology.invertebratelab.data.ParameciumExternalEvidence
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
 
 /**
- * N2.3B1 native Canvas PROTOTYPE, not an accepted anatomical plate.
+ * R1.3 original pencil Canvas PROTOTYPE, not an accepted anatomical plate.
  * A drawing, bilingual select controls and touch-based highlighting are
  * implemented. The provisional geometry does not satisfy the review gate.
  */
@@ -70,10 +70,15 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
     ) {
         Text(if (language == AppLanguage.TAMIL)
             "பாரமீசியம் (P. caudatum) — இடமமைவு வரைபட முன்மாதிரி"
-        else "Paramecium caudatum — schematic Canvas prototype")
+        else "Paramecium caudatum — original pencil atlas draft")
         Text(if (language == AppLanguage.TAMIL)
             "உறுப்புகளின் இடம், தலைப்புகள், தமிழ் சொற்கள் அறிவியல் மதிப்பாய்வுக்கு உட்பட்டவை. தேர்வு செய்ய உறுப்பைத் தொடவும் அல்லது கீழுள்ள பொத்தானைப் பயன்படுத்தவும்."
         else "Provisional organ positions and Tamil terminology: scientific review pending. Tap a marked region or use the accessible buttons below.")
+
+        Text(if(language==AppLanguage.TAMIL)
+            "கருநிறப் பென்சில் வரைபடம்; தேர்ந்தெடுத்த உறுப்பிற்கு மட்டும் வண்ணக் குறி. நிபுணர் மதிப்பாய்வு நிலுவை."
+        else "Original graphite-pencil anatomical drawing. Amber identifies only the selected structure; expert review pending.",
+            modifier=Modifier.testTag("r13-pencil-atlas-style"))
 
         // The orientation is explicitly stated to avoid a figure being read
         // with reversed anterior/posterior or dorsal/ventral axes.
@@ -106,7 +111,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     }
                 },
         ) {
-            drawRect(Color(0xFFF4FBFA))
+            drawRect(PencilAtlasPalette.paper)
             // Uniform scale + centered letterboxing. Pointer input shares the
             // precise inverse transform to avoid distorted anatomy or false taps.
             val viewport = PrototypeCanvasViewport.fit(size.width, size.height)
@@ -126,11 +131,15 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     }
                     close()
                 }
-                drawPath(silhouette, Color(0xFFD3F1EC))
+                drawPath(silhouette,PencilAtlasPalette.cell)
+                drawPencilCellDetails(silhouette)
+                // Hand-pencilled multi-pass contour; unchanged reference path.
+                drawPath(silhouette,PencilAtlasPalette.hatch,style=Stroke(11f))
+                drawPath(silhouette,PencilAtlasPalette.dark,style=Stroke(4f))
                 drawPath(silhouette,
-                    if (selectedId == "pellicle") Color(0xFFB55B16)
-                    else Color(0xFF176D70),
-                    style = Stroke(width = if (selectedId == "pellicle") 9f else 5f),
+                    if(selectedId=="pellicle") PencilAtlasPalette.selected
+                    else PencilAtlasPalette.mid,
+                    style=Stroke(width=if(selectedId=="pellicle") 4f else 1.4f)
                 )
 
                 // Cilia sample the actual native Path contour rather than an unrelated oval.
@@ -144,7 +153,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     val outward = Offset(tangent.y, -tangent.x)
                     drawLine(
                         color = if (selectedId == "somatic-cilia")
-                            Color(0xFFB55B16) else Color(0xFF357F82),
+                            PencilAtlasPalette.selected else PencilAtlasPalette.graphite,
                         start = at,
                         end = at + outward * 18f,
                         strokeWidth = if (selectedId == "somatic-cilia") 4.5f else 2.5f,
@@ -159,8 +168,8 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 }
                 drawPath(
                     oralGroove,
-                    if (selectedId == "oral-groove") Color(0xFFB55B16)
-                    else Color(0xFF19888D),
+                    if (selectedId == "oral-groove") PencilAtlasPalette.selected
+                    else PencilAtlasPalette.dark,
                     style = Stroke(width = if (selectedId == "oral-groove") 14f else 9f),
                 )
 
@@ -174,8 +183,8 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                         ridge.end.x, ridge.end.y)
                 }
                 drawPath(cytoproctPath,
-                    if (selectedId == "cytoproct") Color(0xFFB55B16)
-                    else Color(0xFF276A6D),
+                    if (selectedId == "cytoproct") PencilAtlasPalette.selected
+                    else PencilAtlasPalette.graphite,
                     style = Stroke(width = if (selectedId == "cytoproct")
                         ParameciumReviewHighlightContract.SELECTED_RIDGE_STROKE else 7f),
                 )
@@ -189,8 +198,8 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                     val tangent = measure.getTangent(distance)
                     val inward = Offset(-tangent.y, tangent.x)
                     drawLine(
-                        if (selectedId == "trichocysts") Color(0xFFB55B16)
-                        else Color(0xFF387C83),
+                        if (selectedId == "trichocysts") PencilAtlasPalette.selected
+                        else PencilAtlasPalette.mid,
                         start = at + inward * 10f,
                         end = at + inward * 32f,
                         strokeWidth = if (selectedId == "trichocysts") 6f else 3.5f,
@@ -202,7 +211,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 for (i in -3..3) {
                     drawLine(
                         color = if (selectedId == "somatic-cilia")
-                            Color(0xFFB55B16) else Color(0xFF357F82),
+                            PencilAtlasPalette.selected else PencilAtlasPalette.graphite,
                         start = Offset(872f, 307f + i * 2f),
                         end = Offset(910f + (3 - kotlin.math.abs(i)) * 5f,
                             307f + i * 16f),
@@ -325,7 +334,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
         Text(
             if (language == AppLanguage.TAMIL)
                 "குறிப்பு: இந்த வடிவமும் தொடு-பகுதிகளும் மாதிரி மட்டுமே; சரிபார்க்கப்பட்ட உடலமைப்புப் படம் அல்ல."
-            else "Note: schematic paths and hit regions are not academically verified geometry.",
+            else "Original graphite-pencil plate; no stock art was copied. Organ counts, positions, density and touch geometry remain unverified illustrations.",
             modifier = Modifier.padding(top = 4.dp),
         )
     }
