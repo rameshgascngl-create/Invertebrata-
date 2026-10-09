@@ -52,5 +52,35 @@ Implement R1 Paramecium as an actual native interactive Zoology lesson, not a mo
   physiology visualization with independent biological/Tamil review and
   physical-device verification, then complete the remaining R1 content.
 
+
+## R1.2 microscopy-informed mechanism cutaway (2026-10-09)
+- Baseline exact SHA: `c45f7f6806822de394aa92938d05756f5398694b`. R1.2 native source, tests, and reviewer dossier
+  committed on the existing development branch; check branch HEAD and its four
+  workflow runs to obtain the exact evaluated implementation SHA.
+- **Actual learner improvement:** single-CVC mechanism close-up showing a central
+  lumen, representative collecting canals/ampullae, spongiome and membrane
+  discharge pore. The central lumen visibly fills and empties across four
+  anchored lesson phases; on-device bilingual stage narration and 48dp
+  step controls are included. The whole-cell atlas remains separate from
+  this not-to-scale inset.
+- **Biological guardrails:** the 2 whole-cell complexes are NOT portrayed as
+  proven synchronous, and the enlarged lumen sizes/arm counts/geometry
+  are illustrative, not measurements. Discharge pore ≠ cytoproct;
+  osmoregulation ≠ digestive food-vacuole dynamics.
+- **Engineering verification:** JVM models check exact biological stage IDs,
+  monotonic filling before discharge and pore only open in expulsion;
+  API 34 and actual Tamil 200% instrumentation verify new native controls.
+  Preserve existing A5, anatomical hit-tests, screenshot, N1.4 recovery
+  and every CI threshold. CI acceptance: PENDING until all 4 same-SHA
+  workflows are complete.
+- **Academic scope:** Only Paramecium in development; no other complete
+  type study implied. All other syllabus chapters still await full lessons.
+  Five simulator processes remain provisional; nine organ narrations remain
+  drafts. Anatomy biological review 0/5 and Tamil review 0/5; physical-device
+  observation NOT RUN, release HOLD. Full R1 and R2-R7 remain incomplete.
+- **R1.3 next:** obtain expert biological/Tamil signoff, real-device QA and
+  improve the next anatomical panel with sourced species-specific accuracy.
+- See `native-app/reviews/R12_PARAMECIUM_CVC_MECHANISM_REVIEW_AND_DEVICE_QA.md`.
+
 ## Update discipline
 After EACH true educational implementation commit, update this ledger with (1) exact HEAD and changed native feature paths; (2) newly authored full lessons, count out of 44; (3) which organism modules actually work, count out of nine; (4) working diagrams and simulations; (5) speech and Tamil coverage; (6) source/reviewer decisions; (7) device and CI evidence; (8) blocking scientific inaccuracies and precise next work. Do not equate green GitHub CI with subject-matter completion. Do not erase unresolved issues, invent reviewer signoffs, or release another QA-only milestone as though it were the requested product.

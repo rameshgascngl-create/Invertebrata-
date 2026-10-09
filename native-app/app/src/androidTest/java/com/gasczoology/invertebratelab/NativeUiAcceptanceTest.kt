@@ -444,6 +444,41 @@ class NativeUiAcceptanceTest {
     }
 
     @Test
+    fun r12ContractileComplexMechanismUsesNativeAccessibleFourStageReview() {
+        englishHome()
+        rule.onNodeWithTag("r1-home-open-paramecium").performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r1-atlas-vacuole").performScrollTo().performClick()
+        rule.onNodeWithTag("r12-cvc-mechanism-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals(
+                "Contractile-vacuole complex: mechanism close-up")
+        rule.onNodeWithTag("r12-cvc-mechanism-canvas", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r12-cvc-stage-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("Stage 1/4 — Water enters")
+        val next = rule.onNodeWithTag("r12-cvc-next", useUnmergedTree = true)
+        next.performScrollTo().assertHeightIsAtLeast(48.dp)
+        val stageNames = listOf(
+            "Stage 2/4 — Collecting network",
+            "Stage 3/4 — Vacuole fills",
+            "Stage 4/4 — Fluid is discharged",
+            "Stage 1/4 — Water enters",
+        )
+        for (expected in stageNames) {
+            next.performScrollTo().performClick()
+            rule.onNodeWithTag("r12-cvc-stage-title", useUnmergedTree = true)
+                .performScrollTo().assertTextEquals(expected)
+        }
+        rule.onNodeWithTag("r12-cvc-structure-legend", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r12-cvc-review-warning", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r12-cvc-speak", useUnmergedTree = true)
+            .performScrollTo().assertHasClickAction()
+    }
+
+    @Test
     fun primaryActionSemanticsAndTouchTargetsArePresent() {
         englishHome()
         for (tag in listOf("language-english", "language-tamil", "unit-1", "a5-assessment")) {
@@ -565,6 +600,38 @@ class NativeTamilLargeTextAcceptanceTest {
         rule.onNodeWithTag("n23e2-source-access", useUnmergedTree = true)
             .performScrollTo().assertExists()
         rule.onNodeWithTag("n23e2-image-rights", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+    }
+
+    @Test
+    fun r12MechanismControlsAndTamilTerminologyWorkAtTwoHundredPercent() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertTrue(context.resources.configuration.fontScale >= 1.95f)
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("language-tamil").performClick()
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("r1-paramecium-lab")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r1-atlas-vacuole").performScrollTo().performClick()
+        rule.onNodeWithTag("r12-cvc-mechanism-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals(
+                "சுருங்கும் நுண்குமிழ் தொகுதி: செயல்முறை விரிவுக் காட்சி")
+        rule.onNodeWithTag("r12-cvc-stage-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("நிலை 1/4 — நீர் உள்ளேறுதல்")
+        rule.onNodeWithTag("r12-cvc-next", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp)
+        rule.onNodeWithTag("r12-cvc-next", useUnmergedTree = true)
+            .performClick()
+        rule.onNodeWithTag("r12-cvc-stage-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("நிலை 2/4 — சேகரிக்கும் அமைப்பு")
+        rule.onNodeWithTag("r12-cvc-structure-legend", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r12-cvc-review-warning", useUnmergedTree = true)
             .performScrollTo().assertExists()
     }
 

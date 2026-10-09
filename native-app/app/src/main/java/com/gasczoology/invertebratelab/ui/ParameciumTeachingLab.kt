@@ -45,6 +45,7 @@ import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
 import com.gasczoology.invertebratelab.data.ParameciumVacuolePlate
+import com.gasczoology.invertebratelab.data.ParameciumCvcMechanism
 import com.gasczoology.invertebratelab.data.ParameciumProcess
 import kotlinx.coroutines.delay
 import java.util.Locale
@@ -344,6 +345,7 @@ private fun VacuoleAtlasSection(
         "Blue radial systems: contractile-vacuole complexes for water balance. Amber vesicle: food vacuole for intracellular digestion.",
         "நீல ஆர அமைப்புகள்: நீர்ச்சமநிலைக்கான சுருங்கும் நுண்குமிழ் தொகுதிகள். மஞ்சள்-பழுப்பு குமிழ்: செல்லுக்குள் செரிமானத்திற்கான உணவுக் குமிழ்."),
         modifier = Modifier.testTag("r11-vacuole-distinction"))
+    CvcMechanismReviewInset(language, speak)
     Text(bi(language, "Selected landmark: ", "தேர்ந்தெடுத்த அமைப்பு: ") +
         landmark.label.value(language), modifier = Modifier.testTag("r11-vacuole-selected"))
     val lesson = ParameciumLearningEngine.organ(landmark.organId)
@@ -368,6 +370,121 @@ private fun VacuoleAtlasSection(
         modifier = Modifier.testTag("r11-vacuole-review-warning"))
     Text("Scientific reading: https://pubmed.ncbi.nlm.nih.gov/23919298/")
     Text("Scientific reading: https://www.sciencedirect.com/science/article/pii/S1065699502909376")
+}
+
+
+/**
+ * R1.2 native CVC organ-mechanism cutaway. The independent microscope reference
+ * supports component identity, NOT the illustrated orientation, counts or scale.
+ * The 4 phases are visual interpretations of the existing authored lesson stages.
+ */
+@Composable
+private fun CvcMechanismReviewInset(
+    language: AppLanguage,
+    speak: (BilingualText) -> Unit,
+) {
+    val existingCycle = remember {
+        ParameciumLearningEngine.simulation(ParameciumProcess.OSMOREGULATION)
+    }
+    var step by rememberSaveable { mutableIntStateOf(0) }
+    val stage = existingCycle.stages[step]
+    val phase = ParameciumCvcMechanism.phase(stage.id)
+    Text(bi(language,
+        "Contractile-vacuole complex: mechanism close-up",
+        "சுருங்கும் நுண்குமிழ் தொகுதி: செயல்முறை விரிவுக் காட்சி"),
+        modifier = Modifier.testTag("r12-cvc-mechanism-title"))
+    Text(bi(language,
+        "This cutaway enlarges one representative contractile-vacuole complex. The two complexes in the whole-cell atlas are NOT asserted to discharge synchronously.",
+        "இந்த விரிவுக் காட்சி ஒரு சுருங்கும் நுண்குமிழ் தொகுதியை எடுத்துக்காட்டுகிறது. முழுச் செல் வரைபடத்தின் இரு தொகுதிகளும் ஒரே நேரத்தில் நீர் வெளியேற்றுவதாகக் கருதக்கூடாது."),
+        modifier = Modifier.testTag("r12-cvc-asynchrony-note"))
+    Canvas(
+        modifier = Modifier.fillMaxWidth().height(270.dp)
+            .testTag("r12-cvc-mechanism-canvas")
+            .semantics { contentDescription = bi(language,
+                "Not-to-scale cutaway: contractile vacuole, spongiome, collecting canals, ampullae and discharge pore. The four stages change fluid filling and pore state.",
+                "அளவுக்கேற்றதல்லாத விரிவுக் காட்சி: சுருங்கும் நுண்குமிழ், ஸ்பாஞ்சியோம், சேகரிப்புக் கால்வாய்கள், ஆம்புல்லாக்கள், வெளியேற்றத் துளை.") }
+    ) {
+        val w = size.width
+        val h = size.height
+        val unit = minOf(w, h)
+        val center = Offset(w * .5f, h * .57f)
+        val radius = unit * .12f
+        val pore = Offset(center.x, h * .14f)
+        drawRect(Color(0xFFF4FBFA))
+        // Cortex boundary: the opening belongs to the membrane, not the cytoproct.
+        drawLine(Color(0xFF146E76), Offset(w * .10f, pore.y),
+            Offset(pore.x - unit * .035f, pore.y), 4f)
+        drawLine(Color(0xFF146E76), Offset(pore.x + unit * .035f, pore.y),
+            Offset(w * .90f, pore.y), 4f)
+        drawCircle(if (phase.poreOpen) Color(0xFFB55B16) else Color(0xFF146E76),
+            radius = unit * .025f, center = pore, style = Stroke(4f))
+        drawLine(Color(0xFF77B6C8), center - Offset(0f, radius),
+            pore + Offset(0f, unit * .025f), 4f)
+        val canalColor = if (phase.collectingActive)
+            Color(0xFF1269A0) else Color(0xFF75A6BB)
+        for (i in 0 until 6) {
+            val angle = i * 2 * PI / 6 + PI / 6
+            val dir = Offset(cos(angle).toFloat(), sin(angle).toFloat())
+            val canalStart = center + dir * (radius + 6f)
+            val ampulla = center + dir * (radius + unit * .15f)
+            drawLine(canalColor, canalStart, ampulla, 5f)
+            drawCircle(if (phase.collectingActive) Color(0xFF59B9D0)
+                else Color(0xFFBEDCE4), radius = unit * .03f, center = ampulla)
+            // Spongiome: a schematic tubular mesh represented as dots,
+            // deliberately not an actual count or SEM/TEM-derived arrangement.
+            for (j in 1..3) {
+                val pos = ampulla + dir * (j * unit * .024f)
+                drawCircle(Color(0xFF88A7B6), radius = unit * .007f, center = pos)
+            }
+        }
+        drawCircle(Color(0xFF167EAB), radius = radius, center = center,
+            style = Stroke(4f))
+        drawCircle(Color(0xFF8FD5EC), radius = radius * phase.lumenFraction,
+            center = center)
+        if (phase.poreOpen) {
+            for (i in 1..3) {
+                drawCircle(Color(0xFF1689C7), radius = unit * .014f,
+                    center = pore - Offset(0f, i * unit * .039f))
+            }
+        }
+    }
+    Text(bi(language,
+        "Structures: central fluid lumen (blue); radial collecting canals (blue lines); ampullae (rounded terminals); spongiome (tubular dotted network); cortical discharge pore (top).",
+        "அமைப்புகள்: நடுவிலுள்ள நீர்த்திரவப் பகுதி (நீலம்); சேகரிப்புக் கால்வாய்கள் (நீலக் கோடுகள்); ஆம்புல்லாக்கள் (வட்ட முனைகள்); ஸ்பாஞ்சியோம் (புள்ளிக் குழாய் வலை); புறப்படல வெளியேற்றத் துளை (மேல்)."),
+        modifier = Modifier.testTag("r12-cvc-structure-legend"))
+    Text(bi(language, "Stage ", "நிலை ") + (step + 1) + "/" +
+        existingCycle.stages.size + " — " + stage.heading.value(language),
+        modifier = Modifier.testTag("r12-cvc-stage-title"))
+    Text(stage.explanation.value(language),
+        modifier = Modifier.testTag("r12-cvc-stage-explanation"))
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        OutlinedButton(
+            onClick = { step = (step - 1).coerceAtLeast(0) },
+            modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                .testTag("r12-cvc-previous")
+        ) { Text(bi(language, "Previous", "முந்தையது")) }
+        Button(
+            onClick = { step = (step + 1) % existingCycle.stages.size },
+            modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                .testTag("r12-cvc-next")
+        ) { Text(bi(language, "Next", "அடுத்தது")) }
+    }
+    OutlinedButton(
+        onClick = { speak(stage.explanation) },
+        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+            .testTag("r12-cvc-speak")
+    ) {
+        Text(bi(language, "Hear this mechanism stage",
+            "இச்செயல்நிலையின் ஒலி விளக்கத்தைக் கேள்"))
+    }
+    Text(bi(language,
+        "Review status: DRAFT_UNVERIFIED. Central lumen size, arm count, spongiome arrangement, membrane-pore geometry and stage timing are NOT measured. Contractile-vacuole discharge is separate from cytoproct egestion.",
+        "மதிப்பாய்வு நிலை: உறுதிப்படுத்தப்படாத வரைவு. நுண்குமிழ் அளவு, கால்வாய் எண்ணிக்கை, ஸ்பாஞ்சியோம் அமைவு, வெளியேற்றத் துளை வடிவு, கால அளவு ஆகியவை அளவீடுகள் அல்ல. நீர் வெளியேற்றமும் செரியாத உணவுக் கழிவு வெளியேற்றமும் வேறுபட்ட செயல்கள்."),
+        modifier = Modifier.testTag("r12-cvc-review-warning"))
+    Text("Microscopy (P. caudatum collecting canal and spongiome): " +
+        "https://www6.pbrc.hawaii.edu/allen/ch10a/46-pca4201.html")
+    Text("Membrane dynamics: " +
+        "https://doi.org/10.1111/j.1550-7408.1988.tb04078.x")
 }
 
 @Composable
