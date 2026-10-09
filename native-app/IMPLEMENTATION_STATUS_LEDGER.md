@@ -98,5 +98,20 @@ Implement R1 Paramecium as an actual native interactive Zoology lesson, not a mo
   not performed. Debug APK only; signed production release HOLD.
 - R1.3 CI accepted ONLY when 4 workflows pass on one exact commit.
 
+## R1.3 UI correction — 200% Tamil anatomical plate visibility
+- Root cause: chapter LazyColumn scrolls to its large external-plate item, but
+  at 200% Tamil scale the pre-canvas paragraphs can consume the entire
+  viewport. The screenshot accurately showed text without any drawn plate.
+- The original native graphite Canvas is now placed **directly after the
+  plate title**, before extended orientation, source, and review text in
+  the same LazyColumn item. No words, original geometry, hotspots, academic
+  claims, accessibility buttons, pixel acceptance thresholds, test count,
+  A5 questions, or release identifiers were modified.
+- Required gate: real API34 PNG with visible paper (>=12%), cell (>=6%),
+  graphite and selected cytoproct highlight at Tamil 200%; normal screenshots,
+  process-death and all existing tests must pass on one exact HEAD.
+- R1.3 academic status remains DRAFT_UNVERIFIED; human biology/Tamil
+  approvals 0/5; physical-device QA pending; production release HOLD.
+
 ## Update discipline
 After EACH true educational implementation commit, update this ledger with (1) exact HEAD and changed native feature paths; (2) newly authored full lessons, count out of 44; (3) which organism modules actually work, count out of nine; (4) working diagrams and simulations; (5) speech and Tamil coverage; (6) source/reviewer decisions; (7) device and CI evidence; (8) blocking scientific inaccuracies and precise next work. Do not equate green GitHub CI with subject-matter completion. Do not erase unresolved issues, invent reviewer signoffs, or release another QA-only milestone as though it were the requested product.

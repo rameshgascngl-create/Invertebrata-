@@ -71,25 +71,6 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
         Text(if (language == AppLanguage.TAMIL)
             "பாரமீசியம் (P. caudatum) — இடமமைவு வரைபட முன்மாதிரி"
         else "Paramecium caudatum — original pencil atlas draft")
-        Text(if (language == AppLanguage.TAMIL)
-            "உறுப்புகளின் இடம், தலைப்புகள், தமிழ் சொற்கள் அறிவியல் மதிப்பாய்வுக்கு உட்பட்டவை. தேர்வு செய்ய உறுப்பைத் தொடவும் அல்லது கீழுள்ள பொத்தானைப் பயன்படுத்தவும்."
-        else "Provisional organ positions and Tamil terminology: scientific review pending. Tap a marked region or use the accessible buttons below.")
-
-        Text(if(language==AppLanguage.TAMIL)
-            "கருநிறப் பென்சில் வரைபடம்; தேர்ந்தெடுத்த உறுப்பிற்கு மட்டும் வண்ணக் குறி. நிபுணர் மதிப்பாய்வு நிலுவை."
-        else "Original graphite-pencil anatomical drawing. Amber identifies only the selected structure; expert review pending.",
-            modifier=Modifier.testTag("r13-pencil-atlas-style"))
-
-        // The orientation is explicitly stated to avoid a figure being read
-        // with reversed anterior/posterior or dorsal/ventral axes.
-        val proposedView = ParameciumExternalEvidence.view
-        Text(
-            if (language == AppLanguage.TAMIL)
-                "முன்புறம் (வட்டம்) ←   பின்புறம் (கூர்மை) →   வாய்ப்புறம்: கீழ்ப்பக்கம்"
-            else "Anterior (rounded) ←   Posterior (tapered) →   Oral/ventral side: bottom",
-            modifier = Modifier.testTag("n23b-orientation"),
-        )
-        require(!proposedView.orientationVerifiedAgainstFigure)
 
         Canvas(
             modifier = Modifier.fillMaxWidth().height(280.dp)
@@ -232,6 +213,27 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 }
             }
         }
+
+        Text(if (language == AppLanguage.TAMIL)
+            "உறுப்புகளின் இடம், தலைப்புகள், தமிழ் சொற்கள் அறிவியல் மதிப்பாய்வுக்கு உட்பட்டவை. தேர்வு செய்ய உறுப்பைத் தொடவும் அல்லது கீழுள்ள பொத்தானைப் பயன்படுத்தவும்."
+        else "Provisional organ positions and Tamil terminology: scientific review pending. Tap a marked region or use the accessible buttons below.")
+
+        Text(if(language==AppLanguage.TAMIL)
+            "கருநிறப் பென்சில் வரைபடம்; தேர்ந்தெடுத்த உறுப்பிற்கு மட்டும் வண்ணக் குறி. நிபுணர் மதிப்பாய்வு நிலுவை."
+        else "Original graphite-pencil anatomical drawing. Amber identifies only the selected structure; expert review pending.",
+            modifier=Modifier.testTag("r13-pencil-atlas-style"))
+
+        // The orientation is explicitly stated to avoid a figure being read
+        // with reversed anterior/posterior or dorsal/ventral axes.
+        val proposedView = ParameciumExternalEvidence.view
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "முன்புறம் (வட்டம்) ←   பின்புறம் (கூர்மை) →   வாய்ப்புறம்: கீழ்ப்பக்கம்"
+            else "Anterior (rounded) ←   Posterior (tapered) →   Oral/ventral side: bottom",
+            modifier = Modifier.testTag("n23b-orientation"),
+        )
+        require(!proposedView.orientationVerifiedAgainstFigure)
+
 
         Text(
             (if (language == AppLanguage.TAMIL) "தேர்ந்தெடுத்த உறுப்பு: "
