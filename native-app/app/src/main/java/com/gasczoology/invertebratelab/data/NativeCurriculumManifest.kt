@@ -1,7 +1,8 @@
 package com.gasczoology.invertebratelab.data
 
 /**
- * N2.1 requirements inventory. It does not contain authored lessons or accepted plates.
+ * Requirements inventory and honest editorial progress status. A draft is
+ * never equivalent to an academically accepted plate or complete type study.
  * Earthworm is an additional lesson slot, NOT an alteration of the accepted A5 corpus.
  */
 enum class AcademicWorkStatus { NOT_AUTHORED, DRAFT_UNVERIFIED, ACCEPTED }
@@ -50,7 +51,8 @@ object NativeCurriculumManifest {
     val typeStudies: List<TypeStudyRequirement> = listOf(
         TypeStudyRequirement("paramecium", 1, "Paramecium", "u1-paramecium",
             "u1-paramecium", listOf("external-cilia", "oral-apparatus",
-                "contractile-vacuoles", "locomotion")),
+                "contractile-vacuoles", "locomotion"),
+            AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("sycon", 2, "Sycon", "u2-sycon",
             "u2-sycon", listOf("external", "canal-system", "reproduction")),
         TypeStudyRequirement("obelia", 2, "Obelia", "u2-obelia",
@@ -75,7 +77,9 @@ object NativeCurriculumManifest {
 
     val lessonSlots: List<NativeLessonSlot> =
         a5ChapterIdsByUnit.flatMap { (unit, ids) ->
-            ids.map { id -> NativeLessonSlot(id, unit, id) }
+            ids.map { id -> NativeLessonSlot(id, unit, id,
+                if (id == "u1-paramecium") AcademicWorkStatus.DRAFT_UNVERIFIED
+                else AcademicWorkStatus.NOT_AUTHORED) }
         } + NativeLessonSlot(EARTHWORM_LESSON_ID, 4, null)
 
     fun validateAgainst(units: List<AcademicUnit>) {
@@ -94,8 +98,14 @@ object NativeCurriculumManifest {
         require(lessonSlots.map { it.id }.toSet().size == REQUIRED_LESSON_SLOTS)
         require(lessonSlots.count { it.acceptedA5ChapterId == null } == 1)
         require(lessonSlots.single { it.acceptedA5ChapterId == null }.id == EARTHWORM_LESSON_ID)
-        require(lessonSlots.all { it.status == AcademicWorkStatus.NOT_AUTHORED })
-        require(typeStudies.all { it.status == AcademicWorkStatus.NOT_AUTHORED })
+        require(lessonSlots.count { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED } == 1)
+        require(lessonSlots.single { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }.id ==
+            "u1-paramecium")
+        require(lessonSlots.none { it.status == AcademicWorkStatus.ACCEPTED })
+        require(typeStudies.count { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED } == 1)
+        require(typeStudies.single { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }.organismId ==
+            "paramecium")
+        require(typeStudies.none { it.status == AcademicWorkStatus.ACCEPTED })
         for (study in typeStudies) {
             val slot = lessonSlots.single { it.id == study.lessonId }
             require(slot.unitNumber == study.unitNumber)
