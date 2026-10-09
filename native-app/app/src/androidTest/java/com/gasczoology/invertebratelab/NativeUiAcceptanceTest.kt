@@ -1,10 +1,8 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
-import android.content.ContentValues
-import android.graphics.Bitmap
-import android.os.Environment
-import android.provider.MediaStore
+import android.graphics.BitmapFactory
+import android.os.ParcelFileDescriptor
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -49,54 +47,40 @@ private fun saveN23bReviewScreenshot(fileName: String) {
     check(fileName == "paramecium-normal-oral-groove.png" ||
         fileName == "paramecium-tamil200-cytoproct.png")
 
-    val instrumentation = InstrumentationRegistry.getInstrumentation()
-    val automation = instrumentation.uiAutomation
-    val targetContext = instrumentation.targetContext
+    val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
+    val appPackage = InstrumentationRegistry.getInstrumentation().targetContext.packageName
     val activePackage = automation.rootInActiveWindow?.packageName?.toString()
-    // Capture the actual Android display in-process, not a shell screencap
-    // command that may show the launcher after app focus unexpectedly changes.
-    val bitmap = checkNotNull(automation.takeScreenshot()) {
-        "UiAutomation did not return a hardware display screenshot"
-    }
     val file = "/sdcard/Download/native-anatomy-evidence/$fileName"
+    check(activePackage == appPackage) {
+        "Refusing anatomical screenshot: foreground=$activePackage; expected=$appPackage"
+    }
 
-    // Store the captured REAL display image using scoped Android MediaStore.
-    // The file remains available to adb pull after instrumentation teardown.
-    // We store even invalid images to preserve diagnostics.
-    val resolver = targetContext.contentResolver
-    val values = ContentValues().apply {
-        put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
-        put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
-        put(MediaStore.MediaColumns.RELATIVE_PATH,
-            Environment.DIRECTORY_DOWNLOADS + "/native-anatomy-evidence/")
-        put(MediaStore.MediaColumns.IS_PENDING, 1)
+    // Proven API34 screen capture path: save ACTUAL hardware display pixels
+    // through the Android shell, not an independently rasterized Compose view.
+    ParcelFileDescriptor.AutoCloseInputStream(
+        automation.executeShellCommand("screencap -p $file")
+    ).use { it.readBytes() }
+    val bytes = ParcelFileDescriptor.AutoCloseInputStream(
+        automation.executeShellCommand("cat $file")
+    ).use { it.readBytes() }
+    check(bytes.size > 1000) {
+        "Actual Android screenshot is missing/truncated: $file"
     }
-    val uri = checkNotNull(resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)) {
-        "Could not allocate a persistent PNG in MediaStore: $file"
+    val bitmap = checkNotNull(BitmapFactory.decodeByteArray(bytes, 0, bytes.size)) {
+        "Android screenshot not a valid PNG: $file"
     }
+
+    var samples = 0
+    var canvasBackground = 0
+    var cellFill = 0
+    var graphite = 0
+    var selectedHighlight = 0
+    val observedColors = mutableMapOf<Int, Int>()
     try {
-        checkNotNull(resolver.openOutputStream(uri, "w")) {
-            "Could not open MediaStore PNG output stream: $file"
-        }.use { output ->
-            check(bitmap.compress(Bitmap.CompressFormat.PNG, 100, output)) {
-                "Failed to encode the genuine Android screenshot: $file"
-            }
-        }
-        val published = ContentValues().apply {
-            put(MediaStore.MediaColumns.IS_PENDING, 0)
-        }
-        check(resolver.update(uri, published, null, null) == 1) {
-            "Could not publish the genuine screenshot to Downloads: $file"
-        }
-
-        var samples = 0
-        var canvasBackground = 0
-        var cellFill = 0
-        var graphite = 0
-        var selectedHighlight = 0
         for (y in 0 until bitmap.height step 14) {
             for (x in 0 until bitmap.width step 14) {
                 val rgb = bitmap.getPixel(x, y) and 0x00FFFFFF
+                observedColors[rgb] = (observedColors[rgb] ?: 0) + 1
                 if (rgb == 0x00FBFAF6) canvasBackground++
                 if (rgb == 0x00F1EFE9) cellFill++
                 if (rgb == 0x0044413F || rgb == 0x00302E2C ||
@@ -105,16 +89,17 @@ private fun saveN23bReviewScreenshot(fileName: String) {
                 samples++
             }
         }
-        // Compose semantics alone can remain queryable when the foreground
-        // application changes. A launcher screenshot must NEVER pass atlas QA.
-        check(activePackage == targetContext.packageName) {
-            "Wrong foreground window in anatomical screenshot: " +
-                "active=$activePackage expected=${targetContext.packageName}; PNG=$file"
-        }
+        // Preserve exact pixel thresholds, sample stride, and screenshot
+        // provenance. Most-common observed colors are diagnostics ONLY.
         check(canvasBackground * 100 >= samples * 12 &&
             cellFill * 100 >= samples * 6 && graphite >= 8) {
+            val palette = observedColors.entries.sortedByDescending { it.value }
+                .take(6).joinToString { (color, count) ->
+                    "0x" + color.toString(16).padStart(6, '0') + "=$count"
+                }
             "Insufficient anatomical Canvas area in $file: " +
-                "paper=$canvasBackground, graphite=$graphite, cell=$cellFill, samples=$samples"
+                "paper=$canvasBackground, graphite=$graphite, cell=$cellFill, " +
+                "samples=$samples, foreground=$activePackage, topColors=[$palette]"
         }
         if (fileName == "paramecium-tamil200-cytoproct.png") {
             check(selectedHighlight >= 4) {

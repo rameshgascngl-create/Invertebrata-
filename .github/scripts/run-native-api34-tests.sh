@@ -8,6 +8,12 @@ large_text_exit=NOT_RUN
 
 capture_evidence() {
     adb logcat -d -v threadtime > qa-evidence/logcat.txt 2>&1 || true
+    # Diagnostic copies must be collected even if a screenshot assertion fails.
+    # These are evidence only and never alter the job's PASS/FAIL gate.
+    adb pull /sdcard/Download/native-anatomy-evidence/paramecium-normal-oral-groove.png \
+        qa-evidence/paramecium-normal-oral-groove-diagnostic.png >/dev/null 2>&1 || true
+    adb pull /sdcard/Download/native-anatomy-evidence/paramecium-tamil200-cytoproct.png \
+        qa-evidence/paramecium-tamil200-cytoproct-diagnostic.png >/dev/null 2>&1 || true
     adb exec-out screencap -p > qa-evidence/final-screen.png 2>/dev/null || true
     adb shell uiautomator dump /sdcard/qa-window.xml >/dev/null 2>&1 || true
     adb pull /sdcard/qa-window.xml qa-evidence/window.xml >/dev/null 2>&1 || true
