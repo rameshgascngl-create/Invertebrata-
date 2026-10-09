@@ -60,6 +60,7 @@ private object Routes {
         StudyDestination.UNIT -> unit(state.unitNumber)
         StudyDestination.CHAPTER -> chapter(state.chapterId)
         StudyDestination.PRACTICE -> ASSESSMENT
+        StudyDestination.PARAMECIUM_LAB -> PARAMECIUM
     }
 }
 
@@ -124,7 +125,7 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 },
                 onParamecium = {
                     viewModel.persistLearning(state.copy(
-                        destination = StudyDestination.CHAPTER, unitNumber = 1,
+                        destination = StudyDestination.PARAMECIUM_LAB, unitNumber = 1,
                         chapterId = "u1-paramecium", questionId = "",
                         answerRevealed = false,
                     )) { navController.navigate(Routes.PARAMECIUM) }
@@ -208,7 +209,13 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                         chapterId = "", questionId = "", answerRevealed = false,
                     )) { backOrRoute(Routes.HOME) }
                 },
-                onPractice = { navController.navigate(Routes.chapter("u1-paramecium")) },
+                onPractice = {
+                    viewModel.persistLearning(state.copy(
+                        destination = StudyDestination.CHAPTER, unitNumber = 1,
+                        chapterId = "u1-paramecium", questionId = "",
+                        answerRevealed = false,
+                    )) { navController.navigate(Routes.chapter("u1-paramecium")) }
+                },
             )
         }
         composable(Routes.ASSESSMENT) {

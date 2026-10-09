@@ -29,6 +29,17 @@ class NativeLearningStateTest {
         assertEquals(state, state.validatedAgainst(units))
     }
 
+    @Test fun parameciumLaboratoryRestoresAndRejectsInvalidPositions() {
+        val accepted = NativeLearningState(
+            destination = StudyDestination.PARAMECIUM_LAB, unitNumber = 1,
+            chapterId = "u1-paramecium",
+        )
+        assertEquals(accepted,accepted.validatedAgainst(units))
+        assertEquals(NativeLearningState(),accepted.copy(unitNumber=2).validatedAgainst(units))
+        assertEquals(NativeLearningState(),
+            accepted.copy(questionId=question.id).validatedAgainst(units))
+    }
+
     @Test fun outdatedSchemaFallsBackSafely() {
         val state = NativeLearningState(schemaVersion = 99,
             destination = StudyDestination.PRACTICE, questionId = question.id)

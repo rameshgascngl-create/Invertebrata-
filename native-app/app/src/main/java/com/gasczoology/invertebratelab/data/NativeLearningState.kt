@@ -4,7 +4,7 @@ package com.gasczoology.invertebratelab.data
  * Stable, versioned learner-position state; no student names or submitted answers.
  * The selected language is stored by LanguagePreferenceRepository.
  */
-enum class StudyDestination { HOME, UNIT, CHAPTER, PRACTICE }
+enum class StudyDestination { HOME, UNIT, CHAPTER, PRACTICE, PARAMECIUM_LAB }
 
 data class NativeLearningState(
     val schemaVersion: Int = CURRENT_SCHEMA,
@@ -35,6 +35,10 @@ data class NativeLearningState(
             )
             StudyDestination.CHAPTER -> if (chapter?.unitNumber == unit.number &&
                 (questionId.isEmpty() || question?.chapterId == chapter.id)
+            ) this else NativeLearningState()
+            StudyDestination.PARAMECIUM_LAB -> if (
+                unit.number == 1 && chapterId == "u1-paramecium" &&
+                questionId.isEmpty() && !answerRevealed
             ) this else NativeLearningState()
             StudyDestination.PRACTICE -> if (question != null &&
                 question.chapterId == chapterId &&

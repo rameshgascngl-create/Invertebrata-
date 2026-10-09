@@ -204,10 +204,15 @@ private fun AtlasSection(language:AppLanguage,speak:(BilingualText)->Unit) {
         }
     }
     if(panel=="external") {
-        ParameciumExternalCanvas(language)
+        ParameciumExternalCanvas(language, onOrganSelected = { id ->
+            speak(ParameciumLearningEngine.organ(id).narration)
+        })
     } else {
         val points=nodes(panel)
-        AtlasSketch(panel,points,selected,language,{selected=it})
+        AtlasSketch(panel,points,selected,language,{ id ->
+            selected=id
+            speak(ParameciumLearningEngine.organ(id).narration)
+        })
         val organ=ParameciumLearningEngine.organ(selected)
         Text(organ.name.value(language),modifier=Modifier.testTag("r1-atlas-selected"))
         Text(organ.narration.value(language),modifier=Modifier.testTag("r1-atlas-explanation"))
@@ -216,7 +221,10 @@ private fun AtlasSection(language:AppLanguage,speak:(BilingualText)->Unit) {
             Text(bi(language,"Hear this organ","இந்த உறுப்பின் விளக்கத்தைக் கேள்"))
         }
         for(point in points) {
-            OutlinedButton(onClick={selected=point.id},modifier=Modifier.fillMaxWidth()
+            OutlinedButton(onClick={
+                selected=point.id
+                speak(ParameciumLearningEngine.organ(point.id).narration)
+            },modifier=Modifier.fillMaxWidth()
                 .heightIn(min=48.dp).testTag("r1-atlas-select-"+point.id)) {
                 Text(ParameciumLearningEngine.organ(point.id).name.value(language))
             }
@@ -233,7 +241,7 @@ private fun AtlasSketch(panel:String, points:List<AtlasNode>, selected:String,
         .semantics { contentDescription=bi(language,
             "Illustrative organ map; accessible selection buttons follow",
             "உறுப்பு வரைபட முன்மாதிரி; கீழுள்ள பொத்தான்கள் மூலம் தேர்வு செய்யலாம்") }
-        .pointerInput(panel) {
+        .pointerInput(panel,onSelect) {
             detectTapGestures { tap ->
                 val x=tap.x/size.width.toFloat();val y=tap.y/size.height.toFloat()
                 val near=points.minByOrNull { (x-it.x)*(x-it.x)+(y-it.y)*(y-it.y) }

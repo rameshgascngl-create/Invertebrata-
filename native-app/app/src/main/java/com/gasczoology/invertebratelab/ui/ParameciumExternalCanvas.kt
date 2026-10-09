@@ -47,7 +47,8 @@ import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
  * implemented. The provisional geometry does not satisfy the review gate.
  */
 @Composable
-fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifier) {
+fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifier,
+    onOrganSelected: (String) -> Unit = {}) {
     val plate = ParameciumAnatomyDraft.plates.single { it.plateId == "external-cilia" }
     var selectedId by rememberSaveable { mutableStateOf("pellicle") }
     val chosen = plate.features.single { it.id == selectedId }
@@ -93,14 +94,14 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                         "பாரமீசியம் அமைப்பு முன்மாதிரி; கீழே உள்ள உறுப்புப் பொத்தான்கள் மூலம் தேர்வு செய்யலாம்"
                     else "Paramecium schematic; organ buttons below provide an accessible alternative"
                 }
-                .pointerInput(Unit) {
+                .pointerInput(onOrganSelected) {
                     detectTapGestures { offset ->
                         val width = size.width.toFloat()
                         val height = size.height.toFloat()
                         if (width > 0f && height > 0f) {
                             ParameciumExternalGeometry.hitCanvas(
                                 offset.x, offset.y, width, height,
-                            )?.let { selectedId = it }
+                            )?.let { selectedId = it; onOrganSelected(it) }
                         }
                     }
                 },
@@ -314,7 +315,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
         // Explicit large semantic touch targets; Canvas gesture is supplementary.
         for (feature in plate.features) {
             OutlinedButton(
-                onClick = { selectedId = feature.id },
+                onClick = { selectedId = feature.id; onOrganSelected(feature.id) },
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .testTag("n23b-select-" + feature.id),
             ) {
