@@ -410,6 +410,40 @@ class NativeUiAcceptanceTest {
     }
 
     @Test
+    fun r11VacuoleAtlasSeparatesFoodFromOsmoregulationAndOpensNativeCycle() {
+        englishHome()
+        rule.onNodeWithTag("r1-home-open-paramecium").performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r1-atlas-vacuole").performScrollTo().performClick()
+        rule.onNodeWithTag("r11-vacuole-heading", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r11-vacuole-canvas", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        val food = rule.onNodeWithTag(
+            "r11-vacuole-select-digestive-food-vacuole", useUnmergedTree = true)
+        food.performScrollTo().assertHeightIsAtLeast(48.dp)
+        food.performClick()
+        rule.onNodeWithTag("r11-vacuole-selected", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals(
+                "Selected landmark: Digestive food vacuole")
+        rule.onNodeWithTag(
+            "r11-vacuole-select-posterior-contractile-complex",
+            useUnmergedTree = true).performScrollTo().performClick()
+        rule.onNodeWithTag("r11-vacuole-selected", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals(
+                "Selected landmark: Posterior contractile-vacuole complex")
+        rule.onNodeWithTag("r11-vacuole-review-warning", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r11-open-osmoregulation", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r1-stage-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("Stage 1/4 — Water enters")
+        rule.onNodeWithTag("r1-simulation-caution", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+    }
+
+    @Test
     fun primaryActionSemanticsAndTouchTargetsArePresent() {
         englishHome()
         for (tag in listOf("language-english", "language-tamil", "unit-1", "a5-assessment")) {

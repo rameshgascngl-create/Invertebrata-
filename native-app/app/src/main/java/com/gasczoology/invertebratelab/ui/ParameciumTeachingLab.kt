@@ -44,6 +44,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
+import com.gasczoology.invertebratelab.data.ParameciumVacuolePlate
 import com.gasczoology.invertebratelab.data.ParameciumProcess
 import kotlinx.coroutines.delay
 import java.util.Locale
@@ -133,7 +134,12 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
             }
             when(tab) {
                 "study" -> StudySection(language,::speak)
-                "anatomy" -> AtlasSection(language,::speak)
+                "anatomy" -> AtlasSection(language, ::speak, onExploreOsmoregulation = {
+                    simulationId = ParameciumProcess.OSMOREGULATION.name
+                    simulationStep = 0
+                    simulationPlaying = false
+                    tab = "simulate"
+                })
                 "simulate" -> SimulatorSection(
                     language, ::speak, simulationId, simulationStep, simulationPlaying,
                     onChoose = { newId ->
@@ -200,7 +206,8 @@ private fun NarrationSection(language:AppLanguage,speak:(BilingualText)->Unit) {
 }
 
 @Composable
-private fun AtlasSection(language:AppLanguage,speak:(BilingualText)->Unit) {
+private fun AtlasSection(language:AppLanguage, speak:(BilingualText)->Unit,
+    onExploreOsmoregulation:()->Unit) {
     var panel by rememberSaveable { mutableStateOf("external") }
     var selected by rememberSaveable { mutableStateOf("oral-groove") }
     Text(bi(language,"Explore anatomical plates","உடலமைப்புப் படங்களை ஆராய்க"),
@@ -208,7 +215,11 @@ private fun AtlasSection(language:AppLanguage,speak:(BilingualText)->Unit) {
     Column(modifier=Modifier.fillMaxWidth(),
         verticalArrangement=Arrangement.spacedBy(6.dp)) {
         for(p in listOf("external","oral","vacuole","internal")) {
-            OutlinedButton(onClick={panel=p;if(p!="external")selected=nodes(p).first().id},
+            OutlinedButton(onClick={
+                panel = p
+                if (p == "vacuole") selected = ParameciumVacuolePlate.landmarks.first().id
+                else if (p != "external") selected = nodes(p).first().id
+            },
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-atlas-"+p)) {
                 Text(when(p) {
                     "external" -> bi(language,"External/cilia","வெளிப்புறம்")
@@ -223,6 +234,10 @@ private fun AtlasSection(language:AppLanguage,speak:(BilingualText)->Unit) {
         ParameciumExternalCanvas(language, onOrganSelected = { id ->
             speak(ParameciumLearningEngine.organ(id).narration)
         })
+    } else if (panel == "vacuole") {
+        VacuoleAtlasSection(language, selected,
+            onSelect = { selected = it }, speak = speak,
+            onExploreOsmoregulation = onExploreOsmoregulation)
     } else {
         val points=nodes(panel)
         AtlasSketch(panel,points,selected,language,{ id ->
@@ -248,6 +263,111 @@ private fun AtlasSection(language:AppLanguage,speak:(BilingualText)->Unit) {
         Text(bi(language,"These positions are teaching schematics, not verified whole-cell microscopy coordinates.",
             "இவை கற்பித்தல் வரைபட இடங்கள் மட்டுமே; சரிபார்க்கப்பட்ட நுண்ணோக்கி ஆயத்தொலைவுகள் அல்ல."))
     }
+}
+
+/**
+ * R1.1 — correctly distinguish osmoregulatory complexes from food vacuoles.
+ * Schematic positions and radial-arm numbers are NOT microscopy-derived.
+ * The same authored landmarks serve native Canvas input and accessible buttons.
+ */
+@Composable
+private fun VacuoleAtlasSection(
+    language: AppLanguage,
+    selected: String,
+    onSelect: (String) -> Unit,
+    speak: (BilingualText) -> Unit,
+    onExploreOsmoregulation: () -> Unit,
+) {
+    val landmark = ParameciumVacuolePlate.landmarks.firstOrNull { it.id == selected }
+        ?: ParameciumVacuolePlate.landmarks.first()
+    fun activate(id: String) {
+        val chosen = ParameciumVacuolePlate.landmarks.single { it.id == id }
+        onSelect(id)
+        speak(ParameciumLearningEngine.organ(chosen.organId).narration)
+    }
+    Text(bi(language, "Vacuoles: separate physiological systems",
+        "நுண்குமிழ்கள்: வெவ்வேறு உடலியக்க அமைப்புகள்"),
+        modifier = Modifier.testTag("r11-vacuole-heading"))
+    Canvas(
+        modifier = Modifier.fillMaxWidth().height(300.dp)
+            .testTag("r11-vacuole-canvas")
+            .semantics {
+                contentDescription = bi(language,
+                    "Schematic showing two contractile vacuole complexes and one distinct food vacuole. Accessible buttons below identify each.",
+                    "இரண்டு சுருங்கும் நுண்குமிழ் தொகுதிகளும் தனியான உணவுக் குமிழும் காட்டப்பட்டுள்ளன; கீழுள்ள பொத்தான்கள் மூலம் தேர்வு செய்யலாம்.")
+            }
+            .pointerInput(onSelect, speak) {
+                detectTapGestures { tap ->
+                    ParameciumVacuolePlate.hitCanvas(
+                        tap.x, tap.y, size.width.toFloat(), size.height.toFloat()
+                    )?.let { activate(it.id) }
+                }
+            }
+    ) {
+        val w = size.width
+        val h = size.height
+        val unit = minOf(w, h)
+        drawRect(Color(0xFFF4FBFA))
+        parameciumCell(Offset(w * .5f, h * .5f), w * .82f, h * .76f)
+        for (feature in ParameciumVacuolePlate.landmarks) {
+            val center = Offset(w * feature.x, h * feature.y)
+            val selectedFeature = feature.id == landmark.id
+            if (feature.organId == "contractile-vacuole") {
+                val radius = unit * .042f
+                drawCircle(Color(0xFF167EAB), radius = radius,
+                    center = center, style = Stroke(3.5f))
+                // Six representative arms, NOT the verified number or density.
+                for (i in 0 until 6) {
+                    val angle = i * 2 * PI / 6
+                    val dir = Offset(cos(angle).toFloat(), sin(angle).toFloat())
+                    drawLine(Color(0xFF58A6BF),
+                        center + dir * (radius + 3f),
+                        center + dir * (radius + unit * .045f), 3f)
+                }
+            } else {
+                // Digestive food vacuole is amber and lacks radial collecting arms.
+                drawCircle(Color(0xFFE8B976), radius = unit * .054f, center = center)
+                drawCircle(Color(0xFF9B6826), radius = unit * .054f,
+                    center = center, style = Stroke(3f))
+                drawCircle(Color(0xFF9B6826), radius = unit * .011f,
+                    center = center + Offset(-unit * .014f, unit * .012f))
+                drawCircle(Color(0xFF9B6826), radius = unit * .008f,
+                    center = center + Offset(unit * .018f, -unit * .013f))
+            }
+            if (selectedFeature) {
+                drawCircle(Color(0xFFB55B16), radius = feature.radiusFraction * unit * .77f,
+                    center = center, style = Stroke(4f))
+            }
+        }
+    }
+    Text(bi(language,
+        "Blue radial systems: contractile-vacuole complexes for water balance. Amber vesicle: food vacuole for intracellular digestion.",
+        "நீல ஆர அமைப்புகள்: நீர்ச்சமநிலைக்கான சுருங்கும் நுண்குமிழ் தொகுதிகள். மஞ்சள்-பழுப்பு குமிழ்: செல்லுக்குள் செரிமானத்திற்கான உணவுக் குமிழ்."),
+        modifier = Modifier.testTag("r11-vacuole-distinction"))
+    Text(bi(language, "Selected landmark: ", "தேர்ந்தெடுத்த அமைப்பு: ") +
+        landmark.label.value(language), modifier = Modifier.testTag("r11-vacuole-selected"))
+    val lesson = ParameciumLearningEngine.organ(landmark.organId)
+    Text(lesson.narration.value(language),
+        modifier = Modifier.testTag("r11-vacuole-explanation"))
+    for (feature in ParameciumVacuolePlate.landmarks) {
+        OutlinedButton(onClick = { activate(feature.id) },
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                .testTag("r11-vacuole-select-" + feature.id)) {
+            Text(feature.label.value(language))
+        }
+    }
+    Button(onClick = onExploreOsmoregulation,
+        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+            .testTag("r11-open-osmoregulation")) {
+        Text(bi(language, "Run the contractile-vacuole cycle",
+            "சுருங்கும் நுண்குமிழ் சுழற்சியை இயக்குக"))
+    }
+    Text(bi(language,
+        "Research review pending: radial arms, whole-cell positions and organ outlines are illustrative. A food vacuole is not a collecting arm or contractile vacuole.",
+        "ஆய்வு நிலுவை: ஆரக் கால்வாய்களின் எண்ணிக்கை, செல் முழுவதிலான இடங்கள், உறுப்புகளின் வடிவங்கள் விளக்கத்திற்கானவை மட்டுமே. உணவுக் குமிழ், சேகரிப்புக் கால்வாயோ சுருங்கும் நுண்குமிழோ அல்ல."),
+        modifier = Modifier.testTag("r11-vacuole-review-warning"))
+    Text("Scientific reading: https://pubmed.ncbi.nlm.nih.gov/23919298/")
+    Text("Scientific reading: https://www.sciencedirect.com/science/article/pii/S1065699502909376")
 }
 
 @Composable
