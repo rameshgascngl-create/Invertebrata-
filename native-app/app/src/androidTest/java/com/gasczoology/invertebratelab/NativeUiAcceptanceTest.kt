@@ -306,7 +306,7 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
         waitFor("native-chapter-u1-paramecium")
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(12)
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
         waitFor("n23b-external-preview")
         rule.onNodeWithTag("n23b-external-canvas").assertExists()
         rule.onNodeWithTag("n23b-orientation", useUnmergedTree = true)
@@ -358,7 +358,7 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
         waitFor("native-chapter-u1-paramecium")
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(12)
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
         waitFor("n23b-external-preview")
         val canvas = rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
         canvas.performScrollTo()
@@ -487,7 +487,7 @@ class NativeTamilLargeTextAcceptanceTest {
             rule.onAllNodesWithTag("native-chapter-u1-paramecium")
                 .fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(12)
+        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("n23b-external-preview")
                 .fetchSemanticsNodes().isNotEmpty()
@@ -510,7 +510,7 @@ class NativeTamilLargeTextAcceptanceTest {
         // a measured fraction of its real viewport height. At 200% Tamil
         // text, index alignment alone displays only the silhouette's top.
         val chapterScroll = rule.onNodeWithTag("native-chapter-u1-paramecium")
-        chapterScroll.performScrollToIndex(12)
+        chapterScroll.performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
         val visibleHeight = chapterScroll.fetchSemanticsNode().boundsInRoot.height
         chapterScroll.performTouchInput {
             swipeUp(startY = visibleHeight * 0.75f,
