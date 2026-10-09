@@ -186,6 +186,13 @@ class NativeUiAcceptanceTest {
             rule.onNodeWithTag("a5-question-" + question.id)
                 .assertTextEquals(question.question.english)
             rule.onNodeWithTag("a5-toggle-" + question.id).performScrollTo().performClick()
+            // DataStore state publication is asynchronous. Observe the exact
+            // revealed question before interrogating its off-screen children;
+            // do not bypass the existing 430 full-text assertions.
+            rule.waitUntil(timeoutMillis = 10_000L) {
+                rule.onAllNodesWithTag("a5-point-" + question.id + "-1",
+                    useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
+            }
             assertEquals(5, question.answerPoints.size)
             for ((pointIndex, point) in question.answerPoints.withIndex()) {
                 val pointTag = "a5-point-" + question.id + "-" + (pointIndex + 1)
@@ -197,6 +204,11 @@ class NativeUiAcceptanceTest {
             }
             if (index < allQuestions.lastIndex) {
                 rule.onNodeWithTag("assessment-next").performScrollTo().performClick()
+                val nextId = allQuestions[index + 1].id
+                rule.waitUntil(timeoutMillis = 10_000L) {
+                    rule.onAllNodesWithTag("a5-question-" + nextId,
+                        useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
+                }
             }
         }
         rule.onNodeWithTag("assessment-next").assertIsNotEnabled()
