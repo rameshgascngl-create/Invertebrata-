@@ -113,5 +113,18 @@ Implement R1 Paramecium as an actual native interactive Zoology lesson, not a mo
 - R1.3 academic status remains DRAFT_UNVERIFIED; human biology/Tamil
   approvals 0/5; physical-device QA pending; production release HOLD.
 
+## R1.3 exact native atlas navigation
+- Failures showed chapter screenshots displaying other sections even with
+  semantics-visible Canvas nodes and generic scrollToIndex operations.
+- Implemented an accessible bilingual **View pencil anatomy plate** button
+  following the long review paragraphs. It uses rememberLazyListState and
+  scrollToItem(exact final-item index) in native Compose to provide an actual
+  return-to-plate action for students.
+- Normal and Tamil 200% instrumentation now click this button before taking
+  REAL device-rendered screenshots. All 14 tests, paper >=12%, cell >=6%,
+  graphite and highlighted cytoproct thresholds are untouched.
+- A5 corpus unchanged; biology 0/5 and Tamil 0/5; real-device QA pending;
+  production release remains HOLD until same-commit CI passes.
+
 ## Update discipline
 After EACH true educational implementation commit, update this ledger with (1) exact HEAD and changed native feature paths; (2) newly authored full lessons, count out of 44; (3) which organism modules actually work, count out of nine; (4) working diagrams and simulations; (5) speech and Tamil coverage; (6) source/reviewer decisions; (7) device and CI evidence; (8) blocking scientific inaccuracies and precise next work. Do not equate green GitHub CI with subject-matter completion. Do not erase unresolved issues, invent reviewer signoffs, or release another QA-only milestone as though it were the requested product.

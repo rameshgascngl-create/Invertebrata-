@@ -369,16 +369,12 @@ class NativeUiAcceptanceTest {
             .performScrollTo().assertExists()
         rule.onNodeWithTag("n23e2-image-rights", useUnmergedTree = true)
             .performScrollTo().assertExists()
-        // The final LazyColumn item is taller than the viewport. An already
-        // composed descendant may be reported in semantics while scrolled
-        // off-screen. Force an actual away-and-back transition to position
-        // the drawing at the START of the item, not its last review paragraph.
-        val chapterList = rule.onNodeWithTag("native-chapter-u1-paramecium")
-        chapterList.performScrollToIndex(0)
-        chapterList.performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
-        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
-            .performScrollTo()
+        val jump = rule.onNodeWithTag("r13-jump-to-pencil-atlas",
+            useUnmergedTree = true)
+        jump.performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitForIdle()
+        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+            .assertExists()
         saveN23bReviewScreenshot("paramecium-normal-oral-groove.png")
     }
 
@@ -608,19 +604,15 @@ class NativeTamilLargeTextAcceptanceTest {
             .assertTextEquals("தேர்ந்தெடுத்த உறுப்பு: செல் கழிவுத்துளை")
         rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
             .assertExists()
-        // A fixed fractional swipe is brittle when the teaching text grows.
-        // Scroll the *actual drawing* fully into the Android viewport and
-        // assert visibility before making the genuine screenshot. Keep the
-        // existing paper, cell, graphite and selected-highlight pixel gates.
+        // Use the actual bilingual return-to-atlas action; it calls
+        // LazyListState.scrollToItem() and snaps the oversized last item to
+        // its beginning even at genuine Tamil 200% system font scale.
         val chapterScroll = rule.onNodeWithTag("native-chapter-u1-paramecium")
-        // Explicitly move off the last item before targeting it. A no-op
-        // scrollToIndex on an already composed oversize item leaves only
-        // the long review text visible at 200% font scaling.
-        chapterScroll.performScrollToIndex(0)
-        chapterScroll.performScrollToIndex(5 + NativeLessonDrafts.paramecium.sections.size)
-        val pencilCanvas = rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
-        pencilCanvas.performScrollTo()
+        val jump = rule.onNodeWithTag("r13-jump-to-pencil-atlas",
+            useUnmergedTree = true)
+        jump.performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitForIdle()
+        val pencilCanvas = rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
         val canvasBounds = pencilCanvas.fetchSemanticsNode().boundsInRoot
         val scrollerBounds = chapterScroll.fetchSemanticsNode().boundsInRoot
         assertTrue("Pencil Canvas must fit within the visible Tamil 200% viewport",

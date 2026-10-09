@@ -48,7 +48,8 @@ import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
  */
 @Composable
 fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifier,
-    onOrganSelected: (String) -> Unit = {}) {
+    onOrganSelected: (String) -> Unit = {},
+    onJumpToPlate: (() -> Unit)? = null) {
     val plate = ParameciumAnatomyDraft.plates.single { it.plateId == "external-cilia" }
     var selectedId by rememberSaveable { mutableStateOf("pellicle") }
     val chosen = plate.features.single { it.id == selectedId }
@@ -339,5 +340,16 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
             else "Original graphite-pencil plate; no stock art was copied. Organ counts, positions, density and touch geometry remain unverified illustrations.",
             modifier = Modifier.padding(top = 4.dp),
         )
+        if (onJumpToPlate != null) {
+            OutlinedButton(
+                onClick = onJumpToPlate,
+                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                    .testTag("r13-jump-to-pencil-atlas"),
+            ) {
+                Text(if (language == AppLanguage.TAMIL)
+                    "பென்சில் உடலமைப்பு வரைபடத்திற்குச் செல்"
+                else "View pencil anatomy plate")
+            }
+        }
     }
 }

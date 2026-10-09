@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
@@ -44,6 +46,7 @@ import com.gasczoology.invertebratelab.data.Chapter
 import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.StudyDestination
+import kotlinx.coroutines.launch
 
 private object Routes {
     const val HOME = "home"
@@ -356,8 +359,11 @@ private fun ChapterScreen(
     onToggle: (A5Question) -> Unit,
 ) {
     val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
+    val chapterListState = rememberLazyListState()
+    val chapterScope = rememberCoroutineScope()
     Scaffold { padding ->
         LazyColumn(
+            state = chapterListState,
             modifier = Modifier.fillMaxSize().padding(padding).testTag("native-chapter-" + chapter.id),
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -412,7 +418,15 @@ private fun ChapterScreen(
                 }
                 if (chapter.id == "u1-paramecium") {
                     item(key = "n23b-external-canvas") {
-                        ParameciumExternalCanvas(language)
+                        ParameciumExternalCanvas(language,
+                            onJumpToPlate = {
+                                chapterScope.launch {
+                                    chapterListState.scrollToItem(
+                                        3 + chapter.a5Questions.size + lessonDraft.sections.size
+                                    )
+                                }
+                            }
+                        )
                     }
                 }
             }
