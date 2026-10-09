@@ -97,6 +97,13 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
         }
     }
     var tab by rememberSaveable { mutableStateOf("study") }
+    // Keep simulation state at the stable laboratory level. Subtree recreation
+    // from TTS initialization or tab changes must not reset the current stage.
+    var simulationId by rememberSaveable {
+        mutableStateOf(ParameciumProcess.OSMOREGULATION.name)
+    }
+    var simulationStep by rememberSaveable { mutableIntStateOf(0) }
+    var simulationPlaying by rememberSaveable { mutableStateOf(false) }
     Scaffold { insets ->
         Column(modifier=Modifier.padding(insets).verticalScroll(rememberScrollState())
             .padding(16.dp).testTag("r1-paramecium-lab"),
@@ -127,7 +134,16 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
             when(tab) {
                 "study" -> StudySection(language,::speak)
                 "anatomy" -> AtlasSection(language,::speak)
-                "simulate" -> SimulatorSection(language,::speak)
+                "simulate" -> SimulatorSection(
+                    language, ::speak, simulationId, simulationStep, simulationPlaying,
+                    onChoose = { newId ->
+                        simulationId = newId
+                        simulationStep = 0
+                        simulationPlaying = false
+                    },
+                    onStep = { simulationStep = it },
+                    onPlaying = { simulationPlaying = it },
+                )
                 "listen" -> NarrationSection(language,::speak)
                 else -> {
                     Text(bi(language,"Use the preserved question bank for revision after studying the biology.",
@@ -284,16 +300,22 @@ private fun AtlasSketch(panel:String, points:List<AtlasNode>, selected:String,
 }
 
 @Composable
-private fun SimulatorSection(language:AppLanguage,speak:(BilingualText)->Unit) {
-    var chosen by rememberSaveable { mutableStateOf(ParameciumProcess.OSMOREGULATION.name) }
+private fun SimulatorSection(
+    language:AppLanguage,
+    speak:(BilingualText)->Unit,
+    chosen:String,
+    step:Int,
+    playing:Boolean,
+    onChoose:(String)->Unit,
+    onStep:(Int)->Unit,
+    onPlaying:(Boolean)->Unit,
+) {
     val process=ParameciumProcess.valueOf(chosen)
     val model=ParameciumLearningEngine.simulation(process)
-    var step by rememberSaveable(chosen) { mutableIntStateOf(0) }
-    var playing by rememberSaveable(chosen) { mutableStateOf(false) }
-    LaunchedEffect(playing,chosen) {
-        while(playing) {
+    LaunchedEffect(playing,chosen,step) {
+        if(playing) {
             delay(1600L)
-            if(step<model.stages.lastIndex)step++ else playing=false
+            if(step < model.stages.lastIndex) onStep(step + 1) else onPlaying(false)
         }
     }
     val stage=model.stages[step]
@@ -302,7 +324,7 @@ private fun SimulatorSection(language:AppLanguage,speak:(BilingualText)->Unit) {
     Text(bi(language,"Live teaching simulations","இயங்கும் கற்பித்தல் செயல்முறைகள்"),
         modifier=Modifier.testTag("r1-simulator-heading"))
     for(p in ParameciumProcess.entries) {
-        OutlinedButton(onClick={chosen=p.name},modifier=Modifier.fillMaxWidth()
+        OutlinedButton(onClick={onChoose(p.name)},modifier=Modifier.fillMaxWidth()
             .heightIn(min=48.dp).testTag("r1-process-"+p.name.lowercase())) {
             Text(ParameciumLearningEngine.simulation(p).title.value(language))
         }
@@ -315,20 +337,23 @@ private fun SimulatorSection(language:AppLanguage,speak:(BilingualText)->Unit) {
     Text(stage.explanation.value(language),modifier=Modifier.testTag("r1-stage-explanation"))
     Row(modifier=Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
         horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-        OutlinedButton(onClick={playing=false;step=model.previous(step)},
+        OutlinedButton(onClick={onStep(model.previous(step));onPlaying(false)},
             modifier=Modifier.heightIn(min=48.dp).testTag("r1-prev")) {
             Text(bi(language,"Previous","முந்தையது"))
         }
-        Button(onClick={if(step==model.stages.lastIndex)step=0;playing=!playing},
+        Button(onClick={
+            if(step==model.stages.lastIndex)onStep(0)
+            onPlaying(!playing)
+        },
             modifier=Modifier.heightIn(min=48.dp).testTag("r1-play")) {
             Text(if(playing)bi(language,"Pause","இடைநிறுத்து")
                 else bi(language,"Play","இயக்கு"))
         }
-        OutlinedButton(onClick={playing=false;step=model.advance(step)},
+        OutlinedButton(onClick={onStep(model.advance(step));onPlaying(false)},
             modifier=Modifier.heightIn(min=48.dp).testTag("r1-next")) {
             Text(bi(language,"Next","அடுத்தது"))
         }
-        OutlinedButton(onClick={playing=false;step=0},
+        OutlinedButton(onClick={onStep(0);onPlaying(false)},
             modifier=Modifier.heightIn(min=48.dp).testTag("r1-replay")) {
             Text(bi(language,"Replay","மீளியக்கு"))
         }
