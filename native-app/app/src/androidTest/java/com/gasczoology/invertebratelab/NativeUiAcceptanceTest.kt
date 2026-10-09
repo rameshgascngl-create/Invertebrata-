@@ -561,7 +561,16 @@ class NativeTamilLargeTextAcceptanceTest {
         rule.onNodeWithTag("n22-draft-notice").assertExists()
         rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
         rule.onNodeWithTag("n22-section-identity-and-habitat").assertExists()
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(10)
+        // LazyColumn order: header, validated A5 questions, draft notice,
+        // then the authored sections. Never assume a fixed section position.
+        val observationOrdinal = NativeLessonDrafts.paramecium.sections
+            .indexOfFirst { it.id == "classroom-observation" }
+        assertTrue("Missing authored classroom-observation section", observationOrdinal >= 0)
+        val questionCount = ValidatedA5AssetRepository(context).load()
+            .flatMap { it.chapters }
+            .single { it.id == "u1-paramecium" }.a5Questions.size
+        rule.onNodeWithTag("native-chapter-u1-paramecium")
+            .performScrollToIndex(2 + questionCount + observationOrdinal)
         rule.onNodeWithTag("n22-section-classroom-observation").assertExists()
     }
 }
