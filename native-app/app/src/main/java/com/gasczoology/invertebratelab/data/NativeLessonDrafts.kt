@@ -11,6 +11,7 @@ object NativeLessonDrafts {
     private const val PARA_REVIEW = "https://pmc.ncbi.nlm.nih.gov/articles/PMC10143506/"
     private const val OSMO_REVIEW = "https://pubmed.ncbi.nlm.nih.gov/38688044/"
     private const val SWIMMING_REVIEW = "https://pmc.ncbi.nlm.nih.gov/articles/PMC8208649/"
+    private const val ORAL_ULTRASTRUCTURE = "https://pmc.ncbi.nlm.nih.gov/articles/PMC2109358/"
 
     val paramecium: NativeBilingualLesson = NativeBilingualLesson(
         lessonId = "u1-paramecium",
