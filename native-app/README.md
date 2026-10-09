@@ -1,5 +1,7 @@
 # INVERTEBRATA native migration
 
+**Authoritative project continuity:** Read [the original full educational specification and recovery roadmap](EDUCATIONAL_MASTER_PLAN.md) and [the verified implementation ledger](IMPLEMENTATION_STATUS_LEDGER.md) before any further development. This must become a full bilingual native Zoology teaching/simulation app, not primarily an A5 question bank. Completing CI is not completing the syllabus.
+
 This directory is the native Kotlin/Jetpack Compose replacement for the legacy HTML/WebView runtime.
 
 ## Non-negotiable architecture
