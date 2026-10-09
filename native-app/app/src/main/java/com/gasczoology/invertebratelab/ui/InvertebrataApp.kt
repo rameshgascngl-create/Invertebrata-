@@ -50,6 +50,7 @@ private object Routes {
     const val UNIT = "unit/{unitNumber}"
     const val CHAPTER = "chapter/{chapterId}"
     const val ASSESSMENT = "assessment"
+    const val PARAMECIUM = "paramecium-interactive-lab"
 
     fun unit(number: Int) = "unit/" + number
     fun chapter(id: String) = "chapter/" + id
@@ -121,6 +122,13 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                         answerRevealed = false,
                     )) { navController.navigate(Routes.unit(number)) }
                 },
+                onParamecium = {
+                    viewModel.persistLearning(state.copy(
+                        destination = StudyDestination.CHAPTER, unitNumber = 1,
+                        chapterId = "u1-paramecium", questionId = "",
+                        answerRevealed = false,
+                    )) { navController.navigate(Routes.PARAMECIUM) }
+                },
                 onAssessment = {
                     val selected = questions.firstOrNull { it.id == state.questionId }
                         ?: questions.first()
@@ -191,6 +199,18 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 )
             }
         }
+        composable(Routes.PARAMECIUM) {
+            ParameciumTeachingLab(
+                language = language,
+                onBack = {
+                    viewModel.persistLearning(state.copy(
+                        destination = StudyDestination.HOME,
+                        chapterId = "", questionId = "", answerRevealed = false,
+                    )) { backOrRoute(Routes.HOME) }
+                },
+                onPractice = { navController.navigate(Routes.chapter("u1-paramecium")) },
+            )
+        }
         composable(Routes.ASSESSMENT) {
             AssessmentScreen(
                 questions = questions,
@@ -246,6 +266,7 @@ private fun HomeScreen(
     onLanguageChange: (AppLanguage) -> Unit,
     onUnit: (Int) -> Unit,
     onAssessment: () -> Unit,
+    onParamecium: () -> Unit,
 ) {
     Scaffold { padding ->
         LazyColumn(
@@ -256,13 +277,21 @@ private fun HomeScreen(
             item {
                 Text("INVERTEBRATA")
                 Text(label(language,
-                    "Native Kotlin edition · validated five-mark questions",
-                    "நேட்டிவ் Kotlin பதிப்பு · சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினாக்கள்"))
+                    "Interactive Zoology laboratory · study, anatomy, physiology and audio",
+                    "ஊடாடும் விலங்கியல் ஆய்வகம் · பாடம், உடலமைப்பு, உடலியல், ஒலி"))
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag("language-english")) { Text("English") }
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.TAMIL) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag("language-tamil")) { Text("தமிழ்") }
+                }
+            }
+            item {
+                Button(onClick = onParamecium,
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("r1-home-open-paramecium")) {
+                    Text(label(language, "Explore Paramecium — interactive laboratory",
+                        "பாரமீசியம் — ஊடாடும் ஆய்வகம்"))
                 }
             }
             items(units, key = { it.number }) { unit ->
