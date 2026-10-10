@@ -3,10 +3,27 @@ set -euo pipefail
 evidence="qa-evidence/r19-quality"
 device_dir="/sdcard/Download/native-anatomy-evidence"
 selected_test="com.gasczoology.invertebratelab.NativeR19TeachingAcceptanceTest"
-# A module correction runs relevant methods; final acceptance uses the whole class.
-if [[ "${1:-all}" == "physiology" ]]; then
-  selected_test="$selected_test#physiologicalViewsDistinguishExchangeFromEnergyMetabolismWithRealMotion,$selected_test#readerLinkAndActualRotationPreserveDetailedLearningPosition,$selected_test#numberedReadingAndNarrationKeepCompleteWrittenExplanations,$selected_test#stagesAndRealStructureTapsAreVisibleAndAccessible"
+# AndroidJUnitRunner annotation filtering selects an explicit method cohort.
+# Never trust a green runner result without the exact expected XML cohort below.
+quality_args=()
+quality_scope="${1:-all}"
+if [[ "$quality_scope" == "physiology" ]]; then
+  quality_args=(-Pandroid.testInstrumentationRunnerArguments.annotation=com.gasczoology.invertebratelab.R19PhysiologyGate)
 fi
+verify_cohort() {
+  python3 - "$1" "${2:-$quality_scope}" <<'PYTEST'
+import sys,pathlib,xml.etree.ElementTree as E
+scope=sys.argv[2]
+core={"stagesAndRealStructureTapsAreVisibleAndAccessible","numberedReadingAndNarrationKeepCompleteWrittenExplanations","physiologicalViewsDistinguishExchangeFromEnergyMetabolismWithRealMotion","readerLinkAndActualRotationPreserveDetailedLearningPosition"}
+full=core|{"actualFormationPixelsAndIntermediatePhaseSurviveRecreationAndNavigation","maturationStagesHaveDistinctNativeEndpointsAndRealIntermediateMotion","cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits","leavingDuringPlaybackCheckpointsPhaseWithoutOverwritingNavigation"}
+expected={"malformedNewKeysNormalizeWithoutResettingAcceptedFields","legacyR18PreferencesWithoutNutritionKeysRetainEveryEarlierAnchor"} if scope=="compatibility" else core if scope=="physiology" else full
+cases=[c for p in pathlib.Path(sys.argv[1]).rglob('TEST-*.xml') for c in E.parse(p).getroot().iter('testcase')]
+actual=[c.attrib['name'] for c in cases]
+assert len(actual)==len(expected) and set(actual)==expected,("WRONG_TEST_COHORT",scope,sorted(expected),actual)
+assert not any(c.find(n) is not None for c in cases for n in ('failure','error','skipped')),"NONPASS_TEST"
+print("VERIFIED_COHORT",scope,len(actual),sorted(actual))
+PYTEST
+}
 mkdir -p "$evidence"
 adb shell mkdir -p "$device_dir"
 phase=NOT_STARTED
@@ -50,7 +67,7 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   adb shell mkdir -p /sdcard/Download/native-anatomy-evidence
   rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
   if gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
-    -Pandroid.testInstrumentationRunnerArguments.class="$selected_test" \
+    -Pandroid.testInstrumentationRunnerArguments.class="$selected_test" "${quality_args[@]}" \
     -Pandroid.testInstrumentationRunnerArguments.r19Language="$language" \
     -Pandroid.testInstrumentationRunnerArguments.r19Orientation="$orientation" \
     -Pandroid.testInstrumentationRunnerArguments.r19Scale="$scale" > "$evidence/$phase/gradle.txt" 2>&1; then
@@ -63,6 +80,10 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   fi
   cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
   cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports"
+  if ! verify_cohort "$evidence/$phase/results" > "$evidence/$phase/verified-cohort.txt" 2>&1; then
+    result=WRONG_TEST_COHORT
+    exit 1
+  fi
   adb shell dumpsys connectivity > "$evidence/$phase/connectivity-after.txt"
   grep -q 'Active default network: none' "$evidence/$phase/connectivity-after.txt" || { result=OFFLINE_LOST; exit 1; }
   adb logcat -d -v threadtime -s R19_NUTRITION:I '*:S' > "$evidence/$phase/nutrition-pixels.txt"
@@ -80,4 +101,8 @@ if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
 fi
 cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
 cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports"
+if ! verify_cohort "$evidence/$phase/results" compatibility > "$evidence/$phase/verified-cohort.txt" 2>&1; then
+  result=WRONG_TEST_COHORT
+  exit 1
+fi
 result=PASS

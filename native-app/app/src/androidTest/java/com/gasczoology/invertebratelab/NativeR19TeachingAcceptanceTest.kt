@@ -25,6 +25,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+@Retention(AnnotationRetention.RUNTIME)
+@Target(AnnotationTarget.FUNCTION)
+annotation class R19PhysiologyGate
+
 @RunWith(AndroidJUnit4::class)
 class NativeR19TeachingAcceptanceTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
@@ -54,7 +58,7 @@ class NativeR19TeachingAcceptanceTest {
         return c
     }
 
-    @Test fun stagesAndRealStructureTapsAreVisibleAndAccessible() {
+    @R19PhysiologyGate @Test fun stagesAndRealStructureTapsAreVisibleAndAccessible() {
         for((i,stage) in ParameciumNutrition.stages.withIndex()) {
             val button=rule.onNodeWithTag("r19-stage-"+stage.id,true)
             button.performScrollTo().assertHeightIsAtLeast(48.dp).assertHasClickAction().performClick()
@@ -80,7 +84,7 @@ class NativeR19TeachingAcceptanceTest {
         rule.onNodeWithTag("r19-nutrition-inline-play-pause",true).performScrollTo().assertIsNotEnabled().assertHeightIsAtLeast(48.dp)
         capture("controls")
     }
-    @Test fun numberedReadingAndNarrationKeepCompleteWrittenExplanations() {
+    @R19PhysiologyGate @Test fun numberedReadingAndNarrationKeepCompleteWrittenExplanations() {
         for(reading in ParameciumNutrition.readings) {
             rule.onNodeWithTag("r19-reading-"+reading.id,true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
             rule.onNodeWithTag("r19-reading-heading",true).performScrollTo().assertTextEquals(reading.heading.value(lang))
@@ -228,7 +232,7 @@ class NativeR19TeachingAcceptanceTest {
         assertTrue("Complete native physiology plate must fit viewport",b.top>=r.top-1 && b.bottom<=r.bottom+1 && b.width>0)
         return c
     }
-    @Test fun physiologicalViewsDistinguishExchangeFromEnergyMetabolismWithRealMotion() {
+    @R19PhysiologyGate @Test fun physiologicalViewsDistinguishExchangeFromEnergyMetabolismWithRealMotion() {
         val ends=mutableListOf<android.graphics.Bitmap>()
         for(id in ParameciumPhysiology.stageIds) {
             rule.onNodeWithTag("r19-stage-"+id,true).performScrollTo().performClick()
@@ -259,7 +263,7 @@ class NativeR19TeachingAcceptanceTest {
         rule.onNodeWithTag("r19-reduced-motion",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().assertIsNotEnabled().assertHeightIsAtLeast(48.dp)
     }
-    @Test fun readerLinkAndActualRotationPreserveDetailedLearningPosition() {
+    @R19PhysiologyGate @Test fun readerLinkAndActualRotationPreserveDetailedLearningPosition() {
         rule.onNodeWithTag("r19-reading-5.11",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-stage-metabolism",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-select-mitochondrion",true).performScrollTo().performClick()
