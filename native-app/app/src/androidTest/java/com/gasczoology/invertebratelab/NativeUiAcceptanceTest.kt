@@ -444,8 +444,20 @@ class NativeUiAcceptanceTest {
             useUnmergedTree = true).performScrollTo().performClick()
         rule.onNodeWithTag("r14-section-heading", useUnmergedTree = true)
             .performScrollTo().assertTextEquals("Feeding and intracellular digestion")
-        rule.onNodeWithTag("r14-pencil-oral", useUnmergedTree = true)
+        // The source-driven native diagram replaces the earlier static
+        // oral figure; verify the live stage selection and actual explanatory text.
+        rule.onNodeWithTag("r15-feeding-pathway-canvas", useUnmergedTree = true)
             .performScrollTo().assertExists()
+        rule.onNodeWithTag("r15-feeding-stage-egestion", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.onNodeWithTag("r15-feeding-explanation", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals(
+                com.gasczoology.invertebratelab.data.ParameciumLearningEngine
+                    .simulation(com.gasczoology.invertebratelab.data.ParameciumProcess.FEEDING)
+                    .stages.last().explanation.english
+            )
+        rule.onNodeWithTag("r15-feeding-replay", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp)
         rule.onNodeWithTag("r14-from-study-anatomy", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.onNodeWithTag("r1-atlas-heading", useUnmergedTree = true)

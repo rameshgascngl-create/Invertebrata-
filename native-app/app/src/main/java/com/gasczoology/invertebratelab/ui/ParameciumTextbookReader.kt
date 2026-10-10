@@ -385,14 +385,20 @@ internal fun ParameciumTextbookReader(
             }
         }
     }
-    val figure = when (section.id) {
-        "feeding-and-digestion", "oral-apparatus-details" -> "oral"
-        "osmoregulation" -> "vacuole"
-        "asexual-division-process", "nuclear-dimorphism" -> "fission"
-        "conjugation" -> "conjugation"
-        else -> "overview"
+    // Feeding is a genuine interactive, narrated textbook diagram tied to
+    // the existing native physiology engine, not another question-and-answer.
+    if (section.id == "feeding-and-digestion" ||
+        section.id == "oral-apparatus-details") {
+        ParameciumFeedingPathwayPlate(language, speak)
+    } else if (chapter != 0) {
+        val figure = when (section.id) {
+            "osmoregulation" -> "vacuole"
+            "asexual-division-process", "nuclear-dimorphism" -> "fission"
+            "conjugation" -> "conjugation"
+            else -> "overview"
+        }
+        PencilMechanismFigure(figure, language)
     }
-    if (chapter != 0) PencilMechanismFigure(figure, language)
     if (chapter == 0) {
         Text(view(language,
             "Anatomical pencil plate: touch individual organs in the Anatomy section for highlighting and narration.",
