@@ -17,19 +17,17 @@ class NutritionPlaybackViewModel : ViewModel() {
     fun restore(permille: Int) { if (!mutable.value.playing) mutable.value = NutritionPlayback(phase = permille.coerceIn(0, 1000) / 1000f) }
     fun pause() { clock?.cancel(); clock = null; mutable.value = mutable.value.copy(playing = false) }
     fun rewind() { pause(); mutable.value = NutritionPlayback() }
-    fun play(advance: () -> Boolean) {
+    fun play(onComplete: () -> Unit) {
         if (mutable.value.playing) return
         mutable.value = mutable.value.copy(playing = true)
         clock = viewModelScope.launch {
-            while (true) {
-                val start = (mutable.value.phase * 60).toInt()
-                for (frame in start..60) {
-                    mutable.value = NutritionPlayback(true, frame / 60f)
-                    delay(50)
-                }
-                if (!advance()) { mutable.value = NutritionPlayback(false, 1f); break }
-                mutable.value = NutritionPlayback(true, 0f)
+            val start = (mutable.value.phase * 60).toInt()
+            for (frame in start..60) {
+                mutable.value = NutritionPlayback(true, frame / 60f)
+                delay(50)
             }
+            mutable.value = NutritionPlayback(false, 1f)
+            onComplete()
         }
     }
 }

@@ -64,11 +64,6 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
         change(progress.copy(phasePermille=pose))
     }
     fun chooseStructure(id: String) { change(progress.copy(selectedStructure=id));speak(ParameciumNutrition.structure(id).explanation) }
-    fun advance(): Boolean {
-        val current=ParameciumNutrition.stages.indexOfFirst { it.id==progress.stageId }
-        if(current==ParameciumNutrition.stages.lastIndex) return false
-        change(progress.copy(stageId=ParameciumNutrition.stages[current+1].id,phasePermille=0));return true
-    }
     val shape=RoundedCornerShape(12.dp)
     val scope=rememberCoroutineScope()
     val requester=remember { BringIntoViewRequester() }
@@ -143,8 +138,8 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                         .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
             }
             Text(nutritionText(language,
-                "Manual stage selection shows the completed pose. Inspect either endpoint without motion, or play the stage from its start. The pose is a teaching frame, not a measured volume.",
-                "கையால் நிலையைத் தேர்ந்தெடுத்தால் முடிவுத் தோற்றம் காட்டப்படும். இயக்கமின்றித் தொடக்க அல்லது முடிவுத் தோற்றத்தைக் காணலாம்; அல்லது தொடக்கத்திலிருந்து நிலையை இயக்கலாம். இது கற்பித்தல் தோற்றம்; அளவிடப்பட்ட பருமன் அல்ல."))
+                "Manual stage selection shows the completed pose. Inspect either endpoint without motion, or play the stage from its start. Playback pauses at this stage’s endpoint; Next view changes the stage. The pose is a teaching frame, not a measured volume.",
+                "கையால் நிலையைத் தேர்ந்தெடுத்தால் முடிவுத் தோற்றம் காட்டப்படும். இயக்கமின்றித் தொடக்க அல்லது முடிவுத் தோற்றத்தைக் காணலாம்; அல்லது தொடக்கத்திலிருந்து நிலையை இயக்கலாம். இந்நிலையின் முடிவில் இயக்கம் இடைநிறுத்தப்படும்; அடுத்த காட்சி நிலையை மாற்றும். இது கற்பித்தல் தோற்றம்; அளவிடப்பட்ட பருமன் அல்ல."))
             Text(nutritionText(language,"View pose: ","காட்சித் தோற்றம்: ")+when {
                 playback.phase>=.999f -> nutritionText(language,"Completed","முடிவு")
                 playback.phase<=.001f -> nutritionText(language,"Start","தொடக்கம்")
@@ -165,7 +160,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             Button(onClick={if(playback.playing) {player.pause();change(progress.copy(phasePermille=(player.state.value.phase*1000).toInt()))}
                 else {
                     if(player.state.value.phase>=1f) { player.rewind();change(progress.copy(phasePermille=0)) }
-                    player.play(::advance)
+                    player.play { change(progress.copy(phasePermille=1000)) }
                 }},enabled=!progress.reducedMotion,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-play-pause")) {
                 Text(nutritionText(language,if(playback.playing)"Pause" else "Play",if(playback.playing)"இடைநிறுத்து" else "இயக்கு"))

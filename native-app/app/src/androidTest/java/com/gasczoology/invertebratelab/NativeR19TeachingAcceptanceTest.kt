@@ -131,7 +131,14 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
             rule.waitUntil(12_000) { rule.onNodeWithTag("r19-nutrition-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f }
             rule.onNodeWithTag("r19-play-pause",true).performClick()
-            val mid=canvas().captureToImage().asAndroidBitmap();capture(id+"-intermediate")
+            rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+            val midCanvas=canvas()
+            val phase=midCanvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            assertTrue("Captured phase must still be intermediate",phase in .4f.. .85f)
+            runBlocking { withTimeout(15_000) { NativeLearningRepository(context).learningState.first {
+                it.nutritionProgress.stageId==id && it.nutritionProgress.phasePermille in 400..850
+            } } }
+            val mid=midCanvas.captureToImage().asAndroidBitmap();capture(id+"-intermediate")
             assertFalse(id+" must actually animate",start.sameAs(mid));start.recycle();mid.recycle()
         }
         assertFalse("Acidification and enzymatic digestion must look different",endpoints[0].sameAs(endpoints[1]))
