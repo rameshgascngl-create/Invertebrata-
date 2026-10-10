@@ -18,6 +18,7 @@ data class NativeLearningState(
     val ciliaryStageIndex: Int = 0,
     val laboratoryTab: String = "study",
     val nuclearProgress: NuclearLearningProgress = NuclearLearningProgress(),
+    val waterBalanceProgress: WaterBalanceProgress = WaterBalanceProgress(),
 ) {
     companion object {
         const val CURRENT_SCHEMA = 1
@@ -35,12 +36,13 @@ data class NativeLearningState(
         val question = chapters.flatMap { it.a5Questions }.singleOrNull { it.id == questionId }
         val textbookState = copy(
             nuclearProgress = nuclearProgress.normalized(),
+            waterBalanceProgress = waterBalanceProgress.normalized(),
             textbookSectionId = textbookSectionId.takeIf { id ->
                 NativeLessonDrafts.paramecium.sections.any { it.id == id }
             } ?: "identity-and-habitat",
             ciliaryStageIndex = ciliaryStageIndex.takeIf { it in 0..3 } ?: 0,
             laboratoryTab = laboratoryTab.takeIf {
-                it in setOf("study", "anatomy", "simulate", "listen", "practice", "nuclear")
+                it in setOf("study", "anatomy", "simulate", "listen", "practice", "nuclear", "water-balance")
             } ?: "study",
         )
         return when (destination) {

@@ -288,6 +288,7 @@ internal fun ParameciumTextbookReader(
     onSectionSelected: (String) -> Unit,
     onCiliaryStageSelected: (Int) -> Unit,
     onNuclearChapter: (String) -> Unit,
+    onWaterBalance: () -> Unit,
 ) {
     val lesson = NativeLessonDrafts.paramecium
     val chapter = lesson.sections.indexOfFirst { it.id == sectionId }.coerceAtLeast(0)
@@ -391,6 +392,13 @@ internal fun ParameciumTextbookReader(
                     Text(view(language, "Listen to this explanation", "இவ்விளக்கத்தைக் கேள்"))
                 }
             }
+        }
+    }
+    if (section.id == "osmoregulation") {
+        Button(onClick = onWaterBalance, shape = RoundedCornerShape(12.dp),
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r18-from-reader")) {
+            Text(view(language, "Open the complete water-balance textbook and touch atlas",
+                "முழு நீர்ச் சமநிலைப் பாடத்தையும் தொடு படத்தையும் திற"))
         }
     }
     if (section.id in setOf("nuclear-dimorphism", "asexual-division-process", "conjugation")) {

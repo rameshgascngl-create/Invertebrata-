@@ -1,0 +1,140 @@
+name: Native R1.8 focused water-balance teaching validation
+'on':
+  push:
+    branches:
+    - native/r18-osmoregulation-textbook-20261010
+  workflow_dispatch: null
+permissions:
+  contents: read
+jobs:
+  compile-native-foundation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+    - uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: 9.6.0
+    - name: Fast focused application and instrumentation compilation plus water-balance and persistence JVM tests
+      run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --tests
+        "*ParameciumWaterBalanceTest" --tests "*NativeLearningStateTest" --tests "*ParameciumCvcMechanismTest" --stacktrace
+    - name: Assemble the exact candidate APK and record its identity
+      run: 'gradle -p native-app :app:assembleDebug :app:assembleDebugAndroidTest --stacktrace
+
+        mkdir -p qa-evidence/apk
+
+        cp native-app/app/build/outputs/apk/debug/*.apk qa-evidence/apk/
+
+        cp native-app/app/build/outputs/apk/androidTest/debug/*.apk qa-evidence/apk/
+
+        (cd qa-evidence/apk && sha256sum *.apk > SHA256SUMS)
+
+        bash ci/n23e3_verify_native_debug_apk.sh
+
+        cp qa-evidence/n23e3/aapt-*.txt qa-evidence/n23e3/apksigner-verification.txt qa-evidence/apk/
+
+        printf ''%s\n'' "$GITHUB_SHA" > qa-evidence/apk/commit.txt
+
+        '
+    - name: Preserve exact candidate APK for physical review
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: native-r18-focused-exact-commit-apk
+        path: qa-evidence/apk/
+        if-no-files-found: error
+    - name: Prohibit legacy browser runtime and INTERNET permission
+      run: "if grep -RniE 'WebView|android\\.webkit|<script|javascript:' native-app/app/src/main; then\n  echo 'Legacy browser\
+        \ runtime detected in native module' >&2\n  exit 1\nfi\nif grep -Rni '<uses-permission[^>]*INTERNET' native-app/app/src/main/AndroidManifest.xml;\
+        \ then\n  echo 'Unexpected INTERNET permission' >&2\n  exit 1\nfi\n"
+    - name: Preserve exact-commit JVM test reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: native-r18-focused-jvm-test-evidence
+        path: 'native-app/app/build/test-results/testDebugUnitTest/
+
+          native-app/app/build/reports/tests/testDebugUnitTest/
+
+          '
+        if-no-files-found: warn
+  api34-r18-teaching:
+    needs: compile-native-foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+    - uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: 9.6.0
+    - name: Enable Android emulator acceleration
+      run: 'echo ''KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"'' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+
+        sudo udevadm control --reload-rules
+
+        sudo udevadm trigger --name-match=kvm
+
+        '
+    - name: Verify real portrait and landscape Tamil100 and Tamil200 native quality offline
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 34
+        target: default
+        arch: x86_64
+        profile: pixel_6
+        disable-animations: true
+        emulator-boot-timeout: 900
+        script: bash .github/scripts/run-native-r18-quality.sh
+    - name: Preserve exact-commit R1.8 screenshot and instrumentation evidence
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: native-r18-quality-focused-evidence
+        path: qa-evidence/r18-quality/
+        if-no-files-found: warn
+  api34-r18-process-death:
+    needs: compile-native-foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+    - uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: 9.6.0
+    - name: Enable Android emulator acceleration
+      run: 'echo ''KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"'' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+
+        sudo udevadm control --reload-rules
+
+        sudo udevadm trigger --name-match=kvm
+
+        '
+    - name: Prove water-balance stage recovery after genuine ActivityManager background kill
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 34
+        target: default
+        arch: x86_64
+        profile: pixel_6
+        disable-animations: true
+        emulator-boot-timeout: 900
+        script: bash .github/scripts/run-native-r18-process-death.sh
+    - name: Preserve exact-commit R1.8 screenshot and instrumentation evidence
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: native-r18-process-focused-evidence
+        path: qa-evidence/r18-process/
+        if-no-files-found: warn

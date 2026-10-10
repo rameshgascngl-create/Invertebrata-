@@ -47,6 +47,11 @@ class NativeLearningRepository(private val context: Context) {
         val fissionReading = stringPreferencesKey("r17_fission_reading")
         val conjugationReading = stringPreferencesKey("r17_conjugation_reading")
         val reducedMotion = booleanPreferencesKey("r17_reduced_motion")
+        val waterStage = stringPreferencesKey("r18_water_stage")
+        val waterReading = stringPreferencesKey("r18_water_reading")
+        val waterStructure = stringPreferencesKey("r18_water_structure")
+        val waterPhase = intPreferencesKey("r18_water_phase_permille")
+        val waterReduced = booleanPreferencesKey("r18_water_reduced_motion")
     }
 
     val learningState: Flow<NativeLearningState> = context.nativeLearningStore.data
@@ -81,6 +86,12 @@ class NativeLearningRepository(private val context: Context) {
             preferences[Keys.fissionReading] = progress.fissionReading
             preferences[Keys.conjugationReading] = progress.conjugationReading
             preferences[Keys.reducedMotion] = progress.reducedMotion
+            val water = state.waterBalanceProgress.normalized()
+            preferences[Keys.waterStage] = water.stageId
+            preferences[Keys.waterReading] = water.readingId
+            preferences[Keys.waterStructure] = water.selectedStructure
+            preferences[Keys.waterPhase] = water.phasePermille
+            preferences[Keys.waterReduced] = water.reducedMotion
         }
     }
 
@@ -102,6 +113,13 @@ class NativeLearningRepository(private val context: Context) {
             textbookSectionId = preferences[Keys.textbookSection] ?: "identity-and-habitat",
             ciliaryStageIndex = preferences[Keys.ciliaryStage] ?: 0,
             laboratoryTab = preferences[Keys.laboratoryTab] ?: "study",
+            waterBalanceProgress = WaterBalanceProgress(
+                stageId = preferences[Keys.waterStage] ?: "osmosis",
+                readingId = preferences[Keys.waterReading] ?: "4.1",
+                selectedStructure = preferences[Keys.waterStructure] ?: "reservoir",
+                phasePermille = preferences[Keys.waterPhase] ?: 0,
+                reducedMotion = preferences[Keys.waterReduced] ?: false,
+            ).normalized(),
             nuclearProgress = NuclearLearningProgress(
                 chapterId = preferences[Keys.nuclearChapter] ?: "dimorphism",
                 dimorphismView = preferences[Keys.dimorphismView] ?: "whole-cell",
