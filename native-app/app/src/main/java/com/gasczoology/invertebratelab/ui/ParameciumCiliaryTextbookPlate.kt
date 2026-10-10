@@ -17,11 +17,8 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -82,11 +79,13 @@ private val ciliarySubsections = listOf(
 internal fun ParameciumCiliaryTextbookPlate(
     language: AppLanguage,
     speak: (BilingualText) -> Unit,
+    selectedStage: Int,
+    onStageSelected: (Int) -> Unit,
 ) {
     val process = remember {
         ParameciumLearningEngine.simulation(ParameciumProcess.CILIARY_MOTION)
     }
-    var stageIndex by rememberSaveable { mutableIntStateOf(0) }
+    val stageIndex = selectedStage.coerceIn(0, process.stages.lastIndex)
     val stage = process.stages[stageIndex]
     val requester = remember { BringIntoViewRequester() }
     val scope = rememberCoroutineScope()
@@ -176,8 +175,14 @@ internal fun ParameciumCiliaryTextbookPlate(
                     val angle = 2.0 * PI * j / 9
                     val x = center.x + cos(angle).toFloat() * radius
                     val y = center.y + sin(angle).toFloat() * radius
-                    drawCircle(graphite, radius = 2.4f, center = Offset(x - 2.2f, y))
-                    drawCircle(graphite, radius = 2.4f, center = Offset(x + 2.2f, y))
+                    // A- and B-tubules form a local doublet oriented tangent
+                    // to the ninefold ring; they do not all share the same axis.
+                    val tx = -sin(angle).toFloat() * 2.2f
+                    val ty = cos(angle).toFloat() * 2.2f
+                    drawCircle(graphite, radius = 2.4f,
+                        center = Offset(x - tx, y - ty))
+                    drawCircle(graphite, radius = 2.4f,
+                        center = Offset(x + tx, y + ty))
                 }
                 drawCircle(selected, radius = 2.6f,
                     center = Offset(center.x - 3.5f, center.y))
@@ -204,7 +209,7 @@ internal fun ParameciumCiliaryTextbookPlate(
                 modifier = Modifier.testTag("r16-ciliary-stage-explanation"),
                 style = MaterialTheme.typography.bodyLarge)
             for ((position, candidate) in process.stages.withIndex()) {
-                val choose = { stageIndex = position }
+                val choose = { onStageSelected(position) }
                 val buttonModifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .testTag("r16-ciliary-stage-" + candidate.id)
                 if (position == stageIndex) {
