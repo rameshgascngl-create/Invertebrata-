@@ -42,7 +42,7 @@ private fun DrawScope.oldMac(state:ParentalMacState,x:Float,y:Float,w:Float,h:Fl
 }
 private fun DrawScope.arrow(a:Offset,b:Offset) {
     drawLine(pencil,a,b,2f);val v=b-a;val length=v.getDistance().coerceAtLeast(1f);val u=v/length;val n=Offset(-u.y,u.x)
-    drawLine(graphite,b,b-u*13+n*6,2f);drawLine(graphite,b,b-u*13-n*6,2f)
+    drawLine(graphite,b,b-u*13f+n*6f,2f);drawLine(graphite,b,b-u*13f-n*6f,2f)
 }
 internal fun DrawScope.drawConjugationPencilPlate(stage:NuclearView,selected:String,phase:Float) {
     val body=NuclearBodyGeometry.conjugation(stage,phase)
