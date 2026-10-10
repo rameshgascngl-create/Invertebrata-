@@ -49,7 +49,8 @@ import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
 @Composable
 fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifier,
     onOrganSelected: (String) -> Unit = {},
-    onJumpToPlate: (() -> Unit)? = null) {
+    onJumpToPlate: (() -> Unit)? = null,
+    compact: Boolean = false) {
     val plate = ParameciumAnatomyDraft.plates.single { it.plateId == "external-cilia" }
     var selectedId by rememberSaveable { mutableStateOf("pellicle") }
     val chosen = plate.features.single { it.id == selectedId }
@@ -241,6 +242,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 else "Highlighted structure: ") + chosen.label.value(language),
             modifier = Modifier.testTag("n23b-selected-label"),
         )
+        if (!compact) {
         Text(
             if (language == AppLanguage.TAMIL)
                 "N2.3D1 மதிப்பாய்வு நிலை — உயிரியல்: 0/5; தமிழ்: 0/5; நேரடி சாதனச் சோதனை: நிலுவை"
@@ -323,6 +325,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
                 else "The oral groove lies on the oral/ventral surface. Its curve and exact position in this schematic have not been validated against whole-cell microscopy.",
                 modifier = Modifier.testTag("n23c3-oral-geometry-limit"),
             )
+        }
         }
         // Explicit large semantic touch targets; Canvas gesture is supplementary.
         for (feature in plate.features) {

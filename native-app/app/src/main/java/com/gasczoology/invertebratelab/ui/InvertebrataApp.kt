@@ -155,6 +155,13 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 UnitScreen(
                     unit = unit,
                     language = language,
+                    onParamecium = {
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.PARAMECIUM_LAB,
+                            unitNumber = 1, chapterId = "u1-paramecium",
+                            questionId = "", answerRevealed = false,
+                        )) { navController.navigate(Routes.PARAMECIUM) }
+                    },
                     onBack = {
                         viewModel.persistLearning(state.copy(
                             destination = StudyDestination.HOME, chapterId = "",
@@ -189,6 +196,13 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                             unitNumber = chapter.unitNumber,
                             chapterId = "", questionId = "", answerRevealed = false,
                         )) { backOrRoute(Routes.unit(chapter.unitNumber)) }
+                    },
+                    onOpenFullLesson = {
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.PARAMECIUM_LAB,
+                            unitNumber = 1, chapterId = "u1-paramecium",
+                            questionId = "", answerRevealed = false,
+                        )) { navController.navigate(Routes.PARAMECIUM) }
                     },
                     revealedQuestionId = if (state.answerRevealed) state.questionId else "",
                     onToggle = { question ->
@@ -298,8 +312,8 @@ private fun HomeScreen(
                 Button(onClick = onParamecium,
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("r1-home-open-paramecium")) {
-                    Text(label(language, "Explore Paramecium — interactive laboratory",
-                        "பாரமீசியம் — ஊடாடும் ஆய்வகம்"))
+                    Text(label(language, "Read Paramecium — illustrated native textbook",
+                        "பாரமீசியம் — படவிளக்கப் பாடநூலைப் படி"))
                 }
             }
             items(units, key = { it.number }) { unit ->
@@ -322,6 +336,7 @@ private fun HomeScreen(
 private fun UnitScreen(
     unit: AcademicUnit,
     language: AppLanguage,
+    onParamecium: () -> Unit,
     onBack: () -> Unit,
     onChapter: (String) -> Unit,
 ) {
@@ -334,15 +349,31 @@ private fun UnitScreen(
             item {
                 OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
                 Text(unit.title.value(language))
-                Text(label(language, "Select a chapter to study its validated questions.",
-                    "சரிபார்க்கப்பட்ட வினாக்களைப் படிக்க ஓர் அத்தியாயத்தைத் தேர்ந்தெடுக்கவும்."))
+                Text(label(language,
+                    "Open a teaching lesson where available. Remaining syllabus chapters are assessment-only previews until complete lessons and original atlas plates are authored.",
+                    "கற்பித்தல் பாடம் தயாராக உள்ள இடத்தில் அதைத் திறக்கவும். மற்ற அத்தியாயங்களில் முழுமையான பாடமும் அசல் உடலமைப்புப் படங்களும் உருவாகும்வரை வினாப் பயிற்சி முன்னோட்டம் மட்டுமே உள்ளது."))
+                if (unit.number == 1) {
+                    Button(onClick = onParamecium,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                            .testTag("r14-unit-open-textbook")) {
+                        Text(label(language,
+                            "START READING · Paramecium illustrated textbook",
+                            "பாடத்தைத் தொடங்கு · பாரமீசியம் படவிளக்கப் பாடநூல்"))
+                    }
+                }
             }
             items(unit.chapters, key = { it.id }) { chapter ->
                 Button(onClick = { onChapter(chapter.id) },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chapter-" + chapter.id)) {
                     Column {
-                        Text(chapter.id)
-                        Text(chapter.a5Questions.first().question.value(language))
+                        Text(chapter.id.replace("-", " ").uppercase())
+                        Text(if (chapter.id == "u1-paramecium")
+                            label(language,
+                                "Full textbook: select the Start Reading button above; practice questions here.",
+                                "முழுப் பாடத்திற்கு மேலுள்ள பாடத்தைத் தொடங்கு பொத்தானைத் தேர்க; இங்கு வினாப் பயிற்சி.")
+                            else label(language,
+                                "Assessment-only preview; full illustrated lesson not yet authored.",
+                                "வினாப் பயிற்சி முன்னோட்டம்; முழுப் படவிளக்கப் பாடம் இன்னும் தயாரிக்கப்படவில்லை."))
                     }
                 }
             }
@@ -355,6 +386,7 @@ private fun ChapterScreen(
     chapter: Chapter,
     language: AppLanguage,
     onBack: () -> Unit,
+    onOpenFullLesson: () -> Unit,
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
 ) {
@@ -373,8 +405,17 @@ private fun ChapterScreen(
                     Text(label(language, "Back", "பின்செல்"))
                 }
                 Text(label(language, "Chapter: ", "அத்தியாயம்: ") + chapter.id)
-                Text(label(language, "Validated five-mark questions",
-                    "சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினாக்கள்"))
+                if (chapter.id == "u1-paramecium") {
+                    Button(onClick = onOpenFullLesson,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                            .testTag("r14-chapter-open-textbook")) {
+                        Text(label(language,
+                            "READ THE ILLUSTRATED LESSON FIRST",
+                            "முதலில் படவிளக்கப் பாடத்தைப் படி"))
+                    }
+                }
+                Text(label(language, "EXAM PRACTICE — after the teaching lesson",
+                    "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்"))
             }
             items(chapter.a5Questions, key = { it.id }) { question ->
                 QuestionCard(
