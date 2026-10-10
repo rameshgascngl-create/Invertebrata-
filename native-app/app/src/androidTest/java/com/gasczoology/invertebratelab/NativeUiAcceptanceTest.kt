@@ -423,7 +423,7 @@ class NativeUiAcceptanceTest {
         waitFor("r1-paramecium-lab")
         rule.onNodeWithTag("r1-study-title", useUnmergedTree = true)
             .performScrollTo().assertExists()
-        rule.onNodeWithTag("r14-pencil-overview", useUnmergedTree = true)
+        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
             .performScrollTo().assertExists()
         rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
             .performScrollTo().performClick()
