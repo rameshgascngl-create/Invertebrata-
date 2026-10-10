@@ -78,14 +78,25 @@ class NativeR17TeachingAcceptanceTest {
         rule.onNodeWithTag("r17-organ-explanation",true).performScrollTo().assertTextEquals(ParameciumNuclearBiology.macronucleusExplanation.value(lang))
         canvas();capture("highlight-macronucleus")
         rule.onNodeWithTag("r17-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp);capture("controls")
+        rule.onNodeWithTag("r17-stage-whole-cell",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-reduced-motion",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.onNodeWithTag("r17-play-pause",true).performScrollTo().assertIsNotEnabled()
+        rule.onNodeWithTag("r17-next",true).performScrollTo().assertIsEnabled().performClick()
+        rule.onNodeWithTag("r17-stage-somatic",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+        rule.onNodeWithTag("r17-reduced-motion",true).performScrollTo().performClick()
     }
     @Test fun numberedCompleteReadingAndNativeAudioFallbackPersist() {
         val chapter=ParameciumNuclearBiology.dimorphism
-        chapter.readings.forEach { reading ->
+        for(c in ParameciumNuclearBiology.chapters) {
+        rule.onNodeWithTag("r17-chapter-"+c.id,true).performScrollTo().performClick()
+        c.readings.forEach { reading ->
             rule.onNodeWithTag("r17-reading-"+reading.id,true).performScrollTo().performClick()
             rule.onNodeWithTag("r17-reading-heading",true).performScrollTo().assertTextEquals(reading.heading.value(lang))
             reading.paragraphs.forEachIndexed { i,p -> rule.onNodeWithTag("r17-paragraph-"+i,true).performScrollTo().assertTextEquals(p.value(lang)) }
         }
+        capture(c.id+"-academic-text")
+        }
+        rule.onNodeWithTag("r17-chapter-dimorphism",true).performScrollTo().performClick()
         capture("academic-text")
         rule.onNodeWithTag("r17-narrate-stage",true).performScrollTo().performClick()
         rule.onNodeWithTag("r161-audio-written-fallback",true).performScrollTo()

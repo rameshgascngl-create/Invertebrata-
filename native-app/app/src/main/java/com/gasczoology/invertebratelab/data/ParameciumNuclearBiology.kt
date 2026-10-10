@@ -1,5 +1,9 @@
 package com.gasczoology.invertebratelab.data
 
+enum class NuclearEvent { NONE, REPLICATION, MITOSIS, CYTOKINESIS, HOMOLOG_SEPARATION,
+    SISTER_SEPARATION, PRONUCLEAR_MITOSIS, RECIPROCAL_EXCHANGE, FERTILIZATION,
+    POSTZYGOTIC_MITOSIS, DIFFERENTIATION }
+
 /** Explicit P. caudatum teaching model; geometry and Tamil await human review. */
 data class NuclearReading(val id: String, val heading: BilingualText, val paragraphs: List<BilingualText>)
 data class NuclearView(
@@ -10,6 +14,10 @@ data class NuclearView(
     val germNucleiPerCell: Int = 1,
     val germPloidy: Int = 2,
     val drawing: String = id,
+    val event: NuclearEvent = NuclearEvent.NONE,
+    val macronuclearAnlagenPerCell: Int = 0,
+    val degeneratingGermNucleiPerCell: Int = 0,
+    val paired: Boolean = false,
 )
 data class NuclearChapter(val id: String, val number: Int, val heading: BilingualText,
     val readings: List<NuclearReading>, val views: List<NuclearView>, val sourceIds: List<String>)
@@ -22,6 +30,10 @@ data class NuclearLearningProgress(
     val selectedNucleus: String = "macronucleus",
     val readingId: String = "1.1",
     val phasePermille: Int = 0,
+    val dimorphismReading: String = "1.1",
+    val fissionReading: String = "2.1",
+    val conjugationReading: String = "3.1",
+    val reducedMotion: Boolean = false,
 ) {
     fun viewId(chapter: String = chapterId): String = when (chapter) {
         "fission" -> fissionView
@@ -33,13 +45,30 @@ data class NuclearLearningProgress(
         "conjugation" -> copy(conjugationView = id, phasePermille = 0)
         else -> copy(dimorphismView = id, phasePermille = 0)
     }
+    fun readingFor(chapter: String) = when(chapter) {
+        "fission" -> fissionReading
+        "conjugation" -> conjugationReading
+        else -> dimorphismReading
+    }
+    fun selectReading(id: String) = when(chapterId) {
+        "fission" -> copy(readingId=id,fissionReading=id)
+        "conjugation" -> copy(readingId=id,conjugationReading=id)
+        else -> copy(readingId=id,dimorphismReading=id)
+    }
+    fun selectChapter(id: String) = selectReading(readingId).copy(chapterId=id,readingId=readingFor(id),phasePermille=0).normalized()
     fun normalized(): NuclearLearningProgress {
         val chapters = ParameciumNuclearBiology.chapters
         val chapter = chapters.firstOrNull { it.id == chapterId } ?: chapters.first()
         fun valid(id: String, key: String): String = chapters.firstOrNull { it.id == key }?.let {
             id.takeIf { value -> it.views.any { view -> view.id == value } } ?: it.views.first().id
         } ?: id
+        fun validReading(id: String,key: String) = chapters.firstOrNull { it.id==key }?.let { c ->
+            id.takeIf { v -> c.readings.any{it.id==v} } ?: c.readings.first().id
+        } ?: id
         return copy(chapterId = chapter.id,
+            dimorphismReading=validReading(if(chapter.id=="dimorphism")readingId else dimorphismReading,"dimorphism"),
+            fissionReading=validReading(if(chapter.id=="fission")readingId else fissionReading,"fission"),
+            conjugationReading=validReading(if(chapter.id=="conjugation")readingId else conjugationReading,"conjugation"),
             dimorphismView = valid(dimorphismView, "dimorphism"),
             fissionView = valid(fissionView, "fission"), conjugationView = valid(conjugationView, "conjugation"),
             selectedNucleus = selectedNucleus.takeIf { it in setOf("macronucleus", "micronucleus") } ?: "macronucleus",
@@ -53,6 +82,10 @@ object ParameciumNuclearBiology {
     const val species = "Paramecium caudatum"
     private fun b(en: String, ta: String) = BilingualText(en, ta)
     val sources = linkedMapOf(
+        "allen48" to "Allen, P. caudatum TEM / Gortz (ed.), Paramecium (1988), p.34: enveloped MIC spindle. https://www6.pbrc.hawaii.edu/allen/ch10a/48-pca740125-46.html",
+        "aihara50" to "Aihara / Allen microscopy atlas, J. Protozool. 35:400–405 (1988): vegetative nuclei and transverse constriction. https://www6.pbrc.hawaii.edu/allen/ch10a/50-pca.html",
+        "ishida1999" to "Ishida, Nakajima, Kurokawa & Mikami (1999), Zool. Sci. 16:915–926; primary anti-tubulin/DAPI microscopy. Scanned primary paper: https://dl.ndl.go.jp/pid/10862438",
+        "alberts" to "Alberts et al., Molecular Biology of the Cell: homologs, sister chromatids and meiosis. Established cell-biology source, not a Paramecium karyotype. https://www.ncbi.nlm.nih.gov/books/NBK26840/",
         "taka2006" to "Taka et al. (2006), P. caudatum germinal-nucleus selection; primary transplantation/fluorescence study. DOI 10.1111/j.1550-7408.2006.00091.x · https://pubmed.ncbi.nlm.nih.gov/16677339/",
         "nakajima2002" to "Nakajima, Ishida & Mikami (2002), P. caudatum postmeiotic nuclear movement; primary antibody/microinjection experiments. DOI 10.1111/j.1550-7408.2002.tb00344.x · https://pubmed.ncbi.nlm.nih.gov/11908901/",
         "yang1999" to "Yang & Takahashi (1999), P. caudatum postzygotic nuclear determination; primary heat-shock experiments. DOI 10.1111/j.1550-7408.1999.tb04583.x · https://pubmed.ncbi.nlm.nih.gov/10188260/",
@@ -86,7 +119,7 @@ object ParameciumNuclearBiology {
             NuclearView("somatic", b("Macronucleus: somatic work", "பேருட்கரு: உடலியக்கப் பணி"), macronucleusExplanation),
             NuclearView("germline", b("Micronucleus: hereditary continuity", "சிற்றுட்கரு: மரபுரிமைத் தொடர்ச்சி"), micronucleusExplanation),
         ), listOf("taka2006", "duret2008", "tucker1980"))
-    val chapters: List<NuclearChapter> get() = listOf(dimorphism)
+    val chapters: List<NuclearChapter> get() = listOf(dimorphism, ParameciumFissionChapter.chapter)
     fun chapter(id: String) = chapters.firstOrNull { it.id == id } ?: dimorphism
     fun nucleus(id: String) = if (id == "micronucleus") micronucleusExplanation else macronucleusExplanation
     fun nucleusName(id: String) = if (id == "micronucleus") b("Micronucleus · MIC", "சிற்றுட்கரு · MIC") else b("Macronucleus · MAC", "பேருட்கரு · MAC")

@@ -267,7 +267,7 @@ private fun StudySection(
         onSectionSelected = { onLearningChanged(learningState.copy(textbookSectionId = it)) },
         onCiliaryStageSelected = { onLearningChanged(learningState.copy(ciliaryStageIndex = it)) },
         onNuclearChapter = { chapter -> onLearningChanged(learningState.copy(laboratoryTab = "nuclear",
-            nuclearProgress = learningState.nuclearProgress.copy(chapterId = chapter, phasePermille = 0).normalized())) })
+            nuclearProgress = learningState.nuclearProgress.selectChapter(chapter))) })
 }
 
 @Composable

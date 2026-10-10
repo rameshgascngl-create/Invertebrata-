@@ -393,11 +393,12 @@ internal fun ParameciumTextbookReader(
             }
         }
     }
-    if (section.id == "nuclear-dimorphism") {
-        Button(onClick = { onNuclearChapter("dimorphism") }, shape = RoundedCornerShape(12.dp),
+    if (section.id in setOf("nuclear-dimorphism", "asexual-division-process")) {
+        val nuclearChapter = if(section.id=="asexual-division-process") "fission" else "dimorphism"
+        Button(onClick = { onNuclearChapter(nuclearChapter) }, shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-from-reader")) {
-            Text(view(language, "Open the complete nuclear-dimorphism textbook and touch atlas",
-                "முழு உட்கரு இருவகைமைப் பாடத்தையும் தொடு உடலமைப்புப் படத்தையும் திற"))
+            Text(view(language, "Open the complete nuclear / fission textbook and touch atlas",
+                "முழு உட்கரு / இருபிளவுப் பாடத்தையும் தொடு படத்தையும் திற"))
         }
     }
     // A complete pencil-illustrated ciliary mechanism occupies the native

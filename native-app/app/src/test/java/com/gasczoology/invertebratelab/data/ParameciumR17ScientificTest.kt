@@ -32,6 +32,33 @@ class ParameciumR17ScientificTest {
         assertEquals("prior",old.copy(nuclearProgress=p).questionId)
         assertTrue(old.copy(nuclearProgress=p).answerRevealed)
     }
+    @Test fun vegetativeFissionConservesDiploidGermlineAndOnlyCytokinesisAddsCells() {
+        val views=ParameciumFissionChapter.chapter.views
+        assertEquals(listOf(1,1,1,1,1,2),views.map{it.cellCount})
+        assertEquals(listOf(1,1,2,2,2,1),views.map{it.germNucleiPerCell})
+        assertTrue(views.all{it.germPloidy==2 && it.macronuclearAnlagenPerCell==0 && !it.paired})
+        assertEquals(NuclearEvent.REPLICATION,views[1].event)
+        assertEquals(NuclearEvent.MITOSIS,views[2].event)
+        assertTrue(views.none{it.event==NuclearEvent.FERTILIZATION || it.event==NuclearEvent.RECIPROCAL_EXCHANGE})
+    }
+    @Test fun newChapterNavigationKeepsIndependentSubsectionAndStage() {
+        val p=NuclearLearningProgress().selectReading("1.3").selectView("germline")
+            .selectChapter("fission").selectReading("2.3").selectView("constriction")
+        val d=p.selectChapter("dimorphism")
+        assertEquals("1.3",d.readingId);assertEquals("germline",d.viewId())
+        val f=d.selectChapter("fission")
+        assertEquals("2.3",f.readingId);assertEquals("constriction",f.viewId())
+        assertEquals(f,f.normalized())
+    }
+    @Test fun originalFissionBodyAndTouchHitRegionsAgreeDuringRealPhaseChanges() {
+        for(stage in ParameciumFissionChapter.chapter.views) for(phase in listOf(0f,.5f,1f)) {
+            val body=NuclearBodyGeometry.fission(stage,phase)
+            assertEquals(stage.cellCount,body.cells.size)
+            body.marks.forEach { assertEquals(it.kind,NuclearFigureGeometry.nucleusAt(it.x,it.y,stage,phase)) }
+        }
+        val stage=ParameciumFissionChapter.chapter.views.first{it.id=="constriction"}
+        assertTrue(NuclearBodyGeometry.fission(stage,1f).cells.single().furrow>NuclearBodyGeometry.fission(stage,0f).cells.single().furrow)
+    }
     @Test fun anatomyCoordinatesAndInverseFitAgreeInBothAspectRatios() {
         for((w,h) in listOf(320f to 240f,780f to 240f)) {
             val f=NuclearFigureGeometry.fit(w,h)

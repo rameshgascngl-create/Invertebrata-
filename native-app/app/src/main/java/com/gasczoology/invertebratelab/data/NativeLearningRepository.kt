@@ -43,6 +43,10 @@ class NativeLearningRepository(private val context: Context) {
         val selectedNucleus = stringPreferencesKey("r17_selected_nucleus")
         val nuclearReading = stringPreferencesKey("r17_nuclear_reading")
         val nuclearPhase = intPreferencesKey("r17_phase_permille")
+        val dimorphismReading = stringPreferencesKey("r17_dimorphism_reading")
+        val fissionReading = stringPreferencesKey("r17_fission_reading")
+        val conjugationReading = stringPreferencesKey("r17_conjugation_reading")
+        val reducedMotion = booleanPreferencesKey("r17_reduced_motion")
     }
 
     val learningState: Flow<NativeLearningState> = context.nativeLearningStore.data
@@ -73,6 +77,10 @@ class NativeLearningRepository(private val context: Context) {
             preferences[Keys.selectedNucleus] = progress.selectedNucleus
             preferences[Keys.nuclearReading] = progress.readingId
             preferences[Keys.nuclearPhase] = progress.phasePermille
+            preferences[Keys.dimorphismReading] = progress.dimorphismReading
+            preferences[Keys.fissionReading] = progress.fissionReading
+            preferences[Keys.conjugationReading] = progress.conjugationReading
+            preferences[Keys.reducedMotion] = progress.reducedMotion
         }
     }
 
@@ -102,6 +110,10 @@ class NativeLearningRepository(private val context: Context) {
                 selectedNucleus = preferences[Keys.selectedNucleus] ?: "macronucleus",
                 readingId = preferences[Keys.nuclearReading] ?: "1.1",
                 phasePermille = preferences[Keys.nuclearPhase] ?: 0,
+                dimorphismReading = preferences[Keys.dimorphismReading] ?: "1.1",
+                fissionReading = preferences[Keys.fissionReading] ?: "2.1",
+                conjugationReading = preferences[Keys.conjugationReading] ?: "3.1",
+                reducedMotion = preferences[Keys.reducedMotion] ?: false,
             ).normalized(),
         )
     }

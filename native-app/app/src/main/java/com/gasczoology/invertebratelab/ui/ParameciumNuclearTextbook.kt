@@ -73,7 +73,9 @@ internal fun ParameciumNuclearTextbook(
         val c = ParameciumNuclearBiology.chapter(current.chapterId)
         val index = c.views.indexOfFirst { it.id == current.viewId() }
         if (index >= c.views.lastIndex) return false
-        change(current.selectView(c.views[index + 1].id))
+        var next=current.selectView(c.views[index + 1].id)
+        if(c.id=="dimorphism") next=next.copy(selectedNucleus=if(next.viewId()=="germline")"micronucleus" else "macronucleus")
+        change(next)
         return true
     }
     val shape = RoundedCornerShape(12.dp)
@@ -97,7 +99,7 @@ internal fun ParameciumNuclearTextbook(
     for (candidate in ParameciumNuclearBiology.chapters) {
         OutlinedButton(onClick = {
             player.rewind()
-            change(progress.copy(chapterId = candidate.id, phasePermille = 0).normalized())
+            change(progress.selectChapter(candidate.id))
         }, shape = shape, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
             .testTag("r17-chapter-" + candidate.id).semantics { selected = candidate.id == chapter.id }) {
             Text(candidate.heading.value(language))
@@ -108,7 +110,7 @@ internal fun ParameciumNuclearTextbook(
             Text(chapter.heading.value(language), style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold, modifier = Modifier.semantics { heading() })
             chapter.readings.forEach { item ->
-                OutlinedButton(onClick = { change(progress.copy(readingId = item.id)) }, shape = shape,
+                OutlinedButton(onClick = { change(progress.selectReading(item.id)) }, shape = shape,
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-reading-" + item.id)
                         .semantics { selected = item.id == reading.id }) { Text(item.heading.value(language)) }
             }
@@ -132,6 +134,10 @@ internal fun ParameciumNuclearTextbook(
                 modifier = Modifier.testTag("r17-stage-title").semantics { heading() })
             Text(text(language, "Cells shown: ", "காட்டப்படும் செல்கள்: ") + stage.cellCount,
                 modifier = Modifier.testTag("r17-cell-count"))
+            Text(text(language, "Germline chromosome sets: ", "மரபுவழிக் குரோமோசோம் தொகுதி: ") +
+                "${stage.germPloidy}n" + text(language,
+                    " · Enlarged chromosome symbols are representative, not a species count.",
+                    " · பெரிதாக்கிய குரோமோசோம் குறிகள் பிரதிநிதிகள்; இனத்தின் எண்ணிக்கை அல்ல."))
             Button(onClick = { scope.launch { requester.bringIntoView() } }, shape = shape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-view-plate")) {
                 Text(text(language, "Bring the complete pencil plate into view", "முழுப் பென்சில் படத்தைத் திரையில் காண்க"))
@@ -140,12 +146,12 @@ internal fun ParameciumNuclearTextbook(
                 .testTag("r17-nuclear-canvas").pointerInput(stage.id, progress.selectedNucleus) {
                     detectTapGestures { p ->
                         val f = NuclearFigureGeometry.fit(size.width.toFloat(), size.height.toFloat())
-                        NuclearFigureGeometry.nucleusAt(f.logicalX(p.x), f.logicalY(p.y))?.let(::chooseNucleus)
+                        NuclearFigureGeometry.nucleusAt(f.logicalX(p.x), f.logicalY(p.y), stage, playback.phase)?.let(::chooseNucleus)
                     }
                 }.semantics {
                     contentDescription = text(language,
                         "Original schematic, Paramecium caudatum: hatched macronucleus and compact micronucleus; separately enlarged insets are not additional nuclei. Anterior left, posterior right. Current view: ",
-                        "அசல் கௌடேட்டம் விளக்கப்படம்: கோடிட்ட பேருட்கரு, செறிவான சிற்றுட்கரு; பெரிதாக்கிய சிறுபடங்கள் கூடுதல் உட்கருக்கள் அல்ல. முன்முனை இடது, பின்முனை வலது. தற்போதைய காட்சி: ") + stage.heading.value(language)
+                        "அசல் கௌடேட்டம் விளக்கப்படம்: கோடிட்ட பேருட்கரு, செறிவான சிற்றுட்கரு; பெரிதாக்கிய சிறுபடங்கள் கூடுதல் உட்கருக்கள் அல்ல. முன்முனை இடது, பின்முனை வலது. தற்போதைய காட்சி: ") + stage.heading.value(language) + ". " + stage.explanation.value(language)
                     stateDescription = ParameciumNuclearBiology.nucleusName(progress.selectedNucleus).value(language) +
                         text(language, " highlighted; cells ", " சிறப்பிக்கப்பட்டது; செல்கள் ") + stage.cellCount
                     customActions = listOf("macronucleus", "micronucleus").map { id ->
@@ -173,11 +179,19 @@ internal fun ParameciumNuclearTextbook(
             Text(text(language,
                 "Illustrative presentation speed; views separate biological events and may overlap in real time. Manual stepping is available. Restored demonstrations stay paused.",
                 "கற்பித்தலுக்கான காட்சி வேகம்; நிகழ்வுகள் தனியாக விளக்கப்படுகின்றன, இயற்கையில் நேரங்கள் ஒன்றோடொன்று அமையலாம். கையால் படிநிலை மாற்றலாம். மீட்டமைந்த காட்சி இடைநிறுத்தத்தில் இருக்கும்."))
+            OutlinedButton(onClick = {
+                player.pause()
+                change(progress.copy(reducedMotion=!progress.reducedMotion,phasePermille=(player.state.value.phase*1000).toInt()))
+            },shape=shape,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r17-reduced-motion")
+                .semantics { selected=progress.reducedMotion }) {
+                Text(text(language, "Reduced motion: ", "குறைக்கப்பட்ட இயக்கம்: ") +
+                    text(language,if(progress.reducedMotion)"On — use manual steps" else "Off",if(progress.reducedMotion)"ஆம் — கையால் படிநிலை மாற்றுக" else "இல்லை"))
+            }
             Text(text(language, if (playback.playing) "Playing" else "Paused", if (playback.playing) "இயங்குகிறது" else "இடைநிறுத்தம்"),
                 modifier = Modifier.testTag("r17-playback-state").semantics { liveRegion = LiveRegionMode.Polite })
             OutlinedButton(onClick = { if (playback.playing) {
                 player.pause(); change(progress.copy(phasePermille = (player.state.value.phase * 1000).toInt()))
-            } else player.play(::advance) }, shape = shape, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-play-pause")) {
+            } else player.play(::advance) }, enabled = !progress.reducedMotion, shape = shape, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-play-pause")) {
                 Text(text(language, if (playback.playing) "Pause demonstration" else "Play staged demonstration",
                     if (playback.playing) "காட்சியை இடைநிறுத்து" else "படிநிலைக் காட்சியை இயக்கு"))
             }
@@ -189,7 +203,7 @@ internal fun ParameciumNuclearTextbook(
                 enabled = position < chapter.views.lastIndex, shape = shape, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-next")) {
                 Text(text(language, "Next view", "அடுத்த காட்சி"))
             }
-            OutlinedButton(onClick = { player.rewind(); player.play(::advance) }, shape = shape,
+            OutlinedButton(onClick = { player.rewind(); player.play(::advance) }, enabled = !progress.reducedMotion, shape = shape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-replay")) {
                 Text(text(language, "Replay from this view", "இக்காட்சியிலிருந்து மீண்டும் இயக்கு"))
             }
@@ -208,10 +222,10 @@ internal fun ParameciumNuclearTextbook(
     chapter.sourceIds.forEach { Text(ParameciumNuclearBiology.sources.getValue(it), style = MaterialTheme.typography.bodySmall) }
 }
 
-private val graphite = Color(0xFF494641)
-private val pencil = Color(0xFF968F85)
-private val selectedInk = Color(0xFF99612A)
-private fun DrawScope.mac(cx: Float, cy: Float, w: Float, h: Float, selected: Boolean) {
+internal val graphite = Color(0xFF494641)
+internal val pencil = Color(0xFF968F85)
+internal val selectedInk = Color(0xFF99612A)
+internal fun DrawScope.mac(cx: Float, cy: Float, w: Float, h: Float, selected: Boolean) {
     val path = Path().apply {
         moveTo(cx-w/2,cy)
         cubicTo(cx-w/2,cy-h*.7f,cx+w*.4f,cy-h*.7f,cx+w/2,cy-h*.05f)
@@ -227,7 +241,7 @@ private fun DrawScope.mac(cx: Float, cy: Float, w: Float, h: Float, selected: Bo
     drawPath(path, if (selected) selectedInk else graphite, style=Stroke(if(selected) 5f else 2.8f))
     if(selected) drawOval(graphite,Offset(cx-w*.56f,cy-h*.65f),Size(w*1.12f,h*1.28f),style=Stroke(1.4f))
 }
-private fun DrawScope.mic(cx: Float, cy: Float, r: Float, selected: Boolean) {
+internal fun DrawScope.mic(cx: Float, cy: Float, r: Float, selected: Boolean) {
     drawCircle(Color(0xFFE1DCD3), r, Offset(cx,cy))
     drawCircle(if(selected) selectedInk else graphite,r,Offset(cx,cy),style=Stroke(if(selected) 5f else 2.5f))
     drawCircle(pencil,r*.82f,Offset(cx,cy),style=Stroke(1.2f))
@@ -242,6 +256,10 @@ internal fun DrawScope.drawNuclearPencilPlate(chapter: String, stage: NuclearVie
     drawRect(Color(0xFFFAF8F3))
     val frame = NuclearFigureGeometry.fit(size.width,size.height)
     withTransform({ translate(frame.left,frame.top);scale(frame.scale,frame.scale,pivot=Offset.Zero) }) {
+        if (chapter == "fission") {
+            drawFissionPencilPlate(stage, selected, phase)
+            return@withTransform
+        }
         drawOval(Color(0xFFF1EEE7),Offset(45f,135f),Size(530f,275f))
         drawOval(graphite,Offset(45f,135f),Size(530f,275f),style=Stroke(3f))
         drawOval(pencil,Offset(50f,140f),Size(520f,265f),style=Stroke(1.5f))
