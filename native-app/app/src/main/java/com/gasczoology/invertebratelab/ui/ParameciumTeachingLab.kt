@@ -127,6 +127,11 @@ fun ParameciumTeachingLab(
                 Text("R1.7 · ${p.chapterId} · ${p.viewId()} · ${p.readingId} · ${p.selectedNucleus}",
                     modifier = Modifier.testTag("r17-learning-position"))
             }
+            if (tab == "water-balance") {
+                val p = learningState.waterBalanceProgress
+                Text("R1.8 · ${p.stageId} · ${p.readingId} · ${p.selectedStructure}",
+                    modifier = Modifier.testTag("r18-learning-position"))
+            }
             Text(
                 bi(language, "PARAMECIUM · DIGITAL ZOOLOGY TEXTBOOK",
                     "பாரமீசியம் · மின்னணு விலங்கியல் பாடநூல்"),

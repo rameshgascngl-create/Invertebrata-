@@ -69,7 +69,7 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
         "அசல் பென்சில் விளக்கப்படங்கள்; அளவுக்கு ஏற்ப அல்ல. ஒப்பீட்டு நுண்ணமைப்பு குறிக்கப்பட்டுள்ளது; நிபுணர் ஒப்புதல் நிலுவை."),
         modifier=Modifier.testTag("r18-review-status"))
     Text("R1.8 · ${progress.stageId} · ${progress.readingId} · ${progress.selectedStructure}",
-        modifier=Modifier.testTag("r18-learning-position"))
+        modifier=Modifier.testTag("r18-module-position"))
     Card(colors=CardDefaults.cardColors(containerColor=Color(0xFFFFFDF8))) {
         Column(Modifier.fillMaxWidth().padding(12.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
             for(item in ParameciumWaterBalance.readings) {

@@ -108,6 +108,16 @@ class NativeR18TeachingAcceptanceTest {
         assertTrue(p>0 && p<1)
         val after=c.captureToImage().asAndroidBitmap();assertFalse("Native radius/flow must change pixels",before.sameAs(after))
         capture("fill-phase-paused");before.recycle();after.recycle()
+        rule.waitForIdle()
+        val saved=runBlocking { withTimeout(15_000) { NativeLearningRepository(context).learningState.first {
+            it.waterBalanceProgress.stageId=="fill" && it.waterBalanceProgress.phasePermille in 1..999
+        } } }.waterBalanceProgress.phasePermille
+        rule.activityRule.scenario.recreate()
+        rule.waitUntil(20_000) { rule.onAllNodesWithTag("r18-textbook-title",true).fetchSemanticsNodes().isNotEmpty() }
+        val restored=canvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+        assertEquals("Paused native phase must survive real DataStore recreation",saved/1000f,restored,.02f)
+        rule.onNodeWithTag("r18-playback-state",true).performScrollTo().assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
+        capture("fill-phase-restored")
         rule.onNodeWithTag("r18-reset",true).performScrollTo().performClick()
         rule.onNodeWithTag("r18-play-pause",true).performScrollTo().performClick()
         rule.waitUntil(12_000) { rule.onNodeWithTag("r18-stage-collect",true).fetchSemanticsNode().config[SemanticsProperties.Selected] }

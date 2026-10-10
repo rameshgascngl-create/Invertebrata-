@@ -2,6 +2,10 @@
 set -euo pipefail
 evidence="qa-evidence/r18-quality"
 device_dir="/sdcard/Download/native-anatomy-evidence"
+selected_test="com.gasczoology.invertebratelab.NativeR18TeachingAcceptanceTest"
+if [[ "${1:-full}" == "targeted-persistence" ]]; then
+  selected_test+="#nativeMotionReallyChangesPixelsAndPausesAtIntermediatePhase"
+fi
 mkdir -p "$evidence"
 adb shell mkdir -p "$device_dir"
 phase=NOT_STARTED
@@ -32,7 +36,7 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   adb shell mkdir -p /sdcard/Download/native-anatomy-evidence
   rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
   if gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
-    -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeR18TeachingAcceptanceTest \
+    -Pandroid.testInstrumentationRunnerArguments.class="$selected_test" \
     -Pandroid.testInstrumentationRunnerArguments.r18Language="$language" \
     -Pandroid.testInstrumentationRunnerArguments.r18Orientation="$orientation" \
     -Pandroid.testInstrumentationRunnerArguments.r18Scale="$scale" > "$evidence/$phase/gradle.txt" 2>&1; then
@@ -46,4 +50,17 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
   cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports"
 done
+phase="datastore-compatibility"
+mkdir -p "$evidence/$phase"
+rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
+if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
+  -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeR18DataStoreCompatibilityTest \
+  > "$evidence/$phase/gradle.txt" 2>&1; then
+  result=INSTRUMENTATION_FAIL
+  cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results" 2>/dev/null || true
+  cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports" 2>/dev/null || true
+  exit 1
+fi
+cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
+cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports"
 result=PASS
