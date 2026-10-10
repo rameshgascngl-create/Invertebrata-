@@ -16,6 +16,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -40,6 +43,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
@@ -113,23 +117,62 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
             OutlinedButton(onClick=onBack, modifier=Modifier.heightIn(min=48.dp)) {
                 Text(bi(language,"Back","பின்செல்"))
             }
-            Text(bi(language,"PARAMECIUM — INTERACTIVE ZOOLOGY LAB",
-                "பாரமீசியம் — ஊடாடும் விலங்கியல் ஆய்வகம்"))
-            Text(bi(language,"Reference species: Paramecium caudatum. Teaching draft; diagram geometry and Tamil terminology are awaiting independent academic review.",
-                "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம். கற்பித்தல் வரைவு; உடலமைப்பு இடங்களும் தமிழ் சொற்களும் தனி நிபுணர் மதிப்பாய்வுக்காகக் காத்திருக்கின்றன."),
-                modifier=Modifier.testTag("r1-review-warning"))
-            Column(modifier=Modifier.fillMaxWidth(),
-                verticalArrangement=Arrangement.spacedBy(6.dp)) {
-                for(section in listOf("study","anatomy","simulate","listen","practice")) {
-                    OutlinedButton(onClick={tab=section},
-                        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-tab-"+section)) {
-                        Text(when(section) {
-                            "study" -> bi(language,"Study","பாடம்")
-                            "anatomy" -> bi(language,"Anatomy","உடலமைப்பு")
-                            "simulate" -> bi(language,"Simulate","இயக்கக் காட்சி")
-                            "listen" -> bi(language,"Listen","ஒலிவிளக்கம்")
-                            else -> bi(language,"Practice","பயிற்சி")
-                        })
+            Text(
+                bi(language, "PARAMECIUM · DIGITAL ZOOLOGY TEXTBOOK",
+                    "பாரமீசியம் · மின்னணு விலங்கியல் பாடநூல்"),
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.testTag("r14-textbook-hero")
+            )
+            Card(
+                colors = CardDefaults.cardColors(containerColor = Color(0xFFF0F5F3)),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(7.dp)) {
+                    Text(bi(language,
+                        "Read illustrated chapters, investigate organs, then test the processes.",
+                        "படவிளக்கப் பாடங்களைப் படித்து, உறுப்புகளை ஆராய்ந்து, செயல்முறைகளைச் சோதிக்கவும்."),
+                        style = MaterialTheme.typography.titleMedium)
+                    Text(bi(language,
+                        "Reference species: Paramecium caudatum · original graphite atlases · offline bilingual explanations.",
+                        "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம் · அசல் பென்சில் உடலமைப்புப் படங்கள் · இணையமின்றி இருமொழி விளக்கம்."),
+                        style = MaterialTheme.typography.bodyMedium)
+                    Text(bi(language,
+                        "Academic review pending: illustrations and Tamil vocabulary remain drafts.",
+                        "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன."),
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.testTag("r1-review-warning"))
+                }
+            }
+            val menu = listOf("study", "anatomy", "simulate", "listen", "practice")
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                for (pair in menu.chunked(2)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.fillMaxWidth()) {
+                        for (section in pair) {
+                            val title = when (section) {
+                                "study" -> bi(language, "01 · Read", "01 · பாடம்")
+                                "anatomy" -> bi(language, "02 · Anatomy", "02 · உடலமைப்பு")
+                                "simulate" -> bi(language, "03 · Simulate", "03 · இயக்கக் காட்சி")
+                                "listen" -> bi(language, "04 · Listen", "04 · ஒலி விளக்கம்")
+                                else -> bi(language, "05 · Practice", "05 · பயிற்சி")
+                            }
+                            val buttonModifier = Modifier.weight(1f)
+                                .heightIn(min = 56.dp).testTag("r1-tab-" + section)
+                            if (tab == section) {
+                                Button(onClick = { tab = section }, modifier = buttonModifier) {
+                                    Text(title)
+                                }
+                            } else {
+                                OutlinedButton(onClick = { tab = section },
+                                    modifier = buttonModifier) {
+                                    Text(title)
+                                }
+                            }
+                        }
                     }
                 }
             }
