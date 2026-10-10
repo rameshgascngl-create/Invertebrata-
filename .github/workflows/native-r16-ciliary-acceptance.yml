@@ -22,8 +22,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
-      - name: Compile Kotlin and run all JVM academic unit tests
-        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
+      - name: Compile application and instrumentation Kotlin and run all JVM academic unit tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - name: Prohibit legacy browser runtime and INTERNET permission
         run: |
           if grep -RniE 'WebView|android\.webkit|<script|javascript:' native-app/app/src/main; then
@@ -34,8 +34,18 @@ jobs:
             echo 'Unexpected INTERNET permission' >&2
             exit 1
           fi
+      - name: Preserve exact-commit JVM test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-r16-jvm-test-evidence
+          path: |
+            native-app/app/build/test-results/testDebugUnitTest/
+            native-app/app/build/reports/tests/testDebugUnitTest/
+          if-no-files-found: warn
 
   api34-established-native-ui:
+    needs: compile-native-foundation
     runs-on: ubuntu-24.04
     timeout-minutes: 55
     steps:
@@ -71,6 +81,7 @@ jobs:
           if-no-files-found: warn
 
   api34-genuine-process-death:
+    needs: compile-native-foundation
     runs-on: ubuntu-24.04
     timeout-minutes: 55
     steps:
@@ -106,6 +117,7 @@ jobs:
           if-no-files-found: warn
 
   api34-r16-ciliary-acceptance:
+    needs: compile-native-foundation
     runs-on: ubuntu-24.04
     timeout-minutes: 55
     steps:
