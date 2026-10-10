@@ -72,6 +72,16 @@ if ! adb pull "$anatomy_dir/r14-textbook-normal.png" qa-evidence/r14-textbook-no
     exit 1
 fi
 
+# R1.5 requires genuine emulator evidence of the selected feeding stage.
+if ! adb shell test -s "$anatomy_dir/r15-feeding-normal.png"; then
+    normal_exit=R15_FEEDING_NORMAL_SCREENSHOT_MISSING
+    exit 1
+fi
+if ! adb pull "$anatomy_dir/r15-feeding-normal.png" qa-evidence/r15-feeding-normal.png; then
+    normal_exit=R15_FEEDING_NORMAL_SCREENSHOT_PULL_FAILED
+    exit 1
+fi
+
 if ! adb shell settings put system font_scale 2.0; then
     large_text_exit=DEVICE_CONFIG_FAILED
     exit 1
@@ -110,8 +120,18 @@ if ! adb pull "$anatomy_dir/r14-textbook-tamil200.png" qa-evidence/r14-textbook-
     large_text_exit=R14_TEXTBOOK_TAMIL_SCREENSHOT_PULL_FAILED
     exit 1
 fi
+if ! adb shell test -s "$anatomy_dir/r15-feeding-tamil200.png"; then
+    large_text_exit=R15_FEEDING_TAMIL200_SCREENSHOT_MISSING
+    exit 1
+fi
+if ! adb pull "$anatomy_dir/r15-feeding-tamil200.png" qa-evidence/r15-feeding-tamil200.png; then
+    large_text_exit=R15_FEEDING_TAMIL200_SCREENSHOT_PULL_FAILED
+    exit 1
+fi
 sha256sum qa-evidence/paramecium-normal-oral-groove.png \
     qa-evidence/paramecium-tamil200-cytoproct.png \
     qa-evidence/r14-textbook-normal.png \
     qa-evidence/r14-textbook-tamil200.png \
+    qa-evidence/r15-feeding-normal.png \
+    qa-evidence/r15-feeding-tamil200.png \
     > qa-evidence/anatomy-screenshot-sha256.txt

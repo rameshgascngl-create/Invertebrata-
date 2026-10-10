@@ -49,6 +49,8 @@ private fun saveN23bReviewScreenshot(fileName: String) {
         "paramecium-tamil200-cytoproct.png",
         "r14-textbook-normal.png",
         "r14-textbook-tamil200.png",
+        "r15-feeding-normal.png",
+        "r15-feeding-tamil200.png",
     ))
 
     val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
@@ -97,8 +99,16 @@ private fun saveN23bReviewScreenshot(fileName: String) {
         }
         // Preserve exact pixel thresholds, sample stride, and screenshot
         // provenance. Most-common observed colors are diagnostics ONLY.
-        check(canvasBackground * 100 >= samples * 12 &&
-            cellFill * 100 >= samples * 6 && graphite >= 8) {
+        // R1.5 is a small functional flowchart rather than a full-cell plate.
+        // Its own nonzero graphite/cell/highlight requirement is additional;
+        // original R1.3 anatomical screenshot thresholds remain unchanged.
+        val r15Plate = fileName.startsWith("r15-feeding-")
+        val pixelsPass = if (r15Plate)
+            canvasBackground >= 50 && cellFill >= 5 &&
+                graphite >= 5 && selectedHighlight >= 2
+        else canvasBackground * 100 >= samples * 12 &&
+            cellFill * 100 >= samples * 6 && graphite >= 8
+        check(pixelsPass) {
             val palette = observedColors.entries.sortedByDescending { it.value }
                 .take(6).joinToString { (color, count) ->
                     "0x" + color.toString(16).padStart(6, '0') + "=$count"
@@ -458,6 +468,9 @@ class NativeUiAcceptanceTest {
             )
         rule.onNodeWithTag("r15-feeding-replay", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp)
+        rule.onNodeWithTag("r15-feeding-pathway-canvas", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        saveN23bReviewScreenshot("r15-feeding-normal.png")
         rule.onNodeWithTag("r14-from-study-anatomy", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.onNodeWithTag("r1-atlas-heading", useUnmergedTree = true)
@@ -617,6 +630,22 @@ class NativeTamilLargeTextAcceptanceTest {
             .performScrollTo().assertTextEquals("சுருங்கும் நுண்குமிழ்களும் நீர்ச்சமநிலையும்")
         rule.onNodeWithTag("r14-pencil-vacuole", useUnmergedTree = true)
             .performScrollTo().assertExists()
+        // Native feeding model is also usable with the real Android 200% scale.
+        rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r14-open-section-feeding-and-digestion", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r15-feeding-stage-egestion", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.onNodeWithTag("r15-feeding-explanation", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals(
+                com.gasczoology.invertebratelab.data.ParameciumLearningEngine
+                    .simulation(com.gasczoology.invertebratelab.data.ParameciumProcess.FEEDING)
+                    .stages.last().explanation.tamil
+            )
+        rule.onNodeWithTag("r15-feeding-pathway-canvas", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        saveN23bReviewScreenshot("r15-feeding-tamil200.png")
         rule.onNodeWithTag("r14-from-study-simulation", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.onNodeWithTag("r1-stage-title", useUnmergedTree = true)
