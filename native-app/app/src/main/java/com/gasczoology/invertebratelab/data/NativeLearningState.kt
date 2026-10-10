@@ -13,6 +13,10 @@ data class NativeLearningState(
     val chapterId: String = "",
     val questionId: String = "",
     val answerRevealed: Boolean = false,
+    // Additive schema-1 fields: old DataStore records keep their assessment state.
+    val textbookSectionId: String = "identity-and-habitat",
+    val ciliaryStageIndex: Int = 0,
+    val laboratoryTab: String = "study",
 ) {
     companion object {
         const val CURRENT_SCHEMA = 1
@@ -28,6 +32,15 @@ data class NativeLearningState(
         val chapters = units.flatMap { it.chapters }
         val chapter = chapters.singleOrNull { it.id == chapterId }
         val question = chapters.flatMap { it.a5Questions }.singleOrNull { it.id == questionId }
+        val textbookState = copy(
+            textbookSectionId = textbookSectionId.takeIf { id ->
+                NativeLessonDrafts.paramecium.sections.any { it.id == id }
+            } ?: "identity-and-habitat",
+            ciliaryStageIndex = ciliaryStageIndex.takeIf { it in 0..3 } ?: 0,
+            laboratoryTab = laboratoryTab.takeIf {
+                it in setOf("study", "anatomy", "simulate", "listen", "practice")
+            } ?: "study",
+        )
         return when (destination) {
             StudyDestination.HOME -> copy(destination = StudyDestination.HOME)
             StudyDestination.UNIT -> copy(
@@ -35,11 +48,11 @@ data class NativeLearningState(
             )
             StudyDestination.CHAPTER -> if (chapter?.unitNumber == unit.number &&
                 (questionId.isEmpty() || question?.chapterId == chapter.id)
-            ) this else NativeLearningState()
+            ) textbookState else NativeLearningState()
             StudyDestination.PARAMECIUM_LAB -> if (
                 unit.number == 1 && chapterId == "u1-paramecium" &&
                 questionId.isEmpty() && !answerRevealed
-            ) this else NativeLearningState()
+            ) textbookState else NativeLearningState()
             StudyDestination.PRACTICE -> if (question != null &&
                 question.chapterId == chapterId &&
                 chapter?.unitNumber == unit.number

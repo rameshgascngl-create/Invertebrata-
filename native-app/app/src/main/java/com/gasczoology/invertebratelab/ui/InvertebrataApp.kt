@@ -220,6 +220,8 @@ fun InvertebrataApp(viewModel: MainViewModel) {
         composable(Routes.PARAMECIUM) {
             ParameciumTeachingLab(
                 language = language,
+                learningState = state,
+                onLearningChanged = { viewModel.persistLearning(it) },
                 onBack = {
                     viewModel.persistLearning(state.copy(
                         destination = StudyDestination.HOME,

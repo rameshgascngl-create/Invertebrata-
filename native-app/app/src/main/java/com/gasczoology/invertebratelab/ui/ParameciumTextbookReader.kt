@@ -1,5 +1,6 @@
 package com.gasczoology.invertebratelab.ui
 
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
@@ -67,9 +68,9 @@ private val elaborations = mapOf(
         "பலசெல் உயிரிகளின் திசுக்களுக்கும் பாரமீசியத்தின் ஒற்றைச் செல் அமைப்புக்கும் உள்ள வேறுபாட்டைக் கவனிக்கவும். இதில் உண்மையான செரிமானக் குழாய், சிறுநீரகம் அல்லது நரம்பு மண்டலம் இல்லை. குறிப்பிட்ட செல் படலப் பகுதிகளும் நுண்ணுறுப்புகளும் இப்பணிகளை ஒருங்கிணைக்கின்றன. குளநீர் மாதிரியில் செல் வடிவம், நீந்தும் திசை, பின்னோக்கி நகர்தல், நுண்குமிழ் துடிப்பு ஆகியவற்றைப் பதிவுசெய்யலாம்; இவற்றில் ஒன்றை மட்டும் கொண்டு இனத்தை உறுதிப்படுத்த இயலாது."
     ),
     "pellicle-and-cilia" to detail(
-        "Metachronal waves and control of direction", "ஒத்திசை குறுஇழை அலைகளும் திசைக் கட்டுப்பாடும்",
+        "Metachronal waves and control of direction", "மெட்டாக்ரோனல் குறுஇழை அலைகளும் திசைக் கட்டுப்பாடும்",
         "Each cilium has an axonemal apparatus supported by basal structures. Its effective and recovery strokes interact with water; adjacent cilia produce coordinated waves. Reorientation is not a change of body organs but a change in ciliary activity. Draw the beat direction as illustrative motion vectors, not as a claim that all cilia move simultaneously.",
-        "ஒவ்வொரு குறுஇழையிலும் அடித்தள அமைப்புகளுடன் இணைந்த ஆக்சோனீம் உள்ளது. அதன் இயக்க அசைவும் மீளும் அசைவும் நீருடன் வினைபுரிகின்றன. அடுத்தடுத்த குறுஇழைகள் ஒருங்கிணைந்த அலைகளை உருவாக்குகின்றன. திசைமாற்றம் உடல் உறுப்புகள் மாறுவதால் அல்ல; குறுஇழைகளின் இயக்கம் மாறுவதால் நிகழ்கிறது. அனைத்து குறுஇழைகளும் ஒரே நேரத்தில் அசைகின்றன என்று காட்டாமல், விளக்க இயக்க அம்புகளைப் பயன்படுத்த வேண்டும்."
+        "ஒவ்வொரு குறுஇழையிலும் அடித்தள உடலுடன் இணைந்த ஆக்சோனீம் உள்ளது. அதன் இயக்க அசைவும் மீளும் அசைவும் நீருடன் வினைபுரிகின்றன. அடுத்தடுத்த குறுஇழைகள் ஒருங்கிணைந்த அலைகளை உருவாக்குகின்றன. திசைமாற்றம் உடல் உறுப்புகள் மாறுவதால் அல்ல; குறுஇழைகளின் இயக்கம் மாறுவதால் நிகழ்கிறது. அனைத்து குறுஇழைகளும் ஒரே நேரத்தில் அசைகின்றன என்று காட்டாமல், விளக்க இயக்க அம்புகளைப் பயன்படுத்த வேண்டும்."
     ),
     "feeding-and-digestion" to detail(
         "Track one particle from ingestion to egestion", "உணவுத்துகளின் நுழைவு முதல் கழிவு வெளியேற்றம் வரை",
@@ -151,7 +152,7 @@ private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
         BilingualText("Oral groove, cytostome and cytopharynx", "வாய்ப்பள்ளம், சைட்டோஸ்டோம், சைட்டோஃபாரிங்ஸ்"),
         BilingualText("Food vacuole maturation and cytoproct", "உணவுக் குமிழ் முதிர்வும் செல் கழிவுத்துளையும்")),
     "cortical-avoidance-response" to listOf(
-        BilingualText("Basal bodies and ciliary reversal", "அடித்தளத் துகள்களும் குறுஇழைத் திருப்பமும்"),
+        BilingualText("Basal bodies and ciliary reversal", "அடித்தள உடல்களும் குறுஇழை இயக்கத் திசைமாற்றமும்"),
         BilingualText("How to interpret slow-motion animation", "மெதுவாக்கப்பட்ட இயக்கப்படத்தின் விளக்க வரம்புகள்")),
     "asexual-division-process" to listOf(
         BilingualText("Micronuclear and macronuclear division", "சிற்றுட்கரு, பேருட்கரு பிரிவு"),
@@ -282,12 +283,14 @@ internal fun ParameciumTextbookReader(
     speak: (BilingualText) -> Unit,
     onAnatomy: () -> Unit,
     onSimulation: () -> Unit,
+    sectionId: String,
+    ciliaryStageIndex: Int,
+    onSectionSelected: (String) -> Unit,
+    onCiliaryStageSelected: (Int) -> Unit,
 ) {
     val lesson = NativeLessonDrafts.paramecium
-    var chapter by rememberSaveable { mutableIntStateOf(0) }
-    // Keep the ciliary experiment's position while navigating between
-    // textbook sections and across Activity recreation.
-    var ciliaryStageIndex by rememberSaveable { mutableIntStateOf(0) }
+    val chapter = lesson.sections.indexOfFirst { it.id == sectionId }.coerceAtLeast(0)
+    // Section and ciliary stage are committed through the ViewModel/DataStore.
     var contentsExpanded by rememberSaveable { mutableStateOf(false) }
     val plateRequester = remember { BringIntoViewRequester() }
     val plateScope = rememberCoroutineScope()
@@ -319,6 +322,7 @@ internal fun ParameciumTextbookReader(
     // paragraphs on the first page, instead of burying it after exam questions.
     if (chapter == 0) {
         Button(
+            shape = RoundedCornerShape(12.dp),
             onClick = { plateScope.launch { plateRequester.bringIntoView() } },
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                 .testTag("r14-jump-to-pencil-plate"),
@@ -336,7 +340,7 @@ internal fun ParameciumTextbookReader(
         )
     }
 
-    OutlinedButton(onClick = { contentsExpanded = !contentsExpanded },
+    OutlinedButton(shape = RoundedCornerShape(12.dp), onClick = { contentsExpanded = !contentsExpanded },
         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r14-contents-toggle")) {
         Text(view(language,
             if (contentsExpanded) "Hide chapter contents" else "Browse 12 lesson sections",
@@ -346,8 +350,8 @@ internal fun ParameciumTextbookReader(
         Card {
             Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 lesson.sections.forEachIndexed { index, item ->
-                    OutlinedButton(onClick = {
-                        chapter = index
+                    OutlinedButton(shape = RoundedCornerShape(12.dp), onClick = {
+                        onSectionSelected(item.id)
                         contentsExpanded = false
                     }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("r14-open-section-" + item.id)) {
@@ -380,7 +384,7 @@ internal fun ParameciumTextbookReader(
                     style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
                 Text(extra.explanation.value(language), style = MaterialTheme.typography.bodyLarge,
                     lineHeight = 25.sp)
-                OutlinedButton(onClick = { speak(extra.explanation) },
+                OutlinedButton(shape = RoundedCornerShape(12.dp), onClick = { speak(extra.explanation) },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("r14-listen-chapter")) {
                     Text(view(language, "Listen to this explanation", "இவ்விளக்கத்தைக் கேள்"))
@@ -397,7 +401,7 @@ internal fun ParameciumTextbookReader(
             language = language,
             speak = speak,
             selectedStage = ciliaryStageIndex,
-            onStageSelected = { ciliaryStageIndex = it },
+            onStageSelected = onCiliaryStageSelected,
         )
     } else if (section.id == "feeding-and-digestion" ||
         section.id == "oral-apparatus-details") {
@@ -418,12 +422,12 @@ internal fun ParameciumTextbookReader(
             style = MaterialTheme.typography.bodyMedium)
     }
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedButton(onClick = onAnatomy,
+        OutlinedButton(shape = RoundedCornerShape(12.dp), onClick = onAnatomy,
             modifier = Modifier.weight(1f).heightIn(min = 48.dp)
                 .testTag("r14-from-study-anatomy")) {
             Text(view(language, "Anatomy plates", "உடலமைப்புப் படங்கள்"))
         }
-        Button(onClick = onSimulation, modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+        Button(shape = RoundedCornerShape(12.dp), onClick = onSimulation, modifier = Modifier.weight(1f).heightIn(min = 48.dp)
             .testTag("r14-from-study-simulation")) {
             Text(view(language, "Simulate", "இயக்கக் காட்சி"))
         }
@@ -441,12 +445,12 @@ internal fun ParameciumTextbookReader(
         }
     }
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedButton(onClick = { chapter = (chapter - 1).coerceAtLeast(0) },
+        OutlinedButton(shape = RoundedCornerShape(12.dp), onClick = { onSectionSelected(lesson.sections[(chapter - 1).coerceAtLeast(0)].id) },
             enabled = chapter > 0, modifier = Modifier.weight(1f).heightIn(min = 48.dp)
                 .testTag("r14-previous-section")) {
             Text(view(language, "Previous section", "முந்தைய பகுதி"))
         }
-        Button(onClick = { chapter = (chapter + 1).coerceAtMost(lesson.sections.lastIndex) },
+        Button(shape = RoundedCornerShape(12.dp), onClick = { onSectionSelected(lesson.sections[(chapter + 1).coerceAtMost(lesson.sections.lastIndex)].id) },
             enabled = chapter < lesson.sections.lastIndex,
             modifier = Modifier.weight(1f).heightIn(min = 48.dp)
                 .testTag("r14-next-section")) {

@@ -25,6 +25,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -77,32 +79,29 @@ private fun nodes(panel: String): List<AtlasNode> = when(panel) {
  * DRAFT_UNVERIFIED. Simulated stage timing is illustrative, not measured kinetics.
  */
 @Composable
-fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Unit) {
+fun ParameciumTeachingLab(
+    language: AppLanguage,
+    onBack: () -> Unit,
+    onPractice: () -> Unit,
+    learningState: com.gasczoology.invertebratelab.data.NativeLearningState,
+    onLearningChanged: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
+) {
     val context=LocalContext.current
-    var ready by remember { mutableStateOf(false) }
-    var speechStatus by remember { mutableStateOf("") }
-    val speaker=remember(context) {
-        TextToSpeech(context.applicationContext) { ready = it == TextToSpeech.SUCCESS }
-    }
-    DisposableEffect(speaker) { onDispose { speaker.stop(); speaker.shutdown() } }
-    fun speak(script:BilingualText) {
-        if(!ready) {
-            speechStatus=bi(language,"Speech engine not ready; the full text remains on screen.",
-                "ஒலிச் சேவை தயாரில்லை; விளக்கம் திரையில் உள்ளது.")
-            return
+    val narrator = remember(context) { com.gasczoology.invertebratelab.OfflineNarrator(context) }
+    val audioPhase by narrator.phase.collectAsState()
+    val audioScript by narrator.script.collectAsState()
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    DisposableEffect(narrator, lifecycleOwner) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
+            if (event == androidx.lifecycle.Lifecycle.Event.ON_STOP) narrator.stop()
         }
-        val locale=Locale.forLanguageTag(if(language==AppLanguage.TAMIL)"ta-IN" else "en-IN")
-        val code=speaker.setLanguage(locale)
-        if(code==TextToSpeech.LANG_NOT_SUPPORTED || code==TextToSpeech.LANG_MISSING_DATA) {
-            speechStatus=bi(language,"Requested voice is not installed on this device.",
-                "தேவையான மொழிக் குரல் இந்தச் சாதனத்தில் நிறுவப்படவில்லை.")
-        } else {
-            speaker.speak(script.value(language),TextToSpeech.QUEUE_FLUSH,null,"R1-organ")
-            speechStatus=bi(language,"Playing the scientific explanation",
-                "அறிவியல் விளக்கம் ஒலிக்கிறது")
-        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer); narrator.close() }
     }
-    var tab by rememberSaveable { mutableStateOf("study") }
+    LaunchedEffect(language) { narrator.stop() }
+    fun speak(script: BilingualText) { narrator.speak(script, language) }
+    val tab = learningState.laboratoryTab
+    fun selectTab(value: String) { onLearningChanged(learningState.copy(laboratoryTab = value)) }
     // Keep simulation state at the stable laboratory level. Subtree recreation
     // from TTS initialization or tab changes must not reset the current stage.
     var simulationId by rememberSaveable {
@@ -110,13 +109,19 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
     }
     var simulationStep by rememberSaveable { mutableIntStateOf(0) }
     var simulationPlaying by rememberSaveable { mutableStateOf(false) }
+    androidx.activity.compose.BackHandler(onBack = onBack)
     Scaffold { insets ->
         Column(modifier=Modifier.padding(insets).verticalScroll(rememberScrollState())
             .padding(16.dp).testTag("r1-paramecium-lab"),
             verticalArrangement=Arrangement.spacedBy(12.dp)) {
-            OutlinedButton(onClick=onBack, modifier=Modifier.heightIn(min=48.dp)) {
+            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=onBack, modifier=Modifier.heightIn(min=48.dp)) {
                 Text(bi(language,"Back","பின்செல்"))
             }
+            val savedSection = NativeLessonDrafts.paramecium.sections.first { it.id == learningState.textbookSectionId }
+            Text(bi(language, "Reading position: ", "வாசிப்பு நிலை: ") + savedSection.heading.value(language) +
+                bi(language, " · ciliary view ", " · குறுஇழைக் காட்சி ") +
+                (learningState.ciliaryStageIndex + 1) + "/4",
+                modifier = Modifier.testTag("r161-learning-position"))
             Text(
                 bi(language, "PARAMECIUM · DIGITAL ZOOLOGY TEXTBOOK",
                     "பாரமீசியம் · மின்னணு விலங்கியல் பாடநூல்"),
@@ -144,6 +149,34 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
                         modifier = Modifier.testTag("r1-review-warning"))
                 }
             }
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    val status = when (audioPhase) {
+                        com.gasczoology.invertebratelab.data.NarrationPhase.UNAVAILABLE -> bi(language,
+                            "Installed offline voice unavailable for the requested language. Install an English or Tamil voice in Android speech settings. The complete explanation remains below.",
+                            "தேர்ந்தெடுத்த மொழிக்கான நிறுவப்பட்ட இணையமில்லா குரல் கிடைக்கவில்லை. Android உரை-ஒலி அமைப்பில் ஆங்கிலம் அல்லது தமிழ் குரலை நிறுவவும். முழு விளக்கம் கீழே உள்ளது.")
+                        com.gasczoology.invertebratelab.data.NarrationPhase.ERROR -> bi(language,
+                            "Speech failed. The complete written explanation remains available.",
+                            "ஒலிவிளக்கம் செயல்படவில்லை. முழு எழுத்து விளக்கம் தொடர்ந்து உள்ளது.")
+                        com.gasczoology.invertebratelab.data.NarrationPhase.PLAYING -> bi(language,
+                            "Android speech playback started.", "Android ஒலிவிளக்கம் தொடங்கியுள்ளது.")
+                        com.gasczoology.invertebratelab.data.NarrationPhase.QUEUED -> bi(language,
+                            "Explanation queued for the installed offline voice.", "நிறுவப்பட்ட இணையமில்லா குரலில் விளக்கம் ஒலிக்கக் காத்திருக்கிறது.")
+                        com.gasczoology.invertebratelab.data.NarrationPhase.COMPLETE -> bi(language,
+                            "Android reported speech completion.", "ஒலிவிளக்கம் முடிந்ததாக Android தெரிவித்துள்ளது.")
+                        else -> bi(language,
+                            "Audio uses installed offline English/Tamil voices. Written lessons are always available.",
+                            "ஒலிவிளக்கம் நிறுவப்பட்ட இணையமில்லா ஆங்கில / தமிழ் குரல்களைப் பயன்படுத்துகிறது. எழுத்துப் பாடங்கள் எப்போதும் உள்ளன.")
+                    }
+                    Text(status, modifier = Modifier.testTag("r1-speech-status")
+                        .semantics { liveRegion = androidx.compose.ui.semantics.LiveRegionMode.Polite })
+                    audioScript?.let { Text(it.value(language), modifier = Modifier.testTag("r161-audio-written-fallback")) }
+                    OutlinedButton(onClick = narrator::stop, shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r161-stop-audio")) {
+                        Text(bi(language, "Stop audio", "ஒலியை நிறுத்து"))
+                    }
+                }
+            }
             val menu = listOf("study", "anatomy", "simulate", "listen", "practice")
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -163,11 +196,11 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
                             val buttonModifier = Modifier.weight(1f)
                                 .heightIn(min = 56.dp).testTag("r1-tab-" + section)
                             if (tab == section) {
-                                Button(onClick = { tab = section }, modifier = buttonModifier) {
+                                Button(shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp), onClick = { selectTab(section) }, modifier = buttonModifier) {
                                     Text(title)
                                 }
                             } else {
-                                OutlinedButton(onClick = { tab = section },
+                                OutlinedButton(shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp), onClick = { selectTab(section) },
                                     modifier = buttonModifier) {
                                     Text(title)
                                 }
@@ -177,13 +210,14 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
                 }
             }
             when(tab) {
-                "study" -> StudySection(language, ::speak, onAnatomy = { tab = "anatomy" },
-                    onSimulation = { tab = "simulate" })
+                "study" -> StudySection(language, ::speak, onAnatomy = { selectTab("anatomy") },
+                    onSimulation = { selectTab("simulate") },
+                    learningState = learningState, onLearningChanged = onLearningChanged)
                 "anatomy" -> AtlasSection(language, ::speak, onExploreOsmoregulation = {
                     simulationId = ParameciumProcess.OSMOREGULATION.name
                     simulationStep = 0
                     simulationPlaying = false
-                    tab = "simulate"
+                    selectTab("simulate")
                 })
                 "simulate" -> SimulatorSection(
                     language, ::speak, simulationId, simulationStep, simulationPlaying,
@@ -199,14 +233,13 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
                 else -> {
                     Text(bi(language,"Use the preserved question bank for revision after studying the biology.",
                         "உயிரியலைக் கற்ற பின் ஏற்கெனவே உள்ள வினாவங்கியை மீள்பயிற்சிக்குப் பயன்படுத்தவும்."))
-                    Button(onClick=onPractice,modifier=Modifier.heightIn(min=48.dp)
+                    Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=onPractice,modifier=Modifier.heightIn(min=48.dp)
                         .fillMaxWidth().testTag("r1-open-practice")) {
                         Text(bi(language,"Open Paramecium practice","பாரமீசியம் வினாப் பயிற்சி"))
                     }
                 }
             }
-            if(speechStatus.isNotBlank())
-                Text(speechStatus,modifier=Modifier.testTag("r1-speech-status"))
+
         }
     }
 }
@@ -217,8 +250,14 @@ private fun StudySection(
     speak: (BilingualText) -> Unit,
     onAnatomy: () -> Unit,
     onSimulation: () -> Unit,
+    learningState: com.gasczoology.invertebratelab.data.NativeLearningState,
+    onLearningChanged: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
 ) {
-    ParameciumTextbookReader(language, speak, onAnatomy, onSimulation)
+    ParameciumTextbookReader(language, speak, onAnatomy, onSimulation,
+        sectionId = learningState.textbookSectionId,
+        ciliaryStageIndex = learningState.ciliaryStageIndex,
+        onSectionSelected = { onLearningChanged(learningState.copy(textbookSectionId = it)) },
+        onCiliaryStageSelected = { onLearningChanged(learningState.copy(ciliaryStageIndex = it)) })
 }
 
 @Composable
@@ -228,7 +267,7 @@ private fun NarrationSection(language:AppLanguage,speak:(BilingualText)->Unit) {
     for(organ in ParameciumLearningEngine.organs) {
         Text(organ.name.value(language))
         Text(organ.narration.value(language))
-        Button(onClick={speak(organ.narration)},modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+        Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={speak(organ.narration)},modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
             .testTag("r1-narrate-"+organ.id)) {
             Text(bi(language,"Play explanation","விளக்கத்தை ஒலிக்கச் செய்"))
         }
@@ -247,7 +286,7 @@ private fun AtlasSection(language:AppLanguage, speak:(BilingualText)->Unit,
     Column(modifier=Modifier.fillMaxWidth(),
         verticalArrangement=Arrangement.spacedBy(6.dp)) {
         for(p in listOf("external","oral","vacuole","internal")) {
-            OutlinedButton(onClick={
+            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={
                 panel = p
                 if (p == "vacuole") selected = ParameciumVacuolePlate.landmarks.first().id
                 else if (p != "external") selected = nodes(p).first().id
@@ -279,12 +318,12 @@ private fun AtlasSection(language:AppLanguage, speak:(BilingualText)->Unit,
         val organ=ParameciumLearningEngine.organ(selected)
         Text(organ.name.value(language),modifier=Modifier.testTag("r1-atlas-selected"))
         Text(organ.narration.value(language),modifier=Modifier.testTag("r1-atlas-explanation"))
-        OutlinedButton(onClick={speak(organ.narration)},modifier=Modifier.fillMaxWidth()
+        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={speak(organ.narration)},modifier=Modifier.fillMaxWidth()
             .heightIn(min=48.dp).testTag("r1-atlas-speak")) {
             Text(bi(language,"Hear this organ","இந்த உறுப்பின் விளக்கத்தைக் கேள்"))
         }
         for(point in points) {
-            OutlinedButton(onClick={
+            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={
                 selected=point.id
                 speak(ParameciumLearningEngine.organ(point.id).narration)
             },modifier=Modifier.fillMaxWidth()
@@ -592,7 +631,7 @@ private fun SimulatorSection(
     Text(bi(language,"Live teaching simulations","இயங்கும் கற்பித்தல் செயல்முறைகள்"),
         modifier=Modifier.testTag("r1-simulator-heading"))
     for(p in ParameciumProcess.entries) {
-        OutlinedButton(onClick={onChoose(p.name)},modifier=Modifier.fillMaxWidth()
+        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={onChoose(p.name)},modifier=Modifier.fillMaxWidth()
             .heightIn(min=48.dp).testTag("r1-process-"+p.name.lowercase())) {
             Text(ParameciumLearningEngine.simulation(p).title.value(language))
         }
@@ -605,11 +644,11 @@ private fun SimulatorSection(
     Text(stage.explanation.value(language),modifier=Modifier.testTag("r1-stage-explanation"))
     Column(modifier=Modifier.fillMaxWidth(),
         verticalArrangement=Arrangement.spacedBy(6.dp)) {
-        OutlinedButton(onClick={onStep(model.previous(step));onPlaying(false)},
+        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={onStep(model.previous(step));onPlaying(false)},
             modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-prev")) {
             Text(bi(language,"Previous","முந்தையது"))
         }
-        Button(onClick={
+        Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={
             if(step==model.stages.lastIndex)onStep(0)
             onPlaying(!playing)
         },
@@ -617,16 +656,16 @@ private fun SimulatorSection(
             Text(if(playing)bi(language,"Pause","இடைநிறுத்து")
                 else bi(language,"Play","இயக்கு"))
         }
-        OutlinedButton(onClick={onStep(model.advance(step));onPlaying(false)},
+        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={onStep(model.advance(step));onPlaying(false)},
             modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-next")) {
             Text(bi(language,"Next","அடுத்தது"))
         }
-        OutlinedButton(onClick={onStep(0);onPlaying(false)},
+        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={onStep(0);onPlaying(false)},
             modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-replay")) {
             Text(bi(language,"Replay","மீளியக்கு"))
         }
     }
-    Button(onClick={speak(stage.explanation)},modifier=Modifier.fillMaxWidth()
+    Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={speak(stage.explanation)},modifier=Modifier.fillMaxWidth()
         .heightIn(min=48.dp).testTag("r1-stage-audio")) {
         Text(bi(language,"Speak this physiological stage",
             "இந்நிலையின் உடலியங்கியலை ஒலிக்கச் செய்"))
@@ -660,9 +699,9 @@ private fun Checkpoint(process:ParameciumProcess,language:AppLanguage) {
     Text(bi(language,"Think & check: true or false?","சிந்தித்து சரிபார்: சரியா, தவறா?"))
     Text(statement.value(language))
     Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-        OutlinedButton(onClick={answer=1},modifier=Modifier.heightIn(min=48.dp)
+        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={answer=1},modifier=Modifier.heightIn(min=48.dp)
             .testTag("r1-answer-true")) { Text(bi(language,"True","சரி")) }
-        OutlinedButton(onClick={answer=0},modifier=Modifier.heightIn(min=48.dp)
+        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={answer=0},modifier=Modifier.heightIn(min=48.dp)
             .testTag("r1-answer-false")) { Text(bi(language,"False","தவறு")) }
     }
     if(answer>=0) Text(if((answer==1)==correct)

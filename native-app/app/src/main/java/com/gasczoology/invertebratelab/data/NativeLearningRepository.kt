@@ -33,6 +33,9 @@ class NativeLearningRepository(private val context: Context) {
         val chapter = stringPreferencesKey("chapter_id")
         val question = stringPreferencesKey("question_id")
         val revealed = booleanPreferencesKey("answer_revealed")
+        val textbookSection = stringPreferencesKey("textbook_section_id")
+        val ciliaryStage = intPreferencesKey("ciliary_stage_index")
+        val laboratoryTab = stringPreferencesKey("laboratory_tab")
     }
 
     val learningState: Flow<NativeLearningState> = context.nativeLearningStore.data
@@ -52,6 +55,9 @@ class NativeLearningRepository(private val context: Context) {
             preferences[Keys.chapter] = state.chapterId
             preferences[Keys.question] = state.questionId
             preferences[Keys.revealed] = state.answerRevealed
+            preferences[Keys.textbookSection] = state.textbookSectionId
+            preferences[Keys.ciliaryStage] = state.ciliaryStageIndex
+            preferences[Keys.laboratoryTab] = state.laboratoryTab
         }
     }
 
@@ -70,6 +76,9 @@ class NativeLearningRepository(private val context: Context) {
             chapterId = preferences[Keys.chapter].orEmpty(),
             questionId = preferences[Keys.question].orEmpty(),
             answerRevealed = preferences[Keys.revealed] ?: false,
+            textbookSectionId = preferences[Keys.textbookSection] ?: "identity-and-habitat",
+            ciliaryStageIndex = preferences[Keys.ciliaryStage] ?: 0,
+            laboratoryTab = preferences[Keys.laboratoryTab] ?: "study",
         )
     }
 }
