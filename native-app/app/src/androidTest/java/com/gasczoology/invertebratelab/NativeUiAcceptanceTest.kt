@@ -44,8 +44,12 @@ import kotlinx.coroutines.runBlocking
  * screenshot-traced anatomy substitute. Captures are technical review evidence.
  */
 private fun saveN23bReviewScreenshot(fileName: String) {
-    check(fileName == "paramecium-normal-oral-groove.png" ||
-        fileName == "paramecium-tamil200-cytoproct.png")
+    check(fileName in setOf(
+        "paramecium-normal-oral-groove.png",
+        "paramecium-tamil200-cytoproct.png",
+        "r14-textbook-normal.png",
+        "r14-textbook-tamil200.png",
+    ))
 
     val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
     val appPackage = InstrumentationRegistry.getInstrumentation().targetContext.packageName
