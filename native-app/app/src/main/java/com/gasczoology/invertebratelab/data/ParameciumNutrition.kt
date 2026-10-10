@@ -40,7 +40,7 @@ object ParameciumNutrition {
         NutritionStructure("vacuole", b("V · Membrane-bound food vacuole", "V · சவ்வால் சூழப்பட்ட உணவு நுண்குமிழ்"), b(
             "A newly released food vacuole encloses particulate food and fluid within a membrane. Its lumen is separate from the cytosol. Its later maturation changes both contents and membrane; it must not be confused with the radiating contractile-vacuole collecting complex. The separate circular inset is enlarged independently of the whole cell.",
             "புதிதாகப் பிரிந்த உணவு நுண்குமிழ், துகள் உணவையும் திரவத்தையும் சவ்வுக்குள் அடைக்கிறது. அதன் உட்குழி சைட்டோசாலிலிருந்து தனியாக உள்ளது. பின்னர் முதிர்வின் போது உள்ளடக்கமும் சவ்வும் மாறுகின்றன. ஆரக் கால்வாய்கள் கொண்ட சுருங்கு நுண்குமிழ்த் தொகுப்புடன் இதைக் குழப்பக்கூடாது. வட்டச் சிறுபடம் முழுச் செல்லிலிருந்து தனியாகப் பெரிதாக்கப்பட்டுள்ளது.")),
-    ) + ParameciumDigestiveMaturation.structures
+    ) + ParameciumDigestiveMaturation.structures + ParameciumEgestion.structures
     val readings = listOf(
         NutritionReading("5.1", b("5.1 · Nutrition and particle capture", "5.1 · ஊட்டமுறையும் உணவுத்துகள் பிடிப்பும்"), listOf(b(
             "Paramecium caudatum is a heterotrophic ciliate: it obtains organic nutrients from other organisms and particulate material rather than synthesizing all its food by photosynthesis. Bacteria are important food resources, while other suitably sized particles can be ingested. Ingestion does not guarantee nutritional value; prey type, particle properties and culture conditions affect feeding and growth.",
@@ -56,7 +56,7 @@ object ParameciumNutrition {
             "உணவு நுண்குமிழ் உருவாவதற்கு துகள் சேர்வதுடன் சவ்வுப் பொருள் வழங்கலும் தேவை. P. caudatum இல் Allen மேற்கொண்ட மின்னணு நுண்ணோக்கி ஆய்வு, வாய்ப்புற அமைப்பின் நுண்குழல் பட்டைகளுடன் தொடர்புடைய சிறுகுமிழ்களை விவரித்து, அவற்றைச் சவ்வு மறுசுழற்சியுடன் தொடர்புபடுத்துகிறது. வளர்ந்த நுண்குமிழ் தனிச் சவ்வுப் பகுதியாகச் சைட்டோபிளாஸ்மத்திற்குள் பிரிகிறது. அதன் உட்குழி சைட்டோசாலிலிருந்து பிரிந்தே உள்ளது; விழுங்கிய துகள்கள் செல் நுண்ணுறுப்புகளுக்கிடையே சிதறிவிடுவதில்லை."), b(
             "The animated formation view separates growth from release for teaching. It is not a calibrated movie of membrane scission, and the circular shape is an explanatory convention. Vacuolar circulation can be observed, but a universal circular itinerary or constant travel speed must not be inferred. Later acidification, digestion and membrane retrieval require their own evidence rather than being deduced from motion alone.",
             "உருவாதல் இயக்கப்படம் கற்பித்தலுக்காக வளர்தலையும் பிரிதலையும் வேறுபடுத்துகிறது. அது சவ்வுப் பிரிவின் அளவுத்திருத்தம் செய்யப்பட்ட திரைப்படம் அல்ல; வட்ட வடிவம் ஒரு விளக்க மரபு. நுண்குமிழ் நகர்வைக் காணலாம். ஆனால் எல்லா நுண்குமிழ்களுக்கும் ஒரே வட்டப் பாதையோ நிலையான பயண வேகமோ இருப்பதாக முடிவு செய்யக்கூடாது. பின்னர் நிகழும் அமிலமாதல், செரிமானம், சவ்வு மீட்பு ஆகியவற்றுக்கு தனித்தனி சான்றுகள் தேவை; நகர்வை மட்டும் வைத்து அவற்றை ஊகிக்க முடியாது."))),
-    ) + ParameciumDigestiveMaturation.readings
+    ) + ParameciumDigestiveMaturation.readings + ParameciumEgestion.readings
     val stages = listOf(
         NutritionStage("current", b("Oral feeding current", "வாய்ப்புற உணவெடுக்கும் நீரோட்டம்"), b(
             "Oral ciliary activity carries suspended particles towards the oral apparatus. The animated dots indicate direction only, not resolved microorganisms or measured flow. Capture is distinguished from digestion, which takes place later in a membrane-bound vacuole.",
@@ -67,12 +67,12 @@ object ParameciumNutrition {
         NutritionStage("formation", b("Food-vacuole growth and release", "உணவு நுண்குமிழ் வளர்தலும் பிரிதலும்"), b(
             "Membrane surrounds accumulated food; the growing vacuole is then released as a separate compartment. Growth, a remaining attachment and a detached completed pose are distinguishable native frames. Their proportions and time intervals are schematic, while the separation of lumen from cytosol is essential.",
             "சேர்ந்த உணவைச் சவ்வு சூழ்கிறது; வளர்ந்த நுண்குமிழ் பின்னர் தனிப் பகுதியாகப் பிரிகிறது. வளர்தல், மீதமுள்ள இணைப்பு, பிரிந்த முடிவுத் தோற்றம் ஆகியவை வேறுபடும் இயல்புநிலைக் காட்சிகள். அவற்றின் விகிதங்களும் நேர இடைவெளிகளும் விளக்கத்திற்கானவை. உட்குழியும் சைட்டோசாலும் பிரிந்திருப்பது அடிப்படையான கருத்து.")),
-    ) + ParameciumDigestiveMaturation.stages
+    ) + ParameciumDigestiveMaturation.stages + ParameciumEgestion.stages
     val sourceNotes = listOf(
         "Allen 1974 · P. caudatum oral ultrastructure and membrane supply · PMID 4373478 · https://pmc.ncbi.nlm.nih.gov/articles/PMC2109358/",
         "Allen microscopy · P. caudatum oral apparatus · CIL:36779 and 36780 · https://www.cellimagelibrary.org/images/36779",
         "Food-resource experiments in P. caudatum · PMID 31542654 · https://pubmed.ncbi.nlm.nih.gov/31542654/ · does not establish one universal ingestion rate",
-    ) + ParameciumDigestiveMaturation.sources
+    ) + ParameciumDigestiveMaturation.sources + ParameciumEgestion.sources
     fun structure(id: String) = structures.first { it.id == id }
 }
 

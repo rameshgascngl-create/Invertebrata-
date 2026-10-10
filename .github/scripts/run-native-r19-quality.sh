@@ -23,6 +23,7 @@ adb shell svc data disable
 adb shell settings put global airplane_mode_on 1
 adb shell settings get global airplane_mode_on > "$evidence/airplane-setting.txt"
 adb shell dumpsys connectivity > "$evidence/connectivity-before.txt"
+grep -q 'Active default network: none' "$evidence/connectivity-before.txt" || { result=OFFLINE_SETUP_FAIL; exit 1; }
 adb shell cmd package query-services --brief -a android.intent.action.TTS_SERVICE > "$evidence/tts-services.txt" 2>&1 || true
 for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "TAMIL 2.0 landscape"; do
   read -r language scale orientation <<< "$config"
@@ -46,6 +47,8 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   fi
   cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
   cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports"
+  adb shell dumpsys connectivity > "$evidence/$phase/connectivity-after.txt"
+  grep -q 'Active default network: none' "$evidence/$phase/connectivity-after.txt" || { result=OFFLINE_LOST; exit 1; }
   adb logcat -d -v threadtime -s R19_NUTRITION:I '*:S' > "$evidence/$phase/nutrition-pixels.txt"
 done
 result=PASS

@@ -222,8 +222,8 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 language = language,
                 learningState = state,
                 onLearningChanged = { viewModel.persistLearning(it) },
-                onBack = {
-                    viewModel.persistLearning(state.copy(
+                onBack = { position ->
+                    viewModel.persistLearning(position.copy(
                         destination = StudyDestination.HOME,
                         chapterId = "", questionId = "", answerRevealed = false,
                     )) { backOrRoute(Routes.HOME) }

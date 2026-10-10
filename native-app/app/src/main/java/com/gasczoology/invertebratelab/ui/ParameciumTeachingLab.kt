@@ -81,7 +81,7 @@ private fun nodes(panel: String): List<AtlasNode> = when(panel) {
 @Composable
 fun ParameciumTeachingLab(
     language: AppLanguage,
-    onBack: () -> Unit,
+    onBack: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
     onPractice: () -> Unit,
     learningState: com.gasczoology.invertebratelab.data.NativeLearningState,
     onLearningChanged: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
@@ -101,7 +101,15 @@ fun ParameciumTeachingLab(
     LaunchedEffect(language) { narrator.stop() }
     fun speak(script: BilingualText) { narrator.speak(script, language) }
     val tab = learningState.laboratoryTab
-    fun selectTab(value: String) { onLearningChanged(learningState.copy(laboratoryTab = value)) }
+    val nutritionPlayer: com.gasczoology.invertebratelab.NutritionPlaybackViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    fun checkpoint(): com.gasczoology.invertebratelab.data.NativeLearningState {
+        if(tab!="nutrition") return learningState
+        nutritionPlayer.pause()
+        return learningState.copy(nutritionProgress=learningState.nutritionProgress.copy(
+            phasePermille=(nutritionPlayer.state.value.phase*1000).toInt()))
+    }
+    fun selectTab(value: String) { onLearningChanged(checkpoint().copy(laboratoryTab = value)) }
+    fun leave() { onBack(checkpoint()) }
     // Keep simulation state at the stable laboratory level. Subtree recreation
     // from TTS initialization or tab changes must not reset the current stage.
     var simulationId by rememberSaveable {
@@ -109,12 +117,12 @@ fun ParameciumTeachingLab(
     }
     var simulationStep by rememberSaveable { mutableIntStateOf(0) }
     var simulationPlaying by rememberSaveable { mutableStateOf(false) }
-    androidx.activity.compose.BackHandler(onBack = onBack)
+    androidx.activity.compose.BackHandler(onBack = ::leave)
     Scaffold { insets ->
         Column(modifier=Modifier.padding(insets).verticalScroll(rememberScrollState())
             .padding(16.dp).testTag("r1-paramecium-lab"),
             verticalArrangement=Arrangement.spacedBy(12.dp)) {
-            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=onBack, modifier=Modifier.heightIn(min=48.dp)) {
+            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=::leave, modifier=Modifier.heightIn(min=48.dp)) {
                 Text(bi(language,"Back","பின்செல்"))
             }
             val savedSection = NativeLessonDrafts.paramecium.sections.first { it.id == learningState.textbookSectionId }

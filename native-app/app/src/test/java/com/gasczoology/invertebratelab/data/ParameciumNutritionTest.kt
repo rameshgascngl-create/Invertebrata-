@@ -4,11 +4,11 @@ import org.junit.Test
 
 class ParameciumNutritionTest {
     @Test fun ingestionRegionsRemainDistinctAndOrdered() {
-        assertEquals(listOf("current","entry","formation","acidification","digestion","uptake"),ParameciumNutrition.stages.map { it.id })
+        assertEquals(listOf("current","entry","formation","acidification","digestion","uptake","docking","egestion","recycling"),ParameciumNutrition.stages.map { it.id })
         assertTrue(ParameciumNutrition.structures.map { it.id }.containsAll(listOf("oral-groove","oral-cilia","cytostome","cytopharynx","vacuole")))
     }
     @Test fun textbookIsDetailedBilingualAndNumbered() {
-        assertEquals(listOf("5.1","5.2","5.3","5.4","5.5"),ParameciumNutrition.readings.map { it.id })
+        assertEquals(listOf("5.1","5.2","5.3","5.4","5.5","5.6","5.7"),ParameciumNutrition.readings.map { it.id })
         for(r in ParameciumNutrition.readings) {
             assertTrue(r.heading.english.startsWith(r.id));assertTrue(r.heading.tamil.startsWith(r.id))
             assertEquals(3,r.paragraphs.size)
@@ -33,6 +33,20 @@ class ParameciumNutritionTest {
         assertEquals(.6f,uptake.soluteUptake,0f)
         assertTrue(ParameciumNutrition.structure("soluble-products").explanation.english.contains("Assimilation"))
         assertTrue(ParameciumNutrition.readings.first { it.id=="5.5" }.paragraphs.last().english.contains("larger residue"))
+    }
+    @Test fun egestionKeepsOpeningBeforeReleaseAndRecloses() {
+        val dock=ParameciumEgestion.pose("docking",1f)
+        assertEquals(0f,dock.opening,0f);assertEquals(0f,dock.residueRelease,0f)
+        val early=ParameciumEgestion.pose("egestion",.2f)
+        assertTrue(early.opening>0f);assertEquals(0f,early.residueRelease,0f)
+        val release=ParameciumEgestion.pose("egestion",1f)
+        assertEquals(1f,release.opening,0f);assertEquals(1f,release.residueRelease,0f)
+        val closed=ParameciumEgestion.pose("recycling",1f)
+        assertEquals(0f,closed.opening,0f);assertEquals(1f,closed.recovery,0f)
+        for(m in EgestionFigure.marks) assertEquals(m.id,EgestionFigure.at(m.x,m.y))
+        assertNull(EgestionFigure.at(10f,580f))
+        assertTrue(ParameciumNutrition.structure("cytoproct").explanation.english.contains("normally closed"))
+        assertTrue(ParameciumNutrition.structure("spent-vacuole").explanation.english.contains("cytosol"))
     }
     @Test fun hitGeometryFitsBothOrientationsAndRejectsEmptyPaper() {
         for((w,h) in listOf(380f to 300f,900f to 300f)) {

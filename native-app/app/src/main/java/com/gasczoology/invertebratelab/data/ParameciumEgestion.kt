@@ -1,0 +1,63 @@
+package com.gasczoology.invertebratelab.data
+
+/** Qualitative poses, not force, membrane area or measured event times. */
+data class EgestionPose(val approach: Float, val opening: Float, val residueRelease: Float, val recovery: Float)
+object ParameciumEgestion {
+    private fun b(en: String,ta: String)=BilingualText(en,ta)
+    val stageIds=listOf("docking","egestion","recycling")
+    fun pose(stage: String,phase: Float): EgestionPose {
+        val p=phase.coerceIn(0f,1f)
+        return when(stage) {
+            "docking" -> EgestionPose(p,0f,0f,0f)
+            "egestion" -> EgestionPose(1f,(p/.3f).coerceIn(0f,1f),((p-.3f)/.7f).coerceIn(0f,1f),0f)
+            "recycling" -> EgestionPose(1f,1f-p,1f,p)
+            else -> EgestionPose(0f,0f,0f,0f)
+        }
+    }
+    val structures=listOf(
+        NutritionStructure("cytoproct",b("C · Cytoproct and cortical ridge","C · சைட்டோப்ராக்டும் புறப்படல முகடும்"),b(
+            "The cytoproct is a specialized egestion region along the posterior ventral suture in P. caudatum. Microscopy shows a normally closed membrane-covered ridge, not a permanently open anus. The enlarged section shows a transient exocytotic opening. Its exact whole-cell marker and three-dimensional dimensions await specialist review.",
+            "P. caudatum இன் பின்புற வயிற்றுப்புற இணைப்புக் கோட்டில் உள்ள சிறப்பமைந்த எச்ச வெளியேற்றப் பகுதி சைட்டோப்ராக்ட் ஆகும். நுண்ணோக்கிப் படங்கள் வழக்கமாகச் சவ்வால் மூடப்பட்ட முகட்டைக் காட்டுகின்றன; நிரந்தரமாகத் திறந்திருக்கும் மலவாய் அல்ல. பெரிதாக்கிய வெட்டுப் படம் தற்காலிக புறவெளியேற்றத் திறப்பைக் காட்டுகிறது. முழுச் செல்லில் துல்லியக் குறியிடலும் முப்பரிமாண அளவுகளும் நிபுணர் ஆய்வுக்குக் காத்திருக்கின்றன.")),
+        NutritionStructure("spent-vacuole",b("R · Residue-bearing digestive vacuole","R · எச்சங்களைக் கொண்ட செரிமான நுண்குமிழ்"),b(
+            "After soluble nutrients have been taken up, a digestive compartment can still enclose indigestible particles. At the cytoproct its membrane becomes continuous with the surface during exocytosis, allowing residues to leave. This is egestion of material in the vacuolar lumen, not rupture releasing particles into the cytosol or excretion of all dissolved metabolic wastes.",
+            "கரையும் ஊட்டச்சத்துகள் உறிஞ்சப்பட்ட பின்னரும் செரிமான நுண்குமிழுக்குள் செரிக்காத துகள்கள் இருக்கலாம். சைட்டோப்ராக்டில் புறவெளியேற்றத்தின் போது அதன் சவ்வு செல் மேற்பரப்புச் சவ்வுடன் தொடர்ச்சியாகி எச்சங்களை வெளியேற அனுமதிக்கிறது. இது நுண்குமிழின் உட்குழியிலுள்ள எச்ச வெளியேற்றம்; சவ்வு கிழிந்து சைட்டோசாலுக்குள் துகள் சிதறுதல் அல்ல. கரைந்த வளர்சிதைமாற்றக் கழிவுகள் அனைத்தையும் வெளியேற்றும் செயலாகவும் இதைக் கருதக்கூடாது.")),
+        NutritionStructure("recovered-membrane",b("H · Retrieved membrane","H · மீட்கப்பட்ட சவ்வு"),b(
+            "Membrane is retrieved in vesicular profiles after discharge, helping re-establish the surface and supporting the digestive membrane economy. Earlier digestive stages also retrieve membrane. The inset does not trace every vesicle back to the mouth, imply conservation of a fixed vesicle count, or identify an unmeasured molecular motor.",
+            "வெளியேற்றத்திற்குப் பின் சவ்வு சிறுகுமிழ் வடிவங்களில் மீட்கப்படுகிறது. இது மேற்பரப்பை மீண்டும் அமைக்கவும் செரிமானச் சவ்வுப் பயன்பாட்டுக்கும் உதவுகிறது. முந்தைய செரிமான நிலைகளிலும் சவ்வு மீட்பு உண்டு. ஒவ்வொரு சிறுகுமிழும் செல் வாய்க்குத் திரும்பும் பாதையையோ நிலையான சிறுகுமிழ் எண்ணிக்கையையோ இச்சிறுபடம் கூறவில்லை; அளவிடப்படாத மூலக்கூறு இயக்கியை அடையாளப்படுத்தவும் இல்லை.")),
+    )
+    val stages=listOf(
+        NutritionStage("docking",b("Residue vacuole approaches the closed cytoproct","எச்ச நுண்குமிழ் மூடிய சைட்டோப்ராக்டை அணுகுதல்"),b(
+            "The residue-bearing compartment approaches the specialized cortical region. The ridge remains closed during this teaching view. Microtubular bundles and associated fibres are documented by microscopy; their drawn lines locate structures, while a particular force-generating mechanism is an interpretation that this diagram does not measure.",
+            "எச்சங்களைக் கொண்ட நுண்குமிழ் சிறப்பமைந்த புறப்படலப் பகுதியை அணுகுகிறது. இக்கற்பித்தல் நிலையில் முகடு மூடியே உள்ளது. நுண்குழல் தொகுதிகளும் தொடர்புடைய நார்களும் நுண்ணோக்கி ஆய்வில் பதிவாகியுள்ளன. கோடுகள் அமைப்பிடங்களைக் காட்டுகின்றன; குறிப்பிட்ட விசை உருவாக்க முறையை இவ்விளக்கப்படம் அளவிடவில்லை.")),
+        NutritionStage("egestion",b("Transient fusion and residue release","தற்காலிகச் சவ்வு இணைவும் எச்ச வெளியேற்றமும்"),b(
+            "A transient opening establishes continuity between the vacuolar lumen and the exterior before larger residues cross it. The native section deliberately retains a membrane boundary against the cytosol. Egestion does not release a new cell, and its route is distinct from the contractile-vacuole water-expulsion pore.",
+            "பெரிய எச்சங்கள் வெளியேறும் முன் தற்காலிகத் திறப்பு நுண்குமிழின் உட்குழிக்கும் வெளிச்சூழலுக்கும் தொடர்ச்சியை ஏற்படுத்துகிறது. இயல்புநிலை வெட்டுப் படத்தில் சைட்டோசாலுடனான சவ்வு எல்லை தொடர்ந்து உள்ளது. எச்ச வெளியேற்றத்தால் புதிய செல் உருவாவதில்லை; அதன் வழி சுருங்கு நுண்குமிழின் நீர் வெளியேற்றத் துளையிலிருந்து வேறுபடுகிறது.")),
+        NutritionStage("recycling",b("Surface reclosure and membrane retrieval","மேற்பரப்பு மீண்டும் மூடுதலும் சவ்வு மீட்பும்"),b(
+            "Following discharge, the surface closes and vesicular membrane profiles are recovered inward. Released particles remain outside. The closing section and retrieved-vesicle cues illustrate membrane recovery without claiming that every membrane component follows one immediate, universal route to a new food vacuole.",
+            "வெளியேற்றத்தைத் தொடர்ந்து மேற்பரப்பு மூடுகிறது; சவ்வுச் சிறுகுமிழ் வடிவங்கள் உட்புறம் மீட்கப்படுகின்றன. வெளியேறிய துகள்கள் வெளியிலேயே உள்ளன. மூடும் வெட்டுத் தோற்றமும் மீட்கப்பட்ட சிறுகுமிழ் குறிகளும் சவ்வு மீட்பை விளக்குகின்றன. ஒவ்வொரு சவ்வுக் கூறும் உடனடியாக ஒரே பொதுப் பாதையில் புதிய உணவு நுண்குமிழுக்குச் செல்கிறது என்று கூறவில்லை.")),
+    )
+    val readings=listOf(
+        NutritionReading("5.6",b("5.6 · Egestion at the cytoproct","5.6 · சைட்டோப்ராக்டில் எச்ச வெளியேற்றம்"),listOf(b(
+            "Digestion and absorption leave material that the cell cannot use. Such residues remain inside the digestive vacuole rather than being mixed freely with the cytosol. The compartment eventually interacts with a specialized cortical egestion region, the cytoproct. This sequence separates the elimination of ingested residues from biochemical excretion and from the removal of excess water by the contractile-vacuole complex.",
+            "செரிமானம் மற்றும் உறிஞ்சலுக்குப் பின்னர் செல்லால் பயன்படுத்த முடியாத பொருள் எஞ்சலாம். இவ்வெச்சங்கள் சைட்டோசாலில் சுதந்திரமாகக் கலப்பதற்குப் பதிலாக செரிமான நுண்குமிழுக்குள் உள்ளன. பின்னர் நுண்குமிழ் சிறப்பமைந்த புறப்படல எச்ச வெளியேற்றப் பகுதியான சைட்டோப்ராக்டுடன் தொடர்புகொள்கிறது. இதனால் உட்கொண்ட எச்ச வெளியேற்றம், உயிர்வேதியியல் கழிவு நீக்கம், சுருங்கு நுண்குமிழ்த் தொகுப்பு மூலம் மிகை நீர் நீக்கம் ஆகியவற்றை வேறுபடுத்தலாம்."),b(
+            "Allen and Wolf's ultrastructural study describes the P. caudatum cytoproct along the posterior ventral suture. The resting surface is covered by membrane; a permanent open hole would misrepresent it. Membrane continuity during exocytosis connects the vacuole's lumen with the exterior. The enlarged native plate therefore changes from a closed ridge to a bounded opening before it displays residues outside, keeping the surrounding cytosol separate.",
+            "Allen மற்றும் Wolf இன் நுண்ணமைப்பு ஆய்வு P. caudatum சைட்டோப்ராக்டைப் பின்புற வயிற்றுப்புற இணைப்புக் கோட்டில் விவரிக்கிறது. ஓய்வுநிலை மேற்பரப்பு சவ்வால் மூடப்பட்டுள்ளது; நிரந்தரத் திறந்த துளையாகக் காட்டுவது தவறு. புறவெளியேற்றத்தின் போது சவ்வுத் தொடர்ச்சி நுண்குமிழின் உட்குழியை வெளிச்சூழலுடன் இணைக்கிறது. எனவே இயல்புநிலைப் பெரிதாக்கிய படம், வெளியில் எச்சங்களைக் காட்டும் முன் மூடிய முகட்டிலிருந்து எல்லையுள்ள திறப்பாக மாறுகிறது; சுற்றியுள்ள சைட்டோசால் தனியாகவே உள்ளது."),b(
+            "Microtubular bundles and fibres associated with the cytoproct are observable structural evidence. A diagram of their arrangement is not itself a measurement of pulling forces, molecular motors or event duration. The whole-cell location remains a qualified orientation aid pending anatomical approval. A student should distinguish a light-microscope discharge event from electron-microscope evidence for the membrane and cortical structures that accompany it.",
+            "சைட்டோப்ராக்டுடன் தொடர்புடைய நுண்குழல் தொகுதிகளும் நார்களும் காணக்கூடிய அமைப்புச் சான்றுகள். அவற்றின் அமைப்புப் படம் மட்டும் இழுக்கும் விசை, மூலக்கூறு இயக்கிகள் அல்லது நிகழ்வுக் காலத்தை அளவிடுவதில்லை. முழுச் செல் அமைவிடம், உடற்கூறு ஒப்புதல் வரும்வரை வரம்புடன் பயன்படுத்தும் திசைக் குறியாகும். மாணவர் ஒளி நுண்ணோக்கியில் காணும் வெளியேற்ற நிகழ்வையும், அதனுடன் தொடர்புடைய சவ்வு மற்றும் புறப்படல அமைப்புகளுக்கான மின்னணு நுண்ணோக்கிச் சான்றையும் வேறுபடுத்த வேண்டும்."))),
+        NutritionReading("5.7",b("5.7 · Membrane recovery and the complete feeding cycle","5.7 · சவ்வு மீட்பும் முழு உணவெடுக்கும் சுழற்சியும்"),listOf(b(
+            "Egestion does not discard the cell's entire membrane system. Vesicular membrane retrieval at the discharge region helps restore the surface. Membrane exchange and retrieval also occur during earlier digestive-vacuole maturation, so recycling is not a single event confined to the end. The drawing shows inward vesicular profiles and reclosure without fixing their number, diameter or molecular composition.",
+            "எச்ச வெளியேற்றம் செல்லின் முழுச் சவ்வுத் தொகுப்பையும் அகற்றுவதில்லை. வெளியேற்றப் பகுதியில் சிறுகுமிழ் வழிச் சவ்வு மீட்பு மேற்பரப்பை மீண்டும் அமைக்க உதவுகிறது. முந்தைய செரிமான நுண்குமிழ் முதிர்விலும் சவ்வுப் பரிமாற்றமும் மீட்பும் நடைபெறுகின்றன. எனவே மறுசுழற்சி இறுதியில் மட்டும் நிகழும் ஒரே செயல் அல்ல. படம் உட்புறச் சிறுகுமிழ் வடிவங்களையும் மீண்டும் மூடுதலையும் காட்டுகிறது; அவற்றின் எண்ணிக்கை, விட்டம், மூலக்கூறு அமைப்பு ஆகியவற்றை நிர்ணயிக்கவில்லை."),b(
+            "Integrate particle capture, vacuole formation, early acidification, lysosomal digestion, absorption, assimilation and egestion while retaining the boundaries between these terms. Absorption transfers soluble products across a vacuolar membrane; assimilation uses them in cellular metabolism and synthesis. The larger grey residues remain enclosed until exocytosis. Membrane traffic links the steps, but particles and dissolved nutrients do not all follow the same physical route.",
+            "துகள் பிடிப்பு, நுண்குமிழ் உருவாதல், ஆரம்ப அமிலமாதல், லைசோசோம் செரிமானம், உறிஞ்சல், தன்மயமாக்கல், எச்ச வெளியேற்றம் ஆகியவற்றை ஒருங்கிணைக்கும்போது சொற்களின் வேறுபாட்டைத் தக்கவைக்க வேண்டும். உறிஞ்சல் கரையும் விளைபொருள்களை நுண்குமிழ்ச் சவ்வின் குறுக்கே மாற்றுகிறது. தன்மயமாக்கல் அவற்றைச் செல் வளர்சிதைமாற்றம் மற்றும் தொகுப்பில் பயன்படுத்துகிறது. பெரிய சாம்பல் எச்சங்கள் புறவெளியேற்றம் வரை உள்ளேயே இருக்கும். சவ்வுப் போக்குவரத்து படிகளை இணைத்தாலும் துகள்களும் கரைந்த ஊட்டச்சத்துகளும் ஒரே பாதையில் செல்வதில்லை."),b(
+            "The staged controls provide independently inspectable views, not a timed prediction for an individual living cell. Different digestive vacuoles can coexist at different maturational states. Use pause and reduced motion to compare compartment boundaries before and after discharge, then return to the oral plate to examine membrane supply. Questions in the practice area supplement these detailed chapters; they do not replace anatomical reading or the interpretation of microscopy.",
+            "நிலைக் கட்டுப்பாடுகள் தனித்தனியாக ஆய்வு செய்யக்கூடிய காட்சிகளை வழங்குகின்றன; ஒரு உயிருள்ள செல்லின் நேரக் கணிப்பு அல்ல. வேறுபட்ட முதிர்வு நிலைகளிலுள்ள செரிமான நுண்குமிழ்கள் ஒரே நேரத்தில் இருக்கலாம். இடைநிறுத்தம் மற்றும் குறைக்கப்பட்ட இயக்கத்தைப் பயன்படுத்தி வெளியேற்றத்திற்கு முன், பின் உள்ள எல்லைகளை ஒப்பிட்டு, பின்னர் வாய்ப்புறப் படத்தில் சவ்வு வழங்கலை ஆராய்க. பயிற்சிப் பகுதி வினாக்கள் விரிவான பாடங்களுக்குத் துணை; உடற்கூறு வாசிப்பையோ நுண்ணோக்கிச் சான்றின் விளக்கத்தையோ மாற்றுவதில்லை."))),
+    )
+    val sources=listOf("Allen and Wolf 1974 · P. caudatum cytoproct ultrastructure · PMID 4364579 · https://doi.org/10.1242/jcs.14.3.611",
+        "Allen primary microscopy · resting closed cytoproct ridge · https://www6.pbrc.hawaii.edu/allen/ch10a/43-pca730413-5.html · orientation and force interpretation require review")
+}
+object EgestionFigure {
+    val marks=listOf(NutritionMark("cytoproct",735f,132f),NutritionMark("spent-vacuole",735f,382f),NutritionMark("recovered-membrane",918f,405f))
+    fun fit(w: Float,h: Float)=NutritionFigure.fit(w,h)
+    fun at(x: Float,y: Float)=marks.minByOrNull { (x-it.x)*(x-it.x)+(y-it.y)*(y-it.y) }
+        ?.takeIf { (x-it.x)*(x-it.x)+(y-it.y)*(y-it.y)<=38f*38f }?.id
+}

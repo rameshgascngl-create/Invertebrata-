@@ -145,6 +145,62 @@ class NativeR19TeachingAcceptanceTest {
         assertFalse("Enzymatic digestion and solute uptake must look different",endpoints[1].sameAs(endpoints[2]))
         endpoints.forEach { it.recycle() }
     }
+    private fun egestionCanvas(): SemanticsNodeInteraction {
+        rule.onNodeWithTag("r19-view-egestion-plate",true).performScrollTo().performClick();rule.waitForIdle()
+        val c=rule.onNodeWithTag("r19-egestion-canvas",true)
+        val b=c.fetchSemanticsNode().boundsInRoot;val r=rule.onRoot().fetchSemanticsNode().boundsInRoot
+        assertTrue("Complete cytoproct plate must fit viewport",b.top>=r.top-1 && b.bottom<=r.bottom+1 && b.width>0)
+        return c
+    }
+    @Test fun cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits() {
+        val ends=mutableListOf<android.graphics.Bitmap>()
+        for(id in ParameciumEgestion.stageIds) {
+            rule.onNodeWithTag("r19-stage-"+id,true).performScrollTo().performClick()
+            val end=egestionCanvas().captureToImage().asAndroidBitmap();ends.add(end);capture("cytoproct-"+id+"-end")
+            rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
+            val start=egestionCanvas().captureToImage().asAndroidBitmap();capture("cytoproct-"+id+"-start")
+            assertFalse(id+" must change the actual cytoproct pixels",start.sameAs(end))
+            rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+            rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
+            rule.onNodeWithTag("r19-play-pause",true).performClick()
+            rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+            val mid=egestionCanvas();val phase=mid.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            assertTrue(phase in .4f.. .85f)
+            val pixels=mid.captureToImage().asAndroidBitmap();assertFalse(start.sameAs(pixels));capture("cytoproct-"+id+"-intermediate")
+            start.recycle();pixels.recycle()
+        }
+        assertFalse(ends[0].sameAs(ends[1]));assertFalse(ends[1].sameAs(ends[2]));ends.forEach {it.recycle()}
+        for(m in EgestionFigure.marks) {
+            val c=egestionCanvas();assertEquals(3,c.fetchSemanticsNode().config[SemanticsActions.CustomActions].size)
+            val b=c.fetchSemanticsNode().boundsInRoot;val f=EgestionFigure.fit(b.width,b.height)
+            c.performTouchInput {click(Offset(f.x(m.x),f.y(m.y)))}
+            rule.onNodeWithTag("r19-select-"+m.id,true).performScrollTo().assertHeightIsAtLeast(48.dp)
+                .assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+            rule.onNodeWithTag("r19-organ-explanation",true).performScrollTo().assertTextEquals(ParameciumNutrition.structure(m.id).explanation.value(lang))
+            egestionCanvas();capture("cytoproct-highlight-"+m.id)
+        }
+    }
+    @Test fun leavingDuringPlaybackCheckpointsPhaseWithoutOverwritingNavigation() {
+        rule.onNodeWithTag("r19-stage-egestion",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+        rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .35f.. .8f}
+        rule.onNodeWithTag("r1-tab-water-balance").performScrollTo().performClick()
+        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
+            it.laboratoryTab=="water-balance" && it.nutritionProgress.stageId=="egestion" && it.nutritionProgress.phasePermille in 1..999
+        }}}.nutritionProgress
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r18-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
+        rule.onNodeWithTag("r1-tab-nutrition").performScrollTo().performClick()
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
+        assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
+        rule.onNodeWithTag("r19-playback-state",true).performScrollTo().assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
+        rule.activityRule.scenario.onActivity {it.onBackPressedDispatcher.onBackPressed()}
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()}
+        runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.destination==StudyDestination.HOME && it.nutritionProgress==saved}}}
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
+        assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
+        capture("navigation-checkpoint-restored")
+    }
     private fun capture(suffix: String) {
         val a=InstrumentationRegistry.getInstrumentation().uiAutomation
         val path="/sdcard/Download/native-anatomy-evidence/"+prefix+"-"+suffix+".png"
