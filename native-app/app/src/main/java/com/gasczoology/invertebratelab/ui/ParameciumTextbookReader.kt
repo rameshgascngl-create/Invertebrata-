@@ -285,6 +285,9 @@ internal fun ParameciumTextbookReader(
 ) {
     val lesson = NativeLessonDrafts.paramecium
     var chapter by rememberSaveable { mutableIntStateOf(0) }
+    // Keep the ciliary experiment's position while navigating between
+    // textbook sections and across Activity recreation.
+    var ciliaryStageIndex by rememberSaveable { mutableIntStateOf(0) }
     var contentsExpanded by rememberSaveable { mutableStateOf(false) }
     val plateRequester = remember { BringIntoViewRequester() }
     val plateScope = rememberCoroutineScope()
@@ -385,9 +388,18 @@ internal fun ParameciumTextbookReader(
             }
         }
     }
-    // Feeding is a genuine interactive, narrated textbook diagram tied to
-    // the existing native physiology engine, not another question-and-answer.
-    if (section.id == "feeding-and-digestion" ||
+    // A complete pencil-illustrated ciliary mechanism occupies the native
+    // textbook reading flow, reusing the authoritative four-stage engine.
+    // Feeding keeps its separate R1.5 plate and unchanged acceptance tests.
+    if (section.id == "pellicle-and-cilia" ||
+        section.id == "cortical-avoidance-response") {
+        ParameciumCiliaryTextbookPlate(
+            language = language,
+            speak = speak,
+            selectedStage = ciliaryStageIndex,
+            onStageSelected = { ciliaryStageIndex = it },
+        )
+    } else if (section.id == "feeding-and-digestion" ||
         section.id == "oral-apparatus-details") {
         ParameciumFeedingPathwayPlate(language, speak)
     } else if (chapter != 0) {
