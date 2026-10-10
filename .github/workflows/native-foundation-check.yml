@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - native/v193-compose-migration-20261008
+      - native/r14-textbook-reader-20261010
 
 jobs:
   compile-native-foundation:
