@@ -3,7 +3,7 @@ set -euo pipefail
 evidence="qa-evidence/r18-quality"
 device_dir="/sdcard/Download/native-anatomy-evidence"
 selected_test="com.gasczoology.invertebratelab.NativeR18TeachingAcceptanceTest"
-if [[ "${1:-full}" == "targeted-persistence" ]]; then
+if [[ "${1:-full}" == "targeted-persistence" || "${1:-full}" == "targeted-motion" ]]; then
   selected_test+="#nativeMotionReallyChangesPixelsAndPausesAtIntermediatePhase"
 fi
 mkdir -p "$evidence"
@@ -49,7 +49,12 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   fi
   cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
   cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports"
+  adb logcat -d -v threadtime -s R18_DISCHARGE:I '*:S' > "$evidence/$phase/discharge-pixels.txt"
 done
+if [[ "${1:-full}" == "targeted-motion" ]]; then
+  result=PASS
+  exit 0
+fi
 phase="datastore-compatibility"
 mkdir -p "$evidence/$phase"
 rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected

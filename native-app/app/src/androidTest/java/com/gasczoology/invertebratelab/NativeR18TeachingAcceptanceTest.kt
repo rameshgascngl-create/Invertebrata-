@@ -124,7 +124,27 @@ class NativeR18TeachingAcceptanceTest {
         val restored=canvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
         assertEquals("Paused native phase must survive real DataStore recreation",saved/1000f,restored,.02f)
         rule.onNodeWithTag("r18-playback-state",true).performScrollTo().assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
-        capture("fill-phase-restored")
+        canvas();capture("fill-phase-restored")
+        // Verify the actual discharge animation, not just its semantic stage or a numerical model.
+        rule.onNodeWithTag("r18-select-canal",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r18-stage-expel",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r18-start-view",true).performScrollTo().performClick()
+        val full=canvas().captureToImage().asAndroidBitmap();capture("expel-phase-initial")
+        rule.onNodeWithTag("r18-play-pause",true).performScrollTo().performClick()
+        rule.waitUntil(12_000) { rule.onNodeWithTag("r18-water-canvas",true).fetchSemanticsNode()
+            .config[SemanticsProperties.ProgressBarRangeInfo].current in .35f.. .8f }
+        rule.onNodeWithTag("r18-play-pause",true).performClick()
+        val draining=canvas().captureToImage().asAndroidBitmap();capture("expel-phase-paused")
+        val fullArea=waterTintPixels(full);val drainingArea=waterTintPixels(draining)
+        Log.i("R18_DISCHARGE","$prefix fluid=$fullArea -> $drainingArea")
+        assertTrue("Rendered fluid area must be identifiable",fullArea>100)
+        assertTrue("Discharge must reduce actual fluid pixels: $fullArea -> $drainingArea",drainingArea<fullArea*.85f)
+        full.recycle();draining.recycle()
+        rule.onNodeWithTag("r18-play-pause",true).performScrollTo().performClick()
+        rule.waitUntil(12_000) { rule.onNodeWithTag("r18-playback-state",true).fetchSemanticsNode()
+            .config[SemanticsProperties.Text].single().text == if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused" }
+        assertEquals(1f,canvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.001f)
+        capture("expel-phase-completed")
         rule.onNodeWithTag("r18-reset",true).performScrollTo().performClick()
         rule.onNodeWithTag("r18-play-pause",true).performScrollTo().performClick()
         rule.waitUntil(12_000) { rule.onNodeWithTag("r18-stage-collect",true).fetchSemanticsNode().config[SemanticsProperties.Selected] }
@@ -155,6 +175,15 @@ class NativeR18TeachingAcceptanceTest {
             assertEquals("conjugation",s.nuclearProgress.chapterId);assertEquals("exchange",s.nuclearProgress.viewId())
             assertEquals("expel",s.waterBalanceProgress.stageId);assertEquals(1,s.schemaVersion) }
         canvas();capture("restored-expel")
+    }
+    private fun waterTintPixels(bitmap: android.graphics.Bitmap): Int {
+        var count=0
+        for(y in 0 until bitmap.height) for(x in 0 until bitmap.width) {
+            val pixel=bitmap.getPixel(x,y)
+            val red=(pixel ushr 16) and 255;val green=(pixel ushr 8) and 255;val blue=pixel and 255
+            if(red<242 && green>red+1 && blue>red+1) count++
+        }
+        return count
     }
     private fun capture(suffix: String) {
         val a=InstrumentationRegistry.getInstrumentation().uiAutomation
