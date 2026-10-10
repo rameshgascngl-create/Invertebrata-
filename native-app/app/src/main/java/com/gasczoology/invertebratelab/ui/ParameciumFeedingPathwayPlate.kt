@@ -1,6 +1,8 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,6 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -34,6 +38,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
 import com.gasczoology.invertebratelab.data.ParameciumProcess
+import kotlinx.coroutines.launch
 import kotlin.math.hypot
 import kotlin.math.min
 
@@ -147,6 +152,10 @@ internal fun ParameciumFeedingPathwayPlate(
     require(model.stages.map { it.id } ==
         listOf("current", "cytostome", "vacuole", "egestion"))
     var selected by rememberSaveable { mutableIntStateOf(0) }
+    // Real reader navigation: selected-stage text may be many screens below
+    // the diagram at Android's 200% Tamil font scale.
+    val diagramRequester = remember { BringIntoViewRequester() }
+    val diagramScope = rememberCoroutineScope()
     val stage = model.stages[selected]
     fun select(index: Int) {
         selected = index
@@ -175,6 +184,7 @@ internal fun ParameciumFeedingPathwayPlate(
             )
             Canvas(
                 modifier = Modifier.fillMaxWidth().height(220.dp)
+                    .bringIntoViewRequester(diagramRequester)
                     .testTag("r15-feeding-pathway-canvas")
                     .semantics {
                         contentDescription = if (language == AppLanguage.TAMIL)
@@ -248,6 +258,18 @@ internal fun ParameciumFeedingPathwayPlate(
             Text(stage.explanation.value(language),
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.testTag("r15-feeding-explanation"))
+            // Learner-facing recovery control, not a test-only scroll shortcut.
+            // At 200% Tamil system font the four stage buttons and explanation
+            // can place the Canvas entirely off-screen.
+            Button(
+                onClick = { diagramScope.launch { diagramRequester.bringIntoView() } },
+                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                    .testTag("r15-view-feeding-diagram"),
+            ) {
+                Text(if (language == AppLanguage.TAMIL)
+                    "நான்கு நிலைகளின் பென்சில் வரைபடத்தை மீண்டும் பார்"
+                    else "View the four-stage pencil diagram")
+            }
             OutlinedButton(onClick = { speak(stage.explanation) },
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .testTag("r15-feeding-replay")) {

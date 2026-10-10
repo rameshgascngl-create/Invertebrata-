@@ -468,8 +468,17 @@ class NativeUiAcceptanceTest {
             )
         rule.onNodeWithTag("r15-feeding-replay", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp)
-        rule.onNodeWithTag("r15-feeding-pathway-canvas", useUnmergedTree = true)
-            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r15-view-feeding-diagram", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.waitForIdle()
+        val normalFeeding = rule.onNodeWithTag("r15-feeding-pathway-canvas",
+            useUnmergedTree = true).fetchSemanticsNode().boundsInRoot
+        val normalRoot = rule.onRoot().fetchSemanticsNode().boundsInRoot
+        assertTrue("Normal feeding diagram must occupy actual visible screen: " +
+            "canvas=$normalFeeding root=$normalRoot",
+            normalFeeding.height > 0f &&
+                normalFeeding.top >= normalRoot.top - 1f &&
+                normalFeeding.bottom <= normalRoot.bottom + 1f)
         saveN23bReviewScreenshot("r15-feeding-normal.png")
         rule.onNodeWithTag("r14-from-study-anatomy", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
@@ -643,15 +652,18 @@ class NativeTamilLargeTextAcceptanceTest {
                     .simulation(com.gasczoology.invertebratelab.data.ParameciumProcess.FEEDING)
                     .stages.last().explanation.tamil
             )
-        rule.onNodeWithTag("r15-feeding-pathway-canvas", useUnmergedTree = true)
-            .performScrollTo().assertExists()
+        // Use the SAME user-visible button provided for large-font readers.
+        // Merely finding a Canvas semantics node did not scroll the actual
+        // rendered diagram into the viewport on the previous failing commit.
+        rule.onNodeWithTag("r15-view-feeding-diagram", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitForIdle()
         val feedingBounds = rule.onNodeWithTag("r15-feeding-pathway-canvas",
             useUnmergedTree = true).fetchSemanticsNode().boundsInRoot
-        val feedingViewport = rule.onNodeWithTag("r1-paramecium-lab")
-            .fetchSemanticsNode().boundsInRoot
-        assertTrue("R1.5 Tamil 200% canvas must be fully inside the viewport: " +
-            "canvas=$feedingBounds viewport=$feedingViewport",
+        val feedingViewport = rule.onRoot().fetchSemanticsNode().boundsInRoot
+        assertTrue("R1.5 Tamil 200% canvas must occupy ACTUAL visible screen: " +
+            "canvas=$feedingBounds root=$feedingViewport",
+            feedingBounds.height > 0f &&
             feedingBounds.top >= feedingViewport.top - 1f &&
             feedingBounds.bottom <= feedingViewport.bottom + 1f)
         saveN23bReviewScreenshot("r15-feeding-tamil200.png")

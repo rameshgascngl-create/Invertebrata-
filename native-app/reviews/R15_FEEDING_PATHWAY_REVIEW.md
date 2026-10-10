@@ -17,3 +17,6 @@ Status: ENGINEERING CANDIDATE; R1.3 anatomical, Tamil and physical-device approv
 5. R1.3 graphite anatomical plate biological sign-offs 0/5; Tamil sign-offs 0/5. No release or review status promotion.
 
 Stop if CI fails; repair independently before proposing merge to active native development branch.
+
+## 200% Tamil screenshot blocker and correction
+The isolated failing Android PNG showed the egestion explanation and lower stage controls, while the diagram was above the screen. A Canvas semantics lookup/performScrollTo check did not guarantee actual visible pixels. An explicit learner-facing 'View four-stage pencil diagram' action now uses Compose BringIntoViewRequester to restore the figure without losing the selected stage or narration. Both normal and Tamil 200% tests press that action, verify actual root viewport bounds, and retain the original pixel/screenshot thresholds. Technical QA pending on the corrected SHA; no scientific signoff implied.
