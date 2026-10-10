@@ -385,9 +385,13 @@ internal fun ParameciumTextbookReader(
             }
         }
     }
-    // Feeding is a genuine interactive, narrated textbook diagram tied to
-    // the existing native physiology engine, not another question-and-answer.
-    if (section.id == "feeding-and-digestion" ||
+    // A complete pencil-illustrated ciliary mechanism occupies the native
+    // textbook reading flow, reusing the authoritative four-stage engine.
+    // Feeding keeps its separate R1.5 plate and unchanged acceptance tests.
+    if (section.id == "pellicle-and-cilia" ||
+        section.id == "cortical-avoidance-response") {
+        ParameciumCiliaryTextbookPlate(language, speak)
+    } else if (section.id == "feeding-and-digestion" ||
         section.id == "oral-apparatus-details") {
         ParameciumFeedingPathwayPlate(language, speak)
     } else if (chapter != 0) {
