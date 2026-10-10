@@ -35,8 +35,13 @@ private fun text(lang: AppLanguage, en: String, ta: String) = if (lang == AppLan
 @Composable
 internal fun ParameciumNuclearTextbook(
     language: AppLanguage, speak: (BilingualText) -> Unit,
-    progress: NuclearLearningProgress, onProgress: (NuclearLearningProgress) -> Unit,
+    initialProgress: NuclearLearningProgress, onProgress: (NuclearLearningProgress) -> Unit,
 ) {
+    // Apply interaction state synchronously. DataStore acknowledgement is asynchronous;
+    // ON_STOP must never overwrite a newly selected stage with an older emitted snapshot.
+    var progress by remember { mutableStateOf(initialProgress) }
+    val persist by rememberUpdatedState(onProgress)
+    fun change(next: NuclearLearningProgress) { progress = next; persist(next) }
     val chapter = ParameciumNuclearBiology.chapter(progress.chapterId)
     val position = chapter.views.indexOfFirst { it.id == progress.viewId() }.coerceAtLeast(0)
     val stage = chapter.views[position]
@@ -44,7 +49,7 @@ internal fun ParameciumNuclearTextbook(
     val player: NuclearPlaybackViewModel = viewModel()
     val playback by player.state.collectAsState()
     val latestProgress by rememberUpdatedState(progress)
-    val latestChange by rememberUpdatedState(onProgress)
+    val latestChange by rememberUpdatedState<(NuclearLearningProgress) -> Unit> { change(it) }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     LaunchedEffect(progress.chapterId, stage.id) { player.restore(progress.phasePermille) }
     DisposableEffect(player, lifecycle) {
@@ -63,7 +68,7 @@ internal fun ParameciumNuclearTextbook(
         if (chapter.id == "dimorphism" && id != "whole-cell") {
             next = next.copy(selectedNucleus = if (id == "somatic") "macronucleus" else "micronucleus")
         }
-        onProgress(next)
+        change(next)
     }
     fun advance(): Boolean {
         val current = latestProgress
@@ -77,7 +82,7 @@ internal fun ParameciumNuclearTextbook(
     val scope = rememberCoroutineScope()
     val requester = remember { BringIntoViewRequester() }
     fun chooseNucleus(id: String) {
-        onProgress(progress.copy(selectedNucleus = id))
+        change(progress.copy(selectedNucleus = id))
         speak(ParameciumNuclearBiology.nucleus(id))
     }
     Text(text(language, "NUCLEAR AND REPRODUCTIVE BIOLOGY · Paramecium caudatum",
@@ -94,7 +99,7 @@ internal fun ParameciumNuclearTextbook(
     for (candidate in ParameciumNuclearBiology.chapters) {
         OutlinedButton(onClick = {
             player.rewind()
-            onProgress(progress.copy(chapterId = candidate.id, phasePermille = 0).normalized())
+            change(progress.copy(chapterId = candidate.id, phasePermille = 0).normalized())
         }, shape = shape, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
             .testTag("r17-chapter-" + candidate.id).semantics { selected = candidate.id == chapter.id }) {
             Text(candidate.heading.value(language))
@@ -105,7 +110,7 @@ internal fun ParameciumNuclearTextbook(
             Text(chapter.heading.value(language), style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold, modifier = Modifier.semantics { heading() })
             chapter.readings.forEach { item ->
-                OutlinedButton(onClick = { onProgress(progress.copy(readingId = item.id)) }, shape = shape,
+                OutlinedButton(onClick = { change(progress.copy(readingId = item.id)) }, shape = shape,
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-reading-" + item.id)
                         .semantics { selected = item.id == reading.id }) { Text(item.heading.value(language)) }
             }
@@ -173,7 +178,7 @@ internal fun ParameciumNuclearTextbook(
             Text(text(language, if (playback.playing) "Playing" else "Paused", if (playback.playing) "இயங்குகிறது" else "இடைநிறுத்தம்"),
                 modifier = Modifier.testTag("r17-playback-state").semantics { liveRegion = LiveRegionMode.Polite })
             OutlinedButton(onClick = { if (playback.playing) {
-                player.pause(); onProgress(progress.copy(phasePermille = (player.state.value.phase * 1000).toInt()))
+                player.pause(); change(progress.copy(phasePermille = (player.state.value.phase * 1000).toInt()))
             } else player.play(::advance) }, shape = shape, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-play-pause")) {
                 Text(text(language, if (playback.playing) "Pause demonstration" else "Play staged demonstration",
                     if (playback.playing) "காட்சியை இடைநிறுத்து" else "படிநிலைக் காட்சியை இயக்கு"))
@@ -188,7 +193,7 @@ internal fun ParameciumNuclearTextbook(
             }
             OutlinedButton(onClick = { player.rewind(); player.play(::advance) }, shape = shape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-replay")) {
-                Text(text(language, "Replay this view", "இக்காட்சியை மீண்டும் இயக்கு"))
+                Text(text(language, "Replay from this view", "இக்காட்சியிலிருந்து மீண்டும் இயக்கு"))
             }
             OutlinedButton(onClick = { chooseView(chapter.views.first().id) }, shape = shape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-reset")) {
