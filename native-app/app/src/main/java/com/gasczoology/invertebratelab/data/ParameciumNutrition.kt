@@ -1,6 +1,11 @@
 package com.gasczoology.invertebratelab.data
 
 import kotlin.math.min
+import kotlin.math.roundToInt
+
+/** Round instead of truncating: restored 416/1000f must remain 416 on the next save. */
+fun nutritionPhasePermille(phase: Float): Int =
+    if(phase.isFinite()) (phase.coerceIn(0f,1f)*1000).roundToInt() else 0
 
 data class NutritionReading(val id: String, val heading: BilingualText, val paragraphs: List<BilingualText>)
 data class NutritionStructure(val id: String, val name: BilingualText, val explanation: BilingualText)

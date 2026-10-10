@@ -56,6 +56,11 @@ class ParameciumNutritionTest {
             assertTrue(t.y1>185f && t.y2>185f)
         }
     }
+    @Test fun everyStoredPhaseRoundTripsWithoutCumulativeFloatTruncation() {
+        for(saved in 0..1000) assertEquals("Stored phase $saved must survive repeated checkpoints",saved,nutritionPhasePermille(saved/1000f))
+        assertEquals(0,nutritionPhasePermille(Float.NaN));assertEquals(0,nutritionPhasePermille(-.5f))
+        assertEquals(1000,nutritionPhasePermille(2f))
+    }
     @Test fun hitGeometryFitsBothOrientationsAndRejectsEmptyPaper() {
         for((w,h) in listOf(380f to 300f,900f to 300f)) {
             val f=NutritionFigure.fit(w,h)

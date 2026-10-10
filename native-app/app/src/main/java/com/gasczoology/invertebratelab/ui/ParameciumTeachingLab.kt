@@ -107,7 +107,7 @@ fun ParameciumTeachingLab(
         android.util.Log.i("R19_NUTRITION","checkpoint stage=${learningState.nutritionProgress.stageId} phase=${nutritionPlayer.state.value.phase}")
         nutritionPlayer.pause()
         return learningState.copy(nutritionProgress=learningState.nutritionProgress.copy(
-            phasePermille=(nutritionPlayer.state.value.phase*1000).toInt()))
+            phasePermille=com.gasczoology.invertebratelab.data.nutritionPhasePermille(nutritionPlayer.state.value.phase)))
     }
     fun selectTab(value: String) { onLearningChanged(checkpoint().copy(laboratoryTab = value)) }
     fun leave() { onBack(checkpoint()) }

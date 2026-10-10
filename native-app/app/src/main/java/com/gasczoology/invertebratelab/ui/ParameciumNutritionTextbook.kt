@@ -45,7 +45,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     DisposableEffect(player,lifecycle) {
         val observer=LifecycleEventObserver { _,event -> if(event==Lifecycle.Event.ON_STOP) {
-            player.pause();change(progress.copy(phasePermille=(player.state.value.phase*1000).toInt()))
+            player.pause();change(progress.copy(phasePermille=nutritionPhasePermille(player.state.value.phase)))
         } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer);player.pause() }
@@ -159,7 +159,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 "கற்பித்தலுக்கான வேகமும் விகிதங்களும்; இயற்கை நிகழ்வுகள் ஒன்றோடொன்று அமையும். மீட்டமைந்த இயக்கம் இடைநிறுத்தத்தில் இருக்கும்."))
             Text(nutritionText(language,if(playback.playing)"Playing" else "Paused",if(playback.playing)"இயங்குகிறது" else "இடைநிறுத்தம்"),
                 modifier=Modifier.testTag("r19-playback-state"))
-            Button(onClick={if(playback.playing) {player.pause();change(progress.copy(phasePermille=(player.state.value.phase*1000).toInt()))}
+            Button(onClick={if(playback.playing) {player.pause();change(progress.copy(phasePermille=nutritionPhasePermille(player.state.value.phase)))}
                 else {
                     if(player.state.value.phase>=1f) { player.rewind();change(progress.copy(phasePermille=0)) }
                     player.play { change(progress.copy(phasePermille=1000)) }
@@ -174,7 +174,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             OutlinedButton(onClick={chooseStage("current",false)},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-reset")) { Text(nutritionText(language,"Replay from the beginning","தொடக்கத்திலிருந்து மீண்டும் இயக்கு")) }
             OutlinedButton(onClick={player.pause();change(progress.copy(reducedMotion=!progress.reducedMotion,
-                phasePermille=(player.state.value.phase*1000).toInt()))},shape=shape,
+                phasePermille=nutritionPhasePermille(player.state.value.phase)))},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-reduced-motion")
                     .semantics { selected=progress.reducedMotion }) {
                 Text(nutritionText(language,"Reduced motion: ","குறைக்கப்பட்ட இயக்கம்: ")+nutritionText(language,
