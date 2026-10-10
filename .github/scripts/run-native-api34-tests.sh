@@ -62,6 +62,16 @@ if ! adb pull "$anatomy_dir/paramecium-normal-oral-groove.png" \
     exit 1
 fi
 
+# Preserve an independently captured actual learner-facing textbook screenshot.
+if ! adb shell test -s "$anatomy_dir/r14-textbook-normal.png"; then
+    normal_exit=R14_TEXTBOOK_NORMAL_SCREENSHOT_MISSING
+    exit 1
+fi
+if ! adb pull "$anatomy_dir/r14-textbook-normal.png" qa-evidence/r14-textbook-normal.png; then
+    normal_exit=R14_TEXTBOOK_NORMAL_SCREENSHOT_PULL_FAILED
+    exit 1
+fi
+
 if ! adb shell settings put system font_scale 2.0; then
     large_text_exit=DEVICE_CONFIG_FAILED
     exit 1
@@ -90,6 +100,18 @@ if ! adb pull "$anatomy_dir/paramecium-tamil200-cytoproct.png" \
     large_text_exit=ANATOMY_TAMIL200_SCREENSHOT_PULL_FAILED
     exit 1
 fi
+# Do not count green instrumentation if the actual Tamil textbook plate is
+# absent. The full existing paper/cell/graphite pixel checks run in the test.
+if ! adb shell test -s "$anatomy_dir/r14-textbook-tamil200.png"; then
+    large_text_exit=R14_TEXTBOOK_TAMIL_SCREENSHOT_MISSING
+    exit 1
+fi
+if ! adb pull "$anatomy_dir/r14-textbook-tamil200.png" qa-evidence/r14-textbook-tamil200.png; then
+    large_text_exit=R14_TEXTBOOK_TAMIL_SCREENSHOT_PULL_FAILED
+    exit 1
+fi
 sha256sum qa-evidence/paramecium-normal-oral-groove.png \
     qa-evidence/paramecium-tamil200-cytoproct.png \
+    qa-evidence/r14-textbook-normal.png \
+    qa-evidence/r14-textbook-tamil200.png \
     > qa-evidence/anatomy-screenshot-sha256.txt

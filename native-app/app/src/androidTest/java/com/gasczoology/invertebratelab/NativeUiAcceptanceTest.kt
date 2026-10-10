@@ -425,6 +425,9 @@ class NativeUiAcceptanceTest {
             .performScrollTo().assertExists()
         rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
             .performScrollTo().assertExists()
+        // New lesson-first screen: preserve the same genuine screencap/pixel
+        // acceptance as the established atlas; never render a synthetic PNG.
+        saveN23bReviewScreenshot("r14-textbook-normal.png")
         rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
             .performScrollTo().performClick()
         rule.onNodeWithTag("r14-open-section-feeding-and-digestion",
@@ -573,6 +576,9 @@ class NativeTamilLargeTextAcceptanceTest {
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        saveN23bReviewScreenshot("r14-textbook-tamil200.png")
         rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.onNodeWithTag("r14-open-section-osmoregulation", useUnmergedTree = true)
