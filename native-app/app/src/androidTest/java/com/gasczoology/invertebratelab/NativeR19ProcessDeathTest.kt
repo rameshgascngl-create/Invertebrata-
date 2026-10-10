@@ -9,6 +9,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.onEach
+import android.util.Log
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
 import org.junit.Assert.*
@@ -32,10 +34,11 @@ class NativeR19ProcessDeathSetupTest {
         rule.onNodeWithTag("r19-stage-recycling",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-select-recovered-membrane",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-stage-explanation",true).performScrollTo().assertTextEquals(ParameciumEgestion.stages.last().explanation.tamil)
-        rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-view-egestion-plate",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().performClick()
         rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-        rule.onNodeWithTag("r19-play-pause",true).performClick()
-        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
+        rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().performClick()
+        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.onEach {Log.i("R19_PROGRESS","setup record ${it.destination} ${it.laboratoryTab} ${it.nutritionProgress}")}.first {
             it.nutritionProgress.stageId=="recycling" && it.nutritionProgress.readingId=="5.7" &&
                 it.nutritionProgress.selectedStructure=="recovered-membrane" && it.nutritionProgress.phasePermille in 400..850
         }}}

@@ -77,6 +77,7 @@ class NativeR19TeachingAcceptanceTest {
         }
         rule.onNodeWithTag("r19-reduced-motion",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-play-pause",true).performScrollTo().assertIsNotEnabled().assertHeightIsAtLeast(48.dp)
+        rule.onNodeWithTag("r19-nutrition-inline-play-pause",true).performScrollTo().assertIsNotEnabled().assertHeightIsAtLeast(48.dp)
         capture("controls")
     }
     @Test fun numberedReadingAndNarrationKeepCompleteWrittenExplanations() {
@@ -99,9 +100,9 @@ class NativeR19TeachingAcceptanceTest {
         rule.onNodeWithTag("r19-stage-formation",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
         val before=canvas().captureToImage().asAndroidBitmap();capture("formation-initial")
-        rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-nutrition-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitUntil(12_000) { rule.onNodeWithTag("r19-nutrition-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .35f.. .8f }
-        rule.onNodeWithTag("r19-play-pause",true).performClick()
+        rule.onNodeWithTag("r19-nutrition-inline-play-pause",true).performScrollTo().performClick()
         val after=canvas().captureToImage().asAndroidBitmap()
         assertFalse("Actual growth/release must change native pixels",before.sameAs(after))
         capture("formation-paused");before.recycle();after.recycle()
@@ -128,9 +129,9 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
             val start=canvas().captureToImage().asAndroidBitmap();capture(id+"-start")
             assertFalse(id+" must have a distinct completed pose",start.sameAs(end))
-            rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+            rule.onNodeWithTag("r19-nutrition-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
             rule.waitUntil(12_000) { rule.onNodeWithTag("r19-nutrition-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f }
-            rule.onNodeWithTag("r19-play-pause",true).performClick()
+            rule.onNodeWithTag("r19-nutrition-inline-play-pause",true).performScrollTo().performClick()
             rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
             val midCanvas=canvas()
             val phase=midCanvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
@@ -160,12 +161,12 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
             val start=egestionCanvas().captureToImage().asAndroidBitmap();capture("cytoproct-"+id+"-start")
             assertFalse(id+" must change the actual cytoproct pixels",start.sameAs(end))
-            rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
             rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-            rule.onNodeWithTag("r19-play-pause",true).performClick()
+            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().performClick()
             rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
             val mid=egestionCanvas();val phase=mid.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
-            assertTrue(phase in .4f.. .85f)
+            assertTrue("$id captured phase=$phase must remain intermediate",phase in .4f.. .85f)
             val pixels=mid.captureToImage().asAndroidBitmap();assertFalse(start.sameAs(pixels));capture("cytoproct-"+id+"-intermediate")
             start.recycle();pixels.recycle()
         }
@@ -182,7 +183,7 @@ class NativeR19TeachingAcceptanceTest {
     }
     @Test fun leavingDuringPlaybackCheckpointsPhaseWithoutOverwritingNavigation() {
         rule.onNodeWithTag("r19-stage-egestion",true).performScrollTo().performClick()
-        rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .35f.. .8f}
         // Invoke Android Back immediately while motion is still intermediate. Scrolling through
         // a long chapter to a top tab can legitimately outlast the illustrative three-second stage.
@@ -203,7 +204,7 @@ class NativeR19TeachingAcceptanceTest {
         assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
         rule.activityRule.scenario.onActivity {it.onBackPressedDispatcher.onBackPressed()}
         rule.waitUntil(20_000) {rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()}
-        runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.destination==StudyDestination.HOME && it.nutritionProgress==saved}}}
+        runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.onEach {Log.i("R19_NUTRITION","home record ${it.destination} ${it.laboratoryTab} ${it.nutritionProgress}; expected=$saved")}.first {it.destination==StudyDestination.HOME && it.nutritionProgress==saved}}}
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
         assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)

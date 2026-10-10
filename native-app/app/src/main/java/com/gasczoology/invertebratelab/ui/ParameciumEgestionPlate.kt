@@ -21,13 +21,16 @@ import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selected: String,phase: Float,onSelect: (String)->Unit) {
+internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selected: String,phase: Float,onSelect: (String)->Unit,playing: Boolean,enabled: Boolean,onToggle: ()->Unit) {
     val requester=remember { BringIntoViewRequester() };val scope=rememberCoroutineScope()
     val description=if(language==AppLanguage.TAMIL)
         "சைட்டோப்ராக்ட் வெட்டுத் தோற்றம்: மூடிய முகடு, தற்காலிகத் திறப்பு, வெளியேறும் எச்சங்கள், சவ்வு மீட்பு. மேல் வெளிச்சூழல்; கீழ் சைட்டோசால். அளவோ நேரமோ அளவிடப்படவில்லை. "
         else "Cytoproct section: closed ridge, transient opening, released residues and membrane recovery. Exterior above; cytosol below. Scale and time are not measured. "
     Button(onClick={scope.launch { requester.bringIntoView() }},modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-egestion-plate")) {
         Text(if(language==AppLanguage.TAMIL)"முழு எச்ச வெளியேற்றப் படத்தைக் காண்க" else "View the complete egestion plate")
+    }
+    OutlinedButton(onClick=onToggle,enabled=enabled,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-cytoproct-inline-play-pause")) {
+        Text(if(language==AppLanguage.TAMIL) {if(playing)"இடைநிறுத்து" else "இயக்கு"} else {if(playing)"Pause" else "Play"})
     }
     Canvas(Modifier.fillMaxWidth().height(300.dp).bringIntoViewRequester(requester).testTag("r19-egestion-canvas")
         .pointerInput(stage,selected) { detectTapGestures { p -> val f=EgestionFigure.fit(size.width.toFloat(),size.height.toFloat())

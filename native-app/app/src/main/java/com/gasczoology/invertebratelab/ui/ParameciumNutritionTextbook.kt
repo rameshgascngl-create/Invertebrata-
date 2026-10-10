@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.*
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -36,19 +37,36 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
     initialProgress: NutritionProgress,onProgress: (NutritionProgress)->Unit,player: NutritionPlaybackViewModel) {
     var progress by remember { mutableStateOf(initialProgress.normalized()) }
     val persist by rememberUpdatedState(onProgress)
-    fun change(next: NutritionProgress) { progress=next;persist(next) }
+    fun change(next: NutritionProgress) {
+        android.util.Log.i("R19_NUTRITION","save stage=${next.stageId} reading=${next.readingId} structure=${next.selectedStructure} phase=${next.phasePermille}")
+        progress=next;persist(next)
+    }
     val index=ParameciumNutrition.stages.indexOfFirst { it.id==progress.stageId }
     val stage=ParameciumNutrition.stages[index]
     val reading=ParameciumNutrition.readings.first { it.id==progress.readingId }
     val playback by player.state.collectAsState()
     LaunchedEffect(stage.id) { player.restore(progress.phasePermille) }
-    val lifecycle=LocalLifecycleOwner.current.lifecycle
+    val context=LocalContext.current
+    // A NavBackStackEntry stops on tab/route navigation. Its save could overwrite the
+    // parent's atomic destination checkpoint. Observe the actual Activity for background/rotation.
+    val lifecycle=remember(context) {
+        generateSequence(context) { (it as? android.content.ContextWrapper)?.baseContext?.takeIf { base -> base!==it } }
+            .filterIsInstance<androidx.activity.ComponentActivity>().first().lifecycle
+    }
     DisposableEffect(player,lifecycle) {
         val observer=LifecycleEventObserver { _,event -> if(event==Lifecycle.Event.ON_STOP) {
             player.pause();change(progress.copy(phasePermille=nutritionPhasePermille(player.state.value.phase)))
         } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer);player.pause() }
+    }
+    fun togglePlayback() {
+        if(player.state.value.playing) {
+            player.pause();change(progress.copy(phasePermille=nutritionPhasePermille(player.state.value.phase)))
+        } else if(!progress.reducedMotion) {
+            if(player.state.value.phase>=1f) {player.rewind();change(progress.copy(phasePermille=0))}
+            player.play {change(progress.copy(phasePermille=1000))}
+        }
     }
     fun chooseStage(id: String,completed: Boolean = true) {
         player.rewind()
@@ -104,6 +122,10 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-plate")) {
                 Text(nutritionText(language,"Bring the complete pencil plate into view","முழுப் பென்சில் படத்தைத் திரையில் காண்க"))
             }
+            OutlinedButton(onClick=::togglePlayback,enabled=!progress.reducedMotion,shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-nutrition-inline-play-pause")) {
+                Text(nutritionText(language,if(playback.playing)"Pause" else "Play",if(playback.playing)"இடைநிறுத்து" else "இயக்கு"))
+            }
             Canvas(Modifier.fillMaxWidth().height(300.dp).bringIntoViewRequester(requester).testTag("r19-nutrition-canvas")
                 .pointerInput(stage.id,progress.selectedStructure) { detectTapGestures { p ->
                     val f=NutritionFigure.fit(size.width.toFloat(),size.height.toFloat())
@@ -121,7 +143,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 "G oral groove/vestibule · O oral cilia · M cytostome · F cytopharynx · V food vacuole · A acidosome · L lysosome · B vacuolar boundary · S soluble products. Left: ventral orientation only. Upper-right: enlarged oral cutaway. Lower-right: independently enlarged vacuole. Membrane folds, ciliary counts, particle size and timing are schematic; amber particles, stippling and enzyme dots are qualitative teaching cues, not a microscope stain, calibrated pH or resolved proteins. Stippling records early acidification, not sustained low pH. Large grey residues stay enclosed while small soluble products cross the membrane.",
                 "G வாய்ப்பள்ளம்/முன்னறை · O வாய்ப்புறக் குறுஇழை · M செல் வாய் · F சைட்டோஃபாரிங்ஸ் · V உணவு நுண்குமிழ் · A அமிலச் சிறுகுமிழ் · L லைசோசோம் · B நுண்குமிழ்ச் சவ்வு · S கரையும் விளைபொருள்கள். இடது: வயிற்றுப்புறத் திசை மட்டும். மேல் வலது: பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம். கீழ் வலது: தனிப் பெரிதாக்கிய நுண்குமிழ். சவ்வு மடிப்புகள், குறுஇழை எண்ணிக்கை, துகள் அளவு, நேரம் ஆகியவை விளக்கத்திற்கானவை; பழுப்பு நிறத் துகள்களும் புள்ளிகளும் கற்பித்தல் குறிகள்; நுண்ணோக்கிச் சாயம், அளவிட்ட pH அல்லது நேரடிப் புரதக் காட்சி அல்ல. புள்ளிகள் ஆரம்ப அமிலமாதலைக் குறிக்கின்றன; தொடர்ந்து குறைந்த pH அல்ல. சிறிய கரையும் விளைபொருள்கள் சவ்வைக் கடக்கும்போது பெரிய சாம்பல் எச்சங்கள் உள்ளேயே இருக்கும்."),
                 modifier=Modifier.testTag("r19-plate-legend"))
-            if(stage.id in ParameciumEgestion.stageIds) ParameciumEgestionPlate(language,stage.id,progress.selectedStructure,playback.phase,::chooseStructure)
+            if(stage.id in ParameciumEgestion.stageIds) ParameciumEgestionPlate(language,stage.id,progress.selectedStructure,playback.phase,::chooseStructure,playback.playing,!progress.reducedMotion,::togglePlayback)
             for(item in ParameciumNutrition.structures) {
                 OutlinedButton(onClick={chooseStructure(item.id)},shape=shape,
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-select-"+item.id)
@@ -159,11 +181,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 "கற்பித்தலுக்கான வேகமும் விகிதங்களும்; இயற்கை நிகழ்வுகள் ஒன்றோடொன்று அமையும். மீட்டமைந்த இயக்கம் இடைநிறுத்தத்தில் இருக்கும்."))
             Text(nutritionText(language,if(playback.playing)"Playing" else "Paused",if(playback.playing)"இயங்குகிறது" else "இடைநிறுத்தம்"),
                 modifier=Modifier.testTag("r19-playback-state"))
-            Button(onClick={if(playback.playing) {player.pause();change(progress.copy(phasePermille=nutritionPhasePermille(player.state.value.phase)))}
-                else {
-                    if(player.state.value.phase>=1f) { player.rewind();change(progress.copy(phasePermille=0)) }
-                    player.play { change(progress.copy(phasePermille=1000)) }
-                }},enabled=!progress.reducedMotion,shape=shape,
+            Button(onClick=::togglePlayback,enabled=!progress.reducedMotion,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-play-pause")) {
                 Text(nutritionText(language,if(playback.playing)"Pause" else "Play",if(playback.playing)"இடைநிறுத்து" else "இயக்கு"))
             }

@@ -238,7 +238,10 @@ fun ParameciumTeachingLab(
             }
             when(tab) {
                 "nutrition" -> ParameciumNutritionTextbook(language, ::speak, learningState.nutritionProgress,
-                    onProgress = { onLearningChanged(learningState.copy(nutritionProgress = it)) },player=nutritionPlayer)
+                    onProgress = {
+                        if(learningState.destination==com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB &&
+                            learningState.laboratoryTab=="nutrition") onLearningChanged(learningState.copy(nutritionProgress = it))
+                    },player=nutritionPlayer)
                 "water-balance" -> ParameciumWaterBalanceTextbook(language, ::speak, learningState.waterBalanceProgress,
                     onProgress = { onLearningChanged(learningState.copy(waterBalanceProgress = it)) })
                 "nuclear" -> ParameciumNuclearTextbook(language, ::speak, learningState.nuclearProgress,
