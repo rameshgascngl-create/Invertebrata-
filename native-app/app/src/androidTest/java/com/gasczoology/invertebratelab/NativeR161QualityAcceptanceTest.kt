@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
 import android.util.Log
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -75,7 +76,7 @@ class NativeR161QualityAcceptanceTest {
             val canvas = canvasInView()
             val description = canvas.fetchSemanticsNode().config[SemanticsProperties.ContentDescription].joinToString()
             assertTrue(description.contains(stage.heading.tamil))
-            assertEquals(3, canvas.fetchSemanticsNode().config[SemanticsProperties.CustomActions].size)
+            assertEquals(3, canvas.fetchSemanticsNode().config[SemanticsActions.CustomActions].size)
             capture("stage-${index + 1}")
         }
         val canvas = canvasInView()
