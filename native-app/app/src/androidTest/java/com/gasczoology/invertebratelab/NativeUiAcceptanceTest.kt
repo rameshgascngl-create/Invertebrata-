@@ -645,6 +645,15 @@ class NativeTamilLargeTextAcceptanceTest {
             )
         rule.onNodeWithTag("r15-feeding-pathway-canvas", useUnmergedTree = true)
             .performScrollTo().assertExists()
+        rule.waitForIdle()
+        val feedingBounds = rule.onNodeWithTag("r15-feeding-pathway-canvas",
+            useUnmergedTree = true).fetchSemanticsNode().boundsInRoot
+        val feedingViewport = rule.onNodeWithTag("r1-paramecium-lab")
+            .fetchSemanticsNode().boundsInRoot
+        assertTrue("R1.5 Tamil 200% canvas must be fully inside the viewport: " +
+            "canvas=$feedingBounds viewport=$feedingViewport",
+            feedingBounds.top >= feedingViewport.top - 1f &&
+            feedingBounds.bottom <= feedingViewport.bottom + 1f)
         saveN23bReviewScreenshot("r15-feeding-tamil200.png")
         rule.onNodeWithTag("r14-from-study-simulation", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()

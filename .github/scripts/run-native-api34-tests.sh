@@ -14,6 +14,8 @@ capture_evidence() {
         qa-evidence/paramecium-normal-oral-groove-diagnostic.png >/dev/null 2>&1 || true
     adb pull /sdcard/Download/native-anatomy-evidence/paramecium-tamil200-cytoproct.png \
         qa-evidence/paramecium-tamil200-cytoproct-diagnostic.png >/dev/null 2>&1 || true
+    adb pull /sdcard/Download/native-anatomy-evidence/r15-feeding-tamil200.png \
+        qa-evidence/r15-feeding-tamil200-diagnostic.png >/dev/null 2>&1 || true
     adb exec-out screencap -p > qa-evidence/final-screen.png 2>/dev/null || true
     adb shell uiautomator dump /sdcard/qa-window.xml >/dev/null 2>&1 || true
     adb pull /sdcard/qa-window.xml qa-evidence/window.xml >/dev/null 2>&1 || true
