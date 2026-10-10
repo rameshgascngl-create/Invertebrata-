@@ -100,7 +100,7 @@ jobs:
         disable-animations: true
         emulator-boot-timeout: 900
         script: bash .github/scripts/run-native-r19-quality.sh
-    - name: Preserve exact-commit R1.8 screenshot and instrumentation evidence
+    - name: Preserve exact-commit R1.9 screenshot and instrumentation evidence
       if: always()
       uses: actions/upload-artifact@v4
       with:

@@ -122,8 +122,8 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                     customActions=ParameciumNutrition.structures.map { item -> CustomAccessibilityAction(item.name.value(language)) { chooseStructure(item.id);true } }
                 }) { drawNutritionPencil(stage.id,progress.selectedStructure,playback.phase) }
             Text(nutritionText(language,
-                "G oral groove/vestibule · O oral cilia · M cytostome · F cytopharynx · V food vacuole. Left: ventral orientation only. Upper-right: enlarged oral cutaway. Lower-right: independently enlarged vacuole. Membrane folds, ciliary counts, particle size and timing are schematic; amber particles are teaching cues, not a microscope stain.",
-                "G வாய்ப்பள்ளம்/முன்னறை · O வாய்ப்புறக் குறுஇழை · M செல் வாய் · F சைட்டோஃபாரிங்ஸ் · V உணவு நுண்குமிழ். இடது: வயிற்றுப்புறத் திசை மட்டும். மேல் வலது: பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம். கீழ் வலது: தனிப் பெரிதாக்கிய நுண்குமிழ். சவ்வு மடிப்புகள், குறுஇழை எண்ணிக்கை, துகள் அளவு, நேரம் ஆகியவை விளக்கத்திற்கானவை; பழுப்பு நிறத் துகள்கள் கற்பித்தல் குறிகள், நுண்ணோக்கிச் சாயம் அல்ல."),
+                "G oral groove/vestibule · O oral cilia · M cytostome · F cytopharynx · V food vacuole · A acidosome · L lysosome · B vacuolar boundary · S soluble products. Left: ventral orientation only. Upper-right: enlarged oral cutaway. Lower-right: independently enlarged vacuole. Membrane folds, ciliary counts, particle size and timing are schematic; amber particles, stippling and enzyme dots are qualitative teaching cues, not a microscope stain, calibrated pH or resolved proteins.",
+                "G வாய்ப்பள்ளம்/முன்னறை · O வாய்ப்புறக் குறுஇழை · M செல் வாய் · F சைட்டோஃபாரிங்ஸ் · V உணவு நுண்குமிழ் · A அமிலச் சிறுகுமிழ் · L லைசோசோம் · B நுண்குமிழ்ச் சவ்வு · S கரையும் விளைபொருள்கள். இடது: வயிற்றுப்புறத் திசை மட்டும். மேல் வலது: பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம். கீழ் வலது: தனிப் பெரிதாக்கிய நுண்குமிழ். சவ்வு மடிப்புகள், குறுஇழை எண்ணிக்கை, துகள் அளவு, நேரம் ஆகியவை விளக்கத்திற்கானவை; பழுப்பு நிறத் துகள்களும் புள்ளிகளும் கற்பித்தல் குறிகள்; நுண்ணோக்கிச் சாயம், அளவிட்ட pH அல்லது நேரடிப் புரதக் காட்சி அல்ல."),
                 modifier=Modifier.testTag("r19-plate-legend"))
             for(item in ParameciumNutrition.structures) {
                 OutlinedButton(onClick={chooseStructure(item.id)},shape=shape,
@@ -267,14 +267,49 @@ private fun DrawScope.drawNutritionPencil(stage: String, selected: String, phase
         label("G",544f,58f);label("O",621f,126f);label("M",727f,160f);label("F",790f,195f)
         // Independently enlarged food compartment, with cytosol outside and food in the lumen.
         drawRoundRect(faint,Offset(495f,307f),Size(470f,267f),cornerRadius=androidx.compose.ui.geometry.CornerRadius(8f),style=Stroke(1.5f))
+        val maturation=ParameciumDigestiveMaturation.pose(stage,phase)
         val center=Offset(740f,435f);val radius=if(stage=="formation")62f+28f*phase else 90f
         drawCircle(Color(0xFFF2EEE5),radius,center);drawCircle(ink,radius,center,style=Stroke(3f))
         drawCircle(faint,radius-4f,center+Offset(1f,1f),style=Stroke(1.2f))
         for(i in 0..8) {
             val x=(i%3-1)*30f;val y=(i/3-1)*29f
-            drawCircle(amber,6f,center+Offset(x,y))
+            drawCircle(amber,6f*(1f-.7f*maturation.breakdown),center+Offset(x,y))
+            if(maturation.breakdown>0f) {
+                drawCircle(amber,2.5f,center+Offset(x+10f*maturation.breakdown,y-7f*maturation.breakdown))
+                drawCircle(amber,2f,center+Offset(x-9f*maturation.breakdown,y+8f*maturation.breakdown))
+            }
             drawLine(faint,center+Offset(x-7,y-8),center+Offset(x+7,y-3),1f)
         }
+        // A and L remain identifiable separately; dots are not a measured pH or enzyme count.
+        val aPhase=if(stage=="acidification")phase else 0f
+        val lPhase=if(stage=="digestion")phase else 0f
+        val ac=Offset(530f+125f*aPhase,352f+38f*aPhase)
+        val ly=Offset(925f-95f*lPhase,352f+38f*lPhase)
+        if(aPhase<.8f) {
+            drawCircle(paper,20f,ac);drawCircle(ink,20f,ac,style=Stroke(2f))
+            for(i in 0..3) drawLine(faint,ac+Offset(-9f+i*4f,-10f),ac+Offset(-4f+i*4f,8f),1.3f)
+        }
+        if(lPhase<.8f) {
+            drawCircle(paper,20f,ly);drawCircle(ink,20f,ly,style=Stroke(2f))
+            for(i in 0..3) drawCircle(ink,2.5f,ly+Offset((i%2)*9f-5f,(i/2)*9f-5f))
+        }
+        for(i in 0 until (18*maturation.acidification).toInt()) {
+            val angle=i*2.39996f;val r=18f+(i%4)*14f
+            val p=center+Offset(cos(angle)*r,sin(angle)*r)
+            drawLine(faint,p,p+Offset(4f,-2f),1.2f)
+        }
+        for(i in 0 until (7*maturation.enzymeDelivery).toInt()) {
+            val p=center+Offset(-40f+i*12f,15f+(i%2)*14f)
+            drawLine(ink,p+Offset(-3f,-3f),p+Offset(3f,3f),1.3f)
+            drawLine(ink,p+Offset(-3f,3f),p+Offset(3f,-3f),1.3f)
+        }
+        if(stage=="uptake") {
+            for(i in 0..3) {
+                val p=center+Offset(25f+170f*phase,-35f+i*22f)
+                drawCircle(amber,2.5f,p)
+            }
+        }
+        label("A",505f,331f);label("L",914f,331f);label("B",843f,432f);label("S",931f,559f)
         label("V",732f,555f)
         val mark=NutritionFigure.marks.firstOrNull { it.id==selected }
         if(mark!=null) {

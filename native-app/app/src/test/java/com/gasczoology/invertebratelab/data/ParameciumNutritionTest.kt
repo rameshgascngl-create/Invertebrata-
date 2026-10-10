@@ -4,11 +4,11 @@ import org.junit.Test
 
 class ParameciumNutritionTest {
     @Test fun ingestionRegionsRemainDistinctAndOrdered() {
-        assertEquals(listOf("current","entry","formation"),ParameciumNutrition.stages.map { it.id })
+        assertEquals(listOf("current","entry","formation","acidification","digestion","uptake"),ParameciumNutrition.stages.map { it.id })
         assertTrue(ParameciumNutrition.structures.map { it.id }.containsAll(listOf("oral-groove","oral-cilia","cytostome","cytopharynx","vacuole")))
     }
     @Test fun textbookIsDetailedBilingualAndNumbered() {
-        assertEquals(listOf("5.1","5.2"),ParameciumNutrition.readings.map { it.id })
+        assertEquals(listOf("5.1","5.2","5.3","5.4","5.5"),ParameciumNutrition.readings.map { it.id })
         for(r in ParameciumNutrition.readings) {
             assertTrue(r.heading.english.startsWith(r.id));assertTrue(r.heading.tamil.startsWith(r.id))
             assertEquals(3,r.paragraphs.size)
@@ -20,6 +20,19 @@ class ParameciumNutritionTest {
         assertTrue(all.contains("lumen"));assertTrue(all.contains("cytosol"));assertTrue(all.contains("not a calibrated"))
         assertEquals("DRAFT_UNVERIFIED",ParameciumNutrition.reviewStatus)
         assertTrue(ParameciumNutrition.sourceNotes.any { it.contains("4373478") })
+    }
+    @Test fun acidificationPrecedesEnzymesAndUptakeDoesNotReleaseWholePrey() {
+        val acid=ParameciumDigestiveMaturation.pose("acidification",1f)
+        assertEquals(1f,acid.acidification,0f);assertEquals(0f,acid.enzymeDelivery,0f)
+        assertEquals(0f,acid.breakdown,0f);assertEquals(0f,acid.soluteUptake,0f)
+        val early=ParameciumDigestiveMaturation.pose("digestion",.2f)
+        assertTrue(early.enzymeDelivery>0f);assertEquals(0f,early.breakdown,0f)
+        val late=ParameciumDigestiveMaturation.pose("digestion",1f)
+        assertEquals(1f,late.breakdown,0f);assertEquals(0f,late.soluteUptake,0f)
+        val uptake=ParameciumDigestiveMaturation.pose("uptake",.6f)
+        assertEquals(.6f,uptake.soluteUptake,0f)
+        assertTrue(ParameciumNutrition.structure("soluble-products").explanation.english.contains("Assimilation"))
+        assertTrue(ParameciumNutrition.readings.first { it.id=="5.5" }.paragraphs.last().english.contains("larger residue"))
     }
     @Test fun hitGeometryFitsBothOrientationsAndRejectsEmptyPaper() {
         for((w,h) in listOf(380f to 300f,900f to 300f)) {

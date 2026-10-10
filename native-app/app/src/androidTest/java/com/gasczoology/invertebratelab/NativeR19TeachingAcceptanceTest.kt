@@ -120,6 +120,24 @@ class NativeR19TeachingAcceptanceTest {
         rule.onNodeWithTag("r19-stage-formation",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
         assertEquals(saved/1000f,canvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
     }
+    @Test fun maturationStagesHaveDistinctNativeEndpointsAndRealIntermediateMotion() {
+        val endpoints=mutableListOf<android.graphics.Bitmap>()
+        for(id in listOf("acidification","digestion","uptake")) {
+            rule.onNodeWithTag("r19-stage-"+id,true).performScrollTo().performClick()
+            val end=canvas().captureToImage().asAndroidBitmap();endpoints.add(end)
+            rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
+            val start=canvas().captureToImage().asAndroidBitmap();capture(id+"-start")
+            assertFalse(id+" must have a distinct completed pose",start.sameAs(end))
+            rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
+            rule.waitUntil(12_000) { rule.onNodeWithTag("r19-nutrition-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f }
+            rule.onNodeWithTag("r19-play-pause",true).performClick()
+            val mid=canvas().captureToImage().asAndroidBitmap();capture(id+"-intermediate")
+            assertFalse(id+" must actually animate",start.sameAs(mid));start.recycle();mid.recycle()
+        }
+        assertFalse("Acidification and enzymatic digestion must look different",endpoints[0].sameAs(endpoints[1]))
+        assertFalse("Enzymatic digestion and solute uptake must look different",endpoints[1].sameAs(endpoints[2]))
+        endpoints.forEach { it.recycle() }
+    }
     private fun capture(suffix: String) {
         val a=InstrumentationRegistry.getInstrumentation().uiAutomation
         val path="/sdcard/Download/native-anatomy-evidence/"+prefix+"-"+suffix+".png"
