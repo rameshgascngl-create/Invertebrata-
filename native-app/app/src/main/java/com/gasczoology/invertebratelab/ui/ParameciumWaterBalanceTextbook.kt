@@ -51,7 +51,18 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer);player.pause() }
     }
-    fun chooseStage(id: String) { player.rewind();change(progress.copy(stageId=id,phasePermille=0)) }
+    fun chooseStage(id: String,completed: Boolean = true) {
+        player.rewind()
+        val pose=if(completed)1000 else 0
+        player.restore(pose)
+        change(progress.copy(stageId=id,phasePermille=pose))
+    }
+    fun choosePose(completed: Boolean) {
+        player.pause()
+        val pose=if(completed)1000 else 0
+        player.restore(pose)
+        change(progress.copy(phasePermille=pose))
+    }
     fun chooseStructure(id: String) { change(progress.copy(selectedStructure=id));speak(ParameciumWaterBalance.structure(id).explanation) }
     fun advance(): Boolean {
         val current=ParameciumWaterBalance.stages.indexOfFirst { it.id==progress.stageId }
@@ -131,12 +142,31 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-stage-"+item.id)
                         .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
             }
+            Text(waterText(language,
+                "Manual stage selection shows the completed pose. Inspect either endpoint without motion, or play the stage from its start. The pose is a teaching frame, not a measured volume.",
+                "கையால் நிலையைத் தேர்ந்தெடுத்தால் முடிவுத் தோற்றம் காட்டப்படும். இயக்கமின்றித் தொடக்க அல்லது முடிவுத் தோற்றத்தைக் காணலாம்; அல்லது தொடக்கத்திலிருந்து நிலையை இயக்கலாம். இது கற்பித்தல் தோற்றம்; அளவிடப்பட்ட பருமன் அல்ல."))
+            Text(waterText(language,"View pose: ","காட்சித் தோற்றம்: ")+when {
+                playback.phase>=.999f -> waterText(language,"Completed","முடிவு")
+                playback.phase<=.001f -> waterText(language,"Start","தொடக்கம்")
+                else -> waterText(language,"Intermediate","இடைநிலை")
+            },modifier=Modifier.testTag("r18-view-pose"))
+            OutlinedButton(onClick={choosePose(false)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-start-view")) {
+                Text(waterText(language,"Inspect this stage's starting pose","இந்நிலையின் தொடக்கத் தோற்றத்தைக் காண்க"))
+            }
+            OutlinedButton(onClick={choosePose(true)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-complete-view")) {
+                Text(waterText(language,"Inspect this stage's completed pose","இந்நிலையின் முடிவுத் தோற்றத்தைக் காண்க"))
+            }
             Text(waterText(language,"Illustrative speed and proportions; real events overlap. Restored playback remains paused.",
                 "கற்பித்தலுக்கான வேகமும் விகிதங்களும்; இயற்கை நிகழ்வுகள் ஒன்றோடொன்று அமையும். மீட்டமைந்த இயக்கம் இடைநிறுத்தத்தில் இருக்கும்."))
             Text(waterText(language,if(playback.playing)"Playing" else "Paused",if(playback.playing)"இயங்குகிறது" else "இடைநிறுத்தம்"),
                 modifier=Modifier.testTag("r18-playback-state"))
             Button(onClick={if(playback.playing) {player.pause();change(progress.copy(phasePermille=(player.state.value.phase*1000).toInt()))}
-                else player.play(::advance)},enabled=!progress.reducedMotion,shape=shape,
+                else {
+                    if(player.state.value.phase>=1f) { player.rewind();change(progress.copy(phasePermille=0)) }
+                    player.play(::advance)
+                }},enabled=!progress.reducedMotion,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-play-pause")) {
                 Text(waterText(language,if(playback.playing)"Pause" else "Play",if(playback.playing)"இடைநிறுத்து" else "இயக்கு"))
             }
@@ -144,7 +174,7 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-previous")) { Text(waterText(language,"Previous view","முந்தைய காட்சி")) }
             OutlinedButton(onClick={chooseStage(ParameciumWaterBalance.stages[(index+1).coerceAtMost(3)].id)},enabled=index<3,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-next")) { Text(waterText(language,"Next view","அடுத்த காட்சி")) }
-            OutlinedButton(onClick={chooseStage("osmosis")},shape=shape,
+            OutlinedButton(onClick={chooseStage("osmosis",false)},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-reset")) { Text(waterText(language,"Replay from the beginning","தொடக்கத்திலிருந்து மீண்டும் இயக்கு")) }
             OutlinedButton(onClick={player.pause();change(progress.copy(reducedMotion=!progress.reducedMotion,
                 phasePermille=(player.state.value.phase*1000).toInt()))},shape=shape,

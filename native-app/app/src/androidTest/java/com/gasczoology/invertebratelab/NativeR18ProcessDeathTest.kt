@@ -34,7 +34,8 @@ class NativeR18ProcessDeathSetupTest {
         rule.waitForIdle()
         runBlocking { withTimeout(15_000) {
             val s=NativeLearningRepository(context).learningState.first { it.waterBalanceProgress.stageId=="expel" &&
-                it.waterBalanceProgress.readingId=="4.4" && it.waterBalanceProgress.selectedStructure=="decorated" }
+                it.waterBalanceProgress.readingId=="4.4" && it.waterBalanceProgress.selectedStructure=="decorated" &&
+                it.waterBalanceProgress.phasePermille==1000 }
             assertEquals("water-balance",s.laboratoryTab);assertEquals(StudyDestination.PARAMECIUM_LAB,s.destination)
             Log.i("R18_PROGRESS","committed ${s.waterBalanceProgress}")
         } }
@@ -55,10 +56,11 @@ class NativeR18ProcessDeathVerifyTest {
         runBlocking { val s=NativeLearningRepository(context).learningState.first()
             assertEquals(1,s.schemaVersion);assertEquals("water-balance",s.laboratoryTab)
             assertEquals("expel",s.waterBalanceProgress.stageId);assertEquals("4.4",s.waterBalanceProgress.readingId)
-            assertEquals("decorated",s.waterBalanceProgress.selectedStructure)
+            assertEquals("decorated",s.waterBalanceProgress.selectedStructure);assertEquals(1000,s.waterBalanceProgress.phasePermille)
             assertEquals(AppLanguage.TAMIL,LanguagePreferenceRepository(context).language.first())
             Log.i("R18_PROGRESS","recovered ${s.waterBalanceProgress}") }
         rule.onNodeWithTag("r18-view-plate",true).performScrollTo().performClick();rule.waitForIdle()
+        assertEquals(1f,rule.onNodeWithTag("r18-water-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.001f)
         val a=InstrumentationRegistry.getInstrumentation().uiAutomation
         ParcelFileDescriptor.AutoCloseInputStream(a.executeShellCommand("mkdir -p /sdcard/Download/native-anatomy-evidence")).use{it.readBytes()}
         ParcelFileDescriptor.AutoCloseInputStream(a.executeShellCommand("screencap -p /sdcard/Download/native-anatomy-evidence/r18-recovered-expel.png")).use{it.readBytes()}

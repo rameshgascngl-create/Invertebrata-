@@ -83,7 +83,7 @@ jobs:
         sudo udevadm trigger --name-match=kvm
 
         '
-    - name: Verify added native phase restoration in four font/orientation configurations and R1.7 schema compatibility
+    - name: Verify corrected completed stage poses, real motion and recovery in four font/orientation configurations
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 34
@@ -92,7 +92,7 @@ jobs:
         profile: pixel_6
         disable-animations: true
         emulator-boot-timeout: 900
-        script: bash .github/scripts/run-native-r18-quality.sh targeted-persistence
+        script: bash .github/scripts/run-native-r18-quality.sh
     - name: Preserve exact-commit R1.8 screenshot and instrumentation evidence
       if: always()
       uses: actions/upload-artifact@v4

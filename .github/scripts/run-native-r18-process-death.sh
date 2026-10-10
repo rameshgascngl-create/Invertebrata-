@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Android API 34 R1.8 dedicated nuclear recovery. This driver must prove a genuine backgrounded-process
+# Android API 34 R1.8 dedicated water-balance recovery. This driver must prove a genuine backgrounded-process
 # termination. am force-stop is intentionally prohibited.
 set -euo pipefail
 package="com.gasczoology.invertebratelab"

@@ -62,6 +62,7 @@ class NativeR18TeachingAcceptanceTest {
                 (if(lang==AppLanguage.TAMIL)"காட்சி " else "View ")+"${i+1}/4 — "+stage.heading.value(lang))
             rule.onNodeWithTag("r18-stage-explanation",true).performScrollTo().assertTextEquals(stage.explanation.value(lang))
             val c=canvas();assertEquals(6,c.fetchSemanticsNode().config[SemanticsActions.CustomActions].size)
+            assertEquals("Manual stage selection must show completed pose",1f,c.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.001f)
             assertTrue(c.fetchSemanticsNode().config[SemanticsProperties.ContentDescription].joinToString().contains(stage.heading.value(lang)))
             capture("stage-"+stage.id)
         }
@@ -77,6 +78,11 @@ class NativeR18TeachingAcceptanceTest {
         rule.onNodeWithTag("r18-reduced-motion",true).performScrollTo().performClick()
         rule.onNodeWithTag("r18-play-pause",true).assertIsNotEnabled()
         rule.onNodeWithTag("r18-reset",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r18-complete-view",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        assertEquals(1f,canvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.001f)
+        rule.onNodeWithTag("r18-start-view",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        assertEquals(0f,canvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.001f)
+        rule.onNodeWithTag("r18-play-pause",true).assertIsNotEnabled()
         rule.onNodeWithTag("r18-next",true).performScrollTo().assertIsEnabled().performClick()
         rule.onNodeWithTag("r18-stage-collect",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
     }
@@ -98,6 +104,7 @@ class NativeR18TeachingAcceptanceTest {
     }
     @Test fun nativeMotionReallyChangesPixelsAndPausesAtIntermediatePhase() {
         rule.onNodeWithTag("r18-stage-fill",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r18-start-view",true).performScrollTo().performClick()
         val before=canvas().captureToImage().asAndroidBitmap();capture("fill-phase-initial")
         rule.onNodeWithTag("r18-play-pause",true).performScrollTo().performClick()
         rule.waitUntil(12_000) { rule.onNodeWithTag("r18-water-canvas",true).fetchSemanticsNode()
