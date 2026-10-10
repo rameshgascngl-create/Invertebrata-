@@ -1,8 +1,5 @@
 name: Native R1.8 focused water-balance teaching validation
 'on':
-  push:
-    branches:
-    - native/r18-osmoregulation-textbook-20261010
   workflow_dispatch: null
 permissions:
   contents: read
