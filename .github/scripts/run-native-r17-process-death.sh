@@ -50,6 +50,7 @@ instrument() {
 gradle -p native-app :app:installDebug :app:installDebugAndroidTest --stacktrace \
     > "$evidence/install.log" 2>&1 || { result=COMPILE_OR_INSTALL_FAILURE; exit 1; }
 
+sha256sum native-app/app/build/outputs/apk/debug/*.apk native-app/app/build/outputs/apk/androidTest/debug/*.apk > "$evidence/tested-job-apk-sha256.txt"
 # Setup traverses the actual Kotlin Compose UI and verifies the DataStore commit.
 if ! instrument "$package.NativeR17ProcessDeathSetupTest" "$evidence/setup-instrumentation.txt"; then
     result=SETUP_OR_DATASTORE_ASSERTION_FAILURE

@@ -13,6 +13,11 @@ Reference model: Paramecium caudatum. This is an assisted source review, not nam
 
 An additional P. caudatum paper, DOI 10.3390/microorganisms14020263, was located; current publisher retrieval returned HTTP429 and PMC an access challenge. Its figures have not been inspected and it does not establish independent approval. An institutional repository PDF cited in a search result did not open; no figure inspection is claimed.
 
+## Further primary sequence evidence
+
+- Mikami (1996), DOI 10.1111/j.1550-7408.1996.tb02471.x, publisher abstract retrieved: the named P. caudatum cycle has two meiotic divisions, one haploid pronuclear mitosis and three synkaryon mitoses. Microsurgery-induced extra divisions are experimental abnormalities, not the default sequence.
+- Ishida, Nakajima, Kurokawa & Mikami (1999), Zoological Science 16:915–926, https://dl.ndl.go.jp/view/prepareDownload?contentNo=1&itemId=info%3Andljp%2Fpid%2F10862438 : primary scanned PDF retrieved. Actual pages 920–921 / Figures 4–5 were inspected, including legends and staining context. In these observations pair separation followed the first synkaryon division; subsequent postzygotic divisions and four/four nuclear differentiation were distinct. The module must not portray the observation as universal exact timing in every strain. The old oral apparatus is remodeled during meiosis; an oral-facing contact cue must not be described as an unchanged functioning feeding apparatus throughout conjugation. No research image is shipped or traced.
+
 ## Direct microscopy comparison, 10 October 2026
 
 Richard Allen / Pacific Biomedical Research Center, University of Hawaii, P. caudatum atlas Figures 48 and 50 were retrieved and their actual JPEG pixels inspected. Figure 48 TEM depicts an elongated, enveloped MIC spindle beside the MAC; Figure 50 fluorescent panels distinguish interphase, elongating MIC, a long spindle, and late transverse constriction. These support closed micronuclear mitosis and separate nuclear division versus cytokinesis. They are reference observations, not independent approval of this application's schematic geometry. No source photograph is included in the app.

@@ -9,6 +9,7 @@ result=NOT_STARTED
 finish() {
   local code=$?
   printf 'result=%s\nphase=%s\nexit=%s\ncommit=%s\n' "$result" "$phase" "$code" "$GITHUB_SHA" > "$evidence/result.txt"
+  sha256sum native-app/app/build/outputs/apk/debug/*.apk native-app/app/build/outputs/apk/androidTest/debug/*.apk > "$evidence/tested-job-apk-sha256.txt" 2>/dev/null || true
   adb logcat -d -v threadtime > "$evidence/logcat.txt" 2>&1 || true
   adb pull "$device_dir" "$evidence/screenshots" >/dev/null 2>&1 || true
   adb shell dumpsys meminfo com.gasczoology.invertebratelab > "$evidence/meminfo.txt" 2>&1 || true

@@ -48,15 +48,13 @@ internal fun ParameciumNuclearTextbook(
     val reading = chapter.readings.firstOrNull { it.id == progress.readingId } ?: chapter.readings.first()
     val player: NuclearPlaybackViewModel = viewModel()
     val playback by player.state.collectAsState()
-    val latestProgress by rememberUpdatedState(progress)
-    val latestChange by rememberUpdatedState<(NuclearLearningProgress) -> Unit> { change(it) }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     LaunchedEffect(progress.chapterId, stage.id) { player.restore(progress.phasePermille) }
     DisposableEffect(player, lifecycle) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_STOP) {
                 player.pause()
-                latestChange(latestProgress.copy(phasePermille = (player.state.value.phase * 1000).toInt()))
+                change(progress.copy(phasePermille = (player.state.value.phase * 1000).toInt()))
             }
         }
         lifecycle.addObserver(observer)
@@ -71,11 +69,11 @@ internal fun ParameciumNuclearTextbook(
         change(next)
     }
     fun advance(): Boolean {
-        val current = latestProgress
+        val current = progress
         val c = ParameciumNuclearBiology.chapter(current.chapterId)
         val index = c.views.indexOfFirst { it.id == current.viewId() }
         if (index >= c.views.lastIndex) return false
-        latestChange(current.selectView(c.views[index + 1].id))
+        change(current.selectView(c.views[index + 1].id))
         return true
     }
     val shape = RoundedCornerShape(12.dp)
