@@ -68,7 +68,8 @@ internal fun DrawScope.drawCiliaryPencilDiagram(stage: String, selectedPart: Str
             Offset(x + w * .024f, baseline + h * .15f), line * .65f)
     }
     // Enlarged cross-sections ABOVE the side view. Insets are different scales.
-    val radius = min(h * .145f, w * .125f)
+    // Keep enlarged insets clear of the extended ciliary tips in both orientations.
+    val radius = min(h * .13f, w * .125f)
     val tubule = radius * .10f
     fun ring(center: Offset, basal: Boolean) {
         val part = if (basal) "basal" else "axoneme"
@@ -111,6 +112,6 @@ internal fun DrawScope.drawCiliaryPencilDiagram(stage: String, selectedPart: Str
             }
         }
     }
-    ring(Offset(w * .26f, h * .23f), basal = true)
-    ring(Offset(w * .75f, h * .23f), basal = false)
+    ring(Offset(w * .26f, h * .19f), basal = true)
+    ring(Offset(w * .75f, h * .19f), basal = false)
 }
