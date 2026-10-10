@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab.data
 
-data class NuclearBodyCell(val cx: Float,val cy: Float,val width: Float,val height: Float,val furrow: Float=0f)
+data class NuclearBodyCell(val cx: Float,val cy: Float,val width: Float,val height: Float,val furrow: Float=0f,
+    val mirrorVentral: Boolean=false)
 data class NuclearBodyMark(val kind: String,val x: Float,val y: Float,val width: Float,val height: Float,
     val role: String="",val cellIndex: Int=0,val origin: PartnerOrigin?=null)
 data class NuclearBodyLayout(val cells: List<NuclearBodyCell>,val marks: List<NuclearBodyMark>)
@@ -12,7 +13,8 @@ object NuclearBodyGeometry {
             8 -> List(8) { NuclearBodyCell(103f+(it%4)*132f,170f+(it/4)*195f,117f,125f) }
             4 -> List(4) { NuclearBodyCell(174f+(it%2)*268f,170f+(it/2)*195f,235f,135f) }
             else -> List(2) { NuclearBodyCell(310f,if(it==0) 178f-(if(stage.id=="separation") t*18 else 0f)
-                else 362f+(if(stage.id=="separation") t*18 else 0f),520f,if(stage.paired) 160f else 142f) }
+                else 362f+(if(stage.id=="separation") t*18 else 0f),520f,if(stage.paired) 160f else 142f,
+                mirrorVentral=stage.paired && it==1) }
         }
         val marks=mutableListOf<NuclearBodyMark>()
         cells.forEachIndexed { index,c ->
@@ -31,6 +33,7 @@ object NuclearBodyGeometry {
             val genomes=ConjugationGenetics.genomes(stage,index)
             genomes.forEachIndexed { i,g ->
                 var x=-162f+(i%4)*48f;var y=-22f+(i/4)*42f
+                if(stage.id=="selection") { x=-35f;y=if(index==0)55f else -55f }
                 if(stage.id in setOf("pronuclei","exchange")) {
                     x=if(g.role==GermlineRole.STATIONARY)-128f else -52f
                     y=if(g.role==GermlineRole.STATIONARY)-30f else if(index==0)58f else -58f
@@ -48,7 +51,8 @@ object NuclearBodyGeometry {
                 val r=if(stage.germNucleiPerCell>=4)13f else 17f
                 mark("micronucleus",x,y,r*2,r*2,g.role.name,g.origin)
             }
-            repeat(stage.degeneratingGermNucleiPerCell){i ->mark("micronucleus",-88f+i*45f,35f,19f,19f,"degeneration")}
+            repeat(stage.degeneratingGermNucleiPerCell){i ->mark("micronucleus",-160f+i*45f,
+                if(index==0)-25f else 25f,19f,19f,"degeneration")}
         }
         return NuclearBodyLayout(cells,marks)
     }

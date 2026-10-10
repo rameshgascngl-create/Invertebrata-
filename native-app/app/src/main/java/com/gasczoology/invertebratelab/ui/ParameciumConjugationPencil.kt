@@ -47,7 +47,7 @@ private fun DrawScope.arrow(a:Offset,b:Offset) {
 internal fun DrawScope.drawConjugationPencilPlate(stage:NuclearView,selected:String,phase:Float) {
     val body=NuclearBodyGeometry.conjugation(stage,phase)
     body.cells.forEachIndexed { i,c ->
-        pencilCell(c)
+        if(c.mirrorVentral)withTransform({scale(1f,-1f,pivot=Offset(c.cx,c.cy))}){pencilCell(c)} else pencilCell(c)
         label(if(stage.cellCount==2)if(i==0)"A" else "B" else "${i+1}",c.cx-c.width*.45f,c.cy-c.height*.57f)
     }
     if(stage.paired) {
@@ -108,7 +108,8 @@ internal fun DrawScope.drawConjugationPencilPlate(stage:NuclearView,selected:Str
             if(g.ploidy==2) {
                 chromosome(x-r*.27f,y,g.replicated,false,if(count>1).45f else .8f)
                 chromosome(x+r*.27f,y,g.replicated,true,if(count>1).45f else .8f)
-            } else chromosome(x,y,g.replicated,false,if(count>1).5f else .8f)
+            } else chromosome(x,y,g.replicated,g.representativeHomolog==1,if(count>1).5f else .8f)
+            g.representativeHomolog?.let { label("H$it",x-15f,y+r+22f) }
         }
     }
     if(stage.residualGermlinePossible) {
@@ -117,6 +118,6 @@ internal fun DrawScope.drawConjugationPencilPlate(stage:NuclearView,selected:Str
             drawCircle(pencil,7f,Offset(708f+i*25f,488f),style=Stroke(1.2f))
             drawLine(pencil,Offset(703f+i*25f,483f),Offset(713f+i*25f,493f),1f)
         }
-        label("residual?",793f,497f)
+        label("†",810f,497f)
     }
 }

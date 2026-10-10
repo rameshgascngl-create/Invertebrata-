@@ -13,6 +13,8 @@ class ParameciumConjugationScientificTest {
         assertEquals(listOf(2,2,1,1),views.take(4).map{it.germPloidy})
         assertTrue(ConjugationGenetics.genomes(stage("meiosis-i"),0).all{it.replicated && it.ploidy==1})
         assertTrue(ConjugationGenetics.genomes(stage("meiosis-ii"),0).all{!it.replicated && it.ploidy==1})
+        assertEquals(listOf(0,1),ConjugationGenetics.genomes(stage("meiosis-i"),0).map{it.representativeHomolog})
+        assertEquals(listOf(0,0,1,1),ConjugationGenetics.genomes(stage("meiosis-ii"),0).map{it.representativeHomolog})
         assertEquals(3,stage("selection").degeneratingGermNucleiPerCell)
         assertEquals(1,stage("selection").germNucleiPerCell)
     }
@@ -67,6 +69,16 @@ class ParameciumConjugationScientificTest {
         val a=NuclearBodyGeometry.conjugation(s,0f).marks.first{it.role=="MIGRATORY"}
         val b=NuclearBodyGeometry.conjugation(s,1f).marks.first{it.role=="MIGRATORY"}
         assertNotEquals(a.y,b.y)
+    }
+    @Test fun pairedVentralProjectionAndSelectedSurvivorFaceTheParoralContact() {
+        val layout=NuclearBodyGeometry.conjugation(stage("selection"),0f)
+        assertFalse(layout.cells[0].mirrorVentral);assertTrue(layout.cells[1].mirrorVentral)
+        for(index in 0..1) {
+            val survivor=layout.marks.single{it.cellIndex==index && it.kind=="micronucleus" && it.role!="degeneration"}
+            assertTrue(if(index==0)survivor.y>layout.cells[index].cy else survivor.y<layout.cells[index].cy)
+            assertEquals(3,layout.marks.count{it.cellIndex==index && it.role=="degeneration"})
+        }
+        assertTrue(NuclearBodyGeometry.conjugation(stage("separation"),1f).cells.none{it.mirrorVentral})
     }
     @Test fun allThreeReadingAndStageAnchorsSurviveNormalizationAndChapterRoundTrip() {
         val p=NuclearLearningProgress().selectReading("1.3").selectView("germline")

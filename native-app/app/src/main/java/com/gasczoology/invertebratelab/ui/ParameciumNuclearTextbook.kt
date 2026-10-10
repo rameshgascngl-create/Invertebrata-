@@ -139,13 +139,15 @@ internal fun ParameciumNuclearTextbook(
                     " · Enlarged chromosome symbols are representative, not a species count.",
                     " · பெரிதாக்கிய குரோமோசோம் குறிகள் பிரதிநிதிகள்; இனத்தின் எண்ணிக்கை அல்ல."))
             if(chapter.id=="conjugation") {
-                Text(text(language,"Per cell: germline products ","செல்லுக்கு: மரபுவழி விளைவுகள் ") + stage.germNucleiPerCell +
+                Text(if(stage.residualGermlinePossible)text(language,"Per cell: normally dividing MIC complement ","செல்லுக்கு: இயல்பாகப் பிரியும் சிற்றுட்கருத் தொகுப்பு ") + stage.germNucleiPerCell +
+                    text(language," · developing MACs "," · வளரும் பேருட்கருக்கள் ") + stage.macronuclearAnlagenPerCell
+                    else text(language,"Per cell: germline products ","செல்லுக்கு: மரபுவழி விளைவுகள் ") + stage.germNucleiPerCell +
                     text(language," · developing MACs "," · வளரும் பேருட்கருக்கள் ") + stage.macronuclearAnlagenPerCell +
                     text(language," · degeneration-fate symbols "," · சிதைவுப் பாதைக் குறிகள் ") + stage.degeneratingGermNucleiPerCell,
                     modifier=Modifier.testTag("r17-nuclear-products"))
                 Text(text(language,
-                    "A = solid origin mark; B = striped mark; combined marks follow fusion. Patterns identify partner origin, not complete genotypes. Four presumptive germline candidates remain visible during differentiation. Later residual symbols do not specify per-daughter counts.",
-                    "A = திடத் தோற்றக் குறி; B = கோடிட்ட குறி; இணைந்த குறிகள் கருவுறுதலுக்குப் பின் தொடரும். குறிகள் இணைத் தோற்றத்தை மட்டும் குறிக்கின்றன; முழு மரபணுவகை அல்ல. வேறுபாட்டு நிலையில் நான்கு எதிர்கால மரபுவழி வாய்ப்புகளும் காணப்படுகின்றன. பிந்திய எச்சக் குறிகள் சேய் செல்லுக்கான எண்ணிக்கையைக் கூறுவதில்லை."),
+                    "A = solid origin mark; B = striped mark; combined marks follow fusion. H0/H1 identify two representative homologs in the meiotic inset; paired X arms are sister chromatids. Nuclear origin patterns are not complete genotypes. Four presumptive germline candidates remain visible during differentiation. † marks qualitative later remnants, not per-daughter counts.",
+                    "A = திடத் தோற்றக் குறி; B = கோடிட்ட குறி; இணைந்த குறிகள் கருவுறுதலுக்குப் பின் தொடரும். மியோசிஸ் சிறுபடத்தில் H0/H1 இரண்டு பிரதிநிதி ஒத்த குரோமோசோம்களைக் குறிக்கும்; இணைந்த X கரங்கள் சகோதரி குரோமாட்டிடுகள். தோற்றக் குறிகள் முழு மரபணுவகை அல்ல. வேறுபாட்டு நிலையில் நான்கு எதிர்கால மரபுவழி வாய்ப்புகளும் காணப்படுகின்றன. † பிந்திய பண்புசார் எச்சக் குறி; சேய் செல்லுக்கான எண்ணிக்கை அல்ல."),
                     modifier=Modifier.testTag("r17-partner-legend"))
             }
             Button(onClick = { scope.launch { requester.bringIntoView() } }, shape = shape,
