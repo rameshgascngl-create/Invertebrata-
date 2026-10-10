@@ -18,12 +18,24 @@ finish() {
 }
 trap finish EXIT
 # Disable radios: this validates offline UI/fallback, never audible voice acceptance.
+adb shell cmd connectivity airplane-mode enable
 adb shell svc wifi disable
 adb shell svc data disable
-adb shell settings put global airplane_mode_on 1
 adb shell settings get global airplane_mode_on > "$evidence/airplane-setting.txt"
-adb shell dumpsys connectivity > "$evidence/connectivity-before.txt"
-grep -q 'Active default network: none' "$evidence/connectivity-before.txt" || { result=OFFLINE_SETUP_FAIL; exit 1; }
+# Radio changes are asynchronous. Require actual ConnectivityService disconnection,
+# not an airplane setting or a fixed sleep taken as proof of being offline.
+offline_verified=0
+for attempt in {1..30}; do
+  adb shell dumpsys connectivity > "$evidence/connectivity-before.txt"
+  printf 'attempt=%s ' "$attempt" >> "$evidence/offline-state-poll.txt"
+  sed -n '/Active default network:/p' "$evidence/connectivity-before.txt" >> "$evidence/offline-state-poll.txt"
+  if grep -q 'Active default network: none' "$evidence/connectivity-before.txt"; then
+    offline_verified=1
+    break
+  fi
+  sleep 1
+done
+[[ "$offline_verified" == 1 ]] || { result=OFFLINE_SETUP_FAIL; exit 1; }
 adb shell cmd package query-services --brief -a android.intent.action.TTS_SERVICE > "$evidence/tts-services.txt" 2>&1 || true
 for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "TAMIL 2.0 landscape"; do
   read -r language scale orientation <<< "$config"
