@@ -134,7 +134,8 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
                 }
             }
             when(tab) {
-                "study" -> StudySection(language,::speak)
+                "study" -> StudySection(language, ::speak, onAnatomy = { tab = "anatomy" },
+                    onSimulation = { tab = "simulate" })
                 "anatomy" -> AtlasSection(language, ::speak, onExploreOsmoregulation = {
                     simulationId = ParameciumProcess.OSMOREGULATION.name
                     simulationStep = 0
@@ -168,26 +169,13 @@ fun ParameciumTeachingLab(language:AppLanguage,onBack:()->Unit,onPractice:()->Un
 }
 
 @Composable
-private fun StudySection(language:AppLanguage,speak:(BilingualText)->Unit) {
-    val lesson=NativeLessonDrafts.paramecium
-    Text(lesson.title.value(language),modifier=Modifier.testTag("r1-study-title"))
-    for(section in lesson.sections) {
-        Column(modifier=Modifier.testTag("r1-study-"+section.id),
-            verticalArrangement=Arrangement.spacedBy(6.dp)) {
-            Text(section.heading.value(language))
-            for(p in section.paragraphs) Text(p.value(language))
-        }
-    }
-    Text(bi(language,"Explore organ functions:","உறுப்புகளின் செயல்பாடுகளை ஆராய்க:"))
-    for(organ in ParameciumLearningEngine.organs) {
-        Text(organ.name.value(language)+" — "+organ.function.value(language))
-        OutlinedButton(onClick={speak(organ.narration)},
-            modifier=Modifier.heightIn(min=48.dp).testTag("r1-study-voice-"+organ.id)) {
-            Text(bi(language,"Hear explanation: ","விளக்கத்தைக் கேள்: ")+organ.name.value(language))
-        }
-    }
-    Text(bi(language,"Scientific reading:","அறிவியல் மேற்கோள்கள்:"))
-    for(source in lesson.sections.flatMap { it.scientificSources }.distinct()) Text(source)
+private fun StudySection(
+    language: AppLanguage,
+    speak: (BilingualText) -> Unit,
+    onAnatomy: () -> Unit,
+    onSimulation: () -> Unit,
+) {
+    ParameciumTextbookReader(language, speak, onAnatomy, onSimulation)
 }
 
 @Composable
