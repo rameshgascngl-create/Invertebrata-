@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
+import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -270,6 +271,18 @@ internal fun ParameciumTextbookReader(
         }
     }
 
+    // Put the full original hand-drawn, interactive atlas ABOVE the lesson
+    // paragraphs on the first page, instead of burying it after exam questions.
+    if (chapter == 0) {
+        ParameciumExternalCanvas(
+            language = language,
+            compact = true,
+            onOrganSelected = { organId ->
+                speak(ParameciumLearningEngine.organ(organId).narration)
+            },
+        )
+    }
+
     OutlinedButton(onClick = { contentsExpanded = !contentsExpanded },
         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r14-contents-toggle")) {
         Text(view(language,
@@ -329,7 +342,7 @@ internal fun ParameciumTextbookReader(
         "conjugation" -> "conjugation"
         else -> "overview"
     }
-    PencilMechanismFigure(figure, language)
+    if (chapter != 0) PencilMechanismFigure(figure, language)
     if (chapter == 0) {
         Text(view(language,
             "Anatomical pencil plate: touch individual organs in the Anatomy section for highlighting and narration.",
