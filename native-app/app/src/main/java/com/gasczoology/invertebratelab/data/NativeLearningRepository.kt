@@ -47,6 +47,11 @@ class NativeLearningRepository(private val context: Context) {
         val fissionReading = stringPreferencesKey("r17_fission_reading")
         val conjugationReading = stringPreferencesKey("r17_conjugation_reading")
         val reducedMotion = booleanPreferencesKey("r17_reduced_motion")
+        val nutritionStage = stringPreferencesKey("r19_nutrition_stage")
+        val nutritionReading = stringPreferencesKey("r19_nutrition_reading")
+        val nutritionStructure = stringPreferencesKey("r19_nutrition_structure")
+        val nutritionPhase = intPreferencesKey("r19_nutrition_phase_permille")
+        val nutritionReduced = booleanPreferencesKey("r19_nutrition_reduced_motion")
         val waterStage = stringPreferencesKey("r18_water_stage")
         val waterReading = stringPreferencesKey("r18_water_reading")
         val waterStructure = stringPreferencesKey("r18_water_structure")
@@ -86,6 +91,12 @@ class NativeLearningRepository(private val context: Context) {
             preferences[Keys.fissionReading] = progress.fissionReading
             preferences[Keys.conjugationReading] = progress.conjugationReading
             preferences[Keys.reducedMotion] = progress.reducedMotion
+            val nutrition = state.nutritionProgress.normalized()
+            preferences[Keys.nutritionStage] = nutrition.stageId
+            preferences[Keys.nutritionReading] = nutrition.readingId
+            preferences[Keys.nutritionStructure] = nutrition.selectedStructure
+            preferences[Keys.nutritionPhase] = nutrition.phasePermille
+            preferences[Keys.nutritionReduced] = nutrition.reducedMotion
             val water = state.waterBalanceProgress.normalized()
             preferences[Keys.waterStage] = water.stageId
             preferences[Keys.waterReading] = water.readingId
@@ -113,6 +124,13 @@ class NativeLearningRepository(private val context: Context) {
             textbookSectionId = preferences[Keys.textbookSection] ?: "identity-and-habitat",
             ciliaryStageIndex = preferences[Keys.ciliaryStage] ?: 0,
             laboratoryTab = preferences[Keys.laboratoryTab] ?: "study",
+            nutritionProgress = NutritionProgress(
+                stageId = preferences[Keys.nutritionStage] ?: "current",
+                readingId = preferences[Keys.nutritionReading] ?: "5.1",
+                selectedStructure = preferences[Keys.nutritionStructure] ?: "oral-groove",
+                phasePermille = preferences[Keys.nutritionPhase] ?: 0,
+                reducedMotion = preferences[Keys.nutritionReduced] ?: false,
+            ).normalized(),
             waterBalanceProgress = WaterBalanceProgress(
                 stageId = preferences[Keys.waterStage] ?: "osmosis",
                 readingId = preferences[Keys.waterReading] ?: "4.1",

@@ -127,6 +127,11 @@ fun ParameciumTeachingLab(
                 Text("R1.7 · ${p.chapterId} · ${p.viewId()} · ${p.readingId} · ${p.selectedNucleus}",
                     modifier = Modifier.testTag("r17-learning-position"))
             }
+            if (tab == "nutrition") {
+                val p = learningState.nutritionProgress
+                Text("R1.9 · " + p.stageId + " · " + p.readingId + " · " + p.selectedStructure,
+                    modifier = Modifier.testTag("r19-learning-position"))
+            }
             if (tab == "water-balance") {
                 val p = learningState.waterBalanceProgress
                 Text("R1.8 · ${p.stageId} · ${p.readingId} · ${p.selectedStructure}",
@@ -187,7 +192,7 @@ fun ParameciumTeachingLab(
                     }
                 }
             }
-            val menu = listOf("study", "anatomy", "simulate", "listen", "practice", "nuclear", "water-balance")
+            val menu = listOf("study", "anatomy", "simulate", "listen", "practice", "nuclear", "water-balance", "nutrition")
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -203,6 +208,7 @@ fun ParameciumTeachingLab(
                                 "listen" -> bi(language, "04 · Listen", "04 · ஒலி விளக்கம்")
                                 "nuclear" -> bi(language, "06 · Nuclear biology", "06 · உட்கரு உயிரியல்")
                                 "water-balance" -> bi(language, "07 · Water balance", "07 · நீர்ச் சமநிலை")
+                                "nutrition" -> bi(language, "08 · Nutrition", "08 · ஊட்டமுறை")
                                 else -> bi(language, "05 · Practice", "05 · பயிற்சி")
                             }
                             val buttonModifier = Modifier.weight(1f)
@@ -222,6 +228,8 @@ fun ParameciumTeachingLab(
                 }
             }
             when(tab) {
+                "nutrition" -> ParameciumNutritionTextbook(language, ::speak, learningState.nutritionProgress,
+                    onProgress = { onLearningChanged(learningState.copy(nutritionProgress = it)) })
                 "water-balance" -> ParameciumWaterBalanceTextbook(language, ::speak, learningState.waterBalanceProgress,
                     onProgress = { onLearningChanged(learningState.copy(waterBalanceProgress = it)) })
                 "nuclear" -> ParameciumNuclearTextbook(language, ::speak, learningState.nuclearProgress,
