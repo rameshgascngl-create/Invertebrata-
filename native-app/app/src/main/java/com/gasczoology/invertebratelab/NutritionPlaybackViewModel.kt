@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 data class NutritionPlayback(val playing: Boolean = false, val phase: Float = 0f)
-/** Presentation speed is illustrative. Semantic stages are separately persisted. */
+/** Six-second presentation gives time to inspect/pause a plate; it is not biological kinetics. */
 class NutritionPlaybackViewModel : ViewModel() {
     private val mutable = MutableStateFlow(NutritionPlayback())
     val state = mutable.asStateFlow()
@@ -21,9 +21,9 @@ class NutritionPlaybackViewModel : ViewModel() {
         if (mutable.value.playing) return
         mutable.value = mutable.value.copy(playing = true)
         clock = viewModelScope.launch {
-            val start = (mutable.value.phase * 60).toInt()
-            for (frame in start..60) {
-                mutable.value = NutritionPlayback(true, frame / 60f)
+            val start = (mutable.value.phase * 120).toInt()
+            for (frame in start..120) {
+                mutable.value = NutritionPlayback(true, frame / 120f)
                 delay(50)
             }
             mutable.value = NutritionPlayback(false, 1f)
