@@ -13,6 +13,15 @@ Reference model: Paramecium caudatum. This is an assisted source review, not nam
 
 An additional P. caudatum paper, DOI 10.3390/microorganisms14020263, was located; current publisher retrieval returned HTTP429 and PMC an access challenge. Its figures have not been inspected and it does not establish independent approval. An institutional repository PDF cited in a search result did not open; no figure inspection is claimed.
 
+## Direct microscopy comparison, 10 October 2026
+
+Richard Allen / Pacific Biomedical Research Center, University of Hawaii, P. caudatum atlas Figures 48 and 50 were retrieved and their actual JPEG pixels inspected. Figure 48 TEM depicts an elongated, enveloped MIC spindle beside the MAC; Figure 50 fluorescent panels distinguish interphase, elongating MIC, a long spindle, and late transverse constriction. These support closed micronuclear mitosis and separate nuclear division versus cytokinesis. They are reference observations, not independent approval of this application's schematic geometry. No source photograph is included in the app.
+
+- https://www6.pbrc.hawaii.edu/allen/ch10a/48-pca740125-46.html — Allen TEM 25 January 1974, 1 µm bar; published in Gortz (ed.), Paramecium (1988), p.34.
+- https://www6.pbrc.hawaii.edu/allen/ch10a/50-pca.html — M. Aihara fluorescent images, published J. Protozool. 35:400–405 (1988); separate panel scale bars. Magnification is not transferred to our Canvas frame.
+
+Alberts et al., Molecular Biology of the Cell (NCBI Bookshelf NBK26840), indexed established-cell-biology text consulted for homolog/sister distinctions. A full landing-page request encountered an access challenge. General animal open-mitosis envelope breakdown is not transferred to ciliate closed mitosis.
+
 ## Illustration and terminology limits
 
 The whole-cell plate is a horizontal schematic with anterior left, posterior right, a larger hatched MAC and compact MIC. Independently enlarged insets are not additional nuclei. Nuclear location, indentation, cilia density, chromatin marks, chromosome symbols and relative sizes are not calibrated measurements. Chromosome cartoons will use representative homolog/sister symbols, not an invented species karyotype. MAC/MIC are somatic/germline compartments, never male/female nuclei.

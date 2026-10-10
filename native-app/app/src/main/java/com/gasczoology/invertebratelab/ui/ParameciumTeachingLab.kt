@@ -122,6 +122,11 @@ fun ParameciumTeachingLab(
                 bi(language, " · ciliary view ", " · குறுஇழைக் காட்சி ") +
                 (learningState.ciliaryStageIndex + 1) + "/4",
                 modifier = Modifier.testTag("r161-learning-position"))
+            if (tab == "nuclear") {
+                val p = learningState.nuclearProgress
+                Text("R1.7 · ${p.chapterId} · ${p.viewId()} · ${p.readingId} · ${p.selectedNucleus}",
+                    modifier = Modifier.testTag("r17-learning-position"))
+            }
             Text(
                 bi(language, "PARAMECIUM · DIGITAL ZOOLOGY TEXTBOOK",
                     "பாரமீசியம் · மின்னணு விலங்கியல் பாடநூல்"),

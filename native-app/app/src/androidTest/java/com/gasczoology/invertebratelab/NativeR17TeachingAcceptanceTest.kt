@@ -15,6 +15,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -93,6 +94,14 @@ class NativeR17TeachingAcceptanceTest {
         rule.onNodeWithTag("r161-stop-audio",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-reading-1.3",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-stage-germline",true).performScrollTo().performClick()
+        // Establish a durable commit before recreation, exactly as the existing
+        // process-death setup does. Compose idleness does not await DataStore IO.
+        runBlocking { withTimeout(15_000) {
+            NativeLearningRepository(context).learningState.first { s ->
+                s.nuclearProgress.readingId=="1.3" && s.nuclearProgress.dimorphismView=="germline" &&
+                    s.nuclearProgress.selectedNucleus=="micronucleus"
+            }
+        } }
         rule.activityRule.scenario.recreate()
         rule.waitUntil(20_000) { rule.onAllNodesWithTag("r17-textbook-title",true).fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("r17-reading-heading",true).performScrollTo().assertTextEquals(chapter.readings[2].heading.value(lang))
