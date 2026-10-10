@@ -177,7 +177,7 @@ fun ParameciumTeachingLab(
                     }
                 }
             }
-            val menu = listOf("study", "anatomy", "simulate", "listen", "practice")
+            val menu = listOf("study", "anatomy", "simulate", "listen", "practice", "nuclear")
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -191,6 +191,7 @@ fun ParameciumTeachingLab(
                                 "anatomy" -> bi(language, "02 · Anatomy", "02 · உடலமைப்பு")
                                 "simulate" -> bi(language, "03 · Simulate", "03 · இயக்கக் காட்சி")
                                 "listen" -> bi(language, "04 · Listen", "04 · ஒலி விளக்கம்")
+                                "nuclear" -> bi(language, "06 · Nuclear biology", "06 · உட்கரு உயிரியல்")
                                 else -> bi(language, "05 · Practice", "05 · பயிற்சி")
                             }
                             val buttonModifier = Modifier.weight(1f)
@@ -210,6 +211,8 @@ fun ParameciumTeachingLab(
                 }
             }
             when(tab) {
+                "nuclear" -> ParameciumNuclearTextbook(language, ::speak, learningState.nuclearProgress,
+                    onProgress = { onLearningChanged(learningState.copy(nuclearProgress = it)) })
                 "study" -> StudySection(language, ::speak, onAnatomy = { selectTab("anatomy") },
                     onSimulation = { selectTab("simulate") },
                     learningState = learningState, onLearningChanged = onLearningChanged)
@@ -257,7 +260,9 @@ private fun StudySection(
         sectionId = learningState.textbookSectionId,
         ciliaryStageIndex = learningState.ciliaryStageIndex,
         onSectionSelected = { onLearningChanged(learningState.copy(textbookSectionId = it)) },
-        onCiliaryStageSelected = { onLearningChanged(learningState.copy(ciliaryStageIndex = it)) })
+        onCiliaryStageSelected = { onLearningChanged(learningState.copy(ciliaryStageIndex = it)) },
+        onNuclearChapter = { chapter -> onLearningChanged(learningState.copy(laboratoryTab = "nuclear",
+            nuclearProgress = learningState.nuclearProgress.copy(chapterId = chapter, phasePermille = 0).normalized())) })
 }
 
 @Composable

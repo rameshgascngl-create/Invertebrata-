@@ -287,6 +287,7 @@ internal fun ParameciumTextbookReader(
     ciliaryStageIndex: Int,
     onSectionSelected: (String) -> Unit,
     onCiliaryStageSelected: (Int) -> Unit,
+    onNuclearChapter: (String) -> Unit,
 ) {
     val lesson = NativeLessonDrafts.paramecium
     val chapter = lesson.sections.indexOfFirst { it.id == sectionId }.coerceAtLeast(0)
@@ -390,6 +391,13 @@ internal fun ParameciumTextbookReader(
                     Text(view(language, "Listen to this explanation", "இவ்விளக்கத்தைக் கேள்"))
                 }
             }
+        }
+    }
+    if (section.id == "nuclear-dimorphism") {
+        Button(onClick = { onNuclearChapter("dimorphism") }, shape = RoundedCornerShape(12.dp),
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-from-reader")) {
+            Text(view(language, "Open the complete nuclear-dimorphism textbook and touch atlas",
+                "முழு உட்கரு இருவகைமைப் பாடத்தையும் தொடு உடலமைப்புப் படத்தையும் திற"))
         }
     }
     // A complete pencil-illustrated ciliary mechanism occupies the native

@@ -36,6 +36,13 @@ class NativeLearningRepository(private val context: Context) {
         val textbookSection = stringPreferencesKey("textbook_section_id")
         val ciliaryStage = intPreferencesKey("ciliary_stage_index")
         val laboratoryTab = stringPreferencesKey("laboratory_tab")
+        val nuclearChapter = stringPreferencesKey("r17_nuclear_chapter")
+        val dimorphismView = stringPreferencesKey("r17_dimorphism_view")
+        val fissionView = stringPreferencesKey("r17_fission_view")
+        val conjugationView = stringPreferencesKey("r17_conjugation_view")
+        val selectedNucleus = stringPreferencesKey("r17_selected_nucleus")
+        val nuclearReading = stringPreferencesKey("r17_nuclear_reading")
+        val nuclearPhase = intPreferencesKey("r17_phase_permille")
     }
 
     val learningState: Flow<NativeLearningState> = context.nativeLearningStore.data
@@ -58,6 +65,14 @@ class NativeLearningRepository(private val context: Context) {
             preferences[Keys.textbookSection] = state.textbookSectionId
             preferences[Keys.ciliaryStage] = state.ciliaryStageIndex
             preferences[Keys.laboratoryTab] = state.laboratoryTab
+            val progress = state.nuclearProgress.normalized()
+            preferences[Keys.nuclearChapter] = progress.chapterId
+            preferences[Keys.dimorphismView] = progress.dimorphismView
+            preferences[Keys.fissionView] = progress.fissionView
+            preferences[Keys.conjugationView] = progress.conjugationView
+            preferences[Keys.selectedNucleus] = progress.selectedNucleus
+            preferences[Keys.nuclearReading] = progress.readingId
+            preferences[Keys.nuclearPhase] = progress.phasePermille
         }
     }
 
@@ -79,6 +94,15 @@ class NativeLearningRepository(private val context: Context) {
             textbookSectionId = preferences[Keys.textbookSection] ?: "identity-and-habitat",
             ciliaryStageIndex = preferences[Keys.ciliaryStage] ?: 0,
             laboratoryTab = preferences[Keys.laboratoryTab] ?: "study",
+            nuclearProgress = NuclearLearningProgress(
+                chapterId = preferences[Keys.nuclearChapter] ?: "dimorphism",
+                dimorphismView = preferences[Keys.dimorphismView] ?: "whole-cell",
+                fissionView = preferences[Keys.fissionView] ?: "preparation",
+                conjugationView = preferences[Keys.conjugationView] ?: "pairing",
+                selectedNucleus = preferences[Keys.selectedNucleus] ?: "macronucleus",
+                readingId = preferences[Keys.nuclearReading] ?: "1.1",
+                phasePermille = preferences[Keys.nuclearPhase] ?: 0,
+            ).normalized(),
         )
     }
 }
