@@ -1,6 +1,8 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +18,8 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -34,6 +38,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
+import kotlinx.coroutines.launch
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -281,6 +286,8 @@ internal fun ParameciumTextbookReader(
     val lesson = NativeLessonDrafts.paramecium
     var chapter by rememberSaveable { mutableIntStateOf(0) }
     var contentsExpanded by rememberSaveable { mutableStateOf(false) }
+    val plateRequester = remember { BringIntoViewRequester() }
+    val plateScope = rememberCoroutineScope()
     val section = lesson.sections[chapter]
     val topics = teachingSubheads[section.id].orEmpty()
     val extra = elaborations[section.id]
@@ -308,9 +315,18 @@ internal fun ParameciumTextbookReader(
     // Put the full original hand-drawn, interactive atlas ABOVE the lesson
     // paragraphs on the first page, instead of burying it after exam questions.
     if (chapter == 0) {
+        Button(
+            onClick = { plateScope.launch { plateRequester.bringIntoView() } },
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                .testTag("r14-jump-to-pencil-plate"),
+        ) {
+            Text(view(language, "VIEW THE ORIGINAL PENCIL ANATOMY PLATE",
+                "அசல் பென்சில் உடலமைப்புப் படத்தைப் பார்"))
+        }
         ParameciumExternalCanvas(
             language = language,
             compact = true,
+            plateModifier = Modifier.bringIntoViewRequester(plateRequester),
             onOrganSelected = { organId ->
                 speak(ParameciumLearningEngine.organ(organId).narration)
             },

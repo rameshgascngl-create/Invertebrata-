@@ -50,7 +50,8 @@ import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
 fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifier,
     onOrganSelected: (String) -> Unit = {},
     onJumpToPlate: (() -> Unit)? = null,
-    compact: Boolean = false) {
+    compact: Boolean = false,
+    plateModifier: Modifier = Modifier) {
     val plate = ParameciumAnatomyDraft.plates.single { it.plateId == "external-cilia" }
     var selectedId by rememberSaveable { mutableStateOf("pellicle") }
     val chosen = plate.features.single { it.id == selectedId }
@@ -75,7 +76,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
         else "Paramecium caudatum — original pencil atlas draft")
 
         Canvas(
-            modifier = Modifier.fillMaxWidth().height(280.dp)
+            modifier = plateModifier.fillMaxWidth().height(280.dp)
                 .testTag("n23b-external-canvas")
                 .semantics {
                     contentDescription = if (language == AppLanguage.TAMIL)

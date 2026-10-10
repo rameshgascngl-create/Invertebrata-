@@ -427,10 +427,16 @@ class NativeUiAcceptanceTest {
         waitFor("r1-paramecium-lab")
         rule.onNodeWithTag("r1-study-title", useUnmergedTree = true)
             .performScrollTo().assertExists()
-        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
-            .performScrollTo().assertExists()
-        // New lesson-first screen: preserve the same genuine screencap/pixel
-        // acceptance as the established atlas; never render a synthetic PNG.
+        rule.onNodeWithTag("r14-jump-to-pencil-plate", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.waitForIdle()
+        val textbookCanvas = rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+        val textbookBounds = textbookCanvas.fetchSemanticsNode().boundsInRoot
+        val visibleBounds = rule.onNodeWithTag("r1-paramecium-lab")
+            .fetchSemanticsNode().boundsInRoot
+        assertTrue("Textbook plate must be fully visible after learner's jump action",
+            textbookBounds.top >= visibleBounds.top - 1f &&
+            textbookBounds.bottom <= visibleBounds.bottom + 1f)
         saveN23bReviewScreenshot("r14-textbook-normal.png")
         rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
             .performScrollTo().performClick()
@@ -580,8 +586,16 @@ class NativeTamilLargeTextAcceptanceTest {
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
-            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r14-jump-to-pencil-plate", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.waitForIdle()
+        val tamilPlate = rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
+            .fetchSemanticsNode().boundsInRoot
+        val tamilViewport = rule.onNodeWithTag("r1-paramecium-lab")
+            .fetchSemanticsNode().boundsInRoot
+        assertTrue("Tamil 200% pencil atlas must fit the actual viewport",
+            tamilPlate.top >= tamilViewport.top - 1f &&
+            tamilPlate.bottom <= tamilViewport.bottom + 1f)
         saveN23bReviewScreenshot("r14-textbook-tamil200.png")
         rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
