@@ -7,6 +7,7 @@ import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
@@ -48,7 +49,15 @@ class NativeR16CiliaryPlateTest {
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
         }
-        if (tamil) rule.onNodeWithTag("language-tamil").performClick()
+        // Language is intentionally persisted by the application. Select the
+        // requested language for every test instead of relying on test order.
+        rule.onNodeWithTag(if (tamil) "language-tamil" else "language-english")
+            .performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithText(
+                if (tamil) "அலகு 1 · 7 அத்தியாயங்கள்" else "Unit 1 · 7 chapters"
+            ).fetchSemanticsNodes().isNotEmpty()
+        }
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()

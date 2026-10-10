@@ -13,6 +13,20 @@ diagnose() {
   printf 'normal=%s\ntamil200=%s\nexit=%s\ncommit=%s\n' \
     "$normal" "$tamil200" "$exit_code" "$GITHUB_SHA" \
     > "$evidence/result.txt"
+  # A failing instrumentation run still produces authoritative XML/report
+  # diagnostics. Preserve them before the emulator and runner are torn down.
+  local failed_phase=""
+  if [[ "$normal" == "INSTRUMENTATION_FAIL" ]]; then
+    failed_phase="normal"
+  elif [[ "$tamil200" == "INSTRUMENTATION_FAIL" ]]; then
+    failed_phase="tamil200"
+  fi
+  if [[ -n "$failed_phase" ]]; then
+    cp -a native-app/app/build/outputs/androidTest-results/connected \
+      "$evidence/$failed_phase-results" 2>/dev/null || true
+    cp -a native-app/app/build/reports/androidTests/connected \
+      "$evidence/$failed_phase-reports" 2>/dev/null || true
+  fi
   adb logcat -d -v threadtime > "$evidence/logcat.txt" 2>&1 || true
   adb exec-out screencap -p > "$evidence/final-screen.png" 2>/dev/null || true
   for name in r16-ciliary-normal.png r16-ciliary-tamil-normal.png \
