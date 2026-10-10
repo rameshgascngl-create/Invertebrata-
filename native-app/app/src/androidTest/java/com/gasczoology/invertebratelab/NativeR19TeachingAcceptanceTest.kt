@@ -184,15 +184,23 @@ class NativeR19TeachingAcceptanceTest {
         rule.onNodeWithTag("r19-stage-egestion",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-play-pause",true).performScrollTo().performClick()
         rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .35f.. .8f}
-        rule.onNodeWithTag("r1-tab-water-balance").performScrollTo().performClick()
+        // Invoke Android Back immediately while motion is still intermediate. Scrolling through
+        // a long chapter to a top tab can legitimately outlast the illustrative three-second stage.
+        rule.activityRule.scenario.onActivity {it.onBackPressedDispatcher.onBackPressed()}
         val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
-            it.laboratoryTab=="water-balance" && it.nutritionProgress.stageId=="egestion" && it.nutritionProgress.phasePermille in 1..999
+            it.destination==StudyDestination.HOME && it.nutritionProgress.stageId=="egestion" && it.nutritionProgress.phasePermille in 1..999
         }}}.nutritionProgress
-        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r18-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
-        rule.onNodeWithTag("r1-tab-nutrition").performScrollTo().performClick()
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()}
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
         assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
         rule.onNodeWithTag("r19-playback-state",true).performScrollTo().assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
+        rule.onNodeWithTag("r1-tab-water-balance").performScrollTo().performClick()
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r18-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
+        runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.laboratoryTab=="water-balance" && it.nutritionProgress==saved}}}
+        rule.onNodeWithTag("r1-tab-nutrition").performScrollTo().performClick()
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
+        assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
         rule.activityRule.scenario.onActivity {it.onBackPressedDispatcher.onBackPressed()}
         rule.waitUntil(20_000) {rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()}
         runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.destination==StudyDestination.HOME && it.nutritionProgress==saved}}}

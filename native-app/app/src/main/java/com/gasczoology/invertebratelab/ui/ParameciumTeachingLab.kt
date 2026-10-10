@@ -104,6 +104,7 @@ fun ParameciumTeachingLab(
     val nutritionPlayer: com.gasczoology.invertebratelab.NutritionPlaybackViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
     fun checkpoint(): com.gasczoology.invertebratelab.data.NativeLearningState {
         if(tab!="nutrition") return learningState
+        android.util.Log.i("R19_NUTRITION","checkpoint stage=${learningState.nutritionProgress.stageId} phase=${nutritionPlayer.state.value.phase}")
         nutritionPlayer.pause()
         return learningState.copy(nutritionProgress=learningState.nutritionProgress.copy(
             phasePermille=(nutritionPlayer.state.value.phase*1000).toInt()))
@@ -237,7 +238,7 @@ fun ParameciumTeachingLab(
             }
             when(tab) {
                 "nutrition" -> ParameciumNutritionTextbook(language, ::speak, learningState.nutritionProgress,
-                    onProgress = { onLearningChanged(learningState.copy(nutritionProgress = it)) })
+                    onProgress = { onLearningChanged(learningState.copy(nutritionProgress = it)) },player=nutritionPlayer)
                 "water-balance" -> ParameciumWaterBalanceTextbook(language, ::speak, learningState.waterBalanceProgress,
                     onProgress = { onLearningChanged(learningState.copy(waterBalanceProgress = it)) })
                 "nuclear" -> ParameciumNuclearTextbook(language, ::speak, learningState.nuclearProgress,

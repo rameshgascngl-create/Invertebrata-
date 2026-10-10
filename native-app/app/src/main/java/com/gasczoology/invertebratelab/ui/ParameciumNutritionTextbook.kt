@@ -33,14 +33,13 @@ private fun nutritionText(lang: AppLanguage,en: String,ta: String) = if(lang==Ap
 
 @Composable
 internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (BilingualText)->Unit,
-    initialProgress: NutritionProgress,onProgress: (NutritionProgress)->Unit) {
+    initialProgress: NutritionProgress,onProgress: (NutritionProgress)->Unit,player: NutritionPlaybackViewModel) {
     var progress by remember { mutableStateOf(initialProgress.normalized()) }
     val persist by rememberUpdatedState(onProgress)
     fun change(next: NutritionProgress) { progress=next;persist(next) }
     val index=ParameciumNutrition.stages.indexOfFirst { it.id==progress.stageId }
     val stage=ParameciumNutrition.stages[index]
     val reading=ParameciumNutrition.readings.first { it.id==progress.readingId }
-    val player: NutritionPlaybackViewModel = viewModel()
     val playback by player.state.collectAsState()
     LaunchedEffect(stage.id) { player.restore(progress.phasePermille) }
     val lifecycle=LocalLifecycleOwner.current.lifecycle
