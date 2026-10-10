@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
+import android.util.Log
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -14,6 +15,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
 import org.junit.Assert.*
@@ -105,10 +107,15 @@ class NativeR17TeachingAcceptanceTest {
         rule.onNodeWithTag("r161-stop-audio",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-reading-1.3",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-stage-germline",true).performScrollTo().performClick()
+        Log.i("R17_DURABLE", "UI germline=" + rule.onNodeWithTag("r17-stage-germline",true)
+            .fetchSemanticsNode().config[SemanticsProperties.Selected] + " MIC=" +
+            rule.onNodeWithTag("r17-select-micronucleus",true).fetchSemanticsNode().config[SemanticsProperties.Selected])
         // Establish a durable commit before recreation, exactly as the existing
         // process-death setup does. Compose idleness does not await DataStore IO.
         runBlocking { withTimeout(15_000) {
-            NativeLearningRepository(context).learningState.first { s ->
+            NativeLearningRepository(context).learningState.onEach { s ->
+                Log.i("R17_DURABLE", "disk=" + s.nuclearProgress)
+            }.first { s ->
                 s.nuclearProgress.readingId=="1.3" && s.nuclearProgress.dimorphismView=="germline" &&
                     s.nuclearProgress.selectedNucleus=="micronucleus"
             }
