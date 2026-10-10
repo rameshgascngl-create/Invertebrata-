@@ -119,10 +119,44 @@ private val elaborations = mapOf(
 )
 
 private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
-    "identity-and-habitat" to listOf(BilingualText("Habitat and organization", "வாழிடமும் அமைப்பும்"), BilingualText("Historical terminology", "வரலாற்றுச் சொற்பயன்பாடு")),
-    "pellicle-and-cilia" to listOf(BilingualText("Pellicle and surface cilia", "பெல்லிக்கிளும் மேற்பரப்புக் குறுஇழைகளும்"), BilingualText("Metachronal coordination", "ஒத்திசை அலை இயக்கம்"), BilingualText("Feeding currents", "உணவோட்டங்கள்")),
-    "feeding-and-digestion" to listOf(BilingualText("Ingestion pathway", "உணவின் நுழைவுப் பாதை"), BilingualText("Vacuolar digestion and egestion", "நுண்குமிழ்ச் செரிமானமும் கழிவு வெளியேற்றமும்")),
-    "osmoregulation" to listOf(BilingualText("Osmotic challenge", "ஒஸ்மோசிஸ் சவால்"), BilingualText("Two specialized complexes", "இரண்டு சிறப்புத் தொகுதிகள்"), BilingualText("Active membrane transport", "செயற்பாட்டு படலக் கடத்தல்"))
+    "identity-and-habitat" to listOf(
+        BilingualText("Habitat and single-cell organization", "வாழிடமும் ஒருசெல் அமைப்பும்"),
+        BilingualText("Historical Protozoa terminology", "பாரம்பரிய புரோட்டோசோவா சொல்")),
+    "pellicle-and-cilia" to listOf(
+        BilingualText("Pellicle and surface cilia", "பெல்லிக்கிளும் மேற்பரப்புக் குறுஇழைகளும்"),
+        BilingualText("Metachronal movement and avoidance", "ஒத்திசை இயக்கமும் தடையைத் தவிர்ப்பதும்"),
+        BilingualText("Ciliary food currents", "குறுஇழை உணவோட்டங்கள்")),
+    "feeding-and-digestion" to listOf(
+        BilingualText("Ingestion through the oral apparatus", "வாயமைப்பின் வழி உணவெடுப்பு"),
+        BilingualText("Vacuolar digestion and egestion", "நுண்குமிழ்ச் செரிமானமும் கழிவு வெளியேற்றமும்")),
+    "osmoregulation" to listOf(
+        BilingualText("The freshwater osmotic challenge", "நன்னீரின் ஒஸ்மோசிஸ் சவால்"),
+        BilingualText("Specialized collecting complexes", "சிறப்புச் சேகரிப்புத் தொகுதிகள்"),
+        BilingualText("Active membrane transport", "செயற்பாட்டு படலக் கடத்தல்")),
+    "nuclear-dimorphism" to listOf(
+        BilingualText("Somatic and germline nuclear roles", "உடலியக்க மற்றும் மரபுவழி உட்கருப் பணிகள்"),
+        BilingualText("Cell multiplication by fission", "இருபிளவு மூலம் செல் பெருக்கம்")),
+    "conjugation" to listOf(
+        BilingualText("Pairing and micronuclear exchange", "இணைவு மற்றும் சிற்றுட்கருப் பரிமாற்றம்"),
+        BilingualText("Nuclear reorganisation without immediate fission", "உடனடி இருபிளவின்றி உட்கரு மறுசீரமைப்பு")),
+    "systematics-and-species" to listOf(
+        BilingualText("Alveolates, ciliates and taxonomic placement", "ஆல்வியோலேட்டுகள், சிலியேட்டுகள், வகைப்பாட்டு இடம்"),
+        BilingualText("Species identity and microscope evidence", "இன அடையாளமும் நுண்ணோக்கி ஆதாரமும்")),
+    "oral-apparatus-details" to listOf(
+        BilingualText("Oral groove, cytostome and cytopharynx", "வாய்ப்பள்ளம், சைட்டோஸ்டோம், சைட்டோஃபாரிங்ஸ்"),
+        BilingualText("Food vacuole maturation and cytoproct", "உணவுக் குமிழ் முதிர்வும் செல் கழிவுத்துளையும்")),
+    "cortical-avoidance-response" to listOf(
+        BilingualText("Basal bodies and ciliary reversal", "அடித்தளத் துகள்களும் குறுஇழைத் திருப்பமும்"),
+        BilingualText("How to interpret slow-motion animation", "மெதுவாக்கப்பட்ட இயக்கப்படத்தின் விளக்க வரம்புகள்")),
+    "asexual-division-process" to listOf(
+        BilingualText("Micronuclear and macronuclear division", "சிற்றுட்கரு, பேருட்கரு பிரிவு"),
+        BilingualText("Transverse cytokinesis and daughter cells", "குறுக்குச் செல் பிரிவும் மகள் செல்களும்")),
+    "laboratory-reasoning" to listOf(
+        BilingualText("What a wet mount can actually show", "ஈரமாதிரியில் நேரடியாகக் காணக்கூடியவை"),
+        BilingualText("Reasoned predictions and misconceptions", "கணிப்புகளும் தவறான கருத்துகளும்")),
+    "classroom-observation" to listOf(
+        BilingualText("Observe living ciliates under the microscope", "உயிருள்ள சிலியேட்டுகளை நுண்ணோக்கியில் காணல்"),
+        BilingualText("Connect visual evidence to cell physiology", "காட்சி ஆதாரத்தையும் செல் உடலியலையும் இணைத்தல்"))
 )
 
 private fun DrawScope.pencilBody(cx: Float, cy: Float, w: Float, h: Float) {
