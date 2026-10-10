@@ -413,6 +413,33 @@ class NativeUiAcceptanceTest {
     }
 
     @Test
+    fun r14UnitOpensIllustratedTextbookAndAnatomyInsteadOfStartingWithQuestions() {
+        englishHome()
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("unit-1").performClick()
+        waitFor("native-unit-1")
+        rule.onNodeWithTag("r14-unit-open-textbook", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-study-title", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r14-pencil-overview", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r14-open-section-feeding-and-digestion",
+            useUnmergedTree = true).performScrollTo().performClick()
+        rule.onNodeWithTag("r14-section-heading", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("Feeding and intracellular digestion")
+        rule.onNodeWithTag("r14-pencil-oral", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r14-from-study-anatomy", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.onNodeWithTag("r1-atlas-heading", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+    }
+
+    @Test
     fun interactiveParameciumLabOpensWithFiveProcessesAnatomyAndNarration() {
         englishHome()
         rule.onNodeWithTag("r1-home-open-paramecium").performClick()
@@ -531,6 +558,33 @@ class NativeTamilLargeTextAcceptanceTest {
                 .save(NativeLearningState())
         }
         rule.activityRule.scenario.recreate()
+    }
+
+    @Test
+    fun r14NativeReaderRetainsReadableTamilHeadingsAtActualTwoHundredPercent() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertTrue(context.resources.configuration.fontScale >= 1.95f)
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("language-tamil").performClick()
+        rule.onNodeWithTag("r1-home-open-paramecium")
+            .performScrollTo().performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.onNodeWithTag("r14-open-section-osmoregulation", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r14-section-heading", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("சுருங்கும் நுண்குமிழ்களும் நீர்ச்சமநிலையும்")
+        rule.onNodeWithTag("r14-pencil-vacuole", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r14-from-study-simulation", useUnmergedTree = true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.onNodeWithTag("r1-stage-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("நிலை 1/4 — நீர் உள்ளேறுதல்")
     }
 
     @Test
