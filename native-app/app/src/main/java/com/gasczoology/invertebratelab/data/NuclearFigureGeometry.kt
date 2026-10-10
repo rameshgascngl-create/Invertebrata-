@@ -17,6 +17,11 @@ object NuclearFigureGeometry {
         return NuclearFigureFrame(s, (w - width * s) / 2, (h - height * s) / 2)
     }
     fun nucleusAt(x: Float, y: Float, stage: NuclearView? = null, phase: Float = 0f): String? {
+        if(stage!=null && stage.id in ParameciumConjugationChapter.chapter.views.map{it.id} && x<600f) {
+            return NuclearBodyGeometry.conjugation(stage,phase).marks.firstOrNull {
+                kotlin.math.abs(x-it.x)<=it.width/2+5f && kotlin.math.abs(y-it.y)<=it.height/2+5f
+            }?.kind
+        }
         if(stage!=null && stage.id in ParameciumFissionChapter.chapter.views.map{it.id} && x<600f) {
             return NuclearBodyGeometry.fission(stage,phase).marks.firstOrNull {
                 kotlin.math.abs(x-it.x)<=it.width/2+8f && kotlin.math.abs(y-it.y)<=it.height/2+8f

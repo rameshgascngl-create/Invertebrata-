@@ -236,6 +236,11 @@ fun ParameciumTeachingLab(
                     },
                     onStep = { simulationStep = it },
                     onPlaying = { simulationPlaying = it },
+                    onNuclearChapter = { chapter ->
+                        simulationPlaying=false
+                        onLearningChanged(learningState.copy(laboratoryTab="nuclear",
+                            nuclearProgress=learningState.nuclearProgress.selectChapter(chapter)))
+                    },
                 )
                 "listen" -> NarrationSection(language,::speak)
                 else -> {
@@ -626,6 +631,7 @@ private fun SimulatorSection(
     onChoose:(String)->Unit,
     onStep:(Int)->Unit,
     onPlaying:(Boolean)->Unit,
+    onNuclearChapter:(String)->Unit,
 ) {
     val process=ParameciumProcess.valueOf(chosen)
     val model=ParameciumLearningEngine.simulation(process)
@@ -647,6 +653,13 @@ private fun SimulatorSection(
         }
     }
     Text(model.title.value(language))
+    if(process==ParameciumProcess.BINARY_FISSION || process==ParameciumProcess.CONJUGATION) {
+        Button(onClick={onNuclearChapter(if(process==ParameciumProcess.BINARY_FISSION)"fission" else "conjugation")},
+            shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
+            modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r17-from-simulation")) {
+            Text(bi(language,"Open the complete textbook and nuclear sequence","முழுப் பாடத்தையும் உட்கருத் தொடரையும் திற"))
+        }
+    }
     ProcessSketch(process,progress,language)
     Text(bi(language,"Stage ","நிலை ")+(step+1).toString()+"/"+
         model.stages.size.toString()+" — "+stage.heading.value(language),

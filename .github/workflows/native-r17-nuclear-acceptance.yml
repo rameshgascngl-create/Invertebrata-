@@ -127,6 +127,7 @@ jobs:
           script: |
             bash .github/scripts/run-native-r17-process-death.sh dimorphism germline 1.3
             bash .github/scripts/run-native-r17-process-death.sh fission constriction 2.3
+            bash .github/scripts/run-native-r17-process-death.sh conjugation exchange 3.4
       - name: Preserve exact-commit R1.7 screenshot and instrumentation evidence
         if: always()
         uses: actions/upload-artifact@v4

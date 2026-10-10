@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
 import android.util.Log
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.*
@@ -107,6 +108,13 @@ class NativeR17TeachingAcceptanceTest {
         rule.onNodeWithTag("r161-stop-audio",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-reading-1.3",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-stage-germline",true).performScrollTo().performClick()
+        // Settle the final real touch/recomposition before blocking on external IO.
+        // runBlocking does not advance Compose's test clock. These assertions also
+        // distinguish a rejected UI selection from a failed durable write.
+        rule.waitForIdle()
+        rule.onNodeWithTag("r17-reading-heading",true).assertTextEquals(chapter.readings[2].heading.value(lang))
+        rule.onNodeWithTag("r17-stage-germline",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+        rule.onNodeWithTag("r17-select-micronucleus",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
         Log.i("R17_DURABLE", "UI germline=" + rule.onNodeWithTag("r17-stage-germline",true)
             .fetchSemanticsNode().config[SemanticsProperties.Selected] + " MIC=" +
             rule.onNodeWithTag("r17-select-micronucleus",true).fetchSemanticsNode().config[SemanticsProperties.Selected])
@@ -137,6 +145,48 @@ class NativeR17TeachingAcceptanceTest {
         rule.onNodeWithTag("r17-reset",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-stage-whole-cell",true).performScrollTo().assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
         rule.onNodeWithTag("r17-playback-state",true).performScrollTo().assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
+    }
+    @Test fun movingNativeFiguresPauseAtRealIntermediatePhaseAndKeepAllChapterAnchors() {
+        for((chapter,view) in listOf("fission" to "constriction","conjugation" to "exchange")) {
+            rule.onNodeWithTag("r17-chapter-"+chapter,true).performScrollTo().performClick()
+            rule.onNodeWithTag("r17-stage-"+view,true).performScrollTo().performClick()
+            val before=canvas().captureToImage().asAndroidBitmap()
+            capture(chapter+"-phase-initial")
+            rule.onNodeWithTag("r17-play-pause",true).performScrollTo().performClick()
+            rule.waitUntil(12_000) {
+                rule.onNodeWithTag("r17-nuclear-canvas",true).fetchSemanticsNode()
+                    .config[SemanticsProperties.ProgressBarRangeInfo].current in .35f.. .8f
+            }
+            rule.onNodeWithTag("r17-play-pause",true).performScrollTo().performClick()
+            rule.onNodeWithTag("r17-playback-state",true).assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
+            val c=canvas();val phase=c.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            assertTrue("Actual intermediate native phase $phase",phase>0f && phase<1f)
+            val after=c.captureToImage().asAndroidBitmap()
+            assertFalse("Native pixels must change within the selected stage",before.sameAs(after))
+            capture(chapter+"-phase-paused");before.recycle();after.recycle()
+        }
+        rule.onNodeWithTag("r17-reading-3.4",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-chapter-fission",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-reading-2.3",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-stage-constriction",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-chapter-conjugation",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-reading-heading",true).assertTextEquals(ParameciumConjugationChapter.chapter.readings[3].heading.value(lang))
+        rule.onNodeWithTag("r17-stage-exchange",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+        rule.onNodeWithTag("r17-reduced-motion",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-reduced-motion",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+        rule.waitForIdle()
+        runBlocking { withTimeout(15_000) { NativeLearningRepository(context).learningState.first {
+            it.nuclearProgress.reducedMotion && it.nuclearProgress.chapterId=="conjugation" &&
+                it.nuclearProgress.readingId=="3.4" && it.nuclearProgress.viewId()=="exchange"
+        } } }
+        rule.activityRule.scenario.recreate()
+        rule.waitUntil(20_000) { rule.onAllNodesWithTag("r17-textbook-title",true).fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("r17-reduced-motion",true).performScrollTo().assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+        rule.onNodeWithTag("r17-play-pause",true).assertIsNotEnabled()
+        rule.onNodeWithTag("r17-reading-heading",true).assertTextEquals(ParameciumConjugationChapter.chapter.readings[3].heading.value(lang))
+        rule.onNodeWithTag("r17-chapter-fission",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r17-reading-heading",true).assertTextEquals(ParameciumFissionChapter.chapter.readings[2].heading.value(lang))
+        rule.onNodeWithTag("r17-stage-constriction",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
     }
     private fun capture(suffix: String) {
         val a=InstrumentationRegistry.getInstrumentation().uiAutomation

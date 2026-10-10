@@ -3,6 +3,7 @@ package com.gasczoology.invertebratelab.data
 enum class NuclearEvent { NONE, REPLICATION, MITOSIS, CYTOKINESIS, HOMOLOG_SEPARATION,
     SISTER_SEPARATION, PRONUCLEAR_MITOSIS, RECIPROCAL_EXCHANGE, FERTILIZATION,
     POSTZYGOTIC_MITOSIS, DIFFERENTIATION }
+enum class ParentalMacState { INTACT, SKEIN, FRAGMENTS, RESIDUAL_FRAGMENTS }
 
 /** Explicit P. caudatum teaching model; geometry and Tamil await human review. */
 data class NuclearReading(val id: String, val heading: BilingualText, val paragraphs: List<BilingualText>)
@@ -18,6 +19,8 @@ data class NuclearView(
     val macronuclearAnlagenPerCell: Int = 0,
     val degeneratingGermNucleiPerCell: Int = 0,
     val paired: Boolean = false,
+    val parentalMacState: ParentalMacState = ParentalMacState.INTACT,
+    val residualGermlinePossible: Boolean = false,
 )
 data class NuclearChapter(val id: String, val number: Int, val heading: BilingualText,
     val readings: List<NuclearReading>, val views: List<NuclearView>, val sourceIds: List<String>)
@@ -82,6 +85,7 @@ object ParameciumNuclearBiology {
     const val species = "Paramecium caudatum"
     private fun b(en: String, ta: String) = BilingualText(en, ta)
     val sources = linkedMapOf(
+        "mikami1996" to "Mikami (1996), nuclear divisions in P. caudatum conjugation; primary microsurgery study, abnormal extra divisions are not the normal model. DOI 10.1111/j.1550-7408.1996.tb02471.x · https://onlinelibrary.wiley.com/doi/10.1111/j.1550-7408.1996.tb02471.x",
         "allen48" to "Allen, P. caudatum TEM / Gortz (ed.), Paramecium (1988), p.34: enveloped MIC spindle. https://www6.pbrc.hawaii.edu/allen/ch10a/48-pca740125-46.html",
         "aihara50" to "Aihara / Allen microscopy atlas, J. Protozool. 35:400–405 (1988): vegetative nuclei and transverse constriction. https://www6.pbrc.hawaii.edu/allen/ch10a/50-pca.html",
         "ishida1999" to "Ishida, Nakajima, Kurokawa & Mikami (1999), Zool. Sci. 16:915–926; primary anti-tubulin/DAPI microscopy. Scanned primary paper: https://dl.ndl.go.jp/pid/10862438",
@@ -119,7 +123,7 @@ object ParameciumNuclearBiology {
             NuclearView("somatic", b("Macronucleus: somatic work", "பேருட்கரு: உடலியக்கப் பணி"), macronucleusExplanation),
             NuclearView("germline", b("Micronucleus: hereditary continuity", "சிற்றுட்கரு: மரபுரிமைத் தொடர்ச்சி"), micronucleusExplanation),
         ), listOf("taka2006", "duret2008", "tucker1980"))
-    val chapters: List<NuclearChapter> get() = listOf(dimorphism, ParameciumFissionChapter.chapter)
+    val chapters: List<NuclearChapter> get() = listOf(dimorphism, ParameciumFissionChapter.chapter, ParameciumConjugationChapter.chapter)
     fun chapter(id: String) = chapters.firstOrNull { it.id == id } ?: dimorphism
     fun nucleus(id: String) = if (id == "micronucleus") micronucleusExplanation else macronucleusExplanation
     fun nucleusName(id: String) = if (id == "micronucleus") b("Micronucleus · MIC", "சிற்றுட்கரு · MIC") else b("Macronucleus · MAC", "பேருட்கரு · MAC")
