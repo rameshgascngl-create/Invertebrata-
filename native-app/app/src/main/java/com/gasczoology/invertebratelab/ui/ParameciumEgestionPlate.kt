@@ -21,8 +21,10 @@ import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selected: String,phase: Float,onSelect: (String)->Unit,playing: Boolean,enabled: Boolean,onToggle: ()->Unit) {
+internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selected: String,player: com.gasczoology.invertebratelab.NutritionPlaybackViewModel,onSelect: (String)->Unit,enabled: Boolean,onToggle: ()->Unit) {
     val requester=remember { BringIntoViewRequester() };val scope=rememberCoroutineScope()
+    val playback=player.state.collectAsState()
+    val playing by remember(player) { derivedStateOf {playback.value.playing} }
     val description=if(language==AppLanguage.TAMIL)
         "சைட்டோப்ராக்ட் வெட்டுத் தோற்றம்: மூடிய முகடு, தற்காலிகத் திறப்பு, வெளியேறும் எச்சங்கள், சவ்வு மீட்பு. மேல் வெளிச்சூழல்; கீழ் சைட்டோசால். அளவோ நேரமோ அளவிடப்படவில்லை. "
         else "Cytoproct section: closed ridge, transient opening, released residues and membrane recovery. Exterior above; cytosol below. Scale and time are not measured. "
@@ -38,9 +40,9 @@ internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selecte
         } }.semantics {
             contentDescription=description+ParameciumNutrition.stages.first { it.id==stage }.explanation.value(language)
             stateDescription=ParameciumNutrition.structure(selected).name.value(language)
-            progressBarRangeInfo=ProgressBarRangeInfo(phase,0f..1f)
+            progressBarRangeInfo=ProgressBarRangeInfo(playback.value.phase,0f..1f)
             customActions=ParameciumEgestion.structures.map { s -> CustomAccessibilityAction(s.name.value(language)) { onSelect(s.id);true } }
-        }) { drawEgestion(stage,selected,phase) }
+        }) { drawEgestion(stage,selected,playback.value.phase) }
     Text(if(language==AppLanguage.TAMIL)
         "C சைட்டோப்ராக்ட் · R எச்ச நுண்குமிழ் · H மீட்கப்பட்ட சவ்வு. இடது முழுச் செல் திசைக் குறி மட்டும்; வலது தனியாகப் பெரிதாக்கிய புறப்படல வெட்டுத் தோற்றம். மேலே வெளிச்சூழல்; கீழே சைட்டோசால். பெரிய சாம்பல் துகள்கள் செரிக்காத எச்சங்கள்; சைட்டோசாலில் சிதறுவதில்லை. குறுஇழை, நுண்குழல், சவ்வு விகிதங்கள் விளக்கத்திற்கானவை. முழுச் செல் அமைவிடமும் விசை விளக்கமும் நிபுணர் ஒப்புதலுக்குக் காத்திருக்கின்றன."
         else "C cytoproct · R residue vacuole · H retrieved membrane. Left: whole-cell orientation only. Right: independently enlarged cortical section. Exterior above; cytosol below. Large grey particles are indigestible residues, never scattered in cytosol. Ciliary, microtubular and membrane proportions are schematic. Whole-cell placement and force interpretation await specialist approval.",modifier=Modifier.testTag("r19-egestion-legend"))
