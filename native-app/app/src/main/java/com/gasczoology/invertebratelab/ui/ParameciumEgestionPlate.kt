@@ -71,8 +71,8 @@ private fun DrawScope.drawEgestion(stage: String,selected: String,phase: Float) 
         // Paired sub-surface profiles stand for cortical alveoli; they are not open external ducts.
         for(x in listOf(505f,555f,855f,905f)) {
             drawOval(faint,Offset(x,205f),Size(40f,25f),style=Stroke(2f))
-            line(Offset(x+20f,238f),Offset(680f,340f),.9f)
         }
+        for(t in EgestionFigure.fibres) line(Offset(t.x1,t.y1),Offset(t.x2,t.y2),.9f)
         val centerY=440f-130f*pose.approach
         if(stage=="docking") {
             drawCircle(Color(0xFFF2EEE5),100f,Offset(735f,centerY))

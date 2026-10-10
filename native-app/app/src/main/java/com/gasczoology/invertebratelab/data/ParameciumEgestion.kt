@@ -55,7 +55,11 @@ object ParameciumEgestion {
     val sources=listOf("Allen and Wolf 1974 · P. caudatum cytoproct ultrastructure · PMID 4364579 · https://doi.org/10.1242/jcs.14.3.611",
         "Allen primary microscopy · resting closed cytoproct ridge · https://www6.pbrc.hawaii.edu/allen/ch10a/43-pca730413-5.html · orientation and force interpretation require review")
 }
+data class EgestionFibre(val x1: Float,val y1: Float,val x2: Float,val y2: Float)
 object EgestionFigure {
+    // Microtubular profiles flank the compartment on its cytosolic side; never cross its lumen.
+    val fibres=listOf(EgestionFibre(525f,238f,600f,340f),EgestionFibre(575f,238f,600f,370f),
+        EgestionFibre(875f,238f,870f,340f),EgestionFibre(925f,238f,870f,370f))
     val marks=listOf(NutritionMark("cytoproct",735f,132f),NutritionMark("spent-vacuole",735f,382f),NutritionMark("recovered-membrane",918f,405f))
     fun fit(w: Float,h: Float)=NutritionFigure.fit(w,h)
     fun at(x: Float,y: Float)=marks.minByOrNull { (x-it.x)*(x-it.x)+(y-it.y)*(y-it.y) }

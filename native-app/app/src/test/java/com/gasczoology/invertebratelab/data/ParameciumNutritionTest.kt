@@ -48,6 +48,14 @@ class ParameciumNutritionTest {
         assertTrue(ParameciumNutrition.structure("cytoproct").explanation.english.contains("normally closed"))
         assertTrue(ParameciumNutrition.structure("spent-vacuole").explanation.english.contains("cytosol"))
     }
+    @Test fun corticalFibresStayOutsideTheLargestMembraneBoundCompartment() {
+        // Docking circle spans x635..835; the open cup's Bezier control hull spans x620..850.
+        // Every complete straight profile must stay on a cytosolic flank for every stage/phase.
+        for(t in EgestionFigure.fibres) {
+            assertTrue((t.x1<620f && t.x2<620f) || (t.x1>850f && t.x2>850f))
+            assertTrue(t.y1>185f && t.y2>185f)
+        }
+    }
     @Test fun hitGeometryFitsBothOrientationsAndRejectsEmptyPaper() {
         for((w,h) in listOf(380f to 300f,900f to 300f)) {
             val f=NutritionFigure.fit(w,h)
