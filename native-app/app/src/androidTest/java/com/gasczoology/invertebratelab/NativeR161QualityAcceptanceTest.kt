@@ -116,6 +116,12 @@ class NativeR161QualityAcceptanceTest {
         rule.onNodeWithTag("r1-speech-status", true).performScrollTo()
         capture("audio-result")
         Log.i("R161_AUDIO_QA", "ACTUAL_ENGINE_STATUS=" + rule.onNodeWithTag("r1-speech-status", true).fetchSemanticsNode().config[SemanticsProperties.Text].joinToString())
+        val hasEngine = context.packageManager.queryIntentServices(
+            android.content.Intent(android.speech.tts.TextToSpeech.Engine.INTENT_ACTION_TTS_SERVICE), 0).isNotEmpty()
+        if (!hasEngine) {
+            rule.onNodeWithTag("r1-speech-status", true).assertTextEquals(
+                "தேர்ந்தெடுத்த மொழிக்கான நிறுவப்பட்ட இணையமில்லா குரல் கிடைக்கவில்லை. Android உரை-ஒலி அமைப்பில் ஆங்கிலம் அல்லது தமிழ் குரலை நிறுவவும். முழு விளக்கம் கீழே உள்ளது.")
+        }
         rule.onNodeWithTag("r16-ciliary-narrate", true).performScrollTo().performClick()
         rule.onNodeWithTag("r161-stop-audio", true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.onNodeWithTag("r161-audio-written-fallback", true).performScrollTo().assertTextEquals(firstStage.explanation.tamil)
@@ -124,6 +130,22 @@ class NativeR161QualityAcceptanceTest {
         rule.onNodeWithTag("r1-narrate-somatic-cilia", true).performScrollTo().performClick()
         rule.onNodeWithTag("r161-audio-written-fallback", true).performScrollTo()
             .assertTextEquals(ParameciumLearningEngine.organ("somatic-cilia").narration.tamil)
+        rule.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
+        rule.waitUntil(20_000) { rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("language-english").performClick()
+        rule.waitUntil(10_000) { rule.onAllNodesWithText("Unit 1 · 7 chapters").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        rule.waitUntil(20_000) { rule.onAllNodesWithTag("r1-narrate-somatic-cilia", true).fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("r1-narrate-somatic-cilia", true).performScrollTo().performClick()
+        rule.onNodeWithTag("r161-audio-written-fallback", true).performScrollTo()
+            .assertTextEquals(ParameciumLearningEngine.organ("somatic-cilia").narration.english)
+        if (!hasEngine) {
+            rule.onNodeWithTag("r1-speech-status", true).performScrollTo().assertTextEquals(
+                "Installed offline voice unavailable for the requested language. Install an English or Tamil voice in Android speech settings. The complete explanation remains below.")
+        }
+        capture("english-audio-result")
+        rule.onNodeWithTag("r161-stop-audio", true).performScrollTo().performClick()
+
     }
     private fun capture(suffix: String) {
         val automation = InstrumentationRegistry.getInstrumentation().uiAutomation

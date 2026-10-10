@@ -61,7 +61,7 @@ class NativeLearningRepository(private val context: Context) {
         }
     }
 
-    private fun decode(preferences: Preferences): NativeLearningState {
+    internal fun decode(preferences: Preferences): NativeLearningState {
         if (preferences[Keys.schema] != NativeLearningState.CURRENT_SCHEMA) {
             return NativeLearningState()
         }

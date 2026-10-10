@@ -30,7 +30,9 @@ jobs:
           mkdir -p qa-evidence/apk
           cp native-app/app/build/outputs/apk/debug/*.apk qa-evidence/apk/
           cp native-app/app/build/outputs/apk/androidTest/debug/*.apk qa-evidence/apk/
-          sha256sum qa-evidence/apk/*.apk > qa-evidence/apk/SHA256SUMS
+          (cd qa-evidence/apk && sha256sum *.apk > SHA256SUMS)
+          bash ci/n23e3_verify_native_debug_apk.sh
+          cp qa-evidence/n23e3/aapt-*.txt qa-evidence/n23e3/apksigner-verification.txt qa-evidence/apk/
           printf '%s\n' "$GITHUB_SHA" > qa-evidence/apk/commit.txt
       - name: Preserve exact candidate APK for physical review
         if: always()

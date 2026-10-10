@@ -22,6 +22,16 @@ adb shell settings put global airplane_mode_on 1
 adb shell settings get global airplane_mode_on > "$evidence/airplane-setting.txt"
 adb shell dumpsys connectivity > "$evidence/connectivity-before.txt"
 adb shell cmd package query-services --brief -a android.intent.action.TTS_SERVICE > "$evidence/tts-services.txt" 2>&1 || true
+phase=legacy-schema-one
+mkdir -p "$evidence/$phase"
+if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
+  -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeR161DataStoreCompatibilityTest \
+  > "$evidence/$phase/gradle.txt" 2>&1; then
+  result=INSTRUMENTATION_FAIL
+  cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results" 2>/dev/null || true
+  exit 1
+fi
+cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
 for scale in 1.0 2.0; do
   adb shell settings put system font_scale "$scale"
   adb shell settings get system font_scale > "$evidence/font-scale-$scale.txt"
