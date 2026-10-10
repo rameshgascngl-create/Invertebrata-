@@ -89,6 +89,27 @@ class NativeR16CiliaryPlateTest {
             .performScrollTo().assertExists()
         rule.onNodeWithTag("r16-ciliary-narrate", useUnmergedTree = true)
             .performScrollTo().assertHasClickAction()
+        rule.onNodeWithTag("r16-view-ciliary-plate", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.waitForIdle()
+        captureRealR16Screen("r16-ciliary-normal.png")
+    }
+
+    @Test
+    fun ciliaryStageSurvivesSwitchingBetweenTextbookSections() {
+        openSection("pellicle-and-cilia")
+        rule.onNodeWithTag("r16-ciliary-stage-wave", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r14-contents-toggle", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r14-open-section-cortical-avoidance-response",
+            useUnmergedTree = true).performScrollTo().performClick()
+        val lastStage = ParameciumLearningEngine
+            .simulation(ParameciumProcess.CILIARY_MOTION).stages.last()
+        rule.onNodeWithTag("r16-ciliary-stage-title", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals("Stage 4/4 — " + lastStage.heading.english)
+        rule.onNodeWithTag("r16-ciliary-stage-explanation", useUnmergedTree = true)
+            .performScrollTo().assertTextEquals(lastStage.explanation.english)
     }
 
     @Test
@@ -121,7 +142,10 @@ class NativeR16CiliaryPlateTest {
     }
 
     private fun captureRealR16Screen(fileName: String) {
-        check(fileName in setOf("r16-ciliary-tamil200.png", "r16-ciliary-tamil-normal.png"))
+        check(fileName in setOf(
+            "r16-ciliary-normal.png",
+            "r16-ciliary-tamil200.png",
+            "r16-ciliary-tamil-normal.png"))
         val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
         val folder = "/sdcard/Download/native-anatomy-evidence"
         ParcelFileDescriptor.AutoCloseInputStream(
