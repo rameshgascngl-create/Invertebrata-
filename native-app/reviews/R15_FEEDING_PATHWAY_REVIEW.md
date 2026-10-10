@@ -5,7 +5,7 @@ Status: ENGINEERING CANDIDATE; R1.3 anatomical, Tamil and physical-device approv
 ## Exact source and limits
 * Base native HEAD: `b1a69e2f22e05771949eb75f5fbeeaac144c6bea`.
 * The four stages and bilingual explanations are consumed directly from `ParameciumLearningEngine.simulation(ParameciumProcess.FEEDING)`. The academic A5 corpus is not edited.
-* The plate is original lightweight Compose Canvas artwork. Nodes/arrows represent the functional sequence, **not** actual spatial coordinates of organelles, microscopic particle trajectories or physiological timing.
+* The plate is original lightweight Compose Canvas artwork. Nodes/arrows represent the functional sequence, **not** actual spatial coordinates of organelles, microscopic particle trajectories or physiological timing. The source-reviewed screenshot initially showed four uninformative, near-identical circles. A corrective artwork pass replaces those placeholders with four DISTINCT native pencil pictograms: ciliary transport, narrowing feeding passage, digestive food vacuole and cortical egestion. Neither microscope geometry nor reviewer approvals are implied.
 * The same screen contains source-derived prose, four distinct stages, touch-selected graphite highlights, full-size accessible control buttons and per-stage audio via the existing TextToSpeech callback.
 * Both feeding lesson chapters use it instead of the former duplicated static oral sketch.
 

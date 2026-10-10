@@ -21,6 +21,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
@@ -60,6 +61,79 @@ private fun DrawScope.feedingArrow(from: Offset, to: Offset, radius: Float) {
     val base = end - forward * 13f
     drawLine(PencilAtlasPalette.graphite, end, base + normal * 6f, 2.6f)
     drawLine(PencilAtlasPalette.graphite, end, base - normal * 6f, 2.6f)
+}
+
+/**
+ * Each numbered circle carries an ORIGINAL mechanism-specific graphite inset.
+ * (1) oral cilia/current, (2) vestibule-to-cytopharynx passage,
+ * (3) intracellular food vacuole, (4) cytoproct egestion.
+ * This intentionally does not position these structures on a whole-cell map.
+ */
+private fun DrawScope.feedingPictogram(index: Int, center: Offset, r: Float) {
+    val g = PencilAtlasPalette.graphite
+    val mid = PencilAtlasPalette.mid
+    fun at(x: Float, y: Float) = center + Offset(r * x, r * y)
+    when (index) {
+        0 -> {
+            // Ciliary power strokes in water with suspended food particles.
+            drawLine(mid, at(-.68f, .50f), at(.66f, .50f), 2.4f)
+            for (i in 0..4) {
+                val x = -.54f + i * .25f
+                val b = at(x, .47f)
+                val c1 = at(x - .05f, .10f)
+                val c2 = at(x + .12f, -.26f)
+                val tip = at(x + .27f, -.36f)
+                drawPath(Path().apply {
+                    moveTo(b.x, b.y)
+                    cubicTo(c1.x, c1.y, c2.x, c2.y, tip.x, tip.y)
+                }, g, style = Stroke(2.5f))
+            }
+            listOf(-.54f to -.59f, -.22f to -.65f, .03f to -.53f).forEach { (x,y) ->
+                drawCircle(g, radius = r * .065f, center = at(x, y))
+            }
+        }
+        1 -> {
+            // Funnel diagram: vestibule narrows into the cytopharyngeal region.
+            val left = listOf(at(-.67f,-.60f), at(-.45f,-.26f), at(-.23f,.18f),
+                at(-.20f,.62f))
+            val right = listOf(at(.67f,-.60f), at(.45f,-.26f), at(.23f,.18f),
+                at(.20f,.62f))
+            for (i in 0..2) {
+                drawLine(g, left[i], left[i+1], 3f)
+                drawLine(g, right[i], right[i+1], 3f)
+            }
+            drawCircle(g, radius = r*.075f, center = at(.01f,-.35f))
+            drawCircle(mid, radius = r*.065f, center = at(.06f,.04f))
+            feedingArrow(at(.04f,.15f), at(.04f,.60f), 0f)
+        }
+        2 -> {
+            // Membrane-bound digestive vesicle: granular, not radiating arms.
+            drawCircle(PencilAtlasPalette.cell, radius = r*.62f, center = center)
+            drawCircle(g, radius = r*.62f, center = center, style = Stroke(3f))
+            drawCircle(mid, radius = r*.53f, center = center, style = Stroke(1.4f))
+            listOf(-.31f to -.13f, .22f to -.20f, -.05f to .28f, .30f to .24f)
+                .forEachIndexed { i, (x,y) ->
+                    drawCircle(if (i % 2 == 0) g else mid,
+                        radius = r * (if (i == 0) .13f else .09f),
+                        center = at(x,y))
+                }
+            for (i in 0..4) {
+                val x = -.30f + i * .14f
+                drawLine(mid, at(x,-.49f), at(x+.11f,-.38f), 1.4f)
+            }
+        }
+        3 -> {
+            // Localised cortical egestion opening, not a CV discharge pore.
+            drawLine(g, at(.12f,-.68f), at(.12f,-.19f), 3.5f)
+            drawLine(g, at(.12f,.19f), at(.12f,.68f), 3.5f)
+            drawLine(mid, at(.20f,-.68f), at(.20f,-.19f), 1.2f)
+            drawLine(mid, at(.20f,.19f), at(.20f,.68f), 1.2f)
+            drawCircle(g, radius = r*.13f, center = at(-.51f,-.06f))
+            drawCircle(g, radius = r*.08f, center = at(-.31f,.15f))
+            feedingArrow(at(-.21f,0f), at(.72f,0f), 0f)
+            drawCircle(mid, radius = r*.08f, center = at(.60f,-.31f))
+        }
+    }
 }
 
 @Composable
@@ -141,18 +215,8 @@ internal fun ParameciumFeedingPathwayPlate(
                         style = Stroke(width = if (active) 4.2f else 2.5f))
                     drawCircle(PencilAtlasPalette.mid, radius = radius - 5f,
                         center = center, style = Stroke(width = 1.1f))
-                    // Original graphite hatching: no microscopic coordinates implied.
-                    for (hatch in -2..2) {
-                        val start = Offset(center.x - radius * .32f + hatch * 4f,
-                            center.y + radius * .25f)
-                        val end = Offset(start.x + radius * .31f,
-                            start.y - radius * .32f)
-                        drawLine(if (active) PencilAtlasPalette.selected
-                            else PencilAtlasPalette.mid, start, end, 1.2f)
-                    }
-                    drawCircle(if (active) PencilAtlasPalette.selected
-                        else PencilAtlasPalette.graphite,
-                        radius = if (active) 6.5f else 4f, center = center)
+                    // Four different biological processes, not four empty markers.
+                    feedingPictogram(index, center, radius)
                 }
             }
             Text(
