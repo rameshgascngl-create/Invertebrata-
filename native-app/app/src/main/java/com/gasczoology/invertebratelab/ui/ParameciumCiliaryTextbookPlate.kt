@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -89,6 +90,9 @@ internal fun ParameciumCiliaryTextbookPlate(
     val stage = process.stages[stageIndex]
     val requester = remember { BringIntoViewRequester() }
     val scope = rememberCoroutineScope()
+    // A stadium outline clips multiline Tamil at 200% font scale when the
+    // button becomes tall. Fixed-radius corners keep the complete text visible.
+    val controlShape = RoundedCornerShape(12.dp)
 
     Card(
         modifier = Modifier.fillMaxWidth().testTag("r16-ciliary-textbook"),
@@ -110,6 +114,7 @@ internal fun ParameciumCiliaryTextbookPlate(
             )
             Button(
                 onClick = { scope.launch { requester.bringIntoView() } },
+                shape = controlShape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .testTag("r16-view-ciliary-plate"),
             ) {
@@ -213,17 +218,20 @@ internal fun ParameciumCiliaryTextbookPlate(
                 val buttonModifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .testTag("r16-ciliary-stage-" + candidate.id)
                 if (position == stageIndex) {
-                    Button(onClick = choose, modifier = buttonModifier) {
+                    Button(onClick = choose, modifier = buttonModifier,
+                        shape = controlShape) {
                         Text((position + 1).toString() + ". " + candidate.heading.value(language))
                     }
                 } else {
-                    OutlinedButton(onClick = choose, modifier = buttonModifier) {
+                    OutlinedButton(onClick = choose, modifier = buttonModifier,
+                        shape = controlShape) {
                         Text((position + 1).toString() + ". " + candidate.heading.value(language))
                     }
                 }
             }
             OutlinedButton(
                 onClick = { speak(stage.explanation) },
+                shape = controlShape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .testTag("r16-ciliary-narrate"),
             ) {
