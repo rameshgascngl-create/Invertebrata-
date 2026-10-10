@@ -196,7 +196,7 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-boot-timeout: 900
-          script: bash .github/scripts/run-native-r17-process-death.sh
+          script: bash .github/scripts/run-native-r161-process-death.sh
       - name: Preserve exact-commit R1.6 screenshot and instrumentation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -232,12 +232,12 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-boot-timeout: 900
-          script: bash .github/scripts/run-native-r17-quality.sh
+          script: bash .github/scripts/run-native-r161-quality.sh
       - name: Preserve exact-commit R1.6 screenshot and instrumentation evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: native-r17-quality-screenshot-audio-evidence
+          name: native-r17-preserved-r161-quality-screenshot-audio-evidence
           path: qa-evidence/r161-quality/
           if-no-files-found: warn
 
