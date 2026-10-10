@@ -289,6 +289,7 @@ internal fun ParameciumTextbookReader(
     onCiliaryStageSelected: (Int) -> Unit,
     onNuclearChapter: (String) -> Unit,
     onWaterBalance: () -> Unit,
+    onNutrition: () -> Unit,
 ) {
     val lesson = NativeLessonDrafts.paramecium
     val chapter = lesson.sections.indexOfFirst { it.id == sectionId }.coerceAtLeast(0)
@@ -392,6 +393,12 @@ internal fun ParameciumTextbookReader(
                     Text(view(language, "Listen to this explanation", "இவ்விளக்கத்தைக் கேள்"))
                 }
             }
+        }
+    }
+    if(section.id in setOf("feeding-and-digestion","oral-apparatus-details","laboratory-reasoning")) {
+        Button(onClick=onNutrition,shape=RoundedCornerShape(12.dp),modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-from-reader")) {
+            Text(view(language,"Open the complete nutrition, digestion and cell-physiology textbook",
+                "முழு ஊட்டமுறை, செரிமானம், செல் உடலியல் பாடத்தைத் திற"))
         }
     }
     if (section.id == "osmoregulation") {

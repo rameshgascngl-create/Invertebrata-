@@ -4,11 +4,11 @@ import org.junit.Test
 
 class ParameciumNutritionTest {
     @Test fun ingestionRegionsRemainDistinctAndOrdered() {
-        assertEquals(listOf("current","entry","formation","acidification","digestion","uptake","docking","egestion","recycling"),ParameciumNutrition.stages.map { it.id })
+        assertEquals(listOf("current","entry","formation","acidification","digestion","uptake","docking","egestion","recycling","gas-entry","metabolism","gas-exchange"),ParameciumNutrition.stages.map { it.id })
         assertTrue(ParameciumNutrition.structures.map { it.id }.containsAll(listOf("oral-groove","oral-cilia","cytostome","cytopharynx","vacuole")))
     }
     @Test fun textbookIsDetailedBilingualAndNumbered() {
-        assertEquals(listOf("5.1","5.2","5.3","5.4","5.5","5.6","5.7"),ParameciumNutrition.readings.map { it.id })
+        assertEquals(listOf("5.1","5.2","5.3","5.4","5.5","5.6","5.7","5.8","5.9","5.10","5.11"),ParameciumNutrition.readings.map { it.id })
         for(r in ParameciumNutrition.readings) {
             assertTrue(r.heading.english.startsWith(r.id));assertTrue(r.heading.tamil.startsWith(r.id))
             assertEquals(3,r.paragraphs.size)
@@ -69,6 +69,21 @@ class ParameciumNutritionTest {
             for(m in NutritionFigure.marks) assertEquals(m.id,NutritionFigure.at(m.x,m.y))
         }
         assertNull(NutritionFigure.at(10f,580f))
+    }
+    @Test fun respirationAndSpeciesLimitsRemainExplicit() {
+        val respiration=ParameciumPhysiology.readings.first().paragraphs.joinToString {it.english}
+        assertTrue(respiration.contains("Glycolysis occurs in cytosol"))
+        assertTrue(respiration.contains("terminal electron acceptor"))
+        assertTrue(respiration.contains("not simply changed directly into carbon dioxide"))
+        assertTrue(respiration.contains("tubular mitochondrial cristae"))
+        val waste=ParameciumPhysiology.readings[1].paragraphs.joinToString {it.english}
+        assertTrue(waste.contains("Xenopus oocytes"));assertTrue(waste.contains("not measurement of whole-cell nitrogen flux in P. caudatum"))
+        val life=ParameciumPhysiology.readings.last().paragraphs.joinToString {it.english}
+        assertTrue(life.contains("P. tetraurelia"));assertTrue(life.contains("unpaired cell"))
+        assertTrue(life.contains("does not add an obligatory autogamy or resting-cyst stage"))
+        for(m in PhysiologyFigure.marks) assertEquals(m.id,PhysiologyFigure.at(m.x,m.y))
+        assertNull(PhysiologyFigure.at(5f,5f))
+        assertTrue(ParameciumPhysiology.sources.any {it.contains("70108")})
     }
     @Test fun malformedProgressNormalizesWithoutChangingSchema() {
         assertEquals(NutritionProgress(phasePermille=1000),NutritionProgress("bad","bad","bad",9999).normalized())

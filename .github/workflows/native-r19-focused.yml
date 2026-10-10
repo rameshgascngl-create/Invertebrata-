@@ -89,8 +89,8 @@ jobs:
         sudo udevadm trigger --name-match=kvm
 
         '
-    - name: Validate real nutrition Canvas, textbook and persisted formation in four
-        configurations
+    - name: Validate native physiology, complete narration, actual rotation and stage atlas
+        in four configurations
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 34
@@ -99,7 +99,7 @@ jobs:
         profile: pixel_6
         disable-animations: true
         emulator-boot-timeout: 900
-        script: bash .github/scripts/run-native-r19-quality.sh
+        script: bash .github/scripts/run-native-r19-quality.sh physiology
     - name: Preserve exact-commit R1.9 screenshot and instrumentation evidence
       if: always()
       uses: actions/upload-artifact@v4

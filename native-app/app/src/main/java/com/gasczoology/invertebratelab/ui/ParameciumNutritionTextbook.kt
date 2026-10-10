@@ -88,18 +88,20 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
     }
     fun chooseStructure(id: String) {
         if(id in ParameciumEgestion.structures.map { it.id } && progress.stageId !in ParameciumEgestion.stageIds) chooseStage("docking")
+        if(id in ParameciumPhysiology.structures.map {it.id} && progress.stageId !in ParameciumPhysiology.stageIds)
+            chooseStage(when(id) {"mitochondrion" -> "metabolism";"dissolved-exchange" -> "gas-exchange";else -> "gas-entry"})
         change(progress.copy(selectedStructure=id));speak(ParameciumNutrition.structure(id).explanation) }
     val shape=RoundedCornerShape(12.dp)
     val scope=rememberCoroutineScope()
     val requester=remember { BringIntoViewRequester() }
-    Text(nutritionText(language,"5 · Nutrition · Paramecium caudatum","5 · ஊட்டமுறை · Paramecium caudatum"),
+    Text(nutritionText(language,"5 · Nutrition and cell physiology · Paramecium caudatum","5 · ஊட்டமுறையும் செல் உடலியலும் · Paramecium caudatum"),
         style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
         modifier=Modifier.testTag("r19-textbook-title").semantics { heading() })
     Text(ParameciumNutrition.reviewStatus+" · "+nutritionText(language,
         "Original pencil schematics, not to scale. Whole-cell orientation and enlarged compartments are distinct; specialist approval pending.",
         "அசல் பென்சில் விளக்கப்படங்கள்; அளவுக்கு ஏற்ப அல்ல. முழுச் செல் திசையும் பெரிதாக்கிய பகுதிகளும் வேறுபடுத்தப்பட்டுள்ளன; நிபுணர் ஒப்புதல் நிலுவை."),
         modifier=Modifier.testTag("r19-review-status"))
-    Text("R1.9 · ${progress.stageId} · ${progress.readingId} · ${progress.selectedStructure}",
+    Text(reading.heading.value(language)+" · "+stage.heading.value(language)+" · "+ParameciumNutrition.structure(progress.selectedStructure).name.value(language),
         modifier=Modifier.testTag("r19-module-position"))
     Card(colors=CardDefaults.cardColors(containerColor=Color(0xFFFFFDF8))) {
         Column(Modifier.fillMaxWidth().padding(12.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
@@ -124,6 +126,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             Text(nutritionText(language,"View ","காட்சி ")+"${index+1}/${ParameciumNutrition.stages.size} — "+stage.heading.value(language),
                 style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold,
                 modifier=Modifier.testTag("r19-stage-title").semantics { heading() })
+            if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback)
             Button(onClick={scope.launch { requester.bringIntoView() }},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-plate")) {
                 Text(nutritionText(language,"Bring the complete pencil plate into view","முழுப் பென்சில் படத்தைத் திரையில் காண்க"))
@@ -141,7 +144,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                         "Original pencil cutaways: ventral whole-cell orientation, separately enlarged oral apparatus and food vacuole. No permanent gut or universal vacuole itinerary. Current view: ",
                         "அசல் பென்சில் வெட்டுத் தோற்றங்கள்: வயிற்றுப்புற முழுச் செல் திசை, தனியாகப் பெரிதாக்கிய வாய்ப்புற அமைப்பு, உணவு நுண்குமிழ். நிரந்தரக் குடலோ பொதுவான நுண்குமிழ் பயணப் பாதையோ அல்ல. தற்போதைய காட்சி: ")+stage.heading.value(language)+". "+stage.explanation.value(language)
                     stateDescription=ParameciumNutrition.structure(progress.selectedStructure).name.value(language)+
-                        nutritionText(language," highlighted"," சிறப்பிக்கப்பட்டது")
+                        nutritionText(language," selected"," தேர்ந்தெடுக்கப்பட்டது")
                     progressBarRangeInfo=ProgressBarRangeInfo(playback.value.phase,0f..1f)
                     customActions=ParameciumNutrition.structures.map { item -> CustomAccessibilityAction(item.name.value(language)) { chooseStructure(item.id);true } }
                 }) { drawNutritionPencil(stage.id,progress.selectedStructure,playback.value.phase) }

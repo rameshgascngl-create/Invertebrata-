@@ -3,6 +3,10 @@ set -euo pipefail
 evidence="qa-evidence/r19-quality"
 device_dir="/sdcard/Download/native-anatomy-evidence"
 selected_test="com.gasczoology.invertebratelab.NativeR19TeachingAcceptanceTest"
+# A module correction runs relevant methods; final acceptance uses the whole class.
+if [[ "${1:-all}" == "physiology" ]]; then
+  selected_test="$selected_test#physiologicalViewsDistinguishExchangeFromEnergyMetabolismWithRealMotion,$selected_test#readerLinkAndActualRotationPreserveDetailedLearningPosition,$selected_test#numberedReadingAndNarrationKeepCompleteWrittenExplanations,$selected_test#stagesAndRealStructureTapsAreVisibleAndAccessible"
+fi
 mkdir -p "$evidence"
 adb shell mkdir -p "$device_dir"
 phase=NOT_STARTED

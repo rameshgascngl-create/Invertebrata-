@@ -86,6 +86,17 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-reading-heading",true).performScrollTo().assertTextEquals(reading.heading.value(lang))
             reading.paragraphs.forEachIndexed { i,p -> rule.onNodeWithTag("r19-paragraph-"+i,true).performScrollTo().assertTextEquals(p.value(lang)) }
             capture("reading-"+reading.id)
+            val script=reading.paragraphs.joinToString("\n\n") {it.value(lang)}
+            assertTrue("Complete subsection must fit the Android TTS input limit",script.length<=android.speech.tts.TextToSpeech.getMaxSpeechInputLength())
+            rule.onNodeWithTag("r19-narrate-reading",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            rule.onNodeWithTag("r161-audio-written-fallback",true).performScrollTo().assertTextEquals(script)
+            if(context.packageManager.queryIntentServices(android.content.Intent(android.speech.tts.TextToSpeech.Engine.INTENT_ACTION_TTS_SERVICE),0).isEmpty()) {
+                rule.waitUntil(10_000) {rule.onAllNodesWithTag("r1-speech-status",true).fetchSemanticsNodes().any {n ->
+                    n.config[SemanticsProperties.Text].any {it.text.contains(if(lang==AppLanguage.TAMIL)"குரல் கிடைக்கவில்லை" else "voice unavailable")}
+                }}
+            }
+            capture("reading-audio-"+reading.id)
+            rule.onNodeWithTag("r161-stop-audio",true).performScrollTo().performClick()
         }
         rule.onNodeWithTag("r19-narrate-stage",true).performScrollTo().performClick()
         rule.onNodeWithTag("r161-audio-written-fallback",true).performScrollTo().assertTextEquals(ParameciumNutrition.stages.first().explanation.value(lang))
@@ -210,12 +221,82 @@ class NativeR19TeachingAcceptanceTest {
         assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
         capture("navigation-checkpoint-restored")
     }
-    private fun capture(suffix: String) {
+    private fun physiologyCanvas(): SemanticsNodeInteraction {
+        rule.onNodeWithTag("r19-view-physiology-plate",true).performScrollTo().performClick();rule.waitForIdle()
+        val c=rule.onNodeWithTag("r19-physiology-canvas",true)
+        val b=c.fetchSemanticsNode().boundsInRoot;val r=rule.onRoot().fetchSemanticsNode().boundsInRoot
+        assertTrue("Complete native physiology plate must fit viewport",b.top>=r.top-1 && b.bottom<=r.bottom+1 && b.width>0)
+        return c
+    }
+    @Test fun physiologicalViewsDistinguishExchangeFromEnergyMetabolismWithRealMotion() {
+        val ends=mutableListOf<android.graphics.Bitmap>()
+        for(id in ParameciumPhysiology.stageIds) {
+            rule.onNodeWithTag("r19-stage-"+id,true).performScrollTo().performClick()
+            val end=physiologyCanvas().captureToImage().asAndroidBitmap();ends.add(end);capture("physiology-"+id+"-end")
+            rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
+            val start=physiologyCanvas().captureToImage().asAndroidBitmap();capture("physiology-"+id+"-start")
+            assertFalse(id+" must have distinguishable endpoints",start.sameAs(end))
+            rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            rule.waitUntil(12_000) {rule.onNodeWithTag("r19-physiology-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
+            rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().performClick()
+            val c=physiologyCanvas();val phase=c.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            assertTrue("$id must capture a genuine intermediate phase: $phase",phase in .4f.. .85f)
+            rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+            runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.nutritionProgress.stageId==id && it.nutritionProgress.phasePermille in 400..850}}}
+            val pixels=c.captureToImage().asAndroidBitmap();assertFalse(start.sameAs(pixels));capture("physiology-"+id+"-intermediate")
+            start.recycle();pixels.recycle()
+        }
+        assertFalse(ends[0].sameAs(ends[1]));assertFalse(ends[1].sameAs(ends[2]));ends.forEach {it.recycle()}
+        for(m in PhysiologyFigure.marks) {
+            val c=physiologyCanvas();assertEquals(3,c.fetchSemanticsNode().config[SemanticsActions.CustomActions].size)
+            val b=c.fetchSemanticsNode().boundsInRoot;val f=PhysiologyFigure.fit(b.width,b.height)
+            c.performTouchInput {click(Offset(f.x(m.x),f.y(m.y)))}
+            rule.onNodeWithTag("r19-select-"+m.id,true).performScrollTo().assertHeightIsAtLeast(48.dp)
+                .assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+            rule.onNodeWithTag("r19-organ-explanation",true).performScrollTo().assertTextEquals(ParameciumNutrition.structure(m.id).explanation.value(lang))
+            physiologyCanvas();capture("physiology-highlight-"+m.id)
+        }
+        rule.onNodeWithTag("r19-reduced-motion",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().assertIsNotEnabled().assertHeightIsAtLeast(48.dp)
+    }
+    @Test fun readerLinkAndActualRotationPreserveDetailedLearningPosition() {
+        rule.onNodeWithTag("r19-reading-5.11",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-stage-metabolism",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-select-mitochondrion",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().performClick()
+        rule.waitUntil(12_000) {rule.onNodeWithTag("r19-physiology-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
+        rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().performClick()
+        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
+            it.nutritionProgress.stageId=="metabolism" && it.nutritionProgress.readingId=="5.11" &&
+                it.nutritionProgress.selectedStructure=="mitochondrion" && it.nutritionProgress.phasePermille in 400..850
+        }}}.nutritionProgress
+        rule.activityRule.scenario.onActivity {it.requestedOrientation=if(landscape)ActivityInfo.SCREEN_ORIENTATION_PORTRAIT else ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE}
+        rule.waitUntil(20_000) {context.resources.configuration.orientation==if(landscape)Configuration.ORIENTATION_PORTRAIT else Configuration.ORIENTATION_LANDSCAPE}
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
+        assertEquals(scale,context.resources.configuration.fontScale,.05f)
+        assertEquals(saved.phasePermille/1000f,physiologyCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.001f)
+        rule.onNodeWithTag("r19-playback-state",true).performScrollTo().assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
+        physiologyCanvas();capture("rotated-paused-physiology",!landscape)
+        rule.activityRule.scenario.onActivity {it.requestedOrientation=if(landscape)ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT}
+        rule.waitUntil(20_000) {context.resources.configuration.orientation==if(landscape)Configuration.ORIENTATION_LANDSCAPE else Configuration.ORIENTATION_PORTRAIT}
+        rule.onNodeWithTag("r1-tab-study").performScrollTo().performClick()
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r14-contents-toggle",true).fetchSemanticsNodes().isNotEmpty()}
+        rule.onNodeWithTag("r14-contents-toggle",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r14-open-section-feeding-and-digestion",true).performScrollTo().performClick()
+        rule.onNodeWithTag("r19-from-reader",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
+        rule.onNodeWithTag("r19-reading-heading",true).performScrollTo().assertTextEquals(ParameciumPhysiology.readings.last().heading.value(lang))
+        assertEquals(saved.phasePermille/1000f,physiologyCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.001f)
+        runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.laboratoryTab=="nutrition" && it.nutritionProgress==saved}}}
+        capture("reader-link-restored-physiology")
+    }
+
+    private fun capture(suffix: String,landscapeExpected: Boolean=landscape) {
         val a=InstrumentationRegistry.getInstrumentation().uiAutomation
         val path="/sdcard/Download/native-anatomy-evidence/"+prefix+"-"+suffix+".png"
         ParcelFileDescriptor.AutoCloseInputStream(a.executeShellCommand("screencap -p "+path)).use{it.readBytes()}
         val bytes=ParcelFileDescriptor.AutoCloseInputStream(a.executeShellCommand("cat "+path)).use{it.readBytes()}
         val bmp=checkNotNull(BitmapFactory.decodeByteArray(bytes,0,bytes.size))
-        assertTrue(bytes.size>1000);assertTrue(if(landscape)bmp.width>bmp.height else bmp.height>bmp.width);bmp.recycle()
+        assertTrue(bytes.size>1000);assertTrue(if(landscapeExpected)bmp.width>bmp.height else bmp.height>bmp.width);bmp.recycle()
     }
 }

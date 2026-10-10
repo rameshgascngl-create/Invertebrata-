@@ -138,8 +138,9 @@ fun ParameciumTeachingLab(
             }
             if (tab == "nutrition") {
                 val p = learningState.nutritionProgress
-                Text("R1.9 · " + p.stageId + " · " + p.readingId + " · " + p.selectedStructure,
-                    modifier = Modifier.testTag("r19-learning-position"))
+                Text(com.gasczoology.invertebratelab.data.ParameciumNutrition.readings.first {it.id==p.readingId}.heading.value(language)+" · "+
+                    com.gasczoology.invertebratelab.data.ParameciumNutrition.stages.first {it.id==p.stageId}.heading.value(language),
+                    modifier = Modifier.testTag("r19-learning-position-"+p.stageId))
             }
             if (tab == "water-balance") {
                 val p = learningState.waterBalanceProgress
@@ -217,7 +218,7 @@ fun ParameciumTeachingLab(
                                 "listen" -> bi(language, "04 · Listen", "04 · ஒலி விளக்கம்")
                                 "nuclear" -> bi(language, "06 · Nuclear biology", "06 · உட்கரு உயிரியல்")
                                 "water-balance" -> bi(language, "07 · Water balance", "07 · நீர்ச் சமநிலை")
-                                "nutrition" -> bi(language, "08 · Nutrition", "08 · ஊட்டமுறை")
+                                "nutrition" -> bi(language, "08 · Nutrition and physiology", "08 · ஊட்டமுறையும் உடலியலும்")
                                 else -> bi(language, "05 · Practice", "05 · பயிற்சி")
                             }
                             val buttonModifier = Modifier.weight(1f)
@@ -299,6 +300,7 @@ private fun StudySection(
         ciliaryStageIndex = learningState.ciliaryStageIndex,
         onSectionSelected = { onLearningChanged(learningState.copy(textbookSectionId = it)) },
         onCiliaryStageSelected = { onLearningChanged(learningState.copy(ciliaryStageIndex = it)) },
+        onNutrition = { onLearningChanged(learningState.copy(laboratoryTab = "nutrition")) },
         onWaterBalance = { onLearningChanged(learningState.copy(laboratoryTab = "water-balance")) },
         onNuclearChapter = { chapter -> onLearningChanged(learningState.copy(laboratoryTab = "nuclear",
             nuclearProgress = learningState.nuclearProgress.selectChapter(chapter))) })
