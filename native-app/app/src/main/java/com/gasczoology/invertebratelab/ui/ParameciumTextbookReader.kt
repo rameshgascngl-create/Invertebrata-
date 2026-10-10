@@ -285,6 +285,9 @@ internal fun ParameciumTextbookReader(
 ) {
     val lesson = NativeLessonDrafts.paramecium
     var chapter by rememberSaveable { mutableIntStateOf(0) }
+    // Keep the ciliary experiment's position while navigating between
+    // textbook sections and across Activity recreation.
+    var ciliaryStageIndex by rememberSaveable { mutableIntStateOf(0) }
     var contentsExpanded by rememberSaveable { mutableStateOf(false) }
     val plateRequester = remember { BringIntoViewRequester() }
     val plateScope = rememberCoroutineScope()
@@ -390,7 +393,12 @@ internal fun ParameciumTextbookReader(
     // Feeding keeps its separate R1.5 plate and unchanged acceptance tests.
     if (section.id == "pellicle-and-cilia" ||
         section.id == "cortical-avoidance-response") {
-        ParameciumCiliaryTextbookPlate(language, speak)
+        ParameciumCiliaryTextbookPlate(
+            language = language,
+            speak = speak,
+            selectedStage = ciliaryStageIndex,
+            onStageSelected = { ciliaryStageIndex = it },
+        )
     } else if (section.id == "feeding-and-digestion" ||
         section.id == "oral-apparatus-details") {
         ParameciumFeedingPathwayPlate(language, speak)
