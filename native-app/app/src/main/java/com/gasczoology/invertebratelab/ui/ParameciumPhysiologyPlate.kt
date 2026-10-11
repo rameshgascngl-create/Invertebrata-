@@ -21,12 +21,21 @@ import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun ParameciumPhysiologyPlate(language: AppLanguage,stage: String,selected: String,player: com.gasczoology.invertebratelab.NutritionPlaybackViewModel,onSelect: (String)->Unit,enabled: Boolean,onToggle: ()->Unit) {
+internal fun ParameciumPhysiologyPlate(language: AppLanguage,stage: String,selected: String,player: com.gasczoology.invertebratelab.NutritionPlaybackViewModel,onSelect: (String)->Unit,enabled: Boolean,onToggle: ()->Unit,onInspectIntermediate: ()->Unit) {
     val requester=remember {BringIntoViewRequester()};val scope=rememberCoroutineScope()
     val playback=player.state.collectAsState()
     val playing by remember(player) {derivedStateOf {playback.value.playing}}
     Button(onClick={scope.launch {requester.bringIntoView()}},modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-physiology-plate")) {
         Text(if(language==AppLanguage.TAMIL)"முழு வாயுப் பரிமாற்றப் படத்தைக் காண்க" else "View the complete physiology plate")
+    }
+    // Genuine mid-animation frame hold for repeatable inspection, even
+    // when TalkBack or 200% Tamil multiline layout delays manual taps.
+    OutlinedButton(onClick=onInspectIntermediate,enabled=enabled,
+        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+            .testTag("r19-physiology-inspect-midpoint")) {
+        Text(if(language==AppLanguage.TAMIL)
+            "இயக்கத்தைத் தொடங்கி இடைநிலைக் காட்சியில் நிறுத்து"
+            else "Play and hold the genuine intermediate frame")
     }
     OutlinedButton(onClick=onToggle,enabled=enabled,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-physiology-inline-play-pause")) {
         Text(if(language==AppLanguage.TAMIL) {if(playing)"இடைநிறுத்து" else "இயக்கு"} else {if(playing)"Pause" else "Play"})
