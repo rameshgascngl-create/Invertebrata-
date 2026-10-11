@@ -77,7 +77,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
     // A pedagogical freeze-frame: run the actual native playback clock from
     // zero until frame 75/120, then atomically hold it for close inspection.
     // Unlike a delayed UI click, this cannot overshoot while Tamil text lays out.
-    fun inspectPhysiologyIntermediate() {
+    fun inspectIntermediate() {
         if (progress.reducedMotion) return
         player.rewind()
         change(progress.copy(phasePermille=0))
@@ -140,7 +140,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             Text(nutritionText(language,"View ","காட்சி ")+"${index+1}/${ParameciumNutrition.stages.size} — "+stage.heading.value(language),
                 style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold,
                 modifier=Modifier.testTag("r19-stage-title").semantics { heading() })
-            if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectPhysiologyIntermediate)
+            if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectIntermediate)
             Button(onClick={scope.launch { requester.bringIntoView() }},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-plate")) {
                 Text(nutritionText(language,"Bring the complete pencil plate into view","முழுப் பென்சில் படத்தைத் திரையில் காண்க"))
@@ -166,7 +166,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 "G oral groove/vestibule · O oral cilia · M cytostome · F cytopharynx · V food vacuole · A acidosome · L lysosome · B vacuolar boundary · S soluble products. Left: ventral orientation only. Upper-right: enlarged oral cutaway. Lower-right: independently enlarged vacuole. Membrane folds, ciliary counts, particle size and timing are schematic; amber particles, stippling and enzyme dots are qualitative teaching cues, not a microscope stain, calibrated pH or resolved proteins. Stippling records early acidification, not sustained low pH. Large grey residues stay enclosed while small soluble products cross the membrane.",
                 "G வாய்ப்பள்ளம்/முன்னறை · O வாய்ப்புறக் குறுஇழை · M செல் வாய் · F சைட்டோஃபாரிங்ஸ் · V உணவு நுண்குமிழ் · A அமிலச் சிறுகுமிழ் · L லைசோசோம் · B நுண்குமிழ்ச் சவ்வு · S கரையும் விளைபொருள்கள். இடது: வயிற்றுப்புறத் திசை மட்டும். மேல் வலது: பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம். கீழ் வலது: தனிப் பெரிதாக்கிய நுண்குமிழ். சவ்வு மடிப்புகள், குறுஇழை எண்ணிக்கை, துகள் அளவு, நேரம் ஆகியவை விளக்கத்திற்கானவை; பழுப்பு நிறத் துகள்களும் புள்ளிகளும் கற்பித்தல் குறிகள்; நுண்ணோக்கிச் சாயம், அளவிட்ட pH அல்லது நேரடிப் புரதக் காட்சி அல்ல. புள்ளிகள் ஆரம்ப அமிலமாதலைக் குறிக்கின்றன; தொடர்ந்து குறைந்த pH அல்ல. சிறிய கரையும் விளைபொருள்கள் சவ்வைக் கடக்கும்போது பெரிய சாம்பல் எச்சங்கள் உள்ளேயே இருக்கும்."),
                 modifier=Modifier.testTag("r19-plate-legend"))
-            if(stage.id in ParameciumEgestion.stageIds) ParameciumEgestionPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback)
+            if(stage.id in ParameciumEgestion.stageIds) ParameciumEgestionPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectIntermediate)
             for(item in ParameciumNutrition.structures) {
                 OutlinedButton(onClick={chooseStructure(item.id)},shape=shape,
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-select-"+item.id)
