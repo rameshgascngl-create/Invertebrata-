@@ -5,6 +5,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -31,6 +32,8 @@ internal fun ParameciumPhysiologyPlate(language: AppLanguage,stage: String,selec
     // Genuine mid-animation frame hold for repeatable inspection, even
     // when TalkBack or 200% Tamil multiline layout delays manual taps.
     OutlinedButton(onClick=onInspectIntermediate,enabled=enabled,
+        shape=RoundedCornerShape(12.dp),
+        contentPadding=PaddingValues(horizontal=18.dp,vertical=14.dp),
         modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
             .testTag("r19-physiology-inspect-midpoint")) {
         Text(if(language==AppLanguage.TAMIL)
