@@ -176,12 +176,34 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
             val start=egestionCanvas().captureToImage().asAndroidBitmap();capture("cytoproct-"+id+"-start")
             assertFalse(id+" must change the actual cytoproct pixels",start.sameAs(end))
-            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
-            rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().performClick()
+            // Manual Play/Pause remains a separate native control check. A long Tamil
+            // layout can legitimately delay the click; it must not dictate the precise
+            // frame used to verify intermediate anatomy.
+            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true)
+                .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            rule.onNodeWithTag("r19-playback-state",true)
+                .assertTextEquals(if(lang==AppLanguage.TAMIL) "இயங்குகிறது" else "Playing")
+            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true)
+                .performScrollTo().performClick()
+            rule.onNodeWithTag("r19-playback-state",true)
+                .assertTextEquals(if(lang==AppLanguage.TAMIL) "இடைநிறுத்தம்" else "Paused")
+            // Use the existing learner-visible real-clock hold, exactly as physiology
+            // and genuine process recovery do. Keep the original phase interval.
+            rule.onNodeWithTag("r19-cytoproct-inspect-midpoint",true)
+                .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            rule.waitUntil(15_000) {
+                rule.onNodeWithTag("r19-egestion-canvas",true)
+                    .fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current >= .625f
+            }
+            rule.onNodeWithTag("r19-playback-state",true)
+                .assertTextEquals(if(lang==AppLanguage.TAMIL) "இடைநிறுத்தம்" else "Paused")
             rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
             val mid=egestionCanvas();val phase=mid.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("$id captured phase=$phase must remain intermediate",phase in .4f.. .85f)
+            assertEquals("$id must hold actual frame 75/120",.625f,phase,.001f)
+            runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
+                it.nutritionProgress.stageId==id && it.nutritionProgress.phasePermille==625
+            }}}
             val pixels=mid.captureToImage().asAndroidBitmap();assertFalse(start.sameAs(pixels));capture("cytoproct-"+id+"-intermediate")
             start.recycle();pixels.recycle()
         }

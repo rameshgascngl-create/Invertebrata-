@@ -9,6 +9,8 @@ quality_args=()
 quality_scope="${1:-all}"
 if [[ "$quality_scope" == "physiology" ]]; then
   quality_args=(-Pandroid.testInstrumentationRunnerArguments.annotation=com.gasczoology.invertebratelab.R19PhysiologyGate)
+elif [[ "$quality_scope" == "egestion" ]]; then
+  selected_test+="#cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits"
 fi
 verify_cohort() {
   python3 - "$1" "${2:-$quality_scope}" <<'PYTEST'
@@ -16,7 +18,7 @@ import sys,pathlib,xml.etree.ElementTree as E
 scope=sys.argv[2]
 core={"stagesAndRealStructureTapsAreVisibleAndAccessible","numberedReadingAndNarrationKeepCompleteWrittenExplanations","physiologicalViewsDistinguishExchangeFromEnergyMetabolismWithRealMotion","readerLinkAndActualRotationPreserveDetailedLearningPosition"}
 full=core|{"actualFormationPixelsAndIntermediatePhaseSurviveRecreationAndNavigation","maturationStagesHaveDistinctNativeEndpointsAndRealIntermediateMotion","cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits","leavingDuringPlaybackCheckpointsPhaseWithoutOverwritingNavigation"}
-expected={"malformedNewKeysNormalizeWithoutResettingAcceptedFields","legacyR18PreferencesWithoutNutritionKeysRetainEveryEarlierAnchor"} if scope=="compatibility" else core if scope=="physiology" else full
+expected={"malformedNewKeysNormalizeWithoutResettingAcceptedFields","legacyR18PreferencesWithoutNutritionKeysRetainEveryEarlierAnchor"} if scope=="compatibility" else {"cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits"} if scope=="egestion" else core if scope=="physiology" else full
 cases=[c for p in pathlib.Path(sys.argv[1]).rglob('TEST-*.xml') for c in E.parse(p).getroot().iter('testcase')]
 actual=[c.attrib['name'] for c in cases]
 assert len(actual)==len(expected) and set(actual)==expected,("WRONG_TEST_COHORT",scope,sorted(expected),actual)
@@ -88,6 +90,11 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   grep -q 'Active default network: none' "$evidence/$phase/connectivity-after.txt" || { result=OFFLINE_LOST; exit 1; }
   adb logcat -d -v threadtime -s R19_NUTRITION:I '*:S' > "$evidence/$phase/nutrition-pixels.txt"
 done
+# A correction runs only its exact isolated cohort before the failed full gate.
+if [[ "$quality_scope" == "egestion" ]]; then
+  result=PASS
+  exit 0
+fi
 phase="datastore-compatibility"
 mkdir -p "$evidence/$phase"
 rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
