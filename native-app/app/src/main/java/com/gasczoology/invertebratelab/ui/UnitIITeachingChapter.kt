@@ -109,8 +109,12 @@ internal fun UnitIITeachingChapter(
                 val p by animateFloatAsState(targetValue=index.toFloat(),
                     animationSpec=tween(durationMillis=600),label="Unit II teaching stage")
                 Card(colors=CardDefaults.cardColors(containerColor=parchment)) {
-                    if(sycon) SyconCanalCanvas(p,language,{stage->index=stage;playing=false})
-                    else ObeliaColonyCanvas(p,language,{stage->index=stage;playing=false})
+                    if(sycon) UnitIIImagePlate(true,p,language,{stage->index=stage;playing=false}) {
+                        SyconCanalCanvas(p,language,{stage->index=stage;playing=false})
+                    }
+                    else UnitIIImagePlate(false,p,language,{stage->index=stage;playing=false}) {
+                        ObeliaColonyCanvas(p,language,{stage->index=stage;playing=false})
+                    }
                 }
                 Text(stages[index.coerceIn(stages.indices)].name.value(language),
                     style=MaterialTheme.typography.titleMedium,fontWeight=FontWeight.Bold,
