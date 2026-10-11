@@ -97,6 +97,16 @@ jobs:
           path: qa-evidence/unit2-screenshots/
           if-no-files-found: error
 
+      - name: Build exact candidate debug APK for physical handset QA
+        if: success()
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve installable physical-device QA APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-corrected-plate-device-qa-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
       - name: Promote native image masters only after Android acceptance
         if: success() && github.ref_name == 'native/u2-scanned-plate-candidate-20261011'
         run: |
