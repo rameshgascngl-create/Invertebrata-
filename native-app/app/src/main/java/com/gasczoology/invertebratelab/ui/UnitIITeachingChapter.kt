@@ -29,7 +29,7 @@ import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.delay
 import kotlin.math.sqrt
 
-private val graphite=Color(0xFF40434A)
+private val unitIIInk=Color(0xFF40434A)
 private val soft=Color(0xFF9FA4AC)
 private val currentBlue=Color(0xFF176B9A)
 private val focusOrange=Color(0xFFD36A27)
@@ -224,7 +224,7 @@ private fun nearestMark(click:Offset, w:Float,h:Float,marks:List<Offset>):Int{
         val dx=x-marks[i].x;val dy=y-marks[i].y;dx*dx+dy*dy
     }?:0
 }
-private fun DrawScope.line(a:Offset,b:Offset,color:Color=graphite,width:Float=2f){
+private fun DrawScope.line(a:Offset,b:Offset,color:Color=unitIIInk,width:Float=2f){
     drawLine(color,a,b,width)
 }
 private fun DrawScope.dot(p:Offset,color:Color,rad:Float=5f) {
@@ -261,14 +261,14 @@ private fun SyconCanalCanvas(progress:Float, language:AppLanguage,onSelect:(Int)
             lineTo(w*.77f,h*.20f);lineTo(w*.61f,h*.10f)
         }
         drawPath(outer,wall)
-        drawPath(outer,graphite,style=Stroke(2.7f))
+        drawPath(outer,unitIIInk,style=Stroke(2.7f))
         val cavity=Path().apply{
             moveTo(w*.46f,h*.15f);lineTo(w*.43f,h*.83f)
             quadraticTo(w*.50f,h*.88f,w*.57f,h*.83f)
             lineTo(w*.54f,h*.15f)
         }
         drawPath(cavity,parchment)
-        drawPath(cavity,graphite,style=Stroke(2f))
+        drawPath(cavity,unitIIInk,style=Stroke(2f))
         // Osculum at upper opening, with spicule fringe.
         line(p(.39f,.10f),p(.46f,.15f));line(p(.61f,.10f),p(.54f,.15f))
         for(i in 0..5){ val x=.38f+i*.048f;line(p(x,.098f),p(x-.012f,.055f),soft,1.2f) }
@@ -281,10 +281,10 @@ private fun SyconCanalCanvas(progress:Float, language:AppLanguage,onSelect:(Int)
             val xleft=.25f;val xright=.75f
             drawLine(cut,p(.24f,y),p(.44f,y),strokeWidth=13f)
             drawLine(cut,p(.56f,y),p(.76f,y),strokeWidth=13f)
-            drawLine(graphite,p(.24f,y-.018f),p(.44f,y-.018f),strokeWidth=1.6f)
-            drawLine(graphite,p(.24f,y+.018f),p(.44f,y+.018f),strokeWidth=1.6f)
-            drawLine(graphite,p(.56f,y-.018f),p(.76f,y-.018f),strokeWidth=1.6f)
-            drawLine(graphite,p(.56f,y+.018f),p(.76f,y+.018f),strokeWidth=1.6f)
+            drawLine(unitIIInk,p(.24f,y-.018f),p(.44f,y-.018f),strokeWidth=1.6f)
+            drawLine(unitIIInk,p(.24f,y+.018f),p(.44f,y+.018f),strokeWidth=1.6f)
+            drawLine(unitIIInk,p(.56f,y-.018f),p(.76f,y-.018f),strokeWidth=1.6f)
+            drawLine(unitIIInk,p(.56f,y+.018f),p(.76f,y+.018f),strokeWidth=1.6f)
             // Choanocyte collars reside in radial canals only.
             for(k in 0..3) {
                 val x=.31f+k*.031f
@@ -324,23 +324,23 @@ private fun ObeliaColonyCanvas(progress:Float,language:AppLanguage,onSelect:(Int
         val w=size.width;val h=size.height
         fun p(x:Float,y:Float)=Offset(w*x,h*y)
         // Basal hydrorhiza and upright hydrocaulus. Branches share a stem.
-        line(p(.08f,.91f),p(.55f,.91f),graphite,3.8f)
+        line(p(.08f,.91f),p(.55f,.91f),unitIIInk,3.8f)
         for(i in 0..4){val x=.11f+i*.08f;line(p(x,.91f),p(x-.024f,.943f),soft,1.8f)}
-        line(p(.31f,.91f),p(.31f,.38f),graphite,5f)
-        line(p(.31f,.58f),p(.51f,.58f),graphite,3f)
-        line(p(.51f,.58f),p(.62f,.44f),graphite,3f)
+        line(p(.31f,.91f),p(.31f,.38f),unitIIInk,5f)
+        line(p(.31f,.58f),p(.51f,.58f),unitIIInk,3f)
+        line(p(.51f,.58f),p(.62f,.44f),unitIIInk,3f)
         // Hydranth with tentacles around mouth, carried by hydrotheca.
         val cup=Path().apply {
             moveTo(w*.26f,h*.39f);quadraticTo(w*.29f,h*.47f,w*.31f,h*.47f)
             quadraticTo(w*.34f,h*.47f,w*.36f,h*.39f)
         }
-        drawPath(cup,graphite,style=Stroke(2f))
+        drawPath(cup,unitIIInk,style=Stroke(2f))
         drawOval(color=Color(0xFFD4DDD7),topLeft=p(.28f,.255f),
             size=Size(w*.06f,h*.155f))
         for(i in 0..7){
             val theta=i*3.14159f/7f
             val x=.31f+(i-3.5f)*.028f
-            line(p(.31f,.27f),p(x,.16f+(i%2)*.032f),graphite,1.8f)
+            line(p(.31f,.27f),p(x,.16f+(i%2)*.032f),unitIIInk,1.8f)
         }
         dot(p(.31f,.26f),focusOrange,3f)
         // Gonangium: gonotheca sheath enclosing multiple buds.
@@ -350,8 +350,8 @@ private fun ObeliaColonyCanvas(progress:Float,language:AppLanguage,onSelect:(Int
             quadraticTo(w*.75f,h*.39f,w*.69f,h*.57f)
         }
         drawPath(gon,Color(0xFFDFE9E8))
-        drawPath(gon,graphite,style=Stroke(2.3f))
-        line(p(.64f,.55f),p(.64f,.32f),graphite,2f)
+        drawPath(gon,unitIIInk,style=Stroke(2.3f))
+        line(p(.64f,.55f),p(.64f,.32f),unitIIInk,2f)
         for(i in 0..3)dot(p(.62f+i%2*.044f,.35f+i*.06f),soft,7f)
         // Separate medusa is diagrammatically above-right; do not join it
         // physically to the colony.
@@ -360,21 +360,21 @@ private fun ObeliaColonyCanvas(progress:Float,language:AppLanguage,onSelect:(Int
             quadraticTo(w*.82f,h*.25f,w*.74f,h*.20f)
         }
         drawPath(bell,Color(0xFFE2E7EE))
-        drawPath(bell,graphite,style=Stroke(2f))
+        drawPath(bell,unitIIInk,style=Stroke(2f))
         for(i in 0..3) {
-            val x=.75f+i*.055f;line(p(x,.21f),p(x-.008f,.30f),graphite,1.2f)
+            val x=.75f+i*.055f;line(p(x,.21f),p(x-.008f,.30f),unitIIInk,1.2f)
         }
-        line(p(.82f,.16f),p(.82f,.26f),graphite,1.7f)
+        line(p(.82f,.16f),p(.82f,.26f),unitIIInk,1.7f)
         // Ciliated planula is not a tiny medusa.
         drawOval(soft.copy(alpha=.4f),topLeft=p(.765f,.64f),size=Size(w*.085f,h*.095f))
-        drawOval(graphite,topLeft=p(.765f,.64f),size=Size(w*.085f,h*.095f),style=Stroke(1.6f))
+        drawOval(unitIIInk,topLeft=p(.765f,.64f),size=Size(w*.085f,h*.095f),style=Stroke(1.6f))
         for(i in 0..6){
-            val x=.77f+i*.011f;line(p(x,.64f),p(x-.006f,.62f),graphite,1f)
+            val x=.77f+i*.011f;line(p(x,.64f),p(x-.006f,.62f),unitIIInk,1f)
         }
         // Newly settled polyp distinct from larva.
-        line(p(.68f,.94f),p(.88f,.94f),graphite,2f)
-        line(p(.76f,.94f),p(.76f,.855f),graphite,2.6f)
-        for(i in 0..3)line(p(.76f,.855f),p(.72f+i*.027f,.81f),graphite,1.2f)
+        line(p(.68f,.94f),p(.88f,.94f),unitIIInk,2f)
+        line(p(.76f,.94f),p(.76f,.855f),unitIIInk,2.6f)
+        for(i in 0..3)line(p(.76f,.855f),p(.72f+i*.027f,.81f),unitIIInk,1.2f)
         labelledFocus(progress,obeliaMarks)
     }
 }
