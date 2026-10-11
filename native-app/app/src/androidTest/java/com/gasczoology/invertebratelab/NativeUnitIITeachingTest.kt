@@ -5,6 +5,8 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
+import android.graphics.BitmapFactory
+import android.os.ParcelFileDescriptor
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -25,6 +27,20 @@ class NativeUnitIITeachingTest {
             rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
         }
     }
+    private fun captureRealScreen(scene: String) {
+        rule.waitForIdle()
+        val scale = if(context.resources.configuration.fontScale >= 1.95f) "200" else "100"
+        val path = "/sdcard/Download/unit2-qa/unit2-" + scale + "-" + scene + ".png"
+        val ui = InstrumentationRegistry.getInstrumentation().uiAutomation
+        ParcelFileDescriptor.AutoCloseInputStream(ui.executeShellCommand("screencap -p " + path))
+            .use { it.readBytes() }
+        val bytes = ParcelFileDescriptor.AutoCloseInputStream(ui.executeShellCommand("cat " + path))
+            .use { it.readBytes() }
+        val bitmap = checkNotNull(BitmapFactory.decodeByteArray(bytes,0,bytes.size))
+        org.junit.Assert.assertTrue(bytes.size > 15000)
+        org.junit.Assert.assertTrue(bitmap.height > bitmap.width)
+        bitmap.recycle()
+    }
     @Test fun syconShowsBilingualTextbookAndAnatomicalWaterRouteBeforeA5() {
         rule.onNodeWithTag("language-tamil").performClick()
         rule.onNodeWithTag("unit-2").performScrollTo().performClick()
@@ -37,13 +53,19 @@ class NativeUnitIITeachingTest {
         }
         rule.onNodeWithTag("u2-lesson-title").assertExists()
         rule.onNodeWithTag("u2-draft-disclosure").assertExists()
+        rule.onNodeWithTag("u2-sycon-canvas").performScrollTo()
+        captureRealScreen("sycon-external")
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
             .assertHasClickAction().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("03 · புரோசோபைல்")
+        rule.onNodeWithTag("u2-sycon-canvas").performScrollTo()
+        captureRealScreen("sycon-prosopyle")
         rule.onNodeWithTag("u2-stage-apopyle").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("05 · அப்போபைல்")
+        rule.onNodeWithTag("u2-sycon-canvas").performScrollTo()
+        captureRealScreen("sycon-apopyle")
         rule.onNodeWithTag("u2-reader-u2-sycon")
             .performScrollToNode(hasTestTag("u2-practice-heading"))
         rule.onNodeWithTag("u2-practice-heading").assertExists()
@@ -56,10 +78,16 @@ class NativeUnitIITeachingTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("u2-obelia-canvas").fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("u2-obelia-canvas").performScrollTo()
+        captureRealScreen("obelia-colony")
         for(id in listOf("hydranth","gonangium","medusa","planula","settlement")) {
             rule.onNodeWithTag("u2-stage-"+id).performScrollTo()
                 .assertHasClickAction().performClick()
             rule.onNodeWithTag("u2-stage-explanation").assertExists()
+            if(id in setOf("hydranth","gonangium","medusa","planula")) {
+                rule.onNodeWithTag("u2-obelia-canvas").performScrollTo()
+                captureRealScreen("obelia-"+id)
+            }
         }
         rule.onNodeWithTag("u2-reader-u2-obelia")
             .performScrollToNode(hasTestTag("u2-section-life-history"))
