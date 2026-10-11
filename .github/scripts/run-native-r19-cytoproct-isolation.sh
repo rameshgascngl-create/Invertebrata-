@@ -16,7 +16,24 @@ cleanup() {
   find "$evidence" -type f -name '*.png' -print0 | xargs -0 -r sha256sum > "$evidence/png-sha256.txt" || true
 }
 trap cleanup EXIT
-adb shell mkdir -p "$device_dir"
+# sys.boot_completed can precede the emulated shared-storage mount.
+# Never classify an external-storage startup race as an app failure.
+storage_ready=0
+for attempt in {1..60}; do
+  if adb shell mkdir -p "$device_dir" >/dev/null 2>&1 &&
+     adb shell test -d "$device_dir"; then
+    storage_ready=1
+    printf 'storage_ready_after_attempt=%s\n' "$attempt" > "$evidence/storage-ready.txt"
+    break
+  fi
+  printf 'attempt=%s storage_not_ready\n' "$attempt" >> "$evidence/storage-poll.txt"
+  sleep 1
+done
+[[ "$storage_ready" == 1 ]] || {
+  result=STORAGE_MOUNT_NOT_READY
+  adb shell ls -ld /sdcard /storage/emulated/0 /sdcard/Download > "$evidence/storage-diagnostic.txt" 2>&1 || true
+  exit 1
+}
 adb shell settings put system font_scale 2.0
 adb shell settings get system font_scale > "$evidence/font-scale.txt"
 grep -Eq '^2(\.0+)?$' "$evidence/font-scale.txt" || { result=FONT_SCALE_NOT_200; exit 1; }
