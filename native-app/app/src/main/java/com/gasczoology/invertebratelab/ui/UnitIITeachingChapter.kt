@@ -210,171 +210,364 @@ internal fun UnitIITeachingChapter(
 }
 
 private val syconMarks=listOf(
-    Offset(0.18f,0.52f), Offset(0.25f,0.52f),Offset(0.31f,0.52f),
-    Offset(0.37f,0.52f),Offset(0.43f,0.52f),Offset(0.50f,0.52f),
-    Offset(0.50f,0.11f)
+    Offset(.205f,.572f),Offset(.274f,.572f),Offset(.319f,.548f),
+    Offset(.374f,.520f),Offset(.435f,.520f),Offset(.500f,.520f),
+    Offset(.500f,.115f)
 )
 private val obeliaMarks=listOf(
-    Offset(.31f,.70f),Offset(.31f,.26f),Offset(.64f,.44f),
-    Offset(.78f,.17f),Offset(.80f,.69f),Offset(.74f,.90f)
+    Offset(.295f,.700f),Offset(.300f,.245f),Offset(.505f,.430f),
+    Offset(.786f,.195f),Offset(.790f,.655f),Offset(.765f,.875f)
 )
-private fun nearestMark(click:Offset, w:Float,h:Float,marks:List<Offset>):Int{
+private fun nearestMark(click:Offset,w:Float,h:Float,marks:List<Offset>):Int {
+    if(w<=0f || h<=0f) return 0
     val x=click.x/w;val y=click.y/h
     return marks.indices.minByOrNull{i->
         val dx=x-marks[i].x;val dy=y-marks[i].y;dx*dx+dy*dy
     }?:0
-}
-private fun DrawScope.line(a:Offset,b:Offset,color:Color=unitIIInk,width:Float=2f){
-    drawLine(color,a,b,width)
-}
-private fun DrawScope.dot(p:Offset,color:Color,rad:Float=5f) {
-    drawCircle(color,rad,p)
 }
 private fun DrawScope.labelledFocus(stage:Float,marks:List<Offset>) {
     val i=stage.coerceIn(0f,(marks.size-1).toFloat())
     val a=marks[i.toInt()]
     val b=marks[(i.toInt()+1).coerceAtMost(marks.lastIndex)]
     val t=i-i.toInt()
-    val p=Offset((a.x+(b.x-a.x)*t)*size.width,(a.y+(b.y-a.y)*t)*size.height)
-    drawCircle(focusOrange,20f,p,style=Stroke(width=4f))
-    drawCircle(focusOrange.copy(alpha=.40f),9f,p)
+    val point=Offset((a.x+(b.x-a.x)*t)*size.width,(a.y+(b.y-a.y)*t)*size.height)
+    drawCircle(focusOrange.copy(alpha=.90f),13f,point,style=Stroke(width=2.7f))
+    drawCircle(focusOrange.copy(alpha=.22f),6f,point)
+}
+
+// Graphite marks are deterministically over-traced, with fine stipple/hatching.
+// This is native Canvas artwork, not a bitmap, SVG, WebView or a stock photo.
+// Its explanatory morphology is NOT represented as a histological micrograph.
+private val graphiteDark=Color(0xFF343738)
+private val graphiteMid=Color(0xFF73716C)
+private val graphitePale=Color(0xFFB6AEA0)
+private fun DrawScope.pencilLine(a:Offset,b:Offset,weight:Float=1.8f) {
+    drawLine(graphitePale.copy(alpha=.34f),a+Offset(.7f,-.5f),
+        b+Offset(.4f,.65f),weight*2.35f)
+    drawLine(graphiteDark.copy(alpha=.82f),a,b,weight)
+    drawLine(graphiteMid.copy(alpha=.32f),a+Offset(-.6f,.5f),
+        b+Offset(.5f,-.5f),weight*.75f)
+}
+private fun DrawScope.pencilPath(path:Path,weight:Float=2f) {
+    drawPath(path,graphitePale.copy(alpha=.28f),style=Stroke(width=weight*2.5f))
+    drawPath(path,graphiteDark.copy(alpha=.84f),style=Stroke(width=weight))
+    drawPath(path,graphiteMid.copy(alpha=.30f),style=Stroke(width=weight*.54f))
+}
+private fun DrawScope.pencilDot(point:Offset,radius:Float=1.35f) {
+    drawCircle(graphiteMid.copy(alpha=.53f),radius,point)
 }
 @Composable
-private fun SyconCanalCanvas(progress:Float, language:AppLanguage,onSelect:(Int)->Unit) {
+private fun SyconCanalCanvas(progress:Float,language:AppLanguage,onSelect:(Int)->Unit) {
     Canvas(Modifier.fillMaxWidth().height(350.dp).testTag("u2-sycon-canvas")
-        .pointerInput(Unit){detectTapGestures{click->onSelect(nearestMark(click,size.width.toFloat(),size.height.toFloat(),syconMarks))}}
+        .pointerInput(Unit) { detectTapGestures { click ->
+            onSelect(nearestMark(click,size.width.toFloat(),size.height.toFloat(),syconMarks))
+        } }
         .semantics {
             contentDescription=tr(language,
-                "Sycon cutaway: ostia, incurrent canals, prosopyles, choanocyte-lined radial canals, apopyles, central spongocoel, and terminal osculum.",
-                "சைக்கான் வெட்டுப் படம்: ஆஸ்டியா, உட்செல்லும் கால்வாய், புரோசோபைல், காலர் செல்கள் கொண்ட ஆரக் கால்வாய், அப்போபைல், ஸ்பாஞ்சோசீல், ஆஸ்குலம்.")
+                "Original graphite cutaway of Sycon. Dermal ostia lead to incurrent canals, through prosopyles to choanocyte-lined radial canals, then through apopyles to the spongocoel and apical osculum. Not to scale.",
+                "சைக்கான் கரிக்கோல் வெட்டுப் படம். ஆஸ்டியா வழியாக உட்செல்லும் கால்வாய், புரோசோபைல் வழியாக காலர் செல்கள் கொண்ட ஆரக் கால்வாய், அப்போபைல் வழியாக ஸ்பாஞ்சோசீல், மேலே ஆஸ்குலம். அளவுப்படி அல்ல.")
             progressBarRangeInfo=ProgressBarRangeInfo(progress,0f..6f)
         }) {
-        // All plate coordinates are normalized; the body and labels cannot be
-        // mistaken for a calibrated histological section.
         val w=size.width; val h=size.height
         fun p(x:Float,y:Float)=Offset(w*x,h*y)
-        val wall=Color(0xFFE2DDD2)
-        // Outer vase, narrow apical opening and patent central cavity.
-        val outer=Path().apply{
-            moveTo(w*.39f,h*.10f);lineTo(w*.23f,h*.20f);lineTo(w*.19f,h*.87f)
-            quadraticTo(w*.50f,h*.98f,w*.81f,h*.87f)
-            lineTo(w*.77f,h*.20f);lineTo(w*.61f,h*.10f)
+        // Vase-shaped original contour with an open osculum; not a solid polygon.
+        val wall=Path().apply {
+            moveTo(w*.415f,h*.122f)
+            cubicTo(w*.365f,h*.138f,w*.286f,h*.160f,w*.251f,h*.197f)
+            cubicTo(w*.226f,h*.401f,w*.213f,h*.687f,w*.226f,h*.838f)
+            cubicTo(w*.330f,h*.922f,w*.676f,h*.924f,w*.774f,h*.837f)
+            cubicTo(w*.793f,h*.666f,w*.777f,h*.387f,w*.745f,h*.197f)
+            cubicTo(w*.710f,h*.161f,w*.634f,h*.138f,w*.585f,h*.122f)
+            close()
         }
-        drawPath(outer,wall)
-        drawPath(outer,unitIIInk,style=Stroke(2.7f))
-        val cavity=Path().apply{
-            moveTo(w*.46f,h*.15f);lineTo(w*.43f,h*.83f)
-            quadraticTo(w*.50f,h*.88f,w*.57f,h*.83f)
-            lineTo(w*.54f,h*.15f)
+        drawPath(wall,Color(0xFFF2EFE5))
+        // Two separate graphite outlines preserve the open terminal aperture.
+        val outerOutline=Path().apply {
+            moveTo(w*.415f,h*.122f)
+            cubicTo(w*.365f,h*.138f,w*.286f,h*.160f,w*.251f,h*.197f)
+            cubicTo(w*.226f,h*.401f,w*.213f,h*.687f,w*.226f,h*.838f)
+            cubicTo(w*.330f,h*.922f,w*.676f,h*.924f,w*.774f,h*.837f)
+            cubicTo(w*.793f,h*.666f,w*.777f,h*.387f,w*.745f,h*.197f)
+            cubicTo(w*.710f,h*.161f,w*.634f,h*.138f,w*.585f,h*.122f)
         }
-        drawPath(cavity,parchment)
-        drawPath(cavity,unitIIInk,style=Stroke(2f))
-        // Osculum at upper opening, with spicule fringe.
-        line(p(.39f,.10f),p(.46f,.15f));line(p(.61f,.10f),p(.54f,.15f))
-        for(i in 0..5){ val x=.38f+i*.048f;line(p(x,.098f),p(x-.012f,.055f),soft,1.2f) }
-        // Wall fold and alternate incurrent/radial channels. This is a
-        // deliberately labelled cutaway, not a claim that every pore lies on
-        // the same physical section.
-        for(i in 0..5) {
-            val y=.26f+i*.105f
-            val cut=Color(0xFFF9F7EE)
-            val xleft=.25f;val xright=.75f
-            drawLine(cut,p(.24f,y),p(.44f,y),strokeWidth=13f)
-            drawLine(cut,p(.56f,y),p(.76f,y),strokeWidth=13f)
-            drawLine(unitIIInk,p(.24f,y-.018f),p(.44f,y-.018f),strokeWidth=1.6f)
-            drawLine(unitIIInk,p(.24f,y+.018f),p(.44f,y+.018f),strokeWidth=1.6f)
-            drawLine(unitIIInk,p(.56f,y-.018f),p(.76f,y-.018f),strokeWidth=1.6f)
-            drawLine(unitIIInk,p(.56f,y+.018f),p(.76f,y+.018f),strokeWidth=1.6f)
-            // Choanocyte collars reside in radial canals only.
-            for(k in 0..3) {
-                val x=.31f+k*.031f
-                dot(p(x,y-.014f),soft,2.3f)
-                line(p(x,y-.014f),p(x+.008f,y+.008f),soft,1.0f)
-                dot(p(1f-x,y+.014f),soft,2.3f)
+        pencilPath(outerOutline,2.4f)
+        // Stippled mesohyl. Keep the central spongocoel unfilled.
+        for(i in 0 until 330) {
+            val x=.255f+((i*79)%317)/317f*.490f
+            val y=.210f+((i*53)%311)/311f*.625f
+            if(x<.422f || x>.578f) pencilDot(p(x,y),.65f+(i%3)*.22f)
+        }
+        // Needles at the oscular margin suggest calcareous spicules, not cilia.
+        for(i in 0..11) {
+            val x=.400f+i*.018f
+            pencilLine(p(x,.122f),p(x+(i%3-1)*.012f,.062f+(i%4)*.010f),1.05f)
+        }
+        // Patent, choanocyte-free spongocoel; its boundary is drawn independently.
+        val lumen=Path().apply {
+            moveTo(w*.466f,h*.122f)
+            cubicTo(w*.460f,h*.290f,w*.438f,h*.615f,w*.433f,h*.820f)
+            quadraticTo(w*.500f,h*.869f,w*.567f,h*.820f)
+            cubicTo(w*.562f,h*.616f,w*.542f,h*.287f,w*.534f,h*.122f)
+            close()
+        }
+        drawPath(lumen,parchment)
+        val lumenSides=Path().apply {
+            moveTo(w*.466f,h*.122f)
+            cubicTo(w*.460f,h*.290f,w*.438f,h*.615f,w*.433f,h*.820f)
+            quadraticTo(w*.500f,h*.869f,w*.567f,h*.820f)
+            cubicTo(w*.562f,h*.616f,w*.542f,h*.287f,w*.534f,h*.122f)
+        }
+        pencilPath(lumenSides,1.75f)
+        // Separate radially elongated, choanocyte-lined chambers. Between these
+        // lie INCURRENT passages; they are not straight ostium-to-spongocoel tubes.
+        for(i in 0..4) {
+            val y=.285f+i*.117f
+            for(side in 0..1) {
+                val mirror=side==1
+                fun q(x:Float,yy:Float)=p(if(mirror) 1f-x else x,yy)
+                val chamber=Path().apply {
+                    val a=q(.303f,y-.022f); moveTo(a.x,a.y)
+                    val b=q(.433f,y-.024f);lineTo(b.x,b.y)
+                    val c=q(.439f,y+.019f);quadraticTo(q(.462f,y).x,q(.462f,y).y,c.x,c.y)
+                    val d=q(.306f,y+.020f);lineTo(d.x,d.y)
+                    val e=q(.303f,y-.022f);quadraticTo(q(.288f,y).x,q(.288f,y).y,e.x,e.y)
+                    close()
+                }
+                drawPath(chamber,Color(0xFFFFFCF5))
+                pencilPath(chamber,1.45f)
+                // Choanocyte collars and inwardly directed flagella are only
+                // drawn on chamber walls, never lining the spongocoel.
+                for(k in 0..7) {
+                    val x=.321f+k*.013f
+                    val top=q(x,y-.018f);val bottom=q(x,y+.017f)
+                    pencilDot(top,1.9f); pencilDot(bottom,1.9f)
+                    pencilLine(top,q(x+.007f,y-.003f),.75f)
+                    pencilLine(bottom,q(x+.007f,y+.002f),.75f)
+                }
+                // Apopyle is a distinct opening at the spongocoel end.
+                val opening=q(.440f,y)
+                drawCircle(parchment,4.1f,opening)
+                pencilLine(q(.438f,y-.021f),q(.449f,y-.023f),1.0f)
+                pencilLine(q(.438f,y+.020f),q(.449f,y+.024f),1.0f)
+                if(i<4) {
+                    val midway=y+.0585f
+                    // An ostium enters an incurrent canal running between
+                    // radial chambers; a prosopyle turns toward a chamber.
+                    val pore=q(.243f,midway)
+                    drawCircle(parchment,3.6f,pore)
+                    val inflow=Path().apply {
+                        moveTo(q(.252f,midway).x,q(.252f,midway).y)
+                        quadraticTo(q(.279f,midway-.014f).x,q(.279f,midway-.014f).y,
+                            q(.294f,midway).x,q(.294f,midway).y)
+                        quadraticTo(q(.306f,midway-.011f).x,q(.306f,midway-.011f).y,
+                            q(.310f,y+.018f).x,q(.310f,y+.018f).y)
+                    }
+                    pencilPath(inflow,1.1f)
+                    drawCircle(parchment,3.0f,q(.310f,y+.020f))
+                }
             }
-            // Apopyles face the central spongocoel. Prosopyles face incurrent canals.
-            dot(p(.43f,y),currentBlue,2.2f)
-            dot(p(.57f,y),currentBlue,2.2f)
-            dot(p(.28f,y),currentBlue,2.2f)
-            dot(p(.72f,y),currentBlue,2.2f)
         }
-        // Representative route follows exterior -> folded wall -> centre -> top.
-        val water=listOf(p(.11f,.52f),p(.22f,.52f),p(.28f,.52f),p(.35f,.52f),
-            p(.43f,.52f),p(.50f,.52f),p(.50f,.15f),p(.50f,.035f))
-        for(i in 0 until water.lastIndex){
-            line(water[i],water[i+1],currentBlue,3.5f)
-            val at=water[i+1];dot(at,currentBlue,3.4f)
+        // Light angled spicule triads in the outside pinacoderm/mesohyl.
+        for(i in 0..12) {
+            val yy=.236f+i*.045f
+            for(x in listOf(.257f,.739f)) {
+                val sign=if(x<.5f)1f else -1f
+                pencilLine(p(x,yy),p(x+sign*.025f,yy-.017f),.75f)
+                pencilLine(p(x,yy),p(x+sign*.023f,yy+.011f),.75f)
+            }
         }
-        for(i in 0..7){
-            val y=.29f+i*.065f;line(p(.08f,y),p(.18f,y-.017f),soft,1f)
+        // Diagrammatic route deliberately bends between incurrent and radial
+        // components. Blue signifies flow; never interpretation as cell anatomy.
+        val route=listOf(
+            p(.140f,.577f),p(.242f,.577f),p(.280f,.577f),
+            p(.307f,.552f),p(.329f,.519f),p(.380f,.519f),
+            p(.445f,.519f),p(.500f,.519f),p(.500f,.124f),p(.500f,.036f)
+        )
+        for(i in 0 until route.lastIndex) {
+            drawLine(currentBlue.copy(alpha=.64f),route[i],route[i+1],2.2f)
         }
+        for(i in listOf(1,3,5,7,9))drawCircle(currentBlue.copy(alpha=.75f),2.2f,route[i])
         labelledFocus(progress,syconMarks)
     }
 }
 @Composable
-private fun ObeliaColonyCanvas(progress:Float,language:AppLanguage,onSelect:(Int)->Unit){
+private fun ObeliaColonyCanvas(progress:Float,language:AppLanguage,onSelect:(Int)->Unit) {
     Canvas(Modifier.fillMaxWidth().height(350.dp).testTag("u2-obelia-canvas")
-        .pointerInput(Unit){detectTapGestures{click->onSelect(nearestMark(click,size.width.toFloat(),size.height.toFloat(),obeliaMarks))}}
+        .pointerInput(Unit) {detectTapGestures{click->
+            onSelect(nearestMark(click,size.width.toFloat(),size.height.toFloat(),obeliaMarks))
+        }}
         .semantics {
             contentDescription=tr(language,
-                "Obelia colony with hydrorhiza, hydrocaulus, feeding hydranth and reproductive gonangium, plus a separate medusa, planula, and settled polyp.",
-                "ஒபீலியா கூட்டில் ஹைட்ரோரிசா, ஹைட்ரோகாலஸ், உணவு ஹைட்ராந்த், இனப்பெருக்க கோனாஞ்சியம்; தனித்த மெடூசா, பிளானுலா, இளம் பாலிப்.")
+                "Graphite zoological plate: Obelia attached colony with branching hydrocaulus, hydrorhiza, feeding hydranth and reproductive gonangium containing medusa buds; separate free medusa, ciliated planula and young settled polyp. Not to scale.",
+                "ஒபீலியா கரிக்கோல் படம்: ஹைட்ரோரிசா, கிளை ஹைட்ரோகாலஸ், உணவு ஹைட்ராந்த், மெடூசா மொட்டுகளுடன் கோனாஞ்சியம்; தனி மெடூசா, குறுஇழை பிளானுலா, புதிய பாலிப். அளவுப்படி அல்ல.")
             progressBarRangeInfo=ProgressBarRangeInfo(progress,0f..5f)
         }) {
-        val w=size.width;val h=size.height
+        val w=size.width; val h=size.height
         fun p(x:Float,y:Float)=Offset(w*x,h*y)
-        // Basal hydrorhiza and upright hydrocaulus. Branches share a stem.
-        line(p(.08f,.91f),p(.55f,.91f),unitIIInk,3.8f)
-        for(i in 0..4){val x=.11f+i*.08f;line(p(x,.91f),p(x-.024f,.943f),soft,1.8f)}
-        line(p(.31f,.91f),p(.31f,.38f),unitIIInk,5f)
-        line(p(.31f,.58f),p(.51f,.58f),unitIIInk,3f)
-        line(p(.51f,.58f),p(.62f,.44f),unitIIInk,3f)
-        // Hydranth with tentacles around mouth, carried by hydrotheca.
+        // Dashed separator prevents interpreting medusa/larva as attached zooids.
+        for(i in 0..10) pencilLine(p(.617f,.09f+i*.074f),p(.617f,.119f+i*.074f),.75f)
+        // Basal hydrorhiza and irregular branching coenosarc, under perisarc.
+        val basal=Path().apply {
+            moveTo(w*.075f,h*.851f)
+            cubicTo(w*.182f,h*.837f,w*.361f,h*.865f,w*.565f,h*.846f)
+        }
+        pencilPath(basal,2.65f)
+        for(i in 0..9){
+            val x=.09f+i*.049f
+            pencilLine(p(x,.852f),p(x-.015f,.879f+(i%3)*.008f),1f)
+        }
+        val stem=Path().apply {
+            moveTo(w*.298f,h*.849f)
+            cubicTo(w*.302f,h*.712f,w*.292f,h*.576f,w*.300f,h*.415f)
+        }
+        pencilPath(stem,3.3f)
+        pencilPath(Path().apply {
+            moveTo(w*.307f,h*.702f)
+            cubicTo(w*.410f,h*.701f,w*.414f,h*.590f,w*.494f,h*.572f)
+        },2.9f)
+        // Fine perisarc parallel to the coenosarc (not a solid steel rod).
+        pencilLine(p(.290f,.842f),p(.289f,.472f),.78f)
+        pencilLine(p(.307f,.842f),p(.309f,.460f),.78f)
+        for(i in 0..20) {
+            val y=.435f+i*.018f
+            pencilLine(p(.295f,y),p(.301f,y-.004f),.65f)
+        }
+        // Protective hydrotheca shaped as a clear cup around the hydranth.
         val cup=Path().apply {
-            moveTo(w*.26f,h*.39f);quadraticTo(w*.29f,h*.47f,w*.31f,h*.47f)
-            quadraticTo(w*.34f,h*.47f,w*.36f,h*.39f)
+            moveTo(w*.244f,h*.315f)
+            cubicTo(w*.246f,h*.372f,w*.260f,h*.412f,w*.300f,h*.428f)
+            cubicTo(w*.341f,h*.411f,w*.356f,h*.372f,w*.359f,h*.315f)
         }
-        drawPath(cup,unitIIInk,style=Stroke(2f))
-        drawOval(color=Color(0xFFD4DDD7),topLeft=p(.28f,.255f),
-            size=Size(w*.06f,h*.155f))
-        for(i in 0..7){
-            val theta=i*3.14159f/7f
-            val x=.31f+(i-3.5f)*.028f
-            line(p(.31f,.27f),p(x,.16f+(i%2)*.032f),unitIIInk,1.8f)
+        pencilPath(cup,1.7f)
+        pencilLine(p(.239f,.316f),p(.255f,.316f),1.1f)
+        pencilLine(p(.350f,.316f),p(.367f,.316f),1.1f)
+        val hydranth=Path().apply {
+            moveTo(w*.300f,h*.392f)
+            cubicTo(w*.262f,h*.358f,w*.264f,h*.267f,w*.289f,h*.235f)
+            quadraticTo(w*.301f,h*.220f,w*.310f,h*.236f)
+            cubicTo(w*.339f,h*.272f,w*.342f,h*.355f,w*.300f,h*.392f)
+            close()
         }
-        dot(p(.31f,.26f),focusOrange,3f)
-        // Gonangium: gonotheca sheath enclosing multiple buds.
-        val gon=Path().apply {
-            moveTo(w*.59f,h*.57f);quadraticTo(w*.54f,h*.38f,w*.59f,h*.29f)
-            quadraticTo(w*.65f,h*.23f,w*.70f,h*.29f)
-            quadraticTo(w*.75f,h*.39f,w*.69f,h*.57f)
+        drawPath(hydranth,Color(0xFFF0EEE6))
+        pencilPath(hydranth,1.75f)
+        // Hypostome and mouth, with individually curved nematocyst-bearing
+        // tentacles (not a bouquet of straight spokes).
+        pencilDot(p(.301f,.221f),2.25f)
+        for(i in 0..10) {
+            val x=.300f+(i-5)*.025f
+            val y=.104f+(i%3)*.013f+((i-5)*(i-5))*.001f
+            val end=p(x,y)
+            val curve=Path().apply {
+                moveTo(w*.301f,h*.232f)
+                quadraticTo(w*(.301f+(i-5)*.012f),h*.174f,end.x,end.y)
+            }
+            pencilPath(curve,1.05f)
+            for(j in 1..3){
+                val t=j/4f
+                pencilDot(p(.301f+(x-.301f)*t,.232f+(y-.232f)*t),.6f)
+            }
         }
-        drawPath(gon,Color(0xFFDFE9E8))
-        drawPath(gon,unitIIInk,style=Stroke(2.3f))
-        line(p(.64f,.55f),p(.64f,.32f),unitIIInk,2f)
-        for(i in 0..3)dot(p(.62f+i%2*.044f,.35f+i*.06f),soft,7f)
-        // Separate medusa is diagrammatically above-right; do not join it
-        // physically to the colony.
+        // Reproductive gonangium, distinct from a feeding hydranth.
+        pencilLine(p(.494f,.572f),p(.508f,.523f),2.1f)
+        val gonotheca=Path().apply {
+            moveTo(w*.484f,h*.552f)
+            cubicTo(w*.441f,h*.498f,w*.458f,h*.365f,w*.478f,h*.324f)
+            cubicTo(w*.496f,h*.292f,w*.527f,h*.292f,w*.545f,h*.324f)
+            cubicTo(w*.565f,h*.381f,w*.568f,h*.509f,w*.532f,h*.552f)
+            close()
+        }
+        drawPath(gonotheca,Color(0xFFF6F4EC))
+        pencilPath(gonotheca,1.9f)
+        val blastostyle=Path().apply {
+            moveTo(w*.507f,h*.546f)
+            cubicTo(w*.506f,h*.468f,w*.505f,h*.388f,w*.507f,h*.340f)
+        }
+        pencilPath(blastostyle,1.2f)
+        for(i in 0..3){
+            val yy=.367f+i*.044f
+            val cx=if(i%2==0) .523f else .489f
+            val bud=Path().apply{
+                moveTo(w*(cx-.018f),h*(yy+.009f))
+                quadraticTo(w*cx,h*(yy-.022f),w*(cx+.018f),h*(yy+.009f))
+                quadraticTo(w*cx,h*(yy+.017f),w*(cx-.018f),h*(yy+.009f))
+                close()
+            }
+            pencilPath(bud,.9f)
+            pencilDot(p(cx,yy+.008f),.9f)
+        }
+        // Additional modest branch indicates colonial habit, not solitary hydra.
+        val twig=Path().apply{
+            moveTo(w*.295f,h*.653f)
+            quadraticTo(w*.215f,h*.645f,w*.202f,h*.564f)
+        }
+        pencilPath(twig,1.9f)
+        val smallerCup=Path().apply{
+            moveTo(w*.174f,h*.555f)
+            quadraticTo(w*.205f,h*.608f,w*.232f,h*.555f)
+        }
+        pencilPath(smallerCup,1.0f)
+        pencilPath(Path().apply{
+            moveTo(w*.204f,h*.555f);quadraticTo(w*.178f,h*.529f,w*.204f,h*.506f)
+            quadraticTo(w*.230f,h*.529f,w*.204f,h*.555f)
+        },1.1f)
+        for(i in 0..5) pencilLine(p(.204f,.513f),p(.154f+i*.020f,.466f+(i%2)*.018f),.8f)
+        // Inset: free sexual medusa. No connection to colony at any point.
         val bell=Path().apply {
-            moveTo(w*.74f,h*.20f);quadraticTo(w*.82f,h*.045f,w*.92f,h*.20f)
-            quadraticTo(w*.82f,h*.25f,w*.74f,h*.20f)
+            moveTo(w*.665f,h*.239f)
+            cubicTo(w*.683f,h*.110f,w*.866f,h*.102f,w*.918f,h*.239f)
+            quadraticTo(w*.788f,h*.267f,w*.665f,h*.239f)
+            close()
         }
-        drawPath(bell,Color(0xFFE2E7EE))
-        drawPath(bell,unitIIInk,style=Stroke(2f))
-        for(i in 0..3) {
-            val x=.75f+i*.055f;line(p(x,.21f),p(x-.008f,.30f),unitIIInk,1.2f)
+        drawPath(bell,Color(0xFFF1EFE6))
+        pencilPath(bell,1.9f)
+        // Velum, manubrium, radial and ring canals.
+        pencilPath(Path().apply {
+            moveTo(w*.685f,h*.236f)
+            quadraticTo(w*.788f,h*.249f,w*.900f,h*.236f)
+        },.85f)
+        pencilLine(p(.786f,.147f),p(.786f,.292f),1.35f)
+        pencilLine(p(.733f,.211f),p(.786f,.175f),.85f)
+        pencilLine(p(.843f,.211f),p(.786f,.175f),.85f)
+        for(i in 0..11){
+            val x=.675f+i*.021f
+            val yy=.239f-((i-5.5f)*(i-5.5f))*.0006f
+            pencilLine(p(x,yy),p(x+(i%3-1)*.005f,.306f+(i%3)*.012f),.85f)
         }
-        line(p(.82f,.16f),p(.82f,.26f),unitIIInk,1.7f)
-        // Ciliated planula is not a tiny medusa.
-        drawOval(soft.copy(alpha=.4f),topLeft=p(.765f,.64f),size=Size(w*.085f,h*.095f))
-        drawOval(unitIIInk,topLeft=p(.765f,.64f),size=Size(w*.085f,h*.095f),style=Stroke(1.6f))
-        for(i in 0..6){
-            val x=.77f+i*.011f;line(p(x,.64f),p(x-.006f,.62f),unitIIInk,1f)
+        for(x in listOf(.732f,.843f))pencilDot(p(x,.211f),2.1f)
+        // Planula: ovoid ciliated larva, not a miniature jellyfish.
+        val planula=Path().apply{
+            moveTo(w*.695f,h*.654f)
+            cubicTo(w*.702f,h*.605f,w*.857f,h*.600f,w*.886f,h*.653f)
+            cubicTo(w*.861f,h*.702f,w*.719f,h*.704f,w*.695f,h*.654f)
+            close()
         }
-        // Newly settled polyp distinct from larva.
-        line(p(.68f,.94f),p(.88f,.94f),unitIIInk,2f)
-        line(p(.76f,.94f),p(.76f,.855f),unitIIInk,2.6f)
-        for(i in 0..3)line(p(.76f,.855f),p(.72f+i*.027f,.81f),unitIIInk,1.2f)
+        drawPath(planula,Color(0xFFF0EEE6))
+        pencilPath(planula,1.45f)
+        for(i in 0..17){
+            val x=.700f+i*.010f
+            val f=(i%4)*.003f
+            pencilLine(p(x,.626f-f),p(x-.006f,.602f-f),.75f)
+            pencilLine(p(x,.681f+f),p(x+.006f,.704f+f),.75f)
+        }
+        for(i in 0..18){
+            val x=.720f+((i*19)%17)*.008f
+            val y=.641f+((i*7)%13)*.003f
+            pencilDot(p(x,y),.7f)
+        }
+        // Settlement leads to a newly founded polyp on its own substrate.
+        pencilPath(Path().apply{
+            moveTo(w*.669f,h*.919f)
+            quadraticTo(w*.784f,h*.914f,w*.903f,h*.919f)
+        },1.5f)
+        pencilLine(p(.784f,.918f),p(.783f,.837f),1.85f)
+        pencilPath(Path().apply{
+            moveTo(w*.770f,h*.842f)
+            quadraticTo(w*.786f,h*.812f,w*.800f,h*.842f)
+        },1.0f)
+        for(i in 0..7){
+            val xx=.718f+i*.019f
+            pencilLine(p(.785f,.824f),p(xx,.785f+(i%2)*.009f),.82f)
+        }
         labelledFocus(progress,obeliaMarks)
     }
 }
