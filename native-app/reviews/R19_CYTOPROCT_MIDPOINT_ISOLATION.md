@@ -1,0 +1,8 @@
+# R1.9 Tamil 200% cytoproct midpoint — isolated correction
+
+Frozen integration baseline: `dfc92a0e07df71222bceebcb2164de5bd5424663`; full workflow 38106567677 completed **FAILED**.
+Source test failure: `cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits` recycling phase captured at `0.85833335`, above unchanged accepted upper bound `0.85`, after scroll-to-Pause at genuine Android Tamil 200% portrait.
+The original full test cohort had 8/8 English portrait, 8/8 Tamil 100 portrait and 7/8 Tamil 200 portrait; it did not execute Tamil 200 landscape nor DataStore compatibility because the runner stops on failure.
+Source-backed root cause hypothesis: UI scroll/recomposition delay can overrun an otherwise valid intermediate frame. A user-facing native intermediate hold was already added for egestion (actual 50ms frame clock, frame 75/120) and independently validated with PID recovery.
+Correction scope: replace only the race-prone sequential manual scroll-then-Pause in this one test with the existing user-visible genuine intermediate hold, require 0.40..0.85, exact 0.625, selected stage, DataStore 625 and independently rendered non-identical bitmaps for all egestion stages. The manual Play/Pause control is untouched, and lifecycle/manual playback remains exercised elsewhere.
+Acceptance order: isolated single test on this branch, inspect XML/real screenshots; then apply only the proven test correction to frozen integration branch for complete four-configuration 8-test cohort + compatibility + genuine process death. No feature expansion, academic claims, release promotion, or weakening of bounds.

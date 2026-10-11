@@ -1,0 +1,47 @@
+name: Native R1.9 isolated cytoproct midpoint
+'on':
+  push:
+    branches:
+      - native/r19-cytoproct-midpoint-isolation-20261011
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  isolated-r19-cytoproct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile native Kotlin and exact Android instrumentation
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin --stacktrace
+      - name: Enable Android emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Test ONLY the rejected Tamil 200 percent cytoproct condition
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-native-r19-cytoproct-isolation.sh
+      - name: Always save real Android failure and screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r19-cytoproct-midpoint-evidence
+          path: qa-evidence/r19-cytoproct-isolation/
+          if-no-files-found: warn

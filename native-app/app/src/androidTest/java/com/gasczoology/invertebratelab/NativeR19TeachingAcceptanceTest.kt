@@ -176,13 +176,33 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
             val start=egestionCanvas().captureToImage().asAndroidBitmap();capture("cytoproct-"+id+"-start")
             assertFalse(id+" must change the actual cytoproct pixels",start.sameAs(end))
-            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
-            rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-            rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().performClick()
-            rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
-            val mid=egestionCanvas();val phase=mid.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            // The user-visible hold plays ACTUAL 50ms frames and atomically pauses
+            // at frame 75/120. At Tamil 200% a scroll-to-Pause may complete
+            // after the 0.85 phase gate despite having observed a valid phase.
+            // Never widen the existing 0.40..0.85 requirement or inject a mock frame.
+            rule.onNodeWithTag("r19-cytoproct-inspect-midpoint",true)
+                .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            rule.waitUntil(15_000) {
+                rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode()
+                    .config[SemanticsProperties.ProgressBarRangeInfo].current >= .625f
+            }
+            rule.onNodeWithTag("r19-playback-state",true).assertTextEquals(
+                if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
+            rule.onNodeWithTag("r19-stage-"+id,true)
+                .assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+            val mid=egestionCanvas()
+            val phase=mid.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("$id captured phase=$phase must remain intermediate",phase in .4f.. .85f)
-            val pixels=mid.captureToImage().asAndroidBitmap();assertFalse(start.sameAs(pixels));capture("cytoproct-"+id+"-intermediate")
+            assertEquals("$id must hold actual frame 75/120", .625f, phase, .001f)
+            runBlocking {withTimeout(15_000) {
+                NativeLearningRepository(context).learningState.first {
+                    it.nutritionProgress.stageId==id &&
+                        it.nutritionProgress.phasePermille==625
+                }
+            }}
+            val pixels=mid.captureToImage().asAndroidBitmap()
+            assertFalse(start.sameAs(pixels))
+            capture("cytoproct-"+id+"-intermediate")
             start.recycle();pixels.recycle()
         }
         assertFalse(ends[0].sameAs(ends[1]));assertFalse(ends[1].sameAs(ends[2]));ends.forEach {it.recycle()}
