@@ -21,10 +21,13 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import kotlin.math.roundToInt
@@ -84,7 +87,7 @@ internal fun UnitIIImagePlate(
         Text(
             if (language == AppLanguage.TAMIL)
                 "அங்கீகரிக்கப்பட்ட படத்தாள் APK-இல் இல்லை; முந்தைய விளக்க வரைபடம் காட்டப்படுகிறது."
-            else "Scanned atlas asset absent from APK; showing the previous schematic.",
+            else "Pencil-style atlas candidate absent from APK; showing the previous schematic.",
             modifier=Modifier.testTag("u2-atlas-asset-missing"),
             color=MaterialTheme.colorScheme.error,
             style=MaterialTheme.typography.bodySmall
@@ -96,10 +99,16 @@ internal fun UnitIIImagePlate(
                   else if (lifeHistory) obeliaLifeHistoryTargets else obeliaColonyTargets
     var scale by rememberSaveable(asset) { mutableFloatStateOf(1f) }
     var pan by remember(asset) { mutableStateOf(Offset.Zero) }
+    var plateSize by remember(asset) { mutableStateOf(IntSize.Zero) }
     val transform = rememberTransformableState { zoomDelta,panDelta,_ ->
         val updated=(scale*zoomDelta).coerceIn(1f,4f)
+        val limitX=(updated-1f)*plateSize.width*.5f
+        val limitY=(updated-1f)*plateSize.height*.5f
         scale=updated
-        pan=if(updated<=1f) Offset.Zero else pan+panDelta
+        pan=if(updated<=1f) Offset.Zero else Offset(
+            (pan.x+panDelta.x).coerceIn(-limitX,limitX),
+            (pan.y+panDelta.y).coerceIn(-limitY,limitY)
+        )
     }
     Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
         Box(
@@ -107,6 +116,7 @@ internal fun UnitIIImagePlate(
                 .aspectRatio(bitmap.width.toFloat()/bitmap.height)
                 .clip(RoundedCornerShape(8.dp))
                 .background(Color.White)
+                .onSizeChanged { plateSize=it }
                 .transformable(transform)
                 .testTag(if(sycon)"u2-sycon-image-plate" else "u2-obelia-image-plate")
         ){
@@ -152,18 +162,30 @@ internal fun UnitIIImagePlate(
                 }
             }
         }
-        Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-            Text(
-                if(language==AppLanguage.TAMIL)
-                    "இரு விரல்களால் பெரிதாக்கவும்; குறியிட்ட அமைப்பைத் தொடவும்"
-                else "Pinch to zoom; touch a marked anatomical structure",
-                modifier=Modifier.weight(1f),style=MaterialTheme.typography.bodySmall
-            )
-            OutlinedButton(
-                onClick={scale=1f;pan=Offset.Zero},
-                modifier=Modifier.heightIn(min=48.dp).testTag("u2-reset-zoom")
-            ){
-                Text(if(language==AppLanguage.TAMIL)"அளவை மீட்டமை" else "Reset zoom")
+        val zoomHint=if(language==AppLanguage.TAMIL)
+            "இரு விரல்களால் பெரிதாக்கவும்; குறியிட்ட அமைப்பைத் தொடவும்"
+        else "Pinch to zoom; touch a marked anatomical structure"
+        if(LocalConfiguration.current.fontScale>=1.8f) {
+            Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                Text(zoomHint,modifier=Modifier.fillMaxWidth().testTag("u2-zoom-hint"),
+                    style=MaterialTheme.typography.bodySmall)
+                OutlinedButton(
+                    onClick={scale=1f;pan=Offset.Zero},
+                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("u2-reset-zoom")
+                ) {
+                    Text(if(language==AppLanguage.TAMIL)"அளவை மீட்டமை" else "Reset zoom")
+                }
+            }
+        } else {
+            Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                Text(zoomHint,modifier=Modifier.weight(1f).testTag("u2-zoom-hint"),
+                    style=MaterialTheme.typography.bodySmall)
+                OutlinedButton(
+                    onClick={scale=1f;pan=Offset.Zero},
+                    modifier=Modifier.heightIn(min=48.dp).testTag("u2-reset-zoom")
+                ) {
+                    Text(if(language==AppLanguage.TAMIL)"அளவை மீட்டமை" else "Reset zoom")
+                }
             }
         }
     }

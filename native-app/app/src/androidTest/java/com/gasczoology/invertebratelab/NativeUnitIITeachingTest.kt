@@ -35,6 +35,9 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
         val plate=rule.onNodeWithTag(canvasTag).fetchSemanticsNode().boundsInRoot
         val viewport=rule.onRoot().fetchSemanticsNode().boundsInRoot
+        val hint=rule.onNodeWithTag("u2-zoom-hint").fetchSemanticsNode().boundsInRoot
+        org.junit.Assert.assertTrue("Zoom hint is squeezed into an unreadable column: "+scene,
+            hint.width>=viewport.width*.45f)
         val visible=(minOf(plate.bottom,viewport.bottom-55f)-
             maxOf(plate.top,viewport.top+55f)).coerceAtLeast(0f)
         org.junit.Assert.assertTrue(
