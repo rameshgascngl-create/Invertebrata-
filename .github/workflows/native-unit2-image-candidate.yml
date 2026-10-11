@@ -21,6 +21,12 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Archive exact source WebP plates for scientific restoration
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-original-webp-masters
+          path: native-app/app/src/main/assets/unit2/*.webp
+          if-no-files-found: error
       - name: Source and JVM compile gate
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - name: Record explicit image-asset blocker
