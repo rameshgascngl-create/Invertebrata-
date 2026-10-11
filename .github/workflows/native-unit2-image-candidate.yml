@@ -27,10 +27,10 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
-      - name: Archive exact source WebP plates for scientific restoration
+      - name: Archive WebP image sources used for Android acceptance
         uses: actions/upload-artifact@v4
         with:
-          name: unit2-original-webp-masters
+          name: unit2-built-webp-masters
           path: native-app/app/src/main/assets/unit2/*.webp
           if-no-files-found: error
       - name: Source and JVM compile gate

@@ -13,6 +13,10 @@ BASE={
 "obelia_colony.webp":"b6f746f2ecd24f714056e8ecf7882aa8f9ac196b86657f5ead2c1fe3cf4eddaa",
 "obelia_lifecycle.webp":"2ee1ee163a363d2574b3af294cffde4adabf98b0246a031878e046a034ebadf9",
 }
+CORRECTED={
+"sycon_plate.webp":"1b7b8b0ceee848603c24581f60d87866abb03773570f83c43f54665bbb00c05a",
+"obelia_colony.webp":"a4072d35ae5ef51901ffff6dd4d8e8b85caabc172adcea51d179bdf7c5397a93",
+}
 DIRECTORY=Path("native-app/app/src/main/assets/unit2")
 FONTS=[
 "/usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf",
@@ -28,9 +32,9 @@ def repair(name):
     source=path.read_bytes()
     current=hashlib.sha256(source).hexdigest()
     if current!=BASE[name]:
-        if name=="obelia_lifecycle.webp":
-            raise RuntimeError("Life cycle baseline changed without authorization")
-        print("ALREADY MODIFIED",name,current,"— no repeat raster correction")
+        if current!=CORRECTED[name]:
+            raise RuntimeError("Unknown source image hash: "+name+" "+current)
+        print("VERIFIED-CORRECTED-MASTER",name,current)
         return
     im=Image.open(path).convert("RGB")
     if im.size!=(1000,1250): raise RuntimeError("Unexpected image dimensions")
