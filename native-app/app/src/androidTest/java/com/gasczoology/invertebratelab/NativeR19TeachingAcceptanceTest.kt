@@ -240,11 +240,23 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
             val start=physiologyCanvas().captureToImage().asAndroidBitmap();capture("physiology-"+id+"-start")
             assertFalse(id+" must have distinguishable endpoints",start.sameAs(end))
-            rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
-            rule.waitUntil(12_000) {rule.onNodeWithTag("r19-physiology-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-            rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().performClick()
-            val c=physiologyCanvas();val phase=c.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            // The visible bilingual hold control runs the *actual* 50 ms
+            // frame clock to frame 75/120 and stops in the ViewModel itself.
+            // The UI is not asked to race scrolling/recomposition at Tamil200.
+            // This does not modify the existing manual Play/Pause button.
+            rule.onNodeWithTag("r19-physiology-inspect-midpoint",true)
+                .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            rule.waitUntil(15_000) {
+                rule.onNodeWithTag("r19-physiology-canvas",true)
+                    .fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo]
+                    .current >= .625f
+            }
+            rule.onNodeWithTag("r19-playback-state",true).assertTextEquals(
+                if(lang==AppLanguage.TAMIL) "இடைநிறுத்தம்" else "Paused")
+            val c=physiologyCanvas()
+            val phase=c.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("$id must capture a genuine intermediate phase: $phase",phase in .4f.. .85f)
+            assertEquals("$id must hold a real clock frame at 75/120",.625f,phase,.001f)
             rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
             runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.nutritionProgress.stageId==id && it.nutritionProgress.phasePermille in 400..850}}}
             val pixels=c.captureToImage().asAndroidBitmap();assertFalse(start.sameAs(pixels));capture("physiology-"+id+"-intermediate")

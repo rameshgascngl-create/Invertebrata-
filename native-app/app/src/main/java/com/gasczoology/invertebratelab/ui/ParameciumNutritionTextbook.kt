@@ -74,6 +74,20 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             player.play {change(progress.copy(phasePermille=1000))}
         }
     }
+    // A pedagogical freeze-frame: run the actual native playback clock from
+    // zero until frame 75/120, then atomically hold it for close inspection.
+    // Unlike a delayed UI click, this cannot overshoot while Tamil text lays out.
+    fun inspectPhysiologyIntermediate() {
+        if (progress.reducedMotion) return
+        player.rewind()
+        change(progress.copy(phasePermille=0))
+        player.play(stopAt=.625f,
+            onHold={ phase ->
+                change(progress.copy(phasePermille=nutritionPhasePermille(phase)))
+            }) {
+            change(progress.copy(phasePermille=1000))
+        }
+    }
     fun chooseStage(id: String,completed: Boolean = true) {
         player.rewind()
         val pose=if(completed)1000 else 0
@@ -126,7 +140,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             Text(nutritionText(language,"View ","காட்சி ")+"${index+1}/${ParameciumNutrition.stages.size} — "+stage.heading.value(language),
                 style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold,
                 modifier=Modifier.testTag("r19-stage-title").semantics { heading() })
-            if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback)
+            if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectPhysiologyIntermediate)
             Button(onClick={scope.launch { requester.bringIntoView() }},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-plate")) {
                 Text(nutritionText(language,"Bring the complete pencil plate into view","முழுப் பென்சில் படத்தைத் திரையில் காண்க"))
