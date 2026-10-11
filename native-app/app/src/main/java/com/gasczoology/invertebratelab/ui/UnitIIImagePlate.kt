@@ -22,7 +22,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
@@ -165,27 +164,23 @@ internal fun UnitIIImagePlate(
         val zoomHint=if(language==AppLanguage.TAMIL)
             "இரு விரல்களால் பெரிதாக்கவும்; குறியிட்ட அமைப்பைத் தொடவும்"
         else "Pinch to zoom; touch a marked anatomical structure"
-        if(LocalConfiguration.current.fontScale>=1.8f) {
-            Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
-                Text(zoomHint,modifier=Modifier.fillMaxWidth().testTag("u2-zoom-hint"),
-                    style=MaterialTheme.typography.bodySmall)
-                OutlinedButton(
-                    onClick={scale=1f;pan=Offset.Zero},
-                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("u2-reset-zoom")
-                ) {
-                    Text(if(language==AppLanguage.TAMIL)"அளவை மீட்டமை" else "Reset zoom")
-                }
-            }
-        } else {
-            Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-                Text(zoomHint,modifier=Modifier.weight(1f).testTag("u2-zoom-hint"),
-                    style=MaterialTheme.typography.bodySmall)
-                OutlinedButton(
-                    onClick={scale=1f;pan=Offset.Zero},
-                    modifier=Modifier.heightIn(min=48.dp).testTag("u2-reset-zoom")
-                ) {
-                    Text(if(language==AppLanguage.TAMIL)"அளவை மீட்டமை" else "Reset zoom")
-                }
+        // At 100% font scale, horizontal hint/reset placement squeezed the hint
+        // below 45% of the viewport. A stacked layout remains legible at every
+        // supported Android font scale and preserves the 48.dp reset target.
+        Column(
+            modifier=Modifier.fillMaxWidth(),
+            verticalArrangement=Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                zoomHint,
+                modifier=Modifier.fillMaxWidth().testTag("u2-zoom-hint"),
+                style=MaterialTheme.typography.bodySmall
+            )
+            OutlinedButton(
+                onClick={scale=1f;pan=Offset.Zero},
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("u2-reset-zoom")
+            ) {
+                Text(if(language==AppLanguage.TAMIL)"அளவை மீட்டமை" else "Reset zoom")
             }
         }
     }
