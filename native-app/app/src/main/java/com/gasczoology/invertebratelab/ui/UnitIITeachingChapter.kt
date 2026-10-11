@@ -236,7 +236,7 @@ private fun DrawScope.labelledFocus(stage:Float,marks:List<Offset>) {
 }
 
 // Graphite marks are deterministically over-traced, with fine stipple/hatching.
-// This is native Canvas artwork, not a bitmap, SVG, WebView or a stock photo.
+// This native Canvas plate uses no raster assets or embedded browser runtime.
 // Its explanatory morphology is NOT represented as a histological micrograph.
 private val graphiteDark=Color(0xFF343738)
 private val graphiteMid=Color(0xFF73716C)
