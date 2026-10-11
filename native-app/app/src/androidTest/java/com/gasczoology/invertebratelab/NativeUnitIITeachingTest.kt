@@ -86,6 +86,8 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-practice-heading").assertExists()
     }
     @Test fun obeliaDistinguishesFeedingReproductivePolypMedusaAndPlanula() {
+        // Run Obelia in actual Tamil at both OS font scales, not just Sycon.
+        rule.onNodeWithTag("language-tamil").performClick()
         rule.onNodeWithTag("unit-2").performScrollTo().performClick()
         rule.onNodeWithTag("native-unit-2")
             .performScrollToNode(hasTestTag("chapter-u2-obelia"))
@@ -93,6 +95,9 @@ class NativeUnitIITeachingTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("u2-obelia-canvas").fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("u2-lesson-title").assertTextEquals(
+            "ஒபீலியா · கூட்டுவாழ் இன ஆய்வும் வாழ்க்கைச் சுழற்சியும்"
+        )
         rule.onNodeWithTag("u2-obelia-canvas").performScrollTo()
         captureRealScreen("obelia-colony")
         for(id in listOf("hydranth","gonangium","medusa","planula","settlement")) {
