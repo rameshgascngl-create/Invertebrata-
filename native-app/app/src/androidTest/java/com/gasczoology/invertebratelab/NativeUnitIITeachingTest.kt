@@ -145,12 +145,12 @@ class NativeUnitIITeachingTest {
         // Three disjoint, anatomy-directed hit targets on the image itself.
         // Stage labels remain source-authored and the raster is still DRAFT.
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.600f, height*.555f))
+            click(androidx.compose.ui.geometry.Offset(width*.584f, height*.594f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("03 · Prosopyle")
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.676f, height*.461f))
+            click(androidx.compose.ui.geometry.Offset(width*.648f, height*.494f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("05 · Apopyle")
