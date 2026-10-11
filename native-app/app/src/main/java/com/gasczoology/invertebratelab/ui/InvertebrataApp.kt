@@ -369,13 +369,17 @@ private fun UnitScreen(
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chapter-" + chapter.id)) {
                     Column {
                         Text(chapter.id.replace("-", " ").uppercase())
-                        Text(if (chapter.id == "u1-paramecium")
-                            label(language,
+                        Text(when {
+                            chapter.id == "u1-paramecium" -> label(language,
                                 "Full textbook: select the Start Reading button above; practice questions here.",
                                 "முழுப் பாடத்திற்கு மேலுள்ள பாடத்தைத் தொடங்கு பொத்தானைத் தேர்க; இங்கு வினாப் பயிற்சி.")
-                            else label(language,
+                            unit.number == 2 -> label(language,
+                                "OPEN ILLUSTRATED BILINGUAL LESSON FIRST · assessment follows.",
+                                "முதலில் படவிளக்க இருமொழிப் பாடத்தைத் திறக்கவும் · பின்னர் வினாப் பயிற்சி.")
+                            else -> label(language,
                                 "Assessment-only preview; full illustrated lesson not yet authored.",
-                                "வினாப் பயிற்சி முன்னோட்டம்; முழுப் படவிளக்கப் பாடம் இன்னும் தயாரிக்கப்படவில்லை."))
+                                "வினாப் பயிற்சி முன்னோட்டம்; முழுப் படவிளக்கப் பாடம் இன்னும் தயாரிக்கப்படவில்லை.")
+                        })
                     }
                 }
             }
@@ -392,6 +396,10 @@ private fun ChapterScreen(
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
 ) {
+    if (chapter.unitNumber == 2) {
+        UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle)
+        return
+    }
     val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
     val chapterListState = rememberLazyListState()
     val chapterScope = rememberCoroutineScope()
