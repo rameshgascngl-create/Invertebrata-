@@ -34,16 +34,27 @@ class NativeUnitIITeachingTest {
         val canvasTag=if(scene.startsWith("sycon"))"u2-sycon-image-plate" else "u2-obelia-image-plate"
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
         val plate=rule.onNodeWithTag(canvasTag).fetchSemanticsNode().boundsInRoot
+        // The image can fill the available viewport while the zoom instruction
+        // is legitimately below it. Scroll that instruction into view before
+        // measuring actual rendered width, then restore the image before capture.
+        rule.onNodeWithTag("u2-zoom-hint").performScrollTo()
+        rule.waitForIdle()
         val viewport=rule.onRoot().fetchSemanticsNode().boundsInRoot
         val hint=rule.onNodeWithTag("u2-zoom-hint").fetchSemanticsNode().boundsInRoot
-        org.junit.Assert.assertTrue("Zoom hint is squeezed into an unreadable column: "+scene,
-            hint.width>=viewport.width*.45f)
-        val visible=(minOf(plate.bottom,viewport.bottom-55f)-
-            maxOf(plate.top,viewport.top+55f)).coerceAtLeast(0f)
+        org.junit.Assert.assertTrue(
+            "Zoom hint is squeezed into an unreadable column: "+scene+
+                " hint="+hint.width+" viewport="+viewport.width,
+            hint.width>=viewport.width*.45f
+        )
+        rule.onNodeWithTag(canvasTag).performScrollTo()
+        rule.waitForIdle()
+        val plateAfterScroll=rule.onNodeWithTag(canvasTag).fetchSemanticsNode().boundsInRoot
+        val visible=(minOf(plateAfterScroll.bottom,viewport.bottom-55f)-
+            maxOf(plateAfterScroll.top,viewport.top+55f)).coerceAtLeast(0f)
         org.junit.Assert.assertTrue(
             "Anatomy plate not sufficiently visible for screenshot: "+scene+
                 " visible="+visible+" height="+plate.height,
-            visible>=plate.height*.83f
+            visible>=plateAfterScroll.height*.83f
         )
         val scale = if(context.resources.configuration.fontScale >= 1.95f) "200" else "100"
         val path = "/sdcard/Download/unit2-qa/unit2-" + scale + "-" + scene + ".png"
