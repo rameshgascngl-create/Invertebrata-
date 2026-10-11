@@ -6,6 +6,10 @@ name: Native R1.9 complete Paramecium candidate HARD acceptance
     - native/r19-final-engineering-20261011
     paths:
     - .github/workflows/native-r19-full-acceptance.yml
+    - .github/scripts/run-native-*.sh
+    - native-app/app/src/**
+    - native-app/app/build.gradle.kts
+    - native-app/build.gradle.kts
 permissions:
   contents: read
 jobs:
