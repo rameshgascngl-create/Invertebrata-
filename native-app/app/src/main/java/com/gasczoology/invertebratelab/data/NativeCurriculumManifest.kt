@@ -47,6 +47,9 @@ object NativeCurriculumManifest {
             "u5-cephalopods"),
     )
 
+    // Unit II draft lessons and plates are authored, NOT scientifically accepted.
+    private val draftIds = setOf("u1-paramecium") + a5ChapterIdsByUnit.getValue(2)
+
     // Plate names are work requirements, not drawings, organ validation or approval.
     val typeStudies: List<TypeStudyRequirement> = listOf(
         TypeStudyRequirement("paramecium", 1, "Paramecium", "u1-paramecium",
@@ -54,9 +57,11 @@ object NativeCurriculumManifest {
                 "contractile-vacuoles", "locomotion"),
             AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("sycon", 2, "Sycon", "u2-sycon",
-            "u2-sycon", listOf("external", "canal-system", "reproduction")),
+            "u2-sycon", listOf("external", "canal-system", "reproduction"),
+            AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("obelia", 2, "Obelia", "u2-obelia",
-            "u2-obelia", listOf("colony", "hydranth-gonangium", "medusa", "life-cycle")),
+            "u2-obelia", listOf("colony", "hydranth-gonangium", "medusa", "life-cycle"),
+            AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("fasciola", 3, "Fasciola hepatica", "u3-fasciola",
             "u3-fasciola", listOf("external", "digestive-reproductive", "life-cycle")),
         TypeStudyRequirement("ascaris", 3, "Ascaris lumbricoides", "u3-ascaris",
@@ -78,7 +83,7 @@ object NativeCurriculumManifest {
     val lessonSlots: List<NativeLessonSlot> =
         a5ChapterIdsByUnit.flatMap { (unit, ids) ->
             ids.map { id -> NativeLessonSlot(id, unit, id,
-                if (id == "u1-paramecium") AcademicWorkStatus.DRAFT_UNVERIFIED
+                if (id in draftIds) AcademicWorkStatus.DRAFT_UNVERIFIED
                 else AcademicWorkStatus.NOT_AUTHORED) }
         } + NativeLessonSlot(EARTHWORM_LESSON_ID, 4, null)
 
@@ -98,13 +103,11 @@ object NativeCurriculumManifest {
         require(lessonSlots.map { it.id }.toSet().size == REQUIRED_LESSON_SLOTS)
         require(lessonSlots.count { it.acceptedA5ChapterId == null } == 1)
         require(lessonSlots.single { it.acceptedA5ChapterId == null }.id == EARTHWORM_LESSON_ID)
-        require(lessonSlots.count { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED } == 1)
-        require(lessonSlots.single { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }.id ==
-            "u1-paramecium")
+        require(lessonSlots.filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }
+            .map { it.id }.toSet() == draftIds)
         require(lessonSlots.none { it.status == AcademicWorkStatus.ACCEPTED })
-        require(typeStudies.count { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED } == 1)
-        require(typeStudies.single { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }.organismId ==
-            "paramecium")
+        require(typeStudies.filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }
+            .map { it.organismId }.toSet() == setOf("paramecium","sycon","obelia"))
         require(typeStudies.none { it.status == AcademicWorkStatus.ACCEPTED })
         for (study in typeStudies) {
             val slot = lessonSlots.single { it.id == study.lessonId }

@@ -24,8 +24,8 @@ class NativeCurriculumManifestTest {
             it.acceptedA5ChapterId != null
         })
         assertEquals(44, NativeCurriculumManifest.lessonSlots.size)
-        assertEquals(listOf("u1-paramecium"),NativeCurriculumManifest.lessonSlots
-            .filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }.map { it.id })
+        assertEquals(setOf("u1-paramecium") + NativeCurriculumManifest.a5ChapterIdsByUnit.getValue(2),
+            NativeCurriculumManifest.lessonSlots.filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }.map { it.id }.toSet())
         assertTrue(NativeCurriculumManifest.lessonSlots.none {
             it.status == AcademicWorkStatus.ACCEPTED
         })
@@ -45,16 +45,16 @@ class NativeCurriculumManifestTest {
     }
 
     @Test
-    fun nineTypeStudiesHaveCorrectUnitsAndOnlyParameciumHasDraftImplementation() {
+    fun nineTypeStudiesHaveCorrectUnitsAndThreeCurrentDrafts() {
         val studies = NativeCurriculumManifest.typeStudies
         assertEquals(9, studies.size)
         assertEquals(mapOf("paramecium" to 1, "sycon" to 2, "obelia" to 2,
             "fasciola" to 3, "ascaris" to 3, "earthworm" to 4, "penaeus" to 4,
             "pila" to 5, "asterias" to 5),
             studies.associate { it.organismId to it.unitNumber })
-        assertEquals(listOf("paramecium"), studies
+        assertEquals(setOf("paramecium","sycon","obelia"), studies
             .filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }
-            .map { it.organismId })
+            .map { it.organismId }.toSet())
         assertTrue(studies.none { it.status == AcademicWorkStatus.ACCEPTED })
         assertTrue(studies.all { it.requiredPlateIds.isNotEmpty() })
     }
