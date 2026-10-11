@@ -35,14 +35,21 @@ class NativeR19ProcessDeathSetupTest {
         rule.onNodeWithTag("r19-select-recovered-membrane",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-stage-explanation",true).performScrollTo().assertTextEquals(ParameciumEgestion.stages.last().explanation.tamil)
         rule.onNodeWithTag("r19-view-egestion-plate",true).performScrollTo().performClick()
-        rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().performClick()
-        rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-        rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().performClick()
+        // The user-visible midpoint control runs the real playback clock to
+        // frame 75/120 and pauses inside the ViewModel. Test-driven UI scrolling
+        // cannot move the saved phase outside the unchanged 400..850 gate.
+        rule.onNodeWithTag("r19-cytoproct-inspect-midpoint",true).performScrollTo().performClick()
+        rule.waitUntil(15_000) {
+            rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode()
+                .config[SemanticsProperties.ProgressBarRangeInfo].current >= .625f
+        }
+        rule.onNodeWithTag("r19-playback-state",true).assertTextEquals("இடைநிறுத்தம்")
         val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.onEach {Log.i("R19_PROGRESS","setup record ${it.destination} ${it.laboratoryTab} ${it.nutritionProgress}")}.first {
             it.nutritionProgress.stageId=="recycling" && it.nutritionProgress.readingId=="5.7" &&
                 it.nutritionProgress.selectedStructure=="recovered-membrane" && it.nutritionProgress.phasePermille in 400..850
         }}}
         assertEquals(StudyDestination.PARAMECIUM_LAB,saved.destination);assertEquals("nutrition",saved.laboratoryTab)
+        assertEquals("Egestion must persist genuine frame 75/120",625,saved.nutritionProgress.phasePermille)
         InstrumentationRegistry.getInstrumentation().sendStatus(0,Bundle().apply {putString("r19SavedPhase",saved.nutritionProgress.phasePermille.toString())})
     }
 }
