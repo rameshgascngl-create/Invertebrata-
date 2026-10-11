@@ -243,18 +243,26 @@ class NativeR19TeachingAcceptanceTest {
             // The playback clock advances every 50 ms. Scroll *before* playback:
             // scrolling the multiline Tamil Pause control after observing a
             // midframe lets the real clock cross the accepted 0.85 limit.
-            // The earlier 0.48–0.58 trigger is synchronization headroom,
-            // NOT a change to the 0.40–0.85 acceptance requirement below.
+            // The monotonic 0.45 trigger does not change the required
+            // 0.40–0.85 captured intermediate range below.
             val pauseButton=rule.onNodeWithTag("r19-physiology-inline-play-pause",true)
             pauseButton.performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            // Monotonic phase trigger cannot miss a short sampling window:
+            // invoke the actual exposed Compose OnClick action in the SAME
+            // waitUntil evaluation that first observes phase >= 0.45. The
+            // frozen result is still required to lie in 0.40..0.85 below.
+            var observedAtPause = -1f
             rule.waitUntil(12_000) {
-                rule.onNodeWithTag("r19-physiology-canvas",true)
-                    .fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo]
-                    .current in .48f.. .58f
+                val observed = rule.onNodeWithTag("r19-physiology-canvas",true)
+                    .fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+                if (observed < .45f) false else {
+                    observedAtPause = observed
+                    pauseButton.performSemanticsAction(SemanticsActions.OnClick)
+                    true
+                }
             }
-            // Tap the already-visible control immediately. Do NOT add a
-            // BringIntoView/performScrollTo between clock observation and pause.
-            pauseButton.performClick()
+            Log.i("R19_PAUSE_ISOLATION",
+                "stage=$id phase_on_pause_action=$observedAtPause")
             rule.onNodeWithTag("r19-playback-state",true).assertTextEquals(
                 if(lang==AppLanguage.TAMIL) "இடைநிறுத்தம்" else "Paused")
             val c=physiologyCanvas()
