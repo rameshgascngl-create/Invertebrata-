@@ -39,7 +39,7 @@ private fun tr(lang: AppLanguage,en:String,ta:String)=if(lang==AppLanguage.TAMIL
 /**
  * Type-study teaching is deliberately BEFORE the independently validated A5 questions.
  * A chapter returns to the original native NavHost and persisted CHAPTER destination.
- * No WebView, external dependency, invented microscope scale or hardcoded Tamil truncation.
+ * No browser runtime, external dependency, invented microscope scale or hardcoded Tamil truncation.
  */
 @Composable
 internal fun UnitIITeachingChapter(
