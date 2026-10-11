@@ -279,13 +279,23 @@ class NativeR19TeachingAcceptanceTest {
         rule.onNodeWithTag("r19-reading-5.11",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-stage-metabolism",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-select-mitochondrion",true).performScrollTo().performClick()
-        rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().performClick()
-        rule.waitUntil(12_000) {rule.onNodeWithTag("r19-physiology-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-        rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().performClick()
+        // A 200% Tamil landscape scroll can outlast live playback. Use the
+        // existing learner-visible REAL-CLOCK hold (frame 75/120), not a
+        // fixed screenshot pose or a weakened phase gate.
+        rule.onNodeWithTag("r19-physiology-inspect-midpoint",true)
+            .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+        rule.waitUntil(15_000) {
+            rule.onNodeWithTag("r19-physiology-canvas",true)
+                .fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo]
+                .current >= .625f
+        }
+        rule.onNodeWithTag("r19-playback-state",true)
+            .assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
         val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
             it.nutritionProgress.stageId=="metabolism" && it.nutritionProgress.readingId=="5.11" &&
                 it.nutritionProgress.selectedStructure=="mitochondrion" && it.nutritionProgress.phasePermille in 400..850
         }}}.nutritionProgress
+        assertEquals("Exactly frame 75/120 must persist during rotation",625,saved.phasePermille)
         rule.activityRule.scenario.onActivity {it.requestedOrientation=if(landscape)ActivityInfo.SCREEN_ORIENTATION_PORTRAIT else ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE}
         rule.waitUntil(20_000) {context.resources.configuration.orientation==if(landscape)Configuration.ORIENTATION_PORTRAIT else Configuration.ORIENTATION_LANDSCAPE}
         rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}

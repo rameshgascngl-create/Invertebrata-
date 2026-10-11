@@ -1,0 +1,47 @@
+name: Native R1.9 frozen baseline isolated rotation QA
+'on':
+  push:
+    branches:
+      - native/r19-integration-freeze-20261011
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  isolated-r19-rotation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile candidate code and isolated instrumentation
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin --stacktrace
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify the exact R1.9 Tamil200 landscape rotation test
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-native-r19-freeze-rotation.sh
+      - name: Preserve independent evidence even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r19-freeze-tamil200-rotation-evidence
+          path: qa-evidence/r19-freeze-rotation/
+          if-no-files-found: warn
