@@ -164,6 +164,9 @@ class NativeR18TeachingAcceptanceTest {
         rule.onNodeWithTag("r17-chapter-conjugation",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-stage-exchange",true).performScrollTo().performClick()
         rule.onNodeWithTag("r1-tab-water-balance").performScrollTo().performClick()
+        // A tab click can finish before its asynchronous StateFlow update is composed.
+        // Require the returned chapter before checking the unchanged saved-stage assertion.
+        rule.waitUntil(20_000) { rule.onAllNodesWithTag("r18-textbook-title",true).fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("r18-stage-expel",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
         rule.onNodeWithTag("r18-reading-heading",true).assertTextEquals(ParameciumWaterBalance.readings[3].heading.value(lang))
         rule.activityRule.scenario.recreate()

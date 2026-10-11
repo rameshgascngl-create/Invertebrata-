@@ -5,6 +5,8 @@ device_dir="/sdcard/Download/native-anatomy-evidence"
 selected_test="com.gasczoology.invertebratelab.NativeR18TeachingAcceptanceTest"
 if [[ "${1:-full}" == "targeted-persistence" || "${1:-full}" == "targeted-motion" ]]; then
   selected_test+="#nativeMotionReallyChangesPixelsAndPausesAtIntermediatePhase"
+elif [[ "${1:-full}" == "targeted-navigation" ]]; then
+  selected_test+="#realDataStoreRecreationAndChapterNavigationPreservePosition"
 fi
 mkdir -p "$evidence"
 adb shell mkdir -p "$device_dir"
@@ -49,9 +51,18 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   fi
   cp -a native-app/app/build/outputs/androidTest-results/connected "$evidence/$phase/results"
   cp -a native-app/app/build/reports/androidTests/connected "$evidence/$phase/reports"
+  if [[ "${1:-full}" == "targeted-navigation" ]]; then
+    python3 - "$evidence/$phase/results" > "$evidence/$phase/verified-cohort.txt" <<'PYTEST'
+import sys,pathlib,xml.etree.ElementTree as E
+cases=[c for p in pathlib.Path(sys.argv[1]).rglob('TEST-*.xml') for c in E.parse(p).getroot().iter('testcase')]
+assert [c.attrib['name'] for c in cases]==['realDataStoreRecreationAndChapterNavigationPreservePosition'],"WRONG_TEST_COHORT"
+assert not any(c.find(n) is not None for c in cases for n in ('failure','error','skipped')),"NONPASS_TEST"
+print("VERIFIED_COHORT targeted-navigation 1")
+PYTEST
+  fi
   adb logcat -d -v threadtime -s R18_DISCHARGE:I '*:S' > "$evidence/$phase/discharge-pixels.txt"
 done
-if [[ "${1:-full}" == "targeted-motion" ]]; then
+if [[ "${1:-full}" == "targeted-motion" || "${1:-full}" == "targeted-navigation" ]]; then
   result=PASS
   exit 0
 fi

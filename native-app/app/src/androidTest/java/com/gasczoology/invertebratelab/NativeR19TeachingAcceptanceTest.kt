@@ -322,7 +322,16 @@ class NativeR19TeachingAcceptanceTest {
         }
         rule.onNodeWithTag("r19-playback-state",true)
             .assertTextEquals(if(lang==AppLanguage.TAMIL)"இடைநிறுத்தம்" else "Paused")
-        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
+        // The hold callback updates native progress before StateFlow recomposition.
+        // Drive the actual UI to idle before blocking on the unchanged durable-state gate.
+        rule.waitForIdle()
+        rule.onNodeWithTag("r19-module-position",true)
+            .assertTextEquals(ParameciumPhysiology.readings.last().heading.value(lang)+" · "+
+                ParameciumNutrition.stages.first {it.id=="metabolism"}.heading.value(lang)+" · "+
+                ParameciumNutrition.structure("mitochondrion").name.value(lang))
+        physiologyCanvas();capture("rotation-precondition-paused-physiology")
+        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState
+            .onEach { Log.i("R19_ROTATION_STORE", "$prefix state=${it.nutritionProgress}") }.first {
             it.nutritionProgress.stageId=="metabolism" && it.nutritionProgress.readingId=="5.11" &&
                 it.nutritionProgress.selectedStructure=="mitochondrion" && it.nutritionProgress.phasePermille in 400..850
         }}}.nutritionProgress
