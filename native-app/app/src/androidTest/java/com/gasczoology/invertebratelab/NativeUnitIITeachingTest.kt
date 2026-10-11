@@ -140,8 +140,22 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-english")
-        rule.onNodeWithTag("u2-sycon-image-plate").performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.70f, height*.42f))
+        rule.onNodeWithTag("u2-anatomical-correction").performScrollTo()
+            .assertTextContains("prosopyle", substring = true, ignoreCase = true)
+        // Three disjoint, anatomy-directed hit targets on the image itself.
+        // Stage labels remain source-authored and the raster is still DRAFT.
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.600f, height*.555f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("03 · Prosopyle")
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.676f, height*.461f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("05 · Apopyle")
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.713f, height*.324f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Spongocoel")
@@ -155,6 +169,8 @@ class NativeUnitIITeachingTest {
             rule.onAllNodesWithTag("u2-obelia-image-plate").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-anatomical-correction").performScrollTo()
+            .assertTextContains("gonotheca", substring = true, ignoreCase = true)
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-english")
         rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
