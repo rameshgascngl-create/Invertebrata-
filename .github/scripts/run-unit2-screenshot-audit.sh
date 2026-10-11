@@ -10,7 +10,7 @@ for n in {1..60};do
   if adb shell mkdir -p "$D" >/dev/null 2>&1 && adb shell test -d "$D";then ready=1;break;fi
   sleep 1
 done
-[[ "$ready" == 1 ]] || {result=STORAGE_NOT_READY;exit 1;}
+[[ "$ready" == 1 ]] || { result=STORAGE_NOT_READY; exit 1; }
 adb shell settings put system accelerometer_rotation 0
 adb shell settings put system user_rotation 0
 adb shell cmd connectivity airplane-mode enable
@@ -24,9 +24,9 @@ for scale in 1.0 2.0;do
   mkdir -p "$folder"
   adb shell settings put system font_scale "$scale"
   adb shell settings get system font_scale > "$folder/actual-scale.txt"
-  grep -Fxq "$scale" "$folder/actual-scale.txt" || {result=WRONG_SCALE;exit 1;}
+  grep -Fxq "$scale" "$folder/actual-scale.txt" || { result=WRONG_SCALE; exit 1; }
   adb shell dumpsys connectivity > "$folder/connectivity.txt"
-  grep -q 'Active default network: none' "$folder/connectivity.txt" || {result=NOT_OFFLINE;exit 1;}
+  grep -q 'Active default network: none' "$folder/connectivity.txt" || { result=NOT_OFFLINE; exit 1; }
   rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
   if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
      -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIITeachingTest > "$folder/gradle.txt" 2>&1;then
@@ -46,7 +46,7 @@ done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
  for scene in sycon-external sycon-prosopyle sycon-apopyle obelia-colony obelia-hydranth obelia-gonangium obelia-medusa obelia-planula;do
-  [[ -s "$E/captured/unit2-$scale-$scene.png" ]] || {result="MISSING_PNG_$scale-$scene";exit 1;}
+  [[ -s "$E/captured/unit2-$scale-$scene.png" ]] || { result="MISSING_PNG_$scale-$scene"; exit 1; }
  done
 done
 result=PASS

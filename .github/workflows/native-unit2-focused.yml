@@ -21,6 +21,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Check screenshot script syntax before Android emulator work
+        run: bash -n .github/scripts/run-unit2-screenshot-audit.sh
       - name: Compile all native Kotlin and run all JVM tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - name: Assert no WebView or new INTERNET permission
