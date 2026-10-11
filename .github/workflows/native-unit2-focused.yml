@@ -1,0 +1,78 @@
+name: Unit II native syllabus and anatomical UI QA
+'on':
+  push:
+    branches:
+      - native/u2-porifera-cnidaria-20261011
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-unit-two-jvm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile all native Kotlin and run all JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assert no WebView or new INTERNET permission
+        run: |
+          if grep -RniE 'WebView|android\.webkit' native-app/app/src/main; then exit 1; fi
+          if grep -q '<uses-permission.*INTERNET' native-app/app/src/main/AndroidManifest.xml; then exit 1; fi
+      - name: Preserve exact Unit II source/test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-jvm-evidence
+          path: |
+            native-app/app/build/test-results/testDebugUnitTest/
+            native-app/app/build/reports/tests/testDebugUnitTest/
+          if-no-files-found: warn
+
+  native-unit-two-android:
+    needs: native-unit-two-jvm
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Validate Sycon and Obelia navigation on Android API34 at genuine Tamil200 scale
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: |
+            adb shell settings put system font_scale 2.0
+            gradle -p native-app :app:connectedDebugAndroidTest --stacktrace -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIITeachingTest
+      - name: Preserve Android XML and screenshot test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-native-api34-evidence
+          path: |
+            native-app/app/build/outputs/androidTest-results/connected/
+            native-app/app/build/reports/androidTests/connected/
+          if-no-files-found: warn
