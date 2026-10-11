@@ -39,13 +39,13 @@ for scale in 1.0 2.0;do
 from pathlib import Path
 import sys,xml.etree.ElementTree as ET
 cases=[c for p in Path(sys.argv[1]).rglob('TEST-*.xml') for c in ET.parse(p).getroot().iter('testcase')]
-assert len(cases)==2,len(cases)
+assert len(cases)==4,len(cases)
 assert all(c.find(x) is None for c in cases for x in ('failure','error','skipped'))
 PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
- for scene in sycon-external sycon-prosopyle sycon-apopyle obelia-colony obelia-hydranth obelia-gonangium obelia-medusa obelia-planula;do
+ for scene in sycon-external sycon-prosopyle sycon-apopyle obelia-colony obelia-hydranth obelia-gonangium obelia-medusa obelia-planula sycon-english obelia-english obelia-planula-english;do
   [[ -s "$E/captured/unit2-$scale-$scene.png" ]] || { result="MISSING_PNG_$scale-$scene"; exit 1; }
  done
 done

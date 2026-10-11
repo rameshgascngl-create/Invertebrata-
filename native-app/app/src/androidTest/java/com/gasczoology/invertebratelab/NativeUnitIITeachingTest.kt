@@ -31,7 +31,8 @@ class NativeUnitIITeachingTest {
         rule.waitForIdle()
         // A successful screenshot command is not proof that the anatomy was
         // actually in the viewport. Reject header-only/mostly clipped captures.
-        val canvasTag=if(scene.startsWith("sycon"))"u2-sycon-canvas" else "u2-obelia-canvas"
+        val canvasTag=if(scene.startsWith("sycon"))"u2-sycon-image-plate" else "u2-obelia-image-plate"
+        rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
         val plate=rule.onNodeWithTag(canvasTag).fetchSemanticsNode().boundsInRoot
         val viewport=rule.onRoot().fetchSemanticsNode().boundsInRoot
         val visible=(minOf(plate.bottom,viewport.bottom-55f)-
@@ -61,46 +62,47 @@ class NativeUnitIITeachingTest {
         }
         rule.onNodeWithTag("chapter-u2-sycon").performScrollTo().performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("u2-sycon-canvas").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("u2-sycon-image-plate").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u2-lesson-title").assertExists()
         rule.onNodeWithTag("u2-draft-disclosure").assertExists()
         // The oversized Tamil header can leave the atlas below the viewport.
         // First advance within the atlas item, then position the plate itself.
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
-        rule.onNodeWithTag("u2-sycon-canvas").performScrollTo()
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-external")
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
             .assertHasClickAction().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("03 · புரோசோபைல்")
-        rule.onNodeWithTag("u2-sycon-canvas").performScrollTo()
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-prosopyle")
         rule.onNodeWithTag("u2-stage-apopyle").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("05 · அப்போபைல்")
-        rule.onNodeWithTag("u2-sycon-canvas").performScrollTo()
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-apopyle")
         rule.onNodeWithTag("u2-reader-u2-sycon")
             .performScrollToNode(hasTestTag("u2-practice-heading"))
         rule.onNodeWithTag("u2-practice-heading").assertExists()
     }
     @Test fun obeliaDistinguishesFeedingReproductivePolypMedusaAndPlanula() {
+        rule.onNodeWithTag("language-tamil").performClick()
         rule.onNodeWithTag("unit-2").performScrollTo().performClick()
         rule.onNodeWithTag("native-unit-2")
             .performScrollToNode(hasTestTag("chapter-u2-obelia"))
         rule.onNodeWithTag("chapter-u2-obelia").performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("u2-obelia-canvas").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("u2-obelia-image-plate").fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("u2-obelia-canvas").performScrollTo()
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-colony")
         for(id in listOf("hydranth","gonangium","medusa","planula","settlement")) {
             rule.onNodeWithTag("u2-stage-"+id).performScrollTo()
                 .assertHasClickAction().performClick()
             rule.onNodeWithTag("u2-stage-explanation").assertExists()
             if(id in setOf("hydranth","gonangium","medusa","planula")) {
-                rule.onNodeWithTag("u2-obelia-canvas").performScrollTo()
+                rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
                 captureRealScreen("obelia-"+id)
             }
         }
@@ -110,5 +112,46 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-reader-u2-obelia")
             .performScrollToNode(hasTestTag("u2-practice-heading"))
         rule.onNodeWithTag("u2-practice-heading").assertExists()
+    }
+
+    @Test fun englishSyconImageAndTapSelectsSpongocoel() {
+        rule.onNodeWithTag("unit-2").performScrollTo().performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("chapter-u2-sycon").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("chapter-u2-sycon").performScrollTo().performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("u2-sycon-image-plate").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
+        captureRealScreen("sycon-english")
+        rule.onNodeWithTag("u2-sycon-image-plate").performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.70f, height*.42f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("06 · Spongocoel")
+    }
+    @Test fun englishObeliaImageTapAndPlanulaPlate() {
+        rule.onNodeWithTag("unit-2").performScrollTo().performClick()
+        rule.onNodeWithTag("native-unit-2")
+            .performScrollToNode(hasTestTag("chapter-u2-obelia"))
+        rule.onNodeWithTag("chapter-u2-obelia").performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("u2-obelia-image-plate").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
+        captureRealScreen("obelia-english")
+        rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.50f, height*.14f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("02 · Feeding hydranth")
+        rule.onNodeWithTag("u2-stage-planula").performScrollTo().performClick()
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("05 · Planula larva")
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
+        captureRealScreen("obelia-planula-english")
     }
 }

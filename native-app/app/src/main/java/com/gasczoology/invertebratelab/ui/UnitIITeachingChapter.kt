@@ -109,11 +109,11 @@ internal fun UnitIITeachingChapter(
                 val p by animateFloatAsState(targetValue=index.toFloat(),
                     animationSpec=tween(durationMillis=600),label="Unit II teaching stage")
                 Card(colors=CardDefaults.cardColors(containerColor=parchment)) {
-                    if(sycon) UnitIIImagePlate(true,p,language,{stage->index=stage;playing=false}) {
-                        SyconCanalCanvas(p,language,{stage->index=stage;playing=false})
+                    if(sycon) UnitIIImagePlate(true,p,language,{stage->index=stage;playing=false;narrator.speak(stages[stage].explanation,language)}) {
+                        SyconCanalCanvas(p,language,{stage->index=stage;playing=false;narrator.speak(stages[stage].explanation,language)})
                     }
-                    else UnitIIImagePlate(false,p,language,{stage->index=stage;playing=false}) {
-                        ObeliaColonyCanvas(p,language,{stage->index=stage;playing=false})
+                    else UnitIIImagePlate(false,p,language,{stage->index=stage;playing=false;narrator.speak(stages[stage].explanation,language)}) {
+                        ObeliaColonyCanvas(p,language,{stage->index=stage;playing=false;narrator.speak(stages[stage].explanation,language)})
                     }
                 }
                 Text(stages[index.coerceIn(stages.indices)].name.value(language),
