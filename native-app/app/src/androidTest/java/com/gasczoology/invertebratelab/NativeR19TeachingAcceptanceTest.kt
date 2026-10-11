@@ -29,6 +29,10 @@ import org.junit.runner.RunWith
 @Target(AnnotationTarget.FUNCTION)
 annotation class R19PhysiologyGate
 
+@Retention(AnnotationRetention.RUNTIME)
+@Target(AnnotationTarget.FUNCTION)
+annotation class R19CorrectionGate
+
 @RunWith(AndroidJUnit4::class)
 class NativeR19TeachingAcceptanceTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
@@ -168,7 +172,7 @@ class NativeR19TeachingAcceptanceTest {
         assertTrue("Complete cytoproct plate must fit viewport",b.top>=r.top-1 && b.bottom<=r.bottom+1 && b.width>0)
         return c
     }
-    @Test fun cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits() {
+    @R19CorrectionGate @Test fun cytoproctReallyOpensReleasesResiduesAndReclosesWithAccessibleHits() {
         val ends=mutableListOf<android.graphics.Bitmap>()
         for(id in ParameciumEgestion.stageIds) {
             rule.onNodeWithTag("r19-stage-"+id,true).performScrollTo().performClick()
@@ -191,7 +195,7 @@ class NativeR19TeachingAcceptanceTest {
             // and genuine process recovery do. Keep the original phase interval.
             rule.onNodeWithTag("r19-cytoproct-inspect-midpoint",true)
                 .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
-            rule.waitUntil(15_000) {
+            rule.waitUntil(12_000) {
                 rule.onNodeWithTag("r19-egestion-canvas",true)
                     .fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current >= .625f
             }
@@ -218,17 +222,22 @@ class NativeR19TeachingAcceptanceTest {
             egestionCanvas();capture("cytoproct-highlight-"+m.id)
         }
     }
-    @Test fun leavingDuringPlaybackCheckpointsPhaseWithoutOverwritingNavigation() {
+    @R19CorrectionGate @Test fun leavingDuringPlaybackCheckpointsPhaseWithoutOverwritingNavigation() {
         rule.onNodeWithTag("r19-stage-egestion",true).performScrollTo().performClick()
         rule.onNodeWithTag("r19-cytoproct-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitUntil(12_000) {rule.onNodeWithTag("r19-egestion-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .35f.. .8f}
         // Invoke Android Back immediately while motion is still intermediate. Scrolling through
         // a long chapter to a top tab can legitimately outlast the illustrative three-second stage.
         rule.activityRule.scenario.onActivity {it.onBackPressedDispatcher.onBackPressed()}
-        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {
-            it.destination==StudyDestination.HOME && it.nutritionProgress.stageId=="egestion" && it.nutritionProgress.phasePermille in 1..999
-        }}}.nutritionProgress
+        // onActivity dispatches Back outside a Compose interaction. Drive the actual
+        // NavHost transition before blocking the instrumentation thread on disk state.
+        // The original HOME, stage, intermediate phase and 15s persistence gate remain.
         rule.waitUntil(20_000) {rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()}
+        val saved=runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState
+            .onEach {Log.i("R19_NUTRITION","back durable record ${it.destination} ${it.laboratoryTab} ${it.nutritionProgress}")}
+            .first {
+                it.destination==StudyDestination.HOME && it.nutritionProgress.stageId=="egestion" && it.nutritionProgress.phasePermille in 1..999
+            }}}.nutritionProgress
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(20_000) {rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()}
         assertEquals(saved.phasePermille/1000f,egestionCanvas().fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current,.02f)
