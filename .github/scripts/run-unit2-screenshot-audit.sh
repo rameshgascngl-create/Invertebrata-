@@ -16,6 +16,28 @@ adb shell settings put system user_rotation 0
 adb shell cmd connectivity airplane-mode enable
 adb shell svc wifi disable
 adb shell svc data disable
+# Android connectivity changes are asynchronous. A command's successful exit
+# does not prove the emulator is offline. Never relax the offline requirement.
+wait_for_offline() {
+  local output="$1"
+  local trace="$2"
+  : > "$trace"
+  for attempt in {1..45}; do
+    adb shell dumpsys connectivity > "$output"
+    local line
+    line="$(grep -m1 '^Active default network:' "$output" || true)"
+    printf 'attempt=%s %s\n' "$attempt" "$line" >> "$trace"
+    if [[ "$line" == 'Active default network: none' ]]; then
+      return 0
+    fi
+    if (( attempt % 10 == 0 )); then
+      adb shell svc wifi disable >/dev/null 2>&1 || true
+      adb shell svc data disable >/dev/null 2>&1 || true
+    fi
+    sleep 1
+  done
+  return 1
+}
 for scale in 1.0 2.0;do
   result="RUNNING_$scale"
   suffix=100
@@ -25,8 +47,10 @@ for scale in 1.0 2.0;do
   adb shell settings put system font_scale "$scale"
   adb shell settings get system font_scale > "$folder/actual-scale.txt"
   grep -Fxq "$scale" "$folder/actual-scale.txt" || { result=WRONG_SCALE; exit 1; }
-  adb shell dumpsys connectivity > "$folder/connectivity.txt"
-  grep -q 'Active default network: none' "$folder/connectivity.txt" || { result=NOT_OFFLINE; exit 1; }
+  wait_for_offline "$folder/connectivity.txt" "$folder/connectivity-wait.log" || {
+    result="NOT_OFFLINE_$scale"
+    exit 1
+  }
   rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
   if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
      -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIITeachingTest > "$folder/gradle.txt" 2>&1;then
