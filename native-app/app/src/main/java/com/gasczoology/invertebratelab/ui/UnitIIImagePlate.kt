@@ -18,6 +18,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.nativeCanvas
+import android.graphics.Paint
+import android.graphics.Typeface
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
@@ -42,13 +45,13 @@ import kotlin.math.roundToInt
  */
 private data class AtlasTarget(val stage: Int, val x: Float, val y: Float, val radius: Float = .085f)
 private val syconTargets = listOf(
-    AtlasTarget(0,.30f,.35f),  // dermal ostia, external morphology
-    AtlasTarget(1,.68f,.60f),  // incurrent passage, cutaway
-    AtlasTarget(2,.64f,.59f),  // prosopyle - requires plate review
-    AtlasTarget(3,.59f,.61f),  // radial canal
-    AtlasTarget(4,.64f,.72f),  // apopyle - requires plate review
-    AtlasTarget(5,.70f,.42f),  // spongocoel
-    AtlasTarget(6,.67f,.075f)  // osculum
+    AtlasTarget(0,.30f,.35f),       // ostia, external view
+    AtlasTarget(1,.56f,.61f,.060f), // between radial chamber levels: incurrent passage
+    AtlasTarget(2,.600f,.555f,.043f), // PROVISIONAL entry opening; not chamber centre
+    AtlasTarget(3,.645f,.540f,.043f), // choanocyte-lined radial canal
+    AtlasTarget(4,.676f,.461f,.043f), // PROVISIONAL apopyle at radial outlet
+    AtlasTarget(5,.713f,.324f,.085f), // spongocoel (not a filtering chamber)
+    AtlasTarget(6,.67f,.075f)       // osculum
 )
 private val obeliaColonyTargets = listOf(
     AtlasTarget(0,.33f,.71f),  // hydrocaulus, living colony
@@ -158,9 +161,78 @@ internal fun UnitIIImagePlate(
                             style=Stroke(width=2.5f))
                         drawCircle(Color(0x55D36A27),radius=5f,center=center)
                     }
+                    // Reversible correction layer for scientifically incorrect
+                    // wording printed into the UNAPPROVED source raster. The
+                    // PNG/WebP master is preserved as provenance; captions are
+                    // overprinted in this same zoom/pan transform.
+                    //
+                    // These are reviewed *terms*, not a claim that the underlying
+                    // tissue drawing/leader endpoints have passed zoologist QA.
+                    val w=size.width
+                    val h=size.height
+                    fun mask(x:Float,y:Float,dx:Float,dy:Float) {
+                        drawRect(Color.White,Offset(w*x,h*y),
+                            androidx.compose.ui.geometry.Size(w*dx,h*dy))
+                    }
+                    fun leader(sx:Float,sy:Float,ex:Float,ey:Float) {
+                        drawLine(Color(0xFF383838),Offset(w*sx,h*sy),
+                            Offset(w*ex,h*ey),strokeWidth=1.5f)
+                        drawCircle(Color(0xFF383838),radius=2.5f,
+                            center=Offset(w*ex,h*ey))
+                    }
+                    val ink=Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                        color=android.graphics.Color.rgb(48,48,48)
+                        typeface=Typeface.create(Typeface.SERIF,Typeface.NORMAL)
+                        textSize=w*.018f
+                    }
+                    fun printing(text:String,x:Float,y:Float) {
+                        drawContext.canvas.nativeCanvas.drawText(text,w*x,h*y,ink)
+                    }
+                    if(sycon) {
+                        // P0 misprint "Excurrent canal (apopyle)": an apopyle
+                        // is an opening, never the name of an excurrent canal.
+                        mask(.819f,.414f,.177f,.067f)
+                        printing("Apopyle",.831f,.439f)
+                        printing("(exit opening)",.831f,.459f)
+                        leader(.815f,.435f,.676f,.461f)
+                        // P0 misprint "Incurrent canal (prosopyle)":
+                        // a prosopyle links an incurrent canal to a radial canal.
+                        mask(.829f,.556f,.170f,.067f)
+                        printing("Prosopyle",.836f,.576f)
+                        printing("(entry opening)",.836f,.595f)
+                        leader(.826f,.571f,.600f,.555f)
+                    } else if(!lifeHistory) {
+                        // Obelia: gonotheca is a protective perisarc covering;
+                        // the gonangium is the reproductive polyp.
+                        mask(.815f,.431f,.181f,.055f)
+                        printing("Gonotheca",.829f,.449f)
+                        printing("(protective sheath)",.829f,.469f)
+                        printing("Gonangium",.832f,.570f)
+                        printing("(reproductive polyp)",.832f,.590f)
+                        leader(.823f,.557f,.683f,.490f)
+                    }
                 }
             }
         }
+        // Visible, bilingual correction record for the still-unapproved
+        // scanned master. Never imply that green UI tests approve anatomy.
+        val provisionalNote = if (sycon) {
+            if(language==AppLanguage.TAMIL)
+                "படத் திருத்தம்: புரோசோபைல் என்பது உட்செல்லும் கால்வாயிலிருந்து ஆரக் கால்வாய்க்குச் செல்லும் திறப்பு. அப்போபைல் என்பது ஆரக் கால்வாயிலிருந்து ஸ்பாஞ்சோசீலுக்குச் செல்லும் திறப்பு; இவை கால்வாய்களின் பெயர்கள் அல்ல."
+            else "Plate correction: a prosopyle is the ENTRY OPENING from incurrent to radial canal; an apopyle is the EXIT OPENING into the spongocoel. Neither is itself a canal."
+        } else if (!lifeHistory) {
+            if(language==AppLanguage.TAMIL)
+                "படத் திருத்தம்: கோனோதீக்கா என்பது பாதுகாப்பு உறை. கோனாஞ்சியம் இனப்பெருக்க பாலிப்; அதன் பிளாஸ்டோஸ்டைலில் மெடூசா மொட்டுகள் தோன்றுகின்றன."
+            else "Plate correction: gonotheca = protective sheath; gonangium = reproductive polyp containing a blastostyle and medusa buds."
+        } else {
+            if(language==AppLanguage.TAMIL)
+                "மெடூசா இனச்செல்களால் பாலின இனப்பெருக்கம் செய்கிறது; கருவுற்ற முட்டை வளர்ந்து பிளானுலாவாகிறது."
+            else "The free medusa produces gametes; fertilisation and embryonic development precede the swimming planula."
+        }
+        Text(provisionalNote,
+            modifier=Modifier.fillMaxWidth().testTag("u2-anatomical-correction"),
+            style=MaterialTheme.typography.bodySmall,
+            color=MaterialTheme.colorScheme.onSurface)
         val zoomHint=if(language==AppLanguage.TAMIL)
             "இரு விரல்களால் பெரிதாக்கவும்; குறியிட்ட அமைப்பைத் தொடவும்"
         else "Pinch to zoom; touch a marked anatomical structure"
