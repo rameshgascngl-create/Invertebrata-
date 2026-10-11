@@ -240,10 +240,25 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-start-view",true).performScrollTo().performClick()
             val start=physiologyCanvas().captureToImage().asAndroidBitmap();capture("physiology-"+id+"-start")
             assertFalse(id+" must have distinguishable endpoints",start.sameAs(end))
-            rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
-            rule.waitUntil(12_000) {rule.onNodeWithTag("r19-physiology-canvas",true).fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .4f.. .85f}
-            rule.onNodeWithTag("r19-physiology-inline-play-pause",true).performScrollTo().performClick()
-            val c=physiologyCanvas();val phase=c.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            // The playback clock advances every 50 ms. Scroll *before* playback:
+            // scrolling the multiline Tamil Pause control after observing a
+            // midframe lets the real clock cross the accepted 0.85 limit.
+            // The earlier 0.48–0.58 trigger is synchronization headroom,
+            // NOT a change to the 0.40–0.85 acceptance requirement below.
+            val pauseButton=rule.onNodeWithTag("r19-physiology-inline-play-pause",true)
+            pauseButton.performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
+            rule.waitUntil(12_000) {
+                rule.onNodeWithTag("r19-physiology-canvas",true)
+                    .fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo]
+                    .current in .48f.. .58f
+            }
+            // Tap the already-visible control immediately. Do NOT add a
+            // BringIntoView/performScrollTo between clock observation and pause.
+            pauseButton.performClick()
+            rule.onNodeWithTag("r19-playback-state",true).assertTextEquals(
+                if(lang==AppLanguage.TAMIL) "இடைநிறுத்தம்" else "Paused")
+            val c=physiologyCanvas()
+            val phase=c.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("$id must capture a genuine intermediate phase: $phase",phase in .4f.. .85f)
             rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
             runBlocking {withTimeout(15_000) {NativeLearningRepository(context).learningState.first {it.nutritionProgress.stageId==id && it.nutritionProgress.phasePermille in 400..850}}}
