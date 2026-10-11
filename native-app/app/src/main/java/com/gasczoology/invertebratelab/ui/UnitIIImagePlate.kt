@@ -48,12 +48,15 @@ private val syconTargets = listOf(
     AtlasTarget(5,.70f,.42f),  // spongocoel
     AtlasTarget(6,.67f,.075f)  // osculum
 )
-private val obeliaTargets = listOf(
+private val obeliaColonyTargets = listOf(
     AtlasTarget(0,.33f,.71f),  // hydrocaulus, living colony
     AtlasTarget(1,.50f,.14f),  // feeding hydranth
-    AtlasTarget(2,.67f,.39f),  // gonangium (theca, blastostyle, buds)
-    AtlasTarget(3,.79f,.75f)   // free medusa inset
-    // Planula/settlement are deliberately NOT faked on this colony plate.
+    AtlasTarget(2,.67f,.39f)   // gonangium (theca, blastostyle, buds)
+)
+private val obeliaLifeHistoryTargets = listOf(
+    AtlasTarget(3,.17f,.40f,.12f), // free medusa
+    AtlasTarget(4,.50f,.40f,.12f), // ciliated planula
+    AtlasTarget(5,.83f,.40f,.12f)  // settled young colony
 )
 
 @Composable
@@ -65,7 +68,10 @@ internal fun UnitIIImagePlate(
     fallback: @Composable () -> Unit
 ) {
     val ctx = LocalContext.current
-    val asset = if (sycon) "unit2/sycon_plate.webp" else "unit2/obelia_colony.webp"
+    val lifeHistory = !sycon && progress.roundToInt() >= 3
+    val asset = if (sycon) "unit2/sycon_plate.webp"
+                else if (lifeHistory) "unit2/obelia_lifecycle.webp"
+                else "unit2/obelia_colony.webp"
     val bitmap = remember(ctx,asset) {
         runCatching {
             ctx.assets.open(asset).use { input ->
@@ -86,7 +92,8 @@ internal fun UnitIIImagePlate(
         return
     }
 
-    val targets = if (sycon) syconTargets else obeliaTargets
+    val targets = if (sycon) syconTargets
+                  else if (lifeHistory) obeliaLifeHistoryTargets else obeliaColonyTargets
     var scale by rememberSaveable(asset) { mutableFloatStateOf(1f) }
     var pan by remember(asset) { mutableStateOf(Offset.Zero) }
     val transform = rememberTransformableState { zoomDelta,panDelta,_ ->
