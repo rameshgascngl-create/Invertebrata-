@@ -29,6 +29,18 @@ class NativeUnitIITeachingTest {
     }
     private fun captureRealScreen(scene: String) {
         rule.waitForIdle()
+        // A successful screenshot command is not proof that the anatomy was
+        // actually in the viewport. Reject header-only/mostly clipped captures.
+        val canvasTag=if(scene.startsWith("sycon"))"u2-sycon-canvas" else "u2-obelia-canvas"
+        val plate=rule.onNodeWithTag(canvasTag).fetchSemanticsNode().boundsInRoot
+        val viewport=rule.onRoot().fetchSemanticsNode().boundsInRoot
+        val visible=(minOf(plate.bottom,viewport.bottom-55f)-
+            maxOf(plate.top,viewport.top+55f)).coerceAtLeast(0f)
+        org.junit.Assert.assertTrue(
+            "Anatomy plate not sufficiently visible for screenshot: "+scene+
+                " visible="+visible+" height="+plate.height,
+            visible>=plate.height*.83f
+        )
         val scale = if(context.resources.configuration.fontScale >= 1.95f) "200" else "100"
         val path = "/sdcard/Download/unit2-qa/unit2-" + scale + "-" + scene + ".png"
         val ui = InstrumentationRegistry.getInstrumentation().uiAutomation
@@ -53,6 +65,9 @@ class NativeUnitIITeachingTest {
         }
         rule.onNodeWithTag("u2-lesson-title").assertExists()
         rule.onNodeWithTag("u2-draft-disclosure").assertExists()
+        // The oversized Tamil header can leave the atlas below the viewport.
+        // First advance within the atlas item, then position the plate itself.
+        rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
         rule.onNodeWithTag("u2-sycon-canvas").performScrollTo()
         captureRealScreen("sycon-external")
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()

@@ -242,19 +242,49 @@ private val graphiteDark=Color(0xFF343738)
 private val graphiteMid=Color(0xFF73716C)
 private val graphitePale=Color(0xFFB6AEA0)
 private fun DrawScope.pencilLine(a:Offset,b:Offset,weight:Float=1.8f) {
-    drawLine(graphitePale.copy(alpha=.34f),a+Offset(.7f,-.5f),
-        b+Offset(.4f,.65f),weight*2.35f)
-    drawLine(graphiteDark.copy(alpha=.82f),a,b,weight)
-    drawLine(graphiteMid.copy(alpha=.32f),a+Offset(-.6f,.5f),
-        b+Offset(.5f,-.5f),weight*.75f)
+    // Slightly variable graphite pressure and subpixel tremor along each mark.
+    // Deterministic sampling avoids frame-to-frame sparkle during animation.
+    drawLine(graphitePale.copy(alpha=.32f),a+Offset(.6f,-.5f),
+        b+Offset(.5f,.6f),weight*2.6f)
+    val dx=b.x-a.x;val dy=b.y-a.y
+    val length=sqrt(dx*dx+dy*dy)
+    val count=(length/6f).toInt().coerceIn(1,45)
+    val seed=(a.x*.12f+a.y*.08f).toInt()
+    for(i in 0 until count) {
+        val start=i/count.toFloat()
+        val end=(i+1)/count.toFloat()
+        val tremor=((i*11+seed)%9-4)*.12f
+        val p=Offset(a.x+dx*start+tremor,a.y+dy*start-tremor*.53f)
+        val q=Offset(a.x+dx*end+tremor*.35f,a.y+dy*end+tremor*.20f)
+        val pressure=when(i%7){0->.54f;1->.76f;2->.91f;else->.83f}
+        drawLine(graphiteDark.copy(alpha=pressure),p,q,weight*(.79f+(i%3)*.09f))
+        if(i%8==0)drawLine(graphiteMid.copy(alpha=.31f),
+            p+Offset(.65f,.25f),q+Offset(.65f,.25f),weight*.59f)
+    }
 }
 private fun DrawScope.pencilPath(path:Path,weight:Float=2f) {
-    drawPath(path,graphitePale.copy(alpha=.28f),style=Stroke(width=weight*2.5f))
-    drawPath(path,graphiteDark.copy(alpha=.84f),style=Stroke(width=weight))
-    drawPath(path,graphiteMid.copy(alpha=.30f),style=Stroke(width=weight*.54f))
+    // Broken pressure strokes follow the actual Bezier path; the low-alpha
+    // underdrawing remains legible even at high Android text scaling.
+    drawPath(path,graphitePale.copy(alpha=.35f),style=Stroke(width=weight*2.35f))
+    val measure=androidx.compose.ui.graphics.PathMeasure()
+    measure.setPath(path,false)
+    val length=measure.length
+    if(length<=0f)return
+    val count=(length/6.8f).toInt().coerceIn(1,260)
+    val seed=length.toInt()
+    for(i in 0 until count){
+        val a=measure.getPosition(length*i/count)
+        val b=measure.getPosition(length*(i+1)/count)
+        val shake=((seed+i*17)%11-5)*.095f
+        val pressure=when(i%11){0->.45f;1->.65f;8->.69f;else->.85f}
+        drawLine(graphiteDark.copy(alpha=pressure),
+            a+Offset(shake,-shake*.5f),
+            b+Offset(shake*.32f,shake*.28f),weight*(.83f+(i%3)*.085f))
+    }
 }
 private fun DrawScope.pencilDot(point:Offset,radius:Float=1.35f) {
-    drawCircle(graphiteMid.copy(alpha=.53f),radius,point)
+    drawCircle(graphiteMid.copy(alpha=.46f),radius,point)
+    drawCircle(graphiteDark.copy(alpha=.22f),radius*.43f,point+Offset(.4f,-.24f))
 }
 @Composable
 private fun SyconCanalCanvas(progress:Float,language:AppLanguage,onSelect:(Int)->Unit) {
