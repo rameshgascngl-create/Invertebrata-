@@ -5,6 +5,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -21,7 +22,7 @@ import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.launch
 
 @Composable
-internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selected: String,player: com.gasczoology.invertebratelab.NutritionPlaybackViewModel,onSelect: (String)->Unit,enabled: Boolean,onToggle: ()->Unit) {
+internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selected: String,player: com.gasczoology.invertebratelab.NutritionPlaybackViewModel,onSelect: (String)->Unit,enabled: Boolean,onToggle: ()->Unit,onInspectIntermediate: ()->Unit) {
     val requester=remember { BringIntoViewRequester() };val scope=rememberCoroutineScope()
     val playback=player.state.collectAsState()
     val playing by remember(player) { derivedStateOf {playback.value.playing} }
@@ -30,6 +31,17 @@ internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selecte
         else "Cytoproct section: closed ridge, transient opening, released residues and membrane recovery. Exterior above; cytosol below. Scale and time are not measured. "
     Button(onClick={scope.launch { requester.bringIntoView() }},modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-egestion-plate")) {
         Text(if(language==AppLanguage.TAMIL)"முழு எச்ச வெளியேற்றப் படத்தைக் காண்க" else "View the complete egestion plate")
+    }
+    // Runs the real egestion clock to frame 75/120, holding before
+    // delayed Compose layout or multiline Tamil button events can overshoot.
+    OutlinedButton(onClick=onInspectIntermediate,enabled=enabled,
+        shape=RoundedCornerShape(12.dp),
+        contentPadding=PaddingValues(horizontal=18.dp,vertical=14.dp),
+        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+            .testTag("r19-cytoproct-inspect-midpoint")) {
+        Text(if(language==AppLanguage.TAMIL)
+            "கழிவுவெளியேற்ற இயக்கத்தைத் தொடங்கி இடைநிலையில் நிறுத்து"
+            else "Play and hold a real intermediate egestion frame")
     }
     OutlinedButton(onClick=onToggle,enabled=enabled,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-cytoproct-inline-play-pause")) {
         Text(if(language==AppLanguage.TAMIL) {if(playing)"இடைநிறுத்து" else "இயக்கு"} else {if(playing)"Pause" else "Play"})
