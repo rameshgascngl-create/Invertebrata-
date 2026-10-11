@@ -44,11 +44,15 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-stage-apopyle").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("05 · அப்போபைல்")
-        rule.onNodeWithTag("u2-practice-heading").performScrollTo().assertExists()
+        rule.onNodeWithTag("u2-reader-u2-sycon")
+            .performScrollToNode(hasTestTag("u2-practice-heading"))
+        rule.onNodeWithTag("u2-practice-heading").assertExists()
     }
     @Test fun obeliaDistinguishesFeedingReproductivePolypMedusaAndPlanula() {
         rule.onNodeWithTag("unit-2").performScrollTo().performClick()
-        rule.onNodeWithTag("chapter-u2-obelia").performScrollTo().performClick()
+        rule.onNodeWithTag("native-unit-2")
+            .performScrollToNode(hasTestTag("chapter-u2-obelia"))
+        rule.onNodeWithTag("chapter-u2-obelia").performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("u2-obelia-canvas").fetchSemanticsNodes().isNotEmpty()
         }
@@ -57,7 +61,11 @@ class NativeUnitIITeachingTest {
                 .assertHasClickAction().performClick()
             rule.onNodeWithTag("u2-stage-explanation").assertExists()
         }
-        rule.onNodeWithTag("u2-section-life-history").performScrollTo().assertExists()
-        rule.onNodeWithTag("u2-practice-heading").performScrollTo().assertExists()
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-section-life-history"))
+        rule.onNodeWithTag("u2-section-life-history").assertExists()
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-practice-heading"))
+        rule.onNodeWithTag("u2-practice-heading").assertExists()
     }
 }
