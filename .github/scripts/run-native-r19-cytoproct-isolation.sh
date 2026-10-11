@@ -73,7 +73,7 @@ assert all(cases[0].find(k) is None for k in ('error','failure','skipped')),'NON
 print('EXACTLY_ONE_CYTOPROCT_TAMIL200_TEST_PASSED')
 PY
 adb shell dumpsys connectivity > "$evidence/connectivity-after.txt"
-grep -q 'Active default network: none' "$evidence/connectivity-after.txt" || {result=NETWORK_RECONNECTED;exit 1;}
+grep -q 'Active default network: none' "$evidence/connectivity-after.txt" || { result=NETWORK_RECONNECTED; exit 1; }
 # Must have independently rendered Android screenshots of all three egestion
 # phases, rather than believing XML-only green status.
 adb pull "$device_dir" "$evidence/screenshots-verified" > "$evidence/final-screenshot-pull.txt"
