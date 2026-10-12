@@ -61,7 +61,8 @@ jobs:
                   assert im.width>0 and im.height>0, f"Invalid raster geometry: {file}"
                   assert im.format in ("PNG","WEBP"), f"Non-raster or unsupported image: {file}"
                   assert (file.suffix.lower()==".png" and im.format=="PNG") or (file.suffix.lower()==".webp" and im.format=="WEBP"), f"Image extension/contents mismatch: {file}"
-                  assert im.width>=900 and im.height>=600, f"Insufficient plate dimensions: {file} {im.size}"
+                  if im.width<900 or im.height<600:
+                      print(f"ARTWORK_QUALITY_HOLD={file} dimensions={im.size}; acceptance gate runs independently")
                   print(f"RASTER_ASSET={file} dimensions={im.size} format={im.format}")
           print("RASTER_ONLY_SOURCE_GATE=PASS; ARTWORK_ACADEMIC_APPROVAL=PENDING")
           PY
@@ -86,6 +87,36 @@ jobs:
             fi
           done
           echo "Human anatomy, Tamil review, hotspots and device QA remain PENDING."
+
+  unit2-artwork-quality-gate:
+    needs: compile-kotlin-candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require full-resolution source pencil plates
+        run: |
+          python3 -m venv /tmp/unit2art
+          /tmp/unit2art/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/unit2art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root = Path("native-app/app/src/main/assets/unit2")
+          for stem in ("sycon_plate", "obelia_colony", "obelia_lifecycle"):
+              path = next((root/(stem+extension)
+                           for extension in (".png", ".webp")
+                           if (root/(stem+extension)).exists()), None)
+              assert path is not None, f"Missing mandatory raster master: {stem}"
+              with Image.open(path) as im:
+                  assert im.format in ("PNG","WEBP"), f"Not an actual PNG/WebP: {path}"
+                  assert im.width>=900 and im.height>=600, (
+                      f"REPLACE ARTWORK, NOT UPSCALE: {path} {im.size}; "
+                      "minimum 900x600. Keep Unit II artwork release on HOLD."
+                  )
+                  print(f"ARTWORK_DIMENSIONS_PASS={path}: {im.size}")
+          PY
+          echo "Dimensions alone do not establish scanned-pencil origin or zoological correctness."
+          echo "Human pencil texture, anatomy, leader and Tamil sign-off remain mandatory."
 
   native-unit-two-android:
     needs: compile-kotlin-candidate
