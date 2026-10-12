@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "d009525a3a3c8e86a91ac506960358911c31fc76",
+  "scope": "UNIT_II_SYCON_OBELIA_ONLY",
+  "policy": "Classroom draft / physical-device QA permitted. Academic release prohibited until independently reviewed source imagery, bilingual annotations, hotspot positions and device QA are accepted.",
+  "source_format": "native bitmap PNG/WebP; no schematic fallback; Compose Canvas used only in separate interactive atlas",
+  "plates": [
+    {
+      "id": "sycon_plate",
+      "filename": "sycon_plate.webp",
+      "sha256": "aa7528461dcd02bc444cf58f49757a0c1de3cf2ba89b057876abc85281f34bf1",
+      "width": 1000,
+      "height": 1250,
+      "source_type": "digital_graphite_unverified",
+      "source_documentation": null,
+      "biological_review": [
+        "syconoid wall: incurrent canals distinct from choanocyte-lined radial canals",
+        "prosopyle opens incurrent canal into radial canal lateral wall",
+        "apopyle opens radial canal into spongocoel",
+        "spongocoel is not choanocyte-lined; flagella must not project into central cavity",
+        "ostia → incurrent canal → prosopyle → radial canal → apopyle → spongocoel → osculum",
+        "printed leader endpoints correspond to anatomical openings"
+      ],
+      "hotspot_review": [
+        "ostia",
+        "incurrent canal",
+        "prosopyle",
+        "radial canal",
+        "apopyle",
+        "spongocoel",
+        "osculum"
+      ],
+      "review": {
+        "anatomy_approved": false,
+        "tamil_approved": false,
+        "hotspot_approved": false,
+        "provenance_approved": false,
+        "rights_approved": false
+      },
+      "evidence": []
+    },
+    {
+      "id": "obelia_colony",
+      "filename": "obelia_colony.webp",
+      "sha256": "a4072d35ae5ef51901ffff6dd4d8e8b85caabc172adcea51d179bdf7c5397a93",
+      "width": 1000,
+      "height": 1250,
+      "source_type": "digital_graphite_unverified",
+      "source_documentation": null,
+      "biological_review": [
+        "hydranth is feeding polyp with mouth and tentacles",
+        "gonangium is reproductive zooid, not the gonotheca",
+        "blastostyle supports medusa buds inside protective gonotheca",
+        "hydrocaulus, hydrotheca, coenosarc and hydrorhiza labels refer to correct structures"
+      ],
+      "hotspot_review": [
+        "hydrocaulus",
+        "hydranth",
+        "gonangium"
+      ],
+      "review": {
+        "anatomy_approved": false,
+        "tamil_approved": false,
+        "hotspot_approved": false,
+        "provenance_approved": false,
+        "rights_approved": false
+      },
+      "evidence": []
+    },
+    {
+      "id": "obelia_lifecycle",
+      "filename": "obelia_lifecycle.webp",
+      "sha256": "2ee1ee163a363d2574b3af294cffde4adabf98b0246a031878e046a034ebadf9",
+      "width": 730,
+      "height": 300,
+      "source_type": "digital_graphite_unverified",
+      "source_documentation": null,
+      "biological_review": [
+        "replace low-resolution three-stage strip with full legible pencil plate",
+        "colony → gonangium medusa buds → liberated medusa → gametes → fertilisation/zygote → ciliated planula → settlement → new colony",
+        "avoid implying a hydranth directly transforms into medusa"
+      ],
+      "hotspot_review": [
+        "medusa",
+        "planula",
+        "settled young colony"
+      ],
+      "review": {
+        "anatomy_approved": false,
+        "tamil_approved": false,
+        "hotspot_approved": false,
+        "provenance_approved": false,
+        "rights_approved": false
+      },
+      "evidence": []
+    }
+  ],
+  "physical_device": {
+    "status": "NOT_RUN",
+    "apk_sha256": "780093acfcb5edb88fd6cfaebcce8e530d79466f5daa8435bb9d31a8115a7fc5",
+    "evidence": []
+  },
+  "minimum_legible_resolution": {
+    "width": 900,
+    "height": 600
+  },
+  "no_approval_inferred_from_ci": true
+}
