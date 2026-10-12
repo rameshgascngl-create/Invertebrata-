@@ -86,9 +86,9 @@ internal fun UnitIIImagePlate(
 
     val targets = if (sycon) syconTargets
                   else if (lifeHistory) obeliaLifeHistoryTargets else obeliaColonyTargets
-    var scale by rememberSaveable(asset) { mutableFloatStateOf(1f) }
-    var pan by remember(asset) { mutableStateOf(Offset.Zero) }
-    var plateSize by remember(asset) { mutableStateOf(IntSize.Zero) }
+    var scale by rememberSaveable(stem) { mutableFloatStateOf(1f) }
+    var pan by remember(stem) { mutableStateOf(Offset.Zero) }
+    var plateSize by remember(stem) { mutableStateOf(IntSize.Zero) }
     val transform = rememberTransformableState { zoomDelta,panDelta,_ ->
         val updated=(scale*zoomDelta).coerceIn(1f,4f)
         val limitX=(updated-1f)*plateSize.width*.5f
@@ -125,7 +125,7 @@ internal fun UnitIIImagePlate(
                 )
                 Canvas(
                     Modifier.fillMaxSize()
-                        .pointerInput(asset) {
+                        .pointerInput(stem) {
                             detectTapGestures { click ->
                                 val xx=click.x/size.width.toFloat()
                                 val yy=click.y/size.height.toFloat()
