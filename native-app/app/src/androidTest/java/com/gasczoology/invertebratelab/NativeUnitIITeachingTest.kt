@@ -110,7 +110,7 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-lesson-title").assertExists()
         rule.onNodeWithTag("u2-draft-disclosure").assertExists()
         // Lesson art is a plain decoded bitmap, captured before the interactive atlas.
-        captureLessonPlate("u2-sycon", "u2-sycon-lesson-raster", "sycon-lesson")
+        captureLessonPlate("u2-sycon", "u2-sycon-lesson-raster", "sycon-lesson-tamil")
         rule.onNodeWithTag("u2-reader-u2-sycon")
             .performScrollToNode(hasTestTag("u2-sycon-image-plate"))
         rule.onNodeWithTag("u2-sycon-image-plate").assertExists()
@@ -154,8 +154,8 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("chapter-u2-obelia").performClick()
         awaitReader("u2-obelia")
         // Independent lesson figures are captured before hotspot interaction.
-        captureLessonPlate("u2-obelia", "u2-obelia-colony-lesson-raster", "obelia-colony-lesson")
-        captureLessonPlate("u2-obelia", "u2-obelia-life-lesson-raster", "obelia-life-lesson")
+        captureLessonPlate("u2-obelia", "u2-obelia-colony-lesson-raster", "obelia-colony-lesson-tamil")
+        captureLessonPlate("u2-obelia", "u2-obelia-life-lesson-raster", "obelia-life-lesson-tamil")
         rule.onNodeWithTag("u2-reader-u2-obelia")
             .performScrollToNode(hasTestTag("u2-obelia-image-plate"))
         rule.onNodeWithTag("u2-obelia-image-plate").assertExists()
@@ -190,7 +190,7 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-lesson-title").assertExists()
         rule.onNodeWithTag("u2-draft-disclosure").assertExists()
         // Lesson art is a plain decoded bitmap, captured before the interactive atlas.
-        captureLessonPlate("u2-sycon", "u2-sycon-lesson-raster", "sycon-lesson")
+        captureLessonPlate("u2-sycon", "u2-sycon-lesson-raster", "sycon-lesson-english")
         rule.onNodeWithTag("u2-reader-u2-sycon")
             .performScrollToNode(hasTestTag("u2-sycon-image-plate"))
         rule.onNodeWithTag("u2-sycon-image-plate").assertExists()
@@ -230,8 +230,8 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("chapter-u2-obelia").performClick()
         awaitReader("u2-obelia")
         // Independent lesson figures are captured before hotspot interaction.
-        captureLessonPlate("u2-obelia", "u2-obelia-colony-lesson-raster", "obelia-colony-lesson")
-        captureLessonPlate("u2-obelia", "u2-obelia-life-lesson-raster", "obelia-life-lesson")
+        captureLessonPlate("u2-obelia", "u2-obelia-colony-lesson-raster", "obelia-colony-lesson-english")
+        captureLessonPlate("u2-obelia", "u2-obelia-life-lesson-raster", "obelia-life-lesson-english")
         rule.onNodeWithTag("u2-reader-u2-obelia")
             .performScrollToNode(hasTestTag("u2-obelia-image-plate"))
         rule.onNodeWithTag("u2-obelia-image-plate").assertExists()
