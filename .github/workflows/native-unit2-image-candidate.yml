@@ -3,6 +3,7 @@ name: Unit II scanned atlas candidate - native compile and real screenshots
   push:
     branches:
       - native/u2-scanned-plate-candidate-20261011
+      - native/u2-pencil-lesson-separation-20261012
   workflow_dispatch:
 
 permissions:
@@ -44,6 +45,9 @@ jobs:
           image_ui=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIImagePlate.kt").read_text()
           assert "SyconCanalCanvas" not in chapter and "ObeliaColonyCanvas" not in chapter, "Legacy Canvas anatomy present"
           assert "fallback()" not in image_ui and "u2-raster-bitmap-visible" in image_ui, "Raster-only adapter not enforced"
+          assert "u2-sycon-lesson-raster" in image_ui and "u2-obelia-life-lesson-raster" in image_ui, "Static pencil-style lesson bitmaps not declared"
+          assert "u2-pencil-lesson-section" in chapter and "u2-interactive-atlas" in chapter, "Static lesson and interactive sections not separate"
+          assert "UnitIILessonPencilPlate" in chapter and "UnitIIImagePlate" in chapter, "Lesson and interactive composables must differ"
           assert '"$base.png" in available' in image_ui, "PNG preference is missing"
           for name in ("sycon_plate","obelia_colony","obelia_lifecycle"):
               file=next((root/(name+ext) for ext in (".png",".webp") if (root/(name+ext)).exists()),None)
