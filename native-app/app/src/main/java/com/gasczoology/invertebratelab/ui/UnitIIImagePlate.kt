@@ -34,8 +34,8 @@ import kotlin.math.roundToInt
 /**
  * Image-backed Unit II atlas adapter, isolated from the validated Unit II lessons/A5 data.
  * Assets are offline images at assets/unit2/sycon_plate.webp and obelia_colony.webp.
- * An image missing from the APK is NOT an accepted atlas: the caller renders
- * its prior schematic, and the screenshot acceptance test must fail explicitly.
+ * A missing raster file is a hard, visible teaching-plate defect. It must never
+ * silently fall back to programmatic Canvas/SVG anatomy. Android tests fail explicitly.
  *
  * Hotspots are in image-relative coordinates, not arbitrary nearest-point taps.
  * The atlas image and active focus scale/pan together; stage buttons remain native.
@@ -66,8 +66,7 @@ internal fun UnitIIImagePlate(
     sycon: Boolean,
     progress: Float,
     language: AppLanguage,
-    onSelect: (Int) -> Unit,
-    fallback: @Composable () -> Unit
+    onSelect: (Int) -> Unit
 ) {
     val ctx = LocalContext.current
     val lifeHistory = !sycon && progress.roundToInt() >= 3
@@ -82,12 +81,11 @@ internal fun UnitIIImagePlate(
         }.getOrNull()
     }
     if (bitmap == null) {
-        fallback()
         Text(
             if (language == AppLanguage.TAMIL)
-                "அங்கீகரிக்கப்பட்ட படத்தாள் APK-இல் இல்லை; முந்தைய விளக்க வரைபடம் காட்டப்படுகிறது."
-            else "Pencil-style atlas candidate absent from APK; showing the previous schematic.",
-            modifier=Modifier.testTag("u2-atlas-asset-missing"),
+                "பொருத்தமான பென்சில் வரைபடக் கோப்பு இல்லை. மாற்றாக SVG அல்லது Canvas வரைபடம் காட்டப்படாது."
+            else "Required labelled pencil plate is missing or unreadable. Raster-only rule: no SVG or Canvas substitute.",
+            modifier=Modifier.fillMaxWidth().testTag("u2-atlas-asset-missing"),
             color=MaterialTheme.colorScheme.error,
             style=MaterialTheme.typography.bodySmall
         )
@@ -125,8 +123,14 @@ internal fun UnitIIImagePlate(
                 translationX=pan.x
                 translationY=pan.y
             }){
-                Image(bitmap=bitmap,contentDescription=null,
-                    modifier=Modifier.fillMaxSize(),contentScale=ContentScale.FillBounds)
+                Image(
+                    bitmap=bitmap,
+                    contentDescription=if(sycon) "Labelled Sycon pencil plate image"
+                        else if(lifeHistory) "Labelled Obelia life-history pencil plate image"
+                        else "Labelled Obelia colony pencil plate image",
+                    modifier=Modifier.fillMaxSize().testTag("u2-raster-bitmap-visible"),
+                    contentScale=ContentScale.FillBounds
+                )
                 Canvas(
                     Modifier.fillMaxSize()
                         .pointerInput(asset) {
