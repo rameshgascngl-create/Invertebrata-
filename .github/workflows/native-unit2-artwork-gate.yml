@@ -3,6 +3,7 @@ name: Unit II academic artwork integrity and human release gate
   push:
     branches:
       - native/u2-academic-artwork-gate-20261012
+      - native/u2-revised-pencil-plates-20261012
   workflow_dispatch:
     inputs:
       gate:
@@ -23,6 +24,11 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - name: Install Tamil caption font
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-core
+          test -f /usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf
       - name: Install pinned image decoder
         run: |
           python3 -m venv /tmp/u2-gate
@@ -31,6 +37,11 @@ jobs:
         run: |
           /tmp/u2-gate/bin/python ci/repair_unit2_plate_masters.py
           /tmp/u2-gate/bin/python ci/refine_unit2_sycon_prosopyle.py
+          if [ "${GITHUB_REF_NAME}" = "native/u2-revised-pencil-plates-20261012" ]; then
+            mkdir -p /tmp/u2-source-pixels
+            /tmp/u2-gate/bin/python ci/rebuild_unit2_pencil_masters.py native-app/app/src/main/assets/unit2 /tmp/u2-source-pixels
+            cp /tmp/u2-source-pixels/*.webp native-app/app/src/main/assets/unit2/
+          fi
           sha256sum native-app/app/src/main/assets/unit2/*.webp
       - name: Test that engineering and academic release states cannot be confused
         run: /tmp/u2-gate/bin/python -m unittest discover -s ci -p test_unit2_artwork_acceptance.py -v

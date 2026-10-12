@@ -63,7 +63,7 @@ for scale in 1.0 2.0;do
 from pathlib import Path
 import sys,xml.etree.ElementTree as ET
 cases=[c for p in Path(sys.argv[1]).rglob('TEST-*.xml') for c in ET.parse(p).getroot().iter('testcase')]
-assert len(cases)==4,len(cases)
+assert len(cases)==6,len(cases)
 assert all(c.find(x) is None for c in cases for x in ('failure','error','skipped'))
 PY
 done

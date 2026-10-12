@@ -8,10 +8,10 @@
     {
       "id": "sycon_plate",
       "filename": "sycon_plate.webp",
-      "sha256": "aa7528461dcd02bc444cf58f49757a0c1de3cf2ba89b057876abc85281f34bf1",
-      "width": 1000,
-      "height": 1250,
-      "source_type": "digital_graphite_unverified",
+      "sha256": "2d28b10455bd932081af318cc6100f371c2b30f8be9a800ef6da18fcc5378524",
+      "width": 1400,
+      "height": 1800,
+      "source_type": "digital_graphite_reconstruction_unverified",
       "source_documentation": null,
       "biological_review": [
         "syconoid wall: incurrent canals distinct from choanocyte-lined radial canals",
@@ -22,13 +22,13 @@
         "printed leader endpoints correspond to anatomical openings"
       ],
       "hotspot_review": [
-        "ostia",
-        "incurrent canal",
-        "prosopyle",
-        "radial canal",
-        "apopyle",
-        "spongocoel",
-        "osculum"
+        "ostia x=.559 y=.306",
+        "incurrent canal x=.611 y=.300",
+        "prosopyle x=.694 y=.351",
+        "radial canal x=.741 y=.386",
+        "apopyle x=.816 y=.344",
+        "spongocoel x=.879 y=.401",
+        "osculum x=.866 y=.142"
       ],
       "review": {
         "anatomy_approved": false,
@@ -42,10 +42,10 @@
     {
       "id": "obelia_colony",
       "filename": "obelia_colony.webp",
-      "sha256": "a4072d35ae5ef51901ffff6dd4d8e8b85caabc172adcea51d179bdf7c5397a93",
-      "width": 1000,
-      "height": 1250,
-      "source_type": "digital_graphite_unverified",
+      "sha256": "19905cef51d7f89538233d1b833c4bb5702974ff3520fadb34b9745a361dce11",
+      "width": 1400,
+      "height": 1830,
+      "source_type": "digital_graphite_reconstruction_unverified",
       "source_documentation": null,
       "biological_review": [
         "hydranth is feeding polyp with mouth and tentacles",
@@ -54,9 +54,9 @@
         "hydrocaulus, hydrotheca, coenosarc and hydrorhiza labels refer to correct structures"
       ],
       "hotspot_review": [
-        "hydrocaulus",
-        "hydranth",
-        "gonangium"
+        "hydrocaulus x=.475 y=.570",
+        "hydranth x=.520 y=.210",
+        "gonangium x=.600 y=.360"
       ],
       "review": {
         "anatomy_approved": false,
@@ -70,20 +70,20 @@
     {
       "id": "obelia_lifecycle",
       "filename": "obelia_lifecycle.webp",
-      "sha256": "2ee1ee163a363d2574b3af294cffde4adabf98b0246a031878e046a034ebadf9",
-      "width": 730,
-      "height": 300,
-      "source_type": "digital_graphite_unverified",
+      "sha256": "a906e2a72bfb47fabf3ac3a43c10e87b04edc8b2d5271ae30b4e5ee9e9114cba",
+      "width": 1400,
+      "height": 1990,
+      "source_type": "digital_graphite_reconstruction_unverified",
       "source_documentation": null,
       "biological_review": [
-        "replace low-resolution three-stage strip with full legible pencil plate",
+        "Eight-panel replacement is present; independent morphology and pixel-legibility approval still pending",
         "colony → gonangium medusa buds → liberated medusa → gametes → fertilisation/zygote → ciliated planula → settlement → new colony",
         "avoid implying a hydranth directly transforms into medusa"
       ],
       "hotspot_review": [
-        "medusa",
-        "planula",
-        "settled young colony"
+        "medusa x=.251 y=.415",
+        "planula x=.746 y=.627",
+        "settlement x=.247 y=.840"
       ],
       "review": {
         "anatomy_approved": false,
@@ -97,12 +97,15 @@
   ],
   "physical_device": {
     "status": "NOT_RUN",
-    "apk_sha256": "780093acfcb5edb88fd6cfaebcce8e530d79466f5daa8435bb9d31a8115a7fc5",
+    "apk_sha256": null,
     "evidence": []
   },
   "minimum_legible_resolution": {
     "width": 900,
     "height": 600
   },
-  "no_approval_inferred_from_ci": true
+  "no_approval_inferred_from_ci": true,
+  "replacement_candidate_branch": "native/u2-revised-pencil-plates-20261012",
+  "reconstruction_script": "ci/rebuild_unit2_pencil_masters.py",
+  "reconstruction_evidence": "Kotlin CI generated actual source WebP files (not hand-scanned); academic review remains unapproved"
 }
