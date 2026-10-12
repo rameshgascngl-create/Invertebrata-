@@ -85,6 +85,13 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-external")
+        // Source-master prosopyle: (569,724) / (1000,1250). At both
+        // Android font scales, direct image tap must select Tamil stage 03.
+        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.569f, height*.5792f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("03 · புரோசோபைல்")
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
             .assertHasClickAction().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
@@ -145,7 +152,7 @@ class NativeUnitIITeachingTest {
         // Three disjoint, anatomy-directed hit targets on the image itself.
         // Stage labels remain source-authored and the raster is still DRAFT.
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.584f, height*.594f))
+            click(androidx.compose.ui.geometry.Offset(width*.569f, height*.5792f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("03 · Prosopyle")
