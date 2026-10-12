@@ -42,23 +42,23 @@ import kotlin.math.roundToInt
  */
 private data class AtlasTarget(val stage: Int, val x: Float, val y: Float, val radius: Float = .085f)
 private val syconTargets = listOf(
-    AtlasTarget(0,.30f,.35f),       // ostia, external view
-    AtlasTarget(1,.56f,.61f,.060f), // between radial chamber levels: incurrent passage
-    AtlasTarget(2,.595f,.6008f,.028f), // PROVISIONAL prosopyle in lateral radial wall (595,751); outer radial tip remains blind
-    AtlasTarget(3,.645f,.540f,.043f), // choanocyte-lined radial canal
-    AtlasTarget(4,.648f,.494f,.043f), // PROVISIONAL apopyle at radial outlet
-    AtlasTarget(5,.713f,.324f,.085f), // spongocoel (not a filtering chamber)
-    AtlasTarget(6,.67f,.075f)       // osculum
+    AtlasTarget(0, .559f, .306f, .030f), // dermal ostium in new master panel B
+    AtlasTarget(1, .611f, .300f, .028f), // pinacocyte-lined incurrent canal
+    AtlasTarget(2, .694f, .351f, .025f), // entry prosopyle at lateral radial-canal wall
+    AtlasTarget(3, .741f, .386f, .031f), // choanocyte-lined radial canal lumen
+    AtlasTarget(4, .816f, .344f, .030f), // apopyle: radial outlet to spongocoel
+    AtlasTarget(5, .879f, .401f, .040f), // spongocoel, no choanocytes
+    AtlasTarget(6, .866f, .142f, .040f)  // terminal osculum
 )
 private val obeliaColonyTargets = listOf(
-    AtlasTarget(0,.33f,.71f),  // hydrocaulus, living colony
-    AtlasTarget(1,.50f,.14f),  // feeding hydranth
-    AtlasTarget(2,.67f,.39f)   // gonangium (theca, blastostyle, buds)
+    AtlasTarget(0, .475f, .570f, .060f), // living hydrocaulus/stem
+    AtlasTarget(1, .520f, .210f, .075f), // hydranth with mouth and tentacles
+    AtlasTarget(2, .600f, .360f, .060f)  // gonangium medusa buds within gonotheca
 )
 private val obeliaLifeHistoryTargets = listOf(
-    AtlasTarget(3,.17f,.40f,.12f), // free medusa
-    AtlasTarget(4,.50f,.40f,.12f), // ciliated planula
-    AtlasTarget(5,.83f,.40f,.12f)  // settled young colony
+    AtlasTarget(3, .251f, .415f, .080f), // FREE MEDUSA, third numbered panel
+    AtlasTarget(4, .746f, .627f, .080f), // CILIATED PLANULA, sixth panel
+    AtlasTarget(5, .247f, .840f, .080f)  // SETTLEMENT, seventh panel
 )
 
 /**
