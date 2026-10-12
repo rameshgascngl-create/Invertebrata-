@@ -143,10 +143,10 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-external")
-        // Source-master prosopyle: (595,751) / (1000,1250). At both
+        // Replacement master prosopyle: (.694,.351) / (1400,1800). At both
         // Android font scales, direct image tap must select Tamil stage 03.
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.595f, height*.6008f))
+            click(androidx.compose.ui.geometry.Offset(width*.694f, height*.351f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("03 · புரோசோபைல்")
@@ -224,20 +224,20 @@ class NativeUnitIITeachingTest {
         captureRealScreen("sycon-english")
         rule.onNodeWithTag("u2-anatomical-correction").performScrollTo()
             .assertTextContains("prosopyle", substring = true, ignoreCase = true)
-        // Three disjoint, anatomy-directed hit targets on the image itself.
+        // Three separate entry/exit/cavity hit targets on the re-authored source pixels.
         // Stage labels remain source-authored and the raster is still DRAFT.
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.595f, height*.6008f))
+            click(androidx.compose.ui.geometry.Offset(width*.694f, height*.351f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("03 · Prosopyle")
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.648f, height*.494f))
+            click(androidx.compose.ui.geometry.Offset(width*.816f, height*.344f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("05 · Apopyle")
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.713f, height*.324f))
+            click(androidx.compose.ui.geometry.Offset(width*.879f, height*.401f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Spongocoel")
@@ -266,7 +266,7 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-english")
         rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.50f, height*.14f))
+            click(androidx.compose.ui.geometry.Offset(width*.520f, height*.210f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("02 · Feeding hydranth")
@@ -275,5 +275,17 @@ class NativeUnitIITeachingTest {
             .assertTextEquals("05 · Planula larva")
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-planula-english")
+        // Direct canvas tap now targets the printed planula figure in the full
+        // eight-stage raster (not the previous three-stage low-resolution strip).
+        rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.746f, height*.627f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("05 · Planula larva")
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.247f, height*.840f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("06 · Settlement and new colony")
     }
 }
