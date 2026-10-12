@@ -55,7 +55,7 @@ private val obeliaColonyTargets = listOf(
 private val obeliaLifeHistoryTargets = listOf(
     AtlasTarget(3,.66f,.70f,.09f),  // free medusae in historical scan (right lower region)
     AtlasTarget(4,.26f,.68f,.09f),  // ciliated planula in historical scan (left lower region)
-    AtlasTarget(5,.47f,.92f,.08f)  // settlement/new colony is identified in stage legend;
+    AtlasTarget(5,.794f,.9186f,.060f) // settlement/new colony points to stage 7 legend;
                                   // separate morphology panel still requires academic review
 )
 

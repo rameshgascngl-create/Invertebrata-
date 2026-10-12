@@ -199,5 +199,29 @@ class NativeUnitIITeachingTest {
             .assertTextEquals("05 · Planula larva")
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-planula-english")
+        // This must be the *new high-resolution PNG*, not the superseded
+        // 730x300 WebP strip or a Compose fallback.
+        context.assets.open("unit2/obelia_lifecycle.png").use { stream ->
+            val info=android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds=true }
+            BitmapFactory.decodeStream(stream,null,info)
+            org.junit.Assert.assertEquals("image/png",info.outMimeType)
+            org.junit.Assert.assertEquals(2200,info.outWidth)
+            org.junit.Assert.assertEquals(3440,info.outHeight)
+        }
+        rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.66f,height*.70f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("04 · Free medusa")
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.26f,height*.68f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("05 · Planula larva")
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.794f,height*.9186f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("06 · Settlement and new colony")
     }
 }
