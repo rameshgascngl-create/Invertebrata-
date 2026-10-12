@@ -32,8 +32,29 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: unit2-built-webp-masters
-          path: native-app/app/src/main/assets/unit2/*.webp
+          path: native-app/app/src/main/assets/unit2/*
           if-no-files-found: error
+      - name: Enforce Unit II raster-only artwork contract
+        run: |
+          /tmp/u2pillow/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root=Path("native-app/app/src/main/assets/unit2")
+          chapter=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIITeachingChapter.kt").read_text()
+          image_ui=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIImagePlate.kt").read_text()
+          assert "SyconCanalCanvas" not in chapter and "ObeliaColonyCanvas" not in chapter, "Legacy Canvas anatomy present"
+          assert "fallback()" not in image_ui and "u2-raster-bitmap-visible" in image_ui, "Raster-only adapter not enforced"
+          assert '"$base.png" in available' in image_ui, "PNG preference is missing"
+          for name in ("sycon_plate","obelia_colony","obelia_lifecycle"):
+              file=next((root/(name+ext) for ext in (".png",".webp") if (root/(name+ext)).exists()),None)
+              assert file is not None, f"Missing labelled raster plate: {name}"
+              with Image.open(file) as im:
+                  im.verify()
+              with Image.open(file) as im:
+                  assert im.width>=900 and im.height>=600, f"Low-resolution anatomy plate: {file} ({im.size})"
+                  print(f"RASTER_ASSET={file} dimensions={im.size} format={im.format}")
+          print("RASTER_ONLY_SOURCE_GATE=PASS; ARTWORK_ACADEMIC_APPROVAL=PENDING")
+          PY
       - name: Source and JVM compile gate
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - name: Preserve corrected source master evidence
@@ -41,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: unit2-restored-source-webp-candidate
-          path: native-app/app/src/main/assets/unit2/*.webp
+          path: native-app/app/src/main/assets/unit2/*
           if-no-files-found: error
       - name: Record explicit image-asset blocker
         run: |
