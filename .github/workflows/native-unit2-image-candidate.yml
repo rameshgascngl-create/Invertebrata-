@@ -107,15 +107,11 @@ jobs:
           name: unit2-corrected-plate-device-qa-debug-apk
           path: native-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-      - name: Promote native image masters only after Android acceptance
-        if: success() && github.ref_name == 'native/u2-scanned-plate-candidate-20261011'
+      - name: Record image promotion hold — independent academic/device gates
+        if: always()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add native-app/app/src/main/assets/unit2/sycon_plate.webp native-app/app/src/main/assets/unit2/obelia_colony.webp
-          if ! git diff --cached --quiet; then
-            git commit -m "assets(Unit II): replace underlying Sycon and Obelia masters after screenshot QA"
-            git push origin "HEAD:refs/heads/native/u2-scanned-plate-candidate-20261011"
-          else
-            echo "Already source-integrated: no binary changes."
-          fi
+          echo "Unit II engineering evidence is not an artwork acceptance decision."
+          echo "HOLD: verify Sycon prosopyle/apopyle aperture locations on source image."
+          echo "HOLD: verify Obelia gonangium, gonotheca and medusa-bud details."
+          echo "HOLD: physical-device touch, TalkBack, offline TTS and Tamil review."
+          echo "No workflow may automatically commit or promote provisional WebP images."
