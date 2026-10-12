@@ -42,9 +42,27 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag(plateTag).performScrollTo()
         rule.onNodeWithTag(plateTag).assertExists()
         rule.onNodeWithTag("u2-lesson-raster-missing").assertDoesNotExist()
+        // Bring-into-view alone aligns one image edge to the viewport. Correct
+        // the alignment with a short real scroll gesture so both edges clear
+        // Android system-bar regions. Do not weaken the 98% visibility rule.
+        val viewport = rule.onRoot().fetchSemanticsNode().boundsInRoot
+        for (attempt in 0 until 4) {
+            rule.waitForIdle()
+            val bounds = rule.onNodeWithTag(plateTag).fetchSemanticsNode().boundsInRoot
+            when {
+                bounds.top < viewport.top + 65f ->
+                    rule.onNodeWithTag(readerTag).performTouchInput {
+                        swipeDown(startY = height * .42f, endY = height * .54f)
+                    }
+                bounds.bottom > viewport.bottom - 100f ->
+                    rule.onNodeWithTag(readerTag).performTouchInput {
+                        swipeUp(startY = height * .63f, endY = height * .50f)
+                    }
+                else -> break
+            }
+        }
         rule.waitForIdle()
         val plate = rule.onNodeWithTag(plateTag).fetchSemanticsNode().boundsInRoot
-        val viewport = rule.onRoot().fetchSemanticsNode().boundsInRoot
         val visible = (minOf(plate.bottom, viewport.bottom - 95f) -
             maxOf(plate.top, viewport.top + 55f)).coerceAtLeast(0f)
         org.junit.Assert.assertTrue(
