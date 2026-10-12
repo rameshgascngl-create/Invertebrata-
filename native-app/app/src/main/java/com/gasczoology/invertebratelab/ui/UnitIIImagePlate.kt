@@ -61,6 +61,69 @@ private val obeliaLifeHistoryTargets = listOf(
     AtlasTarget(5,.83f,.40f,.12f)  // settled young colony
 )
 
+/**
+ * A lesson plate is a plain bitmap, visually independent of the interactive atlas.
+ * No hotspots, Canvas, SVG, dynamic labels, arrows or touch-target overlays.
+ * Artwork is pencil-style raster; its physical drawing provenance and anatomy
+ * are NOT certified until the separate academic gate is signed off.
+ */
+@Composable
+internal fun UnitIILessonPencilPlate(
+    sycon: Boolean,
+    lifeHistory: Boolean = false,
+    language: AppLanguage
+) {
+    val ctx = LocalContext.current
+    val base = if (sycon) "sycon_plate"
+               else if (lifeHistory) "obelia_lifecycle"
+               else "obelia_colony"
+    val available = remember(ctx) {
+        runCatching { ctx.assets.list("unit2")?.toSet().orEmpty() }.getOrDefault(emptySet())
+    }
+    val asset = when {
+        "$base.png" in available -> "unit2/$base.png"
+        "$base.webp" in available -> "unit2/$base.webp"
+        else -> "unit2/$base.png"
+    }
+    val bitmap = remember(ctx, asset) {
+        runCatching {
+            ctx.assets.open(asset).use { input ->
+                BitmapFactory.decodeStream(input)?.asImageBitmap()
+            }
+        }.getOrNull()
+    }
+    if (bitmap == null) {
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "பாடத்திற்கான பென்சில் பாணி படக்கோப்பு இல்லை. மாற்றுப் படம் காட்டப்படாது."
+            else "Lesson pencil-style raster plate missing or unreadable; no schematic substitute.",
+            modifier = Modifier.fillMaxWidth().testTag("u2-lesson-raster-missing"),
+            color = MaterialTheme.colorScheme.error
+        )
+        return
+    }
+    Image(
+        bitmap = bitmap,
+        contentDescription = when {
+            sycon -> "Lesson raster illustration of Sycon external and canal-system anatomy"
+            lifeHistory -> "Lesson raster illustration of Obelia life-history stages"
+            else -> "Lesson raster illustration of Obelia colonial morphology"
+        },
+        modifier = Modifier.fillMaxWidth()
+            .aspectRatio(bitmap.width.toFloat() / bitmap.height)
+            .clip(RoundedCornerShape(8.dp))
+            .background(Color.White)
+            .testTag(
+                when {
+                    sycon -> "u2-sycon-lesson-raster"
+                    lifeHistory -> "u2-obelia-life-lesson-raster"
+                    else -> "u2-obelia-colony-lesson-raster"
+                }
+            ),
+        contentScale = ContentScale.FillBounds
+    )
+}
+
 @Composable
 internal fun UnitIIImagePlate(
     sycon: Boolean,

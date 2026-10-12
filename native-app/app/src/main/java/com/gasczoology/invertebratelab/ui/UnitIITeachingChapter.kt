@@ -78,23 +78,61 @@ internal fun UnitIITeachingChapter(
                     "படவிளக்கப் பாட வரைவு · ஆதார இணைப்புகள் உள்ளன; அறிவியல், தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."),
                     modifier=Modifier.testTag("u2-draft-disclosure"))
                 Text(tr(language,
-                    "Read the explanation, inspect the original diagram, and only then answer the revision questions.",
-                    "முதலில் விளக்கத்தைப் படித்து அசல் படத்தை ஆராய்க; அதன்பின் பயிற்சி வினாக்களைப் படிக்கவும்."))
+                    "Inspect the separate lesson raster figure, explore the interactive anatomy if useful, and then answer the revision questions.",
+                    "தனியாக உள்ள பாடப் படத்தை ஆராய்ந்து, தேவையெனில் தொடுதிறன் உடற்கூறு படத்தைப் பயன்படுத்தி, பின்னர் பயிற்சி வினாக்களுக்குப் பதிலளிக்கவும்."))
+            }
+        }
+        if (stages.isNotEmpty()) item(key = "lesson-pencil-figures") {
+            Column(
+                modifier = Modifier.fillMaxWidth().testTag("u2-pencil-lesson-section"),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text(
+                    tr(language, "LESSON ILLUSTRATIONS · PENCIL-STYLE RASTER PLATES",
+                        "பாட விளக்கப் படங்கள் · பென்சில் பாணி படக்கோப்புகள்"),
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.semantics { heading() }
+                )
+                Text(
+                    tr(language,
+                        "These are the lesson's static raster figures. They contain no dynamic SVG, Canvas anatomy or interactive hotspot overlay. Drawing provenance and scientific approval are still pending.",
+                        "இவை பாடத்திற்கான நிலையான படங்கள். இவற்றின் மீது SVG, Canvas அல்லது தொடுதிறன் குறியீடுகள் சேர்க்கப்படவில்லை. படங்களின் மூலம் மற்றும் அறிவியல் ஒப்புதல் இன்னும் நிலுவையில் உள்ளன."),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Card(colors = CardDefaults.cardColors(containerColor = parchment)) {
+                    Column(Modifier.padding(8.dp)) {
+                        UnitIILessonPencilPlate(sycon = sycon, language = language)
+                    }
+                }
+                if (obelia) {
+                    Text(
+                        tr(language, "Obelia · separate life-history lesson figure",
+                            "ஒபீலியா · தனி வாழ்க்கைச் சுழற்சிப் பாடப் படம்"),
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Card(colors = CardDefaults.cardColors(containerColor = parchment)) {
+                        Column(Modifier.padding(8.dp)) {
+                            UnitIILessonPencilPlate(
+                                sycon = false, lifeHistory = true, language = language
+                            )
+                        }
+                    }
+                }
             }
         }
         if(stages.isNotEmpty()) item(key="interactive-atlas"){
             Column(verticalArrangement=Arrangement.spacedBy(10.dp),
                 modifier=Modifier.fillMaxWidth().testTag("u2-interactive-atlas")) {
                 Text(tr(language,
-                    if(sycon)"Sycon · original canal-system cross-section"
-                    else "Obelia · colony and life-history atlas",
-                    if(sycon)"சைக்கான் · அசல் நீர்க் கால்வாய் வெட்டுப் படம்"
-                    else "ஒபீலியா · கூட்டும் வாழ்க்கைச் சுழற்சிப் படமும்"),
+                    if(sycon)"INTERACTIVE ANATOMY · Sycon canal-system hotspots"
+                    else "INTERACTIVE ANATOMY · Obelia colony and life history",
+                    if(sycon)"தொடுதிறன் உடற்கூறு · சைக்கான் நீர்க் கால்வாய்கள்"
+                    else "தொடுதிறன் உடற்கூறு · ஒபீலியா கூட்டு மற்றும் வாழ்க்கைச் சுழற்சி"),
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics{heading()})
                 Text(tr(language,
-                    "Schematic—not to scale. Select a numbered stage, or touch the marked plate.",
-                    "விளக்க வரைபடம்—அளவுப்படி அல்ல. எண்ணிட்ட படிநிலையைத் தேர்க அல்லது படத்தில் தொடுக."))
+                    "This is a separate interactive hotspot view of the raster plate; only this panel adds native Canvas touch targets. Not to scale. Select a stage or tap the image.",
+                    "இது படக்கோப்பின் தனி தொடுதிறன் காட்சி; இந்தப் பகுதியில் மட்டுமே Canvas தொடு குறியீடுகள் உள்ளன. அளவுப்படி அல்ல. படிநிலையைத் தேர்க அல்லது படத்தில் தொடுக."))
                 val p by animateFloatAsState(targetValue=index.toFloat(),
                     animationSpec=tween(durationMillis=600),label="Unit II teaching stage")
                 Card(colors=CardDefaults.cardColors(containerColor=parchment)) {
@@ -173,8 +211,8 @@ internal fun UnitIITeachingChapter(
             Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
                 Text(tr(language,"References and evidence limits","மேற்கோள்களும் ஆதார வரம்புகளும்"),
                     style=MaterialTheme.typography.titleMedium,modifier=Modifier.semantics{heading()})
-                Text(tr(language,"All diagrams are explanatory original artwork. Slide photographs, full-paper anatomical review and human Tamil approval remain pending.",
-                    "எல்லாப் படங்களும் அசல் விளக்க வரைபடங்கள். நுண்ணோக்கிப் படங்கள், முழு ஆய்வுக் கட்டுரை மதிப்பாய்வு, தமிழ் நிபுணர் ஒப்புதல் ஆகியவை நிலுவையில் உள்ளன."))
+                Text(tr(language,"Lesson raster illustrations and interactive Canvas hotspots are separate. Authentic hand-scanned drawing provenance, scientific review and human Tamil approval remain pending.",
+                    "பாடத்தின் படக்கோப்புகளும் தொடுதிறன் Canvas குறியீடுகளும் தனித்தனியாக உள்ளன. உண்மையான கையால் வரையப்பட்ட படத்தின் மூலம், அறிவியல் மதிப்பாய்வு, தமிழ் நிபுணர் ஒப்புதல் ஆகியவை நிலுவையில் உள்ளன."))
                 lesson.sections.flatMap{it.scientificSources}.distinct().forEach{Text(it)}
             }
         }
