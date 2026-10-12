@@ -20,7 +20,8 @@ jobs:
           /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
           /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
-          sha256sum native-app/app/src/main/assets/unit2/*.webp
+          /tmp/u2pillow/bin/python ci/build_obelia_1933_lifecycle_png.py
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -98,6 +99,7 @@ jobs:
         run: |
           python3 -m venv /tmp/unit2art
           /tmp/unit2art/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/unit2art/bin/python ci/build_obelia_1933_lifecycle_png.py
           /tmp/unit2art/bin/python - <<'PY'
           from pathlib import Path
           from PIL import Image
@@ -130,7 +132,8 @@ jobs:
           /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
           /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
-          sha256sum native-app/app/src/main/assets/unit2/*.webp
+          /tmp/u2pillow/bin/python ci/build_obelia_1933_lifecycle_png.py
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

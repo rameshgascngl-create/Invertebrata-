@@ -57,3 +57,23 @@ Manual check of anatomical pathways, leader-line endpoints, bilingual
 labels, authentic pencil appearance, zoom/rotation/TalkBack, offline audio,
 and physical handset behavior is still mandatory. A green emulator
 or bitmap source check alone is not a final release authorization.
+
+## Obelia life-cycle scanned artwork candidate — bibliography and limitations
+
+The previous 730×300 three-stage strip is NOT an accepted academic image.
+A candidate workflow now reconstructs \`unit2/obelia_lifecycle.png\` from the
+unresized original 1584×2818 historical line-drawn zoology plate:
+
+* Buchanan, J. W. (1933), *Elements of Biology*, Fig. 176.
+* Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Elements_of_biology,_with_special_reference_to_their_r%C3%B4le_in_the_lives_of_animals_(1933)_(21230103582).jpg
+* Origin: Internet Archive Book Images / MBLWHOI Library.
+* Rights display on Commons: **no known copyright restrictions** (review
+  locally applicable copyright before any public store release).
+
+The image is generated at build time into native Android assets, and drawn
+organism lines come from the original scan rather than SVG paths or Compose
+primitives. Any supplementary stage captions are below—not over—the scan.
+Bilingual app explanations remain native Compose text. **The historical source
+does NOT independently provide a close-up illustration of settled juvenile
+morphology; that subplate still requires academically reviewed original art.**
+Passing asset dimensions does not close the academic review gate.

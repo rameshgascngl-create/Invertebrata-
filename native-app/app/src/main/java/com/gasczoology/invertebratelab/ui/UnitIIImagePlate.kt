@@ -53,9 +53,10 @@ private val obeliaColonyTargets = listOf(
     AtlasTarget(2,.67f,.39f)   // gonangium (theca, blastostyle, buds)
 )
 private val obeliaLifeHistoryTargets = listOf(
-    AtlasTarget(3,.17f,.40f,.12f), // free medusa
-    AtlasTarget(4,.50f,.40f,.12f), // ciliated planula
-    AtlasTarget(5,.83f,.40f,.12f)  // settled young colony
+    AtlasTarget(3,.66f,.70f,.09f),  // free medusae in historical scan (right lower region)
+    AtlasTarget(4,.26f,.68f,.09f),  // ciliated planula in historical scan (left lower region)
+    AtlasTarget(5,.47f,.92f,.08f)  // settlement/new colony is identified in stage legend;
+                                  // separate morphology panel still requires academic review
 )
 
 @Composable
