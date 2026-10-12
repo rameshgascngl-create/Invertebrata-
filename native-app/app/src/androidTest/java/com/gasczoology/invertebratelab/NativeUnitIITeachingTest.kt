@@ -288,4 +288,54 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Settlement and new colony")
     }
+
+    /**
+     * Whole-unit reader regression: all nine native Unit II chapters must open,
+     * show authored bilingual teaching paragraphs and finish with the original
+     * A5 practice. Two language variants are run at BOTH Android font scales.
+     * This does not imply nine independent anatomical image approvals.
+     */
+    private fun verifyAllUnitTwoChapters() {
+        val chapterIds=listOf(
+            "u2-porifera", "u2-sycon", "u2-canals", "u2-reproduction",
+            "u2-cnidaria", "u2-obelia", "u2-corals",
+            "u2-coral-economics", "u2-polymorphism"
+        )
+        rule.onNodeWithTag("unit-2").performScrollTo().performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-unit-2").fetchSemanticsNodes().isNotEmpty()
+        }
+        for (id in chapterIds) {
+            rule.onNodeWithTag("native-unit-2")
+                .performScrollToNode(hasTestTag("chapter-" + id))
+            rule.onNodeWithTag("chapter-" + id).performClick()
+            awaitReader(id)
+            val reader="u2-reader-" + id
+            rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("u2-lesson-title"))
+            rule.onNodeWithTag("u2-lesson-title").assertExists()
+            rule.onNodeWithTag("u2-draft-disclosure").assertExists()
+            val lesson=requireNotNull(UnitIILessons.forChapter(id))
+            val section="u2-section-" + lesson.sections.first().id
+            rule.onNodeWithTag(reader).performScrollToNode(hasTestTag(section))
+            rule.onNodeWithTag(section).assertExists()
+            rule.onNodeWithTag(reader)
+                .performScrollToNode(hasTestTag("u2-practice-heading"))
+            rule.onNodeWithTag("u2-practice-heading").assertExists()
+            rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("u2-back"))
+            rule.onNodeWithTag("u2-back").performClick()
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("native-unit-2").fetchSemanticsNodes().isNotEmpty()
+            }
+        }
+    }
+
+    @Test fun everyUnitTwoChapterHasEnglishNativeTeachingAndA5() {
+        verifyAllUnitTwoChapters()
+    }
+
+    @Test fun everyUnitTwoChapterHasTamilNativeTeachingAndA5() {
+        rule.onNodeWithTag("language-tamil").performClick()
+        verifyAllUnitTwoChapters()
+    }
+
 }
