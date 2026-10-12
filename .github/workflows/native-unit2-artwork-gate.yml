@@ -1,0 +1,57 @@
+name: Unit II academic artwork integrity and human release gate
+'on':
+  push:
+    branches:
+      - native/u2-academic-artwork-gate-20261012
+  workflow_dispatch:
+    inputs:
+      gate:
+        description: 'Engineering integrity (allows draft QA) or academic release (requires every human sign-off)'
+        required: true
+        type: choice
+        options:
+          - engineering
+          - release
+        default: engineering
+
+permissions:
+  contents: read
+
+jobs:
+  verify-unit2-artwork:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned image decoder
+        run: |
+          python3 -m venv /tmp/u2-gate
+          /tmp/u2-gate/bin/pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Restore exact corrected image bytes from candidate
+        run: |
+          /tmp/u2-gate/bin/python ci/repair_unit2_plate_masters.py
+          /tmp/u2-gate/bin/python ci/refine_unit2_sycon_prosopyle.py
+          sha256sum native-app/app/src/main/assets/unit2/*.webp
+      - name: Test that engineering and academic release states cannot be confused
+        run: /tmp/u2-gate/bin/python -m unittest discover -s ci -p test_unit2_artwork_acceptance.py -v
+      - name: Apply requested gate (release fails closed while approvals are missing)
+        env:
+          ARTWORK_GATE: ${{ inputs.gate || 'engineering' }}
+        run: |
+          /tmp/u2-gate/bin/python ci/unit2_artwork_acceptance.py \
+            --mode "$ARTWORK_GATE" \
+            --report qa/unit2/artwork_gate_result.json
+      - name: Preserve independent artwork gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-artwork-gate-${{ github.sha }}
+          path: |
+            qa/unit2/artwork_review_manifest.json
+            qa/unit2/artwork_gate_result.json
+          if-no-files-found: error
+      - name: Academic release hold is separate from successful QA compilation
+        if: always()
+        run: |
+          echo "Unit II publication requires genuine source drawings, anatomy, Tamil, hotspot and rights sign-off, plus physical-device QA."
+          echo "This workflow never changes an approved drawing, never signs a production APK and never merges a release."
