@@ -22,6 +22,7 @@ SOURCE = (
 CREDIT = "Buchanan (1933), Elements of Biology, Fig. 176 — Internet Archive / Wikimedia Commons"
 OUTPUT = Path("native-app/app/src/main/assets/unit2/obelia_lifecycle.png")
 SOURCE_DIMENSIONS = (1584, 2818)
+EXPECTED_SOURCE_SHA256 = "003e1013f2f97103eecc98934723db61946d5f1704a711cfe5d00f8075c85cda"
 CANVAS_DIMENSIONS = (2200, 3440)
 
 def font(size, bold=False):
@@ -44,6 +45,7 @@ def main():
         raw = response.read(6_000_000)
     assert len(raw) >= 50_000, "Source scan truncated"
     source_hash = hashlib.sha256(raw).hexdigest()
+    assert source_hash == EXPECTED_SOURCE_SHA256, "Historical scan changed: refusing unreviewed replacement"
     with Image.open(BytesIO(raw)) as original:
         assert original.format == "JPEG", "Unexpected source scan format"
         assert original.size == SOURCE_DIMENSIONS, (
