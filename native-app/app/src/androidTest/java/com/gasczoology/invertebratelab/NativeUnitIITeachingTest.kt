@@ -36,17 +36,21 @@ class NativeUnitIITeachingTest {
     private fun captureLessonPlate(chapterId: String, plateTag: String, scene: String) {
         val readerTag = "u2-reader-" + chapterId
         rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag(plateTag))
+        // LazyColumn scrollToNode only makes the parent item visible. A second
+        // bring-into-view on the actual bitmap is required when this is the
+        // second figure in a tall item (Obelia life history at Tamil 200%).
+        rule.onNodeWithTag(plateTag).performScrollTo()
         rule.onNodeWithTag(plateTag).assertExists()
         rule.onNodeWithTag("u2-lesson-raster-missing").assertDoesNotExist()
         rule.waitForIdle()
         val plate = rule.onNodeWithTag(plateTag).fetchSemanticsNode().boundsInRoot
         val viewport = rule.onRoot().fetchSemanticsNode().boundsInRoot
-        val visible = (minOf(plate.bottom, viewport.bottom - 55f) -
+        val visible = (minOf(plate.bottom, viewport.bottom - 95f) -
             maxOf(plate.top, viewport.top + 55f)).coerceAtLeast(0f)
         org.junit.Assert.assertTrue(
             "Static raster lesson plate clipped: " + scene +
                 " visible=" + visible + " height=" + plate.height,
-            visible >= plate.height * .82f
+            visible >= plate.height * .98f
         )
         captureScreenshotBytes(scene)
     }
