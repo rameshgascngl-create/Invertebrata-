@@ -48,7 +48,7 @@ jobs:
           manifest=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt").read_text()
           assert "SyconCanalCanvas" not in chapter and "ObeliaColonyCanvas" not in chapter, "Legacy Canvas anatomy present"
           assert "fallback()" not in image_ui and "u2-raster-bitmap-visible" in image_ui, "Raster-only adapter not enforced"
-          assert "rememberRequiredRasterBitmap(stem)" in image_ui, "Unit II bypasses mandatory raster loader"
+          assert "rememberRequiredRasterBitmap(stem, pngOnly=lifeHistory)" in image_ui, "Obelia life cycle can silently revert to obsolete WebP"
           assert "RasterArtworkPolicy.selectAsset(" in loader, "Shared raster loader bypassed policy"
           assert "PNG first" in policy and '"png", "webp"' in policy, "Approved raster formats changed"
           for organism in ("sycon","obelia","fasciola","ascaris","earthworm","penaeus","pila","asterias"):

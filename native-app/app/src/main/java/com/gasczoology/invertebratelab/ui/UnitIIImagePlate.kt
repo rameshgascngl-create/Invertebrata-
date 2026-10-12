@@ -72,7 +72,7 @@ internal fun UnitIIImagePlate(
                else "unit2/obelia_colony"
     // Shared type-study raster loader. The image is never replaced by
     // a Canvas, SVG or vector anatomical substitute on load failure.
-    val bitmap = rememberRequiredRasterBitmap(stem)
+    val bitmap = rememberRequiredRasterBitmap(stem, pngOnly=lifeHistory)
     if (bitmap == null) {
         Text(
             if (language == AppLanguage.TAMIL)

@@ -16,7 +16,7 @@ import com.gasczoology.invertebratelab.data.RasterArtworkPolicy
  * Composables may draw touch/zoom/selection indicators ON TOP of the bitmap.
  */
 @Composable
-internal fun rememberRequiredRasterBitmap(relativeStem: String): ImageBitmap? {
+internal fun rememberRequiredRasterBitmap(relativeStem: String, pngOnly: Boolean = false): ImageBitmap? {
     val context = LocalContext.current
     val directory = relativeStem.substringBeforeLast('/')
     val available = remember(context, directory) {
@@ -25,8 +25,9 @@ internal fun rememberRequiredRasterBitmap(relativeStem: String): ImageBitmap? {
                 .map { "$directory/$it" }.toSet()
         }.getOrDefault(emptySet())
     }
-    val asset = remember(relativeStem, available) {
-        RasterArtworkPolicy.selectAsset(relativeStem, available)
+    val asset = remember(relativeStem, available, pngOnly) {
+        val selected = RasterArtworkPolicy.selectAsset(relativeStem, available)
+        if (pngOnly && selected?.endsWith(".png") != true) null else selected
     }
     return remember(context, asset) {
         asset?.let { path ->

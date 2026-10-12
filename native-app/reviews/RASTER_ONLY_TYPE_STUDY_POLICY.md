@@ -77,3 +77,5 @@ Bilingual app explanations remain native Compose text. **The historical source
 does NOT independently provide a close-up illustration of settled juvenile
 morphology; that subplate still requires academically reviewed original art.**
 Passing asset dimensions does not close the academic review gate.
+
+**Obelia life-history fails closed:** Native `UnitIIImagePlate` calls the shared loader with `pngOnly=lifeHistory`. If the generated high-resolution PNG is absent, it displays a visible missing-plate error; the 730x300 superseded WebP must never be silently selected. The historic file remains in the candidate branch only as unaccepted archival material.
