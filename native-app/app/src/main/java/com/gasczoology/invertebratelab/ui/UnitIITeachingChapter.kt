@@ -61,7 +61,7 @@ internal fun UnitIITeachingChapter(
         }
     }
     LazyColumn(
-        state=listState, modifier=Modifier.fillMaxSize().testTag("u2-reader-"+chapter.id),
+        state=listState, modifier=Modifier.fillMaxSize().statusBarsPadding().testTag("u2-reader-"+chapter.id),
         contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(14.dp)
     ){
         item(key="header") {
