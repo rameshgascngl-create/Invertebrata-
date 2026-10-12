@@ -19,6 +19,7 @@ jobs:
           python3 -m venv /tmp/u2pillow
           /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
+          /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
           sha256sum native-app/app/src/main/assets/unit2/*.webp
       - uses: actions/setup-java@v4
         with:
@@ -66,6 +67,7 @@ jobs:
           python3 -m venv /tmp/u2pillow
           /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
+          /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
           sha256sum native-app/app/src/main/assets/unit2/*.webp
       - uses: actions/setup-java@v4
         with:
