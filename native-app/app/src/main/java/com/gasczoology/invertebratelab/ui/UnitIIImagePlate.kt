@@ -44,7 +44,7 @@ private data class AtlasTarget(val stage: Int, val x: Float, val y: Float, val r
 private val syconTargets = listOf(
     AtlasTarget(0,.30f,.35f),       // ostia, external view
     AtlasTarget(1,.56f,.61f,.060f), // between radial chamber levels: incurrent passage
-    AtlasTarget(2,.569f,.5792f,.034f), // source-pixel prosopyle entry aperture at (569,724); still under zoological review
+    AtlasTarget(2,.595f,.6008f,.028f), // PROVISIONAL prosopyle in lateral radial wall (595,751); outer radial tip remains blind
     AtlasTarget(3,.645f,.540f,.043f), // choanocyte-lined radial canal
     AtlasTarget(4,.648f,.494f,.043f), // PROVISIONAL apopyle at radial outlet
     AtlasTarget(5,.713f,.324f,.085f), // spongocoel (not a filtering chamber)
