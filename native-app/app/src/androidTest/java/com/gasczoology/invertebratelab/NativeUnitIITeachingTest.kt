@@ -33,6 +33,9 @@ class NativeUnitIITeachingTest {
         // actually in the viewport. Reject header-only/mostly clipped captures.
         val canvasTag=if(scene.startsWith("sycon"))"u2-sycon-image-plate" else "u2-obelia-image-plate"
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
+        // A rendered Compose Canvas fallback is not a valid teaching atlas.
+        // Assert the real decoded raster bitmap exists in the semantics tree.
+        rule.onNodeWithTag("u2-raster-bitmap-visible").assertExists()
         val plate=rule.onNodeWithTag(canvasTag).fetchSemanticsNode().boundsInRoot
         // The image can fill the available viewport while the zoom instruction
         // is legitimately below it. Scroll that instruction into view before
@@ -145,6 +148,9 @@ class NativeUnitIITeachingTest {
             rule.onAllNodesWithTag("u2-sycon-image-plate").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
+        // A rendered Compose Canvas fallback is not a valid teaching atlas.
+        // Assert the real decoded raster bitmap exists in the semantics tree.
+        rule.onNodeWithTag("u2-raster-bitmap-visible").assertExists()
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-english")
         rule.onNodeWithTag("u2-anatomical-correction").performScrollTo()
@@ -176,6 +182,9 @@ class NativeUnitIITeachingTest {
             rule.onAllNodesWithTag("u2-obelia-image-plate").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
+        // A rendered Compose Canvas fallback is not a valid teaching atlas.
+        // Assert the real decoded raster bitmap exists in the semantics tree.
+        rule.onNodeWithTag("u2-raster-bitmap-visible").assertExists()
         rule.onNodeWithTag("u2-anatomical-correction").performScrollTo()
             .assertTextContains("gonotheca", substring = true, ignoreCase = true)
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
