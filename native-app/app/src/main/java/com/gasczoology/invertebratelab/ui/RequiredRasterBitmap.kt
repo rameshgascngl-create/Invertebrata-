@@ -22,7 +22,7 @@ internal fun rememberRequiredRasterBitmap(relativeStem: String): ImageBitmap? {
     val available = remember(context, directory) {
         runCatching {
             context.assets.list(directory).orEmpty()
-                .mapTo(mutableSetOf()) { "$directory/$it" }
+                .map { "$directory/$it" }.toSet()
         }.getOrDefault(emptySet())
     }
     val asset = remember(relativeStem, available) {
