@@ -4,6 +4,7 @@ name: Unit II scanned atlas candidate - native compile and real screenshots
     branches:
       - native/u2-scanned-plate-candidate-20261011
       - native/u2-pencil-lesson-separation-20261012
+      - native/u2-revised-pencil-plates-20261012
   workflow_dispatch:
 
 permissions:
@@ -21,7 +22,20 @@ jobs:
           /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
           /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
+          mkdir -p /tmp/u2-revised-images
+          /tmp/u2pillow/bin/python ci/rebuild_unit2_pencil_masters.py native-app/app/src/main/assets/unit2 /tmp/u2-revised-images
+          cp /tmp/u2-revised-images/*.webp native-app/app/src/main/assets/unit2/
           sha256sum native-app/app/src/main/assets/unit2/*.webp
+          /tmp/u2pillow/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          sizes={"sycon_plate":(1400,1800),"obelia_colony":(1400,1830),"obelia_lifecycle":(1400,1990)}
+          for name,dim in sizes.items():
+              path=Path("native-app/app/src/main/assets/unit2")/(name+".webp")
+              with Image.open(path) as image:
+                  assert image.size == dim, (name,image.size,dim)
+          print("UNIT_II_SOURCE_RECONSTRUCTION=PASS")
+          PY
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -59,6 +73,7 @@ jobs:
                   if im.width<900 or im.height<600:
                       print(f"ARTWORK_REVIEW_BLOCKER: low resolution {file} dimensions={im.size}; release HOLD")
                   print(f"RASTER_ASSET={file} dimensions={im.size} format={im.format}")
+          assert (root/"obelia_lifecycle.webp").stat().st_size > 100000, "Obelia complete life history asset unexpectedly tiny"
           print("RASTER_ONLY_SOURCE_GATE=PASS; ARTWORK_ACADEMIC_APPROVAL=PENDING")
           PY
       - name: Source and JVM compile gate
@@ -95,7 +110,20 @@ jobs:
           /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
           /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
+          mkdir -p /tmp/u2-revised-images
+          /tmp/u2pillow/bin/python ci/rebuild_unit2_pencil_masters.py native-app/app/src/main/assets/unit2 /tmp/u2-revised-images
+          cp /tmp/u2-revised-images/*.webp native-app/app/src/main/assets/unit2/
           sha256sum native-app/app/src/main/assets/unit2/*.webp
+          /tmp/u2pillow/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          sizes={"sycon_plate":(1400,1800),"obelia_colony":(1400,1830),"obelia_lifecycle":(1400,1990)}
+          for name,dim in sizes.items():
+              path=Path("native-app/app/src/main/assets/unit2")/(name+".webp")
+              with Image.open(path) as image:
+                  assert image.size == dim, (name,image.size,dim)
+          print("UNIT_II_SOURCE_RECONSTRUCTION=PASS")
+          PY
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
