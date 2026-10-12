@@ -33,7 +33,7 @@ import kotlin.math.roundToInt
 
 /**
  * Image-backed Unit II atlas adapter, isolated from the validated Unit II lessons/A5 data.
- * Assets are offline images at assets/unit2/sycon_plate.webp and obelia_colony.webp.
+ * Native offline raster assets: labelled PNG first, WebP as a raster alternative.
  * A missing raster file is a hard, visible teaching-plate defect. It must never
  * silently fall back to programmatic Canvas/SVG anatomy. Android tests fail explicitly.
  *
@@ -70,9 +70,19 @@ internal fun UnitIIImagePlate(
 ) {
     val ctx = LocalContext.current
     val lifeHistory = !sycon && progress.roundToInt() >= 3
-    val asset = if (sycon) "unit2/sycon_plate.webp"
-                else if (lifeHistory) "unit2/obelia_lifecycle.webp"
-                else "unit2/obelia_colony.webp"
+    // A supplied PNG pencil plate takes priority over WebP. Both decode as
+    // native Android bitmaps. No SVG, generated vector or Canvas fallback.
+    val base = if (sycon) "sycon_plate"
+               else if (lifeHistory) "obelia_lifecycle"
+               else "obelia_colony"
+    val available = remember(ctx) {
+        runCatching { ctx.assets.list("unit2")?.toSet().orEmpty() }.getOrDefault(emptySet())
+    }
+    val asset = when {
+        "$base.png" in available -> "unit2/$base.png"
+        "$base.webp" in available -> "unit2/$base.webp"
+        else -> "unit2/$base.png" // explicit missing raster error below
+    }
     val bitmap = remember(ctx,asset) {
         runCatching {
             ctx.assets.open(asset).use { input ->
