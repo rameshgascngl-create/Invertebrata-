@@ -93,8 +93,8 @@ internal fun UnitIITeachingChapter(
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics{heading()})
                 Text(tr(language,
-                    "Schematic—not to scale. Select a numbered stage, or touch the marked plate.",
-                    "விளக்க வரைபடம்—அளவுப்படி அல்ல. எண்ணிட்ட படிநிலையைத் தேர்க அல்லது படத்தில் தொடுக."))
+                    "Labelled pencil raster plate—schematic, not to scale. Select a stage or touch the illustration.",
+                    "பென்சில் வரைபடப் படத்தாள்—அளவுப்படி அல்ல. படிநிலையைத் தேர்ந்தெடுக்கவும் அல்லது படத்தைத் தொடவும்."))
                 val p by animateFloatAsState(targetValue=index.toFloat(),
                     animationSpec=tween(durationMillis=600),label="Unit II teaching stage")
                 Card(colors=CardDefaults.cardColors(containerColor=parchment)) {

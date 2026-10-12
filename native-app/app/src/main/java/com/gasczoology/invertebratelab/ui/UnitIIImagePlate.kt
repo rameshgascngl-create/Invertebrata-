@@ -1,6 +1,5 @@
 package com.gasczoology.invertebratelab.ui
 
-import android.graphics.BitmapFactory
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,13 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -68,28 +65,13 @@ internal fun UnitIIImagePlate(
     language: AppLanguage,
     onSelect: (Int) -> Unit
 ) {
-    val ctx = LocalContext.current
     val lifeHistory = !sycon && progress.roundToInt() >= 3
-    // A supplied PNG pencil plate takes priority over WebP. Both decode as
-    // native Android bitmaps. No SVG, generated vector or Canvas fallback.
-    val base = if (sycon) "sycon_plate"
-               else if (lifeHistory) "obelia_lifecycle"
-               else "obelia_colony"
-    val available = remember(ctx) {
-        runCatching { ctx.assets.list("unit2")?.toSet().orEmpty() }.getOrDefault(emptySet())
-    }
-    val asset = when {
-        "$base.png" in available -> "unit2/$base.png"
-        "$base.webp" in available -> "unit2/$base.webp"
-        else -> "unit2/$base.png" // explicit missing raster error below
-    }
-    val bitmap = remember(ctx,asset) {
-        runCatching {
-            ctx.assets.open(asset).use { input ->
-                BitmapFactory.decodeStream(input)?.asImageBitmap()
-            }
-        }.getOrNull()
-    }
+    val stem = if (sycon) "unit2/sycon_plate"
+               else if (lifeHistory) "unit2/obelia_lifecycle"
+               else "unit2/obelia_colony"
+    // Shared type-study raster loader. The image is never replaced by
+    // a Canvas, SVG or vector anatomical substitute on load failure.
+    val bitmap = rememberRequiredRasterBitmap(stem)
     if (bitmap == null) {
         Text(
             if (language == AppLanguage.TAMIL)

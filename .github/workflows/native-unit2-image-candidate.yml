@@ -42,9 +42,16 @@ jobs:
           root=Path("native-app/app/src/main/assets/unit2")
           chapter=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIITeachingChapter.kt").read_text()
           image_ui=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIImagePlate.kt").read_text()
+          loader=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/RequiredRasterBitmap.kt").read_text()
+          policy=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/RasterArtworkPolicy.kt").read_text()
+          manifest=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt").read_text()
           assert "SyconCanalCanvas" not in chapter and "ObeliaColonyCanvas" not in chapter, "Legacy Canvas anatomy present"
           assert "fallback()" not in image_ui and "u2-raster-bitmap-visible" in image_ui, "Raster-only adapter not enforced"
-          assert '"$base.png" in available' in image_ui, "PNG preference is missing"
+          assert "rememberRequiredRasterBitmap(stem)" in image_ui, "Unit II bypasses mandatory raster loader"
+          assert "RasterArtworkPolicy.selectAsset(" in loader, "Shared raster loader bypassed policy"
+          assert "PNG first" in policy and '"png", "webp"' in policy, "Approved raster formats changed"
+          for organism in ("sycon","obelia","fasciola","ascaris","earthworm","penaeus","pila","asterias"):
+              assert f'TypeStudyRequirement("{organism}"' in manifest, f"Future-type-study raster contract missing: {organism}"
           for name in ("sycon_plate","obelia_colony","obelia_lifecycle"):
               file=next((root/(name+ext) for ext in (".png",".webp") if (root/(name+ext)).exists()),None)
               assert file is not None, f"Missing labelled raster plate: {name}"
@@ -52,8 +59,9 @@ jobs:
                   im.verify()
               with Image.open(file) as im:
                   assert im.width>0 and im.height>0, f"Invalid raster geometry: {file}"
-                  if im.width<900 or im.height<600:
-                      print(f"ARTWORK_REVIEW_BLOCKER: low resolution {file} dimensions={im.size}; release HOLD")
+                  assert im.format in ("PNG","WEBP"), f"Non-raster or unsupported image: {file}"
+                  assert (file.suffix.lower()==".png" and im.format=="PNG") or (file.suffix.lower()==".webp" and im.format=="WEBP"), f"Image extension/contents mismatch: {file}"
+                  assert im.width>=900 and im.height>=600, f"Insufficient plate dimensions: {file} {im.size}"
                   print(f"RASTER_ASSET={file} dimensions={im.size} format={im.format}")
           print("RASTER_ONLY_SOURCE_GATE=PASS; ARTWORK_ACADEMIC_APPROVAL=PENDING")
           PY
