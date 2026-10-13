@@ -22,11 +22,12 @@ def main():
         "GASC-Zoology-Teaching-Atlas/1.0 historical-source-review"}),timeout=40) as response:
         data=response.read(5_000_000)
     print("SYCON_1903_SOURCE_SHA256="+hashlib.sha256(data).hexdigest())
+    assert hashlib.sha256(data).hexdigest()=="a94807ff2d2a2cbd9345f0b07595ac45e4813beb0cfca0947418e077d90a38bf", "Historical image changed"
     with Image.open(BytesIO(data)) as img:
         assert img.format in ("JPEG","PNG")
         base=img.convert("RGB")
     print("SYCON_1903_SOURCE_DIMENSIONS="+str(base.size))
-    assert base.width>=300 and base.height>=400, "Unexpected historic source too small"
+    assert base.size==(284,677), "Historic original-source dimensions changed"
     w=max(1250,base.width+130);h=base.height+320
     canvas=Image.new("RGB",(w,h),(254,253,249))
     canvas.paste(base,((w-base.width)//2,116))
@@ -41,7 +42,7 @@ def main():
               font=font(17),fill=(42,39,37))
     draw.text((50,y+53),"Water: ostia → IC → prosopyle → choanocyte-lined R → apopyle → spongocoel → osculum",
               font=font(15),fill=(42,39,37))
-    draw.text((50,y+91),"Source line drawing preserved at 1:1 pixels. Independent biology review pending.",
+    draw.text((50,y+91),"Source pixels preserved (284 x 677): magnify for reading; reviewer acceptance pending.",
               font=font(15),fill=(91,80,73))
     OUTPUT.parent.mkdir(parents=True,exist_ok=True)
     canvas.save(OUTPUT,format="PNG",optimize=True)
