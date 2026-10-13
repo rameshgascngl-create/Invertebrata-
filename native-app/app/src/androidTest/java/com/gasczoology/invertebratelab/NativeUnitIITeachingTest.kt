@@ -79,10 +79,18 @@ class NativeUnitIITeachingTest {
         }
         rule.onNodeWithTag("chapter-u2-sycon").performScrollTo().performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("u2-sycon-image-plate").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("u2-reader-u2-sycon").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u2-lesson-title").assertExists()
-        rule.onNodeWithTag("u2-draft-disclosure").assertExists()
+        rule.onNodeWithTag("u2-reader-u2-sycon")
+            .performScrollToNode(hasTestTag("u2-sycon-historic-static-raster"))
+        rule.onNodeWithTag("u2-sycon-historic-static-raster").assertExists()
+        rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-reader-u2-sycon")
+            .performScrollToNode(hasTestTag("u2-sycon-image-plate"))
+        rule.onNodeWithTag("u2-sycon-image-plate").assertExists()
+        // Title and disclosure were verified before moving to the independent
+        // static illustration; lazy column may dispose the header off-screen.
         // The oversized Tamil header can leave the atlas below the viewport.
         // First advance within the atlas item, then position the plate itself.
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
@@ -117,8 +125,18 @@ class NativeUnitIITeachingTest {
             .performScrollToNode(hasTestTag("chapter-u2-obelia"))
         rule.onNodeWithTag("chapter-u2-obelia").performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("u2-obelia-image-plate").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("u2-reader-u2-obelia").fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-obelia-colony-static-raster"))
+        rule.onNodeWithTag("u2-obelia-colony-static-raster").assertExists()
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-obelia-life-static-raster"))
+        rule.onNodeWithTag("u2-obelia-life-static-raster").assertExists()
+        rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-obelia-image-plate"))
+        rule.onNodeWithTag("u2-obelia-image-plate").assertExists()
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-colony")
         for(id in listOf("hydranth","gonangium","medusa","planula","settlement")) {
@@ -145,8 +163,16 @@ class NativeUnitIITeachingTest {
         }
         rule.onNodeWithTag("chapter-u2-sycon").performScrollTo().performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("u2-sycon-image-plate").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("u2-reader-u2-sycon").fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("u2-lesson-title").assertExists()
+        rule.onNodeWithTag("u2-reader-u2-sycon")
+            .performScrollToNode(hasTestTag("u2-sycon-historic-static-raster"))
+        rule.onNodeWithTag("u2-sycon-historic-static-raster").assertExists()
+        rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-reader-u2-sycon")
+            .performScrollToNode(hasTestTag("u2-sycon-image-plate"))
+        rule.onNodeWithTag("u2-sycon-image-plate").assertExists()
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
         // A rendered Compose Canvas fallback is not a valid teaching atlas.
         // Assert the real decoded raster bitmap exists in the semantics tree.
@@ -179,8 +205,18 @@ class NativeUnitIITeachingTest {
             .performScrollToNode(hasTestTag("chapter-u2-obelia"))
         rule.onNodeWithTag("chapter-u2-obelia").performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("u2-obelia-image-plate").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("u2-reader-u2-obelia").fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-obelia-colony-static-raster"))
+        rule.onNodeWithTag("u2-obelia-colony-static-raster").assertExists()
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-obelia-life-static-raster"))
+        rule.onNodeWithTag("u2-obelia-life-static-raster").assertExists()
+        rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-reader-u2-obelia")
+            .performScrollToNode(hasTestTag("u2-obelia-image-plate"))
+        rule.onNodeWithTag("u2-obelia-image-plate").assertExists()
         rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
         // A rendered Compose Canvas fallback is not a valid teaching atlas.
         // Assert the real decoded raster bitmap exists in the semantics tree.

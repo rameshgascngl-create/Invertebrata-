@@ -48,7 +48,7 @@ object NativeCurriculumManifest {
     )
 
     // Unit II draft lessons and plates are authored, NOT scientifically accepted.
-    private val draftIds = setOf("u1-paramecium") + a5ChapterIdsByUnit.getValue(2)
+    private val draftIds = setOf("u1-paramecium") + a5ChapterIdsByUnit.getValue(2) + a5ChapterIdsByUnit.getValue(3)
 
     // Plate names are work requirements, not drawings, organ validation or approval.
     val typeStudies: List<TypeStudyRequirement> = listOf(
@@ -63,9 +63,11 @@ object NativeCurriculumManifest {
             "u2-obelia", listOf("colony", "hydranth-gonangium", "medusa", "life-cycle"),
             AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("fasciola", 3, "Fasciola hepatica", "u3-fasciola",
-            "u3-fasciola", listOf("external", "digestive-reproductive", "life-cycle")),
+            "u3-fasciola", listOf("external", "digestive-reproductive", "life-cycle"),
+            AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("ascaris", 3, "Ascaris lumbricoides", "u3-ascaris",
-            "u3-ascaris", listOf("male-female-external", "female-internal", "life-cycle")),
+            "u3-ascaris", listOf("male-female-external", "female-internal", "life-cycle"),
+            AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("earthworm", 4, "Earthworm (Metaphire/Pheretima)",
             EARTHWORM_LESSON_ID, null,
             listOf("external-setae", "digestive", "circulatory", "nervous",
@@ -107,7 +109,7 @@ object NativeCurriculumManifest {
             .map { it.id }.toSet() == draftIds)
         require(lessonSlots.none { it.status == AcademicWorkStatus.ACCEPTED })
         require(typeStudies.filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }
-            .map { it.organismId }.toSet() == setOf("paramecium","sycon","obelia"))
+            .map { it.organismId }.toSet() == setOf("paramecium","sycon","obelia","fasciola","ascaris"))
         require(typeStudies.none { it.status == AcademicWorkStatus.ACCEPTED })
         for (study in typeStudies) {
             val slot = lessonSlots.single { it.id == study.lessonId }

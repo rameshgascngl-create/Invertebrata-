@@ -373,7 +373,7 @@ private fun UnitScreen(
                             chapter.id == "u1-paramecium" -> label(language,
                                 "Full textbook: select the Start Reading button above; practice questions here.",
                                 "முழுப் பாடத்திற்கு மேலுள்ள பாடத்தைத் தொடங்கு பொத்தானைத் தேர்க; இங்கு வினாப் பயிற்சி.")
-                            unit.number == 2 -> label(language,
+                            unit.number == 2 || unit.number == 3 -> label(language,
                                 "OPEN ILLUSTRATED BILINGUAL LESSON FIRST · assessment follows.",
                                 "முதலில் படவிளக்க இருமொழிப் பாடத்தைத் திறக்கவும் · பின்னர் வினாப் பயிற்சி.")
                             else -> label(language,
@@ -398,6 +398,10 @@ private fun ChapterScreen(
 ) {
     if (chapter.unitNumber == 2) {
         UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle)
+        return
+    }
+    if (chapter.unitNumber == 3) {
+        UnitIIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle)
         return
     }
     val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
