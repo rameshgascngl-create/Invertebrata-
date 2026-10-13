@@ -47,6 +47,26 @@ class UnitIIILessonsTest {
             UnitIIIPlateCatalog.forChapter("u3-ascaris").map { it.plateId })
     }
 
+    @Test fun anatomicalLeadersAreAnchoredToDistinctBiologicalStructures() {
+        UnitIIIPlateHotspots.validate()
+        assertEquals(6, UnitIIIPlateHotspots.byStem.size)
+        val internal=UnitIIIPlateHotspots.forStem("type_studies/fasciola/digestive-reproductive")
+        val anterior=internal.single { it.id=="testis-anterior" }
+        val posterior=internal.single { it.id=="testis-posterior" }
+        val ovary=internal.single { it.id=="ovary" }
+        assertTrue(ovary.y < anterior.y && anterior.y < posterior.y)
+        assertTrue(kotlin.math.abs(anterior.x-posterior.x) < .08f)
+        val external=UnitIIIPlateHotspots.forStem("type_studies/fasciola/external")
+        assertTrue(external.single{it.id=="genital"}.y <
+            external.single{it.id=="acetabulum"}.y)
+        val ascaris=UnitIIIPlateHotspots.forStem("type_studies/ascaris/male-female-external")
+        val vulva=ascaris.single { it.id=="female-vulva" }
+        val anus=ascaris.single { it.id=="female-anus" }
+        assertTrue(vulva.y < .45f && anus.y > .85f)
+        assertEquals(listOf("unembryonated","embryonated","ingestion","hatch","lungs","adult"),
+            UnitIIIPlateHotspots.forStem("type_studies/ascaris/life-cycle").map { it.id })
+    }
+
     @Test fun teachingDraftDoesNotBecomeAcademicAcceptance() {
         assertTrue(UnitIIILessons.chapters.values.none {
             it.status == AcademicWorkStatus.ACCEPTED
