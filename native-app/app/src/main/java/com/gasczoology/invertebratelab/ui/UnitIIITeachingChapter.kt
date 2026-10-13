@@ -58,7 +58,8 @@ internal fun UnitIIITeachingChapter(
         }
     }
     LazyColumn(
-        modifier = Modifier.fillMaxSize().testTag("u3-reader-" + chapter.id),
+        modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()
+            .testTag("u3-reader-" + chapter.id),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
