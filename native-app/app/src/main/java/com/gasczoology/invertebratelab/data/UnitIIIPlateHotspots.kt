@@ -12,6 +12,11 @@ data class UnitIIIHotspot(
     val explanation: BilingualText
 )
 object UnitIIIPlateHotspots {
+    // Original positions belong to REJECTED procedural source masters.
+    // No archive-specific pixel endpoints have received independent QA.
+    private val coordinateApprovedStems: Set<String> = emptySet()
+    fun geometryApproved(stem: String): Boolean = stem in coordinateApprovedStems
+
     private fun h(id:String,x:Float,y:Float,en:String,ta:String,detailEn:String,detailTa:String) =
         UnitIIIHotspot(id,x,y,BilingualText(en,ta),BilingualText(detailEn,detailTa))
 

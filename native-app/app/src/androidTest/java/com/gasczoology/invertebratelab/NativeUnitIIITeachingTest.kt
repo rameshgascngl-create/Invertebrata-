@@ -100,7 +100,7 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-practice-heading").assertExists()
     }
 
-    @Test fun generatedFasciolaPlatesExposeRealBitmapAndCoordinateSelectableOrgans() {
+    @Test fun sourcedFasciolaPlateRejectsObsoleteTouchCoordinates() {
         openChapter("u3-fasciola",false)
         for (plate in listOf("external","digestive-reproductive","life-cycle")) {
             rule.onNodeWithTag("u3-reader-u3-fasciola")
@@ -110,10 +110,9 @@ class NativeUnitIIITeachingTest {
         }
         rule.onNodeWithTag("u3-reader-u3-fasciola")
             .performScrollToNode(hasTestTag("u3-plate-touch-external"))
-        rule.onNodeWithTag("u3-plate-touch-external")
-            .performTouchInput {
-                click(androidx.compose.ui.geometry.Offset(width * .5f,height * .282f))
-            }
+        rule.onNodeWithTag("u3-source-hotspot-review-hold").assertExists()
+        rule.onNodeWithTag("u3-hotspot-external-acetabulum")
+            .performScrollTo().performClick()
         rule.onNodeWithTag("u3-selected-organ-external")
             .assertTextContains("Ventral sucker",substring=true)
         rule.onNodeWithTag("u3-organ-explanation-external").assertExists()
@@ -121,7 +120,7 @@ class NativeUnitIIITeachingTest {
         capture("fasciola-revised")
     }
 
-    @Test fun tamilAscarisPlatesAndFemaleVulvaHotspotRemainAccessible() {
+    @Test fun tamilAscarisPlateUsesAccessibleUnmappedOrganControl() {
         openChapter("u3-ascaris",true)
         for (plate in listOf("male-female-external","female-internal","life-cycle")) {
             rule.onNodeWithTag("u3-reader-u3-ascaris")
@@ -131,10 +130,9 @@ class NativeUnitIIITeachingTest {
         }
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-plate-touch-male-female-external"))
-        rule.onNodeWithTag("u3-plate-touch-male-female-external")
-            .performTouchInput {
-                click(androidx.compose.ui.geometry.Offset(width * .310f,height * .386f))
-            }
+        rule.onNodeWithTag("u3-source-hotspot-review-hold").assertExists()
+        rule.onNodeWithTag("u3-hotspot-male-female-external-female-vulva")
+            .performScrollTo().performClick()
         rule.onNodeWithTag("u3-selected-organ-male-female-external")
             .assertTextContains("வல்வா",substring=true)
         rule.onNodeWithTag("u3-organ-explanation-male-female-external").assertExists()

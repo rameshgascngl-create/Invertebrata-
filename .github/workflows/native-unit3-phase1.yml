@@ -67,6 +67,12 @@ jobs:
           source=Path("ci/build_unit3_anatomy_candidate_masters.py").read_text()
           assert "def branched_gonad" not in source and "def worm(" not in source, "Procedural anatomy must never return"
           assert "fetch_commons" in source and "source_sha256" in source, "Source-backed anatomy provenance required"
+          hotspots=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPlateHotspots.kt").read_text()
+          gallery=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPlateGallery.kt").read_text()
+          assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
+          assert "if (geometryVerified) detectTapGestures" in gallery
+          assert "if (geometryVerified && selected != null)" in gallery
+          print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
           print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
           PY
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
@@ -172,6 +178,12 @@ jobs:
           source=Path("ci/build_unit3_anatomy_candidate_masters.py").read_text()
           assert "def branched_gonad" not in source and "def worm(" not in source, "Procedural anatomy must never return"
           assert "fetch_commons" in source and "source_sha256" in source, "Source-backed anatomy provenance required"
+          hotspots=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPlateHotspots.kt").read_text()
+          gallery=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPlateGallery.kt").read_text()
+          assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
+          assert "if (geometryVerified) detectTapGestures" in gallery
+          assert "if (geometryVerified && selected != null)" in gallery
+          print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
           print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
           PY
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.

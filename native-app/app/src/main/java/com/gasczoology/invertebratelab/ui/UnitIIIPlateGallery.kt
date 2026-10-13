@@ -49,6 +49,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
         )
         plates.forEach { plate ->
             val hotspots = remember(plate.assetStem) { UnitIIIPlateHotspots.forStem(plate.assetStem) }
+            val geometryVerified = UnitIIIPlateHotspots.geometryApproved(plate.assetStem)
             var selectedId by rememberSaveable(plate.assetStem) {
                 mutableStateOf(hotspots.firstOrNull()?.id.orEmpty())
             }
@@ -71,8 +72,8 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                         BoxWithConstraints(
                             modifier = Modifier.fillMaxWidth().aspectRatio(960f / 1280f)
                                 .testTag("u3-plate-touch-" + plate.plateId)
-                                .pointerInput(plate.assetStem) {
-                                    detectTapGestures { point ->
+                                .pointerInput(plate.assetStem, geometryVerified) {
+                                    if (geometryVerified) detectTapGestures { point ->
                                         val fx = point.x / size.width.toFloat()
                                         val fy = point.y / size.height.toFloat()
                                         val hit = hotspots.minByOrNull {
@@ -94,7 +95,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                     .testTag("u3-plate-bitmap-" + plate.plateId)
                             )
                             Canvas(Modifier.fillMaxSize().testTag("u3-hotspot-marker-" + plate.plateId)) {
-                                if (selected != null) {
+                                if (geometryVerified && selected != null) {
                                     val origin = Offset(size.width * selected.x, size.height * selected.y)
                                     // Leader originates EXACTLY at the selected anatomical landmark.
                                     val dx = if (selected.x < .5f) 27.dp.toPx() else -27.dp.toPx()
@@ -110,10 +111,12 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                             }
                         }
                         Text(
-                            if (tamil) "மூலப் படம் — உடற்கூறு ஒப்புதலும் உடனடி சாதன சோதனையும் நிலுவையில்."
-                            else "Original digitally illustrated candidate — academic and handset acceptance pending.",
+                            if (tamil)
+                                "மூல வரலாற்றுப் படம். புதிய படத்திற்கான தொடுபுள்ளிகள் இன்னும் சரிபார்க்கப்படவில்லை. கீழே உள்ள உறுப்புப் பெயரைத் தேர்ந்தெடுக்கவும்."
+                            else "Archived raster. Image taps and leader marks are disabled pending source-specific hotspot calibration; organ controls remain below.",
                             color=MaterialTheme.colorScheme.error,
-                            style=MaterialTheme.typography.bodySmall
+                            style=MaterialTheme.typography.bodySmall,
+                            modifier=Modifier.testTag("u3-source-hotspot-review-hold")
                         )
                         if (hotspots.isNotEmpty()) {
                             LazyRow(horizontalArrangement=Arrangement.spacedBy(7.dp),
