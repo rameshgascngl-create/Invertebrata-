@@ -57,7 +57,7 @@ from pathlib import Path
 import sys,xml.etree.ElementTree as ET
 target= "com.gasczoology.invertebratelab.Native" + sys.argv[2]
 cases=[x for f in Path(sys.argv[1]).rglob('TEST-*.xml') for x in ET.parse(f).getroot().iter('testcase')]
-expected = 3 if sys.argv[2] == "UnitIIITeachingTest" else 4
+expected = 5 if sys.argv[2] == "UnitIIITeachingTest" else 4
 assert len(cases)==expected,(sys.argv[2],len(cases),expected)
 assert all(c.get("classname")==target for c in cases),(target,[c.get("classname") for c in cases])
 assert all(c.find(y) is None for c in cases for y in ('failure','error','skipped'))
@@ -67,7 +67,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
-  for scene in fasciola-historical ascaris-historical;do
+  for scene in fasciola-historical ascaris-historical fasciola-revised ascaris-revised;do
     [[ -s "$E/captured/unit3-$scale-$scene.png" ]] || { result="MISSING_IMAGE_$scale-$scene"; exit 1; }
   done
 done
