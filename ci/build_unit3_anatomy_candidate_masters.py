@@ -46,10 +46,10 @@ SOURCES = (
    "Vulva, vagina, uterus, oviducts and tubular ovaries",
    "Confirm female fig. 169 separately from male fig. 168."),
   ("ascaris", "life-cycle",
-   "Ascaris_lumbricoides_life_cycle.png",
-   "CDC DPDx (2019), public-domain life cycle",
-   "Soil-embryonated eggs, intestine, lung and reswallowing",
-   "CDC source is precise raster, NOT historical pencil art: ART HOLD.")
+   "Pfurtscheller_Table_38_a.png",
+   "Pfurtscheller (pre-1927): adults and egg anatomy only",
+   "Egg and adult illustration — lung-migration artwork absent",
+   "INCOMPLETE SOURCE! Does not show soil embryonation or lung path; ART HOLD.")
 )
 
 def font(sz, bold=False):
@@ -94,6 +94,11 @@ def draw_master(record):
         picture=source.convert("RGB")
         if org=="fasciola" or plate=="female-internal":
             picture=ImageOps.grayscale(picture).convert("RGB")
+    # For the partial Ascaris life-history sheet retain the HISTORICAL
+    # EGG/REPRODUCTIVE regions of Pfurtscheller's original; never invent
+    # missing lung-migration shapes. The complete-cycle plate remains HOLD.
+    if org=="ascaris" and plate=="life-cycle":
+        picture=picture.crop((350,850,1880,2175))
     # Downscaling to mobile reading area is permitted; no enlargement.
     picture.thumbnail((920,950),resample=Image.Resampling.LANCZOS)
     out=Image.new("RGB",SIZE,(255,254,250))
