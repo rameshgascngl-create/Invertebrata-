@@ -30,6 +30,23 @@ class UnitIIILessonsTest {
         }
     }
 
+    @Test fun sixRequiredPlateSlotsMatchSyllabusAndDoNotClaimAcceptance() {
+        UnitIIIPlateCatalog.validateAgainstSyllabus()
+        assertEquals(6, UnitIIIPlateCatalog.plates.size)
+        assertEquals(3, UnitIIIPlateCatalog.forChapter("u3-fasciola").size)
+        assertEquals(3, UnitIIIPlateCatalog.forChapter("u3-ascaris").size)
+        assertTrue(UnitIIIPlateCatalog.forChapter("u3-platy").isEmpty())
+        assertTrue(UnitIIIPlateCatalog.plates.all {
+            it.title.english.isNotBlank() && it.title.tamil.isNotBlank() &&
+                it.learningAim.english.isNotBlank() && it.learningAim.tamil.isNotBlank() &&
+                it.assetStem.startsWith("type_studies/")
+        })
+        assertEquals(listOf("external", "digestive-reproductive", "life-cycle"),
+            UnitIIIPlateCatalog.forChapter("u3-fasciola").map { it.plateId })
+        assertEquals(listOf("male-female-external", "female-internal", "life-cycle"),
+            UnitIIIPlateCatalog.forChapter("u3-ascaris").map { it.plateId })
+    }
+
     @Test fun teachingDraftDoesNotBecomeAcademicAcceptance() {
         assertTrue(UnitIIILessons.chapters.values.none {
             it.status == AcademicWorkStatus.ACCEPTED
