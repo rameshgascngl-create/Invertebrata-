@@ -57,23 +57,25 @@ def font(sz, bold=False):
     return ImageFont.truetype(filename, sz)
 
 def fetch_commons(filename):
-    api="https://commons.wikimedia.org/w/api.php?"
-    query=urllib.parse.urlencode({
-      "action":"query", "format":"json", "prop":"imageinfo",
-      "iiprop":"url|mime|size", "titles":"File:"+filename
-    })
-    hdr={"User-Agent":"Government-Arts-Science-College-Nagercoil-Zoology/1.0 (academic source audit)"}
-    with urllib.request.urlopen(urllib.request.Request(api+query,headers=hdr),timeout=45) as f:
-        data=json.load(f)
-    page=next(iter(data["query"]["pages"].values()))
-    assert "imageinfo" in page, f"Mediawiki source not resolved: {filename}"
-    info=page["imageinfo"][0]
-    assert info["mime"] in ("image/png","image/jpeg"), (filename,info["mime"])
-    assert info["url"].startswith("https://upload.wikimedia.org/"), "Unsupported image domain"
-    with urllib.request.urlopen(urllib.request.Request(info["url"],headers=hdr), timeout=65) as f:
-        raw=f.read(15_000_001)
-    assert 15_000 < len(raw) < 15_000_000, f"Source corrupt or oversized: {filename}"
-    return raw,info["url"]
+    # Direct Wikimedia static asset URL: SHA fanout is MD5 of the Wikimedia
+    # canonical filename. Avoid Wikimedia's rate-limited MediaWiki API.
+    from hashlib import md5
+    digest=md5(filename.encode("utf-8")).hexdigest()
+    url=("https://upload.wikimedia.org/wikipedia/commons/"+digest[0]+"/"+
+         digest[:2]+"/"+urllib.parse.quote(filename,safe="()_,"))
+    hdr={"User-Agent":"Mozilla/5.0 (compatible; GASCZoologySourceAudit/1.0)"}
+    import time
+    last_error=None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url,headers=hdr),timeout=60) as f:
+                raw=f.read(15_000_001)
+            assert 15_000 < len(raw) < 15_000_000, f"Source corrupt or oversized: {filename}"
+            return raw,url
+        except Exception as ex:
+            last_error=ex
+            if attempt<2:time.sleep(3*(attempt+1))
+    raise RuntimeError("Wikimedia source inaccessible: "+filename) from last_error
 
 def draw_master(record):
     org,plate,filename,credit,focus,note=record
