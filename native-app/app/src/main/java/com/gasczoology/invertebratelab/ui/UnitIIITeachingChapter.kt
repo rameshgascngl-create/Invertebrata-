@@ -129,7 +129,7 @@ internal fun UnitIIITeachingChapter(
             }
         }
         if (stages.isNotEmpty()) item(key = "u3-required-plate-gallery") {
-            UnitIIIPlateGallery(chapter.id, language)
+            UnitIIIPlateGallery(chapter.id, language, narrator)
         }
         if (stages.isNotEmpty()) item(key = "u3-interactive-life-cycle") {
             Column(
