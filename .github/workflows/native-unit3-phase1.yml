@@ -36,14 +36,22 @@ jobs:
           repository: rameshgascngl-create/Invertebrata-
           name: unit2-built-webp-masters
           path: native-app/app/src/main/assets/unit2
+      - name: Reuse exact historical Sycon bitmap from prior green Unit III APK
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38347398335
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-native-teaching-debug-qa-apk
+          path: /tmp/verified-unit3-apk
       - name: Prepare unmodified-source historical raster anatomy
         run: |
           python3 -m venv /tmp/u3art
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
-          /tmp/u3art/bin/python ci/build_sycon_1903_reference_png.py
+          python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
-          # Never make a 2026 Unit III draft depend on repeat archival web downloads.
+          # Sycon is SHA-pinned and recovered from a prior green APK; no network source download.
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
       - name: Verify true bitmap artwork and no generated geometry fallback
         run: |
@@ -99,12 +107,20 @@ jobs:
           repository: rameshgascngl-create/Invertebrata-
           name: unit2-built-webp-masters
           path: native-app/app/src/main/assets/unit2
+      - name: Reuse exact historical Sycon bitmap from prior green Unit III APK
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38347398335
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-native-teaching-debug-qa-apk
+          path: /tmp/verified-unit3-apk
       - name: Prepare identical offline anatomy source assets
         run: |
           python3 -m venv /tmp/u3art
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
-          /tmp/u3art/bin/python ci/build_sycon_1903_reference_png.py
+          python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
           # Never make a 2026 Unit III draft depend on repeat archival web downloads.
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
