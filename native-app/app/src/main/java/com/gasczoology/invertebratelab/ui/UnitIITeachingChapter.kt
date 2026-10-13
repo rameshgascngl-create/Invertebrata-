@@ -95,14 +95,66 @@ internal fun UnitIITeachingChapter(
                     "முதலில் விளக்கத்தைப் படித்து அசல் படத்தை ஆராய்க; அதன்பின் பயிற்சி வினாக்களைப் படிக்கவும்."))
             }
         }
+        if (stages.isNotEmpty()) item(key="independent-pencil-lesson-figures") {
+            Column(
+                modifier=Modifier.fillMaxWidth().testTag("u2-pencil-lesson-section"),
+                verticalArrangement=Arrangement.spacedBy(12.dp)
+            ) {
+                Text(tr(language,
+                    "TEXTBOOK ANATOMY · HISTORICAL PENCIL/INK RASTER PLATES",
+                    "பாடநூல் உடற்கூறு · வரலாற்றுச் சித்திரப் படக்கோப்புகள்"),
+                    style=MaterialTheme.typography.titleLarge,
+                    modifier=Modifier.semantics { heading() })
+                Text(tr(language,
+                    "These are static source illustrations, entirely separate from the interactive overlay. Source and anatomical sign-off are still pending.",
+                    "இவை மூல நூலின் நிலையான படங்கள்; தொடுதிறன் குறியீடுகளிலிருந்து முற்றிலும் தனியானவை. படத்தின் மூலமும் உடற்கூறு ஒப்புதலும் இன்னும் நிலுவையில் உள்ளன."),
+                    style=MaterialTheme.typography.bodyMedium)
+                if (sycon) {
+                    Card {
+                        Column(Modifier.padding(8.dp)) {
+                            UnitIIStaticLessonPlate(
+                                relativeStem="unit2/sycon_historical",
+                                language=language,
+                                tag="u2-sycon-historic-static-raster",
+                                captionEnglish="Sycon canal microanatomy — Augusta Foote Arnold (1903), public-domain original. IC, R, prosopyle and apopyle are separately identified. Expert review pending.",
+                                captionTamil="சைக்கான் நீர்க் கால்வாய் நுண் உடற்கூறு — ஆகஸ்டா ஃபூட் ஆர்னால்ட் (1903), பொதுப் பயன்பாட்டு அசல் படம். உட்செல்லும் கால்வாய், ஆரக் கால்வாய், புரோசோபைல், அப்போபைல் தனித்தனியாகக் குறிக்கப்பட்டுள்ளன. நிபுணர் மதிப்பாய்வு நிலுவையில் உள்ளது."
+                            )
+                        }
+                    }
+                } else if (obelia) {
+                    Card {
+                        Column(Modifier.padding(8.dp)) {
+                            UnitIIStaticLessonPlate(
+                                relativeStem="unit2/obelia_colony",
+                                language=language,
+                                tag="u2-obelia-colony-static-raster",
+                                captionEnglish="Obelia colony: hydranth, gonangium and protective thecae. Digital graphite draft; review pending.",
+                                captionTamil="ஒபீலியா கூட்டு: உணவுப் பாலிப், இனப்பெருக்கப் பாலிப், பாதுகாப்பு உறைகள். பென்சில் பாணி வரைவு; மதிப்பாய்வு நிலுவையில் உள்ளது."
+                            )
+                        }
+                    }
+                    Card {
+                        Column(Modifier.padding(8.dp)) {
+                            UnitIIStaticLessonPlate(
+                                relativeStem="unit2/obelia_lifecycle",
+                                language=language,
+                                tag="u2-obelia-life-static-raster",
+                                captionEnglish="Historical life-history scan (1933) showing reproductive and larval stages. Peer review pending.",
+                                captionTamil="இனப்பெருக்கம் மற்றும் இளவுயிரிப் பருவங்களைக் காட்டும் 1933 ஆம் ஆண்டின் வரலாற்றுப் படம். மதிப்பாய்வு நிலுவையில் உள்ளது."
+                            )
+                        }
+                    }
+                }
+            }
+        }
         if(stages.isNotEmpty()) item(key="interactive-atlas"){
             Column(verticalArrangement=Arrangement.spacedBy(10.dp),
                 modifier=Modifier.fillMaxWidth().testTag("u2-interactive-atlas")) {
                 Text(tr(language,
-                    if(sycon)"Sycon · original canal-system cross-section"
-                    else "Obelia · colony and life-history atlas",
-                    if(sycon)"சைக்கான் · அசல் நீர்க் கால்வாய் வெட்டுப் படம்"
-                    else "ஒபீலியா · கூட்டும் வாழ்க்கைச் சுழற்சிப் படமும்"),
+                    if(sycon)"INTERACTIVE ANATOMY · Sycon provisional canal hotspots"
+                    else "INTERACTIVE ANATOMY · Obelia colony and life-history hotspots",
+                    if(sycon)"தொடுதிறன் உடற்கூறு · சைக்கான் நீர்க் கால்வாய் வரைவு"
+                    else "தொடுதிறன் உடற்கூறு · ஒபீலியா கூட்டு மற்றும் வாழ்க்கைச் சுழற்சி"),
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics{heading()})
                 Text(tr(language,
