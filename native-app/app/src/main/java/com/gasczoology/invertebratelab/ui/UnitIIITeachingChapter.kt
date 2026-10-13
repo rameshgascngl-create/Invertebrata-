@@ -77,8 +77,8 @@ internal fun UnitIIITeachingChapter(
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.testTag("u3-lesson-title").semantics { heading() })
                 Text(u3t(language,
-                    "ILLUSTRATED TEXTBOOK DRAFT — Zoological, pencil-art and Tamil expert review pending.",
-                    "படவிளக்கப் பாட வரைவு — விலங்கியல், பென்சில் படங்கள், தமிழ் நிபுணர் ஒப்புதல் நிலுவையில் உள்ளது."),
+                    "ILLUSTRATED TEXTBOOK DRAFT — historical image anatomy, provenance and Tamil expert review pending.",
+                    "படவிளக்கப் பாட வரைவு — வரலாற்றுப் படங்களின் உடற்கூறு, மூலம், தமிழ் நிபுணர் ஒப்புதல் நிலுவையில் உள்ளது."),
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u3-draft-warning"))
             }
@@ -88,8 +88,8 @@ internal fun UnitIIITeachingChapter(
                 modifier = Modifier.fillMaxWidth().testTag("u3-lesson-illustration-section"),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text(u3t(language, "LESSON ANATOMY · ORIGINAL RASTER PLATE",
-                    "பாட உடற்கூறு · அசல் படக்கோப்பு"),
+                Text(u3t(language, "LESSON ANATOMY · HISTORICAL SCANNED ILLUSTRATION",
+                    "பாட உடற்கூறு · வரலாற்று அச்சுப்படத்தின் ஸ்கேன்"),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.semantics { heading() })
                 val stem = if (chapter.id == "u3-fasciola")
@@ -97,7 +97,7 @@ internal fun UnitIIITeachingChapter(
                 val picture = rememberRequiredRasterBitmap(stem)
                 if (picture == null) {
                     Text(u3t(language,
-                        "Full-resolution verified source plate is not yet integrated. No Canvas or SVG substitute will be shown.",
+                        "Historical source raster is missing or unreadable. No schematic Canvas or SVG substitute will be shown.",
                         "முழுத் தெளிவுள்ள சரிபார்க்கப்பட்ட மூலப்படம் இன்னும் இணைக்கப்படவில்லை. மாற்றாக Canvas அல்லது SVG படம் காட்டப்படாது."),
                         modifier = Modifier.testTag("u3-pencil-master-pending"),
                         color = MaterialTheme.colorScheme.error)
@@ -110,6 +110,18 @@ internal fun UnitIIITeachingChapter(
                         modifier = Modifier.fillMaxWidth()
                             .testTag("u3-static-pencil-raster"))
                 }
+                Text(
+                    if (chapter.id == "u3-fasciola")
+                        u3t(language,
+                            "Source: Encyclopaedia Britannica (1888), Trematoda Fig. 1. A–E show Fasciola organ systems and the egg. Each historical letter key requires source-based checking.",
+                            "மூலம்: என்சைக்ளோபீடியா பிரிட்டானிக்கா (1888), டிரெமடோடா படம் 1. A–E பகுதிகள் ஃபாசியோலாவின் உறுப்பமைப்புகளையும் முட்டையையும் காட்டுகின்றன; எழுத்துக் குறியீடுகள் மூலநூலுடன் சரிபார்க்கப்பட வேண்டும்.")
+                    else
+                        u3t(language,
+                            "Source: Paul Pfurtscheller, Zoologische Wandtafeln No. 38 (1925). This is a coloured historical anatomical wall chart, NOT a graphite-pencil scan. Anatomy review remains pending.",
+                            "மூலம்: பால் ப்ஃபுர்ட்ஷெல்லர், விலங்கியல் சுவர் படங்கள் எண் 38 (1925). இது நிறமுள்ள வரலாற்று உடற்கூறுப் படம்; கிராஃபைட் பென்சில் வரைபட ஸ்கேன் அல்ல. உடற்கூறு மதிப்பாய்வு நிலுவையில் உள்ளது."),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.testTag("u3-source-artwork-disclosure")
+                )
                 Text(u3t(language,
                     "Image authorship, original resolution, anatomical leader lines and reuse rights must be verified separately.",
                     "படத்தின் ஆசிரியர், அசல் தெளிவு, உறுப்புக் குறியீடுகள், மறுபயன்பாட்டு உரிமைகள் ஆகியவை தனியாகச் சரிபார்க்கப்பட வேண்டும்."),
@@ -122,8 +134,8 @@ internal fun UnitIIITeachingChapter(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Text(u3t(language,
-                    "INTERACTIVE LIFE CYCLE · separate from pencil anatomy",
-                    "தொடுதிறன் வாழ்க்கைச் சுழற்சி · பென்சில் உடற்கூறுப் படத்திலிருந்து தனி"),
+                    "INTERACTIVE LIFE CYCLE · separate from the historical anatomical plate",
+                    "தொடுதிறன் வாழ்க்கைச் சுழற்சி · வரலாற்று உடற்கூறுப் படத்திலிருந்து தனி"),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.semantics { heading() })
                 Text(u3t(language,
