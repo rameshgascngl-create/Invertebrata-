@@ -290,8 +290,8 @@ def ascaris_cycle():
     for x,y in pts:p.oval(x,y,.102,.100,2,215)
     egg(p,*pts[0],embryo=False);egg(p,*pts[1],embryo=True)
     # Oral ingestion is iconified by a small head and egg at the mouth.
-    p.oval(.79,.30,.049,.060,3,97);p.line([(.762,.320),(.820,.32)],3,100)
-    egg(p,.81,.297,.014,True)
+    p.oval(.79,.68,.049,.060,3,97);p.line([(.762,.700),(.820,.700)],3,100)
+    egg(p,.81,.677,.014,True)
     larvae(p,*pts[3]);lungs(p,*pts[4]);adult_pair(p,*pts[5])
     cycle_frame(p,pts)
     return p.save("ascaris","life-cycle")
