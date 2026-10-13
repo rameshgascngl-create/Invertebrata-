@@ -3,6 +3,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
   push:
     branches:
       - native/u3-type-studies-phase1-20261013
+      - native/u3-anatomy-atlas-candidate-20261013
   workflow_dispatch:
 
 permissions:
@@ -50,6 +51,21 @@ jobs:
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
           python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
+          /tmp/u3art/bin/python ci/build_unit3_anatomy_candidate_masters.py
+          /tmp/u3art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          stems=[
+            "fasciola/external","fasciola/digestive-reproductive","fasciola/life-cycle",
+            "ascaris/male-female-external","ascaris/female-internal","ascaris/life-cycle"
+          ]
+          for stem in stems:
+              path=Path("native-app/app/src/main/assets/type_studies")/(stem+".png")
+              assert path.is_file(),path
+              with Image.open(path) as im: im.verify()
+              with Image.open(path) as im: assert im.size==(960,1280) and im.format=="PNG",path
+          print("UNIT_III_SIX_RASTERS_PRESENT=PASS; ZOOLOGY_REVIEW=PENDING")
+          PY
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
           # Sycon is SHA-pinned and recovered from a prior green APK; no network source download.
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
@@ -121,6 +137,21 @@ jobs:
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
           python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
+          /tmp/u3art/bin/python ci/build_unit3_anatomy_candidate_masters.py
+          /tmp/u3art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          stems=[
+            "fasciola/external","fasciola/digestive-reproductive","fasciola/life-cycle",
+            "ascaris/male-female-external","ascaris/female-internal","ascaris/life-cycle"
+          ]
+          for stem in stems:
+              path=Path("native-app/app/src/main/assets/type_studies")/(stem+".png")
+              assert path.is_file(),path
+              with Image.open(path) as im: im.verify()
+              with Image.open(path) as im: assert im.size==(960,1280) and im.format=="PNG",path
+          print("UNIT_III_SIX_RASTERS_PRESENT=PASS; ZOOLOGY_REVIEW=PENDING")
+          PY
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
           # Never make a 2026 Unit III draft depend on repeat archival web downloads.
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
