@@ -41,6 +41,25 @@ class NativeUnitIIITeachingTest {
         }
     }
 
+    private fun capture(scene: String) {
+        rule.waitForIdle()
+        val context=androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext
+        val scale=if(context.resources.configuration.fontScale >= 1.95f) "200" else "100"
+        val path="/sdcard/Download/unit3-qa/unit3-"+scale+"-"+scene+".png"
+        val ui=androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().uiAutomation
+        android.os.ParcelFileDescriptor.AutoCloseInputStream(
+            ui.executeShellCommand("screencap -p "+path)).use { it.readBytes() }
+        val bytes=android.os.ParcelFileDescriptor.AutoCloseInputStream(
+            ui.executeShellCommand("cat "+path)).use { it.readBytes() }
+        val screenshot=checkNotNull(
+            android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size))
+        org.junit.Assert.assertTrue(bytes.size>15000)
+        org.junit.Assert.assertTrue(screenshot.height>screenshot.width)
+        screenshot.recycle()
+    }
+
     @Test fun fasciolaHasDistinctHistoricalLessonFigureAndOrderedSimulation() {
         openChapter("u3-fasciola",false)
         rule.onNodeWithTag("u3-lesson-title").assertExists()
@@ -48,6 +67,8 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-reader-u3-fasciola")
             .performScrollToNode(hasTestTag("u3-static-pencil-raster"))
         rule.onNodeWithTag("u3-static-pencil-raster").assertExists()
+        rule.onNodeWithTag("u3-static-pencil-raster").performScrollTo()
+        capture("fasciola-historical")
         rule.onNodeWithTag("u3-pencil-master-pending").assertDoesNotExist()
         rule.onNodeWithTag("u3-reader-u3-fasciola")
             .performScrollToNode(hasTestTag("u3-interactive-life-cycle"))
@@ -65,6 +86,9 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-static-pencil-raster"))
         rule.onNodeWithTag("u3-static-pencil-raster").assertExists()
+        rule.onNodeWithTag("u3-static-pencil-raster").performScrollTo()
+        capture("ascaris-historical")
+        rule.onNodeWithTag("u3-pencil-master-pending").assertDoesNotExist()
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-interactive-life-cycle"))
         rule.onNodeWithTag("u3-stage-lung-3")
