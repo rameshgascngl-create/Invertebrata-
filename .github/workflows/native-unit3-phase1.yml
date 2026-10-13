@@ -102,6 +102,14 @@ jobs:
           path: native-app/app/src/main/assets/unit3/*
           if-no-files-found: error
 
+      - name: Archive six digitally authored candidate masters
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-six-corrected-atlas-masters
+          path: native-app/app/src/main/assets/type_studies/**/*.png
+          if-no-files-found: error
+
   android-ui:
     needs: compile-and-atlas
     runs-on: ubuntu-24.04
