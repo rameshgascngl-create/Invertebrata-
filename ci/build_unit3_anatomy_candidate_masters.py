@@ -57,6 +57,25 @@ def font(sz, bold=False):
     return ImageFont.truetype(filename, sz)
 
 def fetch_commons(filename):
+    # Reuse source pixels already SHA-pinned by the existing 1888/1927
+    # historical plate restoration step. No duplicate Wikimedia download,
+    # extra scaling or raster-to-vector conversion of organism anatomy.
+    local = {
+        "EB_9th_Volume23_Trematota_Fig_1.png":
+            ("unit3/fasciola_type.png", (157,115,1443,1823)),
+        "Pfurtscheller_Table_38_a.png":
+            ("unit3/ascaris_type.png", (58,115,2234,2318))
+    }
+    if filename in local:
+        rel,box=local[filename]
+        parent=Path("native-app/app/src/main/assets")/rel
+        with Image.open(parent) as im:
+            cropped=im.crop(box)
+            assert cropped.width>=900 and cropped.height>=1200
+            buffer=io.BytesIO()
+            cropped.save(buffer, format="PNG")
+            raw=buffer.getvalue()
+        return raw, "https://commons.wikimedia.org/wiki/File:"+urllib.parse.quote(filename)
     # Direct Wikimedia static asset URL: SHA fanout is MD5 of the Wikimedia
     # canonical filename. Avoid Wikimedia's rate-limited MediaWiki API.
     from hashlib import md5
