@@ -28,21 +28,34 @@ for scale in 1.0 2.0; do
     sleep 1
   done
   [[ "$ready" == 1 ]] || { result="NOT_OFFLINE_$scale";exit 1;}
-  rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
-  if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
-    -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIIITeachingTest,com.gasczoology.invertebratelab.NativeUnitIITeachingTest > "$folder/gradle.txt" 2>&1;then
-    result="UI_TEST_FAILED_$scale"
-    cp -a native-app/app/build/outputs/androidTest-results/connected "$folder/results" 2>/dev/null || true
-    exit 1
-  fi
-  cp -a native-app/app/build/outputs/androidTest-results/connected "$folder/results"
-  python3 - "$folder/results" <<'PY'
+  # Android Gradle runner does not reliably accept multiple comma-separated
+  # classes here. Previous run executed ONLY Unit III (3 tests), yet our
+  # aggregate assertion expected Unit II + III (7). Invoke independently,
+  # archive each XML before Gradle replaces the connected test-results folder,
+  # and verify the exact class names/test totals.
+  for suite in UnitIIITeachingTest UnitIITeachingTest; do
+    result="RUNNING_${scale}_${suite}"
+    rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
+    if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
+      -Pandroid.testInstrumentationRunnerArguments.class="com.gasczoology.invertebratelab.Native${suite}" \
+      > "$folder/gradle-${suite}.txt" 2>&1; then
+      result="UI_TEST_FAILED_${scale}_${suite}"
+      cp -a native-app/app/build/outputs/androidTest-results/connected "$folder/results-${suite}" 2>/dev/null || true
+      exit 1
+    fi
+    cp -a native-app/app/build/outputs/androidTest-results/connected "$folder/results-${suite}"
+    python3 - "$folder/results-${suite}" "$suite" <<'PY'
 from pathlib import Path
 import sys,xml.etree.ElementTree as ET
+target= "com.gasczoology.invertebratelab.Native" + sys.argv[2]
 cases=[x for f in Path(sys.argv[1]).rglob('TEST-*.xml') for x in ET.parse(f).getroot().iter('testcase')]
-assert len(cases)==7,len(cases)
+expected = 3 if sys.argv[2] == "UnitIIITeachingTest" else 4
+assert len(cases)==expected,(sys.argv[2],len(cases),expected)
+assert all(c.get("classname")==target for c in cases),(target,[c.get("classname") for c in cases])
 assert all(c.find(y) is None for c in cases for y in ('failure','error','skipped'))
+print("PASS suite="+sys.argv[2]+" count="+str(len(cases)))
 PY
+  done
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
