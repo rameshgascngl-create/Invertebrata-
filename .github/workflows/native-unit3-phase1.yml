@@ -7,6 +7,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   compile-and-atlas:
@@ -21,15 +22,22 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Reuse verified Unit II raster image artifact from eab3d02e
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38327690043
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit2-built-webp-masters
+          path: native-app/app/src/main/assets/unit2
       - name: Prepare unmodified-source historical raster anatomy
         run: |
           python3 -m venv /tmp/u3art
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
-          /tmp/u3art/bin/python ci/repair_unit2_plate_masters.py
-          /tmp/u3art/bin/python ci/refine_unit2_sycon_prosopyle.py
-          /tmp/u3art/bin/python ci/build_obelia_1933_lifecycle_png.py
-          /tmp/u3art/bin/python ci/build_obelia_settlement_1933_png.py
+          # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
+          # Never make a 2026 Unit III draft depend on repeat archival web downloads.
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
       - name: Verify true bitmap artwork and no generated geometry fallback
         run: |
           /tmp/u3art/bin/python - <<'PY'
@@ -72,15 +80,22 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Reuse verified Unit II raster image artifact from eab3d02e
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38327690043
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit2-built-webp-masters
+          path: native-app/app/src/main/assets/unit2
       - name: Prepare identical offline anatomy source assets
         run: |
           python3 -m venv /tmp/u3art
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
-          /tmp/u3art/bin/python ci/repair_unit2_plate_masters.py
-          /tmp/u3art/bin/python ci/refine_unit2_sycon_prosopyle.py
-          /tmp/u3art/bin/python ci/build_obelia_1933_lifecycle_png.py
-          /tmp/u3art/bin/python ci/build_obelia_settlement_1933_png.py
+          # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
+          # Never make a 2026 Unit III draft depend on repeat archival web downloads.
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
