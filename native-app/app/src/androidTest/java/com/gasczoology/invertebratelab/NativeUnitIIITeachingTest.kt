@@ -118,6 +118,7 @@ class NativeUnitIIITeachingTest {
             .assertTextContains("Ventral sucker",substring=true)
         rule.onNodeWithTag("u3-organ-explanation-external").assertExists()
         rule.onNodeWithTag("u3-speak-organ-external").assertExists()
+        capture("fasciola-revised")
     }
 
     @Test fun tamilAscarisPlatesAndFemaleVulvaHotspotRemainAccessible() {
@@ -138,6 +139,7 @@ class NativeUnitIIITeachingTest {
             .assertTextContains("வல்வா",substring=true)
         rule.onNodeWithTag("u3-organ-explanation-male-female-external").assertExists()
         rule.onNodeWithTag("u3-speak-organ-male-female-external").assertExists()
+        capture("ascaris-revised")
     }
 
     @Test fun allSevenUnitThreeChaptersOpenNativeTextbooksBeforeQuestions() {
