@@ -128,6 +128,9 @@ internal fun UnitIIITeachingChapter(
                     style = MaterialTheme.typography.bodySmall)
             }
         }
+        if (stages.isNotEmpty()) item(key = "u3-required-plate-gallery") {
+            UnitIIIPlateGallery(chapter.id, language)
+        }
         if (stages.isNotEmpty()) item(key = "u3-interactive-life-cycle") {
             Column(
                 modifier = Modifier.fillMaxWidth().testTag("u3-interactive-life-cycle"),
