@@ -188,7 +188,7 @@ object UnitIIILessons {
 
     val fasciolaLifeCycle = listOf(
         LifeStage("egg", b("01 · Eggs passed in faeces","01 · மலத்துடன் வெளியேறும் முட்டைகள்"),
-            b("Eggs leave the definitive host unembryonated.","கருவுறாத வளர்ச்சி நிலையில் உள்ள முட்டைகள் இறுதிப் புரவலனிலிருந்து வெளியேறுகின்றன.")),
+            b("Eggs leave the definitive host unembryonated.","கரு வளர்ச்சி இன்னும் தொடங்காத முட்டைகள் இறுதிப் புரவலனிலிருந்து வெளியேறுகின்றன.")),
         LifeStage("miracidium", b("02 · Ciliated miracidium","02 · குறுஇழை மிராசிடியம்"),
             b("Embryonated eggs hatch in freshwater; a miracidium infects a lymnaeid snail.","நன்னீரில் வளர்ந்த முட்டையிலிருந்து வெளிவரும் மிராசிடியம் லிம்னேயிட் நத்தையைத் தொற்றுகிறது.")),
         LifeStage("snail", b("03 · Sporocyst and redia in snail","03 · நத்தைக்குள் ஸ்போரோசிஸ்ட் மற்றும் ரீடியா"),
