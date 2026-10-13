@@ -9,6 +9,12 @@ permissions:
   contents: read
   actions: read
 
+# Do not run obsolete source commits concurrently: every candidate must have
+# unambiguous exact-commit XML, screenshot and debug APK evidence.
+concurrency:
+  group: unit3-native-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   compile-and-atlas:
     runs-on: ubuntu-24.04
