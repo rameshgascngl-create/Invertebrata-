@@ -4,7 +4,7 @@ E="qa-evidence/unit3"
 D="/sdcard/Download/unit3-qa"
 mkdir -p "$E"
 result=NOT_STARTED
-trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull "$D" "$E/screen-captures" > "$E/pull.log" 2>&1 || true; find "$E" -name "*.png" -print0 | xargs -0 -r sha256sum > "$E/SHA256SUMS"; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
+trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt";  adb pull "$D" "$E/screen-captures" > "$E/pull.log" 2>&1 || true; adb pull "/sdcard/Download/unit2-qa" "$E/unit2-screens" > "$E/unit2-pull.log" 2>&1 || true; find "$E" -name "*.png" -print0 | xargs -0 -r sha256sum > "$E/SHA256SUMS"; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
 for n in {1..50}; do
   if adb shell mkdir -p "$D" >/dev/null 2>&1; then break; fi
   sleep 1
@@ -30,7 +30,7 @@ for scale in 1.0 2.0; do
   [[ "$ready" == 1 ]] || { result="NOT_OFFLINE_$scale";exit 1;}
   rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
   if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
-    -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIIITeachingTest > "$folder/gradle.txt" 2>&1;then
+    -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIIITeachingTest,com.gasczoology.invertebratelab.NativeUnitIITeachingTest > "$folder/gradle.txt" 2>&1;then
     result="UI_TEST_FAILED_$scale"
     cp -a native-app/app/build/outputs/androidTest-results/connected "$folder/results" 2>/dev/null || true
     exit 1
@@ -40,7 +40,7 @@ for scale in 1.0 2.0; do
 from pathlib import Path
 import sys,xml.etree.ElementTree as ET
 cases=[x for f in Path(sys.argv[1]).rglob('TEST-*.xml') for x in ET.parse(f).getroot().iter('testcase')]
-assert len(cases)==3,len(cases)
+assert len(cases)==7,len(cases)
 assert all(c.find(y) is None for c in cases for y in ('failure','error','skipped'))
 PY
 done
