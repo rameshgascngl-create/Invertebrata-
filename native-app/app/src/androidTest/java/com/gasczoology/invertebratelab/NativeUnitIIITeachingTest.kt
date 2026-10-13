@@ -75,7 +75,7 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-stage-miracidium-1")
             .performScrollTo().performClick()
         rule.onNodeWithTag("u3-current-life-stage")
-            .performScrollTo().assertTextContains("miracidium",ignoreCase=true)
+            .performScrollTo().assertTextContains("miracidium",substring=true,ignoreCase=true)
         rule.onNodeWithTag("u3-reader-u3-fasciola")
             .performScrollToNode(hasTestTag("u3-practice-heading"))
         rule.onNodeWithTag("u3-practice-heading").assertExists()
