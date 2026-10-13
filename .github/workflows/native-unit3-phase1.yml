@@ -64,7 +64,10 @@ jobs:
               assert path.is_file(),path
               with Image.open(path) as im: im.verify()
               with Image.open(path) as im: assert im.size==(960,1280) and im.format=="PNG",path
-          print("UNIT_III_SIX_RASTERS_PRESENT=PASS; ZOOLOGY_REVIEW=PENDING")
+          source=Path("ci/build_unit3_anatomy_candidate_masters.py").read_text()
+          assert "def branched_gonad" not in source and "def worm(" not in source, "Procedural anatomy must never return"
+          assert "fetch_commons" in source and "source_sha256" in source, "Source-backed anatomy provenance required"
+          print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
           PY
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
           # Sycon is SHA-pinned and recovered from a prior green APK; no network source download.
@@ -94,6 +97,14 @@ jobs:
           PY
       - name: Native Kotlin compile + immutable A5 + teaching tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Preserve provenance and scientific-review HOLD
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-source-provenance-review
+          path: qa-evidence/unit3/source-backed-plate-manifest.json
+          if-no-files-found: warn
+
       - name: Archive the exact artwork used for QA
         if: always()
         uses: actions/upload-artifact@v4
@@ -102,11 +113,11 @@ jobs:
           path: native-app/app/src/main/assets/unit3/*
           if-no-files-found: error
 
-      - name: Archive six digitally authored candidate masters
+      - name: Archive six historically sourced anatomical raster masters
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: unit3-six-corrected-atlas-masters
+          name: unit3-six-sourced-atlas-masters
           path: native-app/app/src/main/assets/type_studies/**/*.png
           if-no-files-found: error
 
@@ -158,7 +169,10 @@ jobs:
               assert path.is_file(),path
               with Image.open(path) as im: im.verify()
               with Image.open(path) as im: assert im.size==(960,1280) and im.format=="PNG",path
-          print("UNIT_III_SIX_RASTERS_PRESENT=PASS; ZOOLOGY_REVIEW=PENDING")
+          source=Path("ci/build_unit3_anatomy_candidate_masters.py").read_text()
+          assert "def branched_gonad" not in source and "def worm(" not in source, "Procedural anatomy must never return"
+          assert "fetch_commons" in source and "source_sha256" in source, "Source-backed anatomy provenance required"
+          print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
           PY
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
           # Never make a 2026 Unit III draft depend on repeat archival web downloads.
