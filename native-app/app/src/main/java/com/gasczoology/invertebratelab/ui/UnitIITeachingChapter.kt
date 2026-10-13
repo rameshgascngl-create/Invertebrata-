@@ -25,6 +25,18 @@ private val currentBlue=Color(0xFF176B9A)
 private val parchment=Color(0xFFFFFCF4)
 private fun tr(lang: AppLanguage,en:String,ta:String)=if(lang==AppLanguage.TAMIL) ta else en
 
+// Separate biological descriptions for the two touchable source-drawn
+// Obelia stages. Both belong to lesson stage 6, but are NOT identical organs.
+private fun obeliaSettlementFocus(focus: Int): BilingualText? = when (focus) {
+    0 -> BilingualText(
+        "E - Attached planula. The ciliated larva settles onto a firm substratum, attaches at one end, and starts metamorphosis towards a feeding polyp.",
+        "E - ஒட்டிய பிளானுலா. சிலியாப் பிளானுலா உறுதியான அடித்தளத்தில் ஒட்டிக் கொண்டு உணவூட்டும் பாலிப்பாக உருமாறத் தொடங்குகிறது.")
+    1 -> BilingualText(
+        "F - Primary hydranth. After metamorphosis, a tentacle-bearing feeding polyp develops. A basal stolon, or hydrorhiza, extends and produces the new colony.",
+        "F - முதன்மை ஹைட்ராந்த். உருமாற்றத்திற்குப் பின் உணவூட்டும் பாலிப்பில் உணர்நீட்சிகள் தோன்றுகின்றன. அடியில் ஹைட்ரோரிசா வளர்ந்து புதிய கூட்டை உருவாக்குகிறது.")
+    else -> null
+}
+
 /**
  * Type-study teaching is deliberately BEFORE the independently validated A5 questions.
  * A chapter returns to the original native NavHost and persisted CHAPTER destination.
@@ -51,6 +63,7 @@ internal fun UnitIITeachingChapter(
     }
     var index by rememberSaveable(chapter.id){mutableIntStateOf(0)}
     var playing by rememberSaveable(chapter.id){mutableStateOf(false)}
+    var selectedSettlementFocus by rememberSaveable(chapter.id){mutableIntStateOf(-1)}
     LaunchedEffect(chapter.id,playing) {
         if(playing && stages.isNotEmpty()){
             while(playing && index<stages.lastIndex) {
@@ -103,10 +116,13 @@ internal fun UnitIITeachingChapter(
                         sycon=sycon,
                         progress=p,
                         language=language,
-                        onSelect={stage ->
+                        onSelect={stage, focus ->
                             index=stage
+                            selectedSettlementFocus = if(obelia && stage == 5) focus else -1
                             playing=false
-                            narrator.speak(stages[stage].explanation,language)
+                            val chosen = if (obelia && stage == 5)
+                                obeliaSettlementFocus(focus) else null
+                            narrator.speak(chosen ?: stages[stage].explanation,language)
                         }
                     )
                 }
@@ -128,7 +144,11 @@ internal fun UnitIITeachingChapter(
                             if(playing)"நிறுத்து" else "இயக்கு"))
                     }
                 }
-                Button(onClick={narrator.speak(stages[index].explanation,language)},
+                Button(onClick={
+                    val chosen = if(obelia && index == 5)
+                        obeliaSettlementFocus(selectedSettlementFocus) else null
+                    narrator.speak(chosen ?: stages[index].explanation,language)
+                },
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("u2-speak-stage")) {
                     Text(tr(language,"Hear this structure (installed offline voice)",
                         "இந்த அமைப்பைக் கேட்க (நிறுவிய ஆஃப்லைன் குரல்)"))

@@ -241,11 +241,15 @@ class NativeUnitIITeachingTest {
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Settlement and new colony")
+        rule.onNodeWithTag("u2-selected-substage").performScrollTo()
+            .assertTextContains("F · Primary feeding polyp", substring=true)
         // E: the attached planula on its substrate.
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
             click(androidx.compose.ui.geometry.Offset(width*.625f,height*.724f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Settlement and new colony")
+        rule.onNodeWithTag("u2-selected-substage").performScrollTo()
+            .assertTextContains("E · Attached transforming planula", substring=true)
     }
 }

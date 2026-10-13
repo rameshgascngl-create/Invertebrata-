@@ -69,7 +69,7 @@ internal fun UnitIIImagePlate(
     sycon: Boolean,
     progress: Float,
     language: AppLanguage,
-    onSelect: (Int) -> Unit
+    onSelect: (Int, Int) -> Unit
 ) {
     val lifeHistory = !sycon && progress.roundToInt() >= 3
     val settlement = !sycon && progress.roundToInt() >= 5
@@ -99,6 +99,9 @@ internal fun UnitIIImagePlate(
     var scale by rememberSaveable(stem) { mutableFloatStateOf(1f) }
     var pan by remember(stem) { mutableStateOf(Offset.Zero) }
     var plateSize by remember(stem) { mutableStateOf(IntSize.Zero) }
+    // Must identify which distinct structure was touched even if two
+    // nearby structures share one lesson stage (Obelia E and F).
+    var selectedHotspotIndex by remember(stem) { mutableIntStateOf(-1) }
     val transform = rememberTransformableState { zoomDelta,panDelta,_ ->
         val updated=(scale*zoomDelta).coerceIn(1f,4f)
         val limitX=(updated-1f)*plateSize.width*.5f
@@ -147,7 +150,9 @@ internal fun UnitIIImagePlate(
                                 if(nearest!=null) {
                                     val dx=xx-nearest.x;val dy=yy-nearest.y
                                     if(dx*dx+dy*dy<=nearest.radius*nearest.radius) {
-                                        onSelect(nearest.stage)
+                                        val touched = targets.indexOf(nearest)
+                                        selectedHotspotIndex = touched
+                                        onSelect(nearest.stage, touched)
                                     }
                                 }
                             }
@@ -158,7 +163,9 @@ internal fun UnitIIImagePlate(
                             else "Obelia pencil-style colony plate. Pinch to enlarge; select a polyp or medusa."
                         }
                 ){
-                    val selected=targets.firstOrNull{it.stage==progress.roundToInt()}
+                    val selected=targets.getOrNull(selectedHotspotIndex)
+                        ?.takeIf { it.stage==progress.roundToInt() }
+                        ?: targets.firstOrNull{it.stage==progress.roundToInt()}
                     if(selected!=null) {
                         val center=Offset(selected.x*size.width,selected.y*size.height)
                         drawCircle(Color(0xFFD36A27),radius=14f,center=center,
@@ -191,6 +198,20 @@ internal fun UnitIIImagePlate(
             modifier=Modifier.fillMaxWidth().testTag("u2-anatomical-correction"),
             style=MaterialTheme.typography.bodySmall,
             color=MaterialTheme.colorScheme.onSurface)
+        if (settlement) {
+            val label = if (selectedHotspotIndex == 1) {
+                if (language == AppLanguage.TAMIL)
+                    "F · முதன்மைப் பாலிப் (ஹைட்ராந்த்)"
+                else "F · Primary feeding polyp (hydranth)"
+            } else {
+                if (language == AppLanguage.TAMIL)
+                    "E · அடித்தளத்தில் ஒட்டிய பிளானுலா"
+                else "E · Attached transforming planula"
+            }
+            Text(label, modifier=Modifier.fillMaxWidth()
+                .testTag("u2-selected-substage"),
+                style=MaterialTheme.typography.labelLarge)
+        }
         val zoomHint=if(language==AppLanguage.TAMIL)
             "இரு விரல்களால் பெரிதாக்கவும்; குறியிட்ட அமைப்பைத் தொடவும்"
         else "Pinch to zoom; touch a marked anatomical structure"
