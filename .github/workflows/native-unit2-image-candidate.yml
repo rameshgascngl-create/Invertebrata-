@@ -21,6 +21,7 @@ jobs:
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
           /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
           /tmp/u2pillow/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/u2pillow/bin/python ci/build_obelia_settlement_1933_png.py
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
       - uses: actions/setup-java@v4
         with:
@@ -49,11 +50,13 @@ jobs:
           assert "SyconCanalCanvas" not in chapter and "ObeliaColonyCanvas" not in chapter, "Legacy Canvas anatomy present"
           assert "fallback()" not in image_ui and "u2-raster-bitmap-visible" in image_ui, "Raster-only adapter not enforced"
           assert "rememberRequiredRasterBitmap(stem, pngOnly=lifeHistory)" in image_ui, "Obelia life cycle can silently revert to obsolete WebP"
+          assert 'else if (settlement) "unit2/obelia_settlement"' in image_ui, "Settlement must use independent pencil raster plate"
+          assert "obeliaSettlementTargets" in image_ui, "Settlement hotspots missing"
           assert "RasterArtworkPolicy.selectAsset(" in loader, "Shared raster loader bypassed policy"
           assert "PNG first" in policy and '"png", "webp"' in policy, "Approved raster formats changed"
           for organism in ("sycon","obelia","fasciola","ascaris","earthworm","penaeus","pila","asterias"):
               assert f'TypeStudyRequirement("{organism}"' in manifest, f"Future-type-study raster contract missing: {organism}"
-          for name in ("sycon_plate","obelia_colony","obelia_lifecycle"):
+          for name in ("sycon_plate","obelia_colony","obelia_lifecycle","obelia_settlement"):
               file=next((root/(name+ext) for ext in (".png",".webp") if (root/(name+ext)).exists()),None)
               assert file is not None, f"Missing labelled raster plate: {name}"
               with Image.open(file) as im:
@@ -100,6 +103,7 @@ jobs:
           python3 -m venv /tmp/unit2art
           /tmp/unit2art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/unit2art/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/unit2art/bin/python ci/build_obelia_settlement_1933_png.py
           /tmp/unit2art/bin/python - <<'PY'
           from pathlib import Path
           from PIL import Image
@@ -133,6 +137,7 @@ jobs:
           /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
           /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
           /tmp/u2pillow/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/u2pillow/bin/python ci/build_obelia_settlement_1933_png.py
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
       - uses: actions/setup-java@v4
         with:

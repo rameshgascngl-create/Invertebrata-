@@ -53,10 +53,15 @@ private val obeliaColonyTargets = listOf(
     AtlasTarget(2,.67f,.39f)   // gonangium (theca, blastostyle, buds)
 )
 private val obeliaLifeHistoryTargets = listOf(
-    AtlasTarget(3,.66f,.70f,.09f),  // free medusae in historical scan (right lower region)
-    AtlasTarget(4,.26f,.68f,.09f),  // ciliated planula in historical scan (left lower region)
-    AtlasTarget(5,.794f,.9186f,.060f) // settlement/new colony points to stage 7 legend;
-                                  // separate morphology panel still requires academic review
+    AtlasTarget(3,.66f,.70f,.09f),  // free medusae in historical scan
+    AtlasTarget(4,.26f,.68f,.09f),  // ciliated planula in historical scan
+    AtlasTarget(5,.794f,.9186f,.060f) // settlement stage selector (new plate switches below)
+)
+// Independently pinned 1933 source geometry, 1024x814 pasted at (238,143)
+// on a 1500x1250 labelled PNG. Stage D at right, E attached, F primary polyp.
+private val obeliaSettlementTargets = listOf(
+    AtlasTarget(5,.625f,.724f,.10f), // E: attached planula / hydrula, 1933 fig. 66
+    AtlasTarget(5,.479f,.560f,.10f)  // F: young primary hydranth + basal stolon
 )
 
 @Composable
@@ -67,7 +72,9 @@ internal fun UnitIIImagePlate(
     onSelect: (Int) -> Unit
 ) {
     val lifeHistory = !sycon && progress.roundToInt() >= 3
+    val settlement = !sycon && progress.roundToInt() >= 5
     val stem = if (sycon) "unit2/sycon_plate"
+               else if (settlement) "unit2/obelia_settlement"
                else if (lifeHistory) "unit2/obelia_lifecycle"
                else "unit2/obelia_colony"
     // Shared type-study raster loader. The image is never replaced by
@@ -86,7 +93,9 @@ internal fun UnitIIImagePlate(
     }
 
     val targets = if (sycon) syconTargets
-                  else if (lifeHistory) obeliaLifeHistoryTargets else obeliaColonyTargets
+                  else if (settlement) obeliaSettlementTargets
+                  else if (lifeHistory) obeliaLifeHistoryTargets
+                  else obeliaColonyTargets
     var scale by rememberSaveable(stem) { mutableFloatStateOf(1f) }
     var pan by remember(stem) { mutableStateOf(Offset.Zero) }
     var plateSize by remember(stem) { mutableStateOf(IntSize.Zero) }
@@ -119,6 +128,7 @@ internal fun UnitIIImagePlate(
                 Image(
                     bitmap=bitmap,
                     contentDescription=if(sycon) "Labelled Sycon pencil plate image"
+                        else if(settlement) "Obelia labelled planula attachment and primary polyp pencil drawing"
                         else if(lifeHistory) "Labelled Obelia life-history pencil plate image"
                         else "Labelled Obelia colony pencil plate image",
                     modifier=Modifier.fillMaxSize().testTag("u2-raster-bitmap-visible"),
@@ -168,6 +178,10 @@ internal fun UnitIIImagePlate(
             if(language==AppLanguage.TAMIL)
                 "படத் திருத்தம்: கோனோதீக்கா என்பது பாதுகாப்பு உறை. கோனாஞ்சியம் இனப்பெருக்க பாலிப்; அதன் பிளாஸ்டோஸ்டைலில் மெடூசா மொட்டுகள் தோன்றுகின்றன."
             else "Plate correction: gonotheca = protective sheath; gonangium = reproductive polyp containing a blastostyle and medusa buds."
+        } else if(settlement) {
+            if(language==AppLanguage.TAMIL)
+                "பிளானுலா அடித்தளத்தில் ஒட்டிக் கொண்டு உருமாற்றம் அடைகிறது. முதல் உணவூட்டும் பாலிப்பில் உணர்நீட்சிகள் தோன்றுகின்றன; ஹைட்ரோரிசா வளர்ந்து புதிய கூட்டை உருவாக்குகிறது."
+            else "The ciliated planula attaches to the substratum and metamorphoses into a primary feeding polyp. A basal stolon (hydrorhiza) develops, followed by colony growth."
         } else {
             if(language==AppLanguage.TAMIL)
                 "மெடூசா இனச்செல்களால் பாலின இனப்பெருக்கம் செய்கிறது; கருவுற்ற முட்டை வளர்ந்து பிளானுலாவாகிறது."

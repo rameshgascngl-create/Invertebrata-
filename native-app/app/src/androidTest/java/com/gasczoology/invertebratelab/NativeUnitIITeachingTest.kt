@@ -125,7 +125,7 @@ class NativeUnitIITeachingTest {
             rule.onNodeWithTag("u2-stage-"+id).performScrollTo()
                 .assertHasClickAction().performClick()
             rule.onNodeWithTag("u2-stage-explanation").assertExists()
-            if(id in setOf("hydranth","gonangium","medusa","planula")) {
+            if(id in setOf("hydranth","gonangium","medusa","planula","settlement")) {
                 rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
                 captureRealScreen("obelia-"+id)
             }
@@ -220,6 +220,30 @@ class NativeUnitIITeachingTest {
             .assertTextEquals("05 · Planula larva")
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
             click(androidx.compose.ui.geometry.Offset(width*.794f,height*.9186f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("06 · Settlement and new colony")
+        // The settlement stage MUST switch to Wolcott's hand-drawn PNG.
+        context.assets.open("unit2/obelia_settlement.png").use { stream ->
+            val info=android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds=true }
+            BitmapFactory.decodeStream(stream,null,info)
+            org.junit.Assert.assertEquals("image/png",info.outMimeType)
+            org.junit.Assert.assertEquals(1500,info.outWidth)
+            org.junit.Assert.assertEquals(1250,info.outHeight)
+        }
+        rule.onNodeWithTag("u2-atlas-asset-missing").assertDoesNotExist()
+        rule.onNodeWithTag("u2-raster-bitmap-visible").assertExists()
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
+        captureRealScreen("obelia-settlement-english")
+        // F: first feeding polyp in historical Fig.66, not a polygon fallback.
+        rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.479f,height*.560f))
+        }
+        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+            .assertTextEquals("06 · Settlement and new colony")
+        // E: the attached planula on its substrate.
+        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
+            click(androidx.compose.ui.geometry.Offset(width*.625f,height*.724f))
         }
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Settlement and new colony")

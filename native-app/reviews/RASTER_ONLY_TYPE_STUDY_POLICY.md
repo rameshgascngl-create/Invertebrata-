@@ -79,3 +79,23 @@ morphology; that subplate still requires academically reviewed original art.**
 Passing asset dimensions does not close the academic review gate.
 
 **Obelia life-history fails closed:** Native `UnitIIImagePlate` calls the shared loader with `pngOnly=lifeHistory`. If the generated high-resolution PNG is absent, it displays a visible missing-plate error; the 730x300 superseded WebP must never be silently selected. The historic file remains in the candidate branch only as unaccepted archival material.
+
+
+## Unit II historical settlement supplement
+
+The separate plate \`unit2/obelia_settlement.png\` is generated only from
+Wolcott, Robert Henry (1933), *Animal Biology*, Fig. 66 (public-domain,
+Internet Archive Book Images / Flickr):
+https://www.flickr.com/photos/internetarchivebookimages/18197697381
+
+The figure shows: D (swimming planula), E (attached transforming larva),
+F (first hydranth on a basal stolon), and A (budding branch of a young
+colony). Original scanned illustration pixels (1024×814) are embedded
+1:1 in a labelled PNG (1500×1250), **not upscaled** and not reconstructed
+with SVG or Compose Canvas anatomy. Source SHA-256 is pinned:
+\`c47f9514827b1407ababed351a52aea6e975d4482569c1caa36e19c9e6a67f9e\`.
+
+Both E and F have image-relative touch targets and English/Tamil native
+stage explanations. Obelia stage six exclusively selects the settlement
+PNG; a missing file must display the no-fallback error. Human zoological
+review and physical-device acceptance remain pending.
