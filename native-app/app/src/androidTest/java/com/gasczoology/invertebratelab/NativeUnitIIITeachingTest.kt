@@ -110,7 +110,7 @@ class NativeUnitIIITeachingTest {
         }
         rule.onNodeWithTag("u3-reader-u3-fasciola")
             .performScrollToNode(hasTestTag("u3-plate-touch-external"))
-        rule.onNodeWithTag("u3-source-hotspot-review-hold").assertExists()
+        rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
         rule.onNodeWithTag("u3-hotspot-external-acetabulum")
             .performScrollTo().performClick()
         rule.onNodeWithTag("u3-selected-organ-external")
@@ -130,7 +130,7 @@ class NativeUnitIIITeachingTest {
         }
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-plate-touch-male-female-external"))
-        rule.onNodeWithTag("u3-source-hotspot-review-hold").assertExists()
+        rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
         rule.onNodeWithTag("u3-hotspot-male-female-external-female-vulva")
             .performScrollTo().performClick()
         rule.onNodeWithTag("u3-selected-organ-male-female-external")
