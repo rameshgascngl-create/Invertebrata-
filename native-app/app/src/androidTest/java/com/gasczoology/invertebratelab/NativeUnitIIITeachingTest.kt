@@ -112,7 +112,7 @@ class NativeUnitIIITeachingTest {
             .performScrollToNode(hasTestTag("u3-plate-touch-external"))
         rule.onNodeWithTag("u3-plate-touch-external")
             .performTouchInput {
-                click(androidx.compose.ui.geometry.Offset(size.width * .5f,size.height * .282f))
+                click(androidx.compose.ui.geometry.Offset(width * .5f,height * .282f))
             }
         rule.onNodeWithTag("u3-selected-organ-external")
             .assertTextContains("Ventral sucker",substring=true)
@@ -133,7 +133,7 @@ class NativeUnitIIITeachingTest {
             .performScrollToNode(hasTestTag("u3-plate-touch-male-female-external"))
         rule.onNodeWithTag("u3-plate-touch-male-female-external")
             .performTouchInput {
-                click(androidx.compose.ui.geometry.Offset(size.width * .310f,size.height * .386f))
+                click(androidx.compose.ui.geometry.Offset(width * .310f,height * .386f))
             }
         rule.onNodeWithTag("u3-selected-organ-male-female-external")
             .assertTextContains("வல்வா",substring=true)
