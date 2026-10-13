@@ -20,7 +20,7 @@ SOURCES=[
    "title":"FASCIOLA HEPATICA — HISTORICAL ANATOMY",
    "credit":"Encyclopaedia Britannica, Ninth Edition (1888), Trematoda Fig. 1 · Public Domain"},
   {"id":"ascaris_type","url":"https://upload.wikimedia.org/wikipedia/commons/8/86/Pfurtscheller_Table_38_a.png",
-   "sha1":None,"dims":(2176,2203),
+   "sha1":"41632e61a2e5eeef903f118946bcd839b0a998f0","dims":(2176,2203),
    "title":"ASCARIS LUMBRICOIDES — HISTORICAL ANATOMY",
    "credit":"Paul Pfurtscheller, Zoologische Wandtafeln (pre-1927) · Public Domain"},
 ]
