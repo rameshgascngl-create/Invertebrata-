@@ -1,0 +1,122 @@
+name: Unit III native teaching candidate - isolated engineering acceptance
+'on':
+  push:
+    branches:
+      - native/u3-type-studies-phase1-20261013
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-and-atlas:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Prepare unmodified-source historical raster anatomy
+        run: |
+          python3 -m venv /tmp/u3art
+          /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
+          /tmp/u3art/bin/python ci/repair_unit2_plate_masters.py
+          /tmp/u3art/bin/python ci/refine_unit2_sycon_prosopyle.py
+          /tmp/u3art/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/u3art/bin/python ci/build_obelia_settlement_1933_png.py
+      - name: Verify true bitmap artwork and no generated geometry fallback
+        run: |
+          /tmp/u3art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root=Path("native-app/app/src/main/assets/unit3")
+          for stem in ("fasciola_type","ascaris_type"):
+              file=root/(stem+".png")
+              assert file.is_file(), f"Missing original historical plate: {file}"
+              with Image.open(file) as im:
+                  im.verify()
+              with Image.open(file) as im:
+                  assert im.format=="PNG" and im.width>=1300 and im.height>=1600
+          text=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIITeachingChapter.kt").read_text()
+          assert "rememberRequiredRasterBitmap(stem)" in text
+          assert "u3-pencil-master-pending" in text
+          assert "u3-interactive-life-cycle" in text
+          print("UNIT_III_RASTER_AND_SEPARATE_INTERACTION_GATE=PASS; ACADEMIC_REVIEW=PENDING")
+          PY
+      - name: Native Kotlin compile + immutable A5 + teaching tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Archive the exact artwork used for QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-historical-raster-candidate
+          path: native-app/app/src/main/assets/unit3/*
+          if-no-files-found: error
+
+  android-ui:
+    needs: compile-and-atlas
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Prepare identical offline anatomy source assets
+        run: |
+          python3 -m venv /tmp/u3art
+          /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
+          /tmp/u3art/bin/python ci/repair_unit2_plate_masters.py
+          /tmp/u3art/bin/python ci/refine_unit2_sycon_prosopyle.py
+          /tmp/u3art/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/u3art/bin/python ci/build_obelia_settlement_1933_png.py
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Unit III native API34 100% and 200% font acceptance
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit3-screenshot-audit.sh
+      - name: Preserve instrumentation and physical-screen screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-api34-instrumentation-evidence
+          path: qa-evidence/unit3/
+          if-no-files-found: error
+      - name: Create exact-commit native debug handset candidate
+        if: success()
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve installable engineering QA APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-native-teaching-debug-qa-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Explicit Unit II / III academic release HOLD
+        if: always()
+        run: |
+          echo "BUILD COMPILATION AND EMULATOR PASS ARE NOT PHYSICAL DEVICE OR ACADEMIC ACCEPTANCE."
+          echo "Unit II Sycon microanatomy reviewer decision and real-phone tests remain OPEN."
+          echo "Unit III historical source, original-pencil provenance and label review are OPEN."
+          echo "Neither branch nor candidate should be merged into Play/Indus release."
