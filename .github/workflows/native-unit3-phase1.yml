@@ -35,6 +35,7 @@ jobs:
           python3 -m venv /tmp/u3art
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
+          /tmp/u3art/bin/python ci/build_sycon_1903_reference_png.py
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
           # Never make a 2026 Unit III draft depend on repeat archival web downloads.
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
@@ -55,7 +56,11 @@ jobs:
           assert "rememberRequiredRasterBitmap(stem)" in text
           assert "u3-pencil-master-pending" in text
           assert "u3-interactive-life-cycle" in text
-          print("UNIT_III_RASTER_AND_SEPARATE_INTERACTION_GATE=PASS; ACADEMIC_REVIEW=PENDING")
+          sycon=Path("native-app/app/src/main/assets/unit2/sycon_historical.png")
+          assert sycon.is_file(), "Missing genuine scanned Sycon lesson reference"
+          ui2=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIITeachingChapter.kt").read_text()
+          assert "u2-pencil-lesson-section" in ui2 and "u2-interactive-atlas" in ui2, "Unit II static/interactive separation regressed"
+          print("UNIT_II_AND_III_RASTER_AND_SEPARATE_INTERACTION_GATE=PASS; ACADEMIC_REVIEW=PENDING")
           PY
       - name: Native Kotlin compile + immutable A5 + teaching tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
@@ -93,6 +98,7 @@ jobs:
           python3 -m venv /tmp/u3art
           /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
+          /tmp/u3art/bin/python ci/build_sycon_1903_reference_png.py
           # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
           # Never make a 2026 Unit III draft depend on repeat archival web downloads.
           sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
