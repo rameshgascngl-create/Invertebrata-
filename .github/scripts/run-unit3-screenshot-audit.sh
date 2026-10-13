@@ -5,10 +5,18 @@ D="/sdcard/Download/unit3-qa"
 mkdir -p "$E"
 result=NOT_STARTED
 trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt";  adb pull "$D" "$E/screen-captures" > "$E/pull.log" 2>&1 || true; adb pull "/sdcard/Download/unit2-qa" "$E/unit2-screens" > "$E/unit2-pull.log" 2>&1 || true; find "$E" -name "*.png" -print0 | xargs -0 -r sha256sum > "$E/SHA256SUMS"; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
+# The preserved Unit II screenshot instrumentation writes into its own
+# absolute Android /sdcard/Download/unit2-qa directory. Create both directories
+# before either suite runs; do not bypass the decoded-PNG checks.
+ready=0
 for n in {1..50}; do
-  if adb shell mkdir -p "$D" >/dev/null 2>&1; then break; fi
+  if adb shell mkdir -p "$D" /sdcard/Download/unit2-qa >/dev/null 2>&1; then
+    ready=1
+    break
+  fi
   sleep 1
 done
+[[ "$ready" == 1 ]] || { result="SCREENSHOT_STORAGE_NOT_READY"; exit 1; }
 adb shell settings put system accelerometer_rotation 0
 adb shell settings put system user_rotation 0
 adb shell cmd connectivity airplane-mode enable
