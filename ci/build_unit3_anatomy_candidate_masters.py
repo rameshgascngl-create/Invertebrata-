@@ -63,6 +63,11 @@ def fetch_commons(filename):
     digest=md5(filename.encode("utf-8")).hexdigest()
     url=("https://upload.wikimedia.org/wikipedia/commons/"+digest[0]+"/"+
          digest[:2]+"/"+urllib.parse.quote(filename,safe="()_,"))
+    # The Wikimedia CDN rate-limited this *specific* official CDC figure.
+    # Retrieve the identical-authority raster from its original US
+    # Government DPDx publication instead; do not use any SVG conversion.
+    if filename=="Ascaris_lumbricoides_life_cycle.png":
+        url="https://www.cdc.gov/dpdx/ascariasis/modules/Ascariasis_LifeCycle_lg.jpg"
     hdr={"User-Agent":"Mozilla/5.0 (compatible; GASCZoologySourceAudit/1.0)"}
     import time
     last_error=None
