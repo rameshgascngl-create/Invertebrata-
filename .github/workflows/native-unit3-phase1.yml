@@ -5,6 +5,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u3-type-studies-phase1-20261013
       - native/u3-anatomy-atlas-candidate-20261013
       - native/u3-cdc-complete-lifecycle-20261014
+      - native/u3-cdc-graphite-facsimile-20261014
   workflow_dispatch:
 
 permissions:
@@ -61,6 +62,7 @@ jobs:
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
           python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
           /tmp/u3art/bin/python ci/build_unit3_anatomy_candidate_masters.py
+          /tmp/u3art/bin/python ci/build_unit3_graphite_facsimile.py
           /tmp/u3art/bin/python - <<'PY'
           from pathlib import Path
           from PIL import Image
@@ -92,6 +94,10 @@ jobs:
           assert cdc[0]["source_illustration_only"] is True
           assert cdc[0]["pencil_origin_verified"] is False
           assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          assert cdc[0]["pencil_style_facsimile"] is True
+          assert cdc[0]["source_geometry_unchanged"] is True
+          assert cdc[0]["original_full_color_master_sha256"]=="6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0"
+          assert cdc[0]["tonal_style"]=="GRAPHITE_TONED_CDC_PIXEL_FACSIMILE"
           assert all(item["asset_restoration"]=="PINNED_FIRSTPASS_GITHUB_ARTIFACT"
                      for item in records)
           assert len(records)==6
@@ -195,6 +201,7 @@ jobs:
           /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
           python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
           /tmp/u3art/bin/python ci/build_unit3_anatomy_candidate_masters.py
+          /tmp/u3art/bin/python ci/build_unit3_graphite_facsimile.py
           /tmp/u3art/bin/python - <<'PY'
           from pathlib import Path
           from PIL import Image
@@ -226,6 +233,10 @@ jobs:
           assert cdc[0]["source_illustration_only"] is True
           assert cdc[0]["pencil_origin_verified"] is False
           assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          assert cdc[0]["pencil_style_facsimile"] is True
+          assert cdc[0]["source_geometry_unchanged"] is True
+          assert cdc[0]["original_full_color_master_sha256"]=="6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0"
+          assert cdc[0]["tonal_style"]=="GRAPHITE_TONED_CDC_PIXEL_FACSIMILE"
           assert all(item["asset_restoration"]=="PINNED_FIRSTPASS_GITHUB_ARTIFACT"
                      for item in records)
           assert len(records)==6

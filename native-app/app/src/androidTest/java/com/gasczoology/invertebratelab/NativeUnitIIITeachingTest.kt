@@ -156,6 +156,24 @@ class NativeUnitIIITeachingTest {
             .performScrollToNode(hasTestTag("u3-cdc-complete-life-cycle-credit"))
         rule.onNodeWithTag("u3-cdc-complete-life-cycle-credit")
             .assertTextContains("CDC DPDx",substring=true)
+        // Verify a real graphite-tone raster is packaged, not the former
+        // full-colour source or unreviewed generative scene reconstruction.
+        val ctx=androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext
+        ctx.assets.open("type_studies/ascaris/life-cycle.png").use { stream ->
+            val bitmap=checkNotNull(android.graphics.BitmapFactory.decodeStream(stream))
+            org.junit.Assert.assertEquals(960,bitmap.width)
+            org.junit.Assert.assertEquals(1280,bitmap.height)
+            for(y in 90 until 1180 step 73) for(x in 40 until 930 step 47) {
+                val pix=bitmap.getPixel(x,y)
+                val rr=android.graphics.Color.red(pix)
+                val gg=android.graphics.Color.green(pix)
+                val bb=android.graphics.Color.blue(pix)
+                org.junit.Assert.assertTrue("Chromatic artwork at ($x,$y)",
+                    kotlin.math.abs(rr-gg)<=3 && kotlin.math.abs(gg-bb)<=4)
+            }
+            bitmap.recycle()
+        }
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-hotspot-life-cycle-unfertilized"))
         rule.onNodeWithTag("u3-hotspot-life-cycle-unfertilized")
