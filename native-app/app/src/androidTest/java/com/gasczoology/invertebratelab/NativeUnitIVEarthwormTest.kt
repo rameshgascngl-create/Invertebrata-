@@ -93,7 +93,14 @@ class NativeUnitIVEarthwormTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-4").fetchSemanticsNodes().isNotEmpty()
         }
+        // LazyColumn only composes visible chapter buttons. At 200% font the
+        // untouched Penaeus A5 chapter may be below the viewport, so scroll to
+        // verify it exists rather than silently relaxing this assertion.
+        rule.onNodeWithTag("native-unit-4")
+            .performScrollToNode(hasTestTag("chapter-u4-penaeus"))
         rule.onNodeWithTag("chapter-u4-penaeus").assertExists()
+        rule.onNodeWithTag("native-unit-4")
+            .performScrollToNode(hasTestTag("u4-open-earthworm-textbook"))
         rule.onNodeWithTag("u4-open-earthworm-textbook").performClick()
         rule.onNodeWithTag("u4-earthworm-title").assertExists()
         screenshot("earthworm-return-navigation")
