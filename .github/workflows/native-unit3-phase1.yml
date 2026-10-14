@@ -79,7 +79,7 @@ jobs:
           cdc=[item for item in records
                if item["organism"]=="ascaris" and item["plate_id"]=="life-cycle"]
           assert len(cdc)==1
-          assert cdc[0]["source_url"]=="https://www.cdc.gov/dpdx/ascariasis/modules/Ascariasis_LifeCycle_lg.jpg"
+          assert cdc[0]["source_url"]=="https://upload.wikimedia.org/wikipedia/commons/c/ca/Ascariasis_LifeCycle_lg.jpg"
           assert cdc[0]["life_cycle_completeness"]=="CDC_DPDx_COMPLETE_REFERENCE"
           assert cdc[0]["source_illustration_only"] is True
           assert cdc[0]["pencil_origin_verified"] is False
@@ -202,7 +202,7 @@ jobs:
           cdc=[item for item in records
                if item["organism"]=="ascaris" and item["plate_id"]=="life-cycle"]
           assert len(cdc)==1
-          assert cdc[0]["source_url"]=="https://www.cdc.gov/dpdx/ascariasis/modules/Ascariasis_LifeCycle_lg.jpg"
+          assert cdc[0]["source_url"]=="https://upload.wikimedia.org/wikipedia/commons/c/ca/Ascariasis_LifeCycle_lg.jpg"
           assert cdc[0]["life_cycle_completeness"]=="CDC_DPDx_COMPLETE_REFERENCE"
           assert cdc[0]["source_illustration_only"] is True
           assert cdc[0]["pencil_origin_verified"] is False
