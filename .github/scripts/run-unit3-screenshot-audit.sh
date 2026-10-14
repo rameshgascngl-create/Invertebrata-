@@ -67,7 +67,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
-  for scene in fasciola-historical ascaris-historical fasciola-revised ascaris-revised ascaris-cdc-complete;do
+  for scene in fasciola-historical ascaris-historical fasciola-revised ascaris-revised ascaris-cdc-complete ascaris-graphite-bitmap-visible;do
     [[ -s "$E/captured/unit3-$scale-$scene.png" ]] || { result="MISSING_IMAGE_$scale-$scene"; exit 1; }
   done
 done

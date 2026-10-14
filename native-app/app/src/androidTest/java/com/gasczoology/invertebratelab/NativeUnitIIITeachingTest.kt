@@ -152,6 +152,12 @@ class NativeUnitIIITeachingTest {
 
     @Test fun cdcCompleteAscarisSourceAndTamilCycleNarrationAreAccessible() {
         openChapter("u3-ascaris",true)
+        // Capture REAL onscreen decoded graphite pixels at both font scales,
+        // before scrolling down to the accessible organ controls.
+        rule.onNodeWithTag("u3-reader-u3-ascaris")
+            .performScrollToNode(hasTestTag("u3-plate-bitmap-life-cycle"))
+        rule.onNodeWithTag("u3-plate-bitmap-life-cycle").assertIsDisplayed()
+        capture("ascaris-graphite-bitmap-visible")
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-cdc-complete-life-cycle-credit"))
         rule.onNodeWithTag("u3-cdc-complete-life-cycle-credit")
