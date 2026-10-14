@@ -4,8 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -119,15 +117,21 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                             modifier=Modifier.testTag("u3-source-hotspot-review-hold")
                         )
                         if (hotspots.isNotEmpty()) {
-                            LazyRow(horizontalArrangement=Arrangement.spacedBy(7.dp),
-                                modifier=Modifier.testTag("u3-hotspot-controls-"+plate.plateId)) {
-                                items(hotspots,key={it.id}) { hotspot ->
+                            // Non-lazy, vertically scrolling with the reader: every organ
+                            // has a real semantics node at 200% Tamil font. LazyRow
+                            // virtualized off-screen buttons and misdirected selections.
+                            Column(
+                                verticalArrangement=Arrangement.spacedBy(7.dp),
+                                modifier=Modifier.fillMaxWidth()
+                                    .testTag("u3-hotspot-controls-"+plate.plateId)
+                            ) {
+                                hotspots.forEach { hotspot ->
                                     OutlinedButton(
                                         onClick={
                                             selectedId=hotspot.id
                                             narrator.speak(hotspot.explanation,language)
                                         },
-                                        modifier=Modifier.heightIn(min=48.dp)
+                                        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
                                             .testTag("u3-hotspot-"+plate.plateId+"-"+hotspot.id)
                                     ) { Text(hotspot.title.value(language)) }
                                 }
