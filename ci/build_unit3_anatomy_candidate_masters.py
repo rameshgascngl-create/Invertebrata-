@@ -185,8 +185,65 @@ def draw_master(record):
     print("SOURCE_BACKED_RASTER="+str(output)+" "+result["output_sha256"])
     return result
 
+# Historical-source dimensions and URLs from the first successful
+# source-backed build's provenance artifact. Pin output bytes separately.
+SEALED_SOURCE_METADATA = {
+    ("fasciola","external"): (
+        "https://commons.wikimedia.org/wiki/File:EB_9th_Volume23_Trematota_Fig_1.png",(1286,1708)),
+    ("fasciola","digestive-reproductive"): (
+        "https://upload.wikimedia.org/wikipedia/commons/e/eb/Diagnostic_methods,_chemical,_bacteriological_and_microscopical_-_a_text-book_for_students_and_practitioners_(1909)_(14781538944).jpg",(716,1536)),
+    ("fasciola","life-cycle"): (
+        "https://upload.wikimedia.org/wikipedia/commons/3/38/Animal_parasites_and_human_disease_(1918)_(18198420775).jpg",(2504,2612)),
+    ("ascaris","male-female-external"): (
+        "https://commons.wikimedia.org/wiki/File:Pfurtscheller_Table_38_a.png",(2176,2203)),
+    ("ascaris","female-internal"): (
+        "https://upload.wikimedia.org/wikipedia/commons/4/4a/Text-book_of_comparative_anatomy_(1898)_(14776166501).jpg",(574,1686)),
+    ("ascaris","life-cycle"): (
+        "https://upload.wikimedia.org/wikipedia/commons/c/ca/Ascariasis_LifeCycle_lg.jpg",(2000,1838)),
+}
+
+def restore_verified_artifact():
+    """Consume ONLY exact-SHA bitmap masters from immutable GitHub artifact.
+    No source-server requests, no procedural anatomy, no arbitrary fallbacks.
+    """
+    results=[]
+    for org,plate,filename,credit,focus,note in SOURCES:
+        target=OUT/org/(plate+".png")
+        assert target.is_file(), f"Sealed raster artifact is missing: {target}"
+        raw_expected, expected = ACCEPTED_SOURCE_BYTES[(org,plate)]
+        assert raw_expected is not None and expected is not None
+        actual=hashlib.sha256(target.read_bytes()).hexdigest()
+        assert actual==expected, f"Source-backed raster differs from signed first-pass bytes: {target} {actual}"
+        with Image.open(target) as image:
+            image.verify()
+        with Image.open(target) as image:
+            assert image.format=="PNG" and image.size==SIZE
+        source_url, dimensions=SEALED_SOURCE_METADATA[(org,plate)]
+        results.append({
+            "organism":org, "plate_id":plate, "file":str(target),
+            "source_filename":filename, "source_url":source_url,
+            "source_sha256":raw_expected, "source_dimensions":list(dimensions),
+            "output_dimensions":list(SIZE), "output_sha256":actual,
+            "source_illustration_only":True, "pencil_origin_verified":False,
+            "life_cycle_completeness":(
+                "CDC_DPDx_COMPLETE_REFERENCE" if
+                (org,plate)==("ascaris","life-cycle")
+                else "SOURCE_REVIEW_PENDING"),
+            "anatomy_academic_review":"PENDING",
+            "hotspot_academic_review":"PENDING",
+            "image_interpretation_note":note,
+            "asset_restoration":"PINNED_FIRSTPASS_GITHUB_ARTIFACT"
+        })
+        print("SEALED_UNIT3_RASTER="+str(target)+" "+actual)
+    return results
+
 def main():
-    results=[draw_master(rec) for rec in SOURCES]
+    import os
+    if os.environ.get("UNIT3_MANUAL_SOURCE_REBUILD")=="1":
+        print("EXPLICIT_SOURCE_REBUILD=TRUE (subject to rate limiting)")
+        results=[draw_master(rec) for rec in SOURCES]
+    else:
+        results=restore_verified_artifact()
     assert len(results)==6
     META.parent.mkdir(parents=True,exist_ok=True)
     META.write_text(json.dumps({"branch_candidate_only":True,
