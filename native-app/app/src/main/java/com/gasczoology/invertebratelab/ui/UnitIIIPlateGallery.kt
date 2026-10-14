@@ -47,6 +47,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
             style = MaterialTheme.typography.bodySmall
         )
         plates.forEach { plate ->
+            val completeAscarisCycle = plate.assetStem == "type_studies/ascaris/life-cycle"
             val hotspots = remember(plate.assetStem) { UnitIIIPlateHotspots.forStem(plate.assetStem) }
             val geometryVerified = UnitIIIPlateHotspots.geometryApproved(plate.assetStem)
             var selectedId by rememberSaveable(plate.assetStem) {
@@ -88,7 +89,10 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                         ) {
                             Image(
                                 bitmap = raster,
-                                contentDescription = plate.title.value(language),
+                                contentDescription = if (completeAscarisCycle) {
+                                    if (tamil) "சிடிசி டிபிடிஎக்ஸ் அஸ்காரிஸ் முழு வாழ்க்கைச் சுழற்சி: மலத்தில் முட்டைகள், மண்ணில் கருவளர்ச்சி, விழுங்குதல், குடலில் இளவுயிரி வெளியேறுதல், நுரையீரல் இடம்பெயர்ச்சி, மீண்டும் விழுங்குதல், சிறுகுடலில் முதிர்ச்சி"
+                                    else "CDC DPDx complete Ascaris life cycle: eggs passed in feces, maturation in soil, infective egg ingestion, intestinal hatching, lung migration, reswallowing and adults in small intestine"
+                                } else plate.title.value(language),
                                 contentScale = ContentScale.Fit,
                                 modifier = Modifier.fillMaxSize()
                                     .testTag("u3-plate-bitmap-" + plate.plateId)
@@ -109,10 +113,18 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                 }
                             }
                         }
+                        if (completeAscarisCycle) {
+                            Text(
+                                if (tamil) "முழுமையான அஸ்காரிஸ் வாழ்க்கைச் சுழற்சிக்கான மூலம்: CDC DPDx (அமெரிக்க நோய்க் கட்டுப்பாட்டு மையங்கள்). இது பென்சில் ஸ்கேன் அல்ல; வரைபடத்தின் தொடுபுள்ளி ஆய்வு நிலுவையில் உள்ளது."
+                                else "Source: CDC DPDx Ascariasis life-cycle figure (U.S. Centers for Disease Control and Prevention). Complete biological sequence; NOT a pencil scan. Image-coordinate review pending.",
+                                modifier = Modifier.testTag("u3-cdc-complete-life-cycle-credit"),
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                        }
                         Text(
                             if (tamil)
-                                "மூல வரலாற்றுப் படம். புதிய படத்திற்கான தொடுபுள்ளிகள் இன்னும் சரிபார்க்கப்படவில்லை. கீழே உள்ள உறுப்புப் பெயரைத் தேர்ந்தெடுக்கவும்."
-                            else "Archived raster. Image taps and leader marks are disabled pending source-specific hotspot calibration; organ controls remain below.",
+                                "படத்தின் நேரடித் தொடுதலும் குறியீட்டுக் கோடுகளும் மூலப்படக் கோண ஆய்வு முடியும் வரை முடக்கப்பட்டுள்ளன. கீழே உள்ள தமிழ்ப் பகுதி விளக்கங்களைத் தேர்ந்தெடுக்கவும்."
+                            else "Direct image taps and leader marks remain disabled until the exact source-pixel positions are reviewed. Accessible narrated stage controls remain available below.",
                             color=MaterialTheme.colorScheme.error,
                             style=MaterialTheme.typography.bodySmall,
                             modifier=Modifier.testTag("u3-source-hotspot-review-hold")
