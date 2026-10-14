@@ -46,7 +46,7 @@ SOURCES = (
    "Vulva, vagina, uterus, oviducts and tubular ovaries",
    "Confirm female fig. 169 separately from male fig. 168."),
   ("ascaris", "life-cycle",
-   "CDC_DPDx_Ascariasis_LifeCycle_lg.jpg",
+   "Ascariasis_LifeCycle_lg.jpg",
    "CDC DPDx: Ascariasis lifecycle diagram (official public-health reference)",
    "Embryonated eggs · ingestion · intestinal hatch · lung migration · re-swallow",
    "Complete cycle depicted; not a graphite-pencil scan. Hotspots still require source-pixel review.")
@@ -95,11 +95,10 @@ def fetch_commons(filename):
     digest=md5(filename.encode("utf-8")).hexdigest()
     url=("https://upload.wikimedia.org/wikipedia/commons/"+digest[0]+"/"+
          digest[:2]+"/"+urllib.parse.quote(filename,safe="()_,"))
-    # CDC DPDx itself illustrates eggs, soil embryonation, ingestion, gut
-    # hatching, lung migration and re-swallowing; the historical egg/adult
-    # fragment cannot be passed off as a complete life-cycle figure.
-    if filename=="CDC_DPDx_Ascariasis_LifeCycle_lg.jpg":
-        url="https://www.cdc.gov/dpdx/ascariasis/modules/Ascariasis_LifeCycle_lg.jpg"
+    # CDC DPDx official figure preserved byte-for-byte at Wikimedia Commons.
+    # The CDC endpoint rejects CI download requests (HTTP 403). The archival
+    # Commons original has independently documented source attribution.
+    # Do not silently substitute a similar life cycle or partial egg plate.
     hdr={"User-Agent":"Mozilla/5.0 (compatible; GASCZoologySourceAudit/1.0)"}
     import time
     last_error=None
@@ -139,9 +138,9 @@ def draw_master(record):
     # No partial crop: include fertilized/unfertilized eggs, soil embryonation,
     # ingestion, intestinal hatch, lungs and reswallowing in one complete plate.
     if org=="ascaris" and plate=="life-cycle":
-        assert filename=="CDC_DPDx_Ascariasis_LifeCycle_lg.jpg"
+        assert filename=="Ascariasis_LifeCycle_lg.jpg"
         assert orig_size[0] >= 900 and orig_size[1] >= 800
-        print("AS_CYCLE_SOURCE_IMAGE_COMPLETE=CDC_DPDx")
+        print("AS_CYCLE_SOURCE_IMAGE_COMPLETE=CDC_DPDx_WIKIMEDIA_ARCHIVE")
     # Downscaling to mobile reading area is permitted; no enlargement.
     picture.thumbnail((920,950),resample=Image.Resampling.LANCZOS)
     out=Image.new("RGB",SIZE,(255,254,250))
