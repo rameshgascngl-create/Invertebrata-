@@ -45,6 +45,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.Chapter
 import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
+import com.gasczoology.invertebratelab.data.NativeCurriculumManifest
 import com.gasczoology.invertebratelab.data.StudyDestination
 import kotlinx.coroutines.launch
 
@@ -54,6 +55,7 @@ private object Routes {
     const val CHAPTER = "chapter/{chapterId}"
     const val ASSESSMENT = "assessment"
     const val PARAMECIUM = "paramecium-interactive-lab"
+    const val EARTHWORM = "u4-earthworm-native-textbook"
 
     fun unit(number: Int) = "unit/" + number
     fun chapter(id: String) = "chapter/" + id
@@ -64,6 +66,7 @@ private object Routes {
         StudyDestination.CHAPTER -> chapter(state.chapterId)
         StudyDestination.PRACTICE -> ASSESSMENT
         StudyDestination.PARAMECIUM_LAB -> PARAMECIUM
+        StudyDestination.EARTHWORM_TEXTBOOK -> EARTHWORM
     }
 }
 
@@ -162,6 +165,15 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                             questionId = "", answerRevealed = false,
                         )) { navController.navigate(Routes.PARAMECIUM) }
                     },
+                    onEarthworm = {
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.EARTHWORM_TEXTBOOK,
+                            unitNumber = 4,
+                            chapterId = NativeCurriculumManifest.EARTHWORM_LESSON_ID,
+                            questionId = "", answerRevealed = false,
+                            textbookSectionId = "identity",
+                        )) { navController.navigate(Routes.EARTHWORM) }
+                    },
                     onBack = {
                         viewModel.persistLearning(state.copy(
                             destination = StudyDestination.HOME, chapterId = "",
@@ -235,6 +247,17 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                         answerRevealed = false,
                     )) { navController.navigate(Routes.chapter("u1-paramecium")) }
                 },
+            )
+        }
+        composable(Routes.EARTHWORM) {
+            UnitIVEarthwormReader(
+                language = language,
+                onBack = {
+                    viewModel.persistLearning(state.copy(
+                        destination = StudyDestination.UNIT, unitNumber = 4,
+                        chapterId = "", questionId = "", answerRevealed = false,
+                    )) { backOrRoute(Routes.unit(4)) }
+                }
             )
         }
         composable(Routes.ASSESSMENT) {
@@ -339,6 +362,7 @@ private fun UnitScreen(
     unit: AcademicUnit,
     language: AppLanguage,
     onParamecium: () -> Unit,
+    onEarthworm: () -> Unit,
     onBack: () -> Unit,
     onChapter: (String) -> Unit,
 ) {
@@ -354,6 +378,15 @@ private fun UnitScreen(
                 Text(label(language,
                     "Open a teaching lesson where available. Remaining syllabus chapters are assessment-only previews until complete lessons and original atlas plates are authored.",
                     "கற்பித்தல் பாடம் தயாராக உள்ள இடத்தில் அதைத் திறக்கவும். மற்ற அத்தியாயங்களில் முழுமையான பாடமும் அசல் உடலமைப்புப் படங்களும் உருவாகும்வரை வினாப் பயிற்சி முன்னோட்டம் மட்டுமே உள்ளது."))
+                if (unit.number == 4) {
+                    Button(onClick = onEarthworm,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                            .testTag("u4-open-earthworm-textbook")) {
+                        Text(label(language,
+                            "START READING · Earthworm (Metaphire posthuma) native textbook",
+                            "பாடத்தைத் தொடங்கு · மண்புழு (Metaphire posthuma) விரிவான பாடநூல்"))
+                    }
+                }
                 if (unit.number == 1) {
                     Button(onClick = onParamecium,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
