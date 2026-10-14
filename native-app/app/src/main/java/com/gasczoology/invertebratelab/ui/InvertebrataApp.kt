@@ -165,6 +165,14 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                             questionId = "", answerRevealed = false,
                         )) { navController.navigate(Routes.PARAMECIUM) }
                     },
+                    onParameciumAtlas = {
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.PARAMECIUM_LAB,
+                            unitNumber = 1, chapterId = "u1-paramecium",
+                            questionId = "", answerRevealed = false,
+                            laboratoryTab = "anatomy",
+                        )) { navController.navigate(Routes.PARAMECIUM) }
+                    },
                     onEarthworm = {
                         viewModel.persistLearning(state.copy(
                             destination = StudyDestination.EARTHWORM_TEXTBOOK,
@@ -214,6 +222,14 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                             destination = StudyDestination.PARAMECIUM_LAB,
                             unitNumber = 1, chapterId = "u1-paramecium",
                             questionId = "", answerRevealed = false,
+                        )) { navController.navigate(Routes.PARAMECIUM) }
+                    },
+                    onOpenAnatomy = {
+                        viewModel.persistLearning(state.copy(
+                            destination = StudyDestination.PARAMECIUM_LAB,
+                            unitNumber = 1, chapterId = "u1-paramecium",
+                            questionId = "", answerRevealed = false,
+                            laboratoryTab = "anatomy",
                         )) { navController.navigate(Routes.PARAMECIUM) }
                     },
                     revealedQuestionId = if (state.answerRevealed) state.questionId else "",
@@ -362,6 +378,7 @@ private fun UnitScreen(
     unit: AcademicUnit,
     language: AppLanguage,
     onParamecium: () -> Unit,
+    onParameciumAtlas: () -> Unit,
     onEarthworm: () -> Unit,
     onBack: () -> Unit,
     onChapter: (String) -> Unit,
@@ -388,6 +405,17 @@ private fun UnitScreen(
                     }
                 }
                 if (unit.number == 1) {
+                    OutlinedButton(onClick = onParameciumAtlas,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                            .testTag("u1-open-diagram-atlas")) {
+                        Text(label(language,
+                            "VIEW DIAGRAMS · Paramecium anatomy (original native pencil draft)",
+                            "வரைபடங்களைப் பார் · பாரமீசியம் உடலமைப்பு (பென்சில் வரைவு)"))
+                    }
+                    Text(label(language,
+                        "Unit I organism plates for Entamoeba, Trypanosoma, Leishmania and Plasmodium are not yet authored in the native app; do not use Paramecium diagrams as substitutes.",
+                        "அலகு I-இல் Entamoeba, Trypanosoma, Leishmania, Plasmodium ஆகியவற்றுக்கான தனித்த உடலமைப்புப் படங்கள் இன்னும் உருவாக்கப்படவில்லை. பாரமீசியம் படங்களை அவற்றுக்குப் பதிலாகப் பயன்படுத்த வேண்டாம்."),
+                        modifier = Modifier.testTag("u1-missing-protozoa-plates"))
                     Button(onClick = onParamecium,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                             .testTag("r14-unit-open-textbook")) {
@@ -426,6 +454,7 @@ private fun ChapterScreen(
     language: AppLanguage,
     onBack: () -> Unit,
     onOpenFullLesson: () -> Unit,
+    onOpenAnatomy: () -> Unit,
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
 ) {
@@ -459,6 +488,14 @@ private fun ChapterScreen(
                         Text(label(language,
                             "READ THE ILLUSTRATED LESSON FIRST",
                             "முதலில் படவிளக்கப் பாடத்தைப் படி"))
+                    }
+                    OutlinedButton(
+                        onClick = onOpenAnatomy,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                            .testTag("u1-paramecium-open-diagrams"),
+                    ) {
+                        Text(label(language, "VIEW PARAMECIUM ANATOMICAL DIAGRAMS",
+                            "பாரமீசியம் உடலமைப்புப் படங்களைப் பார்"))
                     }
                 }
                 Text(label(language, "EXAM PRACTICE — after the teaching lesson",
