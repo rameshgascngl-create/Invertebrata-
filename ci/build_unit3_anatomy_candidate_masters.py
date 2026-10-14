@@ -60,9 +60,9 @@ ACCEPTED_SOURCE_BYTES = {
     ("fasciola", "life-cycle"): ("c12b932fae3d751c7435f0b3377fa82ee0e8dc6a5d027516ab2ac92f840463af", "9a7ab9bb76fb9e1e8b1527bc9363c6349ecafce739451a82307bc3b43108520a"),
     ("ascaris", "male-female-external"): ("fc48dbe207af955e2d8f8f9d8e4fa03a165189769ba3b2d9725743203983d362", "d8df8c8eb4b79e9186017650d818060b756a302968eb4d73c4329e88d73908c9"),
     ("ascaris", "female-internal"): ("25b545745a64e0a1fc838c4c50001137b57ec7246e2cfda3ef73d272cc2c6640", "0f476f9823025c4cbd23808c49515652161709d39969b7c39c20e1309171341e"),
-    # First-run source/output SHA will be printed, inspected, then pinned.
-    # Never accept the obsolete Pfurtscheller crop as a complete Ascaris life cycle.
-    ("ascaris", "life-cycle"): (None, None),
+    # CDC DPDx full life-cycle figure (Commons original); inspected first-pass pixels.
+    # Source bytes + composed master are both hash pinned to prevent substitution.
+    ("ascaris", "life-cycle"): ("6dac332abb790e13a39bff0d206a0a7a63816f6fd9385757924a53174db1af9f", "6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0"),
 }
 
 def font(sz, bold=False):
