@@ -150,6 +150,31 @@ class NativeUnitIIITeachingTest {
         capture("ascaris-revised")
     }
 
+    @Test fun cdcCompleteAscarisSourceAndTamilCycleNarrationAreAccessible() {
+        openChapter("u3-ascaris",true)
+        rule.onNodeWithTag("u3-reader-u3-ascaris")
+            .performScrollToNode(hasTestTag("u3-cdc-complete-life-cycle-credit"))
+        rule.onNodeWithTag("u3-cdc-complete-life-cycle-credit")
+            .assertTextContains("CDC DPDx",substring=true)
+        rule.onNodeWithTag("u3-reader-u3-ascaris")
+            .performScrollToNode(hasTestTag("u3-hotspot-life-cycle-unfertilized"))
+        rule.onNodeWithTag("u3-hotspot-life-cycle-unfertilized")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u3-selected-organ-life-cycle")
+            .assertTextContains("கருவுறாத",substring=true)
+        rule.onNodeWithTag("u3-voice-request-life-cycle")
+            .assertTextContains("கருவுறாத",substring=true)
+        rule.onNodeWithTag("u3-reader-u3-ascaris")
+            .performScrollToNode(hasTestTag("u3-hotspot-life-cycle-swallow"))
+        rule.onNodeWithTag("u3-hotspot-life-cycle-swallow")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u3-selected-organ-life-cycle")
+            .assertTextContains("மீண்டும் விழுங்குதலும்",substring=true)
+        rule.onNodeWithTag("u3-voice-request-life-cycle")
+            .assertTextContains("மீண்டும் விழுங்கப்படுகின்றன",substring=true)
+        capture("ascaris-cdc-complete")
+    }
+
     @Test fun allSevenUnitThreeChaptersOpenNativeTextbooksBeforeQuestions() {
         rule.onNodeWithTag("unit-3").performScrollTo().performClick()
         rule.waitUntil(20_000) {
