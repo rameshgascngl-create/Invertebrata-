@@ -46,6 +46,14 @@ jobs:
           repository: rameshgascngl-create/Invertebrata-
           name: unit3-native-teaching-debug-qa-apk
           path: /tmp/verified-unit3-apk
+      - name: Reuse SHA-sealed six-plate candidate asset artifact without web downloads
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38544505746
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-six-sourced-atlas-masters
+          path: native-app/app/src/main/assets/type_studies
       - name: Prepare unmodified-source historical raster anatomy
         run: |
           python3 -m venv /tmp/u3art
@@ -84,6 +92,9 @@ jobs:
           assert cdc[0]["source_illustration_only"] is True
           assert cdc[0]["pencil_origin_verified"] is False
           assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          assert all(item["asset_restoration"]=="PINNED_FIRSTPASS_GITHUB_ARTIFACT"
+                     for item in records)
+          assert len(records)==6
           print("CDC_COMPLETE_ASCARIS_SOURCE_GUARD=PASS; ACADEMIC_REVIEW=PENDING")
           print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
           print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
@@ -169,6 +180,14 @@ jobs:
           repository: rameshgascngl-create/Invertebrata-
           name: unit3-native-teaching-debug-qa-apk
           path: /tmp/verified-unit3-apk
+      - name: Reuse SHA-sealed six-plate candidate asset artifact without web downloads
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38544505746
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-six-sourced-atlas-masters
+          path: native-app/app/src/main/assets/type_studies
       - name: Prepare identical offline anatomy source assets
         run: |
           python3 -m venv /tmp/u3art
@@ -207,6 +226,9 @@ jobs:
           assert cdc[0]["source_illustration_only"] is True
           assert cdc[0]["pencil_origin_verified"] is False
           assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          assert all(item["asset_restoration"]=="PINNED_FIRSTPASS_GITHUB_ARTIFACT"
+                     for item in records)
+          assert len(records)==6
           print("CDC_COMPLETE_ASCARIS_SOURCE_GUARD=PASS; ACADEMIC_REVIEW=PENDING")
           print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
           print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
