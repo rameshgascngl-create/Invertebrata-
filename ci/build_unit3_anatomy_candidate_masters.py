@@ -46,10 +46,10 @@ SOURCES = (
    "Vulva, vagina, uterus, oviducts and tubular ovaries",
    "Confirm female fig. 169 separately from male fig. 168."),
   ("ascaris", "life-cycle",
-   "Pfurtscheller_Table_38_a.png",
-   "Pfurtscheller (pre-1927): adults and egg anatomy only",
-   "Egg and adult illustration — lung-migration artwork absent",
-   "INCOMPLETE SOURCE! Does not show soil embryonation or lung path; ART HOLD.")
+   "CDC_DPDx_Ascariasis_LifeCycle_lg.jpg",
+   "CDC DPDx: Ascariasis lifecycle diagram (official public-health reference)",
+   "Embryonated eggs · ingestion · intestinal hatch · lung migration · re-swallow",
+   "Complete cycle depicted; not a graphite-pencil scan. Hotspots still require source-pixel review.")
 )
 
 # Byte-integrity seal from the actual first-pass GitHub artifact. This does
@@ -60,7 +60,9 @@ ACCEPTED_SOURCE_BYTES = {
     ("fasciola", "life-cycle"): ("c12b932fae3d751c7435f0b3377fa82ee0e8dc6a5d027516ab2ac92f840463af", "9a7ab9bb76fb9e1e8b1527bc9363c6349ecafce739451a82307bc3b43108520a"),
     ("ascaris", "male-female-external"): ("fc48dbe207af955e2d8f8f9d8e4fa03a165189769ba3b2d9725743203983d362", "d8df8c8eb4b79e9186017650d818060b756a302968eb4d73c4329e88d73908c9"),
     ("ascaris", "female-internal"): ("25b545745a64e0a1fc838c4c50001137b57ec7246e2cfda3ef73d272cc2c6640", "0f476f9823025c4cbd23808c49515652161709d39969b7c39c20e1309171341e"),
-    ("ascaris", "life-cycle"): ("fc48dbe207af955e2d8f8f9d8e4fa03a165189769ba3b2d9725743203983d362", "6028f9caa6ef7fc83585702c581c25b576b28cdb7d8301ee58c3968e4d63519d"),
+    # First-run source/output SHA will be printed, inspected, then pinned.
+    # Never accept the obsolete Pfurtscheller crop as a complete Ascaris life cycle.
+    ("ascaris", "life-cycle"): (None, None),
 }
 
 def font(sz, bold=False):
@@ -93,10 +95,10 @@ def fetch_commons(filename):
     digest=md5(filename.encode("utf-8")).hexdigest()
     url=("https://upload.wikimedia.org/wikipedia/commons/"+digest[0]+"/"+
          digest[:2]+"/"+urllib.parse.quote(filename,safe="()_,"))
-    # The Wikimedia CDN rate-limited this *specific* official CDC figure.
-    # Retrieve the identical-authority raster from its original US
-    # Government DPDx publication instead; do not use any SVG conversion.
-    if filename=="Ascaris_lumbricoides_life_cycle.png":
+    # CDC DPDx itself illustrates eggs, soil embryonation, ingestion, gut
+    # hatching, lung migration and re-swallowing; the historical egg/adult
+    # fragment cannot be passed off as a complete life-cycle figure.
+    if filename=="CDC_DPDx_Ascariasis_LifeCycle_lg.jpg":
         url="https://www.cdc.gov/dpdx/ascariasis/modules/Ascariasis_LifeCycle_lg.jpg"
     hdr={"User-Agent":"Mozilla/5.0 (compatible; GASCZoologySourceAudit/1.0)"}
     import time
@@ -116,9 +118,14 @@ def draw_master(record):
     org,plate,filename,credit,focus,note=record
     raw,url=fetch_commons(filename)
     raw_expected, output_expected = ACCEPTED_SOURCE_BYTES[(org,plate)]
-    assert hashlib.sha256(raw).hexdigest() == raw_expected, (
-        "Historical source bytes changed unexpectedly: "+org+"/"+plate
-    )
+    if raw_expected is not None:
+        assert hashlib.sha256(raw).hexdigest() == raw_expected, (
+            "Historical source bytes changed unexpectedly: "+org+"/"+plate
+        )
+    elif (org,plate)==("ascaris","life-cycle"):
+        print("CDC_CANDIDATE_SOURCE_SHA256="+hashlib.sha256(raw).hexdigest())
+    else:
+        raise AssertionError("Unpinned source forbidden: "+org+"/"+plate)
     with Image.open(io.BytesIO(raw)) as source:
         assert source.format in ("PNG","JPEG") and source.width>=400 and source.height>=400,(filename,source.size)
         orig_size=source.size
@@ -128,19 +135,23 @@ def draw_master(record):
         picture=source.convert("RGB")
         if org=="fasciola" or plate=="female-internal":
             picture=ImageOps.grayscale(picture).convert("RGB")
-    # For the partial Ascaris life-history sheet retain the HISTORICAL
-    # EGG/REPRODUCTIVE regions of Pfurtscheller's original; never invent
-    # missing lung-migration shapes. The complete-cycle plate remains HOLD.
+    # Preserve all seven CDC diagram labels and original route/arrow directions.
+    # No partial crop: include fertilized/unfertilized eggs, soil embryonation,
+    # ingestion, intestinal hatch, lungs and reswallowing in one complete plate.
     if org=="ascaris" and plate=="life-cycle":
-        picture=picture.crop((350,850,1880,2175))
+        assert filename=="CDC_DPDx_Ascariasis_LifeCycle_lg.jpg"
+        assert orig_size[0] >= 900 and orig_size[1] >= 800
+        print("AS_CYCLE_SOURCE_IMAGE_COMPLETE=CDC_DPDx")
     # Downscaling to mobile reading area is permitted; no enlargement.
     picture.thumbnail((920,950),resample=Image.Resampling.LANCZOS)
     out=Image.new("RGB",SIZE,(255,254,250))
     d=ImageDraw.Draw(out)
     title=(org.upper()+"  —  "+plate.replace("-"," ").upper())
     d.text((20,18),title,font=font(28,True),fill=(33,31,29))
-    d.text((21,63),"ARCHIVED ANATOMICAL ILLUSTRATION / SOURCE-BACKED RASTER",
-            font=font(13),fill=(92,85,75))
+    header=("CDC DPDx COMPLETE LIFECYCLE / NOT A PENCIL SCAN"
+            if org=="ascaris" and plate=="life-cycle"
+            else "ARCHIVED ANATOMICAL ILLUSTRATION / SOURCE-BACKED RASTER")
+    d.text((21,63),header,font=font(13),fill=(92,85,75))
     px=(SIZE[0]-picture.width)//2
     py=106+(950-picture.height)//2
     out.paste(picture,(px,py))
@@ -153,9 +164,12 @@ def draw_master(record):
     output=OUT/org/(plate+".png")
     output.parent.mkdir(parents=True,exist_ok=True)
     out.save(output,"PNG",optimize=True)
-    assert hashlib.sha256(output.read_bytes()).hexdigest()==output_expected, (
-        "Raster master bytes changed: "+org+"/"+plate
-    )
+    if output_expected is not None:
+        assert hashlib.sha256(output.read_bytes()).hexdigest()==output_expected, (
+            "Raster master bytes changed: "+org+"/"+plate
+        )
+    else:
+        print("CDC_CANDIDATE_OUTPUT_SHA256="+hashlib.sha256(output.read_bytes()).hexdigest())
     result={"organism":org,"plate_id":plate,"file":str(output),
             "source_filename":filename,"source_url":url,
             "source_sha256":hashlib.sha256(raw).hexdigest(),
@@ -164,6 +178,8 @@ def draw_master(record):
             "output_sha256":hashlib.sha256(output.read_bytes()).hexdigest(),
             "source_illustration_only":True,
             "pencil_origin_verified":False,
+            "life_cycle_completeness":("CDC_DPDx_COMPLETE_REFERENCE" if
+                org=="ascaris" and plate=="life-cycle" else "SOURCE_REVIEW_PENDING"),
             "anatomy_academic_review":"PENDING",
             "hotspot_academic_review":"PENDING",
             "image_interpretation_note":note}
