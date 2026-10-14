@@ -4,6 +4,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
     branches:
       - native/u3-type-studies-phase1-20261013
       - native/u3-anatomy-atlas-candidate-20261013
+      - native/u3-cdc-complete-lifecycle-20261014
   workflow_dispatch:
 
 permissions:
@@ -72,6 +73,18 @@ jobs:
           assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
           assert "if (geometryVerified) detectTapGestures" in gallery
           assert "if (geometryVerified && selected != null)" in gallery
+          import json
+          report=json.loads(Path("qa-evidence/unit3/source-backed-plate-manifest.json").read_text())
+          records=report["source_records"]
+          cdc=[item for item in records
+               if item["organism"]=="ascaris" and item["plate_id"]=="life-cycle"]
+          assert len(cdc)==1
+          assert cdc[0]["source_url"]=="https://www.cdc.gov/dpdx/ascariasis/modules/Ascariasis_LifeCycle_lg.jpg"
+          assert cdc[0]["life_cycle_completeness"]=="CDC_DPDx_COMPLETE_REFERENCE"
+          assert cdc[0]["source_illustration_only"] is True
+          assert cdc[0]["pencil_origin_verified"] is False
+          assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          print("CDC_COMPLETE_ASCARIS_SOURCE_GUARD=PASS; ACADEMIC_REVIEW=PENDING")
           print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
           print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
           PY
@@ -183,6 +196,18 @@ jobs:
           assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
           assert "if (geometryVerified) detectTapGestures" in gallery
           assert "if (geometryVerified && selected != null)" in gallery
+          import json
+          report=json.loads(Path("qa-evidence/unit3/source-backed-plate-manifest.json").read_text())
+          records=report["source_records"]
+          cdc=[item for item in records
+               if item["organism"]=="ascaris" and item["plate_id"]=="life-cycle"]
+          assert len(cdc)==1
+          assert cdc[0]["source_url"]=="https://www.cdc.gov/dpdx/ascariasis/modules/Ascariasis_LifeCycle_lg.jpg"
+          assert cdc[0]["life_cycle_completeness"]=="CDC_DPDx_COMPLETE_REFERENCE"
+          assert cdc[0]["source_illustration_only"] is True
+          assert cdc[0]["pencil_origin_verified"] is False
+          assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          print("CDC_COMPLETE_ASCARIS_SOURCE_GUARD=PASS; ACADEMIC_REVIEW=PENDING")
           print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
           print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
           PY
