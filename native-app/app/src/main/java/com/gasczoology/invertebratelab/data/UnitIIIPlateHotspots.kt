@@ -74,11 +74,21 @@ object UnitIIIPlateHotspots {
         ),
         "type_studies/ascaris/life-cycle" to listOf(
             h("unembryonated","Freshly passed egg","புதிதாக வெளியேறும் முட்டை","Fresh faecal eggs are not yet infective.","புதிதாக மலத்துடன் வெளியேறும் முட்டைகள் தொற்றுத்திறன் பெறவில்லை."),
-            h("embryonated","Embryonated soil egg","மண்ணில் கருவளர்ந்த முட்டை","Eggs mature in suitable soil to the infective embryonated stage.","ஏற்ற மண்ணில் முட்டைகள் கருவளர்ந்து தொற்றும் நிலையை அடைகின்றன."),
+            h("unfertilized","Unfertilised egg (not infective)","கருவுறாத முட்டை (தொற்றாது)",
+                "Unfertilised eggs passed in faeces cannot embryonate into infective larvae.",
+                "மலத்துடன் வெளியேறும் கருவுறாத முட்டைகளிலிருந்து தொற்றும் இளவுயிரிகள் உருவாகாது."),
+            h("embryonated","Embryonated soil egg","மண்ணில் கருவளர்ந்த முட்டை",
+                "Fertilised eggs develop to infectivity in warm, moist soil over approximately 18 days to several weeks.",
+                "கருவுற்ற முட்டைகள் ஈரமான, வெப்பமான மண்ணில் சுமார் 18 நாட்கள் முதல் பல வாரங்கள் வரை வளர்ந்து தொற்றும் நிலையை அடைகின்றன."),
             h("ingestion","Egg ingestion","முட்டை உட்கொள்ளுதல்","Humans acquire infection by swallowing infective embryonated eggs.","கருவளர்ந்த தொற்றுமுட்டைகளை விழுங்குவதால் மனிதருக்குத் தொற்று ஏற்படுகிறது."),
             h("hatch","Intestinal hatching","குடலில் இளவுயிரி வெளிவருதல்","Larvae hatch, penetrate gut mucosa and enter circulation.","இளவுயிரிகள் குடலில் வெளிவந்து சளிச்சவ்வைத் துளைத்து இரத்த ஓட்டத்தில் செல்கின்றன."),
             h("lungs","Larvae in lungs","நுரையீரலில் இளவுயிரிகள்","The larvae reach alveoli, then ascend the airways and are swallowed.","இளவுயிரிகள் காற்றுப்பைகளை அடைந்து சுவாசப்பாதை வழி மேலேறி மீண்டும் விழுங்கப்படுகின்றன."),
-            h("adult","Adults in small intestine","சிறுகுடலில் முதிர்ந்த புழுக்கள்","Male and female adults reproduce in the small intestine.","ஆண், பெண் முதிர்ந்த புழுக்கள் சிறுகுடலில் இனப்பெருக்கம் செய்கின்றன.")
+            h("swallow","Airway ascent and re-swallowing","சுவாசப்பாதை ஏறுதலும் மீண்டும் விழுங்குதலும்",
+                "After lung development, larvae ascend the bronchial tree to the throat and are swallowed.",
+                "நுரையீரல் வளர்ச்சிக்குப் பின் இளவுயிரிகள் சுவாசக்கிளைகள் வழியாகத் தொண்டைக்கு மேலேறி மீண்டும் விழுங்கப்படுகின்றன."),
+            h("adult","Adults in small intestine","சிறுகுடலில் முதிர்ந்த புழுக்கள்",
+                "Male and female adults reproduce in the small intestine. Eggs appear in faeces around 2–3 months after ingesting infective eggs.",
+                "ஆண், பெண் முதிர்ந்த புழுக்கள் சிறுகுடலில் இனப்பெருக்கம் செய்கின்றன; தொற்றுமுட்டைகளை விழுங்கிய சுமார் 2–3 மாதங்களில் முட்டைகள் மலத்தில் தோன்றுகின்றன.")
         )
     )
     fun forStem(stem:String):List<UnitIIIHotspot> = byStem[stem].orEmpty()
