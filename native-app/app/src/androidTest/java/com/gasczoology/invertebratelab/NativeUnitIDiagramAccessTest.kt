@@ -43,8 +43,10 @@ class NativeUnitIDiagramAccessTest {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("r1-atlas-heading").assertExists()
+        // Do NOT scroll the figure into view as part of the assertion:
+        // a student must see actual image pixels immediately after opening Anatomy.
         rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
-            .performScrollTo().assertExists()
+            .assertIsDisplayed()
     }
 
     private fun screenshot(scene: String) {
