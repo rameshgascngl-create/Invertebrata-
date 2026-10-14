@@ -99,6 +99,17 @@ class NativeUnitIVEarthwormTest {
         rule.onNodeWithTag("native-unit-4")
             .performScrollToNode(hasTestTag("chapter-u4-penaeus"))
         rule.onNodeWithTag("chapter-u4-penaeus").assertExists()
+        // Exercise the chapter route, not merely the existence of its lazy-list button.
+        // This protects the original Penaeus A5 chapter when Earthworm is reopened.
+        rule.onNodeWithTag("chapter-u4-penaeus").performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-chapter-u4-penaeus").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithText("Chapter: u4-penaeus").assertExists()
+        rule.onNodeWithText("Back").performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-unit-4").fetchSemanticsNodes().isNotEmpty()
+        }
         rule.onNodeWithTag("native-unit-4")
             .performScrollToNode(hasTestTag("u4-open-earthworm-textbook"))
         rule.onNodeWithTag("u4-open-earthworm-textbook").performClick()
