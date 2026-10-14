@@ -129,10 +129,10 @@ object UnitIIILessons {
                   "போலி உடற்குழி குடலுக்கும் உடற்சுவருக்கும் இடையிலுள்ள திரவப் பகுதி. குறுக்குவெட்டில் கவசம், ஹைப்போடெர்மிஸ், நீள்தசைகள், குடல், இனப்பெருக்கக் குழாய்கள், பக்கநாண்கள் ஆகியவற்றைத் தெளிவாக வேறுபடுத்த வேண்டும்."),
                 "https://openstax.org/books/biology-2e/pages/28-5-superphylum-ecdysozoa-nematodes-and-tardigrades"),
             section("life-cycle", "Egg, larval migration and adult stage", "முட்டை, இளவுயிரி இடம்பெயர்ச்சி, வளர்ந்த பருவம்",
-                b("Eggs are shed in faeces; fertilised eggs become infective only after embryonation in a suitable environment. Infection occurs by ingestion of embryonated eggs—not by larval skin penetration.",
-                  "முட்டைகள் மலத்துடன் வெளியேறுகின்றன; கருவுற்ற முட்டைகள் ஏற்ற சுற்றுச்சூழலில் வளர்ந்த பின்னரே தொற்றுத்திறன் பெறுகின்றன. கருவுள்ள முட்டைகளை உட்கொள்ளுதலால் தொற்று ஏற்படும்; தோல்வழி இளவுயிரிகள் புகுவதால் அல்ல."),
-                b("Larvae hatch in the small intestine, penetrate the intestinal mucosa and reach the lungs through portal and systemic circulation. They enter the alveoli, ascend the bronchial tree to the throat and are swallowed; adults mature in the small intestine. The lung stage is developmental, not the adult habitat.",
-                  "சிறுகுடலில் வெளிவரும் இளவுயிரிகள் குடலின் சளிச்சவ்வைத் துளைத்து நுழைவாயில் மற்றும் உடலின் இரத்த ஓட்டம் வழியாக நுரையீரலை அடைகின்றன. காற்றுப்பைகளில் நுழைந்து சுவாசக்கிளைகள் வழியாகத் தொண்டைக்கு மேலேறி மீண்டும் விழுங்கப்படுகின்றன; சிறுகுடலில் முதிர்கின்றன. நுரையீரல் வளர்ச்சிக்கான இடைநிலை; வளர்ந்த புழுவின் நிரந்தர வாழிடம் அல்ல."),
+                b("Fertilised and unfertilised eggs are passed with faeces, but unfertilised eggs cannot develop into infective larvae. Fertilised eggs require approximately 18 days to several weeks in warm, moist, shaded soil to become infective. Humans acquire infection by ingesting embryonated fertile eggs, not through larval penetration of skin.",
+                  "கருவுற்ற மற்றும் கருவுறாத முட்டைகள் மலத்துடன் வெளியேறுகின்றன; கருவுறாத முட்டைகள் தொற்றும் இளவுயிரியாக வளராது. கருவுற்ற முட்டைகள் ஈரமான, வெப்பமான, நிழலுள்ள மண்ணில் சுமார் 18 நாட்கள் முதல் பல வாரங்கள் வரை வளர்ந்து தொற்றும் நிலையை அடைகின்றன. இவ்வாறு கருவளர்ந்த கருவுற்ற முட்டைகளை விழுங்குவதால் மனிதருக்குத் தொற்று ஏற்படுகிறது; தோல்வழி இளவுயிரிகள் நுழைவதால் அல்ல."),
+                b("Larvae hatch in the small intestine, penetrate the intestinal mucosa and migrate through portal and systemic circulation to the lungs. Over approximately 10–14 days they develop in the lungs, enter alveoli, ascend airways, reach the pharynx and are swallowed. Adult worms inhabit the small intestine, where egg production usually begins about 2–3 months after ingestion of infective eggs.",
+                  "சிறுகுடலில் வெளிவரும் இளவுயிரிகள் குடலின் சளிச்சவ்வைத் துளைத்து போர்டல் மற்றும் உடல் இரத்த ஓட்டம் வழியாக நுரையீரலை அடைகின்றன. நுரையீரலில் சுமார் 10–14 நாட்களில் மேலும் வளர்ந்து காற்றுப்பைகளுக்குள் நுழைந்து, சுவாசக்கிளைகள் வழியாகத் தொண்டையை அடைந்து மீண்டும் விழுங்கப்படுகின்றன. முதிர்ந்த புழுக்கள் சிறுகுடலில் வாழ்கின்றன; தொற்றுமுட்டைகளை விழுங்கிய சுமார் 2–3 மாதங்களுக்குப் பிறகு முட்டையிடுதல் தொடங்குகிறது."),
                 "https://www.cdc.gov/dpdx/ascariasis/"),
             section("eggs", "Egg morphology and laboratory relevance", "முட்டையின் அமைப்பும் ஆய்வக முக்கியத்துவமும்",
                 b("Fertilised eggs have a thick protective shell, often with a mammillated outer layer; unfertilised eggs are usually longer and structurally different. Stool microscopy is commonly used to detect intestinal ascariasis.",
@@ -205,15 +205,15 @@ object UnitIIILessons {
         LifeStage("unembryonated", b("01 · Eggs in faeces","01 · மலத்தில் முட்டைகள்"),
             b("Newly passed eggs usually need environmental development before becoming infective.","புதிதாக வெளியேறும் முட்டைகள் தொற்றுத்திறன் பெறச் சுற்றுச்சூழலில் வளர வேண்டும்.")),
         LifeStage("embryonated", b("02 · Embryonated infective egg","02 · கருவுள்ள தொற்றுமுட்டை"),
-            b("Embryonated fertile eggs develop in suitable soil and are infective if ingested.","ஏற்ற மண்ணில் கருவுற்ற முட்டைகள் வளர்ந்து விழுங்கப்பட்டால் தொற்றும் நிலையை அடைகின்றன.")),
+            b("Fertilised eggs embryonate in suitable soil over about 18 days to several weeks. Only the developed embryonated egg is infective when ingested.","கருவுற்ற முட்டைகள் ஏற்ற மண்ணில் சுமார் 18 நாட்கள் முதல் பல வாரங்கள் வரை கருவளர்ச்சி அடைகின்றன. முழுமையாகக் கருவளர்ந்த முட்டையை விழுங்கினால்தான் தொற்று ஏற்படும்.")),
         LifeStage("ingestion", b("03 · Egg ingestion and intestinal hatch","03 · முட்டை உட்கொள்ளுதலும் குடலில் பொரிதலும்"),
             b("Larvae emerge after an infective embryonated egg is swallowed.","தொற்றுத்திறன் பெற்ற கருவுள்ள முட்டை விழுங்கப்பட்டதும் இளவுயிரி குடலில் வெளிவருகிறது.")),
         LifeStage("lung", b("04 · Blood circulation and lung migration","04 · இரத்த ஓட்டமும் நுரையீரல் இடம்பெயர்ச்சியும்"),
             b("Larvae penetrate intestinal tissues and reach the lungs through circulation.","இளவுயிரிகள் குடல் திசுக்களைத் துளைத்து இரத்த ஓட்டம் வழியாக நுரையீரலை அடைகின்றன.")),
         LifeStage("swallow", b("05 · Airway ascent and swallowing","05 · சுவாசப்பாதை ஏறுதலும் விழுங்குதலும்"),
-            b("They ascend the bronchial tree to the throat and are swallowed.","அவை சுவாசக்கிளைகள் வழியாகத் தொண்டைக்கு வந்து மீண்டும் விழுங்கப்படுகின்றன.")),
+            b("Larvae develop further in the lungs for approximately 10–14 days, ascend the bronchial tree to the throat and are swallowed.","இளவுயிரிகள் நுரையீரலில் சுமார் 10–14 நாட்கள் மேலும் வளர்ந்து சுவாசக்கிளைகள் வழியாகத் தொண்டைக்கு வந்து மீண்டும் விழுங்கப்படுகின்றன.")),
         LifeStage("adult", b("06 · Small-intestine adult","06 · சிறுகுடலில் வளர்ந்த புழு"),
-            b("Adults reproduce in the small intestine. There is no snail intermediate host.","வளர்ந்த புழுக்கள் சிறுகுடலில் இனப்பெருக்கம் செய்கின்றன; நத்தை இடைப்புரவலன் இல்லை."))
+            b("Adults reproduce in the small intestine; egg laying starts around 2–3 months after infection. There is no snail intermediate host.","முதிர்ந்த புழுக்கள் சிறுகுடலில் இனப்பெருக்கம் செய்கின்றன; தொற்று ஏற்பட்ட சுமார் 2–3 மாதங்களுக்குப் பிறகு முட்டையிடுதல் தொடங்குகிறது. நத்தை இடைப்புரவலன் இல்லை."))
     )
 
     fun forChapter(id: String) = chapters[id]
