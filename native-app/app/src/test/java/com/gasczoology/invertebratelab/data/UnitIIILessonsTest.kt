@@ -47,24 +47,27 @@ class UnitIIILessonsTest {
             UnitIIIPlateCatalog.forChapter("u3-ascaris").map { it.plateId })
     }
 
-    @Test fun anatomicalLeadersAreAnchoredToDistinctBiologicalStructures() {
+    @Test fun archivedAnatomicalLeadersCannotReuseProceduralCoordinates() {
+        // Spatial ordering within the rejected procedural sketch is NOT
+        // evidence about the six new archival photographs/printed figures.
+        // Keep biologically required names/explanations, but do NOT invent
+        // tested anatomical endpoints for the unreviewed replacement rasters.
         UnitIIIPlateHotspots.validate()
         assertEquals(6, UnitIIIPlateHotspots.byStem.size)
         val internal=UnitIIIPlateHotspots.forStem("type_studies/fasciola/digestive-reproductive")
-        val anterior=internal.single { it.id=="testis-anterior" }
-        val posterior=internal.single { it.id=="testis-posterior" }
-        val ovary=internal.single { it.id=="ovary" }
-        assertTrue(ovary.y < anterior.y && anterior.y < posterior.y)
-        assertTrue(kotlin.math.abs(anterior.x-posterior.x) < .08f)
+        assertTrue(setOf("ovary","testis-anterior","testis-posterior","caecum","uterus","vitellaria")
+            .all { key -> internal.any { it.id==key } })
         val external=UnitIIIPlateHotspots.forStem("type_studies/fasciola/external")
-        assertTrue(external.single{it.id=="genital"}.y <
-            external.single{it.id=="acetabulum"}.y)
+        assertTrue(setOf("genital","acetabulum","oral").all { key -> external.any { it.id==key } })
         val ascaris=UnitIIIPlateHotspots.forStem("type_studies/ascaris/male-female-external")
-        val vulva=ascaris.single { it.id=="female-vulva" }
-        val anus=ascaris.single { it.id=="female-anus" }
-        assertTrue(vulva.y < .45f && anus.y > .85f)
+        assertTrue(setOf("female-vulva","female-anus","male-cloaca").all { key ->
+            ascaris.any { it.id==key } })
         assertEquals(listOf("unembryonated","embryonated","ingestion","hatch","lungs","adult"),
             UnitIIIPlateHotspots.forStem("type_studies/ascaris/life-cycle").map { it.id })
+        for ((stem, items) in UnitIIIPlateHotspots.byStem) {
+            assertTrue(!UnitIIIPlateHotspots.geometryApproved(stem))
+            assertTrue(items.all { it.x.isNaN() && it.y.isNaN() })
+        }
     }
 
     @Test fun teachingDraftDoesNotBecomeAcademicAcceptance() {
