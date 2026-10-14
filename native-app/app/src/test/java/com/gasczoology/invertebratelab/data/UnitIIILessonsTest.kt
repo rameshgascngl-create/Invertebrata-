@@ -62,12 +62,31 @@ class UnitIIILessonsTest {
         val ascaris=UnitIIIPlateHotspots.forStem("type_studies/ascaris/male-female-external")
         assertTrue(setOf("female-vulva","female-anus","male-cloaca").all { key ->
             ascaris.any { it.id==key } })
-        assertEquals(listOf("unembryonated","embryonated","ingestion","hatch","lungs","adult"),
+        assertEquals(listOf("unembryonated","unfertilized","embryonated","ingestion",
+            "hatch","lungs","swallow","adult"),
             UnitIIIPlateHotspots.forStem("type_studies/ascaris/life-cycle").map { it.id })
         for ((stem, items) in UnitIIIPlateHotspots.byStem) {
             assertTrue(!UnitIIIPlateHotspots.geometryApproved(stem))
             assertTrue(items.all { it.x.isNaN() && it.y.isNaN() })
         }
+    }
+
+    @Test fun cdcAscarisLifeCycleRetainsAccurateTimingAndNonInfectiveEggDistinction() {
+        val chapter = UnitIIILessons.forChapter("u3-ascaris")!!
+        val stages = UnitIIILessons.ascarisLifeCycle
+        assertEquals(listOf("unembryonated","embryonated","ingestion","lung","swallow","adult"),
+            stages.map { it.id })
+        val narrative = stages.joinToString(" ") { it.explanation.english }
+        assertTrue(narrative.contains("18 days"))
+        assertTrue(narrative.contains("10–14 days"))
+        assertTrue(narrative.contains("2–3 months"))
+        assertFalse(narrative.contains("skin penetration"))
+        val controls = UnitIIIPlateHotspots.forStem("type_studies/ascaris/life-cycle")
+        assertEquals("Unfertilised egg (not infective)",
+            controls.single { it.id=="unfertilized" }.title.english)
+        assertTrue(controls.any { it.id=="swallow" })
+        assertFalse(UnitIIIPlateHotspots.geometryApproved("type_studies/ascaris/life-cycle"))
+        assertEquals(AcademicWorkStatus.DRAFT_UNVERIFIED, chapter.status)
     }
 
     @Test fun teachingDraftDoesNotBecomeAcademicAcceptance() {
