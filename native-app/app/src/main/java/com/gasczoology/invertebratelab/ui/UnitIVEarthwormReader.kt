@@ -28,6 +28,7 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
     val context = LocalContext.current
     val narrator = remember(context) { OfflineNarrator(context) }
     val voicePhase by narrator.phase.collectAsState()
+    val requestedScript by narrator.script.collectAsState()
     DisposableEffect(narrator) { onDispose { narrator.close() } }
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -134,6 +135,17 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                     Text(if (tamil) "குரல் நிலை: " + voicePhase.name
                         else "Voice state: " + voicePhase.name,
                         style = MaterialTheme.typography.bodySmall)
+                    val selectedScript = section.paragraphs.joinToString(" ") { it.english }
+                    if (requestedScript?.english == selectedScript) {
+                        Text(
+                            if (tamil) "பேச்சுக்கோரிக்கை / எழுத்து மாற்று: " +
+                                requestedScript!!.value(language).take(210)
+                            else "Speech request / written fallback: " +
+                                requestedScript!!.value(language).take(210),
+                            modifier = Modifier.testTag("u4-earthworm-voice-script-" + section.id),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
                     Text((if (tamil) "மூலங்கள்: " else "Sources: ") +
                         section.scientificSources.joinToString(" · "),
                         style = MaterialTheme.typography.bodySmall,
