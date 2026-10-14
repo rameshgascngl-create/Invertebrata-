@@ -4,7 +4,7 @@ package com.gasczoology.invertebratelab.data
  * Stable, versioned learner-position state; no student names or submitted answers.
  * The selected language is stored by LanguagePreferenceRepository.
  */
-enum class StudyDestination { HOME, UNIT, CHAPTER, PRACTICE, PARAMECIUM_LAB }
+enum class StudyDestination { HOME, UNIT, CHAPTER, PRACTICE, PARAMECIUM_LAB, EARTHWORM_TEXTBOOK }
 
 data class NativeLearningState(
     val schemaVersion: Int = CURRENT_SCHEMA,
@@ -40,8 +40,11 @@ data class NativeLearningState(
             waterBalanceProgress = waterBalanceProgress.normalized(),
             nutritionProgress = nutritionProgress.normalized(),
             textbookSectionId = textbookSectionId.takeIf { id ->
-                NativeLessonDrafts.paramecium.sections.any { it.id == id }
-            } ?: "identity-and-habitat",
+                if (destination == StudyDestination.EARTHWORM_TEXTBOOK)
+                    UnitIVEarthwormLessons.lesson.sections.any { it.id == id }
+                else NativeLessonDrafts.paramecium.sections.any { it.id == id }
+            } ?: if (destination == StudyDestination.EARTHWORM_TEXTBOOK) "identity"
+                 else "identity-and-habitat",
             ciliaryStageIndex = ciliaryStageIndex.takeIf { it in 0..3 } ?: 0,
             laboratoryTab = laboratoryTab.takeIf {
                 it in setOf("study", "anatomy", "simulate", "listen", "practice", "nuclear", "water-balance", "nutrition")
@@ -57,6 +60,11 @@ data class NativeLearningState(
             ) textbookState else NativeLearningState()
             StudyDestination.PARAMECIUM_LAB -> if (
                 unit.number == 1 && chapterId == "u1-paramecium" &&
+                questionId.isEmpty() && !answerRevealed
+            ) textbookState else NativeLearningState()
+            StudyDestination.EARTHWORM_TEXTBOOK -> if (
+                unit.number == 4 &&
+                chapterId == NativeCurriculumManifest.EARTHWORM_LESSON_ID &&
                 questionId.isEmpty() && !answerRevealed
             ) textbookState else NativeLearningState()
             StudyDestination.PRACTICE -> if (question != null &&
