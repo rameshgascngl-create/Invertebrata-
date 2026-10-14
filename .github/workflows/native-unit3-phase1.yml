@@ -4,6 +4,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
     branches:
       - native/u3-type-studies-phase1-20261013
       - native/u3-anatomy-atlas-candidate-20261013
+      - native/u3-font200-organ-controls-20261014
   workflow_dispatch:
 
 permissions:
