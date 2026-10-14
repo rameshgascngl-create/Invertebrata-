@@ -119,12 +119,24 @@ fun ParameciumTeachingLab(
     var simulationStep by rememberSaveable { mutableIntStateOf(0) }
     var simulationPlaying by rememberSaveable { mutableStateOf(false) }
     androidx.activity.compose.BackHandler(onBack = ::leave)
+    val labScroll = rememberScrollState()
+    LaunchedEffect(tab) { if (tab == "anatomy") labScroll.scrollTo(0) }
     Scaffold { insets ->
-        Column(modifier=Modifier.padding(insets).verticalScroll(rememberScrollState())
+        Column(modifier=Modifier.padding(insets).verticalScroll(labScroll)
             .padding(16.dp).testTag("r1-paramecium-lab"),
             verticalArrangement=Arrangement.spacedBy(12.dp)) {
             OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=::leave, modifier=Modifier.heightIn(min=48.dp)) {
                 Text(bi(language,"Back","பின்செல்"))
+            }
+            // Display the genuine native atlas ahead of long hero, voice and tab
+            // descriptions; otherwise the figure is below the fold at 200% Tamil.
+            if (tab == "anatomy") {
+                AtlasSection(language, ::speak, onExploreOsmoregulation = {
+                    simulationId = ParameciumProcess.OSMOREGULATION.name
+                    simulationStep = 0
+                    simulationPlaying = false
+                    selectTab("simulate")
+                })
             }
             val savedSection = NativeLessonDrafts.paramecium.sections.first { it.id == learningState.textbookSectionId }
             Text(bi(language, "Reading position: ", "வாசிப்பு நிலை: ") + savedSection.heading.value(language) +
@@ -250,12 +262,7 @@ fun ParameciumTeachingLab(
                 "study" -> StudySection(language, ::speak, onAnatomy = { selectTab("anatomy") },
                     onSimulation = { selectTab("simulate") },
                     learningState = learningState, onLearningChanged = onLearningChanged)
-                "anatomy" -> AtlasSection(language, ::speak, onExploreOsmoregulation = {
-                    simulationId = ParameciumProcess.OSMOREGULATION.name
-                    simulationStep = 0
-                    simulationPlaying = false
-                    selectTab("simulate")
-                })
+                "anatomy" -> Unit // The real atlas is drawn first, above long introductory text.
                 "simulate" -> SimulatorSection(
                     language, ::speak, simulationId, simulationStep, simulationPlaying,
                     onChoose = { newId ->
@@ -331,19 +338,26 @@ private fun AtlasSection(language:AppLanguage, speak:(BilingualText)->Unit,
         modifier=Modifier.testTag("r1-atlas-heading"))
     Column(modifier=Modifier.fillMaxWidth(),
         verticalArrangement=Arrangement.spacedBy(6.dp)) {
-        for(p in listOf("external","oral","vacuole","internal")) {
-            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={
-                panel = p
-                if (p == "vacuole") selected = ParameciumVacuolePlate.landmarks.first().id
-                else if (p != "external") selected = nodes(p).first().id
-            },
-                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r1-atlas-"+p)) {
-                Text(when(p) {
-                    "external" -> bi(language,"External/cilia","வெளிப்புறம்")
-                    "oral" -> bi(language,"Oral feeding","உணவமைப்பு")
-                    "vacuole" -> bi(language,"Vacuoles","நுண்குமிழ்கள்")
-                    else -> bi(language,"Nuclei/internal","உட்கரு / உள்")
-                })
+        // Two-row selector retains 48dp+ accessible buttons while keeping the
+        // first pencil drawing on-screen at actual 200% Tamil font scaling.
+        for (pair in listOf("external","oral","vacuole","internal").chunked(2)) {
+            Row(horizontalArrangement=Arrangement.spacedBy(8.dp),
+                modifier=Modifier.fillMaxWidth()) {
+                for (p in pair) {
+                    OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={
+                        panel = p
+                        if (p == "vacuole") selected = ParameciumVacuolePlate.landmarks.first().id
+                        else if (p != "external") selected = nodes(p).first().id
+                    },
+                        modifier=Modifier.weight(1f).heightIn(min=48.dp).testTag("r1-atlas-"+p)) {
+                        Text(when(p) {
+                            "external" -> bi(language,"External/cilia","வெளிப்புறம்")
+                            "oral" -> bi(language,"Oral feeding","உணவமைப்பு")
+                            "vacuole" -> bi(language,"Vacuoles","நுண்குமிழ்கள்")
+                            else -> bi(language,"Nuclei/internal","உட்கரு / உள்")
+                        })
+                    }
+                }
             }
         }
     }
