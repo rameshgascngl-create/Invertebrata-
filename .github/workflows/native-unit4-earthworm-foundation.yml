@@ -1,0 +1,109 @@
+name: Unit IV native Earthworm academic foundation - exact-commit engineering validation
+'on':
+  push:
+    branches:
+      - native/u4-earthworm-academic-foundation-20261014
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-unit4-earthworm-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  academic-and-compile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify independent Unit IV lesson and protected A5 original
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab")
+          lessons=(root/"data/UnitIVEarthwormLessons.kt").read_text(encoding="utf-8")
+          manifest=(root/"data/NativeCurriculumManifest.kt").read_text(encoding="utf-8")
+          ui=(root/"ui/UnitIVEarthwormReader.kt").read_text(encoding="utf-8")
+          nav=(root/"ui/InvertebrataApp.kt").read_text(encoding="utf-8")
+          for text in ["Metaphire posthuma","Pheretima posthuma","XIV–XVI","perichaetine",
+                       "pharyngeal","septal","integumentary","typhlosole"]:
+              assert text.lower() in lessons.lower(),text
+          for plate in ["external-setae","digestive","circulatory","nervous","excretory","reproductive"]:
+              assert plate in lessons
+              assert not any((Path("native-app/app/src/main/assets/type_studies/earthworm")/(plate+"."+ext)).exists() for ext in ["png","webp"]), plate
+          assert 'EARTHWORM_TEXTBOOK' in nav and 'u4-open-earthworm-textbook' in nav
+          assert 'u4-earthworm-plate-pending-' in ui
+          assert 'EXISTING_A5_CHAPTER_COUNT = 43' in manifest
+          assert 'REQUIRED_LESSON_SLOTS = 44' in manifest
+          import json
+          records=[]
+          for n in range(1,6):
+              p=Path("native-app/app/src/main/assets/a5/U"+str(n)+"_A5_VALIDATED.json")
+              assert p.is_file(),p
+              records.append((str(p),len(p.read_bytes())))
+          print("UNIT4_NATIVE_FOUNDATION_PRESENT=PASS A5_FILES="+repr(records))
+          print("SIX_REQUIRED_EARTHWORM_RASTERS=PENDING; ACADEMIC_APPROVAL=HOLD")
+          PY
+      - name: Compile Kotlin, instrumentation sources and run all JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+
+  android-ui:
+    needs: academic-and-compile
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable emulator hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Native API34 Earthworm at 100% and 200% font scale, offline
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit4-earthworm-audit.sh
+      - name: Preserve exact-commit XML, raster screenshots and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit4-earthworm-academic-foundation-api34-evidence
+          path: qa-evidence/unit4/
+          if-no-files-found: warn
+      - name: Assemble native engineering debug APK
+        if: success()
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve exact-commit engineering QA APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit4-earthworm-native-debug-qa-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Academic artwork and physical-device release gate
+        if: always()
+        run: |
+          echo "U4.0 BILINGUAL TEXTBOOK = editorial draft."
+          echo "Six Earthworm pencil anatomical masters, coordinates, screenshots and audible Tamil device QA = OPEN."
+          echo "Do NOT release or merge into Play/Indus as academically accepted."
