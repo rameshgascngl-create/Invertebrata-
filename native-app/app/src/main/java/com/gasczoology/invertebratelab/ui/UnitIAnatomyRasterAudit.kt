@@ -84,6 +84,7 @@ private fun rasterSha256(context: android.content.Context, organism: String): St
 
 private fun reviewJson(
     organism: String,
+    sourceId: String,
     checksum: String,
     bitmap: ImageBitmap,
     marks: List<DraftRasterMark>,
@@ -102,7 +103,7 @@ private fun reviewJson(
     return JSONObject()
         .put("schema", "invertebrata.u19.raster-coordinate-draft.v1")
         .put("status", "DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF")
-        .put("source_image", "unit1/references/" + organism + ".png")
+        .put("source_image", sourceId)
         .put("source_sha256", checksum)
         .put("organism", organism)
         .put("image_width_px", bitmap.width)
@@ -143,21 +144,26 @@ private fun NativeRasterReviewer(
     bitmap: ImageBitmap,
     language: AppLanguage,
     onClose: () -> Unit,
+    sourceHashOverride: String? = null,
+    sourceIdOverride: String? = null,
 ) {
     val context = LocalContext.current
     val tamil = language == AppLanguage.TAMIL
     val choices = remember(organism) { reviewStructures(organism) }
-    val sourceHash = remember(organism) { rasterSha256(context, organism) }
+    val sourceHash = remember(organism, sourceHashOverride) {
+        sourceHashOverride ?: rasterSha256(context, organism)
+    }
     var selectedId by remember(organism) { mutableStateOf(choices.first().id) }
     val selected = choices.first { it.id == selectedId }
-    val marks = remember(organism) { mutableStateListOf<DraftRasterMark>() }
+    val marks = remember(organism, sourceHash) { mutableStateListOf<DraftRasterMark>() }
     var zoom by remember(organism) { mutableFloatStateOf(1f) }
     var panX by remember(organism) { mutableFloatStateOf(0f) }
     var panY by remember(organism) { mutableFloatStateOf(0f) }
     var viewport by remember { mutableStateOf(IntSize.Zero) }
     var exportStatus by remember { mutableStateOf("") }
-    val json = remember(organism, sourceHash, marks.toList()) {
-        reviewJson(organism, sourceHash.orEmpty(), bitmap, marks)
+    val sourceId = sourceIdOverride ?: "unit1/references/" + organism + ".png"
+    val json = remember(organism, sourceHash, sourceId, marks.toList()) {
+        reviewJson(organism, sourceId, sourceHash.orEmpty(), bitmap, marks)
     }
     val latestJson by rememberUpdatedState(json)
     val exportFile = rememberLauncherForActivityResult(
@@ -355,4 +361,27 @@ private fun NativeRasterReviewer(
             }
         }
     }
+}
+
+/** U1.10: opens the same pixel-accurate tool over an imported candidate scan.
+ * SOURCE SHA-256 and source identity travel with all exported draft endpoints.
+ */
+@Composable
+internal fun NativeImportedPlateReviewer(
+    organism: String,
+    bitmap: ImageBitmap,
+    sha256: String,
+    language: AppLanguage,
+    onClose: () -> Unit,
+) {
+    val context = LocalContext.current
+    if (!isNativeSourceAuditDebuggable(context.applicationInfo.flags)) return
+    NativeRasterReviewer(
+        organism = organism,
+        bitmap = bitmap,
+        language = language,
+        onClose = onClose,
+        sourceHashOverride = sha256,
+        sourceIdOverride = "app-private-review-candidate/" + organism,
+    )
 }
