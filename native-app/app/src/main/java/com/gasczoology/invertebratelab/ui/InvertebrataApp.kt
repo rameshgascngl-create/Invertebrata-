@@ -387,8 +387,18 @@ private fun UnitScreen(
     onChapter: (String) -> Unit,
 ) {
     var showProtozoaReferences by rememberSaveable { mutableStateOf(false) }
+    val unitScrollState = rememberLazyListState()
+    // At 200% font the overview may fill the entire viewport. Opening the
+    // reference gallery must reveal its first heading without further scrolling.
+    // Its location is the second LazyColumn item; existing A5 chapters follow it.
+    LaunchedEffect(unit.number, showProtozoaReferences) {
+        if (unit.number == 1 && showProtozoaReferences) {
+            unitScrollState.scrollToItem(1)
+        }
+    }
     Scaffold { padding ->
         LazyColumn(
+            state = unitScrollState,
             modifier = Modifier.fillMaxSize().padding(padding).testTag("native-unit-" + unit.number),
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
