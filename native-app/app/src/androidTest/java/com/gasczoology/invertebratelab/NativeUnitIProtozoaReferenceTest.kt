@@ -108,6 +108,38 @@ class NativeUnitIProtozoaReferenceTest {
         screenshot("four-images-english")
     }
 
+    @Test fun englishNativeFlagellateLifeCyclesAreNavigableOffline() {
+        enter(false)
+        rule.onNodeWithTag("native-unit-1")
+            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
+        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        for (id in listOf("trypanosoma", "leishmania")) {
+            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+                .performScrollToNode(hasTestTag("u18-cycle-" + id))
+            rule.onNodeWithTag("u18-title-" + id).assertExists()
+            rule.onNodeWithTag("u18-teaching-cadence-note-" + id).assertExists()
+            rule.onNodeWithTag("u18-stage-counter-" + id)
+                .assertTextContains("Stage 1 of 6")
+            rule.onNodeWithTag("u18-next-" + id).performClick()
+            rule.waitForIdle()
+            rule.onNodeWithTag("u18-stage-counter-" + id)
+                .assertTextContains("Stage 2 of 6")
+            rule.onNodeWithTag("u18-stage-explanation-" + id).assertExists()
+            rule.onNodeWithTag("u18-prev-" + id).performClick()
+            rule.onNodeWithTag("u18-stage-counter-" + id)
+                .assertTextContains("Stage 1 of 6")
+            rule.onNodeWithTag("u18-play-pause-" + id).assertExists()
+            rule.onNodeWithTag("u18-speak-" + id).assertExists()
+            rule.onNodeWithTag("u18-stop-audio-" + id).assertExists()
+            rule.onNodeWithTag("u18-audio-status-" + id).assertExists()
+            screenshot("u18-" + id + "-english")
+        }
+    }
+
     @Test fun tamilParasiticProtozoaChapterRetainsOwnReferencesAndA5() {
         enter(true)
         rule.onNodeWithTag("native-unit-1")
@@ -142,6 +174,20 @@ class NativeUnitIProtozoaReferenceTest {
         }
         screenshot("tamil-trypanosoma-reading")
         rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+            .performScrollToNode(hasTestTag("u18-cycle-trypanosoma"))
+        rule.onNodeWithTag("u18-title-trypanosoma").assertExists()
+        rule.onNodeWithTag("u18-stage-counter-trypanosoma")
+            .assertTextContains("நிலை 1 / 6")
+        rule.onNodeWithTag("u18-next-trypanosoma").performClick()
+        rule.onNodeWithTag("u18-stage-counter-trypanosoma")
+            .assertTextContains("நிலை 2 / 6")
+        rule.onNodeWithTag("u18-stage-explanation-trypanosoma").assertExists()
+        rule.onNodeWithTag("u18-reset-trypanosoma").performClick()
+        rule.onNodeWithTag("u18-stage-counter-trypanosoma")
+            .assertTextContains("நிலை 1 / 6")
+        rule.onNodeWithTag("u18-audio-status-trypanosoma").assertExists()
+        screenshot("u18-trypanosoma-tamil")
+        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
             .performScrollToNode(hasTestTag("u17-study-leishmania"))
         rule.onNodeWithTag("u17-study-title-leishmania").assertExists()
         rule.onNodeWithTag("u17-reference-image-leishmania").assertExists()
@@ -157,6 +203,18 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u17-current-explanation-leishmania-" + stage).assertExists()
         }
         screenshot("tamil-leishmania-reading")
+        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+            .performScrollToNode(hasTestTag("u18-cycle-leishmania"))
+        rule.onNodeWithTag("u18-title-leishmania").assertExists()
+        rule.onNodeWithTag("u18-stage-counter-leishmania")
+            .assertTextContains("நிலை 1 / 6")
+        rule.onNodeWithTag("u18-next-leishmania").performClick()
+        rule.onNodeWithTag("u18-stage-counter-leishmania")
+            .assertTextContains("நிலை 2 / 6")
+        rule.onNodeWithTag("u18-stage-explanation-leishmania").assertExists()
+        rule.onNodeWithTag("u18-reset-leishmania").performClick()
+        rule.onNodeWithTag("u18-audio-status-leishmania").assertExists()
+        screenshot("u18-leishmania-tamil")
         rule.onNodeWithTag("native-chapter-u1-proto-parasites")
             .performScrollToNode(hasTestTag("u1-protozoa-reference-gallery"))
         rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertExists()
