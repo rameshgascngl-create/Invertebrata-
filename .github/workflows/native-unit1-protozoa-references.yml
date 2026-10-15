@@ -57,8 +57,13 @@ jobs:
                          'trypanosomiasisAfrican', 'dpdx/leishmaniasis'):
               assert marker in flagellates,marker
           assert 'UnitIFlagellateTypeStudiesHeader(language)' in nav
-          for organism in ('trypanosoma','leishmania'):
-              assert 'UnitIFlagellateTypeStudy("'+organism+'", language)' in nav
+          assert 'UnitIFlagellateTypeStudiesHeader(language)' in nav
+          for organism, stages in (('trypanosoma',('morphology','mammal','vector','contrast')),
+                                   ('leishmania',('morphology','mammal','vector','limits'))):
+              assert 'UnitIFlagellateStudyIntroduction("'+organism+'", language)' in nav
+              for stage in stages:
+                  assert ('UnitIFlagellateLessonSection("'+organism+'", "'+stage+'", language)') in nav
+          assert 'u17-image-expand-' in flagellates
           assert 'u17-flagellate-native-heading' in nav
           assert 'rememberRequiredRasterBitmap(' in gallery
           assert 'u1-reference-missing' in gallery
