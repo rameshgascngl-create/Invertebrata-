@@ -382,6 +382,6 @@ internal fun NativeImportedPlateReviewer(
         language = language,
         onClose = onClose,
         sourceHashOverride = sha256,
-        sourceIdOverride = "app-private-review-candidate/" + organism,
+        sourceIdOverride = "app-private:u110_unverified_pencil_candidates/" + organism + ".source",
     )
 }
