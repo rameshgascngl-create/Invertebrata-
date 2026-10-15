@@ -12,6 +12,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.platform.testTag
@@ -156,10 +158,10 @@ private fun ExpandedProtozoaReferenceImage(
         else null
     val displayedImage=if(!plasmodium || focus=="overview") bitmap else focusImage
     val focusLabels=listOf(
-        Triple("overview","Complete life cycle","முழு வாழ்க்கைச் சுழற்சி"),
-        Triple("liver","Liver stages","கல்லீரல் நிலைகள்"),
-        Triple("blood","Blood stages","இரத்த நிலைகள்"),
-        Triple("mosquito","Mosquito stages","கொசு நிலைகள்")
+        Triple("overview","All","முழு"),
+        Triple("liver","Liver","கல்லீரல்"),
+        Triple("blood","Blood","இரத்தம்"),
+        Triple("mosquito","Vector","கொசு")
     )
     Dialog(
         onDismissRequest=onClose,
@@ -174,28 +176,41 @@ private fun ExpandedProtozoaReferenceImage(
                     .padding(horizontal=12.dp, vertical=6.dp),
                 verticalArrangement=Arrangement.spacedBy(7.dp),
             ) {
-                Text(title,style=MaterialTheme.typography.titleMedium,maxLines=2)
+                Text(title,
+                    style=if(plasmodium) MaterialTheme.typography.titleSmall
+                          else MaterialTheme.typography.titleMedium,
+                    maxLines=if(plasmodium) 1 else 2,
+                    overflow=TextOverflow.Ellipsis)
                 Text(
-                    if(tamil)"ஆதாரப் படம் மட்டுமே; உடலமைப்பு மதிப்பாய்வு நிலுவையில்."
+                    if(plasmodium) {
+                        if(tamil) "மூலப் படத்தின் பெரிதாக்கப்பட்ட பகுதிகள்; பென்சில் படமல்ல. ஆய்வு நிலுவை."
+                        else "Enlarged reference excerpts, not pencil art; review pending."
+                    } else if(tamil)
+                        "ஆதாரப் படம் மட்டுமே; உடலமைப்பு மதிப்பாய்வு நிலுவையில்."
                     else "Source illustration only; anatomical review remains open.",
                     color=MaterialTheme.colorScheme.error,
-                    style=MaterialTheme.typography.labelMedium,
+                    style=if(plasmodium) MaterialTheme.typography.labelSmall
+                          else MaterialTheme.typography.labelMedium,
+                    maxLines=if(plasmodium) 2 else Int.MAX_VALUE,
+                    overflow=TextOverflow.Ellipsis,
                 )
                 if(plasmodium) {
-                    Text(if(tamil)
-                        "இது அதே ஆதாரப் படத்தின் பெரிதாக்கப்பட்ட பகுதிகள்; தனிப் பென்சில் படங்கள் அல்ல."
-                        else "Readable excerpts of the same reference figure; not independent pencil drawings.",
-                        style=MaterialTheme.typography.bodySmall,
-                        modifier=Modifier.testTag("u1-plasmodium-reference-warning"))
-                    focusLabels.chunked(2).forEach { pair ->
-                        Row(modifier=Modifier.fillMaxWidth(),
-                            horizontalArrangement=Arrangement.spacedBy(7.dp)) {
-                            pair.forEach { (id,en,ta) ->
-                                OutlinedButton(
-                                    onClick={focus=id;scale=1f;panX=0f;panY=0f},
-                                    modifier=Modifier.weight(1f).heightIn(min=48.dp)
-                                        .testTag("u1-plasmodium-phase-"+id)
-                                ) { Text(if(tamil)ta else en) }
+                    // Four concise selectors on ONE row keep the image visible
+                    // at 200% Tamil. Long wording remains in image descriptions.
+                    Row(modifier=Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.spacedBy(3.dp)) {
+                        focusLabels.forEach { (id,en,ta) ->
+                            OutlinedButton(
+                                onClick={focus=id;scale=1f;panX=0f;panY=0f},
+                                modifier=Modifier.weight(1f).heightIn(min=48.dp)
+                                    .testTag("u1-plasmodium-phase-"+id),
+                                contentPadding=PaddingValues(horizontal=2.dp,vertical=2.dp)
+                            ) {
+                                Text(if(tamil)ta else en,
+                                    textAlign=TextAlign.Center,
+                                    style=MaterialTheme.typography.labelSmall,
+                                    maxLines=2,
+                                    overflow=TextOverflow.Ellipsis)
                             }
                         }
                     }
@@ -214,8 +229,9 @@ private fun ExpandedProtozoaReferenceImage(
                                 "அனைத்து நிலைகளும் கொண்ட மூல விளக்கப்படம். தனி விவரங்களுக்கு கீழுள்ள தேர்வுகளைத் தொடுக."
                                 else "Full reference overview. Select a focus view for enlarged stage excerpts."
                         },
-                        style=MaterialTheme.typography.bodySmall,
-                        maxLines=3,
+                        style=MaterialTheme.typography.labelSmall,
+                        maxLines=2,
+                        overflow=TextOverflow.Ellipsis,
                         modifier=Modifier.testTag("u1-plasmodium-phase-explanation"))
                 }
                 Box(modifier=Modifier.fillMaxWidth().weight(1f).clipToBounds()) {
