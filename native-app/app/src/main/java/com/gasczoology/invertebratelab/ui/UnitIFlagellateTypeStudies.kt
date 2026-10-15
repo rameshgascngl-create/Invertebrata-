@@ -92,11 +92,11 @@ private val flagellateStudies = listOf(
 )
 
 @Composable
-internal fun UnitIFlagellateTypeStudies(language: AppLanguage) {
+internal fun UnitIFlagellateTypeStudiesHeader(language: AppLanguage) {
     val tamil = language == AppLanguage.TAMIL
     Column(
         modifier = Modifier.fillMaxWidth().testTag("u17-flagellate-native-lessons"),
-        verticalArrangement = Arrangement.spacedBy(14.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         Text(
             if (tamil) "ஒட்டுண்ணிக் கசையிழை உயிரினங்கள் — விரிவான பாடம்"
@@ -112,10 +112,14 @@ internal fun UnitIFlagellateTypeStudies(language: AppLanguage) {
             color = MaterialTheme.colorScheme.error,
             modifier = Modifier.testTag("u17-flagellate-academic-hold"),
         )
-        flagellateStudies.forEach { study ->
-            FlagellateStudyCard(study, language)
-        }
     }
+}
+
+/** Separate LazyColumn entries ensure smooth scrolling with 200% Tamil fonts. */
+@Composable
+internal fun UnitIFlagellateTypeStudy(id: String, language: AppLanguage) {
+    val study = flagellateStudies.single { it.id == id }
+    FlagellateStudyCard(study, language)
 }
 
 @Composable
