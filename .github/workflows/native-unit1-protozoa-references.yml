@@ -95,7 +95,7 @@ jobs:
           anatomy=(root/'data/UnitIAnatomyReviewDescriptions.kt').read_text()
           assert 'mammalian_bloodstream_trypomastigote' in anatomy
           assert 'intracellular_mammalian_amastigote' in anatomy
-          assert 'sand_fly_promastigote' in anatomy and 'return false' in anatomy
+          assert 'sand_fly_promastigote' not in anatomy and 'return false' in anatomy
           assert 'UnitIAnatomyReviewDescriptions.forOrganism' in audit
           assert 'u110-review-speak-' in audit and 'OfflineNarrator(' in audit
           assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
