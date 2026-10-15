@@ -135,7 +135,9 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u19-structure-trypanosoma-kinetoplast")
             .performScrollTo().performClick()
         rule.onNodeWithTag("u110-review-explanation-trypanosoma")
+            .performScrollTo().assertIsDisplayed()
             .assertTextContains("mitochondrial DNA", substring = true)
+        screenshot("u110-trypanosoma-source-review")
 
         rule.onNodeWithTag("u19-tappable-raster-trypanosoma")
             .performScrollTo().performTouchInput { click() }
