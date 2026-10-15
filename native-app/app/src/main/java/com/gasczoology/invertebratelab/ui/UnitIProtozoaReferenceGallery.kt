@@ -20,6 +20,8 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 
@@ -304,8 +306,12 @@ private fun ExpandedProtozoaReferenceImage(
                     OutlinedButton(
                         onClick={scale=1f;panX=0f;panY=0f},
                         modifier=Modifier.weight(1f).heightIn(min=48.dp)
+                            .semantics {
+                                contentDescription=if(tamil)
+                                    "பெரிதாக்கலை மீட்டமை" else "Reset zoom"
+                            }
                             .testTag("u1-reference-zoom-reset"),
-                    ) { Text("1×") }
+                    ) { Text("↺",maxLines=1) }
                     OutlinedButton(
                         onClick={scale=(scale*1.5f).coerceAtMost(6f)},
                         modifier=Modifier.weight(1f).heightIn(min=48.dp)

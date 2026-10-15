@@ -65,3 +65,16 @@ This improves **caption access and control width**, not the artwork's
 scientific validity. Continue to require exact-commit Android 100%/200%
 tests and physical-device QA; do not mistake source crop bounds for approved
 image-space anatomical leaders.
+
+## U1.6 large-font control and expanded-copy follow-up
+
+On 200% system font scaling, the previous narrow `1×` reset button wrapped
+into two lines. The control now renders a single reset glyph with explicit
+English/Tamil TalkBack semantics (`Reset zoom` /
+`பெரிதாக்கலை மீட்டமை`). The screen still provides minimum 48dp targets.
+API34 screenshot evidence for the expanded blood-stage Details panel is
+captured at 100% and 200% in both languages, with assertions that the
+complete stage explanation is present—not merely its ellipsized preview.
+
+This is accessibility engineering, not a scientific endorsement of the
+original reference figure or a substitute for four original pencil plates.
