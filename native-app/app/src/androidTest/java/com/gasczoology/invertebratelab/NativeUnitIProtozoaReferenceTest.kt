@@ -126,18 +126,23 @@ class NativeUnitIProtozoaReferenceTest {
             .assertTextContains("UNVERIFIED", substring = true)
         rule.onNodeWithTag("u19-raster-size-trypanosoma").assertExists()
         rule.onNodeWithTag("u19-tappable-raster-trypanosoma")
-            .performTouchInput { click() }
+            .performScrollTo().performTouchInput { click() }
         rule.onNodeWithTag("u19-mark-count-trypanosoma")
             .assertTextContains("1", substring = true)
         rule.onNodeWithTag("u19-export-trypanosoma").assertIsEnabled()
-        rule.onNodeWithTag("u19-zoom-in-trypanosoma").performClick()
+        rule.onNodeWithTag("u19-zoom-in-trypanosoma")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u19-tappable-raster-trypanosoma").performScrollTo()
         screenshot("u19-trypanosoma-calibration")
-        rule.onNodeWithTag("u19-view-reset-trypanosoma").performClick()
-        rule.onNodeWithTag("u19-undo-trypanosoma").performClick()
+        rule.onNodeWithTag("u19-view-reset-trypanosoma")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u19-undo-trypanosoma")
+            .performScrollTo().performClick()
         rule.onNodeWithTag("u19-mark-count-trypanosoma")
             .assertTextContains("0", substring = true)
         rule.onNodeWithTag("u19-export-trypanosoma").assertIsNotEnabled()
-        rule.onNodeWithTag("u19-close-trypanosoma").performClick()
+        rule.onNodeWithTag("u19-close-trypanosoma")
+            .performScrollTo().performClick()
         rule.onNodeWithTag("u19-review-dialog-trypanosoma").assertDoesNotExist()
     }
 
