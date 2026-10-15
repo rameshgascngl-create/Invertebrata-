@@ -87,6 +87,13 @@ class NativeUnitIProtozoaReferenceTest {
                 actual > 195f * rule.activity.resources.displayMetrics.density)
             screenshot("plasmodium-"+phase+"-english")
         }
+        rule.onNodeWithTag("u1-plasmodium-phase-blood").performClick()
+        rule.onNodeWithTag("u1-plasmodium-details-open").performClick()
+        rule.onNodeWithTag("u1-plasmodium-details-dialog").assertExists()
+        rule.onNodeWithTag("u1-plasmodium-details-body")
+            .assertTextContains("Merozoites",substring=true)
+        rule.onNodeWithTag("u1-plasmodium-details-close").performClick()
+        rule.onNodeWithTag("u1-plasmodium-details-dialog").assertDoesNotExist()
         rule.onNodeWithTag("u1-plasmodium-phase-overview").performClick()
         rule.onNodeWithTag("u1-plasmodium-focus-overview").assertExists()
         rule.onNodeWithTag("u1-reference-zoom-in").performClick()
@@ -134,6 +141,14 @@ class NativeUnitIProtozoaReferenceTest {
                 actual > 195f * rule.activity.resources.displayMetrics.density)
             screenshot("plasmodium-"+phase+"-tamil")
         }
+        rule.onNodeWithTag("u1-plasmodium-phase-blood").performClick()
+        rule.onNodeWithTag("u1-plasmodium-details-open")
+            .assertTextContains("விளக்கம்",substring=true).performClick()
+        rule.onNodeWithTag("u1-plasmodium-details-body")
+            .assertTextContains("மெரோசோயிட்டுகள்",substring=true)
+        rule.onNodeWithTag("u1-plasmodium-details-close").performClick()
+        rule.onNodeWithTag("u1-plasmodium-details-dialog").assertDoesNotExist()
+        rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
         rule.onNodeWithTag("u1-reference-close").performClick()
     }
 }

@@ -51,3 +51,17 @@ claim a \`P. falciparum\` dormant liver hypnozoite.
   creation and physical-device testing require independent review.
 
 **Unit I academic release: HOLD.**
+
+
+## U1.6 accessibility refinement — 200% Tamil
+
+The verified 100%/200% Android screenshot evidence showed that one-row Tamil
+phase selectors squeeze their text, and the single-line stage caption truncates.
+The next source adjustment uses two selectors per row at fontScale >= 1.75
+and retains the full English/Tamil explanation in an accessible scrollable
+native Details dialog. Closing the dialog returns to the same source PNG.
+
+This improves **caption access and control width**, not the artwork's
+scientific validity. Continue to require exact-commit Android 100%/200%
+tests and physical-device QA; do not mistake source crop bounds for approved
+image-space anatomical leaders.

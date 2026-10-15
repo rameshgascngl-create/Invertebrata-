@@ -3,6 +3,8 @@ package com.gasczoology.invertebratelab.ui
 import androidx.compose.foundation.Image
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -17,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 
@@ -152,6 +155,8 @@ private fun ExpandedProtozoaReferenceImage(
     var panX by rememberSaveable { mutableFloatStateOf(0f) }
     var panY by rememberSaveable { mutableFloatStateOf(0f) }
     val plasmodium=referenceId=="plasmodium"
+    val largeFont=LocalConfiguration.current.fontScale>=1.75f
+    var detailsVisible by rememberSaveable(referenceId) { mutableStateOf(false) }
     var focus by rememberSaveable(referenceId) { mutableStateOf("overview") }
     val focusImage=if(plasmodium && focus!="overview")
         rememberRequiredRasterBitmap("unit1/references/plasmodium_"+focus,pngOnly=true)
@@ -163,8 +168,22 @@ private fun ExpandedProtozoaReferenceImage(
         Triple("blood","Blood","இரத்தம்"),
         Triple("mosquito","Vector","கொசு")
     )
+    val stageDescription=when(focus) {
+        "liver" -> if(tamil)
+            "பெண் அனாபிலிஸ் கொசு செலுத்தும் ஸ்போரோசோயிட்டுகள் கல்லீரல் செல்களில் பெருகுகின்றன."
+            else "Sporozoites from an infected female Anopheles mosquito replicate in liver cells."
+        "blood" -> if(tamil)
+            "மெரோசோயிட்டுகள் சிவப்பணுக்களில் நுழைகின்றன; வளையநிலை, வளரும் நிலை, ஸ்கிசோன்ட், கேமீட்டோசைட் நிலைகளை ஒப்பிடுக."
+            else "Merozoites infect erythrocytes; compare ring, trophozoite, schizont and gametocyte stages."
+        "mosquito" -> if(tamil)
+            "கொசுவில் கேமீட்டுகள், கருவுறுதல், ஊகைனீட், ஊசிஸ்ட், புதிய ஸ்போரோசோயிட்டுகள் உருவாகின்றன."
+            else "In the mosquito: gametes, fertilisation, ookinete, oocyst and new sporozoites."
+        else -> if(tamil)
+            "அனைத்து நிலைகளும் கொண்ட மூல விளக்கப்படம். தனி விவரங்களுக்கு கீழுள்ள தேர்வுகளைத் தொடுக."
+            else "Full reference overview. Select a focus view for enlarged stage excerpts."
+    }
     Dialog(
-        onDismissRequest=onClose,
+        onDismissRequest={detailsVisible=false;onClose()},
         properties=DialogProperties(usePlatformDefaultWidth=false),
     ) {
         Surface(
@@ -195,44 +214,46 @@ private fun ExpandedProtozoaReferenceImage(
                     overflow=TextOverflow.Ellipsis,
                 )
                 if(plasmodium) {
-                    // Four concise selectors on ONE row keep the image visible
-                    // at 200% Tamil. Long wording remains in image descriptions.
-                    Row(modifier=Modifier.fillMaxWidth(),
-                        horizontalArrangement=Arrangement.spacedBy(3.dp)) {
-                        focusLabels.forEach { (id,en,ta) ->
-                            OutlinedButton(
-                                onClick={focus=id;scale=1f;panX=0f;panY=0f},
-                                modifier=Modifier.weight(1f).heightIn(min=48.dp)
-                                    .testTag("u1-plasmodium-phase-"+id),
-                                contentPadding=PaddingValues(horizontal=2.dp,vertical=2.dp)
-                            ) {
-                                Text(if(tamil)ta else en,
-                                    textAlign=TextAlign.Center,
-                                    style=MaterialTheme.typography.labelSmall,
-                                    maxLines=2,
-                                    overflow=TextOverflow.Ellipsis)
+                    // At 200% font scaling show TWO buttons per row, not
+                    // four cramped Tamil labels. Preserve 48 dp minimum taps.
+                    focusLabels.chunked(if(largeFont) 2 else 4).forEach { group ->
+                        Row(modifier=Modifier.fillMaxWidth(),
+                            horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+                            group.forEach { (id,en,ta) ->
+                                OutlinedButton(
+                                    onClick={
+                                        focus=id;scale=1f;panX=0f;panY=0f
+                                        detailsVisible=false
+                                    },
+                                    modifier=Modifier.weight(1f).heightIn(min=48.dp)
+                                        .testTag("u1-plasmodium-phase-"+id),
+                                    contentPadding=PaddingValues(horizontal=5.dp,vertical=3.dp)
+                                ) {
+                                    Text(if(tamil)ta else en,
+                                        textAlign=TextAlign.Center,
+                                        style=MaterialTheme.typography.labelSmall,
+                                        maxLines=2,
+                                        overflow=TextOverflow.Ellipsis)
+                                }
                             }
                         }
                     }
-                    Text(
-                        when(focus) {
-                            "liver" -> if(tamil)
-                                "பெண் அனாபிலிஸ் கொசு செலுத்தும் ஸ்போரோசோயிட்டுகள் கல்லீரல் செல்களில் பெருகுகின்றன."
-                                else "Sporozoites from an infected female Anopheles mosquito replicate in liver cells."
-                            "blood" -> if(tamil)
-                                "மெரோசோயிட்டுகள் சிவப்பணுக்களில் நுழைகின்றன; வளையநிலை, வளரும் நிலை, ஸ்கிசோன்ட், கேமீட்டோசைட் நிலைகளை ஒப்பிடுக."
-                                else "Merozoites infect erythrocytes; compare ring, trophozoite, schizont and gametocyte stages."
-                            "mosquito" -> if(tamil)
-                                "கொசுவில் கேமீட்டுகள், கருவுறுதல், ஊகைனீட், ஊசிஸ்ட், புதிய ஸ்போரோசோயிட்டுகள் உருவாகின்றன."
-                                else "In the mosquito: gametes, fertilisation, ookinete, oocyst and new sporozoites."
-                            else -> if(tamil)
-                                "அனைத்து நிலைகளும் கொண்ட மூல விளக்கப்படம். தனி விவரங்களுக்கு கீழுள்ள தேர்வுகளைத் தொடுக."
-                                else "Full reference overview. Select a focus view for enlarged stage excerpts."
-                        },
-                        style=MaterialTheme.typography.labelSmall,
-                        maxLines=2,
-                        overflow=TextOverflow.Ellipsis,
-                        modifier=Modifier.testTag("u1-plasmodium-phase-explanation"))
+                    Row(modifier=Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+                        Text(stageDescription,
+                            style=MaterialTheme.typography.labelSmall,
+                            maxLines=if(largeFont) 1 else 2,
+                            overflow=TextOverflow.Ellipsis,
+                            modifier=Modifier.weight(1f)
+                                .testTag("u1-plasmodium-phase-explanation"))
+                        TextButton(
+                            onClick={detailsVisible=true},
+                            modifier=Modifier.heightIn(min=48.dp)
+                                .testTag("u1-plasmodium-details-open")
+                        ) {
+                            Text(if(tamil) "விளக்கம்" else "Details")
+                        }
+                    }
                 }
                 Box(modifier=Modifier.fillMaxWidth().weight(1f).clipToBounds()) {
                     if(displayedImage==null) {
@@ -298,5 +319,32 @@ private fun ExpandedProtozoaReferenceImage(
                 }
             }
         }
+    }
+    if(plasmodium && detailsVisible) {
+        AlertDialog(
+            onDismissRequest={detailsVisible=false},
+            title={Text(if(tamil) "பிளாஸ்மோடியம் — விளக்கம்" else "Plasmodium — stage explanation")},
+            text={
+                Column(
+                    modifier=Modifier.heightIn(max=440.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    Text(stageDescription,
+                        modifier=Modifier.testTag("u1-plasmodium-details-body"))
+                    Spacer(Modifier.height(12.dp))
+                    Text(if(tamil)
+                        "இது ஆதாரப் படத்தின் பகுதி மட்டுமே. உயிரியல்/பென்சில் பட ஆய்வு நிலுவையில் உள்ளது."
+                        else "This is a source-reference excerpt. Anatomical and pencil-art review remain pending.",
+                        style=MaterialTheme.typography.bodySmall)
+                }
+            },
+            confirmButton={
+                TextButton(onClick={detailsVisible=false},
+                    modifier=Modifier.testTag("u1-plasmodium-details-close")) {
+                    Text(if(tamil) "மூடு" else "Close")
+                }
+            },
+            modifier=Modifier.testTag("u1-plasmodium-details-dialog")
+        )
     }
 }
