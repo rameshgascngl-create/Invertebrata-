@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clipToBounds
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -8,8 +9,11 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
@@ -66,6 +70,7 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
     var zoom by rememberSaveable(selected){ mutableFloatStateOf(1f) }
     var dx by rememberSaveable(selected){ mutableFloatStateOf(0f) }
     var dy by rememberSaveable(selected){ mutableFloatStateOf(0f) }
+    var expanded by rememberSaveable(selected){ mutableStateOf(false) }
     Column(modifier=Modifier.fillMaxWidth().testTag("u1-protozoa-reference-gallery"),
         verticalArrangement=Arrangement.spacedBy(10.dp)) {
         Text(if(tamil) "ஒட்டுண்ணி ஒருசெல் உயிரினங்கள் — ஆதார விளக்கப்படங்கள்"
@@ -89,24 +94,40 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
                 color=MaterialTheme.colorScheme.error,
                 modifier=Modifier.testTag("u1-reference-missing"))
         } else {
-            Image(image,contentDescription=if(tamil)ref.ta else ref.en,
-                contentScale=ContentScale.Fit,
-                modifier=Modifier.fillMaxWidth().height(310.dp)
-                    .graphicsLayer { scaleX=zoom;scaleY=zoom;translationX=dx;translationY=dy }
-                    .pointerInput(selected) {
-                        detectTransformGestures { _,pan,scale,_ ->
-                            zoom=(zoom*scale).coerceIn(1f,4f)
-                            if(zoom<=1.01f) { dx=0f;dy=0f }
-                            else {
-                                dx=(dx+pan.x).coerceIn(-size.width.toFloat(),size.width.toFloat())
-                                dy=(dy+pan.y).coerceIn(-size.height.toFloat(),size.height.toFloat())
+            Box(modifier=Modifier.fillMaxWidth().height(310.dp).clipToBounds()) {
+                Image(image,contentDescription=if(tamil)ref.ta else ref.en,
+                    contentScale=ContentScale.Fit,
+                    modifier=Modifier.fillMaxSize()
+                        .graphicsLayer { scaleX=zoom;scaleY=zoom;translationX=dx;translationY=dy }
+                        .pointerInput(selected) {
+                            detectTransformGestures { _,pan,scale,_ ->
+                                zoom=(zoom*scale).coerceIn(1f,4f)
+                                if(zoom<=1.01f) { dx=0f;dy=0f }
+                                else {
+                                    dx=(dx+pan.x).coerceIn(-size.width.toFloat(),size.width.toFloat())
+                                    dy=(dy+pan.y).coerceIn(-size.height.toFloat(),size.height.toFloat())
+                                }
                             }
                         }
-                    }
-                    .testTag("u1-reference-image-"+selected))
-            OutlinedButton(onClick={zoom=1f;dx=0f;dy=0f},
-                modifier=Modifier.heightIn(min=48.dp).testTag("u1-reference-reset")) {
-                Text(if(tamil)"பெரிதாக்கலை மீட்டமை" else "Reset zoom")
+                        .testTag("u1-reference-image-"+selected))
+            }
+            Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(onClick={zoom=1f;dx=0f;dy=0f},
+                    modifier=Modifier.weight(1f).heightIn(min=48.dp).testTag("u1-reference-reset")) {
+                    Text(if(tamil)"மீட்டமை" else "Reset zoom")
+                }
+                Button(onClick={expanded=true},
+                    modifier=Modifier.weight(1f).heightIn(min=48.dp).testTag("u1-reference-expand")) {
+                    Text(if(tamil)"முழுத்திரை" else "Full screen")
+                }
+            }
+            if(expanded) {
+                ExpandedProtozoaReferenceImage(
+                    bitmap=image,
+                    title=if(tamil)ref.ta else ref.en,
+                    language=language,
+                    onClose={expanded=false},
+                )
             }
         }
         Text(if(tamil)ref.taTeaching else ref.enTeaching,
@@ -114,5 +135,87 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
         Text(if(tamil)ref.taLimit else ref.enLimit,color=MaterialTheme.colorScheme.error)
         Text(ref.credit,style=MaterialTheme.typography.bodySmall)
         Text(ref.source,style=MaterialTheme.typography.bodySmall)
+    }
+}
+
+/** Full-viewport source raster only. This magnification does not imply expert approval. */
+@Composable
+private fun ExpandedProtozoaReferenceImage(
+    bitmap:ImageBitmap, title:String, language:AppLanguage, onClose:()->Unit
+) {
+    val tamil=language==AppLanguage.TAMIL
+    var scale by rememberSaveable { mutableFloatStateOf(1f) }
+    var panX by rememberSaveable { mutableFloatStateOf(0f) }
+    var panY by rememberSaveable { mutableFloatStateOf(0f) }
+    Dialog(
+        onDismissRequest=onClose,
+        properties=DialogProperties(usePlatformDefaultWidth=false),
+    ) {
+        Surface(
+            modifier=Modifier.fillMaxSize().testTag("u1-reference-fullscreen"),
+            color=MaterialTheme.colorScheme.surface,
+        ) {
+            Column(
+                modifier=Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()
+                    .padding(horizontal=12.dp, vertical=6.dp),
+                verticalArrangement=Arrangement.spacedBy(7.dp),
+            ) {
+                Text(title,style=MaterialTheme.typography.titleMedium,maxLines=2)
+                Text(
+                    if(tamil)"ஆதாரப் படம் மட்டுமே; உடலமைப்பு மதிப்பாய்வு நிலுவையில்."
+                    else "Source illustration only; anatomical review remains open.",
+                    color=MaterialTheme.colorScheme.error,
+                    style=MaterialTheme.typography.labelMedium,
+                )
+                Box(modifier=Modifier.fillMaxWidth().weight(1f).clipToBounds()) {
+                    Image(
+                        bitmap=bitmap,
+                        contentDescription=title,
+                        contentScale=ContentScale.Fit,
+                        modifier=Modifier.fillMaxSize()
+                            .graphicsLayer {
+                                scaleX=scale;scaleY=scale
+                                translationX=panX;translationY=panY
+                            }
+                            .pointerInput(Unit) {
+                                detectTransformGestures { _,pan,zoom,_ ->
+                                    scale=(scale*zoom).coerceIn(1f,6f)
+                                    if(scale<=1.01f){panX=0f;panY=0f}
+                                    else {
+                                        panX=(panX+pan.x).coerceIn(-size.width.toFloat(),size.width.toFloat())
+                                        panY=(panY+pan.y).coerceIn(-size.height.toFloat(),size.height.toFloat())
+                                    }
+                                }
+                            }
+                            .testTag("u1-reference-expanded-bitmap"),
+                    )
+                }
+                Row(
+                    modifier=Modifier.fillMaxWidth(),
+                    horizontalArrangement=Arrangement.spacedBy(7.dp),
+                ) {
+                    OutlinedButton(
+                        onClick={scale=(scale/1.5f).coerceAtLeast(1f);if(scale==1f){panX=0f;panY=0f}},
+                        modifier=Modifier.weight(1f).heightIn(min=48.dp)
+                            .testTag("u1-reference-zoom-out"),
+                    ) { Text("−") }
+                    OutlinedButton(
+                        onClick={scale=1f;panX=0f;panY=0f},
+                        modifier=Modifier.weight(1f).heightIn(min=48.dp)
+                            .testTag("u1-reference-zoom-reset"),
+                    ) { Text("1×") }
+                    OutlinedButton(
+                        onClick={scale=(scale*1.5f).coerceAtMost(6f)},
+                        modifier=Modifier.weight(1f).heightIn(min=48.dp)
+                            .testTag("u1-reference-zoom-in"),
+                    ) { Text("+") }
+                    Button(
+                        onClick=onClose,
+                        modifier=Modifier.weight(2f).heightIn(min=48.dp)
+                            .testTag("u1-reference-close"),
+                    ) { Text(if(tamil)"மூடு" else "Close") }
+                }
+            }
+        }
     }
 }
