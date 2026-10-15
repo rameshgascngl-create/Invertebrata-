@@ -59,7 +59,13 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("native-unit-1")
             .performScrollToNode(hasTestTag("u1-protozoa-reference-toggle"))
         rule.onNodeWithTag("u1-protozoa-reference-toggle").performClick()
-        rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertExists()
+        // Opening the long Unit I gallery must expose it immediately at 100/200%
+        // font size. Do not weaken this to a non-visible existence check.
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertIsDisplayed()
         for(id in listOf("entamoeba","trypanosoma","leishmania","plasmodium")) {
             rule.onNodeWithTag("u1-reference-select-"+id).performScrollTo().performClick()
             rule.onNodeWithTag("u1-reference-image-"+id).performScrollTo().assertExists()
