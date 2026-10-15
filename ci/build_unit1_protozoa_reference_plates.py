@@ -65,10 +65,21 @@ def image_from_source(filename,data):
 def make(id,filename,sha,title,credit):
     source,sha1=acquire(filename,sha)
     im=image_from_source(filename,source)
-    im.thumbnail((1880,1640),Image.Resampling.LANCZOS)
+    # Fit the WHOLE reference artwork into a measured content rectangle.
+    # Image.thumbnail() only downsizes. For small source images it left the
+    # biological figure tiny inside a 2100x1900 file even in full-screen mode.
+    # High-quality enlargement changes pixel sampling, NOT anatomy or labels.
+    original_size=im.size
+    max_size=(1880,1640)
+    scale=min(max_size[0]/im.width, max_size[1]/im.height, 2.5)
+    target=(max(1,round(im.width*scale)),max(1,round(im.height*scale)))
+    assert target[0]<=max_size[0] and target[1]<=max_size[1]
+    im=im.resize(target,Image.Resampling.LANCZOS)
     canvas=Image.new("RGB",(2100,1900),(255,253,249))
     x=(2100-im.width)//2
-    canvas.paste(im,(x,125))
+    y=125+(1640-im.height)//2
+    assert 0<=x and 125<=y and x+im.width<=2100 and y+im.height<=1765
+    canvas.paste(im,(x,y))
     draw=ImageDraw.Draw(canvas)
     head=ImageFont.truetype(FONT,40);foot=ImageFont.truetype(FONT,28)
     draw.text((46,28),title,font=head,fill=(33,37,41))
@@ -80,6 +91,7 @@ def make(id,filename,sha,title,credit):
     canvas.save(dest,format="PNG",optimize=True)
     with Image.open(dest) as check:
         assert check.format=="PNG" and check.size==(2100,1900)
+    print(f"REFERENCE_LAYOUT={id} original={original_size[0]}x{original_size[1]} scale={scale:.3f} content={im.width}x{im.height} xy={x},{y} frame=2100x1900")
     print(f"REFERENCE={id} FILE={dest} SHA256={hashlib.sha256(dest.read_bytes()).hexdigest()} SOURCE_SHA1={sha1} SOURCE={commons_original(filename)}")
 
 for id,details in SOURCES.items():
