@@ -148,7 +148,7 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
 
 /** Full-viewport source raster only. This magnification does not imply expert approval. */
 @Composable
-private fun ExpandedProtozoaReferenceImage(
+internal fun ExpandedProtozoaReferenceImage(
     bitmap:ImageBitmap, title:String, language:AppLanguage,
     referenceId:String, onClose:()->Unit
 ) {
