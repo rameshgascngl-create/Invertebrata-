@@ -1,11 +1,16 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
@@ -77,6 +82,12 @@ internal fun UnitIFlagellateLifeCycleSimulator(id: String, language: AppLanguage
                 progress = { (selected + 1).toFloat() / cycle.phases.size },
                 modifier = Modifier.fillMaxWidth().height(7.dp)
                     .testTag("u18-cycle-progress-" + id),
+            )
+            LifeCycleStageTrack(
+                stage = selected,
+                count = cycle.phases.size,
+                language = language,
+                id = id,
             )
             Text(
                 if (tamil)
@@ -196,5 +207,68 @@ internal fun UnitIFlagellateLifeCycleSimulator(id: String, language: AppLanguage
                 style = MaterialTheme.typography.labelSmall,
             )
         }
+    }
+}
+
+/**
+ * Native Canvas conceptual stage track. Marker positions correspond to
+ * *ordered stages*, never to organ locations or unpublished image hotspots.
+ */
+@Composable
+private fun LifeCycleStageTrack(
+    stage: Int,
+    count: Int,
+    language: AppLanguage,
+    id: String,
+) {
+    val primary = MaterialTheme.colorScheme.primary
+    val muted = MaterialTheme.colorScheme.outlineVariant
+    val ink = MaterialTheme.colorScheme.onSurfaceVariant
+    val marker by animateFloatAsState(
+        targetValue = stage.toFloat(),
+        label = "u18-stage-marker-" + id,
+    )
+    Canvas(
+        modifier = Modifier.fillMaxWidth().height(62.dp)
+            .semantics {
+                contentDescription =
+                    if (language == AppLanguage.TAMIL)
+                        "வாழ்க்கை நிலை வரிசை. தற்போதைய நிலை " + (stage + 1) + " / " + count
+                    else "Life-cycle stage sequence. Current stage " + (stage + 1) + " of " + count
+            }
+            .testTag("u18-native-canvas-track-" + id),
+    ) {
+        if (count <= 1) return@Canvas
+        val left = 18.dp.toPx()
+        val usable = (size.width - left * 2).coerceAtLeast(0f)
+        val middle = size.height * 0.42f
+        fun point(index: Float) = left + usable * (index / (count - 1))
+        drawLine(
+            color = muted,
+            start = Offset(point(0f), middle),
+            end = Offset(point((count - 1).toFloat()), middle),
+            strokeWidth = 3.dp.toPx(),
+        )
+        repeat(count) { i ->
+            drawCircle(
+                color = if (i <= stage) primary else ink,
+                radius = 7.dp.toPx(),
+                center = Offset(point(i.toFloat()), middle),
+            )
+            if (i == stage) {
+                drawCircle(
+                    color = primary,
+                    radius = 11.dp.toPx(),
+                    center = Offset(point(i.toFloat()), middle),
+                    style = Stroke(width = 2.dp.toPx()),
+                )
+            }
+        }
+        // Smoothly moving emphasis, NOT parasite locomotion or measured kinetics.
+        drawCircle(
+            color = primary,
+            radius = 4.dp.toPx(),
+            center = Offset(point(marker), middle + 21.dp.toPx()),
+        )
     }
 }
