@@ -1,0 +1,137 @@
+name: Unit I U1.2 four protozoan reference plates - exact commit QA
+'on':
+  push:
+    branches:
+      - native/u12-protozoa-reference-plates-20261015
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-u12-protozoa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile-and-corpus:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify native source routes and immutable A5 JSONs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab')
+          nav=(root/'ui/InvertebrataApp.kt').read_text()
+          gallery=(root/'ui/UnitIProtozoaReferenceGallery.kt').read_text()
+          for marker in ('u1-protozoa-reference-toggle','u1-protozoa-reference-panel',
+                         'u1-independent-protozoa-reference-atlas',
+                         'u1-open-diagram-atlas','u1-paramecium-open-diagrams'):
+              assert marker in nav,marker
+          for organism in ('entamoeba','trypanosoma','leishmania','plasmodium'):
+              assert organism in gallery and 'u1-reference-image-' in gallery,organism
+          assert 'rememberRequiredRasterBitmap(' in gallery
+          assert 'u1-reference-missing' in gallery
+          manifest=(root/'data/NativeCurriculumManifest.kt').read_text()
+          assert 'EXISTING_A5_CHAPTER_COUNT = 43' in manifest
+          for n in range(1,6):
+              p=Path(f'native-app/app/src/main/assets/a5/U{n}_A5_VALIDATED.json')
+              assert p.is_file() and p.stat().st_size>0,p
+          print('UNIT_I_FOUR_REFERENCES=INTEGRATED_AS_DRAFT')
+          print('ORIGINAL_SCANNED_PENCIL_PLATES=NOT_ACCEPTED')
+          PY
+      - name: Render actual photographed Paramecium source and four independent licensed protozoa references
+        run: |
+          python3 -m venv /tmp/u12art
+          /tmp/u12art/bin/pip install --disable-pip-version-check Pillow==11.3.0 CairoSVG==2.8.2
+          /tmp/u12art/bin/python ci/build_unit1_paramecium_pencil_masters.py
+          /tmp/u12art/bin/python ci/build_unit1_protozoa_reference_plates.py
+      - name: Verify all eight real source-derived PNG assets
+        run: |
+          /tmp/u12art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root=Path('native-app/app/src/main/assets/unit1')
+          assert len(list(root.glob('paramecium_*.png')))==4
+          ids=('entamoeba','trypanosoma','leishmania','plasmodium')
+          for id in ids:
+              p=root/'references'/f'{id}.png'
+              assert p.is_file() and p.stat().st_size>100_000,p
+              with Image.open(p) as im:
+                  assert im.format=='PNG' and im.size==(2100,1900),(p,im.size)
+          print('UNIT1_ALL_EIGHT_PNG_ASSETS=PASS')
+          PY
+      - name: Store exactly built offline images for same-commit emulator and APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u12-source-derived-assets
+          path: native-app/app/src/main/assets/unit1/
+          if-no-files-found: error
+      - name: Compile app, instrumentation and run all existing JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+
+  android-ui:
+    needs: compile-and-corpus
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore same-run images before compiling Android app
+        uses: actions/download-artifact@v4
+        with:
+          name: unit1-u12-source-derived-assets
+          path: native-app/app/src/main/assets/unit1
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable emulator hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Exercise all four source-backed native reference images offline at 100 and 200 percent
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit1-protozoa-references.sh
+      - name: Preserve exact commit XML, device captures and logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u12-api34-reference-evidence
+          path: qa-evidence/unit1-references/
+          if-no-files-found: warn
+      - name: Assemble engineering native QA APK
+        if: success()
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve debug APK, never signed production release
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u12-debug-qa-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Explicit source/academic/device hold
+        if: always()
+        run: |
+          echo 'These are four different cited reference illustrations, NOT four original pencil anatomical masters.'
+          echo 'Plasmodium reference follows P. falciparum; Leishmania image is genus level ONLY.'
+          echo 'Scientific anatomy, hotspots, Tamil and physical-device audible speech remain OPEN.'
+          echo 'No production promotion or Unit I final acceptance authorized.'
