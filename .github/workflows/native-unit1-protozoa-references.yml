@@ -99,7 +99,7 @@ jobs:
           assert 'NativePencilMasterStore.importDocument(' in scan
           assert 'NativeImportedPlateReviewer(' in scan
           assert 'sourceHashOverride = sha256' in audit
-          assert 'sourceIdOverride = "app-private-review-candidate/"' in audit
+          assert 'sourceIdOverride = "app-private:u110_unverified_pencil_candidates/"' in audit
           assert 'inJustDecodeBounds = true' in store
           assert 'MAX_BYTES' in store and 'MAX_PIXELS' in store
           assert 'sourceSha256 = digest(bytes)' in store
