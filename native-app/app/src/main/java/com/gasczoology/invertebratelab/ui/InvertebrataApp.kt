@@ -535,8 +535,14 @@ private fun ChapterScreen(
                 }
             }
             if (chapter.id == "u1-proto-parasites") {
-                item(key = "u17-flagellate-native-textbooks") {
-                    UnitIFlagellateTypeStudies(language)
+                item(key = "u17-flagellate-native-heading") {
+                    UnitIFlagellateTypeStudiesHeader(language)
+                }
+                item(key = "u17-trypanosoma-textbook") {
+                    UnitIFlagellateTypeStudy("trypanosoma", language)
+                }
+                item(key = "u17-leishmania-textbook") {
+                    UnitIFlagellateTypeStudy("leishmania", language)
                 }
             }
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
