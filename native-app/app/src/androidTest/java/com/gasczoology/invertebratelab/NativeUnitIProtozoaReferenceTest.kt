@@ -75,6 +75,16 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u1-reference-expand").performScrollTo().performClick()
         rule.onNodeWithTag("u1-reference-fullscreen").assertExists()
         rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
+        rule.onNodeWithTag("u1-plasmodium-phase-overview").assertExists()
+        for(phase in listOf("liver","blood","mosquito")) {
+            rule.onNodeWithTag("u1-plasmodium-phase-"+phase).performClick()
+            rule.onNodeWithTag("u1-plasmodium-focus-"+phase).assertExists()
+            rule.onNodeWithTag("u1-plasmodium-panel-missing").assertDoesNotExist()
+            rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
+            screenshot("plasmodium-"+phase+"-english")
+        }
+        rule.onNodeWithTag("u1-plasmodium-phase-overview").performClick()
+        rule.onNodeWithTag("u1-plasmodium-focus-overview").assertExists()
         rule.onNodeWithTag("u1-reference-zoom-in").performClick()
         rule.onNodeWithTag("u1-reference-zoom-reset").performClick()
         screenshot("plasmodium-fullscreen")
@@ -104,5 +114,18 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u1-reference-missing").assertDoesNotExist()
         rule.onNodeWithTag("u1-reference-explanation").assertTextContains("மேக்ரோபேஜ்", substring = true)
         screenshot("tamil-parasite-atlas")
+        rule.onNodeWithTag("u1-reference-select-plasmodium").performScrollTo().performClick()
+        rule.onNodeWithTag("u1-reference-expand").performScrollTo().performClick()
+        for((phase,word) in listOf(
+            "liver" to "கல்லீரல்", "blood" to "இரத்த", "mosquito" to "கொசு"
+        )) {
+            rule.onNodeWithTag("u1-plasmodium-phase-"+phase)
+                .assertTextContains(word,substring=true).performClick()
+            rule.onNodeWithTag("u1-plasmodium-focus-"+phase).assertExists()
+            rule.onNodeWithTag("u1-plasmodium-panel-missing").assertDoesNotExist()
+            rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
+            screenshot("plasmodium-"+phase+"-tamil")
+        }
+        rule.onNodeWithTag("u1-reference-close").performClick()
     }
 }

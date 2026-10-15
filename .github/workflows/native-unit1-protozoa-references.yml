@@ -6,6 +6,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u13-protozoa-fullscreen-atlas-20261015
       - native/u14-protozoa-reference-fit-20261015
       - native/u15-entamoeba-original-artwork-candidate-20261015
+      - native/u16-plasmodium-readable-panels-20261015
   workflow_dispatch:
 
 permissions:
@@ -77,7 +78,13 @@ jobs:
               assert p.is_file() and p.stat().st_size>100_000,p
               with Image.open(p) as im:
                   assert im.format=='PNG' and im.size==(2100,1900),(p,im.size)
+          for phase in ('liver','blood','mosquito'):
+              p=root/'references'/f'plasmodium_{phase}.png'
+              assert p.is_file() and p.stat().st_size>90_000,p
+              with Image.open(p) as im:
+                  assert im.format=='PNG' and im.size[0]==1220 and im.size[1]>=800,p
           print('UNIT1_ALL_EIGHT_PNG_ASSETS=PASS')
+          print('PLASMODIUM_FOCUS_PANELS=PASS source excerpts only; not pencil artworks')
           PY
       - name: Store exactly built offline images for same-commit emulator and APK
         uses: actions/upload-artifact@v4
@@ -143,5 +150,6 @@ jobs:
         run: |
           echo 'These are four different cited reference illustrations, NOT four original pencil anatomical masters.'
           echo 'Plasmodium reference follows P. falciparum; Leishmania image is genus level ONLY.'
+          echo 'Plasmodium: overview plus three source-image focus excerpts, not new original pencil plates.'
           echo 'Scientific anatomy, hotspots, Tamil and physical-device audible speech remain OPEN.'
           echo 'No production promotion or Unit I final acceptance authorized.'

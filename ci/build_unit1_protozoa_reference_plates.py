@@ -97,3 +97,57 @@ def make(id,filename,sha,title,credit):
 for id,details in SOURCES.items():
     make(id,*details)
 print("FOUR_INDEPENDENT_REFERENCE_SOURCES=PASS; SCANNED_PENCIL_AND_SCIENCE_APPROVAL=OPEN")
+
+
+# U1.6: readable *excerpts* of the SAME authorized colour reference raster.
+# These are not new pencil masters or separately verified anatomical plates.
+# Region boxes were inspected on the actual 2100x1900 source raster.
+FOCUS_REGIONS={
+    "liver": ((255,155,925,570),(920,150,1840,570)),
+    "blood": ((1165,520,1860,820),(330,645,1170,1120)),
+    "mosquito": ((655,940,1840,1325),(260,1295,1845,1765))
+}
+SOURCE_REFERENCE_PNG_SHA256="02ff9625c97052fcf3b26800de09c022910598afb2dc82b095110802407422cb"
+
+def build_plasmodium_readable_excerpts():
+    overview=OUT/"plasmodium.png"
+    raw=overview.read_bytes()
+    checksum=hashlib.sha256(raw).hexdigest()
+    assert checksum==SOURCE_REFERENCE_PNG_SHA256, (
+        f"Reference changed: {checksum}. Calibrate excerpt boundaries again."
+    )
+    with Image.open(overview) as file:
+        assert file.format=="PNG" and file.size==(2100,1900)
+        image=file.convert("RGB")
+    for phase,regions in FOCUS_REGIONS.items():
+        # Each panel is two source-pixel excerpts presented vertically;
+        # resized ONLY for reading, never as an invented anatomical element.
+        page=Image.new("RGB",(1220,1600),(255,253,249))
+        top=50
+        for rectangle in regions:
+            left,upper,right,lower=rectangle
+            assert 0<=left<right<=image.width and 0<=upper<lower<=image.height
+            crop=image.crop(rectangle)
+            factor=min(1120/crop.width,660/crop.height)
+            framed=crop.resize(
+                (max(1,round(crop.width*factor)),max(1,round(crop.height*factor))),
+                Image.Resampling.LANCZOS
+            )
+            x=(page.width-framed.width)//2
+            assert top+framed.height < page.height
+            page.paste(framed,(x,top))
+            top+=framed.height+72
+        actual_height=min(page.height,top+24)
+        page=page.crop((0,0,1220,actual_height))
+        path=OUT/f"plasmodium_{phase}.png"
+        page.save(path,"PNG",optimize=True)
+        with Image.open(path) as check:
+            assert check.format=="PNG" and check.size[0]==1220
+            assert check.size[1]>=800
+        print("PLASMODIUM_READABLE_REFERENCE_PANEL="+phase+
+              " file="+str(path)+" sha256="+hashlib.sha256(path.read_bytes()).hexdigest()+
+              " source_sha256="+checksum)
+    print("PLASMODIUM_OVERVIEW_PRESERVED=YES")
+    print("PENCIL_PLATE_ACADEMIC_APPROVAL=PENDING")
+
+build_plasmodium_readable_excerpts()

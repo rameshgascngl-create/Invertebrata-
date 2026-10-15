@@ -126,6 +126,7 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
                     bitmap=image,
                     title=if(tamil)ref.ta else ref.en,
                     language=language,
+                    referenceId=ref.id,
                     onClose={expanded=false},
                 )
             }
@@ -141,12 +142,25 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
 /** Full-viewport source raster only. This magnification does not imply expert approval. */
 @Composable
 private fun ExpandedProtozoaReferenceImage(
-    bitmap:ImageBitmap, title:String, language:AppLanguage, onClose:()->Unit
+    bitmap:ImageBitmap, title:String, language:AppLanguage,
+    referenceId:String, onClose:()->Unit
 ) {
     val tamil=language==AppLanguage.TAMIL
     var scale by rememberSaveable { mutableFloatStateOf(1f) }
     var panX by rememberSaveable { mutableFloatStateOf(0f) }
     var panY by rememberSaveable { mutableFloatStateOf(0f) }
+    val plasmodium=referenceId=="plasmodium"
+    var focus by rememberSaveable(referenceId) { mutableStateOf("overview") }
+    val focusImage=if(plasmodium && focus!="overview")
+        rememberRequiredRasterBitmap("unit1/references/plasmodium_"+focus,pngOnly=true)
+        else null
+    val displayedImage=if(!plasmodium || focus=="overview") bitmap else focusImage
+    val focusLabels=listOf(
+        Triple("overview","Complete life cycle","முழு வாழ்க்கைச் சுழற்சி"),
+        Triple("liver","Liver stages","கல்லீரல் நிலைகள்"),
+        Triple("blood","Blood stages","இரத்த நிலைகள்"),
+        Triple("mosquito","Mosquito stages","கொசு நிலைகள்")
+    )
     Dialog(
         onDismissRequest=onClose,
         properties=DialogProperties(usePlatformDefaultWidth=false),
@@ -167,10 +181,56 @@ private fun ExpandedProtozoaReferenceImage(
                     color=MaterialTheme.colorScheme.error,
                     style=MaterialTheme.typography.labelMedium,
                 )
+                if(plasmodium) {
+                    Text(if(tamil)
+                        "இது அதே ஆதாரப் படத்தின் பெரிதாக்கப்பட்ட பகுதிகள்; தனிப் பென்சில் படங்கள் அல்ல."
+                        else "Readable excerpts of the same reference figure; not independent pencil drawings.",
+                        style=MaterialTheme.typography.bodySmall,
+                        modifier=Modifier.testTag("u1-plasmodium-reference-warning"))
+                    focusLabels.chunked(2).forEach { pair ->
+                        Row(modifier=Modifier.fillMaxWidth(),
+                            horizontalArrangement=Arrangement.spacedBy(7.dp)) {
+                            pair.forEach { (id,en,ta) ->
+                                OutlinedButton(
+                                    onClick={focus=id;scale=1f;panX=0f;panY=0f},
+                                    modifier=Modifier.weight(1f).heightIn(min=48.dp)
+                                        .testTag("u1-plasmodium-phase-"+id)
+                                ) { Text(if(tamil)ta else en) }
+                            }
+                        }
+                    }
+                    Text(
+                        when(focus) {
+                            "liver" -> if(tamil)
+                                "பெண் அனாபிலிஸ் கொசு செலுத்தும் ஸ்போரோசோயிட்டுகள் கல்லீரல் செல்களில் பெருகுகின்றன."
+                                else "Sporozoites from an infected female Anopheles mosquito replicate in liver cells."
+                            "blood" -> if(tamil)
+                                "மெரோசோயிட்டுகள் சிவப்பணுக்களில் நுழைகின்றன; வளையநிலை, வளரும் நிலை, ஸ்கிசோன்ட், கேமீட்டோசைட் நிலைகளை ஒப்பிடுக."
+                                else "Merozoites infect erythrocytes; compare ring, trophozoite, schizont and gametocyte stages."
+                            "mosquito" -> if(tamil)
+                                "கொசுவில் கேமீட்டுகள், கருவுறுதல், ஊகைனீட், ஊசிஸ்ட், புதிய ஸ்போரோசோயிட்டுகள் உருவாகின்றன."
+                                else "In the mosquito: gametes, fertilisation, ookinete, oocyst and new sporozoites."
+                            else -> if(tamil)
+                                "அனைத்து நிலைகளும் கொண்ட மூல விளக்கப்படம். தனி விவரங்களுக்கு கீழுள்ள தேர்வுகளைத் தொடுக."
+                                else "Full reference overview. Select a focus view for enlarged stage excerpts."
+                        },
+                        style=MaterialTheme.typography.bodySmall,
+                        maxLines=3,
+                        modifier=Modifier.testTag("u1-plasmodium-phase-explanation"))
+                }
                 Box(modifier=Modifier.fillMaxWidth().weight(1f).clipToBounds()) {
-                    Image(
-                        bitmap=bitmap,
-                        contentDescription=title,
+                    if(displayedImage==null) {
+                        Text(if(tamil)
+                            "நிலைப் படம் இல்லை; பழைய வரைபடத்திற்கு மாற்றமில்லை."
+                            else "Focus PNG unavailable; no schematic fallback.",
+                            color=MaterialTheme.colorScheme.error,
+                            modifier=Modifier.testTag("u1-plasmodium-panel-missing"))
+                    } else Image(
+                        bitmap=displayedImage,
+                        contentDescription=if(plasmodium)
+                            (if(tamil) "பிளாஸ்மோடியம்: "+focusLabels.first{it.first==focus}.third
+                             else "Plasmodium: "+focusLabels.first{it.first==focus}.second)
+                            else title,
                         contentScale=ContentScale.Fit,
                         modifier=Modifier.fillMaxSize()
                             .graphicsLayer {
@@ -189,6 +249,10 @@ private fun ExpandedProtozoaReferenceImage(
                             }
                             .testTag("u1-reference-expanded-bitmap"),
                     )
+                    if(plasmodium && displayedImage!=null) {
+                        Text(focus,modifier=Modifier.testTag("u1-plasmodium-focus-"+focus)
+                            .padding(2.dp))
+                    }
                 }
                 Row(
                     modifier=Modifier.fillMaxWidth(),
