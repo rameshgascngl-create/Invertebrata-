@@ -2,7 +2,6 @@ package com.gasczoology.invertebratelab
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.runBlocking
@@ -83,9 +82,9 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u1-plasmodium-panel-missing").assertDoesNotExist()
             rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
             val actual=rule.onNodeWithTag("u1-reference-expanded-bitmap")
-                .getUnclippedBoundsInRoot().height
+                .fetchSemanticsNode().boundsInRoot.height
             assertTrue("Plasmodium image collapses at normal font scale: $actual",
-                actual > 195.dp)
+                actual > 195f * rule.activity.resources.displayMetrics.density)
             screenshot("plasmodium-"+phase+"-english")
         }
         rule.onNodeWithTag("u1-plasmodium-phase-overview").performClick()
@@ -130,9 +129,9 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u1-plasmodium-panel-missing").assertDoesNotExist()
             rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
             val actual=rule.onNodeWithTag("u1-reference-expanded-bitmap")
-                .getUnclippedBoundsInRoot().height
+                .fetchSemanticsNode().boundsInRoot.height
             assertTrue("Tamil enlarged-font image viewport collapsed: $actual",
-                actual > 195.dp)
+                actual > 195f * rule.activity.resources.displayMetrics.density)
             screenshot("plasmodium-"+phase+"-tamil")
         }
         rule.onNodeWithTag("u1-reference-close").performClick()
