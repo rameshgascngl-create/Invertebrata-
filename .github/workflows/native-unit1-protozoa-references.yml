@@ -11,6 +11,8 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u18-flagellate-offline-lifecycle-20261015
       - native/u19-anatomy-pixel-calibration-20261015
       - native/u19a-lifecycle-200pct-correction-20261015
+      - native/u110-anatomy-source-morphotypes-20261015
+      - native/u19a-lifecycle-200pct-correction-20261015
   workflow_dispatch:
 
 permissions:
@@ -90,6 +92,16 @@ jobs:
           assert 'if (!isNativeSourceAuditDebuggable(context.applicationInfo.flags)) return' in audit
           assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
           assert 'source_sha256' in audit and 'Export draft JSON' in audit
+          anatomy=(root/'data/UnitIAnatomyReviewDescriptions.kt').read_text()
+          assert 'mammalian_bloodstream_trypomastigote' in anatomy
+          assert 'intracellular_mammalian_amastigote' in anatomy
+          assert 'sand_fly_promastigote' in anatomy and 'return false' in anatomy
+          assert 'UnitIAnatomyReviewDescriptions.forOrganism' in audit
+          assert 'u110-review-speak-' in audit and 'OfflineNarrator(' in audit
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
+          assert 'UnitIAnatomyReviewDescriptionsTest' in (
+              Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/UnitIAnatomyReviewDescriptionsTest.kt').read_text()
+          )
           assert 'NativeRasterReviewerLauncher(' in flagellates
           assert 'NativeRasterCalibrationTest' in (
               Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
