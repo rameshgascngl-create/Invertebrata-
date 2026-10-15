@@ -216,6 +216,90 @@ private fun NativeRasterReviewer(
                         }
                     }
                 }
+                // The actual decoded anatomical reference comes FIRST. At 200%
+                // Tamil text scaling a full explanation and TTS row previously
+                // pushed the image beneath the initial viewport.
+                Text(
+                    if (tamil) "படத்தில் குறி: " + selected.ta
+                    else "Mark on source image: " + selected.en,
+                    style = MaterialTheme.typography.labelMedium,
+                    modifier = Modifier.testTag("u111-image-selection-" + organism),
+                )
+                Box(
+                    modifier = Modifier.fillMaxWidth().height(360.dp).clipToBounds()
+                        .onSizeChanged { viewport = it }
+                        .pointerInput(organism, selectedId, viewport, zoom, panX, panY) {
+                            detectTapGestures { tap ->
+                                val pixel = NativeRasterCalibration.hit(
+                                    tapX = tap.x,
+                                    tapY = tap.y,
+                                    viewportWidth = viewport.width.toFloat(),
+                                    viewportHeight = viewport.height.toFloat(),
+                                    rasterWidth = bitmap.width,
+                                    rasterHeight = bitmap.height,
+                                    zoom = zoom,
+                                    panX = panX,
+                                    panY = panY,
+                                )
+                                if (pixel != null) {
+                                    marks.add(DraftRasterMark(selectedId, pixel))
+                                }
+                            }
+                        }
+                        .pointerInput(organism) {
+                            detectTransformGestures { _, pan, scale, _ ->
+                                val next = (zoom * scale).coerceIn(1f, 8f)
+                                zoom = next
+                                if (zoom <= 1.01f) {
+                                    panX = 0f; panY = 0f
+                                } else {
+                                    panX = (panX + pan.x).coerceIn(-size.width.toFloat(), size.width.toFloat())
+                                    panY = (panY + pan.y).coerceIn(-size.height.toFloat(), size.height.toFloat())
+                                }
+                            }
+                        }
+                        .testTag("u19-tappable-raster-" + organism),
+                ) {
+                    Image(
+                        bitmap = bitmap,
+                        contentDescription = if (tamil) "ஆதாரப் படம் — ஆய்வு நிலை"
+                            else "Source bitmap for provisional coordinate audit",
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.fillMaxSize()
+                            .testTag("u111-source-raster-visible-" + organism)
+                            .graphicsLayer {
+                            scaleX = zoom
+                            scaleY = zoom
+                            translationX = panX
+                            translationY = panY
+                        },
+                    )
+                    val markerColor = MaterialTheme.colorScheme.error
+                    Canvas(modifier = Modifier.fillMaxSize()) {
+                        marks.forEach { mark ->
+                            val screen = NativeRasterCalibration.project(
+                                pixelX = mark.point.pixelX,
+                                pixelY = mark.point.pixelY,
+                                viewportWidth = size.width,
+                                viewportHeight = size.height,
+                                rasterWidth = bitmap.width,
+                                rasterHeight = bitmap.height,
+                                zoom = zoom,
+                                panX = panX,
+                                panY = panY,
+                            )
+                            if (screen != null) {
+                                drawCircle(
+                                    color = markerColor,
+                                    radius = 6.dp.toPx(),
+                                    center = Offset(screen.first, screen.second),
+                                )
+                            }
+                        }
+                    }
+                }
+                // Detailed anatomy and reviewer-only speech follow the visible
+                // raster. Keep these scrollable, readable and explicitly draft.
                 Text(
                     if (tamil)
                         "தேர்ந்த அமைப்பு: " + selected.ta + ". பெரிதாக்கிப் படத்தைத் தொடுக."
@@ -260,77 +344,6 @@ private fun NativeRasterReviewer(
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.testTag("u110-review-voice-status-" + organism),
                 )
-                Box(
-                    modifier = Modifier.fillMaxWidth().height(360.dp).clipToBounds()
-                        .onSizeChanged { viewport = it }
-                        .pointerInput(organism, selectedId, viewport, zoom, panX, panY) {
-                            detectTapGestures { tap ->
-                                val pixel = NativeRasterCalibration.hit(
-                                    tapX = tap.x,
-                                    tapY = tap.y,
-                                    viewportWidth = viewport.width.toFloat(),
-                                    viewportHeight = viewport.height.toFloat(),
-                                    rasterWidth = bitmap.width,
-                                    rasterHeight = bitmap.height,
-                                    zoom = zoom,
-                                    panX = panX,
-                                    panY = panY,
-                                )
-                                if (pixel != null) {
-                                    marks.add(DraftRasterMark(selectedId, pixel))
-                                }
-                            }
-                        }
-                        .pointerInput(organism) {
-                            detectTransformGestures { _, pan, scale, _ ->
-                                val next = (zoom * scale).coerceIn(1f, 8f)
-                                zoom = next
-                                if (zoom <= 1.01f) {
-                                    panX = 0f; panY = 0f
-                                } else {
-                                    panX = (panX + pan.x).coerceIn(-size.width.toFloat(), size.width.toFloat())
-                                    panY = (panY + pan.y).coerceIn(-size.height.toFloat(), size.height.toFloat())
-                                }
-                            }
-                        }
-                        .testTag("u19-tappable-raster-" + organism),
-                ) {
-                    Image(
-                        bitmap = bitmap,
-                        contentDescription = if (tamil) "ஆதாரப் படம் — ஆய்வு நிலை"
-                            else "Source bitmap for provisional coordinate audit",
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.fillMaxSize().graphicsLayer {
-                            scaleX = zoom
-                            scaleY = zoom
-                            translationX = panX
-                            translationY = panY
-                        },
-                    )
-                    val markerColor = MaterialTheme.colorScheme.error
-                    Canvas(modifier = Modifier.fillMaxSize()) {
-                        marks.forEach { mark ->
-                            val screen = NativeRasterCalibration.project(
-                                pixelX = mark.point.pixelX,
-                                pixelY = mark.point.pixelY,
-                                viewportWidth = size.width,
-                                viewportHeight = size.height,
-                                rasterWidth = bitmap.width,
-                                rasterHeight = bitmap.height,
-                                zoom = zoom,
-                                panX = panX,
-                                panY = panY,
-                            )
-                            if (screen != null) {
-                                drawCircle(
-                                    color = markerColor,
-                                    radius = 6.dp.toPx(),
-                                    center = Offset(screen.first, screen.second),
-                                )
-                            }
-                        }
-                    }
-                }
                 Text(
                     if (tamil) "பதிவு செய்த புள்ளிகள்: " + marks.size
                     else "Draft candidate points: " + marks.size,
