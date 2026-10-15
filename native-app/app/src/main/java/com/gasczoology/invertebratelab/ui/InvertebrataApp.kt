@@ -534,6 +534,11 @@ private fun ChapterScreen(
                     UnitIEntamoebaMorphology(language)
                 }
             }
+            if (chapter.id == "u1-proto-parasites") {
+                item(key = "u17-flagellate-native-textbooks") {
+                    UnitIFlagellateTypeStudies(language)
+                }
+            }
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
                 item(key = "u1-independent-protozoa-reference-atlas") {
                     UnitIProtozoaReferenceGallery(language)
