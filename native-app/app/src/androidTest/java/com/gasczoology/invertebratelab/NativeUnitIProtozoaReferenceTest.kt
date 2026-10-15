@@ -181,6 +181,10 @@ class NativeUnitIProtozoaReferenceTest {
                 .assertTextContains("DRAFT_UNVERIFIED")
             rule.onNodeWithTag("u110-source-checksum-trypanosoma")
                 .assertTextContains(expected)
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("u110-candidate-image-trypanosoma")
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
             rule.onNodeWithTag("u110-candidate-image-trypanosoma")
                 .performScrollTo().assertExists()
             rule.onNodeWithTag("u110-calibrate-imported-trypanosoma")
