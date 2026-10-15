@@ -138,8 +138,8 @@ jobs:
           name: unit1-u12-source-derived-assets
           path: native-app/app/src/main/assets/unit1/
           if-no-files-found: error
-      - name: Compile app, instrumentation and run all existing JVM tests
-        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Compile debug AND release Kotlin; run instrumentation compilation and JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileReleaseKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
 
   android-ui:
     needs: compile-and-corpus
