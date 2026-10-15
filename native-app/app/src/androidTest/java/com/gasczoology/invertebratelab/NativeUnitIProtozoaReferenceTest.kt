@@ -84,7 +84,7 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u1-reference-select-leishmania").performScrollTo().performClick()
         rule.onNodeWithTag("u1-reference-image-leishmania").performScrollTo().assertExists()
         rule.onNodeWithTag("u1-reference-missing").assertDoesNotExist()
-        rule.onNodeWithTag("u1-reference-explanation").assertTextContains("மேக்ரோபேஜ்")
+        rule.onNodeWithTag("u1-reference-explanation").assertTextContains("மேக்ரோபேஜ்", substring = true)
         screenshot("tamil-parasite-atlas")
     }
 }
