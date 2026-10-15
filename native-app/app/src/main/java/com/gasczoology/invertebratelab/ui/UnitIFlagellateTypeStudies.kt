@@ -116,22 +116,20 @@ internal fun UnitIFlagellateTypeStudiesHeader(language: AppLanguage) {
 }
 
 /** Separate LazyColumn entries ensure smooth scrolling with 200% Tamil fonts. */
+/**
+ * Reader layout: each stage is a separate always-visible textbook subsection.
+ * This deliberately avoids hiding the academic content behind Q&A-like buttons.
+ */
 @Composable
-internal fun UnitIFlagellateTypeStudy(id: String, language: AppLanguage) {
+internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage) {
     val study = flagellateStudies.single { it.id == id }
-    FlagellateStudyCard(study, language)
-}
-
-@Composable
-private fun FlagellateStudyCard(study: FlagellateStudy, language: AppLanguage) {
     val tamil = language == AppLanguage.TAMIL
-    var selected by rememberSaveable(study.id) { mutableStateOf("morphology") }
-    val active = study.stages.first { it.id == selected }
     val bitmap = rememberRequiredRasterBitmap("unit1/references/" + study.id, pngOnly = true)
+    var expanded by rememberSaveable(study.id) { mutableStateOf(false) }
     Card(modifier = Modifier.fillMaxWidth().testTag("u17-study-" + study.id)) {
         Column(
             modifier = Modifier.fillMaxWidth().padding(12.dp),
-            verticalArrangement = Arrangement.spacedBy(9.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             Text(
                 if (tamil) study.titleTa else study.titleEn,
@@ -153,33 +151,61 @@ private fun FlagellateStudyCard(study: FlagellateStudy, language: AppLanguage) {
                     modifier = Modifier.fillMaxWidth().height(300.dp)
                         .testTag("u17-reference-image-" + study.id),
                 )
+                OutlinedButton(
+                    onClick = { expanded = true },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("u17-image-expand-" + study.id),
+                ) {
+                    Text(if (tamil) "ஆதாரப் படத்தை முழுத்திரையில் பெரிதாக்கு"
+                         else "Open source figure full-screen and zoom")
+                }
+                if (expanded) {
+                    ExpandedProtozoaReferenceImage(
+                        bitmap = bitmap,
+                        title = if (tamil) study.titleTa else study.titleEn,
+                        language = language,
+                        referenceId = study.id,
+                        onClose = { expanded = false },
+                    )
+                }
             }
             Text(
                 if (tamil) study.imageTa else study.imageEn,
                 style = MaterialTheme.typography.labelMedium,
             )
-            study.stages.forEach { stage ->
-                OutlinedButton(
-                    onClick = { selected = stage.id },
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                        .testTag("u17-stage-" + study.id + "-" + stage.id),
-                ) {
-                    Text(if (tamil) stage.headingTa else stage.headingEn)
-                }
-            }
-            Text(
-                if (tamil) active.headingTa else active.headingEn,
-                style = MaterialTheme.typography.titleSmall,
-                modifier = Modifier.testTag("u17-current-heading-" + study.id),
-            )
-            Text(
-                if (tamil) active.bodyTa else active.bodyEn,
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.testTag("u17-current-explanation-" + study.id),
-            )
-            HorizontalDivider()
             Text(study.credit, style = MaterialTheme.typography.labelSmall)
             Text(study.source, style = MaterialTheme.typography.labelSmall)
+        }
+    }
+}
+
+@Composable
+internal fun UnitIFlagellateLessonSection(
+    studyId: String,
+    stageId: String,
+    language: AppLanguage,
+) {
+    val study = flagellateStudies.single { it.id == studyId }
+    val stage = study.stages.single { it.id == stageId }
+    val tamil = language == AppLanguage.TAMIL
+    Card(
+        modifier = Modifier.fillMaxWidth()
+            .testTag("u17-stage-" + studyId + "-" + stageId),
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text(
+                if (tamil) stage.headingTa else stage.headingEn,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.testTag("u17-current-heading-" + studyId + "-" + stageId),
+            )
+            Text(
+                if (tamil) stage.bodyTa else stage.bodyEn,
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.testTag("u17-current-explanation-" + studyId + "-" + stageId),
+            )
         }
     }
 }
