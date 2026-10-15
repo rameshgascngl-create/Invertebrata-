@@ -59,7 +59,7 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("native-unit-1")
             .performScrollToNode(hasTestTag("u1-protozoa-reference-toggle"))
         rule.onNodeWithTag("u1-protozoa-reference-toggle").performClick()
-        rule.onNodeWithTag("u1-protozoa-reference-gallery").assertExists()
+        rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertExists()
         for(id in listOf("entamoeba","trypanosoma","leishmania","plasmodium")) {
             rule.onNodeWithTag("u1-reference-select-"+id).performScrollTo().performClick()
             rule.onNodeWithTag("u1-reference-image-"+id).performScrollTo().assertExists()
@@ -87,7 +87,7 @@ class NativeUnitIProtozoaReferenceTest {
         }
         rule.onNodeWithTag("native-chapter-u1-proto-parasites")
             .performScrollToNode(hasTestTag("u1-protozoa-reference-gallery"))
-        rule.onNodeWithTag("u1-protozoa-reference-gallery").assertExists()
+        rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertExists()
         rule.onNodeWithTag("u1-reference-image-entamoeba").performScrollTo().assertExists()
         rule.onNodeWithTag("u1-reference-select-leishmania").performScrollTo().performClick()
         rule.onNodeWithTag("u1-reference-image-leishmania").performScrollTo().assertExists()
