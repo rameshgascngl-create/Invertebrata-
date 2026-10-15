@@ -125,6 +125,16 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u19-review-hold-trypanosoma")
             .assertTextContains("UNVERIFIED", substring = true)
         rule.onNodeWithTag("u19-raster-size-trypanosoma").assertExists()
+        // U1.11: without force-scrolling the new dialog, the actual bitmap
+        // must already be displayed at both 100% and 200% Android font scale.
+        rule.onNodeWithTag("u111-image-selection-trypanosoma").assertExists()
+        rule.onNodeWithTag("u111-source-raster-visible-trypanosoma")
+            .assertIsDisplayed()
+        val imageRect = rule.onNodeWithTag("u111-source-raster-visible-trypanosoma")
+            .fetchSemanticsNode().boundsInRoot
+        assertTrue("Raster collapsed to height: " + imageRect.height,
+            imageRect.height > 200f * rule.activity.resources.displayMetrics.density)
+        screenshot("u111-trypanosoma-image-first")
         rule.onNodeWithTag("u110-review-morphotype-trypanosoma")
             .assertTextContains("mammalian_bloodstream_trypomastigote", substring = true)
         rule.onNodeWithTag("u110-review-explanation-trypanosoma").assertExists()
