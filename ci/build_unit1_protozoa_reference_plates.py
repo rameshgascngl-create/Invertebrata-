@@ -54,7 +54,13 @@ def image_from_source(filename,data):
         data=cairosvg.svg2png(bytestring=data,output_width=2100)
     with Image.open(io.BytesIO(data)) as im:
         im.load()
-        return im.convert("RGB")
+        source=im.convert("RGBA")
+        # Commons SVG/PNG references can be transparent with WHITE labels.
+        # Converting RGBA directly to RGB would turn transparent regions black.
+        # Composite uniformly on a deliberate dark matte; never repaint anatomy.
+        matte=Image.new("RGBA",source.size,(35,39,46,255))
+        matte.alpha_composite(source)
+        return matte.convert("RGB")
 
 def make(id,filename,sha,title,credit):
     source,sha1=acquire(filename,sha)
