@@ -117,6 +117,31 @@ internal fun UnitIFlagellateLifeCycleSimulator(
                         .testTag("u18-next-" + id),
                 ) { Text(if (tamil) "அடுத்தது" else "Next") }
             }
+            // Place Reset and Play before the long explanation; a 200% font-size
+            // explanation can exceed the lazy-item viewport and render bottom
+            // controls untouchable on small portrait Android devices.
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(
+                    onClick = {
+                        narrator.stop()
+                        if (playing) playing = false
+                        else {
+                            if (selected >= last) onStageChange(0)
+                            playing = true
+                        }
+                    },
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                        .testTag("u18-play-pause-" + id),
+                ) { Text(
+                    if (playing) (if (tamil) "இடைநிறுத்து" else "Pause")
+                    else (if (tamil) "நிலைகளை இயக்கு" else "Play sequence")
+                ) }
+                OutlinedButton(
+                    onClick = { playing = false; onStageChange(0); narrator.stop() },
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                        .testTag("u18-reset-" + id),
+                ) { Text(if (tamil) "மீட்டமை" else "Reset") }
+            }
             Crossfade(targetState = selected, label = "u18-native-stage-transition-" + id) { index ->
                 val phase = cycle.phases[index.coerceIn(0, last)]
                 Surface(
@@ -145,28 +170,6 @@ internal fun UnitIFlagellateLifeCycleSimulator(
                         )
                     }
                 }
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(
-                    onClick = {
-                        narrator.stop()
-                        if (playing) playing = false
-                        else {
-                            if (selected >= last) onStageChange(0)
-                            playing = true
-                        }
-                    },
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
-                        .testTag("u18-play-pause-" + id),
-                ) { Text(
-                    if (playing) (if (tamil) "இடைநிறுத்து" else "Pause")
-                    else (if (tamil) "நிலைகளை இயக்கு" else "Play sequence")
-                ) }
-                OutlinedButton(
-                    onClick = { playing = false; onStageChange(0); narrator.stop() },
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
-                        .testTag("u18-reset-" + id),
-                ) { Text(if (tamil) "மீட்டமை" else "Reset") }
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedButton(
