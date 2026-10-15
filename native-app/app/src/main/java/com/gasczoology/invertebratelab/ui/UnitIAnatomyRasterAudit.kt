@@ -30,7 +30,9 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.gasczoology.invertebratelab.OfflineNarrator
 import com.gasczoology.invertebratelab.data.AppLanguage
+import com.gasczoology.invertebratelab.data.UnitIAnatomyReviewDescriptions
 import com.gasczoology.invertebratelab.data.NativeRasterCalibration
 import com.gasczoology.invertebratelab.data.RasterPixelLocation
 import java.security.MessageDigest
@@ -44,25 +46,7 @@ import org.json.JSONObject
  * There are NO pre-authorised organ hotspots, anatomical leader lines or
  * silent production activation. The source image itself is never repainted.
  */
-private data class ReviewStructure(val id: String, val en: String, val ta: String)
 private data class DraftRasterMark(val structureId: String, val point: RasterPixelLocation)
-
-private fun reviewStructures(id: String): List<ReviewStructure> = when (id) {
-    "trypanosoma" -> listOf(
-        ReviewStructure("nucleus", "Nucleus", "உட்கரு"),
-        ReviewStructure("kinetoplast", "Kinetoplast", "கைனெட்டோபிளாஸ்ட்"),
-        ReviewStructure("undulating-membrane", "Undulating membrane", "அலைவுச் சவ்வு"),
-        ReviewStructure("flagellum", "Free flagellum", "சுதந்திரக் கசையிழை"),
-        ReviewStructure("posterior", "Posterior end", "பின்முனை"),
-    )
-    "leishmania" -> listOf(
-        ReviewStructure("amastigote", "Amastigote outline", "அமாஸ்டிகோட் எல்லை"),
-        ReviewStructure("nucleus", "Nucleus", "உட்கரு"),
-        ReviewStructure("kinetoplast", "Kinetoplast", "கைனெட்டோபிளாஸ்ட்"),
-        ReviewStructure("macrophage", "Host macrophage", "ஓம்புயிரி மேக்ரோபேஜ்"),
-    )
-    else -> emptyList()
-}
 
 internal fun isNativeSourceAuditDebuggable(flags: Int): Boolean =
     flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
@@ -85,6 +69,7 @@ private fun rasterSha256(context: android.content.Context, organism: String): St
 private fun reviewJson(
     organism: String,
     checksum: String,
+    morphotype: String,
     bitmap: ImageBitmap,
     marks: List<DraftRasterMark>,
 ): String {
@@ -100,11 +85,12 @@ private fun reviewJson(
         )
     }
     return JSONObject()
-        .put("schema", "invertebrata.u19.raster-coordinate-draft.v1")
+        .put("schema", "invertebrata.u110.morphotype-coordinate-draft.v1")
         .put("status", "DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF")
         .put("source_image", "unit1/references/" + organism + ".png")
         .put("source_sha256", checksum)
         .put("organism", organism)
+        .put("morphotype", morphotype)
         .put("image_width_px", bitmap.width)
         .put("image_height_px", bitmap.height)
         .put("marks", array)
@@ -146,7 +132,13 @@ private fun NativeRasterReviewer(
 ) {
     val context = LocalContext.current
     val tamil = language == AppLanguage.TAMIL
-    val choices = remember(organism) { reviewStructures(organism) }
+    val plate = requireNotNull(remember(organism) {
+        UnitIAnatomyReviewDescriptions.forOrganism(organism)
+    })
+    val choices = plate.structures
+    val narrator = remember(context, organism) { OfflineNarrator(context.applicationContext) }
+    val narrationPhase by narrator.phase.collectAsState()
+    DisposableEffect(narrator) { onDispose { narrator.close() } }
     val sourceHash = remember(organism) { rasterSha256(context, organism) }
     var selectedId by remember(organism) { mutableStateOf(choices.first().id) }
     val selected = choices.first { it.id == selectedId }
@@ -156,8 +148,9 @@ private fun NativeRasterReviewer(
     var panY by remember(organism) { mutableFloatStateOf(0f) }
     var viewport by remember { mutableStateOf(IntSize.Zero) }
     var exportStatus by remember { mutableStateOf("") }
+    LaunchedEffect(language, selectedId) { narrator.stop() }
     val json = remember(organism, sourceHash, marks.toList()) {
-        reviewJson(organism, sourceHash.orEmpty(), bitmap, marks)
+        reviewJson(organism, sourceHash.orEmpty(), plate.morphotype, bitmap, marks)
     }
     val latestJson by rememberUpdatedState(json)
     val exportFile = rememberLauncherForActivityResult(
@@ -229,6 +222,43 @@ private fun NativeRasterReviewer(
                     else "Selected structure: " + selected.en +
                         ". Pinch to enlarge, then tap the source pixel.",
                     style = MaterialTheme.typography.bodySmall,
+                )
+                Text(
+                    if (tamil) selected.explanationTa else selected.explanationEn,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.testTag("u110-review-explanation-" + organism),
+                )
+                Text(
+                    if (tamil)
+                        "உருவ நிலை: " + plate.morphotype +
+                            ". இது வரைவு மட்டும்; மூலப் படத்தில் இல்லாத அமைப்பைக் குறிக்கக் கூடாது."
+                    else "Reference morphotype: " + plate.morphotype +
+                        ". No approved hotspot or promastigote on this source raster.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.testTag("u110-review-morphotype-" + organism),
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                    OutlinedButton(
+                        onClick = { narrator.speak(selected.narration, language) },
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                            .testTag("u110-review-speak-" + organism),
+                    ) {
+                        Text(if (tamil) "தேர்ந்த அமைப்பின் விளக்க ஒலி" else "Speak selected structure")
+                    }
+                    OutlinedButton(
+                        onClick = { narrator.stop() },
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                            .testTag("u110-review-stop-" + organism),
+                    ) {
+                        Text(if (tamil) "ஒலியை நிறுத்து" else "Stop voice")
+                    }
+                }
+                Text(
+                    if (tamil) "இணையமற்ற குரல் நிலை: " + narrationPhase.name
+                    else "Offline voice state: " + narrationPhase.name,
+                    style = MaterialTheme.typography.labelSmall,
+                    modifier = Modifier.testTag("u110-review-voice-status-" + organism),
                 )
                 Box(
                     modifier = Modifier.fillMaxWidth().height(360.dp).clipToBounds()

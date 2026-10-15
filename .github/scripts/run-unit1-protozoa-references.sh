@@ -55,7 +55,7 @@ for scale in 100 200; do
   for scene in four-images-english tamil-parasite-atlas \
     u18-trypanosoma-english u18-leishmania-english \
     u18-trypanosoma-tamil u18-leishmania-tamil \
-    u19-trypanosoma-calibration; do
+    u19-trypanosoma-calibration u110-trypanosoma-source-review; do
     [[ -s "$E/captured/u12-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
   done
 done
