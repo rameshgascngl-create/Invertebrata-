@@ -108,6 +108,44 @@ class NativeUnitIProtozoaReferenceTest {
         screenshot("four-images-english")
     }
 
+    @Test fun debugRasterReviewMapsRealBitmapPixelsWithoutPublishingHotspots() {
+        enter(false)
+        rule.onNodeWithTag("native-unit-1")
+            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
+        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+            .performScrollToNode(hasTestTag("u17-study-trypanosoma"))
+        rule.onNodeWithTag("u19-open-raster-review-trypanosoma")
+            .performScrollTo().assertIsDisplayed().performClick()
+        rule.onNodeWithTag("u19-review-dialog-trypanosoma").assertExists()
+        rule.onNodeWithTag("u19-review-hold-trypanosoma")
+            .assertTextContains("UNVERIFIED", substring = true)
+        rule.onNodeWithTag("u19-raster-size-trypanosoma").assertExists()
+        rule.onNodeWithTag("u19-tappable-raster-trypanosoma")
+            .performScrollTo().performTouchInput { click() }
+        rule.onNodeWithTag("u19-mark-count-trypanosoma")
+            .assertTextContains("1", substring = true)
+        rule.onNodeWithTag("u19-export-trypanosoma").assertIsEnabled()
+        rule.onNodeWithTag("u19-zoom-in-trypanosoma")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u19-tappable-raster-trypanosoma").performScrollTo()
+        screenshot("u19-trypanosoma-calibration")
+        rule.onNodeWithTag("u19-view-reset-trypanosoma")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u19-undo-trypanosoma")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u19-mark-count-trypanosoma")
+            .assertTextContains("0", substring = true)
+        rule.onNodeWithTag("u19-export-trypanosoma").assertIsNotEnabled()
+        rule.onNodeWithTag("u19-close-trypanosoma")
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("u19-review-dialog-trypanosoma").assertDoesNotExist()
+    }
+
     @Test fun englishNativeFlagellateLifeCyclesAreNavigableOffline() {
         enter(false)
         rule.onNodeWithTag("native-unit-1")

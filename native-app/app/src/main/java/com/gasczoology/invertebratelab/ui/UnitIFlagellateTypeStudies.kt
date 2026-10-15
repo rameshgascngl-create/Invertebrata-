@@ -168,6 +168,13 @@ internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage)
                         onClose = { expanded = false },
                     )
                 }
+                // QA tool: only appears for Android debuggable builds.
+                // It records draft pixel coordinates, never student anatomy hotspots.
+                NativeRasterReviewerLauncher(
+                    organism = study.id,
+                    bitmap = bitmap,
+                    language = language,
+                )
             }
             Text(
                 if (tamil) study.imageTa else study.imageEn,
