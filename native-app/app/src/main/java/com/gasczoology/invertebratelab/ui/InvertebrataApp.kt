@@ -26,6 +26,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
@@ -383,6 +386,7 @@ private fun UnitScreen(
     onBack: () -> Unit,
     onChapter: (String) -> Unit,
 ) {
+    var showProtozoaReferences by rememberSaveable { mutableStateOf(false) }
     Scaffold { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding).testTag("native-unit-" + unit.number),
@@ -413,9 +417,18 @@ private fun UnitScreen(
                             "வரைபடங்களைப் பார் · பாரமீசியம் உடலமைப்பு (பென்சில் வரைவு)"))
                     }
                     Text(label(language,
-                        "Unit I organism plates for Entamoeba, Trypanosoma, Leishmania and Plasmodium are not yet authored in the native app; do not use Paramecium diagrams as substitutes.",
-                        "அலகு I-இல் Entamoeba, Trypanosoma, Leishmania, Plasmodium ஆகியவற்றுக்கான தனித்த உடலமைப்புப் படங்கள் இன்னும் உருவாக்கப்படவில்லை. பாரமீசியம் படங்களை அவற்றுக்குப் பதிலாகப் பயன்படுத்த வேண்டாம்."),
+                        "Original pencil anatomy masters for Entamoeba, Trypanosoma, Leishmania and Plasmodium are still pending. Separate source-referenced provisional illustrations can be inspected below.",
+                        "Entamoeba, Trypanosoma, Leishmania, Plasmodium ஆகியவற்றுக்கான அசல் பென்சில் உடலமைப்புப் படங்கள் நிலுவையில் உள்ளன. கீழே தனித்த ஆதார விளக்கப்படங்களைப் பார்க்கலாம்."),
                         modifier = Modifier.testTag("u1-missing-protozoa-plates"))
+                    OutlinedButton(
+                        onClick = { showProtozoaReferences = !showProtozoaReferences },
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                            .testTag("u1-protozoa-reference-toggle"),
+                    ) {
+                        Text(label(language,
+                            if (showProtozoaReferences) "HIDE FOUR PROTOZOAN SOURCE PLATES" else "VIEW FOUR PROTOZOAN SOURCE PLATES",
+                            if (showProtozoaReferences) "நான்கு ஆதாரப் படங்களை மறை" else "நான்கு ஆதாரப் படங்களைப் பார்"))
+                    }
                     Button(onClick = onParamecium,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                             .testTag("r14-unit-open-textbook")) {
@@ -423,6 +436,11 @@ private fun UnitScreen(
                             "START READING · Paramecium illustrated textbook",
                             "பாடத்தைத் தொடங்கு · பாரமீசியம் படவிளக்கப் பாடநூல்"))
                     }
+                }
+            }
+            if (unit.number == 1 && showProtozoaReferences) {
+                item(key = "u1-protozoa-reference-panel") {
+                    UnitIProtozoaReferenceGallery(language)
                 }
             }
             items(unit.chapters, key = { it.id }) { chapter ->
@@ -500,6 +518,11 @@ private fun ChapterScreen(
                 }
                 Text(label(language, "EXAM PRACTICE — after the teaching lesson",
                     "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்"))
+            }
+            if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
+                item(key = "u1-independent-protozoa-reference-atlas") {
+                    UnitIProtozoaReferenceGallery(language)
+                }
             }
             items(chapter.a5Questions, key = { it.id }) { question ->
                 QuestionCard(
