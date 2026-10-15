@@ -529,6 +529,11 @@ private fun ChapterScreen(
                 Text(label(language, "EXAM PRACTICE — after the teaching lesson",
                     "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்"))
             }
+            if (chapter.id == "u1-proto-parasites") {
+                item(key = "u15-entamoeba-native-textbook") {
+                    UnitIEntamoebaMorphology(language)
+                }
+            }
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
                 item(key = "u1-independent-protozoa-reference-atlas") {
                     UnitIProtozoaReferenceGallery(language)
