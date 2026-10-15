@@ -538,11 +538,35 @@ private fun ChapterScreen(
                 item(key = "u17-flagellate-native-heading") {
                     UnitIFlagellateTypeStudiesHeader(language)
                 }
-                item(key = "u17-trypanosoma-textbook") {
-                    UnitIFlagellateTypeStudy("trypanosoma", language)
+                item(key = "u17-trypanosoma-figure") {
+                    UnitIFlagellateStudyIntroduction("trypanosoma", language)
                 }
-                item(key = "u17-leishmania-textbook") {
-                    UnitIFlagellateTypeStudy("leishmania", language)
+                item(key = "u17-trypanosoma-morphology-section") {
+                    UnitIFlagellateLessonSection("trypanosoma", "morphology", language)
+                }
+                item(key = "u17-trypanosoma-mammal-section") {
+                    UnitIFlagellateLessonSection("trypanosoma", "mammal", language)
+                }
+                item(key = "u17-trypanosoma-vector-section") {
+                    UnitIFlagellateLessonSection("trypanosoma", "vector", language)
+                }
+                item(key = "u17-trypanosoma-contrast-section") {
+                    UnitIFlagellateLessonSection("trypanosoma", "contrast", language)
+                }
+                item(key = "u17-leishmania-figure") {
+                    UnitIFlagellateStudyIntroduction("leishmania", language)
+                }
+                item(key = "u17-leishmania-morphology-section") {
+                    UnitIFlagellateLessonSection("leishmania", "morphology", language)
+                }
+                item(key = "u17-leishmania-mammal-section") {
+                    UnitIFlagellateLessonSection("leishmania", "mammal", language)
+                }
+                item(key = "u17-leishmania-vector-section") {
+                    UnitIFlagellateLessonSection("leishmania", "vector", language)
+                }
+                item(key = "u17-leishmania-limits-section") {
+                    UnitIFlagellateLessonSection("leishmania", "limits", language)
                 }
             }
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
