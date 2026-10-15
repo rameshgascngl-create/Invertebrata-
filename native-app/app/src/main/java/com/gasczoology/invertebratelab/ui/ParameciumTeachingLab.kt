@@ -361,39 +361,18 @@ private fun AtlasSection(language:AppLanguage, speak:(BilingualText)->Unit,
             }
         }
     }
-    if(panel=="external") {
-        ParameciumExternalCanvas(language, onOrganSelected = { id ->
-            speak(ParameciumLearningEngine.organ(id).narration)
-        })
-    } else if (panel == "vacuole") {
-        VacuoleAtlasSection(language, selected,
-            onSelect = { selected = it }, speak = speak,
-            onExploreOsmoregulation = onExploreOsmoregulation)
-    } else {
-        val points=nodes(panel)
-        AtlasSketch(panel,points,selected,language,{ id ->
+    // All four teaching atlas modes use true PNG source pixels.
+    // Retain named organ, narration, and exploration controls; never
+    // substitute Canvas anatomy or reuse old schematic hit coordinates.
+    ParameciumRasterAtlas(
+        language=language, panel=panel, selected=selected,
+        onSelect={ id ->
             selected=id
             speak(ParameciumLearningEngine.organ(id).narration)
-        })
-        val organ=ParameciumLearningEngine.organ(selected)
-        Text(organ.name.value(language),modifier=Modifier.testTag("r1-atlas-selected"))
-        Text(organ.narration.value(language),modifier=Modifier.testTag("r1-atlas-explanation"))
-        OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={speak(organ.narration)},modifier=Modifier.fillMaxWidth()
-            .heightIn(min=48.dp).testTag("r1-atlas-speak")) {
-            Text(bi(language,"Hear this organ","இந்த உறுப்பின் விளக்கத்தைக் கேள்"))
-        }
-        for(point in points) {
-            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={
-                selected=point.id
-                speak(ParameciumLearningEngine.organ(point.id).narration)
-            },modifier=Modifier.fillMaxWidth()
-                .heightIn(min=48.dp).testTag("r1-atlas-select-"+point.id)) {
-                Text(ParameciumLearningEngine.organ(point.id).name.value(language))
-            }
-        }
-        Text(bi(language,"These positions are teaching schematics, not verified whole-cell microscopy coordinates.",
-            "இவை கற்பித்தல் வரைபட இடங்கள் மட்டுமே; சரிபார்க்கப்பட்ட நுண்ணோக்கி ஆயத்தொலைவுகள் அல்ல."))
-    }
+        },
+        speak=speak,
+        onExploreOsmoregulation=onExploreOsmoregulation
+    )
 }
 
 /**
