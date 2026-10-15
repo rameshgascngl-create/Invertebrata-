@@ -44,7 +44,7 @@ jobs:
           lesson=(root/'ui/UnitIEntamoebaMorphology.kt').read_text()
           for marker in ('u15-entamoeba-heading','u15-entamoeba-review-hold',
                          'u15-plate-pending-', 'DRAFT_UNVERIFIED',
-                         'entamoeba_trophozoite','entamoeba_mature_cyst'):
+                         'id = "trophozoite"','id = "mature_cyst"'):
               assert marker in lesson,marker
           assert 'UnitIEntamoebaMorphology(language)' in nav
           assert 'u15-entamoeba-native-textbook' in nav
