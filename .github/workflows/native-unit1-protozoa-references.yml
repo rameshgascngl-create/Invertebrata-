@@ -3,6 +3,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
   push:
     branches:
       - native/u12-protozoa-reference-plates-20261015
+      - native/u13-protozoa-fullscreen-atlas-20261015
   workflow_dispatch:
 
 permissions:
