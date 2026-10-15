@@ -66,6 +66,14 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u1-reference-missing").assertDoesNotExist()
             rule.onNodeWithTag("u1-reference-explanation").assertExists()
         }
+        rule.onNodeWithTag("u1-reference-expand").performScrollTo().performClick()
+        rule.onNodeWithTag("u1-reference-fullscreen").assertExists()
+        rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
+        rule.onNodeWithTag("u1-reference-zoom-in").performClick()
+        rule.onNodeWithTag("u1-reference-zoom-reset").performClick()
+        screenshot("plasmodium-fullscreen")
+        rule.onNodeWithTag("u1-reference-close").performClick()
+        rule.onNodeWithTag("u1-reference-fullscreen").assertDoesNotExist()
         screenshot("four-images-english")
     }
 
