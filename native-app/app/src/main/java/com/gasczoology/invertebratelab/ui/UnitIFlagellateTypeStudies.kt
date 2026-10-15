@@ -176,6 +176,12 @@ internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage)
                     language = language,
                 )
             }
+            // Real scanned pencil masters are reviewer-imported candidates.
+            // Never replace the student's attributed source figure until approved.
+            UnitIOriginalPencilMasterIntake(
+                organism = study.id,
+                language = language,
+            )
             Text(
                 if (tamil) study.imageTa else study.imageEn,
                 style = MaterialTheme.typography.labelMedium,
