@@ -9,6 +9,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u16-plasmodium-readable-panels-20261015
       - native/u17-flagellate-bilingual-type-studies-20261015
       - native/u18-flagellate-offline-lifecycle-20261015
+      - native/u19-anatomy-pixel-calibration-20261015
   workflow_dispatch:
 
 permissions:
@@ -78,6 +79,19 @@ jobs:
                         '"amastigotes"', '"phagocytosis"', '"proboscis"'):
               assert token in model,token
           assert 'webview' not in cycle.lower()
+          calibration=(root/'data/NativeRasterCalibration.kt').read_text()
+          audit=(root/'ui/UnitIAnatomyRasterAudit.kt').read_text()
+          assert 'NativeRasterCalibration.hit(' in audit
+          assert 'NativeRasterCalibration.project(' in audit
+          assert 'Image(contentScale = ContentScale.Fit)' in calibration
+          assert 'FLAG_DEBUGGABLE' in audit
+          assert 'if (!isNativeSourceAuditDebuggable(context.applicationInfo.flags)) return' in audit
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
+          assert 'source_sha256' in audit and 'Export draft JSON' in audit
+          assert 'NativeRasterReviewerLauncher(' in flagellates
+          assert 'NativeRasterCalibrationTest' in (
+              Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
+          )
           assert nav.index('u17-flagellate-native-heading') < nav.index('items(chapter.a5Questions')
           assert 'UnitIFlagellateLessonSection(' in flagellates
           assert 'OutlinedButton(\n                    onClick = { selected = stage.id }' not in flagellates
@@ -185,5 +199,6 @@ jobs:
           echo 'Plasmodium: overview plus three source-image focus excerpts, not new original pencil plates.'
           echo 'U1.7 contains full native bilingual Trypanosoma and Leishmania lessons with referenced rasters; original pencil atlases and hotspot/TTS reviews remain pending.'
           echo 'U1.8 native Compose lifecycle playback is pedagogical sequencing only. Native Android offline narrator is not a reviewed organ-hotspot audio recording.'
+          echo 'U1.9 coordinate calibration is DEBUG-only and exports explicitly UNVERIFIED source-pixel marks; no student anatomy hotspots are deployed.'
           echo 'Scientific anatomy, hotspots, Tamil and physical-device audible speech remain OPEN.'
           echo 'No production promotion or Unit I final acceptance authorized.'
