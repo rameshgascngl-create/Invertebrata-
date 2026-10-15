@@ -45,8 +45,9 @@ class NativeUnitIDiagramAccessTest {
         rule.onNodeWithTag("r1-atlas-heading").assertExists()
         // Do NOT scroll the figure into view as part of the assertion:
         // a student must see actual image pixels immediately after opening Anatomy.
-        rule.onNodeWithTag("n23b-external-canvas", useUnmergedTree = true)
-            .assertIsDisplayed()
+        rule.onNodeWithTag("u1-paramecium-raster-external").assertIsDisplayed()
+        rule.onNodeWithTag("n23b-external-canvas").assertDoesNotExist()
+        rule.onNodeWithTag("u1-raster-asset-missing").assertDoesNotExist()
     }
 
     private fun screenshot(scene: String) {
@@ -70,7 +71,7 @@ class NativeUnitIDiagramAccessTest {
         bitmap.recycle()
     }
 
-    @Test fun unitEntryShowsRealParameciumCanvasAndFourInteractiveAtlasModes() {
+    @Test fun unitEntryShowsRealRasterPencilAndFourInteractiveAtlasModes() {
         enterUnitOne(tamil = false)
         rule.onNodeWithTag("u1-missing-protozoa-plates").assertExists()
         rule.onNodeWithTag("native-unit-1")
@@ -78,12 +79,18 @@ class NativeUnitIDiagramAccessTest {
         rule.onNodeWithTag("u1-open-diagram-atlas").performClick()
         expectAtlas()
         screenshot("english-external")
-        rule.onNodeWithTag("r1-atlas-oral").performScrollTo().performClick()
-        rule.onNodeWithTag("r1-atlas-selected").assertExists()
-        rule.onNodeWithTag("r1-atlas-vacuole").performScrollTo().performClick()
-        rule.onNodeWithTag("r11-vacuole-heading").assertExists()
-        rule.onNodeWithTag("r1-atlas-internal").performScrollTo().performClick()
-        rule.onNodeWithTag("r1-atlas-selected").assertExists()
+        for ((panel,organ) in listOf(
+            "oral" to "oral-groove",
+            "vacuole" to "contractile-vacuole",
+            "internal" to "macronucleus"
+        )) {
+            rule.onNodeWithTag("r1-atlas-"+panel).performScrollTo().performClick()
+            rule.onNodeWithTag("u1-paramecium-raster-"+panel).assertExists()
+            rule.onNodeWithTag("u1-raster-asset-missing").assertDoesNotExist()
+            rule.onNodeWithTag("r1-atlas-select-"+organ)
+                .performScrollTo().performClick()
+            rule.onNodeWithTag("r1-atlas-selected").assertExists()
+        }
     }
 
     @Test fun parameciumChapterOpensTamilAtlasWithoutDeletingAssessmentRoute() {
