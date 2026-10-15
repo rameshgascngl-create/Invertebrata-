@@ -8,6 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -182,6 +183,7 @@ private fun NativeRasterReviewer(
             Column(
                 modifier = Modifier.fillMaxSize()
                     .statusBarsPadding().navigationBarsPadding()
+                    .verticalScroll(rememberScrollState())
                     .padding(10.dp),
                 verticalArrangement = Arrangement.spacedBy(7.dp),
             ) {
@@ -229,7 +231,7 @@ private fun NativeRasterReviewer(
                     style = MaterialTheme.typography.bodySmall,
                 )
                 Box(
-                    modifier = Modifier.fillMaxWidth().weight(1f).clipToBounds()
+                    modifier = Modifier.fillMaxWidth().height(360.dp).clipToBounds()
                         .onSizeChanged { viewport = it }
                         .pointerInput(organism, selectedId, viewport, zoom, panX, panY) {
                             detectTapGestures { tap ->
