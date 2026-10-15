@@ -92,6 +92,10 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onAllNodesWithTag("native-chapter-u1-proto-parasites").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+            .performScrollToNode(hasTestTag("u15-entamoeba-morphology"))
+        rule.onNodeWithTag("u15-entamoeba-heading").assertExists()
+        rule.onNodeWithTag("u15-entamoeba-review-hold").assertExists()
+        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
             .performScrollToNode(hasTestTag("u1-protozoa-reference-gallery"))
         rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertExists()
         rule.onNodeWithTag("u1-reference-image-entamoeba").performScrollTo().assertExists()
