@@ -250,8 +250,9 @@ private fun ExpandedProtozoaReferenceImage(
                             .testTag("u1-reference-expanded-bitmap"),
                     )
                     if(plasmodium && displayedImage!=null) {
-                        Text(focus,modifier=Modifier.testTag("u1-plasmodium-focus-"+focus)
-                            .padding(2.dp))
+                        // Semantics-only marker; never stamp labels over the reference image.
+                        Box(modifier=Modifier.size(1.dp)
+                            .testTag("u1-plasmodium-focus-"+focus))
                     }
                 }
                 Row(
