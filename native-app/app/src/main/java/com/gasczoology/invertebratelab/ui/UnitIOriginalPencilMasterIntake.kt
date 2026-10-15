@@ -40,6 +40,21 @@ internal fun UnitIOriginalPencilMasterIntake(
     var busy by remember(organism) { mutableStateOf(false) }
     var status by remember(organism) { mutableStateOf("") }
     var openReviewer by remember(organism) { mutableStateOf(false) }
+    var decodedBitmap by remember(organism) {
+        mutableStateOf<androidx.compose.ui.graphics.ImageBitmap?>(null)
+    }
+
+    LaunchedEffect(candidate?.sourceSha256) {
+        decodedBitmap = null
+        val source = candidate ?: return@LaunchedEffect
+        // Decode on a background dispatcher: a full scanned page can be 10MP.
+        // InSampleSize remains 1, so reviewer coordinates map to SOURCE pixels.
+        decodedBitmap = withContext(Dispatchers.Default) {
+            BitmapFactory.decodeByteArray(
+                source.originalBytes, 0, source.originalBytes.size,
+            )?.asImageBitmap()
+        }
+    }
 
     LaunchedEffect(organism) {
         candidate = withContext(Dispatchers.IO) {
@@ -118,11 +133,7 @@ internal fun UnitIOriginalPencilMasterIntake(
                 )
             } else {
                 val master = requireNotNull(candidate)
-                val bitmap = remember(master.sourceSha256) {
-                    BitmapFactory.decodeByteArray(
-                        master.originalBytes, 0, master.originalBytes.size,
-                    )?.asImageBitmap()
-                }
+                val bitmap = decodedBitmap
                 Text(
                     "DRAFT_UNVERIFIED · " + master.width + " × " + master.height +
                         " px · " + master.format.uppercase(),
@@ -135,9 +146,10 @@ internal fun UnitIOriginalPencilMasterIntake(
                 )
                 if (bitmap == null) {
                     Text(
-                        if (tamil) "முன்காட்சி கிடைக்கவில்லை — வரைபடம் பயன்படாது"
-                        else "Bitmap decode failed — candidate cannot be reviewed",
-                        color = MaterialTheme.colorScheme.error,
+                        if (tamil) "முன்காட்சி ஏற்றப்படுகிறது அல்லது படம் வாசிக்க முடியவில்லை"
+                        else "Loading exact source pixels or unable to decode image",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.testTag("u110-preview-loading-" + organism),
                     )
                 } else {
                     Image(
