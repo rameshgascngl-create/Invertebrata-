@@ -108,6 +108,38 @@ class NativeUnitIProtozoaReferenceTest {
         screenshot("four-images-english")
     }
 
+    @Test fun englishNativeFlagellateLifeCyclesAreNavigableOffline() {
+        enter(false)
+        rule.onNodeWithTag("native-unit-1")
+            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
+        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        for (id in listOf("trypanosoma", "leishmania")) {
+            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+                .performScrollToNode(hasTestTag("u18-cycle-" + id))
+            rule.onNodeWithTag("u18-title-" + id).assertExists()
+            rule.onNodeWithTag("u18-teaching-cadence-note-" + id).assertExists()
+            rule.onNodeWithTag("u18-stage-counter-" + id)
+                .assertTextContains("Stage 1 of 6")
+            rule.onNodeWithTag("u18-next-" + id).performClick()
+            rule.waitForIdle()
+            rule.onNodeWithTag("u18-stage-counter-" + id)
+                .assertTextContains("Stage 2 of 6")
+            rule.onNodeWithTag("u18-stage-explanation-" + id).assertExists()
+            rule.onNodeWithTag("u18-prev-" + id).performClick()
+            rule.onNodeWithTag("u18-stage-counter-" + id)
+                .assertTextContains("Stage 1 of 6")
+            rule.onNodeWithTag("u18-play-pause-" + id).assertExists()
+            rule.onNodeWithTag("u18-speak-" + id).assertExists()
+            rule.onNodeWithTag("u18-stop-audio-" + id).assertExists()
+            rule.onNodeWithTag("u18-audio-status-" + id).assertExists()
+            screenshot("u18-" + id + "-english")
+        }
+    }
+
     @Test fun tamilParasiticProtozoaChapterRetainsOwnReferencesAndA5() {
         enter(true)
         rule.onNodeWithTag("native-unit-1")
