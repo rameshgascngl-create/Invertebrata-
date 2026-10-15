@@ -10,6 +10,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u17-flagellate-bilingual-type-studies-20261015
       - native/u18-flagellate-offline-lifecycle-20261015
       - native/u19-anatomy-pixel-calibration-20261015
+      - native/u110-pencil-master-review-import-20261015
   workflow_dispatch:
 
 permissions:
@@ -89,6 +90,23 @@ jobs:
           assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
           assert 'source_sha256' in audit and 'Export draft JSON' in audit
           assert 'NativeRasterReviewerLauncher(' in flagellates
+          scan=(root/'ui/UnitIOriginalPencilMasterIntake.kt').read_text()
+          store=(root/'data/NativePencilMasterStore.kt').read_text()
+          assert 'UnitIOriginalPencilMasterIntake(' in flagellates
+          assert 'FLAG_DEBUGGABLE' in audit
+          assert 'isNativeSourceAuditDebuggable(context.applicationInfo.flags)' in scan
+          assert 'ActivityResultContracts.OpenDocument()' in scan
+          assert 'NativePencilMasterStore.importDocument(' in scan
+          assert 'NativeImportedPlateReviewer(' in scan
+          assert 'sourceHashOverride = sha256' in audit
+          assert 'sourceIdOverride = "app-private-review-candidate/"' in audit
+          assert 'inJustDecodeBounds = true' in store
+          assert 'MAX_BYTES' in store and 'MAX_PIXELS' in store
+          assert 'sourceSha256 = digest(bytes)' in store
+          assert 'openInputStream(uri)' in store
+          assert 'DRAFT_UNVERIFIED' in scan
+          assert 'WebView' not in scan and 'WebView' not in store
+          assert 'u110-candidate-metadata-' in scan
           assert 'NativeRasterCalibrationTest' in (
               Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
           )
@@ -200,5 +218,6 @@ jobs:
           echo 'U1.7 contains full native bilingual Trypanosoma and Leishmania lessons with referenced rasters; original pencil atlases and hotspot/TTS reviews remain pending.'
           echo 'U1.8 native Compose lifecycle playback is pedagogical sequencing only. Native Android offline narrator is not a reviewed organ-hotspot audio recording.'
           echo 'U1.9 coordinate calibration is DEBUG-only and exports explicitly UNVERIFIED source-pixel marks; no student anatomy hotspots are deployed.'
+          echo 'U1.10 imports local reviewer-supplied PNG/JPEG scans in Android debug mode only; no authentic scanned pencil master is yet bundled as approved academic content.'
           echo 'Scientific anatomy, hotspots, Tamil and physical-device audible speech remain OPEN.'
           echo 'No production promotion or Unit I final acceptance authorized.'
