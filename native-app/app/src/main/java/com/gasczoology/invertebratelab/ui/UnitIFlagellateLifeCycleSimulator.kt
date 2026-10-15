@@ -6,7 +6,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -28,7 +27,12 @@ import kotlinx.coroutines.delay
  * Offline speech is optional; written explanation remains present at all times.
  */
 @Composable
-internal fun UnitIFlagellateLifeCycleSimulator(id: String, language: AppLanguage) {
+internal fun UnitIFlagellateLifeCycleSimulator(
+    id: String,
+    language: AppLanguage,
+    selectedStage: Int,
+    onStageChange: (Int) -> Unit,
+) {
     val cycle = requireNotNull(UnitIFlagellateLifeCycles.forOrganism(id))
     val tamil = language == AppLanguage.TAMIL
     val context = LocalContext.current
@@ -36,7 +40,8 @@ internal fun UnitIFlagellateLifeCycleSimulator(id: String, language: AppLanguage
     val narrationPhase by narrator.phase.collectAsState()
     DisposableEffect(narrator) { onDispose { narrator.close() } }
 
-    var selected by rememberSaveable(id) { mutableIntStateOf(0) }
+    // ChapterScreen owns saveable progress outside its LazyColumn items.
+    val selected = selectedStage.coerceIn(0, cycle.phases.lastIndex)
     // Playback intentionally does not persist across rotation/process death.
     // A saved educational stage DOES persist through rememberSaveable.
     var playing by remember(id) { mutableStateOf(false) }
@@ -51,8 +56,8 @@ internal fun UnitIFlagellateLifeCycleSimulator(id: String, language: AppLanguage
             if (selected >= last) {
                 playing = false
             } else {
-                selected += 1 // coroutine cancels/restarts on the new selected stage
-                if (selected >= last) playing = false
+                onStageChange(selected + 1) // selected-stage key restarts the sequence timer
+                if (selected + 1 >= last) playing = false
             }
         }
     }
@@ -96,6 +101,47 @@ internal fun UnitIFlagellateLifeCycleSimulator(id: String, language: AppLanguage
                 style = MaterialTheme.typography.labelLarge,
                 modifier = Modifier.testTag("u18-stage-counter-" + id),
             )
+            // Stage controls precede the long explanation so they are reachable at
+            // Android 200% Tamil font even on a small portrait handset.
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(
+                    onClick = { playing = false; narrator.stop(); onStageChange(selected - 1) },
+                    enabled = selected > 0,
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                        .testTag("u18-prev-" + id),
+                ) { Text(if (tamil) "முந்தையது" else "Previous") }
+                OutlinedButton(
+                    onClick = { playing = false; narrator.stop(); onStageChange(selected + 1) },
+                    enabled = selected < last,
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                        .testTag("u18-next-" + id),
+                ) { Text(if (tamil) "அடுத்தது" else "Next") }
+            }
+            // Place Reset and Play before the long explanation; a 200% font-size
+            // explanation can exceed the lazy-item viewport and render bottom
+            // controls untouchable on small portrait Android devices.
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(
+                    onClick = {
+                        narrator.stop()
+                        if (playing) playing = false
+                        else {
+                            if (selected >= last) onStageChange(0)
+                            playing = true
+                        }
+                    },
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                        .testTag("u18-play-pause-" + id),
+                ) { Text(
+                    if (playing) (if (tamil) "இடைநிறுத்து" else "Pause")
+                    else (if (tamil) "நிலைகளை இயக்கு" else "Play sequence")
+                ) }
+                OutlinedButton(
+                    onClick = { playing = false; onStageChange(0); narrator.stop() },
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                        .testTag("u18-reset-" + id),
+                ) { Text(if (tamil) "மீட்டமை" else "Reset") }
+            }
             Crossfade(targetState = selected, label = "u18-native-stage-transition-" + id) { index ->
                 val phase = cycle.phases[index.coerceIn(0, last)]
                 Surface(
@@ -124,42 +170,6 @@ internal fun UnitIFlagellateLifeCycleSimulator(id: String, language: AppLanguage
                         )
                     }
                 }
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(
-                    onClick = { playing = false; narrator.stop(); selected -= 1 },
-                    enabled = selected > 0,
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
-                        .testTag("u18-prev-" + id),
-                ) { Text(if (tamil) "முந்தையது" else "Previous") }
-                OutlinedButton(
-                    onClick = { playing = false; narrator.stop(); selected += 1 },
-                    enabled = selected < last,
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
-                        .testTag("u18-next-" + id),
-                ) { Text(if (tamil) "அடுத்தது" else "Next") }
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(
-                    onClick = {
-                        narrator.stop()
-                        if (playing) playing = false
-                        else {
-                            if (selected >= last) selected = 0
-                            playing = true
-                        }
-                    },
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
-                        .testTag("u18-play-pause-" + id),
-                ) { Text(
-                    if (playing) (if (tamil) "இடைநிறுத்து" else "Pause")
-                    else (if (tamil) "நிலைகளை இயக்கு" else "Play sequence")
-                ) }
-                OutlinedButton(
-                    onClick = { playing = false; selected = 0; narrator.stop() },
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp)
-                        .testTag("u18-reset-" + id),
-                ) { Text(if (tamil) "மீட்டமை" else "Reset") }
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedButton(

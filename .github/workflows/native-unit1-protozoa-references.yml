@@ -10,6 +10,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u17-flagellate-bilingual-type-studies-20261015
       - native/u18-flagellate-offline-lifecycle-20261015
       - native/u19-anatomy-pixel-calibration-20261015
+      - native/u19a-lifecycle-200pct-correction-20261015
   workflow_dispatch:
 
 permissions:
@@ -69,10 +70,11 @@ jobs:
           cycle=(root/'ui/UnitIFlagellateLifeCycleSimulator.kt').read_text()
           model=(root/'data/UnitIFlagellateLifeCycles.kt').read_text()
           assert 'Crossfade(' in cycle and 'OfflineNarrator(' in cycle
-          assert 'rememberSaveable(id)' in cycle and 'LaunchedEffect(' in cycle
+          assert 'selectedStage: Int' in cycle and 'onStageChange: (Int) -> Unit' in cycle
+          assert 'rememberSaveable(chapter.id)' in nav and 'LaunchedEffect(' in cycle
           assert 'u18-cycle-' in cycle and 'u18-audio-status-' in cycle
           for organism in ('trypanosoma', 'leishmania'):
-              assert ('UnitIFlagellateLifeCycleSimulator("'+organism+'", language)') in nav
+              assert ('UnitIFlagellateLifeCycleSimulator("'+organism+'", language, ') in nav
           assert nav.index('u18-trypanosoma-life-cycle') < nav.index('items(chapter.a5Questions')
           assert nav.index('u18-leishmania-life-cycle') < nav.index('items(chapter.a5Questions')
           for token in ('"metacyclic"', '"binary-fission"', '"procyclic"',

@@ -28,6 +28,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
@@ -495,6 +496,11 @@ private fun ChapterScreen(
         return
     }
     val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
+    // U1.9a: keep life-cycle stages ABOVE the lazy list. At 200% font a
+    // single teaching card is taller than the screen; disposing/recomposing
+    // the lazy item must never silently return the learner to stage one.
+    var trypanosomaStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
+    var leishmaniaStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     val chapterListState = rememberLazyListState()
     val chapterScope = rememberCoroutineScope()
     Scaffold { padding ->
@@ -554,7 +560,7 @@ private fun ChapterScreen(
                     UnitIFlagellateLessonSection("trypanosoma", "contrast", language)
                 }
                 item(key = "u18-trypanosoma-life-cycle") {
-                    UnitIFlagellateLifeCycleSimulator("trypanosoma", language)
+                    UnitIFlagellateLifeCycleSimulator("trypanosoma", language, trypanosomaStage) { trypanosomaStage = it }
                 }
                 item(key = "u17-leishmania-figure") {
                     UnitIFlagellateStudyIntroduction("leishmania", language)
@@ -572,7 +578,7 @@ private fun ChapterScreen(
                     UnitIFlagellateLessonSection("leishmania", "limits", language)
                 }
                 item(key = "u18-leishmania-life-cycle") {
-                    UnitIFlagellateLifeCycleSimulator("leishmania", language)
+                    UnitIFlagellateLifeCycleSimulator("leishmania", language, leishmaniaStage) { leishmaniaStage = it }
                 }
             }
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
