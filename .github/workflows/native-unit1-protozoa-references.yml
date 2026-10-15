@@ -7,6 +7,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u14-protozoa-reference-fit-20261015
       - native/u15-entamoeba-original-artwork-candidate-20261015
       - native/u16-plasmodium-readable-panels-20261015
+      - native/u17-flagellate-bilingual-type-studies-20261015
   workflow_dispatch:
 
 permissions:
@@ -49,6 +50,23 @@ jobs:
               assert marker in lesson,marker
           assert 'UnitIEntamoebaMorphology(language)' in nav
           assert 'u15-entamoeba-native-textbook' in nav
+          flagellates=(root/'ui/UnitIFlagellateTypeStudies.kt').read_text()
+          for marker in ('u17-flagellate-academic-hold',
+                         'u17-study-title-', 'u17-reference-image-',
+                         'u17-image-missing-', 'u17-stage-',
+                         'trypanosomiasisAfrican', 'dpdx/leishmaniasis'):
+              assert marker in flagellates,marker
+          assert 'UnitIFlagellateTypeStudiesHeader(language)' in nav
+          for organism, stages in (('trypanosoma',('morphology','mammal','vector','contrast')),
+                                   ('leishmania',('morphology','mammal','vector','limits'))):
+              assert 'UnitIFlagellateStudyIntroduction("'+organism+'", language)' in nav
+              for stage in stages:
+                  assert ('UnitIFlagellateLessonSection("'+organism+'", "'+stage+'", language)') in nav
+          assert 'u17-image-expand-' in flagellates
+          assert 'u17-flagellate-native-heading' in nav
+          assert nav.index('u17-flagellate-native-heading') < nav.index('items(chapter.a5Questions')
+          assert 'UnitIFlagellateLessonSection(' in flagellates
+          assert 'OutlinedButton(\n                    onClick = { selected = stage.id }' not in flagellates
           assert 'rememberRequiredRasterBitmap(' in gallery
           assert 'u1-reference-missing' in gallery
           manifest=(root/'data/NativeCurriculumManifest.kt').read_text()
@@ -151,5 +169,6 @@ jobs:
           echo 'These are four different cited reference illustrations, NOT four original pencil anatomical masters.'
           echo 'Plasmodium reference follows P. falciparum; Leishmania image is genus level ONLY.'
           echo 'Plasmodium: overview plus three source-image focus excerpts, not new original pencil plates.'
+          echo 'U1.7 contains full native bilingual Trypanosoma and Leishmania lessons with referenced rasters; original pencil atlases and hotspot/TTS reviews remain pending.'
           echo 'Scientific anatomy, hotspots, Tamil and physical-device audible speech remain OPEN.'
           echo 'No production promotion or Unit I final acceptance authorized.'
