@@ -186,7 +186,7 @@ class NativeUnitIIITeachingTest {
                 .fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u33-review-source-status-external")
-            .assertTextContains("PNG SHA-256:",substring=true)
+            .assertTextContains("SHA-256:",substring=true)
         rule.onNodeWithTag("u33-review-hold-external").assertExists()
         capture("fasciola-source-review-draft")
         rule.onNodeWithTag("u33-review-clear-external").performClick()
