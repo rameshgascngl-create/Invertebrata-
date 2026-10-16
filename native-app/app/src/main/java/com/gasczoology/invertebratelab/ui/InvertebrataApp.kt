@@ -571,6 +571,9 @@ private fun ChapterScreen(
                 item(key = "u114-leishmania-pencil-scan-intake") {
                     UnitIOriginalPencilMasterIntake("leishmania", language)
                 }
+                item(key = "u116-historical-leishmania-print-crop-review") {
+                    UnitIHistoricalPlateSourceSection(language)
+                }
                 item(key = "u17-leishmania-morphology-section") {
                     UnitIFlagellateLessonSection("leishmania", "morphology", language)
                 }
