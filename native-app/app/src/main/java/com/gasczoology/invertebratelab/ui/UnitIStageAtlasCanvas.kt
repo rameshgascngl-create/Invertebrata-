@@ -74,7 +74,7 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
             )
             Text(
                 if (tamil)
-                    "ஆண்ட்ராய்டு Canvas மூலம் வரையப்பட்ட கல்விக்கான கற்பனை விளக்கப்படம்; கையால் வரையப்பட்ட பென்சில் ஸ்கேனோ உறுதிசெய்யப்பட்ட நுண்ணோக்கிப் படமோ அல்ல. குறிகள் மூலப்படத்தின் அங்கீகரிக்கப்பட்ட புள்ளிகள் அல்ல."
+                    "ஆண்ட்ராய்டு Canvas மூலம் வரையப்பட்ட டிஜிட்டல் கல்வி விளக்கப்படம்; கையால் வரையப்பட்ட பென்சில் ஸ்கேனோ உறுதிசெய்யப்பட்ட நுண்ணோக்கிப் படமோ அல்ல. குறிகள் மூலப்படத்தின் அங்கீகரிக்கப்பட்ட புள்ளிகள் அல்ல."
                 else
                     "Native Android digital teaching schematic — NOT a hand-scanned pencil master, microscope image, or approved source-image hotspot. Distinct stages must not be interchanged.",
                 color = MaterialTheme.colorScheme.error,
