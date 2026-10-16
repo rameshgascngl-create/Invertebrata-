@@ -8,6 +8,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u3-cdc-graphite-facsimile-20261014
       - native/u3-zoom-pan-magnification-20261016
       - native/u3-fullscreen-raster-inspection-20261016
+      - native/u33-unit3-source-pixel-review-20261016
   workflow_dispatch:
 
 permissions:
@@ -94,6 +95,21 @@ jobs:
           assert 'detectTransformGestures' in fullscreen and 'coerceIn(1f, 4f)' in fullscreen
           assert 'u3-fullscreen-real-bitmap-' in fullscreen
           assert 'UnitIIIPlateHotspots' not in fullscreen
+          review=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPixelReviewDialog.kt').read_text())
+          model=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPixelReviewDraft.kt').read_text())
+          assert 'isNativeSourceAuditDebuggable(context.applicationInfo.flags)' in review
+          assert 'if (isReviewerBuild)' in gallery and 'UnitIIIPixelReviewDialog(' in gallery
+          assert 'NativeRasterCalibration.hit(' in review and 'NativeRasterCalibration.project(' in review
+          assert 'MessageDigest.getInstance("SHA-256")' in review
+          assert 'actual_apk_png_sha256' in review
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in model
+          assert 'sourceSha256.matches(Regex("[a-f0-9]{64}"))' in model
+          assert 'UnitIIIPlateHotspots.geometryApproved' not in review
+          assert 'u33-review-export-' in review and 'evidence != null' in review
+          test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
+          assert 'capture("fasciola-source-review-draft")' in test
+          assert 'capture("ascaris-source-review-draft")' in test
+
           assert 'detectTransformGestures' in gallery
           assert 'u3-zoom-level-' in gallery and 'u3-zoom-in-' in gallery
           assert 'u3-zoom-reset-' in gallery and 'clipToBounds()' in gallery
