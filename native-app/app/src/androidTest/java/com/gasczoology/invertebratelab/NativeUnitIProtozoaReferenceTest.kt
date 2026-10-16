@@ -430,7 +430,7 @@ class NativeUnitIProtozoaReferenceTest {
             .performScrollTo().assertTextContains("No option confers scientific approval", substring = true)
         rule.onNodeWithTag("u116-review-note-trypanosoma")
             .performScrollTo().assertExists()
-        rule.onNodeWithTag("u19-tappable-raster-trypanosoma").performScrollTo()
+        rule.onNodeWithTag("u116-closeup-trypanosoma").performScrollTo()
         screenshot("u116-true-source-pixel-crop")
         // Draft image-pixel refinement does NOT create scientific hotspots.
         val originalCoordinates = rule.onNodeWithTag("u112-selected-pixel-trypanosoma")
