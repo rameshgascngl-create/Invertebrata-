@@ -258,7 +258,8 @@ internal fun UnitIIIPixelReviewDialog(
                     else "UNAPPROVED • hotspots OFF ⓘ",
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.error,
-                    maxLines = 2,
+                    // Do NOT cap Tamil to two lines: at 200% the entire
+                    // safety prohibition must remain visible, not clipped.
                     modifier = Modifier.fillMaxWidth().heightIn(min=48.dp)
                         .clickable { showSafetyExplanation = true }
                         .semantics {
@@ -428,7 +429,9 @@ internal fun UnitIIIPixelReviewDialog(
                             if (tamil)
                                 "இது அசல் PNG படத்தின் பிக்சல் ஆய்வுக்கான வரைவு மட்டுமே. உறுப்பின் பெயர், மூலப்படத்தின் துணைப்படம், கோட்டின் முனை, படம் பயன்படுத்தும் உரிமை, தமிழ் சொற்கள் ஆகியவை தகுதியுள்ள விலங்கியல் ஆய்வாளர்களால் சரிபார்க்கப்படவில்லை. இரண்டு வரைவு கோப்புகள் ஒரே நபரால் உருவாக்கப்பட்டிருக்கலாம். மாணவர்களுக்கான நேரடித் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
                             else "This is a draft record of original PNG pixel locations only. Organ identity, the correct source subfigure, leader endpoint, image rights and Tamil terminology have not received qualified zoological approval. Two drafts might originate from one person. Direct student hotspots remain disabled.",
-                            modifier = Modifier.testTag("u35-full-safety-description-" + plate.plateId),
+                            modifier = Modifier.heightIn(max = 420.dp)
+                                .verticalScroll(rememberScrollState())
+                                .testTag("u35-full-safety-description-" + plate.plateId),
                         )
                     },
                     confirmButton = {
