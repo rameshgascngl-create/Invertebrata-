@@ -11,6 +11,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u33-unit3-source-pixel-review-20261016
       - native/u34-unit3-independent-pixel-comparison-20261016
       - native/u35-readable-review-and-report-export-20261016
+      - native/u36-unit3-original-pencil-scan-intake-20261016
   workflow_dispatch:
 
 permissions:
@@ -127,6 +128,28 @@ jobs:
           assert 'source_png_sha256' in report_json and 'comparison_rows' in report_json
           assert 'u35-full-safety-description-' in review
           assert 'u35-export-comparison-' in review
+          u36store=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPencilScanCandidateStore.kt').read_text()
+          u36ui=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPencilScanIntake.kt').read_text()
+          for token in ('UnitIIIPlateCatalog.plates', 'u36_unit3_unverified_pencil_scan_candidates',
+                        'sourceOrientationAccepted', 'sourceSha256',
+                        'FileOutputStream(temp)', 'importDocument(',
+                        'UNVERIFIED_USER_SUPPLIED_SOURCE'):
+              assert token in u36store,token
+          assert 'NativePencilMasterStore.load(' not in u36store
+          assert 'NativePencilMasterStore.importBytes(' not in u36store
+          assert 'if (isReviewerBuild)' in gallery
+          assert 'UnitIIIPencilScanIntake(' in gallery
+          assert 'u36-open-source-intake-' in gallery
+          assert 'isNativeSourceAuditDebuggable' in u36ui
+          assert 'ActivityResultContracts.OpenDocument()' in u36ui
+          assert 'student_atlas_integration_authorized",false' in u36ui
+          assert 'u36-identity-not-approval-' in u36ui
+          test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
+          assert 'fasciolaProvisionalImageIntakeNeverOverwritesBundledAnatomy' in test
+          assert 'tamilAscarisSourceIntakePendingWithoutUnverifiedImage' in test
+          assert 'capture("fasciola-pencil-intake-provisional")' in test
+          assert 'capture("ascaris-pencil-intake-pending")' in test
+
           assert 'comparisonReportExport.launch(' in review
           assert 'MAX_JSON_BYTES = 65536' in intake
           assert 'u33-review-hold-' in review
