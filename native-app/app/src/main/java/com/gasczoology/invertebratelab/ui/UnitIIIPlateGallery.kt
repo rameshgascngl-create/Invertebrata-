@@ -4,7 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
-import androidx.compose.foundation.clipToBounds
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -163,20 +163,21 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                             OutlinedButton(
                                 onClick = {
                                     magnification = (magnification / 2f).coerceAtLeast(1f)
-                                    if (magnification <= 1f) { imagePanX=0f; imagePanY=0f }
-                                    else {
-                                        val maxX=(magnification-1f)*960f*.5f
-                                        val maxY=(magnification-1f)*1280f*.5f
-                                        imagePanX=imagePanX.coerceIn(-maxX,maxX)
-                                        imagePanY=imagePanY.coerceIn(-maxY,maxY)
-                                    }
+                                    // Re-centre when using the accessible step controls.
+                                    // Exact bounds are only known during pointer gestures.
+                                    imagePanX = 0f
+                                    imagePanY = 0f
                                 },
                                 enabled = magnification > 1f,
                                 modifier = Modifier.weight(1f).heightIn(min=48.dp)
                                     .testTag("u3-zoom-out-" + plate.plateId),
-                            ) { Text(if(tamil) "−" else "−") }
+                            ) { Text("−") }
                             OutlinedButton(
-                                onClick = { magnification = (magnification * 2f).coerceAtMost(4f) },
+                                onClick = {
+                                    magnification = (magnification * 2f).coerceAtMost(4f)
+                                    imagePanX = 0f
+                                    imagePanY = 0f
+                                },
                                 enabled = magnification < 4f,
                                 modifier = Modifier.weight(1f).heightIn(min=48.dp)
                                     .testTag("u3-zoom-in-" + plate.plateId),
