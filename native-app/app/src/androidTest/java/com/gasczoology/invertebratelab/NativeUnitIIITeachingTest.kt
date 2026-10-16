@@ -123,6 +123,21 @@ class NativeUnitIIITeachingTest {
             .assertTextContains("attachment sucker", substring=true)
         rule.onNodeWithTag("u3-speak-organ-external").assertExists()
         capture("fasciola-revised")
+        // A real raster can now be inspected at 2x/4x. These buttons must
+        // not activate rejected source-image anatomy hotspots.
+        rule.onNodeWithTag("u3-zoom-level-external")
+            .performScrollTo().assertTextContains("1×")
+        rule.onNodeWithTag("u3-zoom-in-external").performScrollTo().performClick()
+        rule.onNodeWithTag("u3-zoom-level-external").assertTextContains("2×")
+        rule.onNodeWithTag("u3-zoom-in-external").performScrollTo().performClick()
+        rule.onNodeWithTag("u3-zoom-level-external").assertTextContains("4×")
+        rule.onNodeWithTag("u3-zoom-in-external").assertIsNotEnabled()
+        rule.onNodeWithTag("u3-plate-bitmap-external").performScrollTo().assertIsDisplayed()
+        capture("fasciola-magnified-4x")
+        rule.onNodeWithTag("u3-zoom-reset-external").performScrollTo().performClick()
+        rule.onNodeWithTag("u3-zoom-level-external").assertTextContains("1×")
+        rule.onNodeWithTag("u3-zoom-out-external").assertIsNotEnabled()
+        rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
     }
 
     @Test fun tamilAscarisPlateUsesAccessibleUnmappedOrganControl() {
@@ -197,6 +212,18 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-voice-request-life-cycle")
             .assertTextContains("மீண்டும் விழுங்கப்படுகின்றன",substring=true)
         capture("ascaris-cdc-complete")
+        rule.onNodeWithTag("u3-zoom-level-life-cycle")
+            .performScrollTo().assertTextContains("1×")
+        rule.onNodeWithTag("u3-zoom-in-life-cycle").performScrollTo().performClick()
+        rule.onNodeWithTag("u3-zoom-level-life-cycle").assertTextContains("2×")
+        rule.onNodeWithTag("u3-zoom-in-life-cycle").performScrollTo().performClick()
+        rule.onNodeWithTag("u3-zoom-level-life-cycle").assertTextContains("4×")
+        rule.onNodeWithTag("u3-plate-bitmap-life-cycle").performScrollTo().assertIsDisplayed()
+        capture("ascaris-magnified-4x")
+        rule.onNodeWithTag("u3-zoom-reset-life-cycle").performScrollTo().performClick()
+        rule.onNodeWithTag("u3-zoom-level-life-cycle").assertTextContains("1×")
+        // Interacting with magnification may never enable unresolved geometry.
+        rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
     }
 
     @Test fun allSevenUnitThreeChaptersOpenNativeTextbooksBeforeQuestions() {
