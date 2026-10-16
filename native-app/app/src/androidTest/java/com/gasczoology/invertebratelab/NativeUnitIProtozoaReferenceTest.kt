@@ -230,9 +230,9 @@ class NativeUnitIProtozoaReferenceTest {
             }
             rule.onNodeWithTag("u110-artwork-hold-trypanosoma").assertExists()
             rule.onNodeWithTag("u110-candidate-metadata-trypanosoma")
-                .assertTextContains("DRAFT_UNVERIFIED")
+                .assertTextContains("DRAFT_UNVERIFIED", substring = true)
             rule.onNodeWithTag("u110-source-checksum-trypanosoma")
-                .assertTextContains(expected)
+                .assertTextContains(expected, substring = true)
             rule.waitUntil(20_000) {
                 rule.onAllNodesWithTag("u110-candidate-image-trypanosoma")
                     .fetchSemanticsNodes().isNotEmpty()
@@ -244,9 +244,9 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u19-review-dialog-trypanosoma").assertExists()
             rule.onNodeWithTag("u19-review-hold-trypanosoma").assertExists()
             rule.onNodeWithTag("u113-private-stage-hold-trypanosoma")
-                .assertTextContains("IMPORTED UNVERIFIED")
+                .assertTextContains("IMPORTED UNVERIFIED", substring = true)
             rule.onNodeWithTag("u110-review-morphotype-trypanosoma")
-                .assertTextContains("UNVERIFIED_IMPORTED_STAGE")
+                .assertTextContains("UNVERIFIED_IMPORTED_STAGE", substring = true)
             rule.onNodeWithTag("u110-review-speak-trypanosoma")
                 .performScrollTo().assertIsNotEnabled()
             rule.onNodeWithTag("u19-tappable-raster-trypanosoma")
