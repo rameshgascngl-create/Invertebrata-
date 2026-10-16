@@ -65,6 +65,34 @@ and testing less deterministic.
 - Run release/nondebuggable instrumentation separately for absence of
   the importer and reviewer. **Release compile alone is not this check.**
 
+## Exact source-pixel exclusivity
+
+`NativeRasterCalibration.hit/project` now rejects right/bottom coordinates
+equal to the source bitmap width/height. Raster pixel indices run from
+0 to `width-1` and 0 to `height-1`; the outer geometric viewport
+edge is **not** a real anatomical pixel. JVM regression checks cover
+right/bottom hit rejection, nearly-inside hits, and NaN projection.
+
+## Engineering-only legacy GitHub commit status
+
+The workflow adds a third reporting job, with minimal `statuses:write`
+permission, that runs only **after** `compile-and-corpus` and `android-ui`
+finish. It writes a legacy GitHub commit status named
+`invertebrata/unit1-native-engineering-ci-only` on the exact push SHA:
+
+- **success** only if BOTH Kotlin/JVM compilation and offline API34 UI jobs
+  conclude `success`;
+- **failure** otherwise (including skipped or cancelled dependency);
+- a direct link to the workflow attempt and a description explicitly saying
+  **academic/device HOLD** in either case.
+
+This is meant to bridge GitHub's push-workflow result to connected tools
+that can read commit statuses but do not expose push-triggered Actions runs.
+It does **not** authenticate science, completed device QA, pencil scans,
+source permission, spoken Tamil accuracy, or APK signing. A status-report
+job failure must itself be investigated; do not infer engineering success
+from a missing status.
+
 ## Real Android phone and academic review
 
 - Verify genuine phone-camera JPEGs with EXIF rotations 3/6/8 and mirrored
