@@ -82,8 +82,15 @@ internal fun UnitIOriginalPencilMasterIntake(
                     status = if (tamil) "வரைவுப் படம் உள்வாங்கப்பட்டது — ஆய்வு நிலுவையில் உள்ளது"
                     else "Candidate scan imported — NOT anatomically approved"
                 } catch (e: Exception) {
-                    status = if (tamil) "படத்தை ஏற்க முடியவில்லை: " + (e.message ?: "")
-                    else "Image rejected: " + (e.message ?: "invalid file")
+                    val rotatedJpeg = e.message?.contains("EXIF rotation/mirroring") == true
+                    status = if (tamil && rotatedJpeg)
+                        "JPEG படத்தில் சுழற்சி அல்லது கண்ணாடிப் பிரதிபலிப்பு தகவல் உள்ளது. " +
+                            "படத்தைச் சரியான திசையில் PNG/JPEG ஆகச் சேமித்து மீண்டும் தேர்ந்தெடுக்கவும். " +
+                            "தவறான உடலமைப்புப் பிக்சல் அளவீட்டைத் தவிர்க்க படம் நிராகரிக்கப்பட்டது."
+                    else if (tamil)
+                        "படத்தை ஏற்க முடியவில்லை: " + (e.message ?: "தவறான கோப்பு")
+                    else
+                        "Image rejected: " + (e.message ?: "invalid file")
                 } finally {
                     busy = false
                 }
