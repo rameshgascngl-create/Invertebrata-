@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
@@ -37,6 +38,57 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.security.MessageDigest
+
+/**
+ * Own chapter item, separate from the large image-import card. Rechecking
+ * reads only app-private bytes and never reaches the network.
+ */
+@Composable
+internal fun UnitIHistoricalPlateSourceSection(language: AppLanguage) {
+    val context = LocalContext.current
+    if (!isNativeSourceAuditDebuggable(context.applicationInfo.flags)) return
+    val tamil = language == AppLanguage.TAMIL
+    var version by remember { mutableIntStateOf(0) }
+    var candidate by remember { mutableStateOf<NativePencilCandidate?>(null) }
+    var decoded by remember { mutableStateOf<androidx.compose.ui.graphics.ImageBitmap?>(null) }
+    LaunchedEffect(version) {
+        val source = withContext(Dispatchers.IO) {
+            com.gasczoology.invertebratelab.data.NativePencilMasterStore.load(
+                context.applicationContext, "leishmania"
+            )
+        }
+        candidate = source
+        val identity = UnitIHistoricalPlateArchive.leishmania1922
+        decoded = if (source != null && identity.exactSourceMatches(
+                source.originalBytes, source.width, source.height)) {
+            withContext(Dispatchers.Default) {
+                BitmapFactory.decodeByteArray(
+                    source.originalBytes, 0, source.originalBytes.size
+                )?.asImageBitmap()
+            }
+        } else null
+    }
+    Column(
+        modifier = Modifier.fillMaxWidth().testTag("u116-archive-section"),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        OutlinedButton(
+            onClick = { version++ },
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                .testTag("u116-refresh-source"),
+        ) {
+            Text(if (tamil)
+                "சேர்க்கப்பட்ட வரலாற்றுப் படத்தை மீண்டும் சரிபார்"
+                else "Recheck imported historical source (offline)")
+        }
+        UnitIHistoricalPlateCropReviewer(
+            organism = "leishmania",
+            candidate = candidate,
+            bitmap = decoded,
+            language = language,
+        )
+    }
+}
 
 /** Exact original-pixel crop of a fingerprinted archival file, no resampling. */
 internal object NativeHistoricalCropEncoding {
