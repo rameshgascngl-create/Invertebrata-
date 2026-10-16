@@ -3,6 +3,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
   push:
     branches:
       - native/u4-earthworm-academic-foundation-20261014
+      - native/u4-penaeus-substantive-textbook-20261016
   workflow_dispatch:
 
 permissions:
@@ -41,6 +42,25 @@ jobs:
               assert plate in lessons
               assert not any((Path("native-app/app/src/main/assets/type_studies/earthworm")/(plate+"."+ext)).exists() for ext in ["png","webp"]), plate
           assert 'EARTHWORM_TEXTBOOK' in nav and 'u4-open-earthworm-textbook' in nav
+          penaeus=(root/"data/UnitIVPenaeusTeaching.kt").read_text(encoding="utf-8")
+          prawnui=(root/"ui/UnitIVPenaeusTextbook.kt").read_text(encoding="utf-8")
+          for term in ["Penaeus indicus","Fenneropenaeus indicus",
+                       "19 PAIRS", "nauplius","protozoea","mysis","postlarva",
+                       "petasma","thelycum","5 + 8 + 6 = 19"]:
+              assert term.lower() in (penaeus+prawnui).lower(),term
+          assert 'PenaeusAppendageGroup(' in penaeus
+          assert 'UnitIVPenaeusTeaching.sections' in nav
+          assert 'UnitIVPenaeusAppendageExplorer' in nav
+          assert 'UnitIVPenaeusLifeCycleExplorer' in nav
+          assert 'u4-penaeus-a5-original-heading' in nav
+          assert 'rememberSaveable(chapter.id)' in nav
+          assert 'u4-penaeus-academic-hold' in prawnui
+          assert 'OfflineNarrator(' in prawnui
+          assert 'u4-penaeus-atlas-pending' in prawnui
+          assert 'AcademicWorkStatus.DRAFT_UNVERIFIED' in manifest
+          assert 'native/u4-penaeus-substantive-textbook-20261016' in Path('.github/workflows/native-unit4-earthworm-foundation.yml').read_text()
+          assert 'assertEquals' in Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVPenaeusTest.kt').read_text() or 'assertTextContains' in Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVPenaeusTest.kt').read_text()
+
           assert 'u4-earthworm-plate-pending-' in ui
           assert 'EXISTING_A5_CHAPTER_COUNT = 43' in manifest
           assert 'REQUIRED_LESSON_SLOTS = 44' in manifest
