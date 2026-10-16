@@ -299,7 +299,15 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u110-review-stop-trypanosoma").assertExists()
         rule.onNodeWithTag("u110-review-voice-status-trypanosoma").assertExists()
         rule.onNodeWithTag("u19-structure-trypanosoma-kinetoplast")
-            .performScrollTo().performClick()
+            .performScrollTo().assertIsDisplayed().performClick()
+        // Explicitly verify that the 200% font-size horizontal selector
+        // changed the *actual Compose state*. Never silently pass on nucleus.
+        rule.waitUntil(20_000) {
+            rule.onAllNodes(
+                hasTestTag("u114-selected-structure-trypanosoma") and
+                    hasText("Kinetoplast", substring = true)
+            ).fetchSemanticsNodes().isNotEmpty()
+        }
         rule.onNodeWithTag("u110-review-explanation-trypanosoma")
             .performScrollTo().assertIsDisplayed()
             .assertTextContains("mitochondrial DNA", substring = true)
