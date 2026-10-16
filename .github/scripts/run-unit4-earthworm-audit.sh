@@ -51,9 +51,10 @@ import sys, xml.etree.ElementTree as ET
 root=Path(sys.argv[1])
 name=sys.argv[2]
 expected="com.gasczoology.invertebratelab."+name
+expected_count=4 if name=="NativeUnitIVPenaeusTest" else 3
 cases=[node for file in root.rglob("TEST-*.xml")
        for node in ET.parse(file).getroot().iter("testcase")]
-assert len(cases)==3,("Expected THREE native Unit IV tests per class",name,len(cases))
+assert len(cases)==expected_count,("Incorrect Unit IV test count",name,len(cases),expected_count)
 assert all((node.get("classname") or "") == expected for node in cases), (
     "Wrong/missing Android test class", name, [c.get("classname") for c in cases])
 assert all(node.find(k) is None for node in cases
@@ -64,7 +65,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
-  for scene in earthworm-english-digestive earthworm-tamil-excretory earthworm-return-navigation penaeus-english-appendages penaeus-tamil-protozoea penaeus-tamil-stage-retained penaeus-A5-preserved;do
+  for scene in earthworm-english-digestive earthworm-tamil-excretory earthworm-return-navigation penaeus-english-appendages penaeus-tamil-protozoea penaeus-tamil-stage-retained penaeus-A5-preserved penaeus-tamil-interactive-telson;do
     [[ -s "$E/captured/unit4-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
   done
 done
