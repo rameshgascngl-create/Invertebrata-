@@ -92,8 +92,17 @@ private fun reviewJson(
 ): String {
     val array = JSONArray()
     marks.forEach { mark ->
+        val crop = NativeSourcePixelEvidence.window(
+            mark.point.pixelX, mark.point.pixelY, bitmap.width, bitmap.height
+        )
+        val cropJson = if (crop == null) JSONObject.NULL else JSONObject()
+            .put("left", crop.left)
+            .put("top", crop.top)
+            .put("width", crop.width)
+            .put("height", crop.height)
         array.put(
             JSONObject()
+                .put("inspection_window_source_pixels", cropJson)
                 .put("structure_id", mark.structureId)
                 .put("pixel_x", mark.point.pixelX.toDouble())
                 .put("pixel_y", mark.point.pixelY.toDouble())
