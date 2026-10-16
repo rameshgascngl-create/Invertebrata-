@@ -67,7 +67,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
-  for scene in fasciola-historical ascaris-historical fasciola-revised ascaris-revised ascaris-cdc-complete ascaris-graphite-bitmap-visible fasciola-magnified-4x ascaris-magnified-4x fasciola-fullscreen-1x fasciola-fullscreen-4x ascaris-fullscreen-1x ascaris-fullscreen-4x fasciola-source-review-draft ascaris-source-review-draft fasciola-compare-ready ascaris-compare-ready fasciola-full-warning ascaris-full-warning fasciola-pencil-intake-provisional ascaris-pencil-intake-pending fasciola-pencil-intake-full-disclosure ascaris-pencil-intake-full-disclosure;do
+  for scene in fasciola-historical ascaris-historical fasciola-revised ascaris-revised ascaris-cdc-complete ascaris-graphite-bitmap-visible fasciola-magnified-4x ascaris-magnified-4x fasciola-fullscreen-1x fasciola-fullscreen-4x ascaris-fullscreen-1x ascaris-fullscreen-4x fasciola-source-review-draft ascaris-source-review-draft fasciola-compare-ready ascaris-compare-ready fasciola-full-warning ascaris-full-warning fasciola-pencil-intake-provisional ascaris-pencil-intake-pending fasciola-pencil-intake-full-disclosure ascaris-pencil-intake-full-disclosure fasciola-pencil-intake-disclosure-scrolled ascaris-pencil-intake-disclosure-scrolled;do
     [[ -s "$E/captured/unit3-$scale-$scene.png" ]] || { result="MISSING_IMAGE_$scale-$scene"; exit 1; }
   done
 done
