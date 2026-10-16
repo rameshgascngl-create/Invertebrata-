@@ -8,6 +8,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -229,11 +231,21 @@ private fun NativeRasterReviewer(
                     style = MaterialTheme.typography.labelMedium,
                     modifier = Modifier.testTag("u19-raster-size-" + organism),
                 )
-                Row(
-                    modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                // Native LazyRow exposes ScrollToIndex/ScrollToNode semantics,
+                // allowing TalkBack and API34 tests to bring a currently
+                // off-screen organ control into view at 200% font. Do NOT
+                // preselect a structure or weaken organ-identity assertions.
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth()
+                        .semantics {
+                            contentDescription = if (tamil)
+                                "உடலமைப்பு தேர்வுகள் — கிடைமட்டமாக நகர்த்திப் பார்க்கலாம்"
+                            else "Anatomy structure choices — horizontal scrolling"
+                        }
+                        .testTag("u114-structure-picker-" + organism),
                     horizontalArrangement = Arrangement.spacedBy(7.dp),
                 ) {
-                    choices.forEach { option ->
+                    items(items = choices, key = { it.id }) { option ->
                         OutlinedButton(
                             onClick = { selectedId = option.id },
                             modifier = Modifier.heightIn(min = 48.dp)
