@@ -149,9 +149,9 @@ jobs:
           assert 'u36-full-disclosure-text-' in u36ui
           assert 'heightIn(max=360.dp)' in u36ui
           assert 'maxLines=2' in u36ui and 'UNVERIFIED • not student artwork' in u36ui
+          test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
           assert 'capture("fasciola-pencil-intake-full-disclosure")' in test
           assert 'capture("ascaris-pencil-intake-full-disclosure")' in test
-          test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
           assert 'fasciolaProvisionalImageIntakeNeverOverwritesBundledAnatomy' in test
           assert 'tamilAscarisSourceIntakePendingWithoutUnverifiedImage' in test
           assert 'capture("fasciola-pencil-intake-provisional")' in test
