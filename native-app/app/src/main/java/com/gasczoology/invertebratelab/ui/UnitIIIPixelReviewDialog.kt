@@ -24,6 +24,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -149,9 +152,11 @@ internal fun UnitIIIPixelReviewDialog(
                 Row(modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        if (tamil) "அசல் பிக்சல் ஆய்வு — வரைவு மட்டும்"
-                        else "Source-pixel calibration — DRAFT ONLY",
+                        if (tamil) "பிக்சல் ஆய்வு · வரைவு"
+                        else "Pixel review · DRAFT",
                         style = MaterialTheme.typography.titleSmall,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.weight(1f).testTag("u33-review-title-" + plate.plateId),
                     )
                     OutlinedButton(onClick = onClose,
@@ -162,10 +167,12 @@ internal fun UnitIIIPixelReviewDialog(
                 }
                 Text(
                     if (tamil)
-                        "உறுப்பைத் தேர்ந்து படத்தில் குறிக்கவும். இது நிபுணர் ஒப்புதல் அல்ல; மாணவர் தொடுபுள்ளி இயங்காது."
-                    else "Choose a label, then mark an original image pixel. No organ is academically approved or activated for students.",
+                        "ஒப்புதல் பெறாத வரைவு. படத்தில் உறுப்பைக் குறி; மாணவர் தொடுபுள்ளி முடக்கப்பட்டுள்ளது."
+                    else "UNAPPROVED draft. Select an organ, then tap source pixels; learner hotspots stay disabled.",
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.error,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.testTag("u33-review-hold-" + plate.plateId),
                 )
                 // The actual bitmap receives the majority of the screen.
@@ -244,7 +251,7 @@ internal fun UnitIIIPixelReviewDialog(
                     }
                 }
                 Text(
-                    if (tamil) "குறிக்க வேண்டிய உறுப்பு:" else "Select candidate organ:",
+                    if (tamil) "உறுப்பு:" else "Organ:",
                     style = MaterialTheme.typography.labelSmall,
                 )
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(7.dp),
@@ -261,9 +268,9 @@ internal fun UnitIIIPixelReviewDialog(
                     }
                 }
                 Text(
-                    "PNG SHA-256: " + (digest ?: "VERIFYING") +
-                        " · " + bitmap.width + " × " + bitmap.height +
-                        " px · candidate points: " + marks.size,
+                    "SHA-256: " + ((digest?.take(12) ?: "VERIFYING") + "…") +
+                        " · " + bitmap.width + "×" + bitmap.height +
+                        " px · draft: " + marks.size,
                     style = MaterialTheme.typography.labelSmall,
                     maxLines = 2,
                     modifier = Modifier.testTag("u33-review-source-status-" + plate.plateId),
@@ -275,6 +282,8 @@ internal fun UnitIIIPixelReviewDialog(
                     } ?: (if(tamil) "படத்தில் தொடு — இன்னும் புள்ளி இல்லை"
                           else "Touch a source pixel — no candidate point yet"),
                     style = MaterialTheme.typography.labelMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.testTag("u33-review-last-point-" + plate.plateId),
                 )
                 Row(modifier = Modifier.fillMaxWidth(),
@@ -293,14 +302,24 @@ internal fun UnitIIIPixelReviewDialog(
                     OutlinedButton(
                         onClick = { marks = emptyList() },
                         modifier = Modifier.weight(1f).heightIn(min=48.dp)
+                            .semantics {
+                                contentDescription = if (tamil)
+                                    "வரைவு புள்ளிகள் அனைத்தையும் அழி"
+                                else "Clear all draft points"
+                            }
                             .testTag("u33-review-clear-" + plate.plateId),
-                    ) { Text(if (tamil) "அழி" else "Clear") }
+                    ) { Text("×", maxLines=1) }
                     Button(
                         onClick = { export.launch("u33-" + plate.plateId + "-UNVERIFIED.json") },
                         enabled = evidence != null,
-                        modifier = Modifier.weight(2f).heightIn(min=48.dp)
+                        modifier = Modifier.weight(1.5f).heightIn(min=48.dp)
+                            .semantics {
+                                contentDescription = if (tamil)
+                                    "ஒப்புதல் பெறாத வரைவு JSON-ஐச் சேமி"
+                                else "Export UNVERIFIED draft JSON"
+                            }
                             .testTag("u33-review-export-" + plate.plateId),
-                    ) { Text(if(tamil) "வரைவு JSON" else "Draft JSON") }
+                    ) { Text("JSON", maxLines=1) }
                 }
                 if (fileState.isNotBlank()) Text(fileState)
             }
