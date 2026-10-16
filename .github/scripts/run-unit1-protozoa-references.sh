@@ -59,7 +59,7 @@ for scale in 100 200; do
     u111-trypanosoma-image-first u112-trypanosoma-pixel-refinement \
     u110-imported-review \
     u115-english-promastigote-canvas u115-english-amastigote-canvas \
-    u115-tamil-promastigote-canvas; do
+    u115-tamil-promastigote-canvas u116-true-source-pixel-crop; do
     [[ -s "$E/captured/u12-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
   done
 done
