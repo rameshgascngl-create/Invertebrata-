@@ -133,7 +133,19 @@ class NativeUnitIVPenaeusTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-4").fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("u4-open-earthworm-textbook")
-            .performScrollTo().assertExists()
+        // The Unit IV LazyColumn may not have composed the Earthworm action
+        // after returning from Penaeus at 200% font. Traverse its scroll
+        // container, preserving the requirement that the original route works.
+        rule.onNodeWithTag("native-unit-4")
+            .performScrollToNode(hasTestTag("u4-open-earthworm-textbook"))
+        rule.onNodeWithTag("u4-open-earthworm-textbook").assertExists().performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("u4-earthworm-reader")
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        // Verify that the actual Earthworm teaching reader, not just the
+        // navigation button, is available after the round-trip.
+        rule.onNodeWithTag("u4-earthworm-title", useUnmergedTree = true)
+            .assertTextContains("Metaphire posthuma", substring = true)
     }
 }
