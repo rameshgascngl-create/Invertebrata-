@@ -128,7 +128,8 @@ class NativeUnitIVPenaeusTest {
             .performScrollToNode(hasTestTag("a5-card-u4-penaeus-A5-1"))
         rule.onNodeWithTag("a5-card-u4-penaeus-A5-1").assertExists()
         capture("penaeus-A5-preserved")
-        rule.onNodeWithText("Back").performScrollTo().performClick()
+        rule.onNodeWithTag("native-chapter-u4-penaeus").performScrollToIndex(0)
+        rule.onNodeWithText("Back").performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-4").fetchSemanticsNodes().isNotEmpty()
         }
