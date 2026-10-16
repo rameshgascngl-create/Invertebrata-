@@ -135,6 +135,7 @@ jobs:
           assert 'NativeImportedPlateReviewer(' in intake
           assert 'sourceHashOverride = sha256' in audit
           assert 'UNVERIFIED_IMPORTED_STAGE_REQUIRES_SCIENTIFIC_REVIEW' in audit
+          assert audit.index('u111-source-raster-visible-') < audit.index('u113-private-stage-hold-')
           assert 'enabled = !isPrivateCandidate' in audit
           assert 'source_kind' in audit and 'source_sha256' in audit
           assert 'app-private:u110_unverified_pencil_candidates/' in audit
