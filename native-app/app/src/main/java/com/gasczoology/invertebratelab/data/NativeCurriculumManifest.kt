@@ -48,7 +48,7 @@ object NativeCurriculumManifest {
     )
 
     // Unit II draft lessons and plates are authored, NOT scientifically accepted.
-    private val draftIds = setOf("u1-paramecium", EARTHWORM_LESSON_ID) + a5ChapterIdsByUnit.getValue(2) + a5ChapterIdsByUnit.getValue(3)
+    private val draftIds = setOf("u1-paramecium", EARTHWORM_LESSON_ID, "u4-penaeus") + a5ChapterIdsByUnit.getValue(2) + a5ChapterIdsByUnit.getValue(3)
 
     // Plate names are work requirements, not drawings, organ validation or approval.
     val typeStudies: List<TypeStudyRequirement> = listOf(
@@ -74,7 +74,7 @@ object NativeCurriculumManifest {
                 "excretory", "reproductive"), AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("penaeus", 4, "Penaeus", "u4-penaeus",
             "u4-penaeus", listOf("external", "appendages", "internal",
-                "larval-development")),
+                "larval-development"), AcademicWorkStatus.DRAFT_UNVERIFIED),
         TypeStudyRequirement("pila", 5, "Pila", "u5-pila",
             "u5-pila", listOf("external", "mantle-cavity", "ctenidium", "torsion")),
         TypeStudyRequirement("asterias", 5, "Asterias", "u5-asterias",
@@ -109,7 +109,7 @@ object NativeCurriculumManifest {
             .map { it.id }.toSet() == draftIds)
         require(lessonSlots.none { it.status == AcademicWorkStatus.ACCEPTED })
         require(typeStudies.filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }
-            .map { it.organismId }.toSet() == setOf("paramecium","sycon","obelia","fasciola","ascaris","earthworm"))
+            .map { it.organismId }.toSet() == setOf("paramecium","sycon","obelia","fasciola","ascaris","earthworm","penaeus"))
         require(typeStudies.none { it.status == AcademicWorkStatus.ACCEPTED })
         for (study in typeStudies) {
             val slot = lessonSlots.single { it.id == study.lessonId }

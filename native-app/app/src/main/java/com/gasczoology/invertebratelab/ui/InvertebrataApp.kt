@@ -18,6 +18,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -50,6 +51,7 @@ import com.gasczoology.invertebratelab.data.Chapter
 import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.NativeCurriculumManifest
+import com.gasczoology.invertebratelab.data.UnitIVPenaeusTeaching
 import com.gasczoology.invertebratelab.data.StudyDestination
 import kotlinx.coroutines.launch
 
@@ -463,6 +465,9 @@ private fun UnitScreen(
                             chapter.id == "u1-paramecium" -> label(language,
                                 "Full textbook: select the Start Reading button above; practice questions here.",
                                 "முழுப் பாடத்திற்கு மேலுள்ள பாடத்தைத் தொடங்கு பொத்தானைத் தேர்க; இங்கு வினாப் பயிற்சி.")
+                            chapter.id == "u4-penaeus" -> label(language,
+                                "OPEN DETAILED PRAWN TYPE STUDY · appendages and development before A5.",
+                                "இறால் விரிவான இன ஆய்வு · இணைக்கால்கள் மற்றும் வளர்நிலைகளுக்குப் பின் A5.")
                             unit.number == 2 || unit.number == 3 -> label(language,
                                 "OPEN ILLUSTRATED BILINGUAL LESSON FIRST · assessment follows.",
                                 "முதலில் படவிளக்க இருமொழிப் பாடத்தைத் திறக்கவும் · பின்னர் வினாப் பயிற்சி.")
@@ -501,6 +506,10 @@ private fun ChapterScreen(
     // the lazy item must never silently return the learner to stage one.
     var trypanosomaStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     var leishmaniaStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
+    // Keep Penaeus interactive state above LazyColumn items: the stage must
+    // survive disposal at 200% Tamil without silently resetting.
+    var penaeusAppendage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
+    var penaeusLifeStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     val chapterListState = rememberLazyListState()
     val chapterScope = rememberCoroutineScope()
     Scaffold { padding ->
@@ -532,8 +541,14 @@ private fun ChapterScreen(
                             "பாரமீசியம் உடலமைப்புப் படங்களைப் பார்"))
                     }
                 }
-                Text(label(language, "EXAM PRACTICE — after the teaching lesson",
-                    "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்"))
+                Text(
+                    if (chapter.id == "u4-penaeus")
+                        label(language,
+                            "READ THE NATIVE TYPE STUDY FIRST · the original A5 questions follow",
+                            "முதலில் விரிவான இன ஆய்வைப் படிக்கவும் · அசல் A5 வினாக்கள் பின்னர்")
+                    else label(language, "EXAM PRACTICE — after the teaching lesson",
+                        "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்")
+                )
             }
             if (chapter.id == "u1-proto-parasites") {
                 item(key = "u15-entamoeba-native-textbook") {
@@ -596,6 +611,33 @@ private fun ChapterScreen(
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
                 item(key = "u1-independent-protozoa-reference-atlas") {
                     UnitIProtozoaReferenceGallery(language)
+                }
+            }
+            if (chapter.id == "u4-penaeus") {
+                item(key = "u4-penaeus-study-intro") {
+                    UnitIVPenaeusIntroduction(language)
+                }
+                items(UnitIVPenaeusTeaching.sections,
+                    key = { "u4-penaeus-"+it.id }) { section ->
+                    UnitIVPenaeusLessonSection(section,language)
+                }
+                item(key = "u4-penaeus-appendages") {
+                    UnitIVPenaeusAppendageExplorer(
+                        language,penaeusAppendage) { penaeusAppendage=it }
+                }
+                item(key = "u4-penaeus-larvae") {
+                    UnitIVPenaeusLifeCycleExplorer(
+                        language,penaeusLifeStage) { penaeusLifeStage=it }
+                }
+                item(key = "u4-penaeus-image-approval-hold") {
+                    UnitIVPenaeusAtlasHold(language)
+                }
+                item(key = "u4-penaeus-a5-divider") {
+                    Text(label(language,
+                        "ORIGINAL FIVE-MARK A5 ASSESSMENT — unchanged",
+                        "அசல் ஐந்து மதிப்பெண் A5 பயிற்சி — மாற்றமில்லை"),
+                        modifier=Modifier.testTag("u4-penaeus-a5-original-heading"),
+                        style=MaterialTheme.typography.titleLarge)
                 }
             }
             items(chapter.a5Questions, key = { it.id }) { question ->

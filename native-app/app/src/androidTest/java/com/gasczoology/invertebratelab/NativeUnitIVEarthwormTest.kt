@@ -113,7 +113,16 @@ class NativeUnitIVEarthwormTest {
         rule.onNodeWithTag("native-unit-4")
             .performScrollToNode(hasTestTag("u4-open-earthworm-textbook"))
         rule.onNodeWithTag("u4-open-earthworm-textbook").performClick()
-        rule.onNodeWithTag("u4-earthworm-title").assertExists()
+        // At 200% fonts, the title's Heading semantics may be absorbed by a
+        // merged parent while its actual Text remains present in the unmerged
+        // Compose tree. Require the real heading and its scientific name:
+        // do not turn this into a permissive existence-only check.
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("u4-earthworm-title", useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("u4-earthworm-title", useUnmergedTree = true)
+            .assertExists().assertTextContains("Metaphire posthuma", substring = true)
         screenshot("earthworm-return-navigation")
     }
 }
