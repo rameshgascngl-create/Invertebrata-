@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -78,6 +79,9 @@ internal fun UnitIIIPixelReviewDialog(
         mutableStateOf<UnitIIIEndpointComparison?>(null)
     }
     var comparisonError by remember { mutableStateOf("") }
+    var showSafetyExplanation by remember { mutableStateOf(false) }
+    var pendingReportJson by remember { mutableStateOf<String?>(null) }
+    var reportStatus by remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val assetPath = plate.assetStem + ".png"
 
@@ -155,6 +159,28 @@ internal fun UnitIIIPixelReviewDialog(
             }
         }
     }
+    val comparisonReportExport = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        val report = pendingReportJson
+        pendingReportJson = null
+        if (uri != null && report != null) {
+            scope.launch {
+                reportStatus = try {
+                    withContext(Dispatchers.IO) {
+                        context.contentResolver.openOutputStream(uri)?.use {
+                            it.write(report.toByteArray(Charsets.UTF_8))
+                        } ?: error("Cannot open comparison report document")
+                    }
+                    if (tamil) "ஒப்பீட்டு வரைவு சேமிக்கப்பட்டது; உடற்கூறு ஒப்புதல் இல்லை."
+                    else "Comparison draft saved; anatomical approval NOT granted."
+                } catch (_: Exception) {
+                    if (tamil) "ஒப்பீட்டு அறிக்கையைச் சேமிக்க முடியவில்லை."
+                    else "Comparison report export failed."
+                }
+            }
+        }
+    }
     val export = rememberLauncherForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
     ) { uri ->
@@ -208,8 +234,8 @@ internal fun UnitIIIPixelReviewDialog(
                 Row(modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        if (tamil) "பிக்சல் ஆய்வு · வரைவு"
-                        else "Pixel review · DRAFT",
+                        if (tamil) "வரைவு"
+                        else "DRAFT",
                         style = MaterialTheme.typography.titleSmall,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
@@ -228,14 +254,20 @@ internal fun UnitIIIPixelReviewDialog(
                     }
                 }
                 Text(
-                    if (tamil)
-                        "ஒப்புதல் பெறாத வரைவு. படத்தில் உறுப்பைக் குறி; மாணவர் தொடுபுள்ளி முடக்கப்பட்டுள்ளது."
-                    else "UNAPPROVED draft. Select an organ, then tap source pixels; learner hotspots stay disabled.",
+                    if (tamil) "ஒப்புதல் இல்லை • தொடுபுள்ளிகள் முடக்கம் ⓘ"
+                    else "UNAPPROVED • hotspots OFF ⓘ",
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.error,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.testTag("u33-review-hold-" + plate.plateId),
+                    // Do NOT cap Tamil to two lines: at 200% the entire
+                    // safety prohibition must remain visible, not clipped.
+                    modifier = Modifier.fillMaxWidth().heightIn(min=48.dp)
+                        .clickable { showSafetyExplanation = true }
+                        .semantics {
+                            contentDescription = if (tamil)
+                                "அறிவியல் ஒப்புதல் இல்லை. மாணவர் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன. முழு விளக்கத்தைப் படிக்கத் தொடவும்."
+                            else "No scientific approval. Student hotspots disabled. Tap to read the complete explanation."
+                        }
+                        .testTag("u33-review-hold-" + plate.plateId),
                 )
                 // The actual bitmap receives the majority of the screen.
                 Box(
@@ -385,6 +417,31 @@ internal fun UnitIIIPixelReviewDialog(
                 }
                 if (fileState.isNotBlank()) Text(fileState)
             }
+            if (showSafetyExplanation) {
+                AlertDialog(
+                    onDismissRequest = { showSafetyExplanation = false },
+                    title = {
+                        Text(if (tamil) "அறிவியல் ஒப்புதல் இல்லை"
+                             else "Scientific approval NOT granted")
+                    },
+                    text = {
+                        Text(
+                            if (tamil)
+                                "இது அசல் PNG படத்தின் பிக்சல் ஆய்வுக்கான வரைவு மட்டுமே. உறுப்பின் பெயர், மூலப்படத்தின் துணைப்படம், கோட்டின் முனை, படம் பயன்படுத்தும் உரிமை, தமிழ் சொற்கள் ஆகியவை தகுதியுள்ள விலங்கியல் ஆய்வாளர்களால் சரிபார்க்கப்படவில்லை. இரண்டு வரைவு கோப்புகள் ஒரே நபரால் உருவாக்கப்பட்டிருக்கலாம். மாணவர்களுக்கான நேரடித் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
+                            else "This is a draft record of original PNG pixel locations only. Organ identity, the correct source subfigure, leader endpoint, image rights and Tamil terminology have not received qualified zoological approval. Two drafts might originate from one person. Direct student hotspots remain disabled.",
+                            modifier = Modifier.heightIn(max = 420.dp)
+                                .verticalScroll(rememberScrollState())
+                                .testTag("u35-full-safety-description-" + plate.plateId),
+                        )
+                    },
+                    confirmButton = {
+                        TextButton(
+                            onClick = { showSafetyExplanation = false },
+                            modifier = Modifier.testTag("u35-full-safety-close-" + plate.plateId),
+                        ) { Text(if (tamil) "மூடு" else "Close") }
+                    },
+                )
+            }
             if (comparison != null || comparisonError.isNotBlank()) {
                 val result = comparison
                 AlertDialog(
@@ -429,6 +486,8 @@ internal fun UnitIIIPixelReviewDialog(
                                         } ?: ""),
                                         style = MaterialTheme.typography.bodySmall)
                                 }
+                                if (reportStatus.isNotBlank()) Text(reportStatus,
+                                    modifier = Modifier.testTag("u35-report-status-" + plate.plateId))
                                 Text(
                                     if (tamil)
                                         "ஒரே கோப்பு இருமுறை தரப்பட்டிருக்கலாம். ஒப்பீடு தனித்த நிபுணர் சான்றோ, உடற்கூறு ஒப்புதலோ அல்ல. மாணவர் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
@@ -437,6 +496,19 @@ internal fun UnitIIIPixelReviewDialog(
                                     style = MaterialTheme.typography.bodySmall,
                                 )
                             }
+                        }
+                    },
+                    dismissButton = {
+                        if (result != null) {
+                            TextButton(
+                                onClick = {
+                                    pendingReportJson = UnitIIIComparisonReportJson.serialize(result)
+                                    reportStatus = ""
+                                    comparisonReportExport.launch(
+                                        "u35-" + plate.plateId + "-COMPARISON-UNVERIFIED.json")
+                                },
+                                modifier = Modifier.testTag("u35-export-comparison-" + plate.plateId),
+                            ) { Text(if (tamil) "வரைவு JSON" else "Export draft JSON") }
                         }
                     },
                     confirmButton = {
