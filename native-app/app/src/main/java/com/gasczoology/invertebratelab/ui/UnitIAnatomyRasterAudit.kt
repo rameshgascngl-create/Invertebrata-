@@ -219,17 +219,6 @@ private fun NativeRasterReviewer(
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u19-review-hold-" + organism),
                 )
-                if (isPrivateCandidate) {
-                    Text(
-                        if (tamil)
-                            "இறக்குமதி செய்த படம்: உயிரின அடையாளமும் வளர்ச்சி நிலையும் உறுதிசெய்யப்படவில்லை. இவை ஆய்வுக் குறிப்புகள் மட்டும்."
-                        else
-                            "IMPORTED UNVERIFIED SCAN: organism, stage and structure names are review prompts, NOT confirmed anatomical identities.",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.error,
-                        modifier = Modifier.testTag("u113-private-stage-hold-" + organism),
-                    )
-                }
                 Text(
                     if (tamil) "மூலப் படம்: " + bitmap.width + " × " + bitmap.height
                     else "Original source raster: " + bitmap.width + " × " + bitmap.height,
@@ -410,6 +399,17 @@ private fun NativeRasterReviewer(
                             ) { Text(glyph) }
                         }
                     }
+                }
+                if (isPrivateCandidate) {
+                    Text(
+                        if (tamil)
+                            "இறக்குமதி செய்த படம்: உயிரின அடையாளமும் வளர்ச்சி நிலையும் உறுதிசெய்யப்படவில்லை. இவை ஆய்வுக் குறிப்புகள் மட்டும்."
+                        else
+                            "IMPORTED UNVERIFIED SCAN: organism, stage and structure names are review prompts, NOT confirmed anatomical identities.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.testTag("u113-private-stage-hold-" + organism),
+                    )
                 }
                 // Detailed anatomy and reviewer-only speech follow the visible
                 // raster. Keep these scrollable, readable and explicitly draft.
