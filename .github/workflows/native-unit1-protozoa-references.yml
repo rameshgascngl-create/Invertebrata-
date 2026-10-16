@@ -17,6 +17,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u113-pencil-intake-unification-20261016
       - native/u114-scan-orientation-mobile-qa-20261016
       - native/u115-morphotype-canvas-atlas-20261016
+      - native/u116-source-pixel-evidence-20261016
       - native/u19a-lifecycle-200pct-correction-20261015
   workflow_dispatch:
 
@@ -179,6 +180,26 @@ jobs:
           assert 'tamilNativeMorphotypeAtlasRetainsDistinctStageTextAt200Pct' in android
           assert 'nativeMorphotypeAtlasDistinguishesThreeCellStagesAndCanvas' in android
           assert 'screenshot("u115-tamil-promastigote-canvas")' in android
+          pixel=(root/'data/NativeSourcePixelEvidence.kt').read_text()
+          pixel_tests=Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeSourcePixelEvidenceTest.kt').read_text()
+          for check in ('NativePixelWindow(', 'VISIBLE_CANDIDATE', 'CANNOT_RESOLVE',
+                        'WRONG_STRUCTURE', 'isHashBoundSha256', 'pixelX >= imageWidth.toFloat()'):
+              assert check in pixel, check
+          assert 'NativeSourcePixelEvidenceTest' in pixel_tests
+          assert 'Bitmap.createBitmap(' in audit
+          assert 'bitmap.asAndroidBitmap()' in audit
+          assert 'u116-closeup-' in audit
+          assert 'u116-source-binding-' in audit
+          assert 'u116-finding-picker-' in audit and 'u116-review-note-' in audit
+          assert 'inspection_window_source_pixels' in audit
+          assert 'independent_scientific_signoff' in audit
+          assert 'student_hotspots_enabled' in audit
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
+          assert 'NativeSourcePixelEvidence.cleanNote' in audit
+          assert 'NativeDraftFinding.NOT_REVIEWED' in audit
+          assert 'enabled = sourceHash?.let(NativeSourcePixelEvidence::isHashBoundSha256)' in audit
+          assert 'screenshot("u116-true-source-pixel-crop")' in android
+          assert len(android.split('@Test fun ')) - 1 == 7
           assert 'NativeRasterCalibrationTest' in (
               Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
           )
