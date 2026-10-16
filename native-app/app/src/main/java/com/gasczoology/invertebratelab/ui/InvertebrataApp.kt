@@ -508,6 +508,7 @@ private fun ChapterScreen(
     var leishmaniaStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     // Keep Penaeus interactive state above LazyColumn items: the stage must
     // survive disposal at 200% Tamil without silently resetting.
+    var penaeusExternalPart by rememberSaveable(chapter.id) { mutableStateOf("carapace") }
     var penaeusAppendage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     var penaeusLifeStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     val chapterListState = rememberLazyListState()
@@ -616,6 +617,11 @@ private fun ChapterScreen(
             if (chapter.id == "u4-penaeus") {
                 item(key = "u4-penaeus-study-intro") {
                     UnitIVPenaeusIntroduction(language)
+                }
+                item(key = "u42-penaeus-external-interactive-vector") {
+                    UnitIVPenaeusVectorAtlas(language, penaeusExternalPart) {
+                        penaeusExternalPart = it
+                    }
                 }
                 items(UnitIVPenaeusTeaching.sections,
                     key = { "u4-penaeus-"+it.id }) { section ->
