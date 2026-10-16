@@ -129,6 +129,7 @@ jobs:
           assert 'NativeRasterReviewerLauncher(' in flagellates
           scanner=(root/'data/NativePencilMasterStore.kt').read_text()
           intake=(root/'ui/UnitIOriginalPencilMasterIntake.kt').read_text()
+          android=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt').read_text()
           for organism in ('trypanosoma', 'leishmania'):
               assert ('UnitIOriginalPencilMasterIntake("'+organism+'", language)') in nav
               assert ('u114-'+organism+'-pencil-scan-intake') in nav
@@ -156,7 +157,6 @@ jobs:
           assert 'u110-candidate-image-' in intake
           assert 'Dispatchers.Default' in intake
           assert 'WebView' not in scanner and 'WebView' not in intake
-          android=(Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt').read_text())
           assert 'androidOriginalPencilScanIntakeIsOfflineHashBoundAndDebugOnly' in android
           assert len(android.split('@Test fun ')) - 1 == 5
           assert 'u113-private-stage-hold-trypanosoma' in android
