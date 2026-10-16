@@ -14,6 +14,12 @@
 - Android Storage Access Framework `CreateDocument("application/json")` writes a draft with source SHA, plate stem, label ID, original pixels and normalized values, with blank reviewer/subfigure approval fields. Nothing is uploaded or stored on a remote server.
 - Debug-only entry button in `UnitIIIPlateGallery.kt` behind `isNativeSourceAuditDebuggable(context.applicationInfo.flags)`; no activation in non-debug student builds. Existing six source-specific `UnitIIIPlateHotspots.geometryApproved` flags remain disabled.
 
+## Visual-quality correction after first green automation
+
+The first U3.3 Actions run `38886343944` returned PASS (6/6 Unit III and 4/4 Unit II at 100% and 200%). Its actual 200% Tamil screenshots, however, were NOT visually acceptable: the `Clear` and `Draft JSON` controls wrapped vertically into narrow columns, leaving too little of the source raster visible. Green instrumentation alone was therefore not sufficient.
+
+The next corrective source commit shortens the bilingual reviewer title/disclaimer, truncates the **on-screen** SHA display (the exported JSON retains the full source SHA-256), uses compact one-line 1× / + / × / JSON controls with explicit Tamil/English accessibility descriptions, and tests a **minimum 230 dp actual decoded-image viewport** at both font sizes. Exact screenshot review is required again before accepting this milestone.
+
 ## Acceptance checklist
 1. Exact U3.3 SHA, compilation debug and release Kotlin, JVM `UnitIIIPixelReviewDraftTest`, Android instrumentation compilation and no A5/lesson/raster/Android permission changes.
 2. API34 airplane-mode Unit III 6/6 and Unit II 4/4, **twice**, at actual 100% and 200% font scales; required `fasciola-source-review-draft` and `ascaris-source-review-draft` screenshots each at both sizes, alongside all previous evidence. Inspect original XML and image files, not just workflow green.
