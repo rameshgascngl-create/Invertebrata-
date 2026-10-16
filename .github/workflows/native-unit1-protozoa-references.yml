@@ -18,6 +18,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u114-scan-orientation-mobile-qa-20261016
       - native/u115-morphotype-canvas-atlas-20261016
       - native/u116-historical-plate-authenticity-crops-20261016
+      - native/u117-isolated-historical-source-intake-20261016
       - native/u19a-lifecycle-200pct-correction-20261015
   workflow_dispatch:
 
@@ -190,6 +191,17 @@ jobs:
           assert 'tissue-a-e' in historical and 'culture-f-o' in historical
           assert 'UNVERIFIED_FLAGELLATED_CULTURE' in historical
           assert 'exactSourceMatches(' in crop_ui
+          archive_store=(root/'data/NativeHistoricalOriginalStore.kt').read_text()
+          for token in ('NativeHistoricalOriginalStore', 'exactSourceMatches',
+                        'u117_verified_historical_sources', 'Published SHA-1',
+                        'originalBytes', 'importDocument('):
+              assert token in archive_store,token
+          assert 'NativePencilMasterStore' not in archive_store
+          assert 'NativeHistoricalOriginalStore.load(' in crop_ui
+          assert 'NativeHistoricalOriginalStore.importDocument(' in crop_ui
+          assert 'u117-open-original-picker' in crop_ui
+          assert 'NativePencilMasterStore.load(' not in crop_ui
+          assert 'screenshot("u117-unmatched-source-isolated")' in android
           assert 'NativeHistoricalCropEncoding.png(' in crop_ui
           assert 'DRAFT_FIGURE_CROP_NOT_ANATOMY_SIGNOFF' in crop_ui
           assert 'u116-source-identity' in crop_ui
