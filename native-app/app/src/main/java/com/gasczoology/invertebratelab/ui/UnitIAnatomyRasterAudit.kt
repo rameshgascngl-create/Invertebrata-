@@ -8,12 +8,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
@@ -154,7 +157,10 @@ private fun NativeRasterReviewer(
     val sourceId = sourceIdOverride ?: "unit1/references/" + organism + ".png"
     val reviewMorphotype = morphotypeOverride ?: plate.morphotype
     val isPrivateCandidate = sourceHashOverride != null
-    var selectedId by remember(organism, sourceHash) {
+    // LazyColumn can temporarily dispose the parent type-study item during
+    // long 200% Tamil/English dialog scrolls. Preserve the reviewer selection
+    // by exact organism/source hash rather than silently resetting to nucleus.
+    var selectedId by rememberSaveable(organism, sourceHash) {
         mutableStateOf(choices.first().id)
     }
     val selected = choices.first { it.id == selectedId }
@@ -225,11 +231,21 @@ private fun NativeRasterReviewer(
                     style = MaterialTheme.typography.labelMedium,
                     modifier = Modifier.testTag("u19-raster-size-" + organism),
                 )
-                Row(
-                    modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                // Native LazyRow exposes ScrollToIndex/ScrollToNode semantics,
+                // allowing TalkBack and API34 tests to bring a currently
+                // off-screen organ control into view at 200% font. Do NOT
+                // preselect a structure or weaken organ-identity assertions.
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth()
+                        .semantics {
+                            contentDescription = if (tamil)
+                                "உடலமைப்பு தேர்வுகள் — கிடைமட்டமாக நகர்த்திப் பார்க்கலாம்"
+                            else "Anatomy structure choices — horizontal scrolling"
+                        }
+                        .testTag("u114-structure-picker-" + organism),
                     horizontalArrangement = Arrangement.spacedBy(7.dp),
                 ) {
-                    choices.forEach { option ->
+                    items(items = choices, key = { it.id }) { option ->
                         OutlinedButton(
                             onClick = { selectedId = option.id },
                             modifier = Modifier.heightIn(min = 48.dp)
@@ -419,6 +435,7 @@ private fun NativeRasterReviewer(
                     else "Selected structure: " + selected.en +
                         ". Pinch to enlarge, then tap the source pixel.",
                     style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.testTag("u114-selected-structure-" + organism),
                 )
                 Text(
                     if (tamil) selected.explanationTa else selected.explanationEn,

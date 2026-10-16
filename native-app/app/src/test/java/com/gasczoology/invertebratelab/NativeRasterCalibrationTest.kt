@@ -93,4 +93,27 @@ class NativeRasterCalibrationTest {
             -1f, 2f, 100f, 100f, 400, 200
         ))
     }
+    @Test fun sourceRasterRightAndBottomEdgesAreNotRealPixels() {
+        // 1000x500 source shown in a 200x400 ContentScale.Fit viewport:
+        // image occupies x=0..200 and y=150..250 (edge endpoints excluded).
+        assertNull(NativeRasterCalibration.hit(
+            200f, 200f, 200f, 400f, 1000, 500,
+        ))
+        assertNull(NativeRasterCalibration.hit(
+            100f, 250f, 200f, 400f, 1000, 500,
+        ))
+        assertNotNull(NativeRasterCalibration.hit(
+            199.9f, 249.9f, 200f, 400f, 1000, 500,
+        ))
+        assertNull(NativeRasterCalibration.project(
+            1000f, 250f, 200f, 400f, 1000, 500,
+        ))
+        assertNull(NativeRasterCalibration.project(
+            500f, 500f, 200f, 400f, 1000, 500,
+        ))
+        assertNull(NativeRasterCalibration.project(
+            Float.NaN, 5f, 200f, 400f, 1000, 500,
+        ))
+    }
+
 }

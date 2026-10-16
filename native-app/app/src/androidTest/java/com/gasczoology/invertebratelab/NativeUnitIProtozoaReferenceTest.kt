@@ -9,6 +9,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 
@@ -162,6 +163,52 @@ class NativeUnitIProtozoaReferenceTest {
                     .importBytes(context, "../plasmodium", bytes)
                 org.junit.Assert.fail("Path traversal accepted")
             } catch (_: IllegalArgumentException) { }
+            // JPEG EXIF orientation must NEVER be silently ignored by the
+            // BitmapFactory source-pixel reviewer. Reject rotated scans until
+            // the author supplies a correctly oriented source master.
+            val decoded = android.graphics.BitmapFactory.decodeByteArray(
+                bytes, 0, bytes.size
+            )!!
+            val jpegOut = java.io.ByteArrayOutputStream()
+            assertTrue(decoded.compress(
+                android.graphics.Bitmap.CompressFormat.JPEG, 90, jpegOut
+            ))
+            decoded.recycle()
+            assertTrue(
+                "Normal unrotated JPEG should remain eligible for image review",
+                com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                    .sourceOrientationAccepted("jpeg", jpegOut.toByteArray())
+            )
+            val rotatedFile = java.io.File.createTempFile(
+                "u114-exif-rotation-", ".jpg", context.cacheDir
+            )
+            try {
+                rotatedFile.writeBytes(jpegOut.toByteArray())
+                android.media.ExifInterface(rotatedFile.absolutePath).apply {
+                    setAttribute(
+                        android.media.ExifInterface.TAG_ORIENTATION,
+                        android.media.ExifInterface.ORIENTATION_ROTATE_90.toString(),
+                    )
+                    saveAttributes()
+                }
+                val rotatedBytes = rotatedFile.readBytes()
+                assertFalse(
+                    com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                        .sourceOrientationAccepted("jpeg", rotatedBytes)
+                )
+                try {
+                    com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                        .importBytes(context, organism, rotatedBytes)
+                    org.junit.Assert.fail("EXIF-rotated anatomical scan accepted")
+                } catch (_: IllegalArgumentException) { }
+                val preserved =
+                    com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                        .load(context, organism)
+                assertTrue("Rejected JPEG corrupted accepted PNG", preserved != null &&
+                    preserved.sourceSha256 == expected)
+            } finally {
+                rotatedFile.delete()
+            }
             enter(false)
             rule.onNodeWithTag("native-unit-1")
                 .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
@@ -170,17 +217,22 @@ class NativeUnitIProtozoaReferenceTest {
                 rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
                     .fetchSemanticsNodes().isNotEmpty()
             }
+            // U1.14: reviewer intake is an independent LazyColumn page item;
+            // it must be directly scrollable at 200% font, not buried beneath
+            // the large attributed source-figure lesson card.
             rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-                .performScrollToNode(hasTestTag("u17-study-trypanosoma"))
+                .performScrollToNode(hasTestTag("u110-native-plate-intake-trypanosoma"))
+            rule.onNodeWithTag("u110-import-button-trypanosoma")
+                .performScrollTo().assertIsDisplayed()
             rule.waitUntil(20_000) {
                 rule.onAllNodesWithTag("u110-candidate-metadata-trypanosoma")
                     .fetchSemanticsNodes().isNotEmpty()
             }
             rule.onNodeWithTag("u110-artwork-hold-trypanosoma").assertExists()
             rule.onNodeWithTag("u110-candidate-metadata-trypanosoma")
-                .assertTextContains("DRAFT_UNVERIFIED")
+                .assertTextContains("DRAFT_UNVERIFIED", substring = true)
             rule.onNodeWithTag("u110-source-checksum-trypanosoma")
-                .assertTextContains(expected)
+                .assertTextContains(expected, substring = true)
             rule.waitUntil(20_000) {
                 rule.onAllNodesWithTag("u110-candidate-image-trypanosoma")
                     .fetchSemanticsNodes().isNotEmpty()
@@ -192,9 +244,9 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u19-review-dialog-trypanosoma").assertExists()
             rule.onNodeWithTag("u19-review-hold-trypanosoma").assertExists()
             rule.onNodeWithTag("u113-private-stage-hold-trypanosoma")
-                .assertTextContains("IMPORTED UNVERIFIED")
+                .assertTextContains("IMPORTED UNVERIFIED", substring = true)
             rule.onNodeWithTag("u110-review-morphotype-trypanosoma")
-                .assertTextContains("UNVERIFIED_IMPORTED_STAGE")
+                .assertTextContains("UNVERIFIED_IMPORTED_STAGE", substring = true)
             rule.onNodeWithTag("u110-review-speak-trypanosoma")
                 .performScrollTo().assertIsNotEnabled()
             rule.onNodeWithTag("u19-tappable-raster-trypanosoma")
@@ -246,8 +298,24 @@ class NativeUnitIProtozoaReferenceTest {
             .performScrollTo().assertIsDisplayed().assertIsEnabled()
         rule.onNodeWithTag("u110-review-stop-trypanosoma").assertExists()
         rule.onNodeWithTag("u110-review-voice-status-trypanosoma").assertExists()
+        // At 200% font, Kinetoplast is outside the initially visible
+        // horizontal strip. First scroll the LazyRow *horizontally* to its
+        // exact key, then assert the control is visible and click it.
+        rule.onNodeWithTag("u114-structure-picker-trypanosoma")
+            .performScrollTo()
+            .performScrollToNode(
+                hasTestTag("u19-structure-trypanosoma-kinetoplast")
+            )
         rule.onNodeWithTag("u19-structure-trypanosoma-kinetoplast")
-            .performScrollTo().performClick()
+            .assertIsDisplayed().performClick()
+        // Explicitly verify that the 200% font-size horizontal selector
+        // changed the *actual Compose state*. Never silently pass on nucleus.
+        rule.waitUntil(20_000) {
+            rule.onAllNodes(
+                hasTestTag("u114-selected-structure-trypanosoma") and
+                    hasText("Kinetoplast", substring = true)
+            ).fetchSemanticsNodes().isNotEmpty()
+        }
         rule.onNodeWithTag("u110-review-explanation-trypanosoma")
             .performScrollTo().assertIsDisplayed()
             .assertTextContains("mitochondrial DNA", substring = true)

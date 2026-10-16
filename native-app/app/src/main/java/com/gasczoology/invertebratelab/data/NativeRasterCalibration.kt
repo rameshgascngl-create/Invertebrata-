@@ -68,7 +68,11 @@ object NativeRasterCalibration {
         val x = (localX - f.offsetX) / f.scale
         val y = (localY - f.offsetY) / f.scale
         // Do not clamp outside taps onto an organ: reject letterbox/background.
-        if (x < 0f || y < 0f || x > rasterWidth || y > rasterHeight) return null
+        // Source pixel ranges are [0, width) and [0, height).
+        // The exact right/bottom boundary is NOT a real pixel, even when
+        // ContentScale.Fit includes the rectangle's outer line.
+        if (x < 0f || y < 0f ||
+            x >= rasterWidth.toFloat() || y >= rasterHeight.toFloat()) return null
         return RasterPixelLocation(
             pixelX = x,
             pixelY = y,
@@ -93,8 +97,10 @@ object NativeRasterCalibration {
             ?: return null
         if (!zoom.isFinite() || zoom <= 0f || !panX.isFinite() || !panY.isFinite())
             return null
-        if (pixelX !in 0f..rasterWidth.toFloat() ||
-            pixelY !in 0f..rasterHeight.toFloat()) return null
+        if (!pixelX.isFinite() || !pixelY.isFinite()) return null
+        if (pixelX < 0f || pixelY < 0f ||
+            pixelX >= rasterWidth.toFloat() || pixelY >= rasterHeight.toFloat())
+            return null
         val localX = f.offsetX + pixelX * f.scale
         val localY = f.offsetY + pixelY * f.scale
         return Pair(
