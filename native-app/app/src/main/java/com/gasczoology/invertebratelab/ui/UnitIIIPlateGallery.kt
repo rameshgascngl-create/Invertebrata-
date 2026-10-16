@@ -66,6 +66,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
             var imagePanY by rememberSaveable(plate.assetStem) { mutableFloatStateOf(0f) }
             var fullscreenOpen by remember { mutableStateOf(false) }
             var draftPixelReviewerOpen by remember { mutableStateOf(false) }
+            var newPencilCandidateOpen by remember { mutableStateOf(false) }
             val selected = hotspots.firstOrNull { it.id == selectedId }
             Card(Modifier.fillMaxWidth().testTag("u3-plate-slot-" + plate.plateId)) {
                 Column(
@@ -117,6 +118,25 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                     bitmap = raster,
                                     language = language,
                                     onClose = { draftPixelReviewerOpen = false },
+                                )
+                            }
+                            // U3.6 keeps a real user-supplied pencil scan in
+                            // separate private storage, NEVER in this raster or
+                            // the student image/hash hotspot authorization.
+                            OutlinedButton(
+                                onClick = { newPencilCandidateOpen = true },
+                                modifier = Modifier.fillMaxWidth().heightIn(min=48.dp)
+                                    .testTag("u36-open-source-intake-" + plate.plateId),
+                            ) {
+                                Text(if (tamil)
+                                    "உண்மையான பென்சில் ஸ்கேனைச் சேர் — நிபுணர் வரைவு"
+                                    else "Import original pencil scan — reviewer only")
+                            }
+                            if (newPencilCandidateOpen) {
+                                UnitIIIPencilScanIntake(
+                                    plate = plate,
+                                    language = language,
+                                    onClose = { newPencilCandidateOpen = false },
                                 )
                             }
                         }
