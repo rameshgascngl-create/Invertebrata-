@@ -1,7 +1,6 @@
 package com.gasczoology.invertebratelab
 
 import androidx.compose.ui.test.*
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gasczoology.invertebratelab.data.*
@@ -156,7 +155,7 @@ class NativeUnitIVPenaeusTest {
         // Tap a genuine named vector-space target at the known eye anchor.
         // 100% and 200% fonts use identical proportional diagram coordinates.
         rule.onNodeWithTag("u42-penaeus-vector-canvas")
-            .performTouchInput { click(Offset(size.width * .129f, size.height * .265f)) }
+            .performTouchInput { click(percentOffset(.129f, .265f)) }
         rule.onNodeWithTag("u42-penaeus-selected-name")
             .assertTextContains("காம்புள்ள", substring = true)
         // Force LazyColumn to dispose this plate and reconstruct it.
