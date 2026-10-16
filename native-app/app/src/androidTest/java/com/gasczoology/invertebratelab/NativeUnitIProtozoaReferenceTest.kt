@@ -162,6 +162,47 @@ class NativeUnitIProtozoaReferenceTest {
                     .importBytes(context, "../plasmodium", bytes)
                 org.junit.Assert.fail("Path traversal accepted")
             } catch (_: IllegalArgumentException) { }
+            // JPEG EXIF orientation must NEVER be silently ignored by the
+            // BitmapFactory source-pixel reviewer. Reject rotated scans until
+            // the author supplies a correctly oriented source master.
+            val decoded = android.graphics.BitmapFactory.decodeByteArray(
+                bytes, 0, bytes.size
+            )!!
+            val jpegOut = java.io.ByteArrayOutputStream()
+            assertTrue(decoded.compress(
+                android.graphics.Bitmap.CompressFormat.JPEG, 90, jpegOut
+            ))
+            decoded.recycle()
+            val rotatedFile = java.io.File.createTempFile(
+                "u114-exif-rotation-", ".jpg", context.cacheDir
+            )
+            try {
+                rotatedFile.writeBytes(jpegOut.toByteArray())
+                android.media.ExifInterface(rotatedFile.absolutePath).apply {
+                    setAttribute(
+                        android.media.ExifInterface.TAG_ORIENTATION,
+                        android.media.ExifInterface.ORIENTATION_ROTATE_90.toString(),
+                    )
+                    saveAttributes()
+                }
+                val rotatedBytes = rotatedFile.readBytes()
+                assertFalse(
+                    com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                        .sourceOrientationAccepted("jpeg", rotatedBytes)
+                )
+                try {
+                    com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                        .importBytes(context, organism, rotatedBytes)
+                    org.junit.Assert.fail("EXIF-rotated anatomical scan accepted")
+                } catch (_: IllegalArgumentException) { }
+                val preserved =
+                    com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                        .load(context, organism)
+                assertTrue("Rejected JPEG corrupted accepted PNG", preserved != null &&
+                    preserved.sourceSha256 == expected)
+            } finally {
+                rotatedFile.delete()
+            }
             enter(false)
             rule.onNodeWithTag("native-unit-1")
                 .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
@@ -170,8 +211,13 @@ class NativeUnitIProtozoaReferenceTest {
                 rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
                     .fetchSemanticsNodes().isNotEmpty()
             }
+            // U1.14: reviewer intake is an independent LazyColumn page item;
+            // it must be directly scrollable at 200% font, not buried beneath
+            // the large attributed source-figure lesson card.
             rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-                .performScrollToNode(hasTestTag("u17-study-trypanosoma"))
+                .performScrollToNode(hasTestTag("u110-native-plate-intake-trypanosoma"))
+            rule.onNodeWithTag("u110-import-button-trypanosoma")
+                .performScrollTo().assertIsDisplayed()
             rule.waitUntil(20_000) {
                 rule.onAllNodesWithTag("u110-candidate-metadata-trypanosoma")
                     .fetchSemanticsNodes().isNotEmpty()
