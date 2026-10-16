@@ -9,6 +9,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u3-zoom-pan-magnification-20261016
       - native/u3-fullscreen-raster-inspection-20261016
       - native/u33-unit3-source-pixel-review-20261016
+      - native/u34-unit3-independent-pixel-comparison-20261016
   workflow_dispatch:
 
 permissions:
@@ -105,6 +106,23 @@ jobs:
           assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in model
           assert 'sourceSha256.matches(Regex("[a-f0-9]{64}"))' in model
           assert 'UnitIIIPlateHotspots.geometryApproved' not in review
+          comparator=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIEndpointAgreement.kt').read_text()
+          intake=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIDraftComparisonIntake.kt').read_text()
+          assert 'first.sourceSha256 == second.sourceSha256' in comparator
+          assert 'first.plateStem == second.plateStem' in comparator
+          assert 'first.imageWidth == second.imageWidth' in comparator
+          assert 'approvedForStudentHotspots: Boolean get() = false' in comparator
+          assert 'DRAFT_COMPARISON_NOT_ANATOMY_APPROVAL' in comparator
+          assert 'require(json.getString("approval_status") ==' in intake
+          assert 'MAX_JSON_BYTES = 65536' in intake
+          assert 'u34-compare-import-' in review and 'ActivityResultContracts.OpenDocument()' in review
+          assert 'UnitIIIEndpointAgreement.compare(current, second)' in review
+          assert 'u34-comparison-report-' in review
+          comparison_tests=Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/data/UnitIIIEndpointAgreementTest.kt').read_text()
+          assert 'flagsEightPixelBoundaryMissesAndAbsentOrganEvidence' in comparison_tests
+          android=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
+          assert 'capture("fasciola-compare-ready")' in android
+          assert 'capture("ascaris-compare-ready")' in android
           assert 'u33-review-export-' in review and 'evidence != null' in review
           test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
           assert 'capture("fasciola-source-review-draft")' in test
