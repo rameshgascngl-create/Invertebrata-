@@ -163,6 +163,31 @@ class NativeUnitIIITeachingTest {
         capture("fasciola-fullscreen-4x")
         rule.onNodeWithTag("u3-fullscreen-close-external").performClick()
         rule.onNodeWithTag("u3-fullscreen-dialog-external").assertDoesNotExist()
+        // The DEBUG-only reviewer must not enable learner image hotspots.
+        rule.onNodeWithTag("u33-open-review-external")
+            .performScrollTo().assertIsDisplayed().performClick()
+        rule.onNodeWithTag("u33-review-dialog-external").assertExists()
+        rule.onNodeWithTag("u33-review-decoded-image-external").assertIsDisplayed()
+        rule.onNodeWithTag("u33-review-export-external").assertIsNotEnabled()
+        rule.onNodeWithTag("u33-review-original-raster-external")
+            .performTouchInput {
+                click(androidx.compose.ui.geometry.Offset(width*.5f,height*.5f))
+            }
+        rule.onNodeWithTag("u33-review-last-point-external")
+            .assertTextContains("DRAFT",substring=true)
+        rule.waitUntil(20_000) {
+            rule.onAllNodes(hasTestTag("u33-review-export-external") and isEnabled())
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("u33-review-source-status-external")
+            .assertTextContains("PNG SHA-256:",substring=true)
+        rule.onNodeWithTag("u33-review-hold-external").assertExists()
+        capture("fasciola-source-review-draft")
+        rule.onNodeWithTag("u33-review-clear-external").performClick()
+        rule.onNodeWithTag("u33-review-export-external").assertIsNotEnabled()
+        rule.onNodeWithTag("u33-review-close-external").performClick()
+        rule.onNodeWithTag("u33-review-dialog-external").assertDoesNotExist()
+        rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
     }
 
     @Test fun tamilAscarisPlateUsesAccessibleUnmappedOrganControl() {
@@ -270,6 +295,26 @@ class NativeUnitIIITeachingTest {
             .assertTextContains("1×", substring=true)
         rule.onNodeWithTag("u3-fullscreen-close-life-cycle").performClick()
         rule.onNodeWithTag("u3-fullscreen-dialog-life-cycle").assertDoesNotExist()
+        rule.onNodeWithTag("u33-open-review-life-cycle")
+            .performScrollTo().assertIsDisplayed().performClick()
+        rule.onNodeWithTag("u33-review-dialog-life-cycle").assertExists()
+        rule.onNodeWithTag("u33-review-decoded-image-life-cycle").assertIsDisplayed()
+        rule.onNodeWithTag("u33-review-export-life-cycle").assertIsNotEnabled()
+        rule.onNodeWithTag("u33-review-original-raster-life-cycle")
+            .performTouchInput {
+                click(androidx.compose.ui.geometry.Offset(width*.5f,height*.5f))
+            }
+        rule.onNodeWithTag("u33-review-last-point-life-cycle")
+            .assertTextContains("DRAFT",substring=true)
+        rule.waitUntil(20_000) {
+            rule.onAllNodes(hasTestTag("u33-review-export-life-cycle") and isEnabled())
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("u33-review-hold-life-cycle").assertExists()
+        capture("ascaris-source-review-draft")
+        rule.onNodeWithTag("u33-review-close-life-cycle").performClick()
+        rule.onNodeWithTag("u33-review-dialog-life-cycle").assertDoesNotExist()
+        rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
     }
 
     @Test fun allSevenUnitThreeChaptersOpenNativeTextbooksBeforeQuestions() {
