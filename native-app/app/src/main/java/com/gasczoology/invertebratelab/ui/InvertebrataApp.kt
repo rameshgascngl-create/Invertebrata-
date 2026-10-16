@@ -586,6 +586,9 @@ private fun ChapterScreen(
                 item(key = "u18-leishmania-life-cycle") {
                     UnitIFlagellateLifeCycleSimulator("leishmania", language, leishmaniaStage) { leishmaniaStage = it }
                 }
+                item(key = "u115-three-morphotype-conceptual-atlas") {
+                    UnitIStageAtlasChapter(language)
+                }
             }
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
                 item(key = "u1-independent-protozoa-reference-atlas") {
