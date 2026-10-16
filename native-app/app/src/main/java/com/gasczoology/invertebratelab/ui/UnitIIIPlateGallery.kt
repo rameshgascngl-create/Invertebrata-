@@ -61,6 +61,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
             var magnification by rememberSaveable(plate.assetStem) { mutableFloatStateOf(1f) }
             var imagePanX by rememberSaveable(plate.assetStem) { mutableFloatStateOf(0f) }
             var imagePanY by rememberSaveable(plate.assetStem) { mutableFloatStateOf(0f) }
+            var fullscreenOpen by remember { mutableStateOf(false) }
             val selected = hotspots.firstOrNull { it.id == selectedId }
             Card(Modifier.fillMaxWidth().testTag("u3-plate-slot-" + plate.plateId)) {
                 Column(
@@ -77,6 +78,23 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                             modifier = Modifier.testTag("u3-plate-pending-" + plate.plateId)
                         )
                     } else {
+                        OutlinedButton(
+                            onClick = { fullscreenOpen = true },
+                            modifier = Modifier.fillMaxWidth().heightIn(min=48.dp)
+                                .testTag("u3-open-fullscreen-" + plate.plateId),
+                        ) {
+                            Text(if (tamil)
+                                "படத்தை முழுத்திரையில் பெரிதாக்கிப் பார்"
+                                else "Open full-screen anatomy image")
+                        }
+                        if (fullscreenOpen) {
+                            UnitIIIFullscreenRasterViewer(
+                                plate = plate,
+                                bitmap = raster,
+                                language = language,
+                                onClose = { fullscreenOpen = false },
+                            )
+                        }
                         BoxWithConstraints(
                             modifier = Modifier.fillMaxWidth().aspectRatio(960f / 1280f)
                                 .clipToBounds()

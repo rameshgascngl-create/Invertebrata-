@@ -7,6 +7,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u3-cdc-complete-lifecycle-20261014
       - native/u3-cdc-graphite-facsimile-20261014
       - native/u3-zoom-pan-magnification-20261016
+      - native/u3-fullscreen-raster-inspection-20261016
   workflow_dispatch:
 
 permissions:
@@ -84,6 +85,15 @@ jobs:
           assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
           assert "if (geometryVerified) detectTapGestures" in gallery
           assert "if (geometryVerified && selected != null)" in gallery
+          fullscreen=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPlateFullscreenViewer.kt').read_text())
+          assert 'UnitIIIFullscreenRasterViewer(' in gallery
+          assert 'u3-open-fullscreen-' in gallery
+          assert 'Dialog(' in fullscreen and 'usePlatformDefaultWidth = false' in fullscreen
+          assert 'bitmap = bitmap' in fullscreen and 'ContentScale.Fit' in fullscreen
+          assert 'u3-fullscreen-academic-hold-' in fullscreen
+          assert 'detectTransformGestures' in fullscreen and 'coerceIn(1f, 4f)' in fullscreen
+          assert 'u3-fullscreen-real-bitmap-' in fullscreen
+          assert 'UnitIIIPlateHotspots' not in fullscreen
           assert 'detectTransformGestures' in gallery
           assert 'u3-zoom-level-' in gallery and 'u3-zoom-in-' in gallery
           assert 'u3-zoom-reset-' in gallery and 'clipToBounds()' in gallery
