@@ -108,6 +108,110 @@ class NativeUnitIProtozoaReferenceTest {
         screenshot("four-images-english")
     }
 
+    @Test fun androidOriginalPencilScanIntakeIsOfflineHashBoundAndDebugOnly() {
+        val context = androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext
+        // Synthetic bitmap is ONLY an Android importer test fixture.
+        // It is not a pencil master and is never inserted in production assets.
+        val organism = "trypanosoma"
+        com.gasczoology.invertebratelab.data.NativePencilMasterStore
+            .discard(context, organism)
+        try {
+            val fixture = android.graphics.Bitmap.createBitmap(
+                900, 900, android.graphics.Bitmap.Config.ARGB_8888
+            )
+            fixture.eraseColor(android.graphics.Color.WHITE)
+            val canvas = android.graphics.Canvas(fixture)
+            val paint = android.graphics.Paint().apply {
+                color = android.graphics.Color.DKGRAY
+                style = android.graphics.Paint.Style.STROKE
+                strokeWidth = 2f
+            }
+            for (index in 0..330) {
+                val y = 20f + (index * 37 % 840)
+                canvas.drawLine(
+                    10f + (index * 23 % 160), y,
+                    580f + (index * 47 % 280),
+                    50f + (index * 59 % 790),
+                    paint
+                )
+            }
+            val bytesOut = java.io.ByteArrayOutputStream()
+            assertTrue(fixture.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, bytesOut))
+            fixture.recycle()
+            val bytes = bytesOut.toByteArray()
+            assertTrue(bytes.size > 4096)
+            val imported = com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                .importBytes(context, organism, bytes)
+            assertTrue(imported.width == 900 && imported.height == 900)
+            assertTrue(imported.format == "png")
+            val expected = java.security.MessageDigest.getInstance("SHA-256")
+                .digest(bytes).joinToString("") { "%02x".format(it) }
+            assertTrue(imported.sourceSha256 == expected)
+            val reloaded = com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                .load(context, organism)
+            assertTrue(reloaded != null && reloaded.sourceSha256 == expected)
+            assertTrue(reloaded!!.originalBytes.contentEquals(bytes))
+            try {
+                com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                    .importBytes(context, organism, "<html>not a PNG</html>".toByteArray())
+                org.junit.Assert.fail("Non-image payload accepted")
+            } catch (_: IllegalArgumentException) { }
+            try {
+                com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                    .importBytes(context, "../plasmodium", bytes)
+                org.junit.Assert.fail("Path traversal accepted")
+            } catch (_: IllegalArgumentException) { }
+            enter(false)
+            rule.onNodeWithTag("native-unit-1")
+                .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
+            rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
+            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+                .performScrollToNode(hasTestTag("u17-study-trypanosoma"))
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("u110-candidate-metadata-trypanosoma")
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
+            rule.onNodeWithTag("u110-artwork-hold-trypanosoma").assertExists()
+            rule.onNodeWithTag("u110-candidate-metadata-trypanosoma")
+                .assertTextContains("DRAFT_UNVERIFIED")
+            rule.onNodeWithTag("u110-source-checksum-trypanosoma")
+                .assertTextContains(expected)
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("u110-candidate-image-trypanosoma")
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
+            rule.onNodeWithTag("u110-candidate-image-trypanosoma")
+                .performScrollTo().assertExists()
+            rule.onNodeWithTag("u110-calibrate-imported-trypanosoma")
+                .performScrollTo().performClick()
+            rule.onNodeWithTag("u19-review-dialog-trypanosoma").assertExists()
+            rule.onNodeWithTag("u19-review-hold-trypanosoma").assertExists()
+            rule.onNodeWithTag("u113-private-stage-hold-trypanosoma")
+                .assertTextContains("IMPORTED UNVERIFIED")
+            rule.onNodeWithTag("u110-review-morphotype-trypanosoma")
+                .assertTextContains("UNVERIFIED_IMPORTED_STAGE")
+            rule.onNodeWithTag("u110-review-speak-trypanosoma")
+                .performScrollTo().assertIsNotEnabled()
+            rule.onNodeWithTag("u19-tappable-raster-trypanosoma")
+                .performScrollTo().performTouchInput { click() }
+            rule.onNodeWithTag("u19-mark-count-trypanosoma")
+                .assertTextContains("1", substring = true)
+            screenshot("u110-imported-review")
+            rule.onNodeWithTag("u19-close-trypanosoma")
+                .performScrollTo().performClick()
+        } finally {
+            assertTrue(
+                com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                    .discard(context, organism)
+            )
+        }
+    }
+
     @Test fun debugRasterReviewMapsRealBitmapPixelsWithoutPublishingHotspots() {
         enter(false)
         rule.onNodeWithTag("native-unit-1")
