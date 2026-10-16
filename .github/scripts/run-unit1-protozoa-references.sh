@@ -60,7 +60,7 @@ for scale in 100 200; do
     u110-imported-review \
     u115-english-promastigote-canvas u115-english-amastigote-canvas \
     u115-tamil-promastigote-canvas \
-    u116-unmatched-archive-identity; do
+    u116-unmatched-archive-identity u117-unmatched-source-isolated; do
     [[ -s "$E/captured/u12-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
   done
 done

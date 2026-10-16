@@ -29,7 +29,8 @@ import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.HistoricalArchiveIdentity
 import com.gasczoology.invertebratelab.data.HistoricalPixelCrop
-import com.gasczoology.invertebratelab.data.NativePencilCandidate
+import com.gasczoology.invertebratelab.data.NativeHistoricalOriginal
+import com.gasczoology.invertebratelab.data.NativeHistoricalOriginalStore
 import com.gasczoology.invertebratelab.data.NativeRasterCalibration
 import com.gasczoology.invertebratelab.data.UnitIHistoricalPlateArchive
 import kotlinx.coroutines.Dispatchers
@@ -49,13 +50,41 @@ internal fun UnitIHistoricalPlateSourceSection(language: AppLanguage) {
     if (!isNativeSourceAuditDebuggable(context.applicationInfo.flags)) return
     val tamil = language == AppLanguage.TAMIL
     var version by remember { mutableIntStateOf(0) }
-    var candidate by remember { mutableStateOf<NativePencilCandidate?>(null) }
+    var candidate by remember { mutableStateOf<NativeHistoricalOriginal?>(null) }
     var decoded by remember { mutableStateOf<androidx.compose.ui.graphics.ImageBitmap?>(null) }
+    var busy by remember { mutableStateOf(false) }
+    var importMessage by remember { mutableStateOf("") }
+    val scope = rememberCoroutineScope()
+    val picker = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument(),
+    ) { uri ->
+        if (uri != null && !busy) {
+            scope.launch {
+                busy = true
+                importMessage = ""
+                try {
+                    withContext(Dispatchers.IO) {
+                        NativeHistoricalOriginalStore.importDocument(
+                            context.applicationContext, "leishmania", uri
+                        )
+                    }
+                    version++ // Reread only the verified, isolated archive file.
+                    importMessage = if (tamil)
+                        "அச்சுப் படத்தின் அசல் SHA-1 சரிபார்க்கப்பட்டது; உடலமைப்பு ஒப்புதல் நிலுவை."
+                    else "Published original fingerprint MATCHED; anatomy still UNAPPROVED."
+                } catch (_: Exception) {
+                    importMessage = if (tamil)
+                        "கோப்பு நிராகரிக்கப்பட்டது: அசல் SHA-1 அல்லது அளவு பொருந்தவில்லை."
+                    else "File rejected: published original size, pixels or SHA-1 do not match."
+                } finally {
+                    busy = false
+                }
+            }
+        }
+    }
     LaunchedEffect(version) {
         val source = withContext(Dispatchers.IO) {
-            com.gasczoology.invertebratelab.data.NativePencilMasterStore.load(
-                context.applicationContext, "leishmania"
-            )
+            NativeHistoricalOriginalStore.load(context.applicationContext, "leishmania")
         }
         candidate = source
         val identity = UnitIHistoricalPlateArchive.leishmania1922
@@ -72,6 +101,27 @@ internal fun UnitIHistoricalPlateSourceSection(language: AppLanguage) {
         modifier = Modifier.fillMaxWidth().testTag("u116-archive-section"),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
+        Text(
+            if (tamil)
+                "1922 சாண்ட்லர் வரலாற்று அசல் JPEG-ஐ Android Files மூலம் தேர்ந்தெடு. இது பென்சில்-வரைவு சேமிப்பிடத்திலிருந்து முற்றிலும் தனி."
+            else "Choose the original 1922 Chandler JPEG in Android Files. This archive is stored separately from any pencil-drawing candidate.",
+            style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier.testTag("u117-isolated-archive-explanation"),
+        )
+        OutlinedButton(
+            onClick = { picker.launch(arrayOf("image/jpeg")) },
+            enabled = !busy,
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                .testTag("u117-open-original-picker"),
+        ) {
+            Text(if (tamil) "அசல் JPEG கோப்பைத் தேர்ந்தெடு" else "Choose verified historical original (JPEG)")
+        }
+        if (busy) LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+        if (importMessage.isNotBlank()) Text(
+            importMessage,
+            modifier = Modifier.testTag("u117-source-intake-status"),
+            style = MaterialTheme.typography.bodySmall,
+        )
         OutlinedButton(
             onClick = { version++ },
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
@@ -123,7 +173,7 @@ internal object NativeHistoricalCropEncoding {
 @Composable
 internal fun UnitIHistoricalPlateCropReviewer(
     organism: String,
-    candidate: NativePencilCandidate?,
+    candidate: NativeHistoricalOriginal?,
     bitmap: androidx.compose.ui.graphics.ImageBitmap?,
     language: AppLanguage,
 ) {

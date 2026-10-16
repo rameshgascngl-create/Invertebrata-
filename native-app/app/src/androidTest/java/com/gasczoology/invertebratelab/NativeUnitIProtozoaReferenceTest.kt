@@ -11,6 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 
 /** U1.2 isolated reference-asset routing test; NOT pencil or scientific acceptance. */
@@ -271,6 +272,9 @@ class NativeUnitIProtozoaReferenceTest {
         com.gasczoology.invertebratelab.data.NativePencilMasterStore.discard(
             context, organism,
         )
+        com.gasczoology.invertebratelab.data.NativeHistoricalOriginalStore.discard(
+            context, organism,
+        )
         try {
             // Synthetic 900×900 test image, expressly NOT archived/scanned
             // anatomy. It must never pass the real Wikimedia SHA-1 gate.
@@ -322,6 +326,18 @@ class NativeUnitIProtozoaReferenceTest {
                 .leishmania1922.exactSourceMatches(
                     source.originalBytes, source.width, source.height,
                 ))
+            // The archive must NOT accept or overwrite this existing pencil
+            // candidate. The two stores are isolated by source identity.
+            assertTrue(runCatching {
+                com.gasczoology.invertebratelab.data.NativeHistoricalOriginalStore
+                    .importBytes(context, organism, bytes)
+            }.isFailure)
+            assertNull(com.gasczoology.invertebratelab.data.NativeHistoricalOriginalStore
+                .load(context, organism))
+            val stillPencil = com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                .load(context, organism)
+            assertNotNull(stillPencil)
+            assertTrue(stillPencil!!.sourceSha256 == source.sourceSha256)
             enter(false)
             rule.onNodeWithTag("native-unit-1")
                 .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
@@ -333,6 +349,9 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("native-chapter-u1-proto-parasites")
                 .performScrollToNode(hasTestTag("u116-archive-section"))
             rule.onNodeWithTag("u116-archive-source-check").assertExists()
+            rule.onNodeWithTag("u117-open-original-picker")
+                .performScrollTo().assertIsDisplayed().assertIsEnabled()
+            rule.onNodeWithTag("u117-isolated-archive-explanation").assertExists()
             rule.onNodeWithTag("u116-source-url")
                 .assertTextContains("Leishmania_donovani_", substring = true)
             rule.onNodeWithTag("u116-refresh-source")
@@ -350,9 +369,15 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u116-source-identity")
                 .performScrollTo().assertExists()
             screenshot("u116-unmatched-archive-identity")
+            screenshot("u117-unmatched-source-isolated")
         } finally {
             assertTrue(
                 com.gasczoology.invertebratelab.data.NativePencilMasterStore.discard(
+                    context, organism
+                )
+            )
+            assertTrue(
+                com.gasczoology.invertebratelab.data.NativeHistoricalOriginalStore.discard(
                     context, organism
                 )
             )
