@@ -4,6 +4,11 @@ import android.graphics.BitmapFactory
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -48,6 +53,7 @@ internal fun UnitIIIPencilScanIntake(
     var isBusy by remember(plate.assetStem) { mutableStateOf(false) }
     var status by remember(plate.assetStem) { mutableStateOf("") }
     var showProvenance by remember { mutableStateOf(false) }
+    var showFullSafetyDisclosure by remember { mutableStateOf(false) }
 
     LaunchedEffect(plate.assetStem) {
         candidate = withContext(Dispatchers.IO) {
@@ -145,8 +151,8 @@ internal fun UnitIIIPencilScanIntake(
                     horizontalArrangement=Arrangement.spacedBy(8.dp),
                 ) {
                     Text(
-                        if(tamil) "அசல் பென்சில் படம் — வரைவு"
-                        else "Original pencil scan · UNVERIFIED",
+                        if(tamil) "பென்சில் படம் · வரைவு"
+                        else "Pencil scan · DRAFT",
                         modifier=Modifier.weight(1f)
                             .testTag("u36-source-intake-title-"+plate.plateId),
                         style=MaterialTheme.typography.titleSmall,
@@ -158,13 +164,23 @@ internal fun UnitIIIPencilScanIntake(
                             .testTag("u36-source-intake-close-"+plate.plateId),
                     ) { Text(if(tamil)"மூடு" else "Close") }
                 }
+                // Deliberately short on-screen for Android 200% font:
+                // keep the IMAGE inspectable; expose the entire policy in a
+                // labelled, large-touch accessible dialog, never via ellipsis.
                 Text(
-                    if(tamil)
-                        "அசல் PNG/JPEG கோப்பைத் தேர்ந்தெடுக்கவும். கோப்பின் SHA-256 மட்டும் சரிபார்க்கப்படும்; படம் உண்மையான கையால் வரைந்த பென்சில் படமா, உடற்கூறு சரியா என்பது நிபுணர் ஆய்வுக்குரியது."
-                    else "Select a genuine PNG/JPEG source scan using Android Files. SHA-256 verifies file identity, NOT pencil authenticity, biological accuracy or reuse rights.",
+                    if(tamil) "ஒப்புதல் இல்லை • மாணவர் படமல்ல ⓘ"
+                    else "UNVERIFIED • not student artwork ⓘ",
                     style=MaterialTheme.typography.labelMedium,
                     color=MaterialTheme.colorScheme.error,
-                    modifier=Modifier.testTag("u36-identity-not-approval-"+plate.plateId),
+                    maxLines=2,
+                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+                        .clickable { showFullSafetyDisclosure = true }
+                        .semantics {
+                            contentDescription=if(tamil)
+                                "அறிவியல் ஒப்புதல் இல்லை. மூலப்பட ஆய்வின் முழு வரம்புகளை அறியத் தொடவும்."
+                            else "Scientific acceptance not granted. Tap for full source-artwork limitations."
+                        }
+                        .testTag("u36-identity-not-approval-"+plate.plateId),
                 )
                 Box(
                     modifier=Modifier.fillMaxWidth().weight(1f)
@@ -244,6 +260,31 @@ internal fun UnitIIIPencilScanIntake(
                 if(status.isNotBlank()) Text(status,
                     style=MaterialTheme.typography.bodySmall,
                     modifier=Modifier.testTag("u36-source-status-"+plate.plateId))
+            }
+            if(showFullSafetyDisclosure) {
+                AlertDialog(
+                    onDismissRequest={showFullSafetyDisclosure=false},
+                    title={
+                        Text(if(tamil)"அசல் வரைவு · நிபுணர் ஒப்புதல் இல்லை"
+                             else "Original scan: NOT certified")
+                    },
+                    text={
+                        Text(
+                            if(tamil)
+                                "இந்தப் பகுதி Android Files மூலம் தேர்ந்தெடுக்கப்பட்ட PNG/JPEG கோப்பிற்கான ஆய்வு மட்டுமே. SHA-256 என்பது கோப்பின் பைட்டுகளை அடையாளம் காணும்; கையால் பென்சிலால் வரையப்பட்ட அசலா, Fasciola/Ascaris இனம் மற்றும் வளர்ச்சி நிலை சரியா, ஒவ்வோர் உறுப்புக் குறியும் சரியா, மறுபயன்பாட்டிற்கு உரிமை உள்ளதா என்பதைச் சான்றளிக்காது. இரண்டு தனித்த விலங்கியல் நிபுணர்கள், மூலப்பட உரிமை, உயிரியல் அமைப்பு மற்றும் தமிழ் விளக்கங்களை மதிப்பாய்வு செய்ய வேண்டும். மாணவர் பயன்பாட்டுப் படங்கள், உறுப்பு தொடுபுள்ளிகள் மற்றும் ஒலி விளக்கங்கள் மாற்றப்படவில்லை."
+                            else "This intake stores exact PNG/JPEG bytes chosen using Android Files. SHA-256 identifies those bytes; it does NOT authenticate an original hand-pencil drawing, the Fasciola/Ascaris species and life stage, organ labels, source-panel rights or anatomical accuracy. Two genuinely independent zoologists, a rights review and Tamil editorial review are required. No student atlas image, touch hotspot or spoken organ description is changed.",
+                            modifier=Modifier.heightIn(max=360.dp)
+                                .verticalScroll(rememberScrollState())
+                                .testTag("u36-full-disclosure-text-"+plate.plateId),
+                        )
+                    },
+                    confirmButton={
+                        TextButton(
+                            onClick={showFullSafetyDisclosure=false},
+                            modifier=Modifier.testTag("u36-full-disclosure-close-"+plate.plateId),
+                        ) { Text(if(tamil)"மூடு" else "Close") }
+                    },
+                )
             }
             if(showProvenance && candidate != null) {
                 AlertDialog(onDismissRequest={showProvenance=false},
