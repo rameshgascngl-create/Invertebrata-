@@ -441,6 +441,11 @@ class NativeUnitIIITeachingTest {
             rule.onNodeWithTag("u36-full-disclosure-text-external")
                 .assertTextContains("two genuinely independent zoologists",substring=true,ignoreCase=true)
             capture("fasciola-pencil-intake-full-disclosure")
+            // Scroll within the bounded disclosure itself, not the chapter.
+            // At 200% font the lower safeguards must be reachable by touch.
+            rule.onNodeWithTag("u36-full-disclosure-text-external")
+                .performTouchInput { swipeUp() }
+            capture("fasciola-pencil-intake-disclosure-scrolled")
             rule.onNodeWithTag("u36-full-disclosure-close-external").performClick()
             rule.onNodeWithTag("u36-full-disclosure-text-external").assertDoesNotExist()
             capture("fasciola-pencil-intake-provisional")
@@ -475,6 +480,9 @@ class NativeUnitIIITeachingTest {
             rule.onNodeWithTag("u36-full-disclosure-text-life-cycle")
                 .assertTextContains("Fasciola/Ascaris",substring=true)
             capture("ascaris-pencil-intake-full-disclosure")
+            rule.onNodeWithTag("u36-full-disclosure-text-life-cycle")
+                .performTouchInput { swipeUp() }
+            capture("ascaris-pencil-intake-disclosure-scrolled")
             rule.onNodeWithTag("u36-full-disclosure-close-life-cycle").performClick()
             rule.onNodeWithTag("u36-full-disclosure-text-life-cycle").assertDoesNotExist()
             capture("ascaris-pencil-intake-pending")
