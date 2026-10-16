@@ -44,7 +44,7 @@ import sys, xml.etree.ElementTree as ET
 root=Path(sys.argv[1])
 cases=[node for file in root.rglob("TEST-*.xml")
        for node in ET.parse(file).getroot().iter("testcase")]
-assert len(cases)==4,("Expected FOUR Unit I native atlas, lifecycle and raster QA tests",len(cases))
+assert len(cases)==5,("Expected FIVE Unit I native atlas, lifecycle, source review and authentic-scan intake checks",len(cases))
 assert all((node.get("classname") or "").endswith("NativeUnitIProtozoaReferenceTest") for node in cases)
 assert all(node.find(k) is None for node in cases for k in ("failure","error","skipped"))
 print("UNIT1_PROTOZOA_REFERENCES_API34=PASS count="+str(len(cases)))
@@ -56,7 +56,8 @@ for scale in 100 200; do
     u18-trypanosoma-english u18-leishmania-english \
     u18-trypanosoma-tamil u18-leishmania-tamil \
     u19-trypanosoma-calibration u110-trypanosoma-source-review \
-    u111-trypanosoma-image-first u112-trypanosoma-pixel-refinement; do
+    u111-trypanosoma-image-first u112-trypanosoma-pixel-refinement \
+    u110-imported-review; do
     [[ -s "$E/captured/u12-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
   done
 done
