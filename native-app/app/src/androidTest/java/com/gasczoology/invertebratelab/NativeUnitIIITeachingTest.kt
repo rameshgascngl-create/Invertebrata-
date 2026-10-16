@@ -138,6 +138,31 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-zoom-level-external").assertTextContains("1×",substring=true)
         rule.onNodeWithTag("u3-zoom-out-external").assertIsNotEnabled()
         rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
+        // Full-screen review must show the decoded raster in its own tall
+        // viewport, not below a long lesson or inside an over-zoomed card.
+        rule.onNodeWithTag("u3-open-fullscreen-external")
+            .performScrollTo().assertIsDisplayed().performClick()
+        rule.onNodeWithTag("u3-fullscreen-dialog-external").assertExists()
+        rule.onNodeWithTag("u3-fullscreen-real-bitmap-external").assertIsDisplayed()
+        val fullscreenBounds = rule.onNodeWithTag("u3-fullscreen-image-viewport-external")
+            .fetchSemanticsNode().boundsInRoot
+        val density = androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext.resources.displayMetrics.density
+        org.junit.Assert.assertTrue("Fasciola image viewport too short", fullscreenBounds.height >= 350f * density)
+        rule.onNodeWithTag("u3-fullscreen-zoom-level-external")
+            .assertTextContains("1×", substring=true)
+        capture("fasciola-fullscreen-1x")
+        rule.onNodeWithTag("u3-fullscreen-zoom-in-external").performClick()
+        rule.onNodeWithTag("u3-fullscreen-zoom-level-external")
+            .assertTextContains("2×", substring=true)
+        rule.onNodeWithTag("u3-fullscreen-zoom-in-external").performClick()
+        rule.onNodeWithTag("u3-fullscreen-zoom-level-external")
+            .assertTextContains("4×", substring=true)
+        rule.onNodeWithTag("u3-fullscreen-zoom-in-external").assertIsNotEnabled()
+        rule.onNodeWithTag("u3-fullscreen-academic-hold-external").assertExists()
+        capture("fasciola-fullscreen-4x")
+        rule.onNodeWithTag("u3-fullscreen-close-external").performClick()
+        rule.onNodeWithTag("u3-fullscreen-dialog-external").assertDoesNotExist()
     }
 
     @Test fun tamilAscarisPlateUsesAccessibleUnmappedOrganControl() {
@@ -224,6 +249,27 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-zoom-level-life-cycle").assertTextContains("1×",substring=true)
         // Interacting with magnification may never enable unresolved geometry.
         rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
+        rule.onNodeWithTag("u3-open-fullscreen-life-cycle")
+            .performScrollTo().assertIsDisplayed().performClick()
+        rule.onNodeWithTag("u3-fullscreen-dialog-life-cycle").assertExists()
+        rule.onNodeWithTag("u3-fullscreen-real-bitmap-life-cycle").assertIsDisplayed()
+        val fullscreenBounds = rule.onNodeWithTag("u3-fullscreen-image-viewport-life-cycle")
+            .fetchSemanticsNode().boundsInRoot
+        val density = androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext.resources.displayMetrics.density
+        org.junit.Assert.assertTrue("Ascaris Tamil image viewport too short", fullscreenBounds.height >= 350f * density)
+        capture("ascaris-fullscreen-1x")
+        rule.onNodeWithTag("u3-fullscreen-zoom-in-life-cycle").performClick()
+        rule.onNodeWithTag("u3-fullscreen-zoom-in-life-cycle").performClick()
+        rule.onNodeWithTag("u3-fullscreen-zoom-level-life-cycle")
+            .assertTextContains("4×", substring=true)
+        rule.onNodeWithTag("u3-fullscreen-academic-hold-life-cycle").assertExists()
+        capture("ascaris-fullscreen-4x")
+        rule.onNodeWithTag("u3-fullscreen-reset-life-cycle").performClick()
+        rule.onNodeWithTag("u3-fullscreen-zoom-level-life-cycle")
+            .assertTextContains("1×", substring=true)
+        rule.onNodeWithTag("u3-fullscreen-close-life-cycle").performClick()
+        rule.onNodeWithTag("u3-fullscreen-dialog-life-cycle").assertDoesNotExist()
     }
 
     @Test fun allSevenUnitThreeChaptersOpenNativeTextbooksBeforeQuestions() {
