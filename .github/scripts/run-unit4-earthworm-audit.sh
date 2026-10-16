@@ -30,24 +30,37 @@ for scale in 1.0 2.0; do
     sleep 1
   done
   [[ "$ready" == 1 ]] || { result="NOT_OFFLINE_$scale";exit 1;}
-  if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace     -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIVEarthwormTest,com.gasczoology.invertebratelab.NativeUnitIVPenaeusTest     > "$folder/gradle-earthworm.txt" 2>&1; then
-    result="UI_TEST_FAILED_$scale"
-    cp -a native-app/app/build/outputs/androidTest-results/connected "$folder/results-earthworm" 2>/dev/null || true
-    exit 1
-  fi
-  cp -a native-app/app/build/outputs/androidTest-results/connected "$folder/results-earthworm"
-  python3 - "$folder/results-earthworm" <<'PY'
+  # Run each native Android test class independently. The instrumentation
+  # runner does not reliably accept a comma-separated list of class names;
+  # that previously executed only the three Earthworm methods.
+  for suite in NativeUnitIVEarthwormTest NativeUnitIVPenaeusTest; do
+    suite_results="$folder/results-$suite"
+    rm -rf native-app/app/build/outputs/androidTest-results/connected \
+      native-app/app/build/reports/androidTests/connected
+    if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
+      "-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.$suite" \
+      > "$folder/gradle-$suite.txt" 2>&1; then
+      result="UI_TEST_FAILED_${scale}_${suite}"
+      cp -a native-app/app/build/outputs/androidTest-results/connected "$suite_results" 2>/dev/null || true
+      exit 1
+    fi
+    cp -a native-app/app/build/outputs/androidTest-results/connected "$suite_results"
+    python3 - "$suite_results" "$suite" <<'PY'
 from pathlib import Path
 import sys, xml.etree.ElementTree as ET
 root=Path(sys.argv[1])
+name=sys.argv[2]
+expected="com.gasczoology.invertebratelab."+name
 cases=[node for file in root.rglob("TEST-*.xml")
        for node in ET.parse(file).getroot().iter("testcase")]
-assert len(cases)==6,("Expected SIX Unit IV tests",len(cases))
-assert sorted((node.get("classname") or "").split(".")[-1] for node in cases)==sorted(
-  ["NativeUnitIVEarthwormTest"]*3 + ["NativeUnitIVPenaeusTest"]*3)
-assert all(node.find(k) is None for node in cases for k in ("failure","error","skipped"))
-print("EARTHWORM_API34_TESTS=PASS count="+str(len(cases)))
+assert len(cases)==3,("Expected THREE native Unit IV tests per class",name,len(cases))
+assert all((node.get("classname") or "") == expected for node in cases), (
+    "Wrong/missing Android test class", name, [c.get("classname") for c in cases])
+assert all(node.find(k) is None for node in cases
+           for k in ("failure","error","skipped")),("Android test failure",name)
+print("UNIT4_API34_TESTS=PASS class="+name+" count="+str(len(cases)))
 PY
+  done
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
