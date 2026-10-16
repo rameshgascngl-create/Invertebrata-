@@ -298,8 +298,16 @@ class NativeUnitIProtozoaReferenceTest {
             .performScrollTo().assertIsDisplayed().assertIsEnabled()
         rule.onNodeWithTag("u110-review-stop-trypanosoma").assertExists()
         rule.onNodeWithTag("u110-review-voice-status-trypanosoma").assertExists()
+        // At 200% font, Kinetoplast is outside the initially visible
+        // horizontal strip. First scroll the LazyRow *horizontally* to its
+        // exact key, then assert the control is visible and click it.
+        rule.onNodeWithTag("u114-structure-picker-trypanosoma")
+            .performScrollTo()
+            .performScrollToNode(
+                hasTestTag("u19-structure-trypanosoma-kinetoplast")
+            )
         rule.onNodeWithTag("u19-structure-trypanosoma-kinetoplast")
-            .performScrollTo().assertIsDisplayed().performClick()
+            .assertIsDisplayed().performClick()
         // Explicitly verify that the 200% font-size horizontal selector
         // changed the *actual Compose state*. Never silently pass on nucleus.
         rule.waitUntil(20_000) {
