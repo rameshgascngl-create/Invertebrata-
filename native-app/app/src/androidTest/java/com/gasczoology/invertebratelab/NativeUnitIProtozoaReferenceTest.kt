@@ -153,6 +153,30 @@ class NativeUnitIProtozoaReferenceTest {
             .performScrollTo().performTouchInput { click() }
         rule.onNodeWithTag("u19-mark-count-trypanosoma")
             .assertTextContains("1", substring = true)
+        // Draft image-pixel refinement does NOT create scientific hotspots.
+        val originalCoordinates = rule.onNodeWithTag("u112-selected-pixel-trypanosoma")
+            .performScrollTo().assertTextContains("x=", substring = true)
+            .fetchSemanticsNode().config[
+                androidx.compose.ui.semantics.SemanticsProperties.Text
+            ].joinToString(" ") { it.text }
+        rule.onNodeWithTag("u112-unverified-coordinate-note-trypanosoma").assertExists()
+        rule.onNodeWithTag("u112-nudge-trypanosoma-x-plus")
+            .performScrollTo().assertIsEnabled().performClick()
+        val afterRight = rule.onNodeWithTag("u112-selected-pixel-trypanosoma")
+            .fetchSemanticsNode().config[
+                androidx.compose.ui.semantics.SemanticsProperties.Text
+            ].joinToString(" ") { it.text }
+        assertTrue("One-pixel adjustment did not update displayed source coords",
+            afterRight != originalCoordinates)
+        rule.onNodeWithTag("u112-nudge-trypanosoma-x-minus")
+            .performScrollTo().assertIsEnabled().performClick()
+        val backCoordinates = rule.onNodeWithTag("u112-selected-pixel-trypanosoma")
+            .fetchSemanticsNode().config[
+                androidx.compose.ui.semantics.SemanticsProperties.Text
+            ].joinToString(" ") { it.text }
+        assertTrue("One-pixel inverse adjustment drifted", backCoordinates == originalCoordinates)
+        rule.onNodeWithTag("u19-tappable-raster-trypanosoma").performScrollTo()
+        screenshot("u112-trypanosoma-pixel-refinement")
         rule.onNodeWithTag("u19-export-trypanosoma").assertIsEnabled()
         rule.onNodeWithTag("u19-zoom-in-trypanosoma")
             .performScrollTo().performClick()

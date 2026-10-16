@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
@@ -34,8 +35,10 @@ import com.gasczoology.invertebratelab.OfflineNarrator
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.UnitIAnatomyReviewDescriptions
 import com.gasczoology.invertebratelab.data.NativeRasterCalibration
+import com.gasczoology.invertebratelab.data.NativeDraftPixelRefinement
 import com.gasczoology.invertebratelab.data.RasterPixelLocation
 import java.security.MessageDigest
+import java.util.Locale
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -168,6 +171,19 @@ private fun NativeRasterReviewer(
         }
     }
 
+    // Candidate points remain tied to source raster pixels. Reviewers can
+    // inspect/fine-tune the LAST draft endpoint; never fabricate an organ map.
+    fun adjustLastDraftPoint(dx: Int, dy: Int) {
+        val lastIndex = marks.lastIndex
+        if (lastIndex < 0) return
+        val old = marks[lastIndex]
+        val updated = NativeDraftPixelRefinement.nudge(
+            point = old.point, dx = dx, dy = dy,
+            imageWidth = bitmap.width, imageHeight = bitmap.height,
+        ) ?: return
+        marks[lastIndex] = old.copy(point = updated)
+    }
+
     Dialog(
         onDismissRequest = onClose,
         properties = DialogProperties(usePlatformDefaultWidth = false),
@@ -276,7 +292,7 @@ private fun NativeRasterReviewer(
                     )
                     val markerColor = MaterialTheme.colorScheme.error
                     Canvas(modifier = Modifier.fillMaxSize()) {
-                        marks.forEach { mark ->
+                        marks.forEachIndexed { markerIndex, mark ->
                             val screen = NativeRasterCalibration.project(
                                 pixelX = mark.point.pixelX,
                                 pixelY = mark.point.pixelY,
@@ -294,7 +310,78 @@ private fun NativeRasterReviewer(
                                     radius = 6.dp.toPx(),
                                     center = Offset(screen.first, screen.second),
                                 )
+                                if (markerIndex == marks.lastIndex) {
+                                    // Ring denotes the *selected draft point*,
+                                    // NOT a verified anatomical hotspot.
+                                    drawCircle(
+                                        color = markerColor,
+                                        radius = 10.dp.toPx(),
+                                        center = Offset(screen.first, screen.second),
+                                        style = Stroke(width = 2.dp.toPx()),
+                                    )
+                                }
                             }
+                        }
+                    }
+                }
+                // U1.12: exact source-pixel evidence accompanies each manual tap.
+                // This panel is below the image to preserve U1.11 image-first QA.
+                val selectedDraft = marks.lastOrNull()
+                if (selectedDraft != null) {
+                    val x = String.format(Locale.ROOT, "%.2f", selectedDraft.point.pixelX)
+                    val y = String.format(Locale.ROOT, "%.2f", selectedDraft.point.pixelY)
+                    val u = String.format(Locale.ROOT, "%.5f", selectedDraft.point.normalizedX)
+                    val v = String.format(Locale.ROOT, "%.5f", selectedDraft.point.normalizedY)
+                    Text(
+                        if (tamil) "வரைவுப் பிக்சல் குறி: x=" + x + ", y=" + y +
+                            "; விகிதங்கள் u=" + u + ", v=" + v
+                        else "Draft source pixel: x=" + x + ", y=" + y +
+                            "; normalized u=" + u + ", v=" + v,
+                        style = MaterialTheme.typography.labelMedium,
+                        modifier = Modifier.testTag("u112-selected-pixel-" + organism),
+                    )
+                    Text(
+                        if (tamil)
+                            "கடைசிப் புள்ளியை ஒவ்வொரு உண்மையான பிக்சலாகச் சரிசெய்க. அறிவியல் ஒப்புதல் இல்லை."
+                        else
+                            "Fine-adjust last draft mark by exactly one source pixel; this does not approve anatomy.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.testTag("u112-unverified-coordinate-note-" + organism),
+                    )
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        val moves = listOf(
+                            Triple("x-minus", "←", Pair(-1, 0)),
+                            Triple("x-plus", "→", Pair(1, 0)),
+                            Triple("y-minus", "↑", Pair(0, -1)),
+                            Triple("y-plus", "↓", Pair(0, 1)),
+                        )
+                        moves.forEach { (tag, glyph, shift) ->
+                            val allowed = NativeDraftPixelRefinement.nudge(
+                                selectedDraft.point, shift.first, shift.second,
+                                bitmap.width, bitmap.height,
+                            ) != null
+                            OutlinedButton(
+                                onClick = { adjustLastDraftPoint(shift.first, shift.second) },
+                                enabled = allowed,
+                                modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                                    .semantics {
+                                        contentDescription = when (tag) {
+                                            "x-minus" -> if (tamil) "X ஒரு பிக்சல் குறை"
+                                                else "Decrease X by one source pixel"
+                                            "x-plus" -> if (tamil) "X ஒரு பிக்சல் கூட்டு"
+                                                else "Increase X by one source pixel"
+                                            "y-minus" -> if (tamil) "Y ஒரு பிக்சல் குறை"
+                                                else "Decrease Y by one source pixel"
+                                            else -> if (tamil) "Y ஒரு பிக்சல் கூட்டு"
+                                                else "Increase Y by one source pixel"
+                                        }
+                                    }
+                                    .testTag("u112-nudge-" + organism + "-" + tag),
+                            ) { Text(glyph) }
                         }
                     }
                 }
