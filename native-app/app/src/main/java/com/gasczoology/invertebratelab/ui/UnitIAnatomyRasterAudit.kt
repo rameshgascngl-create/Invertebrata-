@@ -438,6 +438,7 @@ private fun NativeRasterReviewer(
                 Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
                     OutlinedButton(
                         onClick = { narrator.speak(selected.narration, language) },
+                        enabled = !isPrivateCandidate, // Unknown source stage: no organ-name narration.
                         modifier = Modifier.weight(1f).heightIn(min = 48.dp)
                             .testTag("u110-review-speak-" + organism),
                     ) {
