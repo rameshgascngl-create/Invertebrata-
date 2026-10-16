@@ -209,6 +209,15 @@ internal fun UnitIOriginalPencilMasterIntake(
                     Text(if (tamil) "ஆய்வுப் படத்தை நீக்கு" else "Discard unverified candidate")
                 }
             }
+            // Printed 1922 Leishmania source: strict original-file fingerprint.
+            // Preview/crop is available only on a byte-identical source image,
+            // and never silently becomes an approved student-facing plate.
+            UnitIHistoricalPlateCropReviewer(
+                organism = organism,
+                candidate = candidate,
+                bitmap = decodedBitmap,
+                language = language,
+            )
         }
     }
 }
