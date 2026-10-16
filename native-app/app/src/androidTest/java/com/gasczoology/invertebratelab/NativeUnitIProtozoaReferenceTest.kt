@@ -295,6 +295,27 @@ class NativeUnitIProtozoaReferenceTest {
             fixture.recycle()
             val bytes = out.toByteArray()
             assertTrue(bytes.size > 4096)
+            // PNG cropper must preserve actual decoded source pixels without
+            // scale/interpolation. This tests the positive crop engine without
+            // falsely authenticating the historical illustration itself.
+            val sampleCrop = com.gasczoology.invertebratelab.data.HistoricalPixelCrop(
+                left = 100, top = 120, rightExclusive = 350, bottomExclusive = 400,
+            )
+            val croppedBytes = com.gasczoology.invertebratelab.ui.NativeHistoricalCropEncoding
+                .png(bytes, sampleCrop)
+            val decodedCrop = android.graphics.BitmapFactory.decodeByteArray(
+                croppedBytes, 0, croppedBytes.size,
+            )!!
+            assertTrue(decodedCrop.width == 250 && decodedCrop.height == 280)
+            val fullSource = android.graphics.BitmapFactory.decodeByteArray(
+                bytes, 0, bytes.size,
+            )!!
+            assertTrue(
+                "Archival rectangle changed original pixel colours",
+                decodedCrop.getPixel(21, 34) == fullSource.getPixel(121, 154),
+            )
+            decodedCrop.recycle()
+            fullSource.recycle()
             val source = com.gasczoology.invertebratelab.data.NativePencilMasterStore
                 .importBytes(context, organism, bytes)
             assertFalse(com.gasczoology.invertebratelab.data.UnitIHistoricalPlateArchive
