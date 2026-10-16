@@ -4,6 +4,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
     branches:
       - native/u4-earthworm-academic-foundation-20261014
       - native/u4-penaeus-substantive-textbook-20261016
+      - native/u42-penaeus-external-anatomy-schematic-20261016
   workflow_dispatch:
 
 permissions:
@@ -52,6 +53,16 @@ jobs:
           assert 'UnitIVPenaeusTeaching.sections' in nav
           assert 'UnitIVPenaeusAppendageExplorer' in nav
           assert 'UnitIVPenaeusLifeCycleExplorer' in nav
+          atlas=(root/"ui/UnitIVPenaeusVectorAtlas.kt").read_text(encoding="utf-8")
+          for term in ["Canvas(", "detectTapGestures", "u42-penaeus-vector-canvas",
+                       "PenaeusExternalAtlas.hit", "OfflineNarrator", "u42-penaeus-schematic-disclosure",
+                       "rostrum", "pereiopods", "pleopods", "uropods", "telson"]:
+              assert term in atlas,term
+          assert 'UnitIVPenaeusVectorAtlas(language, penaeusExternalPart)' in nav
+          assert 'rememberSaveable(chapter.id)' in nav
+          assert 'tamilNativeDiagramSelectsActualNamedVectorStructureAndRetainsSelection' in Path(
+              "native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVPenaeusTest.kt").read_text()
+
           assert 'u4-penaeus-a5-original-heading' in nav
           assert 'rememberSaveable(chapter.id)' in nav
           assert 'u4-penaeus-academic-hold' in prawnui
