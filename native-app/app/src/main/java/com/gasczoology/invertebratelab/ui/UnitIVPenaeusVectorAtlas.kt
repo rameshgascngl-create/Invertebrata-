@@ -85,7 +85,7 @@ internal object PenaeusExternalAtlas {
             .minByOrNull { it.second }?.first?.id
 }
 
-private val graphite = Color(0xFF304653)
+private val penaeusOutlineInk = Color(0xFF304653)
 private val shell = Color(0xFFE5E2D7)
 private val selectFill = Color(0xFFB9E6D9)
 private val limb = Color(0xFF687B79)
@@ -149,25 +149,25 @@ internal fun UnitIVPenaeusVectorAtlas(
                         close()
                     }
                     drawPath(carapace,if(selected.id=="carapace")selectFill else shell)
-                    drawPath(carapace,graphite,style=Stroke(4f))
+                    drawPath(carapace,penaeusOutlineInk,style=Stroke(4f))
                     // Rostrum is an anterior continuation of the carapace.
                     val rostrum=polygon(pt(107,205),pt(18,194),pt(86,216),pt(113,224))
                     drawPath(rostrum,if(selected.id=="rostrum")selectFill else shell)
-                    drawPath(rostrum,graphite,style=Stroke(3f))
+                    drawPath(rostrum,penaeusOutlineInk,style=Stroke(3f))
                     for(i in 0..3) {
                         val x=43f+i*14
-                        drawLine(graphite,Offset(x,198f),Offset(x+5f,190f),2.2f)
+                        drawLine(penaeusOutlineInk,Offset(x,198f),Offset(x+5f,190f),2.2f)
                     }
                     // Eye and stalk.
-                    drawLine(if(selected.id=="eyes")Color(0xFF00876C) else graphite,
+                    drawLine(if(selected.id=="eyes")Color(0xFF00876C) else penaeusOutlineInk,
                         Offset(131f,202f),Offset(129f,169f),6f)
-                    drawCircle(if(selected.id=="eyes")Color(0xFF00876C) else graphite,
+                    drawCircle(if(selected.id=="eyes")Color(0xFF00876C) else penaeusOutlineInk,
                         12f,Offset(129f,159f))
                     // Distinct first antennule and second antenna processes.
                     val a1=Path().apply {moveTo(100f,211f);cubicTo(66f,149f,49f,145f,22f,136f)}
                     val a2=Path().apply {moveTo(101f,209f);cubicTo(24f,94f,59f,52f,88f,17f)}
-                    drawPath(a1,if(selected.id=="antennules")Color(0xFF00876C) else graphite,style=Stroke(3f))
-                    drawPath(a2,if(selected.id=="antennae")Color(0xFF00876C) else graphite,style=Stroke(2.5f))
+                    drawPath(a1,if(selected.id=="antennules")Color(0xFF00876C) else penaeusOutlineInk,style=Stroke(3f))
+                    drawPath(a2,if(selected.id=="antennae")Color(0xFF00876C) else penaeusOutlineInk,style=Stroke(2.5f))
                     // Abdomen: SIX articulated segments; last narrows into the tail fan.
                     val xs=listOf(406f,483f,557f,628f,696f,761f,819f)
                     for(i in 0..5) {
@@ -177,7 +177,7 @@ internal fun UnitIVPenaeusVectorAtlas(
                             pt(xs[i]-6,top),pt(xs[i+1]+6,top+4),
                             pt(xs[i+1]+6,bottom-9),pt(xs[i],bottom))
                         drawPath(part,if(selected.id=="abdomen")selectFill else shell)
-                        drawPath(part,graphite,style=Stroke(3.1f))
+                        drawPath(part,penaeusOutlineInk,style=Stroke(3.1f))
                         drawLine(Color(0xFFBEC3B8),
                             Offset(xs[i]+15f,top+10f),Offset(xs[i]+15f,bottom-14f),1.4f)
                     }
@@ -186,7 +186,7 @@ internal fun UnitIVPenaeusVectorAtlas(
                         val root=Offset(205f+i*38f,315f)
                         val knee=Offset(root.x-13f+i*2,369f+(i%2)*12)
                         val tip=Offset(knee.x+24f,437f-(i%2)*9)
-                        val col=if(selected.id=="pereiopods")Color(0xFF00876C) else graphite
+                        val col=if(selected.id=="pereiopods")Color(0xFF00876C) else penaeusOutlineInk
                         drawLine(col,root,knee,4f)
                         drawLine(col,knee,tip,3f)
                     }
@@ -207,10 +207,10 @@ internal fun UnitIVPenaeusVectorAtlas(
                     val lower=polygon(pt(818,269),pt(882,307),pt(956,291),pt(846,259))
                     drawPath(upper,if(selected.id=="uropods")selectFill else Color(0xFFD1DCD4))
                     drawPath(lower,if(selected.id=="uropods")selectFill else Color(0xFFD1DCD4))
-                    drawPath(upper,graphite,style=Stroke(3f));drawPath(lower,graphite,style=Stroke(3f))
+                    drawPath(upper,penaeusOutlineInk,style=Stroke(3f));drawPath(lower,penaeusOutlineInk,style=Stroke(3f))
                     val telson=polygon(pt(821,250),pt(932,253),pt(974,257),pt(833,270))
                     drawPath(telson,if(selected.id=="telson")selectFill else shell)
-                    drawPath(telson,graphite,style=Stroke(3f))
+                    drawPath(telson,penaeusOutlineInk,style=Stroke(3f))
                     // Selected named target: informative outline, not an invented pixel overlay.
                     drawCircle(Color(0xFF007F67),18f,selected.anchor,style=Stroke(4f))
                     drawCircle(Color(0xFF007F67),4f,selected.anchor)
