@@ -540,8 +540,14 @@ private fun ChapterScreen(
                             "பாரமீசியம் உடலமைப்புப் படங்களைப் பார்"))
                     }
                 }
-                Text(label(language, "EXAM PRACTICE — after the teaching lesson",
-                    "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்"))
+                Text(
+                    if (chapter.id == "u4-penaeus")
+                        label(language,
+                            "READ THE NATIVE TYPE STUDY FIRST · the original A5 questions follow",
+                            "முதலில் விரிவான இன ஆய்வைப் படிக்கவும் · அசல் A5 வினாக்கள் பின்னர்")
+                    else label(language, "EXAM PRACTICE — after the teaching lesson",
+                        "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்")
+                )
             }
             if (chapter.id == "u1-proto-parasites") {
                 item(key = "u15-entamoeba-native-textbook") {
