@@ -296,7 +296,7 @@ internal fun UnitIHistoricalPlateCropReviewer(
                 Box(
                     modifier = Modifier.fillMaxWidth().height(355.dp)
                         .onSizeChanged { viewport = it }
-                        .pointerInput(candidate.sourceSha256) {
+                        .pointerInput(candidate.sourceSha256, viewport) {
                             detectTapGestures { pos ->
                                 val hit = NativeRasterCalibration.hit(
                                     tapX = pos.x, tapY = pos.y,
