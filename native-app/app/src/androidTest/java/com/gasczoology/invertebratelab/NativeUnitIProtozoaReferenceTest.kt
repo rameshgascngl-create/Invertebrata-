@@ -264,6 +264,80 @@ class NativeUnitIProtozoaReferenceTest {
         }
     }
 
+    @Test fun historical1922ArchiveRejectsUnmatchedRasterAndBlocksCropExport() {
+        val context = androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext
+        val organism = "leishmania"
+        com.gasczoology.invertebratelab.data.NativePencilMasterStore.discard(
+            context, organism,
+        )
+        try {
+            // Synthetic 900×900 test image, expressly NOT archived/scanned
+            // anatomy. It must never pass the real Wikimedia SHA-1 gate.
+            val fixture = android.graphics.Bitmap.createBitmap(
+                900, 900, android.graphics.Bitmap.Config.ARGB_8888,
+            )
+            val cv = android.graphics.Canvas(fixture)
+            cv.drawColor(android.graphics.Color.WHITE)
+            val pen = android.graphics.Paint().apply {
+                color = android.graphics.Color.BLACK; strokeWidth = 3f
+            }
+            for (i in 0..450) {
+                cv.drawLine(
+                    (i * 17 % 850).toFloat(), (i * 43 % 850).toFloat(),
+                    (i * 61 % 850).toFloat(), (i * 29 % 850).toFloat(), pen,
+                )
+            }
+            val out = java.io.ByteArrayOutputStream()
+            assertTrue(fixture.compress(
+                android.graphics.Bitmap.CompressFormat.PNG, 100, out,
+            ))
+            fixture.recycle()
+            val bytes = out.toByteArray()
+            assertTrue(bytes.size > 4096)
+            val source = com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                .importBytes(context, organism, bytes)
+            assertFalse(com.gasczoology.invertebratelab.data.UnitIHistoricalPlateArchive
+                .leishmania1922.exactSourceMatches(
+                    source.originalBytes, source.width, source.height,
+                ))
+            enter(false)
+            rule.onNodeWithTag("native-unit-1")
+                .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
+            rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
+            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+                .performScrollToNode(hasTestTag("u116-archive-section"))
+            rule.onNodeWithTag("u116-archive-source-check").assertExists()
+            rule.onNodeWithTag("u116-source-url")
+                .assertTextContains("Leishmania_donovani_", substring = true)
+            rule.onNodeWithTag("u116-refresh-source")
+                .performScrollTo().performClick()
+            rule.waitUntil(20_000) {
+                rule.onAllNodes(
+                    hasTestTag("u116-source-identity") and
+                        hasText("NOT MATCHED", substring = true)
+                ).fetchSemanticsNodes().isNotEmpty()
+            }
+            // A synthetically generated drawing MUST NOT expose a
+            // scientifically misleading authenticated original crop.
+            rule.onNodeWithTag("u116-export-png").assertDoesNotExist()
+            rule.onNodeWithTag("u116-export-json").assertDoesNotExist()
+            rule.onNodeWithTag("u116-source-identity")
+                .performScrollTo().assertExists()
+            screenshot("u116-unmatched-archive-identity")
+        } finally {
+            assertTrue(
+                com.gasczoology.invertebratelab.data.NativePencilMasterStore.discard(
+                    context, organism
+                )
+            )
+        }
+    }
+
     @Test fun nativeMorphotypeAtlasDistinguishesThreeCellStagesAndCanvas() {
         enter(false)
         rule.onNodeWithTag("native-unit-1")
