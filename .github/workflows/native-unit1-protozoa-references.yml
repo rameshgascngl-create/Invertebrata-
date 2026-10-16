@@ -274,3 +274,53 @@ jobs:
           echo 'U1.9 coordinate calibration is DEBUG-only and exports explicitly UNVERIFIED source-pixel marks; no student anatomy hotspots are deployed.'
           echo 'Scientific anatomy, hotspots, Tamil and physical-device audible speech remain OPEN.'
           echo 'No production promotion or Unit I final acceptance authorized.'
+
+  # U1.14: This push workflow does not produce pull_request-triggered runs.
+  # Publish a minimal legacy commit STATUS *after* both engineering jobs finish
+  # so external review tools can inspect the exact SHA. Academic signoff and
+  # physical-device acceptance are never implied by this CI-only status.
+  report-engineering-commit-status:
+    name: Report exact-commit native engineering CI status
+    needs: [compile-and-corpus, android-ui]
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      statuses: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CI_COMPILE: ${{ needs.compile-and-corpus.result }}
+      CI_ANDROID: ${{ needs.android-ui.result }}
+    steps:
+      - name: Report status only after Kotlin and Android QA job results
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os
+          passed = os.environ['CI_COMPILE'] == 'success' and os.environ['CI_ANDROID'] == 'success'
+          body = {
+              'state': 'success' if passed else 'failure',
+              'description': (
+                  'Kotlin/JVM + API34 offline 100%/200% CI passed; academic/device HOLD'
+                  if passed else 'Kotlin/JVM or API34 CI did not pass; academic/device HOLD'
+              ),
+              'context': 'invertebrata/unit1-native-engineering-ci-only',
+              'target_url': (
+                  'https://github.com/' + os.environ['GITHUB_REPOSITORY'] +
+                  '/actions/runs/' + os.environ['GITHUB_RUN_ID']
+              ),
+          }
+          with open(os.environ['RUNNER_TEMP'] + '/u114-engineering-status.json', 'w') as out:
+              json.dump(body, out)
+          print('Engineering CI status:', body['state'])
+          PY
+          curl --fail-with-body --silent --show-error --retry 2 --max-time 30 \
+            -X POST \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            --data-binary @"${RUNNER_TEMP}/u114-engineering-status.json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            > "${RUNNER_TEMP}/u114-commit-status-response.json"
+          echo "Exact-SHA engineering CI status published; academic/artwork/device release HOLD remains."
