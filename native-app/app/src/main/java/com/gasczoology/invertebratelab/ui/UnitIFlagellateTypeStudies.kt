@@ -176,6 +176,12 @@ internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage)
                     language = language,
                 )
             }
+            // Reconciled from the sibling U1.10 intake branch. The review tool
+            // remains Android debuggable-only, not a student asset override.
+            UnitIOriginalPencilMasterIntake(
+                organism = study.id,
+                language = language,
+            )
             Text(
                 if (tamil) study.imageTa else study.imageEn,
                 style = MaterialTheme.typography.labelMedium,
