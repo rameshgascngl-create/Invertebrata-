@@ -173,6 +173,11 @@ class NativeUnitIProtozoaReferenceTest {
                 android.graphics.Bitmap.CompressFormat.JPEG, 90, jpegOut
             ))
             decoded.recycle()
+            assertTrue(
+                "Normal unrotated JPEG should remain eligible for image review",
+                com.gasczoology.invertebratelab.data.NativePencilMasterStore
+                    .sourceOrientationAccepted("jpeg", jpegOut.toByteArray())
+            )
             val rotatedFile = java.io.File.createTempFile(
                 "u114-exif-rotation-", ".jpg", context.cacheDir
             )
