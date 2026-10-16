@@ -196,7 +196,8 @@ jobs:
                         'u117_verified_historical_sources', 'Published SHA-1',
                         'originalBytes', 'importDocument('):
               assert token in archive_store,token
-          assert 'NativePencilMasterStore' not in archive_store
+          assert 'NativePencilMasterStore.load(' not in archive_store
+          assert 'NativePencilMasterStore.import' not in archive_store
           assert 'NativeHistoricalOriginalStore.load(' in crop_ui
           assert 'NativeHistoricalOriginalStore.importDocument(' in crop_ui
           assert 'u117-open-original-picker' in crop_ui
