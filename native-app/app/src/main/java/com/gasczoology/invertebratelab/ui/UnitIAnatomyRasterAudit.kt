@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
 import android.content.pm.ApplicationInfo
+import android.graphics.Bitmap
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
@@ -21,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -39,6 +42,8 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.UnitIAnatomyReviewDescriptions
 import com.gasczoology.invertebratelab.data.NativeRasterCalibration
 import com.gasczoology.invertebratelab.data.NativeDraftPixelRefinement
+import com.gasczoology.invertebratelab.data.NativeSourcePixelEvidence
+import com.gasczoology.invertebratelab.data.NativeDraftFinding
 import com.gasczoology.invertebratelab.data.RasterPixelLocation
 import java.security.MessageDigest
 import java.util.Locale
@@ -52,7 +57,12 @@ import org.json.JSONObject
  * There are NO pre-authorised organ hotspots, anatomical leader lines or
  * silent production activation. The source image itself is never repainted.
  */
-private data class DraftRasterMark(val structureId: String, val point: RasterPixelLocation)
+private data class DraftRasterMark(
+    val structureId: String,
+    val point: RasterPixelLocation,
+    val finding: NativeDraftFinding = NativeDraftFinding.NOT_REVIEWED,
+    val note: String = \"\",
+)
 
 internal fun isNativeSourceAuditDebuggable(flags: Int): Boolean =
     flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
@@ -89,10 +99,14 @@ private fun reviewJson(
                 .put("pixel_y", mark.point.pixelY.toDouble())
                 .put("normalized_x", mark.point.normalizedX.toDouble())
                 .put("normalized_y", mark.point.normalizedY.toDouble())
+                .put("finding", mark.finding.name)
+                .put("reviewer_note", NativeSourcePixelEvidence.cleanNote(mark.note))
         )
     }
     return JSONObject()
-        .put("schema", "invertebrata.u110.morphotype-coordinate-draft.v1")
+        .put("schema", "invertebrata.u116.source-pixel-evidence-draft.v1")
+        .put("independent_scientific_signoff", false)
+        .put("student_hotspots_enabled", false)
         .put("status", "DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF")
         .put("source_image", sourceId)
         .put("source_kind", if (sourceId.startsWith("app-private:"))
@@ -202,7 +216,12 @@ private fun NativeRasterReviewer(
             point = old.point, dx = dx, dy = dy,
             imageWidth = bitmap.width, imageHeight = bitmap.height,
         ) ?: return
-        marks[lastIndex] = old.copy(point = updated)
+        // A change to the exact source pixel invalidates its prior observation.
+        marks[lastIndex] = old.copy(
+            point = updated,
+            finding = NativeDraftFinding.NOT_REVIEWED,
+            note = "",
+        )
     }
 
     Dialog(
