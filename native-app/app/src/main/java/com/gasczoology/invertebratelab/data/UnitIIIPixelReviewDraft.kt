@@ -8,6 +8,8 @@ internal data class UnitIIIPixelReviewMark(
     val organId: String,
     val pixelX: Float,
     val pixelY: Float,
+    val finding: UnitIIIReviewFinding = UnitIIIReviewFinding.NOT_REVIEWED,
+    val note: String = "",
 )
 
 internal data class UnitIIIPixelReviewDraft(
@@ -32,6 +34,8 @@ internal data class UnitIIIPixelReviewDraft(
             "An organ must have exactly one current review candidate"
         }
         for (p in marks) {
+            require(p.note.length <= UnitIIIOriginalPixelEvidence.MAX_NOTE_LENGTH &&
+                !p.note.contains('\u0000')) { "Invalid provisional review note" }
             require(p.organId in validIds) { "Wrong organism/plate organ ID" }
             require(p.pixelX.isFinite() && p.pixelY.isFinite() &&
                 p.pixelX >= 0f && p.pixelY >= 0f &&

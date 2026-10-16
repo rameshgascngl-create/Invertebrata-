@@ -3,6 +3,8 @@ package com.gasczoology.invertebratelab.ui
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -17,6 +19,8 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -37,12 +41,16 @@ import com.gasczoology.invertebratelab.data.UnitIIIPlateHotspots
 import com.gasczoology.invertebratelab.data.UnitIIIPlateSpec
 import com.gasczoology.invertebratelab.data.UnitIIIPixelReviewDraft
 import com.gasczoology.invertebratelab.data.UnitIIIPixelReviewMark
+import com.gasczoology.invertebratelab.data.UnitIIIOriginalPixelEvidence
+import com.gasczoology.invertebratelab.data.UnitIIIOriginalPixelWindow
+import com.gasczoology.invertebratelab.data.UnitIIIReviewFinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.security.MessageDigest
+import android.graphics.Bitmap
 
 /**
  * DEBUG-ONLY. Records unapproved source-pixel endpoints against the actual
@@ -69,6 +77,7 @@ internal fun UnitIIIPixelReviewDialog(
     var viewport by remember { mutableStateOf(IntSize.Zero) }
     var digest by remember(plate.assetStem) { mutableStateOf<String?>(null) }
     var fileState by remember { mutableStateOf("") }
+    var inspectingSourcePixels by remember(plate.assetStem) { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val assetPath = plate.assetStem + ".png"
 
@@ -111,11 +120,25 @@ internal fun UnitIIIPixelReviewDialog(
                     .put("pixel_x", point.pixelX.toDouble())
                     .put("pixel_y", point.pixelY.toDouble())
                     .put("normalized_x", point.pixelX / ready.imageWidth)
-                    .put("normalized_y", point.pixelY / ready.imageHeight))
+                    .put("normalized_y", point.pixelY / ready.imageHeight)
+                    .put("visual_finding", point.finding.name)
+                    .put("inspection_note", point.note)
+                    .put("inspection_window_source_pixels",
+                        UnitIIIOriginalPixelEvidence.window(
+                            ready.imageWidth, ready.imageHeight,
+                            point.pixelX, point.pixelY
+                        )?.let { window ->
+                            JSONObject()
+                                .put("left", window.x).put("top", window.y)
+                                .put("width", window.width).put("height", window.height)
+                        } ?: JSONObject.NULL
+                    ))
             }
             val json = JSONObject()
                 .put("schema", "invertebrata.u33.source-pixel-review.v1")
                 .put("approval_status", ready.approvalStatus)
+                .put("scientific_anatomy_approved", false)
+                .put("learner_hotspots_enabled", false)
                 .put("plate_asset_stem", ready.plateStem)
                 .put("actual_apk_png_sha256", ready.sourceSha256)
                 .put("source_width_px", ready.imageWidth)
@@ -286,6 +309,18 @@ internal fun UnitIIIPixelReviewDialog(
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.testTag("u33-review-last-point-" + plate.plateId),
                 )
+                OutlinedButton(
+                    onClick = { inspectingSourcePixels = true },
+                    enabled = evidence != null && marks.isNotEmpty(),
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("u34-inspect-original-pixels-" + plate.plateId),
+                ) {
+                    Text(
+                        if (tamil) "அசல் படப் பிக்சல்களைப் பெரிதாக்கி ஆய்வு செய் — வரைவு"
+                        else "Inspect actual source-pixel crop — DRAFT",
+                        maxLines = 2,
+                    )
+                }
                 Row(modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(
@@ -324,5 +359,19 @@ internal fun UnitIIIPixelReviewDialog(
                 if (fileState.isNotBlank()) Text(fileState)
             }
         }
+    }
+    val selectedForEvidence = marks.lastOrNull()
+    if (inspectingSourcePixels && selectedForEvidence != null && digest != null) {
+        UnitIIISourcePixelEvidenceDialog(
+            plate = plate,
+            bitmap = bitmap,
+            sourceSha = requireNotNull(digest),
+            mark = selectedForEvidence,
+            language = language,
+            onChange = { updated ->
+                marks = marks.map { if (it.organId == updated.organId) updated else it }
+            },
+            onClose = { inspectingSourcePixels = false },
+        )
     }
 }
