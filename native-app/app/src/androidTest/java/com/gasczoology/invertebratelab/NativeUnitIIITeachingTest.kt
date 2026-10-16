@@ -5,6 +5,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gasczoology.invertebratelab.data.*
 import com.gasczoology.invertebratelab.ui.UnitIIIDraftComparisonIntake
+import com.gasczoology.invertebratelab.ui.UnitIIIComparisonReportJson
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -191,7 +192,13 @@ class NativeUnitIIITeachingTest {
             .assertTextContains("SHA-256:",substring=true)
         rule.onNodeWithTag("u34-compare-import-external").assertIsEnabled()
         capture("fasciola-compare-ready")
-        rule.onNodeWithTag("u33-review-hold-external").assertExists()
+        rule.onNodeWithTag("u33-review-hold-external")
+            .assertTextContains("UNAPPROVED",substring=true)
+            .performClick()
+        rule.onNodeWithTag("u35-full-safety-description-external")
+            .assertTextContains("Direct student hotspots remain disabled",substring=true)
+        capture("fasciola-full-warning")
+        rule.onNodeWithTag("u35-full-safety-close-external").performClick()
         capture("fasciola-source-review-draft")
         rule.onNodeWithTag("u33-review-clear-external").performClick()
         rule.onNodeWithTag("u33-review-export-external").assertIsNotEnabled()
@@ -328,7 +335,13 @@ class NativeUnitIIITeachingTest {
             rule.onAllNodes(hasTestTag("u33-review-export-life-cycle") and isEnabled())
                 .fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("u33-review-hold-life-cycle").assertExists()
+        rule.onNodeWithTag("u33-review-hold-life-cycle")
+            .assertTextContains("ஒப்புதல் இல்லை",substring=true)
+            .performClick()
+        rule.onNodeWithTag("u35-full-safety-description-life-cycle")
+            .assertTextContains("மாணவர்களுக்கான",substring=true)
+        capture("ascaris-full-warning")
+        rule.onNodeWithTag("u35-full-safety-close-life-cycle").performClick()
         rule.onNodeWithTag("u34-compare-import-life-cycle").assertIsEnabled()
         // Exercise the untrusted draft parser using the U3.3 contract.
         val fakeSha="e".repeat(64)
@@ -345,6 +358,22 @@ class NativeUnitIIITeachingTest {
         val parsed=UnitIIIDraftComparisonIntake.parse(fakeJson)
         org.junit.Assert.assertEquals(fakeSha,parsed.sourceSha256)
         org.junit.Assert.assertEquals(1,parsed.marks.size)
+        // A real native report serializes exact source SHA, pixels and findings.
+        // It cannot contain academic approval, even at perfect agreement.
+        val reference = UnitIIIPixelReviewDraft("type_studies/ascaris/life-cycle",
+            fakeSha,960,1280,listOf(UnitIIIPixelReviewMark("ingestion",320f,450f)))
+        val other = UnitIIIPixelReviewDraft("type_studies/ascaris/life-cycle",
+            fakeSha,960,1280,listOf(UnitIIIPixelReviewMark("ingestion",340f,462f)))
+        val compared=UnitIIIEndpointAgreement.compare(reference,other)
+        val report=org.json.JSONObject(UnitIIIComparisonReportJson.serialize(compared))
+        org.junit.Assert.assertEquals(UnitIIIComparisonReportJson.SCHEMA,
+            report.getString("schema"))
+        org.junit.Assert.assertEquals(fakeSha,report.getString("source_png_sha256"))
+        org.junit.Assert.assertFalse(report.getBoolean("anatomical_accuracy_approved"))
+        org.junit.Assert.assertFalse(report.getBoolean("student_image_hotspots_authorized"))
+        org.junit.Assert.assertFalse(report.getBoolean("independent_reviewers_verified"))
+        org.junit.Assert.assertEquals("REQUIRES_ANATOMY_REVIEW",
+            report.getJSONArray("comparison_rows").getJSONObject(0).getString("finding"))
         org.junit.Assert.assertTrue(runCatching {
             UnitIIIDraftComparisonIntake.parse(
                 org.json.JSONObject(fakeJson).put("approval_status","APPROVED").toString())
