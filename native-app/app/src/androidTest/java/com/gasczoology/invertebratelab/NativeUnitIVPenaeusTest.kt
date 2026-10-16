@@ -165,7 +165,7 @@ class NativeUnitIVPenaeusTest {
         rule.onNodeWithTag("u42-penaeus-selected-name")
             .assertTextContains("காம்புள்ள", substring = true)
         // A tappable accessible label is always offered alongside the canvas.
-        rule.onNodeWithTag("u42-penaeus-select-telson").performClick()
+        rule.onNodeWithTag("u42-penaeus-select-telson").performScrollTo().performClick()
         rule.onNodeWithTag("u42-penaeus-selected-name")
             .assertTextContains("டெல்சன்", substring = true)
         capture("penaeus-tamil-interactive-telson")
