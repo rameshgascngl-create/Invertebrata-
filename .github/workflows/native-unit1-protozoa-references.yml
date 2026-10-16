@@ -16,6 +16,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u112-pixel-endpoint-review-20261016
       - native/u113-pencil-intake-unification-20261016
       - native/u114-scan-orientation-mobile-qa-20261016
+      - native/u115-morphotype-canvas-atlas-20261016
       - native/u19a-lifecycle-200pct-correction-20261015
   workflow_dispatch:
 
@@ -158,9 +159,26 @@ jobs:
           assert 'Dispatchers.Default' in intake
           assert 'WebView' not in scanner and 'WebView' not in intake
           assert 'androidOriginalPencilScanIntakeIsOfflineHashBoundAndDebugOnly' in android
-          assert len(android.split('@Test fun ')) - 1 == 5
+          assert len(android.split('@Test fun ')) - 1 == 7
           assert 'u113-private-stage-hold-trypanosoma' in android
           assert 'screenshot("u110-imported-review")' in android
+          atlas=(root/'data/UnitIStageAtlas.kt').read_text()
+          atlas_ui=(root/'ui/UnitIStageAtlasCanvas.kt').read_text()
+          atlas_jvm=Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/UnitIStageAtlasTest.kt').read_text()
+          assert 'UnitIStageAtlasChapter(language)' in nav
+          assert nav.index('u115-three-morphotype-conceptual-atlas') < nav.index('items(chapter.a5Questions')
+          for morphotype in ('brucei-blood','leishmania-amastigote','leishmania-promastigote'):
+              assert '"'+morphotype+'"' in atlas
+          assert 'No undulating membrane' in atlas
+          assert 'NO external long flagellum' in atlas
+          assert 'posterior' in atlas and 'anterior' in atlas
+          assert 'Canvas(' in atlas_ui and 'LazyRow(' in atlas_ui
+          assert 'OfflineNarrator(' in atlas_ui
+          assert 'NOT a hand-scanned pencil master' in atlas_ui
+          assert 'UnitIStageAtlasTest' in atlas_jvm
+          assert 'tamilNativeMorphotypeAtlasRetainsDistinctStageTextAt200Pct' in android
+          assert 'nativeMorphotypeAtlasDistinguishesThreeCellStagesAndCanvas' in android
+          assert 'screenshot("u115-tamil-promastigote-canvas")' in android
           assert 'NativeRasterCalibrationTest' in (
               Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
           )
