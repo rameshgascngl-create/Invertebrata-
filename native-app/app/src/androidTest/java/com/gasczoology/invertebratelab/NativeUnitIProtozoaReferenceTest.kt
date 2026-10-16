@@ -411,6 +411,27 @@ class NativeUnitIProtozoaReferenceTest {
             .performScrollTo().performTouchInput { click() }
         rule.onNodeWithTag("u19-mark-count-trypanosoma")
             .assertTextContains("1", substring = true)
+        // U1.16: the reviewer must see exact SOURCE pixels, not a
+        // simulated graphical organ hotspot or an unaudited enlarged image.
+        rule.onNodeWithTag("u116-closeup-title-trypanosoma")
+            .performScrollTo().assertTextContains("ORIGINAL source pixels", substring = true)
+        rule.onNodeWithTag("u116-closeup-trypanosoma")
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("u116-source-binding-trypanosoma")
+            .performScrollTo().assertTextContains("SHA-256:", substring = true)
+        rule.onNodeWithTag("u116-finding-picker-trypanosoma")
+            .performScrollTo()
+            .performScrollToNode(
+                hasTestTag("u116-finding-trypanosoma-VISIBLE_CANDIDATE")
+            )
+        rule.onNodeWithTag("u116-finding-trypanosoma-VISIBLE_CANDIDATE")
+            .assertIsDisplayed().performClick()
+        rule.onNodeWithTag("u116-review-status-hold-trypanosoma")
+            .performScrollTo().assertTextContains("No option confers scientific approval", substring = true)
+        rule.onNodeWithTag("u116-review-note-trypanosoma")
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("u19-tappable-raster-trypanosoma").performScrollTo()
+        screenshot("u116-true-source-pixel-crop")
         // Draft image-pixel refinement does NOT create scientific hotspots.
         val originalCoordinates = rule.onNodeWithTag("u112-selected-pixel-trypanosoma")
             .performScrollTo().assertTextContains("x=", substring = true)
