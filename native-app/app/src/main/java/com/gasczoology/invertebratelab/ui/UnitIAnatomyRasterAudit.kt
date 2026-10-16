@@ -14,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
@@ -154,7 +155,10 @@ private fun NativeRasterReviewer(
     val sourceId = sourceIdOverride ?: "unit1/references/" + organism + ".png"
     val reviewMorphotype = morphotypeOverride ?: plate.morphotype
     val isPrivateCandidate = sourceHashOverride != null
-    var selectedId by remember(organism, sourceHash) {
+    // LazyColumn can temporarily dispose the parent type-study item during
+    // long 200% Tamil/English dialog scrolls. Preserve the reviewer selection
+    // by exact organism/source hash rather than silently resetting to nucleus.
+    var selectedId by rememberSaveable(organism, sourceHash) {
         mutableStateOf(choices.first().id)
     }
     val selected = choices.first { it.id == selectedId }
@@ -419,6 +423,7 @@ private fun NativeRasterReviewer(
                     else "Selected structure: " + selected.en +
                         ". Pinch to enlarge, then tap the source pixel.",
                     style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.testTag("u114-selected-structure-" + organism),
                 )
                 Text(
                     if (tamil) selected.explanationTa else selected.explanationEn,
