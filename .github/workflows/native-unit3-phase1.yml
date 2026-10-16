@@ -152,6 +152,8 @@ jobs:
           test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
           assert 'capture("fasciola-pencil-intake-full-disclosure")' in test
           assert 'capture("ascaris-pencil-intake-full-disclosure")' in test
+          assert 'capture("fasciola-pencil-intake-disclosure-scrolled")' in test
+          assert 'capture("ascaris-pencil-intake-disclosure-scrolled")' in test
           assert 'fasciolaProvisionalImageIntakeNeverOverwritesBundledAnatomy' in test
           assert 'tamilAscarisSourceIntakePendingWithoutUnverifiedImage' in test
           assert 'capture("fasciola-pencil-intake-provisional")' in test
