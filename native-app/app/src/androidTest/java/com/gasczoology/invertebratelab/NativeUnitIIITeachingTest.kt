@@ -4,6 +4,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gasczoology.invertebratelab.data.*
+import com.gasczoology.invertebratelab.ui.UnitIIIDraftComparisonIntake
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -175,6 +176,7 @@ class NativeUnitIIITeachingTest {
             reviewerBoundsFasciola.height >= 230f * density
         )
         rule.onNodeWithTag("u33-review-export-external").assertIsNotEnabled()
+        rule.onNodeWithTag("u34-compare-import-external").assertIsNotEnabled()
         rule.onNodeWithTag("u33-review-original-raster-external")
             .performTouchInput {
                 click(androidx.compose.ui.geometry.Offset(width*.5f,height*.5f))
@@ -187,10 +189,13 @@ class NativeUnitIIITeachingTest {
         }
         rule.onNodeWithTag("u33-review-source-status-external")
             .assertTextContains("SHA-256:",substring=true)
+        rule.onNodeWithTag("u34-compare-import-external").assertIsEnabled()
+        capture("fasciola-compare-ready")
         rule.onNodeWithTag("u33-review-hold-external").assertExists()
         capture("fasciola-source-review-draft")
         rule.onNodeWithTag("u33-review-clear-external").performClick()
         rule.onNodeWithTag("u33-review-export-external").assertIsNotEnabled()
+        rule.onNodeWithTag("u34-compare-import-external").assertIsNotEnabled()
         rule.onNodeWithTag("u33-review-close-external").performClick()
         rule.onNodeWithTag("u33-review-dialog-external").assertDoesNotExist()
         rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
@@ -312,6 +317,7 @@ class NativeUnitIIITeachingTest {
             reviewerBoundsAscaris.height >= 230f * density
         )
         rule.onNodeWithTag("u33-review-export-life-cycle").assertIsNotEnabled()
+        rule.onNodeWithTag("u34-compare-import-life-cycle").assertIsNotEnabled()
         rule.onNodeWithTag("u33-review-original-raster-life-cycle")
             .performTouchInput {
                 click(androidx.compose.ui.geometry.Offset(width*.5f,height*.5f))
@@ -323,6 +329,32 @@ class NativeUnitIIITeachingTest {
                 .fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u33-review-hold-life-cycle").assertExists()
+        rule.onNodeWithTag("u34-compare-import-life-cycle").assertIsEnabled()
+        // Exercise the untrusted draft parser using the U3.3 contract.
+        val fakeSha="e".repeat(64)
+        val fakeJson=org.json.JSONObject()
+            .put("schema","invertebrata.u33.source-pixel-review.v1")
+            .put("approval_status","DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF")
+            .put("plate_asset_stem","type_studies/ascaris/life-cycle")
+            .put("actual_apk_png_sha256",fakeSha)
+            .put("source_width_px",960).put("source_height_px",1280)
+            .put("marks",org.json.JSONArray().put(
+                org.json.JSONObject().put("organ_id","ingestion")
+                    .put("pixel_x",320.0).put("pixel_y",450.0)))
+            .toString()
+        val parsed=UnitIIIDraftComparisonIntake.parse(fakeJson)
+        org.junit.Assert.assertEquals(fakeSha,parsed.sourceSha256)
+        org.junit.Assert.assertEquals(1,parsed.marks.size)
+        org.junit.Assert.assertTrue(runCatching {
+            UnitIIIDraftComparisonIntake.parse(
+                org.json.JSONObject(fakeJson).put("approval_status","APPROVED").toString())
+        }.isFailure)
+        org.junit.Assert.assertTrue(runCatching {
+            UnitIIIDraftComparisonIntake.parse(
+                org.json.JSONObject(fakeJson)
+                    .put("plate_asset_stem","type_studies/fasciola/external").toString())
+        }.isFailure)
+        capture("ascaris-compare-ready")
         capture("ascaris-source-review-draft")
         rule.onNodeWithTag("u33-review-close-life-cycle").performClick()
         rule.onNodeWithTag("u33-review-dialog-life-cycle").assertDoesNotExist()
