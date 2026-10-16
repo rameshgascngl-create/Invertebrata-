@@ -6,6 +6,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u3-anatomy-atlas-candidate-20261013
       - native/u3-cdc-complete-lifecycle-20261014
       - native/u3-cdc-graphite-facsimile-20261014
+      - native/u3-zoom-pan-magnification-20261016
   workflow_dispatch:
 
 permissions:
@@ -83,6 +84,12 @@ jobs:
           assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
           assert "if (geometryVerified) detectTapGestures" in gallery
           assert "if (geometryVerified && selected != null)" in gallery
+          assert 'detectTransformGestures' in gallery
+          assert 'u3-zoom-level-' in gallery and 'u3-zoom-in-' in gallery
+          assert 'u3-zoom-reset-' in gallery and 'clipToBounds()' in gallery
+          assert 'coerceIn(1f, 4f)' in gallery
+          assert 'coordinateApprovedStems: Set<String> = emptySet()' in hotspots
+
           import json
           report=json.loads(Path("qa-evidence/unit3/source-backed-plate-manifest.json").read_text())
           records=report["source_records"]
