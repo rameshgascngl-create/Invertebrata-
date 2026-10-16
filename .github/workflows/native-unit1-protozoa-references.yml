@@ -17,6 +17,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u113-pencil-intake-unification-20261016
       - native/u114-scan-orientation-mobile-qa-20261016
       - native/u115-morphotype-canvas-atlas-20261016
+      - native/u116-historical-plate-authenticity-crops-20261016
       - native/u19a-lifecycle-200pct-correction-20261015
   workflow_dispatch:
 
@@ -159,7 +160,7 @@ jobs:
           assert 'Dispatchers.Default' in intake
           assert 'WebView' not in scanner and 'WebView' not in intake
           assert 'androidOriginalPencilScanIntakeIsOfflineHashBoundAndDebugOnly' in android
-          assert len(android.split('@Test fun ')) - 1 == 7
+          assert len(android.split('@Test fun ')) - 1 == 8
           assert 'u113-private-stage-hold-trypanosoma' in android
           assert 'screenshot("u110-imported-review")' in android
           atlas=(root/'data/UnitIStageAtlas.kt').read_text()
@@ -179,6 +180,24 @@ jobs:
           assert 'tamilNativeMorphotypeAtlasRetainsDistinctStageTextAt200Pct' in android
           assert 'nativeMorphotypeAtlasDistinguishesThreeCellStagesAndCanvas' in android
           assert 'screenshot("u115-tamil-promastigote-canvas")' in android
+          historical=(root/'data/UnitIHistoricalPlateArchive.kt').read_text()
+          crop_ui=(root/'ui/UnitIHistoricalPlateCropReviewer.kt').read_text()
+          hist_test=Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/UnitIHistoricalPlateArchiveTest.kt').read_text()
+          assert 'UnitIHistoricalPlateSourceSection(language)' in nav
+          assert nav.index('u116-historical-leishmania-print-crop-review') < nav.index('items(chapter.a5Questions')
+          assert '3a08d99564510b548416ffb0bb4318eef68c1948' in historical
+          assert '314025' in historical and '1552' in historical and '1584' in historical
+          assert 'tissue-a-e' in historical and 'culture-f-o' in historical
+          assert 'UNVERIFIED_FLAGELLATED_CULTURE' in historical
+          assert 'exactSourceMatches(' in crop_ui
+          assert 'NativeHistoricalCropEncoding.png(' in crop_ui
+          assert 'DRAFT_FIGURE_CROP_NOT_ANATOMY_SIGNOFF' in crop_ui
+          assert 'u116-source-identity' in crop_ui
+          assert 'u116-export-png' in crop_ui
+          assert 'UnitIHistoricalPlateArchiveTest' in hist_test
+          assert 'historical1922ArchiveRejectsUnmatchedRasterAndBlocksCropExport' in android
+          assert 'screenshot("u116-unmatched-archive-identity")' in android
+          assert 'WebView' not in crop_ui and 'javascript' not in crop_ui.lower()
           assert 'NativeRasterCalibrationTest' in (
               Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
           )
