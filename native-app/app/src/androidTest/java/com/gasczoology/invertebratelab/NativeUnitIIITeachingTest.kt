@@ -168,6 +168,12 @@ class NativeUnitIIITeachingTest {
             .performScrollTo().assertIsDisplayed().performClick()
         rule.onNodeWithTag("u33-review-dialog-external").assertExists()
         rule.onNodeWithTag("u33-review-decoded-image-external").assertIsDisplayed()
+        val reviewerBoundsFasciola = rule.onNodeWithTag("u33-review-original-raster-external")
+            .fetchSemanticsNode().boundsInRoot
+        org.junit.Assert.assertTrue(
+            "At 200% font image is displaced by long labels",
+            reviewerBoundsFasciola.height >= 230f * density
+        )
         rule.onNodeWithTag("u33-review-export-external").assertIsNotEnabled()
         rule.onNodeWithTag("u33-review-original-raster-external")
             .performTouchInput {
@@ -299,6 +305,12 @@ class NativeUnitIIITeachingTest {
             .performScrollTo().assertIsDisplayed().performClick()
         rule.onNodeWithTag("u33-review-dialog-life-cycle").assertExists()
         rule.onNodeWithTag("u33-review-decoded-image-life-cycle").assertIsDisplayed()
+        val reviewerBoundsAscaris = rule.onNodeWithTag("u33-review-original-raster-life-cycle")
+            .fetchSemanticsNode().boundsInRoot
+        org.junit.Assert.assertTrue(
+            "At 200% font image is displaced by long labels",
+            reviewerBoundsAscaris.height >= 230f * density
+        )
         rule.onNodeWithTag("u33-review-export-life-cycle").assertIsNotEnabled()
         rule.onNodeWithTag("u33-review-original-raster-life-cycle")
             .performTouchInput {
