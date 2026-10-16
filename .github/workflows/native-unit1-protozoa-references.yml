@@ -14,6 +14,7 @@ name: Unit I U1.2 four protozoan reference plates - exact commit QA
       - native/u110-anatomy-source-morphotypes-20261015
       - native/u111-image-first-review-accessibility-20261015
       - native/u112-pixel-endpoint-review-20261016
+      - native/u113-pencil-intake-unification-20261016
       - native/u19a-lifecycle-200pct-correction-20261015
   workflow_dispatch:
 
@@ -125,6 +126,31 @@ jobs:
               Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/UnitIAnatomyReviewDescriptionsTest.kt').read_text()
           )
           assert 'NativeRasterReviewerLauncher(' in flagellates
+          scanner=(root/'data/NativePencilMasterStore.kt').read_text()
+          intake=(root/'ui/UnitIOriginalPencilMasterIntake.kt').read_text()
+          assert 'UnitIOriginalPencilMasterIntake(' in flagellates
+          assert 'isNativeSourceAuditDebuggable(context.applicationInfo.flags)' in intake
+          assert 'ActivityResultContracts.OpenDocument()' in intake
+          assert 'NativePencilMasterStore.importDocument(' in intake
+          assert 'NativeImportedPlateReviewer(' in intake
+          assert 'sourceHashOverride = sha256' in audit
+          assert 'UNVERIFIED_IMPORTED_STAGE_REQUIRES_SCIENTIFIC_REVIEW' in audit
+          assert 'enabled = !isPrivateCandidate' in audit
+          assert 'source_kind' in audit and 'source_sha256' in audit
+          assert 'app-private:u110_unverified_pencil_candidates/' in audit
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
+          assert 'openInputStream(uri)' in scanner
+          assert 'inJustDecodeBounds = true' in scanner
+          assert 'sourceSha256 = digest(bytes)' in scanner
+          assert 'MAX_PIXELS' in scanner and 'MAX_BYTES' in scanner
+          assert 'u110-candidate-image-' in intake
+          assert 'Dispatchers.Default' in intake
+          assert 'WebView' not in scanner and 'WebView' not in intake
+          android=(Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt').read_text())
+          assert 'androidOriginalPencilScanIntakeIsOfflineHashBoundAndDebugOnly' in android
+          assert len(android.split('@Test fun ')) - 1 == 5
+          assert 'u113-private-stage-hold-trypanosoma' in android
+          assert 'screenshot("u110-imported-review")' in android
           assert 'NativeRasterCalibrationTest' in (
               Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
           )
