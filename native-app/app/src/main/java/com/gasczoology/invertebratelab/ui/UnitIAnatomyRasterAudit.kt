@@ -435,6 +435,135 @@ private fun NativeRasterReviewer(
                         }
                     }
                 }
+                if (selectedDraft != null) {
+                    val win = remember(bitmap, selectedDraft.point.pixelX, selectedDraft.point.pixelY) {
+                        NativeSourcePixelEvidence.window(
+                            selectedDraft.point.pixelX,
+                            selectedDraft.point.pixelY,
+                            bitmap.width,
+                            bitmap.height,
+                        )
+                    }
+                    val crop = remember(bitmap, win) {
+                        if (win == null) null else runCatching {
+                            Bitmap.createBitmap(
+                                bitmap.asAndroidBitmap(),
+                                win.left, win.top, win.width, win.height,
+                            ).asImageBitmap()
+                        }.getOrNull()
+                    }
+                    Text(
+                        if (tamil)
+                            "உண்மையான மூலப் பிக்சல்களின் பெரிதாக்கிய பகுதி — உடலமைப்பு உறுதி அல்ல"
+                        else
+                            "Magnified ORIGINAL source pixels — NOT anatomical verification",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.testTag("u116-closeup-title-" + organism),
+                    )
+                    if (win != null && crop != null) {
+                        Box(
+                            modifier = Modifier.fillMaxWidth().height(200.dp).clipToBounds()
+                                .testTag("u116-closeup-" + organism),
+                        ) {
+                            Image(
+                                bitmap = crop,
+                                contentDescription = if (tamil)
+                                    "அசல் படத்தின் பிக்சல் பகுதி; அங்கீகரிக்கப்படாத புள்ளி"
+                                else "Unmodified source-pixel crop around provisional organ marker",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Fit,
+                            )
+                            val ink = MaterialTheme.colorScheme.error
+                            Canvas(Modifier.fillMaxSize()) {
+                                val at = NativeRasterCalibration.project(
+                                    pixelX = win.focusX,
+                                    pixelY = win.focusY,
+                                    viewportWidth = size.width,
+                                    viewportHeight = size.height,
+                                    rasterWidth = win.width,
+                                    rasterHeight = win.height,
+                                )
+                                if (at != null) {
+                                    drawCircle(
+                                        color = ink,
+                                        radius = 8.dp.toPx(),
+                                        center = Offset(at.first, at.second),
+                                        style = Stroke(width = 2.dp.toPx()),
+                                    )
+                                }
+                            }
+                        }
+                        Text(
+                            "SHA-256: " + (sourceHash ?: "UNAVAILABLE") +
+                                " · Crop: x=" + win.left + " y=" + win.top +
+                                " w=" + win.width + " h=" + win.height,
+                            style = MaterialTheme.typography.labelSmall,
+                            modifier = Modifier.testTag("u116-source-binding-" + organism),
+                        )
+                    } else {
+                        Text(
+                            if (tamil) "மூல பிக்சல் பகுதியைப் பெற முடியவில்லை — ஆய்வு முடிக்க இயலாது"
+                            else "Source-pixel close-up unavailable — do not verify this endpoint",
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.testTag("u116-crop-unavailable-" + organism),
+                        )
+                    }
+                    Text(
+                        if (tamil)
+                            "அமைப்புக் குறியை ஆய்வாளராக மதிப்பிடுக; இது அறிவியல் ஒப்புதல் அல்ல."
+                        else
+                            "Record your inspection finding. No option confers scientific approval.",
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.testTag("u116-review-status-hold-" + organism),
+                    )
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth()
+                            .testTag("u116-finding-picker-" + organism),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        items(NativeDraftFinding.values().toList(), key = { it.name }) { option ->
+                            val label = if (tamil) when (option) {
+                                NativeDraftFinding.NOT_REVIEWED -> "ஆய்வு செய்யவில்லை"
+                                NativeDraftFinding.VISIBLE_CANDIDATE -> "காணக்கூடிய வரைவு"
+                                NativeDraftFinding.CANNOT_RESOLVE -> "உறுதி செய்ய இயலவில்லை"
+                                NativeDraftFinding.WRONG_STRUCTURE -> "தவறான அமைப்பு"
+                            } else when (option) {
+                                NativeDraftFinding.NOT_REVIEWED -> "Not reviewed"
+                                NativeDraftFinding.VISIBLE_CANDIDATE -> "Visually plausible"
+                                NativeDraftFinding.CANNOT_RESOLVE -> "Cannot resolve"
+                                NativeDraftFinding.WRONG_STRUCTURE -> "Incorrect structure"
+                            }
+                            FilterChip(
+                                selected = selectedDraft.finding == option,
+                                onClick = {
+                                    val index = marks.lastIndex
+                                    if (index >= 0) marks[index] = marks[index].copy(finding = option)
+                                },
+                                label = { Text(label) },
+                                modifier = Modifier.heightIn(min = 48.dp)
+                                    .testTag("u116-finding-" + organism + "-" + option.name),
+                            )
+                        }
+                    }
+                    OutlinedTextField(
+                        value = selectedDraft.note,
+                        onValueChange = { value ->
+                            val index = marks.lastIndex
+                            if (index >= 0) marks[index] = marks[index].copy(
+                                note = NativeSourcePixelEvidence.cleanNote(value),
+                            )
+                        },
+                        label = {
+                            Text(if (tamil) "ஆய்வாளர் குறிப்பு (அங்கீகாரம் அல்ல)"
+                                else "Review note (not a signoff)")
+                        },
+                        minLines = 2,
+                        maxLines = 4,
+                        modifier = Modifier.fillMaxWidth()
+                            .testTag("u116-review-note-" + organism),
+                    )
+                }
                 if (isPrivateCandidate) {
                     Text(
                         if (tamil)
@@ -534,7 +663,8 @@ private fun NativeRasterReviewer(
                     ) { Text(if (tamil) "பின்செயல்" else "Undo point") }
                     Button(
                         onClick = { exportFile.launch("u19-" + organism + "-UNVERIFIED-pixels.json") },
-                        enabled = sourceHash != null && marks.isNotEmpty(),
+                        enabled = sourceHash?.let(NativeSourcePixelEvidence::isHashBoundSha256) == true &&
+                            marks.isNotEmpty(),
                         modifier = Modifier.weight(1f).heightIn(min = 48.dp)
                             .testTag("u19-export-" + organism),
                     ) { Text(if (tamil) "வரைவு JSON" else "Export draft JSON") }
