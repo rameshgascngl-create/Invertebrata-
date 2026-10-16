@@ -71,6 +71,7 @@ private fun rasterSha256(context: android.content.Context, organism: String): St
 
 private fun reviewJson(
     organism: String,
+    sourceId: String,
     checksum: String,
     morphotype: String,
     bitmap: ImageBitmap,
@@ -90,7 +91,9 @@ private fun reviewJson(
     return JSONObject()
         .put("schema", "invertebrata.u110.morphotype-coordinate-draft.v1")
         .put("status", "DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF")
-        .put("source_image", "unit1/references/" + organism + ".png")
+        .put("source_image", sourceId)
+        .put("source_kind", if (sourceId.startsWith("app-private:"))
+            "UNVERIFIED_PRIVATE_IMPORT" else "ATTRIBUTED_SOURCE_REFERENCE")
         .put("source_sha256", checksum)
         .put("organism", organism)
         .put("morphotype", morphotype)
@@ -132,6 +135,9 @@ private fun NativeRasterReviewer(
     bitmap: ImageBitmap,
     language: AppLanguage,
     onClose: () -> Unit,
+    sourceHashOverride: String? = null,
+    sourceIdOverride: String? = null,
+    morphotypeOverride: String? = null,
 ) {
     val context = LocalContext.current
     val tamil = language == AppLanguage.TAMIL
@@ -142,18 +148,27 @@ private fun NativeRasterReviewer(
     val narrator = remember(context, organism) { OfflineNarrator(context.applicationContext) }
     val narrationPhase by narrator.phase.collectAsState()
     DisposableEffect(narrator) { onDispose { narrator.close() } }
-    val sourceHash = remember(organism) { rasterSha256(context, organism) }
-    var selectedId by remember(organism) { mutableStateOf(choices.first().id) }
+    val sourceHash = remember(organism, sourceHashOverride) {
+        sourceHashOverride ?: rasterSha256(context, organism)
+    }
+    val sourceId = sourceIdOverride ?: "unit1/references/" + organism + ".png"
+    val reviewMorphotype = morphotypeOverride ?: plate.morphotype
+    val isPrivateCandidate = sourceHashOverride != null
+    var selectedId by remember(organism, sourceHash) {
+        mutableStateOf(choices.first().id)
+    }
     val selected = choices.first { it.id == selectedId }
-    val marks = remember(organism) { mutableStateListOf<DraftRasterMark>() }
+    val marks = remember(organism, sourceHash) { mutableStateListOf<DraftRasterMark>() }
     var zoom by remember(organism) { mutableFloatStateOf(1f) }
     var panX by remember(organism) { mutableFloatStateOf(0f) }
     var panY by remember(organism) { mutableFloatStateOf(0f) }
     var viewport by remember { mutableStateOf(IntSize.Zero) }
     var exportStatus by remember { mutableStateOf("") }
     LaunchedEffect(language, selectedId) { narrator.stop() }
-    val json = remember(organism, sourceHash, marks.toList()) {
-        reviewJson(organism, sourceHash.orEmpty(), plate.morphotype, bitmap, marks)
+    val json = remember(organism, sourceHash, sourceId, reviewMorphotype, marks.toList()) {
+        reviewJson(
+            organism, sourceId, sourceHash.orEmpty(), reviewMorphotype, bitmap, marks
+        )
     }
     val latestJson by rememberUpdatedState(json)
     val exportFile = rememberLauncherForActivityResult(
@@ -204,6 +219,17 @@ private fun NativeRasterReviewer(
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u19-review-hold-" + organism),
                 )
+                if (isPrivateCandidate) {
+                    Text(
+                        if (tamil)
+                            "இறக்குமதி செய்த படம்: உயிரின அடையாளமும் வளர்ச்சி நிலையும் உறுதிசெய்யப்படவில்லை. இவை ஆய்வுக் குறிப்புகள் மட்டும்."
+                        else
+                            "IMPORTED UNVERIFIED SCAN: organism, stage and structure names are review prompts, NOT confirmed anatomical identities.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.testTag("u113-private-stage-hold-" + organism),
+                    )
+                }
                 Text(
                     if (tamil) "மூலப் படம்: " + bitmap.width + " × " + bitmap.height
                     else "Original source raster: " + bitmap.width + " × " + bitmap.height,
@@ -401,9 +427,9 @@ private fun NativeRasterReviewer(
                 )
                 Text(
                     if (tamil)
-                        "உருவ நிலை: " + plate.morphotype +
+                        "உருவ நிலை: " + reviewMorphotype +
                             ". இது வரைவு மட்டும்; மூலப் படத்தில் இல்லாத அமைப்பைக் குறிக்கக் கூடாது."
-                    else "Reference morphotype: " + plate.morphotype +
+                    else "Review morphotype: " + reviewMorphotype +
                         ". No approved hotspot or promastigote on this source raster.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.error,
@@ -485,4 +511,31 @@ private fun NativeRasterReviewer(
             }
         }
     }
+}
+
+/**
+ * Reuse the U1.11 image-first and U1.12 one-pixel reviewer on a scanned
+ * PNG/JPEG. This source is NOT a biologically confirmed morphotype.
+ */
+@Composable
+internal fun NativeImportedPlateReviewer(
+    organism: String,
+    bitmap: ImageBitmap,
+    sha256: String,
+    language: AppLanguage,
+    onClose: () -> Unit,
+) {
+    val context = LocalContext.current
+    if (!isNativeSourceAuditDebuggable(context.applicationInfo.flags)) return
+    if (!sha256.matches(Regex("[0-9a-f]{64}"))) return
+    NativeRasterReviewer(
+        organism = organism,
+        bitmap = bitmap,
+        language = language,
+        onClose = onClose,
+        sourceHashOverride = sha256,
+        sourceIdOverride = "app-private:u110_unverified_pencil_candidates/" +
+            organism + ".source",
+        morphotypeOverride = "UNVERIFIED_IMPORTED_STAGE_REQUIRES_SCIENTIFIC_REVIEW",
+    )
 }
