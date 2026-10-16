@@ -390,6 +390,90 @@ class NativeUnitIIITeachingTest {
         rule.onAllNodesWithTag("u3-source-hotspot-review-hold").onFirst().assertExists()
     }
 
+    @Test fun fasciolaProvisionalImageIntakeNeverOverwritesBundledAnatomy() {
+        val ctx=androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext
+        val stem="type_studies/fasciola/external"
+        val original=ctx.assets.open(stem+".png").use { it.readBytes() }
+        val expectedHash=java.security.MessageDigest.getInstance("SHA-256")
+            .digest(original).joinToString("") { "%02x".format(it) }
+        UnitIIIPencilScanCandidateStore.discard(ctx,stem)
+        try {
+            // For engineering QA ONLY, import a packaged reference as an
+            // intentionally UNVERIFIED candidate. It is not a pencil scan.
+            val candidate=UnitIIIPencilScanCandidateStore.importBytes(ctx,stem,original)
+            org.junit.Assert.assertEquals(expectedHash,candidate.sourceSha256)
+            org.junit.Assert.assertEquals("UNVERIFIED_USER_SUPPLIED_SOURCE",
+                candidate.approvalStatus)
+            org.junit.Assert.assertEquals(expectedHash,
+                requireNotNull(UnitIIIPencilScanCandidateStore.load(ctx,stem)).sourceSha256)
+            org.junit.Assert.assertTrue(runCatching {
+                UnitIIIPencilScanCandidateStore.importBytes(ctx,stem,byteArrayOf(1,2,3,4))
+            }.isFailure)
+            org.junit.Assert.assertEquals(expectedHash,
+                requireNotNull(UnitIIIPencilScanCandidateStore.load(ctx,stem)).sourceSha256)
+            // A second organism's stage cannot be addressed by a false file stem.
+            org.junit.Assert.assertTrue(runCatching {
+                UnitIIIPencilScanCandidateStore.validate(
+                    "type_studies/fasciola/../../ascaris/external",original)
+            }.isFailure)
+            org.junit.Assert.assertTrue(runCatching {
+                UnitIIIPencilScanCandidateStore.validate(
+                    "type_studies/ascaris/nonexistent",original)
+            }.isFailure)
+            openChapter("u3-fasciola",false)
+            rule.onNodeWithTag("u3-reader-u3-fasciola")
+                .performScrollToNode(hasTestTag("u36-open-source-intake-external"))
+            rule.onNodeWithTag("u36-open-source-intake-external")
+                .performScrollTo().performClick()
+            rule.onNodeWithTag("u36-source-intake-dialog-external").assertExists()
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("u36-candidate-image-external")
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
+            rule.onNodeWithTag("u36-candidate-image-external").assertIsDisplayed()
+            rule.onNodeWithTag("u36-candidate-summary-external")
+                .assertTextContains("UNVERIFIED",substring=true)
+            rule.onNodeWithTag("u36-export-manifest-external").assertIsEnabled()
+            rule.onNodeWithTag("u36-choose-source-external").assertIsEnabled()
+            rule.onNodeWithTag("u36-identity-not-approval-external").assertExists()
+            capture("fasciola-pencil-intake-provisional")
+            rule.onNodeWithTag("u36-source-intake-close-external").performClick()
+            rule.onNodeWithTag("u36-source-intake-dialog-external").assertDoesNotExist()
+            // Never mutate the bundled image or activate student hotspots.
+            org.junit.Assert.assertArrayEquals(
+                original,ctx.assets.open(stem+".png").use { it.readBytes() })
+            org.junit.Assert.assertFalse(UnitIIIPlateHotspots.geometryApproved(stem))
+        } finally {
+            org.junit.Assert.assertTrue(UnitIIIPencilScanCandidateStore.discard(ctx,stem))
+        }
+    }
+
+    @Test fun tamilAscarisSourceIntakePendingWithoutUnverifiedImage() {
+        val ctx=androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext
+        val stem="type_studies/ascaris/life-cycle"
+        UnitIIIPencilScanCandidateStore.discard(ctx,stem)
+        try {
+            openChapter("u3-ascaris",true)
+            rule.onNodeWithTag("u3-reader-u3-ascaris")
+                .performScrollToNode(hasTestTag("u36-open-source-intake-life-cycle"))
+            rule.onNodeWithTag("u36-open-source-intake-life-cycle")
+                .performScrollTo().performClick()
+            rule.onNodeWithTag("u36-source-intake-dialog-life-cycle").assertExists()
+            rule.onNodeWithTag("u36-no-candidate-life-cycle").assertExists()
+            rule.onNodeWithTag("u36-choose-source-life-cycle").assertIsEnabled()
+            rule.onNodeWithTag("u36-export-manifest-life-cycle").assertDoesNotExist()
+            rule.onNodeWithTag("u36-identity-not-approval-life-cycle").assertExists()
+            capture("ascaris-pencil-intake-pending")
+            rule.onNodeWithTag("u36-source-intake-close-life-cycle").performClick()
+            rule.onNodeWithTag("u36-source-intake-dialog-life-cycle").assertDoesNotExist()
+            org.junit.Assert.assertFalse(UnitIIIPlateHotspots.geometryApproved(stem))
+        } finally {
+            org.junit.Assert.assertTrue(UnitIIIPencilScanCandidateStore.discard(ctx,stem))
+        }
+    }
+
     @Test fun allSevenUnitThreeChaptersOpenNativeTextbooksBeforeQuestions() {
         rule.onNodeWithTag("unit-3").performScrollTo().performClick()
         rule.waitUntil(20_000) {
