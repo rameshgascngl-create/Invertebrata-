@@ -12,6 +12,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u34-unit3-independent-pixel-comparison-20261016
       - native/u35-readable-review-and-report-export-20261016
       - native/u36-unit3-original-pencil-scan-intake-20261016
+      - native/u36a-pencil-intake-font200-readability-20261016
   workflow_dispatch:
 
 permissions:
@@ -144,7 +145,15 @@ jobs:
           assert 'ActivityResultContracts.OpenDocument()' in u36ui
           assert 'student_atlas_integration_authorized",false' in u36ui
           assert 'u36-identity-not-approval-' in u36ui
+          assert 'showFullSafetyDisclosure' in u36ui
+          assert 'u36-full-disclosure-text-' in u36ui
+          assert 'heightIn(max=360.dp)' in u36ui
+          assert 'maxLines=2' in u36ui and 'UNVERIFIED • not student artwork' in u36ui
           test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
+          assert 'capture("fasciola-pencil-intake-full-disclosure")' in test
+          assert 'capture("ascaris-pencil-intake-full-disclosure")' in test
+          assert 'capture("fasciola-pencil-intake-disclosure-scrolled")' in test
+          assert 'capture("ascaris-pencil-intake-disclosure-scrolled")' in test
           assert 'fasciolaProvisionalImageIntakeNeverOverwritesBundledAnatomy' in test
           assert 'tamilAscarisSourceIntakePendingWithoutUnverifiedImage' in test
           assert 'capture("fasciola-pencil-intake-provisional")' in test
