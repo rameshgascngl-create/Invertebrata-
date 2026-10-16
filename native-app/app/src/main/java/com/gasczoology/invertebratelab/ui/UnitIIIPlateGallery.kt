@@ -3,6 +3,8 @@ package com.gasczoology.invertebratelab.ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.clipToBounds
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -10,6 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
@@ -42,8 +45,8 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
             modifier = Modifier.semantics { heading() }
         )
         Text(
-            if (tamil) "அசல் வரைவின் உறுப்பு இடத்தைத் தொடவும்; அல்லது படத்துக்குக் கீழே உறுப்பைப் தேர்ந்தெடுக்கவும். படங்கள் கல்வி மதிப்பாய்வில் உள்ளன."
-            else "Tap a structure in the original artwork or select its accessible organ control below. These drawings remain editorial candidates.",
+            if (tamil) "ஆய்வு நிலுவையிலுள்ள படங்களை 2×/4× பெரிதாக்கிப் பார்க்கலாம். நிபுணர் ஒப்புதல் பெறாத நேரடித் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன; கீழுள்ள உறுப்புப் பொத்தான்களைப் பயன்படுத்துக."
+            else "Inspect the original raster at 2×/4× with zoom and pan. Unreviewed image hotspots are disabled; use the accessible organ buttons below.",
             style = MaterialTheme.typography.bodySmall
         )
         plates.forEach { plate ->
@@ -53,6 +56,11 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
             var selectedId by rememberSaveable(plate.assetStem) {
                 mutableStateOf("")
             }
+            // Real native bitmap magnification is per plate and survives lazy
+            // row disposal; no artwork pixels or draft organ coordinates change.
+            var magnification by rememberSaveable(plate.assetStem) { mutableFloatStateOf(1f) }
+            var imagePanX by rememberSaveable(plate.assetStem) { mutableFloatStateOf(0f) }
+            var imagePanY by rememberSaveable(plate.assetStem) { mutableFloatStateOf(0f) }
             val selected = hotspots.firstOrNull { it.id == selectedId }
             Card(Modifier.fillMaxWidth().testTag("u3-plate-slot-" + plate.plateId)) {
                 Column(
@@ -71,11 +79,33 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                     } else {
                         BoxWithConstraints(
                             modifier = Modifier.fillMaxWidth().aspectRatio(960f / 1280f)
+                                .clipToBounds()
                                 .testTag("u3-plate-touch-" + plate.plateId)
-                                .pointerInput(plate.assetStem, geometryVerified) {
+                                .pointerInput(plate.assetStem) {
+                                    detectTransformGestures { _, pan, change, _ ->
+                                        val next = (magnification * change).coerceIn(1f, 4f)
+                                        magnification = next
+                                        if (next <= 1f) {
+                                            imagePanX = 0f
+                                            imagePanY = 0f
+                                        } else {
+                                            val limitX = (next - 1f) * size.width * .5f
+                                            val limitY = (next - 1f) * size.height * .5f
+                                            imagePanX = (imagePanX + pan.x).coerceIn(-limitX, limitX)
+                                            imagePanY = (imagePanY + pan.y).coerceIn(-limitY, limitY)
+                                        }
+                                    }
+                                }
+                                .pointerInput(plate.assetStem, geometryVerified, magnification, imagePanX, imagePanY) {
                                     if (geometryVerified) detectTapGestures { point ->
-                                        val fx = point.x / size.width.toFloat()
-                                        val fy = point.y / size.height.toFloat()
+                                        // Unproject through centre-pivot zoom and pan before
+                                        // any future independently approved source-pixel hit.
+                                        val px = (point.x - size.width * .5f - imagePanX) /
+                                            magnification + size.width * .5f
+                                        val py = (point.y - size.height * .5f - imagePanY) /
+                                            magnification + size.height * .5f
+                                        val fx = px / size.width.toFloat()
+                                        val fy = py / size.height.toFloat()
                                         val hit = hotspots.minByOrNull {
                                             (it.x - fx).pow(2) + (it.y - fy).pow(2)
                                         }
@@ -87,6 +117,14 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                     }
                                 }
                         ) {
+                            Box(
+                                modifier = Modifier.fillMaxSize().graphicsLayer {
+                                    scaleX = magnification
+                                    scaleY = magnification
+                                    translationX = imagePanX
+                                    translationY = imagePanY
+                                }
+                            ) {
                             Image(
                                 bitmap = raster,
                                 contentDescription = if (completeAscarisCycle) {
@@ -112,7 +150,53 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                             width=1.5.dp.toPx()))
                                 }
                             }
+                            }
                         }
+                        // Controls remain reachable in English/Tamil at 200% font.
+                        // Their bounded centre-pivot geometry applies identically
+                        // to decoded pixels and any future APPROVED marker overlay.
+                        Row(
+                            modifier = Modifier.fillMaxWidth()
+                                .testTag("u3-magnification-controls-" + plate.plateId),
+                            horizontalArrangement = Arrangement.spacedBy(7.dp)
+                        ) {
+                            OutlinedButton(
+                                onClick = {
+                                    magnification = (magnification / 2f).coerceAtLeast(1f)
+                                    if (magnification <= 1f) { imagePanX=0f; imagePanY=0f }
+                                    else {
+                                        val maxX=(magnification-1f)*960f*.5f
+                                        val maxY=(magnification-1f)*1280f*.5f
+                                        imagePanX=imagePanX.coerceIn(-maxX,maxX)
+                                        imagePanY=imagePanY.coerceIn(-maxY,maxY)
+                                    }
+                                },
+                                enabled = magnification > 1f,
+                                modifier = Modifier.weight(1f).heightIn(min=48.dp)
+                                    .testTag("u3-zoom-out-" + plate.plateId),
+                            ) { Text(if(tamil) "−" else "−") }
+                            OutlinedButton(
+                                onClick = { magnification = (magnification * 2f).coerceAtMost(4f) },
+                                enabled = magnification < 4f,
+                                modifier = Modifier.weight(1f).heightIn(min=48.dp)
+                                    .testTag("u3-zoom-in-" + plate.plateId),
+                            ) { Text("+") }
+                            OutlinedButton(
+                                onClick = {
+                                    magnification=1f
+                                    imagePanX=0f
+                                    imagePanY=0f
+                                },
+                                modifier = Modifier.weight(2f).heightIn(min=48.dp)
+                                    .testTag("u3-zoom-reset-" + plate.plateId),
+                            ) { Text(if(tamil) "மீட்டமை" else "Reset") }
+                        }
+                        Text(
+                            if (tamil) "பெரிதாக்கம்: " + magnification.toInt() + "× (அதிகபட்சம் 4×)"
+                            else "Image magnification: " + magnification.toInt() + "× (maximum 4×)",
+                            modifier = Modifier.testTag("u3-zoom-level-" + plate.plateId),
+                            style=MaterialTheme.typography.labelMedium
+                        )
                         if (completeAscarisCycle) {
                             Text(
                                 if (tamil) "அஸ்காரிஸ் வாழ்க்கைச் சுழற்சி: CDC DPDx மூலப்படத்தின் கிராஃபைட் நிறத் தோற்றம். இது கையால் வரைந்த அசல் பென்சில் படம் அல்ல. நேரடித் தொடுபுள்ளி ஆய்வு நிலுவையில் உள்ளது."
