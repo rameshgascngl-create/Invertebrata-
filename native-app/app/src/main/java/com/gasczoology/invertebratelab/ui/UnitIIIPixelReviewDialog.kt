@@ -5,6 +5,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.*
@@ -35,6 +37,8 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.NativeRasterCalibration
 import com.gasczoology.invertebratelab.data.UnitIIIPlateHotspots
 import com.gasczoology.invertebratelab.data.UnitIIIPlateSpec
+import com.gasczoology.invertebratelab.data.UnitIIIEndpointAgreement
+import com.gasczoology.invertebratelab.data.UnitIIIEndpointComparison
 import com.gasczoology.invertebratelab.data.UnitIIIPixelReviewDraft
 import com.gasczoology.invertebratelab.data.UnitIIIPixelReviewMark
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +46,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.security.MessageDigest
 
 /**
@@ -69,6 +74,10 @@ internal fun UnitIIIPixelReviewDialog(
     var viewport by remember { mutableStateOf(IntSize.Zero) }
     var digest by remember(plate.assetStem) { mutableStateOf<String?>(null) }
     var fileState by remember { mutableStateOf("") }
+    var comparison by remember(plate.assetStem) {
+        mutableStateOf<UnitIIIEndpointComparison?>(null)
+    }
+    var comparisonError by remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val assetPath = plate.assetStem + ".png"
 
@@ -98,6 +107,53 @@ internal fun UnitIIIPixelReviewDialog(
                 bitmap.width, bitmap.height, marks,
             )
         }.getOrNull()
+    }
+    // Any change to draft points or source identity invalidates an earlier
+    // comparison. Never show stale agreement after re-marking an organ.
+    LaunchedEffect(marks, digest) {
+        comparison = null
+        comparisonError = ""
+    }
+    val comparePicker = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument(),
+    ) { uri ->
+        if (uri != null) {
+            val current = evidence
+            if (current == null) {
+                comparisonError = if (tamil)
+                    "முதலில் ஒரு உறுப்பின் இடத்தைக் குறிக்கவும்."
+                else "Mark a source organ before comparing a second draft."
+            } else {
+                scope.launch {
+                    try {
+                        val second = withContext(Dispatchers.IO) {
+                            val bytes = ByteArrayOutputStream()
+                            context.contentResolver.openInputStream(uri)?.use { input ->
+                                val buffer = ByteArray(4096)
+                                while (true) {
+                                    val n = input.read(buffer)
+                                    if (n == -1) break
+                                    require(bytes.size() + n <=
+                                        UnitIIIDraftComparisonIntake.MAX_JSON_BYTES) {
+                                        "Second draft too large"
+                                    }
+                                    bytes.write(buffer, 0, n)
+                                }
+                            } ?: error("No source document")
+                            UnitIIIDraftComparisonIntake.parse(
+                                bytes.toString(Charsets.UTF_8.name()))
+                        }
+                        comparison = UnitIIIEndpointAgreement.compare(current, second)
+                        comparisonError = ""
+                    } catch (_: Exception) {
+                        comparison = null
+                        comparisonError = if (tamil)
+                            "ஒப்பீடு நிராகரிக்கப்பட்டது: ஒரே படம் / SHA-256 / வரைவு விவரம் தேவை."
+                        else "Comparison rejected: mismatched plate, SHA-256, size or invalid draft."
+                    }
+                }
+            }
+        }
     }
     val export = rememberLauncherForActivityResult(
         ActivityResultContracts.CreateDocument("application/json")
@@ -159,6 +215,12 @@ internal fun UnitIIIPixelReviewDialog(
                         overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.weight(1f).testTag("u33-review-title-" + plate.plateId),
                     )
+                    OutlinedButton(
+                        onClick = { comparePicker.launch(arrayOf("application/json", "text/plain")) },
+                        enabled = evidence != null,
+                        modifier = Modifier.heightIn(min=48.dp)
+                            .testTag("u34-compare-import-" + plate.plateId),
+                    ) { Text(if (tamil) "ஒப்பிடு" else "Compare") }
                     OutlinedButton(onClick = onClose,
                         modifier = Modifier.heightIn(min=48.dp)
                             .testTag("u33-review-close-" + plate.plateId)) {
@@ -322,6 +384,71 @@ internal fun UnitIIIPixelReviewDialog(
                     ) { Text("JSON", maxLines=1) }
                 }
                 if (fileState.isNotBlank()) Text(fileState)
+            }
+            if (comparison != null || comparisonError.isNotBlank()) {
+                val result = comparison
+                AlertDialog(
+                    onDismissRequest = {
+                        comparison = null
+                        comparisonError = ""
+                    },
+                    title = {
+                        Text(if (tamil) "உடற்கூறு புள்ளி ஒப்பீடு · ஒப்புதல் இல்லை"
+                             else "Pixel agreement audit · NOT APPROVAL")
+                    },
+                    text = {
+                        Column(
+                            modifier = Modifier.heightIn(max = 360.dp)
+                                .verticalScroll(rememberScrollState())
+                                .testTag("u34-comparison-report-" + plate.plateId),
+                            verticalArrangement = Arrangement.spacedBy(7.dp),
+                        ) {
+                            if (result == null) {
+                                Text(comparisonError)
+                            } else {
+                                Text(
+                                    "DRAFT COMPARISON · SHA-256: " +
+                                        result.sourceSha256.take(12) + "…"
+                                )
+                                Text(
+                                    if (tamil)
+                                        "±" + result.tolerancePixels.toInt() +
+                                            " மூல பிக்சல் ஒத்துப்போவது: " +
+                                            result.withinTolerance +
+                                            "; மீள் ஆய்வு: " + result.needsAttention
+                                    else "Agreement within " +
+                                        result.tolerancePixels.toInt() +
+                                        " original pixels: " + result.withinTolerance +
+                                        "; review needed: " + result.needsAttention
+                                )
+                                result.rows.forEach { line ->
+                                    Text(line.organId + ": " + line.finding.name +
+                                        (line.distancePixels?.let {
+                                            " (" + String.format(java.util.Locale.US, "%.1f", it) +
+                                                "px)"
+                                        } ?: ""),
+                                        style = MaterialTheme.typography.bodySmall)
+                                }
+                                Text(
+                                    if (tamil)
+                                        "ஒரே கோப்பு இருமுறை தரப்பட்டிருக்கலாம். ஒப்பீடு தனித்த நிபுணர் சான்றோ, உடற்கூறு ஒப்புதலோ அல்ல. மாணவர் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
+                                    else "The same file may have been submitted twice. Matching pixels do not establish independent reviewers or biological correctness. Student hotspots remain disabled.",
+                                    color = MaterialTheme.colorScheme.error,
+                                    style = MaterialTheme.typography.bodySmall,
+                                )
+                            }
+                        }
+                    },
+                    confirmButton = {
+                        TextButton(
+                            onClick = {
+                                comparison = null
+                                comparisonError = ""
+                            },
+                            modifier = Modifier.testTag("u34-comparison-close-" + plate.plateId),
+                        ) { Text(if (tamil) "மூடு" else "Close") }
+                    },
+                )
             }
         }
     }
