@@ -547,6 +547,9 @@ private fun ChapterScreen(
                 item(key = "u17-trypanosoma-figure") {
                     UnitIFlagellateStudyIntroduction("trypanosoma", language)
                 }
+                item(key = "u114-trypanosoma-pencil-scan-intake") {
+                    UnitIOriginalPencilMasterIntake("trypanosoma", language)
+                }
                 item(key = "u17-trypanosoma-morphology-section") {
                     UnitIFlagellateLessonSection("trypanosoma", "morphology", language)
                 }
@@ -564,6 +567,9 @@ private fun ChapterScreen(
                 }
                 item(key = "u17-leishmania-figure") {
                     UnitIFlagellateStudyIntroduction("leishmania", language)
+                }
+                item(key = "u114-leishmania-pencil-scan-intake") {
+                    UnitIOriginalPencilMasterIntake("leishmania", language)
                 }
                 item(key = "u17-leishmania-morphology-section") {
                     UnitIFlagellateLessonSection("leishmania", "morphology", language)
