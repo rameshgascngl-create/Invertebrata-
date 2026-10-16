@@ -9,6 +9,7 @@ name: Unit III native teaching candidate - isolated engineering acceptance
       - native/u3-zoom-pan-magnification-20261016
       - native/u3-fullscreen-raster-inspection-20261016
       - native/u33-unit3-source-pixel-review-20261016
+      - native/u34-unit3-exact-pixel-evidence-20261016
   workflow_dispatch:
 
 permissions:
@@ -106,9 +107,26 @@ jobs:
           assert 'sourceSha256.matches(Regex("[a-f0-9]{64}"))' in model
           assert 'UnitIIIPlateHotspots.geometryApproved' not in review
           assert 'u33-review-export-' in review and 'evidence != null' in review
+          crop=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIISourcePixelEvidenceDialog.kt').read_text())
+          crop_model=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIOriginalPixelWindow.kt').read_text())
+          crop_test=(Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/data/UnitIIIOriginalPixelEvidenceTest.kt').read_text())
+          assert 'UnitIIISourcePixelEvidenceDialog(' in review
+          assert 'u34-inspect-original-pixels-' in review
+          assert 'Bitmap.createBitmap(' in crop and 'bitmap.asAndroidBitmap()' in crop
+          assert 'u34-source-crop-' in crop and 'Source SHA-256: ' in crop
+          assert 'u34-review-finding-picker-' in crop
+          assert 'u34-review-note-' in crop
+          assert 'NOT a signed approval' in crop
+          assert 'scientific_anatomy_approved' in review and 'learner_hotspots_enabled' in review
+          assert 'inspection_window_source_pixels' in review
+          assert 'CANNOT_RESOLVE' in crop_model and 'WRONG_STRUCTURE' in crop_model
+          assert 'UnitIIIOriginalPixelEvidenceTest' in crop_test
           test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
           assert 'capture("fasciola-source-review-draft")' in test
           assert 'capture("ascaris-source-review-draft")' in test
+          assert 'capture("fasciola-actual-pixel-crop")' in test
+          assert 'capture("ascaris-actual-pixel-crop")' in test
+          assert 'u34-source-crop-external' in test and 'u34-source-crop-life-cycle' in test
 
           assert 'detectTransformGestures' in gallery
           assert 'u3-zoom-level-' in gallery and 'u3-zoom-in-' in gallery
