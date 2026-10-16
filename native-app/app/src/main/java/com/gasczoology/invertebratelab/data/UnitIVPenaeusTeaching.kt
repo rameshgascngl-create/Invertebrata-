@@ -52,8 +52,8 @@ internal object UnitIVPenaeusTeaching {
         PenaeusTeachingSection("classification",
             t("Scientific identity and classification","அறிவியல் அடையாளமும் வகைப்பாடும்"),
             listOf(
-                t("Penaeus is a genus of marine penaeid shrimps, within phylum Arthropoda, subphylum Crustacea, class Malacostraca and order Decapoda. Penaeids belong to the dendrobranchiate lineage; generic textbook drawings cannot be assumed to identify a particular Penaeus species.",
-                  "Penaeus என்பது கடலில் வாழும் பெனேயிட் இறால்களின் பேரினம். இது Arthropoda தொகுதி, Crustacea துணைத்தொகுதி, Malacostraca வகுப்பு, Decapoda வரிசை ஆகியவற்றில் அடங்குகிறது. ஒவ்வொரு பொதுப்படமும் குறிப்பிட்ட Penaeus இனத்தை உறுதிப்படுத்தாது."),
+                t("This undergraduate type study is anchored to the Indian white shrimp Penaeus indicus (H. Milne Edwards, 1837), placed in Fenneropenaeus indicus in some taxonomic treatments. It belongs to Arthropoda, Crustacea, Malacostraca, Decapoda and the dendrobranchiate penaeid shrimps. Other Penaeus species cannot be substituted as the same specimen without identification.",
+                  "இந்த இளநிலை இன ஆய்வின் மாதிரி இந்திய வெள்ளை இறால் Penaeus indicus (H. Milne Edwards, 1837) ஆகும். சில வகைப்பாட்டு முறைகளில் Fenneropenaeus indicus என்றும் அழைக்கப்படுகிறது. Arthropoda, Crustacea, Malacostraca, Decapoda மற்றும் பெனேயிட் குழுவில் அடங்கும். வேறொரு Penaeus இனப் படத்தை இதே இனமாக அடையாளம் காட்டக்கூடாது."),
                 t("Older zoology texts use broad 'prawn' labels, but freshwater Macrobrachium belongs to a different decapod lineage. Its large second chelipeds, brooded eggs and abbreviated larval representations must NOT be copied into a penaeid type study.",
                   "பழைய நூல்களில் 'இறால்' என்ற பொதுப்பெயர் பல்வேறு டெகாபோட் குழுக்களுக்குப் பயன்படுத்தப்படுகிறது. நன்னீர் Macrobrachium வேறொரு குழுவாகும்; அதன் பெரிய இரண்டாவது பிடிக்கால்கள், முட்டைச் சுமத்தல் மற்றும் வளர்ச்சி விவரங்களை Penaeus-க்கு மாற்றிக் காட்டக்கூடாது.")
             ),FAO_TAXON),
