@@ -266,7 +266,6 @@ internal fun UnitIIIPixelReviewDialog(
                                 "அறிவியல் ஒப்புதல் இல்லை. மாணவர் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன. முழு விளக்கத்தைப் படிக்கத் தொடவும்."
                             else "No scientific approval. Student hotspots disabled. Tap to read the complete explanation."
                         }
-                        .testTag("u35-readable-hold-" + plate.plateId)
                         .testTag("u33-review-hold-" + plate.plateId),
                 )
                 // The actual bitmap receives the majority of the screen.
