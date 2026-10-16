@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab
 
 import androidx.compose.ui.test.*
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gasczoology.invertebratelab.data.*
@@ -148,4 +149,26 @@ class NativeUnitIVPenaeusTest {
         rule.onNodeWithTag("u4-earthworm-title", useUnmergedTree = true)
             .assertTextContains("Metaphire posthuma", substring = true)
     }
+    @Test fun tamilNativeDiagramSelectsActualNamedVectorStructureAndRetainsSelection() {
+        enterPrawn(true)
+        find("u42-penaeus-vector-atlas")
+        rule.onNodeWithTag("u42-penaeus-schematic-disclosure").assertExists()
+        // Tap a genuine named vector-space target at the known eye anchor.
+        // 100% and 200% fonts use identical proportional diagram coordinates.
+        rule.onNodeWithTag("u42-penaeus-vector-canvas")
+            .performTouchInput { click(Offset(size.width * .129f, size.height * .265f)) }
+        rule.onNodeWithTag("u42-penaeus-selected-name")
+            .assertTextContains("காம்புள்ள", substring = true)
+        // Force LazyColumn to dispose this plate and reconstruct it.
+        find("u4-penaeus-section-practical")
+        find("u42-penaeus-vector-atlas")
+        rule.onNodeWithTag("u42-penaeus-selected-name")
+            .assertTextContains("காம்புள்ள", substring = true)
+        // A tappable accessible label is always offered alongside the canvas.
+        rule.onNodeWithTag("u42-penaeus-select-telson").performClick()
+        rule.onNodeWithTag("u42-penaeus-selected-name")
+            .assertTextContains("டெல்சன்", substring = true)
+        capture("penaeus-tamil-interactive-telson")
+    }
+
 }
