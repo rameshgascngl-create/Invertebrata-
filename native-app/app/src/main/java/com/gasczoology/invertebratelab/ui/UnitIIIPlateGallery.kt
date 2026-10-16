@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -33,6 +34,8 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
     val plates = UnitIIIPlateCatalog.forChapter(chapterId)
     if (plates.isEmpty()) return
     val tamil = language == AppLanguage.TAMIL
+    val context = LocalContext.current
+    val isReviewerBuild = isNativeSourceAuditDebuggable(context.applicationInfo.flags)
     val requestedSpeech by narrator.script.collectAsState()
     Column(
         modifier = Modifier.fillMaxWidth().testTag("u3-required-plate-gallery"),
@@ -62,6 +65,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
             var imagePanX by rememberSaveable(plate.assetStem) { mutableFloatStateOf(0f) }
             var imagePanY by rememberSaveable(plate.assetStem) { mutableFloatStateOf(0f) }
             var fullscreenOpen by remember { mutableStateOf(false) }
+            var draftPixelReviewerOpen by remember { mutableStateOf(false) }
             val selected = hotspots.firstOrNull { it.id == selectedId }
             Card(Modifier.fillMaxWidth().testTag("u3-plate-slot-" + plate.plateId)) {
                 Column(
@@ -94,6 +98,27 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                 language = language,
                                 onClose = { fullscreenOpen = false },
                             )
+                        }
+                        // DEBUG-ONLY source-pixel review. No coordinates are
+                        // handed to UnitIIIPlateHotspots or student builds.
+                        if (isReviewerBuild) {
+                            OutlinedButton(
+                                onClick = { draftPixelReviewerOpen = true },
+                                modifier = Modifier.fillMaxWidth().heightIn(min=48.dp)
+                                    .testTag("u33-open-review-" + plate.plateId),
+                            ) {
+                                Text(if (tamil)
+                                    "உறுப்பு இடத்தை அசல் பிக்சலில் ஆய்வு செய் — வரைவு"
+                                    else "Review original-pixel organ coordinates — DRAFT")
+                            }
+                            if (draftPixelReviewerOpen) {
+                                UnitIIIPixelReviewDialog(
+                                    plate = plate,
+                                    bitmap = raster,
+                                    language = language,
+                                    onClose = { draftPixelReviewerOpen = false },
+                                )
+                            }
                         }
                         BoxWithConstraints(
                             modifier = Modifier.fillMaxWidth().aspectRatio(960f / 1280f)
