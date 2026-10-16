@@ -2,6 +2,8 @@ package com.gasczoology.invertebratelab.data
 
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.media.ExifInterface
+import java.io.ByteArrayInputStream
 import android.net.Uri
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -51,6 +53,28 @@ internal object NativePencilMasterStore {
         else -> null
     }
 
+    /**
+     * EXIF rotation and mirroring affect a JPEG's displayed anatomy but are not
+     * automatically honoured by BitmapFactory. Reject non-normal orientation
+     * instead of saving incorrect source-pixel markers or a false stage diagram.
+     *
+     * Android's native ExifInterface(InputStream) is available from API 24.
+     * This is a scan-review INTAKE contract, not an image-editing operation.
+     */
+    internal fun sourceOrientationAccepted(format: String, bytes: ByteArray): Boolean {
+        if (format == "png") return true // Pixel rows define the PNG orientation.
+        if (format != "jpeg") return false
+        val orientation = try {
+            ExifInterface(ByteArrayInputStream(bytes)).getAttributeInt(
+                ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED,
+            )
+        } catch (_: Exception) {
+            return false // Fail closed on unreadable EXIF metadata.
+        }
+        return orientation == ExifInterface.ORIENTATION_UNDEFINED ||
+            orientation == ExifInterface.ORIENTATION_NORMAL
+    }
+
     internal fun allowedDimensions(width: Int, height: Int): Boolean =
         width in 600..5000 && height in 600..5000 &&
             width.toLong() * height.toLong() <= MAX_PIXELS
@@ -66,6 +90,10 @@ internal object NativePencilMasterStore {
         }
         val format = requireNotNull(sniffFormat(bytes)) {
             "Only actual PNG or JPEG source bytes are allowed"
+        }
+        require(sourceOrientationAccepted(format, bytes)) {
+            "JPEG has EXIF rotation/mirroring or unreadable metadata. " +
+                "Export a correctly oriented PNG/JPEG scan before calibrating source pixels."
         }
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
         BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
