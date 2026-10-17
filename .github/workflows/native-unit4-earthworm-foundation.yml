@@ -109,7 +109,8 @@ jobs:
           assert 'requirePlate=true' in nereis_tests
           assert 'Nereis drawing raster missing' in nereis_tests
           assert 'screen("nereis-tamil-legend-start-"+serial)' in nereis_tests
-          assert 'screen("nereis-tamil-legend-end-"+serial)' in nereis_tests
+          assert '"nereis-tamil-legend-end-"+serial' in nereis_tests
+          assert 'changedSince=if(scrolled) startSignature else null' in nereis_tests
           assert 'plateLabelCounts=intArrayOf(6,6,6,6,4,5,4,5)' in nereis_tests
           unit4_driver=Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
           assert 'MISSING_NEREIS_DRAWING_' in unit4_driver
