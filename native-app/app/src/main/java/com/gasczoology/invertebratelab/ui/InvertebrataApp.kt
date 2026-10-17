@@ -54,6 +54,7 @@ import com.gasczoology.invertebratelab.data.NativeCurriculumManifest
 import com.gasczoology.invertebratelab.data.UnitIVPenaeusTeaching
 import com.gasczoology.invertebratelab.data.UnitIVNereisLessons
 import com.gasczoology.invertebratelab.data.UnitIVSupplementaryLessons
+import com.gasczoology.invertebratelab.data.FiveUnitRestorationLessons
 import com.gasczoology.invertebratelab.data.StudyDestination
 import kotlinx.coroutines.launch
 
@@ -509,6 +510,7 @@ private fun ChapterScreen(
         return
     }
     val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
+    val restoredLesson = remember(chapter.id) { FiveUnitRestorationLessons.byId[chapter.id] }
     // U1.9a: keep life-cycle stages ABOVE the lazy list. At 200% font a
     // single teaching card is taller than the screen; disposing/recomposing
     // the lazy item must never silently return the learner to stage one.
@@ -613,9 +615,9 @@ private fun ChapterScreen(
                 item(key = "u18-leishmania-life-cycle") {
                     UnitIFlagellateLifeCycleSimulator("leishmania", language, leishmaniaStage) { leishmaniaStage = it }
                 }
-                item(key = "u115-three-morphotype-conceptual-atlas") {
-                    UnitIStageAtlasChapter(language)
-                }
+                // An unverified Canvas anatomy atlas is prohibited in the static pencil-image build.
+                // Organism-specific microscopy and anatomy remain available as narrative content
+                // until authentic raster masters are present.
             }
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
                 item(key = "u1-independent-protozoa-reference-atlas") {
@@ -665,11 +667,7 @@ private fun ChapterScreen(
                 item(key = "u4-penaeus-study-intro") {
                     UnitIVPenaeusIntroduction(language)
                 }
-                item(key = "u42-penaeus-external-interactive-vector") {
-                    UnitIVPenaeusVectorAtlas(language, penaeusExternalPart) {
-                        penaeusExternalPart = it
-                    }
-                }
+                // Vector anatomy disabled: student-facing figures must be imported pencil rasters.
                 items(UnitIVPenaeusTeaching.sections,
                     key = { "u4-penaeus-"+it.id }) { section ->
                     UnitIVPenaeusLessonSection(section,language)
@@ -745,13 +743,31 @@ private fun ChapterScreen(
                     )
                 }
             }
-            items(chapter.a5Questions, key = { it.id }) { question ->
-                QuestionCard(
-                    question = question,
-                    language = language,
-                    showAnswer = question.id == revealedQuestionId,
-                    onToggle = { onToggle(question) },
-                )
+            if (restoredLesson != null) {
+                item(key = "restoration-lesson-heading") {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().testTag("restoration-lesson-heading"),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(restoredLesson.heading.value(language),
+                            style = MaterialTheme.typography.headlineSmall,
+                            modifier = Modifier.testTag("restoration-lesson-title"))
+                        Text(label(language,
+                            "TEXTBOOK FIRST · English–Tamil academic draft; anatomical image review pending.",
+                            "முதலில் பாடநூல் · ஆங்கிலம்–தமிழ் கல்வி வரைவு; உடற்கூறுப் பட மதிப்பாய்வு நிலுவையில் உள்ளது."),
+                            color = MaterialTheme.colorScheme.error)
+                    }
+                }
+                items(restoredLesson.sections, key = { "restored-section-" + it.id }) { section ->
+                    Column(Modifier.fillMaxWidth().testTag("restored-section-" + section.id),
+                        verticalArrangement = Arrangement.spacedBy(9.dp)) {
+                        Text(section.title.value(language),
+                            style = MaterialTheme.typography.titleLarge)
+                        section.paragraphs.forEach { paragraph ->
+                            Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
+                        }
+                    }
+                }
             }
             if (lessonDraft != null) {
                 item(key = "n22-draft-heading") {
@@ -785,19 +801,21 @@ private fun ChapterScreen(
                             .distinct().forEach { source -> Text(source) }
                     }
                 }
-                if (chapter.id == "u1-paramecium") {
-                    item(key = "n23b-external-canvas") {
-                        ParameciumExternalCanvas(language,
-                            onJumpToPlate = {
-                                chapterScope.launch {
-                                    chapterListState.scrollToItem(
-                                        3 + chapter.a5Questions.size + lessonDraft.sections.size
-                                    )
-                                }
-                            }
-                        )
-                    }
-                }
+
+            }
+            item(key = "restoration-a5-divider") {
+                Text(label(language,"EXAM PRACTICE · Original A5 five-mark questions",
+                    "தேர்வுப் பயிற்சி · அசல் A5 ஐந்து மதிப்பெண் வினாக்கள்"),
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.testTag("restoration-a5-heading"))
+            }
+            items(chapter.a5Questions, key = { it.id }) { question ->
+                QuestionCard(
+                    question = question,
+                    language = language,
+                    showAnswer = question.id == revealedQuestionId,
+                    onToggle = { onToggle(question) },
+                )
             }
         }
     }
