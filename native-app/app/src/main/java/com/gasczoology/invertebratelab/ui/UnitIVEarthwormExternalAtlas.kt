@@ -137,16 +137,12 @@ internal fun UnitIVEarthwormExternalAtlas(
     DisposableEffect(narrator){onDispose{narrator.close()}}
     Card(Modifier.fillMaxWidth().testTag("u43-earthworm-external-atlas")) {
         Column(Modifier.padding(14.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
-            Text(if(tamil)"மண்புழு — ஊடாடும் வெளியமைப்பியல் வரைபடம்"
-                else "Earthworm · interactive external morphology",
+            Text(if(tamil)"மண்புழு: வெளியமைப்பு"
+                else "Earthworm: external anatomy",
                 style=MaterialTheme.typography.titleLarge,
                 modifier=Modifier.testTag("u43-earthworm-atlas-heading"))
-            Text(if(tamil)
-                "டிஜிட்டல் கற்பித்தல் வரைபடம் மட்டுமே; உண்மை பென்சில் ஸ்கேன் அல்ல. 40 எடுத்துக்காட்டுக் கண்டங்கள்; மேலே முதுகுப்புறம், கீழே வயிற்றுப்புறம். இனச் சிறப்புக் குறியீடுகளுக்கு அறிவியல் மறுஆய்வு தேவை."
-                else "Original vector teaching schematic, not a specimen scan. Forty example segments; dorsal view above and schematic ventral view below. Species-specific pore positions await independent zoological approval.",
-                style=MaterialTheme.typography.bodySmall,
-                modifier=Modifier.testTag("u43-earthworm-schematic-notice"))
-            Text(if(tamil)"முதுகுப்புறம் (குறியீட்டு வெளிப்புற வடிவம்)" else "Dorsal view · segment boundaries and clitellum",
+            Text(if(tamil)"மேல்: முதுகுப்புறம் · கீழ்: வயிற்றுப்புறம்"
+                else "Upper: dorsal · lower: ventral",
                 style=MaterialTheme.typography.labelMedium)
             Canvas(Modifier.fillMaxWidth().aspectRatio(1000f/640f)
                 .background(Color(0xFFF8F5EF))
@@ -234,9 +230,11 @@ internal fun UnitIVEarthwormExternalAtlas(
                     drawCircle(earthwormAccent,4f,selected.point)
                 }
             }
-            Text(if(tamil)"மேல்: முதுகுப்புறம். கீழ்: வயிற்றுப்புறத் துளைகள் — குறியீட்டு இடங்கள்."
-                else "Upper: dorsal. Lower: ventral, with schematic genital-pore positions.",
-                style=MaterialTheme.typography.bodySmall)
+            Text(if(tamil)
+                "டிஜிட்டல் கற்பித்தல் வரைபடம்; உண்மை பென்சில் ஸ்கேன் அல்ல. 40 எடுத்துக்காட்டுக் கண்டங்கள் மட்டுமே. இனச் சிறப்புத் துளைகளின் துல்லிய இடங்கள் அறிவியல் மறுஆய்வில் உள்ளன."
+                else "Original digital teaching schematic, NOT a pencil scan. Forty example segments only; precise species-specific pore positions remain under zoological review.",
+                style=MaterialTheme.typography.bodySmall,
+                modifier=Modifier.testTag("u43-earthworm-schematic-notice"))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
                 horizontalArrangement=Arrangement.spacedBy(8.dp)){
                 EarthwormExternalTeaching.structures.forEach {part ->
