@@ -10,6 +10,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u45-nereis-numbered-leader-qa-20261017
       - native/u46-nereis-legend-evidence-remediation-20261017
       - native/u47-nereis-legend-scroll-evidence-20261017
+      - native/u48-nereis-external-pencil-image-candidate-20261017
   workflow_dispatch:
 
 permissions:
@@ -93,6 +94,14 @@ jobs:
           assert 'UnitIVNereisLessons.plateTopics[index]' in nereis_ui
           assert 'u44-nereis-pencil-style-drawing-' in nereis_ui
           assert 'private val numberedLeaders=' in nereis_ui
+          assert 'painterResource(R.drawable.nereis_external_graphite_candidate)' in nereis_ui
+          assert 'drawNumberedLeaders(0)' in nereis_ui
+          candidate=Path('native-app/app/src/main/res/drawable/nereis_external_graphite_candidate.xml')
+          assert candidate.is_file()
+          candidate_xml=candidate.read_text(encoding='utf-8')
+          assert candidate_xml.count('<path ')>=200
+          assert 'android:viewportWidth="800"' in candidate_xml
+          assert 'android:viewportHeight="640"' in candidate_xml
           assert 'drawNumberedLeaders(index)' in nereis_ui
           assert 'for(j in -9..9)' in nereis_ui
           assert 'val tipX=cx+offset*4.8f' in nereis_ui
@@ -119,7 +128,7 @@ jobs:
           assert 'NativeUnitIVNereisTest' in Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
           assert 'u44-nereis-sources' in nav
           assert 'u44-nereis-static-plate-' in nav or 'u44-nereis-plate-$it' in nav
-          print("NEREIS_64_QA_FRAMES_AND_SCROLLED_TAMIL_LEGENDS=SOURCE_PRESENT; ORIGINAL_PENCIL_SCANS=PENDING")
+          print("NEREIS_STATIC_EXTERNAL_IMAGE_CANDIDATE_PRESENT=PASS; AUTHENTIC_PENCIL_SCANS_AND_ANATOMICAL_SIGNOFF=PENDING")
           earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
           for required in ["Canvas(", "detectTapGestures", "u43-earthworm-canvas",
                            "EarthwormExternalTeaching.hit", "OfflineNarrator",
