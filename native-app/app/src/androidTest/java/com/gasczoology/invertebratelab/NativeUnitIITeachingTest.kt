@@ -96,11 +96,8 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
         rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo()
         captureRealScreen("sycon-external")
-        // Source-master prosopyle: (595,751) / (1000,1250). At both
-        // Android font scales, direct image tap must select Tamil stage 03.
-        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.595f, height*.6008f))
-        }
+        // Image has no hotspots: stage is selected through accessible native buttons.
+        rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("03 · புரோசோபைல்")
         rule.onNodeWithTag("u2-stage-prosopyle").performScrollTo()
@@ -156,7 +153,7 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-practice-heading").assertExists()
     }
 
-    @Test fun englishSyconImageAndTapSelectsSpongocoel() {
+    @Test fun englishSyconImageAndAccessibleStageControlsSelectSpongocoel() {
         rule.onNodeWithTag("unit-2").performScrollTo().performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("chapter-u2-sycon").fetchSemanticsNodes().isNotEmpty()
@@ -181,25 +178,18 @@ class NativeUnitIITeachingTest {
         captureRealScreen("sycon-english")
         rule.onNodeWithTag("u2-anatomical-correction").performScrollTo()
             .assertTextContains("prosopyle", substring = true, ignoreCase = true)
-        // Three disjoint, anatomy-directed hit targets on the image itself.
-        // Stage labels remain source-authored and the raster is still DRAFT.
-        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.595f, height*.6008f))
+        // Native semantic stage controls replace anatomy taps.
+        for ((id,expected) in listOf(
+            "prosopyle" to "03 · Prosopyle",
+            "apopyle" to "05 · Apopyle",
+            "spongocoel" to "06 · Spongocoel"
+        )) {
+            rule.onNodeWithTag("u2-stage-"+id).performScrollTo().performClick()
+            rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+                .assertTextEquals(expected)
         }
-        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
-            .assertTextEquals("03 · Prosopyle")
-        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.648f, height*.494f))
-        }
-        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
-            .assertTextEquals("05 · Apopyle")
-        rule.onNodeWithTag("u2-sycon-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.713f, height*.324f))
-        }
-        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
-            .assertTextEquals("06 · Spongocoel")
     }
-    @Test fun englishObeliaImageTapAndPlanulaPlate() {
+    @Test fun englishObeliaStaticImageAndPlanulaStageButtons() {
         rule.onNodeWithTag("unit-2").performScrollTo().performClick()
         rule.onNodeWithTag("native-unit-2")
             .performScrollToNode(hasTestTag("chapter-u2-obelia"))
@@ -225,9 +215,7 @@ class NativeUnitIITeachingTest {
             .assertTextContains("gonotheca", substring = true, ignoreCase = true)
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-english")
-        rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.50f, height*.14f))
-        }
+        rule.onNodeWithTag("u2-stage-hydranth").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("02 · Feeding hydranth")
         rule.onNodeWithTag("u2-stage-planula").performScrollTo().performClick()
@@ -244,21 +232,15 @@ class NativeUnitIITeachingTest {
             org.junit.Assert.assertEquals(2200,info.outWidth)
             org.junit.Assert.assertEquals(3440,info.outHeight)
         }
-        rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.66f,height*.70f))
+        for((stage,expected) in listOf(
+            "medusa" to "04 · Free medusa",
+            "planula" to "05 · Planula larva",
+            "settlement" to "06 · Settlement and new colony"
+        )) {
+            rule.onNodeWithTag("u2-stage-"+stage).performScrollTo().performClick()
+            rule.onNodeWithTag("u2-selected-stage").performScrollTo()
+                .assertTextEquals(expected)
         }
-        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
-            .assertTextEquals("04 · Free medusa")
-        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.26f,height*.68f))
-        }
-        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
-            .assertTextEquals("05 · Planula larva")
-        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.794f,height*.9186f))
-        }
-        rule.onNodeWithTag("u2-selected-stage").performScrollTo()
-            .assertTextEquals("06 · Settlement and new colony")
         // The settlement stage MUST switch to Wolcott's hand-drawn PNG.
         context.assets.open("unit2/obelia_settlement.png").use { stream ->
             val info=android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds=true }
@@ -271,18 +253,13 @@ class NativeUnitIITeachingTest {
         rule.onNodeWithTag("u2-raster-bitmap-visible").assertExists()
         rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo()
         captureRealScreen("obelia-settlement-english")
-        // F: first feeding polyp in historical Fig.66, not a polygon fallback.
-        rule.onNodeWithTag("u2-obelia-image-plate").performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.479f,height*.560f))
-        }
+        // E and F remain independently accessible without diagram touch targets.
+        rule.onNodeWithTag("u2-settlement-choice-f").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Settlement and new colony")
         rule.onNodeWithTag("u2-selected-substage").performScrollTo()
             .assertTextContains("F · Primary feeding polyp", substring=true)
-        // E: the attached planula on its substrate.
-        rule.onNodeWithTag("u2-obelia-image-plate").performScrollTo().performTouchInput {
-            click(androidx.compose.ui.geometry.Offset(width*.625f,height*.724f))
-        }
+        rule.onNodeWithTag("u2-settlement-choice-e").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextEquals("06 · Settlement and new colony")
         rule.onNodeWithTag("u2-selected-substage").performScrollTo()
