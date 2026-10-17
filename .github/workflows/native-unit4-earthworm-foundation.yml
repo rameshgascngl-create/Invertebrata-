@@ -5,6 +5,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u4-earthworm-academic-foundation-20261014
       - native/u4-penaeus-substantive-textbook-20261016
       - native/u42-penaeus-external-anatomy-schematic-20261016
+      - native/u43-earthworm-functional-external-atlas-20261017
   workflow_dispatch:
 
 permissions:
@@ -73,6 +74,17 @@ jobs:
           assert 'assertEquals' in Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVPenaeusTest.kt').read_text() or 'assertTextContains' in Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVPenaeusTest.kt').read_text()
 
           assert 'u4-earthworm-plate-pending-' in ui
+          earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
+          for required in ["Canvas(", "detectTapGestures", "u43-earthworm-canvas",
+                           "EarthwormExternalTeaching.hit", "OfflineNarrator",
+                           "prostomium", "peristomium", "spermathecal", "clitellum",
+                           "female-pore", "male-pores", "setae", "annuli", "anus"]:
+              assert required in earthworm_atlas,required
+          assert "UnitIVEarthwormExternalAtlas(language, externalOrgan)" in ui
+          assert "rememberSaveable" in ui
+          assert "tamilExternalAtlasTapAndLazyScrollPreserveNamedGenitalPores" in Path(
+              "native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVEarthwormTest.kt").read_text()
+
           assert 'EXISTING_A5_CHAPTER_COUNT = 43' in manifest
           assert 'REQUIRED_LESSON_SLOTS = 44' in manifest
           import json
