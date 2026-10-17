@@ -53,6 +53,7 @@ import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.NativeCurriculumManifest
 import com.gasczoology.invertebratelab.data.UnitIVPenaeusTeaching
 import com.gasczoology.invertebratelab.data.UnitIVNereisLessons
+import com.gasczoology.invertebratelab.data.UnitIVSupplementaryLessons
 import com.gasczoology.invertebratelab.data.StudyDestination
 import kotlinx.coroutines.launch
 
@@ -469,6 +470,9 @@ private fun UnitScreen(
                             chapter.id == "u4-nereis" -> label(language,
                                 "OPEN NEREIS BIOLOGY · 14 lessons + eight static bilingual sketches.",
                                 "நெரீஸ் உயிரியல் · 14 பாடப் பகுதிகளும் எட்டு இருமொழிப் படங்களும்.")
+                            UnitIVSupplementaryLessons.byId.containsKey(chapter.id) -> label(language,
+                                "READ BILINGUAL BIOLOGY · full topic explanations before original A5.",
+                                "இருமொழி உயிரியல் பாடம் · அசல் A5 பயிற்சிக்கு முன் விரிவான விளக்கங்கள்.")
                             chapter.id == "u4-penaeus" -> label(language,
                                 "OPEN DETAILED PRAWN TYPE STUDY · appendages and development before A5.",
                                 "இறால் விரிவான இன ஆய்வு · இணைக்கால்கள் மற்றும் வளர்நிலைகளுக்குப் பின் A5.")
@@ -687,6 +691,57 @@ private fun ChapterScreen(
                         "அசல் ஐந்து மதிப்பெண் A5 பயிற்சி — மாற்றமில்லை"),
                         modifier=Modifier.testTag("u4-penaeus-a5-original-heading"),
                         style=MaterialTheme.typography.titleLarge)
+                }
+            }
+            if (UnitIVSupplementaryLessons.byId.containsKey(chapter.id)) {
+                val supplementary = UnitIVSupplementaryLessons.byId.getValue(chapter.id)
+                item(key = "u56-lesson-heading") {
+                    Column(
+                        modifier = Modifier.fillMaxWidth()
+                            .testTag("u56-lesson-heading"),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Text(
+                            supplementary.heading.value(language),
+                            style = MaterialTheme.typography.headlineSmall,
+                        )
+                        Text(
+                            label(language,
+                                "Read the explanatory sections, then practise the original five-mark questions.",
+                                "விளக்கப் பாடங்களைப் படித்தபின் அசல் ஐந்து மதிப்பெண் வினாக்களைப் பயிற்சி செய்க."),
+                        )
+                    }
+                }
+                items(supplementary.sections, key = { "u56-" + it.id }) { section ->
+                    Column(
+                        modifier = Modifier.fillMaxWidth()
+                            .testTag("u56-section-" + section.id),
+                        verticalArrangement = Arrangement.spacedBy(9.dp),
+                    ) {
+                        Text(section.title.value(language),style = MaterialTheme.typography.titleLarge)
+                        section.paragraphs.forEach { p ->
+                            Text(p.value(language),style = MaterialTheme.typography.bodyLarge)
+                        }
+                    }
+                }
+                item(key = "u56-science-reference-heading") {
+                    Text(
+                        label(language, "Further scientific reading", "மேலும் அறிவியல் வாசிப்பு"),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.testTag("u56-science-reference-heading"),
+                    )
+                    supplementary.reading.forEach { url ->
+                        Text(url,style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+                item(key = "u56-a5-divider") {
+                    Text(
+                        label(language,
+                            "ORIGINAL A5 FIVE-MARK QUESTIONS · unchanged",
+                            "அசல் A5 ஐந்து மதிப்பெண் வினாக்கள் · மாற்றமில்லை"),
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.testTag("u56-original-a5-heading"),
+                    )
                 }
             }
             items(chapter.a5Questions, key = { it.id }) { question ->
