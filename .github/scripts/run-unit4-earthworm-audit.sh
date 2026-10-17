@@ -75,8 +75,10 @@ for scale in 100 200;do
       file="$E/captured/unit4-$scale-nereis-$locale-plate-$serial.png"
       [[ -s "$file" ]] || { result="MISSING_NEREIS_DRAWING_$scale-$locale-$serial"; exit 1; }
     done
-    file="$E/captured/unit4-$scale-nereis-tamil-legend-$serial.png"
-    [[ -s "$file" ]] || { result="MISSING_NEREIS_LEGEND_$scale-$serial"; exit 1; }
+    for frame in start end; do
+      file="$E/captured/unit4-$scale-nereis-tamil-legend-$frame-$serial.png"
+      [[ -s "$file" ]] || { result="MISSING_NEREIS_LEGEND_$scale-$frame-$serial"; exit 1; }
+    done
   done
 done
 result=PASS
