@@ -413,8 +413,8 @@ private fun UnitScreen(
                 OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
                 Text(unit.title.value(language))
                 Text(label(language,
-                    "Open a teaching lesson where available. Remaining syllabus chapters are assessment-only previews until complete lessons and original atlas plates are authored.",
-                    "கற்பித்தல் பாடம் தயாராக உள்ள இடத்தில் அதைத் திறக்கவும். மற்ற அத்தியாயங்களில் முழுமையான பாடமும் அசல் உடலமைப்புப் படங்களும் உருவாகும்வரை வினாப் பயிற்சி முன்னோட்டம் மட்டுமே உள்ளது."))
+                    "Read the English–Tamil textbook sections before A5 questions. Missing anatomical plates remain visible as unapproved slots until restored.",
+                    "அசல் ஐந்து மதிப்பெண் வினாக்களுக்கு முன் இருமொழிப் பாடங்களைப் படிக்கவும். சேர்க்கப்படாத உடற்கூறுப் படங்கள் ஆய்வு நிலுவையில் உள்ளன என்று தெளிவாகக் காட்டப்படும்."))
                 if (unit.number == 4) {
                     Button(onClick = onEarthworm,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
@@ -477,9 +477,10 @@ private fun UnitScreen(
                             chapter.id == "u4-penaeus" -> label(language,
                                 "OPEN DETAILED PRAWN TYPE STUDY · appendages and development before A5.",
                                 "இறால் விரிவான இன ஆய்வு · இணைக்கால்கள் மற்றும் வளர்நிலைகளுக்குப் பின் A5.")
-                            unit.number == 2 || unit.number == 3 -> label(language,
-                                "OPEN ILLUSTRATED BILINGUAL LESSON FIRST · assessment follows.",
-                                "முதலில் படவிளக்க இருமொழிப் பாடத்தைத் திறக்கவும் · பின்னர் வினாப் பயிற்சி.")
+                            unit.number == 2 || unit.number == 3 || unit.number == 5 ||
+                                FiveUnitRestorationLessons.byId.containsKey(chapter.id) -> label(language,
+                                "OPEN BILINGUAL TEXTBOOK LESSON FIRST · unverified image slots remain visible.",
+                                "முதலில் இருமொழிப் பாடத்தைப் படி · மதிப்பாய்வு நிலுவைப் படங்கள் தெளிவாகக் காட்டப்படும்.")
                             else -> label(language,
                                 "Assessment-only preview; full illustrated lesson not yet authored.",
                                 "வினாப் பயிற்சி முன்னோட்டம்; முழுப் படவிளக்கப் பாடம் இன்னும் தயாரிக்கப்படவில்லை.")
@@ -560,6 +561,12 @@ private fun ChapterScreen(
                     else label(language, "EXAM PRACTICE — after the teaching lesson",
                         "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்")
                 )
+            }
+            if (chapter.id in setOf("u1-paramecium", "u4-penaeus", "u5-pila", "u5-asterias")) {
+                item(key = "r2-type-study-gallery") {
+                    val study = NativeCurriculumManifest.typeStudies.single { it.lessonId == chapter.id }
+                    RequiredTypeStudyPlates(study, language)
+                }
             }
             if (chapter.id == "u1-proto-parasites") {
                 item(key = "u15-entamoeba-native-textbook") {
