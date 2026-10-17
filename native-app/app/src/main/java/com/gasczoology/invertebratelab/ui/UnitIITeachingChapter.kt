@@ -95,6 +95,12 @@ internal fun UnitIITeachingChapter(
                     "முதலில் விளக்கத்தைப் படித்து அசல் படத்தை ஆராய்க; அதன்பின் பயிற்சி வினாக்களைப் படிக்கவும்."))
             }
         }
+        if (chapter.id == "u2-sycon" || chapter.id == "u2-obelia") {
+            item(key = "r3-required-type-study-gallery") {
+                val study = NativeCurriculumManifest.typeStudies.single { it.lessonId == chapter.id }
+                RequiredTypeStudyPlates(study, language)
+            }
+        }
         if (stages.isNotEmpty()) item(key="independent-pencil-lesson-figures") {
             Column(
                 modifier=Modifier.fillMaxWidth().testTag("u2-pencil-lesson-section"),
