@@ -1,0 +1,84 @@
+name: Native five-unit restoration — compile, assets and academic hold
+'on':
+  push:
+    branches:
+      - native/five-unit-restoration-r1-20261017
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: five-unit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile-and-jvm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify bilingual restoration source and textbook-first placement
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          data=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FiveUnitRestorationLessons.kt").read_text(encoding="utf-8")
+          ui=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").read_text(encoding="utf-8")
+          assert data.count('Chapter("u1-')==5
+          assert data.count('Chapter("u5-')==12
+          assert 'restoredLesson.sections' in ui
+          assert ui.index('if (restoredLesson != null)')<ui.index('items(chapter.a5Questions, key = { it.id })')
+          assert ui.index('if (lessonDraft != null)')<ui.index('items(chapter.a5Questions, key = { it.id })')
+          assert 'ParameciumExternalCanvas(language' not in ui
+          assert 'UnitIVPenaeusVectorAtlas(language' not in ui
+          assert 'UnitIStageAtlasChapter(language)' not in ui
+          asset=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIImagePlate.kt").read_text()
+          assert 'pngOnly=lifeHistory' not in asset
+          print("NEW_CHAPTERS=17; EXISTING_PARAMECIUM_AND_A5_ORDER=PASS")
+          PY
+      - name: Compile debug native Kotlin and Android test sources, run JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble device QA debug APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Upload development debug APK (NOT a release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-restoration-R1-DEBUG-UNAPPROVED
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  asset-inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record every mandatory and supplementary plate
+        run: python3 .github/scripts/audit-five-unit-assets.py --out qa-evidence/five-unit-assets
+      - name: Upload honest plate-register evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-restoration-R1-ASSET-REGISTER
+          path: qa-evidence/five-unit-assets/
+          if-no-files-found: error
+
+  complete-plate-acceptance:
+    needs: asset-inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail when any mandatory static anatomical plate is missing
+        run: python3 .github/scripts/audit-five-unit-assets.py --gate --out qa-evidence/five-unit-acceptance
+      - name: Academic acceptance remains a separate mandatory review
+        if: always()
+        run: |
+          echo "No green source-status can substitute for biology, source-rights and English-Tamil manual review."
+          echo "No production tag or Play/Indus submission is allowed from this R1 workflow."
