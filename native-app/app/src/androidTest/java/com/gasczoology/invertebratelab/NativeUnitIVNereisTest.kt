@@ -117,7 +117,7 @@ class NativeUnitIVNereisTest {
         val suffix=if(scale>=1.95f)"200" else "100"
         val nameOnDisk="/sdcard/Download/unit4-qa/unit4-"+suffix+"-"+name+".png"
         val ui=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().uiAutomation
-        require(!requirePlate || (plateIndex in 1..8 && plateBounds!=null))
+        require(!requirePlate || (plateIndex!=null && plateIndex in 1..8 && plateBounds!=null))
         val source=if(requirePlate) {
             val ctx=androidx.test.platform.app.InstrumentationRegistry
                 .getInstrumentation().targetContext
