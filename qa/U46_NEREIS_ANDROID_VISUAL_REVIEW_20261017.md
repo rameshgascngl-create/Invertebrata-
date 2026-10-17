@@ -27,15 +27,16 @@
 | 07 Excretory system | Simplified nephrostome/septum/tubule/pore schematic, not an authentic pencil anatomical plate. | Practical-master review required. |
 | 08 Trochophore | Apical cilia are visibly fused into one thick stroke in the original U4.5 rendering. | Definite graphical defect; **source corrected in U4.6**, emulator recheck pending. |
 
-The screenshot framing is also weak: for plates 02–08 the top of the frame often contains the previous card and its legend. The **nominal Tamil legend screenshots**, at 200% font scale, may show only the first term(s), not the whole legend. Thus a green instrumentation count is **not** proof of complete Tamil legend evidence.
+A serious false-positive was additionally confirmed: **`captured/unit4-100-nereis-tamil-plate-01.png` contains the Unit IV navigation menu, not any Nereis diagram.** Compose-node visibility and `boundsInWindow` assertions therefore did not establish actual screenshot correctness. The screenshot framing is also weak: for plates 02–08 the top of the frame often contains the previous card and its legend. The **nominal Tamil legend screenshots**, at 200% font scale, may show only the first term(s), not the whole legend. Thus a green instrumentation count is **not** proof of complete Tamil legend evidence.
 
 ## U4.6 corrective branch
 `native/u46-nereis-legend-evidence-remediation-20261017`
 
 1. Preserve the original on-device screenshots, and **capture separate first-term and last-term Tamil legend frames** at both scales. Enforce 64 Nereis evidence PNGs via the shell driver.
 2. Replace the fused trochophore apical stroke with spaced, individually drawn cilia in `UnitIVNereisStaticPlates.kt`; include the geometric signature in source audit.
-3. Do not weaken 100/200%, offline, A5, exact-commit, or per-suite XML requirements.
-4. Await **new exact-commit emulator PASS and actual inspection of corrected screenshots**. Do not claim U4.6 accepted from source edits alone.
+3. Add a decoded-PNG graphite-background pixel assertion to the native screenshot capture, with bounded retry for asynchronous SurfaceFlinger frames. This specifically rejects the observed Unit IV menu capture masquerading as Nereis plate 01.
+4. Do not weaken 100/200%, offline, A5, exact-commit, or per-suite XML requirements.
+5. Await **new exact-commit emulator PASS and actual inspection of corrected screenshots**. Do not claim U4.6 accepted from source edits alone.
 
 ## Academic release blockers independent of emulator success
 - The current diagrams are **Compose Canvas vector sketches**, *not* original graphite scans. Do not label them authenticated scans.
