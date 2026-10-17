@@ -323,7 +323,7 @@ private val numberedLeaders=listOf(
 )
 private val markerTextPaint=AndroidPaint(AndroidPaint.ANTI_ALIAS_FLAG).apply {
     color=android.graphics.Color.rgb(51,52,50)
-    textSize=24f
+    textSize=32f
     textAlign=AndroidPaint.Align.CENTER
     typeface=android.graphics.Typeface.DEFAULT_BOLD
 }
@@ -340,10 +340,10 @@ private fun DrawScope.drawNumberedLeaders(index:Int) {
             drawCircle(pencilBlack,3.8f,target)
         }
         seg(elbow,item.marker.y,item.marker.x,item.marker.y,1.8f,pencilBlack)
-        drawCircle(paper,16.5f,item.marker)
-        drawCircle(pencilBlack,16.5f,item.marker,style=Stroke(2.1f))
+        drawCircle(paper,22f,item.marker)
+        drawCircle(pencilBlack,22f,item.marker,style=Stroke(2.6f))
         drawContext.canvas.nativeCanvas.drawText(
-            (ordinal+1).toString(),item.marker.x,item.marker.y+8f,markerTextPaint
+            (ordinal+1).toString(),item.marker.x,item.marker.y+11f,markerTextPaint
         )
     }
 }
