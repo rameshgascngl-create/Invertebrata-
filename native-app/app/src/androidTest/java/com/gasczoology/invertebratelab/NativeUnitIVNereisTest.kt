@@ -62,7 +62,18 @@ class NativeUnitIVNereisTest {
         val serial=index.toString().padStart(2,'0')
         val drawing="u44-nereis-pencil-style-drawing-"+index
         find(drawing)
-        rule.onNodeWithTag(drawing).assertIsDisplayed()
+        val node=rule.onNodeWithTag(drawing).assertIsDisplayed()
+        val box=node.fetchSemanticsNode().boundsInWindow
+        val content=rule.activity.window.decorView
+        // The whole figure must fit inside the screenshot; a mere 1 px
+        // intersection does not count as evidence of a usable plate.
+        org.junit.Assert.assertTrue(
+            "Nereis plate $index drawing clipped: $box / ${content.width}x${content.height}",
+            box.width>100f && box.height>100f &&
+                box.left>=-2f && box.top>=-2f &&
+                box.right<=content.width+2f &&
+                box.bottom<=content.height+2f
+        )
         screen("nereis-$locale-plate-$serial")
     }
 
