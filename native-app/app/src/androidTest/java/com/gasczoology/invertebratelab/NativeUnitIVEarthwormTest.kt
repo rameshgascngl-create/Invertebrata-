@@ -125,4 +125,29 @@ class NativeUnitIVEarthwormTest {
             .assertExists().assertTextContains("Metaphire posthuma", substring = true)
         screenshot("earthworm-return-navigation")
     }
+    @Test fun tamilExternalAtlasTapAndLazyScrollPreserveNamedGenitalPores() {
+        enterEarthworm(true)
+        rule.onNodeWithTag("u4-earthworm-reader")
+            .performScrollToNode(hasTestTag("u43-earthworm-external-atlas"))
+        rule.onNodeWithTag("u43-earthworm-schematic-notice").assertExists()
+        // Schematic ventral male openings on segment XVIII, not a raster hotspot.
+        rule.onNodeWithTag("u43-earthworm-canvas")
+            .performTouchInput { click(percentOffset(.44f,.73f)) }
+        rule.onNodeWithTag("u43-earthworm-selected-name")
+            .assertTextContains("ஆண் இனப்பெருக்கத் துளைகள்",substring=true)
+        // A long 200%-Tamil LazyColumn may dispose the diagram item.
+        rule.onNodeWithTag("u4-earthworm-reader")
+            .performScrollToNode(hasTestTag("u4-earthworm-section-excretory"))
+        rule.onNodeWithTag("u4-earthworm-reader")
+            .performScrollToNode(hasTestTag("u43-earthworm-external-atlas"))
+        rule.onNodeWithTag("u43-earthworm-selected-name")
+            .assertTextContains("ஆண் இனப்பெருக்கத் துளைகள்",substring=true)
+        // The original illustrated diagram remains interactive on return.
+        rule.onNodeWithTag("u43-earthworm-canvas")
+            .performTouchInput { click(percentOffset(.37f,.306f)) }
+        rule.onNodeWithTag("u43-earthworm-selected-name")
+            .assertTextContains("கிளிட்டெல்லம்",substring=true)
+        screenshot("earthworm-tamil-external-atlas")
+    }
+
 }
