@@ -18,6 +18,8 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -267,13 +269,17 @@ private fun NereisFullScreenImageViewer(
                             zoom = 1f
                             offset = Offset.Zero
                         },
-                        modifier = Modifier.weight(1.5f).heightIn(min = 48.dp)
+                        modifier = Modifier.weight(1.1f).heightIn(min = 48.dp)
+                            .semantics {
+                                contentDescription = if (tamil)
+                                    "அசல் அளவுக்கு மீட்டமை" else "Reset to original image size"
+                            }
                             .testTag("u55-nereis-zoom-reset"),
-                    ) { Text(if (tamil) "மீட்டமை" else "Reset") }
+                    ) { Text("1×") }
                 }
                 Text(
                     if (tamil)
-                        "படத்தை பெரிதாக்க / நகர்த்த இரண்டு விரல்களைப் பயன்படுத்தவும். உறுப்புத் தொடுதல் இல்லை."
+                        "இரு விரல்களால் பெரிதாக்கி நகர்த்தவும்; உறுப்புத் தொடுதல் இல்லை."
                     else
                         "Pinch to enlarge, drag to inspect. This is a static image, not an organ-hotspot diagram.",
                     style = MaterialTheme.typography.bodySmall,
