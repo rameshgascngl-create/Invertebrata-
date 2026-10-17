@@ -3,6 +3,7 @@ name: Image-only practical plate acceptance — Units I–V
   push:
     branches:
       - native/u49-image-only-pencil-policy-20261017
+      - native/u50-unit2-static-image-only-20261017
   workflow_dispatch:
 
 permissions:
