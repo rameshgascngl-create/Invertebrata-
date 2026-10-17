@@ -283,7 +283,7 @@ private fun leaderPair(mx:Float,my:Float,x:Float,y:Float,x2:Float,y2:Float)=
 private val numberedLeaders=listOf(
     // 01: prostomium; peristomium; chaetiger; paired parapodium; pygidium; cirri
     listOf(
-        leader(132f,101f,405f,61f), leader(688f,122f,458f,91f),
+        leader(132f,101f,405f,61f), leader(688f,122f,453f,138f),
         leader(132f,271f,405f,264f), leader(688f,289f,480f,286f),
         leader(132f,479f,405f,546f), leader(688f,547f,440f,585f)
     ),
