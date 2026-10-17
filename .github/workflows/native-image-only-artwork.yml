@@ -1,0 +1,25 @@
+name: Image-only practical plate acceptance — Units I–V
+'on':
+  push:
+    branches:
+      - native/u49-image-only-pencil-policy-20261017
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-pencil-image-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enforce image-only anatomy in all five native units
+        run: python3 qa/validate_image_only_artwork.py
+      - name: Preserve honest image-only acceptance inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-only-artwork-policy-evidence
+          path: qa-evidence/image-only/audit.json
+          if-no-files-found: error
