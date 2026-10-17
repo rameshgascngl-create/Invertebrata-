@@ -7,6 +7,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u42-penaeus-external-anatomy-schematic-20261016
       - native/u43-earthworm-functional-external-atlas-20261017
       - native/u44-nereis-static-bilingual-atlas-20261017
+      - native/u45-nereis-numbered-leader-qa-20261017
   workflow_dispatch:
 
 permissions:
@@ -89,10 +90,20 @@ jobs:
           assert 'detectTapGestures' not in nereis_ui
           assert 'UnitIVNereisLessons.plateTopics[index]' in nereis_ui
           assert 'u44-nereis-pencil-style-drawing-' in nereis_ui
+          assert 'private val numberedLeaders=' in nereis_ui
+          assert 'drawNumberedLeaders(index)' in nereis_ui
+          assert 'leaderPair(' in nereis_ui
+          nereis_tests=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVNereisTest.kt').read_text()
+          assert 'capturePlate("english",i)' in nereis_tests
+          assert 'capturePlate("tamil",i)' in nereis_tests
+          assert 'screen("nereis-tamil-legend-"+' in nereis_tests
+          unit4_driver=Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
+          assert 'MISSING_NEREIS_DRAWING_' in unit4_driver
+          assert 'MISSING_NEREIS_LEGEND_' in unit4_driver
           assert 'NativeUnitIVNereisTest' in Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
           assert 'u44-nereis-sources' in nav
           assert 'u44-nereis-static-plate-' in nav or 'u44-nereis-plate-$it' in nav
-          print("NEREIS_STATIC_BILINGUAL_EIGHT_PLATE_DRAFT=PASS; ORIGINAL_PENCIL_SCANS=PENDING")
+          print("NEREIS_NUMBERED_LEADERS_AND_48_QA_FRAMES=SOURCE_PRESENT; ORIGINAL_PENCIL_SCANS=PENDING")
           earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
           for required in ["Canvas(", "detectTapGestures", "u43-earthworm-canvas",
                            "EarthwormExternalTeaching.hit", "OfflineNarrator",
