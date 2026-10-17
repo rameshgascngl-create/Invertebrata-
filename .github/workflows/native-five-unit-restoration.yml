@@ -2,7 +2,7 @@ name: Native five-unit restoration — compile, assets and academic hold
 'on':
   push:
     branches:
-      - native/five-unit-restoration-r3-20261018
+      - native/five-unit-restoration-r4-bilingual-plates-20261018
   workflow_dispatch:
 
 permissions:
@@ -56,7 +56,7 @@ jobs:
       - name: Upload development debug APK (NOT a release)
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R3-DEBUG-UNAPPROVED
+          name: five-unit-restoration-R4-DEBUG-UNAPPROVED
           path: native-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -85,7 +85,7 @@ jobs:
       - name: Upload honest plate-register evidence
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R3-ASSET-REGISTER
+          name: five-unit-restoration-R4-ASSET-REGISTER
           path: qa-evidence/five-unit-assets/
           if-no-files-found: error
 
@@ -135,7 +135,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R3-android-ui-evidence
+          name: five-unit-R4-android-ui-evidence
           path: qa-evidence/five-unit-r3/
           if-no-files-found: warn
       - name: Explain artwork acceptance status
