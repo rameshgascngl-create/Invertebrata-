@@ -33,7 +33,7 @@ for scale in 1.0 2.0; do
   # Run each native Android test class independently. The instrumentation
   # runner does not reliably accept a comma-separated list of class names;
   # that previously executed only the three Earthworm methods.
-  for suite in NativeUnitIVEarthwormTest NativeUnitIVPenaeusTest; do
+  for suite in NativeUnitIVEarthwormTest NativeUnitIVPenaeusTest NativeUnitIVNereisTest; do
     suite_results="$folder/results-$suite"
     rm -rf native-app/app/build/outputs/androidTest-results/connected \
       native-app/app/build/reports/androidTests/connected
@@ -51,7 +51,7 @@ import sys, xml.etree.ElementTree as ET
 root=Path(sys.argv[1])
 name=sys.argv[2]
 expected="com.gasczoology.invertebratelab."+name
-expected_count=4
+expected_count=2 if name=="NativeUnitIVNereisTest" else 4
 cases=[node for file in root.rglob("TEST-*.xml")
        for node in ET.parse(file).getroot().iter("testcase")]
 assert len(cases)==expected_count,("Incorrect Unit IV test count",name,len(cases),expected_count)
@@ -65,7 +65,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
-  for scene in earthworm-english-digestive earthworm-tamil-excretory earthworm-return-navigation earthworm-tamil-external-atlas penaeus-english-appendages penaeus-tamil-protozoea penaeus-tamil-stage-retained penaeus-A5-preserved penaeus-tamil-interactive-telson;do
+  for scene in earthworm-english-digestive earthworm-tamil-excretory earthworm-return-navigation earthworm-tamil-external-atlas nereis-english-parapodium nereis-tamil-nephridium nereis-tamil-parapodium penaeus-english-appendages penaeus-tamil-protozoea penaeus-tamil-stage-retained penaeus-A5-preserved penaeus-tamil-interactive-telson;do
     [[ -s "$E/captured/unit4-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
   done
 done
