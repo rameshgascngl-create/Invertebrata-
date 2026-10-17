@@ -8,6 +8,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u43-earthworm-functional-external-atlas-20261017
       - native/u44-nereis-static-bilingual-atlas-20261017
       - native/u45-nereis-numbered-leader-qa-20261017
+      - native/u46-nereis-legend-evidence-remediation-20261017
   workflow_dispatch:
 
 permissions:
@@ -99,14 +100,17 @@ jobs:
           assert 'capturePlate("english",i)' in nereis_tests
           assert 'capturePlate("tamil",i)' in nereis_tests
           assert 'drawing clipped:' in nereis_tests
-          assert 'screen("nereis-tamil-legend-"+' in nereis_tests
+          assert 'screen("nereis-tamil-legend-start-"+serial)' in nereis_tests
+          assert 'screen("nereis-tamil-legend-end-"+serial)' in nereis_tests
+          assert 'plateLabelCounts=intArrayOf(6,6,6,6,4,5,4,5)' in nereis_tests
           unit4_driver=Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
           assert 'MISSING_NEREIS_DRAWING_' in unit4_driver
           assert 'MISSING_NEREIS_LEGEND_' in unit4_driver
+          assert 'for frame in start end;' in unit4_driver
           assert 'NativeUnitIVNereisTest' in Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
           assert 'u44-nereis-sources' in nav
           assert 'u44-nereis-static-plate-' in nav or 'u44-nereis-plate-$it' in nav
-          print("NEREIS_NUMBERED_LEADERS_AND_48_QA_FRAMES=SOURCE_PRESENT; ORIGINAL_PENCIL_SCANS=PENDING")
+          print("NEREIS_64_QA_FRAMES_AND_SPLIT_TAMIL_LEGENDS=SOURCE_PRESENT; ORIGINAL_PENCIL_SCANS=PENDING")
           earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
           for required in ["Canvas(", "detectTapGestures", "u43-earthworm-canvas",
                            "EarthwormExternalTeaching.hit", "OfflineNarrator",
