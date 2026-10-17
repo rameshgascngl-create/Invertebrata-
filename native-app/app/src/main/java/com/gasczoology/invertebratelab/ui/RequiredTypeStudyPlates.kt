@@ -37,6 +37,61 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.TypeStudyRequirement
+import com.gasczoology.invertebratelab.data.BilingualText
+
+/**
+ * Provisional college-practical terminology for ALL 35 type-study slots.
+ * These strings are labels OUTSIDE images: never burned onto drawing pixels.
+ * Zoology and Tamil editorial review remains mandatory before approval.
+ */
+internal object RestoredPlateTitles {
+    val byId: Map<String, BilingualText> = mapOf(
+        "paramecium/external-cilia" to BilingualText("External morphology and cilia", "புறத்தோற்றமும் குறுஇழைகளும்"),
+        "paramecium/oral-apparatus" to BilingualText("Oral apparatus", "வாயுறுப்பு அமைப்பு"),
+        "paramecium/contractile-vacuoles" to BilingualText("Contractile vacuoles", "சுருங்கும் நுண்குமிழ்கள்"),
+        "paramecium/locomotion" to BilingualText("Ciliary locomotion", "குறுஇழை இயக்கம்"),
+        "sycon/external" to BilingualText("External morphology", "புறத்தோற்றம்"),
+        "sycon/canal-system" to BilingualText("Canal system (longitudinal section)", "நீர்க்கால்வாய் அமைப்பு (நீளவெட்டு)"),
+        "sycon/reproduction" to BilingualText("Reproduction and amphiblastula larva", "இனப்பெருக்கமும் ஆம்பிபிளாஸ்டுலா இளநிலையும்"),
+        "obelia/colony" to BilingualText("Colony morphology", "கூட்டு அமைப்பின் புறத்தோற்றம்"),
+        "obelia/hydranth-gonangium" to BilingualText("Hydranth and gonangium", "ஹைட்ராந்தும் கோனாங்கியமும்"),
+        "obelia/medusa" to BilingualText("Medusa anatomy", "மெடூசா உடற்கூறு"),
+        "obelia/life-cycle" to BilingualText("Life cycle", "வாழ்க்கைச் சுழற்சி"),
+        "fasciola/external" to BilingualText("External morphology and suckers", "புறத்தோற்றமும் உறிஞ்சிகளும்"),
+        "fasciola/digestive-reproductive" to BilingualText("Digestive and reproductive systems", "செரிமான மற்றும் இனப்பெருக்க அமைப்புகள்"),
+        "fasciola/life-cycle" to BilingualText("Life cycle and snail intermediate host", "வாழ்க்கைச் சுழற்சியும் நத்தை இடைப்புரவலனும்"),
+        "ascaris/male-female-external" to BilingualText("Male and female external morphology", "ஆண்–பெண் புறத்தோற்றம்"),
+        "ascaris/female-internal" to BilingualText("Female internal anatomy", "பெண் உள் உடற்கூறு"),
+        "ascaris/life-cycle" to BilingualText("Egg development and larval migration", "முட்டை வளர்ச்சியும் இளம்புழு இடம்பெயர்ச்சியும்"),
+        "earthworm/external-setae" to BilingualText("External morphology and setae", "புறத்தோற்றமும் சீட்டாக்களும்"),
+        "earthworm/digestive" to BilingualText("Digestive system", "செரிமான மண்டலம்"),
+        "earthworm/circulatory" to BilingualText("Blood vascular system", "இரத்தச் சுற்றோட்ட மண்டலம்"),
+        "earthworm/nervous" to BilingualText("Nervous system", "நரம்பு மண்டலம்"),
+        "earthworm/excretory" to BilingualText("Excretory system and nephridia", "கழிவுநீக்க அமைப்பும் நெஃப்ரிடியாக்களும்"),
+        "earthworm/reproductive" to BilingualText("Reproductive system", "இனப்பெருக்க மண்டலம்"),
+        "penaeus/external" to BilingualText("External morphology", "புறத்தோற்றம்"),
+        "penaeus/appendages" to BilingualText("Segmental appendages", "கண்டவாரியான இணைக்கால்கள்"),
+        "penaeus/internal" to BilingualText("Internal organ systems", "உள் உறுப்பு மண்டலங்கள்"),
+        "penaeus/larval-development" to BilingualText("Larval development", "இளம் நிலை வளர்ச்சி"),
+        "pila/external" to BilingualText("Shell and external morphology", "ஓடும் புறத்தோற்றமும்"),
+        "pila/mantle-cavity" to BilingualText("Mantle cavity", "மேன்டில் அறை"),
+        "pila/ctenidium" to BilingualText("Ctenidium and osphradium", "சீனிடியமும் ஆஸ்ப்ரேடியமும்"),
+        "pila/torsion" to BilingualText("Gastropod torsion", "வயிற்றுக்காலிகளில் முறுக்கம்"),
+        "asterias/external" to BilingualText("Oral and aboral external morphology", "வாய்ப்புற மற்றும் எதிர்வாய்ப்புற புறத்தோற்றம்"),
+        "asterias/water-vascular-system" to BilingualText("Water-vascular system", "நீர்க்குழாய் மண்டலம்"),
+        "asterias/internal" to BilingualText("Digestive and reproductive anatomy", "செரிமான மற்றும் இனப்பெருக்க உடற்கூறு"),
+        "asterias/larval-development" to BilingualText("Bipinnaria and brachiolaria larvae", "பைபின்னாரியா மற்றும் பிராக்கியோலாரியா இளநிலைகள்")
+    )
+    init {
+        val required = com.gasczoology.invertebratelab.data.NativeCurriculumManifest.typeStudies
+            .flatMap { study -> study.requiredPlateIds.map { study.organismId + "/" + it } }
+            .toSet()
+        check(byId.keys == required) { "Type study English–Tamil label inventory diverged from required raster masters" }
+    }
+    fun value(organism: String, plate: String, language: AppLanguage): String =
+        requireNotNull(byId[organism + "/" + plate]).value(language)
+}
+
 
 /**
  * R2: fail-visible, raster-only textbook plate gallery for the nine required
@@ -69,7 +124,7 @@ internal fun RequiredTypeStudyPlates(
         study.requiredPlateIds.forEach { plateId ->
             val stem = "type_studies/${study.organismId}/${plateId}"
             val raster = rememberRequiredRasterBitmap(stem)
-            val readable = plateId.replace('-', ' ').replaceFirstChar { it.uppercase() }
+            val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
             Card(Modifier.fillMaxWidth().testTag("r2-plate-slot-${study.organismId}-${plateId}")) {
                 Column(
@@ -97,7 +152,7 @@ internal fun RequiredTypeStudyPlates(
                             modifier = Modifier.heightIn(min = 48.dp)
                                 .testTag("r2-plate-expand-${study.organismId}-${plateId}"),
                         ) {
-                            Text(if (tamil) "முழு அளவில் காட்டு" else "Enlarge original image")
+                            Text(if (tamil) "பட வரைவை பெரிதாக்கு" else "Enlarge raster candidate")
                         }
                         Text(
                             if (tamil) "ஆய்வுக்கான வரைவு · இறுதி அறிவியல் ஒப்புதல் பெறவில்லை."
