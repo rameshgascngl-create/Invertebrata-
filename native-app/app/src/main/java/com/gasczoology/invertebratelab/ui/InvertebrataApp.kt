@@ -536,6 +536,9 @@ private fun ChapterScreen(
                     Text(label(language, "Back", "பின்செல்"))
                 }
                 Text(label(language, "Chapter: ", "அத்தியாயம்: ") + chapter.id)
+                Text(chapter.title.value(language),
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.testTag("r2-human-readable-chapter-title"))
                 if (chapter.id == "u1-paramecium") {
                     Button(onClick = onOpenFullLesson,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
@@ -558,8 +561,8 @@ private fun ChapterScreen(
                         label(language,
                             "READ THE NATIVE TYPE STUDY FIRST · the original A5 questions follow",
                             "முதலில் விரிவான இன ஆய்வைப் படிக்கவும் · அசல் A5 வினாக்கள் பின்னர்")
-                    else label(language, "EXAM PRACTICE — after the teaching lesson",
-                        "தேர்வுப் பயிற்சி — கற்பித்தல் பாடத்திற்குப் பின்")
+                    else label(language, "TEXTBOOK FIRST — explanatory sections and verified images precede A5 practice",
+                        "முதலில் பாடநூல் — விரிவான விளக்கமும் சரிபார்க்கப்பட்ட படங்களும்; பின்னர் A5 வினாப் பயிற்சி")
                 )
             }
             if (chapter.id in setOf("u1-paramecium", "u4-penaeus", "u5-pila", "u5-asterias")) {
