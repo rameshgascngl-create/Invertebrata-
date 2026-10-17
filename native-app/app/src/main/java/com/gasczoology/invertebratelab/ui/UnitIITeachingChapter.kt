@@ -101,23 +101,23 @@ internal fun UnitIITeachingChapter(
                 verticalArrangement=Arrangement.spacedBy(12.dp)
             ) {
                 Text(tr(language,
-                    "TEXTBOOK ANATOMY · HISTORICAL PENCIL/INK RASTER PLATES",
-                    "பாடநூல் உடற்கூறு · வரலாற்றுச் சித்திரப் படக்கோப்புகள்"),
+                    "TEXTBOOK ANATOMY · STATIC RASTER CANDIDATES · NOT VERIFIED SCANS",
+                    "பாடநூல் உடற்கூறு · நிலையான படக்கோப்பு வரைவுகள் · ஸ்கேன் உறுதி செய்யப்படவில்லை"),
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics { heading() })
                 Text(tr(language,
-                    "These are static source illustrations, entirely separate from the interactive overlay. Source and anatomical sign-off are still pending.",
-                    "இவை மூல நூலின் நிலையான படங்கள்; தொடுதிறன் குறியீடுகளிலிருந்து முற்றிலும் தனியானவை. படத்தின் மூலமும் உடற்கூறு ஒப்புதலும் இன்னும் நிலுவையில் உள்ளன."),
+                    "These are bundled digital raster candidates, not authenticated historical scans. Anatomical and source-rights review remain pending.",
+                    "இவை இணைக்கப்பட்ட டிஜிட்டல் வரைவு படங்கள்; உறுதி செய்யப்பட்ட வரலாற்று ஸ்கேன்கள் அல்ல. உடற்கூறு மற்றும் மூல உரிமை மதிப்பாய்வு நிலுவையில் உள்ளது."),
                     style=MaterialTheme.typography.bodyMedium)
                 if (sycon) {
                     Card {
                         Column(Modifier.padding(8.dp)) {
                             UnitIIStaticLessonPlate(
-                                relativeStem="unit2/sycon_historical",
+                                relativeStem="unit2/sycon_plate",
                                 language=language,
                                 tag="u2-sycon-historic-static-raster",
-                                captionEnglish="Sycon canal microanatomy — Augusta Foote Arnold (1903), public-domain original. IC, R, prosopyle and apopyle are separately identified. Expert review pending.",
-                                captionTamil="சைக்கான் நீர்க் கால்வாய் நுண் உடற்கூறு — ஆகஸ்டா ஃபூட் ஆர்னால்ட் (1903), பொதுப் பயன்பாட்டு அசல் படம். உட்செல்லும் கால்வாய், ஆரக் கால்வாய், புரோசோபைல், அப்போபைல் தனித்தனியாகக் குறிக்கப்பட்டுள்ளன. நிபுணர் மதிப்பாய்வு நிலுவையில் உள்ளது."
+                                captionEnglish="Sycon labelled teaching image from the bundled WebP; this is a digital candidate, not an authenticated 1903 pencil scan. Canal anatomy and leaders await expert review.",
+                                captionTamil="சைக்கான் குறியிடப்பட்ட WebP கற்பித்தல் வரைவு. இது உறுதிசெய்யப்பட்ட 1903 பென்சில் ஸ்கேன் அல்ல; கால்வாய் உறுப்புகளும் குறிக்கோடுகளும் நிபுணர் மதிப்பாய்வில் உள்ளன."
                             )
                         }
                     }
@@ -139,8 +139,8 @@ internal fun UnitIITeachingChapter(
                                 relativeStem="unit2/obelia_lifecycle",
                                 language=language,
                                 tag="u2-obelia-life-static-raster",
-                                captionEnglish="Historical life-history scan (1933) showing reproductive and larval stages. Peer review pending.",
-                                captionTamil="இனப்பெருக்கம் மற்றும் இளவுயிரிப் பருவங்களைக் காட்டும் 1933 ஆம் ஆண்டின் வரலாற்றுப் படம். மதிப்பாய்வு நிலுவையில் உள்ளது."
+                                captionEnglish="Bundled Obelia life-history WebP candidate. Original image provenance, reproductive stages and Tamil labels require expert verification.",
+                                captionTamil="ஒபீலியா வாழ்க்கைச் சுழற்சிக்கான இணைக்கப்பட்ட WebP கற்பித்தல் வரைவு. மூல உரிமை, இனப்பெருக்க நிலைகள், தமிழ் குறியீடுகள் மதிப்பாய்வில் உள்ளன."
                             )
                         }
                     }
