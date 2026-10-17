@@ -77,6 +77,10 @@ class NativeUnitIIImageOnlyOperationalTest {
         rule.onNodeWithTag("u2-reader-u2-sycon")
             .performScrollToNode(hasTestTag("u2-sycon-image-plate"))
         capture("sycon-raster","u2-sycon-image-plate")
+        rule.onNodeWithTag("u2-open-full-raster").performScrollTo().performClick()
+        rule.onNodeWithTag("u2-fullscreen-raster-bitmap").assertIsDisplayed()
+        capture("sycon-full-image")
+        rule.onNodeWithTag("u2-close-full-raster").performClick()
         for((id,expected) in listOf(
             "prosopyle" to "03 · புரோசோபைல்",
             "apopyle" to "05 · அப்போபைல்",
@@ -100,6 +104,10 @@ class NativeUnitIIImageOnlyOperationalTest {
         rule.onNodeWithTag("u2-reader-u2-obelia")
             .performScrollToNode(hasTestTag("u2-obelia-image-plate"))
         capture("obelia-colony-raster","u2-obelia-image-plate")
+        rule.onNodeWithTag("u2-open-full-raster").performScrollTo().performClick()
+        rule.onNodeWithTag("u2-fullscreen-raster-bitmap").assertIsDisplayed()
+        capture("obelia-colony-full-image")
+        rule.onNodeWithTag("u2-close-full-raster").performClick()
         rule.onNodeWithTag("u2-stage-planula").performScrollTo().performClick()
         rule.onNodeWithTag("u2-selected-stage").performScrollTo()
             .assertTextContains("05 · Planula larva",substring=true)
