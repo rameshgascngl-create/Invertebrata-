@@ -58,7 +58,22 @@ class NativeUnitIVNereisTest {
         }
         return hits
     }
-    private fun screen(name:String,requirePlate:Boolean=false) {
+    // Small raster fingerprint detects screenshots taken before the changed
+    // Compose frame has actually reached SurfaceFlinger.
+    private fun rasterSignature(bitmap:android.graphics.Bitmap):Long {
+        var state=1469598103934665603L
+        for(y in 120 until bitmap.height-100 step 41) {
+            for(x in 45 until bitmap.width-45 step 47) {
+                state=(state xor bitmap.getPixel(x,y).toLong())*1099511628211L
+            }
+        }
+        return state
+    }
+    private fun screen(
+        name:String,
+        requirePlate:Boolean=false,
+        changedSince:Long?=null
+    ):Long {
         rule.waitForIdle()
         val scale=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation()
             .targetContext.resources.configuration.fontScale
@@ -67,6 +82,7 @@ class NativeUnitIVNereisTest {
         val ui=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().uiAutomation
         var bytes=byteArrayOf()
         var paperHits=0
+        var actualSignature=0L
         var decoded:android.graphics.Bitmap?=null
         for(attempt in 1..8) {
             android.os.ParcelFileDescriptor.AutoCloseInputStream(
@@ -75,7 +91,10 @@ class NativeUnitIVNereisTest {
                 ui.executeShellCommand("cat "+nameOnDisk)).use {it.readBytes()}
             decoded=android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size)
             paperHits=if(decoded==null) 0 else graphitePaperSamples(decoded)
-            if(!requirePlate || paperHits>=700) break
+            actualSignature=if(decoded==null) 0L else rasterSignature(decoded)
+            val validPlate=!requirePlate || paperHits>=700
+            val validFrame=changedSince==null || actualSignature!=changedSince
+            if(validPlate && validFrame) break
             // SurfaceFlinger screenshots can precede a newly-idle Compose frame.
             // Retry only until the required actual paper pixels are present.
             android.os.SystemClock.sleep(200)
@@ -86,6 +105,11 @@ class NativeUnitIVNereisTest {
             "Nereis drawing raster missing from $name; graphite paper hits=$paperHits",
             paperHits>=700
         )
+        if(changedSince!=null) org.junit.Assert.assertTrue(
+            "Nereis screenshot did not advance to final term: $name",
+            actualSignature!=changedSince
+        )
+        return actualSignature
     }
 
     private fun capturePlate(locale:String,index:Int) {
@@ -108,6 +132,35 @@ class NativeUnitIVNereisTest {
     }
 
     private val plateLabelCounts=intArrayOf(6,6,6,6,4,5,4,5)
+
+    // LazyColumn.scrollToNode only brings the containing Card into view;
+    // it does NOT necessarily scroll to a descendant term in a tall Card.
+    private fun scrollUntilLegendTermVisible(tag:String):Boolean {
+        val list=rule.onNodeWithTag("native-chapter-u4-nereis")
+        val h=rule.activity.window.decorView.height.toFloat()
+        var scrolled=false
+        for(attempt in 0..9) {
+            val target=rule.onNodeWithTag(tag).fetchSemanticsNode().boundsInWindow
+            if(target.top>=130f && target.bottom<=h-170f) return scrolled
+            if(target.top<130f) {
+                list.performTouchInput {
+                    swipeDown(startY=h*.48f,endY=h*.70f)
+                }
+            } else {
+                list.performTouchInput {
+                    swipeUp(startY=h*.70f,endY=h*.48f)
+                }
+            }
+            scrolled=true
+            rule.waitForIdle()
+        }
+        val target=rule.onNodeWithTag(tag).fetchSemanticsNode().boundsInWindow
+        org.junit.Assert.assertTrue(
+            "Nereis final legend term not in viewport: $tag bounds=$target screen=$h",
+            target.top>=130f && target.bottom<=h-170f
+        )
+        return scrolled
+    }
 
     @Test fun eightStaticNoninteractiveNereisPlatesAndOriginalA5() {
         enter(false)
@@ -136,10 +189,14 @@ class NativeUnitIVNereisTest {
             val serial=i.toString().padStart(2,'0')
             find(first)
             rule.onNodeWithTag(first).assertIsDisplayed()
-            screen("nereis-tamil-legend-start-"+serial)
+            val startSignature=screen("nereis-tamil-legend-start-"+serial)
             find(last)
+            val scrolled=scrollUntilLegendTermVisible(last)
             rule.onNodeWithTag(last).assertIsDisplayed()
-            screen("nereis-tamil-legend-end-"+serial)
+            screen(
+                "nereis-tamil-legend-end-"+serial,
+                changedSince=if(scrolled) startSignature else null
+            )
             for(j in 0 until plateLabelCounts[i-1]) {
                 rule.onNodeWithTag("u44-nereis-plate-"+i+"-term-"+j).assertExists()
             }
