@@ -2,7 +2,7 @@ name: Native five-unit restoration — compile, assets and academic hold
 'on':
   push:
     branches:
-      - native/five-unit-restoration-r2-20261017
+      - native/five-unit-restoration-r3-20261018
   workflow_dispatch:
 
 permissions:
@@ -42,7 +42,12 @@ jobs:
           assert 'UnitIStageAtlasChapter(language)' not in ui
           asset=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIImagePlate.kt").read_text()
           assert 'pngOnly=lifeHistory' not in asset
-          print("NEW_CHAPTERS=17; EXISTING_PARAMECIUM_AND_A5_ORDER=PASS")
+          manifest=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt").read_text()
+          assert 'a5ChapterIdsByUnit.getValue(5)' in manifest
+          for file in ["UnitIITeachingChapter.kt","UnitIIITeachingChapter.kt"]:
+              source=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui") / file
+              assert 'RequiredTypeStudyPlates(study, language)' in source.read_text()
+          print("NEW_CHAPTERS=17; NINE_TYPE_STUDY_IMAGE_GALLERIES=INTEGRATED; ORIGINAL_A5=UNMODIFIED")
           PY
       - name: Compile debug native Kotlin and Android test sources, run JVM tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
@@ -51,7 +56,7 @@ jobs:
       - name: Upload development debug APK (NOT a release)
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R1-DEBUG-UNAPPROVED
+          name: five-unit-restoration-R3-DEBUG-UNAPPROVED
           path: native-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -65,7 +70,7 @@ jobs:
       - name: Upload honest plate-register evidence
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R1-ASSET-REGISTER
+          name: five-unit-restoration-R3-ASSET-REGISTER
           path: qa-evidence/five-unit-assets/
           if-no-files-found: error
 
@@ -83,7 +88,7 @@ jobs:
           echo "No green source-status can substitute for biology, source-rights and English-Tamil manual review."
           echo "No production tag or Play/Indus submission is allowed from this R1 workflow."
 
-  android-ui-r2:
+  android-ui-r3:
     needs: compile-and-jvm
     runs-on: ubuntu-24.04
     timeout-minutes: 65
@@ -115,11 +120,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R2-android-ui-evidence
-          path: qa-evidence/five-unit-r2/
+          name: five-unit-R3-android-ui-evidence
+          path: qa-evidence/five-unit-r3/
           if-no-files-found: warn
       - name: Explain artwork acceptance status
         if: always()
         run: |
           echo "This job verifies native display and missing-asset warnings, NOT scientific acceptance."
-          echo "35 mandatory anatomical plates absent; student-facing release stays blocked."
+          echo "Mandatory anatomical plates are missing; student-facing release stays blocked."
