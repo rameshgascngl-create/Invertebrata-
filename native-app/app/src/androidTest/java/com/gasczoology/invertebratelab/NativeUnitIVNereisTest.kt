@@ -42,21 +42,56 @@ class NativeUnitIVNereisTest {
         rule.onNodeWithTag("native-chapter-u4-nereis")
             .performScrollToNode(hasTestTag(tag))
     }
-    // Validate the actual screencap raster, not merely an off-screen Compose node.
-    // A stale first frame was observed in the prior U4.5 100% Tamil plate-01 PNG:
-    // it depicted the Unit IV navigation menu and contained no graphite plate.
-    private fun graphitePaperSamples(bitmap:android.graphics.Bitmap):Int {
-        var hits=0
-        for(y in 120 until bitmap.height-100 step 15) {
-            for(x in 45 until bitmap.width-45 step 15) {
-                val v=bitmap.getPixel(x,y)
-                val rr=android.graphics.Color.red(v)
-                val gg=android.graphics.Color.green(v)
-                val bb=android.graphics.Color.blue(v)
-                if(rr in 249..251 && gg in 248..250 && bb in 243..247) hits++
+    // Check the ORIGINAL APK PNG pixels against actual SurfaceFlinger output.
+    // The previous test expected the obsolete Canvas cream-paper colour and
+    // rejected the new white-background PNG despite correctly rendered figures.
+    // This geometry-sensitive test still rejects blank/stale chapter-menu frames.
+    private val expectedNereisPngs=arrayOf(
+        "nereis/01_external_morphology.png",
+        "nereis/02_enlarged_head.png",
+        "nereis/03_biramous_parapodium.png",
+        "nereis/04_digestive_system.png",
+        "nereis/05_circulatory_system.png",
+        "nereis/06_nervous_system.png",
+        "nereis/07_excretory_system.png",
+        "nereis/08_trochophore_larva.png"
+    )
+    private fun rasterInkAgreement(
+        screenshot:android.graphics.Bitmap,
+        master:android.graphics.Bitmap,
+        bounds:androidx.compose.ui.geometry.Rect
+    ):Pair<Int,Int> {
+        var sourceInk=0
+        var matchedInk=0
+        for(ys in 65 until master.height-80 step 31) {
+            for(xs in 65 until master.width-65 step 31) {
+                val sourcePixel=master.getPixel(xs,ys)
+                val darkness=(android.graphics.Color.red(sourcePixel)+
+                    android.graphics.Color.green(sourcePixel)+
+                    android.graphics.Color.blue(sourcePixel))/3
+                if(darkness>=150)continue
+                sourceInk++
+                val x=(bounds.left+(xs+.5f)*bounds.width/master.width).toInt()
+                val y=(bounds.top+(ys+.5f)*bounds.height/master.height).toInt()
+                var found=false
+                for(dy in -5..5) {
+                    for(dx in -5..5) {
+                        val px=x+dx
+                        val py=y+dy
+                        if(px !in 0 until screenshot.width || py !in 0 until screenshot.height)
+                            continue
+                        val observed=screenshot.getPixel(px,py)
+                        val luma=(android.graphics.Color.red(observed)+
+                            android.graphics.Color.green(observed)+
+                            android.graphics.Color.blue(observed))/3
+                        if(luma<205) { found=true;break }
+                    }
+                    if(found)break
+                }
+                if(found)matchedInk++
             }
         }
-        return hits
+        return Pair(sourceInk,matchedInk)
     }
     // Small raster fingerprint detects screenshots taken before the changed
     // Compose frame has actually reached SurfaceFlinger.
@@ -72,7 +107,9 @@ class NativeUnitIVNereisTest {
     private fun screen(
         name:String,
         requirePlate:Boolean=false,
-        changedSince:Long?=null
+        changedSince:Long?=null,
+        plateIndex:Int?=null,
+        plateBounds:androidx.compose.ui.geometry.Rect?=null
     ):Long {
         rule.waitForIdle()
         val scale=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation()
@@ -80,8 +117,20 @@ class NativeUnitIVNereisTest {
         val suffix=if(scale>=1.95f)"200" else "100"
         val nameOnDisk="/sdcard/Download/unit4-qa/unit4-"+suffix+"-"+name+".png"
         val ui=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().uiAutomation
+        require(!requirePlate || (plateIndex in 1..8 && plateBounds!=null))
+        val source=if(requirePlate) {
+            val ctx=androidx.test.platform.app.InstrumentationRegistry
+                .getInstrumentation().targetContext
+            ctx.assets.open(expectedNereisPngs[plateIndex!!-1]).use {
+                android.graphics.BitmapFactory.decodeStream(it)
+            }
+        } else null
+        org.junit.Assert.assertTrue(
+            "Nereis master missing before screenshot test",!requirePlate || source!=null
+        )
         var bytes=byteArrayOf()
-        var paperHits=0
+        var sourceInk=0
+        var matchedInk=0
         var actualSignature=0L
         var decoded:android.graphics.Bitmap?=null
         for(attempt in 1..8) {
@@ -90,20 +139,24 @@ class NativeUnitIVNereisTest {
             bytes=android.os.ParcelFileDescriptor.AutoCloseInputStream(
                 ui.executeShellCommand("cat "+nameOnDisk)).use {it.readBytes()}
             decoded=android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size)
-            paperHits=if(decoded==null) 0 else graphitePaperSamples(decoded)
+            if(decoded!=null && source!=null && plateBounds!=null) {
+                val agreement=rasterInkAgreement(decoded,source,plateBounds)
+                sourceInk=agreement.first
+                matchedInk=agreement.second
+            }
             actualSignature=if(decoded==null) 0L else rasterSignature(decoded)
-            val validPlate=!requirePlate || paperHits>=700
+            val validPlate=!requirePlate || (sourceInk>=60 && matchedInk*100>=sourceInk*55)
             val validFrame=changedSince==null || actualSignature!=changedSince
             if(validPlate && validFrame) break
             // SurfaceFlinger screenshots can precede a newly-idle Compose frame.
-            // Retry only until the required actual paper pixels are present.
+            // Retry only until source-image ink appears in the correct position.
             android.os.SystemClock.sleep(200)
         }
         org.junit.Assert.assertTrue("Nereis screenshot missing",bytes.size>12000)
         org.junit.Assert.assertNotNull("Nereis screenshot invalid PNG",decoded)
         if(requirePlate) org.junit.Assert.assertTrue(
-            "Nereis drawing raster missing from $name; graphite paper hits=$paperHits",
-            paperHits>=700
+            "Nereis drawing raster missing from $name; actual PNG ink match=$matchedInk/$sourceInk",
+            sourceInk>=60 && matchedInk*100>=sourceInk*55
         )
         if(changedSince!=null) org.junit.Assert.assertTrue(
             "Nereis screenshot did not advance to final term: $name",
@@ -128,7 +181,8 @@ class NativeUnitIVNereisTest {
                 box.right<=content.width+2f &&
                 box.bottom<=content.height+2f
         )
-        screen("nereis-$locale-plate-$serial",requirePlate=true)
+        screen("nereis-$locale-plate-$serial",requirePlate=true,
+            plateIndex=index,plateBounds=box)
     }
 
     private val plateLabelCounts=intArrayOf(6,6,6,6,4,5,4,5)
