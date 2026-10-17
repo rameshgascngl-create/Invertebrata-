@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -159,22 +158,26 @@ private fun RequiredTypeStudyFullImage(
                     }.testTag("r2-fullscreen-bitmap"),
                 )
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(onClick = { zoom = (zoom / 2f).coerceAtLeast(1f) },
-                    modifier = Modifier.heightIn(min = 48.dp).testTag("r2-zoom-out")) {
-                    Text("−")
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedButton(onClick = { zoom = (zoom / 2f).coerceAtLeast(1f) },
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("r2-zoom-out")) {
+                        Text("−")
+                    }
+                    OutlinedButton(onClick = { zoom = (zoom * 2f).coerceAtMost(4f) },
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("r2-zoom-in")) {
+                        Text("+")
+                    }
                 }
-                OutlinedButton(onClick = { zoom = (zoom * 2f).coerceAtMost(4f) },
-                    modifier = Modifier.heightIn(min = 48.dp).testTag("r2-zoom-in")) {
-                    Text("+")
-                }
-                OutlinedButton(onClick = { zoom = 1f; panX = 0f; panY = 0f },
-                    modifier = Modifier.heightIn(min = 48.dp).testTag("r2-zoom-reset")) {
-                    Text(if (tamil) "மீட்டமை" else "Reset")
-                }
-                OutlinedButton(onClick = onDismiss,
-                    modifier = Modifier.heightIn(min = 48.dp).testTag("r2-fullscreen-close")) {
-                    Text(if (tamil) "மூடு" else "Close")
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedButton(onClick = { zoom = 1f; panX = 0f; panY = 0f },
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("r2-zoom-reset")) {
+                        Text(if (tamil) "மீட்டமை" else "Reset")
+                    }
+                    OutlinedButton(onClick = onDismiss,
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("r2-fullscreen-close")) {
+                        Text(if (tamil) "மூடு" else "Close")
+                    }
                 }
             }
             Text(
