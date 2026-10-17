@@ -265,7 +265,7 @@ private fun DrawScope.trochophore() {
 
 
 /**
- * Manual audit targets, in the same ordinal sequence as terms(index).
+ * Manual audit targets, in the same ordinal sequence as nereisPlateTerms(index).
  * Markers are *fixed* labels on a static teaching drawing, not touch hotspots.
  * Points are taken from the path geometry in this file, not screen percentages.
  *
@@ -338,7 +338,7 @@ private val markerTextPaint=AndroidPaint(AndroidPaint.ANTI_ALIAS_FLAG).apply {
 }
 private fun DrawScope.drawNumberedLeaders(index:Int) {
     val leaders=numberedLeaders[index]
-    check(leaders.size==terms(index).size) {
+    check(leaders.size==nereisPlateTerms(index).size) {
         "Nereis plate ${index+1}: numbered leader/terminology mismatch"
     }
     leaders.forEachIndexed { ordinal, item ->
@@ -376,7 +376,7 @@ private fun DrawScope.drawStaticPlate(index:Int) {
     drawNumberedLeaders(index)
 }
 
-private fun terms(index:Int):List<BilingualText>{
+internal fun nereisPlateTerms(index:Int):List<BilingualText>{
     fun b(en:String,ta:String)=BilingualText(en,ta)
     return when(index){
         0->listOf(b("Prostomium","புரோஸ்டோமியம்"),b("Peristomium","பெரிஸ்டோமியம்"),b("Chaetigerous segments","சீட்டா கொண்ட கண்டங்கள்"),b("Paired parapodia","இணை பாராப்போடியா"),b("Pygidium","பைகிடியம்"),b("Anal cirri","ஆசனச் சிர்ரைகள்"))
@@ -390,59 +390,8 @@ private fun terms(index:Int):List<BilingualText>{
     }
 }
 @Composable
-internal fun UnitIVNereisStaticPlate(index:Int,language:AppLanguage){
-    require(index in 0..7)
-    val title=UnitIVNereisLessons.plateTopics[index]
-    // Static pencil-style DRAWINGS. Their accessibility is separate from
-    // bitmap pixels, which otherwise hide Tamil terms from screen readers.
-    Card(Modifier.fillMaxWidth().testTag("u44-nereis-static-plate-"+(index+1))) {
-        Column(Modifier.fillMaxWidth().padding(14.dp),verticalArrangement=Arrangement.spacedBy(9.dp)){
-            Text(title.english,style=MaterialTheme.typography.titleLarge)
-            Text(title.tamil,style=MaterialTheme.typography.titleMedium)
-            if(index==0) {
-                // Original static Android VectorDrawable; anatomical draft,
-                // not a scan and not approved as a college record plate.
-                Box(Modifier.fillMaxWidth().aspectRatio(800f/640f)
-                    .background(paper)
-                    .border(1.dp,Color(0xFFC1C4BF))
-                    .testTag("u44-nereis-pencil-style-drawing-1")) {
-                    Image(
-                        painter=painterResource(R.drawable.nereis_external_graphite_candidate),
-                        contentDescription=null,
-                        contentScale=ContentScale.FillBounds,
-                        modifier=Modifier.fillMaxSize()
-                    )
-                    Canvas(Modifier.fillMaxSize()) {
-                        withTransform({scale(size.width/800f,size.height/640f,pivot=Offset.Zero)}) {
-                            drawNumberedLeaders(0)
-                        }
-                    }
-                }
-            } else {
-                Canvas(Modifier.fillMaxWidth().aspectRatio(800f/640f)
-                    .background(paper)
-                    .border(1.dp,Color(0xFFC1C4BF))
-                    .testTag("u44-nereis-pencil-style-drawing-"+(index+1))){
-                    withTransform({scale(size.width/800f,size.height/640f,pivot=Offset.Zero)}){
-                        drawStaticPlate(index)
-                    }
-                }
-            }
-            Text(if(language==AppLanguage.TAMIL)
-                "எண்ணிட்ட சுட்டுக்கோடுகள் · English / தமிழ்"
-                else "Numbered anatomical leaders · English / தமிழ்",
-                style=MaterialTheme.typography.labelLarge)
-            terms(index).forEachIndexed {i,term ->
-                Text((i+1).toString()+". "+term.english+"\n"+term.tamil,
-                    style=MaterialTheme.typography.bodyMedium,
-                    modifier=Modifier.testTag("u44-nereis-plate-"+(index+1)+"-term-"+i))
-            }
-            Text(if(language==AppLanguage.TAMIL)
-                "தனித்த கற்றல் வரைவு. அசல் பென்சில் ஸ்கேன் அல்ல. தமிழ் சொற்கள் கல்லூரிச் செய்முறை கையேட்டுடன் ஒப்பிட்டு சரிபார்க்கப்பட வேண்டும்."
-                else "Original static teaching sketch, NOT a pencil scan. Tamil label forms await verification against the actual college practical manual.",
-                style=MaterialTheme.typography.bodySmall,
-                color=MaterialTheme.colorScheme.error,
-                modifier=Modifier.testTag("u44-nereis-image-provenance-"+(index+1)))
-        }
-    }
+internal fun UnitIVNereisStaticPlate(index:Int,language:AppLanguage) {
+    // Keep the public composable/test API stable while eliminating
+    // ALL schematic Canvas/VectorDrawable anatomy from student screens.
+    UnitIVNereisRasterPlate(index,language)
 }
