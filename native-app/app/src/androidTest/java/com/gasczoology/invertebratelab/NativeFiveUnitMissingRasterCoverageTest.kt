@@ -64,20 +64,26 @@ class NativeFiveUnitMissingRasterCoverageTest {
         assertTrue(bitmap!!.height > bitmap.width)
         bitmap.recycle()
     }
-    @Test fun syconShowsAllThreeRequiredRasterSlotsAndNativeLessons() {
+    @Test fun syconShowsRealCanalSystemImageAndTracksTwoMissingMasters() {
         val root = enter(2, "u2-sycon", false)
         find(root, "r2-type-study-gallery-sycon")
-        for (plate in listOf("external","canal-system","reproduction"))
+        for (plate in listOf("external","reproduction"))
             find(root, "r2-plate-missing-sycon-$plate")
+        find(root, "r2-plate-bitmap-sycon-canal-system")
+        rule.onNodeWithTag("r2-plate-bitmap-sycon-canal-system").assertIsDisplayed()
         capture("u2-sycon-english")
         find(root, "u2-sycon-historic-static-raster")
         rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
     }
-    @Test fun obeliaShowsFourRequiredRasterSlotsInTamil() {
+    @Test fun obeliaShowsRealColonyAndLifeCycleImagesWithTwoPendingMasters() {
         val root = enter(2, "u2-obelia", true)
         find(root, "r2-type-study-gallery-obelia")
-        for (plate in listOf("colony","hydranth-gonangium","medusa","life-cycle"))
+        for (plate in listOf("hydranth-gonangium","medusa"))
             find(root, "r2-plate-missing-obelia-$plate")
+        find(root, "r2-plate-bitmap-obelia-colony")
+        rule.onNodeWithTag("r2-plate-bitmap-obelia-colony").assertIsDisplayed()
+        find(root, "r2-plate-bitmap-obelia-life-cycle")
+        rule.onNodeWithTag("r2-plate-bitmap-obelia-life-cycle").assertIsDisplayed()
         capture("u2-obelia-tamil")
         find(root, "u2-obelia-colony-static-raster")
         rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
