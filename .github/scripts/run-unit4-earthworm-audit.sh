@@ -65,8 +65,18 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
-  for scene in earthworm-english-digestive earthworm-tamil-excretory earthworm-return-navigation earthworm-tamil-external-atlas nereis-english-parapodium nereis-tamil-nephridium nereis-tamil-parapodium penaeus-english-appendages penaeus-tamil-protozoea penaeus-tamil-stage-retained penaeus-A5-preserved penaeus-tamil-interactive-telson;do
+  for scene in earthworm-english-digestive earthworm-tamil-excretory earthworm-return-navigation earthworm-tamil-external-atlas penaeus-english-appendages penaeus-tamil-protozoea penaeus-tamil-stage-retained penaeus-A5-preserved penaeus-tamil-interactive-telson;do
     [[ -s "$E/captured/unit4-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
+  done
+  # Hard QA gate: every plate in both locales, with additional Tamil legend frames.
+  for plate in {1..8}; do
+    printf -v serial '%02d' "$plate"
+    for locale in english tamil; do
+      file="$E/captured/unit4-$scale-nereis-$locale-plate-$serial.png"
+      [[ -s "$file" ]] || { result="MISSING_NEREIS_DRAWING_$scale-$locale-$serial"; exit 1; }
+    done
+    file="$E/captured/unit4-$scale-nereis-tamil-legend-$serial.png"
+    [[ -s "$file" ]] || { result="MISSING_NEREIS_LEGEND_$scale-$serial"; exit 1; }
   done
 done
 result=PASS
