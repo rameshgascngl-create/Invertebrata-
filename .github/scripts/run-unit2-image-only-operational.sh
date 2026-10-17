@@ -69,7 +69,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
- for scene in sycon-raster obelia-colony-raster obelia-lifehistory-image-pending obelia-settlement-image-pending;do
+ for scene in sycon-raster sycon-full-image obelia-colony-raster obelia-colony-full-image obelia-lifehistory-image-pending obelia-settlement-image-pending;do
   [[ -s "$E/captured/unit2-$scale-$scene.png" ]] || { result="MISSING_PNG_$scale-$scene"; exit 1; }
  done
 done
