@@ -1,0 +1,125 @@
+package com.gasczoology.invertebratelab
+
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.gasczoology.invertebratelab.data.*
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+
+/**
+ * R2 physical Android emulator acceptance: new textbook-first chapters and
+ * fail-visible static anatomical image slots. An absent raster MUST be reported,
+ * not accepted. Test devices run with the network disabled at 100%/200% fonts.
+ */
+@RunWith(AndroidJUnit4::class)
+class NativeFiveUnitRestorationTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    @Before fun resetHome() {
+        runBlocking {
+            val ctx = androidx.test.platform.app.InstrumentationRegistry
+                .getInstrumentation().targetContext
+            NativeLearningRepository(ctx).save(NativeLearningState())
+            LanguagePreferenceRepository(ctx).setLanguage(AppLanguage.ENGLISH)
+        }
+        rule.activityRule.scenario.recreate()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+        }
+    }
+
+    private fun enter(unit: Int, chapter: String, tamil: Boolean) {
+        if (tamil) rule.onNodeWithTag("language-tamil").performClick()
+        rule.onNodeWithTag("unit-" + unit).performScrollTo().performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-unit-" + unit).fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("native-unit-" + unit)
+            .performScrollToNode(hasTestTag("chapter-" + chapter))
+        rule.onNodeWithTag("chapter-" + chapter).performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("native-chapter-" + chapter)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+    }
+
+    private fun find(chapter: String, tag: String) {
+        rule.onNodeWithTag("native-chapter-" + chapter)
+            .performScrollToNode(hasTestTag(tag))
+        rule.onNodeWithTag(tag).assertExists()
+    }
+
+    private fun capture(scene: String) {
+        rule.waitForIdle()
+        val inst = androidx.test.platform.app.InstrumentationRegistry.getInstrumentation()
+        val scale = inst.targetContext.resources.configuration.fontScale
+        val suffix = if (scale >= 1.95f) "200" else "100"
+        val file = "/sdcard/Download/five-unit-qa/r2-" + suffix + "-" + scene + ".png"
+        val out = android.os.ParcelFileDescriptor.AutoCloseInputStream(
+            inst.uiAutomation.executeShellCommand("screencap -p " + file)
+        ).use { it.readBytes() }
+        val bytes = android.os.ParcelFileDescriptor.AutoCloseInputStream(
+            inst.uiAutomation.executeShellCommand("cat " + file)
+        ).use { it.readBytes() }
+        assertTrue("Empty screenshot: " + scene, out.isEmpty() && bytes.size > 12_000)
+        val image = android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        assertNotNull("Invalid screenshot: " + scene, image)
+        assertTrue(image!!.height > image.width)
+        image.recycle()
+    }
+
+    @Test fun unitOneProtozoaTeachesBeforeShowingA5() {
+        val ch = "u1-protozoa"
+        enter(1, ch, false)
+        find(ch, "restoration-lesson-heading")
+        rule.onNodeWithTag("restoration-lesson-title")
+            .assertTextContains("Protozoa", substring = true)
+        find(ch, "restored-section-classification")
+        capture("unit1-protozoa-english")
+        find(ch, "restored-section-cell")
+        find(ch, "restoration-a5-heading")
+        find(ch, "a5-card-u1-protozoa-A5-1")
+    }
+
+    @Test fun unitFivePilaTamilShowsFourMissingMastersAndFullLesson() {
+        val ch = "u5-pila"
+        enter(5, ch, true)
+        find(ch, "r2-type-study-gallery-pila")
+        for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
+            find(ch, "r2-plate-slot-pila-" + plate)
+            rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
+        }
+        capture("unit5-pila-tamil-missing-plates")
+        find(ch, "restored-section-mantle")
+        find(ch, "restored-section-organs")
+        find(ch, "restoration-a5-heading")
+        find(ch, "a5-card-u5-pila-A5-1")
+    }
+
+    @Test fun unitFiveAsteriasShowsWaterVascularMasterAsMissingNotCanvas() {
+        val ch = "u5-asterias"
+        enter(5, ch, false)
+        find(ch, "r2-type-study-gallery-asterias")
+        find(ch, "r2-plate-missing-asterias-water-vascular-system")
+        capture("unit5-asterias-english-missing-plate")
+        find(ch, "restored-section-water-vascular")
+        find(ch, "restoration-a5-heading")
+        find(ch, "a5-card-u5-asterias-A5-1")
+    }
+
+    @Test fun unitFourPenaeusShowsMissingAnatomicalMastersAndOriginalPractice() {
+        val ch = "u4-penaeus"
+        enter(4, ch, true)
+        find(ch, "r2-type-study-gallery-penaeus")
+        find(ch, "r2-plate-missing-penaeus-appendages")
+        capture("unit4-penaeus-tamil-missing-appendages")
+        find(ch, "u4-penaeus-a5-original-heading")
+        find(ch, "a5-card-u4-penaeus-A5-1")
+    }
+}
