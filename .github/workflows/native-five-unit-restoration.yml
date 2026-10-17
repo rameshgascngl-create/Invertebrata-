@@ -103,6 +103,23 @@ jobs:
           echo "No green source-status can substitute for biology, source-rights and English-Tamil manual review."
           echo "No production tag or Play/Indus submission is allowed from this R1 workflow."
 
+
+  independent-academic-review:
+    needs: asset-inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail-closed biological accuracy, independent Tamil and source-rights review
+        run: python3 .github/scripts/verify-five-unit-academic-approval.py --out qa-evidence/five-unit-academic
+      - name: Preserve academic review blockers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-R4-academic-review-register
+          path: qa-evidence/five-unit-academic/
+          if-no-files-found: warn
+
   android-ui-r3:
     needs: compile-and-jvm
     runs-on: ubuntu-24.04
