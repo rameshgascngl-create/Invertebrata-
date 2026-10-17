@@ -1,0 +1,60 @@
+name: Unit II image-only operational vs image-master academic gates
+'on':
+  push:
+    branches:
+      - native/u51-unit2-image-only-operational-qa-20261017
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-unit2-image-only-operational:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Validate shell syntax and compile Kotlin, Android tests and JVM tests
+        run: |
+          bash -n .github/scripts/run-unit2-image-only-operational.sh
+          gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Offline Android API34 evidence at 100% and 200% fonts
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit2-image-only-operational.sh
+      - name: Preserve exact-commit operational XML and PNG evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-static-image-operational-api34-evidence
+          path: qa-evidence/unit2-image-only/
+          if-no-files-found: warn
+  source-image-academic-hold:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enforce original-source figure completion and academic review
+        run: python3 qa/validate_unit2_image_masters.py
+      - name: Preserve missing-master report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-image-master-acceptance-report
+          path: qa-evidence/unit2-image-only/image-master-report.json
+          if-no-files-found: error
