@@ -230,9 +230,14 @@ private fun DrawScope.trochophore() {
         close()
     }
     drawPath(larva,Color(0xFFF5F4EF));drawPath(larva,pencilBlack,style=Stroke(3f))
-    for(j in 0..15) {
-        val a=(-PI/2+(j-7.5)*.08).toFloat()
-        seg(cx+7f*j/15f,136f,cx+30f*sin(a),62f-5f*cos(a),1.8f)
+    // Apical tuft must resolve as a fan of discrete cilia on a phone,
+    // not one fused thick stroke: the earlier endpoints all clustered left.
+    for(j in -9..9) {
+        val offset=j.toFloat()
+        val rootX=cx+offset*1.5f
+        val tipX=cx+offset*4.8f
+        val tipY=68f+kotlin.math.abs(offset)*3.0f
+        seg(rootX,136f,tipX,tipY,1.15f)
     }
     // Circumferential prototroch, a wide transverse anterior ciliary band.
     for(j in 0..32) {
