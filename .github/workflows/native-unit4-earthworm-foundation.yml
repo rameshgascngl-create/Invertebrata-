@@ -12,6 +12,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u47-nereis-legend-scroll-evidence-20261017
       - native/u48-nereis-external-pencil-image-candidate-20261017
       - native/u53-nereis-eight-static-png-masters-20261017
+      - native/u54-nereis-real-png-pixel-qa-20261017
   workflow_dispatch:
 
 permissions:
@@ -103,8 +104,12 @@ jobs:
           assert 'R.drawable.nereis_external_graphite_candidate' not in nereis_ui + image_ui
           assert '.png' in image_ui
           assert 'UnitIVNereisLessons.plateTopics[index]' in image_ui
-          assert 'Nereis drawing raster missing' in Path(
-              'native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVNereisTest.kt').read_text()
+          nereis_test = Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVNereisTest.kt').read_text()
+          assert 'Nereis drawing raster missing' in nereis_test
+          assert 'rasterInkAgreement' in nereis_test
+          assert 'sourceInk>=60 && matchedInk*100>=sourceInk*55' in nereis_test
+          assert 'plateIndex=index,plateBounds=box' in nereis_test
+          assert 'graphitePaperSamples' not in nereis_test
           assert 'u44-nereis-sources' in nav
           print("NEREIS_EIGHT_PNG_IMAGE_ONLY_READER_SOURCE=PASS; ACTUAL_ASSETS_SEPARATELY_REQUIRED")
           earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
