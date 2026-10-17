@@ -1,9 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.*
@@ -15,14 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
@@ -34,42 +28,15 @@ import kotlin.math.roundToInt
  * A missing raster file is a hard, visible teaching-plate defect. It must never
  * silently fall back to programmatic Canvas/SVG anatomy. Android tests fail explicitly.
  *
- * Hotspots are in image-relative coordinates, not arbitrary nearest-point taps.
- * The atlas image and active focus scale/pan together; stage buttons remain native.
+ * Image-only academic rule: no Canvas overlays, drawn markers or anatomical taps.
+ * Students select Sycon/Obelia stages using accessible native lesson buttons.
+ * Raster zoom/pan is permitted and remains independent of lesson navigation.
  */
-private data class AtlasTarget(val stage: Int, val x: Float, val y: Float, val radius: Float = .085f)
-private val syconTargets = listOf(
-    AtlasTarget(0,.30f,.35f),       // ostia, external view
-    AtlasTarget(1,.56f,.61f,.060f), // between radial chamber levels: incurrent passage
-    AtlasTarget(2,.595f,.6008f,.028f), // PROVISIONAL prosopyle in lateral radial wall (595,751); outer radial tip remains blind
-    AtlasTarget(3,.645f,.540f,.043f), // choanocyte-lined radial canal
-    AtlasTarget(4,.648f,.494f,.043f), // PROVISIONAL apopyle at radial outlet
-    AtlasTarget(5,.713f,.324f,.085f), // spongocoel (not a filtering chamber)
-    AtlasTarget(6,.67f,.075f)       // osculum
-)
-private val obeliaColonyTargets = listOf(
-    AtlasTarget(0,.33f,.71f),  // hydrocaulus, living colony
-    AtlasTarget(1,.50f,.14f),  // feeding hydranth
-    AtlasTarget(2,.67f,.39f)   // gonangium (theca, blastostyle, buds)
-)
-private val obeliaLifeHistoryTargets = listOf(
-    AtlasTarget(3,.66f,.70f,.09f),  // free medusae in historical scan
-    AtlasTarget(4,.26f,.68f,.09f),  // ciliated planula in historical scan
-    AtlasTarget(5,.794f,.9186f,.060f) // settlement stage selector (new plate switches below)
-)
-// Independently pinned 1933 source geometry, 1024x814 pasted at (238,143)
-// on a 1500x1250 labelled PNG. Stage D at right, E attached, F primary polyp.
-private val obeliaSettlementTargets = listOf(
-    AtlasTarget(5,.625f,.724f,.10f), // E: attached planula / hydrula, 1933 fig. 66
-    AtlasTarget(5,.479f,.560f,.10f)  // F: young primary hydranth + basal stolon
-)
-
 @Composable
 internal fun UnitIIImagePlate(
     sycon: Boolean,
     progress: Float,
-    language: AppLanguage,
-    onSelect: (Int, Int) -> Unit
+    language: AppLanguage
 ) {
     val lifeHistory = !sycon && progress.roundToInt() >= 3
     val settlement = !sycon && progress.roundToInt() >= 5
@@ -77,8 +44,8 @@ internal fun UnitIIImagePlate(
                else if (settlement) "unit2/obelia_settlement"
                else if (lifeHistory) "unit2/obelia_lifecycle"
                else "unit2/obelia_colony"
-    // Shared type-study raster loader. The image is never replaced by
-    // a Canvas, SVG or vector anatomical substitute on load failure.
+    // Only the source-linked raster is displayed. No drawn markers,
+    // artificial anatomical tap targets, Canvas, SVG or vector substitutes.
     val bitmap = rememberRequiredRasterBitmap(stem, pngOnly=lifeHistory)
     if (bitmap == null) {
         Text(
@@ -92,16 +59,9 @@ internal fun UnitIIImagePlate(
         return
     }
 
-    val targets = if (sycon) syconTargets
-                  else if (settlement) obeliaSettlementTargets
-                  else if (lifeHistory) obeliaLifeHistoryTargets
-                  else obeliaColonyTargets
     var scale by rememberSaveable(stem) { mutableFloatStateOf(1f) }
     var pan by remember(stem) { mutableStateOf(Offset.Zero) }
     var plateSize by remember(stem) { mutableStateOf(IntSize.Zero) }
-    // Must identify which distinct structure was touched even if two
-    // nearby structures share one lesson stage (Obelia E and F).
-    var selectedHotspotIndex by remember(stem) { mutableIntStateOf(-1) }
     val transform = rememberTransformableState { zoomDelta,panDelta,_ ->
         val updated=(scale*zoomDelta).coerceIn(1f,4f)
         val limitX=(updated-1f)*plateSize.width*.5f
@@ -137,42 +97,7 @@ internal fun UnitIIImagePlate(
                     modifier=Modifier.fillMaxSize().testTag("u2-raster-bitmap-visible"),
                     contentScale=ContentScale.FillBounds
                 )
-                Canvas(
-                    Modifier.fillMaxSize()
-                        .pointerInput(stem) {
-                            detectTapGestures { click ->
-                                val xx=click.x/size.width.toFloat()
-                                val yy=click.y/size.height.toFloat()
-                                val nearest=targets.minByOrNull {
-                                    val dx=xx-it.x;val dy=yy-it.y
-                                    dx*dx+dy*dy
-                                }
-                                if(nearest!=null) {
-                                    val dx=xx-nearest.x;val dy=yy-nearest.y
-                                    if(dx*dx+dy*dy<=nearest.radius*nearest.radius) {
-                                        val touched = targets.indexOf(nearest)
-                                        selectedHotspotIndex = touched
-                                        onSelect(nearest.stage, touched)
-                                    }
-                                }
-                            }
-                        }
-                        .semantics {
-                            contentDescription=if(sycon)
-                                "Sycon pencil-style plate. Pinch to enlarge; select a canal structure."
-                            else "Obelia pencil-style colony plate. Pinch to enlarge; select a polyp or medusa."
-                        }
-                ){
-                    val selected=targets.getOrNull(selectedHotspotIndex)
-                        ?.takeIf { it.stage==progress.roundToInt() }
-                        ?: targets.firstOrNull{it.stage==progress.roundToInt()}
-                    if(selected!=null) {
-                        val center=Offset(selected.x*size.width,selected.y*size.height)
-                        drawCircle(Color(0xFFD36A27),radius=14f,center=center,
-                            style=Stroke(width=2.5f))
-                        drawCircle(Color(0x55D36A27),radius=5f,center=center)
-                    }
-                }
+
             }
         }
         // Visible, bilingual correction record for the still-unapproved
@@ -198,23 +123,9 @@ internal fun UnitIIImagePlate(
             modifier=Modifier.fillMaxWidth().testTag("u2-anatomical-correction"),
             style=MaterialTheme.typography.bodySmall,
             color=MaterialTheme.colorScheme.onSurface)
-        if (settlement) {
-            val label = if (selectedHotspotIndex == 1) {
-                if (language == AppLanguage.TAMIL)
-                    "F · முதன்மைப் பாலிப் (ஹைட்ராந்த்)"
-                else "F · Primary feeding polyp (hydranth)"
-            } else {
-                if (language == AppLanguage.TAMIL)
-                    "E · அடித்தளத்தில் ஒட்டிய பிளானுலா"
-                else "E · Attached transforming planula"
-            }
-            Text(label, modifier=Modifier.fillMaxWidth()
-                .testTag("u2-selected-substage"),
-                style=MaterialTheme.typography.labelLarge)
-        }
         val zoomHint=if(language==AppLanguage.TAMIL)
-            "இரு விரல்களால் பெரிதாக்கவும்; குறியிட்ட அமைப்பைத் தொடவும்"
-        else "Pinch to zoom; touch a marked anatomical structure"
+            "படத்தை இரு விரல்களால் பெரிதாக்கலாம். உறுப்புப் படிநிலைகளை கீழே உள்ள பொத்தான்களில் தேர்ந்தெடுக்கவும்."
+        else "Pinch to enlarge the static image. Select anatomical stages using the buttons below."
         // At 100% font scale, horizontal hint/reset placement squeezed the hint
         // below 45% of the viewport. A stacked layout remains legible at every
         // supported Android font scale and preserves the 48.dp reset target.
