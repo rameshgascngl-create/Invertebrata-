@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -29,6 +30,9 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
     val narrator = remember(context) { OfflineNarrator(context) }
     val voicePhase by narrator.phase.collectAsState()
     val requestedScript by narrator.script.collectAsState()
+    // Keep the selected organ above the LazyColumn so state survives scrolling
+    // and process recreation; 200% Tamil can dispose the atlas item.
+    var externalOrgan by rememberSaveable { mutableStateOf("clitellum") }
     DisposableEffect(narrator) { onDispose { narrator.close() } }
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -63,6 +67,11 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                 Text(if (tamil)
                     "படிவுறுப்பியல், உடலியல், ஆறு உடற்கூறுப் பட இலக்குகள் மற்றும் செய்முறைத் தகவல்கள். வினா–விடைத் தொகுப்பு மாற்றப்படவில்லை."
                 else "Full teaching chapters, physiology, six required atlas slots and practical reasoning. Existing assessment questions remain unchanged.")
+            }
+        }
+        item(key = "u43-earthworm-vector-external-atlas") {
+            UnitIVEarthwormExternalAtlas(language, externalOrgan) {
+                externalOrgan = it
             }
         }
         item(key = "u4-earthworm-plate-heading") {
