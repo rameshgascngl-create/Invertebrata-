@@ -42,20 +42,50 @@ class NativeUnitIVNereisTest {
         rule.onNodeWithTag("native-chapter-u4-nereis")
             .performScrollToNode(hasTestTag(tag))
     }
-    private fun screen(name:String) {
+    // Validate the actual screencap raster, not merely an off-screen Compose node.
+    // A stale first frame was observed in the prior U4.5 100% Tamil plate-01 PNG:
+    // it depicted the Unit IV navigation menu and contained no graphite plate.
+    private fun graphitePaperSamples(bitmap:android.graphics.Bitmap):Int {
+        var hits=0
+        for(y in 120 until bitmap.height-100 step 15) {
+            for(x in 45 until bitmap.width-45 step 15) {
+                val v=bitmap.getPixel(x,y)
+                val rr=android.graphics.Color.red(v)
+                val gg=android.graphics.Color.green(v)
+                val bb=android.graphics.Color.blue(v)
+                if(rr in 249..251 && gg in 248..250 && bb in 243..247) hits++
+            }
+        }
+        return hits
+    }
+    private fun screen(name:String,requirePlate:Boolean=false) {
         rule.waitForIdle()
         val scale=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation()
             .targetContext.resources.configuration.fontScale
         val suffix=if(scale>=1.95f)"200" else "100"
         val nameOnDisk="/sdcard/Download/unit4-qa/unit4-"+suffix+"-"+name+".png"
         val ui=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().uiAutomation
-        android.os.ParcelFileDescriptor.AutoCloseInputStream(
-            ui.executeShellCommand("screencap -p "+nameOnDisk)).use { it.readBytes() }
-        val bytes=android.os.ParcelFileDescriptor.AutoCloseInputStream(
-            ui.executeShellCommand("cat "+nameOnDisk)).use {it.readBytes()}
+        var bytes=byteArrayOf()
+        var paperHits=0
+        var decoded:android.graphics.Bitmap?=null
+        for(attempt in 1..8) {
+            android.os.ParcelFileDescriptor.AutoCloseInputStream(
+                ui.executeShellCommand("screencap -p "+nameOnDisk)).use {it.readBytes()}
+            bytes=android.os.ParcelFileDescriptor.AutoCloseInputStream(
+                ui.executeShellCommand("cat "+nameOnDisk)).use {it.readBytes()}
+            decoded=android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size)
+            paperHits=if(decoded==null) 0 else graphitePaperSamples(decoded)
+            if(!requirePlate || paperHits>=700) break
+            // SurfaceFlinger screenshots can precede a newly-idle Compose frame.
+            // Retry only until the required actual paper pixels are present.
+            android.os.SystemClock.sleep(200)
+        }
         org.junit.Assert.assertTrue("Nereis screenshot missing",bytes.size>12000)
-        org.junit.Assert.assertNotNull(android.graphics.BitmapFactory.decodeByteArray(
-            bytes,0,bytes.size))
+        org.junit.Assert.assertNotNull("Nereis screenshot invalid PNG",decoded)
+        if(requirePlate) org.junit.Assert.assertTrue(
+            "Nereis drawing raster missing from $name; graphite paper hits=$paperHits",
+            paperHits>=700
+        )
     }
 
     private fun capturePlate(locale:String,index:Int) {
@@ -74,7 +104,7 @@ class NativeUnitIVNereisTest {
                 box.right<=content.width+2f &&
                 box.bottom<=content.height+2f
         )
-        screen("nereis-$locale-plate-$serial")
+        screen("nereis-$locale-plate-$serial",requirePlate=true)
     }
 
     private val plateLabelCounts=intArrayOf(6,6,6,6,4,5,4,5)
