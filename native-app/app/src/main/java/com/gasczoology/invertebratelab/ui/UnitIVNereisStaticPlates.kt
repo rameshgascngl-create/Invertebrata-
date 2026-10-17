@@ -1,5 +1,9 @@
 package com.gasczoology.invertebratelab.ui
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
+import com.gasczoology.invertebratelab.R
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -395,12 +399,33 @@ internal fun UnitIVNereisStaticPlate(index:Int,language:AppLanguage){
         Column(Modifier.fillMaxWidth().padding(14.dp),verticalArrangement=Arrangement.spacedBy(9.dp)){
             Text(title.english,style=MaterialTheme.typography.titleLarge)
             Text(title.tamil,style=MaterialTheme.typography.titleMedium)
-            Canvas(Modifier.fillMaxWidth().aspectRatio(800f/640f)
-                .background(paper)
-                .border(1.dp,Color(0xFFC1C4BF))
-                .testTag("u44-nereis-pencil-style-drawing-"+(index+1))){
-                withTransform({scale(size.width/800f,size.height/640f,pivot=Offset.Zero)}){
-                    drawStaticPlate(index)
+            if(index==0) {
+                // Original static Android VectorDrawable; anatomical draft,
+                // not a scan and not approved as a college record plate.
+                Box(Modifier.fillMaxWidth().aspectRatio(800f/640f)
+                    .background(paper)
+                    .border(1.dp,Color(0xFFC1C4BF))
+                    .testTag("u44-nereis-pencil-style-drawing-1")) {
+                    Image(
+                        painter=painterResource(R.drawable.nereis_external_graphite_candidate),
+                        contentDescription=null,
+                        contentScale=ContentScale.FillBounds,
+                        modifier=Modifier.fillMaxSize()
+                    )
+                    Canvas(Modifier.fillMaxSize()) {
+                        withTransform({scale(size.width/800f,size.height/640f,pivot=Offset.Zero)}) {
+                            drawNumberedLeaders(0)
+                        }
+                    }
+                }
+            } else {
+                Canvas(Modifier.fillMaxWidth().aspectRatio(800f/640f)
+                    .background(paper)
+                    .border(1.dp,Color(0xFFC1C4BF))
+                    .testTag("u44-nereis-pencil-style-drawing-"+(index+1))){
+                    withTransform({scale(size.width/800f,size.height/640f,pivot=Offset.Zero)}){
+                        drawStaticPlate(index)
+                    }
                 }
             }
             Text(if(language==AppLanguage.TAMIL)
