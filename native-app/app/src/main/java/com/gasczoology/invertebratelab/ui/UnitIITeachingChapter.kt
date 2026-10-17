@@ -106,8 +106,8 @@ internal fun UnitIITeachingChapter(
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics { heading() })
                 Text(tr(language,
-                    "These are static source illustrations, entirely separate from the interactive overlay. Source and anatomical sign-off are still pending.",
-                    "இவை மூல நூலின் நிலையான படங்கள்; தொடுதிறன் குறியீடுகளிலிருந்து முற்றிலும் தனியானவை. படத்தின் மூலமும் உடற்கூறு ஒப்புதலும் இன்னும் நிலுவையில் உள்ளன."),
+                    "Static raster illustrations only; no drawn overlays or organ hotspots. Source and anatomical sign-off are still pending.",
+                    "நிலையான படக்கோப்புகள் மட்டுமே; வரையப்பட்ட மேலடுக்கு அல்லது உறுப்பு தொடுபுள்ளிகள் இல்லை. மூலமும் உடற்கூறு ஒப்புதலும் நிலுவையில் உள்ளன."),
                     style=MaterialTheme.typography.bodyMedium)
                 if (sycon) {
                     Card {
@@ -151,32 +151,20 @@ internal fun UnitIITeachingChapter(
             Column(verticalArrangement=Arrangement.spacedBy(10.dp),
                 modifier=Modifier.fillMaxWidth().testTag("u2-interactive-atlas")) {
                 Text(tr(language,
-                    if(sycon)"INTERACTIVE ANATOMY · Sycon provisional canal hotspots"
-                    else "INTERACTIVE ANATOMY · Obelia colony and life-history hotspots",
-                    if(sycon)"தொடுதிறன் உடற்கூறு · சைக்கான் நீர்க் கால்வாய் வரைவு"
-                    else "தொடுதிறன் உடற்கூறு · ஒபீலியா கூட்டு மற்றும் வாழ்க்கைச் சுழற்சி"),
+                    if(sycon)"STATIC IMAGE ATLAS · Sycon canal system"
+                    else "STATIC IMAGE ATLAS · Obelia colony and life history",
+                    if(sycon)"நிலையான படத்தொகுப்பு · சைக்கான் நீர்க் கால்வாய் மண்டலம்"
+                    else "நிலையான படத்தொகுப்பு · ஒபீலியா கூட்டு மற்றும் வாழ்க்கைச் சுழற்சி"),
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics{heading()})
                 Text(tr(language,
-                    "Labelled pencil raster plate—schematic, not to scale. Select a stage or touch the illustration.",
-                    "பென்சில் வரைபடப் படத்தாள்—அளவுப்படி அல்ல. படிநிலையைத் தேர்ந்தெடுக்கவும் அல்லது படத்தைத் தொடவும்."))
+                    "Raster illustration under editorial review, not to scale. Use the stage buttons below; the image has no anatomical touch targets.",
+                    "மதிப்பாய்வில் உள்ள நிலையான படம்; அளவுப்படி அல்ல. கீழே உள்ள படிநிலைப் பொத்தான்களைப் பயன்படுத்தவும்; படத்தில் தொடுபுள்ளிகள் இல்லை."))
                 val p by animateFloatAsState(targetValue=index.toFloat(),
                     animationSpec=tween(durationMillis=600),label="Unit II teaching stage")
                 Card(colors=CardDefaults.cardColors(containerColor=parchment)) {
                     // Raster-only anatomy: no Canvas/SVG substitute is permitted.
-                    UnitIIImagePlate(
-                        sycon=sycon,
-                        progress=p,
-                        language=language,
-                        onSelect={stage, focus ->
-                            index=stage
-                            selectedSettlementFocus = if(obelia && stage == 5) focus else -1
-                            playing=false
-                            val chosen = if (obelia && stage == 5)
-                                obeliaSettlementFocus(focus) else null
-                            narrator.speak(chosen ?: stages[stage].explanation,language)
-                        }
-                    )
+                    UnitIIImagePlate(sycon=sycon, progress=p, language=language)
                 }
                 Text(stages[index.coerceIn(stages.indices)].name.value(language),
                     style=MaterialTheme.typography.titleMedium,fontWeight=FontWeight.Bold,
@@ -204,6 +192,40 @@ internal fun UnitIITeachingChapter(
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("u2-speak-stage")) {
                     Text(tr(language,"Hear this structure (installed offline voice)",
                         "இந்த அமைப்பைக் கேட்க (நிறுவிய ஆஃப்லைன் குரல்)"))
+                }
+                if(obelia && index==5) {
+                    Column(
+                        modifier=Modifier.fillMaxWidth().testTag("u2-settlement-static-choices"),
+                        verticalArrangement=Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(tr(language,
+                            "Settlement details — choose the labelled stage, not a point on the image.",
+                            "குடியேற்ற வளர்நிலைகள் — படத்தைத் தொடாமல் பெயரிட்ட நிலையைக் தேர்ந்தெடுக்கவும்."))
+                        for(focus in 0..1) {
+                            OutlinedButton(
+                                onClick={
+                                    selectedSettlementFocus=focus
+                                    playing=false
+                                    val focusText=obeliaSettlementFocus(focus)
+                                    narrator.speak(focusText ?: stages[index].explanation,language)
+                                },
+                                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+                                    .testTag(if(focus==0)"u2-settlement-choice-e" else "u2-settlement-choice-f")
+                            ) {
+                                Text(if(focus==0)
+                                    tr(language,"E · Attached transforming planula","E · ஒட்டிய உருமாறும் பிளானுலா")
+                                else
+                                    tr(language,"F · Primary feeding polyp (hydranth)","F · முதல் உணவூட்டும் பாலிப் (ஹைட்ராந்த்)"))
+                            }
+                        }
+                        Text(
+                            if(selectedSettlementFocus==1)
+                                tr(language,"F · Primary feeding polyp (hydranth)","F · முதன்மைப் பாலிப் (ஹைட்ராந்த்)")
+                            else tr(language,"E · Attached transforming planula","E · அடித்தளத்தில் ஒட்டிய பிளானுலா"),
+                            modifier=Modifier.testTag("u2-selected-substage"),
+                            style=MaterialTheme.typography.labelLarge
+                        )
+                    }
                 }
                 stages.forEachIndexed{at,stage->
                     OutlinedButton(onClick={index=at;playing=false},
