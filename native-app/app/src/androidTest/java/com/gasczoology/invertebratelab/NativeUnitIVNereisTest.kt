@@ -77,6 +77,8 @@ class NativeUnitIVNereisTest {
         screen("nereis-$locale-plate-$serial")
     }
 
+    private val plateLabelCounts=intArrayOf(6,6,6,6,4,5,4,5)
+
     @Test fun eightStaticNoninteractiveNereisPlatesAndOriginalA5() {
         enter(false)
         find("u44-nereis-introduction")
@@ -99,9 +101,18 @@ class NativeUnitIVNereisTest {
         enter(true)
         for(i in 1..8) {
             capturePlate("tamil",i)
-            find("u44-nereis-plate-"+i+"-term-0")
-            rule.onNodeWithTag("u44-nereis-plate-"+i+"-term-0").assertIsDisplayed()
-            screen("nereis-tamil-legend-"+i.toString().padStart(2,'0'))
+            val first="u44-nereis-plate-"+i+"-term-0"
+            val last="u44-nereis-plate-"+i+"-term-"+(plateLabelCounts[i-1]-1)
+            val serial=i.toString().padStart(2,'0')
+            find(first)
+            rule.onNodeWithTag(first).assertIsDisplayed()
+            screen("nereis-tamil-legend-start-"+serial)
+            find(last)
+            rule.onNodeWithTag(last).assertIsDisplayed()
+            screen("nereis-tamil-legend-end-"+serial)
+            for(j in 0 until plateLabelCounts[i-1]) {
+                rule.onNodeWithTag("u44-nereis-plate-"+i+"-term-"+j).assertExists()
+            }
         }
         find("u44-nereis-plate-7-term-0")
         rule.onNodeWithTag("u44-nereis-plate-7-term-0")
