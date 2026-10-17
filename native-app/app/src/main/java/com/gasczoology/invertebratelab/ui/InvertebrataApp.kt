@@ -52,6 +52,7 @@ import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.NativeCurriculumManifest
 import com.gasczoology.invertebratelab.data.UnitIVPenaeusTeaching
+import com.gasczoology.invertebratelab.data.UnitIVNereisLessons
 import com.gasczoology.invertebratelab.data.StudyDestination
 import kotlinx.coroutines.launch
 
@@ -465,6 +466,9 @@ private fun UnitScreen(
                             chapter.id == "u1-paramecium" -> label(language,
                                 "Full textbook: select the Start Reading button above; practice questions here.",
                                 "முழுப் பாடத்திற்கு மேலுள்ள பாடத்தைத் தொடங்கு பொத்தானைத் தேர்க; இங்கு வினாப் பயிற்சி.")
+                            chapter.id == "u4-nereis" -> label(language,
+                                "OPEN NEREIS BIOLOGY · 14 lessons + eight static bilingual sketches.",
+                                "நெரீஸ் உயிரியல் · 14 பாடப் பகுதிகளும் எட்டு இருமொழிப் படங்களும்.")
                             chapter.id == "u4-penaeus" -> label(language,
                                 "OPEN DETAILED PRAWN TYPE STUDY · appendages and development before A5.",
                                 "இறால் விரிவான இன ஆய்வு · இணைக்கால்கள் மற்றும் வளர்நிலைகளுக்குப் பின் A5.")
@@ -612,6 +616,45 @@ private fun ChapterScreen(
             if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
                 item(key = "u1-independent-protozoa-reference-atlas") {
                     UnitIProtozoaReferenceGallery(language)
+                }
+            }
+            if (chapter.id == "u4-nereis") {
+                item(key = "u44-nereis-introduction") {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.fillMaxWidth().testTag("u44-nereis-introduction")) {
+                        Text(label(language,
+                            "Nereis · complete type-study reader and eight static drawings",
+                            "நெரீஸ் · விரிவான இன ஆய்வும் எட்டு நிலைப் படங்களும்"),
+                            style = MaterialTheme.typography.headlineSmall)
+                        Text(label(language,
+                            "Original black-and-white teaching sketches; NOT authenticated pencil scans. No organ hotspots or touch interactions. Bilingual terminology requires comparison with the official college practical manual.",
+                            "கருப்பு–வெள்ளை கற்பித்தல் வரைபடங்கள்; உண்மையான பென்சில் ஸ்கேன் அல்ல. உறுப்புத் தொடுதல் இல்லை. தமிழ் உடற்கூறு சொற்கள் கல்லூரிச் செய்முறை கையேட்டுடன் ஒப்பிடப்பட வேண்டும்."),
+                            modifier = Modifier.testTag("u44-nereis-editorial-disclosure"))
+                    }
+                }
+                items((0..7).toList(), key = { "u44-nereis-plate-$it" }) { plateIndex ->
+                    UnitIVNereisStaticPlate(plateIndex,language)
+                }
+                item(key = "u44-nereis-lessons-heading") {
+                    Text(label(language,
+                        "NEREIS BIOLOGY · 14 EXPLANATORY SECTIONS",
+                        "நெரீஸ் உயிரியல் · 14 விளக்கப் பாடப் பகுதிகள்"),
+                        style=MaterialTheme.typography.titleLarge,
+                        modifier=Modifier.testTag("u44-nereis-lessons-heading"))
+                }
+                items(UnitIVNereisLessons.sections,key = { "u44-nereis-"+it.id }) { section ->
+                    Column(Modifier.fillMaxWidth().testTag("u44-nereis-section-"+section.id),
+                        verticalArrangement=Arrangement.spacedBy(9.dp)) {
+                        Text(section.title.value(language),style=MaterialTheme.typography.titleLarge)
+                        section.paragraphs.forEach { paragraph ->
+                            Text(paragraph.value(language),style=MaterialTheme.typography.bodyLarge)
+                        }
+                    }
+                }
+                item(key="u44-nereis-sources") {
+                    Text(label(language,"Scientific references: ","அறிவியல் ஆதாரங்கள்: ")+
+                        UnitIVNereisLessons.sources.joinToString(" · "),
+                        style=MaterialTheme.typography.bodySmall)
                 }
             }
             if (chapter.id == "u4-penaeus") {
