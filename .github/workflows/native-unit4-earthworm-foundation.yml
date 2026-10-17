@@ -6,6 +6,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u4-penaeus-substantive-textbook-20261016
       - native/u42-penaeus-external-anatomy-schematic-20261016
       - native/u43-earthworm-functional-external-atlas-20261017
+      - native/u44-nereis-static-bilingual-atlas-20261017
   workflow_dispatch:
 
 permissions:
@@ -74,6 +75,24 @@ jobs:
           assert 'assertEquals' in Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVPenaeusTest.kt').read_text() or 'assertTextContains' in Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVPenaeusTest.kt').read_text()
 
           assert 'u4-earthworm-plate-pending-' in ui
+
+          nereis=(root/"data/UnitIVNereisLessons.kt").read_text(encoding="utf-8")
+          nereis_ui=(root/"ui/UnitIVNereisStaticPlates.kt").read_text(encoding="utf-8")
+          for term in ['"identity"','"habitat"','"external"','"head"','"parapodia"',
+                       '"digestion"','"circulation"','"nervous"','"excretion"',
+                       '"reproduction"','"larvae"','"ecology"']:
+              assert term in nereis,term
+          assert "UnitIVNereisStaticPlate(plateIndex,language)" in nav
+          assert 'NereisTextbookSection' in nereis
+          assert 'Canvas(' in nereis_ui
+          assert 'pointerInput' not in nereis_ui
+          assert 'detectTapGestures' not in nereis_ui
+          assert 'UnitIVNereisLessons.plateTopics[index]' in nereis_ui
+          assert 'u44-nereis-pencil-style-drawing-' in nereis_ui
+          assert 'NativeUnitIVNereisTest' in Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
+          assert 'u44-nereis-sources' in nav
+          assert 'u44-nereis-static-plate-' in nav or 'u44-nereis-plate-$it' in nav
+          print("NEREIS_STATIC_BILINGUAL_EIGHT_PLATE_DRAFT=PASS; ORIGINAL_PENCIL_SCANS=PENDING")
           earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
           for required in ["Canvas(", "detectTapGestures", "u43-earthworm-canvas",
                            "EarthwormExternalTeaching.hit", "OfflineNarrator",
