@@ -23,10 +23,7 @@ internal fun UnitIIStaticLessonPlate(
     captionEnglish: String,
     captionTamil: String,
 ) {
-    val bitmap=rememberRequiredRasterBitmap(relativeStem,
-        pngOnly=relativeStem.endsWith("_historical") ||
-            relativeStem.contains("lifecycle") ||
-            relativeStem.contains("settlement"))
+    val bitmap=rememberRequiredRasterBitmap(relativeStem) // Native lossless PNG or approved WebP; do not reject valid WebP.
     if (bitmap == null) {
         Text(
             if(language == AppLanguage.TAMIL)
