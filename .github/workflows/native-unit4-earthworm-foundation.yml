@@ -93,9 +93,12 @@ jobs:
           assert 'private val numberedLeaders=' in nereis_ui
           assert 'drawNumberedLeaders(index)' in nereis_ui
           assert 'leaderPair(' in nereis_ui
+          assert 'textSize=32f' in nereis_ui
+          assert 'drawCircle(paper,22f,item.marker)' in nereis_ui
           nereis_tests=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVNereisTest.kt').read_text()
           assert 'capturePlate("english",i)' in nereis_tests
           assert 'capturePlate("tamil",i)' in nereis_tests
+          assert 'drawing clipped:' in nereis_tests
           assert 'screen("nereis-tamil-legend-"+' in nereis_tests
           unit4_driver=Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
           assert 'MISSING_NEREIS_DRAWING_' in unit4_driver
