@@ -83,6 +83,12 @@ internal fun UnitIIITeachingChapter(
                     modifier = Modifier.testTag("u3-draft-warning"))
             }
         }
+        if (chapter.id == "u3-fasciola" || chapter.id == "u3-ascaris") {
+            item(key = "r3-required-type-study-gallery") {
+                val study = NativeCurriculumManifest.typeStudies.single { it.lessonId == chapter.id }
+                RequiredTypeStudyPlates(study, language)
+            }
+        }
         if (stages.isNotEmpty()) item(key = "u3-static-figure") {
             Column(
                 modifier = Modifier.fillMaxWidth().testTag("u3-lesson-illustration-section"),
