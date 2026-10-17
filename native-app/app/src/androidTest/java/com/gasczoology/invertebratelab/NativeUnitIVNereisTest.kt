@@ -58,17 +58,25 @@ class NativeUnitIVNereisTest {
             bytes,0,bytes.size))
     }
 
+    private fun capturePlate(locale:String,index:Int) {
+        val serial=index.toString().padStart(2,'0')
+        val drawing="u44-nereis-pencil-style-drawing-"+index
+        find(drawing)
+        rule.onNodeWithTag(drawing).assertIsDisplayed()
+        screen("nereis-$locale-plate-$serial")
+    }
+
     @Test fun eightStaticNoninteractiveNereisPlatesAndOriginalA5() {
         enter(false)
         find("u44-nereis-introduction")
         rule.onNodeWithTag("u44-nereis-editorial-disclosure").assertExists()
         for(i in 1..8) {
-            find("u44-nereis-static-plate-"+i)
-            rule.onNodeWithTag("u44-nereis-pencil-style-drawing-"+i).assertExists()
+            capturePlate("english",i)
+            find("u44-nereis-image-provenance-"+i)
             rule.onNodeWithTag("u44-nereis-image-provenance-"+i).assertExists()
+            find("u44-nereis-plate-"+i+"-term-0")
+            rule.onNodeWithTag("u44-nereis-plate-"+i+"-term-0").assertIsDisplayed()
         }
-        find("u44-nereis-static-plate-3")
-        screen("nereis-english-parapodium")
         find("u44-nereis-lessons-heading")
         rule.onNodeWithTag("u44-nereis-lessons-heading")
             .assertTextContains("14 EXPLANATORY",substring=true)
@@ -78,11 +86,16 @@ class NativeUnitIVNereisTest {
 
     @Test fun tamilPlateLegendsAndSubstantiveNereisBiologyAtLargeFonts() {
         enter(true)
-        find("u44-nereis-static-plate-7")
+        for(i in 1..8) {
+            capturePlate("tamil",i)
+            find("u44-nereis-plate-"+i+"-term-0")
+            rule.onNodeWithTag("u44-nereis-plate-"+i+"-term-0").assertIsDisplayed()
+            screen("nereis-tamil-legend-"+i.toString().padStart(2,'0'))
+        }
+        find("u44-nereis-plate-7-term-0")
         rule.onNodeWithTag("u44-nereis-plate-7-term-0")
             .assertTextContains("நெப்ரோஸ்டோம்",substring=true)
-        screen("nereis-tamil-nephridium")
-        find("u44-nereis-static-plate-8")
+        find("u44-nereis-plate-8-term-1")
         rule.onNodeWithTag("u44-nereis-plate-8-term-1")
             .assertTextContains("புரோட்டோட்ரோக்",substring=true)
         find("u44-nereis-section-larvae")
@@ -90,6 +103,5 @@ class NativeUnitIVNereisTest {
         find("u44-nereis-section-parapodia")
         rule.onNodeWithTag("u44-nereis-section-parapodia").assertExists()
         find("u44-nereis-static-plate-3")
-        screen("nereis-tamil-parapodium")
     }
 }
