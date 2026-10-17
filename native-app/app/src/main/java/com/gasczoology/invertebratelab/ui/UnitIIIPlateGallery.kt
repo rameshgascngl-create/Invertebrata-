@@ -198,21 +198,6 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                 modifier = Modifier.fillMaxSize()
                                     .testTag("u3-plate-bitmap-" + plate.plateId)
                             )
-                            Canvas(Modifier.fillMaxSize().testTag("u3-hotspot-marker-" + plate.plateId)) {
-                                if (geometryVerified && selected != null) {
-                                    val origin = Offset(size.width * selected.x, size.height * selected.y)
-                                    // Leader originates EXACTLY at the selected anatomical landmark.
-                                    val dx = if (selected.x < .5f) 27.dp.toPx() else -27.dp.toPx()
-                                    val destination = Offset(origin.x + dx, origin.y - 25.dp.toPx())
-                                    drawLine(Color(0xFF554C42),origin,destination,strokeWidth=1.6.dp.toPx())
-                                    drawCircle(Color(0xFF7A4C26),radius=5.dp.toPx(),center=origin)
-                                    drawCircle(Color(0xFFE9D7B5),radius=10.dp.toPx(),
-                                        center=destination)
-                                    drawCircle(Color(0xFF66574A),radius=10.dp.toPx(),
-                                        center=destination, style=androidx.compose.ui.graphics.drawscope.Stroke(
-                                            width=1.5.dp.toPx()))
-                                }
-                            }
                             }
                         }
                         // Controls remain reachable in English/Tamil at 200% font.
