@@ -30,9 +30,7 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
     val narrator = remember(context) { OfflineNarrator(context) }
     val voicePhase by narrator.phase.collectAsState()
     val requestedScript by narrator.script.collectAsState()
-    // Keep the selected organ above the LazyColumn so state survives scrolling
-    // and process recreation; 200% Tamil can dispose the atlas item.
-    var externalOrgan by rememberSaveable { mutableStateOf("clitellum") }
+    // R2 image-only anatomy: deprecated external Canvas atlas is no longer student-facing.
     DisposableEffect(narrator) { onDispose { narrator.close() } }
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -69,10 +67,13 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                 else "Full teaching chapters, physiology, six required atlas slots and practical reasoning. Existing assessment questions remain unchanged.")
             }
         }
-        item(key = "u43-earthworm-vector-external-atlas") {
-            UnitIVEarthwormExternalAtlas(language, externalOrgan) {
-                externalOrgan = it
-            }
+        item(key = "r2-earthworm-image-only-notice") {
+            Text(
+                if (tamil) "மண்புழுவின் புற மற்றும் உள் உடற்கூறு பென்சில் படங்கள் கீழே தனித்தனியாக இணைக்கப்படும்; செயற்கை Canvas உடற்கூறு வரைவு காட்டப்படாது."
+                else "Earthworm external and internal anatomical figures are restored as separate pencil images below; no Canvas anatomy is substituted.",
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.testTag("r2-earthworm-image-only-notice")
+            )
         }
         item(key = "u4-earthworm-plate-heading") {
             Text(if (tamil) "ஆறு தேவைப்படும் உடற்கூறுப் படங்கள்" else
