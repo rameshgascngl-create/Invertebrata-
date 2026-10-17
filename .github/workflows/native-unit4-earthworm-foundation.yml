@@ -93,6 +93,8 @@ jobs:
           assert 'u44-nereis-pencil-style-drawing-' in nereis_ui
           assert 'private val numberedLeaders=' in nereis_ui
           assert 'drawNumberedLeaders(index)' in nereis_ui
+          assert 'for(j in -9..9)' in nereis_ui
+          assert 'val tipX=cx+offset*4.8f' in nereis_ui
           assert 'leaderPair(' in nereis_ui
           assert 'textSize=32f' in nereis_ui
           assert 'drawCircle(paper,22f,item.marker)' in nereis_ui
