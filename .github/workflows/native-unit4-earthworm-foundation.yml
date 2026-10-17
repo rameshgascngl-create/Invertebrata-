@@ -11,6 +11,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u46-nereis-legend-evidence-remediation-20261017
       - native/u47-nereis-legend-scroll-evidence-20261017
       - native/u48-nereis-external-pencil-image-candidate-20261017
+      - native/u53-nereis-eight-static-png-masters-20261017
   workflow_dispatch:
 
 permissions:
@@ -82,53 +83,30 @@ jobs:
 
           nereis=(root/"data/UnitIVNereisLessons.kt").read_text(encoding="utf-8")
           nereis_ui=(root/"ui/UnitIVNereisStaticPlates.kt").read_text(encoding="utf-8")
+          image_ui=(root/"ui/UnitIVNereisRasterPlates.kt").read_text(encoding="utf-8")
           for term in ['"identity"','"habitat"','"external"','"head"','"parapodia"',
                        '"digestion"','"circulation"','"nervous"','"excretion"',
                        '"reproduction"','"larvae"','"ecology"']:
               assert term in nereis,term
           assert "UnitIVNereisStaticPlate(plateIndex,language)" in nav
           assert 'NereisTextbookSection' in nereis
-          assert 'Canvas(' in nereis_ui
-          assert 'pointerInput' not in nereis_ui
-          assert 'detectTapGestures' not in nereis_ui
-          assert 'UnitIVNereisLessons.plateTopics[index]' in nereis_ui
-          assert 'u44-nereis-pencil-style-drawing-' in nereis_ui
-          assert 'private val numberedLeaders=' in nereis_ui
-          assert 'painterResource(R.drawable.nereis_external_graphite_candidate)' in nereis_ui
-          assert 'drawNumberedLeaders(0)' in nereis_ui
-          candidate=Path('native-app/app/src/main/res/drawable/nereis_external_graphite_candidate.xml')
-          assert candidate.is_file()
-          candidate_xml=candidate.read_text(encoding='utf-8')
-          assert candidate_xml.count('<path ')>=200
-          assert 'android:viewportWidth="800"' in candidate_xml
-          assert 'android:viewportHeight="640"' in candidate_xml
-          assert 'drawNumberedLeaders(index)' in nereis_ui
-          assert 'for(j in -9..9)' in nereis_ui
-          assert 'val tipX=cx+offset*4.8f' in nereis_ui
-          assert 'leaderPair(' in nereis_ui
-          assert 'textSize=32f' in nereis_ui
-          assert 'drawCircle(paper,22f,item.marker)' in nereis_ui
-          nereis_tests=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVNereisTest.kt').read_text()
-          assert 'capturePlate("english",i)' in nereis_tests
-          assert 'capturePlate("tamil",i)' in nereis_tests
-          assert 'drawing clipped:' in nereis_tests
-          assert 'graphitePaperSamples' in nereis_tests
-          assert 'scrollUntilLegendTermVisible' in nereis_tests
-          assert 'changedSince=if(scrolled) startSignature else null' in nereis_tests
-          assert 'requirePlate=true' in nereis_tests
-          assert 'Nereis drawing raster missing' in nereis_tests
-          assert 'screen("nereis-tamil-legend-start-"+serial)' in nereis_tests
-          assert '"nereis-tamil-legend-end-"+serial' in nereis_tests
-          assert 'changedSince=if(scrolled) startSignature else null' in nereis_tests
-          assert 'plateLabelCounts=intArrayOf(6,6,6,6,4,5,4,5)' in nereis_tests
-          unit4_driver=Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
-          assert 'MISSING_NEREIS_DRAWING_' in unit4_driver
-          assert 'MISSING_NEREIS_LEGEND_' in unit4_driver
-          assert 'for frame in start end;' in unit4_driver
-          assert 'NativeUnitIVNereisTest' in Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
+          assert 'UnitIVNereisRasterPlate(index,language)' in nereis_ui
+          assert 'Canvas(' not in nereis_ui
+          assert 'pointerInput' not in nereis_ui + image_ui
+          assert 'detectTapGestures' not in nereis_ui + image_ui
+          assert 'Image(' in image_ui
+          assert 'ctx.assets.open(source)' in image_ui
+          assert 'contentScale = ContentScale.Fit' in image_ui
+          assert 'NereisRasterManifest.filenames[index]' in image_ui
+          assert 'u53-nereis-raster-missing-' in image_ui
+          assert 'nereisPlateTerms(index)' in image_ui
+          assert 'R.drawable.nereis_external_graphite_candidate' not in nereis_ui + image_ui
+          assert '.png' in image_ui
+          assert 'UnitIVNereisLessons.plateTopics[index]' in image_ui
+          assert 'Nereis drawing raster missing' in Path(
+              'native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIVNereisTest.kt').read_text()
           assert 'u44-nereis-sources' in nav
-          assert 'u44-nereis-static-plate-' in nav or 'u44-nereis-plate-$it' in nav
-          print("NEREIS_STATIC_EXTERNAL_IMAGE_CANDIDATE_PRESENT=PASS; AUTHENTIC_PENCIL_SCANS_AND_ANATOMICAL_SIGNOFF=PENDING")
+          print("NEREIS_EIGHT_PNG_IMAGE_ONLY_READER_SOURCE=PASS; ACTUAL_ASSETS_SEPARATELY_REQUIRED")
           earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
           for required in ["Canvas(", "detectTapGestures", "u43-earthworm-canvas",
                            "EarthwormExternalTeaching.hit", "OfflineNarrator",
@@ -153,6 +131,8 @@ jobs:
           PY
       - name: Compile Kotlin, instrumentation sources and run all JVM tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Require genuine eight Nereis PNG assets in this exact commit
+        run: python3 .github/scripts/verify-nereis-png-masters.py
 
   android-ui:
     needs: academic-and-compile
