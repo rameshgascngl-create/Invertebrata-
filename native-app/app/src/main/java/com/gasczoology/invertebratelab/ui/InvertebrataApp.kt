@@ -704,6 +704,7 @@ private fun ChapterScreen(
                         Text(
                             supplementary.heading.value(language),
                             style = MaterialTheme.typography.headlineSmall,
+                            modifier = Modifier.testTag("u56-lesson-title"),
                         )
                         Text(
                             label(language,
