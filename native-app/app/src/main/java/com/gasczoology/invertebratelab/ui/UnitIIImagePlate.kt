@@ -1,6 +1,8 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
@@ -59,6 +61,7 @@ internal fun UnitIIImagePlate(
         return
     }
 
+    var fullscreen by rememberSaveable(stem) { mutableStateOf(false) }
     var scale by rememberSaveable(stem) { mutableFloatStateOf(1f) }
     var pan by remember(stem) { mutableStateOf(Offset.Zero) }
     var plateSize by remember(stem) { mutableStateOf(IntSize.Zero) }
@@ -73,6 +76,50 @@ internal fun UnitIIImagePlate(
         )
     }
     Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
+        OutlinedButton(
+            onClick={fullscreen=true},
+            modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+                .testTag("u2-open-full-raster")
+        ) {
+            Text(if(language==AppLanguage.TAMIL)
+                "நிலையான படத்தை முழுத்திரையில் காண்க"
+            else "View original raster full-screen")
+        }
+        if(fullscreen) {
+            Dialog(onDismissRequest={fullscreen=false},
+                properties=DialogProperties(usePlatformDefaultWidth=false)) {
+                Column(
+                    Modifier.fillMaxSize()
+                        .background(MaterialTheme.colorScheme.surface)
+                        .padding(12.dp)
+                        .testTag("u2-fullscreen-static-raster"),
+                    verticalArrangement=Arrangement.spacedBy(8.dp)
+                ) {
+                    OutlinedButton(
+                        onClick={fullscreen=false},
+                        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+                            .testTag("u2-close-full-raster")
+                    ) {
+                        Text(if(language==AppLanguage.TAMIL)
+                            "படத்தை மூடு" else "Close image")
+                    }
+                    Box(
+                        Modifier.fillMaxWidth().weight(1f)
+                            .background(Color.White)
+                    ) {
+                        Image(
+                            bitmap=bitmap,
+                            contentDescription=if(sycon)
+                                "Sycon static anatomical raster in full-screen"
+                            else "Obelia static anatomical raster in full-screen",
+                            contentScale=ContentScale.Fit,
+                            modifier=Modifier.fillMaxSize()
+                                .testTag("u2-fullscreen-raster-bitmap")
+                        )
+                    }
+                }
+            }
+        }
         Box(
             Modifier.fillMaxWidth()
                 .aspectRatio(bitmap.width.toFloat()/bitmap.height)
