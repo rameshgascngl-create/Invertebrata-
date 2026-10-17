@@ -24,7 +24,9 @@ class NativeCurriculumManifestTest {
             it.acceptedA5ChapterId != null
         })
         assertEquals(44, NativeCurriculumManifest.lessonSlots.size)
-        assertEquals(setOf("u1-paramecium",NativeCurriculumManifest.EARTHWORM_LESSON_ID,"u4-penaeus") + NativeCurriculumManifest.a5ChapterIdsByUnit.getValue(2) + NativeCurriculumManifest.a5ChapterIdsByUnit.getValue(3),
+        // All 43 original syllabus chapters plus the separate Earthworm reader
+        // now have text drafts; approval is never implied by manuscript presence.
+        assertEquals(NativeCurriculumManifest.lessonSlots.map { it.id }.toSet(),
             NativeCurriculumManifest.lessonSlots.filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }.map { it.id }.toSet())
         assertTrue(NativeCurriculumManifest.lessonSlots.none {
             it.status == AcademicWorkStatus.ACCEPTED
@@ -45,14 +47,14 @@ class NativeCurriculumManifestTest {
     }
 
     @Test
-    fun nineTypeStudiesHaveCorrectUnitsAndSevenCurrentDrafts() {
+    fun nineTypeStudiesHaveCorrectUnitsAndAllDraftsRemainUnapproved() {
         val studies = NativeCurriculumManifest.typeStudies
         assertEquals(9, studies.size)
         assertEquals(mapOf("paramecium" to 1, "sycon" to 2, "obelia" to 2,
             "fasciola" to 3, "ascaris" to 3, "earthworm" to 4, "penaeus" to 4,
             "pila" to 5, "asterias" to 5),
             studies.associate { it.organismId to it.unitNumber })
-        assertEquals(setOf("paramecium","sycon","obelia","fasciola","ascaris","earthworm","penaeus"), studies
+        assertEquals(studies.map { it.organismId }.toSet(), studies
             .filter { it.status == AcademicWorkStatus.DRAFT_UNVERIFIED }
             .map { it.organismId }.toSet())
         assertTrue(studies.none { it.status == AcademicWorkStatus.ACCEPTED })
