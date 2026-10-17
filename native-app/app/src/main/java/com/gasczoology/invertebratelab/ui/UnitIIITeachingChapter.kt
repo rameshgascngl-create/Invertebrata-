@@ -77,8 +77,8 @@ internal fun UnitIIITeachingChapter(
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.testTag("u3-lesson-title").semantics { heading() })
                 Text(u3t(language,
-                    "ILLUSTRATED TEXTBOOK DRAFT — historical image anatomy, provenance and Tamil expert review pending.",
-                    "படவிளக்கப் பாட வரைவு — வரலாற்றுப் படங்களின் உடற்கூறு, மூலம், தமிழ் நிபுணர் ஒப்புதல் நிலுவையில் உள்ளது."),
+                    "TEXTBOOK DRAFT — anatomy images, provenance and Tamil expert review pending.",
+                    "பாடநூல் வரைவு — உடற்கூறுப் படங்கள், மூல உரிமை, தமிழ் நிபுணர் ஒப்புதல் நிலுவையில் உள்ளது."),
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u3-draft-warning"))
             }
@@ -94,8 +94,8 @@ internal fun UnitIIITeachingChapter(
                 modifier = Modifier.fillMaxWidth().testTag("u3-lesson-illustration-section"),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text(u3t(language, "LESSON ANATOMY · HISTORICAL SCANNED ILLUSTRATION",
-                    "பாட உடற்கூறு · வரலாற்று அச்சுப்படத்தின் ஸ்கேன்"),
+                Text(u3t(language, "LESSON ANATOMY · SOURCE RASTER REQUIRED",
+                    "பாட உடற்கூறு · அசல் படக்கோப்பு தேவை"),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.semantics { heading() })
                 val stem = if (chapter.id == "u3-fasciola")
@@ -103,8 +103,8 @@ internal fun UnitIIITeachingChapter(
                 val picture = rememberRequiredRasterBitmap(stem)
                 if (picture == null) {
                     Text(u3t(language,
-                        "Historical source raster is missing or unreadable. No schematic Canvas or SVG substitute will be shown.",
-                        "முழுத் தெளிவுள்ள சரிபார்க்கப்பட்ட மூலப்படம் இன்னும் இணைக்கப்படவில்லை. மாற்றாக Canvas அல்லது SVG படம் காட்டப்படாது."),
+                        "Anatomical source image is absent or unreadable. The intended historical reference is NOT included. No Canvas or SVG substitute.",
+                        "உடற்கூறு மூலப்படம் இணைக்கப்படவில்லை அல்லது படிக்க இயலவில்லை. வரலாற்று ஆதாரம் படக்கோப்பாக வழங்கப்படவில்லை; Canvas அல்லது SVG மாற்றுப் படம் இல்லை."),
                         modifier = Modifier.testTag("u3-pencil-master-pending"),
                         color = MaterialTheme.colorScheme.error)
                 } else {
@@ -119,12 +119,12 @@ internal fun UnitIIITeachingChapter(
                 Text(
                     if (chapter.id == "u3-fasciola")
                         u3t(language,
-                            "Source: Encyclopaedia Britannica (1888), Trematoda Fig. 1. A–E show Fasciola organ systems and the egg. Each historical letter key requires source-based checking.",
-                            "மூலம்: என்சைக்ளோபீடியா பிரிட்டானிக்கா (1888), டிரெமடோடா படம் 1. A–E பகுதிகள் ஃபாசியோலாவின் உறுப்பமைப்புகளையும் முட்டையையும் காட்டுகின்றன; எழுத்துக் குறியீடுகள் மூலநூலுடன் சரிபார்க்கப்பட வேண்டும்.")
+                            "Proposed reference for comparison only: Encyclopaedia Britannica (1888), Trematoda Fig. 1. Its original raster is NOT bundled; identify source and verify anatomy before approving a replacement plate.",
+                            "ஒப்பீட்டுக்கான பரிந்துரை மட்டும்: என்சைக்ளோபீடியா பிரிட்டானிக்கா (1888), டிரெமடோடா படம் 1. அசல் படக்கோப்பு செயலியில் இல்லை; புதிய படத்தை அங்கீகரிக்கும் முன் உறுப்புகளையும் மூலத்தையும் சரிபார்க்க வேண்டும்.")
                     else
                         u3t(language,
-                            "Source: Paul Pfurtscheller, Zoologische Wandtafeln No. 38 (1925). This is a coloured historical anatomical wall chart, NOT a graphite-pencil scan. Anatomy review remains pending.",
-                            "மூலம்: பால் ப்ஃபுர்ட்ஷெல்லர், விலங்கியல் சுவர் படங்கள் எண் 38 (1925). இது நிறமுள்ள வரலாற்று உடற்கூறுப் படம்; கிராஃபைட் பென்சில் வரைபட ஸ்கேன் அல்ல. உடற்கூறு மதிப்பாய்வு நிலுவையில் உள்ளது."),
+                            "Proposed reference for comparison only: Paul Pfurtscheller, Zoologische Wandtafeln No. 38 (1925), a coloured wall chart, NOT a pencil scan. The source raster is NOT bundled. Academic review remains pending.",
+                            "ஒப்பீட்டுக்கான பரிந்துரை மட்டும்: பால் ப்ஃபுர்ட்ஷெல்லர் விலங்கியல் சுவர்ப்படம் 38 (1925). இது நிறமுள்ள படம்; பென்சில் ஸ்கேன் அல்ல. அசல் படக்கோப்பு செயலியில் இல்லை; மதிப்பாய்வு நிலுவையில் உள்ளது."),
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.testTag("u3-source-artwork-disclosure")
                 )
