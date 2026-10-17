@@ -36,6 +36,8 @@ class NativeFiveUnitRestorationTest {
 
     private fun enter(unit: Int, chapter: String, tamil: Boolean) {
         if (tamil) rule.onNodeWithTag("language-tamil").performClick()
+        rule.onNodeWithTag("native-home")
+            .performScrollToNode(hasTestTag("unit-" + unit))
         rule.onNodeWithTag("unit-" + unit).performScrollTo().performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-" + unit).fetchSemanticsNodes().isNotEmpty()
