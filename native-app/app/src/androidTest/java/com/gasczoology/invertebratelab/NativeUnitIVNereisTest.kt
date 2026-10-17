@@ -267,4 +267,29 @@ class NativeUnitIVNereisTest {
         rule.onNodeWithTag("u44-nereis-section-parapodia").assertExists()
         find("u44-nereis-static-plate-3")
     }
+    @Test fun fullscreenStaticPencilPlateZoomControlsWorkInTamilAndReturnToReader() {
+        enter(true)
+        // The button is below a tall portrait image in a LazyColumn item.
+        val button="u55-nereis-open-full-image-3"
+        find(button)
+        scrollUntilLegendTermVisible(button)
+        rule.onNodeWithTag(button).assertIsDisplayed().performClick()
+        rule.onNodeWithTag("u55-nereis-fullscreen-dialog-3").assertExists()
+        rule.onNodeWithTag("u55-nereis-fullscreen-image-3").assertIsDisplayed()
+        rule.onNodeWithTag("u55-nereis-fullscreen-title")
+            .assertTextContains("பாராப்போடியம்",substring=true)
+        rule.onNodeWithTag("u55-nereis-zoom-in").performClick()
+        rule.onNodeWithTag("u55-nereis-zoom-in").performClick()
+        rule.onNodeWithTag("u55-nereis-zoom-level").assertTextContains("2.0",substring=true)
+        screen("nereis-tamil-fullscreen-zoom")
+        rule.onNodeWithTag("u55-nereis-zoom-reset").performClick()
+        rule.onNodeWithTag("u55-nereis-zoom-level").assertTextContains("1.0",substring=true)
+        rule.onNodeWithTag("u55-nereis-close-full-image").performClick()
+        rule.onNodeWithTag("u55-nereis-fullscreen-dialog-3").assertDoesNotExist()
+        find("u44-nereis-pencil-style-drawing-3")
+        rule.onNodeWithTag("u44-nereis-pencil-style-drawing-3").assertExists()
+        find("a5-card-u4-nereis-A5-1")
+        rule.onNodeWithTag("a5-card-u4-nereis-A5-1").assertExists()
+    }
+
 }
