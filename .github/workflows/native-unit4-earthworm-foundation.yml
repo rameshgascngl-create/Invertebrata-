@@ -9,6 +9,7 @@ name: Unit IV native Earthworm academic foundation - exact-commit engineering va
       - native/u44-nereis-static-bilingual-atlas-20261017
       - native/u45-nereis-numbered-leader-qa-20261017
       - native/u46-nereis-legend-evidence-remediation-20261017
+      - native/u47-nereis-legend-scroll-evidence-20261017
   workflow_dispatch:
 
 permissions:
@@ -103,6 +104,8 @@ jobs:
           assert 'capturePlate("tamil",i)' in nereis_tests
           assert 'drawing clipped:' in nereis_tests
           assert 'graphitePaperSamples' in nereis_tests
+          assert 'scrollUntilLegendTermVisible' in nereis_tests
+          assert 'changedSince=if(scrolled) startSignature else null' in nereis_tests
           assert 'requirePlate=true' in nereis_tests
           assert 'Nereis drawing raster missing' in nereis_tests
           assert 'screen("nereis-tamil-legend-start-"+serial)' in nereis_tests
@@ -115,7 +118,7 @@ jobs:
           assert 'NativeUnitIVNereisTest' in Path('.github/scripts/run-unit4-earthworm-audit.sh').read_text()
           assert 'u44-nereis-sources' in nav
           assert 'u44-nereis-static-plate-' in nav or 'u44-nereis-plate-$it' in nav
-          print("NEREIS_64_QA_FRAMES_AND_SPLIT_TAMIL_LEGENDS=SOURCE_PRESENT; ORIGINAL_PENCIL_SCANS=PENDING")
+          print("NEREIS_64_QA_FRAMES_AND_SCROLLED_TAMIL_LEGENDS=SOURCE_PRESENT; ORIGINAL_PENCIL_SCANS=PENDING")
           earthworm_atlas=(root/"ui/UnitIVEarthwormExternalAtlas.kt").read_text(encoding="utf-8")
           for required in ["Canvas(", "detectTapGestures", "u43-earthworm-canvas",
                            "EarthwormExternalTeaching.hit", "OfflineNarrator",
