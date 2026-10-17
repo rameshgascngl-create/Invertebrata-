@@ -3,6 +3,7 @@ name: Unit II native syllabus and anatomical UI QA
   push:
     branches:
       - native/u2-porifera-cnidaria-20261011
+      - native/u50-unit2-static-image-only-20261017
   workflow_dispatch:
 
 permissions:
