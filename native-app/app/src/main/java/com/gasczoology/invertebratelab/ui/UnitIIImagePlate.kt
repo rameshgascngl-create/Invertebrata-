@@ -74,12 +74,12 @@ internal fun UnitIIImagePlate(
     val lifeHistory = !sycon && progress.roundToInt() >= 3
     val settlement = !sycon && progress.roundToInt() >= 5
     val stem = if (sycon) "unit2/sycon_plate"
-               else if (settlement) "unit2/obelia_settlement"
+               else if (settlement) "unit2/obelia_lifecycle" // Same cycle master; do not claim an independent settlement scan
                else if (lifeHistory) "unit2/obelia_lifecycle"
                else "unit2/obelia_colony"
     // Shared type-study raster loader. The image is never replaced by
     // a Canvas, SVG or vector anatomical substitute on load failure.
-    val bitmap = rememberRequiredRasterBitmap(stem, pngOnly=lifeHistory)
+    val bitmap = rememberRequiredRasterBitmap(stem) // Accept packaged WebP; any missing master remains a hard visible defect
     if (bitmap == null) {
         Text(
             if (language == AppLanguage.TAMIL)
