@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import android.graphics.Paint as AndroidPaint
+import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -28,7 +30,8 @@ import kotlin.math.sin
  * historical plate or signed-off zoological master.
  *
  * No click, pointer, hotspot, structure-selection or simulation controls.
- * Labels are rendered in ordinary accessible Compose Text under each drawing,
+ * Each fixed numbered leader points to a depicted anatomical structure;
+ * labels are rendered in ordinary accessible Compose Text under each drawing,
  * in English on the first line and Tamil on the second.
  * Tamil nomenclature is PROVISIONAL until matched to the college manual.
  *
@@ -251,6 +254,100 @@ private fun DrawScope.trochophore() {
     }
 }
 
+
+/**
+ * Manual audit targets, in the same ordinal sequence as terms(index).
+ * Markers are *fixed* labels on a static teaching drawing, not touch hotspots.
+ * Points are taken from the path geometry in this file, not screen percentages.
+ *
+ * Where two chaetal bundles share one practical-record term, a marker has
+ * two terminating leaders. Source-scanned graphite masters remain pending.
+ */
+private data class NereisNumberedLeader(
+    val marker:Offset,
+    val anatomy:List<Offset>
+)
+private fun leader(mx:Float,my:Float,x:Float,y:Float)=
+    NereisNumberedLeader(p(mx,my),listOf(p(x,y)))
+private fun leaderPair(mx:Float,my:Float,x:Float,y:Float,x2:Float,y2:Float)=
+    NereisNumberedLeader(p(mx,my),listOf(p(x,y),p(x2,y2)))
+private val numberedLeaders=listOf(
+    // 01: prostomium; peristomium; chaetiger; paired parapodium; pygidium; cirri
+    listOf(
+        leader(132f,101f,405f,61f), leader(688f,122f,458f,91f),
+        leader(132f,271f,405f,264f), leader(688f,289f,480f,286f),
+        leader(132f,479f,405f,546f), leader(688f,547f,440f,585f)
+    ),
+    // 02: prostomium; palps; antennae; eyes; peristomium; tentacular cirri
+    listOf(
+        leader(129f,143f,390f,273f), leader(686f,378f,507f,364f),
+        leader(129f,87f,427f,152f), leader(686f,205f,423f,280f),
+        leader(129f,476f,393f,406f), leader(686f,487f,562f,272f)
+    ),
+    // 03: notopodium; neuropodium; dorsal/ventral cirri; acicula; both chaetal bundles
+    listOf(
+        leader(129f,135f,465f,232f), leader(129f,451f,469f,385f),
+        leader(699f,115f,541f,107f), leader(699f,513f,554f,506f),
+        leaderPair(129f,325f,423f,274f,426f,365f),
+        leaderPair(699f,365f,652f,228f,652f,411f)
+    ),
+    // 04: mouth; eversible pharynx; jaws; oesophagus; intestine; anus
+    listOf(
+        leader(129f,102f,405f,89f), leader(699f,143f,405f,147f),
+        leader(129f,245f,390f,139f), leader(699f,284f,405f,218f),
+        leader(129f,416f,397f,402f), leader(699f,532f,405f,545f)
+    ),
+    // 05: dorsal and ventral vessels; segmental connections; transverse inset
+    listOf(
+        leader(129f,152f,390f,222f), leader(699f,212f,422f,332f),
+        leader(129f,398f,367f,365f), leader(699f,488f,580f,493f)
+    ),
+    // 06: brain; circumpharyngeal connectives; suboesophageal ganglion;
+    // ventral nerve cord; segmental ganglia
+    listOf(
+        leader(129f,103f,387f,122f), leader(699f,191f,365f,177f),
+        leader(129f,275f,405f,198f), leader(699f,404f,415f,386f),
+        leader(129f,486f,405f,432f)
+    ),
+    // 07: ciliated nephrostome; septum; coiled tubule; external pore
+    listOf(
+        leader(129f,175f,315f,178f), leader(699f,173f,390f,194f),
+        leader(129f,440f,453f,402f), leader(699f,526f,574f,523f)
+    ),
+    // 08: apical tuft; prototroch; mouth; gut; anus
+    listOf(
+        leader(129f,106f,405f,113f), leader(699f,263f,407f,277f),
+        leader(129f,341f,407f,325f), leader(699f,399f,406f,416f),
+        leader(129f,533f,411f,502f)
+    )
+)
+private val markerTextPaint=AndroidPaint(AndroidPaint.ANTI_ALIAS_FLAG).apply {
+    color=android.graphics.Color.rgb(51,52,50)
+    textSize=24f
+    textAlign=AndroidPaint.Align.CENTER
+    typeface=android.graphics.Typeface.DEFAULT_BOLD
+}
+private fun DrawScope.drawNumberedLeaders(index:Int) {
+    val leaders=numberedLeaders[index]
+    check(leaders.size==terms(index).size) {
+        "Nereis plate ${index+1}: numbered leader/terminology mismatch"
+    }
+    leaders.forEachIndexed { ordinal, item ->
+        val elbow=if(item.marker.x<400f)item.marker.x+27f else item.marker.x-27f
+        item.anatomy.forEach { target ->
+            // An actual endpoint dot is essential: these are not floating label lines.
+            seg(target.x,target.y,elbow,item.marker.y,1.45f,pencilGray)
+            drawCircle(pencilBlack,3.8f,target)
+        }
+        seg(elbow,item.marker.y,item.marker.x,item.marker.y,1.8f,pencilBlack)
+        drawCircle(paper,16.5f,item.marker)
+        drawCircle(pencilBlack,16.5f,item.marker,style=Stroke(2.1f))
+        drawContext.canvas.nativeCanvas.drawText(
+            (ordinal+1).toString(),item.marker.x,item.marker.y+8f,markerTextPaint
+        )
+    }
+}
+
 private fun DrawScope.drawStaticPlate(index:Int) {
     when(index) {
         0 -> body()
@@ -267,6 +364,7 @@ private fun DrawScope.drawStaticPlate(index:Int) {
         val x=311f+i*7f
         seg(x,579f,x+7f,582f,.48f,pencilGray)
     }
+    drawNumberedLeaders(index)
 }
 
 private fun terms(index:Int):List<BilingualText>{
@@ -301,8 +399,8 @@ internal fun UnitIVNereisStaticPlate(index:Int,language:AppLanguage){
                 }
             }
             Text(if(language==AppLanguage.TAMIL)
-                "குறிப்புக் கோட்டிற்கு ஏற்ற பெயர்கள் · English / தமிழ்"
-                else "Anatomical labels · English / தமிழ்",
+                "எண்ணிட்ட சுட்டுக்கோடுகள் · English / தமிழ்"
+                else "Numbered anatomical leaders · English / தமிழ்",
                 style=MaterialTheme.typography.labelLarge)
             terms(index).forEachIndexed {i,term ->
                 Text((i+1).toString()+". "+term.english+"\n"+term.tamil,
