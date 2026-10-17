@@ -1,0 +1,28 @@
+name: Nereis U5.3 original PNG archive import
+on:
+  push:
+    branches:
+      - native/u53-nereis-eight-static-png-masters-20261017
+    paths:
+      - qa-intake/nereis_u53_eight_originals.zip
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact archive and copy eight source images
+        run: python3 .github/scripts/import-nereis-eight-pngs.py
+      - name: Commit checked original raster files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/main/assets/nereis/
+          git rm qa-intake/nereis_u53_eight_originals.zip
+          git diff --cached --check
+          git commit -m 'assets(u5.3): integrate eight checked Nereis PNG originals'
+          git push
