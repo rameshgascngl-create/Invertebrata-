@@ -67,7 +67,7 @@ class NativeUnitIVSupplementaryTest {
         val id="u4-peripatus"
         enter(id,false)
         find(id,"u56-lesson-heading")
-        rule.onNodeWithTag("u56-lesson-heading")
+        rule.onNodeWithTag("u56-lesson-title")
             .assertTextContains("Peripatus",substring=true)
         find(id,"u56-section-external")
         screenshot("peripatus-english-lobopods")
@@ -82,7 +82,7 @@ class NativeUnitIVSupplementaryTest {
         val id="u4-crustacean-larvae"
         enter(id,true)
         find(id,"u56-lesson-heading")
-        rule.onNodeWithTag("u56-lesson-heading")
+        rule.onNodeWithTag("u56-lesson-title")
             .assertTextContains("ஓட்டுடலிகளின்",substring=true)
         find(id,"u56-section-nauplius")
         screenshot("crustacean-larvae-tamil-nauplius")
