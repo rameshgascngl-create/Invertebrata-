@@ -3,6 +3,7 @@ name: Unit II image-only operational vs image-master academic gates
   push:
     branches:
       - native/u51-unit2-image-only-operational-qa-20261017
+      - native/u52-unit2-fullscreen-raster-20261017
   workflow_dispatch:
 permissions:
   contents: read
