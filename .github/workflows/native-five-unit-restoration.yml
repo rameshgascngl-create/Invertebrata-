@@ -65,6 +65,21 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - name: Verify mapped Unit II image bytes are unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          pairs=(
+            "unit2/sycon_plate.webp:type_studies/sycon/canal-system.webp"
+            "unit2/obelia_colony.webp:type_studies/obelia/colony.webp"
+            "unit2/obelia_lifecycle.webp:type_studies/obelia/life-cycle.webp"
+          )
+          for item in "${pairs[@]}";do
+            source="${item%%:*}"
+            target="${item#*:}"
+            cmp "native-app/app/src/main/assets/$source" "native-app/app/src/main/assets/$target"
+            echo "BYTE_IDENTICAL_RASTER=PASS: $target"
+          done
       - name: Record every mandatory and supplementary plate
         run: python3 .github/scripts/audit-five-unit-assets.py --out qa-evidence/five-unit-assets
       - name: Upload honest plate-register evidence
