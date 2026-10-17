@@ -51,7 +51,7 @@ import sys, xml.etree.ElementTree as ET
 root=Path(sys.argv[1])
 name=sys.argv[2]
 expected="com.gasczoology.invertebratelab."+name
-expected_count=2 if name=="NativeUnitIVNereisTest" else 4
+expected_count=3 if name=="NativeUnitIVNereisTest" else 4
 cases=[node for file in root.rglob("TEST-*.xml")
        for node in ET.parse(file).getroot().iter("testcase")]
 assert len(cases)==expected_count,("Incorrect Unit IV test count",name,len(cases),expected_count)
@@ -65,6 +65,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for scale in 100 200;do
+  [[ -s "$E/captured/unit4-$scale-nereis-tamil-fullscreen-zoom.png" ]] || { result="MISSING_NEREIS_ZOOM_EVIDENCE_$scale";exit 1;}
   for scene in earthworm-english-digestive earthworm-tamil-excretory earthworm-return-navigation earthworm-tamil-external-atlas penaeus-english-appendages penaeus-tamil-protozoea penaeus-tamil-stage-retained penaeus-A5-preserved penaeus-tamil-interactive-telson;do
     [[ -s "$E/captured/unit4-$scale-$scene.png" ]] || { result="MISSING_SCREEN_$scale-$scene";exit 1;}
   done
