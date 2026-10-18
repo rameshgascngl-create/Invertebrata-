@@ -1,9 +1,14 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
@@ -36,6 +41,7 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
     val tamil = language == AppLanguage.TAMIL
     val stem = ParameciumProcessPngIndex.byProcess.getValue(process)
     val image = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
+    var expanded by rememberSaveable(process.name) { mutableStateOf(false) }
     Card(
         modifier = Modifier.fillMaxWidth().testTag("u57-simulator-png-card")
     ) {
@@ -52,8 +58,26 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth()
                         .aspectRatio(image.width.toFloat()/image.height.toFloat())
+                        .clickable(onClickLabel = if (tamil) "படத்தைப் பெரிதாக்கு" else "Enlarge image") {
+                            expanded = true
+                        }
                         .testTag("u57-paramecium-process-bitmap-" + process.name.lowercase()),
                 )
+                OutlinedButton(
+                    onClick = { expanded = true },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("u58-open-process-image-" + process.name.lowercase()),
+                ) {
+                    Text(if (tamil) "படத்தை முழுத்திரையில் பெரிதாக்கு" else "View full-size source image")
+                }
+                if (expanded) {
+                    RequiredTypeStudyFullImage(
+                        image = image,
+                        title = if (tamil) "பாரமீசியம் · உடற்கூறுப் படம்" else "Paramecium · anatomy PNG",
+                        language = language,
+                        onDismiss = { expanded = false },
+                    )
+                }
                 Text(
                     if (tamil)
                         "மூலப் படத்திலிருந்து பெறப்பட்ட நிலையான PNG. இது மாற்றம் பெறும் உயிரியல் இயக்கக் காட்சி அல்ல; கீழுள்ள நிலைகளின் விளக்கத்தைப் படிக்கவும்."
