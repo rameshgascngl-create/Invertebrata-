@@ -121,6 +121,17 @@ def main() -> int:
         writer.writerows(rows)
     (args.out / "plate-register.json").write_text(
         json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Flag identical image bytes mapped to different teaching slots. This is a
+    # review finding, not proof of scientific duplication or a release approval.
+    by_hash = {}
+    for row in rows:
+        if row["sha256"]:
+            by_hash.setdefault(row["sha256"], []).append(row["required_stem"])
+    duplicates = [dict(sha256=digest, mapped_slots=sorted(stems))
+                  for digest, stems in sorted(by_hash.items()) if len(stems) > 1]
+    (args.out / "duplicate-image-hashes.json").write_text(
+        json.dumps(duplicates, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"IDENTICAL_IMAGE_HASH_GROUPS={len(duplicates)}; REVIEW_REQUIRED_IF_NONZERO")
     required = [r for r in rows if r["required"]]
     absent = [r for r in required if r["state"] != "PRESENT_UNVERIFIED"]
     for unit in range(1,6):
