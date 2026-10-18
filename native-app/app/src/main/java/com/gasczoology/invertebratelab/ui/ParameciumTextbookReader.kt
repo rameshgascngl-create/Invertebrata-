@@ -1,7 +1,6 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.layout.Arrangement
@@ -26,11 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -40,14 +35,11 @@ import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
 import kotlinx.coroutines.launch
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
 
 /**
  * R1.4 candidate: offline-first, illustrated, chapter-by-chapter native reader.
- * Original Compose Canvas drawings are schematic and DRAFT_UNVERIFIED, never
- * copied stock pictures or asserted microscope-derived coordinates.
+ * Concept-specific PNG raster images replace the earlier Canvas mechanism drawings.
+ * Missing concept masters are explicitly marked; none are fabricated.
  * The A5 question bank and previously accepted N1.3 tests are untouched.
  */
 private fun view(language: AppLanguage, en: String, ta: String) =
@@ -164,22 +156,6 @@ private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
         BilingualText("Observe living ciliates under the microscope", "உயிருள்ள சிலியேட்டுகளை நுண்ணோக்கியில் காணல்"),
         BilingualText("Connect visual evidence to cell physiology", "காட்சி ஆதாரத்தையும் செல் உடலியலையும் இணைத்தல்"))
 )
-
-private fun DrawScope.pencilBody(cx: Float, cy: Float, w: Float, h: Float) {
-    drawOval(PencilAtlasPalette.cell, topLeft = Offset(cx - w / 2f, cy - h / 2f), size = Size(w, h))
-    drawOval(PencilAtlasPalette.graphite, topLeft = Offset(cx - w / 2f, cy - h / 2f),
-        size = Size(w, h), style = Stroke(2.6f))
-    drawOval(PencilAtlasPalette.hatch, topLeft = Offset(cx - w / 2f + 4f, cy - h / 2f + 3f),
-        size = Size(w - 8f, h - 6f), style = Stroke(2f))
-    for (i in 0 until 64) {
-        val angle = 2 * PI * i / 64
-        val dx = cos(angle).toFloat()
-        val dy = sin(angle).toFloat()
-        val base = Offset(cx + dx * w * .50f, cy + dy * h * .50f)
-        drawLine(PencilAtlasPalette.mid, base,
-            base + Offset(dx * 11f - dy * 3f, dy * 11f + dx * 3f), 1.25f)
-    }
-}
 
 @Composable
 private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
