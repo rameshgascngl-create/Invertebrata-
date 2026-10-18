@@ -83,56 +83,16 @@ internal fun UnitIIITeachingChapter(
                     modifier = Modifier.testTag("u3-draft-warning"))
             }
         }
-        if (chapter.id == "u3-fasciola" || chapter.id == "u3-ascaris") {
-            item(key = "r3-required-type-study-gallery") {
-                val study = NativeCurriculumManifest.typeStudies.single { it.lessonId == chapter.id }
-                RequiredTypeStudyPlates(study, language)
-            }
-        }
-        if (stages.isNotEmpty()) item(key = "u3-static-figure") {
-            Column(
-                modifier = Modifier.fillMaxWidth().testTag("u3-lesson-illustration-section"),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Text(u3t(language, "LESSON ANATOMY · ARCHIVED REFERENCE ILLUSTRATION · REVIEW PENDING",
-                    "பாட உடற்கூறு · காப்பக ஆதாரப் படம் · மதிப்பாய்வு நிலுவையில் உள்ளது"),
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.semantics { heading() })
-                val stem = if (chapter.id == "u3-fasciola")
-                    "unit3/fasciola_type" else "unit3/ascaris_type"
-                val picture = rememberRequiredRasterBitmap(stem)
-                if (picture == null) {
-                    Text(u3t(language,
-                        "Anatomical source image is absent or unreadable. The intended historical reference is NOT included. No Canvas or SVG substitute.",
-                        "உடற்கூறு மூலப்படம் இணைக்கப்படவில்லை அல்லது படிக்க இயலவில்லை. வரலாற்று ஆதாரம் படக்கோப்பாக வழங்கப்படவில்லை; Canvas அல்லது SVG மாற்றுப் படம் இல்லை."),
-                        modifier = Modifier.testTag("u3-pencil-master-pending"),
-                        color = MaterialTheme.colorScheme.error)
-                } else {
-                    Image(bitmap = picture,
-                        contentDescription = u3t(language,
-                            "Historical zoology anatomy illustration for the lesson",
-                            "பாடத்திற்கான வரலாற்று விலங்கியல் உடற்கூறு படம்"),
-                        contentScale = ContentScale.FillWidth,
-                        modifier = Modifier.fillMaxWidth()
-                            .testTag("u3-static-pencil-raster"))
-                }
-                Text(
-                    if (chapter.id == "u3-fasciola")
-                        u3t(language,
-                            "Archived reference candidate: Encyclopaedia Britannica (1888), Trematoda Fig. 1. Original illustration pixels are bundled in a labelled raster. This is not a pencil-scan or an independently verified type-study plate.",
-                            "காப்பக ஆதாரப் பட வரைவு: என்சைக்ளோபீடியா பிரிட்டானிக்கா (1888), டிரெமடோடா படம் 1. அசல் படத்தின் பிக்சல்கள் செயலியில் இணைக்கப்பட்டுள்ளன; இது அங்கீகரிக்கப்பட்ட பென்சில் ஸ்கேன் அல்ல. உறுப்புகளை தனியாகச் சரிபார்க்க வேண்டும்.")
-                    else
-                        u3t(language,
-                            "Archived reference candidate: Paul Pfurtscheller, Zoologische Wandtafeln No. 38 (1925). The coloured source chart is bundled; it is NOT a graphite-pencil scan or an approved sex-specific anatomical plate.",
-                            "காப்பக ஆதாரப் பட வரைவு: பால் ப்ஃபுர்ட்ஷெல்லர் விலங்கியல் சுவர்ப்படம் 38 (1925). அசல் நிறப்படம் செயலியில் இணைக்கப்பட்டுள்ளது; இது பென்சில் ஸ்கேன் அல்ல. உடற்கூறுப் பட ஒப்புதல் நிலுவையில் உள்ளது."),
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.testTag("u3-source-artwork-disclosure")
-                )
-                Text(u3t(language,
-                    "Image authorship, original resolution, anatomical leader lines and reuse rights must be verified separately.",
-                    "படத்தின் ஆசிரியர், அசல் தெளிவு, உறுப்புக் குறியீடுகள், மறுபயன்பாட்டு உரிமைகள் ஆகியவை தனியாகச் சரிபார்க்கப்பட வேண்டும்."),
-                    style = MaterialTheme.typography.bodySmall)
-            }
+        // R7: exactly one inline raster per unique anatomical plate.
+        // UnitIIIPlateGallery below is the only student-facing anatomical
+        // gallery. The duplicate RequiredTypeStudyPlates and historical source
+        // image section were removed. Archived source files are untouched.
+        item(key = "u3-one-image-per-plate-disclosure") {
+            Text(u3t(language,
+                "One image is displayed for each of the three distinct source-backed anatomical plates. Full-screen zoom is available from its plate; scientific and Tamil reviews remain pending.",
+                "மூன்று வேறுபட்ட ஆதார உடற்கூறுப் படங்களும் தலா ஒருமுறை மட்டுமே காட்டப்படுகின்றன. ஒவ்வொரு படத்தையும் முழுத்திரையில் பெரிதாக்கலாம்; அறிவியல் மற்றும் தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."),
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.testTag("u3-no-duplicate-images"))
         }
         if (stages.isNotEmpty()) item(key = "u3-required-plate-gallery") {
             UnitIIIPlateGallery(chapter.id, language, narrator)
