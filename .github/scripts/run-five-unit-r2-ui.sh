@@ -30,7 +30,7 @@ for scale in 1.0 2.0;do
       cp -a native-app/app/build/outputs/androidTest-results/connected "$suite_results" 2>/dev/null || true
       echo "::error::Android suite failed: scale=$scale suite=$suite"
       tail -n 160 "$E/scale-$scale/gradle-$suite.txt" || true
-      find "$suite_results" -name "TEST-*.xml" -exec grep -n -E "failure|error|Assertion|Exception" {} \\; || true
+      find "$suite_results" -name "TEST-*.xml" -exec grep -n -E "failure|error|Assertion|Exception" {} + || true
       exit 1
     fi
     cp -a native-app/app/build/outputs/androidTest-results/connected "$suite_results"
