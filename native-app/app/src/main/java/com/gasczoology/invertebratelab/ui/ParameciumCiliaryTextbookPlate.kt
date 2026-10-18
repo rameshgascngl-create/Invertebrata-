@@ -1,7 +1,5 @@
 package com.gasczoology.invertebratelab.ui
 
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,17 +23,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.semantics.CustomAccessibilityAction
-import androidx.compose.ui.semantics.customActions
-import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -47,9 +37,6 @@ import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
 import com.gasczoology.invertebratelab.data.ParameciumProcess
 import kotlinx.coroutines.launch
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
 
 /**
  * R1.6 isolated native Canvas candidate. The four stages come from the
@@ -88,16 +75,16 @@ internal fun ParameciumCiliaryTextbookPlate(
     ) {
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Text(
-                ciliaryText(language, "PENCIL ATLAS · CILIARY LOCOMOTION",
-                    "பென்சில் உடலமைப்புப் படம் · குறுஇழை இயக்கம்"),
+                ciliaryText(language, "PNG ATLAS · CILIARY LOCOMOTION",
+                    "PNG உடலமைப்புப் படம் · குறுஇழை இயக்கம்"),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.testTag("r16-ciliary-title").semantics { heading() },
             )
             Text(
                 ciliaryText(language,
-                    "Side-view projection and enlarged basal-body / axoneme cross-sections. Teaching schematics at different scales; three-dimensional strokes are simplified.",
-                    "செல் புறப்பகுதியின் பக்கவாட்டுத் தோற்றமும் பெரிதாக்கிய அடித்தள உடல் / ஆக்சோனீம் குறுக்குவெட்டுகளும். வெவ்வேறு அளவுகளில் உள்ள கற்பித்தல் வரைபடங்கள்; முப்பரிமாண அசைவுகள் எளிமைப்படுத்தப்பட்டுள்ளன."),
+                    "Ciliary locomotion is shown in a dedicated PNG slot. Basal-body (9 triplets) and axoneme (9+2) ultrastructure require separate, reviewed images.",
+                    "குறுஇழை இயக்கத்திற்கு தனி PNG இடம் உள்ளது. அடித்தள உடல் (9 மும்மைகள்), ஆக்சோனீம் (9+2) அமைப்புகளுக்குத் தனியாகச் சரிபார்க்கப்பட்ட படங்கள் தேவை."),
                 style = MaterialTheme.typography.bodyMedium,
             )
             Button(
@@ -107,8 +94,8 @@ internal fun ParameciumCiliaryTextbookPlate(
                     .testTag("r16-view-ciliary-plate"),
             ) {
                 Text(ciliaryText(language,
-                    "Bring the pencil diagram fully into view",
-                    "பென்சில் வரைபடத்தை முழுவதும் திரையில் காண்க"))
+                    "Bring the ciliary PNG into view",
+                    "குறுஇழை PNG படத்தை முழுவதும் காண்க"))
             }
             val locomotionPng = rememberRequiredRasterBitmap(
                 "unit1/concepts/paramecium_ciliary_locomotion", pngOnly = true)
@@ -132,8 +119,8 @@ internal fun ParameciumCiliaryTextbookPlate(
 
             Text(
                 ciliaryText(language,
-                    "Left inset: basal body, 9 triplets, no central pair · right: shaft axoneme, 9 doublets + 2 singlets · below: surface, basal bodies and rootlets. Protein details are simplified.",
-                    "இடது சிறுபடம்: அடித்தள உடல், 9 மும்மைகள், மைய இணை இல்லை · வலது: தண்டு ஆக்சோனீம், 9 இரட்டைகள் + 2 ஒற்றைகள் · கீழே: மேற்பரப்பு, அடித்தள உடல்கள், வேரிழைகள். புரத விவரங்கள் எளிமைப்படுத்தப்பட்டுள்ளன."),
+                    "Ultrastructure reminder: basal body has nine microtubule triplets; motile axoneme usually has nine peripheral doublets and two central singlets. These details are not certified by the locomotion PNG.",
+                    "நுண்ணமைப்பு: அடித்தள உடலில் ஒன்பது நுண்குழல் மும்மைகள்; இயக்க ஆக்சோனீமில் பொதுவாக ஒன்பது புற இரட்டைகளும் இரண்டு மைய ஒற்றைகளும் உள்ளன. இவ்விவரங்கள் இயக்க PNG மூலம் உறுதிசெய்யப்படவில்லை."),
                 modifier = Modifier.testTag("r16-ciliary-legend"),
                 style = MaterialTheme.typography.bodySmall,
             )
