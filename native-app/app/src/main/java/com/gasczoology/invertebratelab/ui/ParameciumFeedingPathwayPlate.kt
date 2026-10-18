@@ -178,61 +178,23 @@ internal fun ParameciumFeedingPathwayPlate(
             )
             Text(
                 if (language == AppLanguage.TAMIL)
-                    "அசல் பென்சில் வழித்தடப் படம் · நான்கு செயல்நிலைகள் · அமைவிட வரைபடம் அல்ல"
-                else "Original graphite process plate · four stages · NOT an organ-position map",
+                    "வாய்ப்புற அமைப்பு · PNG ஆதாரப் படமும் நான்கு விளக்க நிலைகளும்"
+                else "Oral apparatus · photographed-source PNG reference and four narrated stages",
                 style = MaterialTheme.typography.bodySmall,
             )
-            Canvas(
-                modifier = Modifier.fillMaxWidth().height(220.dp)
-                    .bringIntoViewRequester(diagramRequester)
-                    .testTag("r15-feeding-pathway-canvas")
-                    .semantics {
-                        contentDescription = if (language == AppLanguage.TAMIL)
-                            "நான்கு உணவூட்ட நிலைகளைக் காட்டும் விளக்கப் படம்; கீழுள்ள பொத்தான்களாலும் நிலையைத் தேர்ந்தெடுக்கலாம்"
-                        else "Four-step feeding schematic. Choose any stage with the accessible buttons below."
-                    }
-                    .pointerInput(language) {
-                        detectTapGestures { tap ->
-                            val centers = feedingAnchors.map {
-                                Offset(it.x * size.width, it.y * size.height)
-                            }
-                            val nearest = centers.indices.minByOrNull { i ->
-                                val dx = tap.x - centers[i].x
-                                val dy = tap.y - centers[i].y
-                                dx * dx + dy * dy
-                            } ?: return@detectTapGestures
-                            val dx = tap.x - centers[nearest].x
-                            val dy = tap.y - centers[nearest].y
-                            val range = min(size.width * .16f, size.height * .18f)
-                            if (dx * dx + dy * dy <= range * range) select(nearest)
-                        }
-                    },
-            ) {
-                drawRect(PencilAtlasPalette.paper)
-                val centers = feedingAnchors.map {
-                    Offset(it.x * size.width, it.y * size.height)
-                }
-                val radius = min(size.width * .085f, size.height * .14f)
-                for (index in 0 until centers.lastIndex) {
-                    feedingArrow(centers[index], centers[index + 1], radius)
-                }
-                centers.forEachIndexed { index, center ->
-                    val active = index == selected
-                    val outline = if (active) PencilAtlasPalette.selected
-                        else PencilAtlasPalette.graphite
-                    drawCircle(PencilAtlasPalette.cell, radius = radius, center = center)
-                    drawCircle(outline, radius = radius, center = center,
-                        style = Stroke(width = if (active) 4.2f else 2.5f))
-                    drawCircle(PencilAtlasPalette.mid, radius = radius - 5f,
-                        center = center, style = Stroke(width = 1.1f))
-                    // Four different biological processes, not four empty markers.
-                    feedingPictogram(index, center, radius)
-                }
-            }
+            // R8: a real, packaged oral-apparatus PNG is the ONLY figure.
+            // Keep the 4 scientifically authored feeding stage controls.
+            // The photograph is an anatomic reference, not four new frames.
+            ParameciumPngReference(
+                panel = "oral",
+                language = language,
+                modifier = Modifier.bringIntoViewRequester(diagramRequester),
+                contextOnly = true,
+            )
             Text(
                 if (language == AppLanguage.TAMIL)
-                    "ஒவ்வொரு வட்டத்தையோ கீழே உள்ள நிலைப் பொத்தானையோ தொட்டு படிநிலையை ஒளிரச்செய்து ஒலிவிளக்கத்தைக் கேளுங்கள்."
-                else "Tap a graphite circle or its stage button to highlight the pathway and hear the corresponding explanation.",
+                    "கீழே உள்ள நிலைப் பொத்தான்களைத் தேர்ந்தெடுத்து விளக்கத்தைப் படிக்கவும் அல்லது கேட்கவும். PNG என்பது நிலையான உடலமைப்புப் படமே."
+                else "Select a stage below to read or hear its explanation. The PNG is a fixed anatomical reference; it is not a stage animation.",
                 style = MaterialTheme.typography.bodyMedium,
             )
             model.stages.forEachIndexed { index, item ->
