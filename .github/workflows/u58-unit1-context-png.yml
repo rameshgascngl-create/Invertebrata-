@@ -1,0 +1,112 @@
+name: Unit I contextual PNG reader — no repeated anatomical illustrations
+'on':
+  push:
+    branches:
+      - native/u58-paramecium-context-png-reader-20261018
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unit1-context-png-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-jvm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify actual four Paramecium PNGs and correct source mapping
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          root=Path('native-app/app/src/main/assets/unit1')
+          for file in ('paramecium_external.png','paramecium_oral.png',
+                       'paramecium_vacuole.png','paramecium_internal.png'):
+              payload=(root/file).read_bytes()
+              assert payload.startswith(bytes.fromhex('89504e470d0a1a0a')),file
+              width,height=struct.unpack('>II',payload[16:24])
+              assert width>=800 and height>=800,(file,width,height)
+          data=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui')
+          lab=(data/'ParameciumTeachingLab.kt').read_text()
+          image=(data/'ParameciumProcessPng.kt').read_text()
+          reader=(data/'ParameciumTextbookReader.kt').read_text()
+          assert 'ParameciumProcessPng(process, language)' in lab
+          assert 'ProcessSketch(' not in lab
+          assert 'r1-process-canvas' not in lab
+          assert 'Canvas(' not in image and 'Image(' in image
+          for path in ('unit1/paramecium_external','unit1/paramecium_oral',
+                       'unit1/paramecium_vacuole'):
+              assert path in image,path
+          assert 'ParameciumProcess.CONJUGATION to null' in image
+          assert 'ParameciumProcess.BINARY_FISSION to null' in image
+          assert 'unit1/concepts/paramecium_conjugation' in reader
+          assert 'unit1/concepts/paramecium_binary_fission' in reader
+
+          assert 'u58-expand-concept-png-' in reader
+          assert 'u58-expand-external-png' in reader
+          assert 'else -> "overview"' not in reader
+          assert 'when (section.id) {' in reader
+          assert 'RequiredTypeStudyFullImage(' in reader
+          assert 'Anatomical pencil plate: touch individual organs' not in reader
+          assert 'One image per concept' in reader or 'A PNG is displayed only where its subject matches' in reader
+          print('U58_CONCEPT_ROUTING=PASS NO_UNRELATED_OVERVIEW=PASS')
+          assert 'items(chapter.a5Questions, key = { it.id })' in (data/'InvertebrataApp.kt').read_text()
+          print('UNIT1_STATIC_PNGS=4 present, SIMULATOR=3 mapped, FISSION/CONJUGATION=correctly blocked')
+          PY
+      - name: Kotlin and Android test compilation and all JVM checks
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble native Android QA APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Upload debug APK, not academically approved
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u58-context-png-UNAPPROVED-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+  emulator:
+    needs: build-and-jvm
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Exercise actual source PNGs in Android at normal and 200% Tamil font
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-u58-paramecium-context-png.sh
+      - name: Upload screenshots, XML and device evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u58-context-png-offline-evidence
+          path: qa-evidence/u58-reader/
+          if-no-files-found: warn
