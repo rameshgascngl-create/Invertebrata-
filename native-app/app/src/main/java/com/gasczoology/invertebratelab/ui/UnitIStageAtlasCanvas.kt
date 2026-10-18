@@ -1,6 +1,8 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -100,13 +102,7 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.testTag("u115-current-stage"),
             )
-            AtlasDrawing(
-                plate = plate,
-                selectedStructureId = structure.id,
-                language = language,
-                modifier = Modifier.fillMaxWidth().height(255.dp)
-                    .testTag("u115-concept-canvas"),
-            )
+            UnitIStagePng(plate.id, language, Modifier.fillMaxWidth().height(255.dp).testTag("u115-concept-canvas"))
             OutlinedButton(
                 onClick = { expanded = true },
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
@@ -206,10 +202,7 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
                         color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.labelLarge,
                     )
-                    AtlasDrawing(
-                        plate, structure.id, language,
-                        Modifier.fillMaxWidth().weight(1f).testTag("u115-expanded-canvas"),
-                    )
+                    UnitIStagePng(plate.id, language, Modifier.fillMaxWidth().weight(1f).testTag("u115-expanded-canvas"))
                     Text(
                         if (tamil) structure.explanationTa else structure.explanationEn,
                         style = MaterialTheme.typography.bodyMedium,
@@ -222,6 +215,24 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun UnitIStagePng(stage: String, language: AppLanguage, modifier: Modifier) {
+    val stem = when (stage) {
+        "brucei-blood" -> "unit1/references/trypanosoma"
+        "leishmania-amastigote" -> "unit1/references/leishmania"
+        else -> null
+    }
+    val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
+    if (bitmap != null) {
+        Image(bitmap = bitmap, contentDescription = "Source PNG reference; morphology review pending",
+            contentScale = ContentScale.Fit, modifier = modifier.testTag("u115-png-reference"))
+    } else {
+        Text(if (language == AppLanguage.TAMIL) "இந்த வளர்ச்சி நிலைக்கான தனிப் PNG படம் இன்னும் சரிபார்க்கப்படவில்லை"
+            else "Stage-specific PNG not yet verified; no substitute drawing",
+            color = MaterialTheme.colorScheme.error, modifier = modifier.testTag("u115-png-pending"))
     }
 }
 
