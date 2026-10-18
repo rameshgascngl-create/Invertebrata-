@@ -369,7 +369,8 @@ internal fun ParameciumTextbookReader(
     } else if (chapter != 0) {
         val figure = when (section.id) {
             "osmoregulation" -> "vacuole"
-            "asexual-division-process", "nuclear-dimorphism" -> "fission"
+            "asexual-division-process" -> "fission"
+            "nuclear-dimorphism" -> "overview"
             "conjugation" -> "conjugation"
             else -> "overview"
         }
