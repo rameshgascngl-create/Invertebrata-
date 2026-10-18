@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/unit1-png-android-qa.yml
       - native-app/app/src/main/assets/unit1/references/**
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIStageAtlasCanvas.kt
       - native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt
   workflow_dispatch:
 permissions:
@@ -57,7 +58,7 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 900
           script: |
-            mkdir -p /sdcard/Download/u12-reference-qa || true
+            set -eu
             mkdir -p qa-evidence/unit1-png
             for scale in 1.0 2.0; do
               adb shell settings put system font_scale "$scale"
