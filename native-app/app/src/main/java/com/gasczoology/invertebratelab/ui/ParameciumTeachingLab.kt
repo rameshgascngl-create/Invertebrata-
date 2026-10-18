@@ -128,15 +128,27 @@ fun ParameciumTeachingLab(
             OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=::leave, modifier=Modifier.heightIn(min=48.dp)) {
                 Text(bi(language,"Back","பின்செல்"))
             }
-            // Display the genuine native atlas ahead of long hero, voice and tab
-            // descriptions; otherwise the figure is below the fold at 200% Tamil.
+            // R7: the earlier programmatically drawn Paramecium anatomy atlas
+            // was shown alongside the photographed pencil-source raster plates.
+            // Show the SAME authoritative plate gallery just once in this view.
             if (tab == "anatomy") {
-                AtlasSection(language, ::speak, onExploreOsmoregulation = {
-                    simulationId = ParameciumProcess.OSMOREGULATION.name
-                    simulationStep = 0
-                    simulationPlaying = false
-                    selectTab("simulate")
-                })
+                val study = com.gasczoology.invertebratelab.data.NativeCurriculumManifest
+                    .typeStudies.single { it.organismId == "paramecium" }
+                RequiredTypeStudyPlates(study, language)
+                OutlinedButton(
+                    onClick = {
+                        simulationId = ParameciumProcess.OSMOREGULATION.name
+                        simulationStep = 0
+                        simulationPlaying = false
+                        selectTab("simulate")
+                    },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("r7-open-paramecium-water-balance"),
+                ) {
+                    Text(bi(language,
+                        "Continue to contractile vacuole physiology",
+                        "சுருங்கும் நுண்குமிழின் உடலியலைத் தொடர்க"))
+                }
             }
             val savedSection = NativeLessonDrafts.paramecium.sections.first { it.id == learningState.textbookSectionId }
             Text(bi(language, "Reading position: ", "வாசிப்பு நிலை: ") + savedSection.heading.value(language) +
@@ -262,7 +274,7 @@ fun ParameciumTeachingLab(
                 "study" -> StudySection(language, ::speak, onAnatomy = { selectTab("anatomy") },
                     onSimulation = { selectTab("simulate") },
                     learningState = learningState, onLearningChanged = onLearningChanged)
-                "anatomy" -> Unit // The real atlas is drawn first, above long introductory text.
+                "anatomy" -> Unit // One photographed pencil-source gallery is rendered above, no Canvas anatomy.
                 "simulate" -> SimulatorSection(
                     language, ::speak, simulationId, simulationStep, simulationPlaying,
                     onChoose = { newId ->
