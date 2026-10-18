@@ -183,91 +183,42 @@ private fun DrawScope.pencilBody(cx: Float, cy: Float, w: Float, h: Float) {
 
 @Composable
 private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
-    Card(colors = CardDefaults.cardColors(containerColor = Color(0xFFFAF8F3))) {
+    // Each concept gets its own PNG slot. No anatomy is drawn in Canvas.
+    val stem = when (figure) {
+        "oral" -> "unit1/paramecium_oral"
+        "vacuole" -> "unit1/paramecium_vacuole"
+        "overview" -> "unit1/paramecium_internal"
+        "fission" -> "unit1/concepts/paramecium_binary_fission"
+        "conjugation" -> "unit1/concepts/paramecium_conjugation"
+        else -> null
+    }
+    val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
+    Card {
         Column(Modifier.fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(view(language, "ORIGINAL GRAPHITE STUDY PLATE · schematic / not to scale",
-                "அசல் பென்சில் ஆய்வுப் படம் · விளக்க வரைபடம் / அளவுக்கு ஏற்ப அல்ல"),
-                style = MaterialTheme.typography.labelSmall, color = Color(0xFF60564D))
-            Canvas(Modifier.fillMaxWidth().height(240.dp).testTag("r14-pencil-" + figure)) {
-                val w = size.width
-                val h = size.height
-                val g = PencilAtlasPalette.graphite
-                val s = PencilAtlasPalette.selected
-                drawRect(PencilAtlasPalette.paper)
-                when (figure) {
-                    "fission" -> {
-                        pencilBody(w * .29f, h * .52f, w * .34f, h * .48f)
-                        pencilBody(w * .73f, h * .52f, w * .34f, h * .48f)
-                        drawCircle(g, radius = h * .050f, center = Offset(w * .26f, h * .48f))
-                        drawCircle(g, radius = h * .050f, center = Offset(w * .70f, h * .48f))
-                        drawLine(s, Offset(w * .48f, h * .28f),
-                            Offset(w * .55f, h * .28f), 5f)
-                    }
-                    "conjugation" -> {
-                        pencilBody(w * .51f, h * .35f, w * .56f, h * .29f)
-                        pencilBody(w * .51f, h * .68f, w * .56f, h * .29f)
-                        drawCircle(g, radius = h * .05f, center = Offset(w * .40f, h * .33f))
-                        drawCircle(g, radius = h * .05f, center = Offset(w * .62f, h * .69f))
-                        drawLine(s, Offset(w * .49f, h * .48f),
-                            Offset(w * .54f, h * .55f), 4f)
-                    }
-                    "oral" -> {
-                        pencilBody(w * .51f, h * .51f, w * .70f, h * .70f)
-                        val a = Offset(w * .47f, h * .72f)
-                        val b = Offset(w * .53f, h * .57f)
-                        val c = Offset(w * .60f, h * .44f)
-                        drawLine(s, a, b, 6f)
-                        drawLine(s, b, c, 5f)
-                        drawCircle(g, radius = h * .065f, center = Offset(w * .65f, h * .38f),
-                            style = Stroke(3f))
-                        for (i in 0 until 5) {
-                            drawCircle(g, radius = 2.8f,
-                                center = Offset(w * (.21f + i * .04f), h * (.64f + i * .014f)))
-                        }
-                    }
-                    "vacuole" -> {
-                        pencilBody(w * .51f, h * .51f, w * .70f, h * .70f)
-                        for ((x, y) in listOf(.32f to .39f, .73f to .59f)) {
-                            val center = Offset(w * x, h * y)
-                            val radius = h * .042f
-                            drawCircle(g, radius = radius, center = center, style = Stroke(2.8f))
-                            for (i in 0 until 7) {
-                                val angle = 2 * PI * i / 7
-                                val d = Offset(cos(angle).toFloat(), sin(angle).toFloat())
-                                drawLine(g, center + d * (radius + 2f),
-                                    center + d * (radius + 17f), 2.5f)
-                            }
-                        }
-                        drawCircle(PencilAtlasPalette.hatch, radius = h * .06f,
-                            center = Offset(w * .51f, h * .65f))
-                    }
-                    else -> {
-                        pencilBody(w * .51f, h * .51f, w * .70f, h * .70f)
-                        drawOval(PencilAtlasPalette.hatch,
-                            topLeft = Offset(w * .40f, h * .36f),
-                            size = Size(w * .20f, h * .20f))
-                        drawOval(g, topLeft = Offset(w * .40f, h * .36f),
-                            size = Size(w * .20f, h * .20f), style = Stroke(2f))
-                        drawCircle(g, radius = h * .03f, center = Offset(w * .61f, h * .47f))
-                        drawLine(s, Offset(w * .40f, h * .74f),
-                            Offset(w * .51f, h * .58f), 4f)
-                    }
-                }
+            Text(view(language, "Concept-specific PNG anatomy plate — scientific review pending",
+                "கருத்துக்கேற்ற தனி PNG உடற்கூறுப் படம் — அறிவியல் மதிப்பாய்வு நிலுவையில்"),
+                style = MaterialTheme.typography.labelSmall)
+            if (bitmap != null) {
+                androidx.compose.foundation.Image(bitmap = bitmap,
+                    contentDescription = view(language, "Paramecium concept PNG: $figure", "பாரமீசியம் PNG படம்: $figure"),
+                    contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                    modifier = Modifier.fillMaxWidth().height(240.dp).testTag("r14-pencil-" + figure))
+            } else {
+                Text(view(language,
+                    "Required concept-specific PNG not yet scientifically verified; the old drawing has been removed.",
+                    "இந்தக் கருத்திற்கான சரிபார்க்கப்பட்ட PNG படம் இன்னும் இல்லை; பழைய வரைபடம் நீக்கப்பட்டது."),
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.testTag("r14-concept-png-missing-" + figure))
             }
             Text(when (figure) {
-                "vacuole" -> view(language,
-                    "Two collecting complexes (radial graphite marks) are separate from the unarmed food vacuole.",
-                    "இரண்டு சேகரிப்புத் தொகுதிகள் (கதிர்வடிவப் பென்சில் குறிகள்) கிளைகளற்ற உணவுக் குமிழிலிருந்து வேறுபட்டவை.")
-                "oral" -> view(language, "Oral groove → cytostome/cytopharynx → food vacuole.",
-                    "வாய்ப்பள்ளம் → சைட்டோஸ்டோம்/சைட்டோஃபாரிங்ஸ் → உணவுக் குமிழ்.")
-                "fission" -> view(language,
-                    "Transverse fission produces two daughter cells; arrows are explanatory, not time-calibrated.",
-                    "குறுக்குத் திசை இருபிளவு இரண்டு மகள் செல்களை உருவாக்கும்; அம்பு நேர அளவீடு அல்ல.")
-                "conjugation" -> view(language, "Temporary pairing and genetic exchange do not immediately increase cell number.",
-                    "தற்காலிக இணைவும் மரபணுப் பரிமாற்றமும் உடனடியாகச் செல் எண்ணிக்கையை அதிகரிக்காது.")
-                else -> view(language,
-                    "Pencil outline: ciliation, nuclear structures and oral region shown schematically.",
-                    "பென்சில் வரைபடத்தில் குறுஇழை அமைப்பு, உட்கருக்கள், வாய்ப்பகுதி விளக்கமாகக் காட்டப்பட்டுள்ளன.")
+                "vacuole" -> view(language, "Contractile vacuoles and food vacuoles are distinct structures.",
+                    "சுருங்கும் நுண்குமிழ்களும் உணவுக் குமிழ்களும் வெவ்வேறு அமைப்புகள்.")
+                "fission" -> view(language, "Transverse binary fission yields two daughter cells.",
+                    "குறுக்குத் திசை இருபிளவில் இரண்டு மகள் செல்கள் உருவாகின்றன.")
+                "conjugation" -> view(language, "Genetic exchange does not immediately increase the number of cells.",
+                    "மரபணுப் பரிமாற்றம் உடனடியாகச் செல் எண்ணிக்கையை அதிகரிக்காது.")
+                else -> view(language, "Anatomical source-image labels require expert review.",
+                    "உடற்கூறு மூலப்படக் குறியீடுகள் நிபுணர் மதிப்பாய்வுக்கு உட்பட்டவை.")
             }, style = MaterialTheme.typography.bodyMedium)
         }
     }
