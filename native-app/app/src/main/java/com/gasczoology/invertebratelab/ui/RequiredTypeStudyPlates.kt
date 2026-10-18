@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clipToBounds
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -39,6 +42,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.TypeStudyRequirement
 import com.gasczoology.invertebratelab.data.BilingualText
+import kotlin.math.roundToInt
 
 /**
  * Provisional college-practical terminology for ALL 35 type-study slots.
@@ -122,6 +126,14 @@ internal fun RequiredTypeStudyPlates(
             else "Each figure is a real bundled raster, if present. Historical ink and colour references are NOT authentic pencil scans; morphology, rights and Tamil terminology still require verification.",
             style = MaterialTheme.typography.bodyMedium,
         )
+        if (study.organismId == "paramecium") {
+            Text(
+                if (tamil) "ஒரே கையால் வரையப்பட்ட வரைபடத்தின் புகைப்படத்திலிருந்து மூன்று உடற்கூறுப் பகுதிகள் பிரிக்கப்பட்டுள்ளன. மூலம்: Rijan Bhandari (2014); CC BY-SA 3.0. இயக்கப் படம் இன்னும் இல்லை."
+                else "Three anatomical views are derived from one photographed pencil drawing, not three independently verified originals. Rijan Bhandari (2014), CC BY-SA 3.0. Locomotion plate still missing.",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.testTag("r6-single-source-disclosure"),
+            )
+        }
         study.requiredPlateIds.forEach { plateId ->
             val stem = "type_studies/${study.organismId}/${plateId}"
             val raster = rememberRequiredRasterBitmap(stem)
@@ -187,13 +199,15 @@ private fun RequiredTypeStudyFullImage(
     val tamil = language == AppLanguage.TAMIL
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         Column(
-            Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface).padding(14.dp)
+            Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)
+                .statusBarsPadding().navigationBarsPadding().padding(14.dp)
                 .testTag("r2-fullscreen-dialog"),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(title, style = MaterialTheme.typography.titleMedium)
             Box(
-                Modifier.fillMaxWidth().weight(1f)
+                Modifier.fillMaxWidth().weight(1f).clipToBounds()
+                    .testTag("r6-zoom-viewport-clipped")
                     .pointerInput(title) {
                         detectTransformGestures { _, pan, change, _ ->
                             zoom = (zoom * change).coerceIn(1f, 4f)
@@ -215,6 +229,12 @@ private fun RequiredTypeStudyFullImage(
                     }.testTag("r2-fullscreen-bitmap"),
                 )
             }
+            Text(
+                if (tamil) "பெரிதாக்கம்: ${(zoom * 100f).roundToInt()}%"
+                else "Zoom: ${(zoom * 100f).roundToInt()}%",
+                style = MaterialTheme.typography.labelMedium,
+                modifier = Modifier.testTag("r6-zoom-level"),
+            )
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { zoom = (zoom / 2f).coerceAtLeast(1f) },
