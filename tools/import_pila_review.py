@@ -25,15 +25,20 @@ def import_archive(archive: Path) -> None:
         raise FileNotFoundError(archive)
     with zipfile.ZipFile(archive) as bundle:
         names = set(bundle.namelist())
-        missing = [name for name in NAMES if SOURCE_PREFIX + name not in names]
+        # Accept both previously delivered archive layouts.
+        prefixes = (SOURCE_PREFIX, "native-" + SOURCE_PREFIX)
+        prefix = next((p for p in prefixes if all(p + n in names for n in NAMES)), None)
+        missing = [name for name in NAMES if not any(p + name in names for p in prefixes)]
         if missing:
             raise ValueError("Missing expected reference files: " + ", ".join(missing))
         staged = {}
         for name in NAMES:
-            data = bundle.read(SOURCE_PREFIX + name)
+            data = bundle.read(prefix + name)
             if len(data) < 1024 or not data.startswith(PNG_SIGNATURE):
                 raise ValueError("Invalid PNG: " + name)
             staged[name] = data
+    if len({hashlib.sha256(data).digest() for data in staged.values()}) != len(NAMES):
+        raise ValueError("Repeated image bytes across different Pila reference views")
     TARGET.mkdir(parents=True, exist_ok=True)
     for name, data in staged.items():
         dest = TARGET / name
