@@ -86,7 +86,7 @@ val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
             require(bytes.size > 1024 && bytes.take(8) == listOf(137,80,78,71,13,10,26,10).map { it.toByte() }) {
                 "Invalid PNG: " + name
             }
-            val hash = java.security.MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
+            val hash = bytes.contentHashCode().toString()
             require(hashes.add(hash)) { "Duplicate Pila PNG image: " + name }
             target.resolve(name).writeBytes(bytes)
         }
