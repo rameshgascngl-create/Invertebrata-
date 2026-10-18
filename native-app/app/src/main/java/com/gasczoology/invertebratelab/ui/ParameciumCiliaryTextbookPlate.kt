@@ -110,31 +110,24 @@ internal fun ParameciumCiliaryTextbookPlate(
                     "Bring the pencil diagram fully into view",
                     "பென்சில் வரைபடத்தை முழுவதும் திரையில் காண்க"))
             }
-            Canvas(
-                Modifier.fillMaxWidth().height(220.dp)
-                    .bringIntoViewRequester(requester)
-                    .testTag("r16-ciliary-canvas")
-                    .pointerInput(stage.id) {
-                        detectTapGestures { point ->
-                            selectedPart = when {
-                                point.y < size.height * .42f -> if (point.x < size.width * .5f) "basal" else "axoneme"
-                                point.y > size.height * .73f -> "basal"
-                                else -> "cilia"
-                            }
-                        }
-                    }
-                    .semantics {
-                        contentDescription = ciliaryText(language,
-                            "Schematic: left inset nine basal-body triplets without a central pair; right inset nine axonemal doublets and two central singlets. Basal bodies are beneath the surface. Selected stage: " + stage.heading.english,
-                            "விளக்கப்படம்: இடது சிறுபடத்தில் மைய இணை இல்லாத ஒன்பது அடித்தள உடல் மும்மைகள்; வலதில் ஒன்பது ஆக்சோனீம் இரட்டைகளும் இரண்டு மைய ஒற்றைகளும். அடித்தள உடல்கள் மேற்பரப்புக்குக் கீழே உள்ளன. தேர்ந்தெடுத்த நிலை: " + stage.heading.tamil)
-                        stateDescription = ciliaryText(language, "Highlighted: ", "சிறப்பித்துக் காட்டுவது: ") +
-                            parts.first { it.first == selectedPart }.second.value(language)
-                        customActions = parts.map { (id, label) ->
-                            CustomAccessibilityAction(label.value(language)) { selectedPart = id; true }
-                        }
-                    }
-            ) {
-                drawCiliaryPencilDiagram(stage.id, selectedPart)
+            val locomotionPng = rememberRequiredRasterBitmap(
+                "unit1/concepts/paramecium_ciliary_locomotion", pngOnly = true)
+            if (locomotionPng != null) {
+                androidx.compose.foundation.Image(
+                    bitmap = locomotionPng,
+                    contentDescription = ciliaryText(language,
+                        "Paramecium ciliary locomotion PNG; axoneme and basal body details require separate verification",
+                        "பாரமீசியம் குறுஇழை இயக்க PNG; ஆக்சோனீம், அடித்தள உடல் விவரங்கள் தனியாகச் சரிபார்க்கப்பட வேண்டும்"),
+                    contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                    modifier = Modifier.fillMaxWidth().height(220.dp)
+                        .bringIntoViewRequester(requester)
+                        .testTag("r16-ciliary-png"))
+            } else {
+                Text(ciliaryText(language,
+                    "Ciliary locomotion PNG not yet verified; no Canvas drawing substituted.",
+                    "குறுஇழை இயக்க PNG இன்னும் சரிபார்க்கப்படவில்லை; Canvas வரைபடம் மாற்றாக இல்லை."),
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.testTag("r16-ciliary-png-pending"))
             }
 
             Text(
