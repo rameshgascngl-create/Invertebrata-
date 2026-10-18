@@ -95,8 +95,24 @@ class NativeFiveUnitRestorationTest {
         find(ch, "r2-type-study-gallery-pila")
         find(ch, "pila-reference-review-warning")
         // The debug-only 12-panel archive must be extracted and display distinct images.
-        find(ch, "pila-review-image-01_shell_ventral_REVIEW")
-        find(ch, "pila-review-image-12_excretory_system_REVIEW")
+        // Verify all twelve decoded bitmaps, not only the first and last.
+        for (file in listOf(
+            "01_shell_ventral_REVIEW",
+            "02_operculum_views_REVIEW",
+            "03_shell_dorsal_REVIEW",
+            "04_animal_front_REVIEW",
+            "05_nervous_system_REVIEW",
+            "06_buccal_mass_REVIEW",
+            "07_digestive_system_REVIEW",
+            "08_respiratory_system_REVIEW",
+            "09_circulatory_system_REVIEW",
+            "10_male_reproductive_REVIEW",
+            "11_female_reproductive_REVIEW",
+            "12_excretory_system_REVIEW"
+        )) {
+            find(ch, "pila-review-image-" + file)
+            rule.onNodeWithTag("pila-review-missing-" + file).assertDoesNotExist()
+        }
         for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
             find(ch, "r2-plate-slot-pila-" + plate)
             rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
