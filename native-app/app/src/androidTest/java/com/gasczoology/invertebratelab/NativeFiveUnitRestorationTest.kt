@@ -95,8 +95,8 @@ class NativeFiveUnitRestorationTest {
         find(ch, "r2-type-study-gallery-pila")
         find(ch, "pila-reference-review-warning")
         // The debug-only 12-panel archive must be extracted and display distinct images.
-        find(ch, "pila-review-image-01_shell_ventral_REVIEW")
-        find(ch, "pila-review-image-12_excretory_system_REVIEW")
+        find(ch, "pila-review-image-01_pila_panel_REVIEW")
+        find(ch, "pila-review-image-12_pila_panel_REVIEW")
         for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
             find(ch, "r2-plate-slot-pila-" + plate)
             rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
