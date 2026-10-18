@@ -193,10 +193,10 @@ internal fun RequiredTypeStudyPlates(
         if (study.organismId == "asterias") {
             // These are separate editorial candidates, NOT accepted type-study masters.
             val candidates = listOf(
-                Triple("external_REVIEW", "External morphology", "புறத்தோற்றம்"),
-                Triple("water_vascular_REVIEW", "Water-vascular system", "நீர்க்குழாய் மண்டலம்"),
-                Triple("digestive_REVIEW", "Digestive system", "செரிமான மண்டலம்"),
-                Triple("nervous_REVIEW", "Nervous system", "நரம்பு மண்டலம்"),
+                Triple("external_REVIEW", "REJECTED: internal composite, not external morphology", "நிராகரிக்கப்பட்டது: புறத்தோற்றப் படம் அல்ல"),
+                Triple("water_vascular_REVIEW", "REVIEW: incorrect aboral-view caption", "ஆய்வு: எதிர்வாய்ப்புறக் குறிப்பு தவறு"),
+                Triple("digestive_REVIEW", "REJECTED: stomach anatomy needs correction", "நிராகரிக்கப்பட்டது: இரைப்பை உடற்கூறு திருத்தம் தேவை"),
+                Triple("nervous_REVIEW", "REVIEW: nerve details not verified", "ஆய்வு: நரம்பு விவரங்கள் சரிபார்க்கப்படவில்லை"),
             )
             Text(
                 if (tamil) "அஸ்டீரியாஸ் வரைவு படங்கள் — உடற்கூறு ஒப்புதல் நிலுவை"
