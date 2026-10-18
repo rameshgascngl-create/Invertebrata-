@@ -222,8 +222,10 @@ private fun RequiredTypeStudyFullImage(
                             zoom = (zoom * change).coerceIn(1f, 8f)
                             if (zoom <= 1.01f) { panX = 0f; panY = 0f }
                             else {
-                                panX = (panX + pan.x).coerceIn(-size.width.toFloat(), size.width.toFloat())
-                                panY = (panY + pan.y).coerceIn(-size.height.toFloat(), size.height.toFloat())
+                                val maxX = size.width * (zoom - 1f) / 2f
+                                val maxY = size.height * (zoom - 1f) / 2f
+                                panX = (panX + pan.x).coerceIn(-maxX, maxX)
+                                panY = (panY + pan.y).coerceIn(-maxY, maxY)
                             }
                         }
                     },
