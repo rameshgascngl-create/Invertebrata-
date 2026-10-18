@@ -57,8 +57,14 @@ class NativeR6ParameciumPencilTest {
         find(zoom)
         rule.onNodeWithTag(zoom).performClick()
         rule.onNodeWithTag("r2-fullscreen-bitmap").assertIsDisplayed()
+        rule.onNodeWithTag("r6-zoom-viewport-clipped").assertExists()
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("100%", substring = true)
         rule.onNodeWithTag("r2-zoom-in").performClick()
+        rule.waitForIdle()
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
         rule.onNodeWithTag("r2-zoom-reset").performClick()
+        rule.waitForIdle()
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("100%", substring = true)
         val inst = androidx.test.platform.app.InstrumentationRegistry.getInstrumentation()
         val scale = inst.targetContext.resources.configuration.fontScale
         val suffix = if (scale >= 1.95f) "200" else "100"
