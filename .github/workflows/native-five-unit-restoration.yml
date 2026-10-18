@@ -2,7 +2,7 @@ name: Native five-unit restoration — compile, assets and academic hold
 'on':
   push:
     branches:
-      - native/five-unit-restoration-r4-bilingual-plates-20261018
+      - native/five-unit-restoration-r5-source-art-20261018
   workflow_dispatch:
 
 permissions:
@@ -56,7 +56,7 @@ jobs:
       - name: Upload development debug APK (NOT a release)
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R4-DEBUG-UNAPPROVED
+          name: five-unit-restoration-R5-DEBUG-UNAPPROVED
           path: native-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -80,12 +80,45 @@ jobs:
             cmp "native-app/app/src/main/assets/$source" "native-app/app/src/main/assets/$target"
             echo "BYTE_IDENTICAL_RASTER=PASS: $target"
           done
+      - name: Verify eight archival image masters match immutable source bytes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          root=Path("native-app/app/src/main/assets")
+          expected={
+            "type_studies/fasciola/external.png":"08adafaf9756a01ec20f2a9614e05b80a29223b1c2a5d29564bb9923b8977e25",
+            "type_studies/fasciola/digestive-reproductive.png":"37e09f88775bb14a55129db191a59b25c5c80070ca2b6bb3079518a31327c791",
+            "type_studies/fasciola/life-cycle.png":"9a7ab9bb76fb9e1e8b1527bc9363c6349ecafce739451a82307bc3b43108520a",
+            "type_studies/ascaris/male-female-external.png":"d8df8c8eb4b79e9186017650d818060b756a302968eb4d73c4329e88d73908c9",
+            "type_studies/ascaris/female-internal.png":"0f476f9823025c4cbd23808c49515652161709d39969b7c39c20e1309171341e",
+            "type_studies/ascaris/life-cycle.png":"6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0",
+            "unit3/fasciola_type.png":"50640478957f84d3a49c3136026181eebf1b43e9beaf51eebfef8abe057f5d61",
+            "unit3/ascaris_type.png":"2106d48ba062e1c3082e5436d30a0a0801fb80aba271550525298270cdc2e039",
+          }
+          for rel,checksum in expected.items():
+              data=(root/rel).read_bytes()
+              assert data[:8]==b"\\x89PNG\\r\\n\\x1a\\n".decode("unicode_escape").encode("latin-1"),rel
+              assert hashlib.sha256(data).hexdigest()==checksum,rel
+          print("R5_SOURCE_IMAGES=8_SHA256_VERIFIED")
+          PY
       - name: Record every mandatory and supplementary plate
-        run: python3 .github/scripts/audit-five-unit-assets.py --out qa-evidence/five-unit-assets
+        run: |
+          python3 .github/scripts/audit-five-unit-assets.py --out qa-evidence/five-unit-assets
+          python3 - <<'PY'
+          import json
+          rows=json.load(open("qa-evidence/five-unit-assets/plate-register.json",encoding="utf-8"))
+          required=[r for r in rows if r["required"]]
+          present=[r for r in required if r["state"]=="PRESENT_UNVERIFIED"]
+          assert len(required)==43 and len(present)==17,(len(required),len(present))
+          assert len([r for r in present if r["unit"]==3])==6
+          print("R5_RASTER_COVERAGE=17/43; UNIT3=6/6; ACADEMIC_ACCEPTANCE=HOLD")
+          PY
       - name: Upload honest plate-register evidence
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R4-ASSET-REGISTER
+          name: five-unit-restoration-R5-ASSET-REGISTER
           path: qa-evidence/five-unit-assets/
           if-no-files-found: error
 
@@ -116,11 +149,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R4-academic-review-register
+          name: five-unit-R5-academic-review-register
           path: qa-evidence/five-unit-academic/
           if-no-files-found: warn
 
-  android-ui-r3:
+  android-ui-r5:
     needs: compile-and-jvm
     runs-on: ubuntu-24.04
     timeout-minutes: 65
@@ -152,7 +185,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R4-android-ui-evidence
+          name: five-unit-R5-android-ui-evidence
           path: qa-evidence/five-unit-r3/
           if-no-files-found: warn
       - name: Explain artwork acceptance status
