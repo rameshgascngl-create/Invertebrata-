@@ -1,8 +1,6 @@
 package com.gasczoology.invertebratelab.ui
 
 import android.speech.tts.TextToSpeech
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.horizontalScroll
@@ -188,8 +186,8 @@ fun ParameciumTeachingLab(
                         "படவிளக்கப் பாடங்களைப் படித்து, உறுப்புகளை ஆராய்ந்து, செயல்முறைகளைச் சோதிக்கவும்."),
                         style = MaterialTheme.typography.titleMedium)
                     Text(bi(language,
-                        "Reference species: Paramecium caudatum · original graphite atlases · offline bilingual explanations.",
-                        "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம் · அசல் பென்சில் உடலமைப்புப் படங்கள் · இணையமின்றி இருமொழி விளக்கம்."),
+                        "Reference species: Paramecium caudatum · photographed source-image candidates · offline bilingual explanations.",
+                        "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம் · மூலப் புகைப்படத்திலிருந்து பெறப்பட்ட படங்கள் · இணையமின்றி இருமொழி விளக்கம்."),
                         style = MaterialTheme.typography.bodyMedium)
                     Text(bi(language,
                         "Academic review pending: illustrations and Tamil vocabulary remain drafts.",
@@ -678,8 +676,7 @@ private fun SimulatorSection(
         }
     }
     val stage=model.stages[step]
-    val progress by animateFloatAsState(stage.illustrationProgress,
-        animationSpec=tween(700),label="r1-stage-animation")
+
     Text(bi(language,"Live teaching simulations","இயங்கும் கற்பித்தல் செயல்முறைகள்"),
         modifier=Modifier.testTag("r1-simulator-heading"))
     for(p in ParameciumProcess.entries) {
@@ -696,7 +693,9 @@ private fun SimulatorSection(
             Text(bi(language,"Open the complete textbook and nuclear sequence","முழுப் பாடத்தையும் உட்கருத் தொடரையும் திற"))
         }
     }
-    ProcessSketch(process,progress,language)
+    // Fixed, source-specific PNG. The stage selector changes the written
+    // physiology explanation, NEVER fictitious organ geometry or mock animation.
+    ParameciumProcessPng(process, language)
     Text(bi(language,"Stage ","நிலை ")+(step+1).toString()+"/"+
         model.stages.size.toString()+" — "+stage.heading.value(language),
         modifier=Modifier.testTag("r1-stage-title"))
@@ -769,88 +768,6 @@ private fun Checkpoint(process:ParameciumProcess,language:AppLanguage) {
         else bi(language,"Revisit the stage sequence and try again.",
             "நிலைகளை மீண்டும் படித்து முயலவும்."),
         modifier=Modifier.testTag("r1-checkpoint-feedback"))
-}
-
-@Composable
-private fun ProcessSketch(process:ParameciumProcess,progress:Float,language:AppLanguage) {
-    Canvas(modifier=Modifier.fillMaxWidth().height(260.dp)
-        .testTag("r1-process-canvas")
-        .semantics { contentDescription=bi(language,
-            "Schematic visualization changes with stage; read the stage explanation below",
-            "நிலைக்கு ஏற்ப மாறும் விளக்க வரைபடம்; நிலை விளக்கம் கீழே உள்ளது") }) {
-        val w=size.width;val h=size.height;val center=Offset(w*.5f,h*.5f)
-        drawRect(PencilAtlasPalette.paper)
-        if(process==ParameciumProcess.CONJUGATION) {
-            parameciumCell(Offset(w*.5f,h*.34f),w*.60f,h*.26f)
-            parameciumCell(Offset(w*.5f,h*.67f),w*.60f,h*.26f)
-            drawCircle(Color(0xFF765DA7),radius=11f,center=Offset(w*.45f,h*.33f))
-            drawCircle(Color(0xFF765DA7),radius=11f,center=Offset(w*.55f,h*.67f))
-            if(progress>.30f)drawLine(Color(0xFFB55B16),
-                Offset(w*.46f,h*.46f),Offset(w*.54f,h*.55f),5f)
-            if(progress>.65f) {
-                drawCircle(Color(0xFFB55B16),radius=8f,center=Offset(w*.54f,h*.33f))
-                drawCircle(Color(0xFFB55B16),radius=8f,center=Offset(w*.46f,h*.67f))
-            }
-        } else if(process==ParameciumProcess.BINARY_FISSION) {
-            if(progress>=.99f) {
-                parameciumCell(Offset(w*.29f,h*.50f),w*.36f,h*.43f)
-                parameciumCell(Offset(w*.71f,h*.50f),w*.36f,h*.43f)
-            } else {
-                parameciumCell(center,w*.73f,h*.64f)
-                drawCircle(Color(0xFF765DA7),radius=13f,center=Offset(w*.40f,h*.50f))
-                if(progress>.30f)drawCircle(Color(0xFF765DA7),radius=13f,
-                    center=Offset(w*.61f,h*.50f))
-                if(progress>.60f)drawLine(Color(0xFFB55B16),
-                    Offset(w*.5f,h*(.17f+progress*.12f)),
-                    Offset(w*.5f,h*(.83f-progress*.12f)),5f)
-            }
-        } else {
-            parameciumCell(center,w*.73f,h*.64f)
-            when(process) {
-                ParameciumProcess.OSMOREGULATION -> {
-                    val radius=9f+progress*20f
-                    for(v in listOf(Offset(w*.32f,h*.39f),Offset(w*.70f,h*.60f))) {
-                        drawCircle(Color(0xFF1C85A7),radius=if(progress>=1f)7f else radius,
-                            center=v,style=Stroke(4f))
-                        for(k in 0 until 6) {
-                            val a=k*2*PI/6
-                            val d=Offset(cos(a).toFloat(),sin(a).toFloat())
-                            drawLine(Color(0xFF63AFC3),v+d*(radius+2f),
-                                v+d*(radius+19f),3f)
-                        }
-                    }
-                    if(progress>=1f)drawCircle(Color(0xFF1C85A7),radius=8f,
-                        center=Offset(w*.88f,h*.31f))
-                }
-                ParameciumProcess.CILIARY_MOTION -> {
-                    for(k in 0 until 34) {
-                        val a=2*PI*k/34
-                        val d=Offset(cos(a).toFloat(),sin(a).toFloat())
-                        val p=center+Offset(d.x*w*.365f,d.y*h*.32f)
-                        val swing=sin(progress*2*PI+k*.34).toFloat()*14f
-                        drawLine(Color(0xFF176F7F),p,
-                            p+Offset(d.x*16f-d.y*swing,d.y*16f+d.x*swing),3f)
-                    }
-                    drawLine(Color(0xFFB55B16),Offset(w*.37f,h*.51f),
-                        Offset(w*.62f,h*.51f),4f)
-                }
-                ParameciumProcess.FEEDING -> {
-                    drawLine(Color(0xFF147C99),Offset(w*.43f,h*.77f),
-                        Offset(w*.56f,h*.52f),6f)
-                    val x=if(progress<.3f)w*(.40f+progress*.50f)
-                        else if(progress<.7f)w*(.55f+(progress-.3f)*.2f)
-                        else w*(.63f+(progress-.7f)*.68f)
-                    val y=if(progress<.3f)h*(.75f-progress*.6f)
-                        else if(progress<.7f)h*(.57f-(progress-.3f)*.4f)
-                        else h*(.41f+(progress-.7f)*.9f)
-                    drawCircle(Color(0xFFB55B16),radius=11f,center=Offset(x,y))
-                    drawCircle(Color(0xFF288EB2),radius=19f,
-                        center=Offset(w*.62f,h*.42f),style=Stroke(4f))
-                }
-                else -> Unit
-            }
-        }
-    }
 }
 
 private fun DrawScope.parameciumCell(center:Offset,w:Float,h:Float) {
