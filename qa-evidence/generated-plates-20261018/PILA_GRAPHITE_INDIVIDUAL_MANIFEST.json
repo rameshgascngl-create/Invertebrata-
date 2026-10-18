@@ -1,0 +1,20 @@
+{
+  "status": "REVIEW_ONLY",
+  "source": "1536x1024 generated graphite composite",
+  "review_package": "pila_graphite_individual_review.zip",
+  "files": [
+    {
+      "name": "pila_shell_graphite_REVIEW_ONLY.png",
+      "width": 759,
+      "height": 1014,
+      "sha256": "c15999e6dc46bd88ade1835346a26a86929dd8416c20f56ee04799c54e774704"
+    },
+    {
+      "name": "pila_operculum_graphite_REVIEW_ONLY.png",
+      "width": 758,
+      "height": 1014,
+      "sha256": "b3b683b6634bde0e1a06947d101c901419930bf95db54d8954c8c731074bb572"
+    }
+  ],
+  "decision": "Do not place in student-facing assets before anatomy, rights and Tamil review; source image bytes not committed."
+}
