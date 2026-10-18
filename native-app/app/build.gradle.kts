@@ -60,17 +60,29 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
 }
 
-// Generated, rights-unverified Pila artwork is packaged ONLY in debug builds.
-// Release APK/AAB variants must never contain these editorial references.
-val extractPilaReview by tasks.registering(Copy::class) {
+// Extract all twelve PNGs regardless of their paths inside the uploaded archive.
+// Fail visibly for missing, duplicate, or malformed images; debug only.
+val extractPilaReview = tasks.register("extractPilaReview") {
     val archive = rootProject.file("../pila_android_review_12_panels.zip")
-    onlyIf { archive.isFile }
-    from(provider { zipTree(archive) }) {
-        include("native-app/app/src/main/assets/review_only/pila/generated_12/*.png")
-        eachFile { path = path.removePrefix("native-app/app/src/main/assets/") }
-        includeEmptyDirs = false
+    val destination = layout.buildDirectory.dir("generated/pilaDebugAssets")
+    inputs.file(archive)
+    outputs.dir(destination)
+    doLast {
+        val pngs = zipTree(archive).files.filter { it.extension.equals("png", true) }.sortedBy { it.name }
+        require(pngs.size == 12) { "Expected 12 Pila PNG panels; found ${pngs.size}" }
+        val hashes = pngs.map { java.security.MessageDigest.getInstance("SHA-256").digest(it.readBytes()).toList() }
+        require(hashes.distinct().size == 12) { "Pila archive has duplicate PNG images" }
+        val target = destination.get().asFile.resolve("review_only/pila/generated_12")
+        target.mkdirs()
+        target.listFiles()?.forEach { it.delete() }
+        pngs.forEachIndexed { index, source ->
+            val bytes = source.readBytes()
+            require(bytes.size > 1024 && bytes.take(8) == listOf(137,80,78,71,13,10,26,10).map { it.toByte() }) {
+                "Invalid Pila PNG: ${source.name}"
+            }
+            target.resolve("%02d_pila_panel_REVIEW.png".format(index + 1)).writeBytes(bytes)
+        }
     }
-    into(layout.buildDirectory.dir("generated/pilaDebugAssets"))
 }
 android.sourceSets.getByName("debug").assets.srcDir(layout.buildDirectory.dir("generated/pilaDebugAssets").get().asFile)
 tasks.matching { it.name == "mergeDebugAssets" }.configureEach { dependsOn(extractPilaReview) }
