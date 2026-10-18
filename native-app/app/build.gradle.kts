@@ -60,29 +60,37 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
 }
 
-// Extract all twelve PNGs regardless of their paths inside the uploaded archive.
-// Fail visibly for missing, duplicate, or malformed images; debug only.
-val extractPilaReview = tasks.register("extractPilaReview") {
-    val archive = rootProject.file("../pila_android_review_12_panels.zip")
+// Package the twelve individually uploaded PNGs as debug-only editorial assets.
+// Never include rights-unverified images in release APK/AAB variants.
+val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
+    val names = listOf(
+        "01_shell_ventral_REVIEW.png", "02_operculum_views_REVIEW.png",
+        "03_shell_dorsal_REVIEW.png", "04_animal_front_REVIEW.png",
+        "05_nervous_system_REVIEW.png", "06_buccal_mass_REVIEW.png",
+        "07_digestive_system_REVIEW.png", "08_respiratory_system_REVIEW.png",
+        "09_circulatory_system_REVIEW.png", "10_male_reproductive_REVIEW.png",
+        "11_female_reproductive_REVIEW.png", "12_excretory_system_REVIEW.png",
+    )
+    val files = names.map { rootProject.file("../$" + "{it}") }
     val destination = layout.buildDirectory.dir("generated/pilaDebugAssets")
-    inputs.file(archive)
+    inputs.files(files)
     outputs.dir(destination)
     doLast {
-        val pngs = zipTree(archive).files.filter { it.extension.equals("png", true) }.sortedBy { it.name }
-        require(pngs.size == 12) { "Expected 12 Pila PNG panels; found ${pngs.size}" }
-        val hashes = pngs.map { java.security.MessageDigest.getInstance("SHA-256").digest(it.readBytes()).toList() }
-        require(hashes.distinct().size == 12) { "Pila archive has duplicate PNG images" }
         val target = destination.get().asFile.resolve("review_only/pila/generated_12")
         target.mkdirs()
         target.listFiles()?.forEach { it.delete() }
-        pngs.forEachIndexed { index, source ->
+        val hashes = mutableSetOf<String>()
+        names.zip(files).forEach { (name, source) ->
+            require(source.isFile) { "Missing uploaded Pila image: $" + "{source.path}" + "}" }
             val bytes = source.readBytes()
             require(bytes.size > 1024 && bytes.take(8) == listOf(137,80,78,71,13,10,26,10).map { it.toByte() }) {
-                "Invalid Pila PNG: ${source.name}"
+                "Invalid PNG: $" + "name" + "
             }
-            target.resolve("%02d_pila_panel_REVIEW.png".format(index + 1)).writeBytes(bytes)
+            val hash = java.security.MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
+            require(hashes.add(hash)) { "Duplicate Pila PNG image: $" + "name" + "}" }
+            target.resolve(name).writeBytes(bytes)
         }
     }
 }
 android.sourceSets.getByName("debug").assets.srcDir(layout.buildDirectory.dir("generated/pilaDebugAssets").get().asFile)
-tasks.matching { it.name == "mergeDebugAssets" }.configureEach { dependsOn(extractPilaReview) }
+tasks.matching { it.name == "mergeDebugAssets" }.configureEach { dependsOn(stagePilaIndividualReview) }
