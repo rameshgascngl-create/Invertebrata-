@@ -74,7 +74,7 @@ class NativeU58ParameciumReaderPngTest {
         rule.onNodeWithTag("r2-fullscreen-close").performClick()
 
         choose("osmoregulation")
-        rule.onNodeWithTag("r14-pencil-vacuole", useUnmergedTree = true)
+        rule.onNodeWithTag("u58-concept-figure-vacuole", useUnmergedTree = true)
             .performScrollTo().assertExists()
         rule.onNodeWithTag("u58-expand-concept-png-vacuole", useUnmergedTree = true)
             .performScrollTo().performClick()
@@ -83,19 +83,19 @@ class NativeU58ParameciumReaderPngTest {
         rule.onNodeWithTag("r2-fullscreen-close").performClick()
 
         choose("nuclear-dimorphism")
-        rule.onNodeWithTag("r14-pencil-overview", useUnmergedTree = true)
+        rule.onNodeWithTag("u58-concept-figure-overview", useUnmergedTree = true)
             .performScrollTo().assertExists()
-        rule.onNodeWithTag("r14-pencil-vacuole", useUnmergedTree = true).assertDoesNotExist()
+        rule.onNodeWithTag("u58-concept-figure-vacuole", useUnmergedTree = true).assertDoesNotExist()
 
         choose("asexual-division-process")
         rule.onNodeWithTag("r14-concept-png-missing-fission", useUnmergedTree = true)
             .performScrollTo().assertExists()
-        rule.onNodeWithTag("r14-pencil-overview", useUnmergedTree = true).assertDoesNotExist()
+        rule.onNodeWithTag("u58-concept-figure-overview", useUnmergedTree = true).assertDoesNotExist()
 
         choose("conjugation")
         rule.onNodeWithTag("r14-concept-png-missing-conjugation", useUnmergedTree = true)
             .performScrollTo().assertExists()
-        rule.onNodeWithTag("r14-pencil-overview", useUnmergedTree = true).assertDoesNotExist()
+        rule.onNodeWithTag("u58-concept-figure-overview", useUnmergedTree = true).assertDoesNotExist()
 
         choose("laboratory-reasoning")
         rule.onNodeWithTag("u58-concept-png-card-overview", useUnmergedTree = true)
