@@ -136,6 +136,51 @@ internal fun RequiredTypeStudyPlates(
                 modifier = Modifier.testTag("r6-single-source-disclosure"),
             )
         }
+        // Editorial reference viewer is deliberately outside the mandatory academic slots.
+        // These files must never satisfy the five-unit release inventory.
+        if (study.organismId == "pila") {
+            val reviewViews = listOf(
+                "01_shell_ventral_REFERENCE" to "Shell — ventral view",
+                "02_operculum_outer_inner_REFERENCE" to "Operculum — outer and inner surfaces",
+                "03_shell_dorsal_REFERENCE" to "Shell — dorsal view",
+                "04_animal_front_view_REFERENCE" to "Animal — front view",
+            )
+            Text(
+                if (tamil) "ஆசிரியர் ஆய்வுக்கான குறிப்புப் படங்கள் — வெளியீட்டிற்கு ஒப்புதல் இல்லை"
+                else "EDITORIAL REFERENCES — NOT APPROVED FOR PUBLICATION",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.testTag("pila-reference-review-warning"),
+            )
+            reviewViews.forEach { (file, title) ->
+                val raster = rememberRequiredRasterBitmap("review_only/pila/$file")
+                var expanded by rememberSaveable(file) { mutableStateOf(false) }
+                Card(Modifier.fillMaxWidth().testTag("pila-review-$file")) {
+                    Column(Modifier.fillMaxWidth().padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(title, style = MaterialTheme.typography.titleMedium)
+                        if (raster == null) {
+                            Text(if (tamil) "ஆய்வுப் படக்கோப்பு இணைக்கப்படவில்லை"
+                                else "Review-only reference bitmap not bundled",
+                                modifier = Modifier.testTag("pila-review-missing-$file"))
+                        } else {
+                            Image(bitmap = raster, contentDescription = title,
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier.fillMaxWidth()
+                                    .aspectRatio(raster.width.toFloat() / raster.height.toFloat())
+                                    .clickable { expanded = true }
+                                    .testTag("pila-review-image-$file"))
+                            OutlinedButton(onClick = { expanded = true }) {
+                                Text(if (tamil) "பெரிதாக்கு" else "Enlarge reference")
+                            }
+                            if (expanded) RequiredTypeStudyFullImage(
+                                image = raster, title = "REVIEW ONLY · $title",
+                                language = language, onDismiss = { expanded = false })
+                        }
+                    }
+                }
+            }
+        }
         study.requiredPlateIds.forEach { plateId ->
             val stem = "type_studies/${study.organismId}/${plateId}"
             val raster = rememberRequiredRasterBitmap(stem)
