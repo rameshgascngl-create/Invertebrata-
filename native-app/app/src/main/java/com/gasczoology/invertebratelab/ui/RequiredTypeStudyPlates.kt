@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTransformGestures
@@ -159,6 +160,7 @@ internal fun RequiredTypeStudyPlates(
                             contentScale = ContentScale.Fit,
                             modifier = Modifier.fillMaxWidth()
                                 .aspectRatio(raster.width.toFloat() / raster.height.toFloat())
+                                .clickable(onClickLabel = if (tamil) "முழுத்திரையில் பெரிதாக்கு" else "Open full-size image") { expanded = true }
                                 .testTag("r2-plate-bitmap-${study.organismId}-${plateId}"),
                         )
                         OutlinedButton(
@@ -166,7 +168,7 @@ internal fun RequiredTypeStudyPlates(
                             modifier = Modifier.heightIn(min = 48.dp)
                                 .testTag("r2-plate-expand-${study.organismId}-${plateId}"),
                         ) {
-                            Text(if (tamil) "பட வரைவை பெரிதாக்கு" else "Enlarge raster candidate")
+                            Text(if (tamil) "படத்தைப் பெரிதாக்கு" else "Tap to enlarge image")
                         }
                         Text(
                             if (tamil) "ஆய்வுக்கான வரைவு · இறுதி அறிவியல் ஒப்புதல் பெறவில்லை."
@@ -210,7 +212,7 @@ private fun RequiredTypeStudyFullImage(
                     .testTag("r6-zoom-viewport-clipped")
                     .pointerInput(title) {
                         detectTransformGestures { _, pan, change, _ ->
-                            zoom = (zoom * change).coerceIn(1f, 4f)
+                            zoom = (zoom * change).coerceIn(1f, 8f)
                             if (zoom <= 1.01f) { panX = 0f; panY = 0f }
                             else {
                                 panX = (panX + pan.x).coerceIn(-size.width.toFloat(), size.width.toFloat())
@@ -241,7 +243,7 @@ private fun RequiredTypeStudyFullImage(
                         modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("r2-zoom-out")) {
                         Text("−")
                     }
-                    OutlinedButton(onClick = { zoom = (zoom * 2f).coerceAtMost(4f) },
+                    OutlinedButton(onClick = { zoom = (zoom * 2f).coerceAtMost(8f) },
                         modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("r2-zoom-in")) {
                         Text("+")
                     }
