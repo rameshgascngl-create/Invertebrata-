@@ -190,6 +190,61 @@ internal fun RequiredTypeStudyPlates(
                 }
             }
         }
+        if (study.organismId == "asterias") {
+            // These are separate editorial candidates, NOT accepted type-study masters.
+            val candidates = listOf(
+                Triple("external_REVIEW", "External morphology", "புறத்தோற்றம்"),
+                Triple("water_vascular_REVIEW", "Water-vascular system", "நீர்க்குழாய் மண்டலம்"),
+                Triple("digestive_REVIEW", "Digestive system", "செரிமான மண்டலம்"),
+                Triple("nervous_REVIEW", "Nervous system", "நரம்பு மண்டலம்"),
+            )
+            Text(
+                if (tamil) "அஸ்டீரியாஸ் வரைவு படங்கள் — உடற்கூறு ஒப்புதல் நிலுவை"
+                else "ASTERIAS DRAFT IMAGES — ANATOMICAL APPROVAL PENDING",
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.testTag("asterias-review-warning"),
+            )
+            candidates.forEach { (file, english, tamilTitle) ->
+                val title = if (tamil) tamilTitle else english
+                val raster = rememberRequiredRasterBitmap("review_only/asterias/$file")
+                var expanded by rememberSaveable(file) { mutableStateOf(false) }
+                Card(Modifier.fillMaxWidth().testTag("asterias-review-$file")) {
+                    Column(
+                        Modifier.fillMaxWidth().padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Text(title, style = MaterialTheme.typography.titleMedium)
+                        if (raster == null) {
+                            Text(
+                                if (tamil) "வரைவு படக்கோப்பு இன்னும் இணைக்கப்படவில்லை"
+                                else "Draft image not yet bundled",
+                                modifier = Modifier.testTag("asterias-review-missing-$file"),
+                            )
+                        } else {
+                            Image(
+                                bitmap = raster,
+                                contentDescription = title,
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier.fillMaxWidth()
+                                    .aspectRatio(raster.width.toFloat() / raster.height.toFloat())
+                                    .clickable { expanded = true }
+                                    .testTag("asterias-review-image-$file"),
+                            )
+                            OutlinedButton(onClick = { expanded = true }) {
+                                Text(if (tamil) "பெரிதாக்கு" else "Enlarge draft")
+                            }
+                            if (expanded) RequiredTypeStudyFullImage(
+                                image = raster,
+                                title = "REVIEW ONLY · $title",
+                                language = language,
+                                onDismiss = { expanded = false },
+                            )
+                        }
+                    }
+                }
+            }
+        }
         study.requiredPlateIds.forEach { plateId ->
             val stem = "type_studies/${study.organismId}/${plateId}"
             val raster = rememberRequiredRasterBitmap(stem)
