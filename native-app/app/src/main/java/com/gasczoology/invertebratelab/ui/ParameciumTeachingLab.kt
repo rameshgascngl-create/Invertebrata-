@@ -188,8 +188,8 @@ fun ParameciumTeachingLab(
                         "படவிளக்கப் பாடங்களைப் படித்து, உறுப்புகளை ஆராய்ந்து, செயல்முறைகளைச் சோதிக்கவும்."),
                         style = MaterialTheme.typography.titleMedium)
                     Text(bi(language,
-                        "Reference species: Paramecium caudatum · original graphite atlases · offline bilingual explanations.",
-                        "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம் · அசல் பென்சில் உடலமைப்புப் படங்கள் · இணையமின்றி இருமொழி விளக்கம்."),
+                        "Reference species: Paramecium caudatum · source-backed PNG anatomy images · offline bilingual explanations.",
+                        "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம் · PNG ஆதார உடலமைப்புப் படங்கள் · இணையமின்றி இருமொழி விளக்கம்."),
                         style = MaterialTheme.typography.bodyMedium)
                     Text(bi(language,
                         "Academic review pending: illustrations and Tamil vocabulary remain drafts.",
@@ -696,7 +696,20 @@ private fun SimulatorSection(
             Text(bi(language,"Open the complete textbook and nuclear sequence","முழுப் பாடத்தையும் உட்கருத் தொடரையும் திற"))
         }
     }
-    ProcessSketch(process,progress,language)
+    // R8: preserve the simulation's real stage controls and explanations,
+    // but NEVER synthesize stage anatomy with geometric Canvas outlines.
+    // The packaged anatomical PNG is clearly marked as contextual, not as
+    // a photograph of each stage. No substitute is shown for missing PNGs.
+    ParameciumPngReference(
+        panel = when (process) {
+            ParameciumProcess.OSMOREGULATION -> "vacuole"
+            ParameciumProcess.CILIARY_MOTION -> "external"
+            ParameciumProcess.FEEDING -> "oral"
+            ParameciumProcess.BINARY_FISSION, ParameciumProcess.CONJUGATION -> "internal"
+        },
+        language = language,
+        contextOnly = true,
+    )
     Text(bi(language,"Stage ","நிலை ")+(step+1).toString()+"/"+
         model.stages.size.toString()+" — "+stage.heading.value(language),
         modifier=Modifier.testTag("r1-stage-title"))
