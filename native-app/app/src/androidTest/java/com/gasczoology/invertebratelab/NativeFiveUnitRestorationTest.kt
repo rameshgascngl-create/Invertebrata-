@@ -93,6 +93,10 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-pila"
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-pila")
+        find(ch, "pila-reference-review-warning")
+        // Review-only images are optional; opening the gallery must never crash
+        // when these bitmaps have not yet been bundled in the checkout.
+        find(ch, "pila-review-missing-01_shell_ventral_REFERENCE")
         for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
             find(ch, "r2-plate-slot-pila-" + plate)
             rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
