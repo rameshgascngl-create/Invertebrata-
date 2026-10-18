@@ -76,6 +76,11 @@ def inspect(asset_root: Path, unit: int, organism: str, plate: str,
         return dict(unit=unit, organism=organism, plate=plate,
                     required_stem=stem, required=mandatory, state="MISSING",
                     file="", sha256="", academic_approved=False)
+    if len(existing) > 1:
+        return dict(unit=unit, organism=organism, plate=plate,
+                    required_stem=stem, required=mandatory, state="AMBIGUOUS_FORMATS",
+                    file=";".join(p.relative_to(asset_root).as_posix() for p in existing),
+                    sha256="", academic_approved=False)
     for p in existing:
         ok, detail = check_file(p)
         if ok:
@@ -132,6 +137,12 @@ def main() -> int:
     (args.out / "duplicate-image-hashes.json").write_text(
         json.dumps(duplicates, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"IDENTICAL_IMAGE_HASH_GROUPS={len(duplicates)}; REVIEW_REQUIRED_IF_NONZERO")
+    mandatory_stems = {r["required_stem"] for r in rows if r["required"]}
+    mandatory_duplicates = [d for d in duplicates
+                            if len(mandatory_stems.intersection(d["mapped_slots"])) > 1]
+    (args.out / "mandatory-duplicate-image-hashes.json").write_text(
+        json.dumps(mandatory_duplicates, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"MANDATORY_DUPLICATE_HASH_GROUPS={len(mandatory_duplicates)}")
     required = [r for r in rows if r["required"]]
     absent = [r for r in required if r["state"] != "PRESENT_UNVERIFIED"]
     for unit in range(1,6):
@@ -142,7 +153,9 @@ def main() -> int:
     print("ANATOMICAL_SOURCE_RIGHTS_TAMIL_EDITS=PENDING")
     if absent:
         print("MISSING_PLATES:",*[r["required_stem"] for r in absent],sep="\n - ")
-    if args.gate and absent:
+    if args.gate and (absent or mandatory_duplicates):
+        if mandatory_duplicates:
+            print("REPEATED_MANDATORY_ANATOMICAL_IMAGE=FAIL")
         print("FIVE_UNIT_ANATOMICAL_ACCEPTANCE=FAIL")
         return 2
     print("FIVE_UNIT_INVENTORY=CREATED; ACADEMIC_APPROVAL=NOT_GRANTED")
