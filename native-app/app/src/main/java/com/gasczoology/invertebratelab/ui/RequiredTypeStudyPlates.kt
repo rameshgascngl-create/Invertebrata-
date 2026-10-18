@@ -140,18 +140,18 @@ internal fun RequiredTypeStudyPlates(
         // These files must never satisfy the five-unit release inventory.
         if (study.organismId == "pila") {
             val reviewViews = listOf(
-                "01_shell_ventral_REVIEW" to "Shell — ventral view",
-                "02_operculum_views_REVIEW" to "Operculum — two surfaces",
-                "03_shell_dorsal_REVIEW" to "Shell — dorsal view",
-                "04_animal_front_REVIEW" to "Animal — front view",
-                "05_nervous_system_REVIEW" to "Nervous system — unverified",
-                "06_buccal_mass_REVIEW" to "Buccal mass — unverified",
-                "07_digestive_system_REVIEW" to "Digestive system — unverified",
-                "08_respiratory_system_REVIEW" to "Respiratory system — unverified",
-                "09_circulatory_system_REVIEW" to "Circulatory system — unverified",
-                "10_male_reproductive_REVIEW" to "Male reproductive system — unverified",
-                "11_female_reproductive_REVIEW" to "Female reproductive system — unverified",
-                "12_excretory_system_REVIEW" to "Excretory system — unverified",
+                "01_shell_ventral_REVIEW" to ("Shell — ventral view" to "ஓடு — அடிப்புறத் தோற்றம்"),
+                "02_operculum_views_REVIEW" to ("Operculum — two surfaces" to "ஓட்டுமூடி — இரு புறத் தோற்றங்கள்"),
+                "03_shell_dorsal_REVIEW" to ("Shell — dorsal view" to "ஓடு — முதுகுப்புறத் தோற்றம்"),
+                "04_animal_front_REVIEW" to ("Animal — front view" to "உயிரி — முன்புறத் தோற்றம்"),
+                "05_nervous_system_REVIEW" to ("Nervous system — unverified" to "நரம்பு மண்டலம் — சரிபார்க்கப்படவில்லை"),
+                "06_buccal_mass_REVIEW" to ("Buccal mass — unverified" to "வாய்த் தசைத்தொகுதி — சரிபார்க்கப்படவில்லை"),
+                "07_digestive_system_REVIEW" to ("Digestive system — unverified" to "செரிமான மண்டலம் — சரிபார்க்கப்படவில்லை"),
+                "08_respiratory_system_REVIEW" to ("Respiratory system — unverified" to "சுவாச மண்டலம் — சரிபார்க்கப்படவில்லை"),
+                "09_circulatory_system_REVIEW" to ("Circulatory system — unverified" to "இரத்த ஓட்ட மண்டலம் — சரிபார்க்கப்படவில்லை"),
+                "10_male_reproductive_REVIEW" to ("Male reproductive system — unverified" to "ஆண் இனப்பெருக்க மண்டலம் — சரிபார்க்கப்படவில்லை"),
+                "11_female_reproductive_REVIEW" to ("Female reproductive system — unverified" to "பெண் இனப்பெருக்க மண்டலம் — சரிபார்க்கப்படவில்லை"),
+                "12_excretory_system_REVIEW" to ("Excretory system — unverified" to "கழிவுநீக்க மண்டலம் — சரிபார்க்கப்படவில்லை"),
             )
             Text(
                 if (tamil) "ஆசிரியர் ஆய்வுக்கான குறிப்புப் படங்கள் — வெளியீட்டிற்கு ஒப்புதல் இல்லை"
@@ -160,7 +160,8 @@ internal fun RequiredTypeStudyPlates(
                 color = MaterialTheme.colorScheme.error,
                 modifier = Modifier.testTag("pila-reference-review-warning"),
             )
-            reviewViews.forEach { (file, title) ->
+            reviewViews.forEach { (file, labels) ->
+                val title = if (tamil) labels.second else labels.first
                 val raster = rememberRequiredRasterBitmap("review_only/pila/generated_12/$file")
                 var expanded by rememberSaveable(file) { mutableStateOf(false) }
                 Card(Modifier.fillMaxWidth().testTag("pila-review-$file")) {
