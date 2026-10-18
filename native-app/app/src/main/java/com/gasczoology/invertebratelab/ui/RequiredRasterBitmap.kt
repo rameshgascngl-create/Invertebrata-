@@ -26,7 +26,16 @@ internal fun rememberRequiredRasterBitmap(relativeStem: String, pngOnly: Boolean
         }.getOrDefault(emptySet())
     }
     val asset = remember(relativeStem, available, pngOnly) {
-        val selected = RasterArtworkPolicy.selectAsset(relativeStem, available)
+        val selected = if (relativeStem.startsWith("review_only/pila/")) {
+            // Editorial-only assets are intentionally outside mandatory curriculum policy.
+            // Never broaden the production type-study whitelist.
+            val filename = relativeStem.substringAfterLast('/')
+            val permitted = filename in setOf(
+                "01_shell_ventral_REFERENCE", "02_operculum_outer_inner_REFERENCE",
+                "03_shell_dorsal_REFERENCE", "04_animal_front_view_REFERENCE",
+            )
+            if (permitted && "$relativeStem.png" in available) "$relativeStem.png" else null
+        } else RasterArtworkPolicy.selectAsset(relativeStem, available)
         if (pngOnly && selected?.endsWith(".png") != true) null else selected
     }
     return remember(context, asset) {
