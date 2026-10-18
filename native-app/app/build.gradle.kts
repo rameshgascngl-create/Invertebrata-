@@ -72,5 +72,5 @@ val extractPilaReview by tasks.registering(Copy::class) {
     }
     into(layout.buildDirectory.dir("generated/pilaDebugAssets"))
 }
-android.sourceSets.getByName("debug").assets.srcDir(layout.buildDirectory.dir("generated/pilaDebugAssets"))
+android.sourceSets.getByName("debug").assets.srcDir(layout.buildDirectory.dir("generated/pilaDebugAssets").get().asFile)
 tasks.matching { it.name == "mergeDebugAssets" }.configureEach { dependsOn(extractPilaReview) }
