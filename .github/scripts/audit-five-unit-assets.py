@@ -108,7 +108,25 @@ def audit(repo_root: Path) -> list[dict]:
         for stem in stems:
             rows.append(inspect(assets,unit,stem.split("/")[1],
                                 stem.split("/")[-1],stem,False))
-    assert len(rows) == 58, len(rows) # 35 mandatory + 8 Nereis + 15 extra
+    # Separately audit the 12 individually uploaded Pila editorial images.
+    # They are staged into debug assets by Gradle, not accepted textbook masters.
+    pila_names = [
+        "01_shell_ventral_REVIEW.png", "02_operculum_views_REVIEW.png",
+        "03_shell_dorsal_REVIEW.png", "04_animal_front_REVIEW.png",
+        "05_nervous_system_REVIEW.png", "06_buccal_mass_REVIEW.png",
+        "07_digestive_system_REVIEW.png", "08_respiratory_system_REVIEW.png",
+        "09_circulatory_system_REVIEW.png", "10_male_reproductive_REVIEW.png",
+        "11_female_reproductive_REVIEW.png", "12_excretory_system_REVIEW.png",
+    ]
+    for name in pila_names:
+        path = repo_root / name
+        ok, detail = check_file(path) if path.is_file() else (False, "MISSING")
+        rows.append(dict(unit=5, organism="pila-review", plate=name,
+                         required_stem="review_only/pila/generated_12/" + name[:-4],
+                         required=False, state="PRESENT_UNVERIFIED" if ok else detail,
+                         file=name if path.is_file() else "",
+                         sha256=detail if ok else "", academic_approved=False))
+    assert len(rows) == 70, len(rows) # 35 type studies + 8 Nereis + 15 extras + 12 Pila review
     assert len({r["required_stem"] for r in rows}) == len(rows)
     return rows
 
