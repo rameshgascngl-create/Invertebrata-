@@ -302,7 +302,7 @@ internal fun RequiredTypeStudyPlates(
 }
 
 @Composable
-private fun RequiredTypeStudyFullImage(
+internal fun RequiredTypeStudyFullImage(
     image: ImageBitmap,
     title: String,
     language: AppLanguage,
