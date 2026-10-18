@@ -197,10 +197,13 @@ internal fun RequiredTypeStudyPlates(
                 Triple("water_vascular_REVIEW", "REVIEW: incorrect aboral-view caption", "ஆய்வு: எதிர்வாய்ப்புறக் குறிப்பு தவறு"),
                 Triple("digestive_REVIEW", "REJECTED: stomach anatomy needs correction", "நிராகரிக்கப்பட்டது: இரைப்பை உடற்கூறு திருத்தம் தேவை"),
                 Triple("nervous_REVIEW", "REVIEW: nerve details not verified", "ஆய்வு: நரம்பு விவரங்கள் சரிபார்க்கப்படவில்லை"),
+                Triple("digestive_reference_ONLY", "SOURCE REFERENCE: mixed-system dissection; not approved digestive plate", "மூலக் குறிப்பு: பல மண்டலங்கள் உள்ள படம்; ஒப்புதல் இல்லை"),
+                Triple("water_vascular_reference_ONLY", "SOURCE REFERENCE: central water-vascular anatomy; review only", "மூலக் குறிப்பு: நீர்க்குழாய் மண்டலம்; ஆய்வுக்கு மட்டும்"),
+                Triple("body_wall_reference_ONLY", "SOURCE REFERENCE: body-wall transverse section; review only", "மூலக் குறிப்பு: உடற்சுவர் குறுக்குவெட்டு; ஆய்வுக்கு மட்டும்"),
             )
             Text(
                 if (tamil) "அஸ்டீரியாஸ் வரைவு படங்கள் — உடற்கூறு ஒப்புதல் நிலுவை"
-                else "ASTERIAS DRAFT IMAGES — ANATOMICAL APPROVAL PENDING",
+                else "ASTERIAS DRAFT IMAGES AND SOURCE REFERENCES — NOT APPROVED",
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.testTag("asterias-review-warning"),
