@@ -222,8 +222,12 @@ private fun RequiredTypeStudyFullImage(
                             zoom = (zoom * change).coerceIn(1f, 8f)
                             if (zoom <= 1.01f) { panX = 0f; panY = 0f }
                             else {
-                                val maxX = size.width * (zoom - 1f) / 2f
-                                val maxY = size.height * (zoom - 1f) / 2f
+                                val imageAspect = image.width.toFloat() / image.height.toFloat()
+                                val viewportAspect = size.width.toFloat() / size.height.toFloat()
+                                val fittedWidth = if (imageAspect > viewportAspect) size.width.toFloat() else size.height * imageAspect
+                                val fittedHeight = if (imageAspect > viewportAspect) size.width / imageAspect else size.height.toFloat()
+                                val maxX = ((fittedWidth * zoom - size.width) / 2f).coerceAtLeast(0f)
+                                val maxY = ((fittedHeight * zoom - size.height) / 2f).coerceAtLeast(0f)
                                 panX = (panX + pan.x).coerceIn(-maxX, maxX)
                                 panY = (panY + pan.y).coerceIn(-maxY, maxY)
                             }
