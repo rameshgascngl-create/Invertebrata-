@@ -72,8 +72,8 @@ class NativeFiveUnitMissingRasterCoverageTest {
         find(root, "r2-plate-bitmap-sycon-canal-system")
         rule.onNodeWithTag("r2-plate-bitmap-sycon-canal-system").assertIsDisplayed()
         capture("u2-sycon-english")
-        find(root, "u2-sycon-historic-static-raster")
-        rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
+        find(root, "u2-stage-explanation")
+        rule.onNodeWithTag("u2-sycon-historic-static-raster").assertDoesNotExist()
     }
     @Test fun obeliaShowsRealColonyAndLifeCycleImagesWithTwoPendingMasters() {
         val root = enter(2, "u2-obelia", true)
@@ -85,29 +85,31 @@ class NativeFiveUnitMissingRasterCoverageTest {
         find(root, "r2-plate-bitmap-obelia-life-cycle")
         rule.onNodeWithTag("r2-plate-bitmap-obelia-life-cycle").assertIsDisplayed()
         capture("u2-obelia-tamil")
-        find(root, "u2-obelia-colony-static-raster")
-        rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
+        find(root, "u2-stage-explanation")
+        rule.onNodeWithTag("u2-obelia-colony-static-raster").assertDoesNotExist()
     }
-    @Test fun fasciolaDisplaysThreeSourceBackedRastersAndHistoricalReference() {
+    @Test fun fasciolaDisplaysEachDistinctSourceOnceWithoutDuplicateGalleries() {
         val root = enter(3, "u3-fasciola", false)
-        find(root, "r2-type-study-gallery-fasciola")
+        find(root, "u3-required-plate-gallery")
         for (plate in listOf("external","digestive-reproductive","life-cycle")) {
-            find(root, "r2-plate-bitmap-fasciola-$plate")
-            rule.onNodeWithTag("r2-plate-bitmap-fasciola-$plate").assertIsDisplayed()
+            find(root, "u3-plate-bitmap-$plate")
+            rule.onNodeWithTag("u3-plate-bitmap-$plate").assertIsDisplayed()
         }
         capture("u3-fasciola-english")
-        find(root, "u3-static-pencil-raster")
-        rule.onNodeWithTag("u3-static-pencil-raster").assertIsDisplayed()
+        find(root, "u3-no-duplicate-images")
+        rule.onNodeWithTag("u3-static-pencil-raster").assertDoesNotExist()
+        rule.onNodeWithTag("r2-type-study-gallery-fasciola").assertDoesNotExist()
     }
-    @Test fun ascarisDisplaysThreeSourceBackedRastersAndCompleteCdcCycle() {
+    @Test fun ascarisDisplaysThreeIndependentSourcesWithoutDuplicateGalleries() {
         val root = enter(3, "u3-ascaris", true)
-        find(root, "r2-type-study-gallery-ascaris")
+        find(root, "u3-required-plate-gallery")
         for (plate in listOf("male-female-external","female-internal","life-cycle")) {
-            find(root, "r2-plate-bitmap-ascaris-$plate")
-            rule.onNodeWithTag("r2-plate-bitmap-ascaris-$plate").assertIsDisplayed()
+            find(root, "u3-plate-bitmap-$plate")
+            rule.onNodeWithTag("u3-plate-bitmap-$plate").assertIsDisplayed()
         }
         capture("u3-ascaris-tamil")
-        find(root, "u3-static-pencil-raster")
-        rule.onNodeWithTag("u3-static-pencil-raster").assertIsDisplayed()
+        find(root, "u3-no-duplicate-images")
+        rule.onNodeWithTag("u3-static-pencil-raster").assertDoesNotExist()
+        rule.onNodeWithTag("r2-type-study-gallery-ascaris").assertDoesNotExist()
     }
 }
