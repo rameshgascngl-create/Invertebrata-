@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 E="qa-evidence/u58-reader"
-mkdir -p "$E"
+mkdir -p "$E" "$E/captured"
 result=NOT_STARTED
 trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull /sdcard/Download/u57-qa "$E/captured/u57" > "$E/u57-pull.log" 2>&1 || true; adb pull /sdcard/Download/u58-qa "$E/captured/u58" > "$E/u58-pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
 adb shell mkdir -p /sdcard/Download/u57-qa /sdcard/Download/u58-qa
