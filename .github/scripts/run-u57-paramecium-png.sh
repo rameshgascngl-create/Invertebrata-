@@ -43,7 +43,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/pull-final.log"
 for scale in 100 200; do
-  for view in vacuole-source-png conjugation-text-no-vector; do
+  for view in vacuole-source-png vacuole-png-enlarged conjugation-text-no-vector; do
     [[ -s "$E/captured/paramecium-$scale-$view.png" ]] || { result="MISSING_IMAGE_$scale-$view";exit 1;}
   done
 done
