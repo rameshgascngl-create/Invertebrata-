@@ -134,6 +134,25 @@ class NativeFiveUnitRestorationTest {
             find(ch, "asterias-review-image-" + file)
             rule.onNodeWithTag("asterias-review-missing-" + file).assertDoesNotExist()
         }
+        // The uploaded, source-preserving references must decode as separate bitmaps.
+        // These do not satisfy mandatory textbook masters.
+        for (file in listOf(
+            "digestive_reference_ONLY",
+            "water_vascular_reference_ONLY",
+            "body_wall_reference_ONLY"
+        )) {
+            find(ch, "asterias-review-image-" + file)
+            rule.onNodeWithTag("asterias-review-missing-" + file).assertDoesNotExist()
+        }
+        find(ch, "asterias-review-image-water_vascular_reference_ONLY")
+        rule.onNodeWithTag("asterias-review-image-water_vascular_reference_ONLY").performClick()
+        rule.onNodeWithTag("r2-fullscreen-bitmap").assertExists()
+        rule.onNodeWithTag("r2-zoom-in").performClick()
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
+        capture("unit5-asterias-water-vascular-reference-zoom")
+        rule.onNodeWithTag("r2-zoom-reset").performClick()
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("100%", substring = true)
+        rule.onNodeWithTag("r2-fullscreen-close").performClick()
         find(ch, "r2-plate-missing-asterias-water-vascular-system")
         capture("unit5-asterias-english-missing-plate")
         find(ch, "restored-section-water-vascular")
