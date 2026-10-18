@@ -38,7 +38,7 @@ def import_archive(archive: Path) -> None:
     for name, data in staged.items():
         dest = TARGET / name
         dest.write_bytes(data)
-        print(f"REVIEW_ONLY {dest.relative_to(TARGET.parents[4])} sha256={hashlib.sha256(data).hexdigest()}")
+        print(f"REVIEW_ONLY {dest.relative_to(Path(__file__).resolve().parents[1])} sha256={hashlib.sha256(data).hexdigest()}")
     print("Reference bitmaps installed for local review. Rights/biology approval NOT granted.")
     print("Mandatory type-study inventory unchanged.")
 
