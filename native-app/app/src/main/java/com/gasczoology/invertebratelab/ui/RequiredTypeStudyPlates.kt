@@ -140,10 +140,18 @@ internal fun RequiredTypeStudyPlates(
         // These files must never satisfy the five-unit release inventory.
         if (study.organismId == "pila") {
             val reviewViews = listOf(
-                "01_shell_ventral_REFERENCE" to "Shell — ventral view",
-                "02_operculum_outer_inner_REFERENCE" to "Operculum — outer and inner surfaces",
-                "03_shell_dorsal_REFERENCE" to "Shell — dorsal view",
-                "04_animal_front_view_REFERENCE" to "Animal — front view",
+                "01_shell_ventral_REVIEW" to "Shell — ventral view",
+                "02_operculum_views_REVIEW" to "Operculum — two surfaces",
+                "03_shell_dorsal_REVIEW" to "Shell — dorsal view",
+                "04_animal_front_REVIEW" to "Animal — front view",
+                "05_nervous_system_REVIEW" to "Nervous system — unverified",
+                "06_buccal_mass_REVIEW" to "Buccal mass — unverified",
+                "07_digestive_system_REVIEW" to "Digestive system — unverified",
+                "08_respiratory_system_REVIEW" to "Respiratory system — unverified",
+                "09_circulatory_system_REVIEW" to "Circulatory system — unverified",
+                "10_male_reproductive_REVIEW" to "Male reproductive system — unverified",
+                "11_female_reproductive_REVIEW" to "Female reproductive system — unverified",
+                "12_excretory_system_REVIEW" to "Excretory system — unverified",
             )
             Text(
                 if (tamil) "ஆசிரியர் ஆய்வுக்கான குறிப்புப் படங்கள் — வெளியீட்டிற்கு ஒப்புதல் இல்லை"
@@ -153,7 +161,7 @@ internal fun RequiredTypeStudyPlates(
                 modifier = Modifier.testTag("pila-reference-review-warning"),
             )
             reviewViews.forEach { (file, title) ->
-                val raster = rememberRequiredRasterBitmap("review_only/pila/$file")
+                val raster = rememberRequiredRasterBitmap("review_only/pila/generated_12/$file")
                 var expanded by rememberSaveable(file) { mutableStateOf(false) }
                 Card(Modifier.fillMaxWidth().testTag("pila-review-$file")) {
                     Column(Modifier.fillMaxWidth().padding(12.dp),
