@@ -2,7 +2,7 @@ name: Native five-unit restoration — compile, assets and academic hold
 'on':
   push:
     branches:
-      - native/five-unit-restoration-r5-source-art-20261018
+      - native/five-unit-restoration-r6-paramecium-20261018
   workflow_dispatch:
 
 permissions:
@@ -56,7 +56,7 @@ jobs:
       - name: Upload development debug APK (NOT a release)
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R5-DEBUG-UNAPPROVED
+          name: five-unit-restoration-R6-DEBUG-UNAPPROVED
           path: native-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -103,6 +103,29 @@ jobs:
               assert hashlib.sha256(data).hexdigest()==checksum,rel
           print("R5_SOURCE_IMAGES=8_SHA256_VERIFIED")
           PY
+      - name: Verify photographed-source Paramecium hashes and correct crop mapping
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,struct
+          root=Path("native-app/app/src/main/assets")
+          pairs={
+            "external":("external-cilia","0c06f6a0f541ce5abbd72e27dbab5b403df90d4f0a9f638d8992e5bb17e04f65"),
+            "oral":("oral-apparatus","ec7b628d84c4bce20113a21ea0f2284fd83eb9d521f3c1585732dd9b494c4e90"),
+            "vacuole":("contractile-vacuoles","e4292ffff9cdb2a02c384bbcee82d6cdbbdf0f6a5368257c9c7b1fdbcc8277cf"),
+          }
+          for source,(target,expected) in pairs.items():
+              a=(root/"unit1"/("paramecium_"+source+".png")).read_bytes()
+              b=(root/"type_studies/paramecium"/(target+".png")).read_bytes()
+              assert a==b and hashlib.sha256(b).hexdigest()==expected,target
+              assert struct.unpack(">II",b[16:24])==(1700,1900),target
+              print("R6_PARAMECIUM_SOURCE_BYTES_PASS="+target)
+          reference=(root/"unit1/paramecium_internal.png").read_bytes()
+          assert hashlib.sha256(reference).hexdigest()=="dbf9c3a4ae8039f45e8d71b69cd69a1797b6dddc622c0a1e6970b146a43bb8d6"
+          assert not (root/"type_studies/paramecium/locomotion.png").exists()
+          print("R6_SINGLE_PHOTO_THREE_ACCURATE_MAPPINGS=PASS; ACADEMIC_REVIEW=HOLD")
+          PY
       - name: Record every mandatory and supplementary plate
         run: |
           python3 .github/scripts/audit-five-unit-assets.py --out qa-evidence/five-unit-assets
@@ -111,14 +134,16 @@ jobs:
           rows=json.load(open("qa-evidence/five-unit-assets/plate-register.json",encoding="utf-8"))
           required=[r for r in rows if r["required"]]
           present=[r for r in required if r["state"]=="PRESENT_UNVERIFIED"]
-          assert len(required)==43 and len(present)==17,(len(required),len(present))
+          assert len(required)==43 and len(present)==20,(len(required),len(present))
           assert len([r for r in present if r["unit"]==3])==6
-          print("R5_RASTER_COVERAGE=17/43; UNIT3=6/6; ACADEMIC_ACCEPTANCE=HOLD")
+          assert len([r for r in present if r["unit"]==1])==3
+          assert not any(r["required_stem"]=="type_studies/paramecium/locomotion" and r["state"]=="PRESENT_UNVERIFIED" for r in required)
+          print("R6_RASTER_COVERAGE=20/43; UNIT1=3/4; UNIT3=6/6; ACADEMIC_ACCEPTANCE=HOLD")
           PY
       - name: Upload honest plate-register evidence
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R5-ASSET-REGISTER
+          name: five-unit-restoration-R6-ASSET-REGISTER
           path: qa-evidence/five-unit-assets/
           if-no-files-found: error
 
@@ -149,11 +174,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R5-academic-review-register
+          name: five-unit-R6-academic-review-register
           path: qa-evidence/five-unit-academic/
           if-no-files-found: warn
 
-  android-ui-r5:
+  android-ui-r6:
     needs: compile-and-jvm
     runs-on: ubuntu-24.04
     timeout-minutes: 65
@@ -185,8 +210,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R5-android-ui-evidence
-          path: qa-evidence/five-unit-r3/
+          name: five-unit-R6-android-ui-evidence
+          path: qa-evidence/five-unit-r6/
           if-no-files-found: warn
       - name: Explain artwork acceptance status
         if: always()
