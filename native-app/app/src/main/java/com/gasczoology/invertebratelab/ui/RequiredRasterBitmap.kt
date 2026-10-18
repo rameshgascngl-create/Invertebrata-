@@ -30,11 +30,13 @@ internal fun rememberRequiredRasterBitmap(relativeStem: String, pngOnly: Boolean
             // Editorial-only assets are intentionally outside mandatory curriculum policy.
             // Never broaden the production type-study whitelist.
             val filename = relativeStem.substringAfterLast('/')
-            val permitted = filename in setOf(
+            val legacy = filename in setOf(
                 "01_shell_ventral_REFERENCE", "02_operculum_outer_inner_REFERENCE",
                 "03_shell_dorsal_REFERENCE", "04_animal_front_view_REFERENCE",
-            )
-            if (permitted && "$relativeStem.png" in available) "$relativeStem.png" else null
+            ) && relativeStem.startsWith("review_only/pila/")
+            val generated = relativeStem.startsWith("review_only/pila/generated_12/") &&
+                Regex("(0[1-9]|1[0-2])_[a-z0-9_]+_REVIEW").matches(filename)
+            if ((legacy || generated) && "$relativeStem.png" in available) "$relativeStem.png" else null
         } else RasterArtworkPolicy.selectAsset(relativeStem, available)
         if (pngOnly && selected?.endsWith(".png") != true) null else selected
     }
