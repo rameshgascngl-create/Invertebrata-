@@ -26,7 +26,7 @@ def import_archive(archive: Path) -> None:
     with zipfile.ZipFile(archive) as bundle:
         names = set(bundle.namelist())
         # Accept both previously delivered archive layouts.
-        prefixes = (SOURCE_PREFIX, "native-" + SOURCE_PREFIX)
+        prefixes = (SOURCE_PREFIX, "native-app/" + SOURCE_PREFIX)
         prefix = next((p for p in prefixes if all(p + n in names for n in NAMES)), None)
         missing = [name for name in NAMES if not any(p + name in names for p in prefixes)]
         if missing:
