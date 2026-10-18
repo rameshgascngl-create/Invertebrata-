@@ -101,89 +101,24 @@ internal fun UnitIITeachingChapter(
                 RequiredTypeStudyPlates(study, language)
             }
         }
-        if (stages.isNotEmpty()) item(key="independent-pencil-lesson-figures") {
-            Column(
-                modifier=Modifier.fillMaxWidth().testTag("u2-pencil-lesson-section"),
-                verticalArrangement=Arrangement.spacedBy(12.dp)
-            ) {
-                Text(tr(language,
-                    "TEXTBOOK ANATOMY · STATIC RASTER CANDIDATES · NOT VERIFIED SCANS",
-                    "பாடநூல் உடற்கூறு · நிலையான படக்கோப்பு வரைவுகள் · ஸ்கேன் உறுதி செய்யப்படவில்லை"),
-                    style=MaterialTheme.typography.titleLarge,
-                    modifier=Modifier.semantics { heading() })
-                Text(tr(language,
-                    "These are bundled digital raster candidates, not authenticated historical scans. Anatomical and source-rights review remain pending.",
-                    "இவை இணைக்கப்பட்ட டிஜிட்டல் வரைவு படங்கள்; உறுதி செய்யப்பட்ட வரலாற்று ஸ்கேன்கள் அல்ல. உடற்கூறு மற்றும் மூல உரிமை மதிப்பாய்வு நிலுவையில் உள்ளது."),
-                    style=MaterialTheme.typography.bodyMedium)
-                if (sycon) {
-                    Card {
-                        Column(Modifier.padding(8.dp)) {
-                            UnitIIStaticLessonPlate(
-                                relativeStem="unit2/sycon_plate",
-                                language=language,
-                                tag="u2-sycon-historic-static-raster",
-                                captionEnglish="Sycon labelled teaching image from the bundled WebP; this is a digital candidate, not an authenticated 1903 pencil scan. Canal anatomy and leaders await expert review.",
-                                captionTamil="சைக்கான் குறியிடப்பட்ட WebP கற்பித்தல் வரைவு. இது உறுதிசெய்யப்பட்ட 1903 பென்சில் ஸ்கேன் அல்ல; கால்வாய் உறுப்புகளும் குறிக்கோடுகளும் நிபுணர் மதிப்பாய்வில் உள்ளன."
-                            )
-                        }
-                    }
-                } else if (obelia) {
-                    Card {
-                        Column(Modifier.padding(8.dp)) {
-                            UnitIIStaticLessonPlate(
-                                relativeStem="unit2/obelia_colony",
-                                language=language,
-                                tag="u2-obelia-colony-static-raster",
-                                captionEnglish="Obelia colony: hydranth, gonangium and protective thecae. Digital graphite draft; review pending.",
-                                captionTamil="ஒபீலியா கூட்டு: உணவுப் பாலிப், இனப்பெருக்கப் பாலிப், பாதுகாப்பு உறைகள். பென்சில் பாணி வரைவு; மதிப்பாய்வு நிலுவையில் உள்ளது."
-                            )
-                        }
-                    }
-                    Card {
-                        Column(Modifier.padding(8.dp)) {
-                            UnitIIStaticLessonPlate(
-                                relativeStem="unit2/obelia_lifecycle",
-                                language=language,
-                                tag="u2-obelia-life-static-raster",
-                                captionEnglish="Bundled Obelia life-history WebP candidate. Original image provenance, reproductive stages and Tamil labels require expert verification.",
-                                captionTamil="ஒபீலியா வாழ்க்கைச் சுழற்சிக்கான இணைக்கப்பட்ட WebP கற்பித்தல் வரைவு. மூல உரிமை, இனப்பெருக்க நிலைகள், தமிழ் குறியீடுகள் மதிப்பாய்வில் உள்ளன."
-                            )
-                        }
-                    }
-                }
-            }
-        }
+        // R7 single-render policy: all required Sycon/Obelia images appear ONCE
+        // in RequiredTypeStudyPlates above. The legacy static duplicate gallery
+        // was removed; the existing original rasters remain bundled unchanged.
         if(stages.isNotEmpty()) item(key="interactive-atlas"){
             Column(verticalArrangement=Arrangement.spacedBy(10.dp),
                 modifier=Modifier.fillMaxWidth().testTag("u2-interactive-atlas")) {
                 Text(tr(language,
-                    if(sycon)"INTERACTIVE ANATOMY · Sycon provisional canal hotspots"
-                    else "INTERACTIVE ANATOMY · Obelia colony and life-history hotspots",
-                    if(sycon)"தொடுதிறன் உடற்கூறு · சைக்கான் நீர்க் கால்வாய் வரைவு"
-                    else "தொடுதிறன் உடற்கூறு · ஒபீலியா கூட்டு மற்றும் வாழ்க்கைச் சுழற்சி"),
+                    if(sycon)"SYCON · BIOLOGY AND CANAL-FLOW STAGES"
+                    else "OBELIA · COLONY AND LIFE-HISTORY STAGES",
+                    if(sycon)"சைக்கான் · உயிரியல் மற்றும் நீர்க்கால்வாய் படிநிலைகள்"
+                    else "ஒபீலியா · கூட்டு மற்றும் வாழ்க்கைச் சுழற்சி நிலைகள்"),
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics{heading()})
                 Text(tr(language,
-                    "Labelled pencil raster plate—schematic, not to scale. Select a stage or touch the illustration.",
-                    "பென்சில் வரைபடப் படத்தாள்—அளவுப்படி அல்ல. படிநிலையைத் தேர்ந்தெடுக்கவும் அல்லது படத்தைத் தொடவும்."))
-                val p by animateFloatAsState(targetValue=index.toFloat(),
-                    animationSpec=tween(durationMillis=600),label="Unit II teaching stage")
-                Card(colors=CardDefaults.cardColors(containerColor=parchment)) {
-                    // Raster-only anatomy: no Canvas/SVG substitute is permitted.
-                    UnitIIImagePlate(
-                        sycon=sycon,
-                        progress=p,
-                        language=language,
-                        onSelect={stage, focus ->
-                            index=stage
-                            selectedSettlementFocus = if(obelia && stage == 5) focus else -1
-                            playing=false
-                            val chosen = if (obelia && stage == 5)
-                                obeliaSettlementFocus(focus) else null
-                            narrator.speak(chosen ?: stages[stage].explanation,language)
-                        }
-                    )
-                }
+                    "The anatomical plates appear once in the gallery above. Select a stage below to read or hear its explanation; no extra image is repeated.",
+                    "உடற்கூறுப் படங்கள் மேலுள்ள தொகுப்பில் ஒருமுறை மட்டுமே உள்ளன. கீழே படிநிலையைத் தேர்ந்தெடுத்து விளக்கத்தைப் படிக்கவும் அல்லது கேட்கவும்."))
+                // Biology sequence is narrated text and stage controls, NOT a
+                // second raster/Canvas anatomical display. One image per plate.
                 Text(stages[index.coerceIn(stages.indices)].name.value(language),
                     style=MaterialTheme.typography.titleMedium,fontWeight=FontWeight.Bold,
                     modifier=Modifier.testTag("u2-selected-stage"))
@@ -251,8 +186,8 @@ internal fun UnitIITeachingChapter(
             Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
                 Text(tr(language,"References and evidence limits","மேற்கோள்களும் ஆதார வரம்புகளும்"),
                     style=MaterialTheme.typography.titleMedium,modifier=Modifier.semantics{heading()})
-                Text(tr(language,"All diagrams are explanatory original artwork. Slide photographs, full-paper anatomical review and human Tamil approval remain pending.",
-                    "எல்லாப் படங்களும் அசல் விளக்க வரைபடங்கள். நுண்ணோக்கிப் படங்கள், முழு ஆய்வுக் கட்டுரை மதிப்பாய்வு, தமிழ் நிபுணர் ஒப்புதல் ஆகியவை நிலுவையில் உள்ளன."))
+                Text(tr(language,"The single displayed raster for each available anatomical plate is a teaching candidate, not an authenticated pencil scan. Biology, source rights and Tamil review remain pending.",
+                    "காட்டப்படும் ஒவ்வொரு படமும் ஒருமுறை மட்டுமே இடம் பெற்றுள்ள கற்பித்தல் வரைவு; அங்கீகரிக்கப்பட்ட பென்சில் ஸ்கேன் அல்ல. உடற்கூறு, மூல உரிமை, தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."))
                 lesson.sections.flatMap{it.scientificSources}.distinct().forEach{Text(it)}
             }
         }
