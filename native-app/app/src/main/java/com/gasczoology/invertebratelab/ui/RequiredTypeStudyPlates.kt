@@ -2,6 +2,7 @@ package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTransformGestures
@@ -148,8 +149,8 @@ internal fun RequiredTypeStudyPlates(
                     Text(readable, style = MaterialTheme.typography.titleMedium)
                     if (raster == null) {
                         Text(
-                            if (tamil) "படக்கோப்பு இணைக்கப்படவில்லை: ${stem}.png / .webp. மாற்று Canvas படம் பயன்படுத்தப்படாது."
-                            else "Image missing: ${stem}.png / .webp. No Canvas anatomy substitute.",
+                            if (tamil) "இந்த உடற்கூறுப் படம் இன்னும் கிடைக்கவில்லை. சரிபார்க்கப்பட்ட படம் சேர்க்கப்பட்டவுடன் இங்கே காணலாம்."
+                            else "This anatomical illustration is not yet available. A verified image will appear here when ready.",
                             color = MaterialTheme.colorScheme.error,
                             modifier = Modifier.testTag("r2-plate-missing-${study.organismId}-${plateId}"),
                         )
@@ -210,6 +211,12 @@ private fun RequiredTypeStudyFullImage(
             Box(
                 Modifier.fillMaxWidth().weight(1f).clipToBounds()
                     .testTag("r6-zoom-viewport-clipped")
+                    .pointerInput(title) {
+                        detectTapGestures(onDoubleTap = {
+                            zoom = if (zoom > 1.01f) 1f else 2f
+                            panX = 0f; panY = 0f
+                        })
+                    }
                     .pointerInput(title) {
                         detectTransformGestures { _, pan, change, _ ->
                             zoom = (zoom * change).coerceIn(1f, 8f)
