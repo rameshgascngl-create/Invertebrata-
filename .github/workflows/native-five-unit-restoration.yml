@@ -2,7 +2,7 @@ name: Native five-unit restoration — compile, assets and academic hold
 'on':
   push:
     branches:
-      - native/five-unit-restoration-r6-paramecium-20261018
+      - native/five-unit-r7-single-image-per-plate-20261018
   workflow_dispatch:
 
 permissions:
@@ -44,10 +44,27 @@ jobs:
           assert 'pngOnly=lifeHistory' not in asset
           manifest=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt").read_text()
           assert 'a5ChapterIdsByUnit.getValue(5)' in manifest
-          for file in ["UnitIITeachingChapter.kt","UnitIIITeachingChapter.kt"]:
-              source=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui") / file
-              assert 'RequiredTypeStudyPlates(study, language)' in source.read_text()
-          print("NEW_CHAPTERS=17; NINE_TYPE_STUDY_IMAGE_GALLERIES=INTEGRATED; ORIGINAL_A5=UNMODIFIED")
+          u2source=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIITeachingChapter.kt").read_text()
+          u3source=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIITeachingChapter.kt").read_text()
+          assert "RequiredTypeStudyPlates(study, language)" in u2source
+          assert "UnitIIIPlateGallery(chapter.id, language, narrator)" in u3source
+          # R7 single-image rule: source files retained; only one composable
+          # may render a given anatomical plate in the same reader.
+          root=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui")
+          u2=(root/"UnitIITeachingChapter.kt").read_text()
+          u3=(root/"UnitIIITeachingChapter.kt").read_text()
+          lab=(root/"ParameciumTeachingLab.kt").read_text()
+          assert u2.count("RequiredTypeStudyPlates(study, language)") == 1
+          assert "UnitIIStaticLessonPlate(" not in u2
+          assert "UnitIIImagePlate(" not in u2
+          assert u3.count("UnitIIIPlateGallery(chapter.id, language, narrator)") == 1
+          assert "RequiredTypeStudyPlates(study, language)" not in u3
+          assert 'item(key = "u3-static-figure")' not in u3
+          assert "AtlasSection(language, ::speak" not in lab
+          assert lab.count("RequiredTypeStudyPlates(study, language)") == 1
+          assert 'if (tab == "anatomy")' in lab
+          print("R7_SINGLE_RENDER_UNIT2_UNIT3_PARAMECIUM=PASS; ORIGINAL_RASTERS_RETAINED")
+          print("NEW_CHAPTERS=17; ORIGINAL_A5=UNMODIFIED")
           PY
       - name: Compile debug native Kotlin and Android test sources, run JVM tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
@@ -56,7 +73,7 @@ jobs:
       - name: Upload development debug APK (NOT a release)
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R6-DEBUG-UNAPPROVED
+          name: five-unit-restoration-R7-DEBUG-UNAPPROVED
           path: native-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -143,7 +160,7 @@ jobs:
       - name: Upload honest plate-register evidence
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-restoration-R6-ASSET-REGISTER
+          name: five-unit-restoration-R7-ASSET-REGISTER
           path: qa-evidence/five-unit-assets/
           if-no-files-found: error
 
@@ -174,11 +191,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R6-academic-review-register
+          name: five-unit-R7-academic-review-register
           path: qa-evidence/five-unit-academic/
           if-no-files-found: warn
 
-  android-ui-r6:
+  android-ui-r7:
     needs: compile-and-jvm
     runs-on: ubuntu-24.04
     timeout-minutes: 65
@@ -210,8 +227,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: five-unit-R6-android-ui-evidence
-          path: qa-evidence/five-unit-r6/
+          name: five-unit-R7-android-ui-evidence
+          path: qa-evidence/five-unit-r7/
           if-no-files-found: warn
       - name: Explain artwork acceptance status
         if: always()
