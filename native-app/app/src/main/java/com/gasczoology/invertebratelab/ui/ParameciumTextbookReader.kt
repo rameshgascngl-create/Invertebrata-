@@ -1,5 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
@@ -169,7 +171,8 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
         else -> null
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
-    Card {
+    var expanded by rememberSaveable(figure) { mutableStateOf(false) }
+    Card(modifier = Modifier.fillMaxWidth().testTag("u58-concept-png-card-" + figure)) {
         Column(Modifier.fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(view(language, "Concept-specific PNG anatomy plate — scientific review pending",
                 "கருத்துக்கேற்ற தனி PNG உடற்கூறுப் படம் — அறிவியல் மதிப்பாய்வு நிலுவையில்"),
@@ -178,7 +181,25 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
                 androidx.compose.foundation.Image(bitmap = bitmap,
                     contentDescription = view(language, "Paramecium concept PNG: $figure", "பாரமீசியம் PNG படம்: $figure"),
                     contentScale = androidx.compose.ui.layout.ContentScale.Fit,
-                    modifier = Modifier.fillMaxWidth().height(240.dp).testTag("r14-pencil-" + figure))
+                    modifier = Modifier.fillMaxWidth()
+                        .aspectRatio(bitmap.width.toFloat() / bitmap.height.toFloat())
+                        .clickable { expanded = true }
+                        .testTag("r14-pencil-" + figure))
+                OutlinedButton(
+                    onClick = { expanded = true },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("u58-expand-concept-png-" + figure),
+                ) {
+                    Text(view(language, "View full-resolution PNG", "PNG படத்தை முழுத்திரையில் பெரிதாக்கு"))
+                }
+                if (expanded) {
+                    RequiredTypeStudyFullImage(
+                        image = bitmap,
+                        title = view(language, "Paramecium · " + figure, "பாரமீசியம் · " + figure),
+                        language = language,
+                        onDismiss = { expanded = false },
+                    )
+                }
             } else {
                 Text(view(language,
                     "Required concept-specific PNG not yet scientifically verified; the old drawing has been removed.",
@@ -248,8 +269,8 @@ internal fun ParameciumTextbookReader(
         }
     }
 
-    // Put the full original hand-drawn, interactive atlas ABOVE the lesson
-    // paragraphs on the first page, instead of burying it after exam questions.
+    // Show one source-derived PNG of external morphology on the first
+    // page. There is no hidden anatomical hotspot model on the image.
     if (chapter == 0) {
         Button(
             shape = RoundedCornerShape(12.dp),
@@ -261,6 +282,7 @@ internal fun ParameciumTextbookReader(
                 "வெளிப்புற உடலமைப்பு PNG படத்தைப் பார்"))
         }
         val externalPng = rememberRequiredRasterBitmap("unit1/paramecium_external", pngOnly = true)
+        var externalZoom by rememberSaveable { mutableStateOf(false) }
         if (externalPng != null) {
             androidx.compose.foundation.Image(
                 bitmap = externalPng,
@@ -268,9 +290,28 @@ internal fun ParameciumTextbookReader(
                     "Paramecium external anatomy PNG; organ coordinates pending scientific verification",
                     "பாரமீசியம் வெளிப்புற உடலமைப்பு PNG; உறுப்பிடங்கள் அறிவியல் ஆய்வில் உள்ளன"),
                 contentScale = androidx.compose.ui.layout.ContentScale.Fit,
-                modifier = Modifier.fillMaxWidth().height(280.dp)
+                modifier = Modifier.fillMaxWidth()
+                    .aspectRatio(externalPng.width.toFloat() / externalPng.height.toFloat())
                     .bringIntoViewRequester(plateRequester)
+                    .clickable { externalZoom = true }
                     .testTag("r14-external-png"))
+            OutlinedButton(
+                onClick = { externalZoom = true },
+                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                    .testTag("u58-expand-external-png"),
+            ) {
+                Text(view(language, "View full-resolution external anatomy PNG",
+                    "வெளி உடற்கூறுப் படத்தை முழுத்திரையில் பெரிதாக்கு"))
+            }
+            if (externalZoom) {
+                RequiredTypeStudyFullImage(
+                    image = externalPng,
+                    title = view(language, "Paramecium · external morphology",
+                        "பாரமீசியம் · புறத்தோற்றம்"),
+                    language = language,
+                    onDismiss = { externalZoom = false },
+                )
+            }
         } else {
             Text(view(language, "External anatomy PNG unavailable; no drawing substituted.",
                 "வெளிப்புற உடலமைப்பு PNG இல்லை; மாற்று வரைபடம் காட்டப்படாது."),
@@ -340,16 +381,16 @@ internal fun ParameciumTextbookReader(
     if (section.id == "osmoregulation") {
         Button(onClick = onWaterBalance, shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r18-from-reader")) {
-            Text(view(language, "Open the complete water-balance textbook and touch atlas",
-                "முழு நீர்ச் சமநிலைப் பாடத்தையும் தொடு படத்தையும் திற"))
+            Text(view(language, "Open the complete water-balance textbook",
+                "முழு நீர்ச் சமநிலைப் பாடத்தைத் திற"))
         }
     }
     if (section.id in setOf("nuclear-dimorphism", "asexual-division-process", "conjugation")) {
         val nuclearChapter = when(section.id) {"conjugation" -> "conjugation";"asexual-division-process" -> "fission";else -> "dimorphism"}
         Button(onClick = { onNuclearChapter(nuclearChapter) }, shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-from-reader")) {
-            Text(view(language, "Open the complete nuclear and reproductive textbook and touch atlas",
-                "முழு உட்கரு, இனப்பெருக்கப் பாடத்தையும் தொடு படத்தையும் திற"))
+            Text(view(language, "Open the complete nuclear and reproductive textbook",
+                "முழு உட்கரு, இனப்பெருக்கப் பாடத்தைத் திற"))
         }
     }
     // A complete pencil-illustrated ciliary mechanism occupies the native
@@ -366,20 +407,21 @@ internal fun ParameciumTextbookReader(
     } else if (section.id == "feeding-and-digestion" ||
         section.id == "oral-apparatus-details") {
         ParameciumFeedingPathwayPlate(language, speak)
-    } else if (chapter != 0) {
-        val figure = when (section.id) {
-            "osmoregulation" -> "vacuole"
-            "asexual-division-process" -> "fission"
-            "nuclear-dimorphism" -> "overview"
-            "conjugation" -> "conjugation"
-            else -> "overview"
+    } else {
+        // A PNG is displayed only where its subject matches the lesson.
+        // Previously every unrelated section defaulted to the same overview
+        // photo, causing repetition and misleading concept illustrations.
+        when (section.id) {
+            "osmoregulation" -> PencilMechanismFigure("vacuole", language)
+            "nuclear-dimorphism" -> PencilMechanismFigure("overview", language)
+            "asexual-division-process" -> PencilMechanismFigure("fission", language)
+            "conjugation" -> PencilMechanismFigure("conjugation", language)
         }
-        PencilMechanismFigure(figure, language)
     }
     if (chapter == 0) {
         Text(view(language,
-            "Anatomical pencil plate: touch individual organs in the Anatomy section for highlighting and narration.",
-            "உறுப்பு பென்சில் படம்: உறுப்புகளைத் தொட்டு ஒளிரச்செய்யவும் ஒலிவிளக்கம் பெறவும் உடலமைப்புப் பகுதிக்குச் செல்லவும்."),
+            "The external morphology image is a fixed PNG. Enlarge it to read the original labels; anatomical hotspots are not calibrated.",
+            "வெளிப்புற உடற்கூறுப் படம் நிலையான PNG. குறியீடுகளைப் படிக்க பெரிதாக்கவும்; உறுப்புத் தொடுதல் சரிபார்க்கப்படவில்லை."),
             style = MaterialTheme.typography.bodyMedium)
     }
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
