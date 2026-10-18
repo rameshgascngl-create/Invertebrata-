@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -112,13 +113,13 @@ internal fun RequiredTypeStudyPlates(
         modifier = Modifier.fillMaxWidth().testTag("r2-type-study-gallery-" + study.organismId),
     ) {
         Text(
-            if (tamil) "அவசியமான உடற்கூறுப் பென்சில் படங்கள் · ${study.scientificName}"
-            else "REQUIRED ANATOMICAL PENCIL PLATES · ${study.scientificName}",
+            if (tamil) "உடற்கூறு ஆதாரப் படங்கள் · ${study.scientificName}"
+            else "REQUIRED ANATOMICAL IMAGE PLATES · ${study.scientificName}",
             style = MaterialTheme.typography.titleLarge,
         )
         Text(
-            if (tamil) "இவை தனித்த படக்கோப்புகளாக செயலியில் இணைக்கப்பட வேண்டும். படம் இருந்தாலும் அதன் உடற்கூறு, உரிமை, தமிழ் குறியீடுகள் மதிப்பாய்வுக்கு உட்பட்டவை."
-            else "Each figure must be an actual bundled image. Presence alone does not verify morphology, image rights or Tamil terminology.",
+            if (tamil) "இவை தனித்த படக்கோப்புகளாக இணைக்கப்படுகின்றன. சிலவை வரலாற்று மை/வண்ணப் படங்கள்; அசல் பென்சில் ஸ்கேன்கள் அல்ல. உடற்கூறு, உரிமை, தமிழ் குறியீடுகள் ஆய்வு நிலுவையில் உள்ளன."
+            else "Each figure is a real bundled raster, if present. Historical ink and colour references are NOT authentic pencil scans; morphology, rights and Tamil terminology still require verification.",
             style = MaterialTheme.typography.bodyMedium,
         )
         study.requiredPlateIds.forEach { plateId ->
@@ -144,7 +145,8 @@ internal fun RequiredTypeStudyPlates(
                             bitmap = raster,
                             contentDescription = "${study.scientificName}: ${readable}",
                             contentScale = ContentScale.Fit,
-                            modifier = Modifier.fillMaxWidth().height(280.dp)
+                            modifier = Modifier.fillMaxWidth()
+                                .aspectRatio(raster.width.toFloat() / raster.height.toFloat())
                                 .testTag("r2-plate-bitmap-${study.organismId}-${plateId}"),
                         )
                         OutlinedButton(
