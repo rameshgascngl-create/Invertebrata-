@@ -61,7 +61,18 @@ class NativeU57ParameciumProcessPngTest {
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
             rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
             rule.onNodeWithTag("u57-static-png-disclosure").performScrollTo().assertExists()
-            if(process=="osmoregulation")screenshot("vacuole-source-png")
+            if(process=="osmoregulation") {
+                screenshot("vacuole-source-png")
+                rule.onNodeWithTag("u58-open-process-image-"+process).performScrollTo().performClick()
+                rule.onNodeWithTag("r2-fullscreen-dialog").assertExists()
+                rule.onNodeWithTag("r2-fullscreen-bitmap").assertIsDisplayed()
+                rule.onNodeWithTag("r2-zoom-in").performClick()
+                rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
+                screenshot("vacuole-png-enlarged")
+                rule.onNodeWithTag("r2-fullscreen-close").performClick()
+                rule.onNodeWithTag("r2-fullscreen-dialog").assertDoesNotExist()
+                rule.onNodeWithTag(tag).performScrollTo().assertExists()
+            }
         }
         for(process in listOf("binary_fission","conjugation")) {
             go(process)
