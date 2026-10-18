@@ -330,16 +330,14 @@ internal fun ParameciumTextbookReader(
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                 .testTag("r14-jump-to-pencil-plate"),
         ) {
-            Text(view(language, "VIEW THE ORIGINAL PENCIL ANATOMY PLATE",
-                "அசல் பென்சில் உடலமைப்புப் படத்தைப் பார்"))
+            Text(view(language, "VIEW THE PARAMECIUM PNG REFERENCE PLATE",
+                "பாரமீசியம் PNG ஆதாரப் படத்தைப் பார்"))
         }
-        ParameciumExternalCanvas(
+        // R8 image-only: source-backed PNG rather than a drawn cell silhouette.
+        ParameciumPngReference(
+            panel = "external",
             language = language,
-            compact = true,
-            plateModifier = Modifier.bringIntoViewRequester(plateRequester),
-            onOrganSelected = { organId ->
-                speak(ParameciumLearningEngine.organ(organId).narration)
-            },
+            modifier = Modifier.bringIntoViewRequester(plateRequester),
         )
     }
 
@@ -437,11 +435,21 @@ internal fun ParameciumTextbookReader(
             "conjugation" -> "conjugation"
             else -> "overview"
         }
-        PencilMechanismFigure(figure, language)
+        // Only an existing PNG reference is shown. There is no fake
+        // cell-division/conjugation frame derived from a general anatomy image.
+        ParameciumPngReference(
+            panel = when (figure) {
+                "vacuole" -> "vacuole"
+                "oral" -> "oral"
+                else -> "internal"
+            },
+            language = language,
+            contextOnly = figure == "fission" || figure == "conjugation",
+        )
     }
     if (chapter == 0) {
         Text(view(language,
-            "Anatomical pencil plate: touch individual organs in the Anatomy section for highlighting and narration.",
+            "Paramecium reference images are static PNGs; separate organ names and narrations remain available.",
             "உறுப்பு பென்சில் படம்: உறுப்புகளைத் தொட்டு ஒளிரச்செய்யவும் ஒலிவிளக்கம் பெறவும் உடலமைப்புப் பகுதிக்குச் செல்லவும்."),
             style = MaterialTheme.typography.bodyMedium)
     }
