@@ -71,7 +71,7 @@ val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
         "09_circulatory_system_REVIEW.png", "10_male_reproductive_REVIEW.png",
         "11_female_reproductive_REVIEW.png", "12_excretory_system_REVIEW.png",
     )
-    val files = names.map { rootProject.file("../" + it) }
+    val files = names.map { rootProject.file(it) }
     val destination = layout.buildDirectory.dir("generated/pilaDebugAssets")
     inputs.files(files)
     outputs.dir(destination)
