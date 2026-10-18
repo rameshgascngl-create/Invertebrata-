@@ -3,6 +3,7 @@ name: Native five-unit restoration — compile, assets and academic hold
   push:
     branches:
       - native/five-unit-r7-single-image-per-plate-20261018
+      - native/five-unit-r8-paramecium-png-only-20261018
   workflow_dispatch:
 
 permissions:
@@ -61,6 +62,24 @@ jobs:
           assert "RequiredTypeStudyPlates(study, language)" not in u3
           assert 'item(key = "u3-static-figure")' not in u3
           assert "AtlasSection(language, ::speak" not in lab
+
+          # R8: no invented anatomical Canvas is rendered from the Unit I
+          # textbook, feeding lesson, ciliary lesson or basic simulator.
+          reader=(root/"ParameciumTextbookReader.kt").read_text(encoding="utf-8")
+          feeding=(root/"ParameciumFeedingPathwayPlate.kt").read_text(encoding="utf-8")
+          ciliary=(root/"ParameciumCiliaryTextbookPlate.kt").read_text(encoding="utf-8")
+          ref=(root/"ParameciumPngReference.kt").read_text(encoding="utf-8")
+          assert '        ParameciumExternalCanvas(' not in reader
+          assert '        PencilMechanismFigure(figure, language)' not in reader
+          assert '    ProcessSketch(process,progress,language)' not in lab
+          assert '            Canvas(' not in feeding
+          assert '            Canvas(' not in ciliary
+          assert 'ParameciumPngReference(' in reader and 'ParameciumPngReference(' in lab
+          assert 'ParameciumPngReference(' in feeding and 'ParameciumPngReference(' in ciliary
+          assert 'rememberRequiredRasterBitmap("unit1/paramecium_$panel", pngOnly = true)' in ref
+          assert 'Canvas(' not in ref and 'Image(' in ref
+          assert 'contextOnly = true' in lab
+          print("R8_PARAMECIUM_PNG_ONLY_VIEWER_AND_STAGE_REFERENCE=PASS; ACADEMIC_HOLD_UNCHANGED")
           assert lab.count("RequiredTypeStudyPlates(study, language)") == 1
           assert 'if (tab == "anatomy")' in lab
           print("R7_SINGLE_RENDER_UNIT2_UNIT3_PARAMECIUM=PASS; ORIGINAL_RASTERS_RETAINED")
