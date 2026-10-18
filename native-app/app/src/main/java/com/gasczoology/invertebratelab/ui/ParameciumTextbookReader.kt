@@ -257,17 +257,26 @@ internal fun ParameciumTextbookReader(
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                 .testTag("r14-jump-to-pencil-plate"),
         ) {
-            Text(view(language, "VIEW THE ORIGINAL PENCIL ANATOMY PLATE",
-                "அசல் பென்சில் உடலமைப்புப் படத்தைப் பார்"))
+            Text(view(language, "VIEW EXTERNAL ANATOMY PNG",
+                "வெளிப்புற உடலமைப்பு PNG படத்தைப் பார்"))
         }
-        ParameciumExternalCanvas(
-            language = language,
-            compact = true,
-            plateModifier = Modifier.bringIntoViewRequester(plateRequester),
-            onOrganSelected = { organId ->
-                speak(ParameciumLearningEngine.organ(organId).narration)
-            },
-        )
+        val externalPng = rememberRequiredRasterBitmap("unit1/paramecium_external", pngOnly = true)
+        if (externalPng != null) {
+            androidx.compose.foundation.Image(
+                bitmap = externalPng,
+                contentDescription = view(language,
+                    "Paramecium external anatomy PNG; organ coordinates pending scientific verification",
+                    "பாரமீசியம் வெளிப்புற உடலமைப்பு PNG; உறுப்பிடங்கள் அறிவியல் ஆய்வில் உள்ளன"),
+                contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                modifier = Modifier.fillMaxWidth().height(280.dp)
+                    .bringIntoViewRequester(plateRequester)
+                    .testTag("r14-external-png"))
+        } else {
+            Text(view(language, "External anatomy PNG unavailable; no drawing substituted.",
+                "வெளிப்புற உடலமைப்பு PNG இல்லை; மாற்று வரைபடம் காட்டப்படாது."),
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.testTag("r14-external-png-missing"))
+        }
     }
 
     OutlinedButton(shape = RoundedCornerShape(12.dp), onClick = { contentsExpanded = !contentsExpanded },
