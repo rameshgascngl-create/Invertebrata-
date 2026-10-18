@@ -429,8 +429,8 @@ private fun UnitScreen(
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                             .testTag("u1-open-diagram-atlas")) {
                         Text(label(language,
-                            "VIEW DIAGRAMS · Paramecium anatomy (original native pencil draft)",
-                            "வரைபடங்களைப் பார் · பாரமீசியம் உடலமைப்பு (பென்சில் வரைவு)"))
+                            "VIEW ANATOMICAL PLATES · Paramecium photographed-pencil source",
+                            "உடற்கூறுப் படங்களைப் பார் · பாரமீசியம் பென்சில் வரைபடப் புகைப்பட மூலம்"))
                     }
                     Text(label(language,
                         "Original pencil anatomy masters for Entamoeba, Trypanosoma, Leishmania and Plasmodium are still pending. Separate source-referenced provisional illustrations can be inspected below.",
