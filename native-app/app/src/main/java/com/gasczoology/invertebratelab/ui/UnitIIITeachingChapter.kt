@@ -94,8 +94,8 @@ internal fun UnitIIITeachingChapter(
                 modifier = Modifier.fillMaxWidth().testTag("u3-lesson-illustration-section"),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text(u3t(language, "LESSON ANATOMY · SOURCE RASTER REQUIRED",
-                    "பாட உடற்கூறு · அசல் படக்கோப்பு தேவை"),
+                Text(u3t(language, "LESSON ANATOMY · ARCHIVED REFERENCE ILLUSTRATION · REVIEW PENDING",
+                    "பாட உடற்கூறு · காப்பக ஆதாரப் படம் · மதிப்பாய்வு நிலுவையில் உள்ளது"),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.semantics { heading() })
                 val stem = if (chapter.id == "u3-fasciola")
@@ -119,12 +119,12 @@ internal fun UnitIIITeachingChapter(
                 Text(
                     if (chapter.id == "u3-fasciola")
                         u3t(language,
-                            "Proposed reference for comparison only: Encyclopaedia Britannica (1888), Trematoda Fig. 1. Its original raster is NOT bundled; identify source and verify anatomy before approving a replacement plate.",
-                            "ஒப்பீட்டுக்கான பரிந்துரை மட்டும்: என்சைக்ளோபீடியா பிரிட்டானிக்கா (1888), டிரெமடோடா படம் 1. அசல் படக்கோப்பு செயலியில் இல்லை; புதிய படத்தை அங்கீகரிக்கும் முன் உறுப்புகளையும் மூலத்தையும் சரிபார்க்க வேண்டும்.")
+                            "Archived reference candidate: Encyclopaedia Britannica (1888), Trematoda Fig. 1. Original illustration pixels are bundled in a labelled raster. This is not a pencil-scan or an independently verified type-study plate.",
+                            "காப்பக ஆதாரப் பட வரைவு: என்சைக்ளோபீடியா பிரிட்டானிக்கா (1888), டிரெமடோடா படம் 1. அசல் படத்தின் பிக்சல்கள் செயலியில் இணைக்கப்பட்டுள்ளன; இது அங்கீகரிக்கப்பட்ட பென்சில் ஸ்கேன் அல்ல. உறுப்புகளை தனியாகச் சரிபார்க்க வேண்டும்.")
                     else
                         u3t(language,
-                            "Proposed reference for comparison only: Paul Pfurtscheller, Zoologische Wandtafeln No. 38 (1925), a coloured wall chart, NOT a pencil scan. The source raster is NOT bundled. Academic review remains pending.",
-                            "ஒப்பீட்டுக்கான பரிந்துரை மட்டும்: பால் ப்ஃபுர்ட்ஷெல்லர் விலங்கியல் சுவர்ப்படம் 38 (1925). இது நிறமுள்ள படம்; பென்சில் ஸ்கேன் அல்ல. அசல் படக்கோப்பு செயலியில் இல்லை; மதிப்பாய்வு நிலுவையில் உள்ளது."),
+                            "Archived reference candidate: Paul Pfurtscheller, Zoologische Wandtafeln No. 38 (1925). The coloured source chart is bundled; it is NOT a graphite-pencil scan or an approved sex-specific anatomical plate.",
+                            "காப்பக ஆதாரப் பட வரைவு: பால் ப்ஃபுர்ட்ஷெல்லர் விலங்கியல் சுவர்ப்படம் 38 (1925). அசல் நிறப்படம் செயலியில் இணைக்கப்பட்டுள்ளது; இது பென்சில் ஸ்கேன் அல்ல. உடற்கூறுப் பட ஒப்புதல் நிலுவையில் உள்ளது."),
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.testTag("u3-source-artwork-disclosure")
                 )
