@@ -59,3 +59,18 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
 }
+
+// Generated, rights-unverified Pila artwork is packaged ONLY in debug builds.
+// Release APK/AAB variants must never contain these editorial references.
+val extractPilaReview by tasks.registering(Copy::class) {
+    val archive = rootProject.file("../pila_android_review_12_panels.zip")
+    onlyIf { archive.isFile }
+    from(provider { zipTree(archive) }) {
+        include("native-app/app/src/main/assets/review_only/pila/generated_12/*.png")
+        eachFile { path = path.removePrefix("native-app/app/src/main/assets/") }
+        includeEmptyDirs = false
+    }
+    into(layout.buildDirectory.dir("generated/pilaDebugAssets"))
+}
+android.sourceSets.getByName("debug").assets.srcDir(layout.buildDirectory.dir("generated/pilaDebugAssets"))
+tasks.matching { it.name == "mergeDebugAssets" }.configureEach { dependsOn(extractPilaReview) }
