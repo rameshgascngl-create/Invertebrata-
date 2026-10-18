@@ -1,7 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clipToBounds
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Arrangement
