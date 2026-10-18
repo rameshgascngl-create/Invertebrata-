@@ -71,7 +71,7 @@ val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
         "09_circulatory_system_REVIEW.png", "10_male_reproductive_REVIEW.png",
         "11_female_reproductive_REVIEW.png", "12_excretory_system_REVIEW.png",
     )
-    val files = names.map { rootProject.file("../$" + "{it}") }
+    val files = names.map { rootProject.file("../" + it) }
     val destination = layout.buildDirectory.dir("generated/pilaDebugAssets")
     inputs.files(files)
     outputs.dir(destination)
@@ -81,13 +81,13 @@ val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
         target.listFiles()?.forEach { it.delete() }
         val hashes = mutableSetOf<String>()
         names.zip(files).forEach { (name, source) ->
-            require(source.isFile) { "Missing uploaded Pila image: $" + "{source.path}" + "}" }
+            require(source.isFile) { "Missing uploaded Pila image: " + source.path }
             val bytes = source.readBytes()
             require(bytes.size > 1024 && bytes.take(8) == listOf(137,80,78,71,13,10,26,10).map { it.toByte() }) {
-                "Invalid PNG: $" + "name" + "
+                "Invalid PNG: " + name
             }
             val hash = java.security.MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
-            require(hashes.add(hash)) { "Duplicate Pila PNG image: $" + "name" + "}" }
+            require(hashes.add(hash)) { "Duplicate Pila PNG image: " + name }
             target.resolve(name).writeBytes(bytes)
         }
     }
