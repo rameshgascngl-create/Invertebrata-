@@ -37,6 +37,12 @@ internal fun rememberRequiredRasterBitmap(relativeStem: String, pngOnly: Boolean
             val generated = relativeStem.startsWith("review_only/pila/generated_12/") &&
                 Regex("(0[1-9]|1[0-2])_[a-z0-9_]+_REVIEW").matches(filename)
             if ((legacy || generated) && "$relativeStem.png" in available) "$relativeStem.png" else null
+        } else if (relativeStem.startsWith("review_only/asterias/")) {
+            // Candidate illustrations only; never satisfy the mandatory textbook slots.
+            val filename = relativeStem.substringAfterLast('/')
+            val allowed = relativeStem.startsWith("review_only/asterias/") &&
+                Regex("(external|water_vascular|digestive|nervous)_REVIEW").matches(filename)
+            if (allowed && "$relativeStem.png" in available) "$relativeStem.png" else null
         } else RasterArtworkPolicy.selectAsset(relativeStem, available)
         if (pngOnly && selected?.endsWith(".png") != true) null else selected
     }
