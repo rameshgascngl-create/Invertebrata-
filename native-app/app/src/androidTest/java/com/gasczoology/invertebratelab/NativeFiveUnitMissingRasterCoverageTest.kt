@@ -88,20 +88,26 @@ class NativeFiveUnitMissingRasterCoverageTest {
         find(root, "u2-obelia-colony-static-raster")
         rule.onNodeWithTag("u2-static-plate-missing").assertDoesNotExist()
     }
-    @Test fun fasciolaShowsThreeMissingRequiredMasterSlotsBeforeBilingualBiology() {
+    @Test fun fasciolaDisplaysThreeSourceBackedRastersAndHistoricalReference() {
         val root = enter(3, "u3-fasciola", false)
         find(root, "r2-type-study-gallery-fasciola")
-        for (plate in listOf("external","digestive-reproductive","life-cycle"))
-            find(root, "r2-plate-missing-fasciola-$plate")
+        for (plate in listOf("external","digestive-reproductive","life-cycle")) {
+            find(root, "r2-plate-bitmap-fasciola-$plate")
+            rule.onNodeWithTag("r2-plate-bitmap-fasciola-$plate").assertIsDisplayed()
+        }
         capture("u3-fasciola-english")
-        find(root, "u3-pencil-master-pending")
+        find(root, "u3-static-pencil-raster")
+        rule.onNodeWithTag("u3-static-pencil-raster").assertIsDisplayed()
     }
-    @Test fun ascarisShowsThreeMissingRequiredMasterSlotsWithoutInventedDrawings() {
+    @Test fun ascarisDisplaysThreeSourceBackedRastersAndCompleteCdcCycle() {
         val root = enter(3, "u3-ascaris", true)
         find(root, "r2-type-study-gallery-ascaris")
-        for (plate in listOf("male-female-external","female-internal","life-cycle"))
-            find(root, "r2-plate-missing-ascaris-$plate")
+        for (plate in listOf("male-female-external","female-internal","life-cycle")) {
+            find(root, "r2-plate-bitmap-ascaris-$plate")
+            rule.onNodeWithTag("r2-plate-bitmap-ascaris-$plate").assertIsDisplayed()
+        }
         capture("u3-ascaris-tamil")
-        find(root, "u3-pencil-master-pending")
+        find(root, "u3-static-pencil-raster")
+        rule.onNodeWithTag("u3-static-pencil-raster").assertIsDisplayed()
     }
 }
