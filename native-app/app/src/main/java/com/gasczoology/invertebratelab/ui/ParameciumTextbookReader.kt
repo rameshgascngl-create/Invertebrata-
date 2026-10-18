@@ -160,7 +160,7 @@ private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
 )
 
 @Composable
-private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
+private fun ParameciumConceptPngFigure(figure: String, language: AppLanguage) {
     // Each concept gets its own PNG slot. No anatomy is drawn in Canvas.
     val stem = when (figure) {
         "oral" -> "unit1/paramecium_oral"
@@ -184,7 +184,7 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
                     modifier = Modifier.fillMaxWidth()
                         .aspectRatio(bitmap.width.toFloat() / bitmap.height.toFloat())
                         .clickable { expanded = true }
-                        .testTag("r14-pencil-" + figure))
+                        .testTag("u58-concept-figure-" + figure))
                 OutlinedButton(
                     onClick = { expanded = true },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
@@ -412,10 +412,10 @@ internal fun ParameciumTextbookReader(
         // Previously every unrelated section defaulted to the same overview
         // photo, causing repetition and misleading concept illustrations.
         when (section.id) {
-            "osmoregulation" -> PencilMechanismFigure("vacuole", language)
-            "nuclear-dimorphism" -> PencilMechanismFigure("overview", language)
-            "asexual-division-process" -> PencilMechanismFigure("fission", language)
-            "conjugation" -> PencilMechanismFigure("conjugation", language)
+            "osmoregulation" -> ParameciumConceptPngFigure("vacuole", language)
+            "nuclear-dimorphism" -> ParameciumConceptPngFigure("overview", language)
+            "asexual-division-process" -> ParameciumConceptPngFigure("fission", language)
+            "conjugation" -> ParameciumConceptPngFigure("conjugation", language)
         }
     }
     if (chapter == 0) {
