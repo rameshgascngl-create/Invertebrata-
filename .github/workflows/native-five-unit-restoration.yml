@@ -71,6 +71,35 @@ jobs:
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - name: Assemble device QA debug APK
         run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Verify all 12 Pila PNGs are inside the assembled Android APK
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import hashlib
+          apk=Path("native-app/app/build/outputs/apk/debug/app-debug.apk")
+          assert apk.is_file(), "Debug APK missing"
+          names=[
+              "01_shell_ventral_REVIEW.png", "02_operculum_views_REVIEW.png",
+              "03_shell_dorsal_REVIEW.png", "04_animal_front_REVIEW.png",
+              "05_nervous_system_REVIEW.png", "06_buccal_mass_REVIEW.png",
+              "07_digestive_system_REVIEW.png", "08_respiratory_system_REVIEW.png",
+              "09_circulatory_system_REVIEW.png", "10_male_reproductive_REVIEW.png",
+              "11_female_reproductive_REVIEW.png", "12_excretory_system_REVIEW.png",
+          ]
+          with ZipFile(apk) as archive:
+              entries=set(archive.namelist())
+              for name in names:
+                  asset="assets/review_only/pila/generated_12/"+name
+                  assert asset in entries, "Pila image not packaged: "+asset
+                  original=Path(name).read_bytes()
+                  packaged=archive.read(asset)
+                  assert original==packaged, "Pila image differs from upload: "+name
+                  print("PILA_APK_BYTES_MATCH=PASS",name,hashlib.sha256(packaged).hexdigest())
+              assert len([x for x in entries if x.startswith("assets/review_only/pila/generated_12/") and x.endswith(".png")])==12, "Unexpected Pila image count"
+          print("PILA_12_IN_NATIVE_DEBUG_APK=PASS; SCIENTIFIC_APPROVAL=HOLD")
+          PY
       - name: Upload development debug APK (NOT a release)
         uses: actions/upload-artifact@v4
         with:
