@@ -99,7 +99,7 @@ jobs:
           }
           for rel,checksum in expected.items():
               data=(root/rel).read_bytes()
-              assert data[:8]==b"\\x89PNG\\r\\n\\x1a\\n".decode("unicode_escape").encode("latin-1"),rel
+              assert data[:8]==bytes.fromhex("89504e470d0a1a0a"),rel
               assert hashlib.sha256(data).hexdigest()==checksum,rel
           print("R5_SOURCE_IMAGES=8_SHA256_VERIFIED")
           PY
