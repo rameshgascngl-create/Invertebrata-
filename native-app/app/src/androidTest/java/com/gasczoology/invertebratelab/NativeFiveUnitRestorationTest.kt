@@ -128,6 +128,12 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-asterias"
         enter(5, ch, false)
         find(ch, "r2-type-study-gallery-asterias")
+        find(ch, "asterias-review-warning")
+        // The four Asterias candidates must be bundled and actually decode on Android.
+        for (file in listOf("external_REVIEW", "water_vascular_REVIEW", "digestive_REVIEW", "nervous_REVIEW")) {
+            find(ch, "asterias-review-image-" + file)
+            rule.onNodeWithTag("asterias-review-missing-" + file).assertDoesNotExist()
+        }
         find(ch, "r2-plate-missing-asterias-water-vascular-system")
         capture("unit5-asterias-english-missing-plate")
         find(ch, "restored-section-water-vascular")
