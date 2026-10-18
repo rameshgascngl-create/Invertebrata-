@@ -4,6 +4,7 @@ on:
     branches: [native/u56-gallery-touch-zoom-20261018]
     paths:
       - .github/workflows/unit1-png-android-qa.yml
+      - .github/scripts/unit1-png-android-qa.sh
       - native-app/app/src/main/assets/unit1/references/**
       - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIStageAtlasCanvas.kt
       - native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt
@@ -57,19 +58,7 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-boot-timeout: 900
-          script: |
-            set -eu
-            mkdir -p qa-evidence/unit1-png
-            for scale in 1.0 2.0; do
-              adb shell settings put system font_scale "$scale"
-              if ! gradle -p native-app :app:connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIProtozoaReferenceTest" > "qa-evidence/unit1-png/gradle-$scale.txt" 2>&1; then
-                tail -n 180 "qa-evidence/unit1-png/gradle-$scale.txt"
-                cp -r native-app/app/build/outputs/androidTest-results/connected "qa-evidence/unit1-png/xml-$scale" || true
-                exit 1
-              fi
-              cp -r native-app/app/build/outputs/androidTest-results/connected "qa-evidence/unit1-png/xml-$scale"
-            done
-            adb pull /sdcard/Download/u12-reference-qa qa-evidence/unit1-png/screenshots || true
+          script: bash .github/scripts/unit1-png-android-qa.sh
       - name: Upload Android evidence on success or failure
         if: always()
         uses: actions/upload-artifact@v4
