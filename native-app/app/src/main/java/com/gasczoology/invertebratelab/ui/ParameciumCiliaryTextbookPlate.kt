@@ -107,40 +107,21 @@ internal fun ParameciumCiliaryTextbookPlate(
                     .testTag("r16-view-ciliary-plate"),
             ) {
                 Text(ciliaryText(language,
-                    "Bring the pencil diagram fully into view",
-                    "பென்சில் வரைபடத்தை முழுவதும் திரையில் காண்க"))
+                    "Bring the PNG anatomy reference fully into view",
+                    "PNG உடலமைப்பு ஆதாரப் படத்தை திரையில் காண்க"))
             }
-            Canvas(
-                Modifier.fillMaxWidth().height(220.dp)
-                    .bringIntoViewRequester(requester)
-                    .testTag("r16-ciliary-canvas")
-                    .pointerInput(stage.id) {
-                        detectTapGestures { point ->
-                            selectedPart = when {
-                                point.y < size.height * .42f -> if (point.x < size.width * .5f) "basal" else "axoneme"
-                                point.y > size.height * .73f -> "basal"
-                                else -> "cilia"
-                            }
-                        }
-                    }
-                    .semantics {
-                        contentDescription = ciliaryText(language,
-                            "Schematic: left inset nine basal-body triplets without a central pair; right inset nine axonemal doublets and two central singlets. Basal bodies are beneath the surface. Selected stage: " + stage.heading.english,
-                            "விளக்கப்படம்: இடது சிறுபடத்தில் மைய இணை இல்லாத ஒன்பது அடித்தள உடல் மும்மைகள்; வலதில் ஒன்பது ஆக்சோனீம் இரட்டைகளும் இரண்டு மைய ஒற்றைகளும். அடித்தள உடல்கள் மேற்பரப்புக்குக் கீழே உள்ளன. தேர்ந்தெடுத்த நிலை: " + stage.heading.tamil)
-                        stateDescription = ciliaryText(language, "Highlighted: ", "சிறப்பித்துக் காட்டுவது: ") +
-                            parts.first { it.first == selectedPart }.second.value(language)
-                        customActions = parts.map { (id, label) ->
-                            CustomAccessibilityAction(label.value(language)) { selectedPart = id; true }
-                        }
-                    }
-            ) {
-                drawCiliaryPencilDiagram(stage.id, selectedPart)
-            }
-
+            // R8 PNG-only: preserve selectable physiology stages and organ
+            // explanations but never draw a synthetic 9+2 ultrastructure.
+            ParameciumPngReference(
+                panel = "external",
+                language = language,
+                modifier = Modifier.bringIntoViewRequester(requester),
+                contextOnly = true,
+            )
             Text(
                 ciliaryText(language,
-                    "Left inset: basal body, 9 triplets, no central pair · right: shaft axoneme, 9 doublets + 2 singlets · below: surface, basal bodies and rootlets. Protein details are simplified.",
-                    "இடது சிறுபடம்: அடித்தள உடல், 9 மும்மைகள், மைய இணை இல்லை · வலது: தண்டு ஆக்சோனீம், 9 இரட்டைகள் + 2 ஒற்றைகள் · கீழே: மேற்பரப்பு, அடித்தள உடல்கள், வேரிழைகள். புரத விவரங்கள் எளிமைப்படுத்தப்பட்டுள்ளன."),
+                    "Ciliary stage explanations are given below. The reference PNG does not claim to resolve basal-body triplets or axoneme 9+2 ultrastructure.",
+                    "குறுஇழைச் செயல்நிலைகளின் விளக்கம் கீழே உள்ளது. இந்த PNG படத்தில் அடித்தள உடல் மும்மைகளோ ஆக்சோனீம் 9+2 நுண்ணமைப்போ உறுதிப்படுத்தப்படவில்லை."),
                 modifier = Modifier.testTag("r16-ciliary-legend"),
                 style = MaterialTheme.typography.bodySmall,
             )
