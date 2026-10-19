@@ -7,6 +7,8 @@ on:
       - 'native-app/app/src/main/assets/unit1/a_detailed_scientific_educational_illustration_pos.png'
       - 'native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt'
       - 'native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeU58ParameciumReaderPngTest.kt'
+      - 'native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIProtozoaReferenceGallery.kt'
+      - 'native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt'
   workflow_dispatch:
 permissions:
   contents: read
