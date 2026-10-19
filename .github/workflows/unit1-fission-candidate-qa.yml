@@ -1,0 +1,53 @@
+name: Unit I fission candidate Android QA
+on:
+  push:
+    branches: [Unit-I]
+    paths:
+      - '.github/workflows/unit1-fission-candidate-qa.yml'
+      - 'native-app/app/src/main/assets/unit1/a_detailed_scientific_educational_illustration_pos.png'
+      - 'native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compile-and-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Validate candidate PNG and reader mapping
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          p=Path('native-app/app/src/main/assets/unit1/a_detailed_scientific_educational_illustration_pos.png')
+          b=p.read_bytes()
+          assert b[:8]==bytes.fromhex('89504e470d0a1a0a')
+          w,h=struct.unpack('>II',b[16:24])
+          assert w>=800 and h>=400,(w,h)
+          reader=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt').read_text()
+          simulator=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumProcessPng.kt').read_text()
+          assert '"fission" -> "unit1/a_detailed_scientific_educational_illustration_pos"' in reader
+          assert '"conjugation" -> null' in reader
+          assert 'ParameciumProcess.CONJUGATION to null' in simulator
+          assert 'ParameciumProcess.BINARY_FISSION to null' in simulator
+          print('Candidate asset and quarantine routing PASS; academic review PENDING')
+          PY
+      - name: Compile Android Kotlin and tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble debug APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Upload unapproved QA APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-fission-candidate-UNAPPROVED-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
