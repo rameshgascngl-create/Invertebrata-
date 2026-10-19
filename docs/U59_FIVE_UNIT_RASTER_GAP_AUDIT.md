@@ -39,3 +39,19 @@ Scope: native Android tree at U5.8 commit 7cf7159. This is a source-tree and sel
 - Do not promote review-only or debug-only files into production without academic and rights review.
 
 Status: AUDIT OPEN. Asset replacement and scientific approval are NOT yet complete.
+
+## Reconciliation with the original approved image policy — 19 October 2026
+The recently generated four-organism poster sheets and the 17 cropped/upscaled AI illustration candidates are **REJECTED as production anatomical masters**. Their scientific inaccuracies include wrong Earthworm pore positions, oversimplified reproductive/vascular systems, inadequately differentiated Penaeus mouthparts, uncertain Pila radula geometry and incomplete Asterias water-vascular connections. Image enlargement, cropping or relabelling alone does not fix anatomy.
+
+Authoritative user instructions: authentic pencil-style source artwork (prefer actual rights-cleared scanned pencil plates); separate high-resolution PNG for **each** verified anatomical structure; no SVG, Compose Canvas anatomical replacement or combined poster; preserve bilingual textbooks, A5 corpus, audio, offline, zoom and accepted images. A draft may be kept only in review-only storage and never silently shown as approved.
+
+### Work order and blockers
+1. **Earthworm:** independent external, digestive, vascular, nervous, excretory and reproductive masters; verify segmental pore placement, setae, hearts, nephridia and reproductive ducts.
+2. **Penaeus:** external morphology, separately identifiable mouthparts and appendages, dendrobranchiate gills, internal anatomy and correct larval series; do not substitute Macrobrachium morphology.
+3. **Pila:** external, internal and taenioglossate radula (2 marginal + 1 lateral + 1 rachidian + 1 lateral + 2 marginal teeth per row).
+4. **Asterias:** external, water vascular and internal anatomy with correct oral/aboral orientation, madreporite, stone/ring/radial/lateral canals, ampullae and tube feet.
+5. Reconcile existing Unit I–III assets to each lesson; check missing plates, exact path, duplication, Tamil typography and full-screen zoom.
+6. For each plate record source, license, scientific reviewer, Tamil reviewer, raster dimensions and verified leader endpoints before moving to production.
+7. Same-commit Kotlin/JVM/Android CI, normal and 200% Tamil screenshot review, device QA; **do not merge or release** until all academic gates pass.
+
+Do not mark these requirements complete because a PNG or AI-generated candidate exists. Missing approved masters remain an explicit blocker.
