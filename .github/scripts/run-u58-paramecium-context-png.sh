@@ -15,9 +15,9 @@ for scale in 1.0 2.0; do
     adb shell settings put system font_scale "$scale"
     actual="$(adb shell settings get system font_scale | tr -d '\r')"
     [[ "$actual" == "$scale" ]] || { result="FONT_SCALE_INVALID_$actual";exit 1; }
-    for suite in NativeU57ParameciumProcessPngTest NativeU58ParameciumReaderPngTest NativeUnitIProtozoaReferenceTest; do
+    for suite in NativeU57ParameciumProcessPngTest NativeU58ParameciumReaderPngTest NativeUnitIProtozoaReferenceTest#englishUnitOneDisplaysFourIndependentReferenceBitmaps; do
         result="RUNNING_$scale-$suite"
-        root="$E/scale-$scale/$suite"
+        root="$E/scale-$scale/${suite%%#*}"
         mkdir -p "$root"
         adb shell dumpsys connectivity > "$root/network.txt"
         rm -rf native-app/app/build/outputs/androidTest-results/connected
@@ -26,6 +26,7 @@ for scale in 1.0 2.0; do
            > "$root/gradle.txt" 2>&1; then
             cp -a native-app/app/build/outputs/androidTest-results/connected "$root/xml" 2>/dev/null || true
             result="ANDROID_UI_FAIL_$scale-$suite"
+            tail -n 100 "$root/gradle.txt" || true
             exit 1
         fi
         cp -a native-app/app/build/outputs/androidTest-results/connected "$root/xml"
@@ -36,7 +37,7 @@ import sys
 files=list(Path(sys.argv[1]).rglob("TEST-*.xml"))
 cases=[t for p in files for t in ET.parse(p).getroot().iter("testcase")]
 assert len(cases)>=1,("No instrumentation test cases",len(cases))
-assert all(c.get("classname")=="com.gasczoology.invertebratelab."+sys.argv[2] for c in cases)
+assert all(c.get("classname")=="com.gasczoology.invertebratelab."+sys.argv[2].split("#")[0] for c in cases)
 assert all(c.find(x) is None for c in cases for x in ("failure","error","skipped"))
 print("UNIT1_OFFLINE_TEST=PASS",sys.argv[2])
 PY
