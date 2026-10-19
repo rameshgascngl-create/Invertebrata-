@@ -108,6 +108,18 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 900
           script: bash .github/scripts/run-u58-paramecium-context-png.sh
+      - name: Verify all 17 debug-only PNG assets on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: |
+            cd native-app
+            gradle :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeU59ReviewImageMappingTest --stacktrace
       - name: Upload screenshots, XML and device evidence
         if: always()
         uses: actions/upload-artifact@v4
