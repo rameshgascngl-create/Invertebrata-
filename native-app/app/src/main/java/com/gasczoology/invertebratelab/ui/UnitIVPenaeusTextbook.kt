@@ -1,5 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -60,6 +62,7 @@ internal fun UnitIVPenaeusLessonSection(
         item.paragraphs.forEach { paragraph ->
             Text(paragraph.value(language),style=MaterialTheme.typography.bodyLarge)
         }
+        U59DebugAnatomyPlate("penaeus", item.id, language)
         Text(
             (if(language==AppLanguage.TAMIL) "அறிவியல் ஆதாரம்: " else "Science reference: ") +
                 item.source,
