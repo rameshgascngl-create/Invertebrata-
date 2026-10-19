@@ -1,5 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
+import android.graphics.BitmapFactory
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -88,6 +90,35 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(plate.second.value(language),
                         style = MaterialTheme.typography.titleMedium)
+                    // Debug variants alone package these unverified review-only images.
+                    val reviewName = when (plate.first) {
+                        "external-setae" -> "01_earthworm_external_REVIEW_ONLY.png"
+                        "digestive" -> "02_earthworm_digestive_REVIEW_ONLY.png"
+                        "circulatory" -> "03_earthworm_vascular_REVIEW_ONLY.png"
+                        "nervous" -> "04_earthworm_nervous_REVIEW_ONLY.png"
+                        "excretory" -> "05_earthworm_excretory_REVIEW_ONLY.png"
+                        "reproductive" -> "06_earthworm_reproductive_REVIEW_ONLY.png"
+                        else -> null
+                    }
+                    val reviewBitmap = remember(context, reviewName) {
+                        reviewName?.let { filename ->
+                            runCatching {
+                                context.assets.open("review_only/u59/earthworm/$filename").use {
+                                    BitmapFactory.decodeStream(it)?.asImageBitmap()
+                                }
+                            }.getOrNull()
+                        }
+                    }
+                    if (reviewBitmap != null) {
+                        Text(if (tamil) "மதிப்பாய்வுப் படம் மட்டும் — அறிவியல் மற்றும் தமிழ் சரிபார்ப்பு நிலுவை"
+                            else "DEBUG REVIEW CANDIDATE — anatomy and Tamil labels NOT APPROVED",
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.testTag("u59-earthworm-review-warning-" + plate.first))
+                        Image(bitmap = reviewBitmap,
+                            contentDescription = plate.second.value(language) + " — unverified review candidate",
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.fillMaxWidth().testTag("u59-earthworm-review-image-" + plate.first))
+                    }
                     val raster = rememberRequiredRasterBitmap("type_studies/earthworm/" + plate.first)
                     if (raster == null) {
                         Text(
