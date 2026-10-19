@@ -106,6 +106,21 @@ class NativeU58ParameciumReaderPngTest {
             serializer.flush()
         }
         assertTrue("Actual UI-hierarchy XML missing/empty: $name", file.length() > 300)
+        // Gradle reconnects/reinstalls the application between each test class and
+        // font scale. Files under Android/data/<package>/files may disappear.
+        // Copy each snapshot into the same persistent device directory already
+        // used by screenshot capture BEFORE the instrumentation process ends.
+        val destination = "/sdcard/Download/u58-qa/" + file.name
+        ParcelFileDescriptor.AutoCloseInputStream(
+            inst.uiAutomation.executeShellCommand("cp ${file.absolutePath} $destination")
+        ).use { it.readBytes() }
+        val copied = ParcelFileDescriptor.AutoCloseInputStream(
+            inst.uiAutomation.executeShellCommand("cat $destination")
+        ).use { it.readBytes() }
+        assertTrue(
+            "UI-hierarchy XML was not preserved in device Download directory: $name",
+            copied.size == file.length().toInt() && copied.size > 300
+        )
     }
 
     private fun capture(name: String) {
