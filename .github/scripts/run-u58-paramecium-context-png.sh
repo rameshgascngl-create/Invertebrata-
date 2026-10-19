@@ -76,8 +76,19 @@ for scale in ("100","200"):
         nodes=tree.findall(".//node")
         assert tree.tag=="hierarchy" and tree.attrib["scene"]==scene
         assert tree.attrib["font-scale"]==scale and len(nodes)>=2,(stem,len(nodes))
+        assert tree.attrib.get("scene-matched")=="true",(stem,"UNSYNCHRONIZED_UI_TREE")
         assert any(n.attrib.get("bounds") for n in nodes),(stem,"NO_SCREEN_BOUNDS")
         texts=" ".join((n.attrib.get("text","")+" "+n.attrib.get("content-desc","")) for n in nodes)
+        keys=" ".join(n.attrib.get("resource-id","") for n in nodes)
+        marker={
+          "external-png-fullscreen":"புறத்தோற்றம்",
+          "water-balance-png-fullscreen":"vacuole",
+          "nuclear-overview-figure":"r1-study-nuclear-dimorphism",
+          "fission-figure":"r1-study-asexual-division-process",
+          "conjugation-figure":"r1-study-conjugation",
+          "other-lesson-no-duplicate-image":"r1-study-laboratory-reasoning",
+        }[scene]
+        assert marker in texts or marker in keys,(stem,"WRONG_SECTION_UI_HIERARCHY",marker)
         report.append({"scene":scene,"font_scale":scale,
           "screenshot":str(png.relative_to(root)),
           "ui_hierarchy_xml":str(xml.relative_to(root)),
