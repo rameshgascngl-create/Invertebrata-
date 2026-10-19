@@ -166,9 +166,10 @@ private fun ParameciumConceptPngFigure(figure: String, language: AppLanguage) {
         "oral" -> "unit1/paramecium_oral"
         "vacuole" -> "unit1/paramecium_vacuole"
         "overview" -> "unit1/paramecium_internal"
-        // U61 academic quarantine: the existing reproduction composites are inaccurate.
-        // Do not expose these assets until individually vetted PNG masters replace them.
-        "fission", "conjugation" -> null
+        // Candidate fission plate is displayed with an explicit review-pending notice.
+        // Keep conjugation quarantined pending separate scientific verification.
+        "fission" -> "unit1/a_detailed_scientific_educational_illustration_pos"
+        "conjugation" -> null
         else -> null
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
@@ -203,10 +204,10 @@ private fun ParameciumConceptPngFigure(figure: String, language: AppLanguage) {
                 }
             } else {
                 Text(view(language,
-                    if (figure == "fission" || figure == "conjugation")
+                    if (figure == "conjugation")
                         "Reproduction illustration withheld: the existing composite has unverified nuclear stages. Awaiting an individually reviewed PNG plate."
                     else "Required concept-specific PNG not yet scientifically verified; the old drawing has been removed.",
-                    if (figure == "fission" || figure == "conjugation")
+                    if (figure == "conjugation")
                         "இனப்பெருக்கப் படம் தற்காலிகமாக நிறுத்தப்பட்டுள்ளது: தற்போதைய கூட்டுப் படத்தின் உட்கரு நிலைகள் சரிபார்க்கப்படவில்லை. தனித்த PNG படம் அறிவியல் மதிப்பாய்வுக்குப் பிறகே சேர்க்கப்படும்."
                     else "இந்தக் கருத்திற்கான சரிபார்க்கப்பட்ட PNG படம் இன்னும் இல்லை; பழைய வரைபடம் நீக்கப்பட்டது."),
                     color = MaterialTheme.colorScheme.error,
