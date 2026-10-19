@@ -1,0 +1,54 @@
+name: U63 committed anatomical image reconciliation — RELEASE HOLD
+'on':
+  push:
+    branches:
+      - audit/u63-committed-image-intake-20261019
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-only:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit all 43 existing mandatory image slots
+        run: python3 .github/scripts/audit-five-unit-assets.py --out qa-evidence/u63-committed-images/current-asset-register
+      - name: Reconcile Git-committed review images with native reader requirements
+        run: python3 .github/scripts/reconcile-committed-artwork.py --out qa-evidence/u63-committed-images
+      - name: Verify image conservation and fail closed on manuscript approval
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("qa-evidence/u63-committed-images/committed-image-map.json")
+          a=json.loads(p.read_text(encoding="utf-8"))
+          assert a["mandatory_plate_count"]==43
+          assert a["canonical_present_but_not_approved"]==20
+          assert a["canonical_missing"]==23
+          assert a["canonical_missing_with_named_committed_candidate"]==16
+          assert a["canonical_missing_without_named_review_candidate"]==7
+          assert a["byte_mismatched_debug_candidates"]==0
+          assert a["all_scientific_and_release_approvals"]=="HOLD"
+          assert all(not x["production_promotion"] for x in a["plates"])
+          reader=(Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIVEarthwormReader.kt").read_text())
+          viewer=(Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/U59DebugAnatomyPlate.kt").read_text())
+          for x in a["plates"]:
+              name=x["candidate_source_path"]
+              if not name or not name.endswith("_REVIEW_ONLY.png"):
+                  continue
+              if x["organism"]=="earthworm":
+                  assert name in reader
+              elif x["organism"] in ("penaeus","pila","asterias"):
+                  assert name in viewer
+          print("U63_COMMITTED_SOURCE_INTAKE=PASS; 16 NAMED CANDIDATES; 7 NO DIRECT CANDIDATE; ACADEMIC_HOLD")
+          PY
+      - name: Upload review-only evidence without promoting any images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u63-committed-image-audit-ACADEMIC-HOLD
+          path: qa-evidence/u63-committed-images/
+          if-no-files-found: warn
