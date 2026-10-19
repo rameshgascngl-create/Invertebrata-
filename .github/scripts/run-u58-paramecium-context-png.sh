@@ -3,7 +3,7 @@ set -euo pipefail
 E="qa-evidence/u58-reader"
 mkdir -p "$E" "$E/captured"
 result=NOT_STARTED
-trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull /sdcard/Download/u57-qa "$E/captured/u57" > "$E/u57-pull.log" 2>&1 || true; adb pull /sdcard/Download/u58-qa "$E/captured/u58" > "$E/u58-pull.log" 2>&1 || true; adb pull /sdcard/Android/data/com.gasczoology.invertebratelab/files/reader-hierarchy "$E/captured/reader-hierarchy" > "$E/hierarchy-pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
+trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull /sdcard/Download/u57-qa "$E/captured/u57" > "$E/u57-pull.log" 2>&1 || true; adb pull /sdcard/Download/u58-qa "$E/captured/u58" > "$E/u58-pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
 adb shell mkdir -p /sdcard/Download/u57-qa /sdcard/Download/u58-qa
 adb shell settings put system accelerometer_rotation 0
 adb shell settings put system user_rotation 0
@@ -52,15 +52,15 @@ for scale in 100 200; do
     done
 done
 # JUnit TEST-*.xml is not a UI hierarchy; capture real accessibility trees.
-adb pull /sdcard/Android/data/com.gasczoology.invertebratelab/files/reader-hierarchy \
-    "$E/captured/reader-hierarchy" > "$E/hierarchy-pull-final.log"
+# The test preserves hierarchy XML beside the PNG in /sdcard/Download/u58-qa.
+# Both are already pulled together above, before validation.
 python3 - "$E" <<'PY'
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import json, re, sys
 root=Path(sys.argv[1])
 screenshot=root/"captured/u58"
-hierarchy=root/"captured/reader-hierarchy"
+hierarchy=screenshot
 scenes=("external-png-fullscreen","water-balance-png-fullscreen",
         "nuclear-overview-figure","fission-figure","conjugation-figure",
         "other-lesson-no-duplicate-image")
