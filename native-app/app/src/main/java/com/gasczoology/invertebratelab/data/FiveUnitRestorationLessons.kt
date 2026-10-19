@@ -27,12 +27,12 @@ internal object FiveUnitRestorationLessons {
                 "First identify the body plan. Check whether the body is symmetrical, how many germ layers form the body, whether a true coelom is present, and whether the body is segmented. Then compare feeding, excretion and reproduction. Use evolutionary relationships to explain similarities and differences.",
                 "முதலில் உடலமைப்பை அறிய வேண்டும். உடற்சமச்சீர், கருவடுக்குகளின் எண்ணிக்கை, உண்மையான உடற்குழி இருப்பது அல்லது இல்லாமை, உடற்கண்டப் பிரிவு ஆகியவற்றைக் கவனிக்க வேண்டும். பின்னர் உணவூட்டம், கழிவுநீக்கம், இனப்பெருக்கம் ஆகியவற்றை ஒப்பிட வேண்டும். ஒற்றுமைகளையும் வேறுபாடுகளையும் பரிணாம உறவுகளின் அடிப்படையில் விளக்க வேண்டும்."),
             s("evidence",
-                "Practical observation and scientific names",
-                "செய்முறைக் கவனிப்பும் அறிவியல் பெயர்களும்",
-                "In the practical record, write what you can actually see in the specimen. Describe structures shown only in a textbook diagram separately. For microscope observations, record the magnification and how the specimen was prepared.",
-                "செய்முறைப் பதிவேட்டில் மாதிரியில் நேரடியாகக் காணப்படும் பண்புகளை முதலில் எழுத வேண்டும். பாடநூல் படத்தில் மட்டும் காட்டப்பட்டுள்ள உறுப்புகளைத் தனியாகக் குறிப்பிட வேண்டும். நுண்ணோக்கியில் ஆய்வு செய்தால் உருப்பெருக்க அளவையும் மாதிரி தயாரிக்கப்பட்ட முறையையும் பதிவு செய்ய வேண்டும்.",
-                "Anatomical drawings must preserve relative organ placement and use unambiguous leader lines. Classical classifications should be labelled as historical conventions when modern phylogeny has changed them.",
-                "உடற்கூறுப் படங்களில் உறுப்புகளின் ஒப்பீட்டு இடங்கள் சரியாக இருக்க வேண்டும்; குறிக்கோடுகள் குழப்பமின்றி முடிவடைய வேண்டும். பழைய வகைப்பாடுகளையும் நவீன இனவரலாற்று நிலைப்பாட்டையும் வேறுபடுத்திக் குறிப்பிட வேண்டும்.")
+                "Scientific evidence and biological interpretation",
+                "அறிவியல் சான்றுகளும் உயிரியல் விளக்கமும்",
+                "Zoological knowledge is built from observation, microscopy, comparative anatomy and experimental evidence. A textbook illustration helps us understand the position and function of organs, but it is a model of biological structure rather than a direct observation of every specimen.",
+                "விலங்கியல் அறிவு நேரடிக் கவனிப்பு, நுண்ணோக்கி ஆய்வு, ஒப்பீட்டு உடற்கூறியல் மற்றும் சோதனைச் சான்றுகள் ஆகியவற்றின் அடிப்படையில் உருவாகிறது. பாடநூல் படங்கள் உறுப்புகளின் அமைவிடத்தையும் பணிகளையும் புரிந்துகொள்ள உதவுகின்றன. அவை உயிரியல் அமைப்புகளை விளக்கும் மாதிரிப் படங்களாகும்.",
+                "Scientific diagrams show how body parts are arranged and how they work together. For example, the digestive system receives and processes food, while the excretory system removes metabolic wastes. Learn each system by connecting its structure with its function. Older classifications should be distinguished from modern evolutionary relationships.",
+                "அறிவியல் படங்கள் உடல் உறுப்புகள் எவ்வாறு அமைந்துள்ளன, அவை எவ்வாறு இணைந்து செயல்படுகின்றன என்பதைக் காட்டுகின்றன. எடுத்துக்காட்டாக, செரிமான மண்டலம் உணவைப் பெற்று செரிக்கிறது; கழிவுநீக்க மண்டலம் வளர்சிதை மாற்றக் கழிவுகளை வெளியேற்றுகிறது. ஒவ்வொரு மண்டலத்தையும் அதன் அமைப்பையும் பணியையும் இணைத்துப் புரிந்துகொள்ள வேண்டும். பழைய வகைப்பாடுகளையும் நவீன பரிணாம உறவுகளையும் வேறுபடுத்தி அறிய வேண்டும்.")
         )),
         Chapter("u1-protozoa",b("Protozoa: traditional classification and modern interpretation","புரோட்டோசோவா: மரபு வகைப்பாடும் நவீன விளக்கமும்"),listOf(
             s("classification",
