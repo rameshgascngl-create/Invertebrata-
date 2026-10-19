@@ -31,7 +31,7 @@ object UnitIVEarthwormLessons {
                 "வாழிடம், உணவு சூழலியல், நடத்தை",
                 "Metaphire posthuma is a soil-dwelling detritivorous earthworm of moist terrestrial habitats. Burrowing mixes soil and organic residues, while castings and tunnelling influence soil structure; ecological functions vary with worm species and soil conditions.",
                 "Metaphire posthuma ஈரப்பதமுள்ள நிலமண்ணில் வாழும், மட்கும் கரிமப் பொருட்களை உட்கொள்ளும் வளையப்புழு. மண்ணில் தோண்டும் செயலால் மண்ணும் கரிம எச்சங்களும் கலக்கின்றன; வெளியேறும் மண்கழிவும் சுரங்கங்களும் மண் அமைப்பை மாற்றுகின்றன. இவற்றின் விளைவு இனம் மற்றும் மண்ணின் தன்மையைப் பொறுத்தது.",
-                "Observe the preference for moisture without treating the worm as an aquatic animal. Avoid prolonged drying or direct sunlight when showing live specimens; its moist body surface is also important for gas exchange.",
+                "Earthworms prefer moist soil because their body surface must remain moist for efficient diffusion of respiratory gases. They are terrestrial animals; prolonged drying interferes with cutaneous respiration.",
                 "ஈரமான சூழலை விரும்புவதை மாணவர்கள் கவனிக்கலாம்; ஆனால் இதனால் மண்புழு நீர்வாழ் விலங்காகாது. உயிர்மாதிரியை நீண்ட நேரம் உலரவிடவோ நேரடி வெயிலில் வைக்கவோ கூடாது; ஈரமான உடற்பரப்பு வாயுப் பரிமாற்றத்திற்கும் இன்றியமையாதது.",
                 "https://openstax.org/books/biology-2e/pages/28-4-superphylum-lophotrochozoa-mollusks-and-annelids", "https://appforest.jharkhand.gov.in/fresearch/admin/file/research_357.pdf"),
             section("external",
