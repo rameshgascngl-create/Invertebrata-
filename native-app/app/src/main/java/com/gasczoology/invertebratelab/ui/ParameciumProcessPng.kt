@@ -21,8 +21,8 @@ import com.gasczoology.invertebratelab.data.ParameciumProcess
  *
  * This intentionally avoids falsely animated anatomical coordinates.
  * PNGs for 3 processes are decoded from the checked-in, offline Android
- * assets. Binary fission and conjugation need their OWN verified anatomical
- * images; a cilia/food-vacuole crop is NOT a reproduction diagram.
+ * assets. Binary fission and conjugation PNG files are already committed, but remain
+ * quarantined until visual anatomy, labels, and rights are approved.
  * No Canvas / SVG / vector drawing fallback.
  */
 internal object ParameciumProcessPngIndex {
@@ -88,7 +88,11 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
             } else {
                 Text(
                     if (tamil)
-                        "இந்த செயலுக்கான தனிப்பட்ட, அறிவியல் சரிபார்க்கப்பட்ட PNG படம் இன்னும் சேர்க்கப்படவில்லை. தவறான வரைபடம் பயன்படுத்தப்படாது; செயல்நிலை விளக்கம் கீழே உள்ளது."
+                        if (process == ParameciumProcess.BINARY_FISSION || process == ParameciumProcess.CONJUGATION)
+                            "இந்த இனப்பெருக்கச் செயலுக்கான PNG படம் ஏற்கெனவே தொகுப்பில் உள்ளது; உடற்கூறு, குறியீடுகள், பயன்பாட்டு உரிமை ஆகியவை சரிபார்க்கப்படும் வரை காட்சியிலிருந்து நிறுத்தப்பட்டுள்ளது. கீழுள்ள விளக்கத்தைப் படிக்கவும்."
+                        else "இந்த செயலுக்கான தனிப்பட்ட, அறிவியல் சரிபார்க்கப்பட்ட PNG படம் இன்னும் சேர்க்கப்படவில்லை. தவறான வரைபடம் பயன்படுத்தப்படாது; செயல்நிலை விளக்கம் கீழே உள்ளது."
+                    else if (process == ParameciumProcess.BINARY_FISSION || process == ParameciumProcess.CONJUGATION)
+                        "A reproduction PNG is already committed but withheld from display pending anatomical, label and rights review. Follow the stage explanation below."
                     else "A dedicated, scientifically reviewed PNG for this process is not yet bundled. No unrelated image or vector substitute is shown; follow the stage explanation below.",
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.testTag(
