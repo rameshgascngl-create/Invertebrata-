@@ -78,3 +78,15 @@ Source baseline: `NativeCurriculumManifest.kt` on branch `native/u58-paramecium-
 ## Non-negotiable acceptance
 
 No statement of 'all five units complete', 'all plates restored', or 'release-ready' until the above chapter rows are supported by inspected evidence and updated individually. Equal chapter-count is not equal chapter-level pedagogical depth.
+
+## Supplementary postgraduate reference policy (MSCZO-501)
+
+The user-supplied `MSCZO-501.pdf` is **M.Sc. Zoology Semester I, Invertebrates, 3 credits**, with eight units in two blocks: coelom organization, locomotion, nutrition/digestion, respiration, excretion, nervous system, invertebrate larvae, and minor phyla. It is **not** the primary undergraduate five-unit syllabus and must **not** replace the 43-chapter undergraduate structure or automatically introduce eight postgraduate units.
+
+Permitted use: strengthen existing undergraduate explanations of coelom, hydrostatic movement, filter feeding, gills/lungs/tracheae, respiratory pigments, nephridia, Malpighian tubules, nervous systems, and larval evolutionary significance **only when relevant to the primary undergraduate chapter**. Preserve accessible English and Tamil textbook-level explanations. No new MSc-only assessments, modules, or release claims are authorised by this reference.
+
+Source provenance: user-supplied `MSCZO-501.pdf`, pp. 1–5. Original UG syllabus crosswalk remains OPEN.
+
+## Latest build evidence
+
+GitHub Actions run `39244400902` on commit `7708fd9851e192f75fbc27c2cd0689beff62e266`: **FAILED** at step `Kotlin and Android test compilation and all JVM checks`; `Verify actual four Paramecium PNGs and correct source mapping` PASSED; APK assembly SKIPPED. Exact compiler/test error still requires inspection. Do not mark the candidate build-accepted.
