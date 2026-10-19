@@ -776,6 +776,9 @@ private fun ChapterScreen(
                         section.paragraphs.forEach { paragraph ->
                             Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
                         }
+                        if (chapter.id == "u5-pila" || chapter.id == "u5-asterias") {
+                            U59DebugAnatomyPlate(if (chapter.id == "u5-pila") "pila" else "asterias", section.id, language)
+                        }
                     }
                 }
             }
