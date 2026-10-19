@@ -166,8 +166,8 @@ private fun ParameciumConceptPngFigure(figure: String, language: AppLanguage) {
         "oral" -> "unit1/paramecium_oral"
         "vacuole" -> "unit1/paramecium_vacuole"
         "overview" -> "unit1/paramecium_internal"
-        "fission" -> "unit1/concepts/paramecium_binary_fission"
-        "conjugation" -> "unit1/concepts/paramecium_conjugation"
+        "fission" -> "unit1/paramecium_binary_fission"
+        "conjugation" -> "unit1/paramecium_conjugation"
         else -> null
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
