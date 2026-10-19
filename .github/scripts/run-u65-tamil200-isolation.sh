@@ -4,6 +4,9 @@
 set -euo pipefail
 E="qa-evidence/u65-isolated"
 mkdir -p "$E"
+# The isolated test runs BEFORE the full U58 driver, so its screenshot target
+# must exist now. This was the actual U65 failing assertion (Missing screenshot).
+adb shell mkdir -p /sdcard/Download/u57-qa /sdcard/Download/u58-qa
 adb shell settings put system accelerometer_rotation 0
 adb shell settings put system user_rotation 0
 adb shell settings put system font_scale 2.0
