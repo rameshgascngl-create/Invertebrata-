@@ -27,3 +27,17 @@ Upload destination in this branch: `native-app/app/src/debug/assets/review_only/
 The archive also contains `00_ANDROID_ASSET_MANIFEST.csv` and `00_READ_ME_FIRST.txt`; preserve them beside the review-only collection.
 
 **Import status:** This document records the destination and intended mapping only. It does not mean the PNG binaries have been uploaded. Verify all 17 Git blobs and hashes after upload. Release gate stays HOLD.
+
+## Upload verified and binary assets staged
+Upload commit: `1e04824d4d70eb5d568f22af226ab0f6fc40bb91` (17 files at repository root).
+Debug-only staging commit: `52ad5e5f397228bb6157db4fc8e5a3d25a530b33` (all 17 original blobs copied into `native-app/app/src/debug/assets/review_only/u59/{earthworm,penaeus,pila,asterias}/`). No binary transformation; originals preserved.
+
+### Running-text placement — editorial mapping
+- Earthworm reader `UnitIVEarthwormReader.kt`: requiredPlates: 01 external, 02 digestive, 03 vascular, 04 nervous, 05 excretory, 06 reproductive. Corresponding explanatory lesson sections should display a matching approved figure directly after their text, rather than in a remote gallery.
+- Penaeus `UnitIVPenaeusTextbook.kt`: 07 `external`, 08 `appendage-architecture`, 09 `respiration`, 10 `nutrition` / `circulation` / `reproduction` (only after internal labels pass), 11 `development`.
+- Pila: 12 external morphology; 13 organ-system anatomy; 14 radula / feeding.
+- Asterias: 15 external morphology; 16 water vascular system / locomotion; 17 internal systems.
+- No reuse of a single full poster as multiple misleading organ-specific figures.
+
+### Blocking scientific issues
+The 17 uploaded files have not passed anatomical and Tamil review. Earlier AI plates included an erroneous Pila hermaphroditic system and Asterias excretory pore, and the revised Asterias internal candidate shows both male and female gonads in one specimen. All remain **DEBUG REVIEW ONLY**. Do not move them to `src/main/assets` or show them in release textbook pages until each is approved.
