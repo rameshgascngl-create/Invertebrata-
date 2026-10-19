@@ -163,7 +163,10 @@ internal fun ExpandedProtozoaReferenceImage(
     val focusImage=if(plasmodium && focus!="overview")
         rememberRequiredRasterBitmap("unit1/references/plasmodium_"+focus,pngOnly=true)
         else null
-    val displayedImage=if(!plasmodium || focus=="overview") bitmap else focusImage
+    // Keep the original reference visible if a phase crop has not been supplied.
+    // Never imply the overview is a magnified or independently verified phase crop.
+    val missingFocusCrop = plasmodium && focus!="overview" && focusImage==null
+    val displayedImage=if(missingFocusCrop) bitmap else if(!plasmodium || focus=="overview") bitmap else focusImage
     val focusLabels=listOf(
         Triple("overview","All","முழு"),
         Triple("liver","Liver","கல்லீரல்"),
@@ -256,6 +259,15 @@ internal fun ExpandedProtozoaReferenceImage(
                             Text(if(tamil) "விளக்கம்" else "Details")
                         }
                     }
+                }
+                if(missingFocusCrop) {
+                    Text(
+                        if(tamil) "இந்த நிலைக்கான தனிப் பெரிதாக்கப்பட்ட படம் இன்னும் சேர்க்கப்படவில்லை. கீழே முழு ஆதாரப் படம் மட்டுமே காட்டப்படுகிறது."
+                        else "Separate phase enlargement not yet available. The complete source reference is shown below, not a phase crop.",
+                        color=MaterialTheme.colorScheme.error,
+                        style=MaterialTheme.typography.labelSmall,
+                        modifier=Modifier.testTag("u1-plasmodium-focus-crop-pending"),
+                    )
                 }
                 Box(modifier=Modifier.fillMaxWidth().weight(1f).clipToBounds()) {
                     if(displayedImage==null) {
