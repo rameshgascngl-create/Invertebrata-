@@ -88,12 +88,12 @@ class NativeU58ParameciumReaderPngTest {
         rule.onNodeWithTag("u58-concept-figure-vacuole", useUnmergedTree = true).assertDoesNotExist()
 
         choose("asexual-division-process")
-        rule.onNodeWithTag("r14-concept-png-missing-fission", useUnmergedTree = true)
+        rule.onNodeWithTag("u58-expand-concept-png-fission", useUnmergedTree = true)
             .performScrollTo().assertExists()
         rule.onNodeWithTag("u58-concept-figure-overview", useUnmergedTree = true).assertDoesNotExist()
 
         choose("conjugation")
-        rule.onNodeWithTag("r14-concept-png-missing-conjugation", useUnmergedTree = true)
+        rule.onNodeWithTag("u58-expand-concept-png-conjugation", useUnmergedTree = true)
             .performScrollTo().assertExists()
         rule.onNodeWithTag("u58-concept-figure-overview", useUnmergedTree = true).assertDoesNotExist()
 
