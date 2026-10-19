@@ -15,9 +15,9 @@ for scale in 1.0 2.0; do
     adb shell settings put system font_scale "$scale"
     actual="$(adb shell settings get system font_scale | tr -d '\r')"
     [[ "$actual" == "$scale" ]] || { result="FONT_SCALE_INVALID_$actual";exit 1; }
-    for suite in NativeU57ParameciumProcessPngTest NativeU58ParameciumReaderPngTest NativeUnitIProtozoaReferenceTest#englishUnitOneDisplaysFourIndependentReferenceBitmaps; do
+    for suite in NativeU57ParameciumProcessPngTest NativeU58ParameciumReaderPngTest NativeUnitIProtozoaReferenceTest#englishUnitOneDisplaysFourIndependentReferenceBitmaps NativeUnitIProtozoaReferenceTest#tamilParasiticProtozoaChapterRetainsOwnReferencesAndA5; do
         result="RUNNING_$scale-$suite"
-        root="$E/scale-$scale/${suite%%#*}"
+        root="$E/scale-$scale/${suite//#/_}"
         mkdir -p "$root"
         adb shell dumpsys connectivity > "$root/network.txt"
         rm -rf native-app/app/build/outputs/androidTest-results/connected
@@ -51,8 +51,11 @@ for scale in 100 200; do
         [[ -s "$E/captured/u57/paramecium-$scale-$view.png" ]] || { result="MISSING_U57_$scale-$view";exit 1;}
     done
     for phase in liver blood mosquito; do
-        [[ -s "$E/captured/u12/u12-$scale-plasmodium-$phase-english.png" ]] || { result="MISSING_PROTOZOA_$scale-$phase";exit 1;}
+        for language in english tamil; do
+            [[ -s "$E/captured/u12/u12-$scale-plasmodium-$phase-$language.png" ]] || { result="MISSING_PROTOZOA_$scale-$phase-$language";exit 1;}
+        done
     done
+    [[ -s "$E/captured/u12/u12-$scale-plasmodium-blood-details-tamil.png" ]] || { result="MISSING_TAMIL_DETAILS_$scale";exit 1;}
     for view in external-png-fullscreen water-balance-png-fullscreen other-lesson-no-duplicate-image fission-candidate-png-fullscreen; do
         [[ -s "$E/captured/u58/reader-$scale-$view.png" ]] || { result="MISSING_U58_$scale-$view";exit 1;}
     done
