@@ -118,8 +118,7 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 900
           script: |
-            cd native-app
-            gradle :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeU59ReviewImageMappingTest --stacktrace
+            gradle -p native-app :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeU59ReviewImageMappingTest --stacktrace
       - name: Upload screenshots, XML and device evidence
         if: always()
         uses: actions/upload-artifact@v4
