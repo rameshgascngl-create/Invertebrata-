@@ -2,6 +2,13 @@ package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -349,9 +356,9 @@ private fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
-                Text("INVERTEBRATA")
+                Text("INVERTEBRATA", style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.ExtraBold)
                 Text(label(language,
-                    "Interactive Zoology laboratory · study, anatomy, physiology and audio",
+                    "Invertebrate Zoology · Illustrated lessons, anatomy, life cycles and audio",
                     "ஊடாடும் விலங்கியல் ஆய்வகம் · பாடம், உடலமைப்பு, உடலியல், ஒலி"))
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
@@ -360,22 +367,51 @@ private fun HomeScreen(
                         modifier = Modifier.heightIn(min = 48.dp).testTag("language-tamil")) { Text("தமிழ்") }
                 }
                 Button(onClick = onParamecium,
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp)
                         .testTag("r1-home-open-paramecium")) {
-                    Text(label(language, "Read Paramecium — illustrated native textbook",
-                        "பாரமீசியம் — படவிளக்கப் பாடநூலைப் படி"))
+                    Row(verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Text("🔬", style = MaterialTheme.typography.headlineMedium)
+                        Text(label(language, "PARAMECIUM · Illustrated textbook",
+                            "பாரமீசியம் · படவிளக்கப் பாடநூல்"),
+                            fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                    }
                 }
             }
             items(units, key = { it.number }) { unit ->
+                val symbol = when (unit.number) {
+                    1 -> "🔬"
+                    2 -> "🪸"
+                    3 -> "🪱"
+                    4 -> "🦐"
+                    5 -> "🐚"
+                    else -> "📖"
+                }
                 Button(onClick = { onUnit(unit.number) },
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("unit-" + unit.number)) {
-                    Text(unit.title.value(language) + " · " + unit.chapters.size.toString() +
-                        label(language, " chapters", " அத்தியாயங்கள்"))
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 76.dp)
+                        .testTag("unit-" + unit.number),
+                    contentPadding = PaddingValues(horizontal = 18.dp, vertical = 12.dp)) {
+                    Row(modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                        Text(symbol, style = MaterialTheme.typography.headlineMedium)
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(label(language, "UNIT " + unit.number, "அலகு " + unit.number),
+                                fontWeight = FontWeight.ExtraBold,
+                                style = MaterialTheme.typography.titleLarge)
+                            Text(unit.title.value(language),
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.SemiBold)
+                        }
+                        Text(unit.chapters.size.toString(),
+                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.titleLarge)
+                    }
                 }
             }
             item {
                 Button(onClick = onAssessment, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("a5-assessment")) {
-                    Text(label(language, "Five-mark practice · 86 questions", "ஐந்து மதிப்பெண் பயிற்சி · 86 வினாக்கள்"))
+                    Text(label(language, "📝  FIVE-MARK PRACTICE · 86 QUESTIONS", "📝  ஐந்து மதிப்பெண் பயிற்சி · 86 வினாக்கள்"), fontWeight = FontWeight.Bold)
                 }
             }
         }
