@@ -12,7 +12,7 @@ class UnitIVPenaeusTeachingTest {
         assertTrue(sections.any { it.id == "circulation" })
         assertTrue(sections.any { it.id == "reproduction" })
         assertTrue(sections.any { it.id == "nervous" })
-        assertTrue(sections.any { it.id == "practical" })
+        assertTrue(sections.any { it.id == "morphological-comparison" })
         assertTrue(sections.all {
             it.heading.english.isNotBlank() && it.heading.tamil.isNotBlank() &&
             it.paragraphs.size>=2 && it.source.startsWith("https://www.fao.org/")
