@@ -25,8 +25,9 @@ CANDIDATES = {
  ("pila","external"):("12_pila_external_REVIEW_ONLY.png","shell, operculum, orientation"),
  ("pila","mantle-cavity"):("13_pila_internal_REVIEW_ONLY.png","PARTIAL: internal views do not prove mantle cavity coverage"),
  ("pila","ctenidium"):("08_respiratory_system_REVIEW.png","PARTIAL: respiratory diagram does not prove ctenidial anatomy"),
- ("asterias","external"):("15_asterias_external_REVIEW_ONLY.png","oral/aboral orientation, podia and madreporite"),
- ("asterias","water-vascular-system"):("16_asterias_water_vascular_REVIEW_ONLY.png","ring/radial/stone canals and ampullae"),
+ # U64 pixel inspection: file 15 depicts WATER-VASCULAR, not external;
+ # file 16 depicts NERVOUS, not water-vascular. Neither may be misfiled.
+ ("asterias","water-vascular-system"):("15_asterias_external_REVIEW_ONLY.png","Source filename says external, actual figure subject is water vascular; only review, no approval"),
  ("asterias","internal"):("17_asterias_internal_REVIEW_ONLY.png","digestive and gonadal organ boundaries"),
 }
 ROOT="native-app/app/src/main/assets"
