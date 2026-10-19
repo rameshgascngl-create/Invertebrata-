@@ -92,8 +92,16 @@ class NativeU58ParameciumReaderPngTest {
             .performScrollTo().assertExists()
         rule.onNodeWithTag("u58-concept-figure-overview", useUnmergedTree = true).assertDoesNotExist()
 
+        rule.onNodeWithTag("u58-expand-concept-png-fission", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.onNodeWithTag("r2-fullscreen-bitmap").assertExists()
+        capture("fission-candidate-png-fullscreen")
+        rule.onNodeWithTag("r2-fullscreen-close").performClick()
+
         choose("conjugation")
         rule.onNodeWithTag("u58-expand-concept-png-conjugation", useUnmergedTree = true)
+            .assertDoesNotExist()
+        rule.onNodeWithTag("r14-concept-png-missing-conjugation", useUnmergedTree = true)
             .performScrollTo().assertExists()
         rule.onNodeWithTag("u58-concept-figure-overview", useUnmergedTree = true).assertDoesNotExist()
 
