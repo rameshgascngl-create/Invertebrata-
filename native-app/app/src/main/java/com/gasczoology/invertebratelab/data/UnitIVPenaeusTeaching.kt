@@ -94,16 +94,16 @@ internal object UnitIVPenaeusTeaching {
             listOf(
                 t("Food passes from the mouth through foregut regions to a muscular stomach with cuticular filtering and processing specializations, then into the intestine and anus. The large hepatopancreas contributes digestive secretions and nutrient processing; it is not a vertebrate liver plus pancreas.",
                   "உணவு வாயிலிருந்து முன்குடல் மற்றும் தசையுள்ள இரைப்பையின் சிறப்பமைப்புகளைக் கடந்து குடலுக்கும் ஆசனவாய்க்கும் செல்கிறது. பெரிய ஹெபட்டோபாங்க்ரியாஸ் செரிமானச் சுரப்புகளுக்கும் ஊட்டச்சத்து மாற்றத்திற்கும் உதவுகிறது; இது முதுகெலும்பிகளின் கல்லீரல் மற்றும் கணையம் இரண்டும் தனியாக இருப்பதுபோல அல்ல."),
-                t("Mouthpart appendages manipulate particles, while hepatopancreatic tubules are distinct from the gut lumen. Any anatomical plate must separate oesophagus, stomach, digestive gland, intestine and their actual duct connections.",
-                  "வாய்க்கால்கள் உணவுத் துகள்களை கையாளுகின்றன; ஹெபட்டோபாங்க்ரியாஸின் நுண்குழல்கள் குடற்குழியிலிருந்து வேறானவை. படம் உணவுக்குழாய், இரைப்பை, செரிமானச் சுரப்பி, குடல் மற்றும் அவற்றின் உண்மையான குழாய் இணைப்புகளைத் தெளிவாகப் பிரிக்க வேண்டும்.")
+                t("The mandibles and maxillae handle food before it enters the oesophagus. Mechanical processing occurs in the foregut, while secretions from hepatopancreatic tubules contribute to digestion and absorption. Digested material proceeds through the intestine, and undigested residues leave through the posterior anus.",
+                  "தாடைகளும் மேல்தாடைகளும் உணவை உணவுக்குழாய்க்குள் செல்லுமுன் கையாளுகின்றன. முன்குடலில் உணவு இயந்திர முறையில் பதப்படுத்தப்படுகிறது; ஹெபட்டோபாங்க்ரியாஸ் நுண்குழல்களின் சுரப்புகள் செரிமானத்திற்கும் ஊட்டச்சத்து உறிஞ்சுதலுக்கும் உதவுகின்றன. செரிக்கப்பட்ட பொருள்கள் குடல் வழியாகச் செல்கின்றன; செரிக்காத எச்சங்கள் பின்புற ஆசனவாய் வழியாக வெளியேறுகின்றன.")
             ),FAO_TAXON),
         PenaeusTeachingSection("respiration",
             t("Branchial chamber, gills and water flow","செவுள் அறை, செவுள்கள் மற்றும் நீரோட்டம்"),
             listOf(
                 t("Respiration occurs across thin gill surfaces housed on the sides of the cephalothorax beneath the carapace. Branchial architecture is related to the dendrobranchiate identity of penaeid shrimp, but the exact gill formula is species-specific.",
                   "தலைமார்பின் பக்கங்களில் புறக்கவசத்தடியில் உள்ள செவுள்களின் மெல்லிய பரப்புகளில் வாயுப் பரிமாற்றம் நிகழ்கிறது. பெனேயிட்களின் கிளைமரச் செவுள் அமைப்பு அவற்றின் குழுவைச் சுட்டுகிறது; ஆனால் செவுள்களின் துல்லிய எண்ணிக்கையும் அமைப்பும் இனத்தைப் பொறுத்தது."),
-                t("The scaphognathite region of the second maxilla helps move water through the branchial chamber. Do not confuse water-flow direction and haemolymph movement, or borrow freshwater Macrobrachium gill leaders for an unidentified Penaeus specimen.",
-                  "இரண்டாம் மேல்தாடையிலுள்ள ஸ்காஃபோக்நதைட் பகுதி செவுள் அறையூடாக நீர் செல்ல உதவுகிறது. நீரோட்டத்தின் திசையையும் உடற்றிரவ ஓட்டத்தையும் ஒன்றாகக் காட்டக்கூடாது; அடையாளம் தெரியாத Penaeus படத்திற்கு நன்னீர் Macrobrachium செவுள் குறியீடுகளைக் கடன் வாங்கக் கூடாது.")
+                t("The scaphognathite of the second maxilla beats rhythmically and ventilates the branchial chamber. Dissolved oxygen diffuses from water across the gill epithelium into haemolymph, while carbon dioxide diffuses in the opposite direction. Water ventilation and haemolymph circulation are coordinated but distinct flows.",
+                  "இரண்டாம் மேல்தாடையின் ஸ்காஃபோக்நதைட் ஒழுங்கான அசைவுகளால் செவுள் அறைக்குள் நீரோட்டத்தை ஏற்படுத்துகிறது. நீரில் கரைந்த ஆக்சிஜன் செவுள் மேற்படலம் வழியாக உடற்றிரவத்திற்குப் பரவுகிறது; கார்பன் டைஆக்சைடு எதிர்த்திசையில் பரவுகிறது. செவுள் வழி நீரோட்டமும் உடற்றிரவச் சுற்றோட்டமும் ஒன்றுடன் ஒன்று தொடர்புடையவை; ஆனால் அவை தனித்தனி ஓட்டங்களாகும்.")
             ),FAO_TAXON),
         PenaeusTeachingSection("circulation",
             t("Open circulation and excretion","திறந்த சுற்றோட்டமும் கழிவுநீக்கமும்"),
