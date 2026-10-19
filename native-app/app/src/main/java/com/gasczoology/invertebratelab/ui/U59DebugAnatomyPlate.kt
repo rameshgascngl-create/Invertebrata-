@@ -25,8 +25,10 @@ internal fun U59DebugAnatomyPlate(organism: String, sectionId: String, language:
         "pila" to "external" -> "12_pila_external_REVIEW_ONLY.png"
         "pila" to "organs" -> "13_pila_internal_REVIEW_ONLY.png"
         "pila" to "process" -> "14_pila_radula_REVIEW_ONLY.png"
-        "asterias" to "external" -> "15_asterias_external_REVIEW_ONLY.png"
-        "asterias" to "water-vascular" -> "16_asterias_water_vascular_REVIEW_ONLY.png"
+        // Pixel audit U64: uploaded file 15 actually depicts water-vascular anatomy,
+        // while file 16 depicts the nervous system. Their filenames are misleading.
+        // Do NOT show a water-vascular image in the external-morphology lesson.
+        "asterias" to "water-vascular" -> "15_asterias_external_REVIEW_ONLY.png"
         "asterias" to "internal" -> "17_asterias_internal_REVIEW_ONLY.png"
         else -> null
     } ?: return
@@ -44,6 +46,15 @@ internal fun U59DebugAnatomyPlate(organism: String, sectionId: String, language:
             "ஆய்வுக்கான படம் மட்டும் — உடற்கூறு மற்றும் தமிழ் பெயர்கள் சரிபார்க்கப்படவில்லை"
             else "DEBUG REVIEW ONLY — anatomical and Tamil-label approval pending",
             color = MaterialTheme.colorScheme.error)
+        if (organism == "asterias" && sectionId == "water-vascular") {
+            Text(
+                if (language == AppLanguage.TAMIL)
+                    "கோப்புப் பெயர் தவறாக உள்ளது: 15_external படம் உண்மையில் நீர்க்குழாய் மண்டலத்தைக் காட்டுகிறது; இது வெளியீட்டிற்கு ஒப்புதல் அல்ல."
+                else "SOURCE FILENAME MISMATCH: 15_external depicts water-vascular anatomy. This remains an unapproved review image.",
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.testTag("u64-asterias-filename-corrected-warning")
+            )
+        }
         Image(bitmap = bitmap, contentDescription = "$organism $sectionId — unverified review image",
             contentScale = ContentScale.Fit,
             modifier = Modifier.fillMaxWidth().testTag("u59-review-image-$organism-$sectionId"))
