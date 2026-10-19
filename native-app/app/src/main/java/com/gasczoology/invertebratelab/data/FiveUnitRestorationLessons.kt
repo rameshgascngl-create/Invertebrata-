@@ -221,8 +221,8 @@ internal object FiveUnitRestorationLessons {
                 "இளம் நிலைச் சமச்சீரும் உருமாற்றமும்",
                 "Bilateral larval symmetry and adult pentaradial organisation are distinct developmental configurations. Metamorphosis reorganises tissues and establishes the juvenile echinoderm body.",
                 "இளம் நிலையில் இருபக்கச் சமச்சீரும் முதிர்நிலையில் ஐந்தாரச் சமச்சீரும் தனித்த வளர்ச்சி அமைப்புகள். உருமாற்றத்தில் திசுக்கள் மறுஒழுங்குபட்டு இளம் முள்தோலி உடல் உருவாகிறது.",
-                "In a practical record, show ciliary-band positions and larval arms where appropriate; never imply that all echinoderms pass through every named larval type.",
-                "செய்முறைப் படத்தில் உரிய இடங்களில் சிலியப் பட்டைகள், இளம் கரங்கள் ஆகியவற்றைக் காட்ட வேண்டும்; எல்லா முள்தோலிகளும் எல்லா பெயரிடப்பட்ட இளம் நிலைகளையும் கடக்கின்றன என்று கூறக் கூடாது.")
+                "Echinoderm larval forms differ among classes: asteroid bipinnaria and brachiolaria, echinoid echinopluteus and ophiuroid ophiopluteus are distinct developmental patterns. Ciliary bands support swimming and feeding in many planktonic larvae; no single species passes through every named larval type.",
+                "முள்தோலிகளின் வகுப்புகளுக்கு ஏற்ப இளவுயிர் வடிவங்கள் வேறுபடுகின்றன. கடல்நட்சத்திரங்களில் பைபின்னேரியா, பிராக்கியோலேரியா; கடல் முள்ளெலிகளில் எக்கினோப்ளூட்டியஸ்; பிரிட்டில் நட்சத்திரங்களில் ஒஃபியோப்ளூட்டியஸ் போன்ற நிலைகள் காணப்படுகின்றன. பல மிதவை இளவுயிர்களில் குறுஇழைப் பட்டைகள் நீந்துதலுக்கும் உணவூட்டத்திற்கும் உதவுகின்றன; எல்லா பெயரிடப்பட்ட இளவுயிர் நிலைகளும் ஒரே இனத்தில் தோன்றுவதில்லை.")
         )),
         Chapter("u5-echino-affinities",b("Echinoderm affinities and deuterostomes","முள்தோலிகளின் பரிணாம உறவுகள்"),listOf(
             s("deuterostomes",
@@ -269,8 +269,8 @@ internal object FiveUnitRestorationLessons {
                 "தசை, அடித்தளம், காண்பு",
                 "Foot movement depends on muscular hydrostatic forces, adhesion and interaction with the substrate. Snails may alter pace and contact area in response to surface roughness and moisture.",
                 "பாத இயக்கம் தசை நீரழுத்தம், ஒட்டுதல், அடித்தளத் தொடர்பு ஆகியவற்றைப் பொறுத்தது. பரப்பின் கரடுமுரடான தன்மை மற்றும் ஈரத்திற்கு ஏற்ப நத்தை இயக்கத்தை மாற்றலாம்.",
-                "For a Pila practical plate, separate the broad creeping sole, operculum attachment and head tentacles. Do not confuse the foot with mantle lobes or the visceral mass.",
-                "பைலா செய்முறைப் படத்தில் அகன்ற ஊரும் பாதம், ஓடுமூடி இணைப்பு, தலை உணர்கொம்புகள் ஆகியவற்றைத் தனித்தனியாகக் குறிக்க வேண்டும். பாதத்தையும் மேன்டில் மடிப்புகளையும் உள்ளுறுப்புத் தொகுதியையும் குழப்பக் கூடாது.")
+                "The broad muscular sole produces creeping movements, the operculum closes the shell aperture when the foot retracts, and the head tentacles serve sensory functions. The foot is a locomotory organ distinct from the mantle and visceral mass.",
+                "அகன்ற தசைப்பாதம் ஊர்ந்து செல்ல உதவுகிறது; பாதம் உள்ளிழுக்கப்படும்போது அதனுடன் இணைந்த ஓடுமூடி ஓட்டின் வாயிலை மூடுகிறது; தலை உணர்கொம்புகள் உணர்திறனுக்கு உதவுகின்றன. இயக்கத்திற்குரிய பாதம் மேன்டில் மற்றும் உள்ளுறுப்புத் தொகுதியிலிருந்து வேறுபட்டது.")
         )),
         Chapter("u5-wvs",b("Water-vascular system of Asterias","அஸ்டீரியாஸின் நீர்க்குழாய் அமைப்பு"),listOf(
             s("route",
@@ -278,8 +278,8 @@ internal object FiveUnitRestorationLessons {
                 "மேட்ரிபோரைட்டிலிருந்து ஆரக்குழாய் வரை",
                 "The madreporite communicates through the stone canal with the ring canal around the mouth. Radial canals run into the arms, giving rise to lateral canals connected to individual tube-foot units.",
                 "மேட்ரிபோரைட் கற்குழாய் வழியாக வாயைச் சுற்றியுள்ள வளையக்குழாயுடன் தொடர்பு கொள்கிறது. ஆரக்குழாய்கள் கரங்களுக்குள் நீண்டு ஒவ்வொரு குழாய்க்காலும் தொடர்புள்ள பக்கக் கால்வாய்களைத் தருகின்றன.",
-                "A teaching drawing must trace the connected passages continuously; the ampulla is an internal bulb connected to a podium, not an independent external sensory tentacle.",
-                "கற்பித்தல் படத்தில் தொடர்புடைய குழாய்கள் தொடர்ச்சியாகக் காட்டப்பட வேண்டும். ஆம்புல்லா என்பது குழாய்க்காலுடன் இணைந்த உள்ளகப் புடைப்பு; தனித்த வெளிப்புற உணர்கொம்பு அல்ல."),
+                "Each internal ampulla connects to a tube foot (podium); changes in fluid pressure and associated muscle activity extend and retract the podium. The ampulla is an internal hydraulic component, not an independent external sensory tentacle.",
+                "ஒவ்வொரு உள்ளக ஆம்புல்லாவும் ஒரு குழாய்க்காலுடன் இணைந்துள்ளது. திரவ அழுத்த மாற்றங்களும் தொடர்புடைய தசை இயக்கங்களும் குழாய்க்கால் நீள்வதற்கும் சுருங்குவதற்கும் உதவுகின்றன. ஆம்புல்லா உள்ளக நீரழுத்த அமைப்பின் பகுதி; தனியான வெளிப்புற உணர்கொம்பு அல்ல."),
             s("operation",
                 "Ampullae, podia and hydraulic movement",
                 "ஆம்புல்லா, குழாய்க்கால், நீரழுத்த இயக்கம்",
@@ -301,8 +301,8 @@ internal object FiveUnitRestorationLessons {
                 "உணர்வியல் கட்டுப்பாடும் சுற்றோட்டமும்",
                 "Cephalopods possess well-developed eyes, elaborate nervous systems and closed circulatory systems with specialized hearts. Their complex behaviour should be studied as adaptation, not ranked intelligence.",
                 "தலைக்காலிகளில் நன்கு வளர்ந்த கண்கள், சிக்கலான நரம்பமைப்பு, சிறப்பியல்புடைய இதயங்களைக் கொண்ட மூடிய சுற்றோட்ட அமைப்பு காணப்படுகிறது. நடத்தைத் திறன்களை தகவமைப்பாகக் கற்க வேண்டும்.",
-                "Chromatophore organs contribute to rapid colour change in many coleoids. A practical illustration should separately label mantle, funnel, arms, gills and correctly identified reproductive structures.",
-                "பல தலைக்காலிகளில் குரோமட்டோஃபோர் உறுப்புகள் விரைவான நிறமாற்றத்திற்கு உதவுகின்றன. செய்முறைப் படத்தில் மேன்டில், புனல், கரங்கள், செவுள்கள், உரிய இனப்பெருக்க உறுப்புகள் தனித்தனியாகக் குறிக்கப்பட வேண்டும்.")
+                "In many coleoids, pigment-filled chromatophore organs expand and contract under neural control, enabling rapid colour-pattern changes. The mantle drives ventilation, the funnel directs water jets, arms capture prey, and gills exchange respiratory gases.",
+                "பல தலைக்காலிகளில் நிறமிகள் கொண்ட குரோமட்டோஃபோர் உறுப்புகள் நரம்புக் கட்டுப்பாட்டில் விரிந்து சுருங்குவதால் உடலின் நிறவடிவம் விரைவாக மாறுகிறது. மேன்டில் நீரோட்டத்தை ஏற்படுத்துகிறது; புனல் நீரைப் பீய்ச்சி இயக்கத்திற்கு உதவுகிறது; கரங்கள் இரையைப் பிடிக்கின்றன; செவுள்களில் சுவாச வாயுப் பரிமாற்றம் நடைபெறுகிறது.")
         ))
     )
     val byId: Map<String,Chapter> = chapters.associateBy { it.chapterId }
