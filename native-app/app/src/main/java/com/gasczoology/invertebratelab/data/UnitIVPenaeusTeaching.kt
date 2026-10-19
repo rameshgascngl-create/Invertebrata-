@@ -137,11 +137,11 @@ internal object UnitIVPenaeusTeaching {
                 t("The mysis stage shows increasing thoracic appendage differentiation, followed by swimming pleopod development in postlarvae. 'Protozoea' is an older name often grouped as zoea; do not replace the stage series with the direct development typical of many other decapods.",
                   "மைசிஸ் நிலையில் மார்புக்கால்கள் மேலும் வேறுபடுகின்றன; பிந்தைய இளநிலையில் நீந்துகால்கள் செயல்படத் தொடங்குகின்றன. புரோட்டோசோயா என்பதை சில நூல்கள் சோயா நிலையின் ஒரு வகையாகக் குறிப்பிடுகின்றன; வேறு டெகாபோடுகளின் நேர்வளர்ச்சியை இங்கு மாற்றாகக் காட்டக்கூடாது.")
             ),FAO_HATCH),
-        PenaeusTeachingSection("practical",
-            t("Practical specimen study and limitations","செய்முறை மாதிரி ஆய்வும் வரம்புகளும்"),
+        PenaeusTeachingSection("morphological-comparison",
+            t("Functional significance of external structures","புற உறுப்புகளின் செயல்சார் முக்கியத்துவம்"),
             listOf(
-                t("For a specimen, record the actual species name when available, rostral teeth, stalked eyes, antennules/antennae, five thoracic walking-leg pairs, five abdominal pleopod pairs, uropods and unpaired telson. Draw only visible structures and label the studied view.",
-                  "மாதிரி ஆய்வில் முடிந்தவரை உண்மையான இனப்பெயர், ரோஸ்ட்ரப் பற்கள், காம்புக் கண்கள், முதலுணர்கொம்பு/உணர்கொம்பு, ஐந்து ஜோடி நடைக்கால்கள், ஐந்து ஜோடி நீந்துகால்கள், யூரோபாட்கள் மற்றும் ஒற்றை டெல்சன் ஆகியவற்றைப் பதிவு செய்க. நேரில் தெரியும் அமைப்புகளை மட்டுமே வரைந்து ஆய்வுப் பார்வையைக் குறிப்பிடுக."),
+                t("The rostrum protects the anterior region; stalked compound eyes detect visual stimuli, and antennules and antennae contribute to chemical and mechanical sensing. Five pairs of pereiopods support walking and food handling, five pairs of pleopods assist swimming, and paired uropods with the unpaired telson form the tail fan used in rapid escape responses.",
+                  "ரோஸ்ட்ரம் முன்பகுதியைப் பாதுகாக்கிறது; காம்புள்ள கூட்டுக்கண்கள் பார்வைத் தூண்டுதல்களை உணர்கின்றன; முதல் மற்றும் இரண்டாம் உணர்கொம்புகள் வேதி மற்றும் இயந்திர உணர்திறனுக்கு உதவுகின்றன. ஐந்து ஜோடி நடைக்கால்கள் நடப்பதற்கும் உணவைக் கையாள்வதற்கும், ஐந்து ஜோடி நீந்துகால்கள் நீந்துவதற்கும் உதவுகின்றன. ஜோடி யூரோபாட்களும் ஒற்றை டெல்சனும் சேர்ந்து விரைவான தப்பிக்கும் இயக்கத்திற்கான வால் விசிறியை உருவாக்குகின்றன."),
                 t("The existing Unit IV Penaeus anatomical plates and organ leader-line hotspots are NOT independently accepted as original pencil scans. Use text and this appendage/larval-stage explorer until the exact specimen, image rights, source pixels, Tamil editing and physical-device audio are verified.",
                   "அலகு IV Penaeus உடற்கூறுப் படங்களும் உறுப்பு தொடுபுள்ளிகளும் அசல் பென்சில் ஸ்கேன்களாக இன்னும் சுயாதீனமாக ஏற்கப்படவில்லை. உண்மை மாதிரி, பட உரிமை, மூல பிக்சல்கள், தமிழ் மொழி மதிப்பாய்வு, இயற்பொறியில் ஒலி ஆகியவை உறுதிப்படுத்தப்படும் வரை உரை மற்றும் இணைக்கால்கள்/இளநிலை ஆய்வையே பயன்படுத்துக.")
             ),FAO_TAXON)
