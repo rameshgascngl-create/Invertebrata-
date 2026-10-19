@@ -48,7 +48,7 @@ def run_audit():
         elif max(meta["width"], meta["height"]) < 1600:
             findings.append({"severity": "BLOCKER", "code": "INSUFFICIENT_RASTER_DIMENSIONS",
                              "concept": concept})
-    for name in ("BINARY_FISSION", "CONJUGATION"):
+    # Fail CI if the reader reconnects either rejected reproduction image.\n    # This is a source-visibility safeguard, not proof of scientific correctness.\n    if any(p["reader_student_visible"] for p in plates.values()):\n        raise RuntimeError("U62 quarantine violated: rejected reproduction PNG is student-visible")\n    for name in ("BINARY_FISSION", "CONJUGATION"):
         if f"ParameciumProcess.{name} to null" not in simulator:
             findings.append({"severity": "BLOCKER", "code": "SIMULATOR_UNREVIEWED_MAPPING",
                              "concept": name.lower()})
