@@ -185,7 +185,7 @@ internal fun ExpandedProtozoaReferenceImage(
             else "In the mosquito: gametes, fertilisation, ookinete, oocyst and new sporozoites."
         else -> if(tamil)
             "அனைத்து நிலைகளும் கொண்ட மூல விளக்கப்படம். தனி விவரங்களுக்கு கீழுள்ள தேர்வுகளைத் தொடுக."
-            else "Full reference overview. Select a focus view for enlarged stage excerpts."
+            else "Complete life-cycle reference. Select Liver, Blood or Vector to read about each stage while viewing this same diagram."
     }
     Dialog(
         onDismissRequest={detailsVisible=false;onClose()},
@@ -207,8 +207,8 @@ internal fun ExpandedProtozoaReferenceImage(
                     overflow=TextOverflow.Ellipsis)
                 Text(
                     if(plasmodium) {
-                        if(tamil) "மூலப் படத்தின் பெரிதாக்கப்பட்ட பகுதிகள்; பென்சில் படமல்ல. ஆய்வு நிலுவை."
-                        else "Enlarged reference excerpts, not pencil art; review pending."
+                        if(tamil) "முழு வாழ்க்கைச் சுழற்சிப் படம்; நிலை விளக்கங்கள் மட்டும். அறிவியல் ஆய்வு நிலுவை."
+                        else "Complete life-cycle reference with stage explanations; review pending."
                     } else if(tamil)
                         "ஆதாரப் படம் மட்டுமே; உடலமைப்பு மதிப்பாய்வு நிலுவையில்."
                     else "Source illustration only; anatomical review remains open.",
@@ -262,8 +262,8 @@ internal fun ExpandedProtozoaReferenceImage(
                 }
                 if(missingFocusCrop) {
                     Text(
-                        if(tamil) "இந்த நிலைக்கான தனிப் பெரிதாக்கப்பட்ட படம் இன்னும் சேர்க்கப்படவில்லை. கீழே முழு ஆதாரப் படம் மட்டுமே காட்டப்படுகிறது."
-                        else "Separate phase enlargement not yet available. The complete source reference is shown below, not a phase crop.",
+                        if(tamil) "தேர்ந்தெடுத்த நிலையின் விளக்கம் மேலே உள்ளது. கீழே முழு வாழ்க்கைச் சுழற்சிப் படம் காட்டப்படுகிறது."
+                        else "The selected stage is explained above. The complete life-cycle diagram remains displayed below.",
                         color=MaterialTheme.colorScheme.error,
                         style=MaterialTheme.typography.labelSmall,
                         modifier=Modifier.testTag("u1-plasmodium-focus-crop-pending"),
@@ -351,8 +351,8 @@ internal fun ExpandedProtozoaReferenceImage(
                         modifier=Modifier.testTag("u1-plasmodium-details-body"))
                     Spacer(Modifier.height(12.dp))
                     Text(if(tamil)
-                        "இது ஆதாரப் படத்தின் பகுதி மட்டுமே. உயிரியல்/பென்சில் பட ஆய்வு நிலுவையில் உள்ளது."
-                        else "This is a source-reference excerpt. Anatomical and pencil-art review remain pending.",
+                        "இது முழு வாழ்க்கைச் சுழற்சியின் ஆதாரப் படம்; தனி நிலைப் படம் அல்ல. அறிவியல் ஆய்வு நிலுவையில் உள்ளது."
+                        else "This is the complete source life-cycle diagram, not an isolated stage illustration. Scientific review remains pending.",
                         style=MaterialTheme.typography.bodySmall)
                 }
             },
