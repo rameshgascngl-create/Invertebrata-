@@ -4,6 +4,7 @@ on:
     branches: [Unit-I]
     paths:
       - '.github/workflows/unit1-fission-candidate-qa.yml'
+      - '.github/scripts/run-u58-paramecium-context-png.sh'
       - 'native-app/app/src/main/assets/unit1/a_detailed_scientific_educational_illustration_pos.png'
       - 'native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt'
       - 'native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeU58ParameciumReaderPngTest.kt'
