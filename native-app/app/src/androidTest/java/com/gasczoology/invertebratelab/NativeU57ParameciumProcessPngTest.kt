@@ -36,9 +36,12 @@ class NativeU57ParameciumProcessPngTest {
         rule.onNodeWithTag("r1-tab-simulate").performScrollTo().performClick()
     }
     private fun go(process:String) {
-        rule.onNodeWithTag("r1-process-"+process).performScrollTo().performClick()
+        // At 200% Tamil font scale the Material3 button may be absent from
+        // the merged semantics tree. Keep the exact tagged button and real click.
+        rule.onNodeWithTag("r1-process-"+process, useUnmergedTree = true)
+            .performScrollTo().performClick()
         rule.waitForIdle()
-        rule.onNodeWithTag("r1-simulator-heading").performScrollTo()
+        rule.onNodeWithTag("r1-simulator-heading", useUnmergedTree = true).performScrollTo()
     }
     private fun screenshot(name:String) {
         val inst=InstrumentationRegistry.getInstrumentation()
