@@ -111,8 +111,8 @@ internal object FiveUnitRestorationLessons {
                 "முக்கிய வகுப்புகளும் தகவமைப்புகளும்",
                 "Traditional teaching compares Gastropoda, Bivalvia, Polyplacophora, Scaphopoda and Cephalopoda by shell arrangement, foot modification, feeding and nervous-system development.",
                 "பாரம்பரியப் பாடங்களில் கேஸ்ட்ரோபோடா, பைவால்வியா, பாலிபிளாகோபோரா, ஸ்காபோபோடா, செஃபலோபோடா ஆகியவற்றை ஓடு, பாதம், உணவெடுப்பு, நரம்பமைப்பு அடிப்படையில் ஒப்பிடுகின்றனர்.",
-                "Use Pila for an operculate freshwater gastropod type study, not as a model for every marine or terrestrial snail. Record the specimen orientation before applying anatomical labels.",
-                "மூடியுடைய நன்னீர் வயிற்றுக்காலிக்கான எடுத்துக்காட்டாக பைலாவைப் பயன்படுத்தலாம்; எல்லா நத்தைகளுக்கும் இது ஒரே மாதிரி அல்ல. உறுப்புக் குறியீடுகளுக்கு முன் மாதிரியின் திசைநிலையைக் குறிப்பிட வேண்டும்.")
+                "Use Pila for an operculate freshwater gastropod type study, not as a model for every marine or terrestrial snail. The position of the shell aperture, coiling axis and operculum helps explain how the animal withdraws into its shell.",
+                "மூடியுடைய நன்னீர் வயிற்றுக்காலிக்கான எடுத்துக்காட்டாக பைலாவைப் பயன்படுத்தலாம்; எல்லா நத்தைகளுக்கும் இது ஒரே மாதிரி அல்ல. ஓட்டின் திறப்பு, சுருள் அச்சு, ஓடுமூடி ஆகியவற்றின் அமைவிடம் விலங்கு எவ்வாறு ஓட்டினுள் ஒடுங்குகிறது என்பதை விளக்குகிறது.")
         )),
         Chapter("u5-pila",b("Pila: detailed freshwater gastropod type study","பைலா: நன்னீர் நத்தை இன ஆய்வு"),listOf(
             s("external",
@@ -120,7 +120,7 @@ internal object FiveUnitRestorationLessons {
                 "ஓடு, ஓடுமூடி, தலை–பாதம்",
                 "Pila has a coiled shell with an apex, spire, body whorl, aperture and operculum. The broad muscular foot enables crawling; the head bears tentacles, eyes and the mouth.",
                 "பைலாவில் உச்சி, சுருள், உடற்சுருள், திறப்பு, ஓடுமூடி உடைய சுருண்ட ஓடு காணப்படும். அகன்ற தசைப்பாதம் ஊர்வதற்கு உதவுகிறது; தலையில் உணர்கொம்புகள், கண்கள், வாய் ஆகியவை உள்ளன.",
-                "In a record plate, separate shell morphology from the dissected soft body. Label columella, suture and the position of the operculum only where actually visible.",
+                "The shell protects the soft body, while the operculum closes the aperture when the animal withdraws. The suture marks the junction between successive whorls; the columella forms the central axis of coiling.",
                 "செய்முறைப் படத்தில் ஓட்டின் புற அமைப்பையும் பிரித்துக் காட்டப்பட்ட மென் உடலையும் தனித்தனியாக வரைய வேண்டும். கொலுமெல்லா, சுருள் தையல், ஓடுமூடியின் இடம் ஆகியவற்றைத் தெளிவாகக் குறிக்க வேண்டும்."),
             s("mantle",
                 "Mantle cavity, ctenidium and pulmonary sac",
