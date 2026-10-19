@@ -245,11 +245,13 @@ internal fun ExpandedProtozoaReferenceImage(
                     }
                     Row(modifier=Modifier.fillMaxWidth(),
                         horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+                        // Keep the anatomical bitmap viewport intact at 200% Tamil.
+                        // The stage text scrolls independently instead of being ellipsized.
                         Text(stageDescription,
                             style=MaterialTheme.typography.labelSmall,
-                            maxLines=if(largeFont) 1 else 2,
-                            overflow=TextOverflow.Ellipsis,
                             modifier=Modifier.weight(1f)
+                                .heightIn(max=if(largeFont) 88.dp else 64.dp)
+                                .verticalScroll(rememberScrollState())
                                 .testTag("u1-plasmodium-phase-explanation"))
                         TextButton(
                             onClick={detailsVisible=true},
