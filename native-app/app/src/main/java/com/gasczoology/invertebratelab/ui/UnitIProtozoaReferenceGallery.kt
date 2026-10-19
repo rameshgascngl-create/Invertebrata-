@@ -200,11 +200,15 @@ internal fun ExpandedProtozoaReferenceImage(
                     .padding(horizontal=12.dp, vertical=6.dp),
                 verticalArrangement=Arrangement.spacedBy(7.dp),
             ) {
-                Text(title,
+                Text(
+                    if(plasmodium) {
+                        if(tamil) "பிளாஸ்மோடியம் — வாழ்க்கைச் சுழற்சி"
+                        else "Plasmodium — life cycle"
+                    } else title,
                     style=if(plasmodium) MaterialTheme.typography.titleSmall
                           else MaterialTheme.typography.titleMedium,
-                    maxLines=if(plasmodium) 1 else 2,
-                    overflow=TextOverflow.Ellipsis)
+                    maxLines=if(plasmodium && largeFont) 2 else if(plasmodium) 2 else 2,
+                )
                 Text(
                     if(plasmodium) {
                         if(tamil) "முழு வாழ்க்கைச் சுழற்சிப் படம்; நிலை விளக்கங்கள் மட்டும். அறிவியல் ஆய்வு நிலுவை."
@@ -215,8 +219,9 @@ internal fun ExpandedProtozoaReferenceImage(
                     color=MaterialTheme.colorScheme.error,
                     style=if(plasmodium) MaterialTheme.typography.labelSmall
                           else MaterialTheme.typography.labelMedium,
-                    maxLines=if(plasmodium) 2 else Int.MAX_VALUE,
-                    overflow=TextOverflow.Ellipsis,
+                    // A full-screen scientific disclaimer must not silently
+                    // lose its review-pending qualification at 200% Tamil.
+                    maxLines=Int.MAX_VALUE,
                 )
                 if(plasmodium) {
                     // At 200% font scaling show TWO buttons per row, not
