@@ -2,6 +2,7 @@ package com.gasczoology.invertebratelab
 
 import android.graphics.BitmapFactory
 import android.graphics.Rect
+import android.os.SystemClock
 import android.util.Xml
 import android.view.accessibility.AccessibilityNodeInfo
 import org.xmlpull.v1.XmlSerializer
@@ -83,10 +84,46 @@ class NativeU58ParameciumReaderPngTest {
         serializer.endTag(null, "node")
     }
 
+    private fun sceneMatches(root: AccessibilityNodeInfo, scene: String): Boolean {
+        val marker = when (scene) {
+            "external-png-fullscreen" -> "புறத்தோற்றம்"
+            "water-balance-png-fullscreen" -> "vacuole"
+            "nuclear-overview-figure" -> "r1-study-nuclear-dimorphism"
+            "fission-figure" -> "r1-study-asexual-division-process"
+            "conjugation-figure" -> "r1-study-conjugation"
+            "other-lesson-no-duplicate-image" -> "r1-study-laboratory-reasoning"
+            else -> error("Unknown screenshot/hierarchy scene: $scene")
+        }
+        fun hasMarker(node: AccessibilityNodeInfo): Boolean {
+            val content = listOfNotNull(node.viewIdResourceName, node.text?.toString(),
+                node.contentDescription?.toString()).joinToString(" ")
+            if (content.contains(marker)) return true
+            for (i in 0 until node.childCount) {
+                val child = node.getChild(i) ?: continue
+                if (hasMarker(child)) return true
+            }
+            return false
+        }
+        return hasMarker(root)
+    }
+
     private fun captureHierarchy(name: String, suffix: String) {
         val inst = InstrumentationRegistry.getInstrumentation()
-        val root = inst.uiAutomation.rootInActiveWindow
-        assertNotNull("Android accessibility root missing at $name", root)
+        // Screenshot and hierarchy must describe the SAME visible section.
+        // U62 accidentally archived the *previous* lesson's accessibility
+        // tree beside the next lesson's screenshot. Poll for the exact scene;
+        // never substitute a previous root or fabricate an XML file.
+        val deadline = SystemClock.uptimeMillis() + 12_000L
+        var root: AccessibilityNodeInfo? = null
+        while (SystemClock.uptimeMillis() < deadline) {
+            val candidate = inst.uiAutomation.rootInActiveWindow
+            if (candidate != null && sceneMatches(candidate, name)) {
+                root = candidate
+                break
+            }
+            SystemClock.sleep(150L)
+        }
+        assertNotNull("Foreground UI hierarchy did not reach screenshot scene $name", root)
         val base = inst.targetContext.getExternalFilesDir(null)
         assertNotNull("App-specific evidence directory unavailable", base)
         val directory = File(base!!, "reader-hierarchy")
@@ -100,6 +137,7 @@ class NativeU58ParameciumReaderPngTest {
             serializer.attribute(null, "source", "android-ui-automation-accessibility-root")
             serializer.attribute(null, "font-scale", suffix)
             serializer.attribute(null, "scene", name)
+            serializer.attribute(null, "scene-matched", "true")
             writeAccessibilityNode(serializer, root!!)
             serializer.endTag(null, "hierarchy")
             serializer.endDocument()
