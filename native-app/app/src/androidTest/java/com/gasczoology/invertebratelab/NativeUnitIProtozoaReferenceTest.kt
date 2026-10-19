@@ -81,6 +81,7 @@ class NativeUnitIProtozoaReferenceTest {
             rule.onNodeWithTag("u1-plasmodium-phase-"+phase).performClick()
             rule.onNodeWithTag("u1-plasmodium-focus-"+phase).assertExists()
             rule.onNodeWithTag("u1-plasmodium-panel-missing").assertDoesNotExist()
+            rule.onNodeWithTag("u1-plasmodium-focus-crop-pending").assertExists()
             rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
             val actual=rule.onNodeWithTag("u1-reference-expanded-bitmap")
                 .fetchSemanticsNode().boundsInRoot.height
