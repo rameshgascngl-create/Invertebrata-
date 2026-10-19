@@ -166,7 +166,7 @@ private fun ParameciumConceptPngFigure(figure: String, language: AppLanguage) {
         "oral" -> "unit1/paramecium_oral"
         "vacuole" -> "unit1/paramecium_vacuole"
         "overview" -> "unit1/paramecium_internal"
-        // Candidate fission plate is displayed with an explicit review-pending notice.
+        // User-approved fission illustration; independent scientific review remains pending.
         // Keep conjugation quarantined pending separate scientific verification.
         "fission" -> "unit1/a_detailed_scientific_educational_illustration_pos"
         "conjugation" -> null
@@ -176,7 +176,10 @@ private fun ParameciumConceptPngFigure(figure: String, language: AppLanguage) {
     var expanded by rememberSaveable(figure) { mutableStateOf(false) }
     Card(modifier = Modifier.fillMaxWidth().testTag("u58-concept-png-card-" + figure)) {
         Column(Modifier.fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(view(language, "Concept-specific PNG anatomy plate — scientific review pending",
+            Text(if (figure == "fission") view(language,
+                "Illustration approved for textbook use; independent scientific review pending",
+                "பாடநூல் பயன்பாட்டிற்குப் படம் ஒப்புதல் பெற்றது; தனித்த அறிவியல் மதிப்பாய்வு நிலுவையில்")
+                else view(language, "Concept-specific PNG anatomy plate — scientific review pending",
                 "கருத்துக்கேற்ற தனி PNG உடற்கூறுப் படம் — அறிவியல் மதிப்பாய்வு நிலுவையில்"),
                 style = MaterialTheme.typography.labelSmall)
             if (bitmap != null) {
