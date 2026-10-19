@@ -51,8 +51,8 @@ jobs:
               assert path in image,path
           assert 'ParameciumProcess.CONJUGATION to null' in image
           assert 'ParameciumProcess.BINARY_FISSION to null' in image
-          assert 'unit1/concepts/paramecium_conjugation' in reader
-          assert 'unit1/concepts/paramecium_binary_fission' in reader
+          assert 'unit1/paramecium_conjugation' in reader
+          assert 'unit1/paramecium_binary_fission' in reader
 
           assert 'u58-expand-concept-png-' in reader
           assert 'u58-expand-external-png' in reader
@@ -63,7 +63,12 @@ jobs:
           assert 'One image per concept' in reader or 'A PNG is displayed only where its subject matches' in reader
           print('U58_CONCEPT_ROUTING=PASS NO_UNRELATED_OVERVIEW=PASS')
           assert 'items(chapter.a5Questions, key = { it.id })' in (data/'InvertebrataApp.kt').read_text()
-          print('UNIT1_STATIC_PNGS=4 present, SIMULATOR=3 mapped, FISSION/CONJUGATION=correctly blocked')
+          for file in ('paramecium_binary_fission.png', 'paramecium_conjugation.png'):
+              payload=(root/file).read_bytes()
+              assert payload.startswith(bytes.fromhex('89504e470d0a1a0a')),file
+              width,height=struct.unpack('>II',payload[16:24])
+              assert width>=800 and height>=400,(file,width,height)
+          print('UNIT1_STATIC_PNGS=6 present, SIMULATOR=3 mapped, FISSION/CONJUGATION=reader PNGs present')
           PY
       - name: Kotlin and Android test compilation and all JVM checks
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
