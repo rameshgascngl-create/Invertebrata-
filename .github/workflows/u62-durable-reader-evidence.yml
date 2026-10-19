@@ -2,7 +2,7 @@ name: U62 durable Android screenshot and real hierarchy evidence — academic HO
 'on':
   push:
     branches:
-      - audit/u62-reader-ui-hierarchy-evidence-20261019
+      - audit/u62-persistent-android-xml-evidence-20261019
   workflow_dispatch:
 
 permissions:
