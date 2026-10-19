@@ -86,17 +86,17 @@ internal object FiveUnitRestorationLessons {
             s("organelles",
                 "Pseudopodia, flagella and cilia",
                 "போலிக்கால்கள், கசையிழைகள், குறுஇழைகள்",
-                "Amoeboid crawling involves actin-dependent cell-shape changes and transient pseudopodia. Flagellate swimming is driven by coordinated axonemal bending; ciliates coordinate numerous shorter cilia.",
-                "அமீபா இயக்கத்தில் ஆக்டின் சார்ந்த செல்வடிவ மாற்றங்களும் தற்காலிக போலிக்கால்களும் பங்கேற்கின்றன. கசையிழை அசைவில் ஆக்சோநீமின் வளைவும் குறுஇழையுயிரிகளில் பல குறுஇழைகளின் ஒத்திசைவும் செயல்படுகின்றன.",
-                "The traditional locomotory grouping can aid microscope recognition but does not provide reliable phylogenetic classification. Apicomplexan gliding is fundamentally different from ciliary swimming.",
-                "மரபு இயக்க அடிப்படையிலான பிரிவு நுண்ணோக்கி அடையாளத்திற்கு உதவலாம்; ஆனால் பரிணாம வகைப்பாட்டுக்கு போதாது. அபிகாம்ப்ளெக்சா வழுக்கிச் செல்லும் இயக்கம் குறுஇழை நீச்சலிலிருந்து மாறுபடுகிறது."),
+                "Locomotion is the movement of an organism from one place to another. Amoeba extends temporary cytoplasmic projections called pseudopodia. Actin-driven changes in the cytoplasm help the cell move. Flagellated protists swim by bending one or more long flagella. Paramecium swims by the coordinated beating of many short cilia.",
+                "ஓரிடத்திலிருந்து மற்றோர் இடத்திற்கு உயிரி நகர்வது இடப்பெயர்ச்சி எனப்படும். அமீபா சைட்டோபிளாசத்தின் தற்காலிக நீட்சிகளான போலிக்கால்களை உருவாக்குகிறது. ஆக்டின் புரதத்தின் செயலால் ஏற்படும் மாற்றங்கள் செல் நகர்வதற்கு உதவுகின்றன. கசையிழையுடைய புரோட்டிஸ்டுகள் ஒன்று அல்லது அதற்கு மேற்பட்ட நீண்ட கசையிழைகளின் வளைவு அசைவால் நீந்துகின்றன. பாரமீசியம் பல குறுஇழைகளின் ஒருங்கிணைந்த அசைவால் நீந்துகிறது.",
+                "Pseudopodia, flagella and cilia are locomotory structures, but their presence alone does not establish evolutionary relationships. Some apicomplexan parasites move by a specialized gliding mechanism instead of swimming with cilia.",
+                "போலிக்கால்கள், கசையிழைகள், குறுஇழைகள் ஆகியவை இயக்கத்திற்கு உதவும் அமைப்புகளாகும். ஆனால் இவற்றின் இருப்பை மட்டும் கொண்டு உயிரிகளின் பரிணாம உறவை முடிவு செய்ய முடியாது. சில அபிகாம்ப்ளெக்சா ஒட்டுண்ணிகள் குறுஇழைகளால் நீந்துவதற்குப் பதிலாகச் சிறப்பான வழுக்கிச் செல்லும் இயக்கத்தை மேற்கொள்கின்றன."),
             s("paramecium",
                 "Metachronal waves and avoiding response",
                 "மெட்டாக்ரோனல் அலைகளும் தடைத்தவிர்ப்பும்",
                 "Paramecium cilia beat in coordinated metachronal waves. Changes in membrane electrical activity alter beating direction and support transient reversal during an avoidance response.",
                 "பாரமீசியக் குறுஇழைகள் மெட்டாக்ரோனல் அலைகளாக ஒத்திசைந்து அசைகின்றன. செல் சவ்வின் மின்செயல்பாட்டில் ஏற்படும் மாற்றம் அசைவின் திசையை மாற்றி தடைத்தவிர்ப்பை ஏற்படுத்தலாம்.",
-                "In practical demonstrations, distinguish a visible swimming path from inferred ciliary beat mechanics. A still pencil plate can show direction arrows but cannot by itself establish movement rate.",
-                "செய்முறை ஆய்வில் நேரடியாகக் காணப்படும் நீச்சல்பாதையையும் விளக்கமாக ஊகிக்கப்படும் குறுஇழை இயக்க முறையையும் வேறுபடுத்த வேண்டும். நிலைப்படம் திசையைக் காட்டலாம்; இயக்க வேகத்தை நிரூபிக்காது.")
+                "During the avoiding response, Paramecium may briefly reverse its ciliary beat, swim backward, turn and then move forward in a new direction. This response helps the organism change its course when it encounters an obstacle or an unfavorable stimulus.",
+                "தடைத்தவிர்ப்பு நிகழ்வின் போது பாரமீசியத்தின் குறுஇழைகள் சிறிது நேரம் எதிர்த்திசையில் அசையலாம். இதனால் அது பின்னோக்கி நீந்தி, திரும்பி, புதிய திசையில் முன்னோக்கிச் செல்கிறது. தடையையோ சாதகமற்ற தூண்டுதலையோ சந்திக்கும்போது இயக்கத் திசையை மாற்ற இந்நிகழ்வு உதவுகிறது.")
         )),
         Chapter("u5-mollusca",b("Mollusca: body plan and classification","மெல்லுடலிகள்: உடற்கூறும் வகைப்பாடும்"),listOf(
             s("plan",
