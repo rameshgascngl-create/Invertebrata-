@@ -6,7 +6,7 @@ on a light neutral page. No Compose Canvas, AI-labelled organ leaders, or
 procedurally drawn specimen geometry. Pinning stops silent upstream changes.
 CC BY-SA attribution lives in SOURCE_PROVENANCE.txt and native captions.
 """
-import hashlib, io, json, time, urllib.request
+import hashlib, io, json, time, urllib.request, subprocess
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 import cairosvg
@@ -48,7 +48,16 @@ def download(filename, sha1):
 
 def decoded(filename, raw):
     if filename.lower().endswith(".svg"):
-        image_bytes = cairosvg.svg2png(bytestring=raw, output_width=1700)
+        try:
+            image_bytes = cairosvg.svg2png(bytestring=raw, output_width=1700)
+        except Exception as cairo_error:
+            # Published Inkscape SVG contains zero-length arrow markers which
+            # CairoSVG cannot render; librsvg preserves original source paths.
+            proc = subprocess.run(["rsvg-convert","-w","1700"], input=raw,
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if proc.returncode != 0:
+                raise RuntimeError("CairoSVG and librsvg could not render source") from cairo_error
+            image_bytes = proc.stdout
         return Image.open(io.BytesIO(image_bytes)).convert("RGBA")
     with Image.open(io.BytesIO(raw)) as original:
         if filename.endswith("Vacuole_In_Paramecium.gif"):
