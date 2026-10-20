@@ -149,7 +149,8 @@ internal object FiveUnitRestorationLessons {
                 "Pila has an open circulatory system: the heart pumps haemolymph into vessels and body spaces. In anatomical descriptions, distinguish the auricle receiving oxygenated haemolymph, the ventricle that pumps it, and the arteries supplying the tissues.",
                 "பைலாவில் திறந்த இரத்தச் சுற்றோட்ட அமைப்பு உள்ளது. இதயம் ஹீமோலிம்பை இரத்தநாளங்கள் மற்றும் உடலிடைவெளிகளுக்குள் செலுத்துகிறது. ஆக்சிஜன் நிறைந்த ஹீமோலிம்பைப் பெறும் ஆரிக்கிள், அதைச் செலுத்தும் வென்ட்ரிக்கிள், திசுக்களுக்குச் செல்லும் தமனிகள் ஆகியவற்றைத் தனித்தனியாகப் புரிந்துகொள்ள வேண்டும்.",
                 "The renal organ removes metabolic wastes and contributes to ionic and water balance. A dissection diagram should place the kidney and its opening separately from the digestive gland, heart and reproductive ducts rather than representing all visceral structures as one sac.",
-                "சிறுநீரக உறுப்பு வளர்சிதைமாற்றக் கழிவுகளை நீக்கி நீர், உப்புச் சமநிலைக்கும் உதவுகிறது. பிரித்தாய்வுப் படத்தில் சிறுநீரகம் மற்றும் அதன் திறப்பைச் செரிமானச் சுரப்பி, இதயம், இனப்பெருக்கக் குழாய்கள் ஆகியவற்றிலிருந்து வேறுபடுத்திக் காட்ட வேண்டும்."),        )),
+                "சிறுநீரக உறுப்பு வளர்சிதைமாற்றக் கழிவுகளை நீக்கி நீர், உப்புச் சமநிலைக்கும் உதவுகிறது. பிரித்தாய்வுப் படத்தில் சிறுநீரகம் மற்றும் அதன் திறப்பைச் செரிமானச் சுரப்பி, இதயம், இனப்பெருக்கக் குழாய்கள் ஆகியவற்றிலிருந்து வேறுபடுத்திக் காட்ட வேண்டும்."),
+        )),
         Chapter("u5-torsion",b("Gastropod torsion and asymmetry","வயிற்றுக்காலிகளில் முறுக்கமும் அசமச்சீரும்"),listOf(
             s("process",
                 "Developmental torsion",
@@ -233,7 +234,8 @@ internal object FiveUnitRestorationLessons {
                 "Asterias is typically dioecious. Eggs and sperm are released into seawater, where fertilisation and early embryonic development take place. A bilateral swimming bipinnaria develops; a brachiolaria with attachment structures may follow before settlement and metamorphosis.",
                 "அஸ்டீரியாஸில் பொதுவாக ஆண், பெண் தனித்தனியாக உள்ளன. முட்டைகளும் விந்தணுக்களும் கடல்நீரில் வெளியிடப்பட்டு வெளிக்கருவுறுதல் நடைபெறுகிறது. இருபக்கச் சமச்சீருள்ள நீந்தும் பைபின்னாரியா இளநிலையைத் தொடர்ந்து பற்றும் அமைப்புகள் கொண்ட பிராக்கியோலாரியா உருவாகி, பின்னர் நிலைபெற்று உருமாறலாம்.",
                 "Metamorphosis establishes the pentaradial juvenile organisation from the bilateral larval plan. Label bipinnaria ciliary bands and brachiolaria attachment arms correctly; a sea-urchin pluteus is not an interchangeable Asterias larva.",
-                "உருமாற்றத்தில் இருபக்கச் சமச்சீருள்ள இளநிலையிலிருந்து ஐந்தாரச் சமச்சீருள்ள இளம் நட்சத்திரமீன் உருவாகிறது. பைபின்னாரியாவின் குறுஇழைப் பட்டைகளையும் பிராக்கியோலாரியாவின் பற்றுக் கரங்களையும் சரியாகக் குறிக்க வேண்டும்; கடல்முள்ளியின் ப்ளூட்டியஸ் இளநிலையை அஸ்டீரியாஸுக்குப் பதிலாகப் பயன்படுத்தக் கூடாது."),        )),
+                "உருமாற்றத்தில் இருபக்கச் சமச்சீருள்ள இளநிலையிலிருந்து ஐந்தாரச் சமச்சீருள்ள இளம் நட்சத்திரமீன் உருவாகிறது. பைபின்னாரியாவின் குறுஇழைப் பட்டைகளையும் பிராக்கியோலாரியாவின் பற்றுக் கரங்களையும் சரியாகக் குறிக்க வேண்டும்; கடல்முள்ளியின் ப்ளூட்டியஸ் இளநிலையை அஸ்டீரியாஸுக்குப் பதிலாகப் பயன்படுத்தக் கூடாது."),
+        )),
         Chapter("u5-echino-larvae",b("Echinoderm larval forms","முள்தோலிகளின் இளம்பருவ வடிவங்கள்"),listOf(
             s("types",
                 "Bipinnaria, brachiolaria and other larvae",
@@ -319,7 +321,8 @@ internal object FiveUnitRestorationLessons {
                 "An ampulla contracts to displace fluid into its associated tube foot, assisting extension; muscles and connective tissues participate in attachment, traction and retraction. Tube-foot locomotion is coordinated across many podia and is not a single jet of water discharged from the madreporite.",
                 "ஆம்புல்லா சுருங்கும்போது அதனுடன் இணைந்த குழாய்க்காலுக்குள் திரவம் நகர்ந்து கால் நீள உதவுகிறது. தசைகளும் இணைப்புத் திசுக்களும் பற்றுதல், இழுத்தல், மீள்சுருக்கம் ஆகியவற்றில் பங்கேற்கின்றன. இயக்கம் பல குழாய்க்கால்களின் ஒருங்கிணைப்பால் நிகழ்கிறது; மேட்ரிபோரைட்டிலிருந்து ஒரே நீர்த்தாரை வெளியேறுவதால் அல்ல.",
                 "For a verified dissection plate, trace madreporite to stone canal, ring canal, radial canal, lateral canal and individual ampulla–podium pairs in their correct relative positions. Show associated valves or Tiedemann bodies only when the source actually supports their location.",
-                "சரிபார்க்கப்பட்ட பிரித்தாய்வுப் படத்தில் மேட்ரிபோரைட், கற்குழாய், வளையக்குழாய், ஆரக்குழாய், பக்கக்குழாய், ஒவ்வொரு ஆம்புல்லா–குழாய்க்கால் இணை ஆகியவற்றின் சரியான இடத் தொடர்பைத் தொடர்ச்சியாகக் காட்ட வேண்டும். வால்வுகள் அல்லது டீடெமன் உடல்களை ஆதாரப் படத்தில் உறுதி செய்தாலேயே சேர்க்க வேண்டும்."),        )),
+                "சரிபார்க்கப்பட்ட பிரித்தாய்வுப் படத்தில் மேட்ரிபோரைட், கற்குழாய், வளையக்குழாய், ஆரக்குழாய், பக்கக்குழாய், ஒவ்வொரு ஆம்புல்லா–குழாய்க்கால் இணை ஆகியவற்றின் சரியான இடத் தொடர்பைத் தொடர்ச்சியாகக் காட்ட வேண்டும். வால்வுகள் அல்லது டீடெமன் உடல்களை ஆதாரப் படத்தில் உறுதி செய்தாலேயே சேர்க்க வேண்டும்."),
+        )),
         Chapter("u5-cephalopods",b("Cephalopods: organization and adaptations","தலைக்காலிகள்: அமைப்பும் தகவமைப்புகளும்"),listOf(
             s("anatomy",
                 "Arms, siphon and mantle",
