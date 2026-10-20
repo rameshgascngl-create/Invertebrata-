@@ -108,6 +108,6 @@ class NativeU60ImagePlacementTest {
             rule.onNodeWithTag("r2-plate-bitmap-paramecium-"+plate).assertDoesNotExist()
         }
         shot("paramecium-missing-unique-plates")
-        rule.onNodeWithTag("restoration-a5-heading").assertExists()
+        // The A5 heading is a lazy-list item below the four reference slots.\n        // Scroll it into composition before asserting it, including at 200% Tamil.\n        rule.onNodeWithTag("native-chapter-u1-paramecium")\n            .performScrollToNode(hasTestTag("restoration-a5-heading"))\n        rule.onNodeWithTag("restoration-a5-heading").assertIsDisplayed()
     }
 }
