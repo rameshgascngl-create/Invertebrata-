@@ -103,7 +103,7 @@ class NativeU60ReplacementImageTest {
         }
         rule.onNodeWithTag("r14-jump-to-pencil-plate").performScrollTo().assertExists()
         rule.onNodeWithTag("r14-jump-to-pencil-plate").performClick()
-        rule.onNodeWithTag("r14-main-external-png").assertExists()
+        rule.onNodeWithTag("r14-external-png").assertExists()
         screenshot("paramecium-replacement-visible")
     }
 }
