@@ -55,6 +55,7 @@ import com.gasczoology.invertebratelab.data.UnitIVPenaeusTeaching
 import com.gasczoology.invertebratelab.data.UnitIVNereisLessons
 import com.gasczoology.invertebratelab.data.UnitIVSupplementaryLessons
 import com.gasczoology.invertebratelab.data.FiveUnitRestorationLessons
+import com.gasczoology.invertebratelab.data.UnitVExistingFigureCatalog
 import com.gasczoology.invertebratelab.data.StudyDestination
 import kotlinx.coroutines.launch
 
@@ -569,6 +570,18 @@ private fun ChapterScreen(
                 item(key = "r2-type-study-gallery") {
                     val study = NativeCurriculumManifest.typeStudies.single { it.lessonId == chapter.id }
                     RequiredTypeStudyPlates(study, language)
+                }
+            }
+            // Unit V original source images are visible in the relevant lesson,
+            // once each, as individually titled and explicitly unverified rasters.
+            // Lazy items prevent decoding all sixteen images at once.
+            if (chapter.id == "u5-pila" || chapter.id == "u5-asterias") {
+                val existingFigures = UnitVExistingFigureCatalog.forChapter(chapter.id)
+                item(key = "u5-existing-figures-header") {
+                    UnitVExistingFigureHeader(language, existingFigures.size)
+                }
+                items(existingFigures, key = { "u5-candidate-" + it.assetStem }) { figure ->
+                    UnitVExistingFigureCard(figure, language)
                 }
             }
             if (chapter.id == "u1-proto-parasites") {
