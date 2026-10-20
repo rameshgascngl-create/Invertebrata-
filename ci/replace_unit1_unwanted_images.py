@@ -21,7 +21,7 @@ RECORDS = [
   ("paramecium_internal", "Paramecium sp+Nr.svg", "b693f7955103ae3be6801a63ce2f426c8ddb4ce7", "Karlis Kalviskis, CC BY-SA 4.0", "PARAMECIUM | CELL ORGANISATION", "unit1/paramecium_internal.png"),
   ("paramecium_vacuole", "Contractile Vacuole In Paramecium.gif", "531bf47b511ad7cf4437c32ab0ee370982f95073", "Katyddd, CC BY-SA 4.0", "PARAMECIUM | WATER-BALANCE MODEL", "unit1/paramecium_vacuole.png"),
   ("trypanosoma", "Trypanosoma African life cycle CDC.jpg", "6d679576bd38e7c7f9e61e3d605af9ced5ea0e31", "CDC DPDx, US public domain", "TRYPANOSOMA BRUCEI | HOST-VECTOR CYCLE", "unit1/references/trypanosoma.png"),
-  ("leishmania", "Leishmania LifeCycle.gif", "dc86a4f4f56c8a7b6df3db83ec8aaad3a5999184", "CDC DPDx, US public domain", "LEISHMANIA | AMASTIGOTE & PROMASTIGOTE", "unit1/references/leishmania.png"),
+  ("leishmania", "Leishmaniasis life cycle diagram en.svg", "a2f010b21e69a4a100029e8709d981ab40c901cd", "LadyofHats, author-released public domain", "LEISHMANIA | AMASTIGOTE & PROMASTIGOTE", "unit1/references/leishmania.png"),
 ]
 def commons_url(filename):
     from urllib.parse import quote
@@ -67,8 +67,8 @@ def decoded(filename, raw):
 def build(img, title):
     # Editorial framing ONLY. Draw no biology or inferred anatomy.
     page = Image.new("RGB",(1700,1700),(252,251,248))
-    rgba = img.copy()
-    rgba.thumbnail((1570,1440),Image.Resampling.LANCZOS)
+    scale=min(1570/img.width,1440/img.height)
+    rgba=img.resize((max(1,round(img.width*scale)),max(1,round(img.height*scale))),Image.Resampling.LANCZOS)
     matte = Image.new("RGBA",rgba.size,"white")
     matte.alpha_composite(rgba)
     page.paste(matte.convert("RGB"),((1700-rgba.width)//2,(1640-rgba.height)//2+40))
