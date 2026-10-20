@@ -198,8 +198,8 @@ internal fun ExpandedProtozoaReferenceImage(
         ) {
             Column(
                 modifier=Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()
-                    .padding(horizontal=12.dp, vertical=6.dp),
-                verticalArrangement=Arrangement.spacedBy(7.dp),
+                    .padding(horizontal=if(largeFont) 8.dp else 12.dp, vertical=if(largeFont) 3.dp else 6.dp),
+                verticalArrangement=Arrangement.spacedBy(if(largeFont) 3.dp else 7.dp),
             ) {
                 if(!imagePriority) Text(
                     if(plasmodium) {
