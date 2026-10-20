@@ -170,6 +170,42 @@ internal fun RequiredTypeStudyPlates(
                                 .clickable(onClickLabel = if (tamil) "முழுத்திரையில் பெரிதாக்கு" else "Open full-size image") { expanded = true }
                                 .testTag("r2-plate-bitmap-${study.organismId}-${plateId}"),
                         )
+                        if (study.organismId == "asterias" && plateId == "external") {
+                            Text(
+                                if (tamil)
+                                    "ஆதார வரைபடம்: Asterias forbesi. படம் 1 — எதிர்வாய்ப்புறம் (மேற்புறம்); படம் 2 — வாய்ப்புறம் (கீழ்ப்புறம்). இது 1904 ஆம் ஆண்டின் அசல் அறிவியல் வரைபடத்தின் பகுதியாகும்."
+                                else
+                                    "Documented Asterias forbesi plate: figure 1 = aboral (dorsal) view; figure 2 = oral (ventral) view. Cropped from the original 1904 zoological engraving.",
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.testTag("asterias-external-species-provenance"),
+                            )
+                            Text(
+                                "Hubert Lyman Clark (1904) · University of Washington Freshwater and Marine Image Bank · Public domain",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                            Text(
+                                "https://commons.wikimedia.org/wiki/File:FMIB_41097_Asterias_forbesi_(small_specimen)_Arboral_view_(1),_Oral_view_(2);_Asterias_vulgaris_(small_specimen)_Arboral_view_(3),_Oral.jpeg",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
+                        if (study.organismId == "asterias" && plateId == "water-vascular-system") {
+                            Text(
+                                if (tamil)
+                                    "1903 ஆம் ஆண்டின் கடல் நட்சத்திர நீர்க்குழாய் அமைப்பின் பகுதி விளக்கப்படம்; அஸ்டீரியாஸ் ஐந்து கரங்களின் முழு உடற்கூறுப் படம் அல்ல. a — மேட்ரிபோரைட்; b — கற்குழாய்; c — வளையக்குழாய்; d — ஆரக்குழாய்கள்; e — ஆம்புல்லாக்கள்; f — அம்புலாக்ரல் பகுதி."
+                                else
+                                    "Historic PARTIAL starfish water-vascular schematic (not a complete five-arm Asterias dissection): a madreporite; b stone canal; c ring canal; d radial canals; e ampullae; f ambulacra.",
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.testTag("asterias-wvs-legend"),
+                            )
+                            Text(
+                                "Augusta Foote Arnold (1903) · University of Washington Freshwater and Marine Image Bank · Public domain",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                            Text(
+                                "https://commons.wikimedia.org/wiki/File:FMIB_52615_Diagram_of_water-vascular_system_of_a_starfish_;.jpeg",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
                         OutlinedButton(
                             onClick = { expanded = true },
                             modifier = Modifier.heightIn(min = 48.dp)
