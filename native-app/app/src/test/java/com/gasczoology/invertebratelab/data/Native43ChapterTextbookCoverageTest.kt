@@ -91,7 +91,7 @@ class Native43ChapterTextbookCoverageTest {
         }
         assertTrue(UnitIVNereisLessons.sections.size >= 14)
         assertTrue(UnitIVPenaeusTeaching.sections.size >= 12)
-        assertTrue(UnitIVEarthwormLessons.sections.size >= 3)
+        assertTrue(UnitIVEarthwormLessons.lesson.sections.size >= 3)
         UnitIVNereisLessons.sections.forEach { section ->
             assertTrue(section.paragraphs.all {
                 it.english.length > 75 && it.tamil.length > 50
