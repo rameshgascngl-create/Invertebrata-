@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install SVG renderer supporting published source markers
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq librsvg2-bin
       - name: Install raster image transformation dependencies
         run: python -m pip install --disable-pip-version-check Pillow==11.3.0 CairoSVG==2.7.1
       - name: Replace six assets with six independently attributed upstream illustrations
