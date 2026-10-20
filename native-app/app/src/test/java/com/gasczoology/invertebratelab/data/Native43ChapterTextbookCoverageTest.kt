@@ -200,6 +200,151 @@ class Native43ChapterTextbookCoverageTest {
         assertTrue(contemporary.contains("eight, not eight plus Aplacophora"))
     }
 
+
+    /**
+     * The 43 A5 chapters plus the distinct Earthworm slot must contain their
+     * specific biological concepts, not just enough characters to pass a
+     * section-count or generic bilingual-prose threshold. This checks source
+     * content and Tamil-script presence; expert editorial approval is separate.
+     */
+    @Test fun all44TeachingSlotsRetainSyllabusSpecificBiologyInBilingualText() {
+        val teaching = linkedMapOf<String, Pair<String, String>>()
+        fun register(id: String, text: List<BilingualText>) {
+            assertFalse("Duplicate native teaching source: " + id, teaching.containsKey(id))
+            teaching[id] = text.joinToString(" ") { it.english } to
+                text.joinToString(" ") { it.tamil }
+        }
+        FiveUnitRestorationLessons.chapters.forEach { chapter ->
+            register(chapter.chapterId, chapter.sections.flatMap { it.paragraphs })
+        }
+        UnitIILessons.chapters.forEach { (id, chapter) ->
+            register(id, chapter.sections.flatMap { it.paragraphs })
+        }
+        UnitIIILessons.chapters.forEach { (id, chapter) ->
+            register(id, chapter.sections.flatMap { it.paragraphs })
+        }
+        UnitIVSupplementaryLessons.chapters.forEach { chapter ->
+            register(chapter.chapterId, chapter.sections.flatMap { it.paragraphs })
+        }
+        register("u1-paramecium", NativeLessonDrafts.paramecium.sections.flatMap { it.paragraphs })
+        register("u4-nereis", UnitIVNereisLessons.sections.flatMap { it.paragraphs })
+        register("u4-penaeus", UnitIVPenaeusTeaching.sections.flatMap { it.paragraphs })
+        register(NativeCurriculumManifest.EARTHWORM_LESSON_ID,
+            UnitIVEarthwormLessons.lesson.sections.flatMap { it.paragraphs })
+        // Parasite chapter uses independent organism-specific native UI models.
+        // Examine both files; no A5 answer is used as a teaching-text surrogate.
+        val uiRoot = "src/main/java/com/gasczoology/invertebratelab/ui/"
+        val parasiteSource = listOf("UnitIFlagellateTypeStudies.kt",
+            "UnitIEntamoebaMorphology.kt")
+            .joinToString(" ") { File(uiRoot + it).readText(Charsets.UTF_8) }
+        teaching["u1-proto-parasites"] = parasiteSource to parasiteSource
+
+        val topics = linkedMapOf(
+            "u1-intro" to listOf("invertebrates", "coelom", "taxonomic"),
+            "u1-protozoa" to listOf("Sarcodina", "Mastigophora", "Ciliata", "Sporozoa"),
+            "u1-paramecium" to listOf("conjugation", "binary fission", "contractile vacuole"),
+            "u1-proto-parasites" to listOf("Trypanosoma", "Leishmania", "Entamoeba"),
+            "u1-nutrition" to listOf("Holozoic", "Osmotrophic", "phototrophic"),
+            "u1-host-parasite" to listOf("Entamoeba", "Plasmodium", "Anopheles"),
+            "u1-locomotion" to listOf("pseudopodia", "axoneme", "metachronal"),
+            "u2-porifera" to listOf("Calcarea", "Demospongiae", "Hexactinellida"),
+            "u2-sycon" to listOf("prosopyle", "apopyle", "amphiblastula"),
+            "u2-canals" to listOf("asconoid", "syconoid", "leuconoid"),
+            "u2-reproduction" to listOf("budding", "gemmules", "amphiblastula"),
+            "u2-cnidaria" to listOf("Hydrozoa", "Scyphozoa", "Anthozoa"),
+            "u2-obelia" to listOf("hydranth", "gonangium", "planula"),
+            "u2-corals" to listOf("fringing", "barrier", "atoll"),
+            "u2-coral-economics" to listOf("fisheries", "tourism", "coastal"),
+            "u2-polymorphism" to listOf("Physalia", "medusae"),
+            "u3-platy" to listOf("Turbellaria", "Monogenea", "Trematoda", "Cestoda"),
+            "u3-fasciola" to listOf("miracidium", "metacercaria", "vitelline"),
+            "u3-platy-adapt" to listOf("tegument", "attachment", "eggs"),
+            "u3-aschel" to listOf("Aschelminthes", "Nematoda", "pseudocoel"),
+            "u3-ascaris" to listOf("embryonated", "lungs", "cloaca"),
+            "u3-nematode-parasites" to listOf("Wuchereria", "Enterobius", "Ancylostoma"),
+            "u3-nematode-adapt" to listOf("cuticle", "eggs", "larvae"),
+            "u4-annelida" to listOf("metameric", "prostomium", "chaetae"),
+            "u4-nereis" to listOf("parapodia", "prostomium", "trochophore"),
+            "u4-metamerism" to listOf("segmentation", "septa", "coelom"),
+            "u4-modes-life" to listOf("marine", "soil", "leeches"),
+            "u4-arthropoda" to listOf("Arachnida", "Chilopoda", "Malacostraca"),
+            "u4-penaeus" to listOf("antennules", "pleopods", "nauplius", "protozoea", "mysis"),
+            "u4-peripatus" to listOf("onychophora", "lobopods", "slime"),
+            "u4-crustacean-larvae" to listOf("protozoea", "mysis", "megalopa"),
+            "u4-earthworm-type-study" to listOf("typhlosole", "nephridia", "setae"),
+            "u5-mollusca" to listOf("Monoplacophora", "Solenogastres", "Caudofoveata"),
+            "u5-pila" to listOf("osphradium", "radula", "torsion"),
+            "u5-torsion" to listOf("coiling", "180-degree"),
+            "u5-pearl" to listOf("nacre", "mantle", "aragonite"),
+            "u5-echinodermata" to listOf("Crinoidea", "Asteroidea", "Holothuroidea"),
+            "u5-asterias" to listOf("madreporite", "pedicellariae", "bipinnaria"),
+            "u5-echino-larvae" to listOf("brachiolaria", "auricularia", "pluteus"),
+            "u5-echino-affinities" to listOf("Ambulacraria", "hemichordates"),
+            "u5-fossils" to listOf("trilobite", "ammonoid", "brachiopod"),
+            "u5-foot" to listOf("Pila", "Unio", "cephalopod"),
+            "u5-wvs" to listOf("ampulla", "radial", "madreporite"),
+            "u5-cephalopods" to listOf("branchial", "spermatophores", "funnel"),
+        )
+        val authoritative = NativeCurriculumManifest.lessonSlots.map { it.id }.toSet()
+        assertEquals(44, authoritative.size)
+        assertEquals(authoritative, teaching.keys.toSet())
+        assertEquals(authoritative, topics.keys.toSet())
+        for ((id, keyTerms) in topics) {
+            val (english, tamil) = teaching.getValue(id)
+            assertTrue("No substantial English explanatory text: " + id, english.length >= 250)
+            assertTrue("Missing substantial Tamil textbook text: " + id,
+                tamil.count { it in '\u0B80'..'\u0BFF' } >= 95)
+            for (keyword in keyTerms) {
+                assertTrue("Missing subject-specific explanation in " + id +
+                    ": " + keyword, english.contains(keyword, ignoreCase = true))
+            }
+        }
+        assertTrue(NativeCurriculumManifest.lessonSlots.none {
+            it.status == AcademicWorkStatus.ACCEPTED
+        })
+    }
+
+    @Test fun mandatoryAnatomicalPlatePathsAreUniqueAndDoNotReuseBitmapBytes() {
+        val studies = NativeCurriculumManifest.typeStudies
+        val stems = studies.flatMap { study ->
+            study.requiredPlateIds.map { plate ->
+                if (study.organismId == "paramecium")
+                    "unit1/replacements/paramecium_" + plate
+                else "type_studies/" + study.organismId + "/" + plate
+            }
+        }
+        assertEquals(35, stems.size)
+        assertEquals(35, stems.toSet().size)
+        val seen = mutableMapOf<String, String>()
+        for (stem in stems) {
+            val matching = listOf(".png", ".webp")
+                .map { File("src/main/assets/" + stem + it) }
+                .filter { it.isFile }
+            assertTrue("Two incompatible raster formats compete for " + stem,
+                matching.size <= 1)
+            val file = matching.firstOrNull() ?: continue
+            val digest = java.security.MessageDigest.getInstance("SHA-256")
+                .digest(file.readBytes())
+                .joinToString("") { "%02x".format(it) }
+            val prior = seen.putIfAbsent(digest, stem)
+            assertEquals("Repeated anatomical bitmap used in distinct mandatory slots: " +
+                stem + " and " + prior, null, prior)
+        }
+        val ui = "src/main/java/com/gasczoology/invertebratelab/ui/"
+        val app = File(ui + "InvertebrataApp.kt").readText(Charsets.UTF_8)
+        val u2 = File(ui + "UnitIITeachingChapter.kt").readText(Charsets.UTF_8)
+        val u3 = File(ui + "UnitIIITeachingChapter.kt").readText(Charsets.UTF_8)
+        val earthworm = File(ui + "UnitIVEarthwormReader.kt").readText(Charsets.UTF_8)
+        val required = File(ui + "RequiredTypeStudyPlates.kt").readText(Charsets.UTF_8)
+        assertTrue(app.contains("RequiredTypeStudyPlates(study, language)"))
+        assertTrue(u2.contains("RequiredTypeStudyPlates(study, language)"))
+        assertTrue(u3.contains("UnitIIIPlateGallery(chapter.id, language, narrator)"))
+        assertFalse(u3.contains("RequiredTypeStudyPlates(study, language)"))
+        assertTrue(earthworm.contains("type_studies/earthworm/"))
+        assertTrue(required.contains("unit1/replacements/paramecium_"))
+        // Source-path checks are NOT approval of the depicted anatomy or Tamil.
+    }
+
     @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
         val paramecium = NativeLessonDrafts.paramecium
         assertEquals("u1-paramecium", paramecium.lessonId)
