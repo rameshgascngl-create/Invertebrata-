@@ -99,8 +99,30 @@ def audit(repo_root: Path) -> list[dict]:
     rows = []
     for organism, (unit, plates) in REQUIRED_TYPE_STUDIES.items():
         for plate in plates:
-            stem = f"type_studies/{organism}/{plate}"
+            # The textbook renderer deliberately retired the photographed
+            # Paramecium master and repeated crops. Audit the actual NEW UI
+            # slot, not the stale type_studies/ photograph, or false passes occur.
+            stem = (f"unit1/replacements/paramecium_{plate}"
+                    if organism == "paramecium"
+                    else f"type_studies/{organism}/{plate}")
             rows.append(inspect(assets,unit,organism,plate,stem,True))
+    # Independent parasite anatomy art and Paramecium processes are separate
+    # from the nine compulsory type-study sets and may not be borrowed from
+    # one another or from a historic source illustration.
+    replacement_stems = [
+        "unit1/replacements/trypanosoma_morphology",
+        "unit1/replacements/leishmania_morphology",
+        "unit1/concepts/paramecium_oral_apparatus",
+        "unit1/concepts/paramecium_osmoregulation",
+        "unit1/concepts/paramecium_nuclear_anatomy",
+        "unit1/concepts/paramecium_nutrition",
+        "unit1/concepts/paramecium_ciliary_locomotion",
+        "unit1/concepts/paramecium_binary_fission",
+        "unit1/concepts/paramecium_conjugation",
+    ]
+    for stem in replacement_stems:
+        rows.append(inspect(assets,1,"unit1-replacement",
+                            stem.rsplit("/", 1)[1],stem,True))
     for name in NEREIS:
         rows.append(inspect(assets,4,"nereis",name.split("/")[-1],
                             name.rsplit(".",1)[0],True))
@@ -126,7 +148,7 @@ def audit(repo_root: Path) -> list[dict]:
                          required=False, state="PRESENT_UNVERIFIED" if ok else detail,
                          file=name if path.is_file() else "",
                          sha256=detail if ok else "", academic_approved=False))
-    assert len(rows) == 70, len(rows) # 35 type studies + 8 Nereis + 15 extras + 12 Pila review
+    assert len(rows) == 79, len(rows) # 35 type studies + 9 distinct Unit I replacements + 8 Nereis + 15 extras + 12 Pila review
     assert len({r["required_stem"] for r in rows}) == len(rows)
     return rows
 
