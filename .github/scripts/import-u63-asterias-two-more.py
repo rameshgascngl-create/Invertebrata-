@@ -23,42 +23,49 @@ origins={
 }
 
 def retrieve(key):
+    from time import sleep
     link,sha1,dims=origins[key]
-    from urllib.parse import urlsplit
     filename=link.rsplit("/",1)[-1]
-    stripped=link.replace("https://","").replace("http://","")
+    stripped=link.replace("https://","")
     candidates=[
       ("original",link),
       ("commons_redirect","https://commons.wikimedia.org/wiki/Special:Redirect/file/"+filename),
       ("image_proxy","https://wsrv.nl/?url="+quote(link,safe="")+"&output=jpg&q=100"),
-      ("image_proxy_noscheme","https://wsrv.nl/?url="+quote(stripped,safe="")+"&output=jpg&q=100"),
       ("weserv_proxy","https://images.weserv.nl/?url="+quote(stripped,safe="")+"&output=jpg&q=100"),
-      ("allorigins_raw","https://api.allorigins.win/raw?url="+quote(link,safe="")),
     ]
-    issues=[]
-    for method,url in candidates:
-        try:
-            request=Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; INVERTEBRATA public-domain zoology asset importer)", "Accept":"image/jpeg,image/*"})
-            with urlopen(request,timeout=45) as f:
-                data=f.read(8000000)
-            digest=hashlib.sha1(data).hexdigest()
-            if method in ("original","commons_redirect","allorigins_raw") and digest!=sha1:
-                raise ValueError("Unexpected source digest "+digest+" expected "+sha1)
-            image=Image.open(BytesIO(data));image.load()
-            assert image.size==dims,(key,image.size)
-            print(key,method,"source-sha1",digest)
-            return ImageOps.exif_transpose(image).convert("RGB"),method,digest
-        except Exception as error:
-            issues.append(method+":"+str(error)[:150])
-    raise RuntimeError(key+" failed: "+str(issues))
+    problems=[]
+    # Wikimedia sometimes limits the third successive original fetch.
+    for round_no in range(1,5):
+        if round_no>1:
+            wait=12*round_no
+            print("SOURCE_COOLDOWN",key,"seconds",wait,flush=True)
+            sleep(wait)
+        for method,url in candidates:
+            try:
+                request=Request(url,headers={
+                    "User-Agent":"Mozilla/5.0 (compatible; INVERTEBRATA public-domain zoology asset importer)",
+                    "Accept":"image/jpeg,image/*"
+                })
+                with urlopen(request,timeout=35) as f:
+                    data=f.read(8000000)
+                digest=hashlib.sha1(data).hexdigest()
+                if method in ("original","commons_redirect") and digest!=sha1:
+                    raise ValueError("Unexpected source digest "+digest+" expected "+sha1)
+                image=Image.open(BytesIO(data));image.load()
+                assert image.size==dims,(key,image.size)
+                print(key,method,"source-sha1",digest,flush=True)
+                return ImageOps.exif_transpose(image).convert("RGB"),method,digest
+            except Exception as error:
+                problems.append(method+": "+str(error)[:120])
+    raise RuntimeError(key+" still unavailable: "+str(problems[-10:]))
 
 anatomy,anmethod,ansha=retrieve("internal")
 # Exact Hans Hillewaert published line drawing with labels intentionally removed.
 # Keep relative anatomical placements unchanged and draw NO speculative labels.
 anatomy.resize((1728,1512),Image.Resampling.LANCZOS).save(root/"internal.png",optimize=True)
 
-b1,m1,h1=retrieve("bipinnaria")
 b2,m2,h2=retrieve("brachiolaria")
+b1,m1,h1=retrieve("bipinnaria")
 # Place genuinely DIFFERENT larval stages next to each other, preserving aspect
 # ratio and original pixels. The English/Tamil stage names appear in the app's
 # external text caption, not baked onto biologically sensitive drawing pixels.
