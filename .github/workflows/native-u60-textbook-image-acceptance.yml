@@ -62,6 +62,29 @@ jobs:
           PY
       - name: Compile Kotlin, instrumentation classes and run complete local JVM tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Surface the exact failing chapter and scientific term
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root=Path("native-app/app/build/test-results/testDebugUnitTest")
+          for path in sorted(root.rglob("TEST-*.xml")):
+              for case in ET.parse(path).getroot().iter("testcase"):
+                  for tag in ("failure","error"):
+                      failure=case.find(tag)
+                      if failure is not None:
+                          print("FAILED TEST:",case.get("classname"),case.get("name"))
+                          print("ASSERTION:",failure.get("message",""))
+                          print("TRACE:",(failure.text or "")[:1200])
+          PY
+      - name: Preserve exact-commit JVM assertion evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u60-44-slot-jvm-assertion-xml
+          path: native-app/app/build/test-results/testDebugUnitTest/
+          if-no-files-found: warn
       - name: Assemble unapproved debug QA APK
         run: gradle -p native-app :app:assembleDebug --stacktrace
       - name: Preserve exact-commit debug APK
