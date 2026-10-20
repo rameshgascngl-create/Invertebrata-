@@ -32,7 +32,14 @@ internal fun ParameciumRasterAtlas(
         "vacuole" -> listOf("contractile-vacuole","food-vacuole")
         else -> listOf("macronucleus","micronucleus","trichocysts","food-vacuole")
     }
-    val bitmap=rememberRequiredRasterBitmap("unit1/paramecium_"+panel)
+    val approvedSlot = when (panel) {
+        "external" -> "external-cilia"
+        "oral" -> "oral-apparatus"
+        "vacuole" -> "contractile-vacuoles"
+        else -> "internal-anatomy"
+    }
+    // Do not fall back to crops of the rejected photographed pencil plate.
+    val bitmap=rememberRequiredRasterBitmap("unit1/replacements/paramecium_"+approvedSlot, pngOnly=true)
     var zoom by rememberSaveable(panel){mutableFloatStateOf(1f)}
     var dx by rememberSaveable(panel){mutableFloatStateOf(0f)}
     var dy by rememberSaveable(panel){mutableFloatStateOf(0f)}
@@ -41,14 +48,14 @@ internal fun ParameciumRasterAtlas(
         else "Vacuoles: distinct physiological systems",
         modifier=Modifier.testTag("r11-vacuole-heading"))
     if(bitmap==null) {
-        Text(if(tamil) "பென்சில் வரைபடக் கோப்பு இல்லை; மாற்று வரைபடம் காட்டப்படாது."
-             else "Pencil raster master missing; no schematic fallback.",
+        Text(if(tamil) "பழைய புகைப்படப் படம் நீக்கப்பட்டது; இந்த உறுப்பிற்கான தனிப் புதிய PNG படம் சரிபார்க்கப்படவில்லை."
+             else "Old photographed drawing retired; the distinct anatomical replacement PNG is pending.",
             color=MaterialTheme.colorScheme.error,
             modifier=Modifier.testTag("u1-raster-asset-missing"))
     } else {
         Image(bitmap=bitmap,
-            contentDescription=if(tamil) "பாரமீசியம் கைவரைவு: நேரடித் தொடுதல் மதிப்பாய்வில் உள்ளது"
-                 else "Original hand-drawn Paramecium image; direct organ taps await scientific review",
+            contentDescription=if(tamil) "பாரமீசியம் உடற்கூறு மாற்றுப் படம்: உறுப்புத் தொடுதல் மதிப்பாய்வு நிலுவையில்"
+                 else "Paramecium anatomical replacement plate; organ hotspots require review",
             contentScale=ContentScale.Fit,
             modifier=Modifier.fillMaxWidth().height(282.dp)
                 .graphicsLayer {
@@ -70,8 +77,8 @@ internal fun ParameciumRasterAtlas(
             Text(if(tamil) "பெரிதாக்கலை மீட்டமை" else "Reset zoom")
         }
     }
-    Text(if(tamil) "மூலம்: Rijan Bhandari (2014), அசல் கைவரைவு, CC BY-SA 3.0. அறிவியல் ஆய்வு நிலுவையில்."
-         else "Rijan Bhandari (2014), original photographed pencil drawing, CC BY-SA 3.0. Scientific review pending.",
+    Text(if(tamil) "பழைய புகைப்படக் கையோவியம் மாற்றுப் படமாகப் பயன்படுத்தப்படாது. தனிப் PNG படம் மற்றும் அதன் ஆதாரப் பதிவு நிலுவையில் உள்ளன."
+         else "The archived photographed source is not the anatomical replacement. A separately reviewed PNG and provenance record are required.",
         style=MaterialTheme.typography.bodySmall,
         modifier=Modifier.testTag("u1-raster-attribution"))
     Text(if(tamil) "உறுப்பைத் தேர்ந்தெடுக்கவும்; உறுதி செய்யப்படாத படத் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
