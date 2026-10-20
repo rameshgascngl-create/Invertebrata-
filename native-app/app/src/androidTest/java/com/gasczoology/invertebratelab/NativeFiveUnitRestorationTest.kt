@@ -93,26 +93,10 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-pila"
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-pila")
-        find(ch, "pila-reference-review-warning")
-        // The debug-only 12-panel archive must be extracted and display distinct images.
-        // Verify all twelve decoded bitmaps, not only the first and last.
-        for (file in listOf(
-            "01_shell_ventral_REVIEW",
-            "02_operculum_views_REVIEW",
-            "03_shell_dorsal_REVIEW",
-            "04_animal_front_REVIEW",
-            "05_nervous_system_REVIEW",
-            "06_buccal_mass_REVIEW",
-            "07_digestive_system_REVIEW",
-            "08_respiratory_system_REVIEW",
-            "09_circulatory_system_REVIEW",
-            "10_male_reproductive_REVIEW",
-            "11_female_reproductive_REVIEW",
-            "12_excretory_system_REVIEW"
-        )) {
-            find(ch, "pila-review-image-" + file)
-            rule.onNodeWithTag("pila-review-missing-" + file).assertDoesNotExist()
-        }
+        // Rejected/unverified Pila editorial archive plates are no longer
+        // inserted ahead of anatomy slots in the student textbook.
+        rule.onNodeWithTag("pila-reference-review-warning").assertDoesNotExist()
+        rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
         for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
             find(ch, "r2-plate-slot-pila-" + plate)
             rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
@@ -128,31 +112,10 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-asterias"
         enter(5, ch, false)
         find(ch, "r2-type-study-gallery-asterias")
-        find(ch, "asterias-review-warning")
-        // The four Asterias candidates must be bundled and actually decode on Android.
-        for (file in listOf("external_REVIEW", "water_vascular_REVIEW", "digestive_REVIEW", "nervous_REVIEW")) {
-            find(ch, "asterias-review-image-" + file)
-            rule.onNodeWithTag("asterias-review-missing-" + file).assertDoesNotExist()
-        }
-        // The uploaded, source-preserving references must decode as separate bitmaps.
-        // These do not satisfy mandatory textbook masters.
-        for (file in listOf(
-            "digestive_reference_ONLY",
-            "water_vascular_reference_ONLY",
-            "body_wall_reference_ONLY"
-        )) {
-            find(ch, "asterias-review-image-" + file)
-            rule.onNodeWithTag("asterias-review-missing-" + file).assertDoesNotExist()
-        }
-        find(ch, "asterias-review-image-water_vascular_reference_ONLY")
-        rule.onNodeWithTag("asterias-review-image-water_vascular_reference_ONLY").performClick()
-        rule.onNodeWithTag("r2-fullscreen-bitmap").assertExists()
-        rule.onNodeWithTag("r2-zoom-in").performClick()
-        rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
-        capture("unit5-asterias-water-vascular-reference-zoom")
-        rule.onNodeWithTag("r2-zoom-reset").performClick()
-        rule.onNodeWithTag("r6-zoom-level").assertTextContains("100%", substring = true)
-        rule.onNodeWithTag("r2-fullscreen-close").performClick()
+        rule.onNodeWithTag("asterias-review-warning").assertDoesNotExist()
+        rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
+        // Archived images can still be reviewed outside the student lesson;
+        // the mandatory water-vascular master remains a release blocker.
         find(ch, "r2-plate-missing-asterias-water-vascular-system")
         capture("unit5-asterias-english-missing-plate")
         find(ch, "restored-section-water-vascular")
