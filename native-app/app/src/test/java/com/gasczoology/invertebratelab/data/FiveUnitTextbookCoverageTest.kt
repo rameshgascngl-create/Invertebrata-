@@ -54,8 +54,8 @@ class FiveUnitTextbookCoverageTest {
             assertTrue(lesson.heading.tamil.isNotBlank())
             assertEquals(lesson.sections.size, lesson.sections.map { it.id }.toSet().size)
             for (section in lesson.sections) {
-                assertTrue(section.heading.english.isNotBlank())
-                assertTrue(section.heading.tamil.isNotBlank())
+                assertTrue(section.title.english.isNotBlank())
+                assertTrue(section.title.tamil.isNotBlank())
                 assertTrue(section.paragraphs.size >= 2)
                 assertTrue(section.paragraphs.all {
                     it.english.isNotBlank() && it.tamil.isNotBlank()
