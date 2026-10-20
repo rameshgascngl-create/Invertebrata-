@@ -246,7 +246,14 @@ internal object FiveUnitRestorationLessons {
                 "The familiar extant classes are Asteroidea, Ophiuroidea, Echinoidea, Holothuroidea and Crinoidea. Compare the arms, ambulacral surfaces, body wall and feeding specializations in each.",
                 "வாழும் முக்கிய வகுப்புகள் அஸ்டெராய்டியா, ஒஃபியூராய்டியா, எக்கினாய்டியா, ஹோலோதூராய்டியா, கிரினாய்டியா ஆகும். கரங்கள், அம்புலாக்ரல் பரப்புகள், உடற்சுவர், உணவெடுக்கும் சிறப்பியல்புகள் ஆகியவற்றை ஒப்பிட வேண்டும்.",
                 "Pedicellariae and dermal branchiae occur in some groups but are not universal echinoderm characters. They should be labelled only in the correct organism and view.",
-                "பெடிசெல்லேரியா, தோல்செவுள்கள் சில குழுக்களில் மட்டுமே காணப்படும்; எல்லா முள்தோலிகளுக்கும் பொதுவான பண்புகள் அல்ல. உரிய உயிரி, உரிய காட்சியில் மட்டுமே அவற்றைக் குறிக்க வேண்டும்.")
+                "பெடிசெல்லேரியா, தோல்செவுள்கள் சில குழுக்களில் மட்டுமே காணப்படும்; எல்லா முள்தோலிகளுக்கும் பொதுவான பண்புகள் அல்ல. உரிய உயிரி, உரிய காட்சியில் மட்டுமே அவற்றைக் குறிக்க வேண்டும்."),
+            s("five-classes",
+                "Diagnostic characters of five living classes",
+                "வாழும் ஐந்து வகுப்புகளின் அடையாளப் பண்புகள்",
+                "Sea stars (Asteroidea) have arms merging broadly with a central disc; brittle stars (Ophiuroidea) have clearly differentiated flexible arms. Sea urchins and sand dollars (Echinoidea) lack conventional star-shaped arms. Sea cucumbers (Holothuroidea) have elongate bodies; feather stars and sea lilies (Crinoidea) bear feeding arms.",
+                "நட்சத்திரமீன்களின் (ஆஸ்டீராய்டியா) கரங்கள் மையத் தட்டுடன் அகலமாக இணைகின்றன; ஒஃபியூராய்டியா குழுவில் நெகிழ்வான கரங்கள் மையத் தட்டிலிருந்து தெளிவாகப் பிரிகின்றன. எக்கினாய்டியாவில் நட்சத்திர வடிவக் கரங்கள் இல்லாத கடல்முள்ளிகளும் மணல்நாணய வடிவங்களும் உள்ளன. ஹோலோதூராய்டியாவில் நீண்ட கடல்வெள்ளரிகளும் கிரினாய்டியாவில் உணவெடுக்கும் கரங்களுள்ள கடல்லில்லிகளும் உள்ளன.",
+                "The adult five-rayed organization is modified among classes, while many larvae are bilaterally symmetrical. Compare the calcareous ossicles, ambulacral organization, mouth position, skeletal spines and tube feet before classifying a specimen.",
+                "முதிர்நிலையின் ஐந்தாரச் சமச்சீர் வகுப்புகளுக்கேற்ப மாறுபடுகிறது; பல இளவுயிரிகளில் இருபக்கச் சமச்சீர் காணப்படுகிறது. மாதிரியை வகைப்படுத்த சிறுதகடுகள், அம்புலாக்ரல் அமைப்பு, வாயின் இடம், முட்கள், குழாய்க்கால்கள் ஆகியவற்றை ஒப்பிட வேண்டும்.")
         )),
         Chapter("u5-asterias",b("Asterias: starfish type study","அஸ்டீரியாஸ்: நட்சத்திரமீன் இன ஆய்வு"),listOf(
             s("external",
@@ -285,7 +292,14 @@ internal object FiveUnitRestorationLessons {
                 "Bilateral larval symmetry and adult pentaradial organisation are distinct developmental configurations. Metamorphosis reorganises tissues and establishes the juvenile echinoderm body.",
                 "இளம் நிலையில் இருபக்கச் சமச்சீரும் முதிர்நிலையில் ஐந்தாரச் சமச்சீரும் தனித்த வளர்ச்சி அமைப்புகள். உருமாற்றத்தில் திசுக்கள் மறுஒழுங்குபட்டு இளம் முள்தோலி உடல் உருவாகிறது.",
                 "In a practical record, show ciliary-band positions and larval arms where appropriate; never imply that all echinoderms pass through every named larval type.",
-                "செய்முறைப் படத்தில் உரிய இடங்களில் சிலியப் பட்டைகள், இளம் கரங்கள் ஆகியவற்றைக் காட்ட வேண்டும்; எல்லா முள்தோலிகளும் எல்லா பெயரிடப்பட்ட இளம் நிலைகளையும் கடக்கின்றன என்று கூறக் கூடாது.")
+                "செய்முறைப் படத்தில் உரிய இடங்களில் சிலியப் பட்டைகள், இளம் கரங்கள் ஆகியவற்றைக் காட்ட வேண்டும்; எல்லா முள்தோலிகளும் எல்லா பெயரிடப்பட்ட இளம் நிலைகளையும் கடக்கின்றன என்று கூறக் கூடாது."),
+            s("larval-development",
+                "Larval swimming, feeding and metamorphosis",
+                "இளவுயிரி நீந்துதல், உணவெடுத்தல், உருமாற்றம்",
+                "Sea-star bipinnaria larvae have ciliated bands associated with swimming and feeding; the later brachiolaria stage commonly develops specialized attachment structures. Echinoid and ophiuroid pluteus larvae use supporting skeletal rods, whereas many holothuroids possess auricularia and doliolaria stages.",
+                "நட்சத்திரமீன்களின் பைபின்னாரியா இளவுயிரிகளில் நீந்துதலுக்கும் உணவெடுத்தலுக்கும் குறுஇழைப் பட்டைகள் உதவுகின்றன; அடுத்த பிராக்கியோலாரியா நிலையில் சிறப்புப் பற்றுறுப்புகள் உருவாகலாம். கடல்முள்ளி மற்றும் ஒஃபியூராய்டு ப்ளூட்டியஸ் இளவுயிரிகளில் எலும்புத் தண்டுகள் உள்ளன; பல கடல்வெள்ளரிகளில் ஆரிகுலாரியா, டோலியோலாரியா நிலைகள் காணப்படுகின்றன.",
+                "During metamorphosis the juvenile echinoderm reorganizes its body tissues, establishing the adult ambulacral and skeletal arrangement. Species differ in development and not every echinoderm passes through all named larval stages.",
+                "உருமாற்றத்தின்போது இளம் முள்தோலியின் திசுக்கள் மறுஒழுங்குபட்டு முதிர் அம்புலாக்ரல் மற்றும் உட்கூடு அமைப்புகள் உருவாகின்றன. இனங்களுக்கு இடையே வளர்ச்சி மாறுபடும்; எல்லா முள்தோலிகளும் பெயரிடப்பட்ட அனைத்து இளம்பருவங்களையும் கடப்பதில்லை.")
         )),
         Chapter("u5-echino-affinities",b("Echinoderm affinities and deuterostomes","முள்தோலிகளின் பரிணாம உறவுகள்"),listOf(
             s("deuterostomes",
@@ -301,7 +315,14 @@ internal object FiveUnitRestorationLessons {
                 "Bilateral echinoderm larvae help explain the evolutionary transformation toward radial adult bodies. Similar developmental features alone, however, cannot replace a well-supported phylogenetic tree.",
                 "முள்தோலிகளின் இருபக்கச் சமச்சீர் இளம் நிலைகள் முதிர்நிலையின் ஆரச் சமச்சீர் உருவாக்கத்தைப் புரிந்துகொள்ள உதவுகின்றன. ஒத்த கருவளர்ச்சி பண்புகள் மட்டும் இனவரலாற்று மரத்தை மாற்ற முடியாது.",
                 "Discuss shared ancestry, convergent characters and secondary changes as separate hypotheses. Never present the traditional term 'connecting link' as proof of direct descent.",
-                "பொது மூதாதை, ஒத்த இயல்பு தனித்த தோற்றம், இரண்டாம் நிலை மாற்றம் ஆகிய கருத்துக்களை வேறுபடுத்த வேண்டும். ‘இணைப்புயிரி’ என்ற பழைய சொல்லை நேரடி வம்சத் தோற்றச் சான்றாகக் கூறக் கூடாது.")
+                "பொது மூதாதை, ஒத்த இயல்பு தனித்த தோற்றம், இரண்டாம் நிலை மாற்றம் ஆகிய கருத்துக்களை வேறுபடுத்த வேண்டும். ‘இணைப்புயிரி’ என்ற பழைய சொல்லை நேரடி வம்சத் தோற்றச் சான்றாகக் கூறக் கூடாது."),
+            s("phylogeny-evidence",
+                "Ambulacraria and the evidence for deuterostome affinities",
+                "அம்புலாக்ரேரியாவும் டியூட்டரோஸ்டோம் உறவுச் சான்றுகளும்",
+                "Current molecular phylogenies group echinoderms with hemichordates in Ambulacraria, while chordates share a more ancient deuterostome ancestor with that lineage. Similarities in some cleavage and coelom-formation patterns provide comparative evidence, but are not identical in every living deuterostome.",
+                "நவீன மரபணு உறவியல் ஆய்வுகள் முள்தோலிகளையும் ஹெமிகோர்டேட்டுகளையும் அம்புலாக்ரேரியா குழுவில் இணைக்கின்றன; முதுகுநாணுயிரிகள் இக்குழுவுடன் பழமையான டியூட்டரோஸ்டோம் மூதாதையைப் பகிர்கின்றன. சில செல் பிளவு மற்றும் உடற்குழி வளர்ச்சி ஒற்றுமைகள் ஒப்பீட்டுச் சான்றுகளாக இருந்தாலும் எல்லா வாழும் உயிரிகளிலும் ஒரே மாதிரியானவை அல்ல.",
+                "Bilateral echinoderm larvae followed by radial adults demonstrate developmental transformation rather than direct descent of chordates from present-day sea stars. A defensible evolutionary comparison uses molecular trees, fossils and embryology together.",
+                "இருபக்கச் சமச்சீர் இளவுயிரியைத் தொடர்ந்து ஆரச்சமச்சீர் முதிர்நிலை உருவாகுவது வளர்ச்சி மாற்றத்தைக் காட்டுகிறது; இன்றைய நட்சத்திரமீனிலிருந்து முதுகுநாணுயிரிகள் நேரடியாக வந்தன என்பதற்குச் சான்றல்ல. பரிணாம உறவை அறிய மரபணு மரங்கள், புதைபடிவங்கள், கருவளர்ச்சி ஆகியவற்றை இணைத்துப் பார்க்க வேண்டும்.")
         )),
         Chapter("u5-fossils",b("Echinoderm fossils and geological significance","முள்தோலி தொல்லுயிர்களும் புவியியல் முக்கியத்துவமும்"),listOf(
             s("record",
@@ -317,7 +338,14 @@ internal object FiveUnitRestorationLessons {
                 "Fossil echinoderms help reconstruct ancient marine habitats and changes in body organization through geological time. Extinct stem groups should not be forced into living class diagnoses.",
                 "தொல்லுயிர் முள்தோலிகள் பழைய கடல் வாழிடங்களையும் புவியியல் காலங்களில் ஏற்பட்ட உடற்கூறு மாற்றங்களையும் மீட்டுருவாக்க உதவுகின்றன. அழிந்த குழுக்களை வாழும் வகுப்புகளுக்குள் வற்புறுத்திச் சேர்க்கக் கூடாது.",
                 "When using a fossil sketch, annotate scale, preservation type, reliable taxonomic assignment and the locality or age if known. Art alone is not a substitute for specimen evidence.",
-                "தொல்லுயிர் படத்தில் அளவுக்கோல், பாதுகாப்பு வகை, நம்பகமான வகைப்பாடு, தெரிந்தால் இடமும் காலமும் குறிப்பிடப்பட வேண்டும். வரைபடம் மட்டும் மாதிரி ஆதாரத்திற்குப் பதிலாகாது.")
+                "தொல்லுயிர் படத்தில் அளவுக்கோல், பாதுகாப்பு வகை, நம்பகமான வகைப்பாடு, தெரிந்தால் இடமும் காலமும் குறிப்பிடப்பட வேண்டும். வரைபடம் மட்டும் மாதிரி ஆதாரத்திற்குப் பதிலாகாது."),
+            s("fossil-evidence",
+                "Fossil preservation, stratigraphy and geological interpretation",
+                "புதைபடிவப் பாதுகாப்பு, அடுக்கியல், புவியியல் விளக்கம்",
+                "Trilobite exoskeletons, brachiopod shells, ammonoid chambered shells and ancient reef corals preserve evidence of different marine environments across geological history. Fossil preservation depends on mineralized structures, burial and later geological alteration; the record is incomplete and biased toward readily fossilized parts.",
+                "முக்கூற்றுக்கணுக்காலி வெளிக்கூடுகள், பிராக்கியோபோடு ஓடுகள், அம்மோனாய்டு அறைமிகு ஓடுகள், பழங்காலப் பவளப் படிவங்கள் ஆகியவை மாறுபட்ட கடற்சூழல்களுக்குச் சான்றுகளாகும். புதைபடிவமாகப் பாதுகாக்கப்படுவது கடினப் பகுதிகள், புதைதல், பின்னர் ஏற்படும் புவியியல் மாற்றங்கள் ஆகியவற்றைப் பொறுத்தது; பதிவு முழுமையற்றது.",
+                "Biostratigraphy compares the recorded sequence of fossil occurrences between sedimentary layers; absolute numerical dates require suitable independent dating methods. An isolated fossil image without its geological layer and identification cannot establish a precise rock age.",
+                "உயிர் அடுக்கியல் முறையில் படிவுப் பாறை அடுக்குகளிலுள்ள புதைபடிவக் காணல் வரிசையை ஒப்பிடுகின்றனர்; துல்லிய ஆண்டு வயதிற்கு பொருத்தமான தனித்த வயது நிர்ணய முறைகள் தேவை. பாறை அடுக்கும் சரியான அடையாளமும் இல்லாத தனிப் புதைபடிவப் படம் துல்லியப் பாறை வயதைக் கொடுக்காது.")
         )),
         Chapter("u5-foot",b("Molluscan foot and locomotion","மெல்லுடலிகளின் பாதமும் இயக்கமும்"),listOf(
             s("variation",
@@ -386,7 +414,14 @@ internal object FiveUnitRestorationLessons {
                 "Cephalopods possess well-developed eyes, elaborate nervous systems and closed circulatory systems with specialized hearts. Their complex behaviour should be studied as adaptation, not ranked intelligence.",
                 "தலைக்காலிகளில் நன்கு வளர்ந்த கண்கள், சிக்கலான நரம்பமைப்பு, சிறப்பியல்புடைய இதயங்களைக் கொண்ட மூடிய சுற்றோட்ட அமைப்பு காணப்படுகிறது. நடத்தைத் திறன்களை தகவமைப்பாகக் கற்க வேண்டும்.",
                 "Chromatophore organs contribute to rapid colour change in many coleoids. A practical illustration should separately label mantle, funnel, arms, gills and correctly identified reproductive structures.",
-                "பல தலைக்காலிகளில் குரோமட்டோஃபோர் உறுப்புகள் விரைவான நிறமாற்றத்திற்கு உதவுகின்றன. செய்முறைப் படத்தில் மேன்டில், புனல், கரங்கள், செவுள்கள், உரிய இனப்பெருக்க உறுப்புகள் தனித்தனியாகக் குறிக்கப்பட வேண்டும்.")
+                "பல தலைக்காலிகளில் குரோமட்டோஃபோர் உறுப்புகள் விரைவான நிறமாற்றத்திற்கு உதவுகின்றன. செய்முறைப் படத்தில் மேன்டில், புனல், கரங்கள், செவுள்கள், உரிய இனப்பெருக்க உறுப்புகள் தனித்தனியாகக் குறிக்கப்பட வேண்டும்."),
+            s("sensory-ecology",
+                "Vision, colour change and economic significance",
+                "பார்வை, நிறமாற்றம், பொருளாதார முக்கியத்துவம்",
+                "Many coleoids possess sophisticated camera-type eyes, large neural centres and rapid skin-pattern changes using chromatophores. Some squids and octopuses release ink defensively; these specializations differ among cephalopod lineages and should not all be assigned to Nautilus.",
+                "பல கோலியாய்டு தலைக்காலிகளில் படக்கருவியை ஒத்த கண்கள், பெரிய நரம்பு மையங்கள், குரோமட்டோஃபோர் உறுப்புகளால் விரைவான தோல் நிறமாற்றம் உள்ளன. சில ஸ்க்விட் மற்றும் ஆக்டோபஸ் இனங்கள் தற்காப்பிற்கு மையை வெளியிடுகின்றன; இந்தப் பண்புகள் தலைக்காலிகளின் குழுக்களுக்கேற்ப மாறுபடுவதால் அனைத்தையும் நாட்டிலஸுக்கும் பொருத்தக் கூடாது.",
+                "Cephalopods are predators and prey in marine food webs, and valuable fisheries resources. Their 'advanced' status in older textbooks refers to particular anatomical and behavioural specializations, not a scientific ranking that makes other molluscs inferior. Discuss sustainable fishing with economic value.",
+                "தலைக்காலிகள் கடலின் உணவுவலைகளில் இரைபிடிப்போராகவும் இரையாகவும் செயல்படுகின்றன; முக்கிய மீன்பிடி வளமும் ஆகும். பழைய பாடநூல்களின் 'மேம்பட்டவை' என்ற சொல் சில சிறப்பமைவுகளைக் குறிக்கும் ஒப்பீடு; மற்ற மெல்லுடலிகள் தாழ்ந்தவை என்ற அறிவியல் தரவரிசை அல்ல. பொருளாதார மதிப்புடன் நிலைத்த மீன்பிடியையும் விவாதிக்க வேண்டும்.")
         ))
     )
     val byId: Map<String,Chapter> = chapters.associateBy { it.chapterId }
