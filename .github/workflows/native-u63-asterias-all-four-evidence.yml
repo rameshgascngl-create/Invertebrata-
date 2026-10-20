@@ -1,0 +1,134 @@
+name: U63 all four source-licensed Asterias anatomy plates and Android proof
+'on':
+  push:
+    branches:
+      - native/u63-asterias-all-four-source-plates-20261020
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: u63-asterias-source-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      imported_sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install JPEG and PNG decoder
+        run: python -m pip install --quiet 'Pillow>=10.0,<12'
+      - name: Retrieve the original permitted historic art and enforce published SHA1 hashes
+        run: python .github/scripts/import-u63-asterias-two-more.py
+      - name: Commit internal dissection and Haeckel bipinnaria/brachiolaria images
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/main/assets/type_studies/asterias/internal.png
+          git add native-app/app/src/main/assets/type_studies/asterias/larval-development.png
+          git add native-app/app/src/main/assets/type_studies/asterias/ATTRIBUTION.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'assets(asterias): install licensed dissection and public-domain larval plates'
+            git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
+          git show --stat --oneline HEAD
+      - name: Preserve downloaded source-checked PNGs for independent review
+        uses: actions/upload-artifact@v4
+        with:
+          name: u63-asterias-all-four-source-licensed-pngs
+          path: |
+            native-app/app/src/main/assets/type_studies/asterias/*.png
+            native-app/app/src/main/assets/type_studies/asterias/ATTRIBUTION.md
+          if-no-files-found: error
+
+  verify-exact-imported-commit:
+    needs: import
+    runs-on: ubuntu-24.04
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.import.outputs.imported_sha }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Inspect exact committed PNG dimensions, source-credit record, and first pixels
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          root=Path('native-app/app/src/main/assets/type_studies/asterias')
+          for n in ('external.png','water-vascular-system.png','internal.png','larval-development.png'):
+              data=(root/n).read_bytes()
+              assert data[:8]==b'\x89PNG\r\n\x1a\n'
+              assert len(data)>50000
+              print(n,len(data),hashlib.sha256(data).hexdigest())
+          assert len({(root/n).read_bytes()[:100] for n in ('external.png','water-vascular-system.png','internal.png','larval-development.png')})==4
+          assert 'PUBLIC DOMAIN' in (root/'ATTRIBUTION.md').read_text().upper()
+          PY
+      - name: Compile Kotlin, Android tests and execute all local chapter-coverage tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest :app:assembleDebug --stacktrace
+      - name: Preserve syllabus regression test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u63-43chapter-and-fourplate-jvm-evidence
+          path: native-app/app/build/test-results/testDebugUnitTest/
+          if-no-files-found: warn
+      - name: Preserve exact-imported-commit Android QA APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u63-asterias-four-plates-UNAPPROVED-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run 100 and 200 percent Android image placement, zoom and bilingual tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-u61-unit5-bilingual.sh
+      - name: Upload real emulator screenshots, assertions and log evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u63-asterias-four-plates-android-100-200-screenshots
+          path: qa-evidence/u61-unit5/
+          if-no-files-found: warn
+
+  release-hold:
+    needs: [import, verify-exact-imported-commit]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - run: |
+          echo "Public domain and CC BY-SA licences ≠ scientific acceptance; source authors credited."
+          echo "Four source-licensed plates are present; scientific and Tamil academic review is still required."
+          echo "Asterias historic generic WVS scheme is a partial figure and not a five-arm dissection."
+          echo "Physical Android handset QA has not been performed."
+          echo "Release: HOLD."
