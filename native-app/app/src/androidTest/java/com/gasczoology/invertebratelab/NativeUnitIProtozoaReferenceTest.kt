@@ -96,7 +96,19 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u1-plasmodium-image-priority-toggle").performClick()
         rule.onNodeWithTag("u1-reference-expanded-bitmap")
             .assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Zoom 1.5x"))
-        screenshot("plasmodium-blood-larger-image-tamil")
+        screenshot("plasmodium-blood-larger-image-english")
+        // The enlarged plate must respond to actual drag gestures, not only zoom buttons.
+        // Capture both opposing pans for subsequent visual review of hidden plate regions.
+        rule.onNodeWithTag("u1-reference-expanded-bitmap")
+            .performTouchInput { swipeRight() }
+        rule.onNodeWithTag("u1-reference-expanded-bitmap")
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Zoom 1.5x"))
+        screenshot("plasmodium-blood-pan-right-english")
+        rule.onNodeWithTag("u1-reference-expanded-bitmap")
+            .performTouchInput { swipeLeft() }
+        rule.onNodeWithTag("u1-reference-expanded-bitmap")
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Zoom 1.5x"))
+        screenshot("plasmodium-blood-pan-left-english")
         rule.onNodeWithTag("u1-plasmodium-image-priority-toggle").performClick()
         rule.onNodeWithTag("u1-reference-expanded-bitmap")
             .assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Zoom 1.0x"))
