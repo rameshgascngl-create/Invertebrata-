@@ -120,6 +120,43 @@ class Native43ChapterTextbookCoverageTest {
         assertTrue(FiveUnitRestorationLessons.byId.getValue("u5-wvs").sections.size >= 4)
     }
 
+    @Test fun penaeidDevelopmentSeparatesProtozoeaMysisFromCrabMegalopa() {
+        val lesson = UnitIVSupplementaryLessons.byId.getValue("u4-crustacean-larvae")
+        assertTrue(lesson.sections.size >= 7)
+        val sections = lesson.sections.associateBy { it.id }
+        val protozoea = sections.getValue("penaeid-protozoea")
+        val mysis = sections.getValue("penaeid-mysis")
+        for (section in listOf(protozoea, mysis)) {
+            assertEquals(2, section.paragraphs.size)
+            assertTrue(section.title.english.isNotBlank() && section.title.tamil.isNotBlank())
+            assertTrue(section.paragraphs.all { it.english.length >= 200 && it.tamil.length >= 140 })
+        }
+        val narrative = mysis.paragraphs.joinToString(" ") { it.english }
+        assertTrue(narrative.contains("nauplius → protozoea → mysis → postlarva"))
+        assertTrue(narrative.contains("zoea → megalopa → juvenile"))
+        assertTrue(lesson.reading.any { it.startsWith("https://") })
+    }
+
+    @Test fun cephalopodsCoverFunctionalSystemsReproductionAndFisheries() {
+        val lesson = FiveUnitRestorationLessons.byId.getValue("u5-cephalopods")
+        assertTrue(lesson.sections.size >= 5)
+        val sections = lesson.sections.associateBy { it.id }
+        for (id in listOf("circulation-and-feeding", "reproduction-and-fisheries")) {
+            val section = sections.getValue(id)
+            assertEquals(2, section.paragraphs.size)
+            assertTrue(section.title.english.isNotBlank() && section.title.tamil.isNotBlank())
+            assertTrue(section.paragraphs.all { it.english.length >= 200 && it.tamil.length >= 140 })
+        }
+        val circulation = sections.getValue("circulation-and-feeding").paragraphs
+            .joinToString(" ") { it.english }
+        assertTrue(listOf("systemic heart", "branchial hearts", "gills", "radula", "beak")
+            .all { circulation.contains(it) })
+        val reproduction = sections.getValue("reproduction-and-fisheries").paragraphs
+            .joinToString(" ") { it.english }
+        assertTrue(listOf("spermatophores", "octopuses", "fisheries", "sustainable harvest")
+            .all { reproduction.contains(it) })
+    }
+
     @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
         val paramecium = NativeLessonDrafts.paramecium
         assertEquals("u1-paramecium", paramecium.lessonId)
