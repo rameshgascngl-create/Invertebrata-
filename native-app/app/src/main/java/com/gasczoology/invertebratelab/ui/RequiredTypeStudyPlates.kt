@@ -130,8 +130,8 @@ internal fun RequiredTypeStudyPlates(
         )
         if (study.organismId == "paramecium") {
             Text(
-                if (tamil) "ஒரே கையால் வரையப்பட்ட வரைபடத்தின் புகைப்படத்திலிருந்து மூன்று உடற்கூறுப் பகுதிகள் பிரிக்கப்பட்டுள்ளன. மூலம்: Rijan Bhandari (2014); CC BY-SA 3.0. இயக்கப் படம் இன்னும் இல்லை."
-                else "Three anatomical views are derived from one photographed pencil drawing, not three independently verified originals. Rijan Bhandari (2014), CC BY-SA 3.0. Locomotion plate still missing.",
+                if (tamil) "பழைய ஒரு புகைப்பட வரைபடத்தைப் பல உறுப்புப் படங்களாக மீண்டும் பயன்படுத்துவது நிறுத்தப்பட்டுள்ளது. வெளிப்புறம், வாயமைப்பு, சுருங்கும் நுண்குமிழ், இயக்கம் ஆகிய நான்கிற்கும் தனித்த சரிபார்க்கப்பட்ட PNG கோப்புகள் தேவை."
+                else "Retired the old photographed pencil drawing and its repeated crops. External cilia, oral apparatus, contractile vacuoles and locomotion each require a distinct verified replacement PNG.",
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("r6-single-source-disclosure"),
             )
@@ -249,7 +249,9 @@ internal fun RequiredTypeStudyPlates(
             }
         }
         study.requiredPlateIds.forEach { plateId ->
-            val stem = "type_studies/${study.organismId}/${plateId}"
+            val stem = if (study.organismId == "paramecium")
+                "unit1/replacements/paramecium_${plateId}"
+            else "type_studies/${study.organismId}/${plateId}"
             val raster = rememberRequiredRasterBitmap(stem)
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
