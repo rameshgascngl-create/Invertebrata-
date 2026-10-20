@@ -262,7 +262,7 @@ class Native43ChapterTextbookCoverageTest {
             "u3-aschel" to listOf("Aschelminthes", "Nematoda", "pseudocoel"),
             "u3-ascaris" to listOf("embryonated", "lungs", "cloaca"),
             "u3-nematode-parasites" to listOf("Wuchereria", "Enterobius", "Ancylostoma"),
-            "u3-nematode-adapt" to listOf("cuticle", "eggs", "larvae"),
+            "u3-nematode-adapt" to listOf("cuticle", "eggs", "larval"),
             "u4-annelida" to listOf("metameric", "prostomium", "chaetae"),
             "u4-nereis" to listOf("parapodia", "prostomium", "trochophore"),
             "u4-metamerism" to listOf("segmentation", "septa", "coelom"),
