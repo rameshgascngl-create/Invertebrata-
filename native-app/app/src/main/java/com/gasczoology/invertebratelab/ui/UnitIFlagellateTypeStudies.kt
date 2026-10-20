@@ -66,8 +66,8 @@ private val flagellateStudies = listOf(
         id = "leishmania",
         titleEn = "Leishmania spp. — amastigote, promastigote and sand-fly cycle",
         titleTa = "லீஷ்மேனியா இனங்கள் — அமாஸ்டிகோட், புரோமாஸ்டிகோட், மணல் ஈச் சுழற்சி",
-        imageEn = "CDC DPDx life-cycle plate showing promastigote and amastigote stages in sand flies and mammalian cells; species identity cannot be inferred from this drawing.",
-        imageTa = "CDC DPDx வாழ்க்கைச் சுழற்சிப் படத்தில் மணல் ஈயின் புரோமாஸ்டிகோட் நிலையையும் பாலூட்டிச் செல்லுக்குள் அமாஸ்டிகோட் நிலையையும் காணலாம்; இதிலிருந்து இனத்தை மட்டும் உறுதி செய்ய இயலாது.",
+        imageEn = "Public-domain life-cycle plate showing promastigote and amastigote stages in sand flies and mammalian cells; species identity cannot be inferred from this drawing.",
+        imageTa = "பொதுப் பயன்பாட்டு வாழ்க்கைச் சுழற்சிப் படத்தில் மணல் ஈயின் புரோமாஸ்டிகோட் நிலையையும் பாலூட்டிச் செல்லுக்குள் அமாஸ்டிகோட் நிலையையும் காணலாம்; இதிலிருந்து இனத்தை மட்டும் உறுதி செய்ய இயலாது.",
         stages = listOf(
             FlagellateStage("morphology", "1. Intracellular amastigote: nucleus and kinetoplast",
                 "1. செல்லுக்குள்ளான அமாஸ்டிகோட்: உட்கரு மற்றும் கைனெட்டோபிளாஸ்ட்",
@@ -86,8 +86,8 @@ private val flagellateStudies = listOf(
                 "Leishmania species are not reliably distinguishable by amastigote morphology alone. Tissue microscopy may demonstrate compatible amastigotes, but species identification requires further methods when clinically needed. Distinguish the sand fly vector from the tsetse fly vector of African trypanosomiasis.",
                 "அமாஸ்டிகோட்டின் வடிவத்தை மட்டும் கொண்டு லீஷ்மேனியா இனங்களை நம்பகமாக வேறுபடுத்த முடியாது. திசு நுண்ணோக்கியில் ஒத்த அமாஸ்டிகோட்டுகள் தெரியலாம்; மருத்துவத் தேவைக்கேற்ப இன அடையாளத்திற்கு கூடுதல் சோதனைகள் வேண்டும். ஆப்பிரிக்க டிரிப்பனோசோமியாசிஸைப் பரப்பும் ட்ஸெட்ஸெ ஈயிலிருந்து மணல் ஈயை வேறுபடுத்திக் கற்க வேண்டும்."),
         ),
-        credit = "CDC DPDx · US public-domain lifecycle reference · organ-level image review pending",
-        source = "https://www.cdc.gov/dpdx/leishmaniasis/",
+        credit = "LadyofHats (Mariana Ruiz Villarreal) · author-released public domain · stage-specific review pending",
+        source = "https://commons.wikimedia.org/wiki/File:Leishmaniasis_life_cycle_diagram_en.svg",
     ),
 )
 
