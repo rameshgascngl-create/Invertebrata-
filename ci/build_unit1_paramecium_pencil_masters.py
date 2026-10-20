@@ -9,6 +9,10 @@ are NOT invented. No silent source substitution is permitted.
 import hashlib,io,time,urllib.request
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont,ImageOps
+# U60 branch: never silently regenerate the rejected 2014 single-photo crops.
+# Older historical branches without U60 manifest retain their archival path.
+if Path("native-app/app/src/main/assets/unit1/references/U60_REPLACEMENTS_MANIFEST.json").exists():
+    raise SystemExit("RETIRED: the six independently sourced U60 images have superseded the photographed 2014 source. Do not overwrite them.")
 URL="https://upload.wikimedia.org/wikipedia/commons/3/33/Paramecium_caudatum-hand_labeled.jpg"
 SHA1="0d9d108ccc8310ed82de617d0cf71ca64ce0aad7"
 DEST=Path("native-app/app/src/main/assets/unit1")
