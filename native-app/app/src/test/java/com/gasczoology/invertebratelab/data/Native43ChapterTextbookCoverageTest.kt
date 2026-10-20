@@ -346,36 +346,45 @@ class Native43ChapterTextbookCoverageTest {
     }
 
 
-    @Test fun asteriasReusedPublicDomainImagesAreRealDistinctPngsWithTraceableCredits() {
+    @Test fun asteriasFourLicensedMastersAreNonEmptyDistinctAndTraceableToAuthors() {
         val dir = File("src/main/assets/type_studies/asterias")
-        val external = File(dir, "external.png")
-        val vascular = File(dir, "water-vascular-system.png")
-        val attribution = File(dir, "ATTRIBUTION.md")
-        assertTrue("Asterias oral and aboral source plate absent", external.isFile)
-        assertTrue("Asterias water-vascular source plate absent", vascular.isFile)
-        assertTrue("Public-domain licence and author record absent", attribution.isFile)
-        val pngHeader = byteArrayOf(137.toByte(), 80, 78, 71, 13, 10, 26, 10)
-        for (file in listOf(external, vascular)) {
+        val names = listOf("external.png","water-vascular-system.png",
+            "internal.png","larval-development.png")
+        val pictures = names.map { File(dir,it) }
+        val attribution = File(dir,"ATTRIBUTION.md")
+        assertTrue("Source-author and image-license record missing", attribution.isFile)
+        val pngHeader = byteArrayOf(137.toByte(),80,78,71,13,10,26,10)
+        val unique = mutableSetOf<String>()
+        for (file in pictures) {
+            assertTrue("Missing required anatomy figure "+file.name, file.isFile)
             val bytes = file.readBytes()
-            assertTrue("Empty or implausibly small figure: " + file.name, bytes.size > 50_000)
-            assertTrue("Invalid PNG header in " + file.name,
+            assertTrue("Empty/too small anatomy figure "+file.name, bytes.size > 50_000)
+            assertTrue("Wrong raster format for "+file.name,
                 bytes.take(8).toByteArray().contentEquals(pngHeader))
+            val hash = java.security.MessageDigest.getInstance("SHA-256")
+                .digest(bytes).joinToString("") { "%02x".format(it) }
+            assertTrue("Duplicate master reused between unrelated subject slots",unique.add(hash))
         }
-        assertFalse("Anatomically unrelated external and vascular figures must be different",
-            external.readBytes().contentEquals(vascular.readBytes()))
-        val credits = attribution.readText(Charsets.UTF_8)
-        for (value in listOf("Hubert Lyman Clark", "Augusta Foote Arnold",
-                "PUBLIC DOMAIN", "Asterias forbesi", "generalized")) {
-            assertTrue("Source attribution missing: " + value,
-                credits.contains(value, ignoreCase = true))
+        val credits=attribution.readText(Charsets.UTF_8)
+        for (value in listOf("Hubert Lyman Clark","Augusta Foote Arnold",
+                "Hans Hillewaert","Ernst Haeckel","Asterias forbesi",
+                "Asterias rubens","CC BY-SA 4.0","Public domain",
+                "brachiolaria","bipinnaria")) {
+            assertTrue("Missing source licence, taxon or author: "+value,
+                credits.contains(value,ignoreCase=true))
         }
-        val plateGallery = File("src/main/java/com/gasczoology/invertebratelab/ui/RequiredTypeStudyPlates.kt")
-            .readText(Charsets.UTF_8)
-        assertTrue(plateGallery.contains("asterias-external-species-provenance"))
-        assertTrue(plateGallery.contains("asterias-wvs-legend"))
+        val gallery=File(
+            "src/main/java/com/gasczoology/invertebratelab/ui/RequiredTypeStudyPlates.kt"
+        ).readText(Charsets.UTF_8)
+        for (tag in listOf("asterias-external-species-provenance",
+                "asterias-wvs-legend","asterias-internal-species-licence",
+                "asterias-larvae-two-stage-legend")) {
+            assertTrue("Image source details absent from student reader: "+tag,
+                gallery.contains(tag))
+        }
     }
 
-    @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
+        @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
         val paramecium = NativeLessonDrafts.paramecium
         assertEquals("u1-paramecium", paramecium.lessonId)
         assertTrue(paramecium.sections.size >= 10)
