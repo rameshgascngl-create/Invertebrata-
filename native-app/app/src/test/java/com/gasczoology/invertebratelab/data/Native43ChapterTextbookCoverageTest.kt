@@ -365,7 +365,7 @@ class Native43ChapterTextbookCoverageTest {
             external.readBytes().contentEquals(vascular.readBytes()))
         val credits = attribution.readText(Charsets.UTF_8)
         for (value in listOf("Hubert Lyman Clark", "Augusta Foote Arnold",
-                "PUBLIC DOMAIN", "Asterias forbesi", "GENERIC")) {
+                "PUBLIC DOMAIN", "Asterias forbesi", "generalized")) {
             assertTrue("Source attribution missing: " + value,
                 credits.contains(value, ignoreCase = true))
         }
