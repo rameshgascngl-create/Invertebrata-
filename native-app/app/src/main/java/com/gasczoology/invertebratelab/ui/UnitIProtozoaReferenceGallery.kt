@@ -159,6 +159,7 @@ internal fun ExpandedProtozoaReferenceImage(
     val plasmodium=referenceId=="plasmodium"
     val largeFont=LocalConfiguration.current.fontScale>=1.75f
     var detailsVisible by rememberSaveable(referenceId) { mutableStateOf(false) }
+    var imagePriority by rememberSaveable(referenceId) { mutableStateOf(false) }
     var focus by rememberSaveable(referenceId) { mutableStateOf("overview") }
     val focusImage=if(plasmodium && focus!="overview")
         rememberRequiredRasterBitmap("unit1/references/plasmodium_"+focus,pngOnly=true)
@@ -200,7 +201,7 @@ internal fun ExpandedProtozoaReferenceImage(
                     .padding(horizontal=12.dp, vertical=6.dp),
                 verticalArrangement=Arrangement.spacedBy(7.dp),
             ) {
-                Text(
+                if(!imagePriority) Text(
                     if(plasmodium) {
                         if(tamil) "பிளாஸ்மோடியம் — வாழ்க்கைச் சுழற்சி"
                         else "Plasmodium — life cycle"
@@ -223,6 +224,17 @@ internal fun ExpandedProtozoaReferenceImage(
                     // lose its review-pending qualification at 200% Tamil.
                     maxLines=Int.MAX_VALUE,
                 )
+                if(plasmodium) {
+                    TextButton(
+                        onClick={imagePriority=!imagePriority},
+                        modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
+                            .testTag("u1-plasmodium-image-priority-toggle")
+                    ) {
+                        Text(if(imagePriority)
+                            (if(tamil) "விளக்கங்களைக் காட்டு" else "Show explanations")
+                            else (if(tamil) "படத்தைப் பெரிதாகக் காட்டு" else "Larger image"))
+                    }
+                }
                 if(plasmodium) {
                     // At 200% font scaling show TWO buttons per row, not
                     // four cramped Tamil labels. Preserve 48 dp minimum taps.
@@ -248,7 +260,7 @@ internal fun ExpandedProtozoaReferenceImage(
                             }
                         }
                     }
-                    Row(modifier=Modifier.fillMaxWidth(),
+                    if(!imagePriority) Row(modifier=Modifier.fillMaxWidth(),
                         horizontalArrangement=Arrangement.spacedBy(5.dp)) {
                         // Keep the anatomical bitmap viewport intact at 200% Tamil.
                         // The stage text scrolls independently instead of being ellipsized.
@@ -267,7 +279,7 @@ internal fun ExpandedProtozoaReferenceImage(
                         }
                     }
                 }
-                if(missingFocusCrop) {
+                if(missingFocusCrop && !imagePriority) {
                     Text(
                         if(tamil) "கீழே முழு வாழ்க்கைச் சுழற்சிப் படம்."
                         else "Full life-cycle plate below.",
