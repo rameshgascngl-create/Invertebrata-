@@ -267,7 +267,7 @@ internal fun ExpandedProtozoaReferenceImage(
                         Text(stageDescription,
                             style=MaterialTheme.typography.labelSmall,
                             modifier=Modifier.weight(1f)
-                                .heightIn(max=if(largeFont) 88.dp else 64.dp)
+                                .heightIn(max=if(largeFont) 56.dp else 64.dp)
                                 .verticalScroll(rememberScrollState())
                                 .testTag("u1-plasmodium-phase-explanation"))
                         TextButton(
