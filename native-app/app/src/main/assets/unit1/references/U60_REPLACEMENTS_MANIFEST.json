@@ -4,7 +4,7 @@
     "path": "unit1/paramecium_external.png",
     "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Paramecium_diagram.png",
     "source_sha1": "9690f7018985923cb02f94530e6a61313ffeb784",
-    "output_sha256": "3af5302e164b9a9e2bcddf4bd372d3538a44a2e7630345688ac98db3665e7b66",
+    "output_sha256": "d315498326faaf01d9ea603dc81ff66770f77c621ed0b36d1c96cab11400f860",
     "license_or_rights": "Deuterostome, CC BY-SA 4.0"
   },
   {
@@ -28,7 +28,7 @@
     "path": "unit1/paramecium_vacuole.png",
     "source_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Contractile_Vacuole_In_Paramecium.gif",
     "source_sha1": "531bf47b511ad7cf4437c32ab0ee370982f95073",
-    "output_sha256": "46b81461222a4a36b37f707c0bb89b6cf7d64564966271d53609d3a12b95d92f",
+    "output_sha256": "8acfb439abe8633ec10147863b40042d057678e8c9757f562badbceaaee0c9a2",
     "license_or_rights": "Katyddd, CC BY-SA 4.0"
   },
   {
@@ -42,9 +42,9 @@
   {
     "id": "leishmania",
     "path": "unit1/references/leishmania.png",
-    "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Leishmania_LifeCycle.gif",
-    "source_sha1": "dc86a4f4f56c8a7b6df3db83ec8aaad3a5999184",
-    "output_sha256": "d4931b75af23f62b3a20201d3a412233e8757077c28302fa68adab4370c60d8f",
-    "license_or_rights": "CDC DPDx, US public domain"
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Leishmaniasis_life_cycle_diagram_en.svg",
+    "source_sha1": "a2f010b21e69a4a100029e8709d981ab40c901cd",
+    "output_sha256": "e5a534e96a899603c69fcb025b6b07335d5c3a1d50d112cc63efcf2ed39f886e",
+    "license_or_rights": "LadyofHats, author-released public domain"
   }
 ]
