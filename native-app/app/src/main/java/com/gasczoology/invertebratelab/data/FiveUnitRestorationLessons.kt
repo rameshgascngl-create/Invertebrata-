@@ -135,7 +135,14 @@ internal object FiveUnitRestorationLessons {
                 "The buccal mass houses a radula used for scraping food. The digestive tract connects to digestive gland tissue; the heart and kidney are located in the visceral complex.",
                 "வாய்த்தசைத் தொகுதியில் உணவை உரிக்கும் ரேடுலா உள்ளது. செரிமானக் குழாய் செரிமானச் சுரப்பியுடன் தொடர்புடையது; இதயமும் சிறுநீரகமும் உள்ளுறுப்புத் தொகுதியில் அமைந்துள்ளன.",
                 "Pila is dioecious; male and female reproductive ducts should be studied separately. It is incorrect to place both complete reproductive systems in one generalized adult specimen drawing.",
-                "பைலாவில் ஆண், பெண் தனித்தனியானவை. இனப்பெருக்கக் குழாய்களை ஆண் மற்றும் பெண் மாதிரிகளில் தனியாகக் கற்க வேண்டும். ஒரு பொதுவான முதிர்ந்த உயிரி படத்தில் இருபாலின முழு அமைப்பையும் சேர்த்துக் காட்டக் கூடாது.")
+                "பைலாவில் ஆண், பெண் தனித்தனியானவை. இனப்பெருக்கக் குழாய்களை ஆண் மற்றும் பெண் மாதிரிகளில் தனியாகக் கற்க வேண்டும். ஒரு பொதுவான முதிர்ந்த உயிரி படத்தில் இருபாலின முழு அமைப்பையும் சேர்த்துக் காட்டக் கூடாது."),
+            s("dual-respiration",
+                "Aquatic and aerial respiration: functional comparison",
+                "நீர்ச் சுவாசமும் காற்றுச் சுவாசமும்: செயற்பாட்டு ஒப்பீடு",
+                "In water, the ctenidium provides a vascular respiratory surface across which dissolved oxygen can diffuse into the blood. The mantle cavity also contains a pulmonary sac that permits air breathing when the animal has access to atmospheric air. The relative use of these surfaces depends on water conditions and the animal's behaviour.",
+                "நீரில் கரைந்த ஆக்சிஜன், இரத்தநாளங்கள் நிறைந்த சீனிடியம் வழியாக இரத்தத்திற்குப் பரவுகிறது. மேன்டில் அறையிலுள்ள நுரையீரல் பை, வளிமண்டலக் காற்றை அணுகும் போது காற்றுச் சுவாசத்திற்கும் உதவுகிறது. எந்தச் சுவாச மேற்பரப்பு அதிகம் பயன்படுகிறது என்பது நீரின் நிலை மற்றும் உயிரியின் நடத்தையைப் பொறுத்து மாறும்.",
+                "The osphradium is a sensory structure and should not be labelled as a gill. The nuchal lobes and mantle opening are relevant to the direction of respiratory currents. In an anatomical diagram, distinguish the gill lamellae, pulmonary roof and mantle cavity rather than drawing them as a single undivided chamber.",
+                "ஆஸ்ப்ரேடியம் ஓர் உணர்வுறுப்பு; அதைச் செவுள் எனக் குறிக்கக் கூடாது. கழுத்து மடிப்புகளும் மேன்டில் திறப்பும் சுவாச நீரோட்டத்தின் திசையுடன் தொடர்புடையவை. உடற்கூறுப் படத்தில் செவுள் தகடுகள், நுரையீரல் பையின் கூரை, மேன்டில் அறை ஆகியவற்றை ஒரே பிரிவற்ற அறையாகக் காட்டாமல் தனித்தனியாகக் குறிக்க வேண்டும்.")
         )),
         Chapter("u5-torsion",b("Gastropod torsion and asymmetry","வயிற்றுக்காலிகளில் முறுக்கமும் அசமச்சீரும்"),listOf(
             s("process",
