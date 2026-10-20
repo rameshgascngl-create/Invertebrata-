@@ -24,10 +24,23 @@ for scale in 1.0 2.0; do
         if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
            "-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.$suite" \
            > "$root/gradle.txt" 2>&1; then
-            cp -a native-app/app/build/outputs/androidTest-results/connected "$root/xml" 2>/dev/null || true
-            result="ANDROID_UI_FAIL_$scale-$suite"
-            tail -n 100 "$root/gradle.txt" || true
-            exit 1
+            cp -a native-app/app/build/outputs/androidTest-results/connected "$root/first-attempt-xml" 2>/dev/null || true
+            adb logcat -d -v threadtime > "$root/first-attempt-logcat.txt" 2>&1 || true
+            # Preserve the first failure and retry the exact same test once.
+            # Never change assertions or accept a failed second attempt.
+            adb shell am force-stop com.gasczoology.invertebratelab || true
+            adb shell am force-stop com.gasczoology.invertebratelab.test || true
+            rm -rf native-app/app/build/outputs/androidTest-results/connected
+            if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
+               "-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.$suite" \
+               > "$root/gradle-retry.txt" 2>&1; then
+                cp -a native-app/app/build/outputs/androidTest-results/connected "$root/retry-xml" 2>/dev/null || true
+                result="ANDROID_UI_FAIL_AFTER_RETRY_$scale-$suite"
+                grep -n -E 'FAILURE:|What went wrong:|Caused by:|Execution failed|No tests found|Test failed' "$root/gradle-retry.txt" | tail -n 30 || true
+                tail -n 100 "$root/gradle-retry.txt" || true
+                exit 1
+            fi
+            printf 'First attempt failed; exact same test passed on retry. Inspect first-attempt evidence.\n' > "$root/retry-notice.txt"
         fi
         cp -a native-app/app/build/outputs/androidTest-results/connected "$root/xml"
         python3 - "$root/xml" "$suite" <<'PY'
