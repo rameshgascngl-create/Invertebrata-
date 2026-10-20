@@ -5,6 +5,15 @@ E="qa-evidence/u57-paramecium"
 mkdir -p "$E"
 result=NOT_STARTED
 trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull "$D" "$E/captured" > "$E/pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
+# Emulator images may not mount /sdcard immediately after sys.boot_completed.
+# Wait for emulated external storage before creating the evidence directory.
+for attempt in $(seq 1 30); do
+  if adb shell '[ -d /sdcard/Download ]' >/dev/null 2>&1; then
+    break
+  fi
+  sleep 2
+done
+adb shell mkdir -p /sdcard/Download
 adb shell mkdir -p "$D"
 adb shell settings put system accelerometer_rotation 0
 adb shell settings put system user_rotation 0
