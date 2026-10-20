@@ -39,8 +39,8 @@ private val flagellateStudies = listOf(
         id = "trypanosoma",
         titleEn = "Trypanosoma brucei — structure, movement and host–vector cycle",
         titleTa = "டிரிப்பனோசோமா புரூசை — அமைப்பு, இயக்கம், ஓம்புயிரி–கடத்தி சுழற்சி",
-        imageEn = "Attributed source illustration of a trypomastigote; not an approved pencil anatomical drawing",
-        imageTa = "டிரிப்போமாஸ்டிகோட் ஆதார விளக்கப்படம்; அங்கீகரிக்கப்பட்ட பென்சில் உடலமைப்புப் படமல்ல",
+        imageEn = "CDC DPDx life-cycle plate: bloodstream trypomastigotes and stages in the tsetse fly. Distinct individual organ illustrations remain under review.",
+        imageTa = "CDC DPDx வாழ்க்கைச் சுழற்சிப் படம்: இரத்த டிரிப்போமாஸ்டிகோட் மற்றும் ட்ஸெட்ஸெ ஈயின் வளர்நிலைகள். தனித்த உறுப்பு விளக்கப்படங்களின் ஆய்வு நிலுவையில் உள்ளது.",
         stages = listOf(
             FlagellateStage("morphology", "1. Bloodstream trypomastigote: identifying structures",
                 "1. இரத்த டிரிப்போமாஸ்டிகோட்: அடையாள அமைப்புகள்",
@@ -59,15 +59,15 @@ private val flagellateStudies = listOf(
                 "T. brucei is spread by bites of infected tsetse flies and has multiplying extracellular stages in mammals. T. cruzi is associated with triatomine bugs; infective forms from bug faeces can enter through skin breaks or mucosa, and intracellular amastigotes multiply in mammalian tissues. These are different transmission and tissue cycles.",
                 "T. brucei தொற்று ட்ஸெட்ஸெ ஈ கடியால் பரவுகிறது; பாலூட்டியில் செல்லுக்கு வெளியே பெருகும் நிலைகள் உள்ளன. T. cruzi தொற்று ட்ரையட்டோமைன் பூச்சியின் மலத்திலுள்ள தொற்று நிலைகள் தோல் காயம் அல்லது சளிச்சவ்வு வழி நுழைவதால் ஏற்படலாம்; பாலூட்டி திசுக்களில் செல்லுக்குள்ளான அமாஸ்டிகோட்டுகள் பெருகுகின்றன. இவை வெவ்வேறு பரவும் முறைகளும் திசுச் சுழற்சிகளும் ஆகும்."),
         ),
-        credit = "Johannahoog · CC BY-SA 3.0 · source reference only",
+        credit = "CDC DPDx · US public-domain lifecycle reference · organ-level image review pending",
         source = "https://www.cdc.gov/dpdx/trypanosomiasisAfrican/index.html",
     ),
     FlagellateStudy(
         id = "leishmania",
         titleEn = "Leishmania spp. — amastigote, promastigote and sand-fly cycle",
         titleTa = "லீஷ்மேனியா இனங்கள் — அமாஸ்டிகோட், புரோமாஸ்டிகோட், மணல் ஈச் சுழற்சி",
-        imageEn = "Genus-level amastigote source illustration; no promastigote is depicted in this image",
-        imageTa = "பேரின அளவிலான அமாஸ்டிகோட் விளக்கப்படம்; இப்பகுதியில் புரோமாஸ்டிகோட் காட்டப்படவில்லை",
+        imageEn = "CDC DPDx life-cycle plate showing promastigote and amastigote stages in sand flies and mammalian cells; species identity cannot be inferred from this drawing.",
+        imageTa = "CDC DPDx வாழ்க்கைச் சுழற்சிப் படத்தில் மணல் ஈயின் புரோமாஸ்டிகோட் நிலையையும் பாலூட்டிச் செல்லுக்குள் அமாஸ்டிகோட் நிலையையும் காணலாம்; இதிலிருந்து இனத்தை மட்டும் உறுதி செய்ய இயலாது.",
         stages = listOf(
             FlagellateStage("morphology", "1. Intracellular amastigote: nucleus and kinetoplast",
                 "1. செல்லுக்குள்ளான அமாஸ்டிகோட்: உட்கரு மற்றும் கைனெட்டோபிளாஸ்ட்",
@@ -86,7 +86,7 @@ private val flagellateStudies = listOf(
                 "Leishmania species are not reliably distinguishable by amastigote morphology alone. Tissue microscopy may demonstrate compatible amastigotes, but species identification requires further methods when clinically needed. Distinguish the sand fly vector from the tsetse fly vector of African trypanosomiasis.",
                 "அமாஸ்டிகோட்டின் வடிவத்தை மட்டும் கொண்டு லீஷ்மேனியா இனங்களை நம்பகமாக வேறுபடுத்த முடியாது. திசு நுண்ணோக்கியில் ஒத்த அமாஸ்டிகோட்டுகள் தெரியலாம்; மருத்துவத் தேவைக்கேற்ப இன அடையாளத்திற்கு கூடுதல் சோதனைகள் வேண்டும். ஆப்பிரிக்க டிரிப்பனோசோமியாசிஸைப் பரப்பும் ட்ஸெட்ஸெ ஈயிலிருந்து மணல் ஈயை வேறுபடுத்திக் கற்க வேண்டும்."),
         ),
-        credit = "NIAID / Ryan Kissinger · public-domain reference",
+        credit = "CDC DPDx · US public-domain lifecycle reference · organ-level image review pending",
         source = "https://www.cdc.gov/dpdx/leishmaniasis/",
     ),
 )
