@@ -429,12 +429,12 @@ private fun UnitScreen(
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                             .testTag("u1-open-diagram-atlas")) {
                         Text(label(language,
-                            "VIEW ANATOMICAL PLATES · Paramecium photographed-pencil source",
-                            "உடற்கூறுப் படங்களைப் பார் · பாரமீசியம் பென்சில் வரைபடப் புகைப்பட மூலம்"))
+                            "VIEW ANATOMICAL SLOTS · Paramecium replacement plates pending",
+                            "பாரமீசியம் உடற்கூறு படப் பகுதிகள் · புதிய படங்கள் நிலுவையில் உள்ளன"))
                     }
                     Text(label(language,
                         "Only Entamoeba and Plasmodium transmission references are shown here. Outdated Trypanosoma and Leishmania cartoons are withdrawn until accurate organism-specific replacements are committed.",
-                        "Entamoeba, Trypanosoma, Leishmania, Plasmodium ஆகியவற்றுக்கான அசல் பென்சில் உடலமைப்புப் படங்கள் நிலுவையில் உள்ளன. கீழே தனித்த ஆதார விளக்கப்படங்களைப் பார்க்கலாம்."),
+                        "இங்கு என்டமீபா, பிளாஸ்மோடியம் தொற்றுச் சுழற்சி ஆதாரப் படங்கள் மட்டுமே காட்டப்படும். டிரிப்பனோசோமா, லீஷ்மேனியா பழைய படங்கள் நீக்கப்பட்டுள்ளன; தனித்த புதிய படங்கள் நிலுவையில் உள்ளன."),
                         modifier = Modifier.testTag("u1-missing-protozoa-plates"))
                     OutlinedButton(
                         onClick = { showProtozoaReferences = !showProtozoaReferences },
@@ -443,7 +443,7 @@ private fun UnitScreen(
                     ) {
                         Text(label(language,
                             if (showProtozoaReferences) "HIDE ENTAMOEBA & PLASMODIUM REFERENCES" else "VIEW ENTAMOEBA & PLASMODIUM SOURCE REFERENCES",
-                            if (showProtozoaReferences) "நான்கு ஆதாரப் படங்களை மறை" else "நான்கு ஆதாரப் படங்களைப் பார்"))
+                            if (showProtozoaReferences) "இரு ஆதாரப் படங்களை மறை" else "இரு ஆதாரப் படங்களைப் பார்"))
                     }
                     Button(onClick = onParamecium,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
@@ -561,8 +561,8 @@ private fun ChapterScreen(
                         label(language,
                             "READ THE NATIVE TYPE STUDY FIRST · the original A5 questions follow",
                             "முதலில் விரிவான இன ஆய்வைப் படிக்கவும் · அசல் A5 வினாக்கள் பின்னர்")
-                    else label(language, "TEXTBOOK FIRST — explanatory sections and verified images precede A5 practice",
-                        "முதலில் பாடநூல் — விரிவான விளக்கமும் சரிபார்க்கப்பட்ட படங்களும்; பின்னர் A5 வினாப் பயிற்சி")
+                    else label(language, "TEXTBOOK FIRST — explanatory sections precede A5; image approval is separately pending",
+                        "முதலில் பாடநூல் — விரிவான விளக்கங்களுக்குப் பின் A5 வினாப் பயிற்சி; படச் சரிபார்ப்பு தனியாக நிலுவையில் உள்ளது")
                 )
             }
             if (chapter.id in setOf("u1-paramecium", "u4-penaeus", "u5-pila", "u5-asterias")) {
