@@ -45,21 +45,6 @@ private val references=listOf(
         "பொதுச்சொத்து வாழ்க்கைச் சுழற்சி விளக்கப்படம் மட்டுமே; சரிபார்க்கப்பட்ட பென்சில் உடலமைப்புப் படமல்ல. குறிகளும் வரிசையும் தனித்த மதிப்பாய்வுக்குட்பட்டவை.",
         "Mariana Ruiz Villarreal (LadyofHats) · public domain",
         "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_life_cycle-en.svg"),
-    ProtozoaReference("trypanosoma","Trypanosoma brucei — trypomastigote overview",
-        "டிரிப்பனோசோமா புரூசை — டிரிப்போமாஸ்டிகோட் தோற்றம்",
-        "Bloodstream trypomastigotes possess a nucleus, a kinetoplast, an undulating membrane and a flagellum. Tsetse flies (Glossina) transmit African trypanosomes. This picture depicts body form, NOT every stage of the vector cycle.",
-        "இரத்த டிரிப்போமாஸ்டிகோட்டில் உட்கரு, கைனெட்டோபிளாஸ்ட், அலைவுச் சவ்வு மற்றும் கசையிழை காணப்படும். குளோசினா (ட்ஸெட்ஸெ) ஈக்கள் ஆப்பிரிக்க டிரிப்பனோசோம்களைப் பரப்புகின்றன. இங்கே உடல் வடிவம் மட்டுமே காட்டப்படுகிறது; முழு வாழ்க்கைச் சுழற்சி அல்ல.",
-        "Author's zoological cartoon; stage-specific kinetoplast positions and real pencil master require expert review. Human-infective subspecies are not individually identified by this image.",
-        "இது ஓர் விளக்க வரைபடம்; வாழ்க்கை நிலை சார்ந்த கைனெட்டோபிளாஸ்ட் இடமும் பென்சில் படமும் மதிப்பாய்வுக்குரியவை. மனிதரைத் தாக்கும் துணையினங்கள் தனித்தனியாகக் காட்டப்படவில்லை.",
-        "Johannahoog · CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Trypanosoma_brucei.svg"),
-    ProtozoaReference("leishmania","Leishmania spp. — intracellular amastigote",
-        "லீஷ்மேனியா இனங்கள் — செல்லுக்குள்ளான அமாஸ்டிகோட்",
-        "Intracellular amastigotes are observed in mammalian macrophages; promastigotes are the elongated flagellated forms associated with the sand fly vector. This source illustrates amastigotes ONLY and does not by itself establish Leishmania donovani species identity.",
-        "பாலூட்டிகளின் மேக்ரோபேஜ் செல்களில் அமாஸ்டிகோட் நிலைகள் காணப்படும். மணல் ஈயுடன் தொடர்புடைய நீளமான கசையிழை உடைய நிலை புரோமாஸ்டிகோட் ஆகும். இந்தப் படம் அமாஸ்டிகோட்டை மட்டுமே காட்டுகிறது; Leishmania donovani என்ற இனத்தைத் தனியாக உறுதிப்படுத்தாது.",
-        "NIAID reference illustration, not the promastigote-to-amastigote cycle or a species-verified pencil plate.",
-        "இது NIAID விளக்கப்படம் மட்டுமே; முழு வாழ்க்கைச் சுழற்சியோ இனச் சான்றுடைய பென்சில் படமோ அல்ல.",
-        "NIAID / Ryan Kissinger · US public domain",
-        "https://commons.wikimedia.org/wiki/File:Leishmania_Intracellular_Amastigote_(NIH_BioArt_872_-_798227).png"),
     ProtozoaReference("plasmodium","Plasmodium — liver, blood and mosquito stages",
         "பிளாஸ்மோடியம் — கல்லீரல், இரத்தம், கொசு நிலைகள்",
         "An infected female Anopheles mosquito introduces sporozoites. Liver-stage replication precedes erythrocytic ring, trophozoite and schizont stages. Ingested gametocytes develop through fertilisation, ookinete, oocyst and sporozoites in the mosquito.",
@@ -80,11 +65,11 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
     var expanded by rememberSaveable(selected){ mutableStateOf(false) }
     Column(modifier=Modifier.fillMaxWidth().testTag("u1-protozoa-reference-gallery"),
         verticalArrangement=Arrangement.spacedBy(10.dp)) {
-        Text(if(tamil) "ஒட்டுண்ணி ஒருசெல் உயிரினங்கள் — ஆதார விளக்கப்படங்கள்"
-             else "Parasitic protozoa — referenced teaching illustrations",
+        Text(if(tamil) "என்டமீபா, பிளாஸ்மோடியம் — தொற்றுச் சுழற்சி ஆதாரப் படங்கள்"
+             else "Entamoeba and Plasmodium — transmission reference plates",
             style=MaterialTheme.typography.titleLarge)
-        Text(if(tamil) "நான்கு வெவ்வேறு ஆதாரப் படங்கள்; பென்சில் உடலமைப்பு ஆய்வுப் படங்கள் இன்னும் நிலுவையில் உள்ளன."
-             else "Four distinct source illustrations. Independent pencil anatomy masters and expert review are still pending.",
+        Text(if(tamil) "இரு தொற்றுச் சுழற்சி ஆதாரப் படங்கள் மட்டுமே இங்கு உள்ளன. டிரிப்பனோசோமா, லீஷ்மேனியா பழைய விளக்கப்படங்கள் திரும்பப் பெறப்பட்டுள்ளன; தனித்த புதிய உடற்கூறு படங்கள் நிலுவையில் உள்ளன."
+             else "Two transmission reference plates only. Outdated Trypanosoma and Leishmania illustrations are withdrawn; accurate organism-specific replacement figures remain pending.",
             color=MaterialTheme.colorScheme.error,modifier=Modifier.testTag("u1-protozoa-reference-hold"))
         references.forEach { record ->
             OutlinedButton(onClick={selected=record.id},modifier=Modifier.fillMaxWidth()
