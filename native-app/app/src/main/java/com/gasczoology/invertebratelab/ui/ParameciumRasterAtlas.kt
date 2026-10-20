@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.*
 
 /**
- * Four visible Unit I anatomical views are decoded PNGs, never Canvas
- * redraws. Historic source labels require expert confirmation.
+ * Four different source-derived PNG plates replace the repeated 2014 pencil-photo crops.
+ * No biology is reconstructed using Canvas; annotations need expert review.
  * Image-space hotspots are disabled until independently calibrated.
  */
 @Composable
@@ -41,14 +41,14 @@ internal fun ParameciumRasterAtlas(
         else "Vacuoles: distinct physiological systems",
         modifier=Modifier.testTag("r11-vacuole-heading"))
     if(bitmap==null) {
-        Text(if(tamil) "பென்சில் வரைபடக் கோப்பு இல்லை; மாற்று வரைபடம் காட்டப்படாது."
-             else "Pencil raster master missing; no schematic fallback.",
+        Text(if(tamil) "தேவையான உடற்கூறுப் படம் இல்லை; தவறான மாற்றுப் படம் காட்டப்படாது."
+             else "Source-backed PNG missing; no unsuitable fallback is displayed.",
             color=MaterialTheme.colorScheme.error,
             modifier=Modifier.testTag("u1-raster-asset-missing"))
     } else {
         Image(bitmap=bitmap,
-            contentDescription=if(tamil) "பாரமீசியம் கைவரைவு: நேரடித் தொடுதல் மதிப்பாய்வில் உள்ளது"
-                 else "Original hand-drawn Paramecium image; direct organ taps await scientific review",
+            contentDescription=if(tamil) "பாரமீசியம் உடற்கூறு ஆதாரப் படம்: தொடுபுள்ளிகள் மதிப்பாய்வில் உள்ளன"
+                 else "Paramecium source-derived anatomy PNG; direct organ hotspots await independent verification",
             contentScale=ContentScale.Fit,
             modifier=Modifier.fillMaxWidth().height(282.dp)
                 .graphicsLayer {
@@ -70,8 +70,17 @@ internal fun ParameciumRasterAtlas(
             Text(if(tamil) "பெரிதாக்கலை மீட்டமை" else "Reset zoom")
         }
     }
-    Text(if(tamil) "மூலம்: Rijan Bhandari (2014), அசல் கைவரைவு, CC BY-SA 3.0. அறிவியல் ஆய்வு நிலுவையில்."
-         else "Rijan Bhandari (2014), original photographed pencil drawing, CC BY-SA 3.0. Scientific review pending.",
+    Text(if(tamil) when(panel) {
+            "external" -> "மூலம்: Deuterostome; CC BY-SA 4.0. உடற்கூறு ஆய்வு நிலுவையில்."
+            "oral" -> "மூலம்: Ciarachristina; CC BY-SA 3.0. வாயமைப்பு மதிப்பாய்வு நிலுவையில்."
+            "vacuole" -> "மூலம்: Katyddd; CC BY-SA 4.0. நீர்ச்சமநிலை மாதிரிப் படம்."
+            else -> "மூலம்: Kārlis Kalviškis; CC BY-SA 4.0. உடற்கூறு ஆய்வு நிலுவையில்."
+         } else when(panel) {
+            "external" -> "Deuterostome · CC BY-SA 4.0 · anatomy reference; review pending."
+            "oral" -> "Ciarachristina · CC BY-SA 3.0 · oral anatomy reference; review pending."
+            "vacuole" -> "Katyddd · CC BY-SA 4.0 · contractile-vacuole model; review pending."
+            else -> "Kārlis Kalviškis · CC BY-SA 4.0 · anatomy reference; review pending."
+         },
         style=MaterialTheme.typography.bodySmall,
         modifier=Modifier.testTag("u1-raster-attribution"))
     Text(if(tamil) "உறுப்பைத் தேர்ந்தெடுக்கவும்; உறுதி செய்யப்படாத படத் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
