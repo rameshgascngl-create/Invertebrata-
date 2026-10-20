@@ -433,7 +433,7 @@ private fun UnitScreen(
                             "உடற்கூறுப் படங்களைப் பார் · பாரமீசியம் பென்சில் வரைபடப் புகைப்பட மூலம்"))
                     }
                     Text(label(language,
-                        "Original pencil anatomy masters for Entamoeba, Trypanosoma, Leishmania and Plasmodium are still pending. Separate source-referenced provisional illustrations can be inspected below.",
+                        "Only Entamoeba and Plasmodium transmission references are shown here. Outdated Trypanosoma and Leishmania cartoons are withdrawn until accurate organism-specific replacements are committed.",
                         "Entamoeba, Trypanosoma, Leishmania, Plasmodium ஆகியவற்றுக்கான அசல் பென்சில் உடலமைப்புப் படங்கள் நிலுவையில் உள்ளன. கீழே தனித்த ஆதார விளக்கப்படங்களைப் பார்க்கலாம்."),
                         modifier = Modifier.testTag("u1-missing-protozoa-plates"))
                     OutlinedButton(
@@ -442,7 +442,7 @@ private fun UnitScreen(
                             .testTag("u1-protozoa-reference-toggle"),
                     ) {
                         Text(label(language,
-                            if (showProtozoaReferences) "HIDE FOUR PROTOZOAN SOURCE PLATES" else "VIEW FOUR PROTOZOAN SOURCE PLATES",
+                            if (showProtozoaReferences) "HIDE ENTAMOEBA & PLASMODIUM REFERENCES" else "VIEW ENTAMOEBA & PLASMODIUM SOURCE REFERENCES",
                             if (showProtozoaReferences) "நான்கு ஆதாரப் படங்களை மறை" else "நான்கு ஆதாரப் படங்களைப் பார்"))
                     }
                     Button(onClick = onParamecium,
@@ -583,9 +583,6 @@ private fun ChapterScreen(
                 item(key = "u17-trypanosoma-figure") {
                     UnitIFlagellateStudyIntroduction("trypanosoma", language)
                 }
-                item(key = "u114-trypanosoma-pencil-scan-intake") {
-                    UnitIOriginalPencilMasterIntake("trypanosoma", language)
-                }
                 item(key = "u17-trypanosoma-morphology-section") {
                     UnitIFlagellateLessonSection("trypanosoma", "morphology", language)
                 }
@@ -603,12 +600,6 @@ private fun ChapterScreen(
                 }
                 item(key = "u17-leishmania-figure") {
                     UnitIFlagellateStudyIntroduction("leishmania", language)
-                }
-                item(key = "u114-leishmania-pencil-scan-intake") {
-                    UnitIOriginalPencilMasterIntake("leishmania", language)
-                }
-                item(key = "u116-historical-leishmania-print-crop-review") {
-                    UnitIHistoricalPlateSourceSection(language)
                 }
                 item(key = "u17-leishmania-morphology-section") {
                     UnitIFlagellateLessonSection("leishmania", "morphology", language)
@@ -629,7 +620,9 @@ private fun ChapterScreen(
                 // Organism-specific microscopy and anatomy remain available as narrative content
                 // until authentic raster masters are present.
             }
-            if (chapter.id == "u1-proto-parasites" || chapter.id == "u1-host-parasite") {
+            // Each source image belongs to a single relevant teaching route.
+            // Do not duplicate old flagellate art below their organism chapters.
+            if (chapter.id == "u1-host-parasite") {
                 item(key = "u1-independent-protozoa-reference-atlas") {
                     UnitIProtozoaReferenceGallery(language)
                 }
