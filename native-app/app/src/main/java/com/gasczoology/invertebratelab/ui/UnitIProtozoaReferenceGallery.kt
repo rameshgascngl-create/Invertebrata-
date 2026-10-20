@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 
@@ -323,7 +324,8 @@ internal fun ExpandedProtozoaReferenceImage(
                                     }
                                 }
                             }
-                            .testTag("u1-reference-expanded-bitmap"),
+                            .testTag("u1-reference-expanded-bitmap")
+                            .semantics { stateDescription=if(scale>=1.49f) "Magnified image" else "Normal image" },
                     )
                     if(plasmodium && displayedImage!=null) {
                         // Semantics-only marker; never stamp labels over the reference image.
