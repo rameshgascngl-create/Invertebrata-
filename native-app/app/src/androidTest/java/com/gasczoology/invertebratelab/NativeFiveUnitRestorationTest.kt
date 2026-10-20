@@ -124,7 +124,19 @@ class NativeFiveUnitRestorationTest {
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
         // Archived images can still be reviewed outside the student lesson;
         // the mandatory water-vascular master remains a release blocker.
-        for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
+        // Two source-licensed diagrams are now actual student-visible PNGs;
+        // the other two mandatory plates must remain visibly missing.
+        for (plate in listOf("external", "water-vascular-system")) {
+            find(ch, "r2-plate-bitmap-asterias-" + plate)
+            rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertDoesNotExist()
+        }
+        find(ch, "asterias-external-species-provenance")
+        find(ch, "asterias-wvs-legend")
+        find(ch, "r2-plate-expand-asterias-water-vascular-system")
+        rule.onNodeWithTag("r2-plate-expand-asterias-water-vascular-system").performClick()
+        rule.onNodeWithTag("r2-fullscreen-dialog").assertExists()
+        rule.onNodeWithTag("r2-fullscreen-close").performClick()
+        for (plate in listOf("internal", "larval-development")) {
             find(ch, "r2-plate-slot-asterias-" + plate)
             rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertExists()
         }
@@ -159,7 +171,9 @@ class NativeFiveUnitRestorationTest {
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-asterias")
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
-        find(ch, "r2-plate-missing-asterias-water-vascular-system")
+        find(ch, "r2-plate-bitmap-asterias-water-vascular-system")
+        rule.onNodeWithTag("r2-plate-missing-asterias-water-vascular-system").assertDoesNotExist()
+        find(ch, "asterias-wvs-legend")
         find(ch, "restored-section-feeding-and-stomachs")
         find(ch, "restored-section-reproduction-and-larvae")
         capture("unit5-asterias-tamil-late-chapter")
