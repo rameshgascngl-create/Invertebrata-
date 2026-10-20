@@ -572,18 +572,6 @@ private fun ChapterScreen(
                     RequiredTypeStudyPlates(study, language)
                 }
             }
-            // Unit V original source images are visible in the relevant lesson,
-            // once each, as individually titled and explicitly unverified rasters.
-            // Lazy items prevent decoding all sixteen images at once.
-            if (chapter.id == "u5-pila" || chapter.id == "u5-asterias") {
-                val existingFigures = UnitVExistingFigureCatalog.forChapter(chapter.id)
-                item(key = "u5-existing-figures-header") {
-                    UnitVExistingFigureHeader(language, existingFigures.size)
-                }
-                items(existingFigures, key = { "u5-candidate-" + it.assetStem }) { figure ->
-                    UnitVExistingFigureCard(figure, language)
-                }
-            }
             if (chapter.id == "u1-proto-parasites") {
                 item(key = "u15-entamoeba-native-textbook") {
                     UnitIEntamoebaMorphology(language)
@@ -774,14 +762,28 @@ private fun ChapterScreen(
                             color = MaterialTheme.colorScheme.error)
                     }
                 }
-                items(restoredLesson.sections, key = { "restored-section-" + it.id }) { section ->
-                    Column(Modifier.fillMaxWidth().testTag("restored-section-" + section.id),
-                        verticalArrangement = Arrangement.spacedBy(9.dp)) {
-                        Text(section.title.value(language),
-                            style = MaterialTheme.typography.titleLarge)
-                        section.paragraphs.forEach { paragraph ->
-                            Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
+                // Relevant source illustrations follow their OWN explanatory
+                // sections, not a giant image dump or duplicated anatomy.
+                if (chapter.id == "u5-pila" || chapter.id == "u5-asterias") {
+                    item(key = "u5-existing-figures-header") {
+                        UnitVExistingFigureHeader(
+                            language, UnitVExistingFigureCatalog.forChapter(chapter.id).size)
+                    }
+                }
+                restoredLesson.sections.forEach { section ->
+                    item(key = "restored-section-" + section.id) {
+                        Column(Modifier.fillMaxWidth().testTag("restored-section-" + section.id),
+                            verticalArrangement = Arrangement.spacedBy(9.dp)) {
+                            Text(section.title.value(language),
+                                style = MaterialTheme.typography.titleLarge)
+                            section.paragraphs.forEach { paragraph ->
+                                Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
+                            }
                         }
+                    }
+                    val chapterFigures = UnitVExistingFigureCatalog.forSection(chapter.id, section.id)
+                    items(chapterFigures, key = { "u5-candidate-" + it.assetStem }) { figure ->
+                        UnitVExistingFigureCard(figure, language)
                     }
                 }
             }

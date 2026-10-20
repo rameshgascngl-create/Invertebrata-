@@ -71,6 +71,30 @@ internal object UnitVExistingFigureCatalog {
         require(figures.count { it.organism == "pila" } == 12)
         require(figures.count { it.organism == "asterias" } == 4)
     }
+    // A generated file name is not proof of anatomical subject identity:
+    // notably Asterias external_REVIEW is an INTERNAL composite, so it
+    // belongs with the internal-system discussion, never the external view.
+    private val sectionByFigure = mapOf(
+        "pila/01_shell_ventral" to "external",
+        "pila/02_operculum_views" to "external",
+        "pila/03_shell_dorsal" to "external",
+        "pila/04_animal_front" to "external",
+        "pila/08_respiratory_system" to "dual-respiration",
+        "pila/06_buccal_mass" to "radula-and-gut",
+        "pila/07_digestive_system" to "radula-and-gut",
+        "pila/09_circulatory_system" to "heart-and-haemocoel",
+        "pila/05_nervous_system" to "renal-and-sensory",
+        "pila/12_excretory_system" to "renal-and-sensory",
+        "pila/10_male_reproductive" to "reproduction-and-development",
+        "pila/11_female_reproductive" to "reproduction-and-development",
+        "asterias/water_vascular" to "water-vascular",
+        "asterias/external" to "internal",
+        "asterias/digestive" to "feeding-and-stomachs",
+        "asterias/nervous" to "nerve-and-sense"
+    )
+    fun forSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> =
+        forChapter(chapterId).filter { sectionByFigure[it.organism + "/" + it.id] == sectionId }
+
     fun forChapter(chapterId: String): List<UnitVExistingFigure> = when (chapterId) {
         "u5-pila" -> figures.filter { it.organism == "pila" }
         "u5-asterias" -> figures.filter { it.organism == "asterias" }
