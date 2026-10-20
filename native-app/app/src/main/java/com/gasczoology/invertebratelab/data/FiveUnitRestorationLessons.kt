@@ -151,7 +151,14 @@ internal object FiveUnitRestorationLessons {
                 "Classical teaching uses the crossing of certain visceral nerve connections as one consequence of torsion, although nerve organization has diversified extensively among extant gastropods.",
                 "முறுக்கத்தின் விளைவாக சில உட்புற நரம்பு இணைப்புகள் குறுக்காக அமைவது மரபுப் பாடங்களில் குறிப்பிடப்படுகிறது. ஆனால் வாழும் வயிற்றுக்காலிகளில் நரம்பமைப்பு பல்வேறு மாற்றங்களைக் கண்டுள்ளது.",
                 "A correct teaching sequence shows larval orientation before rotation, intermediate rotation and the resulting position of the mantle opening. Avoid portraying one simplified scheme as universal.",
-                "சரியான பாட வரிசையில் முறுக்கத்திற்கு முன் இளம் நிலை, இடைநிலைச் சுழற்சி, அதன் பின் மேன்டில் திறப்பின் இடம் ஆகியவை காட்டப்பட வேண்டும். எளிய ஒரு மாதிரியையே அனைத்துக்கும் பொதுவானதாகக் கருதக் கூடாது.")
+                "சரியான பாட வரிசையில் முறுக்கத்திற்கு முன் இளம் நிலை, இடைநிலைச் சுழற்சி, அதன் பின் மேன்டில் திறப்பின் இடம் ஆகியவை காட்டப்பட வேண்டும். எளிய ஒரு மாதிரியையே அனைத்துக்கும் பொதுவானதாகக் கருதக் கூடாது."),
+            s("sequence-and-implications",
+                "Rotation sequence, sanitation and adaptive interpretations",
+                "சுழற்சி வரிசை, கழிவுநீக்கம் மற்றும் தகவமைப்பு விளக்கங்கள்",
+                "In the familiar textbook model of a prosobranch gastropod, the mantle cavity starts behind the head-foot and is carried toward the anterior during larval torsion, often described as an approximately 180-degree rotation. The position of the anus, ctenidia and mantle opening changes with the visceral complex; actual developmental timing and degree of rotation vary among taxa.",
+                "மரபுப் பாடநூல் மாதிரியில் வயிற்றுக்காலியின் மேன்டில் அறை முதலில் தலை–பாதத்தின் பின்புறத்தில் உள்ளது. இளம்பருவ முறுக்கத்தின் போது உள்ளுறுப்புத் தொகுதி சுமார் 180 பாகை வரை சுழன்று மேன்டில் அறையை முன்புறம் கொண்டுவரலாம். இதனுடன் மலவாய், செவுள் (க்டெனிடியம்), மேன்டில் திறப்பு ஆகியவற்றின் சார்பு இடங்களும் மாறுகின்றன; சுழற்சியின் காலமும் அளவும் உயிரினக் குழுவைப் பொறுத்து மாறுபடும்.",
+                "An anterior mantle cavity creates a potential fouling problem when exhalant water or waste passes near the head. Water-current routing, shell and mantle organization, and secondary anatomical changes help reduce this risk in different gastropods. Proposed evolutionary benefits of torsion remain hypotheses rather than experimentally established universal causes; torsion is not the same process as shell coiling.",
+                "மேன்டில் அறை முன்புறம் வரும்போது வெளியேறும் நீரும் கழிவும் தலைக்கு அருகே செல்லும் வாய்ப்பு இருப்பதால் கழிவு மாசுபாட்டுச் சிக்கல் எழலாம். நீரோட்டத்தின் திசை, மேன்டில் அமைப்பு, பிற உடற்கூறு மாற்றங்கள் பல வயிற்றுக்காலிகளில் இச்சிக்கலைக் குறைக்க உதவுகின்றன. முறுக்கத்தின் பரிணாமப் பயன் குறித்த விளக்கங்கள் எல்லா இனங்களுக்கும் நிரூபிக்கப்பட்ட ஒரே காரணமாகக் கருதப்படக் கூடாது; முறுக்கம் என்பது ஓடு சுருள்வதிலிருந்து வேறுபட்டது.")
         )),
         Chapter("u5-pearl",b("Pearl formation and pearl culture","முத்து உருவாக்கமும் முத்து வளர்ப்பும்"),listOf(
             s("formation",
