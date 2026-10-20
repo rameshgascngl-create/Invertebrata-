@@ -161,9 +161,9 @@ private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
 private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
     // Each concept gets its own PNG slot. No anatomy is drawn in Canvas.
     val stem = when (figure) {
-        "oral" -> "unit1/paramecium_oral"
-        "vacuole" -> "unit1/paramecium_vacuole"
-        "overview" -> "unit1/paramecium_internal"
+        "oral" -> "unit1/concepts/paramecium_oral_apparatus"
+        "vacuole" -> "unit1/concepts/paramecium_osmoregulation"
+        "overview" -> "unit1/concepts/paramecium_nuclear_anatomy"
         "fission" -> "unit1/concepts/paramecium_binary_fission"
         "conjugation" -> "unit1/concepts/paramecium_conjugation"
         else -> null
@@ -248,35 +248,23 @@ internal fun ParameciumTextbookReader(
         }
     }
 
-    // Put the full original hand-drawn, interactive atlas ABOVE the lesson
-    // paragraphs on the first page, instead of burying it after exam questions.
+    // Single canonical anatomical gallery: do not repeat the old photographed
+    // source image on the reader's front page as another chapter plate.
     if (chapter == 0) {
         Button(
             shape = RoundedCornerShape(12.dp),
-            onClick = { plateScope.launch { plateRequester.bringIntoView() } },
+            onClick = onAnatomy,
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                 .testTag("r14-jump-to-pencil-plate"),
         ) {
-            Text(view(language, "VIEW EXTERNAL ANATOMY PNG",
-                "வெளிப்புற உடலமைப்பு PNG படத்தைப் பார்"))
+            Text(view(language, "OPEN THE ANATOMICAL IMAGE SLOTS",
+                "உடற்கூறு படப் பகுதிகளைத் திற"))
         }
-        val externalPng = rememberRequiredRasterBitmap("unit1/paramecium_external", pngOnly = true)
-        if (externalPng != null) {
-            androidx.compose.foundation.Image(
-                bitmap = externalPng,
-                contentDescription = view(language,
-                    "Paramecium external anatomy PNG; organ coordinates pending scientific verification",
-                    "பாரமீசியம் வெளிப்புற உடலமைப்பு PNG; உறுப்பிடங்கள் அறிவியல் ஆய்வில் உள்ளன"),
-                contentScale = androidx.compose.ui.layout.ContentScale.Fit,
-                modifier = Modifier.fillMaxWidth().height(280.dp)
-                    .bringIntoViewRequester(plateRequester)
-                    .testTag("r14-external-png"))
-        } else {
-            Text(view(language, "External anatomy PNG unavailable; no drawing substituted.",
-                "வெளிப்புற உடலமைப்பு PNG இல்லை; மாற்று வரைபடம் காட்டப்படாது."),
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.testTag("r14-external-png-missing"))
-        }
+        Text(view(language,
+            "The repeated photographed pencil image has been withdrawn. Each anatomy slot requires its own scientifically checked raster, displayed only in the relevant gallery.",
+            "மீண்டும் பயன்படுத்தப்பட்ட பழைய புகைப்படக் கையோவியம் நீக்கப்பட்டது. ஒவ்வொரு உறுப்புப் பகுதிக்கும் தனித்த அறிவியல் சரிபார்க்கப்பட்ட படம் தேவை; அது உரிய படத் தொகுப்பில் மட்டுமே காட்டப்படும்."),
+            color = MaterialTheme.colorScheme.error,
+            modifier = Modifier.testTag("u60-retired-repeated-paramecium-image"))
     }
 
     OutlinedButton(shape = RoundedCornerShape(12.dp), onClick = { contentsExpanded = !contentsExpanded },
