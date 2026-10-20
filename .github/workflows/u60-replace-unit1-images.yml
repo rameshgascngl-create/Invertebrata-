@@ -6,6 +6,9 @@ name: U60 replace rejected Unit I raster figures
     paths:
       - .github/workflows/u60-replace-unit1-images.yml
       - ci/replace_unit1_unwanted_images.py
+      - .github/scripts/run-u60-replaced-image-qa.sh
+      - native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeU60ReplacementImageTest.kt
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt
       - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumRasterAtlas.kt
       - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIFlagellateTypeStudies.kt
       - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIProtozoaReferenceGallery.kt
@@ -21,7 +24,7 @@ concurrency:
 jobs:
   build-actual-replacement-figures:
     runs-on: ubuntu-24.04
-    timeout-minutes: 65
+    timeout-minutes: 110
     steps:
       - uses: actions/checkout@v4
         with:
@@ -66,9 +69,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add native-app/app/src/main/assets/unit1 native-app/app/src/main/assets/type_studies/paramecium
           git diff --cached --stat
-          git diff --cached --quiet && { echo "ERROR: No actual raster bytes changed"; exit 1; }
-          git commit -m "assets(unit1): replace six rejected images with pinned documented source rasters [skip ci]"
-          git push origin HEAD:native/u60-replace-unit1-unwanted-images-20261020
+          if git diff --cached --quiet; then
+            echo "Pinned replacement assets already match source manifest; no duplicate commit"
+          else
+            git commit -m "assets(unit1): replace six rejected images with pinned documented source rasters [skip ci]"
+            git push origin HEAD:native/u60-replace-unit1-unwanted-images-20261020
+          fi
           echo "COMMITTED_ACTUAL_ASSETS_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - uses: actions/setup-java@v4
         with:
@@ -86,6 +92,28 @@ jobs:
           name: u60-SIX-REPLACED-IMAGES-UNAPPROVED-debug-apk
           path: native-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify actual new PNGs in Compose and Tamil screens at 100% and 200%
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-u60-replaced-image-qa.sh
+      - name: Archive actual device screenshot PNGs and JUnit XML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u60-replaced-image-android100-200-evidence
+          path: qa-evidence/u60-replaced-images/
+          if-no-files-found: warn
       - name: Print exact image commit and release constraints
         if: always()
         run: |
