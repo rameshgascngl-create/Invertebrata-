@@ -1,0 +1,120 @@
+name: U60 native 43-chapter textbook and truthful image routing
+'on':
+  push:
+    branches:
+      - native/u60-43chapter-content-image-qa-20261020
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: u60-textbook-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kotlin-manuscript:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Guard student-facing image paths against known repeated rasters
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui')
+          atlas=(base/'ParameciumRasterAtlas.kt').read_text()
+          plates=(base/'RequiredTypeStudyPlates.kt').read_text()
+          processes=(base/'ParameciumProcessPng.kt').read_text()
+          reader=(base/'ParameciumTextbookReader.kt').read_text()
+          flags=(base/'UnitIFlagellateTypeStudies.kt').read_text()
+          gallery=(base/'UnitIProtozoaReferenceGallery.kt').read_text()
+          app=(base/'InvertebrataApp.kt').read_text()
+          assert 'unit1/paramecium_'+chr(34) not in atlas
+          assert 'unit1/paramecium_external' not in reader
+          assert 'unit1/paramecium_oral' not in reader
+          assert 'unit1/paramecium_vacuole' not in reader
+          assert 'unit1/paramecium_external' not in processes
+          assert 'unit1/paramecium_vacuole' not in processes
+          assert 'unit1/paramecium_oral' not in processes
+          assert 'unit1/replacements/paramecium_' in plates
+          assert 'unit1/replacements/paramecium_' in atlas
+          assert 'unit1/replacements/' in flags
+          assert 'ProtozoaReference("trypanosoma"' not in gallery
+          assert 'ProtozoaReference("leishmania"' not in gallery
+          assert 'UnitIOriginalPencilMasterIntake(' not in app
+          assert 'if (chapter.id == "u1-host-parasite")' in app
+          masters=Path('native-app/app/src/main/assets/unit1/replacements')
+          expected=['paramecium_external-cilia.png','paramecium_oral-apparatus.png',
+                    'paramecium_contractile-vacuoles.png','paramecium_locomotion.png',
+                    'trypanosoma_morphology.png','leishmania_morphology.png']
+          missing=[x for x in expected if not (masters/x).is_file()]
+          print('STUDENT_LEGACY_ARTWORK_WITHDRAWN=PASS')
+          print('REQUIRED_REPLACEMENT_PNGS_MISSING=' + ','.join(missing))
+          print('ACADEMIC_IMAGE_ACCEPTANCE=HOLD')
+          PY
+      - name: Compile Kotlin, instrumentation classes and run complete local JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble unapproved debug QA APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve exact-commit debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: u60-43chapter-UNAPPROVED-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  emulator:
+    needs: kotlin-manuscript
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify no obsolete student figures, and bilingual 100/200 percent font layouts
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-u60-unit1-image-routing.sh
+      - name: Preserve Android screenshots, XML and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u60-unit1-image-routing-100-200-evidence
+          path: qa-evidence/u60-unit1/
+          if-no-files-found: warn
+
+  release-hold:
+    if: always()
+    needs: [kotlin-manuscript, emulator]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Keep academic and physical handset approval open
+        run: |
+          echo "43-chapter draft completeness is NOT zoological and Tamil approval."
+          echo "Distinct replacement PNGs not yet checked in: release blocked."
+          echo "Physical Android phone screenshot inspection: pending."
+          echo "Do not merge or publish to Play/Indus without academic anatomy and device QA."
