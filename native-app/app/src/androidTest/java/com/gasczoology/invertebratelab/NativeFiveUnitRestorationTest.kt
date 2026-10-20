@@ -102,8 +102,16 @@ class NativeFiveUnitRestorationTest {
             rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
         }
         capture("unit5-pila-tamil-missing-plates")
-        find(ch, "restored-section-mantle")
-        find(ch, "restored-section-organs")
+        // At both 100% and 200% Tamil fonts, traverse EVERY substantive
+        // Pila section; no earlier two-section preview may silently return.
+        for (section in listOf(
+            "external", "mantle", "organs", "dual-respiration",
+            "radula-and-gut", "heart-and-haemocoel", "renal-and-sensory",
+            "reproduction-and-development", "torsion-in-pila"
+        )) {
+            find(ch, "restored-section-" + section)
+        }
+        capture("unit5-pila-tamil-final-lesson")
         find(ch, "restoration-a5-heading")
         find(ch, "a5-card-u5-pila-A5-1")
     }
@@ -116,9 +124,45 @@ class NativeFiveUnitRestorationTest {
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
         // Archived images can still be reviewed outside the student lesson;
         // the mandatory water-vascular master remains a release blocker.
-        find(ch, "r2-plate-missing-asterias-water-vascular-system")
+        for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
+            find(ch, "r2-plate-slot-asterias-" + plate)
+            rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertExists()
+        }
         capture("unit5-asterias-english-missing-plate")
-        find(ch, "restored-section-water-vascular")
+        for (section in listOf(
+            "external", "water-vascular", "internal", "feeding-and-stomachs",
+            "body-wall-and-pedicellariae", "respiration-and-wastes",
+            "nerve-and-sense", "reproduction-and-larvae"
+        )) {
+            find(ch, "restored-section-" + section)
+        }
+        capture("unit5-asterias-english-final-lesson")
+        find(ch, "restoration-a5-heading")
+        find(ch, "a5-card-u5-asterias-A5-1")
+    }
+
+    @Test fun unitFivePilaEnglishNavigatesLastChapterSectionWithoutRejectedImages() {
+        val ch = "u5-pila"
+        enter(5, ch, false)
+        find(ch, "r2-type-study-gallery-pila")
+        rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
+        find(ch, "r2-plate-missing-pila-mantle-cavity")
+        find(ch, "restored-section-reproduction-and-development")
+        find(ch, "restored-section-torsion-in-pila")
+        capture("unit5-pila-english-late-chapter")
+        find(ch, "restoration-a5-heading")
+        find(ch, "a5-card-u5-pila-A5-1")
+    }
+
+    @Test fun unitFiveAsteriasTamilNavigatesLastChapterSectionWithoutRejectedImages() {
+        val ch = "u5-asterias"
+        enter(5, ch, true)
+        find(ch, "r2-type-study-gallery-asterias")
+        rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
+        find(ch, "r2-plate-missing-asterias-water-vascular-system")
+        find(ch, "restored-section-feeding-and-stomachs")
+        find(ch, "restored-section-reproduction-and-larvae")
+        capture("unit5-asterias-tamil-late-chapter")
         find(ch, "restoration-a5-heading")
         find(ch, "a5-card-u5-asterias-A5-1")
     }
