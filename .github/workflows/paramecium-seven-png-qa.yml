@@ -6,6 +6,7 @@ on:
       - 'native-app/app/src/main/assets/unit1/paramecium_*.png'
       - 'native-app/app/src/main/assets/type_studies/paramecium/*.png'
       - '.github/workflows/paramecium-seven-png-qa.yml'
+      - '.github/scripts/run-u58-paramecium-context-png.sh'
   workflow_dispatch:
 permissions:
   contents: read
