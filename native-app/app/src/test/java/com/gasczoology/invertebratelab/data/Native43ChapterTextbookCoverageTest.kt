@@ -157,6 +157,49 @@ class Native43ChapterTextbookCoverageTest {
             .all { reproduction.contains(it) })
     }
 
+    @Test fun unitFourArthropodaCoversClassLevelComparisonsWithoutOverclaimingRanks() {
+        val chapter = UnitIVSupplementaryLessons.byId.getValue("u4-arthropoda")
+        val byId = chapter.sections.associateBy { it.id }
+        assertTrue(chapter.sections.size >= 6)
+        val chelicerates = byId.getValue("chelicerate-myriapod-classes")
+        val pancrustacea = byId.getValue("crustacean-hexapod-classes")
+        for (section in listOf(chelicerates, pancrustacea)) {
+            assertEquals(2, section.paragraphs.size)
+            assertTrue(section.title.english.isNotBlank() && section.title.tamil.isNotBlank())
+            assertTrue(section.paragraphs.all { it.english.length >= 200 && it.tamil.length >= 140 })
+        }
+        val text = (chelicerates.paragraphs + pancrustacea.paragraphs)
+            .joinToString(" ") { it.english }
+        for (taxon in listOf("Arachnida", "Chilopoda", "Diplopoda", "Symphyla",
+                "Pauropoda", "Malacostraca", "Branchiopoda", "Copepoda",
+                "Ostracoda", "Insecta", "Trilobita", "Pancrustacea")) {
+            assertTrue("Missing Arthropoda class comparison: " + taxon, text.contains(taxon))
+        }
+        assertTrue(chapter.reading.any { it.startsWith("https://") })
+    }
+
+    @Test fun unitFiveMolluscaExplicitlyDistinguishesSevenAndEightClassSchemes() {
+        val lesson = FiveUnitRestorationLessons.byId.getValue("u5-mollusca")
+        val byId = lesson.sections.associateBy { it.id }
+        assertTrue(lesson.sections.size >= 5)
+        val seven = byId.getValue("traditional-seven-classes")
+        val eight = byId.getValue("modern-eight-classes")
+        for (section in listOf(seven, eight)) {
+            assertEquals(2, section.paragraphs.size)
+            assertTrue(section.title.english.isNotBlank() && section.title.tamil.isNotBlank())
+            assertTrue(section.paragraphs.all { it.english.length >= 220 && it.tamil.length >= 150 })
+        }
+        val classical = seven.paragraphs.joinToString(" ") { it.english }
+        for (taxon in listOf("Aplacophora", "Polyplacophora", "Monoplacophora",
+                "Gastropoda", "Bivalvia", "Scaphopoda", "Cephalopoda")) {
+            assertTrue("Missing classical molluscan class: " + taxon, classical.contains(taxon))
+        }
+        val contemporary = eight.paragraphs.joinToString(" ") { it.english }
+        assertTrue(contemporary.contains("Solenogastres"))
+        assertTrue(contemporary.contains("Caudofoveata"))
+        assertTrue(contemporary.contains("eight, not eight plus Aplacophora"))
+    }
+
     @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
         val paramecium = NativeLessonDrafts.paramecium
         assertEquals("u1-paramecium", paramecium.lessonId)
