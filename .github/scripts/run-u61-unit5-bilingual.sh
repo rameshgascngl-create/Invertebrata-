@@ -57,7 +57,7 @@ for font in 100 200; do
     unit5-pila-english-late-chapter \
     unit5-asterias-tamil-late-chapter \
     unit4-penaeus-tamil-missing-appendages; do
-    [[ -s "$E/captured-final/five-unit-qa/r2-$font-$scene.png" ]] || {
+    [[ -s "$E/captured-final/r2-$font-$scene.png" ]] || {
       result="MISSING_SCREENSHOT_$font-$scene"; exit 1;
     }
   done
