@@ -24,18 +24,25 @@ origins={
 
 def retrieve(key):
     link,sha1,dims=origins[key]
+    from urllib.parse import urlsplit
+    filename=link.rsplit("/",1)[-1]
+    stripped=link.replace("https://","").replace("http://","")
     candidates=[
       ("original",link),
-      ("image_proxy", "https://wsrv.nl/?url="+quote(link,safe="")+"&output=jpg&q=100"),
+      ("commons_redirect","https://commons.wikimedia.org/wiki/Special:Redirect/file/"+filename),
+      ("image_proxy","https://wsrv.nl/?url="+quote(link,safe="")+"&output=jpg&q=100"),
+      ("image_proxy_noscheme","https://wsrv.nl/?url="+quote(stripped,safe="")+"&output=jpg&q=100"),
+      ("weserv_proxy","https://images.weserv.nl/?url="+quote(stripped,safe="")+"&output=jpg&q=100"),
+      ("allorigins_raw","https://api.allorigins.win/raw?url="+quote(link,safe="")),
     ]
     issues=[]
     for method,url in candidates:
         try:
-            request=Request(url,headers={"User-Agent":"Mozilla/5.0 (INVERTEBRATA zoology source illustration retrieval)", "Accept":"image/*"})
+            request=Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; INVERTEBRATA public-domain zoology asset importer)", "Accept":"image/jpeg,image/*"})
             with urlopen(request,timeout=45) as f:
                 data=f.read(8000000)
             digest=hashlib.sha1(data).hexdigest()
-            if method=="original" and digest!=sha1:
+            if method in ("original","commons_redirect","allorigins_raw") and digest!=sha1:
                 raise ValueError("Unexpected source digest "+digest+" expected "+sha1)
             image=Image.open(BytesIO(data));image.load()
             assert image.size==dims,(key,image.size)
