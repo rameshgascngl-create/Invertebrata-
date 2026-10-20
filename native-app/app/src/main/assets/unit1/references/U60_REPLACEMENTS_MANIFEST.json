@@ -1,0 +1,50 @@
+[
+  {
+    "id": "paramecium_external",
+    "path": "unit1/paramecium_external.png",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Paramecium_diagram.png",
+    "source_sha1": "9690f7018985923cb02f94530e6a61313ffeb784",
+    "output_sha256": "3af5302e164b9a9e2bcddf4bd372d3538a44a2e7630345688ac98db3665e7b66",
+    "license_or_rights": "Deuterostome, CC BY-SA 4.0"
+  },
+  {
+    "id": "paramecium_oral",
+    "path": "unit1/paramecium_oral.png",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Paramecium_Anatomy.svg",
+    "source_sha1": "813c6f4266cb68b2f632a4622a565785eeee410e",
+    "output_sha256": "3442c15c5746bec2d8b6b0fa240d5df674fa74d2ed79165d88861d77795c9051",
+    "license_or_rights": "Ciarachristina, CC BY-SA 3.0"
+  },
+  {
+    "id": "paramecium_internal",
+    "path": "unit1/paramecium_internal.png",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Paramecium_sp%2BNr.svg",
+    "source_sha1": "b693f7955103ae3be6801a63ce2f426c8ddb4ce7",
+    "output_sha256": "39023e6920926303a123ed014e27a8d58841ab568ededd3c1a2cba7fa0ebb707",
+    "license_or_rights": "Karlis Kalviskis, CC BY-SA 4.0"
+  },
+  {
+    "id": "paramecium_vacuole",
+    "path": "unit1/paramecium_vacuole.png",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Contractile_Vacuole_In_Paramecium.gif",
+    "source_sha1": "531bf47b511ad7cf4437c32ab0ee370982f95073",
+    "output_sha256": "46b81461222a4a36b37f707c0bb89b6cf7d64564966271d53609d3a12b95d92f",
+    "license_or_rights": "Katyddd, CC BY-SA 4.0"
+  },
+  {
+    "id": "trypanosoma",
+    "path": "unit1/references/trypanosoma.png",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Trypanosoma_African_life_cycle_CDC.jpg",
+    "source_sha1": "6d679576bd38e7c7f9e61e3d605af9ced5ea0e31",
+    "output_sha256": "e895d2b5def99bed5a720389d94aa57db04321a8c1c8b829e22b24e59945c7c5",
+    "license_or_rights": "CDC DPDx, US public domain"
+  },
+  {
+    "id": "leishmania",
+    "path": "unit1/references/leishmania.png",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Leishmania_LifeCycle.gif",
+    "source_sha1": "dc86a4f4f56c8a7b6df3db83ec8aaad3a5999184",
+    "output_sha256": "d4931b75af23f62b3a20201d3a412233e8757077c28302fa68adab4370c60d8f",
+    "license_or_rights": "CDC DPDx, US public domain"
+  }
+]
