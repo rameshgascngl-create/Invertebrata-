@@ -300,7 +300,21 @@ internal object FiveUnitRestorationLessons {
                 "Tube feet extend and retract through coordinated fluid displacement and muscular activity. Adhesive mechanisms and substrate contact aid crawling, feeding and attachment.",
                 "குழாய்க்கால்களின் நீட்டலும் சுருக்கமும் திரவ இடமாற்றம் மற்றும் தசைச் செயலால் ஒருங்கிணைகின்றன. ஒட்டுதல் மற்றும் அடித்தளத் தொடர்பு ஊர்தல், உணவெடுப்பு, பற்றுதல் ஆகியவற்றுக்கு உதவுகின்றன.",
                 "For Asterias anatomy, a correct plate distinguishes ring canal, radial canal, lateral canal, ampulla, podium and associated Tiedemann bodies where visible. A schematic must not claim direct specimen accuracy.",
-                "அஸ்டீரியாஸ் உடற்கூறில் வளையக்குழாய், ஆரக்குழாய், பக்கக்குழாய், ஆம்புல்லா, குழாய்க்கால், காணப்படும் டீடெமன் உடல்கள் ஆகியவை வேறுபடுத்தப்பட வேண்டும். பொதுப் படம் உண்மையான மாதிரி அளவீடாகக் கூறப்படக் கூடாது.")
+                "அஸ்டீரியாஸ் உடற்கூறில் வளையக்குழாய், ஆரக்குழாய், பக்கக்குழாய், ஆம்புல்லா, குழாய்க்கால், காணப்படும் டீடெமன் உடல்கள் ஆகியவை வேறுபடுத்தப்பட வேண்டும். பொதுப் படம் உண்மையான மாதிரி அளவீடாகக் கூறப்படக் கூடாது."),
+            s("hydraulic-cycle",
+                "Stepwise tube-foot extension, attachment and withdrawal",
+                "குழாய்க்காலின் நீட்சி, பற்றுதல், மீட்சி: படிநிலைகள்",
+                "When muscles surrounding an ampulla contract, fluid is displaced into its connected podium and the tube foot extends. The terminal disc contacts the substratum and can establish temporary adhesion using secreted adhesive substances; attachment is not adequately explained as simple suction in every sea star.",
+                "ஆம்புல்லாவைச் சுற்றிய தசைகள் சுருங்கும்போது அதிலுள்ள திரவம் இணைந்த குழாய்க்காலுக்குள் செலுத்தப்படுகிறது; இதனால் குழாய்க்கால் நீள்கிறது. அதன் முனைவட்டு அடித்தளத்தைத் தொட்டு சுரக்கும் ஒட்டும் பொருட்களின் உதவியால் தற்காலிகப் பற்றுதலை ஏற்படுத்தலாம். எல்லா நட்சத்திரமீன்களிலும் பற்றுதல் வெறும் உறிஞ்சும் விசையால் மட்டுமே நிகழ்கிறது என்று கூறுவது சரியல்ல.",
+                "Coordinated contractions of the podium and associated muscles, changes in fluid distribution, and controlled release of adhesion allow the foot to withdraw and move to a new position. Repeated cycles across many podia produce locomotion and help maintain grip during prey handling. The madreporite is not a pump that drives each individual step.",
+                "குழாய்க்காலின் தசைச் சுருக்கம், திரவப் பகிர்வில் மாற்றம், ஒட்டுதலைக் கட்டுப்படுத்தி விடுவித்தல் ஆகியவை குழாய்க்காலை மீட்டு புதிய இடத்தில் வைக்க உதவுகின்றன. பல குழாய்க்கால்களின் ஒருங்கிணைந்த சுழற்சிகள் இடப்பெயர்ச்சிக்கும் இரையைக் கையாளும் போது பற்றுதலைப் பேணுவதற்கும் உதவுகின்றன. ஒவ்வொரு அடியையும் மேட்ரிபோரைட் தனியாகப் பம்ப் செய்து இயக்குவதில்லை."),
+            s("system-organization",
+                "Fluid pathways and anatomical distinctions",
+                "திரவப் பாதைகளும் உடற்கூறு வேறுபாடுகளும்",
+                "A typical pathway is madreporite, stone canal, circumoral ring canal, radial canals and lateral canals leading to ampullae and podia. The system contains coelomic fluid; it should not be represented as an open seawater pipe with unrestricted flow from the madreporite directly into every tube foot.",
+                "வழக்கமான இணைப்புப் பாதை மேட்ரிபோரைட், கற்குழாய், வாயைச் சுற்றிய வளையக்குழாய், ஆரக்குழாய்கள், பக்கக்குழாய்கள், ஆம்புல்லா, குழாய்க்கால்கள் என்பதாகும். இவ்வமைப்பில் உடற்குழித் திரவம் உள்ளது; கடல்நீர் மேட்ரிபோரைட்டிலிருந்து ஒவ்வொரு குழாய்க்காலுக்கும் தடையின்றி நேரடியாகப் பாயும் திறந்த குழாயாக இதைக் காட்டக் கூடாது.",
+                "Tiedemann bodies are associated with the ring canal, whereas Polian vesicles vary in presence and number across echinoderm groups and should not be added to an Asterias plate without species-specific evidence. Distinguish the internal ampulla from the external podium, and identify the ambulacral groove on the oral side of an arm.",
+                "டீடெமன் உடல்கள் வளையக்குழாயுடன் தொடர்புடையவை. போலியன் பைகள் முள்தோலி குழுக்களிடையே இருப்பிலும் எண்ணிக்கையிலும் மாறுபடுவதால், இனத்திற்குரிய சான்றின்றி அஸ்டீரியாஸ் படத்தில் சேர்க்கக் கூடாது. உட்புற ஆம்புல்லாவையும் வெளிப்புறக் குழாய்க்காலையும் வேறுபடுத்தி, கரத்தின் வாய்ப்புறத்தில் உள்ள அம்புலாக்ரல் பள்ளத்தையும் அடையாளம் காண வேண்டும்.")
         )),
         Chapter("u5-cephalopods",b("Cephalopods: organization and adaptations","தலைக்காலிகள்: அமைப்பும் தகவமைப்புகளும்"),listOf(
             s("anatomy",
