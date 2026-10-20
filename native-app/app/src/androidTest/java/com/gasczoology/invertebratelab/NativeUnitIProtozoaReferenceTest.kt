@@ -89,6 +89,16 @@ class NativeUnitIProtozoaReferenceTest {
                 actual > 195f * rule.activity.resources.displayMetrics.density)
             screenshot("plasmodium-"+phase+"-english")
         }
+        // Verify actual raster magnification, not just reduced text around the plate.
+        rule.onNodeWithTag("u1-reference-expanded-bitmap")
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Zoom 1.0x"))
+        rule.onNodeWithTag("u1-reference-image-priority").performClick()
+        rule.onNodeWithTag("u1-reference-expanded-bitmap")
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Zoom 1.5x"))
+        screenshot("plasmodium-blood-larger-image-tamil")
+        rule.onNodeWithTag("u1-reference-image-priority").performClick()
+        rule.onNodeWithTag("u1-reference-expanded-bitmap")
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Zoom 1.0x"))
         rule.onNodeWithTag("u1-plasmodium-phase-blood").performClick()
         rule.onNodeWithTag("u1-plasmodium-details-open").performClick()
         rule.onNodeWithTag("u1-plasmodium-details-dialog").assertExists()
