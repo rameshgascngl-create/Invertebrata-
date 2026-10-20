@@ -43,16 +43,16 @@ assert len(cases)==6,("EXPECTED_SIX_UI_TESTS",len(cases))
 assert all(c.get("classname")==expected for c in cases)
 errors=[(c.get("name"),n) for c in cases for n in ("failure","error","skipped") if c.find(n) is not None]
 assert not errors,errors
-print("UNIT_V_BILINGUAL_SCROLLING_AND_MISSING_PLATES=PASS",len(cases))
+print("UNIT_V_BILINGUAL_READER_WITH_EXISTING_SOURCE_IMAGES=PASS",len(cases))
 PY
 done
 adb pull "$D" "$E/captured-final" > "$E/pull-final.log"
 for font in 100 200; do
   for scene in \
     unit1-protozoa-english \
-    unit5-pila-tamil-missing-plates \
+    unit5-pila-tamil-existing-plates \
     unit5-pila-tamil-final-lesson \
-    unit5-asterias-english-missing-plate \
+    unit5-asterias-english-existing-plates \
     unit5-asterias-english-final-lesson \
     unit5-pila-english-late-chapter \
     unit5-asterias-tamil-late-chapter \
@@ -63,4 +63,4 @@ for font in 100 200; do
   done
 done
 find "$E/captured-final" -name '*.png' -type f -print0 | xargs -0 -r sha256sum > "$E/screenshot-sha256.txt"
-result="API34_100_200_BILINGUAL_UI_PASS_ACADEMIC_IMAGES_PENDING"
+result="API34_100_200_BILINGUAL_IMAGE_ROUTING_PASS_SCIENTIFIC_APPROVAL_PENDING"
