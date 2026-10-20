@@ -39,8 +39,8 @@ private val flagellateStudies = listOf(
         id = "trypanosoma",
         titleEn = "Trypanosoma brucei — structure, movement and host–vector cycle",
         titleTa = "டிரிப்பனோசோமா புரூசை — அமைப்பு, இயக்கம், ஓம்புயிரி–கடத்தி சுழற்சி",
-        imageEn = "Attributed source illustration of a trypomastigote; not an approved pencil anatomical drawing",
-        imageTa = "டிரிப்போமாஸ்டிகோட் ஆதார விளக்கப்படம்; அங்கீகரிக்கப்பட்ட பென்சில் உடலமைப்புப் படமல்ல",
+        imageEn = "Bloodstream trypomastigote figure requires a validated nucleus, posterior kinetoplast, undulating membrane and anterior free flagellum.",
+        imageTa = "இரத்த டிரிப்போமாஸ்டிகோட் படத்தில் உட்கரு, பின்புறக் கைனெட்டோபிளாஸ்ட், அலைவுச் சவ்வு, முன்புறச் சுதந்திரக் கசையிழை சரியாகக் காட்டப்பட வேண்டும்.",
         stages = listOf(
             FlagellateStage("morphology", "1. Bloodstream trypomastigote: identifying structures",
                 "1. இரத்த டிரிப்போமாஸ்டிகோட்: அடையாள அமைப்புகள்",
@@ -59,15 +59,15 @@ private val flagellateStudies = listOf(
                 "T. brucei is spread by bites of infected tsetse flies and has multiplying extracellular stages in mammals. T. cruzi is associated with triatomine bugs; infective forms from bug faeces can enter through skin breaks or mucosa, and intracellular amastigotes multiply in mammalian tissues. These are different transmission and tissue cycles.",
                 "T. brucei தொற்று ட்ஸெட்ஸெ ஈ கடியால் பரவுகிறது; பாலூட்டியில் செல்லுக்கு வெளியே பெருகும் நிலைகள் உள்ளன. T. cruzi தொற்று ட்ரையட்டோமைன் பூச்சியின் மலத்திலுள்ள தொற்று நிலைகள் தோல் காயம் அல்லது சளிச்சவ்வு வழி நுழைவதால் ஏற்படலாம்; பாலூட்டி திசுக்களில் செல்லுக்குள்ளான அமாஸ்டிகோட்டுகள் பெருகுகின்றன. இவை வெவ்வேறு பரவும் முறைகளும் திசுச் சுழற்சிகளும் ஆகும்."),
         ),
-        credit = "Johannahoog · CC BY-SA 3.0 · source reference only",
+        credit = "Organism-specific replacement PNG: morphology, Tamil labels and provenance pending verification",
         source = "https://www.cdc.gov/dpdx/trypanosomiasisAfrican/index.html",
     ),
     FlagellateStudy(
         id = "leishmania",
         titleEn = "Leishmania spp. — amastigote, promastigote and sand-fly cycle",
         titleTa = "லீஷ்மேனியா இனங்கள் — அமாஸ்டிகோட், புரோமாஸ்டிகோட், மணல் ஈச் சுழற்சி",
-        imageEn = "Genus-level amastigote source illustration; no promastigote is depicted in this image",
-        imageTa = "பேரின அளவிலான அமாஸ்டிகோட் விளக்கப்படம்; இப்பகுதியில் புரோமாஸ்டிகோட் காட்டப்படவில்லை",
+        imageEn = "Two different Leishmania forms require clearly distinct macrophage amastigote and sand-fly promastigote morphology.",
+        imageTa = "லீஷ்மேனியாவின் மேக்ரோபேஜ் அமாஸ்டிகோட், மணல் ஈ புரோமாஸ்டிகோட் ஆகிய இரு வேறுபட்ட வடிவங்களும் தனித்துப் படம் பெற வேண்டும்.",
         stages = listOf(
             FlagellateStage("morphology", "1. Intracellular amastigote: nucleus and kinetoplast",
                 "1. செல்லுக்குள்ளான அமாஸ்டிகோட்: உட்கரு மற்றும் கைனெட்டோபிளாஸ்ட்",
@@ -86,7 +86,7 @@ private val flagellateStudies = listOf(
                 "Leishmania species are not reliably distinguishable by amastigote morphology alone. Tissue microscopy may demonstrate compatible amastigotes, but species identification requires further methods when clinically needed. Distinguish the sand fly vector from the tsetse fly vector of African trypanosomiasis.",
                 "அமாஸ்டிகோட்டின் வடிவத்தை மட்டும் கொண்டு லீஷ்மேனியா இனங்களை நம்பகமாக வேறுபடுத்த முடியாது. திசு நுண்ணோக்கியில் ஒத்த அமாஸ்டிகோட்டுகள் தெரியலாம்; மருத்துவத் தேவைக்கேற்ப இன அடையாளத்திற்கு கூடுதல் சோதனைகள் வேண்டும். ஆப்பிரிக்க டிரிப்பனோசோமியாசிஸைப் பரப்பும் ட்ஸெட்ஸெ ஈயிலிருந்து மணல் ஈயை வேறுபடுத்திக் கற்க வேண்டும்."),
         ),
-        credit = "NIAID / Ryan Kissinger · public-domain reference",
+        credit = "Organism-specific replacement PNG: morphology, Tamil labels and provenance pending verification",
         source = "https://www.cdc.gov/dpdx/leishmaniasis/",
     ),
 )
@@ -124,7 +124,9 @@ internal fun UnitIFlagellateTypeStudiesHeader(language: AppLanguage) {
 internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage) {
     val study = flagellateStudies.single { it.id == id }
     val tamil = language == AppLanguage.TAMIL
-    val bitmap = rememberRequiredRasterBitmap("unit1/references/" + study.id, pngOnly = true)
+    // Legacy source cartoons remain archived but are not valid anatomy masters.
+    // Only dedicated replacement assets may populate the student illustration slot.
+    val bitmap = rememberRequiredRasterBitmap("unit1/replacements/" + study.id + "_morphology", pngOnly = true)
     var expanded by rememberSaveable(study.id) { mutableStateOf(false) }
     Card(modifier = Modifier.fillMaxWidth().testTag("u17-study-" + study.id)) {
         Column(
@@ -138,8 +140,8 @@ internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage)
             )
             if (bitmap == null) {
                 Text(
-                    if (tamil) "குறிப்பிட்ட ஆதாரப் படம் கிடைக்கவில்லை; தவறான மாற்றுப் படம் உருவாக்கப்படாது."
-                    else "Cited PNG not present. No substitute drawing is generated.",
+                    if (tamil) "பழைய தவறான விளக்கப்படம் மாணவர் பாடத்திலிருந்து நீக்கப்பட்டது. தனித்த அறிவியல்பூர்வ PNG படம், தமிழ் குறியீடுகள், ஆதாரம் சரிபார்க்கப்பட்ட பின்பே காட்டப்படும்."
+                    else "The outdated source illustration was withdrawn. This organism needs its own reviewed anatomical PNG and Tamil labels; the detailed lesson and lifecycle remain available.",
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u17-image-missing-" + study.id),
                 )
