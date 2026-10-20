@@ -269,8 +269,8 @@ internal fun ExpandedProtozoaReferenceImage(
                 }
                 if(missingFocusCrop) {
                     Text(
-                        if(tamil) "தேர்ந்தெடுத்த நிலையின் விளக்கம் மேலே உள்ளது. கீழே முழு வாழ்க்கைச் சுழற்சிப் படம் காட்டப்படுகிறது."
-                        else "The selected stage is explained above. The complete life-cycle diagram remains displayed below.",
+                        if(tamil) "கீழே முழு வாழ்க்கைச் சுழற்சிப் படம்."
+                        else "Full life-cycle plate below.",
                         color=MaterialTheme.colorScheme.error,
                         style=MaterialTheme.typography.labelSmall,
                         modifier=Modifier.testTag("u1-plasmodium-focus-crop-pending"),
