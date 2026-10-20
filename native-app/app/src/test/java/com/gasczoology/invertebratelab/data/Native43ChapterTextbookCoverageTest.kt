@@ -99,6 +99,27 @@ class Native43ChapterTextbookCoverageTest {
         }
     }
 
+    @Test fun allNineTypeStudiesHaveDepthAppropriateToOrganismStudy() {
+        // Minimum manuscript depth is an engineering coverage requirement,
+        // not zoological image or Tamil editorial acceptance.
+        val expected = NativeCurriculumManifest.typeStudies.map { it.organismId }
+        assertEquals(listOf("paramecium","sycon","obelia","fasciola","ascaris",
+            "earthworm","penaeus","pila","asterias"), expected)
+        assertTrue(NativeLessonDrafts.paramecium.sections.size >= 10)
+        for (id in listOf("u2-sycon","u2-obelia")) {
+            assertTrue(UnitIILessons.chapters.getValue(id).sections.size >= 6)
+        }
+        for (id in listOf("u3-fasciola","u3-ascaris")) {
+            assertTrue(UnitIIILessons.chapters.getValue(id).sections.size >= 6)
+        }
+        assertTrue(UnitIVEarthwormLessons.lesson.sections.size >= 10)
+        assertTrue(UnitIVNereisLessons.sections.size >= 14)
+        assertTrue(UnitIVPenaeusTeaching.sections.size >= 12)
+        assertTrue(FiveUnitRestorationLessons.byId.getValue("u5-pila").sections.size >= 8)
+        assertTrue(FiveUnitRestorationLessons.byId.getValue("u5-asterias").sections.size >= 8)
+        assertTrue(FiveUnitRestorationLessons.byId.getValue("u5-wvs").sections.size >= 4)
+    }
+
     @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
         val paramecium = NativeLessonDrafts.paramecium
         assertEquals("u1-paramecium", paramecium.lessonId)
