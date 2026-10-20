@@ -247,7 +247,7 @@ object UnitIILessons {
                 "பிசாலியா போன்ற சில சைஃபோனோஃபோர்களில் வேலைப்பகிர்வு அதிகமாகச் சிறப்புபெற்ற பாலிப்புகள் உள்ளன. அவற்றின் அமைப்பை ஒபீலியா கூட்டிற்கு அப்படியே பொருத்தக்கூடாது.",
                 "Polyp-to-medusa alternation describes life-history organization, while colony polymorphism describes simultaneous specialization among connected zooids. These are related but distinct concepts.",
                 "பாலிப்–மெடூசா பருவமாற்றம் வாழ்க்கைச் சுழற்சியை விளக்குகிறது; கூட்டு பலவடிவத்தன்மை ஒரே கூட்டில் இணைந்த பாலிப்புகளின் வேலைப்பிரிவைக் குறிக்கிறது. இவை தொடர்புடைய வேறுபட்ட கருத்துகள்.",CNIDARIA),
-            section("division-of-labour",
+            section("colony-versus-alternation",
                 "Zooid specialization versus polyp–medusa alternation",
                 "பாலிப் வேலைப்பிரிவும் பாலிப்–மெடூசா பருவமாற்றமும்",
                 "In Obelia, feeding hydranths and reproductive gonangia perform different jobs while remaining parts of a common hydroid colony. This colonial division of labour is a form of zooid polymorphism. Medusae released from reproductive buds are separate free-swimming sexual stages, not another permanently attached zooid within the same colony.",
