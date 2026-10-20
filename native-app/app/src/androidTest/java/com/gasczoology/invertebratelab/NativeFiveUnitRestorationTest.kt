@@ -116,17 +116,14 @@ class NativeFiveUnitRestorationTest {
         find(ch, "a5-card-u5-pila-A5-1")
     }
 
-    @Test fun unitFiveAsteriasShowsWaterVascularMasterAsMissingNotCanvas() {
+    @Test fun unitFiveAsteriasShowsFourDistinctLicensedAnatomyMasterPngs() {
         val ch = "u5-asterias"
         enter(5, ch, false)
         find(ch, "r2-type-study-gallery-asterias")
         rule.onNodeWithTag("asterias-review-warning").assertDoesNotExist()
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
-        // Archived images can still be reviewed outside the student lesson;
-        // the mandatory water-vascular master remains a release blocker.
-        // Two source-licensed diagrams are now actual student-visible PNGs;
-        // the other two mandatory plates must remain visibly missing.
-        for (plate in listOf("external", "water-vascular-system")) {
+        // All four images are now actual source-licensed student-facing figures.
+        for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
             find(ch, "r2-plate-bitmap-asterias-" + plate)
             rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertDoesNotExist()
         }
@@ -136,10 +133,12 @@ class NativeFiveUnitRestorationTest {
         rule.onNodeWithTag("r2-plate-expand-asterias-water-vascular-system").performClick()
         rule.onNodeWithTag("r2-fullscreen-dialog").assertExists()
         rule.onNodeWithTag("r2-fullscreen-close").performClick()
-        for (plate in listOf("internal", "larval-development")) {
-            find(ch, "r2-plate-slot-asterias-" + plate)
-            rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertExists()
-        }
+        find(ch, "asterias-internal-species-licence")
+        find(ch, "asterias-larvae-two-stage-legend")
+        find(ch, "r2-plate-bitmap-asterias-larval-development")
+        capture("unit5-asterias-all-four-images-english")
+        // Historical filenames preserved to avoid weakening the frozen
+        // 100%/200% runner evidence inventory; the image is no longer missing.
         capture("unit5-asterias-english-missing-plate")
         for (section in listOf(
             "external", "water-vascular", "internal", "feeding-and-stomachs",
@@ -171,9 +170,14 @@ class NativeFiveUnitRestorationTest {
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-asterias")
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
-        find(ch, "r2-plate-bitmap-asterias-water-vascular-system")
-        rule.onNodeWithTag("r2-plate-missing-asterias-water-vascular-system").assertDoesNotExist()
+        for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
+            find(ch, "r2-plate-bitmap-asterias-" + plate)
+            rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertDoesNotExist()
+        }
         find(ch, "asterias-wvs-legend")
+        find(ch, "asterias-internal-species-licence")
+        find(ch, "asterias-larvae-two-stage-legend")
+        capture("unit5-asterias-all-four-images-tamil")
         find(ch, "restored-section-feeding-and-stomachs")
         find(ch, "restored-section-reproduction-and-larvae")
         capture("unit5-asterias-tamil-late-chapter")
