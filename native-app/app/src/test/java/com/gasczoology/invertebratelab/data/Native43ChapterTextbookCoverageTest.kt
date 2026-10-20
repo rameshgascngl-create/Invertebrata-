@@ -345,6 +345,36 @@ class Native43ChapterTextbookCoverageTest {
         // Source-path checks are NOT approval of the depicted anatomy or Tamil.
     }
 
+
+    @Test fun asteriasReusedPublicDomainImagesAreRealDistinctPngsWithTraceableCredits() {
+        val dir = File("src/main/assets/type_studies/asterias")
+        val external = File(dir, "external.png")
+        val vascular = File(dir, "water-vascular-system.png")
+        val attribution = File(dir, "ATTRIBUTION.md")
+        assertTrue("Asterias oral and aboral source plate absent", external.isFile)
+        assertTrue("Asterias water-vascular source plate absent", vascular.isFile)
+        assertTrue("Public-domain licence and author record absent", attribution.isFile)
+        val pngHeader = byteArrayOf(137.toByte(), 80, 78, 71, 13, 10, 26, 10)
+        for (file in listOf(external, vascular)) {
+            val bytes = file.readBytes()
+            assertTrue("Empty or implausibly small figure: " + file.name, bytes.size > 50_000)
+            assertTrue("Invalid PNG header in " + file.name,
+                bytes.take(8).toByteArray().contentEquals(pngHeader))
+        }
+        assertFalse("Anatomically unrelated external and vascular figures must be different",
+            external.readBytes().contentEquals(vascular.readBytes()))
+        val credits = attribution.readText(Charsets.UTF_8)
+        for (value in listOf("Hubert Lyman Clark", "Augusta Foote Arnold",
+                "PUBLIC DOMAIN", "Asterias forbesi", "GENERIC")) {
+            assertTrue("Source attribution missing: " + value,
+                credits.contains(value, ignoreCase = true))
+        }
+        val plateGallery = File("src/main/java/com/gasczoology/invertebratelab/ui/RequiredTypeStudyPlates.kt")
+            .readText(Charsets.UTF_8)
+        assertTrue(plateGallery.contains("asterias-external-species-provenance"))
+        assertTrue(plateGallery.contains("asterias-wvs-legend"))
+    }
+
     @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
         val paramecium = NativeLessonDrafts.paramecium
         assertEquals("u1-paramecium", paramecium.lessonId)
