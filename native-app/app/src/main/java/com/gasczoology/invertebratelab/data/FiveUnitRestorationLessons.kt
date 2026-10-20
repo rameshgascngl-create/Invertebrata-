@@ -32,7 +32,14 @@ internal object FiveUnitRestorationLessons {
                 "A practical record must separate features actually visible in the specimen from structures inferred from a diagram or described by a textbook. Always name the magnification and specimen preparation when applicable.",
                 "செய்முறைப் பதிவேட்டில் மாதிரியில் நேரடியாகக் காணப்படும் பண்புகளையும் பாடநூல் படத்தில் மட்டும் காட்டப்படும் அமைப்புகளையும் தெளிவாகப் பிரிக்க வேண்டும். பொருந்தும் இடத்தில் உருப்பெருக்கமும் தயாரிப்பு முறையும் குறிப்பிடப்பட வேண்டும்.",
                 "Anatomical drawings must preserve relative organ placement and use unambiguous leader lines. Classical classifications should be labelled as historical conventions when modern phylogeny has changed them.",
-                "உடற்கூறுப் படங்களில் உறுப்புகளின் ஒப்பீட்டு இடங்கள் சரியாக இருக்க வேண்டும்; குறிக்கோடுகள் குழப்பமின்றி முடிவடைய வேண்டும். பழைய வகைப்பாடுகளையும் நவீன இனவரலாற்று நிலைப்பாட்டையும் வேறுபடுத்திக் குறிப்பிட வேண்டும்.")
+                "உடற்கூறுப் படங்களில் உறுப்புகளின் ஒப்பீட்டு இடங்கள் சரியாக இருக்க வேண்டும்; குறிக்கோடுகள் குழப்பமின்றி முடிவடைய வேண்டும். பழைய வகைப்பாடுகளையும் நவீன இனவரலாற்று நிலைப்பாட்டையும் வேறுபடுத்திக் குறிப்பிட வேண்டும்."),
+            s("scientific-classification",
+                "From diagnostic characters to evolutionary classification",
+                "அடையாளப் பண்புகளிலிருந்து பரிணாம வகைப்பாட்டிற்கு",
+                "Identify an animal by comparing observed diagnostic characters against reliable descriptions. Species, genus, family, order, class, phylum and kingdom are nested conventional ranks. A binomial species name contains the genus followed by the specific epithet, rather than two independent classification ranks.",
+                "உயிரினத்தை அடையாளம் காணப் பார்வையில் கண்ட வேறுபடுத்தும் பண்புகளை நம்பத்தகுந்த விளக்கங்களுடன் ஒப்பிட வேண்டும். இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, உலகம் ஆகியவை அடுக்கமைந்த வகைப்பாட்டு நிலைகள். இருசொற் அறிவியல் பெயரில் பேரினப் பெயரைத் தொடர்ந்து இனச்சிறப்புப் பெயரடை வருகிறது; அவை இரண்டு தனி நிலைகள் அல்ல.",
+                "Modern phylogenetic classification tests hypotheses of common ancestry using morphology, development and molecular sequences. Traditional syllabus groupings remain useful for exam comparison, but do not necessarily correspond to natural evolutionary clades.",
+                "நவீன இனவரலாற்று வகைப்பாடு உடலமைப்பு, வளர்ச்சி, மூலக்கூறுத் தொடர்கள் ஆகியவற்றின் மூலம் பொதுமூதாதை குறித்த கருத்துகளைச் சோதிக்கிறது. பழைய பாடத்திட்டக் குழுப்பெயர்கள் தேர்வு ஒப்பீட்டிற்கு உதவினாலும் அவை அனைத்தும் இயற்கைப் பரிணாமக் கிளைகளாக இருக்க வேண்டியதில்லை.")
         )),
         Chapter("u1-protozoa",b("Protozoa: traditional classification and modern interpretation","புரோட்டோசோவா: மரபு வகைப்பாடும் நவீன விளக்கமும்"),listOf(
             s("classification",
@@ -48,7 +55,14 @@ internal object FiveUnitRestorationLessons {
                 "Protozoan teaching examples commonly display a nucleus, food-uptake structures, motility systems and membrane-bound organelles, but no single example represents all protist cell architectures.",
                 "பாடத்திட்டத்தில் எடுத்துக்காட்டாக உள்ள ஒருசெல் உயிரிகளில் உட்கரு, உணவெடுக்கும் அமைப்புகள், இயக்க உறுப்புகள், சவ்வால் சூழப்பட்ட உறுப்புகள் காணப்படலாம். ஒரு எடுத்துக்காட்டு எல்லா புரோட்டிஸ்ட் செல்களையும் பிரதிநிதித்துவப்படுத்தாது.",
                 "Compare binary fission, multiple fission, encystment and sexual processes only in the organisms where they are documented. Distinguish infective stages from diagnostic stages in human parasites.",
-                "இருகூறுபடுதல், பலகூறுபடுதல், சிஸ்ட் உருவாக்கம், பால்சார் நிகழ்வுகள் ஆகியவை எந்த உயிரியில் நிகழ்கின்றன என்பதைத் தனித்தனியாகக் கற்க வேண்டும். மனித ஒட்டுண்ணிகளில் தொற்றுநிலையையும் நோயறிதல் நிலையையும் பிரித்தறிய வேண்டும்.")
+                "இருகூறுபடுதல், பலகூறுபடுதல், சிஸ்ட் உருவாக்கம், பால்சார் நிகழ்வுகள் ஆகியவை எந்த உயிரியில் நிகழ்கின்றன என்பதைத் தனித்தனியாகக் கற்க வேண்டும். மனித ஒட்டுண்ணிகளில் தொற்றுநிலையையும் நோயறிதல் நிலையையும் பிரித்தறிய வேண்டும்."),
+            s("historical-taxonomy",
+                "Protozoa as a historical teaching assemblage",
+                "புரோட்டோசோவா என்ற பாரம்பரியப் பாடப்பிரிவு",
+                "Protozoa is a convenient historical grouping of many animal-like unicellular eukaryotes, not one universally accepted modern phylum. Amoeboid, ciliate, flagellate and apicomplexan forms belong to several different eukaryotic evolutionary lineages.",
+                "புரோட்டோசோவா என்பது விலங்கு போன்ற பல ஒருசெல் மெய்க்கருவுயிரிகளுக்குப் பயன்படுத்தப்பட்ட பாரம்பரியப் பெயர்; அது நவீன வகைப்பாட்டில் ஏற்றுக்கொள்ளப்பட்ட ஒரே தொகுதி அல்ல. அமீபா போன்றவை, சிலியேட்டுகள், கசையிழை உயிரிகள், அபிகாம்ப்ளெக்ஸன்கள் வெவ்வேறு பரிணாமக் கிளைகளைச் சேர்ந்தவை.",
+                "Free-living protists participate in microbial food webs and nutrient recycling; parasites may require distinct host or vector stages. Compare locomotion, feeding, nuclear organization and life cycles rather than describing every organism in this historical group as a primitive animal.",
+                "சுதந்திரமாக வாழும் புரோட்டிஸ்டுகள் நுண்ணுயிர் உணவுவலையிலும் ஊட்டச்சத்துச் சுழற்சியிலும் பங்கு வகிக்கின்றன; ஒட்டுண்ணிகளுக்குக் குறிப்பிட்ட புரவலன் அல்லது கடத்தி நிலைகள் தேவைப்படலாம். இவற்றை எல்லாம் எளிய விலங்குகள் என்று அழைப்பதை விட இயக்கம், உணவூட்டம், உட்கருவமைப்பு, வாழ்க்கைச் சுழற்சி ஆகியவற்றை ஒப்பிட்டுக் கற்க வேண்டும்.")
         )),
         Chapter("u1-nutrition",b("Nutrition in protozoans","புரோட்டோசோவா உயிரிகளில் உணவூட்டம்"),listOf(
             s("pathways",
@@ -64,7 +78,14 @@ internal object FiveUnitRestorationLessons {
                 "In ciliates, phagosome maturation involves fusion with digestive compartments, progressive acidification and recycling. Undigested residues leave through an organized egestion region in Paramecium.",
                 "குறுஇழையுயிரிகளில் உணவுநுண்குமிழ்கள் செரிமானக் கூறுகளுடன் இணைந்து படிப்படியாக முதிர்ச்சி அடைகின்றன. பாரமீசியத்தில் செரியாத கழிவுகள் ஒழுங்கமைந்த கழிவுவெளியேற்றப் பகுதியில் வெளியேற்றப்படுகின்றன.",
                 "A food vacuole is not the contractile vacuole: the former processes nutrients, whereas the latter regulates excess water. These structures must be separately identified in anatomical plates.",
-                "உணவுநுண்குமிழும் சுருங்கும் நுண்குமிழும் ஒன்றல்ல. முதல் அமைப்பு உணவைச் செரிக்கிறது; இரண்டாவது நீர்ச் சமநிலையை ஒழுங்குபடுத்துகிறது. உடலமைப்புப் படத்தில் இரண்டையும் தனித்தனியாகக் காட்ட வேண்டும்.")
+                "உணவுநுண்குமிழும் சுருங்கும் நுண்குமிழும் ஒன்றல்ல. முதல் அமைப்பு உணவைச் செரிக்கிறது; இரண்டாவது நீர்ச் சமநிலையை ஒழுங்குபடுத்துகிறது. உடலமைப்புப் படத்தில் இரண்டையும் தனித்தனியாகக் காட்ட வேண்டும்."),
+            s("nutrition-mechanisms",
+                "Particle ingestion, dissolved food and phototrophy",
+                "உணவுத் துகள்கள் உட்கொள்ளல், கரைசல் உறிஞ்சல், ஒளியுணவாக்கம்",
+                "Holozoic feeding involves particle capture and internal digestion, often inside food vacuoles. Osmotrophic feeding takes up dissolved organic substances across a surface. Phototrophic protists use light energy to fix carbon; mixotrophs may combine nutrition strategies depending on the environment.",
+                "ஹோலோசோயிக் உணவூட்டத்தில் உணவுத் துகள்கள் பிடிக்கப்பட்டு உணவுக் குமிழ்களுக்குள் செரிக்கப்படுகின்றன. ஆஸ்மோட்ரோஃபிக் முறையில் கரைந்த கரிமப் பொருட்கள் மேற்பரப்பு வழியாக உறிஞ்சப்படுகின்றன. ஒளியுணவாக்க உயிரிகள் ஒளி ஆற்றலால் கரிமப் பொருளை உருவாக்குகின்றன; மிக்சோட்ரோஃப்கள் சூழலுக்கேற்ப ஒன்றுக்கு மேற்பட்ட முறைகளை இணைக்கின்றன.",
+                "Paramecium uses currents generated by oral cilia to guide food into its feeding apparatus, whereas Amoeba extends pseudopodia around particles. Many Euglena can photosynthesize and also utilize environmental organic compounds. Motility alone does not reliably determine nutritional type.",
+                "பாரமீசியத்தில் வாய்ப்பகுதிக் குறுஇழைகள் உருவாக்கும் ஓட்டம் உணவை வாயமைப்பிற்கு இட்டுச் செல்கிறது; அமீபாவில் போலிக்கால்கள் துகள்களைச் சூழ்ந்து உட்கொள்கின்றன. பல யூக்ளீனாக்கள் ஒளிச்சேர்க்கை செய்வதுடன் வெளிப்புறக் கரிமப் பொருட்களையும் பயன்படுத்தக்கூடும். இயக்க வகையை மட்டும் கொண்டு ஊட்டமுறையை முடிவு செய்ய முடியாது.")
         )),
         Chapter("u1-host-parasite",b("Host–parasite interactions in protozoans","புரவலன்–ஒட்டுண்ணி உறவுகள்"),listOf(
             s("entamoeba",
@@ -80,7 +101,14 @@ internal object FiveUnitRestorationLessons {
                 "In human malaria, an infected female Anopheles mosquito introduces sporozoites; liver development precedes repeated erythrocytic cycles. Sexual development and sporogony take place in the mosquito.",
                 "மலேரியாவில் தொற்றுடைய பெண் அனாபிலிஸ் கொசு ஸ்போரோசோயிட்டுகளை உட்செலுத்துகிறது. கல்லீரல் வளர்ச்சியைத் தொடர்ந்து இரத்தச் சிவப்பணு சுழற்சிகள் நடைபெறுகின்றன. பால்சார் வளர்ச்சியும் ஸ்போராகனியும் கொசுவில் நிகழ்கின்றன.",
                 "Liver hypnozoites are associated with P. vivax and P. ovale, not P. falciparum. Any life-cycle figure must identify its species scope and correctly mark infective stages.",
-                "கல்லீரல் உறக்க ஹிப்னோசோயிட்கள் P. vivax மற்றும் P. ovale ஆகியவற்றுடன் தொடர்புடையவை; P. falciparum இல் அவை இல்லை. வாழ்க்கைச் சுழற்சிப் படம் எந்த இனத்தைச் சுட்டுகிறது என்பதைத் தெளிவாகக் குறிப்பிட வேண்டும்.")
+                "கல்லீரல் உறக்க ஹிப்னோசோயிட்கள் P. vivax மற்றும் P. ovale ஆகியவற்றுடன் தொடர்புடையவை; P. falciparum இல் அவை இல்லை. வாழ்க்கைச் சுழற்சிப் படம் எந்த இனத்தைச் சுட்டுகிறது என்பதைத் தெளிவாகக் குறிப்பிட வேண்டும்."),
+            s("contrast-infective-stages",
+                "Entamoeba and Plasmodium: distinct routes of infection",
+                "என்டமீபா, பிளாஸ்மோடியம்: மாறுபட்ட தொற்று வழிகள்",
+                "Entamoeba histolytica is commonly transmitted when a mature cyst is swallowed with contaminated food or water. Excystation produces trophozoites in the intestine, and cysts shed in faeces support onward transmission. Some infections remain intestinal, while invasive disease can affect the colon and liver.",
+                "என்டமீபா ஹிஸ்டோலிட்டிகா பொதுவாக மாசடைந்த உணவு அல்லது நீரில் உள்ள முதிர்ந்த சிஸ்டை விழுங்குவதால் பரவுகிறது. குடலில் சிஸ்ட் உறைநீங்கி வளர் நிலைகள் உருவாகின்றன; மலத்துடன் வெளியேறும் சிஸ்டுகள் தொற்றைப் பரப்புகின்றன. சில தொற்றுகள் குடலிலேயே இருந்தாலும் ஊடுருவும் நோய் பெருங்குடலையும் கல்லீரலையும் பாதிக்கலாம்.",
+                "An infected female Anopheles mosquito inoculates Plasmodium sporozoites during biting. Asexual development takes place in the human liver and blood, whereas fertilization and subsequent sexual development occur in the mosquito. The mosquito is the definitive host in the classical sexual-reproduction sense; these parasites do not share an infective stage.",
+                "தொற்றுடைய பெண் அனாபிலிஸ் கொசு கடிக்கும்போது பிளாஸ்மோடியத்தின் ஸ்போரோசோயிட்டுகளை உட்செலுத்துகிறது. மனிதரின் கல்லீரலிலும் இரத்தத்திலும் பாலிலாப் பெருக்கம் நடைபெறுகிறது; பாலணு இணைவும் அடுத்த பாலின வளர்ச்சியும் கொசுவில் நிகழ்கின்றன. ஆகவே பாலினப்பெருக்க அடிப்படையில் கொசு இறுதிப் புரவலன்; இரு ஒட்டுண்ணிகளுக்கும் ஒரே தொற்றுநிலை கிடையாது.")
         )),
         Chapter("u1-locomotion",b("Locomotion in protozoan teaching organisms","புரோட்டோசோவா உயிரிகளின் இயக்கம்"),listOf(
             s("organelles",
@@ -96,7 +124,14 @@ internal object FiveUnitRestorationLessons {
                 "Paramecium cilia beat in coordinated metachronal waves. Changes in membrane electrical activity alter beating direction and support transient reversal during an avoidance response.",
                 "பாரமீசியக் குறுஇழைகள் மெட்டாக்ரோனல் அலைகளாக ஒத்திசைந்து அசைகின்றன. செல் சவ்வின் மின்செயல்பாட்டில் ஏற்படும் மாற்றம் அசைவின் திசையை மாற்றி தடைத்தவிர்ப்பை ஏற்படுத்தலாம்.",
                 "In practical demonstrations, distinguish a visible swimming path from inferred ciliary beat mechanics. A still pencil plate can show direction arrows but cannot by itself establish movement rate.",
-                "செய்முறை ஆய்வில் நேரடியாகக் காணப்படும் நீச்சல்பாதையையும் விளக்கமாக ஊகிக்கப்படும் குறுஇழை இயக்க முறையையும் வேறுபடுத்த வேண்டும். நிலைப்படம் திசையைக் காட்டலாம்; இயக்க வேகத்தை நிரூபிக்காது.")
+                "செய்முறை ஆய்வில் நேரடியாகக் காணப்படும் நீச்சல்பாதையையும் விளக்கமாக ஊகிக்கப்படும் குறுஇழை இயக்க முறையையும் வேறுபடுத்த வேண்டும். நிலைப்படம் திசையைக் காட்டலாம்; இயக்க வேகத்தை நிரூபிக்காது."),
+            s("locomotion-mechanisms",
+                "Cilia, flagella and pseudopodia: mechanisms and limits",
+                "குறுஇழை, கசையிழை, போலிக்கால்: இயக்க செயல்முறைகள்",
+                "Numerous short cilia beat with coordinated effective and recovery strokes, while longer eukaryotic flagella use bending waves to propel cells. Their usual motile axoneme has nine peripheral microtubule doublets and a central pair; the anchoring basal body instead commonly contains nine triplets.",
+                "பல சிறிய குறுஇழைகள் செயலடி, மீட்படி அசைவுகளை ஒருங்கிணைத்து இயக்கத்தை உருவாக்குகின்றன; நீண்ட மெய்க்கருவுயிர்க் கசையிழைகளின் வளைவு அலைகள் செல்களை முன்னேற்றுகின்றன. இயங்கும் உள்இழை அமைப்பில் பொதுவாக ஒன்பது இரட்டைக் நுண்குழல்களும் மையத்தில் ஓர் இணையும் உள்ளன; அடித்தள உடலில் ஒன்பது மூன்றடுக்குத் தொகுதிகள் காணப்படும்.",
+                "Pseudopodia form by local actin-dependent deformation of cytoplasm and membrane, allowing crawling and particle engulfment. Visible swimming or creeping can be described with a light microscope, but detailed axonemal ultrastructure requires higher-resolution evidence.",
+                "போலிக்கால்கள் ஆக்டினைச் சார்ந்த சைட்டோபிளாசம், சவ்வு மாற்றங்களால் உருவாகி ஊர்வதற்கும் உணவுத் துகள்களைச் சூழ்வதற்கும் உதவுகின்றன. நீந்துதல் அல்லது ஊர்தலை ஒளி நுண்ணோக்கியில் விவரிக்கலாம்; நுண்குழல்களின் மிகநுண் அமைப்பை உறுதிப்படுத்த அதிகத் தெளிவுள்ள ஆய்வு தேவை.")
         )),
         Chapter("u5-mollusca",b("Mollusca: body plan and classification","மெல்லுடலிகள்: உடற்கூறும் வகைப்பாடும்"),listOf(
             s("plan",
@@ -112,7 +147,14 @@ internal object FiveUnitRestorationLessons {
                 "Traditional teaching compares Gastropoda, Bivalvia, Polyplacophora, Scaphopoda and Cephalopoda by shell arrangement, foot modification, feeding and nervous-system development.",
                 "பாரம்பரியப் பாடங்களில் கேஸ்ட்ரோபோடா, பைவால்வியா, பாலிபிளாகோபோரா, ஸ்காபோபோடா, செஃபலோபோடா ஆகியவற்றை ஓடு, பாதம், உணவெடுப்பு, நரம்பமைப்பு அடிப்படையில் ஒப்பிடுகின்றனர்.",
                 "Use Pila for an operculate freshwater gastropod type study, not as a model for every marine or terrestrial snail. Record the specimen orientation before applying anatomical labels.",
-                "மூடியுடைய நன்னீர் வயிற்றுக்காலிக்கான எடுத்துக்காட்டாக பைலாவைப் பயன்படுத்தலாம்; எல்லா நத்தைகளுக்கும் இது ஒரே மாதிரி அல்ல. உறுப்புக் குறியீடுகளுக்கு முன் மாதிரியின் திசைநிலையைக் குறிப்பிட வேண்டும்.")
+                "மூடியுடைய நன்னீர் வயிற்றுக்காலிக்கான எடுத்துக்காட்டாக பைலாவைப் பயன்படுத்தலாம்; எல்லா நத்தைகளுக்கும் இது ஒரே மாதிரி அல்ல. உறுப்புக் குறியீடுகளுக்கு முன் மாதிரியின் திசைநிலையைக் குறிப்பிட வேண்டும்."),
+            s("class-comparison",
+                "How molluscan classes differ in form and function",
+                "மெல்லுடலி வகுப்புகளின் உடலமைப்பு, செயல்பாட்டு வேறுபாடுகள்",
+                "Gastropods commonly possess a creeping foot and may have a coiled shell; bivalves have two shell valves and often feed by filtration using gills. Cephalopods possess a funnel, modified arms and active predatory behavior. Chitons have eight dorsal plates, while scaphopods possess a tubular tusk-shaped shell.",
+                "வயிற்றுக்காலிகளில் ஊரும் தசைப்பாதமும் பலவற்றில் சுருண்ட ஓடும் காணப்படும்; இருமடிப்போடுகளில் இரு ஓட்டுமடிப்புகளும் செவுள் வழி வடிகட்டி உணவெடுத்தலும் பொதுவாக உள்ளன. தலைக்காலிகளில் புனல், மாற்றமடைந்த கரங்கள், வேட்டையாடும் பழக்கம் காணப்படும். கைட்டன்களில் முதுகில் எட்டு ஓட்டுத்தகடுகள்; ஸ்காபோபோடுகளில் நீண்ட குழாய்போன்ற ஓடு காணப்படும்.",
+                "The mantle usually secretes shell materials in shelled molluscs, but some lineages have reduced or lost shells. Classification must examine the foot, mantle cavity, radula or its absence, respiratory structures and development rather than relying on shell shape alone.",
+                "ஓடு கொண்ட மெல்லுடலிகளில் மேன்டில் அதன் பொருட்களைச் சுரக்கிறது; சில குழுக்களில் ஓடு குறைந்தோ மறைந்தோ உள்ளது. வகைப்பாட்டிற்கு ஓட்டின் வடிவம் மட்டும் போதாது; பாதம், மேன்டில் அறை, ரேடுலா இருப்பு அல்லது இல்லாமை, சுவாச அமைப்பு, வளர்ச்சி ஆகியவற்றையும் ஆய்வு செய்ய வேண்டும்.")
         )),
         Chapter("u5-pila",b("Pila: detailed freshwater gastropod type study","பைலா: நன்னீர் நத்தை இன ஆய்வு"),listOf(
             s("external",
@@ -181,7 +223,14 @@ internal object FiveUnitRestorationLessons {
                 "Cultured pearl production may use implantation of donor mantle tissue, sometimes with a bead nucleus, followed by suitable husbandry and monitoring. Procedures vary among marine and freshwater bivalves.",
                 "வளர்ப்புமுத்து உற்பத்தியில் மேன்டில் திசு பொருத்துதல், சில முறைகளில் மணிமையம் சேர்த்தல், பின்னர் பொருத்தமான வளர்ப்புக் கவனிப்பு ஆகியவை இடம்பெறுகின்றன. கடல் மற்றும் நன்னீர் இருமடிப்போடுகளில் முறைகள் மாறுபடும்.",
                 "Pearl quality depends on nacre deposition, health, environmental conditions and handling. Teaching material should discuss pollution, mortality and biodiversity impacts alongside economic value.",
-                "முத்துத் தரம் ஒளிரடுக்கு படிதல், உடல்நலம், சுற்றுச்சூழல் நிலை, கையாளல் ஆகியவற்றைப் பொறுத்தது. பொருளாதார மதிப்புடன் மாசுபாடு, உயிரிழப்பு, உயிரினப் பல்வகைமை விளைவுகளையும் கற்பிக்க வேண்டும்.")
+                "முத்துத் தரம் ஒளிரடுக்கு படிதல், உடல்நலம், சுற்றுச்சூழல் நிலை, கையாளல் ஆகியவற்றைப் பொறுத்தது. பொருளாதார மதிப்புடன் மாசுபாடு, உயிரிழப்பு, உயிரினப் பல்வகைமை விளைவுகளையும் கற்பிக்க வேண்டும்."),
+            s("pearl-sac-mechanism",
+                "Pearl sac, nacre deposition and responsible culture",
+                "முத்துப் பை, ஒளிரடுக்கு படிதல், பொறுப்பான வளர்ப்பு",
+                "Pearl-oyster mantle epithelial tissue can form a pearl sac that deposits mineral and organic layers around a bead or other centre in cultivation. Nacre consists mainly of aragonite crystals and organic matrix. The old claim that all pearls arise simply from a grain of sand is biologically misleading.",
+                "முத்துச் சிப்பியின் மேன்டில் மேல்தோல் திசு முத்துப் பையை உருவாக்கி, வளர்ப்பு முறைகளில் வைக்கப்படும் மணிமையம் போன்ற மையத்தைச் சுற்றிக் கனிம, கரிம அடுக்குகளைப் படியச் செய்கிறது. ஒளிரடுக்கு பெரும்பாலும் அரகோனைட் படிகங்களும் கரிமத் தளமும் கொண்டது. எல்லா முத்துகளும் மணல் துகள் ஒன்றால் மட்டுமே உருவாகின்றன என்ற கருத்து தவறாக வழிநடத்தும்.",
+                "Marine bead-nucleated pearl culture commonly uses donor mantle graft tissue and subsequent careful husbandry; methods differ among bivalves. Discuss water quality, disease and ecological impact. The freshwater snail Pila must not be represented as a pearl oyster.",
+                "கடல் மணிமைய வளர்ப்புமுத்தில் பொதுவாக மற்றொரு சிப்பியின் மேன்டில் திசு பொருத்தப்பட்டு கவனமாக வளர்க்கப்படுகிறது; இருமடிப்போடுகளுக்கு ஏற்ப முறைகள் மாறும். நீர்தரம், நோய், சூழலியல் பாதிப்பையும் விவாதிக்க வேண்டும். நன்னீர் நத்தையான பைலாவை முத்துச் சிப்பியாகக் காட்டக் கூடாது.")
         )),
         Chapter("u5-echinodermata",b("Echinodermata: classification and body plan","முள்தோலிகள்: வகைப்பாடும் உடற்கூறும்"),listOf(
             s("characters",
@@ -284,7 +333,14 @@ internal object FiveUnitRestorationLessons {
                 "Foot movement depends on muscular hydrostatic forces, adhesion and interaction with the substrate. Snails may alter pace and contact area in response to surface roughness and moisture.",
                 "பாத இயக்கம் தசை நீரழுத்தம், ஒட்டுதல், அடித்தளத் தொடர்பு ஆகியவற்றைப் பொறுத்தது. பரப்பின் கரடுமுரடான தன்மை மற்றும் ஈரத்திற்கு ஏற்ப நத்தை இயக்கத்தை மாற்றலாம்.",
                 "For a Pila practical plate, separate the broad creeping sole, operculum attachment and head tentacles. Do not confuse the foot with mantle lobes or the visceral mass.",
-                "பைலா செய்முறைப் படத்தில் அகன்ற ஊரும் பாதம், ஓடுமூடி இணைப்பு, தலை உணர்கொம்புகள் ஆகியவற்றைத் தனித்தனியாகக் குறிக்க வேண்டும். பாதத்தையும் மேன்டில் மடிப்புகளையும் உள்ளுறுப்புத் தொகுதியையும் குழப்பக் கூடாது.")
+                "பைலா செய்முறைப் படத்தில் அகன்ற ஊரும் பாதம், ஓடுமூடி இணைப்பு, தலை உணர்கொம்புகள் ஆகியவற்றைத் தனித்தனியாகக் குறிக்க வேண்டும். பாதத்தையும் மேன்டில் மடிப்புகளையும் உள்ளுறுப்புத் தொகுதியையும் குழப்பக் கூடாது."),
+            s("foot-modification",
+                "Pila, Unio and cephalopods: modifications of the foot",
+                "பைலா, யூனியோ, தலைக்காலிகள்: பாதத்தின் மாற்றங்கள்",
+                "In Pila a broad muscular foot acts as a creeping sole; the operculum is borne on its posterior dorsal region. In Unio a compressed, wedge-shaped foot extends between shell valves for burrowing and anchorage. The paired shell valves are mantle derivatives, not parts of the foot.",
+                "பைலாவில் அகன்ற தசைப்பாதம் பரப்பில் ஊர்வதற்குப் பயன்படுகிறது; அதன் பின்முதுகுப் பகுதியில் ஓடுமூடி உள்ளது. யூனியோவில் இரு ஓட்டுமடிப்புகளுக்கு இடையில் நீளும் ஆப்புவடிவத் தசைப்பாதம் புதைவதற்கும் பற்றுதலுக்கும் உதவுகிறது. இரு ஓட்டுமடிப்புகள் மேன்டில் உருவாக்கங்கள்; பாதத்தின் பகுதிகள் அல்ல.",
+                "In cephalopods the ancestral foot region is reorganized into structures including the funnel and the appendage crown. The muscular funnel directs water expelled from the mantle cavity during jet propulsion. Compare function and homology; do not teach a flat creeping sole as universal for all molluscs.",
+                "தலைக்காலிகளில் மூதாதைப் பாதப் பகுதி புனல் மற்றும் கரத்தொகுதி உள்ளிட்ட அமைப்புகளாக மறுஅமைந்துள்ளது. தசைமிகு புனல் மேன்டில் அறையிலிருந்து வெளியேறும் நீரைத் திசைமாற்றி நீர்பீச்சு இயக்கத்திற்கு உதவுகிறது. செயல்பாட்டையும் உறுப்பு உறவையும் ஒப்பிட வேண்டும்; தட்டையான ஊரும் பாதம் எல்லா மெல்லுடலிகளுக்கும் பொதுவானது அல்ல.")
         )),
         Chapter("u5-wvs",b("Water-vascular system of Asterias","அஸ்டீரியாஸின் நீர்க்குழாய் அமைப்பு"),listOf(
             s("route",
