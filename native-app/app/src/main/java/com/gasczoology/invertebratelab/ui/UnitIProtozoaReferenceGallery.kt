@@ -226,7 +226,13 @@ internal fun ExpandedProtozoaReferenceImage(
                 )
                 if(plasmodium) {
                     TextButton(
-                        onClick={imagePriority=!imagePriority},
+                        onClick={
+                            imagePriority=!imagePriority
+                            // Magnify the existing full plate, not an unverified phase crop.
+                            // Reset on exit so the ordinary reader opens at a predictable scale.
+                            scale=if(imagePriority) 1.5f else 1f
+                            panX=0f;panY=0f
+                        },
                         modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
                             .testTag("u1-plasmodium-image-priority-toggle")
                     ) {
