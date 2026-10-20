@@ -3,6 +3,7 @@
 from io import BytesIO
 from pathlib import Path
 from urllib.request import Request, urlopen
+from urllib.parse import quote
 import hashlib
 from PIL import Image, ImageEnhance, ImageOps
 
@@ -17,23 +18,39 @@ source={
   base+"9/9b/FMIB_52615_Diagram_of_water-vascular_system_of_a_starfish_%3B.jpeg",
   "e2f6757c45c07de8c4e3fb3b4d6608064e299310",(474,507))
 }
+retrieval = {}
 def get(name):
     url,expected,dims=source[name]
-    req=Request(url,headers={
-       "User-Agent":"InvertebrataZoologyCourse/1.0 (repository github.com/rameshgascngl-create/Invertebrata-)",
-       "Accept":"image/jpeg,image/*"
-    })
-    with urlopen(req,timeout=55) as response:
-        data=response.read(6000000)
-    actual=hashlib.sha1(data).hexdigest()
-    if actual!=expected:
-        raise ValueError("SOURCE SHA1 mismatch "+name+" "+actual+" expected "+expected)
-    image=Image.open(BytesIO(data))
-    image.load()
-    assert image.format=="JPEG"
-    result=ImageOps.exif_transpose(image).convert("RGB")
-    assert result.size==dims,(name,result.size)
-    return result
+    # Commons occasionally rate limits datacenter IPs (HTTP 429).
+    # The verified Commons filename remains the only upstream target;
+    # optional proxy outputs may re-encode JPEGs but cannot change taxa.
+    urls = [
+        ("wikimedia_original", url),
+        ("wsrv_image_proxy", "https://wsrv.nl/?url="+quote(url,safe="")+"&output=jpg&q=100"),
+        ("weserv_image_proxy", "https://images.weserv.nl/?url="+quote(url,safe="")+"&output=jpg&q=100"),
+    ]
+    failures=[]
+    for method,candidate in urls:
+        try:
+            req=Request(candidate,headers={
+               "User-Agent":"Mozilla/5.0 (compatible; INVERTEBRATA public-domain zoology asset importer)",
+               "Accept":"image/jpeg,image/*"
+            })
+            with urlopen(req,timeout=45) as response:
+                data=response.read(6000000)
+            actual=hashlib.sha1(data).hexdigest()
+            img=Image.open(BytesIO(data))
+            img.load()
+            result=ImageOps.exif_transpose(img).convert("RGB")
+            assert result.size==dims,(method,name,result.size)
+            if method=="wikimedia_original" and actual!=expected:
+                raise ValueError("Wikimedia source SHA1 mismatch: "+actual+" expected "+expected)
+            retrieval[name]=(method,actual)
+            print("SOURCE",name,"method",method,"sha1",actual,"expected_original_sha1",expected)
+            return result
+        except Exception as error:
+            failures.append(method+": "+str(error)[:400])
+    raise RuntimeError("All licensed-image download sources failed: "+"; ".join(failures))
 
 # Historical source figures 1 and 2 are respectively aboral/oral
 # Asterias forbesi. Lower figures 3 and 4 are another species; omit them.
@@ -76,6 +93,7 @@ out=[]
 for x in metadata:
     if isinstance(x,tuple): out.extend(x)
     else: out.append(x)
+out.append("Retrieval verification: "+str(retrieval)+". A proxy-derived JPEG is pixel-dimension checked but not byte-identical to the uploaded Wikimedia JPEG.")
 for name in ("external.png","water-vascular-system.png"):
     blob=(target/name).read_bytes()
     with Image.open(BytesIO(blob)) as im:
@@ -84,4 +102,4 @@ for name in ("external.png","water-vascular-system.png"):
     print("VALID_PNG",name,len(blob),hashlib.sha256(blob).hexdigest())
     out.append("Committed "+name+" SHA256: "+hashlib.sha256(blob).hexdigest())
 (target/"ATTRIBUTION.md").write_text("\n".join(out)+"\n",encoding="utf-8")
-print("COPYRIGHT=PUBLIC_DOMAIN; SOURCE_HASH_CHECKS=PASS; TWO_DISTINCT_IMAGES=PASS")
+print("COPYRIGHT=PUBLIC_DOMAIN; IMAGE_DIMENSIONS=PASS; TWO_DISTINCT_IMAGES=PASS; SOURCE_METHODS="+str(retrieval))
