@@ -320,13 +320,14 @@ internal fun ExpandedProtozoaReferenceImage(
                                     scale=(scale*zoom).coerceIn(1f,6f)
                                     if(scale<=1.01f){panX=0f;panY=0f}
                                     else {
-                                        panX=(panX+pan.x).coerceIn(-size.width.toFloat(),size.width.toFloat())
-                                        panY=(panY+pan.y).coerceIn(-size.height.toFloat(),size.height.toFloat())
+                                        val maxX=size.width*(scale-1f)/2f
+                                        val maxY=size.height*(scale-1f)/2f
+                                        panX=(panX+pan.x).coerceIn(-maxX,maxX)
+                                        panY=(panY+pan.y).coerceIn(-maxY,maxY)
                                     }
                                 }
                             }
-                            .testTag("u1-reference-expanded-bitmap")
-                            .semantics { stateDescription=if(scale>=1.49f) "Magnified image" else "Normal image" },
+                            .testTag("u1-reference-expanded-bitmap"),
                     )
                     if(plasmodium && displayedImage!=null) {
                         // Semantics-only marker; never stamp labels over the reference image.
