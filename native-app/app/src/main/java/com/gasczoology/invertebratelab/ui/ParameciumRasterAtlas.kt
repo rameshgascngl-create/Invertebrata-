@@ -16,7 +16,7 @@ import com.gasczoology.invertebratelab.data.*
 
 /**
  * Four visible Unit I anatomical views are decoded PNGs, never Canvas
- * redraws. Historic source labels require expert confirmation.
+ * redraws. The source/credit is determined by the installed raster asset.
  * Image-space hotspots are disabled until independently calibrated.
  */
 @Composable
@@ -41,14 +41,14 @@ internal fun ParameciumRasterAtlas(
         else "Vacuoles: distinct physiological systems",
         modifier=Modifier.testTag("r11-vacuole-heading"))
     if(bitmap==null) {
-        Text(if(tamil) "பென்சில் வரைபடக் கோப்பு இல்லை; மாற்று வரைபடம் காட்டப்படாது."
-             else "Pencil raster master missing; no schematic fallback.",
+        Text(if(tamil) "உடலமைப்புப் படக் கோப்பு இல்லை; தவறான மாற்றுப் படம் காட்டப்படாது."
+             else "Anatomical raster asset missing; no schematic fallback.",
             color=MaterialTheme.colorScheme.error,
             modifier=Modifier.testTag("u1-raster-asset-missing"))
     } else {
         Image(bitmap=bitmap,
-            contentDescription=if(tamil) "பாரமீசியம் கைவரைவு: நேரடித் தொடுதல் மதிப்பாய்வில் உள்ளது"
-                 else "Original hand-drawn Paramecium image; direct organ taps await scientific review",
+            contentDescription=if(tamil) "பாரமீசியம் உடலமைப்புப் படம்; உறுப்புத் தொடுபுள்ளிகள் மதிப்பாய்வில் உள்ளன"
+                 else "Paramecium anatomical reference; organ hotspots await scientific review",
             contentScale=ContentScale.Fit,
             modifier=Modifier.fillMaxWidth().height(282.dp)
                 .graphicsLayer {
@@ -70,8 +70,8 @@ internal fun ParameciumRasterAtlas(
             Text(if(tamil) "பெரிதாக்கலை மீட்டமை" else "Reset zoom")
         }
     }
-    Text(if(tamil) "மூலம்: Rijan Bhandari (2014), அசல் கைவரைவு, CC BY-SA 3.0. அறிவியல் ஆய்வு நிலுவையில்."
-         else "Rijan Bhandari (2014), original photographed pencil drawing, CC BY-SA 3.0. Scientific review pending.",
+    Text(if(tamil) "பட மூலம்: செயலியில் உள்ள படக் கோப்பின் பதிவைச் சரிபார்க்கவும். உடலமைப்பு மற்றும் தமிழ் மதிப்பாய்வு நிலுவையில்."
+         else "Image provenance: consult the installed asset manifest. Anatomy and Tamil editorial review pending.",
         style=MaterialTheme.typography.bodySmall,
         modifier=Modifier.testTag("u1-raster-attribution"))
     Text(if(tamil) "உறுப்பைத் தேர்ந்தெடுக்கவும்; உறுதி செய்யப்படாத படத் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
