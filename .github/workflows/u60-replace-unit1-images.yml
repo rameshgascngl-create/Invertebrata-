@@ -1,0 +1,93 @@
+name: U60 replace rejected Unit I raster figures
+'on':
+  push:
+    branches:
+      - native/u60-replace-unit1-unwanted-images-20261020
+    paths:
+      - .github/workflows/u60-replace-unit1-images.yml
+      - ci/replace_unit1_unwanted_images.py
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumRasterAtlas.kt
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIFlagellateTypeStudies.kt
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIProtozoaReferenceGallery.kt
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: u60-figure-replacement-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-actual-replacement-figures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install raster image transformation dependencies
+        run: python -m pip install --disable-pip-version-check Pillow==11.3.0 CairoSVG==2.7.1
+      - name: Replace six assets with six independently attributed upstream illustrations
+        run: python ci/replace_unit1_unwanted_images.py
+      - name: Prove six replaced assets have different pixels and expected provenance
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import hashlib,json
+          root=Path("native-app/app/src/main/assets")
+          manifest=json.loads((root/"unit1/references/U60_REPLACEMENTS_MANIFEST.json").read_text())
+          assert len(manifest)==6
+          digests=set()
+          for item in manifest:
+              image=root/item["path"]
+              with Image.open(image) as plate:
+                  plate.verify()
+              with Image.open(image) as plate:
+                  assert plate.format=="PNG" and plate.size==(1700,1700),str(image)
+              sha=hashlib.sha256(image.read_bytes()).hexdigest()
+              assert sha==item["output_sha256"]
+              assert sha not in digests, "Image repeated in two slots: "+str(image)
+              digests.add(sha)
+          old="Paramecium_caudatum-hand_labeled.jpg"
+          builder=Path("ci/replace_unit1_unwanted_images.py").read_text()
+          assert old not in builder, "Old photographed source must not be reimported"
+          print("U60_SIX_DISTINCT_PNG_REPLACEMENTS=PASS")
+          PY
+      - name: Commit actual PNG bytes and source-provenance manifest to the QA branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add native-app/app/src/main/assets/unit1 native-app/app/src/main/assets/type_studies/paramecium
+          git diff --cached --stat
+          git diff --cached --quiet && { echo "ERROR: No actual raster bytes changed"; exit 1; }
+          git commit -m "assets(unit1): replace six rejected images with pinned documented source rasters [skip ci]"
+          git push origin HEAD:native/u60-replace-unit1-unwanted-images-20261020
+          echo "COMMITTED_ACTUAL_ASSETS_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile exact asset-source commit and run JVM checks
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest :app:assembleDebug --stacktrace
+      - name: Archive installable unapproved QA APK with replaced images
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u60-SIX-REPLACED-IMAGES-UNAPPROVED-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Print exact image commit and release constraints
+        if: always()
+        run: |
+          echo "Original source code commit: $GITHUB_SHA"
+          echo "Image asset commit: ${COMMITTED_ACTUAL_ASSETS_SHA:-NOT_COMMITTED}"
+          echo "Physical-device image verification, Tamil editorial, organism morphology: PENDING"
+          echo "Production release: HOLD"
