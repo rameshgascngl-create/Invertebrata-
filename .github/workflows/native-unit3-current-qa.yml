@@ -1,0 +1,84 @@
+name: Unit III Fasciola and Ascaris exact-source Android acceptance
+'on':
+  push:
+    branches:
+      - native/u59-unit3-android-qa-20261020
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unit3-current-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kotlin-and-jvm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile source and both Android test classes; run JVM checks
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Build an explicitly unapproved handset QA APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve installable handset QA APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-20261020-UNAPPROVED-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  api34-bilingual:
+    needs: kotlin-and-jvm
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM for Android emulator
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify Unit III and Unit II images and readers in English/Tamil at 100% and 200%
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit3-screenshot-audit.sh
+      - name: Upload actual screenshots, XML, logs and exact-source status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-20261020-api34-english-tamil-evidence
+          path: qa-evidence/unit3/
+          if-no-files-found: warn
+
+  academic-and-physical-device-hold:
+    needs: [kotlin-and-jvm, api34-bilingual]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Do not infer physical handset or academic acceptance from emulator CI
+        run: |
+          echo "Physical-device screen inspection: NOT PERFORMED IN GITHUB ACTIONS."
+          echo "Plate anatomy, image source-rights, Tamil editorial review: PENDING."
+          echo "Do not publish to Play or Indus until independent real-device and academic acceptance."
