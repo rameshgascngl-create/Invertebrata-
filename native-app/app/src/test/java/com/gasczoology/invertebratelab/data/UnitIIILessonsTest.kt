@@ -30,6 +30,34 @@ class UnitIIILessonsTest {
         }
     }
 
+    @Test fun namedNematodeParasitesHaveSeparateSourceLinkedEnglishTamilLifeCycles() {
+        val chapter = UnitIIILessons.forChapter("u3-nematode-parasites")!!
+        val byId = chapter.sections.associateBy { it.id }
+        val expectedSources = linkedMapOf(
+            "wuchereria" to "https://www.cdc.gov/dpdx/lymphaticfilariasis/",
+            "enterobius" to "https://www.cdc.gov/dpdx/enterobiasis/",
+            "ancylostoma" to "https://www.cdc.gov/dpdx/hookworm/",
+        )
+        for ((id, source) in expectedSources) {
+            val section = byId[id] ?: error("Missing named nematode type study: $id")
+            assertEquals("Bilingual life-cycle paragraphs required for $id", 2, section.paragraphs.size)
+            assertTrue("Missing species-specific CDC source for $id",
+                section.scientificSources.contains(source))
+            assertTrue(section.paragraphs.all { it.english.length >= 220 && it.tamil.length >= 140 })
+            assertTrue(section.heading.english.isNotBlank() && section.heading.tamil.isNotBlank())
+        }
+        val wuchereria = byId.getValue("wuchereria").paragraphs.joinToString(" ") { it.english }
+        val enterobius = byId.getValue("enterobius").paragraphs.joinToString(" ") { it.english }
+        val ancylostoma = byId.getValue("ancylostoma").paragraphs.joinToString(" ") { it.english }
+        assertTrue(wuchereria.contains("mosquito") && wuchereria.contains("microfilariae"))
+        assertTrue(wuchereria.contains("L3") && wuchereria.contains("lymphatic"))
+        assertTrue(enterobius.contains("perianal") && enterobius.contains("four to six hours"))
+        assertTrue(enterobius.contains("adhesive-tape"))
+        assertTrue(ancylostoma.contains("rhabditiform") && ancylostoma.contains("filariform"))
+        assertTrue(ancylostoma.contains("L3") && ancylostoma.contains("skin"))
+        assertEquals(AcademicWorkStatus.DRAFT_UNVERIFIED, chapter.status)
+    }
+
     @Test fun sixRequiredPlateSlotsMatchSyllabusAndDoNotClaimAcceptance() {
         UnitIIIPlateCatalog.validateAgainstSyllabus()
         assertEquals(6, UnitIIIPlateCatalog.plates.size)
