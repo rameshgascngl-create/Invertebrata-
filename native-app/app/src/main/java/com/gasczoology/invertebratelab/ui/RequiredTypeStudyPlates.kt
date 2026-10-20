@@ -206,6 +206,46 @@ internal fun RequiredTypeStudyPlates(
                                 style = MaterialTheme.typography.bodySmall,
                             )
                         }
+                        if (study.organismId == "asterias" && plateId == "internal") {
+                            Text(
+                                if (tamil)
+                                    "அஸ்டீரியாஸ் ரூபென்ஸ் (Asterias rubens) உட்புற உடற்கூறின் அசல் விளக்கப்படம். இப்படத்தில் உறுப்புப் பெயர்கள் அச்சிடப்படவில்லை; உறுதிசெய்யாத உறுப்புக் குறியீடுகள் சேர்க்கப்படவில்லை."
+                                else
+                                    "Asterias rubens: original anatomical dissection illustration with no printed organ labels; unverified leader lines have not been invented.",
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.testTag("asterias-internal-species-licence"),
+                            )
+                            Text(
+                                "Hans Hillewaert (2007) · CC BY-SA 4.0 · converted JPEG to PNG and resized · https://creativecommons.org/licenses/by-sa/4.0/",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                            Text(
+                                "https://commons.wikimedia.org/wiki/File:Asterias_rubens,_dissection_modified.jpg",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
+                        if (study.organismId == "asterias" && plateId == "larval-development") {
+                            Text(
+                                if (tamil)
+                                    "இடப்புறம்: அஸ்டீரியாஸ் பைபின்னாரியா இளவுயிரி. வலப்புறம்: முதிர்ந்த பிராக்கியோலாரியா இளவுயிரி. எர்ன்ஸ்ட் ஹேக்கல் (1904) வரைபடத்திலிருந்து எடுக்கப்பட்ட இரண்டு தனித்த படங்கள்; இன அடையாளம் Asterias sp. என மட்டும் குறிப்பிடப்பட்டுள்ளது."
+                                else
+                                    "LEFT: Asterias sp. bipinnaria larva; RIGHT: Asterias sp. older brachiolaria larva. Two distinct historical figures by Ernst Haeckel (1904); species identification is genus-level only.",
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.testTag("asterias-larvae-two-stage-legend"),
+                            )
+                            Text(
+                                "Ernst Haeckel (1904) · extracted by Haplochromis · public domain (PD-old) · two source pictures combined side by side",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                            Text(
+                                "https://commons.wikimedia.org/wiki/File:Asterias_sp.,_bipinnaria_larva_from_below.jpg",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                            Text(
+                                "https://commons.wikimedia.org/wiki/File:Asterias_sp.,_older_brachiolaria_larva_from_below.jpg",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
                         OutlinedButton(
                             onClick = { expanded = true },
                             modifier = Modifier.heightIn(min = 48.dp)
