@@ -248,7 +248,7 @@ internal fun ParameciumTextbookReader(
         }
     }
 
-    // Put the full original hand-drawn, interactive atlas ABOVE the lesson
+    // Put the actual replacement raster atlas ABOVE the lesson
     // paragraphs on the first page, instead of burying it after exam questions.
     if (chapter == 0) {
         Button(
@@ -352,7 +352,7 @@ internal fun ParameciumTextbookReader(
                 "முழு உட்கரு, இனப்பெருக்கப் பாடத்தையும் தொடு படத்தையும் திற"))
         }
     }
-    // A complete pencil-illustrated ciliary mechanism occupies the native
+    // The independently sourced raster atlas accompanies the native
     // textbook reading flow, reusing the authoritative four-stage engine.
     // Feeding keeps its separate R1.5 plate and unchanged acceptance tests.
     if (section.id == "pellicle-and-cilia" ||
@@ -378,8 +378,8 @@ internal fun ParameciumTextbookReader(
     }
     if (chapter == 0) {
         Text(view(language,
-            "Anatomical pencil plate: touch individual organs in the Anatomy section for highlighting and narration.",
-            "உறுப்பு பென்சில் படம்: உறுப்புகளைத் தொட்டு ஒளிரச்செய்யவும் ஒலிவிளக்கம் பெறவும் உடலமைப்புப் பகுதிக்குச் செல்லவும்."),
+            "Anatomical reference PNG: open Anatomy for the labelled organ explanations. Direct image touch coordinates remain under review.",
+            "உடற்கூறு ஆதார PNG படம்: உறுப்புப் பெயர்களும் விளக்கங்களும் அறிய உடலமைப்புப் பகுதிக்குச் செல்லவும். படத்தில் நேரடித் தொடுபுள்ளிகள் ஆய்வில் உள்ளன."),
             style = MaterialTheme.typography.bodyMedium)
     }
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
