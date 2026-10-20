@@ -310,6 +310,7 @@ internal fun ExpandedProtozoaReferenceImage(
                             else title,
                         contentScale=ContentScale.Fit,
                         modifier=Modifier.fillMaxSize()
+                            .semantics { stateDescription = "Zoom ${scale}x" }
                             .graphicsLayer {
                                 scaleX=scale;scaleY=scale
                                 translationX=panX;translationY=panY
