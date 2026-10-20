@@ -387,7 +387,7 @@ internal object FiveUnitRestorationLessons {
                 "Bilateral echinoderm larvae followed by radial adults demonstrate developmental transformation rather than direct descent of chordates from present-day sea stars. A defensible evolutionary comparison uses molecular trees, fossils and embryology together.",
                 "இருபக்கச் சமச்சீர் இளவுயிரியைத் தொடர்ந்து ஆரச்சமச்சீர் முதிர்நிலை உருவாகுவது வளர்ச்சி மாற்றத்தைக் காட்டுகிறது; இன்றைய நட்சத்திரமீனிலிருந்து முதுகுநாணுயிரிகள் நேரடியாக வந்தன என்பதற்குச் சான்றல்ல. பரிணாம உறவை அறிய மரபணு மரங்கள், புதைபடிவங்கள், கருவளர்ச்சி ஆகியவற்றை இணைத்துப் பார்க்க வேண்டும்.")
         )),
-        Chapter("u5-fossils",b("Echinoderm fossils and geological significance","முள்தோலி தொல்லுயிர்களும் புவியியல் முக்கியத்துவமும்"),listOf(
+        Chapter("u5-fossils",b("Invertebrate fossils and geological significance","முதுகெலும்பற்ற உயிரினங்களின் புதைபடிவங்களும் புவியியல் முக்கியத்துவமும்"),listOf(
             s("record",
                 "Ossicles and fossil preservation",
                 "உட்கூட்டுத் தகடுகளும் தொல்லுயிர் பாதுகாப்பும்",
@@ -408,7 +408,14 @@ internal object FiveUnitRestorationLessons {
                 "Trilobite exoskeletons, brachiopod shells, ammonoid chambered shells and ancient reef corals preserve evidence of different marine environments across geological history. Fossil preservation depends on mineralized structures, burial and later geological alteration; the record is incomplete and biased toward readily fossilized parts.",
                 "முக்கூற்றுக்கணுக்காலி வெளிக்கூடுகள், பிராக்கியோபோடு ஓடுகள், அம்மோனாய்டு அறைமிகு ஓடுகள், பழங்காலப் பவளப் படிவங்கள் ஆகியவை மாறுபட்ட கடற்சூழல்களுக்குச் சான்றுகளாகும். புதைபடிவமாகப் பாதுகாக்கப்படுவது கடினப் பகுதிகள், புதைதல், பின்னர் ஏற்படும் புவியியல் மாற்றங்கள் ஆகியவற்றைப் பொறுத்தது; பதிவு முழுமையற்றது.",
                 "Biostratigraphy compares the recorded sequence of fossil occurrences between sedimentary layers; absolute numerical dates require suitable independent dating methods. An isolated fossil image without its geological layer and identification cannot establish a precise rock age.",
-                "உயிர் அடுக்கியல் முறையில் படிவுப் பாறை அடுக்குகளிலுள்ள புதைபடிவக் காணல் வரிசையை ஒப்பிடுகின்றனர்; துல்லிய ஆண்டு வயதிற்கு பொருத்தமான தனித்த வயது நிர்ணய முறைகள் தேவை. பாறை அடுக்கும் சரியான அடையாளமும் இல்லாத தனிப் புதைபடிவப் படம் துல்லியப் பாறை வயதைக் கொடுக்காது.")
+                "உயிர் அடுக்கியல் முறையில் படிவுப் பாறை அடுக்குகளிலுள்ள புதைபடிவக் காணல் வரிசையை ஒப்பிடுகின்றனர்; துல்லிய ஆண்டு வயதிற்கு பொருத்தமான தனித்த வயது நிர்ணய முறைகள் தேவை. பாறை அடுக்கும் சரியான அடையாளமும் இல்லாத தனிப் புதைபடிவப் படம் துல்லியப் பாறை வயதைக் கொடுக்காது."),
+            s("diagnostic-fossils",
+                "Recognising fossils across major invertebrate groups",
+                "முக்கிய முதுகெலும்பற்ற குழுக்களின் புதைபடிவங்களை அடையாளம் காணுதல்",
+                "Trilobites are extinct arthropods recognisable by three longitudinal body lobes; well-preserved specimens may show a cephalon, segmented thorax and pygidium. Brachiopods possess dorsal and ventral valves, unlike the left and right valves of bivalve molluscs. These differences are diagnostic, not merely differences in shell size.",
+                "டிரைலோபைட்டுகள் அழிந்த கணுக்காலிகள்; உடலின் நீளவாக்கிலான மூன்று மடல்களால் அவற்றை அடையாளம் காணலாம். நன்கு பாதுகாக்கப்பட்ட மாதிரிகளில் தலைக்கவசம், மார்புக் கண்டங்கள், வால்கவசம் காணப்படும். பிராக்கியோபோடுகளின் ஓடுகள் முதுகு, வயிற்றுப் பக்கங்களில் அமைவன; இருமடிப்புடைய மெல்லுடலிகளின் ஓடுகள் இடது, வலது பக்கங்களில் அமைவன. இது அளவு வேறுபாடு மட்டுமல்ல, அடிப்படை உடலமைப்பு வேறுபாடு.",
+                "Ammonoids are extinct cephalopod molluscs; chambered external shells and septal suture patterns often help identify their fossils. Colonial reef corals can preserve evidence of former marine habitats. Use diagnostic morphology together with rock-layer context and locality: a fossil photograph alone cannot prove an organism's exact age or a rock's numerical date.",
+                "அம்மோனாய்டுகள் அழிந்த தலைக்காலி மெல்லுடலிகள்; அறைகளுடைய வெளிப்புற ஓடுகளும் அறைத்தடுப்புத் தையல் வரி அமைப்புகளும் புதைபடிவ அடையாளத்திற்கு உதவும். கூட்டமாக வாழ்ந்த பாறை உருவாக்கும் பவளங்களின் சுண்ணாம்புக்கூடுகள் பழங்காலக் கடல் வாழிடங்களுக்குச் சான்றாகலாம். உறுப்பமைப்பைப் பாறை அடுக்கு, கிடைத்த இடம் ஆகிய சான்றுகளுடன் சேர்த்து ஆராய வேண்டும்; ஒரு புதைபடிவப் புகைப்படம் மட்டும் துல்லிய வயதை நிரூபிக்காது.")
         )),
         Chapter("u5-foot",b("Molluscan foot and locomotion","மெல்லுடலிகளின் பாதமும் இயக்கமும்"),listOf(
             s("variation",
