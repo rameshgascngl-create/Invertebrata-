@@ -17,8 +17,8 @@ for organism, plate_source in blocks:
     plates = re.findall(r'"([^"]+)"', plate_source)
     for plate in plates:
         candidates = [
-            assets / "type_studies" / organism / (plate + ".png"),
-            assets / "unit1/replacements" / ("paramecium_" + plate + ".png"),
+            *(assets / "type_studies" / organism / (plate + ext) for ext in (".png", ".webp", ".jpg", ".jpeg")),
+            *(assets / "unit1/replacements" / ("paramecium_" + plate + ext) for ext in (".png", ".webp")),
         ]
         present = [str(p.relative_to(assets)) for p in candidates if p.is_file()]
         records.append({"organism": organism, "plate": plate,
