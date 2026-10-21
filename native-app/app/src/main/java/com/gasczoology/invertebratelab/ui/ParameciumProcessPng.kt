@@ -20,10 +20,11 @@ import com.gasczoology.invertebratelab.data.ParameciumProcess
  * Unit I image-only display for the existing physiology stage selector.
  *
  * This intentionally avoids falsely animated anatomical coordinates.
- * The three physiological process slots require independent subject-specific PNGs.
- * The previous use of one photographed anatomy master for multiple processes
- * was misleading and is withdrawn. Fission and conjugation remain gated until
- * their own correctly staged scientific artwork is available.
+ * All processes require subject-specific PNGs. The previous reuse of one fuzzy
+ * photographed anatomy master was misleading and is withdrawn. A source-credited
+ * conjugation overview is displayed as an UNAPPROVED editorial candidate; its
+ * nine schematic steps are not the app's research-stage sequence. Binary fission
+ * remains blocked until a dedicated, scientifically checked plate exists.
  * No Canvas / SVG / vector drawing fallback.
  */
 internal object ParameciumProcessPngIndex {
@@ -32,7 +33,7 @@ internal object ParameciumProcessPngIndex {
         ParameciumProcess.OSMOREGULATION to "unit1/concepts/paramecium_osmoregulation",
         ParameciumProcess.FEEDING to "unit1/concepts/paramecium_nutrition",
         ParameciumProcess.BINARY_FISSION to null,
-        ParameciumProcess.CONJUGATION to null,
+        ParameciumProcess.CONJUGATION to "unit1/concepts/paramecium_conjugation",
     )
     init { check(byProcess.keys == ParameciumProcess.entries.toSet()) }
 }
@@ -74,9 +75,18 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 if (expanded) {
                     RequiredTypeStudyFullImage(
                         image = image,
-                        title = if (tamil) "பாரமீசியம் · உடற்கூறுப் படம்" else "Paramecium · anatomy PNG",
+                        title = if (tamil) "பாரமீசியம் · தனிப்படம்" else "Paramecium · concept PNG",
                         language = language,
                         onDismiss = { expanded = false },
+                    )
+                }
+                if (process == ParameciumProcess.CONJUGATION) {
+                    Text(
+                        if (tamil)
+                            "ஆதாரப்படம்: Deuterostome, Wikimedia Commons, CC BY-SA 4.0. ஒன்பது படிநிலைகள் கொண்ட ஆங்கில விளக்கப்படம்; கீழுள்ள ஆய்வுப் படிநிலைகளுடன் நேரடியாக ஒத்திசைக்கப்படவில்லை. உடற்கூறு மற்றும் தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."
+                        else "Source: Deuterostome, Wikimedia Commons, CC BY-SA 4.0. This nine-stage English overview is NOT synchronized with the research-stage selector below. Zoology and Tamil approval remain pending.",
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.testTag("u62-conjugation-licence-and-stage-warning"),
                     )
                 }
                 Text(
