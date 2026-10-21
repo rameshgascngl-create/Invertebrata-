@@ -13,6 +13,10 @@ internal data class UnitVExistingFigure(
     val assetStem: String,
     val caption: BilingualText,
     val caution: BilingualText,
+    val provenance: BilingualText = BilingualText(
+        "Source: existing INVERTEBRATA project artwork; not a published anatomical plate.",
+        "மூலம்: இன்வெர்டிபிராட்டா திட்டத்தின் ஏற்கெனவே உள்ள ஓவியம்; வெளியிடப்பட்ட உடற்கூறியல் படம் அல்ல."
+    ),
 )
 
 internal object UnitVExistingFigureCatalog {
