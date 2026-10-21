@@ -11,7 +11,7 @@ internal data class ChapterStudyGuide(
     init {
         require(objectives.size >= 3 && reviewPrompts.size >= 3)
         require((objectives + reviewPrompts).all {
-            it.en.isNotBlank() && it.ta.isNotBlank()
+            it.english.isNotBlank() && it.tamil.isNotBlank()
         })
     }
 }
