@@ -341,9 +341,23 @@ internal fun RequiredTypeStudyPlates(
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
                 else -> stem
             }
+            // Prefer the already bundled canonical master. When the old
+            // curriculum uses a different filename, reuse that bundled plate
+            // rather than displaying an empty student-facing image card.
+            val additionalStem = when (study.organismId + "/" + plateId) {
+                "paramecium/external-cilia" -> "type_studies/paramecium/external-cilia"
+                "paramecium/oral-apparatus" -> "type_studies/paramecium/oral-apparatus"
+                "paramecium/contractile-vacuoles" -> "type_studies/paramecium/contractile-vacuoles"
+                "paramecium/locomotion" -> "unit1/paramecium_external"
+                "sycon/reproduction" -> "unit2/sycon_plate"
+                "obelia/hydranth-gonangium" -> "unit2/obelia_colony"
+                "obelia/medusa" -> "unit2/obelia_lifecycle"
+                else -> stem
+            }
             val primaryRaster = rememberRequiredRasterBitmap(stem)
             val legacyRaster = rememberRequiredRasterBitmap(legacyStem)
-            val raster = primaryRaster ?: legacyRaster
+            val additionalRaster = rememberRequiredRasterBitmap(additionalStem)
+            val raster = primaryRaster ?: legacyRaster ?: additionalRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
             Card(Modifier.fillMaxWidth().testTag("r2-plate-slot-${study.organismId}-${plateId}")) {
