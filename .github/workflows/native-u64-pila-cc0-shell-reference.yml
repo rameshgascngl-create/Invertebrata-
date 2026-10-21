@@ -101,13 +101,7 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-boot-timeout: 900
-          script: |
-            bash .github/scripts/run-u61-unit5-bilingual.sh
-            for font in 100 200; do
-              for lang in english tamil; do
-                test -s "qa-evidence/u61-unit5/captured-final/r2-${font}-unit5-pila-shell-museum-${lang}.png"
-              done
-            done
+          script: bash .github/scripts/run-u64-pila-shell-evidence.sh
       - name: Preserve Pila screenshots and Android XML result
         if: always()
         uses: actions/upload-artifact@v4
