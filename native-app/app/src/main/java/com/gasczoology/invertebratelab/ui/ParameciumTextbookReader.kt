@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 
 /**
  * R1.4 candidate: offline-first, illustrated, chapter-by-chapter native reader.
- * Concept-specific PNG raster images replace the earlier Canvas mechanism drawings.
+ * Concept-specific PNG rasters replace earlier Canvas mechanism drawings.
  * Missing concept masters are explicitly marked; none are fabricated.
  * The A5 question bank and previously accepted N1.3 tests are untouched.
  */
