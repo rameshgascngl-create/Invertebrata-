@@ -283,6 +283,25 @@ internal fun RequiredTypeStudyPlates(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(readable, style = MaterialTheme.typography.titleMedium)
+                    if (study.organismId == "asterias" && raster != null) {
+                        val provenance = when (plateId) {
+                            "external" -> if (tamil)
+                                "இனம்: Asterias forbesi · கிளார்க் (1904) · பொதுக் களம்"
+                            else "Species: Asterias forbesi · Clark (1904) · public domain"
+                            "water-vascular-system" -> if (tamil)
+                                "பொதுவான நட்சத்திரமீன் வரைபடம் · ஆர்னால்டு (1903) · பொதுக் களம்"
+                            else "Generalized starfish diagram · Arnold (1903) · public domain"
+                            "internal" -> if (tamil)
+                                "இனம்: Asterias rubens · ஹான்ஸ் ஹில்லேவேர்ட் (2007) · CC BY-SA 4.0"
+                            else "Species: Asterias rubens · Hans Hillewaert (2007) · CC BY-SA 4.0"
+                            "larval-development" -> if (tamil)
+                                "Asterias sp. இளநிலைகள் · எர்ன்ஸ்ட் ஹேக்கல் (1904) · பொதுக் களம்"
+                            else "Asterias sp. larvae · Ernst Haeckel (1904) · public domain"
+                            else -> ""
+                        }
+                        Text(provenance, style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.testTag("asterias-plate-provenance-" + plateId))
+                    }
                     if (raster == null) {
                         Text(
                             if (tamil) "இந்த உடற்கூறுப் படம் இன்னும் கிடைக்கவில்லை. சரிபார்க்கப்பட்ட படம் சேர்க்கப்பட்டவுடன் இங்கே காணலாம்."
