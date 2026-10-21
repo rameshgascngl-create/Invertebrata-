@@ -200,7 +200,11 @@ internal fun RequiredTypeStudyPlates(
                 else -> stem
             }
             val primaryRaster = rememberRequiredRasterBitmap(stem)
-            val fallbackRaster = rememberRequiredRasterBitmap(fallbackStem)
+            // Avoid decoding the same large bitmap twice for plates without a legacy path.
+            // A fallback is only needed when the canonical artwork is absent.
+            val fallbackRaster = if (primaryRaster == null && fallbackStem != stem) {
+                rememberRequiredRasterBitmap(fallbackStem)
+            } else null
             val raster = primaryRaster ?: fallbackRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
