@@ -8,13 +8,15 @@ import java.io.File
 import java.security.MessageDigest
 
 class UnitVExistingFigureCatalogTest {
-    @Test fun allSixteenExistingImagesAreBundledAndUnique() {
+    @Test fun allSixteenReviewImagesAreDebugOnlyAndUnique() {
         assertEquals(12, UnitVExistingFigureCatalog.forChapter("u5-pila").size)
         assertEquals(4, UnitVExistingFigureCatalog.forChapter("u5-asterias").size)
         assertTrue(UnitVExistingFigureCatalog.forChapter("u4-penaeus").isEmpty())
         val digest = MessageDigest.getInstance("SHA-256")
         val hashes = UnitVExistingFigureCatalog.figures.map { figure ->
-            val file = File("src/main/assets/${figure.assetStem}.png")
+            val file = File("src/debug/assets/${figure.assetStem}.png")
+            assertFalse("Rejected image leaked into release assets",
+                File("src/main/assets/${figure.assetStem}.png").exists())
             assertTrue("Missing offline source image: ${figure.assetStem}", file.isFile)
             val bytes = file.readBytes()
             assertTrue("Blank or malformed PNG: ${figure.assetStem}", bytes.size > 16_000)
