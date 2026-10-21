@@ -1,0 +1,45 @@
+name: Native Android main regression validation
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'native-app/**'
+      - '.github/workflows/native-main-regression-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify source revision
+        run: git rev-parse HEAD | tee native-source-commit.txt
+      - name: Compile and run JVM regression tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble debug APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve test results and APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-main-regression-evidence
+          path: |
+            native-source-commit.txt
+            native-app/app/build/test-results/testDebugUnitTest/
+            native-app/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: warn
