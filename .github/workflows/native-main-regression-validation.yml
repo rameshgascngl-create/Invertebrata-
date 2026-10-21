@@ -18,7 +18,7 @@ jobs:
       - name: Check out verified native Android source branch
         uses: actions/checkout@v4
         with:
-          ref: native/u62-licensed-paramecium-conjugation-20261021
+          ref: 84912f5557a751e923facf1a6a9ba22ddf92e5c9
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
