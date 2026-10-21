@@ -80,6 +80,9 @@ internal fun UnitVExistingFigureCard(figure: UnitVExistingFigure, language: AppL
                     RequiredTypeStudyFullImage(bitmap, caption, language) { expanded = false }
                 }
             }
+            Text(figure.provenance.value(language),
+                modifier = Modifier.testTag("u5-figure-source-${figure.organism}-${figure.id}"),
+                style = MaterialTheme.typography.bodySmall)
             Text(figure.caution.value(language),
                 modifier = Modifier.testTag("u5-candidate-caution-${figure.organism}-${figure.id}"),
                 style = MaterialTheme.typography.bodyMedium,
