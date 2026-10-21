@@ -63,6 +63,24 @@ jobs:
           PY
       - name: Compile, unit tests and debug APK without editorial Pila staging
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest :app:assembleDebug --stacktrace
+      - name: Verify comparative plate is packaged inside debug APK
+        if: success()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import hashlib
+          image = Path('native-app/app/src/main/assets/type_studies/pila/swainson-1821-pila-ampullacea.png')
+          apks = list(Path('native-app/app/build/outputs/apk/debug').glob('*.apk'))
+          assert len(apks) == 1, f'Expected one debug APK, found {len(apks)}'
+          expected = hashlib.sha256(image.read_bytes()).hexdigest()
+          with ZipFile(apks[0]) as apk:
+              asset = 'assets/type_studies/pila/swainson-1821-pila-ampullacea.png'
+              assert asset in apk.namelist(), f'Missing packaged raster: {asset}'
+              packaged = hashlib.sha256(apk.read(asset)).hexdigest()
+              assert packaged == expected, 'APK asset differs from reviewed repository raster'
+          print('APK packaged Pila comparative plate verified:', expected)
+          PY
       - name: Preserve exact revision, APK and test results
         if: always()
         uses: actions/upload-artifact@v4
