@@ -23,41 +23,74 @@ origins={
 }
 
 def retrieve(key):
+    """Fetch bytes from Commons with strict SHA1 identity; never accept proxy recompression."""
+    from urllib.error import HTTPError, URLError
     from time import sleep
-    link,sha1,dims=origins[key]
-    filename=link.rsplit("/",1)[-1]
-    stripped=link.replace("https://","")
-    candidates=[
-      ("original",link),
-      ("commons_redirect","https://commons.wikimedia.org/wiki/Special:Redirect/file/"+filename),
-      ("image_proxy","https://wsrv.nl/?url="+quote(link,safe="")+"&output=jpg&q=100"),
-      ("weserv_proxy","https://images.weserv.nl/?url="+quote(stripped,safe="")+"&output=jpg&q=100"),
+    link, expected_sha1, dims = origins[key]
+    filename = link.rsplit("/", 1)[-1]
+    # Wikimedia requires an identifiable contact URL for automated clients.
+    agent = ("INVERTEBRATA-Zoology-Education/1.1 "
+             "(https://github.com/rameshgascngl-create/Invertebrata-; "
+             "academic image attribution workflow)")
+    sources = [
+        ("wikimedia_original", link),
+        ("commons_redirect",
+         "https://commons.wikimedia.org/wiki/Special:Redirect/file/" + filename),
     ]
-    problems=[]
-    # Wikimedia sometimes limits the third successive original fetch.
-    for round_no in range(1,5):
-        if round_no>1:
-            wait=12*round_no
-            print("SOURCE_COOLDOWN",key,"seconds",wait,flush=True)
-            sleep(wait)
-        for method,url in candidates:
+    problems = []
+    for method, url in sources:
+        for attempt in (1, 2):
+            request = Request(url, headers={
+                "User-Agent": agent,
+                "Accept": "image/jpeg,image/*;q=0.9",
+                "Accept-Encoding": "identity",
+            })
             try:
-                request=Request(url,headers={
-                    "User-Agent":"Mozilla/5.0 (compatible; INVERTEBRATA public-domain zoology asset importer)",
-                    "Accept":"image/jpeg,image/*"
-                })
-                with urlopen(request,timeout=35) as f:
-                    data=f.read(8000000)
-                digest=hashlib.sha1(data).hexdigest()
-                if method in ("original","commons_redirect") and digest!=sha1:
-                    raise ValueError("Unexpected source digest "+digest+" expected "+sha1)
-                image=Image.open(BytesIO(data));image.load()
-                assert image.size==dims,(key,image.size)
-                print(key,method,"source-sha1",digest,flush=True)
-                return ImageOps.exif_transpose(image).convert("RGB"),method,digest
-            except Exception as error:
-                problems.append(method+": "+str(error)[:120])
-    raise RuntimeError(key+" still unavailable: "+str(problems[-10:]))
+                with urlopen(request, timeout=35) as response:
+                    data = response.read(8_000_001)
+                if len(data) > 8_000_000:
+                    raise ValueError("Downloaded image exceeds maximum expected size")
+                actual_sha1 = hashlib.sha1(data).hexdigest()
+                if actual_sha1 != expected_sha1:
+                    raise ValueError(
+                        f"Unverified JPEG {key}: {actual_sha1} != {expected_sha1}"
+                    )
+                image = Image.open(BytesIO(data))
+                image.load()
+                if image.size != dims:
+                    raise ValueError(
+                        f"Unexpected {key} dimensions: {image.size} != {dims}"
+                    )
+                print("SOURCE_VERIFIED", key, method, actual_sha1,
+                      image.size, flush=True)
+                return ImageOps.exif_transpose(image).convert("RGB"), method, actual_sha1
+            except HTTPError as exc:
+                problems.append(f"{method} attempt {attempt}: HTTP {exc.code}")
+                if exc.code == 429:
+                    retry_after = exc.headers.get("Retry-After", "").strip()
+                    if retry_after.isdecimal():
+                        delay = int(retry_after)
+                    else:
+                        delay = 70
+                    # Stop rather than disregarding the publisher's rate limit.
+                    if delay > 120:
+                        raise RuntimeError(
+                            f"Commons rate-limited {key}; Retry-After={delay}s. "
+                            "Do not fetch from unverified proxies."
+                        ) from exc
+                    if attempt == 1:
+                        print("SOURCE_RATE_LIMIT", key, method,
+                              "sleep_seconds", max(30, delay), flush=True)
+                        sleep(max(30, delay))
+                        continue
+                break
+            except (URLError, ValueError, OSError) as exc:
+                problems.append(f"{method} attempt {attempt}: {exc}")
+                break
+    raise RuntimeError(
+        f"No SHA1-verified original available for {key}: {problems}. "
+        "Keep asset absent and maintain release hold."
+    )
 
 anatomy,anmethod,ansha=retrieve("internal")
 # Exact Hans Hillewaert published line drawing with labels intentionally removed.
