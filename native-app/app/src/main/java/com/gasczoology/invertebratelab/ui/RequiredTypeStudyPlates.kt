@@ -88,7 +88,7 @@ internal object RestoredPlateTitles {
         "pila/torsion" to BilingualText("Gastropod torsion", "வயிற்றுக்காலிகளில் முறுக்கம்"),
         "asterias/external" to BilingualText("Oral and aboral external morphology", "வாய்ப்புற மற்றும் எதிர்வாய்ப்புற புறத்தோற்றம்"),
         "asterias/water-vascular-system" to BilingualText("Water-vascular system", "நீர்க்குழாய் மண்டலம்"),
-        "asterias/internal" to BilingualText("Digestive and reproductive anatomy", "செரிமான மற்றும் இனப்பெருக்க உடற்கூறு"),
+        "asterias/internal" to BilingualText("Internal dissection — unlabelled source illustration", "உட்புற உடற்கூறு — உறுப்புப் பெயர்கள் குறிக்கப்படாத அசல் விளக்கப்படம்"),
         "asterias/larval-development" to BilingualText("Bipinnaria and brachiolaria larvae", "பைபின்னாரியா மற்றும் பிராக்கியோலாரியா இளநிலைகள்")
     )
     init {
