@@ -330,30 +330,20 @@ internal fun RequiredTypeStudyPlates(
         // rather than duplicated above the required student-facing plates.
         // Asset archives remain untouched for separate expert examination.
         study.requiredPlateIds.forEach { plateId ->
-            val stem = if (study.organismId == "paramecium")
-                "unit1/replacements/paramecium_${plateId}"
-            else "type_studies/${study.organismId}/${plateId}"
-            // Reuse previously committed Unit II figures instead of showing a
-            // missing-image message when the same subject has a legacy asset.
-            val legacyStem = when (study.organismId + "/" + plateId) {
-                "sycon/external" -> "unit2/sycon_plate"
+            // Use the bundled textbook master first. Legacy names are fallbacks
+            // only for the SAME plate, never a different anatomical subject.
+            val stem = "type_studies/${study.organismId}/${plateId}"
+            val fallbackStem = when (study.organismId + "/" + plateId) {
+                "paramecium/external-cilia" -> "unit1/paramecium_external"
+                "paramecium/oral-apparatus" -> "unit1/paramecium_oral"
+                "paramecium/contractile-vacuoles" -> "unit1/paramecium_vacuole"
                 "obelia/colony" -> "unit2/obelia_colony"
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
                 else -> stem
             }
-            // Prefer the already bundled canonical master. When the old
-            // curriculum uses a different filename, reuse that bundled plate
-            // rather than displaying an empty student-facing image card.
-            val additionalStem = when (study.organismId + "/" + plateId) {
-                "paramecium/external-cilia" -> "type_studies/paramecium/external-cilia"
-                "paramecium/oral-apparatus" -> "type_studies/paramecium/oral-apparatus"
-                "paramecium/contractile-vacuoles" -> "type_studies/paramecium/contractile-vacuoles"
-                else -> stem
-            }
             val primaryRaster = rememberRequiredRasterBitmap(stem)
-            val legacyRaster = rememberRequiredRasterBitmap(legacyStem)
-            val additionalRaster = rememberRequiredRasterBitmap(additionalStem)
-            val raster = primaryRaster ?: legacyRaster ?: additionalRaster
+            val fallbackRaster = rememberRequiredRasterBitmap(fallbackStem)
+            val raster = primaryRaster ?: fallbackRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
             Card(Modifier.fillMaxWidth().testTag("r2-plate-slot-${study.organismId}-${plateId}")) {
