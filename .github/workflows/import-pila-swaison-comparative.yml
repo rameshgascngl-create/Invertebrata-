@@ -1,0 +1,72 @@
+name: Import public-domain Pila comparative plate
+'on':
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image decoder
+        run: python -m pip install --quiet 'Pillow>=10,<12'
+      - name: Fetch historical plate and verify raster
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from io import BytesIO
+          from PIL import Image
+          import hashlib
+          url='https://commons.wikimedia.org/wiki/Special:Redirect/file/Zoological_Illustrations_Volume_II_Plate_103.jpg'
+          request=Request(url,headers={'User-Agent':'InvertebrataZoologyTeaching/1.0 (educational image provenance)'})
+          with urlopen(request,timeout=45) as response:
+              source=response.read(4_000_000)
+          image=Image.open(BytesIO(source))
+          image.verify()
+          image=Image.open(BytesIO(source))
+          assert image.format=='JPEG', image.format
+          assert image.size==(1189,2585), image.size
+          dest=Path('native-app/app/src/main/assets/type_studies/pila')
+          dest.mkdir(parents=True,exist_ok=True)
+          image.convert('RGB').save(dest/'swainson-1821-pila-ampullacea.png',format='PNG',optimize=True)
+          sha=hashlib.sha256(source).hexdigest()
+          raster_sha=hashlib.sha256((dest/'swainson-1821-pila-ampullacea.png').read_bytes()).hexdigest()
+          (dest/'SWAINSON_1821_COMPARATIVE_ATTRIBUTION.md').write_text(
+              '# Comparative historical plate — NOT a Pila globosa anatomy plate\\n\\n'
+              'Author: William Swainson. Date: 1821. Work: Zoological Illustrations, Volume II, Plate 103.\\n'
+              'Historical name: Ampullaria fasciata; Commons modern identification: Pila ampullacea.\\n'
+              'Source: https://commons.wikimedia.org/wiki/File:Zoological_Illustrations_Volume_II_Plate_103.jpg\\n'
+              'Rights: Public domain (historic 1821 illustration; see Commons source page).\\n'
+              'Changes: Original published JPEG decoded and converted to PNG, without anatomical edits or new labels.\\n'
+              f'Source JPEG SHA-256: {sha}\\nConverted PNG SHA-256: {raster_sha}\\n'
+              'Academic limitation: comparative external-shell figure only; NOT Pila globosa, mantle cavity, ctenidium, torsion, or a substitute for any required anatomical plate.\\n',
+              encoding='utf-8')
+          print('SOURCE_SHA256='+sha)
+          print('RASTER_SHA256='+raster_sha)
+          PY
+      - name: Commit published comparative raster and attribution
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/main/assets/type_studies/pila/swainson-1821-pila-ampullacea.png native-app/app/src/main/assets/type_studies/pila/SWAINSON_1821_COMPARATIVE_ATTRIBUTION.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'assets(pila): import public-domain Swainson comparative plate with source checksums'
+            git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pila-swaison-1821-provenance
+          path: |
+            native-app/app/src/main/assets/type_studies/pila/swainson-1821-pila-ampullacea.png
+            native-app/app/src/main/assets/type_studies/pila/SWAINSON_1821_COMPARATIVE_ATTRIBUTION.md
+          if-no-files-found: error
