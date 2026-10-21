@@ -204,8 +204,11 @@ internal fun RequiredTypeStudyPlates(
                         style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.testTag("pila-museum-shell-source"),
                     )
+                    // Keep the full provenance URL in the bundled attribution record;
+                    // a long unbroken URL here crowds out the lesson at 200% text scale.
                     Text(
-                        "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_ZMA.MOLL.318132_-_Pila_globosa_Swainson_-_Ampullariidae_-_Mollusc_shell.jpeg",
+                        if (tamil) "முழு மூல இணைப்பும் உரிம விவரமும் இணைக்கப்பட்ட ஆதாரக் குறிப்பில் உள்ளன."
+                        else "Full source URL and licence details are retained in the bundled attribution record.",
                         style = MaterialTheme.typography.bodySmall,
                     )
                 }
