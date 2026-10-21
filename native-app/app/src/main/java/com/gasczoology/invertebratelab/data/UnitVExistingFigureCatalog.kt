@@ -92,11 +92,26 @@ internal object UnitVExistingFigureCatalog {
         "asterias/digestive" to "feeding-and-stomachs",
         "asterias/nervous" to "nerve-and-sense"
     )
-    // All sixteen archived Unit V images are unapproved. Keep their pixels and
-    // provenance for editorial inspection, but never render them in a student
-    // chapter merely because a caption can be placed beside a lesson.
+    // Archived images are debug-only until reviewed. The mapping is available
+    // to the editorial QA reader, but release chapters must not resolve these
+    // assets: src/debug/assets is deliberately absent from release builds.
     fun forSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> =
         emptyList()
+
+    /** Editorial QA: return only existing archived figures mapped to this section.
+     * Never use this API in a release chapter: these PNGs are debug-only.
+     */
+    fun forReviewSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> {
+        val organism = when (chapterId) {
+            "u5-pila" -> "pila"
+            "u5-asterias" -> "asterias"
+            else -> return emptyList()
+        }
+        return figures.filter { figure ->
+            figure.organism == organism &&
+                sectionByFigure["${figure.organism}/${figure.id}"] == sectionId
+        }
+    }
 
     fun forChapter(chapterId: String): List<UnitVExistingFigure> = when (chapterId) {
         "u5-pila" -> figures.filter { it.organism == "pila" }
