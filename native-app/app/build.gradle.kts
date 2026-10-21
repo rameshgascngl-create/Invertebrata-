@@ -60,8 +60,12 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
 }
 
-// Package the twelve individually uploaded PNGs as debug-only editorial assets.
-// Never include rights-unverified images in release APK/AAB variants.
+// The twelve unverified Pila plates are strictly opt-in editorial review material.
+// Normal debug and release builds must never require or package these uploads.
+// For an explicit editorial build, pass -PstagePilaReview=true and supply all twelve PNGs.
+val includePilaEditorialReview = providers.gradleProperty("stagePilaReview")
+    .map { it.equals("true", ignoreCase = true) }
+    .getOrElse(false)
 val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
     val names = listOf(
         "01_shell_ventral_REVIEW.png", "02_operculum_views_REVIEW.png",
@@ -92,5 +96,11 @@ val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
         }
     }
 }
-android.sourceSets.getByName("debug").assets.srcDir(layout.buildDirectory.dir("generated/pilaDebugAssets").get().asFile)
-tasks.matching { it.name == "mergeDebugAssets" }.configureEach { dependsOn(stagePilaIndividualReview) }
+if (includePilaEditorialReview) {
+    android.sourceSets.getByName("debug").assets.srcDir(
+        layout.buildDirectory.dir("generated/pilaDebugAssets").get().asFile
+    )
+    tasks.matching { it.name == "mergeDebugAssets" }.configureEach {
+        dependsOn(stagePilaIndividualReview)
+    }
+}
