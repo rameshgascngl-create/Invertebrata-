@@ -41,6 +41,19 @@ class UnitVExistingFigureCatalogTest {
         assertFalse(UnitVExistingFigureCatalog.figures.any { it.assetStem.startsWith("type_studies/") })
     }
 
+    @Test fun publishedPilaFiguresMapToRealBilingualLessonSection() {
+        val pila = FiveUnitRestorationLessons.chapters.single { it.chapterId == "u5-pila" }
+        val sections = pila.sections.associateBy { it.id }
+        val external = sections["external"]
+        assertTrue("Pila external morphology lesson is missing", external != null)
+        assertTrue("Pila lesson must have both languages",
+            external!!.title.english.isNotBlank() && external.title.tamil.isNotBlank())
+        val published = UnitVExistingFigureCatalog.forPublishedChapter("u5-pila")
+        assertEquals(3, published.size)
+        assertTrue("Published figure not mapped to a real lesson section",
+            published.all { it in UnitVExistingFigureCatalog.forSection("u5-pila", "external") })
+    }
+
     @Test fun restoredUnitVFiguresHaveStableAndroidScreenshotTags() {
         val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").readText()
         assertTrue("Missing unique chapter-section-image Compose tag",
