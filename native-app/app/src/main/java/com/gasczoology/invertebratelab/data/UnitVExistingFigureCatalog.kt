@@ -92,8 +92,11 @@ internal object UnitVExistingFigureCatalog {
         "asterias/digestive" to "feeding-and-stomachs",
         "asterias/nervous" to "nerve-and-sense"
     )
+    // All sixteen archived Unit V images are unapproved. Keep their pixels and
+    // provenance for editorial inspection, but never render them in a student
+    // chapter merely because a caption can be placed beside a lesson.
     fun forSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> =
-        forChapter(chapterId).filter { sectionByFigure[it.organism + "/" + it.id] == sectionId }
+        emptyList()
 
     fun forChapter(chapterId: String): List<UnitVExistingFigure> = when (chapterId) {
         "u5-pila" -> figures.filter { it.organism == "pila" }
