@@ -80,7 +80,7 @@ class NativeU57ParameciumProcessPngTest {
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
             rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
             rule.onNodeWithTag("u57-paramecium-process-bitmap-"+process).assertDoesNotExist()
-            if(process=="conjugation")screenshot("conjugation-text-no-vector")
+            screenshot("fission-text-no-vector")
         }
         rule.onNodeWithTag("r1-stage-title").performScrollTo().assertExists()
         rule.onNodeWithTag("r1-next").performScrollTo().performClick()
