@@ -70,11 +70,12 @@ class NativeFiveUnitMissingRasterCoverageTest {
         for (name in listOf("04_animal_front", "08_respiratory_system")) {
             find(root, "pila-recovered-$name")
             rule.onNodeWithTag("pila-recovered-$name").assertIsDisplayed()
+            // Capture each actual bitmap while visible, not the final missing slot.
+            capture("u5-pila-recovered-$name")
         }
         for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
             find(root, "r2-plate-missing-pila-$plate")
         }
-        capture("u5-pila-recovered-english")
     }
 
     @Test fun syconShowsRealCanalSystemImageAndTracksTwoMissingMasters() {
