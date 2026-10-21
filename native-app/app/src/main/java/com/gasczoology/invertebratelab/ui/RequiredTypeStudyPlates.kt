@@ -139,6 +139,12 @@ internal fun RequiredTypeStudyPlates(
             )
         }
         if (study.organismId == "pila") {
+            Text(
+                if (tamil) "பைலா வகையினத்தின் புறத்தோற்றம், மேலங்கிக் குழி, செவுள் மற்றும் முறுக்கம் ஆகிய நான்கு உடற்கூறுப் படங்களும் தனித்தனியாகச் சரிபார்க்கப்பட வேண்டும். ஓட்டு அருங்காட்சியகப் புகைப்படம் இவற்றுக்கு மாற்றாகாது."
+                else "The four Pila anatomy requirements—external morphology, mantle cavity, ctenidium and torsion—need separately verified published figures. The museum shell photograph does not replace any of them.",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.testTag("pila-four-anatomy-release-hold"),
+            )
             // Licensed specimen documentation supplements the prescribed
             // anatomical drawings; it MUST NOT satisfy pila/external.
             val museumRaster = rememberRequiredRasterBitmap("type_studies/pila/shell-specimen-reference")
