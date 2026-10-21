@@ -416,10 +416,15 @@ private fun UnitScreen(
         ) {
             item {
                 OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
-                Text(unit.title.value(language))
+                Text(unit.title.value(language), style = MaterialTheme.typography.headlineSmall)
                 Text(label(language,
-                    "Read the English–Tamil textbook sections before A5 questions. Missing anatomical plates remain visible as unapproved slots until restored.",
-                    "அசல் ஐந்து மதிப்பெண் வினாக்களுக்கு முன் இருமொழிப் பாடங்களைப் படிக்கவும். சேர்க்கப்படாத உடற்கூறுப் படங்கள் ஆய்வு நிலுவையில் உள்ளன என்று தெளிவாகக் காட்டப்படும்."))
+                    "${unit.chapters.size} chapters · Learn concepts, study type organisms and revise.",
+                    "${unit.chapters.size} அத்தியாயங்கள் · கருத்துகளை அறிந்து, மாதிரி உயிரினங்களைப் படித்து, மீள்பார்வை செய்யுங்கள்."),
+                    style = MaterialTheme.typography.titleSmall)
+                Text(label(language,
+                    "Study each chapter in order: key concepts, anatomical references and then five-mark practice. Unverified illustrations are clearly identified.",
+                    "ஒவ்வொரு அத்தியாயத்திலும் முதலில் அடிப்படைக் கருத்துகளையும், பின்னர் உடற்கூறுப் படங்களையும், இறுதியாக ஐந்து மதிப்பெண் வினாக்களையும் படிக்கவும். சரிபார்க்கப்படாத படங்கள் தனியாகக் குறிப்பிடப்பட்டுள்ளன."),
+                    style = MaterialTheme.typography.bodyMedium)
                 if (unit.number == 4) {
                     Button(onClick = onEarthworm,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
