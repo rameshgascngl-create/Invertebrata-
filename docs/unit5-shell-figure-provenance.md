@@ -31,3 +31,12 @@ remains `DRAFT_UNVERIFIED`.
 a published plate, record creator, title, source URL, exact licence version,
 licence URL, modification notice and retrieval date; verify both biological
 subject identity and redistribution permissions before bundling the bytes.
+
+## Published Asterias candidate intake — 2026-10-21
+
+Source and rights checks only; no new figure is included in the app.
+
+- **Asterias rubens internal dissection:** Hans Hillewaert (2007), [original Commons file](https://commons.wikimedia.org/wiki/File:Asterias_rubens,_dissection.svg), CC BY-SA 3.0 ([licence](https://creativecommons.org/licenses/by-sa/3.0/)). Attribution: © Hans Hillewaert, Wikimedia Commons, CC BY-SA 3.0. This is an **internal** view, never an intact external figure. Numbered structures and SVG rasterisation need scientific review.
+- **Historical starfish water-vascular diagram:** Augusta Foote Arnold (1903), *Sea-Beach at Ebb-Tide*, p. 206; University of Washington Freshwater and Marine Image Bank, item 52615. [Commons source](https://commons.wikimedia.org/wiki/File:FMIB_52615_Diagram_of_water-vascular_system_of_a_starfish_;.jpeg). Public domain per FMIB rights notice; acknowledge the University of Washington collection. Only 474 × 507 pixels, so not a high-resolution master. Not established as a species-specific Asterias diagram.
+
+Before importing either candidate: preserve source bytes and SHA-256, verify anatomical labels, section mapping, English/Tamil attribution, enlarged view, and offline Android screenshots. Neither is currently accepted or bundled.
