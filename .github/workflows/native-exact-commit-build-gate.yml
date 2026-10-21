@@ -32,6 +32,35 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Verify bundled published Pila figure and source attribution
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          from struct import unpack
+          root = Path('native-app/app/src/main/assets/type_studies/pila')
+          image = root / 'swainson-1821-pila-ampullacea.png'
+          record = root / 'SWAINSON_1821_COMPARATIVE_ATTRIBUTION.md'
+          assert image.is_file(), 'Published comparative image missing from assets'
+          assert record.is_file(), 'Published image attribution missing'
+          data = image.read_bytes()
+          assert data[:8] == bytes.fromhex('89504e470d0a1a0a'), 'Not a PNG'
+          assert data[12:16] == b'IHDR', 'Missing PNG image header'
+          width, height = unpack('>II', data[16:24])
+          assert (width, height) == (1189, 2585), f'Unexpected image dimensions: {(width, height)}'
+          digest = hashlib.sha256(data).hexdigest()
+          attribution = record.read_text(encoding='utf-8').replace('\\n', '\n')
+          assert digest in attribution, 'Raster SHA-256 does not match attribution'
+          assert 'Public domain' in attribution and 'Pila ampullacea' in attribution
+          gallery = Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/RequiredTypeStudyPlates.kt').read_text()
+          assert 'type_studies/pila/swainson-1821-pila-ampullacea' in gallery
+          for plate in ('external', 'mantle-cavity', 'ctenidium', 'torsion'):
+              if (root / (plate + '.png')).exists():
+                  print('Pila mandatory anatomy candidate present for expert review:', plate)
+              else:
+                  print('Pila mandatory anatomy plate missing:', plate)
+          print('Published comparative plate integrity PASS:', width, height, digest)
+          PY
       - name: Compile, unit tests and debug APK without editorial Pila staging
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest :app:assembleDebug --stacktrace
       - name: Preserve exact revision, APK and test results
