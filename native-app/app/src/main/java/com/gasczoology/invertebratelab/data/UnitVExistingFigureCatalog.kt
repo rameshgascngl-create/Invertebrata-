@@ -101,6 +101,20 @@ internal object UnitVExistingFigureCatalog {
     /** Editorial QA: return only existing archived figures mapped to this section.
      * Never use this API in a release chapter: these PNGs are debug-only.
      */
+    /** Debug-only candidates with no documented major anatomical contradiction.
+     * These are still NOT accepted textbook masters and stay out of release.
+     */
+    private val lowerRiskReviewIds = setOf(
+        "pila/01_shell_ventral",
+        "pila/02_operculum_views",
+        "pila/03_shell_dorsal"
+    )
+
+    fun lowerRiskReviewSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> =
+        forReviewSection(chapterId, sectionId).filter { figure ->
+            "${figure.organism}/${figure.id}" in lowerRiskReviewIds
+        }
+
     fun forReviewSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> {
         val organism = when (chapterId) {
             "u5-pila" -> "pila"
