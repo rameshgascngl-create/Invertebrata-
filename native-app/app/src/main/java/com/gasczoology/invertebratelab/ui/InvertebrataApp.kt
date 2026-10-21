@@ -349,10 +349,15 @@ private fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
-                Text("INVERTEBRATA")
+                Text("INVERTEBRATA", style = MaterialTheme.typography.headlineLarge)
                 Text(label(language,
-                    "Interactive Zoology laboratory · study, anatomy, physiology and audio",
-                    "ஊடாடும் விலங்கியல் ஆய்வகம் · பாடம், உடலமைப்பு, உடலியல், ஒலி"))
+                    "Undergraduate Zoology · Five-unit bilingual textbook",
+                    "இளநிலை விலங்கியல் · ஐந்து அலகுகள் கொண்ட இருமொழிப் பாடநூல்"),
+                    style = MaterialTheme.typography.titleMedium)
+                Text(label(language,
+                    "Choose a unit, read the lessons and examine the available reference plates before attempting revision questions.",
+                    "ஓர் அலகைத் தேர்ந்தெடுத்து, பாடங்களைப் படித்து, கிடைக்கும் ஆதாரப் படங்களைப் பார்த்த பின் மீள்பார்வை வினாக்களைப் பயிற்சி செய்யுங்கள்."),
+                    style = MaterialTheme.typography.bodyMedium)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag("language-english")) { Text("English") }
