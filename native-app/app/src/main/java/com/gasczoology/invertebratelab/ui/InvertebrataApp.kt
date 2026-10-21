@@ -48,6 +48,7 @@ import com.gasczoology.invertebratelab.data.A5Question
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.Chapter
+import com.gasczoology.invertebratelab.data.ChapterStudyGuides
 import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.NativeCurriculumManifest
@@ -580,6 +581,29 @@ private fun ChapterScreen(
                 item(key = "r2-type-study-gallery") {
                     val study = NativeCurriculumManifest.typeStudies.single { it.lessonId == chapter.id }
                     RequiredTypeStudyPlates(study, language)
+                }
+            }
+            // Bilingual revision guides follow the figure evidence panel; they do not
+            // imply that a missing or comparative anatomical plate is approved.
+            ChapterStudyGuides.byChapterId[chapter.id]?.let { guide ->
+                item(key = "chapter-study-guide") {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().testTag("chapter-study-guide"),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        Text(label(language, "Learning objectives", "கற்றல் நோக்கங்கள்"),
+                            style = MaterialTheme.typography.titleLarge)
+                        guide.objectives.forEachIndexed { index, objective ->
+                            Text("${index + 1}. " + objective.value(language),
+                                style = MaterialTheme.typography.bodyLarge)
+                        }
+                        Text(label(language, "Revision questions", "மீள்பார்வை வினாக்கள்"),
+                            style = MaterialTheme.typography.titleLarge)
+                        guide.reviewPrompts.forEachIndexed { index, prompt ->
+                            Text("${index + 1}. " + prompt.value(language),
+                                style = MaterialTheme.typography.bodyLarge)
+                        }
+                    }
                 }
             }
             if (chapter.id == "u1-proto-parasites") {
