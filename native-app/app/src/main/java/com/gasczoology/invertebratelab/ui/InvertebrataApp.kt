@@ -797,17 +797,24 @@ private fun ChapterScreen(
                         Text(label(language,
                             "Science and Tamil reviews are pending. This material is not yet approved as the final syllabus lesson.",
                             "அறிவியல் மற்றும் தமிழ் மதிப்பாய்வுகள் இன்னும் முடியவில்லை. இது இறுதியாக அங்கீகரிக்கப்பட்ட பாடம் அல்ல."))
-                        Text(lessonDraft.title.value(language))
+                        Text(lessonDraft.title.value(language),
+                            style = MaterialTheme.typography.headlineSmall)
+                        Text(label(language,
+                            "${lessonDraft.sections.size} teaching sections · Read before revision.",
+                            "${lessonDraft.sections.size} பாட உட்பிரிவுகள் · மீள்பார்வைக்கு முன் படிக்கவும்."),
+                            style = MaterialTheme.typography.bodyMedium)
                     }
                 }
-                items(lessonDraft.sections, key = { "n22-" + it.id }) { section ->
+                items(lessonDraft.sections.size, key = { "n22-" + lessonDraft.sections[it].id }) { sectionIndex ->
+                    val section = lessonDraft.sections[sectionIndex]
                     Column(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         modifier = Modifier.fillMaxWidth().testTag("n22-section-" + section.id),
                     ) {
-                        Text(section.heading.value(language))
+                        Text("${sectionIndex + 1}. ${section.heading.value(language)}",
+                            style = MaterialTheme.typography.titleLarge)
                         section.paragraphs.forEach { paragraph ->
-                            Text(paragraph.value(language))
+                            Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
                         }
                     }
                 }
