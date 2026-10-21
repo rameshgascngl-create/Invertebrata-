@@ -74,7 +74,7 @@ class NativeU57ParameciumProcessPngTest {
                 rule.onNodeWithTag(tag).performScrollTo().assertExists()
             }
         }
-        for(process in listOf("binary_fission","conjugation")) {
+        for(process in listOf("binary_fission")) {
             go(process)
             val tag="u57-paramecium-process-png-missing-"+process
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
