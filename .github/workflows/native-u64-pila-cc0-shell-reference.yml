@@ -1,0 +1,130 @@
+name: U64 licensed Pila museum shell supplement — Android proof
+'on':
+  push:
+    branches:
+      - native/u64-pila-cc0-shell-reference-20261021
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: u64-pila-shell-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      imported_sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image decoder
+        run: python -m pip install --quiet 'Pillow>=10.0,<12'
+      - name: Retrieve exact CC0 museum specimen and validate source hash
+        run: python .github/scripts/import-u64-pila-cc0-shell.py
+      - name: Commit licensed supplementary specimen raster
+        id: commit
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/main/assets/type_studies/pila/shell-specimen-reference.png
+          if ! git diff --cached --quiet; then
+            git commit -m 'assets(pila): add CC0 Naturalis museum shell as supplementary photograph'
+            git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: u64-pila-cc0-museum-source-and-attribution
+          path: |
+            native-app/app/src/main/assets/type_studies/pila/shell-specimen-reference.png
+            native-app/app/src/main/assets/type_studies/pila/SHELL_MUSEUM_ATTRIBUTION.md
+          if-no-files-found: error
+
+  verify:
+    needs: import
+    runs-on: ubuntu-24.04
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.import.outputs.imported_sha }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Validate museum image integrity and no replacement of mandatory anatomy
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct, hashlib
+          root=Path('native-app/app/src/main/assets/type_studies/pila')
+          b=(root/'shell-specimen-reference.png').read_bytes()
+          assert b[:8]==b'\x89PNG\r\n\x1a\n'
+          assert struct.unpack('>II', b[16:24]) == (1920,1278)
+          assert not (root/'external.png').exists()
+          for n in ('mantle-cavity','ctenidium','torsion'):
+            assert not (root/(n+'.png')).exists()
+          print('U64_PILA_SUPPLEMENT_ONLY=PASS', hashlib.sha256(b).hexdigest())
+          PY
+      - name: Compile Kotlin, Android tests, 43-chapter unit regression and QA APK
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest :app:assembleDebug --stacktrace
+      - name: Preserve JVM reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u64-pila-jvm-results
+          path: native-app/app/build/test-results/testDebugUnitTest/
+          if-no-files-found: warn
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify bilingual Pila museum bitmap and Asterias regression on offline Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: |
+            bash .github/scripts/run-u61-unit5-bilingual.sh
+            for font in 100 200; do
+              for lang in english tamil; do
+                test -s "qa-evidence/u61-unit5/captured-final/r2-${font}-unit5-pila-shell-museum-${lang}.png"
+              done
+            done
+      - name: Preserve Pila screenshots and Android XML result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: u64-pila-museum-android-evidence
+          path: |
+            qa-evidence/u61-unit5/captured-final/*pila-shell-museum*
+            qa-evidence/u61-unit5/font-*/xml/
+            qa-evidence/u61-unit5/status.txt
+          if-no-files-found: warn
+
+  release-hold:
+    if: always()
+    needs: [import, verify]
+    runs-on: ubuntu-24.04
+    steps:
+      - run: |
+          echo 'Supplementary authentic shell photograph is NOT a required pencil anatomy plate.'
+          echo 'Four mandatory Pila anatomical PNGs remain missing; no approval.'
+          echo 'Academic and Tamil review; physical handset QA remain pending. Release HOLD.'

@@ -138,6 +138,73 @@ internal fun RequiredTypeStudyPlates(
                 modifier = Modifier.testTag("r6-single-source-disclosure"),
             )
         }
+        if (study.organismId == "pila") {
+            // Licensed specimen documentation supplements the prescribed
+            // anatomical drawings; it MUST NOT satisfy pila/external.
+            val museumRaster = rememberRequiredRasterBitmap("type_studies/pila/shell-specimen-reference")
+            var museumExpanded by rememberSaveable("pila-museum-shell") { mutableStateOf(false) }
+            Card(Modifier.fillMaxWidth().testTag("pila-museum-shell-card")) {
+                Column(
+                    Modifier.fillMaxWidth().padding(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        if (tamil) "பைலா குளோபோசா — அருங்காட்சியக ஓட்டு மாதிரி"
+                        else "Pila globosa — authenticated museum shell specimen",
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                    Text(
+                        if (tamil)
+                            "Naturalis Biodiversity Center-இன் அசல் சேகரிப்பு ஒளிப்படம். இது ஓட்டின் புற அமைப்பைக் காட்டும் துணை ஆதாரம் மட்டுமே; தலை, பாதம், மேன்டில் அறை, சீனிடியம் மற்றும் முறுக்கம் ஆகியவற்றின் உடற்கூறு வரைபடங்களுக்கு மாற்றல்ல."
+                        else
+                            "Authentic Naturalis museum collection photograph, showing shell specimens and different shell aspects. This is supplementary shell evidence, NOT a labelled pencil anatomical plate, and does not replace the required external animal, mantle cavity, ctenidium or torsion drawings.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.testTag("pila-museum-shell-limits"),
+                    )
+                    if (museumRaster == null) {
+                        Text(
+                            if (tamil) "உரிமம் சரிபார்க்கப்பட்ட அருங்காட்சியகப் படம் இன்னும் இறக்குமதி செய்யப்படவில்லை."
+                            else "The provenance-verified museum photograph has not yet been imported.",
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.testTag("pila-museum-shell-not-imported"),
+                        )
+                    } else {
+                        Image(
+                            bitmap = museumRaster,
+                            contentDescription = if (tamil) "பைலா குளோபோசா ஓட்டு அருங்காட்சியக ஒளிப்படம்" else "Pila globosa museum shell specimen photograph",
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.fillMaxWidth()
+                                .aspectRatio(museumRaster.width.toFloat() / museumRaster.height.toFloat())
+                                .clickable { museumExpanded = true }
+                                .testTag("pila-museum-shell-bitmap"),
+                        )
+                        OutlinedButton(
+                            onClick = { museumExpanded = true },
+                            modifier = Modifier.heightIn(min = 48.dp)
+                                .testTag("pila-museum-shell-enlarge"),
+                        ) {
+                            Text(if (tamil) "ஓட்டுப் படத்தைப் பெரிதாக்கு" else "Enlarge original shell photograph")
+                        }
+                        if (museumExpanded) RequiredTypeStudyFullImage(
+                            image = museumRaster,
+                            title = if (tamil) "பைலா குளோபோசா — ஓட்டு மாதிரி"
+                                    else "Pila globosa — preserved shell specimen",
+                            language = language,
+                            onDismiss = { museumExpanded = false },
+                        )
+                    }
+                    Text(
+                        "Naturalis Biodiversity Center / Wikimedia Commons · ZMA.MOLL.318132 · CC0 1.0",
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.testTag("pila-museum-shell-source"),
+                    )
+                    Text(
+                        "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_ZMA.MOLL.318132_-_Pila_globosa_Swainson_-_Ampullariidae_-_Mollusc_shell.jpeg",
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+        }
         // Student textbook view: ONLY one mandatory slot per anatomical subject.
         // Pila/Asterias rejected or review-only archive candidates are excluded
         // rather than duplicated above the required student-facing plates.

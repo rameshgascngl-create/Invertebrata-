@@ -149,6 +149,15 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-pila"
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-pila")
+        find(ch, "pila-museum-shell-bitmap")
+        rule.onNodeWithTag("pila-museum-shell-not-imported").assertDoesNotExist()
+        find(ch, "pila-museum-shell-limits")
+        find(ch, "pila-museum-shell-source")
+        find(ch, "pila-museum-shell-enlarge")
+        rule.onNodeWithTag("pila-museum-shell-enlarge").performClick()
+        rule.onNodeWithTag("r2-fullscreen-bitmap").assertExists()
+        capture("unit5-pila-shell-museum-tamil")
+        rule.onNodeWithTag("r2-fullscreen-close").performClick()
         // Rejected/unverified Pila editorial archive plates are no longer
         // inserted ahead of anatomy slots in the student textbook.
         rule.onNodeWithTag("pila-reference-review-warning").assertDoesNotExist()
@@ -217,6 +226,12 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-pila"
         enter(5, ch, false)
         find(ch, "r2-type-study-gallery-pila")
+        find(ch, "pila-museum-shell-bitmap")
+        find(ch, "pila-museum-shell-source")
+        capture("unit5-pila-shell-museum-english")
+        // Even after supplementary museum reference is added, compulsory
+        // illustrated anatomy remains missing, not silently accepted.
+        rule.onNodeWithTag("r2-plate-missing-pila-external").assertExists()
         rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
         find(ch, "r2-plate-missing-pila-mantle-cavity")
         find(ch, "restored-section-reproduction-and-development")
