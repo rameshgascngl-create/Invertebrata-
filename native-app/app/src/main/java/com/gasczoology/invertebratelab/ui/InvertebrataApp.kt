@@ -778,7 +778,14 @@ private fun ChapterScreen(
                             verticalArrangement = Arrangement.spacedBy(9.dp)) {
                             Text(section.title.value(language),
                                 style = MaterialTheme.typography.titleLarge)
-                            section.paragraphs.forEach { paragraph ->
+                            section.paragraphs.forEachIndexed { index, paragraph ->
+                                Text(
+                                    label(language,
+                                        if (index == 0) "Core concept" else "Explanation and important details",
+                                        if (index == 0) "மையக் கருத்து" else "விளக்கமும் முக்கிய விவரங்களும்"),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    modifier = Modifier.testTag("restored-subheading-" + section.id + "-" + index)
+                                )
                                 Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
                             }
                         }
