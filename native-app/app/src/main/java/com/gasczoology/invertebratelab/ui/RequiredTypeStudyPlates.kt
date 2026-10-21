@@ -148,6 +148,10 @@ internal fun RequiredTypeStudyPlates(
                 "paramecium/contractile-vacuoles" -> "unit1/paramecium_vacuole"
                 "obelia/colony" -> "unit2/obelia_colony"
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
+                // Existing APK artwork: reuse committed images rather than requiring re-upload.
+                "pila/external" -> "review_only/pila/generated_12/01_shell_ventral_REVIEW"
+                "asterias/external" -> "review_only/asterias/external_REVIEW"
+                "asterias/water-vascular-system" -> "review_only/asterias/water_vascular_REVIEW"
                 else -> stem
             }
             val primaryRaster = rememberRequiredRasterBitmap(stem)
