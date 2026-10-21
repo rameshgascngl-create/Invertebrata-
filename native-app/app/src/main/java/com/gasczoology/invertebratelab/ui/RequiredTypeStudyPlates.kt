@@ -272,13 +272,9 @@ internal fun RequiredTypeStudyPlates(
             Card(Modifier.fillMaxWidth().testTag("pila-torsion-comparative-source")) {
                 Column(Modifier.fillMaxWidth().padding(12.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(label(language,
-                        "Comparative source · gastropod torsion in Trochus",
-                        "ஒப்பீட்டு ஆதாரம் · Trochus வயிற்றுக்காலியின் முறுக்கம்"),
+                    Text(if (tamil) "ஒப்பீட்டு ஆதாரம் · Trochus வயிற்றுக்காலியின் முறுக்கம்" else "Comparative source · gastropod torsion in Trochus",
                         style = MaterialTheme.typography.titleMedium)
-                    Text(label(language,
-                        "The 1911 published figure depicts three developmental stages of Trochus, not Pila. Consult it for the general concept of torsion; the Pila-specific torsion plate remains missing.",
-                        "1911 ஆம் ஆண்டின் வெளியீட்டுப் படம் Trochus உயிரினத்தின் மூன்று வளர்ச்சி நிலைகளைக் காட்டுகிறது; இது Pila அல்ல. முறுக்கத்தின் பொதுக் கருத்தை அறிய மட்டுமே இதைப் பயன்படுத்தவும். Pila-வுக்குரிய படம் இன்னும் தேவை."),
+                    Text(if (tamil) "1911 ஆம் ஆண்டின் வெளியீட்டுப் படம் Trochus உயிரினத்தின் மூன்று வளர்ச்சி நிலைகளைக் காட்டுகிறது; இது Pila அல்ல. முறுக்கத்தின் பொதுக் கருத்தை அறிய மட்டுமே இதைப் பயன்படுத்தவும். Pila-வுக்குரிய படம் இன்னும் தேவை." else "The 1911 published figure depicts three developmental stages of Trochus, not Pila. Consult it for the general concept of torsion; the Pila-specific torsion plate remains missing.",
                         style = MaterialTheme.typography.bodyMedium)
                     Text("Encyclopaedia Britannica (1911) · Gastropoda · p. 506 · fig. 1",
                         style = MaterialTheme.typography.bodySmall)
