@@ -111,6 +111,7 @@ jobs:
             qa-evidence/u61-unit5/captured-final/*pila-shell-museum*
             qa-evidence/u61-unit5/font-*/xml/
             qa-evidence/u61-unit5/status.txt
+            qa-evidence/u61-unit5/recovered-pila-test/
           if-no-files-found: warn
 
   release-hold:
