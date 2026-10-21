@@ -287,6 +287,49 @@ internal fun RequiredTypeStudyPlates(
                 }
             }
         }
+        if (study.organismId == "pila") {
+            // Earlier committed student artwork, preserved as review-only material.
+            // Neither image is counted as an accepted required anatomical plate.
+            val recovered = listOf(
+                Triple("04_animal_front", "Earlier external-animal drawing",
+                    "முந்தைய விலங்கின் புறத்தோற்ற வரைபடம்"),
+                Triple("08_respiratory_system", "Earlier respiratory-system drawing",
+                    "முந்தைய சுவாச மண்டல வரைபடம்"),
+            )
+            Text(label(language, "Earlier artwork · provisional review",
+                "முந்தைய வரைபடங்கள் · ஆய்வுக்கான பதிப்பு"),
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.testTag("pila-recovered-gallery"))
+            recovered.forEach { (stem, english, tamilTitle) ->
+                val bitmap = rememberRequiredRasterBitmap("type_studies/pila/recovered/" + stem)
+                var enlarged by rememberSaveable("pila-recovered-" + stem) { mutableStateOf(false) }
+                if (bitmap != null) {
+                    Card(Modifier.fillMaxWidth()) {
+                        Column(Modifier.fillMaxWidth().padding(12.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(if (tamil) tamilTitle else english,
+                                style = MaterialTheme.typography.titleMedium)
+                            Image(bitmap = bitmap,
+                                contentDescription = if (tamil) tamilTitle else english,
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier.fillMaxWidth()
+                                    .aspectRatio(bitmap.width.toFloat() / bitmap.height.toFloat())
+                                    .clickable { enlarged = true }
+                                    .testTag("pila-recovered-" + stem))
+                            Text(label(language,
+                                "Previously committed drawing. Anatomical accuracy, labels and source rights remain under review; do not use as a verified dissection reference.",
+                                "முன்னர் சேர்க்கப்பட்ட வரைபடம். உடற்கூறு துல்லியம், பெயர்க்குறிப்புகள் மற்றும் பயன்பாட்டு உரிமைகள் இன்னும் சரிபார்க்கப்படவில்லை."),
+                                style = MaterialTheme.typography.bodySmall)
+                            if (enlarged) RequiredTypeStudyFullImage(
+                                image = bitmap,
+                                title = if (tamil) tamilTitle else english,
+                                language = language,
+                                onDismiss = { enlarged = false })
+                        }
+                    }
+                }
+            }
+        }
         // Student textbook view: ONLY one mandatory slot per anatomical subject.
         // Pila/Asterias rejected or review-only archive candidates are excluded
         // rather than duplicated above the required student-facing plates.
