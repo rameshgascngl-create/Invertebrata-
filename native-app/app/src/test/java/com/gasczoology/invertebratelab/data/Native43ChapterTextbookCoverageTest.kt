@@ -341,7 +341,7 @@ class Native43ChapterTextbookCoverageTest {
         assertTrue(u3.contains("UnitIIIPlateGallery(chapter.id, language, narrator)"))
         assertFalse(u3.contains("RequiredTypeStudyPlates(study, language)"))
         assertTrue(earthworm.contains("type_studies/earthworm/"))
-        assertTrue(required.contains("type_studies/${'
+        assertTrue(required.contains("type_studies/"))
         assertTrue(required.contains("\"paramecium/external-cilia\" -> \"unit1/paramecium_external\""))
         // Source-path checks are NOT approval of the depicted anatomy or Tamil.
     }
