@@ -348,10 +348,6 @@ internal fun RequiredTypeStudyPlates(
                 "paramecium/external-cilia" -> "type_studies/paramecium/external-cilia"
                 "paramecium/oral-apparatus" -> "type_studies/paramecium/oral-apparatus"
                 "paramecium/contractile-vacuoles" -> "type_studies/paramecium/contractile-vacuoles"
-                "paramecium/locomotion" -> "unit1/paramecium_external"
-                "sycon/reproduction" -> "unit2/sycon_plate"
-                "obelia/hydranth-gonangium" -> "unit2/obelia_colony"
-                "obelia/medusa" -> "unit2/obelia_lifecycle"
                 else -> stem
             }
             val primaryRaster = rememberRequiredRasterBitmap(stem)
