@@ -76,6 +76,36 @@ class NativeFiveUnitRestorationTest {
         image.recycle()
     }
 
+    /**
+     * Evidence MUST show the actual bitmap in a full-screen viewer, separately
+     * for every Asterias plate and each language. A slot-presence assertion
+     * alone can pass even if a screenshot shows only the last larval figure.
+     * Runs at both 100% and 200% system font settings.
+     */
+    private fun captureAsteriasFullScreen(
+        chapter: String, plate: String, language: String,
+    ) {
+        val button = "r2-plate-expand-asterias-" + plate
+        find(chapter, button)
+        rule.onNodeWithTag(button).performClick()
+        rule.onNodeWithTag("r2-fullscreen-dialog").assertExists()
+        rule.onNodeWithTag("r2-fullscreen-bitmap").assertExists()
+        rule.onNodeWithTag("r6-zoom-level")
+            .assertTextContains("100%", substring = true)
+        capture("unit5-asterias-" + language + "-" + plate + "-fullscreen-100pct")
+
+        rule.onNodeWithTag("r2-zoom-in").performClick()
+        rule.onNodeWithTag("r6-zoom-level")
+            .assertTextContains("200%", substring = true)
+        capture("unit5-asterias-" + language + "-" + plate + "-fullscreen-200pct")
+
+        rule.onNodeWithTag("r2-zoom-reset").performClick()
+        rule.onNodeWithTag("r6-zoom-level")
+            .assertTextContains("100%", substring = true)
+        rule.onNodeWithTag("r2-fullscreen-close").performClick()
+        rule.onNodeWithTag("r2-fullscreen-dialog").assertDoesNotExist()
+    }
+
     @Test fun unitOneProtozoaTeachesBeforeShowingA5() {
         val ch = "u1-protozoa"
         enter(1, ch, false)
@@ -127,6 +157,11 @@ class NativeFiveUnitRestorationTest {
             find(ch, "r2-plate-bitmap-asterias-" + plate)
             rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertDoesNotExist()
         }
+        // Capture each of the four plates in real full-screen modes, not a
+        // single scrolled screenshot of the bottom larval plate.
+        for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
+            captureAsteriasFullScreen(ch, plate, "english")
+        }
         find(ch, "asterias-external-species-provenance")
         find(ch, "asterias-wvs-legend")
         find(ch, "r2-plate-expand-asterias-water-vascular-system")
@@ -173,6 +208,9 @@ class NativeFiveUnitRestorationTest {
         for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
             find(ch, "r2-plate-bitmap-asterias-" + plate)
             rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertDoesNotExist()
+        }
+        for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
+            captureAsteriasFullScreen(ch, plate, "tamil")
         }
         find(ch, "asterias-wvs-legend")
         find(ch, "asterias-internal-species-licence")
