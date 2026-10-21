@@ -1,0 +1,27 @@
+name: Non-Pila eight-organism curriculum and asset audit
+'on':
+  push:
+    branches:
+      - native/u64-pila-cc0-shell-reference-20261021
+    paths:
+      - 'native-app/**'
+      - '.github/scripts/audit-non-pila-assets.py'
+      - '.github/workflows/native-non-pila-academic-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  academic-inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inventory required anatomy without approving missing plates
+        run: python3 .github/scripts/audit-non-pila-assets.py
+      - name: Preserve eight-organism plate inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: non-pila-anatomical-asset-inventory
+          path: qa-evidence/non-pila-type-study-asset-inventory.json
+          if-no-files-found: error
