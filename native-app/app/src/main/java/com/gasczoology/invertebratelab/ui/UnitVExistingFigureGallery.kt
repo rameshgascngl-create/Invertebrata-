@@ -30,8 +30,8 @@ internal fun UnitVExistingFigureHeader(language: AppLanguage, count: Int) {
     Column(Modifier.fillMaxWidth().testTag("u5-existing-image-gallery"),
         verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(if (language == AppLanguage.TAMIL)
-            "கிடைத்துள்ள படக் கோப்புகள் · $count ஆய்வு வரைபடங்கள்"
-            else "EXISTING IMAGE FILES · $count review candidates",
+            "ஒப்புதல் பெறாத படங்கள் · $count; பாடத்தில் காட்டப்படவில்லை"
+            else "UNAPPROVED IMAGE ARCHIVE · $count withheld from lessons",
             style = MaterialTheme.typography.titleLarge)
         Text(if (language == AppLanguage.TAMIL)
             "மூலக் கோப்புகளின் படப்புள்ளிகள் மாற்றப்படவில்லை. இவற்றின் ஆங்கிலக் குறியீடுகள் சிலவற்றில் பிழைகள் உள்ளன. அறிவியல், தமிழ் மற்றும் பயன்பாட்டு உரிமை ஆய்வுகள் நிலுவையில் உள்ளன; கட்டாய உடற்கூறு படங்களுக்கான ஒப்புதல் அல்ல."
