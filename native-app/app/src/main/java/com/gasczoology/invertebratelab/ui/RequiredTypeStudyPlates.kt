@@ -141,10 +141,18 @@ internal fun RequiredTypeStudyPlates(
         // rather than duplicated above the required student-facing plates.
         // Asset archives remain untouched for separate expert examination.
         study.requiredPlateIds.forEach { plateId ->
-            val stem = if (study.organismId == "paramecium")
-                "unit1/replacements/paramecium_${plateId}"
-            else "type_studies/${study.organismId}/${plateId}"
-            val raster = rememberRequiredRasterBitmap(stem)
+            val stem = "type_studies/${study.organismId}/${plateId}"
+            val fallbackStem = when (study.organismId + "/" + plateId) {
+                "paramecium/external-cilia" -> "unit1/paramecium_external"
+                "paramecium/oral-apparatus" -> "unit1/paramecium_oral"
+                "paramecium/contractile-vacuoles" -> "unit1/paramecium_vacuole"
+                "obelia/colony" -> "unit2/obelia_colony"
+                "obelia/life-cycle" -> "unit2/obelia_lifecycle"
+                else -> stem
+            }
+            val primaryRaster = rememberRequiredRasterBitmap(stem)
+            val fallbackRaster = rememberRequiredRasterBitmap(fallbackStem)
+            val raster = primaryRaster ?: fallbackRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
             Card(Modifier.fillMaxWidth().testTag("r2-plate-slot-${study.organismId}-${plateId}")) {
