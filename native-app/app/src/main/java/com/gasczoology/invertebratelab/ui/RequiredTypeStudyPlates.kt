@@ -160,6 +160,12 @@ internal fun RequiredTypeStudyPlates(
                         style = MaterialTheme.typography.titleMedium,
                     )
                     Text(
+                        if (tamil) "கவனிக்க: ஓட்டின் வடிவம், சுழற்சிகள் மற்றும் ஓட்டுவாயை அடையாளம் காண்க. இது முழு விலங்கின் உடற்கூறு படம் அல்ல."
+                        else "Observe: Identify the shell outline, whorls and aperture. This specimen does not show the complete animal anatomy.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.testTag("pila-shell-student-observation"),
+                    )
+                    Text(
                         if (tamil)
                             "Naturalis Biodiversity Center-இன் அசல் சேகரிப்பு ஒளிப்படம். இது ஓட்டின் புற அமைப்பைக் காட்டும் துணை ஆதாரம் மட்டுமே; தலை, பாதம், மேன்டில் அறை, சீனிடியம் மற்றும் முறுக்கம் ஆகியவற்றின் உடற்கூறு வரைபடங்களுக்கு மாற்றல்ல."
                         else
