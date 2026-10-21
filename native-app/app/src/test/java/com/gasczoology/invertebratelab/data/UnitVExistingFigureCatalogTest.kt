@@ -28,7 +28,18 @@ class UnitVExistingFigureCatalogTest {
         assertFalse(UnitVExistingFigureCatalog.figures.any { it.assetStem.startsWith("type_studies/") })
     }
 
-    @Test fun mandatoryAcademicPlatesStillRequireSeparateApproval() {
+    @Test fun unapprovedArchiveNeverEntersStudentChapterSections() {
+        for (section in listOf("external", "dual-respiration", "radula-and-gut",
+                "heart-and-haemocoel", "reproduction-and-development")) {
+            assertTrue(UnitVExistingFigureCatalog.forSection("u5-pila", section).isEmpty())
+        }
+        for (section in listOf("external", "water-vascular", "internal",
+                "feeding-and-stomachs", "nerve-and-sense")) {
+            assertTrue(UnitVExistingFigureCatalog.forSection("u5-asterias", section).isEmpty())
+        }
+    }
+
+        @Test fun mandatoryAcademicPlatesStillRequireSeparateApproval() {
         val primary = File("src/main/assets/type_studies")
         for (organism in listOf("pila", "asterias")) {
             val study = NativeCurriculumManifest.typeStudies.single { it.organismId == organism }
