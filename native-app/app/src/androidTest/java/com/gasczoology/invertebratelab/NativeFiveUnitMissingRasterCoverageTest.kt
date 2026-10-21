@@ -64,6 +64,19 @@ class NativeFiveUnitMissingRasterCoverageTest {
         assertTrue(bitmap!!.height > bitmap.width)
         bitmap.recycle()
     }
+    @Test fun pilaShowsBothRecoveredDrawingsButDoesNotClaimFourAcceptedAnatomyPlates() {
+        val root = enter(5, "u5-pila", false)
+        find(root, "pila-recovered-gallery")
+        for (name in listOf("04_animal_front", "08_respiratory_system")) {
+            find(root, "pila-recovered-$name")
+            rule.onNodeWithTag("pila-recovered-$name").assertIsDisplayed()
+        }
+        for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
+            find(root, "r2-plate-missing-pila-$plate")
+        }
+        capture("u5-pila-recovered-english")
+    }
+
     @Test fun syconShowsRealCanalSystemImageAndTracksTwoMissingMasters() {
         val root = enter(2, "u2-sycon", false)
         find(root, "r2-type-study-gallery-sycon")
