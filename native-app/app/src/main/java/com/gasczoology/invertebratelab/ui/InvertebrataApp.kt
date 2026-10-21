@@ -785,7 +785,11 @@ private fun ChapterScreen(
                     }
                     val chapterFigures = UnitVExistingFigureCatalog.forSection(chapter.id, section.id)
                     items(chapterFigures, key = { "u5-candidate-" + it.assetStem }) { figure ->
-                        UnitVExistingFigureCard(figure, language)
+                        Column(Modifier.fillMaxWidth().testTag(
+                            "unit5-figure-" + chapter.id + "-" + section.id + "-" + figure.id
+                        )) {
+                            UnitVExistingFigureCard(figure, language)
+                        }
                     }
                 }
             }
