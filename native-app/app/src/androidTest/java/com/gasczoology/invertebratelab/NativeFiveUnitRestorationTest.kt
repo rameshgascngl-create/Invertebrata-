@@ -93,6 +93,9 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-pila"
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-pila")
+        find(ch, "pila-museum-shell-bitmap")
+        find(ch, "pila-museum-shell-source")
+        find(ch, "pila-comparative-bitmap")
         // Rejected/unverified Pila editorial archive plates are no longer
         // inserted ahead of anatomy slots in the student textbook.
         rule.onNodeWithTag("pila-reference-review-warning").assertDoesNotExist()
@@ -116,19 +119,19 @@ class NativeFiveUnitRestorationTest {
         find(ch, "a5-card-u5-pila-A5-1")
     }
 
-    @Test fun unitFiveAsteriasShowsWaterVascularMasterAsMissingNotCanvas() {
+    @Test fun unitFiveAsteriasDisplaysFourLicensedSourcePlates() {
         val ch = "u5-asterias"
         enter(5, ch, false)
         find(ch, "r2-type-study-gallery-asterias")
         rule.onNodeWithTag("asterias-review-warning").assertDoesNotExist()
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
-        // Archived images can still be reviewed outside the student lesson;
-        // the mandatory water-vascular master remains a release blocker.
+        // Four separately sourced plates must be present and attributed.
         for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
-            find(ch, "r2-plate-slot-asterias-" + plate)
-            rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertExists()
+            find(ch, "r2-plate-bitmap-asterias-" + plate)
+            rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertDoesNotExist()
+            find(ch, "asterias-plate-provenance-" + plate)
         }
-        capture("unit5-asterias-english-missing-plate")
+        capture("unit5-asterias-english-source-plates")
         for (section in listOf(
             "external", "water-vascular", "internal", "feeding-and-stomachs",
             "body-wall-and-pedicellariae", "respiration-and-wastes",
@@ -159,7 +162,9 @@ class NativeFiveUnitRestorationTest {
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-asterias")
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
-        find(ch, "r2-plate-missing-asterias-water-vascular-system")
+        find(ch, "r2-plate-bitmap-asterias-water-vascular-system")
+        rule.onNodeWithTag("r2-plate-missing-asterias-water-vascular-system").assertDoesNotExist()
+        find(ch, "asterias-plate-provenance-water-vascular-system")
         find(ch, "restored-section-feeding-and-stomachs")
         find(ch, "restored-section-reproduction-and-larvae")
         capture("unit5-asterias-tamil-late-chapter")

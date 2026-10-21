@@ -86,7 +86,7 @@ internal object RestoredPlateTitles {
         "pila/torsion" to BilingualText("Gastropod torsion", "வயிற்றுக்காலிகளில் முறுக்கம்"),
         "asterias/external" to BilingualText("Oral and aboral external morphology", "வாய்ப்புற மற்றும் எதிர்வாய்ப்புற புறத்தோற்றம்"),
         "asterias/water-vascular-system" to BilingualText("Water-vascular system", "நீர்க்குழாய் மண்டலம்"),
-        "asterias/internal" to BilingualText("Digestive and reproductive anatomy", "செரிமான மற்றும் இனப்பெருக்க உடற்கூறு"),
+        "asterias/internal" to BilingualText("Asterias rubens dissection — unlabelled source", "Asterias rubens உட்புற உடற்கூறு — பெயர்க்குறிப்பற்ற அசல் வரைபடம்"),
         "asterias/larval-development" to BilingualText("Bipinnaria and brachiolaria larvae", "பைபின்னாரியா மற்றும் பிராக்கியோலாரியா இளநிலைகள்")
     )
     init {
@@ -124,17 +124,66 @@ internal fun RequiredTypeStudyPlates(
             style = MaterialTheme.typography.titleLarge,
         )
         Text(
-            if (tamil) "இவை தனித்த படக்கோப்புகளாக இணைக்கப்படுகின்றன. சிலவை வரலாற்று மை/வண்ணப் படங்கள்; அசல் பென்சில் ஸ்கேன்கள் அல்ல. உடற்கூறு, உரிமை, தமிழ் குறியீடுகள் ஆய்வு நிலுவையில் உள்ளன."
-            else "Each figure is a real bundled raster, if present. Historical ink and colour references are NOT authentic pencil scans; morphology, rights and Tamil terminology still require verification.",
+            if (tamil) "ஒவ்வொரு படத்தையும் தொட்டுப் பெரிதாக்கலாம். ஒப்பீட்டுப் படங்களில் காட்டப்பட்ட இனமும் மூலமும் தனியாகக் குறிப்பிடப்பட்டுள்ளன."
+            else "Tap a figure to enlarge it. Comparative illustrations identify the source species and author.",
             style = MaterialTheme.typography.bodyMedium,
         )
-        if (study.organismId == "paramecium") {
-            Text(
-                if (tamil) "பழைய ஒரு புகைப்பட வரைபடத்தைப் பல உறுப்புப் படங்களாக மீண்டும் பயன்படுத்துவது நிறுத்தப்பட்டுள்ளது. வெளிப்புறம், வாயமைப்பு, சுருங்கும் நுண்குமிழ், இயக்கம் ஆகிய நான்கிற்கும் தனித்த சரிபார்க்கப்பட்ட PNG கோப்புகள் தேவை."
-                else "Retired the old photographed pencil drawing and its repeated crops. External cilia, oral apparatus, contractile vacuoles and locomotion each require a distinct verified replacement PNG.",
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.testTag("r6-single-source-disclosure"),
-            )
+        if (study.organismId == "pila") {
+            // Museum specimen and historical plate are comparative references,
+            // not replacements for any of the four required anatomy masters.
+            val shell = rememberRequiredRasterBitmap("type_studies/pila/shell-specimen-reference")
+            var shellExpanded by rememberSaveable("pila-shell-specimen") { mutableStateOf(false) }
+            if (shell != null) {
+                Card(Modifier.fillMaxWidth().testTag("pila-museum-shell-card")) {
+                    Column(Modifier.fillMaxWidth().padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(if (tamil) "Pila globosa — அருங்காட்சியக ஓட்டு மாதிரி"
+                            else "Pila globosa — museum shell specimen",
+                            style = MaterialTheme.typography.titleMedium)
+                        Image(bitmap = shell,
+                            contentDescription = if (tamil) "Pila globosa ஓட்டு" else "Pila globosa shell",
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.fillMaxWidth()
+                                .aspectRatio(shell.width.toFloat() / shell.height.toFloat())
+                                .clickable { shellExpanded = true }
+                                .testTag("pila-museum-shell-bitmap"))
+                        Text(if (tamil)
+                            "மூலம்: Naturalis Biodiversity Center / Wikimedia Commons · CC0 1.0. ஓட்டின் வடிவம், சுழற்சிகள், ஓட்டுவாய் ஆகியவற்றை மட்டும் காணலாம்; மேன்டில் அறை, சீனிடியம் அல்லது முறுக்கம் இதில் காட்டப்படவில்லை."
+                            else "Naturalis Biodiversity Center / Wikimedia Commons · CC0 1.0. This specimen documents shell form, whorls and aperture, not the mantle cavity, ctenidium or torsion.",
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.testTag("pila-museum-shell-source"))
+                        if (shellExpanded) RequiredTypeStudyFullImage(
+                            image = shell, title = "Pila globosa · Naturalis shell",
+                            language = language, onDismiss = { shellExpanded = false })
+                    }
+                }
+            }
+            val historic = rememberRequiredRasterBitmap("type_studies/pila/swainson-1821-pila-ampullacea")
+            var historicExpanded by rememberSaveable("pila-historic-plate") { mutableStateOf(false) }
+            if (historic != null) {
+                Card(Modifier.fillMaxWidth().testTag("pila-comparative-card")) {
+                    Column(Modifier.fillMaxWidth().padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(if (tamil) "வரலாற்று ஒப்பீடு — Pila ampullacea"
+                            else "Historical comparison — Pila ampullacea",
+                            style = MaterialTheme.typography.titleMedium)
+                        Image(bitmap = historic,
+                            contentDescription = "Swainson 1821 Pila ampullacea shell plate",
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.fillMaxWidth()
+                                .aspectRatio(historic.width.toFloat() / historic.height.toFloat())
+                                .clickable { historicExpanded = true }
+                                .testTag("pila-comparative-bitmap"))
+                        Text(if (tamil)
+                            "வில்லியம் ஸ்வெயின்சன், 1821 · பொதுக் களம். இது Pila globosa அல்ல; ஓடு பற்றிய ஒப்பீட்டுக்கு மட்டுமே."
+                            else "William Swainson, 1821 · public domain. This is NOT Pila globosa and is provided only for shell comparison.",
+                            style = MaterialTheme.typography.bodySmall)
+                        if (historicExpanded) RequiredTypeStudyFullImage(
+                            image = historic, title = "Pila ampullacea · Swainson (1821)",
+                            language = language, onDismiss = { historicExpanded = false })
+                    }
+                }
+            }
         }
         // Student textbook view: ONLY one mandatory slot per anatomical subject.
         // Pila/Asterias rejected or review-only archive candidates are excluded
@@ -148,10 +197,6 @@ internal fun RequiredTypeStudyPlates(
                 "paramecium/contractile-vacuoles" -> "unit1/paramecium_vacuole"
                 "obelia/colony" -> "unit2/obelia_colony"
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
-                // Existing APK artwork: reuse committed images rather than requiring re-upload.
-                "pila/external" -> "review_only/pila/generated_12/01_shell_ventral_REVIEW"
-                "asterias/external" -> "review_only/asterias/external_REVIEW"
-                "asterias/water-vascular-system" -> "review_only/asterias/water_vascular_REVIEW"
                 else -> stem
             }
             val primaryRaster = rememberRequiredRasterBitmap(stem)
@@ -165,6 +210,25 @@ internal fun RequiredTypeStudyPlates(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(readable, style = MaterialTheme.typography.titleMedium)
+                    if (study.organismId == "asterias" && raster != null) {
+                        val source = when (plateId) {
+                            "external" -> if (tamil)
+                                "Asterias forbesi · H. L. Clark (1904) · பொதுக் களம் · படம் 1 எதிர்வாய்ப்புறம், படம் 2 வாய்ப்புறம்"
+                                else "Asterias forbesi · H. L. Clark (1904) · public domain · fig. 1 aboral, fig. 2 oral"
+                            "water-vascular-system" -> if (tamil)
+                                "பொதுவான நட்சத்திரமீன் நீர்க்குழாய் வரைபடம் · A. F. Arnold (1903) · பொதுக் களம்; ஐந்து கரங்களின் முழு வரைபடம் அல்ல"
+                                else "Generalized starfish water-vascular schematic · A. F. Arnold (1903) · public domain; not a complete five-arm dissection"
+                            "internal" -> if (tamil)
+                                "Asterias rubens · Hans Hillewaert (2007) · CC BY-SA 4.0 · உறுப்புப் பெயர்கள் இல்லாத வரைபடம்"
+                                else "Asterias rubens · Hans Hillewaert (2007) · CC BY-SA 4.0 · unlabelled dissection"
+                            "larval-development" -> if (tamil)
+                                "Asterias sp. · எர்ன்ஸ்ட் ஹேக்கல் (1904) · பொதுக் களம் · பைபின்னாரியா மற்றும் பிராக்கியோலாரியா"
+                                else "Asterias sp. · Ernst Haeckel (1904) · public domain · bipinnaria and brachiolaria"
+                            else -> ""
+                        }
+                        Text(source, style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.testTag("asterias-plate-provenance-" + plateId))
+                    }
                     if (raster == null) {
                         Text(
                             if (tamil) "இந்த உடற்கூறுப் படம் இன்னும் கிடைக்கவில்லை. சரிபார்க்கப்பட்ட படம் சேர்க்கப்பட்டவுடன் இங்கே காணலாம்."
@@ -189,11 +253,6 @@ internal fun RequiredTypeStudyPlates(
                         ) {
                             Text(if (tamil) "படத்தைப் பெரிதாக்கு" else "Tap to enlarge image")
                         }
-                        Text(
-                            if (tamil) "ஆய்வுக்கான வரைவு · இறுதி அறிவியல் ஒப்புதல் பெறவில்லை."
-                            else "Raster candidate · anatomy and bilingual review pending.",
-                            style = MaterialTheme.typography.bodySmall,
-                        )
                         if (expanded) {
                             RequiredTypeStudyFullImage(
                                 image = raster, title = "${study.scientificName} · ${readable}",
@@ -290,11 +349,6 @@ internal fun RequiredTypeStudyFullImage(
                     }
                 }
             }
-            Text(
-                if (tamil) "அறிவியல் மற்றும் தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது"
-                else "Anatomical and Tamil verification pending",
-                style = MaterialTheme.typography.bodySmall,
-            )
         }
     }
 }
