@@ -30,6 +30,28 @@ class UnitVExistingFigureCatalogTest {
         assertFalse(UnitVExistingFigureCatalog.figures.any { it.assetStem.startsWith("type_studies/") })
     }
 
+    @Test fun reviewMappingIsSectionSpecificAndDoesNotLeakIntoRelease() {
+        val catalog = UnitVExistingFigureCatalog
+        assertEquals(listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal", "04_animal_front"),
+            catalog.forReviewSection("u5-pila", "external").map { it.id })
+        assertEquals(listOf("06_buccal_mass", "07_digestive_system"),
+            catalog.forReviewSection("u5-pila", "radula-and-gut").map { it.id })
+        assertEquals(listOf("external"),
+            catalog.forReviewSection("u5-asterias", "internal").map { it.id })
+        assertEquals(listOf("digestive"),
+            catalog.forReviewSection("u5-asterias", "feeding-and-stomachs").map { it.id })
+        assertTrue(catalog.forReviewSection("u5-asterias", "external").isEmpty())
+        assertTrue(catalog.forReviewSection("u4-penaeus", "external").isEmpty())
+        assertTrue(catalog.forReviewSection("u5-pila", "water-vascular").isEmpty())
+        for (chapter in listOf("u5-pila", "u5-asterias")) {
+            for (section in listOf("external", "internal", "feeding-and-stomachs",
+                    "radula-and-gut", "water-vascular")) {
+                assertTrue("Unapproved PNG shown in student section",
+                    catalog.forSection(chapter, section).isEmpty())
+            }
+        }
+    }
+
     @Test fun unapprovedArchiveNeverEntersStudentChapterSections() {
         for (section in listOf("external", "dual-respiration", "radula-and-gut",
                 "heart-and-haemocoel", "reproduction-and-development")) {
