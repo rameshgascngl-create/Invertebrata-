@@ -55,6 +55,11 @@ class NativeFiveUnitMissingRasterCoverageTest {
         val size = if (inst.targetContext.resources.configuration.fontScale >= 1.95f)
             "200" else "100"
         val path = "/sdcard/Download/five-unit-qa/r3-$size-$name.png"
+        // The test is independently runnable: do not depend on another suite
+        // having created the external-storage screenshot directory.
+        android.os.ParcelFileDescriptor.AutoCloseInputStream(
+            inst.uiAutomation.executeShellCommand("mkdir -p /sdcard/Download/five-unit-qa")
+        ).use { it.readBytes() }
         val ui = inst.uiAutomation
         android.os.ParcelFileDescriptor.AutoCloseInputStream(
             ui.executeShellCommand("screencap -p $path")).use { it.readBytes() }
