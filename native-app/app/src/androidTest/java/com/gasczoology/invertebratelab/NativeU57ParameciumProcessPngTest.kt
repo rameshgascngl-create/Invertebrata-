@@ -74,18 +74,14 @@ class NativeU57ParameciumProcessPngTest {
                 rule.onNodeWithTag(tag).performScrollTo().assertExists()
             }
         }
-        for(process in listOf("binary_fission")) {
+        for(process in listOf("binary_fission","conjugation")) {
             go(process)
             val tag="u57-paramecium-process-png-missing-"+process
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
             rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
             rule.onNodeWithTag("u57-paramecium-process-bitmap-"+process).assertDoesNotExist()
-            screenshot("fission-text-no-vector")
+            if(process=="conjugation")screenshot("conjugation-text-no-vector")
         }
-        go("conjugation")
-        rule.onNodeWithTag("u57-paramecium-process-bitmap-conjugation").performScrollTo().assertIsDisplayed()
-        rule.onNodeWithTag("u62-conjugation-licence-and-stage-warning").performScrollTo().assertExists()
-        screenshot("conjugation")
         rule.onNodeWithTag("r1-stage-title").performScrollTo().assertExists()
         rule.onNodeWithTag("r1-next").performScrollTo().performClick()
         rule.onNodeWithTag("r1-stage-explanation").performScrollTo().assertExists()
