@@ -341,7 +341,49 @@ class Native43ChapterTextbookCoverageTest {
         assertTrue(u3.contains("UnitIIIPlateGallery(chapter.id, language, narrator)"))
         assertFalse(u3.contains("RequiredTypeStudyPlates(study, language)"))
         assertTrue(earthworm.contains("type_studies/earthworm/"))
-        assertTrue(required.contains("type_studies/${study.organismId}/${plateId}"))
+        assertTrue(required.contains("type_studies/${'
+        assertTrue(required.contains("\"paramecium/external-cilia\" -> \"unit1/paramecium_external\""))
+        // Source-path checks are NOT approval of the depicted anatomy or Tamil.
+    }
+
+    @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
+        val paramecium = NativeLessonDrafts.paramecium
+        assertEquals("u1-paramecium", paramecium.lessonId)
+        assertTrue(paramecium.sections.size >= 10)
+        BilingualLessonContract.validate(paramecium)
+        val source = File(
+            "src/main/java/com/gasczoology/invertebratelab/ui/UnitIFlagellateTypeStudies.kt"
+        ).readText(Charsets.UTF_8)
+        assertTrue(source.contains("UnitIFlagellateLessonSection("))
+        for (species in listOf("trypanosoma", "leishmania")) {
+            assertTrue(source.contains("id = \"$species\""))
+        }
+        assertTrue(UnitIFlagellateLifeCycles.trypanosoma.phases.size >= 4)
+        assertTrue(UnitIFlagellateLifeCycles.leishmania.phases.size >= 4)
+    }
+}
+}{study.organismId}/${'
+        assertTrue(required.contains("\"paramecium/external-cilia\" -> \"unit1/paramecium_external\""))
+        // Source-path checks are NOT approval of the depicted anatomy or Tamil.
+    }
+
+    @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
+        val paramecium = NativeLessonDrafts.paramecium
+        assertEquals("u1-paramecium", paramecium.lessonId)
+        assertTrue(paramecium.sections.size >= 10)
+        BilingualLessonContract.validate(paramecium)
+        val source = File(
+            "src/main/java/com/gasczoology/invertebratelab/ui/UnitIFlagellateTypeStudies.kt"
+        ).readText(Charsets.UTF_8)
+        assertTrue(source.contains("UnitIFlagellateLessonSection("))
+        for (species in listOf("trypanosoma", "leishmania")) {
+            assertTrue(source.contains("id = \"$species\""))
+        }
+        assertTrue(UnitIFlagellateLifeCycles.trypanosoma.phases.size >= 4)
+        assertTrue(UnitIFlagellateLifeCycles.leishmania.phases.size >= 4)
+    }
+}
+}{plateId}"))
         assertTrue(required.contains("\"paramecium/external-cilia\" -> \"unit1/paramecium_external\""))
         // Source-path checks are NOT approval of the depicted anatomy or Tamil.
     }
