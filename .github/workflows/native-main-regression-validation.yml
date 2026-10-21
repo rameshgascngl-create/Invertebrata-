@@ -15,7 +15,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out verified native Android source branch
+        uses: actions/checkout@v4
+        with:
+          ref: native/u62-licensed-paramecium-conjugation-20261021
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
@@ -29,8 +32,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
-      - name: Verify source revision
-        run: git rev-parse HEAD | tee native-source-commit.txt
+      - name: Verify source revision and Gradle project
+        run: |
+          git rev-parse HEAD | tee native-source-commit.txt
+          test -f native-app/settings.gradle.kts
+          test -f native-app/app/build.gradle.kts
       - name: Compile and run JVM regression tests
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
       - name: Assemble debug APK
