@@ -211,6 +211,52 @@ internal fun RequiredTypeStudyPlates(
                 }
             }
         }
+        if (study.organismId == "pila") {
+            // Historical comparative figure, NOT a Pila globosa anatomy master.
+            val historicPlate = rememberRequiredRasterBitmap("type_studies/pila/swainson-1821-pila-ampullacea")
+            var historicExpanded by rememberSaveable("pila-historical-comparative") { mutableStateOf(false) }
+            if (historicPlate != null) {
+                Card(Modifier.fillMaxWidth().testTag("pila-published-comparative-card")) {
+                    Column(Modifier.fillMaxWidth().padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            if (tamil) "வரலாற்று ஒப்பீட்டுப் படம் — Pila ampullacea (Pila globosa அல்ல)"
+                            else "Published comparative plate — Pila ampullacea (NOT Pila globosa)",
+                            style = MaterialTheme.typography.titleMedium,
+                        )
+                        Text(
+                            if (tamil) "வில்லியம் ஸ்வெயின்சன் (1821) வெளியிட்ட ஓட்டு மற்றும் புறத்தோற்றப் படம். இது Pila globosa-வின் உடற்கூறுப் படமல்ல; மேலங்கிக் குழி, செவுள் அல்லது முறுக்கத்திற்கான ஆதாரமும் அல்ல."
+                            else "William Swainson's 1821 historical external-shell illustration. It depicts Pila ampullacea, not Pila globosa, and provides no evidence for mantle-cavity, ctenidium or torsion anatomy.",
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                        Image(
+                            bitmap = historicPlate,
+                            contentDescription = if (tamil) "1821 ஆம் ஆண்டு Pila ampullacea வரலாற்று ஒப்பீட்டுப் படம்"
+                                else "1821 published comparative illustration of Pila ampullacea",
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.fillMaxWidth()
+                                .aspectRatio(historicPlate.width.toFloat() / historicPlate.height.toFloat())
+                                .clickable { historicExpanded = true }
+                                .testTag("pila-published-comparative-bitmap"),
+                        )
+                        Text(
+                            "William Swainson · Zoological Illustrations, Vol. II, Plate 103 (1821) · Public domain · Wikimedia Commons",
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                        Text(
+                            "https://commons.wikimedia.org/wiki/File:Zoological_Illustrations_Volume_II_Plate_103.jpg",
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                        if (historicExpanded) RequiredTypeStudyFullImage(
+                            image = historicPlate,
+                            title = "Pila ampullacea — Swainson (1821)",
+                            language = language,
+                            onDismiss = { historicExpanded = false },
+                        )
+                    }
+                }
+            }
+        }
         // Student textbook view: ONLY one mandatory slot per anatomical subject.
         // Pila/Asterias rejected or review-only archive candidates are excluded
         // rather than duplicated above the required student-facing plates.
