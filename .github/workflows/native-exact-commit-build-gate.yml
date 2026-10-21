@@ -1,5 +1,11 @@
 name: Native exact-commit Kotlin and APK gate
 'on':
+  push:
+    branches:
+      - native/u64-pila-cc0-shell-reference-20261021
+    paths:
+      - 'native-app/**'
+      - '.github/workflows/native-exact-commit-build-gate.yml'
   workflow_dispatch:
 
 permissions:
