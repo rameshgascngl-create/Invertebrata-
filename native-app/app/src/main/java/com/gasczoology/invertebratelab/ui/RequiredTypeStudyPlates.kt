@@ -333,7 +333,17 @@ internal fun RequiredTypeStudyPlates(
             val stem = if (study.organismId == "paramecium")
                 "unit1/replacements/paramecium_${plateId}"
             else "type_studies/${study.organismId}/${plateId}"
-            val raster = rememberRequiredRasterBitmap(stem)
+            // Reuse previously committed Unit II figures instead of showing a
+            // missing-image message when the same subject has a legacy asset.
+            val legacyStem = when (study.organismId + "/" + plateId) {
+                "sycon/external" -> "unit2/sycon_plate"
+                "obelia/colony" -> "unit2/obelia_colony"
+                "obelia/life-cycle" -> "unit2/obelia_lifecycle"
+                else -> stem
+            }
+            val primaryRaster = rememberRequiredRasterBitmap(stem)
+            val legacyRaster = rememberRequiredRasterBitmap(legacyStem)
+            val raster = primaryRaster ?: legacyRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
             Card(Modifier.fillMaxWidth().testTag("r2-plate-slot-${study.organismId}-${plateId}")) {
