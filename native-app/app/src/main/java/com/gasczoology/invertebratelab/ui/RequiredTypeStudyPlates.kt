@@ -296,8 +296,7 @@ internal fun RequiredTypeStudyPlates(
                 Triple("08_respiratory_system", "Earlier respiratory-system drawing",
                     "முந்தைய சுவாச மண்டல வரைபடம்"),
             )
-            Text(label(language, "Earlier artwork · provisional review",
-                "முந்தைய வரைபடங்கள் · ஆய்வுக்கான பதிப்பு"),
+            Text(if (tamil) "முந்தைய வரைபடங்கள் · ஆய்வுக்கான பதிப்பு" else "Earlier artwork · provisional review",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.testTag("pila-recovered-gallery"))
             recovered.forEach { (stem, english, tamilTitle) ->
@@ -316,9 +315,9 @@ internal fun RequiredTypeStudyPlates(
                                     .aspectRatio(bitmap.width.toFloat() / bitmap.height.toFloat())
                                     .clickable { enlarged = true }
                                     .testTag("pila-recovered-" + stem))
-                            Text(label(language,
-                                "Previously committed drawing. Anatomical accuracy, labels and source rights remain under review; do not use as a verified dissection reference.",
-                                "முன்னர் சேர்க்கப்பட்ட வரைபடம். உடற்கூறு துல்லியம், பெயர்க்குறிப்புகள் மற்றும் பயன்பாட்டு உரிமைகள் இன்னும் சரிபார்க்கப்படவில்லை."),
+                            Text(if (tamil)
+                                "முன்னர் சேர்க்கப்பட்ட வரைபடம். உடற்கூறு துல்லியம், பெயர்க்குறிப்புகள் மற்றும் பயன்பாட்டு உரிமைகள் இன்னும் சரிபார்க்கப்படவில்லை."
+                                else "Previously committed drawing. Anatomical accuracy, labels and source rights remain under review; do not use as a verified dissection reference.",
                                 style = MaterialTheme.typography.bodySmall)
                             if (enlarged) RequiredTypeStudyFullImage(
                                 image = bitmap,
