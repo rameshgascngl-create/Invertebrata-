@@ -83,6 +83,7 @@ class NativeU57ParameciumProcessPngTest {
             screenshot("fission-text-no-vector")
         }
         go("conjugation")
+        rule.onNodeWithTag("u57-paramecium-process-bitmap-conjugation").performScrollTo().assertIsDisplayed()
         rule.onNodeWithTag("r1-stage-title").performScrollTo().assertExists()
         rule.onNodeWithTag("r1-next").performScrollTo().performClick()
         rule.onNodeWithTag("r1-stage-explanation").performScrollTo().assertExists()
