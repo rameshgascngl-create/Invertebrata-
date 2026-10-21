@@ -41,6 +41,16 @@ class UnitVExistingFigureCatalogTest {
         assertFalse(UnitVExistingFigureCatalog.figures.any { it.assetStem.startsWith("type_studies/") })
     }
 
+    @Test fun restoredUnitVFiguresHaveStableAndroidScreenshotTags() {
+        val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").readText()
+        assertTrue("Missing unique chapter-section-image Compose tag",
+            reader.contains("\"unit5-figure-\" + chapter.id + \"-\" + section.id + \"-\" + figure.id"))
+        val figures = UnitVExistingFigureCatalog.forSection("u5-pila", "external")
+        val tags = figures.map { "unit5-figure-u5-pila-external-${it.id}" }
+        assertEquals(3, tags.distinct().size)
+        assertEquals("unit5-figure-u5-pila-external-01_shell_ventral", tags.first())
+    }
+
     @Test fun nativeChapterReaderWiresPublishedImagesAfterTheirOwnSection() {
         val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").readText()
         val sectionLoop = reader.indexOf("restoredLesson.sections.forEach { section ->")
