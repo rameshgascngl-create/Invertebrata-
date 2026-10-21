@@ -2,6 +2,7 @@ package com.gasczoology.invertebratelab
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.runBlocking
@@ -76,6 +77,14 @@ class NativeFiveUnitRestorationTest {
         image.recycle()
     }
 
+    private fun fullscreenPan(): Pair<Int, Int> {
+        val value = rule.onNodeWithTag("r6-zoom-viewport-clipped")
+            .fetchSemanticsNode().config[SemanticsProperties.StateDescription]
+        val match = Regex("x=(-?\\d+);y=(-?\\d+)").matchEntire(value)
+            ?: throw AssertionError("Missing pan translation semantics: " + value)
+        return match.groupValues[1].toInt() to match.groupValues[2].toInt()
+    }
+
     /**
      * Evidence MUST show the actual bitmap in a full-screen viewer, separately
      * for every Asterias plate and each language. A slot-presence assertion
@@ -98,7 +107,24 @@ class NativeFiveUnitRestorationTest {
         rule.onNodeWithTag("r6-zoom-level")
             .assertTextContains("200%", substring = true)
         capture("unit5-asterias-" + language + "-" + plate + "-fullscreen-200pct")
+        assertTrue("Image not centred before pan", fullscreenPan() == (0 to 0))
 
+        // These are real touch swipes inside the magnified bitmap viewport,
+        // NOT button-only tests. One axis may be constrained by aspect ratio.
+        rule.onNodeWithTag("r6-zoom-viewport-clipped").performTouchInput { swipeLeft() }
+        rule.onNodeWithTag("r6-zoom-viewport-clipped").performTouchInput { swipeUp() }
+        rule.waitForIdle()
+        val displacement = fullscreenPan()
+        assertTrue(
+            "Magnified ${plate} image did not pan: ${displacement}",
+            displacement.first != 0 || displacement.second != 0,
+        )
+        capture("unit5-asterias-" + language + "-" + plate + "-fullscreen-panned-200pct")
+
+        rule.onNodeWithTag("r2-zoom-out").performClick()
+        rule.onNodeWithTag("r6-zoom-level")
+            .assertTextContains("100%", substring = true)
+        assertTrue("Zoom-out left image displaced", fullscreenPan() == (0 to 0))
         rule.onNodeWithTag("r2-zoom-reset").performClick()
         rule.onNodeWithTag("r6-zoom-level")
             .assertTextContains("100%", substring = true)

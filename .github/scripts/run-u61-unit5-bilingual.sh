@@ -83,6 +83,23 @@ for font in 100 200; do
     done
   done
 done
-echo "UNIT_V_ASTERIAS_FULL_SCREEN_EVIDENCE=32_STATES_PRESENT"
+# Each fully enlarged plate must also produce a screenshot AFTER a physical
+# simulated one-finger drag; source correctness and pan usability are separate.
+for font in 100 200; do
+  for lang in english tamil; do
+    for plate in external water-vascular-system internal larval-development; do
+      screenshot="$E/captured-final/r2-${font}-unit5-asterias-${lang}-${plate}-fullscreen-panned-200pct.png"
+      [[ -s "$screenshot" ]] || {
+        result="MISSING_ASTERIAS_PAN_EVIDENCE_${font}_${lang}_${plate}"
+        exit 1
+      }
+      [[ "$(wc -c < "$screenshot")" -gt 30000 ]] || {
+        result="TRUNCATED_ASTERIAS_PAN_EVIDENCE_${font}_${lang}_${plate}"
+        exit 1
+      }
+    done
+  done
+done
+echo "UNIT_V_ASTERIAS_FULL_SCREEN_AND_PAN_EVIDENCE=48_STATES_PRESENT"
 find "$E/captured-final" -name '*.png' -type f -print0 | xargs -0 -r sha256sum > "$E/screenshot-sha256.txt"
 result="API34_100_200_BILINGUAL_UI_PASS_ACADEMIC_IMAGES_PENDING"

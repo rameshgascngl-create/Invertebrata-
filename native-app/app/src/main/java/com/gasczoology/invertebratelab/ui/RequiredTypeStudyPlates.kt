@@ -38,6 +38,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -293,6 +295,11 @@ internal fun RequiredTypeStudyFullImage(
             Box(
                 Modifier.fillMaxWidth().weight(1f).clipToBounds()
                     .testTag("r6-zoom-viewport-clipped")
+                    // Expose the actual translation, not merely the zoom label,
+                    // so an Android touch test can prove drag-to-pan works.
+                    .semantics {
+                        stateDescription = "x=${panX.roundToInt()};y=${panY.roundToInt()}"
+                    }
                     .pointerInput(title) {
                         detectTapGestures(onDoubleTap = {
                             zoom = if (zoom > 1.01f) 1f else 2f
@@ -334,7 +341,10 @@ internal fun RequiredTypeStudyFullImage(
             )
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = { zoom = (zoom / 2f).coerceAtLeast(1f) },
+                    OutlinedButton(onClick = {
+                        zoom = (zoom / 2f).coerceAtLeast(1f)
+                        if (zoom <= 1.01f) { panX = 0f; panY = 0f }
+                    },
                         modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("r2-zoom-out")) {
                         Text("−")
                     }
