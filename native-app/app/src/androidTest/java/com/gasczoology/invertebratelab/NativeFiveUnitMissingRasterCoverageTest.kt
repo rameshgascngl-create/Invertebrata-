@@ -30,6 +30,8 @@ class NativeFiveUnitMissingRasterCoverageTest {
     }
     private fun enter(unit: Int, chapter: String, tamil: Boolean): String {
         if (tamil) rule.onNodeWithTag("language-tamil").performClick()
+        rule.onNodeWithTag("native-home")
+            .performScrollToNode(hasTestTag("unit-$unit"))
         rule.onNodeWithTag("unit-$unit").performScrollTo().performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-$unit").fetchSemanticsNodes().isNotEmpty()
@@ -37,7 +39,7 @@ class NativeFiveUnitMissingRasterCoverageTest {
         rule.onNodeWithTag("native-unit-$unit")
             .performScrollToNode(hasTestTag("chapter-$chapter"))
         rule.onNodeWithTag("chapter-$chapter").performClick()
-        val root = "u$unit-reader-$chapter"
+        val root = "native-chapter-$chapter"
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag(root).fetchSemanticsNodes().isNotEmpty()
         }
