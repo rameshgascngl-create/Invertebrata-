@@ -41,6 +41,17 @@ class UnitVExistingFigureCatalogTest {
         assertFalse(UnitVExistingFigureCatalog.figures.any { it.assetStem.startsWith("type_studies/") })
     }
 
+    @Test fun nativeChapterReaderWiresPublishedImagesAfterTheirOwnSection() {
+        val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").readText()
+        val sectionLoop = reader.indexOf("restoredLesson.sections.forEach { section ->")
+        val figureLookup = reader.indexOf("UnitVExistingFigureCatalog.forSection(chapter.id, section.id)", sectionLoop)
+        val figureCard = reader.indexOf("UnitVExistingFigureCard(figure, language)", figureLookup)
+        assertTrue("Reader must render sections before looking up their figures", sectionLoop >= 0 && figureLookup > sectionLoop)
+        assertTrue("Reader must render each mapped image with its bilingual card", figureCard > figureLookup)
+        assertEquals(listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal"),
+            UnitVExistingFigureCatalog.forSection("u5-pila", "external").map { it.id })
+    }
+
     @Test fun reviewMappingIsSectionSpecificAndDoesNotLeakIntoRelease() {
         val catalog = UnitVExistingFigureCatalog
         assertEquals(listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal", "04_animal_front"),
