@@ -11,4 +11,5 @@
 - **Limits:** shells, collection labels and several aspects of the shell are visible. Live animal, head, foot, mantle cavity, gill, osphradium, reproductive anatomy and torsion are NOT documented by this photograph.
 - **Independent mandatory slots still missing:** `pila/external` (animal and shell), `pila/mantle-cavity`, `pila/ctenidium`, `pila/torsion`.
 - The earlier Pila practical-textbook reference montage is NOT installed for release: reproduction rights unconfirmed. Generated and anatomically rejected illustrations are NOT substituted.
+- The English and Tamil Pila digestive-system lesson now distinguishes the anus and renal aperture from the ctenidium (commits a1d16208 and 6545f243). This text correction does not establish approval of any anatomy image.
 - Academic / Tamil editorial review and physical-device QA: pending. Release: HOLD.
