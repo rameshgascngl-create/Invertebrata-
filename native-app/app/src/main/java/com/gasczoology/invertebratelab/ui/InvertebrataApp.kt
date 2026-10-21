@@ -545,9 +545,10 @@ private fun ChapterScreen(
                 OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) {
                     Text(label(language, "Back", "பின்செல்"))
                 }
-                Text(label(language, "Chapter: ", "அத்தியாயம்: ") + chapter.id)
+                Text(label(language, "CHAPTER · UNIT ${chapter.unitNumber}", "அத்தியாயம் · அலகு ${chapter.unitNumber}"),
+                    style = MaterialTheme.typography.labelLarge)
                 Text(chapter.title.value(language),
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.testTag("r2-human-readable-chapter-title"))
                 if (chapter.id == "u1-paramecium") {
                     Button(onClick = onOpenFullLesson,
@@ -766,15 +767,20 @@ private fun ChapterScreen(
                             style = MaterialTheme.typography.headlineSmall,
                             modifier = Modifier.testTag("restoration-lesson-title"))
                         Text(label(language,
+                            "${restoredLesson.sections.size} sections · Read each concept before attempting examination questions.",
+                            "${restoredLesson.sections.size} உட்பிரிவுகள் · தேர்வு வினாக்களுக்கு முன் ஒவ்வொரு கருத்தையும் படியுங்கள்."),
+                            style = MaterialTheme.typography.bodyMedium)
+                        Text(label(language,
                             "TEXTBOOK FIRST · English–Tamil academic draft; anatomical image review pending.",
                             "முதலில் பாடநூல் · ஆங்கிலம்–தமிழ் கல்வி வரைவு; உடற்கூறுப் பட மதிப்பாய்வு நிலுவையில் உள்ளது."),
                             color = MaterialTheme.colorScheme.error)
                     }
                 }
-                items(restoredLesson.sections, key = { "restored-section-" + it.id }) { section ->
+                items(restoredLesson.sections.size, key = { "restored-section-" + restoredLesson.sections[it].id }) { sectionIndex ->
+                    val section = restoredLesson.sections[sectionIndex]
                     Column(Modifier.fillMaxWidth().testTag("restored-section-" + section.id),
                         verticalArrangement = Arrangement.spacedBy(9.dp)) {
-                        Text(section.title.value(language),
+                        Text("${sectionIndex + 1}. ${section.title.value(language)}",
                             style = MaterialTheme.typography.titleLarge)
                         section.paragraphs.forEach { paragraph ->
                             Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
