@@ -1,0 +1,40 @@
+name: Native exact-commit Kotlin and APK gate
+'on':
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record exact source revision
+        run: |
+          git rev-parse HEAD | tee native-source-commit.txt
+          test -f native-app/settings.gradle.kts
+          test -f native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/RequiredTypeStudyPlates.kt
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile, unit tests and debug APK without editorial Pila staging
+        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest :app:assembleDebug --stacktrace
+      - name: Preserve exact revision, APK and test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-exact-commit-build-evidence
+          path: |
+            native-source-commit.txt
+            native-app/app/build/outputs/apk/debug/*.apk
+            native-app/app/build/test-results/testDebugUnitTest/**
+          if-no-files-found: warn
