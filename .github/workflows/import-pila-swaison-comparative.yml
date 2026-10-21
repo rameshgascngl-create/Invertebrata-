@@ -1,6 +1,11 @@
 name: Import public-domain Pila comparative plate
 'on':
   workflow_dispatch:
+  push:
+    branches:
+      - native/u64-pila-cc0-shell-reference-20261021
+    paths:
+      - .github/workflows/import-pila-swaison-comparative.yml
 
 permissions:
   contents: write
