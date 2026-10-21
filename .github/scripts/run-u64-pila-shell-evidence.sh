@@ -23,13 +23,20 @@ echo 'U64_PILA_SHELL_BILINGUAL_100_200_EVIDENCE_PASS'
 # image test. Capture both original drawings at the normal Android font scale.
 adb shell settings put system font_scale 1.0
 mkdir -p qa-evidence/u61-unit5/recovered-pila-test
+set +e
 gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
   -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeFiveUnitMissingRasterCoverageTest#pilaShowsBothRecoveredDrawingsButDoesNotClaimFourAcceptedAnatomyPlates \
   > qa-evidence/u61-unit5/recovered-pila-test/gradle.log 2>&1
+recovered_test_exit=$?
+set -e
 cp -a native-app/app/build/outputs/androidTest-results/connected \
-  qa-evidence/u61-unit5/recovered-pila-test/xml
+  qa-evidence/u61-unit5/recovered-pila-test/xml || true
 adb pull /sdcard/Download/five-unit-qa \
-  qa-evidence/u61-unit5/recovered-pila-test/captured
+  qa-evidence/u61-unit5/recovered-pila-test/captured || true
+if [[ "$recovered_test_exit" -ne 0 ]]; then
+  echo "Recovered Pila instrumentation failed; XML and screenshots preserved" >&2
+  exit "$recovered_test_exit"
+fi
 python3 - <<'PY'
 from pathlib import Path
 import xml.etree.ElementTree as ET
