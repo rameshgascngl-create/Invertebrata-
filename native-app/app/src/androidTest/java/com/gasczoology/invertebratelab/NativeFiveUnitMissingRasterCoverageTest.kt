@@ -65,16 +65,39 @@ class NativeFiveUnitMissingRasterCoverageTest {
         bitmap.recycle()
     }
     @Test fun pilaShowsBothRecoveredDrawingsButDoesNotClaimFourAcceptedAnatomyPlates() {
-        val root = enter(5, "u5-pila", false)
-        find(root, "pila-recovered-gallery")
-        for (name in listOf("04_animal_front", "08_respiratory_system")) {
-            find(root, "pila-recovered-$name")
-            rule.onNodeWithTag("pila-recovered-$name").assertIsDisplayed()
-            // Capture each actual bitmap while visible, not the final missing slot.
-            capture("u5-pila-recovered-$name")
-        }
-        for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
-            find(root, "r2-plate-missing-pila-$plate")
+        var stage = "enter-pila-reader"
+        try {
+            val root = enter(5, "u5-pila", false)
+            stage = "locate-recovered-gallery"
+            find(root, "pila-recovered-gallery")
+            for (name in listOf("04_animal_front", "08_respiratory_system")) {
+                stage = "scroll-to-$name"
+                find(root, "pila-recovered-$name")
+                stage = "assert-visible-$name"
+                rule.onNodeWithTag("pila-recovered-$name").assertIsDisplayed()
+                stage = "capture-$name"
+                capture("u5-pila-recovered-$name")
+            }
+            for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
+                stage = "verify-missing-$plate"
+                find(root, "r2-plate-missing-pila-$plate")
+            }
+        } catch (failure: Throwable) {
+            // Preserve an independently readable failure stage in Android test XML.
+            // Dump semantics to logcat, and attempt a screenshot without masking
+            // the original exception if screenshot capture also fails.
+            android.util.Log.e("PILA_RECOVERED_QA", "Failed at stage: $stage", failure)
+            try {
+                rule.onRoot(useUnmergedTree = true).printToLog("PILA_RECOVERED_TREE")
+            } catch (ignored: Throwable) {
+                android.util.Log.e("PILA_RECOVERED_QA", "Semantics dump unavailable", ignored)
+            }
+            try {
+                capture("u5-pila-diagnostic-failure")
+            } catch (ignored: Throwable) {
+                android.util.Log.e("PILA_RECOVERED_QA", "Diagnostic screenshot unavailable", ignored)
+            }
+            throw AssertionError("Pila recovered image test failed at stage: $stage", failure)
         }
     }
 
