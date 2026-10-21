@@ -1,6 +1,12 @@
 name: Unit V reused Pila shell references - manual engineering QA
 'on':
   workflow_dispatch:
+  pull_request:
+    branches:
+      - native/u61-unit5-bilingual-android-proof-20261020
+    paths:
+      - 'native-app/**'
+      - '.github/workflows/native-u64-unit5-shell-review.yml'
 
 permissions:
   contents: read
