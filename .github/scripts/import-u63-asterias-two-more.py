@@ -92,6 +92,31 @@ def retrieve(key):
         "Keep asset absent and maintain release hold."
     )
 
+# A workflow push of successfully imported assets triggers another workflow.
+# Treat exact verified masters as an idempotent no-op: never append source credit twice.
+verified_png_sha256 = {
+    "internal.png": "f9bb1709dbb51cf570485bf2528fc455a9ee8382a98bf4cc5e96c48a5761d24c",
+    "larval-development.png": "be0d57d1967e6b503660ff855eeca2812815c300fca7b2b164b8d98b9b8ef6d5",
+}
+credit_file = root / "ATTRIBUTION.md"
+if all((root / filename).is_file() for filename in verified_png_sha256):
+    for filename, expected in verified_png_sha256.items():
+        image_bytes = (root / filename).read_bytes()
+        actual = hashlib.sha256(image_bytes).hexdigest()
+        if actual != expected:
+            raise RuntimeError(f"{filename}: unexpected SHA256 {actual}; human review required")
+        with Image.open(BytesIO(image_bytes)) as image:
+            image.verify()
+    if not credit_file.exists():
+        raise RuntimeError("Imported images have no source attribution")
+    credit_text = credit_file.read_text(encoding="utf-8")
+    if not all(term in credit_text for term in
+               ("Hans Hillewaert", "Ernst Haeckel", "CC BY-SA 4.0",
+                "a30d35ab2c40ed081fb1542b0d1ee9b317edfc87")):
+        raise RuntimeError("Asterias image-credit record is incomplete")
+    print("U63_ALREADY_IMPORTED_VERIFIED no new image/credit changes", flush=True)
+    raise SystemExit(0)
+
 anatomy,anmethod,ansha=retrieve("internal")
 # Exact Hans Hillewaert published line drawing with labels intentionally removed.
 # Keep relative anatomical placements unchanged and draw NO speculative labels.
