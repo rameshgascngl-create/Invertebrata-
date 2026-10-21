@@ -30,6 +30,7 @@ jobs:
           request=Request(url,headers={'User-Agent':'InvertebrataZoologyTeaching/1.0 (educational image provenance)'})
           with urlopen(request,timeout=45) as response:
               source=response.read(4_000_000)
+          assert hashlib.sha1(source).hexdigest() == '05d72f50d58885d78c9cf4b9426f35e944967efb', 'Original JPEG checksum mismatch'
           image=Image.open(BytesIO(source))
           image.verify()
           image=Image.open(BytesIO(source))
