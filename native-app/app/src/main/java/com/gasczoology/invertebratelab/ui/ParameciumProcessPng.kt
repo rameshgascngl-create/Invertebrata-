@@ -21,7 +21,7 @@ import com.gasczoology.invertebratelab.data.ParameciumProcess
  *
  * This intentionally avoids falsely animated anatomical coordinates.
  * All processes require subject-specific PNGs. The previous reuse of one fuzzy
- * photographed anatomy master was misleading and is withdrawn. A source-credited
+ * photographed anatomy master was misleading and is withdrawn. One source-credited
  * conjugation overview is displayed as an UNAPPROVED editorial candidate; its
  * nine schematic steps are not the app's research-stage sequence. Binary fission
  * remains blocked until a dedicated, scientifically checked plate exists.
