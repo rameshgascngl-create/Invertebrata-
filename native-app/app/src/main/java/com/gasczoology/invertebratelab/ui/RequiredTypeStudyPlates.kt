@@ -122,7 +122,7 @@ internal fun RequiredTypeStudyPlates(
     ) {
         Text(
             if (tamil) "உடற்கூறு ஆதாரப் படங்கள் · ${study.scientificName}"
-            else "REQUIRED ANATOMICAL IMAGE PLATES · ${study.scientificName}",
+            else "ANATOMICAL REFERENCE PLATES · ${study.scientificName}",
             style = MaterialTheme.typography.titleLarge,
         )
         Text(
