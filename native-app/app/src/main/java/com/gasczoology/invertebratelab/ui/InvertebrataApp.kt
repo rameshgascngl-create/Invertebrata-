@@ -767,7 +767,9 @@ private fun ChapterScreen(
                 if (chapter.id == "u5-pila" || chapter.id == "u5-asterias") {
                     item(key = "u5-existing-figures-header") {
                         UnitVExistingFigureHeader(
-                            language, UnitVExistingFigureCatalog.forChapter(chapter.id).size)
+                            language,
+                            UnitVExistingFigureCatalog.forChapter(chapter.id).size,
+                            UnitVExistingFigureCatalog.forPublishedChapter(chapter.id).size)
                     }
                 }
                 restoredLesson.sections.forEach { section ->

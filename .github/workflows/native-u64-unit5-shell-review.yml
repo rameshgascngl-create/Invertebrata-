@@ -1,0 +1,62 @@
+name: Unit V reused Pila shell references - manual engineering QA
+'on':
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit5-shell-static-and-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exactly three existing Pila shell rasters are in release assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, struct
+          root = Path("native-app/app")
+          allow = {"01_shell_ventral", "02_operculum_views", "03_shell_dorsal"}
+          published = root / "src/main/assets/unit5/candidates"
+          archived = root / "src/debug/assets/unit5/candidates"
+          actual = {p.stem for p in (published/"pila").glob("*.png")}
+          assert actual == allow, (actual, allow)
+          assert not (published/"asterias").exists()
+          for name in sorted(allow):
+              a = (archived/"pila"/(name+".png")).read_bytes()
+              b = (published/"pila"/(name+".png")).read_bytes()
+              assert a == b, "Edited or substituted PNG: "+name
+              assert b[:8] == b"\x89PNG\r\n\x1a\n"
+              width, height = struct.unpack(">II", b[16:24])
+              assert (width, height) == (384,341), (name,width,height)
+              print(name, "ORIGINAL_BYTES_PASS", hashlib.sha256(b).hexdigest())
+          for p in (published/"pila").glob("*.png"):
+              assert p.stem in allow, p
+          print("UNIT_V_SHELL_RELEASE_ASSET_GATE=PASS")
+          PY
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile Kotlin and run JVM regression tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble debug and unsigned release candidates
+        run: gradle -p native-app :app:assembleDebug :app:assembleRelease --stacktrace
+      - name: Save exact-run JVM evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit5-shell-jvm-results
+          path: native-app/app/build/test-results/testDebugUnitTest/
+          if-no-files-found: warn
+      - name: Save unapproved engineering APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit5-shell-unapproved-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

@@ -102,7 +102,11 @@ class NativeFiveUnitRestorationTest {
             rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
         }
         find(ch, "u5-existing-image-gallery")
-        rule.onNodeWithTag("u5-candidate-bitmap-pila-01_shell_ventral").assertDoesNotExist()
+        for (figure in listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal")) {
+            find(ch, "u5-candidate-card-pila-" + figure)
+            rule.onNodeWithTag("u5-candidate-bitmap-pila-" + figure).assertExists()
+            rule.onNodeWithTag("u5-candidate-missing-pila-" + figure).assertDoesNotExist()
+        }
         rule.onNodeWithTag("u5-candidate-bitmap-pila-08_respiratory_system").assertDoesNotExist()
         rule.onNodeWithTag("u5-candidate-caution-pila-06_buccal_mass").assertDoesNotExist()
         capture("unit5-pila-tamil-existing-plates")

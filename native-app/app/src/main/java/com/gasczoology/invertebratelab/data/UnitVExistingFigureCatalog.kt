@@ -1,9 +1,11 @@
 package com.gasczoology.invertebratelab.data
 
 /**
- * Original repository PNGs, copied byte-for-byte to the offline reader.
- * REVIEW ONLY: these are not substitutes for any still-unaccepted mandatory
- * anatomical masters. No generated bitmap is recaptioned as a verified specimen.
+ * Existing project PNG archive: 3 screened shell/operculum references are
+ * bundled byte-for-byte as supplementary teaching images; 13 other figures
+ * remain debug-only. None replaces an academically accepted anatomical master.
+ * Source-internal labels remain visible, so corrections appear in bilingual
+ * captions rather than pretending the bitmap was edited.
  */
 internal data class UnitVExistingFigure(
     val organism: String,
@@ -16,14 +18,14 @@ internal data class UnitVExistingFigure(
 internal object UnitVExistingFigureCatalog {
     val figures: List<UnitVExistingFigure> = listOf(
         UnitVExistingFigure("pila","01_shell_ventral","unit5/candidates/pila/01_shell_ventral",
-            BilingualText("Shell: ventral view","ஓடு: வயிற்றுப்புறத் தோற்றம்"),
-            BilingualText("Shell orientation and labels require specimen-level verification.","ஓட்டின் திசையும் குறியீடுகளும் மாதிரி அடிப்படையில் சரிபார்க்கப்பட வேண்டும்.")),
+            BilingualText("Shell: aperture-facing view (source calls it ventral)","ஓடு: திறப்புப் பக்கத் தோற்றம் (மூலப்படத்தில் வயிற்றுப்புறம்)"),
+            BilingualText("The source calls the aperture-facing shell view 'ventral'. Identify the aperture, columella and body whorl; this is not a soft-body dissection.","மூலப்படத்தில் ஓட்டுத் திறப்பைக் காட்டும் தோற்றம் 'வயிற்றுப்புறம்' எனக் குறிப்பிடப்பட்டுள்ளது. ஓட்டுத் திறப்பு, கொலுமெல்லா, உடற்சுருள் ஆகியவற்றைக் கவனிக்கவும்; இது மென் உடற்பிரிப்புப் படம் அல்ல.")),
         UnitVExistingFigure("pila","02_operculum_views","unit5/candidates/pila/02_operculum_views",
-            BilingualText("Operculum: inner and outer surfaces","ஓடுமூடி: உள்ளும் புறமும்"),
-            BilingualText("Operculum surfaces and growth markings are illustrative, not independently validated.","ஓடுமூடியின் இருபக்க அமைப்புகளும் வளர்ச்சிக் குறிகளும் தனியாகச் சரிபார்க்கப்படவில்லை.")),
+            BilingualText("Operculum: outer and inner surfaces","ஓடுமூடி: வெளிப்புறமும் உட்புறமும்"),
+            BilingualText("Illustrative comparison of operculum surfaces and growth ridges. Verify the surface orientation against a Pila specimen; this is not a dissected organ.","ஓடுமூடியின் இரு பரப்புகளையும் வளர்ச்சி வளையங்களையும் விளக்கும் துணைப்படம். பைலா மாதிரியுடன் ஒப்பிட்டுத் திசையைச் சரிபார்க்கவும்; இது பிரித்தெடுக்கப்பட்ட உள்ளுறுப்பின் படம் அல்ல.")),
         UnitVExistingFigure("pila","03_shell_dorsal","unit5/candidates/pila/03_shell_dorsal",
-            BilingualText("Shell: dorsal view","ஓடு: முதுகுப்புறத் தோற்றம்"),
-            BilingualText("Confirm spire, sutures and body-whorl orientation against a real Pila specimen.","சுருள், சுருளிணைப்பு, உடற்சுருள் ஆகியவற்றின் இடங்களை உண்மை மாதிரியுடன் ஒப்பிட வேண்டும்.")),
+            BilingualText("Shell: apex, spire and whorls (source calls it dorsal)","ஓடு: உச்சி, சுருள், உடற்சுருள் (மூலப்படத்தில் முதுகுப்புறம்)"),
+            BilingualText("The source calls this shell orientation 'dorsal'; describe the apex, spire, sutures and body whorl instead. Proportions are illustrative, not specimen measurements.","மூலப்படத்தில் இத்தோற்றம் 'முதுகுப்புறம்' எனக் குறிக்கப்பட்டுள்ளது. அதற்குப் பதிலாக உச்சி, சுருள், சுருளிணைப்பு, உடற்சுருள் ஆகியவற்றை விவரிக்கவும். வடிவளவுகள் மாதிரி அளவீடுகள் அல்ல.")),
         UnitVExistingFigure("pila","04_animal_front","unit5/candidates/pila/04_animal_front",
             BilingualText("Anterior external view","முன்புற புறத்தோற்றம்"),
             BilingualText("Eye and tentacle placement in this generated image is suspect; do not memorise it as verified anatomy.","இந்த உருவாக்கப் படத்தில் கண் மற்றும் உணர்கொம்புகளின் இடங்கள் சந்தேகத்திற்குரியவை; உறுதிப்படுத்தப்பட்ட உடற்கூறாக மனப்பாடம் செய்ய வேண்டாம்.")),
@@ -64,8 +66,17 @@ internal object UnitVExistingFigureCatalog {
             BilingualText("Nervous-system candidate","நரம்பு அமைப்பின் வரைவு"),
             BilingualText("Circumoral/radial nerve relations and all leader endpoints require independent review.","வாயைச் சுற்றிய வளைய நரம்பு, ஆர நரம்புகள், குறிக்கோடுகளின் முனைகள் ஆகியவை சரிபார்க்கப்பட வேண்டும்."))
     )
+    // Only these existing project illustrations have passed a limited visual
+    // screening for supplementary SHELL morphology. They are not accepted
+    // mandatory anatomical plates and are only 384 x 341 pixels.
+    private val studentSupplementalIds = setOf(
+        "pila/01_shell_ventral", "pila/02_operculum_views", "pila/03_shell_dorsal"
+    )
+
     init {
         require(figures.size == 16)
+        require(studentSupplementalIds.size == 3)
+        require(studentSupplementalIds.all { it.startsWith("pila/") })
         require(figures.map { it.assetStem }.distinct().size == figures.size)
         require(figures.map { it.organism to it.id }.distinct().size == figures.size)
         require(figures.count { it.organism == "pila" } == 12)
@@ -92,29 +103,25 @@ internal object UnitVExistingFigureCatalog {
         "asterias/digestive" to "feeding-and-stomachs",
         "asterias/nervous" to "nerve-and-sense"
     )
-    // Archived images are debug-only until reviewed. The mapping is available
-    // to the editorial QA reader, but release chapters must not resolve these
-    // assets: src/debug/assets is deliberately absent from release builds.
+    // Release lessons can resolve ONLY the three screened supplementary shell
+    // images copied to src/main/assets. All other images remain debug-only.
     fun forSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> =
-        emptyList()
+        forReviewSection(chapterId, sectionId).filter {
+            "${it.organism}/${it.id}" in studentSupplementalIds
+        }
 
-    /** Editorial QA: return only existing archived figures mapped to this section.
-     * Never use this API in a release chapter: these PNGs are debug-only.
+    /** Legacy editorial shortlist API, retained for compatibility.
+     * These three project images are supplementary references, not mandatory
+     * anatomy masters; other review candidates stay debug-only.
      */
-    /** Debug-only candidates with no documented major anatomical contradiction.
-     * These are still NOT accepted textbook masters and stay out of release.
-     */
-    private val lowerRiskReviewIds = setOf(
-        "pila/01_shell_ventral",
-        "pila/02_operculum_views",
-        "pila/03_shell_dorsal"
-    )
+    private val lowerRiskReviewIds = studentSupplementalIds
 
     fun lowerRiskReviewSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> =
         forReviewSection(chapterId, sectionId).filter { figure ->
             "${figure.organism}/${figure.id}" in lowerRiskReviewIds
         }
 
+    /** Unfiltered editorial archive. Student lessons must call forSection. */
     fun forReviewSection(chapterId: String, sectionId: String): List<UnitVExistingFigure> {
         val organism = when (chapterId) {
             "u5-pila" -> "pila"
@@ -132,4 +139,7 @@ internal object UnitVExistingFigureCatalog {
         "u5-asterias" -> figures.filter { it.organism == "asterias" }
         else -> emptyList()
     }
+
+    fun forPublishedChapter(chapterId: String): List<UnitVExistingFigure> =
+        forChapter(chapterId).filter { "${it.organism}/${it.id}" in studentSupplementalIds }
 }
