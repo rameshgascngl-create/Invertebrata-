@@ -18,7 +18,7 @@ jobs:
       - name: Check out verified native Android source branch
         uses: actions/checkout@v4
         with:
-          ref: 99b59c07805aa28ef809c6122dca7b55174a97cc
+          ref: 6eb6b628de882e7fb440ef5b39212b77f052afda
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
