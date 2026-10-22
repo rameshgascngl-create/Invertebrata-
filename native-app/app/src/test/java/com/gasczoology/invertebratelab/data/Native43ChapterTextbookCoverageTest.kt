@@ -308,9 +308,7 @@ class Native43ChapterTextbookCoverageTest {
         val studies = NativeCurriculumManifest.typeStudies
         val stems = studies.flatMap { study ->
             study.requiredPlateIds.map { plate ->
-                if (study.organismId == "paramecium")
-                    "unit1/replacements/paramecium_" + plate
-                else "type_studies/" + study.organismId + "/" + plate
+                "type_studies/" + study.organismId + "/" + plate
             }
         }
         assertEquals(35, stems.size)
@@ -344,6 +342,32 @@ class Native43ChapterTextbookCoverageTest {
         assertTrue(required.contains("type_studies/"))
         assertTrue(required.contains("\"paramecium/external-cilia\" -> \"unit1/paramecium_external\""))
         // Source-path checks are NOT approval of the depicted anatomy or Tamil.
+    }
+
+    @Test fun packagedCanonicalTypeStudyRasterFilesHaveValidHeaders() {
+        val available = mapOf(
+            "paramecium" to listOf("external-cilia", "oral-apparatus", "contractile-vacuoles"),
+            "sycon" to listOf("canal-system"),
+            "obelia" to listOf("colony", "life-cycle"),
+            "fasciola" to listOf("external", "digestive-reproductive", "life-cycle"),
+            "ascaris" to listOf("male-female-external", "female-internal", "life-cycle")
+        )
+        assertEquals(12, available.values.sumOf { it.size })
+        for ((organism, plates) in available) for (plate in plates) {
+            val stem = "src/main/assets/type_studies/$organism/$plate"
+            val files = listOf(File("$stem.png"), File("$stem.webp")).filter { it.isFile }
+            assertEquals("Missing or ambiguous packaged raster: $stem", 1, files.size)
+            val file = files.single()
+            val bytes = file.readBytes()
+            assertTrue("Empty image: $stem", bytes.size > 1024)
+            val valid = if (file.extension == "png") {
+                bytes.take(8) == listOf(137,80,78,71,13,10,26,10).map { it.toByte() }
+            } else {
+                String(bytes.copyOfRange(0, 4), Charsets.US_ASCII) == "RIFF" &&
+                    String(bytes.copyOfRange(8, 12), Charsets.US_ASCII) == "WEBP"
+            }
+            assertTrue("Invalid image header: $stem", valid)
+        }
     }
 
     @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
