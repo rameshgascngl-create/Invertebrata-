@@ -1,0 +1,63 @@
+name: Plate pipeline CI
+on:
+  push:
+    branches: ['feat/**']
+    paths:
+      - 'native-app/**'
+      - 'tools/**'
+      - '.github/workflows/plate-pipeline-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4          # builds exactly the pushed commit
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '9.6.0' }
+      - name: Record source commit
+        run: |
+          git rev-parse HEAD | tee native-source-commit.txt
+          echo "### Source commit" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`$(git rev-parse HEAD)\`" >> "$GITHUB_STEP_SUMMARY"
+      - name: Plate inventory rules (same as the Gradle test)
+        run: |
+          pip install --quiet pillow
+          python3 tools/plate_intake.py list | tee plate-inventory.txt
+          python3 tools/plate_intake.py check
+      - name: Compile and run JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble debug APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: APK identity guard
+        run: |
+          APK=$(ls native-app/app/build/outputs/apk/debug/*.apk | head -1)
+          SHA=$(sha256sum "$APK" | cut -d' ' -f1)
+          echo "### APK" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`$(basename "$APK")\` $(stat -c%s "$APK") bytes" >> "$GITHUB_STEP_SUMMARY"
+          echo "SHA-256 \`$SHA\`" >> "$GITHUB_STEP_SUMMARY"
+          # c569fe1b... = old pre-fix build; 07fbc614... = build of 6eb6b62 (assets identical to the old one)
+          for OLD in c569fe1b6934479b3ceaac81f4c3e7fecb8ca3fc8c2d6ab0109d0810dcb554c1 07fbc6142eeb96daa8d123a40d6097b71e609825e3124afb6a859d8cc19cf47c; do
+            if [ "$SHA" = "$OLD" ]; then echo "APK identical to a previous build ($OLD)"; exit 1; fi
+          done
+      - name: Release APK must not contain review-only art
+        run: |
+          APK=$(ls native-app/app/build/outputs/apk/debug/*.apk | head -1)
+          echo "debug APK review_only entries (allowed in debug only): $(unzip -l "$APK" | grep -c review_only || true)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: plate-pipeline-evidence
+          path: |
+            native-source-commit.txt
+            plate-inventory.txt
+            provenance/plates.json
+            native-app/app/build/test-results/testDebugUnitTest/
+            native-app/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: warn

@@ -1,6 +1,6 @@
-# Briefs for the 17 plates still missing (22 Oct 2026)
+# Briefs for the 18 plates still missing (22 Oct 2026)
 
-Status after this change: **18/35 slots filled** (pila/torsion added). Ask the image generator for
+Status after this change: **17/35 slots filled** (pila/torsion added), 18 missing, plus one replacement (obelia/life-cycle is cropped). Ask the image generator for
 **unlabelled** art on a plain white background, 2048 px on the long edge, no text, no watermark, then add
 numbered markers or labels yourself. Every item under "must show" is a checklist for *your* review;
 verify against your practical manual before approving. Where side (left/right) matters I have not asserted it.
