@@ -441,6 +441,40 @@
       "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
       "review_status": "DRAFT_UNVERIFIED",
       "added_utc": "2026-10-22T14:51:43+00:00"
+    },
+    "asterias/water-vascular-system": {
+      "file": "native-app/app/src/main/assets/type_studies/asterias/water-vascular-system.png",
+      "sha256": "1cd7b3440b10347cff88c8b7f1f32d4678201f82f4364e18d8daec688477313c",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2201880,
+      "license": "Unverified (rights holder to confirm)",
+      "author": "Dept of Zoology, GASC Nagercoil (supplied)",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "unrecorded (user-supplied)",
+      "notes": "replaces public-domain Arnold 1903 generalised schematic; user-supplied",
+      "credit_en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
+      "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T15:58:55+00:00"
+    },
+    "asterias/internal": {
+      "file": "native-app/app/src/main/assets/type_studies/asterias/internal.png",
+      "sha256": "38acc482ce88c9ef5ba9fe6ab4e9a672cbbf8aa7fb57585de84bbf2d5dd9dfbe",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2457482,
+      "license": "Unverified (rights holder to confirm)",
+      "author": "Dept of Zoology, GASC Nagercoil (supplied)",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "unrecorded (user-supplied)",
+      "notes": "replaces earlier internal plate; user-supplied",
+      "credit_en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
+      "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T15:58:58+00:00"
     }
   }
 }

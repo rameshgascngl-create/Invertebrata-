@@ -51,3 +51,6 @@ Committed water-vascular-system.png SHA256: cfd6dfa60145f43a5910e0ab08eb5080d0ac
 - Keep reusable visual assets' source and license visible in the Android UI and README.
 
 Download authentication (method, actual retrieved SHA1): {'internal': ('wikimedia_original', 'a30d35ab2c40ed081fb1542b0d1ee9b317edfc87'), 'bipinnaria': ('wikimedia_original', '9273d3d9995441f9651d75d6a1113f50c2a52cb5'), 'brachiolaria': ('wikimedia_original', 'e803e00100ba0ccf2bb2d5ed22e095f36acee701')}
+
+## Update 2026-10-22
+water-vascular-system.png and internal.png were replaced by user-supplied AI-generated bilingual plates (see provenance/plates.json and plate_credits.json). The earlier public-domain Arnold (1903) water-vascular schematic remains in git history. Digestive and nervous plates were also supplied but have no manifest slot.
