@@ -31,6 +31,14 @@
     "en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
     "ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்"
   },
+  "obelia/hydranth-gonangium": {
+    "en": "Illustration believed by Ernst Haeckel, Kunstformen der Natur (1904) · public domain (plate to be confirmed)",
+    "ta": "எர்ன்ஸ்ட் ஹேக்கல் வரைபடம் என நம்பப்படுகிறது, Kunstformen der Natur (1904) · பொதுப் பயன்பாடு (உறுதிப்படுத்த வேண்டும்)"
+  },
+  "obelia/medusa": {
+    "en": "Microscope image · author and licence to be confirmed",
+    "ta": "நுண்ணோக்கிப் படம் · ஆசிரியர் மற்றும் உரிமம் உறுதிப்படுத்தப்பட வேண்டும்"
+  },
   "paramecium/contractile-vacuoles": {
     "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
     "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
@@ -78,6 +86,14 @@
   "pila/torsion": {
     "en": "Original schematic prepared for this app. Generalised gastropod; not specific to Pila.",
     "ta": "இந்தச் செயலிக்காக வரையப்பட்ட அசல் திட்டப்படம். பொதுவான வயிற்றுக்காலி; Pila-க்கு மட்டும் உரியதல்ல."
+  },
+  "sycon/external": {
+    "en": "Photograph · photographer and licence to be confirmed",
+    "ta": "ஒளிப்படம் · ஒளிப்படக்காரர் மற்றும் உரிமம் உறுதிப்படுத்தப்பட வேண்டும்"
+  },
+  "sycon/reproduction": {
+    "en": "Drawing believed from Encyclopaedia Britannica, 11th ed. (1911), 'Sponges' · public domain (to confirm)",
+    "ta": "வரைபடம்: என்சைக்ளோபீடியா பிரிட்டானிக்கா 11ஆம் பதிப்பு (1911) என நம்பப்படுகிறது · பொதுப் பயன்பாடு (உறுதிப்படுத்த வேண்டும்)"
   },
   "unit1/concepts/paramecium_ciliary_locomotion": {
     "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
