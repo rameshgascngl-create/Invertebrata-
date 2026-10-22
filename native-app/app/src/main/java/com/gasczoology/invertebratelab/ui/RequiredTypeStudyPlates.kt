@@ -214,9 +214,6 @@ internal fun RequiredTypeStudyPlates(
         study.requiredPlateIds.forEach { plateId ->
             val stem = "type_studies/${study.organismId}/${plateId}"
             val fallbackStem = when (study.organismId + "/" + plateId) {
-                "paramecium/external-cilia" -> "unit1/paramecium_external"
-                "paramecium/oral-apparatus" -> "unit1/paramecium_oral"
-                "paramecium/contractile-vacuoles" -> "unit1/paramecium_vacuole"
                 "obelia/colony" -> "unit2/obelia_colony"
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
                 else -> stem
