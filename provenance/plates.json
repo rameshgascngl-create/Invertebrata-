@@ -390,6 +390,57 @@
       "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
       "review_status": "DRAFT_UNVERIFIED",
       "added_utc": "2026-10-22T14:13:15+00:00"
+    },
+    "pila/external": {
+      "file": "native-app/app/src/main/assets/type_studies/pila/external.webp",
+      "sha256": "52ee9fc4447806d579d999bafd8ffd43ad80f33ac48359f40d80f62955772cd9",
+      "width": 2272,
+      "height": 666,
+      "bytes": 966800,
+      "license": "Unverified (rights holder to confirm)",
+      "author": "Dept of Zoology, GASC Nagercoil (supplied)",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "unrecorded (user-supplied)",
+      "notes": "composite of shell ventral, shell dorsal, animal front panels; upscaled from 384px crops",
+      "credit_en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
+      "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T14:51:07+00:00"
+    },
+    "pila/mantle-cavity": {
+      "file": "native-app/app/src/main/assets/type_studies/pila/mantle-cavity.webp",
+      "sha256": "e9be4077dc39885d962ef9fc8140108067a5d7ddcc3323a58091ce0880e2e572",
+      "width": 1128,
+      "height": 1002,
+      "bytes": 656640,
+      "license": "Unverified (rights holder to confirm)",
+      "author": "Dept of Zoology, GASC Nagercoil (supplied)",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "unrecorded (user-supplied)",
+      "notes": "panel 8 upscaled 3x from 384px crop",
+      "credit_en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
+      "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T14:51:17+00:00"
+    },
+    "pila/ctenidium": {
+      "file": "native-app/app/src/main/assets/type_studies/pila/ctenidium.webp",
+      "sha256": "d7765be27be5cc6b5104514f046a2c6d1042c677622823fb541a1850f5e5d6bb",
+      "width": 1240,
+      "height": 640,
+      "bytes": 519026,
+      "license": "Unverified (rights holder to confirm)",
+      "author": "Dept of Zoology, GASC Nagercoil (supplied)",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "unrecorded (user-supplied)",
+      "notes": "tight crop of panel 8 gill region, 4x upscaled; same source as mantle-cavity",
+      "credit_en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
+      "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T14:51:23+00:00"
     }
   }
 }
