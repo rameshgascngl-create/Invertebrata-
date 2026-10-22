@@ -34,6 +34,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
+import com.gasczoology.invertebratelab.data.ParameciumNuclearSequence
 import kotlinx.coroutines.launch
 
 /**
@@ -316,6 +317,33 @@ internal fun ParameciumTextbookReader(
                         .testTag("r14-listen-chapter")) {
                     Text(view(language, "Listen to this explanation", "இவ்விளக்கத்தைக் கேள்"))
                 }
+            }
+        }
+    }
+    // Chronologically ordered bilingual theory, independent of missing artwork.
+    // A concept PNG is shown only if its own reviewed raster is bundled.
+    if (section.id == "asexual-division-process" || section.id == "conjugation") {
+        val stages = if (section.id == "conjugation")
+            ParameciumNuclearSequence.conjugation else ParameciumNuclearSequence.binaryFission
+        Card(Modifier.fillMaxWidth().testTag("paramecium-nuclear-sequence-" + section.id)) {
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(view(language, "Chronological stages — explanatory text",
+                    "நிகழ்வுகளின் காலவரிசை — விளக்க உரை"),
+                    style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                stages.forEach { stage ->
+                    Column(Modifier.testTag("paramecium-nuclear-stage-" + stage.id),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(stage.heading.value(language),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold)
+                        Text(stage.explanation.value(language),
+                            style = MaterialTheme.typography.bodyLarge, lineHeight = 25.sp)
+                    }
+                }
+                Text(view(language,
+                    "These stages describe biological events, not a validated diagram or a timed animation. Nuclear details can vary by species.",
+                    "இவை உயிரியல் நிகழ்வுகளை விளக்கும் உரை; சரிபார்க்கப்பட்ட படமோ நேர அளவுள்ள இயக்கப்படமோ அல்ல. உட்கரு விவரங்கள் இனத்திற்கேற்ப மாறலாம்."),
+                    style = MaterialTheme.typography.bodySmall)
             }
         }
     }
