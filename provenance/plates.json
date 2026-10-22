@@ -543,6 +543,23 @@
       "credit_ta": "நுண்ணோக்கிப் படம் · விக்கிமீடியா காமன்ஸ், File:Obelia Medusa Larva.jpg · ஆசிரியர், உரிமம்: கோப்புப் பக்கத்தின்படி",
       "review_status": "DRAFT_UNVERIFIED",
       "added_utc": "2026-10-22T16:41:16+00:00"
+    },
+    "sycon/canal-system": {
+      "file": "native-app/app/src/main/assets/type_studies/sycon/canal-system.webp",
+      "sha256": "1b7b8b0ceee848603c24581f60d87866abb03773570f83c43f54665bbb00c05a",
+      "width": 1000,
+      "height": 1250,
+      "bytes": 217216,
+      "license": "Unverified (origin to be confirmed)",
+      "author": "Unknown (earlier app asset unit2/sycon_plate)",
+      "source_url": "",
+      "ai_generated": null,
+      "generator": "",
+      "notes": "Pre-existing plate; origin and rights not recorded in the repository. qa-intake/R3_EXISTING_RASTER_REUSE.md lists it as a candidate for review.",
+      "credit_en": "Drawing · source and rights to be confirmed",
+      "credit_ta": "வரைபடம் · மூலமும் உரிமையும் உறுதிப்படுத்தப்பட வேண்டும்",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T23:40:43+00:00"
     }
   }
 }

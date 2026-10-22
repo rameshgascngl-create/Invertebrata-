@@ -64,14 +64,16 @@ class NativeFiveUnitMissingRasterCoverageTest {
         assertTrue(bitmap!!.height > bitmap.width)
         bitmap.recycle()
     }
-    @Test fun syconShowsRealCanalSystemImageAndTracksTwoMissingMasters() {
+    @Test fun syconBookChapterShowsAllThreeFiguresInlineOnce() {
         val root = enter(2, "u2-sycon", false)
-        find(root, "r2-type-study-gallery-sycon")
-        for (plate in listOf("external","reproduction"))
-            find(root, "r2-plate-missing-sycon-$plate")
-        find(root, "r2-plate-bitmap-sycon-canal-system")
-        rule.onNodeWithTag("r2-plate-bitmap-sycon-canal-system").assertIsDisplayed()
+        find(root, "book-objectives")
+        for (plate in listOf("external", "canal-system", "reproduction")) {
+            find(root, "r2-plate-bitmap-sycon-$plate")
+            rule.onNodeWithTag("r2-plate-bitmap-sycon-$plate").assertIsDisplayed()
+            rule.onNodeWithTag("r2-plate-missing-sycon-$plate").assertDoesNotExist()
+        }
         capture("u2-sycon-english")
+        find(root, "book-glossary")
         find(root, "u2-stage-explanation")
         rule.onNodeWithTag("u2-sycon-historic-static-raster").assertDoesNotExist()
     }

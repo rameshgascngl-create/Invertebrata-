@@ -48,6 +48,7 @@ internal fun UnitIITeachingChapter(
     revealedQuestionId:String,onToggle:(A5Question)->Unit,
 ) {
     val lesson=requireNotNull(UnitIILessons.forChapter(chapter.id))
+    val book=BookChapters.forLesson(chapter.id)
     val context=LocalContext.current
     val narrator=remember(context,chapter.id){OfflineNarrator(context)}
     val spoken by narrator.script.collectAsState()
@@ -95,7 +96,7 @@ internal fun UnitIITeachingChapter(
                     "முதலில் விளக்கத்தைப் படித்து அசல் படத்தை ஆராய்க; அதன்பின் பயிற்சி வினாக்களைப் படிக்கவும்."))
             }
         }
-        if (chapter.id == "u2-sycon" || chapter.id == "u2-obelia") {
+        if (book == null && (chapter.id == "u2-sycon" || chapter.id == "u2-obelia")) {
             item(key = "r3-required-type-study-gallery") {
                 val study = NativeCurriculumManifest.typeStudies.single { it.lessonId == chapter.id }
                 RequiredTypeStudyPlates(study, language)
@@ -160,6 +161,7 @@ internal fun UnitIITeachingChapter(
                     "உரை மேலே எப்போதும் இருக்கும்; ஆஃப்லைன் ஒலிக்காக நிறுவப்பட்ட குரல் தேவை."))
             }
         }
+        if(book!=null){ bookChapterItems(book,language){narrator.speak(it,language)} } else
         items(lesson.sections,key={it.id}){section->
             Card(modifier=Modifier.fillMaxWidth().testTag("u2-section-"+section.id)) {
                 Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {

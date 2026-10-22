@@ -53,7 +53,7 @@ import kotlin.math.roundToInt
  * not assume a single raster extension.
  */
 @Composable
-private fun rememberCanonicalPlateBitmap(stem: String): ImageBitmap? {
+internal fun rememberCanonicalPlateBitmap(stem: String): ImageBitmap? {
     val assets = LocalContext.current.assets
     return remember(assets, stem) {
         listOf(".png", ".webp").firstNotNullOfOrNull { extension ->
