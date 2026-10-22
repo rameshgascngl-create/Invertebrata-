@@ -427,20 +427,20 @@
     },
     "pila/ctenidium": {
       "file": "native-app/app/src/main/assets/type_studies/pila/ctenidium.webp",
-      "sha256": "d7765be27be5cc6b5104514f046a2c6d1042c677622823fb541a1850f5e5d6bb",
-      "width": 1240,
-      "height": 640,
-      "bytes": 519026,
+      "sha256": "89fafcd9017e50f2b8c0307ea7e46580c845c4afc6cefb729bae9255b0c54f07",
+      "width": 1488,
+      "height": 720,
+      "bytes": 589612,
       "license": "Unverified (rights holder to confirm)",
       "author": "Dept of Zoology, GASC Nagercoil (supplied)",
       "source_url": "",
       "ai_generated": true,
       "generator": "unrecorded (user-supplied)",
-      "notes": "tight crop of panel 8 gill region, 4x upscaled; same source as mantle-cavity",
+      "notes": "tight crop of panel 8 (gill region); same source as mantle-cavity",
       "credit_en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
       "credit_ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்",
       "review_status": "DRAFT_UNVERIFIED",
-      "added_utc": "2026-10-22T14:51:23+00:00"
+      "added_utc": "2026-10-22T14:51:43+00:00"
     }
   }
 }
