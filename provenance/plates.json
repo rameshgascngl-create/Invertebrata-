@@ -169,6 +169,57 @@
       "credit_ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்.",
       "review_status": "DRAFT_UNVERIFIED",
       "added_utc": "2026-10-22T14:00:20+00:00"
+    },
+    "paramecium/external-cilia": {
+      "file": "native-app/app/src/main/assets/type_studies/paramecium/external-cilia.png",
+      "sha256": "fe350ce3a3820841f65f4d5a84348bb0a9a167399bb47e8b76d76b652528d440",
+      "width": 680,
+      "height": 946,
+      "bytes": 1018894,
+      "license": "Rights holder to confirm (R. Ramesh)",
+      "author": "AI-generated; supplied by R. Ramesh",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "Not recorded (user-supplied image)",
+      "notes": "Replaces the photographed pencil drawing (CC BY-SA, R. Bhandari) in this slot.",
+      "credit_en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+      "credit_ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்.",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T14:02:49+00:00"
+    },
+    "paramecium/oral-apparatus": {
+      "file": "native-app/app/src/main/assets/type_studies/paramecium/oral-apparatus.png",
+      "sha256": "50d1a35a238aee0e6c049e327adb46a1e12058785d4171abb8493817ecd06336",
+      "width": 305,
+      "height": 328,
+      "bytes": 187491,
+      "license": "Rights holder to confirm (R. Ramesh)",
+      "author": "AI-generated; supplied by R. Ramesh",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "Not recorded (user-supplied image)",
+      "notes": "Replaces the photographed pencil drawing (CC BY-SA, R. Bhandari) in this slot.",
+      "credit_en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+      "credit_ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்.",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T14:02:49+00:00"
+    },
+    "paramecium/contractile-vacuoles": {
+      "file": "native-app/app/src/main/assets/type_studies/paramecium/contractile-vacuoles.png",
+      "sha256": "a037e07b2b38888b5a33ede07f480de3b3f905dd03366a5ee5831ee9a5b1eeff",
+      "width": 405,
+      "height": 375,
+      "bytes": 170899,
+      "license": "Rights holder to confirm (R. Ramesh)",
+      "author": "AI-generated; supplied by R. Ramesh",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "Not recorded (user-supplied image)",
+      "notes": "Replaces the photographed pencil drawing (CC BY-SA, R. Bhandari) in this slot.",
+      "credit_en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+      "credit_ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்.",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T14:02:49+00:00"
     }
   }
 }
