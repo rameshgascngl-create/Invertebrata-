@@ -1,7 +1,5 @@
 package com.gasczoology.invertebratelab.ui
 
-import android.graphics.BitmapFactory
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -59,11 +57,7 @@ private fun rememberCanonicalPlateBitmap(stem: String): ImageBitmap? {
     val assets = LocalContext.current.assets
     return remember(assets, stem) {
         listOf(".png", ".webp").firstNotNullOfOrNull { extension ->
-            runCatching {
-                assets.open(stem + extension).use { stream ->
-                    BitmapFactory.decodeStream(stream)?.asImageBitmap()
-                }
-            }.getOrNull()
+            PlateBitmapDecoder.decode(assets, stem + extension)
         }
     }
 }

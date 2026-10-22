@@ -1,0 +1,19 @@
+{
+  "plates": {
+    "pila/torsion": {
+      "file": "native-app/app/src/main/assets/type_studies/pila/torsion.webp",
+      "sha256": "83d831242746bc44df2722221e28e71feb85d10ca3a73277bb37a6f5e38a6937",
+      "width": 2000,
+      "height": 1380,
+      "bytes": 114892,
+      "license": "Original work; rights holder to confirm (R. Ramesh)",
+      "author": "Generated programmatically for INVERTEBRATA (Claude); source: tools/plate_sources/make_torsion.py",
+      "source_url": "",
+      "ai_generated": true,
+      "generator": "Claude, matplotlib script (vector schematic, no image model)",
+      "notes": "Generalised gastropod torsion schematic (not Pila-specific). English labels only; Tamil labels to be supplied as overlay/legend. Zoological review required.",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-22T13:40:20+00:00"
+    }
+  }
+}

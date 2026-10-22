@@ -16,3 +16,6 @@ Download and verify the original image, confirm redistribution rights applicable
 
 ## Other pending Pila plates
 External animal anatomy (head, foot, tentacles, operculum), mantle cavity, and ctenidium with osphradium still require independently sourced *Pila*-specific plates with readable organ labels.
+
+## Update 22 Oct 2026 — `pila/torsion.webp` added (original schematic)
+`torsion.webp` is an original, programmatically drawn generalised-gastropod schematic (source: `tools/plate_sources/make_torsion.py`), added at the author's request. It is **generalised, not Pila-specific**; English labels only; zoological review and Tamil legend still required. Provenance: `provenance/plates.json`.

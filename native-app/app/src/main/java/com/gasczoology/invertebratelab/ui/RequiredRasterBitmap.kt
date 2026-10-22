@@ -1,10 +1,8 @@
 package com.gasczoology.invertebratelab.ui
 
-import android.graphics.BitmapFactory
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import com.gasczoology.invertebratelab.data.RasterArtworkPolicy
 
@@ -47,12 +45,6 @@ internal fun rememberRequiredRasterBitmap(relativeStem: String, pngOnly: Boolean
         if (pngOnly && selected?.endsWith(".png") != true) null else selected
     }
     return remember(context, asset) {
-        asset?.let { path ->
-            runCatching {
-                context.assets.open(path).use { stream ->
-                    BitmapFactory.decodeStream(stream)?.asImageBitmap()
-                }
-            }.getOrNull()
-        }
+        asset?.let { path -> PlateBitmapDecoder.decode(context.assets, path) }
     }
 }
