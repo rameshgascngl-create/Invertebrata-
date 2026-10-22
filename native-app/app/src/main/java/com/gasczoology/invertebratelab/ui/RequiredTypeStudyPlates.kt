@@ -266,6 +266,13 @@ internal fun RequiredTypeStudyPlates(
                                 .clickable(onClickLabel = if (tamil) "முழுத்திரையில் பெரிதாக்கு" else "Open full-size image") { expanded = true }
                                 .testTag("r2-plate-bitmap-${study.organismId}-${plateId}"),
                         )
+                        rememberPlateCredit(study.organismId + "/" + plateId)?.let { credit ->
+                            Text(
+                                credit.text(language),
+                                style = MaterialTheme.typography.bodySmall,
+                                modifier = Modifier.testTag("plate-credit-${study.organismId}-${plateId}"),
+                            )
+                        }
                         OutlinedButton(
                             onClick = { expanded = true },
                             modifier = Modifier.heightIn(min = 48.dp)

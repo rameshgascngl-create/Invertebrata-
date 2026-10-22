@@ -13,7 +13,9 @@
       "generator": "Claude, matplotlib script (vector schematic, no image model)",
       "notes": "Generalised gastropod torsion schematic (not Pila-specific). English labels only; Tamil labels to be supplied as overlay/legend. Zoological review required.",
       "review_status": "DRAFT_UNVERIFIED",
-      "added_utc": "2026-10-22T13:40:20+00:00"
+      "added_utc": "2026-10-22T13:40:20+00:00",
+      "credit_en": "Original schematic prepared for this app. Generalised gastropod; not specific to Pila.",
+      "credit_ta": "இந்தச் செயலிக்காக வரையப்பட்ட அசல் திட்டப்படம். பொதுவான வயிற்றுக்காலி; Pila-க்கு மட்டும் உரியதல்ல."
     }
   }
 }

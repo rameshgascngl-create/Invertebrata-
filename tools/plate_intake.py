@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt"
 ASSETS = ROOT / "native-app/app/src/main/assets/type_studies"
 PROV = ROOT / "provenance/plates.json"
+CREDITS = ASSETS / "plate_credits.json"
 MAX_EDGE_DEFAULT, MAX_EDGE_HARD, MIN_EDGE = 2560, 4096, 256
 EXTRAS = {"pila/shell-specimen-reference", "pila/swainson-1821-pila-ampullacea"}
 
@@ -68,6 +69,16 @@ def problems():
         if len(files) > 1:
             errs.append(f"{s}: both formats present {[f.name for f in files]}")
     return errs
+
+
+def build_credits(prov):
+    """Write the in-app credit file from provenance entries (shown under each plate)."""
+    out = {}
+    for slot, e in sorted(prov["plates"].items()):
+        en = e.get("credit_en") or f"Source: {e['author']} \u00b7 {e['license']}"
+        ta = e.get("credit_ta") or f"\u0bae\u0bc2\u0bb2\u0bae\u0bcd: {e['author']} \u00b7 {e['license']}"
+        out[slot] = {"en": en, "ta": ta}
+    CREDITS.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def cmd_list(_):
@@ -138,11 +149,12 @@ def cmd_add(a):
         "file": dest.relative_to(ROOT).as_posix(), "sha256": sha(dest), "width": im.width,
         "height": im.height, "bytes": dest.stat().st_size, "license": a.license, "author": a.author,
         "source_url": a.source_url, "ai_generated": a.ai_generated == "yes", "generator": a.generator,
-        "notes": a.notes, "review_status": "DRAFT_UNVERIFIED",
+        "notes": a.notes, "credit_en": a.credit_en, "credit_ta": a.credit_ta, "review_status": "DRAFT_UNVERIFIED",
         "added_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
     }
     PROV.parent.mkdir(exist_ok=True)
     PROV.write_text(json.dumps(prov, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    build_credits(prov)
     print(f"Added {dest.relative_to(ROOT)}  {im.width}x{im.height}  {dest.stat().st_size // 1024} KB")
     errs = problems()
     print("\n".join(errs) if errs else "Inventory check: OK")
@@ -154,6 +166,8 @@ def main():
     sp = ap.add_subparsers(dest="cmd", required=True)
     sp.add_parser("list").set_defaults(fn=cmd_list)
     sp.add_parser("check").set_defaults(fn=cmd_check)
+    sp.add_parser("credits", help="regenerate plate_credits.json from provenance").set_defaults(
+        fn=lambda _a: build_credits(json.loads(PROV.read_text(encoding="utf-8"))))
     x = sp.add_parser("add")
     x.add_argument("--organism", required=True)
     x.add_argument("--plate", required=True)
@@ -164,6 +178,8 @@ def main():
     x.add_argument("--ai-generated", choices=["yes", "no"], required=True)
     x.add_argument("--generator", default="")
     x.add_argument("--notes", default="")
+    x.add_argument("--credit-en", default="", help="exact English credit line shown under the plate")
+    x.add_argument("--credit-ta", default="", help="exact Tamil credit line (default: template)")
     x.add_argument("--format", choices=["webp", "png"], default="webp")
     x.add_argument("--max-edge", type=int, default=MAX_EDGE_DEFAULT)
     x.add_argument("--replace", action="store_true")
