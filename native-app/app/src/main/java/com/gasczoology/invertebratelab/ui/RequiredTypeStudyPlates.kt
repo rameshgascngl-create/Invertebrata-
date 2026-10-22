@@ -1,5 +1,8 @@
 package com.gasczoology.invertebratelab.ui
 
+import android.graphics.BitmapFactory
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -45,6 +48,25 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.TypeStudyRequirement
 import com.gasczoology.invertebratelab.data.BilingualText
 import kotlin.math.roundToInt
+
+/**
+ * Resolve canonical PNG and WebP images directly from the packaged Android assets.
+ * The original shared loader is retained for other screens; this gallery must
+ * not assume a single raster extension.
+ */
+@Composable
+private fun rememberCanonicalPlateBitmap(stem: String): ImageBitmap? {
+    val assets = LocalContext.current.assets
+    return remember(assets, stem) {
+        listOf(".png", ".webp").firstNotNullOfOrNull { extension ->
+            runCatching {
+                assets.open(stem + extension).use { stream ->
+                    BitmapFactory.decodeStream(stream)?.asImageBitmap()
+                }
+            }.getOrNull()
+        }
+    }
+}
 
 /**
  * Provisional college-practical terminology for ALL 35 type-study slots.
@@ -131,7 +153,7 @@ internal fun RequiredTypeStudyPlates(
         if (study.organismId == "pila") {
             // Museum specimen and historical plate are comparative references,
             // not replacements for any of the four required anatomy masters.
-            val shell = rememberRequiredRasterBitmap("type_studies/pila/shell-specimen-reference")
+            val shell = rememberCanonicalPlateBitmap("type_studies/pila/shell-specimen-reference")
             var shellExpanded by rememberSaveable("pila-shell-specimen") { mutableStateOf(false) }
             if (shell != null) {
                 Card(Modifier.fillMaxWidth().testTag("pila-museum-shell-card")) {
@@ -158,7 +180,7 @@ internal fun RequiredTypeStudyPlates(
                     }
                 }
             }
-            val historic = rememberRequiredRasterBitmap("type_studies/pila/swainson-1821-pila-ampullacea")
+            val historic = rememberCanonicalPlateBitmap("type_studies/pila/swainson-1821-pila-ampullacea")
             var historicExpanded by rememberSaveable("pila-historic-plate") { mutableStateOf(false) }
             if (historic != null) {
                 Card(Modifier.fillMaxWidth().testTag("pila-comparative-card")) {
@@ -199,11 +221,11 @@ internal fun RequiredTypeStudyPlates(
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
                 else -> stem
             }
-            val primaryRaster = rememberRequiredRasterBitmap(stem)
+            val primaryRaster = rememberCanonicalPlateBitmap(stem)
             // Avoid decoding the same large bitmap twice for plates without a legacy path.
             // A fallback is only needed when the canonical artwork is absent.
             val fallbackRaster = if (primaryRaster == null && fallbackStem != stem) {
-                rememberRequiredRasterBitmap(fallbackStem)
+                rememberCanonicalPlateBitmap(fallbackStem)
             } else null
             val raster = primaryRaster ?: fallbackRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
