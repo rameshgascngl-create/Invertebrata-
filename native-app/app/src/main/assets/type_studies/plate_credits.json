@@ -1,6 +1,42 @@
 {
+  "paramecium/locomotion": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
   "pila/torsion": {
     "en": "Original schematic prepared for this app. Generalised gastropod; not specific to Pila.",
     "ta": "இந்தச் செயலிக்காக வரையப்பட்ட அசல் திட்டப்படம். பொதுவான வயிற்றுக்காலி; Pila-க்கு மட்டும் உரியதல்ல."
+  },
+  "unit1/concepts/paramecium_ciliary_locomotion": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
+  "unit1/concepts/paramecium_nuclear_anatomy": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
+  "unit1/concepts/paramecium_oral_apparatus": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
+  "unit1/concepts/paramecium_osmoregulation": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
+  "unit1/replacements/paramecium_contractile-vacuoles": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
+  "unit1/replacements/paramecium_external-cilia": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
+  "unit1/replacements/paramecium_internal-anatomy": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
+  },
+  "unit1/replacements/paramecium_oral-apparatus": {
+    "en": "AI-generated illustration prepared for the Department of Zoology, GASC, Nagercoil.",
+    "ta": "செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட படம் — விலங்கியல் துறை, GASC, நாகர்கோவில்."
   }
 }

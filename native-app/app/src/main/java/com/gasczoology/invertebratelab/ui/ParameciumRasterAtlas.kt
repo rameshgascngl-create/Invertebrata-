@@ -72,6 +72,10 @@ internal fun ParameciumRasterAtlas(
                     }
                 }
                 .testTag("u1-paramecium-raster-"+panel))
+        rememberPlateCredit("unit1/replacements/paramecium_"+approvedSlot)?.let { credit ->
+            Text(credit.text(language), style=MaterialTheme.typography.bodySmall,
+                modifier=Modifier.testTag("plate-credit-u1-"+panel))
+        }
         OutlinedButton(onClick={zoom=1f;dx=0f;dy=0f},
             modifier=Modifier.heightIn(min=48.dp).testTag("u1-raster-reset-zoom")) {
             Text(if(tamil) "பெரிதாக்கலை மீட்டமை" else "Reset zoom")

@@ -179,6 +179,10 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
                     contentDescription = view(language, "Paramecium concept PNG: $figure", "பாரமீசியம் PNG படம்: $figure"),
                     contentScale = androidx.compose.ui.layout.ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth().height(240.dp).testTag("r14-pencil-" + figure))
+                stem?.let { rememberPlateCredit(it) }?.let { credit ->
+                    Text(credit.text(language), style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.testTag("plate-credit-concept-" + figure))
+                }
             } else {
                 Text(view(language,
                     "Required concept-specific PNG not yet scientifically verified; the old drawing has been removed.",

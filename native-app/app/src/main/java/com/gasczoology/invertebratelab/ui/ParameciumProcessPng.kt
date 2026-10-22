@@ -64,6 +64,10 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                         }
                         .testTag("u57-paramecium-process-bitmap-" + process.name.lowercase()),
                 )
+                stem?.let { rememberPlateCredit(it) }?.let { credit ->
+                    Text(credit.text(language), style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.testTag("plate-credit-process-" + process.name.lowercase()))
+                }
                 OutlinedButton(
                     onClick = { expanded = true },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)

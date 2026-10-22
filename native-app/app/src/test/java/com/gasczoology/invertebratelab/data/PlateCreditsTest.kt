@@ -26,8 +26,10 @@ class PlateCreditsTest {
         if (!file.isFile) return
         val credits = PlateCreditParser.parse(file.readText(Charsets.UTF_8))
         for ((slot, credit) in credits) {
+            val assetsRoot = File("src/main/assets")
             assertTrue("plate_credits.json lists '$slot' but no image exists for it",
-                File(root, "$slot.png").isFile || File(root, "$slot.webp").isFile)
+                listOf(root, assetsRoot).any { base ->
+                    File(base, "$slot.png").isFile || File(base, "$slot.webp").isFile })
             assertTrue("Credit for $slot needs Tamil text",
                 credit.ta.any { it in '஀'..'௿' })
         }
