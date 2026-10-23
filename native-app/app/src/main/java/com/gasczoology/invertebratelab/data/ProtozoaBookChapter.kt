@@ -56,26 +56,26 @@ object ProtozoaBookChapter {
                         "இயக்கத்துக்கும் உணவைப் பிடிக்கவும் பயன்படும் உயிரணுவின் தற்காலிக நீட்சி."),
                     bdef("Flagellum", "கசை", "A long whip-like projection of the cell used for swimming." to
                         "நீந்தப் பயன்படும் உயிரணுவின் நீண்ட சாட்டை போன்ற நீட்சி."),
-                    bdef("Cilium", "சிலியம்", "A short hair-like projection of the cell, found in large numbers, used for movement or for feeding." to
+                    bdef("Cilium", "மயிரிழை", "A short hair-like projection of the cell, found in large numbers, used for movement or for feeding." to
                         "இயக்கம் அல்லது உணவெடுப்புக்குப் பயன்படும் அதிக எண்ணிக்கையில் உள்ள உயிரணுவின் குறுகிய முடி போன்ற நீட்சி."),
                 )),
             bsec("nutrition-osmo", "Nutrition and osmoregulation", "ஊட்டமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தலும்",
                 blocks = listOf(
                     bp("Protozoa differ in the manner in which they obtain food. Many are holozoic, or phagotrophic, which means that they ingest solid food, such as bacteria, algae or other protozoa, into food vacuoles in which it is digested. Others are saprozoic, or osmotrophic, and absorb dissolved nutrients across the surface of the cell. Some, such as Euglena, are photosynthetic, and have chloroplasts, and a number are mixotrophic, with more than one way of feeding. The parasites obtain nutrients from the host in ways that are described in a later chapter." to
-                        "புரோட்டோசோவாக்கள் உணவைப் பெறும் முறையில் வேறுபடுகின்றன. பல ஹோலோசோயிக் அல்லது பேகோட்ரோஃபிக்; அதாவது பாக்டீரியா, பாசி, பிற புரோட்டோசோவா போன்ற திட உணவை உணவுக் குமிழ்களுக்குள் உட்கொண்டு அங்கு செரிக்கின்றன. மற்றவை சாப்ரோசோயிக் அல்லது ஆஸ்மோட்ரோஃபிக்; கரைந்த ஊட்டங்களை உயிரணு மேற்பரப்பு வழியே உறிஞ்சுகின்றன. யூக்ளினா போன்ற சில ஒளிச்சேர்க்கை செய்து பசுங்கணிகங்கள் கொண்டவை; பல கலப்பூட்டமுடையவை, ஒன்றுக்கு மேற்பட்ட உண்ணும் வழிகளுடன். ஒட்டுண்ணிகள் விருந்தோம்பியிடமிருந்து ஊட்டங்களைப் பெறும் வழிகள் பிந்தைய அத்தியாயத்தில் விவரிக்கப்படுகின்றன."),
+                        "புரோட்டோசோவாக்கள் உணவைப் பெறும் முறையில் வேறுபடுகின்றன. பல ஹோலோசோயிக் அல்லது பேகோட்ரோஃபிக்; அதாவது பாக்டீரியா, பாசி, பிற புரோட்டோசோவா போன்ற திட உணவை உணவு நுண்குமிழ்களுக்குள் உட்கொண்டு அங்கு செரிக்கின்றன. மற்றவை சாப்ரோசோயிக் அல்லது ஆஸ்மோட்ரோஃபிக்; கரைந்த ஊட்டங்களை உயிரணு மேற்பரப்பு வழியே உறிஞ்சுகின்றன. யூக்ளினா போன்ற சில ஒளிச்சேர்க்கை செய்து பசுங்கணிகங்கள் கொண்டவை; பல கலப்பூட்டமுடையவை, ஒன்றுக்கு மேற்பட்ட உண்ணும் வழிகளுடன். ஒட்டுண்ணிகள் விருந்தோம்பியிடமிருந்து ஊட்டங்களைப் பெறும் வழிகள் பிந்தைய அத்தியாயத்தில் விவரிக்கப்படுகின்றன."),
                     bp("Freshwater protozoa face a problem of water balance. The water outside is hypotonic to the cytoplasm, which means that it has a lower concentration of dissolved substances, and so water enters the cell continuously by osmosis. Without a means of removal, the cell would swell and burst. Many freshwater forms have contractile vacuoles, which collect the excess water from the cytoplasm, and periodically fill and contract to expel it to the outside. Marine forms and parasites living in the body fluids of a host often have no contractile vacuole, or a less active one, since the surrounding fluid is closer in concentration to the cytoplasm." to
                         "நன்னீர் புரோட்டோசோவாக்கள் நீர்ச் சமநிலைச் சிக்கலை எதிர்கொள்கின்றன. வெளி நீர் சைட்டோபிளாசத்துக்கு குறைவான செறிவு கொண்ட ஹைப்போடானிக்; எனவே சவ்வூடுபரவலால் நீர் தொடர்ந்து உயிரணுவுக்குள் நுழைகிறது. அகற்றும் வழி இல்லாவிட்டால் உயிரணு வீங்கி வெடிக்கும். பல நன்னீர் வடிவங்களுக்கு சைட்டோபிளாசத்திலிருந்து மிகை நீரைச் சேகரித்து, அவ்வப்போது நிரம்பிச் சுருங்கி வெளியே வெளியேற்றும் சுருங்கும் நுண்குமிழ்கள் உண்டு. சுற்றியுள்ள திரவம் சைட்டோபிளாசத்துக்குச் செறிவில் நெருக்கமாக இருப்பதால் கடல் வடிவங்கள், விருந்தோம்பியின் உடல் திரவங்களில் வாழும் ஒட்டுண்ணிகளுக்கு பெரும்பாலும் சுருங்கும் நுண்குமிழ் இல்லை அல்லது குறைவாக இயங்குகிறது."),
                     bpoints("Modes of nutrition in protozoa", "புரோட்டோசோவாவின் ஊட்ட முறைகள்",
-                        "Holozoic: ingestion of solid food into food vacuoles." to "ஹோலோசோயிக்: உணவுக் குமிழ்களுக்குள் திட உணவை உட்கொள்ளுதல்.",
+                        "Holozoic: ingestion of solid food into food vacuoles." to "ஹோலோசோயிக்: உணவு நுண்குமிழ்களுக்குள் திட உணவை உட்கொள்ளுதல்.",
                         "Saprozoic: absorption of dissolved nutrients." to "சாப்ரோசோயிக்: கரைந்த ஊட்டங்களை உறிஞ்சுதல்.",
                         "Photosynthetic: manufacture of food by chloroplasts, as in Euglena." to "ஒளிச்சேர்க்கை: யூக்ளினா போல பசுங்கணிகங்களால் உணவு தயாரித்தல்.",
-                        "Mixotrophic: a combination of two or more of these." to "கலப்பூட்டம்: இவற்றில் இரண்டு அல்லது அதற்கு மேற்பட்டவற்றின் சேர்க்கை.",
+                        "Mixotrophic: a combination of two or more of these." to "கலப்பு ஊட்டம்: இவற்றில் இரண்டு அல்லது அதற்கு மேற்பட்டவற்றின் சேர்க்கை.",
                     ),
                     bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம்", "Nutrition by ingestion and internal digestion of solid food particles." to
                         "திட உணவுத் துகள்களை உட்கொண்டு உள்ளே செரிக்கும் ஊட்டம்."),
                     bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம்", "Nutrition by absorption of dissolved organic substances." to
                         "கரைந்த கரிமப் பொருட்களை உறிஞ்சும் ஊட்டம்."),
-                    bdef("Mixotrophy", "கலப்பூட்டம்", "The use of more than one mode of nutrition, such as photosynthesis and ingestion." to
+                    bdef("Mixotrophy", "கலப்பு ஊட்டம்", "The use of more than one mode of nutrition, such as photosynthesis and ingestion." to
                         "ஒளிச்சேர்க்கை, உட்கொள்ளுதல் போன்ற ஒன்றுக்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்துதல்."),
                     bdef("Contractile vacuole", "சுருங்கும் நுண்குமிழ்", "An organelle that collects and expels excess water from the cell." to
                         "உயிரணுவிலிருந்து மிகை நீரைச் சேகரித்து வெளியேற்றும் நுண்ணுறுப்பு."),
@@ -130,7 +130,7 @@ object ProtozoaBookChapter {
                         "கசைகளால் நகரும் புரோட்டோசோவாவின் மரபுவழி வகுப்பு."),
                     bdef("Ciliophora", "சிலியோஃபோரா", "The ciliates, protozoa that have cilia and, typically, two kinds of nucleus." to
                         "சிலியாக்களும் வழக்கமாக இருவகை உட்கருவும் கொண்ட புரோட்டோசோவாக்களான சிலியேட்டுகள்."),
-                    bdef("Apicomplexa", "அபிகாம்ப்ளெக்சா", "A group of parasitic protists with a characteristic apical complex, including Plasmodium." to
+                    bdef("Apicomplexa", "அபிகாம்ப்ளெக்ஸா", "A group of parasitic protists with a characteristic apical complex, including Plasmodium." to
                         "பிளாஸ்மோடியம் உள்ளிட்ட, தனிப்பண்பு நுனித் தொகுப்புடைய ஒட்டுண்ணி புரோட்டிஸ்டுகளின் குழு."),
                 )),
             bsec("ciliata-sporozoa", "Ciliata and Sporozoa compared", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",

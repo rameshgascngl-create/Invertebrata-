@@ -120,7 +120,7 @@ object AscarisBookChapter {
                         listOf("Feature" to "பண்பு", "Fasciola" to "ஃபாசியோலா", "Ascaris" to "அஸ்காரிஸ்"),
                         listOf(
                             listOf("Class or phylum" to "வகுப்பு அல்லது தொகுதி", "Trematoda (Platyhelminthes)" to "டிரிமட்டோடா (பிளாட்டிஹெல்மிந்தீஸ்)", "Nematoda" to "நெமட்டோடா"),
-                            listOf("Sexes" to "பாலினங்கள்", "Hermaphrodite" to "இருபாலுயிரி", "Separate" to "தனித்தனி"),
+                            listOf("Sexes" to "பாலினங்கள்", "Hermaphrodite" to "இருபால் உயிரி", "Separate" to "தனித்தனி"),
                             listOf("Gut" to "குடல்", "Branched, no anus" to "கிளைத்தது, மலவாய் இல்லை", "Straight, with anus" to "நேரானது, மலவாயுடன்"),
                             listOf("Intermediate host" to "இடைநிலை விருந்தோம்பி", "Snail" to "நத்தை", "None" to "இல்லை"),
                             listOf("Infective stage" to "தொற்றும் நிலை", "Metacercaria" to "மெட்டாசெர்க்கேரியா", "Larvated egg" to "லார்வா முட்டை"),

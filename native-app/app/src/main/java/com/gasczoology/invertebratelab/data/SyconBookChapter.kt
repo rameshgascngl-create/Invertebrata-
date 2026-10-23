@@ -216,7 +216,7 @@ object SyconBookChapter {
                             "செரிமானம் செல்லுக்குள்ளேயே நடைபெறுகிறது. பிடிக்கப்பட்ட துகள் கோனோசைட்டின் உணவுக் குமிழுக்குள் எடுக்கப்படுகிறது அல்லது அமீபோசைட்டுக்குக் கடத்தப்பட்டு அங்கு செரிக்கப்படுகிறது; செரிமானப் பொருள்களை அமீபோசைட்டுகள் பிற செல்களுக்குக் கொண்டு செல்கின்றன. செரிக்காத பொருள்கள் வெளியேறும் நீருடன் சேர்ந்து வெளியேறுகின்றன."),
                         def("Intracellular digestion", "செல்லுக்குள் செரிமானம்",
                             "Digestion of food inside the food vacuoles of individual cells, not in a digestive cavity.",
-                            "செரிமானக் குழியில் அல்லாமல் தனித்தனி செல்களின் உணவுக் குமிழ்களுக்குள் உணவு செரிக்கப்படுதல்."),
+                            "செரிமானக் குழியில் அல்லாமல் தனித்தனி செல்களின் உணவு நுண்குமிழ்களுக்குள் உணவு செரிக்கப்படுதல்."),
                     )),
                     BookSubsection(b("Respiration and excretion", "சுவாசமும் கழிவு நீக்கமும்"), listOf(
                         p("There are no respiratory or excretory organs. Oxygen dissolved in the water diffuses into the cells, and carbon dioxide and nitrogenous waste, chiefly ammonia, diffuse out into the water. The continuous current keeps fresh water in contact with the cells.",
@@ -249,8 +249,8 @@ object SyconBookChapter {
                     )),
                     BookSubsection(b("Sexual reproduction and fertilisation", "பாலின இனப்பெருக்கமும் கருவுறுதலும்"), listOf(
                         p("Sycon is usually described as hermaphrodite, but the sperms and eggs of one individual mature at different times, so that cross-fertilisation is the rule. The eggs arise from amoebocytes in the mesohyl. The sperms are shed into the water through the osculum, and a sperm entering another sponge with the incurrent water is taken up by a choanocyte, which loses its flagellum and collar and carries the sperm to an egg. Fertilisation occurs in the mesohyl. Details differ slightly in different textbooks, and the account given in your prescribed book should be followed.",
-                            "சைக்கான் பொதுவாக இருபாலுயிரி எனப்படுகிறது; ஆனால் ஒரே உயிரியின் விந்தும் முட்டையும் வெவ்வேறு காலத்தில் முதிர்வதால் பிறவி கருவுறுதலே வழக்கம். முட்டைகள் மீசோஹைலில் உள்ள அமீபோசைட்டுகளிலிருந்து தோன்றுகின்றன. விந்துகள் ஆஸ்குலம் வழியாக நீருக்குள் வெளியேறுகின்றன; மற்றொரு கடற்பஞ்சுக்குள் உட்செல்லும் நீருடன் நுழையும் விந்தை ஒரு கோனோசைட் எடுத்துக்கொண்டு, தன் கசையிழையையும் காலரையும் இழந்து, அதை முட்டையிடம் கொண்டு செல்கிறது. கருவுறுதல் மீசோஹைலில் நிகழ்கிறது. பாடநூல்களிடையே விவரங்கள் சற்று மாறுபடும்; உங்கள் பாடநூலின் விளக்கத்தைப் பின்பற்றுக."),
-                        def("Hermaphrodite", "இருபாலுயிரி",
+                            "சைக்கான் பொதுவாக இருபால் உயிரி எனப்படுகிறது; ஆனால் ஒரே உயிரியின் விந்தும் முட்டையும் வெவ்வேறு காலத்தில் முதிர்வதால் பிறவி கருவுறுதலே வழக்கம். முட்டைகள் மீசோஹைலில் உள்ள அமீபோசைட்டுகளிலிருந்து தோன்றுகின்றன. விந்துகள் ஆஸ்குலம் வழியாக நீருக்குள் வெளியேறுகின்றன; மற்றொரு கடற்பஞ்சுக்குள் உட்செல்லும் நீருடன் நுழையும் விந்தை ஒரு கோனோசைட் எடுத்துக்கொண்டு, தன் கசையிழையையும் காலரையும் இழந்து, அதை முட்டையிடம் கொண்டு செல்கிறது. கருவுறுதல் மீசோஹைலில் நிகழ்கிறது. பாடநூல்களிடையே விவரங்கள் சற்று மாறுபடும்; உங்கள் பாடநூலின் விளக்கத்தைப் பின்பற்றுக."),
+                        def("Hermaphrodite", "இருபால் உயிரி",
                             "An individual that produces both male gametes (sperms) and female gametes (eggs).",
                             "ஆண் இனச்செல் (விந்து), பெண் இனச்செல் (முட்டை) இரண்டையும் உருவாக்கும் உயிரி."),
                     )),
@@ -317,7 +317,7 @@ object SyconBookChapter {
             b("The body wall has a flat outer layer, a gelatinous mesohyl with amoebocytes and spicules, and an inner layer of choanocytes confined to the radial canals.", "உடற்சுவரில் தட்டை வெளி அடுக்கும், அமீபோசைட்டுகளும் ஊசிகளும் உள்ள ஜெல் மீசோஹைலும், ஆரக் கால்வாய்களில் மட்டுமுள்ள கோனோசைட் உள் அடுக்கும் உள்ளன."),
             b("Water flows from the ostia through incurrent canals, prosopyles, radial canals and apopyles into the spongocoel and out through the osculum.", "நீர் ஆஸ்டியாவிலிருந்து உட்செல்லும் கால்வாய், புரோசோபைல், ஆரக் கால்வாய், அப்போபைல் வழியாக ஸ்பாஞ்சோசீலை அடைந்து ஆஸ்குலம் வழியாக வெளியேறுகிறது."),
             b("Digestion is intracellular, and respiration and excretion take place by diffusion; there is no gut, blood or nervous system.", "செரிமானம் செல்லுக்குள் நடைபெறுகிறது; சுவாசமும் கழிவு நீக்கமும் விரவல் மூலம் நடைபெறுகின்றன; குடல், இரத்தம், நரம்புமண்டலம் இல்லை."),
-            b("Asexual reproduction is by budding; sexual reproduction is by cross-fertilisation between hermaphrodite individuals.", "பாலிலா இனப்பெருக்கம் மொட்டுவிடுதல்; பாலின இனப்பெருக்கம் இருபாலுயிரிகளிடையே பிறவி கருவுறுதல்."),
+            b("Asexual reproduction is by budding; sexual reproduction is by cross-fertilisation between hermaphrodite individuals.", "பாலிலா இனப்பெருக்கம் மொட்டுவிடுதல்; பாலின இனப்பெருக்கம் இருபால் உயிரிகளிடையே பிறவி கருவுறுதல்."),
             b("The stomoblastula turns inside out by inversion to form the free-swimming amphiblastula, which settles and becomes an olynthus and then a syconoid sponge.", "ஸ்டோமோபிளாஸ்டுலா இன்வெர்ஷன் மூலம் உள்வெளியாகத் திரும்பி நீந்தும் ஆம்ஃபிபிளாஸ்டுலா ஆகிறது; அது நிலைபெற்று ஓலிந்தஸாகி பின்னர் சைக்கனாய்டு கடற்பஞ்சாகிறது."),
         ),
         quickChecks = listOf(

@@ -65,7 +65,7 @@ object AschelminthesBookChapter {
                     bdef("Moulting", "தோலுரித்தல்", "The shedding of the old cuticle and the formation of a new one as the animal grows." to
                         "விலங்கு வளரும்போது பழைய கியூட்டிகிளை உதிர்த்துப் புதியதை உருவாக்குதல்."),
                 )),
-            bsec("pseudocoelom", "The pseudocoelom and the hydrostatic skeleton", "போலி உடற்குழியும் நீரியல் எலும்புக்கூடும்",
+            bsec("pseudocoelom", "The pseudocoelom and the hydrostatic skeleton", "போலி உடற்குழியும் நீர்ம சட்டகம்ம்",
                 blocks = listOf(
                     bp("A true coelom is a cavity within the mesoderm, lined on both the body-wall side and the gut side by mesodermal epithelium (peritoneum). The cavity of a nematode lies between the mesoderm of the body wall and the endoderm of the gut, and has a peritoneal lining on one side only, or none. It is therefore called a pseudocoelom, or false coelom. The difference is not simply one of vocabulary, since the lining of a true coelom helps in the suspension and the movement of the gut and in the development of organs, which a pseudocoelom does not do in the same way." to
                         "உண்மையான சீலோம் மீசோடெர்மினுள் உள்ள குழி; உடற்சுவர் பக்கமும் குடல் பக்கமும் மீசோடெர்ம் எப்பிதீலியத்தால் (பெரிட்டோனியம்) மூடப்பட்டிருக்கும். நெமட்டோடாவின் குழி உடற்சுவரின் மீசோடெர்முக்கும் குடலின் எண்டோடெர்முக்கும் இடையில் உள்ளது; ஒரு பக்கத்தில் மட்டும் பெரிட்டோனிய மூடல் உண்டு, அல்லது இல்லை. எனவே இது போலி உடற்குழி அல்லது பொய் சீலோம் எனப்படுகிறது. வேறுபாடு சொற்களில் மட்டுமல்ல; உண்மை சீலோமின் மூடல் குடலைத் தொங்கவிடவும் இயக்கவும் உறுப்புகள் வளரவும் உதவுகிறது; போலி உடற்குழி அதே விதத்தில் செய்வதில்லை."),
@@ -93,7 +93,7 @@ object AschelminthesBookChapter {
                             listOf("Anchorage" to "நிலைநிறுத்தம்", "None" to "இல்லை", "Setae" to "செட்டாக்கள்"),
                             listOf("Movement" to "இயக்கம்", "Side-to-side thrash" to "பக்கவாட்டு அலைவு", "Peristaltic crawling" to "அலைவு ஊர்தல் (பெரிஸ்டால்சிஸ்)"),
                         )),
-                    bdef("Hydrostatic skeleton", "நீரியல் எலும்புக்கூடு", "A skeleton formed by fluid under pressure in a closed body cavity, against which muscles work." to
+                    bdef("Hydrostatic skeleton", "நீர்ம சட்டகம்", "A skeleton formed by fluid under pressure in a closed body cavity, against which muscles work." to
                         "மூடிய உடற்குழியில் அழுத்தத்திலுள்ள திரவத்தால் உருவான எலும்புக்கூடு; தசைகள் அதற்கு எதிராகச் செயல்படுகின்றன."),
                     bdef("Peristalsis", "பெரிஸ்டால்சிஸ்", "A wave of alternate contraction of circular and longitudinal muscles which passes along the body or a tube." to
                         "உடல் அல்லது குழாய் வழியே செல்லும் வட்ட, நீளவாக்கு தசைகளின் மாறிமாறிச் சுருங்கும் அலை."),
@@ -120,7 +120,7 @@ object AschelminthesBookChapter {
                     bpoints("A plan for the answer", "விடைக்கான திட்டம்",
                         "Begin with the status of the name Aschelminthes and the place of the Nematoda." to "அஸ்கெல்மிந்தீஸ் என்ற பெயரின் நிலையையும் நெமட்டோடாவின் இடத்தையும் கூறி தொடங்குக.",
                         "List the characters in groups: form and covering, cavity and muscles, systems, reproduction." to "பண்புகளை குழுக்களாகப் பட்டியலிடுக: வடிவமும் உறையும், குழியும் தசைகளும், மண்டலங்கள், இனப்பெருக்கம்.",
-                        "Explain the hydrostatic skeleton and the whip-like movement, since these are common questions." to "நீரியல் எலும்புக்கூடு, சாட்டை போன்ற இயக்கத்தை விளக்குக; இவை பொதுவான வினாக்கள்.",
+                        "Explain the hydrostatic skeleton and the whip-like movement, since these are common questions." to "நீர்ம சட்டகம், சாட்டை போன்ற இயக்கத்தை விளக்குக; இவை பொதுவான வினாக்கள்.",
                         "Contrast the nematode with the flatworm (complete gut, pseudocoelom, separate sexes) and with the earthworm (no circular muscle, no septa)." to "நெமட்டோடாவை தட்டைப்புழுவுடன் (முழுமையான குடல், போலி உடற்குழி, தனிப் பாலினம்) மண்புழுவுடன் (வட்ட தசை இல்லை, தடுப்புகள் இல்லை) ஒப்பிடுக.",
                         "Name Ascaris as the type, and state that the sexes are separate and the female is the larger." to "அஸ்காரிஸை வகையாகக் குறிப்பிட்டு, பாலினங்கள் தனித்தனி, பெண் பெரியது எனக் கூறுக.",
                     ),

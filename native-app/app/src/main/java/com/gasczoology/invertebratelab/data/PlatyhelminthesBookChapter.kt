@@ -35,12 +35,12 @@ object PlatyhelminthesBookChapter {
                     ),
                     bpoints("Digestion, excretion and circulation", "செரிமானம், கழிவு நீக்கம், சுற்றோட்டம்",
                         "The digestive system is incomplete: a mouth leads to a gut, often branched, which ends blindly, and there is no anus. In cestodes the gut is absent." to "செரிமான மண்டலம் முழுமையற்றது: வாய் பெரும்பாலும் கிளைத்த குடலுக்குச் செல்கிறது; அது குருட்டு முடிவுடையது; மலவாய் இல்லை. செஸ்டோடாக்களில் குடல் இல்லை.",
-                        "Excretion and osmoregulation are by protonephridia with flame cells." to "கழிவு நீக்கமும் சவ்வூடு பரவல் ஒழுங்குபாடும் சுடர் செல்களுடன் கூடிய புரோட்டோநெஃப்ரிடியாவால்.",
+                        "Excretion and osmoregulation are by protonephridia with flame cells." to "கழிவு நீக்கமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தல்ம் சுடர் செல்களுடன் கூடிய புரோட்டோநெஃப்ரிடியாவால்.",
                         "Circulatory and respiratory systems are absent; gases diffuse through the body surface." to "சுற்றோட்ட, சுவாச மண்டலங்கள் இல்லை; வாயுக்கள் உடல் பரப்பு வழியாக விரவுகின்றன.",
                     ),
                     bpoints("Nervous system, reproduction and habit", "நரம்பு மண்டலம், இனப்பெருக்கம், வாழ்முறை",
                         "The nervous system has an anterior ganglionic mass, or brain, and longitudinal nerve cords joined by cross-connections." to "நரம்பு மண்டலத்தில் முன்புற நரம்பு செல்திரள் அல்லது மூளையும், குறுக்கு இணைப்புகளால் இணைந்த நீளவாக்கு நரம்பு வடங்களும் உள்ளன.",
-                        "Most are hermaphrodite, with complex reproductive systems, and fertilisation is internal." to "பெரும்பாலானவை இருபாலுயிரிகள்; சிக்கலான இனப்பெருக்க மண்டலங்கள்; உட்கருவுறுதல்.",
+                        "Most are hermaphrodite, with complex reproductive systems, and fertilisation is internal." to "பெரும்பாலானவை இருபால் உயிரிகள்; சிக்கலான இனப்பெருக்க மண்டலங்கள்; உட்கருவுறுதல்.",
                         "Some live free, but many are ectoparasites or endoparasites, and the parasitic forms have complex life cycles." to "சில தனித்து வாழ்கின்றன; பல புறவொட்டுண்ணிகள் அல்லது அகவொட்டுண்ணிகள்; ஒட்டுண்ணி வடிவங்களுக்குச் சிக்கலான வாழ்க்கைச் சுழற்சிகள்.",
                     ),
                     bdef("Triploblastic", "மூவடுக்கு", "Having a body built from three germ layers: ectoderm, mesoderm and endoderm." to
@@ -53,7 +53,7 @@ object PlatyhelminthesBookChapter {
                         "ஒரே தளம் மட்டுமே உடலை ஒத்த வலது, இடது பாதிகளாகப் பிரிக்கும் சமச்சீர்."),
                     bdef("Tegument", "டெகுமென்ட்", "The living, metabolically active outer covering of flukes and tapeworms, which protects the parasite and absorbs nutrients." to
                         "ஃப்ளூக்குகள், நாடாப்புழுக்களின் உயிருள்ள, வளர்சிதை செயலுள்ள வெளி உறை; ஒட்டுண்ணியைப் பாதுகாத்து ஊட்டச்சத்துகளை உறிஞ்சுகிறது."),
-                    bdef("Hermaphrodite", "இருபாலுயிரி", "An individual that has both male and female reproductive organs." to
+                    bdef("Hermaphrodite", "இருபால் உயிரி", "An individual that has both male and female reproductive organs." to
                         "ஆண், பெண் இனப்பெருக்க உறுப்புகள் இரண்டையும் கொண்ட உயிரி."),
                 )),
             bsec("flame-cells", "The excretory system and flame cells", "கழிவு நீக்க அமைப்பும் சுடர் செல்களும்",
@@ -61,14 +61,14 @@ object PlatyhelminthesBookChapter {
                     bp("The excretory organs of flatworms are protonephridia. Each begins in a flame cell, a hollow cell in the parenchyma that has a tuft of beating cilia projecting into its cavity. The beating of the tuft resembles the flicker of a flame when seen under the microscope, and this is how the cell gets its name. The cilia draw fluid in through the fine slits of the wall of the cell and drive it into a capillary tubule. The tubules join to form larger ducts that open to the outside through one or more excretory pores." to
                         "தட்டைப்புழுக்களின் கழிவு நீக்க உறுப்புகள் புரோட்டோநெஃப்ரிடியா. ஒவ்வொன்றும் சுடர் செல்லில் தொடங்குகிறது; பாரங்கைமாவிலுள்ள, குழிக்குள் நீட்டும் அசையும் கசையிழைக் கொத்தைக் கொண்ட வெற்று செல் அது. நுண்ணோக்கியில் இக்கொத்தின் அசைவு சுடரின் படபடப்பைப் போல் தோன்றுவதால் செல்லுக்கு இப்பெயர். கசையிழைகள் செல்சுவரின் நுண் பிளவுகள் வழியாக நீரை இழுத்து நுண்குழாயில் செலுத்துகின்றன. குழாய்கள் இணைந்து பெரிய நாளங்களாகி ஒன்று அல்லது அதற்கு மேற்பட்ட கழிவு நீக்கத் துளைகள் வழியாக வெளியே திறக்கின்றன."),
                     bpoints("Function of the protonephridial system", "புரோட்டோநெஃப்ரிடிய அமைப்பின் பணி",
-                        "Osmoregulation: removal of excess water, which is of great importance in the freshwater planarian." to "சவ்வூடு பரவல் ஒழுங்குபாடு: மிகுதி நீரை அகற்றுதல்; நன்னீர் பிளனேரியாவுக்கு மிக முக்கியம்.",
+                        "Osmoregulation: removal of excess water, which is of great importance in the freshwater planarian." to "சவ்வூடுபரவல் ஒழுங்குபடுத்தல்: மிகுதி நீரை அகற்றுதல்; நன்னீர் பிளனேரியாவுக்கு மிக முக்கியம்.",
                         "Excretion: removal of some soluble wastes, although most nitrogenous waste leaves by diffusion across the body surface." to "கழிவு நீக்கம்: சில கரையும் கழிவுகளை அகற்றுதல்; ஆயினும் பெரும்பாலான நைட்ரஜன் கழிவு உடல் பரப்பு வழியாக விரவி வெளியேறுகிறது.",
                     ),
                     bdef("Flame cell", "சுடர் செல்", "A hollow excretory cell with a tuft of cilia that begins a protonephridial tubule." to
                         "புரோட்டோநெஃப்ரிடியக் குழாயைத் தொடங்கும், கசையிழைக் கொத்துடைய வெற்று கழிவு நீக்க செல்."),
                     bdef("Protonephridium", "புரோட்டோநெஃப்ரிடியம்", "An excretory organ that ends blindly in a flame cell, found in flatworms and in some other groups." to
                         "சுடர் செல்லில் குருட்டு முடிவு கொண்ட கழிவு நீக்க உறுப்பு; தட்டைப்புழுக்களிலும் வேறு சில குழுக்களிலும் உள்ளது."),
-                    bdef("Osmoregulation", "சவ்வூடு பரவல் ஒழுங்குபாடு", "The control of the water and salt content of the body." to
+                    bdef("Osmoregulation", "சவ்வூடுபரவல் ஒழுங்குபடுத்தல்", "The control of the water and salt content of the body." to
                         "உடலின் நீர், உப்பு அளவைக் கட்டுப்படுத்துதல்."),
                 )),
             bsec("classification", "Classification into classes", "வகுப்புகளாக வகைப்படுத்துதல்",
@@ -83,7 +83,7 @@ object PlatyhelminthesBookChapter {
                             listOf("Covering" to "உறை", "Ciliated epidermis" to "கசையிழை எப்பிடெர்மிஸ்", "Tegument" to "டெகுமென்ட்", "Tegument" to "டெகுமென்ட்"),
                             listOf("Alimentary canal" to "உணவுக்குழல்", "Present, branched, no anus" to "உண்டு, கிளைத்தது, மலவாய் இல்லை", "Present, branched, no anus" to "உண்டு, கிளைத்தது, மலவாய் இல்லை", "Absent" to "இல்லை"),
                             listOf("Attachment" to "ஒட்டுதல்", "Adhesive glands in some" to "சிலவற்றில் ஒட்டும் சுரப்பிகள்", "Suckers" to "உறிஞ்சிகள்", "Scolex with suckers and often hooks" to "உறிஞ்சிகளும் பெரும்பாலும் கொக்கிகளும் கொண்ட ஸ்கொலெக்ஸ்"),
-                            listOf("Body" to "உடல்", "Unsegmented, leaf-shaped" to "கண்டமற்றது, இலை வடிவம்", "Unsegmented, leaf-shaped" to "கண்டமற்றது, இலை வடிவம்", "Chain of proglottids" to "புரோகிளாட்டிட் சங்கிலி"),
+                            listOf("Body" to "உடல்", "Unsegmented, leaf-shaped" to "கண்டமற்றது, இலை வடிவம்", "Unsegmented, leaf-shaped" to "கண்டமற்றது, இலை வடிவம்", "Chain of proglottids" to "புரோகுளோட்டிட் சங்கிலி"),
                             listOf("Examples" to "எடுத்துக்காட்டுகள்", "Planaria, Dugesia" to "பிளனேரியா, டுகீசியா", "Fasciola, Schistosoma" to "ஃபாசியோலா, ஸ்கிஸ்டோசோமா", "Taenia, Echinococcus" to "டீனியா, எக்கினோகாக்கஸ்"),
                         )),
                 ),
@@ -98,10 +98,10 @@ object PlatyhelminthesBookChapter {
                     ),
                     bsub("Class Cestoda", "வகுப்பு செஸ்டோடா",
                         bp("The tapeworms, which are endoparasites of the intestine of vertebrates. The body is long, flat and ribbon-like, with a small head, the scolex, that bears suckers and often hooks, a short neck, and a chain of segments called proglottids that carry the reproductive organs. There is no mouth and no gut. Taenia solium, the pork tapeworm, is the usual example." to
-                            "முதுகெலும்பிகளின் குடலின் அகவொட்டுண்ணிகளான நாடாப்புழுக்கள். உடல் நீண்ட, தட்டையான, நாடா வடிவம்; உறிஞ்சிகளும் பெரும்பாலும் கொக்கிகளும் கொண்ட சிறிய தலையான ஸ்கொலெக்ஸ், குறுகிய கழுத்து, இனப்பெருக்க உறுப்புகளைத் தாங்கும் புரோகிளாட்டிட்கள் என்ற துண்டுச் சங்கிலி ஆகியவை உண்டு. வாயும் குடலும் இல்லை. பன்றி நாடாப்புழுவான டீனியா சோலியம் வழக்கமான எடுத்துக்காட்டு."),
+                            "முதுகெலும்பிகளின் குடலின் அகவொட்டுண்ணிகளான நாடாப்புழுக்கள். உடல் நீண்ட, தட்டையான, நாடா வடிவம்; உறிஞ்சிகளும் பெரும்பாலும் கொக்கிகளும் கொண்ட சிறிய தலையான ஸ்கொலெக்ஸ், குறுகிய கழுத்து, இனப்பெருக்க உறுப்புகளைத் தாங்கும் புரோகுளோட்டிட்கள் என்ற துண்டுச் சங்கிலி ஆகியவை உண்டு. வாயும் குடலும் இல்லை. பன்றி நாடாப்புழுவான டீனியா சோலியம் வழக்கமான எடுத்துக்காட்டு."),
                         bdef("Scolex", "ஸ்கொலெக்ஸ்", "The head of a tapeworm, with suckers and often hooks, by which the worm attaches to the intestinal wall of the host." to
                             "நாடாப்புழுவின் தலை; உறிஞ்சிகளும் பெரும்பாலும் கொக்கிகளும் கொண்டு விருந்தோம்பியின் குடல் சுவரில் புழு ஒட்ட உதவுகிறது."),
-                        bdef("Proglottid", "புரோகிளாட்டிட்", "One of the segments of a tapeworm, each containing a set of reproductive organs." to
+                        bdef("Proglottid", "புரோகுளோட்டிட்", "One of the segments of a tapeworm, each containing a set of reproductive organs." to
                             "நாடாப்புழுவின் துண்டுகளில் ஒன்று; ஒவ்வொன்றிலும் ஒரு தொகுதி இனப்பெருக்க உறுப்புகள் உள்ளன."),
                     ),
                 )),
@@ -121,7 +121,7 @@ object PlatyhelminthesBookChapter {
             bsec("reproduction", "Reproduction and life cycles", "இனப்பெருக்கமும் வாழ்க்கைச் சுழற்சிகளும்",
                 blocks = listOf(
                     bp("Nearly all flatworms are hermaphrodite, and an individual has both testes and ovaries with a system of ducts and accessory glands. Self-fertilisation is usually avoided and the worms exchange sperm by copulation. In the free-living forms the egg develops directly into a small worm, but in parasites there is often a series of larval stages, each fitted to a particular host or to a stage in the transmission of the parasite." to
-                        "கிட்டத்தட்ட எல்லாத் தட்டைப்புழுக்களும் இருபாலுயிரிகள்; உயிரிக்கு விந்தகங்களும் சூற்பைகளும், நாளங்களும் துணைச் சுரப்பிகளும் உண்டு. தன்கருவுறுதல் பொதுவாகத் தவிர்க்கப்படுகிறது; புழுக்கள் புணர்ச்சி மூலம் விந்தணுக்களைப் பரிமாறிக்கொள்கின்றன. தனி வாழ்வு வகைகளில் முட்டை நேரடியாக சிறு புழுவாக வளர்கிறது; ஒட்டுண்ணிகளில் பெரும்பாலும் ஒவ்வொன்றும் ஒரு விருந்தோம்பிக்கு அல்லது ஒட்டுண்ணிப் பரவலின் ஒரு நிலைக்கு ஏற்ற தொடர் லார்வா நிலைகள் உள்ளன."),
+                        "கிட்டத்தட்ட எல்லாத் தட்டைப்புழுக்களும் இருபால் உயிரிகள்; உயிரிக்கு விந்தகங்களும் சூற்பைகளும், நாளங்களும் துணைச் சுரப்பிகளும் உண்டு. தன்கருவுறுதல் பொதுவாகத் தவிர்க்கப்படுகிறது; புழுக்கள் புணர்ச்சி மூலம் விந்தணுக்களைப் பரிமாறிக்கொள்கின்றன. தனி வாழ்வு வகைகளில் முட்டை நேரடியாக சிறு புழுவாக வளர்கிறது; ஒட்டுண்ணிகளில் பெரும்பாலும் ஒவ்வொன்றும் ஒரு விருந்தோம்பிக்கு அல்லது ஒட்டுண்ணிப் பரவலின் ஒரு நிலைக்கு ஏற்ற தொடர் லார்வா நிலைகள் உள்ளன."),
                     bp("The reproductive capacity of the parasites is very large. A single tapeworm releases a great number of eggs, and a liver fluke in the sheep lays eggs for years, while in the snail a single miracidium multiplies asexually to give a great many cercariae. This is not waste. It is the means by which a species compensates for the high chance that any one egg will fail to find the next host." to
                         "ஒட்டுண்ணிகளின் இனப்பெருக்கத் திறன் மிகப் பெரியது. ஒரு நாடாப்புழு பெருந்தொகை முட்டைகளை வெளியிடுகிறது; ஆட்டிலுள்ள கல்லீரல் ஃப்ளூக் பல ஆண்டுகள் முட்டையிடுகிறது; நத்தையில் ஒரு மிராசிடியம் பாலிலா முறையில் பெருகி பல செர்க்கேரியாக்களைத் தருகிறது. இது வீணல்ல. எந்த ஒரு முட்டையும் அடுத்த விருந்தோம்பியைக் கண்டடையாமல் தோல்வியுறும் அதிக வாய்ப்பை ஒரு இனம் ஈடுசெய்யும் வழி இது."),
                 )),
@@ -147,8 +147,8 @@ object PlatyhelminthesBookChapter {
             "Platyhelminthes are bilaterally symmetrical, triploblastic, flattened, unsegmented, acoelomate worms." to "பிளாட்டிஹெல்மிந்தீஸ் இருபக்கச் சமச்சீர், மூவடுக்கு, தட்டையான, கண்டமற்ற, உடற்குழியற்ற புழுக்கள்.",
             "The space between body wall and gut is filled with parenchyma." to "உடற்சுவருக்கும் குடலுக்கும் இடையிலான இடம் பாரங்கைமாவால் நிரம்பியுள்ளது.",
             "The gut is incomplete, with no anus, and is absent in cestodes." to "குடல் முழுமையற்றது, மலவாய் இல்லை; செஸ்டோடாக்களில் குடல் இல்லை.",
-            "Excretion and osmoregulation are by protonephridia with flame cells." to "கழிவு நீக்கமும் சவ்வூடு பரவல் ஒழுங்குபாடும் சுடர் செல்களுடன் கூடிய புரோட்டோநெஃப்ரிடியாவால்.",
-            "Most are hermaphrodite, and the parasitic forms have complex life cycles." to "பெரும்பாலானவை இருபாலுயிரிகள்; ஒட்டுண்ணி வடிவங்களுக்குச் சிக்கலான வாழ்க்கைச் சுழற்சிகள்.",
+            "Excretion and osmoregulation are by protonephridia with flame cells." to "கழிவு நீக்கமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தல்ம் சுடர் செல்களுடன் கூடிய புரோட்டோநெஃப்ரிடியாவால்.",
+            "Most are hermaphrodite, and the parasitic forms have complex life cycles." to "பெரும்பாலானவை இருபால் உயிரிகள்; ஒட்டுண்ணி வடிவங்களுக்குச் சிக்கலான வாழ்க்கைச் சுழற்சிகள்.",
             "The classes are Turbellaria (free-living), Trematoda (flukes) and Cestoda (tapeworms)." to "வகுப்புகள்: டர்பெல்லேரியா (தனி வாழ்வு), டிரிமட்டோடா (ஃப்ளூக்குகள்), செஸ்டோடா (நாடாப்புழுக்கள்).",
             "Cestodes lack a gut because they absorb already digested food across the tegument; this is specialisation and not degeneration." to "செஸ்டோடாக்கள் ஏற்கெனவே செரித்த உணவை டெகுமென்ட் வழியாக உறிஞ்சுவதால் குடல் இல்லை; இது சிறப்படைதல், சீரழிவு அல்ல.",
         ),

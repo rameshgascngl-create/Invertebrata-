@@ -86,7 +86,7 @@ object EchinoAffinitiesBookChapter {
                     btable("Echinoderms compared with cnidarians", "முட்தோலிகளும் குழியுடலிகளும் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Echinoderms" to "முட்தோலிகள்", "Cnidarians" to "குழியுடலிகள்"),
                         listOf(
-                            listOf("Germ layers" to "கருவடுக்குகள்", "Three (triploblastic)" to "மூன்று (மூவடுக்கு)", "Two with mesoglea (diploblastic)" to "மீசோகிளியாவுடன் இரண்டு (இருவடுக்கு)"),
+                            listOf("Germ layers" to "கருவடுக்குகள்", "Three (triploblastic)" to "மூன்று (மூவடுக்கு)", "Two with mesoglea (diploblastic)" to "மீசோகிளியாவுடன் இரண்டு (ஈரடுக்கு)"),
                             listOf("Body cavity" to "உடற்குழி", "A true coelom" to "உண்மையான உடற்குழி", "A gastrovascular cavity; no coelom" to "இரைப்பை-நாளக் குழி; உடற்குழி இல்லை"),
                             listOf("Larva" to "லார்வா", "Bilateral ciliated larva" to "இருபக்க கசையிழை லார்வா", "Typically a planula" to "பொதுவாக பிளானுலா"),
                             listOf("Skeleton" to "கூடு", "Calcareous mesodermal endoskeleton" to "சுண்ணாம்பு மெசோடெர்மல் அகச்சட்டகம்", "No comparable endoskeleton in the group as a whole" to "குழு முழுவதற்கும் ஒப்பிடத்தக்க அகச்சட்டகம் இல்லை"),
@@ -96,7 +96,7 @@ object EchinoAffinitiesBookChapter {
                         "பண்புகள் நம்பகத்தன்மையால் எடை போடப்படுவதை இந்த எடுத்துக்காட்டு காட்டுகிறது. முதிர்ந்த வடிவம் மூதாதைத்தன்மைக்கு மோசமான வழிகாட்டி; ஏனெனில் வாழ்க்கை முறையால் எளிதில் மாறுகிறது; வளர்ச்சி முறையும் மூலக்கூறுத் தரவும் மெதுவாக மாறுகின்றன. இரண்டும் ஆரையாக இருப்பதால் முட்தோலிகள் குழியுடலிகளுடன் தொடர்புடையவை என எழுதும் மாணவர் ஒத்த தோற்றத்திலிருந்து நெருங்கிய உறவுக்கு முடிவெடுக்கும் தவற்றைச் செய்கிறார்."),
                     bdef("Radiata", "ரேடியேட்டா", "An older grouping of radially symmetrical animals that is no longer accepted as natural." to
                         "இயற்கையானதாக இனி ஏற்கப்படாத, ஆரைச் சமச்சீர் விலங்குகளின் பழைய குழுவாக்கம்."),
-                    bdef("Diploblastic", "இருவடுக்கு", "Having two germ layers, ectoderm and endoderm, with a jelly-like layer between them." to
+                    bdef("Diploblastic", "ஈரடுக்கு", "Having two germ layers, ectoderm and endoderm, with a jelly-like layer between them." to
                         "இடையே ஜெல்லி போன்ற அடுக்குடன் எக்டோடெர்ம், எண்டோடெர்ம் எனும் இரு கருவடுக்குகள் உடைய."),
                     bdef("Triploblastic", "மூவடுக்கு", "Having three germ layers, ectoderm, mesoderm and endoderm." to
                         "எக்டோடெர்ம், மெசோடெர்ம், எண்டோடெர்ம் எனும் மூன்று கருவடுக்குகள் உடைய."),

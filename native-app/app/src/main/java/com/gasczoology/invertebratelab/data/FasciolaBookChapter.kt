@@ -8,7 +8,7 @@ object FasciolaBookChapter {
         objectives = listOf(
             "Describe the habitat, external features and body covering of Fasciola hepatica." to "ஃபாசியோலா ஹெப்பாட்டிகாவின் வாழிடம், புறத்தோற்றம், உடல் உறையை விவரிக்க.",
             "Describe the digestive, excretory, nervous and reproductive systems." to "செரிமான, கழிவு நீக்க, நரம்பு, இனப்பெருக்க மண்டலங்களை விவரிக்க.",
-            "Explain how the reproductive organs of a hermaphrodite fluke are arranged." to "இருபாலுயிரி ஃப்ளூக்கின் இனப்பெருக்க உறுப்புகள் எவ்வாறு அமைந்துள்ளன என்பதை விளக்க.",
+            "Explain how the reproductive organs of a hermaphrodite fluke are arranged." to "இருபால் உயிரி ஃப்ளூக்கின் இனப்பெருக்க உறுப்புகள் எவ்வாறு அமைந்துள்ளன என்பதை விளக்க.",
             "Write the life cycle in the correct sequence, naming each larval stage and host." to "வாழ்க்கைச் சுழற்சியை சரியான வரிசையில், ஒவ்வொரு லார்வா நிலையையும் விருந்தோம்பியையும் பெயரிட்டு எழுத.",
             "Trace the migration of the juvenile fluke in the mammalian host." to "பாலூட்டி விருந்தோம்பியில் இளம் ஃப்ளூக்கின் நகர்வைப் பின்தொடர.",
         ),
@@ -22,8 +22,8 @@ object FasciolaBookChapter {
             bsec("habitat", "Habit and habitat", "வாழ்முறையும் வாழிடமும்",
                 blocks = listOf(
                     bp("The adult fluke lives in the bile ducts of the liver of its definitive host, which is usually a sheep or a cow. It is found in countries throughout the world wherever sheep and cattle are kept in wet pastures, because the snails on which the life cycle depends live in such places. The fluke feeds on the bile, on blood and on the cells of the lining of the duct, and a heavy infection can block and damage the ducts and the liver." to
-                        "முதிர்ந்த ஃப்ளூக் தன் இறுதி விருந்தோம்பியின், பொதுவாக ஆடு அல்லது மாட்டின், கல்லீரலின் பித்த நாளங்களில் வாழ்கிறது. வாழ்க்கைச் சுழற்சி சார்ந்துள்ள நத்தைகள் வாழும் ஈரமான மேய்ச்சல் நிலங்களில் ஆடு, மாடுகள் வளர்க்கப்படும் உலகின் அனைத்து நாடுகளிலும் காணப்படுகிறது. ஃப்ளூக் பித்தம், இரத்தம், நாளத்தின் உள்ளடுக்கு செல்களை உண்கிறது; கடுமையான தொற்று நாளங்களையும் கல்லீரலையும் அடைத்துச் சேதப்படுத்தும்."),
-                    bdef("Definitive host", "இறுதி விருந்தோம்பி", "The host in which a parasite reaches sexual maturity and reproduces." to
+                        "முதிர்ந்த ஃப்ளூக் தன் முதன்மை விருந்தோம்பியின், பொதுவாக ஆடு அல்லது மாட்டின், கல்லீரலின் பித்த நாளங்களில் வாழ்கிறது. வாழ்க்கைச் சுழற்சி சார்ந்துள்ள நத்தைகள் வாழும் ஈரமான மேய்ச்சல் நிலங்களில் ஆடு, மாடுகள் வளர்க்கப்படும் உலகின் அனைத்து நாடுகளிலும் காணப்படுகிறது. ஃப்ளூக் பித்தம், இரத்தம், நாளத்தின் உள்ளடுக்கு செல்களை உண்கிறது; கடுமையான தொற்று நாளங்களையும் கல்லீரலையும் அடைத்துச் சேதப்படுத்தும்."),
+                    bdef("Definitive host", "முதன்மை விருந்தோம்பி", "The host in which a parasite reaches sexual maturity and reproduces." to
                         "ஒட்டுண்ணி பாலின முதிர்ச்சி அடைந்து இனப்பெருக்கம் செய்யும் விருந்தோம்பி."),
                     bdef("Intermediate host", "இடைநிலை விருந்தோம்பி", "The host in which a parasite passes its larval stages and multiplies asexually; for Fasciola this is a freshwater snail." to
                         "ஒட்டுண்ணி தன் லார்வா நிலைகளைக் கழித்து பாலிலா முறையில் பெருகும் விருந்தோம்பி; ஃபாசியோலாவுக்கு இது நன்னீர் நத்தை."),
@@ -83,11 +83,11 @@ object FasciolaBookChapter {
                     ),
                     bsub("Fertilisation and egg formation", "கருவுறுதலும் முட்டை உருவாக்கமும்",
                         bp("Fasciola is a hermaphrodite and may cross-fertilise with another worm, or may fertilise itself. Sperm are stored in the seminal receptacle, and an ovum is fertilised in the oviduct before it reaches the ootype. There it receives yolk cells from the vitelline glands and a shell formed from the secretion of the shell glands. The egg that results is large, yellowish-brown, oval and operculate, which means that it has a small lid at one end. The eggs pass along the uterus to the genital pore and into the bile duct, and from there into the gut of the host." to
-                            "ஃபாசியோலா இருபாலுயிரி; மற்றொரு புழுவுடன் குறுக்குக் கருவுறலாம் அல்லது தன்கருவுறலாம். விந்தணுக்கள் விந்து சேமிப்பகத்தில் சேமிக்கப்படுகின்றன; முட்டை ஊடைப்பை அடையும் முன் சூல்நாளத்தில் கருவுறுகிறது. அங்கு மஞ்சள் கரு சுரப்பிகளிலிருந்து மஞ்சள் கரு செல்களையும், ஓட்டுச் சுரப்பிகளின் சுரப்பிலிருந்து உருவான ஓட்டையும் பெறுகிறது. விளைந்த முட்டை பெரிய, மஞ்சள் கலந்த பழுப்பு, முட்டை வடிவம், மூடியுடையது; அதாவது ஒரு முனையில் சிறு மூடி உண்டு. முட்டைகள் கருப்பை வழியாக இனப்பெருக்கத் துளைக்கும் பித்த நாளத்துக்கும், அங்கிருந்து விருந்தோம்பியின் குடலுக்கும் செல்கின்றன."),
+                            "ஃபாசியோலா இருபால் உயிரி; மற்றொரு புழுவுடன் குறுக்குக் கருவுறலாம் அல்லது தன்கருவுறலாம். விந்தணுக்கள் விந்து சேமிப்பகத்தில் சேமிக்கப்படுகின்றன; முட்டை ஊடைப்பை அடையும் முன் சூல்நாளத்தில் கருவுறுகிறது. அங்கு மஞ்சள் கரு சுரப்பிகளிலிருந்து மஞ்சள் கரு செல்களையும், ஓட்டுச் சுரப்பிகளின் சுரப்பிலிருந்து உருவான ஓட்டையும் பெறுகிறது. விளைந்த முட்டை பெரிய, மஞ்சள் கலந்த பழுப்பு, முட்டை வடிவம், மூடியுடையது; அதாவது ஒரு முனையில் சிறு மூடி உண்டு. முட்டைகள் கருப்பை வழியாக இனப்பெருக்கத் துளைக்கும் பித்த நாளத்துக்கும், அங்கிருந்து விருந்தோம்பியின் குடலுக்கும் செல்கின்றன."),
                         bdef("Ootype", "ஊடைப்பு", "The chamber in a fluke in which the egg is formed by the union of ovum, yolk and shell material." to
                             "முட்டை, மஞ்சள் கரு, ஓட்டுப் பொருள் இணைந்து முட்டை உருவாகும் ஃப்ளூக்கின் அறை."),
                         bdef("Operculate egg", "மூடியுடைய முட்டை", "An egg with a small lid, the operculum, through which the larva leaves." to
-                            "லார்வா வெளியேறும் சிறு மூடியான ஆபர்குலம் கொண்ட முட்டை."),
+                            "லார்வா வெளியேறும் சிறு மூடியான ஆப்பர்குலம் கொண்ட முட்டை."),
                         bdef("Vitelline gland", "மஞ்சள் கரு சுரப்பி", "A gland that supplies yolk cells and shell material to the eggs of a flatworm." to
                             "தட்டைப்புழுவின் முட்டைகளுக்கு மஞ்சள் கரு செல்களையும் ஓட்டுப் பொருளையும் தரும் சுரப்பி."),
                     ),
@@ -95,7 +95,7 @@ object FasciolaBookChapter {
             bsec("life-cycle", "Life cycle", "வாழ்க்கைச் சுழற்சி",
                 blocks = listOf(
                     bp("The life cycle of Fasciola is indirect, with two hosts. The sheep or cow is the definitive host, in which the fluke becomes an adult and reproduces sexually, and a freshwater snail is the intermediate host, in which the larvae multiply asexually. The snail is a species of Lymnaea, or a closely related genus, according to the region." to
-                        "ஃபாசியோலாவின் வாழ்க்கைச் சுழற்சி இரு விருந்தோம்பிகளுடன் மறைமுகமானது. ஆடு அல்லது மாடு இறுதி விருந்தோம்பி; அதில் ஃப்ளூக் முதிர்ந்து பாலின இனப்பெருக்கம் செய்கிறது. நன்னீர் நத்தை இடைநிலை விருந்தோம்பி; அதில் லார்வாக்கள் பாலிலா முறையில் பெருகுகின்றன. பகுதிக்கு ஏற்ப நத்தை லிம்னேயா இனம் அல்லது நெருங்கிய பேரினம்."),
+                        "ஃபாசியோலாவின் வாழ்க்கைச் சுழற்சி இரு விருந்தோம்பிகளுடன் மறைமுகமானது. ஆடு அல்லது மாடு முதன்மை விருந்தோம்பி; அதில் ஃப்ளூக் முதிர்ந்து பாலின இனப்பெருக்கம் செய்கிறது. நன்னீர் நத்தை இடைநிலை விருந்தோம்பி; அதில் லார்வாக்கள் பாலிலா முறையில் பெருகுகின்றன. பகுதிக்கு ஏற்ப நத்தை லிம்னேயா இனம் அல்லது நெருங்கிய பேரினம்."),
                     bpoints("Sequence of the life cycle", "வாழ்க்கைச் சுழற்சியின் வரிசை",
                         "Unembryonated eggs, laid by the adults in the bile ducts, pass with the bile into the intestine and leave the host in the faeces." to "பித்த நாளங்களிலுள்ள முதிர்ந்த புழுக்கள் இடும் கருவளராத முட்டைகள் பித்தத்துடன் குடலுக்குச் சென்று மலத்துடன் வெளியேறுகின்றன.",
                         "In fresh water the egg embryonates over some weeks and releases a ciliated, free-swimming miracidium." to "நன்னீரில் முட்டை சில வாரங்களில் கரு வளர்ந்து, கசையிழை, சுதந்திரமாக நீந்தும் மிராசிடியத்தை வெளியிடுகிறது.",
@@ -125,7 +125,7 @@ object FasciolaBookChapter {
                     bdef("Cercaria", "செர்க்கேரியா", "The tailed larva that leaves the snail and swims before encysting." to
                         "நத்தையை விட்டு வெளியேறி உறைவதற்கு முன் நீந்தும் வால் உடைய லார்வா."),
                     bdef("Metacercaria", "மெட்டாசெர்க்கேரியா", "The encysted, infective stage of a fluke, which is swallowed by the definitive host." to
-                        "இறுதி விருந்தோம்பியால் விழுங்கப்படும், ஃப்ளூக்கின் உறையிடப்பட்ட, தொற்றும் நிலை."),
+                        "முதன்மை விருந்தோம்பியால் விழுங்கப்படும், ஃப்ளூக்கின் உறையிடப்பட்ட, தொற்றும் நிலை."),
                     bnote("Sporocyst and redia", "ஸ்போரோசிஸ்டும் ரெடியாவும்",
                         "The cycle of Fasciola includes both a sporocyst and a redia. It should not be confused with the cycle of some other flukes, and the metacercaria is the stage that infects the mammal, not the cercaria." to
                             "ஃபாசியோலாவின் சுழற்சியில் ஸ்போரோசிஸ்ட், ரெடியா இரண்டும் உள்ளன. சில பிற ஃப்ளூக்குகளின் சுழற்சியுடன் குழப்பக் கூடாது; பாலூட்டியைத் தொற்றும் நிலை மெட்டாசெர்க்கேரியா; செர்க்கேரியா அல்ல."),
@@ -148,7 +148,7 @@ object FasciolaBookChapter {
         summary = listOf(
             "Fasciola hepatica is a leaf-shaped trematode that lives in the bile ducts of sheep, cattle and sometimes people." to "ஃபாசியோலா ஹெப்பாட்டிகா ஆடு, மாடு, சில நேரங்களில் மனிதர்களின் பித்த நாளங்களில் வாழும் இலை வடிவ டிரிமட்டோடா.",
             "It has an oral sucker, a ventral sucker (acetabulum), a spiny tegument, a branched gut with no anus, and flame cells." to "வாய் உறிஞ்சி, வயிற்று உறிஞ்சி (அசிட்டாபுலம்), முள் டெகுமென்ட், மலவாய் இல்லாத கிளைத்த குடல், சுடர் செல்கள் உண்டு.",
-            "It is hermaphrodite, with branched testes and ovary, vitelline glands, an ootype with Mehlis' gland, and a coiled uterus." to "இருபாலுயிரி; கிளைத்த விந்தகங்களும் சூற்பையும், மஞ்சள் கரு சுரப்பிகள், மெலிஸ் சுரப்பியுடன் ஊடைப்பு, சுருண்ட கருப்பை.",
+            "It is hermaphrodite, with branched testes and ovary, vitelline glands, an ootype with Mehlis' gland, and a coiled uterus." to "இருபால் உயிரி; கிளைத்த விந்தகங்களும் சூற்பையும், மஞ்சள் கரு சுரப்பிகள், மெலிஸ் சுரப்பியுடன் ஊடைப்பு, சுருண்ட கருப்பை.",
             "The cycle is indirect: egg, miracidium, sporocyst, redia, cercaria and metacercaria, with a snail as intermediate host." to "சுழற்சி மறைமுகமானது: முட்டை, மிராசிடியம், ஸ்போரோசிஸ்ட், ரெடியா, செர்க்கேரியா, மெட்டாசெர்க்கேரியா; இடைநிலை விருந்தோம்பி நத்தை.",
             "The metacercaria on water plants or other surfaces is the stage infective to the mammal." to "நீர்த் தாவரங்கள் அல்லது பிற பரப்புகளிலுள்ள மெட்டாசெர்க்கேரியாவே பாலூட்டிக்குத் தொற்றும் நிலை.",
             "The juvenile passes from the duodenum through the intestinal wall and peritoneal cavity, and through the liver tissue to the bile ducts." to "இளம் புழு முன்சிறுகுடலிலிருந்து குடல் சுவர், பெரிட்டோனியக் குழி வழியாக, கல்லீரல் திசு வழியாக பித்த நாளங்களுக்குச் செல்கிறது.",

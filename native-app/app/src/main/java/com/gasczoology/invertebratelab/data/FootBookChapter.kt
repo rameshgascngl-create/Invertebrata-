@@ -35,7 +35,7 @@ object FootBookChapter {
                         "ஊர்தல், தோண்டுதல், ஒட்டுதல் அல்லது மாறிய வடிவில் பிற செயல்களுக்குப் பயன்படும் மெல்லுடலியின் வயிற்றுப்புற தசை உறுப்பு."),
                     bdef("Pedal ganglion", "பெடல் நரம்பு செல்திரள்", "A ganglion in the foot that controls its movement." to
                         "பாதத்தின் அசைவைக் கட்டுப்படுத்தும் அதிலுள்ள நரம்பு செல்திரள்."),
-                    bdef("Hydrostatic skeleton", "நீர்நிலைக் கூடு", "A fluid-filled body region that gives support and allows movement when muscles act against the fluid." to
+                    bdef("Hydrostatic skeleton", "நீர்ம சட்டகம்", "A fluid-filled body region that gives support and allows movement when muscles act against the fluid." to
                         "தசைகள் திரவத்துக்கு எதிராகச் செயல்படும்போது ஆதரவும் இயக்கமும் தரும் திரவம் நிரம்பிய உடற்பகுதி."),
                     bdef("Homologous", "ஒத்தமைவான", "Having the same evolutionary origin, whatever the function." to
                         "செயல் எதுவாயினும் ஒரே பரிணாமத் தோற்றம் கொண்ட."),
@@ -117,7 +117,7 @@ object FootBookChapter {
                 )),
         ),
         summary = listOf(
-            "The molluscan foot is a ventral muscular organ that works with a hydrostatic skeleton of blood spaces." to "மெல்லுடலிப் பாதம் இரத்த இடைவெளிகளின் நீர்நிலைக் கூடுடன் செயல்படும் வயிற்றுப்புற தசை உறுப்பு.",
+            "The molluscan foot is a ventral muscular organ that works with a hydrostatic skeleton of blood spaces." to "மெல்லுடலிப் பாதம் இரத்த இடைவெளிகளின் நீர்ம சட்டகம்டன் செயல்படும் வயிற்றுப்புற தசை உறுப்பு.",
             "In Pila the foot is a creeping sole with pedal waves, and it carries the operculum." to "பைலாவில் பாதம் பெடல் அலைகளுடன் ஊரும் அடிப்பகுதி; ஆப்பர்குலத்தையும் தாங்குகிறது.",
             "In Unio the foot is a wedge used for burrowing; in some bivalves a byssus gland fixes the animal." to "யூனியோவில் பாதம் தோண்டும் ஆப்பு; சில இருவோடுகளில் பிஸ்ஸஸ் சுரப்பி விலங்கை நிலைநிறுத்துகிறது.",
             "In cephalopods the foot forms arms around the head and the funnel for jet propulsion." to "தலைக்காலிகளில் பாதம் தலையைச் சுற்றிய கரங்களையும் பீச்சு உந்துதலுக்கான குழலையும் உருவாக்குகிறது.",

@@ -22,7 +22,7 @@ object IntroInvertebrataBookChapter {
             bsec("hierarchy", "The taxonomic hierarchy", "வகைப்பாட்டுப் படிநிலை",
                 blocks = listOf(
                     bp("Taxonomic hierarchy arranges organisms in nested ranks, each rank contained within the one above it. In the conventional sequence from the narrowest to the broadest the ranks are species, genus, family, order, class, phylum, kingdom and domain. The species is the basic named rank. Related species are grouped into a genus, related genera into a family, and progressively broader groups form the higher ranks. Each group at any rank is called a taxon, and the plural is taxa." to
-                        "வகைப்பாட்டுப் படிநிலை உயிரிகளை உள்ளடக்கிய தரங்களாக அடுக்குகிறது; ஒவ்வொரு தரமும் அதற்கு மேலுள்ளதற்குள் அடங்கும். குறுகியதிலிருந்து அகன்றது வரை வழக்கமான வரிசையில் தரங்கள்: இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேரிராச்சியம். இனம் அடிப்படைப் பெயரிடப்பட்ட தரம். தொடர்புடைய இனங்கள் பேரினமாகவும், தொடர்புடைய பேரினங்கள் குடும்பமாகவும் தொகுக்கப்படுகின்றன; படிப்படியாக அகன்ற குழுக்கள் உயர் தரங்களை உருவாக்குகின்றன. எந்தத் தரத்திலுமுள்ள ஒவ்வொரு குழுவும் வகைப்பாட்டுக் குழு (டாக்சான்); பன்மை டாக்சா."),
+                        "வகைப்பாட்டுப் படிநிலை உயிரிகளை உள்ளடக்கிய தரங்களாக அடுக்குகிறது; ஒவ்வொரு தரமும் அதற்கு மேலுள்ளதற்குள் அடங்கும். குறுகியதிலிருந்து அகன்றது வரை வழக்கமான வரிசையில் தரங்கள்: இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேரிராச்சியம். இனம் அடிப்படைப் பெயரிடப்பட்ட தரம். தொடர்புடைய இனங்கள் பேரினமாகவும், தொடர்புடைய பேரினங்கள் குடும்பமாகவும் தொகுக்கப்படுகின்றன; படிப்படியாக அகன்ற குழுக்கள் உயர் தரங்களை உருவாக்குகின்றன. எந்தத் தரத்திலுமுள்ள ஒவ்வொரு குழுவும் வகைப்பாட்டுக் குழு (வகைப்பாட்டுக் குழு); பன்மை டாக்சா."),
                     btable("The ranks of the hierarchy, with a worked example", "படிநிலைத் தரங்களும் எடுத்துக்காட்டும்",
                         listOf("Rank" to "தரம்", "Example: the freshwater snail" to "எடுத்துக்காட்டு: நன்னீர் நத்தை"),
                         listOf(
@@ -36,7 +36,7 @@ object IntroInvertebrataBookChapter {
                         "வரிசை வகைப்பாட்டுக்கான கட்டமைப்பு; தரங்களின் வரிசை டாக்சாக்களுக்கிடையிலான உறவுக்கான சான்றல்ல. பேரினமும் குடும்பமும் தனி விலங்கு போலக் கண்டறியக்கூடிய பொருட்களாக இல்லை. உயிரியலாளர்கள் அங்கீகரிக்கும் குழுக்களுக்கு இடம் தரும் மரபுகள் தரங்கள்; தொகுப்பே ஒரு கருதுகோள். ஒரு குழு மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் பொருளில் இயற்கையானதா என்பது சான்றிலிருந்து ஊகிக்கப்பட வேண்டும்; அட்டவணையிலுள்ள தரம் அதை முடிவு செய்யாது."),
                     bdef("Taxonomy", "வகைப்பாட்டியல்", "The science of describing, naming and classifying organisms." to
                         "உயிரிகளை விவரித்து, பெயரிட்டு, வகைப்படுத்தும் அறிவியல்."),
-                    bdef("Taxon", "டாக்சான்", "A group of organisms at any rank that is recognised in classification." to
+                    bdef("Taxon", "வகைப்பாட்டுக் குழு", "A group of organisms at any rank that is recognised in classification." to
                         "வகைப்பாட்டில் அங்கீகரிக்கப்படும் எந்தத் தரத்திலுமுள்ள உயிரிகளின் குழு."),
                     bdef("Species", "இனம்", "The basic rank of classification, to which a scientific name is given." to
                         "அறிவியல் பெயர் தரப்படும் வகைப்பாட்டின் அடிப்படைத் தரம்."),
@@ -92,7 +92,7 @@ object IntroInvertebrataBookChapter {
                         "Invertebrata is an informal grouping of many phyla. Always classify the animal under its own phylum." to
                             "முதுகெலும்பிலிகள் பல தொகுதிகளின் முறைசாரா தொகுப்பு. விலங்கை எப்போதும் அதன் சொந்தத் தொகுதியின் கீழ் வகைப்படுத்துக."),
                     bdef("Invertebrata", "முதுகெலும்பிலிகள்", "An informal collective term for animals without a vertebral column; not a formal taxon." to
-                        "முதுகெலும்புத் தொடர் இல்லாத விலங்குகளுக்கான முறைசாரா கூட்டுச் சொல்; முறையான டாக்சான் அல்ல."),
+                        "முதுகெலும்புத் தொடர் இல்லாத விலங்குகளுக்கான முறைசாரா கூட்டுச் சொல்; முறையான வகைப்பாட்டுக் குழு அல்ல."),
                     bdef("Negative character", "எதிர்மறைப் பண்பு", "A character defined by the absence of a feature, which does not define a natural group." to
                         "ஒரு பண்பின் இல்லாமையால் வரையறுக்கப்படும் பண்பு; இயற்கைக் குழுவை வரையறுக்காது."),
                     bdef("Natural group", "இயற்கைக் குழு", "A group that includes an ancestor and all of its descendants." to
