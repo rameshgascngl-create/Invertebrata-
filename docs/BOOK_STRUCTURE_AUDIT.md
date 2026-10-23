@@ -81,3 +81,17 @@ Audit date: 2026-10-22 (branch `feat/plate-pipeline`). Counts are regex-derived 
 - **Facts flagged for reviewer confirmation:** corals schedule, *Hydractinia* zooid count, *Physalia* terminology; medical content (parasites, malaria) is biology and control principles only, with no treatment guidance.
 - **Image provenance still open:** authors and licences for the Sycon and Obelia images, Haeckel plate number, several low-quality plates, and supplied images not yet placed.
 - **Scientific review** against the cited textbooks has not been done by a subject expert.
+
+### 6.1 Tamil terminology alignment (2026-10-23)
+
+- Terms were checked against the Tamil Nadu State Board Class 11 Zoology, Class 11 practical manual and Class 12 Zoology / Bio-Zoology (Tamil medium) text layers. **599 defined terms** were catalogued in `All_units_Tamil_terms_review.csv`.
+- **30 terms are confirmed** from those books and glossaries and were applied. **About 504 remain draft transliterations**: the school books cover few invertebrate terms and no Tamil zoology term dictionary was available.
+- Terms with competing forms and no source, left unchanged: cuticle, biramous, septum, protostome, peristalsis, sessile, reservoir, acoelomate, regeneration, haemocoel, hypnozoite, cilium, nacre.
+- The author's `Approved?` / `Preferred Tamil` columns in the review sheet are the next input; corrections apply by word-boundary replacement.
+
+### 6.2 Chapter depth (2026-10-23)
+
+- The contract floor is 2,000 English words; printed-book length is nominally 3,000 to 5,000.
+- Chapters deepened beyond the floor (new sections include an exam-answering section): Obelia, Aschelminthes, coral economics, polymorphism, crustacean larvae, metamerism, corals, platyhelminth adaptations, Arthropoda, Platyhelminthes, Mollusca, annelid modes of life, protozoan parasites, echinoderm larvae, Cnidaria, Nereis, Porifera, Annelida (each now roughly 2,600 to 3,200 words).
+- **Still near the floor (about 2,050 to 2,200 words):** Intro, Echinoderm affinities, Foot in Mollusca, Water vascular system, Fasciola, Asterias, nematode adaptations, fossils, and several others.
+- New content was written from general textbook knowledge and hedged where uncertain (for example the Indian reef figures, the drug examples from sponges, the Wildlife (Protection) Act schedule for corals). None of it is subject-expert reviewed.
