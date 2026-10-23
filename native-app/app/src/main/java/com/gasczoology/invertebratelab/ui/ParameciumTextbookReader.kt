@@ -170,6 +170,7 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
         else -> null
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
+    var expanded by rememberSaveable(figure) { mutableStateOf(false) }
     Card {
         Column(Modifier.fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(view(language, "Concept-specific PNG anatomy plate — scientific review pending",
@@ -180,6 +181,27 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
                     contentDescription = view(language, "Paramecium concept PNG: $figure", "பாரமீசியம் PNG படம்: $figure"),
                     contentScale = androidx.compose.ui.layout.ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth().height(240.dp).testTag("r14-pencil-" + figure))
+                OutlinedButton(
+                    onClick = { expanded = true },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("r14-enlarge-concept-png-" + figure),
+                ) {
+                    Text(view(language, "Enlarge original PNG", "அசல் PNG படத்தைப் பெரிதாக்கு"))
+                }
+                if (expanded) {
+                    RequiredTypeStudyFullImage(
+                        image = bitmap,
+                        title = view(language, "Paramecium source PNG", "பாரமீசியம் மூல PNG"),
+                        language = language,
+                        onDismiss = { expanded = false },
+                    )
+                }
+                Text(view(language,
+                    "Source-derived image: enlargement does not restore detail missing from the original photographed pencil drawing. This is not an independently verified anatomical master.",
+                    "மூலப் பென்சில் ஓவியத்தின் புகைப்படத்திலிருந்து பெறப்பட்ட படம். பெரிதாக்குவதால் அசல் படத்தில் இல்லாத விவரங்கள் கிடைக்காது. இது தனியாகச் சரிபார்க்கப்பட்ட உடற்கூறுப் படம் அல்ல."),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.testTag("r14-concept-source-warning-" + figure))
+
             } else {
                 Text(view(language,
                     "Required concept-specific PNG not yet scientifically verified; the old drawing has been removed.",
