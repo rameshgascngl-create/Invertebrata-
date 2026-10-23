@@ -36,7 +36,7 @@ class NativeU57ParameciumProcessPngTest {
         rule.onNodeWithTag("r1-tab-simulate").performScrollTo().performClick()
     }
     private fun go(process:String) {
-        rule.onNodeWithTag("r1-process-"+process).performScrollTo().performClick()
+        rule.onNodeWithTag("r1-process-"+process, useUnmergedTree = true).performScrollTo().performClick()
         rule.waitForIdle()
         rule.onNodeWithTag("r1-simulator-heading").performScrollTo()
     }
