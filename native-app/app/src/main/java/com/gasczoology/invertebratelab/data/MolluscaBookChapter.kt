@@ -131,7 +131,7 @@ object MolluscaBookChapter {
                         "Ecosystem services: filter-feeding bivalves clear the water, and molluscs are food for fishes, birds and other animals." to "சூழல்மண்டல சேவைகள்: வடிகட்டி உண்ணும் இருவோடுடையவை நீரைத் தெளிவாக்குகின்றன; மெல்லுடலிகள் மீன், பறவை, பிற விலங்குகளுக்கு உணவு.",
                     ),
                     bpoints("Harmful molluscs", "தீங்கு விளைவிக்கும் மெல்லுடலிகள்",
-                        "Intermediate hosts: freshwater snails carry the larvae of liver flukes and blood flukes." to "இடைநிலை ஓம்புயிர்கள்: நன்னீர் நத்தைகள் கல்லீரல் புழு, இரத்தப் புழுக்களின் லார்வாக்களைக் கொண்டுள்ளன.",
+                        "Intermediate hosts: freshwater snails carry the larvae of liver flukes and blood flukes." to "இடைநிலை விருந்தோம்பிகள்: நன்னீர் நத்தைகள் கல்லீரல் புழு, இரத்தப் புழுக்களின் லார்வாக்களைக் கொண்டுள்ளன.",
                         "Pests of crops and gardens: land snails and slugs, and the apple snail Pila in rice fields." to "பயிர், தோட்டப் பூச்சிகள்: நில நத்தைகள், ஓடற்ற நத்தைகள் (ஸ்லக்); நெல் வயல்களில் ஆப்பிள் நத்தை பைலா.",
                         "Borers: the shipworm Teredo, a bivalve, bores into wooden piers, boats and piles." to "துளைப்பிகள்: இருவோடுடைய கப்பல்புழு டெரிடோ மரத் துறைமுகங்கள், படகுகள், தூண்களைத் துளைக்கிறது.",
                         "Fouling: mussels and other bivalves settle on the hulls of ships and in pipes and intake channels." to "படிவு: மட்டிகள், பிற இருவோடுடையவை கப்பல் அடிப்பகுதி, குழாய்கள், உட்கொள்ளும் வாய்க்கால்களில் படிகின்றன.",
