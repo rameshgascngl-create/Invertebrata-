@@ -37,6 +37,7 @@ internal fun UnitIIITeachingChapter(
     onToggle: (A5Question) -> Unit,
 ) {
     val lesson = requireNotNull(UnitIIILessons.forChapter(chapter.id))
+    val book = BookChapters.forLesson(chapter.id)
     val context = LocalContext.current
     val narrator = remember(context, chapter.id) { OfflineNarrator(context) }
     val voiceStatus by narrator.phase.collectAsState()
@@ -87,14 +88,15 @@ internal fun UnitIIITeachingChapter(
         // UnitIIIPlateGallery below is the only student-facing anatomical
         // gallery. The duplicate RequiredTypeStudyPlates and historical source
         // image section were removed. Archived source files are untouched.
-        item(key = "u3-one-image-per-plate-disclosure") {
+        if (book == null) item(key = "u3-one-image-per-plate-disclosure") {
             Text(u3t(language,
                 "One image is displayed for each of the three distinct source-backed anatomical plates. Full-screen zoom is available from its plate; scientific and Tamil reviews remain pending.",
                 "மூன்று வேறுபட்ட ஆதார உடற்கூறுப் படங்களும் தலா ஒருமுறை மட்டுமே காட்டப்படுகின்றன. ஒவ்வொரு படத்தையும் முழுத்திரையில் பெரிதாக்கலாம்; அறிவியல் மற்றும் தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."),
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("u3-no-duplicate-images"))
         }
-        if (stages.isNotEmpty()) item(key = "u3-required-plate-gallery") {
+        // A book chapter shows each figure once, inline, so the gallery is skipped.
+        if (stages.isNotEmpty() && book == null) item(key = "u3-required-plate-gallery") {
             UnitIIIPlateGallery(chapter.id, language, narrator)
         }
         if (stages.isNotEmpty()) item(key = "u3-interactive-life-cycle") {
@@ -161,6 +163,7 @@ internal fun UnitIIITeachingChapter(
                 }
             }
         }
+        if (book != null) { bookChapterItems(book, language) { narrator.speak(it, language) } } else
         items(lesson.sections, key = { it.id }) { section ->
             Card(modifier = Modifier.fillMaxWidth().testTag("u3-section-"+section.id)) {
                 Column(Modifier.padding(16.dp),
