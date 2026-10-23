@@ -54,7 +54,7 @@ object NematodeParasitesBookChapter {
                         "நாளின் இருபத்துநான்கு மணி நேரத்தில் புற இரத்தத்தில் மைக்ரோஃபைலேரியாக்களின் எண்ணிக்கையில் ஏற்படும் ஒழுங்கான மாற்றம்."),
                     bnote("Not every vector is Culex", "எல்லாக் கடத்திகளும் கியூலக்ஸ் அல்ல",
                         "In answers, say that the vector is a mosquito, often Culex in India. Other mosquitoes, such as Anopheles and Aedes, carry the parasite in other parts of the world." to
-                            "விடைகளில் கடத்தி கொசு, இந்தியாவில் பெரும்பாலும் கியூலக்ஸ் எனக் கூறுக. உலகின் பிற பகுதிகளில் அனோஃபிலிஸ், ஏடிஸ் போன்ற பிற கொசுக்கள் ஒட்டுண்ணியைக் கொண்டு செல்கின்றன."),
+                            "விடைகளில் கடத்தி கொசு, இந்தியாவில் பெரும்பாலும் கியூலக்ஸ் எனக் கூறுக. உலகின் பிற பகுதிகளில் அனாபிலஸ், ஏடிஸ் போன்ற பிற கொசுக்கள் ஒட்டுண்ணியைக் கொண்டு செல்கின்றன."),
                 )),
             bsec("enterobius", "Enterobius vermicularis", "என்டெரோபியஸ் வெர்மிகுலாரிஸ்",
                 blocks = listOf(
