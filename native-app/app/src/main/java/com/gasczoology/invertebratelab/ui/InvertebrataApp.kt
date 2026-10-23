@@ -44,6 +44,7 @@ import androidx.navigation.navArgument
 import com.gasczoology.invertebratelab.AcademicLoadState
 import com.gasczoology.invertebratelab.MainViewModel
 import com.gasczoology.invertebratelab.PersistedLearningLoadState
+import com.gasczoology.invertebratelab.data.BookChapters
 import com.gasczoology.invertebratelab.data.A5Question
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.AppLanguage
@@ -508,6 +509,10 @@ private fun ChapterScreen(
     }
     if (chapter.unitNumber == 3) {
         UnitIIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle)
+        return
+    }
+    BookChapters.forLesson(chapter.id)?.let { book ->
+        UnitBookTeachingChapter(chapter, book, language, onBack, revealedQuestionId, onToggle)
         return
     }
     val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
