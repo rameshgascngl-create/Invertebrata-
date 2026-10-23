@@ -1,0 +1,177 @@
+package com.gasczoology.invertebratelab.data
+
+/** Book-style chapter: Protozoa, general characters and traditional groups. DRAFT_UNVERIFIED; Tamil needs the author's review. */
+object ProtozoaBookChapter {
+    val chapter = bchapter(
+        lessonId = "u1-protozoa",
+        title = "Protozoa: Characters and Traditional Groups" to "புரோட்டோசோவா: பண்புகளும் மரபுவழிக் குழுக்களும்",
+        objectives = listOf(
+            "State what is meant by Protozoa, and why the name is a teaching group." to "புரோட்டோசோவா என்பதன் பொருளையும் அது ஏன் கற்பித்தல் குழு என்பதையும் கூற.",
+            "Give the general characters of Protozoa with examples." to "எடுத்துக்காட்டுகளுடன் புரோட்டோசோவாவின் பொதுப் பண்புகளைக் கூற.",
+            "Describe locomotion, nutrition, osmoregulation and reproduction." to "இயக்கம், ஊட்டம், சவ்வூடுபரவல் ஒழுங்குபடுத்தல், இனப்பெருக்கத்தை விவரிக்க.",
+            "Name the traditional groups and distinguish Ciliata from Sporozoa." to "மரபுவழிக் குழுக்களைப் பெயரிட்டு சிலியேட்டாவையும் ஸ்போரோசோவாவையும் வேறுபடுத்த.",
+            "Recognise the limits of the traditional classification." to "மரபுவழி வகைப்பாட்டின் எல்லைகளை அறிய.",
+        ),
+        introduction = listOf(
+            "The protozoa are the animal-like unicellular organisms, the single cells that carry out within themselves all the functions that a many-celled animal carries out with tissues and organs. They include the amoebae that creep over mud, the flagellates that swim in ponds, the ciliates that glide through the water, and the parasites that cause some of the most important diseases of man. A drop of pond water seen under the microscope is the usual first view of them." to
+                "புரோட்டோசோவாக்கள் விலங்கு போன்ற ஒருசெல் உயிரிகள்; பலசெல் விலங்கு திசுக்கள், உறுப்புகளுடன் செய்யும் எல்லாச் செயல்களையும் தமக்குள் செய்யும் ஒற்றை உயிரணுக்கள். சேற்றில் ஊரும் அமீபாக்கள், குளங்களில் நீந்தும் கசையிழையுயிரிகள், நீரில் வழுக்கும் சிலியேட்டுகள், மனிதனின் மிக முக்கிய நோய்கள் சிலவற்றை உண்டாக்கும் ஒட்டுண்ணிகள் ஆகியவை அடங்கும். நுண்ணோக்கியில் குளத்து நீர்த்துளி காண்பது அவற்றின் வழக்கமான முதல் பார்வை.",
+            "The chapter treats the Protozoa as a traditional teaching group, which is how the course and the examination present them. It is also honest about the limits of that grouping, since modern work does not regard the protozoa as a single natural group. The student has to learn both: the characters that the syllabus requires, and the qualification that the name does not stand for one lineage." to
+                "அத்தியாயம் புரோட்டோசோவாவை மரபுவழிக் கற்பித்தல் குழுவாகக் கையாள்கிறது; பாடமும் தேர்வும் அவ்வாறே முன்வைக்கின்றன. அக்குழுவின் எல்லைகள் பற்றியும் நேர்மையாக உள்ளது; ஏனெனில் நவீன ஆய்வு புரோட்டோசோவாக்களை ஒற்றை இயற்கைக் குழுவாகக் கருதுவதில்லை. மாணவர் இரண்டையும் கற்க வேண்டும்: பாடத்திட்டம் கோரும் பண்புகளையும், பெயர் ஒற்றைப் பரம்பரையைக் குறிக்கவில்லை என்ற வரையறையையும்.",
+        ),
+        sections = listOf(
+            bsec("meaning", "What the name Protozoa means", "புரோட்டோசோவா என்ற பெயரின் பொருள்",
+                blocks = listOf(
+                    bp("Protozoa is a traditional teaching group of mostly unicellular eukaryotic protists. The word means first animals, and it reflects the older view that these organisms were the simplest animals. We now know that they are not animals in the strict sense, since the animal kingdom consists of many-celled forms. Modern phylogeny distributes the organisms that were called protozoa among several eukaryotic lineages, and does not recognise them as one natural clade. The name survives in the syllabus, in medical parasitology and in common use as a convenient label." to
+                        "புரோட்டோசோவா என்பது பெரும்பாலும் ஒருசெல் யூகேரியோட் புரோட்டிஸ்டுகளின் மரபுவழிக் கற்பித்தல் குழு. சொல் முதல் விலங்குகள் எனப் பொருள்படுகிறது; இவ்வுயிரிகள் எளிமையான விலங்குகள் என்ற பழைய கருத்தைப் பிரதிபலிக்கிறது. விலங்கு இராச்சியம் பலசெல் வடிவங்களால் ஆனது என்பதால் அவை கண்டிப்பான பொருளில் விலங்குகள் அல்ல என இப்போது அறிவோம். நவீன இனவரலாறு புரோட்டோசோவா எனப்பட்ட உயிரிகளை பல யூகேரியோட் பரம்பரைகளிடையே பகிர்கிறது; ஒரே இயற்கைக் கிளையாக அங்கீகரிக்கவில்லை. பெயர் பாடத்திட்டத்திலும், மருத்துவ ஒட்டுண்ணியியலிலும், வசதியான குறிச்சொல்லாக பொதுப் பயன்பாட்டிலும் நீடிக்கிறது."),
+                    bp("Writing about the group in an answer calls for a measured wording. It is correct to describe the protozoa as unicellular eukaryotes, to give their characters, and to name the traditional classes. It is wrong to describe them as a phylum of animals whose members are all closely related. The safest phrase is that they are a traditional group, and that the classes that the syllabus names are historical terms that remain useful." to
+                        "விடையில் குழுவைப் பற்றி எழுதுவதற்கு அளவான சொல்லாடல் தேவை. புரோட்டோசோவாக்களை ஒருசெல் யூகேரியோட்டுகளாக விவரிப்பதும், பண்புகளைத் தருவதும், மரபுவழி வகுப்புகளைப் பெயரிடுவதும் சரியானது. உறுப்பினர்கள் அனைத்தும் நெருங்கிய உறவினர்களாக உள்ள விலங்குகளின் தொகுதியாக விவரிப்பது தவறு. பாதுகாப்பான சொற்றொடர்: அவை மரபுவழிக் குழு; பாடத்திட்டம் பெயரிடும் வகுப்புகள் பயனுள்ளதாக நீடிக்கும் வரலாற்றுச் சொற்கள்."),
+                    bdef("Protozoa", "புரோட்டோசோவா", "A traditional teaching group of mostly unicellular eukaryotic protists; not a single natural clade." to
+                        "பெரும்பாலும் ஒருசெல் யூகேரியோட் புரோட்டிஸ்டுகளின் மரபுவழிக் கற்பித்தல் குழு; ஒற்றை இயற்கைக் கிளை அல்ல."),
+                    bdef("Protist", "புரோட்டிஸ்ட்", "A eukaryotic organism that is not an animal, a plant or a fungus, and is mostly unicellular." to
+                        "விலங்கு, தாவரம், பூஞ்சை அல்லாத, பெரும்பாலும் ஒருசெல்லான யூகேரியோட் உயிரி."),
+                    bdef("Eukaryote", "யூகேரியோட்", "An organism whose cells have a nucleus and membrane-bound organelles." to
+                        "உயிரணுக்களில் உட்கருவும் சவ்வால் சூழப்பட்ட நுண்ணுறுப்புகளும் உள்ள உயிரி."),
+                    bdef("Unicellular", "ஒருசெல்", "Consisting of a single cell." to
+                        "ஒரே உயிரணுவால் ஆன."),
+                )),
+            bsec("characters", "General characters", "பொதுப் பண்புகள்",
+                blocks = listOf(
+                    bpoints("The general characters of Protozoa", "புரோட்டோசோவாவின் பொதுப் பண்புகள்",
+                        "Each organism is a single eukaryotic cell with a nucleus and membrane-bound organelles." to "ஒவ்வோர் உயிரியும் உட்கருவும் சவ்வுடைய நுண்ணுறுப்புகளுமுடைய ஒற்றை யூகேரியோட் உயிரணு.",
+                        "The cell surface may be a plasma membrane only, or a specialised pellicle." to "உயிரணு மேற்பரப்பு பிளாஸ்மா சவ்வு மட்டும் அல்லது சிறப்பு பெல்லிக்கிளாக இருக்கலாம்.",
+                        "Locomotion, when present, is by pseudopodia, flagella or cilia; some parasitic forms lack conspicuous locomotory organelles in important stages." to "இயக்கம் இருந்தால் போலிக்கால்கள், கசைகள் அல்லது சிலியாக்களால்; சில ஒட்டுண்ணி வடிவங்களில் முக்கிய நிலைகளில் தெளிவான இயக்க நுண்ணுறுப்புகள் இல்லை.",
+                        "Nutrition may be holozoic, saprozoic, photosynthetic or mixotrophic according to the organism." to "ஊட்டம் உயிரியைப் பொறுத்து ஹோலோசோயிக், சாப்ரோசோயிக், ஒளிச்சேர்க்கை அல்லது கலப்பூட்டமாக இருக்கலாம்.",
+                        "Freshwater forms often have contractile vacuoles for osmoregulation." to "நன்னீர் வடிவங்களுக்கு சவ்வூடுபரவல் ஒழுங்குபடுத்தலுக்கு சுருங்கும் நுண்குமிழ்கள் பெரும்பாலும் உண்டு.",
+                        "Reproduction is usually asexual by fission; sexual processes occur in several groups." to "இனப்பெருக்கம் வழக்கமாக பிளவால் பாலிலா முறை; பல குழுக்களில் பாலின முறைகளும் நிகழ்கின்றன.",
+                    ),
+                    bp("Each organism has to perform all the functions of life within the limits of one cell, and this is done by specialised parts of the cell, the organelles. There is an organelle for movement, for the capture and digestion of food, for the regulation of water, for sensing, and for protection. The cell is therefore a complete organism, and its complexity in a ciliate such as Paramecium is remarkable. The correct view is that a protozoan is a single cell that is not simple, and it is not a cell that is a part of a larger animal." to
+                        "ஒவ்வோர் உயிரியும் வாழ்வின் எல்லாச் செயல்களையும் ஒரே உயிரணுவின் வரம்புக்குள் செய்ய வேண்டும்; இது உயிரணுவின் சிறப்புப் பகுதிகளான நுண்ணுறுப்புகளால் செய்யப்படுகிறது. இயக்கம், உணவைப் பிடித்து செரித்தல், நீரை ஒழுங்குபடுத்தல், உணர்தல், பாதுகாப்புக்கு ஒவ்வொன்றுக்கும் நுண்ணுறுப்பு உண்டு. எனவே உயிரணு முழுமையான உயிரி; பாரமீசியம் போன்ற சிலியேட்டில் அதன் சிக்கல் குறிப்பிடத்தக்கது. சரியான பார்வை: புரோட்டோசோவா எளிமையற்ற ஒற்றை உயிரணு; பெரிய விலங்கின் ஒரு பகுதியான உயிரணு அல்ல."),
+                    bp("Typical examples are Amoeba, which moves by pseudopodia, Euglena, which is a flagellate that feeds by photosynthesis and by other means, Paramecium, which is a ciliate, and Plasmodium, which is a parasite of man and is carried by mosquitoes. The students are expected to know one example of each of the main kinds, and to be able to say how it moves, how it feeds and where it lives." to
+                        "வழக்கமான எடுத்துக்காட்டுகள்: போலிக்கால்களால் நகரும் அமீபா; ஒளிச்சேர்க்கையாலும் பிற வழிகளிலும் உண்ணும் கசையிழையுயிரி யூக்ளினா; சிலியேட்டான பாரமீசியம்; கொசுக்களால் கொண்டுசெல்லப்படும் மனித ஒட்டுண்ணி பிளாஸ்மோடியம். முக்கிய வகைகளின் ஒவ்வொன்றிலும் ஓர் எடுத்துக்காட்டை அறியவும், அது எவ்வாறு நகர்கிறது, எவ்வாறு உண்கிறது, எங்கு வாழ்கிறது என்பதைக் கூறவும் மாணவர் எதிர்பார்க்கப்படுகிறார்."),
+                    bdef("Organelle", "நுண்ணுறுப்பு", "A specialised structure within a cell that performs a particular function." to
+                        "குறிப்பிட்ட செயலைச் செய்யும் உயிரணுவுக்குள்ளான சிறப்பு அமைப்பு."),
+                    bdef("Pellicle", "பெல்லிக்கிள்", "A firm but flexible layer beneath or including the plasma membrane that gives shape to a protozoan cell." to
+                        "புரோட்டோசோவா உயிரணுவுக்கு வடிவம் தரும், பிளாஸ்மா சவ்வுக்கு அடியில் அல்லது அதை உள்ளடக்கிய உறுதியான ஆனால் நெகிழும் அடுக்கு."),
+                    bdef("Pseudopodium", "போலிக்கால்", "A temporary extension of the cell used for movement and for capture of food." to
+                        "இயக்கத்துக்கும் உணவைப் பிடிக்கவும் பயன்படும் உயிரணுவின் தற்காலிக நீட்சி."),
+                    bdef("Flagellum", "கசை", "A long whip-like projection of the cell used for swimming." to
+                        "நீந்தப் பயன்படும் உயிரணுவின் நீண்ட சாட்டை போன்ற நீட்சி."),
+                    bdef("Cilium", "சிலியம்", "A short hair-like projection of the cell, found in large numbers, used for movement or for feeding." to
+                        "இயக்கம் அல்லது உணவெடுப்புக்குப் பயன்படும் அதிக எண்ணிக்கையில் உள்ள உயிரணுவின் குறுகிய முடி போன்ற நீட்சி."),
+                )),
+            bsec("nutrition-osmo", "Nutrition and osmoregulation", "ஊட்டமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தலும்",
+                blocks = listOf(
+                    bp("Protozoa differ in the manner in which they obtain food. Many are holozoic, or phagotrophic, which means that they ingest solid food, such as bacteria, algae or other protozoa, into food vacuoles in which it is digested. Others are saprozoic, or osmotrophic, and absorb dissolved nutrients across the surface of the cell. Some, such as Euglena, are photosynthetic, and have chloroplasts, and a number are mixotrophic, with more than one way of feeding. The parasites obtain nutrients from the host in ways that are described in a later chapter." to
+                        "புரோட்டோசோவாக்கள் உணவைப் பெறும் முறையில் வேறுபடுகின்றன. பல ஹோலோசோயிக் அல்லது பேகோட்ரோஃபிக்; அதாவது பாக்டீரியா, பாசி, பிற புரோட்டோசோவா போன்ற திட உணவை உணவுக் குமிழ்களுக்குள் உட்கொண்டு அங்கு செரிக்கின்றன. மற்றவை சாப்ரோசோயிக் அல்லது ஆஸ்மோட்ரோஃபிக்; கரைந்த ஊட்டங்களை உயிரணு மேற்பரப்பு வழியே உறிஞ்சுகின்றன. யூக்ளினா போன்ற சில ஒளிச்சேர்க்கை செய்து பசுங்கணிகங்கள் கொண்டவை; பல கலப்பூட்டமுடையவை, ஒன்றுக்கு மேற்பட்ட உண்ணும் வழிகளுடன். ஒட்டுண்ணிகள் ஓம்புயிரிடமிருந்து ஊட்டங்களைப் பெறும் வழிகள் பிந்தைய அத்தியாயத்தில் விவரிக்கப்படுகின்றன."),
+                    bp("Freshwater protozoa face a problem of water balance. The water outside is hypotonic to the cytoplasm, which means that it has a lower concentration of dissolved substances, and so water enters the cell continuously by osmosis. Without a means of removal, the cell would swell and burst. Many freshwater forms have contractile vacuoles, which collect the excess water from the cytoplasm, and periodically fill and contract to expel it to the outside. Marine forms and parasites living in the body fluids of a host often have no contractile vacuole, or a less active one, since the surrounding fluid is closer in concentration to the cytoplasm." to
+                        "நன்னீர் புரோட்டோசோவாக்கள் நீர்ச் சமநிலைச் சிக்கலை எதிர்கொள்கின்றன. வெளி நீர் சைட்டோபிளாசத்துக்கு குறைவான செறிவு கொண்ட ஹைப்போடானிக்; எனவே சவ்வூடுபரவலால் நீர் தொடர்ந்து உயிரணுவுக்குள் நுழைகிறது. அகற்றும் வழி இல்லாவிட்டால் உயிரணு வீங்கி வெடிக்கும். பல நன்னீர் வடிவங்களுக்கு சைட்டோபிளாசத்திலிருந்து மிகை நீரைச் சேகரித்து, அவ்வப்போது நிரம்பிச் சுருங்கி வெளியே வெளியேற்றும் சுருங்கும் நுண்குமிழ்கள் உண்டு. சுற்றியுள்ள திரவம் சைட்டோபிளாசத்துக்குச் செறிவில் நெருக்கமாக இருப்பதால் கடல் வடிவங்கள், ஓம்புயிரின் உடல் திரவங்களில் வாழும் ஒட்டுண்ணிகளுக்கு பெரும்பாலும் சுருங்கும் நுண்குமிழ் இல்லை அல்லது குறைவாக இயங்குகிறது."),
+                    bpoints("Modes of nutrition in protozoa", "புரோட்டோசோவாவின் ஊட்ட முறைகள்",
+                        "Holozoic: ingestion of solid food into food vacuoles." to "ஹோலோசோயிக்: உணவுக் குமிழ்களுக்குள் திட உணவை உட்கொள்ளுதல்.",
+                        "Saprozoic: absorption of dissolved nutrients." to "சாப்ரோசோயிக்: கரைந்த ஊட்டங்களை உறிஞ்சுதல்.",
+                        "Photosynthetic: manufacture of food by chloroplasts, as in Euglena." to "ஒளிச்சேர்க்கை: யூக்ளினா போல பசுங்கணிகங்களால் உணவு தயாரித்தல்.",
+                        "Mixotrophic: a combination of two or more of these." to "கலப்பூட்டம்: இவற்றில் இரண்டு அல்லது அதற்கு மேற்பட்டவற்றின் சேர்க்கை.",
+                    ),
+                    bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம்", "Nutrition by ingestion and internal digestion of solid food particles." to
+                        "திட உணவுத் துகள்களை உட்கொண்டு உள்ளே செரிக்கும் ஊட்டம்."),
+                    bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம்", "Nutrition by absorption of dissolved organic substances." to
+                        "கரைந்த கரிமப் பொருட்களை உறிஞ்சும் ஊட்டம்."),
+                    bdef("Mixotrophy", "கலப்பூட்டம்", "The use of more than one mode of nutrition, such as photosynthesis and ingestion." to
+                        "ஒளிச்சேர்க்கை, உட்கொள்ளுதல் போன்ற ஒன்றுக்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்துதல்."),
+                    bdef("Contractile vacuole", "சுருங்கும் நுண்குமிழ்", "An organelle that collects and expels excess water from the cell." to
+                        "உயிரணுவிலிருந்து மிகை நீரைச் சேகரித்து வெளியேற்றும் நுண்ணுறுப்பு."),
+                    bdef("Hypotonic", "ஹைப்போடானிக்", "Having a lower concentration of dissolved substances than another solution." to
+                        "மற்றொரு கரைசலை விடக் குறைந்த கரைபொருள் செறிவு உடைய."),
+                )),
+            bsec("reproduction", "Reproduction and encystment", "இனப்பெருக்கமும் கூடு கட்டுதலும்",
+                blocks = listOf(
+                    bp("Reproduction in the protozoa is usually asexual, by fission, in which the cell divides into two or more cells. In binary fission the nucleus divides by mitosis, and then the cytoplasm divides, and the two daughter cells are similar. In multiple fission the nucleus divides several times before the cell divides, and a number of daughter cells are formed at once, as in the malarial parasite. Budding, in which a small part of the cell separates, also occurs in some forms." to
+                        "புரோட்டோசோவாவில் இனப்பெருக்கம் வழக்கமாக பிளவால் பாலிலா முறை; உயிரணு இரண்டு அல்லது அதற்கு மேற்பட்ட உயிரணுக்களாகப் பிரிகிறது. இருபிளவில் உட்கரு மைட்டாசிஸால் பிரிந்து பின்னர் சைட்டோபிளாசம் பிரிகிறது; இரு மகள் உயிரணுக்களும் ஒத்தவை. பலபிளவில் உயிரணு பிரியும் முன் உட்கரு பலமுறை பிரிகிறது; மலேரியா ஒட்டுண்ணி போல ஒரே நேரத்தில் பல மகள் உயிரணுக்கள் உருவாகின்றன. உயிரணுவின் சிறு பகுதி பிரியும் அரும்புதலும் சில வடிவங்களில் நிகழ்கிறது."),
+                    bp("Sexual processes occur in several groups, and they take different forms. In the ciliates there is conjugation, in which two cells exchange nuclear material, and in the parasites such as Plasmodium there are gametes and a zygote. Sexual processes are not for the multiplication of numbers, since in conjugation two cells give rise to two cells, but for the mixing of genetic material. Many protozoa also form cysts, which are resistant coverings secreted by the cell, in which it survives drying, cold or the absence of food, and in the parasites cysts may carry the organism from one host to another." to
+                        "பாலின முறைகள் பல குழுக்களில் நிகழ்கின்றன; வெவ்வேறு வடிவங்கள் எடுக்கின்றன. சிலியேட்டுகளில் இரு உயிரணுக்கள் உட்கரு பொருளைப் பரிமாறும் இணைவு உண்டு; பிளாஸ்மோடியம் போன்ற ஒட்டுண்ணிகளில் இனச்செல்களும் கருமுட்டையும் உண்டு. இணைவில் இரு உயிரணுக்கள் இரு உயிரணுக்களைத் தருவதால் பாலின முறைகள் எண்ணிக்கை பெருக்கத்துக்காக அல்ல; மரபுப் பொருள் கலப்புக்காக. பல புரோட்டோசோவாக்கள் உயிரணு சுரக்கும் எதிர்ப்பு மூடிகளான கூடுகளையும் உருவாக்குகின்றன; அவற்றில் அது வறட்சி, குளிர் அல்லது உணவு இன்மையைத் தாங்குகிறது; ஒட்டுண்ணிகளில் கூடுகள் உயிரியை ஓர் ஓம்புயிரிலிருந்து மற்றொன்றுக்குக் கொண்டுசெல்லலாம்."),
+                    bdef("Binary fission", "இருபிளவு", "Asexual reproduction by division of a cell into two similar cells." to
+                        "ஒரு உயிரணு இரு ஒத்த உயிரணுக்களாகப் பிரிவதன் மூலம் பாலிலா இனப்பெருக்கம்."),
+                    bdef("Multiple fission", "பலபிளவு", "Asexual reproduction in which the nucleus divides repeatedly and the cell splits into many daughter cells." to
+                        "உட்கரு மீண்டும் மீண்டும் பிரிந்து உயிரணு பல மகள் உயிரணுக்களாகப் பிளக்கும் பாலிலா இனப்பெருக்கம்."),
+                    bdef("Cyst", "கூடு", "A protective resistant covering formed by a protozoan, in which it survives unfavourable conditions." to
+                        "சாதகமற்ற சூழலில் உயிர்வாழ புரோட்டோசோவா உருவாக்கும் பாதுகாப்பான எதிர்ப்பு மூடி."),
+                    bdef("Conjugation", "இணைவு", "A sexual process in ciliates in which two cells exchange nuclear material." to
+                        "சிலியேட்டுகளில் இரு உயிரணுக்கள் உட்கருப் பொருளைப் பரிமாறும் பாலின முறை."),
+                )),
+            bsec("habitats", "Habitats and importance", "வாழிடங்களும் முக்கியத்துவமும்",
+                blocks = listOf(
+                    bp("Protozoa live wherever there is water, whether it is the sea, a pond, the film of moisture in soil, or the body fluids and tissues of another animal. Many are free-living, and they form a part of the plankton and of the community of the bottom, where they feed on bacteria and algae and are themselves eaten by small animals, so that they are links in food chains. Some live in association with other animals, and a number are parasites of man, domestic animals and wild animals. The parasitic species are of great importance to medicine and to veterinary science, and they are taken up in a later chapter." to
+                        "நீர் உள்ள எங்கும் புரோட்டோசோவாக்கள் வாழ்கின்றன: கடல், குளம், மண்ணிலுள்ள ஈரப்படலம், மற்றொரு விலங்கின் உடல் திரவங்கள், திசுக்கள் ஆகியவற்றில். பல தனித்து வாழ்பவை; மிதவைத் தொகுப்பின், அடித்தள சமூகத்தின் பகுதியாகி, பாக்டீரியா, பாசிகளை உண்டு சிறு விலங்குகளால் உண்ணப்படுவதால் உணவுச் சங்கிலிகளின் இணைப்புகள். சில பிற விலங்குகளுடன் இணைந்து வாழ்கின்றன; பல மனிதன், வீட்டு, காட்டு விலங்குகளின் ஒட்டுண்ணிகள். ஒட்டுண்ணி இனங்கள் மருத்துவத்துக்கும் கால்நடை அறிவியலுக்கும் மிக முக்கியமானவை; பிந்தைய அத்தியாயத்தில் எடுத்துக்கொள்ளப்படுகின்றன."),
+                    bp("Their small size and their quick multiplication make them useful in the laboratory, where Paramecium and Amoeba are commonly cultured for study. The same properties mean that a change in the water, such as pollution, can be reflected quickly in the protozoan community, and so some are used as indicators of water quality. The statement should be general, as the use of any one species depends on the study." to
+                        "அவற்றின் சிறிய அளவும் விரைவான பெருக்கமும் ஆய்வகத்தில் அவற்றைப் பயனுள்ளவையாக்குகின்றன; அங்கு பாரமீசியமும் அமீபாவும் கற்பதற்காக வழக்கமாக வளர்க்கப்படுகின்றன. அதே பண்புகள், மாசு போன்ற நீரின் மாற்றம் புரோட்டோசோவா சமூகத்தில் விரைவாக பிரதிபலிக்கலாம் என்பதைக் குறிக்கின்றன; எனவே சில நீர்த்தர சுட்டிகளாகப் பயன்படுகின்றன. எந்த ஓர் இனத்தின் பயன்பாடும் ஆய்வைச் சார்ந்தது என்பதால் கூற்று பொதுவாக இருக்க வேண்டும்."),
+                    bdef("Plankton", "மிதவை உயிரிகள்", "Organisms that drift in the water and are carried by its movements." to
+                        "நீரில் மிதந்து அதன் அசைவுகளால் கொண்டுசெல்லப்படும் உயிரிகள்."),
+                    bdef("Free-living", "தனித்து வாழும்", "Living independently and not as a parasite on another organism." to
+                        "மற்றொரு உயிரியின்மீது ஒட்டுண்ணியாக அல்லாமல் சுதந்திரமாக வாழும்."),
+                    bdef("Food chain", "உணவுச் சங்கிலி", "A sequence of organisms in which each is the food of the next." to
+                        "ஒவ்வொன்றும் அடுத்ததற்கு உணவாக இருக்கும் உயிரிகளின் வரிசை."),
+                )),
+            bsec("classes", "The traditional groups", "மரபுவழிக் குழுக்கள்",
+                blocks = listOf(
+                    bp("The traditional classification of the protozoa was based mainly on the organ of locomotion, and it gave four classes. The first was the Sarcodina, or Rhizopoda, which move by pseudopodia, as in Amoeba. The second was the Mastigophora, or Flagellata, which move by flagella, as in Euglena. The third was the Ciliata, or Ciliophora, which move by cilia, as in Paramecium. The fourth was the Sporozoa, which are parasites that have no obvious organs of locomotion in the main phase of the life cycle, as in Plasmodium." to
+                        "புரோட்டோசோவாவின் மரபுவழி வகைப்பாடு முக்கியமாக இயக்க உறுப்பை அடிப்படையாகக் கொண்டு நான்கு வகுப்புகளைத் தந்தது. முதலாவது சார்கோடினா அல்லது ரைசோபோடா; அமீபா போல போலிக்கால்களால் நகர்பவை. இரண்டாவது மாஸ்டிகோஃபோரா அல்லது ஃபிளாஜெல்லேட்டா; யூக்ளினா போல கசைகளால் நகர்பவை. மூன்றாவது சிலியேட்டா அல்லது சிலியோஃபோரா; பாரமீசியம் போல சிலியாக்களால் நகர்பவை. நான்காவது ஸ்போரோசோவா; பிளாஸ்மோடியம் போல வாழ்க்கைச் சுழற்சியின் முக்கிய நிலையில் தெளிவான இயக்க உறுப்புகள் இல்லாத ஒட்டுண்ணிகள்."),
+                    btable("The four traditional groups", "நான்கு மரபுவழிக் குழுக்கள்",
+                        listOf("Traditional group" to "மரபுவழிக் குழு", "Locomotion" to "இயக்கம்", "Example" to "எடுத்துக்காட்டு", "Mode of life" to "வாழ்க்கை முறை"),
+                        listOf(
+                            listOf("Sarcodina (Rhizopoda)" to "சார்கோடினா (ரைசோபோடா)", "Pseudopodia" to "போலிக்கால்கள்", "Amoeba" to "அமீபா", "Free-living or parasitic" to "தனித்து வாழும் அல்லது ஒட்டுண்ணி"),
+                            listOf("Mastigophora (Flagellata)" to "மாஸ்டிகோஃபோரா (ஃபிளாஜெல்லேட்டா)", "Flagella" to "கசைகள்", "Euglena" to "யூக்ளினா", "Free-living or parasitic" to "தனித்து வாழும் அல்லது ஒட்டுண்ணி"),
+                            listOf("Ciliata (Ciliophora)" to "சிலியேட்டா (சிலியோஃபோரா)", "Cilia" to "சிலியாக்கள்", "Paramecium" to "பாரமீசியம்", "Mostly free-living" to "பெரும்பாலும் தனித்து வாழ்வது"),
+                            listOf("Sporozoa" to "ஸ்போரோசோவா", "None obvious in the main phase" to "முக்கிய நிலையில் தெளிவாக இல்லை", "Plasmodium" to "பிளாஸ்மோடியம்", "Parasitic" to "ஒட்டுண்ணி"),
+                        )),
+                    bp("These names should be recognised as syllabus and historical terminology. Modern studies have shown that the groups defined by the organ of locomotion do not each represent one lineage, and that the parasites placed in the Sporozoa are, for the most part, the apicomplexans, which belong to a group of their own. The ciliates form a coherent group, the Ciliophora. A student will use the traditional names in the course, but should be ready to say that the classification has been revised." to
+                        "இப்பெயர்கள் பாடத்திட்ட, வரலாற்றுச் சொற்கள் என அங்கீகரிக்கப்பட வேண்டும். இயக்க உறுப்பால் வரையறுக்கப்பட்ட குழுக்கள் ஒவ்வொன்றும் ஒரு பரம்பரையைக் குறிக்கவில்லை என்றும், ஸ்போரோசோவாவில் வைக்கப்பட்ட ஒட்டுண்ணிகள் பெரும்பாலும் தனிக் குழுவான அபிகாம்ப்ளெக்சன்கள் என்றும் நவீன ஆய்வுகள் காட்டியுள்ளன. சிலியேட்டுகள் ஒருங்கிணைந்த குழு, சிலியோஃபோரா. மாணவர் பாடத்தில் மரபுவழிப் பெயர்களைப் பயன்படுத்துவார்; வகைப்பாடு திருத்தப்பட்டுள்ளது எனக் கூறத் தயாராக இருக்க வேண்டும்."),
+                    bdef("Sarcodina", "சார்கோடினா", "The traditional class of protozoa that move by pseudopodia." to
+                        "போலிக்கால்களால் நகரும் புரோட்டோசோவாவின் மரபுவழி வகுப்பு."),
+                    bdef("Mastigophora", "மாஸ்டிகோஃபோரா", "The traditional class of protozoa that move by flagella." to
+                        "கசைகளால் நகரும் புரோட்டோசோவாவின் மரபுவழி வகுப்பு."),
+                    bdef("Ciliophora", "சிலியோஃபோரா", "The ciliates, protozoa that have cilia and, typically, two kinds of nucleus." to
+                        "சிலியாக்களும் வழக்கமாக இருவகை உட்கருவும் கொண்ட புரோட்டோசோவாக்களான சிலியேட்டுகள்."),
+                    bdef("Apicomplexa", "அபிகாம்ப்ளெக்சா", "A group of parasitic protists with a characteristic apical complex, including Plasmodium." to
+                        "பிளாஸ்மோடியம் உள்ளிட்ட, தனிப்பண்பு நுனித் தொகுப்புடைய ஒட்டுண்ணி புரோட்டிஸ்டுகளின் குழு."),
+                )),
+            bsec("ciliata-sporozoa", "Ciliata and Sporozoa compared", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
+                blocks = listOf(
+                    btable("Ciliata compared with Sporozoa", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
+                        listOf("Feature" to "பண்பு", "Ciliata" to "சிலியேட்டா", "Sporozoa" to "ஸ்போரோசோவா"),
+                        listOf(
+                            listOf("Group" to "குழு", "Corresponds broadly to the ciliates, Ciliophora" to "பரவலாக சிலியேட்டுகளான சிலியோஃபோராவுக்கு ஒத்தது", "Largely the parasitic apicomplexans; a historical term" to "பெரும்பாலும் ஒட்டுண்ணி அபிகாம்ப்ளெக்சன்கள்; வரலாற்றுச் சொல்"),
+                            listOf("Locomotion" to "இயக்கம்", "Numerous short cilia" to "எண்ணற்ற குறுகிய சிலியாக்கள்", "Adults generally lack cilia and ordinary locomotory organelles; specialised motile stages occur" to "முதிர்ந்தவற்றுக்கு பொதுவாக சிலியாக்களும் வழக்கமான இயக்க நுண்ணுறுப்புகளும் இல்லை; சிறப்பு இயங்கும் நிலைகள் உண்டு"),
+                            listOf("Nuclei" to "உட்கருக்கள்", "Nuclear dimorphism: a macronucleus and one or more micronuclei" to "உட்கரு இருவடிவம்: ஒரு பெருஉட்கருவும் ஒன்று அல்லது அதற்கு மேற்பட்ட சிறுஉட்கருக்களும்", "No macro- and micronuclear organisation" to "பெரு-, சிறுஉட்கரு அமைப்பு இல்லை"),
+                            listOf("Feeding" to "உணவெடுப்பு", "Many feed through an oral apparatus and cytostome; often free-living" to "பலவும் வாய் அமைப்பு, சைட்டோஸ்டோம் வழியே உண்கின்றன; பெரும்பாலும் தனித்து வாழ்வன", "Obligate parasites that obtain nutrients from host-associated environments" to "ஓம்புயிர் சூழலிலிருந்து ஊட்டங்களைப் பெறும் கட்டாய ஒட்டுண்ணிகள்"),
+                            listOf("Sexual process" to "பாலின முறை", "Conjugation, as well as binary fission" to "இருபிளவுடன் இணைவு", "Complex life cycles with asexual multiplication and sexual, spore-forming phases" to "பாலிலா பெருக்கம், பாலின, வித்து உருவாக்கும் நிலைகளுடன் சிக்கலான வாழ்க்கைச் சுழற்சி"),
+                            listOf("Representative" to "பிரதிநிதி", "Paramecium" to "பாரமீசியம்", "Plasmodium" to "பிளாஸ்மோடியம்"),
+                        )),
+                    bp("The comparison is a standard examination question, and the five points of difference given in the table are enough for an answer. It should be remembered that the table compares a living group with a historical one, and the comparison becomes simplest when it is made between the representative examples." to
+                        "ஒப்பீடு நிலையான தேர்வுக் கேள்வி; அட்டவணையில் தரப்பட்ட ஐந்து வேறுபாட்டுப் புள்ளிகள் விடைக்குப் போதும். அட்டவணை வாழும் குழுவை வரலாற்றுக் குழுவுடன் ஒப்பிடுகிறது என்பதை நினைவில் வைக்க வேண்டும்; பிரதிநிதி எடுத்துக்காட்டுகளிடையே செய்யப்படும்போது ஒப்பீடு எளிமையாகிறது."),
+                    bdef("Nuclear dimorphism", "உட்கரு இருவடிவம்", "The presence of two kinds of nucleus in a cell, a large macronucleus and one or more small micronuclei." to
+                        "ஒரு உயிரணுவில் பெரிய பெருஉட்கருவும் ஒன்று அல்லது அதற்கு மேற்பட்ட சிறுஉட்கருக்களும் ஆகிய இருவகை உட்கருக்கள் இருத்தல்."),
+                    bdef("Obligate parasite", "கட்டாய ஒட்டுண்ணி", "A parasite that cannot complete its life cycle without a host." to
+                        "ஓம்புயிர் இன்றி வாழ்க்கைச் சுழற்சியை முடிக்க முடியாத ஒட்டுண்ணி."),
+                    bdef("Cytostome", "சைட்டோஸ்டோம்", "The cell mouth through which food is taken in by a ciliate." to
+                        "சிலியேட்டு உணவை உள்ளெடுக்கும் உயிரணு வாய்."),
+                )),
+        ),
+        summary = listOf(
+            "Protozoa is a traditional teaching group of mostly unicellular eukaryotic protists and not one natural clade." to "புரோட்டோசோவா பெரும்பாலும் ஒருசெல் யூகேரியோட் புரோட்டிஸ்டுகளின் மரபுவழிக் கற்பித்தல் குழு; ஒற்றை இயற்கைக் கிளை அல்ல.",
+            "Each organism is a single cell that performs all functions through organelles." to "ஒவ்வோர் உயிரியும் நுண்ணுறுப்புகள் மூலம் எல்லாச் செயல்களையும் செய்யும் ஒற்றை உயிரணு.",
+            "Locomotion is by pseudopodia, flagella or cilia, and nutrition may be holozoic, saprozoic, photosynthetic or mixotrophic." to "இயக்கம் போலிக்கால்கள், கசைகள் அல்லது சிலியாக்களால்; ஊட்டம் ஹோலோசோயிக், சாப்ரோசோயிக், ஒளிச்சேர்க்கை அல்லது கலப்பூட்டமாக இருக்கலாம்.",
+            "Freshwater forms use contractile vacuoles to expel the water that enters by osmosis." to "நன்னீர் வடிவங்கள் சவ்வூடுபரவலால் நுழையும் நீரை வெளியேற்ற சுருங்கும் நுண்குமிழ்களைப் பயன்படுத்துகின்றன.",
+            "Reproduction is usually by fission; sexual processes include conjugation, and cysts help survival." to "இனப்பெருக்கம் வழக்கமாக பிளவால்; பாலின முறைகளில் இணைவு அடங்கும்; கூடுகள் உயிர்வாழ உதவுகின்றன.",
+            "Ciliata and Sporozoa differ in locomotion, nuclei, feeding, life cycle and mode of life." to "சிலியேட்டாவும் ஸ்போரோசோவாவும் இயக்கம், உட்கருக்கள், உணவெடுப்பு, வாழ்க்கைச் சுழற்சி, வாழ்க்கை முறையில் வேறுபடுகின்றன.",
+        ),
+        checks = listOf(
+            bqc("Why is Protozoa called a traditional teaching group?", "புரோட்டோசோவா ஏன் மரபுவழிக் கற்பித்தல் குழு எனப்படுகிறது?",
+                "Modern phylogeny distributes these organisms among several eukaryotic lineages and does not treat them as one natural clade.", "நவீன இனவரலாறு இவ்வுயிரிகளை பல யூகேரியோட் பரம்பரைகளிடையே பகிர்கிறது; ஒற்றை இயற்கைக் கிளையாகக் கருதுவதில்லை."),
+            bqc("How does a freshwater protozoan deal with water entering by osmosis?", "நன்னீர் புரோட்டோசோவா சவ்வூடுபரவலால் நுழையும் நீரை எவ்வாறு சமாளிக்கிறது?",
+                "Contractile vacuoles collect the excess water and expel it.", "சுருங்கும் நுண்குமிழ்கள் மிகை நீரைச் சேகரித்து வெளியேற்றுகின்றன."),
+            bqc("Name the four traditional groups with one example each.", "நான்கு மரபுவழிக் குழுக்களையும் தலா ஓர் எடுத்துக்காட்டுடன் பெயரிடுக.",
+                "Sarcodina: Amoeba; Mastigophora: Euglena; Ciliata: Paramecium; Sporozoa: Plasmodium.", "சார்கோடினா: அமீபா; மாஸ்டிகோஃபோரா: யூக்ளினா; சிலியேட்டா: பாரமீசியம்; ஸ்போரோசோவா: பிளாஸ்மோடியம்."),
+            bqc("Which group shows nuclear dimorphism?", "எந்தக் குழு உட்கரு இருவடிவம் காட்டுகிறது?",
+                "The ciliates, with a macronucleus and one or more micronuclei.", "பெருஉட்கருவும் ஒன்று அல்லது அதற்கு மேற்பட்ட சிறுஉட்கருக்களும் கொண்ட சிலியேட்டுகள்."),
+        ),
+    )
+}
