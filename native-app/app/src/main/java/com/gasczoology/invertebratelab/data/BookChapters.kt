@@ -5,6 +5,7 @@ object BookChapters {
     val all: List<BookChapter> = listOf(
         PoriferaBookChapter.chapter,
         PoriferaCanalsBookChapter.chapter,
+        PoriferaReproductionBookChapter.chapter,
         SyconBookChapter.chapter,
     )
     val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
