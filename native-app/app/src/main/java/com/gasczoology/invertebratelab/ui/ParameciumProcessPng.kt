@@ -55,7 +55,7 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                     bitmap = image,
                     contentDescription = if (tamil)
                         "பாரமீசியத்தின் தனித்த செயல்முறை PNG படம்; உறுப்புத் தொடுதல் மற்றும் செயல்பாட்டு விளக்கம் மதிப்பாய்வு நிலுவையில் உள்ளன."
-                    else "Independent Paramecium process PNG. Stages are explained in text; no animation or unverified image hotspots.",
+                    else "Source-derived photographed pencil PNG crop; not an independently validated anatomical master.",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth()
                         .aspectRatio(image.width.toFloat()/image.height.toFloat())
