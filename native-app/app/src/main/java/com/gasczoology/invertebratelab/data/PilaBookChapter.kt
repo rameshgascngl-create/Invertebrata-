@@ -1,0 +1,129 @@
+package com.gasczoology.invertebratelab.data
+
+/** Book-style chapter: Pila, the apple snail. DRAFT_UNVERIFIED; Tamil needs the author's review. */
+object PilaBookChapter {
+    val chapter = bchapter(
+        lessonId = "u5-pila",
+        title = "Pila: the amphibious apple snail" to "பைலா: நீர்நில வாழ் ஆப்பிள் நத்தை",
+        objectives = listOf(
+            "Describe the habit, habitat and external features of Pila." to "பைலாவின் பழக்கம், வாழிடம், வெளிப்புற அம்சங்களை விவரிக்க.",
+            "Describe the shell, the operculum and the foot." to "ஓடு, ஆப்பர்குலம், பாதத்தை விவரிக்க.",
+            "Explain the respiratory adaptations that make Pila amphibious." to "பைலாவை நீர்நில வாழ்வியாக்கும் சுவாசத் தழுவல்களை விளக்க.",
+            "Describe the digestive, circulatory, excretory and nervous systems." to "செரிமான, இரத்த ஓட்ட, கழிவு நீக்க, நரம்பு மண்டலங்களை விவரிக்க.",
+            "Compare Pila with a freshwater mussel such as Unio." to "பைலாவை யூனியோ போன்ற நன்னீர்ச் சிப்பியுடன் ஒப்பிட.",
+        ),
+        introduction = listOf(
+            "Pila is the apple snail, a large freshwater snail that is common in ponds, tanks, ditches, paddy fields and slow streams in India and in other warm countries. It is the type for the Gastropoda in the syllabus. The animal is amphibious, which means that it is able to live both in water and for a time out of it, and it is this habit that explains most of the peculiarities of its structure, especially its respiratory organs. The adult is a torted gastropod, and the torsion is not an event in its life but a condition of its organisation, which is taken up in a later chapter." to
+                "பைலா ஆப்பிள் நத்தை; இந்தியாவிலும் பிற வெப்ப நாடுகளிலும் குளங்கள், ஏரிகள், வாய்க்கால்கள், நெல் வயல்கள், மெதுவாக ஓடும் ஓடைகளில் பொதுவான பெரிய நன்னீர் நத்தை. பாடத்திட்டத்தில் காஸ்ட்ரோபோடாவுக்கான வகை. விலங்கு நீர்நில வாழ்வி, அதாவது நீரிலும் சிறிது நேரம் நீருக்கு வெளியேயும் வாழக்கூடியது; அதன் அமைப்பின் பெரும்பாலான தனிப்பண்புகளை, குறிப்பாக சுவாச உறுப்புகளை, இப்பழக்கமே விளக்குகிறது. முதிர்ந்த விலங்கு முறுக்கப்பட்ட இரைப்பைக்காலி; முறுக்கல் அதன் வாழ்வின் நிகழ்வு அல்ல, அமைப்பின் நிலை; இது பிந்தைய அத்தியாயத்தில் எடுத்துக்கொள்ளப்படுகிறது.",
+            "The chapter describes the external features, the respiratory system in detail since it is the topic most often examined, the other systems, and ends with a comparison with the freshwater mussel Unio, the type of the bivalves, which brings out the differences between the two chief classes of molluscs." to
+                "வெளிப்புற அம்சங்கள், அதிகமாகத் தேர்வில் கேட்கப்படும் தலைப்பு என்பதால் சுவாச மண்டலம் விரிவாக, பிற மண்டலங்களை விவரித்து, மெல்லுடலிகளின் இரு முதன்மை வகுப்புகளின் வேறுபாடுகளை வெளிக்கொணரும் இருவோட்டுடலி வகையான நன்னீர்ச் சிப்பி யூனியோவுடன் ஒப்பீட்டுடன் அத்தியாயம் முடிகிறது.",
+        ),
+        sections = listOf(
+            bsec("external", "Habit, habitat and external features", "பழக்கம், வாழிடம், வெளிப்புற அம்சங்கள்",
+                blocks = listOf(
+                    bp("Pila lives in the shallow water of ponds and slow streams, creeping on the mud and on aquatic plants, and feeds mainly on plant matter, both living and decaying, as well as some animal matter, and is active mostly in the evening and the night. It can come out of the water to creep on the bank and, when a pond dries, it buries itself in the mud and closes the shell with the operculum, a state of aestivation in which it lives on until the rains return. The female lays clusters of hard-shelled pinkish eggs on plants and on the walls of tanks above the water line." to
+                        "பைலா குளங்கள், மெதுவான ஓடைகளின் ஆழமற்ற நீரில் சேற்றிலும் நீர்த் தாவரங்களிலும் ஊர்ந்து வாழ்கிறது; முக்கியமாக உயிருள்ள, அழுகும் தாவரப் பொருள், சிறிது விலங்குப் பொருளை உண்கிறது; பெரும்பாலும் மாலை, இரவில் செயல்படுகிறது. நீரிலிருந்து வெளியே வந்து கரையில் ஊரலாம்; குளம் வற்றும்போது சேற்றில் புதைந்து ஆப்பர்குலத்தால் ஓட்டை மூடுகிறது; மழை திரும்பும் வரை உயிர்வாழும் கோடைத்துயில் நிலை. பெண் நீர்க்கோட்டுக்கு மேல் தாவரங்கள், தொட்டிச் சுவர்களில் கடின ஓட்டுடைய இளஞ்சிவப்பு முட்டைக் கொத்துகளை இடுகிறது."),
+                    bfig("pila/external", "Pila, external view of the animal and its shell." to "பைலா, விலங்கும் அதன் ஓடும், வெளிப்புறத் தோற்றம்."),
+                    bp("The shell is a single, large, spirally coiled shell, which is globular, with a pointed apex and a large body whorl, and it is the univalve condition. The opening of the shell, the aperture, is closed by a horny plate, the operculum, which is carried on the upper surface of the foot and which fits into the aperture when the animal is withdrawn. The operculum protects the soft body against enemies and against desiccation. The shell is dextral in Pila, meaning that, with the apex upward and the aperture toward the observer, the aperture lies on the right." to
+                        "ஓடு ஒற்றை, பெரிய, சுருளாகச் சுற்றிய, கூரிய உச்சியும் பெரிய உடல் சுற்றும் உடைய உருண்டை ஓடு; இது ஒற்றை ஓட்டு நிலை. ஓட்டின் திறப்பான வாய்ப்பகுதி, பாதத்தின் மேற்பரப்பில் தாங்கப்படும் கொம்புத் தகடான ஆப்பர்குலத்தால் மூடப்படுகிறது; விலங்கு உள்ளிழுக்கும்போது அது வாய்ப்பகுதியில் பொருந்துகிறது. ஆப்பர்குலம் மென்மையான உடலை எதிரிகளிடமிருந்தும் வறட்சியிலிருந்தும் பாதுகாக்கிறது. பைலாவில் ஓடு வலச்சுருள்; அதாவது உச்சி மேல்நோக்கி, வாய்ப்பகுதி பார்ப்பவரை நோக்கி இருக்கும்போது வாய்ப்பகுதி வலப்புறம் அமைகிறது."),
+                    bp("The soft body consists of the head, the foot, the visceral mass and the mantle. The head is distinct and carries two pairs of tentacles, a long pair and a short pair, and a pair of eyes on short stalks, and the mouth lies at the front, on a snout. The foot is large, broad and muscular and flat below, a creeping sole. The visceral mass is coiled within the spire of the shell, and the mantle is attached to the inner surface of the shell and has a thick free margin, which is formed on the left and right sides into the nuchal lobes." to
+                        "மென்மையான உடல் தலை, பாதம், உள்ளுறுப்புத் திரள், மேண்டில் கொண்டது. தலை தெளிவானது; நீண்ட, குட்டை என இரு இணை உணர்கொம்புகளும் குட்டைக் காம்புகளில் ஓர் இணை கண்களும் உண்டு; வாய் முன்னால் முகவாயில் உள்ளது. பாதம் பெரியது, அகன்றது, தசையானது, கீழே தட்டையான ஊரும் அடிப்பகுதி. உள்ளுறுப்புத் திரள் ஓட்டின் சுருளுக்குள் சுருண்டுள்ளது; மேண்டில் ஓட்டின் உள் மேற்பரப்பில் இணைந்து இடது, வலது பக்கங்களில் நுக்கல் மடல்களாக உருவாகும் தடித்த தனி விளிம்பு உடையது."),
+                    bp("Locomotion in the snail is by the foot. The sole is moved by waves of muscular contraction that pass along it, and the animal glides on a layer of mucus secreted by glands of the foot. The mucus also protects the sole from damage and helps to hold the snail to a surface, and it can be seen as a trail. In water the snail can also hang from the surface film, with the foot uppermost, and glide along it, a habit that is related to the need to come to the surface for air. The sense of touch and of smell is well developed in the tentacles, and the eyes distinguish light from dark but form no detailed image." to
+                        "நத்தையின் இயக்கம் பாதத்தால். அடிப்பகுதி அதன் வழியே செல்லும் தசைச் சுருக்க அலைகளால் நகர்த்தப்படுகிறது; பாதச் சுரப்பிகள் சுரக்கும் சளி அடுக்கின் மீது விலங்கு சறுக்குகிறது. சளி அடிப்பகுதியைச் சேதத்திலிருந்து பாதுகாத்து நத்தையை மேற்பரப்பில் பற்றவைக்க உதவுகிறது; தடமாகத் தெரிகிறது. நீரில் நத்தை பாதம் மேலே இருக்க மேற்பரப்புப் படலத்தில் தொங்கி அதனுடன் சறுக்கவும் செய்கிறது; காற்றுக்காக மேற்பரப்புக்கு வர வேண்டிய தேவையுடன் தொடர்புடைய பழக்கம். தொடு, மணம் உணர்வு உணர்கொம்புகளில் நன்கு வளர்ந்துள்ளது; கண்கள் ஒளி, இருளை வேறுபடுத்துகின்றன, ஆனால் விவரப் படிமம் உருவாக்குவதில்லை."),
+                    bdef("Univalve", "ஒற்றை ஓடு", "Having a shell of a single piece, as in a snail." to
+                        "நத்தை போல, ஒரே துண்டு ஓடு உடைய."),
+                    bdef("Operculum", "ஆப்பர்குலம்", "A horny plate on the foot of a snail that closes the aperture of the shell." to
+                        "ஓட்டின் வாய்ப்பகுதியை மூடும், நத்தையின் பாதத்திலுள்ள கொம்புத் தகடு."),
+                    bdef("Aperture", "வாய்ப்பகுதி (அபெர்ச்சர்)", "The opening of a snail shell through which the body is extended." to
+                        "உடல் வெளியே நீளும் நத்தை ஓட்டின் திறப்பு."),
+                    bdef("Aestivation", "கோடைத்துயில்", "A state of inactivity in which an animal passes a hot or dry season." to
+                        "வெப்பமான அல்லது வறண்ட பருவத்தை விலங்கு கழிக்கும் செயலற்ற நிலை."),
+                )),
+            bsec("respiration", "Respiratory adaptations", "சுவாசத் தழுவல்கள்",
+                blocks = listOf(
+                    bp("Pila breathes in two ways, and this is what is meant by calling it amphibious. In water it respires with a gill, and in air, or in water that has little oxygen, it uses a lung. The two organs lie in the mantle cavity, which in Pila is divided into two parts, the branchial chamber on the left, which holds the gill, and the pulmonary sac on the right, which is the lung." to
+                        "பைலா இரு வழிகளில் சுவாசிக்கிறது; நீர்நில வாழ்வி எனப்படுவதன் பொருள் இதுவே. நீரில் செவுளால் சுவாசிக்கிறது; காற்றில் அல்லது ஆக்சிஜன் குறைவான நீரில் நுரையீரலைப் பயன்படுத்துகிறது. இரு உறுப்புகளும் மேண்டில் குழியில் உள்ளன; அது பைலாவில் செவுளைக் கொண்ட இடப்புறக் கிளைக்கிய அறை, நுரையீரலான வலப்புற நுரையீரல் பை என இரு பகுதிகளாகப் பிரிக்கப்பட்டுள்ளது."),
+                    bfig("pila/mantle-cavity", "Pila, the mantle cavity opened to show the branchial chamber and the pulmonary sac." to "பைலா, கிளைக்கிய அறை, நுரையீரல் பையைக் காட்ட திறக்கப்பட்ட மேண்டில் குழி."),
+                    bpoints("Respiratory organs of Pila", "பைலாவின் சுவாச உறுப்புகள்",
+                        "The ctenidium is a single comb-like gill, monopectinate, with filaments on one side only, lying in the branchial chamber; it is the principal organ for respiration in water." to "டீனிடியம் ஒரு பக்கத்தில் மட்டும் இழைகள் உடைய, கிளைக்கிய அறையில் உள்ள, ஒற்றை சீப்பு போன்ற செவுள்; நீரில் சுவாசத்துக்கான முதன்மை உறுப்பு.",
+                        "The pulmonary sac is a highly vascular chamber of the mantle cavity that functions as a lung in air, and when the oxygen in the water is low." to "நுரையீரல் பை மேண்டில் குழியின் மிகுந்த நாளங்களுடைய அறை; காற்றில், நீரில் ஆக்சிஜன் குறைவாக இருக்கும்போது நுரையீரலாகச் செயல்படுகிறது.",
+                        "The left nuchal lobe can be rolled to form an inhalant siphon for water or air, and the right nuchal lobe helps to conduct the outgoing current in aquatic respiration." to "இடது நுக்கல் மடல் நீர் அல்லது காற்றுக்கான உள்ளிழுக்கும் சைஃபனாகச் சுருட்டப்படலாம்; வலது நுக்கல் மடல் நீர்ச் சுவாசத்தில் வெளியேறும் நீரோட்டத்தைக் கடத்த உதவுகிறது.",
+                        "The epitaenia is a fold that separates the branchial and pulmonary regions of the mantle cavity, and helps to maintain the correct respiratory currents." to "எபிட்டீனியா மேண்டில் குழியின் கிளைக்கிய, நுரையீரல் பகுதிகளைப் பிரித்து சரியான சுவாச நீரோட்டங்களைப் பராமரிக்க உதவும் மடிப்பு.",
+                        "The operculum protects the withdrawn animal and reduces loss of water in unfavourable conditions; the osphradium samples the incoming water chemically, but it is a sense organ and not a respiratory organ." to "ஆப்பர்குலம் உள்ளிழுத்த விலங்கைப் பாதுகாத்து சாதகமற்ற நிலைகளில் நீர் இழப்பைக் குறைக்கிறது; ஆஸ்ஃப்ரேடியம் உள்வரும் நீரை வேதிமுறையில் சோதிக்கிறது; அது உணர்வு உறுப்பு, சுவாச உறுப்பு அல்ல.",
+                    ),
+                    bfig("pila/ctenidium", "Pila, the ctenidium (gill) showing the filaments on one side of the axis." to "பைலா, அச்சின் ஒரு பக்கத்தில் இழைகளைக் காட்டும் டீனிடியம் (செவுள்)."),
+                    bp("When the snail is in water and breathing with the gill, the left nuchal lobe is not used as a siphon, and water enters the mantle cavity at the left, passes over the gill and leaves at the right. When it comes to the surface to breathe air, the left nuchal lobe is rolled into a tube and extended above the water, like a snorkel, to carry air into the pulmonary sac. The sac is lined with a rich network of blood vessels, and oxygen diffuses into the blood across its thin wall." to
+                        "நத்தை நீரில் இருந்து செவுளால் சுவாசிக்கும்போது இடது நுக்கல் மடல் சைஃபனாகப் பயன்படுவதில்லை; நீர் இடப்புறம் மேண்டில் குழிக்குள் நுழைந்து செவுள் மீது சென்று வலப்புறம் வெளியேறுகிறது. காற்றைச் சுவாசிக்க மேற்பரப்புக்கு வரும்போது இடது நுக்கல் மடல் குழாயாகச் சுருட்டப்பட்டு ஸ்நார்கெல் போல நீருக்கு மேல் நீட்டப்பட்டு நுரையீரல் பைக்குக் காற்றைக் கொண்டு செல்கிறது. பை செறிந்த இரத்த நாள வலையால் உள்ளுறையிடப்பட்டுள்ளது; ஆக்சிஜன் அதன் மெல்லிய சுவர் வழியே இரத்தத்துக்குள் பரவுகிறது."),
+                    bdef("Monopectinate", "ஒற்றைப்பக்க சீப்பு", "Of a gill, having filaments on one side of the axis only." to
+                        "செவுளில், அச்சின் ஒரு பக்கத்தில் மட்டும் இழைகள் உள்ள."),
+                    bdef("Pulmonary sac", "நுரையீரல் பை", "The vascular chamber of the mantle cavity of Pila that serves as a lung in air." to
+                        "காற்றில் நுரையீரலாகச் செயல்படும் பைலாவின் மேண்டில் குழியிலுள்ள நாளமிகு அறை."),
+                    bdef("Nuchal lobe", "நுக்கல் மடல்", "A fold at the edge of the mantle that can be rolled to form a siphon." to
+                        "சைஃபனாகச் சுருட்டப்படக்கூடிய மேண்டில் விளிம்பு மடிப்பு."),
+                    bdef("Epitaenia", "எபிட்டீனியா", "A fold in the roof of the mantle cavity that separates the branchial and pulmonary regions." to
+                        "கிளைக்கிய, நுரையீரல் பகுதிகளைப் பிரிக்கும் மேண்டில் குழி மேற்கூரையிலுள்ள மடிப்பு."),
+                    bdef("Amphibious", "நீர்நில வாழ்", "Able to live both in water and on land." to
+                        "நீரிலும் நிலத்திலும் வாழக்கூடிய."),
+                )),
+            bsec("digestion", "Digestive system and feeding", "செரிமான மண்டலமும் உண்ணுதலும்",
+                blocks = listOf(
+                    bp("The mouth lies at the end of the snout and is bounded by lips. It opens into a buccal cavity with a pair of horny jaws, which cut the plant food, and a radula, which rasps it, and the radula is borne on the odontophore. Salivary glands open into the buccal cavity and their secretion lubricates the food and has a digestive action. The oesophagus leads to a stomach, into which the ducts of the large digestive gland open, and then to a long coiled intestine that runs to the rectum and the anus, which opens into the pallial cavity at the right side near the head, as a result of torsion." to
+                        "வாய் முகவாயின் முனையில் உதடுகளால் எல்லையிடப்பட்டுள்ளது. தாவர உணவை வெட்டும் ஓர் இணை கொம்புத் தாடைகளும் அதைச் சுரண்டும் ராடுலாவும் உடைய வாய்க்குழிக்குள் திறக்கிறது; ராடுலா ஓடோன்டோஃபோரால் தாங்கப்படுகிறது. உமிழ்நீர்ச் சுரப்பிகள் வாய்க்குழிக்குள் திறக்கின்றன; அவற்றின் சுரப்பு உணவை வழுக்கி செரிமானச் செயலும் செய்கிறது. உணவுக்குழல் பெரிய செரிமானச் சுரப்பியின் நாளங்கள் திறக்கும் இரைப்பைக்கும், பின் மலக்குடல், மலவாய் வரை செல்லும் நீண்ட சுருண்ட குடலுக்கும் செல்கிறது; முறுக்கலின் விளைவாக மலவாய் தலைக்கு அருகில் வலப்பக்கம் மேண்டில் குழிக்குள் திறக்கிறது."),
+                    bp("The digestive gland is a large, brownish organ that occupies much of the visceral mass. It secretes enzymes, absorbs digested food and stores reserves, and thus does the work of both liver and pancreas." to
+                        "செரிமானச் சுரப்பி உள்ளுறுப்புத் திரளின் பெரும்பகுதியை நிரப்பும் பெரிய, பழுப்பு நிற உறுப்பு. நொதிகளைச் சுரந்து, செரித்த உணவை உறிஞ்சி, சேமிப்புகளை வைத்திருக்கிறது; கல்லீரல், கணையம் இரண்டின் பணியையும் செய்கிறது."),
+                    bdef("Salivary gland", "உமிழ்நீர்ச் சுரப்பி", "A gland opening into the buccal cavity whose secretion lubricates and begins the digestion of food." to
+                        "வாய்க்குழிக்குள் திறந்து, சுரப்பு உணவை வழுக்கி செரிப்பைத் தொடங்கும் சுரப்பி."),
+                    bdef("Digestive gland", "செரிமானச் சுரப்பி", "A large gland of molluscs that secretes enzymes, absorbs food and stores reserves." to
+                        "நொதிகளைச் சுரந்து, உணவை உறிஞ்சி, சேமிப்புகளை வைத்திருக்கும் மெல்லுடலிகளின் பெரிய சுரப்பி."),
+                )),
+            bsec("systems", "Circulation, excretion, nervous system and reproduction", "இரத்த ஓட்டம், கழிவு நீக்கம், நரம்பு மண்டலம், இனப்பெருக்கம்",
+                blocks = listOf(
+                    bp("The circulation is open. The heart lies in the pericardial cavity and consists of a single auricle and a ventricle, and the blood leaves the ventricle by arteries and passes into sinuses in the tissues, and it returns to the gill and the lung before entering the auricle. The blood contains the respiratory pigment haemocyanin, dissolved in the plasma. The kidney is a single, large organ that lies near the pericardial cavity, and opens into it by a funnel and into the mantle cavity by a pore, and it excretes nitrogenous waste mainly as ammonia while it lives in water; the form of the waste is reported to change during aestivation, but the examination answer need not go further." to
+                        "இரத்த ஓட்டம் திறந்தது. இதயம் பெரிகார்டியல் குழியில் ஓர் ஆரிக்கிள், ஒரு வென்ட்ரிக்கிளுடன் அமைந்துள்ளது; இரத்தம் வென்ட்ரிக்கிளிலிருந்து தமனிகளால் வெளியேறி திசுக்களின் சைனஸ்களுக்குச் சென்று, ஆரிக்கிளுக்குள் நுழையும் முன் செவுள், நுரையீரலுக்குத் திரும்புகிறது. இரத்தத்தில் பிளாஸ்மாவில் கரைந்த சுவாச நிறமி ஹீமோசயனின் உள்ளது. சிறுநீரகம் பெரிகார்டியல் குழிக்கு அருகில் உள்ள ஒற்றை, பெரிய உறுப்பு; புனலால் அதற்குள்ளும் துளையால் மேண்டில் குழிக்குள்ளும் திறக்கிறது; நீரில் வாழும்போது நைட்ரஜன் கழிவை முக்கியமாக அம்மோனியாவாக வெளியேற்றுகிறது; கோடைத்துயிலின்போது கழிவின் வடிவம் மாறுவதாகக் கூறப்படுகிறது; ஆனால் தேர்வு விடை மேலும் செல்லத் தேவையில்லை."),
+                    bp("The nervous system has the cerebral, pleural, pedal and visceral ganglia, joined by connectives, and, as a consequence of torsion, the visceral connectives are twisted into a figure of eight. The sense organs are the tentacles, eyes, statocysts near the pedal ganglia, and the osphradium, which lies at the base of the gill. The sexes are separate, and fertilisation is internal, the male using a copulatory organ, and the female laying eggs in masses above the water line. The development is direct in the sense that there is no free larva, and the young hatch as small snails." to
+                        "நரம்பு மண்டலத்தில் பெருமூளை, ப்ளூரல், பாத, உள்ளுறுப்பு நரம்புத் திரள்கள் இணைப்பிகளால் இணைந்துள்ளன; முறுக்கலின் விளைவாக உள்ளுறுப்பு இணைப்பிகள் எட்டு வடிவில் முறுக்கப்பட்டுள்ளன. உணர்வு உறுப்புகள் உணர்கொம்புகள், கண்கள், பாத நரம்புத் திரள்களுக்கு அருகிலுள்ள ஸ்டேட்டோசிஸ்ட்கள், செவுளின் அடியிலுள்ள ஆஸ்ஃப்ரேடியம். பால் தனி; கருவுறுதல் உள்ளுக்குள்; ஆண் இணைதல் உறுப்பைப் பயன்படுத்துகிறது; பெண் நீர்க்கோட்டுக்கு மேல் திரளாக முட்டையிடுகிறது. தனி லார்வா இல்லை என்ற பொருளில் வளர்ச்சி நேரடி; இளையவை சிறு நத்தைகளாகப் பொரிகின்றன."),
+                    bdef("Figure-of-eight nerve loop", "எட்டு வடிவ நரம்பு முறுக்கு", "The twisting of the visceral nerve connectives of a gastropod that results from torsion." to
+                        "முறுக்கலால் ஏற்படும் இரைப்பைக்காலியின் உள்ளுறுப்பு நரம்பு இணைப்பிகளின் முறுக்கம்."),
+                    bdef("Haemocyanin", "ஹீமோசயனின்", "A copper-containing respiratory pigment dissolved in the blood plasma of molluscs and crustaceans." to
+                        "மெல்லுடலிகள், ஓட்டுடலிகளின் இரத்த பிளாஸ்மாவில் கரைந்த தாமிரம் கொண்ட சுவாச நிறமி."),
+                )),
+            bsec("comparison", "Pila compared with Unio", "பைலாவும் யூனியோவும் ஒப்பீடு",
+                blocks = listOf(
+                    btable("Pila and Unio compared", "பைலாவும் யூனியோவும்",
+                        listOf("Feature" to "பண்பு", "Pila (Gastropoda)" to "பைலா (காஸ்ட்ரோபோடா)", "Unio (Bivalvia)" to "யூனியோ (பைவால்வியா)"),
+                        listOf(
+                            listOf("Shell" to "ஓடு", "One spirally coiled shell, closed by an operculum" to "ஆப்பர்குலத்தால் மூடப்படும் ஒரு சுருள் ஓடு", "Two lateral valves joined by a dorsal hinge" to "முதுகுப்புற இணைப்பால் இணைந்த இரு பக்க ஓடுகள்"),
+                            listOf("Head" to "தலை", "Distinct, with tentacles and eyes" to "தெளிவான, உணர்கொம்புகள், கண்களுடன்", "Greatly reduced" to "மிகவும் குறைந்தது"),
+                            listOf("Radula" to "ராடுலா", "Present" to "உண்டு", "Absent" to "இல்லை"),
+                            listOf("Foot" to "பாதம்", "Broad, creeping" to "அகன்ற, ஊரும்", "Laterally compressed, burrowing" to "பக்கவாட்டில் அழுத்தப்பட்ட, துளையிடும்"),
+                            listOf("Feeding" to "உண்ணுதல்", "Rasping of plant matter" to "தாவரப் பொருளைச் சுரண்டுதல்", "Filter feeding with gills" to "செவுள்களால் வடிகட்டி உண்ணுதல்"),
+                            listOf("Torsion" to "முறுக்கல்", "Torted" to "முறுக்கப்பட்டது", "Not torted" to "முறுக்கப்படவில்லை"),
+                            listOf("Larva" to "லார்வா", "No free larva" to "தனி லார்வா இல்லை", "Glochidium in freshwater unionids" to "நன்னீர் யூனியோனிட்களில் குளோகிடியம்"),
+                        )),
+                    bp("The chief point of the comparison is the contrast between a gastropod, which is an active, creeping, rasping animal with a head, and a bivalve, which is a sedentary filter feeder. The glochidium larva belongs to the freshwater mussel and is not a stage in the life of Pila, and a student who writes it into the life cycle of the snail has confused two animals. Pila is not a bivalve, and the account of Unio is not to be mixed with it." to
+                        "ஒப்பீட்டின் முக்கிய புள்ளி, தலையுடைய செயலூக்க, ஊரும், சுரண்டும் விலங்கான இரைப்பைக்காலிக்கும் அசையா வடிகட்டி உண்ணியான இருவோட்டுடலிக்கும் உள்ள வேறுபாடு. குளோகிடியம் லார்வா நன்னீர்ச் சிப்பிக்குரியது; பைலாவின் வாழ்வில் ஒரு நிலை அல்ல; அதை நத்தையின் வாழ்க்கைச் சுழற்சியில் எழுதும் மாணவர் இரு விலங்குகளைக் குழப்பியுள்ளார். பைலா இருவோட்டுடலி அல்ல; யூனியோவின் விவரிப்பை அதனுடன் கலக்கக்கூடாது."),
+                    bnote("Do not call the gill a lung", "செவுளை நுரையீரல் எனக் கூற வேண்டாம்",
+                        "In Pila the gill works in water and the lung in air, and they are different organs in different parts of the mantle cavity." to
+                            "பைலாவில் செவுள் நீரிலும் நுரையீரல் காற்றிலும் செயல்படுகின்றன; அவை மேண்டில் குழியின் வெவ்வேறு பகுதிகளில் உள்ள வெவ்வேறு உறுப்புகள்."),
+                )),
+        ),
+        summary = listOf(
+            "Pila is a freshwater gastropod with a single coiled shell closed by an operculum, a distinct head with tentacles and eyes, and a broad creeping foot." to "பைலா ஆப்பர்குலத்தால் மூடப்படும் ஒற்றைச் சுருள் ஓடு, உணர்கொம்புகள், கண்களுடன் தெளிவான தலை, அகன்ற ஊரும் பாதம் கொண்ட நன்னீர் இரைப்பைக்காலி.",
+            "It is amphibious: a monopectinate ctenidium serves in water and a vascular pulmonary sac serves in air." to "அது நீர்நில வாழ்வி: ஒற்றைப்பக்க டீனிடியம் நீரிலும் நாளமிகு நுரையீரல் பை காற்றிலும் பயன்படுகின்றன.",
+            "The left nuchal lobe forms an inhalant siphon, the epitaenia separates the branchial and pulmonary regions, and the osphradium is a sense organ." to "இடது நுக்கல் மடல் உள்ளிழுக்கும் சைஃபனாகிறது; எபிட்டீனியா கிளைக்கிய, நுரையீரல் பகுதிகளைப் பிரிக்கிறது; ஆஸ்ஃப்ரேடியம் உணர்வு உறுப்பு.",
+            "The radula and horny jaws handle plant food, and the digestive gland secretes, absorbs and stores." to "ராடுலாவும் கொம்புத் தாடைகளும் தாவர உணவைக் கையாளுகின்றன; செரிமானச் சுரப்பி சுரந்து, உறிஞ்சி, சேமிக்கிறது.",
+            "Circulation is open with haemocyanin; there is a single kidney and a twisted nerve ring after torsion." to "ஹீமோசயனினுடன் இரத்த ஓட்டம் திறந்தது; ஒற்றைச் சிறுநீரகமும் முறுக்கலுக்குப் பின் முறுக்கப்பட்ட நரம்பு வளையமும் உள்ளன.",
+            "Pila differs from Unio in shell, head, radula, foot and larva, and the glochidium belongs to the mussel." to "பைலா ஓடு, தலை, ராடுலா, பாதம், லார்வாவில் யூனியோவிலிருந்து வேறுபடுகிறது; குளோகிடியம் சிப்பிக்குரியது.",
+        ),
+        checks = listOf(
+            bqc("Name the lid of Pila.", "பைலாவின் மூடியைப் பெயரிடுக.",
+                "The operculum.", "ஆப்பர்குலம்."),
+            bqc("Give two breathing organs of Pila.", "பைலாவின் இரு சுவாச உறுப்புகளைத் தருக.",
+                "The ctenidium (gill) in water and the pulmonary sac (lung) in air.", "நீரில் டீனிடியம் (செவுள்); காற்றில் நுரையீரல் பை (நுரையீரல்)."),
+            bqc("What is the osphradium?", "ஆஸ்ஃப்ரேடியம் என்றால் என்ன?",
+                "A chemosensory organ that tests the water entering the mantle cavity; it is not a respiratory organ.", "மேண்டில் குழிக்குள் நுழையும் நீரைச் சோதிக்கும் வேதி உணர் உறுப்பு; சுவாச உறுப்பு அல்ல."),
+            bqc("Which larva belongs to Unio and not to Pila?", "எந்த லார்வா பைலாவுக்கு அல்ல, யூனியோவுக்குரியது?",
+                "The glochidium.", "குளோகிடியம்."),
+        ),
+    )
+}
