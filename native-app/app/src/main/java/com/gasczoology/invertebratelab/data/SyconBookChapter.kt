@@ -345,8 +345,3 @@ object SyconBookChapter {
         ),
     )
 }
-
-object BookChapters {
-    val byLesson: Map<String, BookChapter> = listOf(SyconBookChapter.chapter).associateBy { it.lessonId }
-    fun forLesson(lessonId: String): BookChapter? = byLesson[lessonId]
-}
