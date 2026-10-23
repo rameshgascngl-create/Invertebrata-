@@ -35,6 +35,7 @@ import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
 import com.gasczoology.invertebratelab.data.ParameciumNuclearSequence
+import com.gasczoology.invertebratelab.data.ParameciumNuclearGlossary
 import kotlinx.coroutines.launch
 
 /**
@@ -349,6 +350,12 @@ internal fun ParameciumTextbookReader(
             ParameciumNuclearSequence.conjugation else ParameciumNuclearSequence.binaryFission
         Card(Modifier.fillMaxWidth().testTag("paramecium-nuclear-sequence-" + section.id)) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                val definitions = if (section.id == "conjugation") ParameciumNuclearGlossary.conjugation else ParameciumNuclearGlossary.fission
+                Text(view(language, "Definitions", "வரையறைகள்"), style = MaterialTheme.typography.titleLarge)
+                definitions.forEach { term ->
+                    Text(term.name.value(language), style = MaterialTheme.typography.titleMedium)
+                    Text(term.definition.value(language), style = MaterialTheme.typography.bodyLarge)
+                }
                 Text(view(language, "Chronological stages — explanatory text",
                     "நிகழ்வுகளின் காலவரிசை — விளக்க உரை"),
                     style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
