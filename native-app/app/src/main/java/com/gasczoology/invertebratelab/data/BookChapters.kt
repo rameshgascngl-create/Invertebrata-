@@ -10,6 +10,7 @@ object BookChapters {
         ObeliaBookChapter.chapter,
         CoralsBookChapter.chapter,
         CoralEconomicsBookChapter.chapter,
+        PolymorphismBookChapter.chapter,
         SyconBookChapter.chapter,
     )
     val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
