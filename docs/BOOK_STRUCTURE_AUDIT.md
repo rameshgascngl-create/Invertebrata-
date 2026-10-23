@@ -60,3 +60,24 @@ Audit date: 2026-10-22 (branch `feat/plate-pipeline`). Counts are regex-derived 
 - Full rewrite ≈ 40 chapters × ~3,500 words × 2 languages ≈ 280,000 words. Do it per unit.
 - Tamil terminology needs the author's review; draft Tamil is not to be treated as approved.
 - Facts must be checked against the cited textbooks; nothing here is subject-expert reviewed.
+
+## 6. Implementation status (updated 2026-10-23)
+
+**All 43 chapters in `NativeCurriculumManifest.a5ChapterIdsByUnit` now have a book-format chapter** (`data/BookChapters.all`), enforced by `BookChapterContract` (≥2,000 English words, ≥5 numbered sections, ≥8 definitions, 3–6 objectives, 5–8 summary points, ≥3 quick checks, ≥2 further-reading entries, valid unique plate slots, no blank EN/TA strings).
+
+| Unit | Chapters | Status |
+|---|---|---|
+| I | 7 | Complete |
+| II | 9 | Complete |
+| III | 7 | Complete |
+| IV | 8 | Complete |
+| V | 12 | Complete |
+
+**Known limits (not resolved by this work):**
+
+- **Earthworm type study** is not in the A5 chapter list, so it cannot be numbered and stays as the existing lesson.
+- **Penaeus interactive explorers and Nereis section lessons** are no longer shown where a book chapter exists (single-render policy).
+- **Tamil is a working draft** and needs the author's terminology review before any chapter leaves `DRAFT_UNVERIFIED`.
+- **Facts flagged for reviewer confirmation:** corals schedule, *Hydractinia* zooid count, *Physalia* terminology; medical content (parasites, malaria) is biology and control principles only, with no treatment guidance.
+- **Image provenance still open:** authors and licences for the Sycon and Obelia images, Haeckel plate number, several low-quality plates, and supplied images not yet placed.
+- **Scientific review** against the cited textbooks has not been done by a subject expert.

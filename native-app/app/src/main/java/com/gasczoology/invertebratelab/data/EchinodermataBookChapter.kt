@@ -127,17 +127,6 @@ object EchinodermataBookChapter {
                     bdef("Coelomocyte", "கொலோமோசைட்", "A free cell of the coelomic fluid that takes part in defence and waste removal." to
                         "பாதுகாப்பிலும் கழிவு அகற்றலிலும் பங்கேற்கும் உடற்குழித் திரவத்தின் தனி உயிரணு."),
                 )),
-            bsec("answers", "Writing the answer", "விடை எழுதுதல்",
-                blocks = listOf(
-                    bp("The general characters question is answered best in an order that follows the body, starting with habitat and germ layers, followed by symmetry with the note that it is secondary, the skeleton, the water-vascular system, the nervous and the reproductive features, and finishing with development and larvae. A candidate who ends with the larva has the opportunity to state the deuterostome affinity, which is the point that examiners reward. The classification should be written as a list of the five classes with a type and one diagnostic character each, and it is not necessary to carry the classification below the level of the class." to
-                        "பொதுப் பண்புகள் கேள்விக்கு உடலைப் பின்பற்றும் வரிசையில், வாழிடம், கருவடுக்குகளுடன் தொடங்கி, இரண்டாம் நிலை என்ற குறிப்புடன் சமச்சீர், கூடு, நீர்-நாள அமைப்பு, நரம்பு, இனப்பெருக்கப் பண்புகள், வளர்ச்சி, லார்வாக்களுடன் முடிப்பது சிறந்த விடை. லார்வாவுடன் முடிக்கும் தேர்வர் தேர்வாளர்கள் மதிப்பளிக்கும் இரண்டாம்வாய் உறவைக் கூற வாய்ப்புப் பெறுகிறார். வகைப்பாடு ஐந்து வகுப்புகளின் பட்டியலாக, ஒவ்வொன்றுக்கும் ஒரு வகையும் ஒரு அடையாளப் பண்பும் சேர்த்து எழுதப்பட வேண்டும்; வகுப்பு நிலைக்குக் கீழ் வகைப்பாட்டைக் கொண்டுசெல்ல அவசியமில்லை."),
-                    bpoints("Points that gain marks", "மதிப்பெண் தரும் புள்ளிகள்",
-                        "Use the word secondary for the radial symmetry, and give the reason." to "ஆரைச் சமச்சீருக்கு இரண்டாம் நிலை என்ற சொல்லைப் பயன்படுத்தி காரணம் தருக.",
-                        "Name the water-vascular system as hydraulic, with the madreporite, ring canal, radial canals and ampullae." to "நீர்-நாள அமைப்பை மேட்ரிபோரைட், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், ஆம்புலாக்களுடன் நீரழுத்தமானது எனக் குறிப்பிடுக.",
-                        "Give the larva of at least two classes." to "குறைந்தது இரு வகுப்புகளின் லார்வாவைத் தருக.",
-                        "State that echinoderms are relatives of the chordates through the Ambulacraria." to "அம்புலாக்ரேரியா மூலம் முட்தோலிகள் முதுகுநாணிகளின் உறவினர் எனக் கூறுக.",
-                    ),
-                )),
             bsec("habits", "Habits, regeneration and importance", "பழக்கங்கள், மீளுருவாக்கம், முக்கியத்துவம்",
                 blocks = listOf(
                     bp("Echinoderms live on the sea bottom from the shore to the deep sea, and they feed in different ways. The starfishes are mostly carnivores that eat bivalves and other slow animals, the sea urchins graze on algae, the brittle stars scavenge or capture particles, the sea cucumbers collect deposits with their tentacles, and the crinoids filter particles from the water. They have a strong capacity to regenerate lost parts, and in some starfishes and brittle stars a lost arm can be replaced, and in certain forms a detached arm with part of the disc may regenerate a whole animal. The extent of regeneration differs between species, and should be stated in this guarded way." to
@@ -148,6 +137,17 @@ object EchinodermataBookChapter {
                         "இழந்த உடல் பகுதிகளை புதிய வளர்ச்சியால் மாற்றுதல்."),
                     bdef("Keystone predator", "முக்கிய வேட்டையாடி", "A predator whose removal changes the structure of a whole community out of proportion to its numbers." to
                         "அதன் எண்ணிக்கைக்குப் பொருந்தாத அளவில் அகற்றப்படும்போது முழு சமூகத்தின் அமைப்பையும் மாற்றும் வேட்டையாடி."),
+                )),
+            bsec("answers", "Writing the answer", "விடை எழுதுதல்",
+                blocks = listOf(
+                    bp("The general characters question is answered best in an order that follows the body, starting with habitat and germ layers, followed by symmetry with the note that it is secondary, the skeleton, the water-vascular system, the nervous and the reproductive features, and finishing with development and larvae. A candidate who ends with the larva has the opportunity to state the deuterostome affinity, which is the point that examiners reward. The classification should be written as a list of the five classes with a type and one diagnostic character each, and it is not necessary to carry the classification below the level of the class." to
+                        "பொதுப் பண்புகள் கேள்விக்கு உடலைப் பின்பற்றும் வரிசையில், வாழிடம், கருவடுக்குகளுடன் தொடங்கி, இரண்டாம் நிலை என்ற குறிப்புடன் சமச்சீர், கூடு, நீர்-நாள அமைப்பு, நரம்பு, இனப்பெருக்கப் பண்புகள், வளர்ச்சி, லார்வாக்களுடன் முடிப்பது சிறந்த விடை. லார்வாவுடன் முடிக்கும் தேர்வர் தேர்வாளர்கள் மதிப்பளிக்கும் இரண்டாம்வாய் உறவைக் கூற வாய்ப்புப் பெறுகிறார். வகைப்பாடு ஐந்து வகுப்புகளின் பட்டியலாக, ஒவ்வொன்றுக்கும் ஒரு வகையும் ஒரு அடையாளப் பண்பும் சேர்த்து எழுதப்பட வேண்டும்; வகுப்பு நிலைக்குக் கீழ் வகைப்பாட்டைக் கொண்டுசெல்ல அவசியமில்லை."),
+                    bpoints("Points that gain marks", "மதிப்பெண் தரும் புள்ளிகள்",
+                        "Use the word secondary for the radial symmetry, and give the reason." to "ஆரைச் சமச்சீருக்கு இரண்டாம் நிலை என்ற சொல்லைப் பயன்படுத்தி காரணம் தருக.",
+                        "Name the water-vascular system as hydraulic, with the madreporite, ring canal, radial canals and ampullae." to "நீர்-நாள அமைப்பை மேட்ரிபோரைட், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், ஆம்புலாக்களுடன் நீரழுத்தமானது எனக் குறிப்பிடுக.",
+                        "Give the larva of at least two classes." to "குறைந்தது இரு வகுப்புகளின் லார்வாவைத் தருக.",
+                        "State that echinoderms are relatives of the chordates through the Ambulacraria." to "அம்புலாக்ரேரியா மூலம் முட்தோலிகள் முதுகுநாணிகளின் உறவினர் எனக் கூறுக.",
+                    ),
                 )),
         ),
         summary = listOf(
