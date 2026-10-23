@@ -18,6 +18,8 @@ object BookChapters {
         AscarisBookChapter.chapter,
         NematodeParasitesBookChapter.chapter,
         NematodeAdaptationsBookChapter.chapter,
+        AnnelidaBookChapter.chapter,
+        NereisBookChapter.chapter,
         SyconBookChapter.chapter,
     )
     val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
