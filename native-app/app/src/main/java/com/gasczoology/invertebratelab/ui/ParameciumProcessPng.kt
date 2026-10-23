@@ -28,9 +28,9 @@ import com.gasczoology.invertebratelab.data.ParameciumProcess
  */
 internal object ParameciumProcessPngIndex {
     val byProcess: Map<ParameciumProcess, String?> = mapOf(
-        ParameciumProcess.CILIARY_MOTION to "unit1/concepts/paramecium_ciliary_locomotion",
-        ParameciumProcess.OSMOREGULATION to "unit1/concepts/paramecium_osmoregulation",
-        ParameciumProcess.FEEDING to "unit1/concepts/paramecium_nutrition",
+        ParameciumProcess.CILIARY_MOTION to "unit1/paramecium_external",
+        ParameciumProcess.OSMOREGULATION to "unit1/paramecium_vacuole",
+        ParameciumProcess.FEEDING to "unit1/paramecium_oral",
         ParameciumProcess.BINARY_FISSION to null,
         ParameciumProcess.CONJUGATION to null,
     )

@@ -162,11 +162,11 @@ private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
 private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
     // Each concept gets its own PNG slot. No anatomy is drawn in Canvas.
     val stem = when (figure) {
-        "oral" -> "unit1/concepts/paramecium_oral_apparatus"
-        "vacuole" -> "unit1/concepts/paramecium_osmoregulation"
-        "overview" -> "unit1/concepts/paramecium_nuclear_anatomy"
-        "fission" -> "unit1/concepts/paramecium_binary_fission"
-        "conjugation" -> "unit1/concepts/paramecium_conjugation"
+        "oral" -> "unit1/paramecium_oral"
+        "vacuole" -> "unit1/paramecium_vacuole"
+        "overview" -> null // No verified independent nuclear master; do not repeat the same source photo.
+        "fission" -> null // Dedicated binary-fission plate remains missing.
+        "conjugation" -> null // Unreviewed conjugation posters must not be substituted.
         else -> null
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
