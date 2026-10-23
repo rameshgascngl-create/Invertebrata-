@@ -15,7 +15,7 @@ object CnidariaBookChapter {
         ),
         introduction = listOf(
             "The Cnidaria are the first animals in the sequence of this course to possess true tissues. Their bodies are built of two cell layers around a jelly-like middle layer, they have radial symmetry and a single opening to the gut, and they are armed with stinging cells that are found in no other animals. The group includes the freshwater Hydra, the colonial hydroids such as Obelia, the jellyfishes, the sea anemones and the reef-building corals." to
-                "இந்தப் பாடத்தின் வரிசையில் உண்மையான திசுக்களைக் கொண்ட முதல் விலங்குகள் நிடேரியாக்கள். அவற்றின் உடல் ஜெல்லி போன்ற நடு அடுக்கைச் சுற்றி இரு செல் அடுக்குகளால் கட்டப்பட்டது; ஆரச் சமச்சீர், குடலுக்கு ஒரே திறப்பு கொண்டவை; வேறு எந்த விலங்கிலும் காணப்படாத கொட்டும் செல்களைக் கொண்டவை. நன்னீர் ஹைட்ரா, ஒபீலியா போன்ற காலனி ஹைட்ராய்டுகள், ஜெல்லிமீன்கள், கடல் அனிமோன்கள், பவளப்பாறை உருவாக்கும் பவளங்கள் இக்குழுவில் அடங்கும்.",
+                "இந்தப் பாடத்தின் வரிசையில் உண்மையான திசுக்களைக் கொண்ட முதல் விலங்குகள் நிடேரியாக்கள். அவற்றின் உடல் ஜெல்லி போன்ற நடு அடுக்கைச் சுற்றி இரு செல் அடுக்குகளால் கட்டப்பட்டது; ஆரச் சமச்சீர், குடலுக்கு ஒரே திறப்பு கொண்டவை; வேறு எந்த விலங்கிலும் காணப்படாத கொட்டும் செல்களைக் கொண்டவை. நன்னீர் ஹைட்ரா, ஒபீலியா போன்ற காலனி ஹைட்ராய்டுகள், ஜெல்லிமீன்கள், கடல்சாமந்திகள், பவளப்பாறை உருவாக்கும் பவளங்கள் இக்குழுவில் அடங்கும்.",
             "The paper names the phylum Coelenterata, and the current scientific name is Cnidaria. This chapter uses both, as the syllabus does, and sets out the characters that define the group, the two body forms that run through all its life cycles, and the three classes into which it is divided." to
                 "பாடத்திட்டம் தொகுதியை சீலென்டிரேட்டா என்று குறிப்பிடுகிறது; தற்போதைய அறிவியல் பெயர் நிடேரியா. பாடத்திட்டத்தைப் பின்பற்றி இந்த அத்தியாயம் இரண்டையும் பயன்படுத்துகிறது; குழுவை வரையறுக்கும் பண்புகள், எல்லா வாழ்க்கைச் சுழற்சிகளிலும் வரும் இரு உடல் வடிவங்கள், தொகுதி பிரியும் மூன்று வகுப்புகள் ஆகியவற்றை விவரிக்கிறது.",
         ),
@@ -176,7 +176,7 @@ object CnidariaBookChapter {
                     ),
                     bsub("Class Anthozoa", "வகுப்பு ஆந்தோசோவா",
                         bp("The sea anemones and corals. Only the polyp is present; the medusa is wholly absent. The polyp is more complex than that of hydrozoans, with a pharynx and internal partitions (mesenteries) that divide the gastrovascular cavity. Solitary or colonial. Examples are Metridium, Gorgonia, Pennatula, and the reef corals such as Madrepora." to
-                            "கடல் அனிமோன்களும் பவளங்களும். பாலிப் மட்டுமே உண்டு; மெடூசா முற்றிலும் இல்லை. பாலிப் ஹைட்ரோசோவாக்களைவிடச் சிக்கலானது; தொண்டையும், காஸ்ட்ரோவாஸ்குலர் குழியைப் பிரிக்கும் உள் பிரிவுகளும் (மெசென்டரிகள்) உண்டு. தனித்தவை அல்லது காலனி. எடுத்துக்காட்டுகள்: மெட்ரீடியம், கோர்கோனியா, பென்னாட்டுலா, மேட்ரபோரா போன்ற பவளப்பாறை பவளங்கள்."),
+                            "கடல்சாமந்திகளும் பவளங்களும். பாலிப் மட்டுமே உண்டு; மெடூசா முற்றிலும் இல்லை. பாலிப் ஹைட்ரோசோவாக்களைவிடச் சிக்கலானது; தொண்டையும், காஸ்ட்ரோவாஸ்குலர் குழியைப் பிரிக்கும் உள் பிரிவுகளும் (மெசென்டரிகள்) உண்டு. தனித்தவை அல்லது காலனி. எடுத்துக்காட்டுகள்: மெட்ரீடியம், கோர்கோனியா, பென்னாட்டுலா, மேட்ரபோரா போன்ற பவளப்பாறை பவளங்கள்."),
                     ),
                 )),
             bsec("importance", "The place of the group in the animal kingdom", "விலங்கு உலகில் இக்குழுவின் இடம்",
