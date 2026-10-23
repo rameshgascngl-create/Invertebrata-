@@ -1,0 +1,151 @@
+package com.gasczoology.invertebratelab.data
+
+/** Book-style chapter: Penaeus (prawn). DRAFT_UNVERIFIED; Tamil needs the author's review. */
+object PenaeusBookChapter {
+    val chapter = bchapter(
+        lessonId = "u4-penaeus",
+        title = "Penaeus: the prawn as a type" to "பெனியஸ்: இறால் ஒரு வகை எடுத்துக்காட்டாக",
+        objectives = listOf(
+            "Give the prescribed name, systematic position and habitat of the Indian white prawn." to "இந்திய வெள்ளை இறாலின் பாடத்திட்டப் பெயர், வகைப்பாட்டு நிலை, வாழிடத்தைக் கூற.",
+            "Describe the tagmata and the carapace of Penaeus." to "பெனியஸின் டேக்மாக்களையும் ஓட்டையும் விவரிக்க.",
+            "List the appendages in order and relate each to its function." to "உறுப்புகளை வரிசையாகப் பட்டியலிட்டு ஒவ்வொன்றையும் அதன் செயலுடன் தொடர்புபடுத்த.",
+            "Outline the digestive, circulatory, respiratory, excretory and nervous systems." to "செரிமான, இரத்த ஓட்ட, சுவாச, கழிவு நீக்க, நரம்பு மண்டலங்களை வரையறுக்க.",
+            "Describe the reproductive organs, including petasma and thelycum." to "பெடாஸ்மா, தெலிகம் உட்பட இனப்பெருக்க உறுப்புகளை விவரிக்க.",
+            "Outline the larval sequence from nauplius to postlarva." to "நாப்ளியஸ் முதல் போஸ்ட்லார்வா வரை லார்வா வரிசையை வரையறுக்க.",
+        ),
+        introduction = listOf(
+            "Penaeus indicus is the Indian white prawn, a marine and estuarine crustacean of the coasts of India that is caught and also farmed for food. It is the type for the study of the crustaceans in the syllabus, chosen because its body shows the arthropod plan in a clear form: a hard exoskeleton, a body of grouped segments, and a full series of appendages that are different from front to back. The prescribed name should be retained in the answer. Current taxonomic treatment accepts the species as Penaeus (Fenneropenaeus) indicus H. Milne Edwards, 1837, and the genus name Fenneropenaeus is used for it in some classifications. A single line on this is enough, since the anatomy does not change with the rank given to the name." to
+                "பெனியஸ் இண்டிகஸ் இந்திய வெள்ளை இறால்; இந்தியக் கடற்கரைகளின் கடல், முகத்துவார ஓட்டுடலி; உணவுக்காகப் பிடிக்கப்படுகிறது, வளர்க்கவும் படுகிறது. பாடத்திட்டத்தில் ஓட்டுடலிகளைக் கற்க இது எடுத்துக்காட்டு; கடின வெளிக்கூடு, தொகுக்கப்பட்ட கண்டங்களாலான உடல், முன்னிலிருந்து பின் வரை வேறுபடும் உறுப்புகளின் முழுத் தொடர் என ஆர்த்ரோபோடா அமைப்பை தெளிவாகக் காட்டுவதால் தேர்ந்தெடுக்கப்பட்டது. பாடத்திட்டப் பெயரை விடையில் தக்கவைக்க வேண்டும். தற்போதைய வகைப்பாட்டு நடைமுறை இனத்தை பெனியஸ் (ஃபென்னரோபெனியஸ்) இண்டிகஸ் H. மில்ன் எட்வர்ட்ஸ், 1837 என ஏற்கிறது; சில வகைப்பாடுகளில் ஃபென்னரோபெனியஸ் இனப் பெயர் பயன்படுகிறது. இது பற்றி ஒரு வரி போதும்; பெயருக்குத் தரப்படும் தரத்தால் உடற்கூறு மாறாது.",
+            "The chapter describes the external form and tagmata, the appendages in order, the internal systems, the reproductive organs, and the development through the larval stages. Four figures from the plate set are placed in the text where they are needed." to
+                "வெளிப்புற வடிவம், டேக்மாக்கள், வரிசையாக உறுப்புகள், உள் மண்டலங்கள், இனப்பெருக்க உறுப்புகள், லார்வா நிலைகள் வழியாக வளர்ச்சி ஆகியவற்றை அத்தியாயம் விவரிக்கிறது. தட்டுத் தொகுப்பின் நான்கு படங்கள் தேவைப்படும் இடங்களில் உரையில் வைக்கப்பட்டுள்ளன.",
+        ),
+        sections = listOf(
+            bsec("external", "Habit, habitat and external features", "பழக்கம், வாழிடம், வெளிப்புற அம்சங்கள்",
+                blocks = listOf(
+                    bp("Penaeus lives on the sea bed in coastal waters, on sand and mud, and enters brackish estuaries and backwaters when young. It is active at night and rests partly buried in the sand by day. It feeds on small animals, plant material and detritus. The body is laterally compressed, elongated, and shows a translucent greyish-white or pale colour with small pigment spots. Males are generally smaller than females." to
+                        "பெனியஸ் கடலோர நீரின் கடலடியில் மணல், சேற்றில் வாழ்கிறது; இளமையில் உவர் முகத்துவாரங்கள், உப்பங்கழிகளில் நுழைகிறது. இரவில் செயல்படுகிறது; பகலில் பகுதியாக மணலில் புதைந்து ஓய்வெடுக்கிறது. சிறு விலங்குகள், தாவரப் பொருள், சிதைவுப் பொருளை உண்கிறது. உடல் பக்கவாட்டில் அழுத்தப்பட்டு நீண்டது; சிறு நிறமிப் புள்ளிகளுடன் ஒளிபுகும் சாம்பல்-வெள்ளை அல்லது வெளிர் நிறம் காட்டுகிறது. ஆண்கள் பொதுவாகப் பெண்களை விடச் சிறியவை."),
+                    bfig("penaeus/external", "Penaeus, external view: the cephalothorax under the carapace, the rostrum, the abdomen and the tail fan." to "பெனியஸ், வெளிப்புறத் தோற்றம்: ஓட்டின் கீழ் செபலோதொராக்ஸ், ரோஸ்ட்ரம், வயிறு, வால் விசிறி."),
+                    bp("The body is divided into two tagmata. The cephalothorax is formed by the fusion of the head and thorax and is covered by a single shield, the carapace, which projects in front as a toothed spine, the rostrum. The carapace covers the gill chamber on each side. The abdomen is segmented, with six distinct segments, and ends in the telson. The segments of the abdomen are movable on one another, which allows the tail to be flexed, and each has the tergum above and the sternum below, joined by lateral plates, the pleura." to
+                        "உடல் இரு டேக்மாக்களாகப் பிரிக்கப்பட்டுள்ளது. செபலோதொராக்ஸ் தலையும் மார்பும் இணைவதால் உருவாகி, முன்னால் பல் கொண்ட முள்ளான ரோஸ்ட்ரமாக நீளும் ஒற்றைக் கேடயமான ஓட்டால் மூடப்படுகிறது. ஓடு ஒவ்வொரு பக்கமும் செவுள் அறையை மூடுகிறது. வயிறு ஆறு தெளிவான கண்டங்களுடன் கண்டமுடையது; டெல்சனில் முடிகிறது. வயிற்றுக் கண்டங்கள் ஒன்றின் மேல் ஒன்று அசையும்; வாலை வளைக்க இது அனுமதிக்கிறது; ஒவ்வொன்றுக்கும் மேலே டெர்கமும் கீழே ஸ்டெர்னமும் உள்ளன; அவை பக்கத் தகடுகளான புளூராவால் இணைகின்றன."),
+                    bdef("Carapace", "ஓடு (கேரபேஸ்)", "The shield of exoskeleton that covers the cephalothorax of a crustacean." to
+                        "ஓட்டுடலியின் செபலோதொராக்ஸை மூடும் வெளிக்கூட்டுக் கேடயம்."),
+                    bdef("Rostrum", "ரோஸ்ட்ரம்", "The toothed spine that projects forward from the front of the carapace between the eyes." to
+                        "கண்களுக்கிடையே ஓட்டின் முன்னிலிருந்து முன்னோக்கி நீளும் பல் கொண்ட முள்."),
+                    bdef("Telson", "டெல்சன்", "The terminal part of the abdomen of a crustacean, which with the uropods forms the tail fan." to
+                        "ஓட்டுடலியின் வயிற்றின் முனைப் பகுதி; யுரோபோடுகளுடன் சேர்ந்து வால் விசிறியை உருவாக்குகிறது."),
+                    bdef("Pleuron", "புளூரான்", "The lateral plate of the cuticle on each side of an abdominal segment." to
+                        "வயிற்றுக் கண்டத்தின் ஒவ்வொரு பக்கத்திலுள்ள புறத்தோலின் பக்கத் தகடு."),
+                )),
+            bsec("appendages", "The appendages", "உறுப்புகள்",
+                blocks = listOf(
+                    bp("The body bears nineteen pairs of appendages, and each pair is modified for particular work. They are biramous in their basic plan, but many have lost one branch. The head carries five pairs, the thorax eight and the abdomen six. In the head the first pair are the antennules and the second pair the antennae, which are chiefly sensory, and the antennule also bears a statocyst, an organ of balance. The third to fifth pairs are the mandibles, the first maxillae (maxillulae) and the second maxillae, which handle food, and the second maxillae also drive the water current through the gill chamber." to
+                        "உடல் பத்தொன்பது இணை உறுப்புகளைத் தாங்குகிறது; ஒவ்வொரு இணையும் குறிப்பிட்ட பணிக்கு மாற்றப்பட்டுள்ளது. அடிப்படைத் திட்டத்தில் அவை பைராமஸ்; ஆனால் பல ஒரு கிளையை இழந்துள்ளன. தலை ஐந்து இணைகளையும் மார்பு எட்டையும் வயிறு ஆறையும் தாங்குகிறது. தலையில் முதல் இணை ஆன்டென்யூல்களும் இரண்டாம் இணை ஆன்டென்னாக்களும்; இவை முக்கியமாக உணர்வுடையவை; ஆன்டென்யூல் சமநிலை உறுப்பான ஸ்டேட்டோசிஸ்டையும் தாங்குகிறது. மூன்று முதல் ஐந்தாம் இணைகள் மாண்டிபிள்கள், முதல் மேக்சில்லாக்கள் (மேக்சில்யூலா), இரண்டாம் மேக்சில்லாக்கள்; இவை உணவைக் கையாளுகின்றன; இரண்டாம் மேக்சில்லாக்கள் செவுள் அறை வழியே நீரோட்டத்தையும் இயக்குகின்றன."),
+                    bfig("penaeus/appendages", "The appendages of Penaeus arranged in order, from antennule to uropod." to "பெனியஸின் உறுப்புகள் ஆன்டென்யூல் முதல் யுரோபோடு வரை வரிசையாக."),
+                    btable("Appendages of Penaeus", "பெனியஸின் உறுப்புகள்",
+                        listOf("Region" to "பகுதி", "Appendages" to "உறுப்புகள்", "Chief function" to "முதன்மைச் செயல்"),
+                        listOf(
+                            listOf("Head (5 pairs)" to "தலை (5 இணை)", "Antennules" to "ஆன்டென்யூல்கள்", "Sensory; balance (statocyst)" to "உணர்வு; சமநிலை (ஸ்டேட்டோசிஸ்ட்)"),
+                            listOf("Head (5 pairs)" to "தலை (5 இணை)", "Antennae" to "ஆன்டென்னாக்கள்", "Sensory, touch and chemical" to "உணர்வு, தொடு, வேதி"),
+                            listOf("Head (5 pairs)" to "தலை (5 இணை)", "Mandibles, maxillulae, maxillae" to "மாண்டிபிள்கள், மேக்சில்யூலா, மேக்சில்லா", "Handling and processing food; water current" to "உணவைக் கையாளுதல், பதப்படுத்துதல்; நீரோட்டம்"),
+                            listOf("Thorax (8 pairs)" to "மார்பு (8 இணை)", "Three pairs of maxillipeds" to "மூன்று இணை மேக்சில்லிபெட்கள்", "Holding and passing food; aid feeding and respiratory currents" to "உணவைப் பிடித்தல், கடத்துதல்; உண்ணுதல், சுவாச நீரோட்டத்துக்கு உதவி"),
+                            listOf("Thorax (8 pairs)" to "மார்பு (8 இணை)", "Five pairs of pereiopods" to "ஐந்து இணை பெரியோபோடுகள்", "Walking and food handling; first three pairs chelate" to "நடத்தல், உணவைக் கையாளுதல்; முதல் மூன்று இணை சிலிர்கொம்பு உடையவை"),
+                            listOf("Abdomen (6 pairs)" to "வயிறு (6 இணை)", "Five pairs of pleopods" to "ஐந்து இணை ப்ளியோபோடுகள்", "Swimming; in the male, modified for copulation" to "நீந்துதல்; ஆணில் இணைதலுக்கு மாற்றப்பட்டவை"),
+                            listOf("Abdomen (6 pairs)" to "வயிறு (6 இணை)", "Uropods with telson" to "யுரோபோடுகளும் டெல்சனும்", "Tail fan for rapid backward escape" to "விரைவான பின்னோக்கித் தப்பிக்கும் வால் விசிறி"),
+                        )),
+                    bp("The thoracic appendages are the maxillipeds, which are three pairs and are specialised for feeding, and the pereiopods, the five pairs of walking legs. In the penaeid prawns, the first three pairs of pereiopods end in small pincers, they are chelate, while the last two end in simple claws. The abdominal appendages are the pleopods, or swimmerets, which are flap-like and used in swimming, and the last pair, the uropods, which spread on each side of the telson as the tail fan. When the abdomen is sharply flexed the tail fan drives the animal backwards, an escape movement." to
+                        "மார்பு உறுப்புகள் மூன்று இணை, உண்ணுதலுக்குச் சிறப்புற்ற மேக்சில்லிபெட்களும் ஐந்து இணை நடக்கும் கால்களான பெரியோபோடுகளும். பெனியிட் இறால்களில் முதல் மூன்று இணை பெரியோபோடுகள் சிறு சிலிர்கொம்புகளில் (கீலேட்) முடிகின்றன; கடைசி இரண்டு எளிய நகங்களில் முடிகின்றன. வயிற்று உறுப்புகள் நீந்தப் பயன்படும் தகடு போன்ற ப்ளியோபோடுகள் (நீந்து கால்கள்), டெல்சனின் இருபுறமும் வால் விசிறியாகப் பரவும் கடைசி இணை யுரோபோடுகள். வயிறு கூர்மையாக வளைக்கப்படும்போது வால் விசிறி விலங்கைப் பின்னோக்கித் தள்ளுகிறது; இது தப்பிக்கும் இயக்கம்."),
+                    bdef("Maxilliped", "மேக்சில்லிபெட்", "A thoracic appendage modified as a mouthpart that holds and passes food." to
+                        "உணவைப் பிடித்து கடத்தும் வாய்ப்பகுதியாக மாற்றப்பட்ட மார்பு உறுப்பு."),
+                    bdef("Pereiopod", "பெரியோபோடு", "A thoracic walking leg of a crustacean." to
+                        "ஓட்டுடலியின் மார்பு நடக்கும் கால்."),
+                    bdef("Pleopod", "ப்ளியோபோடு", "An abdominal limb of a crustacean, used in swimming." to
+                        "நீந்தப் பயன்படும் ஓட்டுடலியின் வயிற்றுக் கால்."),
+                    bdef("Uropod", "யுரோபோடு", "The last pair of abdominal appendages, which with the telson form the tail fan." to
+                        "வயிற்று உறுப்புகளின் கடைசி இணை; டெல்சனுடன் சேர்ந்து வால் விசிறியை உருவாக்குகிறது."),
+                    bdef("Chelate", "சிலிர்கொம்பு உடைய (கீலேட்)", "Ending in a pincer formed by a movable finger opposed to a fixed one." to
+                        "நிலையான விரலுக்கு எதிராக அசையும் விரல் அமைந்த இடுக்கியில் முடியும்."),
+                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட்", "An organ of balance, a sac containing a small mass that stimulates sensory cells according to the position of the animal." to
+                        "விலங்கின் நிலைக்கேற்ப உணர்வு செல்களைத் தூண்டும் சிறு திரள் அடங்கிய, சமநிலை உறுப்பான பை."),
+                )),
+            bsec("digestion", "Digestive system and nutrition", "செரிமான மண்டலமும் ஊட்டமும்",
+                blocks = listOf(
+                    bp("The mouth lies on the ventral side of the head between the mouthparts and leads through a short oesophagus into a large stomach in the cephalothorax. The stomach has two parts. The anterior cardiac chamber contains a gastric mill of chitinous ossicles and teeth that crush the food, and the posterior pyloric chamber filters it, so that only fine fluid and particles enter the digestive gland. The midgut is a long straight tube running through the abdomen to the hindgut and the anus at the base of the telson." to
+                        "வாய் தலையின் வயிற்றுப்புறத்தில் வாய்ப்பகுதிகளுக்கிடையே அமைந்து, குட்டை உணவுக்குழல் வழியாக செபலோதொராக்ஸிலுள்ள பெரிய இரைப்பைக்குள் செல்கிறது. இரைப்பைக்கு இரு பகுதிகள் உள்ளன. முன்புற கார்டியாக் அறையில் உணவை நசுக்கும் கைட்டின் சிறு எலும்புகள், பற்களாலான இரைப்பை அரவையும், பின்புற பைலோரிக் அறை அதை வடிகட்டுவதால் நுண்ணிய திரவமும் துகள்களும் மட்டுமே செரிமானச் சுரப்பிக்குள் நுழைகின்றன. நடுக்குடல் வயிறு வழியே பின்குடலுக்கும் டெல்சனின் அடியிலுள்ள மலவாய்க்கும் செல்லும் நீண்ட நேரான குழல்."),
+                    bp("The digestive gland, or hepatopancreas, is a large, paired, branching organ in the cephalothorax, and opens into the junction of the stomach and midgut. It secretes digestive enzymes, takes up the digested food, and stores reserves such as fat and glycogen. Because absorption and storage both occur in this organ, it is the functional equivalent of both the liver and the pancreas of a vertebrate, and the name hepatopancreas records this." to
+                        "செரிமானச் சுரப்பி அல்லது ஹெபடோபான்கிரியாஸ் செபலோதொராக்ஸிலுள்ள பெரிய, இணை, கிளைக்கும் உறுப்பு; இரைப்பைக்கும் நடுக்குடலுக்கும் இணைவில் திறக்கிறது. செரிமான நொதிகளைச் சுரக்கிறது, செரித்த உணவை உறிஞ்சுகிறது, கொழுப்பு, கிளைகோஜன் போன்ற சேமிப்புகளை வைத்திருக்கிறது. உறிஞ்சுதலும் சேமிப்பும் இவ்வுறுப்பில் நடப்பதால் முதுகெலும்பியின் கல்லீரல், கணையம் இரண்டுக்கும் செயல்முறையாக நிகரானது; ஹெபடோபான்கிரியாஸ் என்ற பெயர் இதைப் பதிவு செய்கிறது."),
+                    bdef("Gastric mill", "இரைப்பை அரவை", "A set of chitinous teeth and ossicles in the stomach of a crustacean that grinds the food." to
+                        "உணவை அரைக்கும், ஓட்டுடலியின் இரைப்பையிலுள்ள கைட்டின் பற்கள், சிறு எலும்புகளின் தொகுப்பு."),
+                    bdef("Hepatopancreas", "ஹெபடோபான்கிரியாஸ்", "The digestive gland of a crustacean, which secretes enzymes, absorbs food and stores reserves." to
+                        "நொதிகளைச் சுரக்கும், உணவை உறிஞ்சும், சேமிப்புகளை வைக்கும் ஓட்டுடலியின் செரிமானச் சுரப்பி."),
+                )),
+            bsec("internal", "Circulation, respiration, excretion and nervous system", "இரத்த ஓட்டம், சுவாசம், கழிவு நீக்கம், நரம்பு மண்டலம்",
+                blocks = listOf(
+                    bfig("penaeus/internal", "Penaeus, internal organs seen after the removal of the carapace and the body wall." to "பெனியஸ், ஓடும் உடற்சுவரும் நீக்கிய பின் தெரியும் உள் உறுப்புகள்."),
+                    bp("The circulation is open. The heart is a small muscular sac lying dorsally in the pericardial sinus, behind the stomach. Blood from the haemocoel returns to the pericardial sinus, enters the heart through paired ostia, and is sent out by arteries, a median anterior one to the head and others to the body, which end in open spaces. The blood contains the pigment haemocyanin, which carries oxygen, and amoeboid cells which clot the blood at a wound." to
+                        "இரத்த ஓட்டம் திறந்தது. இதயம் இரைப்பைக்குப் பின்னால் பெரிகார்டியல் சைனசில் முதுகுப்புறம் அமைந்த சிறு தசைப் பை. ஹீமோசீலிலிருந்து திரும்பும் இரத்தம் பெரிகார்டியல் சைனசுக்கு வந்து இணை ஆஸ்டியா வழியாக இதயத்துக்குள் நுழைந்து, தலைக்குச் செல்லும் நடு முன் தமனியும் உடலுக்குச் செல்பவையுமான தமனிகளால் அனுப்பப்பட்டு திறந்த இடங்களில் முடிகிறது. இரத்தத்தில் ஆக்சிஜனைக் கொண்டு செல்லும் ஹீமோசயனின் நிறமியும் காயத்தில் இரத்தத்தை உறைய வைக்கும் அமீபாய்டு செல்களும் உள்ளன."),
+                    bp("Respiration is by gills, which are feathery outgrowths from the bases of the thoracic limbs, and which lie in the gill chambers on either side of the body, protected by the carapace. A current of water is driven forward through each chamber by the beating of a paddle of the second maxilla, so that fresh water flows over the gills and gases are exchanged. Excretion is mainly by a pair of antennal glands, also called green glands, which open at the base of the antennae, and by the gills; the glands also help to regulate the salt and water content of the body." to
+                        "சுவாசம் செவுள்களால்; அவை மார்புக் கால்களின் அடிகளிலிருந்து வளரும் இறகு போன்ற வளர்ச்சிகள்; உடலின் இருபுறமும் ஓட்டால் பாதுகாக்கப்பட்ட செவுள் அறைகளில் உள்ளன. இரண்டாம் மேக்சில்லாவின் துடுப்புத் தகடு அடிப்பதால் ஒவ்வொரு அறை வழியும் நீரோட்டம் முன்னோக்கிச் செலுத்தப்படுவதால் புதிய நீர் செவுள்கள் மேல் பாய்ந்து வாயுக்கள் பரிமாறப்படுகின்றன. கழிவு நீக்கம் முக்கியமாக ஆன்டென்னாக்களின் அடியில் திறக்கும் பச்சைச் சுரப்பிகள் எனப்படும் ஓர் இணை ஆன்டென்னல் சுரப்பிகளாலும் செவுள்களாலும்; சுரப்பிகள் உடலின் உப்பு, நீர் அளவையும் ஒழுங்குபடுத்த உதவுகின்றன."),
+                    bp("The nervous system consists of a dorsal brain in the head, which gives nerves to the eyes and antennules and antennae, circumoesophageal connectives round the gut, and a ventral nerve cord with ganglia, which are partly fused in the cephalothorax. The eyes are compound and stalked, and each is made of a great number of units, the ommatidia, which together form a mosaic image. The antennules and antennae carry touch and chemical receptors, and the statocyst serves for balance." to
+                        "நரம்பு மண்டலத்தில் தலையில் கண்கள், ஆன்டென்யூல்கள், ஆன்டென்னாக்களுக்கு நரம்புகளைத் தரும் முதுகுப்புற மூளை, குடலைச் சுற்றும் தொண்டைச்சுற்று இணைப்பிகள், செபலோதொராக்ஸில் பகுதியாக இணைந்த நரம்புத் திரள்களுடைய வயிற்றுப்புற நரம்புவடம் உள்ளன. கண்கள் கூட்டு, காம்புடையவை; ஒவ்வொன்றும் சேர்ந்து மொசைக் படிமம் தரும் ஒமட்டிடியா எனும் ஏராளமான அலகுகளால் ஆனது. ஆன்டென்யூல்களும் ஆன்டென்னாக்களும் தொடு, வேதி ஏற்பிகளைத் தாங்குகின்றன; ஸ்டேட்டோசிஸ்ட் சமநிலைக்கு உதவுகிறது."),
+                    bdef("Antennal gland", "ஆன்டென்னல் சுரப்பி", "The excretory organ of a prawn, also called the green gland, that opens at the base of the antenna." to
+                        "ஆன்டென்னாவின் அடியில் திறக்கும், பச்சைச் சுரப்பி எனவும் அழைக்கப்படும் இறாலின் கழிவு உறுப்பு."),
+                    bdef("Ommatidium", "ஒமட்டிடியம்", "One of the many units that make up a compound eye." to
+                        "கூட்டுக் கண்ணை உருவாக்கும் பல அலகுகளில் ஒன்று."),
+                    bdef("Haemocyanin", "ஹீமோசயனின்", "A copper-containing respiratory pigment that carries oxygen in the blood of crustaceans." to
+                        "ஓட்டுடலிகளின் இரத்தத்தில் ஆக்சிஜனைக் கொண்டு செல்லும் தாமிரம் கொண்ட சுவாச நிறமி."),
+                )),
+            bsec("reproduction", "Reproductive system", "இனப்பெருக்க மண்டலம்",
+                blocks = listOf(
+                    bfig("penaeus/larval-development", "Penaeus, the larval stages from nauplius to postlarva." to "பெனியஸ், நாப்ளியஸ் முதல் போஸ்ட்லார்வா வரையிலான லார்வா நிலைகள்."),
+                    bp("The sexes are separate. The male has a pair of testes in the cephalothorax, with sperm ducts that open at the bases of the last pair of pereiopods, and the sperm are packed into packets called spermatophores. The first pair of pleopods of the male are modified as a copulatory organ, the petasma, which holds the spermatophores for transfer. The female has a pair of ovaries and oviducts that open at the base of the third pair of pereiopods, and on the sternum between the last pairs of pereiopods there is a receptacle, the thelycum, which receives and holds the spermatophores." to
+                        "பால் தனி. ஆணுக்கு செபலோதொராக்ஸில் ஓர் இணை விந்தகங்கள் உள்ளன; விந்துக் குழாய்கள் கடைசி இணை பெரியோபோடுகளின் அடிகளில் திறக்கின்றன; விந்து ஸ்பெர்மட்டோஃபோர்கள் எனும் பொட்டலங்களில் அடைக்கப்படுகிறது. ஆணின் முதல் இணை ப்ளியோபோடுகள் இணைதல் உறுப்பான பெடாஸ்மாவாக மாற்றப்பட்டு, மாற்றத்துக்காக ஸ்பெர்மட்டோஃபோர்களை வைத்திருக்கின்றன. பெண்ணுக்கு ஓர் இணை சூலகங்களும் மூன்றாம் இணை பெரியோபோடுகளின் அடியில் திறக்கும் சூலகக் குழாய்களும் உள்ளன; கடைசி இணை பெரியோபோடுகளுக்கிடையே ஸ்டெர்னத்தில் ஸ்பெர்மட்டோஃபோர்களை ஏற்றுப் பிடிக்கும் கலமான தெலிகம் உள்ளது."),
+                    bp("In the penaeids the eggs are shed freely into the sea, where they are fertilised, and they are not carried by the female on the pleopods as in some other decapods. A female may release a great number. The eggs hatch into larvae, which are planktonic and pass through a sequence of stages that is described below, while the postlarvae move into estuaries and backwaters, which serve as nurseries, and the juveniles return to the sea when they approach maturity." to
+                        "பெனியிட்களில் முட்டைகள் கடலுக்குள் சுதந்திரமாக விடப்பட்டு அங்கு கருவுறுகின்றன; வேறு சில டெகாபோடாக்களில் போல பெண் அவற்றை ப்ளியோபோடுகளில் சுமப்பதில்லை. ஒரு பெண் ஏராளமானவற்றை விடலாம். முட்டைகள் மிதவை லார்வாக்களாகப் பொரிந்து கீழே விவரிக்கப்படும் நிலை வரிசையைக் கடக்கின்றன; போஸ்ட்லார்வாக்கள் நாற்றங்கால்களாகச் செயல்படும் முகத்துவாரங்கள், உப்பங்கழிகளுக்குள் நகர்கின்றன; இளையவை முதிர்ச்சியை நெருங்கும்போது கடலுக்குத் திரும்புகின்றன."),
+                    bdef("Petasma", "பெடாஸ்மா", "The copulatory organ of a male penaeid prawn, formed by the modification of the first pair of pleopods." to
+                        "ஆண் பெனியிட் இறாலின், முதல் இணை ப்ளியோபோடுகளின் மாற்றத்தால் உருவான, இணைதல் உறுப்பு."),
+                    bdef("Thelycum", "தெலிகம்", "The receptacle on the sternum of a female penaeid prawn that receives the spermatophores." to
+                        "ஸ்பெர்மட்டோஃபோர்களை ஏற்கும் பெண் பெனியிட் இறாலின் ஸ்டெர்னத்திலுள்ள கலம்."),
+                    bdef("Spermatophore", "ஸ்பெர்மட்டோஃபோர்", "A packet of sperm enclosed in a secreted case, transferred from male to female." to
+                        "சுரக்கப்பட்ட உறையில் அடைக்கப்பட்டு ஆணிலிருந்து பெண்ணுக்கு மாற்றப்படும் விந்துப் பொட்டலம்."),
+                )),
+            bsec("larvae", "Development: nauplius to postlarva", "வளர்ச்சி: நாப்ளியஸ் முதல் போஸ்ட்லார்வா வரை",
+                blocks = listOf(
+                    bpoints("Larval sequence of Penaeus", "பெனியஸின் லார்வா வரிசை",
+                        "The egg hatches as a nauplius, with three pairs of appendages and a median eye. The naupliar stages do not feed and use the yolk reserve." to "முட்டை மூன்று இணை உறுப்புகளும் நடுக்கண்ணும் உடைய நாப்ளியஸாகப் பொரிகிறது. நாப்ளியஸ் நிலைகள் உண்பதில்லை; மஞ்சள் கருச் சேமிப்பைப் பயன்படுத்துகின்றன.",
+                        "The nauplius moults into the protozoea, which feeds actively and develops a more complex cephalothorax." to "நாப்ளியஸ் உதிர்த்து புரோட்டோசோயியாவாகிறது; அது சுறுசுறுப்பாக உண்டு மேலும் சிக்கலான செபலோதொராக்ஸை உருவாக்குகிறது.",
+                        "The protozoea is followed by the mysis, which looks like a small shrimp and swims chiefly by the thoracic appendages while the pleopods are developing." to "புரோட்டோசோயியாவைத் தொடர்ந்து சிறு இறால் போன்ற மைசிஸ் வருகிறது; ப்ளியோபோடுகள் வளரும்போது இது முக்கியமாக மார்பு உறுப்புகளால் நீந்துகிறது.",
+                        "The postlarva resembles a young prawn, the pleopods are functional, and the later postlarvae of many penaeids move to nursery areas." to "போஸ்ட்லார்வா இளம் இறால் போல இருக்கிறது; ப்ளியோபோடுகள் செயல்படுகின்றன; பல பெனியிட்களின் பிந்தைய போஸ்ட்லார்வாக்கள் நாற்றங்கால் பகுதிகளுக்கு நகர்கின்றன.",
+                    ),
+                    bp("The sequence of nauplius, protozoea, mysis and postlarva is characteristic of the penaeid prawns. It must be stated for the prawn and not for all crustaceans, since other groups have different larvae or have the earlier stages passed in the egg. The matter is taken further in the next chapters, which compare the larvae of crustaceans. The important feature of this development is that the larva changes in the manner of feeding and the use of its appendages as it passes through the stages, and each change is marked by a moult." to
+                        "நாப்ளியஸ், புரோட்டோசோயியா, மைசிஸ், போஸ்ட்லார்வா வரிசை பெனியிட் இறால்களுக்கு உரியது. இது இறாலுக்குக் கூறப்பட வேண்டும், எல்லா ஓட்டுடலிகளுக்கும் அல்ல; ஏனெனில் பிற குழுக்களுக்கு வேறு லார்வாக்கள் உள்ளன அல்லது முந்தைய நிலைகள் முட்டைக்குள் கடக்கப்படுகின்றன. இது அடுத்த அத்தியாயங்களில், ஓட்டுடலிகளின் லார்வாக்களை ஒப்பிடுமிடத்தில், விரிவாக்கப்படுகிறது. இவ்வளர்ச்சியின் முக்கிய அம்சம், லார்வா நிலைகளைக் கடக்கும்போது உண்ணும் முறையிலும் உறுப்புகளைப் பயன்படுத்துவதிலும் மாறுகிறது என்பதும், ஒவ்வொரு மாற்றமும் உதிர்த்தலால் குறிக்கப்படுவதும்."),
+                    bdef("Nauplius", "நாப்ளியஸ்", "The first larva of many crustaceans, with three pairs of appendages and a median eye." to
+                        "பல ஓட்டுடலிகளின் முதல் லார்வா; மூன்று இணை உறுப்புகளும் நடுக்கண்ணும் உடையது."),
+                    bdef("Mysis", "மைசிஸ்", "A larval stage of a prawn that resembles a small shrimp and swims with the thoracic appendages." to
+                        "சிறு இறால் போன்று மார்பு உறுப்புகளால் நீந்தும் இறாலின் லார்வா நிலை."),
+                    bdef("Postlarva", "போஸ்ட்லார்வா", "The stage after the larval stages, resembling a juvenile, that moves to the nursery area." to
+                        "லார்வா நிலைகளுக்குப் பின், இளையதை ஒத்து நாற்றங்கால் பகுதிக்கு நகரும் நிலை."),
+                    bnote("Name in the answer", "விடையில் பெயர்",
+                        "Write Penaeus indicus, the prescribed name, and add once that the species is accepted as Penaeus (Fenneropenaeus) indicus. Do not spend the answer on synonymy." to
+                            "பாடத்திட்டப் பெயரான பெனியஸ் இண்டிகஸ் என எழுதி, இனம் பெனியஸ் (ஃபென்னரோபெனியஸ்) இண்டிகஸ் என ஏற்கப்படுவதை ஒருமுறை சேர்க்க. விடையை ஒத்த பெயர்களில் செலவிட வேண்டாம்."),
+                )),
+        ),
+        summary = listOf(
+            "Penaeus indicus, the Indian white prawn, is the prescribed crustacean type; the name Fenneropenaeus is mentioned once as accepted taxonomy." to "பெனியஸ் இண்டிகஸ் இந்திய வெள்ளை இறால் பாடத்திட்ட ஓட்டுடலி வகை; ஃபென்னரோபெனியஸ் பெயர் ஏற்கப்படும் வகைப்பாடாக ஒருமுறை குறிப்பிடப்படுகிறது.",
+            "The body has a cephalothorax under a carapace with a rostrum, and a six-segmented abdomen ending in the telson." to "உடலில் ரோஸ்ட்ரமுடன் ஓட்டின் கீழ் செபலோதொராக்ஸும் டெல்சனில் முடியும் ஆறு கண்ட வயிறும் உள்ளன.",
+            "There are nineteen pairs of appendages: five on the head, eight on the thorax and six on the abdomen, each specialised for its work." to "பத்தொன்பது இணை உறுப்புகள் உள்ளன: தலையில் ஐந்து, மார்பில் எட்டு, வயிற்றில் ஆறு; ஒவ்வொன்றும் தன் பணிக்குச் சிறப்புற்றது.",
+            "The stomach has a gastric mill, and the hepatopancreas secretes enzymes, absorbs food and stores reserves." to "இரைப்பையில் அரவை உண்டு; ஹெபடோபான்கிரியாஸ் நொதிகளைச் சுரந்து, உணவை உறிஞ்சி, சேமிப்புகளை வைக்கிறது.",
+            "Circulation is open with a dorsal heart; respiration is by gills; excretion is by antennal glands; the nervous system has a brain and a ventral ganglionated cord." to "இரத்த ஓட்டம் முதுகுப்புற இதயத்துடன் திறந்தது; சுவாசம் செவுள்கள்; கழிவு நீக்கம் ஆன்டென்னல் சுரப்பிகள்; நரம்பு மண்டலத்தில் மூளையும் வயிற்றுப்புற நரம்புத் திரள் வடமும் உள்ளன.",
+            "The male has a petasma and the female a thelycum; development passes through nauplius, protozoea, mysis and postlarva." to "ஆணுக்கு பெடாஸ்மா, பெண்ணுக்கு தெலிகம்; வளர்ச்சி நாப்ளியஸ், புரோட்டோசோயியா, மைசிஸ், போஸ்ட்லார்வா வழியாக.",
+        ),
+        checks = listOf(
+            bqc("What is a petasma?", "பெடாஸ்மா என்றால் என்ன?",
+                "The male copulatory organ formed from the modified first pair of pleopods.", "முதல் இணை ப்ளியோபோடுகளின் மாற்றத்தால் உருவான ஆண் இணைதல் உறுப்பு."),
+            bqc("Name the first larva.", "முதல் லார்வாவைப் பெயரிடுக.",
+                "The nauplius.", "நாப்ளியஸ்."),
+            bqc("Which appendages form the tail fan?", "எந்த உறுப்புகள் வால் விசிறியை உருவாக்குகின்றன?",
+                "The uropods together with the telson.", "டெல்சனுடன் சேர்ந்த யுரோபோடுகள்."),
+            bqc("What is the excretory organ of a prawn?", "இறாலின் கழிவு உறுப்பு எது?",
+                "The paired antennal (green) glands.", "இணை ஆன்டென்னல் (பச்சை) சுரப்பிகள்."),
+        ),
+    )
+}
