@@ -7,6 +7,7 @@ object BookChapters {
         PoriferaCanalsBookChapter.chapter,
         PoriferaReproductionBookChapter.chapter,
         CnidariaBookChapter.chapter,
+        ObeliaBookChapter.chapter,
         SyconBookChapter.chapter,
     )
     val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
