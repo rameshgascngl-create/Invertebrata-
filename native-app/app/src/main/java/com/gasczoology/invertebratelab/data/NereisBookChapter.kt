@@ -9,7 +9,7 @@ object NereisBookChapter {
             "Describe the habit, habitat and external features of Nereis." to "நெரிஸின் பழக்கம், வாழிடம், வெளிப்புற அம்சங்களை விவரிக்க.",
             "Describe the structure of a parapodium and state its functions." to "பாரபோடியத்தின் அமைப்பை விவரித்து அதன் செயல்களைக் கூற.",
             "Outline the digestive, circulatory, excretory and nervous systems." to "செரிமான, இரத்த ஓட்ட, கழிவு நீக்க, நரம்பு மண்டலங்களை வரையறுக்க.",
-            "Describe reproduction and the trochophore larva." to "இனப்பெருக்கத்தையும் ட்ரோகோஃபோர் லார்வாவையும் விவரிக்க.",
+            "Describe reproduction and the trochophore larva." to "இனப்பெருக்கத்தையும் ட்ரோகோபோர் லார்வாவையும் விவரிக்க.",
             "Explain epitoky and state the limits of the generalisation." to "எபிடோகியை விளக்கி பொதுமைப்படுத்தலின் வரம்புகளைக் கூற.",
         ),
         introduction = listOf(
@@ -22,16 +22,16 @@ object NereisBookChapter {
             bsec("external", "Habit and external features", "பழக்கமும் வெளிப்புற அம்சங்களும்",
                 blocks = listOf(
                     bp("The body of Nereis is elongated, slightly flattened from top to bottom, and in the larger species may be some ten to twenty centimetres long. It is made up of a head region, a trunk of many similar segments and a terminal pygidium. The colour is brownish or greenish, and in life the surface has an iridescent sheen from the thin cuticle. The ventral surface is paler. The worm is a predator and an omnivore, feeding on small animals, algae and detritus, and it is active mainly at night." to
-                        "நெரிஸின் உடல் நீளமானது, மேலிருந்து கீழாகச் சற்றுத் தட்டையானது; பெரிய இனங்களில் சுமார் பத்து முதல் இருபது சென்டிமீட்டர் நீளம் இருக்கலாம். தலைப் பகுதி, பல ஒத்த கண்டங்களின் உடற்பகுதி, முனை பிஜிடியம் ஆகியவற்றால் ஆனது. நிறம் பழுப்பு அல்லது பச்சை; உயிருள்ளபோது மெல்லிய புறத்தோலால் மேற்பரப்பில் வானவில் மினுமினுப்பு உண்டு. வயிற்றுப்புறம் வெளிறியது. புழு வேட்டையாடியும் அனைத்துண்ணியும்; சிறு விலங்குகள், பாசிகள், சிதைவுப் பொருள்களை உண்கிறது; பெரும்பாலும் இரவில் செயல்படுகிறது."),
+                        "நெரிஸின் உடல் நீளமானது, மேலிருந்து கீழாகச் சற்றுத் தட்டையானது; பெரிய இனங்களில் சுமார் பத்து முதல் இருபது சென்டிமீட்டர் நீளம் இருக்கலாம். தலைப் பகுதி, பல ஒத்த கண்டங்களின் உடற்பகுதி, முனை பைஜிடியம் ஆகியவற்றால் ஆனது. நிறம் பழுப்பு அல்லது பச்சை; உயிருள்ளபோது மெல்லிய புறத்தோலால் மேற்பரப்பில் வானவில் மினுமினுப்பு உண்டு. வயிற்றுப்புறம் வெளிறியது. புழு வேட்டையாடியும் அனைத்துண்ணியும்; சிறு விலங்குகள், பாசிகள், சிதைவுப் பொருள்களை உண்கிறது; பெரும்பாலும் இரவில் செயல்படுகிறது."),
                     bp("The head consists of the prostomium, which lies in front of the mouth, and the peristomium, the first body ring, around the mouth. The prostomium carries two short sensory tentacles, two palps with two lobes each, and four small eyes. The peristomium carries four pairs of long tentacular cirri. These are all sensory structures. The pygidium at the posterior end bears the anus and a pair of anal cirri. Between them lie the trunk segments, each bearing a pair of parapodia." to
-                        "தலை வாய்க்கு முன்னுள்ள புரோஸ்டோமியம், வாயைச் சுற்றிய முதல் உடல் வளையமான பெரிஸ்டோமியம் ஆகியவற்றால் ஆனது. புரோஸ்டோமியம் இரு குட்டை உணர்வுக் கொம்புகள், ஒவ்வொன்றும் இரு பகுதிகளுடைய இரு பால்ப்கள், நான்கு சிறு கண்களைத் தாங்குகிறது. பெரிஸ்டோமியம் நான்கு இணை நீண்ட உணர்கொம்புத் தண்டுகளைத் தாங்குகிறது. இவை அனைத்தும் உணர்வு அமைப்புகள். பின் முனையிலுள்ள பிஜிடியம் மலவாயையும் ஓர் இணை மலவாய்த் தண்டுகளையும் தாங்குகிறது. இவற்றுக்கிடையே ஒவ்வொன்றும் ஓர் இணை பாரபோடியாக்களைத் தாங்கும் உடற்பகுதி கண்டங்கள் உள்ளன."),
+                        "தலை வாய்க்கு முன்னுள்ள புரோஸ்டோமியம், வாயைச் சுற்றிய முதல் உடல் வளையமான பெரிஸ்டோமியம் ஆகியவற்றால் ஆனது. புரோஸ்டோமியம் இரு குட்டை உணர்வுக் கொம்புகள், ஒவ்வொன்றும் இரு பகுதிகளுடைய இரு பால்ப்கள், நான்கு சிறு கண்களைத் தாங்குகிறது. பெரிஸ்டோமியம் நான்கு இணை நீண்ட உணர்கொம்புத் தண்டுகளைத் தாங்குகிறது. இவை அனைத்தும் உணர்வு அமைப்புகள். பின் முனையிலுள்ள பைஜிடியம் மலவாயையும் ஓர் இணை மலவாய்த் தண்டுகளையும் தாங்குகிறது. இவற்றுக்கிடையே ஒவ்வொன்றும் ஓர் இணை பாரபோடியாக்களைத் தாங்கும் உடற்பகுதி கண்டங்கள் உள்ளன."),
                     bdef("Errant polychaete", "எரண்ட் பாலிகீட்டா", "A polychaete that moves freely, crawling, burrowing or swimming, and does not live permanently in a tube." to
                         "நிரந்தரமாகக் குழாயில் வாழாமல் ஊர்ந்து, துளையிட்டு அல்லது நீந்தி சுதந்திரமாக நகரும் பாலிகீட்டா."),
                     bdef("Prostomium", "புரோஸ்டோமியம்", "The part of the head in front of the mouth, bearing tentacles, palps and eyes." to
                         "வாய்க்கு முன்னுள்ள தலைப் பகுதி; உணர்கொம்புகள், பால்ப்கள், கண்களைத் தாங்குகிறது."),
                     bdef("Peristomium", "பெரிஸ்டோமியம்", "The first body ring, surrounding the mouth, which bears the tentacular cirri." to
                         "வாயைச் சுற்றியுள்ள முதல் உடல் வளையம்; உணர்கொம்புத் தண்டுகளைத் தாங்குகிறது."),
-                    bdef("Pygidium", "பிஜிடியம்", "The terminal part of the body of an annelid, carrying the anus, from which new segments are added." to
+                    bdef("Pygidium", "பைஜிடியம்", "The terminal part of the body of an annelid, carrying the anus, from which new segments are added." to
                         "அனெலிடாவின் உடலின் முனைப் பகுதி; மலவாயைத் தாங்குகிறது; புதிய கண்டங்கள் இங்கிருந்து சேர்க்கப்படுகின்றன."),
                 )),
             bsec("parapodium", "The parapodium", "பாரபோடியம்",
@@ -82,9 +82,9 @@ object NereisBookChapter {
                     bp("The sexes are separate. In Nereis there are no permanent gonads, and the gametes arise from the lining of the coelom in many segments, and mature while floating in the coelomic fluid. The sexes are not easily distinguished from the outside until the worm becomes mature. At maturity the gametes are released into the water, usually by rupture of the body wall or through the nephridia, depending on the species, and fertilisation is external." to
                         "பால் தனி. நெரிஸில் நிலையான இனப்பெருக்க சுரப்பிகள் இல்லை; கேமீட்டுகள் பல கண்டங்களின் உடற்குழி உள்ளுறையிலிருந்து தோன்றி உடற்குழி திரவத்தில் மிதந்தபடி முதிர்கின்றன. புழு முதிர்ச்சியடையும் வரை வெளியிலிருந்து பாலை எளிதில் வேறுபடுத்த முடியாது. முதிர்ச்சியில் இனத்தைப் பொறுத்து, பெரும்பாலும் உடற்சுவர் உடைந்தோ நெஃப்ரிடியாக்கள் வழியாகவோ கேமீட்டுகள் நீரில் விடுவிக்கப்படுகின்றன; கருவுறுதல் வெளிப்புறம்."),
                     bp("The fertilised egg undergoes spiral cleavage and develops into a trochophore, a free-swimming larva with a band of cilia, the prototroch, around its middle and a tuft at the apex. It feeds on plankton. The trochophore elongates, acquires segments and chaetae, and becomes a metatrochophore and then a young worm that settles to the bottom, a stage in some species called the nectochaete. The trochophore is an important character linking the annelids with the molluscs, the larvae of which are similar." to
-                        "கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு, நடுவில் ப்ரோடோட்ரோக் எனும் கசையிழைப் பட்டையும் உச்சியில் குஞ்சமும் உடைய தனி நீந்தும் லார்வாவான ட்ரோகோஃபோராக வளர்கிறது. அது பிளாங்க்டனை உண்கிறது. ட்ரோகோஃபோர் நீண்டு கண்டங்களையும் சீட்டாக்களையும் பெற்று மெட்டாட்ரோகோஃபோராகவும் பின்னர் அடிமட்டத்தில் குடியேறும் இளம் புழுவாகவும், சில இனங்களில் நெக்டோகீட் எனப்படும் நிலையாகவும் மாறுகிறது. ட்ரோகோஃபோர் அனெலிடாக்களை, லார்வாக்கள் ஒத்த மெல்லுடலிகளுடன் இணைக்கும் முக்கியப் பண்பு."),
+                        "கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு, நடுவில் ப்ரோடோட்ரோக் எனும் கசையிழைப் பட்டையும் உச்சியில் குஞ்சமும் உடைய தனி நீந்தும் லார்வாவான ட்ரோகோஃபோராக வளர்கிறது. அது பிளாங்க்டனை உண்கிறது. ட்ரோகோபோர் நீண்டு கண்டங்களையும் சீட்டாக்களையும் பெற்று மெட்டாட்ரோகோஃபோராகவும் பின்னர் அடிமட்டத்தில் குடியேறும் இளம் புழுவாகவும், சில இனங்களில் நெக்டோகீட் எனப்படும் நிலையாகவும் மாறுகிறது. ட்ரோகோபோர் அனெலிடாக்களை, லார்வாக்கள் ஒத்த மெல்லுடலிகளுடன் இணைக்கும் முக்கியப் பண்பு."),
                     bdef("Prototroch", "ப்ரோடோட்ரோக்", "The main band of cilia around the middle of a trochophore larva, used in swimming and feeding." to
-                        "நீந்துதல், உண்ணுதலுக்குப் பயன்படும் ட்ரோகோஃபோர் லார்வாவின் நடுவைச் சுற்றியுள்ள முதன்மைக் கசையிழைப் பட்டை."),
+                        "நீந்துதல், உண்ணுதலுக்குப் பயன்படும் ட்ரோகோபோர் லார்வாவின் நடுவைச் சுற்றியுள்ள முதன்மைக் கசையிழைப் பட்டை."),
                     bdef("Spiral cleavage", "சுருள் பிளவு", "A pattern of early cell division in which the cells of each tier lie obliquely over those below, typical of annelids and molluscs." to
                         "அனெலிடாக்கள், மெல்லுடலிகளுக்கு வழக்கமான, ஒவ்வொரு அடுக்கின் செல்களும் கீழுள்ளவற்றின் மேல் சரிவாக அமையும் தொடக்கப் பிளவு முறை."),
                 )),
@@ -111,18 +111,18 @@ object NereisBookChapter {
                 )),
         ),
         summary = listOf(
-            "Nereis is an errant polychaete with a head bearing tentacles, palps and eyes, a trunk of similar segments and a terminal pygidium." to "நெரிஸ் உணர்கொம்புகள், பால்ப்கள், கண்கள் தாங்கும் தலை, ஒத்த கண்டங்களின் உடற்பகுதி, முனை பிஜிடியம் கொண்ட எரண்ட் பாலிகீட்டா.",
+            "Nereis is an errant polychaete with a head bearing tentacles, palps and eyes, a trunk of similar segments and a terminal pygidium." to "நெரிஸ் உணர்கொம்புகள், பால்ப்கள், கண்கள் தாங்கும் தலை, ஒத்த கண்டங்களின் உடற்பகுதி, முனை பைஜிடியம் கொண்ட எரண்ட் பாலிகீட்டா.",
             "The biramous parapodium has a notopodium and a neuropodium, supported by acicula, with chaetae and dorsal and ventral cirri." to "இருகிளைப் பாரபோடியத்தில் அசிகுலங்கள் தாங்கும் நோட்டோபோடியமும் நியூரோபோடியமும், சீட்டாக்கள், முதுகுப்புற, வயிற்றுப்புறத் தண்டுகள் உள்ளன.",
             "Parapodia serve for locomotion, anchorage, gas exchange and sensation." to "பாரபோடியாக்கள் இயக்கம், நங்கூரம், வாயுப் பரிமாற்றம், உணர்தலுக்கு உதவுகின்றன.",
             "The pharynx is eversible and carries jaws; circulation is closed, excretion is by metanephridia, and the nerve cord is double and ventral." to "தொண்டை வெளித்தள்ளக்கூடியது, தாடைகள் உண்டு; இரத்த ஓட்டம் மூடியது; கழிவு நீக்கம் மெட்டாநெஃப்ரிடியாக்களால்; நரம்புவடம் இரட்டை, வயிற்றுப்புறம்.",
-            "Sexes are separate, fertilisation is external, and development passes through a trochophore." to "பால் தனி; கருவுறுதல் வெளிப்புறம்; வளர்ச்சி ட்ரோகோஃபோர் வழியாக.",
+            "Sexes are separate, fertilisation is external, and development passes through a trochophore." to "பால் தனி; கருவுறுதல் வெளிப்புறம்; வளர்ச்சி ட்ரோகோபோர் வழியாக.",
             "Epitoky changes a bottom-living worm into a swimming reproductive epitoke, but its extent varies between species and sexes." to "எபிடோகி அடிமட்டப் புழுவை நீந்தும் இனப்பெருக்க எபிடோக்காக மாற்றுகிறது; ஆனால் அதன் அளவு இனங்கள், பாலிடையே மாறுகிறது.",
         ),
         checks = listOf(
             bqc("What is an aciculum?", "அசிகுலம் என்றால் என்ன?",
                 "A supporting chitinous rod inside a lobe of the parapodium.", "பாரபோடியத்தின் மடலுக்குள் உள்ள ஆதரவு கைட்டின் தண்டு."),
             bqc("Name the larva of many polychaetes.", "பல பாலிகீட்டாக்களின் லார்வாவைப் பெயரிடுக.",
-                "The trochophore.", "ட்ரோகோஃபோர்."),
+                "The trochophore.", "ட்ரோகோபோர்."),
             bqc("Name the two lobes of the parapodium of Nereis.", "நெரிஸின் பாரபோடியத்தின் இரு மடல்களைப் பெயரிடுக.",
                 "The dorsal notopodium and the ventral neuropodium.", "முதுகுப்புற நோட்டோபோடியம், வயிற்றுப்புற நியூரோபோடியம்."),
             bqc("What is epitoky?", "எபிடோகி என்றால் என்ன?",

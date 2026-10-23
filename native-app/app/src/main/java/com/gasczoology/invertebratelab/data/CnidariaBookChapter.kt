@@ -9,7 +9,7 @@ object CnidariaBookChapter {
         objectives = listOf(
             "State the general characters of the phylum Coelenterata (Cnidaria)." to "சீலென்டிரேட்டா (நிடேரியா) தொகுதியின் பொதுப்பண்புகளைக் கூற.",
             "Describe the structure and discharge of a nematocyst and the types of cnidocyte." to "நீமட்டோசிஸ்டின் அமைப்பையும் வெளியேற்றத்தையும், நிடோசைட் வகைகளையும் விவரிக்க.",
-            "Compare the polyp and the medusa in tabular form." to "பாலிப்பையும் மெடூசாவையும் அட்டவணை வடிவில் ஒப்பிட.",
+            "Compare the polyp and the medusa in tabular form." to "பாலிப்பையும் மெடுசாவையும் அட்டவணை வடிவில் ஒப்பிட.",
             "Classify the phylum into Hydrozoa, Scyphozoa and Anthozoa with characters and examples." to "தொகுதியை ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா வகுப்புகளாகப் பண்புகளுடனும் எடுத்துக்காட்டுகளுடனும் வகைப்படுத்த.",
             "Explain why the older name Coelenterata and the current name Cnidaria are both used." to "பழைய பெயரான சீலென்டிரேட்டாவும் தற்போதைய பெயரான நிடேரியாவும் ஏன் இரண்டும் பயன்படுகின்றன என்பதை விளக்க.",
         ),
@@ -42,7 +42,7 @@ object CnidariaBookChapter {
                     ),
                     bpoints("Body construction", "உடல் கட்டமைப்பு",
                         "Tissue grade of organisation: cells are organised into tissues but not into true organs or organ systems." to "திசு நிலை அமைப்பு: செல்கள் திசுக்களாக ஒழுங்கமைந்துள்ளன; உண்மையான உறுப்புகளாகவோ உறுப்பு மண்டலங்களாகவோ அல்ல.",
-                        "Diploblastic: the body wall has an outer epidermis and an inner gastrodermis." to "இரு அடுக்கு உடலுடையவை: உடற்சுவரில் வெளி எப்பிடெர்மிஸ், உள் காஸ்ட்ரோடெர்மிஸ்.",
+                        "Diploblastic: the body wall has an outer epidermis and an inner gastrodermis." to "ஈரடுக்கு உடலுடையவை: உடற்சுவரில் வெளி எப்பிடெர்மிஸ், உள் காஸ்ட்ரோடெர்மிஸ்.",
                         "Between the two layers lies the mesoglea, a jelly-like, non-cellular layer, which in some forms contains wandering cells." to "இரு அடுக்குகளுக்கிடையே மீசோகிளியா என்ற ஜெல்லி போன்ற செல்லற்ற அடுக்கு உள்ளது; சில வடிவங்களில் அதில் அலையும் செல்கள் உள்ளன.",
                         "Acoelomate: there is no body cavity other than the gut." to "உடற்குழியற்றவை: குடலைத் தவிர வேறு உடற்குழி இல்லை.",
                     ),
@@ -57,12 +57,12 @@ object CnidariaBookChapter {
                         "There are no excretory, respiratory or circulatory organs; gases and wastes diffuse through the body surface." to "கழிவு நீக்க, சுவாச, சுற்றோட்ட உறுப்புகள் இல்லை; வாயுக்களும் கழிவுகளும் உடல் பரப்பு வழியாக விரவுகின்றன.",
                     ),
                     bpoints("Body forms and reproduction", "உடல் வடிவங்களும் இனப்பெருக்கமும்",
-                        "Two body forms occur: the polyp and the medusa; one or both may be present in the life cycle." to "இரு உடல் வடிவங்கள் உண்டு: பாலிப், மெடூசா; வாழ்க்கைச் சுழற்சியில் ஒன்று அல்லது இரண்டும் இருக்கலாம்.",
+                        "Two body forms occur: the polyp and the medusa; one or both may be present in the life cycle." to "இரு உடல் வடிவங்கள் உண்டு: பாலிப், மெடுசா; வாழ்க்கைச் சுழற்சியில் ஒன்று அல்லது இரண்டும் இருக்கலாம்.",
                         "Reproduction is asexual by budding, and sexual by gametes; the sexes are usually separate." to "மொட்டுவிடுவதால் பாலிலாவாகவும் கேமீட்டுகளால் பாலினமாகவும் இனப்பெருக்கம்; பாலினங்கள் பொதுவாகத் தனித்தனி.",
                         "The fertilised egg develops into a ciliated planula larva in most groups." to "கருவுற்ற முட்டை பெரும்பாலான குழுக்களில் கசையிழை பிளானுலா லார்வாவாக வளர்கிறது.",
-                        "Alternation of generations occurs in many hydrozoans and in the scyphozoans, in which an asexual polyp stage alternates with a sexual medusa stage." to "பல ஹைட்ரோசோவாக்களிலும் சிஃபோசோவாக்களிலும் தலைமுறை மாற்றம் நிகழ்கிறது; பாலிலா பாலிப் நிலையும் பாலின மெடூசா நிலையும் மாறிமாறி வருகின்றன.",
+                        "Alternation of generations occurs in many hydrozoans and in the scyphozoans, in which an asexual polyp stage alternates with a sexual medusa stage." to "பல ஹைட்ரோசோவாக்களிலும் சிஃபோசோவாக்களிலும் தலைமுறை மாற்றம் நிகழ்கிறது; பாலிலா பாலிப் நிலையும் பாலின மெடுசா நிலையும் மாறிமாறி வருகின்றன.",
                     ),
-                    bdef("Diploblastic", "இரு அடுக்கு உடலுடைய",
+                    bdef("Diploblastic", "ஈரடுக்கு உடலுடைய",
                         "Having a body built of two germ layers, ectoderm and endoderm, which form the epidermis and gastrodermis." to
                             "எக்டோடெர்ம், எண்டோடெர்ம் எனும் இரு கருப்படலங்களால் ஆன உடல் கொண்ட; இவை எப்பிடெர்மிஸ், காஸ்ட்ரோடெர்மிஸை உருவாக்குகின்றன."),
                     bdef("Mesoglea", "மீசோகிளியா",
@@ -124,12 +124,12 @@ object CnidariaBookChapter {
                         "The nematocyst is a capsule inside a single cell, and not a gland. In answers state that it is a cell organelle that discharges once and that the cell is then replaced." to
                             "நீமட்டோசிஸ்ட் ஒற்றைச் செல்லுக்குள் உள்ள உறை; சுரப்பி அல்ல. விடையில் அது ஒருமுறை வெளியேற்றும் செல் நுண்ணுறுப்பு என்றும், பின்னர் செல் மாற்றப்படும் என்றும் குறிப்பிடுக."),
                 )),
-            bsec("forms", "The polyp and the medusa", "பாலிப்பும் மெடூசாவும்",
+            bsec("forms", "The polyp and the medusa", "பாலிப்பும் மெடுசாவும்",
                 blocks = listOf(
                     bp("The two body forms of cnidarians are variations of one plan. The polyp is a cylinder, attached by its base, with the mouth and tentacles at the free end. The medusa may be thought of as a polyp turned upside down and flattened, so that the mouth is directed downwards, with a bell of mesoglea that makes it buoyant. Some cnidarians have only the polyp, some only the medusa, and many have both in a life cycle." to
-                        "நிடேரியாக்களின் இரு உடல் வடிவங்கள் ஒரே திட்டத்தின் மாறுபாடுகள். பாலிப் அடியால் ஒட்டிய உருளை; வாயும் உணர்கொம்புகளும் தனித்த முனையில் இருக்கும். மெடூசாவை தலைகீழாகத் திருப்பி தட்டையாக்கிய பாலிப்பாகக் கருதலாம்; வாய் கீழ்நோக்கியிருக்கும்; மீசோகிளியாவால் ஆன மணி அதை மிதக்கச் செய்கிறது. சில நிடேரியாக்களுக்குப் பாலிப் மட்டுமே; சிலவற்றுக்கு மெடூசா மட்டுமே; பலவற்றின் வாழ்க்கைச் சுழற்சியில் இரண்டும் உள்ளன."),
-                    btable("Comparison of polyp and medusa", "பாலிப், மெடூசா ஒப்பீடு",
-                        listOf("Feature" to "பண்பு", "Polyp" to "பாலிப்", "Medusa" to "மெடூசா"),
+                        "நிடேரியாக்களின் இரு உடல் வடிவங்கள் ஒரே திட்டத்தின் மாறுபாடுகள். பாலிப் அடியால் ஒட்டிய உருளை; வாயும் உணர்கொம்புகளும் தனித்த முனையில் இருக்கும். மெடுசாவை தலைகீழாகத் திருப்பி தட்டையாக்கிய பாலிப்பாகக் கருதலாம்; வாய் கீழ்நோக்கியிருக்கும்; மீசோகிளியாவால் ஆன மணி அதை மிதக்கச் செய்கிறது. சில நிடேரியாக்களுக்குப் பாலிப் மட்டுமே; சிலவற்றுக்கு மெடுசா மட்டுமே; பலவற்றின் வாழ்க்கைச் சுழற்சியில் இரண்டும் உள்ளன."),
+                    btable("Comparison of polyp and medusa", "பாலிப், மெடுசா ஒப்பீடு",
+                        listOf("Feature" to "பண்பு", "Polyp" to "பாலிப்", "Medusa" to "மெடுசா"),
                         listOf(
                             listOf("Shape" to "வடிவம்", "Cylindrical, tube-like" to "உருளை, குழாய் போன்றது", "Bell- or umbrella-shaped" to "மணி அல்லது குடை வடிவம்"),
                             listOf("Habit" to "வாழ்முறை", "Usually attached" to "பொதுவாக ஒட்டியது", "Usually free-swimming" to "பொதுவாக சுதந்திரமாக நீந்துவது"),
@@ -141,15 +141,15 @@ object CnidariaBookChapter {
                     bdef("Polyp", "பாலிப்",
                         "The attached, cylindrical, usually asexual body form of a cnidarian, with the mouth and tentacles at the free end." to
                             "நிடேரியாவின் ஒட்டிய, உருளை வடிவ, பொதுவாகப் பாலிலா உடல் வடிவம்; வாயும் உணர்கொம்புகளும் தனித்த முனையில்."),
-                    bdef("Medusa", "மெடூசா",
+                    bdef("Medusa", "மெடுசா",
                         "The free-swimming, bell-shaped, usually sexual body form of a cnidarian." to
                             "நிடேரியாவின் சுதந்திரமாக நீந்தும், மணி வடிவ, பொதுவாகப் பாலின உடல் வடிவம்."),
                     bdef("Alternation of generations", "தலைமுறை மாற்றம்",
                         "A life cycle in which an asexual stage, the polyp, and a sexual stage, the medusa, follow each other." to
-                            "பாலிலா நிலையான பாலிப்பும் பாலின நிலையான மெடூசாவும் ஒன்றையொன்று தொடரும் வாழ்க்கைச் சுழற்சி."),
+                            "பாலிலா நிலையான பாலிப்பும் பாலின நிலையான மெடுசாவும் ஒன்றையொன்று தொடரும் வாழ்க்கைச் சுழற்சி."),
                     bnote("Forms of one life cycle", "ஒரே சுழற்சியின் வடிவங்கள்",
                         "The polyp and the medusa of a species are two forms of one life cycle. They are not two species." to
-                            "ஓர் இனத்தின் பாலிப்பும் மெடூசாவும் ஒரே சுழற்சியின் இரு வடிவங்கள்; இரு இனங்கள் அல்ல."),
+                            "ஓர் இனத்தின் பாலிப்பும் மெடுசாவும் ஒரே சுழற்சியின் இரு வடிவங்கள்; இரு இனங்கள் அல்ல."),
                 )),
             bsec("classification", "Classification into classes", "வகுப்புகளாக வகைப்படுத்துதல்",
                 blocks = listOf(
@@ -158,25 +158,25 @@ object CnidariaBookChapter {
                     btable("Classes of the phylum compared", "தொகுதியின் வகுப்புகள் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Hydrozoa" to "ஹைட்ரோசோவா", "Scyphozoa" to "சிஃபோசோவா", "Anthozoa" to "ஆந்தோசோவா"),
                         listOf(
-                            listOf("Dominant form" to "முதன்மை வடிவம்", "Polyp (often colonial)" to "பாலிப் (பெரும்பாலும் காலனி)", "Medusa" to "மெடூசா", "Polyp only" to "பாலிப் மட்டும்"),
-                            listOf("Medusa" to "மெடூசா", "With velum" to "வெலத்துடன்", "Without velum" to "வெலம் இல்லை", "Absent" to "இல்லை"),
+                            listOf("Dominant form" to "முதன்மை வடிவம்", "Polyp (often colonial)" to "பாலிப் (பெரும்பாலும் காலனி)", "Medusa" to "மெடுசா", "Polyp only" to "பாலிப் மட்டும்"),
+                            listOf("Medusa" to "மெடுசா", "With velum" to "வெலத்துடன்", "Without velum" to "வெலம் இல்லை", "Absent" to "இல்லை"),
                             listOf("Mesoglea" to "மீசோகிளியா", "Without cells" to "செல் இல்லை", "With cells" to "செல்களுடன்", "With cells" to "செல்களுடன்"),
                             listOf("Gonads" to "இனப்பெருக்கச் சுரப்பிகள்", "Epidermal" to "எப்பிடெர்மிஸில்", "Gastrodermal" to "காஸ்ட்ரோடெர்மிஸில்", "Gastrodermal" to "காஸ்ட்ரோடெர்மிஸில்"),
-                            listOf("Examples" to "எடுத்துக்காட்டுகள்", "Hydra, Obelia, Physalia" to "ஹைட்ரா, ஒபீலியா, ஃபைசாலியா", "Aurelia, Rhizostoma" to "ஆரீலியா, ரைசோஸ்டோமா", "Metridium, Gorgonia, Madrepora" to "மெட்ரீடியம், கோர்கோனியா, மேட்ரபோரா"),
+                            listOf("Examples" to "எடுத்துக்காட்டுகள்", "Hydra, Obelia, Physalia" to "ஹைட்ரா, ஒபீலியா, பைசாலியா", "Aurelia, Rhizostoma" to "ஆரீலியா, ரைசோஸ்டோமா", "Metridium, Gorgonia, Madrepora" to "மெட்ரீடியம், கோர்கோனியா, மேட்ரபோரா"),
                         )),
                 ),
                 subs = listOf(
                     bsub("Class Hydrozoa", "வகுப்பு ஹைட்ரோசோவா",
                         bp("Mostly small, often colonial, and marine, though Hydra is a freshwater member. The polyp is the dominant stage in many, and the medusa, where present, has a shelf-like velum and is without a gastric partition. The mesoglea has no cells. The gonads are epidermal. Examples are Hydra, Obelia, Physalia and Velella." to
-                            "பெரும்பாலும் சிறியவை, அடிக்கடி காலனி, கடல் வாழ்பவை; ஹைட்ரா நன்னீர் உறுப்பினர். பலவற்றில் பாலிப் முதன்மை நிலை; மெடூசா இருக்குமிடத்து அலமாரி போன்ற வெலம் உண்டு, இரைப்பை பிரிவுகள் இல்லை. மீசோகிளியாவில் செல்கள் இல்லை. இனப்பெருக்கச் சுரப்பிகள் எப்பிடெர்மிஸில் உள்ளன. எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா, ஃபைசாலியா, வெலெல்லா."),
+                            "பெரும்பாலும் சிறியவை, அடிக்கடி காலனி, கடல் வாழ்பவை; ஹைட்ரா நன்னீர் உறுப்பினர். பலவற்றில் பாலிப் முதன்மை நிலை; மெடுசா இருக்குமிடத்து அலமாரி போன்ற வெலம் உண்டு, இரைப்பை பிரிவுகள் இல்லை. மீசோகிளியாவில் செல்கள் இல்லை. இனப்பெருக்கச் சுரப்பிகள் எப்பிடெர்மிஸில் உள்ளன. எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா, பைசாலியா, வெலெல்லா."),
                     ),
                     bsub("Class Scyphozoa", "வகுப்பு சிஃபோசோவா",
                         bp("The true jellyfishes. The medusa is the dominant stage and the polyp is small and short-lived, or absent. The mesoglea is thick and contains cells. The gonads are gastrodermal, and the gastric cavity has four pouches with gastric filaments. Examples are Aurelia, Rhizostoma and Cassiopeia." to
-                            "உண்மையான ஜெல்லிமீன்கள். மெடூசா முதன்மை நிலை; பாலிப் சிறியது, குறுகிய ஆயுளுடையது அல்லது இல்லை. மீசோகிளியா தடித்து செல்களைக் கொண்டுள்ளது. இனப்பெருக்கச் சுரப்பிகள் காஸ்ட்ரோடெர்மிஸில் உள்ளன; இரைப்பைக் குழியில் இரைப்பை இழைகளுடன் நான்கு பைகள் உண்டு. எடுத்துக்காட்டுகள்: ஆரீலியா, ரைசோஸ்டோமா, காசியோபியா."),
+                            "உண்மையான ஜெல்லிமீன்கள். மெடுசா முதன்மை நிலை; பாலிப் சிறியது, குறுகிய ஆயுளுடையது அல்லது இல்லை. மீசோகிளியா தடித்து செல்களைக் கொண்டுள்ளது. இனப்பெருக்கச் சுரப்பிகள் காஸ்ட்ரோடெர்மிஸில் உள்ளன; இரைப்பைக் குழியில் இரைப்பை இழைகளுடன் நான்கு பைகள் உண்டு. எடுத்துக்காட்டுகள்: ஆரீலியா, ரைசோஸ்டோமா, காசியோபியா."),
                     ),
                     bsub("Class Anthozoa", "வகுப்பு ஆந்தோசோவா",
                         bp("The sea anemones and corals. Only the polyp is present; the medusa is wholly absent. The polyp is more complex than that of hydrozoans, with a pharynx and internal partitions (mesenteries) that divide the gastrovascular cavity. Solitary or colonial. Examples are Metridium, Gorgonia, Pennatula, and the reef corals such as Madrepora." to
-                            "கடல்சாமந்திகளும் பவளங்களும். பாலிப் மட்டுமே உண்டு; மெடூசா முற்றிலும் இல்லை. பாலிப் ஹைட்ரோசோவாக்களைவிடச் சிக்கலானது; தொண்டையும், காஸ்ட்ரோவாஸ்குலர் குழியைப் பிரிக்கும் உள் பிரிவுகளும் (மெசென்டரிகள்) உண்டு. தனித்தவை அல்லது காலனி. எடுத்துக்காட்டுகள்: மெட்ரீடியம், கோர்கோனியா, பென்னாட்டுலா, மேட்ரபோரா போன்ற பவளப்பாறை பவளங்கள்."),
+                            "கடல்சாமந்திகளும் பவளங்களும். பாலிப் மட்டுமே உண்டு; மெடுசா முற்றிலும் இல்லை. பாலிப் ஹைட்ரோசோவாக்களைவிடச் சிக்கலானது; தொண்டையும், காஸ்ட்ரோவாஸ்குலர் குழியைப் பிரிக்கும் உள் பிரிவுகளும் (மெசென்டரிகள்) உண்டு. தனித்தவை அல்லது காலனி. எடுத்துக்காட்டுகள்: மெட்ரீடியம், கோர்கோனியா, பென்னாட்டுலா, மேட்ரபோரா போன்ற பவளப்பாறை பவளங்கள்."),
                     ),
                 )),
             bsec("importance", "The place of the group in the animal kingdom", "விலங்கு உலகில் இக்குழுவின் இடம்",
@@ -192,8 +192,8 @@ object CnidariaBookChapter {
             "A jelly-like mesoglea lies between the epidermis and the gastrodermis." to "எப்பிடெர்மிஸுக்கும் காஸ்ட்ரோடெர்மிஸுக்கும் இடையே ஜெல்லி போன்ற மீசோகிளியா உள்ளது.",
             "Cnidocytes with nematocysts are the diagnostic feature; a nematocyst discharges once and is replaced." to "நீமட்டோசிஸ்ட் உள்ள நிடோசைட்டுகளே அடையாளப் பண்பு; நீமட்டோசிஸ்ட் ஒருமுறை வெளியேற்றி மாற்றப்படுகிறது.",
             "There is a nerve net but no brain, and no excretory, respiratory or circulatory organs." to "நரம்பு வலை உண்டு; மூளையும் கழிவு, சுவாச, சுற்றோட்ட உறுப்புகளும் இல்லை.",
-            "The polyp is attached and mouth-up; the medusa is free-swimming and mouth-down; they are two forms of one life cycle." to "பாலிப் ஒட்டியது, வாய் மேல்நோக்கியது; மெடூசா நீந்துவது, வாய் கீழ்நோக்கியது; இவை ஒரே சுழற்சியின் இரு வடிவங்கள்.",
-            "Hydrozoa are usually polyp-dominant, Scyphozoa medusa-dominant, and Anthozoa have only polyps." to "ஹைட்ரோசோவா பொதுவாகப் பாலிப் முதன்மை, சிஃபோசோவா மெடூசா முதன்மை, ஆந்தோசோவாவில் பாலிப் மட்டும்.",
+            "The polyp is attached and mouth-up; the medusa is free-swimming and mouth-down; they are two forms of one life cycle." to "பாலிப் ஒட்டியது, வாய் மேல்நோக்கியது; மெடுசா நீந்துவது, வாய் கீழ்நோக்கியது; இவை ஒரே சுழற்சியின் இரு வடிவங்கள்.",
+            "Hydrozoa are usually polyp-dominant, Scyphozoa medusa-dominant, and Anthozoa have only polyps." to "ஹைட்ரோசோவா பொதுவாகப் பாலிப் முதன்மை, சிஃபோசோவா மெடுசா முதன்மை, ஆந்தோசோவாவில் பாலிப் மட்டும்.",
             "Examples: Hydra and Obelia (Hydrozoa), Aurelia (Scyphozoa), Metridium and corals (Anthozoa)." to "எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா (ஹைட்ரோசோவா); ஆரீலியா (சிஃபோசோவா); மெட்ரீடியம், பவளங்கள் (ஆந்தோசோவா).",
         ),
         checks = listOf(
@@ -201,10 +201,10 @@ object CnidariaBookChapter {
                 "It fires a thread to capture prey or to defend the animal.", "இரை பிடிக்க அல்லது தற்காப்புக்கு ஓர் இழையைச் சுடுகிறது."),
             bqc("Name the three classes on the paper.", "தாளில் உள்ள மூன்று வகுப்புகளைக் குறிப்பிடுக.",
                 "Hydrozoa, Scyphozoa and Anthozoa.", "ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா."),
-            bqc("Which class has no medusa?", "எந்த வகுப்பில் மெடூசா இல்லை?",
+            bqc("Which class has no medusa?", "எந்த வகுப்பில் மெடுசா இல்லை?",
                 "Anthozoa.", "ஆந்தோசோவா."),
-            bqc("Why are the polyp and medusa of Obelia not separate species?", "ஒபீலியாவின் பாலிப்பும் மெடூசாவும் ஏன் தனித்தனி இனங்கள் அல்ல?",
-                "They are two forms in the life cycle of one species: the polyp produces medusae asexually, and the medusa produces gametes.", "அவை ஒரே இனத்தின் வாழ்க்கைச் சுழற்சியின் இரு வடிவங்கள்: பாலிப் மெடூசாக்களைப் பாலிலா முறையில் உருவாக்குகிறது; மெடூசா கேமீட்டுகளை உருவாக்குகிறது."),
+            bqc("Why are the polyp and medusa of Obelia not separate species?", "ஒபீலியாவின் பாலிப்பும் மெடுசாவும் ஏன் தனித்தனி இனங்கள் அல்ல?",
+                "They are two forms in the life cycle of one species: the polyp produces medusae asexually, and the medusa produces gametes.", "அவை ஒரே இனத்தின் வாழ்க்கைச் சுழற்சியின் இரு வடிவங்கள்: பாலிப் மெடுசாக்களைப் பாலிலா முறையில் உருவாக்குகிறது; மெடுசா கேமீட்டுகளை உருவாக்குகிறது."),
         ),
     )
 }

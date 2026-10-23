@@ -50,7 +50,7 @@ object AschelminthesBookChapter {
                         "The nervous system is a ring around the pharynx with longitudinal nerve cords, of which the dorsal and ventral are the main ones." to "நரம்பு மண்டலம் தொண்டையைச் சுற்றிய வளையமும் நீளவாக்கு நரம்பு வடங்களும்; முதுகு, வயிற்று வடங்கள் முதன்மையானவை.",
                     ),
                     bpoints("Reproduction", "இனப்பெருக்கம்",
-                        "The sexes are usually separate (dioecious), and the female is often larger than the male; this is sexual dimorphism." to "பாலினங்கள் பொதுவாகத் தனித்தனி (ஒருபாலுயிரிகள்); பெண் பெரும்பாலும் ஆணைவிடப் பெரியது; இது பாலின இருவடிவம்.",
+                        "The sexes are usually separate (dioecious), and the female is often larger than the male; this is sexual dimorphism." to "பாலினங்கள் பொதுவாகத் தனித்தனி (ஒரு பால் உயிரிகள்); பெண் பெரும்பாலும் ஆணைவிடப் பெரியது; இது பாலின இருவடிவம்.",
                         "Fertilisation is internal, and development is usually direct, with a series of juvenile stages and four moults." to "கருவுறுதல் உட்புறம்; வளர்ச்சி பொதுவாக நேரடியானது; தொடர் இளம் நிலைகளும் நான்கு உதிர்ப்புகளும் உண்டு.",
                         "Free-living and parasitic forms occur, the parasites inhabiting plants, invertebrates and vertebrates." to "தனி வாழ்வு, ஒட்டுண்ணி வடிவங்கள் உள்ளன; ஒட்டுண்ணிகள் தாவரங்கள், முதுகெலும்பிலிகள், முதுகெலும்பிகளில் வாழ்கின்றன.",
                     ),
@@ -58,11 +58,11 @@ object AschelminthesBookChapter {
                         "மீசோடெர்மால் முழுமையாக மூடப்படாத, குடலுக்கும் உடற்சுவருக்கும் இடையிலான திரவம் நிறைந்த உடற்குழி."),
                     bdef("Cuticle", "கியூட்டிகிள்", "The tough, non-living covering secreted by the epidermis of a nematode, which is moulted during growth." to
                         "நெமட்டோடாவின் எப்பிடெர்மிஸ் சுரக்கும் கடினமான, உயிரற்ற உறை; வளர்ச்சியின்போது உதிர்க்கப்படுகிறது."),
-                    bdef("Dioecious", "ஒருபாலுயிரி", "Having the male and female organs in separate individuals." to
+                    bdef("Dioecious", "ஒரு பால் உயிரி", "Having the male and female organs in separate individuals." to
                         "ஆண், பெண் உறுப்புகள் தனித்தனி உயிரிகளில் இருக்கும் நிலை."),
                     bdef("Sexual dimorphism", "பாலின இருவடிவம்", "A difference in form between the male and the female of a species." to
                         "ஓர் இனத்தின் ஆணுக்கும் பெண்ணுக்கும் இடையிலான வடிவ வேறுபாடு."),
-                    bdef("Moulting", "உதிர்த்தல்", "The shedding of the old cuticle and the formation of a new one as the animal grows." to
+                    bdef("Moulting", "தோலுரித்தல்", "The shedding of the old cuticle and the formation of a new one as the animal grows." to
                         "விலங்கு வளரும்போது பழைய கியூட்டிகிளை உதிர்த்துப் புதியதை உருவாக்குதல்."),
                 )),
             bsec("pseudocoelom", "The pseudocoelom and the hydrostatic skeleton", "போலி உடற்குழியும் நீரியல் எலும்புக்கூடும்",

@@ -5,10 +5,10 @@ object PoriferaBookChapter {
     val chapter = bchapter(
         lessonId = "u2-porifera",
         title = "Phylum Porifera: general characters and classification" to
-            "போரிஃபெரா தொகுதி: பொதுப் பண்புகளும் வகைப்பாடும்",
+            "துளையுடலிகள் தொகுதி: பொதுப் பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
             "State what a sponge is and explain the meaning of the name Porifera." to
-                "கடற்பஞ்சு என்றால் என்ன என்பதைக் கூறி, போரிஃபெரா என்ற பெயரின் பொருளை விளக்க.",
+                "கடற்பஞ்சு என்றால் என்ன என்பதைக் கூறி, துளையுடலிகள் என்ற பெயரின் பொருளை விளக்க.",
             "List the general characters of the phylum." to
                 "தொகுதியின் பொதுப் பண்புகளைப் பட்டியலிட.",
             "Describe the cell types of a sponge and the function of each." to
@@ -28,8 +28,8 @@ object PoriferaBookChapter {
             bsec("meaning", "The name and the animal", "பெயரும் விலங்கும்",
                 blocks = listOf(
                     bp("The name Porifera comes from the Latin words porus, a pore, and ferre, to bear, and means pore-bearing. It describes the most obvious feature of the body: it is perforated by countless small pores through which water enters, and by one or more larger openings through which water leaves." to
-                        "போரிஃபெரா என்ற பெயர் லத்தீன் சொற்களான porus (துளை), ferre (தாங்குதல்) என்பவற்றிலிருந்து வந்தது; துளை தாங்குவது என்று பொருள். உடலின் மிகத் தெளிவான பண்பை இது குறிக்கிறது: எண்ணற்ற சிறு துளைகள் வழியாக நீர் உள்ளே வருகிறது; ஒன்று அல்லது அதற்கு மேற்பட்ட பெரிய துளைகள் வழியாக வெளியேறுகிறது."),
-                    bdef("Porifera", "போரிஃபெரா",
+                        "துளையுடலிகள் என்ற பெயர் லத்தீன் சொற்களான porus (துளை), ferre (தாங்குதல்) என்பவற்றிலிருந்து வந்தது; துளை தாங்குவது என்று பொருள். உடலின் மிகத் தெளிவான பண்பை இது குறிக்கிறது: எண்ணற்ற சிறு துளைகள் வழியாக நீர் உள்ளே வருகிறது; ஒன்று அல்லது அதற்கு மேற்பட்ட பெரிய துளைகள் வழியாக வெளியேறுகிறது."),
+                    bdef("Porifera", "துளையுடலிகள்",
                         "The phylum of aquatic, mostly marine and sessile animals whose body is perforated by pores and traversed by a system of canals and chambers through which water is driven. The cells are organised at the cellular grade and do not form true organs." to
                             "துளைகள் நிறைந்த உடலும் நீர் செலுத்தப்படும் கால்வாய், அறை அமைப்பும் கொண்ட, பெரும்பாலும் கடல்வாழ், நிலைத்த விலங்குகளின் தொகுதி; செல்கள் செல்மட்ட அமைப்பில் உள்ளன, உண்மையான உறுப்புகளை உருவாக்குவதில்லை."),
                     bdef("Aquiferous system", "நீர்வழி அமைப்பு",
@@ -45,7 +45,7 @@ object PoriferaBookChapter {
                 blocks = listOf(
                     bp("The characters below are those that every examination answer on the phylum should state. They are arranged from the whole animal to its cells and its development." to
                         "கீழ்க்காணும் பண்புகளை தொகுதி பற்றிய ஒவ்வொரு தேர்வு விடையிலும் குறிப்பிட வேண்டும். முழு விலங்கிலிருந்து அதன் செல்கள், வளர்ச்சி வரை வரிசைப்படுத்தப்பட்டுள்ளன."),
-                    bpoints("General characters of Porifera", "போரிஃபெராவின் பொதுப் பண்புகள்",
+                    bpoints("General characters of Porifera", "துளையுடலிகளின் பொதுப் பண்புகள்",
                         "Aquatic animals, mostly marine, and sessile as adults." to "நீர்வாழ் விலங்குகள்; பெரும்பாலும் கடல்வாழ்; முதிர்நிலையில் நிலைத்தவை.",
                         "The body is asymmetrical or radially symmetrical and is perforated by many ostia and one or more oscula." to "உடல் சமச்சீரற்றது அல்லது கதிர்ச் சமச்சீர் உடையது; பல ஆஸ்டியாவும் ஒன்று அல்லது அதற்கு மேற்பட்ட ஆஸ்குலமும் உள்ளன.",
                         "The organisation is cellular: there are no true tissues or organs." to "அமைப்பு செல்மட்டத்தில் உள்ளது; உண்மையான திசுக்களோ உறுப்புகளோ இல்லை.",
@@ -132,7 +132,7 @@ object PoriferaBookChapter {
                 blocks = listOf(
                     bp("Syllabuses usually recognise three classes, separated mainly by the skeleton. Modern classifications add a fourth class, Homoscleromorpha, which was formerly placed in the Demospongiae; the three-class scheme is the one required for examinations unless your university prescribes otherwise." to
                         "பாடத்திட்டங்கள் பொதுவாக மூன்று வகுப்புகளை ஏற்கின்றன; எலும்புக்கூடே முதன்மைப் பிரிவுப் பண்பு. நவீன வகைப்பாடுகள், முன்பு டெமோஸ்பாஞ்சியேயில் இருந்த ஹோமோஸ்கிளீரோமார்ஃபா என்ற நான்காம் வகுப்பையும் சேர்க்கின்றன; பல்கலைக்கழகம் வேறுவிதமாகக் கூறாவிட்டால் தேர்வுக்கு மூன்று வகுப்பு முறையே தேவை."),
-                    btable("The three main classes of Porifera", "போரிஃபெராவின் மூன்று முதன்மை வகுப்புகள்",
+                    btable("The three main classes of Porifera", "துளையுடலிகளின் மூன்று முதன்மை வகுப்புகள்",
                         listOf("Class" to "வகுப்பு", "Skeleton" to "எலும்புக்கூடு", "Features" to "சிறப்புப் பண்புகள்", "Examples" to "எடுத்துக்காட்டுகள்"),
                         listOf(
                             listOf("Calcarea" to "கால்கேரியா", "Calcareous spicules, separate" to "சுண்ணாம்பு ஊசிகள், தனித்தவை", "All marine; mostly shallow water; small; asconoid, syconoid or leuconoid" to "அனைத்தும் கடல்வாழ்; பெரும்பாலும் ஆழமற்ற நீர்; சிறியவை; அஸ்கோனாய்டு, சைக்கனாய்டு அல்லது லியூக்கோனாய்டு", "Leucosolenia, Sycon, Grantia" to "லியூக்கோசோலீனியா, சைக்கான், கிராண்ஷியா"),
@@ -177,7 +177,7 @@ object PoriferaBookChapter {
                 )),
         ),
         summary = listOf(
-            "Porifera are aquatic, mostly marine, sessile animals perforated by ostia and oscula and organised at the cellular grade." to "போரிஃபெரா ஆஸ்டியா, ஆஸ்குலம் துளைகள் கொண்ட, செல்மட்ட அமைப்புடைய, நீர்வாழ், பெரும்பாலும் கடல்வாழ், நிலைத்த விலங்குகள்.",
+            "Porifera are aquatic, mostly marine, sessile animals perforated by ostia and oscula and organised at the cellular grade." to "துளையுடலிகள் ஆஸ்டியா, ஆஸ்குலம் துளைகள் கொண்ட, செல்மட்ட அமைப்புடைய, நீர்வாழ், பெரும்பாலும் கடல்வாழ், நிலைத்த விலங்குகள்.",
             "A current of water driven by choanocytes passes through the aquiferous system and brings food and oxygen." to "கோனோசைட்டுகள் செலுத்தும் நீரோட்டம் நீர்வழி அமைப்பில் சென்று உணவையும் ஆக்சிஜனையும் கொண்டுவருகிறது.",
             "The main cells are pinacocytes, porocytes, choanocytes, archaeocytes, sclerocytes, spongocytes and myocytes." to "முதன்மை செல்கள் பினாகோசைட், போரோசைட், கோனோசைட், ஆர்க்கியோசைட், ஸ்கிளீரோசைட், ஸ்பாஞ்சோசைட், மயோசைட்.",
             "The skeleton is of calcareous or siliceous spicules, of spongin, or of both, and it separates the classes." to "எலும்புக்கூடு சுண்ணாம்பு அல்லது சிலிக்கா ஊசிகள், ஸ்பாஞ்சின் அல்லது இரண்டாலும் ஆனது; வகுப்புகளை இதுவே பிரிக்கிறது.",
@@ -185,7 +185,7 @@ object PoriferaBookChapter {
             "Archaeocytes and other plastic cells make regeneration possible; this is distinct from gemmule formation." to "ஆர்க்கியோசைட்டுகளும் பிற மாற்றத்திறன் செல்களும் மீளுருவாக்கத்தை சாத்தியமாக்குகின்றன; இது ஜெம்யூல் உருவாக்கத்திலிருந்து வேறுபட்டது.",
         ),
         checks = listOf(
-            bqc("What does the name Porifera mean?", "போரிஃபெரா என்ற பெயரின் பொருள் என்ன?",
+            bqc("What does the name Porifera mean?", "துளையுடலிகள் என்ற பெயரின் பொருள் என்ன?",
                 "Pore-bearing, from the Latin porus (pore) and ferre (to bear).", "துளை தாங்குவது; லத்தீன் porus (துளை), ferre (தாங்குதல்) என்பவற்றிலிருந்து."),
             bqc("Which cells create the water current in a sponge?", "கடற்பஞ்சில் நீரோட்டத்தை உருவாக்கும் செல்கள் எவை?",
                 "The choanocytes, by the beating of their flagella.", "கோனோசைட்டுகள்; தம் கசையிழை அசைவால்."),

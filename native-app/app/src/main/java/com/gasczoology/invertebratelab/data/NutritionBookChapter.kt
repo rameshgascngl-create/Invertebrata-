@@ -68,7 +68,7 @@ object NutritionBookChapter {
                         "உட்கொண்ட உணவு செரிக்கப்படும், ஃபேகோசோம் எனவும் அழைக்கப்படும், சவ்வால் சூழப்பட்ட நுண்குமிழ்."),
                     bdef("Pseudopodium", "போலிக்கால்", "A temporary extension of the cytoplasm used in movement and in the capture of food." to
                         "இயக்கத்திலும் உணவுப் பிடிப்பிலும் பயன்படும் சைட்டோபிளாசத்தின் தற்காலிக நீட்சி."),
-                    bdef("Egestion", "வெளியேற்றம்", "The expulsion of undigested material from the cell." to
+                    bdef("Egestion", "கழிவு வெளியேற்றம்", "The expulsion of undigested material from the cell." to
                         "செரிக்காத பொருளை உயிரணுவிலிருந்து வெளியேற்றுதல்."),
                     bdef("Cytostome", "சைட்டோஸ்டோம்", "A fixed opening in the cell through which food is taken in, as in Paramecium; absent in Amoeba." to
                         "பாரமீசியத்தில் உள்ளது போல, உணவை உள்ளெடுக்கும் உயிரணுவின் நிலையான திறப்பு; அமீபாவில் இல்லை."),
@@ -128,7 +128,7 @@ object NutritionBookChapter {
                         "பேரினம், தொகுதி போன்ற வகைப்பாட்டில் பெயரிடப்பட்ட உயிரிக் குழு."),
                     bdef("Ingestion", "உட்கொள்ளல்", "The taking of food into the cell or the body." to
                         "உணவை உயிரணு அல்லது உடலுக்குள் எடுத்தல்."),
-                    bdef("Absorption", "உறிஞ்சுதல்", "The passage of dissolved nutrients across a membrane into the cell." to
+                    bdef("Absorption", "உட்கிரகித்தல்", "The passage of dissolved nutrients across a membrane into the cell." to
                         "கரைந்த ஊட்டப்பொருட்கள் சவ்வைக் கடந்து உயிரணுவுக்குள் செல்லுதல்."),
                     bdef("Digestion", "செரிமானம்", "The breakdown of food into small soluble molecules by enzymes." to
                         "நொதிகளால் உணவை சிறு கரையும் மூலக்கூறுகளாக உடைத்தல்."),

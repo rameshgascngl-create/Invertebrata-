@@ -4,9 +4,9 @@ package com.gasczoology.invertebratelab.data
 object WvsBookChapter {
     val chapter = bchapter(
         lessonId = "u5-wvs",
-        title = "The Water-Vascular System" to "நீர்-நாள அமைப்பு",
+        title = "The Water-Vascular System" to "நீர் குருதியோட்ட மண்டலம்",
         objectives = listOf(
-            "Define the water-vascular system and state its origin." to "நீர்-நாள அமைப்பை வரையறுத்து அதன் தோற்றத்தைக் கூற.",
+            "Define the water-vascular system and state its origin." to "நீர் குருதியோட்ட மண்டலத்தை வரையறுத்து அதன் தோற்றத்தைக் கூற.",
             "Trace the canals from the madreporite to a tube-foot unit." to "மேட்ரிபோரைட்டிலிருந்து குழாய்ப்பாத அலகு வரை கால்வாய்களைத் தொடர்ந்து காட்ட.",
             "Explain the hydraulic action of the ampulla and tube foot." to "ஆம்புலா, குழாய்ப்பாதத்தின் நீரழுத்தச் செயலை விளக்க.",
             "Relate the system to locomotion, feeding and gas exchange." to "அமைப்பை இயக்கம், உணவெடுப்பு, வாயுப் பரிமாற்றத்துடன் தொடர்புபடுத்த.",
@@ -14,7 +14,7 @@ object WvsBookChapter {
         ),
         introduction = listOf(
             "The water-vascular system is the most distinctive organ system of the echinoderms, and it is found in no other phylum. It is a system of canals derived from part of the coelom, filled with a watery fluid, and provided with muscles and valves, so that it works as a hydraulic machine. Its visible end-organs are the tube feet, which in a starfish line the ambulacral grooves in hundreds, and which are used in walking, holding on, feeding and breathing." to
-                "நீர்-நாள அமைப்பு முட்தோலிகளின் மிகத் தனித்துவமான உறுப்பு அமைப்பு; வேறெந்தத் தொகுதியிலும் காணப்படுவதில்லை. உடற்குழியின் ஒரு பகுதியிலிருந்து உருவான, நீர்மத் திரவம் நிரம்பிய, தசைகளும் வால்வுகளும் கொண்ட கால்வாய்களின் அமைப்பு; எனவே நீரழுத்த இயந்திரமாகச் செயல்படுகிறது. அதன் தெரியும் முனை உறுப்புகள் குழாய்ப்பாதங்கள்; நட்சத்திரமீனில் ஆம்புலாக்ரல் பள்ளங்களில் நூற்றுக்கணக்கில் வரிசையாக அமைந்து நடக்க, ஒட்டிக்கொள்ள, உண்ண, சுவாசிக்கப் பயன்படுகின்றன.",
+                "நீர் குருதியோட்ட மண்டலம் முட்தோலிகளின் மிகத் தனித்துவமான உறுப்பு அமைப்பு; வேறெந்தத் தொகுதியிலும் காணப்படுவதில்லை. உடற்குழியின் ஒரு பகுதியிலிருந்து உருவான, நீர்மத் திரவம் நிரம்பிய, தசைகளும் வால்வுகளும் கொண்ட கால்வாய்களின் அமைப்பு; எனவே நீரழுத்த இயந்திரமாகச் செயல்படுகிறது. அதன் தெரியும் முனை உறுப்புகள் குழாய்ப்பாதங்கள்; நட்சத்திரமீனில் ஆம்புலாக்ரல் பள்ளங்களில் நூற்றுக்கணக்கில் வரிசையாக அமைந்து நடக்க, ஒட்டிக்கொள்ள, உண்ண, சுவாசிக்கப் பயன்படுகின்றன.",
             "Two statements appear in the A5 notes that this chapter keeps in view. First, the pathway from the madreporite to a tube foot is an anatomical connection, and it must not be read as a claim of a continuous one-way flow of sea water through every foot. Second, the tube feet assist in opening a bivalve, but they do not crush the shell. The chapter explains the structure and then the action, and it takes the starfish as the example." to
                 "A5 குறிப்புகளில் இவ்வத்தியாயம் கவனத்தில் வைக்கும் இரு கூற்றுகள் உள்ளன. முதலாவது, மேட்ரிபோரைட்டிலிருந்து குழாய்ப்பாதம் வரையான பாதை உடற்கூறியல் இணைப்பு; ஒவ்வொரு பாதம் வழியேயும் கடல்நீர் தொடர்ந்து ஒருதிசை ஓடுகிறது என்ற கூற்றாகப் படிக்கக் கூடாது. இரண்டாவது, குழாய்ப்பாதங்கள் இருவோட்டைத் திறக்க உதவுகின்றன; ஆனால் ஓட்டை நொறுக்குவதில்லை. அத்தியாயம் அமைப்பையும் பின்னர் செயலையும் விளக்கி, நட்சத்திரமீனை எடுத்துக்காட்டாகக் கொள்கிறது.",
         ),
@@ -22,19 +22,19 @@ object WvsBookChapter {
             bsec("definition", "Definition and origin", "வரையறையும் தோற்றமும்",
                 blocks = listOf(
                     bp("The water-vascular system is a coelom-derived hydraulic network of canals, unique to the echinoderms. In the embryo and larva, the left side of the coelom forms a series of outgrowths, among them the hydrocoel, and the hydrocoel becomes the canal system of the adult. The origin from the coelom means that the fluid inside is a coelomic fluid, similar to sea water in its salts, with coelomocytes and a little protein, and not simply sea water that has been drawn in." to
-                        "நீர்-நாள அமைப்பு முட்தோலிகளுக்கே உரிய, உடற்குழியிலிருந்து தோன்றிய கால்வாய்களின் நீரழுத்த வலைப்பின்னல். கருவிலும் லார்வாவிலும் உடற்குழியின் இடப்பக்கம் ஹைட்ரோசீல் உள்ளிட்ட வளர்ச்சித் தொடரை உருவாக்குகிறது; ஹைட்ரோசீல் முதிர்ந்ததின் கால்வாய் அமைப்பாகிறது. உடற்குழியிலிருந்து தோற்றம் என்பதால் உள்ளிருக்கும் திரவம் உடற்குழித் திரவம்; உப்புகளில் கடல்நீரை ஒத்தது; கொலோமோசைட்டுகளும் சிறிது புரதமும் கொண்டது; உள்ளிழுக்கப்பட்ட கடல்நீர் மட்டுமல்ல."),
+                        "நீர் குருதியோட்ட மண்டலம் முட்தோலிகளுக்கே உரிய, உடற்குழியிலிருந்து தோன்றிய கால்வாய்களின் நீரழுத்த வலைப்பின்னல். கருவிலும் லார்வாவிலும் உடற்குழியின் இடப்பக்கம் ஹைட்ரோசீல் உள்ளிட்ட வளர்ச்சித் தொடரை உருவாக்குகிறது; ஹைட்ரோசீல் முதிர்ந்ததின் கால்வாய் அமைப்பாகிறது. உடற்குழியிலிருந்து தோற்றம் என்பதால் உள்ளிருக்கும் திரவம் உடற்குழித் திரவம்; உப்புகளில் கடல்நீரை ஒத்தது; கொலோமோசைட்டுகளும் சிறிது புரதமும் கொண்டது; உள்ளிழுக்கப்பட்ட கடல்நீர் மட்டுமல்ல."),
                     bp("The system has three kinds of parts. There are the main canals, which are the ring canal and the radial canals; the lateral canals and ampullae, which connect the main canals to the feet; and the tube feet, which are the working end-organs. The madreporite and the stone canal connect the system to the outside, and in some echinoderms there are other accessory parts, such as Tiedemann's bodies and Polian vesicles, whose details vary and are not required in this answer." to
                         "அமைப்புக்கு மூன்று வகைப் பகுதிகள் உண்டு: முதன்மைக் கால்வாய்களான வளையக் கால்வாயும் கதிர்க் கால்வாய்களும்; முதன்மைக் கால்வாய்களை பாதங்களுடன் இணைக்கும் பக்கக் கால்வாய்களும் ஆம்புலாக்களும்; வேலை செய்யும் முனை உறுப்புகளான குழாய்ப்பாதங்களும். மேட்ரிபோரைட்டும் கல் கால்வாயும் அமைப்பை வெளியுடன் இணைக்கின்றன; சில முட்தோலிகளில் டீடிமன் உடல்கள், போலியன் பைகள் போன்ற பிற துணைப் பகுதிகள் உள்ளன; விவரங்கள் மாறுபடும்; இவ்விடையில் தேவையில்லை."),
-                    bdef("Water-vascular system", "நீர்-நாள அமைப்பு", "A coelom-derived hydraulic system of canals and tube feet unique to echinoderms." to
+                    bdef("Water-vascular system", "நீர் குருதியோட்ட மண்டலம்", "A coelom-derived hydraulic system of canals and tube feet unique to echinoderms." to
                         "முட்தோலிகளுக்கே உரிய, உடற்குழியிலிருந்து தோன்றிய கால்வாய்கள், குழாய்ப்பாதங்களின் நீரழுத்த அமைப்பு."),
                     bdef("Hydrocoel", "ஹைட்ரோசீல்", "The part of the larval coelom that gives rise to the water-vascular system." to
-                        "நீர்-நாள அமைப்பைத் தரும் லார்வா உடற்குழியின் பகுதி."),
+                        "நீர் குருதியோட்ட மண்டலத்தைத் தரும் லார்வா உடற்குழியின் பகுதி."),
                     bdef("Hydraulic", "நீரழுத்த", "Working by the pressure of a liquid in a closed space." to
                         "மூடிய இடத்தில் திரவ அழுத்தத்தால் செயல்படும்."),
                 )),
             bsec("pathway", "The pathway of canals", "கால்வாய்ப் பாதை",
                 blocks = listOf(
-                    bfig("asterias/water-vascular-system", "The water-vascular system of a starfish: madreporite, stone canal, ring canal, radial canals, lateral canals, ampullae and tube feet." to "நட்சத்திரமீனின் நீர்-நாள அமைப்பு: மேட்ரிபோரைட், கல் கால்வாய், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், பக்கக் கால்வாய்கள், ஆம்புலாக்கள், குழாய்ப்பாதங்கள்."),
+                    bfig("asterias/water-vascular-system", "The water-vascular system of a starfish: madreporite, stone canal, ring canal, radial canals, lateral canals, ampullae and tube feet." to "நட்சத்திரமீனின் நீர் குருதியோட்ட மண்டலம்: மேட்ரிபோரைட், கல் கால்வாய், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், பக்கக் கால்வாய்கள், ஆம்புலாக்கள், குழாய்ப்பாதங்கள்."),
                     bpoints("The pathway, in order", "பாதை, வரிசையாக",
                         "The madreporite, a porous plate on the aboral surface, communicates with the system and helps to regulate its fluid." to "மேற்புறத்திலுள்ள துளைகளுடைய தகடான மேட்ரிபோரைட் அமைப்புடன் தொடர்புகொண்டு அதன் திரவத்தை ஒழுங்குபடுத்த உதவுகிறது.",
                         "A stone canal, with calcareous deposits in its wall, connects the madreporite to the ring canal." to "சுவரில் சுண்ணாம்புப் படிவுகளுடைய கல் கால்வாய் மேட்ரிபோரைட்டை வளையக் கால்வாயுடன் இணைக்கிறது.",
@@ -146,7 +146,7 @@ object WvsBookChapter {
                 )),
         ),
         summary = listOf(
-            "The water-vascular system is a coelom-derived hydraulic canal network unique to the echinoderms." to "நீர்-நாள அமைப்பு முட்தோலிகளுக்கே உரிய உடற்குழியிலிருந்து தோன்றிய நீரழுத்தக் கால்வாய் வலைப்பின்னல்.",
+            "The water-vascular system is a coelom-derived hydraulic canal network unique to the echinoderms." to "நீர் குருதியோட்ட மண்டலம் முட்தோலிகளுக்கே உரிய உடற்குழியிலிருந்து தோன்றிய நீரழுத்தக் கால்வாய் வலைப்பின்னல்.",
             "Pathway: madreporite, stone canal, ring canal, radial canals, lateral canals, ampullae, tube feet." to "பாதை: மேட்ரிபோரைட், கல் கால்வாய், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், பக்கக் கால்வாய்கள், ஆம்புலாக்கள், குழாய்ப்பாதங்கள்.",
             "The pathway is anatomical, not a continuous one-way flow of sea water through every foot." to "பாதை உடற்கூறியல்; ஒவ்வொரு பாதம் வழியேயும் தொடர் ஒருதிசை கடல்நீர் ஓட்டம் அல்ல.",
             "Ampullary contraction, with the lateral canal valve closed, extends the foot; the foot muscles retract it." to "பக்கக் கால்வாய் வால்வு மூடிய நிலையில் ஆம்புலா சுருங்கி பாதத்தை நீட்டுகிறது; பாதத் தசைகள் உள்ளிழுக்கின்றன.",
@@ -154,7 +154,7 @@ object WvsBookChapter {
             "Tube feet help to open bivalve prey by sustained traction; they do not crush the shell." to "குழாய்ப்பாதங்கள் தொடர்ந்த இழுவையால் இருவோட்டு இரையைத் திறக்க உதவுகின்றன; ஓட்டை நொறுக்குவதில்லை.",
         ),
         checks = listOf(
-            bqc("Where does the water-vascular system arise in the embryo?", "கருவில் நீர்-நாள அமைப்பு எங்கிருந்து தோன்றுகிறது?",
+            bqc("Where does the water-vascular system arise in the embryo?", "கருவில் நீர் குருதியோட்ட மண்டலம் எங்கிருந்து தோன்றுகிறது?",
                 "From part of the coelom, the hydrocoel.", "உடற்குழியின் ஒரு பகுதியான ஹைட்ரோசீலிலிருந்து."),
             bqc("What closes when the ampulla contracts, and why?", "ஆம்புலா சுருங்கும்போது எது மூடுகிறது, ஏன்?",
                 "The valve in the lateral canal, so that fluid is forced into the tube foot and not back into the radial canal.", "பக்கக் கால்வாயின் வால்வு; எனவே திரவம் கதிர்க் கால்வாய்க்குப் பின்னோக்கிச் செல்லாமல் குழாய்ப்பாதத்துக்குள் தள்ளப்படுகிறது."),

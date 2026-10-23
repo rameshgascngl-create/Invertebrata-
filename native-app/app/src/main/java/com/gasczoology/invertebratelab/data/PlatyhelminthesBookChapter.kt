@@ -39,7 +39,7 @@ object PlatyhelminthesBookChapter {
                         "Circulatory and respiratory systems are absent; gases diffuse through the body surface." to "சுற்றோட்ட, சுவாச மண்டலங்கள் இல்லை; வாயுக்கள் உடல் பரப்பு வழியாக விரவுகின்றன.",
                     ),
                     bpoints("Nervous system, reproduction and habit", "நரம்பு மண்டலம், இனப்பெருக்கம், வாழ்முறை",
-                        "The nervous system has an anterior ganglionic mass, or brain, and longitudinal nerve cords joined by cross-connections." to "நரம்பு மண்டலத்தில் முன்புற நரம்புத் திரள் அல்லது மூளையும், குறுக்கு இணைப்புகளால் இணைந்த நீளவாக்கு நரம்பு வடங்களும் உள்ளன.",
+                        "The nervous system has an anterior ganglionic mass, or brain, and longitudinal nerve cords joined by cross-connections." to "நரம்பு மண்டலத்தில் முன்புற நரம்பு செல்திரள் அல்லது மூளையும், குறுக்கு இணைப்புகளால் இணைந்த நீளவாக்கு நரம்பு வடங்களும் உள்ளன.",
                         "Most are hermaphrodite, with complex reproductive systems, and fertilisation is internal." to "பெரும்பாலானவை இருபாலுயிரிகள்; சிக்கலான இனப்பெருக்க மண்டலங்கள்; உட்கருவுறுதல்.",
                         "Some live free, but many are ectoparasites or endoparasites, and the parasitic forms have complex life cycles." to "சில தனித்து வாழ்கின்றன; பல புறவொட்டுண்ணிகள் அல்லது அகவொட்டுண்ணிகள்; ஒட்டுண்ணி வடிவங்களுக்குச் சிக்கலான வாழ்க்கைச் சுழற்சிகள்.",
                     ),

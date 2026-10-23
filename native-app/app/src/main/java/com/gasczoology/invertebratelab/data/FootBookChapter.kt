@@ -22,19 +22,19 @@ object FootBookChapter {
             bsec("basic-foot", "The basic molluscan foot", "அடிப்படை மெல்லுடலிப் பாதம்",
                 blocks = listOf(
                     bp("The foot is a muscular outgrowth of the ventral body wall. It is made of interwoven muscle fibres running in several directions, with connective tissue and blood spaces between them, and it is supplied by a pair of pedal ganglia and the nerves from them. It is richly supplied with gland cells, which secrete mucus, and the surface carries cilia in many species. These features make it suited to creeping on a layer of mucus, which is the starting point for its other uses." to
-                        "பாதம் வயிற்றுப்புற உடற்சுவரின் தசை வளர்ச்சி. இது பல திசைகளில் ஓடும் பின்னிய தசை இழைகளாலும் அவற்றுக்கிடையே இணைப்புத் திசு, இரத்த இடைவெளிகளாலும் ஆனது; ஒரு இணை பெடல் நரம்புத் திரள்களும் அவற்றிலிருந்து வரும் நரம்புகளும் அதற்கு அளிக்கின்றன. சளி சுரக்கும் சுரப்பி உயிரணுக்கள் நிறைந்தது; பல இனங்களில் மேற்பரப்பில் கசையிழை உண்டு. இப்பண்புகள் சளி அடுக்கின்மேல் ஊர்வதற்கு ஏற்றவை; இதுவே பிற பயன்பாடுகளின் தொடக்கப் புள்ளி."),
+                        "பாதம் வயிற்றுப்புற உடற்சுவரின் தசை வளர்ச்சி. இது பல திசைகளில் ஓடும் பின்னிய தசை இழைகளாலும் அவற்றுக்கிடையே இணைப்புத் திசு, இரத்த இடைவெளிகளாலும் ஆனது; ஒரு இணை பெடல் நரம்பு செல்திரள்களும் அவற்றிலிருந்து வரும் நரம்புகளும் அதற்கு அளிக்கின்றன. சளி சுரக்கும் சுரப்பி உயிரணுக்கள் நிறைந்தது; பல இனங்களில் மேற்பரப்பில் கசையிழை உண்டு. இப்பண்புகள் சளி அடுக்கின்மேல் ஊர்வதற்கு ஏற்றவை; இதுவே பிற பயன்பாடுகளின் தொடக்கப் புள்ளி."),
                     bp("Since a muscle can only pull, the foot depends on a second element for its action, which is the fluid in the blood spaces. The incompressible fluid works as a hydrostatic skeleton, so that when the muscles of one direction contract, the fluid is forced elsewhere and the foot changes shape, and when other muscles act, it changes back. This principle appears in all the specialised feet, and it is the key to understanding burrowing, creeping, and the control of the arms of a cephalopod." to
                         "தசை இழுக்க மட்டுமே முடியும் என்பதால் பாதம் செயல்பட இரண்டாம் கூறைச் சார்ந்துள்ளது: இரத்த இடைவெளிகளிலுள்ள திரவம். அழுத்தப்பட முடியாத திரவம் நீர்நிலைக் கூடாகச் செயல்படுகிறது; ஒரு திசைத் தசைகள் சுருங்கும்போது திரவம் வேறிடம் தள்ளப்பட்டு பாதம் வடிவம் மாறுகிறது; பிற தசைகள் செயல்படும்போது மீண்டும் மாறுகிறது. இக்கொள்கை எல்லா சிறப்புப் பாதங்களிலும் தோன்றுகிறது; தோண்டுதல், ஊர்தல், தலைக்காலியின் கரக் கட்டுப்பாடு ஆகியவற்றைப் புரிந்துகொள்ளும் திறவுகோல்."),
                     bpoints("The basic foot in outline", "அடிப்படைப் பாதம் சுருக்கமாக",
                         "A ventral, muscular organ, broad and flat in the simple form." to "வயிற்றுப்புற, தசை உறுப்பு; எளிய வடிவில் அகன்று தட்டையானது.",
                         "Interwoven muscles with blood spaces that act as a hydrostatic skeleton." to "நீர்நிலைக் கூடாகச் செயல்படும் இரத்த இடைவெளிகளுடன் பின்னிய தசைகள்.",
-                        "Pedal ganglia and nerves control its movement." to "பெடல் நரம்புத் திரள்களும் நரம்புகளும் அசைவைக் கட்டுப்படுத்துகின்றன.",
+                        "Pedal ganglia and nerves control its movement." to "பெடல் நரம்பு செல்திரள்களும் நரம்புகளும் அசைவைக் கட்டுப்படுத்துகின்றன.",
                         "Mucus glands and cilia that assist creeping." to "ஊர்தலுக்கு உதவும் சளி சுரப்பிகளும் கசையிழையும்.",
                     ),
                     bdef("Foot", "பாதம்", "The ventral muscular organ of a mollusc, used for creeping, burrowing, attachment or, in modified form, for other functions." to
                         "ஊர்தல், தோண்டுதல், ஒட்டுதல் அல்லது மாறிய வடிவில் பிற செயல்களுக்குப் பயன்படும் மெல்லுடலியின் வயிற்றுப்புற தசை உறுப்பு."),
-                    bdef("Pedal ganglion", "பெடல் நரம்புத் திரள்", "A ganglion in the foot that controls its movement." to
-                        "பாதத்தின் அசைவைக் கட்டுப்படுத்தும் அதிலுள்ள நரம்புத் திரள்."),
+                    bdef("Pedal ganglion", "பெடல் நரம்பு செல்திரள்", "A ganglion in the foot that controls its movement." to
+                        "பாதத்தின் அசைவைக் கட்டுப்படுத்தும் அதிலுள்ள நரம்பு செல்திரள்."),
                     bdef("Hydrostatic skeleton", "நீர்நிலைக் கூடு", "A fluid-filled body region that gives support and allows movement when muscles act against the fluid." to
                         "தசைகள் திரவத்துக்கு எதிராகச் செயல்படும்போது ஆதரவும் இயக்கமும் தரும் திரவம் நிரம்பிய உடற்பகுதி."),
                     bdef("Homologous", "ஒத்தமைவான", "Having the same evolutionary origin, whatever the function." to

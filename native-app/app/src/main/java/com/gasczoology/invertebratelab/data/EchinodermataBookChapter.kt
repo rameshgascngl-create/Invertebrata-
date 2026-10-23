@@ -8,7 +8,7 @@ object EchinodermataBookChapter {
         objectives = listOf(
             "State the general characters of the phylum Echinodermata." to "முட்தோலித் தொகுதியின் பொதுப் பண்புகளைக் கூற.",
             "Explain why adult pentaradial symmetry is secondary." to "முதிர்ந்த ஐந்தாரைச் சமச்சீர் இரண்டாம் நிலை என்பதை விளக்க.",
-            "Describe the endoskeleton and the water-vascular system in outline." to "உட்கூடு, நீர்-நாள அமைப்பை சுருக்கமாக விவரிக்க.",
+            "Describe the endoskeleton and the water-vascular system in outline." to "அகச்சட்டகம், நீர் குருதியோட்ட மண்டலத்தை சுருக்கமாக விவரிக்க.",
             "Classify the phylum into its five living classes with examples." to "தொகுதியை ஐந்து வாழும் வகுப்புகளாக எடுத்துக்காட்டுகளுடன் வகைப்படுத்த.",
             "Summarise the evidence for deuterostome affinity." to "இரண்டாம்வாய் உறவுக்கான சான்றுகளைச் சுருக்கிக் கூற.",
         ),
@@ -16,7 +16,7 @@ object EchinodermataBookChapter {
             "The echinoderms, which include the starfishes, brittle stars, sea urchins, sea cucumbers and sea lilies, are among the most distinctive of animals. They are exclusively marine, they have a skeleton of calcareous plates beneath the skin, and they move on hydraulic tube feet that belong to a system found in no other phylum. The adults are built on a five-part radial plan, and yet they are related to the vertebrates and not to the radially symmetrical jellyfishes, which is a fact that the larvae reveal." to
                 "நட்சத்திர மீன்கள், பிரிட்டில் நட்சத்திரங்கள், கடல் முள்ளெலிகள், கடல் வெள்ளரிகள், கடல் அல்லிகளை உள்ளடக்கிய முட்தோலிகள் விலங்குகளில் மிகத் தனித்தன்மையானவை. அவை முழுவதும் கடல்வாழ்; தோலுக்கு அடியில் சுண்ணாம்புத் தகடுகளாலான கூடு கொண்டவை; வேறெந்தத் தொகுதியிலும் காணப்படாத அமைப்பைச் சேர்ந்த நீரழுத்தக் குழாய்ப்பாதங்களில் நகர்கின்றன. முதிர்ந்தவை ஐந்துபகுதி ஆரைத் திட்டத்தில் அமைந்திருந்தாலும், ஆரைச் சமச்சீருடைய ஜெல்லிமீன்களுடன் அல்ல, முதுகெலும்பிகளுடன் உறவுடையவை; இதை லார்வாக்கள் வெளிப்படுத்துகின்றன.",
             "This chapter gives the characters of the phylum, the reasoning that links them to the deuterostomes, and a classification down to the level of the class. The detailed types, Asterias, the water-vascular system, the larvae, and the fossil record, are treated in the chapters that follow, and this chapter prepares the framework for them." to
-                "இவ்வத்தியாயம் தொகுதியின் பண்புகளையும் அவற்றை இரண்டாம்வாயிகளுடன் இணைக்கும் காரணத்தையும் வகுப்பு நிலை வரையான வகைப்பாட்டையும் தருகிறது. அஸ்டீரியாஸ் வகை, நீர்-நாள அமைப்பு, லார்வாக்கள், புதைபடிவப் பதிவு போன்ற விரிவான பகுதிகள் தொடரும் அத்தியாயங்களில் கையாளப்படுகின்றன; இவ்வத்தியாயம் அவற்றுக்கான கட்டமைப்பைத் தயார் செய்கிறது.",
+                "இவ்வத்தியாயம் தொகுதியின் பண்புகளையும் அவற்றை இரண்டாம்வாயிகளுடன் இணைக்கும் காரணத்தையும் வகுப்பு நிலை வரையான வகைப்பாட்டையும் தருகிறது. அஸ்டீரியாஸ் வகை, நீர் குருதியோட்ட மண்டலம், லார்வாக்கள், புதைபடிவப் பதிவு போன்ற விரிவான பகுதிகள் தொடரும் அத்தியாயங்களில் கையாளப்படுகின்றன; இவ்வத்தியாயம் அவற்றுக்கான கட்டமைப்பைத் தயார் செய்கிறது.",
         ),
         sections = listOf(
             bsec("characters", "General characters", "பொதுப் பண்புகள்",
@@ -24,16 +24,16 @@ object EchinodermataBookChapter {
                     bpoints("The general characters of Echinodermata", "முட்தோலிகளின் பொதுப் பண்புகள்",
                         "Exclusively marine, triploblastic, coelomate deuterostomes." to "முழுவதும் கடல்வாழ், மூவடுக்கு, உண்மையான உடற்குழியுடைய இரண்டாம்வாயிகள்.",
                         "Adults usually show secondary pentaradial symmetry; the early larvae are bilaterally symmetrical." to "முதிர்ந்தவை பொதுவாக இரண்டாம் நிலை ஐந்தாரைச் சமச்சீர் காட்டுகின்றன; ஆரம்ப லார்வாக்கள் இருபக்கச் சமச்சீருடையவை.",
-                        "A mesodermal endoskeleton of calcareous ossicles supports the body and may bear spines and pedicellariae." to "மெசோடெர்மிலிருந்து உருவாகும் சுண்ணாம்பு ஆஸிக்கிள்களின் உட்கூடு உடலைத் தாங்குகிறது; முட்களும் பெடிசல்லேரியாக்களும் இருக்கலாம்.",
-                        "A unique water-vascular system with tube feet functions in locomotion, attachment, feeding and gas exchange." to "குழாய்ப்பாதங்களுடன் கூடிய தனித்துவமான நீர்-நாள அமைப்பு இயக்கம், பற்றுதல், உணவெடுப்பு, வாயுப் பரிமாற்றத்தில் செயல்படுகிறது.",
+                        "A mesodermal endoskeleton of calcareous ossicles supports the body and may bear spines and pedicellariae." to "மெசோடெர்மிலிருந்து உருவாகும் சுண்ணாம்பு ஆஸிக்கிள்களின் அகச்சட்டகம் உடலைத் தாங்குகிறது; முட்களும் பெடிசல்லேரியாக்களும் இருக்கலாம்.",
+                        "A unique water-vascular system with tube feet functions in locomotion, attachment, feeding and gas exchange." to "குழாய்ப்பாதங்களுடன் கூடிய தனித்துவமான நீர் குருதியோட்ட மண்டலம் இயக்கம், பற்றுதல், உணவெடுப்பு, வாயுப் பரிமாற்றத்தில் செயல்படுகிறது.",
                         "No distinct head; the nervous system is a nerve ring with radial nerves." to "தெளிவான தலை இல்லை; நரம்பு அமைப்பு நரம்பு வளையமும் கதிர் நரம்புகளும் ஆகும்.",
                         "Strong powers of regeneration, and predominantly external fertilisation." to "வலிமையான மீளுருவாக்கத் திறனும் பெரும்பாலும் வெளிப்புறக் கருவுறுதலும்.",
                     ),
                     bp("Several of these characters are best learned as a connected picture. The animal is a coelomate, and the coelom is divided into several parts during development, one of which gives rise to the water-vascular system. The skeleton is an endoskeleton, because it lies within the body wall, beneath an epidermis that covers it, and yet it can project through the skin as spines. A circulatory system exists in a reduced form, as a haemal system in channels of the coelomic spaces, and excretion and gas exchange are carried out by the skin, the tube feet and in some groups special structures, without a specialised kidney." to
-                        "இவற்றில் பல பண்புகள் இணைந்த சித்திரமாகக் கற்கப்படுவது சிறந்தது. விலங்கு உண்மையான உடற்குழியுடையது; வளர்ச்சியில் உடற்குழி பல பகுதிகளாகப் பிரிகிறது; அவற்றில் ஒன்று நீர்-நாள அமைப்பைத் தருகிறது. கூடு உடற்சுவருக்குள், அதை மூடும் மேற்றோலுக்கு அடியில் அமைவதால் உட்கூடு; ஆனாலும் முட்களாகத் தோலைத் துளைத்து வெளிவரலாம். சுற்றோட்ட அமைப்பு உடற்குழி இடைவெளிகளின் வழிகளில் ஹீமல் அமைப்பாகக் குறைந்த வடிவில் உள்ளது; வெளியேற்றமும் வாயுப் பரிமாற்றமும் சிறப்பு சிறுநீரகம் இன்றி தோல், குழாய்ப்பாதங்கள், சில குழுக்களில் சிறப்பு அமைப்புகளால் நடைபெறுகின்றன."),
+                        "இவற்றில் பல பண்புகள் இணைந்த சித்திரமாகக் கற்கப்படுவது சிறந்தது. விலங்கு உண்மையான உடற்குழியுடையது; வளர்ச்சியில் உடற்குழி பல பகுதிகளாகப் பிரிகிறது; அவற்றில் ஒன்று நீர் குருதியோட்ட மண்டலத்தைத் தருகிறது. கூடு உடற்சுவருக்குள், அதை மூடும் மேற்றோலுக்கு அடியில் அமைவதால் அகச்சட்டகம்; ஆனாலும் முட்களாகத் தோலைத் துளைத்து வெளிவரலாம். சுற்றோட்ட அமைப்பு உடற்குழி இடைவெளிகளின் வழிகளில் ஹீமல் அமைப்பாகக் குறைந்த வடிவில் உள்ளது; வெளியேற்றமும் வாயுப் பரிமாற்றமும் சிறப்பு சிறுநீரகம் இன்றி தோல், குழாய்ப்பாதங்கள், சில குழுக்களில் சிறப்பு அமைப்புகளால் நடைபெறுகின்றன."),
                     bdef("Echinoderm", "முட்தோலி", "A marine deuterostome with a calcareous endoskeleton, a water-vascular system and adult pentaradial symmetry." to
-                        "சுண்ணாம்பு உட்கூடு, நீர்-நாள அமைப்பு, முதிர்ந்த ஐந்தாரைச் சமச்சீர் கொண்ட கடல்வாழ் இரண்டாம்வாயி."),
-                    bdef("Endoskeleton", "உட்கூடு", "A skeleton that lies within the body, here made of mesodermal calcareous ossicles." to
+                        "சுண்ணாம்பு அகச்சட்டகம், நீர் குருதியோட்ட மண்டலம், முதிர்ந்த ஐந்தாரைச் சமச்சீர் கொண்ட கடல்வாழ் இரண்டாம்வாயி."),
+                    bdef("Endoskeleton", "அகச்சட்டகம்", "A skeleton that lies within the body, here made of mesodermal calcareous ossicles." to
                         "உடலுக்குள் அமையும் கூடு; இங்கு மெசோடெர்மிலிருந்து உருவாகும் சுண்ணாம்பு ஆஸிக்கிள்கள்."),
                     bdef("Ossicle", "ஆஸிக்கிள்", "A small calcareous plate or piece of the echinoderm skeleton." to
                         "முட்தோலிக் கூட்டின் சிறு சுண்ணாம்புத் தகடு அல்லது துண்டு."),
@@ -60,16 +60,16 @@ object EchinodermataBookChapter {
                     bdef("Aboral surface", "மேற்புற மேற்பரப்பு", "The surface opposite the mouth, which in a starfish bears the anus and the madreporite." to
                         "வாய்க்கு எதிர் மேற்பரப்பு; நட்சத்திரமீனில் மலவாயும் மேட்ரிபோரைட்டும் உள்ளது."),
                 )),
-            bsec("wvs-skeleton", "The skeleton and the water-vascular system", "கூடும் நீர்-நாள அமைப்பும்",
+            bsec("wvs-skeleton", "The skeleton and the water-vascular system", "கூடும் நீர் குருதியோட்ட மண்டலமும்",
                 blocks = listOf(
                     bp("The skeleton is made of ossicles, each of which is a meshwork of calcium carbonate in the form of calcite with a small amount of organic matter, formed within cells of the mesoderm. In the sea urchins the ossicles are fused into a rigid shell, the test. In the starfishes they are separate pieces held by connective tissue and muscle, so that the arms can bend. In the sea cucumbers they are reduced to microscopic pieces in a leathery body wall. The surface may bear spines, and in the starfishes and sea urchins the pedicellariae." to
                         "கூடு ஆஸிக்கிள்களால் ஆனது; ஒவ்வொன்றும் சிறிதளவு கரிமப் பொருளுடன் கால்சைட் வடிவ கால்சியம் கார்பனேட்டின் வலைப்பின்னல்; மெசோடெர்ம் உயிரணுக்களுக்குள் உருவாகிறது. கடல் முள்ளெலிகளில் ஆஸிக்கிள்கள் இணைந்து இறுகிய ஓடு, டெஸ்ட் ஆகின்றன. நட்சத்திர மீன்களில் அவை இணைப்புத் திசுவாலும் தசையாலும் பிடிக்கப்பட்ட தனித் துண்டுகள்; எனவே கரங்கள் வளையலாம். கடல் வெள்ளரிகளில் தோல் போன்ற உடற்சுவரில் நுண்ணிய துண்டுகளாகக் குறைந்துள்ளன. மேற்பரப்பில் முட்கள் இருக்கலாம்; நட்சத்திர மீன்கள், முள்ளெலிகளில் பெடிசல்லேரியாக்கள்."),
                     bp("The water-vascular system is a system of canals, derived from part of the coelom, filled with a fluid like sea water and moved by muscles and hydraulic pressure. Seawater enters through the madreporite, a sieve-like plate, and the stone canal leads to a ring canal around the mouth, from which radial canals pass along each arm. Side branches end in tube feet, each connected to a bulb called an ampulla. When the ampulla contracts, fluid is driven into the tube foot, which extends, and muscles of the tube foot retract it. The system works by hydraulic pressure and not by a continuous one-way flow of sea water through the animal, and it is treated in its own chapter." to
-                        "நீர்-நாள அமைப்பு உடற்குழியின் ஒரு பகுதியிலிருந்து தோன்றி, கடல்நீர் போன்ற திரவம் நிரம்பி, தசைகளாலும் நீரழுத்தத்தாலும் இயக்கப்படும் கால்வாய்களின் அமைப்பு. கடல்நீர் சல்லடை போன்ற தகடான மேட்ரிபோரைட் வழியே நுழைகிறது; கல் கால்வாய் வாயைச் சுற்றிய வளையக் கால்வாய்க்குச் செல்கிறது; அதிலிருந்து கதிர்க் கால்வாய்கள் ஒவ்வொரு கரத்திலும் செல்கின்றன. பக்கக் கிளைகள் குழாய்ப்பாதங்களில் முடிகின்றன; ஒவ்வொன்றும் ஆம்புலா எனும் குமிழுடன் இணைந்துள்ளது. ஆம்புலா சுருங்கும்போது திரவம் குழாய்ப்பாதத்துக்குள் தள்ளப்பட்டு அது நீள்கிறது; குழாய்ப்பாதத் தசைகள் அதை இழுக்கின்றன. அமைப்பு நீரழுத்தத்தால் இயங்குகிறது; விலங்கு வழியே கடல்நீர் தொடர்ந்து ஒருதிசை ஓடுவதால் அல்ல; இது தனி அத்தியாயத்தில் கையாளப்படுகிறது."),
+                        "நீர் குருதியோட்ட மண்டலம் உடற்குழியின் ஒரு பகுதியிலிருந்து தோன்றி, கடல்நீர் போன்ற திரவம் நிரம்பி, தசைகளாலும் நீரழுத்தத்தாலும் இயக்கப்படும் கால்வாய்களின் அமைப்பு. கடல்நீர் சல்லடை போன்ற தகடான மேட்ரிபோரைட் வழியே நுழைகிறது; கல் கால்வாய் வாயைச் சுற்றிய வளையக் கால்வாய்க்குச் செல்கிறது; அதிலிருந்து கதிர்க் கால்வாய்கள் ஒவ்வொரு கரத்திலும் செல்கின்றன. பக்கக் கிளைகள் குழாய்ப்பாதங்களில் முடிகின்றன; ஒவ்வொன்றும் ஆம்புலா எனும் குமிழுடன் இணைந்துள்ளது. ஆம்புலா சுருங்கும்போது திரவம் குழாய்ப்பாதத்துக்குள் தள்ளப்பட்டு அது நீள்கிறது; குழாய்ப்பாதத் தசைகள் அதை இழுக்கின்றன. அமைப்பு நீரழுத்தத்தால் இயங்குகிறது; விலங்கு வழியே கடல்நீர் தொடர்ந்து ஒருதிசை ஓடுவதால் அல்ல; இது தனி அத்தியாயத்தில் கையாளப்படுகிறது."),
                     bdef("Madreporite", "மேட்ரிபோரைட்", "The sieve-like plate on the aboral surface through which sea water communicates with the water-vascular system." to
-                        "கடல்நீர் நீர்-நாள அமைப்புடன் தொடர்புகொள்ளும் மேற்புறச் சல்லடை போன்ற தகடு."),
+                        "கடல்நீர் நீர் குருதியோட்ட மண்டலம்டன் தொடர்புகொள்ளும் மேற்புறச் சல்லடை போன்ற தகடு."),
                     bdef("Tube foot", "குழாய்ப்பாதம்", "A hollow, extensible, hydraulic projection of the water-vascular system used in movement, attachment and feeding." to
-                        "இயக்கம், பற்றுதல், உணவெடுப்பில் பயன்படும் நீர்-நாள அமைப்பின் வெற்று, நீளக்கூடிய நீரழுத்தத் துருத்தல்."),
+                        "இயக்கம், பற்றுதல், உணவெடுப்பில் பயன்படும் நீர் குருதியோட்ட மண்டலத்தின் வெற்று, நீளக்கூடிய நீரழுத்தத் துருத்தல்."),
                     bdef("Ampulla", "ஆம்புலா", "The muscular bulb at the base of a tube foot whose contraction extends the foot." to
                         "சுருங்கும்போது குழாய்ப்பாதத்தை நீட்டும், அதன் அடியிலுள்ள தசைக் குமிழ்."),
                     bdef("Test", "டெஸ்ட்", "The rigid shell of a sea urchin formed from fused ossicles." to
@@ -141,19 +141,19 @@ object EchinodermataBookChapter {
             bsec("answers", "Writing the answer", "விடை எழுதுதல்",
                 blocks = listOf(
                     bp("The general characters question is answered best in an order that follows the body, starting with habitat and germ layers, followed by symmetry with the note that it is secondary, the skeleton, the water-vascular system, the nervous and the reproductive features, and finishing with development and larvae. A candidate who ends with the larva has the opportunity to state the deuterostome affinity, which is the point that examiners reward. The classification should be written as a list of the five classes with a type and one diagnostic character each, and it is not necessary to carry the classification below the level of the class." to
-                        "பொதுப் பண்புகள் கேள்விக்கு உடலைப் பின்பற்றும் வரிசையில், வாழிடம், கருவடுக்குகளுடன் தொடங்கி, இரண்டாம் நிலை என்ற குறிப்புடன் சமச்சீர், கூடு, நீர்-நாள அமைப்பு, நரம்பு, இனப்பெருக்கப் பண்புகள், வளர்ச்சி, லார்வாக்களுடன் முடிப்பது சிறந்த விடை. லார்வாவுடன் முடிக்கும் தேர்வர் தேர்வாளர்கள் மதிப்பளிக்கும் இரண்டாம்வாய் உறவைக் கூற வாய்ப்புப் பெறுகிறார். வகைப்பாடு ஐந்து வகுப்புகளின் பட்டியலாக, ஒவ்வொன்றுக்கும் ஒரு வகையும் ஒரு அடையாளப் பண்பும் சேர்த்து எழுதப்பட வேண்டும்; வகுப்பு நிலைக்குக் கீழ் வகைப்பாட்டைக் கொண்டுசெல்ல அவசியமில்லை."),
+                        "பொதுப் பண்புகள் கேள்விக்கு உடலைப் பின்பற்றும் வரிசையில், வாழிடம், கருவடுக்குகளுடன் தொடங்கி, இரண்டாம் நிலை என்ற குறிப்புடன் சமச்சீர், கூடு, நீர் குருதியோட்ட மண்டலம், நரம்பு, இனப்பெருக்கப் பண்புகள், வளர்ச்சி, லார்வாக்களுடன் முடிப்பது சிறந்த விடை. லார்வாவுடன் முடிக்கும் தேர்வர் தேர்வாளர்கள் மதிப்பளிக்கும் இரண்டாம்வாய் உறவைக் கூற வாய்ப்புப் பெறுகிறார். வகைப்பாடு ஐந்து வகுப்புகளின் பட்டியலாக, ஒவ்வொன்றுக்கும் ஒரு வகையும் ஒரு அடையாளப் பண்பும் சேர்த்து எழுதப்பட வேண்டும்; வகுப்பு நிலைக்குக் கீழ் வகைப்பாட்டைக் கொண்டுசெல்ல அவசியமில்லை."),
                     bpoints("Points that gain marks", "மதிப்பெண் தரும் புள்ளிகள்",
                         "Use the word secondary for the radial symmetry, and give the reason." to "ஆரைச் சமச்சீருக்கு இரண்டாம் நிலை என்ற சொல்லைப் பயன்படுத்தி காரணம் தருக.",
-                        "Name the water-vascular system as hydraulic, with the madreporite, ring canal, radial canals and ampullae." to "நீர்-நாள அமைப்பை மேட்ரிபோரைட், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், ஆம்புலாக்களுடன் நீரழுத்தமானது எனக் குறிப்பிடுக.",
+                        "Name the water-vascular system as hydraulic, with the madreporite, ring canal, radial canals and ampullae." to "நீர் குருதியோட்ட மண்டலத்தை மேட்ரிபோரைட், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், ஆம்புலாக்களுடன் நீரழுத்தமானது எனக் குறிப்பிடுக.",
                         "Give the larva of at least two classes." to "குறைந்தது இரு வகுப்புகளின் லார்வாவைத் தருக.",
                         "State that echinoderms are relatives of the chordates through the Ambulacraria." to "அம்புலாக்ரேரியா மூலம் முட்தோலிகள் முதுகுநாணிகளின் உறவினர் எனக் கூறுக.",
                     ),
                 )),
         ),
         summary = listOf(
-            "Echinoderms are marine, triploblastic, coelomate deuterostomes with a calcareous endoskeleton." to "முட்தோலிகள் சுண்ணாம்பு உட்கூடுடைய கடல்வாழ், மூவடுக்கு, உண்மையான உடற்குழியுடைய இரண்டாம்வாயிகள்.",
+            "Echinoderms are marine, triploblastic, coelomate deuterostomes with a calcareous endoskeleton." to "முட்தோலிகள் சுண்ணாம்பு அகச்சட்டகமுடைய கடல்வாழ், மூவடுக்கு, உண்மையான உடற்குழியுடைய இரண்டாம்வாயிகள்.",
             "Adult pentaradial symmetry is secondary, derived from a bilateral larva." to "முதிர்ந்த ஐந்தாரைச் சமச்சீர் இரண்டாம் நிலை; இருபக்க லார்வாவிலிருந்து தோன்றியது.",
-            "The water-vascular system is hydraulic and unique to the phylum." to "நீர்-நாள அமைப்பு நீரழுத்தமானது; தொகுதிக்கே உரியது.",
+            "The water-vascular system is hydraulic and unique to the phylum." to "நீர் குருதியோட்ட மண்டலம் நீரழுத்தமானது; தொகுதிக்கே உரியது.",
             "There are five living classes: Asteroidea, Ophiuroidea, Echinoidea, Holothuroidea and Crinoidea." to "ஐந்து வாழும் வகுப்புகள்: அஸ்டீராய்டியா, ஓஃபியூராய்டியா, எக்கினாய்டியா, ஹோலோதூரோய்டியா, கிரினாய்டியா.",
             "Larval types, bipinnaria, pluteus and auricularia, are class-informative." to "பிபின்னேரியா, ப்ளூட்டியஸ், ஆரிக்குலேரியா லார்வா வகைகள் வகுப்பை அறிய உதவுகின்றன.",
             "Echinoderms and hemichordates form the Ambulacraria, a relative of the chordates, and not their ancestor." to "முட்தோலிகளும் ஹெமிகார்டேட்டுகளும் முதுகுநாணிகளின் உறவினரான அம்புலாக்ரேரியாவை உருவாக்குகின்றன; மூதாதை அல்ல.",
@@ -163,7 +163,7 @@ object EchinodermataBookChapter {
                 "The larva is bilateral, and the radial form arises at metamorphosis.", "லார்வா இருபக்கச் சமச்சீருடையது; உருமாற்றத்தில் ஆரை வடிவம் தோன்றுகிறது."),
             bqc("Name the five living classes.", "ஐந்து வாழும் வகுப்புகளைப் பெயரிடுக.",
                 "Asteroidea, Ophiuroidea, Echinoidea, Holothuroidea, Crinoidea.", "அஸ்டீராய்டியா, ஓஃபியூராய்டியா, எக்கினாய்டியா, ஹோலோதூரோய்டியா, கிரினாய்டியா."),
-            bqc("What is unique about the water-vascular system?", "நீர்-நாள அமைப்பில் தனித்துவம் என்ன?",
+            bqc("What is unique about the water-vascular system?", "நீர் குருதியோட்ட அமைப்பில் தனித்துவம் என்ன?",
                 "A hydraulic system of canals and tube feet connected to a madreporite, found in no other phylum.", "மேட்ரிபோரைட்டுடன் இணைந்த கால்வாய்கள், குழாய்ப்பாதங்களின் நீரழுத்த அமைப்பு; வேறெந்தத் தொகுதியிலும் இல்லை."),
             bqc("Which larva belongs to the starfishes?", "எந்த லார்வா நட்சத்திர மீன்களுக்கு உரியது?",
                 "The bipinnaria.", "பிபின்னேரியா."),

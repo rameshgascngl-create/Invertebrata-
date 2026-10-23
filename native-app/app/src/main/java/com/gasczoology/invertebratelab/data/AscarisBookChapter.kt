@@ -84,7 +84,7 @@ object AscarisBookChapter {
                         "கருவுறுதல் உட்புறம். ஆண் ஸ்பிக்யூல்களை வல்வாவில் நுழைத்து பெண்ணுக்கு விந்தணுக்களைச் செலுத்துகிறது. கருவுற்ற முட்டை முட்டை வடிவம்; பாதுகாக்கும் கரடுமுரடான வெளிப்புற அல்புமின் உறையுடன் தடித்த ஓடு உண்டு; கருவுறாத முட்டைகள் நீளமாகவும் மெல்லிய ஓட்டுடனும் இருக்கும். முட்டைகள் மலத்துடன் வெளியேறி, கீழே விவரிக்கப்படுவதுபோல், தொற்றும் முன் சில வாரங்கள் அங்கு இருக்க வேண்டும்."),
                     bfig("ascaris/female-internal", "Internal anatomy of a female Ascaris, showing the pharynx, the intestine, the paired ovaries, oviducts and uteri, and the vagina opening at the vulva." to
                         "பெண் அஸ்காரிஸின் உள்ளமைப்பு: தொண்டை, குடல், இணை சூற்பைகள், சூல்நாளங்கள், கருப்பைகள், வல்வாவில் திறக்கும் யோனி."),
-                    bdef("Dioecious", "ஒருபாலுயிரி", "Having separate male and female individuals, as Ascaris has." to
+                    bdef("Dioecious", "ஒரு பால் உயிரி", "Having separate male and female individuals, as Ascaris has." to
                         "அஸ்காரிஸைப் போல் தனி ஆண், பெண் உயிரிகள் கொண்ட."),
                     bdef("Fertilised egg", "கருவுற்ற முட்டை", "The thick-shelled, oval egg of Ascaris, which leaves the host in the faeces and develops in the soil." to
                         "மலத்துடன் விருந்தோம்பியை விட்டு வெளியேறி மண்ணில் வளரும், அஸ்காரிஸின் தடித்த ஓடுடைய, முட்டை வடிவ முட்டை."),
@@ -129,7 +129,7 @@ object AscarisBookChapter {
                 )),
         ),
         summary = listOf(
-            "Ascaris lumbricoides is a large dioecious nematode of the human small intestine; the female is larger than the male." to "அஸ்காரிஸ் லம்பிரிக்காய்டஸ் மனித சிறுகுடலின் பெரிய ஒருபாலுயிரி நெமட்டோடா; பெண் ஆணைவிடப் பெரியது.",
+            "Ascaris lumbricoides is a large dioecious nematode of the human small intestine; the female is larger than the male." to "அஸ்காரிஸ் லம்பிரிக்காய்டஸ் மனித சிறுகுடலின் பெரிய ஒரு பால் உயிரி நெமட்டோடா; பெண் ஆணைவிடப் பெரியது.",
             "The body has three lips, a cuticle, an epidermis with four cords, longitudinal muscles only, and a pseudocoelom." to "உடலில் மூன்று உதடுகள், கியூட்டிகிள், நான்கு வடங்களுடன் எப்பிடெர்மிஸ், நீளவாக்கு தசைகள் மட்டும், போலி உடற்குழி உண்டு.",
             "The gut is straight and complete; the excretory system is H-shaped, without flame cells." to "குடல் நேரானதும் முழுமையானதும்; கழிவு நீக்க மண்டலம் சுடர் செல்கள் இன்றி H வடிவம்.",
             "The male has a single testis and spicules; the female has paired ovaries and uteri that open at the vulva." to "ஆணுக்கு ஒற்றை விந்தகமும் ஸ்பிக்யூல்களும்; பெண்ணுக்கு வல்வாவில் திறக்கும் இணை சூற்பைகளும் கருப்பைகளும்.",
