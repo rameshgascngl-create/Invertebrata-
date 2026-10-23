@@ -91,7 +91,8 @@ Audit date: 2026-10-22 (branch `feat/plate-pipeline`). Counts are regex-derived 
 
 ### 6.2 Chapter depth (2026-10-23)
 
-- The contract floor is 2,000 English words; printed-book length is nominally 3,000 to 5,000.
-- Chapters deepened beyond the floor (new sections include an exam-answering section): Obelia, Aschelminthes, coral economics, polymorphism, crustacean larvae, metamerism, corals, platyhelminth adaptations, Arthropoda, Platyhelminthes, Mollusca, annelid modes of life, protozoan parasites, echinoderm larvae, Cnidaria, Nereis, Porifera, Annelida (each now roughly 2,600 to 3,200 words).
-- **Still near the floor (about 2,050 to 2,200 words):** Intro, Echinoderm affinities, Foot in Mollusca, Water vascular system, Fasciola, Asterias, nematode adaptations, fossils, and several others.
-- New content was written from general textbook knowledge and hedged where uncertain (for example the Indian reef figures, the drug examples from sponges, the Wildlife (Protection) Act schedule for corals). None of it is subject-expert reviewed.
+- The contract floor is 2,000 English words; printed-book length is nominally 3,000 words.
+- **Result:** all 43 chapters are now at least 2,640 words (mean about 2,900). Every chapter that was near the floor has been deepened, and each deepened chapter gained at least one worked exam-answering or comparison section.
+- Remaining below 3,000 words (2,640 to 2,900): protozoan parasites, Annelida, crustacean larvae, metamerism, water vascular system, echinoderm larvae, and a few others. These meet the printed-book intent and can be extended later if wanted.
+- New content was written from general textbook knowledge and hedged where uncertain (for example the Indian reef figures, the sea cucumber legal status, the filariasis drug programme, the calcium role in ciliary reversal, the Cambrian lobopodian relationships, pearl-oyster acidification risk). None of it is subject-expert reviewed.
+- The host term is unified as விருந்தோம்பி in all chapters written in this series. Unit I files written earlier still use the older form in a few places.
