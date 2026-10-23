@@ -12,6 +12,8 @@ object BookChapters {
         CoralEconomicsBookChapter.chapter,
         PolymorphismBookChapter.chapter,
         PlatyhelminthesBookChapter.chapter,
+        FasciolaBookChapter.chapter,
+        PlatyAdaptationsBookChapter.chapter,
         SyconBookChapter.chapter,
     )
     val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
