@@ -20,7 +20,7 @@ import com.gasczoology.invertebratelab.data.ParameciumProcess
  * Unit I image-only display for the existing physiology stage selector.
  *
  * This intentionally avoids falsely animated anatomical coordinates.
- * The three physiological process slots require independent subject-specific PNGs.
+ * Existing physiology slots use source-photo-derived crops; independent, scientifically validated concept masters remain pending.
  * The previous use of one photographed anatomy master for multiple processes
  * was misleading and is withdrawn. Fission and conjugation remain gated until
  * their own correctly staged scientific artwork is available.
@@ -54,7 +54,7 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 Image(
                     bitmap = image,
                     contentDescription = if (tamil)
-                        "பாரமீசியத்தின் தனித்த செயல்முறை PNG படம்; உறுப்புத் தொடுதல் மற்றும் செயல்பாட்டு விளக்கம் மதிப்பாய்வு நிலுவையில் உள்ளன."
+                        "பாரமீசியத்தின் பழைய பென்சில் ஓவியப் புகைப்படத்திலிருந்து பெறப்பட்ட PNG பகுதி; தனியாகச் சரிபார்க்கப்பட்ட உடற்கூறுப் படம் அல்ல."
                     else "Source-derived photographed pencil PNG crop; not an independently validated anatomical master.",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth()
@@ -81,8 +81,8 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 }
                 Text(
                     if (tamil)
-                        "தனித்த செயல்முறை PNG; இதுவொரு இயக்கப்படமல்ல. செயல்நிலை விளக்கத்தைத் தனியாகப் படிக்கவும்."
-                    else "Process-specific PNG; stage changes update the explanation without pretending to animate organ movement. Tamil review remains pending.",
+                        "மூல பென்சில் ஓவியப் புகைப்படத்திலிருந்து பெறப்பட்ட PNG பகுதி; தனியான அறிவியல் சான்றுபெற்ற படம் அல்ல. பெரிதாக்குவதால் புதிய உடற்கூறு விவரங்கள் கிடைக்காது."
+                    else "Source-derived PNG crop, not an independently verified anatomical plate. Enlargement cannot recover missing source detail; the stage explanations are textual. Tamil review remains pending.",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.testTag("u57-static-png-disclosure"),
                 )
