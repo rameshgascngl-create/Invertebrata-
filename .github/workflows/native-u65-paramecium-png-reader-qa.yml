@@ -7,6 +7,12 @@ name: Unit I Paramecium source-PNG reader exact-commit QA
       - 'native-app/**'
       - '.github/workflows/native-u65-paramecium-png-reader-qa.yml'
       - '.github/scripts/run-u57-paramecium-png.sh'
+  pull_request:
+    branches:
+      - native/u61-unit5-bilingual-android-proof-20261020
+    paths:
+      - 'native-app/**'
+      - '.github/workflows/native-u65-paramecium-png-reader-qa.yml'
   workflow_dispatch:
 
 permissions:
