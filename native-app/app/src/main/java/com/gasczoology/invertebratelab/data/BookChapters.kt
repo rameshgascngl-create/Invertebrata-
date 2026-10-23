@@ -32,6 +32,8 @@ object BookChapters {
         PearlBookChapter.chapter,
         EchinodermataBookChapter.chapter,
         AsteriasBookChapter.chapter,
+        EchinoLarvaeBookChapter.chapter,
+        EchinoAffinitiesBookChapter.chapter,
         SyconBookChapter.chapter,
     )
     val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
