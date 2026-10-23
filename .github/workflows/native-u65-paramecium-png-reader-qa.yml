@@ -1,0 +1,95 @@
+name: Unit I Paramecium source-PNG reader exact-commit QA
+'on':
+  push:
+    branches:
+      - native/u63-hide-rejected-unit5-figures-20261021
+    paths:
+      - 'native-app/**'
+      - '.github/workflows/native-u65-paramecium-png-reader-qa.yml'
+      - '.github/scripts/run-u57-paramecium-png.sh'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-jvm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify source-crop disclosure and blocked missing reproduction plates
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          reader=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt').read_text()
+          process=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumProcessPng.kt').read_text()
+          assert 'r14-enlarge-concept-png-' in reader
+          assert 'r14-concept-source-warning-' in reader
+          assert 'Source-derived photographed pencil PNG crop' in process
+          assert 'ParameciumProcess.BINARY_FISSION to null' in process
+          assert 'ParameciumProcess.CONJUGATION to null' in process
+          assert 'Canvas(' not in process
+          for name in ('paramecium_external','paramecium_oral','paramecium_vacuole','paramecium_internal'):
+              path=Path('native-app/app/src/main/assets/unit1')/(name+'.png')
+              assert path.is_file() and path.read_bytes()[:8]==bytes.fromhex('89504e470d0a1a0a'), path
+          print('UNIT_I_ORIGINAL_PNGS=4, SOURCE_WARNING=PASS, REPRODUCTION_PNGS=WITHHELD')
+          PY
+      - name: Compile Kotlin, Android instrumentation and all JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble debug QA APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: u65-unit1-jvm-results
+          path: native-app/app/build/test-results/testDebugUnitTest/
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: u65-unit1-unapproved-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  offline-emulator-100-200:
+    needs: build-and-jvm
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify PNG viewer at 100 and 200 percent Tamil fonts offline
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-u57-paramecium-png.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: u65-unit1-offline-api34-screenshots-and-xml
+          path: qa-evidence/u57-paramecium/
+          if-no-files-found: warn
