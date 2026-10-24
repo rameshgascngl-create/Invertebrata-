@@ -96,3 +96,10 @@ Audit date: 2026-10-22 (branch `feat/plate-pipeline`). Counts are regex-derived 
 - Remaining below 3,000 words (2,640 to 2,900): protozoan parasites, Annelida, crustacean larvae, metamerism, water vascular system, echinoderm larvae, and a few others. These meet the printed-book intent and can be extended later if wanted.
 - New content was written from general textbook knowledge and hedged where uncertain (for example the Indian reef figures, the sea cucumber legal status, the filariasis drug programme, the calcium role in ciliary reversal, the Cambrian lobopodian relationships, pearl-oyster acidification risk). None of it is subject-expert reviewed.
 - The host term is unified as விருந்தோம்பி in all chapters written in this series. Unit I files written earlier still use the older form in a few places.
+
+### 6.3 English in brackets for unconfirmed Tamil terms (2026-10-24)
+
+- Rule from the author: where the exact Tamil word cannot be found, the English term is shown in brackets after the Tamil term.
+- Applied to every defined term in the 43 book chapters whose Tamil does not appear verbatim in the State Board 11th Zoology or 12th Bio-Zoology/Zoology books (643 terms). 237 terms found in those books are left without brackets.
+- Text extraction from the PDFs is noisy, so a term that is in the books but was not matched will carry the English in brackets as well; this is harmless.
+- New chapters should follow the same rule.

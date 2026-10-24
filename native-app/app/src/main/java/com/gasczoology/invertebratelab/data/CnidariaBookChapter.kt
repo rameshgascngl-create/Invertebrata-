@@ -24,7 +24,7 @@ object CnidariaBookChapter {
                 blocks = listOf(
                     bp("The name Coelenterata, meaning hollow gut, was given to the group because the body is essentially a sac with one central cavity. The name Cnidaria, from the Greek word for a nettle, refers to the stinging cells that are the most distinctive feature of the group. The two names do not mean exactly the same thing, because the older name once included the comb jellies (Ctenophora), which are now placed in a separate phylum. Cnidaria is the name preferred in modern textbooks; Coelenterata is retained in syllabuses and in older books." to
                         "வெற்றுக் குடல் எனப் பொருள்படும் சீலென்டிரேட்டா என்ற பெயர், உடல் அடிப்படையில் ஒரே நடுக்குழி கொண்ட பை என்பதால் வழங்கப்பட்டது. கிரேக்க மொழியில் நெட்டில் செடியைக் குறிக்கும் சொல்லிலிருந்து வந்த நிடேரியா, குழுவின் மிகத் தனித்துவமான பண்பான கொட்டும் செல்களைக் குறிக்கிறது. இரு பெயர்களும் சரியாக ஒரே பொருளல்ல; பழைய பெயரில் முன்பு சீப்பு ஜெல்லிகள் (கடினோஃபோரா) அடங்கின; அவை இப்போது தனித் தொகுதியில் வைக்கப்படுகின்றன. நவீன நூல்கள் நிடேரியா என்பதை விரும்புகின்றன; பாடத்திட்டங்களிலும் பழைய நூல்களிலும் சீலென்டிரேட்டா நிலைத்துள்ளது."),
-                    bdef("Coelenterata", "சீலென்டிரேட்டா",
+                    bdef("Coelenterata", "சீலென்டிரேட்டா (Coelenterata)",
                         "The older name of the phylum, referring to its single gut cavity; used in the syllabus alongside Cnidaria." to
                             "தொகுதியின் பழைய பெயர்; ஒற்றைக் குடல் குழியைக் குறிக்கிறது; பாடத்திட்டத்தில் நிடேரியாவுடன் பயன்படுகிறது."),
                     bdef("Cnidaria", "நிடேரியா",
@@ -68,7 +68,7 @@ object CnidariaBookChapter {
                     bdef("Mesoglea", "மீசோகிளியா",
                         "The jelly-like layer between the epidermis and gastrodermis of a cnidarian." to
                             "நிடேரியாவின் எப்பிடெர்மிஸ், காஸ்ட்ரோடெர்மிஸுக்கு இடையிலான ஜெல்லி போன்ற அடுக்கு."),
-                    bdef("Gastrovascular cavity", "காஸ்ட்ரோவாஸ்குலர் குழி",
+                    bdef("Gastrovascular cavity", "காஸ்ட்ரோவாஸ்குலர் குழி (Gastrovascular cavity)",
                         "The central cavity of a cnidarian, which both digests food and distributes it through the body." to
                             "உணவைச் செரித்து உடல் முழுவதும் பரப்பும் நிடேரியாவின் நடுக்குழி."),
                     bdef("Radial symmetry", "ஆரச்சமச்சீர்",
@@ -88,10 +88,10 @@ object CnidariaBookChapter {
                         "Interstitial cells: small, undifferentiated cells that replace the others and form gametes in many hydrozoans." to "இடைநிலை செல்கள்: மற்றவற்றை மாற்றும் சிறிய வேறுபாடற்ற செல்கள்; பல ஹைட்ரோசோவாக்களில் கேமீட்டுகளை உருவாக்குகின்றன.",
                         "Gland cells: secrete mucus and, at the base, adhesive material." to "சுரப்பி செல்கள்: சளியையும், அடியில் ஒட்டும் பொருளையும் சுரக்கின்றன.",
                     ),
-                    bdef("Epitheliomuscular cell", "எப்பிதீலியோதசை செல்",
+                    bdef("Epitheliomuscular cell", "எப்பிதீலியோதசை செல் (Epitheliomuscular cell)",
                         "A cell of the cnidarian epidermis that forms part of the covering epithelium and has a contractile base." to
                             "நிடேரியாவின் எப்பிடெர்மிஸில் மூடும் எப்பிதீலியத்தின் பகுதியாகவும், சுருங்கும் அடிப்பகுதி கொண்டதாகவும் உள்ள செல்."),
-                    bdef("Interstitial cell", "இடைநிலை செல்",
+                    bdef("Interstitial cell", "இடைநிலை செல் (Interstitial cell)",
                         "A small, undifferentiated cell lying between the other cells, able to change into cnidocytes, nerve cells or gametes." to
                             "மற்ற செல்களுக்கிடையே உள்ள, நிடோசைட்டுகளாகவோ நரம்பு செல்களாகவோ கேமீட்டுகளாகவோ மாறக்கூடிய, சிறிய வேறுபாடற்ற செல்."),
                     bnote("Two layers, not three", "இரு அடுக்கு; மூன்று அல்ல",
@@ -117,7 +117,7 @@ object CnidariaBookChapter {
                     bdef("Nematocyst", "நெமட்டோசிஸ்ட்",
                         "A capsule inside a cnidocyte, containing a coiled thread that is discharged to capture prey or to defend the animal." to
                             "நிடோசைட்டினுள் உள்ள உறை; இரை பிடிக்க அல்லது தற்காப்புக்கு வெளியேற்றப்படும் சுருண்ட இழையைக் கொண்டது."),
-                    bdef("Cnidocil", "நிடோசில்",
+                    bdef("Cnidocil", "நிடோசில் (Cnidocil)",
                         "The small trigger-like process on a cnidocyte that responds to touch and sets off the discharge." to
                             "தொடுதலுக்குத் துலங்கி வெளியேற்றத்தைத் தொடங்கும், நிடோசைட்டிலுள்ள தூண்டுகோல் போன்ற சிறு நீட்சி."),
                     bnote("Do not call it a sting from a gland", "சுரப்பியிலிருந்து வரும் கொட்டு எனக் கூற வேண்டாம்",
@@ -157,9 +157,9 @@ object CnidariaBookChapter {
                         "நிடேரியன்கள் ஊனுண்ணிகள். நெமட்டோசிஸ்ட்டுகள் கொண்ட உணர்கொம்புகள் கிரஸ்டேஷியன்கள், மீன் லார்வாக்கள் போன்ற சிறு விலங்குகளைப் பிடித்து, அவற்றை மரத்துப்போகச் செய்து, காஸ்ட்ரோவாஸ்குலர் குழியில் திறக்கும் வாய்க்குக் கொண்டு செல்கின்றன. குடலுக்கு ஒரே துளை இருப்பதால் அதே துளை உணவை உட்கொள்ளவும் செரிக்காத எச்சத்தை வெளியேற்றவும் பயன்படுகிறது. செரிமானம் குழியில் செல்களுக்கு வெளியே (புறச்செல்) தொடங்குகிறது; அங்கு காஸ்ட்ரோடெர்மிஸின் சுரப்பி செல்கள் சுரக்கும் நொதிகள் உணவைச் சிறு துண்டுகளாக்குகின்றன. பின்னர் துகள்கள் காஸ்ட்ரோடெர்மிஸ் செல்களுக்குள் செல்விழுங்கலால் எடுக்கப்பட்டு, செரிமானம் செல்களுக்குள் (அகச்செல்) முடிகிறது."),
                     bp("The cnidarians therefore show an intermediate stage between the entirely intracellular digestion of sponges and the entirely extracellular digestion of higher animals. The distribution of food through the body is by the gastrovascular cavity, which in large forms such as the jellyfish is extended into canals, and no circulatory or respiratory systems are needed because every cell is close to either the water or the cavity, and gases pass by diffusion.",
                         "இவ்வாறு நிடேரியன்கள் கடற்பஞ்சுகளின் முழுமையான அகச்செல் செரிமானத்துக்கும் உயர் விலங்குகளின் முழுமையான புறச்செல் செரிமானத்துக்கும் இடைப்பட்ட நிலையைக் காட்டுகின்றன. உடல் முழுவதும் உணவு பரவல் காஸ்ட்ரோவாஸ்குலர் குழி மூலம் நிகழ்கிறது; ஜெல்லிமீன் போன்ற பெரிய வடிவங்களில் அது கால்வாய்களாக நீள்கிறது; ஒவ்வொரு செல்லும் நீருக்கோ குழிக்கோ அருகிலிருப்பதால் சுற்றோட்ட, சுவாச மண்டலங்கள் தேவையில்லை; வாயுக்கள் பரவலால் கடக்கின்றன."),
-                    bdef("Extracellular digestion", "புறச்செல் செரிமானம்", "Digestion that takes place in the cavity of the gut, outside the cells, by enzymes that the cells secrete." to
+                    bdef("Extracellular digestion", "புறச்செல் செரிமானம் (Extracellular digestion)", "Digestion that takes place in the cavity of the gut, outside the cells, by enzymes that the cells secrete." to
                         "செல்கள் சுரக்கும் நொதிகளால், செல்களுக்கு வெளியே குடல் குழியில் நிகழும் செரிமானம்."),
-                    bdef("Intracellular digestion", "அகச்செல் செரிமானம்", "Digestion that takes place inside the cells, in food vacuoles, after the food particles have been engulfed." to
+                    bdef("Intracellular digestion", "அகச்செல் செரிமானம் (Intracellular digestion)", "Digestion that takes place inside the cells, in food vacuoles, after the food particles have been engulfed." to
                         "உணவுத் துகள்கள் விழுங்கப்பட்ட பின் செல்களுக்குள், உணவுக் குமிழ்களில் நிகழும் செரிமானம்."),
                 )),
             bsec("nerves", "Nerve net, movement and sense organs", "நரம்பு வலை, இயக்கம், உணர் உறுப்புகள்",
@@ -170,7 +170,7 @@ object CnidariaBookChapter {
                         "மெடுசாக்களுக்கு இத்தொகுதியில் மிகச் சிறந்த உணர் உறுப்புகள் உள்ளன. சிஃபோசோவா ஜெல்லிமீன்களில் ரோபேலியா எனப்படும் உணர் உறுப்புத் தொகுதிகள் மணியின் விளிம்பிலுள்ள வெட்டுகளில் அமைந்துள்ளன; ஒவ்வொன்றிலும் சமநிலைக்கான ஸ்டேட்டோசிஸ்டும், பல இனங்களில் ஒளியுணர் ஓசெல்லிகளும் உள்ளன. பெட்டி ஜெல்லிமீன்களில் (கியூபோசோவா) ரோபேலியாவில் லென்ஸ் கொண்ட கண்கள் உள்ளன; எந்த நிடேரியனிலும் காணப்படும் மிகச் சிக்கலான கண்கள் இவையே. பாலிப்புகளுக்கு எளிய உணர்வு; முக்கியமாக தொடுதலுக்கும் இரையின் வேதிப்பொருட்களுக்கும் பதிலளிக்கும் உணர்கொம்புகளின் உணர் செல்கள்."),
                     bdef("Nerve net", "நரம்பு வலை", "A diffuse network of nerve cells without a brain, found in cnidarians, through which a stimulus spreads in all directions." to
                         "மூளையின்றி நிடேரியன்களில் காணப்படும், தூண்டல் எல்லாத் திசைகளிலும் பரவும் பரவலான நரம்பு செல் வலை."),
-                    bdef("Rhopalium", "ரோபேலியம்", "A marginal sense organ of a scyphozoan or cubozoan medusa, containing a statocyst and often light-sensitive cells." to
+                    bdef("Rhopalium", "ரோபேலியம் (Rhopalium)", "A marginal sense organ of a scyphozoan or cubozoan medusa, containing a statocyst and often light-sensitive cells." to
                         "சிஃபோசோவா அல்லது கியூபோசோவா மெடுசாவின் விளிம்பு உணர் உறுப்பு; ஸ்டேட்டோசிஸ்டும் பெரும்பாலும் ஒளியுணர் செல்களும் கொண்டது."),
                 )),
             bsec("reproduction", "Reproduction, regeneration and symbiosis", "இனப்பெருக்கம், மீளுருவாக்கம், கூட்டுயிரி வாழ்க்கை",
@@ -181,7 +181,7 @@ object CnidariaBookChapter {
                         "பல நிடேரியன்கள் பாசிகளுடன் கூட்டுறவில் வாழ்கின்றன. பசுமை ஹைட்ரா ஹைட்ரா விரிடிஸின் காஸ்ட்ரோடெர்மிஸில் ஒற்றைச் செல் பச்சைப் பாசிகள் உள்ளன; முகடு கட்டும் பவளங்களும் பல கடல் சாமந்திகளும் சூக்சாந்தெல்லேயைக் கொண்டுள்ளன. பாசி விலங்கிடமிருந்து உறைவிடமும் ஊட்டச்சத்தும், விலங்கு பாசியிடமிருந்து உணவும் பெறுகின்றன. சில கடல் சாமந்திகள் கோமாளி மீன் போன்ற சில மீன்களுடனும் வாழ்கின்றன; அவை உணர்கொம்புகளிடையே தங்கி, சளிப் பூச்சால் கொட்டுதலிலிருந்து பாதுகாக்கப்படுகின்றன. இவ்வெடுத்துக்காட்டுகள் இரு வகை உயிரிகளுக்கிடையிலான நெருக்கமான தொடர்பான கூட்டுயிரி வாழ்க்கையை விளக்கப் பயன்படுகின்றன."),
                     bdef("Planula", "பிளானுலா", "The ciliated, free-swimming larva of a cnidarian, which settles and develops into a polyp." to
                         "நிடேரியனின் சிலியா கொண்ட நீந்தும் லார்வா; படிந்து பாலிப்பாக வளர்கிறது."),
-                    bdef("Symbiosis", "கூட்டுயிரி வாழ்க்கை", "A close and lasting association between two different kinds of organism." to
+                    bdef("Symbiosis", "கூட்டுயிரி வாழ்க்கை (Symbiosis)", "A close and lasting association between two different kinds of organism." to
                         "இரு வெவ்வேறு வகை உயிரிகளுக்கிடையிலான நெருக்கமான நீடித்த தொடர்பு."),
                 )),
             bsec("answering", "Answering questions on the phylum", "தொகுதி குறித்த வினாக்களுக்கு விடையளித்தல்",

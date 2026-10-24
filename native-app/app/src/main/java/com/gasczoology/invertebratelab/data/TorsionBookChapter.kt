@@ -26,9 +26,9 @@ object TorsionBookChapter {
                     bfig("pila/torsion", "Torsion: the position of the mantle cavity, gill, anus and nerve loop before and after the visceral mass is rotated." to "முறுக்கல்: உள்ளுறுப்புத் திரள் சுழற்றப்படுவதற்கு முன்னும் பின்னும் மேண்டில் குழி, செவுள், மலவாய், நரம்பு வளையத்தின் நிலை."),
                     bp("It must be kept apart from coiling. Coiling is the spiral growth of the shell and the visceral mass, which may take place in the same way in a torted or an untorted animal, and which has the function of packing a long body into a compact shell. Torsion is a rotation, and coiling is a pattern of growth. The two are separate, though in the history of the gastropods they are connected, since a coiled shell with a mantle cavity at the back would be awkward, and some authors have discussed whether the coiled shell came first. The student needs to say only that they are separate processes." to
                         "இதை சுருள் சுற்றலிலிருந்து வேறுபடுத்த வேண்டும். சுருள் சுற்றல் ஓடு, உள்ளுறுப்புத் திரளின் சுருள் வளர்ச்சி; முறுக்கப்பட்ட அல்லது முறுக்கப்படாத விலங்கில் ஒரே விதமாக நிகழலாம்; நீண்ட உடலை சிறிய ஓட்டுக்குள் அடைப்பது அதன் செயல். முறுக்கல் ஒரு சுழற்சி; சுருள் சுற்றல் ஒரு வளர்ச்சி முறை. இரண்டும் தனி; ஆனால் இரைப்பைக்காலிகளின் வரலாற்றில் அவை தொடர்புடையவை: பின்புறம் மேண்டில் குழியுடன் சுருண்ட ஓடு தொந்தரவானது; சுருண்ட ஓடு முதலில் வந்ததா என சில ஆசிரியர்கள் விவாதித்துள்ளனர். அவை தனிச் செயல்முறைகள் என்று மட்டும் மாணவர் கூற வேண்டும்."),
-                    bdef("Torsion", "முறுக்கல்", "The rotation of the visceral mass, mantle and shell through about 180 degrees relative to the head and foot in the development of a gastropod." to
+                    bdef("Torsion", "முறுக்கல் (Torsion)", "The rotation of the visceral mass, mantle and shell through about 180 degrees relative to the head and foot in the development of a gastropod." to
                         "இரைப்பைக்காலியின் வளர்ச்சியில், தலை, பாதத்தைப் பொறுத்து உள்ளுறுப்புத் திரள், மேண்டில், ஓடு சுமார் 180 பாகை சுழலுதல்."),
-                    bdef("Coiling", "சுருள் சுற்றல்", "The spiral growth of the shell and visceral mass, which is distinct from torsion." to
+                    bdef("Coiling", "சுருள் சுற்றல் (Coiling)", "The spiral growth of the shell and visceral mass, which is distinct from torsion." to
                         "முறுக்கலிலிருந்து வேறுபட்ட, ஓடு, உள்ளுறுப்புத் திரளின் சுருள் வளர்ச்சி."),
                     bnote("Torsion is not coiling", "முறுக்கல் சுருள் சுற்றல் அல்ல",
                         "Torsion turns the mantle cavity forward. Coiling is the spiral growth of the shell. Write them as two separate processes." to
@@ -47,11 +47,11 @@ object TorsionBookChapter {
                         "நரம்புகளின் குறுக்காதலுக்கு சிறிது விளக்கம் தேவை. முறுக்கலுக்கு முன் நரம்பு இணைப்பிகள் உடலின் இரு பக்கங்களில் ப்ளூரல் நரம்பு செல்திரள்களிலிருந்து உள்ளுறுப்பு நரம்பு செல்திரள்களுக்குச் செல்கின்றன. உள்ளுறுப்புத் திரள் அரை வட்டம் திருப்பப்படும்போது வலப்பக்க இணைப்பி இடப்புறமும் இடப்பக்கம் வலப்புறமும் கொண்டுசெல்லப்படுகின்றன; எனவே இரண்டும் எட்டு வடிவில் குடலுக்கு மேலும் கீழுமாகக் குறுக்காகின்றன. ஸ்ட்ரெப்டோநியூரி என்ற பெயர் முறுக்கப்பட்ட நரம்புகள் எனப் பொருள்படும்; எதிர் நிலை, நரம்புகள் குறுக்காகாதது, யூத்தினியூரி எனப்படுகிறது."),
                     bp("The asymmetry of the organs follows. After torsion the organs of the two sides of the mantle cavity are brought into unequal positions, and in many snails the organs of the original right side, which are now on the left, have been reduced or lost. In Pila a single gill and a single kidney are found, which illustrates this trend. This reduction is a consequence of the unequal use of space in the coiled shell and the mantle cavity, and not a direct result of the turning itself." to
                         "உறுப்புகளின் சமச்சீரின்மை தொடர்கிறது. முறுக்கலுக்குப் பின் மேண்டில் குழியின் இரு பக்கங்களின் உறுப்புகள் சமமற்ற நிலைகளுக்குக் கொண்டுவரப்படுகின்றன; பல நத்தைகளில் தற்போது இடப்புறமுள்ள, முதலில் வலப்புறமிருந்த உறுப்புகள் குறைக்கப்பட்டுள்ளன அல்லது இழக்கப்பட்டுள்ளன. பைலாவில் ஒற்றைச் செவுளும் ஒற்றைச் சிறுநீரகமும் காணப்படுகின்றன; இப்போக்கை விளக்குகிறது. இக்குறைப்பு சுருண்ட ஓட்டிலும் மேண்டில் குழியிலும் இடத்தைச் சமமின்றிப் பயன்படுத்தியதன் விளைவு; திருப்பத்தின் நேரடி விளைவு அல்ல."),
-                    bdef("Streptoneury", "ஸ்ட்ரெப்டோநியூரி", "The crossing of the visceral nerve connectives in a figure of eight, caused by torsion." to
+                    bdef("Streptoneury", "ஸ்ட்ரெப்டோநியூரி (Streptoneury)", "The crossing of the visceral nerve connectives in a figure of eight, caused by torsion." to
                         "முறுக்கலால் ஏற்படும், உள்ளுறுப்பு நரம்பு இணைப்பிகள் எட்டு வடிவில் குறுக்காதல்."),
-                    bdef("Euthyneury", "யூத்தினியூரி", "The condition in which the visceral nerve connectives are not crossed." to
+                    bdef("Euthyneury", "யூத்தினியூரி (Euthyneury)", "The condition in which the visceral nerve connectives are not crossed." to
                         "உள்ளுறுப்பு நரம்பு இணைப்பிகள் குறுக்காகாத நிலை."),
-                    bdef("Pleurovisceral connective", "ப்ளூரோவிசெரல் இணைப்பி", "A nerve cord joining the pleural and visceral ganglia of a mollusc." to
+                    bdef("Pleurovisceral connective", "ப்ளூரோவிசெரல் இணைப்பி (Pleurovisceral connective)", "A nerve cord joining the pleural and visceral ganglia of a mollusc." to
                         "மெல்லுடலியின் ப்ளூரல், உள்ளுறுப்பு நரம்பு செல்திரள்களை இணைக்கும் நரம்பு வடம்."),
                 )),
             bsec("advantages", "Why torsion? Hypotheses and evidence", "ஏன் முறுக்கல்? கருதுகோள்களும் சான்றுகளும்",
@@ -62,7 +62,7 @@ object TorsionBookChapter {
                         "மற்ற பரிந்துரைகள், மேண்டில் குழியின் முன் நிலை செவுளையும் ஆஸ்ஃப்ரேடியத்தையும் விலங்கு நெருங்கும் நீரைச் சோதிக்கக்கூடிய முன்புறத்துக்குக் கொண்டுவருவது. கருதுகோள்கள் ஒன்றையொன்று விலக்குவதில்லை; ஒவ்வொன்றுக்குமான சான்றுகளின் எடை தொடர் ஆய்வின் விஷயம்; சில இனங்களில் முறுக்கல் விரைவானது, தசை சார்ந்தது என்ற கண்டுபிடிப்பும் அடங்கும். விடையை நேர்மையாக எழுதும் வழி: தலையின் பாதுகாப்பு மரபு விளக்கம்; பிற நன்மைகள் முன்மொழியப்பட்டுள்ளன; பரிணாமக் காரணம் தீர்க்கப்படவில்லை."),
                     bdef("Hypothesis", "கருதுகோள்", "A proposed explanation that can be tested but has not been established as fact." to
                         "சோதிக்கக்கூடிய ஆனால் உண்மையாக நிறுவப்படாத முன்மொழியப்பட்ட விளக்கம்."),
-                    bdef("Velum", "வெலம்", "The ciliated swimming and feeding organ of the veliger larva." to
+                    bdef("Velum", "வெலம் (Velum)", "The ciliated swimming and feeding organ of the veliger larva." to
                         "வெலிகர் லார்வாவின் கசையிழை நீந்தும், உண்ணும் உறுப்பு."),
                 )),
             bsec("fouling", "The problem of fouling", "அழுக்கூட்டல் சிக்கல்",
@@ -75,11 +75,11 @@ object TorsionBookChapter {
                         "Slits or holes in the shell or mantle through which waste is expelled, as in the keyhole limpets and abalone." to "கீஹோல் லிம்பெட்கள், அபலோனியில் போல, கழிவு வெளியேற்றப்படும் ஓடு அல்லது மேண்டிலில் உள்ள பிளவுகள் அல்லது துளைகள்.",
                         "Detorsion, in which the torted condition is partly reversed in some lineages." to "சில பரம்பரைகளில் முறுக்கப்பட்ட நிலை பகுதியாகத் திருப்பப்படும் எதிர்முறுக்கல்.",
                     ),
-                    bdef("Fouling", "அழுக்கூட்டல்", "The risk that waste discharged from the anus and kidney will contaminate the head or the incoming respiratory current." to
+                    bdef("Fouling", "அழுக்கூட்டல் (Fouling)", "The risk that waste discharged from the anus and kidney will contaminate the head or the incoming respiratory current." to
                         "மலவாய், சிறுநீரகத்திலிருந்து வெளியேறும் கழிவு தலையை அல்லது உள்வரும் சுவாச நீரோட்டத்தை மாசுபடுத்தும் அபாயம்."),
-                    bdef("Inhalant current", "உள்வரும் நீரோட்டம்", "The stream of water or air entering the mantle cavity." to
+                    bdef("Inhalant current", "உள்வரும் நீரோட்டம் (Inhalant current)", "The stream of water or air entering the mantle cavity." to
                         "மேண்டில் குழிக்குள் நுழையும் நீர் அல்லது காற்று ஓட்டம்."),
-                    bdef("Exhalant current", "வெளிவரும் நீரோட்டம்", "The stream of water leaving the mantle cavity, carrying wastes." to
+                    bdef("Exhalant current", "வெளிவரும் நீரோட்டம் (Exhalant current)", "The stream of water leaving the mantle cavity, carrying wastes." to
                         "கழிவுகளைக் கொண்டு மேண்டில் குழியிலிருந்து வெளியேறும் நீரோட்டம்."),
                 )),
             bsec("mechanism", "How torsion takes place in development", "வளர்ச்சியில் முறுக்கல் எவ்வாறு நிகழ்கிறது",
@@ -90,11 +90,11 @@ object TorsionBookChapter {
                         "வாழும் முறுக்கப்பட்ட நத்தைகள் கிட்டத்தட்ட அனைத்திலும் விலங்கை மேலிருந்து பார்க்கும்போது திருப்பத்தின் திசை எதிர்கடிகாரத் திசை; இது எந்தப் பக்க உறுப்புகள் எந்தப் பக்கம் வருகின்றன என்பதை நிர்ணயிக்கிறது. முறுக்கலுக்கு முன் வலப்புறமிருந்த உறுப்புகள் இடப்புறமும், இடப்புறமிருந்தவை வலப்புறமும் கொண்டுசெல்லப்படுகின்றன. எனவே முதிர்ந்ததில் முதலில் வலப்புறமிருந்த செவுளும் சிறுநீரகமும் இடப்புறம் காணப்படுகின்றன; பல நத்தைகளில் அவையே எஞ்சியவை; மற்ற பக்கத்தவை இழக்கப்படுகின்றன. ஒவ்வொரு குழுவிலும் எவை இழக்கப்பட்டன என மனப்பாடம் செய்ய முயலக்கூடாது; போக்கை மட்டும் விவரிக்க வேண்டும்."),
                     bp("There is a point about the evidence worth noting. A fossil shell cannot show torsion directly, since the soft parts are not preserved, and so the history of torsion is inferred from the shell shape, from muscle scars, and from the comparison of living forms. This is one reason why the evolutionary account is described as a hypothesis, and why the proposal that torsion took place gradually over many generations, and the contrary proposal that it was sudden, are both still discussed." to
                         "சான்று பற்றி கவனிக்க வேண்டிய ஒரு புள்ளி உண்டு. மென்பகுதிகள் பாதுகாக்கப்படுவதில்லை என்பதால் புதைபடிவ ஓடு முறுக்கலை நேரடியாகக் காட்ட முடியாது; எனவே முறுக்கலின் வரலாறு ஓட்டு வடிவம், தசைத் தழும்புகள், வாழும் வடிவங்களின் ஒப்பீடு ஆகியவற்றிலிருந்து ஊகிக்கப்படுகிறது. பரிணாம விளக்கம் கருதுகோள் என்று விவரிக்கப்படுவதற்கும், முறுக்கல் பல தலைமுறைகளில் படிப்படியாக நிகழ்ந்தது என்ற முன்மொழிவும் திடீரென நிகழ்ந்தது என்ற எதிர் முன்மொழிவும் இன்னும் விவாதிக்கப்படுவதற்கும் இது ஒரு காரணம்."),
-                    bdef("Larval retractor muscle", "லார்வா இழுப்புத் தசை", "The asymmetrical muscle of the veliger larva whose contraction contributes to the turning of the shell and visceral mass." to
+                    bdef("Larval retractor muscle", "லார்வா இழுப்புத் தசை (Larval retractor muscle)", "The asymmetrical muscle of the veliger larva whose contraction contributes to the turning of the shell and visceral mass." to
                         "ஓடு, உள்ளுறுப்புத் திரளைத் திருப்புவதற்குப் பங்களிக்கும் வெலிகர் லார்வாவின் சமச்சீரற்ற தசை."),
-                    bdef("Veliger", "வெலிகர்", "The larval stage of many molluscs, with a shell, a foot and a ciliated velum used for swimming." to
+                    bdef("Veliger", "வெலிகர் (Veliger)", "The larval stage of many molluscs, with a shell, a foot and a ciliated velum used for swimming." to
                         "ஓடு, பாதம், நீந்த உதவும் கசையிழை வெலம் கொண்ட பல மெல்லுடலிகளின் லார்வா நிலை."),
-                    bdef("Anticlockwise torsion", "எதிர்கடிகாரத் திசை முறுக்கல்", "The usual direction of the turn, seen from above, which carries right-sided organs to the left." to
+                    bdef("Anticlockwise torsion", "எதிர்கடிகாரத் திசை முறுக்கல் (Anticlockwise torsion)", "The usual direction of the turn, seen from above, which carries right-sided organs to the left." to
                         "மேலிருந்து பார்க்கும்போது வலப்பக்க உறுப்புகளை இடப்புறம் கொண்டுசெல்லும் வழக்கமான திருப்பத் திசை."),
                 )),
             bsec("examination", "Torsion in answers and diagrams", "விடைகளிலும் படங்களிலும் முறுக்கல்",
@@ -110,7 +110,7 @@ object TorsionBookChapter {
                     ),
                     bp("The same discipline applies to the use of the word primitive. Torsion is a feature that the gastropods share, and it is not a sign that a torted snail is more or less advanced than a detorted one. The detorted sea slugs are a successful and varied group, and the word should be avoided unless the sense is defined." to
                         "ஆதி என்ற சொல்லின் பயன்பாட்டுக்கும் இதே ஒழுங்கு பொருந்தும். முறுக்கல் இரைப்பைக்காலிகள் பகிரும் பண்பு; முறுக்கப்பட்ட நத்தை எதிர்முறுக்கப்பட்டதை விட மேம்பட்டது அல்லது குறைந்தது என்பதற்கான அடையாளம் அல்ல. எதிர்முறுக்கப்பட்ட கடல் ஸ்லக்குகள் வெற்றிகரமான, பல்வகைக் குழு; பொருள் வரையறுக்கப்படாவிட்டால் அச்சொல்லைத் தவிர்க்க வேண்டும்."),
-                    bdef("Prosobranch", "ப்ரோசோப்ராங்க்", "An older, informal name for gastropods with the gill in front of the heart, which are torted; the name is no longer a formal group." to
+                    bdef("Prosobranch", "ப்ரோசோப்ராங்க் (Prosobranch)", "An older, informal name for gastropods with the gill in front of the heart, which are torted; the name is no longer a formal group." to
                         "இதயத்துக்கு முன் செவுள் கொண்ட, முறுக்கப்பட்ட இரைப்பைக்காலிகளுக்கான பழைய முறைசாரா பெயர்; இப்பெயர் இனி முறையான குழு அல்ல."),
                 )),
             bsec("detorsion", "Detorsion and the condition of Pila", "எதிர்முறுக்கலும் பைலாவின் நிலையும்",
@@ -119,11 +119,11 @@ object TorsionBookChapter {
                         "இரண்டாம் நிலை எதிர்முறுக்கல் என்பது சில இரைப்பைக்காலிப் பரம்பரைகளில், குறிப்பாக பல கடல் ஸ்லக்குகள், நுரையீரல் நத்தைகளை உள்ளடக்கிய ஹெட்டிரோபிராங்கியா குழுவில், முறுக்கப்பட்ட நிலையின் பகுதி அல்லது விரிவான பரிணாமத் திருப்பம். மேண்டில் குழியும் மலவாயும் முன்புற நிலையிலிருந்து, பெரும்பாலும் வலப்புறம் அல்லது பின்புறம், விலகுகின்றன; உள்ளுறுப்பு நரம்பு வளையம் குறுக்கற்றதாகலாம்; அது யூத்தினியூரி. இது மூதாதையர் முறுக்கப்பட்டிருந்த குழுவில் முறுக்கப்பட்ட நிலை இழப்பு; முதலில் முறுக்கல் தோல்வியடைந்தது அல்ல."),
                     bp("Pila retains the torted condition. It has the mantle cavity at the front, the anus close to the head, the crossed nerve loop, and a reduction of the organs of one side, and it should not be drawn or described as a detorted snail. The adult has no torsion in progress. A student who is asked to relate torsion to Pila should say that Pila is a torted, streptoneurous gastropod with a single gill, kidney and a twisted nerve ring." to
                         "பைலா முறுக்கப்பட்ட நிலையைத் தக்கவைக்கிறது. அதற்கு முன்புற மேண்டில் குழி, தலைக்கு அருகில் மலவாய், குறுக்கான நரம்பு வளையம், ஒரு பக்க உறுப்புகளின் குறைப்பு உள்ளன; எதிர்முறுக்கப்பட்ட நத்தையாக வரையவோ விவரிக்கவோ கூடாது. முதிர்ந்ததில் முறுக்கல் நடைபெறவில்லை. முறுக்கலை பைலாவுடன் தொடர்புபடுத்தக் கேட்கப்படும் மாணவர், பைலா ஒற்றைச் செவுள், சிறுநீரகம், முறுக்கப்பட்ட நரம்பு வளையம் உடைய முறுக்கப்பட்ட, ஸ்ட்ரெப்டோநியூரஸ் இரைப்பைக்காலி என்று கூற வேண்டும்."),
-                    bdef("Detorsion", "எதிர்முறுக்கல்", "The evolutionary reversal, partial or complete, of the torted condition in some gastropods." to
+                    bdef("Detorsion", "எதிர்முறுக்கல் (Detorsion)", "The evolutionary reversal, partial or complete, of the torted condition in some gastropods." to
                         "சில இரைப்பைக்காலிகளில் முறுக்கப்பட்ட நிலையின் பகுதி அல்லது முழு பரிணாமத் திருப்பம்."),
-                    bdef("Heterobranchia", "ஹெட்டிரோபிராங்கியா", "A large group of gastropods that includes sea slugs and pulmonate snails, in which detorsion is common." to
+                    bdef("Heterobranchia", "ஹெட்டிரோபிராங்கியா (Heterobranchia)", "A large group of gastropods that includes sea slugs and pulmonate snails, in which detorsion is common." to
                         "எதிர்முறுக்கல் பொதுவான, கடல் ஸ்லக்குகளையும் நுரையீரல் நத்தைகளையும் உள்ளடக்கிய இரைப்பைக்காலிகளின் பெரிய குழு."),
-                    bdef("Pulmonate", "நுரையீரல் நத்தை", "A snail that breathes air by a lung formed from the mantle cavity." to
+                    bdef("Pulmonate", "நுரையீரல் நத்தை (Pulmonate)", "A snail that breathes air by a lung formed from the mantle cavity." to
                         "மேண்டில் குழியிலிருந்து உருவான நுரையீரலால் காற்றைச் சுவாசிக்கும் நத்தை."),
                 )),
             bsec("asymmetry", "Asymmetry: what happened to the organs of the right side", "சமச்சீரின்மை: வலப்புற உறுப்புகளுக்கு என்ன நேர்ந்தது",
@@ -132,7 +132,7 @@ object TorsionBookChapter {
                         "சமச்சீரான உடல் கொண்ட மெல்லுடலிக்கு ஓர் இணை செவுள்கள், ஓர் இணை சிறுநீரகங்கள், இதயத்தில் ஓர் இணை ஆரிக்கிள்கள், பின்புறத்தில் மேண்டில் குழியின் ஓர் இணை திறப்புகள் இருந்தன. முறுக்கலுக்குப் பிறகு இரு தொகுதிகளும் முன்புறத்துக்குக் கொண்டுவரப்பட்டு மேண்டில் குழியின் இரு பக்கங்களிலும் அமைகின்றன; ஆனால் சுருள் ஓடுடைய வயிற்றுக்காலிக்கு இரு பக்கங்களையும் சமமாகப் பயன்படுத்த முடியாது. உள்ளுறுப்புத் திரள், ஓட்டின் சுருள் சுற்றல் மேண்டில் குழியின் ஒரு பக்கத்தை ஓட்டுச் சுருள்களுக்கு எதிராகக் கொண்டுவந்து, அப்பக்கத்தின் இடத்தைக் குறைக்கின்றன. வாழும் பல வயிற்றுக்காலிகளில் ஒரு பக்கத்தின் உறுப்புகள், பொதுவாக வலப்புறம், குறைக்கப்படுகின்றன அல்லது இழக்கப்படுகின்றன; எனவே விலங்குக்கு ஒரு செவுள், ஒரு ஆரிக்கிள், முழுமையாகச் செயல்படும் ஒரு சிறுநீரகம் மட்டுமே உள்ளன. நத்தைகளை சமச்சீரான இருவால் உடலிகளிலிருந்தும் கைட்டான்களிலிருந்தும் வேறுபடுத்தும் சமச்சீரின்மையின் தோற்றம் இதுவே."),
                     bp("It is useful to keep the two processes separate in an answer. Torsion is the twisting of the body that changes the position of the organs in relation to the head and foot, and it occurs in the larva. Asymmetry is a later and different feature, the loss or reduction of organs on one side, and it is a consequence of the combination of torsion with the spiral coil of the shell. Primitive living gastropods such as the abalone Haliotis and the keyhole limpets retain two gills, which is evidence that the loss of organs is not an essential result of torsion itself, and it is for this reason that the description of an animal as symmetrical or asymmetrical must name the animal. Statements that apply to Haliotis cannot be carried over to Pila without a check.",
                         "விடையில் இரு செயல்முறைகளையும் தனித்தனியாக வைத்திருப்பது பயனுள்ளது. முறுக்கல் என்பது தலை, பாதத்துடன் தொடர்புடைய உறுப்புகளின் நிலையை மாற்றும் உடல் முறுக்கு; அது லார்வாவில் நிகழ்கிறது. சமச்சீரின்மை பிந்தைய, வேறுபட்ட பண்பு; ஒரு பக்கத்தின் உறுப்புகளின் இழப்பு அல்லது குறைவு; முறுக்கலும் ஓட்டின் சுருள் சுற்றலும் இணைவதன் விளைவு. அபலோன் ஹாலியோடிஸ், சாவித்துளை லிம்பெட்கள் போன்ற பழமையான வாழும் வயிற்றுக்காலிகள் இரு செவுள்களைத் தக்கவைக்கின்றன; உறுப்பு இழப்பு முறுக்கலின் அவசிய விளைவு அல்ல என்பதற்கு இது சான்று; இதனால்தான் ஒரு விலங்கை சமச்சீரானது அல்லது சமச்சீரற்றது என விவரிக்கும்போது விலங்கைப் பெயரிட வேண்டும். ஹாலியோடிஸுக்குப் பொருந்தும் கூற்றுகளைச் சரிபார்க்காமல் பைலாவுக்குக் கொண்டு செல்ல முடியாது."),
-                    bdef("Asymmetry", "சமச்சீரின்மை", "The condition in which the organs of the two sides of the body are not equally developed." to
+                    bdef("Asymmetry", "சமச்சீரின்மை (Asymmetry)", "The condition in which the organs of the two sides of the body are not equally developed." to
                         "உடலின் இரு பக்க உறுப்புகளும் சமமாக வளராத நிலை."),
                     bdef("Auricle", "ஆரிக்கிள்", "A chamber of a mollusc's heart that receives blood from the gill or the lung." to
                         "செவுள் அல்லது நுரையீரலிலிருந்து இரத்தத்தைப் பெறும் மெல்லுடலியின் இதய அறை."),

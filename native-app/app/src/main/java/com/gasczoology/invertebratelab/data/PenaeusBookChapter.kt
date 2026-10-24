@@ -29,11 +29,11 @@ object PenaeusBookChapter {
                         "உடல் இரு டேக்மாக்களாகப் பிரிக்கப்பட்டுள்ளது. செபலோதொராக்ஸ் தலையும் மார்பும் இணைவதால் உருவாகி, முன்னால் பல் கொண்ட முள்ளான ரோஸ்ட்ரமாக நீளும் ஒற்றைக் கேடயமான ஓட்டால் மூடப்படுகிறது. ஓடு ஒவ்வொரு பக்கமும் செவுள் அறையை மூடுகிறது. வயிறு ஆறு தெளிவான கண்டங்களுடன் கண்டமுடையது; டெல்சனில் முடிகிறது. வயிற்றுக் கண்டங்கள் ஒன்றின் மேல் ஒன்று அசையும்; வாலை வளைக்க இது அனுமதிக்கிறது; ஒவ்வொன்றுக்கும் மேலே டெர்கமும் கீழே ஸ்டெர்னமும் உள்ளன; அவை பக்கத் தகடுகளான புளூராவால் இணைகின்றன."),
                     bdef("Carapace", "ஓடு (கேரபேஸ்)", "The shield of exoskeleton that covers the cephalothorax of a crustacean." to
                         "கிரஸ்டேஷியனின் செபலோதொராக்ஸை மூடும் வெளிக்கூட்டுக் கேடயம்."),
-                    bdef("Rostrum", "ரோஸ்ட்ரம்", "The toothed spine that projects forward from the front of the carapace between the eyes." to
+                    bdef("Rostrum", "ரோஸ்ட்ரம் (Rostrum)", "The toothed spine that projects forward from the front of the carapace between the eyes." to
                         "கண்களுக்கிடையே ஓட்டின் முன்னிலிருந்து முன்னோக்கி நீளும் பல் கொண்ட முள்."),
-                    bdef("Telson", "டெல்சன்", "The terminal part of the abdomen of a crustacean, which with the uropods forms the tail fan." to
+                    bdef("Telson", "டெல்சன் (Telson)", "The terminal part of the abdomen of a crustacean, which with the uropods forms the tail fan." to
                         "கிரஸ்டேஷியனின் வயிற்றின் முனைப் பகுதி; யுரோபோடுகளுடன் சேர்ந்து வால் விசிறியை உருவாக்குகிறது."),
-                    bdef("Pleuron", "புளூரான்", "The lateral plate of the cuticle on each side of an abdominal segment." to
+                    bdef("Pleuron", "புளூரான் (Pleuron)", "The lateral plate of the cuticle on each side of an abdominal segment." to
                         "வயிற்றுக் கண்டத்தின் ஒவ்வொரு பக்கத்திலுள்ள புறத்தோலின் பக்கத் தகடு."),
                 )),
             bsec("appendages", "The appendages", "உறுப்புகள்",
@@ -54,17 +54,17 @@ object PenaeusBookChapter {
                         )),
                     bp("The thoracic appendages are the maxillipeds, which are three pairs and are specialised for feeding, and the pereiopods, the five pairs of walking legs. In the penaeid prawns, the first three pairs of pereiopods end in small pincers, they are chelate, while the last two end in simple claws. The abdominal appendages are the pleopods, or swimmerets, which are flap-like and used in swimming, and the last pair, the uropods, which spread on each side of the telson as the tail fan. When the abdomen is sharply flexed the tail fan drives the animal backwards, an escape movement." to
                         "மார்பு உறுப்புகள் மூன்று இணை, உண்ணுதலுக்குச் சிறப்புற்ற மேக்சில்லிபெட்களும் ஐந்து இணை நடக்கும் கால்களான பெரியோபோடுகளும். பெனியிட் இறால்களில் முதல் மூன்று இணை பெரியோபோடுகள் சிறு சிலிர்கொம்புகளில் (கீலேட்) முடிகின்றன; கடைசி இரண்டு எளிய நகங்களில் முடிகின்றன. வயிற்று உறுப்புகள் நீந்தப் பயன்படும் தகடு போன்ற ப்ளியோபோடுகள் (நீந்து கால்கள்), டெல்சனின் இருபுறமும் வால் விசிறியாகப் பரவும் கடைசி இணை யுரோபோடுகள். வயிறு கூர்மையாக வளைக்கப்படும்போது வால் விசிறி விலங்கைப் பின்னோக்கித் தள்ளுகிறது; இது தப்பிக்கும் இயக்கம்."),
-                    bdef("Maxilliped", "மேக்சில்லிபெட்", "A thoracic appendage modified as a mouthpart that holds and passes food." to
+                    bdef("Maxilliped", "மேக்சில்லிபெட் (Maxilliped)", "A thoracic appendage modified as a mouthpart that holds and passes food." to
                         "உணவைப் பிடித்து கடத்தும் வாய்ப்பகுதியாக மாற்றப்பட்ட மார்பு உறுப்பு."),
-                    bdef("Pereiopod", "பெரியோபோடு", "A thoracic walking leg of a crustacean." to
+                    bdef("Pereiopod", "பெரியோபோடு (Pereiopod)", "A thoracic walking leg of a crustacean." to
                         "கிரஸ்டேஷியனின் மார்பு நடக்கும் கால்."),
-                    bdef("Pleopod", "ப்ளியோபோடு", "An abdominal limb of a crustacean, used in swimming." to
+                    bdef("Pleopod", "ப்ளியோபோடு (Pleopod)", "An abdominal limb of a crustacean, used in swimming." to
                         "நீந்தப் பயன்படும் கிரஸ்டேஷியனின் வயிற்றுக் கால்."),
-                    bdef("Uropod", "யுரோபோடு", "The last pair of abdominal appendages, which with the telson form the tail fan." to
+                    bdef("Uropod", "யுரோபோடு (Uropod)", "The last pair of abdominal appendages, which with the telson form the tail fan." to
                         "வயிற்று உறுப்புகளின் கடைசி இணை; டெல்சனுடன் சேர்ந்து வால் விசிறியை உருவாக்குகிறது."),
-                    bdef("Chelate", "சிலிர்கொம்பு உடைய (கீலேட்)", "Ending in a pincer formed by a movable finger opposed to a fixed one." to
+                    bdef("Chelate", "சிலிர்கொம்பு உடைய (Chelate; கீலேட்)", "Ending in a pincer formed by a movable finger opposed to a fixed one." to
                         "நிலையான விரலுக்கு எதிராக அசையும் விரல் அமைந்த இடுக்கியில் முடியும்."),
-                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட்", "An organ of balance, a sac containing a small mass that stimulates sensory cells according to the position of the animal." to
+                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட் (Statocyst)", "An organ of balance, a sac containing a small mass that stimulates sensory cells according to the position of the animal." to
                         "விலங்கின் நிலைக்கேற்ப உணர்வு செல்களைத் தூண்டும் சிறு திரள் அடங்கிய, சமநிலை உறுப்பான பை."),
                 )),
             bsec("digestion", "Digestive system and nutrition", "செரிமான மண்டலமும் ஊட்டமும்",
@@ -73,9 +73,9 @@ object PenaeusBookChapter {
                         "வாய் தலையின் வயிற்றுப்புறத்தில் வாய்ப்பகுதிகளுக்கிடையே அமைந்து, குட்டை உணவுக்குழல் வழியாக செபலோதொராக்ஸிலுள்ள பெரிய இரைப்பைக்குள் செல்கிறது. இரைப்பைக்கு இரு பகுதிகள் உள்ளன. முன்புற கார்டியாக் அறையில் உணவை நசுக்கும் கைட்டின் சிறு எலும்புகள், பற்களாலான இரைப்பை அரவையும், பின்புற பைலோரிக் அறை அதை வடிகட்டுவதால் நுண்ணிய திரவமும் துகள்களும் மட்டுமே செரிமானச் சுரப்பிக்குள் நுழைகின்றன. நடுக்குடல் வயிறு வழியே பின்குடலுக்கும் டெல்சனின் அடியிலுள்ள மலவாய்க்கும் செல்லும் நீண்ட நேரான குழல்."),
                     bp("The digestive gland, or hepatopancreas, is a large, paired, branching organ in the cephalothorax, and opens into the junction of the stomach and midgut. It secretes digestive enzymes, takes up the digested food, and stores reserves such as fat and glycogen. Because absorption and storage both occur in this organ, it is the functional equivalent of both the liver and the pancreas of a vertebrate, and the name hepatopancreas records this." to
                         "செரிமானச் சுரப்பி அல்லது ஹெபடோபான்கிரியாஸ் செபலோதொராக்ஸிலுள்ள பெரிய, இணை, கிளைக்கும் உறுப்பு; இரைப்பைக்கும் நடுக்குடலுக்கும் இணைவில் திறக்கிறது. செரிமான நொதிகளைச் சுரக்கிறது, செரித்த உணவை உறிஞ்சுகிறது, கொழுப்பு, கிளைகோஜன் போன்ற சேமிப்புகளை வைத்திருக்கிறது. உறிஞ்சுதலும் சேமிப்பும் இவ்வுறுப்பில் நடப்பதால் முதுகெலும்பியின் கல்லீரல், கணையம் இரண்டுக்கும் செயல்முறையாக நிகரானது; ஹெபடோபான்கிரியாஸ் என்ற பெயர் இதைப் பதிவு செய்கிறது."),
-                    bdef("Gastric mill", "இரைப்பை அரவை", "A set of chitinous teeth and ossicles in the stomach of a crustacean that grinds the food." to
+                    bdef("Gastric mill", "இரைப்பை அரவை (Gastric mill)", "A set of chitinous teeth and ossicles in the stomach of a crustacean that grinds the food." to
                         "உணவை அரைக்கும், கிரஸ்டேஷியனின் இரைப்பையிலுள்ள கைட்டின் பற்கள், சிறு எலும்புகளின் தொகுப்பு."),
-                    bdef("Hepatopancreas", "ஹெபடோபான்கிரியாஸ்", "The digestive gland of a crustacean, which secretes enzymes, absorbs food and stores reserves." to
+                    bdef("Hepatopancreas", "ஹெபடோபான்கிரியாஸ் (Hepatopancreas)", "The digestive gland of a crustacean, which secretes enzymes, absorbs food and stores reserves." to
                         "நொதிகளைச் சுரக்கும், உணவை உறிஞ்சும், சேமிப்புகளை வைக்கும் கிரஸ்டேஷியனின் செரிமானச் சுரப்பி."),
                 )),
             bsec("internal", "Circulation, respiration, excretion and nervous system", "இரத்த ஓட்டம், சுவாசம், கழிவு நீக்கம், நரம்பு மண்டலம்",
@@ -87,9 +87,9 @@ object PenaeusBookChapter {
                         "சுவாசம் செவுள்களால்; அவை மார்புக் கால்களின் அடிகளிலிருந்து வளரும் இறகு போன்ற வளர்ச்சிகள்; உடலின் இருபுறமும் ஓட்டால் பாதுகாக்கப்பட்ட செவுள் அறைகளில் உள்ளன. இரண்டாம் மேக்சில்லாவின் துடுப்புத் தகடு அடிப்பதால் ஒவ்வொரு அறை வழியும் நீரோட்டம் முன்னோக்கிச் செலுத்தப்படுவதால் புதிய நீர் செவுள்கள் மேல் பாய்ந்து வாயுக்கள் பரிமாறப்படுகின்றன. கழிவு நீக்கம் முக்கியமாக ஆன்டென்னாக்களின் அடியில் திறக்கும் பச்சைச் சுரப்பிகள் எனப்படும் ஓர் இணை ஆன்டென்னல் சுரப்பிகளாலும் செவுள்களாலும்; சுரப்பிகள் உடலின் உப்பு, நீர் அளவையும் ஒழுங்குபடுத்த உதவுகின்றன."),
                     bp("The nervous system consists of a dorsal brain in the head, which gives nerves to the eyes and antennules and antennae, circumoesophageal connectives round the gut, and a ventral nerve cord with ganglia, which are partly fused in the cephalothorax. The eyes are compound and stalked, and each is made of a great number of units, the ommatidia, which together form a mosaic image. The antennules and antennae carry touch and chemical receptors, and the statocyst serves for balance." to
                         "நரம்பு மண்டலத்தில் தலையில் கண்கள், ஆன்டென்யூல்கள், ஆன்டென்னாக்களுக்கு நரம்புகளைத் தரும் முதுகுப்புற மூளை, குடலைச் சுற்றும் தொண்டைச்சுற்று இணைப்பிகள், செபலோதொராக்ஸில் பகுதியாக இணைந்த நரம்பு செல்திரள்களுடைய வயிற்றுப்புற நரம்புவடம் உள்ளன. கண்கள் கூட்டு, காம்புடையவை; ஒவ்வொன்றும் சேர்ந்து மொசைக் படிமம் தரும் ஒமட்டிடியா எனும் ஏராளமான அலகுகளால் ஆனது. ஆன்டென்யூல்களும் ஆன்டென்னாக்களும் தொடு, வேதி ஏற்பிகளைத் தாங்குகின்றன; ஸ்டேட்டோசிஸ்ட் சமநிலைக்கு உதவுகிறது."),
-                    bdef("Antennal gland", "ஆன்டென்னல் சுரப்பி", "The excretory organ of a prawn, also called the green gland, that opens at the base of the antenna." to
+                    bdef("Antennal gland", "ஆன்டென்னல் சுரப்பி (Antennal gland)", "The excretory organ of a prawn, also called the green gland, that opens at the base of the antenna." to
                         "ஆன்டென்னாவின் அடியில் திறக்கும், பச்சைச் சுரப்பி எனவும் அழைக்கப்படும் இறாலின் கழிவு உறுப்பு."),
-                    bdef("Ommatidium", "ஒமட்டிடியம்", "One of the many units that make up a compound eye." to
+                    bdef("Ommatidium", "ஒமட்டிடியம் (Ommatidium)", "One of the many units that make up a compound eye." to
                         "கூட்டுக் கண்ணை உருவாக்கும் பல அலகுகளில் ஒன்று."),
                     bdef("Haemocyanin", "ஹீமோசயனின்", "A copper-containing respiratory pigment that carries oxygen in the blood of crustaceans." to
                         "கிரஸ்டேஷியன்களின் இரத்தத்தில் ஆக்சிஜனைக் கொண்டு செல்லும் தாமிரம் கொண்ட சுவாச நிறமி."),
@@ -101,11 +101,11 @@ object PenaeusBookChapter {
                         "பால் தனி. ஆணுக்கு செபலோதொராக்ஸில் ஓர் இணை விந்தகங்கள் உள்ளன; விந்துக் குழாய்கள் கடைசி இணை பெரியோபோடுகளின் அடிகளில் திறக்கின்றன; விந்து ஸ்பெர்மட்டோஃபோர்கள் எனும் பொட்டலங்களில் அடைக்கப்படுகிறது. ஆணின் முதல் இணை ப்ளியோபோடுகள் இணைதல் உறுப்பான பெடாஸ்மாவாக மாற்றப்பட்டு, மாற்றத்துக்காக ஸ்பெர்மட்டோஃபோர்களை வைத்திருக்கின்றன. பெண்ணுக்கு ஓர் இணை சூலகங்களும் மூன்றாம் இணை பெரியோபோடுகளின் அடியில் திறக்கும் சூலகக் குழாய்களும் உள்ளன; கடைசி இணை பெரியோபோடுகளுக்கிடையே ஸ்டெர்னத்தில் ஸ்பெர்மட்டோஃபோர்களை ஏற்றுப் பிடிக்கும் கலமான தெலிகம் உள்ளது."),
                     bp("In the penaeids the eggs are shed freely into the sea, where they are fertilised, and they are not carried by the female on the pleopods as in some other decapods. A female may release a great number. The eggs hatch into larvae, which are planktonic and pass through a sequence of stages that is described below, while the postlarvae move into estuaries and backwaters, which serve as nurseries, and the juveniles return to the sea when they approach maturity." to
                         "பெனியிட்களில் முட்டைகள் கடலுக்குள் சுதந்திரமாக விடப்பட்டு அங்கு கருவுறுகின்றன; வேறு சில டெகாபோடாக்களில் போல பெண் அவற்றை ப்ளியோபோடுகளில் சுமப்பதில்லை. ஒரு பெண் ஏராளமானவற்றை விடலாம். முட்டைகள் மிதவை லார்வாக்களாகப் பொரிந்து கீழே விவரிக்கப்படும் நிலை வரிசையைக் கடக்கின்றன; போஸ்ட்லார்வாக்கள் நாற்றங்கால்களாகச் செயல்படும் முகத்துவாரங்கள், உப்பங்கழிகளுக்குள் நகர்கின்றன; இளையவை முதிர்ச்சியை நெருங்கும்போது கடலுக்குத் திரும்புகின்றன."),
-                    bdef("Petasma", "பெடாஸ்மா", "The copulatory organ of a male penaeid prawn, formed by the modification of the first pair of pleopods." to
+                    bdef("Petasma", "பெடாஸ்மா (Petasma)", "The copulatory organ of a male penaeid prawn, formed by the modification of the first pair of pleopods." to
                         "ஆண் பெனியிட் இறாலின், முதல் இணை ப்ளியோபோடுகளின் மாற்றத்தால் உருவான, இணைதல் உறுப்பு."),
-                    bdef("Thelycum", "தெலிகம்", "The receptacle on the sternum of a female penaeid prawn that receives the spermatophores." to
+                    bdef("Thelycum", "தெலிகம் (Thelycum)", "The receptacle on the sternum of a female penaeid prawn that receives the spermatophores." to
                         "ஸ்பெர்மட்டோஃபோர்களை ஏற்கும் பெண் பெனியிட் இறாலின் ஸ்டெர்னத்திலுள்ள கலம்."),
-                    bdef("Spermatophore", "ஸ்பெர்மட்டோஃபோர்", "A packet of sperm enclosed in a secreted case, transferred from male to female." to
+                    bdef("Spermatophore", "ஸ்பெர்மட்டோஃபோர் (Spermatophore)", "A packet of sperm enclosed in a secreted case, transferred from male to female." to
                         "சுரக்கப்பட்ட உறையில் அடைக்கப்பட்டு ஆணிலிருந்து பெண்ணுக்கு மாற்றப்படும் விந்துப் பொட்டலம்."),
                 )),
             bsec("larvae", "Development: nauplius to postlarva", "வளர்ச்சி: நாப்ளியஸ் முதல் போஸ்ட்லார்வா வரை",
@@ -118,11 +118,11 @@ object PenaeusBookChapter {
                     ),
                     bp("The sequence of nauplius, protozoea, mysis and postlarva is characteristic of the penaeid prawns. It must be stated for the prawn and not for all crustaceans, since other groups have different larvae or have the earlier stages passed in the egg. The matter is taken further in the next chapters, which compare the larvae of crustaceans. The important feature of this development is that the larva changes in the manner of feeding and the use of its appendages as it passes through the stages, and each change is marked by a moult." to
                         "நாப்ளியஸ், புரோட்டோசோயியா, மைசிஸ், போஸ்ட்லார்வா வரிசை பெனியிட் இறால்களுக்கு உரியது. இது இறாலுக்குக் கூறப்பட வேண்டும், எல்லா கிரஸ்டேஷியன்களுக்கும் அல்ல; ஏனெனில் பிற குழுக்களுக்கு வேறு லார்வாக்கள் உள்ளன அல்லது முந்தைய நிலைகள் முட்டைக்குள் கடக்கப்படுகின்றன. இது அடுத்த அத்தியாயங்களில், கிரஸ்டேஷியன்களின் லார்வாக்களை ஒப்பிடுமிடத்தில், விரிவாக்கப்படுகிறது. இவ்வளர்ச்சியின் முக்கிய அம்சம், லார்வா நிலைகளைக் கடக்கும்போது உண்ணும் முறையிலும் உறுப்புகளைப் பயன்படுத்துவதிலும் மாறுகிறது என்பதும், ஒவ்வொரு மாற்றமும் உதிர்த்தலால் குறிக்கப்படுவதும்."),
-                    bdef("Nauplius", "நாப்ளியஸ்", "The first larva of many crustaceans, with three pairs of appendages and a median eye." to
+                    bdef("Nauplius", "நாப்ளியஸ் (Nauplius)", "The first larva of many crustaceans, with three pairs of appendages and a median eye." to
                         "பல கிரஸ்டேஷியன்களின் முதல் லார்வா; மூன்று இணை உறுப்புகளும் நடுக்கண்ணும் உடையது."),
                     bdef("Mysis", "மைசிஸ்", "A larval stage of a prawn that resembles a small shrimp and swims with the thoracic appendages." to
                         "சிறு இறால் போன்று மார்பு உறுப்புகளால் நீந்தும் இறாலின் லார்வா நிலை."),
-                    bdef("Postlarva", "போஸ்ட்லார்வா", "The stage after the larval stages, resembling a juvenile, that moves to the nursery area." to
+                    bdef("Postlarva", "போஸ்ட்லார்வா (Postlarva)", "The stage after the larval stages, resembling a juvenile, that moves to the nursery area." to
                         "லார்வா நிலைகளுக்குப் பின், இளையதை ஒத்து நாற்றங்கால் பகுதிக்கு நகரும் நிலை."),
                     bnote("Name in the answer", "விடையில் பெயர்",
                         "Write Penaeus indicus, the prescribed name, and add once that the species is accepted as Penaeus (Fenneropenaeus) indicus. Do not spend the answer on synonymy." to
@@ -134,9 +134,9 @@ object PenaeusBookChapter {
                         "இறாலின் புறச்சட்டகம் விறைப்பான புறத்தோல்; விறைப்பான மூடியால் விரிவடைய முடியாது. எனவே வளர்ச்சி படிப்படியாக நிகழ்கிறது. பழைய புறத்தோலிலிருந்து சுண்ணாம்பையும் கரிமப் பொருளையும் ஒரு பகுதி திரும்பப் பெற்று, அதன் அடியில் புதிய மென்மையான புறத்தோலை உருவாக்கி விலங்கு தோலுரித்தலுக்குத் தயாராகிறது. பின்னர் பழைய புறத்தோல் பொதுவாக ஓட்டின் பின்புறக் கோட்டில் பிளக்கிறது; இறால் தன்னை விடுவித்துக்கொள்கிறது; உதிர்ந்த தோல் எக்சுவியே எனப்படுகிறது. தொடர்ந்த நிமிடங்களிலும் மணிநேரங்களிலும் விலங்கு நீரை உள்ளிழுத்து புதிய அளவுக்கு வீங்குகிறது; கனிம உப்புப் படிவாலும் பதப்படுத்தலாலும் புதிய புறத்தோல் கடினமாகிறது. புறத்தோலை உதிர்க்கும் இச்செயல்முறை எக்டைசிஸ் எனப்படுகிறது."),
                     bp("The period just after a moult is dangerous. The prawn is soft, it cannot swim or defend itself well, and it is at risk of being eaten, even by members of its own species, so that it hides until the new cuticle hardens. The interval between moults lengthens as the animal grows, and it is also affected by temperature, food and the condition of the water. The control of the cycle is by hormones, and it is established for crustaceans in general that a moult-inhibiting hormone is produced in a gland in the eyestalk and that the moulting hormones, which are steroids, are produced elsewhere. The detail varies among species, and for an answer it is sufficient to say that moulting is under hormonal control and that the eyestalk has a part in it.",
                         "தோலுரித்தலுக்குப் பிறகான காலம் ஆபத்தானது. இறால் மென்மையாக இருக்கும்; நன்றாக நீந்தவோ தற்காக்கவோ முடியாது; தன் இனத்தினராலேயே உண்ணப்படும் அபாயமும் உண்டு; எனவே புதிய புறத்தோல் கடினமாகும் வரை மறைந்து கொள்கிறது. விலங்கு வளர வளர தோலுரித்தலுக்கு இடையிலான இடைவெளி நீள்கிறது; வெப்பம், உணவு, நீரின் நிலை ஆகியவையும் அதைப் பாதிக்கின்றன. சுழற்சியின் கட்டுப்பாடு ஹார்மோன்களால் ஆனது; பொதுவாக கிரஸ்டேஷியன்களில் தோலுரித்தலைத் தடுக்கும் ஹார்மோன் கண்காம்பிலுள்ள சுரப்பியில் உருவாவதும், ஸ்டீராய்டுகளான தோலுரித்தல் ஹார்மோன்கள் வேறிடத்தில் உருவாவதும் நிறுவப்பட்டுள்ளது. விவரம் இனங்களுக்கிடையே மாறுபடும்; தோலுரித்தல் ஹார்மோன் கட்டுப்பாட்டில் உள்ளது, அதில் கண்காம்புக்குப் பங்கு உண்டு என்று கூறுவதே விடைக்குப் போதும்."),
-                    bdef("Ecdysis", "எக்டைசிஸ்", "The shedding of the old cuticle by an arthropod, which allows the body to grow." to
+                    bdef("Ecdysis", "எக்டைசிஸ் (Ecdysis)", "The shedding of the old cuticle by an arthropod, which allows the body to grow." to
                         "உடல் வளர அனுமதிக்கும் வகையில் கணுக்காலி பழைய புறத்தோலை உதிர்த்தல்."),
-                    bdef("Exuviae", "எக்சுவியே", "The cast-off cuticle left behind after a moult." to
+                    bdef("Exuviae", "எக்சுவியே (Exuviae)", "The cast-off cuticle left behind after a moult." to
                         "தோலுரித்தலுக்குப் பிறகு விடப்படும் உதிர்ந்த புறத்தோல்."),
                 )),
             bsec("culture", "Prawns as a fishery and as a crop", "மீன்பிடித் தொழிலாகவும் பயிராகவும் இறால்",
@@ -147,7 +147,7 @@ object PenaeusBookChapter {
                         "நீர்வாழ் வளர்ப்பில் விவசாயிகள் குஞ்சுப் பொரிப்பகங்களின் போஸ்ட்லார்வாக்களால் குளங்களை நிரப்பி, விலங்குகளுக்கு உணவளித்து, சில மாதங்களுக்குப் பின் அறுவடை செய்கின்றனர். வாழ்க்கைச் சுழற்சி இம்முறையை விளக்குகிறது. சிறைப்படுத்தி வைக்கப்படும் முதிர்ந்த இறால்களான தாய் இறால்கள் முதிரவும் முட்டையிடவும் தூண்டப்படுகின்றன; நாப்ளியஸ்கள் மைசிஸ் நிலை வழியாக போஸ்ட்லார்வா வரை தூய்மையான நீரில் உயிருள்ள, தயாரிக்கப்பட்ட உணவுகளுடன் வளர்க்கப்படுகின்றன. இத்தகைய வளர்ப்பின் முக்கிய இடர் நோய். இறால்களின் வைரஸ், பாக்டீரியா நோய்கள் பல நாடுகளில் கடுமையான இழப்புகளை ஏற்படுத்தியுள்ளன; பரிந்துரைக்கப்படும் கட்டுப்பாடு தடுப்பு வகையைச் சேர்ந்தது: சோதிக்கப்பட்ட இருப்பிலிருந்து ஆரோக்கியமான போஸ்ட்லார்வாக்கள், தூய்மையான நீர், கட்டுப்படுத்தப்பட்ட நெருக்கம், குளத்தின் நல்ல மேலாண்மை. தொழிலின் பொறுப்புகளில் கடலோர நிலம், நீர், சதுப்புநிலக் காடுகள் மீதான அதன் விளைவும் அடங்கும்; சமநிலையான விடை பயனும் தீங்கும் இரண்டும் ஆவணப்படுத்தப்பட்டுள்ளன என்பதைக் குறிப்பிட வேண்டும்."),
                     bdef("Aquaculture", "நீர் வாழ் உயிரி வளர்ப்பு", "The farming of aquatic animals or plants under controlled conditions." to
                         "கட்டுப்படுத்தப்பட்ட நிலைமைகளில் நீர்வாழ் விலங்குகள் அல்லது தாவரங்களை வளர்த்தல்."),
-                    bdef("Broodstock", "தாய் இருப்பு", "Adult animals kept in captivity for breeding." to
+                    bdef("Broodstock", "தாய் இருப்பு (Broodstock)", "Adult animals kept in captivity for breeding." to
                         "இனப்பெருக்கத்துக்காகச் சிறைப்படுத்தி வைக்கப்படும் முதிர்ந்த விலங்குகள்."),
                     bdef("Estuary", "முகத்துவாரம்", "The wide mouth of a river where fresh water mixes with sea water." to
                         "நன்னீர் கடல்நீருடன் கலக்கும் ஆற்றின் அகன்ற வாய்."),

@@ -26,7 +26,7 @@ object AschelminthesBookChapter {
                         "குழிப்புழுக்கள் எனப் பொருள்படும் அஸ்கெல்மிந்தீஸ் என்ற பெயர், உண்மையான சீலோம் அல்லாத திரவம் நிறைந்த உடற்குழி கொண்ட புழு போன்ற விலங்குகளின் தொகுப்புக்குப் பயன்படுத்தப்பட்டது. ரோட்டிஃபெர்கள், காஸ்ட்ரோட்ரிக்குகள், கினோரிங்க்குகள், நெமட்டோடாக்கள், வேறு சிலவும் இக்குழுவில் பாரம்பரியமாக அடங்கி, ஒரே தொகுதியின் வகுப்புகளாகக் கருதப்பட்டன. இந்த குழுமம் வசதியானது ஆனால் செயற்கையானது; ஏனெனில் அதிலுள்ள விலங்குகள் பெரிதும் வேறுபடுகின்றன, பிறவற்றை விலக்கி ஒரே பொது மூதாதையைப் பகிர்வதில்லை."),
                     bp("Modern zoology treats each of these groups as a separate phylum, and the Nematoda are therefore a phylum in their own right. The syllabus retains the older name, and the answer to a question on Aschelminthes should say so, and should then give the characters of the Nematoda, which are the focus of the unit. It is a safe practice to write, in an answer, that Aschelminthes is a historical grouping of pseudocoelomate worm-like animals." to
                         "நவீன விலங்கியல் இவற்றில் ஒவ்வொரு குழுவையும் தனித் தொகுதியாகக் கருதுகிறது; எனவே நெமட்டோடா தனக்கே உரிய தொகுதி. பாடத்திட்டம் பழைய பெயரைத் தக்கவைக்கிறது; அஸ்கெல்மிந்தீஸ் குறித்த வினாவின் விடை அதைக் குறிப்பிட்டு, பின்னர் அலகின் மையமான நெமட்டோடாவின் பண்புகளைத் தர வேண்டும். அஸ்கெல்மிந்தீஸ் என்பது போலி உடற்குழி கொண்ட புழு போன்ற விலங்குகளின் வரலாற்றுக் குழுமம் என்று விடையில் எழுதுவது பாதுகாப்பான நடைமுறை."),
-                    bdef("Aschelminthes", "அஸ்கெல்மிந்தீஸ்", "A traditional grouping of pseudocoelomate worm-like animals, including the nematodes, now regarded as an artificial assemblage of separate phyla." to
+                    bdef("Aschelminthes", "அஸ்கெல்மிந்தீஸ் (Aschelminthes)", "A traditional grouping of pseudocoelomate worm-like animals, including the nematodes, now regarded as an artificial assemblage of separate phyla." to
                         "நெமட்டோடாக்கள் உட்பட போலி உடற்குழி கொண்ட புழு போன்ற விலங்குகளின் பாரம்பரிய குழுமம்; இப்போது தனித் தொகுதிகளின் செயற்கைத் தொகுப்பாகக் கருதப்படுகிறது."),
                     bdef("Nematoda", "நெமட்டோடா", "The phylum of roundworms, with a tough cuticle, a pseudocoelom, a complete gut and longitudinal muscles only." to
                         "கடினமான கியூட்டிகிள், போலி உடற்குழி, முழுமையான குடல், நீளவாக்கு தசைகள் மட்டும் கொண்ட உருளைப்புழுக்களின் தொகுதி."),
@@ -60,7 +60,7 @@ object AschelminthesBookChapter {
                         "நெமட்டோடாவின் எப்பிடெர்மிஸ் சுரக்கும் கடினமான, உயிரற்ற உறை; வளர்ச்சியின்போது உதிர்க்கப்படுகிறது."),
                     bdef("Dioecious", "ஒரு பால் உயிரி", "Having the male and female organs in separate individuals." to
                         "ஆண், பெண் உறுப்புகள் தனித்தனி உயிரிகளில் இருக்கும் நிலை."),
-                    bdef("Sexual dimorphism", "பாலின இருவடிவம்", "A difference in form between the male and the female of a species." to
+                    bdef("Sexual dimorphism", "பாலின இருவடிவம் (Sexual dimorphism)", "A difference in form between the male and the female of a species." to
                         "ஓர் இனத்தின் ஆணுக்கும் பெண்ணுக்கும் இடையிலான வடிவ வேறுபாடு."),
                     bdef("Moulting", "தோலுரித்தல்", "The shedding of the old cuticle and the formation of a new one as the animal grows." to
                         "விலங்கு வளரும்போது பழைய கியூட்டிகிளை உதிர்த்துப் புதியதை உருவாக்குதல்."),
@@ -95,7 +95,7 @@ object AschelminthesBookChapter {
                         )),
                     bdef("Hydrostatic skeleton", "நீர்ம சட்டகம்", "A skeleton formed by fluid under pressure in a closed body cavity, against which muscles work." to
                         "மூடிய உடற்குழியில் அழுத்தத்திலுள்ள திரவத்தால் உருவான எலும்புக்கூடு; தசைகள் அதற்கு எதிராகச் செயல்படுகின்றன."),
-                    bdef("Peristalsis", "அலைச் சுருக்கம்", "A wave of alternate contraction of circular and longitudinal muscles which passes along the body or a tube." to
+                    bdef("Peristalsis", "அலைச் சுருக்கம் (Peristalsis)", "A wave of alternate contraction of circular and longitudinal muscles which passes along the body or a tube." to
                         "உடல் அல்லது குழாய் வழியே செல்லும் வட்ட, நீளவாக்கு தசைகளின் மாறிமாறிச் சுருங்கும் அலை."),
                 )),
             bsec("systems", "Organ systems in brief", "உறுப்பு மண்டலங்கள் சுருக்கமாக",
@@ -108,7 +108,7 @@ object AschelminthesBookChapter {
                         "ஆண், பெண் இனப்பெருக்க மண்டலங்கள் குழாய் வடிவம், தனித்தனி உயிரிகளில் உள்ளன. பெண்ணில் குழாய்கள் இணையாக இருந்து யோனியில் முடிகின்றன; ஆணில் ஒற்றைக் குழாய் புணர்ச்சி ஸ்பிக்யூல்களுடன் குளோயாக்காவில் முடிகிறது. பெண் பெரும்பாலும் பெரியது; ஆணின் பின் முனை வளைந்திருக்கலாம். வளர்ச்சி நேரடியானது; முதிர்ந்த நிலையை அடையும் முன் நான்கு உதிர்ப்புகளால் பிரிக்கப்பட்ட லார்வா நிலைகள் உண்டு."),
                     bdef("Amphid", "ஆம்ஃபிட்", "One of a pair of chemosensory organs at the front of a nematode." to
                         "நெமட்டோடாவின் முன்புறத்தில் உள்ள ஒரு இணை வேதி உணர் உறுப்புகளில் ஒன்று."),
-                    bdef("Spicule", "ஸ்பிக்யூல்", "A needle-like copulatory structure in the male nematode, used to hold the female during mating." to
+                    bdef("Spicule", "ஸ்பிக்யூல் (Spicule)", "A needle-like copulatory structure in the male nematode, used to hold the female during mating." to
                         "புணர்ச்சியின்போது பெண்ணைப் பற்றிக்கொள்ள ஆண் நெமட்டோடாவிலுள்ள ஊசி போன்ற புணர்ச்சி அமைப்பு."),
                 )),
             bsec("bodywall", "The body wall: cuticle, epidermis and muscle", "உடற்சுவர்: கியூட்டிகிள், எப்பிடெர்மிஸ், தசை",
@@ -119,9 +119,9 @@ object AschelminthesBookChapter {
                         "நூல்களில் அடிக்கடி ஹைப்போடெர்மிஸ் எனப்படும் எப்பிடெர்மிஸ் கியூட்டிகிளைச் சுரக்கிறது. பெரும்பாலான நெமட்டோடாக்களில் அது நான்கு நீளவாக்கு வடங்களாகத் தடித்துள்ளது: முதுகுப்புறம் ஒன்று, வயிற்றுப்புறம் ஒன்று, இரு பக்கங்களில் இரண்டு. முதுகு, வயிற்று வடங்கள் முக்கிய நரம்புத் தண்டுகளையும், பக்க வடங்கள் பொதுவாகக் கழிவு நீக்கக் கால்வாய்களையும் தாங்குகின்றன. வடங்கள் தசை அடுக்கை நான்கு கால்பகுதிகளாகப் பிரிப்பதால், அஸ்காரிஸின் குறுக்கு வெட்டில் நான்கு தசை செல் பட்டைகள் தெரிகின்றன."),
                     bp("The muscle cells of a nematode are unusual. Instead of nerve fibres growing out to the muscle, each muscle cell sends a slender arm to a nerve cord, so that nerve and muscle meet at the cord. The cells are also of a type called platymyarian or coelomyarian in the older books, according to whether the contractile fibres lie flat against the epidermis or curl up the sides of the cell. These terms are often asked in the more detailed papers, but the central point for the general characters is that the muscle is longitudinal only.",
                         "நெமட்டோடாவின் தசை செல்கள் தனித்தன்மை கொண்டவை. தசைக்கு நரம்பிழைகள் வளர்வதற்குப் பதிலாக, ஒவ்வொரு தசை செல்லும் மெல்லிய கையை நரம்பு வடத்துக்கு அனுப்புகிறது; எனவே நரம்பும் தசையும் வடத்தில் சந்திக்கின்றன. பழைய நூல்களில் சுருங்கு இழைகள் எப்பிடெர்மிஸை ஒட்டித் தட்டையாக உள்ளனவா அல்லது செல்லின் பக்கங்களில் சுருண்டு ஏறுகின்றனவா என்பதைப் பொறுத்து இச்செல்கள் பிளாட்டிமையேரியன், சீலோமையேரியன் என வகைப்படுத்தப்பட்டன. இச்சொற்கள் விரிவான தாள்களில் கேட்கப்படுகின்றன; ஆனால் பொதுப்பண்புகளுக்கு நினைவில் கொள்ள வேண்டியது தசை நீளவாக்கு மட்டுமே என்பதாகும்."),
-                    bdef("Hypodermis", "ஹைப்போடெர்மிஸ்", "The living layer of cells beneath the cuticle of a nematode, which secretes the cuticle and forms the longitudinal cords." to
+                    bdef("Hypodermis", "ஹைப்போடெர்மிஸ் (Hypodermis)", "The living layer of cells beneath the cuticle of a nematode, which secretes the cuticle and forms the longitudinal cords." to
                         "நெமட்டோடாவின் கியூட்டிகிளின் கீழுள்ள உயிருள்ள செல் அடுக்கு; கியூட்டிகிளைச் சுரந்து நீளவாக்கு வடங்களை உருவாக்குகிறது."),
-                    bdef("Longitudinal cord", "நீளவாக்கு வடம்", "One of the thickenings of the epidermis that run along the dorsal, ventral and lateral lines of a nematode and carry the nerve trunks or excretory canals." to
+                    bdef("Longitudinal cord", "நீளவாக்கு வடம் (Longitudinal cord)", "One of the thickenings of the epidermis that run along the dorsal, ventral and lateral lines of a nematode and carry the nerve trunks or excretory canals." to
                         "நெமட்டோடாவின் முதுகு, வயிறு, பக்கக் கோடுகளில் ஓடும் எப்பிடெர்மிஸ் தடிப்பு; நரம்புத் தண்டுகளையோ கழிவு நீக்கக் கால்வாய்களையோ தாங்குகிறது."),
                 )),
             bsec("growth", "Growth by moulting and the fixed cell number", "தோலுரித்தல் வழி வளர்ச்சியும் நிலையான செல் எண்ணிக்கையும்",
@@ -130,9 +130,9 @@ object AschelminthesBookChapter {
                         "கியூட்டிகிள் உயிரற்றது; வரம்பின்றி விரிவடைய முடியாது; எனவே நெமட்டோடா தோலுரித்தல் மூலம் வளர்கிறது. வழக்கமான முறையில் இளம் புழு முதல்நிலை இளம் உயிரியாக வெளிவந்து நான்கு முறை தோலுரிக்கிறது; எனவே முதிர்ந்த நிலைக்கு முன் நான்கு இளம் நிலைகள் உள்ளன. ஒவ்வொரு தோலுரிப்பிலும் பழைய கியூட்டிகிளின் கீழ் புதியது உருவாகி, பழையது உதிர்க்கப்படுகிறது. முதிர்ந்த புழு பொதுவாக மீண்டும் தோலுரிப்பதில்லை. ஒட்டுண்ணி இனங்களில் சில தோலுரிப்புகள் முட்டையிலோ விருந்தோம்பியிலோ நிகழ்கின்றன; தொற்றுத் திறன் நிலையை உருவாக்கும் தோலுரிப்பு வாழ்க்கைச் சுழற்சியில் குறிப்பாக முக்கியமானது."),
                     bp("Many nematodes also show eutely, which means that the number of cells in the adult body is fixed for the species, and after hatching the animal grows mainly by enlargement of cells and not by division. The free-living Caenorhabditis elegans, a laboratory model, has a fixed number of somatic cells in the adult hermaphrodite (959), and every one of them can be traced to its origin. Eutely is a tendency and not a rule for the whole phylum, and the examiner is likely to want only the definition and one example.",
                         "பல நெமட்டோடாக்களில் யூடெலி எனும் பண்பும் காணப்படுகிறது; அதாவது முதிர்ந்த உடலிலுள்ள செல்களின் எண்ணிக்கை இனத்துக்கு நிலையானது; குஞ்சு பொரித்த பின் விலங்கு முக்கியமாக செல்கள் பெரிதாவதன் மூலம் வளர்கிறது, பிரிவதன் மூலம் அல்ல. ஆய்வகத்தில் மாதிரி உயிரியாகப் பயன்படும் தனி வாழ்வு கீனோர்ஹாப்டிடிஸ் எலிகன்ஸ் முதிர்ந்த இருபால் உயிரியில் நிலையான எண்ணிக்கையிலான (959) உடல் செல்களைக் கொண்டுள்ளது; ஒவ்வொன்றின் தோற்றத்தையும் தடமறிய முடியும். யூடெலி முழுத் தொகுதிக்கும் விதி அல்ல, போக்கு மட்டுமே; தேர்வாளர் வரையறையையும் ஓர் எடுத்துக்காட்டையும் மட்டுமே எதிர்பார்ப்பார்."),
-                    bdef("Eutely", "யூடெலி (நிலையான செல் எண்ணிக்கை)", "The condition in which the adult of a species has a fixed number of cells, growth after hatching being mainly by cell enlargement." to
+                    bdef("Eutely", "யூடெலி (Eutely; நிலையான செல் எண்ணிக்கை)", "The condition in which the adult of a species has a fixed number of cells, growth after hatching being mainly by cell enlargement." to
                         "ஓர் இனத்தின் முதிர்ந்த உயிரி நிலையான செல் எண்ணிக்கை கொண்டிருக்கும் நிலை; குஞ்சு பொரித்த பின் வளர்ச்சி முக்கியமாக செல் பெருக்கத்தால் நிகழ்கிறது."),
-                    bdef("Juvenile stage", "இளம் நிலை", "One of the immature stages of a nematode between hatching and the adult, separated by moults." to
+                    bdef("Juvenile stage", "இளம் நிலை (Juvenile stage)", "One of the immature stages of a nematode between hatching and the adult, separated by moults." to
                         "குஞ்சு பொரித்தலுக்கும் முதிர்ந்த நிலைக்கும் இடையில், தோலுரிப்புகளால் பிரிக்கப்படும் நெமட்டோடாவின் முதிராத நிலைகளில் ஒன்று."),
                 )),
             bsec("relatives", "The other groups once placed in Aschelminthes", "அஸ்கெல்மிந்தீஸில் முன்பு வைக்கப்பட்ட பிற குழுக்கள்",
@@ -150,9 +150,9 @@ object AschelminthesBookChapter {
                         )),
                     bp("Modern classifications treat these groups as separate phyla, and some of them are placed in quite different parts of the animal tree from the nematodes. The practical lesson is that pseudocoelom, a complete gut and a cuticle are features that have evolved more than once, and a shared body cavity alone is a weak reason for regarding two groups as close relatives.",
                         "நவீன வகைப்பாடுகள் இக்குழுக்களைத் தனித் தொகுதிகளாகக் கருதுகின்றன; சில விலங்கு மரத்தில் நெமட்டோடாவிலிருந்து மிகவும் வேறுபட்ட இடங்களில் வைக்கப்படுகின்றன. நடைமுறைப் பாடம் என்னவெனில், போலி உடற்குழி, முழுமையான குடல், கியூட்டிகிள் ஆகியவை ஒன்றுக்கு மேற்பட்ட முறை தோன்றிய பண்புகள்; பொது உடற்குழி மட்டுமே இரு குழுக்கள் நெருங்கிய உறவினர் என்பதற்கு வலுவற்ற காரணம்."),
-                    bdef("Rotifera", "ரோட்டிஃபெரா", "A phylum of microscopic, mostly freshwater animals with a ciliated crown at the front and a chewing pharynx." to
+                    bdef("Rotifera", "ரோட்டிஃபெரா (Rotifera)", "A phylum of microscopic, mostly freshwater animals with a ciliated crown at the front and a chewing pharynx." to
                         "முன்புறத்தில் சிலியா கொண்ட மகுடமும் மெல்லும் தொண்டையும் உடைய நுண்ணிய, பெரும்பாலும் நன்னீர் விலங்குகளின் தொகுதி."),
-                    bdef("Acanthocephala", "அகாந்தோசெஃபாலா", "A group of gut parasites with a spiny retractable proboscis and no digestive tract." to
+                    bdef("Acanthocephala", "அகாந்தோசெஃபாலா (Acanthocephala)", "A group of gut parasites with a spiny retractable proboscis and no digestive tract." to
                         "முள் நிறைந்த உள்ளிழுக்கத்தக்க துதிக்கையும் செரிமானக் குழாயின்மையும் கொண்ட குடல் ஒட்டுண்ணிகளின் குழு."),
                 )),
             bsec("lifestyles", "Ways of life within the nematodes", "நெமட்டோடாக்களுக்குள் வாழ்க்கை முறைகள்",
@@ -161,9 +161,9 @@ object AschelminthesBookChapter {
                         "இவ்வளவு ஒரே மாதிரியான உடலமைப்பில் இத்தனை பரந்த வாழ்க்கை முறைகளைக் காட்டும் விலங்கு குழுக்கள் சில. தனி வாழ்வு நெமட்டோடாக்கள் பாக்டீரியா, பூஞ்சை, பாசி அல்லது பிற சிறு விலங்குகளை உண்கின்றன. தாவர ஒட்டுண்ணிகள் வேர் அல்லது இலை செல்களை உள்ளீடற்ற ஈட்டி போன்ற ஸ்டைலெட்டால் துளைத்து உள்ளடக்கத்தை உறிஞ்சுகின்றன. விலங்கு ஒட்டுண்ணிகள் முதுகெலும்பிகள், முதுகெலும்பற்றவற்றின் குடல், இரத்தம், நிணநீர்க் குழாய்கள் அல்லது திசுக்களில் வாழ்கின்றன; சில இரத்தம் உறிஞ்சும் பூச்சிகளால் பரப்பப்படுகின்றன."),
                     bp("Parasitic nematodes show three broad patterns of life cycle. In the direct pattern the egg or larva passes from host to host with no intermediate animal, as in Ascaris and the hookworm. In the indirect pattern an intermediate host or a vector carries the larva, as in the filarial worm, which uses a mosquito. A third pattern, found in some species, is infection through the skin, in which a larva in soil or water burrows through the skin of the host. The three principal human parasites that follow in the syllabus, Ascaris, Wuchereria and the hookworm, illustrate these patterns.",
                         "ஒட்டுண்ணி நெமட்டோடாக்கள் வாழ்க்கைச் சுழற்சியில் மூன்று பொது முறைகளைக் காட்டுகின்றன. நேரடி முறையில் முட்டையோ இளம் உயிரியோ இடைப்பட்ட விலங்கின்றி விருந்தோம்பியிலிருந்து விருந்தோம்பிக்குச் செல்கிறது; அஸ்காரிஸும் கொக்கிப்புழுவும் இதற்கு எடுத்துக்காட்டு. மறைமுக முறையில் இடை விருந்தோம்பியோ கடத்தியோ இளம் உயிரியைக் கொண்டு செல்கிறது; கொசுவைப் பயன்படுத்தும் யானைக்கால் புழு இதற்கு எடுத்துக்காட்டு. சில இனங்களில் காணப்படும் மூன்றாவது முறை தோல் வழித் தொற்று; மண் அல்லது நீரிலுள்ள இளம் உயிரி விருந்தோம்பியின் தோலைத் துளைத்து நுழைகிறது. பாடத்திட்டத்தில் தொடரும் மூன்று முக்கிய மனித ஒட்டுண்ணிகளான அஸ்காரிஸ், வுச்செரேரியா, கொக்கிப்புழு ஆகியவை இம்முறைகளை விளக்குகின்றன."),
-                    bdef("Stylet", "ஸ்டைலெட்", "A hollow, spear-like structure in the mouth of plant-parasitic nematodes, used to pierce cells and suck out their contents." to
+                    bdef("Stylet", "ஸ்டைலெட் (Stylet)", "A hollow, spear-like structure in the mouth of plant-parasitic nematodes, used to pierce cells and suck out their contents." to
                         "தாவர ஒட்டுண்ணி நெமட்டோடாக்களின் வாயிலுள்ள உள்ளீடற்ற ஈட்டி போன்ற அமைப்பு; செல்களைத் துளைத்து உள்ளடக்கத்தை உறிஞ்சப் பயன்படுகிறது."),
-                    bdef("Direct life cycle", "நேரடி வாழ்க்கைச் சுழற்சி", "A parasite life cycle in which no intermediate host or vector is needed and the infective stage passes directly to a new host." to
+                    bdef("Direct life cycle", "நேரடி வாழ்க்கைச் சுழற்சி (Direct life cycle)", "A parasite life cycle in which no intermediate host or vector is needed and the infective stage passes directly to a new host." to
                         "இடை விருந்தோம்பியோ கடத்தியோ தேவையின்றி தொற்று நிலை நேரடியாகப் புதிய விருந்தோம்பிக்குச் செல்லும் ஒட்டுண்ணி வாழ்க்கைச் சுழற்சி."),
                 )),
             bsec("answering", "Common questions and how to answer them", "பொதுவான வினாக்களும் விடையளிக்கும் முறையும்",

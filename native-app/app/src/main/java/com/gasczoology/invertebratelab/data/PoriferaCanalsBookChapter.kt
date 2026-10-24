@@ -30,13 +30,13 @@ object PoriferaCanalsBookChapter {
                         "கடற்பஞ்சின் ஒவ்வொரு செல்லும் ஓடும் நீருக்கு அருகில் இருக்க வேண்டும். செல் நீரிலிருந்து ஆக்சிஜனையும் உணவையும் எடுத்து, கார்பன் டை ஆக்சைடையும் அம்மோனியாவையும் அதற்குத் திருப்பித் தருகிறது; குறுந்தொலைவுக்கு மேல் விரவல் பெரிய உடலுக்குப் போதுமான வேகத்தில் நடைபெறாது. செல்கள் நீருக்காகக் காத்திருக்காமல், வழிகள் மூலம் நீரைச் செல்களிடம் கொண்டு வருவதன் மூலம் கடற்பஞ்சு இச்சிக்கலைத் தீர்க்கிறது."),
                     bp("The central difficulty is one of geometry. If a body grows to twice its length in every direction, its volume increases eight times, but its surface increases only four times. A sponge that simply grew larger would therefore soon have far more cells to supply than surface to supply them. The three grades are three ways of folding the wall so that the area of choanocytes exposed to water keeps pace with the volume of the body." to
                         "முதன்மைச் சிக்கல் வடிவியல் சார்ந்தது. உடல் எல்லாத் திசைகளிலும் இருமடங்கு நீளமானால் அதன் கொள்ளளவு எட்டு மடங்கும் பரப்பு நான்கு மடங்கும் மட்டுமே கூடும். எனவே வெறுமனே பெரிதாக வளரும் கடற்பஞ்சுக்கு, அவற்றைப் பேணும் பரப்பைவிட ஊட்ட வேண்டிய செல்கள் மிக அதிகமாகிவிடும். நீருக்கு வெளிப்படும் கோனோசைட் பரப்பு உடலின் கொள்ளளவுடன் சேர்ந்து வளர உடற்சுவரை மடிக்கும் மூன்று வழிகளே இந்த மூன்று நிலைகள்."),
-                    bdef("Aquiferous system", "நீர்வழி அமைப்பு",
+                    bdef("Aquiferous system", "நீர்வழி அமைப்பு (Aquiferous system)",
                         "The system of ostia, canals, chambers and oscula through which a current of water passes through a sponge." to
                             "கடற்பஞ்சின் வழியே நீரோட்டம் செல்லும் ஆஸ்டியா, கால்வாய், அறை, ஆஸ்குலம் ஆகியவற்றின் தொகுப்பு."),
-                    bdef("Grade of organisation", "அமைப்பு நிலை",
+                    bdef("Grade of organisation", "அமைப்பு நிலை (Grade of organisation)",
                         "A level of structural complexity that may be reached independently by unrelated groups. Asconoid, syconoid and leuconoid are grades; they are not taxonomic classes." to
                             "தொடர்பற்ற குழுக்கள் தனித்தனியாகவும் அடையக்கூடிய அமைப்புச் சிக்கலின் நிலை. அஸ்கோனாய்டு, சைக்கனாய்டு, லியூக்கோனாய்டு என்பவை நிலைகள்; வகைப்பாட்டு வகுப்புகள் அல்ல."),
-                    bdef("Ostium (plural: ostia)", "ஆஸ்டியம் (பன்மை: ஆஸ்டியா)",
+                    bdef("Ostium (plural: ostia)", "ஆஸ்டியம் (Ostium; பன்மை: ஆஸ்டியா)",
                         "A minute inhalant pore in the outer wall through which water enters the sponge." to
                             "புறச்சுவரில் உள்ள, நீர் கடற்பஞ்சுக்குள் நுழையும் நுண்ணிய உட்செல்லும் துளை."),
                     bdef("Osculum", "ஆஸ்குலம்",
@@ -54,10 +54,10 @@ object PoriferaCanalsBookChapter {
                     ),
                     bp("The simplicity of the grade limits the size of the animal. The choanocytes cover only the area of the inner surface of the tube, which increases in step with the surface of the body and not with its volume. A large asconoid sponge would have a wide spongocoel containing a great deal of water served by a small area of choanocytes, and the current could not renew that water fast enough. For this reason asconoid sponges are small, rarely more than a few centimetres high." to
                         "இந்த நிலையின் எளிமை விலங்கின் அளவை வரையறுக்கிறது. கோனோசைட்டுகள் குழாயின் உள்பரப்பை மட்டுமே மூடுகின்றன; அது உடலின் பரப்புடன் உயர்கிறதே தவிர கொள்ளளவுடன் அல்ல. பெரிய அஸ்கோனாய்டு கடற்பஞ்சில் சிறிய கோனோசைட் பரப்பு, அதிக நீர் கொண்ட அகன்ற ஸ்பாஞ்சோசீலுக்குச் சேவை செய்ய வேண்டியிருக்கும்; ஓட்டத்தால் அந்த நீரை விரைவாகப் புதுப்பிக்க முடியாது. இதனால் அஸ்கோனாய்டு கடற்பஞ்சுகள் சிறியவை; சில சென்டிமீட்டருக்கு மேல் அரிதாகவே வளர்கின்றன."),
-                    bdef("Asconoid", "அஸ்கோனாய்டு",
+                    bdef("Asconoid", "அஸ்கோனாய்டு (Asconoid)",
                         "The simplest grade of canal system, in which the wall is thin and unfolded and the spongocoel is lined by choanocytes. Example: Leucosolenia." to
                             "கால்வாய் அமைப்பின் எளிய நிலை; சுவர் மெல்லியதும் மடிப்பற்றதும், ஸ்பாஞ்சோசீல் கோனோசைட்டுகளால் மூடப்பட்டதும் ஆகும். எடுத்துக்காட்டு: லியூக்கோசோலீனியா."),
-                    bdef("Spongocoel", "ஸ்பாஞ்சோசீல்",
+                    bdef("Spongocoel", "ஸ்பாஞ்சோசீல் (Spongocoel)",
                         "The central cavity of a sponge into which the water passes before it leaves by the osculum." to
                             "ஆஸ்குலம் வழியாக வெளியேறும் முன் நீர் செல்லும் கடற்பஞ்சின் நடுக்குழி."),
                 )),
@@ -75,13 +75,13 @@ object PoriferaCanalsBookChapter {
                     ),
                     bp("The folding multiplies the area of choanocytes without greatly increasing the volume of the spongocoel, so a syconoid sponge can be larger than an asconoid one and can filter more water. Syconoid sponges are, however, still tubes or vases with a single osculum, and the arrangement cannot be extended indefinitely." to
                         "மடிப்பு, ஸ்பாஞ்சோசீலின் கொள்ளளவை அதிகம் கூட்டாமலே கோனோசைட் பரப்பைப் பெருக்குகிறது; எனவே சைக்கனாய்டு கடற்பஞ்சு அஸ்கோனாய்டைவிடப் பெரிதாக இருக்கவும் அதிக நீரை வடிகட்டவும் முடியும். எனினும் சைக்கனாய்டு கடற்பஞ்சுகள் ஒரே ஆஸ்குலம் கொண்ட குழாய் அல்லது குவளைகளே; இந்த அமைப்பை வரம்பின்றி விரிவாக்க இயலாது."),
-                    bdef("Syconoid", "சைக்கனாய்டு",
+                    bdef("Syconoid", "சைக்கனாய்டு (Syconoid)",
                         "The grade of canal system in which the wall is folded into radial canals lined by choanocytes, alternating with incurrent canals, with a central cavity lined by flat cells. Example: Sycon." to
                             "சுவர் மடிந்து கோனோசைட்டுகள் உள்ள ஆரக் கால்வாய்களும் அவற்றுடன் மாறிமாறி உட்செல்லும் கால்வாய்களும், தட்டை செல்கள் மூடிய நடுக்குழியும் கொண்ட கால்வாய் அமைப்பு நிலை. எடுத்துக்காட்டு: சைக்கான்."),
-                    bdef("Prosopyle", "புரோசோபைல்",
+                    bdef("Prosopyle", "புரோசோபைல் (Prosopyle)",
                         "The pore through which water passes from an incurrent canal into a radial canal." to
                             "உட்செல்லும் கால்வாயிலிருந்து ஆரக் கால்வாய்க்கு நீர் செல்லும் துளை."),
-                    bdef("Apopyle", "அப்போபைல்",
+                    bdef("Apopyle", "அப்போபைல் (Apopyle)",
                         "The opening through which water passes from a radial canal into the spongocoel." to
                             "ஆரக் கால்வாயிலிருந்து ஸ்பாஞ்சோசீலுக்கு நீர் செல்லும் திறப்பு."),
                 )),
@@ -98,13 +98,13 @@ object PoriferaCanalsBookChapter {
                     ),
                     bp("Three subtypes are distinguished by the connection between a chamber and the excurrent canal. In the eurypylous type the chamber opens directly into the excurrent canal. In the aphodal type a short canal, the aphodus, joins the chamber to the excurrent canal. In the diplodal type both a short entrance canal, the prosodus, and an exit canal, the aphodus, are present. The distinction is of interest chiefly in advanced courses." to
                         "அறைக்கும் வெளிச்செல்லும் கால்வாய்க்கும் இடையிலான இணைப்பைக் கொண்டு மூன்று துணைவகைகள் பிரிக்கப்படுகின்றன. யூரிபைலஸ் வகையில் அறை நேரடியாக வெளிச்செல்லும் கால்வாயில் திறக்கிறது. அபோடல் வகையில் அபோடஸ் என்ற குறுகிய கால்வாய் அறையை வெளிச்செல்லும் கால்வாயுடன் இணைக்கிறது. டிப்ளோடல் வகையில் புரோசோடஸ் என்ற குறுகிய நுழைவுக் கால்வாயும் அபோடஸ் என்ற வெளியேற்றக் கால்வாயும் இரண்டும் உள்ளன. இந்த வேறுபாடு முக்கியமாக மேம்பட்ட பாடங்களுக்கே பொருத்தமானது."),
-                    bdef("Leuconoid", "லியூக்கோனாய்டு",
+                    bdef("Leuconoid", "லியூக்கோனாய்டு (Leuconoid)",
                         "The most complex grade of canal system, in which the choanocytes are confined to numerous small flagellated chambers connected by incurrent and excurrent canals and the central cavity is reduced or absent. Example: Spongilla." to
                             "கோனோசைட்டுகள் எண்ணற்ற சிறு கசையிழை அறைகளில் மட்டும் இருந்து, உட்செல்லும், வெளிச்செல்லும் கால்வாய்களால் இணைக்கப்பட்டு, நடுக்குழி குறைந்தோ இல்லாமலோ உள்ள மிகச் சிக்கலான கால்வாய் அமைப்பு நிலை. எடுத்துக்காட்டு: ஸ்பாஞ்சில்லா."),
-                    bdef("Flagellated chamber", "கசையிழை அறை",
+                    bdef("Flagellated chamber", "கசையிழை அறை (Flagellated chamber)",
                         "A small rounded chamber lined by choanocytes in a leuconoid sponge." to
                             "லியூக்கோனாய்டு கடற்பஞ்சில் கோனோசைட்டுகள் வரிசையாக உள்ள சிறு உருண்டை அறை."),
-                    bdef("Excurrent canal", "வெளிச்செல்லும் கால்வாய்",
+                    bdef("Excurrent canal", "வெளிச்செல்லும் கால்வாய் (Excurrent canal)",
                         "A canal that carries filtered water away from the flagellated chambers towards an osculum." to
                             "வடிகட்டப்பட்ட நீரை கசையிழை அறைகளிலிருந்து ஆஸ்குலத்தை நோக்கிக் கொண்டு செல்லும் கால்வாய்."),
                 )),
@@ -159,7 +159,7 @@ object PoriferaCanalsBookChapter {
                         "அஸ்கோனாய்டிலிருந்து லியூக்கோனாய்டு வரையிலான வரிசை அடிப்படையில் ஒரு வடிவியல் சிக்கலுக்கான விடை. கொடுக்கப்பட்ட வடிவுள்ள விலங்கு பெரிதாகும்போது, அதன் பரப்பைவிட கனஅளவு வேகமாக உயர்கிறது. நீளத்தையும் அகலத்தையும் இரட்டிப்பாக்கும் பை வடிவக் கடற்பஞ்சின் உடற்சுவர் மாற்றத்தின் வர்க்கமாகப் பரப்பைப் பெறுகிறது; ஆனால் உட்குழி கனமாக கனஅளவைப் பெறுகிறது; எனவே மையக் குழியிலுள்ள ஒவ்வொரு அலகு நீரும் ஒப்பீட்டளவில் குறைந்த உட்புறத்துடன் தொடர்பில் உள்ளது. அஸ்கோனாய்டு கடற்பஞ்சில் குழியின் உட்புறம் கோனோசைட்டுகளைக் கொண்டுள்ளது; எனவே கோனோசைட்டுகளின் எண்ணிக்கை உடலின் கனஅளவால் அல்ல, உட்புறப் பரப்பால் வரையறுக்கப்படுகிறது. பெரிய அஸ்கோனாய்டு கடற்பஞ்சில் திசு மிகுதியாகவும் உணவு சேகரிக்கும் பரப்பு குறைவாகவும் இருக்கும்; அதனால்தான் அஸ்கோனாய்டு நிலை சிறிய கடற்பஞ்சுகளில் மட்டுமே காணப்படுகிறது."),
                     bp("Folding the body wall is a solution that biology uses in many places, and it is worth recognising as a general principle. The folds of the syconoid sponge carry the choanocytes on the surface of the radial canals and thereby increase the area for the same volume, and the leuconoid design carries the idea further by dividing the lining into thousands of small chambers. The gain is real, but it is not free: more canals and chambers mean more resistance to the flow of water and a need for a stronger pumping action of the flagella, and the sponge must also keep the canals open. The same idea is seen in the folded lining of the vertebrate intestine and in the lamellae of gills, and a comparison of this kind earns credit when it is stated briefly and the animals are named.",
                         "உடற்சுவரை மடிப்பது உயிரியல் பல இடங்களில் பயன்படுத்தும் தீர்வு; அதை பொதுக் கொள்கையாக அடையாளம் காண்பது பயனுள்ளது. சைக்கனாய்டு கடற்பஞ்சின் மடிப்புகள் ஆரக் கால்வாய்களின் பரப்பில் கோனோசைட்டுகளைக் கொண்டு, அதே கனஅளவுக்குப் பரப்பை உயர்த்துகின்றன; லியூக்கோனாய்டு வடிவமைப்பு உட்புறத்தை ஆயிரக்கணக்கான சிறு அறைகளாகப் பிரித்து இந்த எண்ணத்தை மேலும் நீட்டுகிறது. ஆதாயம் உண்மையானது; ஆனால் இலவசமல்ல: அதிகக் கால்வாய்களும் அறைகளும் நீரோட்டத்துக்கு அதிக எதிர்ப்பையும் கசையிழைகளின் வலுவான இழுப்பையும் தேவைப்படுத்துகின்றன; கடற்பஞ்சு கால்வாய்களைத் திறந்தும் வைத்திருக்க வேண்டும். முதுகெலும்பி குடலின் மடிந்த உட்புறத்திலும் செவுள் தகடுகளிலும் இதே எண்ணம் காணப்படுகிறது; இவ்வகை ஒப்பீடு சுருக்கமாகவும் விலங்குகளைப் பெயரிட்டும் கூறப்படும்போது மதிப்பெண் பெறுகிறது."),
-                    bdef("Surface-area-to-volume ratio", "பரப்பு-கனஅளவு விகிதம்", "The area of the surface of a body divided by its volume, which falls as the body grows larger if its shape is unchanged." to
+                    bdef("Surface-area-to-volume ratio", "பரப்பு-கனஅளவு விகிதம் (Surface-area-to-volume ratio)", "The area of the surface of a body divided by its volume, which falls as the body grows larger if its shape is unchanged." to
                         "ஒரு பொருளின் புறப்பரப்பை அதன் கனஅளவால் வகுத்த மதிப்பு; வடிவம் மாறாமல் பெரிதாகும்போது குறைகிறது."),
                 )),
             bsec("rhagon", "Cells of the canal wall and the rhagon stage", "கால்வாய்ச் சுவரின் செல்களும் ரேகான் நிலையும்",
@@ -168,9 +168,9 @@ object PoriferaCanalsBookChapter {
                         "அமைப்பிலுள்ள துளைகள் குறிப்பிட்ட செல்களால் உருவாகின்றன. ஆஸ்டியம் என்பது போரோசைட் வழியாக அமைந்த துளை; போரோசைட் ஒரு கால்வாயால் துளையிடப்பட்ட, குறுகிய குழாய் வடிவ செல்; சில கடற்பஞ்சுகளில் செல்களுக்கிடையேயான இடைவெளியாலும் துளை உருவாகலாம். போரோசைட் தட்டையான பினகோசைட்டுகளால் ஆன வெளிப்படலத்தில் உள்ளது; உள் அறைகள் கோனோசைட்டுகளால் வரிசைப்படுத்தப்பட்டுள்ளன. தேர்வாளர் துளையைக் கொண்ட படலத்தைக் கேட்கலாம் என்பதால் இவ்வேறுபாடு முக்கியம்; விடை போரோசைட்டுகளுடன் கூடிய வெளிப்படலம். சுற்றியுள்ள செல்களின் சுருக்கத்தால் சில துளைகளை மூட முடியும் என்ற கூற்று பல கடற்பஞ்சுகளுக்குக் கூறப்படுகிறது; கடற்பஞ்சு நீரோட்டத்தை ஒழுங்குபடுத்தலாம் என்பதை இது விளக்குகிறது; ஆனால் கட்டுப்பாட்டின் அளவு மாறுபடும்; அது சாத்தியமாக எழுதப்பட வேண்டும்."),
                     bp("Development gives a link between the grades. In many leuconoid sponges a young stage called the rhagon is described, a small cone-shaped body with a wide central cavity, a single large osculum and flagellated chambers in its wall, which resembles the syconoid design more than the final adult, and the adult is believed to be derived from it by further folding and branching. The point is not for memory but for understanding: the three grades should not be seen as three separate inventions but as steps of a continuous increase in complexity. It must be remembered that this is an arrangement of design and not of evolutionary history, and the statement that the leuconoid sponges evolved from asconoid ancestors is a hypothesis that is not required in an answer on canal systems.",
                         "வளர்ச்சி நிலைகளுக்கிடையே ஒரு தொடர்பை வழங்குகிறது. பல லியூக்கோனாய்டு கடற்பஞ்சுகளில் ரேகான் எனப்படும் இளம் நிலை விவரிக்கப்படுகிறது; அகன்ற மையக் குழி, ஒரே பெரிய ஆஸ்குலம், சுவரில் கசையிழை அறைகளுடன் கூடிய சிறு கூம்பு வடிவ உடல்; இது இறுதி முதிர்ந்ததைவிட சைக்கனாய்டு வடிவமைப்பை ஒத்துள்ளது; முதிர்ந்தது மேலும் மடிப்பாலும் கிளைப்பாலும் அதிலிருந்து தோன்றுகிறது என நம்பப்படுகிறது. நோக்கம் நினைவில் வைப்பதல்ல, புரிந்துகொள்வது: மூன்று நிலைகளையும் மூன்று தனிக் கண்டுபிடிப்புகளாக அல்ல, சிக்கலில் தொடர்ச்சியான உயர்வின் படிகளாகப் பார்க்க வேண்டும். இது வடிவமைப்பின் ஏற்பாடு, பரிணாம வரலாறு அல்ல என்பதை நினைவில் கொள்ள வேண்டும்; லியூக்கோனாய்டு கடற்பஞ்சுகள் அஸ்கோனாய்டு மூதாதையரிடமிருந்து தோன்றின என்பது கால்வாய் அமைப்புகள் பற்றிய விடையில் தேவையற்ற ஒரு கருதுகோள்."),
-                    bdef("Porocyte", "போரோசைட்", "A tube-shaped cell of the outer layer of a sponge, pierced by a canal that forms an ostium." to
+                    bdef("Porocyte", "போரோசைட் (Porocyte)", "A tube-shaped cell of the outer layer of a sponge, pierced by a canal that forms an ostium." to
                         "ஆஸ்டியத்தை உருவாக்கும் கால்வாயால் துளையிடப்பட்ட, கடற்பஞ்சின் வெளிப்படலக் குழாய் வடிவ செல்."),
-                    bdef("Rhagon", "ரேகான்", "A young leuconoid sponge, a small cone-shaped body with flagellated chambers in the wall and a single large osculum." to
+                    bdef("Rhagon", "ரேகான் (Rhagon)", "A young leuconoid sponge, a small cone-shaped body with flagellated chambers in the wall and a single large osculum." to
                         "சுவரில் கசையிழை அறைகளும் ஒரே பெரிய ஆஸ்குலமும் உடைய, சிறு கூம்பு வடிவ இளம் லியூக்கோனாய்டு கடற்பஞ்சு."),
                 )),
             bsec("examples", "Examples, habitats and the exam answer", "எடுத்துக்காட்டுகள், வாழிடங்கள், தேர்வு விடை",

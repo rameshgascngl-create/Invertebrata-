@@ -33,7 +33,7 @@ object FootBookChapter {
                     ),
                     bdef("Foot", "பாதம்", "The ventral muscular organ of a mollusc, used for creeping, burrowing, attachment or, in modified form, for other functions." to
                         "ஊர்தல், தோண்டுதல், ஒட்டுதல் அல்லது மாறிய வடிவில் பிற செயல்களுக்குப் பயன்படும் மெல்லுடலியின் வயிற்றுப்புற தசை உறுப்பு."),
-                    bdef("Pedal ganglion", "பெடல் நரம்பு செல்திரள்", "A ganglion in the foot that controls its movement." to
+                    bdef("Pedal ganglion", "பெடல் நரம்பு செல்திரள் (Pedal ganglion)", "A ganglion in the foot that controls its movement." to
                         "பாதத்தின் அசைவைக் கட்டுப்படுத்தும் அதிலுள்ள நரம்பு செல்திரள்."),
                     bdef("Hydrostatic skeleton", "நீர்ம சட்டகம்", "A fluid-filled body region that gives support and allows movement when muscles act against the fluid." to
                         "தசைகள் திரவத்துக்கு எதிராகச் செயல்படும்போது ஆதரவும் இயக்கமும் தரும் திரவம் நிரம்பிய உடற்பகுதி."),
@@ -50,11 +50,11 @@ object FootBookChapter {
                         "பாதம் முறுக்கல், ஓடுடனும் தொடர்புடையது. உள்ளுறுப்புக் கூம்பின் மேல் தொப்பி போல அமரும் ஓட்டுக்குள் தலையும் பாதமும் இழுக்கப்படலாம்; ஆப்பர்குலம் பின்வாங்கலை அடைக்கிறது. தலையும் பாதமும் முறுக்கலில் திரும்பாத பகுதிகள்; எனவே முறுக்கப்பட்ட விலங்கிலும் பாதமும் அடிப்பகுதியும் முன்னோக்கி நோக்குகின்றன."),
                     bdef("Sole", "அடிப்பகுதி", "The flat creeping surface of the foot of a gastropod." to
                         "இரைப்பைக்காலியின் பாதத்தின் தட்டையான ஊரும் மேற்பரப்பு."),
-                    bdef("Pedal wave", "பெடல் அலை", "A wave of muscular contraction that passes along the sole and moves the animal." to
+                    bdef("Pedal wave", "பெடல் அலை (Pedal wave)", "A wave of muscular contraction that passes along the sole and moves the animal." to
                         "அடிப்பகுதி வழியே சென்று விலங்கை நகர்த்தும் தசைச் சுருக்க அலை."),
-                    bdef("Operculum", "ஆப்பர்குலம்", "A horny plate on the hind part of the foot that closes the shell aperture when the animal withdraws." to
+                    bdef("Operculum", "ஆப்பர்குலம் (Operculum)", "A horny plate on the hind part of the foot that closes the shell aperture when the animal withdraws." to
                         "விலங்கு பின்வாங்கும்போது ஓட்டு வாயை மூடும், பாதத்தின் பின்பகுதியிலுள்ள கொம்புத் தகடு."),
-                    bdef("Pedal mucus", "பெடல் சளி", "The mucus secreted by the foot that lubricates and grips the surface." to
+                    bdef("Pedal mucus", "பெடல் சளி (Pedal mucus)", "The mucus secreted by the foot that lubricates and grips the surface." to
                         "மேற்பரப்பை வழுவழுப்பாக்கிப் பிடிப்பைத் தரும், பாதம் சுரக்கும் சளி."),
                 )),
             bsec("bivalve", "The foot of a bivalve: Unio", "இருவோட்டின் பாதம்: யூனியோ",
@@ -65,15 +65,15 @@ object FootBookChapter {
                         "தோண்டுதல் ஒரு வரிசையைப் பின்பற்றுகிறது. பாதம் முன்னோக்கியும் கீழ்நோக்கியும் அடியுள்ளே நீட்டப்பட்டு, முனை இரத்தத்தால் வீங்கி நங்கூரமிடப்படுகிறது. பின்னர் மூடித் தசைகளும் பிற தசைகளும் சுருங்க, பாதத் தசைகள் ஓட்டை நங்கூரமிட்ட பாதத்தை நோக்கி இழுக்கின்றன; எனவே விலங்கு சேற்றுக்குள் நகர்கிறது. பாதத்தின் நீட்சி தசைச் செயலாலும் அதன் இடைவெளிகளிலுள்ள இரத்தத் திரவ அழுத்தத்தாலும் உண்டாகிறது; உள்ளே தள்ளும்போது பாதம் விறைக்கிறது. வரிசை மீண்டும் நிகழ்கிறது; தொட்டியிலுள்ள சிப்பி பின்னால் ஒரு பள்ளத்தை விடுவதற்கு இது காரணம்."),
                     bp("In some bivalves the foot is modified in a further way. Mussels of the sea and some others have a byssus gland at the base of the foot, which secretes proteinaceous threads, the byssal threads, that fix the animal to a rock or other hard surface. These sedentary forms use the foot little in movement, and the foot is small. The comparison with Unio, which burrows, shows how a single organ is modified by the habit of life, to dig in one animal and to spin threads in another." to
                         "சில இருவோடுகளில் பாதம் மேலும் மாற்றப்படுகிறது. கடல் சிப்பிகளுக்கும் வேறு சிலவற்றுக்கும் பாதத்தின் அடியில் பிஸ்ஸஸ் சுரப்பி உள்ளது; அது பாறை அல்லது பிற கடினப் பரப்பில் விலங்கை நிலைநிறுத்தும் புரத இழைகளான பிஸ்ஸஸ் இழைகளைச் சுரக்கிறது. இவ்வமர்ந்த வடிவங்கள் இயக்கத்தில் பாதத்தை குறைவாகப் பயன்படுத்துகின்றன; பாதம் சிறியது. தோண்டும் யூனியோவுடன் ஒப்பீடு, ஒரே உறுப்பு வாழ்க்கைப் பழக்கத்தால் ஒரு விலங்கில் தோண்டவும் மற்றொன்றில் இழை நூற்கவும் மாற்றப்படுவதைக் காட்டுகிறது."),
-                    bdef("Byssus", "பிஸ்ஸஸ்", "The bundle of protein threads secreted by a gland at the base of the foot that fixes some bivalves to a surface." to
+                    bdef("Byssus", "பிஸ்ஸஸ் (Byssus)", "The bundle of protein threads secreted by a gland at the base of the foot that fixes some bivalves to a surface." to
                         "சில இருவோடுகளை மேற்பரப்பில் நிலைநிறுத்த, பாதத்தின் அடிச் சுரப்பி சுரக்கும் புரத இழைக் கற்றை."),
-                    bdef("Byssal gland", "பிஸ்ஸஸ் சுரப்பி", "The gland in the foot that secretes the byssus." to
+                    bdef("Byssal gland", "பிஸ்ஸஸ் சுரப்பி (Byssal gland)", "The gland in the foot that secretes the byssus." to
                         "பிஸ்ஸஸைச் சுரக்கும் பாதத்திலுள்ள சுரப்பி."),
                     bdef("Haemolymph", "ஹீமோலிம்ப்", "The circulating body fluid of a mollusc with an open circulation." to
                         "திறந்த சுற்றோட்டமுடைய மெல்லுடலியின் சுற்றும் உடல் திரவம்."),
                     bdef("Substratum", "அடித்தளம்", "The surface or material on which an animal lives or in which it burrows." to
                         "விலங்கு வாழும் அல்லது தோண்டும் மேற்பரப்பு அல்லது பொருள்."),
-                    bdef("Adductor muscle", "உட்புற இழுப்புத் தசை", "A muscle that draws the two valves of a bivalve shell together." to
+                    bdef("Adductor muscle", "உட்புற இழுப்புத் தசை (Adductor muscle)", "A muscle that draws the two valves of a bivalve shell together." to
                         "இருவோட்டு ஓட்டின் இரு மூடிகளையும் இழுத்து மூடும் தசை."),
                 )),
             bsec("cephalopod", "The foot of a cephalopod", "தலைக்காலியின் பாதம்",
@@ -89,9 +89,9 @@ object FootBookChapter {
                             "குழல் பாதத்தின் மாறிய பகுதி; மேண்டில் சைஃபன் அல்ல; இரண்டும் மேண்டில் குழியிலிருந்து நீரை வெளியே கொண்டுசெல்கின்றன."),
                     bdef("Funnel", "புனல்", "The muscular tube of a cephalopod, derived from the foot, through which water is expelled from the mantle cavity." to
                         "மேண்டில் குழியிலிருந்து நீர் வெளியேற்றப்படும், பாதத்திலிருந்து உருவான தலைக்காலியின் தசைக் குழாய்."),
-                    bdef("Hyponome", "ஹைபோனோம்", "Another name for the funnel of a cephalopod." to
+                    bdef("Hyponome", "ஹைபோனோம் (Hyponome)", "Another name for the funnel of a cephalopod." to
                         "தலைக்காலியின் குழலுக்கான மற்றொரு பெயர்."),
-                    bdef("Jet propulsion", "பீச்சு உந்துதல்", "Movement produced by expelling a jet of water in the opposite direction." to
+                    bdef("Jet propulsion", "பீச்சு உந்துதல் (Jet propulsion)", "Movement produced by expelling a jet of water in the opposite direction." to
                         "எதிர்த்திசையில் நீர்ப் பீச்சை வெளியேற்றுவதால் உண்டாகும் இயக்கம்."),
                     bdef("Sucker", "உறிஞ்சி", "A muscular cup on the arm of a cephalopod used for gripping." to
                         "பற்றுவதற்குப் பயன்படும் தலைக்காலிக் கையிலுள்ள தசைக் கிண்ணம்."),
@@ -109,7 +109,7 @@ object FootBookChapter {
                         "நத்தை பாதத்தின் தளம், முன்புறத்தின் சுரப்பிகளிலிருந்து படியச் செய்யும் சளி அடுக்கில் ஊர்கிறது. சளி அசாதாரணப் பண்புடைய கூழ்: ஓய்விலிருக்கும்போது ஒட்டும் தன்மையுடன் திடமாக இருந்து பாதத்தைப் பரப்புடன் பிடித்து வைக்கிறது; பாதத்தின் இயக்கத்தால் வெட்டப்படும்போது மெல்லியதாகவும் வழுக்குவதாகவும் மாறுகிறது. இதனால் விலங்கு செங்குத்துப் பரப்பு அல்லது இலையின் அடிப்புறத்தில் ஒட்டிக்கொண்டு, பாத அலைகளின் கீழ் முன்னோக்கி வழுக்க முடிகிறது. பின்னால் விடப்படும் தடம் பயன்படுத்தப்பட்ட சளி."),
                     bp("The method is a costly one, since the animal secretes a good deal of mucus as it moves, and a snail crawling uses far more energy than an animal of the same size that runs or swims. The mucus is however also useful in other ways: it protects the sole from rough ground, it helps to retain water, and it is a trail that other snails can follow. On the other hand, the dependence on a film of moisture is one reason for the limited speed of snails, and for their activity in the wet season or at night.",
                         "இம்முறை செலவானது; விலங்கு நகரும்போது பெருமளவு சளியைச் சுரப்பதால், ஊர்ந்து செல்லும் நத்தை அதே அளவுள்ள ஓடும் அல்லது நீந்தும் விலங்கை விட அதிக ஆற்றலைப் பயன்படுத்துகிறது. எனினும் சளி பிற வகைகளிலும் பயனுள்ளது: கரடுமுரடான நிலத்திலிருந்து தளத்தைக் காக்கிறது, நீரைத் தக்கவைக்க உதவுகிறது, பிற நத்தைகள் பின்பற்றக்கூடிய தடம். மறுபுறம், ஈரப்படலத்தைச் சார்ந்திருப்பது நத்தைகளின் குறைந்த வேகத்துக்கும் ஈரப்பருவம் அல்லது இரவில் அவற்றின் செயல்பாட்டுக்கும் ஒரு காரணம்."),
-                    bdef("Pedal gland", "பாத சுரப்பி", "A gland in the foot of a mollusc that secretes the mucus used in adhesion and crawling." to
+                    bdef("Pedal gland", "பாத சுரப்பி (Pedal gland)", "A gland in the foot of a mollusc that secretes the mucus used in adhesion and crawling." to
                         "ஒட்டுதல், ஊர்தலில் பயன்படும் சளியைச் சுரக்கும், மெல்லுடலியின் பாதத்திலுள்ள சுரப்பி."),
                 )),
             bsec("answering", "Answering questions on the foot", "பாதம் குறித்த வினாக்களுக்கு விடையளித்தல்",
@@ -139,7 +139,7 @@ object FootBookChapter {
                         "மாணவர் மூன்றையும் எளிமையிலிருந்து மேம்பட்டது வரையான படிக்கட்டாக, இரைப்பைக்காலி ஆதி நிலை, தலைக்காலி சிறந்தது என்று, முன்வைக்கக் கூடாது. வாழும் வகுப்புகள் நீண்ட, தனித்த வரலாறுகளின் விளைவுகள்; ஒவ்வொன்றும் தன் வாழ்க்கைக்கு நன்கு பொருந்தியது. தலைக்காலி மேம்பட்ட நத்தை அல்ல; நத்தை முடிவடையாத தலைக்காலி அல்ல. சொற்றொடர், ஒரு குறிப்பிட்ட செயலுக்கு ஒரு வகுப்பில் பாதம் மற்றொன்றை விட அதிகம் சிறப்படைந்துள்ளது என்பதாக இருக்க வேண்டும்; ஒன்று சிறந்தது என்பதாக அல்ல."),
                     bdef("Divergence", "விலகல்", "The evolution of different forms and functions from a common ancestral structure." to
                         "பொது மூதாதை அமைப்பிலிருந்து வெவ்வேறு வடிவங்கள், செயல்கள் பரிணமித்தல்."),
-                    bdef("Specialisation", "சிறப்படைதல்", "Adaptation of a structure to a particular function or way of life." to
+                    bdef("Specialisation", "சிறப்படைதல் (Specialisation)", "Adaptation of a structure to a particular function or way of life." to
                         "அமைப்பை குறிப்பிட்ட செயல் அல்லது வாழ்க்கை முறைக்கு ஏற்ப மாற்றுதல்."),
                 )),
         ),

@@ -23,7 +23,7 @@ object AscarisBookChapter {
                 blocks = listOf(
                     bp("Adult Ascaris live in the lumen of the small intestine of human beings, where they lie free, held in place by the muscular movements of their own bodies against the intestinal wall and the pressure of the contents. They do not attach by hooks or suckers. They feed on the semi-digested food of the host, and in a heavy infection they may compete with the host for nourishment, and in children may impair growth. A closely related species infects pigs." to
                         "முதிர்ந்த அஸ்காரிஸ் மனிதர்களின் சிறுகுடல் குழியில், தனித்து கிடந்து, தங்கள் உடலின் தசை இயக்கங்களால் குடல் சுவருக்கு எதிராகவும் உள்ளடக்கத்தின் அழுத்தத்தாலும் இடத்தில் நிலைத்து வாழ்கின்றன. கொக்கிகள் அல்லது உறிஞ்சிகளால் ஒட்டுவதில்லை. விருந்தோம்பியின் அரைச்செரித்த உணவை உண்கின்றன; கடுமையான தொற்றில் ஊட்டத்துக்கு விருந்தோம்பியுடன் போட்டியிட்டு, குழந்தைகளில் வளர்ச்சியைக் குறைக்கக்கூடும். நெருங்கிய தொடர்புடைய இனம் பன்றிகளைத் தொற்றுகிறது."),
-                    bdef("Monoxenous", "ஒரே விருந்தோம்பி", "Completing the life cycle in a single host, without an intermediate host." to
+                    bdef("Monoxenous", "ஒரே விருந்தோம்பி (Monoxenous)", "Completing the life cycle in a single host, without an intermediate host." to
                         "இடைநிலை விருந்தோம்பி இல்லாமல் ஒற்றை விருந்தோம்பியில் வாழ்க்கைச் சுழற்சியை முடிக்கும்."),
                 )),
             bsec("external", "External features", "புறத்தோற்றம்",
@@ -42,11 +42,11 @@ object AscarisBookChapter {
                         )),
                     bfig("ascaris/male-female-external", "Male and female Ascaris lumbricoides, showing the three lips, the lateral lines, the vulva of the female and the curved tail and spicules of the male." to
                         "ஆண், பெண் அஸ்காரிஸ் லம்பிரிக்காய்டஸ்: மூன்று உதடுகள், பக்கக் கோடுகள், பெண்ணின் வல்வா, ஆணின் வளைந்த வால், ஸ்பிக்யூல்கள்."),
-                    bdef("Lateral line", "பக்கக் கோடு", "One of the thickened longitudinal ridges of the epidermis along the side of a nematode, which contain the excretory canals." to
+                    bdef("Lateral line", "பக்கக் கோடு (Lateral line)", "One of the thickened longitudinal ridges of the epidermis along the side of a nematode, which contain the excretory canals." to
                         "கழிவு நீக்கக் கால்வாய்களைக் கொண்ட, நெமட்டோடாவின் பக்கவாட்டில் நீளவாக்கில் உள்ள எப்பிடெர்மிஸின் தடித்த முகடு."),
-                    bdef("Vulva", "வல்வா", "The external opening of the female reproductive system." to
+                    bdef("Vulva", "வல்வா (Vulva)", "The external opening of the female reproductive system." to
                         "பெண் இனப்பெருக்க மண்டலத்தின் வெளித் திறப்பு."),
-                    bdef("Cloaca", "குளோயாக்கா", "A common chamber into which the gut and the reproductive ducts open, as in the male nematode." to
+                    bdef("Cloaca", "குளோயாக்கா (Cloaca)", "A common chamber into which the gut and the reproductive ducts open, as in the male nematode." to
                         "ஆண் நெமட்டோடாவில் போல், குடலும் இனப்பெருக்கக் குழாய்களும் திறக்கும் பொது அறை."),
                 )),
             bsec("wall", "The body wall and pseudocoelom", "உடற்சுவரும் போலி உடற்குழியும்",
@@ -55,7 +55,7 @@ object AscarisBookChapter {
                         "உடற்சுவரில் மூன்று அடுக்குகள் உள்ளன: கியூட்டிகிள், எப்பிடெர்மிஸ் (ஹைப்போடெர்மிஸ் எனவும்), தசை அடுக்கு. கியூட்டிகிள் எப்பிடெர்மிஸ் சுரக்கும் கொலாஜன் கடினமான, உயிரற்ற, பல அடுக்கு உறை; விருந்தோம்பியின் குடலின் செரிமான நொதிகளையும் அழுத்தத்தையும் எதிர்க்கிறது. எப்பிடெர்மிஸ் சின்சிட்டியம்; அதாவது தனிச் செல்களாகப் பிரிக்கப்படவில்லை; முதுகு, வயிறு, பக்கக் கோடுகளில் தடித்து நான்கு நீளவாக்கு வடங்களாகிறது. பக்க வடங்கள் கழிவு நீக்கக் கால்வாய்களை அடைக்கின்றன; முதுகு, வயிற்று வடங்கள் நரம்புகளைக் கொண்டுள்ளன."),
                     bp("Below the epidermis is a single layer of longitudinal muscle cells, divided by the four cords into four bands. There are no circular muscles. The cavity inside the muscle layer is the pseudocoelom, which is filled with fluid and contains the gut and the reproductive organs. The fluid is under pressure and works with the cuticle and muscles as a hydrostatic skeleton, as explained in the preceding chapter." to
                         "எப்பிடெர்மிஸுக்குக் கீழ் ஒற்றை அடுக்கு நீளவாக்கு தசை செல்கள் உள்ளன; நான்கு வடங்களால் நான்கு பட்டைகளாகப் பிரிக்கப்பட்டுள்ளன. வட்ட தசைகள் இல்லை. தசை அடுக்குக்குள் உள்ள குழி போலி உடற்குழி; திரவம் நிறைந்து குடலையும் இனப்பெருக்க உறுப்புகளையும் கொண்டுள்ளது. முந்தைய அத்தியாயத்தில் விளக்கியவாறு திரவம் அழுத்தத்தில் இருந்து கியூட்டிகிள், தசைகளுடன் நீரியல் எலும்புக்கூடாகச் செயல்படுகிறது."),
-                    bdef("Epidermis (hypodermis)", "எப்பிடெர்மிஸ் (ஹைப்போடெர்மிஸ்)", "The syncytial layer under the cuticle of a nematode, which secretes the cuticle and forms the longitudinal cords." to
+                    bdef("Epidermis (hypodermis)", "எப்பிடெர்மிஸ் (Epidermis; ஹைப்போடெர்மிஸ்)", "The syncytial layer under the cuticle of a nematode, which secretes the cuticle and forms the longitudinal cords." to
                         "நெமட்டோடாவின் கியூட்டிகிளுக்குக் கீழுள்ள சின்சிட்டிய அடுக்கு; கியூட்டிகிளைச் சுரந்து நீளவாக்கு வடங்களை உருவாக்குகிறது."),
                 )),
             bsec("digestive", "Alimentary canal", "உணவுக்குழல்",
@@ -64,7 +64,7 @@ object AscarisBookChapter {
                         "உணவுக்குழல் உடலின் நீளம் முழுவதும் செல்லும் நேரான குழாய். வாய் சிறு வாய்க் குழிக்கும், பின் தசை, மூன்று கதிர் தொண்டைக்கும் செல்கிறது; அது உணவைக் குடலுக்குள் செலுத்துகிறது. நீண்ட குடல் ஒற்றை அடுக்கு தூண் செல்களால் மூடப்பட்டு நொதிகளைச் சுரந்து உணவை உறிஞ்சுகிறது; குறுகிய மலக்குடல் வழியாக மலவாயில் திறக்கிறது. குடல் செல்களால் மூடப்பட்டு தனக்கென தசைச் சுவர் இல்லை; பின்னால் புதிதாக உண்ட உணவின் அழுத்தத்தாலும் புழுவின் இயக்கங்களாலும் உணவு முன்னேறுகிறது."),
                     bp("There is no special respiratory system. Ascaris lives in an environment that contains very little oxygen and respires anaerobically, obtaining energy from the glycogen that is stored in the tissues. The worm excretes ammonia, and also some organic acids that result from anaerobic metabolism." to
                         "தனிச் சுவாச மண்டலம் இல்லை. அஸ்காரிஸ் ஆக்சிஜன் மிகக் குறைவான சூழலில் வாழ்ந்து, திசுக்களில் சேமித்த கிளைக்கோஜனிலிருந்து ஆற்றலைப் பெற்றுக் காற்றில்லாச் சுவாசம் செய்கிறது. புழு அம்மோனியாவையும், காற்றில்லா வளர்சிதையால் விளையும் சில கரிம அமிலங்களையும் வெளியேற்றுகிறது."),
-                    bdef("Pharynx (nematode)", "தொண்டை (நெமட்டோடா)", "The muscular, triradiate organ at the front of the gut which pumps food in." to
+                    bdef("Pharynx (nematode)", "தொண்டை (Pharynx; நெமட்டோடா)", "The muscular, triradiate organ at the front of the gut which pumps food in." to
                         "உணவை உள்ளே செலுத்தும், குடலின் முன்னுள்ள தசை, மூன்று கதிர் உறுப்பு."),
                 )),
             bsec("systems", "Excretory and nervous systems", "கழிவு நீக்க, நரம்பு மண்டலங்கள்",
@@ -86,7 +86,7 @@ object AscarisBookChapter {
                         "பெண் அஸ்காரிஸின் உள்ளமைப்பு: தொண்டை, குடல், இணை சூற்பைகள், சூல்நாளங்கள், கருப்பைகள், வல்வாவில் திறக்கும் யோனி."),
                     bdef("Dioecious", "ஒரு பால் உயிரி", "Having separate male and female individuals, as Ascaris has." to
                         "அஸ்காரிஸைப் போல் தனி ஆண், பெண் உயிரிகள் கொண்ட."),
-                    bdef("Fertilised egg", "கருவுற்ற முட்டை", "The thick-shelled, oval egg of Ascaris, which leaves the host in the faeces and develops in the soil." to
+                    bdef("Fertilised egg", "கருவுற்ற முட்டை (Fertilised egg)", "The thick-shelled, oval egg of Ascaris, which leaves the host in the faeces and develops in the soil." to
                         "மலத்துடன் விருந்தோம்பியை விட்டு வெளியேறி மண்ணில் வளரும், அஸ்காரிஸின் தடித்த ஓடுடைய, முட்டை வடிவ முட்டை."),
                 )),
             bsec("life-cycle", "Life cycle", "வாழ்க்கைச் சுழற்சி",
@@ -105,7 +105,7 @@ object AscarisBookChapter {
                         "அஸ்காரிஸ் லம்பிரிக்காய்டஸின் வாழ்க்கைச் சுழற்சி: குடலிலுள்ள முதிர்ந்த புழு, மண்ணிலுள்ள முட்டை, விழுங்கிய லார்வா முட்டை, கல்லீரல், நுரையீரல் வழி லார்வா நகர்வு, குடலுக்குத் திரும்புதல்."),
                     bp("The passage through the liver and lungs is a journey of development and is not a stage in a second host. The larva grows greatly during it. It can cause an inflammation of the lungs, with cough, when the larvae are numerous, and the adults can cause pain, malnutrition and sometimes obstruction of the gut when they are very numerous." to
                         "கல்லீரல், நுரையீரல் வழிப் பயணம் வளர்ச்சிப் பயணம்; இரண்டாம் விருந்தோம்பியிலுள்ள நிலை அல்ல. அதன்போது லார்வா பெருமளவு வளர்கிறது. லார்வாக்கள் அதிகமாக இருக்கும்போது இருமலுடன் நுரையீரல் அழற்சியையும், முதிர்ந்த புழுக்கள் மிக அதிகமாக இருக்கும்போது வலி, ஊட்டச்சத்துக் குறைபாடு, சில நேரங்களில் குடல் அடைப்பையும் ஏற்படுத்தலாம்."),
-                    bdef("Larvated egg", "லார்வா முட்டை", "An egg that contains a fully developed larva and is infective when swallowed." to
+                    bdef("Larvated egg", "லார்வா முட்டை (Larvated egg)", "An egg that contains a fully developed larva and is infective when swallowed." to
                         "முழுமையாக வளர்ந்த லார்வாவைக் கொண்ட, விழுங்கப்பட்டால் தொற்றும் முட்டை."),
                     bdef("Embryonation", "கரு வளர்ச்சி", "The development of the embryo and larva inside the egg." to
                         "முட்டைக்குள் கருவும் லார்வாவும் வளர்தல்."),
@@ -133,9 +133,9 @@ object AscarisBookChapter {
                         "அஸ்காரிஸ் உண்டாக்கும் நோய் அஸ்காரியாசிஸ். தொற்றடைந்த பலருக்கு அறிகுறிகள் குறைவு அல்லது இல்லை; விளைவுகள் புழுக்களின் எண்ணிக்கையையும் தொற்றின் நிலையையும் பொறுத்தவை. நுரையீரல் வழியே லார்வாக்கள் நகரும்போது இருமல், மூச்சிரைப்பு, காய்ச்சல் ஏற்படலாம்; சிலருக்கு லோஃப்ளர் நோய்த்தொகுப்பு எனப்படும் நுரையீரல் ஒவ்வாமை எதிர்வினை உருவாகிறது. சிறுகுடலில் முதிர்ந்த புழுக்கள் அதிகமாக இருந்தால் குழந்தையுடன் ஊட்டச்சத்துக்குப் போட்டியிட்டு மோசமான வளர்ச்சிக்கும் ஊட்டச்சத்துக் குறைபாட்டுக்கும் பங்களிக்கலாம். புழுக்களின் பெரிய கொத்து குடலை அடைக்கலாம்; பித்த நாளம் அல்லது கணைய நாளத்துக்குள் அலையும் புழு அவசர மருத்துவ கவனிப்பு தேவைப்படும் தீவிர நோயை உண்டாக்கலாம்."),
                     bp("Ascariasis is one of the most widespread of human infections. It is most common in warm regions where sanitation is poor and where human faeces reach the soil, and children are affected most because they play in soil and put their hands in their mouths. It is classed as a soil-transmitted helminth infection, together with hookworm and whipworm. The numbers affected are very large, and published estimates vary, so that the student should avoid quoting a figure unless it is from the prescribed text.",
                         "அஸ்காரியாசிஸ் மனிதத் தொற்றுகளில் மிகப் பரவலானவற்றில் ஒன்று. துப்புரவு மோசமாக உள்ள, மனிதக் கழிவு மண்ணை அடையும் வெப்பப் பகுதிகளில் மிகப் பொதுவானது; குழந்தைகள் மண்ணில் விளையாடி கைகளை வாயில் வைப்பதால் மிக அதிகம் பாதிக்கப்படுகின்றனர். கொக்கிப்புழு, சாட்டைப்புழுவுடன் இது மண்வழிப் பரவும் புழுத்தொற்றாக வகைப்படுத்தப்படுகிறது. பாதிக்கப்பட்டோர் எண்ணிக்கை மிகப் பெரியது; வெளியிடப்பட்ட மதிப்பீடுகள் மாறுபடுகின்றன; எனவே பரிந்துரைக்கப்பட்ட நூலில் இல்லாவிடில் எண்ணைக் குறிப்பிடுவதை மாணவர் தவிர்க்க வேண்டும்."),
-                    bdef("Ascariasis", "அஸ்காரியாசிஸ்", "The disease caused by infection with Ascaris lumbricoides." to
+                    bdef("Ascariasis", "அஸ்காரியாசிஸ் (Ascariasis)", "The disease caused by infection with Ascaris lumbricoides." to
                         "அஸ்காரிஸ் லம்ப்ரிகாய்டீஸ் தொற்றால் ஏற்படும் நோய்."),
-                    bdef("Soil-transmitted helminth", "மண்வழிப் பரவும் புழு", "A parasitic worm whose eggs or larvae must develop in the soil before they can infect a new host." to
+                    bdef("Soil-transmitted helminth", "மண்வழிப் பரவும் புழு (Soil-transmitted helminth)", "A parasitic worm whose eggs or larvae must develop in the soil before they can infect a new host." to
                         "புதிய விருந்தோம்பியைத் தொற்றும் முன் முட்டைகளோ லார்வாக்களோ மண்ணில் வளர வேண்டிய ஒட்டுண்ணிப் புழு."),
                 )),
             bsec("migration", "Why the larva wanders through the body", "லார்வா உடலில் ஏன் அலைகிறது",

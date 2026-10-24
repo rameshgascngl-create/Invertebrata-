@@ -38,11 +38,11 @@ object AsteriasBookChapter {
                     ),
                     bdef("Disc", "வட்டு", "The central region of the starfish body from which the arms radiate." to
                         "கைகள் கதிர்போல் பிரியும் நட்சத்திர மீன் உடலின் மையப் பகுதி."),
-                    bdef("Ambulacral groove", "ஆம்புலாக்ரல் பள்ளம்", "The groove along the oral side of each arm that holds the tube feet." to
+                    bdef("Ambulacral groove", "ஆம்புலாக்ரல் பள்ளம் (Ambulacral groove)", "The groove along the oral side of each arm that holds the tube feet." to
                         "குழாய்ப்பாதங்களைக் கொண்ட, ஒவ்வொரு கையின் வாய்ப்புறத்தில் செல்லும் பள்ளம்."),
-                    bdef("Peristome", "பெரிஸ்டோம்", "The soft membranous area surrounding the mouth." to
+                    bdef("Peristome", "பெரிஸ்டோம் (Peristome)", "The soft membranous area surrounding the mouth." to
                         "வாயைச் சுற்றிய மென்மையான சவ்வுப் பகுதி."),
-                    bdef("Eyespot", "கண்புள்ளி", "A simple photoreceptive organ at the tip of each arm." to
+                    bdef("Eyespot", "கண்புள்ளி (Eyespot)", "A simple photoreceptive organ at the tip of each arm." to
                         "ஒவ்வொரு கர நுனியிலும் உள்ள எளிய ஒளியுணர் உறுப்பு."),
                 )),
             bsec("body-wall", "Body wall, skeleton and coelom", "உடற்சுவர், கூடு, உடற்குழி",
@@ -53,9 +53,9 @@ object AsteriasBookChapter {
                         "உடற்குழி வட்டை நிரப்பி ஒவ்வொரு கைக்குள்ளும் நீளும் பெரிய குழி; கொலோமோசைட்டுகள் அடங்கிய உடற்குழித் திரவம் நிரம்பியுள்ளது. அது குடலையும் இனப்பெருக்கச் சுரப்பிகளையும் சூழ்கிறது; பப்புலாக்களுக்குள்ளும் நீள்கிறது; அங்கு திரவம் வாயுப் பரிமாற்றத்துக்காக கடல்நீரை நெருங்குகிறது. உடற்குழி கசையிழை கொண்டது; கசையிழை அசைவு திரவத்தைச் சுற்றோட்டுகிறது. வளைதசைப் புழுவில் உள்ளது போன்ற வெளியேற்ற உறுப்பு இல்லை; கொலோமோசைட்டுகள் கழிவை எடுத்து, குறிப்பாக பப்புலாக்கள் வழியே மேற்பரப்புக்குச் சென்று, வெளியேற்றப்படுகின்றன."),
                     bdef("Dermis", "தோல்", "The connective tissue layer of the body wall beneath the epidermis, containing the ossicles." to
                         "மேற்றோலுக்கு அடியில் ஆஸிக்கிள்களைக் கொண்ட உடற்சுவரின் இணைப்புத் திசு அடுக்கு."),
-                    bdef("Peritoneum", "பெரிட்டோனியம்", "The epithelial lining of the coelom." to
+                    bdef("Peritoneum", "பெரிட்டோனியம் (Peritoneum)", "The epithelial lining of the coelom." to
                         "உடற்குழியின் மேலணி வரிசை."),
-                    bdef("Coelomic fluid", "உடற்குழித் திரவம்", "The fluid that fills the coelom and carries coelomocytes, gases and food." to
+                    bdef("Coelomic fluid", "உடற்குழித் திரவம் (Coelomic fluid)", "The fluid that fills the coelom and carries coelomocytes, gases and food." to
                         "உடற்குழியை நிரப்பி கொலோமோசைட்டுகள், வாயுக்கள், உணவைக் கடத்தும் திரவம்."),
                 )),
             bsec("digestion", "Feeding and digestion", "உணவெடுப்பும் செரிமானமும்",
@@ -72,13 +72,13 @@ object AsteriasBookChapter {
                     ),
                     bp("Digestion is therefore partly extracellular outside the body and partly extracellular in the stomachs and caeca, with absorption in the caeca. The anus is small and in many starfishes is of little use, since much of the waste is removed by other routes, and so the aboral position of the anus is better regarded as a structural feature than as the main route of waste disposal. The food reserves are stored in the pyloric caeca, and the animal can live for some time without feeding." to
                         "எனவே செரிமானம் ஒரு பகுதி உடலுக்கு வெளியே, ஒரு பகுதி இரைப்பைகள், சீக்காக்களில் புறவுயிரணுவாகவும், உறிஞ்சுதல் சீக்காக்களிலும் நடைபெறுகிறது. மலவாய் சிறியது; பல நட்சத்திர மீன்களில் குறைந்த பயன் உடையது; ஏனெனில் கழிவின் பெரும்பகுதி பிற வழிகளில் அகற்றப்படுகிறது; எனவே மலவாயின் மேற்புற நிலை கழிவகற்றலின் முக்கிய வழியை விட அமைப்புப் பண்பாகக் கருதப்படுவது சிறந்தது. உணவுச் சேமிப்பு பைலோரிக் சீக்காக்களில் உள்ளது; விலங்கு சிறிது காலம் உண்ணாமல் வாழலாம்."),
-                    bdef("Cardiac stomach", "கார்டியாக் இரைப்பை", "The large eversible stomach of a starfish, which is pushed out over the prey." to
+                    bdef("Cardiac stomach", "கார்டியாக் இரைப்பை (Cardiac stomach)", "The large eversible stomach of a starfish, which is pushed out over the prey." to
                         "இரைமேல் வெளியே தள்ளப்படும் நட்சத்திரமீனின் பெரிய புரளும் இரைப்பை."),
-                    bdef("Pyloric stomach", "பைலோரிக் இரைப்பை", "The smaller stomach above the cardiac stomach that receives the ducts of the pyloric caeca." to
+                    bdef("Pyloric stomach", "பைலோரிக் இரைப்பை (Pyloric stomach)", "The smaller stomach above the cardiac stomach that receives the ducts of the pyloric caeca." to
                         "கார்டியாக் இரைப்பைக்கு மேலுள்ள, பைலோரிக் சீக்கா குழாய்களைப் பெறும் சிறிய இரைப்பை."),
-                    bdef("Pyloric caecum", "பைலோரிக் சீக்கம்", "One of the paired digestive glands in the arms where enzymes are secreted and food is absorbed and stored." to
+                    bdef("Pyloric caecum", "பைலோரிக் சீக்கம் (Pyloric caecum)", "One of the paired digestive glands in the arms where enzymes are secreted and food is absorbed and stored." to
                         "நொதிகள் சுரந்து உணவு உறிஞ்சப்பட்டு சேமிக்கப்படும், கைகளிலுள்ள இணைச் செரிமானச் சுரப்பிகளில் ஒன்று."),
-                    bdef("Extra-oral digestion", "வாய்க்கு வெளிப்புறச் செரிமானம்", "Digestion of food outside the body by enzymes secreted onto it." to
+                    bdef("Extra-oral digestion", "வாய்க்கு வெளிப்புறச் செரிமானம் (Extra-oral digestion)", "Digestion of food outside the body by enzymes secreted onto it." to
                         "உணவின்மீது சுரக்கப்படும் நொதிகளால் உடலுக்கு வெளியே நடைபெறும் செரிமானம்."),
                 )),
             bsec("wvs", "The water-vascular system", "நீர் குருதியோட்ட மண்டலம்",
@@ -88,13 +88,13 @@ object AsteriasBookChapter {
                     bfig("asterias/water-vascular-system", "The water-vascular system of Asterias: madreporite, stone canal, ring canal, radial canals, ampullae and tube feet." to "அஸ்டீரியாஸின் நீர் குருதியோட்ட மண்டலம்: மேட்ரிபோரைட், கல் கால்வாய், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், ஆம்புலாக்கள், குழாய்ப்பாதங்கள்."),
                     bp("The action is hydraulic. The valve in the lateral canal closes when the ampulla contracts, so the fluid is driven into the tube foot, which extends. The foot then attaches to the surface by its terminal disc, and its own longitudinal muscles contract to shorten the foot and pull the body forward. Hundreds of feet working in sequence, but not in perfect step, move the animal. Attachment is by adhesion, with a chemical secretion that is released and removed, and not simply by suction, though the disc and its muscles have some part in the grip. It is wrong to describe the system as a continuous one-way stream of sea water that flows through the animal, since the fluid inside is largely a closed volume that is moved by pressure." to
                         "செயல் நீரழுத்தமானது. ஆம்புலா சுருங்கும்போது பக்கக் கால்வாயின் வால்வு மூடுகிறது; எனவே திரவம் குழாய்ப்பாதத்துக்குள் தள்ளப்பட்டு அது நீள்கிறது. பாதம் பின்னர் தன் இறுதி வட்டால் மேற்பரப்பில் ஒட்டுகிறது; அதன் நீள்தசைகள் சுருங்கி பாதத்தைச் சுருக்கி உடலை முன்னே இழுக்கின்றன. நூற்றுக்கணக்கான பாதங்கள் வரிசையாக, ஆனால் முழுமையான ஒத்திசைவின்றி, செயல்பட்டு விலங்கை நகர்த்துகின்றன. பற்றுதல் வெளியிடப்பட்டு அகற்றப்படும் வேதிச் சுரப்பால் ஒட்டுதலாகும்; வெறும் உறிஞ்சுதலால் அல்ல; வட்டும் அதன் தசைகளும் பிடிப்பில் ஓரளவு பங்கு வகிக்கின்றன. அமைப்பை விலங்கு வழியே ஓடும் தொடர்ச்சியான ஒருதிசை கடல்நீர் ஓட்டமாக விவரிப்பது தவறு; உள்ளே இருக்கும் திரவம் பெரும்பாலும் அழுத்தத்தால் நகர்த்தப்படும் மூடிய கன அளவு."),
-                    bdef("Ring canal", "வளையக் கால்வாய்", "The circular canal of the water-vascular system that surrounds the mouth." to
+                    bdef("Ring canal", "வளையக் கால்வாய் (Ring canal)", "The circular canal of the water-vascular system that surrounds the mouth." to
                         "வாயைச் சுற்றியுள்ள நீர் குருதியோட்ட மண்டலத்தின் வட்டக் கால்வாய்."),
-                    bdef("Radial canal", "கதிர்க் கால்வாய்", "A canal that runs from the ring canal along each arm." to
+                    bdef("Radial canal", "கதிர்க் கால்வாய் (Radial canal)", "A canal that runs from the ring canal along each arm." to
                         "வளையக் கால்வாயிலிருந்து ஒவ்வொரு கையிலும் செல்லும் கால்வாய்."),
-                    bdef("Stone canal", "கல் கால்வாய்", "The calcified canal joining the madreporite to the ring canal." to
+                    bdef("Stone canal", "கல் கால்வாய் (Stone canal)", "The calcified canal joining the madreporite to the ring canal." to
                         "மேட்ரிபோரைட்டை வளையக் கால்வாயுடன் இணைக்கும் சுண்ணாம்பேறிய கால்வாய்."),
-                    bdef("Podium", "போடியம்", "The extensible tube-foot portion outside the skeleton." to
+                    bdef("Podium", "போடியம் (Podium)", "The extensible tube-foot portion outside the skeleton." to
                         "கூட்டுக்கு வெளியே நீளக்கூடிய குழாய்ப்பாதப் பகுதி."),
                 )),
             bsec("other-systems", "Circulation, nervous system and reproduction", "சுற்றோட்டம், நரம்பு அமைப்பு, இனப்பெருக்கம்",
@@ -106,11 +106,11 @@ object AsteriasBookChapter {
                     bp("The sexes are separate, though the two sexes cannot be told apart by the outer appearance. Each arm contains two gonads, so that ten are present, and a short duct from each opens through a gonopore on the aboral surface between the bases of the arms. The eggs and sperm are shed into the sea, where fertilisation takes place, and the zygote develops into a free-swimming bilateral larva, the bipinnaria, which later metamorphoses. The life cycle is treated fully in the chapter on echinoderm larvae." to
                         "பாலினங்கள் தனி; ஆனால் வெளித்தோற்றத்தால் இருபாலையும் வேறுபடுத்த முடியாது. ஒவ்வொரு கையிலும் இரு இனப்பெருக்கச் சுரப்பிகள் இருப்பதால் பத்து உள்ளன; ஒவ்வொன்றிலிருந்தும் குறுகிய குழாய் கைகளின் அடிகளுக்கிடையே மேற்புறத்திலுள்ள இனப்பெருக்கத் துளை வழியே திறக்கிறது. முட்டையும் விந்தும் கடலில் விடப்பட்டு கருவுறுதல் நடைபெறுகிறது; கருமுட்டை தனி நீந்தும் இருபக்க லார்வாவான பிபின்னேரியாவாக வளர்ந்து பின்னர் உருமாறுகிறது. வாழ்க்கைச் சுழற்சி முட்தோலி லார்வாக்கள் அத்தியாயத்தில் முழுமையாகக் கையாளப்படுகிறது."),
                     bfig("asterias/larval-development", "Larval development of Asterias: the bipinnaria and its metamorphosis into a young starfish." to "அஸ்டீரியாஸின் லார்வா வளர்ச்சி: பிபின்னேரியாவும் இளம் நட்சத்திரமீனாக அதன் உருமாற்றமும்."),
-                    bdef("Gonopore", "இனப்பெருக்கத் துளை", "The opening through which the gametes leave the gonad." to
+                    bdef("Gonopore", "இனப்பெருக்கத் துளை (Gonopore)", "The opening through which the gametes leave the gonad." to
                         "இனச்செல்கள் சுரப்பியிலிருந்து வெளியேறும் துளை."),
-                    bdef("Haemal system", "ஹீமல் அமைப்பு", "A system of sinuses and channels with a role in transport, reduced in echinoderms." to
+                    bdef("Haemal system", "ஹீமல் அமைப்பு (Haemal system)", "A system of sinuses and channels with a role in transport, reduced in echinoderms." to
                         "கடத்தலில் பங்குடைய, முட்தோலிகளில் குறைந்துள்ள சைனஸ்கள், வழிகளின் அமைப்பு."),
-                    bdef("Righting reflex", "தன்னைச் சரிசெய்தல்", "The sequence of movements by which an overturned starfish regains its normal position." to
+                    bdef("Righting reflex", "தன்னைச் சரிசெய்தல் (Righting reflex)", "The sequence of movements by which an overturned starfish regains its normal position." to
                         "புரட்டப்பட்ட நட்சத்திர மீன் இயல்பு நிலையை மீண்டும் பெறும் அசைவுத் தொடர்."),
                 )),
             bsec("skin-gills", "Papulae, pedicellariae and the exchange of gases", "பப்புலாக்கள், பெடிசல்லேரியாக்கள், வாயுப் பரிமாற்றம்",
@@ -119,11 +119,11 @@ object AsteriasBookChapter {
                         "நட்சத்திர மீனுக்கு உயர் விலங்குகளில் உள்ளது போன்ற செவுள்களோ நுரையீரலோ கழிவு நீக்க உறுப்புகளோ இல்லை. ஆக்சிஜன் உள்ளே நுழைவதும் கார்பன் டை ஆக்சைடும் அம்மோனியாவும் வெளியேறுவதும் உடல் மேற்பரப்பின் மெல்லிய பகுதிகள் வழியே பரவலால் நிகழ்கின்றன. முக்கிய இடங்கள் மேற்பரப்பில் ஆஸிக்கிள்களுக்கிடையே வெளியே நீளும், எப்பிடெர்மிஸால் மூடப்பட்ட, சீலோமின் மெல்லிய சுவருடைய விரல் போன்ற நீட்சிகளான பப்புலாக்களும் குழல் கால்களும். பப்புலாக்கள் வழியே சீலோம் திரவம் நகர்வதும் அவற்றின் மேற்பரப்பிலுள்ள சிலியாவின் அடிப்பும் பரிமாற்றப் பரப்பில் நீரைப் புதுப்பிக்கின்றன."),
                     bp("The pedicellariae are small pincer-like structures on the surface, built from two or more small ossicles moved by muscles. They snap shut when something touches them. Their function is to keep the surface clean of settling larvae and debris and, in some species, to help to catch very small prey. They are a distinctive feature of the starfishes and the sea urchins and are often asked about in a short note.",
                         "பெடிசல்லேரியாக்கள் மேற்பரப்பிலுள்ள, தசைகளால் இயக்கப்படும் இரண்டு அல்லது அதற்கு மேற்பட்ட சிறு ஆஸிக்கிள்களால் ஆன சிறு இடுக்கி போன்ற அமைப்புகள். ஏதாவது தொடும்போது அவை மூடிக்கொள்கின்றன. படியும் லார்வாக்கள், குப்பைகளிலிருந்து மேற்பரப்பைத் தூய்மையாக வைப்பதும், சில இனங்களில் மிகச் சிறிய இரையைப் பிடிக்க உதவுவதும் அவற்றின் பணி. அவை நட்சத்திர மீன்கள், கடல் முள்ளெலிகளின் தனிச்சிறப்பு; சிறு குறிப்பில் அடிக்கடி கேட்கப்படுகின்றன."),
-                    bdef("Papula", "பப்புலா", "A thin-walled, finger-like projection of the coelom on the upper surface of a starfish, through which gases are exchanged." to
+                    bdef("Papula", "பப்புலா (Papula)", "A thin-walled, finger-like projection of the coelom on the upper surface of a starfish, through which gases are exchanged." to
                         "நட்சத்திர மீனின் மேற்பரப்பில் வாயுக்கள் பரிமாறப்படும், சீலோமின் மெல்லிய சுவருடைய விரல் போன்ற நீட்சி."),
-                    bdef("Pedicellaria", "பெடிசல்லேரியா", "A tiny pincer-like structure on the surface of a starfish or sea urchin that keeps the surface clean and protects it." to
+                    bdef("Pedicellaria", "பெடிசல்லேரியா (Pedicellaria)", "A tiny pincer-like structure on the surface of a starfish or sea urchin that keeps the surface clean and protects it." to
                         "மேற்பரப்பைத் தூய்மையாக வைத்துக் காக்கும், நட்சத்திர மீன் அல்லது கடல் முள்ளெலியின் மேற்பரப்பிலுள்ள சிறு இடுக்கி போன்ற அமைப்பு."),
-                    bdef("Ossicle", "ஆஸிக்கிள்", "One of the small calcareous plates embedded in the body wall of an echinoderm." to
+                    bdef("Ossicle", "ஆஸிக்கிள் (Ossicle)", "One of the small calcareous plates embedded in the body wall of an echinoderm." to
                         "எக்கைனோடெர்மின் உடற்சுவரில் பதிந்துள்ள சிறு சுண்ணாம்புத் தகடுகளில் ஒன்று."),
                 )),
             bsec("keystone", "The starfish as a predator in the community", "சமூகத்தில் வேட்டையாடியாக நட்சத்திர மீன்",
@@ -132,7 +132,7 @@ object AsteriasBookChapter {
                         "1960-களில் அமெரிக்க சூழலியலாளர் ராபர்ட் பெயின் வட அமெரிக்காவின் பசிபிக் கடற்கரைப் பாறைக்கரையில் நடத்திய சோதனைகள் நட்சத்திர மீனை சூழலியலில் புகழ்பெறச் செய்தன. கரைப் பகுதிகளிலிருந்து பிசாஸ்டர் நட்சத்திர மீனை அவர் அகற்றியபோது, அது உண்ட மட்டிகள் பரவி பிற இனங்களை நெரித்தன; இனங்களின் எண்ணிக்கை குறைந்தது. நட்சத்திர மீன் மிகுதியாக இல்லாவிட்டாலும், ஒரு இரை இனம் ஆதிக்கம் செலுத்துவதைத் தடுத்து சமூகத்தை பல்வகைமையுடன் வைத்திருந்தது. அத்தகைய இனத்தை பெயின் முக்கிய இனம் (கீஸ்டோன்) என்று பெயரிட்டார்."),
                     bp("The same chapter of ecology has a darker side. Population outbreaks of the crown-of-thorns starfish Acanthaster, which feeds on living coral, have caused extensive damage to reefs in the Indo-Pacific, and the causes of the outbreaks are still debated. The two cases show that a predator can either maintain the diversity of a community or destroy it, according to what it eats and in what numbers.",
                         "சூழலியலின் அதே பகுதிக்கு இருண்ட பக்கமும் உண்டு. உயிருள்ள பவளத்தை உண்ணும் முள் முடி நட்சத்திர மீன் அகாந்தாஸ்டரின் எண்ணிக்கைப் பெருக்கங்கள் இந்தோ-பசிபிக்கில் முகடுகளுக்குப் பெருஞ்சேதம் விளைவித்துள்ளன; பெருக்கங்களின் காரணங்கள் இன்னும் விவாதிக்கப்படுகின்றன. வேட்டையாடி எதை எவ்வளவு உண்கிறது என்பதைப் பொறுத்து சமூகத்தின் பல்வகைமையைக் காக்கவோ அழிக்கவோ முடியும் என்பதை இவ்விரு நிகழ்வுகள் காட்டுகின்றன."),
-                    bdef("Keystone species", "முக்கிய இனம் (கீஸ்டோன் இனம்)", "A species whose effect on its community is much greater than its abundance would suggest, so that its removal changes the community greatly." to
+                    bdef("Keystone species", "முக்கிய இனம் (Keystone species; கீஸ்டோன் இனம்)", "A species whose effect on its community is much greater than its abundance would suggest, so that its removal changes the community greatly." to
                         "தன் மிகுதி குறிப்பதை விடச் சமூகத்தில் அதிக விளைவு ஏற்படுத்தும் இனம்; அதை அகற்றுவது சமூகத்தை மிகவும் மாற்றும்."),
                 )),
             bsec("development", "From egg to young starfish", "முட்டையிலிருந்து இளம் நட்சத்திர மீன் வரை",

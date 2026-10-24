@@ -35,7 +35,7 @@ object ArthropodaBookChapter {
                     ),
                     bp("Some further characters complete the picture. The nervous system has a dorsal brain, which is a fusion of the ganglia of the first segments, connectives round the gut and a ventral cord of paired ganglia, which in many groups are fused. The sense organs are well developed, and include compound eyes made of many units, simple eyes, antennae that detect touch and chemicals, and in many, organs of balance and hearing. Muscle is striated and attached to the inside of the exoskeleton. The sexes are generally separate, fertilisation is often internal, and development may be direct or may pass through larval stages, of which the crustacean larvae in a later chapter are examples." to
                         "மேலும் சில பண்புகள் படத்தை நிறைவு செய்கின்றன. நரம்பு மண்டலத்தில் முதல் கண்டங்களின் நரம்பு செல்திரள்களின் இணைவான முதுகுப்புற மூளை, குடலைச் சுற்றும் இணைப்பிகள், பல குழுக்களில் இணைந்த இணை நரம்பு செல்திரள்களுடைய வயிற்றுப்புற வடம் உள்ளன. உணர்வு உறுப்புகள் நன்கு வளர்ந்தவை; பல அலகுகளாலான கூட்டுக் கண்கள், எளிய கண்கள், தொடு, வேதிப்பொருள்களை உணரும் உணர்கொம்புகள், பலவற்றில் சமநிலை, கேட்கும் உறுப்புகள் அடங்கும். தசை வரியுடையது; வெளிக்கூட்டின் உட்புறத்தில் இணைகிறது. பால் பொதுவாகத் தனி; கருவுறுதல் பெரும்பாலும் உள்ளுக்குள்; வளர்ச்சி நேரடியாகவோ லார்வா நிலைகள் வழியாகவோ இருக்கலாம்; அவற்றுக்கு பிந்தைய அத்தியாயத்தின் கிரஸ்டேஷியன் லார்வாக்கள் எடுத்துக்காட்டுகள்."),
-                    bdef("Tagma", "டேக்மா", "A region of the body formed by the grouping of segments that share a function, such as the head, thorax and abdomen." to
+                    bdef("Tagma", "டேக்மா (Tagma)", "A region of the body formed by the grouping of segments that share a function, such as the head, thorax and abdomen." to
                         "தலை, மார்பு, வயிறு போல, ஒரு செயலைப் பகிரும் கண்டங்களின் தொகுப்பால் உருவான உடலின் பகுதி."),
                     bdef("Exoskeleton", "புறச்சட்டகம்", "A hard covering on the outside of the body, secreted by the epidermis, that protects the animal and supports its muscles." to
                         "எபிடெர்மிஸ் சுரக்கும், விலங்கைப் பாதுகாத்து அதன் தசைகளைத் தாங்கும் உடலின் வெளிப்புற கடின மூடி."),
@@ -50,11 +50,11 @@ object ArthropodaBookChapter {
                         "கடின புறத்தோல் வளர முடியாது; எனவே ஆர்த்ரோபோடா பழைய புறத்தோலை அவ்வப்போது உதிர்க்கும் எக்டைசிஸால் வளர்கிறது. உதிர்ப்பதற்கு முன் பழையதன் கீழ் புதிய புறத்தோல் உருவாகிறது; பழையதின் உள் அடுக்குகள் பகுதியாகச் செரிக்கப்படுகின்றன; விலங்கு பழைய மூடியான எக்சூவியத்திலிருந்து தன்னை வெளியே இழுத்துக்கொள்கிறது. புதிய புறத்தோல் சிறிது நேரம் மென்மையாக இருந்து கடினமாவதற்கு முன் நீர் அல்லது காற்றை உட்கொள்வதால் விரிவடைகிறது. இக்காலத்தில் விலங்கு பாதிப்புக்குள்ளாகும். தோலுரித்தல்கள் ஹார்மோன்களால் கட்டுப்படுத்தப்படுகின்றன; இளம் ஆர்த்ரோபோடா முதிர்ச்சிக்கு முன் பல தோலுரித்தல்களைக் கடக்கிறது; எனவே வளர்ச்சி தொடர்ச்சியாக அல்ல, படிப்படியாக நிகழ்கிறது."),
                     bp("The exoskeleton has three functions. It protects against enemies and against loss of water. It provides a rigid frame to which the muscles are attached, so that the limbs work as levers. And, in the aquatic forms, it supports the body in water and, in the terrestrial ones, against gravity. The cost is that the animal cannot grow without moulting, and that the size of terrestrial forms is limited by the weight of the cuticle and by the way in which they breathe." to
                         "வெளிக்கூட்டுக்கு மூன்று செயல்கள் உள்ளன. எதிரிகளிடமிருந்தும் நீர் இழப்பிலிருந்தும் பாதுகாக்கிறது. தசைகள் இணையும் கடின சட்டத்தைத் தருகிறது; எனவே கால்கள் நெம்புகோல்களாக இயங்குகின்றன. நீர்வாழ் வடிவங்களில் நீரிலும் நிலவாழ்வில் ஈர்ப்புக்கு எதிராகவும் உடலைத் தாங்குகிறது. விலை: உதிர்க்காமல் விலங்கு வளர முடியாது; நில வடிவங்களின் அளவு புறத்தோலின் எடையாலும் சுவாச முறையாலும் வரையறுக்கப்படுகிறது."),
-                    bdef("Ecdysis", "எக்டைசிஸ்", "The moulting of the cuticle by which an arthropod grows." to
+                    bdef("Ecdysis", "எக்டைசிஸ் (Ecdysis)", "The moulting of the cuticle by which an arthropod grows." to
                         "ஆர்த்ரோபோடா வளர்வதற்கான தோலுரித்தல்."),
-                    bdef("Exuvia", "எக்சூவியம்", "The cast-off cuticle left after a moult." to
+                    bdef("Exuvia", "எக்சூவியம் (Exuvia)", "The cast-off cuticle left after a moult." to
                         "உதிர்த்தலுக்குப் பின் எஞ்சும் கழற்றப்பட்ட புறத்தோல்."),
-                    bdef("Sclerotisation", "ஸ்க்ளெரோடைசேஷன்", "The hardening of the cuticle by the cross-linking of its proteins." to
+                    bdef("Sclerotisation", "ஸ்க்ளெரோடைசேஷன் (Sclerotisation)", "The hardening of the cuticle by the cross-linking of its proteins." to
                         "புறத்தோலின் புரதங்களின் குறுக்கு இணைப்பால் ஏற்படும் கடினமாதல்."),
                 )),
             bsec("appendages", "Tagmata and jointed appendages", "டேக்மாக்களும் மூட்டுள்ள உறுப்புகளும்",
@@ -65,11 +65,11 @@ object ArthropodaBookChapter {
                         "ஆர்த்ரோபோட் உறுப்பு புறத்தோல் மூடிய, கண்டமுடைய அமைப்பு; அதன் பகுதிகளான போடோமியர்களுக்கிடையே உண்மையான மூட்டுகள் உள்ளன. தசைகள் காலுக்குள் மூட்டைக் கடந்து அமைவதால் தசை சுருங்கும்போது ஒரு போடோமியரை அடுத்ததற்கு எதிராக நகர்த்துகிறது; கால் வெளிக்கூட்டுக்கு எதிராக இயந்திர நெம்புகோல் அமைப்பாகச் செயல்படுகிறது. உறுப்புகள் பல கிரஸ்டேஷியன்களின் கால்களில் போல ஒரு கிளை உடைய யூனிராமஸ் அல்லது இரு கிளை உடைய பைராமஸ் ஆக இருக்கலாம். வெவ்வேறு கண்டங்களின் உறுப்புகள் உணர்கொம்புகள், வாய்ப்பகுதிகள், நடக்கும் கால்கள், நீந்தும் கால்கள், இனப்பெருக்க உறுப்புகள் எனச் சிறப்புறுகின்றன."),
                     bdef("Podomere", "போடோமியர்", "One of the jointed segments of an arthropod limb." to
                         "ஆர்த்ரோபோடா காலின் மூட்டுள்ள கண்டங்களில் ஒன்று."),
-                    bdef("Uniramous", "யூனிராமஸ்", "Having a limb with a single branch." to
+                    bdef("Uniramous", "யூனிராமஸ் (Uniramous)", "Having a limb with a single branch." to
                         "ஒற்றைக் கிளையுள்ள காலை உடைய."),
-                    bdef("Biramous", "பைராமஸ்", "Having a limb with two branches." to
+                    bdef("Biramous", "பைராமஸ் (Biramous)", "Having a limb with two branches." to
                         "இரு கிளையுள்ள காலை உடைய."),
-                    bdef("Cephalothorax", "செபலோதொராக்ஸ்", "A tagma formed by the fusion of the head and thorax, as in a prawn." to
+                    bdef("Cephalothorax", "செபலோதொராக்ஸ் (Cephalothorax)", "A tagma formed by the fusion of the head and thorax, as in a prawn." to
                         "இறாலில் போல, தலையும் மார்பும் இணைவதால் உருவான டேக்மா."),
                 )),
             bsec("comparison", "Arthropod appendage and annelid parapodium compared", "ஆர்த்ரோபோட் உறுப்பும் அனெலிடா பாரபோடியமும் ஒப்பீடு",
@@ -98,11 +98,11 @@ object ArthropodaBookChapter {
                         "எனவே ஆர்த்ரோபோடாவின் இரத்தம் இரத்தம், திசு திரவம் என்ற இரட்டைப் பங்கு உடையதால் ஹீமோலிம்ப் எனப்படுகிறது. பூச்சிகளில் வாயுக்கள் மூச்சுக்குழாய்களால் கொண்டு செல்லப்படுவதால் ஆக்சிஜன் கடத்தலில் அது சிறிதே பங்கேற்கிறது; கிரஸ்டேஷியன்களில் பொதுவாக ஹீமோசயனின் நிறமி உண்டு. சுவாச உறுப்புகள் வாழிடத்துக்கு ஏற்ப மாறுகின்றன. நீர்வாழ் கிரஸ்டேஷியன்கள் செவுள்களால் சுவாசிக்கின்றன; பூச்சிகளும் பல மையரியாபோடாக்களும் ஸ்பைராக்கிள்களில் திறக்கும் கிளைக்கும் காற்றுக் குழல்களான மூச்சுக்குழாய்களால்; சிலந்திகளும் தேள்களும் புத்தக நுரையீரல்கள் அல்லது மூச்சுக்குழாய்கள் அல்லது இரண்டாலும். ஒரே தொகுதியில் இத்தனை வேறுபட்ட உறுப்புகள் இருப்பது இத்தனை சூழல்களில் குழுவின் வெற்றிக்கு ஒரு காரணம்."),
                     bdef("Haemocoel", "ஹீமோசீல்", "The main body cavity of an arthropod, filled with blood in which the organs are bathed." to
                         "உறுப்புகள் நனையும் இரத்தம் நிரம்பிய, ஆர்த்ரோபோடாவின் முதன்மை உடற்குழி."),
-                    bdef("Open circulatory system", "திறந்த இரத்த ஓட்ட மண்டலம்", "A system in which the blood leaves the vessels and flows through spaces among the tissues before returning to the heart." to
+                    bdef("Open circulatory system", "திறந்த இரத்த ஓட்ட மண்டலம் (Open circulatory system)", "A system in which the blood leaves the vessels and flows through spaces among the tissues before returning to the heart." to
                         "இரத்தம் நாளங்களை விட்டு வெளியேறி திசுக்களுக்கிடையேயுள்ள இடங்களில் பாய்ந்து இதயத்துக்குத் திரும்பும் மண்டலம்."),
-                    bdef("Ostium", "ஆஸ்டியம்", "A valved opening in the wall of the arthropod heart through which blood enters." to
+                    bdef("Ostium", "ஆஸ்டியம் (Ostium)", "A valved opening in the wall of the arthropod heart through which blood enters." to
                         "இரத்தம் நுழையும், ஆர்த்ரோபோடா இதயச் சுவரிலுள்ள வால்வுடைய துளை."),
-                    bdef("Trachea", "மூச்சுக்குழாய்", "A branching air tube that carries oxygen directly to the tissues of an insect or other arthropod." to
+                    bdef("Trachea", "மூச்சுக்குழாய் (Trachea)", "A branching air tube that carries oxygen directly to the tissues of an insect or other arthropod." to
                         "பூச்சி அல்லது பிற ஆர்த்ரோபோடாவின் திசுக்களுக்கு நேரடியாக ஆக்சிஜனைக் கொண்டு செல்லும் கிளைக்கும் காற்றுக் குழல்."),
                     bdef("Haemolymph", "ஹீமோலிம்ப்", "The blood of an arthropod, which serves also as the tissue fluid." to
                         "திசு திரவமாகவும் செயல்படும் ஆர்த்ரோபோடாவின் இரத்தம்."),
@@ -120,9 +120,9 @@ object ArthropodaBookChapter {
                         "ஆர்த்ரோபோடாக்கள் உணர் உறுப்புகள் நிறைந்தவை; கியூட்டிகிள் தடையாக இருப்பதால் ஒவ்வொரு உணர் உறுப்பும் கியூட்டிகிளின் மாற்றம்: உணர் செல்லுடன் இணைந்த மயிர் அல்லது முள், அதிர்வோ வேதிப்பொருளோ கடக்கும் மெல்லிய பகுதி, அல்லது ஒளி ஊடுருவும் லென்ஸ். உணர்கொம்புகள் தொடு, மணம், சுவை உறுப்புகளைத் தாங்குகின்றன; உடலின் முட்கள் தொடுதலுக்கும் காற்று அசைவுக்கும் பதிலளிக்கின்றன. ஸ்டேட்டோசிஸ்ட் எனப்படும் எளிய சமநிலை உறுப்புகள் சில கிரஸ்டேஷியன்களில் உள்ளன; அங்கு குழியிலுள்ள மணல் துகள் அல்லது சுரக்கப்பட்ட துகள் உணர் மயிர்களை அழுத்தி விலங்குக்கு எது மேல்புறம் என்று உணர்த்துகிறது."),
                     bp("The characteristic eye of an arthropod is the compound eye. It is made of many separate units, the ommatidia, each with its own lens and a group of light-sensitive cells and each looking at a small part of the field. The brain assembles the signals from them into a mosaic image. A compound eye does not form as sharp an image as a vertebrate eye, but it is very good at detecting movement, and in many insects it also detects colour and the direction of polarised light. Many arthropods also have simple eyes (ocelli) with a single lens, used chiefly to sense the intensity of light.",
                         "ஆர்த்ரோபோடாவின் தனிச்சிறப்பு விழி கூட்டுக்கண். அது பல தனித்தனி அலகுகளான ஓமாட்டிடியாக்களால் ஆனது; ஒவ்வொன்றுக்கும் தனி லென்ஸும் ஒளியுணர் செல் தொகுதியும் உண்டு; ஒவ்வொன்றும் பார்வைப் புலத்தின் சிறு பகுதியைப் பார்க்கிறது. மூளை அவற்றின் சமிக்ஞைகளை மொசைக் பிம்பமாகச் சேர்க்கிறது. கூட்டுக்கண் முதுகெலும்பிக் கண் போல கூர்மையான பிம்பத்தை உருவாக்குவதில்லை; ஆனால் இயக்கத்தை உணர்வதில் மிகச் சிறந்தது; பல பூச்சிகளில் நிறத்தையும் முனைவுற்ற ஒளியின் திசையையும் உணர்கிறது. பல ஆர்த்ரோபோடாக்களுக்கு ஒற்றை லென்ஸ் கொண்ட எளிய கண்களும் (ஓசெல்லி) உள்ளன; முக்கியமாக ஒளியின் செறிவை உணரப் பயன்படுகின்றன."),
-                    bdef("Ommatidium", "ஒமட்டிடியம்", "One of the many units that make up a compound eye, each with a lens, a crystalline cone and light-sensitive cells." to
+                    bdef("Ommatidium", "ஒமட்டிடியம் (Ommatidium)", "One of the many units that make up a compound eye, each with a lens, a crystalline cone and light-sensitive cells." to
                         "கூட்டுக்கண்ணை உருவாக்கும் பல அலகுகளில் ஒன்று; லென்ஸ், படிகக் கூம்பு, ஒளியுணர் செல்கள் கொண்டது."),
-                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட்", "A small sac or pit containing a granule and sensory hairs, which gives information about the position of the body." to
+                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட் (Statocyst)", "A small sac or pit containing a granule and sensory hairs, which gives information about the position of the body." to
                         "உடல் நிலை பற்றிய தகவல் தரும், துகளும் உணர் மயிர்களும் கொண்ட சிறு பை அல்லது குழி."),
                 )),
             bsec("excretion", "Excretion and water balance", "கழிவு நீக்கமும் நீர்ச் சமநிலையும்",
@@ -131,7 +131,7 @@ object ArthropodaBookChapter {
                         "ஆர்த்ரோபோடாக்களுக்கு அனெலிடா வகை நெஃப்ரிடியங்கள் இல்லை. கழிவு நீக்க உறுப்புகள் வகுப்புகளுக்கிடையே வேறுபடுகின்றன. கிரஸ்டேஷியன்களுக்கு உணர்கொம்புகளின் அடியில் அல்லது இரண்டாம் உணர்கொம்புகளின் அடியில் ஆன்டெனல் அல்லது பசுமைச் சுரப்பிகள் எனும் இணைச் சுரப்பிகள் உள்ளன; இரத்தத்திலிருந்து வடிகட்டப்பட்ட திரவம் வெளியேறும் முன் அவற்றில் மாற்றப்படுகிறது. பெரும்பாலும் நிலத்தில் வாழ்ந்து நீரைச் சேமிக்க வேண்டிய பூச்சிகளுக்கு மால்பிஜியன் குழல்கள் உள்ளன: நடுக்குடலும் பின்குடலும் சந்திக்குமிடத்தில் குடலில் திறக்கும், ஹீமோலிம்ஃபில் கிடக்கும் மூடிய குழல்கள். அவை கழிவுகளை அதிலிருந்து எடுத்துக் குடலுக்குள் செலுத்துகின்றன; மலக்குடலில் நீர் மீண்டும் உறிஞ்சப்படுகிறது; எனவே கழிவு ஏறத்தாழ உலர்ந்த யூரிக் அமிலமாக மலத்துடன் வெளியேறுகிறது."),
                     bdef("Malpighian tubule", "மால்பிஜியன் குழல்", "A blind excretory tube of insects that opens into the gut and removes nitrogenous waste from the haemolymph." to
                         "பூச்சிகளின் குடலில் திறக்கும், ஹீமோலிம்ஃபிலிருந்து நைட்ரஜன் கழிவை அகற்றும் மூடிய கழிவு நீக்கக் குழல்."),
-                    bdef("Green gland", "பசுமைச் சுரப்பி", "The excretory gland of a crustacean, opening at the base of the second antenna; also called the antennal gland." to
+                    bdef("Green gland", "பசுமைச் சுரப்பி (Green gland)", "The excretory gland of a crustacean, opening at the base of the second antenna; also called the antennal gland." to
                         "கிரஸ்டேஷியனின் இரண்டாம் உணர்கொம்பு அடியில் திறக்கும் கழிவு நீக்கச் சுரப்பி; ஆன்டெனல் சுரப்பி எனவும் அழைக்கப்படும்."),
                 )),
             bsec("development", "Development and metamorphosis", "வளர்ச்சியும் உருமாற்றமும்",
@@ -140,11 +140,11 @@ object ArthropodaBookChapter {
                         "ஆர்த்ரோபோடாக்கள் பொதுவாக ஒருபாலிகள்; உள் கருவுறுதல் நடக்கிறது; முட்டைகள் பெரும்பாலும் மஞ்சள் கரு நிறைந்தவை; முட்டையின் மேற்பரப்பு அடுக்கில் வளர்கின்றன. வளர்ச்சி நேரடியாக இருக்கலாம்; சிலந்திகளிலும் பல கிரஸ்டேஷியன்களிலும் போல, இளம் உயிரிகள் முதிர்ந்தவற்றை ஒத்து தொடர் தோலுரிப்புகளால் வளர்கின்றன. அல்லது இறாலில் போல வேறு வடிவ லார்வாக்களுடன் மறைமுகமாக இருக்கலாம். பூச்சிகளில் இரு அமைப்புகள் உள்ளன: முழுமையற்ற உருமாற்றத்தில் நிம்ஃப் எனப்படும் இளம் உயிரி கரப்பான் அல்லது வெட்டுக்கிளியில் போல முதிர்ந்ததை ஒத்து படிப்படியாக இறக்கைகளைப் பெறுகிறது; முழுமையான உருமாற்றத்தில் அந்துப்பூச்சி, வண்ணத்துப்பூச்சி, வண்டு போல லார்வா, கூட்டுப்புழு, முதிர்ந்தது வடிவத்திலும் வாழ்க்கை முறையிலும் முற்றிலும் வேறுபடுகின்றன."),
                     bp("Moulting and metamorphosis are controlled by hormones. In an insect, a moulting hormone (ecdysone) from the prothoracic glands brings on each moult, and a juvenile hormone from glands behind the brain decides whether the result of the moult is another larva or a pupa and then an adult. When the level of the juvenile hormone is high, the animal remains a larva, and when it falls, metamorphosis proceeds. This has practical use in agriculture, since compounds that mimic or disturb these hormones are used as insecticides.",
                         "தோலுரித்தலும் உருமாற்றமும் ஹார்மோன்களால் கட்டுப்படுத்தப்படுகின்றன. பூச்சியில் புரோதொராசிக் சுரப்பிகளிலிருந்து தோலுரித்தல் ஹார்மோன் (எக்டைசோன்) ஒவ்வொரு தோலுரிப்பையும் தூண்டுகிறது; மூளைக்குப் பின்னுள்ள சுரப்பிகளிலிருந்து இளம்நிலை ஹார்மோன் தோலுரிப்பின் விளைவு மற்றொரு லார்வாவா அல்லது கூட்டுப்புழுவா, பின் முதிர்ந்ததா என்பதை முடிவு செய்கிறது. இளம்நிலை ஹார்மோன் அளவு அதிகமாக இருக்கும்போது விலங்கு லார்வாவாகவே இருக்கிறது; குறையும்போது உருமாற்றம் தொடர்கிறது. இது வேளாண்மையில் நடைமுறைப் பயன் கொண்டது; இந்த ஹார்மோன்களைப் போலச் செயல்படும் அல்லது குலைக்கும் சேர்மங்கள் பூச்சிக்கொல்லிகளாகப் பயன்படுகின்றன."),
-                    bdef("Nymph", "நிம்ஃப்", "The young stage of an insect with incomplete metamorphosis, which resembles the adult and gains wings gradually." to
+                    bdef("Nymph", "நிம்ஃப் (Nymph)", "The young stage of an insect with incomplete metamorphosis, which resembles the adult and gains wings gradually." to
                         "முழுமையற்ற உருமாற்றம் கொண்ட பூச்சியின், முதிர்ந்ததை ஒத்து படிப்படியாக இறக்கைகள் பெறும் இளம் நிலை."),
                     bdef("Pupa", "கூட்டுப்புழு", "The non-feeding stage between the larva and adult in an insect with complete metamorphosis." to
                         "முழுமையான உருமாற்றம் கொண்ட பூச்சியில் லார்வாவுக்கும் முதிர்ந்ததுக்கும் இடைப்பட்ட உண்ணாத நிலை."),
-                    bdef("Ecdysone", "எக்டைசோன்", "The moulting hormone of arthropods, which brings on ecdysis." to
+                    bdef("Ecdysone", "எக்டைசோன் (Ecdysone)", "The moulting hormone of arthropods, which brings on ecdysis." to
                         "எக்டைசிஸைத் தூண்டும் ஆர்த்ரோபோடாக்களின் தோலுரித்தல் ஹார்மோன்."),
                 )),
             bsec("success", "Why the arthropods have been so successful", "ஆர்த்ரோபோடாக்கள் ஏன் இவ்வளவு வெற்றிகரமாக உள்ளன",
@@ -168,9 +168,9 @@ object ArthropodaBookChapter {
                         )),
                     bp("The two groups of crustaceans that are of most concern in this unit are the prawn Penaeus, in the next chapter, and the larval forms of crustaceans, which come later. Peripatus, which is not in any of the four classes, is considered separately as a connecting form." to
                         "இந்த அலகில் மிகக் கவனிக்கப்படும் கிரஸ்டேஷியன்களின் இரு குழுக்கள் அடுத்த அத்தியாயத்திலுள்ள இறால் பெனியஸும் பின்னர் வரும் கிரஸ்டேஷியன்களின் லார்வா வடிவங்களும். நான்கு வகுப்புகளில் எதிலும் இல்லாத பெரிபேட்டஸ் இணைக்கும் வடிவமாகத் தனியாகக் கருதப்படுகிறது."),
-                    bdef("Pancrustacea", "பான்கிரஸ்டேஷியா", "A group that includes the crustaceans and the insects, supported by molecular and morphological evidence." to
+                    bdef("Pancrustacea", "பான்கிரஸ்டேஷியா (Pancrustacea)", "A group that includes the crustaceans and the insects, supported by molecular and morphological evidence." to
                         "மூலக்கூறு, உருவச் சான்றுகளால் ஆதரிக்கப்படும், கிரஸ்டேஷியன்களையும் பூச்சிகளையும் உள்ளடக்கிய குழு."),
-                    bdef("Spiracle", "ஸ்பைராக்கிள்", "An external opening of the tracheal system of an insect or other terrestrial arthropod." to
+                    bdef("Spiracle", "ஸ்பைராக்கிள் (Spiracle)", "An external opening of the tracheal system of an insect or other terrestrial arthropod." to
                         "பூச்சி அல்லது பிற நில ஆர்த்ரோபோடாவின் மூச்சுக்குழாய் மண்டலத்தின் வெளித் துளை."),
                 )),
         ),

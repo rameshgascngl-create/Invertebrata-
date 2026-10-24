@@ -31,15 +31,15 @@ object EchinoAffinitiesBookChapter {
                     ),
                     bp("These characters must be handled with care. The distinction between the two lineages was first made on the embryo, and it is now supported by molecular evidence, which means that it does not rest on the embryo alone. Not every feature holds in every species, since the details of cleavage and of the formation of the mouth differ, and some deuterostomes depart from the classical description. The examination answer should therefore say the typical characters, and should not imply that each is found without exception." to
                         "இப்பண்புகளைக் கவனமாகக் கையாள வேண்டும். இரு பரம்பரைகளுக்கிடையிலான வேறுபாடு முதலில் கருவில் செய்யப்பட்டது; இப்போது மூலக்கூறுச் சான்றாலும் ஆதரிக்கப்படுகிறது; அதாவது கருவை மட்டும் சார்ந்தது அல்ல. ஒவ்வொரு பண்பும் ஒவ்வோர் இனத்திலும் பொருந்தாது; பிளவு, வாய் உருவாக்கத்தின் விவரங்கள் மாறுபடும்; சில டியூட்டிரோஸ்டோம்கள் செம்மை விளக்கத்திலிருந்து விலகுகின்றன. எனவே தேர்வு விடை வழக்கமான பண்புகளைக் கூற வேண்டும்; ஒவ்வொன்றும் விதிவிலக்கின்றிக் காணப்படுகிறது எனக் குறிப்பிடக் கூடாது."),
-                    bdef("Protostome", "புரோட்டோஸ்டோம்", "An animal in which the blastopore becomes, or is closely associated with, the mouth." to
+                    bdef("Protostome", "புரோட்டோஸ்டோம் (Protostome)", "An animal in which the blastopore becomes, or is closely associated with, the mouth." to
                         "பிளாஸ்டோபோர் வாயாகும் அல்லது வாயுடன் நெருங்கிய தொடர்புடைய விலங்கு."),
                     bdef("Deuterostome", "டியூட்டிரோஸ்டோம்", "An animal in which the blastopore becomes the anus and the mouth forms secondarily." to
                         "பிளாஸ்டோபோர் மலவாயாகி வாய் இரண்டாம் நிலையாக உருவாகும் விலங்கு."),
-                    bdef("Blastopore", "பிளாஸ்டோபோர்", "The first opening of the embryo into the primitive gut." to
+                    bdef("Blastopore", "பிளாஸ்டோபோர் (Blastopore)", "The first opening of the embryo into the primitive gut." to
                         "ஆதிக்குடலுக்குள் கருவின் முதல் திறப்பு."),
-                    bdef("Enterocoely", "என்டெரோசீலி", "The formation of the coelom from outgrowths of the gut." to
+                    bdef("Enterocoely", "என்டெரோசீலி (Enterocoely)", "The formation of the coelom from outgrowths of the gut." to
                         "குடலின் வளர்ச்சிகளிலிருந்து உடற்குழி உருவாதல்."),
-                    bdef("Indeterminate cleavage", "உறுதியற்ற பிளவு", "Cleavage in which the cells of the early embryo keep the potential to form a whole animal." to
+                    bdef("Indeterminate cleavage", "உறுதியற்ற பிளவு (Indeterminate cleavage)", "Cleavage in which the cells of the early embryo keep the potential to form a whole animal." to
                         "ஆரம்பக் கரு செல்கள் முழு விலங்கை உருவாக்கும் ஆற்றலைத் தக்கவைக்கும் பிளவு."),
                 )),
             bsec("ambulacraria", "Ambulacraria: echinoderms and hemichordates", "அம்புலாக்ரேரியா: முட்தோலிகளும் ஹெமிகார்டேட்டுகளும்",
@@ -54,13 +54,13 @@ object EchinoAffinitiesBookChapter {
                     ),
                     bp("The reason why the grouping is accepted is that these independent lines agree. Where evidence from structure and from molecules gives the same answer, the inference is stronger than where either one is used alone. A student should say that the larvae are suggestive, and that the strongest evidence for the clade is the combination of the molecular and the developmental data." to
                         "குழுவாக்கம் ஏற்கப்படுவதற்குக் காரணம் இத்தனித்த சான்றுகள் ஒத்துப்போவது. அமைப்பிலிருந்தும் மூலக்கூறுகளிலிருந்தும் வரும் சான்று ஒரே விடை தரும்போது, ஏதேனும் ஒன்றை மட்டும் பயன்படுத்துவதை விட ஊகம் வலிமையானது. லார்வாக்கள் சுட்டுபவை என்றும், கிளைக்கான வலிமையான சான்று மூலக்கூறு, வளர்ச்சித் தரவுகளின் சேர்க்கை என்றும் மாணவர் கூற வேண்டும்."),
-                    bdef("Ambulacraria", "அம்புலாக்ரேரியா", "The clade formed by the echinoderms and the hemichordates." to
+                    bdef("Ambulacraria", "அம்புலாக்ரேரியா (Ambulacraria)", "The clade formed by the echinoderms and the hemichordates." to
                         "முட்தோலிகளும் ஹெமிகார்டேட்டுகளும் உருவாக்கும் கிளை."),
                     bdef("Hemichordata", "அரைநாணிகள்", "A phylum of marine worm-like animals, including acorn worms, with a proboscis, collar and trunk." to
                         "துதிக்கை, கழுத்துப் பட்டை, உடலுடைய, ஏகார்ன் புழுக்கள் உள்ளிட்ட கடல் புழு போன்ற விலங்குகளின் தொகுதி."),
                     bdef("Clade", "கிளை", "A group consisting of an ancestor and all its descendants." to
                         "மூதாதையையும் அதன் அனைத்து வழித்தோன்றல்களையும் கொண்ட குழு."),
-                    bdef("Synapomorphy", "பகிரப்பட்ட பெறுபண்பு", "A derived character shared by the members of a clade and inherited from their common ancestor." to
+                    bdef("Synapomorphy", "பகிரப்பட்ட பெறுபண்பு (Synapomorphy)", "A derived character shared by the members of a clade and inherited from their common ancestor." to
                         "ஒரு கிளையின் உறுப்பினர்கள் பகிரும், பொது மூதாதையிடமிருந்து பெறப்பட்ட மாறிய பண்பு."),
                 )),
             bsec("chordates", "Relationship to the chordates", "முதுகுநாணிகளுடனான உறவு",
@@ -76,7 +76,7 @@ object EchinoAffinitiesBookChapter {
                         "ஏதேனும் ஒரு நிலையில் நாண், முதுகுப்புற வெற்று நரம்பு வடம், தொண்டைப் பிளவுகள் கொண்ட தொகுதி."),
                     bdef("Notochord", "நாண்", "A flexible rod along the back of a chordate embryo that supports the body." to
                         "உடலைத் தாங்கும், முதுகுநாணிக் கருவின் முதுகில் செல்லும் நெகிழும் கோல்."),
-                    bdef("Sister group", "சகோதரக் குழு", "One of two groups that are each other's closest relatives." to
+                    bdef("Sister group", "சகோதரக் குழு (Sister group)", "One of two groups that are each other's closest relatives." to
                         "ஒன்றுக்கொன்று நெருங்கிய உறவினரான இரு குழுக்களில் ஒன்று."),
                 )),
             bsec("cnidaria", "Why radial symmetry does not link echinoderms to cnidarians", "ஆரச்சமச்சீர் ஏன் முட்தோலிகளை குழியுடலிகளுடன் இணைக்காது",
@@ -94,13 +94,13 @@ object EchinoAffinitiesBookChapter {
                         )),
                     bp("The example shows why the characters are weighed by their reliability. Adult shape is a poor guide to ancestry, as it is easily changed by the way of life, while the pattern of development and the molecular data change slowly. A student who writes that echinoderms are related to cnidarians because both are radial is making the error of reasoning from a similar appearance to a close relationship." to
                         "பண்புகள் நம்பகத்தன்மையால் எடை போடப்படுவதை இந்த எடுத்துக்காட்டு காட்டுகிறது. முதிர்ந்த வடிவம் மூதாதைத்தன்மைக்கு மோசமான வழிகாட்டி; ஏனெனில் வாழ்க்கை முறையால் எளிதில் மாறுகிறது; வளர்ச்சி முறையும் மூலக்கூறுத் தரவும் மெதுவாக மாறுகின்றன. இரண்டும் ஆரையாக இருப்பதால் முட்தோலிகள் குழியுடலிகளுடன் தொடர்புடையவை என எழுதும் மாணவர் ஒத்த தோற்றத்திலிருந்து நெருங்கிய உறவுக்கு முடிவெடுக்கும் தவற்றைச் செய்கிறார்."),
-                    bdef("Radiata", "ரேடியேட்டா", "An older grouping of radially symmetrical animals that is no longer accepted as natural." to
+                    bdef("Radiata", "ரேடியேட்டா (Radiata)", "An older grouping of radially symmetrical animals that is no longer accepted as natural." to
                         "இயற்கையானதாக இனி ஏற்கப்படாத, ஆரச்சமச்சீர் விலங்குகளின் பழைய குழுவாக்கம்."),
                     bdef("Diploblastic", "ஈரடுக்கு", "Having two germ layers, ectoderm and endoderm, with a jelly-like layer between them." to
                         "இடையே ஜெல்லி போன்ற அடுக்குடன் எக்டோடெர்ம், எண்டோடெர்ம் எனும் இரு கருவடுக்குகள் உடைய."),
                     bdef("Triploblastic", "மூவடுக்கு", "Having three germ layers, ectoderm, mesoderm and endoderm." to
                         "எக்டோடெர்ம், மெசோடெர்ம், எண்டோடெர்ம் எனும் மூன்று கருவடுக்குகள் உடைய."),
-                    bdef("Convergence", "குவிவுப் பரிணாமம்", "Independent evolution of similar features in unrelated lineages." to
+                    bdef("Convergence", "குவிவுப் பரிணாமம் (Convergence)", "Independent evolution of similar features in unrelated lineages." to
                         "தொடர்பற்ற பரம்பரைகளில் ஒத்த பண்புகள் தனித்துப் பரிணமித்தல்."),
                 )),
             bsec("fossil-origin", "How the radial plan arose: what fossils suggest", "ஆரைத் திட்டம் எவ்வாறு தோன்றியது: புதைபடிவங்கள் சுட்டுவது",
@@ -126,7 +126,7 @@ object EchinoAffinitiesBookChapter {
                         "செபலோடிஸ்கஸ், ரப்டோப்ளூரா போன்ற டெரோபிராஞ்சுகள் தாம் சுரக்கும் குழாய்களில் வாழும் சிறு காலனி விலங்குகள்; சிலியா உணர்கொம்புகளால் மூடப்பட்ட ஒன்று அல்லது அதற்கு மேற்பட்ட இணை கைகளால் உண்கின்றன. அவை மூதாதை ஹெமிகார்டேட்டுகளை ஒத்தவை எனப் பெரும்பாலும் கருதப்படுகின்றன; பேலியோசோயிக் பொது புதைபடிவங்களான அழிந்த கிராப்டோலைட்டுகளுக்கு அவற்றைப் போன்ற குழாய்கள் இருந்தன. ஏகார்ன் புழுக்களுடன் சேர்ந்து, ஹெமிகார்டேட்டுகளை கார்டேட்டுகள், எக்கைனோடெர்ம்கள் இரண்டுடனும் பண்புகளைப் பகிரும் விலங்குகளாக டியூட்டிரோஸ்டோம்களின் தோற்றத்தின் அருகில் வைக்கின்றன."),
                     bdef("Gill slit", "செவுள் பிளவு", "One of a series of openings from the pharynx to the outside, found in hemichordates and chordates." to
                         "தொண்டையிலிருந்து வெளியே திறக்கும் வரிசையான துளைகளில் ஒன்று; ஹெமிகார்டேட்டுகள், கார்டேட்டுகளில் காணப்படுகிறது."),
-                    bdef("Tornaria", "டார்னேரியா", "The ciliated larva of an acorn worm, which closely resembles the auricularia larva of a sea cucumber." to
+                    bdef("Tornaria", "டார்னேரியா (Tornaria)", "The ciliated larva of an acorn worm, which closely resembles the auricularia larva of a sea cucumber." to
                         "ஏகார்ன் புழுவின் சிலியா கொண்ட லார்வா; கடல் வெள்ளரியின் ஆரிக்குலேரியா லார்வாவுடன் மிக ஒத்தது."),
                 )),
             bsec("comparison", "Echinoderms, hemichordates and chordates compared", "எக்கைனோடெர்ம்கள், ஹெமிகார்டேட்டுகள், கார்டேட்டுகள் ஒப்பீடு",
@@ -149,7 +149,7 @@ object EchinoAffinitiesBookChapter {
                 blocks = listOf(
                     bp("The skeleton of an echinoderm is made of ossicles of calcium carbonate in the form of calcite, formed in the mesoderm beneath the epidermis. Each ossicle has a porous, lattice-like structure called stereom, which combines strength with lightness and is found in no other animals in the same form. This internal skeleton is therefore comparable in position, though not in material, to the skeleton of a vertebrate, which is also formed by the mesoderm, and the echinoderm skeleton has been used in the argument that both are deuterostome features. The comparison must, however, be made cautiously, since the skeletons of the two groups differ in material and in structure, and the resemblance is one of position and origin only.",
                         "எக்கைனோடெர்மின் எலும்புக்கூடு எப்பிடெர்மிஸின் கீழ் மீசோடெர்மில் உருவாகும், கால்சைட் வடிவ கால்சியம் கார்பனேட் ஆஸிக்கிள்களால் ஆனது. ஒவ்வொரு ஆசிகிளுக்கும் வலிமையையும் இலேசையும் இணைக்கும் ஸ்டீரியோம் எனும் துளையுடைய வலை போன்ற அமைப்பு உள்ளது; வேறு விலங்குகளில் அதே வடிவில் காணப்படுவதில்லை. எனவே இவ்வுட்புற எலும்புக்கூடு, பொருளில் அல்லாமல் நிலையில், மீசோடெர்மாலும் உருவாகும் முதுகெலும்பியின் எலும்புக்கூட்டுடன் ஒப்பிடத்தக்கது; இரண்டும் டியூட்டிரோஸ்டோம் பண்புகள் என்ற வாதத்தில் எக்கைனோடெர்ம் எலும்புக்கூடு பயன்பட்டுள்ளது. எனினும் இரு குழுக்களின் எலும்புக்கூடுகள் பொருளிலும் அமைப்பிலும் வேறுபடுவதால், ஒப்பீடு எச்சரிக்கையுடன் செய்யப்பட வேண்டும்; ஒற்றுமை நிலை, தோற்றத்தில் மட்டுமே."),
-                    bdef("Stereom", "ஸ்டீரியோம்", "The porous, lattice-like calcite structure of an echinoderm ossicle." to
+                    bdef("Stereom", "ஸ்டீரியோம் (Stereom)", "The porous, lattice-like calcite structure of an echinoderm ossicle." to
                         "எக்கைனோடெர்ம் ஆசிகிளின் துளையுடைய வலை போன்ற கால்சைட் அமைப்பு."),
                 )),
             bsec("answering", "Answering the question on affinities", "உறவுகள் குறித்த வினாவுக்கு விடையளித்தல்",

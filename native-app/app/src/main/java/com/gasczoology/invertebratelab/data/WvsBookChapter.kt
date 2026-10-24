@@ -27,9 +27,9 @@ object WvsBookChapter {
                         "அமைப்புக்கு மூன்று வகைப் பகுதிகள் உண்டு: முதன்மைக் கால்வாய்களான வளையக் கால்வாயும் கதிர்க் கால்வாய்களும்; முதன்மைக் கால்வாய்களை பாதங்களுடன் இணைக்கும் பக்கக் கால்வாய்களும் ஆம்புலாக்களும்; வேலை செய்யும் முனை உறுப்புகளான குழாய்ப்பாதங்களும். மேட்ரிபோரைட்டும் கல் கால்வாயும் அமைப்பை வெளியுடன் இணைக்கின்றன; சில முட்தோலிகளில் டீடிமன் உடல்கள், போலியன் பைகள் போன்ற பிற துணைப் பகுதிகள் உள்ளன; விவரங்கள் மாறுபடும்; இவ்விடையில் தேவையில்லை."),
                     bdef("Water-vascular system", "நீர் குருதியோட்ட மண்டலம்", "A coelom-derived hydraulic system of canals and tube feet unique to echinoderms." to
                         "முட்தோலிகளுக்கே உரிய, உடற்குழியிலிருந்து தோன்றிய கால்வாய்கள், குழாய்ப்பாதங்களின் நீரழுத்த அமைப்பு."),
-                    bdef("Hydrocoel", "ஹைட்ரோசீல்", "The part of the larval coelom that gives rise to the water-vascular system." to
+                    bdef("Hydrocoel", "ஹைட்ரோசீல் (Hydrocoel)", "The part of the larval coelom that gives rise to the water-vascular system." to
                         "நீர் குருதியோட்ட மண்டலத்தைத் தரும் லார்வா உடற்குழியின் பகுதி."),
-                    bdef("Hydraulic", "நீரழுத்த", "Working by the pressure of a liquid in a closed space." to
+                    bdef("Hydraulic", "நீரழுத்த (Hydraulic)", "Working by the pressure of a liquid in a closed space." to
                         "மூடிய இடத்தில் திரவ அழுத்தத்தால் செயல்படும்."),
                 )),
             bsec("pathway", "The pathway of canals", "கால்வாய்ப் பாதை",
@@ -47,13 +47,13 @@ object WvsBookChapter {
                     bnote("Anatomical pathway, not a flow chart", "உடற்கூறியல் பாதை, ஓட்ட வரைபடம் அல்ல",
                         "The sequence shows how the canals are connected. It is not a continuous one-way stream of sea water through every tube foot." to
                             "வரிசை கால்வாய்கள் எவ்வாறு இணைந்துள்ளன என்பதைக் காட்டுகிறது. ஒவ்வொரு குழாய்ப்பாதம் வழியேயும் செல்லும் தொடர் ஒருதிசை கடல்நீர் ஓட்டம் அல்ல."),
-                    bdef("Stone canal", "கல் கால்வாய்", "The canal, with calcified walls, that joins the madreporite to the ring canal." to
+                    bdef("Stone canal", "கல் கால்வாய் (Stone canal)", "The canal, with calcified walls, that joins the madreporite to the ring canal." to
                         "மேட்ரிபோரைட்டை வளையக் கால்வாயுடன் இணைக்கும், சுண்ணாம்பேறிய சுவருடைய கால்வாய்."),
-                    bdef("Ring canal", "வளையக் கால்வாய்", "The circular canal around the mouth, from which the radial canals arise." to
+                    bdef("Ring canal", "வளையக் கால்வாய் (Ring canal)", "The circular canal around the mouth, from which the radial canals arise." to
                         "கதிர்க் கால்வாய்கள் கிளம்பும், வாயைச் சுற்றிய வட்டக் கால்வாய்."),
-                    bdef("Radial canal", "கதிர்க் கால்வாய்", "A canal that runs along each arm beneath the ambulacral groove." to
+                    bdef("Radial canal", "கதிர்க் கால்வாய் (Radial canal)", "A canal that runs along each arm beneath the ambulacral groove." to
                         "ஆம்புலாக்ரல் பள்ளத்துக்குக் கீழ் ஒவ்வொரு கையிலும் செல்லும் கால்வாய்."),
-                    bdef("Lateral canal", "பக்கக் கால்வாய்", "A short valved canal that joins a radial canal to an ampulla and tube foot." to
+                    bdef("Lateral canal", "பக்கக் கால்வாய் (Lateral canal)", "A short valved canal that joins a radial canal to an ampulla and tube foot." to
                         "கதிர்க் கால்வாயை ஆம்புலா, குழாய்ப்பாதத்துடன் இணைக்கும் வால்வுடைய குறுகிய கால்வாய்."),
                 )),
             bsec("mechanism", "The mechanism of a tube foot", "குழாய்ப்பாதத்தின் செயல்முறை",
@@ -72,9 +72,9 @@ object WvsBookChapter {
                         )),
                     bp("Attachment is by adhesion, and not simply by suction, though the disc and its muscles have some part in the grip, and the glue is released and removed in cycles. A tube foot is thus a self-contained working unit of a muscle, a valve, a bulb of fluid and an adhesive disc." to
                         "ஒட்டுதல் ஒட்டுக்கூடு; வெறும் உறிஞ்சுதல் அல்ல; வட்டும் அதன் தசைகளும் பிடிப்பில் ஓரளவு பங்கு வகிக்கின்றன; பசை சுழற்சிகளில் வெளியிடப்பட்டு அகற்றப்படுகிறது. எனவே குழாய்ப்பாதம் தசை, வால்வு, திரவக் குமிழ், ஒட்டும் வட்டு ஆகியவற்றாலான தனித்து இயங்கும் வேலை அலகு."),
-                    bdef("Ampulla", "ஆம்புலா", "A muscular bulb at the base of a tube foot whose contraction drives fluid into the foot." to
+                    bdef("Ampulla", "ஆம்புலா (Ampulla)", "A muscular bulb at the base of a tube foot whose contraction drives fluid into the foot." to
                         "சுருங்கி திரவத்தைப் பாதத்துக்குள் செலுத்தும் குழாய்ப்பாதத்தின் அடியிலுள்ள தசைக் குமிழ்."),
-                    bdef("Podium", "போடியம்", "The extensible part of the tube foot outside the skeleton." to
+                    bdef("Podium", "போடியம் (Podium)", "The extensible part of the tube foot outside the skeleton." to
                         "கூட்டுக்கு வெளியே குழாய்ப்பாதத்தின் நீளக்கூடிய பகுதி."),
                     bdef("Valve", "வால்வு", "A flap in the lateral canal that prevents fluid from flowing back into the radial canal." to
                         "திரவம் கதிர்க் கால்வாய்க்குப் பின்னோக்கிப் பாய்வதைத் தடுக்கும் பக்கக் கால்வாயிலுள்ள மடல்."),
@@ -94,7 +94,7 @@ object WvsBookChapter {
                         "பழைய நூல்கள் குழல் காலின் உறிஞ்சி, ஆம்புல்லா, காலின் தசைகள் வட்டின் மையத்தைப் பின்னிழுக்கும்போது உருவாகும் உறிஞ்சுதலால் பிடிக்கிறது என்கின்றன. தற்போதைய சான்று, வேதி முறையிலான ஒட்டுதலை விட உறிஞ்சுதல் குறைவாக முக்கியம் என்பதே. குழல் காலின் வட்டில் இரு வகைச் சுரப்பி செல்கள் உள்ளன. ஒன்று வட்டைப் பரப்புடன் இணைக்கும் ஒட்டும் சுரப்பை வெளியிடுகிறது; மற்றொன்று இணைப்பை உடைக்கும் சுரப்பை வெளியிடுகிறது; எனவே கால் விடுவிக்கப்பட்டு நகர்த்தப்படலாம். ஒட்டுதல் இவ்வாறு ஒட்டி விடுவிக்கும் சுழற்சி; ஒட்டும் பொருளுக்குக் கடினமான நிலையான நீருக்கடியில் இது செயல்படுகிறது."),
                     bp("For an examination answer the usual teaching is acceptable if the use of both ideas is clear: the tube foot attaches by its disc, using adhesive secretions and, to some extent, suction, and the muscular control of the ampulla and the foot allows the attachment to be released. The student should not claim that suction is the sole mechanism, nor that a single tube foot is strong. It is the coordinated action of hundreds of feet, each holding a small part of the load, that gives the starfish its force.",
                         "தேர்வு விடைக்கு இரு கருத்துகளின் பயன்பாடும் தெளிவாக இருந்தால் வழக்கமான கற்பித்தல் ஏற்கத்தக்கது: குழல் கால் ஒட்டும் சுரப்புகளையும் ஓரளவு உறிஞ்சுதலையும் பயன்படுத்தி வட்டால் இணைகிறது; ஆம்புல்லா, காலின் தசைக் கட்டுப்பாடு இணைப்பை விடுவிக்க அனுமதிக்கிறது. உறிஞ்சுதலே ஒரே வழிமுறை என்றோ ஒற்றைக் குழல் கால் வலிமையானது என்றோ மாணவர் கூறக்கூடாது. நூற்றுக்கணக்கான கால்கள், ஒவ்வொன்றும் சுமையின் சிறு பகுதியைப் பிடித்து, ஒருங்கிணைந்து செயல்படுவதே நட்சத்திர மீனுக்கு விசையைத் தருகிறது."),
-                    bdef("Duo-gland adhesive system", "இரு சுரப்பி ஒட்டு அமைப்பு", "The arrangement in a tube foot of one gland cell that secretes an adhesive and another that secretes a de-adhesive, allowing repeated attachment and release." to
+                    bdef("Duo-gland adhesive system", "இரு சுரப்பி ஒட்டு அமைப்பு (Duo-gland adhesive system)", "The arrangement in a tube foot of one gland cell that secretes an adhesive and another that secretes a de-adhesive, allowing repeated attachment and release." to
                         "ஒட்டும் பொருளைச் சுரக்கும் செல்லும் இணைப்பை விடுவிக்கும் பொருளைச் சுரக்கும் செல்லும் கொண்டு, மீண்டும் மீண்டும் இணைந்து விடுவிக்க அனுமதிக்கும் குழல் கால் அமைப்பு."),
                 )),
             bsec("madreporite", "The madreporite and the fluid of the system", "மேட்ரெபோரைட்டும் மண்டலத்தின் திரவமும்",
@@ -115,9 +115,9 @@ object WvsBookChapter {
                     ),
                     bp("The balance among these differs between the classes. In the starfishes and sea urchins the feet are the means of walking. In the brittle stars the feet are not used much for walking, since the arms are moved by muscles in a snake-like manner, and the feet help in feeding and sensing. In the sea cucumbers the tube feet around the mouth are modified into tentacles for feeding, and the feet on the body may be reduced or absent in some groups. In the crinoids the tube feet are used in feeding on particles, and in the gas exchange. The organ is the same, but its use is varied, as is shown by the scheme of the classes." to
                         "இச்செயல்களுக்கிடையிலான சமநிலை வகுப்புகளிடையே வேறுபடுகிறது. நட்சத்திர மீன்கள், கடல் முள்ளெலிகளில் பாதங்கள் நடக்கும் வழிமுறை. பிரிட்டில் நட்சத்திரங்களில் கைகள் பாம்பு போல தசைகளால் அசைக்கப்படுவதால் பாதங்கள் நடக்க அதிகம் பயன்படுவதில்லை; உண்ணவும் உணரவும் உதவுகின்றன. கடல் வெள்ளரிகளில் வாயைச் சுற்றிய குழாய்ப்பாதங்கள் உண்பதற்கான உணர்கொம்புகளாக மாறியுள்ளன; உடலிலுள்ள பாதங்கள் சில குழுக்களில் குறைந்தவை அல்லது இல்லாதவை. கிரினாய்டுகளில் குழாய்ப்பாதங்கள் துகள்களை உண்ணவும் வாயுப் பரிமாற்றத்திலும் பயன்படுகின்றன. உறுப்பு ஒன்றே; பயன்பாடு வேறுபடுகிறது; வகுப்புகளின் திட்டம் இதைக் காட்டுகிறது."),
-                    bdef("Ambulacral groove", "ஆம்புலாக்ரல் பள்ளம்", "The groove along the oral side of a starfish arm that carries the tube feet." to
+                    bdef("Ambulacral groove", "ஆம்புலாக்ரல் பள்ளம் (Ambulacral groove)", "The groove along the oral side of a starfish arm that carries the tube feet." to
                         "குழாய்ப்பாதங்களைக் கொண்ட நட்சத்திரமீனின் கையின் வாய்ப்புறப் பள்ளம்."),
-                    bdef("Ambulacrum", "ஆம்புலாக்ரம்", "A radial zone of the body that carries the tube feet." to
+                    bdef("Ambulacrum", "ஆம்புலாக்ரம் (Ambulacrum)", "A radial zone of the body that carries the tube feet." to
                         "குழாய்ப்பாதங்களைத் தாங்கும் உடலின் கதிர் மண்டலம்."),
                     bdef("Locomotion", "இயக்கம்", "Movement of the whole body from place to place." to
                         "முழு உடலும் ஓரிடத்திலிருந்து மற்றோர் இடத்துக்கு நகர்தல்."),
@@ -144,11 +144,11 @@ object WvsBookChapter {
                         "அஸ்டீரியாஸ் இருவோடுகளை வேட்டையாடுகிறது; இரையின் மென்திசுவை அடைய குழாய்ப்பாதங்கள் அதன் வழிமுறை. பல குழாய்ப்பாதங்கள் இருவோட்டின் இரு மூடிகளிலும் உறுதியாக ஒட்டுகின்றன. நட்சத்திர மீன் இரைமேல் உடலை வளைத்து தொடர்ந்த விசையுடன் மூடிகளை இழுக்கிறது. எண்ணற்ற பாதங்களில் ஒருங்கிணைந்த நீரழுத்த நீட்சியும் தசை இழுவிசையும் ஒரே வன்முறைத் திறப்பை அல்ல, நிலையான இழுப்பைத் தருகின்றன. மூடிகளை மூடி வைக்கும் இருவோட்டின் உட்புற இழுப்புத் தசைக்கு எதிராக இழுப்பு செயல்படுகிறது."),
                     bp("When the adductor muscle of the bivalve fatigues, a small gap opens between the valves, and a very small gap is enough. The starfish then everts its cardiac stomach through its mouth and inserts it into the gap. Digestive enzymes act on the prey outside the body of the starfish, and the liquefied tissue is taken into the stomach. It follows that the tube feet assist in opening the prey, and do not crush the shell. The explanation of the feeding in terms of the tube feet is therefore an explanation of how the prey is opened, and the digestion that follows is a separate matter, treated in the chapter on Asterias." to
                         "இருவோட்டின் உட்புற இழுப்புத் தசை சோர்வடையும்போது மூடிகளுக்கிடையே சிறு இடைவெளி திறக்கிறது; மிகச் சிறு இடைவெளியே போதும். நட்சத்திர மீன் பின்னர் தன் கார்டியாக் இரைப்பையை வாய் வழியே புரட்டி இடைவெளிக்குள் செருகுகிறது. செரிமான நொதிகள் நட்சத்திரமீனின் உடலுக்கு வெளியே இரைமேல் செயல்படுகின்றன; திரவமான திசு இரைப்பைக்குள் எடுக்கப்படுகிறது. எனவே குழாய்ப்பாதங்கள் இரையைத் திறக்க உதவுகின்றன; ஓட்டை நொறுக்குவதில்லை. குழாய்ப்பாதங்களால் உணவெடுப்பை விளக்குவது இரை எவ்வாறு திறக்கப்படுகிறது என்பதை விளக்குவதாகும்; தொடரும் செரிமானம் தனி விஷயம்; அஸ்டீரியாஸ் அத்தியாயத்தில் கையாளப்படுகிறது."),
-                    bdef("Adductor muscle", "உட்புற இழுப்புத் தசை", "The muscle that holds the two valves of a bivalve shut." to
+                    bdef("Adductor muscle", "உட்புற இழுப்புத் தசை (Adductor muscle)", "The muscle that holds the two valves of a bivalve shut." to
                         "இருவோட்டின் இரு மூடிகளையும் மூடி வைக்கும் தசை."),
                     bdef("Fatigue", "சோர்வு", "The reduction of the force of a muscle after sustained use." to
                         "தொடர்ந்த பயன்பாட்டுக்குப் பின் தசையின் விசை குறைதல்."),
-                    bdef("Extra-oral digestion", "வாய்க்கு வெளிப்புறச் செரிமானம்", "Digestion of food outside the body by enzymes secreted onto it." to
+                    bdef("Extra-oral digestion", "வாய்க்கு வெளிப்புறச் செரிமானம் (Extra-oral digestion)", "Digestion of food outside the body by enzymes secreted onto it." to
                         "உணவின்மீது சுரக்கப்படும் நொதிகளால் உடலுக்கு வெளியே நடைபெறும் செரிமானம்."),
                 )),
             bsec("answering", "Writing the answer", "விடை எழுதுதல்",
@@ -164,7 +164,7 @@ object WvsBookChapter {
                     ),
                     bdef("Aboral", "மேற்புறம்", "Facing away from the mouth." to
                         "வாய்க்கு எதிர்ப்புறம் நோக்கிய."),
-                    bdef("Oral", "வாய்ப்புறம்", "Facing the mouth, or bearing the mouth." to
+                    bdef("Oral", "வாய்ப்புறம் (Oral)", "Facing the mouth, or bearing the mouth." to
                         "வாயை நோக்கிய அல்லது வாயைத் தாங்கிய."),
                 )),
         ),

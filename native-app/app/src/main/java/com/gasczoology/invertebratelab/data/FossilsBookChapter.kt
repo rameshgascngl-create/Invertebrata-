@@ -33,13 +33,13 @@ object FossilsBookChapter {
                     ),
                     bdef("Fossil", "புதைபடிவம்", "The preserved remains or traces of an organism from the geological past." to
                         "புவியியல் கடந்த காலத்தின் உயிரியின் பாதுகாக்கப்பட்ட எச்சங்கள் அல்லது தடயங்கள்."),
-                    bdef("Taphonomy", "டாஃபோனமி", "The study of the processes that affect an organism from death to fossilisation." to
+                    bdef("Taphonomy", "டாஃபோனமி (Taphonomy)", "The study of the processes that affect an organism from death to fossilisation." to
                         "இறப்பிலிருந்து புதைபடிவமாதல் வரை உயிரியைப் பாதிக்கும் செயல்முறைகளின் ஆய்வு."),
-                    bdef("Preservation bias", "பாதுகாப்புச் சார்பு", "The over-representation of organisms with durable hard parts in the fossil record." to
+                    bdef("Preservation bias", "பாதுகாப்புச் சார்பு (Preservation bias)", "The over-representation of organisms with durable hard parts in the fossil record." to
                         "புதைபடிவப் பதிவில் நீடித்த கடினப் பகுதிகளுடைய உயிரிகளின் மிகைப் பிரதிநிதித்துவம்."),
                     bdef("Mould", "அச்சு", "An impression left in rock by a dissolved organism." to
                         "கரைந்த உயிரியால் பாறையில் எஞ்சிய பதிவு."),
-                    bdef("Trace fossil", "தடய புதைபடிவம்", "A fossil that records the activity of an organism, such as a track or burrow." to
+                    bdef("Trace fossil", "தடய புதைபடிவம் (Trace fossil)", "A fossil that records the activity of an organism, such as a track or burrow." to
                         "பாதச்சுவடு, வளை போன்ற உயிரியின் செயல்பாட்டைப் பதிவு செய்யும் புதைபடிவம்."),
                 )),
             bsec("index", "Index fossils and biostratigraphy", "வழிகாட்டிப் புதைபடிவங்களும் உயிர்படிவ அடுக்கியலும்",
@@ -55,9 +55,9 @@ object FossilsBookChapter {
                     ),
                     bp("It is important not to overstate the point. Not every species of a trilobite, ammonite or crinoid is equally useful as an index fossil. A species that lived for a very long time, or in a narrow habitat, or that is rare, is of little use for correlation. The groups discussed in this chapter provide many index fossils, and that is a statement about the groups as sources of candidates, and not a claim that each of their species is an index fossil." to
                         "புள்ளியை மிகைப்படுத்தாமல் இருப்பது முக்கியம். டிரைலோபைட், அம்மோனைட், கிரினாய்டின் ஒவ்வொரு இனமும் வழிகாட்டிப் புதைபடிவமாக சமமாகப் பயன்படாது. மிக நீண்ட காலம், குறுகிய வாழிடத்தில் வாழ்ந்த அல்லது அரிதான இனம் ஒப்பீட்டுக்குச் சிறிதே பயன்படும். இவ்வத்தியாயத்தில் விவாதிக்கப்படும் குழுக்கள் பல வழிகாட்டிப் புதைபடிவங்களைத் தருகின்றன; இது குழுக்கள் வேட்பாளர்களின் மூலங்கள் என்ற கூற்று; அவற்றின் ஒவ்வொரு இனமும் வழிகாட்டிப் புதைபடிவம் என்ற கூற்று அல்ல."),
-                    bdef("Index fossil", "வழிகாட்டிப் புதைபடிவம்", "A fossil that is widespread, abundant and restricted in time, and so is used to date and correlate rocks." to
+                    bdef("Index fossil", "வழிகாட்டிப் புதைபடிவம் (Index fossil)", "A fossil that is widespread, abundant and restricted in time, and so is used to date and correlate rocks." to
                         "பரவலான, மிகுதியான, காலத்தில் வரம்புடைய, எனவே பாறைகளுக்குக் காலம் குறிக்கவும் ஒப்பிடவும் பயன்படும் புதைபடிவம்."),
-                    bdef("Biostratigraphy", "உயிர்படிவ அடுக்கியல்", "The use of fossils to date and correlate rock layers." to
+                    bdef("Biostratigraphy", "உயிர்படிவ அடுக்கியல் (Biostratigraphy)", "The use of fossils to date and correlate rock layers." to
                         "பாறை அடுக்குகளுக்குக் காலம் குறிக்கவும் ஒப்பிடவும் புதைபடிவங்களைப் பயன்படுத்துதல்."),
                     bdef("Correlation", "ஒப்பீடு", "Matching rocks of the same age in different places." to
                         "வெவ்வேறு இடங்களிலுள்ள ஒரே வயதுப் பாறைகளைப் பொருத்துதல்."),
@@ -68,7 +68,7 @@ object FossilsBookChapter {
                         "டிரைலோபைட்டுகள் சுண்ணாம்பேறிய, துண்டுபட்ட புறச்சட்டகமுடைய அழிந்த கடல் கணுக்காலிகள். உடல் நீளவாக்கில் மைய அச்சும் இரு பக்கப் பகுதிகளுமான மூன்று மடல்களாகப் பிரிகிறது; இது குழுவுக்குப் பெயர் தருகிறது; தலைக் கவசம், அசையும் துண்டுகளுடைய மார்பு, வால் கவசம் எனப் பிரிகிறது. ஒவ்வொரு துண்டும் இணைக் கணுவுடைய உறுப்புகளைத் தாங்கியது; அவை சுண்ணாம்பேறாததால் அரிய புதைபடிவங்களிலிருந்து மட்டுமே அறியப்படுகின்றன. பல டிரைலோபைட்டுகள் மர ஈ போல சுருண்டுகொள்ள முடிந்தன; சுருண்ட மாதிரிகள் பொதுவானவை."),
                     bp("Trilobites are important because they were abundant and diverse in the Palaeozoic seas and evolved rapidly, and because their wide distribution allows the correlation of rocks of that era. Many species are therefore useful in the biostratigraphy of the Palaeozoic, with the proviso given above that not every species is. The trilobites are arthropods, and not crustaceans, and the relationship of the group to the living arthropod groups is a question for specialists. A student may say simply that they are an extinct class of arthropods." to
                         "டிரைலோபைட்டுகள் முக்கியமானவை; ஏனெனில் பேலியோசோயிக் கடல்களில் மிகுதியாகவும் பன்முகமாகவும் இருந்து விரைவாகப் பரிணமித்தன; பரந்த பரவல் அக்காலப் பாறைகளின் ஒப்பீட்டை அனுமதிக்கிறது. எனவே மேலே தரப்பட்ட, ஒவ்வொரு இனமும் அல்ல என்ற நிபந்தனையுடன், பல இனங்கள் பேலியோசோயிக் உயிர்படிவ அடுக்கியலில் பயனுள்ளவை. டிரைலோபைட்டுகள் கணுக்காலிகள்; நண்டுவகைகள் அல்ல; வாழும் கணுக்காலிக் குழுக்களுடனான குழுவின் உறவு நிபுணர்களுக்கான கேள்வி. அவை அழிந்த கணுக்காலி வகுப்பு என மாணவர் எளிமையாகக் கூறலாம்."),
-                    bdef("Trilobite", "டிரைலோபைட்", "An extinct marine arthropod with a three-lobed, segmented, calcified exoskeleton." to
+                    bdef("Trilobite", "டிரைலோபைட் (Trilobite)", "An extinct marine arthropod with a three-lobed, segmented, calcified exoskeleton." to
                         "மூன்று மடல், துண்டுபட்ட, சுண்ணாம்பேறிய புறச்சட்டகமுடைய அழிந்த கடல் கணுக்காலி."),
                     bdef("Palaeozoic", "பேலியோசோயிக்", "The era of geological time before the Mesozoic, in which the trilobites flourished." to
                         "மீசோசோயிக்குக்கு முந்தைய, டிரைலோபைட்டுகள் செழித்த புவியியல் கால ஊழி."),
@@ -84,11 +84,11 @@ object FossilsBookChapter {
                     bnote("Ammonite is not a gastropod", "அம்மோனைட் இரைப்பைக்காலி அல்ல",
                         "An ammonite is a cephalopod with a chambered shell. A coiled shell alone does not make an animal a snail." to
                             "அம்மோனைட் அறை ஓடுடைய தலைக்காலி. சுருள் ஓடு மட்டும் விலங்கை நத்தையாக்காது."),
-                    bdef("Ammonite", "அம்மோனைட்", "An extinct cephalopod with a planispirally coiled, chambered shell; an important Mesozoic index fossil." to
+                    bdef("Ammonite", "அம்மோனைட் (Ammonite)", "An extinct cephalopod with a planispirally coiled, chambered shell; an important Mesozoic index fossil." to
                         "சுற்றுத்தளச் சுருள், அறை ஓடுடைய அழிந்த தலைக்காலி; முக்கிய மீசோசோயிக் வழிகாட்டிப் புதைபடிவம்."),
                     bdef("Septum", "செப்டம்", "A partition between the chambers of a cephalopod shell." to
                         "தலைக்காலி ஓட்டின் அறைகளுக்கிடையேயான பிரிப்பு."),
-                    bdef("Suture", "சூச்சர்", "The line where a septum meets the outer wall of the shell." to
+                    bdef("Suture", "சூச்சர் (Suture)", "The line where a septum meets the outer wall of the shell." to
                         "செப்டம் ஓட்டின் வெளிச்சுவரைச் சந்திக்கும் கோடு."),
                     bdef("Mesozoic", "மீசோசோயிக்", "The era of geological time after the Palaeozoic, in which ammonites were abundant." to
                         "பேலியோசோயிக்குக்குப் பிந்தைய, அம்மோனைட்டுகள் மிகுதியாக இருந்த புவியியல் கால ஊழி."),
@@ -99,11 +99,11 @@ object FossilsBookChapter {
                         "கிரினாய்டுகள் முட்தோலிகள், கடல் அல்லிகளும் இறகு நட்சத்திரங்களும்; உறுப்புகளைக் கொண்ட கிண்ணம், கேலிக்ஸ்; அதிலிருந்து கதிர்போல் பிரியும் கைகள்; பல வடிவங்களில் விலங்கு அடியில் ஒட்டியிருந்த தண்டு ஆகியவற்றுடன் உடல். சுண்ணாம்பு ஆஸிக்கிள்களின் கூடு பல தகடுகளால் ஆனது; தண்டு இறப்புக்குப் பின் எளிதில் பிரியும் வளையங்களான கொலும்னல்களால் ஆனது. சில சுண்ணாம்புக் கற்களில் கொலும்னல்களும் கேலிக்ஸ் தகடுகளும் மிகப் பொதுவான புதைபடிவங்கள்; அங்கு முழுப் பாறை அடுக்குகளும் கிரினாய்டுச் சிதறல்களால் ஆனவையாக இருக்கலாம்."),
                     bp("Crinoid fossils record the communities of ancient seas, and some are used in correlation. Because their skeleton is made of calcite plates that are loosely joined, whole specimens are less common than the isolated parts, and the finding of an entire crinoid usually shows that it was buried rapidly. The crinoids illustrate that an animal group can be abundant in the fossil record and still be represented today by a small number of living forms." to
                         "கிரினாய்டுப் புதைபடிவங்கள் பண்டைய கடல்களின் சமூகங்களைப் பதிவு செய்கின்றன; சில ஒப்பீட்டுக்குப் பயன்படுகின்றன. அவற்றின் கூடு தளர்வாக இணைந்த கால்சைட் தகடுகளால் ஆனது என்பதால் முழு மாதிரிகள் தனிப் பகுதிகளை விட அரிது; முழு கிரினாய்டு கண்டறியப்படுவது பொதுவாக அது விரைவாகப் புதைக்கப்பட்டது எனக் காட்டுகிறது. ஒரு விலங்குக் குழு புதைபடிவப் பதிவில் மிகுதியாக இருந்தும் இன்று சிறு எண்ணிக்கை வாழும் வடிவங்களால் பிரதிநிதித்துவம் பெறலாம் என்பதை கிரினாய்டுகள் விளக்குகின்றன."),
-                    bdef("Calyx", "கேலிக்ஸ்", "The cup-shaped body of a crinoid that holds the organs." to
+                    bdef("Calyx", "கேலிக்ஸ் (Calyx)", "The cup-shaped body of a crinoid that holds the organs." to
                         "உறுப்புகளைக் கொண்ட கிரினாய்டின் கிண்ண வடிவ உடல்."),
-                    bdef("Columnal", "கொலும்னல்", "One of the ring-shaped ossicles that make up the stalk of a crinoid." to
+                    bdef("Columnal", "கொலும்னல் (Columnal)", "One of the ring-shaped ossicles that make up the stalk of a crinoid." to
                         "கிரினாய்டின் தண்டை உருவாக்கும் வளைய வடிவ ஆஸிக்கிள்களில் ஒன்று."),
-                    bdef("Crinoid", "கிரினாய்டு", "An echinoderm with a calyx, arms and often a stalk; a sea lily or feather star." to
+                    bdef("Crinoid", "கிரினாய்டு (Crinoid)", "An echinoderm with a calyx, arms and often a stalk; a sea lily or feather star." to
                         "கேலிக்ஸ், கைகள், பெரும்பாலும் தண்டுடைய முட்தோலி; கடல் அல்லி அல்லது இறகு நட்சத்திரம்."),
                 )),
             bsec("protozoa", "Soft-bodied protozoans and their exceptions", "மென்உடல் புரோட்டோசோவாக்களும் விதிவிலக்குகளும்",
@@ -119,11 +119,11 @@ object FossilsBookChapter {
                             listOf("Foraminiferans" to "ஃபோராமினிஃபெரன்கள்", "Calcareous test" to "சுண்ணாம்பு டெஸ்ட்", "Excellent; widely used microfossils" to "சிறப்பு; பரவலாகப் பயன்படும் நுண்புதைபடிவங்கள்"),
                             listOf("Radiolarians" to "ரேடியோலேரியன்கள்", "Siliceous skeleton" to "சிலிகா கூடு", "Excellent; used in biostratigraphy" to "சிறப்பு; உயிர்படிவ அடுக்கியலில் பயன்படுகிறது"),
                         )),
-                    bdef("Foraminiferan", "ஃபோராமினிஃபெரன்", "A protozoan with a calcareous shell, the test, that fossilises well." to
+                    bdef("Foraminiferan", "ஃபோராமினிஃபெரன் (Foraminiferan)", "A protozoan with a calcareous shell, the test, that fossilises well." to
                         "நன்கு புதைபடிவமாகும் சுண்ணாம்பு ஓடான டெஸ்ட் உடைய புரோட்டோசோவா."),
-                    bdef("Radiolarian", "ரேடியோலேரியன்", "A protozoan with a skeleton of silica that fossilises well." to
+                    bdef("Radiolarian", "ரேடியோலேரியன் (Radiolarian)", "A protozoan with a skeleton of silica that fossilises well." to
                         "நன்கு புதைபடிவமாகும் சிலிகா கூடுடைய புரோட்டோசோவா."),
-                    bdef("Microfossil", "நுண்புதைபடிவம்", "A fossil so small that it must be studied with a microscope." to
+                    bdef("Microfossil", "நுண்புதைபடிவம் (Microfossil)", "A fossil so small that it must be studied with a microscope." to
                         "நுண்ணோக்கியால் மட்டுமே படிக்கக்கூடிய அளவு சிறிய புதைபடிவம்."),
                 )),
             bsec("timescale", "Invertebrate history on the geological time scale", "புவியியல் காலஅளவில் முதுகெலும்பற்றவற்றின் வரலாறு",
@@ -139,7 +139,7 @@ object FossilsBookChapter {
                         )),
                     bp("The ages quoted here are rounded, and the student should use the dates in the prescribed text. The point to learn is the order of the groups, since an index fossil is useful only when it is placed in the right part of the sequence.",
                         "இங்கு தரப்பட்டுள்ள காலங்கள் முழுமையாக்கப்பட்டவை; மாணவர் பரிந்துரைக்கப்பட்ட நூலின் காலங்களையே பயன்படுத்த வேண்டும். கற்க வேண்டியது குழுக்களின் வரிசை; ஏனெனில் வழிகாட்டிப் புதைபடிவம் தொடரின் சரியான பகுதியில் வைக்கப்படும்போதே பயனுள்ளது."),
-                    bdef("Geological time scale", "புவியியல் காலஅளவு", "The division of Earth's history into eras, periods and epochs, based on the sequence of rocks and fossils." to
+                    bdef("Geological time scale", "புவியியல் காலஅளவு (Geological time scale)", "The division of Earth's history into eras, periods and epochs, based on the sequence of rocks and fossils." to
                         "பாறைகளின், புதைபடிவங்களின் தொடர் அடிப்படையில் பூமியின் வரலாற்றை ஊழிகள், காலங்கள், பருவங்களாகப் பிரித்தல்."),
                 )),
             bsec("extinction", "Mass extinctions and the fate of the invertebrate groups", "பெரும் அழிவுகளும் முதுகெலும்பற்ற குழுக்களின் முடிவும்",
@@ -148,7 +148,7 @@ object FossilsBookChapter {
                         "முதுகெலும்பற்றவற்றின் வரலாறு, புவியியல் அளவில் குறுகிய காலத்தில் இனங்களின் பெரும்பகுதி மறைந்த சில பெரும் அழிவுகளால் குறிக்கப்பட்டுள்ளது. மிகப் பெரியது பெர்மியன் காலத்தின் முடிவில் நிகழ்ந்தது; கடல் இனங்களின் பெரும்பகுதி இறந்தது; 25 கோடி ஆண்டுகளுக்கு மேல் நீடித்த டிரைலோபைட்டுகள் ஏறத்தாழ இக்காலத்தில் மறைந்தன. அம்மோனைட்டுகள் இந்நெருக்கடியிலிருந்து தப்பி மீசோசோயிக் ஊழியில் செழித்தன; ஆனால் பறவையல்லாத டைனோசர்களையும் முடித்த கிரட்டேசியஸ் முடிவின் அழிவில் மறைந்தன. இவ்வழிவுகளின் காரணங்கள் இன்னும் ஆராயப்படுகின்றன; காலநிலை மாற்றம், கடலின் வேதியியல் மாற்றங்கள், கிரட்டேசியஸ் நிகழ்வுக்கு விண்கல் மோதல் ஆகியவை விளக்கங்களில் அடங்கும்."),
                     bp("The extinctions are important to the student for two reasons. They give the fossil record the sharp divisions which are used to mark the boundaries of the geological periods, and they show that a group that is dominant at one time may be replaced, so that the group that is seen in the present is not a fixed list. The living representatives of groups that were once large and diverse, such as the brachiopods and the nautiloids, are survivors of those periods.",
                         "இவ்வழிவுகள் மாணவருக்கு இரு காரணங்களுக்காக முக்கியம். புவியியல் காலங்களின் எல்லைகளைக் குறிக்கப் பயன்படும் தெளிவான பிரிவுகளை புதைபடிவப் பதிவுக்கு அவை தருகின்றன; ஒரு காலத்தில் ஆதிக்கம் செலுத்தும் குழு மாற்றப்படலாம் என்றும், ஆகவே இன்று காணப்படும் குழு நிலையான பட்டியல் அல்ல என்றும் காட்டுகின்றன. ஒருகாலத்தில் பெரிதாகவும் பல்வகைமையுடனும் இருந்த பிராக்கியோபோடுகள், நாட்டிலாய்டுகள் போன்ற குழுக்களின் வாழும் பிரதிநிதிகள் அக்காலங்களின் தப்பிப் பிழைத்தவை."),
-                    bdef("Mass extinction", "பெரும் அழிவு", "An event in which a large proportion of the species on Earth disappears within a geologically short interval." to
+                    bdef("Mass extinction", "பெரும் அழிவு (Mass extinction)", "An event in which a large proportion of the species on Earth disappears within a geologically short interval." to
                         "புவியியல் அளவில் குறுகிய இடைவெளியில் பூமியின் இனங்களில் பெரும்பகுதி மறையும் நிகழ்வு."),
                 )),
             bsec("india", "Invertebrate fossils in India and Tamil Nadu", "இந்தியாவிலும் தமிழ்நாட்டிலும் முதுகெலும்பற்ற புதைபடிவங்கள்",

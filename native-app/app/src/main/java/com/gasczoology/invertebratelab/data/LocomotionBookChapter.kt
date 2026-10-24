@@ -26,15 +26,15 @@ object LocomotionBookChapter {
                         "அமீபாவின் சைட்டோபிளாசம் தெளிவான, ஜெல் போன்ற வெளி அடுக்கான எக்டோபிளாசமாகவும், சிறுமணி உள் திரளான, திரவம் போன்ற என்டோபிளாசமாகவும் பிரிக்கப்படுகிறது. செவ்வியல் விளக்கத்தில் எண்டோபிளாசம் நீளும் போலிக்காலுக்குள் முன்னோக்கிப் பாய்கிறது; முன்னேறும் நுனியில் வெளிநோக்கித் திரும்பி எக்டோபிளாசமாக மாறுகிறது; பின்புறத்தில் எக்டோபிளாசம் மீண்டும் என்டோபிளாசமாக மாற்றப்படுகிறது. இயக்கம் சைட்டோஸ்கெலிட்டனை, குறிப்பாக அசைவுப் புரதங்களின் உதவியுடன் இணைந்து பிரிந்து விசையைச் செலுத்தும் ஆக்டின் இழைகளை, சார்ந்தது. செவ்வியல் சோல்–ஜெல் விளக்கம் பயனுள்ள விவரிப்பு; விரிவான மூலக்கூறு இயங்குமுறை இன்னும் சிக்கலானது."),
                     bp("The pseudopodia of Amoeba proteus are lobose, which means that they are blunt and finger-like. Other protozoa have pseudopodia of other shapes, such as the thin filopodia, the branching reticulopodia of the foraminiferans, and the stiff axopodia of the heliozoans. The pseudopodia serve for feeding as well as for movement, and in a crawling cell the same extensions that pull the cell forward are those that enclose a particle of food. The drawback of this form of movement is its slowness, and it is practicable for a small animal that lives on a surface or in a film of water among debris." to
                         "அமீபா புரோட்டியஸின் போலிக்கால்கள் மழுங்கிய, விரல் போன்ற லோபோஸ் வகை. பிற புரோட்டோசோவாக்களின் போலிக்கால்கள் மெல்லிய ஃபிலோபோடியா, ஃபோராமினிஃபெராக்களின் கிளைக்கும் ரெட்டிகுலோபோடியா, ஹீலியோசோவாக்களின் விறைப்பான ஆக்சோபோடியா போன்ற பிற வடிவங்கள். போலிக்கால்கள் இயக்கத்துடன் உணவூட்டலுக்கும் பயன்படுகின்றன; ஊரும் செல்லில் செல்லை முன்னே இழுக்கும் அதே நீட்சிகளே உணவுத் துகளைச் சூழ்கின்றன. இவ்வடிவ இயக்கத்தின் குறை மெதுவானது; மேற்பரப்பிலோ குப்பைகளுக்கிடையே நீர்ப் படலத்திலோ வாழும் சிறு விலங்குக்கு இது நடைமுறைக்கு ஏற்றது."),
-                    bdef("Amoeboid movement", "அமீபாய்டு இயக்கம்", "Crawling movement by the formation of pseudopodia." to
+                    bdef("Amoeboid movement", "அமீபாய்டு இயக்கம் (Amoeboid movement)", "Crawling movement by the formation of pseudopodia." to
                         "போலிக்கால்கள் உருவாவதால் ஊர்ந்து செல்லும் இயக்கம்."),
-                    bdef("Ectoplasm", "எக்டோபிளாசம்", "The clear, gel-like outer layer of the cytoplasm of Amoeba." to
+                    bdef("Ectoplasm", "எக்டோபிளாசம் (Ectoplasm)", "The clear, gel-like outer layer of the cytoplasm of Amoeba." to
                         "அமீபாவின் சைட்டோபிளாசத்தின் தெளிவான, ஜெல் போன்ற வெளி அடுக்கு."),
-                    bdef("Endoplasm", "எண்டோபிளாசம்", "The granular, more fluid inner mass of the cytoplasm of Amoeba." to
+                    bdef("Endoplasm", "எண்டோபிளாசம் (Endoplasm)", "The granular, more fluid inner mass of the cytoplasm of Amoeba." to
                         "அமீபாவின் சைட்டோபிளாசத்தின் சிறுமணி, அதிக திரவ உள் திரள்."),
                     bdef("Actin filament", "ஆக்டின் இழை", "A thin protein filament of the cytoskeleton that takes part in cell movement." to
                         "செல் இயக்கத்தில் பங்குபெறும் சைட்டோஸ்கெலிட்டனின் மெல்லிய புரத இழை."),
-                    bdef("Lobopodium", "லோபோபோடியம்", "A blunt, finger-like pseudopodium, as in Amoeba proteus." to
+                    bdef("Lobopodium", "லோபோபோடியம் (Lobopodium)", "A blunt, finger-like pseudopodium, as in Amoeba proteus." to
                         "அமீபா புரோட்டியஸில் உள்ளது போன்ற மழுங்கிய, விரல் போன்ற போலிக்கால்."),
                 )),
             bsec("flagella", "Flagellar movement in Euglena", "யூக்ளினாவில் கசை இயக்கம்",
@@ -47,11 +47,11 @@ object LocomotionBookChapter {
                         "எனவே கசை நீந்தும் உறுப்பு; இயங்க நீர் தேவை. ஒளிச்சேர்க்கை செய்யும் யூக்ளினா போன்ற உயிரிக்கு அதற்கு இரண்டாம் பயன் உண்டு; ஏனெனில் நீந்துவது கண்புள்ளியுடன் சேர்ந்து பொருத்தமான செறிவுள்ள ஒளியைத் தேட செல்லை அனுமதிக்கிறது. ஒட்டுண்ணிக் கசையிழை உயிரிகளில் கசைக்கு கூடுதல் பணி உண்டு. டிரிப்பனோசோமாவில் அது அலை சவ்வால் இணைந்து செல்லில் ஓடி, இரத்தத்திலும் திசு நீர்மங்களிலும் ஒட்டுண்ணி நகர உதவுகிறது."),
                     bdef("Flagellum", "கசை", "A long, whip-like organelle of locomotion, few in number, with a microtubule axoneme." to
                         "நுண்குழல் ஆக்சோனீம் கொண்ட, எண்ணிக்கையில் குறைவான, நீண்ட சவுக்கு போன்ற இயக்க உறுப்பு."),
-                    bdef("Euglenoid movement", "யூக்ளினாய்டு இயக்கம்", "A slow change of shape of the body of Euglena that allows it to creep." to
+                    bdef("Euglenoid movement", "யூக்ளினாய்டு இயக்கம் (Euglenoid movement)", "A slow change of shape of the body of Euglena that allows it to creep." to
                         "யூக்ளினாவின் உடல் மெதுவாக வடிவம் மாறி ஊர அனுமதிக்கும் இயக்கம்."),
-                    bdef("Pellicle", "பெல்லிக்கிள்", "The flexible protein covering below the cell membrane of Euglena." to
+                    bdef("Pellicle", "பெல்லிக்கிள் (Pellicle)", "The flexible protein covering below the cell membrane of Euglena." to
                         "யூக்ளினாவின் செல் சவ்வின் கீழுள்ள நெகிழ்வான புரத உறை."),
-                    bdef("Reservoir", "தேக்கக் குழி", "The flask-shaped cavity at the front of Euglena from which the flagella arise." to
+                    bdef("Reservoir", "தேக்கக் குழி (Reservoir)", "The flask-shaped cavity at the front of Euglena from which the flagella arise." to
                         "கசைகள் எழும் யூக்ளினாவின் முன்புறமுள்ள குடுவை வடிவக் குழி."),
                 )),
             bsec("cilia", "Ciliary movement in Paramecium", "பாரமீசியத்தில் மயிரிழை இயக்கம்",
@@ -64,13 +64,13 @@ object LocomotionBookChapter {
                         "பாரமீசியத்தில் மயிரிழைகளுக்கு இரு முதன்மைப் பயன்கள்: இயக்கமும் உணவூட்டலும். வாய்ப் பள்ளத்தினவை ஊட்டச்சத்து அத்தியாயத்தில் விவரிக்கப்பட்டபடி உணவைக் கொண்டுவரும் நீரோட்டத்தை உண்டாக்கச் சிறப்பாக்கப்பட்டவை. பாரமீசியம் முன்னேறும்போது உடல் சுழல்வதால் சுருள் பாதையில் நீந்துகிறது; ஒரு நொடியில் உடல் நீளத்தின் பல மடங்கு வேகத்தை எட்டக்கூடும்; ஒற்றை செல்லுக்கு இது விரைவு. எனவே மயிரிழைகள் போலிக்கால்களை விட மிக வேகமான முன்னேற்றச் சாதனம்; உணவுத் தேடலில் செல் பெரும் அளவு நீரை உள்ளடக்க முடியும்."),
                     bdef("Cilium", "மயிரிழை", "A short, hair-like organelle of locomotion or feeding, numerous on the cell, with a microtubule axoneme." to
                         "இயக்கம் அல்லது உணவூட்டலுக்கான, செல்லில் ஏராளமாக உள்ள, நுண்குழல் ஆக்சோனீம் கொண்ட குறுகிய முடி போன்ற உறுப்பு."),
-                    bdef("Metachronal wave", "மெட்டாக்ரோனல் அலை", "The coordinated wave of ciliary beating that passes over the surface of a ciliated cell." to
+                    bdef("Metachronal wave", "மெட்டாக்ரோனல் அலை (Metachronal wave)", "The coordinated wave of ciliary beating that passes over the surface of a ciliated cell." to
                         "மயிரிழை செல்லின் மேற்பரப்பில் செல்லும் ஒருங்கிணைந்த மயிரிழை அடிப்பு அலை."),
-                    bdef("Effective stroke", "பயனுள்ள வீச்சு", "The powerful phase of the beat of a cilium that drives the water or the cell." to
+                    bdef("Effective stroke", "பயனுள்ள வீச்சு (Effective stroke)", "The powerful phase of the beat of a cilium that drives the water or the cell." to
                         "நீரையோ செல்லையோ உந்தும் மயிரிழை அடிப்பின் வலுவான நிலை."),
-                    bdef("Recovery stroke", "மீட்பு வீச்சு", "The slower phase of the beat in which the cilium returns to its starting position." to
+                    bdef("Recovery stroke", "மீட்பு வீச்சு (Recovery stroke)", "The slower phase of the beat in which the cilium returns to its starting position." to
                         "மயிரிழை தொடக்க நிலைக்குத் திரும்பும் அடிப்பின் மெதுவான நிலை."),
-                    bdef("Avoiding reaction", "தவிர்ப்புத் துலங்கல்", "The behaviour of a ciliate that reverses, turns and swims off in a new direction on meeting an obstacle or an unfavourable condition." to
+                    bdef("Avoiding reaction", "தவிர்ப்புத் துலங்கல் (Avoiding reaction)", "The behaviour of a ciliate that reverses, turns and swims off in a new direction on meeting an obstacle or an unfavourable condition." to
                         "தடையை அல்லது சாதகமற்ற நிலையைச் சந்திக்கும்போது சிலியேட் பின்னோக்கி, திரும்பி புதிய திசையில் நீந்தும் நடத்தை."),
                 )),
             bsec("compare", "Cilia and flagella compared", "மயிரிழைகளும் கசைகளும் ஒப்பீடு",
@@ -92,7 +92,7 @@ object LocomotionBookChapter {
                         "மயிரிழை அல்லது கசையின் நுண்குழல் மையம்; ஒரு மைய இணையைச் சுற்றி ஒன்பது புற இணைகள்."),
                     bdef("Microtubule", "நுண்குழல்", "A hollow protein tube of the cytoskeleton that forms part of cilia and flagella." to
                         "மயிரிழைகள், கசைகளின் பகுதியாக அமையும் சைட்டோஸ்கெலிட்டனின் வெற்றுப் புரதக் குழாய்."),
-                    bdef("Basal body", "அடிப்படை உடல்", "The structure in the cytoplasm at the base of a cilium or flagellum from which the axoneme arises." to
+                    bdef("Basal body", "அடிப்படை உடல் (Basal body)", "The structure in the cytoplasm at the base of a cilium or flagellum from which the axoneme arises." to
                         "அடியில் சைட்டோபிளாசத்தில் உள்ள, ஆக்சோனீம் எழும் அமைப்பு."),
                 )),
             bsec("habitat", "Locomotion and habitat", "இயக்கமும் வாழிடமும்",
@@ -113,9 +113,9 @@ object LocomotionBookChapter {
                         )),
                     bdef("Adaptation", "தகவமைப்பு", "A feature of an organism that suits it to its environment and way of life." to
                         "உயிரியை அதன் சூழலுக்கும் வாழ்க்கை முறைக்கும் பொருத்தும் பண்பு."),
-                    bdef("Gliding", "சறுக்கு இயக்கம்", "Movement over a surface or through tissue without cilia, flagella or pseudopodia, as in the sporozoites of Plasmodium." to
+                    bdef("Gliding", "சறுக்கு இயக்கம் (Gliding)", "Movement over a surface or through tissue without cilia, flagella or pseudopodia, as in the sporozoites of Plasmodium." to
                         "பிளாஸ்மோடியத்தின் ஸ்போரோசோயிட்டுகள் போல, மயிரிழை, கசை, போலிக்கால் இன்றி மேற்பரப்பிலோ திசுவினூடேயோ நகர்தல்."),
-                    bdef("Apicomplexa", "அபிகாம்ப்ளெக்ஸா", "A group of parasitic protozoa, including Plasmodium, that have a characteristic apical complex of organelles." to
+                    bdef("Apicomplexa", "அபிகாம்ப்ளெக்ஸா (Apicomplexa)", "A group of parasitic protozoa, including Plasmodium, that have a characteristic apical complex of organelles." to
                         "பிளாஸ்மோடியம் உள்ளடங்கிய, தனிப்பண்பு நுனித் தொகுதி உறுப்புகள் கொண்ட ஒட்டுண்ணிப் புரோட்டோசோவாக் குழு."),
                 )),
             bsec("physics", "Moving in a world dominated by viscosity", "பாகுநிலை ஆளும் உலகில் நகர்தல்",
@@ -124,7 +124,7 @@ object LocomotionBookChapter {
                         "புரோட்டோசோவா நீரில் நீந்துகிறது; ஆனால் மீனோ மனித நீச்சல்காரரோ உணர்வது போல் நீரை உணர்வதில்லை. ஒரு செல்லின் மிகச் சிறிய அளவிலும், அதிலிருந்து தொடரும் குறைந்த வேகத்திலும் நீரின் பாகுநிலை நீந்துபவரின் உந்தத்தை விட ஆதிக்கம் செலுத்துகிறது. அத்தகைய உயிரிக்கு நழுவிச் செல்லுதல் சிறிதே; மயிரிழைகளின் வீச்சு நின்றவுடன் இயக்கமும் கிட்டத்தட்ட உடனே நிற்கிறது. இதை இயற்பியலாளர், நிலைமவிசைக்கும் பாகுநிலை விசைக்குமான விகிதமான ரெய்னால்ட்ஸ் எண் மிகச் சிறியது என்று கூறுகிறார்; உயிரியலாளருக்கான கருத்து: புரோட்டோசோவாவுக்கு நீர் அடர் பாகு போல உணரப்படுகிறது. விளைவுகள்: மயிரிழை அல்லது கசையின் வீச்சு நிகர இயக்கத்தை உருவாக்க வேண்டுமெனில் ஏதேனும் வகையில் சமச்சீரற்றதாக, முன்னும் பின்னும் வெவ்வேறு பாதையுடன் இருக்க வேண்டும்; ஏனெனில் வெறுமனே தலைகீழாக்கப்படும் இயக்கம் உயிரியை முன்னே சென்ற அதே தூரத்துக்குப் பின்னே கொண்டு செல்லும்."),
                     bp("This explains the design of the two strokes of a cilium described in the chapter. The effective stroke is a stiff, straight sweep that pushes against a large amount of water, and the recovery stroke is a bent and slow return close to the surface, which pushes against much less, so that the net effect is a push in one direction. A flagellum solves the same problem by the passage of a wave along its length, which is symmetrical in time but whose direction of travel produces thrust. The physical argument is not required in a standard examination, but a sentence on it shows why the stroke has two phases and why a student who simply says that the cilia row like oars has an incomplete picture. Care should be taken with the oar comparison, which is an old teaching analogy and is useful only for the bending of the recovery stroke.",
                         "இது அத்தியாயத்தில் விவரித்த மயிரிழையின் இரு வீச்சுகளின் வடிவமைப்பை விளக்குகிறது. பயனுள்ள வீச்சு அதிக நீருக்கு எதிராகத் தள்ளும் விறைப்பான, நேரான துடைப்பு; மீட்பு வீச்சு மேற்பரப்புக்கு அருகில் வளைந்த மெதுவான திரும்புதல், மிகக் குறைந்த நீருக்கு எதிராகத் தள்ளுகிறது; எனவே நிகர விளைவு ஒரே திசையில் தள்ளுதல். கசை அதே சிக்கலைத் தன் நீளத்தில் செல்லும் அலையால் தீர்க்கிறது; அது காலத்தில் சமச்சீரானது; ஆனால் அதன் பயணத் திசை உந்துவிசையை உருவாக்குகிறது. இயற்பியல் வாதம் நிலையான தேர்வுக்குத் தேவையில்லை; ஆனால் அதைப் பற்றிய ஒரு வாக்கியம் வீச்சு ஏன் இரு நிலைகளைக் கொண்டுள்ளது என்பதையும், மயிரிழைகள் துடுப்புகளைப் போலத் துடுப்புப் போடுகின்றன என்று மட்டும் கூறும் மாணவருக்கு முழுமையற்ற படம் உள்ளது என்பதையும் காட்டுகிறது. துடுப்பு ஒப்பீட்டில் கவனம் தேவை; அது பழைய கற்பித்தல் உவமை; மீட்பு வீச்சின் வளைவுக்கு மட்டுமே பயனுள்ளது."),
-                    bdef("Viscosity", "பாகுநிலை", "The resistance of a fluid to flow, which makes water seem thick to a very small swimmer." to
+                    bdef("Viscosity", "பாகுநிலை (Viscosity)", "The resistance of a fluid to flow, which makes water seem thick to a very small swimmer." to
                         "பாய்மம் ஓடுவதற்கான எதிர்ப்பு; மிகச் சிறிய நீந்துபவருக்கு நீரை அடர்த்தியாகத் தோன்றச் செய்கிறது."),
                 )),
             bsec("variants", "Variations on the three themes", "மூன்று கருத்துகளின் மாறுபாடுகள்",
@@ -133,9 +133,9 @@ object LocomotionBookChapter {
                         "போலிக்கால், கசை, மயிரிழை என்ற மூன்று வகை இயக்கங்களே அத்தியாயத்தின் முக்கிய கருத்துகள்; சில புரோட்டோசோவாக்கள் மாணவர் வெளிக்கோட்டில் அறிய வேண்டிய மாறுபாடுகளைக் காட்டுகின்றன. அமீபாய்டு புரோட்டோசோவாக்களில் சில நுண்குழல் கோலால் தாங்கப்படும் மெல்லிய போலிக்கால்களான ஆக்சோபோடியாக்களை உருவாக்குகின்றன; மற்றவை கிளைத்து இணையும் இழைகளான ரெட்டிகுலோபோடியாக்களைக் கொண்டுள்ளன; அவை உணவைப் பிடிக்கவும் இயக்கத்துக்கும் பயன்படுகின்றன; இவை ஹீலியோசோவான்கள், ஃபோராமினிஃபெராக்கள் போன்ற குழுக்களைச் சேர்ந்தவை. ஒட்டுண்ணிக் கசைவாலி டிரைபனோசோமாவில், கசை உடலின் பக்கவாட்டில் இணைந்து செல்சவ்வின் மடிப்பான அலை சவ்வை இழுத்து மேலே தூக்குகிறது; கசையின் அலை உடல் முழுவதும் கடத்தப்பட்டு, உயிரி பாகுநிலை மிக்க இரத்தத்தில் திருகு போன்ற இயக்கத்துடன் நகர்கிறது. இக்கூற்று இரத்தத்திலுள்ள வடிவத்துக்குப் பொருந்தும்; வாழ்க்கைச் சுழற்சி நிலைக்கு ஏற்ப மாறும்."),
                     bp("Other protozoans combine methods or use unusual ones. Many ciliates that live attached, such as Vorticella, have a stalk that can shorten very rapidly by coiling, pulling the body down, and then extend slowly again, and the contractile element involved is not a muscle in the animal sense but a structure within the cell; the detail should be given only if it is in the prescribed text. Gregarines and some other sporozoans are described as moving by gliding over a surface without cilia, flagella or visible pseudopodia, and the sporozoite and merozoite of Plasmodium are said to move in a gliding fashion also, a movement that is powered by a protein motor beneath the membrane. The point for the examination is that a stage of the life cycle may be non-motile, motile by gliding, or motile by any of the three standard methods, and the locomotion of a parasite should be linked to the stage and the host.",
                         "பிற புரோட்டோசோவாக்கள் முறைகளை இணைக்கின்றன அல்லது அசாதாரண முறைகளைப் பயன்படுத்துகின்றன. வோர்டிசெல்லா போன்ற ஒட்டி வாழும் பல சிலியேட்டுகளுக்கு சுருண்டு உடலை இழுக்கும் வகையில் மிக விரைவாகக் குறுகி, பின் மெதுவாக நீளும் காம்பு உண்டு; இதில் பங்கு கொள்ளும் சுருங்கும் கூறு விலங்கு பொருளிலான தசை அல்ல, செல்லுக்குள் இருக்கும் அமைப்பு; விவரம் பாடநூலில் இருந்தால் மட்டுமே தரப்பட வேண்டும். கிரெகரைன்கள், சில பிற ஸ்போரோசோவாக்கள் மயிரிழை, கசை, காணத்தக்க போலிக்கால் இன்றி மேற்பரப்பில் சறுக்கி நகர்வதாக விவரிக்கப்படுகின்றன; பிளாஸ்மோடியத்தின் ஸ்போரோசோயிட், மீரோசோயிட்டும் சறுக்கி நகர்வதாகக் கூறப்படுகிறது; சவ்வின் அடியிலுள்ள புரத மோட்டாரால் இயக்கப்படும் இயக்கம் இது. தேர்வுக்கான கருத்து: வாழ்க்கைச் சுழற்சியின் ஒரு நிலை அசையாததாகவோ, சறுக்கி நகர்வதாகவோ, மூன்று நிலையான முறைகளில் ஏதேனும் ஒன்றால் நகர்வதாகவோ இருக்கலாம்; ஒட்டுண்ணியின் இயக்கம் நிலையுடனும் விருந்தோம்பியுடனும் இணைக்கப்பட வேண்டும்."),
-                    bdef("Axopodium", "ஆக்சோபோடியம்", "A thin, stiff pseudopodium supported by a core of microtubules." to
+                    bdef("Axopodium", "ஆக்சோபோடியம் (Axopodium)", "A thin, stiff pseudopodium supported by a core of microtubules." to
                         "நுண்குழல் மையத்தால் தாங்கப்படும் மெல்லிய, விறைப்பான போலிக்கால்."),
-                    bdef("Undulating membrane", "அலை சவ்வு", "A fold of the cell membrane drawn up by the attached flagellum along the body of Trypanosoma." to
+                    bdef("Undulating membrane", "அலை சவ்வு (Undulating membrane)", "A fold of the cell membrane drawn up by the attached flagellum along the body of Trypanosoma." to
                         "டிரைபனோசோமாவின் உடலில் இணைந்த கசையால் மேலே இழுக்கப்படும் செல்சவ்வின் மடிப்பு."),
                 )),
             bsec("answering", "Answering questions on locomotion", "இயக்கம் பற்றிய வினாக்களுக்கு விடையளித்தல்",

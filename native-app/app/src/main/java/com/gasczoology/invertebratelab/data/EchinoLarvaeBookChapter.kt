@@ -31,15 +31,15 @@ object EchinoLarvaeBookChapter {
                     ),
                     bp("Most echinoderms have a planktonic larva that feeds and grows before metamorphosis, and such a larva is called planktotrophic. Some species instead have a larva that does not feed, living on the yolk of the egg, which is lecithotrophic, and a few have direct development with no free larva. The statements of the textbooks about larvae are for the feeding larvae of species that shed their eggs into the sea, and the other modes are exceptions." to
                         "பெரும்பாலான முட்தோலிகளுக்கு உருமாற்றத்துக்கு முன் உண்டு வளரும் மிதவை லார்வா உண்டு; அத்தகைய லார்வா உணவூட்ட லார்வா எனப்படுகிறது. சில இனங்களுக்கு முட்டையின் கருவுணவில் வாழும், உண்ணாத லார்வா உண்டு; அது கருவுணவு லார்வா; சிலவற்றில் தனி லார்வா இன்றி நேரடி வளர்ச்சி. லார்வாக்கள் பற்றிய பாடநூல் கூற்றுகள் முட்டைகளைக் கடலில் விடும் இனங்களின் உண்ணும் லார்வாக்களுக்கானவை; மற்ற முறைகள் விதிவிலக்குகள்."),
-                    bdef("Dipleurula", "டிப்ளூரூலா", "A hypothetical bilateral ciliated larva used as a model for the larvae of echinoderms and hemichordates." to
+                    bdef("Dipleurula", "டிப்ளூரூலா (Dipleurula)", "A hypothetical bilateral ciliated larva used as a model for the larvae of echinoderms and hemichordates." to
                         "முட்தோலிகள், ஹெமிகார்டேட்டுகளின் லார்வாக்களுக்கு மாதிரியாகப் பயன்படும் கற்பனை இருபக்க கசையிழை லார்வா."),
-                    bdef("Planktotrophic larva", "உணவூட்ட லார்வா", "A larva that feeds on plankton while it develops." to
+                    bdef("Planktotrophic larva", "உணவூட்ட லார்வா (Planktotrophic larva)", "A larva that feeds on plankton while it develops." to
                         "வளரும்போது மிதவை உயிரிகளை உண்ணும் லார்வா."),
-                    bdef("Lecithotrophic larva", "கருவுணவு லார்வா", "A larva that does not feed and lives on the yolk of the egg." to
+                    bdef("Lecithotrophic larva", "கருவுணவு லார்வா (Lecithotrophic larva)", "A larva that does not feed and lives on the yolk of the egg." to
                         "உண்ணாமல் முட்டையின் கருவுணவில் வாழும் லார்வா."),
-                    bdef("Ciliary band", "கசையிழைப் பட்டை", "A band of cilia used by a larva for swimming and for collecting food." to
+                    bdef("Ciliary band", "கசையிழைப் பட்டை (Ciliary band)", "A band of cilia used by a larva for swimming and for collecting food." to
                         "லார்வா நீந்தவும் உணவு சேகரிக்கவும் பயன்படுத்தும் கசையிழைப் பட்டை."),
-                    bdef("Tornaria", "டார்னேரியா", "The larva of enteropneust hemichordates, which resembles the bipinnaria." to
+                    bdef("Tornaria", "டார்னேரியா (Tornaria)", "The larva of enteropneust hemichordates, which resembles the bipinnaria." to
                         "பிபின்னேரியாவை ஒத்த, என்டரோப்நியூஸ்ட் ஹெமிகார்டேட்டுகளின் லார்வா."),
                 )),
             bsec("asteroid", "Larvae of the starfishes: bipinnaria and brachiolaria", "நட்சத்திர மீன் லார்வாக்கள்: பிபின்னேரியாவும் பிராக்கியோலேரியாவும்",
@@ -49,9 +49,9 @@ object EchinoLarvaeBookChapter {
                     bfig("asterias/larval-development", "Larval development of a starfish, from the bipinnaria and brachiolaria to the settled juvenile." to "நட்சத்திரமீனின் லார்வா வளர்ச்சி: பிபின்னேரியா, பிராக்கியோலேரியாவிலிருந்து படிந்த இளவிலங்கு வரை."),
                     bp("In many starfishes the bipinnaria is followed by the brachiolaria, which has the same features and, in addition, three short arms at the front, called brachiolar arms, with an adhesive disc between them. These are used for attachment to the bottom at the time of settlement. The brachiolaria develops from a bipinnaria in the life histories of those species that have it, and not every starfish passes through both. The student should describe the order, bipinnaria followed by brachiolaria, but should add that this is the common sequence and not a rule for all." to
                         "பல நட்சத்திர மீன்களில் பிபின்னேரியாவைத் தொடர்ந்து பிராக்கியோலேரியா வருகிறது; அது அதே பண்புகளுடன் கூடுதலாக முன்புறம் பிராக்கியோலார் கைகள் எனும் மூன்று குறுகிய கைகளையும் அவற்றிடையே ஒட்டும் வட்டையும் கொண்டது. இவை படியும்போது அடியில் ஒட்டிக்கொள்ளப் பயன்படுகின்றன. பிராக்கியோலேரியா அதைக் கொண்ட இனங்களின் வாழ்க்கை வரலாற்றில் பிபின்னேரியாவிலிருந்து வளர்கிறது; ஒவ்வொரு நட்சத்திரமீனும் இரண்டையும் கடப்பதில்லை. மாணவர் பிபின்னேரியாவைத் தொடர்ந்து பிராக்கியோலேரியா என்ற வரிசையை விவரிக்க வேண்டும்; ஆனால் இது பொதுவான வரிசை, அனைவருக்குமான விதி அல்ல என்றும் சேர்க்க வேண்டும்."),
-                    bdef("Bipinnaria", "பிபின்னேரியா", "The ciliated feeding larva of many starfishes, with looping ciliary bands and lobed arms." to
+                    bdef("Bipinnaria", "பிபின்னேரியா (Bipinnaria)", "The ciliated feeding larva of many starfishes, with looping ciliary bands and lobed arms." to
                         "வளையக் கசையிழைப் பட்டைகளும் மடல் கைகளும் உடைய பல நட்சத்திர மீன்களின் உணவூட்ட லார்வா."),
-                    bdef("Brachiolaria", "பிராக்கியோலேரியா", "The later larva of many starfishes, with three brachiolar arms and an adhesive disc used for settlement." to
+                    bdef("Brachiolaria", "பிராக்கியோலேரியா (Brachiolaria)", "The later larva of many starfishes, with three brachiolar arms and an adhesive disc used for settlement." to
                         "படிவதற்குப் பயன்படும் மூன்று பிராக்கியோலார் கைகளும் ஒட்டும் வட்டும் கொண்ட பல நட்சத்திர மீன்களின் பிந்திய லார்வா."),
                     bdef("Settlement", "படிதல்", "The stage at which a larva leaves the plankton and attaches to the bottom before metamorphosis." to
                         "உருமாற்றத்துக்கு முன் லார்வா மிதவையை விட்டு அடியில் ஒட்டிக்கொள்ளும் நிலை."),
@@ -62,11 +62,11 @@ object EchinoLarvaeBookChapter {
                         "கடல் முள்ளெலிகளுக்கும் பிரிட்டில் நட்சத்திரங்களுக்கும் ப்ளூட்டியஸ் உண்டு; கைகளைத் தாங்கும் நீண்ட, மெல்லிய சுண்ணாம்புக் கம்பிகளால் தாங்கப்படும் இருபக்கச் சமச்சீர் லார்வா. கசையிழைப் பட்டை கைகள், உடலின் ஓரங்களில் செல்கிறது; கைகளின் எண்ணிக்கையும் அமைப்பும் இனத்தையும் லார்வாவின் வயதையும் பொறுத்து மாறும். கடல் முள்ளெலியின் ப்ளூட்டியஸ் எக்கினோப்ளூட்டியஸ்; பிரிட்டில் நட்சத்திரத்தின் ஓஃபியோப்ளூட்டியஸ்; இரண்டும் கைகளின் எண்ணிக்கையிலும் கூட்டுக் கம்பிகளின் அமைப்பிலும் வேறுபடுகின்றன. கடல் முள்ளெலி முட்டைகள் எளிதில் கருவுற்று விரைவாக வளர்வதால் ப்ளூட்டியஸ் கருவியல் கற்பித்தலிலும் ஆய்வகப் பணியிலும் மிக விரிவாகப் பயன்படுகிறது."),
                     bp("A student must not confuse the pluteus with the bipinnaria. The pluteus is distinguished by its skeletal rods and its pointed arms, and the bipinnaria by its looping bands, its soft lobed arms and the absence of any skeleton. The metamorphosis of a pluteus is rapid and dramatic, since the juvenile develops from a rudiment on one side of the larva, and much of the larval body is lost or absorbed." to
                         "மாணவர் ப்ளூட்டியஸை பிபின்னேரியாவுடன் குழப்பக்கூடாது. ப்ளூட்டியஸ் கூட்டுக் கம்பிகளாலும் கூர்மையான கைகளாலும் வேறுபடுகிறது; பிபின்னேரியா வளையப் பட்டைகள், மென்மையான மடல் கைகள், எந்தக் கூடும் இல்லாமையால் வேறுபடுகிறது. ப்ளூட்டியஸின் உருமாற்றம் விரைவானது, வியத்தகுது; ஏனெனில் இளவிலங்கு லார்வாவின் ஒரு பக்கத்திலுள்ள அரும்பிலிருந்து வளர்கிறது; லார்வா உடலின் பெரும்பகுதி இழக்கப்படுகிறது அல்லது உறிஞ்சப்படுகிறது."),
-                    bdef("Pluteus", "ப்ளூட்டியஸ்", "The larva of sea urchins and brittle stars, with calcareous skeletal rods supporting long arms." to
+                    bdef("Pluteus", "ப்ளூட்டியஸ் (Pluteus)", "The larva of sea urchins and brittle stars, with calcareous skeletal rods supporting long arms." to
                         "நீண்ட கைகளைத் தாங்கும் சுண்ணாம்புக் கூட்டுக் கம்பிகள் கொண்ட கடல் முள்ளெலி, பிரிட்டில் நட்சத்திர லார்வா."),
-                    bdef("Echinopluteus", "எக்கினோப்ளூட்டியஸ்", "The pluteus larva of a sea urchin." to
+                    bdef("Echinopluteus", "எக்கினோப்ளூட்டியஸ் (Echinopluteus)", "The pluteus larva of a sea urchin." to
                         "கடல் முள்ளெலியின் ப்ளூட்டியஸ் லார்வா."),
-                    bdef("Ophiopluteus", "ஓஃபியோப்ளூட்டியஸ்", "The pluteus larva of a brittle star." to
+                    bdef("Ophiopluteus", "ஓஃபியோப்ளூட்டியஸ் (Ophiopluteus)", "The pluteus larva of a brittle star." to
                         "பிரிட்டில் நட்சத்திரத்தின் ப்ளூட்டியஸ் லார்வா."),
                 )),
             bsec("holothuroid-crinoid", "Larvae of the sea cucumbers and the sea lilies", "கடல் வெள்ளரி, கடல் அல்லி லார்வாக்கள்",
@@ -85,9 +85,9 @@ object EchinoLarvaeBookChapter {
                             listOf("Auricularia" to "ஆரிக்குலேரியா", "Holothuroidea" to "ஹோலோதூரோய்டியா", "One continuous ciliary band; may be followed by a doliolaria" to "ஒரே தொடர்ச்சியான கசையிழைப் பட்டை; டோலியோலேரியா தொடரலாம்"),
                             listOf("Doliolaria" to "டோலியோலேரியா", "Holothuroidea and Crinoidea" to "ஹோலோதூரோய்டியா, கிரினாய்டியா", "Barrel-shaped, with several ciliary rings; does not feed" to "பல கசையிழை வளையங்களுடன் உருளை வடிவம்; உண்ணாது"),
                         )),
-                    bdef("Auricularia", "ஆரிக்குலேரியா", "The feeding larva of many sea cucumbers, with a single looped ciliary band." to
+                    bdef("Auricularia", "ஆரிக்குலேரியா (Auricularia)", "The feeding larva of many sea cucumbers, with a single looped ciliary band." to
                         "ஒற்றை வளையக் கசையிழைப் பட்டை உடைய பல கடல் வெள்ளரிகளின் உணவூட்ட லார்வா."),
-                    bdef("Doliolaria", "டோலியோலேரியா", "A barrel-shaped non-feeding larva with several rings of cilia, found in sea cucumbers and crinoids." to
+                    bdef("Doliolaria", "டோலியோலேரியா (Doliolaria)", "A barrel-shaped non-feeding larva with several rings of cilia, found in sea cucumbers and crinoids." to
                         "கடல் வெள்ளரிகளிலும் கிரினாய்டுகளிலும் காணப்படும் பல கசையிழை வளையங்களுடன் உருளை வடிவ உண்ணாத லார்வா."),
                 )),
             bsec("metamorphosis", "Metamorphosis to the pentaradial juvenile", "ஐந்தாரை இளவிலங்காக உருமாற்றம்",
@@ -103,7 +103,7 @@ object EchinoLarvaeBookChapter {
                         "லார்வா வேறு வடிவ இளவிலங்காக மறுசீரமைக்கப்படுதல்."),
                     bdef("Rudiment", "அரும்பு", "A group of cells in a larva that will form an adult structure." to
                         "முதிர்ந்த அமைப்பாக மாறும் லார்வாவிலுள்ள செல் குழு."),
-                    bdef("Juvenile", "இளவிலங்கு", "A young animal that has the form of the adult but is not sexually mature." to
+                    bdef("Juvenile", "இளவிலங்கு (Juvenile)", "A young animal that has the form of the adult but is not sexually mature." to
                         "முதிர்ந்ததின் வடிவம் உடைய ஆனால் பாலினமுதிர்ச்சி அடையாத இளம் விலங்கு."),
                 )),
             bsec("embryo", "Early development before the larva", "லார்வாவுக்கு முன்னான தொடக்க வளர்ச்சி",
@@ -114,9 +114,9 @@ object EchinoLarvaeBookChapter {
                         "சீலோமும் தனித்தன்மையுடன் தோன்றுகிறது. ஆர்க்கென்டரானிலிருந்து பைகள் வளர்ந்து கிள்ளி எடுக்கப்பட்டு சீலோம் பைகளை உருவாக்குகின்றன; இது என்டெரோசீலி எனப்படுகிறது. எக்கைனோடெர்ம் லார்வாவில் இடது, வலது சீலோம் பைகள் பின்னர் நீர்க்குழல் மண்டலத்தையும் உடற்குழியையும் உருவாக்கும் பகுதிகளாகப் பிரிகின்றன; நீர்க்குழல் மண்டலத்துக்கு பெரும்பாலும் இடப்பக்கமே காரணம். லார்வா இருபக்கச் சமச்சீர், முதிர்ந்தது இரண்டாம் நிலையாகவே ஆரச்சமச்சீர் என்பதால், முதிர்ந்த ஐந்தாரை உடல் தொடக்க அமைப்பில் இவ்வளவு சமச்சீரற்றது என்பதை இவ்விவரம் விளக்குகிறது."),
                     bdef("Deuterostome", "டியூட்டிரோஸ்டோம்", "An animal in which the blastopore becomes the anus and the mouth forms secondarily; the echinoderms, hemichordates and chordates." to
                         "பிளாஸ்டோபோர் குதமாகி வாய் இரண்டாம் நிலையாக உருவாகும் விலங்கு; எக்கைனோடெர்ம்கள், ஹெமிகார்டேட்டுகள், கார்டேட்டுகள்."),
-                    bdef("Enterocoely", "என்டெரோசீலி", "The formation of the coelom from pouches that grow out from the wall of the primitive gut." to
+                    bdef("Enterocoely", "என்டெரோசீலி (Enterocoely)", "The formation of the coelom from pouches that grow out from the wall of the primitive gut." to
                         "ஆதிக் குடல் சுவரிலிருந்து வளரும் பைகளிலிருந்து சீலோம் உருவாதல்."),
-                    bdef("Blastopore", "பிளாஸ்டோபோர்", "The opening of the archenteron to the outside in the gastrula; it becomes the anus in a deuterostome." to
+                    bdef("Blastopore", "பிளாஸ்டோபோர் (Blastopore)", "The opening of the archenteron to the outside in the gastrula; it becomes the anus in a deuterostome." to
                         "கேஸ்ட்ருலாவில் ஆர்க்கென்டரான் வெளியே திறக்கும் துளை; டியூட்டிரோஸ்டோமில் குதமாகிறது."),
                 )),
             bsec("ecology", "Larvae in ecology and in the hatchery", "சூழலியலிலும் குஞ்சு பொரிப்பகத்திலும் லார்வாக்கள்",
@@ -154,9 +154,9 @@ object EchinoLarvaeBookChapter {
                         "ஒப்பீடு குவிவுப் பரிணாமத்துக்கு எடுத்துக்காட்டு; தொடர்பற்ற விலங்குகள் சிறு மிதக்கும் உண்ணியாக வாழும் சிக்கலுக்கு ஒத்த தீர்வுகளைப் பரிணமிக்கின்றன. ஒத்தமைவு பற்றிக் கேட்கப்படும்போது, ஒத்தமைவு ஒரு அமைப்பின் பகிரப்பட்ட மூதாதைத்தன்மையைச் சார்ந்தது என்றும், இரு லார்வாக்களும் இயக்க அமைப்புகளின் தோற்றம், உடல் திட்டம், அவை பிரதிநிதித்துவப்படுத்தும் பரம்பரைகளில் வேறுபடுகின்றன என்றும் மாணவர் காட்ட வேண்டும்."),
                     bdef("Homology", "ஒத்தமைவு", "Similarity of structures in different organisms because they are inherited from a common ancestor." to
                         "பொது மூதாதையிடமிருந்து பெறப்பட்டதால் வெவ்வேறு உயிரிகளின் அமைப்புகளில் உள்ள ஒற்றுமை."),
-                    bdef("Convergence", "குவிவுப் பரிணாமம்", "The independent evolution of similar features in unrelated lineages because of similar ways of life." to
+                    bdef("Convergence", "குவிவுப் பரிணாமம் (Convergence)", "The independent evolution of similar features in unrelated lineages because of similar ways of life." to
                         "ஒத்த வாழ்க்கை முறைகளால் தொடர்பற்ற பரம்பரைகளில் ஒத்த பண்புகள் தனித்துப் பரிணமித்தல்."),
-                    bdef("Nauplius", "நாப்ளியஸ்", "The first larva of many crustaceans, with three pairs of appendages and often a median eye." to
+                    bdef("Nauplius", "நாப்ளியஸ் (Nauplius)", "The first larva of many crustaceans, with three pairs of appendages and often a median eye." to
                         "மூன்று இணை உறுப்புகளும் பெரும்பாலும் நடுக் கண்ணும் உடைய பல நண்டுவகைகளின் முதல் லார்வா."),
                 )),
         ),

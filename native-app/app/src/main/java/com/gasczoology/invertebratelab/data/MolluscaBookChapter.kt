@@ -33,11 +33,11 @@ object MolluscaBookChapter {
                         "The nervous system has paired ganglia, cerebral, pedal and visceral, joined by connectives and cords." to "நரம்பு மண்டலத்தில் பெருமூளை, பாத, உள்ளுறுப்பு இணை நரம்பு செல்திரள்கள் இணைப்பிகள், வடங்களால் இணைகின்றன.",
                         "Development is commonly through a trochophore and a veliger larva in marine groups." to "கடல் குழுக்களில் வளர்ச்சி பொதுவாக ட்ரோகோபோர், வெலிகர் லார்வா வழியாக.",
                     ),
-                    bdef("Visceral mass", "உள்ளுறுப்புத் திரள்", "The part of the molluscan body that contains the organs of digestion, circulation, excretion and reproduction." to
+                    bdef("Visceral mass", "உள்ளுறுப்புத் திரள் (Visceral mass)", "The part of the molluscan body that contains the organs of digestion, circulation, excretion and reproduction." to
                         "செரிமான, இரத்த ஓட்ட, கழிவு நீக்க, இனப்பெருக்க உறுப்புகள் அடங்கிய மெல்லுடலி உடலின் பகுதி."),
-                    bdef("Mantle", "மேண்டில்", "A fold of the body wall that covers the visceral mass and secretes the shell." to
+                    bdef("Mantle", "மேண்டில் (Mantle)", "A fold of the body wall that covers the visceral mass and secretes the shell." to
                         "உள்ளுறுப்புத் திரளை மூடி, ஓட்டைச் சுரக்கும் உடற்சுவர் மடிப்பு."),
-                    bdef("Veliger", "வெலிகர்", "The second larval stage of many molluscs, with a ciliated swimming organ, the velum." to
+                    bdef("Veliger", "வெலிகர் (Veliger)", "The second larval stage of many molluscs, with a ciliated swimming organ, the velum." to
                         "வெலம் எனும் கசையிழை நீந்தும் உறுப்புடைய பல மெல்லுடலிகளின் இரண்டாம் லார்வா நிலை."),
                 )),
             bsec("mantle", "The mantle, the mantle cavity and the shell", "மேண்டில், மேண்டில் குழி, ஓடு",
@@ -46,13 +46,13 @@ object MolluscaBookChapter {
                         "மேண்டில் முதுகுப்புற உடற்சுவரிலிருந்து தொங்கி தனக்கும் உடலுக்கும் இடையிலான இடமான மேண்டில் குழியை மூடும் திசுத் தகடு. இக்குழு மிக முக்கியமானது. பெரும்பாலான மெல்லுடலிகளில் வாயுப் பரிமாற்றத்துக்கும் சில குழுக்களில் உண்ணுதலுக்கும் பயன்படும் டீனிடியா எனும் செவுள்களை இது கொண்டுள்ளது; குடல், சிறுநீரகங்கள், இனப்பெருக்க சுரப்பிகளின் துளைகளையும் ஏற்கிறது. நீர் அல்லது காற்று குழி வழியே செலுத்தப்படுவதால் செவுள்கள் காற்றோட்டம் பெறுகின்றன; கழிவுகளும் கேமீட்டுகளும் வெளியே கொண்டு செல்லப்படுகின்றன. எனவே குழி சுவாசம், கழிவு நீக்கம், இனப்பெருக்கம் சந்திக்கும் இடம்."),
                     bp("The mantle also secretes the shell, which is made mostly of calcium carbonate laid down in a protein framework. The shell has typically three layers: an outer organic layer, the periostracum, a middle layer of calcium carbonate in a prismatic arrangement and an inner layer, often pearly, the nacre. The shell grows by additions at the edge of the mantle, and so it records growth. The shell is an optional product and not a defining feature of the whole phylum: it is a single piece in the gastropods, two valves in the bivalves, eight plates in the chitons, an internal reduced structure in the squids and absent in the octopuses and the slugs." to
                         "மேண்டில் ஓட்டையும் சுரக்கிறது; அது பெரும்பாலும் புரத அமைப்பில் படிந்த கால்சியம் கார்பனேட்டால் ஆனது. ஓட்டுக்கு பொதுவாக மூன்று அடுக்குகள்: வெளிக் கரிம அடுக்கான பெரியாஸ்டிராகம், பட்டக அமைப்பில் கால்சியம் கார்பனேட்டின் நடு அடுக்கு, பெரும்பாலும் முத்து போன்ற நாக்கர் உள் அடுக்கு. ஓடு மேண்டில் விளிம்பில் சேர்ப்பதால் வளர்கிறது; எனவே வளர்ச்சியைப் பதிவு செய்கிறது. ஓடு விருப்பப் பொருள்; முழுத் தொகுதியின் வரையறுக்கும் பண்பு அல்ல: இரைப்பைக்காலிகளில் ஒரே துண்டு, இருவோட்டுடலிகளில் இரு ஓடுகள், கைட்டான்களில் எட்டு தகடுகள், கணவாய்களில் உள் குறைந்த அமைப்பு, ஆக்டோபஸ்கள், ஸ்லக்குகளில் இல்லை."),
-                    bdef("Mantle cavity", "மேண்டில் குழி", "The space between the mantle and the body, containing the gills and the openings of the main systems." to
+                    bdef("Mantle cavity", "மேண்டில் குழி (Mantle cavity)", "The space between the mantle and the body, containing the gills and the openings of the main systems." to
                         "மேண்டிலுக்கும் உடலுக்கும் இடையிலான இடம்; செவுள்களும் முக்கிய மண்டலங்களின் துளைகளும் அடங்கியது."),
-                    bdef("Ctenidium", "டீனிடியம்", "A gill of a mollusc, lying in the mantle cavity." to
+                    bdef("Ctenidium", "டீனிடியம் (Ctenidium)", "A gill of a mollusc, lying in the mantle cavity." to
                         "மேண்டில் குழியில் அமைந்த மெல்லுடலியின் செவுள்."),
-                    bdef("Periostracum", "பெரியாஸ்டிராகம்", "The outer organic layer of the shell of a mollusc." to
+                    bdef("Periostracum", "பெரியாஸ்டிராகம் (Periostracum)", "The outer organic layer of the shell of a mollusc." to
                         "மெல்லுடலி ஓட்டின் வெளிக் கரிம அடுக்கு."),
-                    bdef("Nacre", "நாக்கர்", "The pearly inner layer of a mollusc shell, made of thin plates of calcium carbonate." to
+                    bdef("Nacre", "நாக்கர் (Nacre)", "The pearly inner layer of a mollusc shell, made of thin plates of calcium carbonate." to
                         "கால்சியம் கார்பனேட்டின் மெல்லிய தகடுகளால் ஆன, மெல்லுடலி ஓட்டின் முத்து போன்ற உள் அடுக்கு."),
                 )),
             bsec("radula", "The radula and feeding", "ராடுலாவும் உண்ணுதலும்",
@@ -63,9 +63,9 @@ object MolluscaBookChapter {
                         "ராடுலா உணவுக்கு ஏற்ப மாறுகிறது. தாவரவுண்ணி நத்தைகளில் பாறைகளிலிருந்து பாசிகளைச் சுரண்டும் பல சிறு பற்கள் உள்ளன. ஊனுண்ணி நத்தைகளில் குறைவான, வலிமையான பற்கள் உள்ளன; கோன் நத்தைகள் போன்ற சில மாற்றப்பட்ட ஒரு பல்லை ஈட்டியாகப் பயன்படுத்துகின்றன. தலைகாலிகளில் ராடுலாவுடன் இரையைக் கிழிக்கும் அலகை உருவாக்கும் ஓர் இணை கொம்புத் தாடைகள் உள்ளன. ராடுலா அரைக்கும் உறுப்பு அல்ல, சுரண்டும் உறுப்பு எனவும், கிரஸ்டேஷியனின் இரைப்பை அரவையுடன் ஒன்றல்ல எனவும் மாணவர் கூற வேண்டும்."),
                     bdef("Radula", "ராடுலா", "A chitinous ribbon bearing rows of small teeth, used by molluscs to scrape or cut food." to
                         "உணவைச் சுரண்ட அல்லது வெட்ட மெல்லுடலிகள் பயன்படுத்தும், சிறு பற்களின் வரிசைகளைத் தாங்கும் கைட்டின் ரிப்பன்."),
-                    bdef("Odontophore", "ஓடோன்டோஃபோர்", "The cartilaginous organ over which the radula is moved." to
+                    bdef("Odontophore", "ஓடோன்டோஃபோர் (Odontophore)", "The cartilaginous organ over which the radula is moved." to
                         "ராடுலா மேல் நகர்த்தப்படும் குருத்தெலும்பு உறுப்பு."),
-                    bdef("Filter feeder", "வடிகட்டி உண்ணி", "An animal that feeds by straining small particles from water." to
+                    bdef("Filter feeder", "வடிகட்டி உண்ணி (Filter feeder)", "An animal that feeds by straining small particles from water." to
                         "நீரிலிருந்து சிறு துகள்களை வடிகட்டி உண்ணும் விலங்கு."),
                 )),
             bsec("foot", "The foot and its modifications", "பாதமும் அதன் மாற்றங்களும்",
@@ -81,7 +81,7 @@ object MolluscaBookChapter {
                             listOf("Scaphopoda" to "ஸ்காஃபோபோடா", "Conical" to "கூம்பு வடிவம்", "Burrowing" to "துளையிடல்"),
                             listOf("Polyplacophora" to "பாலிபிளாகோஃபோரா", "Broad, flat, sucker-like" to "அகன்ற, தட்டை, உறிஞ்சி போன்றது", "Clinging to rock" to "பாறையில் ஒட்டுதல்"),
                         )),
-                    bdef("Byssus", "பிஸ்ஸஸ்", "Threads secreted by a gland in the foot of some bivalves, used for attachment." to
+                    bdef("Byssus", "பிஸ்ஸஸ் (Byssus)", "Threads secreted by a gland in the foot of some bivalves, used for attachment." to
                         "சில இருவோட்டுடலிகளின் பாதத்திலுள்ள சுரப்பி சுரக்கும், பிடிப்புக்குப் பயன்படும் இழைகள்."),
                     bdef("Funnel (siphon)", "புனல்", "In a cephalopod, the tube through which water is expelled from the mantle cavity in jet propulsion." to
                         "தலைகாலியில், ஜெட் உந்துதலில் மேண்டில் குழியிலிருந்து நீர் வெளியேற்றப்படும் குழாய்."),
@@ -94,11 +94,11 @@ object MolluscaBookChapter {
                         "கழிவு உறுப்புகள் ஒன்று அல்லது அதற்கு மேற்பட்ட இணைக் குழாய்களான சிறுநீரகங்கள். ஒவ்வொன்றும் உடற்குழியின் எச்சமான பெரிகார்டியல் குழிக்குள் புனலாலும் மேண்டில் குழிக்குள் துளையாலும் திறக்கிறது; கழிவு நீர் அல்லது காற்றில் வெளியேறுகிறது. நரம்பு மண்டலம் உணவுக்குழலைச் சுற்றி வளையத்துடன், இணைப்பிகளால் இணைந்த குடலுக்கு மேலுள்ள பெருமூளை நரம்பு செல்திரள்கள், பாதத்திலுள்ள பாத நரம்பு செல்திரள்கள், உள்ளுறுப்பு நரம்பு செல்திரள்கள் என இணைத் திரள்களைக் கொண்டது. செயலூக்கமுள்ள தலைகாலிகளில் இவை மூளையாகச் செறிகின்றன. உணர்வு உறுப்புகளில் உணர்கொம்புகள், வெவ்வேறு சிக்கலான கண்கள், சமநிலைக்கான ஸ்டேட்டோசிஸ்ட்கள், மேண்டில் குழிக்குள் நுழையும் நீரைச் சோதிக்கும் வேதி உணர் உறுப்பான ஆஸ்ஃப்ரேடியம் அடங்கும்."),
                     bp("The sexes are separate in most molluscs, though some gastropods are hermaphrodite. In marine forms the fertilised egg undergoes spiral cleavage and develops into a trochophore larva, which in most groups is followed by a veliger, with a shell and a ciliated velum used for swimming and feeding. Many freshwater and land forms have direct development, and some bivalves of fresh water, the unionids, have a special larva, the glochidium, which is a parasite on fish. The trochophore is one of the characters used to relate the molluscs to the annelids." to
                         "பெரும்பாலான மெல்லுடலிகளில் பால் தனி; சில இரைப்பைக்காலிகள் இருபால் உயிரிகள். கடல் வடிவங்களில் கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு ட்ரோகோபோர் லார்வாவாக வளர்கிறது; பெரும்பாலான குழுக்களில் ஓடும் நீந்துதல், உண்ணுதலுக்கான கசையிழை வெலமும் உடைய வெலிகர் தொடர்கிறது. பல நன்னீர், நில வடிவங்களுக்கு நேரடி வளர்ச்சி உண்டு; நன்னீர் இருவோட்டுடலிகளான யூனியோனிட்களுக்கு மீன்களில் ஒட்டுண்ணியான சிறப்பு லார்வா, குளோகிடியம் உண்டு. மெல்லுடலிகளை அனெலிடாக்களுடன் தொடர்புபடுத்தப் பயன்படும் பண்புகளில் ட்ரோகோபோர் ஒன்று."),
-                    bdef("Crystalline style", "படிகத் தண்டு", "A rod of mucus and enzyme in the stomach of a bivalve that is rotated to release digestive enzymes." to
+                    bdef("Crystalline style", "படிகத் தண்டு (Crystalline style)", "A rod of mucus and enzyme in the stomach of a bivalve that is rotated to release digestive enzymes." to
                         "செரிமான நொதிகளை வெளியிடச் சுழற்றப்படும், இருவோட்டுடலியின் இரைப்பையிலுள்ள சளியும் நொதியுமான தண்டு."),
-                    bdef("Osphradium", "ஆஸ்ஃப்ரேடியம்", "A sense organ in the mantle cavity that tests the water or air entering it." to
+                    bdef("Osphradium", "ஆஸ்ஃப்ரேடியம் (Osphradium)", "A sense organ in the mantle cavity that tests the water or air entering it." to
                         "மேண்டில் குழிக்குள் நுழையும் நீர் அல்லது காற்றைச் சோதிக்கும் உணர்வு உறுப்பு."),
-                    bdef("Glochidium", "குளோகிடியம்", "The parasitic larva of freshwater mussels of the unionid family, which attaches to fish." to
+                    bdef("Glochidium", "குளோகிடியம் (Glochidium)", "The parasitic larva of freshwater mussels of the unionid family, which attaches to fish." to
                         "மீன்களில் ஒட்டிக்கொள்ளும், யூனியோனிட் குடும்ப நன்னீர் சிப்பிகளின் ஒட்டுண்ணி லார்வா."),
                 )),
             bsec("circulation", "Respiration, circulation and body fluid", "சுவாசம், சுற்றோட்டம், உடல் திரவம்",
@@ -109,7 +109,7 @@ object MolluscaBookChapter {
                         "பெரும்பாலான மெல்லுடலிகளில் சுற்றோட்டம் திறந்தது. இதயம் தன்னைச் சுற்றியுள்ள சீலோமின் எச்சமான பெரிகார்டியல் குழியில் உள்ளது; வழக்கமாக ஒரு வென்ட்ரிக்கிளும் இரு ஆரிக்கிள்களும் உண்டு. இரத்தம் தமனிகள் வழியே உறுப்புகளுக்கிடையிலான இடைவெளிகளான சைனஸ்களுக்குள் இறைக்கப்பட்டு, செவுள்கள் வழியே இதயத்துக்குத் திரும்புகிறது. இரத்தத்தில் பொதுவாக ஹீமோகுளோபின் அல்ல, ஆக்சிஜனேற்றம் அடைந்தால் நீல நிறமான செம்பு நிறமி ஹீமோசயனின் உள்ளது; சில மெல்லுடலிகளுக்கு ஹீமோகுளோபின் உண்டு. செபலோபாட்கள் விதிவிலக்கு: அவற்றின் சுற்றோட்டம் மூடியது; தந்துகிகளும் செவுள்கள் வழியே இரத்தத்தைச் செலுத்தும் கூடுதல் இதயங்களும் உள்ளன; இது அவற்றின் செயல்மிகு வாழ்க்கை முறையுடன் தொடர்புடையது."),
                     bdef("Haemocyanin", "ஹீமோசயனின்", "The copper-containing respiratory pigment found in the blood of many molluscs, blue when carrying oxygen." to
                         "பல மெல்லுடலிகளின் இரத்தத்தில் உள்ள, ஆக்சிஜனைக் கொண்டிருக்கும்போது நீலமாகும் செம்பு கொண்ட சுவாச நிறமி."),
-                    bdef("Pericardial cavity", "பெரிகார்டியல் குழி", "The cavity around the heart of a mollusc, which is the main remnant of the true coelom." to
+                    bdef("Pericardial cavity", "பெரிகார்டியல் குழி (Pericardial cavity)", "The cavity around the heart of a mollusc, which is the main remnant of the true coelom." to
                         "மெல்லுடலியின் இதயத்தைச் சுற்றியுள்ள குழி; உண்மையான சீலோமின் முக்கிய எச்சம்."),
                 )),
             bsec("pearl", "How a pearl is formed", "முத்து எவ்வாறு உருவாகிறது",
@@ -118,7 +118,7 @@ object MolluscaBookChapter {
                         "முத்து சிப்பியோட்டின் உள்ளடுக்கு பொருளான நாக்கரால் ஆனது; மேண்டிலால் உருவாக்கப்படுகிறது. அயலுடலோ திசுத் துண்டோ மேண்டிலுக்கும் ஓட்டுக்கும் இடையில் அல்லது மேண்டில் திசுவுக்குள் சென்றால், அதைச் சுற்றியுள்ள மேண்டில் எப்பிதீலிய செல்கள் முத்துப் பை எனும் மூடிய பையை உருவாக்குகின்றன. பையின் செல்கள் நாக்கர் அடுக்குகளைச் சுரந்து அவ்வுடலைச் சுற்றிப் படியச் செய்கின்றன; அதன் விளைவாக முத்து உருவாகிறது. முத்தின் தரம் வடிவம், பளபளப்பு, அளவு, நிறத்தைப் பொறுத்தது; நல்ல முத்து மெதுவாகப் படியும் பல மெல்லிய அடுக்குகளால் உருவாகிறது."),
                     bp("Natural pearls form by chance, but cultured pearls are produced deliberately by inserting a small bead of shell with a piece of mantle tissue from a donor oyster into the gonad or the mantle of a host oyster. The species used for pearl culture belong to the genus Pinctada, and the pearl oysters of the Gulf of Mannar have long been known for their pearl fishery. The question may be asked as a short note, and the three points to include are the source of the material (the mantle), the pearl sac and the nacre.",
                         "இயற்கை முத்துகள் தற்செயலாக உருவாகின்றன; வளர்ப்பு முத்துகள் நன்கொடை சிப்பியின் மேண்டில் திசுத் துண்டுடன் ஓட்டின் சிறு மணியை ஓம்புச் சிப்பியின் இனப்பெருக்க உறுப்பிலோ மேண்டிலிலோ செலுத்தி வேண்டுமென்றே உருவாக்கப்படுகின்றன. முத்து வளர்ப்புக்கான இனங்கள் பிங்க்டாடா பேரினத்தைச் சேர்ந்தவை; மன்னார் வளைகுடாவின் முத்துச் சிப்பிகள் முத்துக் குளிப்புக்குப் பழங்காலம் முதல் பெயர் பெற்றவை. இது சிறு குறிப்பாகக் கேட்கப்படலாம்; சேர்க்க வேண்டிய மூன்று புள்ளிகள் பொருளின் மூலம் (மேண்டில்), முத்துப் பை, நாக்கர்."),
-                    bdef("Pearl sac", "முத்துப் பை", "The closed pocket of mantle epithelium that forms around an irritant and secretes the nacre of a pearl." to
+                    bdef("Pearl sac", "முத்துப் பை (Pearl sac)", "The closed pocket of mantle epithelium that forms around an irritant and secretes the nacre of a pearl." to
                         "எரிச்சலூட்டும் பொருளைச் சுற்றி உருவாகி, முத்தின் நாக்கரைச் சுரக்கும் மேண்டில் எப்பிதீலிய மூடிய பை."),
                 )),
             bsec("economic", "Economic importance of molluscs", "மெல்லுடலிகளின் பொருளாதார முக்கியத்துவம்",
@@ -139,7 +139,7 @@ object MolluscaBookChapter {
                     ),
                     bp("In an essay on the economic importance of molluscs, the useful and harmful groups should be listed in separate columns, and the examples should be named at the level of the species or class. The student should say, in the case of the shipworm, that it is a bivalve and not a worm, since the name is a frequent source of mistakes.",
                         "மெல்லுடலிகளின் பொருளாதார முக்கியத்துவம் பற்றிய கட்டுரையில் பயனுள்ள, தீங்கு விளைவிக்கும் குழுக்களைத் தனிப்பத்திகளில் பட்டியலிட வேண்டும்; எடுத்துக்காட்டுகள் இனம் அல்லது வகுப்பு மட்டத்தில் பெயரிடப்பட வேண்டும். கப்பல்புழு புழு அல்ல, இருவோடுடையது என்று மாணவர் கூற வேண்டும்; பெயர் அடிக்கடி பிழைகளுக்கு மூலமாகிறது."),
-                    bdef("Fouling organism", "படியும் உயிரி", "An organism that settles and grows on submerged surfaces, such as ship hulls and pipes, and interferes with their use." to
+                    bdef("Fouling organism", "படியும் உயிரி (Fouling organism)", "An organism that settles and grows on submerged surfaces, such as ship hulls and pipes, and interferes with their use." to
                         "கப்பல் அடிப்பகுதி, குழாய்கள் போன்ற மூழ்கிய பரப்புகளில் படிந்து வளர்ந்து அவற்றின் பயன்பாட்டில் இடையூறு செய்யும் உயிரி."),
                 )),
             bsec("classification", "Classification", "வகைப்பாடு",

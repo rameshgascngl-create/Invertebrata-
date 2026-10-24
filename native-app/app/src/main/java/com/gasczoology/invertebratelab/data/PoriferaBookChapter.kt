@@ -32,7 +32,7 @@ object PoriferaBookChapter {
                     bdef("Porifera", "துளையுடலிகள்",
                         "The phylum of aquatic, mostly marine and sessile animals whose body is perforated by pores and traversed by a system of canals and chambers through which water is driven. The cells are organised at the cellular grade and do not form true organs." to
                             "துளைகள் நிறைந்த உடலும் நீர் செலுத்தப்படும் கால்வாய், அறை அமைப்பும் கொண்ட, பெரும்பாலும் கடல்வாழ், நிலைத்த விலங்குகளின் தொகுதி; செல்கள் செல்மட்ட அமைப்பில் உள்ளன, உண்மையான உறுப்புகளை உருவாக்குவதில்லை."),
-                    bdef("Aquiferous system", "நீர்வழி அமைப்பு",
+                    bdef("Aquiferous system", "நீர்வழி அமைப்பு (Aquiferous system)",
                         "The system of ostia, canals, chambers and oscula through which a sponge passes a current of water for feeding, gas exchange and removal of waste." to
                             "உணவூட்டம், வாயுப் பரிமாற்றம், கழிவு நீக்கம் ஆகியவற்றுக்காக கடற்பஞ்சு நீரோட்டத்தைச் செலுத்தும் ஆஸ்டியா, கால்வாய், அறை, ஆஸ்குலம் ஆகியவற்றின் தொகுப்பு."),
                     bdef("Sessile", "ஒட்டி வாழும்",
@@ -75,13 +75,13 @@ object PoriferaBookChapter {
                     bdef("Pinacocyte", "பினாகோசைட்",
                         "A flat cell that forms the outer covering of the sponge and lines the incurrent canals and the central cavity." to
                             "கடற்பஞ்சின் வெளி மூடியையும் உட்செல்லும் கால்வாய்கள், நடுக்குழி ஆகியவற்றின் உள்ளடுக்கையும் அமைக்கும் தட்டை செல்."),
-                    bdef("Choanocyte", "கோனோசைட் (காலர் செல்)",
+                    bdef("Choanocyte", "கோனோசைட் (Choanocyte; காலர் செல்)",
                         "A flagellated cell with a collar of microvilli round the base of the flagellum. It creates the water current and captures food particles." to
                             "கசையிழையின் அடியில் நுண்விரல் காலர் கொண்ட செல்; நீரோட்டத்தை உருவாக்கி உணவுத் துகள்களைப் பிடிக்கிறது."),
                     bdef("Archaeocyte", "ஆர்க்கியோசைட்",
                         "A large amoeboid cell of the mesohyl that can change into other cell types. Archaeocytes digest food, carry nutrients and take part in regeneration and in the formation of gametes and gemmules." to
                             "மீசோஹைலிலுள்ள பெரிய அமீபா போன்ற செல்; பிற செல் வகைகளாக மாறக்கூடியது. உணவைச் செரித்து ஊட்டச்சத்தைக் கடத்தி, மீளுருவாக்கம், இனச்செல், ஜெம்யூல் உருவாக்கத்தில் பங்கேற்கிறது."),
-                    bdef("Mesohyl", "மீசோஹைல்",
+                    bdef("Mesohyl", "மீசோஹைல் (Mesohyl)",
                         "The gelatinous middle layer between the outer covering and the choanocytes. It contains collagen, the skeleton and the wandering cells." to
                             "வெளி மூடிக்கும் கோனோசைட்டுகளுக்கும் இடையிலுள்ள ஜெல் போன்ற நடு அடுக்கு; கொலாஜன், எலும்புக்கூடு, அலையும் செல்கள் இதில் உள்ளன."),
                     bnote("The cellular grade", "செல்மட்ட அமைப்பு",
@@ -97,14 +97,14 @@ object PoriferaBookChapter {
                     bsub("Spicules", "ஊசிகள்",
                         bp("Spicules are made by sclerocytes. Calcareous spicules are of calcium carbonate and may be rod-like, three-rayed or four-rayed. Siliceous spicules are of silica; they may be single-axis rods, four-rayed, or six-rayed. In many sponges the large spicules that form the main framework are called megascleres, and the small ones scattered in the flesh are called microscleres." to
                             "ஊசிகளை ஸ்கிளீரோசைட்டுகள் உருவாக்குகின்றன. சுண்ணாம்பு ஊசிகள் கால்சியம் கார்பனேட்டால் ஆனவை; கோல், மூன்று கதிர் அல்லது நான்கு கதிர் வடிவில் இருக்கலாம். சிலிக்கா ஊசிகள் சிலிக்காவால் ஆனவை; ஓரச்சுக் கோல், நான்கு கதிர் அல்லது ஆறு கதிர் வடிவில் இருக்கலாம். பல கடற்பஞ்சுகளில் முதன்மைச் சட்டகத்தை அமைக்கும் பெரிய ஊசிகள் மெகாஸ்கிளீர்கள் எனவும், சதையில் சிதறியுள்ள சிறிய ஊசிகள் மைக்ரோஸ்கிளீர்கள் எனவும் அழைக்கப்படுகின்றன."),
-                        bdef("Spicule", "ஸ்பிக்யூல் (ஊசி)",
+                        bdef("Spicule", "ஸ்பிக்யூல் (Spicule; ஊசி)",
                             "A minute skeletal element of calcium carbonate or silica, secreted by cells of the mesohyl." to
                                 "மீசோஹைல் செல்களால் சுரக்கப்படும், கால்சியம் கார்பனேட் அல்லது சிலிக்காவாலான நுண்ணிய எலும்புக்கூட உறுப்பு."),
                     ),
                     bsub("Spongin", "ஸ்பாஞ்சின்",
                         bp("Spongin is a flexible protein, related to collagen, secreted by spongocytes. It forms a network of fibres that may carry siliceous spicules or may be the only skeleton. The soft, elastic skeleton of the bath sponge consists of spongin alone." to
                             "ஸ்பாஞ்சின் கொலாஜனுடன் தொடர்புடைய நெகிழ்வான புரதம்; ஸ்பாஞ்சோசைட்டுகள் சுரக்கின்றன. இது சிலிக்கா ஊசிகளைத் தாங்கக்கூடிய, அல்லது ஒரே எலும்புக்கூடாகவும் அமையக்கூடிய இழை வலையை உருவாக்குகிறது. குளியல் கடற்பஞ்சின் மென்மையான, மீள்தன்மை கொண்ட எலும்புக்கூடு ஸ்பாஞ்சினால் மட்டுமே ஆனது."),
-                        bdef("Spongin", "ஸ்பாஞ்சின்",
+                        bdef("Spongin", "ஸ்பாஞ்சின் (Spongin)",
                             "A flexible, collagen-related protein that forms the fibrous skeleton of many sponges." to
                                 "பல கடற்பஞ்சுகளின் இழை எலும்புக்கூட்டை அமைக்கும் நெகிழ்வான, கொலாஜனுடன் தொடர்புடைய புரதம்."),
                     ),
@@ -139,13 +139,13 @@ object PoriferaBookChapter {
                             listOf("Hexactinellida" to "ஹெக்சாக்டினெல்லிடா", "Siliceous six-rayed spicules" to "சிலிக்கா ஆறு கதிர் ஊசிகள்", "Glass sponges; mostly deep sea; cup or vase shaped; tissue is largely syncytial" to "கண்ணாடிக் கடற்பஞ்சுகள்; பெரும்பாலும் ஆழ்கடல்; கிண்ணம் அல்லது குவளை வடிவம்; திசு பெரும்பாலும் சின்சிடியம்", "Euplectella, Hyalonema" to "யூப்ளெக்டெல்லா, ஹயலோனீமா"),
                             listOf("Demospongiae" to "டெமோஸ்பாஞ்சியே", "Siliceous spicules not six-rayed, spongin fibres, or both" to "ஆறு கதிரற்ற சிலிக்கா ஊசிகள், ஸ்பாஞ்சின் இழைகள் அல்லது இரண்டும்", "The largest class, with most living species; leuconoid; marine and freshwater" to "பெரும்பாலான உயிர் இனங்கள் கொண்ட மிகப்பெரிய வகுப்பு; லியூக்கோனாய்டு; கடல், நன்னீர்", "Spongilla, Euspongia, Cliona" to "ஸ்பாஞ்சில்லா, யூஸ்பாஞ்சியா, கிளையோனா"),
                         )),
-                    bdef("Calcarea", "கால்கேரியா",
+                    bdef("Calcarea", "கால்கேரியா (Calcarea)",
                         "The class of sponges with skeletons of separate calcareous spicules; all are marine." to
                             "தனித்தனி சுண்ணாம்பு ஊசி எலும்புக்கூடு கொண்ட கடற்பஞ்சு வகுப்பு; அனைத்தும் கடல்வாழ்."),
-                    bdef("Hexactinellida", "ஹெக்சாக்டினெல்லிடா",
+                    bdef("Hexactinellida", "ஹெக்சாக்டினெல்லிடா (Hexactinellida)",
                         "The class of glass sponges, whose skeleton contains siliceous spicules with six rays." to
                             "ஆறு கதிர் சிலிக்கா ஊசிகளைக் கொண்ட கண்ணாடிக் கடற்பஞ்சு வகுப்பு."),
-                    bdef("Demospongiae", "டெமோஸ்பாஞ்சியே",
+                    bdef("Demospongiae", "டெமோஸ்பாஞ்சியே (Demospongiae)",
                         "The largest class of sponges, with siliceous spicules that are not six-rayed, with spongin, or with both." to
                             "ஆறு கதிரற்ற சிலிக்கா ஊசிகள், ஸ்பாஞ்சின் அல்லது இரண்டும் கொண்ட, கடற்பஞ்சுகளின் மிகப்பெரிய வகுப்பு."),
                     bnote("A common slip", "பொதுவான தவறு",
@@ -158,7 +158,7 @@ object PoriferaBookChapter {
                         "கடற்பஞ்சு ஒரு இறைப்பானும் வடிகட்டியுமாகும். கோனோசைட்டுகளின் கசையிழைகள் அடித்து, உடற்சுவரின் சிறு துளைகள் வழியே நீரை உள்ளிழுத்து, கால்வாய்கள், அறைகள் வழியே அனுப்பி, ஆஸ்குலம் வழியே வெளியேற்றுகின்றன. நீர் கோனோசைட்டுகளின் கழுத்துப்பட்டைகளைக் கடக்கும்போது பாக்டீரியா, ஒற்றைச் செல் பாசிகள், நுண்ணிய கரிமத் துகள்கள் பிடிக்கப்பட்டு விழுங்கப்படுகின்றன. கால்வாய்களை மூடியுள்ள பினாக்கோசைட்டுகளும் துகள்களை எடுக்கின்றன. செரிமானம் உணவுக் குமிழ்களில் அகச்செல்; மீசோஹைலின் அமீபா போன்ற செல்கள் உணவை உடலின் பிற செல்களுக்குக் கொண்டு செல்கின்றன."),
                     bp("The quantity of water that passes through a sponge is large in relation to its size. A sponge can pump many times its own volume of water in an hour, and sponges on a reef are major consumers of the fine particles and dissolved matter in the sea water. Because the water is also the carrier of oxygen and the means of removing carbon dioxide and wastes, the same current serves for feeding, breathing, excretion and the delivery of sperm. This economy of design is the reason why a sponge can do without organs.",
                         "ஒரு கடற்பஞ்சு வழியே செல்லும் நீரின் அளவு அதன் அளவுடன் ஒப்பிடும்போது பெரியது. கடற்பஞ்சு ஒரு மணி நேரத்தில் தன் சொந்த கொள்ளளவை விடப் பல மடங்கு நீரை இறைக்க முடியும்; முகட்டிலுள்ள கடற்பஞ்சுகள் கடல்நீரிலுள்ள நுண்துகள்கள், கரைந்த பொருட்களை உட்கொள்ளும் பெரும் நுகர்வோர். நீர் ஆக்சிஜனைக் கொண்டு வருவதுடன் கார்பன் டை ஆக்சைடையும் கழிவுகளையும் அகற்றும் வழியாகவும் இருப்பதால், அதே நீரோட்டம் உணவூட்டம், சுவாசம், கழிவு நீக்கம், விந்து வழங்கலுக்குப் பயன்படுகிறது. வடிவமைப்பின் இந்தச் சிக்கனமே கடற்பஞ்சு உறுப்புகள் இன்றி வாழ முடிவதற்கு காரணம்."),
-                    bdef("Filter feeding", "வடிகட்டி உண்ணல்", "Feeding by straining small particles out of water that is passed through the body." to
+                    bdef("Filter feeding", "வடிகட்டி உண்ணல் (Filter feeding)", "Feeding by straining small particles out of water that is passed through the body." to
                         "உடலினூடே செலுத்தப்படும் நீரிலிருந்து சிறு துகள்களை வடிகட்டி உண்ணுதல்."),
                 )),
             bsec("coordination", "Coordination without nerves", "நரம்பின்றி ஒருங்கிணைப்பு",
@@ -174,14 +174,14 @@ object PoriferaBookChapter {
                         "கடற்பஞ்சுகள் அசையாதவை, மென்மையானவை; ஸ்பிக்யூல்களைத் தவிர சில பௌதிகப் பாதுகாப்புகளே உண்டு. அவற்றில் பல மீன்களுக்கு விரும்பத்தகாத அல்லது நச்சான, பிற உயிரிகள் தம் மேல் வளர்வதைத் தடுக்கும், அல்லது பாக்டீரியா, பூஞ்சைகளை நிறுத்தும் வேதிச் சேர்மங்களை உருவாக்கித் தம்மைப் பாதுகாக்கின்றன. இச்சேர்மங்கள் பெரும்பாலும் அமைப்பில் அசாதாரணமானவை; மருந்து தேடலில் புதிய சேர்மங்களின் முக்கிய மூலமாக கடற்பஞ்சுகள் இருந்துள்ளன. கரீபியன் கடற்பஞ்சில் முதலில் கண்டறியப்பட்ட நியூக்ளியோசைடுகள் வைரஸ் எதிர்ப்பு, புற்றுநோய் எதிர்ப்பு மருந்துகளின் வளர்ச்சிக்கு வழிவகுத்தன; ஜப்பானிய கடற்பஞ்சின் சேர்மம் மார்பகப் புற்றுநோய் சிகிச்சை மருந்தின் தொடக்கப் புள்ளியாக இருந்தது."),
                     bp("In the answer it is wise to avoid giving the names and uses of particular drugs unless they are in the prescribed text, since the information changes. The principle, that a sessile animal which cannot flee has evolved a chemical defence, and that these compounds are valuable, is what the examiner will want. The associated bacteria in the tissue of a sponge, which may form a large part of its mass, are in many cases the actual makers of the compounds.",
                         "விடையில் குறிப்பிட்ட மருந்துகளின் பெயர்களையும் பயன்களையும், பரிந்துரைக்கப்பட்ட நூலில் இல்லாவிடில், தவிர்ப்பது நல்லது; ஏனெனில் தகவல் மாறுகிறது. தப்பிச் செல்ல இயலாத அசையா விலங்கு வேதிப் பாதுகாப்பை உருவாக்கியுள்ளது, இச்சேர்மங்கள் மதிப்புள்ளவை என்ற கொள்கையே தேர்வாளர் எதிர்பார்ப்பது. கடற்பஞ்சின் திசுவிலுள்ள, அதன் எடையின் பெரும்பகுதியாக இருக்கக்கூடிய தொடர்புடைய பாக்டீரியாக்கள் பல நேரங்களில் உண்மையில் சேர்மங்களை உருவாக்குபவை."),
-                    bdef("Bioactive compound", "உயிர்ச்செயல் சேர்மம்", "A chemical made by an organism that has an effect on other living things, such as a toxin, an antibiotic or a deterrent." to
+                    bdef("Bioactive compound", "உயிர்ச்செயல் சேர்மம் (Bioactive compound)", "A chemical made by an organism that has an effect on other living things, such as a toxin, an antibiotic or a deterrent." to
                         "நச்சு, நுண்ணுயிர்க்கொல்லி, தடுப்பான் போன்ற பிற உயிர்களில் விளைவு ஏற்படுத்தும், உயிரி உருவாக்கும் வேதிப்பொருள்."),
                 )),
             bsec("boring", "Boring sponges and the erosion of reefs", "துளையிடும் கடற்பஞ்சுகளும் முகடு அரிப்பும்",
                 blocks = listOf(
                     bp("Some demosponges, of which Cliona is the best-known, live in tunnels that they excavate in limestone, in the shells of molluscs and in dead coral. Special cells etch tiny chips out of the calcium carbonate, which are swept away in the water current, so that the sponge slowly eats its way into the rock. The effect on a coral reef is significant, since the sponge weakens the skeleton of corals and the base of the reef, and it is one of the agents of bioerosion on a reef. Boring sponges also damage the shells of oysters in cultured beds.",
                         "க்ளியோனா மிகவும் அறியப்பட்ட சில டெமோஸ்பாஞ்சுகள் சுண்ணாம்புப் பாறை, மெல்லுடலிகளின் ஓடுகள், இறந்த பவளத்தில் தாம் துளைக்கும் சுரங்கங்களில் வாழ்கின்றன. சிறப்புச் செல்கள் கால்சியம் கார்பனேட்டிலிருந்து சிறு துகள்களைச் செதுக்குகின்றன; அவை நீரோட்டத்தால் அடித்துச் செல்லப்படுகின்றன; இவ்வாறு கடற்பஞ்சு மெதுவாகப் பாறைக்குள் தின்று செல்கிறது. பவள முகட்டில் விளைவு குறிப்பிடத்தக்கது; ஏனெனில் கடற்பஞ்சு பவளங்களின் எலும்புக்கூட்டையும் முகட்டின் அடியையும் பலவீனமாக்குகிறது; முகட்டின் உயிரி அரிப்பு காரணிகளில் ஒன்று. துளையிடும் கடற்பஞ்சுகள் வளர்ப்புப் படுகைகளிலுள்ள சிப்பியோடுகளையும் சேதப்படுத்துகின்றன."),
-                    bdef("Bioerosion", "உயிரி அரிப்பு", "The breaking down of hard rock or skeleton by the activity of living organisms such as boring sponges, worms and grazing fishes." to
+                    bdef("Bioerosion", "உயிரி அரிப்பு (Bioerosion)", "The breaking down of hard rock or skeleton by the activity of living organisms such as boring sponges, worms and grazing fishes." to
                         "துளையிடும் கடற்பஞ்சுகள், புழுக்கள், மேயும் மீன்கள் போன்ற உயிரிகளின் செயல்பாட்டால் கடின பாறை அல்லது எலும்புக்கூடு உடைதல்."),
                 )),
             bsec("answering", "Answering questions on sponges", "கடற்பஞ்சுகள் குறித்த வினாக்களுக்கு விடையளித்தல்",

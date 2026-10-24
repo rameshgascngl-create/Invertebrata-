@@ -23,7 +23,7 @@ object CoralsBookChapter {
                 blocks = listOf(
                     bp("A coral polyp is a small cylinder with a mouth surrounded by tentacles, closely resembling a sea anemone, to which it is related. Its tentacles, which carry nematocysts, number six or eight, or multiples of six, and catch small animals of the plankton, mainly at night. A short pharynx leads from the mouth into the gastrovascular cavity, which is divided by vertical partitions, the mesenteries. In a colonial coral the cavities of neighbouring polyps are joined by a thin sheet of living tissue, which covers the surface of the colony." to
                         "பவள பாலிப் சிறிய உருளை; வாயைச் சுற்றி உணர்கொம்புகள் உள்ளன; தொடர்புடைய கடல் அனிமோனை நெருக்கமாகப் போல் தோன்றுகிறது. நெமட்டோசிஸ்ட்களைத் தாங்கும் உணர்கொம்புகள் ஆறு அல்லது எட்டு, அல்லது ஆறின் மடங்குகள்; பிளாங்க்டனின் சிறு விலங்குகளை, பெரும்பாலும் இரவில், பிடிக்கின்றன. குறுகிய தொண்டை வாயிலிருந்து மெசென்டரிகள் எனும் நிமிர்ந்த பிரிவுகளால் பிரிக்கப்பட்ட காஸ்ட்ரோவாஸ்குலர் குழிக்குச் செல்கிறது. காலனி பவளத்தில் அருகிலுள்ள பாலிப்களின் குழிகள் காலனியின் பரப்பை மூடும் உயிருள்ள திசுவின் மெல்லிய படலத்தால் இணைக்கப்பட்டுள்ளன."),
-                    bdef("Mesentery", "மெசென்டரி",
+                    bdef("Mesentery", "மெசென்டரி (Mesentery)",
                         "One of the vertical partitions that divide the gastrovascular cavity of an anthozoan polyp." to
                             "ஆந்தோசோவா பாலிப்பின் காஸ்ட்ரோவாஸ்குலர் குழியைப் பிரிக்கும் நிமிர்ந்த பிரிவுகளில் ஒன்று."),
                     bdef("Coral", "பவளம்", "An anthozoan polyp, solitary or colonial, that secretes a skeleton of calcium carbonate." to
@@ -35,7 +35,7 @@ object CoralsBookChapter {
                         "கல் பவளங்கள் அல்லது மேட்ரபோரேரியர்கள், பாலிப்பின் அடியிலும் பக்கங்களிலும் உள்ள எப்பிடெர்மிஸிலிருந்து கால்சியம் கார்பனேட் எலும்புக்கூட்டைச் சுரக்கின்றன. பாலிப் இவ்வாறு உருவான கிண்ணத்தில் (கேலிக்ஸ்) அமர்கிறது; கிண்ணத்தின் தளமும் சுவர்களும் ஆரமாகப் பரவும் தகடுகளான செப்டாவால் வலுப்படுகின்றன. தொந்தரவு செய்யப்படும்போது பாலிப் கிண்ணத்துக்குள் பின்வாங்குகிறது. காலனி வளரும்போது புதிய பாலிப்புகள் மொட்டுவிட்டு பழையவற்றின் எலும்புக்கூடுகளின் மேல் தங்கள் கிண்ணங்களைக் கட்டுகின்றன; மேலே உயிருள்ள அடுக்கு வளர, கீழே இறந்த எலும்புக்கூடு திரள்கிறது."),
                     bp("The skeleton is thus a record of the colony's past growth, and the dead part forms the great mass of a reef. It is built slowly, at rates which for many corals are a few millimetres to a few centimetres in a year, and it is broken down by waves, by boring and grazing animals and by the dissolving action of the sea. A reef exists where the building outpaces the breakdown." to
                         "எனவே எலும்புக்கூடு காலனியின் கடந்தகால வளர்ச்சியின் பதிவு; இறந்த பகுதி முகட்டின் பெரும் திணிவாகிறது. இது மெதுவாகக் கட்டப்படுகிறது; பல பவளங்களுக்கு ஆண்டுக்கு சில மில்லிமீட்டர் முதல் சில சென்டிமீட்டர் வரை; அலைகள், துளைக்கும், மேயும் விலங்குகள், கடலின் கரைக்கும் செயல் ஆகியவற்றால் உடைக்கப்படுகிறது. கட்டுதல் உடைவை மிஞ்சும் இடத்தில் முகடு நிலைக்கிறது."),
-                    bdef("Calyx", "கேலிக்ஸ்", "The cup of calcium carbonate in which a coral polyp sits." to
+                    bdef("Calyx", "கேலிக்ஸ் (Calyx)", "The cup of calcium carbonate in which a coral polyp sits." to
                         "பவள பாலிப் அமரும் கால்சியம் கார்பனேட் கிண்ணம்."),
                     bdef("Septum (plural: septa)", "செப்டம் (பன்மை: செப்டா)", "One of the radiating plates of the coral skeleton inside the calyx." to
                         "கேலிக்ஸினுள் உள்ள பவள எலும்புக்கூட்டின் ஆரமாகப் பரவும் தகடுகளில் ஒன்று."),
@@ -49,11 +49,11 @@ object CoralsBookChapter {
                         "ஆழமற்ற நீரில் முகடு கட்டும் பெரும்பாலான பவளங்களின் திசுக்களில், காஸ்ட்ரோடெர்மிஸ் செல்களினுள் வாழும் ஒருசெல் ஒளிச்சேர்க்கை டைனோஃபிளாஜெல்லேட்டுகளான சூக்சாந்தெல்லே பெருந்தொகையில் உள்ளன. இது பகிர்ந்து வாழ்தல். பாசி பாதுகாப்பான வீட்டையும், பவளக் கழிவிலிருந்து கார்பன் டை ஆக்சைடு, நைட்ரஜன் சேர்மங்களையும் பெறுகிறது. பவளம் பாசியிடமிருந்து ஒளிச்சேர்க்கையால் உருவான சர்க்கரைகள் மற்றும் பிற சேர்மங்கள் வடிவில் தன் ஆற்றலின் பெரும்பகுதியைப் பெறுகிறது."),
                     bp("The partnership also helps the coral to build its skeleton. The removal of carbon dioxide by the alga favours the deposition of calcium carbonate, and corals with zooxanthellae lay down their skeletons much faster than those without. Light is therefore essential to a reef-building coral, not because the polyp itself photosynthesises but because its partner does." to
                         "கூட்டுறவு பவளம் தன் எலும்புக்கூட்டைக் கட்டவும் உதவுகிறது. பாசி கார்பன் டை ஆக்சைடை நீக்குவது கால்சியம் கார்பனேட் படிவதற்கு உகந்தது; சூக்சாந்தெல்லே உள்ள பவளங்கள் இல்லாதவற்றைவிட மிக வேகமாக எலும்புக்கூட்டைப் படியவைக்கின்றன. எனவே முகடு கட்டும் பவளத்துக்கு ஒளி இன்றியமையாதது; பாலிப் தானே ஒளிச்சேர்க்கை செய்வதால் அல்ல, அதன் கூட்டாளி செய்வதால்."),
-                    bdef("Zooxanthellae", "சூக்சாந்தெல்லே", "Symbiotic, single-celled photosynthetic dinoflagellates that live inside the cells of reef-building corals." to
+                    bdef("Zooxanthellae", "சூக்சாந்தெல்லே (Zooxanthellae)", "Symbiotic, single-celled photosynthetic dinoflagellates that live inside the cells of reef-building corals." to
                         "முகடு கட்டும் பவளங்களின் செல்களினுள் வாழும், கூட்டுயிர் ஒருசெல் ஒளிச்சேர்க்கை டைனோஃபிளாஜெல்லேட்டுகள்."),
                     bdef("Mutualism", "பகிர்ந்து வாழ்தல்", "A relationship between two species in which each benefits." to
                         "இரு இனங்களுக்கிடையே ஒவ்வொன்றும் பயன்பெறும் உறவு."),
-                    bdef("Photic zone", "ஒளி மண்டலம்", "The upper layer of water into which enough sunlight penetrates for photosynthesis." to
+                    bdef("Photic zone", "ஒளி மண்டலம் (Photic zone)", "The upper layer of water into which enough sunlight penetrates for photosynthesis." to
                         "ஒளிச்சேர்க்கைக்குப் போதுமான சூரிய ஒளி ஊடுருவும் நீரின் மேல் அடுக்கு."),
                 )),
             bsec("types", "Types of coral reef", "பவளப்பாறை வகைகள்",
@@ -69,13 +69,13 @@ object CoralsBookChapter {
                         )),
                     bp("The three types are often discussed as stages of one process. A fringing reef forms around a volcanic island; if the island sinks slowly while the coral grows upwards, a lagoon opens between the reef and the shrinking land and the fringing reef becomes a barrier reef; when the island has sunk below the surface, only the ring of reef remains as an atoll. This is Darwin's subsidence theory. It accounts for atolls that rest on volcanic rock, but it is not the only explanation of reef form and does not apply to every reef. The Great Barrier Reef of Australia is the largest barrier reef, and the Maldives and Lakshadweep islands are examples of atolls near India." to
                         "மூன்று வகைகளும் ஒரே செயல்முறையின் நிலைகளாகப் பெரும்பாலும் விவாதிக்கப்படுகின்றன. எரிமலைத் தீவைச் சுற்றி ஓர முகடு உருவாகிறது; பவளம் மேல்நோக்கி வளரும்போது தீவு மெதுவாக அமிழ்ந்தால், முகட்டுக்கும் சுருங்கும் நிலத்துக்கும் இடையே கடற்காயல் திறந்து, ஓர முகடு தடுப்பு முகடாகிறது; தீவு நீர்மட்டத்துக்குக் கீழே அமிழ்ந்ததும் முகட்டு வளையம் மட்டும் வளைய முகடாக எஞ்சுகிறது. இது டார்வினின் அமிழ்வுக் கோட்பாடு. எரிமலைப் பாறையின் மேல் அமைந்த வளைய முகடுகளை இது விளக்குகிறது; ஆனால் முகட்டு வடிவத்துக்கான ஒரே விளக்கம் அல்ல, எல்லா முகடுகளுக்கும் பொருந்தாது. ஆஸ்திரேலியாவின் பெரும் தடுப்பு முகடு மிகப்பெரிய தடுப்பு முகடு; இந்தியாவுக்கு அருகிலுள்ள மாலத்தீவுகளும் லட்சத்தீவுகளும் வளைய முகடுகளின் எடுத்துக்காட்டுகள்."),
-                    bdef("Fringing reef", "ஓர முகடு", "A reef growing directly from or close to the shore." to
+                    bdef("Fringing reef", "ஓர முகடு (Fringing reef)", "A reef growing directly from or close to the shore." to
                         "கரையிலிருந்தே அல்லது அதன் அருகிலேயே வளரும் முகடு."),
-                    bdef("Barrier reef", "தடுப்பு முகடு", "A reef separated from the land by a broad or deep lagoon." to
+                    bdef("Barrier reef", "தடுப்பு முகடு (Barrier reef)", "A reef separated from the land by a broad or deep lagoon." to
                         "அகன்ற அல்லது ஆழமான கடற்காயலால் நிலத்திலிருந்து பிரிக்கப்பட்ட முகடு."),
-                    bdef("Atoll", "வளைய முகடு", "A ring- or oval-shaped reef enclosing a central lagoon in the open sea." to
+                    bdef("Atoll", "வளைய முகடு (Atoll)", "A ring- or oval-shaped reef enclosing a central lagoon in the open sea." to
                         "திறந்த கடலில் மைய கடற்காயலைச் சூழ்ந்த வளைய அல்லது முட்டை வடிவ முகடு."),
-                    bdef("Lagoon", "கடற்காயல்", "The body of shallow water between a reef and the land, or enclosed by an atoll." to
+                    bdef("Lagoon", "கடற்காயல் (Lagoon)", "The body of shallow water between a reef and the land, or enclosed by an atoll." to
                         "முகட்டுக்கும் நிலத்துக்கும் இடையே அல்லது வளைய முகட்டால் சூழப்பட்ட ஆழமற்ற நீர்ப்பகுதி."),
                 )),
             bsec("conditions", "Conditions for reef growth", "முகடு வளர்ச்சிக்கான நிலைகள்",
@@ -106,7 +106,7 @@ object CoralsBookChapter {
                         "பல முகடு பவளங்களில் முட்டைகளும் விந்தணுக்களும் குறுகிய காலத்தில், பெரும்பாலும் குறிப்பிட்ட மாதத்தில் முழு நிலவுக்குப் பின் சில இரவுகளில், நீரில் வெளியிடப்படுகின்றன; இதனால் முகட்டிலுள்ள பல இனங்களின் எல்லாக் காலனிகளும் ஒரே தருணத்தில் பெருந்தொகை கேமீட்டுகளை வெளியிடுகின்றன. வேறு பவளங்கள் லார்வாக்களை பாலிப்புக்குள் அடைகாக்கின்றன. கருவுறுதல் பிளானுலாவைத் தருகிறது; அது நீந்தி, உறுதியான பரப்பில் படிந்து புதிய காலனியின் முதல் பாலிப்பாகிறது. ஒத்திசைவு கருவுறுதல் வாய்ப்பை உயர்த்துகிறது; ஆனால் லார்வாக்கள் பெருமளவு இழப்பைச் சந்திக்கின்றன; சிறிய பகுதியே தகுந்த இடத்தில் படிகிறது."),
                     bdef("Planula", "பிளானுலா", "The ciliated, free-swimming larva of cnidarians, including corals." to
                         "பவளங்கள் உட்பட நிடேரியாக்களின் கசையிழை, சுதந்திரமாக நீந்தும் லார்வா."),
-                    bdef("Broadcast spawning", "பரப்பு முட்டையிடல்", "The release of eggs and sperm into the water, where fertilisation takes place." to
+                    bdef("Broadcast spawning", "பரப்பு முட்டையிடல் (Broadcast spawning)", "The release of eggs and sperm into the water, where fertilisation takes place." to
                         "முட்டைகளையும் விந்தணுக்களையும் நீரில் வெளியிடுதல்; அங்கு கருவுறுதல் நிகழ்கிறது."),
                 )),
             bsec("india", "Coral reefs of India", "இந்தியாவின் பவளப்பாறைகள்",
@@ -129,9 +129,9 @@ object CoralsBookChapter {
                         )),
                     bp("Among the octocorals, the red or precious coral, Corallium, has a hard red axis of calcium carbonate that is used in jewellery, and it lives in deeper water and does not form reefs. The blue coral, Heliopora, is unusual among octocorals in having a massive calcareous skeleton, and it contributes to the framework of some reefs. The black corals, the Antipatharia, belong to the Hexacorallia and have a horny black axis. Care is needed in an answer not to assign these to the wrong subclass.",
                         "ஆக்டோகோரல்களில் சிவப்பு அல்லது விலைமதிப்புள்ள பவளம் கோரல்லியம் கடினமான சிவப்புச் சுண்ணாம்பு அச்சைக் கொண்டுள்ளது; அது நகைகளில் பயன்படுகிறது; ஆழமான நீரில் வாழ்கிறது; முகடுகளை உருவாக்குவதில்லை. நீல பவளம் ஹீலியோபோரா ஆக்டோகோரல்களுக்கிடையே பெரிய சுண்ணாம்பு எலும்புக்கூடு கொண்டிருப்பதில் வேறுபடுகிறது; சில முகடுகளின் சட்டகத்துக்கு பங்களிக்கிறது. கருப்பு பவளங்கள் (ஆன்டிபாத்தேரியா) ஹெக்சாகோரல்லியாவைச் சேர்ந்தவை; கொம்புப் பொருளாலான கருப்பு அச்சு கொண்டவை. இவற்றைத் தவறான துணை வகுப்பில் இடாதபடி விடையில் கவனம் தேவை."),
-                    bdef("Scleractinia", "ஸ்கிளீராக்டினியா", "The order of stony corals, with a skeleton of calcium carbonate and tentacles in multiples of six; the principal reef builders." to
+                    bdef("Scleractinia", "ஸ்கிளீராக்டினியா (Scleractinia)", "The order of stony corals, with a skeleton of calcium carbonate and tentacles in multiples of six; the principal reef builders." to
                         "கால்சியம் கார்பனேட் எலும்புக்கூடும் ஆறின் மடங்குகளில் உணர்கொம்புகளும் உடைய கல் பவளங்களின் வரிசை; முகடு கட்டுநர்கள்."),
-                    bdef("Octocorallia", "ஆக்டோகோரல்லியா", "The subclass of anthozoans whose polyps have eight pinnate tentacles and eight mesenteries; the soft corals, sea fans and sea pens." to
+                    bdef("Octocorallia", "ஆக்டோகோரல்லியா (Octocorallia)", "The subclass of anthozoans whose polyps have eight pinnate tentacles and eight mesenteries; the soft corals, sea fans and sea pens." to
                         "பாலிப்புகள் எட்டு இறகு வடிவ உணர்கொம்புகளும் எட்டு மெசென்டரிகளும் கொண்ட ஆந்தோசோவாக்களின் துணை வகுப்பு; மென் பவளங்கள், கடல் விசிறிகள், கடல் பேனாக்கள்."),
                     bdef("Sclerite", "ஸ்கிளீரைட்", "A small calcareous piece, or spicule, embedded in the tissue of an octocoral." to
                         "ஆக்டோகோரலின் திசுவில் பதிந்துள்ள சிறு சுண்ணாம்புத் துண்டு அல்லது ஸ்பிக்யூல்."),
@@ -142,9 +142,9 @@ object CoralsBookChapter {
                         "கல் பவளத்தின் எலும்புக்கூடை பாலிப் முழுவதும் உருவாக்குவதில்லை; அதன் அடிப்பகுதியில் எலும்புக்கூட்டின் மேற்பரப்பை ஒட்டியிருக்கும் செல் அடுக்கான கால்சிப்ளாஸ்டிக் எப்பிடெர்மிஸே உருவாக்குகிறது. இச்செல்கள் கடல்நீரிலிருந்து கால்சியத்தையும் கார்பனேட்டையும் எடுத்து, கால்சியம் கார்பனேட் படிகங்களை அரகோனைட்டாகப் படியச் செய்கின்றன. பாலிப்பின் கீழ் மெல்லிய திரவ அடுக்கு உள்ளது; அதில் படிகங்கள் உருவாகின்றன; இச்செயல்முறை சுண்ணாம்புப் படிவு எனப்படுகிறது. எலும்புக்கூடு தொடர்ந்து சேர்க்கப்படுகிறது; எனவே எலும்புக்கூட்டின் மேற்பரப்பே புதியது."),
                     bp("Calcification is faster in light and slower in the dark, and this is one of the effects of the zooxanthellae. The rate depends on the temperature and on the chemistry of the sea water, in particular on the availability of carbonate ions, and for this reason ocean acidification is a threat to reef-building corals. Growth is not always even through the year, and some corals lay down bands of skeleton that differ with the season, which scientists count as they would count the rings of a tree to estimate the age of a coral and to reconstruct past conditions in the water.",
                         "சுண்ணாம்புப் படிவு ஒளியில் வேகமாகவும் இருளில் மெதுவாகவும் நடக்கிறது; இது சூக்சாந்தெல்லேயின் விளைவுகளில் ஒன்று. வீதம் வெப்பநிலையையும் கடல்நீரின் வேதியியலையும், குறிப்பாக கார்பனேட் அயனிகளின் கிடைப்பையும் சார்ந்தது; எனவே கடல் அமிலமாதல் முகடு கட்டும் பவளங்களுக்கு அச்சுறுத்தல். வளர்ச்சி ஆண்டு முழுவதும் சீராக இருப்பதில்லை; சில பவளங்கள் பருவத்துக்கேற்ப வேறுபடும் எலும்புக்கூட்டுப் பட்டைகளை உருவாக்குகின்றன; மரத்தின் வளையங்களை எண்ணுவது போல விஞ்ஞானிகள் இவற்றை எண்ணி பவளத்தின் வயதை மதிப்பிடுகிறார்கள், நீரின் கடந்த நிலைகளையும் மீட்டமைக்கிறார்கள்."),
-                    bdef("Calicoblastic epidermis", "கால்சிப்ளாஸ்டிக் எப்பிடெர்மிஸ்", "The layer of cells at the base of a coral polyp that deposits the skeleton of calcium carbonate." to
+                    bdef("Calicoblastic epidermis", "கால்சிப்ளாஸ்டிக் எப்பிடெர்மிஸ் (Calicoblastic epidermis)", "The layer of cells at the base of a coral polyp that deposits the skeleton of calcium carbonate." to
                         "பவளப் பாலிப்பின் அடிப்பகுதியிலுள்ள, கால்சியம் கார்பனேட் எலும்புக்கூட்டைப் படியச் செய்யும் செல் அடுக்கு."),
-                    bdef("Calcification", "சுண்ணாம்புப் படிவு", "The deposition of calcium carbonate by an organism to form a skeleton or shell." to
+                    bdef("Calcification", "சுண்ணாம்புப் படிவு (Calcification)", "The deposition of calcium carbonate by an organism to form a skeleton or shell." to
                         "உயிரி எலும்புக்கூடு அல்லது ஓடு உருவாக்க கால்சியம் கார்பனேட்டைப் படியச் செய்தல்."),
                 )),
             bsec("forms", "Solitary and colonial forms", "தனி மற்றும் காலனி வடிவங்கள்",
@@ -153,9 +153,9 @@ object CoralsBookChapter {
                         "கல் பவளங்கள் தனியாகவோ காலனியாகவோ இருக்கலாம். காளான் பவளமான ஃபங்கியா தனி பவளம்; கடல் தரையில் தனியாகக் கிடக்கும் தட்டு போன்ற எலும்புக்கூட்டின் மீதுள்ள ஒற்றைப் பெரிய பாலிப். முகடு கட்டும் பெரும்பாலான பவளங்கள் காலனிகள்; காலனிகள் தனித்தன்மை வாய்ந்த வளர்ச்சி வடிவங்களை எடுக்கின்றன: அக்ரோபோராவின் கிளைத்த, மரம் போன்ற அல்லது மேசை போன்ற வடிவங்கள், போரைட்டிஸின் பெரிய, உருண்டையான பாறைகள், பாலிப்புகளின் வாய்கள் வளைந்த பள்ளத்தாக்குகளில் அமைந்து மூளையின் மடிப்புகளைப் போலத் தோன்றும் மூளைப் பவளங்கள். வளர்ச்சி வடிவம் பவளம் வாழும் நிலைமையால் அமைகிறது; அமைதியான தெளிந்த நீரில் கிளைத்த வடிவங்களும் அலைகள் வலுவான இடத்தில் உறுதியான பெரிய வடிவங்களும் காணப்படுகின்றன."),
                     bp("The growth forms matter for the reef as a whole. Branching colonies grow fast and give a complex, three-dimensional habitat for fishes, but they break easily in storms and in anchoring. Massive colonies grow slowly but may live for centuries and hold the framework together. A mixed assemblage of forms is therefore the most resilient, and a reef dominated by one form is more exposed to a single kind of damage.",
                         "வளர்ச்சி வடிவங்கள் முழு முகட்டுக்கும் முக்கியம். கிளைத்த காலனிகள் வேகமாக வளர்ந்து மீன்களுக்குச் சிக்கலான முப்பரிமாண வாழிடம் அளிக்கின்றன; ஆனால் புயலிலும் நங்கூரமிடலிலும் எளிதில் உடைகின்றன. பெரிய காலனிகள் மெதுவாக வளர்கின்றன; ஆனால் நூற்றாண்டுகள் வாழ்ந்து சட்டகத்தைப் பிடித்து வைக்கின்றன. எனவே கலப்பு வடிவத் தொகுப்பே மிகவும் தாங்கும் திறன் கொண்டது; ஒரே வடிவம் ஆதிக்கம் செலுத்தும் முகடு ஒரே வகைச் சேதத்துக்கு அதிகம் வெளிப்படுகிறது."),
-                    bdef("Solitary coral", "தனி பவளம்", "A coral consisting of a single polyp and its skeleton, such as Fungia." to
+                    bdef("Solitary coral", "தனி பவளம் (Solitary coral)", "A coral consisting of a single polyp and its skeleton, such as Fungia." to
                         "ஃபங்கியா போல ஒற்றைப் பாலிப்பும் அதன் எலும்புக்கூடும் கொண்ட பவளம்."),
-                    bdef("Colonial coral", "காலனி பவளம்", "A coral in which many polyps are joined by living tissue and a shared skeleton, formed by budding." to
+                    bdef("Colonial coral", "காலனி பவளம் (Colonial coral)", "A coral in which many polyps are joined by living tissue and a shared skeleton, formed by budding." to
                         "மொட்டுவிடுதலால் உருவான, உயிர்த் திசுவாலும் பொது எலும்புக்கூட்டாலும் இணைந்த பல பாலிப்புகளைக் கொண்ட பவளம்."),
                 )),
             bsec("answering", "Answering questions on corals", "பவளங்கள் குறித்த வினாக்களுக்கு விடையளித்தல்",
@@ -182,7 +182,7 @@ object CoralsBookChapter {
                         "The coral loses its main energy source and is weakened." to "பவளம் தன் முதன்மை ஆற்றல் மூலத்தை இழந்து பலவீனமாகிறது.",
                         "If the stress ends in time the coral recovers; if not, it dies." to "அழுத்தம் உரிய நேரத்தில் முடிந்தால் பவளம் மீளும்; இல்லையெனில் இறக்கும்.",
                     ),
-                    bdef("Coral bleaching", "பவள வெளிறல்", "The loss of zooxanthellae or their pigments from a coral under stress, which exposes the white skeleton." to
+                    bdef("Coral bleaching", "பவள வெளிறல் (Coral bleaching)", "The loss of zooxanthellae or their pigments from a coral under stress, which exposes the white skeleton." to
                         "அழுத்தத்தில் உள்ள பவளம் சூக்சாந்தெல்லேயை அல்லது அவற்றின் நிறமிகளை இழந்து வெள்ளை எலும்புக்கூட்டை வெளிப்படுத்துதல்."),
                     bnote("Bleached is not dead", "வெளிறியது இறந்தது அல்ல",
                         "Do not write that bleaching kills the coral at once. Bleaching removes the coral's main energy source, and death follows only if the stress continues." to

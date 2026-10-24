@@ -35,11 +35,11 @@ object EchinodermataBookChapter {
                         "சுண்ணாம்பு அகச்சட்டகம், நீர் குருதியோட்ட மண்டலம், முதிர்ந்த ஐந்தாரைச் சமச்சீர் கொண்ட கடல்வாழ் டியூட்டிரோஸ்டோம்."),
                     bdef("Endoskeleton", "அகச்சட்டகம்", "A skeleton that lies within the body, here made of mesodermal calcareous ossicles." to
                         "உடலுக்குள் அமையும் கூடு; இங்கு மெசோடெர்மிலிருந்து உருவாகும் சுண்ணாம்பு ஆஸிக்கிள்கள்."),
-                    bdef("Ossicle", "ஆஸிக்கிள்", "A small calcareous plate or piece of the echinoderm skeleton." to
+                    bdef("Ossicle", "ஆஸிக்கிள் (Ossicle)", "A small calcareous plate or piece of the echinoderm skeleton." to
                         "முட்தோலிக் கூட்டின் சிறு சுண்ணாம்புத் தகடு அல்லது துண்டு."),
-                    bdef("Pedicellaria", "பெடிசல்லேரியா", "A small pincer-like structure on the surface of some echinoderms that keeps the surface clean and may protect it." to
+                    bdef("Pedicellaria", "பெடிசல்லேரியா (Pedicellaria)", "A small pincer-like structure on the surface of some echinoderms that keeps the surface clean and may protect it." to
                         "சில முட்தோலிகளின் மேற்பரப்பில் மேற்பரப்பைத் தூய்மையாக வைத்து பாதுகாக்கக்கூடிய சிறு இடுக்கி போன்ற அமைப்பு."),
-                    bdef("Coelomate", "உண்மையான உடற்குழியுடையது", "An animal with a true coelom, a cavity lined by mesoderm." to
+                    bdef("Coelomate", "உண்மையான உடற்குழியுடையது (Coelomate)", "An animal with a true coelom, a cavity lined by mesoderm." to
                         "மெசோடெர்ம் வரிசையிட்ட உடற்குழியான உண்மையான உடற்குழி கொண்ட விலங்கு."),
                 )),
             bsec("symmetry", "Pentaradial symmetry and the bilateral larva", "ஐந்தாரைச் சமச்சீரும் இருபக்க லார்வாவும்",
@@ -51,13 +51,13 @@ object EchinodermataBookChapter {
                     bnote("Primary and secondary radial symmetry", "முதன்மை, இரண்டாம் நிலை ஆரச்சமச்சீர்",
                         "Cnidarian radial symmetry is primary. Echinoderm pentaradial symmetry is secondary, derived from a bilateral larva." to
                             "குழியுடலி ஆரச்சமச்சீர் முதன்மையானது. முட்தோலி ஐந்தாரைச் சமச்சீர் இருபக்க லார்வாவிலிருந்து தோன்றிய இரண்டாம் நிலை."),
-                    bdef("Pentaradial symmetry", "ஐந்தாரைச் சமச்சீர்", "A body plan in which similar parts are arranged in fives around a central axis." to
+                    bdef("Pentaradial symmetry", "ஐந்தாரைச் சமச்சீர் (Pentaradial symmetry)", "A body plan in which similar parts are arranged in fives around a central axis." to
                         "ஒத்த பகுதிகள் மையச் சுற்றி ஐந்தாக அமையும் உடல் திட்டம்."),
                     bdef("Metamorphosis", "உருமாற்றம்", "The change in form from a larva to a juvenile." to
                         "லார்வாவிலிருந்து இளவிலங்காக வடிவம் மாறுதல்."),
-                    bdef("Oral surface", "வாய்ப்புற மேற்பரப்பு", "The surface of the body that bears the mouth." to
+                    bdef("Oral surface", "வாய்ப்புற மேற்பரப்பு (Oral surface)", "The surface of the body that bears the mouth." to
                         "வாய் அமைந்துள்ள உடல் மேற்பரப்பு."),
-                    bdef("Aboral surface", "மேற்புற மேற்பரப்பு", "The surface opposite the mouth, which in a starfish bears the anus and the madreporite." to
+                    bdef("Aboral surface", "மேற்புற மேற்பரப்பு (Aboral surface)", "The surface opposite the mouth, which in a starfish bears the anus and the madreporite." to
                         "வாய்க்கு எதிர் மேற்பரப்பு; நட்சத்திரமீனில் மலவாயும் மேட்ரிபோரைட்டும் உள்ளது."),
                 )),
             bsec("wvs-skeleton", "The skeleton and the water-vascular system", "கூடும் நீர் குருதியோட்ட மண்டலமும்",
@@ -66,11 +66,11 @@ object EchinodermataBookChapter {
                         "கூடு ஆஸிக்கிள்களால் ஆனது; ஒவ்வொன்றும் சிறிதளவு கரிமப் பொருளுடன் கால்சைட் வடிவ கால்சியம் கார்பனேட்டின் வலைப்பின்னல்; மெசோடெர்ம் செல்களுக்குள் உருவாகிறது. கடல் முள்ளெலிகளில் ஆஸிக்கிள்கள் இணைந்து இறுகிய ஓடு, டெஸ்ட் ஆகின்றன. நட்சத்திர மீன்களில் அவை இணைப்புத் திசுவாலும் தசையாலும் பிடிக்கப்பட்ட தனித் துண்டுகள்; எனவே கைகள் வளையலாம். கடல் வெள்ளரிகளில் தோல் போன்ற உடற்சுவரில் நுண்ணிய துண்டுகளாகக் குறைந்துள்ளன. மேற்பரப்பில் முட்கள் இருக்கலாம்; நட்சத்திர மீன்கள், முள்ளெலிகளில் பெடிசல்லேரியாக்கள்."),
                     bp("The water-vascular system is a system of canals, derived from part of the coelom, filled with a fluid like sea water and moved by muscles and hydraulic pressure. Seawater enters through the madreporite, a sieve-like plate, and the stone canal leads to a ring canal around the mouth, from which radial canals pass along each arm. Side branches end in tube feet, each connected to a bulb called an ampulla. When the ampulla contracts, fluid is driven into the tube foot, which extends, and muscles of the tube foot retract it. The system works by hydraulic pressure and not by a continuous one-way flow of sea water through the animal, and it is treated in its own chapter." to
                         "நீர் குருதியோட்ட மண்டலம் உடற்குழியின் ஒரு பகுதியிலிருந்து தோன்றி, கடல்நீர் போன்ற திரவம் நிரம்பி, தசைகளாலும் நீரழுத்தத்தாலும் இயக்கப்படும் கால்வாய்களின் அமைப்பு. கடல்நீர் சல்லடை போன்ற தகடான மேட்ரிபோரைட் வழியே நுழைகிறது; கல் கால்வாய் வாயைச் சுற்றிய வளையக் கால்வாய்க்குச் செல்கிறது; அதிலிருந்து கதிர்க் கால்வாய்கள் ஒவ்வொரு கையிலும் செல்கின்றன. பக்கக் கிளைகள் குழாய்ப்பாதங்களில் முடிகின்றன; ஒவ்வொன்றும் ஆம்புலா எனும் குமிழுடன் இணைந்துள்ளது. ஆம்புலா சுருங்கும்போது திரவம் குழாய்ப்பாதத்துக்குள் தள்ளப்பட்டு அது நீள்கிறது; குழாய்ப்பாதத் தசைகள் அதை இழுக்கின்றன. அமைப்பு நீரழுத்தத்தால் இயங்குகிறது; விலங்கு வழியே கடல்நீர் தொடர்ந்து ஒருதிசை ஓடுவதால் அல்ல; இது தனி அத்தியாயத்தில் கையாளப்படுகிறது."),
-                    bdef("Madreporite", "மேட்ரிபோரைட்", "The sieve-like plate on the aboral surface through which sea water communicates with the water-vascular system." to
+                    bdef("Madreporite", "மேட்ரிபோரைட் (Madreporite)", "The sieve-like plate on the aboral surface through which sea water communicates with the water-vascular system." to
                         "கடல்நீர் நீர் குருதியோட்ட மண்டலம்டன் தொடர்புகொள்ளும் மேற்புறச் சல்லடை போன்ற தகடு."),
-                    bdef("Tube foot", "குழாய்ப்பாதம்", "A hollow, extensible, hydraulic projection of the water-vascular system used in movement, attachment and feeding." to
+                    bdef("Tube foot", "குழாய்ப்பாதம் (Tube foot)", "A hollow, extensible, hydraulic projection of the water-vascular system used in movement, attachment and feeding." to
                         "இயக்கம், பற்றுதல், உணவெடுப்பில் பயன்படும் நீர் குருதியோட்ட மண்டலத்தின் வெற்று, நீளக்கூடிய நீரழுத்தத் துருத்தல்."),
-                    bdef("Ampulla", "ஆம்புலா", "The muscular bulb at the base of a tube foot whose contraction extends the foot." to
+                    bdef("Ampulla", "ஆம்புலா (Ampulla)", "The muscular bulb at the base of a tube foot whose contraction extends the foot." to
                         "சுருங்கும்போது குழாய்ப்பாதத்தை நீட்டும், அதன் அடியிலுள்ள தசைக் குமிழ்."),
                     bdef("Test", "டெஸ்ட்", "The rigid shell of a sea urchin formed from fused ossicles." to
                         "இணைந்த ஆஸிக்கிள்களால் உருவாகும் கடல் முள்ளெலியின் இறுகிய ஓடு."),
@@ -88,15 +88,15 @@ object EchinodermataBookChapter {
                             listOf("Holothuroidea" to "ஹோலோதூரோய்டியா", "Sea cucumber" to "கடல் வெள்ளரி", "Holothuria" to "ஹோலோதூரியா", "Elongated, leathery body with tentacles around the mouth; ossicles reduced" to "வாயைச் சுற்றிய உணர்கொம்புகளுடன் நீண்ட, தோல் போன்ற உடல்; ஆஸிக்கிள்கள் குறைந்தவை"),
                             listOf("Crinoidea" to "கிரினாய்டியா", "Sea lily, feather star" to "கடல் அல்லி, இறகு நட்சத்திரம்", "Antedon" to "ஆண்டிடான்", "Mouth upwards; feathery arms; stalked or free" to "வாய் மேல்நோக்கி; இறகு போன்ற கைகள்; தண்டுடையவை அல்லது தளர்வானவை"),
                         )),
-                    bdef("Asteroidea", "அஸ்டீராய்டியா", "The class of starfishes, with arms continuous with the central disc." to
+                    bdef("Asteroidea", "அஸ்டீராய்டியா (Asteroidea)", "The class of starfishes, with arms continuous with the central disc." to
                         "கைகள் மைய வட்டுடன் தொடர்ச்சியான நட்சத்திர மீன்களின் வகுப்பு."),
-                    bdef("Ophiuroidea", "ஓஃபியூராய்டியா", "The class of brittle stars, with slender arms sharply set off from the disc." to
+                    bdef("Ophiuroidea", "ஓஃபியூராய்டியா (Ophiuroidea)", "The class of brittle stars, with slender arms sharply set off from the disc." to
                         "வட்டிலிருந்து தெளிவாகப் பிரிந்த மெல்லிய கைகள் கொண்ட பிரிட்டில் நட்சத்திரங்களின் வகுப்பு."),
-                    bdef("Echinoidea", "எக்கினாய்டியா", "The class of sea urchins and sand dollars, with a rigid test and movable spines." to
+                    bdef("Echinoidea", "எக்கினாய்டியா (Echinoidea)", "The class of sea urchins and sand dollars, with a rigid test and movable spines." to
                         "இறுகிய டெஸ்ட், அசையும் முட்கள் கொண்ட கடல் முள்ளெலிகள், மணல் டாலர்களின் வகுப்பு."),
-                    bdef("Holothuroidea", "ஹோலோதூரோய்டியா", "The class of sea cucumbers, with an elongated body and reduced ossicles." to
+                    bdef("Holothuroidea", "ஹோலோதூரோய்டியா (Holothuroidea)", "The class of sea cucumbers, with an elongated body and reduced ossicles." to
                         "நீண்ட உடலும் குறைந்த ஆஸிக்கிள்களும் கொண்ட கடல் வெள்ளரிகளின் வகுப்பு."),
-                    bdef("Crinoidea", "கிரினாய்டியா", "The class of sea lilies and feather stars, with the mouth directed upwards." to
+                    bdef("Crinoidea", "கிரினாய்டியா (Crinoidea)", "The class of sea lilies and feather stars, with the mouth directed upwards." to
                         "வாய் மேல்நோக்கி உள்ள கடல் அல்லிகள், இறகு நட்சத்திரங்களின் வகுப்பு."),
                 )),
             bsec("affinities", "Larvae and deuterostome affinity", "லார்வாக்களும் இரண்டாம்வாய் உறவும்",
@@ -107,13 +107,13 @@ object EchinodermataBookChapter {
                         "தற்போதைய கருத்து: முட்தோலிகளும் ஹெமிகார்டேட்டுகளும் சேர்ந்து அம்புலாக்ரேரியா எனும் குழுவை உருவாக்குகின்றன; இது முதுகுநாணிகளின் சகோதரக் குழு. எனவே முதிர்ந்த வடிவத்தில் ஒத்ததாக இல்லாவிட்டாலும் தொகுதி முதுகெலும்பிகளின் நெருங்கிய உறவினர். இது பொது மூதாதையர் பற்றிய கூற்று; முதுகுநாணி மூதாதை முட்தோலி போல் இருந்தார் என்று பொருளல்ல. முட்தோலிகள் முதுகெலும்பிகளின் மூதாதையர் என எழுதும் மாணவர் உறவினர் என்ற சொல் தவிர்க்க நினைக்கும் தவறைச் செய்கிறார்."),
                     bdef("Deuterostome", "டியூட்டிரோஸ்டோம்", "An animal in which the blastopore becomes the anus and the mouth forms secondarily." to
                         "பிளாஸ்டோபோர் மலவாயாகவும் வாய் இரண்டாம் நிலையாகவும் உருவாகும் விலங்கு."),
-                    bdef("Ambulacraria", "அம்புலாக்ரேரியா", "The group formed by the echinoderms and the hemichordates." to
+                    bdef("Ambulacraria", "அம்புலாக்ரேரியா (Ambulacraria)", "The group formed by the echinoderms and the hemichordates." to
                         "முட்தோலிகளும் ஹெமிகார்டேட்டுகளும் இணைந்த குழு."),
-                    bdef("Bipinnaria", "பிபின்னேரியா", "The free-swimming ciliated larva of the starfishes." to
+                    bdef("Bipinnaria", "பிபின்னேரியா (Bipinnaria)", "The free-swimming ciliated larva of the starfishes." to
                         "நட்சத்திர மீன்களின் தனி நீந்தும் கசையிழை லார்வா."),
-                    bdef("Pluteus", "ப்ளூட்டியஸ்", "The larva of sea urchins and brittle stars, with long skeletal arms." to
+                    bdef("Pluteus", "ப்ளூட்டியஸ் (Pluteus)", "The larva of sea urchins and brittle stars, with long skeletal arms." to
                         "நீண்ட கூட்டுக் கைகள் கொண்ட கடல் முள்ளெலிகள், பிரிட்டில் நட்சத்திரங்களின் லார்வா."),
-                    bdef("Auricularia", "ஆரிக்குலேரியா", "The larva of sea cucumbers." to
+                    bdef("Auricularia", "ஆரிக்குலேரியா (Auricularia)", "The larva of sea cucumbers." to
                         "கடல் வெள்ளரிகளின் லார்வா."),
                 )),
             bsec("systems", "Organ systems in outline", "உறுப்பு அமைப்புகள் சுருக்கமாக",
@@ -122,9 +122,9 @@ object EchinodermataBookChapter {
                         "உணவுக்குழாய் பொதுவாக முழுமையானது: வாய்ப்புறத்தில் வாய், மேற்புறத்தில் மலவாய்; ஆனால் பிரிட்டில் நட்சத்திரங்களுக்கு மலவாய் இல்லை; உணவுக்கேற்ப குடலின் வடிவம் மாறுகிறது. நட்சத்திர மீன்களில் இரைமேல் வாய் வழியே இரைப்பை புரளக்கூடியது; எனவே செரிமானம் உடலுக்கு வெளியே தொடங்குகிறது. நரம்பு அமைப்புக்கு மூளை இல்லை. வாயைச் சுற்றிய நரம்பு வளையம் கைகளுக்குள் கதிர் நரம்புகளை அனுப்புகிறது; மேற்றோலடி நரம்புப் பின்னல்களும் எளிய உணர்வு உறுப்புகளும் உள்ளன; நட்சத்திரமீனின் ஒவ்வொரு கர நுனியிலும் கண்புள்ளி இதில் அடங்கும். பாலினங்கள் பொதுவாகத் தனி; இனப்பெருக்கச் சுரப்பிகள் ஒவ்வொரு கையிலும் அல்லது இடைக்கதிரிலும் மீள்கின்றன; முட்டையும் விந்தும் வழக்கமாகக் கடலில் விடப்பட்டு அங்கே கருவுறுதல் நடைபெறுகிறது."),
                     bp("The body fluid of the coelom has a part in the transport of gases and food, and cells called coelomocytes within it take part in defence and in the removal of waste. Gas exchange takes place across thin areas of the body, including the tube feet and, in the starfishes, small projections of the skin called papulae. These statements apply in outline to the whole phylum, and the particular arrangement in each class is learned from the type." to
                         "உடற்குழித் திரவம் வாயுக்கள், உணவின் கடத்தலில் பங்கு வகிக்கிறது; அதிலுள்ள கொலோமோசைட்டுகள் எனும் செல்கள் பாதுகாப்பிலும் கழிவு அகற்றலிலும் பங்கேற்கின்றன. வாயுப் பரிமாற்றம் குழாய்ப்பாதங்கள், நட்சத்திர மீன்களில் பப்புலாக்கள் எனும் சிறு தோல் துருத்தல்கள் உட்பட மெல்லிய உடற்பகுதிகள் வழியே நடைபெறுகிறது. இக்கூற்றுகள் முழுத் தொகுதிக்கும் சுருக்கமாகப் பொருந்தும்; ஒவ்வொரு வகுப்பின் குறிப்பிட்ட அமைப்பு வகை உயிரியிலிருந்து கற்கப்படுகிறது."),
-                    bdef("Papula", "பப்புலா", "A small thin-walled projection of the body wall of a starfish that is involved in gas exchange." to
+                    bdef("Papula", "பப்புலா (Papula)", "A small thin-walled projection of the body wall of a starfish that is involved in gas exchange." to
                         "வாயுப் பரிமாற்றத்தில் ஈடுபடும் நட்சத்திரமீனின் உடற்சுவரின் சிறு மெல்லிய சுவர் துருத்தல்."),
-                    bdef("Coelomocyte", "கொலோமோசைட்", "A free cell of the coelomic fluid that takes part in defence and waste removal." to
+                    bdef("Coelomocyte", "கொலோமோசைட் (Coelomocyte)", "A free cell of the coelomic fluid that takes part in defence and waste removal." to
                         "பாதுகாப்பிலும் கழிவு அகற்றலிலும் பங்கேற்கும் உடற்குழித் திரவத்தின் தனி செல்."),
                 )),
             bsec("habits", "Habits, regeneration and importance", "பழக்கங்கள், மீளுருவாக்கம், முக்கியத்துவம்",
@@ -135,7 +135,7 @@ object EchinodermataBookChapter {
                         "முட்தோலிகள் கடலின் சூழலியலில் முக்கியமானவை. சில பாறைக் கரைகளில் நட்சத்திர மீன்கள் அகற்றப்பட்டபோது சமூகம் மாறியதால் அவை முக்கிய வேட்டையாடி என்ற கருத்துக்கு உட்பட்டுள்ளன; முள்ளெலிகள் பாசி வளர்ச்சியைக் கட்டுப்படுத்தலாம். சில பகுதிகளில் கடல் வெள்ளரிகள் உணவுக்காக அறுவடை செய்யப்படுகின்றன; இது பல இடங்களில் அதிகப்படியான மீன்பிடிக்கு வழிவகுத்துள்ளது; அத்தகைய மீன்பிடியின் ஒழுங்குமுறை தற்போதைய அதிகாரபூர்வ ஆதாரங்களுக்குரிய விஷயம்."),
                     bdef("Regeneration", "மீளுருவாக்கம்", "The replacement of lost body parts by new growth." to
                         "இழந்த உடல் பகுதிகளை புதிய வளர்ச்சியால் மாற்றுதல்."),
-                    bdef("Keystone predator", "முக்கிய வேட்டையாடி", "A predator whose removal changes the structure of a whole community out of proportion to its numbers." to
+                    bdef("Keystone predator", "முக்கிய வேட்டையாடி (Keystone predator)", "A predator whose removal changes the structure of a whole community out of proportion to its numbers." to
                         "அதன் எண்ணிக்கைக்குப் பொருந்தாத அளவில் அகற்றப்படும்போது முழு சமூகத்தின் அமைப்பையும் மாற்றும் வேட்டையாடி."),
                 )),
             bsec("answers", "Writing the answer", "விடை எழுதுதல்",
@@ -155,9 +155,9 @@ object EchinodermataBookChapter {
                         "முட்தோலி மெதுவானது; நீண்ட வரலாற்றில் அது ஒரு சட்டகத்தாலும் வேதியியலாலும் காக்கப்பட்டுள்ளது. கடல் முள்ளெலியின் முட்கள் கூர்மையானவை; சில இனங்களில் சிறு தாடைகளாகச் செயல்படும் பெடிசல்லேரியாக்கள் உடன் உள்ளன; சில இனங்களில் முட்கள் அல்லது பெடிசல்லேரியாக்கள் நஞ்சுடன் தொடர்புடையவை. நட்சத்திர மீனும் பிரிட்டில் ஸ்டாரும் வலுவான தோலாலும் தகடுகளாலும் பாதுகாக்கப்படுகின்றன; பல நட்சத்திர மீன்களின் திசுக்களில் வேட்டையாடிகளைத் தடுக்கும் வேதிப்பொருட்கள் உள்ளன. இவ்விலங்குகள் பலவும் கண்ணில் படாதவையாகவோ இரவில் சுறுசுறுப்பாகவோ இருப்பதாலும் பாதுகாக்கப்படுகின்றன. எனவே முட்தோலி மெதுவானது என்பதால் தற்காப்பற்றது என்ற கூற்று தவறு; பொதுப் பண்புகள் அத்தியாயம் சட்டகத்தை முதல் தற்காப்பு வரிசையாகப் பட்டியலிடுகிறது."),
                     bp("Several echinoderms can shed part of the body to escape, a behaviour called autotomy. The brittle stars take their name from the ease with which an arm is broken off when the animal is seized, and the arm is regrown. Sea cucumbers have a more drastic response in some species, evisceration, in which the animal expels part of its internal organs through the anus or the body wall when it is disturbed and later regenerates them. In certain sea cucumbers, a group of sticky tubes, the Cuvierian tubules, can be thrown out to entangle an attacker. These behaviours are described for particular species and should not be applied to all members of the class. They are connected to the high power of regeneration of echinoderms, which has been noted in the starfish, and the explanation of the first is partly the explanation of the second.",
                         "பல முட்தோலிகள் தப்பிக்க உடலின் ஒரு பகுதியை உதிர்க்க முடியும்; இந்நடத்தை தானாக உறுப்பு இழத்தல் எனப்படுகிறது. விலங்கு பிடிக்கப்படும்போது கை எளிதில் உடைந்து விடுவதால் பிரிட்டில் ஸ்டார் அப்பெயரைப் பெற்றது; கை மீண்டும் வளர்கிறது. சில இனங்களில் கடல் வெள்ளரிகள் இன்னும் கடுமையாகத் துலங்குகின்றன: தொந்தரவு செய்யப்படும்போது விலங்கு தன் உள்ளுறுப்புகளின் ஒரு பகுதியை மலவாய் அல்லது உடற்சுவர் வழியாக வெளியேற்றி, பின்னர் அவற்றை மீளுருவாக்குகிறது; இது குடல் வெளியேற்றம் எனப்படுகிறது. சில கடல் வெள்ளரிகளில் தாக்குபவரைச் சிக்க வைக்க ஒட்டும் குழாய்க் கற்றையான கூவியர் குழாய்கள் வீசப்படலாம். இந்நடத்தைகள் குறிப்பிட்ட இனங்களுக்கு விவரிக்கப்படுகின்றன; வகுப்பின் அனைத்து உறுப்பினர்களுக்கும் பயன்படுத்தப்படக் கூடாது. இவை நட்சத்திர மீனில் குறிப்பிடப்பட்ட முட்தோலிகளின் உயர் மீளுருவாக்க ஆற்றலுடன் தொடர்புடையவை; முதலாவதன் விளக்கம் ஓரளவு இரண்டாவதன் விளக்கமும் ஆகும்."),
-                    bdef("Autotomy", "தானாக உறுப்பு இழத்தல்", "The voluntary shedding of part of the body, usually to escape from a predator." to
+                    bdef("Autotomy", "தானாக உறுப்பு இழத்தல் (Autotomy)", "The voluntary shedding of part of the body, usually to escape from a predator." to
                         "பொதுவாக வேட்டையாடியிடமிருந்து தப்பிக்க, உடலின் ஒரு பகுதியை தானாக உதிர்த்தல்."),
-                    bdef("Evisceration", "குடல் வெளியேற்றம்", "The expulsion of internal organs through the body wall or the anus, seen in some sea cucumbers." to
+                    bdef("Evisceration", "குடல் வெளியேற்றம் (Evisceration)", "The expulsion of internal organs through the body wall or the anus, seen in some sea cucumbers." to
                         "சில கடல் வெள்ளரிகளில் காணப்படும், உடற்சுவர் அல்லது மலவாய் வழியாக உள்ளுறுப்புகளை வெளியேற்றுதல்."),
                 )),
             bsec("classes-detail", "The five classes in practice: what makes each distinct", "ஐந்து வகுப்புகள் நடைமுறையில்: ஒவ்வொன்றையும் வேறுபடுத்துவது எது",
@@ -166,7 +166,7 @@ object EchinodermataBookChapter {
                         "ஒவ்வொரு வகுப்பையும் ஒரு தீர்மானமான பண்பாலும் அதன் எடுத்துக்காட்டாலும் நினைவில் கொள்வது எளிது. நட்சத்திர மீன்களான அஸ்டீராய்டியாவுக்கு மைய வட்டிலிருந்து கூர்மையாகப் பிரிக்கப்படாத கைகளும், கைகளின் கீழ்ப்பரப்பில் உறிஞ்சிகளுடன் கூடிய குழாய்ப்பாதங்களும் உள்ளன; அஸ்டீரியாஸ் நிலையான எடுத்துக்காட்டு. பிரிட்டில் ஸ்டார்களான ஓஃபியூராய்டியாவுக்கு மைய வட்டிலிருந்து கூர்மையாக வேறுபட்ட மெல்லிய நெகிழ்வான கைகள் உள்ளன; குழாய்ப்பாதங்களால் மட்டுமின்றி கைகளை நெளிப்பதாலும் நகர்கின்றன. கடல் முள்ளெலிகள், மணல் டாலர்களான எக்கினாய்டியாவுக்கு இணைந்த தகடுகளாலான விறைப்பான ஓடும், நீண்ட அசையும் முட்களும், அரிஸ்டாட்டிலின் விளக்கு என அடிக்கடி அழைக்கப்படும் மெல்லும் கருவியும் உள்ளன; மணல் டாலர்கள் குட்டையான முட்களுடன் தட்டையானவை. கடல் வெள்ளரிகளான ஹோலோதூரோய்டியா வாய்-மேற்புற அச்சில் நீண்டவை, மென்மையான உடல், வாயைச் சுற்றி உணர்கொம்புகள், குறைந்த ஆஸிக்கிள்கள் உடையவை. கடல் லில்லிகள், இறகு நட்சத்திரங்களான கிரினாய்டியாவுக்கு இறகு போன்ற கைகளும் மேல்நோக்கிய வாயும் உள்ளன; கடல் லில்லிகள் காம்பால் இணைந்துள்ளன."),
                     bp("The distinction between the classes should be remembered with the mouth and the feeding style. The starfishes and the brittle stars have the mouth on the underside, the sea urchins have the mouth with the lantern below, the sea cucumbers have the mouth at one end, and the crinoids have the mouth directed upward, in a feeding position that is suited to the capture of particles from the water by the arms. The sea cucumbers are described as mud-swallowing or suspension-feeding, depending upon the species. A table with the class, the shape of the body, the arms, the skeleton and the example is the best summary, and the figures for the numbers of living species of each class are omitted from this chapter because the totals change as species are described.",
                         "வகுப்புகளுக்கிடையேயான வேறுபாட்டை வாய், உணவூட்ட முறையுடன் நினைவில் கொள்ள வேண்டும். நட்சத்திர மீன்களுக்கும் பிரிட்டில் ஸ்டார்களுக்கும் வாய் அடிப்பக்கத்தில் உள்ளது; கடல் முள்ளெலிகளுக்கு விளக்குடன் வாய் கீழே உள்ளது; கடல் வெள்ளரிகளுக்கு வாய் ஒரு முனையில் உள்ளது; கிரினாய்டுகளுக்கு கைகளால் நீரிலிருந்து துகள்களைப் பிடிக்க ஏற்ற உணவூட்ட நிலையில் வாய் மேல்நோக்கி உள்ளது. கடல் வெள்ளரிகள் இனத்தைப் பொறுத்து சேறு விழுங்குபவை அல்லது தொங்கு துகள் உண்பவை என விவரிக்கப்படுகின்றன. வகுப்பு, உடல் வடிவம், கைகள், சட்டகம், எடுத்துக்காட்டு கொண்ட அட்டவணையே சிறந்த சுருக்கம்; ஒவ்வொரு வகுப்பிலும் வாழும் இனங்களின் எண்ணிக்கைகள் இனங்கள் விவரிக்கப்படும்போது மொத்தம் மாறுவதால் இந்த அத்தியாயத்தில் தவிர்க்கப்பட்டுள்ளன."),
-                    bdef("Aristotle's lantern", "அரிஸ்டாட்டிலின் விளக்கு", "The chewing apparatus of a sea urchin, a system of five jaws with teeth that surrounds the mouth." to
+                    bdef("Aristotle's lantern", "அரிஸ்டாட்டிலின் விளக்கு (Aristotle's lantern)", "The chewing apparatus of a sea urchin, a system of five jaws with teeth that surrounds the mouth." to
                         "கடல் முள்ளெலியின் மெல்லும் கருவி; வாயைச் சுற்றியுள்ள பற்களுடன் கூடிய ஐந்து தாடைகளின் அமைப்பு."),
                 )),
             bsec("india", "Echinoderms and people in India", "இந்தியாவில் முட்தோலிகளும் மக்களும்",
@@ -175,7 +175,7 @@ object EchinodermataBookChapter {
                         "இந்தியாவின் அனைத்துக் கடற்கரைகளிலும் முட்தோலிகள் உள்ளன; மன்னார் வளைகுடாக் கடற்கரையின் கதையில் கடல் வெள்ளரிகளுக்குத் தனி இடம் உண்டு. வணிகத்தில் பெஷ்-டி-மெர் என்ற பெயரில் அறியப்படும் உலர்ந்த கடல் வெள்ளரிகள் மிக நீண்ட காலமாக கிழக்கு ஆசிய சந்தைகளுக்கு ஏற்றுமதியாகின்றன; உலகின் பல பகுதிகளிலும் அதிகப் பிடிப்பு அவற்றின் எண்ணிக்கையைக் குறைத்துள்ளது. விலங்குகள் மெதுவானவை, ஆழமற்ற நீரில் வாழ்கின்றன, தாமதமாக இனப்பெருக்கம் செய்கின்றன என்பதால் அவற்றின் எண்ணிக்கை மெதுவாகவே மீள்கிறது. இந்தியாவில் கடல் வெள்ளரிகள் 2000-களின் தொடக்கத்தில் சட்டப் பாதுகாப்புக்குள் கொண்டுவரப்பட்டன; வனவிலங்குச் சட்டத்தின் கீழ் கடலிலிருந்து சேகரிப்பது தடை செய்யப்பட்டுள்ளது. அறிவிப்புகள் திருத்தப்படக்கூடும் என்பதால் தற்போதைய சட்ட நிலையையும் பட்டியலையும் அதிகாரபூர்வ மூலத்திலிருந்து மாணவர்கள் உறுதிப்படுத்த வேண்டும்."),
                     bp("The larger lesson is the ecological one. Sea cucumbers that swallow sediment are said to turn over the surface of the sea bottom and to recycle nutrients, so that a heavy removal of them may affect the community of the bottom, though the strength of this effect differs between places and has not been measured for every species. The sea urchins and starfishes also feature in the ecology of the reefs and the rocky shore, and the removal of a predator or a grazer is likely to change the balance of the community. The echinoderms thus offer a clear case of the argument for managing a fishery in a way that allows the stock to recover, which is the principle of sustainable management discussed under economic importance of other invertebrates.",
                         "பெரிய பாடம் சூழலியல் சார்ந்தது. படிவை விழுங்கும் கடல் வெள்ளரிகள் கடலடித் தரையின் மேற்பரப்பைப் புரட்டி ஊட்டச்சத்துகளை மறுசுழற்சி செய்வதாகக் கூறப்படுகிறது; எனவே அவற்றின் அதிக நீக்கம் அடித்தள சமூகத்தைப் பாதிக்கலாம்; ஆனால் இவ்விளைவின் வலிமை இடத்துக்கு இடம் மாறுபடும்; ஒவ்வொரு இனத்துக்கும் அளக்கப்படவில்லை. கடல் முள்ளெலிகளும் நட்சத்திர மீன்களும் பவளப் பாறைகள், பாறைக் கரை சூழலியலில் இடம் பெறுகின்றன; ஒரு வேட்டையாடி அல்லது மேய்ப்பவரின் நீக்கம் சமூகத்தின் சமநிலையை மாற்ற வாய்ப்புண்டு. இவ்வாறு முட்தோலிகள், இருப்பு மீள அனுமதிக்கும் வகையில் மீன்பிடியை நிர்வகிக்கும் வாதத்துக்கு தெளிவான எடுத்துக்காட்டாக அமைகின்றன; இதுவே பிற முதுகெலும்பற்றவற்றின் பொருளாதார முக்கியத்துவத்தில் விவாதிக்கப்பட்ட நிலையான மேலாண்மையின் கொள்கை."),
-                    bdef("Beche-de-mer", "பெஷ்-டி-மெர்", "The trade name of processed and dried sea cucumber." to
+                    bdef("Beche-de-mer", "பெஷ்-டி-மெர் (Beche-de-mer)", "The trade name of processed and dried sea cucumber." to
                         "பதப்படுத்திய உலர் கடல் வெள்ளரியின் வணிகப் பெயர்."),
                 )),
         ),

@@ -27,11 +27,11 @@ object ProtozoaBookChapter {
                         "விடையில் குழுவைப் பற்றி எழுதுவதற்கு அளவான சொல்லாடல் தேவை. புரோட்டோசோவாக்களை ஒருசெல் யூகேரியோட்டுகளாக விவரிப்பதும், பண்புகளைத் தருவதும், மரபுவழி வகுப்புகளைப் பெயரிடுவதும் சரியானது. உறுப்பினர்கள் அனைத்தும் நெருங்கிய உறவினர்களாக உள்ள விலங்குகளின் தொகுதியாக விவரிப்பது தவறு. பாதுகாப்பான சொற்றொடர்: அவை மரபுவழிக் குழு; பாடத்திட்டம் பெயரிடும் வகுப்புகள் பயனுள்ளதாக நீடிக்கும் வரலாற்றுச் சொற்கள்."),
                     bdef("Protozoa", "புரோட்டோசோவா", "A traditional teaching group of mostly unicellular eukaryotic protists; not a single natural clade." to
                         "பெரும்பாலும் ஒருசெல் யூகேரியோட் புரோட்டிஸ்டுகளின் மரபுவழிக் கற்பித்தல் குழு; ஒற்றை இயற்கைக் கிளை அல்ல."),
-                    bdef("Protist", "புரோட்டிஸ்ட்", "A eukaryotic organism that is not an animal, a plant or a fungus, and is mostly unicellular." to
+                    bdef("Protist", "புரோட்டிஸ்ட் (Protist)", "A eukaryotic organism that is not an animal, a plant or a fungus, and is mostly unicellular." to
                         "விலங்கு, தாவரம், பூஞ்சை அல்லாத, பெரும்பாலும் ஒருசெல்லான யூகேரியோட் உயிரி."),
                     bdef("Eukaryote", "யூகேரியோட்", "An organism whose cells have a nucleus and membrane-bound organelles." to
                         "செல்களில் உட்கருவும் சவ்வால் சூழப்பட்ட நுண்ணுறுப்புகளும் உள்ள உயிரி."),
-                    bdef("Unicellular", "ஒருசெல்", "Consisting of a single cell." to
+                    bdef("Unicellular", "ஒருசெல் (Unicellular)", "Consisting of a single cell." to
                         "ஒரே செல்லால் ஆன."),
                 )),
             bsec("characters", "General characters", "பொதுப் பண்புகள்",
@@ -50,9 +50,9 @@ object ProtozoaBookChapter {
                         "வழக்கமான எடுத்துக்காட்டுகள்: போலிக்கால்களால் நகரும் அமீபா; ஒளிச்சேர்க்கையாலும் பிற வழிகளிலும் உண்ணும் கசையிழையுயிரி யூக்ளினா; சிலியேட்டான பாரமீசியம்; கொசுக்களால் கொண்டுசெல்லப்படும் மனித ஒட்டுண்ணி பிளாஸ்மோடியம். முக்கிய வகைகளின் ஒவ்வொன்றிலும் ஓர் எடுத்துக்காட்டை அறியவும், அது எவ்வாறு நகர்கிறது, எவ்வாறு உண்கிறது, எங்கு வாழ்கிறது என்பதைக் கூறவும் மாணவர் எதிர்பார்க்கப்படுகிறார்."),
                     bdef("Organelle", "நுண்ணுறுப்பு", "A specialised structure within a cell that performs a particular function." to
                         "குறிப்பிட்ட செயலைச் செய்யும் செல்லுக்குள்ளான சிறப்பு அமைப்பு."),
-                    bdef("Pellicle", "பெல்லிக்கிள்", "A firm but flexible layer beneath or including the plasma membrane that gives shape to a protozoan cell." to
+                    bdef("Pellicle", "பெல்லிக்கிள் (Pellicle)", "A firm but flexible layer beneath or including the plasma membrane that gives shape to a protozoan cell." to
                         "புரோட்டோசோவா செல்லுக்கு வடிவம் தரும், பிளாஸ்மா சவ்வுக்கு அடியில் அல்லது அதை உள்ளடக்கிய உறுதியான ஆனால் நெகிழும் அடுக்கு."),
-                    bdef("Pseudopodium", "போலிக்கால்", "A temporary extension of the cell used for movement and for capture of food." to
+                    bdef("Pseudopodium", "போலிக்கால் (Pseudopodium)", "A temporary extension of the cell used for movement and for capture of food." to
                         "இயக்கத்துக்கும் உணவைப் பிடிக்கவும் பயன்படும் செல்லின் தற்காலிக நீட்சி."),
                     bdef("Flagellum", "கசை", "A long whip-like projection of the cell used for swimming." to
                         "நீந்தப் பயன்படும் செல்லின் நீண்ட சாட்டை போன்ற நீட்சி."),
@@ -71,15 +71,15 @@ object ProtozoaBookChapter {
                         "Photosynthetic: manufacture of food by chloroplasts, as in Euglena." to "ஒளிச்சேர்க்கை: யூக்ளினா போல பசுங்கணிகங்களால் உணவு தயாரித்தல்.",
                         "Mixotrophic: a combination of two or more of these." to "கலப்பு ஊட்டம்: இவற்றில் இரண்டு அல்லது அதற்கு மேற்பட்டவற்றின் சேர்க்கை.",
                     ),
-                    bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம்", "Nutrition by ingestion and internal digestion of solid food particles." to
+                    bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம் (Holozoic nutrition)", "Nutrition by ingestion and internal digestion of solid food particles." to
                         "திட உணவுத் துகள்களை உட்கொண்டு உள்ளே செரிக்கும் ஊட்டம்."),
-                    bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம்", "Nutrition by absorption of dissolved organic substances." to
+                    bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம் (Saprozoic nutrition)", "Nutrition by absorption of dissolved organic substances." to
                         "கரைந்த கரிமப் பொருட்களை உறிஞ்சும் ஊட்டம்."),
-                    bdef("Mixotrophy", "கலப்பு ஊட்டம்", "The use of more than one mode of nutrition, such as photosynthesis and ingestion." to
+                    bdef("Mixotrophy", "கலப்பு ஊட்டம் (Mixotrophy)", "The use of more than one mode of nutrition, such as photosynthesis and ingestion." to
                         "ஒளிச்சேர்க்கை, உட்கொள்ளுதல் போன்ற ஒன்றுக்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்துதல்."),
-                    bdef("Contractile vacuole", "சுருங்கும் நுண்குமிழ்", "An organelle that collects and expels excess water from the cell." to
+                    bdef("Contractile vacuole", "சுருங்கும் நுண்குமிழ் (Contractile vacuole)", "An organelle that collects and expels excess water from the cell." to
                         "செல்லிலிருந்து மிகை நீரைச் சேகரித்து வெளியேற்றும் நுண்ணுறுப்பு."),
-                    bdef("Hypotonic", "ஹைப்போடானிக்", "Having a lower concentration of dissolved substances than another solution." to
+                    bdef("Hypotonic", "ஹைப்போடானிக் (Hypotonic)", "Having a lower concentration of dissolved substances than another solution." to
                         "மற்றொரு கரைசலை விடக் குறைந்த கரைபொருள் செறிவு உடைய."),
                 )),
             bsec("reproduction", "Reproduction and encystment", "இனப்பெருக்கமும் சிஸ்ட் உருவாதலும்",
@@ -124,13 +124,13 @@ object ProtozoaBookChapter {
                         )),
                     bp("These names should be recognised as syllabus and historical terminology. Modern studies have shown that the groups defined by the organ of locomotion do not each represent one lineage, and that the parasites placed in the Sporozoa are, for the most part, the apicomplexans, which belong to a group of their own. The ciliates form a coherent group, the Ciliophora. A student will use the traditional names in the course, but should be ready to say that the classification has been revised." to
                         "இப்பெயர்கள் பாடத்திட்ட, வரலாற்றுச் சொற்கள் என அங்கீகரிக்கப்பட வேண்டும். இயக்க உறுப்பால் வரையறுக்கப்பட்ட குழுக்கள் ஒவ்வொன்றும் ஒரு பரம்பரையைக் குறிக்கவில்லை என்றும், ஸ்போரோசோவாவில் வைக்கப்பட்ட ஒட்டுண்ணிகள் பெரும்பாலும் தனிக் குழுவான அபிகாம்ப்ளெக்சன்கள் என்றும் நவீன ஆய்வுகள் காட்டியுள்ளன. சிலியேட்டுகள் ஒருங்கிணைந்த குழு, சிலியோஃபோரா. மாணவர் பாடத்தில் மரபுவழிப் பெயர்களைப் பயன்படுத்துவார்; வகைப்பாடு திருத்தப்பட்டுள்ளது எனக் கூறத் தயாராக இருக்க வேண்டும்."),
-                    bdef("Sarcodina", "சார்கோடினா", "The traditional class of protozoa that move by pseudopodia." to
+                    bdef("Sarcodina", "சார்கோடினா (Sarcodina)", "The traditional class of protozoa that move by pseudopodia." to
                         "போலிக்கால்களால் நகரும் புரோட்டோசோவாவின் மரபுவழி வகுப்பு."),
-                    bdef("Mastigophora", "மாஸ்டிகோஃபோரா", "The traditional class of protozoa that move by flagella." to
+                    bdef("Mastigophora", "மாஸ்டிகோஃபோரா (Mastigophora)", "The traditional class of protozoa that move by flagella." to
                         "கசைகளால் நகரும் புரோட்டோசோவாவின் மரபுவழி வகுப்பு."),
-                    bdef("Ciliophora", "சிலியோஃபோரா", "The ciliates, protozoa that have cilia and, typically, two kinds of nucleus." to
+                    bdef("Ciliophora", "சிலியோஃபோரா (Ciliophora)", "The ciliates, protozoa that have cilia and, typically, two kinds of nucleus." to
                         "சிலியாக்களும் வழக்கமாக இருவகை உட்கருவும் கொண்ட புரோட்டோசோவாக்களான சிலியேட்டுகள்."),
-                    bdef("Apicomplexa", "அபிகாம்ப்ளெக்ஸா", "A group of parasitic protists with a characteristic apical complex, including Plasmodium." to
+                    bdef("Apicomplexa", "அபிகாம்ப்ளெக்ஸா (Apicomplexa)", "A group of parasitic protists with a characteristic apical complex, including Plasmodium." to
                         "பிளாஸ்மோடியம் உள்ளிட்ட, தனிப்பண்பு நுனித் தொகுப்புடைய ஒட்டுண்ணி புரோட்டிஸ்டுகளின் குழு."),
                 )),
             bsec("ciliata-sporozoa", "Ciliata and Sporozoa compared", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
@@ -147,11 +147,11 @@ object ProtozoaBookChapter {
                         )),
                     bp("The comparison is a standard examination question, and the five points of difference given in the table are enough for an answer. It should be remembered that the table compares a living group with a historical one, and the comparison becomes simplest when it is made between the representative examples." to
                         "ஒப்பீடு நிலையான தேர்வுக் கேள்வி; அட்டவணையில் தரப்பட்ட ஐந்து வேறுபாட்டுப் புள்ளிகள் விடைக்குப் போதும். அட்டவணை வாழும் குழுவை வரலாற்றுக் குழுவுடன் ஒப்பிடுகிறது என்பதை நினைவில் வைக்க வேண்டும்; பிரதிநிதி எடுத்துக்காட்டுகளிடையே செய்யப்படும்போது ஒப்பீடு எளிமையாகிறது."),
-                    bdef("Nuclear dimorphism", "உட்கரு இருவடிவம்", "The presence of two kinds of nucleus in a cell, a large macronucleus and one or more small micronuclei." to
+                    bdef("Nuclear dimorphism", "உட்கரு இருவடிவம் (Nuclear dimorphism)", "The presence of two kinds of nucleus in a cell, a large macronucleus and one or more small micronuclei." to
                         "ஒரு செல்லில் பெரிய பெருஉட்கருவும் ஒன்று அல்லது அதற்கு மேற்பட்ட சிறுஉட்கருக்களும் ஆகிய இருவகை உட்கருக்கள் இருத்தல்."),
-                    bdef("Obligate parasite", "கட்டாய ஒட்டுண்ணி", "A parasite that cannot complete its life cycle without a host." to
+                    bdef("Obligate parasite", "கட்டாய ஒட்டுண்ணி (Obligate parasite)", "A parasite that cannot complete its life cycle without a host." to
                         "விருந்தோம்பி இன்றி வாழ்க்கைச் சுழற்சியை முடிக்க முடியாத ஒட்டுண்ணி."),
-                    bdef("Cytostome", "சைட்டோஸ்டோம்", "The cell mouth through which food is taken in by a ciliate." to
+                    bdef("Cytostome", "சைட்டோஸ்டோம் (Cytostome)", "The cell mouth through which food is taken in by a ciliate." to
                         "சிலியேட்டு உணவை உள்ளெடுக்கும் செல் வாய்."),
                 )),
             bsec("natural", "Is Protozoa a natural group?", "புரோட்டோசோவா இயற்கைக் குழுவா?",
@@ -160,7 +160,7 @@ object ProtozoaBookChapter {
                         "நவீன வகைப்பாடு ஒவ்வொரு குழுவிலும் ஒரு மூதாதையும் அதன் அனைத்து வழித்தோன்றல்களும் இருக்க வேண்டும் என்று கேட்கிறது; மரபுவழிப் புரோட்டோசோவா இச்சோதனையைப் பூர்த்தி செய்யவில்லை. விலங்கு போன்ற ஒரு செல் உயிரிகளாக ஒன்றாக வைக்கப்பட்டவை, மூலக்கூறு ஒப்பீடு மற்றும் செல் அமைப்பின் சான்றின்படி, பல தொலைவான வழிமரபுகளைச் சேர்ந்தவை எனத் தெரிகிறது; அவற்றில் சில ஒன்றுக்கொன்றைவிட தாவரங்கள், பூஞ்சைகள் அல்லது விலங்குகளுடன் நெருக்கமானவை. எனவே பொதுவான மூதாதையால் அல்லாமல் பொதுவான வாழ்முறையால் வரையறுக்கப்படும் குழு படிநிலைக் குழு அல்லது பாராஃபைலெட்டிக் குழு எனப்படுகிறது; தற்போதைய பல திட்டங்கள் ஒரு செல் யூகேரியோட்டுகளைப் பல பெரிய குழுக்களாகப் பிரித்து, புரோட்டோசோவாவை முறையான திணையாகவோ தொகுதியாகவோ பயன்படுத்துவதில்லை. வசதிக்காகவும் பாடத்திட்டம் அதன் மீது அமைந்துள்ளதாலும் கற்பித்தலிலும் ஒட்டுண்ணியியலிலும் இப்பெயர் தக்கவைக்கப்படுகிறது."),
                     bp("The practical advice for an examination is simple. Use the traditional classes as the prescribed text presents them, and add one sentence, where the question invites it, that the group is a convenient grade and not a natural lineage. The sentence shows that the student knows how the science has moved, and it does not contradict the syllabus. What should be avoided is the confident claim that a particular modern scheme is the correct one, because the arrangement of the major groups of single-celled eukaryotes is still revised as new data appear, and different authorities draw the boundaries differently.",
                         "தேர்வுக்கான நடைமுறை அறிவுரை எளிது: பாடநூல் முன்வைக்கும் மரபுவழி வகுப்புகளைப் பயன்படுத்துங்கள்; வினா அழைக்கும் இடத்தில், இக்குழு வசதியான படிநிலையே, இயற்கை வழிமரபு அல்ல என ஒரு வாக்கியம் சேர்க்கவும். அது அறிவியல் எவ்வாறு நகர்ந்துள்ளது என்பதை மாணவர் அறிந்துள்ளதைக் காட்டுகிறது; பாடத்திட்டத்தை முரண்படுத்துவதில்லை. தவிர்க்க வேண்டியது, குறிப்பிட்ட நவீனத் திட்டமே சரியானது என்ற உறுதியான கூற்று; ஏனெனில் ஒரு செல் யூகேரியோட்டுகளின் பெரிய குழுக்களின் அமைப்பு புதிய தரவுகள் வரும்போது தொடர்ந்து மாற்றப்படுகிறது; வெவ்வேறு அதிகாரிகள் எல்லைகளை வெவ்வேறாக வரைகின்றனர்."),
-                    bdef("Paraphyletic group", "பாராஃபைலெட்டிக் குழு", "A group that contains a common ancestor but not all of its descendants." to
+                    bdef("Paraphyletic group", "பாராஃபைலெட்டிக் குழு (Paraphyletic group)", "A group that contains a common ancestor but not all of its descendants." to
                         "பொதுவான மூதாதையைக் கொண்டிருந்தும் அதன் அனைத்து வழித்தோன்றல்களையும் கொள்ளாத குழு."),
                 )),
             bsec("ecology", "Protozoa in water, soil and the sea", "நீர், மண், கடலில் புரோட்டோசோவா",
@@ -169,9 +169,9 @@ object ProtozoaBookChapter {
                         "புரோட்டோசோவாவின் சூழலியல் பங்கு அவற்றின் அளவு காட்டுவதைவிடப் பெரியது. நீரிலும் மண்ணிலும் அவை பாக்டீரியா, பாசி, பிற சிறு செல்களை உண்கின்றன; அதன் மூலம் பாக்டீரியாக்களின் எண்ணிக்கையைக் கட்டுப்படுத்தி, ஊட்டச்சத்துகளை மற்ற உயிரிகள் பயன்படுத்தக்கூடிய வடிவில் சமூகத்துக்குத் திருப்புகின்றன. கழிவுநீரின் உயிரியல் சுத்திகரிப்பில் சில சிலியேட்டுகள் முக்கியமானவை; செயல்படுத்தப்பட்ட கசடில் உருவாகும் பாக்டீரியா-புரோட்டோசோவா சமூகம் கரிமப் பொருளை அகற்றுகிறது; இருக்கும் புரோட்டோசோவா வகைகள் நடைமுறையில் ஆலையின் நிலையைக் குறிக்கப் பயன்படுகின்றன. புரோட்டோசோவாக்கள் சிறு கிரஸ்டேஷியன்களாலும் லார்வாக்களாலும் மீன் குஞ்சுகளாலும் உண்ணப்படுகின்றன; இவ்வாறு மிகச் சிறிய உற்பத்தியாளர்களையும் சிதைப்பவர்களையும் உணவுச் சங்கிலியின் பெரிய விலங்குகளுடன் இணைக்கின்றன."),
                     bp("In the sea, some amoeboid protozoans build shells, and their remains accumulate on the sea floor. The foraminiferans have shells, usually of calcium carbonate, which are abundant in marine sediments, and these tiny fossils are used by geologists to date and correlate rock layers and, in the commercial exploration of oil, to interpret the age and the conditions of deposition of the rock. Shells of foraminiferans contribute to limestone and to chalk, a point that links this chapter with the one on fossils. The chemistry of such shells is also used by scientists to study past climates, and a statement of this kind should be given as an application of the group and not as a property that every student must know in detail.",
                         "கடலில் சில அமீபாய்டு புரோட்டோசோவாக்கள் ஓடுகளை உருவாக்குகின்றன; அவற்றின் எச்சங்கள் கடல் தரையில் சேர்கின்றன. ஃபோராமினிஃபெராக்களுக்குப் பொதுவாக கால்சியம் கார்பனேட் ஓடுகள் உள்ளன; அவை கடல் படிவுகளில் மிகுதியாக உள்ளன; இந்த நுண்புதைபடிவங்களை புவியியலாளர்கள் பாறை அடுக்குகளின் வயதை அறியவும் ஒப்பிடவும், எண்ணெய் வணிகத் தேடலில் பாறையின் வயதையும் படிவு நிலைமைகளையும் விளக்கவும் பயன்படுத்துகின்றனர். ஃபோராமினிஃபெரா ஓடுகள் சுண்ணாம்புக்கல்லுக்கும் சாக்கட்டிக்கும் பங்களிக்கின்றன; இது இந்த அத்தியாயத்தை புதைபடிவ அத்தியாயத்துடன் இணைக்கிறது. அத்தகைய ஓடுகளின் வேதியியலை விஞ்ஞானிகள் கடந்தகால தட்பவெப்பத்தை ஆய்வு செய்யவும் பயன்படுத்துகின்றனர்; இவ்வகைக் கூற்று குழுவின் பயன்பாடாகத் தரப்பட வேண்டும்; ஒவ்வொரு மாணவரும் விரிவாக அறிய வேண்டிய பண்பாக அல்ல."),
-                    bdef("Foraminifera", "ஃபோராமினிஃபெரா", "Marine amoeboid protozoans with shells, usually of calcium carbonate, that leave abundant microfossils." to
+                    bdef("Foraminifera", "ஃபோராமினிஃபெரா (Foraminifera)", "Marine amoeboid protozoans with shells, usually of calcium carbonate, that leave abundant microfossils." to
                         "பொதுவாக கால்சியம் கார்பனேட் ஓடுகள் உடைய, மிகுதியான நுண்புதைபடிவங்களை விட்டுச் செல்லும் கடல் அமீபாய்டு புரோட்டோசோவாக்கள்."),
-                    bdef("Microfossil", "நுண்புதைபடிவம்", "A fossil so small that it is studied with a microscope." to
+                    bdef("Microfossil", "நுண்புதைபடிவம் (Microfossil)", "A fossil so small that it is studied with a microscope." to
                         "நுண்ணோக்கியால் ஆய்வு செய்யும் அளவு சிறிய புதைபடிவம்."),
                 )),
             bsec("answering", "Answering questions on the Protozoa", "புரோட்டோசோவா வினாக்களுக்கு விடையளித்தல்",
@@ -180,7 +180,7 @@ object ProtozoaBookChapter {
                         "பொதுப் பண்புகள் பற்றிய விடை அமைப்பு வாரியாக அமைக்கப்பட்டு, ஒவ்வொன்றுக்கும் ஒரு பண்பைக் குறிப்பிட வேண்டும்; அப்போது அது பட்டியலாக அல்லாமல் ஓர் உயிரியின் விவரணையாக இருக்கும். ஒரே செல் அனைத்துப் பணிகளையும் செய்யும் அமைப்பு நிலையுடன் தொடங்கவும்; பின் போலிக்கால், கசை, மயிரிழைகளால் இயக்கம்; பின் ஊட்டமும் அதன் வகைகளும்; பின் நன்னீரில் சுருங்கும் நுண்குமிழால் சவ்வூடுபரவல் ஒழுங்குபாடு; பின் பிளவாலும் அதன் பாலினப் பெருக்க வகைகளாலும் இனப்பெருக்கம்; இறுதியாக சிஸ்ட் உருவாதல். தொகுதியின் பண்புகளைக் கேட்கும்போது, ஒவ்வொரு வகுப்பின் எடுத்துக்காட்டுடன் எட்டு வாக்கியங்களில் இந்த வரிசையைப் பின்பற்றலாம்; இத்தகைய விடை பண்புகளுக்கான மதிப்பெண்களை உள்ளடக்கும்."),
                     bp("The most frequent errors in this chapter come from words that sound alike. The cyst is a resting and protective stage, and the oocyst is a stage in the life cycle of a sporozoan. A pseudopodium is a temporary extension, whereas a flagellum and a cilium are permanent organelles with a different internal structure. Binary fission is equal division of a cell into two, and multiple fission is the division of the nucleus several times before the cytoplasm divides. Conjugation is the temporary union of two ciliates with exchange of nuclear material, and it is not reproduction in itself, since the number of cells does not rise. A student who writes the definition with the contrast in the same sentence avoids most of these errors.",
                         "இந்த அத்தியாயத்தில் மிக அடிக்கடி நிகழும் பிழைகள் ஒலியில் ஒத்த சொற்களிலிருந்து வருகின்றன. சிஸ்ட் ஒரு ஓய்வு, பாதுகாப்பு நிலை; ஊசிஸ்ட் ஸ்போரோசோவா வாழ்க்கைச் சுழற்சியின் ஒரு நிலை. போலிக்கால் தற்காலிக நீட்சி; கசையும் மயிரிழையும் வேறுபட்ட உள் அமைப்புடைய நிரந்தர நுண்ணுறுப்புகள். இருசமப்பிளவு செல்லை இரண்டாகச் சமமாகப் பிரித்தல்; பலபிளவு சைட்டோபிளாசம் பிரிவதற்கு முன் உட்கரு பலமுறை பிரிதல். இணைவு உட்கருப் பொருள் பரிமாற்றத்துடன் இரு சிலியேட்டுகளின் தற்காலிக இணைப்பு; செல் எண்ணிக்கை உயராததால் அது தானாக இனப்பெருக்கம் அல்ல. வரையறையை அதன் வேறுபாட்டுடன் ஒரே வாக்கியத்தில் எழுதும் மாணவர் இப்பிழைகளில் பெரும்பாலானவற்றைத் தவிர்க்கிறார்."),
-                    bdef("Phagocytosis", "ஃபேகோசைட்டோசிஸ்", "The engulfing of a solid particle by a cell, which forms a food vacuole around it." to
+                    bdef("Phagocytosis", "ஃபேகோசைட்டோசிஸ் (Phagocytosis)", "The engulfing of a solid particle by a cell, which forms a food vacuole around it." to
                         "திடத் துகளைச் செல் விழுங்கி, அதைச் சுற்றி உணவு நுண்குமிழ் உருவாக்குதல்."),
                 )),
         ),

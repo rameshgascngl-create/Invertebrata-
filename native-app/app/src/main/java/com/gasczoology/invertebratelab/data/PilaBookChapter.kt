@@ -30,13 +30,13 @@ object PilaBookChapter {
                         "மென்மையான உடல் தலை, பாதம், உள்ளுறுப்புத் திரள், மேண்டில் கொண்டது. தலை தெளிவானது; நீண்ட, குட்டை என இரு இணை உணர்கொம்புகளும் குட்டைக் காம்புகளில் ஓர் இணை கண்களும் உண்டு; வாய் முன்னால் முகவாயில் உள்ளது. பாதம் பெரியது, அகன்றது, தசையானது, கீழே தட்டையான ஊரும் அடிப்பகுதி. உள்ளுறுப்புத் திரள் ஓட்டின் சுருளுக்குள் சுருண்டுள்ளது; மேண்டில் ஓட்டின் உள் மேற்பரப்பில் இணைந்து இடது, வலது பக்கங்களில் நுக்கல் மடல்களாக உருவாகும் தடித்த தனி விளிம்பு உடையது."),
                     bp("Locomotion in the snail is by the foot. The sole is moved by waves of muscular contraction that pass along it, and the animal glides on a layer of mucus secreted by glands of the foot. The mucus also protects the sole from damage and helps to hold the snail to a surface, and it can be seen as a trail. In water the snail can also hang from the surface film, with the foot uppermost, and glide along it, a habit that is related to the need to come to the surface for air. The sense of touch and of smell is well developed in the tentacles, and the eyes distinguish light from dark but form no detailed image." to
                         "நத்தையின் இயக்கம் பாதத்தால். அடிப்பகுதி அதன் வழியே செல்லும் தசைச் சுருக்க அலைகளால் நகர்த்தப்படுகிறது; பாதச் சுரப்பிகள் சுரக்கும் சளி அடுக்கின் மீது விலங்கு சறுக்குகிறது. சளி அடிப்பகுதியைச் சேதத்திலிருந்து பாதுகாத்து நத்தையை மேற்பரப்பில் பற்றவைக்க உதவுகிறது; தடமாகத் தெரிகிறது. நீரில் நத்தை பாதம் மேலே இருக்க மேற்பரப்புப் படலத்தில் தொங்கி அதனுடன் சறுக்கவும் செய்கிறது; காற்றுக்காக மேற்பரப்புக்கு வர வேண்டிய தேவையுடன் தொடர்புடைய பழக்கம். தொடு, மணம் உணர்வு உணர்கொம்புகளில் நன்கு வளர்ந்துள்ளது; கண்கள் ஒளி, இருளை வேறுபடுத்துகின்றன, ஆனால் விவரப் படிமம் உருவாக்குவதில்லை."),
-                    bdef("Univalve", "ஒற்றை ஓடு", "Having a shell of a single piece, as in a snail." to
+                    bdef("Univalve", "ஒற்றை ஓடு (Univalve)", "Having a shell of a single piece, as in a snail." to
                         "நத்தை போல, ஒரே துண்டு ஓடு உடைய."),
-                    bdef("Operculum", "ஆப்பர்குலம்", "A horny plate on the foot of a snail that closes the aperture of the shell." to
+                    bdef("Operculum", "ஆப்பர்குலம் (Operculum)", "A horny plate on the foot of a snail that closes the aperture of the shell." to
                         "ஓட்டின் வாய்ப்பகுதியை மூடும், நத்தையின் பாதத்திலுள்ள கொம்புத் தகடு."),
                     bdef("Aperture", "வாய்ப்பகுதி (அபெர்ச்சர்)", "The opening of a snail shell through which the body is extended." to
                         "உடல் வெளியே நீளும் நத்தை ஓட்டின் திறப்பு."),
-                    bdef("Aestivation", "கோடைத்துயில்", "A state of inactivity in which an animal passes a hot or dry season." to
+                    bdef("Aestivation", "கோடைத்துயில் (Aestivation)", "A state of inactivity in which an animal passes a hot or dry season." to
                         "வெப்பமான அல்லது வறண்ட பருவத்தை விலங்கு கழிக்கும் செயலற்ற நிலை."),
                 )),
             bsec("respiration", "Respiratory adaptations", "சுவாசத் தழுவல்கள்",
@@ -54,13 +54,13 @@ object PilaBookChapter {
                     bfig("pila/ctenidium", "Pila, the ctenidium (gill) showing the filaments on one side of the axis." to "பைலா, அச்சின் ஒரு பக்கத்தில் இழைகளைக் காட்டும் டீனிடியம் (செவுள்)."),
                     bp("When the snail is in water and breathing with the gill, the left nuchal lobe is not used as a siphon, and water enters the mantle cavity at the left, passes over the gill and leaves at the right. When it comes to the surface to breathe air, the left nuchal lobe is rolled into a tube and extended above the water, like a snorkel, to carry air into the pulmonary sac. The sac is lined with a rich network of blood vessels, and oxygen diffuses into the blood across its thin wall." to
                         "நத்தை நீரில் இருந்து செவுளால் சுவாசிக்கும்போது இடது நுக்கல் மடல் சைஃபனாகப் பயன்படுவதில்லை; நீர் இடப்புறம் மேண்டில் குழிக்குள் நுழைந்து செவுள் மீது சென்று வலப்புறம் வெளியேறுகிறது. காற்றைச் சுவாசிக்க மேற்பரப்புக்கு வரும்போது இடது நுக்கல் மடல் குழாயாகச் சுருட்டப்பட்டு ஸ்நார்கெல் போல நீருக்கு மேல் நீட்டப்பட்டு நுரையீரல் பைக்குக் காற்றைக் கொண்டு செல்கிறது. பை செறிந்த இரத்த நாள வலையால் உள்ளுறையிடப்பட்டுள்ளது; ஆக்சிஜன் அதன் மெல்லிய சுவர் வழியே இரத்தத்துக்குள் பரவுகிறது."),
-                    bdef("Monopectinate", "ஒற்றைப்பக்க சீப்பு", "Of a gill, having filaments on one side of the axis only." to
+                    bdef("Monopectinate", "ஒற்றைப்பக்க சீப்பு (Monopectinate)", "Of a gill, having filaments on one side of the axis only." to
                         "செவுளில், அச்சின் ஒரு பக்கத்தில் மட்டும் இழைகள் உள்ள."),
-                    bdef("Pulmonary sac", "நுரையீரல் பை", "The vascular chamber of the mantle cavity of Pila that serves as a lung in air." to
+                    bdef("Pulmonary sac", "நுரையீரல் பை (Pulmonary sac)", "The vascular chamber of the mantle cavity of Pila that serves as a lung in air." to
                         "காற்றில் நுரையீரலாகச் செயல்படும் பைலாவின் மேண்டில் குழியிலுள்ள நாளமிகு அறை."),
-                    bdef("Nuchal lobe", "நுக்கல் மடல்", "A fold at the edge of the mantle that can be rolled to form a siphon." to
+                    bdef("Nuchal lobe", "நுக்கல் மடல் (Nuchal lobe)", "A fold at the edge of the mantle that can be rolled to form a siphon." to
                         "சைஃபனாகச் சுருட்டப்படக்கூடிய மேண்டில் விளிம்பு மடிப்பு."),
-                    bdef("Epitaenia", "எபிட்டீனியா", "A fold in the roof of the mantle cavity that separates the branchial and pulmonary regions." to
+                    bdef("Epitaenia", "எபிட்டீனியா (Epitaenia)", "A fold in the roof of the mantle cavity that separates the branchial and pulmonary regions." to
                         "கிளைக்கிய, நுரையீரல் பகுதிகளைப் பிரிக்கும் மேண்டில் குழி மேற்கூரையிலுள்ள மடிப்பு."),
                     bdef("Amphibious", "நீர்நில வாழ்", "Able to live both in water and on land." to
                         "நீரிலும் நிலத்திலும் வாழக்கூடிய."),
@@ -82,7 +82,7 @@ object PilaBookChapter {
                         "இரத்த ஓட்டம் திறந்தது. இதயம் பெரிகார்டியல் குழியில் ஓர் ஆரிக்கிள், ஒரு வென்ட்ரிக்கிளுடன் அமைந்துள்ளது; இரத்தம் வென்ட்ரிக்கிளிலிருந்து தமனிகளால் வெளியேறி திசுக்களின் சைனஸ்களுக்குச் சென்று, ஆரிக்கிளுக்குள் நுழையும் முன் செவுள், நுரையீரலுக்குத் திரும்புகிறது. இரத்தத்தில் பிளாஸ்மாவில் கரைந்த சுவாச நிறமி ஹீமோசயனின் உள்ளது. சிறுநீரகம் பெரிகார்டியல் குழிக்கு அருகில் உள்ள ஒற்றை, பெரிய உறுப்பு; புனலால் அதற்குள்ளும் துளையால் மேண்டில் குழிக்குள்ளும் திறக்கிறது; நீரில் வாழும்போது நைட்ரஜன் கழிவை முக்கியமாக அம்மோனியாவாக வெளியேற்றுகிறது; கோடைத்துயிலின்போது கழிவின் வடிவம் மாறுவதாகக் கூறப்படுகிறது; ஆனால் தேர்வு விடை மேலும் செல்லத் தேவையில்லை."),
                     bp("The nervous system has the cerebral, pleural, pedal and visceral ganglia, joined by connectives, and, as a consequence of torsion, the visceral connectives are twisted into a figure of eight. The sense organs are the tentacles, eyes, statocysts near the pedal ganglia, and the osphradium, which lies at the base of the gill. The sexes are separate, and fertilisation is internal, the male using a copulatory organ, and the female laying eggs in masses above the water line. The development is direct in the sense that there is no free larva, and the young hatch as small snails." to
                         "நரம்பு மண்டலத்தில் பெருமூளை, ப்ளூரல், பாத, உள்ளுறுப்பு நரம்பு செல்திரள்கள் இணைப்பிகளால் இணைந்துள்ளன; முறுக்கலின் விளைவாக உள்ளுறுப்பு இணைப்பிகள் எட்டு வடிவில் முறுக்கப்பட்டுள்ளன. உணர்வு உறுப்புகள் உணர்கொம்புகள், கண்கள், பாத நரம்பு செல்திரள்களுக்கு அருகிலுள்ள ஸ்டேட்டோசிஸ்ட்கள், செவுளின் அடியிலுள்ள ஆஸ்ஃப்ரேடியம். பால் தனி; கருவுறுதல் உள்ளுக்குள்; ஆண் இணைதல் உறுப்பைப் பயன்படுத்துகிறது; பெண் நீர்க்கோட்டுக்கு மேல் திரளாக முட்டையிடுகிறது. தனி லார்வா இல்லை என்ற பொருளில் வளர்ச்சி நேரடி; இளையவை சிறு நத்தைகளாகப் பொரிகின்றன."),
-                    bdef("Figure-of-eight nerve loop", "எட்டு வடிவ நரம்பு முறுக்கு", "The twisting of the visceral nerve connectives of a gastropod that results from torsion." to
+                    bdef("Figure-of-eight nerve loop", "எட்டு வடிவ நரம்பு முறுக்கு (Figure-of-eight nerve loop)", "The twisting of the visceral nerve connectives of a gastropod that results from torsion." to
                         "முறுக்கலால் ஏற்படும் இரைப்பைக்காலியின் உள்ளுறுப்பு நரம்பு இணைப்பிகளின் முறுக்கம்."),
                     bdef("Haemocyanin", "ஹீமோசயனின்", "A copper-containing respiratory pigment dissolved in the blood plasma of molluscs and crustaceans." to
                         "மெல்லுடலிகள், கிரஸ்டேஷியன்களின் இரத்த பிளாஸ்மாவில் கரைந்த தாமிரம் கொண்ட சுவாச நிறமி."),
@@ -95,13 +95,13 @@ object PilaBookChapter {
                         "பாதம் அகன்ற, தட்டையான, தசையுள்ள உறுப்பு; அதன் தட்டையான கீழ் முகம் அடிப்பரப்பு. பாதத்திலுள்ள சுரப்பிகள் சுரக்கும் கோழைப் படலத்தின்மீது நத்தை மேற்பரப்பில் வழுக்குகிறது; இயக்கம் அடிப்பரப்புத் தசைகளின் சுருக்க அலைகளால் உண்டாகிறது. வேகம் மெதுவானது; முதுகில் கனமான ஓட்டுடன் விலங்கு தப்பியோடாமல் தற்காப்பை நம்பியுள்ளது. தொந்தரவுக்குள்ளாகும்போது தலையையும் பாதத்தையும் ஓட்டுக்குள் இழுத்து ஆப்பர்குலத்தால் திறப்பை மூடுகிறது; இதனால் பகைவர்களிடமிருந்தும் உலர்தலிலிருந்தும் அடைக்கப்பட்டுப் பாதுகாக்கப்படுகிறது."),
                     bp("The head bears two pairs of tentacles, a short pair near the mouth that serve in touch and in the testing of food, and a long pair, at the bases of which are the eyes. The eyes are simple, and they are believed to distinguish light and dark and, perhaps, to detect movement, but they do not form clear images. The sense of smell and taste, through the osphradium and the tentacles, matters more to a snail that finds its food among plants. A pair of statocysts, which are sense organs of balance, lie in the foot." to
                         "தலையில் இரு இணை உணர்கொம்புகள் உள்ளன: வாய்க்கு அருகே தொடுதலிலும் உணவைச் சோதிப்பதிலும் பயன்படும் குறுகிய இணையும், அடியில் கண்கள் அமைந்த நீண்ட இணையும். கண்கள் எளிமையானவை; ஒளி, இருளையும், ஒருவேளை அசைவையும் வேறுபடுத்துவதாக நம்பப்படுகிறது; தெளிவான உருவங்களை உண்டாக்குவதில்லை. தாவரங்களிடையே உணவைக் காணும் நத்தைக்கு ஆஸ்ஃப்ரேடியம், உணர்கொம்புகள் வழியான மணம், சுவை உணர்வு அதிக முக்கியம். சமநிலை உணர்வு உறுப்புகளான ஓர் இணை ஸ்டேட்டோசிஸ்ட்டுகள் பாதத்தில் உள்ளன."),
-                    bdef("Sole", "அடிப்பரப்பு", "The flat lower surface of the foot of a snail on which it glides." to
+                    bdef("Sole", "அடிப்பரப்பு (Sole)", "The flat lower surface of the foot of a snail on which it glides." to
                         "நத்தை வழுக்கிச் செல்லும் பாதத்தின் தட்டையான கீழ்ப்பரப்பு."),
                     bdef("Mucus", "கோழை", "A slimy secretion, made by glands, that lubricates the surface on which an animal moves." to
                         "விலங்கு நகரும் மேற்பரப்பை வழுக்கச் செய்யும், சுரப்பிகள் உருவாக்கும் வழுவழுப்பான சுரப்பு."),
                     bdef("Tentacle", "உணர்கொம்பு", "A slender, flexible projection of the head that serves in touch, smell or taste." to
                         "தொடுதல், மணம் அல்லது சுவைக்குப் பயன்படும் தலையின் மெல்லிய, நெகிழ்வான நீட்சி."),
-                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட்", "A sense organ of balance, containing a small hard body that rests on sensory cells." to
+                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட் (Statocyst)", "A sense organ of balance, containing a small hard body that rests on sensory cells." to
                         "உணர்வு செல்களின்மீது அமர்ந்த சிறு கடினப் பொருளைக் கொண்ட, சமநிலை உணர்வு உறுப்பு."),
                 )),
             bsec("reproduction", "Reproduction, development and aestivation", "இனப்பெருக்கம், வளர்ச்சி, கோடைத்துயில்",
@@ -115,13 +115,13 @@ object PilaBookChapter {
                     bnote("Torsion is a larval event", "முறுக்கல் லார்வா நிகழ்வு",
                         "The adult Pila is already torted. Torsion occurred in the larva of its ancestors, and it does not happen again in the adult." to
                             "முதிர் பைலா ஏற்கனவே முறுக்கப்பட்டது. முறுக்கல் அதன் மூதாதையரின் லார்வாவில் நிகழ்ந்தது; முதிர் உயிரியில் மீண்டும் நிகழ்வதில்லை."),
-                    bdef("Sexual dimorphism", "பால் இருவடிவமைப்பு", "A difference of form between the males and females of a species." to
+                    bdef("Sexual dimorphism", "பால் இருவடிவமைப்பு (Sexual dimorphism)", "A difference of form between the males and females of a species." to
                         "ஓர் இனத்தின் ஆண், பெண்ணுக்கிடையிலான வடிவ வேறுபாடு."),
-                    bdef("Calcareous", "சுண்ணாம்பு சார்ந்த", "Made of, or containing, calcium carbonate." to
+                    bdef("Calcareous", "சுண்ணாம்பு சார்ந்த (Calcareous)", "Made of, or containing, calcium carbonate." to
                         "கால்சியம் கார்பனேட்டால் ஆன அல்லது கொண்ட."),
-                    bdef("Direct development", "நேரடி வளர்ச்சி", "Development in which the young hatch in the form of the adult and there is no free larva." to
+                    bdef("Direct development", "நேரடி வளர்ச்சி (Direct development)", "Development in which the young hatch in the form of the adult and there is no free larva." to
                         "இளம் உயிரி முதிர் உயிரியின் வடிவில் பொரிந்து தனித்து வாழும் லார்வா இல்லாத வளர்ச்சி."),
-                    bdef("Copulatory organ", "புணர்ச்சி உறுப்பு", "An organ of the male by which sperm are transferred to the female." to
+                    bdef("Copulatory organ", "புணர்ச்சி உறுப்பு (Copulatory organ)", "An organ of the male by which sperm are transferred to the female." to
                         "விந்தணுக்கள் பெண்ணுக்கு மாற்றப்படும் ஆணின் உறுப்பு."),
                 )),
             bsec("answering", "Writing the detailed account", "விரிவான விளக்கம் எழுதுதல்",

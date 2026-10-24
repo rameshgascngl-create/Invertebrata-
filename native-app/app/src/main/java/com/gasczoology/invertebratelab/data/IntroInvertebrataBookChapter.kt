@@ -34,9 +34,9 @@ object IntroInvertebrataBookChapter {
                         )),
                     bp("The sequence is a framework for classification, and the order of ranks is not proof of the relationship between the taxa. A genus and a family do not exist as discoverable objects in the same way as an individual animal. The ranks are conventions by which the groups that biologists recognise are given a place, and the grouping itself is a hypothesis. Whether a group is natural, in the sense that it includes an ancestor and all of its descendants, must be inferred from evidence, and the rank in the table does not decide it." to
                         "வரிசை வகைப்பாட்டுக்கான கட்டமைப்பு; தரங்களின் வரிசை டாக்சாக்களுக்கிடையிலான உறவுக்கான சான்றல்ல. பேரினமும் குடும்பமும் தனி விலங்கு போலக் கண்டறியக்கூடிய பொருட்களாக இல்லை. உயிரியலாளர்கள் அங்கீகரிக்கும் குழுக்களுக்கு இடம் தரும் மரபுகள் தரங்கள்; தொகுப்பே ஒரு கருதுகோள். ஒரு குழு மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் பொருளில் இயற்கையானதா என்பது சான்றிலிருந்து ஊகிக்கப்பட வேண்டும்; அட்டவணையிலுள்ள தரம் அதை முடிவு செய்யாது."),
-                    bdef("Taxonomy", "வகைப்பாட்டியல்", "The science of describing, naming and classifying organisms." to
+                    bdef("Taxonomy", "வகைப்பாட்டியல் (Taxonomy)", "The science of describing, naming and classifying organisms." to
                         "உயிரிகளை விவரித்து, பெயரிட்டு, வகைப்படுத்தும் அறிவியல்."),
-                    bdef("Taxon", "வகைப்பாட்டுக் குழு", "A group of organisms at any rank that is recognised in classification." to
+                    bdef("Taxon", "வகைப்பாட்டுக் குழு (Taxon)", "A group of organisms at any rank that is recognised in classification." to
                         "வகைப்பாட்டில் அங்கீகரிக்கப்படும் எந்தத் தரத்திலுமுள்ள உயிரிகளின் குழு."),
                     bdef("Species", "இனம்", "The basic rank of classification, to which a scientific name is given." to
                         "அறிவியல் பெயர் தரப்படும் வகைப்பாட்டின் அடிப்படைத் தரம்."),
@@ -54,11 +54,11 @@ object IntroInvertebrataBookChapter {
                     bnote("Writing a scientific name", "அறிவியல் பெயர் எழுதுதல்",
                         "Genus with a capital letter, species with a small letter, both in italics or underlined: Pila globosa." to
                             "பேரினம் பெரிய எழுத்தில், இனம் சிறிய எழுத்தில், இரண்டும் சாய்வெழுத்தில் அல்லது அடிக்கோடிட்டு: பைலா குளோபோசா."),
-                    bdef("Binomen", "இருசொல் பெயர்", "The two-word scientific name of a species, made of the genus name and the specific name." to
+                    bdef("Binomen", "இருசொல் பெயர் (Binomen)", "The two-word scientific name of a species, made of the genus name and the specific name." to
                         "பேரினப் பெயர், இனச் சிறப்புப் பெயர் கொண்ட இனத்தின் இருசொல் அறிவியல் பெயர்."),
-                    bdef("Type specimen", "வகை மாதிரி", "A preserved specimen that serves as the objective reference for the application of a species name." to
+                    bdef("Type specimen", "வகை மாதிரி (Type specimen)", "A preserved specimen that serves as the objective reference for the application of a species name." to
                         "இனப் பெயரின் பயன்பாட்டுக்கு புறவய ஆதாரமாக விளங்கும் பாதுகாக்கப்பட்ட மாதிரி."),
-                    bdef("Principle of priority", "முன்னுரிமைக் கொள்கை", "The rule that the earliest validly published name of a taxon is the one to be used." to
+                    bdef("Principle of priority", "முன்னுரிமைக் கொள்கை (Principle of priority)", "The rule that the earliest validly published name of a taxon is the one to be used." to
                         "ஒரு டாக்சானின் முதலில் செல்லுபடியாக வெளியிடப்பட்ட பெயரே பயன்படுத்தப்பட வேண்டும் என்ற விதி."),
                 )),
             bsec("evidence", "Characters and evidence used in classification", "வகைப்பாட்டில் பயன்படும் பண்புகளும் சான்றுகளும்",
@@ -73,11 +73,11 @@ object IntroInvertebrataBookChapter {
                         "Segmentation: present or absent." to "துண்டுபடல்: உண்டு அல்லது இல்லை.",
                         "Development: the fate of the blastopore, protostome or deuterostome." to "வளர்ச்சி: பிளாஸ்டோபோரின் முடிவு, புரோட்டோஸ்டோம் அல்லது டியூட்டிரோஸ்டோம்.",
                     ),
-                    bdef("Diagnostic character", "அடையாளப் பண்பு", "A feature that distinguishes one taxon from others." to
+                    bdef("Diagnostic character", "அடையாளப் பண்பு (Diagnostic character)", "A feature that distinguishes one taxon from others." to
                         "ஒரு டாக்சானை பிறவற்றிலிருந்து வேறுபடுத்தும் பண்பு."),
-                    bdef("Systematics", "முறைமையியல்", "The study of the diversity of organisms and their evolutionary relationships." to
+                    bdef("Systematics", "முறைமையியல் (Systematics)", "The study of the diversity of organisms and their evolutionary relationships." to
                         "உயிரிகளின் பன்முகத்தன்மையையும் அவற்றின் பரிணாம உறவுகளையும் பற்றிய ஆய்வு."),
-                    bdef("Germ layer", "கருவடுக்கு", "One of the primary layers of cells in the early embryo: ectoderm, mesoderm or endoderm." to
+                    bdef("Germ layer", "கருவடுக்கு (Germ layer)", "One of the primary layers of cells in the early embryo: ectoderm, mesoderm or endoderm." to
                         "ஆரம்பக் கருவிலுள்ள முதன்மை செல் அடுக்குகளில் ஒன்று: எக்டோடெர்ம், மெசோடெர்ம் அல்லது எண்டோடெர்ம்."),
                 )),
             bsec("not-phylum", "Why Invertebrata is not a single phylum", "முதுகெலும்பற்றவை ஏன் ஒற்றைத் தொகுதி அல்ல",
@@ -93,9 +93,9 @@ object IntroInvertebrataBookChapter {
                             "முதுகெலும்பற்றவை பல தொகுதிகளின் முறைசாரா தொகுப்பு. விலங்கை எப்போதும் அதன் சொந்தத் தொகுதியின் கீழ் வகைப்படுத்துக."),
                     bdef("Invertebrata", "முதுகெலும்பற்றவை", "An informal collective term for animals without a vertebral column; not a formal taxon." to
                         "முதுகெலும்புத் தொடர் இல்லாத விலங்குகளுக்கான முறைசாரா கூட்டுச் சொல்; முறையான வகைப்பாட்டுக் குழு அல்ல."),
-                    bdef("Negative character", "எதிர்மறைப் பண்பு", "A character defined by the absence of a feature, which does not define a natural group." to
+                    bdef("Negative character", "எதிர்மறைப் பண்பு (Negative character)", "A character defined by the absence of a feature, which does not define a natural group." to
                         "ஒரு பண்பின் இல்லாமையால் வரையறுக்கப்படும் பண்பு; இயற்கைக் குழுவை வரையறுக்காது."),
-                    bdef("Natural group", "இயற்கைக் குழு", "A group that includes an ancestor and all of its descendants." to
+                    bdef("Natural group", "இயற்கைக் குழு (Natural group)", "A group that includes an ancestor and all of its descendants." to
                         "ஒரு மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் குழு."),
                     bdef("Clade", "கிளை", "A natural group consisting of an ancestor and all its descendants." to
                         "மூதாதையையும் அதன் அனைத்து வழித்தோன்றல்களையும் கொண்ட இயற்கைக் குழு."),
@@ -108,11 +108,11 @@ object IntroInvertebrataBookChapter {
                         "நடைமுறையில் இனத்தை விவரிக்கும் விலங்கியலாளர் வழக்கமாக வடிவத்தையும், உடல் அமைப்பையும் பகுதிகளையும், பரவலையும் பார்த்து, தொகுப்பைச் சோதிக்க மூலக்கூறுத் தரவைப் பயன்படுத்துகிறார். தோற்றத்தில் ஒத்த ஆனால் மரபணுவில் வேறுபட்ட மறைந்த இனங்கள் பல முதுகெலும்பற்ற குழுக்களில் காணப்படுகின்றன; மேலும் ஆராயப்படும்போது விவரிக்கப்பட்ட இனங்களின் எண்ணிக்கை மாறுவது உறுதி. மாணவர் இனத்தை சான்றால் சோதிக்கப்படும் வகைப்பாட்டின் சிறந்த செயல் அலகாகக் கருத வேண்டும்; இறுதியான, உறுதியான பொருளாக அல்ல."),
                     bp("The same caution applies to the numbers that are given in textbooks for the species in each phylum. Such figures are estimates that depend on the date and the method, and they are revised, so an answer should give them as approximate, with the word about, and should avoid false precision." to
                         "ஒவ்வொரு தொகுதியிலுமுள்ள இனங்களுக்குப் பாடநூல்கள் தரும் எண்களுக்கும் இதே எச்சரிக்கை பொருந்தும். அத்தகைய புள்ளிவிவரங்கள் தேதி, முறையைச் சார்ந்த மதிப்பீடுகள்; திருத்தப்படுகின்றன; எனவே விடை அவற்றை 'சுமார்' என்ற சொல்லுடன் தோராயமாகத் தர வேண்டும்; பொய்யான துல்லியத்தைத் தவிர்க்க வேண்டும்."),
-                    bdef("Biological species concept", "உயிரியல் இனக் கருத்து", "A definition of a species as a group of interbreeding populations that are reproductively isolated from other groups." to
+                    bdef("Biological species concept", "உயிரியல் இனக் கருத்து (Biological species concept)", "A definition of a species as a group of interbreeding populations that are reproductively isolated from other groups." to
                         "பிற குழுக்களிலிருந்து இனப்பெருக்கத் தனிமைப்படுத்தப்பட்ட, இனப்பெருக்கம் செய்யும் இனக்கூட்டங்களின் குழுவாக இனத்தை வரையறுத்தல்."),
-                    bdef("Cryptic species", "மறைந்த இனங்கள்", "Species that look alike but are distinct genetically." to
+                    bdef("Cryptic species", "மறைந்த இனங்கள் (Cryptic species)", "Species that look alike but are distinct genetically." to
                         "தோற்றத்தில் ஒத்த ஆனால் மரபணுவில் வேறுபட்ட இனங்கள்."),
-                    bdef("Reproductive isolation", "இனப்பெருக்கத் தனிமைப்படுத்தல்", "The inability of two populations to interbreed and produce fertile offspring." to
+                    bdef("Reproductive isolation", "இனப்பெருக்கத் தனிமைப்படுத்தல் (Reproductive isolation)", "The inability of two populations to interbreed and produce fertile offspring." to
                         "இரு இனக்கூட்டங்கள் இனப்பெருக்கம் செய்து வளமான சந்ததியை உருவாக்க முடியாமை."),
                 )),
             bsec("history", "A short history of animal classification", "விலங்கு வகைப்பாட்டின் சுருக்க வரலாறு",
@@ -121,9 +121,9 @@ object IntroInvertebrataBookChapter {
                         "வகைப்பாடு கிடைக்கும் சான்றுகளுடன் மாறியுள்ளது. அரிஸ்டாட்டில் இரத்தம் இருப்பது போன்ற காணத்தக்க பண்புகளால் விலங்குகளைத் தொகுத்தார்; இரத்தமுள்ள, இல்லாத விலங்குகள் என்ற அவரது பிரிப்பு முதுகெலும்பிகள், முதுகெலும்பற்றவை என்ற பிரிவின் மூதாதை. பதினெட்டாம் நூற்றாண்டில் லின்னேயஸ் தரங்களின் சீரான படிநிலையை அறிமுகப்படுத்தி, இருசொல் பெயரிடலை நிலையான முறையாக்கினார். அவரது திட்டம் ஒற்றுமையை அடிப்படையாகக் கொண்டது; நிலையானது, பரிணாமத்தன்மை அற்றது. சற்றுப் பின் லாமார்க் முதுகெலும்பிகளை மற்றவற்றிலிருந்து முறைப்படி பிரித்து, பெரிய எஞ்சியதற்கு முதுகெலும்பற்றவை என்று பெயரிட்ட முதல்வர்."),
                     bp("Darwin's theory of evolution gave classification a new meaning, since the groupings could now be read as descent from common ancestors. Haeckel drew trees of relationship, and in the twentieth century Hennig set out the method of phylogenetic systematics, in which groups are recognised only if they consist of all the descendants of a common ancestor. In the late twentieth century comparisons of the sequences of ribosomal RNA and other genes, begun by Woese, began to reorganise the tree of all life, and for animals they have separated some groups that were long held together, such as the arthropods and the annelids.",
                         "டார்வினின் பரிணாமக் கோட்பாடு வகைப்பாட்டுக்குப் புதிய பொருளை அளித்தது; தொகுப்புகளை இனி பொது மூதாதைகளிலிருந்து வழிவந்தவையாகப் படிக்க முடிந்தது. ஹெக்கல் உறவு மரங்களை வரைந்தார்; இருபதாம் நூற்றாண்டில் ஹென்னிக் ஒரு பொது மூதாதையின் எல்லா வழிவந்தவர்களையும் கொண்டிருந்தால் மட்டுமே குழுக்கள் அங்கீகரிக்கப்படும் இனவரலாற்று முறைமையியலை வகுத்தார். இருபதாம் நூற்றாண்டின் பிற்பகுதியில் வூஸ் தொடங்கிய ரைபோசோம் ஆர்என்ஏ மற்றும் பிற மரபணுக்களின் வரிசை ஒப்பீடுகள் அனைத்து உயிர்களின் மரத்தை மறுஒழுங்கு செய்யத் தொடங்கின; விலங்குகளில், ஆர்த்ரோபோடாக்கள், அனெலிடாக்கள் போன்ற நீண்டகாலம் ஒன்றாக வைக்கப்பட்ட சில குழுக்களைப் பிரித்துள்ளன."),
-                    bdef("Monophyletic group", "ஒரு மூதாதை வழிக் குழு", "A group consisting of a common ancestor and all of its descendants." to
+                    bdef("Monophyletic group", "ஒரு மூதாதை வழிக் குழு (Monophyletic group)", "A group consisting of a common ancestor and all of its descendants." to
                         "ஒரு பொது மூதாதையையும் அதன் எல்லா வழிவந்தவர்களையும் கொண்ட குழு."),
-                    bdef("Paraphyletic group", "பகுதி மூதாதை வழிக் குழு", "A group that includes a common ancestor but not all of its descendants; Invertebrata is an example." to
+                    bdef("Paraphyletic group", "பகுதி மூதாதை வழிக் குழு (Paraphyletic group)", "A group that includes a common ancestor but not all of its descendants; Invertebrata is an example." to
                         "ஒரு பொது மூதாதையைக் கொண்டிருந்தும் அதன் எல்லா வழிவந்தவர்களையும் கொண்டிராத குழு; முதுகெலும்பற்றவை ஓர் எடுத்துக்காட்டு."),
                 )),
             bsec("rules", "The rules of zoological nomenclature", "விலங்கியல் பெயரிடலின் விதிகள்",
@@ -132,9 +132,9 @@ object IntroInvertebrataBookChapter {
                         "விலங்குப் பெயர்கள் சர்வதேச விலங்கியல் பெயரிடல் விதிக்கு உட்பட்டவை; ஒவ்வொரு விலங்குக் குழுவுக்கும் எல்லா நாடுகளிலும் பயன்படும் ஒரே சரியான பெயரை வழங்குவது அதன் நோக்கம். அதன் பல விதிகள் தேர்வில் கேட்கப்படுகின்றன. முன்னுரிமைக் கோட்பாடு ஒரு வகைப்பாட்டுக்கு கிடைக்கும் மிகப் பழைய பெயரை வழங்குகிறது; விலங்குகளுக்கு தொடக்கப்புள்ளி 1758. ஒரு பேரினப் பெயர் விலங்குகளிடையே தனித்துவமாகவும், இனப் பெயர் பேரினத்துக்குள் தனித்துவமாகவும் இருக்க வேண்டும். பெயரை முதலில் வெளியிட்ட ஆசிரியரின் பெயர் இருசொல் பெயருக்குப் பின் எழுதப்படலாம்; இனம் வேறு பேரினத்துக்கு மாற்றப்பட்டிருந்தால் ஆசிரியர் பெயர் அடைப்புக்குறிக்குள் இடப்படுகிறது."),
                     bp("The conventions of writing follow from the same rules. The binomen is italicised in print, or underlined when handwritten, the genus begins with a capital letter and the species does not, and both words are Latin or Latinised. In a longer text the genus is written in full on its first mention and may be shortened to its initial afterwards, as in Fasciola hepatica and F. hepatica. These details are marked by examiners, and a binomen written without the italics or capitals loses marks even when the animal is correctly identified.",
                         "எழுதும் மரபுகளும் இதே விதிகளிலிருந்து வருகின்றன. இருசொல் பெயர் அச்சில் சாய்வெழுத்தில், கையால் எழுதும்போது அடிக்கோடிடப்பட்டு எழுதப்படுகிறது; பேரினப் பெயர் பெரிய எழுத்தில் தொடங்கும், இனப் பெயர் தொடங்காது; இரு சொற்களும் இலத்தீன் அல்லது இலத்தீனாக்கப்பட்டவை. நீண்ட உரையில் பேரினப் பெயர் முதல் குறிப்பில் முழுமையாக எழுதப்பட்டு, பின் ஃபாசியோலா ஹெப்பாட்டிகா, எஃப். ஹெப்பாட்டிகா போல முதலெழுத்தாகச் சுருக்கப்படலாம். இவ்விவரங்கள் தேர்வாளர்களால் மதிப்பிடப்படுகின்றன; விலங்கு சரியாக அடையாளம் காணப்பட்டாலும் சாய்வெழுத்து அல்லது பெரிய எழுத்தின்றி எழுதப்பட்ட இருசொல் பெயர் மதிப்பெண் இழக்கிறது."),
-                    bdef("Homonym", "ஒத்த பெயர்", "The same name used for two different taxa; the later one is invalid and must be replaced." to
+                    bdef("Homonym", "ஒத்த பெயர் (Homonym)", "The same name used for two different taxa; the later one is invalid and must be replaced." to
                         "இரு வெவ்வேறு வகைப்பாடுகளுக்குப் பயன்படுத்தப்படும் ஒரே பெயர்; பிந்தையது செல்லாதது; மாற்றப்பட வேண்டும்."),
-                    bdef("International Code of Zoological Nomenclature", "சர்வதேச விலங்கியல் பெயரிடல் விதி", "The set of rules that governs the scientific names of animals, so that each taxon has one valid name." to
+                    bdef("International Code of Zoological Nomenclature", "சர்வதேச விலங்கியல் பெயரிடல் விதி (International Code of Zoological Nomenclature)", "The set of rules that governs the scientific names of animals, so that each taxon has one valid name." to
                         "ஒவ்வொரு வகைப்பாட்டுக்கும் ஒரே செல்லுபடியாகும் பெயர் இருக்கும்படி, விலங்குகளின் அறிவியல் பெயர்களை ஆளும் விதிகளின் தொகுப்பு."),
                 )),
             bsec("tree", "The animal tree as it is understood today", "இன்று புரிந்துகொள்ளப்படும் விலங்கு மரம்",
@@ -143,11 +143,11 @@ object IntroInvertebrataBookChapter {
                         "இப்பாடத்தின் தொகுதிகளை பெரும்பாலான விலங்கியலாளர்கள் ஏற்கும் வரைவில் மரத்தில் வைக்கலாம்; பல விவரங்கள் ஆய்வில் உள்ளன. கடற்பஞ்சுகள் (போரிஃபெரா) உண்மைத் திசுக்கள் இல்லாதவை; ஆரம்பத்திலேயே கிளைக்கின்றன. நிடேரியன்களுக்கு இரு கரு அடுக்குகளும் ஆரச்சமச்சீரும் உள்ளன. மீதமுள்ள விலங்குகள் இருபக்கச் சமச்சீரும் மூன்று கரு அடுக்குகளும் கொண்ட பைலேட்டீரியா; அவை இரு பெரும் கிளைகளாகப் பிரிகின்றன. புரோட்டோஸ்டோம்களில் வாய் பிளாஸ்டோபோரிலிருந்தோ அதன் அருகிலோ உருவாகிறது; அவற்றில் லோஃபோட்ரோகோசோவா (தட்டைப்புழுக்கள், அனெலிடாக்கள், மெல்லுடலிகள்), எக்டைசோசோவா (நெமட்டோடாக்கள், ஆர்த்ரோபோடாக்கள்) என இரு குழுக்கள் உள்ளன. டியூட்டிரோஸ்டோம்களில் குதம் பிளாஸ்டோபோரிலிருந்து உருவாகிறது; எக்கைனோடெர்ம்கள், கார்டேட்டுகள் இதில் அடங்கும்."),
                     bp("Two cautions apply. The first is that the order of the earliest branches, in particular whether the sponges or the comb jellies (Ctenophora) branch off first, is still debated. The second is that the position of some groups, such as the flatworms, has shifted between studies. The examiner will expect the traditional teaching classification, and the modern tree is best written as a note that classification changes as the evidence grows. The tree shows that the invertebrates are scattered all over it, and that the vertebrates are a small twig within the deuterostomes.",
                         "இரு எச்சரிக்கைகள் பொருந்தும். முதலாவது, மிக ஆரம்பக் கிளைகளின் வரிசை, குறிப்பாக கடற்பஞ்சுகளா அல்லது சீப்பு ஜெல்லிகளா (க்டெனோஃபோரா) முதலில் கிளைக்கின்றன என்பது இன்னும் விவாதிக்கப்படுகிறது. இரண்டாவது, தட்டைப்புழுக்கள் போன்ற சில குழுக்களின் இடம் ஆய்வுகளுக்கிடையே மாறியுள்ளது. தேர்வாளர் பாரம்பரிய கற்பித்தல் வகைப்பாட்டையே எதிர்பார்ப்பார்; நவீன மரம் சான்றுகள் வளர வகைப்பாடு மாறுகிறது என்ற குறிப்பாக எழுதுவது சிறந்தது. முதுகெலும்பற்றவை மரம் முழுவதும் சிதறியுள்ளன; முதுகெலும்பிகள் டியூட்டிரோஸ்டோம்களுக்குள் ஒரு சிறு கிளை என்பதை மரம் காட்டுகிறது."),
-                    bdef("Bilateria", "பைலேட்டீரியா", "The animals with bilateral symmetry and three germ layers, comprising the protostomes and deuterostomes." to
+                    bdef("Bilateria", "பைலேட்டீரியா (Bilateria)", "The animals with bilateral symmetry and three germ layers, comprising the protostomes and deuterostomes." to
                         "இருபக்கச் சமச்சீரும் மூன்று கரு அடுக்குகளும் கொண்ட, புரோட்டோஸ்டோம்கள், டியூட்டிரோஸ்டோம்களை உள்ளடக்கிய விலங்குகள்."),
-                    bdef("Ecdysozoa", "எக்டைசோசோவா", "The protostome group of animals that moult their cuticle, including the nematodes and arthropods." to
+                    bdef("Ecdysozoa", "எக்டைசோசோவா (Ecdysozoa)", "The protostome group of animals that moult their cuticle, including the nematodes and arthropods." to
                         "கியூட்டிகிளை உதிர்க்கும், நெமட்டோடாக்கள், ஆர்த்ரோபோடாக்களை உள்ளடக்கிய புரோட்டோஸ்டோம் விலங்குக் குழு."),
-                    bdef("Lophotrochozoa", "லோஃபோட்ரோகோசோவா", "The protostome group that includes the flatworms, annelids and molluscs, many of which have a trochophore larva or a lophophore." to
+                    bdef("Lophotrochozoa", "லோஃபோட்ரோகோசோவா (Lophotrochozoa)", "The protostome group that includes the flatworms, annelids and molluscs, many of which have a trochophore larva or a lophophore." to
                         "தட்டைப்புழுக்கள், அனெலிடாக்கள், மெல்லுடலிகளை உள்ளடக்கிய புரோட்டோஸ்டோம் குழு; இவற்றில் பல ட்ரோகோஃபோர் லார்வா அல்லது லோஃபோஃபோர் கொண்டவை."),
                 )),
             bsec("answering", "Answering questions in this introductory part", "இந்த அறிமுகப் பகுதியின் வினாக்களுக்கு விடையளித்தல்",
@@ -179,7 +179,7 @@ object IntroInvertebrataBookChapter {
                         )),
                     bp("A single table cannot capture the detail of each phylum, and each is taught as a separate chapter with its own characters and types. The table is intended to show that there are several axes of difference between the phyla, and not one." to
                         "ஒற்றை அட்டவணை ஒவ்வொரு தொகுதியின் விவரத்தையும் பிடிக்க முடியாது; ஒவ்வொன்றும் தனக்குரிய பண்புகளும் வகைகளுமுடன் தனி அத்தியாயமாகக் கற்பிக்கப்படுகிறது. தொகுதிகளுக்கிடையே ஒன்றல்ல, பல வேறுபாட்டு அச்சுகள் உள்ளன என்பதைக் காட்டுவதே அட்டவணையின் நோக்கம்."),
-                    bdef("Level of organisation", "அமைப்பு நிலை", "The degree to which cells are combined into tissues, organs and systems." to
+                    bdef("Level of organisation", "அமைப்பு நிலை (Level of organisation)", "The degree to which cells are combined into tissues, organs and systems." to
                         "செல்கள் திசுக்கள், உறுப்புகள், அமைப்புகளாக இணைக்கப்படும் அளவு."),
                     bdef("Symmetry", "சமச்சீர்", "The arrangement of body parts around an axis or plane." to
                         "ஒரு அச்சு அல்லது தளத்தைச் சுற்றி உடல் பகுதிகளின் அமைப்பு."),

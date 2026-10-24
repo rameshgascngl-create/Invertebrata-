@@ -30,9 +30,9 @@ object CephalopodsBookChapter {
                         "A foot modified into arms and a funnel for jet propulsion." to "கைகளாகவும் பீச்சு உந்துதலுக்கான குழலாகவும் மாறிய பாதம்.",
                         "Chromatophores for signalling and camouflage, with rapid movement." to "சமிக்ஞை, மறைவுருவத்துக்கான நிறமிச் செல்களுடன் விரைவான இயக்கம்.",
                     ),
-                    bdef("Cephalopoda", "தலைக்காலிகள்", "The class of molluscs including squids, cuttlefishes, octopuses and nautiluses, with arms around the head." to
+                    bdef("Cephalopoda", "தலைக்காலிகள் (Cephalopoda)", "The class of molluscs including squids, cuttlefishes, octopuses and nautiluses, with arms around the head." to
                         "தலையைச் சுற்றிய கைகளுடைய ஸ்குவிட்கள், கட்டில்மீன்கள், ஆக்டோபஸ்கள், நாட்டிலஸ்கள் உள்ளிட்ட மெல்லுடலி வகுப்பு."),
-                    bdef("Coleoidea", "கோலியாய்டியா", "The cephalopods with a reduced or internal shell: squids, cuttlefishes and octopuses." to
+                    bdef("Coleoidea", "கோலியாய்டியா (Coleoidea)", "The cephalopods with a reduced or internal shell: squids, cuttlefishes and octopuses." to
                         "குறைந்த அல்லது உட்புற ஓடுடைய தலைக்காலிகள்: ஸ்குவிட்கள், கட்டில்மீன்கள், ஆக்டோபஸ்கள்."),
                     bdef("Cephalisation", "தலையாக்கம்", "The concentration of nervous tissue and sense organs at the head end." to
                         "நரம்புத் திசுவும் உணர்வு உறுப்புகளும் தலை முனையில் குவிதல்."),
@@ -43,9 +43,9 @@ object CephalopodsBookChapter {
                         "பெரும்பாலான மெல்லுடலிகளில் நரம்பு செல்திரள்கள் நரம்பு வடங்களில் இணையாகச் சிதறியுள்ளன; தலைக்காலிகளில் உணவுக்குழலைச் சுற்றி ஒற்றைத் திரளாகக் குவிந்துள்ளன: உணவுக்குழல் சுற்று மூளை. திரள் குருத்தெலும்புக் கபாலத்தில் அடைக்கப்பட்டு பாதுகாக்கப்படுகிறது. வெவ்வேறு செயல்களுடைய மடல்களாகப் பிரிந்துள்ளது; அவற்றில் கரக் கட்டுப்பாடு, பார்வை, கற்றலுக்கான மடல்கள் அடங்கும்; ஆக்டோபஸ்கள், ஸ்குவிட்களில் உடலுக்கு ஒப்பிடும்போது மூளை பெரியது. நரம்பு செல்திரள்கள் தலை முனையில் மூளை போன்ற திரளாகக் குவிவதே தலையாக்கத்தின் பொருள்."),
                     bp("Many coleoids have giant nerve fibres, with large diameters, which carry impulses quickly to the muscles of the mantle, and they allow the sudden contraction needed for a fast escape. The squid giant axon has been of special importance in physiology, because its size allowed early experiments on the conduction of the nerve impulse. The behaviour of cephalopods, particularly of the octopus, includes learning and problem solving, which has been shown in laboratory studies, and the statements in the textbooks about intelligence should be restricted to what has been measured." to
                         "பல கோலியாய்டுகளுக்கு மேண்டிலின் தசைகளுக்கு வேகமாகத் தூண்டலைக் கொண்டுசெல்லும் பெரிய விட்டமுள்ள ராட்சத நரம்பு இழைகள் உண்டு; வேகமாகத் தப்பிக்கத் தேவையான திடீர் சுருக்கத்தை அவை அனுமதிக்கின்றன. ஸ்குவிட் ராட்சத அச்சுவடம் உடலியங்கியலில் சிறப்பு முக்கியத்துவம் பெற்றது; அதன் அளவு நரம்புத் தூண்டல் கடத்தல் பற்றிய ஆரம்பச் சோதனைகளை அனுமதித்தது. தலைக்காலிகளின், குறிப்பாக ஆக்டோபஸின், நடத்தையில் கற்றல், சிக்கல் தீர்வு அடங்கும்; ஆய்வகப் படிப்புகளில் இது காட்டப்பட்டுள்ளது; நுண்ணறிவு பற்றிய பாடநூல் கூற்றுகள் அளக்கப்பட்டதற்கு மட்டுப்படுத்தப்பட வேண்டும்."),
-                    bdef("Circumoesophageal brain", "உணவுக்குழல் சுற்று மூளை", "A brain formed by the concentration of ganglia around the oesophagus." to
+                    bdef("Circumoesophageal brain", "உணவுக்குழல் சுற்று மூளை (Circumoesophageal brain)", "A brain formed by the concentration of ganglia around the oesophagus." to
                         "உணவுக்குழலைச் சுற்றி நரம்பு செல்திரள்கள் குவிந்து உருவான மூளை."),
-                    bdef("Giant axon", "ராட்சத அச்சுவடம்", "A nerve fibre of exceptionally large diameter that conducts impulses rapidly." to
+                    bdef("Giant axon", "ராட்சத அச்சுவடம் (Giant axon)", "A nerve fibre of exceptionally large diameter that conducts impulses rapidly." to
                         "வேகமாகத் தூண்டலைக் கடத்தும் மிகப் பெரிய விட்டமுள்ள நரம்பு இழை."),
                     bdef("Cranium", "கபாலம்", "The cartilaginous or bony case that protects the brain." to
                         "மூளையைப் பாதுகாக்கும் குருத்தெலும்பு அல்லது எலும்புக் கூடு."),
@@ -56,11 +56,11 @@ object CephalopodsBookChapter {
                         "தலைக்காலிக் கண் புகைப்படக் கருவி வகைக் கண்; கார்னியா, ஒளியளவைக் கட்டுப்படுத்தும் ஐரிஸ், படத்தைக் குவிக்கும் லென்ஸ், பின்புறம் ஒளியுணர் செல்களின் விழித்திரை கொண்டது. திட்டத்தில் அமைப்பு முதுகெலும்பியின் கண்ணை ஒத்தது; இரு கண்களும் தனித்துப் பரிணமித்ததால் குவிவுப் பரிணாமத்துக்கு நிலையான எடுத்துக்காட்டு. ஒரு வேறுபாடு: தலைக்காலியின் விழித்திரை முதுகெலும்பிகளில் போல தலைகீழாக இல்லாமல் ஒளியை நேரடியாக நோக்குகிறது. கண் உருவம் உருவாக்குகிறது, இது குவிவுக்கு எடுத்துக்காட்டு என்று மாணவர் கூற வேண்டும்; இரண்டும் ஒத்தமைவு எனக் குறிப்பிடக் கூடாது."),
                     bp("The other sense organs include statocysts, which are fluid-filled sacs with a stony body, the statolith, that sense gravity and movement and help in balance, and chemoreceptors on the arms and around the mouth that test the water and the touch of objects. The arms of an octopus carry large numbers of sensory cells in the suckers. The osphradium of other molluscs has been reduced or lost in most of the class." to
                         "பிற உணர்வு உறுப்புகளில் ஸ்டேட்டோசிஸ்ட்கள் அடங்கும்: ஈர்ப்பு, அசைவை உணர்ந்து சமநிலைக்கு உதவும் கல் போன்ற ஸ்டேடோலித் உடைய திரவம் நிரம்பிய பைகள்; கைகளிலும் வாயைச் சுற்றியும் நீரையும் பொருட்களின் தொடுதலையும் சோதிக்கும் வேதி உணர்விகள். ஆக்டோபஸின் கைகள் உறிஞ்சிகளில் அதிக எண்ணிக்கையிலான உணர்வு செல்களைத் தாங்குகின்றன. பிற மெல்லுடலிகளின் ஆஸ்ஃப்ரேடியம் வகுப்பின் பெரும்பகுதியில் குறைந்துள்ளது அல்லது இழக்கப்பட்டுள்ளது."),
-                    bdef("Camera-type eye", "புகைப்படக் கருவி வகைக் கண்", "An eye with a lens that focuses an image on a retina." to
+                    bdef("Camera-type eye", "புகைப்படக் கருவி வகைக் கண் (Camera-type eye)", "An eye with a lens that focuses an image on a retina." to
                         "விழித்திரையில் உருவத்தைக் குவிக்கும் லென்ஸ் கொண்ட கண்."),
-                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட்", "A fluid-filled sac containing a statolith, used to sense balance and movement." to
+                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட் (Statocyst)", "A fluid-filled sac containing a statolith, used to sense balance and movement." to
                         "சமநிலை, அசைவை உணரப் பயன்படும், ஸ்டேடோலித் அடங்கிய திரவம் நிரம்பிய பை."),
-                    bdef("Statolith", "ஸ்டேடோலித்", "The small stony body in a statocyst." to
+                    bdef("Statolith", "ஸ்டேடோலித் (Statolith)", "The small stony body in a statocyst." to
                         "ஸ்டேடோசிஸ்டிலுள்ள சிறு கல் போன்ற உடல்."),
                     bdef("Retina", "விழித்திரை", "The layer of light-sensitive cells in the eye." to
                         "கண்ணிலுள்ள ஒளியுணர் செல்களின் அடுக்கு."),
@@ -71,13 +71,13 @@ object CephalopodsBookChapter {
                         "பெரும்பாலான மெல்லுடலிகளுக்கு இரத்தம் நாளங்களை விட்டு வெளியேறி இடைவெளிகளான ஹீமோசீலில் திசுக்களைக் குளிப்பாட்டும் திறந்த சுற்றோட்டம் உண்டு. தலைக்காலிகளுக்கு இரத்தம் தமனிகள், நுண்குழாய்கள், சிரைகளின் தொடர்ச்சியான அமைப்பில் கொண்டுசெல்லப்படும் மூடிய சுற்றோட்ட அமைப்பு உண்டு; சுறுசுறுப்பான விலங்குக்குத் தேவையான அதிக ஆக்சிஜனைக் கடத்துவதில் இது திறன் மிக்கது. மூடிய நிலை தொகுதியின் வழக்கமான திறந்த நிலையிலிருந்து பெரிய வேறுபாடு; உயர் சிறப்படைதலின் ஒரு புள்ளி."),
                     bp("In the coleoids there is a systemic heart that sends blood to the body, and two branchial hearts, one at the base of each gill, that boost the pressure as the blood goes through the gills. The branchial hearts are accessory hearts, and they are the reason why the blood can be driven efficiently through the narrow vessels of the gills. The blood pigment is haemocyanin, which contains copper, and it is blue when oxygenated. The nautiluses have a simpler arrangement, with a different number of gills, and the account here is that of the coleoids." to
                         "கோலியாய்டுகளில் உடலுக்கு இரத்தம் அனுப்பும் உடல் இதயமும், ஒவ்வொரு செவுளின் அடியிலும் ஒன்றாக, இரத்தம் செவுள்கள் வழியே செல்லும்போது அழுத்தத்தை உயர்த்தும் இரு செவுள் இதயங்களும் உள்ளன. செவுள் இதயங்கள் துணை இதயங்கள்; செவுள்களின் குறுகிய நாளங்கள் வழியே இரத்தம் திறம்பட செலுத்தப்படுவதற்கு அவையே காரணம். இரத்த நிறமி தாமிரம் கொண்ட ஹீமோசயனின்; ஆக்சிஜன் ஏற்ற நிலையில் நீல நிறம். நாட்டிலஸ்களுக்கு வேறு எண்ணிக்கை செவுள்களுடன் எளிய அமைப்பு உண்டு; இங்குள்ள விளக்கம் கோலியாய்டுகளுக்கானது."),
-                    bdef("Closed circulation", "மூடிய இரத்தச் சுற்றோட்டம்", "A circulation in which the blood stays within vessels." to
+                    bdef("Closed circulation", "மூடிய இரத்தச் சுற்றோட்டம் (Closed circulation)", "A circulation in which the blood stays within vessels." to
                         "இரத்தம் நாளங்களுக்குள் இருக்கும் சுற்றோட்டம்."),
-                    bdef("Branchial heart", "செவுள் இதயம்", "An accessory heart at the base of each gill that drives blood through the gill." to
+                    bdef("Branchial heart", "செவுள் இதயம் (Branchial heart)", "An accessory heart at the base of each gill that drives blood through the gill." to
                         "செவுள் வழியே இரத்தத்தைச் செலுத்தும், ஒவ்வொரு செவுளின் அடியிலுள்ள துணை இதயம்."),
                     bdef("Haemocyanin", "ஹீமோசயனின்", "The copper-containing blood pigment of many molluscs and arthropods." to
                         "பல மெல்லுடலிகள், கணுக்காலிகளின் தாமிரம் கொண்ட இரத்த நிறமி."),
-                    bdef("Systemic heart", "உடல் இதயம்", "The heart that pumps blood to the body." to
+                    bdef("Systemic heart", "உடல் இதயம் (Systemic heart)", "The heart that pumps blood to the body." to
                         "உடலுக்கு இரத்தத்தை செலுத்தும் இதயம்."),
                 )),
             bsec("movement", "Locomotion, camouflage and defence", "இயக்கம், மறைவுருவம், தற்காப்பு",
@@ -86,11 +86,11 @@ object CephalopodsBookChapter {
                         "தலைக்காலிகளின் இயக்கம் மேண்டிலின் வலிமையான தசைகள் சுருங்கி குழல் வழியே நீரை வெளியேற்றுவதால் உண்டாகும் பீச்சு உந்துதலால்; குழலைத் திருப்பி விலங்கை வழிநடத்தலாம். ஸ்குவிட்கள், கட்டில்மீன்களின் துடுப்புகள் மெதுவான, நுண் கட்டுப்பாட்டைத் தருகின்றன; ஆக்டோபஸ் தன் கைகளால் அடியில் ஊரவும் முடியும். தப்பிக்கும்போது அடையக்கூடிய வேகம் பிற மெல்லுடலிகளை விட உயர்ந்தது; ராட்சத அச்சுவடங்கள் வழி விரைவான கடத்தலுக்கு இதுவே காரணம். இரையைப் பற்றும் கைகள், அதை எதிர்கொள்ளும் அலகு, ராடுலாவுடன் சுறுசுறுப்பான வேட்டை உணவெடுப்பு அதே வாழ்க்கை முறையின் பகுதி."),
                     bp("The skin has chromatophores, which are pigment cells under muscular control and nervous control, and the animal can change colour and pattern in a fraction of a second. The changes are used for camouflage, for signalling to other individuals, and in alarm. For defence, many species release a cloud of ink from an ink sac, which opens into the rectum, and the cloud confuses the predator. The ink sac is present in most coleoids, and the release is usually combined with a jet escape." to
                         "தோலில் தசை, நரம்புக் கட்டுப்பாட்டில் உள்ள நிறமி செல்களான குரோமட்டோஃபோர்கள் உண்டு; விலங்கு ஒரு நொடியின் பின்னத்தில் நிறத்தையும் வடிவமைப்பையும் மாற்றலாம். மாற்றங்கள் மறைவுருவம், பிற உயிர்களுக்கான சமிக்ஞை, அச்சத்தில் பயன்படுகின்றன. தற்காப்புக்கு பல இனங்கள் மலக்குடலில் திறக்கும் மைப்பையிலிருந்து மை மேகத்தை வெளியிடுகின்றன; மேகம் வேட்டையாடியைக் குழப்புகிறது. மைப்பை பெரும்பாலான கோலியாய்டுகளில் உண்டு; வெளியீடு பொதுவாக பீச்சு தப்பித்தலுடன் இணைகிறது."),
-                    bdef("Chromatophore", "குரோமட்டோஃபோர்", "A pigment-containing cell in the skin that allows rapid colour change." to
+                    bdef("Chromatophore", "குரோமட்டோஃபோர் (Chromatophore)", "A pigment-containing cell in the skin that allows rapid colour change." to
                         "விரைவான நிற மாற்றத்தை அனுமதிக்கும், தோலிலுள்ள நிறமி கொண்ட செல்."),
-                    bdef("Ink sac", "மைப்பை", "A gland that stores ink, which is released to confuse predators." to
+                    bdef("Ink sac", "மைப்பை (Ink sac)", "A gland that stores ink, which is released to confuse predators." to
                         "வேட்டையாடிகளைக் குழப்ப வெளியிடப்படும் மையைச் சேமிக்கும் சுரப்பி."),
-                    bdef("Mantle musculature", "மேண்டில் தசையமைப்பு", "The strong muscle of the mantle wall whose contraction drives water out of the funnel." to
+                    bdef("Mantle musculature", "மேண்டில் தசையமைப்பு (Mantle musculature)", "The strong muscle of the mantle wall whose contraction drives water out of the funnel." to
                         "சுருங்கி குழல் வழியே நீரை வெளியேற்றும் மேண்டில் சுவரின் வலிமையான தசை."),
                     bdef("Beak", "அலகு", "The pair of horny jaws at the mouth of a cephalopod." to
                         "தலைக்காலியின் வாயிலுள்ள இணைக் கொம்புத் தாடைகள்."),
@@ -107,11 +107,11 @@ object CephalopodsBookChapter {
                             listOf("Squid" to "ஸ்குவிட்", "Loligo" to "லோலிகோ", "Internal horny pen" to "உட்புற கொம்புப் பேனா", "Streamlined body with fins" to "துடுப்புகளுடன் நீரோட்ட வடிவ உடல்"),
                             listOf("Octopus" to "ஆக்டோபஸ்", "Octopus" to "ஆக்டோபஸ்", "Shell almost lost" to "ஓடு கிட்டத்தட்ட இழப்பு", "Eight arms; rounded body" to "எட்டு கைகள்; உருண்ட உடல்"),
                         )),
-                    bdef("Cuttlebone", "கட்டில்எலும்பு", "The chalky internal shell of a cuttlefish." to
+                    bdef("Cuttlebone", "கட்டில்எலும்பு (Cuttlebone)", "The chalky internal shell of a cuttlefish." to
                         "கட்டில்மீனின் சுண்ணாம்பு உட்புற ஓடு."),
-                    bdef("Ammonite", "அம்மோனைட்", "An extinct cephalopod with a coiled chambered shell, important as an index fossil." to
+                    bdef("Ammonite", "அம்மோனைட் (Ammonite)", "An extinct cephalopod with a coiled chambered shell, important as an index fossil." to
                         "சுருள் அறை ஓடுடைய, வழிகாட்டிப் புதைபடிவமாக முக்கியமான அழிந்த தலைக்காலி."),
-                    bdef("Nautilus", "நாட்டிலஸ்", "A living cephalopod with an external coiled chambered shell." to
+                    bdef("Nautilus", "நாட்டிலஸ் (Nautilus)", "A living cephalopod with an external coiled chambered shell." to
                         "வெளிப்புற சுருள் அறை ஓடுடைய வாழும் தலைக்காலி."),
                 )),
             bsec("reproduction", "Reproduction and life history in outline", "இனப்பெருக்கமும் வாழ்க்கை வரலாறும் சுருக்கமாக",
@@ -120,11 +120,11 @@ object CephalopodsBookChapter {
                         "பாலினங்கள் தனி; கருவுறுதல் உட்புறம். ஆண் கோலியாய்டுகளில் ஒரு கை ஹெக்டோகோட்டிலஸ் எனும் வடிவில் மாற்றப்பட்டு, ஸ்பெர்மட்டோஃபோர்கள் எனும் விந்துப் பொட்டலங்களைப் பெண்ணுக்கு மாற்றுகிறது. முட்டைகள் பெரியவை, கருவுணவு நிறைந்தவை; உறைகளில் அல்லது சரங்களில் இடப்படுகின்றன; பல இனங்களில் மேற்பரப்பில் ஒட்டப்பட்டு சில சமயம் பெண்ணால் காக்கப்படுகின்றன. வளர்ச்சி நேரடியானது; இரைப்பைக்காலிகள், இருவோடுகளில் காணப்படும் வகை தனி லார்வா இல்லை; இளவை முதிர்ந்ததின் சிறு வடிவங்களாகப் பொரிக்கின்றன. பல கோலியாய்டுகளுக்கு குறுகிய ஆயுள்; ஒருமுறை இனப்பெருக்கம் செய்கின்றன."),
                     bp("The general statements about life span and the pattern of breeding apply to many coleoids, and they differ among species, so that exact figures should be taken from the studies of the particular species. For the purposes of the syllabus, the useful point is that direct development with large yolky eggs is another contrast with the other molluscs that were studied earlier in the unit." to
                         "ஆயுள், இனப்பெருக்க முறை பற்றிய பொதுக் கூற்றுகள் பல கோலியாய்டுகளுக்குப் பொருந்தும்; இனங்களிடையே வேறுபடும்; எனவே சரியான எண்களை குறிப்பிட்ட இனத்தின் ஆய்வுகளிலிருந்து எடுக்க வேண்டும். பாடத்திட்டத்தின் நோக்கத்துக்கு, பெரிய கருவுணவு முட்டைகளுடன் நேரடி வளர்ச்சி, அலகில் முன்பு படித்த பிற மெல்லுடலிகளுடன் மற்றொரு வேறுபாடு என்பதே பயனுள்ள புள்ளி."),
-                    bdef("Hectocotylus", "ஹெக்டோகோட்டிலஸ்", "The modified arm of a male cephalopod used to transfer spermatophores." to
+                    bdef("Hectocotylus", "ஹெக்டோகோட்டிலஸ் (Hectocotylus)", "The modified arm of a male cephalopod used to transfer spermatophores." to
                         "விந்துப் பொட்டலங்களை மாற்றப் பயன்படும் ஆண் தலைக்காலியின் மாறிய கை."),
-                    bdef("Spermatophore", "ஸ்பெர்மட்டோஃபோர்", "A packet containing sperm that is transferred to the female." to
+                    bdef("Spermatophore", "ஸ்பெர்மட்டோஃபோர் (Spermatophore)", "A packet containing sperm that is transferred to the female." to
                         "பெண்ணுக்கு மாற்றப்படும் விந்து அடங்கிய பொட்டலம்."),
-                    bdef("Direct development", "நேரடி வளர்ச்சி", "Development in which the young hatch in the form of small adults, with no free larva." to
+                    bdef("Direct development", "நேரடி வளர்ச்சி (Direct development)", "Development in which the young hatch in the form of small adults, with no free larva." to
                         "தனி லார்வா இன்றி இளவை சிறு முதிர்ந்தவையாகப் பொரிக்கும் வளர்ச்சி."),
                 )),
             bsec("economic", "Economic importance", "பொருளாதார முக்கியத்துவம்",
@@ -140,9 +140,9 @@ object CephalopodsBookChapter {
                         "Ecological roles as predators and prey in fishery food webs." to "மீன்பிடி உணவு வலைகளில் வேட்டையாடி, இரையாக சூழலியல் பங்கு.",
                         "The need for monitoring and sustainable management." to "கண்காணிப்பு, நிலையான மேலாண்மையின் தேவை.",
                     ),
-                    bdef("Capture fishery", "பிடிப்பு மீன்பிடி", "A fishery that harvests wild animals, as against aquaculture." to
+                    bdef("Capture fishery", "பிடிப்பு மீன்பிடி (Capture fishery)", "A fishery that harvests wild animals, as against aquaculture." to
                         "மீன் வளர்ப்புக்கு மாறாக காட்டு விலங்குகளை அறுவடை செய்யும் மீன்பிடி."),
-                    bdef("Sustainable management", "நிலையான மேலாண்மை", "Use of a resource at a rate that allows it to be maintained over time." to
+                    bdef("Sustainable management", "நிலையான மேலாண்மை (Sustainable management)", "Use of a resource at a rate that allows it to be maintained over time." to
                         "வளத்தை காலப்போக்கில் பராமரிக்க அனுமதிக்கும் அளவில் பயன்படுத்துதல்."),
                 )),
             bsec("convergence", "Convergence and the contribution to neuroscience", "ஒருங்கிணைந்த பரிணாமமும் நரம்பியலுக்கான பங்களிப்பும்",
@@ -151,7 +151,7 @@ object CephalopodsBookChapter {
                         "கணவாய் அல்லது ஆக்டோபஸின் கண், ஒளியைக் குவிக்கும் லென்ஸ், திறப்பை ஒழுங்குபடுத்தும் கருவிழி, பிம்பத்தைப் பெறும் விழித்திரை எனப் பல பண்புகளில் முதுகெலும்பியின் கண்ணை ஒத்துள்ளது. இரு கண்களும் பொதுக் கண்ணிலிருந்து வழிவந்த உறவுடையவை அல்ல; ஏனெனில் மெல்லுடலிகள், முதுகெலும்பிகளின் பொது மூதாதை புகைப்படக் கருவி வகைக் கண் இல்லாத எளிய விலங்கு; ஒற்றுமை இரு வழிமரபுகளிலும் தனித்தனியே தோன்றியது. இது ஒருங்கிணைந்த பரிணாமம் எனப்படுகிறது; ஒரே மாதிரியான இயற்பியல் சிக்கல்கள் ஒரே மாதிரியான தீர்வுகளைத் தருகின்றன என்ற கருத்தின் நிலையான விளக்கங்களில் இது ஒன்று. வடிவமைப்பிலும் ஒரு வேறுபாடு உண்டு. முதுகெலும்பி விழித்திரையில் நரம்பிழைகள் ஒளியுணர் செல்களுக்கு முன்னால் அமைந்து, உணர்விகள் அற்ற புள்ளி வழியாக வெளியேறுகின்றன; அது குருட்டுப் புள்ளி. தலைக்காலி விழித்திரையில் உணர்விகள் ஒளியை நோக்கியுள்ளன; இழைகள் அவற்றின் பின்னால் வெளியேறுகின்றன; குருட்டுப் புள்ளி விவரிக்கப்படவில்லை."),
                     bp("The giant axon of the squid has had a place in the history of physiology out of proportion to the size of the animal. Because the fibre is wide enough for an electrode to be placed within it, it allowed experimenters in the middle of the twentieth century to record the electrical changes of a nerve impulse directly, and the work that was done on it led to the modern account of how nerve cells conduct impulses. The example shows how a feature of one group of invertebrates, adapted for a rapid escape, can open a way to the understanding of nervous systems in general, including that of man. In an answer the giant axon should be linked first to its function in the animal, the fast and simultaneous contraction of the mantle in the escape jet, and then, as an addition, to its use in research.",
                         "கணவாயின் ராட்சத அச்சுவடம் அதன் அளவுக்கு ஏற்காத வகையில் உடலியல் வரலாற்றில் இடம் பெற்றுள்ளது. இழை, மின்முனையை உள்ளே வைக்கும் அளவு அகலமாக இருப்பதால், இருபதாம் நூற்றாண்டின் நடுவில் ஆய்வாளர்கள் நரம்புத் தூண்டலின் மின்மாற்றங்களை நேரடியாகப் பதிவு செய்ய முடிந்தது; அதில் செய்த பணி நரம்புச் செல்கள் தூண்டல்களை எவ்வாறு கடத்துகின்றன என்ற நவீன விளக்கத்துக்கு வழிவகுத்தது. விரைவான தப்பித்தலுக்குத் தகவமைந்த ஒரு முதுகெலும்பற்ற குழுவின் பண்பு, மனிதனுடையது உட்பட பொதுவாக நரம்பு மண்டலங்களைப் புரிந்துகொள்ள வழி திறக்கலாம் என்பதை எடுத்துக்காட்டு காட்டுகிறது. விடையில் ராட்சத அச்சுவடம் முதலில் விலங்கில் அதன் பணியுடன், அதாவது தப்பிக்கும் பீச்சலில் மேண்டிலின் வேகமான ஒரே நேர சுருக்கத்துடன், இணைக்கப்பட்டு, கூடுதலாக ஆராய்ச்சியில் அதன் பயன்பாட்டுடன் இணைக்கப்பட வேண்டும்."),
-                    bdef("Convergent evolution", "ஒருங்கிணைந்த பரிணாமம்", "The independent evolution of similar structures in unrelated lines because of similar functional demands." to
+                    bdef("Convergent evolution", "ஒருங்கிணைந்த பரிணாமம் (Convergent evolution)", "The independent evolution of similar structures in unrelated lines because of similar functional demands." to
                         "ஒத்த செயல்பாட்டுத் தேவைகளால் தொடர்பற்ற வழிமரபுகளில் ஒத்த அமைப்புகள் தனித்தனியே தோன்றுதல்."),
                     bdef("Blind spot", "குருட்டுப் புள்ளி", "The point on the vertebrate retina where nerve fibres leave the eye and where there are no receptors." to
                         "நரம்பிழைகள் கண்ணை விட்டு வெளியேறும், உணர்விகள் அற்ற முதுகெலும்பி விழித்திரைப் புள்ளி."),

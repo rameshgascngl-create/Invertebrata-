@@ -34,11 +34,11 @@ object HostParasiteBookChapter {
                         "மற்றொன்றின்மீது அல்லது உள்ளே வாழ்ந்து விருந்தோம்பியின் தீமைக்கு அதனிடமிருந்து உணவைப் பெறும் உயிரி."),
                     bdef("Host", "விருந்தோம்பி", "The organism that harbours and feeds a parasite." to
                         "ஒட்டுண்ணியைத் தாங்கி உணவளிக்கும் உயிரி."),
-                    bdef("Definitive host", "முதன்மை விருந்தோம்பி", "The host in which the parasite undergoes sexual reproduction or reaches maturity." to
+                    bdef("Definitive host", "முதன்மை விருந்தோம்பி (Definitive host)", "The host in which the parasite undergoes sexual reproduction or reaches maturity." to
                         "ஒட்டுண்ணி பாலினப்பெருக்கம் செய்யும் அல்லது முதிர்ச்சி அடையும் விருந்தோம்பி."),
-                    bdef("Intermediate host", "இடைநிலை விருந்தோம்பி", "The host in which the parasite passes its larval or asexual stages." to
+                    bdef("Intermediate host", "இடைநிலை விருந்தோம்பி (Intermediate host)", "The host in which the parasite passes its larval or asexual stages." to
                         "ஒட்டுண்ணி குஞ்சு அல்லது பாலிலாப் நிலைகளைக் கடக்கும் விருந்தோம்பி."),
-                    bdef("Life cycle", "வாழ்க்கைச் சுழற்சி", "The whole series of stages through which an organism passes in the course of its development and reproduction." to
+                    bdef("Life cycle", "வாழ்க்கைச் சுழற்சி (Life cycle)", "The whole series of stages through which an organism passes in the course of its development and reproduction." to
                         "ஒரு உயிரி வளர்ச்சி, பெருக்கத்தின்போது கடக்கும் நிலைகளின் முழுத் தொடர்."),
                 )),
             bsec("entamoeba-cycle", "The single-host cycle of Entamoeba", "எண்டமீபாவின் ஒற்றை விருந்தோம்பி சுழற்சி",
@@ -49,7 +49,7 @@ object HostParasiteBookChapter {
                         "சிலரில் டிரோபோசோயிட் பெருங்குடல் சுவரில் ஊடுருவி, அவ்வாறு செய்யும்போது திசுவை அழித்து அமீபிக் வயிற்றுக்கடுப்பின் புண்களை உண்டாக்குகிறது. இரத்தம் வழியாக பிற உறுப்புகளுக்குக் கொண்டுசெல்லப்படலாம்; கல்லீரல் மிகவும் பொதுவானது; அங்கு சீழ்க்கட்டி உருவாகலாம். குழிவிலுள்ள டிரோபோசோயிட்டுகள் உருண்டு பாதுகாப்புச் சுவரைச் சுரந்து கூடுகளாகின்றன; அவை மலத்தில் வெளியேறுகின்றன. விருந்தோம்பிக்கு வெளியே தப்பிப் பிழைத்து புதிய ஒன்றைத் தொற்றும் ஒரே நிலை கூடு என்பதால் சுழற்சி உணவு, நீர் மலத்தால் மாசுபடுவதைச் சார்ந்துள்ளது; இடைநிலை விருந்தோம்பியோ நோய்க்கடத்தியோ தேவையில்லை."),
                     bdef("Binary fission", "இருசமப்பிளவு", "Division of a cell into two equal daughter cells." to
                         "ஓர் செல் இரு சம மகள் செல்களாகப் பிரிதல்."),
-                    bdef("Mechanical vector", "இயந்திரவழி நோய்க்கடத்தி", "An animal that carries a parasite on its body without the parasite developing in it." to
+                    bdef("Mechanical vector", "இயந்திரவழி நோய்க்கடத்தி (Mechanical vector)", "An animal that carries a parasite on its body without the parasite developing in it." to
                         "ஒட்டுண்ணி தனக்குள் வளராமல் உடலில் சுமந்து செல்லும் விலங்கு."),
                     bdef("Lumen", "குழிவு", "The cavity inside a tube or organ, such as the intestine." to
                         "குடல் போன்ற குழாய் அல்லது உறுப்பின் உட்குழி."),
@@ -99,9 +99,9 @@ object HostParasiteBookChapter {
                         "காய்ச்சலையும் அழற்சியையும் உண்டாக்க உதவும் நோயெதிர்ப்பு செல்கள் விடுவிக்கும் வேதித் தூதுவர்."),
                     bdef("Synchronisation", "ஒத்திசைவு", "The tendency of the parasites in a host to develop and burst the red cells at the same time." to
                         "விருந்தோம்பியிலுள்ள ஒட்டுண்ணிகள் ஒரே நேரத்தில் வளர்ந்து சிவப்பணுக்களை வெடிக்கச் செய்யும் போக்கு."),
-                    bdef("Hypnozoite", "ஹிப்னோசோயிட்", "A dormant liver stage of Plasmodium vivax and P. ovale that can cause relapse." to
+                    bdef("Hypnozoite", "ஹிப்னோசோயிட் (Hypnozoite)", "A dormant liver stage of Plasmodium vivax and P. ovale that can cause relapse." to
                         "மீள்தாக்கத்தை உண்டாக்கக்கூடிய, பிளாஸ்மோடியம் வைவாக்ஸ், ஓவேலின் செயலற்ற கல்லீரல் நிலை."),
-                    bdef("Relapse", "மீள்தாக்கம்", "The return of a disease after the symptoms have disappeared, owing to parasites that have remained in the body." to
+                    bdef("Relapse", "மீள்தாக்கம் (Relapse)", "The return of a disease after the symptoms have disappeared, owing to parasites that have remained in the body." to
                         "அறிகுறிகள் மறைந்த பின் உடலில் தங்கிய ஒட்டுண்ணிகளால் நோய் திரும்புதல்."),
                 )),
             bsec("control", "Control follows the life cycle", "கட்டுப்பாடு வாழ்க்கைச் சுழற்சியைப் பின்பற்றுகிறது",
@@ -118,11 +118,11 @@ object HostParasiteBookChapter {
                             listOf("Route of transmission" to "பரவல் வழி", "Faecal contamination of food and water" to "உணவு, நீரின் மல மாசு", "Bite of the infected mosquito" to "தொற்றுற்ற கொசுவின் கடி"),
                             listOf("Principal control" to "முதன்மைக் கட்டுப்பாடு", "Sanitation, safe water and food" to "துப்புரவு, பாதுகாப்பான நீர், உணவு", "Vector control, bite prevention, case treatment" to "நோய்க்கடத்திக் கட்டுப்பாடு, கடி தடுப்பு, நோயாளி சிகிச்சை"),
                         )),
-                    bdef("Reservoir", "சேமிப்பு விருந்தோம்பி (நோய்த் தேக்கிடம்)", "The people or animals in which a parasite persists and from which new hosts can be infected." to
+                    bdef("Reservoir", "சேமிப்பு விருந்தோம்பி (Reservoir; நோய்த் தேக்கிடம்)", "The people or animals in which a parasite persists and from which new hosts can be infected." to
                         "ஒட்டுண்ணி நிலைத்திருந்து புதிய விருந்தோம்பிகள் தொற்றப்படக்கூடிய மனிதர்கள் அல்லது விலங்குகள்."),
-                    bdef("Sanitation", "துப்புரவு", "Measures for the safe disposal of sewage and the provision of clean water." to
+                    bdef("Sanitation", "துப்புரவு (Sanitation)", "Measures for the safe disposal of sewage and the provision of clean water." to
                         "கழிவுநீரின் பாதுகாப்பான அகற்றலுக்கும் தூய நீர் வழங்கலுக்குமான நடவடிக்கைகள்."),
-                    bdef("Vector control", "நோய்க்கடத்திக் கட்டுப்பாடு", "Measures that reduce the number of vectors or their contact with man." to
+                    bdef("Vector control", "நோய்க்கடத்திக் கட்டுப்பாடு (Vector control)", "Measures that reduce the number of vectors or their contact with man." to
                         "நோய்க்கடத்திகளின் எண்ணிக்கையை அல்லது மனிதனுடனான தொடர்பைக் குறைக்கும் நடவடிக்கைகள்."),
                 )),
             bsec("kinds", "Kinds of parasites and of associations", "ஒட்டுண்ணிகளின் வகைகளும் இணைவாழ்க்கை முறைகளும்",
@@ -131,13 +131,13 @@ object HostParasiteBookChapter {
                         "ஒட்டுண்ணிகள் ஒன்றுக்கு மேற்பட்ட முறைகளில் வகைப்படுத்தப்படுகின்றன; சிறந்த விடை ஒவ்வொரு வகைப்பாட்டின் அடிப்படையையும் கூற வேண்டும். இடத்தின் அடிப்படையில், பேன் அல்லது உண்ணி போல புறவொட்டுண்ணி விருந்தோம்பியின் மேற்பரப்பில் வாழ்கிறது; குடலிலுள்ள எண்டமீபா அல்லது இரத்தம், கல்லீரலிலுள்ள பிளாஸ்மோடியம் போல அகவொட்டுண்ணி உடலுக்குள் வாழ்கிறது. சார்பின் அடிப்படையில், கட்டாய ஒட்டுண்ணி விருந்தோம்பி இன்றி வாழ்க்கைச் சுழற்சியை முடிக்க முடியாது; இப்பிரிவில் விவாதிக்கப்படும் மனிதனின் அனைத்து ஒரு செல் ஒட்டுண்ணிகளும் இதில் அடங்கும்; வாய்ப்புக்கேற்ற ஒட்டுண்ணி தனித்தும் வாழக்கூடியது, வாய்ப்பு வரும்போது விருந்தோம்பியை நாடுகிறது. மனிதனிலும் கொசுவிலும் உள்ள பிளாஸ்மோடியம் போல, ஒரே ஒட்டுண்ணி இரண்டு விருந்தோம்பிகளில் வெவ்வேறு நிலைகளில் வாழ்வதையும் மாணவர் கவனிக்க வேண்டும்."),
                     bp("Parasitism is one of several associations between organisms of different species, and the others are best defined by contrast. In commensalism one partner benefits and the other is neither helped nor harmed, as with the harmless amoebae that live in the large intestine. In mutualism both partners benefit, as with the protozoans in the gut of a termite that digest wood, a standard example. In parasitism one partner benefits and the other is harmed. The boundaries are not sharp, because a commensal may become harmful if the host is weakened, and an examiner who asks for definitions with examples expects the contrast and not only the word.",
                         "ஒட்டுண்ணியம் வெவ்வேறு இனங்களின் உயிரிகளிடையே உள்ள பல இணைவாழ்க்கை முறைகளில் ஒன்று; மற்றவற்றை ஒப்பிட்டே சிறப்பாக வரையறுக்கலாம். ஒன்றுக்குப் பயன் தந்து மற்றதற்கு உதவியோ தீங்கோ இல்லாதது உதவி பெறும் வாழ்க்கை; பெருங்குடலில் வாழும் தீங்கற்ற அமீபாக்கள் இதற்கு எடுத்துக்காட்டு. இருவருக்கும் பயன் தருவது பகிர்ந்து வாழ்தல்; மரத்தைச் செரிக்கும் கறையான் குடல் ஒரு செல் உயிரிகள் ஒரு வழக்கமான எடுத்துக்காட்டு. ஒட்டுண்ணியத்தில் ஒன்றுக்குப் பயனும் மற்றதற்குத் தீங்கும் ஏற்படுகிறது. எல்லைகள் தெளிவானவை அல்ல; விருந்தோம்பி வலுவிழந்தால் உதவி பெறும் உயிரி தீங்காக மாறலாம்; எடுத்துக்காட்டுடன் வரையறை கேட்கும் தேர்வாளர் சொல்லை மட்டுமல்ல, வேறுபாட்டையும் எதிர்பார்க்கிறார்."),
-                    bdef("Ectoparasite", "புறவொட்டுண்ணி", "A parasite that lives on the outer surface of its host." to
+                    bdef("Ectoparasite", "புறவொட்டுண்ணி (Ectoparasite)", "A parasite that lives on the outer surface of its host." to
                         "விருந்தோம்பியின் வெளிப்பரப்பில் வாழும் ஒட்டுண்ணி."),
-                    bdef("Endoparasite", "அகவொட்டுண்ணி", "A parasite that lives inside the body of its host." to
+                    bdef("Endoparasite", "அகவொட்டுண்ணி (Endoparasite)", "A parasite that lives inside the body of its host." to
                         "விருந்தோம்பியின் உடலுக்குள் வாழும் ஒட்டுண்ணி."),
-                    bdef("Obligate parasite", "கட்டாய ஒட்டுண்ணி", "A parasite that cannot complete its life cycle without a host." to
+                    bdef("Obligate parasite", "கட்டாய ஒட்டுண்ணி (Obligate parasite)", "A parasite that cannot complete its life cycle without a host." to
                         "விருந்தோம்பி இன்றி வாழ்க்கைச் சுழற்சியை முடிக்க இயலாத ஒட்டுண்ணி."),
-                    bdef("Commensalism", "உதவி பெறும் வாழ்க்கை", "An association in which one species benefits and the other is neither helped nor harmed." to
+                    bdef("Commensalism", "உதவி பெறும் வாழ்க்கை (Commensalism)", "An association in which one species benefits and the other is neither helped nor harmed." to
                         "ஓர் இனம் பயன்பெற, மற்றது உதவியோ தீங்கோ பெறாத இணைவாழ்க்கை."),
                     bdef("Mutualism", "பகிர்ந்து வாழ்தல்", "An association in which both species benefit." to
                         "இரு இனங்களும் பயன்பெறும் இணைவாழ்க்கை."),
@@ -148,13 +148,13 @@ object HostParasiteBookChapter {
                         "ஒவ்வொரு விலங்கிலும் ஒட்டுண்ணி சமமாக வாழ இயலாது. பிளாஸ்மோடியம் வைவாக்ஸ், பி. ஃபால்சிபாரம் மனிதனைத் தொற்றுகின்றன; பறவைகள் அல்லது கொறிப்பிகளைத் தொற்றும் இனங்கள் வழக்கமாக அவனைத் தொற்றுவதில்லை. இந்தக் கட்டுப்பாடு விருந்தோம்பி தனிச்சார்பு எனப்படுகிறது; வாழ்க்கைச் சுழற்சியின் ஒவ்வொரு நிலையிலும் ஒட்டுண்ணி விருந்தோம்பியில் சரியான புற மூலக்கூறுகளையும் ஊட்டச்சத்துகளையும் நிலைமைகளையும் காண வேண்டும் என்பதால் இது தோன்றுகிறது. விளைவு நடைமுறைக்குரியது: ஒட்டுண்ணி ஒரே விருந்தோம்பியில் மட்டுமே வாழ முடியுமெனில், அந்த விருந்தோம்பியைச் சுழற்சியிலிருந்து நீக்குவது அல்லது சிகிச்சையளிப்பது பரவலைத் தடுக்கலாம்; காத்திருக்க வேறு விலங்கு ஒட்டுண்ணிக்கு இல்லை."),
                     bp("The harm that a parasite does is called its virulence, and it varies widely from species to species and from host to host. It is tempting to say that a well-adapted parasite does no harm, and this is a common simplification that deserves caution. A parasite needs the host to live long enough for it to be transmitted, so a very rapid death of the host may be disadvantageous to it, but the relation between harm and transmission is not a simple one, and in some diseases severe illness and efficient transmission go together. The sound statement is that the outcome depends on the parasite, the host and the conditions, and that a long association often leaves both partners with a milder interaction than a new one does. Malaria shows the point: people who have lived all their lives in an endemic area often carry the parasite with less severe illness than visitors, a pattern that is attributed to acquired immunity and that falls with leaving the area.",
                         "ஒட்டுண்ணி செய்யும் தீங்கு அதன் தீவிரம் எனப்படுகிறது; இனத்துக்கு இனமும் விருந்தோம்பிக்கு விருந்தோம்பியும் இது பெரிதும் மாறுபடுகிறது. நன்கு தகவமைந்த ஒட்டுண்ணி தீங்கு செய்வதில்லை என்று கூற மனம் தூண்டும்; இது எச்சரிக்கை தேவைப்படும் பொதுவான எளிமைப்படுத்தல். பரவுவதற்குப் போதுமான காலம் விருந்தோம்பி வாழ வேண்டும் என்பதால் விருந்தோம்பியின் மிக விரைவான இறப்பு அதற்குப் பாதகமாகலாம்; ஆனால் தீங்குக்கும் பரவலுக்கும் இடையிலான தொடர்பு எளிதானதல்ல; சில நோய்களில் கடுமையான நோயும் திறமையான பரவலும் சேர்ந்தே செல்கின்றன. சரியான கூற்று: விளைவு ஒட்டுண்ணி, விருந்தோம்பி, நிலைமைகளைச் சார்ந்தது; நீண்ட இணைவு புதியதைவிட மென்மையான தொடர்பை இரு பங்காளிகளுக்கும் விட்டுச் செல்வதுண்டு. மலேரியா இதைக் காட்டுகிறது: தொற்றுப் பகுதியில் வாழ்நாள் முழுவதும் வாழ்ந்தவர்கள் பார்வையாளர்களைவிடக் குறைந்த கடுமையுடன் ஒட்டுண்ணியைச் சுமப்பதுண்டு; இது பெற்ற நோயெதிர்ப்பால் என்று கூறப்படுகிறது; அப்பகுதியை விட்டுச் செல்லும்போது அது குறைகிறது."),
-                    bdef("Host specificity", "விருந்தோம்பி தனிச்சார்பு", "The restriction of a parasite to one or a few kinds of host." to
+                    bdef("Host specificity", "விருந்தோம்பி தனிச்சார்பு (Host specificity)", "The restriction of a parasite to one or a few kinds of host." to
                         "ஒட்டுண்ணி ஒன்று அல்லது சில வகை விருந்தோம்பிகளுக்கு மட்டுப்படுதல்."),
-                    bdef("Virulence", "தீவிரம்", "The degree of harm that a parasite causes to its host." to
+                    bdef("Virulence", "தீவிரம் (Virulence)", "The degree of harm that a parasite causes to its host." to
                         "ஒட்டுண்ணி தன் விருந்தோம்பிக்கு ஏற்படுத்தும் தீங்கின் அளவு."),
-                    bdef("Zoonosis", "விலங்குவழி நோய்", "A disease that passes naturally between animals and man." to
+                    bdef("Zoonosis", "விலங்குவழி நோய் (Zoonosis)", "A disease that passes naturally between animals and man." to
                         "விலங்குகளுக்கும் மனிதனுக்கும் இடையே இயற்கையாகப் பரவும் நோய்."),
-                    bdef("Biological vector", "உயிரியல் நோய்க்கடத்தி", "A vector in which the parasite develops or multiplies before it is passed on, as Plasmodium does in Anopheles." to
+                    bdef("Biological vector", "உயிரியல் நோய்க்கடத்தி (Biological vector)", "A vector in which the parasite develops or multiplies before it is passed on, as Plasmodium does in Anopheles." to
                         "ஒட்டுண்ணி கடத்தப்படுவதற்கு முன் வளரும் அல்லது பெருகும் நோய்க்கடத்தி; அனாஃபிலீஸில் பிளாஸ்மோடியம் போல."),
                 )),
             bsec("answering", "Answering questions on parasites and hosts", "ஒட்டுண்ணி-விருந்தோம்பி வினாக்களுக்கு விடையளித்தல்",

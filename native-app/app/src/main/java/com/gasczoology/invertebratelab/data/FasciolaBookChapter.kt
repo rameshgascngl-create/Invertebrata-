@@ -23,11 +23,11 @@ object FasciolaBookChapter {
                 blocks = listOf(
                     bp("The adult fluke lives in the bile ducts of the liver of its definitive host, which is usually a sheep or a cow. It is found in countries throughout the world wherever sheep and cattle are kept in wet pastures, because the snails on which the life cycle depends live in such places. The fluke feeds on the bile, on blood and on the cells of the lining of the duct, and a heavy infection can block and damage the ducts and the liver." to
                         "முதிர்ந்த ஃப்ளூக் தன் முதன்மை விருந்தோம்பியின், பொதுவாக ஆடு அல்லது மாட்டின், கல்லீரலின் பித்த நாளங்களில் வாழ்கிறது. வாழ்க்கைச் சுழற்சி சார்ந்துள்ள நத்தைகள் வாழும் ஈரமான மேய்ச்சல் நிலங்களில் ஆடு, மாடுகள் வளர்க்கப்படும் உலகின் அனைத்து நாடுகளிலும் காணப்படுகிறது. ஃப்ளூக் பித்தம், இரத்தம், நாளத்தின் உள்ளடுக்கு செல்களை உண்கிறது; கடுமையான தொற்று நாளங்களையும் கல்லீரலையும் அடைத்துச் சேதப்படுத்தும்."),
-                    bdef("Definitive host", "முதன்மை விருந்தோம்பி", "The host in which a parasite reaches sexual maturity and reproduces." to
+                    bdef("Definitive host", "முதன்மை விருந்தோம்பி (Definitive host)", "The host in which a parasite reaches sexual maturity and reproduces." to
                         "ஒட்டுண்ணி பாலின முதிர்ச்சி அடைந்து இனப்பெருக்கம் செய்யும் விருந்தோம்பி."),
-                    bdef("Intermediate host", "இடைநிலை விருந்தோம்பி", "The host in which a parasite passes its larval stages and multiplies asexually; for Fasciola this is a freshwater snail." to
+                    bdef("Intermediate host", "இடைநிலை விருந்தோம்பி (Intermediate host)", "The host in which a parasite passes its larval stages and multiplies asexually; for Fasciola this is a freshwater snail." to
                         "ஒட்டுண்ணி தன் லார்வா நிலைகளைக் கழித்து பாலிலா முறையில் பெருகும் விருந்தோம்பி; ஃபாசியோலாவுக்கு இது நன்னீர் நத்தை."),
-                    bdef("Endoparasite", "அகவொட்டுண்ணி", "A parasite that lives inside the body of its host." to
+                    bdef("Endoparasite", "அகவொட்டுண்ணி (Endoparasite)", "A parasite that lives inside the body of its host." to
                         "விருந்தோம்பியின் உடலுக்குள் வாழும் ஒட்டுண்ணி."),
                 )),
             bsec("external", "External features", "புறத்தோற்றம்",
@@ -36,16 +36,16 @@ object FasciolaBookChapter {
                         "முதிர்ந்த புழு தட்டையான, இலை வடிவ, சுமார் இரண்டு முதல் மூன்று சென்டிமீட்டர் நீளமும் ஒரு சென்டிமீட்டர் அகலமும் உடையது. சாம்பல் கலந்த பழுப்பு நிறம்; முன்னால் வாய் உறிஞ்சியால் சூழப்பட்ட நுனியில் வாயுடன் சிறு கூம்பு நீட்சியான வாய்க் கூம்பாகக் குறுகுகிறது. அதற்குச் சற்றுப் பின்னால் வயிற்றுப் பரப்பில் இரண்டாவது, பெரிய உறிஞ்சியான வயிற்று உறிஞ்சி அல்லது அசிட்டாபுலம் உள்ளது; இது ஒட்டுவதற்கான முதன்மை உறுப்பு. இரு உறிஞ்சிகளுக்கும் இடையே ஆண், பெண் நாளங்கள் இரண்டும் திறக்கும் இனப்பெருக்கத் துளை உள்ளது. கழிவு நீக்கத் துளை பின் முனையில் உள்ளது."),
                     bfig("fasciola/external", "External features of Fasciola hepatica, ventral view, showing the oral cone and oral sucker, the ventral sucker, the genital pore and the posterior excretory pore." to
                         "ஃபாசியோலா ஹெப்பாட்டிகாவின் புறத்தோற்றம் (வயிற்றுப் பார்வை): வாய்க் கூம்பு, வாய் உறிஞ்சி, வயிற்று உறிஞ்சி, இனப்பெருக்கத் துளை, பின்புறக் கழிவு நீக்கத் துளை."),
-                    bdef("Oral sucker", "வாய் உறிஞ்சி", "The muscular sucker surrounding the mouth at the anterior end of a fluke." to
+                    bdef("Oral sucker", "வாய் உறிஞ்சி (Oral sucker)", "The muscular sucker surrounding the mouth at the anterior end of a fluke." to
                         "ஃப்ளூக்கின் முன் முனையில் வாயைச் சுற்றியுள்ள தசை உறிஞ்சி."),
-                    bdef("Acetabulum", "அசிட்டாபுலம்", "The ventral sucker of a fluke, used chiefly for attachment." to
+                    bdef("Acetabulum", "அசிட்டாபுலம் (Acetabulum)", "The ventral sucker of a fluke, used chiefly for attachment." to
                         "ஃப்ளூக்கின் வயிற்று உறிஞ்சி; முக்கியமாக ஒட்டுவதற்குப் பயன்படுகிறது."),
                 )),
             bsec("body-wall", "The body wall", "உடற்சுவர்",
                 blocks = listOf(
                     bp("The body is covered by a tegument, which is a living layer that is not shed, and the outer surface of which is armed with small backwardly directed spines. Below it lie layers of circular, longitudinal and diagonal muscle, and the rest of the space is filled with parenchyma, in which the organs are embedded. The tegument protects the fluke against the digestive enzymes and the immune reactions of the host, and takes part in absorption and in the exchange of gases. The spines help the worm to hold its place in the duct." to
                         "உடல் உதிர்க்கப்படாத உயிருள்ள அடுக்கான டெகுமென்ட்டால் மூடப்பட்டுள்ளது; அதன் வெளிப்பரப்பில் பின்னோக்கிய சிறு முட்கள் உள்ளன. அதன் கீழே வட்ட, நீளவாக்கு, மூலைவிட்ட தசை அடுக்குகள் உள்ளன; மீதி இடம் உறுப்புகள் பதிந்துள்ள பாரங்கைமாவால் நிரம்பியுள்ளது. டெகுமென்ட் ஃப்ளூக்கை விருந்தோம்பியின் செரிமான நொதிகள், நோயெதிர்ப்பு வினைகளிலிருந்து பாதுகாத்து, உறிஞ்சலிலும் வாயுப் பரிமாற்றத்திலும் பங்கேற்கிறது. முட்கள் புழு நாளத்தில் தன் இடத்தைப் பற்றிக்கொள்ள உதவுகின்றன."),
-                    bdef("Tegument", "டெகுமென்ட்", "The living, non-ciliated outer covering of a fluke, which replaces the epidermis of free-living flatworms." to
+                    bdef("Tegument", "டெகுமென்ட் (Tegument)", "The living, non-ciliated outer covering of a fluke, which replaces the epidermis of free-living flatworms." to
                         "தனி வாழ்வுத் தட்டைப்புழுக்களின் எப்பிடெர்மிஸுக்குப் பதிலாக ஃப்ளூக்கின் உயிருள்ள, கசையிழையற்ற வெளி உறை."),
                 )),
             bsec("digestive", "Digestive system", "செரிமான மண்டலம்",
@@ -54,7 +54,7 @@ object FasciolaBookChapter {
                         "வாய்க் கூம்பின் நுனியிலுள்ள வாய், சிறு தசைத் தொண்டை, குறுகிய உணவுக்குழலுக்குச் செல்கிறது. உணவுக்குழல் உடலின் ஒவ்வொரு பக்கமும் செல்லும் இரு முதன்மைக் குடல் கெகாக்களாகப் பிரிகிறது; அவை ஒவ்வொன்றும் குருட்டு முடிவுடைய பல பக்கக் கிளைகளைத் தருகின்றன. எனவே குடல் கிட்டத்தட்ட முழு உடலிலும் கிளைத்து, சுற்றோட்ட மண்டலம் இல்லாததால் செரித்த உணவை எல்லா திசுக்களுக்கும் கொண்டு செல்கிறது. மலவாய் இல்லை; செரியாதவை வாய் வழியாக வெளியேற்றப்படுகின்றன."),
                     bp("Digestion begins in the lumen of the caeca and is completed inside the cells of their lining. The fluke feeds on bile, blood and tissue fluid, and it uses glycogen stored in its body as a reserve. Since the bile duct contains little oxygen, the energy is obtained mainly by anaerobic respiration." to
                         "செரிமானம் கெகாக்களின் குழியில் தொடங்கி அவற்றின் உள்ளடுக்கு செல்களினுள் முடிகிறது. ஃப்ளூக் பித்தம், இரத்தம், திசு நீரை உண்கிறது; உடலில் சேமித்த கிளைக்கோஜனைக் கையிருப்பாகப் பயன்படுத்துகிறது. பித்த நாளத்தில் ஆக்சிஜன் குறைவாக இருப்பதால், ஆற்றல் முக்கியமாக காற்றில்லாச் சுவாசத்தால் பெறப்படுகிறது."),
-                    bdef("Caecum (plural: caeca)", "கெகம் (பன்மை: கெகா)", "A blind-ending branch of the gut." to
+                    bdef("Caecum (plural: caeca)", "கெகம் (Caecum; பன்மை: கெகா)", "A blind-ending branch of the gut." to
                         "குடலின் குருட்டு முடிவுடைய கிளை."),
                 )),
             bsec("systems", "Excretory, nervous and sensory systems", "கழிவு நீக்க, நரம்பு, உணர் மண்டலங்கள்",
@@ -84,11 +84,11 @@ object FasciolaBookChapter {
                     bsub("Fertilisation and egg formation", "கருவுறுதலும் முட்டை உருவாக்கமும்",
                         bp("Fasciola is a hermaphrodite and may cross-fertilise with another worm, or may fertilise itself. Sperm are stored in the seminal receptacle, and an ovum is fertilised in the oviduct before it reaches the ootype. There it receives yolk cells from the vitelline glands and a shell formed from the secretion of the shell glands. The egg that results is large, yellowish-brown, oval and operculate, which means that it has a small lid at one end. The eggs pass along the uterus to the genital pore and into the bile duct, and from there into the gut of the host." to
                             "ஃபாசியோலா இருபால் உயிரி; மற்றொரு புழுவுடன் குறுக்குக் கருவுறலாம் அல்லது தன்கருவுறலாம். விந்தணுக்கள் விந்து சேமிப்பகத்தில் சேமிக்கப்படுகின்றன; முட்டை ஊடைப்பை அடையும் முன் சூல்நாளத்தில் கருவுறுகிறது. அங்கு மஞ்சள் கரு சுரப்பிகளிலிருந்து மஞ்சள் கரு செல்களையும், ஓட்டுச் சுரப்பிகளின் சுரப்பிலிருந்து உருவான ஓட்டையும் பெறுகிறது. விளைந்த முட்டை பெரிய, மஞ்சள் கலந்த பழுப்பு, முட்டை வடிவம், மூடியுடையது; அதாவது ஒரு முனையில் சிறு மூடி உண்டு. முட்டைகள் கருப்பை வழியாக இனப்பெருக்கத் துளைக்கும் பித்த நாளத்துக்கும், அங்கிருந்து விருந்தோம்பியின் குடலுக்கும் செல்கின்றன."),
-                        bdef("Ootype", "ஊடைப்பு", "The chamber in a fluke in which the egg is formed by the union of ovum, yolk and shell material." to
+                        bdef("Ootype", "ஊடைப்பு (Ootype)", "The chamber in a fluke in which the egg is formed by the union of ovum, yolk and shell material." to
                             "முட்டை, மஞ்சள் கரு, ஓட்டுப் பொருள் இணைந்து முட்டை உருவாகும் ஃப்ளூக்கின் அறை."),
-                        bdef("Operculate egg", "மூடியுடைய முட்டை", "An egg with a small lid, the operculum, through which the larva leaves." to
+                        bdef("Operculate egg", "மூடியுடைய முட்டை (Operculate egg)", "An egg with a small lid, the operculum, through which the larva leaves." to
                             "லார்வா வெளியேறும் சிறு மூடியான ஆப்பர்குலம் கொண்ட முட்டை."),
-                        bdef("Vitelline gland", "மஞ்சள் கரு சுரப்பி", "A gland that supplies yolk cells and shell material to the eggs of a flatworm." to
+                        bdef("Vitelline gland", "மஞ்சள் கரு சுரப்பி (Vitelline gland)", "A gland that supplies yolk cells and shell material to the eggs of a flatworm." to
                             "தட்டைப்புழுவின் முட்டைகளுக்கு மஞ்சள் கரு செல்களையும் ஓட்டுப் பொருளையும் தரும் சுரப்பி."),
                     ),
                 )),
@@ -116,15 +116,15 @@ object FasciolaBookChapter {
                             listOf("Cercaria" to "செர்க்கேரியா", "Leaves the snail" to "நத்தையிலிருந்து வெளியேறுகிறது", "Tailed, swims, encysts" to "வால் உடையது, நீந்தும், உறையும்"),
                             listOf("Metacercaria" to "மெட்டாசெர்க்கேரியா", "On plants or other surfaces" to "தாவரங்கள் அல்லது பிற பரப்புகளில்", "Encysted, infective to the mammal" to "உறையிடப்பட்டது, பாலூட்டிக்குத் தொற்றுவது"),
                         )),
-                    bdef("Miracidium", "மிராசிடியம்", "The ciliated, free-swimming first larva of a fluke, which hatches from the egg and infects a snail." to
+                    bdef("Miracidium", "மிராசிடியம் (Miracidium)", "The ciliated, free-swimming first larva of a fluke, which hatches from the egg and infects a snail." to
                         "முட்டையிலிருந்து பொரிந்து நத்தையைத் தொற்றும், ஃப்ளூக்கின் கசையிழை, நீந்தும் முதல் லார்வா."),
                     bdef("Sporocyst", "ஸ்போரோசிஸ்ட்", "The saclike second larval stage that develops in the snail and gives rise to rediae." to
                         "நத்தையில் வளர்ந்து ரெடியாக்களைத் தரும் பை போன்ற இரண்டாம் லார்வா நிலை."),
-                    bdef("Redia", "ரெடியா", "A larval stage in the snail with a mouth and a simple gut, which produces cercariae." to
+                    bdef("Redia", "ரெடியா (Redia)", "A larval stage in the snail with a mouth and a simple gut, which produces cercariae." to
                         "வாயும் எளிய குடலும் கொண்ட, செர்க்கேரியாக்களை உருவாக்கும், நத்தையிலுள்ள லார்வா நிலை."),
-                    bdef("Cercaria", "செர்க்கேரியா", "The tailed larva that leaves the snail and swims before encysting." to
+                    bdef("Cercaria", "செர்க்கேரியா (Cercaria)", "The tailed larva that leaves the snail and swims before encysting." to
                         "நத்தையை விட்டு வெளியேறி உறைவதற்கு முன் நீந்தும் வால் உடைய லார்வா."),
-                    bdef("Metacercaria", "மெட்டாசெர்க்கேரியா", "The encysted, infective stage of a fluke, which is swallowed by the definitive host." to
+                    bdef("Metacercaria", "மெட்டாசெர்க்கேரியா (Metacercaria)", "The encysted, infective stage of a fluke, which is swallowed by the definitive host." to
                         "முதன்மை விருந்தோம்பியால் விழுங்கப்படும், ஃப்ளூக்கின் உறையிடப்பட்ட, தொற்றும் நிலை."),
                     bnote("Sporocyst and redia", "ஸ்போரோசிஸ்டும் ரெடியாவும்",
                         "The cycle of Fasciola includes both a sporocyst and a redia. It should not be confused with the cycle of some other flukes, and the metacercaria is the stage that infects the mammal, not the cercaria." to

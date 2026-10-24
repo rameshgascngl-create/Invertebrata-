@@ -25,7 +25,7 @@ object CrustaceanLarvaeBookChapter {
                         "லார்வா என்பது முதிர்ந்தவற்றிலிருந்து அமைப்பில் வேறுபடும், முதிர்ந்ததாக உருமாற்றம் எனப்படும் வடிவ மாற்றத்துக்கு உட்பட வேண்டிய, தனி வாழ் முதிரா நிலை. பெரும்பாலான குழுக்களில் கிரஸ்டேஷியன்களில் மாற்றம் படிப்படியானது. ஒவ்வொரு உதிர்த்தலும் புதிய உறுப்புகளை அல்லது ஏற்கெனவே உள்ளவற்றின் வளர்ச்சியைக் கொண்டுவருகிறது; இரு தோலுரித்தல்களுக்கிடைப்பட்ட நிலை நிலை அல்லது ஸ்டேடியம் எனப்படுகிறது. லார்வா நிலைகள் வரிசையாகப் பெயரிடப்படுகின்றன; உடல் அமைப்பிலும் வாழ்முறையிலும் உண்மையான வேறுபாடுகளை விவரிப்பதால் பெயர்கள் பயன்படுகின்றன."),
                     bp("Larval life has advantages and costs. A larva that feeds in the plankton uses a food source that is different from that of the adult, so that young and adult do not compete. Larvae spread the species, and the production of very many small larvae allows the exploitation of a large area. The cost is the heavy mortality, since most larvae are eaten or fail to find a suitable place to settle, and this is the reason why the females of such species produce great numbers of eggs." to
                         "லார்வா வாழ்வுக்கு நன்மைகளும் இழப்புகளும் உண்டு. மிதவையில் உண்ணும் லார்வா முதிர்ந்ததிலிருந்து வேறுபட்ட உணவு ஆதாரத்தைப் பயன்படுத்துவதால் இளையவையும் முதிர்ந்தவையும் போட்டியிடுவதில்லை. லார்வாக்கள் இனத்தைப் பரப்புகின்றன; ஏராளமான சிறு லார்வாக்களின் உற்பத்தி பெரிய பரப்பைப் பயன்படுத்த அனுமதிக்கிறது. இழப்பு அதிக இறப்பு; ஏனெனில் பெரும்பாலான லார்வாக்கள் உண்ணப்படுகின்றன அல்லது குடியேற பொருத்தமான இடத்தைக் கண்டறியத் தவறுகின்றன; இத்தகைய இனங்களின் பெண்கள் ஏராளமான முட்டைகளை உற்பத்தி செய்வதற்கு இதுவே காரணம்."),
-                    bdef("Larva", "லார்வா", "A free-living immature stage that differs in form from the adult." to
+                    bdef("Larva", "லார்வா (Larva)", "A free-living immature stage that differs in form from the adult." to
                         "முதிர்ந்ததிலிருந்து வடிவத்தில் வேறுபடும் தனி வாழ் முதிரா நிலை."),
                     bdef("Metamorphosis", "உருமாற்றம்", "The change of form by which a larva becomes an adult." to
                         "லார்வா முதிர்ந்ததாகும் வடிவ மாற்றம்."),
@@ -50,11 +50,11 @@ object CrustaceanLarvaeBookChapter {
                             listOf("Mysis" to "மைசிஸ்", "Thoracic limbs complete; stalked eyes" to "மார்புக் கால்கள் முழுமை; காம்புக் கண்கள்", "Feeds actively" to "சுறுசுறுப்பாக உண்கிறது", "Thoracic appendages" to "மார்பு உறுப்புகள்"),
                             listOf("Postlarva" to "போஸ்ட்லார்வா", "All adult appendages" to "முதிர்ந்தவற்றின் அனைத்து உறுப்புகளும்", "Feeds like a juvenile" to "இளையதைப் போல உண்கிறது", "Pleopods" to "ப்ளியோபோடுகள்"),
                         )),
-                    bdef("Protozoea", "புரோட்டோசோயியா", "The second larva of a penaeid prawn, which begins to feed and acquires a carapace." to
+                    bdef("Protozoea", "புரோட்டோசோயியா (Protozoea)", "The second larva of a penaeid prawn, which begins to feed and acquires a carapace." to
                         "பெனியிட் இறாலின் இரண்டாம் லார்வா; உண்ணத் தொடங்கி ஓட்டைப் பெறுகிறது."),
-                    bdef("Stadium", "ஸ்டேடியம்", "The period between two moults; also the stage of the animal during it." to
+                    bdef("Stadium", "ஸ்டேடியம் (Stadium)", "The period between two moults; also the stage of the animal during it." to
                         "இரு தோலுரித்தல்களுக்கிடைப்பட்ட காலம்; அக்காலத்தில் விலங்கின் நிலையும்."),
-                    bdef("Nursery area", "நாற்றங்கால் பகுதி", "A sheltered place, such as an estuary, in which the young of a species grow." to
+                    bdef("Nursery area", "நாற்றங்கால் பகுதி (Nursery area)", "A sheltered place, such as an estuary, in which the young of a species grow." to
                         "முகத்துவாரம் போன்ற, இனத்தின் இளையவை வளரும் பாதுகாப்பான இடம்."),
                 )),
             bsec("crab", "A different sequence: the brachyuran crab", "வேறுபட்ட வரிசை: பிராக்கியூரன் நண்டு",
@@ -63,11 +63,11 @@ object CrustaceanLarvaeBookChapter {
                         "உண்மை நண்டுகளான பிராக்கியூரா வேறு குழு வேறு போக்கைப் பின்பற்றுவதைக் காட்டுகின்றன. பலவற்றில் நாப்ளியஸ் நிலை முட்டைக்குள் கடக்கப்படுகிறது; எனவே தனி நீந்தும் நாப்ளியஸ் வெளியிடப்படுவதில்லை. முதல் தனி வாழ் லார்வா சோயியா: நீண்ட முதுகு முள்ளும் பெரும்பாலும் பக்க முட்களும் உடைய பெரிய ஓடு, பெரிய கூட்டுக் கண்கள், நீண்ட வயிறு கொண்ட மிதவை லார்வா. நீண்ட மயிர்கள் தாங்கும் மார்பு உறுப்புகளால் நீந்தி மிதவையை உண்கிறது. சோயியா நிலைகளின் எண்ணிக்கை நண்டுக் குழுக்களிடையே மாறுபடுகிறது."),
                     bp("The last zoea moults into the megalopa, a transitional stage between the planktonic zoea and the benthic juvenile crab. The megalopa has a broad carapace, stalked eyes, a crab-like pair of claws, and an abdomen that is still extended and which bears pleopods, and it swims with the pleopods but can also walk. It settles to the sea bed and moults into the first crab stage, in which the abdomen is folded under the cephalothorax. In some brachyurans the development is shortened or direct, and the usual sequence of zoea and megalopa is reduced or lost." to
                         "கடைசி சோயியா மெகலோபாவாக உதிர்க்கிறது; இது மிதவை சோயியாவுக்கும் அடிமட்ட இளம் நண்டுக்கும் இடைப்பட்ட மாறுநிலை. மெகலோபாவுக்கு அகன்ற ஓடு, காம்புக் கண்கள், நண்டு போன்ற இணை கொடுக்குகள், இன்னும் நீண்டு ப்ளியோபோடுகளைத் தாங்கும் வயிறு உள்ளன; ப்ளியோபோடுகளால் நீந்தினாலும் நடக்கவும் முடியும். கடலடியில் குடியேறி, வயிறு செபலோதொராக்ஸின் கீழ் மடிக்கப்பட்ட முதல் நண்டு நிலையாக உதிர்க்கிறது. சில பிராக்கியூரன்களில் வளர்ச்சி சுருக்கப்பட்டது அல்லது நேரடியானது; வழக்கமான சோயியா, மெகலோபா வரிசை குறைக்கப்படுகிறது அல்லது இழக்கப்படுகிறது."),
-                    bdef("Zoea", "சோயியா", "The first free-living planktonic larva of a crab, with a large carapace spine and long abdomen." to
+                    bdef("Zoea", "சோயியா (Zoea)", "The first free-living planktonic larva of a crab, with a large carapace spine and long abdomen." to
                         "நண்டின் முதல் தனி வாழ் மிதவை லார்வா; ஓட்டு முள்ளும் நீண்ட வயிறும் உடையது."),
-                    bdef("Megalopa", "மெகலோபா", "The stage between the last zoea and the first juvenile crab." to
+                    bdef("Megalopa", "மெகலோபா (Megalopa)", "The stage between the last zoea and the first juvenile crab." to
                         "கடைசி சோயியாவுக்கும் முதல் இளம் நண்டுக்கும் இடைப்பட்ட நிலை."),
-                    bdef("Brachyura", "பிராக்கியூரா", "The true crabs, with a short abdomen folded under the cephalothorax." to
+                    bdef("Brachyura", "பிராக்கியூரா (Brachyura)", "The true crabs, with a short abdomen folded under the cephalothorax." to
                         "செபலோதொராக்ஸின் கீழ் மடிந்த குட்டை வயிறுடைய உண்மை நண்டுகள்."),
                 )),
             bsec("growth", "Moulting, growth and the changing way of life", "தோலுரித்தல், வளர்ச்சி, மாறும் வாழ்முறை",
@@ -76,7 +76,7 @@ object CrustaceanLarvaeBookChapter {
                         "வரிசையிலுள்ள ஒவ்வொரு படியும் ஓர் தோலுரித்தல்; தொகுதி அத்தியாயத்தில் விவரிக்கப்பட்ட வெளிக்கூடே காரணம். லார்வா இடைவெளிகளில் புறத்தோலை உதிர்த்து வளர்கிறது; புதிய புறத்தோல் மாறிய வடிவத்துடன் உருவாகிறது; எனவே லார்வாவின் வடிவம் படிகளில் மாறுகிறது. நிலைகளின் கால அளவு வெப்பநிலை, உணவைப் பொறுத்தது; வெப்ப நீரில் இறாலின் முழு லார்வா வாழ்வு சில வாரங்களில் நிறைவடையலாம். சரியான நேரங்கள் இனங்கள், நிலைமைகளுக்கிடையே மாறுவதால் கூற்றை இப்பொது வடிவில் வைக்க வேண்டும்."),
                     bp("The way of life of the animal changes with its form. The nauplius is a drifting, non-feeding disperser. The protozoea is a feeder on algae, a grazer in the surface waters. The mysis is a more active swimmer that begins to take animal food, and the postlarva is a bottom-dwelling or nursery-dwelling animal that is a predator and scavenger like the adult. Each change in the form is matched by a change in the ecology, which is the real meaning of the statement that the feeding grade changes through the sequence." to
                         "விலங்கின் வாழ்முறை அதன் வடிவத்துடன் மாறுகிறது. நாப்ளியஸ் மிதக்கும், உண்ணாத பரப்புவான். புரோட்டோசோயியா பாசிகளை உண்ணும், மேற்பரப்பு நீரில் மேயும் உயிரி. மைசிஸ் விலங்கு உணவை எடுக்கத் தொடங்கும் அதிக சுறுசுறுப்பான நீந்தி; போஸ்ட்லார்வா முதிர்ந்ததைப் போல வேட்டையாடியும் தோட்டியுமான அடிமட்ட அல்லது நாற்றங்கால் வாழ் விலங்கு. வடிவத்தின் ஒவ்வொரு மாற்றமும் சூழலியல் மாற்றத்துடன் பொருந்துகிறது; வரிசை வழியே உண்ணும் தரம் மாறுகிறது என்ற கூற்றின் உண்மைப் பொருள் இதுவே."),
-                    bdef("Grazer", "மேய்வான்", "An animal that feeds on small plants or algae." to
+                    bdef("Grazer", "மேய்வான் (Grazer)", "An animal that feeds on small plants or algae." to
                         "சிறு தாவரங்கள் அல்லது பாசிகளை உண்ணும் விலங்கு."),
                 )),
             bsec("others", "Larvae of other crustaceans", "பிற கணுக்காலிகளின் லார்வாக்கள்",
@@ -93,13 +93,13 @@ object CrustaceanLarvaeBookChapter {
                             listOf("Barnacle" to "பார்னக்கிள்", "Nauplius, cypris" to "நாப்ளியஸ், சிப்ரிஸ்", "Cypris settles and cements itself" to "சிப்ரிஸ் படிந்து ஒட்டிக்கொள்கிறது"),
                             listOf("Spiny lobster" to "முள் இறால்", "Phyllosoma, puerulus" to "ஃபில்லோசோமா, ப்யூரூலஸ்", "Flat transparent larva of long planktonic life" to "நீண்ட மிதவைக் காலம் கொண்ட தட்டையான, ஒளி ஊடுருவும் லார்வா"),
                         )),
-                    bdef("Nauplius", "நாப்ளியஸ்", "The first larva of many crustaceans, small and unsegmented, with a single median eye and three pairs of appendages that are used for swimming." to
+                    bdef("Nauplius", "நாப்ளியஸ் (Nauplius)", "The first larva of many crustaceans, small and unsegmented, with a single median eye and three pairs of appendages that are used for swimming." to
                         "பல கிரஸ்டேஷியன்களின் முதல் லார்வா; சிறியது, கண்டமற்றது, ஒற்றை மைய விழியும் நீந்தப் பயன்படும் மூன்று இணை உறுப்புகளும் கொண்டது."),
                     bdef("Mysis", "மைசிஸ்", "The prawn larva that resembles a small shrimp, with stalked eyes and thoracic appendages used for swimming." to
                         "தண்டு விழிகளும் நீந்தப் பயன்படும் மார்பு உறுப்புகளும் கொண்ட, சிறு இறால் போன்ற இறால் லார்வா."),
-                    bdef("Cypris larva", "சிப்ரிஸ் லார்வா", "The non-feeding larva of a barnacle that follows the nauplius and settles on a surface." to
+                    bdef("Cypris larva", "சிப்ரிஸ் லார்வா (Cypris larva)", "The non-feeding larva of a barnacle that follows the nauplius and settles on a surface." to
                         "பார்னக்கிளின் நாப்ளியஸுக்குப் பின் வரும், உண்ணாத, ஒரு பரப்பில் படியும் லார்வா."),
-                    bdef("Phyllosoma", "ஃபில்லோசோமா", "The flat, transparent, leaf-like larva of spiny and slipper lobsters." to
+                    bdef("Phyllosoma", "ஃபில்லோசோமா (Phyllosoma)", "The flat, transparent, leaf-like larva of spiny and slipper lobsters." to
                         "முள் இறால், செருப்பு இறால்களின் தட்டையான, ஒளி ஊடுருவும், இலை போன்ற லார்வா."),
                 )),
             bsec("parasite", "A larva that reveals a relationship: Sacculina", "உறவை வெளிப்படுத்தும் லார்வா: சாக்குலைனா",
@@ -113,7 +113,7 @@ object CrustaceanLarvaeBookChapter {
                 blocks = listOf(
                     bp("The sequence of larval stages is the practical basis of prawn hatcheries. The nauplii are not fed at first, because they live on their yolk. When the animals reach the protozoea stage the culturist supplies microscopic algae, commonly diatoms, and when they reach the mysis stage the diet is changed to small animals such as the newly hatched nauplii of the brine shrimp Artemia and, in many hatcheries, prepared feeds. The water must be kept clean and at the right temperature and salinity, since the larvae are sensitive and a change in conditions can cause heavy mortality. The postlarvae are then counted and supplied to ponds for growing.",
                         "லார்வா நிலைகளின் வரிசை இறால் குஞ்சு பொரிப்பகங்களின் நடைமுறை அடிப்படை. நாப்ளியஸ்கள் மஞ்சள் கருவில் வாழ்வதால் தொடக்கத்தில் உணவூட்டப்படுவதில்லை. விலங்குகள் புரோட்டோசோயியா நிலையை அடையும்போது வளர்ப்பாளர் நுண்ணிய பாசிகளை, பொதுவாக டயட்டம்களை, அளிக்கிறார்; மைசிஸ் நிலையில் புதிதாகப் பொரித்த உப்புநீர் இறால் ஆர்ட்டீமியாவின் நாப்ளியஸ்கள் போன்ற சிறு விலங்குகளுக்கும், பல பொரிப்பகங்களில் தயாரிக்கப்பட்ட தீவனத்துக்கும் உணவு மாற்றப்படுகிறது. லார்வாக்கள் உணர்திறன் மிக்கவை; நிலைமை மாற்றம் பெருமளவு இறப்பை ஏற்படுத்தலாம்; எனவே நீர் தூய்மையாகவும் சரியான வெப்பநிலை, உப்புத்தன்மையுடனும் இருக்க வேண்டும். பின் லார்வாக்கள் எண்ணப்பட்டு வளர்ப்புக் குளங்களுக்கு வழங்கப்படுகின்றன."),
-                    bdef("Hatchery", "குஞ்சு பொரிப்பகம்", "A facility in which eggs are hatched and the young are reared through their early, most vulnerable stages before being supplied for growing." to
+                    bdef("Hatchery", "குஞ்சு பொரிப்பகம் (Hatchery)", "A facility in which eggs are hatched and the young are reared through their early, most vulnerable stages before being supplied for growing." to
                         "முட்டைகள் பொரிக்கப்பட்டு, இளம் உயிரிகள் மிகவும் பாதிக்கப்படக்கூடிய தொடக்க நிலைகளில் வளர்க்கப்பட்டு, பின்னர் வளர்ப்புக்கு வழங்கப்படும் வசதி."),
                     bdef("Settlement", "படிதல்", "The change by which a swimming larva stops drifting and attaches to or settles on a surface where it will metamorphose." to
                         "நீந்தும் லார்வா மிதப்பதை நிறுத்தி, உருமாற்றம் அடையவிருக்கும் பரப்பில் ஒட்டிக்கொள்ளுதல் அல்லது தங்குதல்."),
@@ -141,7 +141,7 @@ object CrustaceanLarvaeBookChapter {
                         "லார்வா நிலைகள் வளர்ச்சியின் வெறும் ஆர்வக் குறிப்பு அல்ல. சூழலியல், மீன்வளம், வகைப்பாட்டில் அவற்றுக்கு முக்கியத்துவம் உண்டு. சூழலியலில் லார்வாக்கள் மிதவையின் முக்கியக் கூறும் மீன்களின் உணவு ஆதாரமும். மீன்வளத்திலும் நீர்வள வளர்ப்பிலும் லார்வாக்களின் உயிர்வாழ்வு வரம்பிடும் காரணி; இறால் வளர்ப்புக்கு ஒவ்வொரு லார்வா நிலைக்கும் தேவையான உணவும் நீர்த் தரமும் பற்றிய அறிவு வேண்டும்; ஏனெனில் புரோட்டோசோயியாவுக்கு ஏற்ற உணவு போஸ்ட்லார்வாவுக்கு ஏற்றதாக இல்லாமல் இருக்கலாம். வகைப்பாட்டில் லார்வா வடிவங்கள் உறவுகளைக் காட்டப் பயன்பட்டுள்ளன; முதிர்ந்த நிலையில் பொருத்தப்பட்டு மெல்லுடலிகள் போலத் தோன்றும் பார்னக்கிள்கள் நாப்ளியஸாகப் பொரிவதால் கிரஸ்டேஷியன்களாக அடையாளம் காணப்பட்டன."),
                     bp("The barnacle example shows how the larva can reveal what the adult conceals. A student who has learned the crustacean larvae should be able to use them in this way, as evidence of the relationships of animals whose adults have diverged in form." to
                         "பார்னக்கிள் எடுத்துக்காட்டு முதிர்ந்தது மறைப்பதை லார்வா எவ்வாறு வெளிப்படுத்தும் என்பதைக் காட்டுகிறது. கிரஸ்டேஷியன் லார்வாக்களைக் கற்ற மாணவர், முதிர்ந்தவை வடிவத்தில் விலகிய விலங்குகளின் உறவுகளுக்கான சான்றாக இவ்வாறு அவற்றைப் பயன்படுத்த முடிய வேண்டும்."),
-                    bdef("Barnacle", "பார்னக்கிள்", "A crustacean that as an adult is fixed to a surface and enclosed in plates, but that hatches as a nauplius." to
+                    bdef("Barnacle", "பார்னக்கிள் (Barnacle)", "A crustacean that as an adult is fixed to a surface and enclosed in plates, but that hatches as a nauplius." to
                         "முதிர்ந்த நிலையில் மேற்பரப்பில் பொருத்தப்பட்டு தகடுகளால் மூடப்பட்ட, ஆனால் நாப்ளியஸாகப் பொரியும் கிரஸ்டேஷியன்."),
                     bdef("Aquaculture", "நீர் வாழ் உயிரி வளர்ப்பு", "The rearing of aquatic animals and plants for food or other uses." to
                         "உணவு அல்லது பிற பயன்பாட்டுக்காக நீர்வாழ் விலங்குகள், தாவரங்களை வளர்த்தல்."),

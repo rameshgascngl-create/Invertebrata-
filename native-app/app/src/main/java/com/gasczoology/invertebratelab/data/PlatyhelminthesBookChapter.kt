@@ -47,11 +47,11 @@ object PlatyhelminthesBookChapter {
                         "எக்டோடெர்ம், மீசோடெர்ம், எண்டோடெர்ம் என்ற மூன்று கருப்படலங்களால் ஆன உடல் கொண்ட."),
                     bdef("Acoelomate", "உடற்குழியற்ற", "Having no coelom; the space between body wall and gut is filled with solid tissue." to
                         "சீலோம் இல்லாத; உடற்சுவருக்கும் குடலுக்கும் இடையிலான இடம் திண்ம திசுவால் நிரம்பிய."),
-                    bdef("Parenchyma", "பாரங்கைமா", "The loose, solid tissue that fills the space between the gut and body wall of a flatworm." to
+                    bdef("Parenchyma", "பாரங்கைமா (Parenchyma)", "The loose, solid tissue that fills the space between the gut and body wall of a flatworm." to
                         "தட்டைப்புழுவின் குடலுக்கும் உடற்சுவருக்கும் இடையிலான இடத்தை நிரப்பும் தளர்வான திண்ம திசு."),
                     bdef("Bilateral symmetry", "இருபக்கச் சமச்சீர்", "Symmetry in which only one plane divides the body into similar right and left halves." to
                         "ஒரே தளம் மட்டுமே உடலை ஒத்த வலது, இடது பாதிகளாகப் பிரிக்கும் சமச்சீர்."),
-                    bdef("Tegument", "டெகுமென்ட்", "The living, metabolically active outer covering of flukes and tapeworms, which protects the parasite and absorbs nutrients." to
+                    bdef("Tegument", "டெகுமென்ட் (Tegument)", "The living, metabolically active outer covering of flukes and tapeworms, which protects the parasite and absorbs nutrients." to
                         "ஃப்ளூக்குகள், நாடாப்புழுக்களின் உயிருள்ள, வளர்சிதை செயலுள்ள வெளி உறை; ஒட்டுண்ணியைப் பாதுகாத்து ஊட்டச்சத்துகளை உறிஞ்சுகிறது."),
                     bdef("Hermaphrodite", "இருபால் உயிரி", "An individual that has both male and female reproductive organs." to
                         "ஆண், பெண் இனப்பெருக்க உறுப்புகள் இரண்டையும் கொண்ட உயிரி."),
@@ -66,9 +66,9 @@ object PlatyhelminthesBookChapter {
                     ),
                     bdef("Flame cell", "சுடர் செல்", "A hollow excretory cell with a tuft of cilia that begins a protonephridial tubule." to
                         "புரோட்டோநெஃப்ரிடியக் குழாயைத் தொடங்கும், கசையிழைக் கொத்துடைய வெற்று கழிவு நீக்க செல்."),
-                    bdef("Protonephridium", "புரோட்டோநெஃப்ரிடியம்", "An excretory organ that ends blindly in a flame cell, found in flatworms and in some other groups." to
+                    bdef("Protonephridium", "புரோட்டோநெஃப்ரிடியம் (Protonephridium)", "An excretory organ that ends blindly in a flame cell, found in flatworms and in some other groups." to
                         "சுடர் செல்லில் குருட்டு முடிவு கொண்ட கழிவு நீக்க உறுப்பு; தட்டைப்புழுக்களிலும் வேறு சில குழுக்களிலும் உள்ளது."),
-                    bdef("Osmoregulation", "சவ்வூடுபரவல் ஒழுங்குபடுத்தல்", "The control of the water and salt content of the body." to
+                    bdef("Osmoregulation", "சவ்வூடுபரவல் ஒழுங்குபடுத்தல் (Osmoregulation)", "The control of the water and salt content of the body." to
                         "உடலின் நீர், உப்பு அளவைக் கட்டுப்படுத்துதல்."),
                 )),
             bsec("classification", "Classification into classes", "வகுப்புகளாக வகைப்படுத்துதல்",
@@ -99,9 +99,9 @@ object PlatyhelminthesBookChapter {
                     bsub("Class Cestoda", "வகுப்பு செஸ்டோடா",
                         bp("The tapeworms, which are endoparasites of the intestine of vertebrates. The body is long, flat and ribbon-like, with a small head, the scolex, that bears suckers and often hooks, a short neck, and a chain of segments called proglottids that carry the reproductive organs. There is no mouth and no gut. Taenia solium, the pork tapeworm, is the usual example." to
                             "முதுகெலும்பிகளின் குடலின் அகவொட்டுண்ணிகளான நாடாப்புழுக்கள். உடல் நீண்ட, தட்டையான, நாடா வடிவம்; உறிஞ்சிகளும் பெரும்பாலும் கொக்கிகளும் கொண்ட சிறிய தலையான ஸ்கொலெக்ஸ், குறுகிய கழுத்து, இனப்பெருக்க உறுப்புகளைத் தாங்கும் புரோகுளோட்டிட்கள் என்ற துண்டுச் சங்கிலி ஆகியவை உண்டு. வாயும் குடலும் இல்லை. பன்றி நாடாப்புழுவான டீனியா சோலியம் வழக்கமான எடுத்துக்காட்டு."),
-                        bdef("Scolex", "ஸ்கொலெக்ஸ்", "The head of a tapeworm, with suckers and often hooks, by which the worm attaches to the intestinal wall of the host." to
+                        bdef("Scolex", "ஸ்கொலெக்ஸ் (Scolex)", "The head of a tapeworm, with suckers and often hooks, by which the worm attaches to the intestinal wall of the host." to
                             "நாடாப்புழுவின் தலை; உறிஞ்சிகளும் பெரும்பாலும் கொக்கிகளும் கொண்டு விருந்தோம்பியின் குடல் சுவரில் புழு ஒட்ட உதவுகிறது."),
-                        bdef("Proglottid", "புரோகுளோட்டிட்", "One of the segments of a tapeworm, each containing a set of reproductive organs." to
+                        bdef("Proglottid", "புரோகுளோட்டிட் (Proglottid)", "One of the segments of a tapeworm, each containing a set of reproductive organs." to
                             "நாடாப்புழுவின் துண்டுகளில் ஒன்று; ஒவ்வொன்றிலும் ஒரு தொகுதி இனப்பெருக்க உறுப்புகள் உள்ளன."),
                     ),
                 )),
@@ -115,7 +115,7 @@ object PlatyhelminthesBookChapter {
                         "பிளனேரியன்கள் ஊனுண்ணிகளும் அழுகல் உண்ணிகளும். நீட்டிய தொண்டை சிறு விலங்குகளை அல்லது இறந்தவற்றின் துண்டுகளை உறிஞ்சுகிறது; செரிமானம் குடல் குழியில் தொடங்கி அதை மூடும் செல்களினுள் முடிகிறது. மலவாய் இல்லாததால் செரியாத எச்சங்கள் வாய் வழியாக மீண்டும் வெளியேற்றப்படுகின்றன. நுழைவுக்கும் வெளியேற்றத்துக்கும் ஒரே திறப்பு என்பது தொகுதியின் முழுமையற்ற குடலின் அடையாளம்; இந்த அலகில் பின்னர் கற்கப்படும் நெமட்டோடாக்களின் முழுமையான குடலுடன் இது மாறுபடுகிறது."),
                     bdef("Auricle", "ஆரிக்கிள்", "One of the lateral lobes of the head of a planarian that are sensitive to chemicals and currents." to
                         "வேதிப்பொருட்கள், நீரோட்டத்துக்கு உணர்திறன் உள்ள, பிளனேரியனின் தலையிலுள்ள பக்க மடல்களில் ஒன்று."),
-                    bdef("Pharynx", "தொண்டை", "The muscular tube that leads from the mouth to the gut, and that can be extended to seize food." to
+                    bdef("Pharynx", "தொண்டை (Pharynx)", "The muscular tube that leads from the mouth to the gut, and that can be extended to seize food." to
                         "வாயிலிருந்து குடலுக்குச் செல்லும் தசைக் குழாய்; உணவைப் பற்றிக்கொள்ள நீட்டப்படலாம்."),
                 )),
             bsec("reproduction", "Reproduction and life cycles", "இனப்பெருக்கமும் வாழ்க்கைச் சுழற்சிகளும்",
@@ -132,7 +132,7 @@ object PlatyhelminthesBookChapter {
                     bnote("Specialisation, not degeneration", "சிறப்படைதல்; சீரழிவு அல்ல",
                         "Loss of the gut is a specialised adaptation to an endoparasitic life. It should be described as functional specialisation and not as degeneration, which implies a judgement that the biology does not support." to
                             "குடலின் இழப்பு அகவொட்டுண்ணி வாழ்க்கைக்கான சிறப்புத் தகவமைப்பு. அதை சீரழிவு எனக் கூறாமல் செயல்பாட்டுச் சிறப்படைதல் எனக் கூற வேண்டும்; சீரழிவு என்பது உயிரியல் ஆதரிக்காத மதிப்பீட்டைக் குறிக்கிறது."),
-                    bdef("Microtriches", "மைக்ரோடிரிக்கி", "Minute projections of the tegument of a tapeworm that increase the surface area for absorption." to
+                    bdef("Microtriches", "மைக்ரோடிரிக்கி (Microtriches)", "Minute projections of the tegument of a tapeworm that increase the surface area for absorption." to
                         "உறிஞ்சல் பரப்பை அதிகரிக்கும் நாடாப்புழு டெகுமென்ட்டின் நுண் நீட்சிகள்."),
                 )),
             bsec("nervous", "Nervous system and sense organs", "நரம்பு மண்டலமும் உணர் உறுப்புகளும்",
@@ -141,11 +141,11 @@ object PlatyhelminthesBookChapter {
                         "தட்டைப்புழுக்கள் மேம்பட்ட விலங்குகளில் காணப்படும் வகையிலான மையப்படுத்தப்பட்ட நரம்பு மண்டலத்தை விலங்கு உலகில் முதலில் காட்டுகின்றன. முன்புறத்தில் எளிய மூளையாகச் செயல்படும் ஒரு இணை பெருமூளை நரம்புத் திரள்கள் உள்ளன. அவற்றிலிருந்து ஒரு இணை நீளவாக்கு நரம்பு வடங்கள் உடல் வழியே பின்னோக்கிச் சென்று குறுக்கு நரம்புகளால் இணைக்கப்படுகின்றன; முழுதும் ஏணி போலத் தெரிகிறது. இது ஏணி வகை நரம்பு மண்டலம் எனப்படுகிறது; பிளனேரியனில் இது மேற்பரப்புத் தசைக்குக் கீழ் அமைந்துள்ளது. ஒரே திசையில் இயக்கத்துடன் தொடர்புடைய, தலை முனையில் நரம்பு செல்கள், உணர் உறுப்புகள் குவிதல் தலையாக்கம் எனப்படுகிறது."),
                     bp("The sense organs of a free-living flatworm are simple. The eyespots, or ocelli, are pigment cups with light-sensitive cells. They tell the animal the direction of light, and the planarian moves away from it. They do not form an image. Touch and chemical receptors are concentrated in the lobes of the head, called auricles, and they allow the worm to find food at a distance. Parasitic flatworms have reduced sense organs, which is consistent with the stable surroundings in which they live, but the free-swimming larvae often retain eyespots.",
                         "தனி வாழ்வு தட்டைப்புழுவின் உணர் உறுப்புகள் எளியவை. கண்புள்ளிகள் அல்லது ஓசெல்லிகள் ஒளியுணர் செல்கள் கொண்ட நிறமிக் கிண்ணங்கள்; ஒளியின் திசையை விலங்குக்கு உணர்த்துகின்றன; பிளனேரியன் அதிலிருந்து விலகி நகர்கிறது. அவை பிம்பம் உருவாக்குவதில்லை. தொடுதல், வேதி ஏற்பிகள் ஆரிக்கிள்கள் எனப்படும் தலை மடல்களில் குவிந்து, புழு தொலைவிலிருந்தே உணவைக் கண்டறிய உதவுகின்றன. ஒட்டுண்ணித் தட்டைப்புழுக்களின் உணர் உறுப்புகள் குறைந்துள்ளன; அவை வாழும் நிலையான சூழலுக்குப் பொருந்தும்; ஆனால் நீந்தும் லார்வாக்கள் பெரும்பாலும் கண்புள்ளிகளைத் தக்க வைக்கின்றன."),
-                    bdef("Ladder-type nervous system", "ஏணி வகை நரம்பு மண்டலம்", "A nervous system with a pair of longitudinal nerve cords joined by transverse nerves, as in the flatworms." to
+                    bdef("Ladder-type nervous system", "ஏணி வகை நரம்பு மண்டலம் (Ladder-type nervous system)", "A nervous system with a pair of longitudinal nerve cords joined by transverse nerves, as in the flatworms." to
                         "தட்டைப்புழுக்களில் போல, குறுக்கு நரம்புகளால் இணைக்கப்பட்ட ஒரு இணை நீளவாக்கு நரம்பு வடங்கள் கொண்ட நரம்பு மண்டலம்."),
                     bdef("Cephalisation", "தலையாக்கம்", "The concentration of nervous tissue and sense organs at the head end of the body." to
                         "உடலின் தலை முனையில் நரம்புத் திசுவும் உணர் உறுப்புகளும் குவிதல்."),
-                    bdef("Eyespot", "கண்புள்ளி", "A simple light-sensitive organ, usually a pigment cup with sensory cells, that detects the direction of light but forms no image." to
+                    bdef("Eyespot", "கண்புள்ளி (Eyespot)", "A simple light-sensitive organ, usually a pigment cup with sensory cells, that detects the direction of light but forms no image." to
                         "பிம்பம் உருவாக்காமல் ஒளியின் திசையை உணரும், பொதுவாக உணர் செல்களுடன் கூடிய நிறமிக் கிண்ணம் கொண்ட எளிய ஒளியுணர் உறுப்பு."),
                 )),
             bsec("regeneration", "Regeneration and asexual reproduction", "மீளுருவாக்கமும் பாலிலா இனப்பெருக்கமும்",
@@ -154,9 +154,9 @@ object PlatyhelminthesBookChapter {
                         "தனி வாழ்வு தட்டைப்புழுக்கள், குறிப்பாக பிளனேரியன்கள், குறிப்பிடத்தக்க மீளுருவாக்கத் திறன் கொண்டவை. துண்டுகளாக வெட்டப்பட்ட பிளனேரியன் பல துண்டுகள் ஒவ்வொன்றிலிருந்தும் முழுமையான சிறு புழுவை உருவாக்க முடியும்; புதிய புழுவுக்கு முன் முனையில் சரியான தலையும் பின் முனையில் வாலும் உண்டு. இதற்குக் காரணமான செல்கள் நியோபிளாஸ்டுகள்; பாரங்கைமா முழுவதும் சிதறிய வேறுபடாத செல்கள்; அவை பிரிந்து தேவையான பல்வேறு செல் வகைகளை உருவாக்க முடியும். உணவு நிறைய கிடைக்கும் பிளனேரியன்கள் பிளவு மூலம் பாலிலா முறையிலும் இனப்பெருக்குகின்றன: தொண்டைக்குப் பின்னால் உடல் சுருங்கி, பின் பகுதி பிரிகிறது; ஒவ்வொரு பகுதியும் தனக்குத் தேவையானதை மீளுருவாக்குகிறது."),
                     bp("Regeneration is often asked about, and the answer must separate the power from its mechanism. Many other flatworms regenerate poorly or not at all, and the parasitic forms are not known for it; the capacity should be stated for planarians. The neoblasts are the cellular basis, and the study of how they are directed to form a head or a tail remains an active field of research. It is wise not to claim that all flatworm cells can regenerate the animal, since the neoblasts are the cells that are able to do so.",
                         "மீளுருவாக்கம் பற்றி அடிக்கடி கேட்கப்படுகிறது; விடை திறனையும் அதன் வழிமுறையையும் பிரித்துக் கூற வேண்டும். பிற தட்டைப்புழுக்கள் பல மோசமாகவே மீளுருவாக்குகின்றன அல்லது மீளுருவாக்குவதே இல்லை; ஒட்டுண்ணி வடிவங்களுக்கு இத்திறன் அறியப்படவில்லை; எனவே இத்திறன் பிளனேரியன்களுக்கு என்று கூற வேண்டும். நியோபிளாஸ்டுகளே செல்லுலார் அடிப்படை; தலையையோ வாலையோ உருவாக்க அவை எவ்வாறு வழிநடத்தப்படுகின்றன என்பது இன்றும் செயல்படும் ஆய்வுத் துறை. எல்லா தட்டைப்புழு செல்களும் விலங்கை மீளுருவாக்க முடியும் என்று கூறக்கூடாது; அவ்வாறு செய்ய முடிந்த செல்கள் நியோபிளாஸ்டுகளே."),
-                    bdef("Neoblast", "நியோபிளாஸ்ட்", "An undifferentiated cell in the parenchyma of a flatworm that divides and gives rise to new tissue in growth and regeneration." to
+                    bdef("Neoblast", "நியோபிளாஸ்ட் (Neoblast)", "An undifferentiated cell in the parenchyma of a flatworm that divides and gives rise to new tissue in growth and regeneration." to
                         "வளர்ச்சியிலும் மீளுருவாக்கத்திலும் பிரிந்து புதிய திசுவை உருவாக்கும், தட்டைப்புழுவின் பாரங்கைமாவிலுள்ள வேறுபடாத செல்."),
-                    bdef("Fission", "இருகூறாதல்", "Asexual reproduction in which the body divides into two or more parts, each of which becomes a new individual." to
+                    bdef("Fission", "இருகூறாதல் (Fission)", "Asexual reproduction in which the body divides into two or more parts, each of which becomes a new individual." to
                         "உடல் இரு அல்லது பல பகுதிகளாகப் பிரிந்து, ஒவ்வொன்றும் புதிய உயிரியாகும் பாலிலா இனப்பெருக்கம்."),
                 )),
             bsec("position", "Where the phylum stands today", "இத்தொகுதி இன்று எங்கே நிற்கிறது",
@@ -165,7 +165,7 @@ object PlatyhelminthesBookChapter {
                         "கற்பித்தலுக்கான வகைப்பாடு இத்தொகுதியை டர்பெல்லேரியா, டிரிமட்டோடா, செஸ்டோடா என மூன்று வகுப்புகளாகப் பிரிக்கிறது; தேர்வில் பின்பற்ற வேண்டிய திட்டம் அதுவே. நவீன வகைப்பாடுகள் அறிந்திருக்கப் பயனுள்ள சில விவரங்களைச் சேர்க்கின்றன. டிரிமட்டோடா, செஸ்டோடாவும், பெரும்பாலும் மீன்களின் தோல், செவுள்களில் ஒட்டுண்ணிகளான மோனோஜீனியாவுடன் சேர்த்து, முதிர்ந்த நிலையில் எப்பிடெர்மிஸுக்குப் பதிலாக வரும் சின்சிட்டிய டெகுமென்டைப் பகிர்வதால் நியோடெர்மாட்டா என்று தொகுக்கப்படுகின்றன. டர்பெல்லேரியா இயற்கைக் குழு அல்ல; தனி வாழ்வு தட்டைப்புழுக்களின் தொடர்பற்ற பல வழிமரபுகளைக் கொண்டுள்ளது."),
                     bp("The groups known as the acoels, which were once placed in the Turbellaria, have been separated by molecular studies and are now considered by many authorities to lie outside the phylum, and possibly at the base of the bilaterally symmetrical animals. This is still under discussion. The examiner at undergraduate level will not ask for it, and the answer should follow the prescribed text, but the student who knows the modern picture can see that the simple classification is a convenience and not a final statement.",
                         "ஒருகாலத்தில் டர்பெல்லேரியாவில் வைக்கப்பட்ட அசீல்கள் எனும் குழுக்கள் மூலக்கூறு ஆய்வுகளால் பிரிக்கப்பட்டு, இப்போது பல ஆய்வாளர்களால் இத்தொகுதிக்கு வெளியே, ஒருவேளை இருபக்கச் சமச்சீர் விலங்குகளின் அடிப்பகுதியில், வைக்கப்படுகின்றன. இது இன்னும் விவாதத்தில் உள்ளது. இளநிலை தேர்வாளர் இதைக் கேட்கமாட்டார்; விடை பரிந்துரைக்கப்பட்ட நூலைப் பின்பற்ற வேண்டும்; ஆனால் நவீனப் படத்தை அறிந்த மாணவர் எளிய வகைப்பாடு வசதிக்கானது, இறுதிக் கூற்று அல்ல என்பதைக் காணலாம்."),
-                    bdef("Neodermata", "நியோடெர்மாட்டா", "The group of parasitic flatworms (flukes, tapeworms and monogeneans) whose adults have a syncytial tegument in place of the epidermis." to
+                    bdef("Neodermata", "நியோடெர்மாட்டா (Neodermata)", "The group of parasitic flatworms (flukes, tapeworms and monogeneans) whose adults have a syncytial tegument in place of the epidermis." to
                         "முதிர்ந்தவற்றில் எப்பிடெர்மிஸுக்குப் பதிலாக சின்சிட்டிய டெகுமென்ட் கொண்ட ஒட்டுண்ணித் தட்டைப்புழுக்களின் (புழுக்கள், நாடாப்புழுக்கள், மோனோஜீனியன்கள்) குழு."),
                 )),
             bsec("importance", "Why the phylum matters", "தொகுதி ஏன் முக்கியம்",

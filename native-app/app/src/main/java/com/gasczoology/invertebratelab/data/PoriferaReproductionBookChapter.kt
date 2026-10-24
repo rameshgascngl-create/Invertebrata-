@@ -39,7 +39,7 @@ object PoriferaReproductionBookChapter {
                     bdef("Sessile", "ஒட்டி வாழும்",
                         "Attached to a surface and not able to move from place to place, as the adult sponge is." to
                             "வளர்ந்த கடற்பஞ்சைப்போல ஒரு பரப்பில் ஒட்டியிருந்து, இடம்விட்டு இடம் நகர இயலாத நிலை."),
-                    bdef("Clone", "நகல் உயிரி",
+                    bdef("Clone", "நகல் உயிரி (Clone)",
                         "An individual that is genetically identical to the one from which it arose by asexual reproduction." to
                             "பாலிலா இனப்பெருக்கத்தால் தோன்றிய, மூல உயிரியுடன் மரபுப்படி ஒத்த உயிரி."),
                 )),
@@ -53,7 +53,7 @@ object PoriferaReproductionBookChapter {
                         bdef("Budding", "மொட்டு விடுதல்",
                             "Asexual reproduction in which a new individual grows as an outgrowth of the parent." to
                                 "பெற்றோரின் புடைப்பாக புதிய உயிரி வளரும் பாலிலா இனப்பெருக்கம்."),
-                        bdef("Fragmentation", "துண்டாக்கம்",
+                        bdef("Fragmentation", "துண்டாக்கம் (Fragmentation)",
                             "Asexual reproduction in which a broken piece of the parent grows into a new individual." to
                                 "பெற்றோரிடமிருந்து உடைந்த துண்டு புதிய உயிரியாக வளரும் பாலிலா இனப்பெருக்கம்."),
                     ),
@@ -72,7 +72,7 @@ object PoriferaReproductionBookChapter {
                         bdef("Gemmule", "ஜெம்யூல்",
                             "A resistant internal bud of archaeocytes enclosed in a protective coat, formed asexually, which survives adverse conditions and later grows into a new sponge." to
                                 "பாதுகாப்பு உறையால் அடைக்கப்பட்ட, பாலிலா முறையில் உருவாகும் ஆர்கியோசைட்டுகளின் எதிர்ப்புத்திறன் மிக்க உள் மொட்டு; மோசமான நிலையைத் தாங்கிப் பின்னர் புதிய கடற்பஞ்சாக வளர்கிறது."),
-                        bdef("Micropyle", "மைக்ரோபைல்",
+                        bdef("Micropyle", "மைக்ரோபைல் (Micropyle)",
                             "The small opening in the coat of a gemmule through which the cells emerge." to
                                 "ஜெம்யூலின் உறையிலுள்ள, செல்கள் வெளிவரும் சிறு திறப்பு."),
                         bnote("A gemmule is not a larva", "ஜெம்யூல் லார்வா அல்ல",
@@ -92,7 +92,7 @@ object PoriferaReproductionBookChapter {
                     bsub("Fertilisation", "கருவுறுதல்",
                         bp("The sperm leave one sponge through its osculum and are carried by the water to another. They enter the second sponge through its ostia and are drawn into the canals by the current. In many sponges a choanocyte engulfs a sperm, loses its collar and flagellum, and, as a carrier cell, passes through the mesohyl to the egg, to which it delivers the sperm. The egg is retained in the body of the parent, and fertilisation is therefore internal." to
                             "விந்தணுக்கள் ஒரு கடற்பஞ்சின் ஆஸ்குலம் வழியாக வெளியேறி, நீரால் மற்றொன்றுக்குக் கொண்டு செல்லப்படுகின்றன. அவை இரண்டாவது கடற்பஞ்சின் ஆஸ்டியா வழியாக நுழைந்து ஓட்டத்தால் கால்வாய்களுக்குள் இழுக்கப்படுகின்றன. பல கடற்பஞ்சுகளில் ஒரு கோனோசைட் விந்தணுவை விழுங்கி, காலரையும் கசையிழையையும் இழந்து, நோய்க்கடத்திச் செல்லாக மீசோஹைல் வழியாக முட்டையிடம் சென்று விந்தணுவை ஒப்படைக்கிறது. முட்டை தாயின் உடலில் தக்கவைக்கப்படுகிறது; எனவே கருவுறுதல் உட்புறமானது."),
-                        bdef("Carrier cell", "கடத்து செல்",
+                        bdef("Carrier cell", "கடத்து செல் (Carrier cell)",
                             "A choanocyte that has taken up a sperm and carries it through the mesohyl to an egg." to
                                 "விந்தணுவை ஏற்று, மீசோஹைல் வழியாக முட்டையிடம் கொண்டு செல்லும் கோனோசைட்."),
                     ),
@@ -106,17 +106,17 @@ object PoriferaReproductionBookChapter {
                                 listOf("Structure" to "அமைப்பு", "Hollow; flagellated cells at one half, large granular cells at the other" to "குழியானது; ஒரு பாதியில் கசையிழை செல்கள், மறுபாதியில் பெரிய துகள் செல்கள்", "Solid; flagellated outside, cells packed within" to "திண்மமானது; வெளியே கசையிழை, உள்ளே செல்கள் நிரம்பியவை"),
                                 listOf("Settling" to "படிதல்", "Flagellated cells turn inwards (inversion)" to "கசையிழை செல்கள் உள்நோக்கித் திரும்புகின்றன (புரட்டல்)", "Flagellated cells move in as the larva settles" to "லார்வா படியும்போது கசையிழை செல்கள் உள்ளே செல்கின்றன"),
                             )),
-                        bdef("Amphiblastula", "ஆம்ஃபிபிளாஸ்டுலா",
+                        bdef("Amphiblastula", "ஆம்ஃபிபிளாஸ்டுலா (Amphiblastula)",
                             "The free-swimming hollow larva of calcareous sponges, with small flagellated cells at one end and large granular cells at the other." to
                                 "சுண்ணாம்புக் கடற்பஞ்சுகளின், ஒரு முனையில் சிறு கசையிழை செல்களும் மறுமுனையில் பெரிய துகள் செல்களும் கொண்ட, சுதந்திரமாக நீந்தும் குழி லார்வா."),
-                        bdef("Parenchymula", "பரன்கைமுலா",
+                        bdef("Parenchymula", "பரன்கைமுலா (Parenchymula)",
                             "The solid, flagellated larva of most demosponges." to
                                 "பெரும்பாலான டெமோஸ்பாஞ்சுகளின் திண்ம, கசையிழை லார்வா."),
                     ),
                     bsub("Settlement and inversion", "படிதலும் புரட்டலும்",
                         bp("After a short free life, which may be a matter of hours or a few days, the larva settles on a firm surface, attaching itself by the end at which the flagella are absent or by the anterior end, according to the species. In the amphiblastula the flagellated cells then turn inwards and the granular cells grow over the outside, so that the position of the two kinds of cell is reversed. This reversal is called inversion. It is a feature of calcareous sponges, and it is the reason that the flagellated cells, which were outside in the swimming larva, are on the inside, as the choanocytes of the adult." to
                             "சில மணி நேரங்கள் அல்லது சில நாட்கள் நீடிக்கும் குறுகிய தனி வாழ்க்கைக்குப் பின், லார்வா உறுதியான பரப்பில் படிகிறது; இனத்துக்கு ஏற்ப, கசையிழை இல்லாத முனையால் அல்லது முன் முனையால் ஒட்டிக்கொள்கிறது. ஆம்ஃபிபிளாஸ்டுலாவில் கசையிழை செல்கள் உள்நோக்கித் திரும்ப, துகள் செல்கள் வெளிப்புறத்தின் மேல் வளர்கின்றன; இரு வகை செல்களின் இடம் தலைகீழாகிறது. இந்த மாற்றம் புரட்டல் எனப்படுகிறது. இது சுண்ணாம்புக் கடற்பஞ்சுகளின் பண்பு; நீந்தும் லார்வாவில் வெளியே இருந்த கசையிழை செல்கள் முதிர்ந்த கடற்பஞ்சின் கோனோசைட்டுகளாக உள்ளே இருப்பதற்கான காரணம் இதுவே."),
-                        bdef("Inversion", "புரட்டல்",
+                        bdef("Inversion", "புரட்டல் (Inversion)",
                             "The turning inside out of the larval cell layers at settlement, which brings the flagellated cells to the inside of the young sponge." to
                                 "படியும்போது லார்வாவின் செல் அடுக்குகள் உள்ளும் புறமும் மாறி, கசையிழை செல்களை இளம் கடற்பஞ்சின் உட்புறத்துக்குக் கொண்டு வருவது."),
                         bdef("Metamorphosis", "உருமாற்றம்",
@@ -177,7 +177,7 @@ object PoriferaReproductionBookChapter {
                         "முட்டைகளையும் விந்தணுக்களையும் கடற்பஞ்சுகள் எவ்வாறு கையாளுகின்றன என்பதில் வேறுபடுகின்றன. பல இனங்களில் விந்தணுக்கள் ஆஸ்குலம் வழியாக நீரில் விடுவிக்கப்படுகின்றன; சில சமயம் கடற்பஞ்சிலிருந்து ஒரு மேகம் எழுவது காணப்படும் அளவு மிகுதியாக; அவை நீரோட்டத்தால் மற்றொரு உயிரிக்குக் கொண்டு செல்லப்பட்டு, அதன் உணவு நீரோட்டத்துடன் இழுக்கப்படுகின்றன. முட்டைகளும் நீரில் விடுவிக்கப்பட்டு அங்கு கருவுறலாம்; இப்பழக்கம் பரவலான முட்டையிடுதல் எனப்படுகிறது; அல்லது பெற்றோர் உடலில் தக்கவைக்கப்பட்டு அங்கு கருவுறலாம்; அப்போது கருக்கள் கடற்பஞ்சுக்குள் வளர்ந்து பின்னர் லார்வாக்களாக விடுவிக்கப்படுகின்றன. இரண்டாவது பழக்கம் அடைகாத்தல் எனப்படுகிறது. எல்லாக் கடற்பஞ்சுகளும் இவ்விரு பழக்கங்களையும் பகிர்வதில்லை; அத்தியாயம் விவாதித்த தனி நீந்தும் லார்வாவுடன் மிக நெருக்கமாகத் தொடர்புடையதாக இருப்பதால் பல பாடநூல்கள் அடைகாக்கும் வகையை விவரிக்கின்றன."),
                     bp("The timing of reproduction is often seasonal. Many sponges release gametes or larvae at a particular time of year, and in some it is reported that the release of sperm in one individual is followed by the release in neighbours, a coordination that helps to ensure that sperm meet eggs in water that is otherwise dilute. The cues that are suggested include temperature and day length, but the evidence differs from species to species and the matter is still studied, so a statement in an answer should be restricted to the observation that reproduction is seasonal in many sponges. Freshwater sponges show a different seasonal pattern: they form gemmules in autumn, and the gemmules over-winter and hatch when the weather improves, which links the timing of reproduction to the survival of the species through a bad season.",
                         "இனப்பெருக்க நேரம் பெரும்பாலும் பருவகாலம் சார்ந்தது. பல கடற்பஞ்சுகள் ஆண்டின் குறிப்பிட்ட நேரத்தில் கேமீட்டுகளையோ லார்வாக்களையோ விடுவிக்கின்றன; சிலவற்றில் ஓர் உயிரியில் விந்தணு வெளியீட்டைத் தொடர்ந்து அண்டை உயிரிகளில் வெளியீடு நிகழ்வதாகக் கூறப்படுகிறது; இந்த ஒருங்கிணைப்பு, இல்லாவிடில் நீர்த்துப்போன நீரில் விந்தணுக்கள் முட்டைகளைச் சந்திப்பதை உறுதிசெய்ய உதவுகிறது. பரிந்துரைக்கப்படும் குறிப்புகளில் வெப்பமும் பகல் நீளமும் அடங்கும்; ஆனால் சான்று இனத்துக்கு இனம் மாறுபடுகிறது; விஷயம் இன்னும் ஆய்வில் உள்ளது; எனவே விடையில் கூற்று பல கடற்பஞ்சுகளில் இனப்பெருக்கம் பருவகாலம் சார்ந்தது என்ற கவனிப்புக்குள் மட்டுப்பட வேண்டும். நன்னீர்க் கடற்பஞ்சுகள் வேறு பருவ முறையைக் காட்டுகின்றன: இலையுதிர் காலத்தில் ஜெம்யூல்களை உருவாக்குகின்றன; அவை குளிர்காலம் கடந்து வானிலை சீராகும்போது பொரிகின்றன; இது இனப்பெருக்க நேரத்தை மோசமான பருவத்தில் இனத்தின் உயிர்வாழ்வுடன் இணைக்கிறது."),
-                    bdef("Broadcast spawning", "பரவலான முட்டையிடுதல்", "The release of eggs and sperm into the surrounding water, where fertilisation takes place." to
+                    bdef("Broadcast spawning", "பரவலான முட்டையிடுதல் (Broadcast spawning)", "The release of eggs and sperm into the surrounding water, where fertilisation takes place." to
                         "முட்டைகளையும் விந்தணுக்களையும் சுற்றியுள்ள நீரில் விடுவித்தல்; அங்கு கருவுறுதல் நிகழ்கிறது."),
                     bdef("Brooding", "அடைகாத்தல்", "The retention of fertilised eggs or embryos in the body of the parent until they are released as larvae." to
                         "கருவுற்ற முட்டைகள் அல்லது கருக்கள் லார்வாக்களாக விடுவிக்கப்படும் வரை பெற்றோர் உடலில் தக்கவைத்தல்."),
@@ -188,7 +188,7 @@ object PoriferaReproductionBookChapter {
                         "கடற்பஞ்சு நகர முடியாது; இரு இனப்பெருக்க முறைகளும் இரு வேறு சிக்கல்களைத் தீர்க்கின்றன. பாலின இனப்பெருக்கம் குறுகிய காலம், பெரும்பாலும் ஒரு நாள் அல்லது சில நாள், நீந்தி பின் ஒட்டிக்கொள்ளும் லார்வாவை உருவாக்குகிறது. எனவே லார்வா இனத்தை புதிய இடத்துக்குக் கொண்டு செல்கிறது; புதிய நிலத்தைக் குடியேற்ற ஒட்டி வாழும் விலங்குக்கு இருக்கும் ஒரே வாய்ப்பு இதுவே; கருவுறுதலில் மரபணுக்கள் கலப்பதால் ஒன்றுக்கொன்றும் பெற்றோரிலிருந்தும் வேறுபடும் சந்ததிகள் உருவாகின்றன. மொட்டு விடுதல், துண்டாக்கம், ஜெம்யூல்கள் வழி பாலிலா இனப்பெருக்கம், பெற்றோரின் இடத்திலோ அருகிலோ நகல்களை உருவாக்குகிறது; அங்குள்ள நிலைமைகள் பொருத்தமானவை என அறியப்படும்போது இது மதிப்புள்ளது; ஜெம்யூல் வடிவில் கடுமையான நிலைமைகளில் உயிர்வாழும் வழியையும் இனத்துக்குத் தருகிறது. முதல் முறை பன்முகத்தன்மையையும் தூரத்தையும் பெறுகிறது; இரண்டாவது நம்பகத்தன்மையையும் தாங்குதிறனையும் பெறுகிறது என்பதை நல்ல விடை கூறுகிறது."),
                     bp("The two modes also have a cost. The larva faces many dangers, most larvae die before they settle, and a parent therefore produces many more than will survive; this is the high output with a low rate of success that is typical of species with a swimming larva. A bud or a fragment starts life with the size and the tissues of a piece of the parent and has a far higher chance of survival, but a population that arises by cloning has little genetic variety, so that a change in the environment, for example a new disease, may affect all of its members. An examiner who sets a question on the advantages and the disadvantages of each mode is usually looking for these paired statements. Lists of advantages are acceptable, but the pairs of advantage and cost show understanding more clearly.",
                         "இரு முறைகளுக்கும் ஒரு விலையும் உண்டு. லார்வா பல ஆபத்துகளை எதிர்கொள்கிறது; பெரும்பாலான லார்வாக்கள் ஒட்டுவதற்கு முன் இறக்கின்றன; எனவே பெற்றோர் உயிர்வாழ்வதைவிட அதிகமானவற்றை உருவாக்குகிறது; நீந்தும் லார்வா உடைய இனங்களுக்கே உரிய, குறைந்த வெற்றி வீதத்துடன் கூடிய உயர் வெளியீடு இது. ஒரு மொட்டு அல்லது துண்டு பெற்றோரின் ஒரு பகுதியின் அளவு, திசுக்களுடன் வாழ்வைத் தொடங்கி, மிக அதிக உயிர்வாழும் வாய்ப்பைப் பெறுகிறது; ஆனால் நகல் உருவாக்கலால் எழும் எண்ணிக்கையில் மரபியல் பன்முகத்தன்மை குறைவு; எனவே சூழலில் ஒரு மாற்றம், எடுத்துக்காட்டாக புதிய நோய், அனைத்து உறுப்பினர்களையும் பாதிக்கலாம். ஒவ்வொரு முறையின் நன்மை, தீமைகள் பற்றி வினா அமைக்கும் தேர்வாளர் பொதுவாக இந்த இணைக் கூற்றுகளையே தேடுகிறார். நன்மைகளின் பட்டியல் ஏற்கத்தக்கது; ஆனால் நன்மை-விலை இணைகள் புரிதலை தெளிவாகக் காட்டுகின்றன."),
-                    bdef("Genetic variety", "மரபியல் பன்முகத்தன்மை", "The differences in genes among the individuals of a population, produced by sexual reproduction." to
+                    bdef("Genetic variety", "மரபியல் பன்முகத்தன்மை (Genetic variety)", "The differences in genes among the individuals of a population, produced by sexual reproduction." to
                         "பாலின இனப்பெருக்கத்தால் உருவாகும், ஓர் எண்ணிக்கையின் தனி உயிரிகளிடையேயான மரபணு வேறுபாடுகள்."),
                 )),
         ),

@@ -36,15 +36,15 @@ object NutritionBookChapter {
                             listOf("Holophytic (photoautotrophic)" to "ஹோலோஃபைடிக் (ஒளிச்சேர்க்கை தன்னூட்டம்)", "Food is made by photosynthesis in chloroplasts" to "பசுங்கணிகங்களில் ஒளிச்சேர்க்கையால் உணவு தயாரிக்கப்படுகிறது", "Euglena in the light" to "ஒளியில் யூக்ளினா"),
                             listOf("Mixotrophic" to "கலப்பு", "Two or more modes combined" to "இரண்டு அல்லது மேற்பட்ட முறைகளின் இணைப்பு", "Euglena; ciliates with algal symbionts" to "யூக்ளினா; பாசிக் கூட்டுயிர் உள்ள சிலியேட்டுகள்"),
                         )),
-                    bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம்", "Nutrition by the ingestion of solid food, which is digested inside the cell." to
+                    bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம் (Holozoic nutrition)", "Nutrition by the ingestion of solid food, which is digested inside the cell." to
                         "திண்ம உணவை உட்கொண்டு செல்லுக்குள் செரிக்கும் ஊட்டம்."),
-                    bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம்", "Nutrition by the absorption of dissolved organic substances from the surroundings." to
+                    bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம் (Saprozoic nutrition)", "Nutrition by the absorption of dissolved organic substances from the surroundings." to
                         "சுற்றுப்புறத்திலிருந்து கரைந்த கரிமப் பொருட்களை உறிஞ்சும் ஊட்டம்."),
-                    bdef("Holophytic nutrition", "ஹோலோஃபைடிக் ஊட்டம்", "Nutrition by photosynthesis, the plant-like manufacture of food from simple substances using light." to
+                    bdef("Holophytic nutrition", "ஹோலோஃபைடிக் ஊட்டம் (Holophytic nutrition)", "Nutrition by photosynthesis, the plant-like manufacture of food from simple substances using light." to
                         "ஒளியைப் பயன்படுத்தி எளிய பொருட்களிலிருந்து உணவு தயாரிக்கும் தாவரம் போன்ற ஒளிச்சேர்க்கை ஊட்டம்."),
-                    bdef("Mixotrophy", "கலப்பு ஊட்டம்", "The use of more than one mode of nutrition by the same organism." to
+                    bdef("Mixotrophy", "கலப்பு ஊட்டம் (Mixotrophy)", "The use of more than one mode of nutrition by the same organism." to
                         "ஒரே உயிரி ஒன்றுக்கு மேற்பட்ட ஊட்டமுறையைப் பயன்படுத்துதல்."),
-                    bdef("Paramylon", "பாராமைலான்", "The storage carbohydrate of Euglena and other euglenoids, which is not starch." to
+                    bdef("Paramylon", "பாராமைலான் (Paramylon)", "The storage carbohydrate of Euglena and other euglenoids, which is not starch." to
                         "ஸ்டார்ச் அல்லாத, யூக்ளினாவிலும் பிற யூக்ளினாய்டுகளிலும் உள்ள சேமிப்புக் கார்போஹைட்ரேட்."),
                 )),
             bsec("amoeba", "Feeding in Amoeba", "அமீபாவில் உணவூட்டல்",
@@ -62,15 +62,15 @@ object NutritionBookChapter {
                         "Soluble products are absorbed into the cytoplasm." to "கரையும் விளைபொருட்கள் சைட்டோபிளாசத்துள் உறிஞ்சப்படுகின்றன.",
                         "The vacuole reaches the surface, and the waste is egested." to "நுண்குமிழ் மேற்பரப்பை அடைந்து கழிவு வெளியேற்றப்படுகிறது.",
                     ),
-                    bdef("Phagocytosis", "ஃபேகோசைட்டோசிஸ்", "The engulfing of solid particles by the cell, which encloses them in a membrane-bound vesicle." to
+                    bdef("Phagocytosis", "ஃபேகோசைட்டோசிஸ் (Phagocytosis)", "The engulfing of solid particles by the cell, which encloses them in a membrane-bound vesicle." to
                         "திண்மத் துகள்களை செல் விழுங்கி சவ்வால் சூழப்பட்ட நுண்குமிழில் அடைத்தல்."),
-                    bdef("Food vacuole", "உணவு நுண்குமிழ்", "A membrane-bound vesicle in which ingested food is digested; also called a phagosome." to
+                    bdef("Food vacuole", "உணவு நுண்குமிழ் (Food vacuole)", "A membrane-bound vesicle in which ingested food is digested; also called a phagosome." to
                         "உட்கொண்ட உணவு செரிக்கப்படும், ஃபேகோசோம் எனவும் அழைக்கப்படும், சவ்வால் சூழப்பட்ட நுண்குமிழ்."),
-                    bdef("Pseudopodium", "போலிக்கால்", "A temporary extension of the cytoplasm used in movement and in the capture of food." to
+                    bdef("Pseudopodium", "போலிக்கால் (Pseudopodium)", "A temporary extension of the cytoplasm used in movement and in the capture of food." to
                         "இயக்கத்திலும் உணவுப் பிடிப்பிலும் பயன்படும் சைட்டோபிளாசத்தின் தற்காலிக நீட்சி."),
                     bdef("Egestion", "கழிவு வெளியேற்றம்", "The expulsion of undigested material from the cell." to
                         "செரிக்காத பொருளை செல்லிலிருந்து வெளியேற்றுதல்."),
-                    bdef("Cytostome", "சைட்டோஸ்டோம்", "A fixed opening in the cell through which food is taken in, as in Paramecium; absent in Amoeba." to
+                    bdef("Cytostome", "சைட்டோஸ்டோம் (Cytostome)", "A fixed opening in the cell through which food is taken in, as in Paramecium; absent in Amoeba." to
                         "பாரமீசியத்தில் உள்ளது போல, உணவை உள்ளெடுக்கும் செல்லின் நிலையான திறப்பு; அமீபாவில் இல்லை."),
                 )),
             bsec("paramecium", "Feeding in Paramecium", "பாரமீசியத்தில் உணவூட்டல்",
@@ -84,15 +84,15 @@ object NutritionBookChapter {
                     bnote("Do not assume the pH sequence is exact", "pH வரிசை துல்லியமானது எனக் கருத வேண்டாம்",
                         "The acid-then-alkaline sequence is a standard textbook account, but the timing varies with the species and conditions, and it should be stated as a general pattern." to
                             "அமிலம்-பின்-காரம் வரிசை நிலையான பாடநூல் விவரிப்பு; ஆனால் நேரம் இனம், சூழ்நிலைக்கேற்ப மாறுபடும்; பொதுவான முறைமையாகக் கூற வேண்டும்."),
-                    bdef("Oral groove", "வாய்ப் பள்ளம்", "The ciliated depression on one side of Paramecium that leads to the cytostome." to
+                    bdef("Oral groove", "வாய்ப் பள்ளம் (Oral groove)", "The ciliated depression on one side of Paramecium that leads to the cytostome." to
                         "சைட்டோஸ்டோமுக்கு இட்டுச்செல்லும் பாரமீசியத்தின் ஒரு பக்கத்தில் உள்ள மயிரிழை பள்ளம்."),
-                    bdef("Cytopharynx", "சைட்டோஃபாரிங்க்ஸ்", "The short tube that leads from the cytostome into the cytoplasm, where food vacuoles form." to
+                    bdef("Cytopharynx", "சைட்டோஃபாரிங்க்ஸ் (Cytopharynx)", "The short tube that leads from the cytostome into the cytoplasm, where food vacuoles form." to
                         "சைட்டோஸ்டோமிலிருந்து சைட்டோபிளாசத்துள் செல்லும், உணவு நுண்குமிழ்கள் உருவாகும் குறுகிய குழாய்."),
-                    bdef("Cyclosis", "சைக்ளோசிஸ்", "The streaming of the cytoplasm in a regular path, which carries the food vacuoles round the cell." to
+                    bdef("Cyclosis", "சைக்ளோசிஸ் (Cyclosis)", "The streaming of the cytoplasm in a regular path, which carries the food vacuoles round the cell." to
                         "உணவு நுண்குமிழ்களை செல்லைச் சுற்றிக் கொண்டுசெல்லும் சைட்டோபிளாசத்தின் வழக்கமான பாதை ஓட்டம்."),
-                    bdef("Cytoproct", "சைட்டோபிராக்ட்", "The cell anus, a fixed point through which undigested remains are discharged in ciliates." to
+                    bdef("Cytoproct", "சைட்டோபிராக்ட் (Cytoproct)", "The cell anus, a fixed point through which undigested remains are discharged in ciliates." to
                         "சிலியேட்டுகளில் செரிக்காத மிச்சம் வெளியேற்றப்படும் நிலையான புள்ளியான செல் குதம்."),
-                    bdef("Filter feeding", "வடிகட்டி உண்ணல்", "Feeding in which a current of water brings small particles to the mouth without pursuit of the prey." to
+                    bdef("Filter feeding", "வடிகட்டி உண்ணல் (Filter feeding)", "Feeding in which a current of water brings small particles to the mouth without pursuit of the prey." to
                         "இரையைத் துரத்தாமல் நீரோட்டம் சிறு துகள்களை வாயருகே கொண்டுவரும் உணவூட்டல்."),
                 )),
             bsec("euglena", "Feeding in Euglena and the mixotrophic strategy", "யூக்ளினாவில் உணவூட்டலும் கலப்பு உத்தியும்",
@@ -105,13 +105,13 @@ object NutritionBookChapter {
                         "கலப்பு ஊட்டம் யூக்ளினாவுக்கு மட்டும் உரியதல்ல. பாரமீசியத்தின் சில இனங்கள் உட்பட சில சிலியேட்டுகள் பச்சைப் பாசிகளைக் கூட்டுயிர் உறவில் சைட்டோபிளாசத்தில் கொண்டுள்ளன. பாசி தங்குமிடமும் சில ஊட்டப்பொருட்களும் பெறுகிறது; விருந்தோம்பி தான் உட்கொள்ளும் பாக்டீரியாவுடன் கூடுதலாக பாசி ஒளிச்சேர்க்கையில் உருவாக்கும் உணவின் ஒரு பகுதியைப் பெறுகிறது. எனவே இவ்வுயிரிகள் ஹோலோசோயிக்; ஒரு பகுதி ஒளிச்சேர்க்கைத் துணையைச் சார்ந்தவை. மாணவருக்கான கருத்து: உயிரியை எப்போதும் ஒரே பெட்டியில் அடைக்க முடியாது; குறிப்பிட்ட சூழ்நிலைகளில் உயிரி என்ன செய்கிறது என்பதாக முறைகள் விவரிக்கப்பட வேண்டும்."),
                     bdef("Chloroplast", "பசுங்கணிகம்", "A plastid that contains chlorophyll and carries out photosynthesis." to
                         "பச்சையம் கொண்டு ஒளிச்சேர்க்கை செய்யும் நிறமிப்பை."),
-                    bdef("Stigma (eyespot)", "ஸ்டிக்மா (கண்புள்ளி)", "A red pigmented spot in Euglena that is associated with the response to light." to
+                    bdef("Stigma (eyespot)", "ஸ்டிக்மா (Stigma; கண்புள்ளி)", "A red pigmented spot in Euglena that is associated with the response to light." to
                         "ஒளிக்கான பதிலுடன் தொடர்புடைய யூக்ளினாவின் சிவப்பு நிறமி புள்ளி."),
-                    bdef("Symbiosis", "கூட்டுயிரி வாழ்க்கை", "A close and prolonged association between two kinds of organisms." to
+                    bdef("Symbiosis", "கூட்டுயிரி வாழ்க்கை (Symbiosis)", "A close and prolonged association between two kinds of organisms." to
                         "இரு வகை உயிரிகளுக்கிடையிலான நெருக்கமான, நீண்டகாலத் தொடர்பு."),
-                    bdef("Autotroph", "தன்னூட்டி", "An organism that makes its own food from simple inorganic substances." to
+                    bdef("Autotroph", "தன்னூட்டி (Autotroph)", "An organism that makes its own food from simple inorganic substances." to
                         "எளிய கனிமப் பொருட்களிலிருந்து தன் உணவைத் தானே தயாரிக்கும் உயிரி."),
-                    bdef("Heterotroph", "பிறவூட்டி", "An organism that obtains its food from other organisms or from organic matter." to
+                    bdef("Heterotroph", "பிறவூட்டி (Heterotroph)", "An organism that obtains its food from other organisms or from organic matter." to
                         "பிற உயிரிகளிடமிருந்து அல்லது கரிமப் பொருளிலிருந்து உணவைப் பெறும் உயிரி."),
                 )),
             bsec("strategies", "Strategies and not labels", "உத்திகள், முத்திரைகள் அல்ல",
@@ -124,7 +124,7 @@ object NutritionBookChapter {
                         "இதை விடையளிக்கும் விதியாகக் கூறலாம். ஊட்டமுறை செல் தன் உணவுடன் என்ன செய்கிறது என்பதைப் பெயரிடுகிறது. விடையில் குறிப்பிடும் அமைப்புகள் விவரிக்கப்படும் உயிரியினுடையவையாக இருக்க வேண்டும். முறைகளின் ஒப்பீடு செல் மேற்பரப்பின் பயன்பாடு, நொதிகளைச் சார்தல் போன்ற ஒற்றுமைகளையும், உணவு நுண்குமிழ் உள்ளதா இல்லையா போன்ற வேறுபாடுகளையும் கூற வேண்டும்; உயிரி ஒன்றுக்கு மேற்பட்ட முறையை இணைக்கும் இடத்தையும் தெளிவாகச் சொல்ல வேண்டும்."),
                     bnote("A common error", "பொதுவான பிழை", "Do not write that the cytostome is universal in holozoic protozoa. Amoeba has none, and takes in food by pseudopodia." to
                         "ஹோலோசோயிக் புரோட்டோசோவாக்களில் சைட்டோஸ்டோம் உலகளாவியது என எழுத வேண்டாம். அமீபாவுக்கு இல்லை; போலிக்கால்களால் உணவை உள்ளெடுக்கிறது."),
-                    bdef("Taxon", "வகைப்பாட்டுக் குழு", "A named group of organisms in a classification, such as a genus or a phylum." to
+                    bdef("Taxon", "வகைப்பாட்டுக் குழு (Taxon)", "A named group of organisms in a classification, such as a genus or a phylum." to
                         "பேரினம், தொகுதி போன்ற வகைப்பாட்டில் பெயரிடப்பட்ட உயிரிக் குழு."),
                     bdef("Ingestion", "உட்கொள்ளல்", "The taking of food into the cell or the body." to
                         "உணவை செல் அல்லது உடலுக்குள் எடுத்தல்."),
@@ -139,7 +139,7 @@ object NutritionBookChapter {
                         "தேர்வு பொதுவாக புரோட்டோசோவாவில் ஊட்டமுறைகளை எடுத்துக்காட்டுகளுடன் கேட்கிறது. நல்ல விடை நான்கு முறைகளையும் ஒரு வாக்கியத்தில் வரையறுத்து, எடுத்துக்காட்டைப் பெயரிட்டு, செல் என்ன செய்கிறது என்பதைக் கூறுகிறது. ஹோலோசோயிக்குக்கு அமீபா, பாரமீசியத்தைப் பெயரிட்டு அவற்றின் அமைப்புகளை வேறுபடுத்துக. சாப்ரோசோயிக்குக்கு கரைந்த பொருட்கள் மேற்பரப்பு வழியே உறிஞ்சப்படுகின்றன எனக் கூறுக. ஹோலோஃபைடிக்குக்கு யூக்ளினாவையும் அதன் பசுங்கணிகங்களையும் பெயரிடுக. கலப்பு ஊட்டத்துக்கு யூக்ளினா ஒளியில் ஒளிச்சேர்க்கை செய்து குறைந்த ஒளியில் அல்லது இருளில் கரிமப் பொருளை உறிஞ்சும் என்றும், சில சிலியேட்டுகளுக்குப் பாசிக் கூட்டுயிரிகள் உண்டு என்றும் கூறுக."),
                     bp("If the question asks for a comparison between Amoeba and Paramecium, the table is simple. Amoeba has no cytostome and no fixed anus, takes food by pseudopodia, and egests at any point. Paramecium has an oral groove, cytostome and cytopharynx, takes food by a ciliary current, and egests at the cytoproct. Both form food vacuoles, and in both the digestion is intracellular. A diagram of the food vacuole path is worth drawing, since the examiner awards marks for the sequence." to
                         "அமீபாவுக்கும் பாரமீசியத்துக்கும் ஒப்பீடு கேட்கப்பட்டால் அட்டவணை எளிது. அமீபாவுக்கு சைட்டோஸ்டோமும் நிலையான குதமும் இல்லை; போலிக்கால்களால் உண்கிறது; எந்தப் புள்ளியிலும் வெளியேற்றுகிறது. பாரமீசியத்துக்கு வாய்ப் பள்ளம், சைட்டோஸ்டோம், சைட்டோஃபாரிங்க்ஸ் உண்டு; மயிரிழை நீரோட்டத்தால் உண்கிறது; சைட்டோபிராக்டில் வெளியேற்றுகிறது. இரண்டும் உணவு நுண்குமிழ்களை உருவாக்குகின்றன; இரண்டிலும் செரிமானம் செல்லுக்குள். உணவு நுண்குமிழ் பாதையின் படம் வரைவது மதிப்புடையது; ஏனெனில் தேர்வாளர் வரிசைக்கு மதிப்பெண் வழங்குகிறார்."),
-                    bdef("Intracellular digestion", "செல்லுக்குள் செரிமானம்", "Digestion that takes place inside a cell, within food vacuoles." to
+                    bdef("Intracellular digestion", "செல்லுக்குள் செரிமானம் (Intracellular digestion)", "Digestion that takes place inside a cell, within food vacuoles." to
                         "செல்லுக்குள், உணவு நுண்குமிழ்களில் நடைபெறும் செரிமானம்."),
                     bdef("Symbiont", "கூட்டுயிரி", "An organism that lives in close association with another, such as an alga within a ciliate." to
                         "சிலியேட்டுக்குள் உள்ள பாசி போல, மற்றொன்றுடன் நெருங்கிய தொடர்பில் வாழும் உயிரி."),
@@ -150,9 +150,9 @@ object NutritionBookChapter {
                         "நான்கு ஊட்ட முறைகளும் ஒருசெல் உயிரிகள் உணவைப் பெறும் அனைத்து வழிகளையும் தீர்த்துவிடுவதில்லை. சிலியேட்டுக் குழுவான சக்டோரியன்கள் முதிர்ந்த நிலையில் ஒட்டி வாழ்பவை, மயிரிழை இல்லாதவை; ஆனால் முனையில் குமிழுடைய, கடக்கும் சிலியேட்டுடன் ஒட்டும் உணர்கொம்புகளைக் கொண்டவை; இரையின் உள்ளடக்கம் பின்னர் உணர்கொம்பு வழியாக சக்டோரியனின் உடலுக்குள் இழுக்கப்படுகிறது. பாரமீசியத்தை உண்ணும் சிலியேட்டான டிடினியம், நீட்டக்கூடிய வாயைக் கொண்டு தன்னளவே பெரிய இரையையும் விழுங்க வல்லது. ரேடியோலேரியன்களும் ஹீலியோசோவான்களும் மெல்லிய கதிர் போன்ற போலிக்கால்களில் உணவைப் பிடிக்கின்றன; ஃபோராமினிஃபெராக்கள் கிளைக்கும் போலிக்கால்களின் வலையை விரித்து அதைத் தொடும் சிறு உயிரிகளைப் பிடிக்கின்றன. இவ்வெடுத்துக்காட்டுகள் ஒவ்வொன்றும் திட உணவு உட்கொள்ளப்படுவதால் ஹோலோசோயிக் ஊட்டத்தின் வடிவம்; ஆனால் அதைப் பிடிக்கும் கருவி வேறு; ஊட்டம் பற்றிய நல்ல விடை ஹோலோசோயிக் என்ற சொல்லை மட்டுமின்றி கருவியையும் கூறுகிறது."),
                     bp("The parasitic protozoa show the saprozoic or osmotrophic method in its most developed form, since many of them live in fluids rich in dissolved food, such as the blood or the contents of the gut, and take it directly across the cell surface. Trypanosoma lives in blood plasma and absorbs nutrients that are dissolved there. The sporozoans pass through many different tissues and must feed in each. An important point is that the phagocytic method also appears in parasites, since Entamoeba histolytica ingests red blood cells and tissue cells of the host with its pseudopodia. A student should therefore not state that parasites are saprozoic or that they never ingest particles; the correct statement depends on the species and on the stage in the life cycle, and a table that names species with the method is the safest form of answer.",
                         "ஒட்டுண்ணிப் புரோட்டோசோவாக்கள் சாப்ரோசோயிக் அல்லது சவ்வூடு ஊட்ட முறையை அதன் மிகவும் வளர்ச்சியடைந்த வடிவில் காட்டுகின்றன; ஏனெனில் அவற்றில் பல இரத்தம் அல்லது குடலின் உள்ளடக்கம் போன்ற கரைந்த உணவு மிகுந்த திரவங்களில் வாழ்ந்து, அதைச் செல் மேற்பரப்பு வழியே நேரடியாக எடுத்துக்கொள்கின்றன. டிரைபனோசோமா இரத்தப் பிளாஸ்மாவில் வாழ்ந்து அங்கு கரைந்துள்ள ஊட்டங்களை உறிஞ்சுகிறது. ஸ்போரோசோவாக்கள் பல்வேறு திசுக்கள் வழியே சென்று ஒவ்வொன்றிலும் உண்ண வேண்டியுள்ளன. முக்கிய கருத்து: ஒட்டுண்ணிகளிலும் உட்செல் விழுங்கு முறை தோன்றுகிறது; எண்டமீபா ஹிஸ்டாலிட்டிகா விருந்தோம்பியின் சிவப்பணுக்களையும் திசுச் செல்களையும் தன் போலிக்கால்களால் விழுங்குகிறது. எனவே ஒட்டுண்ணிகள் சாப்ரோசோயிக் எனவோ துகள்களை ஒருபோதும் உட்கொள்வதில்லை எனவோ மாணவர் கூறக்கூடாது; சரியான கூற்று இனத்தையும் வாழ்க்கைச் சுழற்சி நிலையையும் சார்ந்தது; இனங்களை முறையுடன் பெயரிடும் அட்டவணையே பாதுகாப்பான விடை வடிவம்."),
-                    bdef("Suctorian", "சக்டோரியன்", "A ciliate that is attached when adult, has tentacles with knobbed ends, and feeds by sucking the contents of its prey." to
+                    bdef("Suctorian", "சக்டோரியன் (Suctorian)", "A ciliate that is attached when adult, has tentacles with knobbed ends, and feeds by sucking the contents of its prey." to
                         "முதிர்ந்த நிலையில் ஒட்டி வாழும், முனையில் குமிழுடைய உணர்கொம்புகள் கொண்டு இரையின் உள்ளடக்கத்தை உறிஞ்சி உண்ணும் சிலியேட்டு."),
-                    bdef("Osmotrophy", "சவ்வூடு ஊட்டம்", "Feeding by absorbing dissolved food across the cell surface." to
+                    bdef("Osmotrophy", "சவ்வூடு ஊட்டம் (Osmotrophy)", "Feeding by absorbing dissolved food across the cell surface." to
                         "கரைந்த உணவைச் செல் மேற்பரப்பு வழியே உறிஞ்சி உண்ணுதல்."),
                 )),
             bsec("digestion-detail", "The chemistry of the food vacuole", "உணவு நுண்குமிழின் வேதியியல்", 
@@ -161,7 +161,7 @@ object NutritionBookChapter {
                         "உணவு நுண்குமிழ் ஒரு சிறு செரிமான உறுப்பு; அதன் வரலாற்றைப் பாரமீசியத்தில் பின்தொடரலாம். சைட்டோஃபாரிங்க்ஸில் உருவான பிறகு அது எண்டோபிளாசத்தின் ஓட்டத்தால் செல்லைச் சுற்றி எடுத்துச் செல்லப்படுகிறது; இப்பயணத்தின்போது உள்ளடக்கம் மாறுகிறது. முதல் கட்டத்தில் நுண்குமிழ் அமிலமாவதாக விவரிக்கப்படுகிறது; அது உட்கொள்ளப்பட்ட பாக்டீரியாக்களைக் கொல்லும் நிலை; அடுத்த கட்டத்தில் அது காரமாகிறது; அப்போது புரதம், கார்போஹைட்ரேட், கொழுப்பைச் செரிக்கும் நொதிகள் செயல்படுகின்றன. செரிந்த பொருட்கள் நுண்குமிழின் சவ்வு வழியே சைட்டோபிளாசத்துக்குள் செல்கின்றன; இப்போது சிறிதாகிவிட்ட நுண்குமிழ் சைட்டோபிராக்ட்டுக்கு எடுத்துச் செல்லப்பட்டு எச்சம் வெளியேற்றப்படுகிறது. குறிகாட்டிச் சாயங்களுடன் செய்த ஆய்வுகள் pH மாற்றத்தைக் காட்டப் பயன்பட்டன; நூலிலுள்ள விளக்கம் இனத்தையும் உணவையும் பொறுத்து மாறும் செயல்முறையின் எளிமைப்படுத்தல்."),
                     bp("The vacuole is not a closed box. Its membrane is joined by small bodies from the cytoplasm, which are the lysosomes in the usual terminology of cell biology, and they bring the digestive enzymes to it. The membrane also controls the passage of products across it, and parts of it are recycled when the vacuole shrinks. The relation between the food vacuole of a protozoan and the phagocytic vacuole of a white blood cell is a favourite comparison, since both are examples of intracellular digestion, and the white cell is, in a sense, a cell that has kept the feeding method of a unicellular ancestor. It is better to write this as an analogy of mechanism and not as a statement of ancestry, because the white cell is a specialised cell of a multicellular animal.",
                         "நுண்குமிழ் மூடிய பெட்டி அல்ல. அதன் சவ்வுடன் சைட்டோபிளாசத்திலிருந்து வரும் சிறு உடல்கள், செல் உயிரியலின் வழக்கமான சொல்லில் லைசோசோம்கள், இணைந்து செரிமான நொதிகளை அதற்குக் கொண்டுவருகின்றன. சவ்வு தன் வழியே பொருட்கள் செல்வதையும் கட்டுப்படுத்துகிறது; நுண்குமிழ் சுருங்கும்போது அதன் பகுதிகள் மறுசுழற்சி செய்யப்படுகின்றன. புரோட்டோசோவாவின் உணவு நுண்குமிழுக்கும் வெள்ளையணுவின் விழுங்கு நுண்குமிழுக்கும் இடையிலான உறவு விருப்பமான ஒப்பீடு; ஏனெனில் இரண்டுமே செல்லுக்குள் செரிமானத்தின் எடுத்துக்காட்டுகள்; வெள்ளையணு, ஒரு வகையில், ஒருசெல் மூதாதையின் உணவூட்ட முறையைத் தக்கவைத்த செல். இதை வழிமரபுக் கூற்றாக அல்ல, செயல்முறையின் ஒப்புமையாக எழுதுவது சிறந்தது; ஏனெனில் வெள்ளையணு பன்மடிச் செல் விலங்கின் சிறப்புற்ற செல்."),
-                    bdef("Lysosome", "லைசோசோம்", "A small body of the cytoplasm that contains digestive enzymes and fuses with food vacuoles." to
+                    bdef("Lysosome", "லைசோசோம் (Lysosome)", "A small body of the cytoplasm that contains digestive enzymes and fuses with food vacuoles." to
                         "செரிமான நொதிகளைக் கொண்டு, உணவு நுண்குமிழ்களுடன் இணையும் சைட்டோபிளாசத்தின் சிறு உடல்."),
                     bdef("pH", "pH (அமில-கார அளவு)", "A scale of acidity and alkalinity in which values below 7 are acid and values above 7 are alkaline." to
                         "அமிலத்தன்மை, காரத்தன்மையின் அளவுகோல்; 7-க்குக் கீழ் அமிலம், 7-க்கு மேல் காரம்."),

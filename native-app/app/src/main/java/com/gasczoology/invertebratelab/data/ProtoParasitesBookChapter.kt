@@ -36,13 +36,13 @@ object ProtoParasitesBookChapter {
                         "உண்டாக்கும் நோய் அமீபிக் வயிற்றுக்கடுப்பு (அமீபியாசிஸ்). மக்கள் விழுங்கும் பொருட்களின் மல மாசு மூலம் தொற்று பரவுவதால் கட்டுப்பாடு பாதுகாப்பான நீர், உணவு, துப்புரவை நம்பியுள்ளது. இவை பொதுச் சுகாதாரக் கொள்கைகள்; கழிவுநீரிலிருந்து நீர் வழங்கல்களைப் பாதுகாத்தல், கை கழுவுதல், உணவுகளை முறையாகக் கழுவிச் சமைத்தல், மருத்துவ வழிகாட்டுதலில் தொற்றுற்றவருக்கு சிகிச்சை ஆகியவை அடங்கும். குடிநீரைக் கொதிக்க வைப்பது சிஸ்ட்களுக்கு எதிராக திறன் மிக்கது; கீழே விவரிக்கப்படும் தூக்க நோயுடனான வேறுபாடு பயனுள்ள பாடமாகிறது."),
                     bdef("Trophozoite", "டிரோபோசோயிட்", "The active, feeding and multiplying stage of a protozoan parasite." to
                         "புரோட்டோசோவா ஒட்டுண்ணியின் செயல்படும், உண்ணும், பெருகும் நிலை."),
-                    bdef("Excystation", "சிஸ்ட் நீக்கம்", "The emergence of the parasite from its cyst in the host." to
+                    bdef("Excystation", "சிஸ்ட் நீக்கம் (Excystation)", "The emergence of the parasite from its cyst in the host." to
                         "விருந்தோம்பியில் ஒட்டுண்ணி தன் கூட்டிலிருந்து வெளிவருதல்."),
-                    bdef("Faecal-oral transmission", "மல-வாய்ப் பரவல்", "Transmission by swallowing material contaminated with faeces." to
+                    bdef("Faecal-oral transmission", "மல-வாய்ப் பரவல் (Faecal-oral transmission)", "Transmission by swallowing material contaminated with faeces." to
                         "மலத்தால் மாசுபட்ட பொருளை விழுங்குவதால் பரவல்."),
                     bdef("Amoebiasis", "அமீபியாசிஸ்", "The disease caused by Entamoeba histolytica." to
                         "எண்டமீபா ஹிஸ்டோலிடிகாவால் உண்டாகும் நோய்."),
-                    bdef("Abscess", "சீழ்க்கட்டி", "A collection of pus and dead tissue formed in an organ in response to infection." to
+                    bdef("Abscess", "சீழ்க்கட்டி (Abscess)", "A collection of pus and dead tissue formed in an organ in response to infection." to
                         "தொற்றுக்குப் பதிலாக உறுப்பில் உருவாகும் சீழும் இறந்த திசுவும் சேர்ந்த தொகுப்பு."),
                 )),
             bsec("trypanosoma", "Trypanosoma brucei and sleeping sickness", "டிரிப்பனோசோமா புரூசியும் தூக்க நோயும்",
@@ -55,13 +55,13 @@ object ProtoParasitesBookChapter {
                         "தூக்க நோய்க் கட்டுப்பாடு நோய்க்கடத்தியையும் தொற்றுற்ற விருந்தோம்பிகளையும் நோக்கியது. மக்கள் செட்ஸி ஈக்களுக்கு வெளிப்படுவதைக் குறைத்தலும், பொருத்தமான இடங்களில் நோய்க்கடத்திக் கட்டுப்பாட்டுத் திட்டங்களும், தொற்றுற்றவரின் கண்காணிப்பு, நோயறிதல், சிகிச்சையும் இதில் அடங்கும். சிகிச்சை மருத்துவ விஷயம்; நோயின் நிலையைப் பொறுத்தது; மருந்துகள் கண்காணிப்பில் பயன்படுத்தப்படுகின்றன. நோயின் பரவல் செட்ஸி ஈக்கள் உள்ள ஆப்பிரிக்காவின் பகுதிகளுக்கு வரம்புக்குட்பட்டது; இது நோய்க்கடத்தியைச் சார்ந்திருப்பதன் விளைவு."),
                     bdef("Trypanosoma", "டிரிப்பனோசோமா", "A genus of flagellate parasites that live in the blood and tissues of vertebrates." to
                         "முதுகெலும்பிகளின் இரத்தம், திசுக்களில் வாழும் கசையிழை ஒட்டுண்ணிகளின் பேரினம்."),
-                    bdef("Tsetse fly", "செட்ஸி ஈ", "A blood-sucking fly of the genus Glossina that transmits Trypanosoma brucei." to
+                    bdef("Tsetse fly", "செட்ஸி ஈ (Tsetse fly)", "A blood-sucking fly of the genus Glossina that transmits Trypanosoma brucei." to
                         "டிரிப்பனோசோமா புரூசியைப் பரப்பும் கிளாசினா பேரினத்தின் இரத்தம் உறிஞ்சும் ஈ."),
-                    bdef("Undulating membrane", "அலை சவ்வு", "A fold of the cell surface that connects the flagellum to the body of a trypanosome." to
+                    bdef("Undulating membrane", "அலை சவ்வு (Undulating membrane)", "A fold of the cell surface that connects the flagellum to the body of a trypanosome." to
                         "டிரிப்பனோசோமின் கசையை உடலுடன் இணைக்கும் செல் மேற்பரப்பின் மடிப்பு."),
                     bdef("Vector", "நோய்க்கடத்தி", "An animal, often an insect, that carries a parasite from one host to another." to
                         "ஒட்டுண்ணியை ஓர் விருந்தோம்பியிலிருந்து மற்றொன்றுக்குக் கொண்டுசெல்லும், பெரும்பாலும் பூச்சியான, விலங்கு."),
-                    bdef("Reservoir host", "சேமிப்பு விருந்தோம்பி", "An animal in which a parasite lives and from which it can spread to man." to
+                    bdef("Reservoir host", "சேமிப்பு விருந்தோம்பி (Reservoir host)", "An animal in which a parasite lives and from which it can spread to man." to
                         "ஒட்டுண்ணி வாழும், அங்கிருந்து மனிதனுக்குப் பரவக்கூடிய விலங்கு."),
                 )),
             bsec("boiling", "Why boiling water does not control sleeping sickness", "கொதித்த நீர் ஏன் தூக்க நோயைக் கட்டுப்படுத்தாது",
@@ -73,11 +73,11 @@ object ProtoParasitesBookChapter {
                     bnote("Match the control to the route", "கட்டுப்பாட்டை வழிக்குப் பொருத்துக",
                         "Water-borne infection: safe water. Vector-borne infection: control the vector and treat the infected." to
                             "நீரால் பரவும் தொற்று: பாதுகாப்பான நீர். நோய்க்கடத்தி வழி தொற்று: நோய்க்கடத்தியைக் கட்டுப்படுத்தி தொற்றுற்றவருக்கு சிகிச்சை."),
-                    bdef("Vector-borne disease", "நோய்க்கடத்தி வழி நோய்", "A disease transmitted from host to host by a vector, such as an insect." to
+                    bdef("Vector-borne disease", "நோய்க்கடத்தி வழி நோய் (Vector-borne disease)", "A disease transmitted from host to host by a vector, such as an insect." to
                         "பூச்சி போன்ற நோய்க்கடத்தியால் விருந்தோம்பியிலிருந்து விருந்தோம்பிக்குப் பரவும் நோய்."),
-                    bdef("Water-borne disease", "நீரால் பரவும் நோய்", "A disease transmitted by drinking or using water contaminated by pathogens." to
+                    bdef("Water-borne disease", "நீரால் பரவும் நோய் (Water-borne disease)", "A disease transmitted by drinking or using water contaminated by pathogens." to
                         "நோயூக்கிகளால் மாசுபட்ட நீரைக் குடிப்பதால் அல்லது பயன்படுத்துவதால் பரவும் நோய்."),
-                    bdef("Surveillance", "கண்காணிப்பு", "The systematic collection and study of data on cases of a disease to guide control." to
+                    bdef("Surveillance", "கண்காணிப்பு (Surveillance)", "The systematic collection and study of data on cases of a disease to guide control." to
                         "கட்டுப்பாட்டை வழிநடத்த நோய் நிகழ்வுகளின் தரவை முறையாகச் சேகரித்துப் படித்தல்."),
                 )),
             bsec("leishmania", "Leishmania and the leishmaniases", "லீஷ்மேனியாவும் லீஷ்மேனியாசிஸ்களும்",
@@ -88,15 +88,15 @@ object ProtoParasitesBookChapter {
                         "தொற்றுற்ற பெண் மணல் ஈக்களான ஃபிளெபோடோமின் ஈக்களின் கடியால் ஒட்டுண்ணி பரவுகிறது; மணல் ஈ அவசியமான நோய்க்கடத்தி. அது உண்டாக்கும் நோய்கள் லீஷ்மேனியாசிஸ்கள்; நோயின் வடிவம் லீஷ்மேனியா இனத்தையும் விருந்தோம்பியையும் சார்ந்தது. லீஷ்மேனியா இனங்கள் தோலில் புண்கள் உருவாகும் தோல் லீஷ்மேனியாசிஸ், சளிச்சவ்வுகளைப் பாதிக்கும் தோல்-சளிச்சவ்வு லீஷ்மேனியாசிஸ், மண்ணீரல், கல்லீரல் போன்ற உள் உறுப்புகள் பாதிக்கப்படும் உள்ளுறுப்பு லீஷ்மேனியாசிஸை உண்டாக்குகின்றன. உள்ளுறுப்பு வடிவம் மிகத் தீவிரமானது; சிகிச்சையளிக்கப்படாவிட்டால் உயிருக்கு ஆபத்தாகலாம்."),
                     bp("Control rests on measures against the sand fly, which include reducing exposure to its bites, and on the diagnosis and treatment of cases. Since the vector is a small insect that is active mostly at dusk and night, measures such as sleeping under protected nets are among those suggested, though the details of local control are matters for public health authorities. Where animals such as dogs are reservoirs, they are also part of the control of the disease in that area." to
                         "கட்டுப்பாடு மணல் ஈக்கு எதிரான நடவடிக்கைகளில் தங்கியுள்ளது; அதன் கடிக்கு வெளிப்படுவதைக் குறைத்தலும், நோய் நிகழ்வுகளின் நோயறிதல், சிகிச்சையும் அடங்கும். நோய்க்கடத்தி பெரும்பாலும் அந்தி, இரவில் செயல்படும் சிறு பூச்சி என்பதால் பாதுகாக்கப்பட்ட வலைகளுக்குள் உறங்குதல் போன்ற நடவடிக்கைகள் பரிந்துரைக்கப்படுபவற்றுள் அடங்கும்; உள்ளூர் கட்டுப்பாட்டு விவரங்கள் பொதுச் சுகாதார அதிகாரிகளுக்குரியவை. நாய்கள் போன்ற விலங்குகள் சேமிப்பிடங்களாக உள்ள இடங்களில் அவையும் அப்பகுதியில் நோய்க் கட்டுப்பாட்டின் பகுதி."),
-                    bdef("Promastigote", "ப்ரோமாஸ்டிகோட்", "The slender, flagellated form of Leishmania found in the sand fly." to
+                    bdef("Promastigote", "ப்ரோமாஸ்டிகோட் (Promastigote)", "The slender, flagellated form of Leishmania found in the sand fly." to
                         "மணல் ஈயில் காணப்படும் லீஷ்மேனியாவின் மெல்லிய, கசையுடைய வடிவம்."),
-                    bdef("Amastigote", "அமாஸ்டிகோட்", "The small, rounded form of Leishmania without a free flagellum that multiplies inside macrophages." to
+                    bdef("Amastigote", "அமாஸ்டிகோட் (Amastigote)", "The small, rounded form of Leishmania without a free flagellum that multiplies inside macrophages." to
                         "மேக்ரோஃபேஜ்களுக்குள் பெருகும், தனிக் கசையற்ற லீஷ்மேனியாவின் சிறிய உருண்ட வடிவம்."),
                     bdef("Macrophage", "மேக்ரோஃபேஜ்", "A large white blood cell that engulfs and destroys foreign particles and micro-organisms." to
                         "அயல் துகள்களையும் நுண்ணுயிரிகளையும் விழுங்கி அழிக்கும் பெரிய வெள்ளை இரத்த அணு."),
-                    bdef("Sand fly", "மணல் ஈ", "A small biting fly of the subfamily Phlebotominae that transmits Leishmania." to
+                    bdef("Sand fly", "மணல் ஈ (Sand fly)", "A small biting fly of the subfamily Phlebotominae that transmits Leishmania." to
                         "லீஷ்மேனியாவைப் பரப்பும் ஃபிளெபோடோமினே துணைக் குடும்பத்தின் சிறு கடிக்கும் ஈ."),
-                    bdef("Leishmaniasis", "லீஷ்மேனியாசிஸ்", "Any of the diseases caused by species of Leishmania: cutaneous, mucocutaneous or visceral." to
+                    bdef("Leishmaniasis", "லீஷ்மேனியாசிஸ் (Leishmaniasis)", "Any of the diseases caused by species of Leishmania: cutaneous, mucocutaneous or visceral." to
                         "லீஷ்மேனியா இனங்களால் உண்டாகும் தோல், தோல்-சளிச்சவ்வு அல்லது உள்ளுறுப்பு நோய்களில் ஏதேனும் ஒன்று."),
                 )),
             bsec("antigenic", "How trypanosomes escape the immune system", "டிரிப்பனோசோம்கள் நோயெதிர்ப்பிலிருந்து எவ்வாறு தப்புகின்றன",
@@ -105,9 +105,9 @@ object ProtoParasitesBookChapter {
                         "இரத்தத்திலுள்ள டிரிப்பனோசோம் தன் வாழ்நாள் முழுவதும் விருந்தோம்பியின் எதிர்ப்பொருட்களுக்கு வெளிப்படுகிறது; ஆயினும் டிரிப்பனோசோமா புரூசி தொற்று மாதங்கள் அல்லது ஆண்டுகள் நீடிக்கலாம். ஒட்டுண்ணி இதை ஆன்டிஜன் மாற்றத்தால் சாதிக்கிறது. அதன் மேற்பரப்பு ஒரே வகைப் புரதத்தின் அடர் உறையால் மூடப்பட்டுள்ளது; விருந்தோம்பி அதற்கு எதிர்ப்பொருட்களை உருவாக்குகிறது. ஆனால் ஒவ்வொரு டிரிப்பனோசோமும் இப்புரதத்தின் வெவ்வேறு வடிவங்களுக்கான பல மரபணுக்களைக் கொண்டு, காட்டும் உறையை மாற்ற முடியும். ஒரு உறை கொண்ட பெரும்பாலான எண்ணிக்கையை எதிர்ப்பொருட்கள் அழிக்கும்போது, வேறு உறை கொண்ட சில செல்கள் தப்பிப் பெருகுகின்றன; தொற்று அலைகளாக மீண்டும் உயர்கிறது; ஒவ்வொரு அலையிலும் வேறு உறை."),
                     bp("The practical consequence is that the host never catches up with the parasite, and it is also the reason why a vaccine against sleeping sickness has not been developed. A student should be able to explain this in a few sentences as an example of how a parasite survives in a host that mounts an immune response. The same principle, differing in detail, is found in other parasites, including the malarial parasite.",
                         "நடைமுறை விளைவு, விருந்தோம்பி ஒட்டுண்ணியை ஒருபோதும் எட்டுவதில்லை; தூக்க நோய்க்கு எதிரான தடுப்பூசி உருவாக்கப்படாததற்கும் இதுவே காரணம். நோயெதிர்ப்பு எதிர்வினை எழுப்பும் விருந்தோம்பியில் ஒட்டுண்ணி எவ்வாறு உயிர்வாழ்கிறது என்பதற்கு எடுத்துக்காட்டாக மாணவர் இதை சில வாக்கியங்களில் விளக்க முடிய வேண்டும். விவரத்தில் வேறுபட்டாலும் அதே கொள்கை மலேரியா ஒட்டுண்ணி உட்பட பிற ஒட்டுண்ணிகளிலும் காணப்படுகிறது."),
-                    bdef("Antigenic variation", "ஆன்டிஜன் மாற்றம்", "The ability of a parasite to change the surface proteins that the immune system recognises, so that it escapes the antibodies made against the earlier form." to
+                    bdef("Antigenic variation", "ஆன்டிஜன் மாற்றம் (Antigenic variation)", "The ability of a parasite to change the surface proteins that the immune system recognises, so that it escapes the antibodies made against the earlier form." to
                         "நோயெதிர்ப்பு மண்டலம் அடையாளம் காணும் மேற்பரப்புப் புரதங்களை மாற்றி, முந்தைய வடிவத்துக்கு எதிரான எதிர்ப்பொருட்களிலிருந்து தப்பும் ஒட்டுண்ணியின் திறன்."),
-                    bdef("Antibody", "எதிர்ப்பொருள்", "A protein made by the immune system that binds to a particular foreign molecule and helps to remove it." to
+                    bdef("Antibody", "எதிர்ப்பொருள் (Antibody)", "A protein made by the immune system that binds to a particular foreign molecule and helps to remove it." to
                         "குறிப்பிட்ட அயல் மூலக்கூறுடன் இணைந்து அதை அகற்ற உதவும், நோயெதிர்ப்பு மண்டலம் உருவாக்கும் புரதம்."),
                 )),
             bsec("others", "Other protozoan parasites in brief", "பிற புரோட்டோசோவா ஒட்டுண்ணிகள் சுருக்கமாக",

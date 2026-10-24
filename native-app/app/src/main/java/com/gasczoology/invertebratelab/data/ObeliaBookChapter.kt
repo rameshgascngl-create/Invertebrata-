@@ -23,10 +23,10 @@ object ObeliaBookChapter {
                 blocks = listOf(
                     bp("Obelia is a marine hydroid, found in shallow coastal water, where it grows on stones, shells, wooden piles, seaweeds and the hulls of boats. The colony is fixed and so it feeds on the small organisms carried to it by the water. A colony may grow to a few centimetres in height and appears as a delicate, feathery or fern-like growth, often mistaken for a seaweed by the beginner." to
                         "ஒபீலியா கடல் ஹைட்ராய்டு; ஆழமற்ற கடலோர நீரில், கற்கள், ஓடுகள், மரக்கம்பங்கள், கடற்பாசிகள், படகுகளின் அடிப்பகுதிகள் மீது வளர்கிறது. காலனி நிலையானது; நீர் கொண்டு வரும் சிறு உயிரிகளை உண்கிறது. காலனி சில சென்டிமீட்டர் உயரம் வளரக்கூடும்; மென்மையான, இறகு அல்லது பன்னம் போன்ற வளர்ச்சியாகத் தோன்றும்; தொடக்கநிலையினர் அடிக்கடி கடற்பாசி என்று தவறாக எண்ணுவர்."),
-                    bdef("Hydroid", "ஹைட்ராய்டு",
+                    bdef("Hydroid", "ஹைட்ராய்டு (Hydroid)",
                         "A hydrozoan in its polyp stage, especially one that forms an attached, branching colony." to
                             "பாலிப் நிலையிலுள்ள ஹைட்ரோசோவா; குறிப்பாக ஒட்டிய, கிளைத்த காலனியை உருவாக்குவது."),
-                    bdef("Zooid", "சூயிட்",
+                    bdef("Zooid", "சூயிட் (Zooid)",
                         "An individual member of a colony, such as a feeding hydranth or a reproductive gonangium." to
                             "உணவூட்டும் ஹைட்ராந்த் அல்லது இனப்பெருக்க கோனாஞ்சியம் போன்ற காலனியின் தனி உறுப்பினர்."),
                 )),
@@ -43,16 +43,16 @@ object ObeliaBookChapter {
                         "ஒவ்வொரு ஹைட்ராந்தைச் சுற்றியும் பெரிசார்க் கிண்ணமாக விரிகிறது; அது ஹைட்ரோதீகா; ஹைட்ராந்த் அதனுள் பின்வாங்க முடியும். ஒவ்வொரு கோனாஞ்சியத்தைச் சுற்றியும் நீண்ட, குடுவை வடிவ உறையான கோனோதீகாவை உருவாக்குகிறது. பெரிசார்க் மூட்டுகளில் வளையங்களாக இருப்பதால் தண்டுக்கு வரம்புக்குட்பட்ட நெகிழ்வு கிடைக்கிறது."),
                     bfig("obelia/colony", "Part of a colony of Obelia, showing the hydrorhiza, the branching stem with perisarc and coenosarc, feeding hydranths in their hydrothecae, and gonangia." to
                         "ஒபீலியா காலனியின் ஒரு பகுதி: ஹைட்ரோரைசா, பெரிசார்க்கும் சீனோசார்க்கும் கொண்ட கிளைத்த தண்டு, ஹைட்ரோதீகாவில் உள்ள ஹைட்ராந்துகள், கோனாஞ்சியம்."),
-                    bdef("Perisarc", "பெரிசார்க்",
+                    bdef("Perisarc", "பெரிசார்க் (Perisarc)",
                         "The non-living, chitinous outer covering of the stem and branches of a hydroid colony." to
                             "ஹைட்ராய்டு காலனியின் தண்டு, கிளைகளின் உயிரற்ற, கைட்டின் வெளி உறை."),
-                    bdef("Coenosarc", "சீனோசார்க்",
+                    bdef("Coenosarc", "சீனோசார்க் (Coenosarc)",
                         "The living tissue inside the perisarc that joins all the zooids of the colony and encloses the common gastrovascular cavity." to
                             "பெரிசார்க்கினுள் உள்ள, காலனியின் அனைத்து சூயிட்டுகளையும் இணைத்து பொதுவான காஸ்ட்ரோவாஸ்குலர் குழியை அடைக்கும் உயிருள்ள திசு."),
-                    bdef("Hydrotheca", "ஹைட்ரோதீகா",
+                    bdef("Hydrotheca", "ஹைட்ரோதீகா (Hydrotheca)",
                         "The cup of perisarc surrounding a hydranth." to
                             "ஹைட்ராந்தைச் சுற்றியுள்ள பெரிசார்க் கிண்ணம்."),
-                    bdef("Hydrorhiza", "ஹைட்ரோரைசா",
+                    bdef("Hydrorhiza", "ஹைட்ரோரைசா (Hydrorhiza)",
                         "The creeping, root-like stolon by which a hydroid colony is attached to the substratum." to
                             "ஹைட்ராய்டு காலனி அடித்தளத்தில் ஒட்டியிருக்கும், ஊர்ந்து செல்லும் வேர் போன்ற ஸ்டோலன்."),
                 )),
@@ -65,7 +65,7 @@ object ObeliaBookChapter {
                     bdef("Hypostome", "ஹைப்போஸ்டோம்",
                         "The raised, cone-shaped region of a hydranth that bears the mouth." to
                             "ஹைட்ராந்தின் வாயைத் தாங்கும் உயர்ந்த கூம்பு வடிவப் பகுதி."),
-                    bdef("Gastrozooid", "காஸ்ட்ரோசூயிட்",
+                    bdef("Gastrozooid", "காஸ்ட்ரோசூயிட் (Gastrozooid)",
                         "The feeding zooid, or hydranth, of a hydroid colony." to
                             "ஹைட்ராய்டு காலனியின் உணவூட்டும் சூயிட், அதாவது ஹைட்ராந்த்."),
                 )),
@@ -77,13 +77,13 @@ object ObeliaBookChapter {
                         "மொட்டுகள் பிளாஸ்டோஸ்டைல் வழியாகத் தொடராக வளர்கின்றன; முதிர்ந்தது மேலே இருக்கும்; ஒவ்வொன்றும் முதிர்ந்ததும் கோனோதீகாவின் திறந்த முனை வழியாக சிறிய, சுதந்திரமாக நீந்தும் மெடுசாவாக வெளியேறுகிறது. இவ்வாறு ஒரே கோனாஞ்சியம் ஒரு காலப்பகுதியில் பல மெடுசாக்களை வெளிவிடுகிறது."),
                     bfig("obelia/hydranth-gonangium", "A hydranth and a gonangium of Obelia, showing the hypostome, tentacles and hydrotheca of the hydranth and the blastostyle with medusa buds inside the gonotheca of the gonangium." to
                         "ஒபீலியாவின் ஹைட்ராந்தும் கோனாஞ்சியமும்: ஹைட்ராந்தின் ஹைப்போஸ்டோம், உணர்கொம்புகள், ஹைட்ரோதீகா; கோனாஞ்சியத்தின் கோனோதீகாவினுள் பிளாஸ்டோஸ்டைலும் மெடுசா மொட்டுகளும்."),
-                    bdef("Gonangium", "கோனாஞ்சியம்",
+                    bdef("Gonangium", "கோனாஞ்சியம் (Gonangium)",
                         "The reproductive zooid of Obelia, enclosed in a gonotheca, which produces medusa buds on a blastostyle." to
                             "ஒபீலியாவின் இனப்பெருக்க சூயிட்; கோனோதீகாவால் மூடப்பட்டு, பிளாஸ்டோஸ்டைலில் மெடுசா மொட்டுகளை உருவாக்குகிறது."),
-                    bdef("Blastostyle", "பிளாஸ்டோஸ்டைல்",
+                    bdef("Blastostyle", "பிளாஸ்டோஸ்டைல் (Blastostyle)",
                         "The central stalk of a gonangium on which the medusa buds are formed." to
                             "மெடுசா மொட்டுகள் உருவாகும் கோனாஞ்சியத்தின் மையத் தண்டு."),
-                    bdef("Gonotheca", "கோனோதீகா",
+                    bdef("Gonotheca", "கோனோதீகா (Gonotheca)",
                         "The perisarc case that encloses a gonangium." to
                             "கோனாஞ்சியத்தை மூடும் பெரிசார்க் உறை."),
                 )),
@@ -94,7 +94,7 @@ object ObeliaBookChapter {
                     bnote("One genotype", "ஒரே மரபணுவகை",
                         "All the zooids of a colony are genetically alike because they arise by budding from one planula. Their different forms result from the way they develop, and not from different genes." to
                             "காலனியின் அனைத்து சூயிட்டுகளும் ஒரே பிளானுலாவிலிருந்து மொட்டுவிடுவதால் தோன்றியதால் மரபுப்படி ஒத்தவை. அவற்றின் வெவ்வேறு வடிவங்கள் அவை வளரும் விதத்தால் ஏற்படுகின்றன; வெவ்வேறு மரபணுக்களால் அல்ல."),
-                    bdef("Polymorphism", "பல்வடிவத்தன்மை",
+                    bdef("Polymorphism", "பல்வடிவத்தன்மை (Polymorphism)",
                         "The occurrence of zooids of different forms and functions in one colony." to
                             "ஒரே காலனியில் வெவ்வேறு வடிவம், பணி கொண்ட சூயிட்டுகள் இருத்தல்."),
                 )),
@@ -121,13 +121,13 @@ object ObeliaBookChapter {
                         "நான்கு இனப்பெருக்கச் சுரப்பிகள் ஆரக் கால்வாய்களின் மேல் உள்ளன; அவற்றின் தோற்றம் சில நூல்களில் காஸ்ட்ரோடெர்மிஸ், சிலவற்றில் எப்பிடெர்மிஸ் எனக் கூறப்படுகிறது; நூல்கள் இதில் வேறுபடுகின்றன; விடைக்கு சுரப்பிகள் ஆரக் கால்வாய்களின் மேல் தாங்கப்படுகின்றன எனக் கூறுவது போதுமானது. பாலினங்கள் தனித்தனி. மெடுசா மணியின் தாள சுருக்கத்தால் நீந்துகிறது; வெலம் நீர்ப்பீச்சை ஒடுக்குகிறது; பாலிப்பைப் போலவே சிறு விலங்குகளை உண்கிறது."),
                     bfig("obelia/medusa", "The medusa of Obelia, with the manubrium and mouth, radial and ring canals, gonads, marginal tentacles and statocysts." to
                         "ஒபீலியாவின் மெடுசா: மேனுப்ரியம், வாய், ஆர, வளையக் கால்வாய்கள், இனப்பெருக்கச் சுரப்பிகள், விளிம்பு உணர்கொம்புகள், ஸ்டேட்டோசிஸ்ட்கள்."),
-                    bdef("Velum", "வெலம்",
+                    bdef("Velum", "வெலம் (Velum)",
                         "The shelf of tissue projecting inwards from the margin of a hydrozoan medusa, which narrows the opening of the bell." to
                             "ஹைட்ரோசோவா மெடுசாவின் மணி விளிம்பிலிருந்து உள்நோக்கி நீட்டும், மணியின் திறப்பைச் சுருக்கும் திசு அலமாரி."),
-                    bdef("Manubrium", "மேனுப்ரியம்",
+                    bdef("Manubrium", "மேனுப்ரியம் (Manubrium)",
                         "The tube hanging from the centre of the subumbrella of a medusa, with the mouth at its tip." to
                             "மெடுசாவின் சப்பும்பிரெல்லா மையத்திலிருந்து தொங்கும், முனையில் வாயுடைய குழாய்."),
-                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட்",
+                    bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட் (Statocyst)",
                         "A small organ of balance at the margin of a medusa." to
                             "மெடுசாவின் விளிம்பிலுள்ள சிறு சமநிலை உறுப்பு."),
                 )),
@@ -145,7 +145,7 @@ object ObeliaBookChapter {
                         "ஒபீலியாவின் வாழ்க்கைச் சுழற்சி: காலனி, மெடுசா மொட்டு முதல் தனி மெடுசா, கருமுட்டை, பிளானுலா, இளம் பாலிப் வரை."),
                     bp("The life history is an alternation of an asexual polyp generation with a sexual medusa generation. This kind of life cycle is called metagenesis. It should be noted that the medusa is produced asexually by the polyp, but it is the medusa that makes the gametes, and the polyp itself makes none." to
                         "இவ்வாழ்க்கை வரலாறு பாலிலா பாலிப் தலைமுறையும் பாலின மெடுசா தலைமுறையும் மாறிமாறி வருவது. இவ்வகை வாழ்க்கைச் சுழற்சி மெட்டாஜெனிசிஸ் எனப்படுகிறது. மெடுசா பாலிப்பால் பாலிலா முறையில் உருவாகிறது, ஆனால் கேமீட்டுகளை உருவாக்குவது மெடுசாவே; பாலிப் தானே எதையும் உருவாக்குவதில்லை என்பதைக் கவனிக்க வேண்டும்."),
-                    bdef("Metagenesis", "மெட்டாஜெனிசிஸ்",
+                    bdef("Metagenesis", "மெட்டாஜெனிசிஸ் (Metagenesis)",
                         "A life cycle in which an asexual generation alternates with a sexual generation, as the polyp and medusa of Obelia do." to
                             "ஒபீலியாவின் பாலிப்பும் மெடுசாவும் போல, பாலிலா தலைமுறையும் பாலின தலைமுறையும் மாறிமாறி வரும் வாழ்க்கைச் சுழற்சி."),
                     bdef("Planula", "பிளானுலா",
@@ -181,7 +181,7 @@ object ObeliaBookChapter {
                         "நெமட்டோசிஸ்ட் கொண்ட நிடேரியாவின் கொட்டும் செல்."),
                     bdef("Nematocyst", "நெமட்டோசிஸ்ட்", "The capsule of a cnidoblast, in which a thread is coiled that is shot out to capture prey." to
                         "இரையைப் பிடிக்கச் சுடப்படும் நூல் சுருண்டுள்ள நிடோபிளாஸ்ட்டின் கூடு."),
-                    bdef("Interstitial cell", "இடைநிலை செல்", "An unspecialised cell of a hydroid that can develop into other kinds of cell." to
+                    bdef("Interstitial cell", "இடைநிலை செல் (Interstitial cell)", "An unspecialised cell of a hydroid that can develop into other kinds of cell." to
                         "பிற வகை செல்களாக வளரக்கூடிய ஹைட்ராய்டின் சிறப்புப் பெறாத செல்."),
                     bdef("Nerve net", "நரம்பு வலை", "A diffuse network of nerve cells, without a brain, in the body wall of a cnidarian." to
                         "நிடேரியாவின் உடற்சுவரிலுள்ள, மூளையற்ற, பரந்த நரம்பு செல் வலை."),
@@ -198,7 +198,7 @@ object ObeliaBookChapter {
                         "புதிய உயிரி அல்லது பகுதியாக வளரும் உடல் வளர்ச்சியால் நிகழும் பாலிலா இனப்பெருக்கம் அல்லது வளர்ச்சி."),
                     bdef("Plankton", "மிதவை உயிரிகள்", "The small organisms that drift in the water and are carried by its movements." to
                         "நீரில் மிதந்து அதன் இயக்கங்களால் கொண்டுசெல்லப்படும் சிறு உயிரிகள்."),
-                    bdef("Intertidal zone", "அலைகளிடை மண்டலம்", "The shore between the levels of high tide and low tide." to
+                    bdef("Intertidal zone", "அலைகளிடை மண்டலம் (Intertidal zone)", "The shore between the levels of high tide and low tide." to
                         "உயர் அலை, தாழ் அலை மட்டங்களுக்கிடையிலான கரைப் பகுதி."),
                     bdef("Regeneration", "மீளுருவாக்கம்", "The replacement of a lost part of the body by growth." to
                         "இழந்த உடற்பகுதியை வளர்ச்சியால் மாற்றுதல்."),

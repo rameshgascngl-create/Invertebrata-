@@ -28,15 +28,15 @@ object ParameciumBookChapter {
                         "மேற்பரப்பு பிளாஸ்மா சவ்வும் அதற்கு அடியிலுள்ள அமைப்புகளின் அடுக்கும் கொண்ட, சிறு பள்ளங்களின் அமைப்பில் அமைந்த பெல்லிக்கிளால் மூடப்பட்டுள்ளது. ஒவ்வொரு பள்ளத்திலும் ஒரு மயிரிழை, சில சமயம் இணை, உள்ளது; எனவே சிலியாக்கள் முழு உடலிலும் ஒழுங்கான நீள்வரிசைகளில் அமைந்துள்ளன; எண்ணிக்கை ஆயிரங்களில் கணக்கிடப்படுகிறது. ஒவ்வொரு சிலியமும் வழக்கமான அமைப்பில் நுண்குழல்களின் மையத்துடன் கூடிய செல் நீட்சி; அடியில் அடிப்படை உடல் உண்டு. வாய்ப் பள்ளத்தைச் சுற்றிலும் சிலியாக்கள் சற்று நீளமானவை; பின்முனையிலுள்ள கொத்து சற்று நீளமாக இருக்கலாம்."),
                     bp("Beneath the pellicle there is a layer of cytoplasm called the ectoplasm, which is clear and firm, and which contains the bases of the cilia and numerous spindle-shaped bodies, the trichocysts, set at right angles to the surface between the cilia. The inner cytoplasm, or endoplasm, is granular and fluid, and contains the nuclei, the food vacuoles and the contractile vacuoles. The trichocysts can be discharged as long threads when the animal is irritated, and they are thought to be for defence, though the function has been discussed and the statement should be given with the word thought." to
                         "பெல்லிக்கிளுக்கு அடியில் தெளிவான, உறுதியான எக்டோபிளாசம் எனும் சைட்டோபிளாச அடுக்கு உள்ளது; அதில் சிலியாக்களின் அடிகளும் சிலியாக்களுக்கிடையே மேற்பரப்புக்கு செங்குத்தாக அமைந்த எண்ணற்ற நூற்கதிர் வடிவ உடல்களான டிரைக்கோசிஸ்ட்களும் உள்ளன. உள் சைட்டோபிளாசமான எண்டோபிளாசம் துகள்கள் நிறைந்த, திரவமான; உட்கருக்கள், உணவு நுண்குமிழ்கள், சுருங்கும் நுண்குமிழ்களைக் கொண்டுள்ளது. விலங்கு தூண்டப்படும்போது டிரைக்கோசிஸ்ட்கள் நீண்ட இழைகளாக வெளியேற்றப்படலாம்; அவை தற்காப்புக்கு என்று கருதப்படுகின்றன; செயல் விவாதிக்கப்பட்டுள்ளதால் 'கருதப்படுகிறது' என்ற சொல்லுடன் கூற்று தரப்பட வேண்டும்."),
-                    bdef("Pellicle", "பெல்லிக்கிள்", "The firm but flexible outer layer of the cell, which gives Paramecium its definite shape." to
+                    bdef("Pellicle", "பெல்லிக்கிள் (Pellicle)", "The firm but flexible outer layer of the cell, which gives Paramecium its definite shape." to
                         "பாரமீசியத்துக்கு திட்டவட்டமான வடிவம் தரும் செல்லின் உறுதியான ஆனால் நெகிழும் வெளி அடுக்கு."),
-                    bdef("Ectoplasm", "எக்டோபிளாசம்", "The clear, firm outer layer of cytoplasm beneath the pellicle." to
+                    bdef("Ectoplasm", "எக்டோபிளாசம் (Ectoplasm)", "The clear, firm outer layer of cytoplasm beneath the pellicle." to
                         "பெல்லிக்கிளுக்கு அடியிலுள்ள தெளிவான, உறுதியான சைட்டோபிளாசத்தின் வெளி அடுக்கு."),
-                    bdef("Endoplasm", "எண்டோபிளாசம்", "The granular, fluid inner cytoplasm that holds the nuclei and vacuoles." to
+                    bdef("Endoplasm", "எண்டோபிளாசம் (Endoplasm)", "The granular, fluid inner cytoplasm that holds the nuclei and vacuoles." to
                         "உட்கருக்களையும் நுண்குமிழ்களையும் கொண்ட துகள்கள் நிறைந்த, திரவமான உள் சைட்டோபிளாசம்."),
-                    bdef("Trichocyst", "டிரைக்கோசிஸ்ட்", "A spindle-shaped body in the ectoplasm that can discharge a thread, thought to be defensive." to
+                    bdef("Trichocyst", "டிரைக்கோசிஸ்ட் (Trichocyst)", "A spindle-shaped body in the ectoplasm that can discharge a thread, thought to be defensive." to
                         "ஒரு இழையை வெளியேற்றக்கூடிய, தற்காப்புக்கு எனக் கருதப்படும் எக்டோபிளாசத்திலுள்ள நூற்கதிர் வடிவ உடல்."),
-                    bdef("Basal body", "அடிப்படை உடல்", "The structure at the base of a cilium from which it grows." to
+                    bdef("Basal body", "அடிப்படை உடல் (Basal body)", "The structure at the base of a cilium from which it grows." to
                         "மயிரிழை வளரும், அதன் அடியிலுள்ள அமைப்பு."),
                 )),
             bsec("locomotion", "Locomotion", "இயக்கம்",
@@ -46,13 +46,13 @@ object ParameciumBookChapter {
                     bfig("paramecium/locomotion", "Locomotion of Paramecium: the power and recovery strokes of the cilia and the spiral path of the swimming cell." to "பாரமீசியத்தின் இயக்கம்: சிலியாக்களின் ஆற்றல், மீட்பு வீச்சுகளும் நீந்தும் செல்லின் சுருள் பாதையும்."),
                     bp("Swimming therefore follows a spiral path, and the animal can change course. On meeting an obstacle or an unfavourable chemical, the direction of the ciliary beat is reversed for a short time, the animal backs away, and then it turns and swims forward in a new direction. This is the avoiding reaction. The reversal is controlled by changes in the electrical properties of the cell membrane, and it is a standard example of a response in a single cell that is built from simple parts. It should be written as a response of the whole cell, and not as the work of a nervous system, which the animal does not have." to
                         "எனவே நீந்துதல் சுருள் பாதையைப் பின்பற்றுகிறது; விலங்கு திசையை மாற்றலாம். தடை அல்லது சாதகமற்ற வேதிப்பொருளைச் சந்திக்கும்போது சிலியா அசைவின் திசை சிறிது நேரம் தலைகீழாகிறது; விலங்கு பின்வாங்கி, பின்னர் திரும்பி புதிய திசையில் முன்னே நீந்துகிறது. இது தவிர்ப்புத் துலங்கல். தலைகீழாதல் செல் சவ்வின் மின் பண்புகளின் மாற்றங்களால் கட்டுப்படுத்தப்படுகிறது; எளிய பகுதிகளால் கட்டப்பட்ட ஒற்றை செல்லில் துலங்கலுக்கு நிலையான எடுத்துக்காட்டு. இது முழு செல்லின் துலங்கலாக எழுதப்பட வேண்டும்; விலங்குக்கு இல்லாத நரம்பு அமைப்பின் வேலையாக அல்ல."),
-                    bdef("Power stroke", "ஆற்றல் வீச்சு", "The stiff backward sweep of a cilium that drives the water and moves the cell." to
+                    bdef("Power stroke", "ஆற்றல் வீச்சு (Power stroke)", "The stiff backward sweep of a cilium that drives the water and moves the cell." to
                         "நீரைத் தள்ளி செல்லை நகர்த்தும் சிலியத்தின் விறைப்பான பின்னோக்கு வீச்சு."),
-                    bdef("Recovery stroke", "மீட்பு வீச்சு", "The bent forward return of a cilium to its starting position." to
+                    bdef("Recovery stroke", "மீட்பு வீச்சு (Recovery stroke)", "The bent forward return of a cilium to its starting position." to
                         "மயிரிழை தொடக்க நிலைக்கு வளைந்து முன்னே திரும்புதல்."),
-                    bdef("Metachronal wave", "மெட்டாக்ரோனல் அலை", "The coordinated wave of ciliary beating that passes along the rows of cilia." to
+                    bdef("Metachronal wave", "மெட்டாக்ரோனல் அலை (Metachronal wave)", "The coordinated wave of ciliary beating that passes along the rows of cilia." to
                         "சிலியா வரிசைகள் வழியே செல்லும் ஒருங்கிணைந்த சிலியா அசைவு அலை."),
-                    bdef("Avoiding reaction", "தவிர்ப்புத் துலங்கல்", "The reversal of ciliary beat by which Paramecium backs away from an obstacle and changes direction." to
+                    bdef("Avoiding reaction", "தவிர்ப்புத் துலங்கல் (Avoiding reaction)", "The reversal of ciliary beat by which Paramecium backs away from an obstacle and changes direction." to
                         "பாரமீசியம் தடையிலிருந்து பின்வாங்கி திசை மாற்றும் சிலியா அசைவுத் தலைகீழாதல்."),
                 )),
             bsec("feeding", "The oral apparatus, feeding and digestion", "வாய் அமைப்பு, உணவெடுப்பு, செரிமானம்",
@@ -69,15 +69,15 @@ object ParameciumBookChapter {
                         "Digestion takes place as the vacuole matures, and the products are absorbed." to "குமிழ் முதிரும்போது செரிமானம் நடைபெறுகிறது; விளைபொருட்கள் உறிஞ்சப்படுகின்றன.",
                         "The undigested residue is expelled at the cytoproct." to "செரிக்காத எச்சம் சைட்டோபிராக்டில் வெளியேற்றப்படுகிறது.",
                     ),
-                    bdef("Cytostome", "சைட்டோஸ்டோம்", "The cell mouth of a ciliate, at the end of the oral groove." to
+                    bdef("Cytostome", "சைட்டோஸ்டோம் (Cytostome)", "The cell mouth of a ciliate, at the end of the oral groove." to
                         "வாய்ப் பள்ளத்தின் முடிவிலுள்ள சிலியேட்டின் செல் வாய்."),
-                    bdef("Cytopharynx", "சைட்டோஃபாரிங்க்ஸ்", "The short gullet that leads from the cytostome into the cytoplasm." to
+                    bdef("Cytopharynx", "சைட்டோஃபாரிங்க்ஸ் (Cytopharynx)", "The short gullet that leads from the cytostome into the cytoplasm." to
                         "சைட்டோஸ்டோமிலிருந்து சைட்டோபிளாசத்துக்குள் செல்லும் குறுகிய தொண்டை."),
-                    bdef("Food vacuole", "உணவு நுண்குமிழ்", "A membrane-bound droplet in which ingested food is digested." to
+                    bdef("Food vacuole", "உணவு நுண்குமிழ் (Food vacuole)", "A membrane-bound droplet in which ingested food is digested." to
                         "உட்கொண்ட உணவு செரிக்கப்படும் சவ்வால் சூழப்பட்ட துளி."),
-                    bdef("Cyclosis", "சைக்ளோசிஸ்", "The streaming of the endoplasm that carries food vacuoles in a regular path." to
+                    bdef("Cyclosis", "சைக்ளோசிஸ் (Cyclosis)", "The streaming of the endoplasm that carries food vacuoles in a regular path." to
                         "உணவு நுண்குமிழ்களை ஒழுங்கான பாதையில் கொண்டுசெல்லும் எண்டோபிளாசத்தின் ஓட்டம்."),
-                    bdef("Cytoproct", "சைட்டோபிராக்ட்", "The fixed point on the cell surface where undigested residue is expelled; also called the cytopyge." to
+                    bdef("Cytoproct", "சைட்டோபிராக்ட் (Cytoproct)", "The fixed point on the cell surface where undigested residue is expelled; also called the cytopyge." to
                         "செரிக்காத எச்சம் வெளியேற்றப்படும் செல் மேற்பரப்பிலுள்ள நிலையான புள்ளி; சைட்டோபைஜ் எனவும் அழைக்கப்படும்."),
                 )),
             bsec("osmoregulation", "Osmoregulation by contractile vacuoles", "சுருங்கும் நுண்குமிழ்களால் சவ்வூடுபரவல் ஒழுங்குபடுத்தல்",
@@ -90,11 +90,11 @@ object ParameciumBookChapter {
                     bnote("Osmoregulation, not mainly excretion", "சவ்வூடுபரவல் ஒழுங்குபடுத்தல், முக்கியமாக வெளியேற்றம் அல்ல",
                         "The contractile vacuoles expel excess water to keep the cell volume steady. Waste ammonia is thought to leave mainly by diffusion." to
                             "சுருங்கும் நுண்குமிழ்கள் செல் கன அளவை நிலையாக வைக்க மிகை நீரை வெளியேற்றுகின்றன. அம்மோனியா கழிவு முக்கியமாகப் பரவல் மூலம் வெளியேறுவதாகக் கருதப்படுகிறது."),
-                    bdef("Contractile vacuole", "சுருங்கும் நுண்குமிழ்", "An organelle that fills with water collected from the cytoplasm and then contracts to expel it." to
+                    bdef("Contractile vacuole", "சுருங்கும் நுண்குமிழ் (Contractile vacuole)", "An organelle that fills with water collected from the cytoplasm and then contracts to expel it." to
                         "சைட்டோபிளாசத்திலிருந்து சேகரித்த நீரால் நிரம்பி, பின்னர் சுருங்கி அதை வெளியேற்றும் நுண்ணுறுப்பு."),
-                    bdef("Collecting canal", "சேகரிப்புக் கால்வாய்", "One of the radiating canals that gather excess water and pass it to the contractile vacuole." to
+                    bdef("Collecting canal", "சேகரிப்புக் கால்வாய் (Collecting canal)", "One of the radiating canals that gather excess water and pass it to the contractile vacuole." to
                         "மிகை நீரைச் சேகரித்து சுருங்கும் நுண்குமிழுக்குச் செலுத்தும் கதிர்போல் பரவும் கால்வாய்களில் ஒன்று."),
-                    bdef("Osmoregulation", "சவ்வூடுபரவல் ஒழுங்குபடுத்தல்", "The control of water and solute balance in the cell or body." to
+                    bdef("Osmoregulation", "சவ்வூடுபரவல் ஒழுங்குபடுத்தல் (Osmoregulation)", "The control of water and solute balance in the cell or body." to
                         "செல் அல்லது உடலில் நீர், கரைபொருள் சமநிலையைக் கட்டுப்படுத்துதல்."),
                 )),
             bsec("nuclei-reproduction", "Nuclei, fission and conjugation", "உட்கருக்கள், பிளவு, இணைவு",
@@ -117,13 +117,13 @@ object ParameciumBookChapter {
                         )),
                     bp("Conjugation is not reproduction in the sense of increase in numbers, since two cells give rise to two cells. Its importance is that it brings together genetic material from two individuals, and so makes new combinations. The details of the number of divisions that follow differ between species and the textbook description is for the typical case." to
                         "இணைவு எண்ணிக்கை அதிகரிப்பு என்ற பொருளில் இனப்பெருக்கம் அல்ல; ஏனெனில் இரு செல்கள் இரு செல்களைத் தருகின்றன. இரு தனியுயிரிகளின் மரபுப் பொருளைக் கொண்டுவந்து புதிய சேர்க்கைகளை உருவாக்குவதே அதன் முக்கியத்துவம். தொடரும் பிரிவுகளின் எண்ணிக்கை விவரங்கள் இனங்களுக்கிடையே மாறுபடும்; பாடநூல் விளக்கம் வழக்கமான நிலைக்கானது."),
-                    bdef("Macronucleus", "பெருஉட்கரு", "The large nucleus that controls the everyday activities of the cell." to
+                    bdef("Macronucleus", "பெருஉட்கரு (Macronucleus)", "The large nucleus that controls the everyday activities of the cell." to
                         "செல்லின் அன்றாடச் செயல்களைக் கட்டுப்படுத்தும் பெரிய உட்கரு."),
-                    bdef("Micronucleus", "சிறுஉட்கரு", "The small nucleus that takes part in sexual reproduction." to
+                    bdef("Micronucleus", "சிறுஉட்கரு (Micronucleus)", "The small nucleus that takes part in sexual reproduction." to
                         "பாலினப் பெருக்கத்தில் பங்கேற்கும் சிறிய உட்கரு."),
                     bdef("Pronucleus", "முன்உட்கரு", "A haploid nucleus formed during conjugation that fuses with another to form the synkaryon." to
                         "இணைவின்போது உருவாகி, மற்றொன்றுடன் இணைந்து சின்கார்யானை உருவாக்கும் ஒருமடிய உட்கரு."),
-                    bdef("Synkaryon", "சின்கார்யான்", "The diploid nucleus formed by the fusion of two pronuclei." to
+                    bdef("Synkaryon", "சின்கார்யான் (Synkaryon)", "The diploid nucleus formed by the fusion of two pronuclei." to
                         "இரு முன்உட்கருக்களின் இணைவால் உருவாகும் ஈருரு உட்கரு."),
                 )),
             bsec("behaviour", "Behaviour: responding without a nervous system", "நடத்தை: நரம்பு மண்டலம் இன்றி துலங்குதல்",
@@ -132,7 +132,7 @@ object ParameciumBookChapter {
                         "பாரமீசியத்துக்கு நரம்புச் செல் இல்லை; ஆயினும் அது தன் சூழலுக்கு ஒழுங்காகத் துலங்குகிறது. தடை, சூடு அல்லது தீங்கான வேதிப்பொருளைச் சந்திக்கும்போது மயிரிழைகள் சிறிது நேரம் தம் வீச்சின் திசையை மாற்றுகின்றன; விலங்கு பின்வாங்கி, சற்றுத் திரும்பி, புதிய திசையில் மீண்டும் புறப்படுகிறது. வழி தெளிவாகும் வரை இத்தவிர்ப்புத் துலங்கல் திரும்பத் திரும்ப நிகழ்கிறது; வழக்கமான பொருளில் உணர் உறுப்பு இல்லாத செல் சோதனை முயற்சியால் சாதகமற்ற நிலைமைகளிலிருந்து வெளியேறுவதே இதன் விளைவு. செல்சவ்வு ஆய்வுகள் துலங்கல் சவ்வின் மின்நிலை மாற்றங்களால் கட்டுப்படுத்தப்படுவதாகவும், மயிரிழை திசை மாற்றத்தில் கால்சியம் அயனிகளின் நுழைவு தொடர்புடையதாகவும் காட்டுகின்றன; இக்கண்டுபிடிப்பு விலங்கை தூண்டப்படும் சவ்வுகளின் ஆய்வுக்கு விருப்பமான பொருளாக்குகிறது. விடையில் இந்த அளவிலேயே கூற்றை வைத்து, அயனிக் கால்வாய் விவரங்களை மேம்பட்ட நூலுக்கு விட வேண்டும்."),
                     bp("Movement towards or away from a stimulus is called taxis, and a population of Paramecium shows several kinds of it. They tend to gather in a weakly acid region, such as one in which carbon dioxide from bacteria has lowered the pH slightly, and this is a chemical response that a student can observe by adding a drop of weak acid to a culture on a slide. They move to the surface of a still tube and they gather in a region of food. They respond to touch by moving away, to a hot region by leaving it, and to a gentle electric current by swimming towards one of the electrodes. These observations are reported in practical manuals and are useful for the practical examination, but the direction of response depends on the conditions and the species, and the observer should record what is actually seen and not what the book says.",
                         "தூண்டலை நோக்கியோ விலகியோ நகர்தல் டாக்சிஸ் எனப்படுகிறது; பாரமீசிய எண்ணிக்கை பல வகை டாக்சிஸ்களைக் காட்டுகிறது. பாக்டீரியாவின் கார்பன் டைஆக்சைடு pH-ஐ சற்றுக் குறைத்த இடம் போன்ற மெல்லிய அமிலப் பகுதியில் அவை கூடுகின்றன; இது வளர்ப்புக் கரைசலை ஸ்லைடில் வைத்து ஒரு துளி மெல்லிய அமிலம் சேர்த்து மாணவர் காணக்கூடிய வேதித் துலங்கல். அசையாக் குழாயின் மேற்பரப்புக்கு நகர்கின்றன; உணவுப் பகுதியில் கூடுகின்றன. தொடுதலுக்கு விலகிச் செல்கின்றன; சூடான பகுதியை விட்டு நீங்குகின்றன; மென்மையான மின்னோட்டத்தில் ஒரு மின்முனையை நோக்கி நீந்துகின்றன. இக்கவனிப்புகள் செய்முறை நூல்களில் கூறப்படுகின்றன; செய்முறைத் தேர்வுக்குப் பயனுள்ளவை; ஆனால் துலங்கலின் திசை நிலைமைகளையும் இனத்தையும் சார்ந்தது; நூல் கூறுவதை அல்ல, உண்மையில் காண்பதையே பார்வையாளர் பதிவு செய்ய வேண்டும்."),
-                    bdef("Taxis", "டாக்சிஸ்", "A directed movement of a whole organism towards or away from a stimulus." to
+                    bdef("Taxis", "டாக்சிஸ் (Taxis)", "A directed movement of a whole organism towards or away from a stimulus." to
                         "ஒரு தூண்டலை நோக்கி அல்லது விலகி உயிரி முழுவதும் நகரும் திசையுடைய இயக்கம்."),
                 )),
             bsec("culture", "Culture and observation in the laboratory", "ஆய்வகத்தில் வளர்ப்பும் கவனிப்பும்",
@@ -141,7 +141,7 @@ object ParameciumBookChapter {
                         "பாரமீசியத்தை வளர்ப்பது எளிது; அது பரவலாக ஆய்வு செய்யப்படுவதற்கு இதுவும் ஒரு காரணம். ஒரு கைப்பிடி உலர்ந்த வைக்கோல் அல்லது புல்லை நீரில் கொதிக்க வைத்து, ஆறவிட்டு, தளர்வாக மூடிய ஜாடியில் பல நாள் வெளிச்சத்தில் வைத்து வைக்கோல் ஊறல் தயாரிக்கப்படுகிறது; அதில் பாக்டீரியா பெருகி, சிஸ்ட்களிலிருந்தோ குளத்திலிருந்து எடுத்த தொடக்க நீரிலிருந்தோ சிலியேட்டு வளர்ப்பு உருவாகிறது. அதே முறையில் சில துகள் வேகவைத்த அரிசி அல்லது கோதுமையையும் பயன்படுத்தலாம். ஆக்சிஜன் மிகுதியான மேற்பரப்பருகே விலங்குகள் கூடுகின்றன; இப்பகுதியிலிருந்து எடுத்த துளியில் அடியிலிருந்து எடுத்ததைவிட அதிகம் இருக்கும். ஆரோக்கியமான வளர்ப்பு துர்நாற்றமுமின்றி முற்றிலும் தெளிவாகவுமின்றி இருக்கும்; அதிக உணவிட்ட ஜாடி நாற்றமெடுக்கும்; ஆக்சிஜன் தீர்ந்ததால் சிலியேட்டுகள் இறக்கும்."),
                     bp("Fast swimming is the main difficulty of observation. The animal can be slowed by placing a drop on a slide with a few fibres of cotton wool, which entangle it without crushing it, or by adding a drop of a thick solution such as methyl cellulose, which increases the viscosity of the medium. To show the cilia and the oral groove a vital stain may be used with care, and to show the trichocysts a drop of dilute acetic acid or of a suitable dye can be run under the cover slip, and the discharged threads are seen. A student should draw only what is visible and label the parts from the diagram of the text, remembering that a drawing of a living animal and a drawing of a stained slide show different things.",
                         "வேகமாக நீந்துவதே கவனிப்பின் முக்கிய சிரமம். ஒரு துளியை சில பஞ்சு இழைகளுடன் ஸ்லைடில் வைத்து, நசுக்காமல் அதைச் சிக்க வைத்து அல்லது மெத்தில் செல்லுலோஸ் போன்ற அடர் கரைசலின் ஒரு துளியைச் சேர்த்து ஊடகத்தின் பாகுநிலையை உயர்த்தி விலங்கை மெதுவாக்கலாம். மயிரிழைகளையும் வாய்ப் பள்ளத்தையும் காட்ட உயிர்ச் சாயத்தை கவனத்துடன் பயன்படுத்தலாம்; ட்ரைக்கோசிஸ்ட்களைக் காட்ட நீர்த்த அசிட்டிக் அமிலம் அல்லது தகுந்த சாயத்தின் ஒரு துளியை மூடி கண்ணாடியின் அடியில் செலுத்தினால் வெளியேறிய இழைகள் தெரியும். மாணவர் தெரிவதை மட்டுமே வரைந்து, பாடநூல் படத்திலிருந்து பகுதிகளைக் குறிக்க வேண்டும்; உயிருள்ள விலங்கின் படமும் சாயமேற்றிய ஸ்லைடின் படமும் வேறுபட்டவற்றைக் காட்டுகின்றன என்பதை நினைவில் கொள்ள வேண்டும்."),
-                    bdef("Methyl cellulose", "மெத்தில் செல்லுலோஸ்", "A viscous solution used to slow fast-swimming protozoans for observation." to
+                    bdef("Methyl cellulose", "மெத்தில் செல்லுலோஸ் (Methyl cellulose)", "A viscous solution used to slow fast-swimming protozoans for observation." to
                         "வேகமாக நீந்தும் புரோட்டோசோவாக்களைக் கவனிப்பதற்காக மெதுவாக்கப் பயன்படும் பாகுநிலை மிக்க கரைசல்."),
                 )),
             bsec("answering", "Answering questions on Paramecium", "பாரமீசியம் வினாக்களுக்கு விடையளித்தல்",
