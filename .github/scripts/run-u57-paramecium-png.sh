@@ -4,7 +4,7 @@ D="/sdcard/Download/u57-qa"
 E="qa-evidence/u57-paramecium"
 mkdir -p "$E"
 result=NOT_STARTED
-trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull "$D" "$E/captured" > "$E/pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
+trap 'code=$?; printf "commit=%s\ntrigger_sha=%s\nresult=%s\nexit=%s\n" "$(git rev-parse HEAD)" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull "$D" "$E/captured" > "$E/pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
 # Emulator images may not mount /sdcard immediately after sys.boot_completed.
 # Wait for emulated external storage before creating the evidence directory.
 for attempt in $(seq 1 30); do
