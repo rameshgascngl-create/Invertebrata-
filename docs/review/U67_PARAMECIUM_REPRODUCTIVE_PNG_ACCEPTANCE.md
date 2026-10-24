@@ -35,3 +35,38 @@ The Deuterostome *Paramecium caudatum* anatomy SVG is CC BY-SA 4.0: https://comm
 
 ## Release gates
 Zoology review: HOLD. Tamil editorial review: HOLD. Asset rights review: HOLD. Exact-commit Kotlin/JVM and emulator verification: NOT RUN FOR THIS SPECIFICATION. Physical-device production release: HOLD.
+
+
+## U68 — Species-specific cytological reference and plate storyboard (24 October 2026)
+
+**Primary reference for the intended *P. caudatum* conjugation plate**: Yang, X., Gao, X. & Shi, X. (2007), “Detection of haploid nuclear death in living Paramecium caudatum”, *Japanese Journal of Protozoology* 40, pp. 123–130, Fig. 1(a–k): https://protistology.jp/journal/jjp40/123-130Yang2.pdf . Reference images are **for scientific comparison only** pending explicit image-reuse rights review.
+
+**Additional species-specific reference**: Haga (2022), “Micromanipulation in Paramecium: From non-mendelian inheritance to the outlook for versatile micromachines”, *Journal of Eukaryotic Microbiology*, https://pmc.ncbi.nlm.nih.gov/articles/PMC9543784/ . Distinguish the two postconjugational divisions and subsequent karyonide formation from the initial exchange event.
+
+### Conjugation stage-to-image storyboard
+| Plate | Essential depiction | Explicit rejection criterion |
+|---|---|---|
+| C01 | Complementary mating types pair, micronuclei and parental macronuclei identifiable | Two cells shown as permanently fused |
+| C02 | Crescent-shaped micronuclear first meiotic prophase | Macronucleus presented as meiotic nucleus |
+| C03 | First and second micronuclear meiotic divisions | Arbitrary nuclear count/ploidy |
+| C04 | Three products degenerate; remaining haploid product moves toward paroral region | Degenerating products shown as future macronuclei |
+| C05 | Third prezygotic division forms migratory and stationary gametic nuclei | Pronuclei incorrectly shown diploid |
+| C06 | Reciprocal migratory pronucleus exchange and diploid synkaryon formation | Exchange omitted or fusion before exchange |
+| C07 | First, second and third postzygotic synkaryon divisions: eight products | Mature macronucleus shown immediately after fusion |
+| C08 | Anterior presumptive micronuclei, posterior macronuclear anlagen; parental MAC fragmentation and micronuclear selection | Nuclear differentiation depicted before postzygotic divisions |
+| C09 | Exconjugant maturation and two successive cell divisions yielding karyonides | Conjugation itself represented as binary fission |
+
+**Important sequence correction**: In Yang et al. Fig. 1, cell rounding and the three synkaryon divisions are shown before nuclear differentiation. The figure also depicts macronuclear fragmentation and later selection/degeneration of presumptive micronuclei. Do not infer a single universal timing sequence from *P. multimicronucleatum*: its documented postzygotic divisions are useful comparison, but its nuclear counts and timing must not be silently transferred to *P. caudatum*.
+
+### Fission plate storyboard
+| Plate | Required biological event |
+|---|---|
+| F01 | Vegetative cell, macronucleus and micronucleus distinct |
+| F02 | Micronuclear mitosis begins; macronucleus elongates |
+| F03 | Macronuclear amitotic constriction and micronuclear separation |
+| F04 | Transverse furrow and reorganisation of oral apparatus in developing daughters |
+| F05 | Two separated daughter cells, each with appropriate nuclei and oral structures |
+
+**Rights checkpoint**: Do not copy Yang et al. Fig. 1 or the Haga figures into distributable assets until licensing or permission is documented. These citations validate the intended anatomy/chronology, not asset redistribution.
+
+**QA state**: scientific storyboard prepared; PNG artwork NOT created; Tamil editorial NOT signed off; emulator/device verification NOT performed for this documentation-only change.
