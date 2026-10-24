@@ -63,6 +63,8 @@ jobs:
               print('UNIT_I_COMMONS_3840PX_CANDIDATE=DEBUG_ONLY_SHA256_PASS')
           print('UNIT_I_ORIGINAL_PNGS=4, SOURCE_WARNING=PASS, REPRODUCTION_PNGS=WITHHELD')
           PY
+      - name: Preflight Android emulator QA shell syntax
+        run: bash -n .github/scripts/run-u57-paramecium-png.sh
       - name: Compile Kotlin, Android instrumentation and all JVM tests
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - name: Assemble debug QA APK
