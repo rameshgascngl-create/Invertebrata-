@@ -198,7 +198,7 @@ object CnidariaBookChapter {
             bsec("classification", "Classification into classes", "வகுப்புகளாக வகைப்படுத்துதல்",
                 blocks = listOf(
                     bp("The paper requires classification of the phylum up to classes. Three classes are recognised in the syllabus: Hydrozoa, Scyphozoa and Anthozoa. Modern classifications also recognise further groups, such as the Cubozoa (box jellies), but the three-class scheme is that on which the paper is set and it is followed here." to
-                        "தாள் தொகுதியை வகுப்புகள் வரை வகைப்படுத்தக் கோருகிறது. பாடத்திட்டத்தில் மூன்று வகுப்புகள் அங்கீகரிக்கப்படுகின்றன: ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா. நவீன வகைப்பாடுகள் கியூபோசோவா (பெட்டி ஜெல்லிகள்) போன்ற மேலும் குழுக்களையும் ஏற்கின்றன; ஆனால் தாள் அமைந்துள்ள மூன்று வகுப்பு முறையே இங்கு பின்பற்றப்படுகிறது."),
+                        "வினாத்தாள் தொகுதியை வகுப்புகள் வரை வகைப்படுத்தக் கேட்கிறது. பாடத்திட்டத்தில் மூன்று வகுப்புகள் அங்கீகரிக்கப்படுகின்றன: ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா. நவீன வகைப்பாடுகள் கியூபோசோவா (பெட்டி ஜெல்லிகள்) போன்ற மேலும் குழுக்களையும் ஏற்கின்றன; ஆனால் தாள் அமைந்துள்ள மூன்று வகுப்பு முறையே இங்கு பின்பற்றப்படுகிறது."),
                     btable("Classes of the phylum compared", "தொகுதியின் வகுப்புகள் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Hydrozoa" to "ஹைட்ரோசோவா", "Scyphozoa" to "சிஃபோசோவா", "Anthozoa" to "ஆந்தோசோவா"),
                         listOf(

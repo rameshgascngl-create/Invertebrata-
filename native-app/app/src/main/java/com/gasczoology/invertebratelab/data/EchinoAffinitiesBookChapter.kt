@@ -115,7 +115,7 @@ object EchinoAffinitiesBookChapter {
                         "தேர்வு விடைக்கு, புதைபடிவக் குறிப்பை ஆரைத் திட்டம் பற்றிய பகுதியின் இறுதியில் ஒரு வாக்கியமாகச் சேர்ப்பது சிறந்தது: ஆரம்பகாலப் புதைபடிவங்களில் சமச்சீரற்ற வடிவங்கள் அடங்கும்; இது வாழும் வகுப்புகளின் ஆரைச் சமச்சீர் பிற்கால பெறுபண்பு என்ற இருபக்க லார்வாச் சான்றுடன் ஒத்துப்போகிறது. இது கூற்றைச் சுருக்கமாகவும் சான்று ஆதரிக்கக்கூடியதற்குள்ளும் வைத்து, பாடத்திட்டம் கோராத குறிப்பிட்ட புதைபடிவப் பேரினங்களைப் பெயரிடும் ஆசையைத் தவிர்க்கிறது."),
                     bdef("Cambrian", "கேம்ப்ரியன்", "The geological period, beginning about 540 million years ago, in which the main animal groups first appear clearly in the fossil record." to
                         "முக்கிய விலங்குக் குழுக்கள் புதைபடிவப் பதிவில் தெளிவாக முதலில் தோன்றும், சுமார் 54 கோடி ஆண்டுகளுக்கு முன் தொடங்கிய புவியியல் காலம்."),
-                    bdef("Sessile", "அமர்ந்த", "Attached to the bottom and not moving about." to
+                    bdef("Sessile", "ஒட்டி வாழும்", "Attached to the bottom and not moving about." to
                         "அடியில் ஒட்டி நகராமல் இருக்கும்."),
                 )),
             bsec("hemichordates", "The hemichordates: acorn worms and pterobranchs", "ஹெமிகார்டேட்டுகள்: ஏகார்ன் புழுக்களும் டெரோபிராஞ்சுகளும்",
