@@ -34,6 +34,11 @@ class NativeU57ParameciumProcessPngTest {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("r1-tab-simulate").performScrollTo().performClick()
+        // Tab selection persists through the repository state flow. On the
+        // 200% Tamil emulator the next test action can outrun recomposition.
+        rule.waitUntil(20000) {
+            rule.onAllNodesWithTag("r1-simulator-heading").fetchSemanticsNodes().isNotEmpty()
+        }
     }
     private fun go(process:String) {
         rule.onNodeWithTag("r1-process-"+process, useUnmergedTree = true).performScrollTo().performClick()
