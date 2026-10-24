@@ -28,7 +28,8 @@ class BookChapterContractTest {
     @Test fun everyRegisteredBookChapterValidates() {
         BookChapters.byLesson.values.forEach { BookChapterContract.validate(it, figureSlots, a5Ids()) }
         assertTrue(BookChapters.byLesson.keys.all {
-            it in NativeCurriculumManifest.a5ChapterIdsByUnit.values.flatten()
+            it in NativeCurriculumManifest.a5ChapterIdsByUnit.values.flatten() ||
+                InsectaExtension.isExtension(it)
         })
     }
 

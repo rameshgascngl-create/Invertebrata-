@@ -68,7 +68,7 @@ class NativeLearningRepository(private val context: Context) {
 
     suspend fun save(state: NativeLearningState) {
         require(state.schemaVersion == NativeLearningState.CURRENT_SCHEMA)
-        require(state.unitNumber in 1..5)
+        require(state.unitNumber in 1..InsectaExtension.UNIT_NUMBER)
         context.nativeLearningStore.edit { preferences ->
             preferences[Keys.schema] = state.schemaVersion
             preferences[Keys.destination] = state.destination.name
@@ -114,7 +114,7 @@ class NativeLearningRepository(private val context: Context) {
             it.name == preferences[Keys.destination]
         } ?: return NativeLearningState()
         val unit = preferences[Keys.unit] ?: return NativeLearningState()
-        if (unit !in 1..5) return NativeLearningState()
+        if (unit !in 1..InsectaExtension.UNIT_NUMBER) return NativeLearningState()
         return NativeLearningState(
             destination = destination,
             unitNumber = unit,

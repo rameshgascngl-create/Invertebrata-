@@ -45,6 +45,7 @@ import com.gasczoology.invertebratelab.AcademicLoadState
 import com.gasczoology.invertebratelab.MainViewModel
 import com.gasczoology.invertebratelab.PersistedLearningLoadState
 import com.gasczoology.invertebratelab.data.BookChapters
+import com.gasczoology.invertebratelab.data.InsectaExtension
 import com.gasczoology.invertebratelab.data.A5Question
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.AppLanguage
@@ -479,6 +480,7 @@ private fun UnitScreen(
                                 "OPEN DETAILED PRAWN TYPE STUDY · appendages and development before A5.",
                                 "இறால் விரிவான இன ஆய்வு · இணைக்கால்கள் மற்றும் வளர்நிலைகளுக்குப் பின் A5.")
                             unit.number == 2 || unit.number == 3 || unit.number == 5 ||
+                                unit.number == InsectaExtension.UNIT_NUMBER ||
                                 FiveUnitRestorationLessons.byId.containsKey(chapter.id) -> label(language,
                                 "OPEN BILINGUAL TEXTBOOK LESSON FIRST · unverified image slots remain visible.",
                                 "முதலில் இருமொழிப் பாடத்தைப் படி · மதிப்பாய்வு நிலுவைப் படங்கள் தெளிவாகக் காட்டப்படும்.")

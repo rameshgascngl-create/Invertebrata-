@@ -55,6 +55,7 @@ internal fun bchapter(
     summary: List<EnTa>,
     checks: List<BookQuickCheck>,
     reading: List<EnTa> = BookRefs.standard,
+    reviewIds: List<String> = listOf("$lessonId-A5-1", "$lessonId-A5-2"),
 ) = BookChapter(
     lessonId = lessonId,
     title = bt(title.first, title.second),
@@ -63,6 +64,6 @@ internal fun bchapter(
     sections = sections,
     summary = summary.map { bt(it.first, it.second) },
     quickChecks = checks,
-    reviewQuestionIds = listOf("$lessonId-A5-1", "$lessonId-A5-2"),
+    reviewQuestionIds = reviewIds,
     furtherReading = reading.map { bt(it.first, it.second) },
 )

@@ -44,7 +44,7 @@ import com.gasczoology.invertebratelab.data.BookTable
 private fun t(language: AppLanguage, en: String, ta: String) =
     if (language == AppLanguage.TAMIL) ta else en
 
-private val romanUnits = listOf("", "I", "II", "III", "IV", "V")
+private val romanUnits = listOf("", "I", "II", "III", "IV", "V", "VI")
 
 /**
  * Printed-book rendering of a [BookChapter]: objectives, introduction, contents,
