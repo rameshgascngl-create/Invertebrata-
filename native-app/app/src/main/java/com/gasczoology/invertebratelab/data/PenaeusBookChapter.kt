@@ -15,7 +15,7 @@ object PenaeusBookChapter {
         ),
         introduction = listOf(
             "Penaeus indicus is the Indian white prawn, a marine and estuarine crustacean of the coasts of India that is caught and also farmed for food. It is the type for the study of the crustaceans in the syllabus, chosen because its body shows the arthropod plan in a clear form: a hard exoskeleton, a body of grouped segments, and a full series of appendages that are different from front to back. The prescribed name should be retained in the answer. Current taxonomic treatment accepts the species as Penaeus (Fenneropenaeus) indicus H. Milne Edwards, 1837, and the genus name Fenneropenaeus is used for it in some classifications. A single line on this is enough, since the anatomy does not change with the rank given to the name." to
-                "பெனியஸ் இண்டிகஸ் இந்திய வெள்ளை இறால்; இந்தியக் கடற்கரைகளின் கடல், முகத்துவார ஓட்டுடலி; உணவுக்காகப் பிடிக்கப்படுகிறது, வளர்க்கவும் படுகிறது. பாடத்திட்டத்தில் ஓட்டுடலிகளைக் கற்க இது எடுத்துக்காட்டு; கடின புறச்சட்டகம், தொகுக்கப்பட்ட கண்டங்களாலான உடல், முன்னிலிருந்து பின் வரை வேறுபடும் உறுப்புகளின் முழுத் தொடர் என ஆர்த்ரோபோடா அமைப்பை தெளிவாகக் காட்டுவதால் தேர்ந்தெடுக்கப்பட்டது. பாடத்திட்டப் பெயரை விடையில் தக்கவைக்க வேண்டும். தற்போதைய வகைப்பாட்டு நடைமுறை இனத்தை பெனியஸ் (ஃபென்னரோபெனியஸ்) இண்டிகஸ் H. மில்ன் எட்வர்ட்ஸ், 1837 என ஏற்கிறது; சில வகைப்பாடுகளில் ஃபென்னரோபெனியஸ் இனப் பெயர் பயன்படுகிறது. இது பற்றி ஒரு வரி போதும்; பெயருக்குத் தரப்படும் தரத்தால் உடற்கூறு மாறாது.",
+                "பெனியஸ் இண்டிகஸ் இந்திய வெள்ளை இறால்; இந்தியக் கடற்கரைகளின் கடல், முகத்துவார கிரஸ்டேஷியன்; உணவுக்காகப் பிடிக்கப்படுகிறது, வளர்க்கவும் படுகிறது. பாடத்திட்டத்தில் கிரஸ்டேஷியன்களைக் கற்க இது எடுத்துக்காட்டு; கடின புறச்சட்டகம், தொகுக்கப்பட்ட கண்டங்களாலான உடல், முன்னிலிருந்து பின் வரை வேறுபடும் உறுப்புகளின் முழுத் தொடர் என ஆர்த்ரோபோடா அமைப்பை தெளிவாகக் காட்டுவதால் தேர்ந்தெடுக்கப்பட்டது. பாடத்திட்டப் பெயரை விடையில் தக்கவைக்க வேண்டும். தற்போதைய வகைப்பாட்டு நடைமுறை இனத்தை பெனியஸ் (ஃபென்னரோபெனியஸ்) இண்டிகஸ் H. மில்ன் எட்வர்ட்ஸ், 1837 என ஏற்கிறது; சில வகைப்பாடுகளில் ஃபென்னரோபெனியஸ் இனப் பெயர் பயன்படுகிறது. இது பற்றி ஒரு வரி போதும்; பெயருக்குத் தரப்படும் தரத்தால் உடற்கூறு மாறாது.",
             "The chapter describes the external form and tagmata, the appendages in order, the internal systems, the reproductive organs, and the development through the larval stages. Four figures from the plate set are placed in the text where they are needed." to
                 "வெளிப்புற வடிவம், டேக்மாக்கள், வரிசையாக உறுப்புகள், உள் மண்டலங்கள், இனப்பெருக்க உறுப்புகள், லார்வா நிலைகள் வழியாக வளர்ச்சி ஆகியவற்றை அத்தியாயம் விவரிக்கிறது. தட்டுத் தொகுப்பின் நான்கு படங்கள் தேவைப்படும் இடங்களில் உரையில் வைக்கப்பட்டுள்ளன.",
         ),
@@ -28,11 +28,11 @@ object PenaeusBookChapter {
                     bp("The body is divided into two tagmata. The cephalothorax is formed by the fusion of the head and thorax and is covered by a single shield, the carapace, which projects in front as a toothed spine, the rostrum. The carapace covers the gill chamber on each side. The abdomen is segmented, with six distinct segments, and ends in the telson. The segments of the abdomen are movable on one another, which allows the tail to be flexed, and each has the tergum above and the sternum below, joined by lateral plates, the pleura." to
                         "உடல் இரு டேக்மாக்களாகப் பிரிக்கப்பட்டுள்ளது. செபலோதொராக்ஸ் தலையும் மார்பும் இணைவதால் உருவாகி, முன்னால் பல் கொண்ட முள்ளான ரோஸ்ட்ரமாக நீளும் ஒற்றைக் கேடயமான ஓட்டால் மூடப்படுகிறது. ஓடு ஒவ்வொரு பக்கமும் செவுள் அறையை மூடுகிறது. வயிறு ஆறு தெளிவான கண்டங்களுடன் கண்டமுடையது; டெல்சனில் முடிகிறது. வயிற்றுக் கண்டங்கள் ஒன்றின் மேல் ஒன்று அசையும்; வாலை வளைக்க இது அனுமதிக்கிறது; ஒவ்வொன்றுக்கும் மேலே டெர்கமும் கீழே ஸ்டெர்னமும் உள்ளன; அவை பக்கத் தகடுகளான புளூராவால் இணைகின்றன."),
                     bdef("Carapace", "ஓடு (கேரபேஸ்)", "The shield of exoskeleton that covers the cephalothorax of a crustacean." to
-                        "ஓட்டுடலியின் செபலோதொராக்ஸை மூடும் வெளிக்கூட்டுக் கேடயம்."),
+                        "கிரஸ்டேஷியனின் செபலோதொராக்ஸை மூடும் வெளிக்கூட்டுக் கேடயம்."),
                     bdef("Rostrum", "ரோஸ்ட்ரம்", "The toothed spine that projects forward from the front of the carapace between the eyes." to
                         "கண்களுக்கிடையே ஓட்டின் முன்னிலிருந்து முன்னோக்கி நீளும் பல் கொண்ட முள்."),
                     bdef("Telson", "டெல்சன்", "The terminal part of the abdomen of a crustacean, which with the uropods forms the tail fan." to
-                        "ஓட்டுடலியின் வயிற்றின் முனைப் பகுதி; யுரோபோடுகளுடன் சேர்ந்து வால் விசிறியை உருவாக்குகிறது."),
+                        "கிரஸ்டேஷியனின் வயிற்றின் முனைப் பகுதி; யுரோபோடுகளுடன் சேர்ந்து வால் விசிறியை உருவாக்குகிறது."),
                     bdef("Pleuron", "புளூரான்", "The lateral plate of the cuticle on each side of an abdominal segment." to
                         "வயிற்றுக் கண்டத்தின் ஒவ்வொரு பக்கத்திலுள்ள புறத்தோலின் பக்கத் தகடு."),
                 )),
@@ -57,9 +57,9 @@ object PenaeusBookChapter {
                     bdef("Maxilliped", "மேக்சில்லிபெட்", "A thoracic appendage modified as a mouthpart that holds and passes food." to
                         "உணவைப் பிடித்து கடத்தும் வாய்ப்பகுதியாக மாற்றப்பட்ட மார்பு உறுப்பு."),
                     bdef("Pereiopod", "பெரியோபோடு", "A thoracic walking leg of a crustacean." to
-                        "ஓட்டுடலியின் மார்பு நடக்கும் கால்."),
+                        "கிரஸ்டேஷியனின் மார்பு நடக்கும் கால்."),
                     bdef("Pleopod", "ப்ளியோபோடு", "An abdominal limb of a crustacean, used in swimming." to
-                        "நீந்தப் பயன்படும் ஓட்டுடலியின் வயிற்றுக் கால்."),
+                        "நீந்தப் பயன்படும் கிரஸ்டேஷியனின் வயிற்றுக் கால்."),
                     bdef("Uropod", "யுரோபோடு", "The last pair of abdominal appendages, which with the telson form the tail fan." to
                         "வயிற்று உறுப்புகளின் கடைசி இணை; டெல்சனுடன் சேர்ந்து வால் விசிறியை உருவாக்குகிறது."),
                     bdef("Chelate", "சிலிர்கொம்பு உடைய (கீலேட்)", "Ending in a pincer formed by a movable finger opposed to a fixed one." to
@@ -74,9 +74,9 @@ object PenaeusBookChapter {
                     bp("The digestive gland, or hepatopancreas, is a large, paired, branching organ in the cephalothorax, and opens into the junction of the stomach and midgut. It secretes digestive enzymes, takes up the digested food, and stores reserves such as fat and glycogen. Because absorption and storage both occur in this organ, it is the functional equivalent of both the liver and the pancreas of a vertebrate, and the name hepatopancreas records this." to
                         "செரிமானச் சுரப்பி அல்லது ஹெபடோபான்கிரியாஸ் செபலோதொராக்ஸிலுள்ள பெரிய, இணை, கிளைக்கும் உறுப்பு; இரைப்பைக்கும் நடுக்குடலுக்கும் இணைவில் திறக்கிறது. செரிமான நொதிகளைச் சுரக்கிறது, செரித்த உணவை உறிஞ்சுகிறது, கொழுப்பு, கிளைகோஜன் போன்ற சேமிப்புகளை வைத்திருக்கிறது. உறிஞ்சுதலும் சேமிப்பும் இவ்வுறுப்பில் நடப்பதால் முதுகெலும்பியின் கல்லீரல், கணையம் இரண்டுக்கும் செயல்முறையாக நிகரானது; ஹெபடோபான்கிரியாஸ் என்ற பெயர் இதைப் பதிவு செய்கிறது."),
                     bdef("Gastric mill", "இரைப்பை அரவை", "A set of chitinous teeth and ossicles in the stomach of a crustacean that grinds the food." to
-                        "உணவை அரைக்கும், ஓட்டுடலியின் இரைப்பையிலுள்ள கைட்டின் பற்கள், சிறு எலும்புகளின் தொகுப்பு."),
+                        "உணவை அரைக்கும், கிரஸ்டேஷியனின் இரைப்பையிலுள்ள கைட்டின் பற்கள், சிறு எலும்புகளின் தொகுப்பு."),
                     bdef("Hepatopancreas", "ஹெபடோபான்கிரியாஸ்", "The digestive gland of a crustacean, which secretes enzymes, absorbs food and stores reserves." to
-                        "நொதிகளைச் சுரக்கும், உணவை உறிஞ்சும், சேமிப்புகளை வைக்கும் ஓட்டுடலியின் செரிமானச் சுரப்பி."),
+                        "நொதிகளைச் சுரக்கும், உணவை உறிஞ்சும், சேமிப்புகளை வைக்கும் கிரஸ்டேஷியனின் செரிமானச் சுரப்பி."),
                 )),
             bsec("internal", "Circulation, respiration, excretion and nervous system", "இரத்த ஓட்டம், சுவாசம், கழிவு நீக்கம், நரம்பு மண்டலம்",
                 blocks = listOf(
@@ -92,7 +92,7 @@ object PenaeusBookChapter {
                     bdef("Ommatidium", "ஒமட்டிடியம்", "One of the many units that make up a compound eye." to
                         "கூட்டுக் கண்ணை உருவாக்கும் பல அலகுகளில் ஒன்று."),
                     bdef("Haemocyanin", "ஹீமோசயனின்", "A copper-containing respiratory pigment that carries oxygen in the blood of crustaceans." to
-                        "ஓட்டுடலிகளின் இரத்தத்தில் ஆக்சிஜனைக் கொண்டு செல்லும் தாமிரம் கொண்ட சுவாச நிறமி."),
+                        "கிரஸ்டேஷியன்களின் இரத்தத்தில் ஆக்சிஜனைக் கொண்டு செல்லும் தாமிரம் கொண்ட சுவாச நிறமி."),
                 )),
             bsec("reproduction", "Reproductive system", "இனப்பெருக்க மண்டலம்",
                 blocks = listOf(
@@ -117,9 +117,9 @@ object PenaeusBookChapter {
                         "The postlarva resembles a young prawn, the pleopods are functional, and the later postlarvae of many penaeids move to nursery areas." to "போஸ்ட்லார்வா இளம் இறால் போல இருக்கிறது; ப்ளியோபோடுகள் செயல்படுகின்றன; பல பெனியிட்களின் பிந்தைய போஸ்ட்லார்வாக்கள் நாற்றங்கால் பகுதிகளுக்கு நகர்கின்றன.",
                     ),
                     bp("The sequence of nauplius, protozoea, mysis and postlarva is characteristic of the penaeid prawns. It must be stated for the prawn and not for all crustaceans, since other groups have different larvae or have the earlier stages passed in the egg. The matter is taken further in the next chapters, which compare the larvae of crustaceans. The important feature of this development is that the larva changes in the manner of feeding and the use of its appendages as it passes through the stages, and each change is marked by a moult." to
-                        "நாப்ளியஸ், புரோட்டோசோயியா, மைசிஸ், போஸ்ட்லார்வா வரிசை பெனியிட் இறால்களுக்கு உரியது. இது இறாலுக்குக் கூறப்பட வேண்டும், எல்லா ஓட்டுடலிகளுக்கும் அல்ல; ஏனெனில் பிற குழுக்களுக்கு வேறு லார்வாக்கள் உள்ளன அல்லது முந்தைய நிலைகள் முட்டைக்குள் கடக்கப்படுகின்றன. இது அடுத்த அத்தியாயங்களில், ஓட்டுடலிகளின் லார்வாக்களை ஒப்பிடுமிடத்தில், விரிவாக்கப்படுகிறது. இவ்வளர்ச்சியின் முக்கிய அம்சம், லார்வா நிலைகளைக் கடக்கும்போது உண்ணும் முறையிலும் உறுப்புகளைப் பயன்படுத்துவதிலும் மாறுகிறது என்பதும், ஒவ்வொரு மாற்றமும் உதிர்த்தலால் குறிக்கப்படுவதும்."),
+                        "நாப்ளியஸ், புரோட்டோசோயியா, மைசிஸ், போஸ்ட்லார்வா வரிசை பெனியிட் இறால்களுக்கு உரியது. இது இறாலுக்குக் கூறப்பட வேண்டும், எல்லா கிரஸ்டேஷியன்களுக்கும் அல்ல; ஏனெனில் பிற குழுக்களுக்கு வேறு லார்வாக்கள் உள்ளன அல்லது முந்தைய நிலைகள் முட்டைக்குள் கடக்கப்படுகின்றன. இது அடுத்த அத்தியாயங்களில், கிரஸ்டேஷியன்களின் லார்வாக்களை ஒப்பிடுமிடத்தில், விரிவாக்கப்படுகிறது. இவ்வளர்ச்சியின் முக்கிய அம்சம், லார்வா நிலைகளைக் கடக்கும்போது உண்ணும் முறையிலும் உறுப்புகளைப் பயன்படுத்துவதிலும் மாறுகிறது என்பதும், ஒவ்வொரு மாற்றமும் உதிர்த்தலால் குறிக்கப்படுவதும்."),
                     bdef("Nauplius", "நாப்ளியஸ்", "The first larva of many crustaceans, with three pairs of appendages and a median eye." to
-                        "பல ஓட்டுடலிகளின் முதல் லார்வா; மூன்று இணை உறுப்புகளும் நடுக்கண்ணும் உடையது."),
+                        "பல கிரஸ்டேஷியன்களின் முதல் லார்வா; மூன்று இணை உறுப்புகளும் நடுக்கண்ணும் உடையது."),
                     bdef("Mysis", "மைசிஸ்", "A larval stage of a prawn that resembles a small shrimp and swims with the thoracic appendages." to
                         "சிறு இறால் போன்று மார்பு உறுப்புகளால் நீந்தும் இறாலின் லார்வா நிலை."),
                     bdef("Postlarva", "போஸ்ட்லார்வா", "The stage after the larval stages, resembling a juvenile, that moves to the nursery area." to
@@ -133,7 +133,7 @@ object PenaeusBookChapter {
                     bp("The exoskeleton of a prawn is a rigid cuticle, and a rigid covering cannot expand. Growth therefore takes place in steps. The animal prepares for a moult by withdrawing part of the lime and organic matter from the old cuticle and by forming a new, soft cuticle beneath it. The old cuticle then splits, usually along a line at the back of the carapace, and the prawn pulls itself free, the shed skin being called the exuviae. In the minutes and hours that follow, the animal takes in water, swells to its new size and its new cuticle hardens by deposition of mineral salts and by tanning. This process of shedding the cuticle is called ecdysis.",
                         "இறாலின் புறச்சட்டகம் விறைப்பான புறத்தோல்; விறைப்பான மூடியால் விரிவடைய முடியாது. எனவே வளர்ச்சி படிப்படியாக நிகழ்கிறது. பழைய புறத்தோலிலிருந்து சுண்ணாம்பையும் கரிமப் பொருளையும் ஒரு பகுதி திரும்பப் பெற்று, அதன் அடியில் புதிய மென்மையான புறத்தோலை உருவாக்கி விலங்கு தோலுரித்தலுக்குத் தயாராகிறது. பின்னர் பழைய புறத்தோல் பொதுவாக ஓட்டின் பின்புறக் கோட்டில் பிளக்கிறது; இறால் தன்னை விடுவித்துக்கொள்கிறது; உதிர்ந்த தோல் எக்சுவியே எனப்படுகிறது. தொடர்ந்த நிமிடங்களிலும் மணிநேரங்களிலும் விலங்கு நீரை உள்ளிழுத்து புதிய அளவுக்கு வீங்குகிறது; கனிம உப்புப் படிவாலும் பதப்படுத்தலாலும் புதிய புறத்தோல் கடினமாகிறது. புறத்தோலை உதிர்க்கும் இச்செயல்முறை எக்டைசிஸ் எனப்படுகிறது."),
                     bp("The period just after a moult is dangerous. The prawn is soft, it cannot swim or defend itself well, and it is at risk of being eaten, even by members of its own species, so that it hides until the new cuticle hardens. The interval between moults lengthens as the animal grows, and it is also affected by temperature, food and the condition of the water. The control of the cycle is by hormones, and it is established for crustaceans in general that a moult-inhibiting hormone is produced in a gland in the eyestalk and that the moulting hormones, which are steroids, are produced elsewhere. The detail varies among species, and for an answer it is sufficient to say that moulting is under hormonal control and that the eyestalk has a part in it.",
-                        "தோலுரித்தலுக்குப் பிறகான காலம் ஆபத்தானது. இறால் மென்மையாக இருக்கும்; நன்றாக நீந்தவோ தற்காக்கவோ முடியாது; தன் இனத்தினராலேயே உண்ணப்படும் அபாயமும் உண்டு; எனவே புதிய புறத்தோல் கடினமாகும் வரை மறைந்து கொள்கிறது. விலங்கு வளர வளர தோலுரித்தலுக்கு இடையிலான இடைவெளி நீள்கிறது; வெப்பம், உணவு, நீரின் நிலை ஆகியவையும் அதைப் பாதிக்கின்றன. சுழற்சியின் கட்டுப்பாடு ஹார்மோன்களால் ஆனது; பொதுவாக ஓட்டுடலிகளில் தோலுரித்தலைத் தடுக்கும் ஹார்மோன் கண்காம்பிலுள்ள சுரப்பியில் உருவாவதும், ஸ்டீராய்டுகளான தோலுரித்தல் ஹார்மோன்கள் வேறிடத்தில் உருவாவதும் நிறுவப்பட்டுள்ளது. விவரம் இனங்களுக்கிடையே மாறுபடும்; தோலுரித்தல் ஹார்மோன் கட்டுப்பாட்டில் உள்ளது, அதில் கண்காம்புக்குப் பங்கு உண்டு என்று கூறுவதே விடைக்குப் போதும்."),
+                        "தோலுரித்தலுக்குப் பிறகான காலம் ஆபத்தானது. இறால் மென்மையாக இருக்கும்; நன்றாக நீந்தவோ தற்காக்கவோ முடியாது; தன் இனத்தினராலேயே உண்ணப்படும் அபாயமும் உண்டு; எனவே புதிய புறத்தோல் கடினமாகும் வரை மறைந்து கொள்கிறது. விலங்கு வளர வளர தோலுரித்தலுக்கு இடையிலான இடைவெளி நீள்கிறது; வெப்பம், உணவு, நீரின் நிலை ஆகியவையும் அதைப் பாதிக்கின்றன. சுழற்சியின் கட்டுப்பாடு ஹார்மோன்களால் ஆனது; பொதுவாக கிரஸ்டேஷியன்களில் தோலுரித்தலைத் தடுக்கும் ஹார்மோன் கண்காம்பிலுள்ள சுரப்பியில் உருவாவதும், ஸ்டீராய்டுகளான தோலுரித்தல் ஹார்மோன்கள் வேறிடத்தில் உருவாவதும் நிறுவப்பட்டுள்ளது. விவரம் இனங்களுக்கிடையே மாறுபடும்; தோலுரித்தல் ஹார்மோன் கட்டுப்பாட்டில் உள்ளது, அதில் கண்காம்புக்குப் பங்கு உண்டு என்று கூறுவதே விடைக்குப் போதும்."),
                     bdef("Ecdysis", "எக்டைசிஸ்", "The shedding of the old cuticle by an arthropod, which allows the body to grow." to
                         "உடல் வளர அனுமதிக்கும் வகையில் கணுக்காலி பழைய புறத்தோலை உதிர்த்தல்."),
                     bdef("Exuviae", "எக்சுவியே", "The cast-off cuticle left behind after a moult." to
@@ -161,7 +161,7 @@ object PenaeusBookChapter {
                 )),
         ),
         summary = listOf(
-            "Penaeus indicus, the Indian white prawn, is the prescribed crustacean type; the name Fenneropenaeus is mentioned once as accepted taxonomy." to "பெனியஸ் இண்டிகஸ் இந்திய வெள்ளை இறால் பாடத்திட்ட ஓட்டுடலி வகை; ஃபென்னரோபெனியஸ் பெயர் ஏற்கப்படும் வகைப்பாடாக ஒருமுறை குறிப்பிடப்படுகிறது.",
+            "Penaeus indicus, the Indian white prawn, is the prescribed crustacean type; the name Fenneropenaeus is mentioned once as accepted taxonomy." to "பெனியஸ் இண்டிகஸ் இந்திய வெள்ளை இறால் பாடத்திட்ட கிரஸ்டேஷியன் வகை; ஃபென்னரோபெனியஸ் பெயர் ஏற்கப்படும் வகைப்பாடாக ஒருமுறை குறிப்பிடப்படுகிறது.",
             "The body has a cephalothorax under a carapace with a rostrum, and a six-segmented abdomen ending in the telson." to "உடலில் ரோஸ்ட்ரமுடன் ஓட்டின் கீழ் செபலோதொராக்ஸும் டெல்சனில் முடியும் ஆறு கண்ட வயிறும் உள்ளன.",
             "There are nineteen pairs of appendages: five on the head, eight on the thorax and six on the abdomen, each specialised for its work." to "பத்தொன்பது இணை உறுப்புகள் உள்ளன: தலையில் ஐந்து, மார்பில் எட்டு, வயிற்றில் ஆறு; ஒவ்வொன்றும் தன் பணிக்குச் சிறப்புற்றது.",
             "The stomach has a gastric mill, and the hepatopancreas secretes enzymes, absorbs food and stores reserves." to "இரைப்பையில் அரவை உண்டு; ஹெபடோபான்கிரியாஸ் நொதிகளைச் சுரந்து, உணவை உறிஞ்சி, சேமிப்புகளை வைக்கிறது.",

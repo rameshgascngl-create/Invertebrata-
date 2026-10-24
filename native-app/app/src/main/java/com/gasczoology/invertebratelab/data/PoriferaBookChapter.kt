@@ -54,7 +54,7 @@ object PoriferaBookChapter {
                         "The skeleton is made of calcareous or siliceous spicules, of spongin fibres, or of both." to "எலும்புக்கூடு சுண்ணாம்பு அல்லது சிலிக்கா ஊசிகள், ஸ்பாஞ்சின் இழைகள் அல்லது இரண்டாலும் ஆனது.",
                         "Digestion is mainly intracellular; there is no mouth or digestive tract." to "செரிமானம் முக்கியமாக செல்லுக்குள் நடைபெறுகிறது; வாயோ செரிமானக் குழாயோ இல்லை.",
                         "There are no nervous system, sense organs, circulatory organs or excretory organs; gas exchange and excretion occur by diffusion into the flowing water." to "நரம்புமண்டலம், உணர்வு உறுப்புகள், சுற்றோட்ட உறுப்புகள், கழிவு நீக்க உறுப்புகள் இல்லை; வாயுப் பரிமாற்றமும் கழிவு நீக்கமும் ஓடும் நீருடன் விரவல் மூலம் நடைபெறுகின்றன.",
-                        "Reproduction is asexual, by budding, fragmentation or gemmules, and sexual, by eggs and sperm; the larva is free-swimming." to "பாலிலா இனப்பெருக்கம் மொட்டுவிடுதல், துண்டாதல், ஜெம்யூல்கள் மூலமும், பாலின இனப்பெருக்கம் முட்டை, விந்து மூலமும் நடைபெறுகிறது; இளவுயிரி நீந்தக்கூடியது.",
+                        "Reproduction is asexual, by budding, fragmentation or gemmules, and sexual, by eggs and sperm; the larva is free-swimming." to "பாலிலா இனப்பெருக்கம் மொட்டு விடுதல், துண்டாதல், ஜெம்யூல்கள் மூலமும், பாலின இனப்பெருக்கம் முட்டை, விந்து மூலமும் நடைபெறுகிறது; இளவுயிரி நீந்தக்கூடியது.",
                         "Regeneration is well developed." to "மீளுருவாக்கம் நன்கு வளர்ந்துள்ளது."),
                 )),
             bsec("cells", "Cells of a sponge", "கடற்பஞ்சின் செல்கள்",
@@ -216,7 +216,7 @@ object PoriferaBookChapter {
                         "Ostia, oscula and the aquiferous system with choanocytes." to "ஆஸ்டியா, ஆஸ்குலம், கோனோசைட்டுகளுடன் கூடிய நீர்வழி அமைப்பு.",
                         "Skeleton of spicules, spongin or both." to "ஊசிகள், ஸ்பாஞ்சின் அல்லது இரண்டாலான எலும்புக்கூடு.",
                         "Intracellular digestion, diffusion for gas exchange and excretion, and the absence of organs and nerves." to "செல்லுக்குள் செரிமானம், வாயுப் பரிமாற்றம், கழிவு நீக்கத்துக்கு விரவல்; உறுப்புகளும் நரம்புகளும் இல்லாமை.",
-                        "Reproduction by budding, fragmentation, gemmules and gametes, and the larva." to "மொட்டுவிடுதல், துண்டாதல், ஜெம்யூல், இனச்செல்கள் மூலம் இனப்பெருக்கம்; இளவுயிரி."),
+                        "Reproduction by budding, fragmentation, gemmules and gametes, and the larva." to "மொட்டு விடுதல், துண்டாதல், ஜெம்யூல், இனச்செல்கள் மூலம் இனப்பெருக்கம்; இளவுயிரி."),
                 )),
         ),
         summary = listOf(

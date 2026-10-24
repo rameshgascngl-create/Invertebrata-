@@ -9,7 +9,7 @@ object EchinoAffinitiesBookChapter {
             "List the deuterostome characters of the echinoderms." to "முட்தோலிகளின் இரண்டாம்வாயிப் பண்புகளைப் பட்டியலிட.",
             "Explain the grouping Ambulacraria and the evidence for it." to "அம்புலாக்ரேரியா குழுவையும் அதற்கான சான்றுகளையும் விளக்க.",
             "State how the echinoderms are related to the chordates, and how they are not." to "முட்தோலிகள் முதுகுநாணிகளுடன் எவ்வாறு தொடர்புடையவை, எவ்வாறு அல்ல என்பதைக் கூற.",
-            "Explain why adult radial symmetry does not link echinoderms to cnidarians." to "முதிர்ந்த ஆரைச் சமச்சீர் முட்தோலிகளை குழியுடலிகளுடன் ஏன் இணைக்காது என விளக்க.",
+            "Explain why adult radial symmetry does not link echinoderms to cnidarians." to "முதிர்ந்த ஆரச்சமச்சீர் முட்தோலிகளை குழியுடலிகளுடன் ஏன் இணைக்காது என விளக்க.",
             "Distinguish evidence from inference in phylogenetic statements." to "இனவரலாற்றுக் கூற்றுகளில் சான்றையும் ஊகத்தையும் வேறுபடுத்த.",
         ),
         introduction = listOf(
@@ -26,7 +26,7 @@ object EchinoAffinitiesBookChapter {
                     bpoints("Developmental characters shared by the echinoderms and other deuterostomes", "முட்தோலிகளும் பிற இரண்டாம்வாயிகளும் பகிரும் வளர்ச்சிப் பண்புகள்",
                         "The blastopore gives rise to the anus, and the mouth forms secondarily." to "பிளாஸ்டோபோர் மலவாயைத் தருகிறது; வாய் இரண்டாம் நிலையாக உருவாகிறது.",
                         "The coelom is formed as outgrowths of the primitive gut, which is called enterocoely." to "உடற்குழி ஆதிக்குடலின் வளர்ச்சிகளாக உருவாகிறது; இது என்டெரோசீலி எனப்படுகிறது.",
-                        "Cleavage is typically radial and indeterminate, so that the cells of the early embryo keep a wide potential." to "பிளவு வழக்கமாக ஆரை, உறுதியற்றது; எனவே ஆரம்பக் கருவின் உயிரணுக்கள் பரந்த ஆற்றலைத் தக்கவைக்கின்றன.",
+                        "Cleavage is typically radial and indeterminate, so that the cells of the early embryo keep a wide potential." to "பிளவு வழக்கமாக ஆரை, உறுதியற்றது; எனவே ஆரம்பக் கருவின் செல்கள் பரந்த ஆற்றலைத் தக்கவைக்கின்றன.",
                         "The larvae are ciliated and bilateral, with looping bands of cilia." to "லார்வாக்கள் கசையிழை கொண்டவை, இருபக்கச் சமச்சீருடையவை; வளையக் கசையிழைப் பட்டைகளுடன்.",
                     ),
                     bp("These characters must be handled with care. The distinction between the two lineages was first made on the embryo, and it is now supported by molecular evidence, which means that it does not rest on the embryo alone. Not every feature holds in every species, since the details of cleavage and of the formation of the mouth differ, and some deuterostomes depart from the classical description. The examination answer should therefore say the typical characters, and should not imply that each is found without exception." to
@@ -40,7 +40,7 @@ object EchinoAffinitiesBookChapter {
                     bdef("Enterocoely", "என்டெரோசீலி", "The formation of the coelom from outgrowths of the gut." to
                         "குடலின் வளர்ச்சிகளிலிருந்து உடற்குழி உருவாதல்."),
                     bdef("Indeterminate cleavage", "உறுதியற்ற பிளவு", "Cleavage in which the cells of the early embryo keep the potential to form a whole animal." to
-                        "ஆரம்பக் கரு உயிரணுக்கள் முழு விலங்கை உருவாக்கும் ஆற்றலைத் தக்கவைக்கும் பிளவு."),
+                        "ஆரம்பக் கரு செல்கள் முழு விலங்கை உருவாக்கும் ஆற்றலைத் தக்கவைக்கும் பிளவு."),
                 )),
             bsec("ambulacraria", "Ambulacraria: echinoderms and hemichordates", "அம்புலாக்ரேரியா: முட்தோலிகளும் ஹெமிகார்டேட்டுகளும்",
                 blocks = listOf(
@@ -79,7 +79,7 @@ object EchinoAffinitiesBookChapter {
                     bdef("Sister group", "சகோதரக் குழு", "One of two groups that are each other's closest relatives." to
                         "ஒன்றுக்கொன்று நெருங்கிய உறவினரான இரு குழுக்களில் ஒன்று."),
                 )),
-            bsec("cnidaria", "Why radial symmetry does not link echinoderms to cnidarians", "ஆரைச் சமச்சீர் ஏன் முட்தோலிகளை குழியுடலிகளுடன் இணைக்காது",
+            bsec("cnidaria", "Why radial symmetry does not link echinoderms to cnidarians", "ஆரச்சமச்சீர் ஏன் முட்தோலிகளை குழியுடலிகளுடன் இணைக்காது",
                 blocks = listOf(
                     bp("Older books sometimes grouped the starfishes, the jellyfishes and the sea anemones together as the radiate animals, because of their radial form. The grouping is no longer accepted. Adult pentaradial symmetry in an echinoderm is a secondary condition that develops from a bilaterally symmetrical larva, and the cnidarians have a fundamentally different, non-bilaterian radial body plan. A similar adult shape does not make animals close relatives, since it can have been reached by different routes." to
                         "பழைய நூல்கள் ஆரை வடிவத்தால் நட்சத்திர மீன்கள், ஜெல்லிமீன்கள், கடல்சாமந்திகளை ஆரை விலங்குகளாக சில சமயம் ஒன்றாக்கின. அக்குழுவாக்கம் இப்போது ஏற்கப்படுவதில்லை. முட்தோலியில் முதிர்ந்த ஐந்தாரைச் சமச்சீர் இருபக்கச் சமச்சீர் லார்வாவிலிருந்து வளரும் இரண்டாம் நிலை; குழியுடலிகளுக்கு அடிப்படையில் வேறுபட்ட, இருபக்கமற்ற ஆரை உடல் திட்டம் உண்டு. ஒத்த முதிர்ந்த வடிவம் விலங்குகளை நெருங்கிய உறவினராக்காது; ஏனெனில் வெவ்வேறு வழிகளில் அடையப்பட்டிருக்கலாம்."),
@@ -90,12 +90,12 @@ object EchinoAffinitiesBookChapter {
                             listOf("Body cavity" to "உடற்குழி", "A true coelom" to "உண்மையான உடற்குழி", "A gastrovascular cavity; no coelom" to "இரைப்பை-நாளக் குழி; உடற்குழி இல்லை"),
                             listOf("Larva" to "லார்வா", "Bilateral ciliated larva" to "இருபக்க கசையிழை லார்வா", "Typically a planula" to "பொதுவாக பிளானுலா"),
                             listOf("Skeleton" to "கூடு", "Calcareous mesodermal endoskeleton" to "சுண்ணாம்பு மெசோடெர்மல் அகச்சட்டகம்", "No comparable endoskeleton in the group as a whole" to "குழு முழுவதற்கும் ஒப்பிடத்தக்க அகச்சட்டகம் இல்லை"),
-                            listOf("Characteristic structures" to "தனிப்பண்பு அமைப்புகள்", "Water-vascular system" to "நீர் குருதியோட்ட மண்டலம்", "Cnidocytes (stinging cells)" to "நிடோசைட்டுகள் (கொட்டும் உயிரணுக்கள்)"),
+                            listOf("Characteristic structures" to "தனிப்பண்பு அமைப்புகள்", "Water-vascular system" to "நீர் குருதியோட்ட மண்டலம்", "Cnidocytes (stinging cells)" to "நிடோசைட்டுகள் (கொட்டும் செல்கள்)"),
                         )),
                     bp("The example shows why the characters are weighed by their reliability. Adult shape is a poor guide to ancestry, as it is easily changed by the way of life, while the pattern of development and the molecular data change slowly. A student who writes that echinoderms are related to cnidarians because both are radial is making the error of reasoning from a similar appearance to a close relationship." to
                         "பண்புகள் நம்பகத்தன்மையால் எடை போடப்படுவதை இந்த எடுத்துக்காட்டு காட்டுகிறது. முதிர்ந்த வடிவம் மூதாதைத்தன்மைக்கு மோசமான வழிகாட்டி; ஏனெனில் வாழ்க்கை முறையால் எளிதில் மாறுகிறது; வளர்ச்சி முறையும் மூலக்கூறுத் தரவும் மெதுவாக மாறுகின்றன. இரண்டும் ஆரையாக இருப்பதால் முட்தோலிகள் குழியுடலிகளுடன் தொடர்புடையவை என எழுதும் மாணவர் ஒத்த தோற்றத்திலிருந்து நெருங்கிய உறவுக்கு முடிவெடுக்கும் தவற்றைச் செய்கிறார்."),
                     bdef("Radiata", "ரேடியேட்டா", "An older grouping of radially symmetrical animals that is no longer accepted as natural." to
-                        "இயற்கையானதாக இனி ஏற்கப்படாத, ஆரைச் சமச்சீர் விலங்குகளின் பழைய குழுவாக்கம்."),
+                        "இயற்கையானதாக இனி ஏற்கப்படாத, ஆரச்சமச்சீர் விலங்குகளின் பழைய குழுவாக்கம்."),
                     bdef("Diploblastic", "ஈரடுக்கு", "Having two germ layers, ectoderm and endoderm, with a jelly-like layer between them." to
                         "இடையே ஜெல்லி போன்ற அடுக்குடன் எக்டோடெர்ம், எண்டோடெர்ம் எனும் இரு கருவடுக்குகள் உடைய."),
                     bdef("Triploblastic", "மூவடுக்கு", "Having three germ layers, ectoderm, mesoderm and endoderm." to
@@ -112,7 +112,7 @@ object EchinoAffinitiesBookChapter {
                     bp("The two lines of evidence also illustrate a general point about reasoning. A conclusion about history is stronger when a living developmental stage and the fossil record independently point to the same idea, though neither can prove it. The conclusion is held until better evidence replaces it." to
                         "இரு சான்று வரிசைகளும் பகுத்தறிவு பற்றிய பொது விஷயத்தையும் விளக்குகின்றன. வாழும் வளர்ச்சி நிலையும் புதைபடிவப் பதிவும் தனித்து ஒரே கருத்தைச் சுட்டும்போது வரலாறு பற்றிய முடிவு வலிமையடைகிறது; ஆனால் இரண்டில் எதுவும் அதை நிரூபிக்க முடியாது. சிறந்த சான்று அதை மாற்றும் வரை முடிவு பற்றிக்கொள்ளப்படுகிறது."),
                     bp("For an examination answer, the fossil point is best added as one sentence at the end of the section on the radial plan: the early fossils include asymmetrical forms, which agrees with the evidence of the bilateral larva that the radial symmetry of the living classes is a later acquisition. This keeps the statement short and keeps it within what the evidence can support, and it avoids the temptation to name particular fossil genera that the syllabus does not require." to
-                        "தேர்வு விடைக்கு, புதைபடிவக் குறிப்பை ஆரைத் திட்டம் பற்றிய பகுதியின் இறுதியில் ஒரு வாக்கியமாகச் சேர்ப்பது சிறந்தது: ஆரம்பகாலப் புதைபடிவங்களில் சமச்சீரற்ற வடிவங்கள் அடங்கும்; இது வாழும் வகுப்புகளின் ஆரைச் சமச்சீர் பிற்கால பெறுபண்பு என்ற இருபக்க லார்வாச் சான்றுடன் ஒத்துப்போகிறது. இது கூற்றைச் சுருக்கமாகவும் சான்று ஆதரிக்கக்கூடியதற்குள்ளும் வைத்து, பாடத்திட்டம் கோராத குறிப்பிட்ட புதைபடிவப் பேரினங்களைப் பெயரிடும் ஆசையைத் தவிர்க்கிறது."),
+                        "தேர்வு விடைக்கு, புதைபடிவக் குறிப்பை ஆரைத் திட்டம் பற்றிய பகுதியின் இறுதியில் ஒரு வாக்கியமாகச் சேர்ப்பது சிறந்தது: ஆரம்பகாலப் புதைபடிவங்களில் சமச்சீரற்ற வடிவங்கள் அடங்கும்; இது வாழும் வகுப்புகளின் ஆரச்சமச்சீர் பிற்கால பெறுபண்பு என்ற இருபக்க லார்வாச் சான்றுடன் ஒத்துப்போகிறது. இது கூற்றைச் சுருக்கமாகவும் சான்று ஆதரிக்கக்கூடியதற்குள்ளும் வைத்து, பாடத்திட்டம் கோராத குறிப்பிட்ட புதைபடிவப் பேரினங்களைப் பெயரிடும் ஆசையைத் தவிர்க்கிறது."),
                     bdef("Cambrian", "கேம்ப்ரியன்", "The geological period, beginning about 540 million years ago, in which the main animal groups first appear clearly in the fossil record." to
                         "முக்கிய விலங்குக் குழுக்கள் புதைபடிவப் பதிவில் தெளிவாக முதலில் தோன்றும், சுமார் 54 கோடி ஆண்டுகளுக்கு முன் தொடங்கிய புவியியல் காலம்."),
                     bdef("Sessile", "ஒட்டி வாழும்", "Attached to the bottom and not moving about." to
@@ -186,7 +186,7 @@ object EchinoAffinitiesBookChapter {
             "With the hemichordates they form the Ambulacraria, supported by several independent lines of evidence." to "ஹெமிகார்டேட்டுகளுடன் அவை பல தனிச் சான்றுகளால் ஆதரிக்கப்படும் அம்புலாக்ரேரியாவை உருவாக்குகின்றன.",
             "The Ambulacraria is the sister group of the Chordata; echinoderms are relatives, not ancestors, of vertebrates." to "அம்புலாக்ரேரியா முதுகுநாணிகளின் சகோதரக் குழு; முட்தோலிகள் முதுகெலும்பிகளின் உறவினர், மூதாதையர் அல்ல.",
             "Echinoderms lack the chordate synapomorphies: notochord and dorsal hollow nerve cord." to "முட்தோலிகளுக்கு முதுகுநாணிப் பகிரப்பட்ட பெறுபண்புகளான நாணும் முதுகுப்புற வெற்று நரம்பு வடமும் இல்லை.",
-            "Adult radial symmetry is secondary and does not link echinoderms to cnidarians." to "முதிர்ந்த ஆரைச் சமச்சீர் இரண்டாம் நிலை; முட்தோலிகளை குழியுடலிகளுடன் இணைக்காது.",
+            "Adult radial symmetry is secondary and does not link echinoderms to cnidarians." to "முதிர்ந்த ஆரச்சமச்சீர் இரண்டாம் நிலை; முட்தோலிகளை குழியுடலிகளுடன் இணைக்காது.",
         ),
         checks = listOf(
             bqc("What is the Ambulacraria?", "அம்புலாக்ரேரியா என்றால் என்ன?",
@@ -195,7 +195,7 @@ object EchinoAffinitiesBookChapter {
                 "No. They are relatives, and the Ambulacraria is the sister group of the chordates.", "இல்லை. அவை உறவினர்; அம்புலாக்ரேரியா முதுகுநாணிகளின் சகோதரக் குழு."),
             bqc("Name two chordate characters that echinoderms lack.", "முட்தோலிகளுக்கு இல்லாத இரு முதுகுநாணிப் பண்புகளைப் பெயரிடுக.",
                 "A notochord and a dorsal hollow nerve cord.", "நாணும் முதுகுப்புற வெற்று நரம்பு வடமும்."),
-            bqc("Why is radial symmetry a poor guide to relationship?", "ஆரைச் சமச்சீர் உறவுக்கு ஏன் மோசமான வழிகாட்டி?",
+            bqc("Why is radial symmetry a poor guide to relationship?", "ஆரச்சமச்சீர் உறவுக்கு ஏன் மோசமான வழிகாட்டி?",
                 "Similar adult shape can arise by different routes, and in echinoderms it is secondary.", "ஒத்த முதிர்ந்த வடிவம் வெவ்வேறு வழிகளில் தோன்றலாம்; முட்தோலிகளில் அது இரண்டாம் நிலை."),
         ),
     )

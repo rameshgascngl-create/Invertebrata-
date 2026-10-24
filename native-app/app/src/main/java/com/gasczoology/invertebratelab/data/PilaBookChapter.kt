@@ -85,7 +85,7 @@ object PilaBookChapter {
                     bdef("Figure-of-eight nerve loop", "எட்டு வடிவ நரம்பு முறுக்கு", "The twisting of the visceral nerve connectives of a gastropod that results from torsion." to
                         "முறுக்கலால் ஏற்படும் இரைப்பைக்காலியின் உள்ளுறுப்பு நரம்பு இணைப்பிகளின் முறுக்கம்."),
                     bdef("Haemocyanin", "ஹீமோசயனின்", "A copper-containing respiratory pigment dissolved in the blood plasma of molluscs and crustaceans." to
-                        "மெல்லுடலிகள், ஓட்டுடலிகளின் இரத்த பிளாஸ்மாவில் கரைந்த தாமிரம் கொண்ட சுவாச நிறமி."),
+                        "மெல்லுடலிகள், கிரஸ்டேஷியன்களின் இரத்த பிளாஸ்மாவில் கரைந்த தாமிரம் கொண்ட சுவாச நிறமி."),
                 )),
             bsec("life", "Habitat, locomotion and the senses", "வாழிடம், இயக்கம், புலன்கள்",
                 blocks = listOf(
@@ -102,7 +102,7 @@ object PilaBookChapter {
                     bdef("Tentacle", "உணர்கொம்பு", "A slender, flexible projection of the head that serves in touch, smell or taste." to
                         "தொடுதல், மணம் அல்லது சுவைக்குப் பயன்படும் தலையின் மெல்லிய, நெகிழ்வான நீட்சி."),
                     bdef("Statocyst", "ஸ்டேட்டோசிஸ்ட்", "A sense organ of balance, containing a small hard body that rests on sensory cells." to
-                        "உணர்வு உயிரணுக்களின்மீது அமர்ந்த சிறு கடினப் பொருளைக் கொண்ட, சமநிலை உணர்வு உறுப்பு."),
+                        "உணர்வு செல்களின்மீது அமர்ந்த சிறு கடினப் பொருளைக் கொண்ட, சமநிலை உணர்வு உறுப்பு."),
                 )),
             bsec("reproduction", "Reproduction, development and aestivation", "இனப்பெருக்கம், வளர்ச்சி, கோடைத்துயில்",
                 blocks = listOf(
@@ -127,7 +127,7 @@ object PilaBookChapter {
             bsec("answering", "Writing the detailed account", "விரிவான விளக்கம் எழுதுதல்",
                 blocks = listOf(
                     bp("The examination asks for a detailed account of Pila globosa, and the A5 notes give five steps that make a safe order. First, state that Pila is an amphibious univalve with an operculum, which fixes its place among the gastropods. Second, describe the two respiratory organs, the ctenidium for water and the pulmonary sac for air. Third, name the osphradium and the radula, which stand for sensory life and feeding. Fourth, say that the adult is already torted, and so the nerve loop is a figure of eight. Fifth, say that Pila is not a bivalve, and it should not be confused with Unio." to
-                        "தேர்வு பைலா குளோபோசாவின் விரிவான விளக்கத்தைக் கேட்கிறது; A5 குறிப்புகள் பாதுகாப்பான வரிசையை உருவாக்கும் ஐந்து படிகளைத் தருகின்றன. முதலில் பைலா ஆப்பர்குலத்துடைய நீர்நில வாழ் ஒற்றை ஓட்டுடலி எனக் கூறுக; இது காஸ்ட்ரோபோடாவில் அதன் இடத்தை நிர்ணயிக்கிறது. இரண்டாவது, இரு சுவாச உறுப்புகளான நீருக்கு க்டீனிடியம், காற்றுக்கு நுரையீரல் பை ஆகியவற்றை விவரிக்க. மூன்றாவது, உணர்வு வாழ்வையும் உண்ணுதலையும் குறிக்கும் ஆஸ்ஃப்ரேடியம், ராடுலாவைப் பெயரிடுக. நான்காவது, முதிர் உயிரி ஏற்கனவே முறுக்கப்பட்டது; எனவே நரம்பு வளையம் எட்டு வடிவம் எனக் கூறுக. ஐந்தாவது, பைலா இரட்டை ஓட்டுடலி அல்ல; யூனியோவுடன் குழப்பக் கூடாது எனக் கூறுக."),
+                        "தேர்வு பைலா குளோபோசாவின் விரிவான விளக்கத்தைக் கேட்கிறது; A5 குறிப்புகள் பாதுகாப்பான வரிசையை உருவாக்கும் ஐந்து படிகளைத் தருகின்றன. முதலில் பைலா ஆப்பர்குலத்துடைய நீர்நில வாழ் ஒற்றை கிரஸ்டேஷியன் எனக் கூறுக; இது காஸ்ட்ரோபோடாவில் அதன் இடத்தை நிர்ணயிக்கிறது. இரண்டாவது, இரு சுவாச உறுப்புகளான நீருக்கு க்டீனிடியம், காற்றுக்கு நுரையீரல் பை ஆகியவற்றை விவரிக்க. மூன்றாவது, உணர்வு வாழ்வையும் உண்ணுதலையும் குறிக்கும் ஆஸ்ஃப்ரேடியம், ராடுலாவைப் பெயரிடுக. நான்காவது, முதிர் உயிரி ஏற்கனவே முறுக்கப்பட்டது; எனவே நரம்பு வளையம் எட்டு வடிவம் எனக் கூறுக. ஐந்தாவது, பைலா இரட்டை கிரஸ்டேஷியன் அல்ல; யூனியோவுடன் குழப்பக் கூடாது எனக் கூறுக."),
                     bp("The two-mark questions are brief. The lid of the shell is the operculum, and the two breathing organs are the ctenidium in water and the pulmonary sac in air. The five-mark question on the respiratory adaptations is best answered with the five points listed in the section on respiration, and the comparison with Unio with the table at the end of this chapter, in which the differences are set side by side. A neat labelled sketch of the mantle cavity adds to either answer." to
                         "இரண்டு மதிப்பெண் கேள்விகள் சுருக்கமானவை. ஓட்டின் மூடி ஆப்பர்குலம்; இரு சுவாச உறுப்புகள் நீரில் க்டீனிடியம், காற்றில் நுரையீரல் பை. சுவாசத் தழுவல்கள் பற்றிய ஐந்து மதிப்பெண் கேள்விக்குச் சுவாசம் பகுதியில் பட்டியலிட்ட ஐந்து புள்ளிகளும், யூனியோவுடனான ஒப்பீட்டுக்கு இவ்வத்தியாயத்தின் இறுதியிலுள்ள, வேறுபாடுகள் அருகருகே தரப்படும் அட்டவணையும் சிறந்த விடை. மேண்டில் குழியின் தெளிவான குறிப்பிட்ட படம் எந்த விடைக்கும் மதிப்பு சேர்க்கும்."),
                 )),

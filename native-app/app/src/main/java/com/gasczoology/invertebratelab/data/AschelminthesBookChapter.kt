@@ -52,7 +52,7 @@ object AschelminthesBookChapter {
                     bpoints("Reproduction", "இனப்பெருக்கம்",
                         "The sexes are usually separate (dioecious), and the female is often larger than the male; this is sexual dimorphism." to "பாலினங்கள் பொதுவாகத் தனித்தனி (ஒரு பால் உயிரிகள்); பெண் பெரும்பாலும் ஆணைவிடப் பெரியது; இது பாலின இருவடிவம்.",
                         "Fertilisation is internal, and development is usually direct, with a series of juvenile stages and four moults." to "கருவுறுதல் உட்புறம்; வளர்ச்சி பொதுவாக நேரடியானது; தொடர் இளம் நிலைகளும் நான்கு உதிர்ப்புகளும் உண்டு.",
-                        "Free-living and parasitic forms occur, the parasites inhabiting plants, invertebrates and vertebrates." to "தனி வாழ்வு, ஒட்டுண்ணி வடிவங்கள் உள்ளன; ஒட்டுண்ணிகள் தாவரங்கள், முதுகெலும்பிலிகள், முதுகெலும்பிகளில் வாழ்கின்றன.",
+                        "Free-living and parasitic forms occur, the parasites inhabiting plants, invertebrates and vertebrates." to "தனி வாழ்வு, ஒட்டுண்ணி வடிவங்கள் உள்ளன; ஒட்டுண்ணிகள் தாவரங்கள், முதுகெலும்பற்றவை, முதுகெலும்பிகளில் வாழ்கின்றன.",
                     ),
                     bdef("Pseudocoelom", "போலி உடற்குழி", "A fluid-filled body cavity between the gut and the body wall which is not completely lined by mesoderm." to
                         "மீசோடெர்மால் முழுமையாக மூடப்படாத, குடலுக்கும் உடற்சுவருக்கும் இடையிலான திரவம் நிறைந்த உடற்குழி."),

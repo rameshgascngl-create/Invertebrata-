@@ -121,7 +121,7 @@ object NereisBookChapter {
                         "Giving Nereis a clitellum or hermaphrodite organs; the sexes are separate." to "நீரிஸுக்கு கிளைட்டெல்லம் அல்லது இருபால் உறுப்புகள் தருதல்; பாலினங்கள் தனித்தனி.",
                         "Describing the parapodium as a jointed limb; it is a soft lobe." to "பாரபோடியத்தை மூட்டுள்ள உறுப்பு என விவரித்தல்; அது மென்மையான மடல்.",
                         "Omitting that the pharynx is everted for feeding and bears jaws." to "உண்ணும்போது தொண்டை வெளித்தள்ளப்படுகிறது, தாடைகளைத் தாங்குகிறது என்பதைத் தவிர்த்தல்.",
-                        "Confusing the trochophore with the nauplius of crustaceans." to "ட்ரோகோஃபோரை கிரஸ்டேசியன்களின் நாப்ளியஸுடன் குழப்புதல்.",
+                        "Confusing the trochophore with the nauplius of crustaceans." to "ட்ரோகோஃபோரை கிரஸ்டேஷியன்களின் நாப்ளியஸுடன் குழப்புதல்.",
                     ),
                 )),
             bsec("epitoky", "Epitoky", "எபிடோகி",

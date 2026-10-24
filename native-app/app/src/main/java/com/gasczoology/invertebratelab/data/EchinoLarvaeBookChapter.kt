@@ -95,14 +95,14 @@ object EchinoLarvaeBookChapter {
                     bp("Metamorphosis is the change from the bilateral larva to the pentaradial juvenile, and in the starfishes it takes place after the larva attaches. In the larva the left side of the coelom forms the rudiment of the water-vascular system as a five-lobed structure, and the rudiment grows on the left side of the body, while the right side forms less. The left side of the larva thus becomes the oral surface of the adult, and the right side the aboral surface, and the body is reorganised around the new axis. The larval arms and ciliary bands are absorbed, and the juvenile sets out its first tube feet." to
                         "உருமாற்றம் என்பது இருபக்க லார்வாவிலிருந்து ஐந்தாரை இளவிலங்காக மாறுதல்; நட்சத்திர மீன்களில் லார்வா ஒட்டிய பின் நிகழ்கிறது. லார்வாவில் உடற்குழியின் இடப்பக்கம் நீர் குருதியோட்ட மண்டலத்தின் அரும்பை ஐந்து மடல் அமைப்பாக உருவாக்குகிறது; அரும்பு உடலின் இடப்பக்கத்தில் வளர, வலப்பக்கம் குறைவாக உருவாகிறது. இவ்வாறு லார்வாவின் இடப்பக்கம் முதிர்ந்ததின் வாய்ப்புற மேற்பரப்பாகவும் வலப்பக்கம் மேற்புற மேற்பரப்பாகவும் மாறுகிறது; உடல் புதிய அச்சைச் சுற்றி மறுசீரமைக்கப்படுகிறது. லார்வாவின் கரங்களும் கசையிழைப் பட்டைகளும் உறிஞ்சப்படுகின்றன; இளவிலங்கு தன் முதல் குழாய்ப்பாதங்களை வெளிப்படுத்துகிறது."),
                     bp("The change is therefore not a simple growth of the larva into the adult. The adult axis has no relation to the larval head and tail, and the juvenile is often smaller than the larva that formed it. This is a reason for the statement that the radial symmetry of the adult is secondary, derived during metamorphosis from a bilateral ancestor. The details of the process differ between classes, and the account here is that of the starfishes." to
-                        "எனவே மாற்றம் லார்வா முதிர்ந்ததாக வளரும் எளிய வளர்ச்சி அல்ல. முதிர்ந்த அச்சுக்கு லார்வாவின் தலை, வாலுடன் தொடர்பில்லை; இளவிலங்கு பெரும்பாலும் தான் உருவான லார்வாவை விடச் சிறியது. முதிர்ந்ததின் ஆரைச் சமச்சீர், இருபக்க மூதாதையிலிருந்து உருமாற்றத்தின்போது பெறப்பட்ட இரண்டாம் நிலை என்ற கூற்றுக்கு இது ஒரு காரணம். செயல்முறையின் விவரங்கள் வகுப்புகளிடையே மாறுபடும்; இங்குள்ள விளக்கம் நட்சத்திர மீன்களுக்கானது."),
+                        "எனவே மாற்றம் லார்வா முதிர்ந்ததாக வளரும் எளிய வளர்ச்சி அல்ல. முதிர்ந்த அச்சுக்கு லார்வாவின் தலை, வாலுடன் தொடர்பில்லை; இளவிலங்கு பெரும்பாலும் தான் உருவான லார்வாவை விடச் சிறியது. முதிர்ந்ததின் ஆரச்சமச்சீர், இருபக்க மூதாதையிலிருந்து உருமாற்றத்தின்போது பெறப்பட்ட இரண்டாம் நிலை என்ற கூற்றுக்கு இது ஒரு காரணம். செயல்முறையின் விவரங்கள் வகுப்புகளிடையே மாறுபடும்; இங்குள்ள விளக்கம் நட்சத்திர மீன்களுக்கானது."),
                     bnote("Left becomes oral", "இடப்பக்கம் வாய்ப்புறம் ஆகிறது",
                         "In the starfish the left side of the larva becomes the oral surface of the adult. The adult axis is not the larval head-to-tail axis." to
                             "நட்சத்திரமீனில் லார்வாவின் இடப்பக்கம் முதிர்ந்ததின் வாய்ப்புற மேற்பரப்பாகிறது. முதிர்ந்த அச்சு லார்வாவின் தலை-வால் அச்சு அல்ல."),
                     bdef("Metamorphosis", "உருமாற்றம்", "The reorganisation of a larva into a juvenile of different form." to
                         "லார்வா வேறு வடிவ இளவிலங்காக மறுசீரமைக்கப்படுதல்."),
                     bdef("Rudiment", "அரும்பு", "A group of cells in a larva that will form an adult structure." to
-                        "முதிர்ந்த அமைப்பாக மாறும் லார்வாவிலுள்ள உயிரணுக் குழு."),
+                        "முதிர்ந்த அமைப்பாக மாறும் லார்வாவிலுள்ள செல் குழு."),
                     bdef("Juvenile", "இளவிலங்கு", "A young animal that has the form of the adult but is not sexually mature." to
                         "முதிர்ந்ததின் வடிவம் உடைய ஆனால் பாலினமுதிர்ச்சி அடையாத இளம் விலங்கு."),
                 )),
@@ -161,7 +161,7 @@ object EchinoLarvaeBookChapter {
                 )),
         ),
         summary = listOf(
-            "Echinoderm larvae are bilateral and ciliated, which shows that the radial adult is secondary." to "முட்தோலி லார்வாக்கள் இருபக்கச் சமச்சீருடையவை, கசையிழை கொண்டவை; முதிர்ந்த ஆரைச் சமச்சீர் இரண்டாம் நிலை என்பதை இது காட்டுகிறது.",
+            "Echinoderm larvae are bilateral and ciliated, which shows that the radial adult is secondary." to "முட்தோலி லார்வாக்கள் இருபக்கச் சமச்சீருடையவை, கசையிழை கொண்டவை; முதிர்ந்த ஆரச்சமச்சீர் இரண்டாம் நிலை என்பதை இது காட்டுகிறது.",
             "Starfishes have a bipinnaria, which may be followed by a brachiolaria." to "நட்சத்திர மீன்களுக்கு பிபின்னேரியா உண்டு; அதைத் தொடர்ந்து பிராக்கியோலேரியா வரலாம்.",
             "Sea urchins have an echinopluteus and brittle stars an ophiopluteus." to "கடல் முள்ளெலிகளுக்கு எக்கினோப்ளூட்டியஸும் பிரிட்டில் நட்சத்திரங்களுக்கு ஓஃபியோப்ளூட்டியஸும் உண்டு.",
             "Sea cucumbers have an auricularia, often followed by a doliolaria; crinoids commonly have a doliolaria." to "கடல் வெள்ளரிகளுக்கு ஆரிக்குலேரியா, பெரும்பாலும் டோலியோலேரியா தொடரும்; கிரினாய்டுகளுக்கு பொதுவாக டோலியோலேரியா.",

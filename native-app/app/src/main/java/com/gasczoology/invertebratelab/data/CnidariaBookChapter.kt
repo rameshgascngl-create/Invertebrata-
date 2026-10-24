@@ -8,14 +8,14 @@ object CnidariaBookChapter {
             "தொகுதி சீலென்டிரேட்டா (நிடேரியா): பொதுப்பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
             "State the general characters of the phylum Coelenterata (Cnidaria)." to "சீலென்டிரேட்டா (நிடேரியா) தொகுதியின் பொதுப்பண்புகளைக் கூற.",
-            "Describe the structure and discharge of a nematocyst and the types of cnidocyte." to "நீமட்டோசிஸ்டின் அமைப்பையும் வெளியேற்றத்தையும், நிடோசைட் வகைகளையும் விவரிக்க.",
+            "Describe the structure and discharge of a nematocyst and the types of cnidocyte." to "நெமட்டோசிஸ்டின் அமைப்பையும் வெளியேற்றத்தையும், நிடோசைட் வகைகளையும் விவரிக்க.",
             "Compare the polyp and the medusa in tabular form." to "பாலிப்பையும் மெடுசாவையும் அட்டவணை வடிவில் ஒப்பிட.",
             "Classify the phylum into Hydrozoa, Scyphozoa and Anthozoa with characters and examples." to "தொகுதியை ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா வகுப்புகளாகப் பண்புகளுடனும் எடுத்துக்காட்டுகளுடனும் வகைப்படுத்த.",
             "Explain why the older name Coelenterata and the current name Cnidaria are both used." to "பழைய பெயரான சீலென்டிரேட்டாவும் தற்போதைய பெயரான நிடேரியாவும் ஏன் இரண்டும் பயன்படுகின்றன என்பதை விளக்க.",
         ),
         introduction = listOf(
             "The Cnidaria are the first animals in the sequence of this course to possess true tissues. Their bodies are built of two cell layers around a jelly-like middle layer, they have radial symmetry and a single opening to the gut, and they are armed with stinging cells that are found in no other animals. The group includes the freshwater Hydra, the colonial hydroids such as Obelia, the jellyfishes, the sea anemones and the reef-building corals." to
-                "இந்தப் பாடத்தின் வரிசையில் உண்மையான திசுக்களைக் கொண்ட முதல் விலங்குகள் நிடேரியாக்கள். அவற்றின் உடல் ஜெல்லி போன்ற நடு அடுக்கைச் சுற்றி இரு செல் அடுக்குகளால் கட்டப்பட்டது; ஆரச் சமச்சீர், குடலுக்கு ஒரே திறப்பு கொண்டவை; வேறு எந்த விலங்கிலும் காணப்படாத கொட்டும் செல்களைக் கொண்டவை. நன்னீர் ஹைட்ரா, ஒபீலியா போன்ற காலனி ஹைட்ராய்டுகள், ஜெல்லிமீன்கள், கடல்சாமந்திகள், பவளப்பாறை உருவாக்கும் பவளங்கள் இக்குழுவில் அடங்கும்.",
+                "இந்தப் பாடத்தின் வரிசையில் உண்மையான திசுக்களைக் கொண்ட முதல் விலங்குகள் நிடேரியாக்கள். அவற்றின் உடல் ஜெல்லி போன்ற நடு அடுக்கைச் சுற்றி இரு செல் அடுக்குகளால் கட்டப்பட்டது; ஆரச்சமச்சீர், குடலுக்கு ஒரே திறப்பு கொண்டவை; வேறு எந்த விலங்கிலும் காணப்படாத கொட்டும் செல்களைக் கொண்டவை. நன்னீர் ஹைட்ரா, ஒபீலியா போன்ற காலனி ஹைட்ராய்டுகள், ஜெல்லிமீன்கள், கடல்சாமந்திகள், பவளப்பாறை உருவாக்கும் பவளங்கள் இக்குழுவில் அடங்கும்.",
             "The paper names the phylum Coelenterata, and the current scientific name is Cnidaria. This chapter uses both, as the syllabus does, and sets out the characters that define the group, the two body forms that run through all its life cycles, and the three classes into which it is divided." to
                 "பாடத்திட்டம் தொகுதியை சீலென்டிரேட்டா என்று குறிப்பிடுகிறது; தற்போதைய அறிவியல் பெயர் நிடேரியா. பாடத்திட்டத்தைப் பின்பற்றி இந்த அத்தியாயம் இரண்டையும் பயன்படுத்துகிறது; குழுவை வரையறுக்கும் பண்புகள், எல்லா வாழ்க்கைச் சுழற்சிகளிலும் வரும் இரு உடல் வடிவங்கள், தொகுதி பிரியும் மூன்று வகுப்புகள் ஆகியவற்றை விவரிக்கிறது.",
         ),
@@ -38,7 +38,7 @@ object CnidariaBookChapter {
                     bpoints("Habitat and symmetry", "வாழிடமும் சமச்சீரும்",
                         "Aquatic animals, nearly all marine; a few, such as Hydra, live in fresh water." to "நீர்வாழ் விலங்குகள், கிட்டத்தட்ட அனைத்தும் கடலில்; ஹைட்ரா போன்ற சிலவே நன்னீரில்.",
                         "Solitary or colonial, and attached (sessile) or free-swimming." to "தனித்தவை அல்லது காலனி; ஒட்டி வாழ்பவை அல்லது சுதந்திரமாக நீந்துபவை.",
-                        "Radial or biradial symmetry, in which the parts are arranged around a central axis passing through the mouth." to "ஆரச் சமச்சீர் அல்லது இருபக்க ஆரச் சமச்சீர்; பாகங்கள் வாய் வழியே செல்லும் மைய அச்சைச் சுற்றி அமைந்துள்ளன.",
+                        "Radial or biradial symmetry, in which the parts are arranged around a central axis passing through the mouth." to "ஆரச்சமச்சீர் அல்லது இருபக்க ஆரச்சமச்சீர்; பாகங்கள் வாய் வழியே செல்லும் மைய அச்சைச் சுற்றி அமைந்துள்ளன.",
                     ),
                     bpoints("Body construction", "உடல் கட்டமைப்பு",
                         "Tissue grade of organisation: cells are organised into tissues but not into true organs or organ systems." to "திசு நிலை அமைப்பு: செல்கள் திசுக்களாக ஒழுங்கமைந்துள்ளன; உண்மையான உறுப்புகளாகவோ உறுப்பு மண்டலங்களாகவோ அல்ல.",
@@ -47,7 +47,7 @@ object CnidariaBookChapter {
                         "Acoelomate: there is no body cavity other than the gut." to "உடற்குழியற்றவை: குடலைத் தவிர வேறு உடற்குழி இல்லை.",
                     ),
                     bpoints("Cnidocytes and the nervous system", "நிடோசைட்டுகளும் நரம்பு மண்டலமும்",
-                        "Stinging cells (cnidocytes) with nematocysts, used to capture prey and for defence, are present, especially on the tentacles." to "நீமட்டோசிஸ்ட் உள்ள கொட்டும் செல்கள் (நிடோசைட்டுகள்) குறிப்பாகக் உணர்கொம்புகளில் உள்ளன; இரை பிடிக்கவும் தற்காப்புக்கும் பயன்படுகின்றன.",
+                        "Stinging cells (cnidocytes) with nematocysts, used to capture prey and for defence, are present, especially on the tentacles." to "நெமட்டோசிஸ்ட் உள்ள கொட்டும் செல்கள் (நிடோசைட்டுகள்) குறிப்பாகக் உணர்கொம்புகளில் உள்ளன; இரை பிடிக்கவும் தற்காப்புக்கும் பயன்படுகின்றன.",
                         "A nerve net of nerve cells lies at the base of the epidermis and often of the gastrodermis; there is no brain." to "நரம்பு செல்களின் நரம்பு வலை எப்பிடெர்மிஸ் அடியிலும் பெரும்பாலும் காஸ்ட்ரோடெர்மிஸ் அடியிலும் உள்ளது; மூளை இல்லை.",
                         "Epitheliomuscular cells provide a simple muscular system, and sense cells respond to touch and chemicals." to "எப்பிதீலியோதசை செல்கள் எளிய தசை அமைப்பைத் தருகின்றன; உணர் செல்கள் தொடுதலுக்கும் வேதிப்பொருட்களுக்கும் துலங்குகின்றன.",
                     ),
@@ -71,7 +71,7 @@ object CnidariaBookChapter {
                     bdef("Gastrovascular cavity", "காஸ்ட்ரோவாஸ்குலர் குழி",
                         "The central cavity of a cnidarian, which both digests food and distributes it through the body." to
                             "உணவைச் செரித்து உடல் முழுவதும் பரப்பும் நிடேரியாவின் நடுக்குழி."),
-                    bdef("Radial symmetry", "ஆரச் சமச்சீர்",
+                    bdef("Radial symmetry", "ஆரச்சமச்சீர்",
                         "Symmetry in which the body can be divided into similar halves by any plane that passes through the central axis." to
                             "மைய அச்சின் வழியே செல்லும் எந்தத் தளத்தாலும் உடலை ஒத்த பாதிகளாகப் பிரிக்கக்கூடிய சமச்சீர்."),
                 )),
@@ -98,13 +98,13 @@ object CnidariaBookChapter {
                         "The mesoglea is not a germ layer. It is secreted by the two cell layers, which is why the animal is called diploblastic and not triploblastic." to
                             "மீசோகிளியா கருப்படலம் அல்ல; இரு செல் அடுக்குகளாலும் சுரக்கப்படுகிறது; எனவே விலங்கு இரு அடுக்குடையது (டிப்ளோபிளாஸ்டிக்) எனப்படுகிறது; மூன்று அடுக்குடையது அல்ல."),
                 )),
-            bsec("nematocyst","The cnidocyte and the nematocyst", "நிடோசைட்டும் நீமட்டோசிஸ்டும்",
+            bsec("nematocyst","The cnidocyte and the nematocyst", "நிடோசைட்டும் நெமட்டோசிஸ்டும்",
                 blocks = listOf(
                     bp("The cnidocyte is a specialised cell of the epidermis, and in some forms of the gastrodermis. Inside it is the nematocyst, a capsule in which a long, hollow thread is coiled. A small, hair-like trigger, the cnidocil, projects from the surface of the cell. When prey touches it, and chemical stimuli are also received, the capsule discharges: the thread is shot out inside-out, penetrating or entangling the prey, and in many types a toxin is injected." to
-                        "நிடோசைட் எப்பிடெர்மிஸின், சில வடிவங்களில் காஸ்ட்ரோடெர்மிஸின், சிறப்பு செல். அதனுள் நீமட்டோசிஸ்ட் என்ற உறை உள்ளது; அதில் நீண்ட, குழாய் இழை சுருண்டுள்ளது. செல்லின் மேற்பரப்பில் நிடோசில் என்ற சிறு முடி போன்ற தூண்டுகோல் நீட்டிக்கொண்டுள்ளது. இரை அதைத் தொடும்போது, வேதித் தூண்டலும் பெறப்படும்போது, உறை வெளியேற்றுகிறது: இழை உள்ளிருந்து வெளியே திருப்பிச் சுடப்பட்டு, இரையைத் துளைக்கிறது அல்லது சுற்றி இறுக்குகிறது; பல வகைகளில் நஞ்சு செலுத்தப்படுகிறது."),
+                        "நிடோசைட் எப்பிடெர்மிஸின், சில வடிவங்களில் காஸ்ட்ரோடெர்மிஸின், சிறப்பு செல். அதனுள் நெமட்டோசிஸ்ட் என்ற உறை உள்ளது; அதில் நீண்ட, குழாய் இழை சுருண்டுள்ளது. செல்லின் மேற்பரப்பில் நிடோசில் என்ற சிறு முடி போன்ற தூண்டுகோல் நீட்டிக்கொண்டுள்ளது. இரை அதைத் தொடும்போது, வேதித் தூண்டலும் பெறப்படும்போது, உறை வெளியேற்றுகிறது: இழை உள்ளிருந்து வெளியே திருப்பிச் சுடப்பட்டு, இரையைத் துளைக்கிறது அல்லது சுற்றி இறுக்குகிறது; பல வகைகளில் நஞ்சு செலுத்தப்படுகிறது."),
                     bp("A nematocyst discharges once only. The cnidocyte is then replaced by a new cell, formed from an interstitial cell, and the old one is lost. Several kinds of nematocyst occur. Penetrants pierce and inject a toxin; volvents coil around a part of the prey; glutinants stick to it. Spirocysts, which are found in anthozoans, are adhesive threads without a barb." to
-                        "நீமட்டோசிஸ்ட் ஒருமுறை மட்டுமே வெளியேற்றுகிறது. அதன் பின் நிடோசைட் புதிய செல்லால் மாற்றப்படுகிறது; அது இடைநிலை செல்லிலிருந்து உருவாகிறது; பழையது இழக்கப்படுகிறது. பல வகை நீமட்டோசிஸ்ட்கள் உண்டு. துளைப்பவை துளைத்து நஞ்சு செலுத்துகின்றன; சுற்றுபவை இரையின் ஒரு பகுதியைச் சுற்றிக்கொள்கின்றன; ஒட்டுபவை அதில் ஒட்டிக்கொள்கின்றன. ஆந்தோசோவாக்களில் காணப்படும் ஸ்பைரோசிஸ்ட்கள் முள்ளற்ற ஒட்டும் இழைகள்."),
-                    btable("Principal kinds of nematocyst", "நீமட்டோசிஸ்டின் முக்கிய வகைகள்",
+                        "நெமட்டோசிஸ்ட் ஒருமுறை மட்டுமே வெளியேற்றுகிறது. அதன் பின் நிடோசைட் புதிய செல்லால் மாற்றப்படுகிறது; அது இடைநிலை செல்லிலிருந்து உருவாகிறது; பழையது இழக்கப்படுகிறது. பல வகை நெமட்டோசிஸ்ட்கள் உண்டு. துளைப்பவை துளைத்து நஞ்சு செலுத்துகின்றன; சுற்றுபவை இரையின் ஒரு பகுதியைச் சுற்றிக்கொள்கின்றன; ஒட்டுபவை அதில் ஒட்டிக்கொள்கின்றன. ஆந்தோசோவாக்களில் காணப்படும் ஸ்பைரோசிஸ்ட்கள் முள்ளற்ற ஒட்டும் இழைகள்."),
+                    btable("Principal kinds of nematocyst", "நெமட்டோசிஸ்டின் முக்கிய வகைகள்",
                         listOf("Type" to "வகை", "Action" to "செயல்" ),
                         listOf(
                             listOf("Penetrant (stenotele)" to "துளைப்பது (ஸ்டெனோடீல்)", "Pierces the prey and injects a toxin" to "இரையைத் துளைத்து நஞ்சு செலுத்துகிறது"),
@@ -113,8 +113,8 @@ object CnidariaBookChapter {
                         )),
                     bdef("Cnidocyte", "நிடோசைட்",
                         "A stinging cell, characteristic of cnidarians, that contains a nematocyst." to
-                            "நிடேரியாக்களின் பண்பான, நீமட்டோசிஸ்ட்டைக் கொண்ட கொட்டும் செல்."),
-                    bdef("Nematocyst", "நீமட்டோசிஸ்ட்",
+                            "நிடேரியாக்களின் பண்பான, நெமட்டோசிஸ்ட்டைக் கொண்ட கொட்டும் செல்."),
+                    bdef("Nematocyst", "நெமட்டோசிஸ்ட்",
                         "A capsule inside a cnidocyte, containing a coiled thread that is discharged to capture prey or to defend the animal." to
                             "நிடோசைட்டினுள் உள்ள உறை; இரை பிடிக்க அல்லது தற்காப்புக்கு வெளியேற்றப்படும் சுருண்ட இழையைக் கொண்டது."),
                     bdef("Cnidocil", "நிடோசில்",
@@ -122,7 +122,7 @@ object CnidariaBookChapter {
                             "தொடுதலுக்குத் துலங்கி வெளியேற்றத்தைத் தொடங்கும், நிடோசைட்டிலுள்ள தூண்டுகோல் போன்ற சிறு நீட்சி."),
                     bnote("Do not call it a sting from a gland", "சுரப்பியிலிருந்து வரும் கொட்டு எனக் கூற வேண்டாம்",
                         "The nematocyst is a capsule inside a single cell, and not a gland. In answers state that it is a cell organelle that discharges once and that the cell is then replaced." to
-                            "நீமட்டோசிஸ்ட் ஒற்றைச் செல்லுக்குள் உள்ள உறை; சுரப்பி அல்ல. விடையில் அது ஒருமுறை வெளியேற்றும் செல் நுண்ணுறுப்பு என்றும், பின்னர் செல் மாற்றப்படும் என்றும் குறிப்பிடுக."),
+                            "நெமட்டோசிஸ்ட் ஒற்றைச் செல்லுக்குள் உள்ள உறை; சுரப்பி அல்ல. விடையில் அது ஒருமுறை வெளியேற்றும் செல் நுண்ணுறுப்பு என்றும், பின்னர் செல் மாற்றப்படும் என்றும் குறிப்பிடுக."),
                 )),
             bsec("forms", "The polyp and the medusa", "பாலிப்பும் மெடுசாவும்",
                 blocks = listOf(
@@ -136,7 +136,7 @@ object CnidariaBookChapter {
                             listOf("Mouth" to "வாய்", "Directed upwards" to "மேல்நோக்கி", "Directed downwards" to "கீழ்நோக்கி"),
                             listOf("Mesoglea" to "மீசோகிளியா", "Thin" to "மெல்லியது", "Thick and jelly-like" to "தடித்தது, ஜெல்லி போன்றது"),
                             listOf("Number of individuals" to "உயிரிகளின் எண்ணிக்கை", "Solitary or colonial" to "தனித்தது அல்லது காலனி", "Usually solitary" to "பொதுவாகத் தனித்தது"),
-                            listOf("Reproduction" to "இனப்பெருக்கம்", "Commonly asexual by budding" to "பொதுவாக மொட்டுவிடுதல் மூலம் பாலிலா", "Commonly sexual, forms gametes" to "பொதுவாகப் பாலினம்; கேமீட்டுகளை உருவாக்கும்"),
+                            listOf("Reproduction" to "இனப்பெருக்கம்", "Commonly asexual by budding" to "பொதுவாக மொட்டு விடுதல் மூலம் பாலிலா", "Commonly sexual, forms gametes" to "பொதுவாகப் பாலினம்; கேமீட்டுகளை உருவாக்கும்"),
                         )),
                     bdef("Polyp", "பாலிப்",
                         "The attached, cylindrical, usually asexual body form of a cnidarian, with the mouth and tentacles at the free end." to
@@ -154,7 +154,7 @@ object CnidariaBookChapter {
             bsec("nutrition", "Feeding and digestion", "உணவூட்டமும் செரிமானமும்",
                 blocks = listOf(
                     bp("Cnidarians are carnivores. The tentacles, armed with nematocysts, catch small animals such as crustaceans and larvae of fishes, paralyse them and pass them to the mouth, which opens into the gastrovascular cavity. The same opening serves for the intake of food and for the discharge of the undigested remains, since the gut has only one opening. Digestion begins outside the cells (extracellular) in the cavity, where enzymes secreted by gland cells of the gastrodermis break the food into small pieces. The particles are then taken into the cells of the gastrodermis by phagocytosis and digestion is completed inside the cells (intracellular).",
-                        "நிடேரியன்கள் ஊனுண்ணிகள். நீமட்டோசிஸ்ட்டுகள் கொண்ட உணர்கொம்புகள் கிரஸ்டேசியன்கள், மீன் லார்வாக்கள் போன்ற சிறு விலங்குகளைப் பிடித்து, அவற்றை மரத்துப்போகச் செய்து, காஸ்ட்ரோவாஸ்குலர் குழியில் திறக்கும் வாய்க்குக் கொண்டு செல்கின்றன. குடலுக்கு ஒரே துளை இருப்பதால் அதே துளை உணவை உட்கொள்ளவும் செரிக்காத எச்சத்தை வெளியேற்றவும் பயன்படுகிறது. செரிமானம் குழியில் செல்களுக்கு வெளியே (புறச்செல்) தொடங்குகிறது; அங்கு காஸ்ட்ரோடெர்மிஸின் சுரப்பி செல்கள் சுரக்கும் நொதிகள் உணவைச் சிறு துண்டுகளாக்குகின்றன. பின்னர் துகள்கள் காஸ்ட்ரோடெர்மிஸ் செல்களுக்குள் செல்விழுங்கலால் எடுக்கப்பட்டு, செரிமானம் செல்களுக்குள் (அகச்செல்) முடிகிறது."),
+                        "நிடேரியன்கள் ஊனுண்ணிகள். நெமட்டோசிஸ்ட்டுகள் கொண்ட உணர்கொம்புகள் கிரஸ்டேஷியன்கள், மீன் லார்வாக்கள் போன்ற சிறு விலங்குகளைப் பிடித்து, அவற்றை மரத்துப்போகச் செய்து, காஸ்ட்ரோவாஸ்குலர் குழியில் திறக்கும் வாய்க்குக் கொண்டு செல்கின்றன. குடலுக்கு ஒரே துளை இருப்பதால் அதே துளை உணவை உட்கொள்ளவும் செரிக்காத எச்சத்தை வெளியேற்றவும் பயன்படுகிறது. செரிமானம் குழியில் செல்களுக்கு வெளியே (புறச்செல்) தொடங்குகிறது; அங்கு காஸ்ட்ரோடெர்மிஸின் சுரப்பி செல்கள் சுரக்கும் நொதிகள் உணவைச் சிறு துண்டுகளாக்குகின்றன. பின்னர் துகள்கள் காஸ்ட்ரோடெர்மிஸ் செல்களுக்குள் செல்விழுங்கலால் எடுக்கப்பட்டு, செரிமானம் செல்களுக்குள் (அகச்செல்) முடிகிறது."),
                     bp("The cnidarians therefore show an intermediate stage between the entirely intracellular digestion of sponges and the entirely extracellular digestion of higher animals. The distribution of food through the body is by the gastrovascular cavity, which in large forms such as the jellyfish is extended into canals, and no circulatory or respiratory systems are needed because every cell is close to either the water or the cavity, and gases pass by diffusion.",
                         "இவ்வாறு நிடேரியன்கள் கடற்பஞ்சுகளின் முழுமையான அகச்செல் செரிமானத்துக்கும் உயர் விலங்குகளின் முழுமையான புறச்செல் செரிமானத்துக்கும் இடைப்பட்ட நிலையைக் காட்டுகின்றன. உடல் முழுவதும் உணவு பரவல் காஸ்ட்ரோவாஸ்குலர் குழி மூலம் நிகழ்கிறது; ஜெல்லிமீன் போன்ற பெரிய வடிவங்களில் அது கால்வாய்களாக நீள்கிறது; ஒவ்வொரு செல்லும் நீருக்கோ குழிக்கோ அருகிலிருப்பதால் சுற்றோட்ட, சுவாச மண்டலங்கள் தேவையில்லை; வாயுக்கள் பரவலால் கடக்கின்றன."),
                     bdef("Extracellular digestion", "புறச்செல் செரிமானம்", "Digestion that takes place in the cavity of the gut, outside the cells, by enzymes that the cells secrete." to
@@ -176,7 +176,7 @@ object CnidariaBookChapter {
             bsec("reproduction", "Reproduction, regeneration and symbiosis", "இனப்பெருக்கம், மீளுருவாக்கம், கூட்டுயிர் வாழ்க்கை",
                 blocks = listOf(
                     bp("Cnidarians reproduce asexually by budding, in which a part of the body wall grows out and develops into a new individual, which may separate, as in Hydra, or remain attached to form a colony, as in Obelia. They reproduce sexually by gametes, and many species are dioecious. The fertilised egg develops into a ciliated, free-swimming larva, the planula, which is solid or hollow and has two layers. It settles, and develops into a polyp. Cnidarians also regenerate well, since the interstitial cells can replace the lost tissue.",
-                        "நிடேரியன்கள் மொட்டுவிடுதல் மூலம் பாலிலா முறையில் இனப்பெருக்குகின்றன; உடற்சுவரின் ஒரு பகுதி வெளி வளர்ந்து ஹைட்ராவில் போல பிரியலாம் அல்லது ஒபீலியாவில் போல இணைந்திருந்து காலனி உருவாக்கலாம். இனச் செல்கள் மூலம் பால் முறையிலும் இனப்பெருக்குகின்றன; பல இனங்கள் ஒருபாலிகள். கருவுற்ற முட்டை, சிலியா கொண்ட நீந்தும், திடமான அல்லது உள்ளீடற்ற இரு அடுக்கு லார்வாவான பிளானுலாவாக வளர்கிறது. அது படிந்து பாலிப்பாக வளர்கிறது. இடைநிலை செல்கள் இழந்த திசுவை மாற்றுவதால் நிடேரியன்கள் நன்கு மீளுருவாக்குகின்றன."),
+                        "நிடேரியன்கள் மொட்டு விடுதல் மூலம் பாலிலா முறையில் இனப்பெருக்குகின்றன; உடற்சுவரின் ஒரு பகுதி வெளி வளர்ந்து ஹைட்ராவில் போல பிரியலாம் அல்லது ஒபீலியாவில் போல இணைந்திருந்து காலனி உருவாக்கலாம். இனச் செல்கள் மூலம் பால் முறையிலும் இனப்பெருக்குகின்றன; பல இனங்கள் ஒருபாலிகள். கருவுற்ற முட்டை, சிலியா கொண்ட நீந்தும், திடமான அல்லது உள்ளீடற்ற இரு அடுக்கு லார்வாவான பிளானுலாவாக வளர்கிறது. அது படிந்து பாலிப்பாக வளர்கிறது. இடைநிலை செல்கள் இழந்த திசுவை மாற்றுவதால் நிடேரியன்கள் நன்கு மீளுருவாக்குகின்றன."),
                     bp("Many cnidarians live in partnership with algae. The green hydra Hydra viridis contains single-celled green algae in its gastrodermis, and reef-building corals and many sea anemones harbour zooxanthellae. The alga receives shelter and nutrients from the animal, and the animal receives food from the alga. Some sea anemones also live with certain fishes, such as the clownfish, which shelter among the tentacles and are protected from the stings by a mucus coat. These examples are used to illustrate symbiosis, a close association between two kinds of organism.",
                         "பல நிடேரியன்கள் பாசிகளுடன் கூட்டுறவில் வாழ்கின்றன. பசுமை ஹைட்ரா ஹைட்ரா விரிடிஸின் காஸ்ட்ரோடெர்மிஸில் ஒற்றைச் செல் பச்சைப் பாசிகள் உள்ளன; முகடு கட்டும் பவளங்களும் பல கடல் சாமந்திகளும் சூக்சாந்தெல்லேயைக் கொண்டுள்ளன. பாசி விலங்கிடமிருந்து உறைவிடமும் ஊட்டச்சத்தும், விலங்கு பாசியிடமிருந்து உணவும் பெறுகின்றன. சில கடல் சாமந்திகள் கோமாளி மீன் போன்ற சில மீன்களுடனும் வாழ்கின்றன; அவை உணர்கொம்புகளிடையே தங்கி, சளிப் பூச்சால் கொட்டுதலிலிருந்து பாதுகாக்கப்படுகின்றன. இவ்வெடுத்துக்காட்டுகள் இரு வகை உயிரிகளுக்கிடையிலான நெருக்கமான தொடர்பான கூட்டுயிர் வாழ்க்கையை விளக்கப் பயன்படுகின்றன."),
                     bdef("Planula", "பிளானுலா", "The ciliated, free-swimming larva of a cnidarian, which settles and develops into a polyp." to
@@ -187,10 +187,10 @@ object CnidariaBookChapter {
             bsec("answering", "Answering questions on the phylum", "தொகுதி குறித்த வினாக்களுக்கு விடையளித்தல்",
                 blocks = listOf(
                     bp("Examination questions on the phylum ask for the general characters, the nematocyst, the polyp and medusa forms, and the classification. A good answer on the general characters groups the points under symmetry and layers (radial, diploblastic), body cavity and gut (gastrovascular, one opening), the stinging cells, nerve net, and the two forms with the alternation of generations. A question on the polyp and medusa should state that the two forms are variations of one body plan, the medusa being in effect an upside-down polyp with a greatly thickened mesoglea, and it should include a labelled diagram of each.",
-                        "தொகுதி குறித்த தேர்வு வினாக்கள் பொதுப்பண்புகள், நீமட்டோசிஸ்ட், பாலிப், மெடுசா வடிவங்கள், வகைப்பாடு ஆகியவற்றைக் கேட்கின்றன. பொதுப்பண்புகள் குறித்த நல்ல விடை புள்ளிகளை சமச்சீரும் அடுக்குகளும் (ஆரம், ஈரடுக்கு), உடற்குழியும் குடலும் (காஸ்ட்ரோவாஸ்குலர், ஒரே துளை), கொட்டும் செல்கள், நரம்பு வலை, தலைமுறை மாற்றத்துடன் இரு வடிவங்கள் என குழுவாக்குகிறது. பாலிப், மெடுசா குறித்த வினா இரு வடிவங்களும் ஒரே உடல் திட்டத்தின் வேறுபாடுகள் என்றும், மெடுசா மிகத் தடித்த மீசோக்ளியாவுடன் தலைகீழான பாலிப் என்றும் கூற வேண்டும்; ஒவ்வொன்றுக்கும் பெயரிட்ட படம் இருக்க வேண்டும்."),
+                        "தொகுதி குறித்த தேர்வு வினாக்கள் பொதுப்பண்புகள், நெமட்டோசிஸ்ட், பாலிப், மெடுசா வடிவங்கள், வகைப்பாடு ஆகியவற்றைக் கேட்கின்றன. பொதுப்பண்புகள் குறித்த நல்ல விடை புள்ளிகளை சமச்சீரும் அடுக்குகளும் (ஆரம், ஈரடுக்கு), உடற்குழியும் குடலும் (காஸ்ட்ரோவாஸ்குலர், ஒரே துளை), கொட்டும் செல்கள், நரம்பு வலை, தலைமுறை மாற்றத்துடன் இரு வடிவங்கள் என குழுவாக்குகிறது. பாலிப், மெடுசா குறித்த வினா இரு வடிவங்களும் ஒரே உடல் திட்டத்தின் வேறுபாடுகள் என்றும், மெடுசா மிகத் தடித்த மீசோக்ளியாவுடன் தலைகீழான பாலிப் என்றும் கூற வேண்டும்; ஒவ்வொன்றுக்கும் பெயரிட்ட படம் இருக்க வேண்டும்."),
                     bpoints("Common errors to avoid", "தவிர்க்க வேண்டிய அடிக்கடி நிகழும் பிழைகள்",
                         "Calling the cnidarians triploblastic or giving them an anus." to "நிடேரியன்களை மூவடுக்கு என்றோ குதம் உடையவை என்றோ கூறுதல்.",
-                        "Saying that the nematocyst is a cell; it is the capsule within the cnidocyte." to "நீமட்டோசிஸ்ட் செல் என்று கூறுதல்; அது நிடோசைட்டுக்குள் உள்ள காப்ஸ்யூல்.",
+                        "Saying that the nematocyst is a cell; it is the capsule within the cnidocyte." to "நெமட்டோசிஸ்ட் செல் என்று கூறுதல்; அது நிடோசைட்டுக்குள் உள்ள காப்ஸ்யூல்.",
                         "Giving Aurelia a dominant polyp; in Aurelia the medusa is the conspicuous stage." to "ஆரீலியாவில் ஆதிக்கமுள்ள பாலிப் என்று தருதல்; ஆரீலியாவில் மெடுசாவே மிகத் தெரியும் நிலை.",
                         "Attributing a brain or a circulatory system to the phylum." to "தொகுதிக்கு மூளையோ சுற்றோட்ட மண்டலமோ உண்டு எனக் கூறுதல்.",
                     ),
@@ -232,16 +232,16 @@ object CnidariaBookChapter {
                 )),
         ),
         summary = listOf(
-            "Cnidaria (Coelenterata) are radially symmetrical, diploblastic, acoelomate animals of the tissue grade with a gastrovascular cavity and one opening." to "நிடேரியா (சீலென்டிரேட்டா) ஆரச் சமச்சீர், இரு அடுக்கு, உடற்குழியற்ற, திசு நிலை விலங்குகள்; காஸ்ட்ரோவாஸ்குலர் குழியும் ஒரே திறப்பும் கொண்டவை.",
+            "Cnidaria (Coelenterata) are radially symmetrical, diploblastic, acoelomate animals of the tissue grade with a gastrovascular cavity and one opening." to "நிடேரியா (சீலென்டிரேட்டா) ஆரச்சமச்சீர், இரு அடுக்கு, உடற்குழியற்ற, திசு நிலை விலங்குகள்; காஸ்ட்ரோவாஸ்குலர் குழியும் ஒரே திறப்பும் கொண்டவை.",
             "A jelly-like mesoglea lies between the epidermis and the gastrodermis." to "எப்பிடெர்மிஸுக்கும் காஸ்ட்ரோடெர்மிஸுக்கும் இடையே ஜெல்லி போன்ற மீசோகிளியா உள்ளது.",
-            "Cnidocytes with nematocysts are the diagnostic feature; a nematocyst discharges once and is replaced." to "நீமட்டோசிஸ்ட் உள்ள நிடோசைட்டுகளே அடையாளப் பண்பு; நீமட்டோசிஸ்ட் ஒருமுறை வெளியேற்றி மாற்றப்படுகிறது.",
+            "Cnidocytes with nematocysts are the diagnostic feature; a nematocyst discharges once and is replaced." to "நெமட்டோசிஸ்ட் உள்ள நிடோசைட்டுகளே அடையாளப் பண்பு; நெமட்டோசிஸ்ட் ஒருமுறை வெளியேற்றி மாற்றப்படுகிறது.",
             "There is a nerve net but no brain, and no excretory, respiratory or circulatory organs." to "நரம்பு வலை உண்டு; மூளையும் கழிவு, சுவாச, சுற்றோட்ட உறுப்புகளும் இல்லை.",
             "The polyp is attached and mouth-up; the medusa is free-swimming and mouth-down; they are two forms of one life cycle." to "பாலிப் ஒட்டியது, வாய் மேல்நோக்கியது; மெடுசா நீந்துவது, வாய் கீழ்நோக்கியது; இவை ஒரே சுழற்சியின் இரு வடிவங்கள்.",
             "Hydrozoa are usually polyp-dominant, Scyphozoa medusa-dominant, and Anthozoa have only polyps." to "ஹைட்ரோசோவா பொதுவாகப் பாலிப் முதன்மை, சிஃபோசோவா மெடுசா முதன்மை, ஆந்தோசோவாவில் பாலிப் மட்டும்.",
             "Examples: Hydra and Obelia (Hydrozoa), Aurelia (Scyphozoa), Metridium and corals (Anthozoa)." to "எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா (ஹைட்ரோசோவா); ஆரீலியா (சிஃபோசோவா); மெட்ரீடியம், பவளங்கள் (ஆந்தோசோவா).",
         ),
         checks = listOf(
-            bqc("What does a nematocyst do?", "நீமட்டோசிஸ்ட் என்ன செய்கிறது?",
+            bqc("What does a nematocyst do?", "நெமட்டோசிஸ்ட் என்ன செய்கிறது?",
                 "It fires a thread to capture prey or to defend the animal.", "இரை பிடிக்க அல்லது தற்காப்புக்கு ஓர் இழையைச் சுடுகிறது."),
             bqc("Name the three classes on the paper.", "தாளில் உள்ள மூன்று வகுப்புகளைக் குறிப்பிடுக.",
                 "Hydrozoa, Scyphozoa and Anthozoa.", "ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா."),

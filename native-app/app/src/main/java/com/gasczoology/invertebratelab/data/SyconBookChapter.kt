@@ -242,8 +242,8 @@ object SyconBookChapter {
                 subsections = listOf(
                     BookSubsection(b("Asexual reproduction", "பாலிலா இனப்பெருக்கம்"), listOf(
                         p("Sycon reproduces asexually by budding. A bud arises as an outgrowth from the body wall near the base, grows, forms its own osculum and either breaks away or stays attached so that a small cluster is formed. Gemmules, which are the resistant asexual bodies of freshwater sponges such as Spongilla, are not formed in Sycon.",
-                            "சைக்கான் மொட்டுவிடுதல் மூலம் பாலிலா முறையில் இனப்பெருக்கம் செய்கிறது. அடிப்பகுதிக்கு அருகில் உடற்சுவரிலிருந்து ஒரு வளர்ச்சியாக மொட்டு தோன்றி வளர்ந்து தனக்கான ஆஸ்குலத்தை உருவாக்கி, பிரிந்து செல்கிறது அல்லது ஒட்டியிருந்து சிறு கூட்டமாகிறது. ஸ்பாஞ்சில்லா போன்ற நன்னீர் கடற்பஞ்சுகளின் தாங்கும் பாலிலா உடல்களான ஜெம்யூல்கள் சைக்கானில் உருவாவதில்லை."),
-                        def("Budding", "மொட்டுவிடுதல்",
+                            "சைக்கான் மொட்டு விடுதல் மூலம் பாலிலா முறையில் இனப்பெருக்கம் செய்கிறது. அடிப்பகுதிக்கு அருகில் உடற்சுவரிலிருந்து ஒரு வளர்ச்சியாக மொட்டு தோன்றி வளர்ந்து தனக்கான ஆஸ்குலத்தை உருவாக்கி, பிரிந்து செல்கிறது அல்லது ஒட்டியிருந்து சிறு கூட்டமாகிறது. ஸ்பாஞ்சில்லா போன்ற நன்னீர் கடற்பஞ்சுகளின் தாங்கும் பாலிலா உடல்களான ஜெம்யூல்கள் சைக்கானில் உருவாவதில்லை."),
+                        def("Budding", "மொட்டு விடுதல்",
                             "Asexual reproduction in which a new individual develops as an outgrowth of the parent and later separates from it or remains attached.",
                             "தாய் உயிரியின் வளர்ச்சியாகப் புதிய உயிரி தோன்றி, பின்னர் பிரிந்து செல்லும் அல்லது ஒட்டியிருக்கும் பாலிலா இனப்பெருக்கம்."),
                     )),
@@ -317,7 +317,7 @@ object SyconBookChapter {
             b("The body wall has a flat outer layer, a gelatinous mesohyl with amoebocytes and spicules, and an inner layer of choanocytes confined to the radial canals.", "உடற்சுவரில் தட்டை வெளி அடுக்கும், அமீபோசைட்டுகளும் ஊசிகளும் உள்ள ஜெல் மீசோஹைலும், ஆரக் கால்வாய்களில் மட்டுமுள்ள கோனோசைட் உள் அடுக்கும் உள்ளன."),
             b("Water flows from the ostia through incurrent canals, prosopyles, radial canals and apopyles into the spongocoel and out through the osculum.", "நீர் ஆஸ்டியாவிலிருந்து உட்செல்லும் கால்வாய், புரோசோபைல், ஆரக் கால்வாய், அப்போபைல் வழியாக ஸ்பாஞ்சோசீலை அடைந்து ஆஸ்குலம் வழியாக வெளியேறுகிறது."),
             b("Digestion is intracellular, and respiration and excretion take place by diffusion; there is no gut, blood or nervous system.", "செரிமானம் செல்லுக்குள் நடைபெறுகிறது; சுவாசமும் கழிவு நீக்கமும் விரவல் மூலம் நடைபெறுகின்றன; குடல், இரத்தம், நரம்புமண்டலம் இல்லை."),
-            b("Asexual reproduction is by budding; sexual reproduction is by cross-fertilisation between hermaphrodite individuals.", "பாலிலா இனப்பெருக்கம் மொட்டுவிடுதல்; பாலின இனப்பெருக்கம் இருபால் உயிரிகளிடையே பிறவி கருவுறுதல்."),
+            b("Asexual reproduction is by budding; sexual reproduction is by cross-fertilisation between hermaphrodite individuals.", "பாலிலா இனப்பெருக்கம் மொட்டு விடுதல்; பாலின இனப்பெருக்கம் இருபால் உயிரிகளிடையே பிறவி கருவுறுதல்."),
             b("The stomoblastula turns inside out by inversion to form the free-swimming amphiblastula, which settles and becomes an olynthus and then a syconoid sponge.", "ஸ்டோமோபிளாஸ்டுலா இன்வெர்ஷன் மூலம் உள்வெளியாகத் திரும்பி நீந்தும் ஆம்ஃபிபிளாஸ்டுலா ஆகிறது; அது நிலைபெற்று ஓலிந்தஸாகி பின்னர் சைக்கனாய்டு கடற்பஞ்சாகிறது."),
         ),
         quickChecks = listOf(
