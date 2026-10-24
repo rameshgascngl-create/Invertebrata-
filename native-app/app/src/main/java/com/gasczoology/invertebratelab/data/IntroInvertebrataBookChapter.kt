@@ -71,7 +71,7 @@ object IntroInvertebrataBookChapter {
                         "Number of germ layers: two or three." to "கருவடுக்குகளின் எண்ணிக்கை: இரண்டு அல்லது மூன்று.",
                         "Body cavity: absent, a pseudocoelom or a true coelom." to "உடற்குழி: இல்லை, போலி உடற்குழி அல்லது உண்மை உடற்குழி.",
                         "Segmentation: present or absent." to "துண்டுபடல்: உண்டு அல்லது இல்லை.",
-                        "Development: the fate of the blastopore, protostome or deuterostome." to "வளர்ச்சி: பிளாஸ்டோபோரின் முடிவு, முதல்வாயி அல்லது இரண்டாம்வாயி.",
+                        "Development: the fate of the blastopore, protostome or deuterostome." to "வளர்ச்சி: பிளாஸ்டோபோரின் முடிவு, புரோட்டோஸ்டோம் அல்லது டியூட்டிரோஸ்டோம்.",
                     ),
                     bdef("Diagnostic character", "அடையாளப் பண்பு", "A feature that distinguishes one taxon from others." to
                         "ஒரு டாக்சானை பிறவற்றிலிருந்து வேறுபடுத்தும் பண்பு."),
@@ -185,7 +185,7 @@ object IntroInvertebrataBookChapter {
                         "ஒரு அச்சு அல்லது தளத்தைச் சுற்றி உடல் பகுதிகளின் அமைப்பு."),
                     bdef("Coelom", "உடற்குழி", "A body cavity lined by mesoderm." to
                         "மெசோடெர்ம் வரிசையிட்ட உடற்குழி."),
-                    bdef("Acoelomate", "உடற்குழியற்றது", "An animal without a body cavity between the gut and the body wall." to
+                    bdef("Acoelomate", "உடற்குழியற்ற", "An animal without a body cavity between the gut and the body wall." to
                         "குடலுக்கும் உடற்சுவருக்கும் இடையே உடற்குழி இல்லாத விலங்கு."),
                 )),
         ),

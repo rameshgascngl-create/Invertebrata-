@@ -82,17 +82,17 @@ object ProtozoaBookChapter {
                     bdef("Hypotonic", "ஹைப்போடானிக்", "Having a lower concentration of dissolved substances than another solution." to
                         "மற்றொரு கரைசலை விடக் குறைந்த கரைபொருள் செறிவு உடைய."),
                 )),
-            bsec("reproduction", "Reproduction and encystment", "இனப்பெருக்கமும் கூடு கட்டுதலும்",
+            bsec("reproduction", "Reproduction and encystment", "இனப்பெருக்கமும் சிஸ்ட் உருவாதலும்",
                 blocks = listOf(
                     bp("Reproduction in the protozoa is usually asexual, by fission, in which the cell divides into two or more cells. In binary fission the nucleus divides by mitosis, and then the cytoplasm divides, and the two daughter cells are similar. In multiple fission the nucleus divides several times before the cell divides, and a number of daughter cells are formed at once, as in the malarial parasite. Budding, in which a small part of the cell separates, also occurs in some forms." to
                         "புரோட்டோசோவாவில் இனப்பெருக்கம் வழக்கமாக பிளவால் பாலிலா முறை; செல் இரண்டு அல்லது அதற்கு மேற்பட்ட செல்களாகப் பிரிகிறது. இருபிளவில் உட்கரு மைட்டாசிஸால் பிரிந்து பின்னர் சைட்டோபிளாசம் பிரிகிறது; இரு மகள் செல்களும் ஒத்தவை. பலபிளவில் செல் பிரியும் முன் உட்கரு பலமுறை பிரிகிறது; மலேரியா ஒட்டுண்ணி போல ஒரே நேரத்தில் பல மகள் செல்கள் உருவாகின்றன. செல்லின் சிறு பகுதி பிரியும் அரும்புதலும் சில வடிவங்களில் நிகழ்கிறது."),
                     bp("Sexual processes occur in several groups, and they take different forms. In the ciliates there is conjugation, in which two cells exchange nuclear material, and in the parasites such as Plasmodium there are gametes and a zygote. Sexual processes are not for the multiplication of numbers, since in conjugation two cells give rise to two cells, but for the mixing of genetic material. Many protozoa also form cysts, which are resistant coverings secreted by the cell, in which it survives drying, cold or the absence of food, and in the parasites cysts may carry the organism from one host to another." to
-                        "பாலின முறைகள் பல குழுக்களில் நிகழ்கின்றன; வெவ்வேறு வடிவங்கள் எடுக்கின்றன. சிலியேட்டுகளில் இரு செல்கள் உட்கரு பொருளைப் பரிமாறும் இணைவு உண்டு; பிளாஸ்மோடியம் போன்ற ஒட்டுண்ணிகளில் இனச்செல்களும் கருமுட்டையும் உண்டு. இணைவில் இரு செல்கள் இரு செல்களைத் தருவதால் பாலின முறைகள் எண்ணிக்கை பெருக்கத்துக்காக அல்ல; மரபுப் பொருள் கலப்புக்காக. பல புரோட்டோசோவாக்கள் செல் சுரக்கும் எதிர்ப்பு மூடிகளான கூடுகளையும் உருவாக்குகின்றன; அவற்றில் அது வறட்சி, குளிர் அல்லது உணவு இன்மையைத் தாங்குகிறது; ஒட்டுண்ணிகளில் கூடுகள் உயிரியை ஓர் விருந்தோம்பியிலிருந்து மற்றொன்றுக்குக் கொண்டுசெல்லலாம்."),
+                        "பாலின முறைகள் பல குழுக்களில் நிகழ்கின்றன; வெவ்வேறு வடிவங்கள் எடுக்கின்றன. சிலியேட்டுகளில் இரு செல்கள் உட்கரு பொருளைப் பரிமாறும் இணைவு உண்டு; பிளாஸ்மோடியம் போன்ற ஒட்டுண்ணிகளில் இனச்செல்களும் கருமுட்டையும் உண்டு. இணைவில் இரு செல்கள் இரு செல்களைத் தருவதால் பாலின முறைகள் எண்ணிக்கை பெருக்கத்துக்காக அல்ல; மரபுப் பொருள் கலப்புக்காக. பல புரோட்டோசோவாக்கள் செல் சுரக்கும் எதிர்ப்பு மூடிகளான சிஸ்ட்களையும் உருவாக்குகின்றன; அவற்றில் அது வறட்சி, குளிர் அல்லது உணவு இன்மையைத் தாங்குகிறது; ஒட்டுண்ணிகளில் சிஸ்ட்கள் உயிரியை ஓர் விருந்தோம்பியிலிருந்து மற்றொன்றுக்குக் கொண்டுசெல்லலாம்."),
                     bdef("Binary fission", "இருசமப்பிளவு", "Asexual reproduction by division of a cell into two similar cells." to
                         "ஒரு செல் இரு ஒத்த செல்களாகப் பிரிவதன் மூலம் பாலிலா இனப்பெருக்கம்."),
                     bdef("Multiple fission", "பலபிளவு", "Asexual reproduction in which the nucleus divides repeatedly and the cell splits into many daughter cells." to
                         "உட்கரு மீண்டும் மீண்டும் பிரிந்து செல் பல மகள் செல்களாகப் பிளக்கும் பாலிலா இனப்பெருக்கம்."),
-                    bdef("Cyst", "கூடு", "A protective resistant covering formed by a protozoan, in which it survives unfavourable conditions." to
+                    bdef("Cyst", "சிஸ்ட்", "A protective resistant covering formed by a protozoan, in which it survives unfavourable conditions." to
                         "சாதகமற்ற சூழலில் உயிர்வாழ புரோட்டோசோவா உருவாக்கும் பாதுகாப்பான எதிர்ப்பு மூடி."),
                     bdef("Conjugation", "இணைவு", "A sexual process in ciliates in which two cells exchange nuclear material." to
                         "சிலியேட்டுகளில் இரு செல்கள் உட்கருப் பொருளைப் பரிமாறும் பாலின முறை."),
@@ -189,7 +189,7 @@ object ProtozoaBookChapter {
             "Each organism is a single cell that performs all functions through organelles." to "ஒவ்வோர் உயிரியும் நுண்ணுறுப்புகள் மூலம் எல்லாச் செயல்களையும் செய்யும் ஒற்றை செல்.",
             "Locomotion is by pseudopodia, flagella or cilia, and nutrition may be holozoic, saprozoic, photosynthetic or mixotrophic." to "இயக்கம் போலிக்கால்கள், கசைகள் அல்லது சிலியாக்களால்; ஊட்டம் ஹோலோசோயிக், சாப்ரோசோயிக், ஒளிச்சேர்க்கை அல்லது கலப்பூட்டமாக இருக்கலாம்.",
             "Freshwater forms use contractile vacuoles to expel the water that enters by osmosis." to "நன்னீர் வடிவங்கள் சவ்வூடுபரவலால் நுழையும் நீரை வெளியேற்ற சுருங்கும் நுண்குமிழ்களைப் பயன்படுத்துகின்றன.",
-            "Reproduction is usually by fission; sexual processes include conjugation, and cysts help survival." to "இனப்பெருக்கம் வழக்கமாக பிளவால்; பாலின முறைகளில் இணைவு அடங்கும்; கூடுகள் உயிர்வாழ உதவுகின்றன.",
+            "Reproduction is usually by fission; sexual processes include conjugation, and cysts help survival." to "இனப்பெருக்கம் வழக்கமாக பிளவால்; பாலின முறைகளில் இணைவு அடங்கும்; சிஸ்ட்கள் உயிர்வாழ உதவுகின்றன.",
             "Ciliata and Sporozoa differ in locomotion, nuclei, feeding, life cycle and mode of life." to "சிலியேட்டாவும் ஸ்போரோசோவாவும் இயக்கம், உட்கருக்கள், உணவெடுப்பு, வாழ்க்கைச் சுழற்சி, வாழ்க்கை முறையில் வேறுபடுகின்றன.",
         ),
         checks = listOf(

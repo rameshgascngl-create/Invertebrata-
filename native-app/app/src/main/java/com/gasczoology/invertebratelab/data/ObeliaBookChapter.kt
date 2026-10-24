@@ -173,7 +173,7 @@ object ObeliaBookChapter {
                             listOf("Cnidoblast" to "நிடோபிளாஸ்ட்", "Epidermis, mainly on tentacles" to "புறத்தோல், முக்கியமாக உணர்கொம்புகளில்", "Capture of prey and defence" to "இரையைப் பிடித்தல், தற்காப்பு"),
                             listOf("Nerve and sensory cell" to "நரம்பு, உணர்வு செல்", "Beneath the epidermis" to "புறத்தோலுக்குக் கீழ்", "Nerve net, and response to stimuli" to "நரம்பு வலை; தூண்டுதலுக்குப் பதில்"),
                         )),
-                    bdef("Diploblastic", "ஈரடுக்கு உடையது", "Having a body built from two germ layers, the ectoderm and the endoderm." to
+                    bdef("Diploblastic", "ஈரடுக்கு", "Having a body built from two germ layers, the ectoderm and the endoderm." to
                         "புறப்படை, அகப்படை என இரு கருப்படைகளிலிருந்து உருவான உடலுடைய."),
                     bdef("Mesoglea", "மீசோகிளியா", "The jelly-like layer between the epidermis and the gastrodermis of a cnidarian." to
                         "நிடேரியாவின் புறத்தோல், உள்தோலுக்கு இடையிலுள்ள ஜெல் போன்ற அடுக்கு."),
@@ -196,7 +196,7 @@ object ObeliaBookChapter {
                         "ஹைட்ராய்டுகள் தம்மைத் தாமே சீர்செய்கின்றன; காலனி இழந்த பகுதியை மீளுருவாக்க முடியும்; ஏனெனில் உடலின் செல்கள் பெருகி இல்லாததை மாற்ற முடியும்; இதில் இடைநிலை செல்களுக்குப் பெரும் பங்கு உண்டு. இதே பண்பே காலனி வளரும் அரும்புதலின் அடிப்படை. ஹைட்ராய்டுகளில், குறிப்பாக நன்னீர் ஹைட்ராவில், மீளுருவாக்கம் பற்றிய ஆய்வு விலங்கின் ஒரு பகுதி முழுமையையும் மீட்டெடுக்கும் விதம் பற்றி நிறைய கற்பித்துள்ளது; ஆனால் ஒரு கூற்று ஆய்வு செய்யப்பட்ட இனத்துக்குப் பொருந்தும், ஒபீலியாவுக்குப் பொருந்தாமலிருக்கலாம் என்பதைக் கவனிக்க வேண்டும்."),
                     bdef("Budding", "மொட்டு விடுதல்", "Asexual reproduction or growth by an outgrowth of the body that develops into a new individual or part." to
                         "புதிய உயிரி அல்லது பகுதியாக வளரும் உடல் வளர்ச்சியால் நிகழும் பாலிலா இனப்பெருக்கம் அல்லது வளர்ச்சி."),
-                    bdef("Plankton", "பிளாங்க்டன்", "The small organisms that drift in the water and are carried by its movements." to
+                    bdef("Plankton", "மிதவை உயிரிகள்", "The small organisms that drift in the water and are carried by its movements." to
                         "நீரில் மிதந்து அதன் இயக்கங்களால் கொண்டுசெல்லப்படும் சிறு உயிரிகள்."),
                     bdef("Intertidal zone", "அலைகளிடை மண்டலம்", "The shore between the levels of high tide and low tide." to
                         "உயர் அலை, தாழ் அலை மட்டங்களுக்கிடையிலான கரைப் பகுதி."),

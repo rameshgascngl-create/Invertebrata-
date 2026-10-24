@@ -35,7 +35,7 @@ object PoriferaBookChapter {
                     bdef("Aquiferous system", "நீர்வழி அமைப்பு",
                         "The system of ostia, canals, chambers and oscula through which a sponge passes a current of water for feeding, gas exchange and removal of waste." to
                             "உணவூட்டம், வாயுப் பரிமாற்றம், கழிவு நீக்கம் ஆகியவற்றுக்காக கடற்பஞ்சு நீரோட்டத்தைச் செலுத்தும் ஆஸ்டியா, கால்வாய், அறை, ஆஸ்குலம் ஆகியவற்றின் தொகுப்பு."),
-                    bdef("Sessile", "நிலைத்த (ஒட்டிவாழ்)",
+                    bdef("Sessile", "ஒட்டி வாழும்",
                         "Permanently attached to a surface and unable to move from place to place in the adult stage." to
                             "முதிர்நிலையில் ஒரு பரப்பில் நிரந்தரமாக ஒட்டி, இடம்பெயர இயலாத நிலை."),
                     bp("Sponges occur from the shore to the deep sea. Most are marine; one family, the Spongillidae, lives in fresh water. They are attached to rocks, shells, roots or coral, and take many shapes: crusts, cups, tubes, vases, branches and masses. Some are only a few millimetres across, while others reach more than a metre." to

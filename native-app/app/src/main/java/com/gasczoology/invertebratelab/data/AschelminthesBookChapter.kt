@@ -95,7 +95,7 @@ object AschelminthesBookChapter {
                         )),
                     bdef("Hydrostatic skeleton", "நீர்ம சட்டகம்", "A skeleton formed by fluid under pressure in a closed body cavity, against which muscles work." to
                         "மூடிய உடற்குழியில் அழுத்தத்திலுள்ள திரவத்தால் உருவான எலும்புக்கூடு; தசைகள் அதற்கு எதிராகச் செயல்படுகின்றன."),
-                    bdef("Peristalsis", "பெரிஸ்டால்சிஸ்", "A wave of alternate contraction of circular and longitudinal muscles which passes along the body or a tube." to
+                    bdef("Peristalsis", "அலைச் சுருக்கம்", "A wave of alternate contraction of circular and longitudinal muscles which passes along the body or a tube." to
                         "உடல் அல்லது குழாய் வழியே செல்லும் வட்ட, நீளவாக்கு தசைகளின் மாறிமாறிச் சுருங்கும் அலை."),
                 )),
             bsec("systems", "Organ systems in brief", "உறுப்பு மண்டலங்கள் சுருக்கமாக",

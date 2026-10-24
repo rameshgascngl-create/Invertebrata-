@@ -62,7 +62,7 @@ object CnidariaBookChapter {
                         "The fertilised egg develops into a ciliated planula larva in most groups." to "கருவுற்ற முட்டை பெரும்பாலான குழுக்களில் கசையிழை பிளானுலா லார்வாவாக வளர்கிறது.",
                         "Alternation of generations occurs in many hydrozoans and in the scyphozoans, in which an asexual polyp stage alternates with a sexual medusa stage." to "பல ஹைட்ரோசோவாக்களிலும் சிஃபோசோவாக்களிலும் தலைமுறை மாற்றம் நிகழ்கிறது; பாலிலா பாலிப் நிலையும் பாலின மெடுசா நிலையும் மாறிமாறி வருகின்றன.",
                     ),
-                    bdef("Diploblastic", "ஈரடுக்கு உடலுடைய",
+                    bdef("Diploblastic", "ஈரடுக்கு",
                         "Having a body built of two germ layers, ectoderm and endoderm, which form the epidermis and gastrodermis." to
                             "எக்டோடெர்ம், எண்டோடெர்ம் எனும் இரு கருப்படலங்களால் ஆன உடல் கொண்ட; இவை எப்பிடெர்மிஸ், காஸ்ட்ரோடெர்மிஸை உருவாக்குகின்றன."),
                     bdef("Mesoglea", "மீசோகிளியா",
@@ -173,15 +173,15 @@ object CnidariaBookChapter {
                     bdef("Rhopalium", "ரோபேலியம்", "A marginal sense organ of a scyphozoan or cubozoan medusa, containing a statocyst and often light-sensitive cells." to
                         "சிஃபோசோவா அல்லது கியூபோசோவா மெடுசாவின் விளிம்பு உணர் உறுப்பு; ஸ்டேட்டோசிஸ்டும் பெரும்பாலும் ஒளியுணர் செல்களும் கொண்டது."),
                 )),
-            bsec("reproduction", "Reproduction, regeneration and symbiosis", "இனப்பெருக்கம், மீளுருவாக்கம், கூட்டுயிர் வாழ்க்கை",
+            bsec("reproduction", "Reproduction, regeneration and symbiosis", "இனப்பெருக்கம், மீளுருவாக்கம், கூட்டுயிரி வாழ்க்கை",
                 blocks = listOf(
                     bp("Cnidarians reproduce asexually by budding, in which a part of the body wall grows out and develops into a new individual, which may separate, as in Hydra, or remain attached to form a colony, as in Obelia. They reproduce sexually by gametes, and many species are dioecious. The fertilised egg develops into a ciliated, free-swimming larva, the planula, which is solid or hollow and has two layers. It settles, and develops into a polyp. Cnidarians also regenerate well, since the interstitial cells can replace the lost tissue.",
                         "நிடேரியன்கள் மொட்டு விடுதல் மூலம் பாலிலா முறையில் இனப்பெருக்குகின்றன; உடற்சுவரின் ஒரு பகுதி வெளி வளர்ந்து ஹைட்ராவில் போல பிரியலாம் அல்லது ஒபீலியாவில் போல இணைந்திருந்து காலனி உருவாக்கலாம். இனச் செல்கள் மூலம் பால் முறையிலும் இனப்பெருக்குகின்றன; பல இனங்கள் ஒருபாலிகள். கருவுற்ற முட்டை, சிலியா கொண்ட நீந்தும், திடமான அல்லது உள்ளீடற்ற இரு அடுக்கு லார்வாவான பிளானுலாவாக வளர்கிறது. அது படிந்து பாலிப்பாக வளர்கிறது. இடைநிலை செல்கள் இழந்த திசுவை மாற்றுவதால் நிடேரியன்கள் நன்கு மீளுருவாக்குகின்றன."),
                     bp("Many cnidarians live in partnership with algae. The green hydra Hydra viridis contains single-celled green algae in its gastrodermis, and reef-building corals and many sea anemones harbour zooxanthellae. The alga receives shelter and nutrients from the animal, and the animal receives food from the alga. Some sea anemones also live with certain fishes, such as the clownfish, which shelter among the tentacles and are protected from the stings by a mucus coat. These examples are used to illustrate symbiosis, a close association between two kinds of organism.",
-                        "பல நிடேரியன்கள் பாசிகளுடன் கூட்டுறவில் வாழ்கின்றன. பசுமை ஹைட்ரா ஹைட்ரா விரிடிஸின் காஸ்ட்ரோடெர்மிஸில் ஒற்றைச் செல் பச்சைப் பாசிகள் உள்ளன; முகடு கட்டும் பவளங்களும் பல கடல் சாமந்திகளும் சூக்சாந்தெல்லேயைக் கொண்டுள்ளன. பாசி விலங்கிடமிருந்து உறைவிடமும் ஊட்டச்சத்தும், விலங்கு பாசியிடமிருந்து உணவும் பெறுகின்றன. சில கடல் சாமந்திகள் கோமாளி மீன் போன்ற சில மீன்களுடனும் வாழ்கின்றன; அவை உணர்கொம்புகளிடையே தங்கி, சளிப் பூச்சால் கொட்டுதலிலிருந்து பாதுகாக்கப்படுகின்றன. இவ்வெடுத்துக்காட்டுகள் இரு வகை உயிரிகளுக்கிடையிலான நெருக்கமான தொடர்பான கூட்டுயிர் வாழ்க்கையை விளக்கப் பயன்படுகின்றன."),
+                        "பல நிடேரியன்கள் பாசிகளுடன் கூட்டுறவில் வாழ்கின்றன. பசுமை ஹைட்ரா ஹைட்ரா விரிடிஸின் காஸ்ட்ரோடெர்மிஸில் ஒற்றைச் செல் பச்சைப் பாசிகள் உள்ளன; முகடு கட்டும் பவளங்களும் பல கடல் சாமந்திகளும் சூக்சாந்தெல்லேயைக் கொண்டுள்ளன. பாசி விலங்கிடமிருந்து உறைவிடமும் ஊட்டச்சத்தும், விலங்கு பாசியிடமிருந்து உணவும் பெறுகின்றன. சில கடல் சாமந்திகள் கோமாளி மீன் போன்ற சில மீன்களுடனும் வாழ்கின்றன; அவை உணர்கொம்புகளிடையே தங்கி, சளிப் பூச்சால் கொட்டுதலிலிருந்து பாதுகாக்கப்படுகின்றன. இவ்வெடுத்துக்காட்டுகள் இரு வகை உயிரிகளுக்கிடையிலான நெருக்கமான தொடர்பான கூட்டுயிரி வாழ்க்கையை விளக்கப் பயன்படுகின்றன."),
                     bdef("Planula", "பிளானுலா", "The ciliated, free-swimming larva of a cnidarian, which settles and develops into a polyp." to
                         "நிடேரியனின் சிலியா கொண்ட நீந்தும் லார்வா; படிந்து பாலிப்பாக வளர்கிறது."),
-                    bdef("Symbiosis", "கூட்டுயிர் வாழ்க்கை", "A close and lasting association between two different kinds of organism." to
+                    bdef("Symbiosis", "கூட்டுயிரி வாழ்க்கை", "A close and lasting association between two different kinds of organism." to
                         "இரு வெவ்வேறு வகை உயிரிகளுக்கிடையிலான நெருக்கமான நீடித்த தொடர்பு."),
                 )),
             bsec("answering", "Answering questions on the phylum", "தொகுதி குறித்த வினாக்களுக்கு விடையளித்தல்",

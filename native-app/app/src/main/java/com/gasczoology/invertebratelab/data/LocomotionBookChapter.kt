@@ -51,7 +51,7 @@ object LocomotionBookChapter {
                         "யூக்ளினாவின் உடல் மெதுவாக வடிவம் மாறி ஊர அனுமதிக்கும் இயக்கம்."),
                     bdef("Pellicle", "பெல்லிக்கிள்", "The flexible protein covering below the cell membrane of Euglena." to
                         "யூக்ளினாவின் செல் சவ்வின் கீழுள்ள நெகிழ்வான புரத உறை."),
-                    bdef("Reservoir", "தேக்கம்", "The flask-shaped cavity at the front of Euglena from which the flagella arise." to
+                    bdef("Reservoir", "தேக்கக் குழி", "The flask-shaped cavity at the front of Euglena from which the flagella arise." to
                         "கசைகள் எழும் யூக்ளினாவின் முன்புறமுள்ள குடுவை வடிவக் குழி."),
                 )),
             bsec("cilia", "Ciliary movement in Paramecium", "பாரமீசியத்தில் மயிரிழை இயக்கம்",

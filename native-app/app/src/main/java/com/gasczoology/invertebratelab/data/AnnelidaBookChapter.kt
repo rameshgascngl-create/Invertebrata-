@@ -56,7 +56,7 @@ object AnnelidaBookChapter {
                         "அறைகளைப் பிரிக்கும் தடுப்புகள் திசுவின் மெல்லிய பிரிவுகள். ஒவ்வொரு அறையிலுள்ள உடற்குழி திரவத்தையும் தனித்தனியாக அழுத்தத்தில் வைக்க இவை அனுமதிக்கின்றன; அதனால் உடலின் ஒரு பகுதி விறைப்பாகவோ நீளவோ சுருங்கவோ செய்யப்படலாம்; அருகிலுள்ள பகுதி எதிர்மாறாகச் செய்கிறது. புழு துளையிட இதுவே அனுமதிக்கிறது; கண்டமுடைய அமைப்பின் முதல் பெரிய நன்மை இது. கண்டங்கள் எல்லாம் ஒரே மாதிரியல்ல; முன்புறக் கண்டங்கள் வாயையும் உணர்வு உறுப்புகளையும் தாங்க சிறப்புற்றவை; மண்புழுவின் சில கண்டங்கள் கிளைடெல்லத்தைத் தாங்குகின்றன. புதிய கண்டங்கள் மலவாயைத் தாங்கும் முனைப் பகுதியான பிஜிடியத்துக்கு முன்னால் சேர்க்கப்படுகின்றன."),
                     bdef("Metamerism", "உடற்கண்டமாதல்", "The repetition of similar body units, each with its own set of organs, along the length of the body." to
                         "உடலின் நீளத்தில், ஒவ்வொன்றும் தன் உறுப்புத் தொகுப்புடன், ஒத்த உடல் அலகுகள் மீள்வருதல்."),
-                    bdef("Septum", "தடுப்பு", "A partition of tissue that separates one coelomic compartment from the next." to
+                    bdef("Septum", "தடுப்புச் சுவர் (செப்டம்)", "A partition of tissue that separates one coelomic compartment from the next." to
                         "ஒரு உடற்குழி அறையை அடுத்ததிலிருந்து பிரிக்கும் திசுத் தடுப்பு."),
                     bdef("Segment (metamere)", "கண்டம்", "One of the repeated units of the body of an annelid." to
                         "அனெலிடாவின் உடலில் மீள்வரும் அலகுகளில் ஒன்று."),
@@ -99,7 +99,7 @@ object AnnelidaBookChapter {
                     ),
                     bp("In the earthworm the dorsal vessel carries blood forwards and is the main contractile vessel, and the ventral vessel carries blood backwards. Several pairs of enlarged, contractile commissural vessels, commonly called hearts, connect the two in the anterior segments. The direction of flow in the dorsal vessel, forward, is a useful point to remember. The word modification in the fifth point refers to the leeches, in which the coelom is filled with tissue and blood flows in sinuses, and to some polychaetes, in which vessels are reduced." to
                         "மண்புழுவில் முதுகுப்புற நாளம் இரத்தத்தை முன்னோக்கிக் கொண்டு செல்லும் முதன்மை சுருங்கும் நாளம்; வயிற்றுப்புற நாளம் பின்னோக்கிக் கொண்டு செல்கிறது. பொதுவாக இதயங்கள் எனப்படும் பல இணை பெரிதாகிய சுருங்கும் இணைப்பு நாளங்கள் முன்புறக் கண்டங்களில் இரண்டையும் இணைக்கின்றன. முதுகுப்புற நாளத்தில் ஓட்டத்தின் திசை முன்னோக்கி என்பது நினைவில் கொள்ளத்தக்கது. ஐந்தாம் புள்ளியிலுள்ள மாற்றம் என்ற சொல் உடற்குழி திசுவால் நிரப்பப்பட்டு இரத்தம் சைனஸ்களில் பாயும் அட்டைகளையும், நாளங்கள் குறைந்த சில பாலிகீட்டாக்களையும் குறிக்கிறது."),
-                    bdef("Closed circulatory system", "மூடிய இரத்த ஓட்ட மண்டலம்", "A circulatory system in which the blood is confined to vessels throughout its course." to
+                    bdef("Closed circulatory system", "மூடிய இரத்தச் சுற்றோட்ட மண்டலம்", "A circulatory system in which the blood is confined to vessels throughout its course." to
                         "இரத்தம் முழுப் பாதையிலும் நாளங்களில் மட்டும் அடங்கும் இரத்த ஓட்ட மண்டலம்."),
                     bdef("Commissural vessel", "இணைப்பு நாளம்", "A transverse vessel linking the dorsal and ventral longitudinal vessels." to
                         "முதுகுப்புற, வயிற்றுப்புற நீளவாட்டு நாளங்களை இணைக்கும் குறுக்கு நாளம்."),
@@ -125,7 +125,7 @@ object AnnelidaBookChapter {
                 blocks = listOf(
                     bpoints("Benefits and harm", "நன்மைகளும் தீமைகளும்",
                         "Earthworms improve the soil by mixing, aerating and enriching it, and are used in vermicomposting." to "மண்புழுக்கள் மண்ணைக் கலந்து, காற்றோட்டமாக்கி, செறிவாக்கி மேம்படுத்துகின்றன; மண்புழு உரமாக்கலில் பயன்படுகின்றன.",
-                        "Polychaetes are important food for fishes and shrimps and are used as bait and as feed in aquaculture." to "பாலிகீட்டாக்கள் மீன்கள், இறால்களுக்கு முக்கிய உணவு; இரையாகவும் நீர்வள வளர்ப்புத் தீவனமாகவும் பயன்படுகின்றன.",
+                        "Polychaetes are important food for fishes and shrimps and are used as bait and as feed in aquaculture." to "பாலிகீட்டாக்கள் மீன்கள், இறால்களுக்கு முக்கிய உணவு; இரையாகவும் நீர் வாழ் உயிரி வளர்ப்புத் தீவனமாகவும் பயன்படுகின்றன.",
                         "Medicinal leeches are used in some forms of surgery to relieve congestion of blood and to keep blood flowing." to "மருத்துவ அட்டைகள் சில அறுவை சிகிச்சைகளில் இரத்த நெரிசலைக் குறைக்கவும் இரத்த ஓட்டத்தைத் தொடரச் செய்யவும் பயன்படுகின்றன.",
                         "Hirudin, the anticoagulant from leech saliva, has been studied as a drug." to "அட்டை உமிழ்நீரிலுள்ள இரத்த உறைவு எதிர்ப்பியான ஹிருடின் மருந்தாக ஆராயப்பட்டுள்ளது.",
                         "Some leeches are blood-sucking pests of cattle and people, and land leeches trouble walkers in wet forests." to "சில அட்டைகள் கால்நடைகள், மனிதரின் இரத்தம் உறிஞ்சும் தொந்தரவுகள்; நில அட்டைகள் ஈரக் காடுகளில் நடப்போரைத் தொந்தரவு செய்கின்றன.",

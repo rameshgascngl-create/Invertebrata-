@@ -143,7 +143,7 @@ object CrustaceanLarvaeBookChapter {
                         "பார்னக்கிள் எடுத்துக்காட்டு முதிர்ந்தது மறைப்பதை லார்வா எவ்வாறு வெளிப்படுத்தும் என்பதைக் காட்டுகிறது. கிரஸ்டேஷியன் லார்வாக்களைக் கற்ற மாணவர், முதிர்ந்தவை வடிவத்தில் விலகிய விலங்குகளின் உறவுகளுக்கான சான்றாக இவ்வாறு அவற்றைப் பயன்படுத்த முடிய வேண்டும்."),
                     bdef("Barnacle", "பார்னக்கிள்", "A crustacean that as an adult is fixed to a surface and enclosed in plates, but that hatches as a nauplius." to
                         "முதிர்ந்த நிலையில் மேற்பரப்பில் பொருத்தப்பட்டு தகடுகளால் மூடப்பட்ட, ஆனால் நாப்ளியஸாகப் பொரியும் கிரஸ்டேஷியன்."),
-                    bdef("Aquaculture", "நீர்வள வளர்ப்பு", "The rearing of aquatic animals and plants for food or other uses." to
+                    bdef("Aquaculture", "நீர் வாழ் உயிரி வளர்ப்பு", "The rearing of aquatic animals and plants for food or other uses." to
                         "உணவு அல்லது பிற பயன்பாட்டுக்காக நீர்வாழ் விலங்குகள், தாவரங்களை வளர்த்தல்."),
                 )),
         ),
