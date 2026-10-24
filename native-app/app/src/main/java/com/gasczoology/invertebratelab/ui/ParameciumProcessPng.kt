@@ -31,8 +31,8 @@ internal object ParameciumProcessPngIndex {
         ParameciumProcess.CILIARY_MOTION to "unit1/paramecium_external",
         ParameciumProcess.OSMOREGULATION to "unit1/paramecium_vacuole",
         ParameciumProcess.FEEDING to "unit1/paramecium_oral",
-        ParameciumProcess.BINARY_FISSION to null,
-        ParameciumProcess.CONJUGATION to null,
+        ParameciumProcess.BINARY_FISSION to "unit1/reference/paramecium_parker_fission_reference",
+        ParameciumProcess.CONJUGATION to "unit1/reference/paramecium_conjugation_reference",
     )
     init { check(byProcess.keys == ParameciumProcess.entries.toSet()) }
 }
@@ -42,6 +42,7 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
     val tamil = language == AppLanguage.TAMIL
     val stem = ParameciumProcessPngIndex.byProcess.getValue(process)
     val image = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
+    val reproductive = process == ParameciumProcess.BINARY_FISSION || process == ParameciumProcess.CONJUGATION
     var expanded by rememberSaveable(process.name) { mutableStateOf(false) }
     Card(
         modifier = Modifier.fillMaxWidth().testTag("u57-simulator-png-card")
@@ -53,7 +54,13 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
             if (image != null) {
                 Image(
                     bitmap = image,
-                    contentDescription = if (tamil)
+                    contentDescription = if (reproductive) {
+                        if (process == ParameciumProcess.BINARY_FISSION) {
+                            if (tamil) "பாரமீசியம் குறுக்குப் பிளவு: பார்க்கர் வரலாற்றுப் படத்தில் D பகுதி; A–C இனப்பெருக்க நிலைகள் அல்ல." else "Historical Parker Paramecium plate: panel D shows transverse binary fission; A–C are not fission stages."
+                        } else {
+                            if (tamil) "பாரமீசியம் இணைவு: விளக்கப்படத் தொகுப்பு; நிலை எண்களையும் உட்கரு நிகழ்வுகளையும் பாடவிளக்கத்துடன் படிக்கவும்." else "Paramecium conjugation overview; follow the lesson text for nuclear chronology, not the image numbering alone."
+                        }
+                    } else if (tamil)
                         "பாரமீசியத்தின் பழைய பென்சில் ஓவியப் புகைப்படத்திலிருந்து பெறப்பட்ட PNG பகுதி; தனியாகச் சரிபார்க்கப்பட்ட உடற்கூறுப் படம் அல்ல."
                     else "Source-derived photographed pencil PNG crop; not an independently validated anatomical master.",
                     contentScale = ContentScale.Fit,
@@ -74,7 +81,10 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 if (expanded) {
                     RequiredTypeStudyFullImage(
                         image = image,
-                        title = if (tamil) "பாரமீசியம் · உடற்கூறுப் படம்" else "Paramecium · anatomy PNG",
+                        title = if (reproductive) {
+                            if (process == ParameciumProcess.BINARY_FISSION) (if (tamil) "பாரமீசியம் · குறுக்குப் பிளவு" else "Paramecium · binary fission")
+                            else (if (tamil) "பாரமீசியம் · இணைவு" else "Paramecium · conjugation")
+                        } else if (tamil) "பாரமீசியம் · உடற்கூறுப் படம்" else "Paramecium · anatomy PNG",
                         language = language,
                         onDismiss = { expanded = false },
                     )
