@@ -3,7 +3,7 @@ package com.gasczoology.invertebratelab.data
 import com.gasczoology.invertebratelab.ui.ParameciumProcessPngIndex
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
-import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
@@ -17,8 +17,8 @@ class ParameciumArtworkSourceGateTest {
     @Test fun reproductionDoesNotReuseUnrelatedAnatomyOrUnreviewedConjugationPoster() {
         val routes = ParameciumProcessPngIndex.byProcess
         assertEquals(ParameciumProcess.entries.toSet(), routes.keys)
-        assertNull("Dedicated transverse-fission PNG still missing", routes[ParameciumProcess.BINARY_FISSION])
-        assertNull("Conjugation source candidate has not passed academic approval", routes[ParameciumProcess.CONJUGATION])
+        assertEquals("unit1/reference/paramecium_parker_fission_reference", routes[ParameciumProcess.BINARY_FISSION])
+        assertEquals("unit1/reference/paramecium_conjugation_reference", routes[ParameciumProcess.CONJUGATION])
     }
 
     @Test fun existingPhysiologySubjectsHaveDistinctImageRoutes() {
