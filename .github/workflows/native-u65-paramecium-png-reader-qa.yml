@@ -48,6 +48,19 @@ jobs:
           for name in ('paramecium_external','paramecium_oral','paramecium_vacuole','paramecium_internal'):
               path=Path('native-app/app/src/main/assets/unit1')/(name+'.png')
               assert path.is_file() and path.read_bytes()[:8]==bytes.fromhex('89504e470d0a1a0a'), path
+          # The licensed 3840px anatomy candidate is deliberately debug-only.
+          # A green build must never silently promote it into student lessons.
+          import hashlib, struct
+          candidate=Path('native-app/app/src/debug/assets/unit1/commons_review/paramecium_caudatum_anatomy_3840_candidate.png')
+          rights=candidate.with_suffix('.source.txt')
+          if candidate.exists():
+              data=candidate.read_bytes()
+              assert data[:8]==bytes.fromhex('89504e470d0a1a0a')
+              assert struct.unpack('>II',data[16:24])==(3840,3388)
+              assert hashlib.sha256(data).hexdigest()=='ab12b57487ee6695feea723500dd13d51ad5c8be35d078ce71fa1755562e039a'
+              assert rights.exists() and 'CC BY-SA 4.0' in rights.read_text()
+              assert not Path('native-app/app/src/main/assets/unit1/commons_review').exists()
+              print('UNIT_I_COMMONS_3840PX_CANDIDATE=DEBUG_ONLY_SHA256_PASS')
           print('UNIT_I_ORIGINAL_PNGS=4, SOURCE_WARNING=PASS, REPRODUCTION_PNGS=WITHHELD')
           PY
       - name: Compile Kotlin, Android instrumentation and all JVM tests
