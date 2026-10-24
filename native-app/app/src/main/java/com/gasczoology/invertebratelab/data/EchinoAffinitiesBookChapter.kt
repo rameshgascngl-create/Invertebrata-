@@ -25,7 +25,7 @@ object EchinoAffinitiesBookChapter {
                         "இருபக்க உடல் திட்டம் கொண்ட விலங்குகள், கருவில் வாயும் மலவாயும் உருவாகும் விதத்தின்படி முதல்வாயிகள், இரண்டாம்வாயிகள் என்ற இரு பெரும் பரம்பரைகளாகப் பிரிக்கப்பட்டுள்ளன. செம்மையான இரண்டாம்வாயியில் கருவின் முதல் திறப்பான பிளாஸ்டோபோர் மலவாயாகிறது; வாய் பின்னர் புதிய திறப்பாக உருவாகிறது. முதல்வாயிகளில் பிளாஸ்டோபோர் வாயாகிறது அல்லது குறைந்தது வாய் அதன் அருகே உருவாகிறது. முட்தோலிகள் தம் வளர்ச்சிப் பண்புகளில் இரண்டாம்வாயிகள்; அவற்றின் லார்வாக்கள் இரண்டாம்வாயி லார்வாவின் தனிப்பண்பு வடிவம் கொண்டவை."),
                     bpoints("Developmental characters shared by the echinoderms and other deuterostomes", "முட்தோலிகளும் பிற இரண்டாம்வாயிகளும் பகிரும் வளர்ச்சிப் பண்புகள்",
                         "The blastopore gives rise to the anus, and the mouth forms secondarily." to "பிளாஸ்டோபோர் மலவாயைத் தருகிறது; வாய் இரண்டாம் நிலையாக உருவாகிறது.",
-                        "The coelom is formed as outgrowths of the primitive gut, which is called enterocoely." to "உடற்குழி ஆதிக்குடலின் வளர்ச்சிகளாக உருவாகிறது; இது என்டிரோசீலி எனப்படுகிறது.",
+                        "The coelom is formed as outgrowths of the primitive gut, which is called enterocoely." to "உடற்குழி ஆதிக்குடலின் வளர்ச்சிகளாக உருவாகிறது; இது என்டெரோசீலி எனப்படுகிறது.",
                         "Cleavage is typically radial and indeterminate, so that the cells of the early embryo keep a wide potential." to "பிளவு வழக்கமாக ஆரை, உறுதியற்றது; எனவே ஆரம்பக் கருவின் உயிரணுக்கள் பரந்த ஆற்றலைத் தக்கவைக்கின்றன.",
                         "The larvae are ciliated and bilateral, with looping bands of cilia." to "லார்வாக்கள் கசையிழை கொண்டவை, இருபக்கச் சமச்சீருடையவை; வளையக் கசையிழைப் பட்டைகளுடன்.",
                     ),
@@ -37,7 +37,7 @@ object EchinoAffinitiesBookChapter {
                         "பிளாஸ்டோபோர் மலவாயாகி வாய் இரண்டாம் நிலையாக உருவாகும் விலங்கு."),
                     bdef("Blastopore", "பிளாஸ்டோபோர்", "The first opening of the embryo into the primitive gut." to
                         "ஆதிக்குடலுக்குள் கருவின் முதல் திறப்பு."),
-                    bdef("Enterocoely", "என்டிரோசீலி", "The formation of the coelom from outgrowths of the gut." to
+                    bdef("Enterocoely", "என்டெரோசீலி", "The formation of the coelom from outgrowths of the gut." to
                         "குடலின் வளர்ச்சிகளிலிருந்து உடற்குழி உருவாதல்."),
                     bdef("Indeterminate cleavage", "உறுதியற்ற பிளவு", "Cleavage in which the cells of the early embryo keep the potential to form a whole animal." to
                         "ஆரம்பக் கரு உயிரணுக்கள் முழு விலங்கை உருவாக்கும் ஆற்றலைத் தக்கவைக்கும் பிளவு."),
@@ -148,7 +148,7 @@ object EchinoAffinitiesBookChapter {
             bsec("skeleton", "The skeleton as a character", "ஒரு பண்பாக எலும்புக்கூடு",
                 blocks = listOf(
                     bp("The skeleton of an echinoderm is made of ossicles of calcium carbonate in the form of calcite, formed in the mesoderm beneath the epidermis. Each ossicle has a porous, lattice-like structure called stereom, which combines strength with lightness and is found in no other animals in the same form. This internal skeleton is therefore comparable in position, though not in material, to the skeleton of a vertebrate, which is also formed by the mesoderm, and the echinoderm skeleton has been used in the argument that both are deuterostome features. The comparison must, however, be made cautiously, since the skeletons of the two groups differ in material and in structure, and the resemblance is one of position and origin only.",
-                        "எக்கைனோடெர்மின் எலும்புக்கூடு எப்பிடெர்மிஸின் கீழ் மீசோடெர்மில் உருவாகும், கால்சைட் வடிவ கால்சியம் கார்பனேட் ஆசிகிள்களால் ஆனது. ஒவ்வொரு ஆசிகிளுக்கும் வலிமையையும் இலேசையும் இணைக்கும் ஸ்டீரியோம் எனும் துளையுடைய வலை போன்ற அமைப்பு உள்ளது; வேறு விலங்குகளில் அதே வடிவில் காணப்படுவதில்லை. எனவே இவ்வுட்புற எலும்புக்கூடு, பொருளில் அல்லாமல் நிலையில், மீசோடெர்மாலும் உருவாகும் முதுகெலும்பியின் எலும்புக்கூட்டுடன் ஒப்பிடத்தக்கது; இரண்டும் டியூட்டிரோஸ்டோம் பண்புகள் என்ற வாதத்தில் எக்கைனோடெர்ம் எலும்புக்கூடு பயன்பட்டுள்ளது. எனினும் இரு குழுக்களின் எலும்புக்கூடுகள் பொருளிலும் அமைப்பிலும் வேறுபடுவதால், ஒப்பீடு எச்சரிக்கையுடன் செய்யப்பட வேண்டும்; ஒற்றுமை நிலை, தோற்றத்தில் மட்டுமே."),
+                        "எக்கைனோடெர்மின் எலும்புக்கூடு எப்பிடெர்மிஸின் கீழ் மீசோடெர்மில் உருவாகும், கால்சைட் வடிவ கால்சியம் கார்பனேட் ஆஸிக்கிள்களால் ஆனது. ஒவ்வொரு ஆசிகிளுக்கும் வலிமையையும் இலேசையும் இணைக்கும் ஸ்டீரியோம் எனும் துளையுடைய வலை போன்ற அமைப்பு உள்ளது; வேறு விலங்குகளில் அதே வடிவில் காணப்படுவதில்லை. எனவே இவ்வுட்புற எலும்புக்கூடு, பொருளில் அல்லாமல் நிலையில், மீசோடெர்மாலும் உருவாகும் முதுகெலும்பியின் எலும்புக்கூட்டுடன் ஒப்பிடத்தக்கது; இரண்டும் டியூட்டிரோஸ்டோம் பண்புகள் என்ற வாதத்தில் எக்கைனோடெர்ம் எலும்புக்கூடு பயன்பட்டுள்ளது. எனினும் இரு குழுக்களின் எலும்புக்கூடுகள் பொருளிலும் அமைப்பிலும் வேறுபடுவதால், ஒப்பீடு எச்சரிக்கையுடன் செய்யப்பட வேண்டும்; ஒற்றுமை நிலை, தோற்றத்தில் மட்டுமே."),
                     bdef("Stereom", "ஸ்டீரியோம்", "The porous, lattice-like calcite structure of an echinoderm ossicle." to
                         "எக்கைனோடெர்ம் ஆசிகிளின் துளையுடைய வலை போன்ற கால்சைட் அமைப்பு."),
                 )),
