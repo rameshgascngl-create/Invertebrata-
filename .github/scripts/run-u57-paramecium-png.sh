@@ -33,6 +33,13 @@ for scale in 1.0 2.0; do
     "-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeU57ParameciumProcessPngTest" \
       > "$root/gradle.txt" 2>&1; then
     cp -a native-app/app/build/outputs/androidTest-results/connected "$root/xml" 2>/dev/null || true
+    echo "::error::Offline Paramecium Android test failed at font scale $scale"
+    echo "===== Instrumentation failure excerpts ($scale) ====="
+    grep -n -E -A 18 -B 8 'FAILED|FAILURE|AssertionError|ComposeNotIdleException|NoMatchingRootException|SemanticsNode|Exception|error:' "$root/gradle.txt" | tail -180 || true
+    echo "===== Instrumentation log tail ($scale) ====="
+    tail -100 "$root/gradle.txt" || true
+    echo "===== JUnit XML failures ($scale) ====="
+    find "$root/xml" -name 'TEST-*.xml' -exec grep -n -E -A 14 '<failure|<error' {} \\; || true
     result="API34_UNIT1_UI_FAIL_$scale"
     exit 1
   fi
