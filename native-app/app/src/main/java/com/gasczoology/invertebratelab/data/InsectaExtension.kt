@@ -15,6 +15,9 @@ object InsectaExtension {
         NaturalEnemiesBookChapter.chapter,
         MedicalInsectsBookChapter.chapter,
         HouseholdInsectsBookChapter.chapter,
+        PestsIpmBookChapter.chapter,
+        CerealPestsBookChapter.chapter,
+        CropPestsBookChapter.chapter,
     )
 
     val chapterIds: List<String> get() = bookChapters.map { it.lessonId }

@@ -103,3 +103,12 @@ Audit date: 2026-10-22 (branch `feat/plate-pipeline`). Counts are regex-derived 
 - Applied to every defined term in the 43 book chapters whose Tamil does not appear verbatim in the State Board 11th Zoology or 12th Bio-Zoology/Zoology books (643 terms). 237 terms found in those books are left without brackets.
 - Text extraction from the PDFs is noisy, so a term that is in the books but was not matched will carry the English in brackets as well; this is harmless.
 - New chapters should follow the same rule.
+
+### 6.4 Unit VI: Insecta and applied entomology (2026-10-24)
+
+- Added at the author's request to cover the TANSCHE Volume II insect topics (items 14, 16, 21 to 35). **Nine extension chapters**: class Insecta, cockroach, pollinators, predators and parasitoids, disease-carrying insects, household insects, pests and IPM, cereal and stored-grain pests, other crop pests.
+- The extension sits **outside the validated 43-chapter corpus** (`ValidatedCorpusContract` still requires 5 units, 43 chapters, 86 question pairs and is untouched). Unit VI is appended in `MainViewModel` after validation. The chapters have no A5 questions (`reviewIds` empty); the "Five-mark practice · 86 questions" screen is unchanged.
+- All nine pass `BookChapterContract` (each at least 2,296 English words). Tamil is draft: State Board term where one exists, otherwise a descriptive or transliterated term with the English term in brackets.
+- **Syllabus slips noted in the chapters:** "Earias insulana" is the spiny bollworm (the spotted bollworm is E. vittella); "diamond black moth" should read diamondback moth.
+- Hedged facts needing expert review: Thai sacbrood virus, papaya mealybug parasitoids, Bt cotton and bollworm resistance, the endosulfan order, pollination share figures, Wolbachia, rhinoceros-beetle virus resistance, and all durations and thresholds. No pesticide doses are given.
+- The Compose reader for Unit VI is verified only by CI.
