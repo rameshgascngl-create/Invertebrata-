@@ -1,0 +1,46 @@
+# Unit V — externally sourced illustration acquisition manifest
+# Candidate records only. A record does not mean its binary has been downloaded, audited, or installed.
+# Do not relabel anatomy of one species as another. Do not ship a source merely because it appears here.
+# Original artwork is not AI-generated.
+version: 1
+records:
+  - id: pila_globosa_external_photo
+    chapter: Pila
+    section: external morphology
+    source: "https://commons.wikimedia.org/wiki/File:Pila_globosa.jpg"
+    creator: Siyaulhaque
+    licence: "CC BY-SA 4.0"
+    licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+    resolution: "3000x4000"
+    subject: "Pila globosa"
+    decision: "candidate for species external photograph only"
+    status: "NOT_DOWNLOADED_NOT_INTEGRATED"
+  - id: asterias_rubens_dissection
+    chapter: Asterias
+    section: "digestive and internal anatomy"
+    source: "https://commons.wikimedia.org/wiki/File:Asterias_rubens,_dissection.svg"
+    creator: Hans Hillewaert
+    licence: "CC BY-SA 3.0"
+    licence_url: "https://creativecommons.org/licenses/by-sa/3.0/"
+    subject: "Asterias rubens"
+    decision: "preferred published replacement candidate; preserve original organ key"
+    status: "NOT_DOWNLOADED_NOT_INTEGRATED"
+  - id: asterina_water_vascular_historical
+    chapter: Asterias
+    section: "comparative water vascular system"
+    source: "https://commons.wikimedia.org/wiki/File:Part_of_starfish_water_vascular_system.jpg"
+    creator: "Unknown illustrator; Ottuv Slovnik Naucny (1897)"
+    licence: "Public domain per source record"
+    subject: "Asterina gibbosa (NOT Asterias)"
+    resolution: "1443x1253"
+    decision: "comparative reference only, not an Asterias-specific plate"
+    status: "NOT_DOWNLOADED_NOT_INTEGRATED"
+  - id: starfish_wvs_arnold
+    chapter: Asterias
+    section: "water vascular system"
+    source: "https://commons.wikimedia.org/wiki/File:FMIB_52615_Diagram_of_water-vascular_system_of_a_starfish_%3B.jpeg"
+    creator: Augusta Foote Arnold
+    licence: "Public domain; University of Washington Freshwater and Marine Image Bank"
+    resolution: "474x507"
+    decision: "reference only: inadequate for enlarged student-facing image"
+    status: "NOT_DOWNLOADED_NOT_INTEGRATED"

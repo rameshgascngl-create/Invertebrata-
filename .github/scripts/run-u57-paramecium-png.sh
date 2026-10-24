@@ -4,7 +4,7 @@ D="/sdcard/Download/u57-qa"
 E="qa-evidence/u57-paramecium"
 mkdir -p "$E"
 result=NOT_STARTED
-trap 'code=$?; printf "commit=%s\nresult=%s\nexit=%s\n" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull "$D" "$E/captured" > "$E/pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
+trap 'code=$?; printf "commit=%s\ntrigger_sha=%s\nresult=%s\nexit=%s\n" "$(git rev-parse HEAD)" "$GITHUB_SHA" "$result" "$code" > "$E/status.txt"; adb pull "$D" "$E/captured" > "$E/pull.log" 2>&1 || true; adb logcat -d -v threadtime > "$E/logcat.txt" 2>&1 || true' EXIT
 # Emulator images may not mount /sdcard immediately after sys.boot_completed.
 # Wait for emulated external storage before creating the evidence directory.
 for attempt in $(seq 1 30); do
@@ -33,6 +33,13 @@ for scale in 1.0 2.0; do
     "-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeU57ParameciumProcessPngTest" \
       > "$root/gradle.txt" 2>&1; then
     cp -a native-app/app/build/outputs/androidTest-results/connected "$root/xml" 2>/dev/null || true
+    echo "::error::Offline Paramecium Android test failed at font scale $scale"
+    echo "===== Instrumentation failure excerpts ($scale) ====="
+    grep -n -E -A 18 -B 8 'FAILED|FAILURE|AssertionError|ComposeNotIdleException|NoMatchingRootException|SemanticsNode|Exception|error:' "$root/gradle.txt" | tail -180 || true
+    echo "===== Instrumentation log tail ($scale) ====="
+    tail -100 "$root/gradle.txt" || true
+    echo "===== JUnit XML failures ($scale) ====="
+    find "$root/xml" -name 'TEST-*.xml' -exec grep -n -E -A 14 '<failure|<error' {} + || true
     result="API34_UNIT1_UI_FAIL_$scale"
     exit 1
   fi

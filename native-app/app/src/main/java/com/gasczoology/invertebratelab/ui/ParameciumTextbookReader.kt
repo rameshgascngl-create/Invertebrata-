@@ -34,6 +34,8 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumLearningEngine
+import com.gasczoology.invertebratelab.data.ParameciumNuclearSequence
+import com.gasczoology.invertebratelab.data.ParameciumNuclearGlossary
 import kotlinx.coroutines.launch
 
 /**
@@ -161,14 +163,15 @@ private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
 private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
     // Each concept gets its own PNG slot. No anatomy is drawn in Canvas.
     val stem = when (figure) {
-        "oral" -> "unit1/concepts/paramecium_oral_apparatus"
-        "vacuole" -> "unit1/concepts/paramecium_osmoregulation"
-        "overview" -> "unit1/concepts/paramecium_nuclear_anatomy"
-        "fission" -> "unit1/concepts/paramecium_binary_fission"
-        "conjugation" -> "unit1/concepts/paramecium_conjugation"
+        "oral" -> "unit1/paramecium_oral"
+        "vacuole" -> "unit1/paramecium_vacuole"
+        "overview" -> null // No verified independent nuclear master; do not repeat the same source photo.
+        "fission" -> null // Dedicated binary-fission plate remains missing.
+        "conjugation" -> null // Unreviewed conjugation posters must not be substituted.
         else -> null
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
+    var expanded by rememberSaveable(figure) { mutableStateOf(false) }
     Card {
         Column(Modifier.fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(view(language, "Concept-specific PNG anatomy plate — scientific review pending",
@@ -179,6 +182,27 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
                     contentDescription = view(language, "Paramecium concept PNG: $figure", "பாரமீசியம் PNG படம்: $figure"),
                     contentScale = androidx.compose.ui.layout.ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth().height(240.dp).testTag("r14-pencil-" + figure))
+                OutlinedButton(
+                    onClick = { expanded = true },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("r14-enlarge-concept-png-" + figure),
+                ) {
+                    Text(view(language, "Enlarge original PNG", "அசல் PNG படத்தைப் பெரிதாக்கு"))
+                }
+                if (expanded) {
+                    RequiredTypeStudyFullImage(
+                        image = bitmap,
+                        title = view(language, "Paramecium source PNG", "பாரமீசியம் மூல PNG"),
+                        language = language,
+                        onDismiss = { expanded = false },
+                    )
+                }
+                Text(view(language,
+                    "Source-derived image: enlargement does not restore detail missing from the original photographed pencil drawing. This is not an independently verified anatomical master.",
+                    "மூலப் பென்சில் ஓவியத்தின் புகைப்படத்திலிருந்து பெறப்பட்ட படம். பெரிதாக்குவதால் அசல் படத்தில் இல்லாத விவரங்கள் கிடைக்காது. இது தனியாகச் சரிபார்க்கப்பட்ட உடற்கூறுப் படம் அல்ல."),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.testTag("r14-concept-source-warning-" + figure))
+
             } else {
                 Text(view(language,
                     "Required concept-specific PNG not yet scientifically verified; the old drawing has been removed.",
@@ -316,6 +340,39 @@ internal fun ParameciumTextbookReader(
                         .testTag("r14-listen-chapter")) {
                     Text(view(language, "Listen to this explanation", "இவ்விளக்கத்தைக் கேள்"))
                 }
+            }
+        }
+    }
+    // Chronologically ordered bilingual theory, independent of missing artwork.
+    // A concept PNG is shown only if its own reviewed raster is bundled.
+    if (section.id == "asexual-division-process" || section.id == "conjugation") {
+        val stages = if (section.id == "conjugation")
+            ParameciumNuclearSequence.conjugation else ParameciumNuclearSequence.binaryFission
+        Card(Modifier.fillMaxWidth().testTag("paramecium-nuclear-sequence-" + section.id)) {
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                val definitions = if (section.id == "conjugation") ParameciumNuclearGlossary.conjugation else ParameciumNuclearGlossary.fission
+                Text(view(language, "Definitions", "வரையறைகள்"), style = MaterialTheme.typography.titleLarge)
+                definitions.forEach { term ->
+                    Text(term.name.value(language), style = MaterialTheme.typography.titleMedium)
+                    Text(term.definition.value(language), style = MaterialTheme.typography.bodyLarge)
+                }
+                Text(view(language, "Chronological stages — explanatory text",
+                    "நிகழ்வுகளின் காலவரிசை — விளக்க உரை"),
+                    style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                stages.forEach { stage ->
+                    Column(Modifier.testTag("paramecium-nuclear-stage-" + stage.id),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(stage.heading.value(language),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold)
+                        Text(stage.explanation.value(language),
+                            style = MaterialTheme.typography.bodyLarge, lineHeight = 25.sp)
+                    }
+                }
+                Text(view(language,
+                    "These stages describe biological events, not a validated diagram or a timed animation. Nuclear details can vary by species.",
+                    "இவை உயிரியல் நிகழ்வுகளை விளக்கும் உரை; சரிபார்க்கப்பட்ட படமோ நேர அளவுள்ள இயக்கப்படமோ அல்ல. உட்கரு விவரங்கள் இனத்திற்கேற்ப மாறலாம்."),
+                    style = MaterialTheme.typography.bodySmall)
             }
         }
     }

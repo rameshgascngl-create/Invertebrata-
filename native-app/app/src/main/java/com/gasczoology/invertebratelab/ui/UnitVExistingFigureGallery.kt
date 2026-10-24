@@ -26,16 +26,24 @@ import com.gasczoology.invertebratelab.data.UnitVExistingFigure
 
 /** Lazy-list image cards: decode only when an individual card is composed. */
 @Composable
-internal fun UnitVExistingFigureHeader(language: AppLanguage, count: Int) {
+internal fun UnitVExistingFigureHeader(language: AppLanguage, count: Int, publishedCount: Int) {
+    val withheldCount = count - publishedCount
     Column(Modifier.fillMaxWidth().testTag("u5-existing-image-gallery"),
         verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(if (language == AppLanguage.TAMIL)
-            "கிடைத்துள்ள படக் கோப்புகள் · $count ஆய்வு வரைபடங்கள்"
-            else "EXISTING IMAGE FILES · $count review candidates",
+            "துணைப் படங்கள்: ${publishedCount} காட்டப்படுகின்றன; ${withheldCount} நிறுத்தப்பட்டுள்ளன"
+            else "EXISTING FIGURES · ${publishedCount} supplementary; ${withheldCount} withheld",
             style = MaterialTheme.typography.titleLarge)
-        Text(if (language == AppLanguage.TAMIL)
-            "மூலக் கோப்புகளின் படப்புள்ளிகள் மாற்றப்படவில்லை. இவற்றின் ஆங்கிலக் குறியீடுகள் சிலவற்றில் பிழைகள் உள்ளன. அறிவியல், தமிழ் மற்றும் பயன்பாட்டு உரிமை ஆய்வுகள் நிலுவையில் உள்ளன; கட்டாய உடற்கூறு படங்களுக்கான ஒப்புதல் அல்ல."
-            else "These original repository PNGs are included without changing the pixels. Some image-internal English labels are incorrect. Scientific, Tamil and source-rights checks remain open; these are not accepted replacements for mandatory anatomical plates.",
+        Text(
+            if (publishedCount > 0) {
+                if (language == AppLanguage.TAMIL)
+                    "ஓடு, ஓடுமூடி பற்றிய மூன்று பழைய திட்டப் படங்கள் மட்டும் துணை விளக்கத்திற்காகக் காட்டப்படுகின்றன. மூலப்படங்களின் சொற்களில் உள்ள குறைகளை அருகிலுள்ள தமிழ்க் குறிப்புகள் விளக்குகின்றன. இவை முழுமையாகச் சரிபார்க்கப்பட்ட உடற்கூறு மாதிரிப் படங்கள் அல்ல; மூலத் தெளிவுத்திறன் 384 × 341 மட்டுமே."
+                else "Only three existing shell/operculum illustrations are shown as supplementary references. The bilingual notes clarify source-internal orientation terms. They are not approved anatomical master plates; source resolution is only 384 × 341 pixels."
+            } else {
+                if (language == AppLanguage.TAMIL)
+                    "இப்பகுதியின் பழைய படங்கள் உடற்கூறு, குறியீடு மற்றும் மூல உரிமை ஆய்வு முடிவடையாததால் பாடத்தில் காட்டப்படவில்லை. கட்டாய மாதிரிப் படங்களுக்கான ஒப்புதல் இன்னும் நிலுவையில் உள்ளது."
+                else "Existing figures for this chapter remain withheld pending anatomical, labelling and provenance review. Mandatory type-study plates are not approved."
+            },
             color = MaterialTheme.colorScheme.error,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.testTag("u5-existing-image-disclaimer"))
@@ -72,6 +80,9 @@ internal fun UnitVExistingFigureCard(figure: UnitVExistingFigure, language: AppL
                     RequiredTypeStudyFullImage(bitmap, caption, language) { expanded = false }
                 }
             }
+            Text(figure.provenance.value(language),
+                modifier = Modifier.testTag("u5-figure-source-${figure.organism}-${figure.id}"),
+                style = MaterialTheme.typography.bodySmall)
             Text(figure.caution.value(language),
                 modifier = Modifier.testTag("u5-candidate-caution-${figure.organism}-${figure.id}"),
                 style = MaterialTheme.typography.bodyMedium,

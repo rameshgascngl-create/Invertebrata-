@@ -1,0 +1,68 @@
+name: Unit I licensed high-resolution Paramecium reference intake
+'on':
+  push:
+    branches:
+      - native/u63-hide-rejected-unit5-figures-20261021
+    paths:
+      - '.github/workflows/native-u66-paramecium-commons-reference-intake.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  acquire-review-only-png:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch original licensed Commons anatomy artwork as high-resolution PNG
+        shell: bash
+        run: |
+          set -euo pipefail
+          folder='native-app/app/src/debug/assets/unit1/commons_review'
+          mkdir -p "$folder"
+          url='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Paramecium_diagram.svg/3840px-Paramecium_diagram.svg.png'
+          curl --fail --location --retry 4 --retry-delay 3 --connect-timeout 15 --max-time 180 \
+            --user-agent 'INVERTEBRATA-Zoology-Education/1.0 (CC-BY-SA attribution preserved)' \
+            "$url" -o "$folder/paramecium_caudatum_anatomy_3840_candidate.png"
+          python3 - <<'PY'
+          import hashlib, struct
+          from pathlib import Path
+          path=Path('native-app/app/src/debug/assets/unit1/commons_review/paramecium_caudatum_anatomy_3840_candidate.png')
+          data=path.read_bytes()
+          assert data[:8] == b'\x89PNG\r\n\x1a\n', 'not PNG'
+          w,h=struct.unpack('>II',data[16:24])
+          assert w >= 2500 and h >= 2000, (w,h)
+          assert len(data)>100_000, len(data)
+          sha=hashlib.sha256(data).hexdigest()
+          print(f'COMMONS_PARAMECIUM_CANDIDATE=PASS size={len(data)} dimensions={w}x{h} sha256={sha}')
+          provenance=path.with_suffix('.source.txt')
+          provenance.write_text(
+              'STATUS: REVIEW ONLY. NOT A RELEASE/APPROVED SCIENTIFIC PLATE.\\n'
+              'Organism: Paramecium caudatum, external and internal anatomy.\\n'
+              'Original artwork: Deuterostome, 2017, Paramecium diagram.svg.\\n'
+              'Source: https://commons.wikimedia.org/wiki/File:Paramecium_diagram.svg\\n'
+              'Raster source: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Paramecium_diagram.svg/3840px-Paramecium_diagram.svg.png\\n'
+              'License: CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/\\n'
+              'Transformation: Commons SVG raster rendering; no anatomical or text alterations.\\n'
+              f'PNG dimensions: {w} x {h}\\nSHA-256: {sha}\\n'
+              'Not bundled in src/main. Requires morphology, leader-line, Tamil-label and rights verification.\\n',
+              encoding='utf-8'
+          )
+          PY
+      - name: Commit original high-resolution reference only to debug quarantine
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/debug/assets/unit1/commons_review/
+          if git diff --cached --quiet; then
+            echo 'No candidate changes'
+          else
+            git commit -m 'assets(unit1): archive licensed 3840px Paramecium anatomy PNG for review only'
+            git push origin HEAD:native/u63-hide-rejected-unit5-figures-20261021
+          fi

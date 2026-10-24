@@ -118,7 +118,9 @@ fun ParameciumTeachingLab(
     var simulationPlaying by rememberSaveable { mutableStateOf(false) }
     androidx.activity.compose.BackHandler(onBack = ::leave)
     val labScroll = rememberScrollState()
-    LaunchedEffect(tab) { if (tab == "anatomy") labScroll.scrollTo(0) }
+    // Each tab owns a distinct reading surface; retaining the previous tab's
+    // vertical offset hides the new heading and controls at large Tamil fonts.
+    LaunchedEffect(tab) { labScroll.scrollTo(0) }
     Scaffold { insets ->
         Column(modifier=Modifier.padding(insets).verticalScroll(labScroll)
             .padding(16.dp).testTag("r1-paramecium-lab"),

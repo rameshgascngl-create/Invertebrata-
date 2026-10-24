@@ -102,11 +102,13 @@ class NativeFiveUnitRestorationTest {
             rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
         }
         find(ch, "u5-existing-image-gallery")
-        find(ch, "u5-candidate-bitmap-pila-01_shell_ventral")
-        rule.onNodeWithTag("u5-candidate-bitmap-pila-01_shell_ventral").assertIsDisplayed()
-        find(ch, "u5-candidate-bitmap-pila-08_respiratory_system")
-        rule.onNodeWithTag("u5-candidate-bitmap-pila-08_respiratory_system").assertIsDisplayed()
-        find(ch, "u5-candidate-caution-pila-06_buccal_mass")
+        for (figure in listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal")) {
+            find(ch, "u5-candidate-card-pila-" + figure)
+            rule.onNodeWithTag("u5-candidate-bitmap-pila-" + figure).assertExists()
+            rule.onNodeWithTag("u5-candidate-missing-pila-" + figure).assertDoesNotExist()
+        }
+        rule.onNodeWithTag("u5-candidate-bitmap-pila-08_respiratory_system").assertDoesNotExist()
+        rule.onNodeWithTag("u5-candidate-caution-pila-06_buccal_mass").assertDoesNotExist()
         capture("unit5-pila-tamil-existing-plates")
         // At both 100% and 200% Tamil fonts, traverse EVERY substantive
         // Pila section; no earlier two-section preview may silently return.
@@ -135,10 +137,8 @@ class NativeFiveUnitRestorationTest {
             rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertExists()
         }
         find(ch, "u5-existing-image-gallery")
-        find(ch, "u5-candidate-bitmap-asterias-water_vascular")
-        rule.onNodeWithTag("u5-candidate-bitmap-asterias-water_vascular").assertIsDisplayed()
-        find(ch, "u5-candidate-bitmap-asterias-digestive")
-        rule.onNodeWithTag("u5-candidate-bitmap-asterias-digestive").assertIsDisplayed()
+        rule.onNodeWithTag("u5-candidate-bitmap-asterias-water_vascular").assertDoesNotExist()
+        rule.onNodeWithTag("u5-candidate-bitmap-asterias-digestive").assertDoesNotExist()
         capture("unit5-asterias-english-existing-plates")
         for (section in listOf(
             "external", "water-vascular", "internal", "feeding-and-stomachs",
@@ -158,7 +158,7 @@ class NativeFiveUnitRestorationTest {
         find(ch, "r2-type-study-gallery-pila")
         rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
         find(ch, "r2-plate-missing-pila-mantle-cavity")
-        find(ch, "u5-candidate-bitmap-pila-03_shell_dorsal")
+        rule.onNodeWithTag("u5-candidate-bitmap-pila-03_shell_dorsal").assertDoesNotExist()
         find(ch, "restored-section-reproduction-and-development")
         find(ch, "restored-section-torsion-in-pila")
         capture("unit5-pila-english-late-chapter")
@@ -172,7 +172,7 @@ class NativeFiveUnitRestorationTest {
         find(ch, "r2-type-study-gallery-asterias")
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
         find(ch, "r2-plate-missing-asterias-water-vascular-system")
-        find(ch, "u5-candidate-bitmap-asterias-nervous")
+        rule.onNodeWithTag("u5-candidate-bitmap-asterias-nervous").assertDoesNotExist()
         find(ch, "restored-section-feeding-and-stomachs")
         find(ch, "restored-section-reproduction-and-larvae")
         capture("unit5-asterias-tamil-late-chapter")

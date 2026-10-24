@@ -8,15 +8,28 @@ import java.io.File
 import java.security.MessageDigest
 
 class UnitVExistingFigureCatalogTest {
-    @Test fun allSixteenExistingImagesAreBundledAndUnique() {
+    @Test fun allSixteenArchiveImagesAreUniqueAndOnlyThreeShellImagesReachRelease() {
         assertEquals(12, UnitVExistingFigureCatalog.forChapter("u5-pila").size)
         assertEquals(4, UnitVExistingFigureCatalog.forChapter("u5-asterias").size)
         assertTrue(UnitVExistingFigureCatalog.forChapter("u4-penaeus").isEmpty())
+        val published = UnitVExistingFigureCatalog.forPublishedChapter("u5-pila").toSet()
+        assertEquals(setOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal"),
+            published.map { it.id }.toSet())
+        assertTrue(UnitVExistingFigureCatalog.forPublishedChapter("u5-asterias").isEmpty())
         val digest = MessageDigest.getInstance("SHA-256")
         val hashes = UnitVExistingFigureCatalog.figures.map { figure ->
-            val file = File("src/main/assets/${figure.assetStem}.png")
+            val file = File("src/debug/assets/${figure.assetStem}.png")
             assertTrue("Missing offline source image: ${figure.assetStem}", file.isFile)
             val bytes = file.readBytes()
+            val release = File("src/main/assets/${figure.assetStem}.png")
+            if (figure in published) {
+                assertTrue("Published shell PNG missing: ${figure.assetStem}", release.isFile)
+                assertTrue("Published PNG differs from original: ${figure.assetStem}",
+                    bytes.contentEquals(release.readBytes()))
+            } else {
+                assertFalse("Unreviewed anatomy leaked into release assets: ${figure.assetStem}",
+                    release.exists())
+            }
             assertTrue("Blank or malformed PNG: ${figure.assetStem}", bytes.size > 16_000)
             val signature = byteArrayOf(-119,80,78,71,13,10,26,10)
             assertTrue("Not a PNG: ${figure.assetStem}", bytes.copyOfRange(0,8).contentEquals(signature))
@@ -28,7 +41,79 @@ class UnitVExistingFigureCatalogTest {
         assertFalse(UnitVExistingFigureCatalog.figures.any { it.assetStem.startsWith("type_studies/") })
     }
 
-    @Test fun mandatoryAcademicPlatesStillRequireSeparateApproval() {
+    @Test fun publishedPilaFiguresMapToRealBilingualLessonSection() {
+        val pila = FiveUnitRestorationLessons.chapters.single { it.chapterId == "u5-pila" }
+        val sections = pila.sections.associateBy { it.id }
+        val external = sections["external"]
+        assertTrue("Pila external morphology lesson is missing", external != null)
+        assertTrue("Pila lesson must have both languages",
+            external!!.title.english.isNotBlank() && external.title.tamil.isNotBlank())
+        val published = UnitVExistingFigureCatalog.forPublishedChapter("u5-pila")
+        assertEquals(3, published.size)
+        assertTrue("Published figure not mapped to a real lesson section",
+            published.all { it in UnitVExistingFigureCatalog.forSection("u5-pila", "external") })
+    }
+
+    @Test fun restoredUnitVFiguresHaveStableAndroidScreenshotTags() {
+        val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").readText()
+        assertTrue("Missing unique chapter-section-image Compose tag",
+            reader.contains("\"unit5-figure-\" + chapter.id + \"-\" + section.id + \"-\" + figure.id"))
+        val figures = UnitVExistingFigureCatalog.forSection("u5-pila", "external")
+        val tags = figures.map { "unit5-figure-u5-pila-external-${it.id}" }
+        assertEquals(3, tags.distinct().size)
+        assertEquals("unit5-figure-u5-pila-external-01_shell_ventral", tags.first())
+    }
+
+    @Test fun nativeChapterReaderWiresPublishedImagesAfterTheirOwnSection() {
+        val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").readText()
+        val sectionLoop = reader.indexOf("restoredLesson.sections.forEach { section ->")
+        val figureLookup = reader.indexOf("UnitVExistingFigureCatalog.forSection(chapter.id, section.id)", sectionLoop)
+        val figureCard = reader.indexOf("UnitVExistingFigureCard(figure, language)", figureLookup)
+        assertTrue("Reader must render sections before looking up their figures", sectionLoop >= 0 && figureLookup > sectionLoop)
+        assertTrue("Reader must render each mapped image with its bilingual card", figureCard > figureLookup)
+        assertEquals(listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal"),
+            UnitVExistingFigureCatalog.forSection("u5-pila", "external").map { it.id })
+    }
+
+    @Test fun reviewMappingIsSectionSpecificAndDoesNotLeakIntoRelease() {
+        val catalog = UnitVExistingFigureCatalog
+        assertEquals(listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal", "04_animal_front"),
+            catalog.forReviewSection("u5-pila", "external").map { it.id })
+        assertEquals(listOf("06_buccal_mass", "07_digestive_system"),
+            catalog.forReviewSection("u5-pila", "radula-and-gut").map { it.id })
+        assertEquals(listOf("external"),
+            catalog.forReviewSection("u5-asterias", "internal").map { it.id })
+        assertEquals(listOf("digestive"),
+            catalog.forReviewSection("u5-asterias", "feeding-and-stomachs").map { it.id })
+        assertTrue(catalog.forReviewSection("u5-asterias", "external").isEmpty())
+        assertTrue(catalog.forReviewSection("u4-penaeus", "external").isEmpty())
+        assertTrue(catalog.forReviewSection("u5-pila", "water-vascular").isEmpty())
+        assertEquals(listOf("01_shell_ventral", "02_operculum_views", "03_shell_dorsal"),
+            catalog.forSection("u5-pila", "external").map { it.id })
+        for (section in listOf("internal", "feeding-and-stomachs", "radula-and-gut",
+                "water-vascular", "dual-respiration", "reproduction-and-development")) {
+            assertTrue("Unreviewed Pila anatomy exposed",
+                catalog.forSection("u5-pila", section).isEmpty())
+        }
+        for (section in listOf("external", "internal", "feeding-and-stomachs",
+                "water-vascular", "nerve-and-sense")) {
+            assertTrue("Unreviewed Asterias anatomy exposed",
+                catalog.forSection("u5-asterias", section).isEmpty())
+        }
+    }
+
+    @Test fun nonShellArchiveNeverEntersStudentChapterSections() {
+        for (section in listOf("dual-respiration", "radula-and-gut",
+                "heart-and-haemocoel", "reproduction-and-development")) {
+            assertTrue(UnitVExistingFigureCatalog.forSection("u5-pila", section).isEmpty())
+        }
+        for (section in listOf("external", "water-vascular", "internal",
+                "feeding-and-stomachs", "nerve-and-sense")) {
+            assertTrue(UnitVExistingFigureCatalog.forSection("u5-asterias", section).isEmpty())
+        }
+    }
+
+        @Test fun mandatoryAcademicPlatesStillRequireSeparateApproval() {
         val primary = File("src/main/assets/type_studies")
         for (organism in listOf("pila", "asterias")) {
             val study = NativeCurriculumManifest.typeStudies.single { it.organismId == organism }

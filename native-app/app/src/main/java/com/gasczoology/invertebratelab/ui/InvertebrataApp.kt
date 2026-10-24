@@ -767,7 +767,9 @@ private fun ChapterScreen(
                 if (chapter.id == "u5-pila" || chapter.id == "u5-asterias") {
                     item(key = "u5-existing-figures-header") {
                         UnitVExistingFigureHeader(
-                            language, UnitVExistingFigureCatalog.forChapter(chapter.id).size)
+                            language,
+                            UnitVExistingFigureCatalog.forChapter(chapter.id).size,
+                            UnitVExistingFigureCatalog.forPublishedChapter(chapter.id).size)
                     }
                 }
                 restoredLesson.sections.forEach { section ->
@@ -776,14 +778,25 @@ private fun ChapterScreen(
                             verticalArrangement = Arrangement.spacedBy(9.dp)) {
                             Text(section.title.value(language),
                                 style = MaterialTheme.typography.titleLarge)
-                            section.paragraphs.forEach { paragraph ->
+                            section.paragraphs.forEachIndexed { index, paragraph ->
+                                Text(
+                                    label(language,
+                                        if (index == 0) "Core concept" else "Explanation and important details",
+                                        if (index == 0) "மையக் கருத்து" else "விளக்கமும் முக்கிய விவரங்களும்"),
+                                    style = MaterialTheme.typography.titleMedium,
+                                    modifier = Modifier.testTag("restored-subheading-" + section.id + "-" + index)
+                                )
                                 Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
                             }
                         }
                     }
                     val chapterFigures = UnitVExistingFigureCatalog.forSection(chapter.id, section.id)
                     items(chapterFigures, key = { "u5-candidate-" + it.assetStem }) { figure ->
-                        UnitVExistingFigureCard(figure, language)
+                        Column(Modifier.fillMaxWidth().testTag(
+                            "unit5-figure-" + chapter.id + "-" + section.id + "-" + figure.id
+                        )) {
+                            UnitVExistingFigureCard(figure, language)
+                        }
                     }
                 }
             }
