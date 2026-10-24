@@ -64,10 +64,10 @@ object FootBookChapter {
                     bp("Burrowing follows a sequence. The foot is extended forward and downward into the substratum, and the tip is anchored by being swollen with blood. The adductor and other muscles of the shell then contract, and the foot muscles draw the shell down towards the anchored foot, so that the animal moves into the mud. The extension of the foot is produced by muscular action and by the pressure of the haemolymph in its spaces, which makes the foot stiff as it pushes in. The sequence is repeated, and it explains why a mussel in a tank leaves a furrow behind it." to
                         "தோண்டுதல் ஒரு வரிசையைப் பின்பற்றுகிறது. பாதம் முன்னோக்கியும் கீழ்நோக்கியும் அடியுள்ளே நீட்டப்பட்டு, முனை இரத்தத்தால் வீங்கி நங்கூரமிடப்படுகிறது. பின்னர் மூடித் தசைகளும் பிற தசைகளும் சுருங்க, பாதத் தசைகள் ஓட்டை நங்கூரமிட்ட பாதத்தை நோக்கி இழுக்கின்றன; எனவே விலங்கு சேற்றுக்குள் நகர்கிறது. பாதத்தின் நீட்சி தசைச் செயலாலும் அதன் இடைவெளிகளிலுள்ள இரத்தத் திரவ அழுத்தத்தாலும் உண்டாகிறது; உள்ளே தள்ளும்போது பாதம் விறைக்கிறது. வரிசை மீண்டும் நிகழ்கிறது; தொட்டியிலுள்ள சிப்பி பின்னால் ஒரு பள்ளத்தை விடுவதற்கு இது காரணம்."),
                     bp("In some bivalves the foot is modified in a further way. Mussels of the sea and some others have a byssus gland at the base of the foot, which secretes proteinaceous threads, the byssal threads, that fix the animal to a rock or other hard surface. These sedentary forms use the foot little in movement, and the foot is small. The comparison with Unio, which burrows, shows how a single organ is modified by the habit of life, to dig in one animal and to spin threads in another." to
-                        "சில இருவோடுகளில் பாதம் மேலும் மாற்றப்படுகிறது. கடல் சிப்பிகளுக்கும் வேறு சிலவற்றுக்கும் பாதத்தின் அடியில் பிஸ்ஸஸ் சுரப்பி உள்ளது; அது பாறை அல்லது பிற கடினப் பரப்பில் விலங்கை நிலைநிறுத்தும் புரத இழைகளான பிஸ்ஸஸ் இழைகளைச் சுரக்கிறது. இவ்வமர்ந்த வடிவங்கள் இயக்கத்தில் பாதத்தை குறைவாகப் பயன்படுத்துகின்றன; பாதம் சிறியது. தோண்டும் யூனியோவுடன் ஒப்பீடு, ஒரே உறுப்பு வாழ்க்கைப் பழக்கத்தால் ஒரு விலங்கில் தோண்டவும் மற்றொன்றில் இழை நூற்கவும் மாற்றப்படுவதைக் காட்டுகிறது."),
-                    bdef("Byssus", "பிஸ்ஸஸ் (Byssus)", "The bundle of protein threads secreted by a gland at the base of the foot that fixes some bivalves to a surface." to
+                        "சில இருவோடுகளில் பாதம் மேலும் மாற்றப்படுகிறது. கடல் சிப்பிகளுக்கும் வேறு சிலவற்றுக்கும் பாதத்தின் அடியில் பிணைப்பிழைச் சுரப்பி உள்ளது; அது பாறை அல்லது பிற கடினப் பரப்பில் விலங்கை நிலைநிறுத்தும் புரத இழைகளான பிணைப்பிழைகள் இழைகளைச் சுரக்கிறது. இவ்வமர்ந்த வடிவங்கள் இயக்கத்தில் பாதத்தை குறைவாகப் பயன்படுத்துகின்றன; பாதம் சிறியது. தோண்டும் யூனியோவுடன் ஒப்பீடு, ஒரே உறுப்பு வாழ்க்கைப் பழக்கத்தால் ஒரு விலங்கில் தோண்டவும் மற்றொன்றில் இழை நூற்கவும் மாற்றப்படுவதைக் காட்டுகிறது."),
+                    bdef("Byssus", "பிணைப்பிழைகள் (Byssus)", "The bundle of protein threads secreted by a gland at the base of the foot that fixes some bivalves to a surface." to
                         "சில இருவோடுகளை மேற்பரப்பில் நிலைநிறுத்த, பாதத்தின் அடிச் சுரப்பி சுரக்கும் புரத இழைக் கற்றை."),
-                    bdef("Byssal gland", "பிஸ்ஸஸ் சுரப்பி (Byssal gland)", "The gland in the foot that secretes the byssus." to
+                    bdef("Byssal gland", "பிணைப்பிழைச் சுரப்பி (Byssal gland)", "The gland in the foot that secretes the byssus." to
                         "பிஸ்ஸஸைச் சுரக்கும் பாதத்திலுள்ள சுரப்பி."),
                     bdef("Haemolymph", "ஹீமோலிம்ப்", "The circulating body fluid of a mollusc with an open circulation." to
                         "திறந்த சுற்றோட்டமுடைய மெல்லுடலியின் சுற்றும் உடல் திரவம்."),
@@ -130,7 +130,7 @@ object FootBookChapter {
                         listOf(
                             listOf("Form" to "வடிவம்", "Broad, flat sole" to "அகன்ற, தட்டையான அடிப்பகுதி", "Wedge or hatchet" to "ஆப்பு அல்லது கோடாரி", "Arms and funnel" to "கைகளும் குழலும்"),
                             listOf("Action" to "செயல்", "Creeping by pedal waves on mucus" to "சளிமேல் பெடல் அலைகளால் ஊர்தல்", "Burrowing by haemolymph pressure and muscle" to "இரத்தத் திரவ அழுத்தம், தசையால் தோண்டுதல்", "Seizing prey; jet propulsion" to "இரை பற்றுதல்; பீச்சு உந்துதல்"),
-                            listOf("Special feature" to "சிறப்புப் பண்பு", "Operculum seals the aperture" to "ஆப்பர்குலம் வாயை அடைக்கிறது", "Byssus in sedentary forms" to "அமர்ந்த வடிவங்களில் பிஸ்ஸஸ்", "Suckers on the arms" to "கைகளில் உறிஞ்சிகள்"),
+                            listOf("Special feature" to "சிறப்புப் பண்பு", "Operculum seals the aperture" to "ஆப்பர்குலம் வாயை அடைக்கிறது", "Byssus in sedentary forms" to "அமர்ந்த வடிவங்களில் பிணைப்பிழைகள்", "Suckers on the arms" to "கைகளில் உறிஞ்சிகள்"),
                             listOf("Way of life" to "வாழ்க்கை முறை", "Slow grazer" to "மெதுவாக மேய்வது", "Burrower or sedentary filter feeder" to "தோண்டுவது அல்லது அமர்ந்த வடிகட்டி உண்ணி", "Active swimmer and predator" to "சுறுசுறுப்பான நீச்சல்காரர், வேட்டையாடி"),
                         )),
                     bp("The three feet are homologous, which is to say that they have the same origin as the ventral muscular foot of the basic molluscan plan. They have diverged in the classes into different functions, and the differences follow the way of life. This is the central point of the answer, and the student should state the homology first and then illustrate the divergence." to
@@ -146,7 +146,7 @@ object FootBookChapter {
         summary = listOf(
             "The molluscan foot is a ventral muscular organ that works with a hydrostatic skeleton of blood spaces." to "மெல்லுடலிப் பாதம் இரத்த இடைவெளிகளின் நீர்ம சட்டகம்டன் செயல்படும் வயிற்றுப்புற தசை உறுப்பு.",
             "In Pila the foot is a creeping sole with pedal waves, and it carries the operculum." to "பைலாவில் பாதம் பெடல் அலைகளுடன் ஊரும் அடிப்பகுதி; ஆப்பர்குலத்தையும் தாங்குகிறது.",
-            "In Unio the foot is a wedge used for burrowing; in some bivalves a byssus gland fixes the animal." to "யூனியோவில் பாதம் தோண்டும் ஆப்பு; சில இருவோடுகளில் பிஸ்ஸஸ் சுரப்பி விலங்கை நிலைநிறுத்துகிறது.",
+            "In Unio the foot is a wedge used for burrowing; in some bivalves a byssus gland fixes the animal." to "யூனியோவில் பாதம் தோண்டும் ஆப்பு; சில இருவோடுகளில் பிணைப்பிழைச் சுரப்பி விலங்கை நிலைநிறுத்துகிறது.",
             "In cephalopods the foot forms arms around the head and the funnel for jet propulsion." to "தலைக்காலிகளில் பாதம் தலையைச் சுற்றிய கைகளையும் பீச்சு உந்துதலுக்கான குழலையும் உருவாக்குகிறது.",
             "The funnel is a derivative of the foot, not a mantle siphon." to "குழல் பாதத்தின் வழிப்பெறு அமைப்பு; மேண்டில் சைஃபன் அல்ல.",
             "The three feet are homologous and have diverged; they are not steps in a ladder of improvement." to "மூன்று பாதங்களும் ஒத்தமைவானவை, விலகியவை; மேம்பாட்டுப் படிக்கட்டின் படிகள் அல்ல.",
@@ -156,7 +156,7 @@ object FootBookChapter {
                 "A horny plate on the hind foot that closes the shell aperture; Pila.", "ஓட்டு வாயை மூடும் பின் பாதத்தின் கொம்புத் தகடு; பைலா."),
             bqc("How does Unio burrow?", "யூனியோ எவ்வாறு தோண்டுகிறது?",
                 "The foot is thrust into the substratum and anchored by its swollen tip, then the muscles draw the shell down.", "பாதம் அடித்தளத்துக்குள் தள்ளப்பட்டு வீங்கிய முனையால் நங்கூரமிடப்படுகிறது; பின்னர் தசைகள் ஓட்டை கீழே இழுக்கின்றன."),
-            bqc("What is a byssus?", "பிஸ்ஸஸ் என்றால் என்ன?",
+            bqc("What is a byssus?", "பிணைப்பிழைகள் என்றால் என்ன?",
                 "Protein threads secreted by a gland at the base of the foot that attach some bivalves to a surface.", "சில இருவோடுகளை மேற்பரப்பில் இணைக்கும், பாதத்தின் அடிச் சுரப்பி சுரக்கும் புரத இழைகள்."),
             bqc("Why is the funnel not a mantle siphon?", "குழல் ஏன் மேண்டில் சைஃபன் அல்ல?",
                 "Developmental and comparative evidence shows that it is derived from the foot.", "வளர்ச்சி, ஒப்பீட்டுச் சான்றுகள் அது பாதத்திலிருந்து உருவானது எனக் காட்டுகின்றன."),

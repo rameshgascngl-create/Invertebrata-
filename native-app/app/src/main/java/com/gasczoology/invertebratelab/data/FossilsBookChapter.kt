@@ -86,7 +86,7 @@ object FossilsBookChapter {
                             "அம்மோனைட் அறை ஓடுடைய தலைக்காலி. சுருள் ஓடு மட்டும் விலங்கை நத்தையாக்காது."),
                     bdef("Ammonite", "அம்மோனைட் (Ammonite)", "An extinct cephalopod with a planispirally coiled, chambered shell; an important Mesozoic index fossil." to
                         "சுற்றுத்தளச் சுருள், அறை ஓடுடைய அழிந்த தலைக்காலி; முக்கிய மீசோசோயிக் வழிகாட்டிப் புதைபடிவம்."),
-                    bdef("Septum", "செப்டம்", "A partition between the chambers of a cephalopod shell." to
+                    bdef("Septum", "தடுப்புச் சுவர் (Septum)", "A partition between the chambers of a cephalopod shell." to
                         "தலைக்காலி ஓட்டின் அறைகளுக்கிடையேயான பிரிப்பு."),
                     bdef("Suture", "சூச்சர் (Suture)", "The line where a septum meets the outer wall of the shell." to
                         "செப்டம் ஓட்டின் வெளிச்சுவரைச் சந்திக்கும் கோடு."),

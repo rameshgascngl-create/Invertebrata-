@@ -89,7 +89,7 @@ object PenaeusBookChapter {
                         "நரம்பு மண்டலத்தில் தலையில் கண்கள், ஆன்டென்யூல்கள், ஆன்டென்னாக்களுக்கு நரம்புகளைத் தரும் முதுகுப்புற மூளை, குடலைச் சுற்றும் தொண்டைச்சுற்று இணைப்பிகள், செபலோதொராக்ஸில் பகுதியாக இணைந்த நரம்பு செல்திரள்களுடைய வயிற்றுப்புற நரம்புவடம் உள்ளன. கண்கள் கூட்டு, காம்புடையவை; ஒவ்வொன்றும் சேர்ந்து மொசைக் படிமம் தரும் ஒமட்டிடியா எனும் ஏராளமான அலகுகளால் ஆனது. ஆன்டென்யூல்களும் ஆன்டென்னாக்களும் தொடு, வேதி ஏற்பிகளைத் தாங்குகின்றன; ஸ்டேட்டோசிஸ்ட் சமநிலைக்கு உதவுகிறது."),
                     bdef("Antennal gland", "ஆன்டென்னல் சுரப்பி (Antennal gland)", "The excretory organ of a prawn, also called the green gland, that opens at the base of the antenna." to
                         "ஆன்டென்னாவின் அடியில் திறக்கும், பச்சைச் சுரப்பி எனவும் அழைக்கப்படும் இறாலின் கழிவு உறுப்பு."),
-                    bdef("Ommatidium", "ஒமட்டிடியம் (Ommatidium)", "One of the many units that make up a compound eye." to
+                    bdef("Ommatidium", "கூட்டுக்கண் அலகு (Ommatidium)", "One of the many units that make up a compound eye." to
                         "கூட்டுக் கண்ணை உருவாக்கும் பல அலகுகளில் ஒன்று."),
                     bdef("Haemocyanin", "ஹீமோசயனின்", "A copper-containing respiratory pigment that carries oxygen in the blood of crustaceans." to
                         "கிரஸ்டேஷியன்களின் இரத்தத்தில் ஆக்சிஜனைக் கொண்டு செல்லும் தாமிரம் கொண்ட சுவாச நிறமி."),

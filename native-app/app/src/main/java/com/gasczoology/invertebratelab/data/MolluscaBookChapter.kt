@@ -76,12 +76,12 @@ object MolluscaBookChapter {
                         listOf("Class" to "வகுப்பு", "Form of the foot" to "பாதத்தின் வடிவம்", "Use" to "பயன்"),
                         listOf(
                             listOf("Gastropoda" to "இரைப்பைக்காலி", "Broad, flat creeping sole" to "அகன்ற தட்டை ஊரும் அடிப்பகுதி", "Creeping by muscular waves aided by mucus" to "சளியின் உதவியுடன் தசை அலைகளால் ஊர்தல்"),
-                            listOf("Bivalvia" to "இருவோட்டுடலி", "Laterally compressed, wedge or hatchet shaped" to "பக்கவாட்டில் அழுத்தப்பட்ட, ஆப்பு அல்லது கோடாரி வடிவம்", "Burrowing; some make byssus threads for attachment" to "துளையிடல்; சில பிடிப்புக்காக பிஸ்ஸஸ் இழைகளைச் செய்கின்றன"),
+                            listOf("Bivalvia" to "இருவோட்டுடலி", "Laterally compressed, wedge or hatchet shaped" to "பக்கவாட்டில் அழுத்தப்பட்ட, ஆப்பு அல்லது கோடாரி வடிவம்", "Burrowing; some make byssus threads for attachment" to "துளையிடல்; சில பிடிப்புக்காக பிணைப்பிழைகள் இழைகளைச் செய்கின்றன"),
                             listOf("Cephalopoda" to "தலைகாலி", "Reorganised into arms or tentacles and a funnel" to "கைகள் அல்லது உணர்கொம்புகளாகவும் புனலாகவும் மறுஒழுங்கு", "Grasping prey; jet propulsion by the funnel" to "இரையைப் பிடித்தல்; புனலால் ஜெட் உந்துதல்"),
                             listOf("Scaphopoda" to "ஸ்காஃபோபோடா", "Conical" to "கூம்பு வடிவம்", "Burrowing" to "துளையிடல்"),
                             listOf("Polyplacophora" to "பாலிபிளாகோஃபோரா", "Broad, flat, sucker-like" to "அகன்ற, தட்டை, உறிஞ்சி போன்றது", "Clinging to rock" to "பாறையில் ஒட்டுதல்"),
                         )),
-                    bdef("Byssus", "பிஸ்ஸஸ் (Byssus)", "Threads secreted by a gland in the foot of some bivalves, used for attachment." to
+                    bdef("Byssus", "பிணைப்பிழைகள் (Byssus)", "Threads secreted by a gland in the foot of some bivalves, used for attachment." to
                         "சில இருவோட்டுடலிகளின் பாதத்திலுள்ள சுரப்பி சுரக்கும், பிடிப்புக்குப் பயன்படும் இழைகள்."),
                     bdef("Funnel (siphon)", "புனல்", "In a cephalopod, the tube through which water is expelled from the mantle cavity in jet propulsion." to
                         "தலைகாலியில், ஜெட் உந்துதலில் மேண்டில் குழியிலிருந்து நீர் வெளியேற்றப்படும் குழாய்."),

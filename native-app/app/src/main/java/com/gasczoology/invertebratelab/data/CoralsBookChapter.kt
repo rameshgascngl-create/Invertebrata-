@@ -134,7 +134,7 @@ object CoralsBookChapter {
                     bdef("Octocorallia", "ஆக்டோகோரல்லியா (Octocorallia)", "The subclass of anthozoans whose polyps have eight pinnate tentacles and eight mesenteries; the soft corals, sea fans and sea pens." to
                         "பாலிப்புகள் எட்டு இறகு வடிவ உணர்கொம்புகளும் எட்டு மெசென்டரிகளும் கொண்ட ஆந்தோசோவாக்களின் துணை வகுப்பு; மென் பவளங்கள், கடல் விசிறிகள், கடல் பேனாக்கள்."),
                     bdef("Sclerite", "ஸ்கிளீரைட்", "A small calcareous piece, or spicule, embedded in the tissue of an octocoral." to
-                        "ஆக்டோகோரலின் திசுவில் பதிந்துள்ள சிறு சுண்ணாம்புத் துண்டு அல்லது ஸ்பிக்யூல்."),
+                        "ஆக்டோகோரலின் திசுவில் பதிந்துள்ள சிறு சுண்ணாம்புத் துண்டு அல்லது நுண்முள்."),
                 )),
             bsec("calcification", "How the skeleton is laid down", "எலும்புக்கூடு எவ்வாறு படிகிறது",
                 blocks = listOf(

@@ -134,7 +134,7 @@ object SyconBookChapter {
                     BookSubsection(b("The skeleton: spicules", "எலும்புக்கூடு: ஊசிகள்"), listOf(
                         p("The skeleton consists of calcareous spicules secreted by amoebocytes called scleroblasts. Three shapes occur: rod-like (monaxon), three-rayed (triradiate) and four-rayed (tetraradiate). The long rod-like spicules form the fringe around the osculum and project from the surface. The three-rayed and four-rayed spicules lie in the wall and support the canals; in many tetraradiate spicules the fourth ray projects towards the central cavity.",
                             "எலும்புக்கூடு, ஸ்கிளீரோபிளாஸ்ட் எனப்படும் அமீபோசைட்டுகள் சுரக்கும் சுண்ணாம்பு ஊசிகளால் ஆனது. மூன்று வடிவங்கள் உண்டு: கோல்வடிவம் (ஓரச்சு), மூன்று கதிர், நான்கு கதிர். நீண்ட கோல் ஊசிகள் ஆஸ்குலத்தைச் சுற்றிய விளிம்பை அமைத்து மேற்பரப்பிலும் நீட்டிக் கொண்டிருக்கும். மூன்று, நான்கு கதிர் ஊசிகள் சுவரில் இருந்து கால்வாய்களைத் தாங்குகின்றன; பல நான்கு கதிர் ஊசிகளில் நான்காம் கதிர் நடுக்குழியை நோக்கி நீளும்."),
-                        def("Spicule", "ஸ்பிக்யூல் (ஊசி)",
+                        def("Spicule", "நுண்முள் (ஊசி)",
                             "A minute needle-like or star-like skeletal element secreted by cells of the mesohyl. In Sycon the spicules are made of calcium carbonate.",
                             "மீசோஹைல் செல்கள் சுரக்கும் நுண்ணிய ஊசி அல்லது நட்சத்திர வடிவ எலும்புக்கூட உறுப்பு. சைக்கானில் இவை கால்சியம் கார்பனேட்டால் ஆனவை."),
                         BookNote(b("Practical test", "செய்முறைச் சோதனை"),
