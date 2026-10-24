@@ -11,6 +11,10 @@ object InsectaExtension {
     val bookChapters: List<BookChapter> = listOf(
         InsectaGeneralBookChapter.chapter,
         CockroachBookChapter.chapter,
+        PollinatorsBookChapter.chapter,
+        NaturalEnemiesBookChapter.chapter,
+        MedicalInsectsBookChapter.chapter,
+        HouseholdInsectsBookChapter.chapter,
     )
 
     val chapterIds: List<String> get() = bookChapters.map { it.lessonId }
