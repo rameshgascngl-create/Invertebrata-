@@ -3,6 +3,7 @@ name: Unit I Paramecium source-PNG reader exact-commit QA
   push:
     branches:
       - native/u63-hide-rejected-unit5-figures-20261021
+      - native/u67-paramecium-plate-acceptance-20261024
     paths:
       - 'native-app/**'
       - '.github/workflows/native-u65-paramecium-png-reader-qa.yml'
@@ -42,8 +43,8 @@ jobs:
           assert 'r14-enlarge-concept-png-' in reader
           assert 'r14-concept-source-warning-' in reader
           assert 'Source-derived photographed pencil PNG crop' in process
-          assert 'ParameciumProcess.BINARY_FISSION to null' in process
-          assert 'ParameciumProcess.CONJUGATION to null' in process
+          assert 'paramecium_parker_fission_reference' in process
+          assert 'paramecium_conjugation_reference' in process
           assert 'Canvas(' not in process
           for name in ('paramecium_external','paramecium_oral','paramecium_vacuole','paramecium_internal'):
               path=Path('native-app/app/src/main/assets/unit1')/(name+'.png')
@@ -61,7 +62,10 @@ jobs:
               assert rights.exists() and 'CC BY-SA 4.0' in rights.read_text()
               assert not Path('native-app/app/src/main/assets/unit1/commons_review').exists()
               print('UNIT_I_COMMONS_3840PX_CANDIDATE=DEBUG_ONLY_SHA256_PASS')
-          print('UNIT_I_ORIGINAL_PNGS=4, SOURCE_WARNING=PASS, REPRODUCTION_PNGS=WITHHELD')
+          for name in ('paramecium_parker_fission_reference','paramecium_conjugation_reference'):
+              path=Path('native-app/app/src/main/assets/unit1/reference')/(name+'.png')
+              assert path.is_file() and path.read_bytes()[:8]==bytes.fromhex('89504e470d0a1a0a'), path
+          print('UNIT_I_ORIGINAL_PNGS=4, REPRODUCTION_REFERENCE_PNGS=2')
           PY
       - name: Preflight Android emulator QA shell syntax
         run: bash -n .github/scripts/run-u57-paramecium-png.sh
