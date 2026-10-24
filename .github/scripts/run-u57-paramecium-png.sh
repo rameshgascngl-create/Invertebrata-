@@ -39,7 +39,7 @@ for scale in 1.0 2.0; do
     echo "===== Instrumentation log tail ($scale) ====="
     tail -100 "$root/gradle.txt" || true
     echo "===== JUnit XML failures ($scale) ====="
-    find "$root/xml" -name 'TEST-*.xml' -exec grep -n -E -A 14 '<failure|<error' {} \\; || true
+    find "$root/xml" -name 'TEST-*.xml' -exec grep -n -E -A 14 '<failure|<error' {} + || true
     result="API34_UNIT1_UI_FAIL_$scale"
     exit 1
   fi
