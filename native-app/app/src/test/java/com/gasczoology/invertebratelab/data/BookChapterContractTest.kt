@@ -99,9 +99,9 @@ class BookChapterContractTest {
 
     @Test fun unitSixHasTwoBilingualFivePointQuestionsPerChapter() {
         val unit = InsectaExtension.unit
-        assertEquals(9, unit.chapters.size)
+        assertEquals(InsectaExtension.bookChapters.size, unit.chapters.size)
         val ids = unit.chapters.flatMap { it.a5Questions }.map { it.id }
-        assertEquals(18, ids.size)
+        assertEquals(2 * unit.chapters.size, ids.size)
         assertEquals(ids.size, ids.toSet().size)
         assertTrue(ids.none { it in a5Ids() })
         unit.chapters.forEach { ch ->

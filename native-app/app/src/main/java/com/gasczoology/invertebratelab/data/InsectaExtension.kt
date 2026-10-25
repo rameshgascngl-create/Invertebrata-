@@ -19,6 +19,9 @@ object InsectaExtension {
         PestsIpmBookChapter.chapter,
         CerealPestsBookChapter.chapter,
         CropPestsBookChapter.chapter,
+        ChelicerataBookChapter.chapter,
+        MyriapodaBookChapter.chapter,
+        MinorArthropodsBookChapter.chapter,
     )
 
     val chapterIds: List<String> get() = bookChapters.map { it.lessonId }
@@ -28,8 +31,8 @@ object InsectaExtension {
     val unit: AcademicUnit
         get() = AcademicUnit(
             number = UNIT_NUMBER,
-            title = BilingualText("Unit VI: Insecta and applied entomology",
-                "அலகு VI: பூச்சிகளும் பயன்பாட்டுப் பூச்சியியலும்"),
+            title = BilingualText("Unit VI: Further Arthropoda, Insecta and applied entomology",
+                "அலகு VI: மேலும் கணுக்காலிகள், பூச்சிகள், பயன்பாட்டுப் பூச்சியியல்"),
             chapters = bookChapters.map { Chapter(it.lessonId, UNIT_NUMBER, it.title, InsectaQuestions.byChapter[it.lessonId].orEmpty()) },
         )
 }

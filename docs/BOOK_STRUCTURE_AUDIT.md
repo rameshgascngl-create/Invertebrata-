@@ -112,3 +112,9 @@ Audit date: 2026-10-22 (branch `feat/plate-pipeline`). Counts are regex-derived 
 - **Syllabus slips noted in the chapters:** "Earias insulana" is the spiny bollworm (the spotted bollworm is E. vittella); "diamond black moth" should read diamondback moth.
 - Hedged facts needing expert review: Thai sacbrood virus, papaya mealybug parasitoids, Bt cotton and bollworm resistance, the endosulfan order, pollination share figures, Wolbachia, rhinoceros-beetle virus resistance, and all durations and thresholds. No pesticide doses are given.
 - The Compose reader for Unit VI is verified only by CI.
+
+### 6.5 Unit VI extended to the remaining Arthropoda topics (2026-10-25)
+
+- Three chapters added to Unit VI (now 12): `u6-chelicerata` (Trilobitomorpha, Chelicerata, Merostomata, Arachnida, Pycnogonida), `u6-myriapoda` (Mandibulata, Myriapoda, Scolopendra, Spirostreptus) and `u6-minor-arthropods` (Tardigrada, Pentastomida, Panarthropoda). Unit VI is renamed "Further Arthropoda, Insecta and applied entomology". Six more draft five-mark questions bring Unit VI to 24.
+- Hedged: the Pancrustacea and Panarthropoda relationships, Pentastomida as crustaceans, tardigrade survival claims, leg-count ranges, the Indian tick and mite diseases named.
+- Still without their own chapter: minor annelid groups, the leech, annelid excretion and asexual reproduction, minor mollusc classes and Pelecypoda, fossil and minor echinoderm classes, Aurelia, mesenteries, tapeworm, and a few single topics. See the coverage map.
