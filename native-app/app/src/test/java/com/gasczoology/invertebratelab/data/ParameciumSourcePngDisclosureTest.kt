@@ -16,8 +16,8 @@ class ParameciumSourcePngDisclosureTest {
         for (stem in listOf("paramecium_external", "paramecium_vacuole", "paramecium_oral")) {
             assertTrue("Missing bundled raster: $stem", File("src/main/assets/unit1/$stem.png").isFile)
         }
-        assertTrue(code.contains("ParameciumProcess.BINARY_FISSION to \"unit1/reference/paramecium_parker_fission_reference\""))
-        assertTrue(code.contains("ParameciumProcess.CONJUGATION to \"unit1/reference/paramecium_conjugation_reference\""))
+        assertTrue(code.contains("ParameciumProcess.BINARY_FISSION to null"))
+        assertTrue(code.contains("ParameciumProcess.CONJUGATION to null"))
         assertFalse(code.contains("Canvas("))
     }
 
@@ -29,7 +29,7 @@ class ParameciumSourcePngDisclosureTest {
         assertTrue(code.contains("if (bitmap != null)"))
         assertTrue(code.contains("r14-concept-png-missing-"))
         assertTrue(code.contains("\"vacuole\" -> \"unit1/paramecium_vacuole\""))
-        assertTrue(code.contains("\"fission\" -> \"unit1/reference/paramecium_parker_fission_reference\""))
-        assertTrue(code.contains("\"conjugation\" -> \"unit1/reference/paramecium_conjugation_reference\""))
+        assertTrue(code.contains("\"fission\" -> null"))
+        assertTrue(code.contains("\"conjugation\" -> null"))
     }
 }
