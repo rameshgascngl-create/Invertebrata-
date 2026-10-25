@@ -90,7 +90,13 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                     )
                 }
                 Text(
-                    if (tamil)
+                    if (reproductive) {
+                        if (process == ParameciumProcess.BINARY_FISSION) {
+                            if (tamil) "வரலாற்றுப் பார்க்கர் படம்: D பகுதி குறுக்கு இருபிளவுறுதலைக் காட்டுகிறது. A–C பகுதிகள் அதன் தொடர் நிலைகள் அல்ல." else "Historical Parker reference: panel D illustrates transverse binary fission. Panels A–C are not sequential stages."
+                        } else {
+                            if (tamil) "இணைவு விளக்கப்படம்: நிலை எண் 5 மீண்டும் வருகிறது; உட்கரு நிகழ்வுகளின் முழு வரிசைக்கான சான்றாகப் பயன்படுத்த வேண்டாம்." else "Conjugation overview: stage number 5 is duplicated. Do not rely on this figure alone for the full nuclear chronology."
+                        }
+                    } else if (tamil)
                         "மூல பென்சில் ஓவியப் புகைப்படத்திலிருந்து பெறப்பட்ட PNG பகுதி; தனியான அறிவியல் சான்றுபெற்ற படம் அல்ல. பெரிதாக்குவதால் புதிய உடற்கூறு விவரங்கள் கிடைக்காது."
                     else "Source-derived PNG crop, not an independently verified anatomical plate. Enlargement cannot recover missing source detail; the stage explanations are textual. Tamil review remains pending.",
                     style = MaterialTheme.typography.bodySmall,
