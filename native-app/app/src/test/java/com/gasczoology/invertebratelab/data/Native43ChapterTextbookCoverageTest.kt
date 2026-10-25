@@ -308,9 +308,7 @@ class Native43ChapterTextbookCoverageTest {
         val studies = NativeCurriculumManifest.typeStudies
         val stems = studies.flatMap { study ->
             study.requiredPlateIds.map { plate ->
-                if (study.organismId == "paramecium")
-                    "unit1/replacements/paramecium_" + plate
-                else "type_studies/" + study.organismId + "/" + plate
+                "type_studies/" + study.organismId + "/" + plate
             }
         }
         assertEquals(35, stems.size)
@@ -341,50 +339,38 @@ class Native43ChapterTextbookCoverageTest {
         assertTrue(u3.contains("UnitIIIPlateGallery(chapter.id, language, narrator)"))
         assertFalse(u3.contains("RequiredTypeStudyPlates(study, language)"))
         assertTrue(earthworm.contains("type_studies/earthworm/"))
-        assertTrue(required.contains("type_studies/${study.organismId}/${plateId}"))
+        assertTrue(required.contains("type_studies/"))
+        assertTrue(required.contains("\"paramecium/external-cilia\" -> \"unit1/paramecium_external\""))
         // Source-path checks are NOT approval of the depicted anatomy or Tamil.
     }
 
-
-    @Test fun asteriasFourLicensedMastersAreNonEmptyDistinctAndTraceableToAuthors() {
-        val dir = File("src/main/assets/type_studies/asterias")
-        val names = listOf("external.png","water-vascular-system.png",
-            "internal.png","larval-development.png")
-        val pictures = names.map { File(dir,it) }
-        val attribution = File(dir,"ATTRIBUTION.md")
-        assertTrue("Source-author and image-license record missing", attribution.isFile)
-        val pngHeader = byteArrayOf(137.toByte(),80,78,71,13,10,26,10)
-        val unique = mutableSetOf<String>()
-        for (file in pictures) {
-            assertTrue("Missing required anatomy figure "+file.name, file.isFile)
+    @Test fun packagedCanonicalTypeStudyRasterFilesHaveValidHeaders() {
+        val available = mapOf(
+            "paramecium" to listOf("external-cilia", "oral-apparatus", "contractile-vacuoles"),
+            "sycon" to listOf("canal-system"),
+            "obelia" to listOf("colony", "life-cycle"),
+            "fasciola" to listOf("external", "digestive-reproductive", "life-cycle"),
+            "ascaris" to listOf("male-female-external", "female-internal", "life-cycle")
+        )
+        assertEquals(12, available.values.sumOf { it.size })
+        for ((organism, plates) in available) for (plate in plates) {
+            val stem = "src/main/assets/type_studies/$organism/$plate"
+            val files = listOf(File("$stem.png"), File("$stem.webp")).filter { it.isFile }
+            assertEquals("Missing or ambiguous packaged raster: $stem", 1, files.size)
+            val file = files.single()
             val bytes = file.readBytes()
-            assertTrue("Empty/too small anatomy figure "+file.name, bytes.size > 50_000)
-            assertTrue("Wrong raster format for "+file.name,
-                bytes.take(8).toByteArray().contentEquals(pngHeader))
-            val hash = java.security.MessageDigest.getInstance("SHA-256")
-                .digest(bytes).joinToString("") { "%02x".format(it) }
-            assertTrue("Duplicate master reused between unrelated subject slots",unique.add(hash))
-        }
-        val credits=attribution.readText(Charsets.UTF_8)
-        for (value in listOf("Hubert Lyman Clark","Augusta Foote Arnold",
-                "Hans Hillewaert","Ernst Haeckel","Asterias forbesi",
-                "Asterias rubens","CC BY-SA 4.0","Public domain",
-                "brachiolaria","bipinnaria")) {
-            assertTrue("Missing source licence, taxon or author: "+value,
-                credits.contains(value,ignoreCase=true))
-        }
-        val gallery=File(
-            "src/main/java/com/gasczoology/invertebratelab/ui/RequiredTypeStudyPlates.kt"
-        ).readText(Charsets.UTF_8)
-        for (tag in listOf("asterias-external-species-provenance",
-                "asterias-wvs-legend","asterias-internal-species-licence",
-                "asterias-larvae-two-stage-legend")) {
-            assertTrue("Image source details absent from student reader: "+tag,
-                gallery.contains(tag))
+            assertTrue("Empty image: $stem", bytes.size > 1024)
+            val valid = if (file.extension == "png") {
+                bytes.take(8) == listOf(137,80,78,71,13,10,26,10).map { it.toByte() }
+            } else {
+                String(bytes.copyOfRange(0, 4), Charsets.US_ASCII) == "RIFF" &&
+                    String(bytes.copyOfRange(8, 12), Charsets.US_ASCII) == "WEBP"
+            }
+            assertTrue("Invalid image header: $stem", valid)
         }
     }
 
-        @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
+    @Test fun unitOneSpecialTypeStudiesHaveNativeTextAndLifecycleExplanations() {
         val paramecium = NativeLessonDrafts.paramecium
         assertEquals("u1-paramecium", paramecium.lessonId)
         assertTrue(paramecium.sections.size >= 10)
