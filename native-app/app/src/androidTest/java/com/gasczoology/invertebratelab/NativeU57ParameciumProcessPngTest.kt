@@ -81,11 +81,11 @@ class NativeU57ParameciumProcessPngTest {
         }
         for(process in listOf("binary_fission","conjugation")) {
             go(process)
-            val tag="u57-paramecium-process-png-missing-"+process
+            val tag="u57-paramecium-process-bitmap-"+process
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
             rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
-            rule.onNodeWithTag("u57-paramecium-process-bitmap-"+process).assertDoesNotExist()
-            if(process=="conjugation")screenshot("conjugation-text-no-vector")
+            rule.onNodeWithTag("u57-paramecium-process-png-missing-"+process).assertDoesNotExist()
+            if(process=="conjugation")screenshot("conjugation-approved-reference-png")
         }
         rule.onNodeWithTag("r1-stage-title").performScrollTo().assertExists()
         rule.onNodeWithTag("r1-next").performScrollTo().performClick()
