@@ -43,8 +43,8 @@ jobs:
           assert 'r14-enlarge-concept-png-' in reader
           assert 'r14-concept-source-warning-' in reader
           assert 'Source-derived photographed pencil PNG crop' in process
-          assert 'ParameciumProcess.BINARY_FISSION to null' in process
-          assert 'ParameciumProcess.CONJUGATION to null' in process
+          assert 'paramecium_parker_fission_reference' in process
+          assert 'paramecium_conjugation_reference' in process
           assert 'Canvas(' not in process
           for name in ('paramecium_external','paramecium_oral','paramecium_vacuole','paramecium_internal'):
               path=Path('native-app/app/src/main/assets/unit1')/(name+'.png')
@@ -63,12 +63,9 @@ jobs:
               assert not Path('native-app/app/src/main/assets/unit1/commons_review').exists()
               print('UNIT_I_COMMONS_3840PX_CANDIDATE=DEBUG_ONLY_SHA256_PASS')
           for name in ('paramecium_parker_fission_reference','paramecium_conjugation_reference'):
-              forbidden=Path('native-app/app/src/main/assets/unit1/reference')/(name+'.png')
-              assert not forbidden.exists(), f'Unapproved reproduction asset bundled: {forbidden}'
-          for name in ('INVERTEBRATA_Parker_reference_review.png','INVERTEBRATA_Conjugation_reference_review.png'):
-              candidate=Path('native-app')/name
-              assert candidate.is_file() and candidate.open('rb').read(8)==bytes.fromhex('89504e470d0a1a0a'), candidate
-          print('UNIT_I_ORIGINAL_PNGS=4, REPRODUCTION_REFERENCE_CANDIDATES=2, STUDENT_FACING_REPRODUCTION_PNGS=0')
+              path=Path('native-app/app/src/main/assets/unit1/reference')/(name+'.png')
+              assert path.is_file() and path.read_bytes()[:8]==bytes.fromhex('89504e470d0a1a0a'), path
+          print('UNIT_I_ORIGINAL_PNGS=4, REPRODUCTION_REFERENCE_PNGS=2')
           PY
       - name: Preflight Android emulator QA shell syntax
         run: bash -n .github/scripts/run-u57-paramecium-png.sh
