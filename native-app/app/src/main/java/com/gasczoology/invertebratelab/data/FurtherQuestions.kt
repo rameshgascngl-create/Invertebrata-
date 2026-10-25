@@ -86,7 +86,7 @@ object FurtherQuestions {
             "The adult lives in the human intestine, and gravid proglottids pass out with the faeces." to "முதிர்ந்தது மனிதக் குடலில் வாழ்கிறது; சூல் புரோகிளாட்டிட்டுகள் மலத்துடன் வெளியேறுகின்றன.",
             "The pig swallows the eggs, and the oncosphere bores through the gut wall into the blood." to "பன்றி முட்டைகளை விழுங்குகிறது; ஆன்கோஸ்ஃபியர் குடல் சுவரைத் துளைத்து இரத்தத்துக்குள் செல்கிறது.",
             "In the muscles, it develops into the cysticercus, giving measly pork." to "தசைகளில் அது சிஸ்டிசெர்கஸாக வளர்ந்து மீசிலி போர்க் ஆகிறது.",
-            "Man is infected by eating raw or undercooked measly pork; the scolex everts and attaches." to "பச்சையான அல்லது வேகாத மீசிலி போர்க்கை உண்பதால் மனிதன் தொற்றடைகிறான்; ஸ்கோலெக்ஸ் வெளிப்புறம் திரும்பி இணைகிறது.",
+            "Man is infected by eating raw or undercooked measly pork; the scolex everts and attaches." to "பச்சையான அல்லது வேகாத மீசிலி போர்க்கை உண்பதால் மனிதன் தொற்றடைகிறான்; ஸ்கொலெக்ஸ் வெளிப்புறம் திரும்பி இணைகிறது.",
             "Swallowing eggs causes cysticercosis in man, a separate risk." to "முட்டைகளை விழுங்குவது மனிதனில் சிஸ்டிசெர்கோசிஸை உண்டாக்குகிறது; தனி ஆபத்து."),
         q("u7-tapeworm-host-parasite", 2, "Explain the adaptations of a tapeworm to parasitic life.", "நாடாப்புழுவின் ஒட்டுண்ணி வாழ்க்கைக்கான தகவமைப்புகளை விளக்குக.",
             "The scolex has suckers and hooks for attachment." to "ஸ்கோலெக்ஸில் இணைவதற்கு உறிஞ்சிகளும் கொக்கிகளும் உண்டு.",
