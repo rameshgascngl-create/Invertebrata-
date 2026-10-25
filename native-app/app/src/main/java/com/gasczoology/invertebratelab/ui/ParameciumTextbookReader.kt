@@ -166,8 +166,8 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
         "oral" -> "unit1/paramecium_oral"
         "vacuole" -> "unit1/paramecium_vacuole"
         "overview" -> null // No verified independent nuclear master; do not repeat the same source photo.
-        "fission" -> null // Dedicated binary-fission plate remains missing.
-        "conjugation" -> null // Unreviewed conjugation posters must not be substituted.
+        "fission" -> "unit1/reference/paramecium_parker_fission_reference" // Historical plate; panel D depicts fission.
+        "conjugation" -> "unit1/reference/paramecium_conjugation_reference" // Reference overview.
         else -> null
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
