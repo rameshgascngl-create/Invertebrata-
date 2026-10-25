@@ -37,7 +37,7 @@ class ParameciumNuclearSequenceTest {
             "four daughter cells"))
     }
 
-    @Test fun nativeReaderUsesTextStagesWithoutFabricatedPngFallback() {
+    @Test fun nativeReaderUsesTextStagesAlongsideApprovedQualifiedReferencePngs() {
         val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt")
             .readText()
         assertTrue(reader.contains("ParameciumNuclearSequence.conjugation"))
@@ -45,7 +45,7 @@ class ParameciumNuclearSequenceTest {
         assertTrue(reader.contains("paramecium-nuclear-sequence-"))
         val process = File("src/main/java/com/gasczoology/invertebratelab/ui/ParameciumProcessPng.kt")
             .readText()
-        assertTrue(process.contains("ParameciumProcess.BINARY_FISSION to null"))
-        assertTrue(process.contains("ParameciumProcess.CONJUGATION to null"))
+        assertTrue(process.contains("ParameciumProcess.BINARY_FISSION to \"unit1/reference/paramecium_parker_fission_reference\""))
+        assertTrue(process.contains("ParameciumProcess.CONJUGATION to \"unit1/reference/paramecium_conjugation_reference\""))
     }
 }
