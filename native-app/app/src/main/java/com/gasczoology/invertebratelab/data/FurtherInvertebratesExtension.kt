@@ -16,6 +16,8 @@ object FurtherInvertebratesExtension {
         MinorMolluscsBookChapter.chapter,
         EchinodermClassesBookChapter.chapter,
         AureliaMesenteriesBookChapter.chapter,
+        TapewormHostParasiteBookChapter.chapter,
+        ProtozoaEconomicsBookChapter.chapter,
     )
 
     val chapterIds: List<String> get() = bookChapters.map { it.lessonId }
