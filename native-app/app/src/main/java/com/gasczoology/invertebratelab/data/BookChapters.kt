@@ -46,7 +46,7 @@ object BookChapters {
         HostParasiteBookChapter.chapter,
         LocomotionBookChapter.chapter,
         SyconBookChapter.chapter,
-    ) + InsectaExtension.bookChapters
+    ) + Extensions.bookChapters
     val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
     fun forLesson(lessonId: String): BookChapter? = byLesson[lessonId]
 }

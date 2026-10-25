@@ -29,7 +29,7 @@ class BookChapterContractTest {
         BookChapters.byLesson.values.forEach { BookChapterContract.validate(it, figureSlots, a5Ids()) }
         assertTrue(BookChapters.byLesson.keys.all {
             it in NativeCurriculumManifest.a5ChapterIdsByUnit.values.flatten() ||
-                InsectaExtension.isExtension(it)
+                Extensions.isExtension(it)
         })
     }
 
@@ -97,21 +97,22 @@ class BookChapterContractTest {
         }
     }
 
-    @Test fun unitSixHasTwoBilingualFivePointQuestionsPerChapter() {
-        val unit = InsectaExtension.unit
-        assertEquals(InsectaExtension.bookChapters.size, unit.chapters.size)
-        val ids = unit.chapters.flatMap { it.a5Questions }.map { it.id }
-        assertEquals(2 * unit.chapters.size, ids.size)
-        assertEquals(ids.size, ids.toSet().size)
-        assertTrue(ids.none { it in a5Ids() })
-        unit.chapters.forEach { ch ->
-            assertEquals(ch.id, 2, ch.a5Questions.size)
-            ch.a5Questions.forEach { q ->
-                assertEquals(q.id, ch.id, q.chapterId)
-                assertEquals(5, q.answerPoints.size)
-                (listOf(q.question) + q.answerPoints).forEach {
-                    assertTrue(q.id, it.english.isNotBlank() && it.tamil.isNotBlank())
-                    assertTrue(q.id, it.tamil.any { c -> c in '\u0B80'..'\u0BFF' })
+    @Test fun extensionUnitsHaveTwoBilingualFivePointQuestionsPerChapter() {
+        assertEquals(listOf(6, 7), Extensions.units.map { it.number })
+        val allIds = Extensions.units.flatMap { it.chapters }.flatMap { it.a5Questions }.map { it.id }
+        assertEquals(allIds.size, allIds.toSet().size)
+        assertTrue(allIds.none { it in a5Ids() })
+        for (unit in Extensions.units) {
+            assertEquals(Extensions.chapterIdsFor(unit.number), unit.chapters.map { it.id })
+            unit.chapters.forEach { ch ->
+                assertEquals(ch.id, 2, ch.a5Questions.size)
+                ch.a5Questions.forEach { q ->
+                    assertEquals(q.id, ch.id, q.chapterId)
+                    assertEquals(5, q.answerPoints.size)
+                    (listOf(q.question) + q.answerPoints).forEach {
+                        assertTrue(q.id, it.english.isNotBlank() && it.tamil.isNotBlank())
+                        assertTrue(q.id, it.tamil.any { c -> c in '\u0B80'..'\u0BFF' })
+                    }
                 }
             }
         }

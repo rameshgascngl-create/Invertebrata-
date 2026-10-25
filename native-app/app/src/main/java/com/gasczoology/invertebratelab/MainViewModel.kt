@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.AppLanguage
-import com.gasczoology.invertebratelab.data.InsectaExtension
+import com.gasczoology.invertebratelab.data.Extensions
 import com.gasczoology.invertebratelab.data.LanguagePreferenceRepository
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
 import com.gasczoology.invertebratelab.data.NativeLearningState
@@ -57,7 +57,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             _academicState.value = try {
                 academicRepository.load().let { units ->
                     NativeCurriculumManifest.validateAgainst(units)
-                    AcademicLoadState.Ready(units + InsectaExtension.unit)
+                    AcademicLoadState.Ready(units + Extensions.units)
                 }
             } catch (error: Exception) {
                 // Never show a partial or substituted assessment corpus.

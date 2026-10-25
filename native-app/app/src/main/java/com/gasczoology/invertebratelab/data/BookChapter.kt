@@ -71,7 +71,7 @@ object BookLayout {
     fun chapterNumber(lessonId: String): Int {
         val unit = unitNumber(lessonId)
         val ids = NativeCurriculumManifest.a5ChapterIdsByUnit[unit]
-            ?: if (unit == InsectaExtension.UNIT_NUMBER) InsectaExtension.chapterIds else emptyList()
+            ?: Extensions.chapterIdsFor(unit)
         val at = ids.indexOf(lessonId)
         require(at >= 0) { "Unknown chapter: $lessonId" }
         return at + 1
@@ -137,7 +137,7 @@ object BookChapterContract {
         require(chapter.summary.size in 5..8) { "$where: 5-8 summary points required" }
         require(chapter.quickChecks.size >= 3) { "$where: at least 3 check questions required" }
         require(chapter.furtherReading.size >= 2) { "$where: at least 2 further-reading entries" }
-        require(chapter.reviewQuestionIds.isNotEmpty() || InsectaExtension.isExtension(chapter.lessonId)) {
+        require(chapter.reviewQuestionIds.isNotEmpty() || Extensions.isExtension(chapter.lessonId)) {
             "$where: link at least one A5 question"
         }
         require(validReviewIds.containsAll(chapter.reviewQuestionIds)) {
