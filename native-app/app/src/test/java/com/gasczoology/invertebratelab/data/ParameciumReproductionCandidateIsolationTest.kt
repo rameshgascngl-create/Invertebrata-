@@ -1,16 +1,15 @@
 package com.gasczoology.invertebratelab.data
 
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
 
-/** Fail closed: reference PNGs may be reviewed, but not bundled or routed as approved stage plates. */
+/** User-approved reference PNGs must be bundled, without claiming validated sequential stages. */
 class ParameciumReproductionCandidateIsolationTest {
-    @Test fun unapprovedReferencePngsAreNotStudentFacing() {
+    @Test fun approvedReferencePngsAreBundledWithOriginalsPreserved() {
         val appAssets = File("src/main/assets/unit1/reference")
         for (stem in listOf("paramecium_parker_fission_reference", "paramecium_conjugation_reference")) {
-            assertFalse("Unreviewed reference bundled in main assets: $stem", File(appAssets, "$stem.png").exists())
+            assertTrue("User-approved qualified reference not bundled: $stem", File(appAssets, "$stem.png").exists())
         }
         for (fileName in listOf("INVERTEBRATA_Parker_reference_review.png", "INVERTEBRATA_Conjugation_reference_review.png")) {
             val reference = File("../$fileName")
