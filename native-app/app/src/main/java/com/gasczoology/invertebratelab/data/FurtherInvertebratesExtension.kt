@@ -12,6 +12,8 @@ object FurtherInvertebratesExtension {
     val bookChapters: List<BookChapter> = listOf(
         MinorAnnelidsBookChapter.chapter,
         LeechBookChapter.chapter,
+        AnnelidExcretionReproductionBookChapter.chapter,
+        MinorMolluscsBookChapter.chapter,
     )
 
     val chapterIds: List<String> get() = bookChapters.map { it.lessonId }
