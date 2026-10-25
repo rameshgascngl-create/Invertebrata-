@@ -96,4 +96,24 @@ class BookChapterContractTest {
             BookChapterContract.validate(sycon, figureSlots, a5Ids(), minEnglishWords = 100_000)
         }
     }
+
+    @Test fun unitSixHasTwoBilingualFivePointQuestionsPerChapter() {
+        val unit = InsectaExtension.unit
+        assertEquals(9, unit.chapters.size)
+        val ids = unit.chapters.flatMap { it.a5Questions }.map { it.id }
+        assertEquals(18, ids.size)
+        assertEquals(ids.size, ids.toSet().size)
+        assertTrue(ids.none { it in a5Ids() })
+        unit.chapters.forEach { ch ->
+            assertEquals(ch.id, 2, ch.a5Questions.size)
+            ch.a5Questions.forEach { q ->
+                assertEquals(q.id, ch.id, q.chapterId)
+                assertEquals(5, q.answerPoints.size)
+                (listOf(q.question) + q.answerPoints).forEach {
+                    assertTrue(q.id, it.english.isNotBlank() && it.tamil.isNotBlank())
+                    assertTrue(q.id, it.tamil.any { c -> c in '\u0B80'..'\u0BFF' })
+                }
+            }
+        }
+    }
 }

@@ -377,7 +377,8 @@ private fun HomeScreen(
             }
             item {
                 Button(onClick = onAssessment, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("a5-assessment")) {
-                    Text(label(language, "Five-mark practice · 86 questions", "ஐந்து மதிப்பெண் பயிற்சி · 86 வினாக்கள்"))
+                    val questionCount = units.sumOf { u -> u.chapters.sumOf { it.a5Questions.size } }
+                    Text(label(language, "Five-mark practice · $questionCount questions", "ஐந்து மதிப்பெண் பயிற்சி · $questionCount வினாக்கள்"))
                 }
             }
         }

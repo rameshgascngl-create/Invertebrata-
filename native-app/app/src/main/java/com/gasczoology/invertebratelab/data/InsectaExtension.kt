@@ -3,7 +3,8 @@ package com.gasczoology.invertebratelab.data
 /**
  * Unit VI (Insecta and applied entomology) is an EXTENSION of the app. It is added
  * after the validated A5 corpus has been checked, so the 43-chapter, 86-question
- * contract of Units I-V is untouched. Extension chapters have no A5 questions.
+ * contract of Units I-V is untouched. Extension chapters carry their own draft five-mark questions
+ * (InsectaQuestions), which are not part of the validated 86.
  */
 object InsectaExtension {
     const val UNIT_NUMBER = 6
@@ -29,6 +30,6 @@ object InsectaExtension {
             number = UNIT_NUMBER,
             title = BilingualText("Unit VI: Insecta and applied entomology",
                 "அலகு VI: பூச்சிகளும் பயன்பாட்டுப் பூச்சியியலும்"),
-            chapters = bookChapters.map { Chapter(it.lessonId, UNIT_NUMBER, it.title, emptyList()) },
+            chapters = bookChapters.map { Chapter(it.lessonId, UNIT_NUMBER, it.title, InsectaQuestions.byChapter[it.lessonId].orEmpty()) },
         )
 }
