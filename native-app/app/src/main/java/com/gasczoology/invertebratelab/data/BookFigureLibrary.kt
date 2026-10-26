@@ -55,6 +55,8 @@ object BookFigureLibrary {
         BookLibraryFigure("nereis-nervous", "nereis/06_nervous_system", aiPlate),
         BookLibraryFigure("nereis-excretory", "nereis/07_excretory_system", aiPlate),
         BookLibraryFigure("nereis-trochophore", "nereis/08_trochophore_larva", aiPlate),
+        BookLibraryFigure("entamoeba-mature-cyst", "unit1/references/entamoeba_mature_cyst", aiPlate),
+        BookLibraryFigure("ascaris-fertilized-egg", "type_studies/ascaris/fertilized-egg", aiPlate),
         BookLibraryFigure("entamoeba-cycle", "unit1/references/entamoeba",
             commonsPublicDomain("Entamoeba_histolytica_life_cycle-en.svg")),
         BookLibraryFigure("leishmania-amastigote", "unit1/references/leishmania",
