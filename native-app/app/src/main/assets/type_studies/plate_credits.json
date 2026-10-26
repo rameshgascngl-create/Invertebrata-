@@ -1,7 +1,15 @@
 {
+  "asterias/external": {
+    "en": "Asterias forbesi · H. L. Clark (1904) · public domain · fig. 1 aboral, fig. 2 oral",
+    "ta": "Asterias forbesi · H. L. Clark (1904) · பொதுக் களம் · படம் 1 எதிர்வாய்ப்புறம், படம் 2 வாய்ப்புறம்"
+  },
   "asterias/internal": {
     "en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
     "ta": "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்"
+  },
+  "asterias/larval-development": {
+    "en": "Asterias sp. · Ernst Haeckel (1904) · public domain · bipinnaria and brachiolaria",
+    "ta": "Asterias sp. · எர்ன்ஸ்ட் ஹேக்கல் (1904) · பொதுக் களம் · பைபின்னாரியா மற்றும் பிராக்கியோலாரியா"
   },
   "asterias/water-vascular-system": {
     "en": "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",

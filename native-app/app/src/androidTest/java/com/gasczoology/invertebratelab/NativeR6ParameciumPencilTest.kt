@@ -27,9 +27,9 @@ class NativeR6ParameciumPencilTest {
         rule.waitUntil(20_000) { rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty() }
     }
 
+    /** Paramecium plates are shown in the teaching lab (the book chapter carries its own inline figures). */
     private fun find(tag: String) {
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToNode(hasTestTag(tag))
-        rule.onNodeWithTag(tag).assertExists()
+        rule.onNodeWithTag(tag).performScrollTo().assertExists()
     }
 
     @Test fun parameciumShowsFourPlateSlotsAndZoomsInTamil() {
@@ -39,11 +39,10 @@ class NativeR6ParameciumPencilTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-1").fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("native-unit-1")
-            .performScrollToNode(hasTestTag("chapter-u1-paramecium"))
-        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        rule.onNodeWithTag("native-unit-1").performScrollToNode(hasTestTag("u1-open-diagram-atlas"))
+        rule.onNodeWithTag("u1-open-diagram-atlas").performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-paramecium").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
         }
         find("r2-type-study-gallery-paramecium")
         for (plate in listOf("external-cilia", "oral-apparatus", "contractile-vacuoles")) {

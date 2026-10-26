@@ -37,6 +37,7 @@ class NativeR7SinglePlateLabTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-1").fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("native-unit-1").performScrollToNode(hasTestTag("u1-open-diagram-atlas"))
         rule.onNodeWithTag("u1-open-diagram-atlas").performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()

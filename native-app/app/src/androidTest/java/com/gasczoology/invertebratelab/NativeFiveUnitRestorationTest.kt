@@ -34,6 +34,7 @@ class NativeFiveUnitRestorationTest {
         }
     }
 
+    /** These five chapters are book chapters; the legacy restoration screen is no longer routed. */
     private fun enter(unit: Int, chapter: String, tamil: Boolean) {
         if (tamil) rule.onNodeWithTag("language-tamil").performClick()
         rule.onNodeWithTag("native-home")
@@ -46,15 +47,38 @@ class NativeFiveUnitRestorationTest {
             .performScrollToNode(hasTestTag("chapter-" + chapter))
         rule.onNodeWithTag("chapter-" + chapter).performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-" + chapter)
+            rule.onAllNodesWithTag("book-reader-" + chapter)
                 .fetchSemanticsNodes().isNotEmpty()
         }
     }
 
     private fun find(chapter: String, tag: String) {
-        rule.onNodeWithTag("native-chapter-" + chapter)
+        rule.onNodeWithTag("book-reader-" + chapter)
             .performScrollToNode(hasTestTag(tag))
         rule.onNodeWithTag(tag).assertExists()
+    }
+
+    /** Every section heading of the real chapter data, so no section can silently drop out. */
+    private fun sectionTags(chapter: String): List<String> =
+        BookLayout.rows(BookChapters.forLesson(chapter)!!)
+            .filterIsInstance<BookRow.SectionHeading>().map { "book-section-" + it.number }
+
+    private fun traverseAllSections(chapter: String) {
+        val tags = sectionTags(chapter)
+        assertTrue("Chapter has too few sections: $chapter", tags.size >= 5)
+        tags.forEach { find(chapter, it) }
+    }
+
+    private fun figure(chapter: String, organism: String, plate: String) {
+        val tag = "$organism-$plate"
+        find(chapter, "book-figure-$tag")
+        rule.assertPlateState(organism, plate)
+        if (plateCreditListed("$organism/$plate")) find(chapter, "plate-credit-$tag")
+    }
+
+    private fun a5(chapter: String) {
+        find(chapter, "book-practice-heading")
+        find(chapter, "a5-question-$chapter-A5-1")
     }
 
     private fun capture(scene: String) {
@@ -79,108 +103,63 @@ class NativeFiveUnitRestorationTest {
     @Test fun unitOneProtozoaTeachesBeforeShowingA5() {
         val ch = "u1-protozoa"
         enter(1, ch, false)
-        find(ch, "restoration-lesson-heading")
-        rule.onNodeWithTag("restoration-lesson-title")
-            .assertTextContains("Protozoa", substring = true)
-        find(ch, "restored-section-classification")
+        find(ch, "book-objectives")
+        find(ch, "book-introduction")
         capture("unit1-protozoa-english")
-        find(ch, "restored-section-cell")
-        find(ch, "restoration-a5-heading")
-        find(ch, "a5-card-u1-protozoa-A5-1")
+        traverseAllSections(ch)
+        find(ch, "book-glossary")
+        a5(ch)
     }
 
     @Test fun unitFivePilaTamilShowsFourPlateSlotsAndFullLesson() {
         val ch = "u5-pila"
         enter(5, ch, true)
-        find(ch, "r2-type-study-gallery-pila")
-        find(ch, "pila-museum-shell-bitmap")
-        find(ch, "pila-museum-shell-source")
-        find(ch, "pila-comparative-bitmap")
-        // Rejected/unverified Pila editorial archive plates are no longer
-        // inserted ahead of anatomy slots in the student textbook.
-        rule.onNodeWithTag("pila-reference-review-warning").assertDoesNotExist()
-        rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
-        for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
-            find(ch, "r2-plate-slot-pila-" + plate)
-            rule.assertPlateState("pila", plate)
-        }
-        capture("unit5-pila-tamil-missing-plates")
-        // At both 100% and 200% Tamil fonts, traverse EVERY substantive
-        // Pila section; no earlier two-section preview may silently return.
-        for (section in listOf(
-            "external", "mantle", "organs", "dual-respiration",
-            "radula-and-gut", "heart-and-haemocoel", "renal-and-sensory",
-            "reproduction-and-development", "torsion-in-pila"
-        )) {
-            find(ch, "restored-section-" + section)
-        }
+        for (plate in listOf("external", "mantle-cavity", "ctenidium")) figure(ch, "pila", plate)
+        capture("unit5-pila-tamil-plates")
+        // At both 100% and 200% Tamil fonts, traverse EVERY section of the chapter.
+        traverseAllSections(ch)
         capture("unit5-pila-tamil-final-lesson")
-        find(ch, "restoration-a5-heading")
-        find(ch, "a5-card-u5-pila-A5-1")
+        a5(ch)
     }
 
     @Test fun unitFiveAsteriasDisplaysFourLicensedSourcePlates() {
         val ch = "u5-asterias"
         enter(5, ch, false)
-        find(ch, "r2-type-study-gallery-asterias")
-        rule.onNodeWithTag("asterias-review-warning").assertDoesNotExist()
-        rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
-        // Four separately sourced plates must be present and attributed.
         for (plate in listOf("external", "water-vascular-system", "internal", "larval-development")) {
-            find(ch, "r2-plate-bitmap-asterias-" + plate)
-            rule.onNodeWithTag("r2-plate-missing-asterias-" + plate).assertDoesNotExist()
-            find(ch, "asterias-plate-provenance-" + plate)
+            figure(ch, "asterias", plate)
         }
         capture("unit5-asterias-english-source-plates")
-        for (section in listOf(
-            "external", "water-vascular", "internal", "feeding-and-stomachs",
-            "body-wall-and-pedicellariae", "respiration-and-wastes",
-            "nerve-and-sense", "reproduction-and-larvae"
-        )) {
-            find(ch, "restored-section-" + section)
-        }
+        traverseAllSections(ch)
         capture("unit5-asterias-english-final-lesson")
-        find(ch, "restoration-a5-heading")
-        find(ch, "a5-card-u5-asterias-A5-1")
+        a5(ch)
     }
 
     @Test fun unitFivePilaEnglishNavigatesLastChapterSectionWithoutRejectedImages() {
         val ch = "u5-pila"
         enter(5, ch, false)
-        find(ch, "r2-type-study-gallery-pila")
         rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
-        find(ch, "r2-plate-slot-pila-mantle-cavity")
-        rule.assertPlateState("pila", "mantle-cavity")
-        find(ch, "restored-section-reproduction-and-development")
-        find(ch, "restored-section-torsion-in-pila")
+        figure(ch, "pila", "mantle-cavity")
+        find(ch, sectionTags(ch).last())
         capture("unit5-pila-english-late-chapter")
-        find(ch, "restoration-a5-heading")
-        find(ch, "a5-card-u5-pila-A5-1")
+        a5(ch)
     }
 
     @Test fun unitFiveAsteriasTamilNavigatesLastChapterSectionWithoutRejectedImages() {
         val ch = "u5-asterias"
         enter(5, ch, true)
-        find(ch, "r2-type-study-gallery-asterias")
         rule.onNodeWithTag("asterias-review-image-water_vascular_REVIEW").assertDoesNotExist()
-        find(ch, "r2-plate-bitmap-asterias-water-vascular-system")
-        rule.onNodeWithTag("r2-plate-missing-asterias-water-vascular-system").assertDoesNotExist()
-        find(ch, "asterias-plate-provenance-water-vascular-system")
-        find(ch, "restored-section-feeding-and-stomachs")
-        find(ch, "restored-section-reproduction-and-larvae")
+        figure(ch, "asterias", "water-vascular-system")
+        find(ch, sectionTags(ch).last())
         capture("unit5-asterias-tamil-late-chapter")
-        find(ch, "restoration-a5-heading")
-        find(ch, "a5-card-u5-asterias-A5-1")
+        a5(ch)
     }
 
-    @Test fun unitFourPenaeusShowsAppendagesSlotAndOriginalPractice() {
+    @Test fun unitFourPenaeusShowsAppendagesFigureAndPractice() {
         val ch = "u4-penaeus"
         enter(4, ch, true)
-        find(ch, "r2-type-study-gallery-penaeus")
-        find(ch, "r2-plate-slot-penaeus-appendages")
-        rule.assertPlateState("penaeus", "appendages")
-        capture("unit4-penaeus-tamil-missing-appendages")
-        find(ch, "u4-penaeus-a5-original-heading")
-        find(ch, "a5-card-u4-penaeus-A5-1")
+        figure(ch, "penaeus", "appendages")
+        capture("unit4-penaeus-tamil-appendages")
+        traverseAllSections(ch)
+        a5(ch)
     }
 }

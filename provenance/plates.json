@@ -560,6 +560,40 @@
       "credit_ta": "வரைபடம் · மூலமும் உரிமையும் உறுதிப்படுத்தப்பட வேண்டும்",
       "review_status": "DRAFT_UNVERIFIED",
       "added_utc": "2026-10-22T23:40:43+00:00"
+    },
+    "asterias/external": {
+      "file": "native-app/app/src/main/assets/type_studies/asterias/external.png",
+      "sha256": "36e1cc5e65d866bc43c1bb66b859ee2cf1b73e7732e1b940473b9388dcfd9cc7",
+      "width": 1600,
+      "height": 1176,
+      "bytes": 1229602,
+      "license": "Public domain (per Wikimedia Commons / UW Freshwater and Marine Image Bank; rights holder to confirm)",
+      "author": "Hubert Lyman Clark (1904), Echinoderms of the Woods Hole Region",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FMIB_41097_Asterias_forbesi_(small_specimen)_Arboral_view_(1),_Oral_view_(2);_Asterias_vulgaris_(small_specimen)_Arboral_view_(3),_Oral.jpeg",
+      "ai_generated": false,
+      "generator": "",
+      "notes": "Asterias forbesi figs 1 (aboral) and 2 (oral); cropped, enlarged, contrast raised; no features or labels added. See asterias/ATTRIBUTION.md.",
+      "credit_en": "Asterias forbesi · H. L. Clark (1904) · public domain · fig. 1 aboral, fig. 2 oral",
+      "credit_ta": "Asterias forbesi · H. L. Clark (1904) · பொதுக் களம் · படம் 1 எதிர்வாய்ப்புறம், படம் 2 வாய்ப்புறம்",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-26T11:14:35+00:00"
+    },
+    "asterias/larval-development": {
+      "file": "native-app/app/src/main/assets/type_studies/asterias/larval-development.png",
+      "sha256": "be0d57d1967e6b503660ff855eeca2812815c300fca7b2b164b8d98b9b8ef6d5",
+      "width": 1600,
+      "height": 1420,
+      "bytes": 2347758,
+      "license": "Public domain (per Wikimedia Commons; rights holder to confirm)",
+      "author": "Ernst Haeckel (1904); Commons extraction by Haplochromis",
+      "source_url": "",
+      "ai_generated": false,
+      "generator": "",
+      "notes": "Bipinnaria (left) and older brachiolaria (right), cropped from Haeckel plate. See asterias/ATTRIBUTION.md.",
+      "credit_en": "Asterias sp. · Ernst Haeckel (1904) · public domain · bipinnaria and brachiolaria",
+      "credit_ta": "Asterias sp. · எர்ன்ஸ்ட் ஹேக்கல் (1904) · பொதுக் களம் · பைபின்னாரியா மற்றும் பிராக்கியோலாரியா",
+      "review_status": "DRAFT_UNVERIFIED",
+      "added_utc": "2026-10-26T11:14:35+00:00"
     }
   }
 }

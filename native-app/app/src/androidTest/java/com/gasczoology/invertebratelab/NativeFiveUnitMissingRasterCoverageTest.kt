@@ -77,42 +77,41 @@ class NativeFiveUnitMissingRasterCoverageTest {
         find(root, "u2-stage-explanation")
         rule.onNodeWithTag("u2-sycon-historic-static-raster").assertDoesNotExist()
     }
-    @Test fun obeliaShowsAllFourPlateSlotsWithRealColonyAndLifeCycleImages() {
-        val root = enter(2, "u2-obelia", true)
-        find(root, "r2-type-study-gallery-obelia")
-        for (plate in listOf("hydranth-gonangium","medusa")) {
-            find(root, "r2-plate-slot-obelia-$plate")
-            rule.assertPlateState("obelia", plate)
+    /** Book chapters show each plate once, inline; the legacy galleries must not return beside them. */
+    private fun inlineFigures(root: String, organism: String, plates: List<String>) {
+        for (plate in plates) {
+            val tag = "$organism-$plate"
+            find(root, "book-figure-$tag")
+            rule.assertPlateState(organism, plate)
+            if (typeStudyPlateShips(organism, plate)) {
+                find(root, "r2-plate-bitmap-$tag")
+                rule.onNodeWithTag("r2-plate-bitmap-$tag").assertIsDisplayed()
+                if (plateCreditListed("$organism/$plate")) find(root, "plate-credit-$tag")
+            }
+            rule.onAllNodesWithTag("r2-plate-bitmap-$tag").assertCountEquals(1)
         }
-        find(root, "r2-plate-bitmap-obelia-colony")
-        rule.onNodeWithTag("r2-plate-bitmap-obelia-colony").assertIsDisplayed()
-        find(root, "r2-plate-bitmap-obelia-life-cycle")
-        rule.onNodeWithTag("r2-plate-bitmap-obelia-life-cycle").assertIsDisplayed()
+    }
+    @Test fun obeliaBookChapterShowsAllFourPlatesInlineOnce() {
+        val root = enter(2, "u2-obelia", true)
+        inlineFigures(root, "obelia", listOf("colony", "hydranth-gonangium", "medusa", "life-cycle"))
         capture("u2-obelia-tamil")
         find(root, "u2-stage-explanation")
+        rule.onNodeWithTag("r2-type-study-gallery-obelia").assertDoesNotExist()
         rule.onNodeWithTag("u2-obelia-colony-static-raster").assertDoesNotExist()
     }
-    @Test fun fasciolaDisplaysEachDistinctSourceOnceWithoutDuplicateGalleries() {
+    @Test fun fasciolaBookChapterShowsEachSourceOnceWithoutDuplicateGalleries() {
         val root = enter(3, "u3-fasciola", false)
-        find(root, "u3-required-plate-gallery")
-        for (plate in listOf("external","digestive-reproductive","life-cycle")) {
-            find(root, "u3-plate-bitmap-$plate")
-            rule.onNodeWithTag("u3-plate-bitmap-$plate").assertIsDisplayed()
-        }
+        inlineFigures(root, "fasciola", listOf("external", "digestive-reproductive", "life-cycle"))
         capture("u3-fasciola-english")
-        find(root, "u3-no-duplicate-images")
+        rule.onNodeWithTag("u3-required-plate-gallery").assertDoesNotExist()
         rule.onNodeWithTag("u3-static-pencil-raster").assertDoesNotExist()
         rule.onNodeWithTag("r2-type-study-gallery-fasciola").assertDoesNotExist()
     }
-    @Test fun ascarisDisplaysThreeIndependentSourcesWithoutDuplicateGalleries() {
+    @Test fun ascarisBookChapterShowsThreeIndependentSourcesWithoutDuplicateGalleries() {
         val root = enter(3, "u3-ascaris", true)
-        find(root, "u3-required-plate-gallery")
-        for (plate in listOf("male-female-external","female-internal","life-cycle")) {
-            find(root, "u3-plate-bitmap-$plate")
-            rule.onNodeWithTag("u3-plate-bitmap-$plate").assertIsDisplayed()
-        }
+        inlineFigures(root, "ascaris", listOf("male-female-external", "female-internal", "life-cycle"))
         capture("u3-ascaris-tamil")
-        find(root, "u3-no-duplicate-images")
+        rule.onNodeWithTag("u3-required-plate-gallery").assertDoesNotExist()
         rule.onNodeWithTag("u3-static-pencil-raster").assertDoesNotExist()
         rule.onNodeWithTag("r2-type-study-gallery-ascaris").assertDoesNotExist()
     }

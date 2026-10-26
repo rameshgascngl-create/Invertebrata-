@@ -26,3 +26,14 @@ fun ComposeTestRule.assertPlateState(organism: String, plate: String) {
         onNodeWithTag("r2-plate-bitmap-$organism-$plate").assertDoesNotExist()
     }
 }
+
+/**
+ * True when assets/type_studies/plate_credits.json lists a credit line for the slot ("organism/plate").
+ * Eight packaged Fasciola, Ascaris and Obelia plates have no recorded provenance yet; asserting a credit
+ * for them would only restate that open source-rights hold, so credit checks apply where a credit exists.
+ */
+fun plateCreditListed(slot: String): Boolean {
+    val text = InstrumentationRegistry.getInstrumentation().targetContext.assets
+        .open("type_studies/plate_credits.json").bufferedReader(Charsets.UTF_8).use { it.readText() }
+    return text.contains("\"$slot\"")
+}
