@@ -1212,6 +1212,79 @@ def echino_symmetry():
     save(fig, "echino-symmetry")
 
 
+def cilium_stroke():
+    fig, ax = canvas(12, 8)
+    GR = ["#d5dbe0", "#a9b4be", "#6f7d8a", INK]
+    def surface(x, y, w):
+        rect(ax, x, y, w, 60, fc="#d9c7a0", lw=2.4)
+    def curve(bx, by, th0, th1, L=270, lw=6, color=INK):
+        pts = []
+        for u in np.linspace(0, 1, 40):
+            th = np.deg2rad(th0 + (th1 - th0) * u)
+            if u == 0:
+                pts.append((bx, by)); continue
+            x, y = pts[-1]
+            pts.append((x + (L / 39) * np.cos(th), y + (L / 39) * np.sin(th)))
+        line(ax, pts, lw=lw, color=color, z=5)
+    letter(ax, "A", 60, 740); letter(ax, "B", 660, 740); letter(ax, "C", 60, 330)
+    # A effective stroke: stiff cilium sweeps from left to right (time runs light to dark)
+    surface(40, 380, 520)
+    for th, c in zip((150, 120, 90, 60), GR):
+        curve(300, 440, th, th, color=c)
+    arrow(ax, (150, 690), (450, 690), rad=-0.45, lw=3.4)
+    # B recovery stroke: cilium bends and rolls back to the left close to the surface
+    surface(640, 380, 520)
+    for t1, c in zip((20, 60, 110, 160), GR):
+        curve(900, 440, 75 if t1 > 40 else 60, t1, L=230, color=c)
+    arrow(ax, (1050, 690), (750, 690), rad=0.45, lw=3.4)
+    # C metachronal wave
+    surface(40, 100, 1120, )
+    for k in range(13):
+        bx = 80 + k * 85
+        th = 90 + 38 * np.sin(2 * np.pi * k / 13)
+        curve(bx, 160, th, th, L=130, lw=5)
+    arrow(ax, (100, 40), (1000, 40), lw=3.4)
+    num(ax, 1, 120, 520, 300, 437)
+    num(ax, 2, 440, 600, 330, 520)
+    num(ax, 3, 560, 750, 330, 690)
+    num(ax, 4, 780, 750, 900, 690)
+    num(ax, 5, 1100, 40, 1000, 40)
+    save(fig, "cilium-stroke")
+
+
+def coral_polyp():
+    fig, ax = canvas(12, 9)
+    # skeletal cup (calyx), longitudinal section: two walls and a floor, septa as ridges
+    cx = 600
+    poly(ax, [(cx - 280, 120), (cx + 280, 120), (cx + 280, 470), (cx + 250, 470), (cx + 250, 170), (cx - 250, 170), (cx - 250, 470), (cx - 280, 470)],
+         fc="#f1efe6", lw=2.8)
+    for k in range(4):
+        y = 230 + k * 55
+        poly(ax, [(cx - 250, y), (cx - 170, y), (cx - 170, y + 22), (cx - 250, y + 22)], fc="#f1efe6", lw=2)
+        poly(ax, [(cx + 250, y), (cx + 170, y), (cx + 170, y + 22), (cx + 250, y + 22)], fc="#f1efe6", lw=2)
+    # polyp tissue
+    poly(ax, [(cx - 250, 170), (cx + 250, 170), (cx + 250, 470), (cx + 170, 520), (cx + 120, 560), (cx - 120, 560), (cx - 170, 520), (cx - 250, 470)], fc="#f2b8ad", lw=2.4, z=2)
+    ax.add_patch(Rectangle((cx - 165, 180), 330, 330, fc="#fbe3dc", ec=INK, lw=2, zorder=3))       # gastrovascular cavity
+    # pharynx and mouth
+    rect(ax, cx - 55, 440, 110, 140, fc="#d98a64", lw=2.4, z=5)
+    ell(ax, cx, 590, 110, 36, fc="#8e4a3a", z=6)
+    # tentacles
+    for dx in (-210, -105, 105, 210):
+        line(ax, [(cx + dx * 0.9, 520), (cx + dx * 1.15, 640), (cx + dx * 1.3, 760)], lw=14, color="#f2b8ad", z=4)
+        line(ax, [(cx + dx * 0.9, 520), (cx + dx * 1.15, 640), (cx + dx * 1.3, 760)], lw=3, color=INK, z=3)
+    # zooxanthellae
+    for (x, y) in ((cx - 215, 470), (cx - 230, 420), (cx + 225, 450), (cx + 205, 500), (cx - 190, 500), (cx + 190, 380)):
+        ax.add_patch(Circle((x, y), 11, fc="#8a6d1f", ec=INK, lw=1.4, zorder=7))
+    num(ax, 1, 330, 800, 479, 640)
+    num(ax, 2, 840, 800, 640, 590)
+    num(ax, 3, 1100, 600, 855, 490, r=26)
+    num(ax, 4, 1100, 300, 700, 330)
+    num(ax, 5, 100, 300, cx - 270, 300)
+    num(ax, 6, 100, 140, cx - 210, 240)
+    num(ax, 7, 100, 560, cx - 215, 470)
+    save(fig, "coral-polyp")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1224,7 +1297,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "host-cycles": host_cycles, "pearl-formation": pearl_formation,
        "body-cavities": body_cavities, "nematode-bodywall": nematode_bodywall,
        "nematode-routes": nematode_routes,
-       "mollusc-plan": mollusc_plan, "echino-symmetry": echino_symmetry}
+       "mollusc-plan": mollusc_plan, "echino-symmetry": echino_symmetry,
+       "cilium-stroke": cilium_stroke, "coral-polyp": coral_polyp}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)

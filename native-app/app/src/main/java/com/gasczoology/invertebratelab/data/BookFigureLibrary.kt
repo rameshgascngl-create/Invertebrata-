@@ -64,7 +64,7 @@ object BookFigureLibrary {
         "polychaete-asexual", "crinoid", "aurelia-cycle", "anemone-section",
         "taenia-cycle", "taenia-parts", "sponge-grades", "cnidarian-forms", "metameres",
         "host-cycles", "pearl-formation", "body-cavities", "nematode-bodywall", "nematode-routes",
-        "mollusc-plan", "echino-symmetry",
+        "mollusc-plan", "echino-symmetry", "cilium-stroke", "coral-polyp",
     ).map { BookLibraryFigure(it, "book_figures/$it", schematic) }
 
     private val byId = all.associateBy { it.id }

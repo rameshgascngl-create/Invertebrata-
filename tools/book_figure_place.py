@@ -130,6 +130,22 @@ PLACEMENTS = [
      "ஐந்தாரச் சமச்சீருடைய முதிர்ந்த உயிரியும் இருபக்கச் சமச்சீருடைய லார்வாவும் (படத்திட்டம்): (A) கடல் நட்சத்திரம், வாய் எதிர்ப் பக்கக் காட்சி, "
      "(B) அதே, வாய்ப் பக்கக் காட்சி, (C) இருபக்கச் சமச்சீர் லார்வா. (1) மைய வட்டு, (2) கை, (3) மேட்ரிபோரைட், (4) வாய், "
      "(5) அம்புலாக்ரல் பள்ளத்தில் உள்ள குழாய்க் கால்கள், (6) குறுஇழைப் பட்டை, (7) ஒரே சமச்சீர்த் தளம் (புள்ளிக்கோடு)."),
+    ("LocomotionBookChapter.kt", "cilia", None, "cilium-stroke",
+     "Ciliary beat (schematic; time runs from pale to dark). (A) Effective stroke: the cilium is stiff and sweeps through water. "
+     "(B) Recovery stroke: it bends and rolls back close to the surface. (C) Neighbouring cilia beat slightly out of step, "
+     "which produces a metachronal wave. (1) base of the cilium at the cell surface, (2) cilium, "
+     "(3) direction of the effective stroke, (4) direction of the recovery stroke, (5) direction of the wave.",
+     "குறுஇழை அசைவு (படத்திட்டம்; வெளிர் நிறத்திலிருந்து கருமைக்கு நேரம் செல்கிறது). (A) செயல்திறன் அடி: குறுஇழை விறைத்து நீரைத் துடுப்பிடுகிறது. "
+     "(B) மீட்பு அடி: வளைந்து மேற்பரப்புக்கு அருகில் திரும்புகிறது. (C) அடுத்தடுத்த குறுஇழைகள் சற்றே முன்பின்னாக அசைவதால் "
+     "மெட்டாக்ரோனல் அலை உருவாகிறது. (1) செல் மேற்பரப்பில் குறுஇழையின் அடி, (2) குறுஇழை, "
+     "(3) செயல்திறன் அடியின் திசை, (4) மீட்பு அடியின் திசை, (5) அலையின் திசை."),
+    ("CoralsBookChapter.kt", "polyp", None, "coral-polyp",
+     "A stony-coral polyp in its skeletal cup, in section (schematic): (1) tentacle, (2) mouth on a short pharynx, "
+     "(3) body wall, (4) gastrovascular cavity, (5) skeletal cup (calyx), (6) septum, a skeletal ridge, "
+     "(7) zooxanthellae in the tissue.",
+     "கல் பவளத்தின் பாலிப், எலும்புக்கூட்டுக் கிண்ணத்துக்குள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) உணர்நீட்சி, (2) குறுகிய தொண்டையின் மேல் வாய், "
+     "(3) உடற்சுவர், (4) இரைப்பை-நாளக் குழி, (5) எலும்புக்கூட்டுக் கிண்ணம் (கேலிக்ஸ்), (6) செப்டம், எலும்புக்கூட்டு முகடு, "
+     "(7) திசுவிலுள்ள சூக்சாந்தெல்லா."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",

@@ -138,14 +138,14 @@ What changed:
 - `data/BookFigureLibrary.kt` adds `lib/<id>` figure slots beside the 35 required plates. Each
   entry names an asset stem and a bilingual credit, which the reader shows under the figure.
   The 35-plate manifest, `plate_intake.py` and the tests that pin it are untouched.
-- 34 figure placements in 20 chapters (Nereis 8, protozoan parasites 4, insects 2, IPM 1,
+- 36 figure placements in 22 chapters (Nereis 8, protozoan parasites 4, insects 2, IPM 1,
   medical insects 1, protozoa economics 2, leech 1, annelid asexual reproduction 1,
   Aurelia/anemone 2, crinoid 1, Taenia 2). Placement is scripted in `tools/book_figure_place.py`.
-- 21 original schematics drawn by `tools/book_figure_gen.py`. They carry numerals only; the
+- 23 original schematics drawn by `tools/book_figure_gen.py`. They carry numerals only; the
   key is in the bilingual caption. Credit: "Original schematic · subject-expert review pending".
   Eight further drafts were rejected on review (unclear anatomy, or not supported by the
   chapter text) and are not shipped.
 - Four Commons references are placed: Entamoeba and Leishmania (public domain), Trypanosoma (Johannahoog, CC BY-SA 3.0) and Plasmodium (Sina Adl, CC BY 4.0). The two author names were supplied by the owner and must be re-checked on the file pages before release.
 
-Still open: 32 chapters have no figure; the schematics and the AI-generated Nereis plates need
+Still open: 30 chapters have no figure; the schematics and the AI-generated Nereis plates need
 a subject-expert check; the Compose rendering is verified by CI only.
