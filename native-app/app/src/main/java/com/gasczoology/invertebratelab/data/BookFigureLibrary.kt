@@ -67,6 +67,8 @@ object BookFigureLibrary {
         "mollusc-plan", "echino-symmetry", "cilium-stroke", "coral-polyp",
         "annelid-section", "flame-cell", "myriapod-sections", "symmetry-types", "protozoan-groups",
         "blastopore-fate", "sponge-cells",
+        "cuticle-layers", "limb-lever", "cephalopod-circulation", "cockroach-gut",
+        "wuchereria-cycle", "fluke-larvae", "sponge-sexual-cycle", "food-vacuole",
     ).map { BookLibraryFigure(it, "book_figures/$it", schematic) }
 
     private val byId = all.associateBy { it.id }

@@ -50,6 +50,9 @@ object ArthropodaBookChapter {
                         "கடின புறத்தோல் வளர முடியாது; எனவே ஆர்த்ரோபோடா பழைய புறத்தோலை அவ்வப்போது உதிர்க்கும் எக்டைசிஸால் வளர்கிறது. உதிர்ப்பதற்கு முன் பழையதன் கீழ் புதிய புறத்தோல் உருவாகிறது; பழையதின் உள் அடுக்குகள் பகுதியாகச் செரிக்கப்படுகின்றன; விலங்கு பழைய மூடியான எக்சூவியத்திலிருந்து தன்னை வெளியே இழுத்துக்கொள்கிறது. புதிய புறத்தோல் சிறிது நேரம் மென்மையாக இருந்து கடினமாவதற்கு முன் நீர் அல்லது காற்றை உட்கொள்வதால் விரிவடைகிறது. இக்காலத்தில் விலங்கு பாதிப்புக்குள்ளாகும். தோலுரித்தல்கள் ஹார்மோன்களால் கட்டுப்படுத்தப்படுகின்றன; இளம் ஆர்த்ரோபோடா முதிர்ச்சிக்கு முன் பல தோலுரித்தல்களைக் கடக்கிறது; எனவே வளர்ச்சி தொடர்ச்சியாக அல்ல, படிப்படியாக நிகழ்கிறது."),
                     bp("The exoskeleton has three functions. It protects against enemies and against loss of water. It provides a rigid frame to which the muscles are attached, so that the limbs work as levers. And, in the aquatic forms, it supports the body in water and, in the terrestrial ones, against gravity. The cost is that the animal cannot grow without moulting, and that the size of terrestrial forms is limited by the weight of the cuticle and by the way in which they breathe." to
                         "வெளிக்கூட்டுக்கு மூன்று செயல்கள் உள்ளன. எதிரிகளிடமிருந்தும் நீர் இழப்பிலிருந்தும் பாதுகாக்கிறது. தசைகள் இணையும் கடின சட்டத்தைத் தருகிறது; எனவே கால்கள் நெம்புகோல்களாக இயங்குகின்றன. நீர்வாழ் வடிவங்களில் நீரிலும் நிலவாழ்வில் ஈர்ப்புக்கு எதிராகவும் உடலைத் தாங்குகிறது. விலை: உதிர்க்காமல் விலங்கு வளர முடியாது; நில வடிவங்களின் அளவு புறத்தோலின் எடையாலும் சுவாச முறையாலும் வரையறுக்கப்படுகிறது."),
+                    bfig("lib/cuticle-layers",
+                        "Arthropod cuticle in section (schematic): (1) thin waxy outer layer, (2) thick layers containing chitin and protein, (3) epidermis, which secretes the cuticle, (4) thin, flexible cuticle at a joint.",
+                        "ஆர்த்ரோபோட் புறத்தோலின் வெட்டுத்தோற்றம் (படத்திட்டம்): (1) மெல்லிய மெழுகு வெளியடுக்கு, (2) கைட்டினும் புரதமும் கொண்ட தடித்த அடுக்குகள், (3) புறத்தோலைச் சுரக்கும் மேற்றோல், (4) மூட்டில் உள்ள மெல்லிய, நெகிழ்வான புறத்தோல்."),
                     bdef("Ecdysis", "எக்டைசிஸ் (Ecdysis)", "The moulting of the cuticle by which an arthropod grows." to
                         "ஆர்த்ரோபோடா வளர்வதற்கான தோலுரித்தல்."),
                     bdef("Exuvia", "எக்சூவியம் (Exuvia)", "The cast-off cuticle left after a moult." to
@@ -74,6 +77,9 @@ object ArthropodaBookChapter {
                 )),
             bsec("comparison", "Arthropod appendage and annelid parapodium compared", "ஆர்த்ரோபோட் உறுப்பும் அனெலிடா பாரபோடியமும் ஒப்பீடு",
                 blocks = listOf(
+                    bfig("lib/limb-lever",
+                        "Two ways of moving (schematic). A, an arthropod limb as a lever: (1) rigid cuticle of a segment, (2) flexible joint, (3) muscle acting across the joint. B, an annelid segment: (4) muscle wall acting on (5) the fluid-filled cavity.",
+                        "இயங்கும் இரு முறைகள் (படத்திட்டம்). A, நெம்புகோலாகச் செயல்படும் ஆர்த்ரோபோட் உறுப்பு: (1) ஒரு கண்டத்தின் விறைப்பான புறத்தோல், (2) நெகிழ்வான மூட்டு, (3) மூட்டின் குறுக்கே செயல்படும் தசை. B, அனெலிடா கண்டம்: (4) தசைச் சுவர், (5) திரவம் நிறைந்த குழி."),
                     btable("Arthropod appendage compared with annelid parapodium", "ஆர்த்ரோபோட் உறுப்பும் அனெலிடா பாரபோடியமும்",
                         listOf("Feature" to "பண்பு", "Arthropod appendage" to "ஆர்த்ரோபோட் உறுப்பு", "Annelid parapodium" to "அனெலிடா பாரபோடியம்"),
                         listOf(

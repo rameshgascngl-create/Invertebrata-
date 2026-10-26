@@ -276,6 +276,59 @@ PLACEMENTS = [
      "(3) பன்றி முட்டைகளை விழுங்குகிறது, (4) ஆன்கோஸ்ஃபியர்கள் தசைகளை அடைகின்றன, (5) பன்றி இறைச்சியில் சிஸ்டிசெர்கஸ் உருவாகிறது, "
      "(6) நன்கு வேகாத பன்றி இறைச்சியை மனிதர் உண்கிறார், (7) குடலில் முதிர்ந்த புழு வளர்கிறது, "
      "(8) புள்ளிக்கோடு: முட்டைகளை விழுங்கும் மனிதருக்குச் சிஸ்டிசெர்கோசிஸ் உண்டாகலாம்."),
+    # ---- stage 2 (2026-10-26)
+    ("ArthropodaBookChapter.kt", "exoskeleton", None, "cuticle-layers",
+     "Arthropod cuticle in section (schematic): (1) thin waxy outer layer, (2) thick layers containing chitin and protein, "
+     "(3) epidermis, which secretes the cuticle, (4) thin, flexible cuticle at a joint.",
+     "ஆர்த்ரோபோட் புறத்தோலின் வெட்டுத்தோற்றம் (படத்திட்டம்): (1) மெல்லிய மெழுகு வெளியடுக்கு, (2) கைட்டினும் புரதமும் கொண்ட தடித்த அடுக்குகள், "
+     "(3) புறத்தோலைச் சுரக்கும் மேற்றோல், (4) மூட்டில் உள்ள மெல்லிய, நெகிழ்வான புறத்தோல்."),
+    ("ArthropodaBookChapter.kt", "comparison", None, "limb-lever",
+     "Two ways of moving (schematic). A, an arthropod limb as a lever: (1) rigid cuticle of a segment, (2) flexible joint, "
+     "(3) muscle acting across the joint. B, an annelid segment: (4) muscle wall acting on (5) the fluid-filled cavity.",
+     "இயங்கும் இரு முறைகள் (படத்திட்டம்). A, நெம்புகோலாகச் செயல்படும் ஆர்த்ரோபோட் உறுப்பு: (1) ஒரு கண்டத்தின் விறைப்பான புறத்தோல், "
+     "(2) நெகிழ்வான மூட்டு, (3) மூட்டின் குறுக்கே செயல்படும் தசை. B, அனெலிடா கண்டம்: (4) தசைச் சுவர், (5) திரவம் நிறைந்த குழி."),
+    ("CephalopodsBookChapter.kt", "circulation", None, "cephalopod-circulation",
+     "Closed circulation of a coleoid cephalopod (schematic; arrows show the direction of flow, and colour does not code "
+     "oxygen content): (1) systemic heart, (2) branchial hearts, one at the base of each gill, (3) gills, (4) body tissues, "
+     "(5) vessels returning blood from the body, (6) arteries leaving the systemic heart.",
+     "கோலியாய்டு தலைக்காலி மெல்லுடலியின் மூடிய இரத்த ஓட்டம் (படத்திட்டம்; அம்புகள் ஓட்டத்தின் திசையைக் காட்டுகின்றன, நிறம் ஆக்சிஜன் அளவைக் குறிக்காது): "
+     "(1) உடல் இதயம், (2) செவுள் இதயங்கள், ஒவ்வொரு செவுளின் அடியிலும் ஒன்று, (3) செவுள்கள், (4) உடல் திசுக்கள், "
+     "(5) உடலிலிருந்து இரத்தத்தைத் திரும்பக் கொண்டுவரும் நாளங்கள், (6) உடல் இதயத்தை விட்டுச் செல்லும் தமனிகள்."),
+    ("CockroachBookChapter.kt", "digestive", None, "cockroach-gut",
+     "Alimentary canal of the cockroach, drawn as a straight tube (schematic; a heavy outline marks the cuticle-lined foregut and hindgut): "
+     "(1) mouth and pharynx, (2) oesophagus, (3) crop, (4) gizzard, (5) midgut, (6) hepatic caeca, (7) ileum, (8) colon, (9) rectum, "
+     "(10) salivary glands, (11) common salivary duct opening at the base of the labium.",
+     "கரப்பான் பூச்சியின் உணவுக்குழல், நேர்க்குழலாக வரையப்பட்டது (படத்திட்டம்; தடித்த வெளிக்கோடு புறத்தோல் உள்ள முன்குடலையும் பின்குடலையும் குறிக்கிறது): "
+     "(1) வாயும் தொண்டையும், (2) உணவுக்குழாய், (3) கிராப், (4) கிசார்டு, (5) நடுக்குடல், (6) கல்லீரல் சீக்கங்கள், (7) இலியம், (8) பெருங்குடல், (9) மலவாய்க்குடல், "
+     "(10) உமிழ்நீர்ச் சுரப்பிகள், (11) லேபியத்தின் அடியில் திறக்கும் பொது உமிழ்நீர்க் குழாய்."),
+    ("NematodeParasitesBookChapter.kt", "wuchereria", None, "wuchereria-cycle",
+     "Life cycle of Wuchereria bancrofti (schematic): (1) adult worms in the lymphatic vessels of man, "
+     "(2) microfilariae in the blood, taken up by a female mosquito, (3) in the mosquito the larvae moult twice to the infective third stage, "
+     "(4) the larvae move to the proboscis and enter the skin at a later bite, (5) in man they moult twice more and mature into adults.",
+     "Wuchereria bancrofti-ன் வாழ்க்கைச் சுழற்சி (படத்திட்டம்): (1) மனிதரின் நிணநீர் நாளங்களில் உள்ள முதிர்ந்த புழுக்கள், "
+     "(2) இரத்தத்தில் உள்ள மைக்ரோஃபைலேரியாக்கள், பெண் கொசு அவற்றை உறிஞ்சுகிறது, (3) கொசுவில் லார்வாக்கள் இரு முறை தோலுரித்து தொற்றும் மூன்றாம் நிலையை அடைகின்றன, "
+     "(4) லார்வாக்கள் துளைக்குழலுக்குச் சென்று பின்னர் கடிக்கும்போது தோலுக்குள் நுழைகின்றன, (5) மனிதரில் மேலும் இரு முறை தோலுரித்து முதிர்ந்த புழுக்களாகின்றன."),
+    ("PlatyAdaptationsBookChapter.kt", "larvae", None, "fluke-larvae",
+     "Larval series of a fluke (schematic; the heavy outline is the snail host): (1) miracidium, which finds and enters the snail, "
+     "(2) sporocyst and (3) rediae, which multiply the parasite asexually (curved arrow), (4) cercaria with a tail, which leaves the snail, "
+     "(5) metacercaria, encysted on a surface, (6) final host, infected by the metacercaria.",
+     "தட்டைப்புழு (ஃப்ளூக்) லார்வா வரிசை (படத்திட்டம்; தடித்த வெளிக்கோடு நத்தை விருந்தோம்பி): (1) நத்தையைக் கண்டறிந்து நுழையும் மிராசிடியம், "
+     "(2) ஸ்போரோசிஸ்ட் மற்றும் (3) ரெடியாக்கள், இவை பாலிலா முறையில் ஒட்டுண்ணியைப் பெருக்குகின்றன (வளைந்த அம்பு), (4) வாலுடன் நத்தையை விட்டு வெளியேறும் செர்க்காரியா, "
+     "(5) ஒரு பரப்பில் கூடு கட்டிய மெட்டாசெர்க்காரியா, (6) மெட்டாசெர்க்காரியாவால் தொற்றப்படும் இறுதி விருந்தோம்பி."),
+    ("PoriferaReproductionBookChapter.kt", "life-cycle", None, "sponge-sexual-cycle",
+     "Sexual cycle of a calcareous sponge (schematic): (1) adult with eggs and sperm in the mesohyl, (2) sperm leave by the osculum, "
+     "(3) a carrier cell brings a sperm to a retained egg, which is fertilised, (4) the zygote cleaves inside the parent, "
+     "(5) the amphiblastula leaves and swims, (6) it settles and undergoes inversion, (7) the young sponge.",
+     "சுண்ணாம்புக் கடற்பஞ்சின் பாலினச் சுழற்சி (படத்திட்டம்): (1) மீசோஹைலில் முட்டைகளும் விந்தணுக்களும் உள்ள முதிர்ந்த பஞ்சு, (2) விந்தணுக்கள் ஆஸ்குலம் வழியாக வெளியேறுகின்றன, "
+     "(3) கடத்தி செல் ஒரு விந்தணுவை நிறுத்தி வைக்கப்பட்ட முட்டையிடம் கொண்டுவருகிறது, கருவுறுதல் நிகழ்கிறது, (4) சைகோட் தாய்ப்பஞ்சுக்குள் பிளவுறுகிறது, "
+     "(5) ஆம்ஃபிபிளாஸ்டுலா வெளியேறி நீந்துகிறது, (6) அது படிந்து தலைகீழாக மாறுகிறது (இன்வெர்ஷன்), (7) இளம் பஞ்சு."),
+    ("NutritionBookChapter.kt", "digestion-detail", None, "food-vacuole",
+     "History of a food vacuole in Paramecium (schematic and simplified; pale pink is the acid phase and blue the alkaline phase): "
+     "(1) oral groove, (2) cytopharynx, where the vacuole forms, (3) acid phase, (4) alkaline phase with digestive enzymes, "
+     "(5) smaller vacuole after absorption, (6) cytoproct, where the remains are egested, (7) lysosomes bringing enzymes to the vacuole.",
+     "பாராமீசியத்தில் உணவு நுண்குமிழின் வரலாறு (படத்திட்டம், எளிமைப்படுத்தப்பட்டது; வெளிர் இளஞ்சிவப்பு அமிலநிலை, நீலம் காரநிலை): "
+     "(1) வாய்ப்பள்ளம், (2) நுண்குமிழ் உருவாகும் சைட்டோஃபாரிங்க்ஸ், (3) அமிலநிலை, (4) செரிமான நொதிகளுடன் காரநிலை, "
+     "(5) உறிஞ்சலுக்குப் பிறகு சிறிதான நுண்குமிழ், (6) எச்சம் வெளியேற்றப்படும் சைட்டோபுரோக்ட், (7) நுண்குமிழுக்கு நொதிகளைக் கொண்டுவரும் லைசோசோம்கள்."),
 ]
 
 

@@ -142,6 +142,9 @@ object PoriferaReproductionBookChapter {
                 )),
             bsec("life-cycle", "The life cycle in sequence", "வாழ்க்கைச் சுழற்சியின் வரிசை",
                 blocks = listOf(
+                    bfig("lib/sponge-sexual-cycle",
+                        "Sexual cycle of a calcareous sponge (schematic): (1) adult with eggs and sperm in the mesohyl, (2) sperm leave by the osculum, (3) a carrier cell brings a sperm to a retained egg, which is fertilised, (4) the zygote cleaves inside the parent, (5) the amphiblastula leaves and swims, (6) it settles and undergoes inversion, (7) the young sponge.",
+                        "சுண்ணாம்புக் கடற்பஞ்சின் பாலினச் சுழற்சி (படத்திட்டம்): (1) மீசோஹைலில் முட்டைகளும் விந்தணுக்களும் உள்ள முதிர்ந்த பஞ்சு, (2) விந்தணுக்கள் ஆஸ்குலம் வழியாக வெளியேறுகின்றன, (3) கடத்தி செல் ஒரு விந்தணுவை நிறுத்தி வைக்கப்பட்ட முட்டையிடம் கொண்டுவருகிறது, கருவுறுதல் நிகழ்கிறது, (4) சைகோட் தாய்ப்பஞ்சுக்குள் பிளவுறுகிறது, (5) ஆம்ஃபிபிளாஸ்டுலா வெளியேறி நீந்துகிறது, (6) அது படிந்து தலைகீழாக மாறுகிறது (இன்வெர்ஷன்), (7) இளம் பஞ்சு."),
                     bpoints("Sexual cycle of a calcareous sponge", "சுண்ணாம்புக் கடற்பஞ்சின் பாலினச் சுழற்சி",
                         "Eggs and sperm form in the mesohyl of different sponges, or of the same sponge at different times." to "முட்டைகளும் விந்தணுக்களும் வெவ்வேறு கடற்பஞ்சுகளின் மீசோஹைலில், அல்லது ஒரே கடற்பஞ்சில் வெவ்வேறு காலத்தில், உருவாகின்றன.",
                         "Sperm leave by the osculum and are carried to another sponge." to "விந்தணுக்கள் ஆஸ்குலம் வழியாக வெளியேறி மற்றொரு கடற்பஞ்சுக்குக் கொண்டு செல்லப்படுகின்றன.",

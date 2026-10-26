@@ -1505,6 +1505,271 @@ def sponge_cells():
     save(fig, "sponge-cells")
 
 
+
+# ---------------------------------------------------------------- stage 2 additions
+
+def cuticle_layers():
+    fig, ax = canvas()
+    # epidermis (cells)
+    for k in range(10):
+        rect(ax, 90 + k * 100, 150, 100, 110, fc="#f2d3c9", lw=1.8)
+        ax.add_patch(Circle((140 + k * 100, 205), 17, fc="#b07a9a", ec=INK, lw=1.4, zorder=5))
+    # cuticle: two rigid plates with a thin flexible joint between
+    thick_top, thick_bot = 640, 300
+    def plate(x0, x1):
+        poly(ax, [(x0, 260), (x1, 260), (x1, 510), (x0, 510)], fc="#e3c88e", z=3)
+        poly(ax, [(x0, 510), (x1, 510), (x1, thick_top - 40), (x0, thick_top - 40)], fc="#c9a566", z=3)
+        poly(ax, [(x0, thick_top - 40), (x1, thick_top - 40), (x1, thick_top), (x0, thick_top)],
+             fc="#f6efd8", z=3)
+    plate(90, 480)
+    plate(720, 1090)
+    # flexible joint: thin cuticle only
+    poly(ax, [(480, 260), (720, 260), (720, 300), (480, 300)], fc="#e3c88e", z=3)
+    poly(ax, [(480, 300), (720, 300), (720, 330), (480, 330)], fc="#f6efd8", z=3)
+    line(ax, [(480, 330), (480, thick_top)], lw=2.0)
+    line(ax, [(720, 330), (720, thick_top)], lw=2.0)
+    num(ax, 1, 300, 800, 300, 620)      # waxy outer layer
+    num(ax, 2, 900, 800, 900, 440)      # thick chitin-protein layers
+    num(ax, 3, 110, 70, 190, 205)       # epidermis
+    num(ax, 4, 600, 800, 600, 345)      # flexible joint
+    arrow(ax, (600, 120), (600, 260), lw=2.6)
+    save(fig, "cuticle-layers")
+
+
+def limb_lever():
+    fig, ax = canvas()
+    # A: jointed limb as a lever
+    letter(ax, "A", 70, 840)
+    poly(ax, [(130, 380), (440, 380), (440, 500), (130, 500)], fc="#e3c88e", z=3)
+    poly(ax, [(440, 380), (500, 380), (500, 500), (440, 500)], fc="#f6efd8", z=3)
+    poly(ax, [(500, 380), (700, 560), (610, 640), (440, 500)], fc="#e3c88e", z=3)
+    ell(ax, 330, 440, 330, 60, fc="#d98e8e", z=5)                       # muscle in the segment
+    line(ax, [(330, 440), (490, 470), (560, 550)], lw=4, color=INK, z=6)  # tendon to next segment
+    arrow(ax, (680, 480), (740, 640), rad=-0.5, lw=3.0)
+    num(ax, 1, 200, 300, 250, 400)
+    num(ax, 2, 470, 300, 470, 380)
+    num(ax, 3, 330, 600, 330, 470)
+    # B: muscles squeezing a fluid-filled bag
+    letter(ax, "B", 750, 840)
+    ell(ax, 930, 440, 340, 300, fc="#a9cdee", ec=INK, lw=3, z=3)
+    ell(ax, 930, 440, 340, 300, fc="none", ec="#c47a7a", lw=14, z=4)
+    for a in range(0, 360, 40):
+        t = np.deg2rad(a)
+        line(ax, [(930 + 170 * np.cos(t), 440 + 150 * np.sin(t)),
+                  (930 + 205 * np.cos(t), 440 + 185 * np.sin(t))], lw=2)
+    arrow(ax, (930, 640), (930, 560), lw=3)
+    arrow(ax, (930, 240), (930, 320), lw=3)
+    arrow(ax, (1150, 440), (1100, 440), lw=3)
+    num(ax, 4, 1110, 640, 1050, 560)
+    num(ax, 5, 930, 150, 930, 400)
+    save(fig, "limb-lever")
+
+
+def cephalopod_circulation():
+    fig, ax = canvas()
+    rect(ax, 420, 640, 360, 170, fc="#f2d3c9", r=40)                     # body tissues
+    for k in range(5):
+        line(ax, [(450 + k * 75, 665), (470 + k * 75, 785)], lw=1.6, color="#9a6f6f")
+    for x, side in ((190, -1), (1010, 1)):                               # branchial hearts + gills
+        ell(ax, x, 440, 130, 100, fc="#d98e8e")
+        for dy in (-1, 0, 1):
+            line(ax, [(x - 40, 260 + dy * 30), (x + 40, 260 + dy * 30)], lw=3)
+        rect(ax, x - 90, 190, 180, 130, fc="#dbeaf7", r=30)
+    ell(ax, 600, 190, 150, 110, fc="#d98e8e")                            # systemic heart
+    arrow(ax, (330, 640), (240, 505), rad=0.1)            # veins to branchial hearts
+    arrow(ax, (870, 640), (960, 505), rad=0.1)
+    arrow(ax, (190, 385), (190, 325))                     # heart to gill
+    arrow(ax, (1010, 385), (1010, 325))
+    arrow(ax, (290, 250), (520, 215))                     # gill to systemic heart
+    arrow(ax, (910, 250), (680, 215))
+    arrow(ax, (600, 250), (600, 636), lw=3.4)             # arteries to body
+    num(ax, 1, 760, 120, 660, 175)
+    num(ax, 2, 190, 580, 190, 485)
+    num(ax, 2, 1010, 580, 1010, 485)
+    num(ax, 3, 80, 110, 120, 220)
+    num(ax, 3, 1120, 110, 1080, 220)
+    num(ax, 4, 600, 855, 600, 780)
+    num(ax, 5, 250, 700, 285, 573)
+    num(ax, 6, 700, 460, 612, 420)
+    save(fig, "cephalopod-circulation")
+
+
+def cockroach_gut():
+    fig, ax = canvas(12, 8)
+    HV = 5.5          # cuticle-lined (foregut, hindgut): heavy outline
+    TH = 2.0          # midgut: no cuticle
+    ell(ax, 130, 440, 130, 100, fc=BODY2, lw=HV)                         # mouth / pharynx
+    rect(ax, 190, 425, 130, 30, fc=BODY, lw=HV, z=2)                     # oesophagus
+    ell(ax, 410, 445, 190, 170, fc=BODY, lw=HV)                          # crop
+    ell(ax, 570, 440, 110, 110, fc="#d6b27a", lw=HV)                     # gizzard
+    for a_ in (30, 90, 150, 210, 270, 330):
+        t = np.deg2rad(a_)
+        line(ax, [(570 + 42 * np.cos(t), 440 + 42 * np.sin(t)), (570 + 18 * np.cos(t), 440 + 18 * np.sin(t))], lw=2.4, z=6)
+    rect(ax, 620, 405, 250, 70, fc="#efd9a4", lw=TH, z=2)                # midgut
+    for x in (650, 690, 730, 770, 810):                                  # hepatic caeca
+        line(ax, [(x, 475), (x - 16, 565)], lw=9, color=INK, z=1)
+        line(ax, [(x, 475), (x - 16, 565)], lw=5, color="#efd9a4", z=1.5)
+    rect(ax, 865, 415, 90, 50, fc=BODY, lw=HV, z=2)                      # ileum
+    rect(ax, 950, 400, 90, 80, fc=BODY2, lw=HV, z=2)                     # colon
+    ell(ax, 1085, 440, 100, 100, fc=BODY, lw=HV)                         # rectum
+    for dx, dy in ((-30, 0), (30, 20), (0, 50)):                         # salivary glands
+        ell(ax, 380 + dx, 250 - dy, 90, 60, fc="#cfe3c8")
+    line(ax, [(380, 250), (250, 330), (140, 392)], lw=3, z=2)
+    num(ax, 1, 110, 610, 120, 485)
+    num(ax, 2, 250, 610, 250, 455)
+    num(ax, 3, 410, 690, 410, 528)
+    num(ax, 4, 570, 610, 570, 492)
+    num(ax, 5, 760, 330, 760, 405)
+    num(ax, 6, 700, 650, 680, 555)
+    num(ax, 7, 905, 560, 905, 462)
+    num(ax, 8, 995, 330, 995, 400)
+    num(ax, 9, 1100, 600, 1090, 486)
+    num(ax, 10, 520, 190, 440, 235)
+    num(ax, 11, 215, 190, 220, 345)
+    save(fig, "cockroach-gut")
+
+
+def wuchereria_cycle():
+    fig, ax = canvas()
+    # person with lymphatic vessel and adult worms; mosquito
+    ax.add_patch(Circle((200, 690), 52, fc="#e8c39e", ec=INK, lw=2.4, zorder=3))
+    rect(ax, 140, 450, 120, 190, fc="#9ec5e8", r=30)
+    t = np.linspace(0, 6 * np.pi, 120)
+    ax.plot(190 + 22 * np.sin(t) * 0 + 30 * np.sin(t) / 3 + 0 * t, 470 + t * 7, color="#7a5a8a", lw=3.2, zorder=6)
+    ell(ax, 930, 640, 190, 50, fc="#8d7b68")
+    ell(ax, 1035, 648, 56, 44, fc="#8d7b68")
+    line(ax, [(1060, 640), (1140, 600)], lw=3)
+    ell(ax, 905, 700, 150, 42, fc="#dbeaf7", ang=-20, alpha=.9)
+    for dx in (-45, 0, 45):
+        line(ax, [(930 + dx, 618), (930 + dx - 20, 555)], lw=2.4)
+    # microfilaria in blood (wavy) and L3 in proboscis
+    x = np.linspace(330, 560, 80)
+    ax.plot(x, 520 + 16 * np.sin((x - 330) / 14), color="#7a5a8a", lw=3.2, zorder=6)
+    # mosquito gut -> thoracic muscle -> proboscis (inside the mosquito)
+    rect(ax, 690, 190, 470, 180, fc="#efe6d8", r=40)
+    for k, lab in enumerate((3, 4)):
+        pass
+    ax.add_patch(Circle((780, 280), 26, fc="#cfe3c8", ec=INK, lw=2.2, zorder=5))
+    ax.add_patch(Circle((920, 280), 26, fc="#cfe3c8", ec=INK, lw=2.2, zorder=5))
+    ax.add_patch(Circle((1060, 280), 26, fc="#cfe3c8", ec=INK, lw=2.2, zorder=5))
+    arrow(ax, (810, 280), (888, 280))
+    arrow(ax, (950, 280), (1028, 280))
+    # human lymph
+    rect(ax, 190, 190, 330, 180, fc="#efe6d8", r=40)
+    ax.add_patch(Circle((290, 280), 26, fc="#d4bde6", ec=INK, lw=2.2, zorder=5))
+    ax.add_patch(Circle((420, 280), 26, fc="#d4bde6", ec=INK, lw=2.2, zorder=5))
+    arrow(ax, (322, 280), (388, 280))
+    # main loop arrows
+    arrow(ax, (280, 560), (800, 640), rad=-0.18, lw=3.4)         # blood meal: man to mosquito
+    arrow(ax, (1000, 540), (1000, 380), lw=3.4)                  # into the mosquito
+    arrow(ax, (690, 230), (540, 230), lw=3.4)                    # bite: back to man
+    num(ax, 1, 150, 330, 190, 480)
+    num(ax, 2, 420, 700, 450, 590)
+    num(ax, 3, 900, 90, 900, 190)
+    num(ax, 4, 620, 90, 620, 230)
+    num(ax, 5, 330, 90, 330, 190)
+    save(fig, "wuchereria-cycle")
+
+
+def fluke_larvae():
+    fig, ax = canvas()
+    rect(ax, 380, 360, 450, 400, fc="#efe6d8", r=60, lw=3.6)               # snail host
+    ell(ax, 150, 560, 150, 80, fc=BODY)                                   # miracidium
+    for a in range(0, 360, 36):
+        t = np.deg2rad(a)
+        line(ax, [(150 + 75 * np.cos(t), 560 + 40 * np.sin(t)), (150 + 92 * np.cos(t), 560 + 54 * np.sin(t))], lw=2)
+    ell(ax, 480, 620, 120, 100, fc="#cfe3c8")                              # sporocyst
+    ell(ax, 650, 650, 150, 60, fc="#cfe3c8")                              # redia
+    ell(ax, 690, 480, 150, 60, fc="#cfe3c8")                              # second redia
+    ell(ax, 520, 440, 100, 55, fc=BODY2)                                  # cercaria body
+    line(ax, [(470, 440), (410, 420), (380, 440)], lw=4)
+    ell(ax, 960, 520, 100, 100, fc=PURPLE)                                # metacercaria cyst
+    ell(ax, 960, 520, 60, 60, fc=BODY, z=4)
+    ell(ax, 1020, 190, 220, 120, fc="#9ec5e8")                            # final host (schematic)
+    arrow(ax, (240, 560), (385, 590))
+    arrow(ax, (535, 620), (570, 645))
+    arrow(ax, (600, 600), (560, 480), rad=0.2)
+    arrow(ax, (580, 440), (905, 500), rad=-0.2)
+    arrow(ax, (980, 450), (1010, 250))
+    ax.add_patch(FancyArrowPatch((620, 700), (740, 700), connectionstyle="arc3,rad=-0.9", arrowstyle="-|>",
+                                 mutation_scale=22, lw=2.6, color=INK, zorder=7))
+    num(ax, 1, 150, 700, 150, 600)
+    num(ax, 2, 440, 800, 475, 665)
+    num(ax, 3, 790, 790, 700, 690)
+    num(ax, 4, 560, 300, 530, 415)
+    num(ax, 5, 960, 700, 960, 575)
+    num(ax, 6, 1060, 80, 1020, 135)
+    num(ax, 7, 250, 300, 380, 400)
+    save(fig, "fluke-larvae")
+
+
+def sponge_sexual_cycle():
+    fig, ax = canvas()
+    cx, cy, rx, ry = 600, 450, 430, 330
+    angs = [90, 90 - 51.4, 90 - 102.8, 90 - 154.2, 90 - 205.6, 90 - 257, 90 - 308.4]
+    pts = [(cx + rx * np.cos(np.deg2rad(a)), cy + ry * np.sin(np.deg2rad(a))) for a in angs]
+    def vase(x, y, s=1.0, gam=False):
+        poly(ax, [(x - 50 * s, y - 60 * s), (x + 50 * s, y - 60 * s), (x + 62 * s, y + 40 * s),
+                  (x + 36 * s, y + 70 * s), (x - 36 * s, y + 70 * s), (x - 62 * s, y + 40 * s)], fc=BLUE)
+        if gam:
+            for dx, dy in ((-18, 0), (14, 10), (0, -26)):
+                ax.add_patch(Circle((x + dx * s, y + dy * s), 7 * s, fc=PINK, ec=INK, lw=1.4, zorder=6))
+    def larva(x, y):
+        ell(ax, x, y, 100, 80, fc=BODY)
+        for a in range(-80, 100, 20):
+            t = np.deg2rad(a)
+            line(ax, [(x + 50 * np.cos(t), y + 40 * np.sin(t)), (x + 68 * np.cos(t), y + 54 * np.sin(t))], lw=2)
+    vase(*pts[0], 1.0, gam=True)                                         # 1 adult with gametes
+    for dx in (-30, 0, 30):                                              # 2 sperm
+        ax.add_patch(Circle((pts[1][0] + dx, pts[1][1] + (dx // 3)), 9, fc=INK, zorder=6))
+        line(ax, [(pts[1][0] + dx - 6, pts[1][1] + dx // 3 - 4), (pts[1][0] + dx - 34, pts[1][1] + dx // 3 - 20)], lw=2)
+    ell(ax, pts[2][0], pts[2][1], 90, 90, fc=PINK)                       # 3 egg + sperm
+    ax.add_patch(Circle((pts[2][0] - 56, pts[2][1] + 26), 10, fc=INK, zorder=6))
+    for dx, dy in ((-18, 0), (18, 0), (0, 22), (0, -22)):                # 4 zygote cleaving inside parent
+        ax.add_patch(Circle((pts[3][0] + dx, pts[3][1] + dy), 22, fc=PINK, ec=INK, lw=2, zorder=5))
+    larva(*pts[4])                                                       # 5 larva swimming
+    ell(ax, pts[5][0], pts[5][1] - 20, 130, 40, fc=BODY2)                # 6 settled
+    line(ax, [(pts[5][0] - 90, pts[5][1] - 42), (pts[5][0] + 90, pts[5][1] - 42)], lw=4)
+    vase(pts[6][0], pts[6][1], 0.7)                                      # 7 young sponge
+    for i in range(7):
+        a, b = pts[i], pts[(i + 1) % 7]
+        arrow(ax, (a[0] + (b[0] - a[0]) * .30, a[1] + (b[1] - a[1]) * .30),
+              (a[0] + (b[0] - a[0]) * .70, a[1] + (b[1] - a[1]) * .70), rad=-0.15, lw=3.2)
+    for i, (x, y) in enumerate(pts):
+        num(ax, i + 1, x + (60 if x > cx else -60), y + (60 if y > cy else -60))
+    save(fig, "sponge-sexual-cycle")
+
+
+def food_vacuole():
+    fig, ax = canvas()
+    ell(ax, 620, 450, 1000, 560, fc="#f6efd8", lw=3.2)                   # elongate cell (schematic)
+    poly(ax, [(150, 330), (260, 300), (360, 305), (340, 350), (230, 380)], fc="white", z=4)   # oral groove
+    line(ax, [(360, 305), (470, 290)], lw=8, color=INK, z=5)             # cytopharynx
+    line(ax, [(360, 305), (470, 290)], lw=4, color="#f6efd8", z=6)
+    path = [(500, 290, 36, "#e8e2d0"), (690, 240, 46, "#f3b9ad"), (880, 270, 46, "#a9cdee"),
+            (980, 380, 30, "#c9d2d8")]
+    for x, y, r, c in path:
+        ax.add_patch(Circle((x, y), r, fc=c, ec=INK, lw=2.4, zorder=6))
+    for i in range(len(path) - 1):
+        a_, b_ = path[i], path[i + 1]
+        arrow(ax, (a_[0] + 55, a_[1] - 4), (b_[0] - 55, b_[1] + 4), rad=-0.12, lw=2.8)
+    arrow(ax, (1000, 420), (1092, 420), lw=2.8)
+    poly(ax, [(1096, 400), (1128, 400), (1128, 440), (1096, 440)], fc="white", ec="white", z=5)
+    ax.add_patch(Circle((1160, 420), 12, fc="#c9d2d8", ec=INK, lw=2, zorder=6))
+    for x, y in ((640, 400), (800, 420)):
+        ax.add_patch(Circle((x, y), 26, fc="#d4bde6", ec=INK, lw=1.8, zorder=5))
+    line(ax, [(650, 374), (680, 290)], lw=2.0, ls="--", z=5)
+    line(ax, [(790, 394), (850, 312)], lw=2.0, ls="--", z=5)
+    num(ax, 1, 200, 160, 230, 335)
+    num(ax, 2, 480, 120, 500, 254)
+    num(ax, 3, 690, 120, 690, 194)
+    num(ax, 4, 890, 120, 880, 224)
+    num(ax, 5, 1010, 560, 985, 410)
+    num(ax, 6, 1110, 560, 1100, 432)
+    num(ax, 7, 720, 620, 650, 420)
+    save(fig, "food-vacuole")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1521,7 +1786,12 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "cilium-stroke": cilium_stroke, "coral-polyp": coral_polyp,
        "annelid-section": annelid_section, "flame-cell": flame_cell, "myriapod-sections": myriapod_sections,
        "symmetry-types": symmetry_types, "protozoan-groups": protozoan_groups,
-       "blastopore-fate": blastopore_fate, "sponge-cells": sponge_cells}
+       "blastopore-fate": blastopore_fate, "sponge-cells": sponge_cells,
+       "cuticle-layers": cuticle_layers,
+       "limb-lever": limb_lever, "cephalopod-circulation": cephalopod_circulation,
+       "cockroach-gut": cockroach_gut, "wuchereria-cycle": wuchereria_cycle,
+       "fluke-larvae": fluke_larvae, "sponge-sexual-cycle": sponge_sexual_cycle,
+       "food-vacuole": food_vacuole}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)
