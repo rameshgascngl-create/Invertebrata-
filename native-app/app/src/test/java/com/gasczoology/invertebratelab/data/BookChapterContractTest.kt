@@ -11,7 +11,8 @@ import java.io.File
 class BookChapterContractTest {
     private val assets = File("src/main/assets")
     private val figureSlots = NativeCurriculumManifest.typeStudies
-        .flatMap { s -> s.requiredPlateIds.map { s.organismId + "/" + it } }.toSet()
+        .flatMap { s -> s.requiredPlateIds.map { s.organismId + "/" + it } }.toSet() +
+        BookFigureLibrary.slots
 
     /** Real A5 five-mark ids, read from the packaged corpus, not from the app code. */
     private fun a5Ids(): Set<String> = (1..5).flatMap { unit ->
@@ -41,6 +42,23 @@ class BookChapterContractTest {
             assertTrue("No packaged image for ${fig.slot}",
                 File(assets, "$stem.png").isFile || File(assets, "$stem.webp").isFile)
             assertTrue("No credit line for ${fig.slot}", credits.containsKey(fig.slot))
+        }
+    }
+
+    @Test fun everyLibraryFigureHasAFileAndABilingualCredit() {
+        BookFigureLibrary.all.forEach { f ->
+            assertTrue("No image file for ${f.slot}",
+                File(assets, f.stem + ".png").isFile || File(assets, f.stem + ".webp").isFile)
+            assertTrue(f.slot, f.credit.en.isNotBlank())
+            assertTrue(f.slot, f.credit.ta.any { c -> c in '\u0B80'..'\u0BFF' })
+        }
+        assertEquals(BookFigureLibrary.all.size, BookFigureLibrary.slots.size)
+    }
+
+    @Test fun everyLibraryFigureUsedByAChapterIsRegistered() {
+        BookChapters.byLesson.values.forEach { ch ->
+            ch.allBlocks().filterIsInstance<BookFigure>().filter { BookFigureLibrary.isLibrarySlot(it.slot) }
+                .forEach { assertTrue("${ch.lessonId}: ${it.slot}", BookFigureLibrary.stemFor(it.slot) != null) }
         }
     }
 

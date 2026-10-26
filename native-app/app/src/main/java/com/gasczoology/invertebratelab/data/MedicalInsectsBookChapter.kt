@@ -23,6 +23,9 @@ object MedicalInsectsBookChapter {
                 blocks = listOf(
                     bp("The direct effects of insects are the irritation of bites, the injection of venom by wasps, bees and ants, allergic reactions, and infestation, as with lice and with the larvae of flies which feed on living tissue and cause myiasis. The indirect effect, which is the carrying of disease agents, is much greater. A vector is an animal that carries a disease-causing organism from one host to another, and the vector can pass the pathogen in two ways." to
                         "பூச்சிகளின் நேர்விளைவுகள்: கடியின் எரிச்சல், குளவி, தேனீ, எறும்புகளின் நஞ்சு ஏற்றல், ஒவ்வாமை எதிர்வினைகள், பேன் போலவும் உயிர்த் திசுவை உண்டு மயாசிஸ் (Myiasis) உண்டாக்கும் ஈப்புழுக்கள் போலவும் உடலில் தொற்றுதல் ஆகியவை. நோய்க்காரணிகளைக் கடத்தும் மறைமுக விளைவு மிகப் பெரியது. நோய்க்கடத்தி என்பது நோய்க்காரணி உயிரியை ஒரு விருந்தோம்பியிலிருந்து மற்றொன்றுக்குக் கொண்டு செல்லும் விலங்கு; நோய்க்கடத்தி நோய்க்கிருமியை இரு வழிகளில் கடத்தலாம்."),
+                    bfig("lib/vector-cycle",
+                        "How a biting insect carries a parasite between people (schematic): (1) infected person, (2) the insect takes a blood meal and picks up the parasite, (3) the parasite develops in the insect, (4) the infective insect bites a new person, (5) disease may develop in the new host.",
+                        "கடிக்கும் பூச்சி ஒட்டுண்ணியை மனிதர்களிடையே கடத்தும் விதம் (படத்திட்டம்): (1) நோயுற்றவர், (2) பூச்சி இரத்தம் உறிஞ்சி ஒட்டுண்ணியைப் பெறுகிறது, (3) ஒட்டுண்ணி பூச்சியினுள் வளர்கிறது, (4) தொற்றும் நிலையிலுள்ள பூச்சி புதியவரைக் கடிக்கிறது, (5) புதிய புரவலருக்கு நோய் உருவாகலாம்."),
                     btable("Mechanical and biological transmission", "இயந்திரவழிப் பரவலும் உயிரியல் பரவலும்",
                         listOf("Feature" to "பண்பு", "Mechanical transmission" to "இயந்திரவழிப் பரவல்", "Biological transmission" to "உயிரியல் பரவல்"),
                         listOf(

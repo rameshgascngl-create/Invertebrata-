@@ -25,6 +25,12 @@ object NereisBookChapter {
                         "நெரிஸின் உடல் நீளமானது, மேலிருந்து கீழாகச் சற்றுத் தட்டையானது; பெரிய இனங்களில் சுமார் பத்து முதல் இருபது சென்டிமீட்டர் நீளம் இருக்கலாம். தலைப் பகுதி, பல ஒத்த கண்டங்களின் உடற்பகுதி, முனை பைஜிடியம் ஆகியவற்றால் ஆனது. நிறம் பழுப்பு அல்லது பச்சை; உயிருள்ளபோது மெல்லிய புறத்தோலால் மேற்பரப்பில் வானவில் மினுமினுப்பு உண்டு. வயிற்றுப்புறம் வெளிறியது. புழு வேட்டையாடியும் அனைத்துண்ணியும்; சிறு விலங்குகள், பாசிகள், சிதைவுப் பொருள்களை உண்கிறது; பெரும்பாலும் இரவில் செயல்படுகிறது."),
                     bp("The head consists of the prostomium, which lies in front of the mouth, and the peristomium, the first body ring, around the mouth. The prostomium carries two short sensory tentacles, two palps with two lobes each, and four small eyes. The peristomium carries four pairs of long tentacular cirri. These are all sensory structures. The pygidium at the posterior end bears the anus and a pair of anal cirri. Between them lie the trunk segments, each bearing a pair of parapodia." to
                         "தலை வாய்க்கு முன்னுள்ள புரோஸ்டோமியம், வாயைச் சுற்றிய முதல் உடல் வளையமான பெரிஸ்டோமியம் ஆகியவற்றால் ஆனது. புரோஸ்டோமியம் இரு குட்டை உணர்வுக் கொம்புகள், ஒவ்வொன்றும் இரு பகுதிகளுடைய இரு பால்ப்கள், நான்கு சிறு கண்களைத் தாங்குகிறது. பெரிஸ்டோமியம் நான்கு இணை நீண்ட உணர்கொம்புத் தண்டுகளைத் தாங்குகிறது. இவை அனைத்தும் உணர்வு அமைப்புகள். பின் முனையிலுள்ள பைஜிடியம் மலவாயையும் ஓர் இணை மலவாய்த் தண்டுகளையும் தாங்குகிறது. இவற்றுக்கிடையே ஒவ்வொன்றும் ஓர் இணை பாரபோடியாக்களைத் தாங்கும் உடற்பகுதி கண்டங்கள் உள்ளன."),
+                    bfig("lib/nereis-external",
+                        "External features of Nereis, dorsal view.",
+                        "நெரிஸின் வெளிப்புற அம்சங்கள், முதுகுப் புறக் காட்சி."),
+                    bfig("lib/nereis-head",
+                        "The enlarged head region of Nereis.",
+                        "நெரிஸின் தலைப் பகுதி, பெரிதாக்கிய காட்சி."),
                     bdef("Errant polychaete", "எரண்ட் பாலிகீட்டா (Errant polychaete)", "A polychaete that moves freely, crawling, burrowing or swimming, and does not live permanently in a tube." to
                         "நிரந்தரமாகக் குழாயில் வாழாமல் ஊர்ந்து, துளையிட்டு அல்லது நீந்தி சுதந்திரமாக நகரும் பாலிகீட்டா."),
                     bdef("Prostomium", "புரோஸ்டோமியம்", "The part of the head in front of the mouth, bearing tentacles, palps and eyes." to
@@ -38,6 +44,9 @@ object NereisBookChapter {
                 blocks = listOf(
                     bp("A typical trunk parapodium is a paired, fleshy lateral outgrowth of the segment, and it is biramous, which means that it has two branches or lobes. The dorsal branch is the notopodium and the ventral one is the neuropodium. Each lobe is supported internally by a stout chitinous rod, the aciculum, and each lobe carries a bundle of chaetae that project through its tip. Attached to the base of the notopodium is a dorsal cirrus, and attached to the neuropodium is a ventral cirrus. Both are slender and sensory." to
                         "வழக்கமான உடற்பகுதிப் பாரபோடியம் கண்டத்தின் இணைந்த சதைப்பற்றுள்ள பக்க வளர்ச்சி; அது இருகிளையுடையது, அதாவது இரு கிளைகள் அல்லது மடல்கள் கொண்டது. முதுகுப்புறக் கிளை நோட்டோபோடியம்; வயிற்றுப்புறக் கிளை நியூரோபோடியம். ஒவ்வொரு மடலும் உள்ளே தடித்த கைட்டின் தண்டான அசிகுலத்தால் தாங்கப்படுகிறது; ஒவ்வொரு மடலும் அதன் நுனியில் வெளியே நீளும் சீட்டாத் தொகுப்பைத் தாங்குகிறது. நோட்டோபோடியத்தின் அடியில் முதுகுப்புறத் தண்டும் நியூரோபோடியத்தில் வயிற்றுப்புறத் தண்டும் இணைந்துள்ளன. இரண்டும் மெல்லியவை, உணர்வுடையவை."),
+                    bfig("lib/nereis-parapodium",
+                        "A biramous parapodium of Nereis.",
+                        "நெரிஸின் இருகிளைப் பாரபோடியம்."),
                     bpoints("Functions of the parapodium", "பாரபோடியத்தின் செயல்கள்",
                         "Locomotion: the parapodia are moved in a coordinated way in crawling and, as paddles, in swimming." to "இயக்கம்: ஊர்தலில் ஒருங்கிணைந்து அசைக்கப்படுகின்றன; நீந்துதலில் துடுப்புகளாகச் செயல்படுகின்றன.",
                         "Anchorage and traction: the chaetae grip the substratum and help the worm to hold its place in its burrow." to "நங்கூரமும் இழுவையும்: சீட்டாக்கள் அடித்தளத்தைப் பற்றி புழு துளையில் இடத்தைத் தக்கவைக்க உதவுகின்றன.",
@@ -61,6 +70,18 @@ object NereisBookChapter {
                         "இரத்த ஓட்டம் மூடியது. முதுகுப்புற நாளம் இரத்தத்தை முன்னோக்கியும் வயிற்றுப்புற நாளம் பின்னோக்கியும் கொண்டு செல்கின்றன; குடல், உடற்சுவர், பாரபோடியாக்களுக்கு விநியோகிக்கும் கண்ட நாளங்களால் ஒவ்வொரு கண்டத்திலும் இரண்டும் இணைகின்றன. இரத்தத்தில் பிளாஸ்மாவில் கரைந்த சுவாச நிறமி உண்டு; முதுகுப்புற நாளம் சுருங்கி ஓட்டத்தை இயக்குகிறது. கழிவு நீக்கம் கண்டங்களிலுள்ள இணை மெட்டாநெஃப்ரிடியாக்களால்; ஒவ்வொன்றும் கசையிழைப் புனலால் உடற்குழிக்குள்ளும் பின்புறக் கண்டத்தின் வயிற்றுப்புறத் துளையால் வெளியேயும் திறக்கிறது."),
                     bp("The nervous system consists of a bilobed brain in the prostomium, a pair of circumpharyngeal connectives and a double ventral nerve cord with a ganglion in each segment, from which nerves pass to the muscles and the parapodia. The eyes, palps, tentacles and cirri are the sense organs, and a pair of ciliated pits behind the prostomium, the nuchal organs, are chemoreceptors. The coelom is divided by septa, which in Nereis are thin, and the coelomic fluid serves as the hydrostatic skeleton." to
                         "நரம்பு மண்டலம் புரோஸ்டோமியத்திலுள்ள இருகூறு மூளை, ஓர் இணை தொண்டைச்சுற்று இணைப்பிகள், ஒவ்வொரு கண்டத்திலும் தசைகளுக்கும் பாரபோடியாக்களுக்கும் நரம்புகளை அனுப்பும் ஒரு நரம்புத் திரளுடைய இரட்டை வயிற்றுப்புற நரம்புவடம் ஆகியவற்றைக் கொண்டது. கண்கள், பால்ப்கள், உணர்கொம்புகள், தண்டுகள் உணர்வு உறுப்புகள்; புரோஸ்டோமியத்துக்குப் பின்னுள்ள ஓர் இணை கசையிழைக் குழிகளான நுக்கல் உறுப்புகள் வேதி ஏற்பிகள். உடற்குழி தடுப்புகளால் பிரிக்கப்பட்டுள்ளது; நெரிஸில் அவை மெல்லியவை; உடற்குழி திரவம் நீரழுத்த எலும்புக்கூடாகப் பயன்படுகிறது."),
+                    bfig("lib/nereis-digestive",
+                        "The digestive system of Nereis.",
+                        "நெரிஸின் செரிமான மண்டலம்."),
+                    bfig("lib/nereis-circulatory",
+                        "The circulatory system of Nereis.",
+                        "நெரிஸின் இரத்த ஓட்ட மண்டலம்."),
+                    bfig("lib/nereis-nervous",
+                        "The nervous system of Nereis.",
+                        "நெரிஸின் நரம்பு மண்டலம்."),
+                    bfig("lib/nereis-excretory",
+                        "The excretory system of Nereis.",
+                        "நெரிஸின் கழிவு நீக்க மண்டலம்."),
                     bdef("Eversible pharynx", "வெளித்தள்ளும் தொண்டை (Eversible pharynx)", "A pharynx that can be turned inside out through the mouth, as a proboscis, to seize food." to
                         "உணவைப் பிடிக்க, துதிக்கையாக வாய் வழி உட்புறம் வெளியாகத் திருப்பப்படக்கூடிய தொண்டை."),
                     bdef("Nuchal organ", "நுக்கல் உறுப்பு (Nuchal organ)", "A ciliated chemosensory pit on the head of a polychaete." to
@@ -83,6 +104,9 @@ object NereisBookChapter {
                         "பால் தனி. நெரிஸில் நிலையான இனப்பெருக்க சுரப்பிகள் இல்லை; கேமீட்டுகள் பல கண்டங்களின் உடற்குழி உள்ளுறையிலிருந்து தோன்றி உடற்குழி திரவத்தில் மிதந்தபடி முதிர்கின்றன. புழு முதிர்ச்சியடையும் வரை வெளியிலிருந்து பாலை எளிதில் வேறுபடுத்த முடியாது. முதிர்ச்சியில் இனத்தைப் பொறுத்து, பெரும்பாலும் உடற்சுவர் உடைந்தோ நெஃப்ரிடியாக்கள் வழியாகவோ கேமீட்டுகள் நீரில் விடுவிக்கப்படுகின்றன; கருவுறுதல் வெளிப்புறம்."),
                     bp("The fertilised egg undergoes spiral cleavage and develops into a trochophore, a free-swimming larva with a band of cilia, the prototroch, around its middle and a tuft at the apex. It feeds on plankton. The trochophore elongates, acquires segments and chaetae, and becomes a metatrochophore and then a young worm that settles to the bottom, a stage in some species called the nectochaete. The trochophore is an important character linking the annelids with the molluscs, the larvae of which are similar." to
                         "கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு, நடுவில் ப்ரோடோட்ரோக் எனும் கசையிழைப் பட்டையும் உச்சியில் குஞ்சமும் உடைய தனி நீந்தும் லார்வாவான ட்ரோகோஃபோராக வளர்கிறது. அது பிளாங்க்டனை உண்கிறது. ட்ரோகோபோர் நீண்டு கண்டங்களையும் சீட்டாக்களையும் பெற்று மெட்டாட்ரோகோஃபோராகவும் பின்னர் அடிமட்டத்தில் குடியேறும் இளம் புழுவாகவும், சில இனங்களில் நெக்டோகீட் எனப்படும் நிலையாகவும் மாறுகிறது. ட்ரோகோபோர் அனெலிடாக்களை, லார்வாக்கள் ஒத்த மெல்லுடலிகளுடன் இணைக்கும் முக்கியப் பண்பு."),
+                    bfig("lib/nereis-trochophore",
+                        "The trochophore larva of Nereis.",
+                        "நெரிஸின் ட்ரோகோஃபோர் இளவுயிரி."),
                     bdef("Prototroch", "ப்ரோடோட்ரோக் (Prototroch)", "The main band of cilia around the middle of a trochophore larva, used in swimming and feeding." to
                         "நீந்துதல், உண்ணுதலுக்குப் பயன்படும் ட்ரோகோபோர் லார்வாவின் நடுவைச் சுற்றியுள்ள முதன்மைக் கசையிழைப் பட்டை."),
                     bdef("Spiral cleavage", "சுருள் பிளவு (Spiral cleavage)", "A pattern of early cell division in which the cells of each tier lie obliquely over those below, typical of annelids and molluscs." to

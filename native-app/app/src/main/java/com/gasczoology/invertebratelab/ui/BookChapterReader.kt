@@ -33,6 +33,7 @@ import com.gasczoology.invertebratelab.data.BookBlock
 import com.gasczoology.invertebratelab.data.BookChapter
 import com.gasczoology.invertebratelab.data.BookDefinition
 import com.gasczoology.invertebratelab.data.BookFigure
+import com.gasczoology.invertebratelab.data.BookFigureLibrary
 import com.gasczoology.invertebratelab.data.BookKeyPoints
 import com.gasczoology.invertebratelab.data.BookLayout
 import com.gasczoology.invertebratelab.data.BookNote
@@ -215,8 +216,10 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
 
 @Composable
 private fun BookFigureView(figure: BookFigure, label: String, language: AppLanguage) {
-    val bitmap = rememberCanonicalPlateBitmap("type_studies/" + figure.slot)
+    val bitmap = rememberCanonicalPlateBitmap(
+        BookFigureLibrary.stemFor(figure.slot) ?: ("type_studies/" + figure.slot))
     var expanded by rememberSaveable("book-figure-" + figure.slot) { mutableStateOf(false) }
+    val typeStudyCredit = rememberPlateCredit(figure.slot)
     val tag = figure.slot.replace('/', '-')
     val caption = label + "  " + figure.caption.value(language)
     Column(verticalArrangement = Arrangement.spacedBy(6.dp),
@@ -240,7 +243,7 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
             }
         }
         Text(caption, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
-        rememberPlateCredit(figure.slot)?.let {
+        (BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit)?.let {
             Text(it.text(language), style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("plate-credit-$tag"))
         }

@@ -44,6 +44,9 @@ object InsectaGeneralBookChapter {
                     bsub("The head", "தலை",
                         bp("The head is a hard capsule formed by the fusion of six segments, and it carries the sense organs and the mouthparts. There is a pair of antennae, which are sense organs for smell, touch and sometimes hearing, a pair of large compound eyes, and in many insects two or three simple eyes, the ocelli, on the top of the head. The compound eye is made of many units, each of which has its own lens and photoreceptor cells, and the animal sees a mosaic image that is poor in detail but excellent for detecting movement." to
                             "தலை ஆறு கண்டங்கள் இணைந்து உருவான கடினமான பெட்டகம்; அது உணர்வு உறுப்புகளையும் வாயுறுப்புகளையும் தாங்குகிறது. மணம், தொடுகை, சில சமயம் கேட்டலுக்கான உணர்கொம்புகள் ஒரு இணை உள்ளன; பெரிய கூட்டுக்கண்கள் இரண்டு உள்ளன; பல பூச்சிகளில் உச்சியில் இரண்டு அல்லது மூன்று எளிய கண்களும் (Ocelli) உள்ளன. கூட்டுக்கண் பல அலகுகளால் ஆனது; ஒவ்வொன்றுக்கும் தனி வில்லையும் ஒளி உணர் செல்களும் உண்டு. பூச்சி காணும் காட்சி பல துண்டுகள் சேர்ந்த படம்; நுணுக்கம் குறைவாயினும் இயக்கத்தைக் கண்டுபிடிப்பதில் சிறந்தது."),
+                        bfig("lib/insect-tagmata",
+                            "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, (5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",
+                            "பொதுவான பூச்சியின் பக்கக் காட்சி: (1) தலை, (2) மார்பு, (3) வயிறு, (4) உணர்கொம்பு, (5) கூட்டுக்கண், (6) முன் இறக்கை, (7) பின் இறக்கை, (8) கால், (9) சுவாசத்துளை."),
                         bdef("Ommatidium", "கூட்டுக்கண் அலகு (Ommatidium)", "One of the many optical units of a compound eye, with a lens, a crystalline cone and a group of light-sensitive cells." to
                             "கூட்டுக்கண்ணின் பல ஒளியியல் அலகுகளில் ஒன்று; வில்லை, படிகக் கூம்பு, ஒளியுணர் செல் கூட்டம் கொண்டது."),
                         bdef("Antenna", "உணர்கொம்பு (Antenna)", "A paired, jointed sense organ on the head of an insect that detects smell, touch, air movement and sometimes sound." to
@@ -127,6 +130,9 @@ object InsectaGeneralBookChapter {
                 blocks = listOf(
                     bp("The sexes are separate, and fertilisation is internal. The female stores the sperm in a spermatheca and fertilises the eggs as they are laid. Most insects lay eggs, and the eggs are rich in yolk and covered by a shell, the chorion. The young insect grows by moulting, and the stages between moults are called instars. The way in which the young become adult differs, and three patterns are recognised." to
                         "பாலினங்கள் தனித்தவை; கருவுறுதல் உட்புறம். பெண் விந்தணுக்களை விந்தகத் தொட்டியில் (Spermatheca) சேமித்து, முட்டைகள் இடப்படும்போது கருவுறச் செய்கிறது. பெரும்பாலான பூச்சிகள் முட்டையிடுகின்றன; முட்டைகள் மஞ்சள் கருவால் நிறைந்து கோரியான் (Chorion) ஓட்டால் மூடப்பட்டவை. இளம் பூச்சி தோலுரித்து வளர்கிறது; தோலுரிப்புகளுக்கு இடைப்பட்ட நிலைகள் புழுப் பருவங்கள் (Instars). இளம் உயிரி முதிர்வடையும் முறை வேறுபடுகிறது; மூன்று வகைகள் அறியப்படுகின்றன."),
+                    bfig("lib/metamorphosis",
+                        "(A) Incomplete metamorphosis: (1) egg, (2) young nymph, (3) older nymph with wing pads, (4) adult. (B) Complete metamorphosis: (1) egg, (2) larva, (3) pupa, (4) adult.",
+                        "(A) முழுமையற்ற உருமாற்றம்: (1) முட்டை, (2) இளம் நிம்ஃப், (3) இறக்கை அரும்புகளுடன் முதிர்ந்த நிம்ஃப், (4) முதிர்ந்த பூச்சி. (B) முழு உருமாற்றம்: (1) முட்டை, (2) புழு (லார்வா), (3) கூட்டுப்புழு (பியூபா), (4) முதிர்ந்த பூச்சி."),
                     btable("Types of development in insects", "பூச்சிகளின் வளர்ச்சி வகைகள்",
                         listOf("Type" to "வகை", "Stages" to "நிலைகள்", "Example" to "எடுத்துக்காட்டு"),
                         listOf(
