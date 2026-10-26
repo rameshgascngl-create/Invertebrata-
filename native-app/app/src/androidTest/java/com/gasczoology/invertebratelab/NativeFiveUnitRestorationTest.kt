@@ -115,7 +115,7 @@ class NativeFiveUnitRestorationTest {
         val ch = "u5-pila"
         enter(5, ch, true)
         for (plate in listOf("external", "mantle-cavity", "ctenidium")) figure(ch, "pila", plate)
-        capture("unit5-pila-tamil-plates")
+        capture("unit5-pila-tamil-missing-plates")
         // At both 100% and 200% Tamil fonts, traverse EVERY section of the chapter.
         traverseAllSections(ch)
         capture("unit5-pila-tamil-final-lesson")
@@ -158,7 +158,7 @@ class NativeFiveUnitRestorationTest {
         val ch = "u4-penaeus"
         enter(4, ch, true)
         figure(ch, "penaeus", "appendages")
-        capture("unit4-penaeus-tamil-appendages")
+        capture("unit4-penaeus-tamil-missing-appendages")
         traverseAllSections(ch)
         a5(ch)
     }
