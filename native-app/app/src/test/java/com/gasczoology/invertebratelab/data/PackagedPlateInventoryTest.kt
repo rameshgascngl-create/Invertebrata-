@@ -22,6 +22,7 @@ class PackagedPlateInventoryTest {
     /** Comparative references shown outside the four mandatory Pila slots. */
     private val comparativeExtras = setOf(
         "pila/shell-specimen-reference", "pila/swainson-1821-pila-ampullacea",
+        "ascaris/fertilized-egg",
     )
 
     private fun imageFiles(): List<File> =
