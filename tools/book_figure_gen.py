@@ -1770,6 +1770,243 @@ def food_vacuole():
     save(fig, "food-vacuole")
 
 
+
+# ---------------------------------------------------------------- stage 3 additions
+def tardigrade():
+    fig, ax = canvas()
+    xs = [470, 580, 690, 800]                                  # four trunk segments carry the four leg pairs
+    for x in xs:
+        for sgn in (1, -1):
+            poly(ax, [(x - 28, 450 + sgn * 120), (x + 28, 450 + sgn * 120), (x + 20, 450 + sgn * 205),
+                      (x - 20, 450 + sgn * 205)], fc=BODY2, z=2)
+            for dx in (-14, 0, 14):
+                line(ax, [(x + dx * 0.6, 450 + sgn * 205), (x + dx * 1.4, 450 + sgn * 240)], lw=2.8)
+    ell(ax, 660, 450, 700, 290, fc=BODY, z=3)                                  # trunk
+    for x in (525, 635, 745):
+        line(ax, [(x, 320), (x, 580)], lw=1.6, color="#9a8a6a", z=4, ls="--")
+    ell(ax, 300, 450, 210, 210, fc=BODY2, z=4)                                 # head
+    for sgn in (1, -1):
+        ax.add_patch(Circle((300, 450 + sgn * 62), 14, fc=INK, zorder=7))      # simple eyes
+        line(ax, [(205, 450 + sgn * 12), (110, 450 + sgn * 12)], lw=3.4, z=6)  # stylets
+    line(ax, [(250, 450), (330, 450)], lw=1, color=BODY2, z=5)
+    ell(ax, 300, 450, 60, 70, fc="#cfe3c8", z=6)                               # pharynx bulb
+    rect(ax, 330, 428, 520, 44, fc="#efd9a4", z=5)                            # midgut
+    rect(ax, 850, 435, 90, 30, fc=BODY, z=5)                                  # hindgut
+    for dy in (-1, 0, 1):                                                      # three Malpighian tubules
+        line(ax, [(850, 450 + dy * 14), (880, 450 + dy * 60 + dy * 10)], lw=3.4, z=6)
+    num(ax, 1, 300, 120, 300, 340)
+    num(ax, 2, 110, 560, 120, 462)
+    num(ax, 3, 200, 790, 288, 512)
+    num(ax, 4, 640, 790, 640, 590)
+    num(ax, 5, 920, 770, 810, 690)
+    num(ax, 6, 410, 130, 300, 420)
+    num(ax, 7, 600, 130, 600, 428)
+    num(ax, 8, 960, 130, 880, 390)
+    save(fig, "tardigrade")
+
+
+def scaphopod():
+    fig, ax = canvas()
+    rect(ax, 0, 0, 1200, 640, fc="#e9dcc0", lw=0, z=1)                         # sediment
+    line(ax, [(0, 640), (1200, 640)], lw=3.4, z=2)
+    P0, P1, P2 = np.array([820, 800.]), np.array([760, 400.]), np.array([400, 150.])
+    ts = np.linspace(0, 1, 40)
+    C = np.array([(1 - t) ** 2 * P0 + 2 * (1 - t) * t * P1 + t ** 2 * P2 for t in ts])
+    D = np.gradient(C, axis=0)
+    N = np.stack([-D[:, 1], D[:, 0]], axis=1)
+    N /= np.linalg.norm(N, axis=1)[:, None]
+    w = np.linspace(26, 62, 40)[:, None]
+    outer = C + N * w
+    inner = C - N * w
+    poly(ax, list(map(tuple, outer)) + list(map(tuple, inner[::-1])), fc="#f4efe6", z=5)
+    poly(ax, list(map(tuple, C + N * w * 0.6)) + list(map(tuple, (C - N * w * 0.6)[::-1])), fc="#f3c9b8", z=6, lw=1.2)
+    # head with captacula and a pointed foot emerging at the anterior end
+    poly(ax, [(430, 175), (350, 130), (330, 60), (400, 110), (430, 120)], fc="#f3c9b8", z=4)   # foot (pointed)
+    poly(ax, [(380, 160), (300, 180), (320, 240), (400, 215)], fc="#e8b8a2", z=4)              # head (conical snout)
+    for k, (dx, dy) in enumerate(((-120, 40), (-100, 90), (-60, 120), (-130, -5), (-30, 130))):
+        line(ax, [(310, 215), (310 + dx, 215 + dy)], lw=2.4, z=4)
+        ax.add_patch(Circle((310 + dx, 215 + dy), 8, fc=INK, zorder=7))
+    num(ax, 1, 600, 800, 757, 573)
+    num(ax, 2, 970, 790, 840, 770)
+    num(ax, 3, 330, 360, 350, 100)
+    num(ax, 4, 130, 380, 190, 305)
+    num(ax, 5, 150, 120, 320, 205)
+    num(ax, 6, 1090, 560, 1040, 641)
+    save(fig, "scaphopod")
+
+
+def termite_castes():
+    fig, ax = canvas(12, 7)
+    cxs = [160, 450, 740, 1030]
+    for x in cxs:
+        rect(ax, x - 135, 90, 270, 520, fc="#fbf7ee", r=26, lw=1.8)
+    k = 0.74
+
+    def E(cx, ox, w, h, fc, **kw):
+        ell(ax, cx + k * ox, 350, k * w, k * h, fc=fc, **kw)
+
+    def legs(cx, ox):
+        for dx in (-25, 5, 35):
+            for sgn in (1, -1):
+                line(ax, [(cx + k * (ox + dx), 350 + sgn * k * 20), (cx + k * (ox + dx - 10), 350 + sgn * k * 75)], lw=3)
+    # 1 queen: swollen abdomen (in some species)
+    cx = cxs[0]; o = 0
+    legs(cx, -55); E(cx, 40, 190, 130, BODY2); E(cx, -55, 64, 62, BODY); E(cx, -105, 52, 54, BODY)
+    # 2 worker: small head, weak mouthparts, wingless
+    cx = cxs[1] - 6
+    legs(cx, -20); E(cx, 55, 130, 60, BODY2); E(cx, -20, 60, 52, BODY); E(cx, -75, 50, 50, BODY)
+    # 3 soldier: enlarged head with jaws
+    cx = cxs[2] + 22
+    legs(cx, 0); E(cx, 75, 130, 60, BODY2); E(cx, 5, 56, 48, BODY); E(cx, -75, 118, 92, "#d9a35e")
+    for sgn in (1, -1):
+        line(ax, [(cx + k * -130, 350 + sgn * 15), (cx + k * -170, 350 + sgn * 50), (cx + k * -182, 350 + sgn * 42)], lw=5)
+    # 4 alate: wings
+    cx = cxs[3] - 8
+    for sgn in (1, -1):
+        ell(ax, cx + k * 80, 350 + sgn * k * 85, k * 190, k * 50, fc="#dbeaf7", ang=-sgn * 14, alpha=.95, z=4)
+    legs(cx, -20); E(cx, 50, 110, 54, BODY2); E(cx, -20, 56, 50, BODY); E(cx, -70, 46, 46, BODY)
+    for i, x in enumerate(cxs):
+        num(ax, i + 1, x, 655)
+    save(fig, "termite-castes")
+
+
+def waggle_dance():
+    fig, ax = canvas()
+    al = np.deg2rad(35)
+    d = np.array([np.sin(al), np.cos(al)])
+    # A: dance on the vertical comb
+    letter(ax, "A", 70, 830)
+    rect(ax, 110, 130, 470, 640, fc="#f1dfae", r=30)
+    c = np.array([345., 430.])
+    S, E = c - 150 * d, c + 150 * d
+    arrow(ax, tuple(S), tuple(E), lw=6.0)
+    arrow(ax, tuple(E + [8, 10]), tuple(S + [8, -10]), rad=0.95, lw=3.0, ls="--")
+    arrow(ax, tuple(E + [-8, -10]), tuple(S + [-8, 10]), rad=-0.95, lw=3.0, ls="--")
+    line(ax, [(c[0], 340), (c[0], 720)], lw=3, ls="--", z=5)
+    arrow(ax, (c[0], 690), (c[0], 740), lw=3.0)
+    ax.add_patch(Wedge(tuple(c), 150, 90 - 35, 90, fc="#a9cdee", ec=INK, lw=2.0, alpha=0.85, zorder=4))
+    num(ax, 1, 490, 330, 380, 480)
+    num(ax, 2, 190, 250, 245, 340)
+    num(ax, 3, 450, 640, 370, 520)
+    num(ax, 4, 230, 690, 340, 700)
+    # B: foraging geometry on the ground
+    letter(ax, "B", 700, 830)
+    hive = np.array([880., 240.])
+    rect(ax, hive[0] - 38, hive[1] - 30, 76, 60, fc="#f1dfae", r=8)
+    sun = np.array([880., 740.])
+    ax.add_patch(Circle(tuple(sun), 52, fc="#ffd75e", ec=INK, lw=2.4, zorder=5))
+    for a in range(0, 360, 30):
+        t = np.deg2rad(a)
+        line(ax, [(sun[0] + 66 * np.cos(t), sun[1] + 66 * np.sin(t)), (sun[0] + 92 * np.cos(t), sun[1] + 92 * np.sin(t))], lw=2.4)
+    line(ax, [tuple(hive + [0, 40]), tuple(sun - [0, 100])], lw=3, ls="--", z=3)
+    food = hive + 350 * d
+    arrow(ax, tuple(hive + 55 * d), tuple(food - 25 * d), lw=4.4)
+    ax.add_patch(Circle(tuple(food), 26, fc="#f2b8ad", ec=INK, lw=2.4, zorder=5))
+    ax.add_patch(Wedge(tuple(hive), 190, 90 - 35, 90, fc="#a9cdee", ec=INK, lw=2.0, alpha=0.85, zorder=2))
+    num(ax, 5, 760, 560, 880, 600)
+    num(ax, 6, 1100, 700, food[0] + 10, food[1] - 20)
+    num(ax, 7, 700, 180, hive[0] - 40, hive[1] - 5)
+    num(ax, 8, 1060, 300, 920, 360)
+    save(fig, "waggle-dance")
+
+
+def obelia_colony():
+    fig, ax = canvas()
+    rect(ax, 140, 60, 920, 70, fc="#d9dde2", lw=2.4)                           # substrate
+    for x in range(170, 1050, 45):
+        line(ax, [(x, 60), (x + 25, 130)], lw=1.4, color="#8a9199")
+    line(ax, [(180, 160), (700, 160)], lw=7, color=INK, z=3)                   # stolon
+    line(ax, [(180, 160), (700, 160)], lw=3.5, color="#e8a0a0", z=4)           # coenosarc in it
+    line(ax, [(480, 160), (480, 700)], lw=9, color=INK, z=3)                   # main stem
+    line(ax, [(480, 160), (480, 700)], lw=4.5, color="#e8a0a0", z=4)           # coenosarc core
+
+    def hydranth(x, y, ang=90):
+        ell(ax, x, y, 64, 100, fc="#cfe3c8", ang=ang - 90, z=6)
+        for a in range(20, 170, 25):
+            t = np.deg2rad(a)
+            ax.plot([x + 14 * np.cos(t), x + 62 * np.cos(t)], [y + 52 * np.sin(t) * 0.0 + 56 + 8 * np.sin(t),
+                                                               y + 56 + 62 * np.sin(t)], color=INK, lw=2.2, zorder=5)
+        ax.add_patch(Circle((x, y + 52), 8, fc=INK, zorder=8))
+
+    for (bx, by, ex, ey) in ((480, 300, 650, 380), (480, 440, 310, 520), (480, 560, 650, 640)):
+        line(ax, [(bx, by), (ex, ey)], lw=8, color=INK, z=3)
+        line(ax, [(bx, by), (ex, ey)], lw=4, color="#e8a0a0", z=4)
+        hydranth(ex + (30 if ex > bx else -30), ey + 30)
+    hydranth(480, 740)
+    for (gx, gy) in ((420, 360), (535, 500)):                                   # gonangia in the axils
+        ell(ax, gx, gy, 70, 120, fc="#f4e4c1", z=6)
+        ell(ax, gx, gy, 24, 90, fc="#e8a0a0", z=7)
+    for (mx, my) in ((880, 330), (940, 400)):                                   # free medusae
+        poly(ax, [(mx - 70, my), (mx + 70, my), (mx + 40, my + 60), (mx, my + 80), (mx - 40, my + 60)], fc="#dbeaf7", z=5)
+        for dx in (-60, -30, 0, 30, 60):
+            line(ax, [(mx + dx, my), (mx + dx * 1.2, my - 70)], lw=2)
+        line(ax, [(mx, my), (mx, my - 50)], lw=5, color="#e8a0a0")
+    arrow(ax, (580, 520), (780, 400), rad=0.2, lw=3.0)
+    num(ax, 1, 770, 800, 700, 700)
+    num(ax, 2, 300, 380, 395, 360)
+    num(ax, 3, 160, 250, 190, 160)
+    num(ax, 4, 1000, 560, 940, 420)
+    num(ax, 5, 640, 40)
+    save(fig, "obelia-colony")
+
+
+def peripatus_external():
+    fig, ax = canvas()
+    ell(ax, 650, 450, 820, 200, fc=BODY, z=3)                                   # body
+    ell(ax, 280, 450, 150, 150, fc=BODY2, z=4)                                  # head region
+    for k, x in enumerate(range(380, 940, 80)):                                # legs (number varies by species)
+        for sgn in (1, -1):
+            poly(ax, [(x - 30, 450 + sgn * 90), (x + 30, 450 + sgn * 90), (x + 10, 450 + sgn * 190), (x - 10, 450 + sgn * 190)],
+                 fc=BODY2, z=2)
+    for sgn in (1, -1):                                                         # antennae (ringed)
+        pts = [(240, 450 + sgn * 70), (160, 450 + sgn * 160), (90, 450 + sgn * 240)]
+        line(ax, pts, lw=8, z=3)
+        for q in np.linspace(0.12, 0.95, 7):
+            x = 240 + (90 - 240) * q; y = 450 + sgn * (70 + (240 - 70) * q)
+            line(ax, [(x - 14, y - 14 * sgn * -1), (x + 14, y + 14 * sgn * -1)], lw=3, color=INK, z=4)
+        ax.add_patch(Circle((255, 450 + sgn * 45), 12, fc=INK, zorder=7))      # eyes at antenna bases
+        ell(ax, 225, 450 + sgn * 18, 36, 30, fc="#e3a685", z=5)                  # oral papillae
+    for sgn in (1, -1):                                                         # paired slime glands
+        ell(ax, 700, 450 + sgn * 38, 520, 40, fc="none", ec="#6b7bb0", lw=2.4, z=6, ls="--")
+    # inset: tip of a leg with a pair of claws
+    ax.add_patch(Circle((1060, 135), 120, fc="white", ec=INK, lw=2.6, zorder=8))
+    poly(ax, [(1000, 60), (1120, 60), (1090, 150), (1030, 150)], fc=BODY2, z=9)
+    line(ax, [(1050, 150), (1025, 205)], lw=5, z=9); line(ax, [(1070, 150), (1105, 200)], lw=5, z=9)
+    num(ax, 1, 110, 840, 110, 690)
+    num(ax, 2, 400, 780, 262, 495)
+    num(ax, 3, 390, 130, 222, 432)
+    num(ax, 4, 660, 780, 650, 640)
+    num(ax, 5, 860, 330, 970, 225)
+    num(ax, 6, 560, 130, 560, 412)
+    save(fig, "peripatus-external")
+
+
+def squid_jet():
+    fig, ax = canvas()
+    poly(ax, [(380, 360), (800, 345), (1010, 450), (800, 555), (380, 540)], fc=BODY, z=3)     # mantle, tapering behind
+    poly(ax, [(880, 390), (1010, 450), (880, 510), (790, 450)], fc="none", z=3, lw=0)
+    poly(ax, [(820, 450), (950, 330), (1090, 450), (950, 570)], fc=BODY2, z=2)                # terminal fin (rhomboid)
+    ell(ax, 340, 450, 200, 160, fc=BODY2, z=4)                                                # head
+    for k, y in enumerate(range(390, 520, 22)):                                               # arms
+        line(ax, [(250, y), (110, 450 + (y - 450) * 1.8)], lw=6, z=3)
+    poly(ax, [(400, 545), (470, 560), (430, 620), (350, 600)], fc="#cfd5db", z=6)             # funnel (ventral)
+    line(ax, [(370, 610), (300, 650)], lw=9, z=6)
+    ell(ax, 620, 470, 90, 56, fc="#2d2f35", z=6)                                              # ink sac
+    for (x, y) in ((520, 400), (600, 385), (700, 400), (770, 430), (690, 520), (560, 520)):
+        ax.add_patch(Circle((x, y), 9, fc="#b4533a", zorder=6))                                # chromatophores
+    arrow(ax, (300, 650), (140, 720), lw=5.0)                                                 # jet of water
+    arrow(ax, (700, 150), (900, 150), lw=5.0)                                                 # direction of travel
+    num(ax, 1, 600, 250, 600, 360)
+    num(ax, 2, 1030, 250, 1000, 395)
+    num(ax, 3, 520, 740, 410, 600)
+    num(ax, 4, 110, 270, 150, 400)
+    num(ax, 5, 760, 740, 640, 495)
+    num(ax, 6, 450, 250, 515, 395)
+    num(ax, 7, 130, 800, 190, 700)
+    num(ax, 8, 580, 150)
+    save(fig, "squid-jet")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1791,7 +2028,9 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "limb-lever": limb_lever, "cephalopod-circulation": cephalopod_circulation,
        "cockroach-gut": cockroach_gut, "wuchereria-cycle": wuchereria_cycle,
        "fluke-larvae": fluke_larvae, "sponge-sexual-cycle": sponge_sexual_cycle,
-       "food-vacuole": food_vacuole}
+       "food-vacuole": food_vacuole, "tardigrade": tardigrade, "scaphopod": scaphopod,
+       "termite-castes": termite_castes, "waggle-dance": waggle_dance, "obelia-colony": obelia_colony,
+       "peripatus-external": peripatus_external, "squid-jet": squid_jet}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)

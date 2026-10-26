@@ -329,6 +329,52 @@ PLACEMENTS = [
      "பாராமீசியத்தில் உணவு நுண்குமிழின் வரலாறு (படத்திட்டம், எளிமைப்படுத்தப்பட்டது; வெளிர் இளஞ்சிவப்பு அமிலநிலை, நீலம் காரநிலை): "
      "(1) வாய்ப்பள்ளம், (2) நுண்குமிழ் உருவாகும் சைட்டோஃபாரிங்க்ஸ், (3) அமிலநிலை, (4) செரிமான நொதிகளுடன் காரநிலை, "
      "(5) உறிஞ்சலுக்குப் பிறகு சிறிதான நுண்குமிழ், (6) எச்சம் வெளியேற்றப்படும் சைட்டோபுரோக்ட், (7) நுண்குமிழுக்கு நொதிகளைக் கொண்டுவரும் லைசோசோம்கள்."),
+    # ---- stage 3 (2026-10-26)
+    ("MinorArthropodsBookChapter.kt", "tardigrada", "Structure and habitat", "tardigrade",
+     "A tardigrade in dorsal view (schematic): (1) head, (2) stylets, (3) simple eyes, (4) trunk, with four segments, "
+     "(5) stubby unjointed leg ending in claws, four pairs, (6) pharynx, (7) midgut, "
+     "(8) Malpighian tubules at the junction of the midgut and hindgut.",
+     "நீர்க்கரடியின் முதுகுப்புறக் காட்சி (படத்திட்டம்): (1) தலை, (2) ஸ்டைலெட்டுகள், (3) எளிய கண்கள், (4) நான்கு கண்டங்களுடன் கூடிய உடற்பகுதி, "
+     "(5) நகங்களில் முடியும் குட்டையான மூட்டற்ற கால், நான்கு இணைகள், (6) தொண்டை, (7) நடுக்குடல், "
+     "(8) நடுக்குடலும் பின்குடலும் சேரும் இடத்தில் உள்ள மால்பீஜியன் குழல்கள்."),
+    ("MinorMolluscsBookChapter.kt", "scaphopoda", None, "scaphopod",
+     "A tusk shell buried head-down (schematic, in side view): (1) tubular shell, open at both ends, "
+     "(2) narrow posterior opening projecting above the surface, (3) pointed foot, (4) captacula, (5) head with a conical snout, "
+     "(6) surface of the sediment.",
+     "தலைகீழாகப் புதைந்துள்ள தந்தச்சிப்பி (படத்திட்டம், பக்கக் காட்சி): (1) இரு முனைகளும் திறந்த குழல் வடிவ ஓடு, "
+     "(2) படிவின் மேற்பரப்புக்கு மேல் நீட்டிக்கொண்டிருக்கும் குறுகிய பின்புறத் திறப்பு, (3) கூர்மையான பாதம், (4) கேப்டாகுலா இழைகள், (5) கூம்பு வடிவ மூக்குடன் உள்ள தலை, "
+     "(6) படிவின் மேற்பரப்பு."),
+    ("HouseholdInsectsBookChapter.kt", "termites", "The colony and its castes", "termite-castes",
+     "Castes of a termite colony (schematic, dorsal view, not to the same scale; the king is not drawn): "
+     "(1) queen, whose abdomen swells in some species, (2) worker, wingless, (3) soldier, with an enlarged head and jaws, "
+     "(4) alate, a winged reproductive.",
+     "கரையான் கூட்டத்தின் இனக்குழுக்கள் (படத்திட்டம், முதுகுப்புறக் காட்சி, ஒரே அளவுகோலில் இல்லை; ஆண் அரசன் வரையப்படவில்லை): "
+     "(1) அரசி, சில இனங்களில் இதன் வயிறு பெருக்கும், (2) வேலைக்காரப் பூச்சி, இறகற்றது, (3) போர்வீரன், பெரிய தலையும் தாடைகளும் உடையது, "
+     "(4) இறகுள்ள இனப்பெருக்கப் பூச்சி (அலேட்)."),
+    ("PollinatorsBookChapter.kt", "colony", None, "waggle-dance",
+     "The waggle dance (schematic). A, on the vertical comb: (1) waggle run, (2) return circuits, (3) angle of the run to (4) the vertical (up). "
+     "B, on the ground: (5) direction of the sun, (6) food source, (7) hive, (8) the same angle, measured from the direction of the sun. "
+     "The duration of the waggle run gives the distance.",
+     "ஆட்ட நடனம் (படத்திட்டம்). A, செங்குத்தான தேன்கூட்டுச் சட்டத்தில்: (1) ஆட்ட ஓட்டம், (2) திரும்பும் வட்டங்கள், (3) ஓட்டம் (4) செங்குத்துக் கோட்டுடன் (மேல்நோக்கி) அமைக்கும் கோணம். "
+     "B, தரையில்: (5) சூரியனின் திசை, (6) உணவு மூலம், (7) தேன்கூடு, (8) சூரியனின் திசையிலிருந்து அளக்கப்படும் அதே கோணம். "
+     "ஆட்ட ஓட்டத்தின் கால அளவு தூரத்தைத் தருகிறது."),
+    ("PolymorphismBookChapter.kt", "obelia", None, "obelia-colony",
+     "An Obelia colony (schematic): (1) hydranth, a feeding zooid with a mouth and tentacles, (2) gonangium, a reproductive zooid without mouth or tentacles, "
+     "(3) coenosarc, the living tissue joining the zooids (pink), (4) medusae, budded by the gonangia, (5) surface of attachment.",
+     "ஒபீலியா குடியிருப்பு (படத்திட்டம்): (1) ஹைட்ராந்த், வாயும் உணர்கொம்புகளும் உள்ள உணவூட்டும் சூயிட், (2) கோனாஞ்சியம், வாயும் உணர்கொம்புகளும் இல்லாத இனப்பெருக்கச் சூயிட், "
+     "(3) சூயிட்களை இணைக்கும் உயிர்த்திசுவான கோயினோசார்க் (இளஞ்சிவப்பு), (4) கோனாஞ்சியங்கள் மொட்டுவிடும் மெடியூசாக்கள், (5) ஒட்டியிருக்கும் மேற்பரப்பு."),
+    ("PeripatusBookChapter.kt", "external", None, "peripatus-external",
+     "Peripatus in dorsal view (schematic; the number of leg pairs varies with the species): (1) ringed antennae, (2) simple eyes at the bases of the antennae, "
+     "(3) oral papillae, (4) unjointed, conical walking legs, (5) inset: the tip of a leg with a pair of claws, "
+     "(6) the paired slime glands (dashed) inside the body.",
+     "பெரிபேட்டஸின் முதுகுப்புறக் காட்சி (படத்திட்டம்; கால் இணைகளின் எண்ணிக்கை இனத்திற்கேற்ப மாறும்): (1) வளையங்கள் கொண்ட உணர்கொம்புகள், (2) உணர்கொம்பு அடியில் உள்ள எளிய கண்கள், "
+     "(3) வாய்ப் பாப்பில்லாக்கள், (4) மூட்டற்ற கூம்பு வடிவ நடைக்கால்கள், (5) உள்படம்: இரு நகங்களுடன் கூடிய காலின் முனை, "
+     "(6) உடலுக்குள் இருக்கும் இணைச் சளிச்சுரப்பிகள் (புள்ளிக்கோடு)."),
+    ("CephalopodsBookChapter.kt", "movement", None, "squid-jet",
+     "Jet propulsion in a squid (schematic, side view): (1) muscular mantle, (2) fin, (3) funnel, which can be directed to steer, (4) arms, "
+     "(5) ink sac, (6) chromatophores in the skin, (7) jet of water expelled through the funnel, (8) direction of travel.",
+     "கணவாயில் ஜெட் உந்துவிசை (படத்திட்டம், பக்கக் காட்சி): (1) தசையுள்ள மேண்டில், (2) துடுப்பு, (3) திசைதிருப்பி இயக்கத்தை வழிநடத்தக்கூடிய புனல், (4) கைகள், "
+     "(5) மை பை, (6) தோலில் உள்ள நிறமி செல்கள், (7) புனல் வழியாக வெளியேற்றப்படும் நீர்த்தாரை, (8) இயக்கத்தின் திசை."),
 ]
 
 
