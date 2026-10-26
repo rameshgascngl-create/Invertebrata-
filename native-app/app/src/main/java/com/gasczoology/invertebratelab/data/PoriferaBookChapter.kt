@@ -61,6 +61,9 @@ object PoriferaBookChapter {
                 blocks = listOf(
                     bp("A sponge has no tissues, but its cells are not alike. Several types can be recognised, each with a particular position and task. The types are not fixed for ever: many of them can change into one another when the animal grows or is injured." to
                         "கடற்பஞ்சுக்குத் திசுக்கள் இல்லை; ஆனால் செல்கள் அனைத்தும் ஒரே வகையல்ல. ஒவ்வொன்றுக்கும் குறிப்பிட்ட இடமும் பணியும் உள்ள பல வகைகள் அடையாளம் காணப்படுகின்றன. இவ்வகைகள் நிரந்தரமானவையல்ல; விலங்கு வளரும்போதோ காயமடையும்போதோ பல செல்கள் ஒன்றிலிருந்து மற்றொன்றாக மாறுகின்றன."),
+                    bfig("lib/sponge-cells",
+                        "Cells of a sponge wall in section (schematic): (1) pinacocyte, a flat cell of the outer layer, (2) mesohyl, the jelly-like layer between the outer cells and the choanocytes, (3) archaeocyte, an amoeboid cell in the mesohyl, (4) choanocyte, with its nucleus, (5) collar of microvilli, (6) flagellum.",
+                        "கடற்பஞ்சுச் சுவரின் செல்கள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) பினாகோசைட், வெளி அடுக்கின் தட்டையான செல், (2) மீசோஹைல், வெளிச் செல்களுக்கும் காலர் செல்களுக்கும் இடையிலான பசை போன்ற அடுக்கு, (3) ஆர்க்கியோசைட், மீசோஹைலிலுள்ள அமீபா போன்ற செல், (4) உட்கருவுடன் கூடிய காலர் செல் (கோனோசைட்), (5) நுண்விரல்களால் ஆன காலர், (6) கசையிழை."),
                     btable("Principal cell types of a sponge", "கடற்பஞ்சின் முதன்மை செல் வகைகள்",
                         listOf("Cell" to "செல்", "Position" to "இடம்", "Function" to "பணி"),
                         listOf(

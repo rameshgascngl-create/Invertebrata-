@@ -182,6 +182,22 @@ PLACEMENTS = [
      "நான்கு மரபுவழிக் குழுக்களின் இயக்க நுண்ணுறுப்புகள் (படத்திட்டம்): (A) போலிக்கால்களால் நகரும் செல், "
      "(B) ஒரு கசையிழையுடைய கசையிழையுயிரி, (C) குறுஇழைகள் மூடிய சிலியேட், (D) மற்ற மூன்றின் நுண்ணுறுப்புகள் இல்லாமல் வரையப்பட்ட ஸ்போரோசோவா செல். "
      "(1) போலிக்கால், (2) உட்கரு, (3) கசையிழை, (4) குறுஇழைகள்."),
+    ("EchinoAffinitiesBookChapter.kt", "deuterostome", None, "blastopore-fate",
+     "The fate of the blastopore (schematic). The red spot is the blastopore and the opening it becomes; "
+     "the blue spot is the second opening that forms later. (A) Protostome: the blastopore becomes the mouth. "
+     "(B) Deuterostome, as in the echinoderms: the blastopore becomes the anus. "
+     "(1) blastopore, (2) archenteron, (3) mouth, (4) anus.",
+     "பிளாஸ்டோபோரின் விதி (படத்திட்டம்). சிவப்புப் புள்ளி பிளாஸ்டோபோரும் அது ஆகும் துளையும்; "
+     "நீலப் புள்ளி பின்னர் உருவாகும் இரண்டாவது துளை. (A) புரோட்டோஸ்டோம்: பிளாஸ்டோபோர் வாயாகிறது. "
+     "(B) டியூட்டிரோஸ்டோம், எக்கைனோடெர்ம்களில் போல: பிளாஸ்டோபோர் மலவாயாகிறது. "
+     "(1) பிளாஸ்டோபோர், (2) ஆர்கென்டிரான், (3) வாய், (4) மலவாய்."),
+    ("PoriferaBookChapter.kt", "cells", None, "sponge-cells",
+     "Cells of a sponge wall in section (schematic): (1) pinacocyte, a flat cell of the outer layer, "
+     "(2) mesohyl, the jelly-like layer between the outer cells and the choanocytes, (3) archaeocyte, an amoeboid cell in the mesohyl, "
+     "(4) choanocyte, with its nucleus, (5) collar of microvilli, (6) flagellum.",
+     "கடற்பஞ்சுச் சுவரின் செல்கள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) பினாகோசைட், வெளி அடுக்கின் தட்டையான செல், "
+     "(2) மீசோஹைல், வெளிச் செல்களுக்கும் காலர் செல்களுக்கும் இடையிலான பசை போன்ற அடுக்கு, (3) ஆர்க்கியோசைட், மீசோஹைலிலுள்ள அமீபா போன்ற செல், "
+     "(4) உட்கருவுடன் கூடிய காலர் செல் (கோனோசைட்), (5) நுண்விரல்களால் ஆன காலர், (6) கசையிழை."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",

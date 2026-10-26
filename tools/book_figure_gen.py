@@ -1440,6 +1440,70 @@ def protozoan_groups():
     save(fig, "protozoan-groups")
 
 
+def blastopore_fate():
+    fig, ax = canvas(12, 8)
+    letter(ax, "A", 60, 720); letter(ax, "B", 60, 340)
+    EC, EN, RED, BL = "#e6a57e", "#cfe6a8", "#c0392b", "#2471a3"
+    def gastrula(cx, cy):
+        ax.add_patch(Circle((cx, cy), 120, fc=EC, ec=INK, lw=2.6, zorder=3))
+        ax.add_patch(Circle((cx, cy + 10), 78, fc=EN, ec=INK, lw=2.2, zorder=4))
+        rect(ax, cx - 26, cy - 125, 52, 70, fc="white", ec="white", lw=0, z=5)
+        ax.add_patch(Circle((cx, cy - 118), 14, fc=RED, ec=INK, lw=1.6, zorder=7))
+    def tube(cx, cy):
+        rect(ax, cx - 55, cy - 120, 110, 240, fc=EN, ec=INK, lw=2.6, r=50)
+        rect(ax, cx - 30, cy - 120, 60, 240, fc="#fff7e0", ec=INK, lw=1.8, r=26, z=4)
+        ax.add_patch(Circle((cx, cy - 122), 18, fc=RED, ec=INK, lw=1.8, zorder=7))
+        ax.add_patch(Circle((cx, cy + 122), 18, fc=BL, ec=INK, lw=1.8, zorder=7))
+    for cy in (540, 190):
+        gastrula(330, cy)
+        arrow(ax, (470, cy), (650, cy), lw=3.4)
+        tube(820, cy)
+    ax.plot([30, 1170], [370, 370], color=GREY, lw=3)
+    num(ax, 1, 130, 440, 316, 422)
+    num(ax, 2, 560, 640, 330, 550)
+    # A protostome: red end (old blastopore) = mouth, blue end = anus
+    num(ax, 3, 1030, 420, 836, 418)
+    num(ax, 4, 1030, 680, 836, 662)
+    # B deuterostome: red end = anus, blue end = mouth
+    num(ax, 4, 1030, 70, 836, 68)
+    num(ax, 3, 1030, 330, 836, 312)
+    save(fig, "blastopore-fate")
+
+
+def sponge_cells():
+    """Section of a sponge wall: pinacoderm above, mesohyl in the middle, choanocytes lining a chamber below."""
+    fig, ax = canvas(12, 8)
+    # mesohyl
+    rect(ax, 80, 300, 1040, 220, fc="#f1e4c0", lw=2.4)
+    # pinacocytes: flat cells on top
+    for k in range(6):
+        x = 80 + k * 173
+        ell(ax, x + 86, 545, 172, 52, fc="#d9c7a0", z=4)
+        ax.add_patch(Circle((x + 86, 545), 11, fc="#8e6aa8", ec=INK, lw=1.6, zorder=6))
+    # chamber (water) below
+    rect(ax, 80, 40, 1040, 120, fc="#dbeaf7", lw=2.4)
+    # choanocytes: tall cells with collar and flagellum into the chamber
+    for k in range(7):
+        x = 150 + k * 150
+        ell(ax, x, 262, 80, 78, fc="#f2b8ad", z=4)
+        ax.add_patch(Circle((x, 262), 12, fc="#8e6aa8", ec=INK, lw=1.6, zorder=6))
+        for j in (-24, -12, 0, 12, 24):
+            line(ax, [(x + j, 222), (x + j * 1.2, 160)], lw=2.2, z=5)
+        line(ax, [(x, 222)] + [(x + 10 * np.sin(5 * u), 222 - 150 * u) for u in np.linspace(0, 1, 30)], lw=3, color="#7d6608", z=3)
+    # archaeocyte in the mesohyl
+    t = np.linspace(0, 2 * np.pi, 60)
+    pts = [(420 + (60 + 18 * np.sin(4 * u)) * np.cos(u), 410 + (44 + 16 * np.cos(3 * u)) * np.sin(u)) for u in t]
+    poly(ax, pts, fc="#cfe6f7", lw=2.4)
+    ax.add_patch(Circle((420, 410), 22, fc="#8e6aa8", ec=INK, lw=2, zorder=6))
+    num(ax, 1, 180, 700, 250, 545)
+    num(ax, 2, 900, 700, 900, 440)
+    num(ax, 3, 640, 640, 470, 420)
+    num(ax, 4, 1100, 340, 1050, 262)
+    num(ax, 5, 1130, 150, 1038, 190)
+    num(ax, 6, 760, 90, 905, 132)
+    save(fig, "sponge-cells")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1455,7 +1519,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "mollusc-plan": mollusc_plan, "echino-symmetry": echino_symmetry,
        "cilium-stroke": cilium_stroke, "coral-polyp": coral_polyp,
        "annelid-section": annelid_section, "flame-cell": flame_cell, "myriapod-sections": myriapod_sections,
-       "symmetry-types": symmetry_types, "protozoan-groups": protozoan_groups}
+       "symmetry-types": symmetry_types, "protozoan-groups": protozoan_groups,
+       "blastopore-fate": blastopore_fate, "sponge-cells": sponge_cells}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)
