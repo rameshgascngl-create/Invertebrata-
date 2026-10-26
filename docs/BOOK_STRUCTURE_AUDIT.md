@@ -156,11 +156,11 @@ Audit of the figure sections (2026-10-26, after the last batch):
   is still available by tapping.
 - **Fixed: clipping.** The Taenia body-plan strobilus ran off the right edge and the top numerals of the nematode
   routes figure were cut; both redrawn.
-- **Open, needs your decision: Tamil spelling of the animal name.** The Nereis chapter writes நெரிஸ்; the eight
+- **Decided (owner, 2026-10-26): the chapter spelling stands** (நெரிஸ், பாரபோடியம்); the Nereis plates are to be regenerated later with matching Tamil, and stay as they are until then. Background: Tamil spelling of the animal name. The Nereis chapter writes நெரிஸ்; the eight
   Nereis plates (burned-in labels) write நெரீஸ், and the app as a whole uses both (13 and 15 occurrences). The
   plates also use பாராபோடியா where the chapter writes பாரபோடியம். Labels burned into a raster cannot be edited;
   either the plates are regenerated or the chapter adopts the plate spelling.
-- **Open: burned-in labels.** The Nereis plates carry English and Tamil labels inside the image, unlike the
+- **Accepted for now (owner): burned-in labels.** The Nereis plates carry English and Tamil labels inside the image, unlike the
   type-study plates, whose labels are kept outside the pixels by project policy. Each plate is about 2 MB and
   eight are now in one chapter; they are sub-sampled by the decoder.
 - Not checked: how any figure looks on a device; Tamil caption wrapping.
