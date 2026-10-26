@@ -52,8 +52,8 @@ internal object ParameciumNuclearSequence {
         ParameciumNuclearStage("meiosis",
             BilingualText("2. Micronuclear meiosis", "2. சிற்றுட்கருவின் ஒடுக்கற்பிரிவு"),
             BilingualText(
-                "Each partner's micronuclear lineage undergoes meiosis to produce haploid nuclear products. In the conventional P. caudatum account, most products degenerate and one functional haploid nucleus remains in each partner.",
-                "ஒவ்வொரு இணைச்செல்லிலும் சிற்றுட்கரு ஒடுக்கற்பிரிவடைந்து ஒற்றைமடிய உட்கருக் கூறுகளை உருவாக்குகிறது. பாரம்பரிய P. caudatum விளக்கத்தில் பெரும்பாலான கூறுகள் சிதைந்து, ஒவ்வொரு செல்லிலும் ஒரு செயல்படும் ஒற்றைமடிய உட்கரு எஞ்சுகிறது.")),
+                "Each partner's micronuclear lineage undergoes meiosis to produce haploid nuclear products. In Paramecium caudatum, meiosis yields four haploid products per partner: three degenerate, while one surviving product near the oral region supplies the gametic nuclei.",
+                "ஒவ்வொரு இணைச்செல்லிலும் சிற்றுட்கரு ஒடுக்கற்பிரிவடைந்து ஒற்றைமடிய உட்கருக் கூறுகளை உருவாக்குகிறது. பாரமீசியம் கௌடேட்டத்தில் ஒவ்வொரு இணைச்செல்லிலும் ஒடுக்கற்பிரிவால் நான்கு ஒற்றைமடிய உட்கருக்கள் உருவாகின்றன. அவற்றில் மூன்று சிதைகின்றன; வாய்ப்பகுதி அருகில் எஞ்சும் ஒன்று இனச்செல் உட்கருக்களை உருவாக்குகிறது.")),
         ParameciumNuclearStage("pronuclei",
             BilingualText("3. Formation of stationary and migratory pronuclei", "3. நிலையான மற்றும் இடம்பெயரும் முன்உட்கருக்கள் உருவாதல்"),
             BilingualText(
@@ -72,18 +72,18 @@ internal object ParameciumNuclearSequence {
         ParameciumNuclearStage("separation",
             BilingualText("6. Separation of exconjugants", "6. இணைவு முடிந்த செல்கள் பிரிதல்"),
             BilingualText(
-                "The partners separate as two exconjugants. Conjugation has exchanged genetic material but has not itself doubled the number of cells.",
-                "இணைவு முடிந்த பின்னர் இரண்டு செல்களும் தனித்தனியாகப் பிரிகின்றன. இணைவு மரபணுப் பொருளைப் பரிமாறியுள்ளது; ஆனால் இணைவு நிகழ்வு தானாகவே செல் எண்ணிக்கையை இரட்டிப்பாக்கவில்லை.")),
+                "The partners usually separate after the first synkaryon division as two exconjugants in P. caudatum. Conjugation has exchanged genetic material but has not itself doubled the number of cells.",
+                "பாரமீசியம் கௌடேட்டத்தில் சின்கேரியானின் முதல் பிரிவுக்குப் பின்னர் பொதுவாக இரண்டு இணைச்செல்களும் தனித்தனியாகப் பிரிகின்றன. இணைவின்போது மரபணுப் பொருள் பரிமாறப்படுகிறது; ஆனால் இணைவு நிகழ்வு தானாகவே செல் எண்ணிக்கையை இரட்டிப்பாக்கவில்லை.")),
         ParameciumNuclearStage("reorganization",
             BilingualText("7. Post-conjugation nuclear reorganization", "7. இணைவுக்குப் பிந்தைய உட்கரு மறுசீரமைப்பு"),
             BilingualText(
-                "Synkaryon descendants undergo further divisions and differentiate into new micronuclear and macronuclear lineages; the old macronuclear material is broken down. Do not show a mature replacement macronucleus before the necessary nuclear reorganization.",
-                "சின்கேரியானிலிருந்து உருவாகும் உட்கருக்கள் மேலும் பிரிந்து புதிய சிற்றுட்கரு மற்றும் பேருட்கரு வழித்தோன்றல்களாக வேறுபடுகின்றன; பழைய பேருட்கருப் பொருள் சிதைகிறது. தேவையான உட்கரு மறுசீரமைப்பிற்கு முன்பே முழுமையான புதிய பேருட்கரு உருவானதாகக் காட்டக்கூடாது.")),
+                "In P. caudatum, three successive postzygotic synkaryon divisions produce eight nuclei: four anterior presumptive micronuclei and four posterior macronuclear anlagen. Three presumptive micronuclei are subsequently eliminated, while one is retained; old macronuclear material fragments and is ultimately degraded. Do not depict mature replacement macronuclei before these divisions and differentiation.",
+                "பாரமீசியம் கௌடேட்டத்தில் சின்கேரியான் தொடர்ந்து மூன்று முறை பிரிந்து எட்டு உட்கருக்களை உருவாக்குகிறது. முன்பகுதியிலுள்ள நான்கு உட்கருக்கள் சிற்றுட்கரு முன்னோடிகளாகவும் பின்பகுதியிலுள்ள நான்கு உட்கருக்கள் பேருட்கரு முன்னோடிகளாகவும் வேறுபடுகின்றன. சிற்றுட்கரு முன்னோடிகளில் மூன்று பின்னர் அழிகின்றன; ஒன்று எஞ்சுகிறது. பழைய பேருட்கரு துண்டுகளாகி இறுதியில் சிதைகிறது. இப்பிரிவுகளுக்கு முன்பே முதிர்ந்த புதிய பேருட்கருவைக் காட்டக்கூடாது.")),
         ParameciumNuclearStage("subsequent-fissions",
             BilingualText("8. Later vegetative divisions", "8. பின்னர் நடைபெறும் இயல்பான இருபிளவுகள்"),
             BilingualText(
-                "Subsequent cell divisions and maturation establish the vegetative descendants. Exact nuclear division counts and final progeny numbers vary across species descriptions and must be attributed to the named organism.",
-                "பின்னர் நடைபெறும் செல் பிரிவுகளும் முதிர்ச்சியும் இயல்பாக வளரும் வழித்தோன்றல்களை உருவாக்குகின்றன. உட்கருப் பிரிவு எண்ணிக்கையும் இறுதி மகள் செல் எண்ணிக்கையும் இன விளக்கத்திற்கேற்ப மாறலாம்; அவற்றைக் குறிப்பிட்ட இனத்துடன் மட்டுமே இணைத்துக் கூற வேண்டும்."))
+                "In the classical P. caudatum account, each exconjugant subsequently divides twice, yielding four karyonides with one micronucleus and one developing macronucleus each (eight karyonides per original pair). These are later vegetative divisions, not multiplication caused directly by conjugation; do not generalize this count to every Paramecium species.",
+                "பாரமீசியம் கௌடேட்டத்தின் வழக்கமான விளக்கத்தில் இணைவுக்குப் பின் பிரிந்த ஒவ்வொரு செல்லும் பின்னர் இரண்டு முறை இருபிளவடைந்து, தலா ஒரு சிற்றுட்கருவும் வளரும் பேருட்கருவும் கொண்ட நான்கு புதிய செல்களை (கேரியோனைடுகள்) உருவாக்குகிறது; ஆரம்ப இணைச் சோடியிலிருந்து மொத்தம் எட்டு கேரியோனைடுகள் கிடைக்கின்றன. இவை இணைவு நேரடியாக ஏற்படுத்தும் பெருக்கமல்ல; பிற பாரமீசியம் இனங்களுக்கும் இதே எண்ணிக்கையைப் பொதுமைப்படுத்தக் கூடாது."))
     )
 
     init {
