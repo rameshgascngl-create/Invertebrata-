@@ -37,6 +37,27 @@ class ParameciumNuclearSequenceTest {
             "four daughter cells"))
     }
 
+    @Test fun caudatumConjugationPreservesMeioticAndPostzygoticNuclearCounts() {
+        val stages = ParameciumNuclearSequence.conjugation.associateBy { it.id }
+        val meiosis = stages.getValue("meiosis").explanation
+        assertTrue(meiosis.english.contains("four haploid products"))
+        assertTrue(meiosis.english.contains("three degenerate"))
+        assertTrue(meiosis.tamil.contains("நான்கு"))
+        val separation = stages.getValue("separation").explanation
+        assertTrue(separation.english.contains("first synkaryon division"))
+        val reorganization = stages.getValue("reorganization").explanation
+        assertTrue(reorganization.english.contains("three successive postzygotic"))
+        assertTrue(reorganization.english.contains("eight nuclei"))
+        assertTrue(reorganization.english.contains("four anterior"))
+        assertTrue(reorganization.english.contains("four posterior"))
+        assertTrue(reorganization.english.contains("Three presumptive micronuclei"))
+        assertTrue(reorganization.tamil.contains("எட்டு"))
+        val descendants = stages.getValue("subsequent-fissions").explanation
+        assertTrue(descendants.english.contains("four karyonides"))
+        assertTrue(descendants.english.contains("eight karyonides per original pair"))
+        assertTrue(descendants.english.contains("do not generalize"))
+    }
+
     @Test fun nativeReaderUsesTextStagesAlongsideApprovedQualifiedReferencePngs() {
         val reader = File("src/main/java/com/gasczoology/invertebratelab/ui/ParameciumTextbookReader.kt")
             .readText()
