@@ -1285,6 +1285,98 @@ def coral_polyp():
     save(fig, "coral-polyp")
 
 
+def annelid_section():
+    """Cross-section of the trunk of an annelid, dorsal side up."""
+    fig, ax = canvas(12, 9)
+    cx, cy, R = 600, 450, 330
+    ax.add_patch(Circle((cx, cy), R + 14, fc="#e9e2c8", ec=INK, lw=2.4, zorder=2))      # cuticle
+    ax.add_patch(Circle((cx, cy), R, fc="#e6a57e", ec=INK, lw=2.4, zorder=3))           # epidermis
+    ax.add_patch(Circle((cx, cy), R - 28, fc="#c9a3d3", ec=INK, lw=2, zorder=4))        # circular muscle
+    ax.add_patch(Circle((cx, cy), R - 60, fc="#e0b4c0", ec=INK, lw=2, zorder=5))        # longitudinal muscle
+    for k in range(48):
+        a = 2 * np.pi * k / 48
+        ax.add_patch(Circle((cx + (R - 46) * np.cos(a), cy + (R - 46) * np.sin(a)), 3.2, fc="#7a4a8a", zorder=6))
+    ax.add_patch(Circle((cx, cy), R - 100, fc="#e3f1fb", ec=INK, lw=2, zorder=6))       # coelom
+    # gut
+    ax.add_patch(Circle((cx, cy + 10), 105, fc="#cfe6a8", ec=INK, lw=2.6, zorder=8))
+    ax.add_patch(Circle((cx, cy + 10), 60, fc="#fff7e0", ec=INK, lw=2, zorder=9))
+    # vessels and nerve cord
+    ax.add_patch(Circle((cx, cy + 135), 20, fc="#c0392b", ec=INK, lw=2, zorder=9))      # dorsal vessel
+    ax.add_patch(Circle((cx, cy - 135), 17, fc="#e8776a", ec=INK, lw=2, zorder=9))      # ventral vessel
+    ax.add_patch(Ellipse((cx, cy - 185), 64, 38, fc="#f4c542", ec=INK, lw=2, zorder=9)) # ventral nerve cord
+    # nephridium: small tubule sections on one side
+    for (dx, dy) in ((-150, -90), (-175, -60), (-130, -60)):
+        ax.add_patch(Circle((cx + dx, cy + dy), 12, fc="#e3f1fb", ec="#5a7da6", lw=3, zorder=9))
+    num(ax, 1, 1060, 800, cx + (R + 7) * np.cos(np.deg2rad(40)), cy + (R + 7) * np.sin(np.deg2rad(40)))
+    num(ax, 2, 140, 800, cx + (R - 10) * np.cos(np.deg2rad(140)), cy + (R - 10) * np.sin(np.deg2rad(140)))
+    num(ax, 3, 1130, 560, cx + (R - 28) * np.cos(np.deg2rad(20)), cy + (R - 28) * np.sin(np.deg2rad(20)))
+    num(ax, 4, 1130, 330, cx + (R - 60) * np.cos(np.deg2rad(-22)), cy + (R - 60) * np.sin(np.deg2rad(-22)))
+    num(ax, 5, 1080, 120, cx + 215 * np.cos(np.deg2rad(-45)), cy + 215 * np.sin(np.deg2rad(-45)))
+    num(ax, 6, 600, 40, cx - 60, cy - 70 + 10)
+    num(ax, 7, 840, 800, cx + 10, cy + 140)
+    num(ax, 8, 340, 120, cx - 12, cy - 140)
+    num(ax, 9, 760, 40, cx + 20, cy - 190)
+    num(ax, 10, 70, 450, cx - 175, cy - 60)
+    save(fig, "annelid-section")
+
+
+def flame_cell():
+    fig, ax = canvas(12, 8)
+    # parenchyma region
+    rect(ax, 60, 120, 1080, 600, fc="#f6ecd2", r=40)
+    ax.plot([60, 1140], [720, 720], color=INK, lw=0)
+    # flame cell
+    ell(ax, 260, 420, 300, 240, fc="#f2b8ad", z=3)
+    ell(ax, 275, 420, 190, 140, fc="#fbe3dc", z=4)          # cavity
+    for k in range(-4, 5):
+        t = np.linspace(0, 1, 20)
+        line(ax, [(190 + 160 * u, 420 + k * 12 + 8 * np.sin(6 * u + k)) for u in t], lw=2.2, color="#7d6608", z=6)
+    ax.add_patch(Circle((200, 330), 22, fc="#8e6aa8", ec=INK, lw=2, zorder=6))        # nucleus
+    # capillary and collecting duct to the pore
+    line(ax, [(410, 420), (520, 420), (560, 360), (640, 360)], lw=8, color="#5a7da6", z=5)
+    line(ax, [(640, 360), (800, 360), (860, 300), (960, 300), (1060, 300), (1140, 300)], lw=14, color="#5a7da6", z=5)
+    ell(ax, 700, 520, 120, 90, fc="#f2b8ad", z=3); ell(ax, 705, 520, 70, 50, fc="#fbe3dc", z=4)   # second flame cell
+    for k in range(-2, 3):
+        line(ax, [(670 + 70 * u, 520 + k * 12) for u in (0, 1)], lw=2, color="#7d6608", z=6)
+    line(ax, [(700, 475), (700, 410), (700, 362)], lw=7, color="#5a7da6", z=5)
+    ax.add_patch(Circle((1140, 300), 12, fc="white", ec=INK, lw=2.4, zorder=7))
+    num(ax, 1, 260, 640, 260, 530)
+    num(ax, 2, 130, 200, 235, 405)
+    num(ax, 3, 120, 560, 200, 337)
+    num(ax, 4, 520, 560, 520, 424)
+    num(ax, 5, 960, 440, 960, 308)
+    num(ax, 6, 1090, 420, 1140, 312)
+    num(ax, 7, 800, 180, 780, 220)
+    save(fig, "flame-cell")
+
+
+def myriapod_sections():
+    fig, ax = canvas(12, 7)
+    letter(ax, "A", 60, 620); letter(ax, "B", 660, 620)
+    # A centipede: dorsoventrally flattened, one pair of legs, lateral
+    ell(ax, 300, 320, 360, 170, fc="#d8c19a", z=3)
+    ell(ax, 300, 335, 150, 70, fc="#cfe6a8", z=4)                      # gut
+    ell(ax, 300, 255, 70, 28, fc="#f4c542", z=4)                       # nerve cord
+    for sg in (1, -1):
+        line(ax, [(300 + sg * 170, 300), (300 + sg * 250, 250), (300 + sg * 290, 150)], lw=8, z=2)
+    line(ax, [(150, 372), (450, 372)], lw=0)
+    # B millipede: cylindrical, two pairs of legs ventral
+    ax.add_patch(Circle((900, 340), 150, fc="#d8c19a", ec=INK, lw=2.6, zorder=3))
+    ell(ax, 900, 365, 150, 85, fc="#cfe6a8", z=4)
+    ell(ax, 900, 235, 70, 28, fc="#f4c542", z=4)
+    for dx in (-85, -40, 40, 85):
+        line(ax, [(900 + dx, 215), (900 + dx * 1.15, 150), (900 + dx * 1.25, 90)], lw=7, z=2)
+    num(ax, 1, 300, 600, 300, 400)
+    num(ax, 2, 420, 480, 330, 345)
+    num(ax, 3, 110, 80, 30, 200)
+    num(ax, 4, 120, 400, 275, 255)
+    num(ax, 1, 900, 600, 900, 490)
+    num(ax, 2, 1110, 470, 940, 380)
+    num(ax, 3, 640, 90, 802, 150)
+    num(ax, 4, 1110, 260, 925, 238)
+    save(fig, "myriapod-sections")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1298,7 +1390,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "body-cavities": body_cavities, "nematode-bodywall": nematode_bodywall,
        "nematode-routes": nematode_routes,
        "mollusc-plan": mollusc_plan, "echino-symmetry": echino_symmetry,
-       "cilium-stroke": cilium_stroke, "coral-polyp": coral_polyp}
+       "cilium-stroke": cilium_stroke, "coral-polyp": coral_polyp,
+       "annelid-section": annelid_section, "flame-cell": flame_cell, "myriapod-sections": myriapod_sections}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)

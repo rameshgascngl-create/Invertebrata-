@@ -65,6 +65,7 @@ object BookFigureLibrary {
         "taenia-cycle", "taenia-parts", "sponge-grades", "cnidarian-forms", "metameres",
         "host-cycles", "pearl-formation", "body-cavities", "nematode-bodywall", "nematode-routes",
         "mollusc-plan", "echino-symmetry", "cilium-stroke", "coral-polyp",
+        "annelid-section", "flame-cell", "myriapod-sections",
     ).map { BookLibraryFigure(it, "book_figures/$it", schematic) }
 
     private val byId = all.associateBy { it.id }

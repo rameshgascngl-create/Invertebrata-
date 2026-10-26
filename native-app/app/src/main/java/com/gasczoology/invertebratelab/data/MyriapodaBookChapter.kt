@@ -99,6 +99,9 @@ object MyriapodaBookChapter {
                 )),
             bsec("compare", "The centipede and the millipede compared", "நூறுகாலியும் ஆயிரங்காலியும் ஒப்பீடு",
                 blocks = listOf(
+                    bfig("lib/myriapod-sections",
+                        "Transverse sections of the two groups (schematic): (A) centipede, flattened from above downwards, with one pair of legs on each segment; (B) millipede, cylindrical, in a section through a diplosegment with two pairs of legs. (1) dorsal plate, (2) gut, (3) leg, (4) ventral nerve cord.",
+                        "இரு குழுக்களின் குறுக்கு வெட்டுகள் (படத்திட்டம்): (A) நூறுகாலி, மேலிருந்து கீழாகத் தட்டையானது, ஒவ்வொரு கண்டத்திலும் ஓர் இணைக் கால்; (B) ஆயிரங்காலி, உருளை வடிவம், இரட்டைக் கண்டத்தின் வழி வெட்டில் இரண்டு இணைக் கால்கள். (1) முதுகுத் தகடு, (2) குடல், (3) கால், (4) வயிற்றுப்புற நரம்புத் தண்டு."),
                     btable("Chilopoda compared with Diplopoda", "கைலோபோடாவும் டிப்ளோபோடாவும் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Centipede (Scolopendra)" to "நூறுகாலி (ஸ்கோலோபெண்ட்ரா)", "Millipede (Spirostreptus)" to "ஆயிரங்காலி (ஸ்பைரோஸ்ட்ரெப்டஸ்)"),
                         listOf(

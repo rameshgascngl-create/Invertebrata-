@@ -146,6 +146,27 @@ PLACEMENTS = [
      "கல் பவளத்தின் பாலிப், எலும்புக்கூட்டுக் கிண்ணத்துக்குள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) உணர்நீட்சி, (2) குறுகிய தொண்டையின் மேல் வாய், "
      "(3) உடற்சுவர், (4) இரைப்பை-நாளக் குழி, (5) எலும்புக்கூட்டுக் கிண்ணம் (கேலிக்ஸ்), (6) செப்டம், எலும்புக்கூட்டு முகடு, "
      "(7) திசுவிலுள்ள சூக்சாந்தெல்லா."),
+    ("AnnelidaBookChapter.kt", "body-wall", None, "annelid-section",
+     "Transverse section through the trunk of an annelid, dorsal side up (schematic): (1) cuticle, (2) epidermis, "
+     "(3) circular muscle, (4) longitudinal muscle, (5) coelom, (6) gut, (7) dorsal blood vessel, (8) ventral blood vessel, "
+     "(9) ventral nerve cord, (10) nephridium, cut across its tubule.",
+     "அனெலிடாவின் உடற்பகுதி குறுக்கு வெட்டு, முதுகுப்புறம் மேலே (படத்திட்டம்): (1) கியூட்டிக்கிள், (2) மேலணி, "
+     "(3) வட்டத் தசை, (4) நீள்வாட்டுத் தசை, (5) உடற்குழி, (6) குடல், (7) முதுகுப்புற இரத்த நாளம், (8) வயிற்றுப்புற இரத்த நாளம், "
+     "(9) வயிற்றுப்புற நரம்புத் தண்டு, (10) நெஃப்ரிடியம், குழல் குறுக்காக வெட்டப்பட்டது."),
+    ("PlatyhelminthesBookChapter.kt", "flame-cells", None, "flame-cell",
+     "A flame cell and its duct in the parenchyma of a flatworm (schematic): (1) flame cell, a hollow cell, "
+     "(2) tuft of beating cilia in its cavity, (3) nucleus, (4) excretory capillary, (5) collecting duct, "
+     "(6) excretory pore, (7) parenchyma.",
+     "தட்டைப்புழுவின் பாரங்கைமாவிலுள்ள சுடர்ச் செல்லும் அதன் நாளமும் (படத்திட்டம்): (1) சுடர்ச் செல், உள்ளீடற்ற செல், "
+     "(2) அதன் குழிக்குள் அசையும் குறுஇழைக் கற்றை, (3) உட்கரு, (4) கழிவு நுண்குழல், (5) சேகரிப்பு நாளம், "
+     "(6) கழிவுத் துளை, (7) பாரங்கைமா."),
+    ("MyriapodaBookChapter.kt", "compare", None, "myriapod-sections",
+     "Transverse sections of the two groups (schematic): (A) centipede, flattened from above downwards, with one pair of legs "
+     "on each segment; (B) millipede, cylindrical, in a section through a diplosegment with two pairs of legs. "
+     "(1) dorsal plate, (2) gut, (3) leg, (4) ventral nerve cord.",
+     "இரு குழுக்களின் குறுக்கு வெட்டுகள் (படத்திட்டம்): (A) நூறுகாலி, மேலிருந்து கீழாகத் தட்டையானது, ஒவ்வொரு கண்டத்திலும் ஓர் இணைக் கால்; "
+     "(B) ஆயிரங்காலி, உருளை வடிவம், இரட்டைக் கண்டத்தின் வழி வெட்டில் இரண்டு இணைக் கால்கள். "
+     "(1) முதுகுத் தகடு, (2) குடல், (3) கால், (4) வயிற்றுப்புற நரம்புத் தண்டு."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",
