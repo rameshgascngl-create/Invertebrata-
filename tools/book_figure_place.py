@@ -56,6 +56,29 @@ PLACEMENTS = [
      "described in the text; the numbers in the diagram are the author's and are not keyed here.",
      "பிளாஸ்மோடியத்தின் வாழ்க்கைச் சுழற்சி (P. falciparum அடிப்படையிலான ஆசிரியரின் வரைபடம்). நிலைகள் உரையில் "
      "விளக்கப்பட்டுள்ளன; படத்திலுள்ள எண்கள் ஆசிரியருடையவை, இங்கே விளக்கப்படவில்லை."),
+    ("PoriferaCanalsBookChapter.kt", "comparison", None, "sponge-grades",
+     "The three grades of canal system, in longitudinal section (schematic; blue arrows show the water current, "
+     "green lines the layer of choanocytes): (A) asconoid, (B) syconoid, (C) leuconoid. "
+     "(1) osculum, (2) spongocoel, (3) ostium, (4) choanocyte layer lining the spongocoel, (5) radial canal, "
+     "(6) incurrent canal, (7) flagellated chamber, (8) excurrent canal.",
+     "கால்வாய்த் தொகுதியின் மூன்று நிலைகள், நீளவெட்டு (படத்திட்டம்; நீல அம்புகள் நீரோட்டத்தையும் பச்சைக் கோடுகள் காலர் செல் அடுக்கையும் காட்டுகின்றன): "
+     "(A) அஸ்கோனாய்டு, (B) சைக்கனாய்டு, (C) லியூக்கோனாய்டு. "
+     "(1) ஆஸ்குலம், (2) ஸ்பாஞ்சோசீல், (3) ஆஸ்டியம், (4) ஸ்பாஞ்சோசீலை வரிசையிடும் காலர் செல் அடுக்கு, (5) ஆரக் கால்வாய், "
+     "(6) உள்வரு கால்வாய், (7) கசையிழை அறை, (8) வெளிச்செல் கால்வாய்."),
+    ("CnidariaBookChapter.kt", "forms", None, "cnidarian-forms",
+     "The two body forms of the Cnidaria as one plan (schematic): (A) polyp, (B) medusa. "
+     "A: (1) mouth on the hypostome, (2) body wall, (3) gastrovascular cavity, (4) tentacle, (5) pedal disc. "
+     "B: (6) exumbrella, the outer surface of the bell, (2) body wall of the bell, (7) manubrium, (1) mouth.",
+     "நிடேரியாவின் இரு உடல் வடிவங்கள் ஒரே அமைப்பாக (படத்திட்டம்): (A) பாலிப், (B) மெடூசா. "
+     "A: (1) ஹைப்போஸ்டோமில் உள்ள வாய், (2) உடற்சுவர், (3) இரைப்பை-நாளக் குழி, (4) உணர்நீட்சி, (5) அடிப்பாதத் தட்டு. "
+     "B: (6) மணியின் வெளிப்புறப் பரப்பு (எக்சும்ப்ரெல்லா), (2) மணியின் உடற்சுவர், (7) மானுப்ரியம், (1) வாய்."),
+    ("MetamerismBookChapter.kt", "repeated-parts", None, "metameres",
+     "Five segments of a segmented worm in longitudinal section, dorsal side up (schematic): (1) body wall, "
+     "(2) coelomic compartment, (3) septum, (4) dorsal blood vessel, (5) ventral nerve cord, (6) ganglion, "
+     "(7) gut, which runs through every segment, (8) chaeta, (9) prostomium, (10) pygidium, (11) nephridium.",
+     "கண்டமுடைய புழுவின் ஐந்து கண்டங்கள், முதுகுப்புறம் மேலே இருக்க நீளவெட்டு (படத்திட்டம்): (1) உடற்சுவர், "
+     "(2) உடற்குழிப் பெட்டகம், (3) தடுப்புச் சுவர் (செப்டம்), (4) முதுகுப்புற இரத்த நாளம், (5) வயிற்றுப்புற நரம்புத் தண்டு, (6) நரம்புத் திரள் (கேங்கிலியம்), "
+     "(7) எல்லாக் கண்டங்கள் வழியாகவும் செல்லும் குடல், (8) சீட்டா, (9) புரோஸ்டோமியம், (10) பைஜிடியம், (11) நெஃப்ரிடியம்."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",

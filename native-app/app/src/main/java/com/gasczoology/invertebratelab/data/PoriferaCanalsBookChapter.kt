@@ -110,6 +110,9 @@ object PoriferaCanalsBookChapter {
                 )),
             bsec("comparison", "Comparison of the three grades", "மூன்று நிலைகளின் ஒப்பீடு",
                 blocks = listOf(
+                    bfig("lib/sponge-grades",
+                        "The three grades of canal system, in longitudinal section (schematic; blue arrows show the water current, green lines the layer of choanocytes): (A) asconoid, (B) syconoid, (C) leuconoid. (1) osculum, (2) spongocoel, (3) ostium, (4) choanocyte layer lining the spongocoel, (5) radial canal, (6) incurrent canal, (7) flagellated chamber, (8) excurrent canal.",
+                        "கால்வாய்த் தொகுதியின் மூன்று நிலைகள், நீளவெட்டு (படத்திட்டம்; நீல அம்புகள் நீரோட்டத்தையும் பச்சைக் கோடுகள் காலர் செல் அடுக்கையும் காட்டுகின்றன): (A) அஸ்கோனாய்டு, (B) சைக்கனாய்டு, (C) லியூக்கோனாய்டு. (1) ஆஸ்குலம், (2) ஸ்பாஞ்சோசீல், (3) ஆஸ்டியம், (4) ஸ்பாஞ்சோசீலை வரிசையிடும் காலர் செல் அடுக்கு, (5) ஆரக் கால்வாய், (6) உள்வரு கால்வாய், (7) கசையிழை அறை, (8) வெளிச்செல் கால்வாய்."),
                     btable("Comparison of asconoid, syconoid and leuconoid grades", "அஸ்கோனாய்டு, சைக்கனாய்டு, லியூக்கோனாய்டு நிலைகளின் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Asconoid" to "அஸ்கோனாய்டு", "Syconoid" to "சைக்கனாய்டு", "Leuconoid" to "லியூக்கோனாய்டு"),
                         listOf(

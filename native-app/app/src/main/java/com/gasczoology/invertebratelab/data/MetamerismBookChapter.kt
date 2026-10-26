@@ -34,6 +34,9 @@ object MetamerismBookChapter {
                 )),
             bsec("repeated-parts", "What is repeated in each segment", "ஒவ்வொரு கண்டத்திலும் மீள்வது என்ன",
                 blocks = listOf(
+                    bfig("lib/metameres",
+                        "Five segments of a segmented worm in longitudinal section, dorsal side up (schematic): (1) body wall, (2) coelomic compartment, (3) septum, (4) dorsal blood vessel, (5) ventral nerve cord, (6) ganglion, (7) gut, which runs through every segment, (8) chaeta, (9) prostomium, (10) pygidium, (11) nephridium.",
+                        "கண்டமுடைய புழுவின் ஐந்து கண்டங்கள், முதுகுப்புறம் மேலே இருக்க நீளவெட்டு (படத்திட்டம்): (1) உடற்சுவர், (2) உடற்குழிப் பெட்டகம், (3) தடுப்புச் சுவர் (செப்டம்), (4) முதுகுப்புற இரத்த நாளம், (5) வயிற்றுப்புற நரம்புத் தண்டு, (6) நரம்புத் திரள் (கேங்கிலியம்), (7) எல்லாக் கண்டங்கள் வழியாகவும் செல்லும் குடல், (8) சீட்டா, (9) புரோஸ்டோமியம், (10) பைஜிடியம், (11) நெஃப்ரிடியம்."),
                     bpoints("Structures repeated segmentally in an annelid", "அனெலிடாவில் கண்ட வாரியாக மீள்வரும் அமைப்புகள்",
                         "A compartment of the coelom bounded by septa." to "தடுப்புகளால் எல்லையிடப்பட்ட உடற்குழி அறை.",
                         "A ganglion of the ventral nerve cord, with a set of segmental nerves." to "வயிற்றுப்புற நரம்புவடத்தின் நரம்புத் திரளும் கண்ட நரம்புகளின் தொகுப்பும்.",

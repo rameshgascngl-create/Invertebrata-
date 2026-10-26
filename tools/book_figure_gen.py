@@ -806,6 +806,144 @@ def taenia_parts():
     save(fig, "taenia-parts")
 
 
+def sponge_grades():
+    """Three canal-system grades in section. Water path: blue arrows; choanocyte layers: green."""
+    fig, ax = canvas()
+    W = "#cfe6f7"
+    G = "#7fbf7f"
+    def vase(cx, w, cav, top=700, bot=130):
+        rect(ax, cx - w / 2, bot, w, top - bot, fc="#f1dcb0", r=30)
+        rect(ax, cx - cav / 2, bot + 25, cav, top - bot - 25 + 2, fc=W, lw=2, z=4)
+        rect(ax, cx - cav / 2, top - 6, cav, 20, fc="white", ec="white", lw=0, z=5)  # osculum opening
+    letter(ax, "A", 70, 800); letter(ax, "B", 470, 800); letter(ax, "C", 870, 800)
+    # A asconoid
+    cx = 200; vase(cx, 150, 70)
+    for y in (240, 340, 440, 540, 620):
+        line(ax, [(cx - 75, y), (cx - 35, y)], lw=7, color=W, z=5)
+        line(ax, [(cx + 35, y), (cx + 75, y)], lw=7, color=W, z=5)
+        arrow(ax, (cx - 130, y), (cx - 80, y), lw=2.4, color="#2471a3")
+        arrow(ax, (cx + 130, y), (cx + 80, y), lw=2.4, color="#2471a3")
+    line(ax, [(cx - 35, 155), (cx - 35, 700)], lw=6, color=G, z=6)
+    line(ax, [(cx + 35, 155), (cx + 35, 700)], lw=6, color=G, z=6)
+    arrow(ax, (cx, 600), (cx, 770), lw=3, color="#2471a3")
+    # B syconoid
+    cx = 600; vase(cx, 250, 70)
+    for y in (230, 330, 430, 530, 620):
+        rect(ax, cx - 125 + 55, y - 18, 65, 36, fc=W, lw=2, z=5)          # radial canal (left)
+        rect(ax, cx + 125 - 55 - 65, y - 18, 65, 36, fc=W, lw=2, z=5)     # radial canal (right)
+        line(ax, [(cx - 70, y - 18), (cx - 70, y + 18)], lw=4, color=G, z=6)
+        line(ax, [(cx + 70, y - 18), (cx + 70, y + 18)], lw=4, color=G, z=6)
+    for y in (280, 380, 480, 575):                                           # incurrent canals
+        rect(ax, cx - 125 + 3, y - 12, 55, 24, fc="#dbe9f4", lw=2, z=5)
+        rect(ax, cx + 125 - 58, y - 12, 55, 24, fc="#dbe9f4", lw=2, z=5)
+        arrow(ax, (cx - 175, y), (cx - 110, y), lw=2.4, color="#2471a3")
+        arrow(ax, (cx + 175, y), (cx + 110, y), lw=2.4, color="#2471a3")
+    arrow(ax, (cx, 600), (cx, 770), lw=3, color="#2471a3")
+    # C leuconoid
+    cx = 1000; vase(cx, 270, 36)
+    import random
+    random.seed(4)
+    chambers = []
+    for y in (200, 290, 380, 470, 560, 640):
+        for dx in (-90, -40, 40, 90):
+            xx = cx + dx + (8 if (y // 90) % 2 else -8) * (1 if dx < 0 else -1)
+            chambers.append((xx, y))
+    for xx, y in chambers:
+        ax.add_patch(Circle((xx, y), 24, fc=W, ec=G, lw=5, zorder=5))
+        tx = cx + (-30 if xx < cx else 30)
+        line(ax, [(xx + (24 if xx < cx else -24), y), (tx, y)], lw=2, color="#5a7da6", z=5)
+    for y in (200, 380, 560):
+        arrow(ax, (cx - 190, y + 40), (cx - 130, y + 40), lw=2.4, color="#2471a3")
+        arrow(ax, (cx + 190, y + 40), (cx + 130, y + 40), lw=2.4, color="#2471a3")
+    arrow(ax, (cx, 600), (cx, 770), lw=3, color="#2471a3")
+    # numerals: 1 osculum, 2 spongocoel, 3 ostium, 4 choanocyte layer, 5 radial canal,
+    # 6 incurrent canal, 7 flagellated chamber, 8 excurrent canal
+    num(ax, 1, 120, 840, 200, 700)
+    num(ax, 2, 330, 400, 200, 400)
+    num(ax, 3, 60, 340, 125, 340)
+    num(ax, 4, 330, 520, 235, 520)
+    num(ax, 1, 520, 840, 600, 700)
+    num(ax, 2, 740, 400, 600, 400)
+    num(ax, 5, 800, 620, 640, 620)
+    num(ax, 6, 440, 90, 480, 280)
+    num(ax, 1, 920, 840, 1000, 700)
+    num(ax, 7, 1135, 300, 1050, 290)
+    num(ax, 8, 800, 130, 1000, 250, r=26)
+    save(fig, "sponge-grades")
+
+
+def cnidarian_forms():
+    """Polyp (A) and medusa (B) as the same plan, one upright, one inverted."""
+    fig, ax = canvas()
+    letter(ax, "A", 70, 840); letter(ax, "B", 670, 840)
+    # polyp
+    ell_c = "#f1dcb0"
+    rect(ax, 190, 120, 200, 420, fc=ell_c, r=40)                  # body
+    rect(ax, 235, 160, 110, 340, fc="#cfe6f7", lw=2, z=4)          # gastrovascular cavity
+    rect(ax, 160, 70, 260, 60, fc="#b8a37a", r=14)                 # pedal disc
+    ax.add_patch(Ellipse((290, 545), 110, 40, fc="#e9c999", ec=INK, lw=2.4, zorder=5))   # hypostome
+    ax.add_patch(Ellipse((290, 548), 60, 20, fc="#cfe6f7", ec=INK, lw=2, zorder=6))      # mouth
+    for dx in (-110, -60, 60, 110):
+        line(ax, [(290 + dx * 0.55, 540), (290 + dx, 640), (290 + dx * 1.15, 740)], lw=6, color="#a0825a")
+    line(ax, [(195, 160), (195, 520)], lw=2, color=INK, z=6); line(ax, [(385, 160), (385, 520)], lw=2, color=INK, z=6)
+    # medusa (bell mouth downwards)
+    ax.add_patch(Wedge((900, 400), 250, 0, 180, fc="#f1dcb0", ec=INK, lw=2.8, zorder=3))
+    ax.add_patch(Wedge((900, 400), 205, 0, 180, fc="#cfe6f7", ec=INK, lw=2, zorder=4))
+    rect(ax, 865, 220, 70, 190, fc="#e9c999", r=20, z=6)             # manubrium
+    ax.add_patch(Ellipse((900, 222), 50, 18, fc="#cfe6f7", ec=INK, lw=2, zorder=7))   # mouth
+    for dx in (-230, 230):
+        for k in range(3):
+            line(ax, [(900 + dx, 400 - k * 20), (900 + dx * 1.04, 330 - k * 40), (900 + dx * 1.02, 250 - k * 55)], lw=5, color="#a0825a")
+    line(ax, [(900, 400), (900, 590)], lw=0)
+    line(ax, [(690, 400), (1110, 400)], lw=5, color="#a0825a", z=8)  # velum / rim
+    line(ax, [(900, 400), (800, 600)], lw=2, color="#2471a3", ls="--", z=8)  # radial canal
+    line(ax, [(900, 400), (1000, 600)], lw=2, color="#2471a3", ls="--", z=8)
+    num(ax, 1, 90, 560, 255, 546)
+    num(ax, 2, 90, 400, 195, 400)
+    num(ax, 3, 490, 400, 290, 330)
+    num(ax, 4, 490, 700, 345, 700)
+    num(ax, 5, 490, 100, 290, 100)
+    num(ax, 2, 1130, 640, 1090, 540)
+    num(ax, 6, 700, 700, 720, 560)
+    num(ax, 7, 1130, 280, 935, 300)
+    num(ax, 1, 700, 140, 870, 222)
+    save(fig, "cnidarian-forms")
+
+
+def metameres():
+    """Schematic longitudinal section of a segmented worm: five segments."""
+    fig, ax = canvas(12, 8)
+    n, x0, sw = 5, 180, 170
+    rect(ax, x0 - 60, 220, n * sw + 120, 340, fc="#f6e8cf", r=60)       # body wall
+    for i in range(n):
+        xs = x0 + i * sw
+        rect(ax, xs + 8, 235, sw - 16, 310, fc="#fbf5e8", lw=1.2, z=3)      # coelomic compartment
+        if i:
+            line(ax, [(xs, 235), (xs, 545)], lw=6, z=5)                      # septum
+        ax.add_patch(Circle((xs + sw / 2, 285), 15, fc="#f4c542", ec=INK, lw=2, zorder=7))   # ganglion
+        line(ax, [(xs + sw / 2, 300), (xs + sw / 2, 340)], lw=2, z=6)
+        line(ax, [(xs + sw / 2 - 40, 480), (xs + sw / 2 - 25, 430), (xs + sw / 2 - 5, 450), (xs + sw / 2 + 5, 500)], lw=4, color="#5a7da6", z=6)  # nephridium
+        line(ax, [(xs + sw / 2 + 50, 235), (xs + sw / 2 + 50, 200)], lw=4, z=6)                                                            # chaeta
+        line(ax, [(xs + sw / 2 + 60, 235), (xs + sw / 2 + 60, 205)], lw=4, z=6)
+    rect(ax, x0 - 30, 390, n * sw + 60, 50, fc="#e6a57e", lw=2.4, z=6)      # gut
+    line(ax, [(x0 - 30, 475), (x0 + n * sw + 30, 475)], lw=5, color="#c0392b", z=6)                 # dorsal vessel
+    line(ax, [(x0 - 30, 330), (x0 + n * sw + 30, 330)], lw=6, color="#f4c542", z=6)                 # nerve cord
+    ell(ax, x0 - 100, 390, 70, 120, fc="#d9a066", z=3)                                              # prostomium region
+    ell(ax, x0 + n * sw + 90, 390, 60, 120, fc="#d9a066", z=3)                                      # pygidium region
+    num(ax, 1, 300, 650, 330, 553)
+    num(ax, 2, 480, 650, 480, 515)
+    num(ax, 3, 690, 650, 690, 520)
+    num(ax, 4, 880, 650, 860, 476)
+    num(ax, 5, 1040, 650, 1030, 332)
+    num(ax, 6, 440, 120, 435, 285, r=26)
+    num(ax, 7, 700, 120, 700, 392)
+    num(ax, 8, 880, 120, 835, 212)
+    num(ax, 9, 130, 650, 85, 480)
+    num(ax, 10, 1130, 650, 1090, 480)
+    num(ax, 11, 560, 120, 583, 432)
+    save(fig, "metameres")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -813,7 +951,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "parasitoid-cycle": parasitoid, "vector-cycle": vector_cycle, "leech": leech,
        "polychaete-asexual": polychaete_asexual, "crinoid": crinoid,
        "aurelia-cycle": aurelia_cycle, "anemone-section": anemone_section,
-       "taenia-cycle": taenia_cycle, "taenia-parts": taenia_parts}
+       "taenia-cycle": taenia_cycle, "taenia-parts": taenia_parts,
+       "sponge-grades": sponge_grades, "cnidarian-forms": cnidarian_forms, "metameres": metameres}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)

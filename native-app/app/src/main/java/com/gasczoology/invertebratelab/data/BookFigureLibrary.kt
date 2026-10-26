@@ -62,7 +62,7 @@ object BookFigureLibrary {
     ) + listOf(
         "insect-tagmata", "metamorphosis", "parasitoid-cycle", "vector-cycle", "leech",
         "polychaete-asexual", "crinoid", "aurelia-cycle", "anemone-section",
-        "taenia-cycle", "taenia-parts",
+        "taenia-cycle", "taenia-parts", "sponge-grades", "cnidarian-forms", "metameres",
     ).map { BookLibraryFigure(it, "book_figures/$it", schematic) }
 
     private val byId = all.associateBy { it.id }

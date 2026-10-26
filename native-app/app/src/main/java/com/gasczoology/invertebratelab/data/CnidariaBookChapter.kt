@@ -128,6 +128,9 @@ object CnidariaBookChapter {
                 blocks = listOf(
                     bp("The two body forms of cnidarians are variations of one plan. The polyp is a cylinder, attached by its base, with the mouth and tentacles at the free end. The medusa may be thought of as a polyp turned upside down and flattened, so that the mouth is directed downwards, with a bell of mesoglea that makes it buoyant. Some cnidarians have only the polyp, some only the medusa, and many have both in a life cycle." to
                         "நிடேரியாக்களின் இரு உடல் வடிவங்கள் ஒரே திட்டத்தின் மாறுபாடுகள். பாலிப் அடியால் ஒட்டிய உருளை; வாயும் உணர்கொம்புகளும் தனித்த முனையில் இருக்கும். மெடுசாவை தலைகீழாகத் திருப்பி தட்டையாக்கிய பாலிப்பாகக் கருதலாம்; வாய் கீழ்நோக்கியிருக்கும்; மீசோகிளியாவால் ஆன மணி அதை மிதக்கச் செய்கிறது. சில நிடேரியாக்களுக்குப் பாலிப் மட்டுமே; சிலவற்றுக்கு மெடுசா மட்டுமே; பலவற்றின் வாழ்க்கைச் சுழற்சியில் இரண்டும் உள்ளன."),
+                    bfig("lib/cnidarian-forms",
+                        "The two body forms of the Cnidaria as one plan (schematic): (A) polyp, (B) medusa. A: (1) mouth on the hypostome, (2) body wall, (3) gastrovascular cavity, (4) tentacle, (5) pedal disc. B: (6) exumbrella, the outer surface of the bell, (2) body wall of the bell, (7) manubrium, (1) mouth.",
+                        "நிடேரியாவின் இரு உடல் வடிவங்கள் ஒரே அமைப்பாக (படத்திட்டம்): (A) பாலிப், (B) மெடூசா. A: (1) ஹைப்போஸ்டோமில் உள்ள வாய், (2) உடற்சுவர், (3) இரைப்பை-நாளக் குழி, (4) உணர்நீட்சி, (5) அடிப்பாதத் தட்டு. B: (6) மணியின் வெளிப்புறப் பரப்பு (எக்சும்ப்ரெல்லா), (2) மணியின் உடற்சுவர், (7) மானுப்ரியம், (1) வாய்."),
                     btable("Comparison of polyp and medusa", "பாலிப், மெடுசா ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Polyp" to "பாலிப்", "Medusa" to "மெடுசா"),
                         listOf(
