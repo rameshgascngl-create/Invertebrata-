@@ -1,6 +1,6 @@
 package com.gasczoology.invertebratelab
 
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.test.platform.app.InstrumentationRegistry
 
