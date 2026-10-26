@@ -21,7 +21,7 @@ ASSETS = ROOT / "native-app/app/src/main/assets/type_studies"
 PROV = ROOT / "provenance/plates.json"
 CREDITS = ASSETS / "plate_credits.json"
 MAX_EDGE_DEFAULT, MAX_EDGE_HARD, MIN_EDGE = 2560, 4096, 256
-EXTRAS = {"pila/shell-specimen-reference", "pila/swainson-1821-pila-ampullacea"}
+EXTRAS = {"pila/shell-specimen-reference", "pila/swainson-1821-pila-ampullacea", "ascaris/fertilized-egg"}
 
 
 def slots():
