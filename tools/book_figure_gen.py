@@ -45,18 +45,19 @@ def canvas(w=12, h=9):
     return fig, ax
 
 
-def num(ax, n, tx, ty, px=None, py=None, r=26):
+def num(ax, n, tx, ty, px=None, py=None, r=38):
     """Numbered marker at (tx, ty) with an optional leader line to (px, py)."""
     if px is not None:
         ax.plot([tx, px], [ty, py], color=INK, lw=1.8, zorder=8)
         ax.add_patch(Circle((px, py), 5, color=INK, zorder=9))
-    ax.add_patch(Circle((tx, ty), r, fc="white", ec=INK, lw=2.2, zorder=10))
-    ax.text(tx, ty - 1, str(n), ha="center", va="center", fontsize=19, fontweight="bold",
+    r = max(r, 38)   # numerals must stay readable when the figure is shown at phone width
+    ax.add_patch(Circle((tx, ty), r, fc="white", ec=INK, lw=2.6, zorder=10))
+    ax.text(tx, ty - 1, str(n), ha="center", va="center", fontsize=(34 if n < 10 else 29), fontweight="bold",
             color=INK, zorder=11)
 
 
 def letter(ax, s, x, y):
-    ax.text(x, y, s, fontsize=30, fontweight="bold", color=INK, ha="center", va="center")
+    ax.text(x, y, s, fontsize=44, fontweight="bold", color=INK, ha="center", va="center")
 
 
 def arrow(ax, p, q, rad=0.0, lw=3.0, color=INK, style="-|>", ls="-"):
@@ -769,7 +770,7 @@ def taenia_parts():
     rect(ax, 330, 618, 110, 44, fc=BODY, lw=2.4, r=10)          # neck
     # proglottids, immature to gravid
     x = 450
-    items = [("imm", 40, 50), ("imm", 56, 60), ("mat", 76, 80), ("mat", 96, 100), ("mat", 116, 110), ("grav", 150, 100), ("grav", 180, 90)]
+    items = [("imm", 35, 50), ("imm", 49, 60), ("mat", 67, 80), ("mat", 84, 100), ("mat", 102, 110), ("grav", 132, 100), ("grav", 158, 90)]
     for kind, w, h in items:
         rect(ax, x, 640 - h / 2, w, h, fc=BODY if kind != "grav" else "#f0e6c8", lw=2.2, r=4)
         if kind == "mat":
@@ -798,9 +799,9 @@ def taenia_parts():
     num(ax, 2, 90, 520, 130, 590)
     num(ax, 3, 330, 780, 230, 670)
     num(ax, 4, 390, 520, 390, 600)
-    num(ax, 5, 560, 840, 505, 670)
-    num(ax, 6, 770, 760, 740, 690)
-    num(ax, 7, 1000, 760, 960, 690)
+    num(ax, 5, 560, 840, 515, 670)
+    num(ax, 6, 770, 760, 660, 690)
+    num(ax, 7, 1000, 760, 880, 690)
     num(ax, 8, 420, 460, 420, 410)
     num(ax, 9, 1100, 440, 960, 340)
     save(fig, "taenia-parts")
@@ -1137,7 +1138,7 @@ def nematode_routes():
         for a, b in ((0, 1), (1, 2), (2, 3)):
             arrow(ax, (xs[a] + 85, yy + 20), (xs[b] - 100, yy + 20), lw=3)
     for n, x in zip((1, 2, 3, 4), xs):
-        num(ax, n, x, 880)
+        num(ax, n, x, 858)
     save(fig, "nematode-routes")
 
 

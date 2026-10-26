@@ -147,5 +147,23 @@ What changed:
   chapter text) and are not shipped.
 - Four Commons references are placed: Entamoeba and Leishmania (public domain), Trypanosoma (Johannahoog, CC BY-SA 3.0) and Plasmodium (Sina Adl, CC BY 4.0). The two author names were supplied by the owner and must be re-checked on the file pages before release.
 
+Audit of the figure sections (2026-10-26, after the last batch):
+- 42 library entries, all with an image file and a bilingual credit; none unused; 43 library placements in
+  29 chapters. One figure (vector cycle) is deliberately used in two chapters. Caption keys, English and Tamil,
+  match each other everywhere, and match the numerals drawn in the image.
+- **Fixed: numerals unreadable on a phone.** The schematics were 1200 px wide with numerals about 5 dp tall
+  when shown at phone width. Circles and numerals were enlarged (about 9 dp) and all 30 redrawn; the full-size view
+  is still available by tapping.
+- **Fixed: clipping.** The Taenia body-plan strobilus ran off the right edge and the top numerals of the nematode
+  routes figure were cut; both redrawn.
+- **Open, needs your decision: Tamil spelling of the animal name.** The Nereis chapter writes நெரிஸ்; the eight
+  Nereis plates (burned-in labels) write நெரீஸ், and the app as a whole uses both (13 and 15 occurrences). The
+  plates also use பாராபோடியா where the chapter writes பாரபோடியம். Labels burned into a raster cannot be edited;
+  either the plates are regenerated or the chapter adopts the plate spelling.
+- **Open: burned-in labels.** The Nereis plates carry English and Tamil labels inside the image, unlike the
+  type-study plates, whose labels are kept outside the pixels by project policy. Each plate is about 2 MB and
+  eight are now in one chapter; they are sub-sampled by the decoder.
+- Not checked: how any figure looks on a device; Tamil caption wrapping.
+
 Still open: 23 chapters have no figure; the schematics and the AI-generated Nereis plates need
 a subject-expert check; the Compose rendering is verified by CI only.
