@@ -32,7 +32,7 @@ class NativeR6ParameciumPencilTest {
         rule.onNodeWithTag(tag).assertExists()
     }
 
-    @Test fun photographedPencilSourceShowsOnlyThreeMatchingAnatomySlotsAndZoomsInTamil() {
+    @Test fun parameciumShowsFourPlateSlotsAndZoomsInTamil() {
         rule.onNodeWithTag("language-tamil").performClick()
         rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.onNodeWithTag("unit-1").performScrollTo().performClick()
@@ -51,8 +51,8 @@ class NativeR6ParameciumPencilTest {
             find(tag)
             rule.onNodeWithTag(tag).assertIsDisplayed()
         }
-        find("r2-plate-missing-paramecium-locomotion")
-        rule.onNodeWithTag("r2-plate-missing-paramecium-locomotion").assertExists()
+        find("r2-plate-slot-paramecium-locomotion")
+        rule.assertPlateState("paramecium", "locomotion")
         val zoom = "r2-plate-expand-paramecium-contractile-vacuoles"
         find(zoom)
         rule.onNodeWithTag(zoom).performClick()
@@ -81,6 +81,6 @@ class NativeR6ParameciumPencilTest {
         assertTrue(bmp!!.height > bmp.width)
         bmp.recycle()
         rule.onNodeWithTag("r2-fullscreen-close").performClick()
-        find("r2-plate-missing-paramecium-locomotion")
+        find("r2-plate-slot-paramecium-locomotion")
     }
 }

@@ -89,7 +89,7 @@ class NativeFiveUnitRestorationTest {
         find(ch, "a5-card-u1-protozoa-A5-1")
     }
 
-    @Test fun unitFivePilaTamilShowsFourMissingMastersAndFullLesson() {
+    @Test fun unitFivePilaTamilShowsFourPlateSlotsAndFullLesson() {
         val ch = "u5-pila"
         enter(5, ch, true)
         find(ch, "r2-type-study-gallery-pila")
@@ -102,7 +102,7 @@ class NativeFiveUnitRestorationTest {
         rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
         for (plate in listOf("external", "mantle-cavity", "ctenidium", "torsion")) {
             find(ch, "r2-plate-slot-pila-" + plate)
-            rule.onNodeWithTag("r2-plate-missing-pila-" + plate).assertExists()
+            rule.assertPlateState("pila", plate)
         }
         capture("unit5-pila-tamil-missing-plates")
         // At both 100% and 200% Tamil fonts, traverse EVERY substantive
@@ -149,7 +149,8 @@ class NativeFiveUnitRestorationTest {
         enter(5, ch, false)
         find(ch, "r2-type-study-gallery-pila")
         rule.onNodeWithTag("pila-review-image-01_shell_ventral_REVIEW").assertDoesNotExist()
-        find(ch, "r2-plate-missing-pila-mantle-cavity")
+        find(ch, "r2-plate-slot-pila-mantle-cavity")
+        rule.assertPlateState("pila", "mantle-cavity")
         find(ch, "restored-section-reproduction-and-development")
         find(ch, "restored-section-torsion-in-pila")
         capture("unit5-pila-english-late-chapter")
@@ -172,11 +173,12 @@ class NativeFiveUnitRestorationTest {
         find(ch, "a5-card-u5-asterias-A5-1")
     }
 
-    @Test fun unitFourPenaeusShowsMissingAnatomicalMastersAndOriginalPractice() {
+    @Test fun unitFourPenaeusShowsAppendagesSlotAndOriginalPractice() {
         val ch = "u4-penaeus"
         enter(4, ch, true)
         find(ch, "r2-type-study-gallery-penaeus")
-        find(ch, "r2-plate-missing-penaeus-appendages")
+        find(ch, "r2-plate-slot-penaeus-appendages")
+        rule.assertPlateState("penaeus", "appendages")
         capture("unit4-penaeus-tamil-missing-appendages")
         find(ch, "u4-penaeus-a5-original-heading")
         find(ch, "a5-card-u4-penaeus-A5-1")

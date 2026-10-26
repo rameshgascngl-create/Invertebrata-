@@ -52,7 +52,7 @@ for font in 100 200; do
     unit1-protozoa-english \
     unit5-pila-tamil-missing-plates \
     unit5-pila-tamil-final-lesson \
-    unit5-asterias-english-missing-plate \
+    unit5-asterias-english-source-plates \
     unit5-asterias-english-final-lesson \
     unit5-pila-english-late-chapter \
     unit5-asterias-tamil-late-chapter \

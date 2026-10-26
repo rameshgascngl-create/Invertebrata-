@@ -77,11 +77,13 @@ class NativeFiveUnitMissingRasterCoverageTest {
         find(root, "u2-stage-explanation")
         rule.onNodeWithTag("u2-sycon-historic-static-raster").assertDoesNotExist()
     }
-    @Test fun obeliaShowsRealColonyAndLifeCycleImagesWithTwoPendingMasters() {
+    @Test fun obeliaShowsAllFourPlateSlotsWithRealColonyAndLifeCycleImages() {
         val root = enter(2, "u2-obelia", true)
         find(root, "r2-type-study-gallery-obelia")
-        for (plate in listOf("hydranth-gonangium","medusa"))
-            find(root, "r2-plate-missing-obelia-$plate")
+        for (plate in listOf("hydranth-gonangium","medusa")) {
+            find(root, "r2-plate-slot-obelia-$plate")
+            rule.assertPlateState("obelia", plate)
+        }
         find(root, "r2-plate-bitmap-obelia-colony")
         rule.onNodeWithTag("r2-plate-bitmap-obelia-colony").assertIsDisplayed()
         find(root, "r2-plate-bitmap-obelia-life-cycle")

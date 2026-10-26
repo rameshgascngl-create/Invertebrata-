@@ -41,8 +41,10 @@ import xml.etree.ElementTree as ET
 files=list(Path(sys.argv[1]).rglob("TEST-*.xml"))
 assert files, "Missing real Android instrumentation XML"
 cases=[c for f in files for c in ET.parse(f).getroot().iter("testcase")]
-expected=1 if sys.argv[2] in ("NativeR6ParameciumPencilTest","NativeR7SinglePlateLabTest") else 4
-assert len(cases)==expected, ("Not all image/textbook tests ran",len(cases),sys.argv[2])
+src=Path("native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/"+sys.argv[2]+".kt").read_text(encoding="utf-8")
+expected=sum(1 for line in src.splitlines() if line.strip().startswith("@Test"))
+assert expected>0, ("No @Test found in source",sys.argv[2])
+assert len(cases)==expected, ("Not all image/textbook tests ran",len(cases),"expected",expected,sys.argv[2])
 assert all(c.get("classname")=="com.gasczoology.invertebratelab."+sys.argv[2] for c in cases)
 assert all(c.find(k) is None for c in cases for k in ("failure","error","skipped"))
 print("R7_ANDROID_REAL_UI_TESTS=PASS",sys.argv[2],len(cases))
@@ -51,7 +53,7 @@ PY
 done
 adb pull "$D" "$E/captured" > "$E/final-pull.log"
 for size in 100 200;do
-  for scene in unit1-protozoa-english unit5-pila-tamil-missing-plates unit5-asterias-english-missing-plate unit4-penaeus-tamil-missing-appendages;do
+  for scene in unit1-protozoa-english unit5-pila-tamil-missing-plates unit5-asterias-english-source-plates unit4-penaeus-tamil-missing-appendages;do
     [[ -s "$E/captured/r2-$size-$scene.png" ]] || { result="MISSING_UI_SCREEN_${size}_${scene}";exit 1; }
   done
   for scene in u2-sycon-english u2-obelia-tamil u3-fasciola-english u3-ascaris-tamil;do

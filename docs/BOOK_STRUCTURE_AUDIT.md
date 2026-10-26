@@ -183,3 +183,13 @@ Second batch and final audit (2026-10-26, owner-approved: draw only what the cha
   (the parasitoid cycle is already shown in the insect chapters).
 - Not checked: how any figure looks on a device; Tamil caption wrapping. The schematics and the AI-generated Nereis plates
   have had no subject-expert review (owner: not required for now). Tamil captions are drafts.
+
+### 6.8 Stale CI guards fixed (2026-10-26)
+
+The workflow `native-five-unit-restoration.yml` failed in two places because its guards still described the repository as it was before 22 Oct. Nothing was wrong with the app assets; the guards were out of date.
+
+- **`asset-inventory` / Paramecium step.** It compared `unit1/paramecium_{external,oral,vacuole}.png` with the type-study crops, but those photographed pencil sources were removed on purpose in b7a4ee5 (their CC BY-SA obligation was the reason). They were **not restored**. The step now checks the four current Paramecium plates against the sha256, size, dimensions and licence hold recorded in `provenance/plates.json`, and fails if a legacy photograph reappears.
+- **`asset-inventory` / plate register step.** Pinned to 43 required and 20 present; the audit script now reports 52 required, 46 present and 6 missing. The step pins the new counts and names the six missing Unit I stems, so a lost plate or an unrecorded new one both fail. No plate is academically approved.
+- **`android-ui-r7` / emulator suites.** Five instrumented tests asserted the "missing plate" card for plates that are now packaged (Pila x4, Penaeus appendages, Paramecium locomotion, Obelia hydranth-gonangium and medusa; all 35 required type-study rasters now ship). They now use `assertPlateState`, which follows the real asset state: a shipped raster must render as a bitmap and not as a missing card, an absent one must show the missing card. Packaging a plate does not accept it. The runner also expected 4 tests where `NativeFiveUnitRestorationTest` has 6, and a screenshot name that the test no longer writes; the expected count is now read from the test source.
+- **Not changed, and still stale:** `NativeU60ImagePlacementTest` still expects Trypanosoma and Leishmania "pending" cards, and has a literal `\n` inside a comment that comments out its A5-heading check. `RequiredTypeStudyPlates.kt` still names the removed `unit1/paramecium_*` files as unused fallbacks (and `Native43ChapterTextbookCoverageTest` pins that mapping). The `u57`/`u60` workflows run only on other branches.
+- **Holds preserved:** anatomical accuracy, Tamil terminology, source rights ("rights holder to confirm") and the physical-device release check are untouched and are still reported as HOLD by the workflow.

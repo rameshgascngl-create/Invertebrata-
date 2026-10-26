@@ -98,14 +98,13 @@ class NativeU60ImagePlacementTest {
         rule.onNodeWithTag("u1-independent-protozoa-reference-atlas").assertDoesNotExist()
     }
 
-    @Test fun parameciumTypeStudyNeverReusesPhotographedSourceAcrossFourSlots() {
+    @Test fun parameciumTypeStudyShowsFourSlotsWithoutReusingOnePhotograph() {
         enterUnit(true)
         openChapter("u1-paramecium")
         for (plate in listOf("external-cilia","oral-apparatus","contractile-vacuoles","locomotion")) {
             rule.onNodeWithTag("native-chapter-u1-paramecium")
                 .performScrollToNode(hasTestTag("r2-plate-slot-paramecium-"+plate))
-            rule.onNodeWithTag("r2-plate-missing-paramecium-"+plate).assertExists()
-            rule.onNodeWithTag("r2-plate-bitmap-paramecium-"+plate).assertDoesNotExist()
+            rule.assertPlateState("paramecium", plate)
         }
         shot("paramecium-missing-unique-plates")
         // The A5 heading is a lazy-list item below the four reference slots.\n        // Scroll it into composition before asserting it, including at 200% Tamil.\n        rule.onNodeWithTag("native-chapter-u1-paramecium")\n            .performScrollToNode(hasTestTag("restoration-a5-heading"))\n        rule.onNodeWithTag("restoration-a5-heading").assertIsDisplayed()
