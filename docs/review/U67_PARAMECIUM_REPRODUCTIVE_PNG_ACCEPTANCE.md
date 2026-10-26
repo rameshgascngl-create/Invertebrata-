@@ -70,3 +70,19 @@ Zoology review: HOLD. Tamil editorial review: HOLD. Asset rights review: HOLD. E
 **Rights checkpoint**: Do not copy Yang et al. Fig. 1 or the Haga figures into distributable assets until licensing or permission is documented. These citations validate the intended anatomy/chronology, not asset redistribution.
 
 **QA state**: scientific storyboard prepared; PNG artwork NOT created; Tamil editorial NOT signed off; emulator/device verification NOT performed for this documentation-only change.
+
+## U76 — Species-specific bilingual nuclear sequence correction (26 October 2026)
+
+**Implementation**: `ParameciumNuclearSequence.kt` now explicitly distinguishes the published *P. caudatum* nuclear events from generic ciliate conjugation. The accompanying `ParameciumNuclearSequenceTest.kt` asserts the species-specific counts and chronology.
+
+- Meiosis: four haploid products in each partner; three degenerate and the surviving product forms the gametic pronuclei.
+- After pronuclear exchange and synkaryon formation, the partners usually separate after the first synkaryon division. Three postzygotic divisions yield eight nuclear descendants in each exconjugant.
+- Nuclear differentiation: four anterior presumptive micronuclei and four posterior macronuclear anlagen; three presumptive micronuclei are later eliminated and the old macronucleus fragments/degrades.
+- Two later vegetative divisions of each exconjugant yield four karyonides (eight from the original pair). **These divisions must not be confused with cell multiplication during conjugation.**
+- These exact counts are specifically attributed to *P. caudatum*; do not transfer them to other *Paramecium* species without review.
+
+**Primary scientific evidence**: Yang, Gao & Shi (2007), *Japanese Journal of Protozoology* 40, 123–130, Fig. 1 and Results, https://protistology.jp/journal/jjp40/123-130Yang2.pdf ; Haga (2022), *Journal of Eukaryotic Microbiology* 69:e12909, https://pmc.ncbi.nlm.nih.gov/articles/PMC9543784/ (Fig. 2).
+
+**Rights boundary**: These references support the explanatory text. No figures were copied from either paper. Haga (2022) is CC BY-NC-ND 4.0, which does **not** authorize modified figure plates. Existing bundled historical/contextual PNGs remain qualified references, **not** a verified sequence of high-resolution individual reproductive-stage plates.
+
+**Verification**: Kotlin/JVM and emulator tests for this exact U76 source revision must be checked in GitHub Actions. Zoology illustration review, Tamil editorial sign-off, provenance acceptance for future individual PNG plates and physical-device release remain **HOLD**.
