@@ -167,6 +167,21 @@ PLACEMENTS = [
      "இரு குழுக்களின் குறுக்கு வெட்டுகள் (படத்திட்டம்): (A) நூறுகாலி, மேலிருந்து கீழாகத் தட்டையானது, ஒவ்வொரு கண்டத்திலும் ஓர் இணைக் கால்; "
      "(B) ஆயிரங்காலி, உருளை வடிவம், இரட்டைக் கண்டத்தின் வழி வெட்டில் இரண்டு இணைக் கால்கள். "
      "(1) முதுகுத் தகடு, (2) குடல், (3) கால், (4) வயிற்றுப்புற நரம்புத் தண்டு."),
+    ("IntroInvertebrataBookChapter.kt", "plans", None, "symmetry-types",
+     "Three kinds of body symmetry (schematic): (A) asymmetrical, with no plane that divides the body into equal halves; "
+     "(B) radial, in which any plane through the central axis does so; (C) bilateral, in which only one plane does, "
+     "separating left from right. (1) central axis, (2) plane of symmetry, dashed, (3) anterior end, (4) posterior end.",
+     "மூன்று வகை உடல் சமச்சீர் (படத்திட்டம்): (A) சமச்சீரற்றது; உடலைச் சம பாதிகளாகப் பிரிக்கும் தளம் இல்லை; "
+     "(B) ஆரச் சமச்சீர்; மையஅச்சின் வழியாகச் செல்லும் எந்தத் தளமும் பிரிக்கும்; (C) இருபக்கச் சமச்சீர்; "
+     "இடப்புறத்தையும் வலப்புறத்தையும் பிரிக்கும் ஒரே ஒரு தளம் மட்டும் உள்ளது. "
+     "(1) மைய அச்சு, (2) சமச்சீர்த் தளம் (புள்ளிக்கோடு), (3) முன் முனை, (4) பின் முனை."),
+    ("ProtozoaBookChapter.kt", "classes", None, "protozoan-groups",
+     "Organelles of locomotion in four traditional groups (schematic): (A) a cell moving by pseudopodia, "
+     "(B) a flagellate with one flagellum, (C) a ciliate covered with cilia, (D) a sporozoan cell, drawn without the "
+     "organelles of the other three. (1) pseudopodium, (2) nucleus, (3) flagellum, (4) cilia.",
+     "நான்கு மரபுவழிக் குழுக்களின் இயக்க நுண்ணுறுப்புகள் (படத்திட்டம்): (A) போலிக்கால்களால் நகரும் செல், "
+     "(B) ஒரு கசையிழையுடைய கசையிழையுயிரி, (C) குறுஇழைகள் மூடிய சிலியேட், (D) மற்ற மூன்றின் நுண்ணுறுப்புகள் இல்லாமல் வரையப்பட்ட ஸ்போரோசோவா செல். "
+     "(1) போலிக்கால், (2) உட்கரு, (3) கசையிழை, (4) குறுஇழைகள்."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",

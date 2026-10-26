@@ -1377,6 +1377,69 @@ def myriapod_sections():
     save(fig, "myriapod-sections")
 
 
+def symmetry_types():
+    fig, ax = canvas(12, 7)
+    letter(ax, "A", 60, 620); letter(ax, "B", 460, 620); letter(ax, "C", 860, 620)
+    # A asymmetry: irregular blob
+    t = np.linspace(0, 2 * np.pi, 80)
+    pts = [(200 + (120 + 35 * np.sin(3 * u) + 22 * np.cos(5 * u + 1)) * np.cos(u),
+            320 + (100 + 30 * np.cos(2 * u + .5) + 18 * np.sin(4 * u)) * np.sin(u)) for u in t]
+    poly(ax, pts, fc="#d9c7a0", lw=2.6)
+    # B radial: disc with arms/tentacles evenly spaced, several planes
+    cx, cy = 600, 320
+    ax.add_patch(Circle((cx, cy), 95, fc="#e6a57e", ec=INK, lw=2.6, zorder=3))
+    for k in range(8):
+        a = np.deg2rad(k * 45)
+        line(ax, [(cx + 95 * np.cos(a), cy + 95 * np.sin(a)), (cx + 175 * np.cos(a), cy + 175 * np.sin(a))], lw=9, color="#c97b5a", z=3)
+    ax.add_patch(Circle((cx, cy), 20, fc="#8e4a3a", ec=INK, lw=2, zorder=5))
+    for a in (0, 45, 90, 135):
+        r = np.deg2rad(a)
+        ax.plot([cx - 205 * np.cos(r), cx + 205 * np.cos(r)], [cy - 205 * np.sin(r), cy + 205 * np.sin(r)], color=INK, lw=1.6, linestyle=(0, (6, 5)), zorder=7)
+    # C bilateral: elongated body with a head end
+    ell(ax, 1000, 320, 330, 190, fc="#d9c7a0", z=3)
+    ell(ax, 880, 320, 90, 110, fc="#d9a066", z=4)
+    ax.add_patch(Circle((870, 345), 9, fc=INK, zorder=7)); ax.add_patch(Circle((870, 295), 9, fc=INK, zorder=7))
+    ax.plot([800, 1200], [320, 320], color=INK, lw=1.6, linestyle=(0, (6, 5)), zorder=7)
+    num(ax, 1, 600, 560, 600, 345)
+    num(ax, 2, 740, 110, 690, 214)
+    num(ax, 3, 790, 470, 870, 380)
+    num(ax, 4, 1130, 470, 1160, 322)
+    num(ax, 2, 1000, 500, 1000, 320)
+    save(fig, "symmetry-types")
+
+
+def protozoan_groups():
+    fig, ax = canvas(12, 7)
+    for l, x in zip("ABCD", (60, 360, 660, 960)):
+        letter(ax, l, x, 640)
+    # A amoeboid: body with blunt lobopodia
+    for (lx, ly, w, h, ang) in ((90, 360, 130, 52, 25), (250, 400, 120, 48, -30), (110, 250, 120, 50, -25), (240, 250, 110, 46, 35)):
+        ell(ax, lx, ly, w, h, fc="#cfe6f7", ang=ang, z=2)
+    ell(ax, 170, 320, 190, 170, fc="#cfe6f7", z=3)
+    ell(ax, 170, 320, 184, 164, fc="#cfe6f7", ec="#cfe6f7", lw=0, z=4)
+    ax.add_patch(Circle((170, 320), 30, fc="#8e6aa8", ec=INK, lw=2, zorder=5))
+    # B flagellate
+    ell(ax, 500, 320, 110, 230, fc="#cfe6a8", ang=0)
+    ax.add_patch(Circle((500, 290), 26, fc="#8e6aa8", ec=INK, lw=2, zorder=5))
+    line(ax, [(500, 435)] + [(500 + 22 * np.sin(5 * u), 435 + 150 * u) for u in np.linspace(0, 1, 40)], lw=4, color="#7d6608", z=2)
+    # C ciliate
+    ell(ax, 800, 320, 150, 280, fc="#f6e3b6")
+    for k in range(24):
+        a = 2 * np.pi * k / 24
+        x0, y0 = 800 + 75 * np.cos(a), 320 + 140 * np.sin(a)
+        line(ax, [(x0, y0), (x0 + 28 * np.cos(a), y0 + 28 * np.sin(a))], lw=2.2, z=2)
+    ax.add_patch(Circle((800, 330), 30, fc="#8e6aa8", ec=INK, lw=2, zorder=5))
+    # D sporozoan cell, drawn plain
+    ell(ax, 1080, 320, 90, 250, fc="#f2b8ad", ang=20)
+    ax.add_patch(Circle((1076, 310), 24, fc="#8e6aa8", ec=INK, lw=2, zorder=5))
+    num(ax, 1, 70, 500, 100, 385, r=26)
+    num(ax, 2, 250, 130, 160, 320)
+    num(ax, 3, 500, 590, 500, 540)
+    num(ax, 2, 380, 130, 500, 290)
+    num(ax, 4, 960, 130, 875, 400)
+    save(fig, "protozoan-groups")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1391,7 +1454,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "nematode-routes": nematode_routes,
        "mollusc-plan": mollusc_plan, "echino-symmetry": echino_symmetry,
        "cilium-stroke": cilium_stroke, "coral-polyp": coral_polyp,
-       "annelid-section": annelid_section, "flame-cell": flame_cell, "myriapod-sections": myriapod_sections}
+       "annelid-section": annelid_section, "flame-cell": flame_cell, "myriapod-sections": myriapod_sections,
+       "symmetry-types": symmetry_types, "protozoan-groups": protozoan_groups}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)
