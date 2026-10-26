@@ -944,6 +944,71 @@ def metameres():
     save(fig, "metameres")
 
 
+def host_cycles():
+    """(A) one-host cycle, (B) two-host cycle. Hosts are plain boxes; parasite stages are dots."""
+    fig, ax = canvas()
+    letter(ax, "A", 60, 800); letter(ax, "B", 60, 380)
+    def host(x, y, fc, w=260, h=170):
+        rect(ax, x - w / 2, y - h / 2, w, h, fc=fc, r=40)
+    def parasites(x, y, n=5, c="#c0392b"):
+        for k in range(n):
+            ax.add_patch(Circle((x - 60 + (k % 3) * 60, y - 25 + (k // 3) * 55), 13, fc=c, ec=INK, lw=1.8, zorder=6))
+    # A
+    host(260, 690, "#cfe6f7"); parasites(260, 690)
+    ax.add_patch(Circle((600, 690), 55, fc="#fff3d6", ec=INK, lw=5, zorder=4))
+    ax.add_patch(Circle((600, 690), 22, fc="#c0392b", ec=INK, lw=1.8, zorder=6))
+    host(940, 690, "#d6ecd6"); 
+    arrow(ax, (400, 700), (530, 700), lw=3.4)
+    arrow(ax, (670, 700), (800, 700), lw=3.4)
+    num(ax, 1, 260, 820, 260, 775); num(ax, 2, 160, 580, 205, 665)
+    num(ax, 3, 600, 820, 600, 748); num(ax, 4, 940, 820, 940, 775)
+    # B
+    host(300, 220, "#cfe6f7"); parasites(300, 220, n=3, c="#8e44ad")
+    host(900, 220, "#f5d9b5"); parasites(900, 220, n=5)
+    arrow(ax, (440, 270), (760, 270), rad=-0.25, lw=3.4)
+    arrow(ax, (760, 170), (440, 170), rad=-0.25, lw=3.4)
+    num(ax, 5, 300, 90, 300, 135); num(ax, 6, 900, 90, 900, 135)
+    num(ax, 7, 600, 450, 600, 345); num(ax, 8, 600, 40, 600, 105)
+    ax.plot([30, 1170], [470, 470], color=GREY, lw=3)
+    save(fig, "host-cycles")
+
+
+def pearl_formation():
+    fig, ax = canvas()
+    letter(ax, "A", 60, 800); letter(ax, "B", 660, 800)
+    # A: shell layers (stacked bands), mantle epithelium, mantle body
+    layers = [(690, 30, "#6d4c41"), (590, 100, "#d9d2c3"), (510, 80, "#f3dfe8")]
+    for y, h, c in layers:
+        rect(ax, 90, y, 460, h, fc=c, lw=2.4)
+    rect(ax, 90, 480, 460, 30, fc="#e6a57e", lw=2.4)                    # epithelium
+    for x in range(100, 550, 28):
+        line(ax, [(x, 480), (x, 510)], lw=1.4)
+    rect(ax, 90, 150, 460, 330, fc="#f6d9c4", lw=2.4)                  # mantle body
+    for x in range(130, 520, 60):
+        ax.add_patch(Circle((x, 300 + (30 if (x // 60) % 2 else -30)), 14, fc="#e8b28f", ec=INK, lw=1.6, zorder=5))
+    num(ax, 1, 640, 790, 520, 712)
+    num(ax, 2, 640, 680, 520, 640)
+    num(ax, 3, 640, 580, 520, 550)
+    num(ax, 4, 640, 450, 520, 495)
+    num(ax, 5, 640, 280, 520, 300)
+    # B: pearl in a pearl sac
+    cx, cy = 910, 400
+    rect(ax, 680, 120, 440, 560, fc="#f6d9c4", r=60)                    # host tissue
+    ax.add_patch(Circle((cx, cy), 200, fc="#e6a57e", ec=INK, lw=2.8, zorder=3))   # sac epithelium ring
+    ax.add_patch(Circle((cx, cy), 175, fc="#fbf2f6", ec=INK, lw=2, zorder=4))
+    for r, c in ((160, "#efe2ea"), (125, "#e4d3de"), (90, "#d8c3d2")):
+        ax.add_patch(Circle((cx, cy), r, fc=c, ec=INK, lw=1.4, zorder=5))
+    ax.add_patch(Circle((cx, cy), 55, fc="#9aa0a6", ec=INK, lw=2.4, zorder=6))
+    for k in range(36):
+        a = 2 * np.pi * k / 36
+        ax.add_patch(Circle((cx + 188 * np.cos(a), cy + 188 * np.sin(a)), 9, fc="#d98a64", ec=INK, lw=1.4, zorder=6))
+    num(ax, 6, 700, 740, 880, 400, r=26)
+    num(ax, 7, 1130, 740, 1010, 470)
+    num(ax, 8, 1130, 120, 1070, 330)
+    num(ax, 9, 700, 60, 740, 200)
+    save(fig, "pearl-formation")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -952,7 +1017,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "polychaete-asexual": polychaete_asexual, "crinoid": crinoid,
        "aurelia-cycle": aurelia_cycle, "anemone-section": anemone_section,
        "taenia-cycle": taenia_cycle, "taenia-parts": taenia_parts,
-       "sponge-grades": sponge_grades, "cnidarian-forms": cnidarian_forms, "metameres": metameres}
+       "sponge-grades": sponge_grades, "cnidarian-forms": cnidarian_forms, "metameres": metameres,
+       "host-cycles": host_cycles, "pearl-formation": pearl_formation}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)

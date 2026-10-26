@@ -79,6 +79,22 @@ PLACEMENTS = [
      "கண்டமுடைய புழுவின் ஐந்து கண்டங்கள், முதுகுப்புறம் மேலே இருக்க நீளவெட்டு (படத்திட்டம்): (1) உடற்சுவர், "
      "(2) உடற்குழிப் பெட்டகம், (3) தடுப்புச் சுவர் (செப்டம்), (4) முதுகுப்புற இரத்த நாளம், (5) வயிற்றுப்புற நரம்புத் தண்டு, (6) நரம்புத் திரள் (கேங்கிலியம்), "
      "(7) எல்லாக் கண்டங்கள் வழியாகவும் செல்லும் குடல், (8) சீட்டா, (9) புரோஸ்டோமியம், (10) பைஜிடியம், (11) நெஃப்ரிடியம்."),
+    ("HostParasiteBookChapter.kt", "terms", None, "host-cycles",
+     "Two kinds of parasite life cycle (schematic). (A) One host: (1) host, (2) parasite stages inside it, "
+     "(3) resistant infective stage outside the host, (4) new host of the same species. "
+     "(B) Two hosts: (5) definitive host, in which the parasite reaches sexual maturity, "
+     "(6) intermediate host, in which it passes its larval or asexual stages, (7) and (8) transfer between them.",
+     "ஒட்டுண்ணி வாழ்க்கைச் சுழற்சிகளின் இரு வகைகள் (படத்திட்டம்). (A) ஒரே புரவலர்: (1) புரவலர், (2) அதனுள் இருக்கும் ஒட்டுண்ணி நிலைகள், "
+     "(3) புரவலருக்கு வெளியே தாங்கும் தொற்று நிலை, (4) அதே இனத்தின் புதிய புரவலர். "
+     "(B) இரு புரவலர்கள்: (5) இறுதிப் புரவலர் (பாலின முதிர்ச்சி அடையும் இடம்), "
+     "(6) இடைநிலைப் புரவலர் (இளநிலை அல்லது பாலிலா நிலைகள் கழியும் இடம்), (7), (8) அவற்றிடையே நிகழும் மாற்றம்."),
+    ("PearlBookChapter.kt", "natural", None, "pearl-formation",
+     "Shell and pearl (schematic). (A) Section through the shell and mantle: (1) periostracum, the thin outer organic layer, "
+     "(2) middle calcareous layer, (3) nacreous layer, (4) mantle epithelium, which secretes the shell, (5) mantle tissue. "
+     "(B) A pearl in section: (6) nucleus, (7) layers of nacre, (8) pearl sac of mantle epithelium, (9) host tissue.",
+     "ஓடும் முத்தும் (படத்திட்டம்). (A) ஓடு, மேண்டில் வழி வெட்டு: (1) பெரியோஸ்ட்ரகம், மெல்லிய கரிம வெளி அடுக்கு, "
+     "(2) நடு சுண்ணாம்பு அடுக்கு, (3) நாக்கர் அடுக்கு, (4) ஓட்டைச் சுரக்கும் மேண்டில் மேலணி, (5) மேண்டில் திசு. "
+     "(B) முத்தின் வெட்டுத்தோற்றம்: (6) மையக்கரு, (7) நாக்கர் அடுக்குகள், (8) மேண்டில் மேலணியாலான முத்துப் பை, (9) புரவலர் திசு."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",
