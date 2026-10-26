@@ -141,7 +141,7 @@ What changed:
 - 43 figure placements in 29 chapters (Nereis 8, protozoan parasites 4, insects 2, IPM 1,
   medical insects 1, protozoa economics 2, leech 1, annelid asexual reproduction 1,
   Aurelia/anemone 2, crinoid 1, Taenia 2). Placement is scripted in `tools/book_figure_place.py`.
-- 30 original schematics drawn by `tools/book_figure_gen.py`. They carry numerals only; the
+- 47 original schematics (30 in the first batch, 17 in the second) drawn by `tools/book_figure_gen.py`. They carry numerals only; the
   key is in the bilingual caption. Credit: "Original schematic · subject-expert review pending".
   Eight further drafts were rejected on review (unclear anatomy, or not supported by the
   chapter text) and are not shipped.
@@ -165,5 +165,21 @@ Audit of the figure sections (2026-10-26, after the last batch):
   eight are now in one chapter; they are sub-sampled by the decoder.
 - Not checked: how any figure looks on a device; Tamil caption wrapping.
 
-Still open: 23 chapters have no figure; the schematics and the AI-generated Nereis plates need
-a subject-expert check; the Compose rendering is verified by CI only.
+Second batch and final audit (2026-10-26, owner-approved: draw only what the chapter text supports):
+- 17 further original schematics in 15 chapters (Arthropoda 2, Cephalopods 2, Cockroach, Nematode parasites,
+  Platyhelminth adaptations, Porifera reproduction, Nutrition, Minor arthropods, Minor molluscs, Household insects,
+  Pollinators, Polymorphism, Peripatus, Chelicerata, Cereal pests). Two drafts (crustacean larval sequence, fossil order) were
+  rejected on review as uninformative and are not shipped.
+- Totals: 47 schematics + 12 other library images = 59 library entries, all with an image file and credit, none unused;
+  60 placements in 44 of 63 book chapters (one figure, the vector cycle, is used in two chapters on purpose).
+- Caption keys checked by script against the numerals drawn: English matches Tamil and the drawing everywhere.
+  One defect found and fixed (fluke larvae: numeral 7 was drawn but not keyed).
+- Layout defects found and fixed: the Aurelia medusa dome was cut by the top edge, several numerals touched the picture edge
+  (`num()` now keeps every marker inside the canvas), and numerals 1 and 4 of the nematode routes figure covered the heads.
+  The only figure that fills its edges is the tusk shell, where the sediment is deliberately full-bleed.
+- 8 chapters still have no figure, deliberately: Foot (a concept comparison; the three feet would need invented anatomy),
+  Fossils (the text gives only two dates; no figure adds to the table), Minor annelids, Annelid modes of life,
+  Crustacean larvae (the stage drawings were unclear), Coral economics, Crop pests (five different insects), Natural enemies
+  (the parasitoid cycle is already shown in the insect chapters).
+- Not checked: how any figure looks on a device; Tamil caption wrapping. The schematics and the AI-generated Nereis plates
+  have had no subject-expert review (owner: not required for now). Tamil captions are drafts.

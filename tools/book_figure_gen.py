@@ -51,6 +51,9 @@ def num(ax, n, tx, ty, px=None, py=None, r=38):
         ax.plot([tx, px], [ty, py], color=INK, lw=1.8, zorder=8)
         ax.add_patch(Circle((px, py), 5, color=INK, zorder=9))
     r = max(r, 38)   # numerals must stay readable when the figure is shown at phone width
+    x0, x1 = ax.get_xlim(); y0, y1 = ax.get_ylim()   # keep the whole marker inside the picture
+    tx = min(max(tx, x0 + r + 4), x1 - r - 4)
+    ty = min(max(ty, y0 + r + 4), y1 - r - 4)
     ax.add_patch(Circle((tx, ty), r, fc="white", ec=INK, lw=2.6, zorder=10))
     ax.text(tx, ty - 1, str(n), ha="center", va="center", fontsize=(34 if n < 10 else 29), fontweight="bold",
             color=INK, zorder=11)
@@ -636,7 +639,7 @@ def aurelia_cycle():
             line(ax, [(x + dx * s, y), (x + dx * s * 1.4, y - 100 * s)], lw=4, color="#7fa6c9")
         for dx in range(-140, 141, 28):
             line(ax, [(x + dx * s, y), (x + dx * s, y - 22 * s)], lw=1.5)
-    medusa(600, 760, 1.0)
+    medusa(600, 735, 1.0)
     # 2 planula (right)
     ell(ax, 1000, 640, 160, 80, fc="#f7e6b5")
     for k in range(10):
@@ -657,7 +660,7 @@ def aurelia_cycle():
         a = 2 * np.pi * k / 8
         poly(ax, [(x + 22 * np.cos(a - 0.2), y + 22 * np.sin(a - 0.2)), (x + 78 * np.cos(a), y + 78 * np.sin(a)), (x + 22 * np.cos(a + 0.2), y + 22 * np.sin(a + 0.2))], fc="#d6e8f7", lw=2)
     ax.add_patch(Circle((x, y), 28, fc="#d6e8f7", ec=INK, lw=2.4, zorder=4))
-    arrow(ax, (700, 780), (900, 700), rad=-0.2)
+    arrow(ax, (700, 760), (900, 700), rad=-0.2)
     arrow(ax, (1000, 590), (980, 440), rad=0.0)
     arrow(ax, (880, 240), (700, 190), rad=0.2)
     arrow(ax, (490, 190), (300, 240), rad=0.2)
@@ -1121,7 +1124,7 @@ def nematode_routes():
             for dx in (-30, 0, 30):
                 ax.add_patch(Circle((x + dx, y), 6, fc="#7d6608", zorder=6))
     xs = [150, 420, 700, 990]
-    ys = [750, 450, 150]
+    ys = [690, 410, 130]
     for y, l in zip(ys, "ABC"):
         letter(ax, l, 50, y + 30)
     # A  Ascaris: person -> egg -> embryonated egg in soil -> person swallows it
@@ -1400,7 +1403,7 @@ def symmetry_types():
     ell(ax, 1000, 320, 330, 190, fc="#d9c7a0", z=3)
     ell(ax, 880, 320, 90, 110, fc="#d9a066", z=4)
     ax.add_patch(Circle((870, 345), 9, fc=INK, zorder=7)); ax.add_patch(Circle((870, 295), 9, fc=INK, zorder=7))
-    ax.plot([800, 1200], [320, 320], color=INK, lw=1.6, linestyle=(0, (6, 5)), zorder=7)
+    ax.plot([800, 1170], [320, 320], color=INK, lw=1.6, linestyle=(0, (6, 5)), zorder=7)
     num(ax, 1, 600, 560, 600, 345)
     num(ax, 2, 740, 110, 690, 214)
     num(ax, 3, 790, 470, 870, 380)
@@ -2007,6 +2010,74 @@ def squid_jet():
     save(fig, "squid-jet")
 
 
+
+# ---------------------------------------------------------------- stage 4 additions
+def chelicerate_plan():
+    fig, ax = canvas()
+    ell(ax, 760, 450, 420, 300, fc=BODY2, z=3)                                   # opisthosoma
+    for x in (640, 720, 800, 880):
+        line(ax, [(x, 320), (x, 580)], lw=1.6, color="#9a8a6a", z=4, ls="--")
+    poly(ax, [(870, 440), (1010, 450), (870, 460)], fc=BODY2, z=2)               # tail spine (some forms)
+    poly(ax, [(430, 450), (500, 300), (620, 270), (640, 450), (620, 630), (500, 600)], fc=BODY, z=5)   # prosoma, one shield
+    for k, x in enumerate((470, 540, 600, 650)):                                 # four pairs of walking legs
+        for sgn in (1, -1):
+            line(ax, [(x, 450 + sgn * 130), (x - 40 + 30 * k * 0, 450 + sgn * 230), (x - 130 + 30 * k, 450 + sgn * 300)],
+                 lw=7, z=2)
+    for sgn in (1, -1):                                                          # pedipalps
+        line(ax, [(440, 450 + sgn * 70), (370, 450 + sgn * 130), (300, 450 + sgn * 150)], lw=9, z=2)
+        line(ax, [(430, 450 + sgn * 25), (340, 450 + sgn * 35), (290, 450 + sgn * 22)], lw=7, z=2)   # chelicerae
+        ax.add_patch(Circle((520, 450 + sgn * 45), 14, fc=INK, zorder=7))        # eyes
+    num(ax, 1, 520, 780, 540, 540)
+    num(ax, 2, 800, 780, 800, 600)
+    num(ax, 3, 520, 120, 520, 405)
+    num(ax, 4, 230, 590, 300, 468)
+    num(ax, 5, 230, 790, 330, 580)
+    num(ax, 6, 400, 840, 440, 752)
+    num(ax, 7, 1060, 560, 990, 458)
+    save(fig, "chelicerate-plan")
+
+
+def stem_borer_cycle():
+    fig, ax = canvas()
+    cx, cy, rx, ry = 600, 450, 420, 300
+    pts = [(cx + rx * np.cos(np.deg2rad(a)), cy + ry * np.sin(np.deg2rad(a))) for a in (90, 0, -90, 180)]
+    # 1 egg mass near the tip of a leaf (covered with hairs)
+    x, y = pts[0]
+    poly(ax, [(x - 110, y - 30), (x + 130, y + 20), (x + 130, y - 10), (x - 110, y - 50)], fc="#bfe3c0", z=2)
+    for dx, dy in ((-30, 0), (10, 8), (50, 14), (-10, 28), (30, 36), (70, 32)):
+        ell(ax, x + dx, y + dy, 40, 26, fc="#f7e6b5", lw=1.8)
+    for dx in range(-40, 90, 18):
+        line(ax, [(x + dx, y + 50), (x + dx + 6, y + 70)], lw=1.4, color="#b79a5a")
+    # 2 larva boring in the stem (stem in section)
+    x, y = pts[1]
+    rect(ax, x - 55, y - 150, 110, 300, fc="#bfe3c0", r=20)
+    rect(ax, x - 30, y - 120, 60, 240, fc="#f4f1e0", r=10, lw=1.6)
+    ell(ax, x, y, 36, 130, fc="#f6e9a2", ang=15, lw=2)
+    ax.add_patch(Circle((x + 12, y + 70), 15, fc="#7a4a2a", ec=INK, lw=2, zorder=6))
+    # 3 pupa in a silken cocoon within the stem or stubble
+    x, y = pts[2]
+    rect(ax, x - 55, y - 80, 110, 160, fc="#bfe3c0", r=20)
+    ell(ax, x, y, 70, 130, fc="#ffffff", lw=2.4)
+    ell(ax, x, y, 36, 96, fc="#c9a566", lw=2.2)
+    # 4 adult moth
+    x, y = pts[3]
+    ell(ax, x, y, 120, 30, fc="#d9b05e")
+    ell(ax, x - 60, y, 36, 30, fc="#d9b05e")
+    poly(ax, [(x + 10, y + 10), (x - 70, y + 110), (x + 60, y + 90), (x + 90, y + 20)], fc="#ecc872", z=2)
+    poly(ax, [(x + 10, y - 10), (x - 70, y - 110), (x + 60, y - 90), (x + 90, y - 20)], fc="#ecc872", z=2)
+    ax.add_patch(Circle((x - 5, y + 60), 9, fc=INK, zorder=7))
+    ax.add_patch(Circle((x - 5, y - 60), 9, fc=INK, zorder=7))
+    for i in range(4):
+        a, b = pts[i], pts[(i + 1) % 4]
+        arrow(ax, (a[0] + (b[0] - a[0]) * .30, a[1] + (b[1] - a[1]) * .30),
+              (a[0] + (b[0] - a[0]) * .72, a[1] + (b[1] - a[1]) * .72), rad=-0.18, lw=3.4)
+    num(ax, 1, 330, 820, 480, 780)
+    num(ax, 2, 1110, 700, 1040, 520)
+    num(ax, 3, 840, 80, 628, 130)
+    num(ax, 4, 100, 700, 140, 520)
+    save(fig, "stem-borer-cycle")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -2030,7 +2101,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "fluke-larvae": fluke_larvae, "sponge-sexual-cycle": sponge_sexual_cycle,
        "food-vacuole": food_vacuole, "tardigrade": tardigrade, "scaphopod": scaphopod,
        "termite-castes": termite_castes, "waggle-dance": waggle_dance, "obelia-colony": obelia_colony,
-       "peripatus-external": peripatus_external, "squid-jet": squid_jet}
+       "peripatus-external": peripatus_external, "squid-jet": squid_jet,
+       "chelicerate-plan": chelicerate_plan, "stem-borer-cycle": stem_borer_cycle}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)

@@ -309,12 +309,12 @@ PLACEMENTS = [
      "(2) இரத்தத்தில் உள்ள மைக்ரோஃபைலேரியாக்கள், பெண் கொசு அவற்றை உறிஞ்சுகிறது, (3) கொசுவில் லார்வாக்கள் இரு முறை தோலுரித்து தொற்றும் மூன்றாம் நிலையை அடைகின்றன, "
      "(4) லார்வாக்கள் துளைக்குழலுக்குச் சென்று பின்னர் கடிக்கும்போது தோலுக்குள் நுழைகின்றன, (5) மனிதரில் மேலும் இரு முறை தோலுரித்து முதிர்ந்த புழுக்களாகின்றன."),
     ("PlatyAdaptationsBookChapter.kt", "larvae", None, "fluke-larvae",
-     "Larval series of a fluke (schematic; the heavy outline is the snail host): (1) miracidium, which finds and enters the snail, "
+     "Larval series of a fluke (schematic): (1) miracidium, which finds and enters the snail, "
      "(2) sporocyst and (3) rediae, which multiply the parasite asexually (curved arrow), (4) cercaria with a tail, which leaves the snail, "
-     "(5) metacercaria, encysted on a surface, (6) final host, infected by the metacercaria.",
-     "தட்டைப்புழு (ஃப்ளூக்) லார்வா வரிசை (படத்திட்டம்; தடித்த வெளிக்கோடு நத்தை விருந்தோம்பி): (1) நத்தையைக் கண்டறிந்து நுழையும் மிராசிடியம், "
+     "(5) metacercaria, encysted on a surface, (6) final host, infected by the metacercaria, (7) the snail host (heavy outline).",
+     "தட்டைப்புழு (ஃப்ளூக்) லார்வா வரிசை (படத்திட்டம்): (1) நத்தையைக் கண்டறிந்து நுழையும் மிராசிடியம், "
      "(2) ஸ்போரோசிஸ்ட் மற்றும் (3) ரெடியாக்கள், இவை பாலிலா முறையில் ஒட்டுண்ணியைப் பெருக்குகின்றன (வளைந்த அம்பு), (4) வாலுடன் நத்தையை விட்டு வெளியேறும் செர்க்காரியா, "
-     "(5) ஒரு பரப்பில் கூடு கட்டிய மெட்டாசெர்க்காரியா, (6) மெட்டாசெர்க்காரியாவால் தொற்றப்படும் இறுதி விருந்தோம்பி."),
+     "(5) ஒரு பரப்பில் கூடு கட்டிய மெட்டாசெர்க்காரியா, (6) மெட்டாசெர்க்காரியாவால் தொற்றப்படும் இறுதி விருந்தோம்பி, (7) நத்தை விருந்தோம்பி (தடித்த வெளிக்கோடு)."),
     ("PoriferaReproductionBookChapter.kt", "life-cycle", None, "sponge-sexual-cycle",
      "Sexual cycle of a calcareous sponge (schematic): (1) adult with eggs and sperm in the mesohyl, (2) sperm leave by the osculum, "
      "(3) a carrier cell brings a sperm to a retained egg, which is fertilised, (4) the zygote cleaves inside the parent, "
@@ -375,6 +375,19 @@ PLACEMENTS = [
      "(5) ink sac, (6) chromatophores in the skin, (7) jet of water expelled through the funnel, (8) direction of travel.",
      "கணவாயில் ஜெட் உந்துவிசை (படத்திட்டம், பக்கக் காட்சி): (1) தசையுள்ள மேண்டில், (2) துடுப்பு, (3) திசைதிருப்பி இயக்கத்தை வழிநடத்தக்கூடிய புனல், (4) கைகள், "
      "(5) மை பை, (6) தோலில் உள்ள நிறமி செல்கள், (7) புனல் வழியாக வெளியேற்றப்படும் நீர்த்தாரை, (8) இயக்கத்தின் திசை."),
+    # ---- stage 4 (2026-10-26)
+    ("ChelicerataBookChapter.kt", "position", "The body plan", "chelicerate-plan",
+     "Body plan of a chelicerate in dorsal view (schematic, based on a spider-like form; the pedipalps differ among the groups): "
+     "(1) prosoma, covered by a single carapace, (2) opisthosoma, (3) eyes, (4) chelicerae, first pair, (5) pedipalps, second pair, "
+     "(6) walking legs, four pairs, (7) tail spine, present in some forms.",
+     "செலிசெரேட்டின் உடல் அமைப்பு, முதுகுப்புறக் காட்சி (படத்திட்டம், சிலந்தி போன்ற வடிவை அடிப்படையாகக் கொண்டது; பெடிபால்ப்கள் குழுக்களுக்கிடையே வேறுபடும்): "
+     "(1) ஒரே கேரப்பேசால் மூடப்பட்ட புரோசோமா, (2) ஓபிஸ்தோசோமா, (3) கண்கள், (4) செலிசெராக்கள், முதல் இணை, (5) பெடிபால்ப்கள், இரண்டாம் இணை, "
+     "(6) நடைக்கால்கள், நான்கு இணைகள், (7) சில வடிவங்களில் உள்ள வால்முள்."),
+    ("CerealPestsBookChapter.kt", "stem-borer", "Life history", "stem-borer-cycle",
+     "Life cycle of the yellow stem borer (schematic): (1) egg mass near the tip of a rice leaf, covered with hairs from the female, "
+     "(2) larva boring in the stem, (3) pupa in a silken cocoon within the stem or stubble, (4) adult moth.",
+     "மஞ்சள் தண்டுத் துளைப்பானின் வாழ்க்கைச் சுழற்சி (படத்திட்டம்): (1) நெல் இலையின் நுனிக்கருகில் பெண் அந்துப்பூச்சியின் முடிகளால் மூடப்பட்ட முட்டைக் குவியல், "
+     "(2) தண்டைத் துளைக்கும் புழு, (3) தண்டிலோ அடிக்கட்டையிலோ பட்டு கூட்டில் உள்ள கூட்டுப்புழு, (4) முதிர்ந்த அந்துப்பூச்சி."),
 ]
 
 

@@ -70,7 +70,7 @@ object BookFigureLibrary {
         "cuticle-layers", "limb-lever", "cephalopod-circulation", "cockroach-gut",
         "wuchereria-cycle", "fluke-larvae", "sponge-sexual-cycle", "food-vacuole",
         "tardigrade", "scaphopod", "termite-castes", "waggle-dance", "obelia-colony",
-        "peripatus-external", "squid-jet",
+        "peripatus-external", "squid-jet", "chelicerate-plan", "stem-borer-cycle",
     ).map { BookLibraryFigure(it, "book_figures/$it", schematic) }
 
     private val byId = all.associateBy { it.id }
