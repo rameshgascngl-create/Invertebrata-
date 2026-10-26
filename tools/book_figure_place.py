@@ -47,6 +47,15 @@ PLACEMENTS = [
     ("ProtoParasitesBookChapter.kt", "leishmania", None, "leishmania-amastigote",
      "A Leishmania amastigote inside a host cell, from a public-domain reference diagram.",
      "புரவலர் செல்லுக்குள் இருக்கும் லீஷ்மேனியா அமாஸ்டிகோட்; பொதுப் பயன்பாட்டு வரைபடத்திலிருந்து."),
+    ("ProtoParasitesBookChapter.kt", "trypanosoma", None, "trypanosoma-cartoon",
+     "A cartoon of Trypanosoma brucei: the cell body with its rounded nucleus and the flagellum "
+     "running along the cell as a dark line.",
+     "Trypanosoma brucei-யின் கேலிச்சித்திரப் படம்: செல் உடல், உருண்ட உட்கரு, செல்லின் நீளத்தில் கருங்கோடாக ஓடும் கசையிழை."),
+    ("ProtozoaEconomicsBookChapter.kt", "malaria", None, "plasmodium-cycle",
+     "Life cycle of Plasmodium, after the author's diagram (based on P. falciparum). The stages are "
+     "described in the text; the numbers in the diagram are the author's and are not keyed here.",
+     "பிளாஸ்மோடியத்தின் வாழ்க்கைச் சுழற்சி (P. falciparum அடிப்படையிலான ஆசிரியரின் வரைபடம்). நிலைகள் உரையில் "
+     "விளக்கப்பட்டுள்ளன; படத்திலுள்ள எண்கள் ஆசிரியருடையவை, இங்கே விளக்கப்படவில்லை."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",

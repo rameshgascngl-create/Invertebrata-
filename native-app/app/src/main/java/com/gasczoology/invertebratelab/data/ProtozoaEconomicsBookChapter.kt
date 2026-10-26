@@ -46,6 +46,9 @@ object ProtozoaEconomicsBookChapter {
                     bfig("lib/vector-cycle",
                         "Transmission of a vector-borne protozoan such as the malaria parasite (schematic): (1) infected person, (2) the mosquito takes a blood meal and picks up the parasite, (3) the parasite develops in the mosquito, (4) the infective mosquito bites a new person, (5) disease may develop in the new host.",
                         "மலேரியா ஒட்டுண்ணி போன்ற பூச்சி மூலம் பரவும் புரோட்டோசோவாவின் பரவல் (படத்திட்டம்): (1) நோயுற்றவர், (2) கொசு இரத்தம் உறிஞ்சி ஒட்டுண்ணியைப் பெறுகிறது, (3) ஒட்டுண்ணி கொசுவினுள் வளர்கிறது, (4) தொற்றும் நிலையிலுள்ள கொசு புதியவரைக் கடிக்கிறது, (5) புதிய புரவலருக்கு நோய் உருவாகலாம்."),
+                    bfig("lib/plasmodium-cycle",
+                        "Life cycle of Plasmodium, after the author's diagram (based on P. falciparum). The stages are described in the text; the numbers in the diagram are the author's and are not keyed here.",
+                        "பிளாஸ்மோடியத்தின் வாழ்க்கைச் சுழற்சி (P. falciparum அடிப்படையிலான ஆசிரியரின் வரைபடம்). நிலைகள் உரையில் விளக்கப்பட்டுள்ளன; படத்திலுள்ள எண்கள் ஆசிரியருடையவை, இங்கே விளக்கப்படவில்லை."),
                     bdef("Vector control", "கடத்திக் கட்டுப்பாடு (Vector control)", "The reduction of the numbers of an animal, such as a mosquito, that carries a parasite, to reduce the spread of disease." to
                         "நோய்ப் பரவலைக் குறைக்க ஒட்டுண்ணியைக் கடத்தும் கொசு போன்ற விலங்கின் எண்ணிக்கையைக் குறைத்தல்."),
                     bdef("Larvivorous fish", "கொசுப்புழு உண்ணும் மீன் (Larvivorous fish)", "A fish that feeds on the larvae of mosquitoes and is used in their biological control." to

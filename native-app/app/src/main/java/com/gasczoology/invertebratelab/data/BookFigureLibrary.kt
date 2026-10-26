@@ -10,9 +10,8 @@ package com.gasczoology.invertebratelab.data
  * Kinds of entry:
  *  - Nereis plates: AI-generated, bilingual-labelled plates already shipped for Unit IV.
  *  - Source images: public-domain references from Wikimedia Commons (provenance in
- *    assets/unit1/references/SOURCE_PROVENANCE.txt). Only public-domain files are used in
- *    chapters; the two CC-licensed files stay in the reference gallery until their authors
- *    are recorded.
+ *    assets/unit1/references/SOURCE_PROVENANCE.txt). The two CC-licensed files carry the
+ *    author named in their credit.
  *  - Original schematics drawn by tools/book_figure_gen.py. They carry numerals only; the
  *    key is in the bilingual caption. They are NOT yet reviewed by a subject expert.
  */
@@ -35,7 +34,19 @@ object BookFigureLibrary {
         "Public domain · Wikimedia Commons, File:$file · simplified teaching reference, review pending",
         "பொதுப் பயன்பாட்டு உரிமை (Public domain) · விக்கிமீடியா காமன்ஸ், File:$file · எளிய கற்பித்தல் குறிப்புப் படம், மதிப்பாய்வு நிலுவையில்")
 
+    /** Author details below were supplied by the app owner from the Commons file pages (2026-10-26)
+     *  and are to be re-checked against those pages before release. */
+    private val trypanosomaCredit = PlateCredit(
+        "Johannahoog · CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0) · Wikimedia Commons, File:Trypanosoma_brucei.svg · converted from SVG to PNG, otherwise unchanged",
+        "Johannahoog · CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0) · விக்கிமீடியா காமன்ஸ், File:Trypanosoma_brucei.svg · SVG-யிலிருந்து PNG ஆக மாற்றப்பட்டது, மற்றபடி மாற்றமில்லை")
+
+    private val plasmodiumCredit = PlateCredit(
+        "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · Wikimedia Commons, File:Malaria_Plasmodium_infection_cycle.png · unchanged",
+        "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · விக்கிமீடியா காமன்ஸ், File:Malaria_Plasmodium_infection_cycle.png · மாற்றமில்லை")
+
     val all: List<BookLibraryFigure> = listOf(
+        BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", trypanosomaCredit),
+        BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", plasmodiumCredit),
         BookLibraryFigure("nereis-external", "nereis/01_external_morphology", aiPlate),
         BookLibraryFigure("nereis-head", "nereis/02_enlarged_head", aiPlate),
         BookLibraryFigure("nereis-parapodium", "nereis/03_biramous_parapodium", aiPlate),
