@@ -95,6 +95,20 @@ PLACEMENTS = [
      "ஓடும் முத்தும் (படத்திட்டம்). (A) ஓடு, மேண்டில் வழி வெட்டு: (1) பெரியோஸ்ட்ரகம், மெல்லிய கரிம வெளி அடுக்கு, "
      "(2) நடு சுண்ணாம்பு அடுக்கு, (3) நாக்கர் அடுக்கு, (4) ஓட்டைச் சுரக்கும் மேண்டில் மேலணி, (5) மேண்டில் திசு. "
      "(B) முத்தின் வெட்டுத்தோற்றம்: (6) மையக்கரு, (7) நாக்கர் அடுக்குகள், (8) மேண்டில் மேலணியாலான முத்துப் பை, (9) புரவலர் திசு."),
+    ("AschelminthesBookChapter.kt", "pseudocoelom", None, "body-cavities",
+     "Three body plans in cross-section (schematic): (A) acoelomate, as in a flatworm, with no cavity; "
+     "(B) pseudocoelomate, as in a nematode, with a cavity between the body-wall mesoderm and the gut; "
+     "(C) coelomate, with a cavity lined by mesodermal peritoneum on both sides. "
+     "(1) epidermis, (2) mesoderm, (3) wall of the gut, (4) lumen of the gut, (5) body cavity, (6) peritoneum.",
+     "குறுக்கு வெட்டில் மூன்று உடல் அமைப்புகள் (படத்திட்டம்): (A) தட்டைப்புழுவைப் போன்ற உடற்குழியற்றது; "
+     "(B) நெமட்டோடாவைப் போன்ற போலி உடற்குழியுடையது; உடற்சுவர் மீசோடெர்முக்கும் குடலுக்கும் இடையே குழி உள்ளது; "
+     "(C) இருபுறமும் மீசோடெர்ம் பெரிட்டோனியத்தால் வரிசையிடப்பட்ட குழியுடைய உண்மை உடற்குழியுடையது. "
+     "(1) மேலணி, (2) மீசோடெர்ம், (3) குடலின் சுவர், (4) குடல் உட்குழி, (5) உடற்குழி, (6) பெரிட்டோனியம்."),
+    ("AschelminthesBookChapter.kt", "bodywall", None, "nematode-bodywall",
+     "Cross-section of a nematode (schematic): (1) cuticle, (2) epidermis, thickened along four lines, "
+     "(3) longitudinal muscle cell, there being no circular muscle, (4) pseudocoelom, (5) intestine.",
+     "நெமட்டோடாவின் குறுக்கு வெட்டு (படத்திட்டம்): (1) கியூட்டிக்கிள், (2) நான்கு கோடுகளில் தடித்த மேலணி, "
+     "(3) நீள்வாட்டுத் தசைச் செல் (வட்டத் தசை இல்லை), (4) போலி உடற்குழி, (5) குடல்."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",

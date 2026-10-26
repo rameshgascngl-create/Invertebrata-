@@ -138,10 +138,10 @@ What changed:
 - `data/BookFigureLibrary.kt` adds `lib/<id>` figure slots beside the 35 required plates. Each
   entry names an asset stem and a bilingual credit, which the reader shows under the figure.
   The 35-plate manifest, `plate_intake.py` and the tests that pin it are untouched.
-- 29 figure placements in 16 chapters (Nereis 8, protozoan parasites 4, insects 2, IPM 1,
+- 31 figure placements in 16 chapters (Nereis 8, protozoan parasites 4, insects 2, IPM 1,
   medical insects 1, protozoa economics 2, leech 1, annelid asexual reproduction 1,
   Aurelia/anemone 2, crinoid 1, Taenia 2). Placement is scripted in `tools/book_figure_place.py`.
-- 16 original schematics drawn by `tools/book_figure_gen.py`. They carry numerals only; the
+- 18 original schematics drawn by `tools/book_figure_gen.py`. They carry numerals only; the
   key is in the bilingual caption. Credit: "Original schematic · subject-expert review pending".
   Eight further drafts were rejected on review (unclear anatomy, or not supported by the
   chapter text) and are not shipped.

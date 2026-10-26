@@ -1009,6 +1009,84 @@ def pearl_formation():
     save(fig, "pearl-formation")
 
 
+def body_cavities():
+    """Cross-sections of an acoelomate (A), a pseudocoelomate (B) and a coelomate (C)."""
+    fig, ax = canvas()
+    EP, MESO, GUTW, CAV, LUM = "#e6a57e", "#f3d9a8", "#cfe6a8", "#e3f1fb", "#fff7e0"
+    letter(ax, "A", 60, 840); letter(ax, "B", 460, 840); letter(ax, "C", 860, 840)
+    R = 150
+    # A acoelomate: epidermis ring, solid mesoderm fill, gut
+    cx, cy = 200, 520
+    ax.add_patch(Circle((cx, cy), R + 14, fc=EP, ec=INK, lw=2.6, zorder=2))
+    ax.add_patch(Circle((cx, cy), R, fc=MESO, ec=INK, lw=2, zorder=3))
+    ax.add_patch(Circle((cx, cy), 55, fc=GUTW, ec=INK, lw=2.4, zorder=4))
+    ax.add_patch(Circle((cx, cy), 30, fc=LUM, ec=INK, lw=2, zorder=5))
+    for a in range(0, 360, 40):
+        ax.add_patch(Circle((cx + 105 * np.cos(np.deg2rad(a)), cy + 105 * np.sin(np.deg2rad(a))), 7, fc="#e6c98a", ec=INK, lw=1, zorder=4))
+    # B pseudocoelomate: epidermis, muscle (mesoderm) ring, open cavity, gut
+    cx = 600
+    ax.add_patch(Circle((cx, cy), R + 14, fc=EP, ec=INK, lw=2.6, zorder=2))
+    ax.add_patch(Circle((cx, cy), R, fc=MESO, ec=INK, lw=2, zorder=3))
+    ax.add_patch(Circle((cx, cy), R - 40, fc=CAV, ec=INK, lw=2, zorder=4))
+    ax.add_patch(Circle((cx, cy), 55, fc=GUTW, ec=INK, lw=2.4, zorder=5))
+    ax.add_patch(Circle((cx, cy), 30, fc=LUM, ec=INK, lw=2, zorder=6))
+    # C coelomate: epidermis, muscle ring, coelom with peritoneum on both surfaces, gut with muscle
+    cx = 1000
+    ax.add_patch(Circle((cx, cy), R + 14, fc=EP, ec=INK, lw=2.6, zorder=2))
+    ax.add_patch(Circle((cx, cy), R, fc=MESO, ec=INK, lw=2, zorder=3))
+    ax.add_patch(Circle((cx, cy), R - 40, fc="#8f6f50", ec=INK, lw=2, zorder=4))        # peritoneum (body wall side)
+    ax.add_patch(Circle((cx, cy), R - 46, fc=CAV, ec=INK, lw=1.2, zorder=5))            # coelom
+    ax.add_patch(Circle((cx, cy), 78, fc="#8f6f50", ec=INK, lw=2, zorder=6))            # peritoneum (gut side)
+    ax.add_patch(Circle((cx, cy), 72, fc=MESO, ec=INK, lw=1.2, zorder=7))               # gut muscle
+    ax.add_patch(Circle((cx, cy), 55, fc=GUTW, ec=INK, lw=2.4, zorder=8))
+    ax.add_patch(Circle((cx, cy), 30, fc=LUM, ec=INK, lw=2, zorder=9))
+    # keys: 1 epidermis, 2 mesoderm, 3 gut wall (endoderm), 4 gut lumen, 5 body cavity, 6 peritoneum
+    num(ax, 1, 60, 380, 70, 460 + 0 if False else 395)
+    num(ax, 2, 330, 330, 290, 470)
+    num(ax, 3, 200, 330, 200, 485 - 0)
+    num(ax, 4, 90, 700, 175, 550)
+    num(ax, 1, 460, 380, 465, 400)
+    num(ax, 5, 740, 330, 640, 470)
+    num(ax, 3, 600, 330, 600, 485)
+    num(ax, 2, 700, 700, 705, 575)
+    num(ax, 1, 860, 380, 866, 400)
+    num(ax, 5, 1140, 700, 1070, 579)
+    num(ax, 6, 1140, 330, 1054, 426)
+    num(ax, 3, 1000, 330, 1000, 485)
+    num(ax, 2, 1140, 600, 1113, 455)
+    save(fig, "body-cavities")
+
+
+def nematode_bodywall():
+    fig, ax = canvas(12, 9)
+    cx, cy = 600, 450
+    R = 330
+    ax.add_patch(Circle((cx, cy), R + 22, fc="#e9e2c8", ec=INK, lw=2.6, zorder=2))          # cuticle
+    ax.add_patch(Circle((cx, cy), R, fc=EP2 if False else "#e6a57e", ec=INK, lw=2.4, zorder=3))   # epidermis
+    # four thickenings of the epidermis (dorsal, ventral, 2 lateral)
+    for a in (0, 90, 180, 270):
+        ax.add_patch(Circle((cx + (R - 8) * np.cos(np.deg2rad(a)), cy + (R - 8) * np.sin(np.deg2rad(a))), 36,
+                            fc="#e6a57e", ec=INK, lw=2.2, zorder=4))
+    # longitudinal muscle cells in four quadrants
+    for q, a0 in enumerate((8, 98, 188, 278)):
+        for k in range(7):
+            a = np.deg2rad(a0 + 6 + k * 11.5)
+            ax.add_patch(Circle((cx + (R - 55) * np.cos(a), cy + (R - 55) * np.sin(a)), 26,
+                                fc="#d0a0c8", ec=INK, lw=1.6, zorder=5))
+    ax.add_patch(Circle((cx, cy), R - 100, fc="#e3f1fb", ec=INK, lw=2, zorder=4))             # pseudocoelom
+    ax.add_patch(Circle((cx, cy), 110, fc="#cfe6a8", ec=INK, lw=2.6, zorder=6))               # intestine
+    ax.add_patch(Circle((cx, cy), 55, fc="#fff7e0", ec=INK, lw=2, zorder=7))
+    for a in (90, 270):                                                                       # nerve cords (unlabelled)
+        ax.add_patch(Circle((cx + (R - 40) * np.cos(np.deg2rad(a)), cy + (R - 40) * np.sin(np.deg2rad(a))), 10,
+                            fc="#f4c542", ec=INK, lw=1.8, zorder=8))
+    num(ax, 1, 1060, 800, cx + (R + 11) * np.cos(np.deg2rad(40)), cy + (R + 11) * np.sin(np.deg2rad(40)))
+    num(ax, 2, 140, 800, cx + (R - 10) * np.cos(np.deg2rad(140)), cy + (R - 10) * np.sin(np.deg2rad(140)))
+    num(ax, 3, 1100, 140, cx + (R - 55) * np.cos(np.deg2rad(-40)), cy + (R - 55) * np.sin(np.deg2rad(-40)))
+    num(ax, 4, 140, 140, cx + 190 * np.cos(np.deg2rad(215)), cy + 190 * np.sin(np.deg2rad(215)))
+    num(ax, 5, 600, 40, cx, cy - 85)
+    save(fig, "nematode-bodywall")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1018,7 +1096,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "aurelia-cycle": aurelia_cycle, "anemone-section": anemone_section,
        "taenia-cycle": taenia_cycle, "taenia-parts": taenia_parts,
        "sponge-grades": sponge_grades, "cnidarian-forms": cnidarian_forms, "metameres": metameres,
-       "host-cycles": host_cycles, "pearl-formation": pearl_formation}
+       "host-cycles": host_cycles, "pearl-formation": pearl_formation,
+       "body-cavities": body_cavities, "nematode-bodywall": nematode_bodywall}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)
