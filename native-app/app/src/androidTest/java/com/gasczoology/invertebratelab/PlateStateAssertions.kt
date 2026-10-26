@@ -1,9 +1,7 @@
 package com.gasczoology.invertebratelab
 
-import androidx.compose.ui.test.assertExists
-import androidx.compose.ui.test.assertDoesNotExist
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.ComposeTestRule
-import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.platform.app.InstrumentationRegistry
 
 /** True when a required type-study raster is packaged in the APK under type_studies/<organism>/. */

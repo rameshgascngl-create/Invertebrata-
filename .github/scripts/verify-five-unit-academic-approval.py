@@ -8,8 +8,19 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import runpy
 import sys
+
+# Two different numbers, easily confused because they were once both 43:
+#  - the SYLLABUS has 43 existing A5 chapters (NativeCurriculumManifest.EXISTING_A5_CHAPTER_COUNT);
+#    that invariant is unchanged and is checked below;
+#  - the PLATE register grew from 43 to 52 mandatory rasters: 35 type-study plates, 9 Unit I
+#    replacement/concept plates and 8 Nereis plates (audit-five-unit-assets.py). The gate follows
+#    the register instead of a hard-coded number, and the audited size is pinned here so that a
+#    plate cannot be added or dropped without this file being reviewed.
+SYLLABUS_CHAPTERS = 43
+AUDITED_MANDATORY_PLATES = 52
 
 ALLOWED_RIGHTS = {"public_domain", "licensed", "author_owned", "permission_documented"}
 FIELDS = ("biology_reviewer", "tamil_reviewer", "source_reference",
@@ -19,8 +30,12 @@ FIELDS = ("biology_reviewer", "tamil_reviewer", "source_reference",
 def verify(repo_root: Path, reviews_path: Path) -> list[dict]:
     asset_script = repo_root / ".github/scripts/audit-five-unit-assets.py"
     audit = runpy.run_path(str(asset_script))["audit"]
+    manifest = (repo_root / "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt")
+    found = re.search(r"EXISTING_A5_CHAPTER_COUNT\s*=\s*(\d+)", manifest.read_text(encoding="utf-8"))
+    assert found and int(found.group(1)) == SYLLABUS_CHAPTERS, "The 43-chapter syllabus invariant changed"
     required = [x for x in audit(repo_root) if x["required"]]
-    assert len(required) == 43
+    assert len(required) == AUDITED_MANDATORY_PLATES, (
+        "Mandatory plate register changed", len(required), AUDITED_MANDATORY_PLATES)
     doc = json.loads(reviews_path.read_text(encoding="utf-8"))
     assert doc.get("schema_version") == 1, "Invalid academic review schema"
     reviews = doc.get("reviews", [])
@@ -76,9 +91,9 @@ def main():
         json.dumps(outcomes, indent=2, ensure_ascii=False), encoding="utf-8")
     approved = sum(item["status"] == "ACCEPTED" for item in outcomes)
     print(f"ACADEMIC_ACCEPTANCE_REVIEWED_PLATES={approved}/{len(outcomes)}")
-    print("SCIENCE_TAMIL_RIGHTS_GATE=" + ("PASS" if approved == 43 else "FAIL"))
+    print("SCIENCE_TAMIL_RIGHTS_GATE=" + ("PASS" if approved == len(outcomes) else "FAIL"))
     for row in [x for x in outcomes if x["status"] == "HOLD"][:12]:
         print("REVIEW_HOLD=" + row["asset"] + " :: " + ",".join(row["blockers"]))
-    return 0 if approved == 43 else 2
+    return 0 if approved == len(outcomes) else 2
 if __name__ == "__main__":
     sys.exit(main())
