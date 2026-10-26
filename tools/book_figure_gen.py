@@ -1087,6 +1087,60 @@ def nematode_bodywall():
     save(fig, "nematode-bodywall")
 
 
+def nematode_routes():
+    """Three transmission routes of human nematodes, one per row (A Ascaris, B hookworm, C Wuchereria)."""
+    fig, ax = canvas(12, 9)
+    def person(x, y, dots=False):
+        ax.add_patch(Circle((x, y + 62), 26, fc="#e8c39e", ec=INK, lw=2.2, zorder=3))
+        rect(ax, x - 32, y - 52, 64, 100, fc="#9ec5e8", r=18)
+        if dots:
+            for dx, dy in ((-12, -8), (8, 6), (-2, -30)):
+                ax.add_patch(Circle((x + dx, y + dy), 5, fc="#c0392b", zorder=6))
+    def egg(x, y, inner=False):
+        ax.add_patch(Ellipse((x, y), 70, 52, fc="#fff3d6", ec=INK, lw=3, zorder=4))
+        if inner:
+            t = np.linspace(0, 2 * np.pi * 1.6, 60)
+            line(ax, [(x + 20 * np.cos(u) * (1 - u / 12), y + 14 * np.sin(u) * (1 - u / 12)) for u in t], lw=3, color="#7d6608", z=6)
+        else:
+            ax.add_patch(Circle((x, y), 11, fc="#c0392b", ec=INK, lw=1.6, zorder=6))
+    def soil(x, y, w=210):
+        rect(ax, x - w / 2, y - 55, w, 36, fc="#a68a64", lw=2, z=2)
+    def larva(x, y, c="#7d6608", n=2):
+        for k in range(n):
+            t = np.linspace(0, 1, 30)
+            line(ax, [(x - 40 + 80 * u, y + 12 * np.sin(8 * u + k * 2) + k * 16) for u in t], lw=4, color=c, z=6)
+    def mosquito(x, y, larvae=False):
+        ell(ax, x, y, 130, 36, fc="#8d7b68")
+        ell(ax, x + 72, y + 4, 40, 32, fc="#8d7b68")
+        line(ax, [(x + 90, y), (x + 150, y - 36)], lw=2.4)
+        ell(ax, x - 8, y + 44, 100, 30, fc="#dbeaf7", ang=-20, alpha=.9)
+        for dx in (-34, 0, 34):
+            line(ax, [(x + dx, y - 16), (x + dx - 14, y - 60)], lw=2)
+        if larvae:
+            for dx in (-30, 0, 30):
+                ax.add_patch(Circle((x + dx, y), 6, fc="#7d6608", zorder=6))
+    xs = [150, 420, 700, 990]
+    ys = [750, 450, 150]
+    for y, l in zip(ys, "ABC"):
+        letter(ax, l, 50, y + 30)
+    # A  Ascaris: person -> egg -> embryonated egg in soil -> person swallows it
+    y = ys[0]
+    person(xs[0], y); egg(xs[1], y + 20); soil(xs[1], y + 20); egg(xs[2], y + 20, inner=True); soil(xs[2], y + 20); person(xs[3], y)
+    # B  hookworm: person -> egg -> free larva in soil -> larva through skin of a foot
+    y = ys[1]
+    person(xs[0], y); egg(xs[1], y + 20); soil(xs[1], y + 20); larva(xs[2], y + 30); soil(xs[2], y + 20)
+    rect(ax, xs[3] - 40, y - 30, 80, 60, fc="#e8c39e", r=14); larva(xs[3], y + 60, n=1)
+    # C  Wuchereria: person (microfilariae in blood) -> mosquito feeds -> larvae develop -> bite
+    y = ys[2]
+    person(xs[0], y, dots=True); mosquito(xs[1] - 30, y + 10); mosquito(xs[2] - 30, y + 10, larvae=True); person(xs[3], y)
+    for yy in ys:
+        for a, b in ((0, 1), (1, 2), (2, 3)):
+            arrow(ax, (xs[a] + 85, yy + 20), (xs[b] - 100, yy + 20), lw=3)
+    for n, x in zip((1, 2, 3, 4), xs):
+        num(ax, n, x, 880)
+    save(fig, "nematode-routes")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1097,7 +1151,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "taenia-cycle": taenia_cycle, "taenia-parts": taenia_parts,
        "sponge-grades": sponge_grades, "cnidarian-forms": cnidarian_forms, "metameres": metameres,
        "host-cycles": host_cycles, "pearl-formation": pearl_formation,
-       "body-cavities": body_cavities, "nematode-bodywall": nematode_bodywall}
+       "body-cavities": body_cavities, "nematode-bodywall": nematode_bodywall,
+       "nematode-routes": nematode_routes}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)

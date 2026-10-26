@@ -109,6 +109,15 @@ PLACEMENTS = [
      "(3) longitudinal muscle cell, there being no circular muscle, (4) pseudocoelom, (5) intestine.",
      "நெமட்டோடாவின் குறுக்கு வெட்டு (படத்திட்டம்): (1) கியூட்டிக்கிள், (2) நான்கு கோடுகளில் தடித்த மேலணி, "
      "(3) நீள்வாட்டுத் தசைச் செல் (வட்டத் தசை இல்லை), (4) போலி உடற்குழி, (5) குடல்."),
+    ("NematodeAdaptationsBookChapter.kt", "transmission", None, "nematode-routes",
+     "Three routes of transmission of human nematodes (schematic): (A) Ascaris, (B) hookworm, (C) Wuchereria. "
+     "Columns: (1) the infected person, (2) the stage that leaves the host (egg, egg, or microfilariae in blood taken up by a mosquito), "
+     "(3) development in the soil, as an embryonated egg or a free larva, or in the mosquito, "
+     "(4) the new host: the egg is swallowed (A), the larva bores through the skin (B), the mosquito bites (C).",
+     "மனித நெமட்டோடாக்களின் மூன்று பரவல் வழிகள் (படத்திட்டம்): (A) அஸ்காரிஸ், (B) கொக்கிப்புழு, (C) வுச்செரேரியா. "
+     "நெடுவரிசைகள்: (1) தொற்றுற்றவர், (2) புரவலரை விட்டு வெளியேறும் நிலை (முட்டை, முட்டை, அல்லது கொசு உறிஞ்சும் இரத்த மைக்ரோஃபைலேரியா), "
+     "(3) மண்ணில் கரு வளர்ந்த முட்டையாக அல்லது தனிவாழ் லார்வாவாக, அல்லது கொசுவில் வளர்ச்சி, "
+     "(4) புதிய புரவலர்: முட்டை விழுங்கப்படுகிறது (A), லார்வா தோலைத் துளைக்கிறது (B), கொசு கடிக்கிறது (C)."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",
