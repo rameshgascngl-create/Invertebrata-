@@ -118,6 +118,18 @@ PLACEMENTS = [
      "நெடுவரிசைகள்: (1) தொற்றுற்றவர், (2) புரவலரை விட்டு வெளியேறும் நிலை (முட்டை, முட்டை, அல்லது கொசு உறிஞ்சும் இரத்த மைக்ரோஃபைலேரியா), "
      "(3) மண்ணில் கரு வளர்ந்த முட்டையாக அல்லது தனிவாழ் லார்வாவாக, அல்லது கொசுவில் வளர்ச்சி, "
      "(4) புதிய புரவலர்: முட்டை விழுங்கப்படுகிறது (A), லார்வா தோலைத் துளைக்கிறது (B), கொசு கடிக்கிறது (C)."),
+    ("MolluscaBookChapter.kt", "mantle", None, "mollusc-plan",
+     "A generalised mollusc in side view, head to the left (schematic; not a particular species): (1) shell, (2) mantle, "
+     "(3) mantle cavity, (4) ctenidium, (5) visceral mass, (6) foot, (7) head with eye and tentacles, (8) mouth.",
+     "பொதுவான மெல்லுடலியின் பக்கக் காட்சி, தலை இடப்புறம் (படத்திட்டம்; குறிப்பிட்ட இனம் அல்ல): (1) ஓடு, (2) மேண்டில், "
+     "(3) மேண்டில் குழி, (4) டீனிடியம், (5) உள்ளுறுப்புத் திரள், (6) பாதம், (7) கண், உணர்கொம்புகளுடன் தலை, (8) வாய்."),
+    ("EchinodermataBookChapter.kt", "symmetry", None, "echino-symmetry",
+     "Pentaradial adult and bilateral larva (schematic): (A) a sea star from the aboral side, (B) the same from the oral side, "
+     "(C) a bilateral larva. (1) central disc, (2) arm, (3) madreporite, (4) mouth, (5) tube feet along an ambulacral groove, "
+     "(6) ciliated band, (7) the single plane of symmetry, shown dashed.",
+     "ஐந்தாரச் சமச்சீருடைய முதிர்ந்த உயிரியும் இருபக்கச் சமச்சீருடைய லார்வாவும் (படத்திட்டம்): (A) கடல் நட்சத்திரம், வாய் எதிர்ப் பக்கக் காட்சி, "
+     "(B) அதே, வாய்ப் பக்கக் காட்சி, (C) இருபக்கச் சமச்சீர் லார்வா. (1) மைய வட்டு, (2) கை, (3) மேட்ரிபோரைட், (4) வாய், "
+     "(5) அம்புலாக்ரல் பள்ளத்தில் உள்ள குழாய்க் கால்கள், (6) குறுஇழைப் பட்டை, (7) ஒரே சமச்சீர்த் தளம் (புள்ளிக்கோடு)."),
     ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
      "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
      "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",

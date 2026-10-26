@@ -1141,6 +1141,77 @@ def nematode_routes():
     save(fig, "nematode-routes")
 
 
+def mollusc_plan():
+    """Generalised mollusc, side view; head to the left, dorsal up."""
+    fig, ax = canvas(12, 8)
+    # foot (ventral), visceral mass, head
+    ell(ax, 600, 250, 760, 130, fc="#e6a57e", z=3)                       # foot
+    ell(ax, 260, 330, 180, 170, fc="#d9a066", z=4)                       # head
+    ax.add_patch(Circle((235, 360), 14, fc=INK, zorder=7))                # eye
+    ell(ax, 190, 310, 40, 26, fc="#8e4a3a", z=6)                          # mouth
+    for k in range(2):
+        line(ax, [(250 + k * 40, 405), (240 + k * 60, 470)], lw=4, color="#a0825a", z=5)    # tentacles
+    ell(ax, 640, 420, 440, 250, fc="#f6d9c4", z=3)                       # visceral mass
+    # mantle (thin band under the shell) and mantle cavity at the rear
+    t = np.linspace(0, np.pi, 60)
+    line(ax, [(640 + 255 * np.cos(u), 420 + 215 * np.sin(u)) for u in t], lw=9, color="#c97b5a", z=6)
+    ell(ax, 880, 345, 130, 130, fc="#dbeaf7", z=2)                       # mantle cavity
+    for k in range(5):                                                     # ctenidium lamellae
+        line(ax, [(840 + k * 22, 300), (850 + k * 22, 380)], lw=6, color="#6b8fb3", z=6)
+    # shell
+    line(ax, [(640 + 285 * np.cos(u), 420 + 245 * np.sin(u)) for u in t], lw=18, color="#6d4c41", z=5)
+    num(ax, 1, 500, 740, 560, 660)
+    num(ax, 2, 900, 700, 845, 610)
+    num(ax, 3, 1090, 500, 940, 400)
+    num(ax, 4, 1090, 260, 880, 330)
+    num(ax, 5, 560, 560, 600, 450)
+    num(ax, 6, 600, 90, 600, 210)
+    num(ax, 7, 120, 560, 215, 380)
+    num(ax, 8, 100, 190, 185, 305)
+    save(fig, "mollusc-plan")
+
+
+def echino_symmetry():
+    fig, ax = canvas()
+    letter(ax, "A", 60, 800); letter(ax, "B", 460, 800); letter(ax, "C", 860, 800)
+    def star(cx, cy, aboral):
+        pts = []
+        for k in range(10):
+            a = np.deg2rad(90 + k * 36)
+            r = 165 if k % 2 == 0 else 62
+            pts.append((cx + r * np.cos(a), cy + r * np.sin(a)))
+        poly(ax, pts, fc="#e6a57e", lw=2.6)
+        if not aboral:
+            for k in range(5):
+                a = np.deg2rad(90 + k * 72)
+                line(ax, [(cx, cy), (cx + 150 * np.cos(a), cy + 150 * np.sin(a))], lw=8, color="#f6d9c4", z=5)
+                for j in range(1, 6):
+                    r = 36 + j * 22
+                    for sg in (-1, 1):
+                        px = cx + r * np.cos(a) + sg * 11 * np.cos(a + np.pi / 2)
+                        py = cy + r * np.sin(a) + sg * 11 * np.sin(a + np.pi / 2)
+                        ax.add_patch(Circle((px, py), 6, fc="#fff3d6", ec=INK, lw=1.2, zorder=6))
+            ax.add_patch(Circle((cx, cy), 22, fc="#8e4a3a", ec=INK, lw=2, zorder=7))
+        else:
+            ax.add_patch(Circle((cx + 26, cy + 20), 13, fc="#fff3d6", ec=INK, lw=2.4, zorder=7))
+            ax.add_patch(Circle((cx, cy), 10, fc=INK, zorder=7))
+    star(200, 420, True); star(600, 420, False)
+    # C bilateral larva: elongated body with a looped ciliated band
+    ell(ax, 1000, 420, 190, 340, fc="#e3f1fb", z=3)
+    line(ax, [(930, 320), (940, 540), (1000, 590), (1060, 540), (1070, 320), (1000, 270), (930, 320)], lw=5, color="#8e4a3a", z=5)
+    line(ax, [(960, 400), (1040, 400)], lw=0)
+    ax.add_patch(Circle((1000, 330), 18, fc="#cfe6a8", ec=INK, lw=2, zorder=6))
+    ax.plot([1000, 1000], [250, 600], color=INK, lw=1.6, linestyle=(0, (6, 5)), zorder=7)
+    num(ax, 1, 200, 700, 200, 420)
+    num(ax, 2, 70, 190, 112, 300)
+    num(ax, 3, 330, 330, 226, 440)
+    num(ax, 4, 600, 700, 600, 440)
+    num(ax, 5, 760, 190, 698, 455)
+    num(ax, 6, 1130, 700, 1065, 540)
+    num(ax, 7, 1130, 230, 1000, 260)
+    save(fig, "echino-symmetry")
+
+
 # Figures kept after visual review. Others drawn during development (chelicerate, myriapod,
 # flower, economic threshold, nephridia, chiton, bivalve, IPM ladder) were rejected as
 # anatomically unclear or unsupported by the chapter text and are not shipped.
@@ -1152,7 +1223,8 @@ ALL = {"insect-tagmata": insect_tagmata, "metamorphosis": metamorphosis,
        "sponge-grades": sponge_grades, "cnidarian-forms": cnidarian_forms, "metameres": metameres,
        "host-cycles": host_cycles, "pearl-formation": pearl_formation,
        "body-cavities": body_cavities, "nematode-bodywall": nematode_bodywall,
-       "nematode-routes": nematode_routes}
+       "nematode-routes": nematode_routes,
+       "mollusc-plan": mollusc_plan, "echino-symmetry": echino_symmetry}
 
 if __name__ == "__main__":
     wanted = sys.argv[1:] or list(ALL)
