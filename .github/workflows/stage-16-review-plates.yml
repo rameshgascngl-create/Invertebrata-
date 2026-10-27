@@ -1,0 +1,67 @@
+name: Stage 16 generated anatomical PNGs for editorial review
+on:
+  push:
+    branches:
+      - feat/plate-pipeline
+    paths:
+      - .github/workflows/stage-16-review-plates.yml
+      - invertebrata_16_separate_draft_plates.zip
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage-review-only:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/plate-pipeline
+          persist-credentials: true
+      - name: Verify and extract only the 16 named PNGs
+        shell: python
+        run: |
+          from pathlib import Path
+          from zipfile import ZipFile
+          import hashlib
+          import struct
+
+          archive = Path("invertebrata_16_separate_draft_plates.zip")
+          names = {
+              "pila": ["buccal_mass_radula", "operculum", "digestive", "nervous", "circulatory", "excretory_reproductive"],
+              "penaeus": ["gill_structure", "gill_arrangement", "digestive", "nervous", "reproductive"],
+              "asterias": ["digestive", "nervous", "water_vascular", "internal", "tube_foot"],
+          }
+          expected = {f"{genus}_{name}.png": genus for genus, items in names.items() for name in items}
+          assert archive.is_file(), "Committed ZIP not found"
+          with ZipFile(archive) as z:
+              assert set(z.namelist()) == set(expected), "Unexpected or missing ZIP entries"
+              for name, genus in expected.items():
+                  raw = z.read(name)
+                  assert raw[:8] == b"\\x89PNG\\r\\n\\x1a\\n", f"Invalid PNG: {name}"
+                  width, height = struct.unpack(">II", raw[16:24])
+                  assert width >= 200 and height >= 200, f"Unexpected image size: {name}"
+                  dest = Path("native-app/app/src/debug/assets/review_only") / genus / name
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  if dest.exists():
+                      assert dest.read_bytes() == raw, f"Refusing to overwrite different review image: {dest}"
+                  else:
+                      dest.write_bytes(raw)
+                  print(f"{dest}: {width}x{height}, sha256={hashlib.sha256(raw).hexdigest()}")
+      - name: Commit staged files only, not production assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/debug/assets/review_only/pila/ native-app/app/src/debug/assets/review_only/penaeus/ native-app/app/src/debug/assets/review_only/asterias/
+          if git diff --cached --quiet; then
+            echo 'All 16 review-only images already staged' >> "$GITHUB_STEP_SUMMARY"
+          else
+            git diff --cached --check
+            git commit -m 'Stage 16 generated anatomy crops as unapproved review-only PNGs'
+            git push origin HEAD:feat/plate-pipeline
+            echo "Review-only image commit: $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo 'Production promotion, plate registration, lesson references and device QA remain on hold.' >> "$GITHUB_STEP_SUMMARY"
