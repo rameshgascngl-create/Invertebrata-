@@ -47,6 +47,9 @@ object BookFigureLibrary {
     val all: List<BookLibraryFigure> = listOf(
         BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", trypanosomaCredit),
         BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", plasmodiumCredit),
+        BookLibraryFigure("pila-excretory-system", "pila/pila_excretory_system", schematic),
+        BookLibraryFigure("pila-male-reproductive-system", "pila/pila_male_reproductive_system", schematic),
+        BookLibraryFigure("pila-female-reproductive-system", "pila/pila_female_reproductive_system", schematic),
         BookLibraryFigure("nereis-external", "nereis/01_external_morphology", aiPlate),
         BookLibraryFigure("nereis-head", "nereis/02_enlarged_head", aiPlate),
         BookLibraryFigure("nereis-parapodium", "nereis/03_biramous_parapodium", aiPlate),
