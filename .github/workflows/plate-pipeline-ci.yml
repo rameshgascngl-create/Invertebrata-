@@ -1,7 +1,7 @@
 name: Plate pipeline CI
 on:
   push:
-    branches: ['feat/**']
+    branches: ['feat/**', 'native/u72-paramecium-reproduction-editorial-20261027']
     paths:
       - 'native-app/**'
       - 'tools/**'
