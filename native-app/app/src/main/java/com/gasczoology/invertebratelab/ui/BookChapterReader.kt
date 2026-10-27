@@ -25,6 +25,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
@@ -44,6 +47,21 @@ import com.gasczoology.invertebratelab.data.BookTable
 
 private fun t(language: AppLanguage, en: String, ta: String) =
     if (language == AppLanguage.TAMIL) ta else en
+
+private val keyAnatomyTerms = Regex(
+    """\b(?:radula|odontophore|operculum|ctenidium|osphradium|mantle cavity|pulmonary sac|hepatopancreas|gastric mill|madreporite|stone canal|ring canal|radial canal|ampullae|tube feet|pyloric caeca|nerve ring|radial nerve|petasma|thelycum)\b""",
+    RegexOption.IGNORE_CASE,
+)
+
+private fun emphasizeAnatomy(text: String) = buildAnnotatedString {
+    var cursor = 0
+    keyAnatomyTerms.findAll(text).forEach { match ->
+        append(text.substring(cursor, match.range.first))
+        withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append(match.value) }
+        cursor = match.range.last + 1
+    }
+    append(text.substring(cursor))
+}
 
 private val romanUnits = listOf("", "I", "II", "III", "IV", "V", "VI", "VII")
 
@@ -182,7 +200,7 @@ private fun BookRowView(row: BookRow, language: AppLanguage, onListen: (Bilingua
 @Composable
 private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguage) {
     when (block) {
-        is BookParagraph -> Text(block.text.value(language), style = MaterialTheme.typography.bodyLarge)
+        is BookParagraph -> Text(emphasizeAnatomy(block.text.value(language)), style = MaterialTheme.typography.bodyLarge)
         is BookDefinition -> Card(
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
             modifier = Modifier.fillMaxWidth()
