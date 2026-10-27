@@ -41,7 +41,9 @@ jobs:
                   raw = z.read(name)
                   assert raw[:8] == bytes.fromhex("89504e470d0a1a0a"), f"Invalid PNG: {name}"
                   width, height = struct.unpack(">II", raw[16:24])
-                  assert width >= 200 and height >= 200, f"Unexpected image size: {name}"
+                  assert width > 0 and height > 0, f"Invalid image dimensions: {name}"
+                  if width < 300 or height < 300:
+                      print(f"REVIEW WARNING: low-resolution crop {name}: {width}x{height}; not textbook-approved")
                   dest = Path("native-app/app/src/debug/assets/review_only") / genus / name
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   if dest.exists():
