@@ -98,33 +98,50 @@ object ParameciumBookChapter {
                         "செல் அல்லது உடலில் நீர், கரைபொருள் சமநிலையைக் கட்டுப்படுத்துதல்."),
                 )),
             bsec("nuclei-reproduction", "Nuclei, fission and conjugation", "உட்கருக்கள், பிளவு, இணைவு",
-                blocks = listOf(
+                subs = listOf(
+                bsub("Nuclear dimorphism (UG)", "உட்கரு இருவடிவம் (இளநிலை)",
                     bp("Paramecium shows nuclear dimorphism, with two kinds of nucleus. A large kidney-shaped macronucleus controls the daily activity of the cell, and is concerned with metabolism and growth. A small micronucleus, which lies in a hollow of the macronucleus, takes part in sexual reproduction and holds the genetic line that is passed on. The macronucleus is thus the working nucleus, and the micronucleus the reserve. Paramecium caudatum usually has one of each, and other species have more than one micronucleus." to
                         "பாரமீசியம் உட்கரு இருவடிவத்தைக் காட்டுகிறது; இருவகை உட்கருக்கள் உள்ளன. பெரிய சிறுநீரக வடிவ பெருஉட்கரு செல்லின் தினசரிச் செயலைக் கட்டுப்படுத்துகிறது; வளர்சிதைமாற்றம், வளர்ச்சியுடன் தொடர்புடையது. பெருஉட்கருவின் குழிவில் அமையும் சிறுஉட்கரு பாலினப் பெருக்கத்தில் பங்கேற்று கடத்தப்படும் மரபுத் தொடரைக் கொண்டுள்ளது. எனவே பெருஉட்கரு வேலை செய்யும் உட்கரு; சிறுஉட்கரு இருப்பு. பாரமீசியம் காடேட்டத்துக்கு பொதுவாக ஒவ்வொன்றும் ஒன்று; பிற இனங்களுக்கு ஒன்றுக்கு மேற்பட்ட சிறுஉட்கருக்கள் உள்ளன."),
+                    bdef("Macronucleus", "பெருஉட்கரு (Macronucleus)", "The large nucleus that controls the everyday activities of the cell." to
+                        "செல்லின் அன்றாடச் செயல்களைக் கட்டுப்படுத்தும் பெரிய உட்கரு."),
+                    bdef("Micronucleus", "சிறுஉட்கரு (Micronucleus)", "The small nucleus that takes part in sexual reproduction." to
+                        "பாலினப் பெருக்கத்தில் பங்கேற்கும் சிறிய உட்கரு."),
+                ),
+                bsub("Transverse binary fission (UG)", "குறுக்குத் திசை இருபிளவு (இளநிலை)",
                     bp("The usual method of reproduction is binary fission. The micronucleus divides by mitosis, the macronucleus elongates and divides, and the cell constricts across the middle, so that the division is transverse. Each daughter cell receives a share of the structures, and the missing parts, such as a second oral apparatus, are formed afresh. Under favourable conditions the fission may occur once or more in a day, and a population can multiply rapidly." to
                         "வழக்கமான இனப்பெருக்க முறை இருசமப்பிளவு. சிறுஉட்கரு மைட்டாசிஸால் பிரிகிறது; பெருஉட்கரு நீண்டு பிரிகிறது; செல் நடுவில் குறுக்காகச் சுருங்குகிறது; எனவே பிளவு குறுக்கானது. ஒவ்வொரு மகள் செல்லும் அமைப்புகளில் பங்கைப் பெறுகிறது; இரண்டாம் வாய் அமைப்பு போன்ற விடுபட்ட பகுதிகள் புதிதாக உருவாகின்றன. சாதகமான சூழலில் பிளவு ஒரு நாளில் ஒன்று அல்லது அதற்கு மேற்பட்ட முறை நிகழலாம்; இனக்கூட்டம் விரைவாகப் பெருகலாம்."),
+                    bpoints("Fission: three events to distinguish", "இருபிளவில் வேறுபடுத்த வேண்டிய மூன்று நிகழ்வுகள்",
+                        "The micronucleus divides mitotically, preserving the germline complement." to "சிற்றுட்கரு மைட்டாசிஸால் பிரிந்து மரபுவழி உட்கருத் தொகுப்பைப் பேணுகிறது.",
+                        "The macronucleus elongates and partitions without conventional chromosome-by-chromosome mitosis." to "பேருட்கரு வழக்கமான குரோமோசோம்-வாரியான மைட்டாசிஸ் இன்றி நீண்டு பகிரப்படுகிறது.",
+                        "Transverse cytokinesis yields an anterior proter and a posterior opisthe; both must acquire a functional oral apparatus." to "குறுக்குச் சைட்டோபிளாசப் பிரிவு முன்புற புரோட்டர், பின்புற ஓபிஸ்த் ஆகியவற்றை உருவாக்குகிறது; இரண்டிற்கும் செயல்படும் வாயமைப்பு தேவை.",
+                    ),
+                ),
+                bsub("Conjugation: meiosis and exchange (UG)", "இணைவு: மியோசிஸும் பரிமாற்றமும் (இளநிலை)",
                     bp("Conjugation is a sexual process in which two compatible Paramecium cells align at their oral surfaces and form a temporary pair. The old macronucleus later degenerates. The diploid micronucleus in each conjugant undergoes meiosis, three of the four haploid products usually degenerate and the remaining one divides mitotically to form two pronuclei, a stationary and a migratory. The migratory pronucleus is exchanged between the conjugants, so that each cell receives a haploid nucleus from its partner, and it fuses with the stationary pronucleus of the receiving cell to form a diploid synkaryon. The conjugants then separate, and nuclear reorganisation produces new micronuclei and macronuclei, followed by cell divisions after conjugation." to
                         "இணைவு என்பது இரு இணக்கமான பாரமீசியம் செல்கள் வாய்ப்புற மேற்பரப்புகளில் வரிசையாக நின்று தற்காலிக இணையை உருவாக்கும் பாலின முறை. பழைய பெருஉட்கரு பின்னர் சிதைகிறது. ஒவ்வோர் இணைவுயிரியின் ஈருரு சிறுஉட்கரு ஒடுக்கப் பிரிவுக்கு உட்படுகிறது; நான்கு ஒருமடிய விளைபொருட்களில் மூன்று பொதுவாக சிதைகின்றன; மீதமுள்ள ஒன்று மைட்டாசிஸால் பிரிந்து நிலையான, இடம்பெயரும் இரு முன்உட்கருக்களை உருவாக்குகிறது. இடம்பெயரும் முன்உட்கரு இணைவுயிரிகளுக்கிடையே பரிமாறப்படுகிறது; எனவே ஒவ்வொரு செல்லும் தன் துணையிடமிருந்து ஒருமடிய உட்கருவைப் பெற்று, பெறும் செல்லின் நிலையான முன்உட்கருவுடன் இணைந்து ஈருரு சின்கார்யானை உருவாக்குகிறது. இணைவுயிரிகள் பின்னர் பிரிகின்றன; உட்கரு மறுசீரமைப்பு புதிய சிறுஉட்கருக்களையும் பெருஉட்கருக்களையும் உருவாக்கி, இணைவுக்குப் பிந்தைய செல் பிரிவுகள் தொடர்கின்றன."),
                     btable("Stages of conjugation", "இணைவின் நிலைகள்",
                         listOf("Stage" to "நிலை", "What happens" to "என்ன நடக்கிறது"),
                         listOf(
-                            listOf("1" to "1", "Two compatible cells pair at their oral surfaces; the old macronucleus degenerates" to "இரு இணக்கமான செல்கள் வாய்ப்புற மேற்பரப்புகளில் இணைகின்றன; பழைய பெருஉட்கரு சிதைகிறது"),
+                            listOf("1" to "1", "Two compatible cells pair at their oral surfaces; the parental macronucleus is initially present" to "இரு இணக்கமான செல்கள் வாய்ப்புற மேற்பரப்புகளில் இணைகின்றன; தொடக்கத்தில் பழைய பேருட்கரு காணப்படுகிறது"),
                             listOf("2" to "2", "Each micronucleus divides by meiosis; three haploid products degenerate" to "ஒவ்வொரு சிறுஉட்கருவும் ஒடுக்கப் பிரிவால் பிரிகிறது; மூன்று ஒருமடிய விளைபொருட்கள் சிதைகின்றன"),
                             listOf("3" to "3", "The remaining nucleus divides to form a stationary and a migratory pronucleus" to "மீதமுள்ள உட்கரு பிரிந்து நிலையான, இடம்பெயரும் முன்உட்கருக்களை உருவாக்குகிறது"),
                             listOf("4" to "4", "The migratory pronuclei are exchanged between the cells" to "இடம்பெயரும் முன்உட்கருக்கள் செல்களுக்கிடையே பரிமாறப்படுகின்றன"),
                             listOf("5" to "5", "Each migratory pronucleus fuses with the stationary one to form a diploid synkaryon" to "ஒவ்வோர் இடம்பெயரும் முன்உட்கருவும் நிலையானதுடன் இணைந்து ஈருரு சின்கார்யானை உருவாக்குகிறது"),
-                            listOf("6" to "6", "The cells separate; new micronuclei and macronuclei form; the cells divide" to "செல்கள் பிரிகின்றன; புதிய சிறுஉட்கருக்களும் பெருஉட்கருக்களும் உருவாகின்றன; செல்கள் பிரிகின்றன"),
+                            listOf("6" to "6", "The partners separate; the synkaryon divides, the old macronucleus degenerates and new nuclear derivatives differentiate before postconjugation divisions" to "இணைகள் பிரிகின்றன; சின்காரியான் பிரிகிறது; பழைய பேருட்கரு சிதைந்து புதிய உட்கரு வழித்தோன்றல்கள் வேறுபட்டுப் பின்னர் இணைவுக்குப் பிந்தைய செல் பிரிவுகள் நிகழ்கின்றன"),
                         )),
-                    bp("Conjugation is not reproduction in the sense of increase in numbers, since two cells give rise to two cells. Its importance is that it brings together genetic material from two individuals, and so makes new combinations. The details of the number of divisions that follow differ between species and the textbook description is for the typical case." to
-                        "இணைவு எண்ணிக்கை அதிகரிப்பு என்ற பொருளில் இனப்பெருக்கம் அல்ல; ஏனெனில் இரு செல்கள் இரு செல்களைத் தருகின்றன. இரு தனியுயிரிகளின் மரபுப் பொருளைக் கொண்டுவந்து புதிய சேர்க்கைகளை உருவாக்குவதே அதன் முக்கியத்துவம். தொடரும் பிரிவுகளின் எண்ணிக்கை விவரங்கள் இனங்களுக்கிடையே மாறுபடும்; பாடநூல் விளக்கம் வழக்கமான நிலைக்கானது."),
-                    bdef("Macronucleus", "பெருஉட்கரு (Macronucleus)", "The large nucleus that controls the everyday activities of the cell." to
-                        "செல்லின் அன்றாடச் செயல்களைக் கட்டுப்படுத்தும் பெரிய உட்கரு."),
-                    bdef("Micronucleus", "சிறுஉட்கரு (Micronucleus)", "The small nucleus that takes part in sexual reproduction." to
-                        "பாலினப் பெருக்கத்தில் பங்கேற்கும் சிறிய உட்கரு."),
                     bdef("Pronucleus", "முன்உட்கரு", "A haploid nucleus formed during conjugation that fuses with another to form the synkaryon." to
                         "இணைவின்போது உருவாகி, மற்றொன்றுடன் இணைந்து சின்கார்யானை உருவாக்கும் ஒருமடிய உட்கரு."),
                     bdef("Synkaryon", "சின்கார்யான் (Synkaryon)", "The diploid nucleus formed by the fusion of two pronuclei." to
                         "இரு முன்உட்கருக்களின் இணைவால் உருவாகும் ஈருரு உட்கரு."),
+                ),
+                bsub("Postconjugation nuclear reorganization (PG)", "இணைவுக்குப் பிந்தைய உட்கரு மறுசீரமைப்பு (முதுநிலை)",
+                    bp("Conjugation is not reproduction in the sense of increase in numbers, since two cells give rise to two cells. Its importance is that it brings together genetic material from two individuals, and so makes new combinations. The details of the number of divisions that follow differ between species and the textbook description is for the typical case." to
+                        "இணைவு எண்ணிக்கை அதிகரிப்பு என்ற பொருளில் இனப்பெருக்கம் அல்ல; ஏனெனில் இரு செல்கள் இரு செல்களைத் தருகின்றன. இரு தனியுயிரிகளின் மரபுப் பொருளைக் கொண்டுவந்து புதிய சேர்க்கைகளை உருவாக்குவதே அதன் முக்கியத்துவம். தொடரும் பிரிவுகளின் எண்ணிக்கை விவரங்கள் இனங்களுக்கிடையே மாறுபடும்; பாடநூல் விளக்கம் வழக்கமான நிலைக்கானது."),
+                    bnote("PG interpretation: nuclear renewal is not instantaneous", "முதுநிலை விளக்கம்: உட்கரு புதுப்பித்தல் உடனடியாக நிகழ்வதில்லை",
+                        "Following reciprocal haploid pronuclear exchange and fusion, each partner has a diploid synkaryon. In the conventional P. caudatum teaching sequence, three postzygotic mitoses can produce eight nuclear descendants; some differentiate as macronuclear anlagen, whereas others retain germline potential. The parental macronucleus degenerates during reorganization. These stages follow pairing and meiotic exchange: never draw a fully formed new macronucleus before synkaryon multiplication. Subsequent exconjugant divisions increase cell number; conjugation itself does not." to
+                        "ஒருமய முன்உட்கருக்களின் பரஸ்பரப் பரிமாற்றமும் இணைவும் முடிந்த பின் ஒவ்வொரு இணையிலும் இருமய சின்காரியான் அமைகிறது. பாரமீசியம் கௌடேட்டத்தின் வழக்கமான கற்பித்தல் தொடரில் கருவுற்ற உட்கருவின் மூன்று மைட்டாசிஸ் பிரிவுகள் எட்டு உட்கரு வழித்தோன்றல்களைத் தரலாம்; சில புதிய பேருட்கரு முன்னிலைகளாக வேறுபடுகின்றன; மற்றவை மரபுவழி ஆற்றலைத் தக்கவைக்கின்றன. மறுசீரமைப்பின்போது பழைய பேருட்கரு சிதைகிறது. இந்நிலைகள் இணைசேர்தலுக்கும் மியோசிஸ் பரிமாற்றத்துக்கும் பின்னரே நிகழ்கின்றன. சின்காரியான் பெருக்கத்திற்கு முன்பே முழுமையான புதிய பேருட்கருவை வரையக்கூடாது. இணைவுக்குப் பிந்தைய செல் பிரிவுகளே செல் எண்ணிக்கையை உயர்த்துகின்றன; இணைவு மட்டும் அல்ல.",
+                    ),
+                ),
                 )),
             bsec("behaviour", "Behaviour: responding without a nervous system", "நடத்தை: நரம்பு மண்டலம் இன்றி துலங்குதல்",
                 blocks = listOf(
