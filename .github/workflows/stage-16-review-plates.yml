@@ -39,7 +39,7 @@ jobs:
               assert set(z.namelist()) == set(expected), "Unexpected or missing ZIP entries"
               for name, genus in expected.items():
                   raw = z.read(name)
-                  assert raw[:8] == b"\\x89PNG\\r\\n\\x1a\\n", f"Invalid PNG: {name}"
+                  assert raw[:8] == bytes.fromhex("89504e470d0a1a0a"), f"Invalid PNG: {name}"
                   width, height = struct.unpack(">II", raw[16:24])
                   assert width >= 200 and height >= 200, f"Unexpected image size: {name}"
                   dest = Path("native-app/app/src/debug/assets/review_only") / genus / name
