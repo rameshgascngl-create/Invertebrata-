@@ -5,6 +5,7 @@ on:
     paths:
       - 'native-app/**'
       - 'tools/**'
+      - 'provenance/U72_PARAMECIUM_REPRODUCTION_PLATE_REVIEW_20261027.md'
       - '.github/workflows/plate-pipeline-ci.yml'
   workflow_dispatch:
 
