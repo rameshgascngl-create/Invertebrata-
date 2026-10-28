@@ -27,6 +27,7 @@ class WholeBookTamilTerminologyAuditTest {
                     .map { term -> "${file.name}:${index + 1}: $term" }
             }
         }
+        findings.forEach { println("TAMIL_AUDIT_FINDING: $it") }
         assertTrue("Tamil terminology audit findings:\n" + findings.joinToString("\n"), findings.isEmpty())
     }
 }
