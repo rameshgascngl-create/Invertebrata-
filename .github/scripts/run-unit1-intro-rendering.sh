@@ -25,16 +25,22 @@ for scale in 1.0 2.0; do
   [[ "$actual" == "$scale" ]] || { result="FONT_SCALE_MISMATCH_$scale"; exit 1; }
   F="$E/font-$scale"
   mkdir -p "$F"
-  rm -rf native-app/app/build/outputs/androidTest-results/connected
-  if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
-    -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUnitIIntroductionBookRenderingTest,com.gasczoology.invertebratelab.NativeUnitIRevisedChaptersRenderingTest \
-    -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
-    > "$F/gradle.log" 2>&1; then
-    cp -a native-app/app/build/outputs/androidTest-results/connected "$F/xml" 2>/dev/null || true
-    result="ANDROID_TEST_FAILURE_$scale"
-    exit 1
-  fi
-  cp -a native-app/app/build/outputs/androidTest-results/connected "$F/xml"
+  # Run each class separately: Gradle's class argument does not reliably select
+  # comma-separated instrumentation classes on this Android test runner.
+  for test_class in NativeUnitIIntroductionBookRenderingTest NativeUnitIRevisedChaptersRenderingTest; do
+    rm -rf native-app/app/build/outputs/androidTest-results/connected
+    if ! gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
+      -Pandroid.testInstrumentationRunnerArguments.class="com.gasczoology.invertebratelab.$test_class" \
+      -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
+      > "$F/$test_class-gradle.log" 2>&1; then
+      mkdir -p "$F/xml/$test_class"
+      cp -a native-app/app/build/outputs/androidTest-results/connected/. "$F/xml/$test_class/" 2>/dev/null || true
+      result="ANDROID_TEST_FAILURE_${scale}_${test_class}"
+      exit 1
+    fi
+    mkdir -p "$F/xml/$test_class"
+    cp -a native-app/app/build/outputs/androidTest-results/connected/. "$F/xml/$test_class/"
+  done
   python3 - "$F/xml" <<'PY'
 from pathlib import Path
 import sys, xml.etree.ElementTree as ET
