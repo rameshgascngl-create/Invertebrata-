@@ -2,7 +2,6 @@ package com.gasczoology.invertebratelab
 
 import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
-import androidx.compose.ui.test.assertExists
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
