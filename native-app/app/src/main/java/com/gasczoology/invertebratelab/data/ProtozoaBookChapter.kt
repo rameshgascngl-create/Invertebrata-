@@ -13,13 +13,13 @@ object ProtozoaBookChapter {
             "Recognise the limits of the traditional classification." to "மரபுவழி வகைப்பாட்டின் எல்லைகளை அறிய.",
         ),
         introduction = listOf(
-            "Protozoa is a historical term for diverse, mostly unicellular eukaryotes. Many move by pseudopodia, flagella or cilia; others are non-motile during parts of their life cycle. A single cell carries out nutrition, waste removal, osmoregulation and reproduction. Familiar examples include Amoeba, Euglena, Paramecium and the malaria parasite Plasmodium. These organisms occur in freshwater, marine and moist terrestrial habitats; some live as parasites." to
-                "புரோட்டோசோவா என்பது பல்வேறு பரிணாமக் கிளைகளைச் சேர்ந்த, பெரும்பாலும் ஒருசெல் யூகேரியோட்டு உயிரிகளைக் குறிக்கும் மரபுவழிச் சொல். இவற்றில் பல போலிக்கால்கள், கசையிழைகள் அல்லது குறுஇழைகள் மூலம் இடம்பெயர்கின்றன. ஒரே செல் ஊட்டம், கழிவுநீக்கம், நீர்ச்சமநிலைப் பராமரிப்பு, இனப்பெருக்கம் ஆகிய செயல்களை மேற்கொள்கிறது. அமீபா, யூக்ளீனா, பாரமீசியம், மலேரியாவை ஏற்படுத்தும் பிளாஸ்மோடியம் ஆகியவை எடுத்துக்காட்டுகள். இவை நன்னீர், கடல், ஈரமான நில வாழிடங்களில் காணப்படுகின்றன; சில ஒட்டுண்ணிகளாக வாழ்கின்றன.",
+            "Protozoa is a traditional name for diverse, mostly unicellular eukaryotes. Many move using pseudopodia, flagella or cilia. One cell performs nutrition, excretion, water-balance regulation and reproduction. Examples include Amoeba, Euglena, Paramecium and Plasmodium. They occur in freshwater, marine and moist terrestrial habitats; some are parasites." to
+                "புரோட்டோசோவா என்பது பல்வேறு பரிணாமக் கிளைகளைச் சேர்ந்த, பெரும்பாலும் ஒருசெல் யூகேரியோட்டு உயிரிகளுக்கான மரபுவழிப் பெயர். பல உயிரிகள் போலிக்கால்கள், கசையிழைகள் அல்லது குறுஇழைகள் மூலம் இடம்பெயர்கின்றன. ஒரே செல் ஊட்டம், கழிவுநீக்கம், நீர்ச் சமநிலையை ஒழுங்குபடுத்துதல், இனப்பெருக்கம் ஆகிய செயல்களைச் செய்கிறது. அமீபா, யூக்ளீனா, பாரமீசியம், பிளாஸ்மோடியம் ஆகியவை எடுத்துக்காட்டுகள். இவை நன்னீர், கடல், ஈரமான நில வாழிடங்களில் காணப்படுகின்றன. சில இனங்கள் ஒட்டுண்ணிகளாக வாழ்கின்றன.",
             "This syllabus retains Protozoa as a teaching category, not a single natural evolutionary group. Modern classification places its members in several eukaryotic lineages. In examinations, describe the traditional groups, but distinguish that historical arrangement from evidence-based evolutionary relationships." to
                 "இப்பாடத்திட்டத்தில் புரோட்டோசோவா என்ற பெயர் கற்பித்தல் வசதிக்காகப் பயன்படுத்தப்படுகிறது; இது ஒரே இயற்கையான பரிணாமக் குழுவைக் குறிக்காது. நவீன வகைப்பாட்டில் இவ்வுயிரிகள் பல யூகேரியோட்டு பரிணாமக் கிளைகளில் இடம்பெறுகின்றன. தேர்வில் மரபுவழிக் குழுக்களின் பண்புகளை விளக்கும்போது, அவை பரிணாம உறவை நேரடியாகக் காட்டுவதில்லை என்பதையும் குறிப்பிட வேண்டும்.",
         ),
         sections = listOf(
-            bsec("meaning", "What the name Protozoa means", "புரோட்டோசோவா என்ற பெயரின் பொருள்",
+            bsec("meaning", "1. What the name Protozoa means", "1. புரோட்டோசோவா என்ற பெயரின் பொருள்",
                 blocks = listOf(
                     bp("Protozoa is a traditional teaching group of mostly unicellular eukaryotic protists. The word means first animals, and it reflects the older view that these organisms were the simplest animals. We now know that they are not animals in the strict sense, since the animal kingdom consists of many-celled forms. Modern phylogeny distributes the organisms that were called protozoa among several eukaryotic lineages, and does not recognise them as one natural clade. The name survives in the syllabus, in medical parasitology and in common use as a convenient label." to
                         "புரோட்டோசோவா என்பது பெரும்பாலும் ஒருசெல் யூகேரியோட் புரோட்டிஸ்டுகளின் மரபுவழிக் கற்பித்தல் குழு. சொல் முதல் விலங்குகள் எனப் பொருள்படுகிறது; இவ்வுயிரிகள் எளிமையான விலங்குகள் என்ற பழைய கருத்தைப் பிரதிபலிக்கிறது. விலங்கு இராச்சியம் பலசெல் வடிவங்களால் ஆனது என்பதால் அவை கண்டிப்பான பொருளில் விலங்குகள் அல்ல என இப்போது அறிவோம். நவீன இனவரலாறு புரோட்டோசோவா எனப்பட்ட உயிரிகளை பல யூகேரியோட் பரம்பரைகளிடையே பகிர்கிறது; ஒரே இயற்கைக் கிளையாக அங்கீகரிக்கவில்லை. பெயர் பாடத்திட்டத்திலும், மருத்துவ ஒட்டுண்ணியியலிலும், வசதியான குறிச்சொல்லாக பொதுப் பயன்பாட்டிலும் நீடிக்கிறது."),
@@ -41,7 +41,7 @@ object ProtozoaBookChapter {
                     bdef("Unicellular", "ஒருசெல் (Unicellular)", "Consisting of a single cell." to
                         "ஒரே செல்லால் ஆன."),
                 )),
-            bsec("characters", "General characters", "பொதுப் பண்புகள்",
+            bsec("characters", "2. General characters", "2. பொதுப் பண்புகள்",
                 blocks = listOf(
                     bpoints("The general characters of Protozoa", "புரோட்டோசோவாவின் பொதுப் பண்புகள்",
                         "Each organism is a single eukaryotic cell with a nucleus and membrane-bound organelles." to "ஒவ்வோர் உயிரியும் உட்கருவும் சவ்வுடைய நுண்ணுறுப்புகளுமுடைய ஒற்றை யூகேரியோட் செல்.",
@@ -66,7 +66,7 @@ object ProtozoaBookChapter {
                     bdef("Cilium", "மயிரிழை", "A short hair-like projection of the cell, found in large numbers, used for movement or for feeding." to
                         "இயக்கம் அல்லது உணவெடுப்புக்குப் பயன்படும் அதிக எண்ணிக்கையில் உள்ள செல்லின் குறுகிய முடி போன்ற நீட்சி."),
                 )),
-            bsec("nutrition-osmo", "Nutrition and osmoregulation", "ஊட்டமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தலும்",
+            bsec("nutrition-osmo", "3. Nutrition and osmoregulation", "3. ஊட்டமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தலும்",
                 blocks = listOf(
                     bp("Protozoa differ in the manner in which they obtain food. Many are holozoic, or phagotrophic, which means that they ingest solid food, such as bacteria, algae or other protozoa, into food vacuoles in which it is digested. Others are saprozoic, or osmotrophic, and absorb dissolved nutrients across the surface of the cell. Some, such as Euglena, are photosynthetic, and have chloroplasts, and a number are mixotrophic, with more than one way of feeding. The parasites obtain nutrients from the host in ways that are described in a later chapter." to
                         "புரோட்டோசோவாக்கள் உணவைப் பெறும் முறையில் வேறுபடுகின்றன. பல ஹோலோசோயிக் அல்லது பேகோட்ரோஃபிக்; அதாவது பாக்டீரியா, பாசி, பிற புரோட்டோசோவா போன்ற திட உணவை உணவு நுண்குமிழ்களுக்குள் உட்கொண்டு அங்கு செரிக்கின்றன. மற்றவை சாப்ரோசோயிக் அல்லது ஆஸ்மோட்ரோஃபிக்; கரைந்த ஊட்டங்களை செல் மேற்பரப்பு வழியே உறிஞ்சுகின்றன. யூக்ளினா போன்ற சில ஒளிச்சேர்க்கை செய்து பசுங்கணிகங்கள் கொண்டவை; பல கலப்பூட்டமுடையவை, ஒன்றுக்கு மேற்பட்ட உண்ணும் வழிகளுடன். ஒட்டுண்ணிகள் விருந்தோம்பியிடமிருந்து ஊட்டங்களைப் பெறும் வழிகள் பிந்தைய அத்தியாயத்தில் விவரிக்கப்படுகின்றன."),
@@ -89,7 +89,7 @@ object ProtozoaBookChapter {
                     bdef("Hypotonic", "ஹைப்போடானிக் (Hypotonic)", "Having a lower concentration of dissolved substances than another solution." to
                         "மற்றொரு கரைசலை விடக் குறைந்த கரைபொருள் செறிவு உடைய."),
                 )),
-            bsec("reproduction", "Reproduction and encystment", "இனப்பெருக்கமும் சிஸ்ட் உருவாதலும்",
+            bsec("reproduction", "4. Reproduction and encystment", "4. இனப்பெருக்கமும் சிஸ்ட் உருவாதலும்",
                 blocks = listOf(
                     bp("Reproduction in the protozoa is usually asexual, by fission, in which the cell divides into two or more cells. In binary fission the nucleus divides by mitosis, and then the cytoplasm divides, and the two daughter cells are similar. In multiple fission the nucleus divides several times before the cell divides, and a number of daughter cells are formed at once, as in the malarial parasite. Budding, in which a small part of the cell separates, also occurs in some forms." to
                         "புரோட்டோசோவாவில் இனப்பெருக்கம் வழக்கமாக பிளவால் பாலிலா முறை; செல் இரண்டு அல்லது அதற்கு மேற்பட்ட செல்களாகப் பிரிகிறது. இருபிளவில் உட்கரு மைட்டாசிஸால் பிரிந்து பின்னர் சைட்டோபிளாசம் பிரிகிறது; இரு மகள் செல்களும் ஒத்தவை. பலபிளவில் செல் பிரியும் முன் உட்கரு பலமுறை பிரிகிறது; மலேரியா ஒட்டுண்ணி போல ஒரே நேரத்தில் பல மகள் செல்கள் உருவாகின்றன. செல்லின் சிறு பகுதி பிரியும் அரும்புதலும் சில வடிவங்களில் நிகழ்கிறது."),
@@ -104,7 +104,7 @@ object ProtozoaBookChapter {
                     bdef("Conjugation", "இணைவு", "A sexual process in ciliates in which two cells exchange nuclear material." to
                         "சிலியேட்டுகளில் இரு செல்கள் உட்கருப் பொருளைப் பரிமாறும் பாலின முறை."),
                 )),
-            bsec("habitats", "Habitats and importance", "வாழிடங்களும் முக்கியத்துவமும்",
+            bsec("habitats", "5. Habitats and importance", "5. வாழிடங்களும் முக்கியத்துவமும்",
                 blocks = listOf(
                     bp("Protozoa live wherever there is water, whether it is the sea, a pond, the film of moisture in soil, or the body fluids and tissues of another animal. Many are free-living, and they form a part of the plankton and of the community of the bottom, where they feed on bacteria and algae and are themselves eaten by small animals, so that they are links in food chains. Some live in association with other animals, and a number are parasites of man, domestic animals and wild animals. The parasitic species are of great importance to medicine and to veterinary science, and they are taken up in a later chapter." to
                         "நீர் உள்ள எங்கும் புரோட்டோசோவாக்கள் வாழ்கின்றன: கடல், குளம், மண்ணிலுள்ள ஈரப்படலம், மற்றொரு விலங்கின் உடல் திரவங்கள், திசுக்கள் ஆகியவற்றில். பல தனித்து வாழ்பவை; மிதவைத் தொகுப்பின், அடித்தள சமூகத்தின் பகுதியாகி, பாக்டீரியா, பாசிகளை உண்டு சிறு விலங்குகளால் உண்ணப்படுவதால் உணவுச் சங்கிலிகளின் இணைப்புகள். சில பிற விலங்குகளுடன் இணைந்து வாழ்கின்றன; பல மனிதன், வீட்டு, காட்டு விலங்குகளின் ஒட்டுண்ணிகள். ஒட்டுண்ணி இனங்கள் மருத்துவத்துக்கும் கால்நடை அறிவியலுக்கும் மிக முக்கியமானவை; பிந்தைய அத்தியாயத்தில் எடுத்துக்கொள்ளப்படுகின்றன."),
@@ -117,7 +117,7 @@ object ProtozoaBookChapter {
                     bdef("Food chain", "உணவுச் சங்கிலி", "A sequence of organisms in which each is the food of the next." to
                         "ஒவ்வொன்றும் அடுத்ததற்கு உணவாக இருக்கும் உயிரிகளின் வரிசை."),
                 )),
-            bsec("classes", "The traditional groups", "மரபுவழிக் குழுக்கள்",
+            bsec("classes", "6. The traditional groups", "6. மரபுவழிக் குழுக்கள்",
                 blocks = listOf(
                     bp("The traditional classification of the protozoa was based mainly on the organ of locomotion, and it gave four classes. The first was the Sarcodina, or Rhizopoda, which move by pseudopodia, as in Amoeba. The second was the Mastigophora, or Flagellata, which move by flagella, as in Euglena. The third was the Ciliata, or Ciliophora, which move by cilia, as in Paramecium. The fourth was the Sporozoa, which are parasites that have no obvious organs of locomotion in the main phase of the life cycle, as in Plasmodium." to
                         "புரோட்டோசோவாவின் மரபுவழி வகைப்பாடு முக்கியமாக இயக்க உறுப்பை அடிப்படையாகக் கொண்டு நான்கு வகுப்புகளைத் தந்தது. முதலாவது சார்கோடினா அல்லது ரைசோபோடா; அமீபா போல போலிக்கால்களால் நகர்பவை. இரண்டாவது மாஸ்டிகோஃபோரா அல்லது ஃபிளாஜெல்லேட்டா; யூக்ளினா போல கசைகளால் நகர்பவை. மூன்றாவது சிலியேட்டா அல்லது சிலியோஃபோரா; பாரமீசியம் போல சிலியாக்களால் நகர்பவை. நான்காவது ஸ்போரோசோவா; பிளாஸ்மோடியம் போல வாழ்க்கைச் சுழற்சியின் முக்கிய நிலையில் தெளிவான இயக்க உறுப்புகள் இல்லாத ஒட்டுண்ணிகள்."),
@@ -143,7 +143,7 @@ object ProtozoaBookChapter {
                     bdef("Apicomplexa", "அபிகாம்ப்ளெக்ஸா (Apicomplexa)", "A group of parasitic protists with a characteristic apical complex, including Plasmodium." to
                         "பிளாஸ்மோடியம் உள்ளிட்ட, தனிப்பண்பு நுனித் தொகுப்புடைய ஒட்டுண்ணி புரோட்டிஸ்டுகளின் குழு."),
                 )),
-            bsec("ciliata-sporozoa", "Ciliata and Sporozoa compared", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
+            bsec("ciliata-sporozoa", "7. Ciliata and Sporozoa compared", "7. சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
                 blocks = listOf(
                     btable("Ciliata compared with Sporozoa", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Ciliata" to "சிலியேட்டா", "Sporozoa" to "ஸ்போரோசோவா"),
@@ -164,7 +164,7 @@ object ProtozoaBookChapter {
                     bdef("Cytostome", "சைட்டோஸ்டோம் (Cytostome)", "The cell mouth through which food is taken in by a ciliate." to
                         "சிலியேட்டு உணவை உள்ளெடுக்கும் செல் வாய்."),
                 )),
-            bsec("natural", "Is Protozoa a natural group?", "புரோட்டோசோவா இயற்கைக் குழுவா?",
+            bsec("natural", "8. Is Protozoa a natural group?", "8. புரோட்டோசோவா இயற்கைக் குழுவா?",
                 blocks = listOf(
                     bp("Modern classification asks of every group that it should include an ancestor and all of its descendants, and the traditional Protozoa do not meet this test. The animal-like unicellular organisms that were placed together have turned out, on the evidence of molecular comparison and of cell structure, to belong to several distant lineages, some of which are closer to plants, fungi or animals than they are to one another. For this reason a group that is defined by a shared mode of life, rather than by a shared ancestor, is called a grade or a paraphyletic group, and many current schemes divide the single-celled eukaryotes into several large groups and no longer use Protozoa as a formal kingdom or phylum. The name is retained in teaching and in parasitology because it is convenient and because the syllabus is built upon it.",
                         "நவீன வகைப்பாடு ஒவ்வொரு குழுவிலும் ஒரு மூதாதையும் அதன் அனைத்து வழித்தோன்றல்களும் இருக்க வேண்டும் என்று கேட்கிறது; மரபுவழிப் புரோட்டோசோவா இச்சோதனையைப் பூர்த்தி செய்யவில்லை. விலங்கு போன்ற ஒரு செல் உயிரிகளாக ஒன்றாக வைக்கப்பட்டவை, மூலக்கூறு ஒப்பீடு மற்றும் செல் அமைப்பின் சான்றின்படி, பல தொலைவான வழிமரபுகளைச் சேர்ந்தவை எனத் தெரிகிறது; அவற்றில் சில ஒன்றுக்கொன்றைவிட தாவரங்கள், பூஞ்சைகள் அல்லது விலங்குகளுடன் நெருக்கமானவை. எனவே பொதுவான மூதாதையால் அல்லாமல் பொதுவான வாழ்முறையால் வரையறுக்கப்படும் குழு படிநிலைக் குழு அல்லது பாராஃபைலெட்டிக் குழு எனப்படுகிறது; தற்போதைய பல திட்டங்கள் ஒரு செல் யூகேரியோட்டுகளைப் பல பெரிய குழுக்களாகப் பிரித்து, புரோட்டோசோவாவை முறையான திணையாகவோ தொகுதியாகவோ பயன்படுத்துவதில்லை. வசதிக்காகவும் பாடத்திட்டம் அதன் மீது அமைந்துள்ளதாலும் கற்பித்தலிலும் ஒட்டுண்ணியியலிலும் இப்பெயர் தக்கவைக்கப்படுகிறது."),
@@ -173,7 +173,7 @@ object ProtozoaBookChapter {
                     bdef("Paraphyletic group", "பாராஃபைலெட்டிக் குழு (Paraphyletic group)", "A group that contains a common ancestor but not all of its descendants." to
                         "பொதுவான மூதாதையைக் கொண்டிருந்தும் அதன் அனைத்து வழித்தோன்றல்களையும் கொள்ளாத குழு."),
                 )),
-            bsec("ecology", "Protozoa in water, soil and the sea", "நீர், மண், கடலில் புரோட்டோசோவா",
+            bsec("ecology", "9. Protozoa in water, soil and the sea", "9. நீர், மண், கடலில் புரோட்டோசோவா",
                 blocks = listOf(
                     bp("The ecological role of the protozoa is larger than their size suggests. In water and in soil they feed on bacteria, algae and other small cells, and in doing so they hold down the numbers of bacteria and return nutrients to the community in a form that other organisms can use. A number of ciliates are important in the biological treatment of sewage, where the community of bacteria and protozoans that forms in the activated sludge removes organic matter, and the kinds of protozoa present are used in practice as an indication of the condition of the plant. Protozoans in turn are eaten by small crustaceans, larvae and fish fry, so that they connect the smallest producers and decomposers to the larger animals of the food chain.",
                         "புரோட்டோசோவாவின் சூழலியல் பங்கு அவற்றின் அளவு காட்டுவதைவிடப் பெரியது. நீரிலும் மண்ணிலும் அவை பாக்டீரியா, பாசி, பிற சிறு செல்களை உண்கின்றன; அதன் மூலம் பாக்டீரியாக்களின் எண்ணிக்கையைக் கட்டுப்படுத்தி, ஊட்டச்சத்துகளை மற்ற உயிரிகள் பயன்படுத்தக்கூடிய வடிவில் சமூகத்துக்குத் திருப்புகின்றன. கழிவுநீரின் உயிரியல் சுத்திகரிப்பில் சில சிலியேட்டுகள் முக்கியமானவை; செயல்படுத்தப்பட்ட கசடில் உருவாகும் பாக்டீரியா-புரோட்டோசோவா சமூகம் கரிமப் பொருளை அகற்றுகிறது; இருக்கும் புரோட்டோசோவா வகைகள் நடைமுறையில் ஆலையின் நிலையைக் குறிக்கப் பயன்படுகின்றன. புரோட்டோசோவாக்கள் சிறு கிரஸ்டேஷியன்களாலும் லார்வாக்களாலும் மீன் குஞ்சுகளாலும் உண்ணப்படுகின்றன; இவ்வாறு மிகச் சிறிய உற்பத்தியாளர்களையும் சிதைப்பவர்களையும் உணவுச் சங்கிலியின் பெரிய விலங்குகளுடன் இணைக்கின்றன."),
@@ -184,7 +184,7 @@ object ProtozoaBookChapter {
                     bdef("Microfossil", "நுண்புதைபடிவம் (Microfossil)", "A fossil so small that it is studied with a microscope." to
                         "நுண்ணோக்கியால் ஆய்வு செய்யும் அளவு சிறிய புதைபடிவம்."),
                 )),
-            bsec("answering", "Answering questions on the Protozoa", "புரோட்டோசோவா வினாக்களுக்கு விடையளித்தல்",
+            bsec("answering", "10. Answering questions on the Protozoa", "10. புரோட்டோசோவா வினாக்களுக்கு விடையளித்தல்",
                 blocks = listOf(
                     bp("An answer on the general characters should be arranged by system and should mention a feature for each, so that it reads as a description of an organism and not as a list. Begin with the level of organisation, one cell carrying out all the functions, then locomotion by pseudopodia, flagella or cilia, then nutrition and the variety of its modes, then osmoregulation by the contractile vacuole in fresh water, then reproduction by fission and its sexual variants, and last the formation of cysts. Where a question asks for the characters of the phylum, this order can be followed in about eight sentences with an example of each class, and such an answer will cover the marks that are allotted to the characters.",
                         "பொதுப் பண்புகள் பற்றிய விடை அமைப்பு வாரியாக அமைக்கப்பட்டு, ஒவ்வொன்றுக்கும் ஒரு பண்பைக் குறிப்பிட வேண்டும்; அப்போது அது பட்டியலாக அல்லாமல் ஓர் உயிரியின் விவரணையாக இருக்கும். ஒரே செல் அனைத்துப் பணிகளையும் செய்யும் அமைப்பு நிலையுடன் தொடங்கவும்; பின் போலிக்கால், கசை, மயிரிழைகளால் இயக்கம்; பின் ஊட்டமும் அதன் வகைகளும்; பின் நன்னீரில் சுருங்கும் நுண்குமிழால் சவ்வூடுபரவல் ஒழுங்குபாடு; பின் பிளவாலும் அதன் பாலினப் பெருக்க வகைகளாலும் இனப்பெருக்கம்; இறுதியாக சிஸ்ட் உருவாதல். தொகுதியின் பண்புகளைக் கேட்கும்போது, ஒவ்வொரு வகுப்பின் எடுத்துக்காட்டுடன் எட்டு வாக்கியங்களில் இந்த வரிசையைப் பின்பற்றலாம்; இத்தகைய விடை பண்புகளுக்கான மதிப்பெண்களை உள்ளடக்கும்."),
