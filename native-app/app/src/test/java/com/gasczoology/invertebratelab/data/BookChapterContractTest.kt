@@ -94,6 +94,24 @@ class BookChapterContractTest {
         }
     }
 
+    @Test fun unitOneProtozoaHasConciseBilingualOpeningAndKeyPoints() {
+        val chapter = ProtozoaBookChapter.chapter
+        assertEquals("u1-protozoa", chapter.lessonId)
+        assertEquals(2, chapter.introduction.size)
+        chapter.introduction.forEach { passage ->
+            assertTrue("Protozoa introduction too long for an undergraduate opening",
+                passage.english.split(Regex("""\s+""")).size <= 85)
+            assertTrue("Missing Tamil introduction", passage.tamil.any {
+                it.code in 0x0B80..0x0BFF
+            })
+        }
+        val keyCards = chapter.allBlocks().filterIsInstance<BookKeyPoints>()
+        assertEquals(1, keyCards.size)
+        assertEquals(3, keyCards.single().points.size)
+        assertEquals(listOf("u1-protozoa-A5-1", "u1-protozoa-A5-2"),
+            chapter.reviewQuestionIds)
+    }
+
     @Test fun glossaryIsExactlyTheDefinitionBoxes() {
         val terms = sycon.definitions.map { it.term.english }
         assertEquals(terms.size, terms.toSet().size)
