@@ -83,14 +83,14 @@ class BookChapterContractTest {
         val headings = BookLayout.rows(chapter).filterIsInstance<BookRow.SectionHeading>()
         assertEquals(10, headings.size)
         assertEquals((1..10).map { "1.$it" }, headings.map { it.number })
+        val typedPrefix = Regex("""^\s*\d+(?:\.\d+)*[.)]\s+""")
         headings.forEach { row ->
-            val typedPrefix = Regex("""^\\s*\\d+(?:\\.\\d+)*[.)]\\s+""")
             assertTrue("Duplicate English section number: ${row.heading.english}",
                 !typedPrefix.containsMatchIn(row.heading.english))
             assertTrue("Duplicate Tamil section number: ${row.heading.tamil}",
                 !typedPrefix.containsMatchIn(row.heading.tamil))
             assertTrue("Missing Tamil section heading: ${row.number}",
-                row.heading.tamil.any { it in '\\u0B80'..'\\u0BFF' })
+                row.heading.tamil.any { it.code in 0x0B80..0x0BFF })
         }
     }
 
