@@ -15,6 +15,7 @@ import com.gasczoology.invertebratelab.data.BookLayout
 import com.gasczoology.invertebratelab.data.BookRow
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
 import com.gasczoology.invertebratelab.data.NativeLearningState
+import com.gasczoology.invertebratelab.data.NutritionBookChapter
 import com.gasczoology.invertebratelab.data.LocomotionBookChapter
 import com.gasczoology.invertebratelab.data.ProtozoaBookChapter
 import com.gasczoology.invertebratelab.data.ParameciumBookChapter
@@ -91,6 +92,8 @@ class NativeUnitIRevisedChaptersRenderingTest {
         waitFor("native-unit-1")
     }
 
+    @Test fun englishNutrition() = checkChapter(NutritionBookChapter.chapter, AppLanguage.ENGLISH)
+    @Test fun tamilNutrition() = checkChapter(NutritionBookChapter.chapter, AppLanguage.TAMIL)
     @Test fun englishLocomotion() = checkChapter(LocomotionBookChapter.chapter, AppLanguage.ENGLISH)
     @Test fun tamilLocomotion() = checkChapter(LocomotionBookChapter.chapter, AppLanguage.TAMIL)
     @Test fun englishProtozoa() = checkChapter(ProtozoaBookChapter.chapter, AppLanguage.ENGLISH)
