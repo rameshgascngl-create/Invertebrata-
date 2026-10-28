@@ -32,7 +32,7 @@ jobs:
           python3 tools/plate_intake.py list | tee plate-inventory.txt
           python3 tools/plate_intake.py check
       - name: Compile and run JVM tests
-        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
+        run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace --info
       - name: Assemble debug APK
         run: gradle -p native-app :app:assembleDebug --stacktrace
       - name: APK identity guard
