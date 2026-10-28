@@ -78,6 +78,22 @@ class BookChapterContractTest {
         }
     }
 
+    @Test fun unitOneIntroductionUsesLayoutNumberingExactlyOnceInBothLanguages() {
+        val chapter = IntroInvertebrataBookChapter.chapter
+        val headings = BookLayout.rows(chapter).filterIsInstance<BookRow.SectionHeading>()
+        assertEquals(10, headings.size)
+        assertEquals((1..10).map { "1.$it" }, headings.map { it.number })
+        headings.forEach { row ->
+            val typedPrefix = Regex("""^\\s*\\d+(?:\\.\\d+)*[.)]\\s+""")
+            assertTrue("Duplicate English section number: ${row.heading.english}",
+                !typedPrefix.containsMatchIn(row.heading.english))
+            assertTrue("Duplicate Tamil section number: ${row.heading.tamil}",
+                !typedPrefix.containsMatchIn(row.heading.tamil))
+            assertTrue("Missing Tamil section heading: ${row.number}",
+                row.heading.tamil.any { it in '\\u0B80'..'\\u0BFF' })
+        }
+    }
+
     @Test fun glossaryIsExactlyTheDefinitionBoxes() {
         val terms = sycon.definitions.map { it.term.english }
         assertEquals(terms.size, terms.toSet().size)
