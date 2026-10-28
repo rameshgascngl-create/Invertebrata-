@@ -49,7 +49,7 @@ expected={"com.gasczoology.invertebratelab.NativeUnitIIntroductionBookRenderingT
 xml=list(Path(sys.argv[1]).rglob("TEST-*.xml"))
 cases=[c for p in xml for c in ET.parse(p).getroot().iter("testcase")
        if c.get("classname") in expected]
-assert len(cases)==10,("EXPECTED_TEN_BILINGUAL_TESTS",len(cases))
+assert len(cases)==12,("EXPECTED_TWELVE_BILINGUAL_TESTS",len(cases))
 errors=[(c.get("name"),kind) for c in cases for kind in ("failure","error","skipped")
         if c.find(kind) is not None]
 assert not errors,errors
