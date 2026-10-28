@@ -38,7 +38,8 @@ for scale in 1.0 2.0; do
   python3 - "$F/xml" <<'PY'
 from pathlib import Path
 import sys, xml.etree.ElementTree as ET
-expected={"com.gasczoology.invertebratelab.NativeUnitIIntroductionBookRenderingTest",\n          "com.gasczoology.invertebratelab.NativeUnitIRevisedChaptersRenderingTest"}
+expected={"com.gasczoology.invertebratelab.NativeUnitIIntroductionBookRenderingTest",
+          "com.gasczoology.invertebratelab.NativeUnitIRevisedChaptersRenderingTest"}
 xml=list(Path(sys.argv[1]).rglob("TEST-*.xml"))
 cases=[c for p in xml for c in ET.parse(p).getroot().iter("testcase")
        if c.get("classname") in expected]
