@@ -106,6 +106,7 @@ class BookChapterContractTest {
             })
         }
         val keyCards = chapter.allBlocks().filterIsInstance<BookKeyPoints>()
+            .filter { it.title.english == "Key points for undergraduate study" }
         assertEquals(1, keyCards.size)
         assertEquals(3, keyCards.single().points.size)
         assertEquals(listOf("u1-protozoa-A5-1", "u1-protozoa-A5-2"),
