@@ -6,7 +6,7 @@ object LocomotionBookChapter {
         lessonId = "u1-locomotion",
         title = "Locomotion in Protozoa" to "புரோட்டோசோவாவில் இயக்கம்",
         objectives = listOf(
-            "Describe locomotion by pseudopodia, flagella and cilia." to "போலிக்கால்கள், கசைகள், மயிரிழைகளால் இயக்கத்தை விவரிக்க.",
+            "Describe locomotion by pseudopodia, flagella and cilia." to "போலிக்கால்கள், கசையிழைகள், குறுஇழைகள் மூலம் நடைபெறும் இடப்பெயர்ச்சியை விவரிக்க.",
             "Compare cilia and flagella in number, length, beat and structure." to "எண்ணிக்கை, நீளம், அடிப்பு, அமைப்பில் மயிரிழைகளையும் கசைகளையும் ஒப்பிட.",
             "Explain the common microtubule basis of ciliary and flagellar movement." to "மயிரிழை, கசை இயக்கத்தின் பொது நுண்குழல் அடிப்படையை விளக்க.",
             "Relate the mode of locomotion to the habitat and the way of life." to "இயக்க முறையை வாழிடத்துடனும் வாழ்க்கை முறையுடனும் தொடர்புபடுத்த.",
