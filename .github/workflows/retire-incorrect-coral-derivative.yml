@@ -1,0 +1,39 @@
+name: Retire inaccurate coral SVG-derived PNG
+on:
+  push:
+    branches: ['feat/plate-pipeline']
+    paths: ['.github/workflows/retire-incorrect-coral-derivative.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  retire:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove incorrectly labelled derivative from student APK assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          mapping=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/BookFigureLibrary.kt').read_text()
+          assert 'BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa-original", coralNoaa)' in mapping, 'Source-correct mapping required before withdrawal'
+          assert Path('native-app/app/src/main/assets/book_figures/coral-polyp-noaa-original.png').is_file(), 'Original missing'
+          p=Path('provenance/coral_polyp_noaa.json')
+          meta=json.loads(p.read_text())
+          meta['academic_review_status']='REJECTED_LABEL_ERROR'
+          meta['withdrawal_reason']='SVG derivative contains a clearly erroneous Gastropod label in coral anatomy; replaced in textbook by original NOAA full-resolution source.'
+          meta['packaging_status']='WITHDRAWN_FROM_APP_ASSETS'
+          p.write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n')
+          PY
+          git rm native-app/app/src/main/assets/book_figures/coral-polyp-noaa.png
+      - name: Commit correction and provenance record
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add provenance/coral_polyp_noaa.json
+          git commit -m "Withdraw anatomically incorrect coral SVG derivative from packaged assets"
+          git push origin HEAD:feat/plate-pipeline
