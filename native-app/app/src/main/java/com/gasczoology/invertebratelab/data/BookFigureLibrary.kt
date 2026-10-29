@@ -38,8 +38,8 @@ object BookFigureLibrary {
         "ஏற்கெனவே உள்ள ஒபீலியா குடியிருப்பின் இன ஆய்வுப் படம் · மூலமும் பயன்பாட்டு உரிமையும் மதிப்பாய்வு நிலுவையில்")
 
     private val coralNoaa = PlateCredit(
-        "Coral polyp anatomy · NOAA original, SVG version MarkusZi, English labels Earlza · Wikimedia Commons, File:Coral polyp en.svg · public-domain mark · 1920 px PNG rendition · scientific review pending",
-        "பவள பாலிப் உடலமைப்பு · NOAA மூலப்படம்; SVG வடிவம் MarkusZi; ஆங்கிலக் குறியீடுகள் Earlza · விக்கிமீடியா காமன்ஸ், File:Coral polyp en.svg · பொதுப் பயன்பாட்டுப் படமாகக் குறிக்கப்பட்டுள்ளது · 1920 px PNG வடிவம் · அறிவியல் மதிப்பாய்வு நிலுவையில்")
+        "Original NOAA coral-polyp anatomy diagram · NOAA Ocean Service, Flower Garden Banks National Marine Sanctuary · full native 1000 × 1005 resolution, lossless PNG from source JPEG · US federal public domain · review pending",
+        "NOAA மூல பவள பாலிப் உடற்கூறுப் படம் · NOAA Ocean Service, Flower Garden Banks தேசியக் கடல் சரணாலயம் · மூலத் தெளிவுத்திறன் 1000 × 1005, JPEG-யிலிருந்து தர இழப்பின்றி PNG வடிவம் · அமெரிக்க அரசு பொதுப் பயன்பாட்டுப் படம் · மதிப்பாய்வு நிலுவையில்")
 
     private fun commonsPublicDomain(file: String) = PlateCredit(
         "Public domain · Wikimedia Commons, File:$file · simplified teaching reference, review pending",
@@ -57,7 +57,7 @@ object BookFigureLibrary {
 
     val all: List<BookLibraryFigure> = listOf(
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
-        BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa", coralNoaa),
+        BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa-original", coralNoaa),
         BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", trypanosomaCredit),
         BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", plasmodiumCredit),
         BookLibraryFigure("pila-excretory-system", "pila/pila_excretory_system", schematic),
