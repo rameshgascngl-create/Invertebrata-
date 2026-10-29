@@ -5,6 +5,7 @@ on:
     paths:
       - 'native-app/**'
       - '.github/workflows/noaa-coral-android-acceptance.yml'
+      - '.github/scripts/run-noaa-coral-qa.sh'
   workflow_dispatch:
 
 permissions:
