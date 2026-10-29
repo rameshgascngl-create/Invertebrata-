@@ -30,6 +30,13 @@ object BookFigureLibrary {
         "Original schematic drawn for this app · not to scale · subject-expert review pending",
         "இந்த செயலிக்காக வரையப்பட்ட மூலப் படத்திட்டம் · அளவுக்கேற்ப அல்ல · துறைசார் நிபுணர் மதிப்பாய்வு நிலுவையில்")
 
+    // Reuse the more detailed existing atlas illustration instead of the
+    // defective numbered icon-drawing in the polymorphism chapter. Reuse does
+    // not settle source rights or scientific review of the historic raster.
+    private val obeliaNativeRaster = PlateCredit(
+        "Existing Obelia colony type-study raster · source and rights review pending",
+        "ஏற்கெனவே உள்ள ஒபீலியா குடியிருப்பின் இன ஆய்வுப் படம் · மூலமும் பயன்பாட்டு உரிமையும் மதிப்பாய்வு நிலுவையில்")
+
     private fun commonsPublicDomain(file: String) = PlateCredit(
         "Public domain · Wikimedia Commons, File:$file · simplified teaching reference, review pending",
         "பொதுப் பயன்பாட்டு உரிமை (Public domain) · விக்கிமீடியா காமன்ஸ், File:$file · எளிய கற்பித்தல் குறிப்புப் படம், மதிப்பாய்வு நிலுவையில்")
@@ -45,6 +52,7 @@ object BookFigureLibrary {
         "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · விக்கிமீடியா காமன்ஸ், File:Malaria_Plasmodium_infection_cycle.png · மாற்றமில்லை")
 
     val all: List<BookLibraryFigure> = listOf(
+        BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
         BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", trypanosomaCredit),
         BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", plasmodiumCredit),
         BookLibraryFigure("pila-excretory-system", "pila/pila_excretory_system", schematic),
@@ -74,7 +82,7 @@ object BookFigureLibrary {
         "blastopore-fate", "sponge-cells",
         "cuticle-layers", "limb-lever", "cephalopod-circulation", "cockroach-gut",
         "wuchereria-cycle", "fluke-larvae", "sponge-sexual-cycle", "food-vacuole",
-        "tardigrade", "scaphopod", "termite-castes", "waggle-dance", "obelia-colony",
+        "tardigrade", "scaphopod", "termite-castes", "waggle-dance",
         "peripatus-external", "squid-jet", "chelicerate-plan", "stem-borer-cycle",
     ).map { BookLibraryFigure(it, "book_figures/$it", schematic) }
 
