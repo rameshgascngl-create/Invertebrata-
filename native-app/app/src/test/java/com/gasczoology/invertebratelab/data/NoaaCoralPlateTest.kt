@@ -40,6 +40,8 @@ class NoaaCoralPlateTest {
             .filterIsInstance<BookFigure>().single { it.slot == slot }
         assertTrue(figure.caption.english.contains("NOAA"))
         assertTrue(figure.caption.tamil.contains("நீள்வெட்டுத்"))
+        assertTrue("Keep coral caption brief and move details to the key",
+            figure.caption.english.length < 145 && figure.caption.tamil.length < 145)
         assertFalse(figure.caption.english.contains("(1)"))
         assertFalse(figure.caption.tamil.contains("(1)"))
         val keys = CoralsBookChapter.chapter.allBlocks()
