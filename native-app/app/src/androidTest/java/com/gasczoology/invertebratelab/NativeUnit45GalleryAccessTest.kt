@@ -75,14 +75,20 @@ class NativeUnit45GalleryAccessTest {
         rule.onNodeWithTag("book-introduction").assertExists()
         saveScreenshot(chapter, languageName, "textbook")
 
-        rule.onNodeWithTag(toggle).performScrollTo().performClick()
+        // The toggle is a lazy-list item. After scrolling into the textbook or
+        // gallery, ask its LazyColumn to materialise that item before tapping.
+        rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag(toggle))
+        rule.onNodeWithTag(toggle).performClick()
         waitFor("r2-type-study-gallery-$organism")
         rule.onNodeWithTag("r2-plate-bitmap-$organism-external").performScrollTo()
             .assertExists()
         rule.onNodeWithTag("book-introduction").assertDoesNotExist()
         saveScreenshot(chapter, languageName, "gallery")
 
-        rule.onNodeWithTag(toggle).performScrollTo().performClick()
+        // The toggle is a lazy-list item. After scrolling into the textbook or
+        // gallery, ask its LazyColumn to materialise that item before tapping.
+        rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag(toggle))
+        rule.onNodeWithTag(toggle).performClick()
         rule.onNodeWithTag("r2-type-study-gallery-$organism").assertDoesNotExist()
         rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag("book-practice-heading"))
         rule.onNodeWithTag("book-practice-heading").assertExists()
