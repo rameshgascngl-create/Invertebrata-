@@ -37,6 +37,10 @@ object BookFigureLibrary {
         "Existing Obelia colony type-study raster · source and rights review pending",
         "ஏற்கெனவே உள்ள ஒபீலியா குடியிருப்பின் இன ஆய்வுப் படம் · மூலமும் பயன்பாட்டு உரிமையும் மதிப்பாய்வு நிலுவையில்")
 
+    private val coralNoaa = PlateCredit(
+        "Coral polyp anatomy · NOAA original, SVG version MarkusZi, English labels Earlza · Wikimedia Commons, File:Coral polyp en.svg · public-domain mark · 1920 px PNG rendition · scientific review pending",
+        "பவள பாலிப் உடலமைப்பு · NOAA மூலப்படம்; SVG வடிவம் MarkusZi; ஆங்கிலக் குறியீடுகள் Earlza · விக்கிமீடியா காமன்ஸ், File:Coral polyp en.svg · பொதுப் பயன்பாட்டுப் படமாகக் குறிக்கப்பட்டுள்ளது · 1920 px PNG வடிவம் · அறிவியல் மதிப்பாய்வு நிலுவையில்")
+
     private fun commonsPublicDomain(file: String) = PlateCredit(
         "Public domain · Wikimedia Commons, File:$file · simplified teaching reference, review pending",
         "பொதுப் பயன்பாட்டு உரிமை (Public domain) · விக்கிமீடியா காமன்ஸ், File:$file · எளிய கற்பித்தல் குறிப்புப் படம், மதிப்பாய்வு நிலுவையில்")
@@ -53,6 +57,7 @@ object BookFigureLibrary {
 
     val all: List<BookLibraryFigure> = listOf(
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
+        BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa", coralNoaa),
         BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", trypanosomaCredit),
         BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", plasmodiumCredit),
         BookLibraryFigure("pila-excretory-system", "pila/pila_excretory_system", schematic),
@@ -77,7 +82,7 @@ object BookFigureLibrary {
         "polychaete-asexual", "crinoid", "aurelia-cycle", "anemone-section",
         "taenia-cycle", "taenia-parts", "sponge-grades", "cnidarian-forms", "metameres",
         "host-cycles", "pearl-formation", "body-cavities", "nematode-bodywall", "nematode-routes",
-        "mollusc-plan", "echino-symmetry", "cilium-stroke", "coral-polyp",
+        "mollusc-plan", "echino-symmetry", "cilium-stroke",
         "annelid-section", "flame-cell", "myriapod-sections", "symmetry-types", "protozoan-groups",
         "blastopore-fate", "sponge-cells",
         "cuticle-layers", "limb-lever", "cephalopod-circulation", "cockroach-gut",
