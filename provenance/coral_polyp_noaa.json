@@ -9,7 +9,9 @@
   "width": 1920,
   "height": 2716,
   "sha256": "c7cca1be823372d01cab802cc25b5a4b50c53666bd5b901d8e8374511b87905d",
-  "academic_review_status": "DRAFT_UNVERIFIED",
+  "academic_review_status": "REJECTED_LABEL_ERROR",
   "label_validation": "Compare visible source labels with NOAA Flower Garden Banks anatomy and separate skeletal septa from tissue mesenteries before release.",
-  "retrieved_utc": "2026-10-29T12:55:15.961067+00:00"
+  "retrieved_utc": "2026-10-29T12:55:15.961067+00:00",
+  "withdrawal_reason": "SVG derivative contains a clearly erroneous Gastropod label in coral anatomy; replaced in textbook by original NOAA full-resolution source.",
+  "packaging_status": "WITHDRAWN_FROM_APP_ASSETS"
 }
