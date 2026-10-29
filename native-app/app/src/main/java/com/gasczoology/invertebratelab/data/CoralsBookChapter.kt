@@ -26,6 +26,12 @@ object CoralsBookChapter {
                     bfig("lib/coral-polyp",
                         "A stony-coral polyp in its skeletal cup, in section (schematic): (1) tentacle, (2) mouth on a short pharynx, (3) body wall, (4) gastrovascular cavity, (5) skeletal cup (calyx), (6) septum, a skeletal ridge, (7) zooxanthellae in the tissue.",
                         "கல் பவளத்தின் பாலிப், எலும்புக்கூட்டுக் கிண்ணத்துக்குள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) உணர்நீட்சி, (2) குறுகிய தொண்டையின் மேல் வாய், (3) உடற்சுவர், (4) இரைப்பை-நாளக் குழி, (5) எலும்புக்கூட்டுக் கிண்ணம் (கேலிக்ஸ்), (6) செப்டம், எலும்புக்கூட்டு முகடு, (7) திசுவிலுள்ள சூக்சாந்தெல்லா."),
+                    // Interpretive guard until a checked sectional PNG replaces the
+                    // simplified schematic. The figure does not resolve true tissue layers.
+                    bnote("Distinguish skeletal septa from soft mesenteries",
+                        "எலும்புத் தகடுகளையும் மென் திசைப் பிரிவுகளையும் வேறுபடுத்துக",
+                        "The drawing is a simplified teaching schematic, not a histological section. Septa are calcium-carbonate skeletal plates; mesenteries are internal soft-tissue partitions. Algal symbionts live in gastrodermal cells, not as free dots on the exposed body surface. Their positions in this drawing are symbolic." to
+                            "இப்படம் திசுவியல் வெட்டுத்தோற்றம் அல்ல; எளிய கற்பித்தல் விளக்கப்படம். செப்டா என்பவை கால்சியம் கார்பனேட் எலும்புத் தகடுகள்; மெசென்டரிகள் என்பவை உட்புற மென் திசைப் பிரிவுகள். கூட்டுவாழ் பாசிகள் வெளிப்புற உடற்பரப்பில் தனித்த புள்ளிகளாக அல்லாமல், இரைப்பைத் தோல் (gastrodermis) செல்களில் வாழ்கின்றன. இப்படத்தில் அவற்றின் இடங்கள் குறியீடுகளாக மட்டுமே காட்டப்பட்டுள்ளன."),
                     bdef("Mesentery", "மெசென்டரி (Mesentery)",
                         "One of the vertical partitions that divide the gastrovascular cavity of an anthozoan polyp." to
                             "ஆந்தோசோவா பாலிப்பின் காஸ்ட்ரோவாஸ்குலர் குழியைப் பிரிக்கும் நிமிர்ந்த பிரிவுகளில் ஒன்று."),
