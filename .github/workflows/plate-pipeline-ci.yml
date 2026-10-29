@@ -6,6 +6,7 @@ on:
       - 'native-app/**'
       - 'tools/**'
       - '.github/workflows/plate-pipeline-ci.yml'
+      - '.github/scripts/run-unit1-intro-rendering.sh'
   workflow_dispatch:
 
 permissions:
@@ -31,6 +32,34 @@ jobs:
           pip install --quiet pillow
           python3 tools/plate_intake.py list | tee plate-inventory.txt
           python3 tools/plate_intake.py check
+      - name: Verify Paramecium simulator PNG paths against actual packaged assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re, struct, hashlib
+          ui=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/ParameciumProcessPng.kt').read_text()
+          pairs=dict(re.findall(r'ParameciumProcess\.(\w+)\s+to\s+(null|"[^"]+")',ui))
+          expected={'CILIARY_MOTION','OSMOREGULATION','FEEDING','BINARY_FISSION','CONJUGATION'}
+          assert set(pairs)==expected,(set(pairs),expected)
+          provenance=json.loads(Path('provenance/plates.json').read_text())['plates']
+          for process in ('CILIARY_MOTION','OSMOREGULATION','FEEDING'):
+              value=pairs[process]
+              assert value!='null',process
+              stem=value.strip('"')
+              path=Path('native-app/app/src/main/assets')/(stem+'.png')
+              assert path.is_file(),f'MISSING_REAL_PNG: {process} {path}'
+              data=path.read_bytes()
+              assert data[:8]==bytes.fromhex('89504e470d0a1a0a'),path
+              w,h=struct.unpack('>II',data[16:24])
+              assert w>=250 and h>=250,(process,w,h)
+              record=provenance[stem]
+              assert record['sha256']==hashlib.sha256(data).hexdigest(),stem
+              assert record['review_status']!='APPROVED',f'Provisional crop wrongly approved: {stem}'
+              print(f'{process}: {path}, {w}x{h}, review={record["review_status"]}')
+          for process in ('BINARY_FISSION','CONJUGATION'):
+              assert pairs[process]=='null',f'Unreviewed process artwork enabled: {process}'
+          print('SIMULATOR_PNG_MAPPING=PASS; FISSION_CONJUGATION_REMAIN_BLOCKED')
+          PY
       - name: Compile and run JVM tests
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace --info
       - name: Assemble debug APK
