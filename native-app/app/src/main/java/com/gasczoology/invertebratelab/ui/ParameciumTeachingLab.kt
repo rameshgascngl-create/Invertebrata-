@@ -118,7 +118,7 @@ fun ParameciumTeachingLab(
     var simulationPlaying by rememberSaveable { mutableStateOf(false) }
     androidx.activity.compose.BackHandler(onBack = ::leave)
     val labScroll = rememberScrollState()
-    LaunchedEffect(tab) { if (tab == "anatomy") labScroll.scrollTo(0) }
+    LaunchedEffect(tab) { if (tab == "anatomy" || tab == "simulate") labScroll.scrollTo(0) }
     Scaffold { insets ->
         Column(modifier=Modifier.padding(insets).verticalScroll(labScroll)
             .padding(16.dp).testTag("r1-paramecium-lab"),
