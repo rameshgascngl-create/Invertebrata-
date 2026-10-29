@@ -20,9 +20,9 @@ import com.gasczoology.invertebratelab.data.ParameciumProcess
  * Unit I image-only display for the existing physiology stage selector.
  *
  * This intentionally avoids falsely animated anatomical coordinates.
- * The three physiological process slots require independent subject-specific PNGs.
- * The previous use of one photographed anatomy master for multiple processes
- * was misleading and is withdrawn. Fission and conjugation remain gated until
+ * The three mapped slots display existing source-derived PNG crops, not
+ * independently validated high-resolution process plates. They remain
+ * provisional and must not be described as distinct scientific artwork. Fission and conjugation remain gated until
  * their own correctly staged scientific artwork is available.
  * No Canvas / SVG / vector drawing fallback.
  */
@@ -30,7 +30,7 @@ internal object ParameciumProcessPngIndex {
     val byProcess: Map<ParameciumProcess, String?> = mapOf(
         ParameciumProcess.CILIARY_MOTION to "unit1/concepts/paramecium_ciliary_locomotion",
         ParameciumProcess.OSMOREGULATION to "unit1/concepts/paramecium_osmoregulation",
-        ParameciumProcess.FEEDING to "unit1/concepts/paramecium_nutrition",
+        ParameciumProcess.FEEDING to "unit1/concepts/paramecium_oral_apparatus",
         ParameciumProcess.BINARY_FISSION to null,
         ParameciumProcess.CONJUGATION to null,
     )
@@ -54,8 +54,8 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 Image(
                     bitmap = image,
                     contentDescription = if (tamil)
-                        "பாரமீசியத்தின் தனித்த செயல்முறை PNG படம்; உறுப்புத் தொடுதல் மற்றும் செயல்பாட்டு விளக்கம் மதிப்பாய்வு நிலுவையில் உள்ளன."
-                    else "Independent Paramecium process PNG. Stages are explained in text; no animation or unverified image hotspots.",
+                        "பாரமீசியத்தின் மூலப்படத்திலிருந்து பெறப்பட்ட PNG பகுதி; இது தனியாகச் சரிபார்க்கப்பட்ட செயல்முறைப் படம் அல்ல. அறிவியல் மதிப்பாய்வு நிலுவையில் உள்ளது."
+                    else "Source-derived Paramecium PNG crop, not an independently validated process plate. Stages are explained in text; no animation or unverified image hotspots.",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth()
                         .aspectRatio(image.width.toFloat()/image.height.toFloat())
@@ -78,15 +78,15 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 if (expanded) {
                     RequiredTypeStudyFullImage(
                         image = image,
-                        title = if (tamil) "பாரமீசியம் · உடற்கூறுப் படம்" else "Paramecium · anatomy PNG",
+                        title = if (tamil) "பாரமீசியம் · மதிப்பாய்வு நிலுவைப் படம்" else "Paramecium · source crop under review",
                         language = language,
                         onDismiss = { expanded = false },
                     )
                 }
                 Text(
                     if (tamil)
-                        "தனித்த செயல்முறை PNG; இதுவொரு இயக்கப்படமல்ல. செயல்நிலை விளக்கத்தைத் தனியாகப் படிக்கவும்."
-                    else "Process-specific PNG; stage changes update the explanation without pretending to animate organ movement. Tamil review remains pending.",
+                        "இது மூலப்படத்திலிருந்து வெட்டியெடுக்கப்பட்ட குறைந்த தெளிவுடைய படம்; தனித்த, அறிவியல் ஒப்புதல் பெற்ற செயல்முறைப் படம் அல்ல. நிலை விளக்கத்தைத் தனியாகப் படிக்கவும்."
+                    else "Provisional source-derived PNG crop, not a high-resolution, independently reviewed process plate. Stage changes update text only; zoology, Tamil and rights reviews remain pending.",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.testTag("u57-static-png-disclosure"),
                 )
