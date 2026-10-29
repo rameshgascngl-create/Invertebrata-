@@ -21,17 +21,30 @@ object CoralsBookChapter {
         sections = listOf(
             bsec("polyp", "The coral polyp", "பவள பாலிப்",
                 blocks = listOf(
-                    bp("A coral polyp is a small cylinder with a mouth surrounded by tentacles, closely resembling a sea anemone, to which it is related. Its tentacles, which carry nematocysts, number six or eight, or multiples of six, and catch small animals of the plankton, mainly at night. A short pharynx leads from the mouth into the gastrovascular cavity, which is divided by vertical partitions, the mesenteries. In a colonial coral the cavities of neighbouring polyps are joined by a thin sheet of living tissue, which covers the surface of the colony." to
-                        "பவள பாலிப் சிறிய உருளை; வாயைச் சுற்றி உணர்கொம்புகள் உள்ளன; தொடர்புடைய கடல் அனிமோனை நெருக்கமாகப் போல் தோன்றுகிறது. நெமட்டோசிஸ்ட்களைத் தாங்கும் உணர்கொம்புகள் ஆறு அல்லது எட்டு, அல்லது ஆறின் மடங்குகள்; பிளாங்க்டனின் சிறு விலங்குகளை, பெரும்பாலும் இரவில், பிடிக்கின்றன. குறுகிய தொண்டை வாயிலிருந்து மெசென்டரிகள் எனும் நிமிர்ந்த பிரிவுகளால் பிரிக்கப்பட்ட காஸ்ட்ரோவாஸ்குலர் குழிக்குச் செல்கிறது. காலனி பவளத்தில் அருகிலுள்ள பாலிப்களின் குழிகள் காலனியின் பரப்பை மூடும் உயிருள்ள திசுவின் மெல்லிய படலத்தால் இணைக்கப்பட்டுள்ளன."),
+                    bp("A coral polyp is a small cylinder with a mouth surrounded by tentacles, closely resembling a sea anemone, to which it is related. In reef-building stony corals, the nematocyst-bearing tentacles typically occur in multiples of six and capture small planktonic animals, often at night; octocorals differ in having eight pinnate tentacles. A short pharynx leads from the mouth into the gastrovascular cavity, which is divided by vertical partitions, the mesenteries. In a colonial coral the cavities of neighbouring polyps are joined by a thin sheet of living tissue, which covers the surface of the colony." to
+                        "பவள பாலிப் சிறிய உருளை; வாயைச் சுற்றி உணர்கொம்புகள் உள்ளன; தொடர்புடைய கடல் அனிமோனை நெருக்கமாகப் போல் தோன்றுகிறது. பாறை உருவாக்கும் கல் பவளங்களில் நெமட்டோசிஸ்ட்களைத் தாங்கும் உணர்கொம்புகள் பொதுவாக ஆறின் மடங்குகளில் அமைந்து, பெரும்பாலும் இரவில் சிறிய மிதவை உயிரினங்களைப் பிடிக்கின்றன; ஆக்டோகோரல்களில் இறகுபோன்ற எட்டு உணர்கொம்புகள் இருப்பது வேறுபாடு. குறுகிய தொண்டை வாயிலிருந்து மெசென்டரிகள் எனும் நிமிர்ந்த பிரிவுகளால் பிரிக்கப்பட்ட காஸ்ட்ரோவாஸ்குலர் குழிக்குச் செல்கிறது. காலனி பவளத்தில் அருகிலுள்ள பாலிப்களின் குழிகள் காலனியின் பரப்பை மூடும் உயிருள்ள திசுவின் மெல்லிய படலத்தால் இணைக்கப்பட்டுள்ளன."),
                     bfig("lib/coral-polyp",
-                        "A stony-coral polyp in its skeletal cup, in section (schematic): (1) tentacle, (2) mouth on a short pharynx, (3) body wall, (4) gastrovascular cavity, (5) skeletal cup (calyx), (6) septum, a skeletal ridge, (7) zooxanthellae in the tissue.",
-                        "கல் பவளத்தின் பாலிப், எலும்புக்கூட்டுக் கிண்ணத்துக்குள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) உணர்நீட்சி, (2) குறுகிய தொண்டையின் மேல் வாய், (3) உடற்சுவர், (4) இரைப்பை-நாளக் குழி, (5) எலும்புக்கூட்டுக் கிண்ணம் (கேலிக்ஸ்), (6) செப்டம், எலும்புக்கூட்டு முகடு, (7) திசுவிலுள்ள சூக்சாந்தெல்லா."),
-                    // Interpretive guard until a checked sectional PNG replaces the
-                    // simplified schematic. The figure does not resolve true tissue layers.
+                        "Coral polyp in longitudinal section (NOAA educational anatomy). Observe the mouth and tentacles, gastrovascular cavity, tissue layers, digestive filaments, skeletal septum, theca and basal plate. Source labels are in English; the Tamil key follows.",
+                        "பவள பாலிப்பின் நீள்வெட்டுத் தோற்றம் (NOAA கல்வி உடற்கூறுப் படம்). வாய், உணர்கொம்புகள், இரைப்பை-நாளக் குழி, திசு அடுக்குகள், செரிமான இழைகள், எலும்புத் தகடு (செப்டம்), எலும்புக்கூட்டுச் சுவர் (தீக்கா), அடித்தளத் தகடு ஆகியவற்றைக் கவனிக்க. மூலப்படக் குறியீடுகள் ஆங்கிலத்தில் உள்ளன; தமிழ்க் கலைச்சொற்கள் கீழே தரப்பட்டுள்ளன."),
+                    bpoints("Anatomical labels — English and Tamil",
+                        "உடற்கூறுக் குறியீடுகள் — ஆங்கிலம் மற்றும் தமிழ்",
+                        "Tentacle — உணர்கொம்பு; nematocyst — கொட்டும் நுண்ணுறை." to
+                            "Tentacle — உணர்கொம்பு; Nematocyst — கொட்டும் நுண்ணுறை.",
+                        "Mouth — வாய்; gastrovascular cavity (stomach) — இரைப்பை-நாளக் குழி." to
+                            "Mouth — வாய்; Gastrovascular cavity — இரைப்பை-நாளக் குழி.",
+                        "Epidermis — புறத்தோல்; gastrodermis — இரைப்பைத்தோல்; mesoglea — நடுப்பசை அடுக்கு." to
+                            "Epidermis — புறத்தோல்; Gastrodermis — இரைப்பைத்தோல்; Mesoglea — நடுப்பசை அடுக்கு.",
+                        "Digestive filament — செரிமான இழை; mesentery — உட்புற மென் திசைப் பிரிவு." to
+                            "Digestive filament — செரிமான இழை; Mesentery — உட்புற மென் திசைப் பிரிவு.",
+                        "Skeletal septum — ஆரமாக அமைந்த எலும்புத் தகடு; theca — எலும்புக்கூட்டுச் சுவர்." to
+                            "Septum — எலும்புத் தகடு; Theca — எலும்புக்கூட்டுச் சுவர்.",
+                        "Coenosarc — பாலிப்புகளை இணைக்கும் உயிர்த்திசு; basal plate — அடித்தள எலும்புத் தகடு." to
+                            "Coenosarc — பாலிப்புகளை இணைக்கும் உயிர்த்திசு; Basal plate — அடித்தள எலும்புத் தகடு."
+                    ),
                     bnote("Distinguish skeletal septa from soft mesenteries",
                         "எலும்புத் தகடுகளையும் மென் திசைப் பிரிவுகளையும் வேறுபடுத்துக",
-                        "The drawing is a simplified teaching schematic, not a histological section. Septa are calcium-carbonate skeletal plates; mesenteries are internal soft-tissue partitions. Algal symbionts live in gastrodermal cells, not as free dots on the exposed body surface. Their positions in this drawing are symbolic." to
-                            "இப்படம் திசுவியல் வெட்டுத்தோற்றம் அல்ல; எளிய கற்பித்தல் விளக்கப்படம். செப்டா என்பவை கால்சியம் கார்பனேட் எலும்புத் தகடுகள்; மெசென்டரிகள் என்பவை உட்புற மென் திசைப் பிரிவுகள். கூட்டுவாழ் பாசிகள் வெளிப்புற உடற்பரப்பில் தனித்த புள்ளிகளாக அல்லாமல், இரைப்பைத் தோல் (gastrodermis) செல்களில் வாழ்கின்றன. இப்படத்தில் அவற்றின் இடங்கள் குறியீடுகளாக மட்டுமே காட்டப்பட்டுள்ளன."),
+                        "The NOAA educational plate shows the overall polyp organisation, not cellular histology. Skeletal septa are calcium-carbonate plates; mesenteries are soft internal tissue partitions. Symbiotic dinoflagellates occupy cells of the gastrodermis, not free positions on the outer body surface; their cellular location requires a separate tissue-level figure." to
+                            "NOAA கல்விப் படம் பாலிப்பின் பொதுவான உடலமைப்பைக் காட்டுகிறது; செல் மட்டத் திசுவியலைக் காட்டுவதில்லை. செப்டா என்பவை கால்சியம் கார்பனேட் எலும்புத் தகடுகள்; மெசென்டரிகள் என்பவை உட்புற மென் திசைப் பிரிவுகள். கூட்டுவாழ் டைனோஃபிளாஜெல்லேட் பாசிகள் வெளிப்புற உடற்பரப்பில் தனியாக அல்லாமல் இரைப்பைத்தோல் செல்களில் அமைந்துள்ளன; அவற்றின் செல் மட்ட இடத்தை அறியத் தனித் திசுவியல் படம் தேவை."),
                     bdef("Mesentery", "மெசென்டரி (Mesentery)",
                         "One of the vertical partitions that divide the gastrovascular cavity of an anthozoan polyp." to
                             "ஆந்தோசோவா பாலிப்பின் காஸ்ட்ரோவாஸ்குலர் குழியைப் பிரிக்கும் நிமிர்ந்த பிரிவுகளில் ஒன்று."),
