@@ -78,9 +78,9 @@ internal fun UnitIIITeachingChapter(
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.testTag("u3-lesson-title").semantics { heading() })
                 Text(u3t(language,
-                    "TEXTBOOK DRAFT — anatomy images, provenance and Tamil expert review pending.",
-                    "பாடநூல் வரைவு — உடற்கூறுப் படங்கள், மூல உரிமை, தமிழ் நிபுணர் ஒப்புதல் நிலுவையில் உள்ளது."),
-                    color = MaterialTheme.colorScheme.error,
+                    "Scientific, Tamil and image-source reviews are pending.",
+                    "அறிவியல், தமிழ் மற்றும் பட மூல மதிப்பாய்வு நிலுவையில் உள்ளது."),
+                    style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.testTag("u3-draft-warning"))
             }
         }
