@@ -76,8 +76,8 @@ internal fun ParameciumFeedingPathwayPlate(
             )
             Text(
                 if (language == AppLanguage.TAMIL)
-                    "தனி உணவூட்ட PNG படம் · நான்கு நிலைகள் · அறிவியல் ஆய்வு நிலுவையில்"
-                else "Individual nutrition PNG · four stages · scientific review pending",
+                    "உணவு உட்கொள்ளல் முதல் கழிவு வெளியேற்றம் வரை · நான்கு படிநிலைகள்"
+                else "From ingestion to egestion · four learning stages",
                 style = MaterialTheme.typography.bodySmall,
             )
             val nutritionPng = rememberRequiredRasterBitmap(
@@ -94,9 +94,9 @@ internal fun ParameciumFeedingPathwayPlate(
                         .testTag("r15-feeding-pathway-png"))
             } else {
                 Text(if (language == AppLanguage.TAMIL)
-                    "உணவூட்ட செயல்முறைக்கான தனி PNG படம் இன்னும் சரிபார்க்கப்படவில்லை; மாற்று வரைபடம் இல்லை."
-                    else "Dedicated nutrition PNG awaits verification; no substitute drawing.",
-                    color = MaterialTheme.colorScheme.error,
+                    "இந்தப் பகுதியில் தனி செயல்முறைப் படம் இணைக்கப்படவில்லை. கீழே உள்ள நான்கு படிநிலைகள் மூலம் உணவு உட்கொள்ளல், உணவுக் குமிழ் உருவாக்கம், செரிமானம், கழிவு வெளியேற்றம் ஆகியவற்றைப் படிக்கலாம்."
+                    else "A separate process image is not bundled here. Use the four stages below to study ingestion, food-vacuole formation, digestion and egestion.",
+                    style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.testTag("r15-feeding-png-pending"))
             }
             Text(if (language == AppLanguage.TAMIL)
@@ -129,14 +129,16 @@ internal fun ParameciumFeedingPathwayPlate(
             // Learner-facing recovery control, not a test-only scroll shortcut.
             // At 200% Tamil system font the four stage buttons and explanation
             // can place the Canvas entirely off-screen.
-            Button(
-                onClick = { diagramScope.launch { diagramRequester.bringIntoView() } },
-                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                    .testTag("r15-view-feeding-diagram"),
-            ) {
-                Text(if (language == AppLanguage.TAMIL)
-                    "உணவூட்ட PNG படத்தை மீண்டும் பார்"
-                    else "View nutrition PNG")
+            if (nutritionPng != null) {
+                Button(
+                    onClick = { diagramScope.launch { diagramRequester.bringIntoView() } },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("r15-view-feeding-diagram"),
+                ) {
+                    Text(if (language == AppLanguage.TAMIL)
+                        "உணவூட்ட PNG படத்தை மீண்டும் பார்"
+                        else "View nutrition PNG")
+                }
             }
             OutlinedButton(onClick = { speak(stage.explanation) },
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
