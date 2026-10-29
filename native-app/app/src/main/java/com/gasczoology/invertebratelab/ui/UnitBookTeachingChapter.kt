@@ -50,8 +50,6 @@ internal fun UnitBookTeachingChapter(
             Text(ut(language, "EXAM PRACTICE · AFTER THE LESSON", "தேர்வுப் பயிற்சி · பாடத்திற்குப் பின்"),
                 style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold,
                 modifier = Modifier.testTag("book-practice-heading").semantics { heading() })
-            Text(ut(language, "The validated A5 question/answer corpus is preserved verbatim.",
-                "சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினா–விடைத் தொகுப்பு மாற்றமின்றிப் பேணப்பட்டுள்ளது."))
         }
         items(chapter.a5Questions, key = { it.id }) { question ->
             Card(modifier = Modifier.fillMaxWidth()) {
