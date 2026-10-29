@@ -13,10 +13,10 @@ object CoralsBookChapter {
             "Explain coral bleaching, its causes and its consequences." to "பவள வெளிறலையும் அதன் காரணங்கள், விளைவுகளையும் விளக்க.",
         ),
         introduction = listOf(
-            "Corals are anthozoans, and so they exist only as polyps. A single coral polyp is small, but corals live in great numbers, and over long periods the skeletons that they leave build up into structures large enough to be seen from space. A coral reef is the largest structure built by living things, and it shelters a greater variety of animals than any other marine environment of shallow water." to
-                "பவளங்கள் ஆந்தோசோவாக்கள்; எனவே பாலிப்பாக மட்டுமே உள்ளன. ஒரு பவள பாலிப் சிறியது; ஆனால் பவளங்கள் பெருந்தொகையில் வாழ்கின்றன; நீண்ட காலத்தில் அவை விட்டுச் செல்லும் எலும்புக்கூடுகள் விண்வெளியிலிருந்து காணக்கூடிய அளவுக்குப் பெரிய அமைப்புகளாகத் திரள்கின்றன. பவளப்பாறை உயிரிகள் கட்டும் மிகப்பெரிய அமைப்பு; ஆழமற்ற நீரின் வேறு எந்தக் கடல் சூழலைவிடவும் அதிக வகை விலங்குகளுக்கு அடைக்கலம் தருகிறது.",
-            "This chapter treats the coral polyp and its skeleton, the partnership with algae that makes reef building possible, the three kinds of reef, the conditions that a reef requires, and the danger of bleaching. It is important to remember throughout that a reef is an ecosystem, in which the coral is one organism among many, and is not itself a single animal." to
-                "இந்த அத்தியாயம் பவள பாலிப்பையும் அதன் எலும்புக்கூட்டையும், பாறை உருவாக்கத்தை சாத்தியமாக்கும் பாசிக் கூட்டுறவையும், மூன்று வகை முகடுகளையும், முகடுக்குத் தேவையான நிலைகளையும், வெளிறல் ஆபத்தையும் கையாளுகிறது. முகடு ஒரு சூழல்மண்டலம்; பவளம் அதிலுள்ள பல உயிரிகளில் ஒன்று; முகடே ஒற்றை விலங்கு அல்ல என்பதை முழுவதும் நினைவில் கொள்ள வேண்டும்.",
+            "Corals belong to the cnidarian class Anthozoa and have a polyp stage, but no medusa stage. Many reef-building stony corals form colonies whose polyps secrete calcium-carbonate skeletons." to
+                "பவளங்கள் நிடேரியா தொகுதியின் ஆந்தோசோவா வகுப்பைச் சேர்ந்தவை. இவற்றில் பாலிப் நிலை உள்ளது; மெடுசா நிலை இல்லை. பவளப்பாறை உருவாக்கும் பல கல் பவளங்கள் குடியிருப்புகளாக வாழ்ந்து கால்சியம் கார்பனேட் எலும்புக்கூட்டைச் சுரக்கின்றன.",
+            "A coral reef is an ecosystem built and inhabited by many organisms, not a single animal. Coral–algal symbiosis, suitable water conditions and thermal stress help explain reef growth and bleaching." to
+                "பவளப்பாறை என்பது பல உயிரினங்கள் உருவாக்கி வாழும் சூழல்மண்டலம்; அது ஒற்றை விலங்கு அல்ல. பவள–பாசிக் கூட்டுயிர் வாழ்வு, ஏற்ற நீர்ச் சூழல், வெப்ப அழுத்தம் ஆகியவை பவளப்பாறை வளர்ச்சியையும் வெளிறலையும் விளங்கிக்கொள்ள முக்கியமானவை.",
         ),
         sections = listOf(
             bsec("polyp", "The coral polyp", "பவள பாலிப்",
