@@ -73,6 +73,10 @@ class NativeNoaaCoralBookTest {
         waitFor("u2-reader-u2-corals")
         rule.onNodeWithTag("chapter-language-english").assertExists()
         rule.onNodeWithTag("chapter-language-tamil").assertExists()
+        rule.onNodeWithTag("chapter-language-toolbar").assertIsDisplayed()
+        // Capture the top bar before the reader scrolls it out of view. In
+        // addition to semantic checks this documents status-bar clearance.
+        capture("chapter-language-$langName-$scaleName")
 
         rule.onNodeWithTag("u2-reader-u2-corals")
             .performScrollToNode(hasTestTag("book-figure-lib-coral-polyp"))
