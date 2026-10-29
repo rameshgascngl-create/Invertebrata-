@@ -74,7 +74,7 @@ internal fun UnitIIITeachingChapter(
                     "UNIT III · PLATYHELMINTHES AND NEMATODA",
                     "அலகு III · தட்டைப்புழுக்கள் மற்றும் நெமடோடா"),
                     style = MaterialTheme.typography.labelLarge)
-                Text(lesson.title.value(language),
+                Text((book?.title ?: lesson.title).value(language),
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.testTag("u3-lesson-title").semantics { heading() })
             }
