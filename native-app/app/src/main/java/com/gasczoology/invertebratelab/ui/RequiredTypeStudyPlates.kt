@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -311,7 +312,16 @@ internal fun RequiredTypeStudyFullImage(
                 .testTag("r2-fullscreen-dialog"),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Text(title, style = MaterialTheme.typography.titleMedium)
+            // A full textbook figure legend can occupy the entire dialog at
+            // 200% Tamil font scale. Keep its accessible full text in the image
+            // description but display at most two heading lines here.
+            Text(
+                title,
+                style = MaterialTheme.typography.titleMedium,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.testTag("r2-fullscreen-short-title"),
+            )
             Box(
                 Modifier.fillMaxWidth().weight(1f).clipToBounds()
                     .testTag("r6-zoom-viewport-clipped")
