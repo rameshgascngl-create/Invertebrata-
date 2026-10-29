@@ -744,8 +744,8 @@ private fun ChapterBody(
                 }
                 item(key = "u4-penaeus-a5-divider") {
                     Text(label(language,
-                        "ORIGINAL FIVE-MARK A5 ASSESSMENT — unchanged",
-                        "அசல் ஐந்து மதிப்பெண் A5 பயிற்சி — மாற்றமில்லை"),
+                        "FIVE-MARK PRACTICE",
+                        "ஐந்து மதிப்பெண் வினாப் பயிற்சி"),
                         modifier=Modifier.testTag("u4-penaeus-a5-original-heading"),
                         style=MaterialTheme.typography.titleLarge)
                 }
@@ -765,8 +765,8 @@ private fun ChapterBody(
                         )
                         Text(
                             label(language,
-                                "Read the explanatory sections, then practise the original five-mark questions.",
-                                "விளக்கப் பாடங்களைப் படித்தபின் அசல் ஐந்து மதிப்பெண் வினாக்களைப் பயிற்சி செய்க."),
+                                "Read each topic, then check your understanding.",
+                                "ஒவ்வொரு பாடப்பகுதியையும் படித்து உங்கள் புரிதலைச் சரிபார்க்கவும்."),
                         )
                     }
                 }
@@ -795,8 +795,8 @@ private fun ChapterBody(
                 item(key = "u56-a5-divider") {
                     Text(
                         label(language,
-                            "ORIGINAL A5 FIVE-MARK QUESTIONS · unchanged",
-                            "அசல் A5 ஐந்து மதிப்பெண் வினாக்கள் · மாற்றமில்லை"),
+                            "FIVE-MARK PRACTICE",
+                            "ஐந்து மதிப்பெண் வினாப் பயிற்சி"),
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.testTag("u56-original-a5-heading"),
                     )
@@ -811,10 +811,6 @@ private fun ChapterBody(
                         Text(restoredLesson.heading.value(language),
                             style = MaterialTheme.typography.headlineSmall,
                             modifier = Modifier.testTag("restoration-lesson-title"))
-                        Text(label(language,
-                            "TEXTBOOK FIRST · English–Tamil academic draft; anatomical image review pending.",
-                            "முதலில் பாடநூல் · ஆங்கிலம்–தமிழ் கல்வி வரைவு; உடற்கூறுப் பட மதிப்பாய்வு நிலுவையில் உள்ளது."),
-                            color = MaterialTheme.colorScheme.error)
                     }
                 }
                 items(restoredLesson.sections, key = { "restored-section-" + it.id }) { section ->
@@ -832,12 +828,8 @@ private fun ChapterBody(
                 item(key = "n22-draft-heading") {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp),
                         modifier = Modifier.fillMaxWidth().testTag("n22-draft-notice")) {
-                        Text(label(language, "Teaching lesson — editorial draft",
-                            "கற்பித்தல் பாடம் — ஆசிரியர் மதிப்பாய்வு நிலுவை"))
-                        Text(label(language,
-                            "Science and Tamil reviews are pending. This material is not yet approved as the final syllabus lesson.",
-                            "அறிவியல் மற்றும் தமிழ் மதிப்பாய்வுகள் இன்னும் முடியவில்லை. இது இறுதியாக அங்கீகரிக்கப்பட்ட பாடம் அல்ல."))
-                        Text(lessonDraft.title.value(language))
+                        Text(lessonDraft.title.value(language),
+                            style = MaterialTheme.typography.headlineSmall)
                     }
                 }
                 items(lessonDraft.sections, key = { "n22-" + it.id }) { section ->
@@ -863,8 +855,8 @@ private fun ChapterBody(
 
             }
             item(key = "restoration-a5-divider") {
-                Text(label(language,"EXAM PRACTICE · Original A5 five-mark questions",
-                    "தேர்வுப் பயிற்சி · அசல் A5 ஐந்து மதிப்பெண் வினாக்கள்"),
+                Text(label(language,"EXAM PRACTICE · Five-mark questions",
+                    "தேர்வுப் பயிற்சி · ஐந்து மதிப்பெண் வினாக்கள்"),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.testTag("restoration-a5-heading"))
             }
