@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -21,6 +22,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -221,6 +223,7 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 ChapterScreen(
                     chapter = chapter,
                     language = language,
+                    onLanguageChange = viewModel::setLanguage,
                     onBack = {
                         viewModel.persistLearning(state.copy(
                             destination = StudyDestination.UNIT,
@@ -351,10 +354,7 @@ private fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
-                Text("INVERTEBRATA")
-                Text(label(language,
-                    "Interactive Zoology laboratory · study, anatomy, physiology and audio",
-                    "ஊடாடும் விலங்கியல் ஆய்வகம் · பாடம், உடலமைப்பு, உடலியல், ஒலி"))
+                Text("INVERTEBRATA", style = MaterialTheme.typography.headlineMedium)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag("language-english")) { Text("English") }
@@ -371,8 +371,30 @@ private fun HomeScreen(
             items(units, key = { it.number }) { unit ->
                 Button(onClick = { onUnit(unit.number) },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("unit-" + unit.number)) {
-                    Text(unit.title.value(language) + " · " + unit.chapters.size.toString() +
-                        label(language, " chapters", " அத்தியாயங்கள்"))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        Text(
+                            when (unit.number) {
+                                1 -> "🦠"
+                                2 -> "🪸"
+                                3 -> "🪱"
+                                4 -> "🦐"
+                                5 -> "🐚"
+                                6 -> "🦋"
+                                else -> "🦑"
+                            },
+                            style = MaterialTheme.typography.headlineMedium,
+                        )
+                        Column {
+                            Text(unit.title.value(language),
+                                style = MaterialTheme.typography.titleMedium)
+                            Text(unit.chapters.size.toString() +
+                                label(language, " chapters", " அத்தியாயங்கள்"),
+                                style = MaterialTheme.typography.bodySmall)
+                        }
+                    }
                 }
             }
             item {
@@ -415,9 +437,7 @@ private fun UnitScreen(
             item {
                 OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
                 Text(unit.title.value(language))
-                Text(label(language,
-                    "Read the English–Tamil textbook sections before A5 questions. Missing anatomical plates remain visible as unapproved slots until restored.",
-                    "அசல் ஐந்து மதிப்பெண் வினாக்களுக்கு முன் இருமொழிப் பாடங்களைப் படிக்கவும். சேர்க்கப்படாத உடற்கூறுப் படங்கள் ஆய்வு நிலுவையில் உள்ளன என்று தெளிவாகக் காட்டப்படும்."))
+                // Show the chapter index directly; no app-level release-status paragraph.
                 if (unit.number == 4) {
                     Button(onClick = onEarthworm,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
@@ -436,8 +456,8 @@ private fun UnitScreen(
                             "பாரமீசியம் உடற்கூறு படப் பகுதிகள் · புதிய படங்கள் நிலுவையில் உள்ளன"))
                     }
                     Text(label(language,
-                        "Only Entamoeba and Plasmodium transmission references are shown here. Outdated Trypanosoma and Leishmania cartoons are withdrawn until accurate organism-specific replacements are committed.",
-                        "இங்கு என்டமீபா, பிளாஸ்மோடியம் தொற்றுச் சுழற்சி ஆதாரப் படங்கள் மட்டுமே காட்டப்படும். டிரிப்பனோசோமா, லீஷ்மேனியா பழைய படங்கள் நீக்கப்பட்டுள்ளன; தனித்த புதிய படங்கள் நிலுவையில் உள்ளன."),
+                        "Compare the available Entamoeba and Plasmodium transmission figures with their life-cycle lessons.",
+                        "எண்டமீபா, பிளாஸ்மோடியம் தொற்றுச் சுழற்சிப் படங்களை அவற்றின் வாழ்க்கைச் சுழற்சிப் பாடங்களுடன் ஒப்பிட்டுப் படிக்கவும்."),
                         modifier = Modifier.testTag("u1-missing-protozoa-plates"))
                     OutlinedButton(
                         onClick = { showProtozoaReferences = !showProtozoaReferences },
@@ -484,8 +504,43 @@ private fun UnitScreen(
     }
 }
 
+/** The persistent app language can also be changed directly from any chapter. */
 @Composable
 private fun ChapterScreen(
+    chapter: Chapter,
+    language: AppLanguage,
+    onLanguageChange: (AppLanguage) -> Unit,
+    onBack: () -> Unit,
+    onOpenFullLesson: () -> Unit,
+    onOpenAnatomy: () -> Unit,
+    revealedQuestionId: String,
+    onToggle: (A5Question) -> Unit,
+) {
+    Column(Modifier.fillMaxSize()) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp),
+            horizontalArrangement = Arrangement.End,
+        ) {
+            TextButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
+                enabled = language != AppLanguage.ENGLISH,
+                modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-english")) {
+                Text("English")
+            }
+            TextButton(onClick = { onLanguageChange(AppLanguage.TAMIL) },
+                enabled = language != AppLanguage.TAMIL,
+                modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-tamil")) {
+                Text("தமிழ்")
+            }
+        }
+        Box(Modifier.weight(1f)) {
+            ChapterBody(chapter, language, onBack, onOpenFullLesson, onOpenAnatomy,
+                revealedQuestionId, onToggle)
+        }
+    }
+}
+
+@Composable
+private fun ChapterBody(
     chapter: Chapter,
     language: AppLanguage,
     onBack: () -> Unit,
@@ -531,7 +586,7 @@ private fun ChapterScreen(
                 OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) {
                     Text(label(language, "Back", "பின்செல்"))
                 }
-                Text(label(language, "Chapter: ", "அத்தியாயம்: ") + chapter.id)
+                // Internal database IDs are not student-facing chapter titles.
                 Text(chapter.title.value(language),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.testTag("r2-human-readable-chapter-title"))
@@ -557,8 +612,8 @@ private fun ChapterScreen(
                         label(language,
                             "READ THE NATIVE TYPE STUDY FIRST · the original A5 questions follow",
                             "முதலில் விரிவான இன ஆய்வைப் படிக்கவும் · அசல் A5 வினாக்கள் பின்னர்")
-                    else label(language, "TEXTBOOK FIRST — explanatory sections precede A5; image approval is separately pending",
-                        "முதலில் பாடநூல் — விரிவான விளக்கங்களுக்குப் பின் A5 வினாப் பயிற்சி; படச் சரிபார்ப்பு தனியாக நிலுவையில் உள்ளது")
+                    else label(language, "Study the lesson, then practise the questions.",
+                        "பாடத்தைப் படித்த பின் வினாக்களைப் பயிற்சி செய்க.")
                 )
             }
             if (chapter.id in setOf("u1-paramecium", "u4-penaeus", "u5-pila", "u5-asterias")) {
