@@ -34,8 +34,16 @@ class NativeU57ParameciumProcessPngTest {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("r1-tab-simulate").performScrollTo().performClick()
+        rule.waitUntil(20000) {
+            rule.onAllNodesWithTag("r1-simulator-heading", useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
     }
     private fun go(process:String) {
+        rule.waitUntil(20000) {
+            rule.onAllNodesWithTag("r1-process-"+process, useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
         rule.onNodeWithTag("r1-process-"+process, useUnmergedTree = true).performScrollTo().performClick()
         rule.waitForIdle()
         rule.onNodeWithTag("r1-simulator-heading").performScrollTo()
