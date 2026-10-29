@@ -87,7 +87,7 @@ internal fun UnitIITeachingChapter(
                 }
                 Text("UNIT II  ·  PORIFERA & CNIDARIA",
                     style=MaterialTheme.typography.labelLarge,color=currentBlue)
-                Text(lesson.title.value(language),style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
+                Text((book?.title ?: lesson.title).value(language),style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
                     modifier=Modifier.testTag("u2-lesson-title").semantics{heading()})
             }
         }
