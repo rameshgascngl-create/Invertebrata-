@@ -15,6 +15,8 @@ class NoaaCoralPlateTest {
     @Test fun highResolutionPublicDomainSourceIsPackagedWithoutModification() {
         assertEquals("book_figures/coral-polyp-noaa-original", BookFigureLibrary.stemFor(slot))
         assertTrue("NOAA PNG missing from offline assets", file.isFile)
+        assertFalse("Erroneously labelled derivative must not ship",
+            File("src/main/assets/book_figures/coral-polyp-noaa.png").exists())
         val bytes = file.readBytes()
         assertTrue(bytes.size > 50_000)
         assertTrue(bytes.take(8).toByteArray().contentEquals(
