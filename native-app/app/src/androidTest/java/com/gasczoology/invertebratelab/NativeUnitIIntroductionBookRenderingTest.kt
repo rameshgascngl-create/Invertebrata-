@@ -52,19 +52,37 @@ class NativeUnitIIntroductionBookRenderingTest {
         }
     }
 
-    private fun capture(name: String) {
+    /**
+     * Compose semantics can advance one frame before SurfaceFlinger presents it.
+     * A real-display screenshot must therefore differ from the previous section,
+     * not merely have a successful heading assertion in the semantics tree.
+     */
+    private fun capture(name: String, previousSha256: String? = null): String {
         val path = "/sdcard/Download/u1-intro-evidence/$name.png"
-        val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
-        ParcelFileDescriptor.AutoCloseInputStream(
-            automation.executeShellCommand("screencap -p $path")
-        ).use { it.readBytes() }
-        val bytes = ParcelFileDescriptor.AutoCloseInputStream(
-            automation.executeShellCommand("cat $path")
-        ).use { it.readBytes() }
-        assertTrue("Missing actual Android screenshot: $path", bytes.size > 2000)
-        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-        assertNotNull("Invalid display PNG: $path", bitmap)
-        bitmap!!.recycle()
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        val automation = instrumentation.uiAutomation
+        rule.waitForIdle()
+        var lastHash = ""
+        repeat(12) {
+            instrumentation.waitForIdleSync()
+            ParcelFileDescriptor.AutoCloseInputStream(
+                automation.executeShellCommand("screencap -p $path")
+            ).use { it.readBytes() }
+            val bytes = ParcelFileDescriptor.AutoCloseInputStream(
+                automation.executeShellCommand("cat $path")
+            ).use { it.readBytes() }
+            assertTrue("Missing actual Android screenshot: $path", bytes.size > 2000)
+            val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+            assertNotNull("Invalid display PNG: $path", bitmap)
+            bitmap!!.recycle()
+            lastHash = java.security.MessageDigest.getInstance("SHA-256")
+                .digest(bytes).joinToString("") { byte -> "%02x".format(byte) }
+            if (previousSha256 == null || lastHash != previousSha256) return lastHash
+            // Bounded SurfaceFlinger-frame retry, never a substitute for the
+            // section heading and viewport assertions above.
+            Thread.sleep(150)
+        }
+        error("Stale Android display capture for $name: identical to previous section after retries")
     }
 
     private fun assertHeadingWithinViewport(tag: String, expected: String) {
@@ -117,14 +135,14 @@ class NativeUnitIIntroductionBookRenderingTest {
         val firstTitle = if (language == AppLanguage.TAMIL)
             first.heading.tamil else first.heading.english
         assertHeadingWithinViewport("book-section-1.1", "1.1  $firstTitle")
-        capture("u1-intro-$langName-$scaleName-first-section")
+        val firstScreenSha = capture("u1-intro-$langName-$scaleName-first-section")
 
         reader.performScrollToIndex(4 + sectionRows.last().index)
         val last = sectionRows.last().value as BookRow.SectionHeading
         val lastTitle = if (language == AppLanguage.TAMIL)
             last.heading.tamil else last.heading.english
         assertHeadingWithinViewport("book-section-1.10", "1.10  $lastTitle")
-        capture("u1-intro-$langName-$scaleName-last-section")
+        capture("u1-intro-$langName-$scaleName-last-section", previousSha256 = firstScreenSha)
 
         reader.performScrollToIndex(4 + rows.size)
         rule.onNodeWithTag("book-summary").assertExists()
