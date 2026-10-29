@@ -466,29 +466,17 @@ private fun UnitScreen(
                 Button(onClick = { onChapter(chapter.id) },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chapter-" + chapter.id)) {
                     Column {
-                        Text(chapter.id.replace("-", " ").uppercase())
-                        Text(when {
-                            chapter.id == "u1-paramecium" -> label(language,
-                                "Full textbook: select the Start Reading button above; practice questions here.",
-                                "முழுப் பாடத்திற்கு மேலுள்ள பாடத்தைத் தொடங்கு பொத்தானைத் தேர்க; இங்கு வினாப் பயிற்சி.")
-                            chapter.id == "u4-nereis" -> label(language,
-                                "OPEN NEREIS BIOLOGY · 14 lessons + eight static bilingual sketches.",
-                                "நெரீஸ் உயிரியல் · 14 பாடப் பகுதிகளும் எட்டு இருமொழிப் படங்களும்.")
-                            UnitIVSupplementaryLessons.byId.containsKey(chapter.id) -> label(language,
-                                "READ BILINGUAL BIOLOGY · full topic explanations before original A5.",
-                                "இருமொழி உயிரியல் பாடம் · அசல் A5 பயிற்சிக்கு முன் விரிவான விளக்கங்கள்.")
-                            chapter.id == "u4-penaeus" -> label(language,
-                                "OPEN DETAILED PRAWN TYPE STUDY · appendages and development before A5.",
-                                "இறால் விரிவான இன ஆய்வு · இணைக்கால்கள் மற்றும் வளர்நிலைகளுக்குப் பின் A5.")
-                            unit.number == 2 || unit.number == 3 || unit.number == 5 ||
-                                Extensions.isExtensionUnit(unit.number) ||
-                                FiveUnitRestorationLessons.byId.containsKey(chapter.id) -> label(language,
-                                "OPEN BILINGUAL TEXTBOOK LESSON FIRST · unverified image slots remain visible.",
-                                "முதலில் இருமொழிப் பாடத்தைப் படி · மதிப்பாய்வு நிலுவைப் படங்கள் தெளிவாகக் காட்டப்படும்.")
-                            else -> label(language,
-                                "Assessment-only preview; full illustrated lesson not yet authored.",
-                                "வினாப் பயிற்சி முன்னோட்டம்; முழுப் படவிளக்கப் பாடம் இன்னும் தயாரிக்கப்படவில்லை.")
-                        })
+                        Text(chapter.title.value(language),
+                            style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            if (BookChapters.forLesson(chapter.id) != null) label(language,
+                                "READ TEXTBOOK CHAPTER · explanations, key terms and review questions.",
+                                "பாடநூல் அத்தியாயத்தைப் படி · விளக்கங்கள், கலைச்சொற்கள், மீளாய்வு வினாக்கள்.")
+                            else label(language,
+                                "OPEN BILINGUAL LESSON · study content and examination practice.",
+                                "இருமொழிப் பாடத்தைத் திற · பாடவிளக்கமும் தேர்வுப் பயிற்சியும்."),
+                            style = MaterialTheme.typography.bodySmall,
+                        )
                     }
                 }
             }
