@@ -239,7 +239,7 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
 internal data class FigureCaptionParts(val title: String, val numberedKey: List<Pair<String, String>>)
 
 internal fun parseFigureCaption(raw: String): FigureCaptionParts {
-    val markers = Regex("""\\((\\d{1,2})\\)\\s*""").findAll(raw).toList()
+    val markers = Regex("""\((\d{1,2})\)\s*""").findAll(raw).toList()
     if (markers.isEmpty() || markers.first().groupValues[1] != "1") {
         return FigureCaptionParts(raw, emptyList())
     }
