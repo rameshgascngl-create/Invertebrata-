@@ -89,11 +89,6 @@ internal fun UnitIITeachingChapter(
                     style=MaterialTheme.typography.labelLarge,color=currentBlue)
                 Text(lesson.title.value(language),style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
                     modifier=Modifier.testTag("u2-lesson-title").semantics{heading()})
-                Text(tr(language,
-                    "Scientific and Tamil review pending; image sources appear beneath each figure.",
-                    "அறிவியல், தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது; ஒவ்வொரு படத்தின் கீழும் அதன் மூலம் தரப்பட்டுள்ளது."),
-                    style=MaterialTheme.typography.bodySmall,
-                    modifier=Modifier.testTag("u2-draft-disclosure"))
             }
         }
         if (book == null && (chapter.id == "u2-sycon" || chapter.id == "u2-obelia")) {
@@ -116,8 +111,8 @@ internal fun UnitIITeachingChapter(
                     style=MaterialTheme.typography.titleLarge,
                     modifier=Modifier.semantics{heading()})
                 Text(tr(language,
-                    "The anatomical plates appear once in the gallery above. Select a stage below to read or hear its explanation; no extra image is repeated.",
-                    "உடற்கூறுப் படங்கள் மேலுள்ள தொகுப்பில் ஒருமுறை மட்டுமே உள்ளன. கீழே படிநிலையைத் தேர்ந்தெடுத்து விளக்கத்தைப் படிக்கவும் அல்லது கேட்கவும்."))
+                    "Select a stage to study its anatomical features and hear the explanation.",
+                    "ஒவ்வொரு படிநிலையையும் தேர்ந்தெடுத்து உடற்கூறுப் பண்புகளை அறிந்து விளக்கத்தைக் கேட்கலாம்."))
                 // Biology sequence is narrated text and stage controls, NOT a
                 // second raster/Canvas anatomical display. One image per plate.
                 Text(stages[index.coerceIn(stages.indices)].name.value(language),
@@ -186,10 +181,8 @@ internal fun UnitIITeachingChapter(
         }
         item(key="sources") {
             Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
-                Text(tr(language,"References and evidence limits","மேற்கோள்களும் ஆதார வரம்புகளும்"),
+                Text(tr(language,"Scientific references","அறிவியல் மேற்கோள்கள்"),
                     style=MaterialTheme.typography.titleMedium,modifier=Modifier.semantics{heading()})
-                Text(tr(language,"The single displayed raster for each available anatomical plate is a teaching candidate, not an authenticated pencil scan. Biology, source rights and Tamil review remain pending.",
-                    "காட்டப்படும் ஒவ்வொரு படமும் ஒருமுறை மட்டுமே இடம் பெற்றுள்ள கற்பித்தல் வரைவு; அங்கீகரிக்கப்பட்ட பென்சில் ஸ்கேன் அல்ல. உடற்கூறு, மூல உரிமை, தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."))
                 lesson.sections.flatMap{it.scientificSources}.distinct().forEach{Text(it)}
             }
         }
@@ -198,8 +191,6 @@ internal fun UnitIITeachingChapter(
                 "தேர்வுப் பயிற்சி · பாடத்திற்குப் பின்"),
                 style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold,
                 modifier=Modifier.testTag("u2-practice-heading").semantics{heading()})
-            Text(tr(language,"The validated A5 question/answer corpus is preserved verbatim.",
-                "சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினா–விடைத் தொகுப்பு மாற்றமின்றிப் பேணப்பட்டுள்ளது."))
         }
         items(chapter.a5Questions,key={it.id}){question->
             Card(modifier=Modifier.fillMaxWidth()) {
