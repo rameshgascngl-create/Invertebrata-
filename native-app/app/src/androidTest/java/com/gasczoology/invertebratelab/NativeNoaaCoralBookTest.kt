@@ -84,6 +84,12 @@ class NativeNoaaCoralBookTest {
         bitmap.performClick()
         rule.onNodeWithTag("r2-fullscreen-dialog").assertExists()
         rule.onNodeWithTag("r2-fullscreen-bitmap").assertExists()
+        val viewport = rule.onNodeWithTag("r6-zoom-viewport-clipped")
+            .fetchSemanticsNode().boundsInRoot
+        val root = rule.onRoot().fetchSemanticsNode().boundsInRoot
+        assertTrue("Full-screen image collapsed at font scale $actual: viewport=${viewport.height}, root=${root.height}",
+            viewport.height > root.height * 0.35f)
+        rule.onNodeWithTag("r2-fullscreen-close").assertIsDisplayed()
         rule.onNodeWithTag("r2-zoom-in").performClick()
         rule.onNodeWithTag("r6-zoom-level")
             .assertTextEquals(if (language == AppLanguage.TAMIL) "பெரிதாக்கம்: 200%" else "Zoom: 200%")
