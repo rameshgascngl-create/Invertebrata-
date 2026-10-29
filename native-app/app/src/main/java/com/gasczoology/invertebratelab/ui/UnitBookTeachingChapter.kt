@@ -34,8 +34,10 @@ internal fun UnitBookTeachingChapter(
     val listState = rememberLazyListState()
     LazyColumn(
         state = listState,
-        modifier = Modifier.fillMaxSize().statusBarsPadding().testTag("book-reader-" + chapter.id),
-        contentPadding = PaddingValues(16.dp),
+        modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()
+            .testTag("book-reader-" + chapter.id),
+        contentPadding = PaddingValues(start = 16.dp, top = 16.dp,
+            end = 16.dp, bottom = 32.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         item(key = "header") {
