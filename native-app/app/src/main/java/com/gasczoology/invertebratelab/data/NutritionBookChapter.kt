@@ -175,7 +175,7 @@ object NutritionBookChapter {
             "Amoeba has no fixed cytostome; it takes food by pseudopodia, forms food vacuoles and egests at any point." to "அமீபாவுக்கு நிலையான சைட்டோஸ்டோம் இல்லை; போலிக்கால்களால் உணவை எடுத்து, உணவு நுண்குமிழ்களை உருவாக்கி, எந்தப் புள்ளியிலும் வெளியேற்றுகிறது.",
             "Paramecium uses an oral groove, cytostome and cytopharynx, and egests at the cytoproct." to "பாரமீசியம் வாய்ப் பள்ளம், சைட்டோஸ்டோம், சைட்டோஃபாரிங்க்ஸைப் பயன்படுத்தி சைட்டோபிராக்டில் வெளியேற்றுகிறது.",
             "Euglena photosynthesises in the light and can absorb organic matter in the dark, so it is mixotrophic." to "யூக்ளினா ஒளியில் ஒளிச்சேர்க்கை செய்து இருளில் கரிமப் பொருளை உறிஞ்சக்கூடும்; எனவே கலப்பு ஊட்டி.",
-            "The modes are strategies and not rigid taxa; the universal feature of holozoic feeding is the food vacuole." to "முறைகள் உத்திகள், கடினமான வகைப்பாட்டுக் குழுக்கள் அல்ல; ஹோலோசோயிக் உணவூட்டலின் உலகளாவிய பண்பு உணவு நுண்குமிழ்.",
+            "The modes are strategies and not rigid taxa; in the amoeboid and ciliate examples discussed here, ingested particles are digested in food vacuoles." to "முறைகள் உத்திகள், கடினமான வகைப்பாட்டுக் குழுக்கள் அல்ல; இங்கு விவரிக்கப்பட்ட அமீபா மற்றும் சிலியேட் எடுத்துக்காட்டுகளில் உட்கொள்ளப்பட்ட துகள்கள் உணவு நுண்குமிழ்களில் செரிக்கப்படுகின்றன.",
         ),
         checks = listOf(
             bqc("Does Amoeba have a cytostome?", "அமீபாவுக்கு சைட்டோஸ்டோம் உண்டா?",
@@ -184,8 +184,8 @@ object NutritionBookChapter {
                 "It photosynthesises in the light and can absorb dissolved organic matter in poor light or in the dark.", "ஒளியில் ஒளிச்சேர்க்கை செய்து, குறைந்த ஒளியில் அல்லது இருளில் கரைந்த கரிமப் பொருளை உறிஞ்சக்கூடும்."),
             bqc("Where does Paramecium egest undigested remains?", "பாரமீசியம் செரிக்காத மிச்சத்தை எங்கே வெளியேற்றுகிறது?",
                 "At the cytoproct, the fixed cell anus.", "சைட்டோபிராக்டில், நிலையான செல் குதத்தில்."),
-            bqc("What feature is common to all holozoic feeding?", "அனைத்து ஹோலோசோயிக் உணவூட்டலுக்கும் பொதுவான பண்பு எது?",
-                "The formation of a food vacuole around the ingested particle.", "உட்கொண்ட துகளைச் சுற்றி உணவு நுண்குமிழ் உருவாதல்."),
+            bqc("Where is ingested food digested in Amoeba and Paramecium?", "அமீபாவிலும் பாரமீசியத்திலும் உட்கொள்ளப்பட்ட உணவு எங்கு செரிக்கப்படுகிறது?",
+                "Inside food vacuoles, where digestive enzymes act on ingested material.", "உட்கொண்ட உணவுப் பொருள்மீது செரிமான நொதிகள் செயல்படும் உணவு நுண்குமிழ்களுக்குள்."),
         ),
     )
 }
