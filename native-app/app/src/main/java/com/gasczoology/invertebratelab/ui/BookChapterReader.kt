@@ -232,6 +232,28 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
     }
 }
 
+/**
+ * Keep figure titles short and place numbered anatomical keys on separate lines.
+ * The source caption remains unchanged; only the 200%-font presentation is split.
+ */
+internal data class FigureCaptionParts(val title: String, val numberedKey: List<Pair<String, String>>)
+
+internal fun parseFigureCaption(raw: String): FigureCaptionParts {
+    val markers = Regex("""\\((\\d{1,2})\\)\\s*""").findAll(raw).toList()
+    if (markers.isEmpty() || markers.first().groupValues[1] != "1") {
+        return FigureCaptionParts(raw, emptyList())
+    }
+    val title = raw.substring(0, markers.first().range.first).trim().trimEnd(':', '：')
+    val key = markers.mapIndexed { index, marker ->
+        val end = markers.getOrNull(index + 1)?.range?.first ?: raw.length
+        val explanation = raw.substring(marker.range.last + 1, end)
+            .trim().trimEnd(',', '，', ';', '；').trim()
+        marker.groupValues[1] to explanation
+    }.filter { it.second.isNotBlank() }
+    return if (title.isBlank() || key.isEmpty()) FigureCaptionParts(raw, emptyList())
+        else FigureCaptionParts(title, key)
+}
+
 @Composable
 private fun BookFigureView(figure: BookFigure, label: String, language: AppLanguage) {
     val bitmap = rememberCanonicalPlateBitmap(
@@ -239,7 +261,8 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
     var expanded by rememberSaveable("book-figure-" + figure.slot) { mutableStateOf(false) }
     val typeStudyCredit = rememberPlateCredit(figure.slot)
     val tag = figure.slot.replace('/', '-')
-    val caption = label + "  " + figure.caption.value(language)
+    val parts = parseFigureCaption(figure.caption.value(language))
+    val caption = label + "  " + parts.title
     Column(verticalArrangement = Arrangement.spacedBy(6.dp),
         modifier = Modifier.fillMaxWidth().testTag("book-figure-$tag")) {
         if (bitmap == null) {
@@ -260,7 +283,19 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
                     language = language, onDismiss = { expanded = false })
             }
         }
-        Text(caption, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+        Text(caption, style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.testTag("book-figure-caption-$tag"))
+        // At 200% Tamil font these must wrap as independent keyed entries,
+        // rather than a single unbroken paragraph under the raster.
+        parts.numberedKey.forEach { (number, explanation) ->
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("$number.", style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.SemiBold)
+                Text(explanation, style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.weight(1f))
+            }
+        }
         (BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit)?.let {
             Text(it.text(language), style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("plate-credit-$tag"))
