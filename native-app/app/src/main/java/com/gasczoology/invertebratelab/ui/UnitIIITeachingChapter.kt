@@ -77,24 +77,12 @@ internal fun UnitIIITeachingChapter(
                 Text(lesson.title.value(language),
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.testTag("u3-lesson-title").semantics { heading() })
-                Text(u3t(language,
-                    "Scientific, Tamil and image-source reviews are pending.",
-                    "அறிவியல், தமிழ் மற்றும் பட மூல மதிப்பாய்வு நிலுவையில் உள்ளது."),
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.testTag("u3-draft-warning"))
             }
         }
         // R7: exactly one inline raster per unique anatomical plate.
         // UnitIIIPlateGallery below is the only student-facing anatomical
         // gallery. The duplicate RequiredTypeStudyPlates and historical source
         // image section were removed. Archived source files are untouched.
-        if (book == null) item(key = "u3-one-image-per-plate-disclosure") {
-            Text(u3t(language,
-                "One image is displayed for each of the three distinct source-backed anatomical plates. Full-screen zoom is available from its plate; scientific and Tamil reviews remain pending.",
-                "மூன்று வேறுபட்ட ஆதார உடற்கூறுப் படங்களும் தலா ஒருமுறை மட்டுமே காட்டப்படுகின்றன. ஒவ்வொரு படத்தையும் முழுத்திரையில் பெரிதாக்கலாம்; அறிவியல் மற்றும் தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."),
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.testTag("u3-no-duplicate-images"))
-        }
         // A book chapter shows each figure once, inline, so the gallery is skipped.
         if (stages.isNotEmpty() && book == null) item(key = "u3-required-plate-gallery") {
             UnitIIIPlateGallery(chapter.id, language, narrator)
@@ -105,13 +93,13 @@ internal fun UnitIIITeachingChapter(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Text(u3t(language,
-                    "INTERACTIVE LIFE CYCLE · separate from the historical anatomical plate",
-                    "தொடுதிறன் வாழ்க்கைச் சுழற்சி · வரலாற்று உடற்கூறுப் படத்திலிருந்து தனி"),
+                    "LIFE CYCLE · ordered developmental stages",
+                    "வாழ்க்கைச் சுழற்சி · வளர்ச்சி நிலைகளின் வரிசை"),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.semantics { heading() })
                 Text(u3t(language,
-                    "Stages are ordered by established parasite biology. Playback intervals are for teaching, not biological time.",
-                    "பருவங்கள் சரிபார்க்கப்பட்ட ஒட்டுண்ணி உயிரியலின் வரிசையில் உள்ளன. இயக்க இடைவெளிகள் கற்பித்தலுக்கானவை; உண்மையான வளர்ச்சிக் காலமல்ல."))
+                    "The animation shows stage order, not actual developmental duration.",
+                    "இயக்கம் வளர்ச்சி நிலைகளின் வரிசையை மட்டும் காட்டுகிறது; அவற்றின் உண்மையான கால அளவை அல்ல."))
                 Card {
                     Column(Modifier.padding(14.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -196,9 +184,6 @@ internal fun UnitIIITeachingChapter(
                 "தேர்வுப் பயிற்சி — முழுப் பாடத்திற்குப் பிறகு"),
                 modifier=Modifier.testTag("u3-practice-heading").semantics { heading() },
                 style=MaterialTheme.typography.titleLarge)
-            Text(u3t(language,
-                "The validated A5 question/answer corpus is retained unchanged.",
-                "சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினா–விடைத் தொகுப்பு மாற்றமின்றி உள்ளது."))
         }
         items(chapter.a5Questions, key = { it.id }) { question ->
             Card(modifier=Modifier.fillMaxWidth()) {
