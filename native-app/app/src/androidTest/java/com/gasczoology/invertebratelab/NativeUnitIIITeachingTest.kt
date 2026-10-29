@@ -65,7 +65,7 @@ class NativeUnitIIITeachingTest {
     @Test fun fasciolaHasDistinctHistoricalLessonFigureAndOrderedSimulation() {
         openChapter("u3-fasciola",false)
         rule.onNodeWithTag("u3-lesson-title").assertExists()
-        rule.onNodeWithTag("u3-draft-warning").assertExists()
+        rule.onNodeWithTag("u3-draft-warning").assertDoesNotExist()
         rule.onNodeWithTag("u3-reader-u3-fasciola")
             .performScrollToNode(hasTestTag("u3-static-pencil-raster"))
         rule.onNodeWithTag("u3-static-pencil-raster").assertExists()
