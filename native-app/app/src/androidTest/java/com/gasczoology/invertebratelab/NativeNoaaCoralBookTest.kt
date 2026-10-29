@@ -86,7 +86,7 @@ class NativeNoaaCoralBookTest {
         rule.onNodeWithTag("r2-fullscreen-bitmap").assertExists()
         rule.onNodeWithTag("r2-zoom-in").performClick()
         rule.onNodeWithTag("r6-zoom-level")
-            .assertTextContains(if (language == AppLanguage.TAMIL) "200%" else "200%")
+            .assertTextEquals(if (language == AppLanguage.TAMIL) "பெரிதாக்கம்: 200%" else "Zoom: 200%")
         capture("coral-$langName-$scaleName-zoom")
         rule.onNodeWithTag("r2-fullscreen-close").performClick()
         rule.onNodeWithTag("r2-fullscreen-dialog").assertDoesNotExist()
