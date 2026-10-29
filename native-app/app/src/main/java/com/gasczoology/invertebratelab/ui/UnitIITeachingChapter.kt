@@ -90,12 +90,10 @@ internal fun UnitIITeachingChapter(
                 Text(lesson.title.value(language),style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
                     modifier=Modifier.testTag("u2-lesson-title").semantics{heading()})
                 Text(tr(language,
-                    "ILLUSTRATED TEACHING DRAFT · Source-linked; scientific and Tamil review pending.",
-                    "படவிளக்கப் பாட வரைவு · ஆதார இணைப்புகள் உள்ளன; அறிவியல், தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது."),
+                    "Scientific and Tamil review pending; image sources appear beneath each figure.",
+                    "அறிவியல், தமிழ் மதிப்பாய்வு நிலுவையில் உள்ளது; ஒவ்வொரு படத்தின் கீழும் அதன் மூலம் தரப்பட்டுள்ளது."),
+                    style=MaterialTheme.typography.bodySmall,
                     modifier=Modifier.testTag("u2-draft-disclosure"))
-                Text(tr(language,
-                    "Read the explanation, inspect the original diagram, and only then answer the revision questions.",
-                    "முதலில் விளக்கத்தைப் படித்து அசல் படத்தை ஆராய்க; அதன்பின் பயிற்சி வினாக்களைப் படிக்கவும்."))
             }
         }
         if (book == null && (chapter.id == "u2-sycon" || chapter.id == "u2-obelia")) {
