@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
@@ -516,9 +517,13 @@ private fun ChapterScreen(
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
 ) {
-    Column(Modifier.fillMaxSize()) {
+    // Consume the system status-bar inset before placing the chapter-local
+    // language switch. Descendant readers inherit the consumed inset, so their
+    // own statusBarsPadding() does not introduce a second full-height gap.
+    Column(Modifier.fillMaxSize().statusBarsPadding()) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp)
+                .testTag("chapter-language-toolbar"),
             horizontalArrangement = Arrangement.End,
         ) {
             TextButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
