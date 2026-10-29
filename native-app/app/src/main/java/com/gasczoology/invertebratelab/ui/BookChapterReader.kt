@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import java.text.BreakIterator
+import java.util.Locale
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -197,10 +199,52 @@ private fun BookRowView(row: BookRow, language: AppLanguage, onListen: (Bilingua
     }
 }
 
+/**
+ * Split only long explanatory prose into sentence-boundary reading blocks.
+ * No scientific text, bilingual phrasing or assessment content is discarded.
+ * Short paragraphs, definitions, tables and source text are left untouched.
+ */
+internal fun readingParagraphs(raw: String, language: AppLanguage): List<String> {
+    val text = raw.trim()
+    if (text.length <= 360) return listOf(text)
+    val boundaries = BreakIterator.getSentenceInstance(
+        if (language == AppLanguage.TAMIL) Locale.forLanguageTag("ta-IN") else Locale.UK
+    )
+    boundaries.setText(text)
+    val sentences = mutableListOf<String>()
+    var start = boundaries.first()
+    var end = boundaries.next()
+    while (end != BreakIterator.DONE) {
+        val sentence = text.substring(start, end).trim()
+        if (sentence.isNotEmpty()) sentences += sentence
+        start = end
+        end = boundaries.next()
+    }
+    if (sentences.size <= 1) return listOf(text)
+    val result = mutableListOf<String>()
+    var paragraph = ""
+    for (sentence in sentences) {
+        if (paragraph.isNotEmpty() && paragraph.length + sentence.length + 1 > 360) {
+            result += paragraph
+            paragraph = ""
+        }
+        paragraph = if (paragraph.isEmpty()) sentence else "$paragraph $sentence"
+    }
+    if (paragraph.isNotEmpty()) result += paragraph
+    return result
+}
+
 @Composable
 private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguage) {
     when (block) {
-        is BookParagraph -> Text(emphasizeAnatomy(block.text.value(language)), style = MaterialTheme.typography.bodyLarge)
+        is BookParagraph -> Column(
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            readingParagraphs(block.text.value(language), language).forEach { segment ->
+                Text(emphasizeAnatomy(segment), style = MaterialTheme.typography.bodyLarge)
+            }
+        }
         is BookDefinition -> Card(
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
             modifier = Modifier.fillMaxWidth()
