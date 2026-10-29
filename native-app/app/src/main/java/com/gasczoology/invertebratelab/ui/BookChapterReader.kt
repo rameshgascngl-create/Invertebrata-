@@ -158,16 +158,6 @@ internal fun LazyListScope.bookChapterItems(
     items(chapter.quickChecks.size, key = { "book-qc-$it" }) { index ->
         BookQuickCheckView(chapter.lessonId, index, chapter.quickChecks[index], language)
     }
-    item(key = "book-review-note") {
-        Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(t(language, "Review questions", "மீளாய்வு வினாக்கள்"),
-                style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold,
-                modifier = Modifier.semantics { heading() })
-            Text(t(language,
-                "This chapter prepares you for the validated five-mark questions that follow under Exam practice.",
-                "இந்த அத்தியாயம், பின்வரும் தேர்வுப் பயிற்சியிலுள்ள சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினாக்களுக்கு உங்களைத் தயார்படுத்துகிறது."))
-        }
-    }
     item(key = "book-further-reading") {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp),
             modifier = Modifier.testTag("book-further-reading")) {
