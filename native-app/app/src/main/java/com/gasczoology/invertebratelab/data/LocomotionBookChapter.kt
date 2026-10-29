@@ -160,7 +160,7 @@ object LocomotionBookChapter {
             bqc("What is a pseudopodium?", "போலிக்கால் என்பது என்ன?",
                 "A temporary extension of the cytoplasm used in movement and in taking food.", "இயக்கத்திலும் உணவு எடுப்பதிலும் பயன்படும் சைட்டோபிளாசத்தின் தற்காலிக நீட்சி."),
             bqc("How do cilia differ from flagella?", "குறுஇழைகள் கசைகளிலிருந்து எவ்வாறு வேறுபடுகின்றன?",
-                "Cilia are numerous, short and beat in coordinated waves; flagella are few and long. Both have a 9+2 axoneme.", "குறுஇழைகள் ஏராளம், குறுகிய, ஒருங்கிணைந்த அலைகளில் அடிக்கின்றன; கசைகள் குறைவு, நீளம். இரண்டுக்கும் 9+2 ஆக்சோனீம் உண்டு."),
+                "Cilia are numerous, short and beat in coordinated waves; flagella are few and long. In the typical motile forms of these organisms, both have a 9+2 microtubule axoneme.", "குறுஇழைகள் ஏராளம், குறுகிய, ஒருங்கிணைந்த அலைகளில் அடிக்கின்றன; கசைகள் குறைவு, நீளம். இவ்வுயிரிகளின் வழக்கமான இயக்கக் குறுஇழைகளிலும் கசையிழைகளிலும் 9+2 நுண்குழல் அமைப்புடைய ஆக்சோனீம் காணப்படுகிறது."),
             bqc("What is the avoiding reaction?", "தவிர்ப்புத் துலங்கல் என்பது என்ன?",
                 "A ciliate reverses its beat, backs off, turns and swims in a new direction on meeting an obstacle.", "தடையைச் சந்திக்கும்போது சிலியேட் அடிப்பைத் திருப்பி, பின்வாங்கி, திரும்பி புதிய திசையில் நீந்துகிறது."),
             bqc("How do the sporozoites of Plasmodium move?", "பிளாஸ்மோடியத்தின் ஸ்போரோசோயிட்டுகள் எவ்வாறு நகர்கின்றன?",
