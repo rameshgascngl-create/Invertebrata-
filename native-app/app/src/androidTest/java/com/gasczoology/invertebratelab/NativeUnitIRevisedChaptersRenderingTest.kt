@@ -64,6 +64,9 @@ class NativeUnitIRevisedChaptersRenderingTest {
         rule.onNodeWithTag("chapter-" + chapter.lessonId).performClick()
         val readerTag = "book-reader-" + chapter.lessonId
         waitFor(readerTag)
+        // The direct chapter language switch must be present at both font scales.
+        rule.onNodeWithTag("chapter-language-english").assertExists()
+        rule.onNodeWithTag("chapter-language-tamil").assertExists()
         val rows = BookLayout.rows(chapter)
         val headings = rows.withIndex().filter { it.value is BookRow.SectionHeading }
         assertTrue("No sections in " + chapter.lessonId, headings.isNotEmpty())
