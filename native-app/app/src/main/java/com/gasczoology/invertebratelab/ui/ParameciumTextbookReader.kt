@@ -265,9 +265,9 @@ internal fun ParameciumTextbookReader(
                 "உடற்கூறு படப் பகுதிகளைத் திற"))
         }
         Text(view(language,
-            "The repeated photographed pencil image has been withdrawn. Each anatomy slot requires its own scientifically checked raster, displayed only in the relevant gallery.",
-            "மீண்டும் பயன்படுத்தப்பட்ட பழைய புகைப்படக் கையோவியம் நீக்கப்பட்டது. ஒவ்வொரு உறுப்புப் பகுதிக்கும் தனித்த அறிவியல் சரிபார்க்கப்பட்ட படம் தேவை; அது உரிய படத் தொகுப்பில் மட்டுமே காட்டப்படும்."),
-            color = MaterialTheme.colorScheme.error,
+            "Open the anatomy gallery to enlarge each available image. Image-specific source and review information appears alongside its figure.",
+            "உடற்கூறு படத் தொகுப்பிலுள்ள ஒவ்வொரு படத்தையும் பெரிதாக்கிப் பார்க்கலாம். படத்தின் மூலமும் மதிப்பாய்வு நிலையும் அதனருகில் தரப்பட்டுள்ளன."),
+            style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.testTag("u60-retired-repeated-paramecium-image"))
     }
 
