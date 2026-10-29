@@ -21,7 +21,8 @@ private fun ut(lang: AppLanguage, en: String, ta: String) = if (lang == AppLangu
 /**
  * Printed-book reader for chapters of Units I, IV and V that have a [BookChapter].
  * The book comes first; the validated A5 questions follow unchanged. Plate figures
- * render inline once, so no separate plate gallery is shown.
+ * render inline once. Additional type-study references are available only
+ * on demand in a separate gallery mode, avoiding duplicate default figures.
  */
 @Composable
 internal fun UnitBookTeachingChapter(
@@ -32,6 +33,16 @@ internal fun UnitBookTeachingChapter(
     val narrator = remember(context, chapter.id) { OfflineNarrator(context) }
     DisposableEffect(narrator) { onDispose { narrator.close() } }
     val listState = rememberLazyListState()
+    // The book route previously made the source-backed type-study gallery
+    // unreachable for Penaeus, Pila and Asterias. Keep the atlas on demand,
+    // as a separate view, so the same figure is not duplicated in the lesson.
+    val referenceStudy = remember(chapter.id) {
+        NativeCurriculumManifest.typeStudies.firstOrNull {
+            it.lessonId == chapter.id &&
+                it.organismId in setOf("penaeus", "pila", "asterias")
+        }
+    }
+    var referenceGalleryOpen by rememberSaveable(chapter.id) { mutableStateOf(false) }
     LazyColumn(
         state = listState,
         modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()
@@ -45,6 +56,24 @@ internal fun UnitBookTeachingChapter(
                 Text(ut(language, "Back", "பின்செல்"))
             }
         }
+        if (referenceStudy != null) {
+            item(key = "optional-reference-gallery-toggle") {
+                OutlinedButton(
+                    onClick = { referenceGalleryOpen = !referenceGalleryOpen },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("book-reference-gallery-toggle-" + chapter.id),
+                ) {
+                    Text(ut(language,
+                        if (referenceGalleryOpen) "Return to textbook" else "Open anatomical reference gallery",
+                        if (referenceGalleryOpen) "பாடநூலுக்குத் திரும்பு" else "உடற்கூறு ஆதாரப் படத் தொகுப்பைத் திற"))
+                }
+            }
+        }
+        if (referenceStudy != null && referenceGalleryOpen) {
+            item(key = "optional-reference-gallery") {
+                RequiredTypeStudyPlates(referenceStudy, language)
+            }
+        } else {
         bookChapterItems(book, language) { narrator.speak(it, language) }
         item(key = "practice-heading") {
             Text(ut(language, "EXAM PRACTICE · AFTER THE LESSON", "தேர்வுப் பயிற்சி · பாடத்திற்குப் பின்"),
@@ -73,6 +102,7 @@ internal fun UnitBookTeachingChapter(
             items((0..7).toList(), key = { "u44-nereis-plate-$it" }) { plateIndex ->
                 UnitIVNereisStaticPlate(plateIndex, language)
             }
+        }
         }
     }
 }
