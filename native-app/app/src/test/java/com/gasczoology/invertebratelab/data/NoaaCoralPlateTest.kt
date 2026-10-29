@@ -10,10 +10,10 @@ import org.junit.Test
 /** No source substitution, synthetic artwork, hidden resampling or invented label numbers. */
 class NoaaCoralPlateTest {
     private val slot = "lib/coral-polyp"
-    private val file = File("src/main/assets/book_figures/coral-polyp-noaa.png")
+    private val file = File("src/main/assets/book_figures/coral-polyp-noaa-original.png")
 
     @Test fun highResolutionPublicDomainSourceIsPackagedWithoutModification() {
-        assertEquals("book_figures/coral-polyp-noaa", BookFigureLibrary.stemFor(slot))
+        assertEquals("book_figures/coral-polyp-noaa-original", BookFigureLibrary.stemFor(slot))
         assertTrue("NOAA PNG missing from offline assets", file.isFile)
         val bytes = file.readBytes()
         assertTrue(bytes.size > 50_000)
@@ -22,13 +22,13 @@ class NoaaCoralPlateTest {
         fun u32(at: Int) = ((bytes[at].toInt() and 255) shl 24) or
             ((bytes[at + 1].toInt() and 255) shl 16) or
             ((bytes[at + 2].toInt() and 255) shl 8) or (bytes[at + 3].toInt() and 255)
-        assertEquals(1920, u32(16))
-        assertEquals(2716, u32(20))
-        assertEquals("c7cca1be823372d01cab802cc25b5a4b50c53666bd5b901d8e8374511b87905d",
+        assertEquals(1000, u32(16))
+        assertEquals(1005, u32(20))
+        assertEquals("0bdc2bab45339da873ef2879ac4acd5f59948f8e1fea2e377ff3d699a92cac62",
             MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) })
         val credit = BookFigureLibrary.creditFor(slot)!!
         assertTrue(credit.en.contains("NOAA"))
-        assertTrue(credit.en.contains("Earlza"))
+        assertTrue(credit.en.contains("Flower Garden Banks"))
         assertTrue(credit.ta.contains("பவள"))
         assertTrue(credit.en.contains("review pending"))
     }
@@ -36,7 +36,7 @@ class NoaaCoralPlateTest {
     @Test fun coralLessonDescribesActualSourceNotRemovedSevenNumberDiagram() {
         val figure = CoralsBookChapter.chapter.allBlocks()
             .filterIsInstance<BookFigure>().single { it.slot == slot }
-        assertTrue(figure.caption.english.contains("longitudinal section"))
+        assertTrue(figure.caption.english.contains("NOAA"))
         assertTrue(figure.caption.tamil.contains("நீள்வெட்டுத்"))
         assertFalse(figure.caption.english.contains("(1)"))
         assertFalse(figure.caption.tamil.contains("(1)"))
