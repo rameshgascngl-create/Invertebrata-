@@ -1,0 +1,55 @@
+name: Paramecium Native QA
+on:
+  push:
+    branches: [feat/plate-pipeline]
+    paths:
+      - 'native-app/**'
+      - 'F01_vegetative_PROVISIONAL.png'
+      - 'F02_micronuclear_mitosis_PROVISIONAL.png'
+      - 'F03_chromosome_segregation_PROVISIONAL.png'
+      - '.github/workflows/paramecium-native-qa.yml'
+  workflow_dispatch:
+
+jobs:
+  native-debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK 37
+        run: sdkmanager "platforms;android-37" "build-tools;37.0.0"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.4.0'
+      - name: Compile Kotlin and run JVM tests
+        working-directory: native-app
+        run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Verify packaged Paramecium assets
+        run: |
+          python3 - <<'PY'
+          import glob, zipfile
+          apk=glob.glob('native-app/app/build/outputs/apk/debug/*.apk')
+          assert len(apk)==1, f'Expected one debug APK, found {apk}'
+          with zipfile.ZipFile(apk[0]) as z:
+              names=set(z.namelist())
+              for f in ('F01_vegetative_PROVISIONAL.png',
+                        'F02_micronuclear_mitosis_PROVISIONAL.png',
+                        'F03_chromosome_segregation_PROVISIONAL.png'):
+                  path='assets/paramecium/fission/'+f
+                  assert path in names, f'Missing APK asset: {path}'
+                  assert z.getinfo(path).file_size > 1024
+          print('F01-F03 packaged in debug APK')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: paramecium-native-qa-debug-apk
+          path: native-app/app/build/outputs/apk/debug/*.apk
+          retention-days: 7
