@@ -695,7 +695,11 @@ private fun SimulatorSection(
     }
     // Fixed, source-specific PNG. The stage selector changes the written
     // physiology explanation, NEVER fictitious organ geometry or mock animation.
-    ParameciumProcessPng(process, language)
+    if (process == ParameciumProcess.BINARY_FISSION) {
+        ParameciumFissionPngViewer(stage.id, language)
+    } else {
+        ParameciumProcessPng(process, language)
+    }
     Text(bi(language,"Stage ","நிலை ")+(step+1).toString()+"/"+
         model.stages.size.toString()+" — "+stage.heading.value(language),
         modifier=Modifier.testTag("r1-stage-title"))
