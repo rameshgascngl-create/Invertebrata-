@@ -88,7 +88,29 @@ class NativeU57ParameciumProcessPngTest {
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
             rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
             rule.onNodeWithTag("u57-paramecium-process-bitmap-"+process).assertDoesNotExist()
-            if(process=="conjugation")screenshot("conjugation-text-no-vector")
+            if(process=="conjugation") {
+                screenshot("conjugation-text-no-vector")
+                // The seven stages are text-only until each dedicated PNG passes review.
+                // Capture actual 100%/200% Tamil pixels for the critical sequence.
+                repeat(3) {
+                    rule.onNodeWithTag("r1-next").performScrollTo().performClick()
+                }
+                rule.onNodeWithTag("r1-stage-title").performScrollTo()
+                    .assertTextContains("முதல் உட்கருப் பிரிவு", substring = true)
+                rule.onNodeWithTag("r1-stage-explanation").performScrollTo()
+                    .assertTextContains("இரண்டு செல்களே", substring = true)
+                screenshot("conjugation-first-postzygotic-division")
+                repeat(3) {
+                    rule.onNodeWithTag("r1-next").performScrollTo().performClick()
+                }
+                rule.onNodeWithTag("r1-stage-title").performScrollTo()
+                    .assertTextContains("இணைவுக்குப் பிந்திய செல் பிரிவுகள்", substring = true)
+                rule.onNodeWithTag("r1-stage-explanation").performScrollTo()
+                    .assertTextContains("எட்டு பிந்திய உட்கருக்களை", substring = true)
+                screenshot("conjugation-later-fission")
+                rule.onNodeWithTag("u57-paramecium-process-png-missing-conjugation")
+                    .performScrollTo().assertIsDisplayed()
+            }
         }
         rule.onNodeWithTag("r1-stage-title").performScrollTo().assertExists()
         rule.onNodeWithTag("r1-next").performScrollTo().performClick()
