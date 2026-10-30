@@ -73,7 +73,7 @@ for scale in 100 200; do
 done
 adb pull /sdcard/Download/u57-qa "$E/u57-captured" > "$E/u57-pull-final.log"
 for scale in 100 200; do
-  for scene in vacuole-source-png vacuole-png-enlarged conjugation-text-no-vector; do
+  for scene in vacuole-source-png vacuole-png-enlarged conjugation-text-no-vector conjugation-first-postzygotic-division conjugation-later-fission; do
     name="paramecium-$scale-$scene.png"
     [[ -s "$E/u57-captured/$name" ]] || {
       result="MISSING_PARAMECIUM_PNG_SCREENSHOT_$name"
