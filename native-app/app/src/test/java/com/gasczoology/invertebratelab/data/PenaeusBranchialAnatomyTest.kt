@@ -24,7 +24,7 @@ class PenaeusBranchialAnatomyTest {
         assertTrue(en.contains("branched filaments"))
         assertTrue(en.contains("scaphognathite"))
         assertTrue(ta.contains("கிளைபிரிந்த செவுள்கள்"))
-        assertTrue(ta.contains("மைய அச்சு"))
+        assertTrue(ta.contains("மைய அச்சிலிருந்து"))
         assertTrue(ta.contains("ஸ்கேஃபோக்னதைட்"))
         assertFalse("Not all gills are limb-base outgrowths",
             en.contains("gills, which are feathery outgrowths from the bases of the thoracic limbs"))
@@ -42,10 +42,10 @@ class PenaeusBranchialAnatomyTest {
         assertTrue(points.points.all { it.tamil.isNotBlank() })
         assertTrue(points.points[0].tamil.contains("காக்சா"))
         assertTrue(points.points[1].tamil.contains("மூட்டு இணைப்புச் சவ்வு"))
-        assertTrue(points.points[2].tamil.contains("பக்கவாட்டு உடற்சுவர்"))
+        assertTrue(points.points[2].tamil.contains("பக்கவாட்டு உடற்சுவருடன்"))
     }
 
-    @Test fun gallDefinitionAndPreviousAssessmentStructureRemainIntact() {
+    @Test fun gillDefinitionAndPreviousAssessmentStructureRemainIntact() {
         val d = chapter.definitions.single { it.term.english == "Dendrobranchiate gill" }
         assertTrue(d.meaning.english.contains("subdivide into branched filaments"))
         assertTrue(d.meaning.tamil.contains("மைய அச்சிலிருந்து"))
