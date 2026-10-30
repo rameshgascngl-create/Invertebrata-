@@ -2,9 +2,9 @@ package com.gasczoology.invertebratelab.ui
 
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.rememberTransformableState
-import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.Column
@@ -46,9 +46,8 @@ internal fun ParameciumFissionPngViewer(stageId: String, language: AppLanguage) 
                     else "This plate is unavailable in this build.")
             } else {
                 var scale by remember(plate.id) { mutableFloatStateOf(1f) }
-                val transform = rememberTransformableState { zoom, _, _ ->
-                    scale = (scale * zoom).coerceIn(1f, 5f)
-                }
+                var offsetX by remember(plate.id) { mutableFloatStateOf(0f) }
+                var offsetY by remember(plate.id) { mutableFloatStateOf(0f) }
                 Box(Modifier.fillMaxWidth().height(300.dp).padding(vertical = 8.dp)) {
                     Image(
                         bitmap = bitmap,
@@ -56,8 +55,15 @@ internal fun ParameciumFissionPngViewer(stageId: String, language: AppLanguage) 
                             plate.tamilCaption else plate.englishCaption,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.fillMaxWidth().height(300.dp)
-                            .graphicsLayer(scaleX = scale, scaleY = scale)
-                            .transformable(transform)
+                            .graphicsLayer(scaleX = scale, scaleY = scale,
+                                translationX = offsetX, translationY = offsetY)
+                            .pointerInput(plate.id) {
+                                detectTransformGestures { _, pan, zoom, _ ->
+                                    scale = (scale * zoom).coerceIn(1f, 5f)
+                                    offsetX = (offsetX + pan.x).coerceIn(-size.width * (scale - 1f) / 2f, size.width * (scale - 1f) / 2f)
+                                    offsetY = (offsetY + pan.y).coerceIn(-size.height * (scale - 1f) / 2f, size.height * (scale - 1f) / 2f)
+                                }
+                            }
                             .testTag("paramecium-fission-" + plate.id)
                     )
                 }
