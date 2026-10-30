@@ -1,3 +1,4 @@
+import java.security.MessageDigest
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
@@ -120,7 +121,7 @@ val stageParameciumFissionReview = tasks.register("stageParameciumFissionReview"
                 listOf(137, 80, 78, 71, 13, 10, 26, 10).map { it.toByte() }) {
                 "Invalid Paramecium PNG: $name"
             }
-            val hash = java.security.MessageDigest.getInstance("SHA-256")
+            val hash = MessageDigest.getInstance("SHA-256")
                 .digest(bytes).joinToString("") { "%02x".format(it) }
             require(hashes.add(hash)) { "Duplicate Paramecium PNG: $name" }
             target.resolve(name).writeBytes(bytes)
