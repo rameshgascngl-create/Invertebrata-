@@ -1,0 +1,153 @@
+name: Native R1.6 same-commit HARD acceptance
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - native/r16-ciliary-textbook-20261010
+
+permissions:
+  contents: read
+
+jobs:
+  compile-native-foundation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile application and instrumentation Kotlin and run all JVM academic unit tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Prohibit legacy browser runtime and INTERNET permission
+        run: |
+          if grep -RniE 'WebView|android\.webkit|<script|javascript:' native-app/app/src/main; then
+            echo 'Legacy browser runtime detected in native module' >&2
+            exit 1
+          fi
+          if grep -Rni '<uses-permission[^>]*INTERNET' native-app/app/src/main/AndroidManifest.xml; then
+            echo 'Unexpected INTERNET permission' >&2
+            exit 1
+          fi
+      - name: Preserve exact-commit JVM test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-r16-jvm-test-evidence
+          path: |
+            native-app/app/build/test-results/testDebugUnitTest/
+            native-app/app/build/reports/tests/testDebugUnitTest/
+          if-no-files-found: warn
+
+  api34-established-native-ui:
+    needs: compile-native-foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run original unmodified N1.3–R1.5 API34 and Tamil200 gates
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-native-api34-tests.sh
+      - name: Upload original unmodified API34 UI evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-r16-established-api34-regression-evidence
+          path: qa-evidence/
+          if-no-files-found: warn
+
+  api34-genuine-process-death:
+    needs: compile-native-foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run original unmodified N1.4 actual PID kill/relaunch gate
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-native-n14-process-death.sh
+      - name: Preserve genuine PID and state restoration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-r16-original-n14-process-death-evidence
+          path: qa-evidence/n14/
+          if-no-files-found: warn
+
+  api34-r16-ciliary-acceptance:
+    needs: compile-native-foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable Android emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify R1.6 actual Android normal and Tamil 200% ciliary UI
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-native-r16-ciliary.sh
+      - name: Preserve exact-commit R1.6 screenshot and instrumentation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-r16-api34-ciliary-tamil200-evidence
+          path: qa-evidence/r16/
+          if-no-files-found: warn

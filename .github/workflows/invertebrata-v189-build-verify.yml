@@ -1,0 +1,325 @@
+name: INVERTEBRATA v1.8.9 Build Optimization Verification
+
+on:
+  push:
+    branches:
+      - release/v189-build-optimization-20260922
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      BASE_HTML_SHA256: bdb39d4fa1f438c5de83fc9a84ab33905016854c1f641227dbc23063c14c2c46
+      BASE_HTML_SIZE: "2393951"
+      EXPECTED_HTML_SHA256: 7f3dfbb64bc2c966b528a6d17245ef5e0e6277ff605ef6ccdeb7d9f0cabfdd00
+      EXPECTED_HTML_SIZE: "2475518"
+      V189_PAYLOAD_REL: payload/v189_clean_academic/index.html
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Java 17
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699
+        with:
+          packages: ''
+
+      - name: Install Android 36 build tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+          test -x "$ANDROID_HOME/build-tools/36.0.0/aapt"
+
+      - name: Set up Gradle 8.14.3
+        uses: gradle/actions/setup-gradle@017a9effdb900e5b5b2fddfb590a105619dca3c3
+        with:
+          gradle-version: '8.14.3'
+          cache-read-only: true
+
+      - name: Reconstruct frozen accepted v1.8.8 base source
+        id: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/evidence"
+          python ci/reconstruct_v188_accepted_source.py preflight --repo-root "$GITHUB_WORKSPACE" \
+            | tee "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "PHASE_B1_PREFLIGHT=PASS" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+          grep -Fx "ACCEPTED_TRANSFORMS_AVAILABLE=20" "$RUNNER_TEMP/evidence/PREFLIGHT.txt"
+
+          python ci/reconstruct_v188_accepted_source.py reconstruct \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --work-dir "$RUNNER_TEMP/reconstruct-v189" \
+            --output "$RUNNER_TEMP/evidence/V188_BASE.html" \
+            | tee "$RUNNER_TEMP/evidence/RECONSTRUCT.txt"
+
+          ROOT="$(find "$RUNNER_TEMP/reconstruct-v189/extracted" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          test -n "$ROOT"
+          test -f "$ROOT/settings.gradle"
+          echo "root=$ROOT" >> "$GITHUB_OUTPUT"
+
+          test "$(sha256sum "$RUNNER_TEMP/evidence/V188_BASE.html" | awk '{print $1}')" = "$BASE_HTML_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/V188_BASE.html")" = "$BASE_HTML_SIZE"
+          cmp "$RUNNER_TEMP/evidence/V188_BASE.html" "$ROOT/academic_payload/index.html"
+          cmp "$ROOT/academic_payload/index.html" "$ROOT/app/src/main/assets/www/index.html"
+          {
+            echo "V188_BASE_RECONSTRUCTION=PASS"
+            echo "V188_BASE_SHA256=$BASE_HTML_SHA256"
+          } > "$RUNNER_TEMP/evidence/V188_BASE_GATE.txt"
+
+      - name: Reconcile authoritative v1.8.9 payload and apply Android-shell patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="${{ steps.source.outputs.root }}"
+          PAYLOAD="$GITHUB_WORKSPACE/$V189_PAYLOAD_REL"
+
+          test -f "$PAYLOAD"
+          test "$(sha256sum "$PAYLOAD" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+          test "$(stat -c %s "$PAYLOAD")" = "$EXPECTED_HTML_SIZE"
+          grep -Fq "INVERTEBRATA v1.8.9 Clean Academic Edition" "$PAYLOAD"
+
+          cp "$PAYLOAD" "$ROOT/academic_payload/index.html"
+          cp "$PAYLOAD" "$ROOT/app/src/main/assets/www/index.html"
+          mkdir -p "$ROOT/frontend/dist"
+          cp "$PAYLOAD" "$ROOT/frontend/dist/index.html"
+
+          cmp "$PAYLOAD" "$ROOT/academic_payload/index.html"
+          cmp "$PAYLOAD" "$ROOT/app/src/main/assets/www/index.html"
+          cmp "$PAYLOAD" "$ROOT/frontend/dist/index.html"
+
+          python ci/patch_v189_android_shell.py "$ROOT" \
+            | tee "$RUNNER_TEMP/evidence/V189_PATCH.txt"
+
+          cmp "$PAYLOAD" "$ROOT/academic_payload/index.html"
+          cmp "$PAYLOAD" "$ROOT/frontend/dist/index.html"
+          cmp "$PAYLOAD" "$ROOT/app/src/main/assets/www/index.html"
+          test "$(sha256sum "$ROOT/frontend/dist/index.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+
+          grep -q "versionCode 18900" "$ROOT/app/build.gradle"
+          grep -q "versionName '1.8.9'" "$ROOT/app/build.gradle"
+          grep -q "minifyEnabled false" "$ROOT/app/build.gradle"
+          grep -q "minifyEnabled true" "$ROOT/app/build.gradle"
+          grep -q "shrinkResources true" "$ROOT/app/build.gradle"
+          grep -q "proguard-android-optimize.txt" "$ROOT/app/build.gradle"
+          grep -q "tasks.register('copyWebAssets', Sync)" "$ROOT/app/build.gradle"
+          grep -q "tasks.named('preBuild').configure" "$ROOT/app/build.gradle"
+          grep -q "dependsOn(copyWebAssets)" "$ROOT/app/build.gradle"
+
+          grep -q "RuntimeVisibleAnnotations,RuntimeInvisibleAnnotations,AnnotationDefault" "$ROOT/app/proguard-rules.pro"
+          grep -q "@android.webkit.JavascriptInterface <methods>;" "$ROOT/app/proguard-rules.pro"
+          grep -q -- "-keep @androidx.annotation.Keep class \*" "$ROOT/app/proguard-rules.pro"
+          ! grep -Eq '^[[:space:]]*-(dontshrink|dontoptimize|dontobfuscate)([[:space:]]|$)' "$ROOT/app/proguard-rules.pro"
+
+          grep -q "version '8.13.0'" "$ROOT/build.gradle"
+          ! grep -Eq "com.android.application.*version ['\"]9\." "$ROOT/build.gradle"
+
+          {
+            echo "V189_CLEAN_ACADEMIC_PAYLOAD=PASS"
+            echo "V189_PAYLOAD_SHA256=$EXPECTED_HTML_SHA256"
+            echo "V189_PAYLOAD_SIZE=$EXPECTED_HTML_SIZE"
+            echo "V189_PAYLOAD_SOURCE=$V189_PAYLOAD_REL"
+          } > "$RUNNER_TEMP/evidence/V189_PAYLOAD_GATE.txt"
+
+      - name: Clean release build
+        shell: bash
+        working-directory: ${{ steps.source.outputs.root }}
+        run: |
+          set -euo pipefail
+          gradle wrapper --gradle-version 8.14.3 --distribution-type bin
+          chmod +x gradlew
+          ./gradlew --no-daemon clean :app:assembleRelease --stacktrace
+
+      - name: Verify release APK, R8 mapping, synchronized assets and packaged version
+        id: verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="${{ steps.source.outputs.root }}"
+          APK="$(find "$ROOT/app/build/outputs/apk/release" -type f -name '*.apk' -print -quit)"
+          MAPPING="$ROOT/app/build/outputs/mapping/release/mapping.txt"
+
+          test -n "$APK"
+          test -s "$APK"
+          test -s "$MAPPING"
+
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$APK"             | tee "$RUNNER_TEMP/evidence/BADGING.txt"
+          grep -q "package: name='com.gasczoology.invertebratelab'" "$RUNNER_TEMP/evidence/BADGING.txt"
+          grep -q "versionCode='18900'" "$RUNNER_TEMP/evidence/BADGING.txt"
+          grep -q "versionName='1.8.9'" "$RUNNER_TEMP/evidence/BADGING.txt"
+          grep -q "targetSdkVersion:'36'" "$RUNNER_TEMP/evidence/BADGING.txt"
+
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump permissions "$APK"             | tee "$RUNNER_TEMP/evidence/PERMISSIONS.txt"
+          ! grep -q "android.permission.INTERNET" "$RUNNER_TEMP/evidence/PERMISSIONS.txt"
+
+          test "$(unzip -l "$APK" | grep -c 'assets/www/index.html')" = "1"
+          unzip -p "$APK" assets/www/index.html > "$RUNNER_TEMP/evidence/APK_INDEX.html"
+          cmp "$ROOT/frontend/dist/index.html" "$RUNNER_TEMP/evidence/APK_INDEX.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/APK_INDEX.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+
+          cp "$MAPPING" "$RUNNER_TEMP/evidence/mapping.txt"
+          sha256sum "$APK" "$MAPPING" "$RUNNER_TEMP/evidence/APK_INDEX.html"             | tee "$RUNNER_TEMP/evidence/SHA256.txt"
+
+          echo "apk=$APK" >> "$GITHUB_OUTPUT"
+
+      - name: Release smoke assertions — offline, bilingual, persistence, rotation
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="${{ steps.source.outputs.root }}"
+          HTML="$ROOT/frontend/dist/index.html"
+          MAIN="$ROOT/app/src/main/java/com/gasczoology/invertebratelab/MainActivity.java"
+          MANIFEST="$ROOT/app/src/main/AndroidManifest.xml"
+
+          grep -Fq "appassets.androidplatform.net" "$MAIN"
+          grep -Fq "/assets/www/index.html" "$MAIN"
+          grep -Fq "setDomStorageEnabled(true)" "$MAIN"
+          grep -Fq "restoreState(savedInstanceState)" "$MAIN"
+          grep -Fq "saveState(outState)" "$MAIN"
+          grep -Fq "localStorage" "$HTML"
+          grep -Fq "orientation" "$MANIFEST"
+          grep -Fq "screenSize" "$MANIFEST"
+          grep -Fq "smallestScreenSize" "$MANIFEST"
+
+          python - "$HTML" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+          text = Path(sys.argv[1]).read_text(encoding="utf-8")
+          assert re.search(r"[\u0B80-\u0BFF]", text), "Tamil text missing"
+          assert re.search(r"[A-Za-z]{5,}", text), "English text missing"
+          assert "localStorage" in text, "localStorage persistence code missing"
+          print("BILINGUAL_HTML=PASS")
+          print("LOCALSTORAGE_CODE_PATH=PASS")
+          PY
+
+          {
+            echo "RELEASE_BUILD=PASS"
+            echo "AGP_8_13_0_FROZEN=PASS"
+            echo "R8_MINIFY=PASS"
+            echo "RESOURCE_SHRINK=PASS"
+            echo "R8_MAPPING=PASS"
+            echo "SYNCED_WEB_ASSET=PASS"
+            echo "PACKAGED_VERSION_1_8_9=PASS"
+            echo "V189_CLEAN_ACADEMIC_PAYLOAD=PASS"
+            echo "OFFLINE_LOCAL_ORIGIN_STATIC_ASSERTION=PASS"
+            echo "BILINGUAL_STATIC_ASSERTION=PASS"
+            echo "LOCALSTORAGE_STATIC_ASSERTION=PASS"
+            echo "ROTATION_CONFIGURATION_STATIC_ASSERTION=PASS"
+            echo "PHYSICAL_DEVICE_RUNTIME_SMOKE=NOT_PERFORMED_IN_THIS_CI_JOB"
+          } | tee "$RUNNER_TEMP/evidence/FINAL.txt"
+
+
+      - name: Create installable v1.8.9 device-QA candidate
+        id: qa
+        shell: bash
+        run: |
+          set -euo pipefail
+          UNSIGNED="${{ steps.verify.outputs.apk }}"
+          QA_DIR="$RUNNER_TEMP/device-qa"
+          mkdir -p "$QA_DIR"
+
+          PASS="$(openssl rand -hex 24)"
+          echo "::add-mask::$PASS"
+
+          keytool -genkeypair -noprompt \
+            -keystore "$QA_DIR/device-qa.jks" \
+            -storepass "$PASS" \
+            -keypass "$PASS" \
+            -alias device_qa \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 3650 \
+            -dname "CN=INVERTEBRATA v1.8.9 CI Device QA,OU=Zoology,O=GASC Nagercoil,C=IN"
+
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -f -p 4 \
+            "$UNSIGNED" \
+            "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA-aligned.apk"
+
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" sign \
+            --ks "$QA_DIR/device-qa.jks" \
+            --ks-pass "pass:$PASS" \
+            --ks-key-alias device_qa \
+            --key-pass "pass:$PASS" \
+            --out "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA.apk" \
+            "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA-aligned.apk"
+
+          rm -f "$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA-aligned.apk" "$QA_DIR/device-qa.jks"
+
+          QA_APK="$QA_DIR/INVERTEBRATA-v1.8.9-DEVICE-QA.apk"
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -v 4 "$QA_APK" \
+            > "$RUNNER_TEMP/evidence/DEVICE_QA_ZIPALIGN.txt"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$QA_APK" \
+            | tee "$RUNNER_TEMP/evidence/DEVICE_QA_APKSIGNER.txt"
+
+          grep -F "Verified using v2 scheme (APK Signature Scheme v2): true" \
+            "$RUNNER_TEMP/evidence/DEVICE_QA_APKSIGNER.txt"
+          grep -F "Verified using v3 scheme (APK Signature Scheme v3): true" \
+            "$RUNNER_TEMP/evidence/DEVICE_QA_APKSIGNER.txt"
+
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$QA_APK" \
+            | tee "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "package: name='com.gasczoology.invertebratelab'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "versionCode='18900'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "versionName='1.8.9'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+          grep -q "targetSdkVersion:'36'" "$RUNNER_TEMP/evidence/DEVICE_QA_BADGING.txt"
+
+          unzip -p "$QA_APK" assets/www/index.html > "$RUNNER_TEMP/evidence/DEVICE_QA_INDEX.html"
+          test "$(sha256sum "$RUNNER_TEMP/evidence/DEVICE_QA_INDEX.html" | awk '{print $1}')" = "$EXPECTED_HTML_SHA256"
+          test "$(stat -c %s "$RUNNER_TEMP/evidence/DEVICE_QA_INDEX.html")" = "$EXPECTED_HTML_SIZE"
+
+          QA_SHA="$(sha256sum "$QA_APK" | awk '{print $1}')"
+          {
+            echo "DEVICE_QA_CANDIDATE=PASS"
+            echo "DEVICE_QA_APK_SHA256=$QA_SHA"
+            echo "DEVICE_QA_PAYLOAD_SHA256=$EXPECTED_HTML_SHA256"
+            echo "DEVICE_QA_VERSION_NAME=1.8.9"
+            echo "DEVICE_QA_VERSION_CODE=18900"
+            echo "DEVICE_QA_SIGNATURE=EPHEMERAL_CI_TEST_KEY"
+            echo "PRODUCTION_SIGNING=NOT_PERFORMED"
+            echo "PHYSICAL_DEVICE_RUNTIME_QA=PENDING"
+          } | tee "$RUNNER_TEMP/evidence/DEVICE_QA_GATE.txt"
+
+          echo "apk=$QA_APK" >> "$GITHUB_OUTPUT"
+          echo "sha256=$QA_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Upload installable device-QA candidate
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-v1.8.9-DEVICE-QA
+          path: ${{ steps.qa.outputs.apk }}
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload verified release build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-v1.8.9-OPTIMIZED-UNSIGNED
+          path: ${{ steps.verify.outputs.apk }}
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INVERTEBRATA-v1.8.9-BUILD-EVIDENCE
+          path: ${{ runner.temp }}/evidence/
+          if-no-files-found: warn
+          retention-days: 30

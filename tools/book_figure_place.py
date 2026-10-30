@@ -1,0 +1,431 @@
+#!/usr/bin/env python3
+"""One-off placement of library figures into chapter sources (idempotent).
+
+Each entry names a chapter file, the section id, optionally a bsub title, and the figure.
+The figure is inserted before the first definition/table/note/points/check block of that
+section (or sub-section), so it follows the opening paragraphs.
+"""
+import re
+import sys
+from pathlib import Path
+
+D = Path(__file__).resolve().parents[1] / "native-app/app/src/main/java/com/gasczoology/invertebratelab/data"
+IND = re.compile(r"^(\s*)")
+BLOCK_START = re.compile(r"^\s*b(def|table|note|points|qc)\(")
+
+# (file, section id, bsub title or None, slot id, English caption, Tamil caption)
+PLACEMENTS = [
+    ("NereisBookChapter.kt", "external", None, "nereis-external",
+     "External features of Nereis, dorsal view.",
+     "நெரிஸின் வெளிப்புற அம்சங்கள், முதுகுப் புறக் காட்சி."),
+    ("NereisBookChapter.kt", "external", None, "nereis-head",
+     "The enlarged head region of Nereis.",
+     "நெரிஸின் தலைப் பகுதி, பெரிதாக்கிய காட்சி."),
+    ("NereisBookChapter.kt", "parapodium", None, "nereis-parapodium",
+     "A biramous parapodium of Nereis.",
+     "நெரிஸின் இருகிளைப் பாரபோடியம்."),
+    ("NereisBookChapter.kt", "internal", None, "nereis-digestive",
+     "The digestive system of Nereis.",
+     "நெரிஸின் செரிமான மண்டலம்."),
+    ("NereisBookChapter.kt", "internal", None, "nereis-circulatory",
+     "The circulatory system of Nereis.",
+     "நெரிஸின் இரத்த ஓட்ட மண்டலம்."),
+    ("NereisBookChapter.kt", "internal", None, "nereis-nervous",
+     "The nervous system of Nereis.",
+     "நெரிஸின் நரம்பு மண்டலம்."),
+    ("NereisBookChapter.kt", "internal", None, "nereis-excretory",
+     "The excretory system of Nereis.",
+     "நெரிஸின் கழிவு நீக்க மண்டலம்."),
+    ("NereisBookChapter.kt", "reproduction", None, "nereis-trochophore",
+     "The trochophore larva of Nereis.",
+     "நெரிஸின் ட்ரோகோஃபோர் இளவுயிரி."),
+    ("ProtoParasitesBookChapter.kt", "entamoeba", None, "entamoeba-cycle",
+     "Life cycle of Entamoeba histolytica, from a public-domain reference diagram (English labels). "
+     "The stages are explained in the text; the diagram is for orientation only.",
+     "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கைச் சுழற்சி; பொதுப் பயன்பாட்டு வரைபடத்திலிருந்து (ஆங்கிலக் குறிப்புகளுடன்). "
+     "நிலைகள் உரையில் விளக்கப்பட்டுள்ளன; இப்படம் பொது அறிமுகத்துக்கு மட்டுமே."),
+    ("ProtoParasitesBookChapter.kt", "leishmania", None, "leishmania-amastigote",
+     "A Leishmania amastigote inside a host cell, from a public-domain reference diagram.",
+     "புரவலர் செல்லுக்குள் இருக்கும் லீஷ்மேனியா அமாஸ்டிகோட்; பொதுப் பயன்பாட்டு வரைபடத்திலிருந்து."),
+    ("ProtoParasitesBookChapter.kt", "trypanosoma", None, "trypanosoma-cartoon",
+     "A cartoon of Trypanosoma brucei: the cell body with its rounded nucleus and the flagellum "
+     "running along the cell as a dark line.",
+     "Trypanosoma brucei-யின் கேலிச்சித்திரப் படம்: செல் உடல், உருண்ட உட்கரு, செல்லின் நீளத்தில் கருங்கோடாக ஓடும் கசையிழை."),
+    ("ProtozoaEconomicsBookChapter.kt", "malaria", None, "plasmodium-cycle",
+     "Life cycle of Plasmodium, after the author's diagram (based on P. falciparum). The stages are "
+     "described in the text; the numbers in the diagram are the author's and are not keyed here.",
+     "பிளாஸ்மோடியத்தின் வாழ்க்கைச் சுழற்சி (P. falciparum அடிப்படையிலான ஆசிரியரின் வரைபடம்). நிலைகள் உரையில் "
+     "விளக்கப்பட்டுள்ளன; படத்திலுள்ள எண்கள் ஆசிரியருடையவை, இங்கே விளக்கப்படவில்லை."),
+    ("PoriferaCanalsBookChapter.kt", "comparison", None, "sponge-grades",
+     "The three grades of canal system, in longitudinal section (schematic; blue arrows show the water current, "
+     "green lines the layer of choanocytes): (A) asconoid, (B) syconoid, (C) leuconoid. "
+     "(1) osculum, (2) spongocoel, (3) ostium, (4) choanocyte layer lining the spongocoel, (5) radial canal, "
+     "(6) incurrent canal, (7) flagellated chamber, (8) excurrent canal.",
+     "கால்வாய்த் தொகுதியின் மூன்று நிலைகள், நீளவெட்டு (படத்திட்டம்; நீல அம்புகள் நீரோட்டத்தையும் பச்சைக் கோடுகள் காலர் செல் அடுக்கையும் காட்டுகின்றன): "
+     "(A) அஸ்கோனாய்டு, (B) சைக்கனாய்டு, (C) லியூக்கோனாய்டு. "
+     "(1) ஆஸ்குலம், (2) ஸ்பாஞ்சோசீல், (3) ஆஸ்டியம், (4) ஸ்பாஞ்சோசீலை வரிசையிடும் காலர் செல் அடுக்கு, (5) ஆரக் கால்வாய், "
+     "(6) உள்வரு கால்வாய், (7) கசையிழை அறை, (8) வெளிச்செல் கால்வாய்."),
+    ("CnidariaBookChapter.kt", "forms", None, "cnidarian-forms",
+     "The two body forms of the Cnidaria as one plan (schematic): (A) polyp, (B) medusa. "
+     "A: (1) mouth on the hypostome, (2) body wall, (3) gastrovascular cavity, (4) tentacle, (5) pedal disc. "
+     "B: (6) exumbrella, the outer surface of the bell, (2) body wall of the bell, (7) manubrium, (1) mouth.",
+     "நிடேரியாவின் இரு உடல் வடிவங்கள் ஒரே அமைப்பாக (படத்திட்டம்): (A) பாலிப், (B) மெடூசா. "
+     "A: (1) ஹைப்போஸ்டோமில் உள்ள வாய், (2) உடற்சுவர், (3) இரைப்பை-நாளக் குழி, (4) உணர்நீட்சி, (5) அடிப்பாதத் தட்டு. "
+     "B: (6) மணியின் வெளிப்புறப் பரப்பு (எக்சும்ப்ரெல்லா), (2) மணியின் உடற்சுவர், (7) மானுப்ரியம், (1) வாய்."),
+    ("MetamerismBookChapter.kt", "repeated-parts", None, "metameres",
+     "Five segments of a segmented worm in longitudinal section, dorsal side up (schematic): (1) body wall, "
+     "(2) coelomic compartment, (3) septum, (4) dorsal blood vessel, (5) ventral nerve cord, (6) ganglion, "
+     "(7) gut, which runs through every segment, (8) chaeta, (9) prostomium, (10) pygidium, (11) nephridium.",
+     "கண்டமுடைய புழுவின் ஐந்து கண்டங்கள், முதுகுப்புறம் மேலே இருக்க நீளவெட்டு (படத்திட்டம்): (1) உடற்சுவர், "
+     "(2) உடற்குழிப் பெட்டகம், (3) தடுப்புச் சுவர் (செப்டம்), (4) முதுகுப்புற இரத்த நாளம், (5) வயிற்றுப்புற நரம்புத் தண்டு, (6) நரம்புத் திரள் (கேங்கிலியம்), "
+     "(7) எல்லாக் கண்டங்கள் வழியாகவும் செல்லும் குடல், (8) சீட்டா, (9) புரோஸ்டோமியம், (10) பைஜிடியம், (11) நெஃப்ரிடியம்."),
+    ("HostParasiteBookChapter.kt", "terms", None, "host-cycles",
+     "Two kinds of parasite life cycle (schematic). (A) One host: (1) host, (2) parasite stages inside it, "
+     "(3) resistant infective stage outside the host, (4) new host of the same species. "
+     "(B) Two hosts: (5) definitive host, in which the parasite reaches sexual maturity, "
+     "(6) intermediate host, in which it passes its larval or asexual stages, (7) and (8) transfer between them.",
+     "ஒட்டுண்ணி வாழ்க்கைச் சுழற்சிகளின் இரு வகைகள் (படத்திட்டம்). (A) ஒரே புரவலர்: (1) புரவலர், (2) அதனுள் இருக்கும் ஒட்டுண்ணி நிலைகள், "
+     "(3) புரவலருக்கு வெளியே தாங்கும் தொற்று நிலை, (4) அதே இனத்தின் புதிய புரவலர். "
+     "(B) இரு புரவலர்கள்: (5) இறுதிப் புரவலர் (பாலின முதிர்ச்சி அடையும் இடம்), "
+     "(6) இடைநிலைப் புரவலர் (இளநிலை அல்லது பாலிலா நிலைகள் கழியும் இடம்), (7), (8) அவற்றிடையே நிகழும் மாற்றம்."),
+    ("PearlBookChapter.kt", "natural", None, "pearl-formation",
+     "Shell and pearl (schematic). (A) Section through the shell and mantle: (1) periostracum, the thin outer organic layer, "
+     "(2) middle calcareous layer, (3) nacreous layer, (4) mantle epithelium, which secretes the shell, (5) mantle tissue. "
+     "(B) A pearl in section: (6) nucleus, (7) layers of nacre, (8) pearl sac of mantle epithelium, (9) host tissue.",
+     "ஓடும் முத்தும் (படத்திட்டம்). (A) ஓடு, மேண்டில் வழி வெட்டு: (1) பெரியோஸ்ட்ரகம், மெல்லிய கரிம வெளி அடுக்கு, "
+     "(2) நடு சுண்ணாம்பு அடுக்கு, (3) நாக்கர் அடுக்கு, (4) ஓட்டைச் சுரக்கும் மேண்டில் மேலணி, (5) மேண்டில் திசு. "
+     "(B) முத்தின் வெட்டுத்தோற்றம்: (6) மையக்கரு, (7) நாக்கர் அடுக்குகள், (8) மேண்டில் மேலணியாலான முத்துப் பை, (9) புரவலர் திசு."),
+    ("AschelminthesBookChapter.kt", "pseudocoelom", None, "body-cavities",
+     "Three body plans in cross-section (schematic): (A) acoelomate, as in a flatworm, with no cavity; "
+     "(B) pseudocoelomate, as in a nematode, with a cavity between the body-wall mesoderm and the gut; "
+     "(C) coelomate, with a cavity lined by mesodermal peritoneum on both sides. "
+     "(1) epidermis, (2) mesoderm, (3) wall of the gut, (4) lumen of the gut, (5) body cavity, (6) peritoneum.",
+     "குறுக்கு வெட்டில் மூன்று உடல் அமைப்புகள் (படத்திட்டம்): (A) தட்டைப்புழுவைப் போன்ற உடற்குழியற்றது; "
+     "(B) நெமட்டோடாவைப் போன்ற போலி உடற்குழியுடையது; உடற்சுவர் மீசோடெர்முக்கும் குடலுக்கும் இடையே குழி உள்ளது; "
+     "(C) இருபுறமும் மீசோடெர்ம் பெரிட்டோனியத்தால் வரிசையிடப்பட்ட குழியுடைய உண்மை உடற்குழியுடையது. "
+     "(1) மேலணி, (2) மீசோடெர்ம், (3) குடலின் சுவர், (4) குடல் உட்குழி, (5) உடற்குழி, (6) பெரிட்டோனியம்."),
+    ("AschelminthesBookChapter.kt", "bodywall", None, "nematode-bodywall",
+     "Cross-section of a nematode (schematic): (1) cuticle, (2) epidermis, thickened along four lines, "
+     "(3) longitudinal muscle cell, there being no circular muscle, (4) pseudocoelom, (5) intestine.",
+     "நெமட்டோடாவின் குறுக்கு வெட்டு (படத்திட்டம்): (1) கியூட்டிக்கிள், (2) நான்கு கோடுகளில் தடித்த மேலணி, "
+     "(3) நீள்வாட்டுத் தசைச் செல் (வட்டத் தசை இல்லை), (4) போலி உடற்குழி, (5) குடல்."),
+    ("NematodeAdaptationsBookChapter.kt", "transmission", None, "nematode-routes",
+     "Three routes of transmission of human nematodes (schematic): (A) Ascaris, (B) hookworm, (C) Wuchereria. "
+     "Columns: (1) the infected person, (2) the stage that leaves the host (egg, egg, or microfilariae in blood taken up by a mosquito), "
+     "(3) development in the soil, as an embryonated egg or a free larva, or in the mosquito, "
+     "(4) the new host: the egg is swallowed (A), the larva bores through the skin (B), the mosquito bites (C).",
+     "மனித நெமட்டோடாக்களின் மூன்று பரவல் வழிகள் (படத்திட்டம்): (A) அஸ்காரிஸ், (B) கொக்கிப்புழு, (C) வுச்செரேரியா. "
+     "நெடுவரிசைகள்: (1) தொற்றுற்றவர், (2) புரவலரை விட்டு வெளியேறும் நிலை (முட்டை, முட்டை, அல்லது கொசு உறிஞ்சும் இரத்த மைக்ரோஃபைலேரியா), "
+     "(3) மண்ணில் கரு வளர்ந்த முட்டையாக அல்லது தனிவாழ் லார்வாவாக, அல்லது கொசுவில் வளர்ச்சி, "
+     "(4) புதிய புரவலர்: முட்டை விழுங்கப்படுகிறது (A), லார்வா தோலைத் துளைக்கிறது (B), கொசு கடிக்கிறது (C)."),
+    ("MolluscaBookChapter.kt", "mantle", None, "mollusc-plan",
+     "A generalised mollusc in side view, head to the left (schematic; not a particular species): (1) shell, (2) mantle, "
+     "(3) mantle cavity, (4) ctenidium, (5) visceral mass, (6) foot, (7) head with eye and tentacles, (8) mouth.",
+     "பொதுவான மெல்லுடலியின் பக்கக் காட்சி, தலை இடப்புறம் (படத்திட்டம்; குறிப்பிட்ட இனம் அல்ல): (1) ஓடு, (2) மேண்டில், "
+     "(3) மேண்டில் குழி, (4) டீனிடியம், (5) உள்ளுறுப்புத் திரள், (6) பாதம், (7) கண், உணர்கொம்புகளுடன் தலை, (8) வாய்."),
+    ("EchinodermataBookChapter.kt", "symmetry", None, "echino-symmetry",
+     "Pentaradial adult and bilateral larva (schematic): (A) a sea star from the aboral side, (B) the same from the oral side, "
+     "(C) a bilateral larva. (1) central disc, (2) arm, (3) madreporite, (4) mouth, (5) tube feet along an ambulacral groove, "
+     "(6) ciliated band, (7) the single plane of symmetry, shown dashed.",
+     "ஐந்தாரச் சமச்சீருடைய முதிர்ந்த உயிரியும் இருபக்கச் சமச்சீருடைய லார்வாவும் (படத்திட்டம்): (A) கடல் நட்சத்திரம், வாய் எதிர்ப் பக்கக் காட்சி, "
+     "(B) அதே, வாய்ப் பக்கக் காட்சி, (C) இருபக்கச் சமச்சீர் லார்வா. (1) மைய வட்டு, (2) கை, (3) மேட்ரிபோரைட், (4) வாய், "
+     "(5) அம்புலாக்ரல் பள்ளத்தில் உள்ள குழாய்க் கால்கள், (6) குறுஇழைப் பட்டை, (7) ஒரே சமச்சீர்த் தளம் (புள்ளிக்கோடு)."),
+    ("LocomotionBookChapter.kt", "cilia", None, "cilium-stroke",
+     "Ciliary beat (schematic; time runs from pale to dark). (A) Effective stroke: the cilium is stiff and sweeps through water. "
+     "(B) Recovery stroke: it bends and rolls back close to the surface. (C) Neighbouring cilia beat slightly out of step, "
+     "which produces a metachronal wave. (1) base of the cilium at the cell surface, (2) cilium, "
+     "(3) direction of the effective stroke, (4) direction of the recovery stroke, (5) direction of the wave.",
+     "குறுஇழை அசைவு (படத்திட்டம்; வெளிர் நிறத்திலிருந்து கருமைக்கு நேரம் செல்கிறது). (A) செயல்திறன் அடி: குறுஇழை விறைத்து நீரைத் துடுப்பிடுகிறது. "
+     "(B) மீட்பு அடி: வளைந்து மேற்பரப்புக்கு அருகில் திரும்புகிறது. (C) அடுத்தடுத்த குறுஇழைகள் சற்றே முன்பின்னாக அசைவதால் "
+     "மெட்டாக்ரோனல் அலை உருவாகிறது. (1) செல் மேற்பரப்பில் குறுஇழையின் அடி, (2) குறுஇழை, "
+     "(3) செயல்திறன் அடியின் திசை, (4) மீட்பு அடியின் திசை, (5) அலையின் திசை."),
+    ("CoralsBookChapter.kt", "polyp", None, "coral-polyp",
+     "A stony-coral polyp in its skeletal cup, in section (schematic): (1) tentacle, (2) mouth on a short pharynx, "
+     "(3) body wall, (4) gastrovascular cavity, (5) skeletal cup (calyx), (6) septum, a skeletal ridge, "
+     "(7) zooxanthellae in the tissue.",
+     "கல் பவளத்தின் பாலிப், எலும்புக்கூட்டுக் கிண்ணத்துக்குள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) உணர்நீட்சி, (2) குறுகிய தொண்டையின் மேல் வாய், "
+     "(3) உடற்சுவர், (4) இரைப்பை-நாளக் குழி, (5) எலும்புக்கூட்டுக் கிண்ணம் (கேலிக்ஸ்), (6) செப்டம், எலும்புக்கூட்டு முகடு, "
+     "(7) திசுவிலுள்ள சூக்சாந்தெல்லா."),
+    ("AnnelidaBookChapter.kt", "body-wall", None, "annelid-section",
+     "Transverse section through the trunk of an annelid, dorsal side up (schematic): (1) cuticle, (2) epidermis, "
+     "(3) circular muscle, (4) longitudinal muscle, (5) coelom, (6) gut, (7) dorsal blood vessel, (8) ventral blood vessel, "
+     "(9) ventral nerve cord, (10) nephridium, cut across its tubule.",
+     "அனெலிடாவின் உடற்பகுதி குறுக்கு வெட்டு, முதுகுப்புறம் மேலே (படத்திட்டம்): (1) கியூட்டிக்கிள், (2) மேலணி, "
+     "(3) வட்டத் தசை, (4) நீள்வாட்டுத் தசை, (5) உடற்குழி, (6) குடல், (7) முதுகுப்புற இரத்த நாளம், (8) வயிற்றுப்புற இரத்த நாளம், "
+     "(9) வயிற்றுப்புற நரம்புத் தண்டு, (10) நெஃப்ரிடியம், குழல் குறுக்காக வெட்டப்பட்டது."),
+    ("PlatyhelminthesBookChapter.kt", "flame-cells", None, "flame-cell",
+     "A flame cell and its duct in the parenchyma of a flatworm (schematic): (1) flame cell, a hollow cell, "
+     "(2) tuft of beating cilia in its cavity, (3) nucleus, (4) excretory capillary, (5) collecting duct, "
+     "(6) excretory pore, (7) parenchyma.",
+     "தட்டைப்புழுவின் பாரங்கைமாவிலுள்ள சுடர்ச் செல்லும் அதன் நாளமும் (படத்திட்டம்): (1) சுடர்ச் செல், உள்ளீடற்ற செல், "
+     "(2) அதன் குழிக்குள் அசையும் குறுஇழைக் கற்றை, (3) உட்கரு, (4) கழிவு நுண்குழல், (5) சேகரிப்பு நாளம், "
+     "(6) கழிவுத் துளை, (7) பாரங்கைமா."),
+    ("MyriapodaBookChapter.kt", "compare", None, "myriapod-sections",
+     "Transverse sections of the two groups (schematic): (A) centipede, flattened from above downwards, with one pair of legs "
+     "on each segment; (B) millipede, cylindrical, in a section through a diplosegment with two pairs of legs. "
+     "(1) dorsal plate, (2) gut, (3) leg, (4) ventral nerve cord.",
+     "இரு குழுக்களின் குறுக்கு வெட்டுகள் (படத்திட்டம்): (A) நூறுகாலி, மேலிருந்து கீழாகத் தட்டையானது, ஒவ்வொரு கண்டத்திலும் ஓர் இணைக் கால்; "
+     "(B) ஆயிரங்காலி, உருளை வடிவம், இரட்டைக் கண்டத்தின் வழி வெட்டில் இரண்டு இணைக் கால்கள். "
+     "(1) முதுகுத் தகடு, (2) குடல், (3) கால், (4) வயிற்றுப்புற நரம்புத் தண்டு."),
+    ("IntroInvertebrataBookChapter.kt", "plans", None, "symmetry-types",
+     "Three kinds of body symmetry (schematic): (A) asymmetrical, with no plane that divides the body into equal halves; "
+     "(B) radial, in which any plane through the central axis does so; (C) bilateral, in which only one plane does, "
+     "separating left from right. (1) central axis, (2) plane of symmetry, dashed, (3) anterior end, (4) posterior end.",
+     "மூன்று வகை உடல் சமச்சீர் (படத்திட்டம்): (A) சமச்சீரற்றது; உடலைச் சம பாதிகளாகப் பிரிக்கும் தளம் இல்லை; "
+     "(B) ஆரச் சமச்சீர்; மையஅச்சின் வழியாகச் செல்லும் எந்தத் தளமும் பிரிக்கும்; (C) இருபக்கச் சமச்சீர்; "
+     "இடப்புறத்தையும் வலப்புறத்தையும் பிரிக்கும் ஒரே ஒரு தளம் மட்டும் உள்ளது. "
+     "(1) மைய அச்சு, (2) சமச்சீர்த் தளம் (புள்ளிக்கோடு), (3) முன் முனை, (4) பின் முனை."),
+    ("ProtozoaBookChapter.kt", "classes", None, "protozoan-groups",
+     "Organelles of locomotion in four traditional groups (schematic): (A) a cell moving by pseudopodia, "
+     "(B) a flagellate with one flagellum, (C) a ciliate covered with cilia, (D) a sporozoan cell, drawn without the "
+     "organelles of the other three. (1) pseudopodium, (2) nucleus, (3) flagellum, (4) cilia.",
+     "நான்கு மரபுவழிக் குழுக்களின் இயக்க நுண்ணுறுப்புகள் (படத்திட்டம்): (A) போலிக்கால்களால் நகரும் செல், "
+     "(B) ஒரு கசையிழையுடைய கசையிழையுயிரி, (C) குறுஇழைகள் மூடிய சிலியேட், (D) மற்ற மூன்றின் நுண்ணுறுப்புகள் இல்லாமல் வரையப்பட்ட ஸ்போரோசோவா செல். "
+     "(1) போலிக்கால், (2) உட்கரு, (3) கசையிழை, (4) குறுஇழைகள்."),
+    ("EchinoAffinitiesBookChapter.kt", "deuterostome", None, "blastopore-fate",
+     "The fate of the blastopore (schematic). The red spot is the blastopore and the opening it becomes; "
+     "the blue spot is the second opening that forms later. (A) Protostome: the blastopore becomes the mouth. "
+     "(B) Deuterostome, as in the echinoderms: the blastopore becomes the anus. "
+     "(1) blastopore, (2) archenteron, (3) mouth, (4) anus.",
+     "பிளாஸ்டோபோரின் விதி (படத்திட்டம்). சிவப்புப் புள்ளி பிளாஸ்டோபோரும் அது ஆகும் துளையும்; "
+     "நீலப் புள்ளி பின்னர் உருவாகும் இரண்டாவது துளை. (A) புரோட்டோஸ்டோம்: பிளாஸ்டோபோர் வாயாகிறது. "
+     "(B) டியூட்டிரோஸ்டோம், எக்கைனோடெர்ம்களில் போல: பிளாஸ்டோபோர் மலவாயாகிறது. "
+     "(1) பிளாஸ்டோபோர், (2) ஆர்கென்டிரான், (3) வாய், (4) மலவாய்."),
+    ("PoriferaBookChapter.kt", "cells", None, "sponge-cells",
+     "Cells of a sponge wall in section (schematic): (1) pinacocyte, a flat cell of the outer layer, "
+     "(2) mesohyl, the jelly-like layer between the outer cells and the choanocytes, (3) archaeocyte, an amoeboid cell in the mesohyl, "
+     "(4) choanocyte, with its nucleus, (5) collar of microvilli, (6) flagellum.",
+     "கடற்பஞ்சுச் சுவரின் செல்கள், வெட்டுத்தோற்றம் (படத்திட்டம்): (1) பினாகோசைட், வெளி அடுக்கின் தட்டையான செல், "
+     "(2) மீசோஹைல், வெளிச் செல்களுக்கும் காலர் செல்களுக்கும் இடையிலான பசை போன்ற அடுக்கு, (3) ஆர்க்கியோசைட், மீசோஹைலிலுள்ள அமீபா போன்ற செல், "
+     "(4) உட்கருவுடன் கூடிய காலர் செல் (கோனோசைட்), (5) நுண்விரல்களால் ஆன காலர், (6) கசையிழை."),
+    ("InsectaGeneralBookChapter.kt", "body", "The head", "insect-tagmata",
+     "A generalised insect in side view: (1) head, (2) thorax, (3) abdomen, (4) antenna, "
+     "(5) compound eye, (6) forewing, (7) hindwing, (8) leg, (9) spiracle.",
+     "பொதுவான பூச்சியின் பக்கக் காட்சி: (1) தலை, (2) மார்பு, (3) வயிறு, (4) உணர்கொம்பு, "
+     "(5) கூட்டுக்கண், (6) முன் இறக்கை, (7) பின் இறக்கை, (8) கால், (9) சுவாசத்துளை."),
+    ("InsectaGeneralBookChapter.kt", "development", None, "metamorphosis",
+     "(A) Incomplete metamorphosis: (1) egg, (2) young nymph, (3) older nymph with wing pads, (4) adult. "
+     "(B) Complete metamorphosis: (1) egg, (2) larva, (3) pupa, (4) adult.",
+     "(A) முழுமையற்ற உருமாற்றம்: (1) முட்டை, (2) இளம் நிம்ஃப், (3) இறக்கை அரும்புகளுடன் முதிர்ந்த நிம்ஃப், (4) முதிர்ந்த பூச்சி. "
+     "(B) முழு உருமாற்றம்: (1) முட்டை, (2) புழு (லார்வா), (3) கூட்டுப்புழு (பியூபா), (4) முதிர்ந்த பூச்சி."),
+    ("PestsIpmBookChapter.kt", "ipm", None, "parasitoid-cycle",
+     "Life cycle of a parasitoid wasp on a caterpillar host: (1) the female lays an egg in or on the host, "
+     "(2) the parasitoid larva feeds inside the living host, (3) the dying host with parasitoid pupae, "
+     "(4) the adult parasitoid emerges.",
+     "புழுவைப் புரவலராகக் கொண்ட ஒட்டுண்ணி குளவியின் வாழ்க்கைச் சுழற்சி: (1) பெண் குளவி புரவலரின் மேலோ உள்ளோ முட்டையிடுகிறது, "
+     "(2) ஒட்டுண்ணி இளவுயிரி உயிருள்ள புரவலரின் உள்ளே உண்கிறது, (3) இறக்கும் புரவலரும் ஒட்டுண்ணிக் கூட்டுப்புழுக்களும், "
+     "(4) முதிர்ந்த ஒட்டுண்ணி வெளிவருகிறது."),
+    ("MedicalInsectsBookChapter.kt", "ways", None, "vector-cycle",
+     "How a biting insect carries a parasite between people (schematic): (1) infected person, "
+     "(2) the insect takes a blood meal and picks up the parasite, (3) the parasite develops in the insect, "
+     "(4) the infective insect bites a new person, (5) disease may develop in the new host.",
+     "கடிக்கும் பூச்சி ஒட்டுண்ணியை மனிதர்களிடையே கடத்தும் விதம் (படத்திட்டம்): (1) நோயுற்றவர், "
+     "(2) பூச்சி இரத்தம் உறிஞ்சி ஒட்டுண்ணியைப் பெறுகிறது, (3) ஒட்டுண்ணி பூச்சியினுள் வளர்கிறது, "
+     "(4) தொற்றும் நிலையிலுள்ள பூச்சி புதியவரைக் கடிக்கிறது, (5) புதிய புரவலருக்கு நோய் உருவாகலாம்."),
+    ("ProtozoaEconomicsBookChapter.kt", "malaria", None, "vector-cycle",
+     "Transmission of a vector-borne protozoan such as the malaria parasite (schematic): (1) infected person, "
+     "(2) the mosquito takes a blood meal and picks up the parasite, (3) the parasite develops in the mosquito, "
+     "(4) the infective mosquito bites a new person, (5) disease may develop in the new host.",
+     "மலேரியா ஒட்டுண்ணி போன்ற பூச்சி மூலம் பரவும் புரோட்டோசோவாவின் பரவல் (படத்திட்டம்): (1) நோயுற்றவர், "
+     "(2) கொசு இரத்தம் உறிஞ்சி ஒட்டுண்ணியைப் பெறுகிறது, (3) ஒட்டுண்ணி கொசுவினுள் வளர்கிறது, "
+     "(4) தொற்றும் நிலையிலுள்ள கொசு புதியவரைக் கடிக்கிறது, (5) புதிய புரவலருக்கு நோய் உருவாகலாம்."),
+    ("LeechBookChapter.kt", "external", None, "leech",
+     "External features of a leech, schematic: (1) anterior sucker with the mouth, (2) eyes, "
+     "(3) dorsal surface, (4) clitellum, (5) annuli, (6) posterior sucker.",
+     "அட்டையின் வெளிப்புற அம்சங்கள் (படத்திட்டம்): (1) வாயுடன் கூடிய முன் உறிஞ்சி, (2) கண்கள், "
+     "(3) முதுகுப் பரப்பு, (4) கிளைட்டெல்லம், (5) வளையங்கள், (6) பின் உறிஞ்சி."),
+    ("AnnelidExcretionReproductionBookChapter.kt", "asexual", "Fission and fragmentation", "polychaete-asexual",
+     "Asexual reproduction in polychaetes (schematic; green = head region, pink = tail region): "
+     "(A) a worm breaks into pieces and each regenerates the missing ends; "
+     "(B) a new head forms before the worm separates; "
+     "(C) a gamete-bearing stolon with its own head forms behind the parent and separates.",
+     "பாலிகீட்டாக்களின் பாலிலா இனப்பெருக்கம் (படத்திட்டம்; பச்சை = தலைப் பகுதி, இளஞ்சிவப்பு = வால் பகுதி): "
+     "(A) புழு துண்டுகளாக உடைந்து ஒவ்வொன்றும் இல்லாத முனைகளை மீளுருவாக்குகிறது; "
+     "(B) புழு பிரியும் முன்பே புதிய தலை உருவாகிறது; "
+     "(C) தாய்ப்புழுவின் பின்னால் சொந்தத் தலையுடன் கூடிய, இனச்செல்கள் தாங்கிய ஸ்டோலான் உருவாகிப் பிரிகிறது."),
+    ("AureliaMesenteriesBookChapter.kt", "life", None, "aurelia-cycle",
+     "Life cycle of Aurelia (schematic): (1) adult medusa, (2) planula larva, (3) scyphistoma attached to a surface, "
+     "(4) strobila, (5) ephyra, (6) the ephyra grows into the adult medusa.",
+     "ஆரீலியாவின் வாழ்க்கைச் சுழற்சி (படத்திட்டம்): (1) முதிர்ந்த மெடூசா, (2) பிளானுலா இளவுயிரி, "
+     "(3) பரப்பில் ஒட்டிய ஸ்கைஃபிஸ்டோமா, (4) ஸ்ட்ரோபிலா, (5) எஃபைரா, (6) எஃபைரா முதிர்ந்த மெடூசாவாக வளர்கிறது."),
+    ("AureliaMesenteriesBookChapter.kt", "mesenteries", "Complete and incomplete mesenteries", "anemone-section",
+     "Transverse section of a sea anemone through the pharynx (schematic): (1) body wall, (2) pharynx, "
+     "(3) siphonoglyph, (4) complete mesentery reaching the pharynx, (5) incomplete mesentery that stops short of it, "
+     "(6) free edge of a mesentery, (7) directive mesentery.",
+     "கடல் அனிமோனின் தொண்டை வழியான குறுக்கு வெட்டு (படத்திட்டம்): (1) உடற்சுவர், (2) தொண்டை, "
+     "(3) சைஃபனோகிளிஃப், (4) தொண்டையை எட்டும் முழுமையான மெசென்டரி, (5) தொண்டையை எட்டாத முழுமையற்ற மெசென்டரி, "
+     "(6) மெசென்டரியின் தனி விளிம்பு, (7) வழிகாட்டி மெசென்டரி."),
+    ("EchinodermClassesBookChapter.kt", "crinoids", "Structure", "crinoid",
+     "A stalked crinoid (schematic): (1) calyx, (2) arm, (3) pinnule, (4) oral surface with the mouth, "
+     "(5) stalk made of columnals, (6) cirrus, (7) holdfast.",
+     "காம்புடைய கிரைனாய்டு (படத்திட்டம்): (1) கேலிக்ஸ், (2) கை, (3) பின்னியூல், (4) வாய் உள்ள வாய்ப்புறப் பரப்பு, "
+     "(5) நெடுவரிசைத் துண்டுகளால் ஆன காம்பு, (6) சிர்ரஸ், (7) பற்றுக்கால்."),
+    ("TapewormHostParasiteBookChapter.kt", "structure", "Body regions", "taenia-parts",
+     "Body plan of Taenia solium (schematic): (1) scolex, (2) sucker, (3) rostellum with hooks, (4) neck, "
+     "(5) immature proglottids, (6) mature proglottids, (7) gravid proglottids; "
+     "enlarged: (8) branched uterus of a gravid proglottid, (9) egg.",
+     "Taenia solium-ன் உடலமைப்பு (படத்திட்டம்): (1) ஸ்கொலெக்ஸ், (2) உறிஞ்சி, (3) கொக்கிகளுடன் கூடிய ரோஸ்டெல்லம், (4) கழுத்து, "
+     "(5) முதிராத புரோகிளாட்டிட்டுகள், (6) முதிர்ந்த புரோகிளாட்டிட்டுகள், (7) முட்டை நிறைந்த புரோகிளாட்டிட்டுகள்; "
+     "பெரிதாக்கியவை: (8) முட்டை நிறைந்த புரோகிளாட்டிட்டின் கிளைத்த கருப்பை, (9) முட்டை."),
+    ("TapewormHostParasiteBookChapter.kt", "lifecycle", None, "taenia-cycle",
+     "Life cycle of Taenia solium (schematic): (1) person with the adult worm, (2) eggs passed with the faeces, "
+     "(3) the pig swallows the eggs, (4) oncospheres reach the muscles, (5) cysticerci develop in the pork, "
+     "(6) a person eats undercooked pork, (7) the adult worm develops in the intestine, "
+     "(8) dashed: a person who swallows the eggs may develop cysticercosis.",
+     "Taenia solium-ன் வாழ்க்கைச் சுழற்சி (படத்திட்டம்): (1) முதிர்ந்த புழுவுடன் உள்ள மனிதர், (2) மலத்துடன் வெளியேறும் முட்டைகள், "
+     "(3) பன்றி முட்டைகளை விழுங்குகிறது, (4) ஆன்கோஸ்ஃபியர்கள் தசைகளை அடைகின்றன, (5) பன்றி இறைச்சியில் சிஸ்டிசெர்கஸ் உருவாகிறது, "
+     "(6) நன்கு வேகாத பன்றி இறைச்சியை மனிதர் உண்கிறார், (7) குடலில் முதிர்ந்த புழு வளர்கிறது, "
+     "(8) புள்ளிக்கோடு: முட்டைகளை விழுங்கும் மனிதருக்குச் சிஸ்டிசெர்கோசிஸ் உண்டாகலாம்."),
+    # ---- stage 2 (2026-10-26)
+    ("ArthropodaBookChapter.kt", "exoskeleton", None, "cuticle-layers",
+     "Arthropod cuticle in section (schematic): (1) thin waxy outer layer, (2) thick layers containing chitin and protein, "
+     "(3) epidermis, which secretes the cuticle, (4) thin, flexible cuticle at a joint.",
+     "ஆர்த்ரோபோட் புறத்தோலின் வெட்டுத்தோற்றம் (படத்திட்டம்): (1) மெல்லிய மெழுகு வெளியடுக்கு, (2) கைட்டினும் புரதமும் கொண்ட தடித்த அடுக்குகள், "
+     "(3) புறத்தோலைச் சுரக்கும் மேற்றோல், (4) மூட்டில் உள்ள மெல்லிய, நெகிழ்வான புறத்தோல்."),
+    ("ArthropodaBookChapter.kt", "comparison", None, "limb-lever",
+     "Two ways of moving (schematic). A, an arthropod limb as a lever: (1) rigid cuticle of a segment, (2) flexible joint, "
+     "(3) muscle acting across the joint. B, an annelid segment: (4) muscle wall acting on (5) the fluid-filled cavity.",
+     "இயங்கும் இரு முறைகள் (படத்திட்டம்). A, நெம்புகோலாகச் செயல்படும் ஆர்த்ரோபோட் உறுப்பு: (1) ஒரு கண்டத்தின் விறைப்பான புறத்தோல், "
+     "(2) நெகிழ்வான மூட்டு, (3) மூட்டின் குறுக்கே செயல்படும் தசை. B, அனெலிடா கண்டம்: (4) தசைச் சுவர், (5) திரவம் நிறைந்த குழி."),
+    ("CephalopodsBookChapter.kt", "circulation", None, "cephalopod-circulation",
+     "Closed circulation of a coleoid cephalopod (schematic; arrows show the direction of flow, and colour does not code "
+     "oxygen content): (1) systemic heart, (2) branchial hearts, one at the base of each gill, (3) gills, (4) body tissues, "
+     "(5) vessels returning blood from the body, (6) arteries leaving the systemic heart.",
+     "கோலியாய்டு தலைக்காலி மெல்லுடலியின் மூடிய இரத்த ஓட்டம் (படத்திட்டம்; அம்புகள் ஓட்டத்தின் திசையைக் காட்டுகின்றன, நிறம் ஆக்சிஜன் அளவைக் குறிக்காது): "
+     "(1) உடல் இதயம், (2) செவுள் இதயங்கள், ஒவ்வொரு செவுளின் அடியிலும் ஒன்று, (3) செவுள்கள், (4) உடல் திசுக்கள், "
+     "(5) உடலிலிருந்து இரத்தத்தைத் திரும்பக் கொண்டுவரும் நாளங்கள், (6) உடல் இதயத்தை விட்டுச் செல்லும் தமனிகள்."),
+    ("CockroachBookChapter.kt", "digestive", None, "cockroach-gut",
+     "Alimentary canal of the cockroach, drawn as a straight tube (schematic; a heavy outline marks the cuticle-lined foregut and hindgut): "
+     "(1) mouth and pharynx, (2) oesophagus, (3) crop, (4) gizzard, (5) midgut, (6) hepatic caeca, (7) ileum, (8) colon, (9) rectum, "
+     "(10) salivary glands, (11) common salivary duct opening at the base of the labium.",
+     "கரப்பான் பூச்சியின் உணவுக்குழல், நேர்க்குழலாக வரையப்பட்டது (படத்திட்டம்; தடித்த வெளிக்கோடு புறத்தோல் உள்ள முன்குடலையும் பின்குடலையும் குறிக்கிறது): "
+     "(1) வாயும் தொண்டையும், (2) உணவுக்குழாய், (3) கிராப், (4) கிசார்டு, (5) நடுக்குடல், (6) கல்லீரல் சீக்கங்கள், (7) இலியம், (8) பெருங்குடல், (9) மலவாய்க்குடல், "
+     "(10) உமிழ்நீர்ச் சுரப்பிகள், (11) லேபியத்தின் அடியில் திறக்கும் பொது உமிழ்நீர்க் குழாய்."),
+    ("NematodeParasitesBookChapter.kt", "wuchereria", None, "wuchereria-cycle",
+     "Life cycle of Wuchereria bancrofti (schematic): (1) adult worms in the lymphatic vessels of man, "
+     "(2) microfilariae in the blood, taken up by a female mosquito, (3) in the mosquito the larvae moult twice to the infective third stage, "
+     "(4) the larvae move to the proboscis and enter the skin at a later bite, (5) in man they moult twice more and mature into adults.",
+     "Wuchereria bancrofti-ன் வாழ்க்கைச் சுழற்சி (படத்திட்டம்): (1) மனிதரின் நிணநீர் நாளங்களில் உள்ள முதிர்ந்த புழுக்கள், "
+     "(2) இரத்தத்தில் உள்ள மைக்ரோஃபைலேரியாக்கள், பெண் கொசு அவற்றை உறிஞ்சுகிறது, (3) கொசுவில் லார்வாக்கள் இரு முறை தோலுரித்து தொற்றும் மூன்றாம் நிலையை அடைகின்றன, "
+     "(4) லார்வாக்கள் துளைக்குழலுக்குச் சென்று பின்னர் கடிக்கும்போது தோலுக்குள் நுழைகின்றன, (5) மனிதரில் மேலும் இரு முறை தோலுரித்து முதிர்ந்த புழுக்களாகின்றன."),
+    ("PlatyAdaptationsBookChapter.kt", "larvae", None, "fluke-larvae",
+     "Larval series of a fluke (schematic): (1) miracidium, which finds and enters the snail, "
+     "(2) sporocyst and (3) rediae, which multiply the parasite asexually (curved arrow), (4) cercaria with a tail, which leaves the snail, "
+     "(5) metacercaria, encysted on a surface, (6) final host, infected by the metacercaria, (7) the snail host (heavy outline).",
+     "தட்டைப்புழு (ஃப்ளூக்) லார்வா வரிசை (படத்திட்டம்): (1) நத்தையைக் கண்டறிந்து நுழையும் மிராசிடியம், "
+     "(2) ஸ்போரோசிஸ்ட் மற்றும் (3) ரெடியாக்கள், இவை பாலிலா முறையில் ஒட்டுண்ணியைப் பெருக்குகின்றன (வளைந்த அம்பு), (4) வாலுடன் நத்தையை விட்டு வெளியேறும் செர்க்காரியா, "
+     "(5) ஒரு பரப்பில் கூடு கட்டிய மெட்டாசெர்க்காரியா, (6) மெட்டாசெர்க்காரியாவால் தொற்றப்படும் இறுதி விருந்தோம்பி, (7) நத்தை விருந்தோம்பி (தடித்த வெளிக்கோடு)."),
+    ("PoriferaReproductionBookChapter.kt", "life-cycle", None, "sponge-sexual-cycle",
+     "Sexual cycle of a calcareous sponge (schematic): (1) adult with eggs and sperm in the mesohyl, (2) sperm leave by the osculum, "
+     "(3) a carrier cell brings a sperm to a retained egg, which is fertilised, (4) the zygote cleaves inside the parent, "
+     "(5) the amphiblastula leaves and swims, (6) it settles and undergoes inversion, (7) the young sponge.",
+     "சுண்ணாம்புக் கடற்பஞ்சின் பாலினச் சுழற்சி (படத்திட்டம்): (1) மீசோஹைலில் முட்டைகளும் விந்தணுக்களும் உள்ள முதிர்ந்த பஞ்சு, (2) விந்தணுக்கள் ஆஸ்குலம் வழியாக வெளியேறுகின்றன, "
+     "(3) கடத்தி செல் ஒரு விந்தணுவை நிறுத்தி வைக்கப்பட்ட முட்டையிடம் கொண்டுவருகிறது, கருவுறுதல் நிகழ்கிறது, (4) சைகோட் தாய்ப்பஞ்சுக்குள் பிளவுறுகிறது, "
+     "(5) ஆம்ஃபிபிளாஸ்டுலா வெளியேறி நீந்துகிறது, (6) அது படிந்து தலைகீழாக மாறுகிறது (இன்வெர்ஷன்), (7) இளம் பஞ்சு."),
+    ("NutritionBookChapter.kt", "digestion-detail", None, "food-vacuole",
+     "History of a food vacuole in Paramecium (schematic and simplified; pale pink is the acid phase and blue the alkaline phase): "
+     "(1) oral groove, (2) cytopharynx, where the vacuole forms, (3) acid phase, (4) alkaline phase with digestive enzymes, "
+     "(5) smaller vacuole after absorption, (6) cytoproct, where the remains are egested, (7) lysosomes bringing enzymes to the vacuole.",
+     "பாராமீசியத்தில் உணவு நுண்குமிழின் வரலாறு (படத்திட்டம், எளிமைப்படுத்தப்பட்டது; வெளிர் இளஞ்சிவப்பு அமிலநிலை, நீலம் காரநிலை): "
+     "(1) வாய்ப்பள்ளம், (2) நுண்குமிழ் உருவாகும் சைட்டோஃபாரிங்க்ஸ், (3) அமிலநிலை, (4) செரிமான நொதிகளுடன் காரநிலை, "
+     "(5) உறிஞ்சலுக்குப் பிறகு சிறிதான நுண்குமிழ், (6) எச்சம் வெளியேற்றப்படும் சைட்டோபுரோக்ட், (7) நுண்குமிழுக்கு நொதிகளைக் கொண்டுவரும் லைசோசோம்கள்."),
+    # ---- stage 3 (2026-10-26)
+    ("MinorArthropodsBookChapter.kt", "tardigrada", "Structure and habitat", "tardigrade",
+     "A tardigrade in dorsal view (schematic): (1) head, (2) stylets, (3) simple eyes, (4) trunk, with four segments, "
+     "(5) stubby unjointed leg ending in claws, four pairs, (6) pharynx, (7) midgut, "
+     "(8) Malpighian tubules at the junction of the midgut and hindgut.",
+     "நீர்க்கரடியின் முதுகுப்புறக் காட்சி (படத்திட்டம்): (1) தலை, (2) ஸ்டைலெட்டுகள், (3) எளிய கண்கள், (4) நான்கு கண்டங்களுடன் கூடிய உடற்பகுதி, "
+     "(5) நகங்களில் முடியும் குட்டையான மூட்டற்ற கால், நான்கு இணைகள், (6) தொண்டை, (7) நடுக்குடல், "
+     "(8) நடுக்குடலும் பின்குடலும் சேரும் இடத்தில் உள்ள மால்பீஜியன் குழல்கள்."),
+    ("MinorMolluscsBookChapter.kt", "scaphopoda", None, "scaphopod",
+     "A tusk shell buried head-down (schematic, in side view): (1) tubular shell, open at both ends, "
+     "(2) narrow posterior opening projecting above the surface, (3) pointed foot, (4) captacula, (5) head with a conical snout, "
+     "(6) surface of the sediment.",
+     "தலைகீழாகப் புதைந்துள்ள தந்தச்சிப்பி (படத்திட்டம், பக்கக் காட்சி): (1) இரு முனைகளும் திறந்த குழல் வடிவ ஓடு, "
+     "(2) படிவின் மேற்பரப்புக்கு மேல் நீட்டிக்கொண்டிருக்கும் குறுகிய பின்புறத் திறப்பு, (3) கூர்மையான பாதம், (4) கேப்டாகுலா இழைகள், (5) கூம்பு வடிவ மூக்குடன் உள்ள தலை, "
+     "(6) படிவின் மேற்பரப்பு."),
+    ("HouseholdInsectsBookChapter.kt", "termites", "The colony and its castes", "termite-castes",
+     "Castes of a termite colony (schematic, dorsal view, not to the same scale; the king is not drawn): "
+     "(1) queen, whose abdomen swells in some species, (2) worker, wingless, (3) soldier, with an enlarged head and jaws, "
+     "(4) alate, a winged reproductive.",
+     "கரையான் கூட்டத்தின் இனக்குழுக்கள் (படத்திட்டம், முதுகுப்புறக் காட்சி, ஒரே அளவுகோலில் இல்லை; ஆண் அரசன் வரையப்படவில்லை): "
+     "(1) அரசி, சில இனங்களில் இதன் வயிறு பெருக்கும், (2) வேலைக்காரப் பூச்சி, இறகற்றது, (3) போர்வீரன், பெரிய தலையும் தாடைகளும் உடையது, "
+     "(4) இறகுள்ள இனப்பெருக்கப் பூச்சி (அலேட்)."),
+    ("PollinatorsBookChapter.kt", "colony", None, "waggle-dance",
+     "The waggle dance (schematic). A, on the vertical comb: (1) waggle run, (2) return circuits, (3) angle of the run to (4) the vertical (up). "
+     "B, on the ground: (5) direction of the sun, (6) food source, (7) hive, (8) the same angle, measured from the direction of the sun. "
+     "The duration of the waggle run gives the distance.",
+     "ஆட்ட நடனம் (படத்திட்டம்). A, செங்குத்தான தேன்கூட்டுச் சட்டத்தில்: (1) ஆட்ட ஓட்டம், (2) திரும்பும் வட்டங்கள், (3) ஓட்டம் (4) செங்குத்துக் கோட்டுடன் (மேல்நோக்கி) அமைக்கும் கோணம். "
+     "B, தரையில்: (5) சூரியனின் திசை, (6) உணவு மூலம், (7) தேன்கூடு, (8) சூரியனின் திசையிலிருந்து அளக்கப்படும் அதே கோணம். "
+     "ஆட்ட ஓட்டத்தின் கால அளவு தூரத்தைத் தருகிறது."),
+    ("PolymorphismBookChapter.kt", "obelia", None, "obelia-colony",
+     "An Obelia colony (schematic): (1) hydranth, a feeding zooid with a mouth and tentacles, (2) gonangium, a reproductive zooid without mouth or tentacles, "
+     "(3) coenosarc, the living tissue joining the zooids (pink), (4) medusae, budded by the gonangia, (5) surface of attachment.",
+     "ஒபீலியா குடியிருப்பு (படத்திட்டம்): (1) ஹைட்ராந்த், வாயும் உணர்கொம்புகளும் உள்ள உணவூட்டும் சூயிட், (2) கோனாஞ்சியம், வாயும் உணர்கொம்புகளும் இல்லாத இனப்பெருக்கச் சூயிட், "
+     "(3) சூயிட்களை இணைக்கும் உயிர்த்திசுவான கோயினோசார்க் (இளஞ்சிவப்பு), (4) கோனாஞ்சியங்கள் மொட்டுவிடும் மெடியூசாக்கள், (5) ஒட்டியிருக்கும் மேற்பரப்பு."),
+    ("PeripatusBookChapter.kt", "external", None, "peripatus-external",
+     "Peripatus in dorsal view (schematic; the number of leg pairs varies with the species): (1) ringed antennae, (2) simple eyes at the bases of the antennae, "
+     "(3) oral papillae, (4) unjointed, conical walking legs, (5) inset: the tip of a leg with a pair of claws, "
+     "(6) the paired slime glands (dashed) inside the body.",
+     "பெரிபேட்டஸின் முதுகுப்புறக் காட்சி (படத்திட்டம்; கால் இணைகளின் எண்ணிக்கை இனத்திற்கேற்ப மாறும்): (1) வளையங்கள் கொண்ட உணர்கொம்புகள், (2) உணர்கொம்பு அடியில் உள்ள எளிய கண்கள், "
+     "(3) வாய்ப் பாப்பில்லாக்கள், (4) மூட்டற்ற கூம்பு வடிவ நடைக்கால்கள், (5) உள்படம்: இரு நகங்களுடன் கூடிய காலின் முனை, "
+     "(6) உடலுக்குள் இருக்கும் இணைச் சளிச்சுரப்பிகள் (புள்ளிக்கோடு)."),
+    ("CephalopodsBookChapter.kt", "movement", None, "squid-jet",
+     "Jet propulsion in a squid (schematic, side view): (1) muscular mantle, (2) fin, (3) funnel, which can be directed to steer, (4) arms, "
+     "(5) ink sac, (6) chromatophores in the skin, (7) jet of water expelled through the funnel, (8) direction of travel.",
+     "கணவாயில் ஜெட் உந்துவிசை (படத்திட்டம், பக்கக் காட்சி): (1) தசையுள்ள மேண்டில், (2) துடுப்பு, (3) திசைதிருப்பி இயக்கத்தை வழிநடத்தக்கூடிய புனல், (4) கைகள், "
+     "(5) மை பை, (6) தோலில் உள்ள நிறமி செல்கள், (7) புனல் வழியாக வெளியேற்றப்படும் நீர்த்தாரை, (8) இயக்கத்தின் திசை."),
+    # ---- stage 4 (2026-10-26)
+    ("ChelicerataBookChapter.kt", "position", "The body plan", "chelicerate-plan",
+     "Body plan of a chelicerate in dorsal view (schematic, based on a spider-like form; the pedipalps differ among the groups): "
+     "(1) prosoma, covered by a single carapace, (2) opisthosoma, (3) eyes, (4) chelicerae, first pair, (5) pedipalps, second pair, "
+     "(6) walking legs, four pairs, (7) tail spine, present in some forms.",
+     "செலிசெரேட்டின் உடல் அமைப்பு, முதுகுப்புறக் காட்சி (படத்திட்டம், சிலந்தி போன்ற வடிவை அடிப்படையாகக் கொண்டது; பெடிபால்ப்கள் குழுக்களுக்கிடையே வேறுபடும்): "
+     "(1) ஒரே கேரப்பேசால் மூடப்பட்ட புரோசோமா, (2) ஓபிஸ்தோசோமா, (3) கண்கள், (4) செலிசெராக்கள், முதல் இணை, (5) பெடிபால்ப்கள், இரண்டாம் இணை, "
+     "(6) நடைக்கால்கள், நான்கு இணைகள், (7) சில வடிவங்களில் உள்ள வால்முள்."),
+    ("CerealPestsBookChapter.kt", "stem-borer", "Life history", "stem-borer-cycle",
+     "Life cycle of the yellow stem borer (schematic): (1) egg mass near the tip of a rice leaf, covered with hairs from the female, "
+     "(2) larva boring in the stem, (3) pupa in a silken cocoon within the stem or stubble, (4) adult moth.",
+     "மஞ்சள் தண்டுத் துளைப்பானின் வாழ்க்கைச் சுழற்சி (படத்திட்டம்): (1) நெல் இலையின் நுனிக்கருகில் பெண் அந்துப்பூச்சியின் முடிகளால் மூடப்பட்ட முட்டைக் குவியல், "
+     "(2) தண்டைத் துளைக்கும் புழு, (3) தண்டிலோ அடிக்கட்டையிலோ பட்டு கூட்டில் உள்ள கூட்டுப்புழு, (4) முதிர்ந்த அந்துப்பூச்சி."),
+]
+
+
+def esc(s: str) -> str:
+    return s.replace("\\", "\\\\").replace('"', '\\"')
+
+
+def place(entry) -> str:
+    fname, sec, sub, slot, en, ta = entry
+    path = D / fname
+    lines = path.read_text(encoding="utf-8").split("\n")
+    tag = f'bfig("lib/{slot}"'
+    if any(tag in l for l in lines):
+        return f"{fname}: {slot} already placed"
+    start = next((i for i, l in enumerate(lines) if f'bsec("{sec}"' in l), None)
+    if start is None:
+        return f"{fname}: NO SECTION {sec}"
+    end = next((i for i in range(start + 1, len(lines)) if re.match(r'^\s*bsec\(', lines[i])), len(lines))
+    anchor = start
+    if sub:
+        anchor = next((i for i in range(start, end) if f'bsub("{sub}"' in lines[i]), None)
+        if anchor is None:
+            return f"{fname}: NO SUB {sub}"
+        sub_end = next((i for i in range(anchor + 1, end) if re.match(r'^\s*bsub\(', lines[i])), end)
+        end = sub_end
+        # the bsub header must end its line with a comma (blocks follow on later lines)
+        assert lines[anchor].rstrip().endswith(","), f"{fname}: bsub header not single-line"
+    else:
+        anchor = next(i for i in range(start, end) if "blocks = listOf(" in lines[i])
+    # insert before the first definition/table/note block after the anchor, else right after it
+    where = next((i for i in range(anchor + 1, end) if BLOCK_START.match(lines[i])), anchor + 1)
+    indent = IND.match(lines[anchor + 1]).group(1)
+    new = f'{indent}bfig("lib/{slot}",\n{indent}    "{esc(en)}",\n{indent}    "{esc(ta)}"),'
+    lines[where:where] = new.split("\n")
+    path.write_text("\n".join(lines), encoding="utf-8")
+    return f"{fname}: placed {slot}"
+
+
+if __name__ == "__main__":
+    for e in PLACEMENTS:
+        print(place(e))

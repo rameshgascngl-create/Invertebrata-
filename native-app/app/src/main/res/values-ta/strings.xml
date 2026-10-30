@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">INVERTEBRATA</string>
+    <string name="native_foundation_title">நேட்டிவ் மாற்றத்தின் அடித்தளம்</string>
+    <string name="native_foundation_body">சரிபார்க்கப்பட்ட மீட்பு உள்ளடக்கத்தை அடிப்படையாகக் கொண்டே கல்வி உள்ளடக்கம் மாற்றப்படும்.</string>
+    <string name="units">அலகுகள்</string>
+    <string name="assessment">மதிப்பீடு</string>
+    <string name="english">English</string>
+    <string name="tamil">தமிழ்</string>
+</resources>

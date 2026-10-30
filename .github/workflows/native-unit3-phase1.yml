@@ -1,0 +1,384 @@
+name: Unit III native teaching candidate - isolated engineering acceptance
+'on':
+  push:
+    branches:
+      - native/u3-type-studies-phase1-20261013
+      - native/u3-anatomy-atlas-candidate-20261013
+      - native/u3-cdc-complete-lifecycle-20261014
+      - native/u3-cdc-graphite-facsimile-20261014
+      - native/u3-zoom-pan-magnification-20261016
+      - native/u3-fullscreen-raster-inspection-20261016
+      - native/u33-unit3-source-pixel-review-20261016
+      - native/u34-unit3-independent-pixel-comparison-20261016
+      - native/u35-readable-review-and-report-export-20261016
+      - native/u36-unit3-original-pencil-scan-intake-20261016
+      - native/u36a-pencil-intake-font200-readability-20261016
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+# Do not run obsolete source commits concurrently: every candidate must have
+# unambiguous exact-commit XML, screenshot and debug APK evidence.
+concurrency:
+  group: unit3-native-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile-and-atlas:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Reuse verified Unit II raster image artifact from eab3d02e
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38327690043
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit2-built-webp-masters
+          path: native-app/app/src/main/assets/unit2
+      - name: Reuse exact historical Sycon bitmap from prior green Unit III APK
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38347398335
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-native-teaching-debug-qa-apk
+          path: /tmp/verified-unit3-apk
+      - name: Reuse SHA-sealed six-plate candidate asset artifact without web downloads
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38544505746
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-six-sourced-atlas-masters
+          path: native-app/app/src/main/assets/type_studies
+      - name: Prepare unmodified-source historical raster anatomy
+        run: |
+          python3 -m venv /tmp/u3art
+          /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
+          python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
+          /tmp/u3art/bin/python ci/build_unit3_anatomy_candidate_masters.py
+          /tmp/u3art/bin/python ci/build_unit3_graphite_facsimile.py
+          /tmp/u3art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          stems=[
+            "fasciola/external","fasciola/digestive-reproductive","fasciola/life-cycle",
+            "ascaris/male-female-external","ascaris/female-internal","ascaris/life-cycle"
+          ]
+          for stem in stems:
+              path=Path("native-app/app/src/main/assets/type_studies")/(stem+".png")
+              assert path.is_file(),path
+              with Image.open(path) as im: im.verify()
+              with Image.open(path) as im: assert im.size==(960,1280) and im.format=="PNG",path
+          source=Path("ci/build_unit3_anatomy_candidate_masters.py").read_text()
+          assert "def branched_gonad" not in source and "def worm(" not in source, "Procedural anatomy must never return"
+          assert "fetch_commons" in source and "source_sha256" in source, "Source-backed anatomy provenance required"
+          hotspots=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPlateHotspots.kt").read_text()
+          gallery=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPlateGallery.kt").read_text()
+          assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
+          assert "if (geometryVerified) detectTapGestures" in gallery
+          assert "if (geometryVerified && selected != null)" in gallery
+          fullscreen=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPlateFullscreenViewer.kt').read_text())
+          assert 'UnitIIIFullscreenRasterViewer(' in gallery
+          assert 'u3-open-fullscreen-' in gallery
+          assert 'Dialog(' in fullscreen and 'usePlatformDefaultWidth = false' in fullscreen
+          assert 'bitmap = bitmap' in fullscreen and 'ContentScale.Fit' in fullscreen
+          assert 'u3-fullscreen-academic-hold-' in fullscreen
+          assert 'detectTransformGestures' in fullscreen and 'coerceIn(1f, 4f)' in fullscreen
+          assert 'u3-fullscreen-real-bitmap-' in fullscreen
+          assert 'UnitIIIPlateHotspots' not in fullscreen
+          review=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPixelReviewDialog.kt').read_text())
+          model=(Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPixelReviewDraft.kt').read_text())
+          assert 'isNativeSourceAuditDebuggable(context.applicationInfo.flags)' in review
+          assert 'if (isReviewerBuild)' in gallery and 'UnitIIIPixelReviewDialog(' in gallery
+          assert 'NativeRasterCalibration.hit(' in review and 'NativeRasterCalibration.project(' in review
+          assert 'MessageDigest.getInstance("SHA-256")' in review
+          assert 'actual_apk_png_sha256' in review
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in model
+          assert 'sourceSha256.matches(Regex("[a-f0-9]{64}"))' in model
+          assert 'UnitIIIPlateHotspots.geometryApproved' not in review
+          comparator=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIEndpointAgreement.kt').read_text()
+          intake=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIDraftComparisonIntake.kt').read_text()
+          assert 'first.sourceSha256 == second.sourceSha256' in comparator
+          assert 'first.plateStem == second.plateStem' in comparator
+          assert 'first.imageWidth == second.imageWidth' in comparator
+          assert 'approvedForStudentHotspots: Boolean get() = false' in comparator
+          assert 'DRAFT_COMPARISON_NOT_ANATOMY_APPROVAL' in comparator
+          assert 'require(json.getString("approval_status") ==' in intake
+          assert 'MAX_JSON_BYTES = 65536' in intake
+          assert 'u34-compare-import-' in review and 'ActivityResultContracts.OpenDocument()' in review
+          assert 'UnitIIIEndpointAgreement.compare(current, second)' in review
+          assert 'u34-comparison-report-' in review
+          report_json=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIComparisonReportJson.kt').read_text()
+          assert 'independent_reviewers_verified' in report_json
+          assert 'student_image_hotspots_authorized' in report_json
+          assert '.put("student_image_hotspots_authorized", false)' in report_json
+          assert '.put("anatomical_accuracy_approved", false)' in report_json
+          assert 'source_png_sha256' in report_json and 'comparison_rows' in report_json
+          assert 'u35-full-safety-description-' in review
+          assert 'u35-export-comparison-' in review
+          u36store=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPencilScanCandidateStore.kt').read_text()
+          u36ui=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPencilScanIntake.kt').read_text()
+          for token in ('UnitIIIPlateCatalog.plates', 'u36_unit3_unverified_pencil_scan_candidates',
+                        'sourceOrientationAccepted', 'sourceSha256',
+                        'FileOutputStream(temp)', 'importDocument(',
+                        'UNVERIFIED_USER_SUPPLIED_SOURCE'):
+              assert token in u36store,token
+          assert 'NativePencilMasterStore.load(' not in u36store
+          assert 'NativePencilMasterStore.importBytes(' not in u36store
+          assert 'if (isReviewerBuild)' in gallery
+          assert 'UnitIIIPencilScanIntake(' in gallery
+          assert 'u36-open-source-intake-' in gallery
+          assert 'isNativeSourceAuditDebuggable' in u36ui
+          assert 'ActivityResultContracts.OpenDocument()' in u36ui
+          assert 'student_atlas_integration_authorized",false' in u36ui
+          assert 'u36-identity-not-approval-' in u36ui
+          assert 'showFullSafetyDisclosure' in u36ui
+          assert 'u36-full-disclosure-text-' in u36ui
+          assert 'heightIn(max=360.dp)' in u36ui
+          assert 'maxLines=2' in u36ui and 'UNVERIFIED • not student artwork' in u36ui
+          test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
+          assert 'capture("fasciola-pencil-intake-full-disclosure")' in test
+          assert 'capture("ascaris-pencil-intake-full-disclosure")' in test
+          assert 'capture("fasciola-pencil-intake-disclosure-scrolled")' in test
+          assert 'capture("ascaris-pencil-intake-disclosure-scrolled")' in test
+          assert 'fasciolaProvisionalImageIntakeNeverOverwritesBundledAnatomy' in test
+          assert 'tamilAscarisSourceIntakePendingWithoutUnverifiedImage' in test
+          assert 'capture("fasciola-pencil-intake-provisional")' in test
+          assert 'capture("ascaris-pencil-intake-pending")' in test
+
+          assert 'comparisonReportExport.launch(' in review
+          assert 'MAX_JSON_BYTES = 65536' in intake
+          assert 'u33-review-hold-' in review
+
+          comparison_tests=Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/data/UnitIIIEndpointAgreementTest.kt').read_text()
+          assert 'flagsEightPixelBoundaryMissesAndAbsentOrganEvidence' in comparison_tests
+          android=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
+          assert 'capture("fasciola-compare-ready")' in android
+          assert 'capture("ascaris-compare-ready")' in android
+          assert 'u33-review-export-' in review and 'evidence != null' in review
+          test=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIIITeachingTest.kt').read_text()
+          assert 'capture("fasciola-source-review-draft")' in test
+          assert 'capture("ascaris-source-review-draft")' in test
+
+          assert 'detectTransformGestures' in gallery
+          assert 'u3-zoom-level-' in gallery and 'u3-zoom-in-' in gallery
+          assert 'u3-zoom-reset-' in gallery and 'clipToBounds()' in gallery
+          assert 'coerceIn(1f, 4f)' in gallery
+          assert 'coordinateApprovedStems: Set<String> = emptySet()' in hotspots
+
+          import json
+          report=json.loads(Path("qa-evidence/unit3/source-backed-plate-manifest.json").read_text())
+          records=report["source_records"]
+          cdc=[item for item in records
+               if item["organism"]=="ascaris" and item["plate_id"]=="life-cycle"]
+          assert len(cdc)==1
+          assert cdc[0]["source_url"]=="https://upload.wikimedia.org/wikipedia/commons/c/ca/Ascariasis_LifeCycle_lg.jpg"
+          assert cdc[0]["life_cycle_completeness"]=="CDC_DPDx_COMPLETE_REFERENCE"
+          assert cdc[0]["source_illustration_only"] is True
+          assert cdc[0]["pencil_origin_verified"] is False
+          assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          assert cdc[0]["pencil_style_facsimile"] is True
+          assert cdc[0]["source_geometry_unchanged"] is True
+          assert cdc[0]["original_full_color_master_sha256"]=="6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0"
+          assert cdc[0]["tonal_style"]=="GRAPHITE_TONED_CDC_PIXEL_FACSIMILE"
+          assert all(item["asset_restoration"]=="PINNED_FIRSTPASS_GITHUB_ARTIFACT"
+                     for item in records)
+          assert len(records)==6
+          print("CDC_COMPLETE_ASCARIS_SOURCE_GUARD=PASS; ACADEMIC_REVIEW=PENDING")
+          print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
+          print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
+          PY
+          # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
+          # Sycon is SHA-pinned and recovered from a prior green APK; no network source download.
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
+      - name: Verify true bitmap artwork and no generated geometry fallback
+        run: |
+          /tmp/u3art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root=Path("native-app/app/src/main/assets/unit3")
+          for stem in ("fasciola_type","ascaris_type"):
+              file=root/(stem+".png")
+              assert file.is_file(), f"Missing original historical plate: {file}"
+              with Image.open(file) as im:
+                  im.verify()
+              with Image.open(file) as im:
+                  assert im.format=="PNG" and im.width>=1300 and im.height>=1600
+          text=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIITeachingChapter.kt").read_text()
+          assert "rememberRequiredRasterBitmap(stem)" in text
+          assert "u3-pencil-master-pending" in text
+          assert "u3-interactive-life-cycle" in text
+          sycon=Path("native-app/app/src/main/assets/unit2/sycon_historical.png")
+          assert sycon.is_file(), "Missing genuine scanned Sycon lesson reference"
+          ui2=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIITeachingChapter.kt").read_text()
+          assert "u2-pencil-lesson-section" in ui2 and "u2-interactive-atlas" in ui2, "Unit II static/interactive separation regressed"
+          print("UNIT_II_AND_III_RASTER_AND_SEPARATE_INTERACTION_GATE=PASS; ACADEMIC_REVIEW=PENDING")
+          PY
+      - name: Native Kotlin compile + immutable A5 + teaching tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Preserve provenance and scientific-review HOLD
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-source-provenance-review
+          path: qa-evidence/unit3/source-backed-plate-manifest.json
+          if-no-files-found: warn
+
+      - name: Archive the exact artwork used for QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-historical-raster-candidate
+          path: native-app/app/src/main/assets/unit3/*
+          if-no-files-found: error
+
+      - name: Archive six historically sourced anatomical raster masters
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-six-sourced-atlas-masters
+          path: native-app/app/src/main/assets/type_studies/**/*.png
+          if-no-files-found: error
+
+  android-ui:
+    needs: compile-and-atlas
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Reuse verified Unit II raster image artifact from eab3d02e
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38327690043
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit2-built-webp-masters
+          path: native-app/app/src/main/assets/unit2
+      - name: Reuse exact historical Sycon bitmap from prior green Unit III APK
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38347398335
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-native-teaching-debug-qa-apk
+          path: /tmp/verified-unit3-apk
+      - name: Reuse SHA-sealed six-plate candidate asset artifact without web downloads
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38544505746
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-six-sourced-atlas-masters
+          path: native-app/app/src/main/assets/type_studies
+      - name: Prepare identical offline anatomy source assets
+        run: |
+          python3 -m venv /tmp/u3art
+          /tmp/u3art/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/u3art/bin/python ci/build_unit3_historical_plates.py
+          python3 .github/scripts/restore-sycon-verified-apk-asset.py /tmp/verified-unit3-apk/app-debug.apk
+          /tmp/u3art/bin/python ci/build_unit3_anatomy_candidate_masters.py
+          /tmp/u3art/bin/python ci/build_unit3_graphite_facsimile.py
+          /tmp/u3art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          stems=[
+            "fasciola/external","fasciola/digestive-reproductive","fasciola/life-cycle",
+            "ascaris/male-female-external","ascaris/female-internal","ascaris/life-cycle"
+          ]
+          for stem in stems:
+              path=Path("native-app/app/src/main/assets/type_studies")/(stem+".png")
+              assert path.is_file(),path
+              with Image.open(path) as im: im.verify()
+              with Image.open(path) as im: assert im.size==(960,1280) and im.format=="PNG",path
+          source=Path("ci/build_unit3_anatomy_candidate_masters.py").read_text()
+          assert "def branched_gonad" not in source and "def worm(" not in source, "Procedural anatomy must never return"
+          assert "fetch_commons" in source and "source_sha256" in source, "Source-backed anatomy provenance required"
+          hotspots=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/UnitIIIPlateHotspots.kt").read_text()
+          gallery=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIIPlateGallery.kt").read_text()
+          assert "coordinateApprovedStems: Set<String> = emptySet()" in hotspots
+          assert "if (geometryVerified) detectTapGestures" in gallery
+          assert "if (geometryVerified && selected != null)" in gallery
+          import json
+          report=json.loads(Path("qa-evidence/unit3/source-backed-plate-manifest.json").read_text())
+          records=report["source_records"]
+          cdc=[item for item in records
+               if item["organism"]=="ascaris" and item["plate_id"]=="life-cycle"]
+          assert len(cdc)==1
+          assert cdc[0]["source_url"]=="https://upload.wikimedia.org/wikipedia/commons/c/ca/Ascariasis_LifeCycle_lg.jpg"
+          assert cdc[0]["life_cycle_completeness"]=="CDC_DPDx_COMPLETE_REFERENCE"
+          assert cdc[0]["source_illustration_only"] is True
+          assert cdc[0]["pencil_origin_verified"] is False
+          assert cdc[0]["hotspot_academic_review"]=="PENDING"
+          assert cdc[0]["pencil_style_facsimile"] is True
+          assert cdc[0]["source_geometry_unchanged"] is True
+          assert cdc[0]["original_full_color_master_sha256"]=="6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0"
+          assert cdc[0]["tonal_style"]=="GRAPHITE_TONED_CDC_PIXEL_FACSIMILE"
+          assert all(item["asset_restoration"]=="PINNED_FIRSTPASS_GITHUB_ARTIFACT"
+                     for item in records)
+          assert len(records)==6
+          print("CDC_COMPLETE_ASCARIS_SOURCE_GUARD=PASS; ACADEMIC_REVIEW=PENDING")
+          print("OBSOLETE_SOURCE_HOTSPOTS_DISABLED=PASS")
+          print("UNIT_III_SIX_SOURCE_BACKED_RASTERS=PASS; ZOOLOGY_REVIEW=PENDING")
+          PY
+          # Unit II assets are retrieved byte-for-byte from accepted exact-commit CI.
+          # Never make a 2026 Unit III draft depend on repeat archival web downloads.
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Unit III native API34 100% and 200% font acceptance
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit3-screenshot-audit.sh
+      - name: Preserve instrumentation and physical-screen screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-api34-instrumentation-evidence
+          path: qa-evidence/unit3/
+          if-no-files-found: error
+      - name: Create exact-commit native debug handset candidate
+        if: success()
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve installable engineering QA APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit3-native-teaching-debug-qa-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Explicit Unit II / III academic release HOLD
+        if: always()
+        run: |
+          echo "BUILD COMPILATION AND EMULATOR PASS ARE NOT PHYSICAL DEVICE OR ACADEMIC ACCEPTANCE."
+          echo "Unit II Sycon microanatomy reviewer decision and real-phone tests remain OPEN."
+          echo "Unit III historical source, original-pencil provenance and label review are OPEN."
+          echo "Neither branch nor candidate should be merged into Play/Indus release."

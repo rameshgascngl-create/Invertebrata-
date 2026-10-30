@@ -1,9 +1,9 @@
-name: INVERTEBRATA v1.8.7 Canonical Build
+name: LEGACY — INVERTEBRATA v1.8.7 Canonical Build (superseded)
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+
+# Superseded by the accepted v1.8.8 20-transform pipeline. Kept only for historical/manual recovery.
 
 permissions:
   contents: read

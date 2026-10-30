@@ -1,0 +1,751 @@
+{
+  "u2-porifera": {
+    "id": "u2-porifera",
+    "q_en": "Give general characters and classification of Porifera up to classes.",
+    "q_ta": "துளையுடலி பொதுப் பண்புகளும் வகைப்பாடும்.",
+    "steps_en": [
+      "Ostia–choanocyte–osculum current.",
+      "No true tissues.",
+      "Skeleton splits Calcarea, Hexactinellida, Demospongiae.",
+      "Cell types as jobs.",
+      "Regeneration."
+    ],
+    "steps_ta": [
+      "ஆஸ்டியா–கோஅனோசைட்–ஆஸ்குலம்.",
+      "உண்மைத் திசு இல்லை.",
+      "மூன்று வகுப்பு எலும்புக்கூடு.",
+      "செல் பணி.",
+      "மீள உருவாக்கம்."
+    ],
+    "q2_en": [
+      "What is a choanocyte?",
+      "Name the three sponge classes by skeleton."
+    ],
+    "a2_en": [
+      [
+        "Collar cell that pumps and traps food."
+      ],
+      [
+        "Calcarea, Hexactinellida, Demospongiae."
+      ]
+    ],
+    "q2_ta": [
+      "கோஅனோசைட் என்றால்?",
+      "மூன்று வகுப்பு எலும்புக்கூடு."
+    ],
+    "a2_ta": [
+      [
+        "காலர் செல்; பம்பும் பிடியும்."
+      ],
+      [
+        "கால்கேரியா ஹெக்ஸாக்டினெல்லிடா டெமோஸ்பாஞ்சியே."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of Phylum Porifera.",
+      "Explain the cellular basis of regeneration in sponges."
+    ],
+    "a5_en": [
+      [
+        "Sponges are aquatic, predominantly marine, sessile animals with a body perforated by numerous ostia and one or more oscula.",
+        "They lack true tissues and organs; the body is organized at the cellular level, with pinacocytes, choanocytes and amoeboid cells in the mesohyl.",
+        "Choanocyte flagella generate a water current, while their collars trap suspended food; digestion is mainly intracellular.",
+        "The skeleton is formed by calcareous or siliceous spicules, spongin fibres, or a combination depending on the group.",
+        "Gas exchange and excretion occur largely by diffusion with the flowing water; Sycon is a familiar calcareous sponge example."
+      ],
+      [
+        "Sponges possess highly plastic cell populations, especially stem-cell-like archaeocytes/amoebocytes capable of differentiating into several specialized cell types.",
+        "After injury or fragmentation, surviving cells can migrate, proliferate, reorganize and restore the normal body architecture.",
+        "Choanocytes and other sponge cells also show substantial capacity for cell-type conversion during growth and repair.",
+        "Consequently, a viable fragment containing sufficient cells can re-establish the aquiferous system and develop into a functional sponge.",
+        "This regenerative ability underlies fragmentation as an asexual reproductive method; it should not be confused with gemmules, which are resistant asexual propagules characteristic especially of freshwater sponges."
+      ]
+    ],
+    "q5_ta": [
+      "தொகுதி Porifera-வின் பொதுப் பண்புகளை எழுதுக.",
+      "பஞ்சுகளில் மீளுருவாக்கம் நடைபெறுவதற்கான செல்சார் அடிப்படையை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "பஞ்சுகள் நீரில் வாழும், பெரும்பாலும் கடல்வாழ், இடம்பெயராத உயிரினங்கள்; உடலில் பல ஆஸ்டியா (ostia) துளைகளும் ஒன்று அல்லது அதற்கு மேற்பட்ட ஆஸ்குலம் (osculum) திறப்புகளும் உள்ளன.",
+        "உண்மையான திசுக்களும் உறுப்புகளும் இல்லை; பினாக்கோசைட்டுகள், கோஆனோசைட்டுகள் மற்றும் மெசோஹைலில் உள்ள அமீபாய்டு செல்கள் ஆகியவற்றால் செல்மட்ட அமைப்பு காணப்படுகிறது.",
+        "கோஆனோசைட்டுகளின் கசையிழைகள் நீரோட்டத்தை உருவாக்குகின்றன; அவற்றின் காலர் பகுதி நீரில் உள்ள நுண்ணுணவுத் துகள்களைப் பிடிக்கிறது; செரிமானம் பெரும்பாலும் செல்களுக்குள் நடைபெறுகிறது.",
+        "எலும்புக்கூடு குழுவைப் பொறுத்து சுண்ணாம்புச் சத்துடைய அல்லது சிலிகா முட்களாலோ, ஸ்பாஞ்சின் நார்களாலோ, அவற்றின் சேர்க்கையாலோ அமைகிறது.",
+        "வாயுப் பரிமாற்றமும் கழிவுநீக்கமும் ஓடும் நீருடன் பரவல்முறையில் பெரும்பாலும் நடைபெறுகின்றன; Sycon ஒரு பொதுவான சுண்ணாம்புப் பஞ்சு எடுத்துக்காட்டாகும்."
+      ],
+      [
+        "பஞ்சுகளில் மிகுந்த செல்மாற்றுத் திறன் காணப்படுகிறது; குறிப்பாக ஸ்டெம்-செல் போன்ற ஆர்கியோசைட்டுகள்/அமீபோசைட்டுகள் பல சிறப்புச் செல்களாக வேறுபடும் திறன் கொண்டவை.",
+        "காயம் அல்லது துண்டாக்கத்திற்குப் பிறகு உயிருடன் உள்ள செல்கள் இடம்பெயர்ந்து, பெருகி, மறுசீரமைந்து இயல்பான உடல் அமைப்பை மீண்டும் உருவாக்குகின்றன.",
+        "கோஆனோசைட்டுகள் உள்ளிட்ட சில பஞ்சுச் செல்களும் வளர்ச்சி மற்றும் பழுதுபார்ப்பின் போது செல்தன்மை மாற்றும் திறன் கொண்டவை.",
+        "எனவே போதிய உயிர்ச்செல்களைக் கொண்ட ஒரு துண்டு நீர்க்குழாய் அமைப்பை மீண்டும் உருவாக்கி செயல்படும் புதிய பஞ்சாக வளர முடியும்.",
+        "இந்த மீளுருவாக்கத் திறனே துண்டாக்கம் மூலம் பாலிலா இனப்பெருக்கத்திற்கு அடிப்படையாகிறது; இதனை, குறிப்பாக நன்னீர்ப் பஞ்சுகளில் காணப்படும் எதிர்ப்புத்திறன் மிக்க ஜெம்யூல்களுடன் குழப்பக்கூடாது."
+      ]
+    ]
+  },
+  "u2-sycon": {
+    "id": "u2-sycon",
+    "q_en": "Describe Sycon with special reference to canal system and reproduction.",
+    "q_ta": "சைக்கான் — கால்வாய் அமைப்பும் இனப்பெருக்கமும்.",
+    "steps_en": [
+      "Calcareous, syconoid grade.",
+      "Path: ostium–incurrent–prosopyle–radial–apopyle–spongocoel–osculum.",
+      "Choanocytes on radial canals only.",
+      "Spicule architecture.",
+      "Amphiblastula + inversion.",
+      "Buds."
+    ],
+    "steps_ta": [
+      "சுண்ணாம்பு சைக்கானாய்டு.",
+      "ஏழு பெயர் பாதை.",
+      "கோஅனோசைட் ஆரையில் மட்டும்.",
+      "ஸ்பிக்யூல்.",
+      "ஆம்ஃபிபிளாஸ்டுலா புரட்டல்.",
+      "மொட்டு."
+    ],
+    "q2_en": [
+      "Where do choanocytes sit in Sycon?",
+      "Name the larva of Sycon."
+    ],
+    "a2_en": [
+      [
+        "Walls of radial canals, not the spongocoel lining as the pump."
+      ],
+      [
+        "Amphiblastula."
+      ]
+    ],
+    "q2_ta": [
+      "சைக்கானில் கோஅனோசைட் எங்கே?",
+      "லார்வா பெயர்."
+    ],
+    "a2_ta": [
+      [
+        "ஆரைக் கால்வாய். ஸ்பாங்கோசீல் அல்ல."
+      ],
+      [
+        "ஆம்ஃபிபிளாஸ்டுலா."
+      ]
+    ],
+    "q5_en": [
+      "Trace the course of water current through the syconoid canal system of Sycon.",
+      "Explain inversion in the development of Sycon and state its developmental significance."
+    ],
+    "a5_en": [
+      [
+        "Water enters from outside through dermal ostia into the incurrent canals.",
+        "It passes from each incurrent canal through prosopyles into the adjacent radial canals.",
+        "The radial canals are lined by choanocytes, whose flagella maintain the current and whose collars filter food particles.",
+        "Filtered water leaves the radial canals through apopyles and enters the spongocoel.",
+        "Water finally leaves the sponge through the osculum; thus the route is: ostia → incurrent canals → prosopyles → radial canals → apopyles → spongocoel → osculum."
+      ],
+      [
+        "During embryonic development of Sycon, the stomoblastula undergoes inversion (eversion/excurvation) through an opening in the embryo.",
+        "This movement brings the flagellated micromeres, whose flagella initially face inward, to the external surface.",
+        "The resulting amphiblastula has an externally flagellated region and is released as a free-swimming larva.",
+        "During settlement and metamorphosis, the flagellated cells move inward and contribute to the choanocyte-bearing internal system, while other cells contribute to outer tissues.",
+        "Inversion is therefore a defined morphogenetic event that establishes larval cell orientation; it should not be explained as occurring merely because the adult water current would otherwise 'fail'."
+      ]
+    ],
+    "q5_ta": [
+      "Sycon-ன் சைக்கானாய்டு கால்வாய் அமைப்பில் நீர் செல்லும் பாதையை வரிசையாக எழுதுக.",
+      "Sycon வளர்ச்சியில் நடைபெறும் inversion நிகழ்வை விளக்கி அதன் வளர்ச்சியியல் முக்கியத்துவத்தை எழுதுக."
+    ],
+    "a5_ta": [
+      [
+        "வெளியிலிருந்து நீர் டெர்மல் ஆஸ்டியா வழியாக உள்புகு கால்வாய்களுக்குள் செல்கிறது.",
+        "உள்புகு கால்வாய்களிலிருந்து நீர் புரோசோபைல்கள் (prosopyles) வழியாக அருகிலுள்ள ஆரைக் கால்வாய்களுக்குச் செல்கிறது.",
+        "ஆரைக் கால்வாய்கள் கோஆனோசைட்டுகளால் வரிசைப்படுத்தப்பட்டுள்ளன; அவற்றின் கசையிழைகள் நீரோட்டத்தைப் பேணுகின்றன; காலர் பகுதி உணவுத் துகள்களை வடிகட்டுகிறது.",
+        "வடிகட்டப்பட்ட நீர் ஆரைக் கால்வாய்களிலிருந்து அப்போபைல்கள் (apopyles) வழியாக ஸ்பாஞ்சோகோயலுக்குச் செல்கிறது.",
+        "இறுதியாக நீர் ஆஸ்குலம் வழியாக வெளியேறுகிறது; முழுப் பாதை: ஆஸ்டியா → உள்புகு கால்வாய் → புரோசோபைல் → ஆரைக் கால்வாய் → அப்போபைல் → ஸ்பாஞ்சோகோயல் → ஆஸ்குலம்."
+      ],
+      [
+        "Sycon-ன் கருவளர்ச்சியில் ஸ்டோமோபிளாஸ்டுலா கருவின் ஒரு திறப்பு வழியாக உள்ளிருந்து வெளியே திரும்பும் inversion (eversion/excurvation) நிகழ்வை மேற்கொள்கிறது.",
+        "இதனால் ஆரம்பத்தில் உட்புறத்தை நோக்கிய கசையிழைகளைக் கொண்ட மைக்ரோமியர் செல்கள் வெளிப்புற மேற்பரப்பிற்கு வருகின்றன.",
+        "இதன் விளைவாக வெளிப்புறத்தில் கசையிழை கொண்ட பகுதியையுடைய amphiblastula இளநிலை உருவாகி சுதந்திரமாக நீந்துகிறது.",
+        "பின்னர் தளத்தில் ஒட்டிய பின் நடைபெறும் உருமாற்றத்தில் கசையிழை செல்கள் உட்புறத்திற்குச் சென்று கோஆனோசைட் அமைப்பில் பங்கெடுக்கின்றன; பிற செல்கள் வெளிப்புற அமைப்புகளை உருவாக்குகின்றன.",
+        "ஆகவே inversion என்பது இளநிலை செல்களின் திசைநிலையை அமைக்கும் குறிப்பிட்ட உருவாக்க நிகழ்வு; ‘இது இல்லையெனில் முதிர்ந்த பஞ்சின் நீரோட்டம் செயலிழக்கும்’ என்று காரணப்படுத்துவது சரியல்ல."
+      ]
+    ]
+  },
+  "u2-canals": {
+    "id": "u2-canals",
+    "q_en": "Give an account of canal systems in sponges.",
+    "q_ta": "கடற்பஞ்சு கால்வாய் அமைப்புகள்.",
+    "steps_en": [
+      "Grade ≠ class.",
+      "Ascon: choanocytes on spongocoel.",
+      "Sycon: radial canals.",
+      "Leucon: chambers; size.",
+      "Arrows with current."
+    ],
+    "steps_ta": [
+      "தரம் வகுப்பு அல்ல.",
+      "ஆஸ்கான் குழி.",
+      "சைக்கான் ஆரை.",
+      "லியூக்கான் அறை.",
+      "அம்பு நீரோட்டம்."
+    ],
+    "q2_en": [
+      "Ascon versus sycon in one line.",
+      "Why is leucon the large-body grade?"
+    ],
+    "a2_en": [
+      [
+        "Ascon: choanocytes on spongocoel; sycon: on radial canals."
+      ],
+      [
+        "Chambers add pumping area without a huge cavity."
+      ]
+    ],
+    "q2_ta": [
+      "ஆஸ்கான்–சைக்கான் ஒரு வரி.",
+      "லியூக்கான் ஏன் பெரிய உடல்?"
+    ],
+    "a2_ta": [
+      [
+        "குழி vs ஆரை."
+      ],
+      [
+        "அறை பம்ப் பரப்பு."
+      ]
+    ],
+    "q5_en": [
+      "Compare asconoid, syconoid and leuconoid canal-system grades in sponges.",
+      "Explain why the direction of water flow must be shown correctly in a sponge canal-system diagram."
+    ],
+    "a5_en": [
+      [
+        "In the asconoid grade, the body wall is simple and choanocytes line the spongocoel; water passes from ostia to spongocoel and then to the osculum.",
+        "In the syconoid grade, the body wall is folded into incurrent and choanocyte-lined radial canals, increasing the flagellated filtering surface.",
+        "In the leuconoid grade, choanocytes are restricted to numerous small flagellated chambers connected by incurrent and excurrent canals; the spongocoel is greatly reduced or absent.",
+        "From asconoid to syconoid to leuconoid organization, canal complexity and filtering surface increase, permitting generally larger and more efficient body organization.",
+        "These are grades of aquiferous-system organization, not three taxonomic classes; different sponge taxa may exhibit these organizational patterns."
+      ],
+      [
+        "The sponge aquiferous system functions by a directed current that brings food and oxygen and removes carbon dioxide and nitrogenous wastes.",
+        "Arrows therefore must follow the actual inlet-to-outlet route rather than merely decorate the diagram.",
+        "In Sycon the correct sequence is ostia → incurrent canals → prosopyles → radial canals → apopyles → spongocoel → osculum.",
+        "Prosopyles connect incurrent canals to choanocyte-lined radial canals, whereas apopyles carry filtered water from radial canals toward the spongocoel.",
+        "Reversing arrows or interchanging prosopyles and apopyles changes the physiology being represented and makes the diagram scientifically incorrect."
+      ]
+    ],
+    "q5_ta": [
+      "பஞ்சுகளில் காணப்படும் அஸ்கானாய்டு, சைக்கானாய்டு மற்றும் லியூகானாய்டு கால்வாய் அமைப்பு நிலைகளை ஒப்பிடுக.",
+      "பஞ்சின் கால்வாய் அமைப்பு வரைபடத்தில் நீரோட்டத்தின் திசையைச் சரியாகக் காட்ட வேண்டியதன் காரணத்தை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "அஸ்கானாய்டு நிலையில் உடற்சுவர் எளிமையானது; ஸ்பாஞ்சோகோயலை கோஆனோசைட்டுகள் வரிசைப்படுத்துகின்றன; நீர் ஆஸ்டியா → ஸ்பாஞ்சோகோயல் → ஆஸ்குலம் வழியாக செல்கிறது.",
+        "சைக்கானாய்டு நிலையில் உடற்சுவர் மடிந்து உள்புகு கால்வாய்களையும் கோஆனோசைட் வரிசையுடைய ஆரைக் கால்வாய்களையும் உருவாக்குகிறது; இதனால் வடிகட்டும் கசையிழைப் பரப்பு அதிகரிக்கிறது.",
+        "லியூகானாய்டு நிலையில் கோஆனோசைட்டுகள் பல சிறிய கசையிழை அறைகளில் மட்டுமே காணப்படுகின்றன; அவை உள்புகு மற்றும் வெளிப்போக்கு கால்வாய்களால் இணைக்கப்படுகின்றன; ஸ்பாஞ்சோகோயல் மிகவும் குறைகிறது அல்லது இல்லாமலும் இருக்கலாம்.",
+        "அஸ்கானாய்டிலிருந்து சைக்கானாய்டு, பின்னர் லியூகானாய்டு நிலைக்குச் செல்லும் போது கால்வாய் சிக்கலும் வடிகட்டும் பரப்பும் அதிகரித்து, பொதுவாக பெரிய மற்றும் திறமையான உடல் அமைப்பைச் சாத்தியப்படுத்துகின்றன.",
+        "இவை நீர்க்குழாய் அமைப்பின் அமைப்புநிலைகள் (grades); தனித்த மூன்று வகுப்புகள் அல்ல."
+      ],
+      [
+        "பஞ்சின் நீர்க்குழாய் அமைப்பு உணவு மற்றும் ஆக்சிஜனை கொண்டுவரவும், கார்பன் டையாக்சைடு மற்றும் நைட்ரஜன் கழிவுகளை அகற்றவும் ஒருதிசை நீரோட்டத்தைப் பயன்படுத்துகிறது.",
+        "எனவே வரைபட அம்புகள் அலங்காரமாக அல்லாமல் உண்மையான உள்நுழைவு–வெளியேற்றப் பாதையைத் தெளிவாகக் காட்ட வேண்டும்.",
+        "Sycon-ல் சரியான வரிசை: ஆஸ்டியா → உள்புகு கால்வாய் → புரோசோபைல் → ஆரைக் கால்வாய் → அப்போபைல் → ஸ்பாஞ்சோகோயல் → ஆஸ்குலம்.",
+        "புரோசோபைல்கள் உள்புகு கால்வாய்களை கோஆனோசைட் வரிசையுடைய ஆரைக் கால்வாய்களுடன் இணைக்கின்றன; அப்போபைல்கள் ஆரைக் கால்வாய்களிலிருந்து வடிகட்டப்பட்ட நீரை ஸ்பாஞ்சோகோயலுக்கு எடுத்துச் செல்கின்றன.",
+        "அம்புகளின் திசையை மாற்றுதல் அல்லது புரோசோபைல்–அப்போபைல் தொடர்பை மாற்றிக் காட்டுதல் உடலியக்கப் பொருளை மாற்றுவதால் வரைபடம் அறிவியல் ரீதியாகத் தவறாகிவிடும்."
+      ]
+    ]
+  },
+  "u2-reproduction": {
+    "id": "u2-reproduction",
+    "q_en": "Write an essay on reproduction in sponges.",
+    "q_ta": "கடற்பஞ்சு இனப்பெருக்கம்.",
+    "steps_en": [
+      "Stay: bud, fragment, gemmule.",
+      "Disperse: amphiblastula / parenchymula.",
+      "Inversion.",
+      "Gemmule is not a larva.",
+      "Totipotent archaeocytes."
+    ],
+    "steps_ta": [
+      "நிலை: மொட்டு ஜெம்யூல்.",
+      "பரவல்: லார்வா.",
+      "புரட்டல்.",
+      "ஜெம்யூல் லார்வா அல்ல.",
+      "ஆர்கியோசைட்."
+    ],
+    "q2_en": [
+      "Is a gemmule a larva?",
+      "Name two sponge larvae."
+    ],
+    "a2_en": [
+      [
+        "No. It is a resistant asexual packet."
+      ],
+      [
+        "Amphiblastula; parenchymula."
+      ]
+    ],
+    "q2_ta": [
+      "ஜெம்யூல் லார்வாவா?",
+      "இரண்டு லார்வா."
+    ],
+    "a2_ta": [
+      [
+        "இல்லை. பாலிலாக் கட்டு."
+      ],
+      [
+        "ஆம்ஃபிபிளாஸ்டுலா பரன்கைமுலா."
+      ]
+    ],
+    "q5_en": [
+      "Distinguish asexual and sexual reproduction in sponges.",
+      "Write five points on gemmules in sponges."
+    ],
+    "a5_en": [
+      [
+        "Asexual reproduction occurs without gamete fusion and commonly includes budding and fragmentation; gemmules occur especially in freshwater sponges.",
+        "Fragments can regenerate because sponge cells have marked developmental plasticity and can reorganize a functional body.",
+        "In sexual reproduction, eggs and sperm are formed; many sponges are hermaphroditic, although gamete production may be separated in time.",
+        "Sperm are usually released into the water and carried to another sponge, where fertilization of retained eggs occurs; development produces a free-swimming larval stage.",
+        "The larva disperses, settles and metamorphoses into a young sponge; this dispersive sexual phase differs fundamentally from local clonal asexual propagation."
+      ],
+      [
+        "Gemmules are resistant internal asexual propagules characteristic especially of freshwater sponges such as Spongilla.",
+        "They contain a mass of archaeocytes/amoeboid cells capable of forming a new sponge.",
+        "The cell mass is enclosed by a protective coat that may be reinforced with spicules.",
+        "Gemmules withstand unfavourable conditions such as desiccation or seasonal temperature stress and remain dormant until conditions improve.",
+        "When favourable conditions return, the cells emerge and reorganize into a new sponge; gemmules should not be attributed to marine Sycon as a routine reproductive method."
+      ]
+    ],
+    "q5_ta": [
+      "பஞ்சுகளில் பாலிலா மற்றும் பாலின இனப்பெருக்கத்தை வேறுபடுத்துக.",
+      "பஞ்சுகளின் ஜெம்யூல்கள் குறித்து ஐந்து குறிப்புகள் எழுதுக."
+    ],
+    "a5_ta": [
+      [
+        "கேமீட்டுகள் இணைவதில்லாமல் நடைபெறுவது பாலிலா இனப்பெருக்கம்; மொட்டுவிடுதல் மற்றும் துண்டாக்கம் பொதுவான முறைகள்; ஜெம்யூல்கள் குறிப்பாக நன்னீர்ப் பஞ்சுகளில் காணப்படுகின்றன.",
+        "துண்டுகள் புதிய பஞ்சாக மீளுருவாக முடிவதற்குக் காரணம் பஞ்சுச் செல்களின் அதிக வளர்ச்சியியல் மாற்றுத்திறனும் மறுசீரமைப்பு திறனும் ஆகும்.",
+        "பாலின இனப்பெருக்கத்தில் முட்டையும் விந்தணுவும் உருவாகின்றன; பல பஞ்சுகள் இருபாலினத் தன்மை கொண்டிருந்தாலும் கேமீட் உருவாக்கம் காலத்தில் பிரிக்கப்பட்டிருக்கலாம்.",
+        "விந்தணுக்கள் பொதுவாக நீரில் வெளியேறி மற்றொரு பஞ்சுக்குச் செல்கின்றன; அங்கு தக்கவைக்கப்பட்டுள்ள முட்டைகள் கருத்தரிக்கின்றன; பின்னர் சுதந்திரமாக நீந்தும் இளநிலை உருவாகிறது.",
+        "இளநிலை பரவி, தளத்தில் ஒட்டி, உருமாற்றம் பெற்று இளம் பஞ்சாகிறது; இது உள்ளூரில் ஒரே மரபுருவத்தை உருவாக்கும் பாலிலா இனப்பெருக்கத்திலிருந்து அடிப்படையில் வேறுபடுகிறது."
+      ],
+      [
+        "ஜெம்யூல்கள் Spongilla போன்ற நன்னீர்ப் பஞ்சுகளில் குறிப்பாகக் காணப்படும் எதிர்ப்புத்திறன் மிக்க உள் பாலிலா இனப்பெருக்க அலகுகள் ஆகும்.",
+        "புதிய பஞ்சை உருவாக்கும் திறனுடைய ஆர்கியோசைட்டுகள்/அமீபாய்டு செல்களின் திரள் ஜெம்யூலுக்குள் உள்ளது.",
+        "இந்த செல்திரள் பாதுகாப்பு உறையால் சூழப்பட்டிருக்கும்; அந்த உறை சில நேரங்களில் முட்களால் வலுப்படுத்தப்படுகிறது.",
+        "வறட்சி அல்லது பருவ வெப்பநிலை அழுத்தம் போன்ற சாதகமற்ற சூழல்களை ஜெம்யூல்கள் தாங்கி உறக்கநிலையில் நீடிக்க முடியும்.",
+        "சூழல் மீண்டும் ஏற்றதாகும் போது செல்கள் வெளியேறி மறுசீரமைந்து புதிய பஞ்சை உருவாக்குகின்றன; கடல்வாழ் Sycon-ன் வழக்கமான இனப்பெருக்க முறையாக ஜெம்யூல்களை குறிப்பிடக்கூடாது."
+      ]
+    ]
+  },
+  "u2-cnidaria": {
+    "id": "u2-cnidaria",
+    "q_en": "Give general characters and classification of Coelenterata up to classes.",
+    "q_ta": "குழியுடலி பொதுப் பண்புகளும் வகைப்பாடும்.",
+    "steps_en": [
+      "Paper name Coelenterata; living Cnidaria.",
+      "Diploblasty + mesoglea.",
+      "Nematocyst work.",
+      "Polyp vs medusa.",
+      "Hydrozoa, Scyphozoa, Anthozoa."
+    ],
+    "steps_ta": [
+      "பாடப் பெயர்; நவீன பெயர்.",
+      "இருகருவடுக்கு.",
+      "நிடோசிஸ்ட்.",
+      "பாலிப் மெடூசா.",
+      "மூன்று வகுப்பு."
+    ],
+    "q2_en": [
+      "What does a nematocyst do?",
+      "Name three classes on the paper."
+    ],
+    "a2_en": [
+      [
+        "Fires a thread to capture or defend."
+      ],
+      [
+        "Hydrozoa, Scyphozoa, Anthozoa."
+      ]
+    ],
+    "q2_ta": [
+      "நிடோசிஸ்ட் பணி.",
+      "மூன்று வகுப்பு."
+    ],
+    "a2_ta": [
+      [
+        "நூல்; இரை அல்லது பாதுகாப்பு."
+      ],
+      [
+        "ஹைட்ரோசோவா சிஃபோசோவா ஆந்தோசோவா."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of Coelenterata/Cnidaria.",
+      "Compare the polyp and medusa forms of cnidarians in five points."
+    ],
+    "a5_en": [
+      [
+        "Cnidarians are predominantly aquatic, mostly marine animals with radial or biradial symmetry and tissue-level organization.",
+        "They are diploblastic, with epidermis and gastrodermis separated by a gelatinous mesoglea.",
+        "The diagnostic cells are cnidocytes containing nematocysts, used mainly in prey capture and defence.",
+        "The digestive compartment is a gastrovascular cavity that communicates with the exterior through a single mouth opening.",
+        "Polyp and medusa are the two characteristic body forms; one or both may occur in a life cycle, and in some groups the two phases alternate."
+      ],
+      [
+        "A polyp is usually cylindrical and attached, whereas a medusa is bell- or umbrella-shaped and usually free-swimming.",
+        "In a polyp the mouth and tentacles generally face upward; in a medusa the oral surface and mouth face downward.",
+        "Polyps may be solitary or colonial; medusae are usually solitary individuals, although colonial hydrozoans include specialized medusoid zooids.",
+        "Polyps commonly reproduce asexually by budding, whereas medusae commonly function as the sexual, gamete-producing stage where both forms occur.",
+        "Obelia illustrates a life cycle with an attached colonial polyp phase and free-swimming sexual medusae; these are life-cycle forms, not separate species."
+      ]
+    ],
+    "q5_ta": [
+      "Coelenterata/Cnidaria தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
+      "நிடேரியன்களின் பாலிப் மற்றும் மெடூசா வடிவங்களை ஐந்து அம்சங்களில் ஒப்பிடுக."
+    ],
+    "a5_ta": [
+      [
+        "நிடேரியன்கள் பெரும்பாலும் கடலில் வாழும் நீர்வாழ் உயிரினங்கள்; ஆரை அல்லது இரு-ஆரைச் சமச்சீரும் திசுமட்ட அமைப்பும் காணப்படுகிறது.",
+        "இவை இரு கருமூல அடுக்குடையவை; எபிடெர்மிஸ் மற்றும் காஸ்ட்ரோடெர்மிஸ் இடையே ஜெல்லி போன்ற மெசோக்ளியா உள்ளது.",
+        "இவற்றின் அடையாளச் செல்கள் நிமாட்டோசிஸ்ட் கொண்ட நிடோசைட்டுகள்; இவை முக்கியமாக இரைப்பிடித்தல் மற்றும் பாதுகாப்பில் பயன்படுகின்றன.",
+        "செரிமானப் பகுதி காஸ்ட்ரோவாஸ்குலர் குழியாகும்; அது ஒரே வாய் திறப்பு வழியாக வெளிப்புறத்துடன் தொடர்பு கொள்கிறது.",
+        "பாலிப் மற்றும் மெடூசா ஆகியவை முக்கிய இரண்டு உடல்வடிவங்கள்; வாழ்க்கைச் சுழற்சியில் ஒன்றோ இரண்டுமோ காணப்படலாம்; சில குழுக்களில் இரண்டு நிலைகளும் மாறிமாறி நிகழ்கின்றன."
+      ],
+      [
+        "பாலிப் பொதுவாக உருளை வடிவமாக தளத்தில் ஒட்டியிருக்கும்; மெடூசா மணி அல்லது குடை வடிவமாக பொதுவாக சுதந்திரமாக நீந்தும்.",
+        "பாலிப்பில் வாய் மற்றும் தொடுதண்டுகள் பொதுவாக மேல்நோக்கி இருக்கும்; மெடூசாவில் வாய்ப்புற மேற்பரப்பும் வாயும் கீழ்நோக்கி இருக்கும்.",
+        "பாலிப்புகள் தனியாகவோ கூட்டமாகவோ இருக்கலாம்; மெடூசாக்கள் பொதுவாக தனிநபர்களாக இருக்கும்; எனினும் சில காலனித்துவ ஹைட்ரோசோவன்களில் சிறப்புப் பெற்ற மெடூசாய்டு அலகுகள் உள்ளன.",
+        "இரு வடிவங்களும் உள்ள வாழ்க்கைச் சுழற்சிகளில் பாலிப் பொதுவாக மொட்டுவிடுதல் மூலம் பாலிலா இனப்பெருக்கம் செய்கிறது; மெடூசா பொதுவாக கேமீட் உருவாக்கும் பாலின நிலையாக செயல்படுகிறது.",
+        "Obelia-வில் தளத்தில் ஒட்டிய கூட்டுப் பாலிப் நிலையும் சுதந்திரமாக நீந்தும் பாலின மெடூசா நிலையும் காணப்படுகின்றன; இவை தனித்த சிற்றினங்கள் அல்ல, ஒரே வாழ்க்கைச் சுழற்சியின் வடிவங்கள்."
+      ]
+    ]
+  },
+  "u2-obelia": {
+    "id": "u2-obelia",
+    "q_en": "Give a detailed account of Obelia.",
+    "q_ta": "ஓபீலியா விரிவான கணக்கு.",
+    "steps_en": [
+      "Colony architecture; perisarc vs coenosarc.",
+      "Hydranth feeds.",
+      "Gonangium buds medusae.",
+      "Hydromedusa + planula.",
+      "Polymorphism = one genotype."
+    ],
+    "steps_ta": [
+      "கூட்ட அமைப்பு.",
+      "ஹைட்ராந்த் ஊட்டம்.",
+      "கோனாங்கியம் மெடூசா.",
+      "பிளானுலா.",
+      "ஒரே மரபு."
+    ],
+    "q2_en": [
+      "What is coenosarc?",
+      "Name the cup around a hydranth."
+    ],
+    "a2_en": [
+      [
+        "Living tissue inside the perisarc that joins zooids."
+      ],
+      [
+        "Hydrotheca."
+      ]
+    ],
+    "q2_ta": [
+      "சீனோசார்க் என்றால்?",
+      "ஹைட்ராந்த் கோப்பை."
+    ],
+    "a2_ta": [
+      [
+        "பெரிசார்க்குள் உயிர்த் திசு."
+      ],
+      [
+        "ஹைட்ரோதீகா."
+      ]
+    ],
+    "q5_en": [
+      "Describe polymorphism in Obelia.",
+      "Describe the life history of Obelia in correct sequence."
+    ],
+    "a5_en": [
+      [
+        "Obelia forms a sessile, branched hydrozoan colony in which interconnected zooids share a common gastrovascular system through the coenosarc.",
+        "Feeding hydranths (gastrozooids) bear mouth and tentacles and capture and digest food.",
+        "Reproductive gonangia/gonozooids lack the feeding role and produce medusa buds asexually within the gonotheca.",
+        "The medusae detach and become free-swimming sexual individuals that form gametes.",
+        "Thus Obelia shows functional polymorphism and division of labour among genetically related colony components and life-cycle forms; it should not be confused with the floating pneumatophore-bearing colony of Physalia."
+      ],
+      [
+        "The attached Obelia colony contains feeding hydranths and reproductive gonangia connected by the coenosarc.",
+        "Gonangia produce medusa buds asexually; mature medusae detach from the colony and swim freely.",
+        "Male and female medusae produce sperm and eggs; fertilization forms a zygote.",
+        "The zygote develops through a blastula into a ciliated, free-swimming planula larva.",
+        "The planula settles on a substratum, forms the first polyp, and repeated budding gives rise to a new colony."
+      ]
+    ],
+    "q5_ta": [
+      "Obelia-வில் காணப்படும் பல்லுருவத் தன்மையை விளக்குக.",
+      "Obelia-வின் வாழ்க்கைச் சுழற்சியை சரியான வரிசையில் விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "Obelia தளத்தில் ஒட்டிய கிளைமிகு ஹைட்ரோசோவன் கூட்டமாக உள்ளது; இணைந்துள்ள சூஐடுகள் coenosarc வழியாக பொதுவான காஸ்ட்ரோவாஸ்குலர் அமைப்பைப் பகிர்கின்றன.",
+        "உணவூட்டும் ஹைட்ராந்துகள் (gastrozooids) வாயும் தொடுதண்டுகளும் கொண்டு இரையைப் பிடித்து உணவூட்டலில் ஈடுபடுகின்றன.",
+        "இனப்பெருக்க கோனாங்கியா/கோனோசூஐடுகள் உணவூட்டும் பணியை மேற்கொள்ளாது; gonotheca-வின் உள்ளே பாலிலா முறையில் மெடூசா மொட்டுகளை உருவாக்குகின்றன.",
+        "முதிர்ந்த மெடூசாக்கள் பிரிந்து சுதந்திரமாக நீந்தும் பாலின நிலைகளாகி கேமீட்டுகளை உருவாக்குகின்றன.",
+        "எனவே Obelia ஒரே மரபியல் கூட்டத்தின் பகுதிகளிலும் வாழ்க்கை நிலைகளிலும் பணிப் பிரிவுடன் கூடிய பல்லுருவத் தன்மையை காட்டுகிறது; இதனை Physalia-வின் pneumatophore கொண்ட மிதக்கும் கூட்டத்துடன் குழப்பக்கூடாது."
+      ],
+      [
+        "தளத்தில் ஒட்டிய Obelia கூட்டத்தில் உணவூட்டும் ஹைட்ராந்துகளும் இனப்பெருக்க கோனாங்கியாவும் coenosarc மூலம் இணைக்கப்பட்டுள்ளன.",
+        "கோனாங்கியா பாலிலா முறையில் மெடூசா மொட்டுகளை உருவாக்குகின்றன; முதிர்ந்த மெடூசாக்கள் கூட்டத்திலிருந்து பிரிந்து சுதந்திரமாக நீந்துகின்றன.",
+        "ஆண் மற்றும் பெண் மெடூசாக்கள் முறையே விந்தணு மற்றும் முட்டையை உருவாக்குகின்றன; கருத்தரிப்பால் ஜைகோட் உருவாகிறது.",
+        "ஜைகோட் பிளாஸ்டுலா நிலையைத் தொடர்ந்து சிலியா கொண்ட சுதந்திரமாக நீந்தும் பிளானுலா இளநிலையாக வளர்கிறது.",
+        "பிளானுலா தளத்தில் ஒட்டி முதல் பாலிப்பை உருவாக்குகிறது; தொடர்ந்து மொட்டுவிடுதலால் புதிய கூட்டம் உருவாகிறது."
+      ]
+    ]
+  },
+  "u2-corals": {
+    "id": "u2-corals",
+    "q_en": "Write an essay on corals and coral reefs.",
+    "q_ta": "பவளங்களும் பாறைகளும்.",
+    "steps_en": [
+      "Polyp + CaCO3 cup.",
+      "Zooxanthellae / photic zone.",
+      "Fringing, barrier, atoll.",
+      "Bleaching = algal loss.",
+      "Reef as ecosystem not one organism."
+    ],
+    "steps_ta": [
+      "பாலிப் கோப்பை.",
+      "சூக்சாந்தெல்லே.",
+      "மூன்று தோற்றம்.",
+      "வெளுப்பு ஆல்கா இழப்பு.",
+      "சூழல் மண்டலம்."
+    ],
+    "q2_en": [
+      "What are zooxanthellae?",
+      "Name three reef profiles."
+    ],
+    "a2_en": [
+      [
+        "Photosynthetic dinoflagellates in coral tissue."
+      ],
+      [
+        "Fringing, barrier, atoll."
+      ]
+    ],
+    "q2_ta": [
+      "சூக்சாந்தெல்லே என்றால்?",
+      "மூன்று பாறைத் தோற்றம்."
+    ],
+    "a2_ta": [
+      [
+        "பவளத் திசு ஒளிச்சேர்க்கை டைனோஃபிளாஜெல்லேட்."
+      ],
+      [
+        "ஃப்ரிஞ்சிங் பேரியர் அட்டால்."
+      ]
+    ],
+    "q5_en": [
+      "Explain the three main coral-reef types and the importance of light to shallow reef-building corals.",
+      "Explain coral bleaching and its biological consequences."
+    ],
+    "a5_en": [
+      [
+        "The three main reef forms are fringing reefs, barrier reefs and atolls.",
+        "A fringing reef grows directly from or close to a shore, whereas a barrier reef is separated from land by a broad or deep lagoon.",
+        "An atoll is commonly a ring- or oval-shaped reef enclosing a central lagoon, often associated with the subsidence history of an oceanic island.",
+        "Most shallow tropical reef-building corals contain symbiotic photosynthetic dinoflagellates commonly called zooxanthellae.",
+        "Because these symbionts require sunlight for photosynthesis and provide much of the coral's energy, vigorous reef building is concentrated in clear, well-lit shallow water."
+      ],
+      [
+        "Coral bleaching is the paling or whitening of coral when environmental stress disrupts the association between the coral host and its symbiotic algae or their photosynthetic pigments.",
+        "Unusually high seawater temperature is a major cause of mass bleaching, although intense light, salinity change and pollution can also contribute.",
+        "When symbionts are lost or their pigments decline, the transparent coral tissue reveals the white calcium-carbonate skeleton beneath.",
+        "Bleached coral is not necessarily dead, but it loses a major energy source; prolonged bleaching reduces growth, reproduction and resistance to disease and other stress.",
+        "If stressful conditions persist, substantial coral mortality and reef degradation can follow; recovery is possible when stress is relieved before irreversible damage occurs."
+      ]
+    ],
+    "q5_ta": [
+      "முக்கிய மூன்று பவளப்பாறை வகைகளையும் ஆழமற்ற நீரில் பாறை உருவாக்கும் பவளங்களுக்கு ஒளியின் முக்கியத்துவத்தையும் விளக்குக.",
+      "பவள வெளுப்பு (coral bleaching) மற்றும் அதன் உயிரியல் விளைவுகளை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "முக்கிய பவளப்பாறை வடிவங்கள் கரையோரப் பாறை (fringing reef), தடுப்புப் பாறை (barrier reef), அடோல் (atoll) ஆகிய மூன்றாகும்.",
+        "கரையோரப் பாறை கரையிலிருந்து நேரடியாக அல்லது மிக அருகில் வளர்கிறது; தடுப்புப் பாறை கரையிலிருந்து அகன்ற அல்லது ஆழமான லகூன் நீர்ப்பரப்பால் பிரிக்கப்பட்டிருக்கும்.",
+        "அடோல் பொதுவாக நடுவில் லகூனைச் சூழ்ந்த வளைய அல்லது நீள்வட்டப் பாறையாக இருக்கும்; பல அடோல்கள் கடல்தீவுகளின் தாழ்வு வரலாற்றுடன் தொடர்புடையவை.",
+        "ஆழமற்ற வெப்பமண்டல பாறை உருவாக்கும் பெரும்பாலான பவளங்களில் zooxanthellae என பொதுவாக அழைக்கப்படும் ஒளிச்சேர்க்கைச் சேர்வாழ் டைனோஃபிளாஜலேட்டுகள் உள்ளன.",
+        "இச்சேர்வாழிகள் ஒளிச்சேர்க்கைக்கு சூரியஒளி தேவைப்படுவதும் பவளத்திற்கு பெருமளவு ஆற்றலை வழங்குவதும் காரணமாக தெளிந்த, ஒளி மிகுந்த ஆழமற்ற நீரில் பாறை உருவாக்கம் சிறப்பாக நடைபெறுகிறது."
+      ],
+      [
+        "சுற்றுச்சூழல் அழுத்தத்தால் பவளப் புரவலனுக்கும் அதன் சேர்வாழ் பாசிகளுக்கும் இடையிலான உறவு அல்லது அவற்றின் ஒளிச்சேர்க்கை நிறமிகள் பாதிக்கப்படும் போது பவளம் வெளிறி வெண்மையாகத் தோன்றுவது பவள வெளுப்பு ஆகும்.",
+        "அசாதாரணமாக உயர்ந்த கடல்நீர் வெப்பநிலை பெரிய அளவிலான வெளுப்பிற்கு முக்கிய காரணம்; மிகுதியான ஒளி, உவர்ப்புமாற்றம் மற்றும் மாசு போன்ற காரணிகளும் பங்களிக்கலாம்.",
+        "சேர்வாழ் பாசிகள் அல்லது அவற்றின் நிறமிகள் குறையும் போது வெளிப்படையான பவளத் திசுவின் கீழுள்ள வெண்மையான கால்சியம் கார்பனேட் எலும்புக்கூடு தென்படுகிறது.",
+        "வெளுத்த பவளம் உடனே இறந்ததாக பொருள் அல்ல; ஆனால் முக்கிய ஆற்றல் மூலத்தை இழப்பதால் நீண்டகால வெளுப்பு வளர்ச்சி, இனப்பெருக்கம் மற்றும் நோய்/அழுத்த எதிர்ப்பை குறைக்கிறது.",
+        "அழுத்தம் நீடித்தால் அதிக பவள இறப்பும் பாறைச் சூழல் சிதைவும் ஏற்படலாம்; மாற்றமுடியாத சேதத்திற்கு முன் அழுத்தம் குறைந்தால் மீட்பு சாத்தியமாகும்."
+      ]
+    ]
+  },
+  "u2-coral-economics": {
+    "id": "u2-coral-economics",
+    "q_en": "Write on the economic importance of corals and coral reefs.",
+    "q_ta": "பவளப் பொருளாதாரம்.",
+    "steps_en": [
+      "Services: shore, nursery, tourism.",
+      "Extraction: lime, blocks.",
+      "Growth is slow capital.",
+      "Damage costs.",
+      "Living service first."
+    ],
+    "steps_ta": [
+      "சேவை: கரை பாசறை சுற்றுலா.",
+      "எடுப்பு சுண்ணாம்பு.",
+      "மெது மூலதனம்.",
+      "சேதச் செலவு.",
+      "வாழும் சேவை முதல்."
+    ],
+    "q2_en": [
+      "Give two living services of a reef.",
+      "Why is mined coral poor capital?"
+    ],
+    "a2_en": [
+      [
+        "Shore protection; fish nursery / tourism (any two)."
+      ],
+      [
+        "Pays once; living reef pays each year."
+      ]
+    ],
+    "q2_ta": [
+      "இரண்டு வாழும் சேவை.",
+      "வெட்டிய பவளம் ஏன் மோச மூலதனம்?"
+    ],
+    "a2_ta": [
+      [
+        "கரைக் காப்பு; மீன் பாசறை."
+      ],
+      [
+        "ஒருமுறை பணம்; வாழும் ஆண்டுதோறும்."
+      ]
+    ],
+    "q5_en": [
+      "Explain the economic and ecological importance of coral reefs.",
+      "Why can coral-reef damage occur much faster than reef recovery?"
+    ],
+    "a5_en": [
+      [
+        "Coral reefs provide habitat, nursery and feeding grounds for diverse marine organisms and support important commercial and subsistence fisheries.",
+        "They protect shorelines by dissipating wave energy, thereby reducing erosion, flooding and storm damage.",
+        "Reef scenery and biodiversity support tourism, recreation and associated employment and local income.",
+        "Reef organisms and ecosystems contribute to biomedical research and the discovery of biologically active compounds, while reefs also have major educational and cultural value.",
+        "These benefits depend on living reef ecosystems; destructive coral mining or removal for lime/building material degrades the natural capital that produces long-term ecosystem services."
+      ],
+      [
+        "Many reef-building corals and the three-dimensional reef framework accumulate slowly, whereas physical destruction can remove decades to centuries of growth in a short event.",
+        "Heat stress can cause mass bleaching over large areas, and prolonged bleaching can reduce growth and cause mortality.",
+        "Blast fishing, mining, destructive anchoring, pollution and severe storms can rapidly break or kill coral colonies and damage reef structure.",
+        "Recovery requires survival, larval supply, settlement, recruitment and repeated growth under suitable environmental conditions, all of which take time.",
+        "Repeated disturbances or chronic stress can occur before recovery is complete, so ecological and structural losses can accumulate much faster than the reef can rebuild."
+      ]
+    ],
+    "q5_ta": [
+      "பவளப்பாறைகளின் பொருளாதார மற்றும் சூழலியல் முக்கியத்துவத்தை விளக்குக.",
+      "பவளப்பாறை சேதம் அதன் மீட்சியை விட ஏன் மிக வேகமாக ஏற்பட முடியும்?"
+    ],
+    "a5_ta": [
+      [
+        "பவளப்பாறைகள் பல்வகை கடல்வாழ் உயிரினங்களுக்கு வாழிடம், வளர்ப்பிடம் மற்றும் உணவிடமாக இருந்து வணிக மற்றும் வாழ்வாதார மீன்வளத்தை ஆதரிக்கின்றன.",
+        "அலை ஆற்றலைக் குறைப்பதன் மூலம் கரையரிப்பு, வெள்ளப்பெருக்கு மற்றும் புயல் சேதத்தைத் தணித்து கடற்கரையைப் பாதுகாக்கின்றன.",
+        "பாறைகளின் அழகும் உயிர்ப்பல்வகைமையும் சுற்றுலா மற்றும் பொழுதுபோக்கை ஆதரித்து வேலைவாய்ப்பையும் உள்ளூர் வருமானத்தையும் உருவாக்குகின்றன.",
+        "பாறை உயிரினங்களும் சூழல்களும் உயிரியல் மருத்துவ ஆராய்ச்சி மற்றும் உயிர்ச்செயலுள்ள சேர்மங்களின் கண்டுபிடிப்புக்கு பங்களிப்பதுடன் கல்வி மற்றும் பண்பாட்டு மதிப்பும் கொண்டுள்ளன.",
+        "இப்பயன்கள் உயிருடன் உள்ள பாறைச் சூழலின் தொடர்ச்சியைச் சார்ந்தவை; சுண்ணாம்பு அல்லது கட்டுமானப் பொருளுக்காக பவளத்தை அழித்து அகற்றுதல் நீண்டகால சூழலியல் சேவைகளைத் தரும் இயற்கை மூலதனத்தையே சேதப்படுத்துகிறது."
+      ],
+      [
+        "பல பாறை உருவாக்கும் பவளங்களும் மூவிணை பாறை அமைப்பும் மெதுவாகச் சேர்கின்றன; ஆனால் உடற்கூறு அழிவு பல ஆண்டுகள் அல்லது பல தசாப்தங்களில் உருவான அமைப்பை குறுகிய நேரத்தில் அழிக்க முடியும்.",
+        "வெப்ப அழுத்தம் பெரிய பரப்பில் பவள வெளுப்பை ஏற்படுத்தலாம்; அது நீடித்தால் வளர்ச்சி குறைந்து பவள இறப்பு ஏற்படலாம்.",
+        "வெடிப்புமீன்பிடி, பாறை அகழ்வு, சேதமளிக்கும் நங்கூரமிடல், மாசு மற்றும் கடுமையான புயல்கள் பவளக் கூட்டங்களையும் பாறை அமைப்பையும் விரைவாக உடைக்க அல்லது கொல்ல முடியும்.",
+        "மீட்பிற்கு உயிர்தப்புதல், இளநிலை வரவு, தளத்தில் ஒட்டுதல், புதிய பவளச் சேர்க்கை மற்றும் ஏற்ற சூழலில் தொடர்ந்த வளர்ச்சி ஆகியவை தேவை; இவை அனைத்தும் காலம் எடுத்துக்கொள்கின்றன.",
+        "முழுமையான மீட்பிற்கு முன்பே மீண்டும் மீண்டும் இடையூறுகள் அல்லது நீடித்த அழுத்தங்கள் ஏற்படலாம்; ஆகவே இழப்பு பாறை மீண்டும் கட்டமைவது விட வேகமாகச் சேரக்கூடும்."
+      ]
+    ]
+  },
+  "u2-polymorphism": {
+    "id": "u2-polymorphism",
+    "q_en": "Write an essay on polymorphism in Hydrozoa.",
+    "q_ta": "ஹைட்ரோசோவா பல்லுருவம்.",
+    "steps_en": [
+      "Definition: labour in one genome.",
+      "Gastro-, gono-, dactylozooid.",
+      "Medusa disperses.",
+      "Obelia vs Physalia.",
+      "Not separate species."
+    ],
+    "steps_ta": [
+      "ஒரே மரபு பணிப் பகிர்வு.",
+      "மூன்று பாலிப்.",
+      "மெடூசா.",
+      "ஓபீலியா பிசேலியா.",
+      "வேறு சிற்றினம் அல்ல."
+    ],
+    "q2_en": [
+      "Define polymorphism in Hydrozoa.",
+      "Name the feeding zooid."
+    ],
+    "a2_en": [
+      [
+        "Division of labour among zooids of one colony/genome."
+      ],
+      [
+        "Gastrozooid / hydranth."
+      ]
+    ],
+    "q2_ta": [
+      "பல்லுருவம் வரையறை.",
+      "ஊட்ட உருவம்."
+    ],
+    "a2_ta": [
+      [
+        "ஒரே கூட்டத்தில் பணிப் பகிர்வு."
+      ],
+      [
+        "காஸ்ட்ரோசூயிட்."
+      ]
+    ],
+    "q5_en": [
+      "Explain hydrozoan polymorphism and division of labour using representative zooids.",
+      "Compare Obelia and Physalia as examples of hydrozoan polymorphism."
+    ],
+    "a5_en": [
+      [
+        "Polymorphism in colonial hydrozoans is the occurrence of structurally different but genetically related zooids specialized for different functions within the same colony or life cycle.",
+        "Gastrozooids/hydranths are specialized mainly for prey capture and feeding.",
+        "Gonozooids or gonangia are specialized for reproduction and may produce medusae or gonophores, depending on the hydrozoan.",
+        "Defensive or prey-capturing tentacular zooids occur in siphonophores; traditional textbooks may call some of these dactylozooids, although terminology is taxon-dependent.",
+        "Such specialization creates division of labour: feeding, defence, buoyancy/movement and reproduction are distributed among different colony components, increasing integrated colony function."
+      ],
+      [
+        "Obelia is a sessile, branched hydroid colony attached to a substratum; Physalia is a pelagic siphonophore colony kept at the surface by a gas-filled pneumatophore.",
+        "Obelia has feeding hydranths and reproductive gonangia connected by a coenosarc; Physalia has highly specialized feeding, tentacular/prey-capture and reproductive zooids associated with the float.",
+        "Obelia produces free-swimming medusae that form gametes; in Physalia the medusoid reproductive elements are highly modified gonophores within the colony rather than a typical free medusa stage.",
+        "Both illustrate division of labour among genetically related colony components, but the degree and organization of polymorphism are much more elaborate in Physalia.",
+        "Therefore their diagrams and zooid labels are not interchangeable: Obelia represents a sessile hydroid colony, whereas Physalia represents a floating siphonophore colony."
+      ]
+    ],
+    "q5_ta": [
+      "பிரதிநிதி சூஐடுகளை எடுத்துக்காட்டாகக் கொண்டு ஹைட்ரோசோவன்களின் பல்லுருவத் தன்மை மற்றும் பணிப் பிரிவை விளக்குக.",
+      "ஹைட்ரோசோவன்களின் பல்லுருவத் தன்மைக்கான எடுத்துக்காட்டுகளாக Obelia மற்றும் Physalia-வை ஒப்பிடுக."
+    ],
+    "a5_ta": [
+      [
+        "காலனித்துவ ஹைட்ரோசோவன்களில் ஒரே கூட்டத்தில் அல்லது வாழ்க்கைச் சுழற்சியில் மரபியல் தொடர்புடைய சூஐடுகள் வேறுபட்ட வடிவம் பெற்று தனித்த பணிகளுக்குச் சிறப்புபெறுவது பல்லுருவத் தன்மை ஆகும்.",
+        "காஸ்ட்ரோசூஐடுகள்/ஹைட்ராந்துகள் முக்கியமாக இரையைப் பிடித்து உணவூட்டும் பணிக்குச் சிறப்புபெற்றவை.",
+        "கோனோசூஐடுகள் அல்லது கோனாங்கியா இனப்பெருக்கத்திற்குச் சிறப்புபெற்று, குழுவைப் பொறுத்து மெடூசா அல்லது கோனோஃபோர்களை உருவாக்கலாம்.",
+        "சைஃபோனோஃபோர்களில் பாதுகாப்பு அல்லது இரைப்பிடித்தலுக்கான சிறப்புப் பெற்ற தொடுதண்டு சூஐடுகள் காணப்படுகின்றன; பாரம்பரிய பாடநூல்களில் சிலவற்றை dactylozooids எனக் குறிப்பிடினும், இப்பெயரிடல் குழுவைப் பொறுத்து மாறுகிறது.",
+        "இதனால் உணவூட்டல், பாதுகாப்பு, மிதத்தல்/இயக்கம் மற்றும் இனப்பெருக்கம் ஆகிய பணிகள் வேறு கூட்ட அலகுகளுக்கு பகிரப்படுகின்றன; இதுவே பணிப் பிரிவு ஆகும்."
+      ],
+      [
+        "Obelia தளத்தில் ஒட்டிய கிளைமிகு ஹைட்ராய்டு கூட்டமாகும்; Physalia வாயு நிரம்பிய pneumatophore மூலம் கடல் மேற்பரப்பில் மிதக்கும் சைஃபோனோஃபோர் கூட்டமாகும்.",
+        "Obelia-வில் coenosarc மூலம் இணைந்த உணவூட்டும் ஹைட்ராந்துகளும் இனப்பெருக்க கோனாங்கியாவும் உள்ளன; Physalia-வில் மிதவைப்பையின் கீழ் உணவூட்டல், தொடுதண்டு/இரைப்பிடித்தல் மற்றும் இனப்பெருக்கத்திற்குச் சிறப்புபெற்ற சூஐடுகள் உள்ளன.",
+        "Obelia சுதந்திரமாக நீந்தும் மெடூசாக்களை உருவாக்கி அவை கேமீட்டுகளை உருவாக்குகின்றன; Physalia-வில் இனப்பெருக்க மெடூசாய்டு அலகுகள் சாதாரண சுதந்திர மெடூசா நிலையாக அல்லாமல் கூட்டத்தின் மாற்றமடைந்த கோனோஃபோர்களாக உள்ளன.",
+        "இரண்டிலும் மரபியல் தொடர்புடைய கூட்ட அலகுகளுக்கிடையே பணிப் பிரிவு காணப்பட்டாலும் Physalia-வில் பல்லுருவ அமைப்பு மிகவும் சிக்கலானது.",
+        "ஆகவே அவற்றின் வரைபடங்களையும் சூஐடு பெயர்களையும் ஒன்றுக்கொன்று மாற்றிக் காட்டக்கூடாது: Obelia ஒரு தளத்தில் ஒட்டிய ஹைட்ராய்டு கூட்டம்; Physalia ஒரு மிதக்கும் சைஃபோனோஃபோர் கூட்டம்."
+      ]
+    ]
+  }
+}

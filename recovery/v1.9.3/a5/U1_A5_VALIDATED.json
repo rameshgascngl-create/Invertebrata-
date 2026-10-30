@@ -1,0 +1,303 @@
+{
+  "u1-intro": {
+    "id": "u1-intro",
+    "q5_en": [
+      "Write short notes on taxonomic hierarchy.",
+      "Why is Invertebrata not a single phylum?"
+    ],
+    "a5_en": [
+      [
+        "Taxonomic hierarchy arranges organisms in nested ranks; in the conventional sequence these are species, genus, family, order, class, phylum, kingdom and domain.",
+        "Species is the basic named rank; related species are grouped into a genus, related genera into a family, and progressively broader groups form the higher ranks.",
+        "Classification uses reliable diagnostic characters, and modern systematics also uses evolutionary and molecular evidence when delimiting and relating taxa.",
+        "In zoological nomenclature a species name is a binomen consisting of genus plus specific name/epithet, and name-bearing types provide an objective reference for the application of names.",
+        "A taxonomic hierarchy is a classification framework; the rank sequence by itself is not proof of phylogenetic relationship, which must be inferred from evidence."
+      ],
+      [
+        "Invertebrata is an informal collective term for animals that lack a vertebral column/cranium; it is not a formally recognized single phylum.",
+        "It contains many distinct animal phyla, including Porifera, Cnidaria, Platyhelminthes, Nematoda, Annelida, Mollusca, Arthropoda and Echinodermata.",
+        "These phyla differ profoundly in levels of organization, symmetry, body cavities, segmentation, embryology and organ systems, so they cannot be treated as one phylum.",
+        "The absence of a vertebral column is a negative convenience character rather than a unique derived character defining one natural clade; invertebrate chordates also occur within Chordata.",
+        "In examination answers, ‘Invertebrata’ may be used as the course grouping, but organisms should be classified under their appropriate phyla and lower taxa."
+      ]
+    ],
+    "q5_ta": [
+      "வகைப்பாட்டுத் தரவரிசையைச் சுருக்கமாக விளக்குக.",
+      "‘Invertebrata’ ஏன் ஒரு தனித் தொகுதி (phylum) அல்ல? விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "வகைப்பாட்டுத் தரவரிசை என்பது உயிரினங்களை ஒன்றுக்குள் ஒன்று அடங்கும் படிநிலைகளாக ஒழுங்குபடுத்தும் முறை. வழக்கமான வரிசை: சிற்றினம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, உலகம் மற்றும் பேருலகம்.",
+        "சிற்றினம் அடிப்படைப் பெயரிடல் அலகாகும். தொடர்புடைய சிற்றினங்கள் பேரினமாகவும், தொடர்புடைய பேரினங்கள் குடும்பமாகவும், அவ்வாறே மேல்நிலைக் குழுக்களாகவும் அமைக்கப்படுகின்றன.",
+        "வகைப்பாட்டில் நம்பகமான அடையாளத் தனிப்பண்புகள் பயன்படுத்தப்படுகின்றன; நவீன அமைப்பியலில் பரிணாம மற்றும் மூலக்கூறு ஆதாரங்களும் கணக்கில் கொள்ளப்படுகின்றன.",
+        "விலங்கியல் பெயரியலில் சிற்றினத்தின் அறிவியல் பெயர் பேரினப் பெயரும் இனச்சிறப்புப் பெயரும் கொண்ட இருபெயராகும்; பெயரைப் பொருத்துவதற்கான நோக்குநிலையான ஆதாரமாக பெயர்தாங்கும் வகை மாதிரி பயன்படுகிறது.",
+        "வகைப்பாட்டுத் தரவரிசை ஒரு ஒழுங்கமைப்பு வடிவமாகும்; படிநிலை வரிசை மட்டுமே இனவரலாற்று உறவை நிரூபிக்காது. அந்த உறவு தனியான ஆதாரங்களின் அடிப்படையில் அறியப்பட வேண்டும்."
+      ],
+      [
+        "‘Invertebrata’ என்பது முதுகெலும்புத் தூண் அல்லது மண்டையோடு இல்லாத விலங்குகளை வசதிக்காகக் குறிக்கும் ஒரு பொதுக் குழுப்பெயர்; அது ஒரு தனித் தொகுதி அல்ல.",
+        "இதன் கீழ் துளையுடலிகள் (Porifera), நிடேரியன்கள் (Cnidaria), தட்டைப்புழுக்கள், உருளைப்புழுக்கள், வளைத்தசைப் புழுக்கள், மெல்லுடலிகள், கணுக்காலிகள் மற்றும் முட்தோலிகள் போன்ற பல தனித்தொகுதிகள் அடங்குகின்றன.",
+        "இத்தொகுதிகள் உடல் அமைப்பு நிலை, சமச்சீர், உடற்குழி, கண்டமாதல், கருவியல் வளர்ச்சி மற்றும் உறுப்புமண்டலங்களில் அடிப்படையான வேறுபாடுகளைக் கொண்டுள்ளன.",
+        "முதுகெலும்பு இல்லாமை ஒரு வசதியான எதிர்மறைப் பண்பாகும்; ஒரே இயற்கைக் கிளேட்டை வரையறுக்கும் தனித்த பெறப்பட்ட பண்பாகாது. Chordata-விலும் முதுகெலும்பற்ற கிளைகள் உள்ளன.",
+        "எனவே தேர்வு விடையில் ‘Invertebrata’ என்பதைப் பாடக் குழுவாகக் குறிப்பிடலாம்; ஆனால் ஒவ்வொரு உயிரினத்தையும் அதற்குரிய தொகுதி மற்றும் கீழ்நிலைக் வரிசைகளில் வகைப்படுத்த வேண்டும்."
+      ]
+    ]
+  },
+  "u1-protozoa": {
+    "id": "u1-protozoa",
+    "q5_en": [
+      "Give the general characters of Protozoa with suitable examples.",
+      "Distinguish the traditional groups Ciliata and Sporozoa in five points."
+    ],
+    "a5_en": [
+      [
+        "‘Protozoa’ is a traditional teaching group of mostly unicellular eukaryotic protists; modern phylogeny distributes these organisms among several eukaryotic lineages rather than one natural clade.",
+        "Each organism is a single eukaryotic cell with a nucleus and membrane-bound organelles; the cell surface may be a plasma membrane or a specialized pellicle.",
+        "Locomotion, when present, is commonly by pseudopodia, flagella or cilia; some parasitic forms lack conspicuous locomotory organelles in important stages.",
+        "Nutrition may be phagotrophic/holozoic, osmotrophic/saprozoic, photosynthetic or mixotrophic depending on the organism; freshwater forms often possess contractile-vacuole systems for osmoregulation.",
+        "Reproduction is usually asexual by fission, while sexual processes occur in several groups; examples include Amoeba, Paramecium, Euglena and the parasitic Plasmodium."
+      ],
+      [
+        "Ciliata corresponds broadly to ciliates (Ciliophora), whereas the traditional Sporozoa largely includes parasitic apicomplexans; both names should be recognized as syllabus/historical terminology.",
+        "Ciliates possess numerous short cilia for locomotion or feeding; adult apicomplexans generally lack cilia and ordinary locomotory organelles, although specialized motile stages occur.",
+        "Ciliates typically show nuclear dimorphism with a macronucleus and one or more micronuclei; apicomplexans do not show this characteristic macro-/micronuclear organization.",
+        "Many ciliates feed through an oral apparatus/cytostome and may be free-living; apicomplexans are obligate parasites and obtain nutrients from host-associated environments.",
+        "Ciliates may undergo conjugation in addition to binary fission, whereas apicomplexans typically have complex life cycles with asexual multiplication and sexual/spore-forming phases; Paramecium and Plasmodium are representative examples."
+      ]
+    ],
+    "q5_ta": [
+      "புரோட்டோசோவாவின் பொதுப் பண்புகளைத் தகுந்த எடுத்துக்காட்டுகளுடன் விளக்குக.",
+      "பாரம்பரிய வகைப்பாட்டில் உள்ள Ciliata மற்றும் Sporozoa ஆகியவற்றை ஐந்து அம்சங்களில் வேறுபடுத்துக."
+    ],
+    "a5_ta": [
+      [
+        "‘Protozoa’ என்பது பாரம்பரியப் பாடவகைப்பாட்டில் பெரும்பாலும் ஒருசெல் யூகேரியோட்டுப் புரோட்டிஸ்டுகளை குறிக்கும் பெயராகும்; நவீன இனவரலாற்றியல் இவ்வுயிரிகளை ஒரே இயற்கைக் கிளேட்டாக அல்லாமல் பல யூகேரியோட்டு வழித்தோன்றல்களில் அமைக்கிறது.",
+        "ஒவ்வொரு உயிரியும் உட்கருவும் படலத்தால் சூழப்பட்ட செல் உறுப்புகளும் கொண்ட ஒரே யூகேரியோட்டுச் செல்லாகும்; செல் மேற்பரப்பு எளிய பிளாஸ்மா படலமாகவோ சிறப்புற்ற பெல்லிக்கிளாகவோ இருக்கலாம்.",
+        "இயக்கம் பொதுவாக போலிக்கால்கள், சாட்டையிழைகள் அல்லது குறுஇழைகள் (cilia) மூலம் நடைபெறும்; சில ஒட்டுண்ணி நிலைகளில் வெளிப்படையான இயக்க உறுப்புகள் காணப்படாமல் இருக்கலாம்.",
+        "ஊட்டம் உயிர்த்துகளுண்ணல், கரைந்த ஊட்டச்சத்து உறிஞ்சல், ஒளிச்சேர்க்கை அல்லது கலப்பு ஊட்டம் போன்ற முறைகளில் அமையும்; நன்னீர் வடிவங்களில் நீர்ச்சமநிலைக்காக சுருங்கும் நுண்குமிழ் அமைப்பு காணப்படலாம்.",
+        "பெரும்பாலும் இருபிளவால் பாலிலா இனப்பெருக்கம் நடைபெறும்; சில குழுக்களில் பாலியல் நிகழ்வுகளும் உண்டு. Amoeba, Paramecium, Euglena மற்றும் Plasmodium ஆகியவை எடுத்துக்காட்டுகள்."
+      ],
+      [
+        "Ciliata என்பது பெரும்பாலும் குறுஇழையுயிரிகள் (Ciliophora) உடன் ஒத்த பாரம்பரியக் குழு; Sporozoa என்ற பழைய பெயர் பெரும்பாலும் ஒட்டுண்ணி Apicomplexa உறுப்பினர்களைக் குறிக்கிறது.",
+        "Ciliata உறுப்பினர்களில் இயக்கத்திற்கும் உணவோட்டத்திற்கும் பல குறுகிய குறுஇழைகள் உள்ளன; Apicomplexa-வின் முதிர்ந்த நிலைகளில் சாதாரண குறுஇழை அல்லது சாட்டையிழை இயக்க உறுப்புகள் பொதுவாக இல்லை.",
+        "Ciliata-வில் பேருட்கரு மற்றும் ஒன்று அல்லது அதற்கு மேற்பட்ட சிற்றுட்கருக்கள் என உட்கரு இருவகைமை பொதுவாகக் காணப்படும்; Apicomplexa-வில் இவ்வகை பேருட்கரு–சிற்றுட்கரு அமைப்பு இல்லை.",
+        "பல Ciliata உயிரிகள் வாயமைப்பு/சைட்டோஸ்டோம் வழியாகத் துகளுண்ணுகின்றன மற்றும் பல வடிவங்கள் சுதந்திரவாழ்வுடையவை; Apicomplexa உறுப்பினர்கள் கட்டாய ஒட்டுண்ணிகளாக இருந்து புரவலருடன் தொடர்புடைய சூழலில் ஊட்டச்சத்தைப் பெறுகின்றனர்.",
+        "Ciliata-வில் இருபிளவுடன் இணைவு (conjugation) நிகழலாம்; Apicomplexa-வில் பாலிலா பெருக்கமும் பாலியல்/வித்துருவாக்க நிலைகளும் கொண்ட சிக்கலான வாழ்க்கைச் சுழற்சி காணப்படும். Paramecium மற்றும் Plasmodium தகுந்த எடுத்துக்காட்டுகள்."
+      ]
+    ]
+  },
+  "u1-paramecium": {
+    "id": "u1-paramecium",
+    "q5_en": [
+      "Describe osmoregulation and feeding in Paramecium.",
+      "Outline conjugation in Paramecium."
+    ],
+    "a5_en": [
+      [
+        "Ciliary currents sweep suspended food particles into the oral groove and through the cytostome/cytopharynx, where food vacuoles are formed.",
+        "Food vacuoles circulate through the endoplasm by cyclosis; digestive conditions change during vacuolar maturation and soluble products are absorbed into the cytoplasm.",
+        "Undigested residues are expelled at the cytoproct (cytopyge), completing the feeding pathway.",
+        "Because freshwater is hypotonic to the cytoplasm, water continuously enters osmotically; two contractile-vacuole complexes with collecting canals gather excess cytosolic water.",
+        "Periodic filling and contraction of the contractile vacuoles expels excess water to the exterior, maintaining osmotic and cell-volume balance."
+      ],
+      [
+        "Two compatible Paramecium cells align at their oral surfaces and form a temporary conjugating pair; the old macronucleus later degenerates.",
+        "The diploid micronucleus in each conjugant undergoes meiosis; three haploid products usually degenerate and the remaining one divides mitotically to form stationary and migratory pronuclei.",
+        "The migratory pronucleus is exchanged between the conjugants, so each cell receives a haploid nucleus from its partner.",
+        "The exchanged pronucleus fuses with the stationary pronucleus to form a diploid synkaryon (zygote nucleus).",
+        "The conjugants separate; nuclear reorganization produces new micronuclei and macronuclei, followed by post-conjugational cell divisions."
+      ]
+    ],
+    "q5_ta": [
+      "Paramecium-இல் நீர்ச்சமநிலை ஒழுங்குபடுத்தலும் உணவூட்டமும் எவ்வாறு நடைபெறுகின்றன என்பதை விளக்குக.",
+      "Paramecium-இல் இணைவு (conjugation) நிகழ்வைச் சுருக்கமாக விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "குறுஇழைகளின் ஒருங்கிணைந்த அசைவு நீரில் உள்ள உணவுத்துகள்களை வாய்ப்பள்ளத்திற்கும் பின்னர் சைட்டோஸ்டோம்/சைட்டோஃபாரிங்ஸ் பகுதிக்கும் கொண்டு செல்கிறது; அங்கு உணவுக் குமிழ்கள் உருவாகின்றன.",
+        "உணவுக் குமிழ்கள் சைட்டோபிளாஸ்மத்தில் சைக்ளோசிஸ் மூலம் சுற்றிச் செல்கின்றன; அவை முதிரும் போது செரிமானச் சூழல் மாறி, கரைந்த ஊட்டச்சத்துகள் சைட்டோபிளாஸ்மத்தில் உறிஞ்சப்படுகின்றன.",
+        "செரியாத மீதிப்பொருள்கள் செல் கழிவுத்துளை (cytoproct/cytopyge) வழியாக வெளியேற்றப்படுகின்றன.",
+        "நன்னீர் சைட்டோபிளாஸ்மத்தை விட குறைந்த கரைசல் செறிவு கொண்டதால் நீர் ஒஸ்மோசிஸால் தொடர்ந்து செலுக்குள் நுழைகிறது; சேகரிப்புக் கால்வாய்களுடன் கூடிய இரண்டு சுருங்கும் நுண்குமிழ் அமைப்புகள் அதிகப்படியான நீரைச் சேகரிக்கின்றன.",
+        "சுருங்கும் நுண்குமிழ்கள் காலமுறைப்படி நிரம்பி சுருங்கி நீரை வெளியேற்றுவதன் மூலம் நீர்ச்சமநிலையையும் செல்அளவையும் பேணுகின்றன."
+      ],
+      [
+        "இணக்கமான இரண்டு Paramecium செல்கள் வாய்ப்புறங்களில் ஒன்றோடொன்று இணைந்து தற்காலிக இணைவுச் ஜோடியை உருவாக்குகின்றன; பழைய பேருட்கரு பின்னர் சிதைகிறது.",
+        "ஒவ்வொரு இணைவுயிரிலும் உள்ள இரட்டையணு சிற்றுட்கரு மியாசிஸ் அடைகிறது; உருவான நான்கு ஒற்றையணுக் கருக்களில் மூன்று பொதுவாக சிதைந்து, மீதமுள்ள ஒன்று மைட்டோசிஸால் நிலைக்கரு மற்றும் இடம்பெயர்கருவை உருவாக்குகிறது.",
+        "இடம்பெயர்கரு இரு இணைவுயிர்களுக்கிடையில் பரிமாறப்படுகிறது; இதனால் ஒவ்வொரு செல்லும் எதிர் இணைவுயிரிலிருந்து ஒரு ஒற்றையணுக் கருவைப் பெறுகிறது.",
+        "பெறப்பட்ட இடம்பெயர்கரு நிலைக்கருவுடன் இணைந்து இரட்டையணு சின்காரியோனை (zygote nucleus) உருவாக்குகிறது.",
+        "பின்னர் இணைவுயிர்கள் பிரிகின்றன; புதிய சிற்றுட்கரு மற்றும் பேருட்கருக்கள் உருவாகும் உட்கரு மறுசீரமைப்பு நடைபெற்று, அதனைத் தொடர்ந்து செல்பிரிவுகள் நிகழ்கின்றன."
+      ]
+    ]
+  },
+  "u1-proto-parasites": {
+    "id": "u1-proto-parasites",
+    "q5_en": [
+      "Compare Entamoeba histolytica, Trypanosoma brucei and Leishmania in a tabular form.",
+      "Why does boiling drinking water not control sleeping sickness?"
+    ],
+    "a5_en": [
+      [
+        "Transmission/infective form: E. histolytica is acquired mainly by ingestion of mature cysts; T. brucei is transmitted mainly by an infective tsetse-fly bite; Leishmania is transmitted by infected sand flies that inoculate promastigotes.",
+        "Principal human site: E. histolytica trophozoites colonize the large intestine and may invade tissues such as the liver; T. brucei occurs in blood/lymph and later the central nervous system; Leishmania amastigotes multiply mainly within macrophages.",
+        "Vector requirement: E. histolytica has no obligatory arthropod vector; T. brucei requires Glossina (tsetse) in its normal cycle; Leishmania requires phlebotomine sand flies.",
+        "Major disease association: E. histolytica causes amoebiasis; T. brucei causes human African trypanosomiasis (sleeping sickness); Leishmania species cause cutaneous, mucocutaneous or visceral leishmaniasis.",
+        "Control principles differ accordingly: safe water/food and sanitation for amoebiasis; avoidance/control of tsetse exposure plus case detection and treatment for sleeping sickness; sand-fly exposure control plus diagnosis and treatment for leishmaniasis."
+      ],
+      [
+        "Sleeping sickness is primarily a vector-borne disease: humans usually acquire Trypanosoma brucei from the bite of an infected tsetse fly, not by drinking contaminated water.",
+        "The infective trypanosomes are delivered through the skin during feeding by the fly and subsequently multiply in blood and lymph; later they may invade the central nervous system.",
+        "Therefore boiling drinking water does not interrupt the principal transmission route and cannot substitute for measures directed at the vector and infected hosts.",
+        "Effective prevention focuses on reducing tsetse exposure and, where appropriate, vector-control programmes, together with surveillance, diagnosis and treatment of infected people.",
+        "Boiling water remains valuable for water-borne infections, but its lack of effect on tsetse-borne transmission explains why it is not a control measure for sleeping sickness."
+      ]
+    ],
+    "q5_ta": [
+      "Entamoeba histolytica, Trypanosoma brucei மற்றும் Leishmania ஆகியவற்றை அட்டவணை வடிவில் ஒப்பிடுக.",
+      "குடிநீரைக் கொதிக்கவைத்தல் ஏன் ஸ்லீப்பிங் சிக்னஸ் (African trypanosomiasis) நோயைக் கட்டுப்படுத்தாது?"
+    ],
+    "a5_ta": [
+      [
+        "பரவல்/தொற்றுநிலை: E. histolytica பொதுவாக முதிர்ந்த சிஸ்டுகளை விழுங்குவதால் தொற்றுகிறது; T. brucei தொற்றிய ட்செட்செ ஈ கடியால் பரவுகிறது; Leishmania தொற்றிய மணல் ஈ ஊட்டும்போது promastigote நிலையை செலுத்துகிறது.",
+        "மனித உடலில் முக்கிய இருப்பிடம்: E. histolytica trophozoite-கள் பெருங்குடலில் வாழ்ந்து கல்லீரல் போன்ற திசுக்களையும் தாக்கலாம்; T. brucei இரத்தம் மற்றும் நிணநீரில் இருந்து பின்னர் மைய நரம்பு மண்டலத்தை அடையலாம்; Leishmania-வின் amastigote-கள் பெரும்பாலும் பெருவிழுங்கணுக்களுக்குள் பெருகுகின்றன.",
+        "நோய்க்கடத்தி: E. histolytica-க்கு கட்டாய கணுக்காலி நோய்க்கடத்தி இல்லை; T. brucei-யின் இயல்பான சுழற்சியில் Glossina (ட்செட்செ ஈ) அவசியம்; Leishmania-க்கு phlebotomine மணல் ஈ அவசியம்.",
+        "முக்கிய நோய்: E. histolytica — அமீபியாசிஸ்; T. brucei — மனித ஆப்பிரிக்க டிரைப்பனோசோமியாசிஸ்/ஸ்லீப்பிங் சிக்னஸ்; Leishmania — தோல், மூக்குவாய் அல்லது உள்ளுறுப்பு லீஷ்மேனியாசிஸ்.",
+        "கட்டுப்பாடு காரணத்திற்கேற்ப மாறும்: அமீபியாசிஸுக்கு பாதுகாப்பான நீர்–உணவு மற்றும் சுகாதாரம்; ஸ்லீப்பிங் சிக்னஸுக்கு ட்செட்செ ஈத் தொடர்பைக் குறைத்தல், கண்காணிப்பு மற்றும் சிகிச்சை; லீஷ்மேனியாசிஸுக்கு மணல் ஈத் தொடர்பைக் குறைத்தல், கண்டறிதல் மற்றும் சிகிச்சை."
+      ],
+      [
+        "ஸ்லீப்பிங் சிக்னஸ் முதன்மையாக நோய்க்கடத்தி மூலம் பரவும் நோயாகும்; மனிதர்கள் பொதுவாக மாசுபட்ட நீரைப் பருகுவதால் அல்ல, தொற்றிய ட்செட்செ ஈ கடியால் T. brucei-யைப் பெறுகின்றனர்.",
+        "ஈ இரத்தம் உறிஞ்சும் போது தொற்றுநிலை டிரைப்பனோசோம்கள் தோல் வழியாக நுழைந்து இரத்தம் மற்றும் நிணநீரில் பெருகுகின்றன; பின்னர் மைய நரம்பு மண்டலத்தையும் அடையலாம்.",
+        "எனவே குடிநீரைக் கொதிக்கவைத்தல் முக்கிய பரவல் பாதையைத் தடுக்காது; அது நோய்க்கடத்தி மற்றும் தொற்றிய புரவலரை நோக்கிய கட்டுப்பாட்டு நடவடிக்கைகளுக்கு மாற்றாக இருக்க முடியாது.",
+        "தடுப்பு நடவடிக்கைகள் ட்செட்செ ஈத் தொடர்பைக் குறைத்தல், தேவையான இடங்களில் நோய்க்கடத்தி கட்டுப்பாடு, கண்காணிப்பு, துல்லியமான கண்டறிதல் மற்றும் பாதிக்கப்பட்டவர்களுக்கு சிகிச்சை வழங்குதல் ஆகியவற்றை உள்ளடக்குகின்றன.",
+        "நீர்வழி நோய்களைத் தடுக்க நீரைக் கொதிக்கவைத்தல் பயனுள்ளதாக இருந்தாலும், ட்செட்செ ஈ வழிப் பரவலைத் தடுக்க முடியாததால் ஸ்லீப்பிங் சிக்னஸின் குறிப்பிட்ட கட்டுப்பாட்டு முறையாக அது அமையாது."
+      ]
+    ]
+  },
+  "u1-nutrition": {
+    "id": "u1-nutrition",
+    "q5_en": [
+      "Explain four modes of nutrition in protozoan/protist forms with suitable examples.",
+      "Explain how cellular structures enable different modes of nutrition in representative protozoan/protist forms."
+    ],
+    "a5_en": [
+      [
+        "Holozoic or phagotrophic nutrition involves ingestion of particulate food followed by intracellular digestion; Amoeba engulfs particles with pseudopodia and Paramecium uses its oral apparatus.",
+        "Saprozoic or osmotrophic nutrition involves absorption of dissolved organic nutrients across the cell surface; this is important in several parasitic or decomposer protists.",
+        "Holophytic/photoautotrophic nutrition uses photosynthetic pigments and chloroplasts to synthesize organic food from inorganic substances in light; Euglena is a standard syllabus example when photosynthesizing.",
+        "Mixotrophic nutrition combines autotrophic and heterotrophic nutrition according to conditions; Euglena can switch between photosynthesis and uptake/use of organic nutrients, and some ciliates are mixotrophic through algal symbionts.",
+        "These categories describe nutritional strategy, not rigid modern taxonomic groups; the mode shown depends on the organism, its structures and environmental conditions."
+      ],
+      [
+        "Amoeba lacks a fixed cytostome and captures particulate food by extending pseudopodia around it to form phagosomes/food vacuoles.",
+        "Paramecium uses coordinated cilia, an oral groove and cytostome/cytopharynx to concentrate and internalize suspended food particles.",
+        "Photosynthetic forms such as Euglena use chloroplasts containing photosynthetic pigments to manufacture organic compounds when light is available.",
+        "Several osmotrophic or parasitic protists obtain dissolved nutrients across the plasma membrane rather than through a specialized mouth-like organelle.",
+        "Therefore no single organelle universally determines ‘holozoic nutrition’; feeding mode results from the particular structural equipment and physiology of each organism."
+      ]
+    ],
+    "q5_ta": [
+      "புரோட்டோசோவா/புரோட்டிஸ்ட் வடிவங்களில் காணப்படும் நான்கு ஊட்ட முறைகளைத் தகுந்த எடுத்துக்காட்டுகளுடன் விளக்குக.",
+      "பிரதிநிதிப் புரோட்டோசோவா/புரோட்டிஸ்ட் வடிவங்களில் வெவ்வேறு ஊட்ட முறைகளை செல் அமைப்புகள் எவ்வாறு செயல்படுத்துகின்றன என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "உயிர்த்துகளுண்ணல் அல்லது phagotrophic ஊட்டத்தில் திட உணவுத்துகள்கள் உட்கொள்ளப்பட்டு செலுக்குள் செரிமானம் நடைபெறும்; Amoeba போலிக்கால்களால் துகள்களைச் சூழ்கிறது, Paramecium தனது வாயமைப்பைப் பயன்படுத்துகிறது.",
+        "கரைந்த ஊட்டச்சத்து உறிஞ்சல் அல்லது osmotrophic/saprozoic ஊட்டத்தில் கரைந்த கரிமப் பொருள்கள் செல் மேற்பரப்பு வழியாக உறிஞ்சப்படுகின்றன; பல ஒட்டுண்ணி மற்றும் சிதைவுண்ணிப் புரோட்டிஸ்டுகளில் இது முக்கியமானது.",
+        "ஒளிச்சேர்க்கை அல்லது photoautotrophic ஊட்டத்தில் ஒளிச்சேர்க்கை நிறமிகளும் குளோரோபிளாஸ்ட்களும் உதவியுடன் ஒளியில் கனிமப் பொருள்களிலிருந்து கரிம உணவு உருவாக்கப்படுகிறது; ஒளிச்சேர்க்கை செய்யும் Euglena பாடத்திட்ட எடுத்துக்காட்டாகும்.",
+        "கலப்பு ஊட்டத்தில் autotrophic மற்றும் heterotrophic ஊட்டங்கள் சூழ்நிலைக்கேற்ப இணைகின்றன; Euglena ஒளிச்சேர்க்கையையும் கரிம ஊட்டப் பயன்பாட்டையும் மேற்கொள்ள முடியும்; சில குறுஇழையுயிரிகளில் பச்சை அழி உடன்வாழ்வால் கலப்பு ஊட்டம் நிகழ்கிறது.",
+        "இவ்வகைகள் ஊட்ட உத்திகளை விளக்குகின்றன; அவை நிலையான நவீன வகைப்பாட்டுக் குழுக்கள் அல்ல. எந்த ஊட்டமுறை நடைபெறுகிறது என்பது உயிரினத்தின் அமைப்பும் உடலியலும் சூழலும் சார்ந்தது."
+      ],
+      [
+        "Amoeba-விற்கு நிலையான சைட்டோஸ்டோம் இல்லை; அது போலிக்கால்களை நீட்டி உணவுத்துகள்களைச் சூழ்ந்து phagosome/உணவுக் குமிழ்களை உருவாக்குகிறது.",
+        "Paramecium-இல் ஒருங்கிணைந்த குறுஇழைகள், வாய்ப்பள்ளம் மற்றும் சைட்டோஸ்டோம்/சைட்டோஃபாரிங்ஸ் ஆகியவை நீரில் உள்ள உணவுத்துகள்களைத் திரட்டி உள்ளிழுக்க உதவுகின்றன.",
+        "Euglena போன்ற ஒளிச்சேர்க்கை வடிவங்களில் ஒளிச்சேர்க்கை நிறமிகள் கொண்ட குளோரோபிளாஸ்ட்கள் ஒளி இருக்கும் போது கரிமச் சேர்மங்களை உருவாக்குகின்றன.",
+        "பல osmotrophic அல்லது ஒட்டுண்ணிப் புரோட்டிஸ்டுகள் வாயைப் போன்ற சிறப்பு உறுப்பை பயன்படுத்தாமல் பிளாஸ்மா படலத்தின் வழியாக கரைந்த ஊட்டச்சத்துகளைப் பெறுகின்றன.",
+        "எனவே ‘உயிர்த்துகளுண்ணல்’ ஒரு பொதுவான ஒற்றை உறுப்பைச் சார்ந்தது அல்ல; ஒவ்வொரு உயிரினத்தின் தனித்த அமைப்பும் உடலியலும் அதன் ஊட்ட முறையை நிர்ணயிக்கின்றன."
+      ]
+    ]
+  },
+  "u1-host-parasite": {
+    "id": "u1-host-parasite",
+    "q5_en": [
+      "Compare the life cycles of Entamoeba histolytica and Plasmodium.",
+      "Relate malarial fever to a named Plasmodium stage."
+    ],
+    "a5_en": [
+      [
+        "E. histolytica normally completes its transmissible cycle in one principal host, humans, whereas Plasmodium alternates between a vertebrate host and a female Anopheles mosquito.",
+        "The infective stage for amoebiasis is the mature cyst acquired mainly by fecal–oral ingestion; malaria infection in humans begins when a mosquito inoculates sporozoites.",
+        "E. histolytica excysts, colonizes the large intestine as trophozoites and may invade tissues; Plasmodium first undergoes hepatic schizogony and then repeated erythrocytic cycles in red blood cells.",
+        "Sexual reproduction is not a required second-host phase in the E. histolytica cycle; in Plasmodium, gametocytes taken up by the mosquito undergo sexual development and sporogony in the vector.",
+        "Transmission/control therefore differs: Entamoeba cysts leave in feces and are controlled by sanitation and safe food/water, whereas malaria transmission depends on mosquitoes and is reduced by vector control, bite prevention, diagnosis and treatment."
+      ],
+      [
+        "The fever-producing blood cycle is erythrocytic schizogony: ring-stage trophozoites develop into schizonts within red blood cells.",
+        "When mature infected erythrocytes rupture, merozoites and parasite-derived material are released into the circulation.",
+        "This rupture and parasite material stimulate host inflammatory mediators/cytokines, producing fever, chills and the malarial paroxysm.",
+        "The tendency toward periodic fever reflects the degree of synchronization and species-specific duration of erythrocytic cycles, although periodicity may be imperfect, especially in falciparum malaria.",
+        "Hypnozoites of P. vivax/P. ovale are dormant liver stages that can cause relapse later; they are not themselves the immediate stage producing a fever paroxysm."
+      ]
+    ],
+    "q5_ta": [
+      "Entamoeba histolytica மற்றும் Plasmodium ஆகியவற்றின் வாழ்க்கைச் சுழற்சிகளை ஒப்பிடுக.",
+      "மலேரியா காய்ச்சலை Plasmodium-இன் குறிப்பிட்ட வளர்நிலையுடன் தொடர்புபடுத்தி விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "E. histolytica-வின் பரவக்கூடிய வாழ்க்கைச் சுழற்சி பொதுவாக ஒரே முக்கிய புரவலரான மனிதரில் நிறைவடைகிறது; Plasmodium ஒரு முதுகெலும்பிய புரவலரும் பெண் Anopheles கொசுவும் இடையே மாறி நடைபெறும் இருபுரவலர் சுழற்சியைக் கொண்டுள்ளது.",
+        "அமீபியாசிஸில் மனிதருக்கு தொற்றுநிலை முதிர்ந்த சிஸ்ட்; அது பெரும்பாலும் மல–வாய் வழியாக உட்கொள்ளப்படுகிறது. மலேரியாவில் தொற்றிய கொசு sporozoite-களை மனித உடலில் செலுத்துவதால் தொற்று தொடங்குகிறது.",
+        "E. histolytica சிஸ்டிலிருந்து வெளிவந்து trophozoite ஆக பெருங்குடலில் குடியேறி திசுக்களைத் தாக்கலாம்; Plasmodium முதலில் கல்லீரலில் schizogony செய்து பின்னர் செங்குருதியணுக்களில் மீண்டும் மீண்டும் erythrocytic சுழற்சிகளை மேற்கொள்கிறது.",
+        "E. histolytica வாழ்க்கைச் சுழற்சிக்கு கட்டாய இரண்டாம் புரவலரில் நடைபெறும் பாலியல் நிலை இல்லை; Plasmodium gametocyte-கள் கொசுவால் எடுத்துக்கொள்ளப்பட்டு அதனுள் பாலியல் வளர்ச்சியும் sporogony-யும் அடைகின்றன.",
+        "எனவே பரவலும் கட்டுப்பாடும் வேறுபடும்: Entamoeba சிஸ்டுகள் மலத்துடன் வெளியேறுவதால் சுகாதாரம் மற்றும் பாதுகாப்பான நீர்–உணவு முக்கியம்; மலேரியாவில் கொசு கட்டுப்பாடு, கடியிலிருந்து பாதுகாப்பு, கண்டறிதல் மற்றும் சிகிச்சை முக்கியம்."
+      ],
+      [
+        "காய்ச்சலை உருவாக்கும் இரத்தநிலை erythrocytic schizogony ஆகும்; செங்குருதியணுக்களில் ring-stage trophozoite-கள் வளர்ந்து schizont-களாக மாறுகின்றன.",
+        "முதிர்ந்த தொற்றிய செங்குருதியணுக்கள் வெடிக்கும் போது merozoite-களும் ஒட்டுண்ணியிலிருந்து வந்த பொருள்களும் இரத்த ஓட்டத்தில் வெளிவிடப்படுகின்றன.",
+        "இந்த வெடிப்பும் ஒட்டுண்ணிப் பொருள்களும் புரவலரின் அழற்சி நடுநிலையாக்கிகள்/cytokine-களைத் தூண்டுவதால் காய்ச்சல், குளிர்ச்சல் மற்றும் malarial paroxysm ஏற்படுகின்றன.",
+        "செங்குருதியணுச் சுழற்சியின் இனவாரியான காலநீளமும் ஒத்திசைவு அளவும் காய்ச்சலின் காலமுறைக்குக் காரணமாகின்றன; குறிப்பாக falciparum மலேரியாவில் இக்காலமுறை எப்போதும் தெளிவாக இருக்காது.",
+        "P. vivax/P. ovale-இன் hypnozoite-கள் கல்லீரலில் உறங்கிய நிலையில் இருந்து பின்னர் மீள்தொற்றை ஏற்படுத்தலாம்; உடனடி காய்ச்சல் அலைவை உருவாக்கும் நிலை அவை அல்ல."
+      ]
+    ]
+  },
+  "u1-locomotion": {
+    "id": "u1-locomotion",
+    "q5_en": [
+      "Compare cilia, flagella and pseudopodia as locomotory structures in protists.",
+      "Relate major locomotory structures to representative genera and habitats."
+    ],
+    "a5_en": [
+      [
+        "Cilia are numerous, short membrane-covered projections that beat in coordinated waves; Paramecium uses them to swim and to generate feeding currents.",
+        "Flagella are usually fewer and longer than cilia and propel or pull the cell by wave-like beating; Euglena is a standard example.",
+        "Both cilia and eukaryotic flagella are microtubule-based organelles with the characteristic axonemal organization, although their number and beating patterns differ.",
+        "Pseudopodia are temporary cytoplasmic extensions rather than permanent hair-like organelles; Amoeba extends and anchors them for amoeboid movement and also uses them in phagocytosis.",
+        "Thus locomotion reflects both structure and habitat: cilia and flagella are especially effective for swimming in water, whereas pseudopodia provide crawling/creeping movement over surfaces or through mucus and similar media."
+      ],
+      [
+        "Euglena — flagellum — swimming in freshwater/water-column habitats.",
+        "Paramecium — numerous cilia — active swimming in freshwater around suspended particles and microbial food.",
+        "Amoeba — pseudopodia — crawling over submerged surfaces and sediments while engulfing food.",
+        "Entamoeba histolytica trophozoite — pseudopodia — amoeboid movement within the intestinal lumen/mucus and during tissue invasion.",
+        "Many adult apicomplexan stages lack ordinary cilia, flagella or pseudopodia and instead use specialized gliding mechanisms; therefore absence of a conspicuous locomotory organelle is also biologically significant."
+      ]
+    ],
+    "q5_ta": [
+      "புரோட்டிஸ்டுகளில் இயக்க உறுப்புகளாகச் செயல்படும் குறுஇழைகள், சாட்டையிழைகள் மற்றும் போலிக்கால்களை ஒப்பிடுக.",
+      "முக்கிய இயக்க உறுப்புகளை அவற்றின் பிரதிநிதிப் பேரினங்களும் வாழிடங்களும் உடன் தொடர்புபடுத்துக."
+    ],
+    "a5_ta": [
+      [
+        "குறுஇழைகள் (cilia) எண்ணிக்கையில் பலவும் நீளத்தில் குறுகியவையும் ஆகும்; அவை ஒருங்கிணைந்த அலைபோன்ற அசைவால் செலினை நகர்த்துகின்றன. Paramecium அவற்றை நீந்தலுக்கும் உணவோட்டத்தை உருவாக்குவதற்கும் பயன்படுத்துகிறது.",
+        "சாட்டையிழைகள் (flagella) பொதுவாக குறுஇழைகளை விட எண்ணிக்கையில் குறைவாகவும் நீளமாகவும் உள்ளன; அலைபோன்ற அசைவால் செலினை இழுத்தோ தள்ளியோ நகர்த்துகின்றன. Euglena ஒரு வழக்கமான எடுத்துக்காட்டு.",
+        "யூகேரியோட்டுக் குறுஇழைகளும் சாட்டையிழைகளும் நுண்குழாய் அடிப்படையிலான axoneme அமைப்பைக் கொண்டவை; ஆனால் அவற்றின் எண்ணிக்கையும் அசைவு முறையும் வேறுபடும்.",
+        "போலிக்கால்கள் நிரந்தர இழை உறுப்புகள் அல்ல; அவை தற்காலிக சைட்டோபிளாஸ்ம நீட்சிகள். Amoeba அவற்றை நீட்டி பற்றிச் செல்வதற்கும் உணவுத்துகள்களை விழுங்குவதற்கும் பயன்படுத்துகிறது.",
+        "எனவே இயக்கம் அமைப்புடனும் வாழிடத்துடனும் தொடர்புடையது: குறுஇழை மற்றும் சாட்டையிழை நீரில் நீந்துவதற்கு ஏற்றவை; போலிக்கால்கள் மேற்பரப்பில் ஊர்வதற்கும் சளி போன்ற ஊடகங்களில் நகர்வதற்கும் ஏற்றவை."
+      ],
+      [
+        "Euglena — சாட்டையிழை — நன்னீர் மற்றும் நீர்த்தூண் சூழலில் நீந்துதல்.",
+        "Paramecium — ஏராளமான குறுஇழைகள் — நன்னீரில் செயற்பாட்டுடன் நீந்தி நுண்ணுயிர் உணவுத்துகள்களை அணுகுதல்.",
+        "Amoeba — போலிக்கால்கள் — நீரில் மூழ்கிய மேற்பரப்புகள்/அடித்தட்டு மீது ஊர்ந்து சென்று உணவை விழுங்குதல்.",
+        "Entamoeba histolytica trophozoite — போலிக்கால்கள் — பெருங்குடல் உள்ளுறை/சளியில் நகர்தலும் திசு ஊடுருவலும்.",
+        "பல Apicomplexa முதிர்ந்த நிலைகளில் சாதாரண குறுஇழை, சாட்டையிழை அல்லது போலிக்கால் காணப்படாது; அவை சிறப்புற்ற gliding இயக்கத்தைப் பயன்படுத்துகின்றன. ஆகவே வெளிப்படையான இயக்க உறுப்பின் இல்லாமையும் உயிரியல் முக்கியத்துவம் உடையது."
+      ]
+    ]
+  }
+}

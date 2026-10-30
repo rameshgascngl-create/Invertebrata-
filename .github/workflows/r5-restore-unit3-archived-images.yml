@@ -1,0 +1,105 @@
+name: R5 restore SHA-sealed Unit III archival raster candidates
+'on':
+  push:
+    branches:
+      - native/five-unit-restoration-r5-source-art-20261018
+    paths:
+      - .github/workflows/r5-restore-unit3-archived-images.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: r5-unit3-byte-preserving-import-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  restore-exact-artifact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Recover six immutable Unit III original-reference plates
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38544505746
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-six-sourced-atlas-masters
+          path: native-app/app/src/main/assets/type_studies
+      - name: Recover two independent historical full-reference figures
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38544505746
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit3-historical-raster-candidate
+          path: native-app/app/src/main/assets/unit3
+      - name: Verify sealed artwork hashes, image decoding and provenance
+        shell: bash
+        run: |
+          python3 -m venv /tmp/r5images
+          /tmp/r5images/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/r5images/bin/python ci/build_unit3_anatomy_candidate_masters.py
+          /tmp/r5images/bin/python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          root=Path("native-app/app/src/main/assets")
+          expected={
+            "unit3/fasciola_type.png":"50640478957f84d3a49c3136026181eebf1b43e9beaf51eebfef8abe057f5d61",
+            "unit3/ascaris_type.png":"2106d48ba062e1c3082e5436d30a0a0801fb80aba271550525298270cdc2e039",
+          }
+          for rel,sha in expected.items():
+              path=root/rel
+              assert path.is_file(), "Historical image absent: "+rel
+              raw=path.read_bytes()
+              assert hashlib.sha256(raw).hexdigest()==sha,"Source pixels changed: "+rel
+              with Image.open(path) as img:
+                  img.verify()
+              with Image.open(path) as img:
+                  assert img.format=="PNG" and img.width>=1400 and img.height>=1900
+                  print("UNIT3_HISTORICAL_PIXEL_MASTER="+rel,sha)
+          from importlib.machinery import SourceFileLoader
+          audit=SourceFileLoader("five_unit_audit",".github/scripts/audit-five-unit-assets.py").load_module()
+          rows=audit.audit(Path("."))
+          assert len(rows)==58
+          required=[row for row in rows if row["required"]]
+          present=[row for row in required if row["state"]=="PRESENT_UNVERIFIED"]
+          assert len(required)==43 and len(present)==17,(len(required),len(present))
+          assert len([x for x in present if x["unit"]==3])==6
+          assert len([x for x in present if x["unit"]==2])==3
+          assert len([x for x in present if x["unit"]==4])==8
+          print("UNIT3_SIX_ARCHIVAL_RASTERS_DECODE=PASS; OVERALL_MASTERS=17/43")
+          print("ACADEMIC_TAMIL_RIGHTS_APPROVED=0; PENCIL_AUTHENTICITY=NOT_VERIFIED")
+          PY
+      - name: Commit only the restored, SHA-pinned raster assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add native-app/app/src/main/assets/type_studies/fasciola/*.png
+          git add native-app/app/src/main/assets/type_studies/ascaris/*.png
+          git add native-app/app/src/main/assets/unit3/fasciola_type.png
+          git add native-app/app/src/main/assets/unit3/ascaris_type.png
+          git diff --cached --name-only
+          if git diff --cached --quiet;then
+            echo "ARCHIVE_BYTES_ALREADY_COMMITTED"
+          else
+            files="$(git diff --cached --name-only | wc -l | tr -d ' ')"
+            [[ "$files" == 8 ]] || { echo "Unexpected raster file count $files";exit 1; }
+            git commit -m "assets(r5): restore eight exact archived Fasciola/Ascaris reference rasters [academic hold]"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+      - name: Retain immutable source and academic-hold manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: R5-SHA-SEALED-UNIT3-ARCHIVE-PROVENANCE
+          path: qa-evidence/unit3/source-backed-plate-manifest.json
+          if-no-files-found: warn

@@ -1,0 +1,476 @@
+[
+  {
+    "unit": 1,
+    "asset": "unit1/replacements/paramecium_external-cilia",
+    "image": "unit1/replacements/paramecium_external-cilia.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/replacements/paramecium_oral-apparatus",
+    "image": "unit1/replacements/paramecium_oral-apparatus.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/replacements/paramecium_contractile-vacuoles",
+    "image": "unit1/replacements/paramecium_contractile-vacuoles.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/replacements/paramecium_locomotion",
+    "image": "",
+    "status": "HOLD",
+    "blockers": [
+      "MISSING_OR_CORRUPT_RASTER",
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 2,
+    "asset": "type_studies/sycon/external",
+    "image": "type_studies/sycon/external.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 2,
+    "asset": "type_studies/sycon/canal-system",
+    "image": "type_studies/sycon/canal-system.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 2,
+    "asset": "type_studies/sycon/reproduction",
+    "image": "type_studies/sycon/reproduction.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 2,
+    "asset": "type_studies/obelia/colony",
+    "image": "type_studies/obelia/colony.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 2,
+    "asset": "type_studies/obelia/hydranth-gonangium",
+    "image": "type_studies/obelia/hydranth-gonangium.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 2,
+    "asset": "type_studies/obelia/medusa",
+    "image": "type_studies/obelia/medusa.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 2,
+    "asset": "type_studies/obelia/life-cycle",
+    "image": "type_studies/obelia/life-cycle.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 3,
+    "asset": "type_studies/fasciola/external",
+    "image": "type_studies/fasciola/external.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 3,
+    "asset": "type_studies/fasciola/digestive-reproductive",
+    "image": "type_studies/fasciola/digestive-reproductive.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 3,
+    "asset": "type_studies/fasciola/life-cycle",
+    "image": "type_studies/fasciola/life-cycle.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 3,
+    "asset": "type_studies/ascaris/male-female-external",
+    "image": "type_studies/ascaris/male-female-external.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 3,
+    "asset": "type_studies/ascaris/female-internal",
+    "image": "type_studies/ascaris/female-internal.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 3,
+    "asset": "type_studies/ascaris/life-cycle",
+    "image": "type_studies/ascaris/life-cycle.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/earthworm/external-setae",
+    "image": "type_studies/earthworm/external-setae.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/earthworm/digestive",
+    "image": "type_studies/earthworm/digestive.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/earthworm/circulatory",
+    "image": "type_studies/earthworm/circulatory.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/earthworm/nervous",
+    "image": "type_studies/earthworm/nervous.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/earthworm/excretory",
+    "image": "type_studies/earthworm/excretory.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/earthworm/reproductive",
+    "image": "type_studies/earthworm/reproductive.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/penaeus/external",
+    "image": "type_studies/penaeus/external.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/penaeus/appendages",
+    "image": "type_studies/penaeus/appendages.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/penaeus/internal",
+    "image": "type_studies/penaeus/internal.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "type_studies/penaeus/larval-development",
+    "image": "type_studies/penaeus/larval-development.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/pila/external",
+    "image": "type_studies/pila/external.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/pila/mantle-cavity",
+    "image": "type_studies/pila/mantle-cavity.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/pila/ctenidium",
+    "image": "type_studies/pila/ctenidium.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/pila/torsion",
+    "image": "type_studies/pila/torsion.webp",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/asterias/external",
+    "image": "type_studies/asterias/external.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/asterias/water-vascular-system",
+    "image": "type_studies/asterias/water-vascular-system.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/asterias/internal",
+    "image": "type_studies/asterias/internal.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 5,
+    "asset": "type_studies/asterias/larval-development",
+    "image": "type_studies/asterias/larval-development.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/replacements/trypanosoma_morphology",
+    "image": "",
+    "status": "HOLD",
+    "blockers": [
+      "MISSING_OR_CORRUPT_RASTER",
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/replacements/leishmania_morphology",
+    "image": "",
+    "status": "HOLD",
+    "blockers": [
+      "MISSING_OR_CORRUPT_RASTER",
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/concepts/paramecium_oral_apparatus",
+    "image": "unit1/concepts/paramecium_oral_apparatus.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/concepts/paramecium_osmoregulation",
+    "image": "unit1/concepts/paramecium_osmoregulation.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/concepts/paramecium_nuclear_anatomy",
+    "image": "unit1/concepts/paramecium_nuclear_anatomy.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/concepts/paramecium_nutrition",
+    "image": "",
+    "status": "HOLD",
+    "blockers": [
+      "MISSING_OR_CORRUPT_RASTER",
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/concepts/paramecium_ciliary_locomotion",
+    "image": "unit1/concepts/paramecium_ciliary_locomotion.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/concepts/paramecium_binary_fission",
+    "image": "",
+    "status": "HOLD",
+    "blockers": [
+      "MISSING_OR_CORRUPT_RASTER",
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 1,
+    "asset": "unit1/concepts/paramecium_conjugation",
+    "image": "",
+    "status": "HOLD",
+    "blockers": [
+      "MISSING_OR_CORRUPT_RASTER",
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/01_external_morphology",
+    "image": "nereis/01_external_morphology.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/02_enlarged_head",
+    "image": "nereis/02_enlarged_head.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/03_biramous_parapodium",
+    "image": "nereis/03_biramous_parapodium.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/04_digestive_system",
+    "image": "nereis/04_digestive_system.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/05_circulatory_system",
+    "image": "nereis/05_circulatory_system.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/06_nervous_system",
+    "image": "nereis/06_nervous_system.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/07_excretory_system",
+    "image": "nereis/07_excretory_system.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  },
+  {
+    "unit": 4,
+    "asset": "nereis/08_trochophore_larva",
+    "image": "nereis/08_trochophore_larva.png",
+    "status": "HOLD",
+    "blockers": [
+      "NO_SCIENTIFIC_TAMIL_RIGHTS_REVIEW"
+    ]
+  }
+]

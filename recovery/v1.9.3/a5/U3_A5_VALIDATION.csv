@@ -1,0 +1,16 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: U3_A5_VALIDATION.csv>index,question_id,unit,chapter,scientific_verdict_original,tamil_verdict_original,corrections,supporting_reference,final_status
+0,u3-platy-A5-1,U3,u3-platy,PASS,FAIL,Core characters were correct but incomplete; modern/traditional classification wording and complete anatomical description added.,OpenStax Biology 2e §28.3 Platyhelminthes,PASS
+1,u3-platy-A5-2,U3,u3-platy,FAIL,FAIL,Removed colloquial 'host soup' and irrelevant value judgement; explained tegumental absorption as a cestode specialization.,OpenStax Biology 2e §28.3 Platyhelminthes,PASS
+2,u3-fasciola-A5-1,U3,u3-fasciola,FAIL,FAIL,Original omitted metacercaria and definitive-host infection route from the ordered cycle.,CDC DPDx Fascioliasis,PASS
+3,u3-fasciola-A5-2,U3,u3-fasciola,PASS,FAIL,Core liver-to-bile-duct migration was correct but missing duodenal excystment/peritoneal passage and needed full five-mark detail.,CDC DPDx Fascioliasis,PASS
+4,u3-platy-adapt-A5-1,U3,u3-platy-adapt,PASS,FAIL,Core adaptations correct but overcompressed; qualified differences between trematodes and cestodes.,OpenStax Biology 2e §28.3; CDC DPDx Fascioliasis,PASS
+5,u3-platy-adapt-A5-2,U3,u3-platy-adapt,FAIL,FAIL,Replaced vague 'polyembryony/risk of water/control target' with the verified sporocyst–redia–cercaria intramolluscan amplification sequence.,CDC DPDx Fascioliasis,PASS
+6,u3-aschel-A5-1,U3,u3-aschel,PASS,FAIL,Core nematode characters correct; explicitly marked Aschelminthes as a historical syllabus grouping and Nematoda as the modern phylum.,OpenStax Biology 2e §28.5; OpenStax §27.2,PASS
+7,u3-aschel-A5-2,U3,u3-aschel,PASS,FAIL,Core longitudinal-muscle explanation correct but answer needed hydrostatic/cuticle mechanics and accurate earthworm contrast.,OpenStax Biology 2e §28.5; NCBI Bookshelf C. elegans II—Nematode Hydrostatics,PASS
+8,u3-ascaris-A5-1,U3,u3-ascaris,FAIL,FAIL,"Original sequence omitted faecal egg output, soil embryonation and bronchial ascent; 'jejunum' narrowed the adult site unnecessarily.",CDC DPDx Ascariasis,PASS
+9,u3-ascaris-A5-2,U3,u3-ascaris,PASS,FAIL,"Direct-cycle concept correct; expanded environmental egg development, internal migration and route-specific control.",CDC DPDx Ascariasis,PASS
+10,u3-nematode-parasites-A5-1,U3,u3-nematode-parasites,FAIL,FAIL,Original contained only table headings and no organism-specific scientific comparison.,CDC DPDx Lymphatic Filariasis; Enterobiasis; Intestinal Hookworm,PASS
+11,u3-nematode-parasites-A5-2,U3,u3-nematode-parasites,FAIL,FAIL,Original overgeneralized the vector as Culex and did not qualify geographic periodicity or distinguish microscopy from antigen testing.,CDC DPDx Lymphatic Filariasis; CDC DPDx Blood Specimen Collection,PASS
+12,u3-nematode-adapt-A5-1,U3,u3-nematode-adapt,FAIL,FAIL,Original included vague 'site tools/leaving stage' and a negative fluke comparison rather than a complete adaptive account.,OpenStax Biology 2e §28.5; CDC DPDx Hookworm/Lymphatic Filariasis,PASS
+13,u3-nematode-adapt-A5-2,U3,u3-nematode-adapt,FAIL,FAIL,"Original environmental slogans were scientifically imprecise; reconstructed around Ascaris eggs, hookworm L3 and mosquito-borne Wuchereria L3.",CDC DPDx Ascariasis; Intestinal Hookworm; Lymphatic Filariasis,PASS

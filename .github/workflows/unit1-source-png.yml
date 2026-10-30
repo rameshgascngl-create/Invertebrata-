@@ -1,0 +1,94 @@
+name: Unit I source PNG acquisition
+on:
+  push:
+    branches: [native/u56-gallery-touch-zoom-20261018]
+    paths: [.github/workflows/unit1-source-png.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  acquire:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download four distinct Commons sources and convert SVG sources to PNG
+        run: |
+          python3 -m pip install --quiet requests pillow cairosvg
+          python3 - <<'PY'
+          import io,hashlib,os,re,time,random
+          from pathlib import Path
+          import requests,cairosvg
+          from PIL import Image
+          files={
+            "entamoeba":"Entamoeba_histolytica_life_cycle-en.svg",
+            "trypanosoma":"Trypanosoma_brucei.svg",
+            "leishmania":"Leishmania_Intracellular_Amastigote_(NIH_BioArt_872_-_798227).png",
+            "plasmodium":"Malaria_Plasmodium_infection_cycle.png",
+          }
+          session=requests.Session()
+          session.headers["User-Agent"]="InvertebrataEducationalAssetReview/1.0 (GitHub: rameshgascngl-create/Invertebrata-)"
+          output=Path("native-app/app/src/main/assets/unit1/references")
+          output.mkdir(parents=True,exist_ok=True)
+          report=[]
+          hashes=set()
+          for label,title in files.items():
+            api=session.get("https://commons.wikimedia.org/w/api.php",params={
+              "action":"query","format":"json","prop":"imageinfo","iiprop":"url|extmetadata",
+              "titles":"File:"+title
+            },timeout=50)
+            api.raise_for_status()
+            pages=api.json()["query"]["pages"]
+            page=next(iter(pages.values()))
+            if "imageinfo" not in page: raise RuntimeError("Source missing: "+title)
+            info=page["imageinfo"][0]
+            metadata=info.get("extmetadata",{})
+            license_name=metadata.get("LicenseShortName",{}).get("value","")
+            if not license_name: raise RuntimeError("License not identified: "+title)
+            url=info["url"]
+            # Wikimedia's upload CDN may return 429 to shared CI runners.
+            # Retry only transient responses, honour Retry-After, and never
+            # substitute an unrelated image or commit a partial gallery.
+            raw=None
+            for attempt in range(5):
+              response=session.get(url,timeout=90,headers={"Referer":"https://commons.wikimedia.org/"})
+              if response.status_code==200:
+                raw=response.content
+                break
+              if response.status_code not in (429,500,502,503,504):
+                response.raise_for_status()
+              wait=response.headers.get("Retry-After","")
+              delay=min(90,int(wait)) if wait.isdigit() else min(75,8*(attempt+1))
+              print(f"{label}: HTTP {response.status_code}, retry {attempt+1}/5 after {delay}s",flush=True)
+              time.sleep(delay)
+            if raw is None: raise RuntimeError(f"Download blocked for {title}; no substitution or partial commit")
+            if title.endswith(".svg"):
+              if b"<svg" not in raw[:4096]: raise RuntimeError("Not an SVG: "+title)
+              png=cairosvg.svg2png(bytestring=raw,output_width=1600)
+            else:
+              png=raw
+            image=Image.open(io.BytesIO(png))
+            image.load()
+            if image.width<450 or image.height<250: raise RuntimeError("Too small: "+title)
+            if image.width*image.height>24000000: raise RuntimeError("Too large: "+title)
+            destination=output/(label+".png")
+            image.convert("RGBA").save(destination,optimize=True)
+            digest=hashlib.sha256(destination.read_bytes()).hexdigest()
+            if digest in hashes: raise RuntimeError("Duplicated source artwork")
+            hashes.add(digest)
+            report.append(f"{label}: {title} | {license_name} | {image.width}x{image.height} | SHA256 {digest} | {info['descriptionurl']}")
+          (output/"SOURCE_PROVENANCE.txt").write_text(
+            "Source-based teaching reference images; scientific, Tamil and licensing review still required.\\n"
+            +"\\n".join(report)+"\\n",encoding="utf-8")
+          print("\\n".join(report))
+          PY
+      - name: Commit only four downloaded PNG references and provenance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add native-app/app/src/main/assets/unit1/references/
+          if ! git diff --cached --quiet; then
+            git commit -m "Add four sourced Protozoa PNG teaching references with provenance"
+            git push
+          fi

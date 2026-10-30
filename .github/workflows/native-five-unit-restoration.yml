@@ -1,0 +1,286 @@
+name: Native five-unit restoration — compile, assets and academic hold
+'on':
+  push:
+    branches:
+      - native/five-unit-r7-single-image-per-plate-20261018
+      - native/u56-gallery-touch-zoom-20261018
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: five-unit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile-and-jvm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify bilingual restoration source and textbook-first placement
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          data=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FiveUnitRestorationLessons.kt").read_text(encoding="utf-8")
+          ui=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt").read_text(encoding="utf-8")
+          assert data.count('Chapter("u1-')==5
+          assert data.count('Chapter("u5-')==12
+          assert 'restoredLesson.sections' in ui
+          assert ui.index('if (restoredLesson != null)')<ui.index('items(chapter.a5Questions, key = { it.id })')
+          assert ui.index('if (lessonDraft != null)')<ui.index('items(chapter.a5Questions, key = { it.id })')
+          assert 'ParameciumExternalCanvas(language' not in ui
+          assert 'UnitIVPenaeusVectorAtlas(language' not in ui
+          assert 'UnitIStageAtlasChapter(language)' not in ui
+          asset=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIImagePlate.kt").read_text()
+          assert 'pngOnly=lifeHistory' not in asset
+          manifest=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt").read_text()
+          assert 'a5ChapterIdsByUnit.getValue(5)' in manifest
+          u2source=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIITeachingChapter.kt").read_text()
+          u3source=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIITeachingChapter.kt").read_text()
+          assert "RequiredTypeStudyPlates(study, language)" in u2source
+          assert "UnitIIIPlateGallery(chapter.id, language, narrator)" in u3source
+          # R7 single-image rule: source files retained; only one composable
+          # may render a given anatomical plate in the same reader.
+          root=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui")
+          u2=(root/"UnitIITeachingChapter.kt").read_text()
+          u3=(root/"UnitIIITeachingChapter.kt").read_text()
+          lab=(root/"ParameciumTeachingLab.kt").read_text()
+          assert u2.count("RequiredTypeStudyPlates(study, language)") == 1
+          assert "UnitIIStaticLessonPlate(" not in u2
+          assert "UnitIIImagePlate(" not in u2
+          assert u3.count("UnitIIIPlateGallery(chapter.id, language, narrator)") == 1
+          assert "RequiredTypeStudyPlates(study, language)" not in u3
+          assert 'item(key = "u3-static-figure")' not in u3
+          assert "AtlasSection(language, ::speak" not in lab
+          assert lab.count("RequiredTypeStudyPlates(study, language)") == 1
+          assert 'if (tab == "anatomy")' in lab
+          print("R7_SINGLE_RENDER_UNIT2_UNIT3_PARAMECIUM=PASS; ORIGINAL_RASTERS_RETAINED")
+          print("NEW_CHAPTERS=17; ORIGINAL_A5=UNMODIFIED")
+          PY
+      - name: Compile debug native Kotlin and Android test sources, run JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Assemble device QA debug APK
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Verify all 12 Pila PNGs are inside the assembled Android APK
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import hashlib
+          apk=Path("native-app/app/build/outputs/apk/debug/app-debug.apk")
+          assert apk.is_file(), "Debug APK missing"
+          names=[
+              "01_shell_ventral_REVIEW.png", "02_operculum_views_REVIEW.png",
+              "03_shell_dorsal_REVIEW.png", "04_animal_front_REVIEW.png",
+              "05_nervous_system_REVIEW.png", "06_buccal_mass_REVIEW.png",
+              "07_digestive_system_REVIEW.png", "08_respiratory_system_REVIEW.png",
+              "09_circulatory_system_REVIEW.png", "10_male_reproductive_REVIEW.png",
+              "11_female_reproductive_REVIEW.png", "12_excretory_system_REVIEW.png",
+          ]
+          with ZipFile(apk) as archive:
+              entries=set(archive.namelist())
+              for name in names:
+                  asset="assets/review_only/pila/generated_12/"+name
+                  assert asset in entries, "Pila image not packaged: "+asset
+                  original=Path(name).read_bytes()
+                  packaged=archive.read(asset)
+                  assert original==packaged, "Pila image differs from upload: "+name
+                  print("PILA_APK_BYTES_MATCH=PASS",name,hashlib.sha256(packaged).hexdigest())
+              assert len([x for x in entries if x.startswith("assets/review_only/pila/generated_12/") and x.endswith(".png")])==12, "Unexpected Pila image count"
+          print("PILA_12_IN_NATIVE_DEBUG_APK=PASS; SCIENTIFIC_APPROVAL=HOLD")
+          PY
+      - name: Upload development debug APK (NOT a release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-restoration-R7-DEBUG-UNAPPROVED
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  asset-inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify mapped Unit II image bytes are unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          pairs=(
+            "unit2/sycon_plate.webp:type_studies/sycon/canal-system.webp"
+            "unit2/obelia_colony.webp:type_studies/obelia/colony.webp"
+            "unit2/obelia_lifecycle.webp:type_studies/obelia/life-cycle.webp"
+          )
+          for item in "${pairs[@]}";do
+            source="${item%%:*}"
+            target="${item#*:}"
+            cmp "native-app/app/src/main/assets/$source" "native-app/app/src/main/assets/$target"
+            echo "BYTE_IDENTICAL_RASTER=PASS: $target"
+          done
+      - name: Verify eight archival image masters match immutable source bytes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          root=Path("native-app/app/src/main/assets")
+          expected={
+            "type_studies/fasciola/external.png":"08adafaf9756a01ec20f2a9614e05b80a29223b1c2a5d29564bb9923b8977e25",
+            "type_studies/fasciola/digestive-reproductive.png":"37e09f88775bb14a55129db191a59b25c5c80070ca2b6bb3079518a31327c791",
+            "type_studies/fasciola/life-cycle.png":"9a7ab9bb76fb9e1e8b1527bc9363c6349ecafce739451a82307bc3b43108520a",
+            "type_studies/ascaris/male-female-external.png":"d8df8c8eb4b79e9186017650d818060b756a302968eb4d73c4329e88d73908c9",
+            "type_studies/ascaris/female-internal.png":"0f476f9823025c4cbd23808c49515652161709d39969b7c39c20e1309171341e",
+            "type_studies/ascaris/life-cycle.png":"6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0",
+            "unit3/fasciola_type.png":"50640478957f84d3a49c3136026181eebf1b43e9beaf51eebfef8abe057f5d61",
+            "unit3/ascaris_type.png":"2106d48ba062e1c3082e5436d30a0a0801fb80aba271550525298270cdc2e039",
+          }
+          for rel,checksum in expected.items():
+              data=(root/rel).read_bytes()
+              assert data[:8]==bytes.fromhex("89504e470d0a1a0a"),rel
+              assert hashlib.sha256(data).hexdigest()==checksum,rel
+          print("R5_SOURCE_IMAGES=8_SHA256_VERIFIED")
+          PY
+      - name: Verify current Paramecium plates against recorded provenance
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          # The photographed pencil sources (unit1/paramecium_{external,oral,vacuole,internal}.png)
+          # were removed on purpose in b7a4ee5 (rights decision: their CC BY-SA obligation is gone).
+          # This step therefore checks what the app really ships: the four type-study plates must
+          # match the sha256, size and file recorded in provenance/plates.json, the legacy photographs
+          # must stay absent, and every plate must still be marked as awaiting rights confirmation.
+          import hashlib,json,struct
+          from pathlib import Path
+          root=Path("native-app/app/src/main/assets")
+          prov=json.load(open("provenance/plates.json",encoding="utf-8"))["plates"]
+          for plate in ("external-cilia","oral-apparatus","contractile-vacuoles","locomotion"):
+              rec=prov["paramecium/"+plate]
+              path=Path(rec["file"])
+              assert path.is_file(),("MISSING_PLATE",plate,str(path))
+              data=path.read_bytes()
+              assert hashlib.sha256(data).hexdigest()==rec["sha256"],("HASH_MISMATCH",plate)
+              assert len(data)==rec["bytes"],("SIZE_MISMATCH",plate)
+              if path.suffix==".png":
+                  assert data[:8]==bytes.fromhex("89504e470d0a1a0a"),("NOT_PNG",plate)
+                  assert struct.unpack(">II",data[16:24])==(rec["width"],rec["height"]),("DIMENSIONS",plate)
+              else:
+                  assert data[:4]==b"RIFF" and data[8:12]==b"WEBP",("NOT_WEBP",plate)
+              assert "confirm" in rec["license"].lower(),("RIGHTS_HOLD_LOST",plate)
+              print("PARAMECIUM_PLATE_MATCHES_PROVENANCE="+plate)
+          for legacy in ("external","oral","vacuole","internal"):
+              assert not (root/"unit1"/("paramecium_"+legacy+".png")).exists(),("LEGACY_PHOTOGRAPH_RESTORED",legacy)
+          print("PARAMECIUM_LEGACY_PHOTOGRAPHS_ABSENT=PASS; RIGHTS=HOLD; ACADEMIC_REVIEW=HOLD")
+          PY
+      - name: Record every mandatory and supplementary plate
+        run: |
+          python3 .github/scripts/audit-five-unit-assets.py --out qa-evidence/five-unit-assets
+          python3 - <<'PY'
+          import json
+          rows=json.load(open("qa-evidence/five-unit-assets/plate-register.json",encoding="utf-8"))
+          required=[r for r in rows if r["required"]]
+          present=[r for r in required if r["state"]=="PRESENT_UNVERIFIED"]
+          missing=sorted(r["required_stem"] for r in required if r["state"]=="MISSING")
+          # Counts are pinned to the audited state of 2026-10-26. A change in either direction must be
+          # reviewed: a lost plate fails here, and so does a new plate that nobody has recorded.
+          assert len(required)==52 and len(present)==46,(len(required),len(present))
+          assert len([r for r in present if r["unit"]==3])==6
+          assert len([r for r in present if r["unit"]==1])==7
+          assert missing==[
+            "unit1/concepts/paramecium_binary_fission",
+            "unit1/concepts/paramecium_conjugation",
+            "unit1/concepts/paramecium_nutrition",
+            "unit1/replacements/leishmania_morphology",
+            "unit1/replacements/paramecium_locomotion",
+            "unit1/replacements/trypanosoma_morphology",
+          ],missing
+          assert not any(r.get("academic_approved") for r in required)
+          print("RASTER_COVERAGE=46/52 PRESENT_UNVERIFIED; 6 UNIT1 STEMS STILL MISSING; ACADEMIC_ACCEPTANCE=HOLD")
+          PY
+      - name: Upload honest plate-register evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-restoration-R7-ASSET-REGISTER
+          path: qa-evidence/five-unit-assets/
+          if-no-files-found: error
+
+  complete-plate-acceptance:
+    needs: asset-inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail when any mandatory static anatomical plate is missing
+        run: python3 .github/scripts/audit-five-unit-assets.py --gate --out qa-evidence/five-unit-acceptance
+      - name: Academic acceptance remains a separate mandatory review
+        if: always()
+        run: |
+          echo "No green source-status can substitute for biology, source-rights and English-Tamil manual review."
+          echo "No production tag or Play/Indus submission is allowed from this R1 workflow."
+
+
+  independent-academic-review:
+    needs: asset-inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail-closed biological accuracy, independent Tamil and source-rights review
+        run: python3 .github/scripts/verify-five-unit-academic-approval.py --out qa-evidence/five-unit-academic
+      - name: Preserve academic review blockers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-R7-academic-review-register
+          path: qa-evidence/five-unit-academic/
+          if-no-files-found: warn
+
+  android-ui-r7:
+    needs: compile-and-jvm
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable emulator hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Android 34 bilingual five-unit image and lesson screens 100 percent and 200 percent
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-five-unit-r2-ui.sh
+      - name: Preserve screenshot and XML evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-R7-android-ui-evidence
+          path: qa-evidence/five-unit-r7/
+          if-no-files-found: warn
+      - name: Explain artwork acceptance status
+        if: always()
+        run: |
+          echo "This job verifies native display and missing-asset warnings, NOT scientific acceptance."
+          echo "Mandatory anatomical plates are missing; student-facing release stays blocked."
