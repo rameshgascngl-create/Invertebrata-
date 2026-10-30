@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.gasczoology.invertebratelab"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.gasczoology.invertebratelab"
