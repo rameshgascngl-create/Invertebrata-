@@ -255,7 +255,9 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
         }
         is BookNote -> Card(
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),
-            modifier = Modifier.fillMaxWidth()) {
+            modifier = Modifier.fillMaxWidth()
+                .testTag("book-note-" + block.title.english.lowercase()
+                    .replace(Regex("[^a-z0-9]+"), "-").trim('-'))) {
             Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(block.title.value(language), fontWeight = FontWeight.Bold)
                 Text(block.text.value(language))
