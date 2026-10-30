@@ -39,7 +39,7 @@ jobs:
         run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '9.4.0'
+          gradle-version: '9.6.0'
       - name: Compile Kotlin and run JVM tests
         working-directory: native-app
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
