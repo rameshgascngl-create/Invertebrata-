@@ -94,3 +94,42 @@ val stagePilaIndividualReview = tasks.register("stagePilaIndividualReview") {
 }
 android.sourceSets.getByName("debug").assets.srcDir(layout.buildDirectory.dir("generated/pilaDebugAssets").get().asFile)
 tasks.matching { it.name == "mergeDebugAssets" }.configureEach { dependsOn(stagePilaIndividualReview) }
+
+
+// Stage the committed Paramecium F01-F03 plates for debug QA only.
+// Source files remain at repository root. This does not approve release rights.
+val stageParameciumFissionReview = tasks.register("stageParameciumFissionReview") {
+    val names = listOf(
+        "F01_vegetative_PROVISIONAL.png",
+        "F02_micronuclear_mitosis_PROVISIONAL.png",
+        "F03_chromosome_segregation_PROVISIONAL.png",
+    )
+    val sources = names.map { rootProject.file("../" + it) }
+    val destination = layout.buildDirectory.dir("generated/parameciumFissionDebugAssets")
+    inputs.files(sources)
+    outputs.dir(destination)
+    doLast {
+        val target = destination.get().asFile.resolve("paramecium/fission")
+        target.mkdirs()
+        target.listFiles()?.forEach { it.delete() }
+        val hashes = mutableSetOf<String>()
+        names.zip(sources).forEach { (name, source) ->
+            require(source.isFile) { "Missing Paramecium PNG: ${source.path}" }
+            val bytes = source.readBytes()
+            require(bytes.size > 1024 && bytes.take(8) ==
+                listOf(137, 80, 78, 71, 13, 10, 26, 10).map { it.toByte() }) {
+                "Invalid Paramecium PNG: $name"
+            }
+            val hash = java.security.MessageDigest.getInstance("SHA-256")
+                .digest(bytes).joinToString("") { "%02x".format(it) }
+            require(hashes.add(hash)) { "Duplicate Paramecium PNG: $name" }
+            target.resolve(name).writeBytes(bytes)
+        }
+    }
+}
+android.sourceSets.getByName("debug").assets.srcDir(
+    layout.buildDirectory.dir("generated/parameciumFissionDebugAssets").get().asFile
+)
+tasks.matching { it.name == "mergeDebugAssets" }.configureEach {
+    dependsOn(stageParameciumFissionReview)
+}
