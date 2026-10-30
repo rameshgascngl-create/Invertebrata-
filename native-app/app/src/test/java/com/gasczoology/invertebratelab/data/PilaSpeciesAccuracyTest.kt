@@ -35,6 +35,18 @@ class PilaSpeciesAccuracyTest {
         assertTrue(en.contains("outer surface is horny and its inner surface is calcified"))
     }
 
+    @Test fun torsionOccursInTheEmbryoNotOnlyInAncestors() {
+        val notes = chapter.allBlocks().filterIsInstance<BookNote>()
+        val torsion = notes.single { it.title.english.contains("Torsion") }
+        assertTrue(torsion.text.english.contains("each Pila within its egg"))
+        assertTrue(torsion.text.english.contains("veliger stage"))
+        assertTrue(torsion.text.english.contains("hatches already torted"))
+        assertTrue(torsion.text.tamil.contains("முட்டைக்குள்"))
+        assertTrue(torsion.text.tamil.contains("வெலிகர்"))
+        assertFalse(torsion.text.english.contains("larva of its ancestors"))
+        assertFalse(torsion.text.tamil.contains("மூதாதையரின் லார்வாவில்"))
+    }
+
     @Test fun bilingualOpeningFocusesOnBiologyInsteadOfGenericChapterDescription() {
         assertTrue(chapter.introduction.size == 2)
         assertTrue(chapter.introduction.all { it.english.length < 400 && it.tamil.length < 490 })
