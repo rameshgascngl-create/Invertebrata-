@@ -26,8 +26,15 @@ jobs:
         run: |
           test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" || test -x "$ANDROID_HOME/cmdline-tools/16.0/bin/sdkmanager"
           echo "ANDROID_HOME=$ANDROID_HOME"
+      - name: Add SDK command-line tools to PATH
+        run: |
+          if test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"; then
+            echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          else
+            echo "$ANDROID_HOME/cmdline-tools/16.0/bin" >> "$GITHUB_PATH"
+          fi
       - name: Accept Android SDK licences
-        run: yes | sdkmanager --licenses >/dev/null || true
+        run: yes | sdkmanager --licenses >/dev/null || test "${PIPESTATUS[1]}" -eq 0
       - name: Install Android SDK 37
         run: sdkmanager "platforms;android-37" "build-tools;37.0.0"
       - uses: gradle/actions/setup-gradle@v4
