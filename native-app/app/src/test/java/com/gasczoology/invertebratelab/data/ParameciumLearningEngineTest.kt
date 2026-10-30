@@ -31,11 +31,29 @@ class ParameciumLearningEngineTest {
         val fission = ParameciumLearningEngine.simulation(ParameciumProcess.BINARY_FISSION)
         assertEquals("exchange", conjugation.stages[2].id)
         assertEquals("daughters", fission.stages.last().id)
-        assertTrue(conjugation.stages.last().explanation.english.contains("rather than immediate"))
+        assertTrue(conjugation.stages.last().explanation.english.contains("without immediate numerical multiplication"))
         assertTrue(fission.stages.last().explanation.english.contains("increases cell number"))
         assertEquals(listOf("osmosis","collect","fill","expel"),
             ParameciumLearningEngine.simulation(ParameciumProcess.OSMOREGULATION).stages.map { it.id })
     }
+    @Test fun conjugationRespectsNamedSpeciesNuclearChronologyAndCellCounts() {
+        val stages = ParameciumLearningEngine.simulation(ParameciumProcess.CONJUGATION).stages
+        assertEquals(
+            listOf("pair", "meiosis", "exchange", "first-division", "separate",
+                "differentiation", "later-fission"),
+            stages.map { it.id },
+        )
+        assertTrue(stages.zipWithNext().all { (a, b) -> a.illustrationProgress < b.illustrationProgress })
+        assertTrue(stages[3].explanation.english.contains("while the partners are still associated"))
+        assertTrue(stages[4].explanation.english.contains("after the first synkaryon division"))
+        assertTrue(stages[5].explanation.english.contains("eight diploid nuclear products per exconjugant"))
+        assertTrue(stages[5].explanation.english.contains("four posterior"))
+        assertTrue(stages[6].explanation.english.contains("eight postzygotic nuclei per cell"))
+        assertTrue(stages[3].explanation.tamil.contains("இரண்டு செல்களே"))
+        assertTrue(stages[4].explanation.tamil.contains("முதல் சின்காரியான் பிரிவுக்குப் பின்"))
+        assertTrue(stages[5].explanation.tamil.contains("எட்டு இருமய உட்கரு"))
+    }
+
     @Test fun unapprovedAnatomyIsNeverPromotedBySimulationData() {
         assertTrue(ParameciumAnatomyDraft.plates.all {
             it.status == AcademicWorkStatus.DRAFT_UNVERIFIED && it.review == null })
