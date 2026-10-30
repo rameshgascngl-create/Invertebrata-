@@ -205,7 +205,7 @@ object ParameciumLearningEngine {
                     "சிற்றுட்கருவில் மியாசிஸ் நடைபெற்று ஒற்றைமடியக் கருக்கள் உருவாகின்றன; பின்னர் பரிமாற்றத்திற்கான நகரும் மற்றும் நிலைத்திருக்கும் முன்கருக்கள் தோன்றுகின்றன.",0.3f),
                 s("exchange","Exchange and fusion","பரிமாற்றமும் இணைவும்",
                     "Partners exchange a migratory pronucleus; exchanged and stationary pronuclei fuse, restoring a diploid synkaryon.",
-                    "இணைச்செல்கள் நகரும் முன்கருக்களைப் பரிமாறிக் கொள்கின்றன; அவை நிலைத்திருக்கும் முன்கருக்களுடன் இணைந்து இருமடிய உட்கருவை உருவாக்குகின்றன.",0.66f),
+                    "இணைச்செல்கள் நகரும் முன்கருக்களைப் பரிமாறிக் கொள்கின்றன; அவை நிலைத்திருக்கும் முன்கருக்களுடன் இணைந்து இருமடிய உட்கருவை உருவாக்குகின்றன.",0.38f),
                 s("first-division","First postzygotic nuclear division","கருவுறுதலுக்குப் பிந்திய முதல் உட்கருப் பிரிவு",
                     "In the cited P. caudatum microscopy sequence, each diploid synkaryon first divides mitotically into two diploid nuclear products while the partners are still associated. The pair still consists of two cells, not four.",
                     "மேற்கோள் காட்டப்பட்ட பாரமீசியம் கௌடேட்டம் நுண்ணோக்கித் தொடரில், இணைகள் சேர்ந்திருக்கும்போதே ஒவ்வொரு இருமய சின்காரியானும் முதல் மைட்டாசிஸ் பிரிவால் இரண்டு இருமய உட்கருக்களை உருவாக்குகிறது. இணையில் இன்னும் இரண்டு செல்களே உள்ளன; நான்கு அல்ல.",0.51f),
