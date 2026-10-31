@@ -78,9 +78,12 @@ class IntakeTests(unittest.TestCase):
         self.save()
         self.assertIn("SPECIES_NOT_CONFIRMED", module.verify(self.root, self.manifest)[0]["blockers"])
 
-    def test_small_raster_fails(self):
-        (self.folder / "F01.png").write_bytes(png(900, 600))
-        self.assertTrue(any(x.startswith("PNG_INVALID:") for x in module.verify(self.root, self.manifest)[0]["blockers"]))
+    def test_smaller_legible_raster_allowed_when_hash_matches(self):
+        p = self.folder / "F01.png"
+        p.write_bytes(png(900, 600))
+        self.records["F01"]["sha256"] = module.hashlib.sha256(p.read_bytes()).hexdigest()
+        self.save()
+        self.assertEqual(module.verify(self.root, self.manifest)[0]["technical_intake"], "PASS")
 
     def test_path_traversal_fails(self):
         self.records["F01"]["path"] = "qa-intake/paramecium/../../outside.png"
