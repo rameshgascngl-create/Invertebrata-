@@ -162,7 +162,7 @@ class NativeUiAcceptanceTest {
         waitFor("native-home")
         rule.onNodeWithTag("language-english").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("Unit 1 · 7 chapters").fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = false)
         }
     }
 
@@ -243,7 +243,7 @@ class NativeUiAcceptanceTest {
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
 
         val questions = units.flatMap { it.chapters }.flatMap { it.a5Questions }
@@ -315,8 +315,7 @@ class NativeUiAcceptanceTest {
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்")
-                .fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
@@ -690,7 +689,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
@@ -712,8 +711,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes()
-                .isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
@@ -817,8 +815,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes()
-                .isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()

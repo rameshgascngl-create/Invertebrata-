@@ -54,9 +54,7 @@ class NativeR16CiliaryPlateTest {
         rule.onNodeWithTag(if (tamil) "language-tamil" else "language-english")
             .performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText(
-                if (tamil) "அலகு 1 · 7 அத்தியாயங்கள்" else "Unit 1 · 7 chapters"
-            ).fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil)
         }
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(timeoutMillis = 20_000L) {
