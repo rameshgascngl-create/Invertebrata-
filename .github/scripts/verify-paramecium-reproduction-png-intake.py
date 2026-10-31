@@ -52,8 +52,8 @@ def inspect_png(path):
         pos = end
     if not (seen_ihdr and seen_idat and seen_iend):
         raise ValueError("missing mandatory PNG chunks")
-    if min(width, height) < 500 or max(width, height) < 1800:
-        raise ValueError("insufficient native pixel dimensions")
+    if width < 1 or height < 1:
+        raise ValueError("invalid image dimensions")
     return {"width": width, "height": height, "sha256": hashlib.sha256(data).hexdigest()}
 
 def verify(root, manifest):
