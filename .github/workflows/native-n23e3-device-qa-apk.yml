@@ -7,6 +7,7 @@ on:
       - native/v193-compose-migration-20261008
       - native/r15-feeding-textbook-20261010
       - claude/student-polish
+      - native/n24-paramecium-raster-intake-20261031
 
 permissions:
   contents: read
