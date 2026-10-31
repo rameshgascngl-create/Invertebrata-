@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
+      - claude/baseline-labelfix
       - native/r161-academic-device-20261010
 
 permissions:
