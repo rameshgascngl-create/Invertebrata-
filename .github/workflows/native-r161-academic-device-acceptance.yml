@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - native/r161-academic-device-20261010
+      - claude/audit-l10n
 
 permissions:
   contents: read
