@@ -56,7 +56,7 @@ class NativeProcessDeathSetupTest {
         }
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 15_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(6)
         rule.onNodeWithTag("a5-assessment").performClick()
