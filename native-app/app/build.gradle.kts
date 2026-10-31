@@ -22,6 +22,20 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    buildTypes {
+        release {
+            // Shrink library code (Compose/Material/AndroidX) and unused resources.
+            // App code is kept whole by proguard-rules.pro because Gson reflects on
+            // the data classes. Signing is injected by CI; none is configured here.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+        }
+    }
+
     buildFeatures {
         compose = true
     }

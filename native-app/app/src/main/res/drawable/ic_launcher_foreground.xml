@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Original artwork: a logarithmic-style spiral (coiled shell / gastropod torsion motif). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group android:scaleX="1.7" android:scaleY="1.7" android:pivotX="57" android:pivotY="54">
+        <path
+            android:fillColor="#00000000"
+            android:pathData="M54,54 a3,3 0 0,1 6,0 a6,6 0 0,1 -12,0 a9,9 0 0,1 18,0 a12,12 0 0,1 -24,0 a15,15 0 0,1 30,0"
+            android:strokeColor="#FFF8E7"
+            android:strokeLineCap="round"
+            android:strokeWidth="3.2" />
+    </group>
+</vector>

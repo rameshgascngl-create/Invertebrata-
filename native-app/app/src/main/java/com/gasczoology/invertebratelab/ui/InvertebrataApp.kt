@@ -327,7 +327,7 @@ private fun LoadingScreen(language: AppLanguage) {
     Column(modifier = Modifier.fillMaxSize().padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
         CircularProgressIndicator()
-        Text(label(language, "Loading verified offline A5 questions…", "சரிபார்க்கப்பட்ட ஐந்து மதிப்பெண் வினாக்கள் ஏற்றப்படுகின்றன…"))
+        Text(label(language, "Loading your lessons…", "உங்கள் பாடங்கள் ஏற்றப்படுகின்றன…"))
     }
 }
 
