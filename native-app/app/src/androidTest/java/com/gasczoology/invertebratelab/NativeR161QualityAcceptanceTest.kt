@@ -133,7 +133,7 @@ class NativeR161QualityAcceptanceTest {
         rule.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
         rule.waitUntil(20_000) { rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("language-english").performClick()
-        rule.waitUntil(10_000) { rule.onAllNodesWithText("Unit 1 · 7 chapters").fetchSemanticsNodes().isNotEmpty() }
+        rule.waitUntil(10_000) { rule.homeUnitOneShows(tamil = false) }
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(20_000) { rule.onAllNodesWithTag("r1-narrate-somatic-cilia", true).fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("r1-narrate-somatic-cilia", true).performScrollTo().performClick()
