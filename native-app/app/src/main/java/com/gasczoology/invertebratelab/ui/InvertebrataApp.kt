@@ -63,6 +63,9 @@ import com.gasczoology.invertebratelab.data.FiveUnitRestorationLessons
 import com.gasczoology.invertebratelab.data.StudyDestination
 import kotlinx.coroutines.launch
 
+/** Units 1-5 are the validated syllabus (86 five-mark questions). */
+private const val VALIDATED_UNIT_COUNT = 5
+
 private object Routes {
     const val HOME = "home"
     const val UNIT = "unit/{unitNumber}"
@@ -105,7 +108,11 @@ fun InvertebrataApp(viewModel: MainViewModel) {
     val units = corpus.units
     val state = stored.state.validatedAgainst(units)
     val chapters = units.flatMap { it.chapters }
-    val questions = chapters.flatMap { it.a5Questions }
+    // Student practice uses ONLY the academically validated A5 questions (Units 1-5).
+    // Extension questions (Units 6-7) are DRAFT_UNVERIFIED: they stay inside their own
+    // lessons but are excluded from the practice list and its count.
+    val questions = chapters.filter { it.unitNumber <= VALIDATED_UNIT_COUNT }
+        .flatMap { it.a5Questions }
     val startRoute = remember { Routes.restoredDestination(state) }
     val navController = rememberNavController()
 
@@ -400,7 +407,8 @@ private fun HomeScreen(
             }
             item {
                 Button(onClick = onAssessment, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("a5-assessment")) {
-                    val questionCount = units.sumOf { u -> u.chapters.sumOf { it.a5Questions.size } }
+                    val questionCount = units.filter { it.number <= VALIDATED_UNIT_COUNT }
+                        .sumOf { u -> u.chapters.sumOf { it.a5Questions.size } }
                     Text(label(language, "Five-mark practice · $questionCount questions", "ஐந்து மதிப்பெண் பயிற்சி · $questionCount வினாக்கள்"))
                 }
             }
