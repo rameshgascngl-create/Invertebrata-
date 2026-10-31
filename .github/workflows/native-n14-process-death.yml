@@ -6,6 +6,7 @@ on:
     branches:
       - native/v193-compose-migration-20261008
       - native/r15-feeding-textbook-20261010
+      - claude/baseline-labelfix-practice
 
 jobs:
   api34-native-process-death:
