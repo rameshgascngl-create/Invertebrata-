@@ -62,7 +62,7 @@ class NativeU57ParameciumProcessPngTest {
         assertTrue("Missing screenshot",png.size>12000)
         assertNotNull(BitmapFactory.decodeByteArray(png,0,png.size))
     }
-    @Test fun pngOnlyPhysiologyStagesNeverDisplayCanvasOrWrongReproductionArtwork() {
+    @Test fun pngPhysiologyAndFissionStagesUseDedicatedAssets() {
         for(process in listOf("ciliary_motion","osmoregulation","feeding")) {
             go(process)
             val tag="u57-paramecium-process-bitmap-"+process
@@ -82,7 +82,30 @@ class NativeU57ParameciumProcessPngTest {
                 rule.onNodeWithTag(tag).performScrollTo().assertExists()
             }
         }
-        for(process in listOf("binary_fission","conjugation")) {
+        // F01-F03 were integrated after this regression was first authored.
+        // Assert the real, stage-specific PNG viewer rather than a missing-art notice.
+        go("binary_fission")
+        rule.onNodeWithTag("u57-paramecium-process-png-missing-binary_fission")
+            .assertDoesNotExist()
+        rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
+        rule.onNodeWithTag("paramecium-fission-F01").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithTag("paramecium-fission-F02").assertDoesNotExist()
+        rule.onNodeWithTag("paramecium-fission-F03").assertDoesNotExist()
+        screenshot("binary-fission-parent")
+        rule.onNodeWithTag("r1-next").performScrollTo().performClick()
+        rule.onNodeWithTag("paramecium-fission-F01").assertDoesNotExist()
+        rule.onNodeWithTag("paramecium-fission-F02").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithTag("paramecium-fission-F03").performScrollTo().assertIsDisplayed()
+        screenshot("binary-fission-micronuclear-division")
+        // No earlier-stage plate may leak into the furrow or daughter-cell stages.
+        repeat(2) {
+            rule.onNodeWithTag("r1-next").performScrollTo().performClick()
+            for (plate in listOf("F01", "F02", "F03")) {
+                rule.onNodeWithTag("paramecium-fission-" + plate).assertDoesNotExist()
+            }
+            rule.onNodeWithTag("r1-stage-explanation").performScrollTo().assertExists()
+        }
+        for(process in listOf("conjugation")) {
             go(process)
             val tag="u57-paramecium-process-png-missing-"+process
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()

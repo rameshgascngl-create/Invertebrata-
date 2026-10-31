@@ -63,8 +63,10 @@ class NativeUnitIIntroductionBookRenderingTest {
         val automation = instrumentation.uiAutomation
         rule.waitForIdle()
         var lastHash = ""
+        var stableFrames = 0
         repeat(12) {
             instrumentation.waitForIdleSync()
+            Thread.sleep(150)
             ParcelFileDescriptor.AutoCloseInputStream(
                 automation.executeShellCommand("screencap -p $path")
             ).use { it.readBytes() }
@@ -75,14 +77,16 @@ class NativeUnitIIntroductionBookRenderingTest {
             val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
             assertNotNull("Invalid display PNG: $path", bitmap)
             bitmap!!.recycle()
-            lastHash = java.security.MessageDigest.getInstance("SHA-256")
+            val currentHash = java.security.MessageDigest.getInstance("SHA-256")
                 .digest(bytes).joinToString("") { byte -> "%02x".format(byte) }
-            if (previousSha256 == null || lastHash != previousSha256) return lastHash
-            // Bounded SurfaceFlinger-frame retry, never a substitute for the
-            // section heading and viewport assertions above.
-            Thread.sleep(150)
+            val changedSection = previousSha256 == null || currentHash != previousSha256
+            stableFrames = if (changedSection && currentHash == lastHash) stableFrames + 1 else 0
+            lastHash = currentHash
+            // Require three matching real-display captures after the semantic
+            // assertion; a single different transitional frame is insufficient.
+            if (stableFrames >= 2) return lastHash
         }
-        error("Stale Android display capture for $name: identical to previous section after retries")
+        error("Android display did not settle on a distinct section for $name after bounded retries")
     }
 
     private fun assertHeadingWithinViewport(tag: String, expected: String) {
