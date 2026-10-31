@@ -15,7 +15,7 @@ object NativeLessonDrafts {
 
     val paramecium: NativeBilingualLesson = NativeBilingualLesson(
         lessonId = "u1-paramecium",
-        title = BilingualText("Paramecium: organization and physiology",
+        title = BilingualText("Paramecium: organisation and physiology",
             "பாரமீசியம்: உடலமைப்பும் உடலியங்கியலும்"),
         status = AcademicWorkStatus.DRAFT_UNVERIFIED,
         sections = listOf(
@@ -108,7 +108,7 @@ object NativeLessonDrafts {
             ),
             LessonSection(
                 id = "conjugation",
-                heading = BilingualText("Conjugation and genetic reorganization",
+                heading = BilingualText("Conjugation and genetic reorganisation",
                     "இணைவும் மரபணு மறுசீரமைப்பும்"),
                 paragraphs = listOf(
                     BilingualText(
@@ -116,7 +116,7 @@ object NativeLessonDrafts {
                         "இணைவின் போது இணக்கமான இரண்டு பாரமீசியம் செல்கள் தற்காலிகமாக இணைகின்றன. சிற்றுட்கருவில் மியாசிஸ், ஒற்றையணுக் கருப்பொருள் பரிமாற்றம் மற்றும் முன்கருக்களின் இணைவு ஆகியவை மரபணு மறுசேர்க்கையை ஏற்படுத்துகின்றன."
                     ),
                     BilingualText(
-                        "The original macronuclear organization is replaced during subsequent nuclear reorganization. Conjugation is a genetic exchange process; it should not be confused with immediate multiplication by binary fission.",
+                        "The original macronuclear organisation is replaced during subsequent nuclear reorganisation. Conjugation is a genetic exchange process; it should not be confused with immediate multiplication by binary fission.",
                         "பின்னர் நடைபெறும் உட்கரு மறுசீரமைப்பில் பழைய பேருட்கரு அமைப்பு மாற்றப்படுகிறது. இணைவு என்பது மரபணுப் பரிமாற்ற நிகழ்வு; அதை உடனடியாக செல் எண்ணிக்கையை அதிகரிக்கும் இருபிளவுடன் குழப்பக்கூடாது."
                     )
                 ),
@@ -145,14 +145,14 @@ object NativeLessonDrafts {
                         "The oral groove, vestibule, cytostome and cytopharynx are related but distinct structures. Oral ciliary currents move bacteria and other suitably sized suspended particles toward the cytostome. New food vacuoles form near the cytopharyngeal region; the groove itself must not be described as a permanent digestive cavity.",
                         "வாய்ப்பள்ளம், வெஸ்டிப்யூல், சைட்டோஸ்டோம், சைட்டோஃபாரிங்ஸ் ஆகியவை தொடர்புடைய தனித்தனி அமைப்புகள். வாய்ப்புறக் குறுஇழை ஓட்டம் பாக்டீரியா போன்ற சிறுதுகள்களை சைட்டோஸ்டோம் நோக்கிக் கொண்டு செல்கிறது. சைட்டோஃபாரிங்ஸ் அருகே புதிய உணவுக் குமிழ்கள் உருவாகின்றன; வாய்ப்பள்ளமே நிரந்தரச் செரிமான அறை அல்ல."),
                     BilingualText(
-                        "Vacuoles move through the cytoplasm as acidification and digestive events proceed. The organism assimilates useful molecules, while the cytoproct is a specialized egestion site for indigestible residue. Its normally closed cortical appearance should not be drawn as an always-open hole.",
+                        "Vacuoles move through the cytoplasm as acidification and digestive events proceed. The organism assimilates useful molecules, while the cytoproct is a specialised egestion site for indigestible residue. Its normally closed cortical appearance should not be drawn as an always-open hole.",
                         "சைட்டோபிளாஸ்மத்தில் உணவுக் குமிழ்கள் நகரும் போது அமிலத்தன்மை மாற்றங்களும் செரிமான நிகழ்வுகளும் நடக்கின்றன. பயன்படும் மூலக்கூறுகள் உறிஞ்சப்படுகின்றன; செரியாத எச்சங்கள் செல் கழிவுவெளியேற்றப் பகுதி வழியாக வெளியேறுகின்றன. இயல்பில் மூடியிருக்கும் அதன் புறப்படல அமைப்பை நிரந்தரத் திறந்த துளையாக வரையக்கூடாது.")
                 ),
                 scientificSources = listOf(ORAL_ULTRASTRUCTURE, PARA_REVIEW)
             ),
             LessonSection(
                 id = "cortical-avoidance-response",
-                heading = BilingualText("Cortical organization and avoidance response",
+                heading = BilingualText("Cortical organisation and avoidance response",
                     "புறப்படல ஒழுங்கமைவும் தடையைத் தவிர்க்கும் எதிர்வினையும்"),
                 paragraphs = listOf(
                     BilingualText(
@@ -173,7 +173,7 @@ object NativeLessonDrafts {
                         "During vegetative transverse binary fission, nuclear and cortical components must be apportioned to the daughter cells. The germline micronucleus undergoes mitotic division; the somatic macronucleus divides by a distinct process often described as amitosis, followed by transverse cytokinesis.",
                         "வளர்ச்சிநிலைக் குறுக்குத் திசை இருபிளவில் உட்கரு மற்றும் புறப்படல அமைப்புகள் இரு மகள் செல்களுக்கும் பகிரப்படுகின்றன. சிற்றுட்கரு மைட்டாசிஸ் மூலம் பிரிகிறது; பேருட்கரு பெரும்பாலும் அமிட்டாசிஸ் எனப்படும் வேறுபட்ட முறையில் பிரிந்து, பின்னர் குறுக்குச் சைட்டோகைனிசிஸ் நடைபெறுகிறது."),
                     BilingualText(
-                        "Unlike conjugation, binary fission directly generates two descendants from one parent cell. The inherited cytoplasmic and cortical organization continues to mature after separation; an animation should not imply that every structure is built instantaneously during the final cleavage.",
+                        "Unlike conjugation, binary fission directly generates two descendants from one parent cell. The inherited cytoplasmic and cortical organisation continues to mature after separation; an animation should not imply that every structure is built instantaneously during the final cleavage.",
                         "இணைவிலிருந்து மாறுபட்டு இருபிளவில் ஒரே தாய்செல்லிலிருந்து இரண்டு மகள் செல்கள் உருவாகின்றன. பிரிவுக்குப் பின்னரும் புறப்படல மற்றும் சைட்டோபிளாஸ்ம அமைப்புகள் முதிர்ச்சியடைகின்றன; இறுதி பிரிவின்போதே அனைத்து அமைப்புகளும் கணநேரத்தில் உருவாவதாக இயக்கப்படம் காட்டக்கூடாது.")
                 ),
                 scientificSources = listOf(PARA_REVIEW, OPENSTAX)

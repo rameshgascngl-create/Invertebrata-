@@ -17,6 +17,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedButton
@@ -37,7 +39,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -47,6 +51,7 @@ import androidx.navigation.navArgument
 import com.gasczoology.invertebratelab.AcademicLoadState
 import com.gasczoology.invertebratelab.MainViewModel
 import com.gasczoology.invertebratelab.PersistedLearningLoadState
+import com.gasczoology.invertebratelab.R
 import com.gasczoology.invertebratelab.data.BookChapters
 import com.gasczoology.invertebratelab.data.Extensions
 import com.gasczoology.invertebratelab.data.A5Question
@@ -348,6 +353,34 @@ private fun HomeScreen(
     onAssessment: () -> Unit,
     onParamecium: () -> Unit,
 ) {
+    // Hidden attribution: seven quick taps on the title open a credit dialog.
+    // pointerInput (not clickable) adds no accessibility semantics, so TalkBack
+    // users never hear a phantom button.
+    var showCredit by remember { mutableStateOf(false) }
+    var titleTaps by remember { mutableIntStateOf(0) }
+    val lastTitleTap = remember { longArrayOf(0L) }
+    if (showCredit) {
+        AlertDialog(
+            onDismissRequest = { showCredit = false },
+            confirmButton = {
+                TextButton(onClick = { showCredit = false },
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("credit-close")) {
+                    Text(label(language, "Close", "மூடு"))
+                }
+            },
+            title = { Text("INVERTEBRATA") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.testTag("credit-dialog")) {
+                    Text(stringResource(R.string.credit_line))
+                    Text(label(language,
+                        "Government Arts and Science College, Nagercoil",
+                        "அரசு கலை மற்றும் அறிவியல் கல்லூரி, நாகர்கோவில்"),
+                        style = MaterialTheme.typography.bodySmall)
+                }
+            },
+        )
+    }
     Scaffold { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding).testTag("native-home"),
@@ -355,7 +388,15 @@ private fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
-                Text("INVERTEBRATA", style = MaterialTheme.typography.headlineMedium)
+                Text("INVERTEBRATA", style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.pointerInput(Unit) {
+                        detectTapGestures(onTap = {
+                            val now = System.currentTimeMillis()
+                            titleTaps = if (now - lastTitleTap[0] > 1500L) 1 else titleTaps + 1
+                            lastTitleTap[0] = now
+                            if (titleTaps >= 7) { titleTaps = 0; showCredit = true }
+                        })
+                    })
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag("language-english")) { Text("English") }

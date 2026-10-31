@@ -56,7 +56,7 @@ private fun detail(enHeading: String, taHeading: String, en: String, ta: String)
 private val elaborations = mapOf(
     "identity-and-habitat" to detail(
         "A complete organism within one cell", "ஒரே செல்லில் முழுமையான உயிரினம்",
-        "Observe the distinction between cellular organization and multicellular tissues. Paramecium has no true digestive tract, kidney or nervous system: specialized membrane regions and organelles coordinate these functions. In a pond-water preparation, recorded characters should include cell outline, direction of swimming, reversal and visible vacuolar pulses; none alone is a secure species diagnosis.",
+        "Observe the distinction between cellular organisation and multicellular tissues. Paramecium has no true digestive tract, kidney or nervous system: specialised membrane regions and organelles coordinate these functions. In a pond-water preparation, recorded characters should include cell outline, direction of swimming, reversal and visible vacuolar pulses; none alone is a secure species diagnosis.",
         "பலசெல் உயிரிகளின் திசுக்களுக்கும் பாரமீசியத்தின் ஒற்றைச் செல் அமைப்புக்கும் உள்ள வேறுபாட்டைக் கவனிக்கவும். இதில் உண்மையான செரிமானக் குழாய், சிறுநீரகம் அல்லது நரம்பு மண்டலம் இல்லை. குறிப்பிட்ட செல் படலப் பகுதிகளும் நுண்ணுறுப்புகளும் இப்பணிகளை ஒருங்கிணைக்கின்றன. குளநீர் மாதிரியில் செல் வடிவம், நீந்தும் திசை, பின்னோக்கி நகர்தல், நுண்குமிழ் துடிப்பு ஆகியவற்றைப் பதிவுசெய்யலாம்; இவற்றில் ஒன்றை மட்டும் கொண்டு இனத்தை உறுதிப்படுத்த இயலாது."
     ),
     "pellicle-and-cilia" to detail(
@@ -81,7 +81,7 @@ private val elaborations = mapOf(
     ),
     "conjugation" to detail(
         "Genetic exchange is not immediate multiplication", "மரபணுப் பரிமாற்றம் உடனடி எண்ணிக்கைப் பெருக்கமல்ல",
-        "Compatible cells pair temporarily and their micronuclear derivatives participate in meiosis, exchange and nuclear reorganization. Two partners are still two cells at the point of separation. Subsequent divisions and macronuclear development must not be compressed into an instantaneous two-to-four multiplication cartoon.",
+        "Compatible cells pair temporarily and their micronuclear derivatives participate in meiosis, exchange and nuclear reorganisation. Two partners are still two cells at the point of separation. Subsequent divisions and macronuclear development must not be compressed into an instantaneous two-to-four multiplication cartoon.",
         "இணக்கமான செல்கள் தற்காலிகமாக இணைகின்றன. சிற்றுட்கருவிலிருந்து தோன்றும் அணுக்கருக்கள் மியோசிஸ், பரிமாற்றம் மற்றும் அணுக்கரு மறுசீரமைப்பில் பங்கேற்கின்றன. இணைவு முடிந்து பிரியும் தருணத்திலும் இரண்டு இணைச்செல்கள் இரண்டாகவே உள்ளன. பின்னர் நடைபெறும் பிரிவுகளையும் பேருட்கரு வளர்ச்சியையும் உடனடியாக நான்கு செல்களாகும் நிகழ்வாகச் சித்தரிக்கக்கூடாது."
     ),
     "systematics-and-species" to detail(
@@ -91,7 +91,7 @@ private val elaborations = mapOf(
     ),
     "oral-apparatus-details" to detail(
         "Do not confuse an oral channel with a true mouth and intestine", "வாய் அமைப்பை உண்மையான குடலுடன் குழப்ப வேண்டாம்",
-        "The oral apparatus is a specialized cortical feeding region. Its membranes, cilia and particle-guiding structures form and detach food vacuoles. A simplified pencil cutaway shows a route through distinct regions, but does not represent a continuous multicellular alimentary canal.",
+        "The oral apparatus is a specialised cortical feeding region. Its membranes, cilia and particle-guiding structures form and detach food vacuoles. A simplified pencil cutaway shows a route through distinct regions, but does not represent a continuous multicellular alimentary canal.",
         "வாயமைப்பு என்பது உணவெடுப்பதற்கான சிறப்புப் புறப்படலப் பகுதி. அதனுடைய படலங்கள், குறுஇழைகள், உணவுத்துகளை வழிநடத்தும் அமைப்புகள் ஆகியவை உணவுக் குமிழ்களை உருவாக்கிப் பிரிக்க உதவுகின்றன. பென்சில் குறுக்குவெட்டு வரைபடம் பகுதிகளின் தொடர்வழியை விளக்கும்; பலசெல் உயிரியின் தொடர்ச்சியான செரிமானக் குழாயைக் குறிக்காது."
     ),
     "cortical-avoidance-response" to detail(
@@ -118,7 +118,7 @@ private val elaborations = mapOf(
 
 private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
     "identity-and-habitat" to listOf(
-        BilingualText("Habitat and single-cell organization", "வாழிடமும் ஒருசெல் அமைப்பும்"),
+        BilingualText("Habitat and single-cell organisation", "வாழிடமும் ஒருசெல் அமைப்பும்"),
         BilingualText("Historical Protozoa terminology", "பாரம்பரிய புரோட்டோசோவா சொல்")),
     "pellicle-and-cilia" to listOf(
         BilingualText("Pellicle and surface cilia", "பெல்லிக்கிளும் மேற்பரப்புக் குறுஇழைகளும்"),

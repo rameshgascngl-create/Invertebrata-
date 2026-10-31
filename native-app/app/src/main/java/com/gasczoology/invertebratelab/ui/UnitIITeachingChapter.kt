@@ -85,7 +85,7 @@ internal fun UnitIITeachingChapter(
                 OutlinedButton(onClick=onBack,modifier=Modifier.heightIn(min=48.dp).testTag("u2-back")){
                     Text(tr(language,"Back to Unit II","அலகு II-க்குத் திரும்பு"))
                 }
-                Text("UNIT II  ·  PORIFERA & CNIDARIA",
+                Text(tr(language,"UNIT II  ·  PORIFERA & CNIDARIA","அலகு II  ·  துளையுடலிகள் & நிடேரியா"),
                     style=MaterialTheme.typography.labelLarge,color=currentBlue)
                 Text((book?.title ?: lesson.title).value(language),style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
                     modifier=Modifier.testTag("u2-lesson-title").semantics{heading()})

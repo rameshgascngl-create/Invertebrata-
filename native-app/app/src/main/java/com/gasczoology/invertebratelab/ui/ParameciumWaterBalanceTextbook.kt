@@ -114,7 +114,7 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                     WaterBalanceFigure.at((p.x-f.dx)/f.scale,(p.y-f.dy)/f.scale)?.let(::chooseStructure)
                 } }.semantics {
                     contentDescription=waterText(language,
-                        "Original pencil cutaway: one representative contractile-vacuole complex, cortex and discharge pore. Two whole-cell positions are static locators, not synchronized pulses. Separate comparative tubule inset. Current view: ",
+                        "Original pencil cutaway: one representative contractile-vacuole complex, cortex and discharge pore. Two whole-cell positions are static locators, not synchronised pulses. Separate comparative tubule inset. Current view: ",
                         "அசல் பென்சில் வெட்டுத் தோற்றம்: ஒரு பிரதிநிதிச் சுருங்கு நுண்குமிழ்த் தொகுப்பு, செல்புறப் படலம், வெளியேற்றுத் துளை. முழுச் செல்லில் இரு இடக் குறிகள்; ஒரே நேரத் துடிப்புகள் அல்ல. தனி ஒப்பீட்டுக் குழாய்ச் சிறுபடம். தற்போதைய காட்சி: ")+stage.heading.value(language)+". "+stage.explanation.value(language)
                     stateDescription=ParameciumWaterBalance.structure(progress.selectedStructure).name.value(language)+
                         waterText(language," highlighted"," சிறப்பிக்கப்பட்டது")

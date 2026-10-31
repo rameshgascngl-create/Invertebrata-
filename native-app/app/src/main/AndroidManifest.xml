@@ -11,6 +11,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Invertebrata">
+        <meta-data
+            android:name="com.gasczoology.invertebratelab.CREDIT"
+            android:value="@string/credit_line" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
