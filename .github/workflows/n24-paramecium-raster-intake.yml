@@ -1,0 +1,43 @@
+name: N2.4 Paramecium raster intake regression
+
+on:
+  push:
+    branches:
+      - native/n24-paramecium-raster-intake-20261031
+    paths:
+      - '.github/scripts/verify-paramecium-reproduction-png-intake.py'
+      - '.github/scripts/test-paramecium-reproduction-png-intake.py'
+      - '.github/workflows/n24-paramecium-raster-intake.yml'
+      - 'qa-intake/paramecium/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  intake-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact workflow commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record source identity
+        run: |
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Run PNG intake unit tests
+        run: python3 .github/scripts/test-paramecium-reproduction-png-intake.py -v
+      - name: Verify intake fails closed without approved assets
+        shell: bash
+        run: |
+          set +e
+          python3 .github/scripts/verify-paramecium-reproduction-png-intake.py
+          status=$?
+          set -e
+          if [ "$status" -ne 2 ]; then
+            echo "::error::Missing intake manifest/assets must fail closed with exit code 2 (got $status)"
+            exit 1
+          fi
+          echo "EXPECTED_HOLD: no approved reproduction PNG intake yet"
