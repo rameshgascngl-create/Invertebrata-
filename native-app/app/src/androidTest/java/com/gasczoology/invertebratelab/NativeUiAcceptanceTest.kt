@@ -501,7 +501,7 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("r1-process-conjugation")
             .performScrollTo().performClick()
         rule.onNodeWithTag("r1-stage-title")
-            .assertTextEquals("Stage 1/4 — Compatible cells pair")
+            .assertTextEquals("Stage 1/7 — Compatible cells pair")  // conjugation model has 7 stages
         rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
         rule.onNodeWithTag("r1-atlas-oral").performScrollTo().performClick()
         rule.onNodeWithTag("r1-atlas-select-food-vacuole")

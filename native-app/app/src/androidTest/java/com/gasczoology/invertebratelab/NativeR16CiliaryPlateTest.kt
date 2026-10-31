@@ -74,8 +74,12 @@ class NativeR16CiliaryPlateTest {
         val motion = ParameciumLearningEngine.simulation(ParameciumProcess.CILIARY_MOTION)
         assertEquals(listOf("rest", "effective", "recovery", "wave"),
             motion.stages.map { it.id })
-        rule.onNodeWithTag("r16-ciliary-canvas", useUnmergedTree = true)
+        // PNG-only policy: the plate must render as the verified PNG, not the
+        // "not yet verified" placeholder, and no Canvas drawing is substituted.
+        rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
             .performScrollTo().assertExists()
+        rule.onNodeWithTag("r16-ciliary-png-pending", useUnmergedTree = true)
+            .assertDoesNotExist()
         for ((position, stage) in motion.stages.withIndex()) {
             rule.onNodeWithTag("r16-ciliary-stage-" + stage.id, useUnmergedTree = true)
                 .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
@@ -132,10 +136,10 @@ class NativeR16CiliaryPlateTest {
         rule.onNodeWithTag("r16-view-ciliary-plate", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitForIdle()
-        val bounds = rule.onNodeWithTag("r16-ciliary-canvas", useUnmergedTree = true)
+        val bounds = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
             .fetchSemanticsNode().boundsInRoot
         val screen = rule.onRoot().fetchSemanticsNode().boundsInRoot
-        assertTrue("R1.6 pencil ciliary Canvas must fit the visible Android viewport: " +
+        assertTrue("R1.6 ciliary PNG plate must fit the visible Android viewport: " +
             "canvas=" + bounds + " viewport=" + screen,
             bounds.height > 0f && bounds.top >= screen.top - 1f &&
                 bounds.bottom <= screen.bottom + 1f)
