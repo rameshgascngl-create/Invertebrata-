@@ -6,6 +6,7 @@ on:
     branches:
       - native/v193-compose-migration-20261008
       - native/r15-feeding-textbook-20261010
+      - claude/diag-process-death-hang
 
 jobs:
   api34-native-process-death:
@@ -25,6 +26,90 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+      - name: Prepare bounded verification and background diagnostics
+        run: |
+          cat > "$RUNNER_TEMP/n14-diagnostic.sh" <<'N14_DIAGNOSTIC'
+          set -uo pipefail
+          mkdir -p qa-evidence/n14-diagnostic
+          export N14_DIAGNOSTICS="$PWD/qa-evidence/n14-diagnostic"
+          export N14_REAL_ADB="$(command -v adb)"
+          date -u --iso-8601=ns > "$N14_DIAGNOSTICS/job-start-utc.txt"
+          "$N14_REAL_ADB" root > "$N14_DIAGNOSTICS/adb-root.txt" 2>&1 || true
+          "$N14_REAL_ADB" wait-for-device
+          "$N14_REAL_ADB" shell date -u > "$N14_DIAGNOSTICS/device-clock.txt"
+          "$N14_REAL_ADB" logcat -b all -v threadtime > "$N14_DIAGNOSTICS/logcat-full.txt" 2>&1 &
+          logcat_pid=$!
+          cleanup_logcat() {
+            kill "$logcat_pid" 2>/dev/null || true
+            wait "$logcat_pid" 2>/dev/null || true
+            date -u --iso-8601=ns > "$N14_DIAGNOSTICS/job-end-utc.txt"
+          }
+          trap cleanup_logcat EXIT
+          wrapper_dir="$(mktemp -d "$RUNNER_TEMP/n14-adb.XXXXXX")"
+          cat > "$wrapper_dir/adb" <<'ADB_WRAPPER'
+          #!/usr/bin/env bash
+          set -uo pipefail
+          real_adb="${N14_REAL_ADB:?}"
+          diag="${N14_DIAGNOSTICS:?}"
+          verify=false
+          for argument in "$@"; do
+            if [[ "$argument" == "com.gasczoology.invertebratelab.NativeProcessDeathVerifyTest" ]]; then
+              verify=true
+            fi
+          done
+          if [[ "$verify" != true ]]; then
+            exec "$real_adb" "$@"
+          fi
+          date -u --iso-8601=ns > "$diag/verify-start-utc.txt"
+          timeout 480 "$real_adb" "$@" &
+          verify_pid=$!
+          (
+            trap 'kill "$delay_pid" 2>/dev/null || true; exit 0' TERM INT
+            sleep 120 &
+            delay_pid=$!
+            wait "$delay_pid"
+            if ! kill -0 "$verify_pid" 2>/dev/null; then exit 0; fi
+            date -u --iso-8601=ns > "$diag/watchdog-start-utc.txt"
+            timeout 30 "$real_adb" shell ps -A > "$diag/ps-all.txt" 2>&1 || true
+            awk 'NR == 1 || /com[.]gasczoology[.]invertebratelab/' "$diag/ps-all.txt" > "$diag/ps-app.txt"
+            app_pid="$(timeout 15 "$real_adb" shell pidof -s com.gasczoology.invertebratelab 2>/dev/null | tr -d '\r')"
+            printf '%s\n' "$app_pid" > "$diag/watchdog-app-pid.txt"
+            if [[ "$app_pid" =~ ^[0-9]+$ ]]; then
+              date -u --iso-8601=ns > "$diag/sigquit-utc.txt"
+              timeout 15 "$real_adb" shell kill -3 "$app_pid" > "$diag/kill-3.txt" 2>&1
+              signal_status=$?
+              printf 'exit=%s\n' "$signal_status" >> "$diag/kill-3.txt"
+              if [[ "$signal_status" != 0 ]]; then
+                timeout 15 "$real_adb" shell run-as com.gasczoology.invertebratelab kill -3 "$app_pid" > "$diag/kill-3-run-as.txt" 2>&1 || true
+              fi
+            fi
+            timeout 30 "$real_adb" shell dumpsys activity activities > "$diag/activity-activities.txt" 2>&1 || true
+            timeout 30 "$real_adb" shell dumpsys window windows > "$diag/window-windows.txt" 2>&1 || true
+            timeout 30 "$real_adb" exec-out screencap -p > "$diag/watchdog-screen.png" 2> "$diag/screencap-errors.txt" || true
+            timeout 15 "$real_adb" shell ls -la /data/anr > "$diag/anr-files.txt" 2>&1 || true
+            timeout 30 "$real_adb" pull /data/anr "$diag/anr" > "$diag/anr-pull.txt" 2>&1 || true
+            date -u --iso-8601=ns > "$diag/watchdog-end-utc.txt"
+          ) > "$diag/watchdog-console.txt" 2>&1 &
+          watchdog_pid=$!
+          wait "$verify_pid"
+          verify_status=$?
+          printf 'exit=%s\n' "$verify_status" > "$diag/verify-command-result.txt"
+          date -u --iso-8601=ns > "$diag/verify-end-utc.txt"
+          kill "$watchdog_pid" 2>/dev/null || true
+          wait "$watchdog_pid" 2>/dev/null || true
+          exit "$verify_status"
+          ADB_WRAPPER
+          chmod +x "$wrapper_dir/adb"
+          export PATH="$wrapper_dir:$PATH"
+          bash .github/scripts/run-native-n14-process-death.sh
+          driver_status=$?
+          printf 'exit=%s\n' "$driver_status" > "$N14_DIAGNOSTICS/driver-command-result.txt"
+          if [[ -f "$N14_DIAGNOSTICS/verify-command-result.txt" ]]; then
+            verify_result="$(cat "$N14_DIAGNOSTICS/verify-command-result.txt")"
+            if [[ "$verify_result" == exit=124 ]]; then exit 124; fi
+          fi
+          exit "$driver_status"
+          N14_DIAGNOSTIC
       - name: Verify actual PID termination and native restoration
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -36,11 +121,13 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-boot-timeout: 900
-          script: bash .github/scripts/run-native-n14-process-death.sh
+          script: bash "$RUNNER_TEMP/n14-diagnostic.sh"
       - name: Publish detailed process-death diagnostics regardless of result
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: native-n14-api34-pid-and-recovery
-          path: qa-evidence/n14/
+          path: |
+            qa-evidence/n14/
+            qa-evidence/n14-diagnostic/
           if-no-files-found: warn
