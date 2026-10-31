@@ -5,6 +5,7 @@ name: Native five-unit restoration — compile, assets and academic hold
       - native/five-unit-r7-single-image-per-plate-20261018
       - native/u56-gallery-touch-zoom-20261018
       - claude/audit-l10n
+      - claude/fix-home-label-tests
   workflow_dispatch:
 
 permissions:

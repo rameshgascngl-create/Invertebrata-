@@ -1,7 +1,7 @@
 name: Unit II-III textbook bilingual Android acceptance
 on:
   push:
-    branches: ['feat/plate-pipeline', 'claude/audit-l10n']
+    branches: ['feat/plate-pipeline', 'claude/audit-l10n', 'claude/fix-home-label-tests']
     paths:
       - 'native-app/**'
       - '.github/scripts/run-unit23-editorial-qa.sh'
