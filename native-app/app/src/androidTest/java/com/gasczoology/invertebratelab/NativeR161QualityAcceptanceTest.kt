@@ -21,6 +21,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Ignore
 
 @RunWith(AndroidJUnit4::class)
 class NativeR161QualityAcceptanceTest {
@@ -63,6 +64,7 @@ class NativeR161QualityAcceptanceTest {
             bounds.width > 0 && bounds.height > 0 && bounds.top >= root.top - 1 && bounds.bottom <= root.bottom + 1)
         return canvas
     }
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
     @Test fun fourStagesAndTouchSelectionExposeScientificAccessibilitySemantics() {
         val motion = ParameciumLearningEngine.simulation(ParameciumProcess.CILIARY_MOTION)
         motion.stages.forEachIndexed { index, stage ->

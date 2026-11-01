@@ -169,20 +169,12 @@ class NativeR16CiliaryPlateTest {
         val bitmap = checkNotNull(BitmapFactory.decodeByteArray(png, 0, png.size))
         try {
             assertTrue(bitmap.width > 100 && bitmap.height > 100)
-            var paper = 0
-            var pencil = 0
-            for (y in 0 until bitmap.height step 12) {
-                for (x in 0 until bitmap.width step 12) {
-                    when (bitmap.getPixel(x, y) and 0x00FFFFFF) {
-                        0x00FBFAF6 -> paper++
-                        0x0044413F, 0x00302E2C, 0x008A8580 -> pencil++
-                    }
-                }
-            }
-            // Technical evidence only. Existing anatomical fidelity and pixel
-            // thresholds are not replaced, relaxed or reinterpreted.
-            assertTrue("R1.6 screen missing pencil-paper pixels", paper > 10)
-            assertTrue("R1.6 screen missing graphite pixels", pencil > 1)
+            // PNG-only policy: the plate is a coloured PNG, not the old pencil-on-paper
+            // Canvas. Evidence: the screenshot region where the PNG is drawn must
+            // correlate with the PNG asset itself (blank screens/placeholders do not).
+            val plateBounds = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
+                .fetchSemanticsNode().boundsInRoot
+            assertPlateShowsAsset(bitmap, plateBounds, loadAssetBitmap(CILIARY_PNG_ASSET))
         } finally {
             bitmap.recycle()
         }
