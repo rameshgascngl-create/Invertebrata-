@@ -192,21 +192,14 @@ jobs:
           required=[r for r in rows if r["required"]]
           present=[r for r in required if r["state"]=="PRESENT_UNVERIFIED"]
           missing=sorted(r["required_stem"] for r in required if r["state"]=="MISSING")
-          # Counts are pinned to the audited state of 2026-10-26. A change in either direction must be
+          # Counts are pinned to the audited state of 2026-11-01 (all 52 present; none reviewed). A change in either direction must be
           # reviewed: a lost plate fails here, and so does a new plate that nobody has recorded.
-          assert len(required)==52 and len(present)==46,(len(required),len(present))
+          assert len(required)==52 and len(present)==52,(len(required),len(present))
           assert len([r for r in present if r["unit"]==3])==6
-          assert len([r for r in present if r["unit"]==1])==7
-          assert missing==[
-            "unit1/concepts/paramecium_binary_fission",
-            "unit1/concepts/paramecium_conjugation",
-            "unit1/concepts/paramecium_nutrition",
-            "unit1/replacements/leishmania_morphology",
-            "unit1/replacements/paramecium_locomotion",
-            "unit1/replacements/trypanosoma_morphology",
-          ],missing
+          assert len([r for r in present if r["unit"]==1])==13
+          assert missing==[],missing
           assert not any(r.get("academic_approved") for r in required)
-          print("RASTER_COVERAGE=46/52 PRESENT_UNVERIFIED; 6 UNIT1 STEMS STILL MISSING; ACADEMIC_ACCEPTANCE=HOLD")
+          print("RASTER_COVERAGE=52/52 PRESENT_UNVERIFIED; NO STEMS MISSING; ACADEMIC_ACCEPTANCE=HOLD")
           PY
       - name: Upload honest plate-register evidence
         uses: actions/upload-artifact@v4

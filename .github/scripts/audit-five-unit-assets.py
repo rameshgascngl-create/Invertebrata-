@@ -68,9 +68,21 @@ def check_file(path: Path) -> tuple[bool, str]:
     except (OSError, ValueError, struct.error) as err:
         return False, "UNREADABLE:" + type(err).__name__
 
+# Owner decision 2026-11-01: these two mandatory slots are satisfied by the existing
+# reference plates instead of new files. The required stem (and so every register,
+# review record and workflow keyed by it) is unchanged; only the file that is
+# inspected differs. The rows report the real file and its SHA-256, so a review
+# binds to the exact bytes. Rights/source are still unrecorded for these bytes.
+STEM_FILE_ALIASES = {
+    "unit1/replacements/trypanosoma_morphology": "unit1/references/trypanosoma",
+    "unit1/replacements/leishmania_morphology": "unit1/references/leishmania",
+}
+
+
 def inspect(asset_root: Path, unit: int, organism: str, plate: str,
             stem: str, mandatory: bool) -> dict:
-    paths = [asset_root / (stem + ext) for ext in (".png", ".webp")]
+    file_stem = STEM_FILE_ALIASES.get(stem, stem)
+    paths = [asset_root / (file_stem + ext) for ext in (".png", ".webp")]
     existing = [p for p in paths if p.is_file()]
     if not existing:
         return dict(unit=unit, organism=organism, plate=plate,
