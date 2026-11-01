@@ -776,12 +776,28 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
+        val firstChapter = units.first().chapters.first()
+        // The first chapter opens in the book reader; its questions sit far down a lazy list,
+        // so scroll to each node instead of assuming it is already composed.
+        val container = readerContainerTag(firstChapter)
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(1)
-        rule.onNodeWithTag("chapter-" + units.first().chapters.first().id).performClick()
-        rule.onNodeWithTag("a5-question-" + first.id).assertTextEquals(first.question.tamil)
+        rule.onNodeWithTag("chapter-" + firstChapter.id).performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag(container).fetchSemanticsNodes().isNotEmpty()
+        }
+        val questionTag = readerQuestionTag(firstChapter, first)
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(questionTag))
+        rule.onNodeWithTag(questionTag).assertTextEquals(first.question.tamil)
         rule.onNodeWithTag("a5-toggle-" + first.id).performScrollTo().performClick()
+        // DataStore state publication is asynchronous: wait for the revealed answer first.
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithTag("a5-point-" + first.id + "-1", useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
         for ((index, point) in first.answerPoints.withIndex()) {
-            rule.onNodeWithTag("a5-point-" + first.id + "-" + (index + 1))
+            val pointTag = "a5-point-" + first.id + "-" + (index + 1)
+            rule.onNodeWithTag(container).performScrollToNode(hasTestTag(pointTag))
+            rule.onNodeWithTag(pointTag)
                 .assertTextEquals((index + 1).toString() + ". " + point.tamil)
         }
     }
@@ -893,7 +909,7 @@ class NativeTamilLargeTextAcceptanceTest {
     }
 
     @Test
-    fun parameciumDraftSectionsAreScrollableAtActualTamil200Percent() {
+    fun parameciumChapterDraftNoticeAndQuestionsAreReachableAtActualTamil200Percent() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         assertTrue(context.resources.configuration.fontScale >= 1.95f)
         rule.waitUntil(timeoutMillis = 20_000L) {
@@ -908,26 +924,21 @@ class NativeTamilLargeTextAcceptanceTest {
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("native-unit-1").fetchSemanticsNodes().isNotEmpty()
         }
+        // The old draft-lesson sections (n22-section-*) are no longer reachable: the Paramecium
+        // chapter opens in the book reader. Check what students actually get at 200% Tamil:
+        // the draft notice at the top and the validated questions at the bottom.
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        val chapter = ValidatedA5AssetRepository(context).load()
+            .flatMap { it.chapters }.single { it.id == "u1-paramecium" }
+        val container = readerContainerTag(chapter)
         rule.waitUntil(timeoutMillis = 20_000L) {
-            rule.onAllNodesWithTag("native-chapter-u1-paramecium")
-                .fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag(container).fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
-        rule.onNodeWithTag("n22-draft-notice").assertExists()
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
-        rule.onNodeWithTag("n22-section-identity-and-habitat").assertExists()
-        // LazyColumn order: header, validated A5 questions, draft notice,
-        // then the authored sections. Never assume a fixed section position.
-        val observationOrdinal = NativeLessonDrafts.paramecium.sections
-            .indexOfFirst { it.id == "classroom-observation" }
-        assertTrue("Missing authored classroom-observation section", observationOrdinal >= 0)
-        val questionCount = ValidatedA5AssetRepository(context).load()
-            .flatMap { it.chapters }
-            .single { it.id == "u1-paramecium" }.a5Questions.size
-        rule.onNodeWithTag("native-chapter-u1-paramecium")
-            .performScrollToIndex(2 + questionCount + observationOrdinal)
-        rule.onNodeWithTag("n22-section-classroom-observation").assertExists()
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists()
+        val last = chapter.a5Questions.last()
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, last)))
+        rule.onNodeWithTag(readerQuestionTag(chapter, last)).assertExists()
     }
 }

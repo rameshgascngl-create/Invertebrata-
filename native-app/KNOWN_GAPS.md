@@ -57,3 +57,10 @@ phase. It now requires real screenshots of the reachable gallery instead:
 `paramecium-gallery-tamil200.png` (Tamil 200% phase, new test
 `anatomyGalleryIsReadableAtTamilTwoHundredPercent`). Screenshot evidence stays mandatory; only
 its subject changed.
+
+## 7. Tamil 200% tests updated for the real readers
+`tamilNavigationAndFullAnswerRemainReachableAtTwoHundredPercent` now scrolls to each question/answer
+node in the book reader instead of assuming it is composed. `parameciumDraftSections...` tested the
+unreachable draft-lesson sections; it is replaced by
+`parameciumChapterDraftNoticeAndQuestionsAreReachableAtActualTamil200Percent` (draft notice at the
+top, validated questions at the bottom of the reader the chapter really opens in).
