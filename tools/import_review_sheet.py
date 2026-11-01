@@ -3,14 +3,19 @@
 
 Mirrors the CI gate (.github/scripts/verify-five-unit-academic-approval.py): only rows with
 status ACCEPTED are written, and a row is rejected unless it satisfies every rule the gate checks.
-Nothing is written if any ACCEPTED row is invalid. Review records are bound to the SHA-256 of the
-exact image bytes currently in the repo.
+Nothing is written if any ACCEPTED row is invalid, if an ACCEPTED row has no asset stem, or if a
+stem appears twice. Review records are bound to the SHA-256 of the exact image bytes in the repo.
+
+  --check   validate and run the CI gate on a temporary copy; NEVER writes --out.
+  (default) validate, run the gate on a temporary copy, then replace --out atomically only if every
+            record passes. A sheet with zero ACCEPTED rows is refused unless --allow-empty, so a
+            blank sheet cannot wipe existing sign-offs.
 
 Usage:
-  python tools/import_review_sheet.py --sheet plate-review-sheet.xlsx --check
-  python tools/import_review_sheet.py --sheet filled.csv --out qa-intake/five-unit-academic-reviews.json
+  python tools/import_review_sheet.py --sheet staging/plate-review-sheet.xlsx --check
+  python tools/import_review_sheet.py --sheet staging/plate-review-sheet.xlsx
 """
-import argparse, csv, json, runpy, sys
+import argparse, csv, json, os, runpy, sys, tempfile
 from pathlib import Path
 
 ALLOWED_RIGHTS = {"public_domain", "licensed", "author_owned", "permission_documented"}
@@ -30,22 +35,21 @@ def read_rows(path: Path):
 def truthy(v):
     return v is True or str(v).strip().upper() in {"TRUE", "YES", "Y", "1"}
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--sheet", type=Path, required=True)
-    ap.add_argument("--repo-root", type=Path, default=Path("."))
-    ap.add_argument("--out", type=Path, default=Path("qa-intake/five-unit-academic-reviews.json"))
-    ap.add_argument("--check", action="store_true", help="also run the CI gate on the written file")
-    a = ap.parse_args()
-
-    audit = runpy.run_path(str(a.repo_root / ".github/scripts/audit-five-unit-assets.py"))["audit"]
-    required = {p["required_stem"]: p for p in audit(a.repo_root) if p["required"]}
-    reviews, errors = [], []
-    for row in read_rows(a.sheet):
+def build_reviews(rows, required):
+    """Pure validation: returns (reviews, errors). errors is a list of (label, [problems])."""
+    reviews, errors, seen = [], [], set()
+    for n, row in enumerate(rows, start=2):
         stem = str(row.get("asset_stem", "")).strip()
-        if not stem or str(row.get("status", "")).strip().upper() != "ACCEPTED":
+        accepted = str(row.get("status", "")).strip().upper() == "ACCEPTED"
+        if not accepted:
+            continue
+        if not stem:
+            errors.append((f"sheet row {n}", ["ACCEPTED row has no asset_stem"]))
             continue
         problems = []
+        if stem in seen:
+            problems.append("duplicate ACCEPTED row for this plate")
+        seen.add(stem)
         plate = required.get(stem)
         if plate is None:
             problems.append("not a mandatory plate")
@@ -75,24 +79,63 @@ def main():
             "review_date": str(row.get("review_date", "")).strip(),
             "notes": str(row.get("notes", "")).strip(),
         })
+    return reviews, errors
+
+
+def run(rows, required, out: Path, check: bool, verify_fn, allow_empty=False) -> int:
+    """Validate, gate-check a temporary copy, and only then (unless check) replace `out` atomically."""
+    reviews, errors = build_reviews(rows, required)
     if errors:
         print("REFUSING TO WRITE: these ACCEPTED rows are invalid:")
-        for stem, ps in errors:
-            print(" -", stem, "::", "; ".join(ps))
+        for label, ps in errors:
+            print(" -", label, "::", "; ".join(ps))
         return 1
     doc = {"schema_version": 1,
            "disclosure": f"{len(reviews)} of {len(required)} mandatory plates accepted by named, "
                          "independent biology and Tamil reviewers; see reviews.",
            "reviews": reviews}
-    a.out.parent.mkdir(parents=True, exist_ok=True)
-    a.out.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"wrote {a.out}: {len(reviews)} accepted of {len(required)}")
-    if a.check:
-        verify = runpy.run_path(str(a.repo_root / ".github/scripts/verify-five-unit-academic-approval.py"))["verify"]
-        outcome = verify(a.repo_root, a.out)
+    text = json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
+    if not reviews and not check and not allow_empty:
+        print("REFUSING TO WRITE: the sheet has no ACCEPTED rows (use --allow-empty to write an empty record).")
+        return 1
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td) / "reviews.json"
+        tmp.write_text(text, encoding="utf-8")
+        outcome = verify_fn(tmp)
         ok = sum(o["status"] == "ACCEPTED" for o in outcome)
         print(f"CI gate would report ACADEMIC_ACCEPTANCE_REVIEWED_PLATES={ok}/{len(outcome)}")
+        if reviews and ok != len(reviews):
+            print("REFUSING TO WRITE: the CI gate rejected at least one record.")
+            return 1
+    if check:
+        print(f"check only: {len(reviews)} ACCEPTED rows valid; nothing written")
+        return 0
+    out.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_name = tempfile.mkstemp(dir=out.parent, prefix=".reviews-", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(text)
+        os.replace(tmp_name, out)
+    finally:
+        if os.path.exists(tmp_name):
+            os.unlink(tmp_name)
+    print(f"wrote {out}: {len(reviews)} accepted of {len(required)}")
     return 0
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--sheet", type=Path, required=True)
+    ap.add_argument("--repo-root", type=Path, default=Path("."))
+    ap.add_argument("--out", type=Path, default=Path("qa-intake/five-unit-academic-reviews.json"))
+    ap.add_argument("--check", action="store_true", help="validate and run the CI gate; never writes --out")
+    ap.add_argument("--allow-empty", action="store_true", help="permit writing a record with zero ACCEPTED rows")
+    a = ap.parse_args()
+    audit = runpy.run_path(str(a.repo_root / ".github/scripts/audit-five-unit-assets.py"))["audit"]
+    required = {p["required_stem"]: p for p in audit(a.repo_root) if p["required"]}
+    verify = runpy.run_path(str(a.repo_root / ".github/scripts/verify-five-unit-academic-approval.py"))["verify"]
+    return run(read_rows(a.sheet), required, a.out, a.check, lambda path: verify(a.repo_root, path), a.allow_empty)
+
 
 if __name__ == "__main__":
     sys.exit(main())
