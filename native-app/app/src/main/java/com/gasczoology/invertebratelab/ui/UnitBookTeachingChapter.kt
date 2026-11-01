@@ -53,8 +53,11 @@ internal fun UnitBookTeachingChapter(
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         item(key = "header") {
-            OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp).testTag("book-back")) {
-                Text(ut(language, "Back", "பின்செல்"))
+            Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
+                OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp).testTag("book-back")) {
+                    Text(ut(language, "Back", "பின்செல்"))
+                }
+                ChapterDraftNotice(book.status, language)
             }
         }
         if (referenceStudy != null) {

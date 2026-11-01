@@ -74,7 +74,7 @@ class NativeR16Tamil200AcceptanceTest {
         rule.onNodeWithTag("r16-view-ciliary-plate", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitForIdle()
-        val diagram = rule.onNodeWithTag("r16-ciliary-canvas", useUnmergedTree = true)
+        val diagram = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
             .fetchSemanticsNode().boundsInRoot
         val root = rule.onRoot().fetchSemanticsNode().boundsInRoot
         assertTrue("Actual Tamil 200% viewport clipping: diagram=" + diagram +
@@ -94,18 +94,8 @@ class NativeR16Tamil200AcceptanceTest {
         val image = checkNotNull(BitmapFactory.decodeByteArray(png, 0, png.size))
         try {
             assertTrue(image.width > 100 && image.height > 100)
-            var paper = 0
-            var graphite = 0
-            for (y in 0 until image.height step 12) {
-                for (x in 0 until image.width step 12) {
-                    when (image.getPixel(x, y) and 0x00FFFFFF) {
-                        0x00FBFAF6 -> paper++
-                        0x0044413F, 0x00302E2C, 0x008A8580 -> graphite++
-                    }
-                }
-            }
-            assertTrue("No pencil-paper plate in real Tamil 200% PNG", paper > 10)
-            assertTrue("No graphite marks in real Tamil 200% PNG", graphite > 1)
+            // PNG-only policy: compare the real Tamil 200% screenshot region with the PNG asset.
+            assertPlateShowsAsset(image, diagram, loadAssetBitmap(CILIARY_PNG_ASSET))
         } finally {
             image.recycle()
         }

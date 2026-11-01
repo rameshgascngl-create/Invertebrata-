@@ -7,4 +7,6 @@
     <string name="assessment">Assessment</string>
     <string name="english">English</string>
     <string name="tamil">Tamil</string>
+    <!-- Attribution. Shown only via the hidden About gesture and recorded in the manifest. -->
+    <string name="credit_line" translatable="false">Department of Zoology, GASC, Nagercoil / Created by R. Ramesh</string>
 </resources>

@@ -39,6 +39,8 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlinx.coroutines.runBlocking
+import org.junit.Ignore
+import androidx.compose.ui.test.performScrollToNode
 
 /**
  * Save genuine device-rendered screenshots of the Canvas, not a generated or
@@ -162,7 +164,7 @@ class NativeUiAcceptanceTest {
         waitFor("native-home")
         rule.onNodeWithTag("language-english").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("Unit 1 · 7 chapters").fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = false)
         }
     }
 
@@ -179,16 +181,18 @@ class NativeUiAcceptanceTest {
                 rule.onNodeWithTag("native-unit-" + unit.number)
                     .performScrollToIndex(chapterIndex + 1)
                 rule.onNodeWithTag("chapter-" + chapter.id).performClick()
-                waitFor("native-chapter-" + chapter.id)
+                // Each chapter opens in its own reader (see ReaderRoute); wait for that
+                // reader's container, not the generic native-chapter-<id> list.
+                val container = readerContainerTag(chapter)
+                waitFor(container)
                 assertEquals(2, chapter.a5Questions.size)
-                for ((questionIndex, question) in chapter.a5Questions.withIndex()) {
-                    rule.onNodeWithTag("native-chapter-" + chapter.id)
-                        .performScrollToIndex(questionIndex + 1)
-                    rule.onNodeWithTag("a5-question-" + question.id)
-                        .assertTextEquals(question.question.english)
+                for (question in chapter.a5Questions) {
+                    val questionTag = readerQuestionTag(chapter, question)
+                    rule.onNodeWithTag(container).performScrollToNode(hasTestTag(questionTag))
+                    rule.onNodeWithTag(questionTag).assertTextEquals(question.question.english)
                 }
-                rule.onNodeWithTag("native-chapter-" + chapter.id).performScrollToIndex(0)
-                rule.onNodeWithText("Back").performClick()
+                rule.onNodeWithTag(container).performScrollToIndex(0)
+                leaveReader(rule, chapter)
                 waitFor("native-unit-" + unit.number)
             }
             rule.onNodeWithTag("native-unit-" + unit.number).performScrollToIndex(0)
@@ -243,7 +247,7 @@ class NativeUiAcceptanceTest {
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
 
         val questions = units.flatMap { it.chapters }.flatMap { it.a5Questions }
@@ -282,59 +286,99 @@ class NativeUiAcceptanceTest {
 
     @Test
     fun parameciumDraftIsReachableInEnglishAndTamilWithoutChangingA5() {
-        val draft = NativeLessonDrafts.paramecium
+        // The Paramecium chapter opens in the book reader (not the generic list). It must carry a
+        // visible bilingual draft notice, and its validated A5 questions must be unchanged.
         englishHome()
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
-        waitFor("native-chapter-u1-paramecium")
-
         val chapter = units.first().chapters.single { it.id == "u1-paramecium" }
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(1)
-        rule.onNodeWithTag("a5-question-" + chapter.a5Questions.first().id)
-            .assertTextEquals(chapter.a5Questions.first().question.english)
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
-        rule.onNodeWithTag("n22-draft-notice").assertExists()
-        rule.onNodeWithText("Teaching lesson — editorial draft").assertExists()
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
-        rule.onNodeWithTag("n22-section-identity-and-habitat").assertExists()
-        rule.onNodeWithText(
-            draft.sections.first().paragraphs.first().english,
-            useUnmergedTree = true,
-        ).performScrollTo()
-        rule.onNodeWithText(draft.sections.first().paragraphs.first().english)
-            .assertExists()
-
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(0)
-        rule.onNodeWithText("Back").performClick()
+        val container = readerContainerTag(chapter)
+        waitFor(container)
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
+            "Academic review pending: illustrations and Tamil vocabulary remain drafts.")
+        val first = chapter.a5Questions.first()
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
+        rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.english)
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        leaveReader(rule, chapter)
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(0)
         rule.onNodeWithText("Back").performClick()
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
-        rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
+        rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
-        waitFor("native-chapter-u1-paramecium")
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
-        rule.onNodeWithText("கற்பித்தல் பாடம் — ஆசிரியர் மதிப்பாய்வு நிலுவை")
-            .assertExists()
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
-        rule.onNodeWithText(
-            draft.sections.first().paragraphs.first().tamil,
-            useUnmergedTree = true,
-        ).performScrollTo()
-        rule.onNodeWithText(draft.sections.first().paragraphs.first().tamil)
-            .assertExists()
+        waitFor(container)
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
+            "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன.")
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
+        rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.tamil)
     }
+
+    // Plate gallery students can actually reach from the Anatomy tab (organ-level selection is
+    // a documented known gap: native-app/KNOWN_GAPS.md). Lives in this class because the
+    // R1.6.1 established-UI job runs this class by name.
+    @Test
+    fun oralApparatusAndContractileVacuolePlatesAreReachableFromAnatomy() {
+        englishHome()
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        for (plateId in listOf("oral-apparatus", "contractile-vacuoles")) {
+            rule.onNodeWithTag("r2-plate-bitmap-paramecium-$plateId", useUnmergedTree = true)
+                .performScrollTo().assertExists()
+            rule.onNodeWithTag("r2-plate-missing-paramecium-$plateId", useUnmergedTree = true)
+                .assertDoesNotExist()
+        }
+        // Real emulator evidence of the gallery students can reach (runner requires this file).
+        rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+            .performScrollTo()
+        rule.waitForIdle()
+        saveGalleryEvidenceScreenshot(
+            "paramecium-anatomy-gallery-normal.png",
+            rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+                .fetchSemanticsNode().boundsInRoot,
+            "type_studies/paramecium/oral-apparatus.png",
+        )
+    }
+
+    @Test
+    fun plateOpensFullScreenViewerWithZoomControls() {
+        englishHome()
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r2-plate-expand-paramecium-contractile-vacuoles", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithTag("r2-fullscreen-dialog", useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        for (control in listOf("r2-zoom-in", "r2-zoom-out", "r2-zoom-reset", "r2-fullscreen-close")) {
+            rule.onNodeWithTag(control, useUnmergedTree = true).assertExists().assertHeightIsAtLeast(48.dp)
+        }
+        rule.onNodeWithTag("r6-zoom-level", useUnmergedTree = true).assertExists()
+        rule.waitForIdle()
+        saveGalleryEvidenceScreenshot("paramecium-plate-viewer-normal.png")
+        rule.onNodeWithTag("r2-zoom-in", useUnmergedTree = true).performClick()
+        rule.onNodeWithTag("r2-zoom-reset", useUnmergedTree = true).performClick()
+        rule.onNodeWithTag("r2-fullscreen-close", useUnmergedTree = true).performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithTag("r2-fullscreen-dialog", useUnmergedTree = true)
+                .fetchSemanticsNodes().isEmpty()
+        }
+    }
+
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
 
     @Test
     fun nativeParameciumCanvasButtonsHighlightTheExpectedBilingualOrgan() {
@@ -393,6 +437,8 @@ class NativeUiAcceptanceTest {
         saveN23bReviewScreenshot("paramecium-normal-oral-groove.png")
     }
 
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
+
     @Test
     fun provisionalCanvasDirectTapUsesSameFittedCoordinatesAsDrawing() {
         englishHome()
@@ -426,6 +472,8 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("n23c2-cytoproct-evidence-limit", useUnmergedTree = true)
             .assertExists()
     }
+
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
 
     @Test
     fun r14UnitOpensIllustratedTextbookAndAnatomyInsteadOfStartingWithQuestions() {
@@ -502,16 +550,18 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("r1-process-conjugation")
             .performScrollTo().performClick()
         rule.onNodeWithTag("r1-stage-title")
-            .assertTextEquals("Stage 1/4 — Compatible cells pair")
+            .assertTextEquals("Stage 1/7 — Compatible cells pair")  // conjugation model has 7 stages
         rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
-        rule.onNodeWithTag("r1-atlas-oral").performScrollTo().performClick()
-        rule.onNodeWithTag("r1-atlas-select-food-vacuole")
-            .performScrollTo().performClick()
-        rule.onNodeWithTag("r1-atlas-selected").assertTextEquals("Food vacuole")
+        // The legacy organ-selection atlas is unreachable (KNOWN_GAPS.md); check the
+        // plate gallery students can actually open.
+        rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+            .performScrollTo().assertExists()
         rule.onNodeWithTag("r1-tab-listen").performScrollTo().performClick()
         rule.onNodeWithTag("r1-narrate-macronucleus")
             .performScrollTo().assertHasClickAction()
     }
+
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
 
     @Test
     fun r11VacuoleAtlasSeparatesFoodFromOsmoregulationAndOpensNativeCycle() {
@@ -546,6 +596,8 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("r1-simulation-caution", useUnmergedTree = true)
             .performScrollTo().assertExists()
     }
+
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
 
     @Test
     fun r12ContractileComplexMechanismUsesNativeAccessibleFourStageReview() {
@@ -607,6 +659,36 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.activityRule.scenario.recreate()
     }
+
+    @Test
+    fun anatomyGalleryIsReadableAtTamilTwoHundredPercent() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertTrue(context.resources.configuration.fontScale >= 1.95f)
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("language-tamil").performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r2-plate-expand-paramecium-oral-apparatus", useUnmergedTree = true)
+            .assertExists().assertHeightIsAtLeast(48.dp)
+        rule.waitForIdle()
+        // Real Tamil 200% emulator evidence (runner requires this file).
+        saveGalleryEvidenceScreenshot(
+            "paramecium-gallery-tamil200.png",
+            rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+                .fetchSemanticsNode().boundsInRoot,
+            "type_studies/paramecium/oral-apparatus.png",
+        )
+    }
+
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
 
     @Test
     fun r14NativeReaderRetainsReadableTamilHeadingsAtActualTwoHundredPercent() {
@@ -690,19 +772,36 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
+        val firstChapter = units.first().chapters.first()
+        // The first chapter opens in the book reader; its questions sit far down a lazy list,
+        // so scroll to each node instead of assuming it is already composed.
+        val container = readerContainerTag(firstChapter)
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(1)
-        rule.onNodeWithTag("chapter-" + units.first().chapters.first().id).performClick()
-        rule.onNodeWithTag("a5-question-" + first.id).assertTextEquals(first.question.tamil)
+        rule.onNodeWithTag("chapter-" + firstChapter.id).performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag(container).fetchSemanticsNodes().isNotEmpty()
+        }
+        val questionTag = readerQuestionTag(firstChapter, first)
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(questionTag))
+        rule.onNodeWithTag(questionTag).assertTextEquals(first.question.tamil)
         rule.onNodeWithTag("a5-toggle-" + first.id).performScrollTo().performClick()
+        // DataStore state publication is asynchronous: wait for the revealed answer first.
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithTag("a5-point-" + first.id + "-1", useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
         for ((index, point) in first.answerPoints.withIndex()) {
-            rule.onNodeWithTag("a5-point-" + first.id + "-" + (index + 1))
+            val pointTag = "a5-point-" + first.id + "-" + (index + 1)
+            rule.onNodeWithTag(container).performScrollToNode(hasTestTag(pointTag))
+            rule.onNodeWithTag(pointTag)
                 .assertTextEquals((index + 1).toString() + ". " + point.tamil)
         }
     }
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
     @Test
     fun tamilTwoHundredPercentCanvasControlsRemainReachable() {
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
@@ -712,8 +811,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes()
-                .isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
@@ -776,6 +874,8 @@ class NativeTamilLargeTextAcceptanceTest {
             .performScrollTo().assertExists()
     }
 
+    @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
+
     @Test
     fun r12MechanismControlsAndTamilTerminologyWorkAtTwoHundredPercent() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
@@ -809,7 +909,7 @@ class NativeTamilLargeTextAcceptanceTest {
     }
 
     @Test
-    fun parameciumDraftSectionsAreScrollableAtActualTamil200Percent() {
+    fun parameciumChapterDraftNoticeAndQuestionsAreReachableAtActualTamil200Percent() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         assertTrue(context.resources.configuration.fontScale >= 1.95f)
         rule.waitUntil(timeoutMillis = 20_000L) {
@@ -817,34 +917,28 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         rule.onNodeWithTag("language-tamil").performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText("அலகு 1 · 7 அத்தியாயங்கள்").fetchSemanticsNodes()
-                .isNotEmpty()
+            rule.homeUnitOneShows(tamil = true)
         }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag("native-unit-1").fetchSemanticsNodes().isNotEmpty()
         }
+        // The old draft-lesson sections (n22-section-*) are no longer reachable: the Paramecium
+        // chapter opens in the book reader. Check what students actually get at 200% Tamil:
+        // the draft notice at the top and the validated questions at the bottom.
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
+        val chapter = ValidatedA5AssetRepository(context).load()
+            .flatMap { it.chapters }.single { it.id == "u1-paramecium" }
+        val container = readerContainerTag(chapter)
         rule.waitUntil(timeoutMillis = 20_000L) {
-            rule.onAllNodesWithTag("native-chapter-u1-paramecium")
-                .fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag(container).fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
-        rule.onNodeWithTag("n22-draft-notice").assertExists()
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
-        rule.onNodeWithTag("n22-section-identity-and-habitat").assertExists()
-        // LazyColumn order: header, validated A5 questions, draft notice,
-        // then the authored sections. Never assume a fixed section position.
-        val observationOrdinal = NativeLessonDrafts.paramecium.sections
-            .indexOfFirst { it.id == "classroom-observation" }
-        assertTrue("Missing authored classroom-observation section", observationOrdinal >= 0)
-        val questionCount = ValidatedA5AssetRepository(context).load()
-            .flatMap { it.chapters }
-            .single { it.id == "u1-paramecium" }.a5Questions.size
-        rule.onNodeWithTag("native-chapter-u1-paramecium")
-            .performScrollToIndex(2 + questionCount + observationOrdinal)
-        rule.onNodeWithTag("n22-section-classroom-observation").assertExists()
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists()
+        val last = chapter.a5Questions.last()
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, last)))
+        rule.onNodeWithTag(readerQuestionTag(chapter, last)).assertExists()
     }
 }

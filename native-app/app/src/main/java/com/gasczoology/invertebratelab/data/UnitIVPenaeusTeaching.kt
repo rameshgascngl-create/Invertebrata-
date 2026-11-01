@@ -82,17 +82,17 @@ internal object UnitIVPenaeusTeaching {
                   "வளர்ச்சிக்குத் தோலுரிதல் (ecdysis) தேவைப்படுகிறது; பழைய புறஉறை நீங்கி புதிய பெரிய உறை பின்னர் வலுப்படுகிறது. தோலுரிந்த உடனே இறால் பாதுகாப்பின்றி இருக்கும்; ஒருபோதும் உரியாத கடின உறைக்குள் தொடர்ந்து வளர்வதாகக் கூறக்கூடாது.")
             ),FAO_BIO),
         PenaeusTeachingSection("appendage-architecture",
-            t("Segmental appendages: 19 pairs and serial specialization","கண்ட இணைக் கால்கள்: 19 ஜோடிகளும் பணி வேறுபாடும்"),
+            t("Segmental appendages: 19 pairs and serial specialisation","கண்ட இணைக் கால்கள்: 19 ஜோடிகளும் பணி வேறுபாடும்"),
             listOf(
                 t("The conventional adult appendage series is five cephalic pairs (antennules, antennae, mandibles, maxillulae, maxillae), eight thoracic pairs (three maxillipeds plus five pereiopods) and six abdominal pairs (five pleopods plus one uropod pair): 5 + 8 + 6 = 19. Stalked eyes and the median telson are not additional paired limb entries in this count.",
                   "முதிர்ந்த இறாலின் வழக்கமான கணக்கில் தலையில் 5 ஜோடி (முதல் உணர்கொம்பு, இரண்டாம் உணர்கொம்பு, தாடை, முதல் மேல்தாடை, இரண்டாம் மேல்தாடை), மார்பில் 8 ஜோடி (3 துணை வாய்க்கால்கள், 5 நடைக்கால்கள்), வயிற்றில் 6 ஜோடி (5 நீந்துகால்கள், ஒரு யூரோபாட் ஜோடி): 5 + 8 + 6 = 19. காம்புக் கண்களையும் ஒற்றை டெல்சனையும் இக்கணக்கில் கூடுதல் ஜோடிகளாகச் சேர்க்க வேண்டாம்."),
-                t("Crustacean limbs share serial homology but their endopodite, exopodite, basal protopodite, gill-associated structures and chelae vary by limb and taxon. A generalized biramous drawing must not assert that every adult appendage carries two equally developed branches.",
+                t("Crustacean limbs share serial homology but their endopodite, exopodite, basal protopodite, gill-associated structures and chelae vary by limb and taxon. A generalised biramous drawing must not assert that every adult appendage carries two equally developed branches.",
                   "க்ரஸ்டேசியன் கால்களுக்கு தொடர் ஒத்தமைவு இருந்தாலும், அவற்றின் உள்கிளை, வெளிக்கிளை, அடிப்பகுதி, செவுளுடன் தொடர்புடைய அமைப்புகள் மற்றும் பிடிப்புகள் கால்வகை, இனக்குழுவின்படி மாறுகின்றன. எல்லா முதிர்ந்த உறுப்புகளிலும் இரண்டு சமமான கிளைகள் உள்ளன என பொதுவான இருகிளை வரைபடம் காட்டக்கூடாது.")
             ),FAO_TAXON),
         PenaeusTeachingSection("nutrition",
             t("Alimentary canal and digestive gland","உணவுக்குழலும் செரிமானச் சுரப்பியும்"),
             listOf(
-                t("Food passes from the mouth through foregut regions to a muscular stomach with cuticular filtering and processing specializations, then into the intestine and anus. The large hepatopancreas contributes digestive secretions and nutrient processing; it is not a vertebrate liver plus pancreas.",
+                t("Food passes from the mouth through foregut regions to a muscular stomach with cuticular filtering and processing specialisations, then into the intestine and anus. The large hepatopancreas contributes digestive secretions and nutrient processing; it is not a vertebrate liver plus pancreas.",
                   "உணவு வாயிலிருந்து முன்குடல் மற்றும் தசையுள்ள இரைப்பையின் சிறப்பமைப்புகளைக் கடந்து குடலுக்கும் ஆசனவாய்க்கும் செல்கிறது. பெரிய ஹெபட்டோபாங்க்ரியாஸ் செரிமானச் சுரப்புகளுக்கும் ஊட்டச்சத்து மாற்றத்திற்கும் உதவுகிறது; இது முதுகெலும்பிகளின் கல்லீரல் மற்றும் கணையம் இரண்டும் தனியாக இருப்பதுபோல அல்ல."),
                 t("Mouthpart appendages manipulate particles, while hepatopancreatic tubules are distinct from the gut lumen. Any anatomical plate must separate oesophagus, stomach, digestive gland, intestine and their actual duct connections.",
                   "வாய்க்கால்கள் உணவுத் துகள்களை கையாளுகின்றன; ஹெபட்டோபாங்க்ரியாஸின் நுண்குழல்கள் குடற்குழியிலிருந்து வேறானவை. படம் உணவுக்குழாய், இரைப்பை, செரிமானச் சுரப்பி, குடல் மற்றும் அவற்றின் உண்மையான குழாய் இணைப்புகளைத் தெளிவாகப் பிரிக்க வேண்டும்.")

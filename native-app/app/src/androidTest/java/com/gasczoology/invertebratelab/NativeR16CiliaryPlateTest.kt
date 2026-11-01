@@ -54,9 +54,7 @@ class NativeR16CiliaryPlateTest {
         rule.onNodeWithTag(if (tamil) "language-tamil" else "language-english")
             .performClick()
         rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.onAllNodesWithText(
-                if (tamil) "அலகு 1 · 7 அத்தியாயங்கள்" else "Unit 1 · 7 chapters"
-            ).fetchSemanticsNodes().isNotEmpty()
+            rule.homeUnitOneShows(tamil)
         }
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(timeoutMillis = 20_000L) {
@@ -76,8 +74,12 @@ class NativeR16CiliaryPlateTest {
         val motion = ParameciumLearningEngine.simulation(ParameciumProcess.CILIARY_MOTION)
         assertEquals(listOf("rest", "effective", "recovery", "wave"),
             motion.stages.map { it.id })
-        rule.onNodeWithTag("r16-ciliary-canvas", useUnmergedTree = true)
+        // PNG-only policy: the plate must render as the verified PNG, not the
+        // "not yet verified" placeholder, and no Canvas drawing is substituted.
+        rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
             .performScrollTo().assertExists()
+        rule.onNodeWithTag("r16-ciliary-png-pending", useUnmergedTree = true)
+            .assertDoesNotExist()
         for ((position, stage) in motion.stages.withIndex()) {
             rule.onNodeWithTag("r16-ciliary-stage-" + stage.id, useUnmergedTree = true)
                 .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
@@ -134,10 +136,10 @@ class NativeR16CiliaryPlateTest {
         rule.onNodeWithTag("r16-view-ciliary-plate", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitForIdle()
-        val bounds = rule.onNodeWithTag("r16-ciliary-canvas", useUnmergedTree = true)
+        val bounds = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
             .fetchSemanticsNode().boundsInRoot
         val screen = rule.onRoot().fetchSemanticsNode().boundsInRoot
-        assertTrue("R1.6 pencil ciliary Canvas must fit the visible Android viewport: " +
+        assertTrue("R1.6 ciliary PNG plate must fit the visible Android viewport: " +
             "canvas=" + bounds + " viewport=" + screen,
             bounds.height > 0f && bounds.top >= screen.top - 1f &&
                 bounds.bottom <= screen.bottom + 1f)
@@ -167,20 +169,12 @@ class NativeR16CiliaryPlateTest {
         val bitmap = checkNotNull(BitmapFactory.decodeByteArray(png, 0, png.size))
         try {
             assertTrue(bitmap.width > 100 && bitmap.height > 100)
-            var paper = 0
-            var pencil = 0
-            for (y in 0 until bitmap.height step 12) {
-                for (x in 0 until bitmap.width step 12) {
-                    when (bitmap.getPixel(x, y) and 0x00FFFFFF) {
-                        0x00FBFAF6 -> paper++
-                        0x0044413F, 0x00302E2C, 0x008A8580 -> pencil++
-                    }
-                }
-            }
-            // Technical evidence only. Existing anatomical fidelity and pixel
-            // thresholds are not replaced, relaxed or reinterpreted.
-            assertTrue("R1.6 screen missing pencil-paper pixels", paper > 10)
-            assertTrue("R1.6 screen missing graphite pixels", pencil > 1)
+            // PNG-only policy: the plate is a coloured PNG, not the old pencil-on-paper
+            // Canvas. Evidence: the screenshot region where the PNG is drawn must
+            // correlate with the PNG asset itself (blank screens/placeholders do not).
+            val plateBounds = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
+                .fetchSemanticsNode().boundsInRoot
+            assertPlateShowsAsset(bitmap, plateBounds, loadAssetBitmap(CILIARY_PNG_ASSET))
         } finally {
             bitmap.recycle()
         }
