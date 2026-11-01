@@ -339,6 +339,16 @@ class NativeUiAcceptanceTest {
             rule.onNodeWithTag("r2-plate-missing-paramecium-$plateId", useUnmergedTree = true)
                 .assertDoesNotExist()
         }
+        // Real emulator evidence of the gallery students can reach (runner requires this file).
+        rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+            .performScrollTo()
+        rule.waitForIdle()
+        saveGalleryEvidenceScreenshot(
+            "paramecium-anatomy-gallery-normal.png",
+            rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+                .fetchSemanticsNode().boundsInRoot,
+            "type_studies/paramecium/oral-apparatus.png",
+        )
     }
 
     @Test
@@ -357,6 +367,8 @@ class NativeUiAcceptanceTest {
             rule.onNodeWithTag(control, useUnmergedTree = true).assertExists().assertHeightIsAtLeast(48.dp)
         }
         rule.onNodeWithTag("r6-zoom-level", useUnmergedTree = true).assertExists()
+        rule.waitForIdle()
+        saveGalleryEvidenceScreenshot("paramecium-plate-viewer-normal.png")
         rule.onNodeWithTag("r2-zoom-in", useUnmergedTree = true).performClick()
         rule.onNodeWithTag("r2-zoom-reset", useUnmergedTree = true).performClick()
         rule.onNodeWithTag("r2-fullscreen-close", useUnmergedTree = true).performClick()
@@ -646,6 +658,34 @@ class NativeTamilLargeTextAcceptanceTest {
                 .save(NativeLearningState())
         }
         rule.activityRule.scenario.recreate()
+    }
+
+    @Test
+    fun anatomyGalleryIsReadableAtTamilTwoHundredPercent() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertTrue(context.resources.configuration.fontScale >= 1.95f)
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("language-tamil").performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
+        }
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+            .performScrollTo().assertExists()
+        rule.onNodeWithTag("r2-plate-expand-paramecium-oral-apparatus", useUnmergedTree = true)
+            .assertExists().assertHeightIsAtLeast(48.dp)
+        rule.waitForIdle()
+        // Real Tamil 200% emulator evidence (runner requires this file).
+        saveGalleryEvidenceScreenshot(
+            "paramecium-gallery-tamil200.png",
+            rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
+                .fetchSemanticsNode().boundsInRoot,
+            "type_studies/paramecium/oral-apparatus.png",
+        )
     }
 
     @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")

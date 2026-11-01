@@ -46,3 +46,14 @@ is accepted.
 Dead code: the generic chapter list's `lessonDraft` / `n22-draft-notice` block can no longer be
 reached (the only chapter with a draft lesson, `u1-paramecium`, opens in the book reader). It can
 be removed in a later clean-up; it was left untouched here.
+
+## 6. CI screenshot evidence
+`.github/scripts/run-native-api34-tests.sh` used to REQUIRE six Canvas-era screenshots
+(paramecium-normal-oral-groove, r14-textbook-normal, r15-feeding-normal, r14-textbook-tamil200,
+r15-feeding-tamil200, paramecium-tamil200-cytoproct). All six were written by tests that are now
+skipped (section 1), so the runner failed with ANATOMY_SCREENSHOT_MISSING before the Tamil 200%
+phase. It now requires real screenshots of the reachable gallery instead:
+`paramecium-anatomy-gallery-normal.png`, `paramecium-plate-viewer-normal.png` (normal phase) and
+`paramecium-gallery-tamil200.png` (Tamil 200% phase, new test
+`anatomyGalleryIsReadableAtTamilTwoHundredPercent`). Screenshot evidence stays mandatory; only
+its subject changed.

@@ -49,40 +49,22 @@ if [ "$normal_exit" -ne 0 ]; then
     exit 1
 fi
 
-# N2.3B4: capture the REAL instrumented native Canvas, fail if missing.
+# Real emulator evidence of the plate gallery students can actually reach.
+# (The Canvas-era evidence files paramecium-normal-oral-groove / r14-textbook-normal /
+# r15-feeding-normal came from tests now skipped as a documented known gap: see
+# native-app/KNOWN_GAPS.md. They are no longer required.)
 # These emulator screenshots are visual-review aids, not physical-device QA.
-# Persist across instrumentation teardown and any test-package cleanup.
-# The instrumentation process copies PNGs here before each test finishes.
 anatomy_dir="/sdcard/Download/native-anatomy-evidence"
-if ! adb shell test -s "$anatomy_dir/paramecium-normal-oral-groove.png"; then
-    normal_exit=ANATOMY_SCREENSHOT_MISSING
-    exit 1
-fi
-if ! adb pull "$anatomy_dir/paramecium-normal-oral-groove.png" \
-    qa-evidence/paramecium-normal-oral-groove.png; then
-    normal_exit=ANATOMY_SCREENSHOT_PULL_FAILED
-    exit 1
-fi
-
-# Preserve an independently captured actual learner-facing textbook screenshot.
-if ! adb shell test -s "$anatomy_dir/r14-textbook-normal.png"; then
-    normal_exit=R14_TEXTBOOK_NORMAL_SCREENSHOT_MISSING
-    exit 1
-fi
-if ! adb pull "$anatomy_dir/r14-textbook-normal.png" qa-evidence/r14-textbook-normal.png; then
-    normal_exit=R14_TEXTBOOK_NORMAL_SCREENSHOT_PULL_FAILED
-    exit 1
-fi
-
-# R1.5 requires genuine emulator evidence of the selected feeding stage.
-if ! adb shell test -s "$anatomy_dir/r15-feeding-normal.png"; then
-    normal_exit=R15_FEEDING_NORMAL_SCREENSHOT_MISSING
-    exit 1
-fi
-if ! adb pull "$anatomy_dir/r15-feeding-normal.png" qa-evidence/r15-feeding-normal.png; then
-    normal_exit=R15_FEEDING_NORMAL_SCREENSHOT_PULL_FAILED
-    exit 1
-fi
+for shot in paramecium-anatomy-gallery-normal.png paramecium-plate-viewer-normal.png; do
+    if ! adb shell test -s "$anatomy_dir/$shot"; then
+        normal_exit=GALLERY_NORMAL_SCREENSHOT_MISSING
+        exit 1
+    fi
+    if ! adb pull "$anatomy_dir/$shot" "qa-evidence/$shot"; then
+        normal_exit=GALLERY_NORMAL_SCREENSHOT_PULL_FAILED
+        exit 1
+    fi
+done
 
 if ! adb shell settings put system font_scale 2.0; then
     large_text_exit=DEVICE_CONFIG_FAILED
@@ -103,37 +85,17 @@ if [ "$large_text_exit" -ne 0 ]; then
     exit 1
 fi
 
-if ! adb shell test -s "$anatomy_dir/paramecium-tamil200-cytoproct.png"; then
-    large_text_exit=ANATOMY_TAMIL200_SCREENSHOT_MISSING
+# Real Tamil 200% evidence of the reachable plate gallery. Do not count green
+# instrumentation if this screenshot is absent.
+if ! adb shell test -s "$anatomy_dir/paramecium-gallery-tamil200.png"; then
+    large_text_exit=GALLERY_TAMIL200_SCREENSHOT_MISSING
     exit 1
 fi
-if ! adb pull "$anatomy_dir/paramecium-tamil200-cytoproct.png" \
-    qa-evidence/paramecium-tamil200-cytoproct.png; then
-    large_text_exit=ANATOMY_TAMIL200_SCREENSHOT_PULL_FAILED
+if ! adb pull "$anatomy_dir/paramecium-gallery-tamil200.png" qa-evidence/paramecium-gallery-tamil200.png; then
+    large_text_exit=GALLERY_TAMIL200_SCREENSHOT_PULL_FAILED
     exit 1
 fi
-# Do not count green instrumentation if the actual Tamil textbook plate is
-# absent. The full existing paper/cell/graphite pixel checks run in the test.
-if ! adb shell test -s "$anatomy_dir/r14-textbook-tamil200.png"; then
-    large_text_exit=R14_TEXTBOOK_TAMIL_SCREENSHOT_MISSING
-    exit 1
-fi
-if ! adb pull "$anatomy_dir/r14-textbook-tamil200.png" qa-evidence/r14-textbook-tamil200.png; then
-    large_text_exit=R14_TEXTBOOK_TAMIL_SCREENSHOT_PULL_FAILED
-    exit 1
-fi
-if ! adb shell test -s "$anatomy_dir/r15-feeding-tamil200.png"; then
-    large_text_exit=R15_FEEDING_TAMIL200_SCREENSHOT_MISSING
-    exit 1
-fi
-if ! adb pull "$anatomy_dir/r15-feeding-tamil200.png" qa-evidence/r15-feeding-tamil200.png; then
-    large_text_exit=R15_FEEDING_TAMIL200_SCREENSHOT_PULL_FAILED
-    exit 1
-fi
-sha256sum qa-evidence/paramecium-normal-oral-groove.png \
-    qa-evidence/paramecium-tamil200-cytoproct.png \
-    qa-evidence/r14-textbook-normal.png \
-    qa-evidence/r14-textbook-tamil200.png \
-    qa-evidence/r15-feeding-normal.png \
-    qa-evidence/r15-feeding-tamil200.png \
+sha256sum qa-evidence/paramecium-anatomy-gallery-normal.png \
+    qa-evidence/paramecium-plate-viewer-normal.png \
+    qa-evidence/paramecium-gallery-tamil200.png \
     > qa-evidence/anatomy-screenshot-sha256.txt
