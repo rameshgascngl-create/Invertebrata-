@@ -95,7 +95,7 @@ object LocomotionBookChapter {
                         "குறுஇழை அல்லது கசையின் நுண்குழல் மையம்; ஒரு மைய இணையைச் சுற்றி ஒன்பது புற இணைகள்."),
                     bdef("Microtubule", "நுண்குழல்", "A hollow protein tube of the cytoskeleton that forms part of cilia and flagella." to
                         "குறுஇழைகள், கசைகளின் பகுதியாக அமையும் சைட்டோஸ்கெலிட்டனின் வெற்றுப் புரதக் குழாய்."),
-                    bdef("Basal body", "அடிப்படை உடல் (Basal body)", "The structure in the cytoplasm at the base of a cilium or flagellum from which the axoneme arises." to
+                    bdef("Basal body", "அடித்தளத் துகள் (Basal body)", "The structure in the cytoplasm at the base of a cilium or flagellum from which the axoneme arises." to
                         "அடியில் சைட்டோபிளாசத்தில் உள்ள, ஆக்சோனீம் எழும் அமைப்பு."),
                 )),
             bsec("habitat", "Locomotion and habitat", "இயக்கமும் வாழிடமும்",

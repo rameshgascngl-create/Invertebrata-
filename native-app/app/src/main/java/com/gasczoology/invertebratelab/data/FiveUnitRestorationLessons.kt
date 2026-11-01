@@ -129,7 +129,7 @@ internal object FiveUnitRestorationLessons {
                 "Cilia, flagella and pseudopodia: mechanisms and limits",
                 "குறுஇழை, கசையிழை, போலிக்கால்: இயக்க செயல்முறைகள்",
                 "Numerous short cilia beat with coordinated effective and recovery strokes, while longer eukaryotic flagella use bending waves to propel cells. Their usual motile axoneme has nine peripheral microtubule doublets and a central pair; the anchoring basal body instead commonly contains nine triplets.",
-                "பல சிறிய குறுஇழைகள் செயலடி, மீட்படி அசைவுகளை ஒருங்கிணைத்து இயக்கத்தை உருவாக்குகின்றன; நீண்ட மெய்க்கருவுயிர்க் கசையிழைகளின் வளைவு அலைகள் செல்களை முன்னேற்றுகின்றன. இயங்கும் உள்இழை அமைப்பில் பொதுவாக ஒன்பது இரட்டைக் நுண்குழல்களும் மையத்தில் ஓர் இணையும் உள்ளன; அடித்தள உடலில் ஒன்பது மூன்றடுக்குத் தொகுதிகள் காணப்படும்.",
+                "பல சிறிய குறுஇழைகள் செயலடி, மீட்படி அசைவுகளை ஒருங்கிணைத்து இயக்கத்தை உருவாக்குகின்றன; நீண்ட மெய்க்கருவுயிர்க் கசையிழைகளின் வளைவு அலைகள் செல்களை முன்னேற்றுகின்றன. இயங்கும் உள்இழை அமைப்பில் பொதுவாக ஒன்பது இரட்டைக் நுண்குழல்களும் மையத்தில் ஓர் இணையும் உள்ளன; அடித்தளத் துகளில் ஒன்பது மூன்றடுக்குத் தொகுதிகள் காணப்படும்.",
                 "Pseudopodia form by local actin-dependent deformation of cytoplasm and membrane, allowing crawling and particle engulfment. Visible swimming or creeping can be described with a light microscope, but detailed axonemal ultrastructure requires higher-resolution evidence.",
                 "போலிக்கால்கள் ஆக்டினைச் சார்ந்த சைட்டோபிளாசம், சவ்வு மாற்றங்களால் உருவாகி ஊர்வதற்கும் உணவுத் துகள்களைச் சூழ்வதற்கும் உதவுகின்றன. நீந்துதல் அல்லது ஊர்தலை ஒளி நுண்ணோக்கியில் விவரிக்கலாம்; நுண்குழல்களின் மிகநுண் அமைப்பை உறுதிப்படுத்த அதிகத் தெளிவுள்ள ஆய்வு தேவை.")
         )),

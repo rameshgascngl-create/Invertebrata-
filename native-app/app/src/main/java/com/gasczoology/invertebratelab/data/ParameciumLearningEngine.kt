@@ -151,7 +151,7 @@ object ParameciumLearningEngine {
             listOf(
                 s("rest","Coordinated cilia","ஒருங்கிணைந்த குறுஇழைகள்",
                     "Somatic cilia arise from basal bodies in longitudinal rows over the cortex. This organisation view shows representative ciliated units, not a resting phase or a measured ciliary count.",
-                    "செல் புறப்பகுதியில் நீளவாட்டில் அமைந்த அடித்தள உடல்களிலிருந்து உடற்பரப்புக் குறுஇழைகள் தோன்றுகின்றன. இது அமைப்பைக் காட்டும் பிரதிநிதிக் காட்சி; ஓய்வுநிலையோ அளவிடப்பட்ட குறுஇழை எண்ணிக்கையோ அல்ல.",0f),
+                    "செல் புறப்பகுதியில் நீளவாட்டில் அமைந்த அடித்தளத் துகள்களிலிருந்து உடற்பரப்புக் குறுஇழைகள் தோன்றுகின்றன. இது அமைப்பைக் காட்டும் பிரதிநிதிக் காட்சி; ஓய்வுநிலையோ அளவிடப்பட்ட குறுஇழை எண்ணிக்கையோ அல்ல.",0f),
                 s("effective","Effective stroke","செயல்திறன் அடி",
                     "During forward swimming, the effective stroke displaces water mainly toward the posterior and contributes to propulsion. ATP-dependent axonemal dynein drives constrained microtubule sliding and bending; the stroke shown is an illustrative projection.",
                     "முன்னோக்கு நீந்தலில் செயல்திறன் அடி நீரை முக்கியமாகப் பின்புறம் தள்ளி நகர்வுக்கு உதவுகிறது. ATP ஆற்றலைப் பயன்படுத்தும் ஆக்சோனீம் டைனீன், கட்டுப்படுத்தப்பட்ட நுண்குழாய் சறுக்கலையும் வளைவையும் ஏற்படுத்துகிறது. இங்கு காட்டப்படும் அடி விளக்கத் தோற்றம் மட்டுமே.",0.3f),
@@ -160,7 +160,7 @@ object ParameciumLearningEngine {
                     "வளைந்த மீள்நிலை அடி செல் மேற்பரப்புக்கு அருகில் வேறொரு முப்பரிமாணப் பாதையில் நிகழ்கிறது. அடுத்த செயல்திறன் அடிக்கு முன் எதிர்த்திசை நீர் நகர்வை இது குறைக்கிறது. படத்தளத்துக்கு வெளியே நிகழும் முழு அசைவை இப்பக்கவாட்டுத் தோற்றம் காட்ட இயலாது.",0.65f),
                 s("wave","Metachronal coordination","மெட்டாக்ரோனல் ஒருங்கிணைவு",
                     "Neighbouring cilia beat with phase offsets, creating travelling metachronal waves. This fourth teaching view combines effective and recovery phases across a row; it is not a separate fourth step in one cilium’s beat. The wave is an activity pattern, not movement of basal bodies along the cortex.",
-                    "அடுத்தடுத்த குறுஇழைகள் கட்ட வேறுபாட்டுடன் அசைவதால் பயணிக்கும் மெட்டாக்ரோனல் அலைகள் உருவாகின்றன. நான்காவது கற்பித்தல் காட்சி ஒரு வரிசையிலுள்ள செயல்திறன் மற்றும் மீள்நிலை அடிகளை இணைத்துக் காட்டுகிறது; ஒரு குறுஇழையின் அசைவில் தனியான நான்காவது படி அல்ல. அலை என்பது இயக்க ஒழுங்கமைவு; அடித்தள உடல்கள் செல் புறப்பகுதியில் இடம்பெயர்வது அல்ல.",1f),
+                    "அடுத்தடுத்த குறுஇழைகள் கட்ட வேறுபாட்டுடன் அசைவதால் பயணிக்கும் மெட்டாக்ரோனல் அலைகள் உருவாகின்றன. நான்காவது கற்பித்தல் காட்சி ஒரு வரிசையிலுள்ள செயல்திறன் மற்றும் மீள்நிலை அடிகளை இணைத்துக் காட்டுகிறது; ஒரு குறுஇழையின் அசைவில் தனியான நான்காவது படி அல்ல. அலை என்பது இயக்க ஒழுங்கமைவு; அடித்தளத் துகள்கள் செல் புறப்பகுதியில் இடம்பெயர்வது அல்ல.",1f),
             ), MOTION),
         ParameciumSimulation(ParameciumProcess.FEEDING,
             BilingualText("Feeding and digestion","உணவெடுப்பும் செரிமானமும்"), caution,

@@ -62,7 +62,7 @@ private val elaborations = mapOf(
     "pellicle-and-cilia" to detail(
         "Metachronal waves and control of direction", "மெட்டாக்ரோனல் குறுஇழை அலைகளும் திசைக் கட்டுப்பாடும்",
         "Each cilium has an axonemal apparatus supported by basal structures. Its effective and recovery strokes interact with water; adjacent cilia produce coordinated waves. Reorientation is not a change of body organs but a change in ciliary activity. Draw the beat direction as illustrative motion vectors, not as a claim that all cilia move simultaneously.",
-        "ஒவ்வொரு குறுஇழையிலும் அடித்தள உடலுடன் இணைந்த ஆக்சோனீம் உள்ளது. அதன் இயக்க அசைவும் மீளும் அசைவும் நீருடன் வினைபுரிகின்றன. அடுத்தடுத்த குறுஇழைகள் ஒருங்கிணைந்த அலைகளை உருவாக்குகின்றன. திசைமாற்றம் உடல் உறுப்புகள் மாறுவதால் அல்ல; குறுஇழைகளின் இயக்கம் மாறுவதால் நிகழ்கிறது. அனைத்து குறுஇழைகளும் ஒரே நேரத்தில் அசைகின்றன என்று காட்டாமல், விளக்க இயக்க அம்புகளைப் பயன்படுத்த வேண்டும்."
+        "ஒவ்வொரு குறுஇழையிலும் அடித்தளத் துகளுடன் இணைந்த ஆக்சோனீம் உள்ளது. அதன் இயக்க அசைவும் மீளும் அசைவும் நீருடன் வினைபுரிகின்றன. அடுத்தடுத்த குறுஇழைகள் ஒருங்கிணைந்த அலைகளை உருவாக்குகின்றன. திசைமாற்றம் உடல் உறுப்புகள் மாறுவதால் அல்ல; குறுஇழைகளின் இயக்கம் மாறுவதால் நிகழ்கிறது. அனைத்து குறுஇழைகளும் ஒரே நேரத்தில் அசைகின்றன என்று காட்டாமல், விளக்க இயக்க அம்புகளைப் பயன்படுத்த வேண்டும்."
     ),
     "feeding-and-digestion" to detail(
         "Track one particle from ingestion to egestion", "உணவுத்துகளின் நுழைவு முதல் கழிவு வெளியேற்றம் வரை",
@@ -144,7 +144,7 @@ private val teachingSubheads: Map<String, List<BilingualText>> = mapOf(
         BilingualText("Oral groove, cytostome and cytopharynx", "வாய்ப்பள்ளம், சைட்டோஸ்டோம், சைட்டோஃபாரிங்ஸ்"),
         BilingualText("Food vacuole maturation and cytoproct", "உணவுக் குமிழ் முதிர்வும் செல் கழிவுத்துளையும்")),
     "cortical-avoidance-response" to listOf(
-        BilingualText("Basal bodies and ciliary reversal", "அடித்தள உடல்களும் குறுஇழை இயக்கத் திசைமாற்றமும்"),
+        BilingualText("Basal bodies and ciliary reversal", "அடித்தளத் துகள்களும் குறுஇழை இயக்கத் திசைமாற்றமும்"),
         BilingualText("How to interpret slow-motion animation", "மெதுவாக்கப்பட்ட இயக்கப்படத்தின் விளக்க வரம்புகள்")),
     "asexual-division-process" to listOf(
         BilingualText("Micronuclear and macronuclear division", "சிற்றுட்கரு, பேருட்கரு பிரிவு"),
