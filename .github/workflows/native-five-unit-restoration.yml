@@ -6,6 +6,7 @@ name: Native five-unit restoration — compile, assets and academic hold
       - native/u56-gallery-touch-zoom-20261018
       - claude/audit-l10n
       - claude/fix-home-label-tests
+      - claude/unit1-plates-and-parasite-slots
   workflow_dispatch:
 
 permissions:

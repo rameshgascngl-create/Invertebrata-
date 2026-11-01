@@ -8,6 +8,7 @@ on:
       - native/r15-feeding-textbook-20261010
       - claude/audit-l10n
       - claude/fix-home-label-tests
+      - claude/unit1-plates-and-parasite-slots
 
 jobs:
   compile-native-foundation:
