@@ -23,8 +23,8 @@ object BookFigureLibrary {
     const val PREFIX = "lib/"
 
     private val aiPlate = PlateCredit(
-        "AI-generated illustration · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
-        "AI உருவாக்கிய விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்")
+        "AI-generated image · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
+        "AI உருவாக்கிய படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்")
 
     private val schematic = PlateCredit(
         "Original schematic drawn for this app · not to scale · subject-expert review pending",

@@ -607,7 +607,9 @@
    "ai_generated": true,
    "generator": "Claude, matplotlib script (vector schematic, no image model)",
    "notes": "Numbered markers only; no text on art. Schematic, not to scale. Source: tools/plate_sources/make_paramecium_plates.py",
-   "review_status": "DRAFT_UNVERIFIED"
+   "review_status": "DRAFT_UNVERIFIED",
+   "credit_en": "AI-generated image · Dept of Zoology, GASC Nagercoil · schematic, not to scale · rights holder to confirm",
+   "credit_ta": "AI உருவாக்கிய படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · திட்ட வரைபடம், அளவுக்கு வரையப்படவில்லை · உரிமையாளர் உறுதிப்படுத்த வேண்டும்"
   },
   "unit1/concepts/paramecium_nutrition": {
    "file": "native-app/app/src/main/assets/unit1/concepts/paramecium_nutrition.png",
@@ -621,7 +623,9 @@
    "ai_generated": true,
    "generator": "Claude, matplotlib script (vector schematic, no image model)",
    "notes": "Numbered markers only; no text on art. Schematic, not to scale. Marker legend: oral groove; vestibule; cytostome; cytopharynx; food vacuole forming; cyclosis (vacuoles circulate); digesting vacuoles shrinking; cytoproct (posterior ventral); contractile vacuole; contractile vacuole pore (dorsal, separate from cytoproct)",
-   "review_status": "DRAFT_UNVERIFIED"
+   "review_status": "DRAFT_UNVERIFIED",
+   "credit_en": "AI-generated image · Dept of Zoology, GASC Nagercoil · schematic, not to scale · rights holder to confirm",
+   "credit_ta": "AI உருவாக்கிய படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · திட்ட வரைபடம், அளவுக்கு வரையப்படவில்லை · உரிமையாளர் உறுதிப்படுத்த வேண்டும்"
   },
   "unit1/concepts/paramecium_binary_fission": {
    "file": "native-app/app/src/main/assets/unit1/concepts/paramecium_binary_fission.png",
@@ -635,7 +639,9 @@
    "ai_generated": true,
    "generator": "Claude, matplotlib script (vector schematic, no image model)",
    "notes": "Numbered markers only; no text on art. Schematic, not to scale. Source: tools/plate_sources/make_paramecium_plates.py",
-   "review_status": "DRAFT_UNVERIFIED"
+   "review_status": "DRAFT_UNVERIFIED",
+   "credit_en": "AI-generated image · Dept of Zoology, GASC Nagercoil · schematic, not to scale · rights holder to confirm",
+   "credit_ta": "AI உருவாக்கிய படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · திட்ட வரைபடம், அளவுக்கு வரையப்படவில்லை · உரிமையாளர் உறுதிப்படுத்த வேண்டும்"
   },
   "unit1/concepts/paramecium_conjugation": {
    "file": "native-app/app/src/main/assets/unit1/concepts/paramecium_conjugation.png",
@@ -649,7 +655,9 @@
    "ai_generated": true,
    "generator": "Claude, matplotlib script (vector schematic, no image model)",
    "notes": "Numbered markers only; no text on art. Schematic, not to scale. Marker legend: 1 cells pair at oral surfaces; 2 micronuclear meiosis (4 haploid per cell; ring = haploid); 3 reciprocal exchange; fusion to diploid synkaryon; 4 first postzygotic division, still paired (2 diploid per cell); 5 exconjugants separate (2 diploid each); 6 eight diploid per exconjugant: 4 posterior macronuclear anlagen (lilac), 4 anterior germline candidates (orange); 7 still two cells; later fissions are separate events",
-   "review_status": "DRAFT_UNVERIFIED"
+   "review_status": "DRAFT_UNVERIFIED",
+   "credit_en": "AI-generated image · Dept of Zoology, GASC Nagercoil · schematic, not to scale · rights holder to confirm",
+   "credit_ta": "AI உருவாக்கிய படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · திட்ட வரைபடம், அளவுக்கு வரையப்படவில்லை · உரிமையாளர் உறுதிப்படுத்த வேண்டும்"
   }
  }
 }
