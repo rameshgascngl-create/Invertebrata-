@@ -16,7 +16,7 @@ removed Canvas): r11VacuoleAtlas..., r12ContractileComplex..., r14UnitOpensIllus
 nativeParameciumCanvasButtons..., provisionalCanvasDirectTap..., fourStagesAndTouchSelection...,
 r14NativeReaderRetainsReadableTamilHeadings..., tamilTwoHundredPercentCanvasControls...,
 r12MechanismControlsAndTamilTerminology... Replacement coverage for what is reachable:
-`NativeParameciumAnatomyGalleryTest`.
+the two gallery tests in `NativeUiAcceptanceTest` (`oralApparatusAndContractileVacuolePlatesAreReachableFromAnatomy`, `plateOpensFullScreenViewerWithZoomControls`).
 
 Likely also affected, not run in the four workflows used so far: `NativeUnitIDiagramAccessTest`
 (uses `r1-atlas-<panel>` and `r1-atlas-select-*`).

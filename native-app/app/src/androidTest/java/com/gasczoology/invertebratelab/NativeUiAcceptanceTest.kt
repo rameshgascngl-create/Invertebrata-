@@ -339,6 +339,48 @@ class NativeUiAcceptanceTest {
             .assertExists()
     }
 
+    // Plate gallery students can actually reach from the Anatomy tab (organ-level selection is
+    // a documented known gap: native-app/KNOWN_GAPS.md). Lives in this class because the
+    // R1.6.1 established-UI job runs this class by name.
+    @Test
+    fun oralApparatusAndContractileVacuolePlatesAreReachableFromAnatomy() {
+        englishHome()
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        for (plateId in listOf("oral-apparatus", "contractile-vacuoles")) {
+            rule.onNodeWithTag("r2-plate-bitmap-paramecium-$plateId", useUnmergedTree = true)
+                .performScrollTo().assertExists()
+            rule.onNodeWithTag("r2-plate-missing-paramecium-$plateId", useUnmergedTree = true)
+                .assertDoesNotExist()
+        }
+    }
+
+    @Test
+    fun plateOpensFullScreenViewerWithZoomControls() {
+        englishHome()
+        rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
+        waitFor("r1-paramecium-lab")
+        rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
+        rule.onNodeWithTag("r2-plate-expand-paramecium-contractile-vacuoles", useUnmergedTree = true)
+            .performScrollTo().performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithTag("r2-fullscreen-dialog", useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        for (control in listOf("r2-zoom-in", "r2-zoom-out", "r2-zoom-reset", "r2-fullscreen-close")) {
+            rule.onNodeWithTag(control, useUnmergedTree = true).assertExists().assertHeightIsAtLeast(48.dp)
+        }
+        rule.onNodeWithTag("r6-zoom-level", useUnmergedTree = true).assertExists()
+        rule.onNodeWithTag("r2-zoom-in", useUnmergedTree = true).performClick()
+        rule.onNodeWithTag("r2-zoom-reset", useUnmergedTree = true).performClick()
+        rule.onNodeWithTag("r2-fullscreen-close", useUnmergedTree = true).performClick()
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithTag("r2-fullscreen-dialog", useUnmergedTree = true)
+                .fetchSemanticsNodes().isEmpty()
+        }
+    }
+
     @Ignore("Known gap (owner decision 2026-11-01): organ-level atlas selection is unreachable; see native-app/KNOWN_GAPS.md")
 
     @Test
