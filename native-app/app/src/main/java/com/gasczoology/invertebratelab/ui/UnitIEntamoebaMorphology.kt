@@ -82,7 +82,8 @@ internal fun UnitIEntamoebaMorphology(language: AppLanguage) {
             }
         }
         Text(
-            "Scientific source: CDC DPDx · https://www.cdc.gov/dpdx/amebiasis/",
+            (if (language == AppLanguage.TAMIL) "அறிவியல் மூலம்: CDC DPDx · " else "Scientific source: CDC DPDx · ") +
+                "https://www.cdc.gov/dpdx/amebiasis/",
             style = MaterialTheme.typography.labelMedium,
         )
         Text(

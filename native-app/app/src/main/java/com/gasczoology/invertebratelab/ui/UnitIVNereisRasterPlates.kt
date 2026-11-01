@@ -104,6 +104,7 @@ internal fun UnitIVNereisRasterPlate(index: Int, language: AppLanguage) {
                         .testTag("u44-nereis-pencil-style-drawing-" + (index + 1)),
                 )
             }
+            PlateCreditCaption(source.removeSuffix(".png"), language)
             if (bitmap != null && bitmap.width >= 1000 && bitmap.height >= 1200) {
                 OutlinedButton(
                     onClick = { imageViewerOpen = true },

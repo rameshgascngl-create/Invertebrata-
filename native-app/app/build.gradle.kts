@@ -15,8 +15,8 @@ android {
 
         // Preserve the currently accepted release identity during migration.
         // Do not change without explicit release approval.
-        versionCode = 18900
-        versionName = "1.8.9"
+        versionCode = 19000
+        versionName = "1.9.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

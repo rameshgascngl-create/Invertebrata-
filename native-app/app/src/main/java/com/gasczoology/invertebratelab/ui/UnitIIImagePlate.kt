@@ -194,6 +194,7 @@ internal fun UnitIIImagePlate(
                 "மெடூசா இனச்செல்களால் பாலின இனப்பெருக்கம் செய்கிறது; கருவுற்ற முட்டை வளர்ந்து பிளானுலாவாகிறது."
             else "The free medusa produces gametes; fertilisation and embryonic development precede the swimming planula."
         }
+        PlateCreditCaption(stem, language)
         Text(provisionalNote,
             modifier=Modifier.fillMaxWidth().testTag("u2-anatomical-correction"),
             style=MaterialTheme.typography.bodySmall,

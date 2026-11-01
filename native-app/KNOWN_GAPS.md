@@ -64,3 +64,19 @@ node in the book reader instead of assuming it is composed. `parameciumDraftSect
 unreachable draft-lesson sections; it is replaced by
 `parameciumChapterDraftNoticeAndQuestionsAreReachableAtActualTamil200Percent` (draft notice at the
 top, validated questions at the bottom of the reader the chapter really opens in).
+
+## 8. Plate coverage and what remains (2026-11-01, version 1.9.0)
+- All 52 mandatory plates are present (audit: MISSING_OR_CORRUPT=0, duplicate groups 0). Six were added or
+  replaced with original generated schematics: locomotion, nutrition, binary fission, conjugation, oral-apparatus
+  process, osmoregulation cycle. They are credited in-app as "AI-generated image" and are DRAFT_UNVERIFIED.
+- `trypanosoma_morphology` and `leishmania_morphology` count the existing `unit1/references/` plates
+  (`STEM_FILE_ALIASES` in audit-five-unit-assets.py). Their source and rights are unrecorded, the gallery does not show
+  them, they carry no in-app credit line, and the Leishmania plate lacks the promastigote the brief requires.
+- Academic review is 0/52. Nothing here is approved. Sheet: `qa-intake/plate-review-sheet.xlsx`; importer:
+  `tools/import_review_sheet.py --check`.
+- Tamil decisions applied: basal body = அடித்தளத் துகள், cytopharynx = சைட்டோஃபாரிங்ஸ். Still open: Tamil for
+  "flagellar pocket" (proposal கசையிழைப் பை needs the Tamil editor).
+- Still low resolution: external-cilia 680x946, oral-apparatus 305x328, contractile-vacuoles 405x375,
+  internal/nuclear anatomy 365x301 (the last two are the same image in two slots).
+- Never built: a signed release build (R8, real keystore). Debug APKs carry about 37 MB of review-only assets.
+

@@ -327,7 +327,7 @@ PLACEMENTS = [
      "(1) oral groove, (2) cytopharynx, where the vacuole forms, (3) acid phase, (4) alkaline phase with digestive enzymes, "
      "(5) smaller vacuole after absorption, (6) cytoproct, where the remains are egested, (7) lysosomes bringing enzymes to the vacuole.",
      "பாராமீசியத்தில் உணவு நுண்குமிழின் வரலாறு (படத்திட்டம், எளிமைப்படுத்தப்பட்டது; வெளிர் இளஞ்சிவப்பு அமிலநிலை, நீலம் காரநிலை): "
-     "(1) வாய்ப்பள்ளம், (2) நுண்குமிழ் உருவாகும் சைட்டோஃபாரிங்க்ஸ், (3) அமிலநிலை, (4) செரிமான நொதிகளுடன் காரநிலை, "
+     "(1) வாய்ப்பள்ளம், (2) நுண்குமிழ் உருவாகும் சைட்டோஃபாரிங்ஸ், (3) அமிலநிலை, (4) செரிமான நொதிகளுடன் காரநிலை, "
      "(5) உறிஞ்சலுக்குப் பிறகு சிறிதான நுண்குமிழ், (6) எச்சம் வெளியேற்றப்படும் சைட்டோபுரோக்ட், (7) நுண்குமிழுக்கு நொதிகளைக் கொண்டுவரும் லைசோசோம்கள்."),
     # ---- stage 3 (2026-10-26)
     ("MinorArthropodsBookChapter.kt", "tardigrada", "Structure and habitat", "tardigrade",

@@ -60,7 +60,7 @@ internal fun ParameciumCiliaryTextbookPlate(
     var selectedPart by rememberSaveable { mutableStateOf("cilia") }
     val parts = listOf(
         "cilia" to BilingualText("Cilia", "குறுஇழைகள்"),
-        "basal" to BilingualText("Basal bodies · 9 triplets", "அடித்தள உடல்கள் · 9 மும்மைகள்"),
+        "basal" to BilingualText("Basal bodies · 9 triplets", "அடித்தளத் துகள்கள் · 9 மும்மைகள்"),
         "axoneme" to BilingualText("Axoneme · 9 + 2", "ஆக்சோனீம் · 9 + 2"),
     )
     val requester = remember { BringIntoViewRequester() }
@@ -84,7 +84,7 @@ internal fun ParameciumCiliaryTextbookPlate(
             Text(
                 ciliaryText(language,
                     "Ciliary locomotion is shown in a dedicated PNG slot. Basal-body (9 triplets) and axoneme (9+2) ultrastructure require separate, reviewed images.",
-                    "குறுஇழை இயக்கத்திற்கு தனி PNG இடம் உள்ளது. அடித்தள உடல் (9 மும்மைகள்), ஆக்சோனீம் (9+2) அமைப்புகளுக்குத் தனியாகச் சரிபார்க்கப்பட்ட படங்கள் தேவை."),
+                    "குறுஇழை இயக்கத்திற்கு தனி PNG இடம் உள்ளது. அடித்தளத் துகள் (9 மும்மைகள்), ஆக்சோனீம் (9+2) அமைப்புகளுக்குத் தனியாகச் சரிபார்க்கப்பட்ட படங்கள் தேவை."),
                 style = MaterialTheme.typography.bodyMedium,
             )
             Button(
@@ -104,7 +104,7 @@ internal fun ParameciumCiliaryTextbookPlate(
                     bitmap = locomotionPng,
                     contentDescription = ciliaryText(language,
                         "Paramecium ciliary locomotion PNG; axoneme and basal body details require separate verification",
-                        "பாரமீசியம் குறுஇழை இயக்க PNG; ஆக்சோனீம், அடித்தள உடல் விவரங்கள் தனியாகச் சரிபார்க்கப்பட வேண்டும்"),
+                        "பாரமீசியம் குறுஇழை இயக்க PNG; ஆக்சோனீம், அடித்தளத் துகள் விவரங்கள் தனியாகச் சரிபார்க்கப்பட வேண்டும்"),
                     contentScale = androidx.compose.ui.layout.ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth().height(220.dp)
                         .bringIntoViewRequester(requester)
@@ -120,7 +120,7 @@ internal fun ParameciumCiliaryTextbookPlate(
             Text(
                 ciliaryText(language,
                     "Ultrastructure reminder: basal body has nine microtubule triplets; motile axoneme usually has nine peripheral doublets and two central singlets. These details are not certified by the locomotion PNG.",
-                    "நுண்ணமைப்பு: அடித்தள உடலில் ஒன்பது நுண்குழல் மும்மைகள்; இயக்க ஆக்சோனீமில் பொதுவாக ஒன்பது புற இரட்டைகளும் இரண்டு மைய ஒற்றைகளும் உள்ளன. இவ்விவரங்கள் இயக்க PNG மூலம் உறுதிசெய்யப்படவில்லை."),
+                    "நுண்ணமைப்பு: அடித்தளத் துகளில் ஒன்பது நுண்குழல் மும்மைகள்; இயக்க ஆக்சோனீமில் பொதுவாக ஒன்பது புற இரட்டைகளும் இரண்டு மைய ஒற்றைகளும் உள்ளன. இவ்விவரங்கள் இயக்க PNG மூலம் உறுதிசெய்யப்படவில்லை."),
                 modifier = Modifier.testTag("r16-ciliary-legend"),
                 style = MaterialTheme.typography.bodySmall,
             )
