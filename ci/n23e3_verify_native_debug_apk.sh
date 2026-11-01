@@ -8,8 +8,8 @@ if [[ -n "${GITHUB_SHA:-}" && "${GITHUB_SHA}" != "$EXPECTED_SHA" ]]; then
   exit 1
 fi
 EXPECTED_PACKAGE="com.gasczoology.invertebratelab"
-EXPECTED_VERSION_NAME="1.8.9"
-EXPECTED_VERSION_CODE="18900"
+EXPECTED_VERSION_NAME="1.9.0"
+EXPECTED_VERSION_CODE="19000"
 APK="native-app/app/build/outputs/apk/debug/app-debug.apk"
 OUT="qa-evidence/n23e3"
 mkdir -p "$OUT"
