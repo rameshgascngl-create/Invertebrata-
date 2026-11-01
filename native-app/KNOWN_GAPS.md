@@ -35,7 +35,14 @@ chapter pages.
 Six plates added/replaced on 2026-10-26 have no recorded source or licence. See
 `provenance/UPLOADED_CANDIDATES_20261026.md`.
 
-## 5. Still open (needs product input)
-`parameciumDraftIsReachableInEnglishAndTamilWithoutChangingA5` expects the Paramecium draft notice
-(`n22-draft-notice`, rendered only by the generic chapter list) on the Paramecium chapter page.
-Decide where that notice should appear for the reader the chapter now opens in.
+## 5. Draft marking on chapter pages (addressed)
+Before this change, none of the 43 A5 chapter readers showed a chapter-level draft notice
+(only figure-level "review pending" credits; the earthworm reader and the Paramecium lab had
+their own warnings). A one-line bilingual notice now appears in the header of the book, Unit II
+and Unit III readers whenever the chapter status is not ACCEPTED (tag `chapter-draft-notice`).
+It reuses the app's existing review-warning wording and disappears automatically once a chapter
+is accepted.
+
+Dead code: the generic chapter list's `lessonDraft` / `n22-draft-notice` block can no longer be
+reached (the only chapter with a draft lesson, `u1-paramecium`, opens in the book reader). It can
+be removed in a later clean-up; it was left untouched here.

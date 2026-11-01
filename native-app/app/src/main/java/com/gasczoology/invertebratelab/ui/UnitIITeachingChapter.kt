@@ -89,6 +89,7 @@ internal fun UnitIITeachingChapter(
                     style=MaterialTheme.typography.labelLarge,color=currentBlue)
                 Text((book?.title ?: lesson.title).value(language),style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
                     modifier=Modifier.testTag("u2-lesson-title").semantics{heading()})
+                ChapterDraftNotice(book?.status ?: AcademicWorkStatus.DRAFT_UNVERIFIED, language)
             }
         }
         if (book == null && (chapter.id == "u2-sycon" || chapter.id == "u2-obelia")) {

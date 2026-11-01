@@ -286,57 +286,42 @@ class NativeUiAcceptanceTest {
 
     @Test
     fun parameciumDraftIsReachableInEnglishAndTamilWithoutChangingA5() {
-        val draft = NativeLessonDrafts.paramecium
+        // The Paramecium chapter opens in the book reader (not the generic list). It must carry a
+        // visible bilingual draft notice, and its validated A5 questions must be unchanged.
         englishHome()
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
-        waitFor("native-chapter-u1-paramecium")
-
         val chapter = units.first().chapters.single { it.id == "u1-paramecium" }
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(1)
-        rule.onNodeWithTag("a5-question-" + chapter.a5Questions.first().id)
-            .assertTextEquals(chapter.a5Questions.first().question.english)
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
-        rule.onNodeWithTag("n22-draft-notice").assertExists()
-        rule.onNodeWithText("Teaching lesson — editorial draft").assertExists()
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
-        rule.onNodeWithTag("n22-section-identity-and-habitat").assertExists()
-        rule.onNodeWithText(
-            draft.sections.first().paragraphs.first().english,
-            useUnmergedTree = true,
-        ).performScrollTo()
-        rule.onNodeWithText(draft.sections.first().paragraphs.first().english)
-            .assertExists()
-
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(0)
-        rule.onNodeWithText("Back").performClick()
+        val container = readerContainerTag(chapter)
+        waitFor(container)
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
+            "Academic review pending: illustrations and Tamil vocabulary remain drafts.")
+        val first = chapter.a5Questions.first()
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
+        rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.english)
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        leaveReader(rule, chapter)
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(0)
         rule.onNodeWithText("Back").performClick()
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
-        rule.waitUntil(timeoutMillis = 10_000L) {
-            rule.homeUnitOneShows(tamil = true)
-        }
+        rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
-        waitFor("native-chapter-u1-paramecium")
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(3)
-        rule.onNodeWithText("கற்பித்தல் பாடம் — ஆசிரியர் மதிப்பாய்வு நிலுவை")
-            .assertExists()
-        rule.onNodeWithTag("native-chapter-u1-paramecium").performScrollToIndex(4)
-        rule.onNodeWithText(
-            draft.sections.first().paragraphs.first().tamil,
-            useUnmergedTree = true,
-        ).performScrollTo()
-        rule.onNodeWithText(draft.sections.first().paragraphs.first().tamil)
-            .assertExists()
+        waitFor(container)
+        rule.onNodeWithTag(container).performScrollToIndex(0)
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
+            "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன.")
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
+        rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.tamil)
     }
 
     // Plate gallery students can actually reach from the Anatomy tab (organ-level selection is

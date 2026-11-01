@@ -77,6 +77,7 @@ internal fun UnitIIITeachingChapter(
                 Text((book?.title ?: lesson.title).value(language),
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.testTag("u3-lesson-title").semantics { heading() })
+                ChapterDraftNotice(book?.status ?: AcademicWorkStatus.DRAFT_UNVERIFIED, language)
             }
         }
         // R7: exactly one inline raster per unique anatomical plate.
