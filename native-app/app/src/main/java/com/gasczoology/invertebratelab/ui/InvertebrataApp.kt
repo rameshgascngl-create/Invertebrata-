@@ -615,7 +615,6 @@ private fun ChapterBody(
         UnitBookTeachingChapter(chapter, book, language, onBack, revealedQuestionId, onToggle)
         return
     }
-    val lessonDraft = remember(chapter.id) { NativeLessonDrafts.forChapter(chapter.id) }
     val restoredLesson = remember(chapter.id) { FiveUnitRestorationLessons.byId[chapter.id] }
     // U1.9a: keep life-cycle stages ABOVE the lazy list. At 200% font a
     // single teaching card is taller than the screen; disposing/recomposing
@@ -872,36 +871,6 @@ private fun ChapterBody(
                         }
                     }
                 }
-            }
-            if (lessonDraft != null) {
-                item(key = "n22-draft-heading") {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.fillMaxWidth().testTag("n22-draft-notice")) {
-                        Text(lessonDraft.title.value(language),
-                            style = MaterialTheme.typography.headlineSmall)
-                    }
-                }
-                items(lessonDraft.sections, key = { "n22-" + it.id }) { section ->
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.fillMaxWidth().testTag("n22-section-" + section.id),
-                    ) {
-                        Text(section.heading.value(language))
-                        section.paragraphs.forEach { paragraph ->
-                            Text(paragraph.value(language))
-                        }
-                    }
-                }
-                item(key = "n22-references") {
-                    Column(verticalArrangement = Arrangement.spacedBy(6.dp),
-                        modifier = Modifier.fillMaxWidth().testTag("n22-references")) {
-                        Text(label(language, "Scientific reading and verification sources:",
-                            "அறிவியல் மேலாய்வுக்கான மூலநூல்கள்:"))
-                        lessonDraft.sections.flatMap { it.scientificSources }
-                            .distinct().forEach { source -> Text(source) }
-                    }
-                }
-
             }
             item(key = "restoration-a5-divider") {
                 Text(label(language,"EXAM PRACTICE · Five-mark questions",

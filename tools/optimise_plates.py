@@ -10,7 +10,8 @@ Modes
   lossy               WebP q90, longest edge <= 2560 px (the cap docs/ADDING_PLATES.md
                       already allows); ~80 % smaller. Review labelled plates visually.
 
-Debug-only review material (review_only/, paramecium/fission/) is skipped.
+Skipped: debug-only review material (review_only/, paramecium/fission/) and the PNG-only trees
+(unit1/, nereis/); see SKIP.
 
 Usage
   python tools/optimise_plates.py --out build/optimised-assets            # lossless
@@ -26,7 +27,10 @@ import argparse, hashlib, io, json, os, sys
 from pathlib import Path
 from PIL import Image, ImageChops
 
-SKIP = ("review_only", "paramecium/fission")
+# Debug-only review material, plus trees whose loaders are PNG-only or open a literal ".png" path:
+#   unit1/   every Unit I plate is loaded with pngOnly = true (RequiredRasterBitmap) and gated as PNG;
+#   nereis/  the fixed 8-image viewer opens "nereis/NN_*.png" directly.
+SKIP = ("review_only", "paramecium/fission", "unit1/", "nereis/")
 EXT = (".png", ".webp", ".jpg", ".jpeg")
 
 

@@ -83,7 +83,36 @@ def osmoregulation_cycle(path):
     fig.savefig(path, facecolor="white", bbox_inches="tight", pad_inches=0.1); plt.close(fig)
 
 
+def nuclear_anatomy(path):
+    """Macronucleus and micronucleus: position in the cell and enlarged detail (not to scale)."""
+    fig, ax = setup(14, 6.4)
+    cx, cy, L, W = 3.7, 3.2, 6.6, 3.1
+    x, y = outline(cx, cy, L, W)
+    ax.fill(x, y, fc=CELL, ec=INK, lw=3.2, zorder=2)
+    nuc(ax, 3.6, 3.15, 1.6, 0.85, MAC, 4)                                         # macronucleus
+    ax.add_patch(Circle((4.5, 3.75), 0.17, fc=MIC, ec=INK, lw=1.8, zorder=6))     # micronucleus beside it
+    ax.add_patch(Ellipse((2.0, 2.9), 0.55, 0.45, fc=VAC, ec=INK, lw=1.6, zorder=3))
+    ax.add_patch(Ellipse((5.4, 2.7), 0.55, 0.45, fc=VAC, ec=INK, lw=1.6, zorder=3))
+    # enlarged macronucleus: large, polyploid, many small nucleoli
+    arrow(ax, (4.4, 3.35), (8.6, 4.6), INK, rad=-0.15, lw=1.8, ms=16)
+    ax.add_patch(Ellipse((10.0, 4.8), 3.4, 1.9, fc=MAC, ec=INK, lw=2.6, alpha=.9, zorder=4))
+    rng = np.random.default_rng(11)
+    for _ in range(46):
+        a = rng.uniform(0, 2 * np.pi); r = np.sqrt(rng.uniform(0, 1))
+        ax.add_patch(Circle((10.0 + 1.45 * r * np.cos(a), 4.8 + 0.78 * r * np.sin(a)), 0.07, fc="#e9dff3", ec="none", zorder=5))
+    # enlarged micronucleus: small, diploid, compact chromosomes
+    arrow(ax, (4.6, 3.85), (8.7, 1.9), INK, rad=0.2, lw=1.8, ms=16)
+    ax.add_patch(Circle((10.0, 1.7), 0.95, fc="#f6dcb8", ec=INK, lw=2.6, zorder=4))
+    for ang in np.linspace(0, 2 * np.pi, 7)[:-1]:
+        ax.plot([10.0 + .15 * np.cos(ang), 10.0 + .62 * np.cos(ang + .5)], [1.7 + .15 * np.sin(ang), 1.7 + .62 * np.sin(ang + .5)],
+                color=MIC, lw=4.5, solid_capstyle="round", zorder=5)
+    for k, pos in zip(range(1, 7), [(3.1, 3.95), (4.5, 4.35), (8.1, 5.4), (8.4, 1.0), (11.95, 5.0), (11.3, 1.7)]):
+        badge(ax, *pos, k)
+    save(fig, path)
+
+
 if __name__ == "__main__":
     out = Path(sys.argv[1] if len(sys.argv) > 1 else "staging/drawn3"); out.mkdir(parents=True, exist_ok=True)
     oral_process(out / "oral_process.png"); osmoregulation_cycle(out / "osmoregulation_cycle.png")
+    nuclear_anatomy(out / "nuclear_anatomy.png")
     print("wrote", *sorted(p.name for p in out.glob("*.png")))

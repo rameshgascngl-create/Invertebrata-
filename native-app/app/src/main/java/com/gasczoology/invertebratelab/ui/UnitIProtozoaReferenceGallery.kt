@@ -126,8 +126,16 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
         Text(if(tamil)ref.taTeaching else ref.enTeaching,
             modifier=Modifier.testTag("u1-reference-explanation"))
         Text(if(tamil)ref.taLimit else ref.enLimit,color=MaterialTheme.colorScheme.error)
-        Text(ref.credit,style=MaterialTheme.typography.bodySmall)
-        Text(ref.source,style=MaterialTheme.typography.bodySmall)
+        // A credit entry in plate_credits.json (bilingual) overrides the built-in Commons attribution,
+        // which does not cover bundled files whose bytes were replaced.
+        val bundledCredit = rememberPlateCredit("unit1/references/" + ref.id)
+        if (bundledCredit != null) {
+            Text(bundledCredit.text(language),style=MaterialTheme.typography.bodySmall,
+                modifier=Modifier.testTag("u1-reference-credit"))
+        } else {
+            Text(ref.credit,style=MaterialTheme.typography.bodySmall)
+            Text(ref.source,style=MaterialTheme.typography.bodySmall)
+        }
     }
 }
 

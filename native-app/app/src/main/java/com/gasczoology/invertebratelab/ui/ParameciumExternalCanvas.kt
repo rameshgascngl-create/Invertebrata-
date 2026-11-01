@@ -263,7 +263,7 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
             modifier = Modifier.testTag("n23d-source-limit"),
         )
         Text(
-            "Reference: " + reviewTask.primary.exactLocator +
+            (if (language == AppLanguage.TAMIL) "மேற்கோள்: " else "Reference: ") + reviewTask.primary.exactLocator +
                 " — " + reviewTask.primary.referenceUrl,
             modifier = Modifier.testTag("n23d-source-locator"),
         )
