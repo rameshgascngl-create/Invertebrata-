@@ -40,7 +40,7 @@ jobs:
           assert data.count('Chapter("u5-')==12
           assert 'restoredLesson.sections' in ui
           assert ui.index('if (restoredLesson != null)')<ui.index('items(chapter.a5Questions, key = { it.id })')
-          assert ui.index('if (lessonDraft != null)')<ui.index('items(chapter.a5Questions, key = { it.id })')
+          assert 'lessonDraft' not in ui  # unreachable draft block removed 2026-11-01
           assert 'ParameciumExternalCanvas(language' not in ui
           assert 'UnitIVPenaeusVectorAtlas(language' not in ui
           assert 'UnitIStageAtlasChapter(language)' not in ui
