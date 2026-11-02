@@ -14,8 +14,10 @@ object CoralsBookChapter {
                 "பவளப்பாறைகளின் பரவலையும் வெளிறலையும் சூழல் நிலைகளுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "Reef-building corals secrete calcium-carbonate skeletons. Their growth, symbiotic relationships and environmental requirements help explain the formation and distribution of coral reefs." to
-                "பாறை உருவாக்கும் பவளங்கள் கால்சியம் கார்பனேட் எலும்புக்கூட்டைச் சுரக்கின்றன. அவற்றின் வளர்ச்சி, கூட்டுயிர் வாழ்க்கை, சூழல் தேவைகள் ஆகியவை பவளப்பாறைகளின் உருவாக்கத்தையும் பரவலையும் விளக்குகின்றன.",
+            "Corals belong to the cnidarian class Anthozoa and have a polyp stage, but no medusa stage. Many reef-building stony corals form colonies whose polyps secrete calcium-carbonate skeletons." to
+                "பவளங்கள் நிடேரியா தொகுதியின் ஆந்தோசோவா வகுப்பைச் சேர்ந்தவை. இவற்றில் பாலிப் நிலை உள்ளது; மெடுசா நிலை இல்லை. பவளப்பாறை உருவாக்கும் பல கல் பவளங்கள் குடியிருப்புகளாக வாழ்ந்து கால்சியம் கார்பனேட் எலும்புக்கூட்டைச் சுரக்கின்றன.",
+            "A coral reef is an ecosystem built and inhabited by many organisms, not a single animal. Coral–algal symbiosis, suitable water conditions and thermal stress help explain reef growth and bleaching." to
+                "பவளப்பாறை என்பது பல உயிரினங்கள் உருவாக்கி வாழும் சூழல்மண்டலம்; அது ஒற்றை விலங்கு அல்ல. பவள–பாசிக் கூட்டுயிர் வாழ்வு, ஏற்ற நீர்ச் சூழல், வெப்ப அழுத்தம் ஆகியவை பவளப்பாறை வளர்ச்சியையும் வெளிறலையும் விளங்கிக்கொள்ள முக்கியமானவை.",
         ),
         sections = listOf(
             bsec("polyp", "The coral polyp", "பவள பாலிப்",

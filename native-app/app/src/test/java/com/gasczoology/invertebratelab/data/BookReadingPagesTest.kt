@@ -35,11 +35,18 @@ class BookReadingPagesTest {
     @Test fun fiveUnitChapterOpeningsStayBriefAndBilingual() {
         val books = BookChapters.all.filter { BookLayout.unitNumber(it.lessonId) <= 5 }
         assertEquals(43, books.size)
+        // These established openings have separate science-specific contracts.
+        // Preserve their two focused paragraphs rather than deleting biological detail.
+        val establishedOpenings = setOf("u1-protozoa", "u2-corals", "u5-pila", "u5-asterias")
         books.forEach { book ->
             assertEquals(book.lessonId, 3, book.objectives.size)
-            assertEquals(book.lessonId, 1, book.introduction.size)
-            assertTrue(book.lessonId, book.introduction.single().english.split(Regex("\\s+")).size <= 40)
-            assertTrue(book.lessonId, book.introduction.single().tamil.length < 450)
+            val established = book.lessonId in establishedOpenings
+            assertEquals(book.lessonId, if (established) 2 else 1, book.introduction.size)
+            book.introduction.forEach { passage ->
+                assertTrue(book.lessonId, passage.english.split(Regex("\\s+")).size <= if (established) 85 else 40)
+                assertTrue(book.lessonId, passage.tamil.isNotBlank())
+                assertTrue(book.lessonId, passage.tamil.length < if (established) 700 else 450)
+            }
         }
     }
 

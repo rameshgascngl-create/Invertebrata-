@@ -8,14 +8,16 @@ object AsteriasBookChapter {
         objectives = listOf(
             "Identify the external structures and skeletal parts." to
                 "வெளிப்புற அமைப்புகளையும் எலும்புத்தகடுகளையும் அடையாளம் காணுதல்.",
-            "Explain feeding, movement and the principal organ systems." to
-                "உணவூட்டம், இயக்கம், முக்கிய உறுப்பு மண்டலங்களை விளக்குதல்.",
+            "Explain feeding, movement and the water-vascular system." to
+                "உணவூட்டம், இயக்கம், நீர்க்குழாய் மண்டலத்தின் செயல்பாடு ஆகியவற்றை விளக்குதல்.",
             "Describe reproduction and development." to
                 "இனப்பெருக்கத்தையும் வளர்ச்சியையும் விவரித்தல்.",
         ),
         introduction = listOf(
-            "Asterias is a sea star whose radial organisation connects the central disc with the arms. Its tube feet and organ systems illustrate the functioning of the echinoderm body plan." to
-                "அஸ்டீரியாஸின் ஆரச்சமச்சீர் உடலமைப்பில் மையவட்டுடன் கரங்கள் இணைந்துள்ளன. குழாய்க்கால்களையும் உறுப்பு மண்டலங்களையும் கொண்டு முட்தோலிகளின் உடலமைப்பு எவ்வாறு செயல்படுகிறது என்பதை அறியலாம்.",
+            "Asterias is a marine starfish in class Asteroidea (phylum Echinodermata). Its central disc and usually five arms illustrate the adult echinoderm body plan. Tube feet, operated by the water-vascular system, assist locomotion and attachment; the eversible cardiac stomach helps the animal feed on bivalves." to
+                "அஸ்டீரியாஸ் என்பது முட்தோலிகள் தொகுதியின் அஸ்டீராய்டியா வகுப்பைச் சேர்ந்த கடல் நட்சத்திரமீன். இதன் மைய வட்டும் பொதுவாக ஐந்து கரங்களும் வளர்ந்த முட்தோலிகளின் அடிப்படை உடலமைப்பைக் காட்டுகின்றன. நீர்க்குழாய் மண்டலத்தின் குழாய்க்கால்கள் இடப்பெயர்ச்சிக்கும் பற்றுதலுக்கும் உதவுகின்றன; வெளியே புரளும் கார்டியாக் இரைப்பை இருவோட்டுடலிகளை உணவாகக் கொள்ள உதவுகிறது.",
+            "The oral surface bears the mouth and ambulacral grooves containing tube feet. The aboral surface bears the madreporite and usually a small anus. This account describes a generalised Asterias-type starfish; individual species may differ in anatomical details." to
+                "வாய்ப்புற மேற்பரப்பில் வாயும் குழாய்க்கால்களைக் கொண்ட ஆம்புலாக்ரல் பள்ளங்களும் அமைந்துள்ளன. எதிர்வாய்ப்புற மேற்பரப்பில் மேட்ரிபோரைட்டும் பொதுவாகச் சிறிய மலவாயும் காணப்படுகின்றன. இப்பாடம் அஸ்டீரியாஸ் பேரினத்தை அடிப்படையாகக் கொண்ட பொதுவான உடலமைப்பை விளக்குகிறது; இனங்களிடையே சில வேறுபாடுகள் உண்டு.",
         ),
         sections = listOf(
             bsec("external", "External features", "வெளிப்புறப் பண்புகள்",

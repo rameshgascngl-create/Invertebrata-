@@ -14,8 +14,10 @@ object PilaBookChapter {
                 "இனப்பெருக்கத்தையும் முட்டையிடும் முறையையும் விவரித்தல்.",
         ),
         introduction = listOf(
-            "Pila is a freshwater apple snail capable of using both aquatic and aerial respiration. Its shell, mantle cavity and organ systems show how a gastropod functions in an amphibious way of life." to
-                "பைலா, நீரிலும் காற்றிலும் சுவாசிக்கக்கூடிய நன்னீர் நத்தை. அதன் ஓடு, மேண்டில் குழி, உறுப்பு மண்டலங்கள் ஆகியவை நீர்நில வாழ்முறைக்கு ஏற்ற அமைப்புகளைக் காட்டுகின்றன.",
+            "Pila globosa is an Indian freshwater apple snail found in ponds, tanks and paddy fields. It belongs to Gastropoda and can survive both in water and temporarily out of water. A ctenidium and a pulmonary sac permit aquatic and aerial respiration. The adult body plan reflects developmental torsion, not a repeated adult movement." to
+                "பைலா குளோபோசா இந்தியாவின் குளங்கள், நீர்த்தேக்கங்கள், நெல் வயல்கள் ஆகியவற்றில் வாழும் நன்னீர் ஆப்பிள் நத்தை. இது வயிற்றுக்காலிகள் (Gastropoda) வகுப்பைச் சேர்ந்தது. நீரிலும் தற்காலிகமாக நீருக்கு வெளியேயும் உயிர்வாழும். நீரில் சுவாசிக்க சீப்பு வடிவச் செவுளும், காற்றில் சுவாசிக்க நுரையீரல் பையும் உள்ளன. முதிர்ந்த நத்தையின் உடலமைப்பு வளர்ச்சிக் காலத்தில் நிகழும் முறுக்கலின் விளைவு; அது முதிர்ந்த நிலையில் மீண்டும் நிகழும் இயக்கமல்ல.",
+            "Its coiled shell and operculum protect the soft body. The broad muscular foot supports crawling, and the mantle cavity contains both respiratory organs. Unlike the bivalve Unio, Pila has a distinct head and a radula." to
+                "சுருள் ஓடும் ஆப்பர்குலம் எனப்படும் ஓட்டு மூடியும் மென்மையான உடலைப் பாதுகாக்கின்றன. அகன்ற தசைப்பாதம் ஊர்ந்து செல்ல உதவுகிறது. மேன்டில் குழியில் இரு சுவாச உறுப்புகளும் உள்ளன. இருவோட்டுடலியான யூனியோவிலிருந்து வேறுபட்டு, பைலாவிற்குத் தெளிவான தலையும் ராடுலா எனப்படும் உணவு சுரண்டும் உறுப்பும் உள்ளன.",
         ),
         sections = listOf(
             bsec("external", "Habit, habitat and external features", "பழக்கம், வாழிடம், வெளிப்புற அம்சங்கள்",
