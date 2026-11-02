@@ -8,6 +8,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
+import com.gasczoology.invertebratelab.ui.ReadingPositionSemantics
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
@@ -84,14 +85,12 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("book-introduction"))
             rule.onNodeWithTag("book-introduction").assertExists()
             runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id]?.pageId == "introduction-0" } } }
-            val beforeScroll = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
-                .config[SemanticsProperties.VerticalScrollAxisRange].value()
+            val beforePosition = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
+                .config[ReadingPositionSemantics]
             rule.activityRule.scenario.recreate()
             waitFor(root(id, unit))
-            rule.waitUntil(10_000) {
-                kotlin.math.abs(rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
-                    .config[SemanticsProperties.VerticalScrollAxisRange].value() - beforeScroll) < .0001f
-            }
+            val restoredPosition = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode().config[ReadingPositionSemantics]
+            assertEquals("Restored page/item/offset for " + id, beforePosition, restoredPosition)
             // Restoring the reading offset can leave the lazy header offscreen.
             rule.onNodeWithTag(root(id, unit)).performScrollToIndex(0)
             rule.onNodeWithTag("reading-page-id").assertContentDescriptionEquals("introduction-0")

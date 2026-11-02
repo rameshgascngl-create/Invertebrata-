@@ -39,8 +39,8 @@ adb shell svc data disable
 adb shell settings get system font_scale > qa-evidence/functional/font-scale.txt
 properties=()
 case "$variant" in
-  debug) task=connectedDebugAndroidTest; apkdir=debug ;;
-  release) task=connectedReleaseAndroidTest; apkdir=release; properties+=(-PfunctionalRelease=true) ;;
+  debug) task=connectedDebugAndroidTest; apkdir=debug; test_class=com.gasczoology.invertebratelab.NativeFunctionalRepairsTest ;;
+  release) task=connectedReleaseAndroidTest; apkdir=release; test_class=com.gasczoology.invertebratelab.NativeReleaseFunctionalTest; properties+=(-PfunctionalRelease=true) ;;
   *) exit 2 ;;
 esac
 # Preserve the tested application and runner even when instrumentation never returns.
@@ -57,12 +57,12 @@ timeout --signal=TERM --kill-after=15s 30s adb shell am start -W -n com.gasczool
 # Three functional methods complete in under a minute in the debug matrix.
 # A bounded invocation captures release-runner stalls instead of waiting 50 minutes.
 timeout --signal=TERM --kill-after=15s 240s gradle -p native-app ":app:$task" "${properties[@]}" --stacktrace --info \
-  -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeFunctionalRepairsTest \
+  -Pandroid.testInstrumentationRunnerArguments.class="$test_class" \
   -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
   -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle.txt
-python3 - <<'PYTEST'
-import pathlib, xml.etree.ElementTree as ET
+python3 - "$test_class" <<'PYTEST'
+import pathlib, sys, xml.etree.ElementTree as ET
 expected={
     "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
     "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
@@ -72,7 +72,7 @@ cases=[case for path in pathlib.Path('native-app/app/build/outputs/androidTest-r
        for case in ET.parse(path).getroot().iter('testcase')]
 actual=[case.get('name') for case in cases]
 assert len(cases)==3 and set(actual)==expected, ("WRONG_FUNCTIONAL_COHORT", actual)
-assert all(case.get('classname')=="com.gasczoology.invertebratelab.NativeFunctionalRepairsTest" for case in cases)
+assert all(case.get('classname')==sys.argv[1] for case in cases)
 assert not any(case.find(tag) is not None for case in cases for tag in ('failure','error','skipped')), "NONPASS_FUNCTIONAL_TEST"
 print("VERIFIED_FUNCTIONAL_COHORT", len(cases), sorted(actual))
 PYTEST

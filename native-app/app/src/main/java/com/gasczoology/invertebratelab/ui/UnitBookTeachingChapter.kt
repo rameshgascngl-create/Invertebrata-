@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.SemanticsPropertyKey
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
@@ -29,6 +30,7 @@ internal data class ReadingPositionAccess(
     val save: (String, BookReadingPosition) -> Unit = { _, _ -> },
 )
 internal val LocalReadingPositions = staticCompositionLocalOf { ReadingPositionAccess() }
+internal val ReadingPositionSemantics = SemanticsPropertyKey<BookReadingPosition>("BookReadingPosition")
 private fun ut(lang: AppLanguage, en: String, ta: String) = if (lang == AppLanguage.TAMIL) ta else en
 
 /** Default logical pages, with a deliberate continuous-reading option for reference work. */
@@ -149,7 +151,9 @@ internal fun UnitBookTeachingChapter(
             Box(Modifier.fillMaxSize().padding(padding)) { interactiveReader() }
         } else LazyColumn(
             state = listState,
-            modifier = Modifier.fillMaxSize().padding(padding).testTag(containerPrefix + chapter.id),
+            modifier = Modifier.fillMaxSize().padding(padding).testTag(containerPrefix + chapter.id).semantics {
+                this[ReadingPositionSemantics] = BookReadingPosition(pageId, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset)
+            },
             contentPadding = PaddingValues(start = 16.dp, top = 12.dp, end = 16.dp, bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
