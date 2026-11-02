@@ -114,7 +114,7 @@ class NativeReleaseFunctionalTest {
         else listOf(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)
         for (direction in directions) for (attempt in 0 until 55) {
             find(id)?.let { return it }
-            find(id, false)?.let { it.performAction(AccessibilityNodeInfo.ACTION_SHOW_ON_SCREEN); it.recycle(); SystemClock.sleep(75) }
+            find(id, false)?.let { it.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id); it.recycle(); SystemClock.sleep(75) }
             find(id)?.let { return it }
             if (!scroll(direction)) break
         }
