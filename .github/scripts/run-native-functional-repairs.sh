@@ -51,6 +51,7 @@ cp native-app/app/build/outputs/apk/androidTest/"$apkdir"/*.apk qa-evidence/func
 adb logcat -c
 adb logcat -v threadtime > qa-evidence/functional/logcat-live.txt 2>&1 &
 logcat_pid="$!"
+adb install -r -t "qa-evidence/functional/app-$variant.apk" > qa-evidence/functional/install-target.txt 2>&1
 timeout --signal=TERM --kill-after=15s 30s adb shell am start -W -n com.gasczoology.invertebratelab/.MainActivity > qa-evidence/functional/launch.txt 2>&1
 # Three functional methods complete in under a minute in the debug matrix.
 # A bounded invocation captures release-runner stalls instead of waiting 50 minutes.
@@ -59,6 +60,21 @@ timeout --signal=TERM --kill-after=15s 240s gradle -p native-app ":app:$task" "$
   -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
   -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle.txt
+python3 - <<'PYTEST'
+import pathlib, xml.etree.ElementTree as ET
+expected={
+    "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
+    "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+    "parasiteAndPrawnInteractivePagesAreReachable",
+}
+cases=[case for path in pathlib.Path('native-app/app/build/outputs/androidTest-results/connected').rglob('TEST-*.xml')
+       for case in ET.parse(path).getroot().iter('testcase')]
+actual=[case.get('name') for case in cases]
+assert len(cases)==3 and set(actual)==expected, ("WRONG_FUNCTIONAL_COHORT", actual)
+assert all(case.get('classname')=="com.gasczoology.invertebratelab.NativeFunctionalRepairsTest" for case in cases)
+assert not any(case.find(tag) is not None for case in cases for tag in ('failure','error','skipped')), "NONPASS_FUNCTIONAL_TEST"
+print("VERIFIED_FUNCTIONAL_COHORT", len(cases), sorted(actual))
+PYTEST
 cp native-app/app/build/outputs/apk/"$apkdir"/*.apk qa-evidence/functional/
 (cd qa-evidence/functional && sha256sum *.apk > APK-SHA256.txt)
 if [[ "$variant" == release ]]; then
