@@ -6,6 +6,7 @@ on:
     branches:
       - claude/unit1-plates-and-parasite-slots
       - claude/ciliary-width-diagnostic
+      - codex/correct-plate-attributions-20261102
 
 permissions:
   contents: read
@@ -23,6 +24,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Verify attribution corrections
+        run: python3 -m unittest discover -s tools -p test_plate_credit_regeneration.py -v
       - name: Baseline release build (R8, no overlay)
         run: |
           gradle -p native-app :app:assembleRelease --stacktrace
