@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - claude/unit1-plates-and-parasite-slots
+      - claude/ciliary-width-diagnostic
 
 permissions:
   contents: read
