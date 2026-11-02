@@ -72,8 +72,8 @@ def problems():
 
 
 def build_credits(prov):
-    """Write the in-app credit file from provenance entries (shown under each plate)."""
-    out = {}
+    """Update registered credits without erasing separately curated source credits."""
+    out = json.loads(CREDITS.read_text(encoding="utf-8")) if CREDITS.exists() else {}
     for slot, e in sorted(prov["plates"].items()):
         en = e.get("credit_en") or f"Source: {e['author']} \u00b7 {e['license']}"
         ta = e.get("credit_ta") or f"\u0bae\u0bc2\u0bb2\u0bae\u0bcd: {e['author']} \u00b7 {e['license']}"
