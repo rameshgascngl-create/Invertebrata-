@@ -11,23 +11,25 @@ data class BookReadingPage(
 object BookReadingPages {
     /**
      * Language-independent page budget, in "English characters of body text".
-     * One phone screen holds roughly 1,000-1,200 of them next to the compact page header; a figure
-     * counts as about 650. Pages are packed to this budget so short blocks (a definition, a one-line
-     * paragraph) share a page instead of leaving most of it blank. Larger type simply scrolls.
+     * Measured on a 1080 x 2400 phone at normal font size: body text takes about 2.1 px per
+     * character, the compact header leaves about 1,600 px, so one screen holds roughly 760-800
+     * characters of prose. A figure counts as about 560 plus its caption. Pages are packed to this
+     * budget so short blocks (a definition, a one-line paragraph) share a page instead of leaving
+     * most of it blank; larger type simply scrolls.
      */
-    const val PAGE_BUDGET = 1150
+    const val PAGE_BUDGET = 800
 
-    /** Approximate on-screen weight of one row (see [PAGE_BUDGET]). */
+    /** Approximate on-screen weight of one row (see [PAGE_BUDGET]); +20 is the gap between rows. */
     fun weight(row: BookRow): Int = when (row) {
-        is BookRow.SectionHeading -> 150          // heading plus its "Listen" button
-        is BookRow.SubHeading -> 70
-        is BookRow.Block -> when (val b = row.block) {
+        is BookRow.SectionHeading -> 110          // heading plus its "Listen" button
+        is BookRow.SubHeading -> 55
+        is BookRow.Block -> 20 + when (val b = row.block) {
             is BookParagraph -> b.text.english.length
-            is BookDefinition -> 150 + b.term.english.length + b.meaning.english.length
-            is BookKeyPoints -> 130 + b.points.sumOf { it.english.length + 24 }
-            is BookNote -> 120 + b.title.english.length + b.text.english.length
-            is BookFigure -> 650 + b.caption.english.length
-            is BookTable -> 170 + b.rows.sumOf { r -> 80 + r.sumOf { c -> c.english.length / 2 } }
+            is BookDefinition -> 100 + b.term.english.length + b.meaning.english.length
+            is BookKeyPoints -> 90 + b.points.sumOf { it.english.length + 24 }
+            is BookNote -> 90 + b.title.english.length + b.text.english.length
+            is BookFigure -> 560 + b.caption.english.length
+            is BookTable -> 130 + b.rows.sumOf { r -> 70 + r.sumOf { c -> c.english.length / 2 } }
         }
     }
 

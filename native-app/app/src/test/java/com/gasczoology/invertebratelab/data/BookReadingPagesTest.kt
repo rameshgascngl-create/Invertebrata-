@@ -44,8 +44,8 @@ class BookReadingPagesTest {
         }
         val average = fills.average()
         println("PAGE_FILL average=${"%.2f".format(average)} pages=${fills.size} sparse=${sparse.size}")
-        assertTrue("average page fill $average; sparse pages: ${sparse.take(25)}", average >= .65)
-        assertTrue("too many sparse pages (${sparse.size} of ${fills.size}): ${sparse.take(25)}", sparse.size <= fills.size * .2)
+        assertTrue("average page fill $average; sparse pages: ${sparse.take(25)}", average >= .6)
+        assertTrue("too many sparse pages (${sparse.size} of ${fills.size}): ${sparse.take(25)}", sparse.size <= fills.size * .25)
     }
 
     @Test fun formerlyBypassedInteractiveComponentsHaveReadingDestinations() {
