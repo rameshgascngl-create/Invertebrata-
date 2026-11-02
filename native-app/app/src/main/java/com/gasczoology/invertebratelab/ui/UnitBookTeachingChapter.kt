@@ -63,6 +63,7 @@ internal fun UnitBookTeachingChapter(
     var leishmaniaStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     var penaeusAppendage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     var penaeusStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
+    val bookRows = remember(book) { com.gasczoology.invertebratelab.data.BookLayout.rows(book) }
     val pageIndex = pages.indexOfFirst { it.id == pageId }.coerceAtLeast(0)
     val page = pages[pageIndex]
     val restorePosition = remember(chapter.id, pageId, continuous, referenceGalleryOpen) {
@@ -187,12 +188,25 @@ internal fun UnitBookTeachingChapter(
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item(key = "header") {
-                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text(book.title.value(language), style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
-                    ChapterDraftNotice(book.status, language)
-                    if (!continuous) Text(page.title.value(language), modifier = Modifier.testTag("reading-page-id").semantics {
-                        contentDescription = page.id; heading()
-                    }, style = MaterialTheme.typography.titleMedium)
+                // Compact header: a smaller title, the full review notice only on the opening and
+                // contents pages, and a page label only where the page body does not already
+                // start with its own heading (otherwise the same words appear twice).
+                val firstRow = page.rowIndices.firstOrNull()?.let { bookRows[it] }
+                val bodyHasOwnHeading = page.id in setOf("objectives", "summary", "quick-checks") ||
+                    firstRow is BookRow.SectionHeading || firstRow is BookRow.SubHeading
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(book.title.value(language), style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold, maxLines = 2, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                    ChapterDraftNotice(book.status, language, compact = !continuous && pageIndex > 0 && pageId != "contents")
+                    if (!continuous) {
+                        val labelModifier = Modifier.testTag("reading-page-id").semantics {
+                            contentDescription = page.id; heading()
+                        }
+                        if (bodyHasOwnHeading) Spacer(labelModifier.height(0.dp))
+                        else Text(page.title.value(language), modifier = labelModifier,
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                 }
             }
             if (referenceStudy != null) item(key = "optional-reference-gallery-toggle") {
@@ -261,7 +275,7 @@ internal fun UnitBookTeachingChapter(
                         }
                     }
                 }
-                if (chapter.id == "u4-nereis" && (continuous || pageId == "references")) {
+                if (chapter.id == "u4-nereis" && (continuous || pageId == "quick-checks")) {
                     items((0..7).toList(), key = { "u44-nereis-plate-$it" }) { UnitIVNereisStaticPlate(it, language) }
                 }
             }

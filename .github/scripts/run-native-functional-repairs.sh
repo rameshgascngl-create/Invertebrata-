@@ -56,7 +56,8 @@ adb install -r -t "qa-evidence/functional/app-$variant.apk" > qa-evidence/functi
 timeout --signal=TERM --kill-after=15s 30s adb shell am start -W -n com.gasczoology.invertebratelab/.MainActivity > qa-evidence/functional/launch.txt 2>&1
 # Three functional methods complete in under a minute in the debug matrix.
 # A bounded invocation captures release-runner stalls instead of waiting 50 minutes.
-timeout --signal=TERM --kill-after=15s 240s gradle -p native-app ":app:$task" "${properties[@]}" --stacktrace --info \
+# 540 s: Tamil 200% pages need many scroll steps to reach their stage controls.
+timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" "${properties[@]}" --stacktrace --info \
   -Pandroid.testInstrumentationRunnerArguments.class="$test_class" \
   -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \

@@ -105,7 +105,7 @@ internal fun LazyListScope.bookChapterItems(
             Text(t(language, "Introduction", "முன்னுரை"),
                 style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold,
                 modifier = Modifier.semantics { heading() })
-            (if (page == null) chapter.introduction else listOf(chapter.introduction[page.introductionIndex])).forEach {
+            chapter.introduction.forEach {
                 Text(it.value(language), style = MaterialTheme.typography.bodyLarge)
             }
         }
@@ -139,7 +139,7 @@ internal fun LazyListScope.bookChapterItems(
             }
         }
     }
-    if (page == null || page.id == "glossary") item(key = "book-glossary") {
+    if (page == null || page.id == "summary") item(key = "book-glossary") {
         val sorted = chapter.definitions.sortedBy { it.term.english.lowercase() }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.testTag("book-glossary")) {
@@ -164,7 +164,7 @@ internal fun LazyListScope.bookChapterItems(
         BookQuickCheckView(chapter.lessonId, index, chapter.quickChecks[index], language)
     }
     }
-    if (page == null || page.id == "references") item(key = "book-further-reading") {
+    if (page == null || page.id == "quick-checks") item(key = "book-further-reading") {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp),
             modifier = Modifier.testTag("book-further-reading")) {
             Text(t(language, "Further reading", "மேலும் படிக்க"),

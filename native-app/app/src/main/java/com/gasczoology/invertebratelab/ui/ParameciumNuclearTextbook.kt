@@ -89,6 +89,7 @@ internal fun ParameciumNuclearTextbook(
     val shape = RoundedCornerShape(12.dp)
     val scope = rememberCoroutineScope()
     val requester = remember { BringIntoViewRequester() }
+    val stagesRequester = remember { BringIntoViewRequester() }
     fun chooseNucleus(id: String) {
         change(progress.copy(selectedNucleus = id))
         speak(ParameciumNuclearBiology.nucleus(id))
@@ -185,6 +186,11 @@ internal fun ParameciumNuclearTextbook(
                 { chooseView(chapter.views[position - 1].id) }, ::togglePlayback,
                 { chooseView(chapter.views[position + 1].id) }, ::replay,
                 { change(progress.copy(reducedMotion = false)) })
+            // Large Tamil text makes this page many screens long; one tap reaches the stage list.
+            OutlinedButton(onClick = { scope.launch { stagesRequester.bringIntoView() } }, shape = shape,
+                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-jump-stages")) {
+                Text(text(language, "Go to the stage list", "நிலைப் பட்டியலுக்குச் செல்க"))
+            }
             Text(text(language,
                 "MAC: larger hatched somatic nucleus. MIC: compact germline nucleus. Insets are enlarged independently. Representative chromatin, cilia and oral outline; not a calibrated specimen or chromosome count.",
                 "MAC: பெரிய கோடிட்ட உடலியக்க உட்கரு. MIC: செறிவான மரபுவழி உட்கரு. சிறுபடங்கள் தனித்தனியே பெரிதாக்கப்பட்டன. குரோமாட்டின், குறுஇழைகள், வாய்ப்புறம் பிரதிநிதிக் குறிகள்; அளவுத்திருத்த மாதிரியோ குரோமோசோம் எண்ணிக்கையோ அல்ல."),
@@ -198,6 +204,8 @@ internal fun ParameciumNuclearTextbook(
                 modifier = Modifier.testTag("r17-organ-explanation"), style = MaterialTheme.typography.bodyLarge)
             Text(stage.explanation.value(language), modifier = Modifier.testTag("r17-stage-explanation"),
                 style = MaterialTheme.typography.bodyLarge)
+            Text(text(language, "Stages", "நிலைகள்"), style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.bringIntoViewRequester(stagesRequester).testTag("r17-stage-list-heading"))
             chapter.views.forEachIndexed { index, view ->
                 OutlinedButton(onClick = { chooseView(view.id) }, shape = shape,
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-stage-" + view.id)

@@ -7,6 +7,7 @@ Unknown protobuf versions, malformed records and non-empty failures stay failure
 """
 import argparse
 import json
+import sys
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -84,6 +85,11 @@ def canonicalise(root, ignored):
         status = "failed" if failures else "skipped" if case.find("skipped") is not None else "passed"
         counts[status] += 1
         cases.append(dict(test=".".join(key), result=status))
+        if status == "failed":
+            # Surface the failing test and message in the job log; the XML is otherwise only in the artifact.
+            detail = " | ".join(((f.get("message") or "") + " " + (f.text or "").strip().splitlines()[0:1].__str__()).strip()
+                                for f in failures)[:900]
+            print("FAILED_TEST " + ".".join(key) + " :: " + detail, file=sys.stderr)
     for suite in root.iter("testsuite"):
         entries = list(suite.iter("testcase"))
         suite.set("tests", str(len(entries)))

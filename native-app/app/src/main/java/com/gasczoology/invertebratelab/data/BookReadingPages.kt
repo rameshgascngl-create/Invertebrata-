@@ -9,32 +9,67 @@ data class BookReadingPage(
 )
 
 object BookReadingPages {
-    fun forChapter(chapter: BookChapter, questionIds: List<String>): List<BookReadingPage> = buildList {
-        add(BookReadingPage("objectives", BilingualText("Learning objectives", "கற்றல் நோக்கங்கள்")))
-        chapter.introduction.indices.forEach { i ->
-            add(BookReadingPage("introduction-$i", BilingualText("Introduction", "முன்னுரை"), introductionIndex = i))
+    /**
+     * Language-independent page budget, in "English characters of body text".
+     * Measured on a 1080 x 2400 phone at normal font size: body text takes about 2.1 px per
+     * character, the compact header leaves about 1,600 px, so one screen holds roughly 760-800
+     * characters of prose. A figure counts as about 560 plus its caption. Pages are packed to this
+     * budget so short blocks (a definition, a one-line paragraph) share a page instead of leaving
+     * most of it blank; larger type simply scrolls.
+     */
+    const val PAGE_BUDGET = 800
+
+    /** Approximate on-screen weight of one row (see [PAGE_BUDGET]); +20 is the gap between rows. */
+    fun weight(row: BookRow): Int = when (row) {
+        is BookRow.SectionHeading -> 110          // heading plus its "Listen" button
+        is BookRow.SubHeading -> 55
+        is BookRow.Block -> 20 + when (val b = row.block) {
+            is BookParagraph -> b.text.english.length
+            is BookDefinition -> 100 + b.term.english.length + b.meaning.english.length
+            is BookKeyPoints -> 90 + b.points.sumOf { it.english.length + 24 }
+            is BookNote -> 90 + b.title.english.length + b.text.english.length
+            is BookFigure -> 560 + b.caption.english.length
+            is BookTable -> 130 + b.rows.sumOf { r -> 70 + r.sumOf { c -> c.english.length / 2 } }
         }
+    }
+
+    fun forChapter(chapter: BookChapter, questionIds: List<String>): List<BookReadingPage> = buildList {
+        // Objectives and the (short) introduction share the opening page.
+        add(BookReadingPage("objectives",
+            BilingualText("Objectives and introduction", "நோக்கங்களும் முன்னுரையும்"),
+            introductionIndex = if (chapter.introduction.isEmpty()) -1 else 0))
         add(BookReadingPage("contents", BilingualText("Contents", "பொருளடக்கம்")))
         val rows = BookLayout.rows(chapter)
+        // A unit is the headings that precede a block plus that block; units are never split.
+        val units = ArrayList<IntRange>()
+        var at = 0
+        while (at < rows.size) {
+            var last = at
+            while (last < rows.size && rows[last] !is BookRow.Block) last++
+            if (last >= rows.size) last = rows.lastIndex
+            units += at..last
+            at = last + 1
+        }
         var heading = chapter.title
-        var start = 0
-        while (start < rows.size) {
-            (rows[start] as? BookRow.SectionHeading)?.let { heading = it.heading }
-            (rows[start] as? BookRow.SubHeading)?.let { heading = it.heading }
-            var end = start
-            var blocks = 0
-            while (end < rows.size && blocks < 2) {
-                if (end > start && blocks > 0 && rows[end] !is BookRow.Block) break
-                if (rows[end] is BookRow.Block) blocks++
+        var u = 0
+        while (u < units.size) {
+            val first = units[u].first
+            (rows[first] as? BookRow.SectionHeading)?.let { heading = it.heading }
+            (rows[first] as? BookRow.SubHeading)?.let { heading = it.heading }
+            var used = 0
+            var end = u
+            while (end < units.size) {
+                val w = units[end].sumOf { weight(rows[it]) }
+                if (end > u && used + w > PAGE_BUDGET) break
+                used += w
                 end++
             }
-            add(BookReadingPage("row-$start", heading, (start until end).toList()))
-            start = end
+            add(BookReadingPage("row-$first", heading, (first..units[end - 1].last).toList()))
+            u = end
         }
-        add(BookReadingPage("summary", BilingualText("Chapter summary", "அத்தியாயச் சுருக்கம்")))
-        add(BookReadingPage("glossary", BilingualText("Key terms", "கலைச்சொற்கள்")))
-        add(BookReadingPage("quick-checks", BilingualText("Check your understanding", "புரிதலைச் சரிபார்க்க")))
-        add(BookReadingPage("references", BilingualText("Further reading", "மேலும் படிக்க")))
+        // Summary and key terms share a page; so do the quick checks and further reading.
+        add(BookReadingPage("summary", BilingualText("Summary and key terms", "சுருக்கமும் கலைச்சொற்களும்")))
+        add(BookReadingPage("quick-checks", BilingualText("Check your understanding and further reading", "புரிதல் சோதனையும் மேலும் படிக்கவும்")))
         when (chapter.lessonId) {
             "u1-paramecium" -> add(BookReadingPage("interactive", BilingualText("Paramecium laboratory", "பாரமீசியம் ஆய்வகம்")))
             "u1-proto-parasites" -> {

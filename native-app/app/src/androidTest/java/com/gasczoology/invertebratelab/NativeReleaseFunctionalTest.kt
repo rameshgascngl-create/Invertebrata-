@@ -132,7 +132,27 @@ class NativeReleaseFunctionalTest {
             swipe(bounds.exactCenterX(), low, bounds.exactCenterX(), high)
         else swipe(bounds.exactCenterX(), high, bounds.exactCenterX(), low)
         // A tall image can retain identical clipped bounds while scrolling through it.
-        return before != fingerprint() || verticalScrollEvents.get() != scrollEvent
+        if (before != fingerprint() || verticalScrollEvents.get() != scrollEvent) return true
+        // A swipe that starts on an interactive canvas is consumed by it and never scrolls the page
+        // (seen at Tamil 200% in the release build). Ask the largest scrollable container directly.
+        return scrollLargestContainer(action, before)
+    }
+    private fun scrollLargestContainer(action: Int, before: String): Boolean {
+        var best: AccessibilityNodeInfo? = null
+        var bestArea = 0
+        fun visit(node: AccessibilityNodeInfo) {
+            if (node.isScrollable && node.isVisibleToUser) {
+                val r = Rect(); node.getBoundsInScreen(r)
+                val area = r.width() * r.height()
+                if (r.height() >= r.width() * .6f && area > bestArea) { best = node; bestArea = area }
+            }
+            for (at in 0 until node.childCount) node.getChild(at)?.let(::visit)
+        }
+        automation.rootInActiveWindow?.let(::visit)
+        val target = best ?: return false
+        val moved = target.performAction(action)
+        instrumentation.waitForIdleSync(); SystemClock.sleep(150)
+        return moved && before != fingerprint()
     }
     private fun horizontal(container: String, id: String): AccessibilityNodeInfo {
         scrollTo(container).recycle()
@@ -160,7 +180,9 @@ class NativeReleaseFunctionalTest {
         val directions = if (id == "r1-process-selector")
             listOf(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD, AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
         else listOf(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)
-        for (direction in directions) for (attempt in 0 until 55) {
+        // Tamil 200% pages are several times taller; give those searches a larger scroll budget.
+        val budget = if (context.resources.configuration.fontScale > 1.5f) 140 else 55
+        for (direction in directions) for (attempt in 0 until budget) {
             find(id)?.let { return it }
             find(id, false)?.let { it.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id); it.recycle(); SystemClock.sleep(75) }
             find(id)?.let { return it }
@@ -226,13 +248,42 @@ class NativeReleaseFunctionalTest {
         val result = checkNotNull(node.rangeInfo) { "Diagram has no Android range semantics: " + id }.current
         node.recycle(); return result
     }
+    private fun visibleHeight(id: String): Int {
+        val node = find(id, false) ?: return 0
+        val rect = Rect(); node.getBoundsInScreen(rect); node.recycle()
+        rect.intersect(windowBounds())
+        return maxOf(rect.height(), 0)
+    }
+    /**
+     * ACTION_SHOW_ON_SCREEN scrolls with an animation. Sampling during it captured a 69 px sliver
+     * of a 604 px diagram in the release build (CI run 41411776692), so before and after captures
+     * differed in size. Repeat the action and wait for the layout to settle until the visible
+     * height stops growing.
+     */
+    private fun bringFullyIntoView(id: String) {
+        var last = -1
+        repeat(8) {
+            find(id, false)?.let { node ->
+                node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
+                node.recycle()
+            }
+            instrumentation.waitForIdleSync()
+            var settled = fingerprint()
+            for (poll in 0 until 8) {
+                SystemClock.sleep(90)
+                val now = fingerprint()
+                if (now == settled) break
+                settled = now
+            }
+            val height = visibleHeight(id)
+            if (height == last) return
+            last = height
+        }
+    }
     private fun diagram(id: String): Bitmap {
         // Playback controls may scroll the animated canvas almost completely offscreen.
-        // Bring the actual diagram back into view before sampling its pixels.
-        find(id, false)?.let { node ->
-            node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
-            node.recycle()
-        }
+        // Bring the actual diagram back into view, and let the scroll finish, before sampling pixels.
+        bringFullyIntoView(id)
         val node = scrollTo(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
         val fullHeight = bounds.height()
         var ancestor = node.parent
@@ -253,8 +304,12 @@ class NativeReleaseFunctionalTest {
         screen.recycle()
         return result
     }
-    private fun changedPixels(a: Bitmap, b: Bitmap): Int {
-        assertEquals(a.width, b.width); assertEquals(a.height, b.height)
+    private fun changedPixels(a: Bitmap, b: Bitmap, label: String = ""): Int {
+        // Name the diagram and both sizes: a bare "expected:<640> but was:<788>" cannot be traced to a case.
+        assertEquals(label + ": diagram capture widths differ (before=" + a.width + "x" + a.height +
+            ", after=" + b.width + "x" + b.height + ")", a.width, b.width)
+        assertEquals(label + ": diagram capture heights differ (before=" + a.width + "x" + a.height +
+            ", after=" + b.width + "x" + b.height + ")", a.height, b.height)
         var changed = 0
         for (y in 0 until a.height step 2) for (x in 0 until a.width step 2)
             if (a.getPixel(x, y) != b.getPixel(x, y)) changed++
@@ -266,8 +321,9 @@ class NativeReleaseFunctionalTest {
         for ((unit, id) in listOf(1 to "u1-paramecium", 2 to "u2-sycon", 3 to "u3-fasciola", 4 to "u4-penaeus", 5 to "u5-pila")) {
             enterChapter(unit, id)
             val previous = waitFor("reading-page-previous"); assertFalse(previous.isEnabled); previous.recycle()
-            scrollTo("book-objectives").recycle(); tap("reading-page-next")
-            scrollTo("book-introduction").recycle()
+            // Objectives and the introduction share the opening page; the contents list is page 2.
+            scrollTo("book-objectives").recycle(); scrollTo("book-introduction").recycle()
+            tap("reading-page-next")
             val page = waitText("reading-page-position") { it.startsWith(if (tamil) "பக்கம் 2/" else "Page 2/") }
             scenario.recreate(); waitFor(root(id, unit)).recycle()
             assertEquals(page, text("reading-page-position"))
@@ -316,7 +372,7 @@ class NativeReleaseFunctionalTest {
             Case("conjugation", "r17", "r17-nuclear-canvas", "r17-stage-exchange", null),
         )
         for (c in cases) {
-            tap("r1-process-" + c.process); tap(c.stage); c.start?.let(::tap)
+            tap("r1-process-" + c.process); if (c.prefix == "r19" || c.prefix == "r17") tap(c.prefix + "-jump-stages"); tap(c.stage); c.start?.let(::tap)
             scrollTo(c.prefix + "-inline-play-pause").recycle()
             val before = diagram(c.canvas)
             // The transport was reached by touch above. Activate its native action
@@ -328,7 +384,7 @@ class NativeReleaseFunctionalTest {
             playbackControl(); SystemClock.sleep(150)
             val stopped = phase(c.canvas); assertTrue(c.process + ": no intermediate pause", stopped > 0f && stopped < 1f)
             val after = diagram(c.canvas)
-            assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after) > 12)
+            assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after, c.process + " / " + c.canvas) > 12)
             saveScreen(c.process + "-release-start", before); saveScreen(c.process + "-release-paused", after)
             SystemClock.sleep(300)
             assertEquals(c.process + ": phase advanced after Pause", stopped, phase(c.canvas), .0011f)

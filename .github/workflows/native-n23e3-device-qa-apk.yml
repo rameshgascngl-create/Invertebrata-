@@ -10,6 +10,7 @@ on:
       - native/n24-paramecium-raster-intake-20261031
       - claude/audit-l10n
       - claude/unit1-plates-and-parasite-slots
+      - claude/ciliary-width-diagnostic
 
 permissions:
   contents: read
