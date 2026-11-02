@@ -132,7 +132,27 @@ class NativeReleaseFunctionalTest {
             swipe(bounds.exactCenterX(), low, bounds.exactCenterX(), high)
         else swipe(bounds.exactCenterX(), high, bounds.exactCenterX(), low)
         // A tall image can retain identical clipped bounds while scrolling through it.
-        return before != fingerprint() || verticalScrollEvents.get() != scrollEvent
+        if (before != fingerprint() || verticalScrollEvents.get() != scrollEvent) return true
+        // A swipe that starts on an interactive canvas is consumed by it and never scrolls the page
+        // (seen at Tamil 200% in the release build). Ask the largest scrollable container directly.
+        return scrollLargestContainer(action, before)
+    }
+    private fun scrollLargestContainer(action: Int, before: String): Boolean {
+        var best: AccessibilityNodeInfo? = null
+        var bestArea = 0
+        fun visit(node: AccessibilityNodeInfo) {
+            if (node.isScrollable && node.isVisibleToUser) {
+                val r = Rect(); node.getBoundsInScreen(r)
+                val area = r.width() * r.height()
+                if (r.height() >= r.width() * .6f && area > bestArea) { best = node; bestArea = area }
+            }
+            for (at in 0 until node.childCount) node.getChild(at)?.let(::visit)
+        }
+        automation.rootInActiveWindow?.let(::visit)
+        val target = best ?: return false
+        val moved = target.performAction(action)
+        instrumentation.waitForIdleSync(); SystemClock.sleep(150)
+        return moved && before != fingerprint()
     }
     private fun horizontal(container: String, id: String): AccessibilityNodeInfo {
         scrollTo(container).recycle()
