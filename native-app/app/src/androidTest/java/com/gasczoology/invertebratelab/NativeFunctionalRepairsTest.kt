@@ -84,8 +84,16 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("book-introduction"))
             rule.onNodeWithTag("book-introduction").assertExists()
             runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id]?.pageId == "introduction-0" } } }
+            val beforeScroll = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
+                .config[SemanticsProperties.VerticalScrollAxisRange].value()
             rule.activityRule.scenario.recreate()
             waitFor(root(id, unit))
+            rule.waitUntil(10_000) {
+                kotlin.math.abs(rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
+                    .config[SemanticsProperties.VerticalScrollAxisRange].value() - beforeScroll) < .0001f
+            }
+            // Restoring the reading offset can leave the lazy header offscreen.
+            rule.onNodeWithTag(root(id, unit)).performScrollToIndex(0)
             rule.onNodeWithTag("reading-page-id").assertContentDescriptionEquals("introduction-0")
             screenshot("$id-restored-page")
             openPage(id, unit, "row-0")

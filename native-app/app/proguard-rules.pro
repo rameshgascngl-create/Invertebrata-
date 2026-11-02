@@ -5,3 +5,7 @@
 -keep class com.gasczoology.invertebratelab.** { *; }
 -keep class * extends com.google.gson.reflect.TypeToken { *; }
 -dontwarn sun.misc.Unsafe
+
+# AndroidJUnitRunner calls this shared API before discovering any tests.
+# R8 must retain its name and members across the app and instrumentation APKs.
+-keep class androidx.tracing.Trace { *; }
