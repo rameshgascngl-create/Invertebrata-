@@ -30,6 +30,8 @@ class BookReadingRepository(private val context: Context) {
         if (error is IOException) emit(emptyPreferences()) else throw error
     }.map { decode(it[key]) }
 
+    internal suspend fun clear() { context.bookReadingStore.edit { it.clear() } }
+
     suspend fun save(chapter: String, position: BookReadingPosition) {
         context.bookReadingStore.edit { preferences ->
             preferences[key] = gson.toJson(decode(preferences[key]) + (chapter to position))

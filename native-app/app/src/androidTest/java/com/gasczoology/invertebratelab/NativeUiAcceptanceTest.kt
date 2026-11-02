@@ -158,6 +158,7 @@ class NativeUiAcceptanceTest {
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
         }
+        if (tag.startsWith("book-reader-") || tag.startsWith("u2-reader-") || tag.startsWith("u3-reader-")) showContinuousReader(rule)
     }
 
     private fun englishHome() {
@@ -542,15 +543,17 @@ class NativeUiAcceptanceTest {
         waitFor("r1-paramecium-lab")
         rule.onNodeWithTag("r1-tab-simulate").performClick()
         rule.onNodeWithTag("r1-process-osmoregulation").assertExists()
-        rule.onNodeWithTag("r1-stage-title")
-            .assertTextEquals("Stage 1/4 — Water enters")
-        rule.onNodeWithTag("r1-next").performScrollTo().performClick()
-        rule.onNodeWithTag("r1-stage-title")
-            .assertTextEquals("Stage 2/4 — Collecting network")
-        rule.onNodeWithTag("r1-process-conjugation")
-            .performScrollTo().performClick()
-        rule.onNodeWithTag("r1-stage-title")
-            .assertTextEquals("Stage 1/7 — Compatible cells pair")  // conjugation model has 7 stages
+        rule.onNodeWithTag("r18-stage-title", true).performScrollTo()
+            .assertTextEquals("View 1/4 — Osmotic water entry")
+        rule.onNodeWithTag("r18-inline-next").performScrollTo().performClick()
+        rule.onNodeWithTag("r18-stage-title", true)
+            .assertTextEquals("View 2/4 — Fluid segregation and collection")
+        rule.onNodeWithTag("r1-process-selector").performScrollTo()
+        rule.onNodeWithTag("r1-process-conjugation").performScrollTo().performClick()
+        val first = com.gasczoology.invertebratelab.data.ParameciumNuclearBiology.chapter("conjugation").views.first()
+        rule.onNodeWithTag("r17-stage-title", true).performScrollTo()
+            .assertTextEquals("View 1/" + com.gasczoology.invertebratelab.data.ParameciumNuclearBiology.chapter("conjugation").views.size + " — " + first.heading.english)
+        rule.onNodeWithTag("r17-nuclear-canvas", true).assertExists()
         rule.onNodeWithTag("r1-tab-anatomy").performScrollTo().performClick()
         // The legacy organ-selection atlas is unreachable (KNOWN_GAPS.md); check the
         // plate gallery students can actually open.
@@ -785,6 +788,7 @@ class NativeTamilLargeTextAcceptanceTest {
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag(container).fetchSemanticsNodes().isNotEmpty()
         }
+        showContinuousReader(rule)
         val questionTag = readerQuestionTag(firstChapter, first)
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(questionTag))
         rule.onNodeWithTag(questionTag).assertTextEquals(first.question.tamil)
@@ -935,6 +939,7 @@ class NativeTamilLargeTextAcceptanceTest {
         rule.waitUntil(timeoutMillis = 20_000L) {
             rule.onAllNodesWithTag(container).fetchSemanticsNodes().isNotEmpty()
         }
+        showContinuousReader(rule)
         rule.onNodeWithTag(container).performScrollToIndex(0)
         rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists()
         val last = chapter.a5Questions.last()

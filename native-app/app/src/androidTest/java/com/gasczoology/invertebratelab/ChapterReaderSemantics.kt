@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab
 
 import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -40,4 +41,11 @@ internal fun leaveReader(rule: SemanticsNodeInteractionsProvider, chapter: Chapt
     val back = readerRoute(chapter).backTag
     if (back == null) rule.onNodeWithText("Back").performClick()
     else rule.onNodeWithTag(back).performClick()
+}
+
+/** Select the public continuous-reader mode before tests that traverse the entire corpus. */
+internal fun showContinuousReader(rule: SemanticsNodeInteractionsProvider) {
+    if (rule.onAllNodesWithTag("reading-mode-continuous").fetchSemanticsNodes().isNotEmpty()) {
+        rule.onNodeWithTag("reading-mode-continuous").performClick()
+    }
 }

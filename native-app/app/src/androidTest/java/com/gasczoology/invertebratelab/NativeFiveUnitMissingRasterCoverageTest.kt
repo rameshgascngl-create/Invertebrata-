@@ -41,6 +41,7 @@ class NativeFiveUnitMissingRasterCoverageTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag(root).fetchSemanticsNodes().isNotEmpty()
         }
+        showContinuousReader(rule)
         return root
     }
     private fun find(root: String, tag: String) {

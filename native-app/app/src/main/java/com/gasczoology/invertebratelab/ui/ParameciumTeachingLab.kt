@@ -121,7 +121,7 @@ fun ParameciumTeachingLab(
     }
     fun selectTab(value: String) { narrator.stop(); onLearningChanged(checkpoint().copy(laboratoryTab = value)) }
     fun leave() { onBack(checkpoint()) }
-    val stopAndSave by rememberUpdatedState({ onLearningChanged(checkpoint()) })
+    val stopAndSave by rememberUpdatedState({ if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB) onLearningChanged(checkpoint()) })
     DisposableEffect(lifecycleOwner) {
         val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
             if (event == androidx.lifecycle.Lifecycle.Event.ON_STOP) stopAndSave()
@@ -214,7 +214,7 @@ fun ParameciumTeachingLab(
             }
             }
             val menu = listOf("study", "anatomy", "simulate", "listen", "practice", "nuclear", "water-balance", "nutrition")
-            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).testTag("r1-module-selector"), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 for (section in menu) {
                     val title = when (section) {
                         "study" -> bi(language, "Read", "பாடம்")
@@ -237,9 +237,9 @@ fun ParameciumTeachingLab(
                             learningState.laboratoryTab=="nutrition") onLearningChanged(learningState.copy(nutritionProgress = it))
                     },player=nutritionPlayer)
                 "water-balance" -> ParameciumWaterBalanceTextbook(language, ::speak, learningState.waterBalanceProgress,
-                    onProgress = { if (latestLearning.laboratoryTab == "water-balance") onLearningChanged(latestLearning.copy(waterBalanceProgress = it)) })
+                    onProgress = { if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && latestLearning.laboratoryTab == "water-balance") onLearningChanged(latestLearning.copy(waterBalanceProgress = it)) })
                 "nuclear" -> ParameciumNuclearTextbook(language, ::speak, learningState.nuclearProgress,
-                    onProgress = { if (latestLearning.laboratoryTab == "nuclear") onLearningChanged(latestLearning.copy(nuclearProgress = it)) })
+                    onProgress = { if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && latestLearning.laboratoryTab == "nuclear") onLearningChanged(latestLearning.copy(nuclearProgress = it)) })
                 "study" -> StudySection(language, ::speak, onAnatomy = { selectTab("anatomy") },
                     onSimulation = { selectTab("simulate") },
                     learningState = learningState, onLearningChanged = onLearningChanged)
@@ -250,7 +250,7 @@ fun ParameciumTeachingLab(
                         val nuclearChapter = if (process == "CONJUGATION") "conjugation" else "fission"
                         onLearningChanged(current.copy(simulationProcess = process,
                             nuclearProgress = if (process in setOf("CONJUGATION", "BINARY_FISSION")) current.nuclearProgress.selectChapter(nuclearChapter) else current.nuclearProgress))
-                    }, onProgress = { if (latestLearning.laboratoryTab == "simulate") onLearningChanged(it) })
+                    }, onProgress = { if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && latestLearning.laboratoryTab == "simulate") onLearningChanged(it) })
                 "listen" -> NarrationSection(language,::speak)
                 else -> {
                     Text(bi(language,"Use the preserved question bank for revision after studying the biology.",
@@ -657,7 +657,7 @@ private fun SimulatorSection(
 ) {
     val current by rememberUpdatedState(learning)
     Text(bi(language, "Teaching simulations", "கற்பித்தல் இயக்கக் காட்சிகள்"), modifier = Modifier.testTag("r1-simulator-heading"))
-    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).testTag("r1-process-selector"), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         ParameciumProcess.entries.forEach { process ->
             OutlinedButton(onClick = { onChoose(process.name) }, modifier = Modifier.heightIn(min = 48.dp)
                 .testTag("r1-process-" + process.name.lowercase()).semantics { selected = process.name == learning.simulationProcess }) {
@@ -671,7 +671,8 @@ private fun SimulatorSection(
                 { onProgress(current.copy(waterBalanceProgress = it)) }, compact = true)
             ParameciumProcess.FEEDING -> ParameciumNutritionTextbook(language, speak, learning.nutritionProgress,
                 { onProgress(current.copy(nutritionProgress = it)) }, nutritionPlayer, compact = true)
-            ParameciumProcess.BINARY_FISSION, ParameciumProcess.CONJUGATION -> ParameciumNuclearTextbook(language, speak, learning.nuclearProgress,
+            ParameciumProcess.BINARY_FISSION, ParameciumProcess.CONJUGATION -> ParameciumNuclearTextbook(language, speak,
+                learning.nuclearProgress.let { p -> val chapter = if (learning.simulationProcess == "CONJUGATION") "conjugation" else "fission"; if (p.chapterId == chapter) p else p.selectChapter(chapter) },
                 { onProgress(current.copy(nuclearProgress = it)) }, compact = true)
             ParameciumProcess.CILIARY_MOTION -> CiliaryPlaybackPanel(language, learning.ciliaryStageIndex,
                 learning.ciliaryPhasePermille, learning.ciliaryReducedMotion, speak) { stage, phase, reduced ->
@@ -679,7 +680,7 @@ private fun SimulatorSection(
             }
         }
     }
-    if (learning.simulationProcess != "CILIARY_MOTION") ParameciumProcessPng(ParameciumProcess.valueOf(learning.simulationProcess), language)
+    if (learning.simulationProcess in setOf("OSMOREGULATION", "FEEDING")) ParameciumProcessPng(ParameciumProcess.valueOf(learning.simulationProcess), language)
 
 }
 

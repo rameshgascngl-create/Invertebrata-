@@ -22,8 +22,8 @@ internal object ParameciumProcessPngIndex {
         ParameciumProcess.CILIARY_MOTION to "unit1/concepts/paramecium_ciliary_locomotion",
         ParameciumProcess.OSMOREGULATION to "unit1/concepts/paramecium_osmoregulation",
         ParameciumProcess.FEEDING to "unit1/concepts/paramecium_nutrition",
-        ParameciumProcess.BINARY_FISSION to "unit1/concepts/paramecium_binary_fission",
-        ParameciumProcess.CONJUGATION to "unit1/concepts/paramecium_conjugation",
+        ParameciumProcess.BINARY_FISSION to null,
+        ParameciumProcess.CONJUGATION to null,
     )
     init { check(byProcess.keys == ParameciumProcess.entries.toSet()) }
 }

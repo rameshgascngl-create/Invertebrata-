@@ -21,10 +21,13 @@ object BookReadingPages {
         while (start < rows.size) {
             (rows[start] as? BookRow.SectionHeading)?.let { heading = it.heading }
             (rows[start] as? BookRow.SubHeading)?.let { heading = it.heading }
-            var end = (start + 2).coerceAtMost(rows.size)
-            // Keep each new section/subsection with its first block, never at a page's foot.
-            if (end < rows.size && rows[end - 1] !is BookRow.Block) end--
-            if (end == start) end = (start + 2).coerceAtMost(rows.size)
+            var end = start
+            var blocks = 0
+            while (end < rows.size && blocks < 2) {
+                if (end > start && blocks > 0 && rows[end] !is BookRow.Block) break
+                if (rows[end] is BookRow.Block) blocks++
+                end++
+            }
             add(BookReadingPage("row-$start", heading, (start until end).toList()))
             start = end
         }

@@ -14,7 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** Actual packaged PNG decode in the lab, no substituted process Canvas. */
+/** Packaged raster references remain accessible beside the actual native demonstrations. */
 @RunWith(AndroidJUnit4::class)
 class NativeU57ParameciumProcessPngTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()
@@ -44,6 +44,7 @@ class NativeU57ParameciumProcessPngTest {
             rule.onAllNodesWithTag("r1-process-"+process, useUnmergedTree = true)
                 .fetchSemanticsNodes().isNotEmpty()
         }
+        rule.onNodeWithTag("r1-process-selector").performScrollTo()
         rule.onNodeWithTag("r1-process-"+process, useUnmergedTree = true).performScrollTo().performClick()
         rule.waitForIdle()
         rule.onNodeWithTag("r1-simulator-heading").performScrollTo()
@@ -62,81 +63,28 @@ class NativeU57ParameciumProcessPngTest {
         assertTrue("Missing screenshot",png.size>12000)
         assertNotNull(BitmapFactory.decodeByteArray(png,0,png.size))
     }
-    @Test fun pngPhysiologyAndFissionStagesUseDedicatedAssets() {
+    @Test fun rasterReferencesAndReviewedTeachingModelsAreReachable() {
         for(process in listOf("ciliary_motion","osmoregulation","feeding")) {
             go(process)
-            val tag="u57-paramecium-process-bitmap-"+process
+            val tag = "u57-paramecium-process-bitmap-" + process
             rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
-            rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
-            rule.onNodeWithTag("u57-static-png-disclosure").performScrollTo().assertExists()
-            if(process=="osmoregulation") {
-                screenshot("vacuole-source-png")
-                rule.onNodeWithTag("u58-open-process-image-"+process).performScrollTo().performClick()
-                rule.onNodeWithTag("r2-fullscreen-dialog").assertExists()
-                rule.onNodeWithTag("r2-fullscreen-bitmap").assertIsDisplayed()
-                rule.onNodeWithTag("r2-zoom-in").performClick()
-                rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
-                screenshot("vacuole-png-enlarged")
-                rule.onNodeWithTag("r2-fullscreen-close").performClick()
-                rule.onNodeWithTag("r2-fullscreen-dialog").assertDoesNotExist()
-                rule.onNodeWithTag(tag).performScrollTo().assertExists()
-            }
+            rule.onNodeWithTag("u58-open-process-image-" + process).performScrollTo().performClick()
+            rule.onNodeWithTag("r2-fullscreen-bitmap").assertIsDisplayed()
+            rule.onNodeWithTag("r2-zoom-in").performClick()
+            rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
+            screenshot(process + "-reference-enlarged")
+            rule.onNodeWithTag("r2-fullscreen-close").performClick()
         }
-        // F01-F03 were integrated after this regression was first authored.
-        // Assert the real, stage-specific PNG viewer rather than a missing-art notice.
-        go("binary_fission")
-        rule.onNodeWithTag("u57-paramecium-process-png-missing-binary_fission")
-            .assertDoesNotExist()
-        rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
-        rule.onNodeWithTag("paramecium-fission-F01").performScrollTo().assertIsDisplayed()
-        rule.onNodeWithTag("paramecium-fission-F02").assertDoesNotExist()
-        rule.onNodeWithTag("paramecium-fission-F03").assertDoesNotExist()
-        screenshot("binary-fission-parent")
-        rule.onNodeWithTag("r1-next").performScrollTo().performClick()
-        rule.onNodeWithTag("paramecium-fission-F01").assertDoesNotExist()
-        rule.onNodeWithTag("paramecium-fission-F02").performScrollTo().assertIsDisplayed()
-        rule.onNodeWithTag("paramecium-fission-F03").performScrollTo().assertIsDisplayed()
-        screenshot("binary-fission-micronuclear-division")
-        // No earlier-stage plate may leak into the furrow or daughter-cell stages.
-        repeat(2) {
-            rule.onNodeWithTag("r1-next").performScrollTo().performClick()
-            for (plate in listOf("F01", "F02", "F03")) {
-                rule.onNodeWithTag("paramecium-fission-" + plate).assertDoesNotExist()
-            }
-            rule.onNodeWithTag("r1-stage-explanation").performScrollTo().assertExists()
-        }
-        for(process in listOf("conjugation")) {
+        for ((process, chapter) in listOf("binary_fission" to "fission", "conjugation" to "conjugation")) {
             go(process)
-            val tag="u57-paramecium-process-png-missing-"+process
-            rule.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
-            rule.onNodeWithTag("r1-process-canvas").assertDoesNotExist()
-            rule.onNodeWithTag("u57-paramecium-process-bitmap-"+process).assertDoesNotExist()
-            if(process=="conjugation") {
-                screenshot("conjugation-text-no-vector")
-                // The seven stages are text-only until each dedicated PNG passes review.
-                // Capture actual 100%/200% Tamil pixels for the critical sequence.
-                repeat(3) {
-                    rule.onNodeWithTag("r1-next").performScrollTo().performClick()
-                }
-                rule.onNodeWithTag("r1-stage-title").performScrollTo()
-                    .assertTextContains("முதல் உட்கருப் பிரிவு", substring = true)
-                rule.onNodeWithTag("r1-stage-explanation").performScrollTo()
-                    .assertTextContains("இரண்டு செல்களே", substring = true)
-                screenshot("conjugation-first-postzygotic-division")
-                repeat(3) {
-                    rule.onNodeWithTag("r1-next").performScrollTo().performClick()
-                }
-                rule.onNodeWithTag("r1-stage-title").performScrollTo()
-                    .assertTextContains("இணைவுக்குப் பிந்திய செல் பிரிவுகள்", substring = true)
-                rule.onNodeWithTag("r1-stage-explanation").performScrollTo()
-                    .assertTextContains("எட்டு பிந்திய உட்கருக்களை", substring = true)
-                screenshot("conjugation-later-fission")
-                rule.onNodeWithTag("u57-paramecium-process-png-missing-conjugation")
-                    .performScrollTo().assertIsDisplayed()
+            val views = ParameciumNuclearBiology.chapter(chapter).views
+            for (view in views) {
+                rule.onNodeWithTag("r17-stage-" + view.id, true).performScrollTo().performClick()
+                rule.onNodeWithTag("r17-nuclear-canvas", true).performScrollTo().assertIsDisplayed()
+                rule.onNodeWithTag("r17-stage-title", true).performScrollTo().assertTextContains(view.heading.tamil, substring = true)
             }
+            rule.onNodeWithTag("u57-paramecium-process-png-missing-" + process).assertDoesNotExist()
+            screenshot(process + "-native-sequence")
         }
-        rule.onNodeWithTag("r1-stage-title").performScrollTo().assertExists()
-        rule.onNodeWithTag("r1-next").performScrollTo().performClick()
-        rule.onNodeWithTag("r1-stage-explanation").performScrollTo().assertExists()
     }
 }

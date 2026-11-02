@@ -4,7 +4,11 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+val functionalRelease = providers.gradleProperty("functionalRelease").orNull == "true"
+
 android {
+    // A non-debuggable R8 release signed with the test key, only when CI requests instrumentation.
+    if (functionalRelease) testBuildType = "release"
     namespace = "com.gasczoology.invertebratelab"
     compileSdk = 36
 
@@ -24,6 +28,7 @@ android {
 
     buildTypes {
         release {
+            if (functionalRelease) signingConfig = signingConfigs.getByName("debug")
             // Shrink library code (Compose/Material/AndroidX) and unused resources.
             // App code is kept whole by proguard-rules.pro because Gson reflects on
             // the data classes. Signing is injected by CI; none is configured here.

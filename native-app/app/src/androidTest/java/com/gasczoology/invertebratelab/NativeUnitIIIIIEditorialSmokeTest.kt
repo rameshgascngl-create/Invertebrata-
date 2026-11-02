@@ -77,6 +77,7 @@ class NativeUnitIIIIIEditorialSmokeTest {
         rule.onNodeWithTag("chapter-$chapterId").performClick()
         val readerTag = "u$unit-reader-$chapterId"
         waitFor(readerTag)
+        showContinuousReader(rule)
         rule.onNodeWithTag("chapter-language-toolbar").assertIsDisplayed()
         rule.onNodeWithTag("chapter-language-english").assertExists()
         rule.onNodeWithTag("chapter-language-tamil").assertExists()

@@ -53,6 +53,7 @@ class NativeFiveUnitRestorationTest {
     }
 
     private fun find(chapter: String, tag: String) {
+        showContinuousReader(rule)
         rule.onNodeWithTag("book-reader-" + chapter)
             .performScrollToNode(hasTestTag(tag))
         rule.onNodeWithTag(tag).assertExists()

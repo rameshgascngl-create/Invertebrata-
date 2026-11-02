@@ -81,6 +81,7 @@ class NativeUnitIITeachingTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("u2-reader-u2-sycon").fetchSemanticsNodes().isNotEmpty()
         }
+        showContinuousReader(rule)
         rule.onNodeWithTag("u2-lesson-title").assertExists()
         rule.onNodeWithTag("u2-reader-u2-sycon")
             .performScrollToNode(hasTestTag("u2-sycon-historic-static-raster"))

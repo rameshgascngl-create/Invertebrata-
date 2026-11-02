@@ -41,6 +41,7 @@ class NativeUnitIIITeachingTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("u3-reader-"+id).fetchSemanticsNodes().isNotEmpty()
         }
+        showContinuousReader(rule)
     }
 
     private fun capture(scene: String) {
