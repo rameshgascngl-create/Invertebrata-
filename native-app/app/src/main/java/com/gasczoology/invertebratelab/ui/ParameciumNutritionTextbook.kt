@@ -109,6 +109,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
     val shape=RoundedCornerShape(12.dp)
     val scope=rememberCoroutineScope()
     val requester=remember { BringIntoViewRequester() }
+    val stagesRequester=remember { BringIntoViewRequester() }
     if (!compact) {
     Text(nutritionText(language,"5 · Nutrition and cell physiology · Paramecium caudatum","5 · ஊட்டமுறையும் செல் உடலியலும் · Paramecium caudatum"),
         style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
@@ -169,6 +170,11 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 { chooseStage(ParameciumNutrition.stages[index - 1].id) }, ::togglePlayback,
                 { chooseStage(ParameciumNutrition.stages[index + 1].id) }, ::replay,
                 { change(progress.copy(reducedMotion = false)) })
+            // Large Tamil text makes this page many screens long; one tap reaches the stage list.
+            OutlinedButton(onClick={scope.launch { stagesRequester.bringIntoView() }},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-jump-stages")) {
+                Text(nutritionText(language,"Go to the stage list","நிலைப் பட்டியலுக்குச் செல்க"))
+            }
             Text(nutritionText(language,
                 "G oral groove/vestibule · O oral cilia · M cytostome · F cytopharynx · V food vacuole · A acidosome · L lysosome · B vacuolar boundary · S soluble products. Left: ventral orientation only. Upper-right: enlarged oral cutaway. Lower-right: independently enlarged vacuole. Membrane folds, ciliary counts, particle size and timing are schematic; amber particles, stippling and enzyme dots are qualitative teaching cues, not a microscope stain, calibrated pH or resolved proteins. Stippling records early acidification, not sustained low pH. Large grey residues stay enclosed while small soluble products cross the membrane.",
                 "G வாய்ப்பள்ளம்/முன்னறை · O வாய்ப்புறக் குறுஇழை · M செல் வாய் · F சைட்டோஃபாரிங்ஸ் · V உணவு நுண்குமிழ் · A அமிலச் சிறுகுமிழ் · L லைசோசோம் · B நுண்குமிழ்ச் சவ்வு · S கரையும் விளைபொருள்கள். இடது: வயிற்றுப்புறத் திசை மட்டும். மேல் வலது: பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம். கீழ் வலது: தனிப் பெரிதாக்கிய நுண்குமிழ். சவ்வு மடிப்புகள், குறுஇழை எண்ணிக்கை, துகள் அளவு, நேரம் ஆகியவை விளக்கத்திற்கானவை; பழுப்பு நிறத் துகள்களும் புள்ளிகளும் கற்பித்தல் குறிகள்; நுண்ணோக்கிச் சாயம், அளவிட்ட pH அல்லது நேரடிப் புரதக் காட்சி அல்ல. புள்ளிகள் ஆரம்ப அமிலமாதலைக் குறிக்கின்றன; தொடர்ந்து குறைந்த pH அல்ல. சிறிய கரையும் விளைபொருள்கள் சவ்வைக் கடக்கும்போது பெரிய சாம்பல் எச்சங்கள் உள்ளேயே இருக்கும்."),
@@ -186,6 +192,8 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 Text(nutritionText(language,"Replay the selected structure explanation","தேர்ந்தெடுத்த அமைப்பின் விளக்கத்தை மீண்டும் கேள்"))
             }
             Text(stage.explanation.value(language),style=MaterialTheme.typography.bodyLarge,modifier=Modifier.testTag("r19-stage-explanation"))
+            Text(nutritionText(language,"Stages","நிலைகள்"),style=MaterialTheme.typography.titleMedium,
+                modifier=Modifier.bringIntoViewRequester(stagesRequester).testTag("r19-stage-list-heading"))
             for((i,item) in ParameciumNutrition.stages.withIndex()) {
                 OutlinedButton(onClick={chooseStage(item.id)},shape=shape,
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-stage-"+item.id)
