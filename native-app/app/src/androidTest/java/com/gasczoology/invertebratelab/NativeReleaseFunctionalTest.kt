@@ -227,7 +227,14 @@ class NativeReleaseFunctionalTest {
         node.recycle(); return result
     }
     private fun diagram(id: String): Bitmap {
+        // Playback controls may scroll the animated canvas almost completely offscreen.
+        // Bring the actual diagram back into view before sampling its pixels.
+        find(id, false)?.let { node ->
+            node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
+            node.recycle()
+        }
         val node = scrollTo(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
+        val fullHeight = bounds.height()
         var ancestor = node.parent
         while (ancestor != null) {
             if (ancestor.isScrollable) { val clip = Rect(); ancestor.getBoundsInScreen(clip); bounds.intersect(clip) }
@@ -238,6 +245,8 @@ class NativeReleaseFunctionalTest {
         bounds.intersect(0, 0, screen.width, screen.height)
         if (bounds.width() <= 20 || bounds.height() <= 20) saveScreen("failure-viewport-" + id)
         assertTrue("Diagram is outside the viewport: " + id + " " + bounds, bounds.width() > 20 && bounds.height() > 20)
+        assertTrue("Insufficient visible diagram for pixel comparison: " + id + " visible=" + bounds.height() + " full=" + fullHeight,
+            bounds.height() >= fullHeight * .5f)
         val region = Bitmap.createBitmap(screen, bounds.left, bounds.top, bounds.width(), bounds.height())
         val result = checkNotNull(region.copy(Bitmap.Config.ARGB_8888, false))
         if (region !== screen) region.recycle()
