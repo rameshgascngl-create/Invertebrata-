@@ -81,6 +81,7 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag("book-objectives").assertExists()
             rule.onNodeWithTag("reading-page-next").performClick()
             rule.onNodeWithTag("book-objectives").assertDoesNotExist()
+            rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("book-introduction"))
             rule.onNodeWithTag("book-introduction").assertExists()
             runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id]?.pageId == "introduction-0" } } }
             rule.activityRule.scenario.recreate()
@@ -118,7 +119,8 @@ class NativeFunctionalRepairsTest {
         enterChapter(1, "u1-proto-parasites")
         for (organism in listOf("trypanosoma", "leishmania")) {
             openPage("u1-proto-parasites", 1, organism)
-            rule.onNodeWithTag("u18-next-$organism").performScrollTo().performClick()
+            rule.onNodeWithTag(root("u1-proto-parasites", 1)).performScrollToNode(hasTestTag("u18-next-$organism"))
+            rule.onNodeWithTag("u18-next-$organism").performClick()
             rule.onNodeWithTag("u18-stage-counter-$organism").assertTextEquals(if (tamil) "நிலை 2 / " + UnitIFlagellateLifeCycles.forOrganism(organism)!!.phases.size else "Stage 2 of " + UnitIFlagellateLifeCycles.forOrganism(organism)!!.phases.size)
             screenshot("$organism-interactive")
         }
@@ -127,10 +129,12 @@ class NativeFunctionalRepairsTest {
         rule.onNodeWithText(if (tamil) "பின்செல்" else "Back").performClick(); waitFor("native-home")
         enterChapter(4, "u4-penaeus")
         openPage("u4-penaeus", 4, "appendages")
-        rule.onNodeWithTag("u4-penaeus-appendage-next").performScrollTo().performClick()
+        rule.onNodeWithTag(root("u4-penaeus", 4)).performScrollToNode(hasTestTag("u4-penaeus-appendage-next"))
+        rule.onNodeWithTag("u4-penaeus-appendage-next").performClick()
         rule.onNodeWithTag("u4-penaeus-appendage-name").performScrollTo().assertExists()
         openPage("u4-penaeus", 4, "larvae")
-        rule.onNodeWithTag("u4-penaeus-life-next").performScrollTo().performClick()
+        rule.onNodeWithTag(root("u4-penaeus", 4)).performScrollToNode(hasTestTag("u4-penaeus-life-next"))
+        rule.onNodeWithTag("u4-penaeus-life-next").performClick()
         screenshot("penaeus-interactive")
     }
 
