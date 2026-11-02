@@ -253,8 +253,12 @@ class NativeReleaseFunctionalTest {
         screen.recycle()
         return result
     }
-    private fun changedPixels(a: Bitmap, b: Bitmap): Int {
-        assertEquals(a.width, b.width); assertEquals(a.height, b.height)
+    private fun changedPixels(a: Bitmap, b: Bitmap, label: String = ""): Int {
+        // Name the diagram and both sizes: a bare "expected:<640> but was:<788>" cannot be traced to a case.
+        assertEquals(label + ": diagram capture widths differ (before=" + a.width + "x" + a.height +
+            ", after=" + b.width + "x" + b.height + ")", a.width, b.width)
+        assertEquals(label + ": diagram capture heights differ (before=" + a.width + "x" + a.height +
+            ", after=" + b.width + "x" + b.height + ")", a.height, b.height)
         var changed = 0
         for (y in 0 until a.height step 2) for (x in 0 until a.width step 2)
             if (a.getPixel(x, y) != b.getPixel(x, y)) changed++
@@ -328,7 +332,7 @@ class NativeReleaseFunctionalTest {
             playbackControl(); SystemClock.sleep(150)
             val stopped = phase(c.canvas); assertTrue(c.process + ": no intermediate pause", stopped > 0f && stopped < 1f)
             val after = diagram(c.canvas)
-            assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after) > 12)
+            assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after, c.process + " / " + c.canvas) > 12)
             saveScreen(c.process + "-release-start", before); saveScreen(c.process + "-release-paused", after)
             SystemClock.sleep(300)
             assertEquals(c.process + ": phase advanced after Pause", stopped, phase(c.canvas), .0011f)
