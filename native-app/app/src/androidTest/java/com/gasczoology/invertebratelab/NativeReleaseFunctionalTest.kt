@@ -371,7 +371,7 @@ class NativeReleaseFunctionalTest {
             Case("conjugation", "r17", "r17-nuclear-canvas", "r17-stage-exchange", null),
         )
         for (c in cases) {
-            tap("r1-process-" + c.process); if (c.prefix == "r19") tap("r19-jump-stages"); tap(c.stage); c.start?.let(::tap)
+            tap("r1-process-" + c.process); if (c.prefix == "r19" || c.prefix == "r17") tap(c.prefix + "-jump-stages"); tap(c.stage); c.start?.let(::tap)
             scrollTo(c.prefix + "-inline-play-pause").recycle()
             val before = diagram(c.canvas)
             // The transport was reached by touch above. Activate its native action
