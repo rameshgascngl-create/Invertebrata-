@@ -7,6 +7,8 @@ import android.graphics.Rect
 import android.os.ParcelFileDescriptor
 import android.os.SystemClock
 import android.view.accessibility.AccessibilityNodeInfo
+import android.view.MotionEvent
+import android.view.InputDevice
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -50,6 +52,7 @@ class NativeReleaseFunctionalTest {
     @After fun closeApplication() { if (::scenario.isInitialized) scenario.close() }
 
     private fun search(predicate: (AccessibilityNodeInfo) -> Boolean): AccessibilityNodeInfo? {
+        if (android.os.Build.VERSION.SDK_INT >= 34) automation.clearCache()
         fun visit(node: AccessibilityNodeInfo): AccessibilityNodeInfo? {
             if (predicate(node)) return node
             for (at in 0 until node.childCount) {
@@ -73,34 +76,67 @@ class NativeReleaseFunctionalTest {
         runCatching { saveScreen("failure-" + id) }
         throw AssertionError("Android accessibility node not found: " + id)
     }
-    private fun largestScroller(): AccessibilityNodeInfo? {
-        var best: AccessibilityNodeInfo? = null
-        var height = 0
+    private fun windowBounds(): Rect {
+        val node = checkNotNull(automation.rootInActiveWindow)
+        val bounds = Rect(); node.getBoundsInScreen(bounds); node.recycle()
+        return bounds
+    }
+    private fun fingerprint(): String {
+        if (android.os.Build.VERSION.SDK_INT >= 34) automation.clearCache()
+        val out = StringBuilder()
         fun visit(node: AccessibilityNodeInfo) {
-            val rect = Rect(); node.getBoundsInScreen(rect)
-            if (node.isScrollable && rect.height() > height) {
-                best?.recycle(); best = AccessibilityNodeInfo.obtain(node); height = rect.height()
+            if (node.isVisibleToUser) {
+                val rect = Rect(); node.getBoundsInScreen(rect)
+                out.append(node.viewIdResourceName).append(':').append(node.text).append('@').append(rect).append(';')
             }
-            for (i in 0 until node.childCount) node.getChild(i)?.let { visit(it); it.recycle() }
+            for (at in 0 until node.childCount) node.getChild(at)?.let { visit(it); it.recycle() }
         }
         automation.rootInActiveWindow?.let { visit(it); it.recycle() }
-        return best
+        return out.toString()
+    }
+    private fun swipe(x0: Float, y0: Float, x1: Float, y1: Float) {
+        val down = SystemClock.uptimeMillis()
+        fun send(action: Int, x: Float, y: Float) {
+            val event = MotionEvent.obtain(down, SystemClock.uptimeMillis(), action, x, y, 0)
+            event.source = InputDevice.SOURCE_TOUCHSCREEN
+            try { assertTrue("Touch injection failed", automation.injectInputEvent(event, true)) } finally { event.recycle() }
+        }
+        send(MotionEvent.ACTION_DOWN, x0, y0)
+        for (step in 1..8) {
+            SystemClock.sleep(20)
+            val t = step / 8f
+            send(MotionEvent.ACTION_MOVE, x0 + (x1 - x0) * t, y0 + (y1 - y0) * t)
+        }
+        // End without a fling, so controls cannot be skipped between observations.
+        SystemClock.sleep(140)
+        send(MotionEvent.ACTION_UP, x1, y1)
+        instrumentation.waitForIdleSync()
+        SystemClock.sleep(100)
     }
     private fun scroll(action: Int): Boolean {
-        val node = largestScroller() ?: return false
-        val moved = node.performAction(action); node.recycle()
-        SystemClock.sleep(100)
-        return moved
+        val before = fingerprint(); val bounds = windowBounds()
+        val high = bounds.top + bounds.height() * .32f
+        val low = bounds.top + bounds.height() * .78f
+        if (action == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
+            swipe(bounds.exactCenterX(), low, bounds.exactCenterX(), high)
+        else swipe(bounds.exactCenterX(), high, bounds.exactCenterX(), low)
+        return before != fingerprint()
     }
     private fun horizontal(container: String, id: String): AccessibilityNodeInfo {
         scrollTo(container).recycle()
-        for (direction in listOf(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD, AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)) {
+        for (direction in listOf(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)) {
             for (attempt in 0 until 18) {
                 find(id)?.let { return it }
                 val row = find(container) ?: break
-                val moved = row.performAction(direction); row.recycle()
-                SystemClock.sleep(90)
-                if (!moved) break
+                val bounds = Rect(); row.getBoundsInScreen(bounds); row.recycle()
+                bounds.intersect(windowBounds())
+                val before = fingerprint()
+                val left = bounds.left + bounds.width() * .18f
+                val right = bounds.left + bounds.width() * .82f
+                if (direction == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
+                    swipe(right, bounds.exactCenterY(), left, bounds.exactCenterY())
+                else swipe(left, bounds.exactCenterY(), right, bounds.exactCenterY())
+                if (before == fingerprint()) break
             }
         }
         return waitFor(id)
@@ -128,11 +164,22 @@ class NativeReleaseFunctionalTest {
         }
         val clicked = target.performAction(AccessibilityNodeInfo.ACTION_CLICK); target.recycle()
         assertTrue("Click failed: " + label, clicked)
-        SystemClock.sleep(80)
+        instrumentation.waitForIdleSync()
+        SystemClock.sleep(120)
     }
     private fun tap(id: String) = click(scrollTo(id), id)
     private fun text(id: String): String {
         val node = scrollTo(id); val value = node.text?.toString().orEmpty(); node.recycle(); return value
+    }
+    private fun waitText(id: String, expected: (String) -> Boolean): String {
+        val deadline = SystemClock.elapsedRealtime() + 10_000
+        var actual = ""
+        while (SystemClock.elapsedRealtime() < deadline) {
+            find(id)?.let { actual = it.text?.toString().orEmpty(); it.recycle() }
+            if (expected(actual)) return actual
+            SystemClock.sleep(75)
+        }
+        throw AssertionError("Updated text was not observed for " + id + ": " + actual)
     }
     private fun root(id: String, unit: Int) = when (unit) {
         2 -> "u2-reader-" + id; 3 -> "u3-reader-" + id; else -> "book-reader-" + id
@@ -199,7 +246,7 @@ class NativeReleaseFunctionalTest {
             val previous = waitFor("reading-page-previous"); assertFalse(previous.isEnabled); previous.recycle()
             scrollTo("book-objectives").recycle(); tap("reading-page-next")
             scrollTo("book-introduction").recycle()
-            val page = text("reading-page-position")
+            val page = waitText("reading-page-position") { it.startsWith(if (tamil) "பக்கம் 2/" else "Page 2/") }
             scenario.recreate(); waitFor(root(id, unit)).recycle()
             assertEquals(page, text("reading-page-position"))
             saveScreen(id + "-release-restored-page")
@@ -224,7 +271,8 @@ class NativeReleaseFunctionalTest {
         for (organism in listOf("trypanosoma", "leishmania")) {
             openPage(organism); tap("u18-next-" + organism)
             val count = UnitIFlagellateLifeCycles.forOrganism(organism)!!.phases.size
-            assertEquals(if (tamil) "நிலை 2 / " + count else "Stage 2 of " + count, text("u18-stage-counter-" + organism))
+            val expected = if (tamil) "நிலை 2 / " + count else "Stage 2 of " + count
+            assertEquals(expected, waitText("u18-stage-counter-" + organism) { it == expected })
             saveScreen(organism + "-release-interactive")
         }
         backToHome(1)

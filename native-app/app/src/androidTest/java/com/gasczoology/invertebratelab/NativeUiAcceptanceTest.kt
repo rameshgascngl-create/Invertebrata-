@@ -262,7 +262,7 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("a5-question-" + fifth.id).assertTextEquals(fifth.question.tamil)
         rule.onNodeWithTag("a5-toggle-" + fifth.id).performScrollTo().performClick()
         val tamilPointTag = "a5-point-" + fifth.id + "-1"
-        rule.onNodeWithTag(tamilPointTag, useUnmergedTree = true).performScrollTo()
+        rule.onNodeWithTag("native-assessment").performScrollToNode(hasTestTag(tamilPointTag))
         rule.onNodeWithTag(tamilPointTag)
             .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
 
@@ -274,7 +274,7 @@ class NativeUiAcceptanceTest {
             val tamilQuestionTag = "a5-question-" + fifth.id
             rule.onNodeWithTag(tamilQuestionTag, useUnmergedTree = true).performScrollTo()
             rule.onNodeWithTag(tamilQuestionTag).assertTextEquals(fifth.question.tamil)
-            rule.onNodeWithTag(tamilPointTag, useUnmergedTree = true).performScrollTo()
+            rule.onNodeWithTag("native-assessment").performScrollToNode(hasTestTag(tamilPointTag))
             rule.onNodeWithTag(tamilPointTag)
                 .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
             rule.onNodeWithText("5 / 86").assertExists()

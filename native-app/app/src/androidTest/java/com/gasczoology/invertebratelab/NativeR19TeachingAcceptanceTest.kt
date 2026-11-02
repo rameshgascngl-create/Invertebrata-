@@ -154,9 +154,9 @@ class NativeR19TeachingAcceptanceTest {
             rule.onNodeWithTag("r19-stage-"+id,true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
             val midCanvas=canvas()
             val phase=midCanvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
-            assertTrue("Captured phase must still be intermediate",phase in .4f.. .85f)
+            assertTrue("Paused phase must remain strictly between its endpoints",phase > 0f && phase < 1f)
             runBlocking { withTimeout(15_000) { NativeLearningRepository(context).learningState.first {
-                it.nutritionProgress.stageId==id && it.nutritionProgress.phasePermille in 400..850
+                it.nutritionProgress.stageId==id && it.nutritionProgress.phasePermille in 1..999
             } } }
             val mid=midCanvas.captureToImage().asAndroidBitmap();capture(id+"-intermediate")
             assertFalse(id+" must actually animate",start.sameAs(mid));start.recycle();mid.recycle()

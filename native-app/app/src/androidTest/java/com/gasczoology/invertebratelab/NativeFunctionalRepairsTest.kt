@@ -9,6 +9,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
 import com.gasczoology.invertebratelab.ui.ReadingPositionSemantics
+import com.gasczoology.invertebratelab.ui.ReadingCanScrollForwardSemantics
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
@@ -89,8 +90,16 @@ class NativeFunctionalRepairsTest {
                 .config[ReadingPositionSemantics]
             rule.activityRule.scenario.recreate()
             waitFor(root(id, unit))
-            val restoredPosition = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode().config[ReadingPositionSemantics]
-            assertEquals("Restored page/item/offset for " + id, beforePosition, restoredPosition)
+            val restoredNode = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
+            val restoredPosition = restoredNode.config[ReadingPositionSemantics]
+            val atEnd = !restoredNode.config[ReadingCanScrollForwardSemantics]
+            // Android may clamp an offset when the restored viewport fits more of the page.
+            val noFurtherForward = restoredPosition.itemIndex < beforePosition.itemIndex ||
+                (restoredPosition.itemIndex == beforePosition.itemIndex && restoredPosition.itemOffset <= beforePosition.itemOffset)
+            val validEndClamp = restoredPosition.pageId == beforePosition.pageId && atEnd && noFurtherForward
+            if (beforePosition != restoredPosition && !validEndClamp) screenshot(id + "-invalid-restored-offset")
+            assertTrue("Restored bookmark for " + id + ": expected=" + beforePosition + " actual=" + restoredPosition + " atEnd=" + atEnd,
+                beforePosition == restoredPosition || validEndClamp)
             // Restoring the reading offset can leave the lazy header offscreen.
             rule.onNodeWithTag(root(id, unit)).performScrollToIndex(0)
             rule.onNodeWithTag("reading-page-id").assertContentDescriptionEquals("introduction-0")

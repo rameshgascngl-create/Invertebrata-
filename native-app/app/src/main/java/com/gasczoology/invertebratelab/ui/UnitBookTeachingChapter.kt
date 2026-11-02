@@ -31,6 +31,7 @@ internal data class ReadingPositionAccess(
 )
 internal val LocalReadingPositions = staticCompositionLocalOf { ReadingPositionAccess() }
 internal val ReadingPositionSemantics = SemanticsPropertyKey<BookReadingPosition>("BookReadingPosition")
+internal val ReadingCanScrollForwardSemantics = SemanticsPropertyKey<Boolean>("BookCanScrollForward")
 private fun ut(lang: AppLanguage, en: String, ta: String) = if (lang == AppLanguage.TAMIL) ta else en
 
 /** Default logical pages, with a deliberate continuous-reading option for reference work. */
@@ -153,6 +154,7 @@ internal fun UnitBookTeachingChapter(
             state = listState,
             modifier = Modifier.fillMaxSize().padding(padding).testTag(containerPrefix + chapter.id).semantics {
                 this[ReadingPositionSemantics] = BookReadingPosition(pageId, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset)
+                this[ReadingCanScrollForwardSemantics] = listState.canScrollForward
             },
             contentPadding = PaddingValues(start = 16.dp, top = 12.dp, end = 16.dp, bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
