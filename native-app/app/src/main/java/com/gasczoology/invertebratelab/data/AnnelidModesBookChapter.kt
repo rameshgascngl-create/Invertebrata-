@@ -6,16 +6,16 @@ object AnnelidModesBookChapter {
         lessonId = "u4-modes-life",
         title = "Modes of life in Annelida" to "அனெலிடாக்களின் வாழ்முறைகள்",
         objectives = listOf(
-            "Describe four principal modes of annelid life with examples." to "அனெலிடா வாழ்வின் நான்கு முதன்மை முறைகளை எடுத்துக்காட்டுகளுடன் விவரிக்க.",
-            "Relate the structure of each mode to feeding, movement and respiration." to "ஒவ்வொரு முறையின் அமைப்பையும் உண்ணுதல், இயக்கம், சுவாசத்துடன் தொடர்புபடுத்த.",
-            "Explain how the segmental hydrostatic body plan is modified in each mode." to "ஒவ்வொரு முறையிலும் கண்ட நீரழுத்த உடல் அமைப்பு எவ்வாறு மாற்றப்படுகிறது என விளக்க.",
-            "State why the modes of life are ecological groupings and not taxonomic classes." to "வாழ்முறைகள் சூழலியல் தொகுப்புகள்; வகைப்பாட்டு வகுப்புகள் அல்ல என்பதைக் கூற.",
+            "Compare annelid habitats and modes of life." to
+                "அனெலிடாக்களின் வாழிடங்களையும் வாழ்முறைகளையும் ஒப்பிடுதல்.",
+            "Relate body structures to feeding and movement." to
+                "உடல் அமைப்புகளை உணவெடுத்தலுடனும் இயக்கத்துடனும் தொடர்புபடுத்துதல்.",
+            "Explain adaptations using representative annelids." to
+                "உரிய அனெலிடா எடுத்துக்காட்டுகளுடன் தகவமைப்புகளை விளக்குதல்.",
         ),
         introduction = listOf(
-            "The annelids live in the sea, in fresh water, in the soil and on the bodies of other animals, and in each of these places the same segmented body has been used for a different purpose. A student who has learned the classes of the phylum, Polychaeta, Oligochaeta and Hirudinea, should now ask a different question: how does the animal live? The answer is called the mode of life, and the four modes that are usually taught are the errant, the tube-dwelling, the burrowing and the leech-like." to
-                "அனெலிடாக்கள் கடல், நன்னீர், மண், பிற விலங்குகளின் உடல்களில் வாழ்கின்றன; இவை ஒவ்வொன்றிலும் அதே கண்டமுடைய உடல் வேறு நோக்கத்துக்குப் பயன்படுத்தப்பட்டுள்ளது. தொகுதியின் வகுப்புகளான பாலிகீட்டா, ஒலிகோகீட்டா, ஹிருடினியாவைக் கற்ற மாணவர் இப்போது வேறு கேள்வி கேட்க வேண்டும்: விலங்கு எவ்வாறு வாழ்கிறது? விடை வாழ்முறை எனப்படுகிறது; வழக்கமாகக் கற்பிக்கப்படும் நான்கு முறைகள் எரண்ட், குழாய்வாழ், துளையிடும், அட்டை போன்றவை.",
-            "The importance of the topic is that it connects structure with function. When the modes of life are understood, the structures described in the earlier chapters, the parapodia, chaetae, crown of tentacles, clitellum and suckers, are no longer a list to be memorised but each one has a purpose that can be explained." to
-                "தலைப்பின் முக்கியத்துவம் அது அமைப்பை செயலுடன் இணைப்பது. வாழ்முறைகள் புரிந்துகொள்ளப்படும்போது முந்தைய அத்தியாயங்களில் விவரிக்கப்பட்ட பாரபோடியாக்கள், சீட்டாக்கள், உணர்கொம்புக் கிரீடம், கிளைடெல்லம், உறிஞ்சிகள் மனப்பாடம் செய்யும் பட்டியலாக இல்லாமல் ஒவ்வொன்றுக்கும் விளக்கக்கூடிய நோக்கம் உள்ளது.",
+            "Annelids occupy marine, freshwater and terrestrial habitats. Compare their body forms, feeding methods and movements to understand how they live in these different environments." to
+                "அனெலிடாக்கள் கடல், நன்னீர், நிலம் ஆகிய சூழல்களில் வாழ்கின்றன. உடல் வடிவம், உணவெடுக்கும் முறை, இயக்கம் ஆகியவற்றை ஒப்பிட்டு, ஒவ்வொரு சூழலுக்கும் ஏற்ற அவற்றின் வாழ்முறைகளை அறியலாம்.",
         ),
         sections = listOf(
             bsec("errant", "Errant polychaetes", "எரண்ட் பாலிகீட்டாக்கள்",

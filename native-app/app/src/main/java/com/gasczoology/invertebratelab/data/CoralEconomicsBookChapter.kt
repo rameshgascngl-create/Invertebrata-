@@ -6,17 +6,16 @@ object CoralEconomicsBookChapter {
         lessonId = "u2-coral-economics",
         title = "Economic importance of corals and coral reefs" to "பவளங்கள், பவளப்பாறைகளின் பொருளாதார முக்கியத்துவம்",
         objectives = listOf(
-            "List the services that living coral reefs provide to people and explain how each is supplied." to "உயிருள்ள பவளப்பாறைகள் மக்களுக்கு வழங்கும் சேவைகளைப் பட்டியலிட்டு, ஒவ்வொன்றும் எவ்வாறு வழங்கப்படுகிறது என்பதை விளக்க.",
-            "Distinguish services that come from a living reef from products that are got by extraction." to "உயிருள்ள முகடு தரும் சேவைகளை, பிரித்தெடுப்பால் பெறப்படும் பொருட்களிலிருந்து வேறுபடுத்த.",
-            "Explain why damage to a reef is much faster than its recovery." to "முகட்டுச் சேதம் மீட்சியைவிட மிக வேகமாக நிகழ்வது ஏன் என்பதை விளக்க.",
-            "Describe the main human causes of reef damage." to "முகட்டுச் சேதத்தின் முக்கிய மனிதக் காரணங்களை விவரிக்க.",
-            "Outline the principal measures for the protection of reefs." to "முகடுகளைப் பாதுகாக்கும் முக்கிய நடவடிக்கைகளை வரைய.",
+            "Explain the main benefits provided by coral reefs." to
+                "பவளப்பாறைகள் வழங்கும் முக்கியப் பயன்களை விளக்குதல்.",
+            "Recognise damaging uses and other human pressures." to
+                "பவளப்பாறைகளைப் பாதிக்கும் மனிதச் செயல்களை அறிதல்.",
+            "Connect conservation measures with sustainable livelihoods." to
+                "பாதுகாப்பு நடவடிக்கைகளை நிலையான வாழ்வாதாரத்துடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "A coral reef is valued by the people who live beside it in many ways. It yields fish, it protects the shore, it draws visitors, and it supplies materials. A distinction needs to be drawn at the outset between two different kinds of value. Some arise from the living reef, which can continue to supply them for ever if it is not harmed. Others are obtained by taking the reef to pieces, and these destroy the source of the first kind." to
-                "முகட்டின் அருகே வாழும் மக்கள் அதைப் பல வகையில் மதிக்கின்றனர். மீன் தருகிறது, கரையைக் காக்கிறது, பார்வையாளர்களை ஈர்க்கிறது, பொருட்களை வழங்குகிறது. தொடக்கத்திலேயே இரு வேறு வகை மதிப்புகளை வேறுபடுத்த வேண்டும். சில உயிருள்ள முகட்டிலிருந்து எழுபவை; அது பாதிக்கப்படாவிட்டால் என்றென்றும் வழங்கக்கூடியவை. மற்றவை முகட்டைத் துண்டாக எடுப்பதால் பெறப்படுபவை; இவை முதல் வகையின் மூலத்தையே அழிக்கின்றன.",
-            "This chapter sets out the services of a living reef, the products of extraction, the reasons why a reef is easily damaged and slowly restored, and the means by which it may be protected. Together with the preceding chapter on the biology of corals, it completes the treatment of the Anthozoa." to
-                "இந்த அத்தியாயம் உயிருள்ள முகட்டின் சேவைகள், பிரித்தெடுப்புப் பொருட்கள், முகடு எளிதில் சேதமடைந்து மெதுவாக மீள்வதற்கான காரணங்கள், அதைப் பாதுகாக்கும் வழிகளை விவரிக்கிறது. பவளங்களின் உயிரியல் குறித்த முந்தைய அத்தியாயத்துடன் சேர்ந்து ஆந்தோசோவா பற்றிய கையாளலை நிறைவு செய்கிறது.",
+            "Coral reefs support fisheries, coastal protection and human livelihoods. Their benefits depend on healthy reef communities and careful management of fishing, tourism and coastal development." to
+                "பவளப்பாறைகள் மீன்வளத்திற்கும் கடலோரப் பாதுகாப்பிற்கும் மக்களின் வாழ்வாதாரத்திற்கும் உதவுகின்றன. மீன்பிடிப்பு, சுற்றுலா, கடலோர வளர்ச்சிப் பணிகள் ஆகியவற்றை முறையாக நிர்வகிப்பது இப்பயன்களைப் பாதுகாக்க உதவும்.",
         ),
         sections = listOf(
             bsec("services", "Services of the living reef", "உயிருள்ள முகட்டின் சேவைகள்",

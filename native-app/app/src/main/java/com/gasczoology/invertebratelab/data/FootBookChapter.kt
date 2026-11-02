@@ -6,17 +6,16 @@ object FootBookChapter {
         lessonId = "u5-foot",
         title = "Modifications of the Molluscan Foot" to "மெல்லுடலிப் பாதத்தின் மாற்றங்கள்",
         objectives = listOf(
-            "Describe the basic molluscan foot and its musculature." to "அடிப்படை மெல்லுடலிப் பாதத்தையும் அதன் தசையமைப்பையும் விவரிக்க.",
-            "Describe the foot of a gastropod, a bivalve and a cephalopod." to "இரைப்பைக்காலி, இருவோடு, தலைக்காலியின் பாதத்தை விவரிக்க.",
-            "Relate each modification to the mode of life." to "ஒவ்வொரு மாற்றத்தையும் வாழ்க்கை முறையுடன் தொடர்புபடுத்த.",
-            "Explain why the cephalopod funnel is a derivative of the foot." to "தலைக்காலிப் புனல் பாதத்தின் வழிப்பெறு அமைப்பு என ஏன் கருதப்படுகிறது என விளக்க.",
-            "Avoid describing the classes as a ladder of advancement." to "வகுப்புகளை முன்னேற்றப் படிக்கட்டாக விவரிப்பதைத் தவிர்க்க.",
+            "Identify the foot in representative molluscan groups." to
+                "முக்கிய மெல்லுடலி வகைகளில் பாதத்தை அடையாளம் காணுதல்.",
+            "Compare structural modifications and their functions." to
+                "அமைப்பு மாற்றங்களையும் அவற்றின் பணிகளையும் ஒப்பிடுதல்.",
+            "Relate each modification to the animal's way of life." to
+                "ஒவ்வொரு மாற்றத்தையும் விலங்கின் வாழ்முறையுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "The foot is one of the three characteristic parts of the molluscan body, with the visceral mass and the mantle, and it is the part that varies most in form between the classes. In the simple, hypothetical ancestral mollusc it is a broad, flat, muscular organ on the lower surface, used for creeping. In the living classes the same organ is a creeping sole in a snail, a digging wedge in a mussel, and the arms and the funnel of an octopus, which seem to share almost nothing at first sight." to
-                "மெல்லுடலி உடலின் மூன்று தனிப்பண்பு பகுதிகளில், உள்ளுறுப்புத் திரள், மேண்டிலுடன், பாதம் ஒன்று; வகுப்புகளிடையே வடிவத்தில் மிக மாறுபடும் பகுதி இதுவே. எளிய, கற்பனை மூதாதை மெல்லுடலியில் அது கீழ்ப்பரப்பில் ஊர்தலுக்குப் பயன்படும் அகன்ற, தட்டையான தசை உறுப்பு. வாழும் வகுப்புகளில் அதே உறுப்பு நத்தையில் ஊரும் அடிப்பகுதி; சிப்பியில் தோண்டும் ஆப்பு; ஆக்டோபஸில் கைகளும் குழலும்; முதல் பார்வையில் அவை எதையும் பகிர்வதாகத் தோன்றாது.",
-            "The question asks for the structural modifications of the foot to be related to the mode of life, with reference to Pila, Unio and a cephalopod. The chapter therefore sets out the basic foot, then each modification in turn, and ends with the argument that these are homologous organs that have diverged. It also warns against the idea that the three are steps in a ladder of improvement, since each is suited to its own way of living." to
-                "பைலா, யூனியோ, ஒரு தலைக்காலியைக் குறிப்பிட்டு பாதத்தின் அமைப்பு மாற்றங்களை வாழ்க்கை முறையுடன் தொடர்புபடுத்த கேள்வி கோருகிறது. எனவே அத்தியாயம் அடிப்படைப் பாதத்தை முன்வைத்து, ஒவ்வொரு மாற்றத்தையும் வரிசையாகத் தந்து, இவை வேறுபட்டுப் பிரிந்த ஒத்தமைவு உறுப்புகள் என்ற வாதத்துடன் முடிகிறது. மூன்றும் மேம்பாட்டுப் படிக்கட்டின் படிகள் என்ற எண்ணத்தையும் எச்சரிக்கிறது; ஏனெனில் ஒவ்வொன்றும் தனக்குரிய வாழ்க்கை முறைக்குப் பொருந்தியது.",
+            "The molluscan foot is modified for crawling, burrowing, attachment or swimming. Comparing these modifications shows how a common body part serves different ways of life." to
+                "மெல்லுடலிகளின் பாதம் ஊர்தல், மணலில் புதைதல், ஒட்டுதல், நீந்துதல் போன்ற பணிகளுக்கேற்ப மாற்றமடைந்துள்ளது. இம்மாற்றங்களை ஒப்பிட்டு, ஒரே அடிப்படை உறுப்பு வெவ்வேறு வாழ்முறைகளுக்கு எவ்வாறு பயன்படுகிறது என்பதை அறியலாம்.",
         ),
         sections = listOf(
             bsec("basic-foot", "The basic molluscan foot", "அடிப்படை மெல்லுடலிப் பாதம்",

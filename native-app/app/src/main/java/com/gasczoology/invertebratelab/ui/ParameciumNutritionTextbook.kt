@@ -152,7 +152,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-nutrition-inline-play-pause")) {
                 Text(nutritionText(language,if(playing)"Pause" else "Play",if(playing)"இடைநிறுத்து" else "இயக்கு"))
             }
-            Canvas(Modifier.fillMaxWidth().height(300.dp).bringIntoViewRequester(requester).testTag("r19-nutrition-canvas")
+            Canvas(Modifier.fillMaxWidth().height(if (androidx.compose.ui.platform.LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) 190.dp else 300.dp).bringIntoViewRequester(requester).testTag("r19-nutrition-canvas")
                 .pointerInput(stage.id,progress.selectedStructure) { detectTapGestures { p ->
                     val f=NutritionFigure.fit(size.width.toFloat(),size.height.toFloat())
                     NutritionFigure.at((p.x-f.dx)/f.scale,(p.y-f.dy)/f.scale)?.let(::chooseStructure)
@@ -219,8 +219,8 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-previous")) { Text(nutritionText(language,"Previous view","முந்தைய காட்சி")) }
             OutlinedButton(onClick={chooseStage(ParameciumNutrition.stages[(index+1).coerceAtMost(ParameciumNutrition.stages.lastIndex)].id)},enabled=index<ParameciumNutrition.stages.lastIndex,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-next")) { Text(nutritionText(language,"Next view","அடுத்த காட்சி")) }
-            OutlinedButton(onClick={replay()},shape=shape,
-                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-reset")) { Text(nutritionText(language,"Replay from the beginning","தொடக்கத்திலிருந்து மீண்டும் இயக்கு")) }
+            OutlinedButton(onClick={chooseStage("current",false)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-reset")) { Text(nutritionText(language,"Reset this demonstration","காட்சியை மீட்டமை")) }
             OutlinedButton(onClick={player.pause();change(progress.copy(reducedMotion=!progress.reducedMotion,
                 phasePermille=nutritionPhasePermille(player.state.value.phase)))},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-reduced-motion")

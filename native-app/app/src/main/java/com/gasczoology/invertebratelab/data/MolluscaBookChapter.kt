@@ -6,17 +6,16 @@ object MolluscaBookChapter {
         lessonId = "u5-mollusca",
         title = "Phylum Mollusca: general characters and classification" to "தொகுதி மொலஸ்கா: பொதுப் பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
-            "State the general characters of Phylum Mollusca." to "தொகுதி மொலஸ்காவின் பொதுப் பண்புகளைக் கூற.",
-            "Describe the parts of the molluscan body: head, foot, visceral mass and mantle." to "மெல்லுடலியின் உடல் பகுதிகளான தலை, பாதம், உள்ளுறுப்புத் திரள், மேண்டிலை விவரிக்க.",
-            "Explain the mantle cavity, the shell and the radula." to "மேண்டில் குழி, ஓடு, ராடுலாவை விளக்க.",
-            "Explain the major modifications of the foot in the classes." to "வகுப்புகளில் பாதத்தின் முக்கிய மாற்றங்களை விளக்க.",
-            "Name and characterise the four classes used in the syllabus." to "பாடத்திட்டத்தில் பயன்படும் நான்கு வகுப்புகளைப் பெயரிட்டு பண்புகளைக் கூற.",
+            "Recognise the main features of the molluscan body plan." to
+                "மெல்லுடலிகளின் அடிப்படை உடலமைப்பை அறிதல்.",
+            "Relate the mantle, shell and foot to their functions." to
+                "மேண்டில், ஓடு, பாதம் ஆகியவற்றை அவற்றின் பணிகளுடன் தொடர்புபடுத்துதல்.",
+            "Compare the principal classes with examples." to
+                "முக்கிய வகுப்புகளை எடுத்துக்காட்டுகளுடன் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "The molluscs are the second largest phylum of animals, after the arthropods, and include snails, slugs, mussels, clams, oysters, chitons, squids, octopuses and the nautilus. They live in the sea, in fresh water and on land. They vary in size from animals of a millimetre in length to the giant squid, which is among the largest of all invertebrates. Much of the variety is in the form of the shell and the foot, which are modified in every class, but beneath the variety there is a common plan." to
-                "மெல்லுடலிகள் ஆர்த்ரோபோடாக்களுக்கு அடுத்த இரண்டாவது பெரிய விலங்குத் தொகுதி; நத்தைகள், ஸ்லக்குகள், சிப்பிகள், கிளிஞ்சல்கள், கைட்டான்கள், கணவாய்கள், ஆக்டோபஸ்கள், நாட்டிலஸ் ஆகியவை உள்ளடங்கும். கடல், நன்னீர், நிலத்தில் வாழ்கின்றன. ஒரு மில்லிமீட்டர் நீள விலங்குகளிலிருந்து முதுகெலும்பற்றவற்றில் மிகப் பெரியவற்றில் ஒன்றான பெரும் கணவாய் வரை அளவு மாறுகிறது. பெரும்பாலான வேறுபாடு ஒவ்வொரு வகுப்பிலும் மாற்றப்பட்ட ஓடு, பாதத்தின் வடிவத்தில் உள்ளது; ஆனால் வேறுபாட்டின் அடியில் பொதுத் திட்டம் உள்ளது.",
-            "This chapter describes the plan first, as a body with a head, a muscular foot, a visceral mass and a mantle, then discusses the three features that identify the phylum, the mantle cavity, the shell and the radula, and finishes with the classification and the modifications of the foot. The later chapters of the unit take the types, Pila and the pearl oyster, and the gastropod torsion." to
-                "இவ்வத்தியாயம் முதலில் தலை, தசைப் பாதம், உள்ளுறுப்புத் திரள், மேண்டில் கொண்ட உடலாகத் திட்டத்தை விவரித்து, தொகுதியை அடையாளம் காட்டும் மூன்று பண்புகளான மேண்டில் குழி, ஓடு, ராடுலாவைப் பற்றி விவாதித்து, வகைப்பாடு, பாதத்தின் மாற்றங்களுடன் முடிகிறது. அலகின் பின்வரும் அத்தியாயங்கள் வகைகளான பைலா, முத்துச் சிப்பி, இரைப்பைக்காலி முறுக்கலை எடுத்துக்கொள்கின்றன.",
+            "The molluscan body plan centres on the mantle, visceral mass and muscular foot. Their modifications explain the diversity of shells, feeding methods and movements in the phylum." to
+                "மேண்டில், உடற்பை, தசைமிகு பாதம் ஆகியவை மெல்லுடலிகளின் அடிப்படை உடற்பகுதிகளாகும். இப்பகுதிகளில் ஏற்பட்ட மாற்றங்களைக் கொண்டு ஓடு, உணவூட்டம், இயக்கம் ஆகியவற்றின் வேறுபாடுகளைப் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("general-characters", "General characters", "பொதுப் பண்புகள்",

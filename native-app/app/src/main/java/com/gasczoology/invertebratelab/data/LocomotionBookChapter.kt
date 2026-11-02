@@ -6,16 +6,16 @@ object LocomotionBookChapter {
         lessonId = "u1-locomotion",
         title = "Locomotion in Protozoa" to "புரோட்டோசோவாவில் இயக்கம்",
         objectives = listOf(
-            "Describe locomotion by pseudopodia, flagella and cilia." to "போலிக்கால்கள், கசையிழைகள், குறுஇழைகள் மூலம் நடைபெறும் இடப்பெயர்ச்சியை விவரிக்க.",
-            "Compare cilia and flagella in number, length, beat and structure." to "எண்ணிக்கை, நீளம், அடிப்பு, அமைப்பில் குறுஇழைகளையும் கசைகளையும் ஒப்பிட.",
-            "Explain the common microtubule basis of ciliary and flagellar movement." to "குறுஇழை, கசை இயக்கத்தின் பொது நுண்குழல் அடிப்படையை விளக்க.",
-            "Relate the mode of locomotion to the habitat and the way of life." to "இயக்க முறையை வாழிடத்துடனும் வாழ்க்கை முறையுடனும் தொடர்புபடுத்த.",
+            "Identify the main locomotory structures." to
+                "முக்கிய இடப்பெயர்ச்சி அமைப்புகளை அடையாளம் காணுதல்.",
+            "Explain pseudopodial, flagellar and ciliary movement." to
+                "போலிக்கால், கசையிழை, குறுஇழை இயக்கங்களை விளக்குதல்.",
+            "Compare movement mechanisms and their energy requirements." to
+                "இயக்கமுறைகளையும் அவற்றின் ஆற்றல் தேவைகளையும் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "Many motile protozoans move using pseudopodia, flagella or cilia. Amoeba extends temporary pseudopodia to crawl and capture food. Euglena swims using a flagellum, while Paramecium swims through coordinated beating of numerous cilia. These structures differ in form and function; their use as categories in older classifications does not establish close evolutionary relationships." to
-                "இடம்பெயரும் பல புரோட்டோசோவா உயிரிகள் போலிக்கால்கள், கசையிழைகள் அல்லது குறுஇழைகள் மூலம் நகர்கின்றன. அமீபா தற்காலிகப் போலிக்கால்களை நீட்டி ஊர்ந்து செல்வதுடன் உணவையும் உட்கொள்கிறது. யூக்ளீனா கசையிழையால் நீந்துகிறது; பாரமீசியம் ஏராளமான குறுஇழைகளின் ஒருங்கிணைந்த அசைவால் நீந்துகிறது. இவ்வமைப்புகள் வடிவத்திலும் செயலிலும் வேறுபடுகின்றன. பழைய வகைப்பாட்டில் இவற்றை அடிப்படையாகக் கொண்ட பிரிவுகள், உயிரிகளுக்கிடையிலான நெருங்கிய பரிணாம உறவை உறுதிப்படுத்துவதில்லை.",
-            "The chapter looks at each mechanism in turn, explains what the cilium and the flagellum have in common, and ends with the link to habitat. That link is the useful point for the student, because it turns the three headings into a single argument: the organelle that an organism uses is related to where it lives and to what it must do there. The account follows the A5 notes, and the particulars of the movement of the individual species are described at the level that the sources support." to
-                "அத்தியாயம் ஒவ்வொரு இயங்குமுறையையும் வரிசையாகப் பார்க்கிறது; குறுஇழைக்கும் கசைக்கும் பொதுவானது என்ன என்பதை விளக்குகிறது; வாழிடத்துடனான தொடர்புடன் முடிகிறது. அத் தொடர்பே மாணவருக்குப் பயனுள்ள கருத்து; ஏனெனில் அது மூன்று தலைப்புகளை ஒரே வாதமாக மாற்றுகிறது: உயிரி பயன்படுத்தும் உறுப்பு அது எங்கே வாழ்கிறது, அங்கு என்ன செய்ய வேண்டும் என்பதுடன் தொடர்புடையது. விளக்கம் A5 குறிப்புகளைப் பின்பற்றுகிறது; தனி இனங்களின் இயக்க விவரங்கள் ஆதாரங்கள் ஆதரிக்கும் அளவில் விவரிக்கப்படுகின்றன.",
+            "Unicellular eukaryotes move using structures such as pseudopodia, flagella and cilia. Comparing their mechanisms shows how cell structure, energy use and movement are linked." to
+                "ஒற்றைசெல் யூகேரியோட்டுகள் போலிக்கால்கள், கசையிழைகள், குறுஇழைகள் போன்ற அமைப்புகளால் இடம்பெயர்கின்றன. இவற்றின் இயக்கமுறைகளை ஒப்பிட்டு, செல் அமைப்புக்கும் ஆற்றல் பயன்பாட்டுக்கும் இயக்கத்திற்கும் உள்ள தொடர்பை அறியலாம்.",
         ),
         sections = listOf(
             bsec("pseudopodia", "Pseudopodial movement in Amoeba", "அமீபாவில் போலிக்கால் இயக்கம்",

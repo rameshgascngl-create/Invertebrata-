@@ -6,18 +6,16 @@ object PenaeusBookChapter {
         lessonId = "u4-penaeus",
         title = "Penaeus: the prawn as a type" to "பெனியஸ்: இறால் ஒரு வகை எடுத்துக்காட்டாக",
         objectives = listOf(
-            "Give the prescribed name, systematic position and habitat of the Indian white prawn." to "இந்திய வெள்ளை இறாலின் பாடத்திட்டப் பெயர், வகைப்பாட்டு நிலை, வாழிடத்தைக் கூற.",
-            "Describe the tagmata and the carapace of Penaeus." to "பெனியஸின் டேக்மாக்களையும் ஓட்டையும் விவரிக்க.",
-            "List the appendages in order and relate each to its function." to "உறுப்புகளை வரிசையாகப் பட்டியலிட்டு ஒவ்வொன்றையும் அதன் செயலுடன் தொடர்புபடுத்த.",
-            "Outline the digestive, circulatory, respiratory, excretory and nervous systems." to "செரிமான, இரத்த ஓட்ட, சுவாச, கழிவு நீக்க, நரம்பு மண்டலங்களை வரையறுக்க.",
-            "Describe the reproductive organs, including petasma and thelycum." to "பெடாஸ்மா, தெலிகம் உட்பட இனப்பெருக்க உறுப்புகளை விவரிக்க.",
-            "Outline the larval sequence from nauplius to postlarva." to "நாப்ளியஸ் முதல் போஸ்ட்லார்வா வரை லார்வா வரிசையை வரையறுக்க.",
+            "Identify the body regions and appendages." to
+                "உடற்பகுதிகளையும் இணையுறுப்புகளையும் அடையாளம் காணுதல்.",
+            "Explain the principal organ systems." to
+                "முக்கிய உறுப்பு மண்டலங்களின் செயல்களை விளக்குதல்.",
+            "Trace reproduction and the larval sequence." to
+                "இனப்பெருக்கத்தையும் லார்வா நிலை வரிசையையும் விளக்குதல்.",
         ),
         introduction = listOf(
-            "Penaeus indicus is the Indian white prawn, a marine and estuarine crustacean of the coasts of India that is caught and also farmed for food. It is the type for the study of the crustaceans in the syllabus, chosen because its body shows the arthropod plan in a clear form: a hard exoskeleton, a body of grouped segments, and a full series of appendages that are different from front to back. The prescribed name should be retained in the answer. Current taxonomic treatment accepts the species as Penaeus (Fenneropenaeus) indicus H. Milne Edwards, 1837, and the genus name Fenneropenaeus is used for it in some classifications. A single line on this is enough, since the anatomy does not change with the rank given to the name." to
-                "பெனியஸ் இண்டிகஸ் இந்திய வெள்ளை இறால்; இந்தியக் கடற்கரைகளின் கடல், முகத்துவார கிரஸ்டேஷியன்; உணவுக்காகப் பிடிக்கப்படுகிறது, வளர்க்கவும் படுகிறது. பாடத்திட்டத்தில் கிரஸ்டேஷியன்களைக் கற்க இது எடுத்துக்காட்டு; கடின புறச்சட்டகம், தொகுக்கப்பட்ட கண்டங்களாலான உடல், முன்னிலிருந்து பின் வரை வேறுபடும் உறுப்புகளின் முழுத் தொடர் என ஆர்த்ரோபோடா அமைப்பை தெளிவாகக் காட்டுவதால் தேர்ந்தெடுக்கப்பட்டது. பாடத்திட்டப் பெயரை விடையில் தக்கவைக்க வேண்டும். தற்போதைய வகைப்பாட்டு நடைமுறை இனத்தை பெனியஸ் (ஃபென்னரோபெனியஸ்) இண்டிகஸ் H. மில்ன் எட்வர்ட்ஸ், 1837 என ஏற்கிறது; சில வகைப்பாடுகளில் ஃபென்னரோபெனியஸ் இனப் பெயர் பயன்படுகிறது. இது பற்றி ஒரு வரி போதும்; பெயருக்குத் தரப்படும் தரத்தால் உடற்கூறு மாறாது.",
-            "The chapter describes the external form and tagmata, the appendages in order, the internal systems, the reproductive organs, and the development through the larval stages. Four figures from the plate set are placed in the text where they are needed." to
-                "வெளிப்புற வடிவம், டேக்மாக்கள், வரிசையாக உறுப்புகள், உள் மண்டலங்கள், இனப்பெருக்க உறுப்புகள், லார்வா நிலைகள் வழியாக வளர்ச்சி ஆகியவற்றை அத்தியாயம் விவரிக்கிறது. தட்டுத் தொகுப்பின் நான்கு படங்கள் தேவைப்படும் இடங்களில் உரையில் வைக்கப்பட்டுள்ளன.",
+            "Penaeus indicus, also placed in Fenneropenaeus, is the prescribed prawn type. Study its body regions, appendages and organ systems alongside the larval sequence." to
+                "பாடத்திட்டத்தில் பெனியஸ் இண்டிகஸ் எனக் குறிப்பிடப்படும் இறால், சில வகைப்பாடுகளில் ஃபென்னரோபெனியஸ் இண்டிகஸ் என வழங்கப்படுகிறது. அதன் உடற்பகுதிகள், இணையுறுப்புகள், உறுப்பு மண்டலங்கள், லார்வா நிலைகள் ஆகியவற்றைத் தொடர்புபடுத்திப் படிக்கலாம்.",
         ),
         sections = listOf(
             bsec("external", "Habit, habitat and external features", "பழக்கம், வாழிடம், வெளிப்புற அம்சங்கள்",

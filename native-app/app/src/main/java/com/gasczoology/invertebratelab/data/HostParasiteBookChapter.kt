@@ -6,17 +6,16 @@ object HostParasiteBookChapter {
         lessonId = "u1-host-parasite",
         title = "Host–Parasite Relationships: Entamoeba and Plasmodium" to "விருந்தோம்பி–ஒட்டுண்ணி உறவுகள்: எண்டமீபாவும் பிளாஸ்மோடியமும்",
         objectives = listOf(
-            "Define parasite, host, vector and life cycle, and distinguish definitive and intermediate hosts." to "ஒட்டுண்ணி, விருந்தோம்பி, நோய்க்கடத்தி, வாழ்க்கைச் சுழற்சியை வரையறுத்து, முதன்மை, இடைநிலை விருந்தோம்பிகளை வேறுபடுத்த.",
-            "Compare the single-host life cycle of Entamoeba with the two-host life cycle of Plasmodium." to "எண்டமீபாவின் ஒற்றை விருந்தோம்பி சுழற்சியை பிளாஸ்மோடியத்தின் இரு விருந்தோம்பி சுழற்சியுடன் ஒப்பிட.",
-            "Trace the stages of Plasmodium in man and in the mosquito." to "மனிதனிலும் கொசுவிலும் பிளாஸ்மோடியத்தின் நிலைகளைப் பின்தொடர.",
-            "Explain why malarial fever occurs in paroxysms and why relapses occur." to "மலேரியா காய்ச்சல் ஏன் அலைகளாக வருகிறது, மீள்தாக்கம் ஏன் ஏற்படுகிறது என விளக்க.",
-            "Match control measures to the route of transmission." to "கட்டுப்பாட்டு நடவடிக்கைகளை பரவல் வழிக்குப் பொருத்த.",
+            "Define the main terms used in host–parasite relationships." to
+                "விருந்தோம்பி–ஒட்டுண்ணி உறவுக்கான அடிப்படைச் சொற்களை வரையறுத்தல்.",
+            "Compare Entamoeba and Plasmodium life cycles." to
+                "எண்டமீபா, பிளாஸ்மோடியம் வாழ்க்கைச் சுழற்சிகளை ஒப்பிடுதல்.",
+            "Relate parasite activity and host responses to disease." to
+                "ஒட்டுண்ணியின் செயல்களையும் விருந்தோம்பியின் எதிர்வினைகளையும் நோய்ப்பாதிப்புடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "Parasitism is a relationship in which one organism, the parasite, lives on or in another, the host, and obtains its food from the host to the host's disadvantage. The relationship is not a single pattern. Some parasites need only one host, and others need two or more in succession, and the way in which a parasite passes from one host to the next decides how the disease it causes can be prevented. Two parasites of the syllabus illustrate the contrast. Entamoeba histolytica completes its transmissible cycle in man alone. Plasmodium alternates between a vertebrate host, man, and a female Anopheles mosquito." to
-                "ஒட்டுண்ணித்தனம் என்பது ஓர் உயிரியான ஒட்டுண்ணி மற்றொன்றான விருந்தோம்பியின்மீது அல்லது உள்ளே வாழ்ந்து, விருந்தோம்பியின் தீமைக்கு அதனிடமிருந்து உணவைப் பெறும் உறவு. உறவு ஒரே முறைமை அல்ல. சில ஒட்டுண்ணிகளுக்கு ஒரே விருந்தோம்பி போதும்; சிலவற்றுக்கு தொடர்ச்சியாக இரண்டு அல்லது மேற்பட்டவை தேவை; ஒட்டுண்ணி ஓர் விருந்தோம்பியிலிருந்து அடுத்ததுக்குச் செல்லும் விதம் அது உண்டாக்கும் நோயை எவ்வாறு தடுக்கலாம் என்பதைத் தீர்மானிக்கிறது. பாடத்திட்டத்தின் இரு ஒட்டுண்ணிகள் வேறுபாட்டை விளக்குகின்றன. எண்டமீபா ஹிஸ்டோலிடிகா தன் பரவும் சுழற்சியை மனிதனில் மட்டுமே முடிக்கிறது. பிளாஸ்மோடியம் முதுகெலும்பி விருந்தோம்பியான மனிதனுக்கும் பெண் அனாபிலஸ் கொசுவுக்கும் இடையே மாறி மாறிச் செல்கிறது.",
-            "The chapter is concerned with the life cycles and with the reasons for the features that the examiner asks about: the periodic fever of malaria, the relapses that follow some infections, and the different control measures that the two life cycles demand. It deals with biology and principles of control. It does not give treatment for patients, which is a matter for physicians, and the details of the malarial life cycle are described for the human parasites in general, since the species differ in timing and in some stages." to
-                "அத்தியாயம் வாழ்க்கைச் சுழற்சிகளையும், தேர்வாளர் கேட்கும் பண்புகளுக்கான காரணங்களையும் பற்றியது: மலேரியாவின் காலமுறைக் காய்ச்சல், சில தொற்றுகளுக்குப் பின் வரும் மீள்தாக்கங்கள், இரு சுழற்சிகளும் கோரும் வெவ்வேறு கட்டுப்பாட்டு நடவடிக்கைகள். இது உயிரியலையும் கட்டுப்பாட்டுக் கொள்கைகளையும் கையாளுகிறது. நோயாளிகளுக்கான சிகிச்சையைத் தரவில்லை; அது மருத்துவர்களுக்குரியது; இனங்கள் நேரத்திலும் சில நிலைகளிலும் வேறுபடுவதால் மலேரியா வாழ்க்கைச் சுழற்சியின் விவரங்கள் மனித ஒட்டுண்ணிகளுக்குப் பொதுவாக விவரிக்கப்படுகின்றன.",
+            "A parasite uses resources provided by its host. Entamoeba and Plasmodium illustrate how host tissues, parasite development and host responses interact during infection." to
+                "ஒட்டுண்ணி, விருந்தோம்பியின் வளங்களைப் பயன்படுத்தி வாழ்கிறது. எண்டமீபா, பிளாஸ்மோடியம் ஆகியவற்றின் மூலம் விருந்தோம்பித் திசுக்கள், ஒட்டுண்ணியின் வளர்ச்சி, விருந்தோம்பியின் எதிர்வினை ஆகியவற்றுக்கு இடையிலான தொடர்பை அறியலாம்.",
         ),
         sections = listOf(
             bsec("terms", "Parasites, hosts and life cycles", "ஒட்டுண்ணிகள், விருந்தோம்பிகள், வாழ்க்கைச் சுழற்சிகள்",

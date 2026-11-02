@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -83,10 +84,29 @@ private fun nodes(panel: String): List<AtlasNode> = when(panel) {
 fun ParameciumTeachingLab(
     language: AppLanguage,
     onBack: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
-    onPractice: () -> Unit,
+    onPractice: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
     learningState: com.gasczoology.invertebratelab.data.NativeLearningState,
     onLearningChanged: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
 ) {
+    var localLearning by remember { mutableStateOf(learningState) }
+    var pendingLearning by remember { mutableStateOf<com.gasczoology.invertebratelab.data.NativeLearningState?>(null) }
+    var leaving by remember { mutableStateOf(false) }
+    val persistLearning by rememberUpdatedState(onLearningChanged)
+    fun changeLearning(next: com.gasczoology.invertebratelab.data.NativeLearningState) {
+        if (leaving) return
+        localLearning = next
+        pendingLearning = next
+        android.util.Log.i("NATIVE_LEARNING", "tab=${next.laboratoryTab} section=${next.textbookSectionId} ciliary=${next.ciliaryStageIndex}")
+        persistLearning(next)
+    }
+    LaunchedEffect(learningState) {
+        if (pendingLearning == null || learningState == pendingLearning ||
+            learningState.destination != com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB) {
+            localLearning = learningState
+            pendingLearning = null
+        }
+    }
+
     val context=LocalContext.current
     val narrator = remember(context) { com.gasczoology.invertebratelab.OfflineNarrator(context) }
     val audioPhase by narrator.phase.collectAsState()
@@ -101,14 +121,13 @@ fun ParameciumTeachingLab(
     }
     LaunchedEffect(language) { narrator.stop() }
     fun speak(script: BilingualText) { narrator.speak(script, language) }
-    val tab = learningState.laboratoryTab
+    val tab = localLearning.laboratoryTab
     val nutritionPlayer: com.gasczoology.invertebratelab.NutritionPlaybackViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
     val waterPlayer: com.gasczoology.invertebratelab.WaterBalancePlaybackViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
     val nuclearPlayer: com.gasczoology.invertebratelab.NuclearPlaybackViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
     val ciliaryPlayer: com.gasczoology.invertebratelab.WaterBalancePlaybackViewModel = androidx.lifecycle.viewmodel.compose.viewModel(key = "ciliary-playback")
-    val latestLearning by rememberUpdatedState(learningState)
     fun checkpoint(): com.gasczoology.invertebratelab.data.NativeLearningState {
-        val current = latestLearning
+        val current = localLearning
         nutritionPlayer.pause(); waterPlayer.pause(); nuclearPlayer.pause(); ciliaryPlayer.pause()
         val module = if (current.laboratoryTab == "simulate") current.simulationProcess else current.laboratoryTab
         return when (module) {
@@ -119,9 +138,10 @@ fun ParameciumTeachingLab(
             else -> current
         }
     }
-    fun selectTab(value: String) { narrator.stop(); onLearningChanged(checkpoint().copy(laboratoryTab = value)) }
-    fun leave() { onBack(checkpoint()) }
-    val stopAndSave by rememberUpdatedState({ if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB) onLearningChanged(checkpoint()) })
+    fun selectTab(value: String) { narrator.stop(); changeLearning(checkpoint().copy(laboratoryTab = value)) }
+    fun leave() { val position = checkpoint(); leaving = true; onBack(position) }
+    fun openChapter() { val position = checkpoint(); leaving = true; onPractice(position) }
+    val stopAndSave by rememberUpdatedState({ if (!leaving && localLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && localLearning.laboratoryTab in setOf("simulate", "water-balance", "nutrition", "nuclear")) changeLearning(checkpoint()) })
     DisposableEffect(lifecycleOwner) {
         val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
             if (event == androidx.lifecycle.Lifecycle.Event.ON_STOP) stopAndSave()
@@ -130,16 +150,34 @@ fun ParameciumTeachingLab(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
     androidx.activity.compose.BackHandler(onBack = ::leave)
-    val scrollKey = tab + ":" + if (tab == "study") learningState.textbookSectionId else if (tab == "simulate") learningState.simulationProcess else ""
+    val scrollKey = tab + ":" + if (tab == "study") localLearning.textbookSectionId else if (tab == "simulate") localLearning.simulationProcess else ""
     val labScroll = remember(scrollKey) { androidx.compose.foundation.ScrollState(0) }
     var showIntroduction by rememberSaveable { mutableStateOf(false) }
-    Scaffold { insets ->
+    Scaffold(topBar = {
+        Row(Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            OutlinedButton(onClick = ::leave, modifier = Modifier.heightIn(min = 48.dp)) { Text(bi(language, "Back", "பின்செல்")) }
+                val menu = listOf("study", "anatomy", "simulate", "listen", "practice", "nuclear", "water-balance", "nutrition")
+            Row(Modifier.weight(1f).horizontalScroll(rememberScrollState()).testTag("r1-module-selector"), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                for (section in menu) {
+                    val title = when (section) {
+                        "study" -> bi(language, "Read", "பாடம்")
+                        "anatomy" -> bi(language, "Anatomy", "உடலமைப்பு")
+                        "simulate" -> bi(language, "Simulate", "இயக்கம்")
+                        "listen" -> bi(language, "Listen", "ஒலி")
+                        "nuclear" -> bi(language, "Nuclear biology", "உட்கரு")
+                        "water-balance" -> bi(language, "Water balance", "நீர்ச் சமநிலை")
+                        "nutrition" -> bi(language, "Nutrition", "ஊட்டமுறை")
+                        else -> bi(language, "Practice", "பயிற்சி")
+                    }
+                    OutlinedButton(onClick = { selectTab(section) }, modifier = Modifier.heightIn(min = 48.dp).testTag("r1-tab-" + section)
+                        .semantics { selected = tab == section }) { Text(title) }
+                }
+            }
+        }
+    }) { insets ->
         Column(modifier=Modifier.padding(insets).verticalScroll(labScroll)
             .padding(16.dp).testTag("r1-paramecium-lab"),
             verticalArrangement=Arrangement.spacedBy(12.dp)) {
-            OutlinedButton(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=::leave, modifier=Modifier.heightIn(min=48.dp)) {
-                Text(bi(language,"Back","பின்செல்"))
-            }
             // R7: the earlier programmatically drawn Paramecium anatomy atlas
             // was shown alongside the photographed pencil-source raster plates.
             // Show the SAME authoritative plate gallery just once in this view.
@@ -149,7 +187,7 @@ fun ParameciumTeachingLab(
                 RequiredTypeStudyPlates(study, language)
                 OutlinedButton(
                     onClick = {
-                        onLearningChanged(checkpoint().copy(laboratoryTab = "simulate", simulationProcess = "OSMOREGULATION"))
+                        changeLearning(checkpoint().copy(laboratoryTab = "simulate", simulationProcess = "OSMOREGULATION"))
                     },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("r7-open-paramecium-water-balance"),
@@ -161,23 +199,23 @@ fun ParameciumTeachingLab(
             }
             if (tab == "study") {
                 val sections = NativeLessonDrafts.paramecium.sections
-                val at = sections.indexOfFirst { it.id == learningState.textbookSectionId }.coerceAtLeast(0)
+                val at = sections.indexOfFirst { it.id == localLearning.textbookSectionId }.coerceAtLeast(0)
                 Text(bi(language, "Section ", "பகுதி ") + "${at + 1}/${sections.size} · " + sections[at].heading.value(language),
                     modifier = Modifier.testTag("r161-learning-position"))
             }
             if (tab == "nuclear") {
-                val p = learningState.nuclearProgress
+                val p = localLearning.nuclearProgress
                 Text("R1.7 · ${p.chapterId} · ${p.viewId()} · ${p.readingId} · ${p.selectedNucleus}",
                     modifier = Modifier.testTag("r17-learning-position"))
             }
             if (tab == "nutrition") {
-                val p = learningState.nutritionProgress
+                val p = localLearning.nutritionProgress
                 Text(com.gasczoology.invertebratelab.data.ParameciumNutrition.readings.first {it.id==p.readingId}.heading.value(language)+" · "+
                     com.gasczoology.invertebratelab.data.ParameciumNutrition.stages.first {it.id==p.stageId}.heading.value(language),
                     modifier = Modifier.testTag("r19-learning-position-"+p.stageId))
             }
             if (tab == "water-balance") {
-                val p = learningState.waterBalanceProgress
+                val p = localLearning.waterBalanceProgress
                 Text("R1.8 · ${p.stageId} · ${p.readingId} · ${p.selectedStructure}",
                     modifier = Modifier.testTag("r18-learning-position"))
             }
@@ -213,49 +251,32 @@ fun ParameciumTeachingLab(
                 }
             }
             }
-            val menu = listOf("study", "anatomy", "simulate", "listen", "practice", "nuclear", "water-balance", "nutrition")
-            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).testTag("r1-module-selector"), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                for (section in menu) {
-                    val title = when (section) {
-                        "study" -> bi(language, "Read", "பாடம்")
-                        "anatomy" -> bi(language, "Anatomy", "உடலமைப்பு")
-                        "simulate" -> bi(language, "Simulate", "இயக்கம்")
-                        "listen" -> bi(language, "Listen", "ஒலி")
-                        "nuclear" -> bi(language, "Nuclear biology", "உட்கரு")
-                        "water-balance" -> bi(language, "Water balance", "நீர்ச் சமநிலை")
-                        "nutrition" -> bi(language, "Nutrition", "ஊட்டமுறை")
-                        else -> bi(language, "Practice", "பயிற்சி")
-                    }
-                    OutlinedButton(onClick = { selectTab(section) }, modifier = Modifier.heightIn(min = 48.dp).testTag("r1-tab-" + section)
-                        .semantics { selected = tab == section }) { Text(title) }
-                }
-            }
             when(tab) {
-                "nutrition" -> ParameciumNutritionTextbook(language, ::speak, learningState.nutritionProgress,
+                "nutrition" -> ParameciumNutritionTextbook(language, ::speak, localLearning.nutritionProgress,
                     onProgress = {
-                        if(learningState.destination==com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB &&
-                            learningState.laboratoryTab=="nutrition") onLearningChanged(learningState.copy(nutritionProgress = it))
+                        if(localLearning.destination==com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB &&
+                            localLearning.laboratoryTab=="nutrition") changeLearning(localLearning.copy(nutritionProgress = it))
                     },player=nutritionPlayer)
-                "water-balance" -> ParameciumWaterBalanceTextbook(language, ::speak, learningState.waterBalanceProgress,
-                    onProgress = { if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && latestLearning.laboratoryTab == "water-balance") onLearningChanged(latestLearning.copy(waterBalanceProgress = it)) })
-                "nuclear" -> ParameciumNuclearTextbook(language, ::speak, learningState.nuclearProgress,
-                    onProgress = { if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && latestLearning.laboratoryTab == "nuclear") onLearningChanged(latestLearning.copy(nuclearProgress = it)) })
+                "water-balance" -> ParameciumWaterBalanceTextbook(language, ::speak, localLearning.waterBalanceProgress,
+                    onProgress = { if (localLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && localLearning.laboratoryTab == "water-balance") changeLearning(localLearning.copy(waterBalanceProgress = it)) })
+                "nuclear" -> ParameciumNuclearTextbook(language, ::speak, localLearning.nuclearProgress,
+                    onProgress = { if (localLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && localLearning.laboratoryTab == "nuclear") changeLearning(localLearning.copy(nuclearProgress = it)) })
                 "study" -> StudySection(language, ::speak, onAnatomy = { selectTab("anatomy") },
                     onSimulation = { selectTab("simulate") },
-                    learningState = learningState, onLearningChanged = onLearningChanged)
+                    learningState = localLearning, onLearningChanged = ::changeLearning, onReadPages = ::openChapter)
                 "anatomy" -> Unit // One photographed pencil-source gallery is rendered above, no Canvas anatomy.
-                "simulate" -> SimulatorSection(language, ::speak, learningState, nutritionPlayer,
+                "simulate" -> SimulatorSection(language, ::speak, localLearning, nutritionPlayer,
                     onChoose = { process ->
                         val current = checkpoint()
                         val nuclearChapter = if (process == "CONJUGATION") "conjugation" else "fission"
-                        onLearningChanged(current.copy(simulationProcess = process,
+                        changeLearning(current.copy(simulationProcess = process,
                             nuclearProgress = if (process in setOf("CONJUGATION", "BINARY_FISSION")) current.nuclearProgress.selectChapter(nuclearChapter) else current.nuclearProgress))
-                    }, onProgress = { if (latestLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && latestLearning.laboratoryTab == "simulate") onLearningChanged(it) })
+                    }, onProgress = { if (localLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && localLearning.laboratoryTab == "simulate") changeLearning(it) })
                 "listen" -> NarrationSection(language,::speak)
                 else -> {
                     Text(bi(language,"Use the preserved question bank for revision after studying the biology.",
                         "உயிரியலைக் கற்ற பின் ஏற்கெனவே உள்ள வினாவங்கியை மீள்பயிற்சிக்குப் பயன்படுத்தவும்."))
-                    Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=onPractice,modifier=Modifier.heightIn(min=48.dp)
+                    Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=::openChapter,modifier=Modifier.heightIn(min=48.dp)
                         .fillMaxWidth().testTag("r1-open-practice")) {
                         Text(bi(language,"Open Paramecium practice","பாரமீசியம் வினாப் பயிற்சி"))
                     }
@@ -303,7 +324,11 @@ private fun StudySection(
     onSimulation: () -> Unit,
     learningState: com.gasczoology.invertebratelab.data.NativeLearningState,
     onLearningChanged: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
+    onReadPages: () -> Unit,
 ) {
+    Button(onClick = onReadPages, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r1-read-pages")) {
+        Text(bi(language, "Read the chapter page by page", "அத்தியாயத்தைப் பக்கவாரியாகப் படி"))
+    }
     ParameciumTextbookReader(language, speak, onAnatomy, onSimulation,
         sectionId = learningState.textbookSectionId,
         ciliaryStageIndex = learningState.ciliaryStageIndex,

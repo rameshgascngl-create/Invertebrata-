@@ -7,17 +7,16 @@ object AschelminthesBookChapter {
         title = "Aschelminthes and the place of Nematoda: general characters" to
             "அஸ்கெல்மிந்தீஸும் நெமட்டோடாவின் இடமும்: பொதுப்பண்புகள்",
         objectives = listOf(
-            "Explain what the syllabus name Aschelminthes means and why Nematoda is treated today as a separate phylum." to "பாடத்திட்டப் பெயரான அஸ்கெல்மிந்தீஸ் என்பதன் பொருளையும், நெமட்டோடா இன்று தனித் தொகுதியாகக் கருதப்படுவதன் காரணத்தையும் விளக்க.",
-            "State the general characters of nematodes." to "நெமட்டோடாக்களின் பொதுப்பண்புகளைக் கூற.",
-            "Describe the cuticle, the longitudinal muscles and the pseudocoelom and explain how they work together." to "கியூட்டிகிள், நீளவாக்கு தசைகள், போலி உடற்குழி ஆகியவற்றை விவரித்து, அவை இணைந்து செயல்படும் விதத்தை விளக்க.",
-            "Explain why nematodes move with a whip-like thrash rather than peristalsis." to "நெமட்டோடாக்கள் புழு போன்ற அலைவுக்கு பதிலாக சாட்டை போன்ற அசைவில் நகர்வது ஏன் என்பதை விளக்க.",
-            "Distinguish a pseudocoelom from a true coelom." to "போலி உடற்குழியை உண்மையான சீலோமிலிருந்து வேறுபடுத்த.",
+            "State the historical meaning of Aschelminthes." to
+                "அஸ்கெல்மிந்தீஸ் என்ற பெயரின் வரலாற்றுப் பயன்பாட்டை அறிதல்.",
+            "Recognise the characteristic nematode body plan." to
+                "நெமட்டோடாக்களின் சிறப்பான உடலமைப்பை அறிதல்.",
+            "Distinguish major features using suitable examples." to
+                "முக்கியப் பண்புகளை உரிய எடுத்துக்காட்டுகளுடன் வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
-            "The roundworms are the commonest and most widely distributed of the multicellular animals. They live in the sea, in fresh water, in soil and in the bodies of plants and animals, and a spadeful of soil or a handful of mud may contain thousands of them. Many are tiny and free-living, and many are parasites, including some of the most important parasites of people, such as Ascaris, hookworms and the filarial worms." to
-                "உருளைப்புழுக்கள் பலசெல் விலங்குகளில் மிகப் பொதுவானவையும் மிக விரிவாகப் பரவியவையும். கடல், நன்னீர், மண், தாவர, விலங்கு உடல்களில் வாழ்கின்றன; ஒரு மண்வெட்டி மண்ணிலோ ஒரு கைப்பிடி சேற்றிலோ ஆயிரக்கணக்கானவை இருக்கலாம். பல நுண்ணியவை, தனி வாழ்வுடையவை; பல ஒட்டுண்ணிகள்; அஸ்காரிஸ், கொக்கிப்புழுக்கள், ஃபைலேரியா புழுக்கள் போன்ற மனிதர்களின் மிக முக்கிய ஒட்டுண்ணிகளும் அவற்றில் அடங்கும்.",
-            "The paper uses the name Aschelminthes for the group of worms to which they belong, and this chapter first explains what that name means and how it stands in relation to current classification. It then sets out the characters of a nematode, the way in which the body is built and moves, and the way in which a roundworm differs from the flatworms already studied and from the earthworm to be studied later." to
-                "அவை சேர்ந்த புழுக் குழுவுக்குத் தாள் அஸ்கெல்மிந்தீஸ் என்ற பெயரைப் பயன்படுத்துகிறது; இந்த அத்தியாயம் முதலில் அப்பெயரின் பொருளையும், அது தற்கால வகைப்பாட்டுடன் எவ்வாறு தொடர்புடையது என்பதையும் விளக்குகிறது. பின்னர் நெமட்டோடாவின் பண்புகளையும், உடல் கட்டமைக்கப்பட்டு இயங்கும் விதத்தையும், ஏற்கெனவே கற்ற தட்டைப்புழுக்களிலிருந்தும் பின்னர் கற்கவிருக்கும் மண்புழுவிலிருந்தும் உருளைப்புழு எவ்வாறு வேறுபடுகிறது என்பதையும் முன்வைக்கிறது.",
+            "Aschelminthes is a historical grouping used in the syllabus. Nematodes are studied through their cylindrical body, cuticle, pseudocoel and complete digestive tract, while recognising their place in modern classification." to
+                "அஸ்கெல்மிந்தீஸ் என்பது பாடத்திட்டத்தில் இடம்பெறும் வரலாற்றுத் தொகுப்புப்பெயர். உருளையான உடல், கியூட்டிக்கிள், போலி உடற்குழி, முழுமையான உணவுப்பாதை ஆகிய பண்புகளைக் கொண்டு நெமட்டோடாக்களைப் படிக்கலாம்; நவீன வகைப்பாட்டில் அவற்றின் இடத்தையும் அறிய வேண்டும்.",
         ),
         sections = listOf(
             bsec("name", "The name Aschelminthes", "அஸ்கெல்மிந்தீஸ் என்ற பெயர்",

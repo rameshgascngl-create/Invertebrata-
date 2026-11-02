@@ -164,7 +164,7 @@ internal fun ParameciumNuclearTextbook(
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-view-plate")) {
                 Text(text(language, "Bring the complete pencil plate into view", "முழுப் பென்சில் படத்தைத் திரையில் காண்க"))
             }
-            Canvas(Modifier.fillMaxWidth().height(240.dp).bringIntoViewRequester(requester)
+            Canvas(Modifier.fillMaxWidth().height(if (androidx.compose.ui.platform.LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) 190.dp else 240.dp).bringIntoViewRequester(requester)
                 .testTag("r17-nuclear-canvas").pointerInput(stage.id, progress.selectedNucleus) {
                     detectTapGestures { p ->
                         val f = NuclearFigureGeometry.fit(size.width.toFloat(), size.height.toFloat())
@@ -232,7 +232,7 @@ internal fun ParameciumNuclearTextbook(
             }
             OutlinedButton(onClick = { replay() }, enabled = !progress.reducedMotion, shape = shape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-replay")) {
-                Text(text(language, "Replay from this view", "இக்காட்சியிலிருந்து மீண்டும் இயக்கு"))
+                Text(text(language, "Replay from the beginning", "தொடக்கத்திலிருந்து மீளியக்கு"))
             }
             OutlinedButton(onClick = { chooseView(chapter.views.first().id) }, shape = shape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-reset")) {

@@ -6,17 +6,16 @@ object PolymorphismBookChapter {
         lessonId = "u2-polymorphism",
         title = "Polymorphism in Hydrozoa" to "ஹைட்ரோசோவாவில் பல்வடிவத்தன்மை",
         objectives = listOf(
-            "Define polymorphism and distinguish it from variation between separate individuals." to "பல்வடிவத்தன்மையை வரையறுத்து, தனி உயிரிகளுக்கிடையேயான வேறுபாட்டிலிருந்து வேறுபடுத்த.",
-            "Describe the zooids of a hydrozoan colony and the duties of each." to "ஹைட்ரோசோவா காலனியின் சூயிட்டுகளையும் ஒவ்வொன்றின் பணிகளையும் விவரிக்க.",
-            "Explain polymorphism as a division of labour within one genome." to "பல்வடிவத்தன்மையை ஒரே மரபணுத்தொகுதிக்குள் பணிப் பிரிவினையாக விளக்க.",
-            "Compare Obelia and Physalia as examples of polymorphism in a table." to "ஒபீலியாவையும் பைசாலியாவையும் பல்வடிவத்தன்மை எடுத்துக்காட்டுகளாக அட்டவணையில் ஒப்பிட.",
-            "Explain why the diagrams of the two animals cannot be interchanged." to "இரு விலங்குகளின் வரைபடங்களையும் ஏன் மாற்றிப் பயன்படுத்த இயலாது என்பதை விளக்க.",
+            "Define polymorphism and distinguish it from variation between individuals." to
+                "பல்வடிவத்தன்மையை வரையறுத்து, தனி உயிரிகளிடையிலான வேறுபாட்டிலிருந்து வேறுபடுத்துதல்.",
+            "Identify specialised zooids and their functions." to
+                "சிறப்புப் பணிகளுக்கேற்ற சூயிட்களையும் அவற்றின் செயல்களையும் அறிதல்.",
+            "Explain division of labour using hydrozoan examples." to
+                "ஹைட்ரோசோவா எடுத்துக்காட்டுகளின் மூலம் பணிப்பகிர்வை விளக்குதல்.",
         ),
         introduction = listOf(
-            "In most animals every individual has the same set of duties, and the whole body is the work of one organism. In a colonial hydrozoan the members of the colony are alike in descent but unlike in form, and they perform different duties. Some feed on behalf of all, some defend, some float, and some reproduce. This is called polymorphism, and it is the clearest example among the invertebrates of the division of labour that makes complicated living things possible." to
-                "பெரும்பாலான விலங்குகளில் ஒவ்வொரு உயிரிக்கும் ஒரே பணிகளின் தொகுப்பு உண்டு; முழு உடலும் ஓர் உயிரியின் வேலை. காலனி ஹைட்ரோசோவாவில் காலனியின் உறுப்பினர்கள் தோற்றத்தில் ஒத்தவை, வடிவத்தில் வேறுபட்டவை; வெவ்வேறு பணிகளைச் செய்கின்றன. சில அனைவருக்காகவும் உண்கின்றன, சில தற்காக்கின்றன, சில மிதக்கின்றன, சில இனப்பெருக்கம் செய்கின்றன. இதுவே பல்வடிவத்தன்மை; சிக்கலான உயிரிகளை சாத்தியமாக்கும் பணிப் பிரிவினைக்கு முதுகெலும்பற்றவற்றில் மிகத் தெளிவான எடுத்துக்காட்டு.",
-            "The chapter defines the term, describes the kinds of zooid, sets out two contrasting examples, Obelia and Physalia, and ends with the reasons why the phenomenon matters. The earlier chapter on Obelia should be read first, since the account of its colony is taken as known." to
-                "அத்தியாயம் சொல்லை வரையறுக்கிறது, சூயிட் வகைகளை விவரிக்கிறது, ஒபீலியா, பைசாலியா என இரு மாறுபட்ட எடுத்துக்காட்டுகளை முன்வைக்கிறது, நிகழ்வு ஏன் முக்கியம் என்பதற்கான காரணங்களுடன் முடிகிறது. ஒபீலியா பற்றிய முந்தைய அத்தியாயம் முதலில் வாசிக்கப்பட வேண்டும்; அதன் காலனி பற்றிய விளக்கம் அறியப்பட்டதாகக் கொள்ளப்படுகிறது.",
+            "A hydrozoan colony may contain zooids specialised for different tasks. Polymorphism combines these distinct forms into a coordinated colony with division of labour." to
+                "ஹைட்ரோசோவா கூட்டில் வெவ்வேறு பணிகளுக்கேற்ற சூயிட்கள் காணப்படலாம். இவ்வாறு வடிவமும் பணியும் வேறுபடும் சூயிட்கள் ஒன்றிணைந்து செயல்படுவதே பல்வடிவத்தன்மையின் சிறப்பாகும்.",
         ),
         sections = listOf(
             bsec("definition", "What polymorphism means", "பல்வடிவத்தன்மை என்பதன் பொருள்",

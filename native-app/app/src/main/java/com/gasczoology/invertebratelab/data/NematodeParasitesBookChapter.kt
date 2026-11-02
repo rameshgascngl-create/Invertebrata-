@@ -7,17 +7,16 @@ object NematodeParasitesBookChapter {
         title = "Nematode parasites of man: Wuchereria, Enterobius and Ancylostoma" to
             "மனிதனின் நெமட்டோடா ஒட்டுண்ணிகள்: வுச்செரேரியா, என்டெரோபியஸ், ஆன்சைலோஸ்டோமா",
         objectives = listOf(
-            "Describe the habitat, life cycle, effects and control of Wuchereria bancrofti." to "வுச்செரேரியா பேன்கிராஃப்டியின் வாழிடம், வாழ்க்கைச் சுழற்சி, விளைவுகள், கட்டுப்பாட்டை விவரிக்க.",
-            "Describe the habitat, life cycle, effects and control of Enterobius vermicularis." to "என்டெரோபியஸ் வெர்மிகுலாரிஸின் வாழிடம், வாழ்க்கைச் சுழற்சி, விளைவுகள், கட்டுப்பாட்டை விவரிக்க.",
-            "Describe the habitat, life cycle, effects and control of Ancylostoma duodenale." to "ஆன்சைலோஸ்டோமா டியோடினேலின் வாழிடம், வாழ்க்கைச் சுழற்சி, விளைவுகள், கட்டுப்பாட்டை விவரிக்க.",
-            "Compare the three parasites in a table with respect to portal, infective stage, site, effect and control." to "மூன்று ஒட்டுண்ணிகளையும் நுழைவாயில், தொற்றும் நிலை, இடம், விளைவு, கட்டுப்பாடு ஆகியவற்றின் அடிப்படையில் அட்டவணையில் ஒப்பிட.",
-            "Explain the nocturnal periodicity of microfilariae and its use in diagnosis." to "மைக்ரோஃபைலேரியாக்களின் இரவு ஆவர்த்தனத்தையும் நோயறிதலில் அதன் பயனையும் விளக்க.",
+            "Identify the three parasites and their principal habitats." to
+                "மூன்று ஒட்டுண்ணிகளையும் அவை வாழும் முக்கிய இடங்களையும் அறிதல்.",
+            "Compare their life cycles and infective stages." to
+                "அவற்றின் வாழ்க்கைச் சுழற்சிகளையும் தொற்றுநிலைகளையும் ஒப்பிடுதல்.",
+            "Relate transmission to suitable prevention measures." to
+                "பரவும் வழிகளுக்கு ஏற்ற தடுப்புமுறைகளை விளக்குதல்.",
         ),
         introduction = listOf(
-            "Besides Ascaris, three nematodes are commonly studied as parasites of man. Each of them solves the problem of reaching a new host in a different way. Wuchereria is carried by a mosquito. Enterobius passes from the skin around the anus to the mouth of the same person or of another. Ancylostoma enters through the skin from the soil. The three are therefore well chosen to show that the group is varied in its life cycles and that the control measures follow from the cycle." to
-                "அஸ்காரிஸைத் தவிர, மூன்று நெமட்டோடாக்கள் மனிதனின் ஒட்டுண்ணிகளாக வழக்கமாகக் கற்கப்படுகின்றன. புதிய விருந்தோம்பியை அடையும் சிக்கலை ஒவ்வொன்றும் வெவ்வேறு வழியில் தீர்க்கிறது. வுச்செரேரியாவை கொசு கொண்டு செல்கிறது. என்டெரோபியஸ் மலவாயைச் சுற்றியுள்ள தோலிலிருந்து அதே நபரின் அல்லது வேறொருவரின் வாய்க்குச் செல்கிறது. ஆன்சைலோஸ்டோமா மண்ணிலிருந்து தோல் வழி நுழைகிறது. எனவே குழு தன் வாழ்க்கைச் சுழற்சிகளில் பலவகைப்பட்டது என்பதையும் கட்டுப்பாட்டு நடவடிக்கைகள் சுழற்சியிலிருந்தே பிறக்கின்றன என்பதையும் காட்ட மூன்றும் நன்கு தேர்ந்தெடுக்கப்பட்டவை.",
-            "The chapter describes each parasite under the headings used in the examination: where it lives, how it is transmitted, what stage is infective, what it does to the host, and how it is controlled. A comparative table gathers the points that the paper asks for, and a section on the nocturnal periodicity of the filarial larvae explains why blood is collected at night." to
-                "தேர்வில் பயன்படும் தலைப்புகளில் ஒவ்வொரு ஒட்டுண்ணியையும் அத்தியாயம் விவரிக்கிறது: எங்கு வாழ்கிறது, எவ்வாறு பரவுகிறது, எந்த நிலை தொற்றுகிறது, விருந்தோம்பிக்கு என்ன செய்கிறது, எவ்வாறு கட்டுப்படுத்தப்படுகிறது. ஒப்பீட்டு அட்டவணை தாள் கோரும் குறிப்புகளைத் தொகுக்கிறது; ஃபைலேரியா லார்வாக்களின் இரவு ஆவர்த்தனம் பற்றிய பிரிவு இரத்தம் ஏன் இரவில் சேகரிக்கப்படுகிறது என்பதை விளக்குகிறது.",
+            "Wuchereria, Enterobius and Ancylostoma reach humans by different routes. Comparing their infective stages, hosts and development helps explain the diseases they cause and their prevention." to
+                "வுச்செரேரியா, என்டெரோபியஸ், ஆன்சைலோஸ்டோமா ஆகியவை வெவ்வேறு வழிகளில் மனிதனுக்குப் பரவுகின்றன. அவற்றின் தொற்றுநிலை, விருந்தோம்பி, வளர்ச்சி நிலைகள் ஆகியவற்றை ஒப்பிட்டு நோய்ப்பாதிப்பையும் தடுப்புமுறைகளையும் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("wuchereria", "Wuchereria bancrofti", "வுச்செரேரியா பேன்கிராஃப்டி",

@@ -6,17 +6,16 @@ object WvsBookChapter {
         lessonId = "u5-wvs",
         title = "The Water-Vascular System" to "நீரோட்டக் குழாய் மண்டலம்",
         objectives = listOf(
-            "Define the water-vascular system and state its origin." to "நீர் குருதியோட்ட மண்டலத்தை வரையறுத்து அதன் தோற்றத்தைக் கூற.",
-            "Trace the canals from the madreporite to a tube-foot unit." to "மேட்ரிபோரைட்டிலிருந்து குழாய்ப்பாத அலகு வரை கால்வாய்களைத் தொடர்ந்து காட்ட.",
-            "Explain the hydraulic action of the ampulla and tube foot." to "ஆம்புலா, குழாய்ப்பாதத்தின் நீரழுத்தச் செயலை விளக்க.",
-            "Relate the system to locomotion, feeding and gas exchange." to "அமைப்பை இயக்கம், உணவெடுப்பு, வாயுப் பரிமாற்றத்துடன் தொடர்புபடுத்த.",
-            "Explain how tube feet help Asterias to open bivalve prey." to "இருவோட்டு இரையைத் திறக்க அஸ்டீரியாஸுக்குக் குழாய்ப்பாதங்கள் எவ்வாறு உதவுகின்றன என விளக்க.",
+            "Identify the principal canals and associated structures." to
+                "முக்கிய கால்வாய்களையும் இணைந்த அமைப்புகளையும் அடையாளம் காணுதல்.",
+            "Explain tube-foot action through fluid pressure and muscles." to
+                "திரவ அழுத்தம், தசைகள் மூலம் குழாய்க்கால்கள் செயல்படுவதை விளக்குதல்.",
+            "Relate the system to movement, attachment and feeding." to
+                "இம்மண்டலத்தை இயக்கம், ஒட்டுதல், உணவூட்டம் ஆகியவற்றுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "The water-vascular system is the most distinctive organ system of the echinoderms, and it is found in no other phylum. It is a system of canals derived from part of the coelom, filled with a watery fluid, and provided with muscles and valves, so that it works as a hydraulic machine. Its visible end-organs are the tube feet, which in a starfish line the ambulacral grooves in hundreds, and which are used in walking, holding on, feeding and breathing." to
-                "நீரோட்டக் குழாய் மண்டலம் முட்தோலிகளின் மிகத் தனித்துவமான உறுப்பு அமைப்பு; வேறெந்தத் தொகுதியிலும் காணப்படுவதில்லை. உடற்குழியின் ஒரு பகுதியிலிருந்து உருவான, நீர்மத் திரவம் நிரம்பிய, தசைகளும் வால்வுகளும் கொண்ட கால்வாய்களின் அமைப்பு; எனவே நீரழுத்த இயந்திரமாகச் செயல்படுகிறது. அதன் தெரியும் முனை உறுப்புகள் குழாய்ப்பாதங்கள்; நட்சத்திரமீனில் ஆம்புலாக்ரல் பள்ளங்களில் நூற்றுக்கணக்கில் வரிசையாக அமைந்து நடக்க, ஒட்டிக்கொள்ள, உண்ண, சுவாசிக்கப் பயன்படுகின்றன.",
-            "Two statements appear in the A5 notes that this chapter keeps in view. First, the pathway from the madreporite to a tube foot is an anatomical connection, and it must not be read as a claim of a continuous one-way flow of sea water through every foot. Second, the tube feet assist in opening a bivalve, but they do not crush the shell. The chapter explains the structure and then the action, and it takes the starfish as the example." to
-                "A5 குறிப்புகளில் இவ்வத்தியாயம் கவனத்தில் வைக்கும் இரு கூற்றுகள் உள்ளன. முதலாவது, மேட்ரிபோரைட்டிலிருந்து குழாய்ப்பாதம் வரையான பாதை உடற்கூறியல் இணைப்பு; ஒவ்வொரு பாதம் வழியேயும் கடல்நீர் தொடர்ந்து ஒருதிசை ஓடுகிறது என்ற கூற்றாகப் படிக்கக் கூடாது. இரண்டாவது, குழாய்ப்பாதங்கள் இருவோட்டைத் திறக்க உதவுகின்றன; ஆனால் ஓட்டை நொறுக்குவதில்லை. அத்தியாயம் அமைப்பையும் பின்னர் செயலையும் விளக்கி, நட்சத்திரமீனை எடுத்துக்காட்டாகக் கொள்கிறது.",
+            "The water-vascular system consists of fluid-filled canals connected to tube feet. Following the canals and examining tube-foot action helps explain movement, attachment and feeding in echinoderms." to
+                "நீரோட்டக் குழாய் மண்டலம், திரவம் நிறைந்த கால்வாய்களையும் அவற்றுடன் இணைந்த குழாய்க்கால்களையும் கொண்டது. கால்வாய்களின் தொடரையும் குழாய்க்கால்களின் செயலையும் அறிந்தால், முட்தோலிகளின் இயக்கம், ஒட்டுதல், உணவூட்டம் ஆகியவற்றைப் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("definition", "Definition and origin", "வரையறையும் தோற்றமும்",

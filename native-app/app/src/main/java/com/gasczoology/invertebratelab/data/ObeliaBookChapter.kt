@@ -6,17 +6,16 @@ object ObeliaBookChapter {
         lessonId = "u2-obelia",
         title = "Obelia: a colonial hydroid" to "ஒபீலியா: ஒரு காலனி ஹைட்ராய்டு",
         objectives = listOf(
-            "Describe the habitat and the architecture of the Obelia colony, distinguishing perisarc from coenosarc." to "ஒபீலியாவின் வாழிடத்தையும் காலனியின் கட்டமைப்பையும் விவரித்து, பெரிசார்க்கையும் சீனோசார்க்கையும் வேறுபடுத்த.",
-            "Describe the structure and function of the hydranth, the gonangium and the medusa." to "ஹைட்ராந்த், கோனாஞ்சியம், மெடுசா ஆகியவற்றின் அமைப்பையும் பணியையும் விவரிக்க.",
-            "Explain polymorphism in Obelia as division of labour among zooids." to "ஒபீலியாவில் பல்வடிவத்தன்மையை சூயிட்டுகளுக்கிடையேயான பணிப் பிரிவினையாக விளக்க.",
-            "Write the life history of Obelia in the correct sequence." to "ஒபீலியாவின் வாழ்க்கை வரலாற்றைச் சரியான வரிசையில் எழுத.",
-            "Explain metagenesis and distinguish Obelia from Physalia." to "மெட்டாஜெனிசிஸை விளக்கி, ஒபீலியாவை பைசாலியாவிலிருந்து வேறுபடுத்த.",
+            "Identify the colony's feeding and reproductive structures." to
+                "கூட்டின் உணவூட்ட, இனப்பெருக்க அமைப்புகளை அடையாளம் காணுதல்.",
+            "Explain the structure and role of the medusa." to
+                "மெடூசாவின் அமைப்பையும் பணியையும் விளக்குதல்.",
+            "Trace development from fertilisation to a new colony." to
+                "கருவுறுதல் முதல் புதிய கூட்டு உருவாதல் வரை வரிசைப்படுத்துதல்.",
         ),
         introduction = listOf(
-            "Obelia is the standard example of the hydroid colony in the syllabus. Unlike Hydra, which lives alone, Obelia is a branching colony fixed to a solid surface in shallow sea water, in which many small animals, the zooids, are joined by living tissue and share one gut. It also has a life cycle that includes a free-swimming medusa, and so it shows both of the body forms of the phylum in a single species." to
-                "ஒபீலியா பாடத்திட்டத்தில் ஹைட்ராய்டு காலனிக்கான நிலையான எடுத்துக்காட்டு. தனியாக வாழும் ஹைட்ராவைப் போலன்றி, ஆழமற்ற கடல் நீரில் உறுதியான பரப்பில் பொருந்திய கிளைத்த காலனி; இதில் பல சிறு விலங்குகளான சூயிட்டுகள் உயிருள்ள திசுவால் இணைந்து ஒரே குடலைப் பகிர்கின்றன. சுதந்திரமாக நீந்தும் மெடுசா வாழ்க்கைச் சுழற்சியில் உள்ளதால், தொகுதியின் இரு உடல் வடிவங்களையும் ஒரே இனத்தில் காட்டுகிறது.",
-            "The chapter follows the usual order for a type study: habit and habitat, structure of the colony and of each kind of zooid, the way of life, and the life history. Throughout it should be remembered that the polyp and the medusa are two stages of the same animal, and not two kinds of animal." to
-                "அத்தியாயம் வகை ஆய்வின் வழக்கமான வரிசையைப் பின்பற்றுகிறது: வாழ்முறையும் வாழிடமும், காலனியின் அமைப்பும் ஒவ்வொரு சூயிட் வகையின் அமைப்பும், வாழ்க்கைமுறை, வாழ்க்கை வரலாறு. பாலிப்பும் மெடுசாவும் ஒரே விலங்கின் இரு நிலைகள்; இரு வகை விலங்குகள் அல்ல என்பதை முழுவதும் நினைவில் கொள்ள வேண்டும்.",
+            "Obelia has an attached colony of polyps and a free-swimming medusa stage. Its life cycle links colony growth, feeding, sexual reproduction and larval settlement." to
+                "ஒபீலியாவில் நிலையாக ஒட்டியிருக்கும் பாலிப் கூட்டும் நீந்தும் மெடூசா நிலையும் காணப்படுகின்றன. கூட்டின் வளர்ச்சி, உணவூட்டம், பாலின இனப்பெருக்கம், லார்வா நிலைகொள்ளுதல் ஆகியவை அதன் வாழ்க்கைச் சுழற்சியில் இணைகின்றன.",
         ),
         sections = listOf(
             bsec("habitat", "Habit and habitat", "வாழ்முறையும் வாழிடமும்",

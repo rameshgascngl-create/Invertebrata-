@@ -93,8 +93,6 @@ internal fun LazyListScope.bookChapterItems(
                 Text(t(language, "Learning objectives", "கற்றல் நோக்கங்கள்"),
                     style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold,
                     modifier = Modifier.semantics { heading() })
-                Text(t(language, "After studying this chapter you should be able to:",
-                    "இந்த அத்தியாயத்தைக் கற்ற பின் நீங்கள் செய்யக்கூடியவை:"))
                 chapter.objectives.forEachIndexed { i, o ->
                     Text("${i + 1}. " + o.value(language))
                 }

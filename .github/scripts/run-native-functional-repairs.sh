@@ -17,13 +17,15 @@ finish() {
   code=$?
   trap - EXIT
   adb logcat -d -v threadtime > qa-evidence/functional/logcat.txt 2>&1 || true
-  adb pull /sdcard/Android/data/com.gasczoology.invertebratelab/files/functional-evidence qa-evidence/functional/screenshots >/dev/null 2>&1 || true
+  adb pull /sdcard/Download/native-functional-evidence qa-evidence/functional/screenshots >/dev/null 2>&1 || true
   cp -R native-app/app/build/outputs/androidTest-results qa-evidence/functional/ 2>/dev/null || true
   cp -R native-app/app/build/reports/androidTests qa-evidence/functional/ 2>/dev/null || true
   printf 'commit=%s\nvariant=%s\nconfiguration=%s\nexit=%s\n' "$GITHUB_SHA" "$variant" "$configuration" "$code" > qa-evidence/functional/result.txt
   exit "$code"
 }
 trap finish EXIT
+adb shell rm -rf /sdcard/Download/native-functional-evidence
+adb shell mkdir -p /sdcard/Download/native-functional-evidence
 adb shell settings put system font_scale "$scale"
 adb shell svc wifi disable
 adb shell svc data disable

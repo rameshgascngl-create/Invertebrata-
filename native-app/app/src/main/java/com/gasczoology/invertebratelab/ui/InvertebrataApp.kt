@@ -240,11 +240,12 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                     language = language,
                     onLanguageChange = viewModel::setLanguage,
                     onBack = {
+                        val returnToLab = navController.previousBackStackEntry?.destination?.route == Routes.PARAMECIUM
                         viewModel.persistLearning(state.copy(
-                            destination = StudyDestination.UNIT,
+                            destination = if (returnToLab) StudyDestination.PARAMECIUM_LAB else StudyDestination.UNIT,
                             unitNumber = chapter.unitNumber,
-                            chapterId = "", questionId = "", answerRevealed = false,
-                        )) { backOrRoute(Routes.unit(chapter.unitNumber)) }
+                            chapterId = if (returnToLab) "u1-paramecium" else "", questionId = "", answerRevealed = false,
+                        )) { backOrRoute(if (returnToLab) Routes.PARAMECIUM else Routes.unit(chapter.unitNumber)) }
                     },
                     onOpenFullLesson = {
                         viewModel.persistLearning(state.copy(
@@ -285,8 +286,8 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                         chapterId = "", questionId = "", answerRevealed = false,
                     )) { backOrRoute(Routes.HOME) }
                 },
-                onPractice = {
-                    viewModel.persistLearning(state.copy(
+                onPractice = { position ->
+                    viewModel.persistLearning(position.copy(
                         destination = StudyDestination.CHAPTER, unitNumber = 1,
                         chapterId = "u1-paramecium", questionId = "",
                         answerRevealed = false,
@@ -569,6 +570,7 @@ private fun ChapterScreen(
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
 ) {
+    androidx.activity.compose.BackHandler(onBack = onBack)
     // Consume the system status-bar inset before placing the chapter-local
     // language switch. Descendant readers inherit the consumed inset, so their
     // own statusBarsPadding() does not introduce a second full-height gap.

@@ -7,17 +7,16 @@ object CnidariaBookChapter {
         title = "Phylum Coelenterata (Cnidaria): general characters and classification" to
             "தொகுதி சீலென்டிரேட்டா (நிடேரியா): பொதுப்பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
-            "State the general characters of the phylum Coelenterata (Cnidaria)." to "சீலென்டிரேட்டா (நிடேரியா) தொகுதியின் பொதுப்பண்புகளைக் கூற.",
-            "Describe the structure and discharge of a nematocyst and the types of cnidocyte." to "நெமட்டோசிஸ்டின் அமைப்பையும் வெளியேற்றத்தையும், நிடோசைட் வகைகளையும் விவரிக்க.",
-            "Compare the polyp and the medusa in tabular form." to "பாலிப்பையும் மெடுசாவையும் அட்டவணை வடிவில் ஒப்பிட.",
-            "Classify the phylum into Hydrozoa, Scyphozoa and Anthozoa with characters and examples." to "தொகுதியை ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா வகுப்புகளாகப் பண்புகளுடனும் எடுத்துக்காட்டுகளுடனும் வகைப்படுத்த.",
-            "Explain why the older name Coelenterata and the current name Cnidaria are both used." to "பழைய பெயரான சீலென்டிரேட்டாவும் தற்போதைய பெயரான நிடேரியாவும் ஏன் இரண்டும் பயன்படுகின்றன என்பதை விளக்க.",
+            "Identify the defining structures of cnidarians." to
+                "நிடேரியன்களின் சிறப்பு அமைப்புகளை அடையாளம் காணுதல்.",
+            "Compare polyp and medusa forms." to
+                "பாலிப், மெடூசா வடிவங்களை ஒப்பிடுதல்.",
+            "Distinguish the principal classes with examples." to
+                "முக்கிய வகுப்புகளை எடுத்துக்காட்டுகளுடன் வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
-            "The Cnidaria are the first animals in the sequence of this course to possess true tissues. Their bodies are built of two cell layers around a jelly-like middle layer, they have radial symmetry and a single opening to the gut, and they are armed with stinging cells that are found in no other animals. The group includes the freshwater Hydra, the colonial hydroids such as Obelia, the jellyfishes, the sea anemones and the reef-building corals." to
-                "இந்தப் பாடத்தின் வரிசையில் உண்மையான திசுக்களைக் கொண்ட முதல் விலங்குகள் நிடேரியாக்கள். அவற்றின் உடல் ஜெல்லி போன்ற நடு அடுக்கைச் சுற்றி இரு செல் அடுக்குகளால் கட்டப்பட்டது; ஆரச்சமச்சீர், குடலுக்கு ஒரே திறப்பு கொண்டவை; வேறு எந்த விலங்கிலும் காணப்படாத கொட்டும் செல்களைக் கொண்டவை. நன்னீர் ஹைட்ரா, ஒபீலியா போன்ற காலனி ஹைட்ராய்டுகள், ஜெல்லிமீன்கள், கடல்சாமந்திகள், பவளப்பாறை உருவாக்கும் பவளங்கள் இக்குழுவில் அடங்கும்.",
-            "The paper names the phylum Coelenterata, and the current scientific name is Cnidaria. This chapter uses both, as the syllabus does, and sets out the characters that define the group, the two body forms that run through all its life cycles, and the three classes into which it is divided." to
-                "பாடத்திட்டம் தொகுதியை சீலென்டிரேட்டா என்று குறிப்பிடுகிறது; தற்போதைய அறிவியல் பெயர் நிடேரியா. பாடத்திட்டத்தைப் பின்பற்றி இந்த அத்தியாயம் இரண்டையும் பயன்படுத்துகிறது; குழுவை வரையறுக்கும் பண்புகள், எல்லா வாழ்க்கைச் சுழற்சிகளிலும் வரும் இரு உடல் வடிவங்கள், தொகுதி பிரியும் மூன்று வகுப்புகள் ஆகியவற்றை விவரிக்கிறது.",
+            "Cnidarians are aquatic animals characterised by cnidocytes. Their body wall, gastrovascular cavity and polyp or medusa form provide the basis for studying the group." to
+                "கொட்டும் செல்களான நிடோசைட்டுகள் நிடேரியன்களின் சிறப்புப் பண்பாகும். உடற்சுவர், உணவுச் செரிமானக் குழி, பாலிப் மற்றும் மெடூசா வடிவங்கள் ஆகியவற்றைக் கொண்டு இத்தொகுதியைப் படிக்கலாம்.",
         ),
         sections = listOf(
             bsec("name", "The name of the phylum", "தொகுதியின் பெயர்",

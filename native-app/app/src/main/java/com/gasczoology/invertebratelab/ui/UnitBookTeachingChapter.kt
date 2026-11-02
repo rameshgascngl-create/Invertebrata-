@@ -51,6 +51,7 @@ internal fun UnitBookTeachingChapter(
     var pageId by rememberSaveable(chapter.id) {
         mutableStateOf(positions.positions[chapter.id]?.pageId?.takeIf { id -> pages.any { it.id == id } } ?: pages.first().id)
     }
+    var pageHistory by rememberSaveable(chapter.id) { mutableStateOf(emptyList<String>()) }
     var continuous by rememberSaveable(chapter.id) { mutableStateOf(false) }
     var referenceGalleryOpen by rememberSaveable(chapter.id) { mutableStateOf(false) }
     var trypanosomaStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
@@ -61,20 +62,34 @@ internal fun UnitBookTeachingChapter(
     val page = pages[pageIndex]
     val listState = remember(chapter.id, pageId, continuous, referenceGalleryOpen) {
         val stored = positions.positions[chapter.id]
-        LazyListState(if (stored?.pageId == pageId) stored.itemIndex else 0,
-            if (stored?.pageId == pageId) stored.itemOffset else 0)
+        LazyListState(if (!referenceGalleryOpen && stored?.pageId == pageId) stored.itemIndex else 0,
+            if (!referenceGalleryOpen && stored?.pageId == pageId) stored.itemOffset else 0)
     }
     val activePage by rememberUpdatedState(pageId)
-    fun savePosition() { positions.save(chapter.id, BookReadingPosition(pageId, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset)) }
+    fun savePosition() { if (!referenceGalleryOpen) positions.save(chapter.id, BookReadingPosition(pageId, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset)) }
     fun selectPage(id: String) {
         narrator.stop()
         referenceGalleryOpen = false
         continuous = false
+        if (id != pageId) pageHistory = pageHistory + pageId
         pageId = id
         positions.save(chapter.id, BookReadingPosition(id))
     }
+    androidx.activity.compose.BackHandler {
+        narrator.stop()
+        when {
+            referenceGalleryOpen -> referenceGalleryOpen = false
+            continuous -> continuous = false
+            pageHistory.isNotEmpty() -> {
+                pageId = pageHistory.last()
+                pageHistory = pageHistory.dropLast(1)
+                positions.save(chapter.id, BookReadingPosition(pageId))
+            }
+            else -> { savePosition(); onBack() }
+        }
+    }
     LaunchedEffect(chapter.id, pageId, listState, continuous) {
-        if (!continuous) snapshotFlow { Triple(listState.isScrollInProgress, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset) }
+        if (!continuous && !referenceGalleryOpen) snapshotFlow { Triple(listState.isScrollInProgress, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset) }
             .filter { !it.first }.distinctUntilChanged().collect { (_, item, offset) ->
                 positions.save(chapter.id, BookReadingPosition(pageId, item, offset))
             }

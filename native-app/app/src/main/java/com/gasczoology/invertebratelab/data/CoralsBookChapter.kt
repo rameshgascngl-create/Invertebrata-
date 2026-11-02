@@ -6,17 +6,16 @@ object CoralsBookChapter {
         lessonId = "u2-corals",
         title = "Corals and coral reefs" to "பவளங்களும் பவளப்பாறைகளும்",
         objectives = listOf(
-            "Describe the structure of a coral polyp and the way in which it builds its skeleton." to "பவள பாலிப்பின் அமைப்பையும், அது தன் எலும்புக்கூட்டைக் கட்டும் விதத்தையும் விவரிக்க.",
-            "Explain the association between a reef-building coral and its zooxanthellae." to "பவளப்பாறை உருவாக்கும் பவளத்துக்கும் அதன் சூக்சாந்தெல்லேக்கும் இடையிலான தொடர்பை விளக்க.",
-            "Name and distinguish the fringing reef, the barrier reef and the atoll." to "ஓர முகடு, தடுப்பு முகடு, வளைய முகடு ஆகியவற்றைப் பெயரிட்டு வேறுபடுத்த.",
-            "State the conditions in which reef-building corals flourish and explain why." to "பவளப்பாறை உருவாக்கும் பவளங்கள் செழிக்கும் நிலைகளைக் கூறி, காரணத்தை விளக்க.",
-            "Explain coral bleaching, its causes and its consequences." to "பவள வெளிறலையும் அதன் காரணங்கள், விளைவுகளையும் விளக்க.",
+            "Describe coral structure and skeletal growth." to
+                "பவளத்தின் அமைப்பையும் எலும்புக்கூட்டு வளர்ச்சியையும் விவரித்தல்.",
+            "Distinguish major reef types and their formation." to
+                "முக்கிய பவளப்பாறை வகைகளையும் அவற்றின் உருவாக்கத்தையும் வேறுபடுத்துதல்.",
+            "Relate reef distribution and bleaching to environmental conditions." to
+                "பவளப்பாறைகளின் பரவலையும் வெளிறலையும் சூழல் நிலைகளுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "Corals belong to the cnidarian class Anthozoa and have a polyp stage, but no medusa stage. Many reef-building stony corals form colonies whose polyps secrete calcium-carbonate skeletons." to
-                "பவளங்கள் நிடேரியா தொகுதியின் ஆந்தோசோவா வகுப்பைச் சேர்ந்தவை. இவற்றில் பாலிப் நிலை உள்ளது; மெடுசா நிலை இல்லை. பவளப்பாறை உருவாக்கும் பல கல் பவளங்கள் குடியிருப்புகளாக வாழ்ந்து கால்சியம் கார்பனேட் எலும்புக்கூட்டைச் சுரக்கின்றன.",
-            "A coral reef is an ecosystem built and inhabited by many organisms, not a single animal. Coral–algal symbiosis, suitable water conditions and thermal stress help explain reef growth and bleaching." to
-                "பவளப்பாறை என்பது பல உயிரினங்கள் உருவாக்கி வாழும் சூழல்மண்டலம்; அது ஒற்றை விலங்கு அல்ல. பவள–பாசிக் கூட்டுயிர் வாழ்வு, ஏற்ற நீர்ச் சூழல், வெப்ப அழுத்தம் ஆகியவை பவளப்பாறை வளர்ச்சியையும் வெளிறலையும் விளங்கிக்கொள்ள முக்கியமானவை.",
+            "Reef-building corals secrete calcium-carbonate skeletons. Their growth, symbiotic relationships and environmental requirements help explain the formation and distribution of coral reefs." to
+                "பாறை உருவாக்கும் பவளங்கள் கால்சியம் கார்பனேட் எலும்புக்கூட்டைச் சுரக்கின்றன. அவற்றின் வளர்ச்சி, கூட்டுயிர் வாழ்க்கை, சூழல் தேவைகள் ஆகியவை பவளப்பாறைகளின் உருவாக்கத்தையும் பரவலையும் விளக்குகின்றன.",
         ),
         sections = listOf(
             bsec("polyp", "The coral polyp", "பவள பாலிப்",

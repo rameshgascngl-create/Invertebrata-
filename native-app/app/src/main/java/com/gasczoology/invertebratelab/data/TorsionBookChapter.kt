@@ -6,17 +6,16 @@ object TorsionBookChapter {
         lessonId = "u5-torsion",
         title = "Torsion in Gastropoda" to "இரைப்பைக்காலிகளில் முறுக்கல்",
         objectives = listOf(
-            "Define torsion and distinguish it from coiling of the shell." to "முறுக்கலை வரையறுத்து ஓட்டுச் சுருளிலிருந்து வேறுபடுத்த.",
-            "Describe what is rotated in torsion, and when it takes place." to "முறுக்கலில் எது சுழல்கிறது, எப்போது நிகழ்கிறது என விவரிக்க.",
-            "Describe the principal consequences of torsion." to "முறுக்கலின் முதன்மை விளைவுகளை விவரிக்க.",
-            "Discuss the proposed advantages and the problem of fouling." to "முன்மொழியப்பட்ட நன்மைகளையும் அழுக்கூட்டல் சிக்கலையும் விவாதிக்க.",
-            "Explain detorsion and state the condition of Pila." to "எதிர்முறுக்கலை விளக்கி பைலாவின் நிலையைக் கூற.",
+            "Distinguish torsion from shell coiling." to
+                "முறுக்கலை ஓடு சுருள்வதிலிருந்து வேறுபடுத்துதல்.",
+            "Explain the developmental sequence and anatomical effects." to
+                "வளர்ச்சி நிலை வரிசையையும் உடலமைப்பில் ஏற்படும் மாற்றங்களையும் விளக்குதல்.",
+            "Compare torsion and detorsion using examples." to
+                "முறுக்கலையும் முறுக்கல் நீக்கத்தையும் எடுத்துக்காட்டுகளுடன் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "Torsion is the most characteristic event in the history of the gastropods, and it is the reason why a snail is not a simple, bilaterally symmetrical animal. The word means twisting, and what is twisted is the visceral mass with the mantle and the shell, which rotate through about one hundred and eighty degrees relative to the head and the foot. The consequence is that the organs of the mantle cavity, the gill, the anus and the openings of the kidney, are brought from the back of the animal to the front, above the head." to
-                "முறுக்கல் இரைப்பைக்காலிகளின் வரலாற்றில் மிகத் தனிப்பண்பான நிகழ்வு; நத்தை எளிய இருபக்கச் சமச்சீர் விலங்கு அல்ல என்பதற்கான காரணம் இதுவே. சொல் முறுக்குதல் எனப் பொருள்படும்; முறுக்கப்படுவது மேண்டில், ஓட்டுடன் கூடிய உள்ளுறுப்புத் திரள்; அவை தலை, பாதத்தைப் பொறுத்து சுமார் நூற்றெண்பது பாகை சுழல்கின்றன. விளைவாக மேண்டில் குழியின் உறுப்புகளான செவுள், மலவாய், சிறுநீரகத் துளைகள் விலங்கின் பின்புறத்திலிருந்து தலைக்கு மேல் முன்புறத்துக்குக் கொண்டுவரப்படுகின்றன.",
-            "The topic is among the most often misunderstood in the syllabus, for three reasons. Torsion is confused with the spiral coiling of the shell, the explanations for its value are given as established facts when they are hypotheses, and the adult Pila, which is already torted, is sometimes described as if it were twisting. This chapter separates the facts from the hypotheses and states what the evidence allows." to
-                "மூன்று காரணங்களால் இது பாடத்திட்டத்தில் மிக அடிக்கடி தவறாகப் புரிந்துகொள்ளப்படும் தலைப்புகளில் ஒன்று. முறுக்கல் ஓட்டின் சுருள் சுற்றலுடன் குழப்பப்படுகிறது; அதன் மதிப்புக்கான விளக்கங்கள் கருதுகோள்களாக இருந்தும் நிறுவப்பட்ட உண்மைகளாகத் தரப்படுகின்றன; ஏற்கெனவே முறுக்கப்பட்ட முதிர்ந்த பைலா சில சமயம் முறுக்கிக்கொண்டிருப்பது போல விவரிக்கப்படுகிறது. இவ்வத்தியாயம் உண்மைகளைக் கருதுகோள்களிலிருந்து பிரித்து சான்றுகள் அனுமதிப்பதைக் கூறுகிறது.",
+            "Torsion is the developmental rotation of the gastropod visceropallium relative to the head and foot. It changes the position of the mantle cavity and differs from shell coiling." to
+                "இரைப்பைக்காலிகளின் வளர்ச்சியில் உடற்பையும் மேண்டில் பகுதியும் தலை–பாதப் பகுதியுடன் ஒப்பிடும்போது சுழல்வதே முறுக்கல். இதனால் மேண்டில் குழியின் இடம் மாறுகிறது; ஓடு சுருள்வது இதிலிருந்து வேறுபட்ட நிகழ்வாகும்.",
         ),
         sections = listOf(
             bsec("definition", "What torsion is and when it happens", "முறுக்கல் என்றால் என்ன, எப்போது நிகழ்கிறது",

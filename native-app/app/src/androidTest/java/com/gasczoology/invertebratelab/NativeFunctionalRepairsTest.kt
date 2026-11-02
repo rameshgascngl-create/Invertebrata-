@@ -54,14 +54,21 @@ class NativeFunctionalRepairsTest {
     private fun root(id: String, unit: Int) = when (unit) { 2 -> "u2-reader-$id"; 3 -> "u3-reader-$id"; else -> "book-reader-$id" }
     private fun openPage(id: String, unit: Int, page: String) {
         rule.onNodeWithTag("reading-contents").performClick()
-        waitFor("reading-open-objectives")
+        rule.waitForIdle()
         rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("reading-open-$page"))
         rule.onNodeWithTag("reading-open-$page").performClick()
     }
     private fun screenshot(name: String, bitmap: Bitmap? = null) {
         val output = File(context.getExternalFilesDir(null), "functional-evidence").apply { mkdirs() }
         val image = bitmap ?: InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot()
-        File(output, "$name.png").outputStream().use { image.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        val file = File(output, "$name.png")
+        file.outputStream().use { image.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
+        val target = "/sdcard/Download/native-functional-evidence/$name.png"
+        android.os.ParcelFileDescriptor.AutoCloseInputStream(automation.executeShellCommand("mkdir -p /sdcard/Download/native-functional-evidence")).use { it.readBytes() }
+        android.os.ParcelFileDescriptor.AutoCloseInputStream(automation.executeShellCommand("cp ${file.absolutePath} $target")).use { it.readBytes() }
+        val bytes = android.os.ParcelFileDescriptor.AutoCloseInputStream(automation.executeShellCommand("cat $target")).use { it.readBytes() }
+        assertTrue("Screenshot was not preserved: $target", bytes.size > 1000)
         if (bitmap == null) image.recycle()
     }
 
@@ -70,6 +77,7 @@ class NativeFunctionalRepairsTest {
         listOf(1 to "u1-paramecium", 2 to "u2-sycon", 3 to "u3-fasciola", 4 to "u4-penaeus", 5 to "u5-pila").forEach { (unit, id) ->
             enterChapter(unit, id)
             rule.onNodeWithTag("reading-page-previous").assertIsNotEnabled()
+            rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("book-objectives"))
             rule.onNodeWithTag("book-objectives").assertExists()
             rule.onNodeWithTag("reading-page-next").performClick()
             rule.onNodeWithTag("book-objectives").assertDoesNotExist()

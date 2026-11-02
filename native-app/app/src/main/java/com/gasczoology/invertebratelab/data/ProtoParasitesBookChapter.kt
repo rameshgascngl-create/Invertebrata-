@@ -6,17 +6,16 @@ object ProtoParasitesBookChapter {
         lessonId = "u1-proto-parasites",
         title = "Protozoan Parasites: Entamoeba, Trypanosoma and Leishmania" to "புரோட்டோசோவா ஒட்டுண்ணிகள்: எண்டமீபா, டிரிப்பனோசோமா, லீஷ்மேனியா",
         objectives = listOf(
-            "Describe the life history and disease of Entamoeba histolytica." to "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கை வரலாற்றையும் நோயையும் விவரிக்க.",
-            "Describe Trypanosoma brucei and sleeping sickness." to "டிரிப்பனோசோமா புரூசியையும் தூக்க நோயையும் விவரிக்க.",
-            "Describe Leishmania and the leishmaniases." to "லீஷ்மேனியாவையும் லீஷ்மேனியாசிஸ்களையும் விவரிக்க.",
-            "Compare the three parasites in a table." to "மூன்று ஒட்டுண்ணிகளையும் அட்டவணையில் ஒப்பிட.",
-            "Explain why boiling drinking water does not control sleeping sickness." to "குடிநீரைக் கொதிக்க வைப்பது தூக்க நோயைக் கட்டுப்படுத்தாது என ஏன் கூறப்படுகிறது என விளக்க.",
+            "Compare the three parasites and the diseases they cause." to
+                "மூன்று ஒட்டுண்ணிகளையும் அவை ஏற்படுத்தும் நோய்களையும் ஒப்பிடுதல்.",
+            "Trace each life cycle and identify the infective stage." to
+                "ஒவ்வொன்றின் வாழ்க்கைச் சுழற்சியையும் தொற்றுநிலையையும் அறிதல்.",
+            "Relate transmission routes to effective prevention." to
+                "பரவும் வழிகளுக்கு ஏற்ற தடுப்புமுறைகளை விளக்குதல்.",
         ),
         introduction = listOf(
-            "Protozoan parasites cause several important human diseases. Entamoeba histolytica infects the intestine and spreads when infective cysts are swallowed in contaminated food or water. Trypanosoma brucei is transmitted by tsetse flies and can cause African sleeping sickness. Leishmania is transmitted by infected female sand flies and lives mainly inside host cells. Their different transmission routes explain why prevention and control measures differ." to
-                "புரோட்டோசோவா ஒட்டுண்ணிகள் மனிதர்களில் பல முக்கிய நோய்களை ஏற்படுத்துகின்றன. எண்டமீபா ஹிஸ்டோலிடிகா குடலைப் பாதிக்கிறது; மாசுபட்ட உணவு அல்லது நீருடன் தொற்றுநிலையிலுள்ள நீர்க்கட்டிகளை உட்கொள்வதால் தொற்று பரவுகிறது. டிரிப்பனோசோமா புரூசி செட்ஸி ஈ மூலம் பரவி ஆப்பிரிக்கத் தூக்க நோயை ஏற்படுத்தக்கூடும். லீஷ்மேனியா தொற்றுடைய பெண் மணல் ஈ மூலம் பரவி, பெரும்பாலும் விருந்தோம்பியின் செல்களுக்குள் வாழ்கிறது. இவற்றின் பரவும் வழிகள் வேறுபடுவதால் தடுப்பு மற்றும் கட்டுப்பாட்டு முறைகளும் வேறுபடுகின்றன.",
-            "The account is of the biology of the parasites and the principles of control. It does not give directions for the treatment of a patient, and a person who suspects one of these infections must be seen by a doctor, since the choice of drug and its dose depend on the diagnosis and on the patient. The descriptions of the species are for the species named, and other species of each genus differ in detail." to
-                "விளக்கம் ஒட்டுண்ணிகளின் உயிரியல், கட்டுப்பாட்டுக் கொள்கைகள் பற்றியது. நோயாளியின் சிகிச்சைக்கான வழிகாட்டுதல் இல்லை; இத்தொற்றுகளில் ஒன்றை சந்தேகிப்பவர் மருத்துவரைப் பார்க்க வேண்டும்; ஏனெனில் மருந்து, அளவு தேர்வு நோயறிதலையும் நோயாளியையும் சார்ந்தது. இனங்களின் விளக்கங்கள் பெயரிடப்பட்ட இனங்களுக்கானவை; ஒவ்வொரு பேரினத்தின் பிற இனங்கள் விவரங்களில் வேறுபடும்.",
+            "Entamoeba, Trypanosoma and Leishmania differ in their hosts, infective stages and transmission routes. Linking each life cycle to its disease helps explain the corresponding methods of prevention." to
+                "எண்டமீபா, டிரிப்பனோசோமா, லீஷ்மேனியா ஆகியவை விருந்தோம்பி, தொற்றுநிலை, பரவும் வழி ஆகியவற்றில் வேறுபடுகின்றன. ஒவ்வொன்றின் வாழ்க்கைச் சுழற்சியையும் நோய்ப்பாதிப்பையும் தொடர்புபடுத்தினால், அதற்கேற்ற தடுப்புமுறைகளைப் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("entamoeba", "Entamoeba histolytica", "எண்டமீபா ஹிஸ்டோலிடிகா",

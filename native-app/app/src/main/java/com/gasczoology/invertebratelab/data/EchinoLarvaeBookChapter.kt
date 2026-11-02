@@ -6,17 +6,16 @@ object EchinoLarvaeBookChapter {
         lessonId = "u5-echino-larvae",
         title = "Echinoderm Larvae" to "முட்தோலி லார்வாக்கள்",
         objectives = listOf(
-            "Explain why the echinoderm larva is bilateral and what this shows." to "முட்தோலி லார்வா ஏன் இருபக்கச் சமச்சீருடையது, இது எதைக் காட்டுகிறது என விளக்க.",
-            "Match each larval form with its class." to "ஒவ்வொரு லார்வா வடிவத்தையும் அதன் வகுப்புடன் பொருத்த.",
-            "Describe the bipinnaria and brachiolaria in sequence." to "பிபின்னேரியா, பிராக்கியோலேரியாவை வரிசையாக விவரிக்க.",
-            "Describe metamorphosis to the pentaradial juvenile." to "ஐந்தாரை இளவிலங்காக உருமாற்றத்தை விவரிக்க.",
-            "Explain why a bipinnaria is not homologous with a nauplius." to "பிபின்னேரியா நாப்ளியஸுக்கு ஒத்தமைவு அல்ல என்பதை விளக்க.",
+            "Identify representative echinoderm larvae." to
+                "முக்கிய முட்தோலி லார்வாக்களை அடையாளம் காணுதல்.",
+            "Compare diagnostic structures and developmental sequences." to
+                "அடையாளப் பண்புகளையும் வளர்ச்சி வரிசைகளையும் ஒப்பிடுதல்.",
+            "Explain metamorphosis and the significance of larval similarities." to
+                "உருமாற்றத்தையும் லார்வா ஒற்றுமைகளின் முக்கியத்துவத்தையும் விளக்குதல்.",
         ),
         introduction = listOf(
-            "The larvae of the echinoderms are among the most beautiful of the planktonic animals, and they are of great importance in understanding the group. The adult starfish or sea urchin has no head and has five arms or five divisions, and it would be difficult to see in it the features of a bilateral animal. The larva makes the position clear, because it swims by cilia, has a left and a right side, and possesses a complete gut with a mouth and an anus. The larva is therefore the best evidence that the echinoderms are bilateral animals that have become secondarily radial." to
-                "முட்தோலிகளின் லார்வாக்கள் மிதவை உயிரிகளில் மிக அழகானவற்றுள் ஒன்று; குழுவைப் புரிந்துகொள்வதில் மிக முக்கியமானவை. முதிர்ந்த நட்சத்திர மீன் அல்லது முள்ளெலிக்குத் தலை இல்லை; ஐந்து கைகள் அல்லது ஐந்து பிரிவுகள் உண்டு; அதில் இருபக்க விலங்கின் பண்புகளைக் காண்பது கடினம். லார்வா நிலையைத் தெளிவாக்குகிறது: அது கசையிழையால் நீந்துகிறது; இடம்-வலம் பக்கங்கள் உண்டு; வாய், மலவாயுடன் முழுமையான குடல் உள்ளது. எனவே முட்தோலிகள் இரண்டாம் நிலையாக ஆரைச் சமச்சீராக மாறிய இருபக்க விலங்குகள் என்பதற்கான சிறந்த சான்று லார்வாவே.",
-            "The names of the larvae are a major part of the topic and are a common source of lost marks. This chapter gives the larva for each class, describes each in a sentence, and notes that the sequences differ between species, so the class association should be stated without implying that every member follows an identical series." to
-                "லார்வாக்களின் பெயர்கள் தலைப்பின் முக்கிய பகுதி; மதிப்பெண் இழப்புக்கான பொதுவான காரணம். இவ்வத்தியாயம் ஒவ்வொரு வகுப்புக்கும் லார்வாவைத் தந்து, ஒவ்வொன்றையும் ஒரு வாக்கியத்தில் விவரித்து, வரிசைகள் இனங்களுக்கிடையே மாறுபடுவதைக் குறிப்பிடுகிறது; எனவே ஒவ்வொரு உறுப்பினரும் ஒரே வரிசையைப் பின்பற்றுகிறது என்ற பொருள் வராமல் வகுப்புத் தொடர்பு கூறப்பட வேண்டும்.",
+            "Echinoderm larvae are usually bilaterally organised, unlike the familiar radial adult. Ciliary bands, arms and attachment structures help identify the larval forms and understand metamorphosis." to
+                "முதிர்ந்த முட்தோலிகளில் காணப்படும் ஆரச்சமச்சீருக்கு மாறாக, அவற்றின் லார்வாக்கள் பொதுவாக இருபக்கச் சமச்சீர் கொண்டவை. குறுஇழைப் பட்டைகள், கரங்கள், ஒட்டும் அமைப்புகள் ஆகியவற்றைக் கொண்டு லார்வா வகைகளையும் உருமாற்றத்தையும் அறியலாம்.",
         ),
         sections = listOf(
             bsec("dipleurula", "The dipleurula idea and bilateral symmetry", "டிப்ளூரூலா கருத்தும் இருபக்கச் சமச்சீரும்",

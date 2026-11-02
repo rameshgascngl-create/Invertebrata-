@@ -6,17 +6,16 @@ object EchinoAffinitiesBookChapter {
         lessonId = "u5-echino-affinities",
         title = "Affinities of the Echinoderms" to "முட்தோலிகளின் உறவுமுறை",
         objectives = listOf(
-            "List the deuterostome characters of the echinoderms." to "முட்தோலிகளின் டியூட்டிரோஸ்டோம் பண்புகளைப் பட்டியலிட.",
-            "Explain the grouping Ambulacraria and the evidence for it." to "அம்புலாக்ரேரியா குழுவையும் அதற்கான சான்றுகளையும் விளக்க.",
-            "State how the echinoderms are related to the chordates, and how they are not." to "முட்தோலிகள் முதுகுநாணிகளுடன் எவ்வாறு தொடர்புடையவை, எவ்வாறு அல்ல என்பதைக் கூற.",
-            "Explain why adult radial symmetry does not link echinoderms to cnidarians." to "முதிர்ந்த ஆரச்சமச்சீர் முட்தோலிகளை குழியுடலிகளுடன் ஏன் இணைக்காது என விளக்க.",
-            "Distinguish evidence from inference in phylogenetic statements." to "இனவரலாற்றுக் கூற்றுகளில் சான்றையும் ஊகத்தையும் வேறுபடுத்த.",
+            "Identify the evidence used to infer evolutionary relationships." to
+                "பரிணாம உறவுகளை அறிய உதவும் சான்றுகளை அடையாளம் காணுதல்.",
+            "Compare echinoderms with hemichordates and chordates." to
+                "முட்தோலிகளை அரைநாணிகளுடனும் நாணிகளுடனும் ஒப்பிடுதல்.",
+            "Distinguish shared ancestry from superficial resemblance." to
+                "பொது மூதாதை வழி ஒற்றுமையை மேலோட்டமான தோற்ற ஒற்றுமையிலிருந்து வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
-            "The question of where the echinoderms belong in the tree of animal life is one of the oldest in comparative zoology, and it is a good example of how the answer changed as the kinds of evidence widened. The adult animal gives few clues, since it has no head, a radial plan and a skeleton and water-vascular system that are unlike those of any other phylum. The answer came from the embryo and the larva, and later from the study of DNA and proteins." to
-                "விலங்கு வாழ்க்கை மரத்தில் முட்தோலிகள் எங்கு சேர்கின்றன என்ற கேள்வி ஒப்பீட்டு விலங்கியலின் மிகப் பழையவற்றில் ஒன்று; சான்றுகளின் வகைகள் விரிந்தபோது விடை எவ்வாறு மாறியது என்பதற்கு நல்ல எடுத்துக்காட்டு. முதிர்ந்த விலங்கு சிறு குறிப்புகளையே தருகிறது; ஏனெனில் தலை இல்லை; ஆரைத் திட்டம், வேறெந்தத் தொகுதியையும் போலல்லாத கூடும் நீரோட்டக் குழாய் மண்டலமும் உள்ளன. விடை கரு, லார்வாவிலிருந்தும் பின்னர் DNA, புரத ஆய்விலிருந்தும் வந்தது.",
-            "This chapter is classed as enrichment, and it asks the student to do something that is demanding: to separate what is supported by many independent lines of evidence from what is an inference that depends on one analysis. The position of the echinoderms among the deuterostomes is well supported. Some of the finer details of the relationships within the deuterostomes are less certain, and a reader should treat them as the current view." to
-                "இவ்வத்தியாயம் செறிவூட்டலாக வகைப்படுத்தப்படுகிறது; கடினமான ஒன்றைச் செய்ய மாணவரைக் கேட்கிறது: பல தனித்த சான்றுகளால் ஆதரிக்கப்படுவதை, ஒரு பகுப்பாய்வைச் சார்ந்த ஊகத்திலிருந்து பிரித்தல். டியூட்டிரோஸ்டோம்களிடையே முட்தோலிகளின் இடம் நன்கு ஆதரிக்கப்படுகிறது. டியூட்டிரோஸ்டோம்களுக்குள் உள்ள உறவுகளின் நுண் விவரங்கள் சிலவற்றில் உறுதி குறைவு; வாசகர் அவற்றை தற்போதைய கருத்தாகக் கருத வேண்டும்.",
+            "Embryonic development, larval structure and molecular evidence inform echinoderm relationships. Compare these lines of evidence with adult anatomy when considering affinities with hemichordates and chordates." to
+                "கருவளர்ச்சி, லார்வா அமைப்பு, மூலக்கூறு ஆதாரங்கள் ஆகியவை முட்தோலிகளின் பரிணாம உறவுகளை விளக்குகின்றன. அரைநாணிகளுடனும் நாணிகளுடனும் ஒப்பிடும்போது, இச்சான்றுகளையும் முதிருயிரியின் உடலமைப்பையும் சேர்த்துப் பார்க்க வேண்டும்.",
         ),
         sections = listOf(
             bsec("deuterostome", "The deuterostome characters", "டியூட்டிரோஸ்டோம் பண்புகள்",

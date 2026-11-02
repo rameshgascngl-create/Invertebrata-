@@ -6,17 +6,16 @@ object ParameciumBookChapter {
         lessonId = "u1-paramecium",
         title = "Paramecium: The Ciliate Type" to "பாரமீசியம்: சிலியேட்டு வகை உயிரி",
         objectives = listOf(
-            "Describe the shape, pellicle, cilia and trichocysts of Paramecium." to "பாரமீசியத்தின் வடிவம், பெல்லிக்கிள், சிலியாக்கள், டிரைக்கோசிஸ்ட்களை விவரிக்க.",
-            "Explain locomotion by ciliary beating." to "சிலியா அசைவால் இயக்கத்தை விளக்க.",
-            "Describe the oral apparatus and the course of feeding and digestion." to "வாய் அமைப்பையும் உணவெடுப்பு, செரிமானப் போக்கையும் விவரிக்க.",
-            "Explain osmoregulation by the contractile vacuoles." to "சுருங்கும் நுண்குமிழ்களால் சவ்வூடுபரவல் ஒழுங்குபடுத்தலை விளக்க.",
-            "Outline fission and conjugation, and the two nuclei." to "பிளவு, இணைவு, இரு உட்கருக்களை சுருக்கமாகக் கூற.",
+            "Identify the organelles and their functions." to
+                "நுண்ணுறுப்புகளையும் அவற்றின் பணிகளையும் அறிதல்.",
+            "Explain feeding, ciliary movement and water balance." to
+                "உணவூட்டம், குறுஇழை இயக்கம், நீர்ச் சமநிலையை விளக்குதல்.",
+            "Compare binary fission and conjugation." to
+                "இருபிளவையும் இணைவையும் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "Paramecium is a unicellular ciliate commonly found in freshwater containing bacteria and decaying organic matter. It can be cultured in a hay infusion and observed under a light microscope. Its cilia, oral groove, contractile vacuoles and two types of nuclei make it a useful organism for studying how one cell performs many life processes." to
-                "பாரமீசியம் என்பது பாக்டீரியாக்களும் சிதையும் கரிமப் பொருட்களும் நிறைந்த நன்னீரில் காணப்படும் ஒருசெல் குறுஇழையுயிரி. இதனை வைக்கோல் ஊறலில் வளர்த்து ஒளி நுண்ணோக்கியில் காணலாம். குறுஇழைகள், வாய்ப்பள்ளம், சுருங்கும் நுண்குமிழ்கள், இருவகை உட்கருக்கள் ஆகிய அமைப்புகள் ஒரே செல் பல உயிர்ச் செயல்களை எவ்வாறு மேற்கொள்கிறது என்பதைப் புரிந்துகொள்ள உதவுகின்றன.",
-            "The account follows the order in which the animal is studied: the external form, movement, feeding, the control of water, the nuclei and reproduction. The numbers of cilia and of the other structures vary with the species, and with Paramecium caudatum as the usual example, the numbers should be given as approximate. The descriptions refer to the stages that can be seen in a living animal or in a stained preparation." to
-                "விளக்கம் விலங்கு ஆராயப்படும் வரிசையைப் பின்பற்றுகிறது: வெளிப்புற வடிவம், இயக்கம், உணவெடுப்பு, நீர்க் கட்டுப்பாடு, உட்கருக்கள், இனப்பெருக்கம். சிலியாக்கள், பிற அமைப்புகளின் எண்ணிக்கை இனத்தைப் பொறுத்து மாறும்; பாரமீசியம் காடேட்டம் வழக்கமான எடுத்துக்காட்டாக உள்ளதால் எண்கள் தோராயமாகத் தரப்பட வேண்டும். விளக்கங்கள் உயிருள்ள விலங்கில் அல்லது சாயமேற்றிய தயாரிப்பில் காணக்கூடிய நிலைகளைக் குறிக்கின்றன.",
+            "Paramecium is a freshwater ciliate whose organelles carry out the functions of a complete organism. Follow feeding, ciliary movement, water balance and reproduction through the corresponding structures and processes." to
+                "பாரமீசியம் நன்னீரில் வாழும் குறுஇழையுயிரி. அதன் நுண்ணுறுப்புகள் உணவூட்டம், இயக்கம், நீர்ச் சமநிலை, இனப்பெருக்கம் ஆகிய பணிகளைச் செய்கின்றன; ஒவ்வொரு செயலையும் அதற்குரிய அமைப்புடன் தொடர்புபடுத்திப் படிக்கலாம்.",
         ),
         sections = listOf(
             bsec("external", "External form, pellicle and cilia", "வெளிப்புற வடிவம், பெல்லிக்கிள், சிலியாக்கள்",

@@ -50,7 +50,7 @@ internal fun CiliaryPlaybackPanel(
         onDispose { lifecycle.removeObserver(observer); player.pause() }
     }
     Text("${index + 1}/${model.stages.size} · " + model.stages[index].heading.value(language), modifier = Modifier.testTag("ciliary-playback-stage"))
-    Canvas(Modifier.fillMaxWidth().height(230.dp).testTag("ciliary-playback-diagram").semantics {
+    Canvas(Modifier.fillMaxWidth().height(if (androidx.compose.ui.platform.LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) 190.dp else 230.dp).testTag("ciliary-playback-diagram").semantics {
         contentDescription = model.stages[index].heading.value(language)
         progressBarRangeInfo = ProgressBarRangeInfo(playback.phase, 0f..1f)
     }) { drawCiliaryPencilDiagram(model.stages[index].id, "cilia", playback.phase) }

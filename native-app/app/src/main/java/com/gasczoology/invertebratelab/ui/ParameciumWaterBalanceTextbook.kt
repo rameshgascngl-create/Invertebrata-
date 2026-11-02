@@ -118,7 +118,7 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-view-plate")) {
                 Text(waterText(language,"Bring the complete pencil plate into view","முழுப் பென்சில் படத்தைத் திரையில் காண்க"))
             }
-            Canvas(Modifier.fillMaxWidth().height(240.dp).bringIntoViewRequester(requester).testTag("r18-water-canvas")
+            Canvas(Modifier.fillMaxWidth().height(if (androidx.compose.ui.platform.LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) 190.dp else 240.dp).bringIntoViewRequester(requester).testTag("r18-water-canvas")
                 .pointerInput(stage.id,progress.selectedStructure) { detectTapGestures { p ->
                     val f=WaterBalanceFigure.fit(size.width.toFloat(),size.height.toFloat())
                     WaterBalanceFigure.at((p.x-f.dx)/f.scale,(p.y-f.dy)/f.scale)?.let(::chooseStructure)
@@ -184,8 +184,8 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-previous")) { Text(waterText(language,"Previous view","முந்தைய காட்சி")) }
             OutlinedButton(onClick={chooseStage(ParameciumWaterBalance.stages[(index+1).coerceAtMost(3)].id)},enabled=index<3,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-next")) { Text(waterText(language,"Next view","அடுத்த காட்சி")) }
-            OutlinedButton(onClick={replay()},shape=shape,
-                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-reset")) { Text(waterText(language,"Replay from the beginning","தொடக்கத்திலிருந்து மீண்டும் இயக்கு")) }
+            OutlinedButton(onClick={chooseStage("osmosis",false)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-reset")) { Text(waterText(language,"Reset this demonstration","காட்சியை மீட்டமை")) }
             OutlinedButton(onClick={player.pause();change(progress.copy(reducedMotion=!progress.reducedMotion,
                 phasePermille=(player.state.value.phase*1000).toInt()))},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-reduced-motion")

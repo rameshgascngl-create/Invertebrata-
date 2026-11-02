@@ -6,17 +6,16 @@ object AnnelidaBookChapter {
         lessonId = "u4-annelida",
         title = "Phylum Annelida: general characters and classification" to "தொகுதி அனெலிடா: பொதுப் பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
-            "State the general characters of Phylum Annelida." to "தொகுதி அனெலிடாவின் பொதுப் பண்புகளைக் கூற.",
-            "Distinguish true metamerism from simple external ringing." to "உண்மையான உடற்கண்டமாதலை எளிய வெளிப்புற வளையத்திலிருந்து வேறுபடுத்த.",
-            "Describe the coelom, septa, setae, excretion and nervous system of annelids." to "அனெலிடாக்களின் உடற்குழி, தடுப்புகள், சீட்டாக்கள், கழிவு நீக்கம், நரம்பு மண்டலத்தை விவரிக்க.",
-            "Describe closed circulation in five points." to "மூடிய இரத்த ஓட்டத்தை ஐந்து புள்ளிகளில் விவரிக்க.",
-            "Classify the phylum into Polychaeta, Oligochaeta and Hirudinea with characters and examples." to "தொகுதியை பாலிகீட்டா, ஒலிகோகீட்டா, ஹிருடினியா எனப் பண்புகள், எடுத்துக்காட்டுகளுடன் வகைப்படுத்த.",
+            "Recognise the characteristic annelid body plan." to
+                "அனெலிடாக்களின் சிறப்பான உடலமைப்பை அறிதல்.",
+            "Explain the significance of segmentation and the coelom." to
+                "உடற்கண்டமாதலின் முக்கியத்துவத்தையும் உடற்குழியின் பங்கையும் விளக்குதல்.",
+            "Compare principal groups with examples." to
+                "முக்கிய வகைகளை எடுத்துக்காட்டுகளுடன் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "The annelids are the segmented worms. The phylum includes the marine bristle worms, the earthworms of the soil and the freshwater and terrestrial leeches, and it contains about seventeen thousand described species, though the numbers are revised from time to time. The name means little rings, and it refers to the appearance of the body, which is divided along its length into a series of similar rings, the segments." to
-                "அனெலிடாக்கள் கண்டமுடைய புழுக்கள். தொகுதியில் கடல் முள்மயிர்ப் புழுக்கள், மண்ணின் மண்புழுக்கள், நன்னீர், தரை அட்டைகள் அடங்கும்; விவரிக்கப்பட்ட இனங்கள் சுமார் பதினேழாயிரம், எண்ணிக்கை அவ்வப்போது திருத்தப்படுகிறது. பெயர் சிறு வளையங்கள் எனப் பொருள்படும்; உடல் நீளவாட்டில் ஒத்த வளையங்களாக, கண்டங்களாகப் பிரிந்திருக்கும் தோற்றத்தைக் குறிக்கிறது.",
-            "The importance of the group in a course on invertebrates is that it is the first in which the body is built of repeated units that include the internal organs, and not only the outer covering. This chapter lists the characters of the phylum, explains what true segmentation means, describes closed circulation, and then divides the phylum into its three traditional classes. The later chapters of this unit take up the individual types, Nereis and the earthworm, and the advantages and consequences of metamerism." to
-                "முதுகெலும்பற்றவை பாடத்தில் குழுவின் முக்கியத்துவம் என்னவெனில், புறப் போர்வை மட்டுமல்ல, உள் உறுப்புகளும் உட்பட மீள்வரும் அலகுகளால் உடல் கட்டப்பட்ட முதல் குழு இது. இந்த அத்தியாயம் தொகுதியின் பண்புகளைப் பட்டியலிட்டு, உண்மையான கண்டமாதல் என்றால் என்ன என்பதை விளக்கி, மூடிய இரத்த ஓட்டத்தை விவரித்து, தொகுதியை மூன்று மரபு வகுப்புகளாகப் பிரிக்கிறது. இந்த அலகின் பின்வரும் அத்தியாயங்கள் நெரிஸ், மண்புழு ஆகிய வகைகளையும் உடற்கண்டமாதலின் நன்மைகள், விளைவுகளையும் எடுத்துக்கொள்கின்றன.",
+            "Annelids have a segmented body, with internal organisation related to this repeated plan. Their varied habitats and ways of moving provide a basis for comparing the main groups." to
+                "அனெலிடாக்களின் உடல் தொடர்ச்சியான கண்டங்களாக அமைந்துள்ளது. அவற்றின் உள் அமைப்பு, வாழிடம், இயக்கமுறை ஆகியவற்றை ஒப்பிட்டு முக்கிய வகைகளை அறியலாம்.",
         ),
         sections = listOf(
             bsec("general-characters", "General characters", "பொதுப் பண்புகள்",

@@ -6,17 +6,16 @@ object FossilsBookChapter {
         lessonId = "u5-fossils",
         title = "Invertebrate Fossils" to "முதுகெலும்பற்ற புதைபடிவங்கள்",
         objectives = listOf(
-            "Explain why hard parts are over-represented in the fossil record." to "புதைபடிவப் பதிவில் கடினப் பகுதிகள் ஏன் மிகையாகப் பிரதிநிதித்துவம் பெறுகின்றன என விளக்க.",
-            "State what makes a good index fossil." to "நல்ல வழிகாட்டிப் புதைபடிவத்தை உருவாக்குவது எது எனக் கூற.",
-            "Write notes on trilobites, ammonites and crinoids." to "டிரைலோபைட்டுகள், அம்மோனைட்டுகள், கிரினாய்டுகள் பற்றி குறிப்புகள் எழுத.",
-            "Explain the fossil record of unicellular organisms and its exceptions." to "ஒருசெல் உயிரிகளின் புதைபடிவப் பதிவையும் அதன் விதிவிலக்குகளையும் விளக்க.",
-            "Distinguish fossil groups from living types studied in the laboratory." to "புதைபடிவக் குழுக்களை ஆய்வகத்தில் படிக்கும் வாழும் வகைகளிலிருந்து வேறுபடுத்த.",
+            "Recognise representative invertebrate fossils." to
+                "முக்கிய முதுகெலும்பற்ற புதைபடிவங்களை அடையாளம் காணுதல்.",
+            "Compare modes of preservation and geological significance." to
+                "பாதுகாப்புமுறைகளையும் புவியியல் முக்கியத்துவத்தையும் ஒப்பிடுதல்.",
+            "Interpret fossils as evidence of past life and environments." to
+                "புதைபடிவங்களைக் கடந்தகால உயிர்கள், சூழல்களுக்கான சான்றுகளாக விளக்குதல்.",
         ),
         introduction = listOf(
-            "A fossil is the preserved remains or traces of an organism of the geological past, and the study of fossils is the study of the history of life. For the student of the invertebrates the fossil record is important in two ways. It provides direct evidence of groups that no longer exist, such as the trilobites and the ammonites, and it gives a time scale for rocks, in which certain fossils are used as markers. It is also a record with a strong bias, and a good answer must say what the bias is and why it arises." to
-                "புதைபடிவம் என்பது புவியியல் கடந்த காலத்தின் உயிரியின் பாதுகாக்கப்பட்ட எச்சங்கள் அல்லது தடயங்கள்; புதைபடிவங்களின் ஆய்வு உயிர் வாழ்க்கையின் வரலாற்று ஆய்வு. முதுகெலும்பற்றவற்றைப் படிக்கும் மாணவருக்கு புதைபடிவப் பதிவு இரு வழிகளில் முக்கியம்: டிரைலோபைட்டுகள், அம்மோனைட்டுகள் போல இனி இல்லாத குழுக்களுக்கு நேரடிச் சான்றைத் தருகிறது; சில புதைபடிவங்கள் குறியீடுகளாகப் பயன்படும் பாறைகளுக்கு காலஅளவையும் தருகிறது. வலுவான சார்பு கொண்ட பதிவும் கூட; நல்ல விடை அச்சார்பு என்ன, ஏன் எழுகிறது எனக் கூற வேண்டும்.",
-            "The topic is classed as enrichment. It asks the student to apply what has been learned about the invertebrate groups to the question of what is preserved and what is not, and to avoid a common confusion: the living animals that are studied in the laboratory, such as Pila and Asterias, are not fossils, and the extinct groups described here are not available as living types." to
-                "தலைப்பு செறிவூட்டலாக வகைப்படுத்தப்படுகிறது. முதுகெலும்பற்ற குழுக்கள் பற்றிக் கற்றதை, எது பாதுகாக்கப்படுகிறது எது இல்லை என்ற கேள்விக்குப் பயன்படுத்தவும் பொதுவான குழப்பத்தைத் தவிர்க்கவும் மாணவரைக் கேட்கிறது: ஆய்வகத்தில் படிக்கும் பைலா, அஸ்டீரியாஸ் போன்ற வாழும் விலங்குகள் புதைபடிவங்கள் அல்ல; இங்கு விவரிக்கப்படும் அழிந்த குழுக்கள் வாழும் வகைகளாகக் கிடைப்பதில்லை.",
+            "Invertebrate fossils preserve evidence of past organisms and environments. Their form, preservation and position in rock layers help reconstruct biological history." to
+                "முதுகெலும்பற்ற விலங்குகளின் புதைபடிவங்கள் பழங்கால உயிர்களையும் சூழல்களையும் அறிய உதவுகின்றன. அவற்றின் வடிவம், பாதுகாப்புமுறை, பாறை அடுக்கில் உள்ள இடம் ஆகியவற்றைக் கொண்டு உயிர்களின் வரலாற்றை விளக்கலாம்.",
         ),
         sections = listOf(
             bsec("preservation", "Fossilisation and preservation bias", "புதைபடிவமாதலும் பாதுகாப்புச் சார்பும்",

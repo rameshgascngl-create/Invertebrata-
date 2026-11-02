@@ -6,17 +6,16 @@ object FasciolaBookChapter {
         lessonId = "u3-fasciola",
         title = "Fasciola hepatica: the liver fluke" to "ஃபாசியோலா ஹெப்பாட்டிகா: கல்லீரல் ஃப்ளூக்",
         objectives = listOf(
-            "Describe the habitat, external features and body covering of Fasciola hepatica." to "ஃபாசியோலா ஹெப்பாட்டிகாவின் வாழிடம், புறத்தோற்றம், உடல் உறையை விவரிக்க.",
-            "Describe the digestive, excretory, nervous and reproductive systems." to "செரிமான, கழிவு நீக்க, நரம்பு, இனப்பெருக்க மண்டலங்களை விவரிக்க.",
-            "Explain how the reproductive organs of a hermaphrodite fluke are arranged." to "இருபால் உயிரி ஃப்ளூக்கின் இனப்பெருக்க உறுப்புகள் எவ்வாறு அமைந்துள்ளன என்பதை விளக்க.",
-            "Write the life cycle in the correct sequence, naming each larval stage and host." to "வாழ்க்கைச் சுழற்சியை சரியான வரிசையில், ஒவ்வொரு லார்வா நிலையையும் விருந்தோம்பியையும் பெயரிட்டு எழுத.",
-            "Trace the migration of the juvenile fluke in the mammalian host." to "பாலூட்டி விருந்தோம்பியில் இளம் ஃப்ளூக்கின் நகர்வைப் பின்தொடர.",
+            "Describe adult structure and parasitic adaptations." to
+                "முதிர்ந்த புழுவின் அமைப்பையும் ஒட்டுண்ணித் தகவமைப்புகளையும் விவரித்தல்.",
+            "Trace the life cycle through the two hosts." to
+                "இரு விருந்தோம்பிகளிலும் நடைபெறும் வாழ்க்கைச் சுழற்சியை விளக்குதல்.",
+            "Relate the infective stage to transmission and prevention." to
+                "தொற்றுநிலையைப் பரவும் வழியுடனும் தடுப்புமுறைகளுடனும் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "Fasciola hepatica is the liver fluke, a trematode that lives in the bile ducts of sheep, cattle and other grazing mammals, and sometimes of people. It causes fascioliasis, or liver rot, which is a serious disease of livestock and is an important cause of loss to farmers. The animal is the standard type study of the class Trematoda, and it is the first in which the student meets a complex parasitic life cycle with several larval stages and an intermediate host." to
-                "ஃபாசியோலா ஹெப்பாட்டிகா கல்லீரல் ஃப்ளூக்; ஆடு, மாடு, பிற மேயும் பாலூட்டிகளின், சில நேரங்களில் மனிதர்களின், பித்த நாளங்களில் வாழும் டிரிமட்டோடா. இது கால்நடைகளின் கடுமையான நோயான ஃபாசியோலியாசிஸ் அல்லது கல்லீரல் அழுகலை ஏற்படுத்துகிறது; விவசாயிகளுக்கு முக்கிய இழப்புக் காரணம். இவ்விலங்கு டிரிமட்டோடா வகுப்பின் நிலையான வகை ஆய்வு; பல லார்வா நிலைகளும் இடைநிலை விருந்தோம்பியும் கொண்ட சிக்கலான ஒட்டுண்ணி வாழ்க்கைச் சுழற்சியை மாணவர் முதலில் சந்திப்பது இதில்தான்.",
-            "The chapter follows the usual plan: habit and habitat, external features, the body wall, the systems of the body, reproduction, and the life cycle. Three figures are inserted at the places in the text where they are needed, and each is shown once." to
-                "அத்தியாயம் வழக்கமான திட்டத்தைப் பின்பற்றுகிறது: வாழ்முறையும் வாழிடமும், புறத்தோற்றம், உடற்சுவர், உடலின் மண்டலங்கள், இனப்பெருக்கம், வாழ்க்கைச் சுழற்சி. மூன்று படங்கள் உரையில் தேவைப்படும் இடங்களில் செருகப்பட்டுள்ளன; ஒவ்வொன்றும் ஒருமுறை காட்டப்படுகிறது.",
+            "Adult Fasciola hepatica inhabits the bile ducts of its definitive host. Its development through a freshwater snail explains the link between its life cycle and transmission." to
+                "முதிர்ந்த ஃபாசியோலா ஹெப்பாட்டிகா, இறுதி விருந்தோம்பியின் பித்தநாளங்களில் வாழ்கிறது. நன்னீர் நத்தையில் நடைபெறும் வளர்ச்சி நிலைகளை அறிந்தால், அதன் வாழ்க்கைச் சுழற்சியையும் பரவலையும் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("habitat", "Habit and habitat", "வாழ்முறையும் வாழிடமும்",

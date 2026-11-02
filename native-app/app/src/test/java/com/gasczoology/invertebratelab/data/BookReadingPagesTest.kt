@@ -32,4 +32,15 @@ class BookReadingPagesTest {
         assertTrue(ids("u4-penaeus").containsAll(listOf("appendages", "larvae")))
         listOf("u1-paramecium", "u2-sycon", "u2-obelia", "u3-fasciola", "u3-ascaris").forEach { assertTrue(ids(it).contains("interactive")) }
     }
+    @Test fun fiveUnitChapterOpeningsStayBriefAndBilingual() {
+        val books = BookChapters.all.filter { BookLayout.unitNumber(it.lessonId) <= 5 }
+        assertEquals(43, books.size)
+        books.forEach { book ->
+            assertEquals(book.lessonId, 3, book.objectives.size)
+            assertEquals(book.lessonId, 1, book.introduction.size)
+            assertTrue(book.lessonId, book.introduction.single().english.split(Regex("\\s+")).size <= 40)
+            assertTrue(book.lessonId, book.introduction.single().tamil.length < 450)
+        }
+    }
+
 }

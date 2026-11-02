@@ -6,17 +6,16 @@ object AscarisBookChapter {
         lessonId = "u3-ascaris",
         title = "Ascaris lumbricoides: the human roundworm" to "அஸ்காரிஸ் லம்பிரிக்காய்டஸ்: மனித உருளைப்புழு",
         objectives = listOf(
-            "Describe the habit, habitat and external features of Ascaris, and distinguish the male from the female." to "அஸ்காரிஸின் வாழ்முறை, வாழிடம், புறத்தோற்றத்தை விவரித்து, ஆணைப் பெண்ணிலிருந்து வேறுபடுத்த.",
-            "Describe the body wall, the alimentary canal, and the excretory and nervous systems." to "உடற்சுவர், உணவுக்குழல், கழிவு நீக்க, நரம்பு மண்டலங்களை விவரிக்க.",
-            "Describe the male and female reproductive systems." to "ஆண், பெண் இனப்பெருக்க மண்டலங்களை விவரிக்க.",
-            "Write the life cycle in the correct sequence, including the migration of the larva." to "லார்வாவின் நகர்வு உட்பட வாழ்க்கைச் சுழற்சியைச் சரியான வரிசையில் எழுத.",
-            "Explain why the cycle needs no intermediate host and how this affects control." to "சுழற்சிக்கு இடைநிலை விருந்தோம்பி ஏன் தேவையில்லை, இது கட்டுப்பாட்டை எவ்வாறு பாதிக்கிறது என்பதை விளக்க.",
+            "Distinguish the external features of male and female worms." to
+                "ஆண், பெண் புழுக்களின் வெளிப்புறப் பண்புகளை வேறுபடுத்துதல்.",
+            "Explain the principal organ systems and parasitic adaptations." to
+                "முக்கிய உறுப்பு மண்டலங்களையும் ஒட்டுண்ணித் தகவமைப்புகளையும் விளக்குதல்.",
+            "Trace the life cycle and relate it to transmission." to
+                "வாழ்க்கைச் சுழற்சியைப் பரவும் வழியுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "Ascaris lumbricoides is the large roundworm of the human small intestine. It is one of the most common parasites of people, and the number of persons that it infects in the world is counted in hundreds of millions, mostly children in warm countries where sanitation is poor. The adult worm is large and easily handled, and for this reason it has long been the type study for the phylum Nematoda." to
-                "அஸ்காரிஸ் லம்பிரிக்காய்டஸ் மனித சிறுகுடலின் பெரிய உருளைப்புழு. மனிதர்களின் மிகப் பொதுவான ஒட்டுண்ணிகளில் ஒன்று; உலகில் அது தொற்றும் மக்களின் எண்ணிக்கை நூற்றுக்கணக்கான மில்லியன்கள்; பெரும்பாலும் சுகாதாரம் மோசமான வெப்ப நாடுகளின் குழந்தைகள். முதிர்ந்த புழு பெரியது, எளிதில் கையாளக்கூடியது; இதனால் நெமட்டோடா தொகுதியின் வகை ஆய்வாக நீண்ட காலம் இருந்து வருகிறது.",
-            "The chapter describes the structure of the worm under the headings of habit and habitat, external features, body wall, and the systems of the body, and it ends with the life cycle and its consequences for the control of the infection. Three figures are placed where the text calls for them, each shown once." to
-                "அத்தியாயம் புழுவின் அமைப்பை வாழ்முறையும் வாழிடமும், புறத்தோற்றம், உடற்சுவர், உடலின் மண்டலங்கள் என்ற தலைப்புகளில் விவரித்து, வாழ்க்கைச் சுழற்சியுடனும் தொற்றுக் கட்டுப்பாட்டுக்கான அதன் விளைவுகளுடனும் முடிகிறது. உரை கோரும் இடங்களில் மூன்று படங்கள் வைக்கப்பட்டுள்ளன; ஒவ்வொன்றும் ஒருமுறை காட்டப்படுகிறது.",
+            "Ascaris lumbricoides is a human intestinal roundworm with separate sexes. Its resistant eggs and migrating larvae are central to understanding its life cycle and transmission." to
+                "அஸ்காரிஸ் லம்பிரிக்காய்டஸ் மனிதக் குடலில் வாழும் உருளைப்புழு; ஆண், பெண் புழுக்கள் தனித்தனியாக உள்ளன. எதிர்ப்புத்திறன் கொண்ட முட்டைகளும் உடலினுள் இடம்பெயரும் லார்வாக்களும் அதன் வாழ்க்கைச் சுழற்சியில் முக்கியமானவை.",
         ),
         sections = listOf(
             bsec("habitat", "Habit and habitat", "வாழ்முறையும் வாழிடமும்",

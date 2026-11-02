@@ -6,16 +6,16 @@ object NutritionBookChapter {
         lessonId = "u1-nutrition",
         title = "Nutrition in Protozoa" to "புரோட்டோசோவாவில் ஊட்டச்சத்து",
         objectives = listOf(
-            "Distinguish holozoic, saprozoic, holophytic and mixotrophic nutrition." to "ஹோலோசோயிக், சாப்ரோசோயிக், ஹோலோஃபைடிக், கலப்பு ஊட்டமுறைகளை வேறுபடுத்த.",
-            "Describe feeding in Amoeba, Paramecium and Euglena." to "அமீபா, பாரமீசியம், யூக்ளினாவில் உணவூட்டலை விவரிக்க.",
-            "Explain why the modes are strategies and not rigid taxonomic labels." to "ஊட்டமுறைகள் கடினமான வகைப்பாட்டு முத்திரைகள் அல்ல, உத்திகள் என ஏன் கூறப்படுகிறது என விளக்க.",
-            "Follow the fate of a food vacuole from formation to egestion." to "உணவு நுண்குமிழின் உருவாக்கம் முதல் வெளியேற்றம் வரை பின்தொடர.",
+            "Distinguish the principal modes of nutrition." to
+                "முக்கிய ஊட்டமுறைகளை வேறுபடுத்துதல்.",
+            "Explain ingestion, digestion and absorption within a cell." to
+                "செல்லினுள் உணவு உட்கொள்ளுதல், செரித்தல், உறிஞ்சுதல் ஆகியவற்றை விளக்குதல்.",
+            "Compare nutritional methods using suitable organisms." to
+                "உரிய உயிரினங்களின் எடுத்துக்காட்டுகளுடன் ஊட்டமுறைகளை ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "A unicellular organism must obtain nutrients and energy using its own cellular structures. Traditionally, protozoan nutrition is described as holozoic (ingesting food particles), saprozoic (absorbing dissolved organic nutrients), holophytic (photosynthetic) or mixotrophic (combining nutritional strategies). Amoeba engulfs food with pseudopodia, Paramecium directs particles into its oral apparatus, and photosynthetic Euglena can use different nutrient sources under different conditions. These terms describe feeding strategies, not modern taxonomic groups." to
-                "ஒருசெல் உயிரி தனது செல் அமைப்புகளின் உதவியால் ஊட்டப்பொருட்களையும் ஆற்றலையும் பெறுகிறது. மரபுவழியாகப் புரோட்டோசோவாவின் ஊட்டமுறைகள் திண்ம உணவுத் துகள்களை உட்கொள்ளும் ஹோலோசோயிக் ஊட்டம், கரைந்த கரிம ஊட்டப்பொருட்களை உறிஞ்சும் சாப்ரோசோயிக் ஊட்டம், ஒளிச்சேர்க்கை மூலம் உணவு தயாரிக்கும் ஹோலோஃபைடிக் ஊட்டம், ஒன்றுக்கு மேற்பட்ட ஊட்டமுறைகளை இணைக்கும் கலப்பு ஊட்டம் என விவரிக்கப்படுகின்றன. அமீபா போலிக்கால்களால் உணவைச் சூழ்ந்து உட்கொள்கிறது; பாரமீசியம் வாய்ப்பகுதி வழியாக உணவுத் துகள்களைச் செலுத்துகிறது; ஒளிச்சேர்க்கை செய்யும் யூக்ளீனா சூழ்நிலைக்கேற்ப வெவ்வேறு ஊட்ட ஆதாரங்களைப் பயன்படுத்தக்கூடும். இச்சொற்கள் ஊட்டமுறைகளைக் குறிக்கின்றன; நவீன வகைப்பாட்டுக் குழுக்களைக் குறிக்கவில்லை.",
-            "A caution is needed at the beginning. The four terms describe how an organism feeds, and they do not name groups of organisms. A student who writes that 'Euglena is a plant' or that 'Paramecium is always holozoic' has turned a strategy into a classification. The strategy is real, and the structures that serve it are real, but the same species may change its strategy with the conditions, and some of the organisms in the list belong to groups that are themselves reconsidered in modern classification." to
-                "தொடக்கத்திலேயே ஓர் எச்சரிக்கை தேவை. நான்கு சொற்களும் உயிரி எவ்வாறு உண்கிறது என்பதை விவரிக்கின்றன; உயிரிக் குழுக்களுக்குப் பெயரிடுவதில்லை. 'யூக்ளினா ஒரு தாவரம்' அல்லது 'பாரமீசியம் எப்போதும் ஹோலோசோயிக்' என எழுதும் மாணவர் ஓர் உத்தியை வகைப்பாடாக மாற்றிவிட்டார். உத்தி உண்மையானது; அதற்குப் பணிபுரியும் அமைப்புகளும் உண்மையானவை; ஆனால் ஒரே இனம் சூழ்நிலைக்கேற்ப உத்தியை மாற்றக்கூடும்; பட்டியலிலுள்ள சில உயிரிகள் தாமே நவீன வகைப்பாட்டில் மறுபரிசீலிக்கப்படும் குழுக்களைச் சேர்ந்தவை.",
+            "Unicellular eukaryotes obtain nutrients in several ways, including photosynthesis, ingestion and absorption. Their cell structures and food processing illustrate how nutrition is carried out within a single cell." to
+                "ஒற்றைசெல் யூகேரியோட்டுகள் ஒளிச்சேர்க்கை, உணவுத் துகள்களை உட்கொள்ளுதல், கரைந்த ஊட்டப்பொருட்களை உறிஞ்சுதல் போன்ற முறைகளில் ஊட்டம் பெறுகின்றன. செல் அமைப்புகளையும் உணவு பதப்படுத்தப்படும் நிலைகளையும் கொண்டு இம்முறைகளைப் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("modes", "The four modes of nutrition", "நான்கு ஊட்டமுறைகள்",

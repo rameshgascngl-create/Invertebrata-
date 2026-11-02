@@ -6,17 +6,16 @@ object PeripatusBookChapter {
         lessonId = "u4-peripatus",
         title = "Peripatus (Onychophora) and its affinities" to "பெரிபேட்டஸ் (ஓனிகோஃபோரா) அதன் உறவுகளும்",
         objectives = listOf(
-            "Describe the habit, habitat and external features of Peripatus." to "பெரிபேட்டஸின் பழக்கம், வாழிடம், வெளிப்புற அம்சங்களை விவரிக்க.",
-            "List the arthropod-like and annelid-like characters of Onychophora." to "ஓனிகோஃபோராவின் ஆர்த்ரோபோடா போன்ற, அனெலிடா போன்ற பண்புகளைப் பட்டியலிட.",
-            "Identify the characters that are peculiar to the phylum." to "தொகுதிக்கே உரிய பண்புகளை அடையாளம் காண.",
-            "State the modern view of the position of Onychophora." to "ஓனிகோஃபோராவின் இடம் பற்றிய நவீன கருத்தைக் கூற.",
-            "Explain why a living Peripatus is not the direct ancestor of arthropods." to "வாழும் பெரிபேட்டஸ் ஆர்த்ரோபோடாக்களின் நேரடி மூதாதையர் அல்ல என்பதை விளக்க.",
+            "Identify the characteristic structures of Peripatus." to
+                "பெரிபேட்டஸின் சிறப்பு அமைப்புகளை அறிதல்.",
+            "Compare its annelid-like and arthropod-like features." to
+                "அதன் அனெலிடா, கணுக்காலிப் பண்புகளை ஒப்பிடுதல்.",
+            "Explain its position and evolutionary affinities." to
+                "அதன் வகைப்பாட்டு இடத்தையும் பரிணாம உறவுகளையும் விளக்குதல்.",
         ),
         introduction = listOf(
-            "Peripatus is the name used in textbooks for the velvet worms, soft-bodied animals that look like caterpillars with many short legs, and that belong to the phylum Onychophora. For more than a century they were described as a connecting link between the annelids and the arthropods, and the phrase still appears in older books. The animal is of interest because it combines characters that are met separately in the two larger phyla, and also because the interpretation of this combination has changed. This chapter describes the animal, sets out the characters in two columns, and then gives the present view of its place among animals." to
-                "பெரிபேட்டஸ் என்பது ஓனிகோஃபோரா தொகுதியைச் சேர்ந்த, பல குட்டைக் கால்களுடன் புழுக்கள் போலத் தோன்றும் மென்மையான உடல் கொண்ட வெல்வெட் புழுக்களுக்கு நூல்களில் பயன்படும் பெயர். ஒரு நூற்றாண்டுக்கும் மேலாக அவை அனெலிடாக்களுக்கும் ஆர்த்ரோபோடாக்களுக்கும் இடையிலான இணைக்கும் கண்ணியாக விவரிக்கப்பட்டன; இச்சொற்றொடர் பழைய நூல்களில் இன்னும் தோன்றுகிறது. இரு பெரிய தொகுதிகளிலும் தனித்தனியே காணப்படும் பண்புகளை இவ்விலங்கு இணைப்பதாலும், இத்தொகுப்பின் விளக்கம் மாறியுள்ளதாலும் இது ஆர்வமூட்டுகிறது. இந்த அத்தியாயம் விலங்கை விவரித்து, பண்புகளை இரு பத்திகளில் அமைத்து, பின்னர் விலங்குகளிடையே அதன் இடம் பற்றிய தற்போதைய கருத்தைத் தருகிறது.",
-            "The conclusion that matters for an examination is stated in a sentence. Onychophora is a distinct lineage of animals, closely related to the arthropods, and the old description of it as a connecting link is a historical shorthand, and not a statement about ancestry." to
-                "தேர்வுக்கு முக்கியமான முடிவு ஒரு வாக்கியத்தில் கூறப்படுகிறது: ஓனிகோஃபோரா ஆர்த்ரோபோடாக்களுடன் நெருங்கிய தொடர்புடைய தனி விலங்குப் பரம்பரை; இணைக்கும் கண்ணி என்ற பழைய விவரிப்பு வரலாற்றுச் சுருக்கச் சொல், மூதாதைத் தொடர்பு பற்றிய கூற்று அல்ல.",
+            "Peripatus is a terrestrial onychophoran with a distinctive combination of characters. Comparing it with annelids and arthropods clarifies its affinities without treating it as a direct ancestor of either group." to
+                "பெரிபேட்டஸ், ஓனிகோஃபோரா தொகுதியைச் சேர்ந்த நிலவாழ் விலங்கு. அதன் பண்புகளை அனெலிடாக்களுடனும் கணுக்காலிகளுடனும் ஒப்பிட்டு உறவுமுறையை அறியலாம்; அதை இரு தொகுதிகளுக்கும் நேரடி மூதாதையாகக் கருதக்கூடாது.",
         ),
         sections = listOf(
             bsec("external", "Habit, habitat and external features", "பழக்கம், வாழிடம், வெளிப்புற அம்சங்கள்",

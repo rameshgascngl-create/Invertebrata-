@@ -6,17 +6,16 @@ object MetamerismBookChapter {
         lessonId = "u4-metamerism",
         title = "Metamerism in Annelida" to "அனெலிடாவில் உடற்கண்டமாதல்",
         objectives = listOf(
-            "Define metamerism and describe how it appears in an annelid." to "உடற்கண்டமாதலை வரையறுத்து அனெலிடாவில் அது எவ்வாறு தோன்றுகிறது என விவரிக்க.",
-            "List the structures that are repeated in each segment." to "ஒவ்வொரு கண்டத்திலும் மீள்வரும் அமைப்புகளைப் பட்டியலிட.",
-            "Explain how and where new segments are added." to "புதிய கண்டங்கள் எவ்வாறு, எங்கு சேர்க்கப்படுகின்றன என விளக்க.",
-            "Explain the advantages of metamerism for movement and body organisation." to "இயக்கத்துக்கும் உடல் அமைப்புக்கும் உடற்கண்டமாதலின் நன்மைகளை விளக்க.",
-            "Distinguish an annelid metamere from a nematode annulation and a tapeworm proglottid." to "அனெலிடா மெட்டாமியரை நெமட்டோடா வளையத்திலிருந்தும் நாடாப்புழு புரோகுளோட்டிடிலிருந்தும் வேறுபடுத்த.",
+            "Define metamerism and distinguish related terms." to
+                "உடற்கண்டமாதலை வரையறுத்து, தொடர்புடைய சொற்களை வேறுபடுத்துதல்.",
+            "Recognise external and internal evidence of segmentation." to
+                "வெளிப்புற, உட்புறக் கண்ட அமைப்புகளுக்கான சான்றுகளை அறிதல்.",
+            "Explain its functional and evolutionary significance." to
+                "அதன் செயல்பாட்டு, பரிணாம முக்கியத்துவத்தை விளக்குதல்.",
         ),
         introduction = listOf(
-            "Of all the features of annelids, none is more often discussed or more often misunderstood than segmentation. Books use the words metamerism, segmentation and annulation as if they meant the same, and then a student who has been told that the earthworm is segmented is asked whether a tapeworm is segmented too. The answer depends upon what is being repeated and how, and the purpose of this chapter is to make the definition exact." to
-                "அனெலிடாக்களின் பண்புகளில் கண்டமாதலை விட அடிக்கடி விவாதிக்கப்படுவதும் தவறாகப் புரிந்துகொள்ளப்படுவதும் வேறில்லை. நூல்கள் மெட்டாமெரிசம், கண்டமாதல், வளையமாதல் ஆகிய சொற்களை ஒரே பொருளுடையவை போலப் பயன்படுத்துகின்றன; பின்னர் மண்புழு கண்டமுடையது என்று கூறப்பட்ட மாணவரிடம் நாடாப்புழுவும் கண்டமுடையதா என்று கேட்கப்படுகிறது. விடை எது மீள்கிறது, எவ்வாறு மீள்கிறது என்பதைப் பொறுத்தது; வரையறையைத் துல்லியமாக்குவதே இந்த அத்தியாயத்தின் நோக்கம்.",
-            "The chapter defines metamerism, lists the repeated parts, describes the growth zone at the posterior end, sets out the advantages of the plan, and ends with the comparison with look-alike structures in other worms that the examination likes to ask for." to
-                "அத்தியாயம் உடற்கண்டமாதலை வரையறுக்கிறது; மீள்வரும் பகுதிகளைப் பட்டியலிடுகிறது; பின் முனை வளர்ச்சி மண்டலத்தை விவரிக்கிறது; திட்டத்தின் நன்மைகளை முன்வைக்கிறது; தேர்வு கேட்க விரும்பும் பிற புழுக்களின் ஒத்த தோற்ற அமைப்புகளுடன் ஒப்பீட்டுடன் முடிகிறது.",
+            "Metamerism is the serial arrangement of body segments along the longitudinal axis. In annelids, its expression in the body wall and internal organs helps explain movement and regional specialisation." to
+                "உடலின் நீள அச்சில் கண்டங்கள் தொடர்ச்சியாக அமைவதே உடற்கண்டமாதல். அனெலிடாக்களின் உடற்சுவரிலும் உள் உறுப்புகளிலும் இவ்வமைப்பைக் காணலாம்; இயக்கத்திலும் பகுதிகள் சிறப்புப் பணிகளைப் பெறுவதிலும் இது பங்காற்றுகிறது.",
         ),
         sections = listOf(
             bsec("definition", "What metamerism is", "உடற்கண்டமாதல் என்றால் என்ன",

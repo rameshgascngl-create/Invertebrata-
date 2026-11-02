@@ -7,22 +7,16 @@ object PoriferaBookChapter {
         title = "Phylum Porifera: general characters and classification" to
             "துளையுடலிகள் தொகுதி: பொதுப் பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
-            "State what a sponge is and explain the meaning of the name Porifera." to
-                "கடற்பஞ்சு என்றால் என்ன என்பதைக் கூறி, துளையுடலிகள் என்ற பெயரின் பொருளை விளக்க.",
-            "List the general characters of the phylum." to
-                "தொகுதியின் பொதுப் பண்புகளைப் பட்டியலிட.",
-            "Describe the cell types of a sponge and the function of each." to
-                "கடற்பஞ்சின் செல் வகைகளையும் அவற்றின் பணிகளையும் விவரிக்க.",
-            "Compare the skeletons of the three main classes and classify sponges up to class with examples." to
-                "மூன்று முதன்மை வகுப்புகளின் எலும்புக்கூட்டை ஒப்பிட்டு, எடுத்துக்காட்டுகளுடன் வகுப்புவரை வகைப்படுத்த.",
-            "Explain the cellular basis of regeneration in sponges." to
-                "கடற்பஞ்சுகளில் மீளுருவாக்கத்தின் செல்மட்ட அடிப்படையை விளக்க.",
+            "Recognise the defining features of sponges." to
+                "கடற்பஞ்சுகளின் அடிப்படைப் பண்புகளை அறிதல்.",
+            "Relate cell types and canal systems to their functions." to
+                "செல் வகைகளையும் கால்வாய் அமைப்புகளையும் அவற்றின் பணிகளுடன் தொடர்புபடுத்துதல்.",
+            "Distinguish the main sponge classes with examples." to
+                "கடற்பஞ்சுகளின் முக்கிய வகுப்புகளை எடுத்துக்காட்டுகளுடன் வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
-            "Sponges look so little like animals that they were long classed as plants. They do not move, they have no head, mouth or nerves, and a living specimen may look like a lump of rock or a mat on a shell. Their animal nature was settled only when naturalists in the early nineteenth century, among them Robert Grant, observed the currents of water that pass through them and saw that sponges feed on particles carried by that water." to
-                "கடற்பஞ்சுகள் விலங்குகளைப் போலவே தோன்றாததால் நீண்ட காலம் தாவரங்களாகவே கருதப்பட்டன. அவை நகர்வதில்லை; தலை, வாய், நரம்புகள் இல்லை; உயிருள்ள மாதிரி பாறைத் துண்டுபோலவோ ஓட்டின் மீதுள்ள படலம்போலவோ தோன்றலாம். பத்தொன்பதாம் நூற்றாண்டின் தொடக்கத்தில் ராபர்ட் கிராண்ட் உள்ளிட்ட இயற்கை ஆய்வாளர்கள் அவற்றினூடே நீரோட்டம் செல்வதைக் கண்டு, அந்த நீருடன் வரும் துகள்களையே அவை உண்கின்றன என்பதை அறிந்த பின்னரே அவற்றின் விலங்குத் தன்மை உறுதியானது.",
-            "This chapter introduces the phylum as a whole. It states the general characters, describes the cells and the skeleton on which the classification rests, and then classifies sponges up to class. The type study Sycon, the canal systems and reproduction are treated in the chapters that follow." to
-                "இந்த அத்தியாயம் தொகுதியை முழுமையாக அறிமுகப்படுத்துகிறது. பொதுப் பண்புகளைக் கூறி, வகைப்பாட்டின் அடிப்படையான செல்களையும் எலும்புக்கூட்டையும் விவரித்து, வகுப்புவரை வகைப்படுத்துகிறது. இன ஆய்வான சைக்கான், கால்வாய் அமைப்புகள், இனப்பெருக்கம் ஆகியவை பின்வரும் அத்தியாயங்களில் விளக்கப்படுகின்றன.",
+            "Sponges draw water through a porous body to obtain food and oxygen. Their cell organisation, skeleton and canal systems distinguish the main groups of Porifera." to
+                "கடற்பஞ்சுகள் உடலின் துளைகள் வழியாக நீரை உள்ளிழுத்து உணவையும் ஆக்சிஜனையும் பெறுகின்றன. செல் அமைப்பு, எலும்புக்கூடு, கால்வாய் அமைப்பு ஆகியவற்றின் அடிப்படையில் அவற்றின் முக்கிய வகுப்புகளை வேறுபடுத்தலாம்.",
         ),
         sections = listOf(
             bsec("meaning", "The name and the animal", "பெயரும் விலங்கும்",

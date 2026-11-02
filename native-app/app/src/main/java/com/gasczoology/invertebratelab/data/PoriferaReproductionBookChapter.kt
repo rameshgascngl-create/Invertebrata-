@@ -6,22 +6,16 @@ object PoriferaReproductionBookChapter {
         lessonId = "u2-reproduction",
         title = "Reproduction in sponges" to "கடற்பஞ்சுகளில் இனப்பெருக்கம்",
         objectives = listOf(
-            "Distinguish asexual from sexual reproduction in sponges and give the main methods of each." to
-                "கடற்பஞ்சுகளில் பாலிலா, பாலின இனப்பெருக்கத்தை வேறுபடுத்தி, ஒவ்வொன்றின் முக்கிய முறைகளைக் கூற.",
-            "Describe the structure, function and significance of a gemmule, and explain why it is not a larva." to
-                "ஜெம்யூலின் அமைப்பு, பணி, முக்கியத்துவத்தை விவரித்து, அது ஏன் லார்வா அல்ல என்பதை விளக்க.",
-            "Outline gamete formation, fertilisation and early development in a sponge." to
-                "கடற்பஞ்சில் கேமீட் உருவாக்கம், கருவுறுதல், ஆரம்ப வளர்ச்சி ஆகியவற்றை வரைந்து விளக்க.",
-            "Name the larvae of calcareous and demosponges and describe the inversion of the amphiblastula." to
-                "சுண்ணாம்புக் கடற்பஞ்சு, டெமோஸ்பாஞ்சு லார்வாக்களைப் பெயரிட்டு, ஆம்ஃபிபிளாஸ்டுலாவின் புரட்டலை விவரிக்க.",
-            "Explain why archaeocytes make regeneration and gemmule formation possible." to
-                "மீளுருவாக்கமும் ஜெம்யூல் உருவாக்கமும் ஆர்கியோசைட்டுகளால் எவ்வாறு சாத்தியமாகின்றன என்பதை விளக்க.",
+            "Distinguish asexual and sexual reproduction in sponges." to
+                "கடற்பஞ்சுகளின் பாலிலா, பாலின இனப்பெருக்க முறைகளை வேறுபடுத்துதல்.",
+            "Explain fertilisation and representative larval stages." to
+                "கருவுறுதலையும் முக்கிய லார்வா நிலைகளையும் விளக்குதல்.",
+            "Relate dispersal and settlement to the life cycle." to
+                "பரவலையும் நிலைகொள்ளுதலையும் வாழ்க்கைச் சுழற்சியுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "A sponge has no organs, and so its reproduction is accomplished by cells that are set aside for the purpose or that retain the power to become any other kind of cell. Two kinds of reproduction occur, and they do different work. Asexual reproduction keeps a successful sponge in the place where it is already living, by producing copies of it close by or by carrying it through bad seasons. Sexual reproduction produces new combinations of genes and a free-swimming larva that spreads the species to new places." to
-                "கடற்பஞ்சுக்கு உறுப்புகள் இல்லை; எனவே அதன் இனப்பெருக்கம் அதற்காக ஒதுக்கப்பட்ட செல்களாலோ, வேறு எந்த வகை செல்லாகவும் மாறும் ஆற்றலைத் தக்கவைத்த செல்களாலோ நிறைவேறுகிறது. இரு வகை இனப்பெருக்கம் நிகழ்கிறது; இரண்டும் வெவ்வேறு பணிகளைச் செய்கின்றன. பாலிலா இனப்பெருக்கம், வெற்றிகரமான கடற்பஞ்சை அது வாழும் இடத்திலேயே, அருகில் நகல்களை உருவாக்கியோ மோசமான பருவங்களைக் கடக்கச் செய்தோ நிலைநிறுத்துகிறது. பாலின இனப்பெருக்கம் புதிய மரபணுச் சேர்க்கைகளையும், இனத்தைப் புதிய இடங்களுக்குப் பரப்பும் சுதந்திரமாக நீந்தும் லார்வாவையும் தருகிறது.",
-            "This chapter treats the two kinds in turn, begins each with a definition and then follows the sequence of events. It ends with the regeneration that underlies both. A useful memory aid, which the examination notes use, is stay or disperse: asexual methods keep the sponge where it is, whereas the sexual larva disperses." to
-                "இந்த அத்தியாயம் இரண்டு வகைகளையும் வரிசையாக ஆராய்கிறது; ஒவ்வொன்றையும் வரையறையுடன் தொடங்கி நிகழ்வுகளின் தொடரைப் பின்தொடர்கிறது. இரண்டுக்கும் அடிப்படையான மீளுருவாக்கத்துடன் முடிகிறது. தேர்வுக் குறிப்புகள் பயன்படுத்தும் நினைவூட்டல்: நிலை அல்லது பரவல் — பாலிலா முறைகள் கடற்பஞ்சை இருக்கும் இடத்திலேயே வைக்கின்றன; பாலின லார்வா பரவுகிறது.",
+            "Sponges reproduce both asexually and sexually. Their larvae disperse, settle and develop into attached adults; the details vary among sponge groups." to
+                "கடற்பஞ்சுகள் பாலிலா முறையிலும் பாலின முறையிலும் இனப்பெருக்கம் செய்கின்றன. லார்வாக்கள் பரவி, பொருத்தமான இடத்தில் நிலைகொண்டு வளர்கின்றன; வளர்ச்சி நிலைகள் வகைகளுக்கு ஏற்ப மாறுபடும்.",
         ),
         sections = listOf(
             bsec("overview", "Two ways of reproducing", "இனப்பெருக்கத்தின் இரு வழிகள்",

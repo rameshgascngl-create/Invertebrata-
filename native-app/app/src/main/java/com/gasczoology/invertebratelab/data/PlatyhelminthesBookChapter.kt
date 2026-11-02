@@ -7,17 +7,16 @@ object PlatyhelminthesBookChapter {
         title = "Phylum Platyhelminthes: general characters and classification" to
             "தொகுதி பிளாட்டிஹெல்மிந்தீஸ்: பொதுப்பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
-            "State the general characters of the phylum Platyhelminthes." to "பிளாட்டிஹெல்மிந்தீஸ் தொகுதியின் பொதுப்பண்புகளைக் கூற.",
-            "Explain the terms bilateral symmetry, triploblastic, acoelomate and parenchyma." to "இருபக்கச் சமச்சீர், மூவடுக்கு, உடற்குழியற்ற, பாரங்கைமா ஆகிய சொற்களை விளக்க.",
-            "Describe the protonephridial system with flame cells and its function." to "சுடர் செல்களுடன் கூடிய புரோட்டோநெஃப்ரிடிய அமைப்பையும் அதன் பணியையும் விவரிக்க.",
-            "Classify the phylum into Turbellaria, Trematoda and Cestoda with characters and examples." to "தொகுதியை டர்பெல்லேரியா, டிரிமட்டோடா, செஸ்டோடா என்ற வகுப்புகளாகப் பண்புகளுடனும் எடுத்துக்காட்டுகளுடனும் வகைப்படுத்த.",
-            "Explain why cestodes have no alimentary canal." to "செஸ்டோடாக்களுக்கு உணவுக்குழல் ஏன் இல்லை என்பதை விளக்க.",
+            "Recognise the characteristic body plan of flatworms." to
+                "தட்டைப்புழுக்களின் சிறப்பான உடலமைப்பை அறிதல்.",
+            "Compare the main classes with representative examples." to
+                "முக்கிய வகுப்புகளை உரிய எடுத்துக்காட்டுகளுடன் ஒப்பிடுதல்.",
+            "Relate organ systems to free-living and parasitic habits." to
+                "உறுப்பு மண்டலங்களைத் தனிவாழ், ஒட்டுண்ணி வாழ்முறைகளுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "The flatworms are the first animals in this course to have three germ layers and a body that is bilaterally symmetrical. They are soft, flattened worms with no body cavity, no anus in most species and no circulatory or respiratory system. The phylum includes free-living worms of ponds, streams and the sea, and also the flukes and tapeworms, which are among the most important parasites of people and domestic animals." to
-                "இந்தப் பாடத்தில் மூன்று கருப்படலங்களும் இருபக்கச் சமச்சீர் உடலும் கொண்ட முதல் விலங்குகள் தட்டைப்புழுக்கள். இவை மென்மையான, தட்டையான புழுக்கள்; உடற்குழி இல்லை, பெரும்பாலானவற்றுக்கு மலவாய் இல்லை, சுற்றோட்ட, சுவாச மண்டலங்களும் இல்லை. குளங்கள், ஓடைகள், கடல்களில் வாழும் தனி வாழ்வுப் புழுக்களும், மனிதர்கள், வீட்டு விலங்குகளின் மிக முக்கிய ஒட்டுண்ணிகளான தட்டைப்புழுக்கள், நாடாப்புழுக்களும் இத்தொகுதியில் அடங்கும்.",
-            "The chapter lists the general characters of the phylum in groups, describes the one organ system that is characteristic of it, the flame-cell excretory system, and then classifies the phylum into three classes. It closes by raising the question why a tapeworm has lost its gut, which leads into the study of parasitic adaptation in the chapters that follow." to
-                "அத்தியாயம் தொகுதியின் பொதுப்பண்புகளைக் குழுக்களாகப் பட்டியலிடுகிறது; அதன் தனிப்பண்பான சுடர் செல் கழிவு நீக்க அமைப்பை விவரிக்கிறது; பின்னர் தொகுதியை மூன்று வகுப்புகளாக வகைப்படுத்துகிறது. நாடாப்புழு தன் குடலை ஏன் இழந்தது என்ற கேள்வியுடன் முடிகிறது; இது தொடரும் அத்தியாயங்களில் ஒட்டுண்ணித் தகவமைப்புகளைக் கற்பதற்கு இட்டுச் செல்கிறது.",
+            "Flatworms have bilateral symmetry and a dorsoventrally flattened body. Comparing free-living and parasitic forms reveals how their organs and life cycles relate to their mode of life." to
+                "தட்டைப்புழுக்கள் இருபக்கச் சமச்சீரும் மேல்–கீழ்த் திசையில் தட்டையான உடலும் கொண்டவை. தனித்து வாழும் வகைகளையும் ஒட்டுண்ணி வகைகளையும் ஒப்பிட்டு, அவற்றின் அமைப்புக்கும் வாழ்முறைக்கும் உள்ள தொடர்பை அறியலாம்.",
         ),
         sections = listOf(
             bsec("characters", "General characters", "பொதுப்பண்புகள்",

@@ -6,17 +6,16 @@ object CephalopodsBookChapter {
         lessonId = "u5-cephalopods",
         title = "Cephalopoda: Specialised Molluscs" to "தலைக்காலிகள்: சிறப்படைந்த மெல்லுடலிகள்",
         objectives = listOf(
-            "Define what is meant by calling cephalopods advanced, and the limits of the term." to "தலைக்காலிகளை மேம்பட்டவை என்பதன் பொருளையும் அச்சொல்லின் எல்லைகளையும் வரையறுக்க.",
-            "Describe the nervous system, sense organs and circulation." to "நரம்பு அமைப்பு, உணர்வு உறுப்புகள், சுற்றோட்டத்தை விவரிக்க.",
-            "Describe locomotion, camouflage and defence." to "இயக்கம், மறைவுருவம், தற்காப்பை விவரிக்க.",
-            "Outline the diversity of living cephalopods." to "வாழும் தலைக்காலிகளின் பன்முகத்தன்மையை வரையறுக்க.",
-            "Explain the economic importance of cephalopods." to "தலைக்காலிகளின் பொருளாதார முக்கியத்துவத்தை விளக்க.",
+            "Identify the characteristic cephalopod structures." to
+                "தலைக்காலிகளின் சிறப்பு அமைப்புகளை அறிதல்.",
+            "Relate locomotion, senses and organ systems to their functions." to
+                "இயக்கம், உணர்திறன், உறுப்பு மண்டலங்களை அவற்றின் பணிகளுடன் தொடர்புபடுத்துதல்.",
+            "Compare representative cephalopods and their shells." to
+                "முக்கிய தலைக்காலிகளையும் அவற்றின் ஓடுகளையும் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "The cephalopods are the squids, cuttlefishes, octopuses and the nautiluses. They are marine molluscs with a head surrounded by arms or tentacles, a large mantle that encloses the mantle cavity, and a funnel through which water is expelled. They are the most active and the most elaborately organised of the molluscs, and they are often cited in teaching as the most advanced class of the phylum. The statement in the syllabus asks the student to justify that claim, and to discuss the nervous, sensory, circulatory and locomotory features, and then to comment on economic importance." to
-                "தலைக்காலிகள் ஸ்குவிட்கள், கட்டில்மீன்கள், ஆக்டோபஸ்கள், நாட்டிலஸ்கள். அவை கைகள் அல்லது உணர்கொம்புகள் சூழ்ந்த தலை, மேண்டில் குழியை உள்ளடக்கும் பெரிய மேண்டில், நீர் வெளியேறும் குழல் கொண்ட கடல் மெல்லுடலிகள். மெல்லுடலிகளில் அவை மிகவும் சுறுசுறுப்பானவை, மிக நுணுக்கமாக அமைந்தவை; கற்பித்தலில் தொகுதியின் மிகவும் மேம்பட்ட வகுப்பாக அடிக்கடி குறிப்பிடப்படுகின்றன. பாடத்திட்டக் கூற்று அந்த வாதத்தை நியாயப்படுத்தவும், நரம்பு, உணர்வு, சுற்றோட்ட, இயக்கப் பண்புகளை விவாதிக்கவும், பின்னர் பொருளாதார முக்கியத்துவம் பற்றிக் கருத்துரைக்கவும் மாணவரைக் கோருகிறது.",
-            "The word advanced needs care. A cephalopod is not better than a mussel, which is perfectly adapted to its own life. What the word can fairly mean is that cephalopods show a high degree of specialisation in a particular set of derived features, associated with an active predatory way of life. The chapter uses highly specialised wherever it can, and it ties every claim to a named feature." to
-                "மேம்பட்ட என்ற சொல்லுக்கு கவனம் தேவை. தலைக்காலி சிப்பியை விடச் சிறந்தது அல்ல; சிப்பி தன் வாழ்க்கைக்கு முழுமையாகப் பொருந்தியது. அச்சொல் நியாயமாகப் பொருள்படக்கூடியது, சுறுசுறுப்பான வேட்டை வாழ்க்கையுடன் தொடர்புடைய குறிப்பிட்ட மாறிய பண்புகளில் தலைக்காலிகள் உயர் சிறப்பைக் காட்டுகின்றன என்பதே. இயன்றவரை அத்தியாயம் மிகவும் சிறப்படைந்த என்பதைப் பயன்படுத்தி, ஒவ்வொரு கூற்றையும் பெயரிட்ட பண்புடன் இணைக்கிறது.",
+            "Cephalopods show extensive modification of the molluscan head and foot. Their arms, funnel, sensory organs and circulation can be related to an active marine way of life." to
+                "தலைக்காலிகளில் மெல்லுடலிகளின் தலை, பாதம் ஆகியவை குறிப்பிடத்தக்க மாற்றங்களைப் பெற்றுள்ளன. கரங்கள், புனல், உணருறுப்புகள், இரத்த ஓட்டம் ஆகியவற்றைக் கடல்வாழ் செயல்மிக்க வாழ்முறையுடன் தொடர்புபடுத்திப் படிக்கலாம்.",
         ),
         sections = listOf(
             bsec("meaning", "What advanced can fairly mean", "மேம்பட்ட என்பதன் நியாயமான பொருள்",

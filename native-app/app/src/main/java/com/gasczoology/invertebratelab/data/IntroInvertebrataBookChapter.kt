@@ -6,17 +6,16 @@ object IntroInvertebrataBookChapter {
         lessonId = "u1-intro",
         title = "Introduction to the Invertebrata" to "முதுகெலும்பற்றவை அறிமுகம்",
         objectives = listOf(
-            "Describe the taxonomic hierarchy and the ranks in order." to "வகைப்பாட்டு படிநிலையையும் தரங்களையும் வரிசையாக விவரிக்க.",
-            "Explain the binomial system and the role of type specimens." to "இருசொல் பெயரிடல் முறையையும் வகை மாதிரிகளின் பங்கையும் விளக்க.",
-            "Explain why Invertebrata is not a single phylum." to "முதுகெலும்பற்றவை ஒற்றைத் தொகுதி அல்ல என ஏன் கூறப்படுகிறது என விளக்க.",
-            "Compare the major phyla by level of organisation, symmetry and body cavity." to "முக்கியத் தொகுதிகளை அமைப்பு நிலை, சமச்சீர், உடற்குழி அடிப்படையில் ஒப்பிட.",
-            "Distinguish a classification framework from a statement of ancestry." to "வகைப்பாட்டுக் கட்டமைப்பை மூதாதைக் கூற்றிலிருந்து வேறுபடுத்த.",
+            "Recognise the scope and diversity of invertebrate zoology." to
+                "முதுகெலும்பற்ற விலங்கியலின் பரப்பையும் உயிரினப் பல்வகைமையையும் அறிதல்.",
+            "Use body-plan features to compare animal groups." to
+                "உடலமைப்புப் பண்புகளைக் கொண்டு விலங்குத் தொகுதிகளை ஒப்பிடுதல்.",
+            "Apply basic classification terms with suitable examples." to
+                "அடிப்படை வகைப்பாட்டுச் சொற்களை உரிய எடுத்துக்காட்டுகளுடன் பயன்படுத்துதல்.",
         ),
         introduction = listOf(
-            "Invertebrates account for most described animal species. They live in marine, freshwater and terrestrial habitats; some are parasites. Because these animals are so diverse, zoologists use classification to organise and compare them. This chapter introduces the principal taxonomic ranks and explains how animals are named." to
-                "விவரிக்கப்பட்ட விலங்கினங்களில் பெரும்பாலானவை முதுகெலும்பற்றவை. இவை கடல், நன்னீர் மற்றும் நில வாழிடங்களில் காணப்படுகின்றன. சில இனங்கள் ஒட்டுண்ணிகளாக வாழ்கின்றன. இவ்விலங்குகளின் பல்வகைமையை ஒழுங்குபடுத்தவும் ஒப்பிடவும் வகைப்பாட்டியல் பயன்படுகிறது. இவ்வத்தியாயம் வகைப்பாட்டின் முக்கியப் படிநிலைகளையும் விலங்குகளுக்குப் பெயரிடும் முறையையும் அறிமுகப்படுத்துகிறது.",
-            "Invertebrata is a convenient teaching term for animals without a vertebral column, not a single natural evolutionary group or phylum. It includes animals from several distinct lineages, such as sponges, cnidarians, molluscs, annelids, arthropods and echinoderms. Vertebrates themselves belong to the animal evolutionary tree, so the absence of a backbone does not establish common ancestry. Classification should instead compare homologous structures and other evidence of evolutionary relationships." to
-                "முதுகெலும்புத் தொடர் இல்லாத விலங்குகளைக் குறிக்கப் பயன்படும் 'முதுகெலும்பற்றவை' என்பது கற்பித்தலுக்கான பொதுப்பெயர்; அது ஒரே இயற்கையான பரிணாமக் குழுவையோ ஒரே தொகுதியையோ குறிக்கவில்லை. கடற்பஞ்சுகள், குழியுடலிகள், மெல்லுடலிகள், வளையப்புழுக்கள், கணுக்காலிகள், முட்தோலிகள் போன்ற பல்வேறு பரிணாம வழித்தோன்றல்கள் இதில் அடங்குகின்றன. முதுகெலும்பிகள் விலங்குகளின் பரிணாம மரத்திலேயே அடங்குவதால், முதுகெலும்புத் தொடர் இல்லாமை மட்டும் பொதுவான மூதாதை உறவை நிறுவாது. எனவே வகைப்பாட்டில் ஒரே பரிணாமத் தோற்றம் கொண்ட ஒத்த உறுப்பமைப்புகளையும் பிற ஆதாரங்களையும் ஒப்பிட வேண்டும்.",
+            "Invertebrates are animals without a vertebral column. Comparing symmetry, body cavities, segmentation and organ systems provides a framework for studying their major groups." to
+                "முதுகெலும்புத் தொடர் இல்லாத விலங்குகள் முதுகெலும்பற்றவை எனப்படுகின்றன. உடல் சமச்சீர், உடற்குழி, கண்ட அமைப்பு, உறுப்பு மண்டலங்கள் ஆகியவற்றை ஒப்பிட்டு அவற்றின் முக்கியத் தொகுதிகளை அறியலாம்.",
         ),
         sections = listOf(
             bsec("hierarchy", "The taxonomic hierarchy", "வகைப்பாட்டுப் படிநிலை",

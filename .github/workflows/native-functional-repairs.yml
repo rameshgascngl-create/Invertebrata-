@@ -18,6 +18,8 @@ jobs:
         with: {distribution: temurin, java-version: '17'}
       - uses: gradle/actions/setup-gradle@v4
         with: {gradle-version: '9.6.0'}
+      - name: Validate evidence classification
+        run: python3 -m unittest discover -s tools -p test_summarise_android_test_evidence.py
       - name: Compile application and all instrumentation; run JVM contracts
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest :app:assembleDebug :app:assembleDebugAndroidTest --stacktrace
       - name: Record exact APK identities
@@ -55,6 +57,7 @@ jobs:
       - name: Apply the release candidate's lossless WebP overlay
         if: matrix.variant == 'release'
         run: |
+          python -m pip install pillow
           python tools/optimise_plates.py --out build/optimised-assets
           python - <<'PY'
           import json,pathlib,shutil
@@ -83,6 +86,9 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 900
           script: bash .github/scripts/run-native-functional-repairs.sh '${{ matrix.variant }}' '${{ matrix.configuration }}'
+      - name: Produce canonical test evidence
+        if: always()
+        run: python3 tools/summarise_android_test_evidence.py qa-evidence/functional
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -118,6 +124,9 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 900
           script: bash .github/scripts/run-native-functional-regressions.sh '${{ matrix.suite }}'
+      - name: Produce canonical test evidence
+        if: always()
+        run: python3 tools/summarise_android_test_evidence.py qa-evidence
       - uses: actions/upload-artifact@v4
         if: always()
         with:

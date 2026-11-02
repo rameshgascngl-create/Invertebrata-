@@ -6,17 +6,16 @@ object NereisBookChapter {
         lessonId = "u4-nereis",
         title = "Nereis: structure, parapodia and epitoky" to "நெரிஸ்: அமைப்பு, பாரபோடியா, எபிடோகி",
         objectives = listOf(
-            "Describe the habit, habitat and external features of Nereis." to "நெரிஸின் பழக்கம், வாழிடம், வெளிப்புற அம்சங்களை விவரிக்க.",
-            "Describe the structure of a parapodium and state its functions." to "பாரபோடியத்தின் அமைப்பை விவரித்து அதன் செயல்களைக் கூற.",
-            "Outline the digestive, circulatory, excretory and nervous systems." to "செரிமான, இரத்த ஓட்ட, கழிவு நீக்க, நரம்பு மண்டலங்களை வரையறுக்க.",
-            "Describe reproduction and the trochophore larva." to "இனப்பெருக்கத்தையும் ட்ரோகோபோர் லார்வாவையும் விவரிக்க.",
-            "Explain epitoky and state the limits of the generalisation." to "எபிடோகியை விளக்கி பொதுமைப்படுத்தலின் வரம்புகளைக் கூற.",
+            "Identify external features and parapodial structures." to
+                "வெளிப்புறப் பண்புகளையும் பாரபோடியாவின் பகுதிகளையும் அறிதல்.",
+            "Relate organ systems to an active marine habit." to
+                "உறுப்பு மண்டலங்களைக் கடல்வாழ் செயல்மிக்க வாழ்முறையுடன் தொடர்புபடுத்துதல்.",
+            "Explain epitoky and the reproductive sequence." to
+                "எபிடோகியையும் இனப்பெருக்க நிலை வரிசையையும் விளக்குதல்.",
         ),
         introduction = listOf(
-            "Nereis is the standard example of the errant polychaetes, the free-moving bristle worms that crawl, burrow and swim. The common species used in laboratories live in burrows or under stones in the muddy or sandy parts of the shore, and in estuaries, where they come out to feed. The worm is a good example for a student because the body is simple and the repetition of its organs is easy to see, and because it shows how the general characters of the phylum are expressed in a marine animal." to
-                "நெரிஸ் எரண்ட் பாலிகீட்டாக்களின், அதாவது ஊர்ந்து, துளையிட்டு, நீந்தும் சுதந்திரமாக நகரும் முள்மயிர்ப் புழுக்களின், நிலையான எடுத்துக்காட்டு. ஆய்வகங்களில் பயன்படும் பொதுவான இனங்கள் கரையின் சேற்று அல்லது மணற் பகுதிகளிலும் முகத்துவாரங்களிலும் துளைகளிலோ கற்களுக்கடியிலோ வாழ்ந்து உண்பதற்காக வெளியே வருகின்றன. உடல் எளிமையானது, உறுப்புகளின் மீள்வு எளிதில் தெரிவது, தொகுதியின் பொதுப் பண்புகள் கடல் விலங்கில் எவ்வாறு வெளிப்படுகின்றன என்பதைக் காட்டுவது ஆகியவற்றால் மாணவருக்கு இது நல்ல எடுத்துக்காட்டு.",
-            "The chapter describes the external form, the parapodium in detail, since it is the structure most often asked for, then the internal systems, and finally the reproduction of the worm, which includes the transformation called epitoky." to
-                "வெளிப்புற வடிவத்தையும், பாரபோடியத்தை விரிவாகவும், ஏனெனில் அதுவே அடிக்கடி கேட்கப்படும் அமைப்பு, பின்னர் உள் மண்டலங்களையும், இறுதியாக எபிடோகி எனப்படும் உருமாற்றத்தை உள்ளடக்கும் புழுவின் இனப்பெருக்கத்தையும் அத்தியாயம் விவரிக்கிறது.",
+            "Nereis is a marine polychaete with parapodia suited to movement and gas exchange. Its jaws, sensory structures and reproductive changes illustrate an active annelid way of life." to
+                "நெரிஸ், பாரபோடியா கொண்ட கடல்வாழ் பல்முளைப்புழு. அதன் இயக்கம், உணவெடுத்தல், உணர்திறன், இனப்பெருக்க மாற்றங்கள் ஆகியவை செயல்மிக்க அனெலிடா வாழ்முறையை விளக்குகின்றன.",
         ),
         sections = listOf(
             bsec("external", "Habit and external features", "பழக்கமும் வெளிப்புற அம்சங்களும்",

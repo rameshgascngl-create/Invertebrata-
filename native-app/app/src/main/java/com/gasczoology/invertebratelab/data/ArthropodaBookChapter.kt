@@ -6,18 +6,16 @@ object ArthropodaBookChapter {
         lessonId = "u4-arthropoda",
         title = "Phylum Arthropoda: general characters and classification" to "தொகுதி ஆர்த்ரோபோடா: பொதுப் பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
-            "State the general characters of Phylum Arthropoda." to "தொகுதி ஆர்த்ரோபோடாவின் பொதுப் பண்புகளைக் கூற.",
-            "Describe the exoskeleton and the process of ecdysis." to "வெளிக்கூட்டையும் எக்டைசிஸ் நிகழ்வையும் விவரிக்க.",
-            "Explain the tagmata and the structure of jointed appendages." to "டேக்மாக்களையும் மூட்டுள்ள உறுப்புகளின் அமைப்பையும் விளக்க.",
-            "Describe the open circulation and the body cavity of arthropods." to "ஆர்த்ரோபோடாக்களின் திறந்த இரத்த ஓட்டத்தையும் உடற்குழியையும் விவரிக்க.",
-            "Compare an arthropod appendage with an annelid parapodium." to "ஆர்த்ரோபோட் உறுப்பை அனெலிடா பாரபோடியத்துடன் ஒப்பிட.",
-            "Name the four teaching classes of the phylum with their characters." to "தொகுதியின் நான்கு கற்பித்தல் வகுப்புகளை அவற்றின் பண்புகளுடன் பெயரிட.",
+            "Identify the defining arthropod features." to
+                "கணுக்காலிகளின் அடிப்படைச் சிறப்புப் பண்புகளை அறிதல்.",
+            "Relate appendage modifications and moulting to function and growth." to
+                "இணையுறுப்பு மாற்றங்களையும் புறக்கூடு உரித்தலையும் பணி, வளர்ச்சியுடன் தொடர்புபடுத்துதல்.",
+            "Compare the principal groups with examples." to
+                "முக்கிய வகைகளை எடுத்துக்காட்டுகளுடன் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "The arthropods are the most successful phylum of animals, if success is measured by the number of known species or by the range of habitats in which they live. Insects, crustaceans, spiders, scorpions, mites, centipedes and millipedes all belong to it, and they occupy the sea, fresh water, the soil, and the air. About four-fifths of the named animal species are arthropods, though the proportion changes as new species are described." to
-                "அறியப்பட்ட இனங்களின் எண்ணிக்கையாலோ வாழிடங்களின் வீச்சாலோ வெற்றியை அளந்தால் ஆர்த்ரோபோடாக்கள் விலங்குகளின் மிக வெற்றிகரமான தொகுதி. பூச்சிகள், கிரஸ்டேஷியன்கள், சிலந்திகள், தேள்கள், உண்ணிகள், பூரான்கள், ஆயிரங்கால் புழுக்கள் அனைத்தும் இதில் அடங்கும்; கடல், நன்னீர், மண், காற்று ஆகியவற்றை அவை ஆக்கிரமித்துள்ளன. பெயரிடப்பட்ட விலங்கு இனங்களில் ஏறத்தாழ ஐந்தில் நான்கு பங்கு ஆர்த்ரோபோடாக்கள்; புதிய இனங்கள் விவரிக்கப்படுவதால் விகிதம் மாறுகிறது.",
-            "The chapter lists the general characters of the phylum and then explains the main ones in turn: the exoskeleton and its moults, the division of the body into tagmata, the jointed appendages, the haemocoel and open circulation, and the organs of respiration. It then compares the arthropod limb with the annelid parapodium, a comparison that is often asked, and ends with the classification used in teaching." to
-                "அத்தியாயம் தொகுதியின் பொதுப் பண்புகளைப் பட்டியலிட்டு, முக்கியமானவற்றை முறையே விளக்குகிறது: புறச்சட்டகமும் அதன் தோலுரித்தல்களும், உடலை டேக்மாக்களாகப் பிரித்தல், மூட்டுள்ள உறுப்புகள், ஹீமோசீலும் திறந்த இரத்த ஓட்டமும், சுவாச உறுப்புகள். பின்னர் ஆர்த்ரோபோட் உறுப்பை அனெலிடா பாரபோடியத்துடன் ஒப்பிடுகிறது; இது அடிக்கடி கேட்கப்படும் ஒப்பீடு; இறுதியில் கற்பித்தலில் பயன்படும் வகைப்பாட்டுடன் முடிகிறது.",
+            "Arthropods combine a jointed appendage system with a chitinous exoskeleton. Their body regions, appendage modifications and development distinguish the principal groups." to
+                "கணுக்காலிகள் மூட்டுகளுடன் கூடிய இணையுறுப்புகளையும் கைட்டின் புறக்கூட்டையும் கொண்டவை. உடற்பகுதிகள், இணையுறுப்பு மாற்றங்கள், வளர்ச்சி நிலைகள் ஆகியவற்றின் அடிப்படையில் அவற்றின் முக்கிய வகைகளை வேறுபடுத்தலாம்.",
         ),
         sections = listOf(
             bsec("general-characters", "General characters", "பொதுப் பண்புகள்",

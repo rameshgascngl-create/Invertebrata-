@@ -6,17 +6,16 @@ object CrustaceanLarvaeBookChapter {
         lessonId = "u4-crustacean-larvae",
         title = "Larval forms of Crustacea" to "கிரஸ்டேஷியன்களின் லார்வா வடிவங்கள்",
         objectives = listOf(
-            "Describe the nauplius, protozoea, mysis and postlarva of a penaeid prawn." to "பெனியிட் இறாலின் நாப்ளியஸ், புரோட்டோசோயியா, மைசிஸ், போஸ்ட்லார்வாவை விவரிக்க.",
-            "Explain how feeding and swimming change through the sequence." to "வரிசை வழியாக உண்ணுதலும் நீந்துதலும் எவ்வாறு மாறுகின்றன என விளக்க.",
-            "Explain why larval sequences must be stated for the group concerned." to "லார்வா வரிசைகள் தொடர்புடைய குழுவுக்கே கூறப்பட வேண்டியது ஏன் என விளக்க.",
-            "Describe the zoea and megalopa of a brachyuran crab." to "பிராக்கியூரன் நண்டின் சோயியா, மெகலோபாவை விவரிக்க.",
-            "State the significance of larval stages in crustacean life histories." to "கிரஸ்டேஷியன் வாழ்க்கை வரலாறுகளில் லார்வா நிலைகளின் முக்கியத்துவத்தைக் கூற.",
+            "Identify representative crustacean larvae." to
+                "முக்கிய கிரஸ்டேஷியன் லார்வாக்களை அடையாளம் காணுதல்.",
+            "Compare diagnostic structures and appendages." to
+                "அடையாளப் பண்புகளையும் இணையுறுப்புகளையும் ஒப்பிடுதல்.",
+            "Relate larval sequences to development and dispersal." to
+                "லார்வா நிலைகளை வளர்ச்சியுடனும் பரவலுடனும் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
-            "Most crustaceans that live in the sea do not hatch as small copies of the adult. They hatch as larvae, which differ in form, in the appendages that they use and in the way in which they feed, and the larva becomes the adult through a series of moults. This is indirect development. The larvae are generally planktonic, which means that they drift in the water and are carried by currents, and so they have a part in the dispersal of species that as adults live on the sea bed or are fixed." to
-                "கடலில் வாழும் பெரும்பாலான கிரஸ்டேஷியன்கள் முதிர்ந்தவற்றின் சிறு நகல்களாகப் பொரிவதில்லை. அவை வடிவம், பயன்படுத்தும் உறுப்புகள், உண்ணும் முறையில் வேறுபடும் லார்வாக்களாகப் பொரிகின்றன; லார்வா தோலுரித்தல் தொடரால் முதிர்ந்ததாகிறது. இது மறைமுக வளர்ச்சி. லார்வாக்கள் பொதுவாக மிதவைவாழ்; அதாவது நீரில் மிதந்து நீரோட்டங்களால் கொண்டு செல்லப்படுகின்றன; எனவே முதிர்ந்த நிலையில் கடலடியில் வாழும் அல்லது பொருத்தப்பட்ட இனங்கள் பரவுவதில் பங்கு வகிக்கின்றன.",
-            "The chapter describes the sequence for the penaeid prawn first, since the prawn is the type, and then shows by the example of the crab that the sequence differs between groups. The particular point of the chapter is a rule of method: a diagram or an answer on larvae must follow the animal that is being described, and a sequence that is true of one group must not be imposed on another. Crustacean larvae are not insect caterpillars, and the two should not be compared by name." to
-                "இறால் வகை எடுத்துக்காட்டு என்பதால் முதலில் பெனியிட் இறாலுக்கான வரிசையை அத்தியாயம் விவரிக்கிறது; பின்னர் நண்டின் எடுத்துக்காட்டால் குழுக்களிடையே வரிசை வேறுபடுவதைக் காட்டுகிறது. அத்தியாயத்தின் குறிப்பிட்ட புள்ளி முறை விதி: லார்வாக்கள் பற்றிய படம் அல்லது விடை விவரிக்கப்படும் விலங்கைப் பின்பற்ற வேண்டும்; ஒரு குழுவுக்கு உண்மையான வரிசை மற்றொன்றின் மீது சுமத்தப்படக்கூடாது. கிரஸ்டேஷியன் லார்வாக்கள் பூச்சிக் கம்பளிப்புழுக்கள் அல்ல; பெயரால் இரண்டையும் ஒப்பிடக்கூடாது.",
+            "Crustacean larvae differ in body form, appendages and habitat. Recognising these features helps identify each larval type and place it in the appropriate developmental sequence." to
+                "கிரஸ்டேஷியன்களின் லார்வாக்கள் உடல் வடிவம், இணையுறுப்புகள், வாழிடம் ஆகியவற்றில் வேறுபடுகின்றன. இப்பண்புகளைக் கொண்டு லார்வா வகைகளை அடையாளம் கண்டு, உரிய வளர்ச்சி வரிசையில் அமைக்கலாம்.",
         ),
         sections = listOf(
             bsec("terms", "Larvae and indirect development", "லார்வாக்களும் மறைமுக வளர்ச்சியும்",

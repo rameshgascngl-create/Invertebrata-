@@ -6,17 +6,16 @@ object PlatyAdaptationsBookChapter {
         lessonId = "u3-platy-adapt",
         title = "Parasitic adaptations in Platyhelminthes" to "பிளாட்டிஹெல்மிந்தீஸில் ஒட்டுண்ணித் தகவமைப்புகள்",
         objectives = listOf(
-            "Define parasitism and state the problems that a parasite must solve." to "ஒட்டுண்ணித்தனத்தை வரையறுத்து, ஒட்டுண்ணி தீர்க்க வேண்டிய சிக்கல்களைக் கூற.",
-            "Describe the adaptations of trematodes and cestodes for protection, attachment, nutrition and respiration." to "டிரிமட்டோடாக்கள், செஸ்டோடாக்களின் பாதுகாப்பு, ஒட்டுதல், ஊட்டம், சுவாசத்துக்கான தகவமைப்புகளை விவரிக்க.",
-            "Explain the reduction of the gut and sense organs as specialisation." to "குடல், உணர் உறுப்புகளின் குறைப்பைச் சிறப்படைதலாக விளக்க.",
-            "Explain how reproductive capacity and the life cycle compensate for the risks of transmission." to "இனப்பெருக்கத் திறனும் வாழ்க்கைச் சுழற்சியும் பரவலின் இடர்களை எவ்வாறு ஈடுசெய்கின்றன என்பதை விளக்க.",
-            "Explain the role of the snail in the life cycle of Fasciola." to "ஃபாசியோலாவின் வாழ்க்கைச் சுழற்சியில் நத்தையின் பங்கை விளக்க.",
+            "Identify structural and physiological adaptations to parasitism." to
+                "ஒட்டுண்ணி வாழ்க்கைக்கான உடலமைப்பு, உடலியல் தகவமைப்புகளை அறிதல்.",
+            "Compare adaptations in flukes and tapeworms." to
+                "ஃப்ளூக்குகளின் தகவமைப்புகளையும் நாடாப்புழுக்களின் தகவமைப்புகளையும் ஒப்பிடுதல்.",
+            "Explain the importance of reproduction and transmission stages." to
+                "இனப்பெருக்கத்தின் முக்கியத்துவத்தையும் பரவும் நிலைகளின் பங்கையும் விளக்குதல்.",
         ),
         introduction = listOf(
-            "A parasite is an animal that lives on or in another living animal, its host, from which it takes its food, and to which it does harm, though usually it does not kill it. The way of life brings very particular difficulties. The parasite must find a host, must get into it, must stay in it in the face of the host's defences, must feed on it, and must send its offspring to a new host. The flatworms that are parasites, the flukes and tapeworms, show how these problems are solved." to
-                "ஒட்டுண்ணி என்பது இன்னொரு உயிருள்ள விலங்கான விருந்தோம்பியின் மீது அல்லது உள்ளே வாழ்ந்து, அதிலிருந்து உணவைப் பெற்று, அதற்குத் தீங்கு செய்யும் விலங்கு; பொதுவாக அதைக் கொல்லாது. இவ்வாழ்க்கைமுறை மிகத் தனித்துவ இடர்களைத் தருகிறது. ஒட்டுண்ணி விருந்தோம்பியைக் கண்டறிய வேண்டும், அதனுள் செல்ல வேண்டும், அதன் தற்காப்புகளை எதிர்த்து அதனுள் தங்க வேண்டும், அதிலிருந்து உண்ண வேண்டும், தன் சந்ததிகளைப் புதிய விருந்தோம்பிக்கு அனுப்ப வேண்டும். ஒட்டுண்ணித் தட்டைப்புழுக்களான ஃப்ளூக்குகளும் நாடாப்புழுக்களும் இச்சிக்கல்கள் எவ்வாறு தீர்க்கப்படுகின்றன என்பதைக் காட்டுகின்றன.",
-            "This chapter groups the adaptations by the problem that each solves, compares the trematodes and cestodes in a table, and explains the part played by the snail in the life cycle of Fasciola. A recurring point is that the adaptations are specialisations, in which what is not needed is reduced and what is needed is enlarged." to
-                "இந்த அத்தியாயம் தகவமைப்புகளை அவை தீர்க்கும் சிக்கலின்படி தொகுக்கிறது; டிரிமட்டோடாக்களையும் செஸ்டோடாக்களையும் அட்டவணையில் ஒப்பிடுகிறது; ஃபாசியோலாவின் வாழ்க்கைச் சுழற்சியில் நத்தையின் பங்கை விளக்குகிறது. தகவமைப்புகள் சிறப்படைதல்கள் என்பது திரும்பத் திரும்ப வரும் கருத்து; தேவையற்றது குறைக்கப்படுகிறது, தேவையானது பெரிதாகிறது.",
+            "Parasitic flatworms show adaptations for attachment, nutrition, reproduction and transmission. Compare these features in flukes and tapeworms without assuming that every parasite has the same adaptations." to
+                "ஒட்டுண்ணித் தட்டைப்புழுக்களில் ஒட்டுதல், உணவு பெறுதல், இனப்பெருக்கம், பரவல் ஆகியவற்றுக்கான தகவமைப்புகள் காணப்படுகின்றன. இவை எல்லா ஒட்டுண்ணிகளிலும் ஒரே மாதிரியாக இருப்பதில்லை; ஃப்ளூக்குகளையும் நாடாப்புழுக்களையும் ஒப்பிட்டுப் படிக்கலாம்.",
         ),
         sections = listOf(
             bsec("parasitism", "Parasitism and its problems", "ஒட்டுண்ணித்தனமும் அதன் சிக்கல்களும்",

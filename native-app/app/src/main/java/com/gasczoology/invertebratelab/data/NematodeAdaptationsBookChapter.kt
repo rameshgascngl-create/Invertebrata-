@@ -6,16 +6,16 @@ object NematodeAdaptationsBookChapter {
         lessonId = "u3-nematode-adapt",
         title = "Parasitic adaptations in nematodes" to "நெமட்டோடாக்களின் ஒட்டுண்ணித் தழுவல்கள்",
         objectives = listOf(
-            "Explain how the cuticle and moulting suit a parasitic nematode." to "ஒட்டுண்ணி நெமட்டோடாவுக்கு புறத்தோலும் உதிர்த்தலும் எவ்வாறு பொருந்துகின்றன என்பதை விளக்க.",
-            "Relate mouthparts and attachment structures to the habitat of the worm." to "வாய்ப்பகுதிகளையும் பற்றும் அமைப்புகளையும் புழுவின் வாழிடத்துடன் தொடர்புபடுத்த.",
-            "Explain the importance of high reproductive output and resistant stages." to "உயர் இனப்பெருக்க வெளியீடு, எதிர்ப்பு நிலைகளின் முக்கியத்துவத்தை விளக்க.",
-            "Compare egg-borne, soil-larva and vector-borne transmission and relate each to control." to "முட்டை வழி, மண் லார்வா வழி, நோய்க்கடத்தி வழிப் பரவலை ஒப்பிட்டு ஒவ்வொன்றையும் கட்டுப்பாட்டுடன் தொடர்புபடுத்த.",
+            "Identify major adaptations to parasitic life." to
+                "ஒட்டுண்ணி வாழ்க்கைக்கான முக்கியத் தகவமைப்புகளை அறிதல்.",
+            "Relate each adaptation to its function in the host." to
+                "ஒவ்வொரு தகவமைப்பையும் விருந்தோம்பியில் அது ஆற்றும் பணியுடன் தொடர்புபடுத்துதல்.",
+            "Compare adaptations among representative nematode parasites." to
+                "முக்கிய நெமட்டோடா ஒட்டுண்ணிகளின் தகவமைப்புகளை ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "A parasite is a way of life, and every successful parasite has solved a short list of problems: how to survive the conditions in the host, how to hold its place, how to feed, how to produce enough offspring, and how to get those offspring to a new host. The nematodes that parasitise man answer these questions with a body plan that they inherited from free-living ancestors, modified in particular ways. This chapter collects the modifications that were scattered through the accounts of Ascaris, Wuchereria, Enterobius and Ancylostoma, so that an essay on the adaptations of the group can be written from the principles and not from a list." to
-                "ஒட்டுண்ணி வாழ்க்கை ஒரு வாழ்முறை; வெற்றிகரமான ஒவ்வொரு ஒட்டுண்ணியும் ஒரு குறுகிய சிக்கல் பட்டியலைத் தீர்த்துள்ளது: விருந்தோம்பியின் நிலைமைகளில் எப்படி உயிர் வாழ்வது, இடத்தை எப்படித் தக்கவைப்பது, எப்படி உண்பது, போதுமான சந்ததிகளை எப்படி உருவாக்குவது, அவற்றை எப்படி புதிய விருந்தோம்பிக்குக் கொண்டு சேர்ப்பது. மனிதனை ஒட்டுண்ணியாகக் கொள்ளும் நெமட்டோடாக்கள் தனி வாழ்வு மூதாதையரிடமிருந்து பெற்ற உடல் அமைப்பை குறிப்பிட்ட வழிகளில் மாற்றி இக்கேள்விகளுக்கு விடையளிக்கின்றன. அஸ்காரிஸ், வுச்செரேரியா, என்டெரோபியஸ், ஆன்சைலோஸ்டோமா விவரங்களில் சிதறியிருந்த மாற்றங்களை இந்த அத்தியாயம் தொகுக்கிறது; எனவே குழுவின் தழுவல்கள் பற்றிய கட்டுரையைப் பட்டியலிலிருந்து அல்ல, கொள்கைகளிலிருந்து எழுத முடியும்.",
-            "One caution governs the whole chapter. The adaptations described here belong to nematodes. Suckers, hooks on a scolex, a tegument that absorbs food, rediae and cercariae belong to flukes and tapeworms, and they should not be carried across into an answer on roundworms." to
-                "ஒரு எச்சரிக்கை முழு அத்தியாயத்தையும் ஆள்கிறது. இங்கு விவரிக்கப்படும் தழுவல்கள் நெமட்டோடாக்களுக்குரியவை. உறிஞ்சிகள், ஸ்கோலெக்ஸின் கொக்கிகள், உணவை உறிஞ்சும் டெகுமென்ட், ரெடியா, செர்க்கேரியா ஆகியவை ஃப்ளூக்குகள், நாடாப்புழுக்களுக்குரியவை; உருளைப்புழுக்கள் பற்றிய விடையில் அவற்றை எடுத்துச் செல்லக்கூடாது.",
+            "Parasitic nematodes must survive within hosts and pass to new hosts. Their body covering, feeding structures, reproduction and developmental stages contribute to these demands." to
+                "ஒட்டுண்ணி நெமட்டோடாக்கள் விருந்தோம்பியின் உடலில் வாழ்வதற்கும் புதிய விருந்தோம்பியை அடைவதற்கும் ஏற்ற தகவமைப்புகளைக் கொண்டுள்ளன. உடற்போர்வை, உணவூட்ட அமைப்புகள், இனப்பெருக்கம், வளர்ச்சி நிலைகள் ஆகியவற்றில் இவற்றைக் காணலாம்.",
         ),
         sections = listOf(
             bsec("cuticle", "Cuticle, moulting and the body wall", "புறத்தோல், தோலுரித்தல், உடற்சுவர்",

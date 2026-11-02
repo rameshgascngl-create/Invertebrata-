@@ -6,22 +6,16 @@ object PoriferaCanalsBookChapter {
         lessonId = "u2-canals",
         title = "Canal systems in sponges" to "கடற்பஞ்சுகளில் கால்வாய் அமைப்புகள்",
         objectives = listOf(
-            "Explain why a sponge needs a canal system and how the system relates to body size." to
-                "கடற்பஞ்சுக்குக் கால்வாய் அமைப்பு ஏன் தேவை என்பதையும், அது உடல் அளவுடன் எவ்வாறு தொடர்புடையது என்பதையும் விளக்க.",
-            "Describe the asconoid, syconoid and leuconoid grades and name an example of each." to
-                "அஸ்கோனாய்டு, சைக்கனாய்டு, லியூக்கோனாய்டு நிலைகளை விவரித்து, ஒவ்வொன்றுக்கும் எடுத்துக்காட்டு கூற.",
-            "Trace the path of water in each grade, using the correct names for each opening." to
-                "ஒவ்வொரு நிலையிலும் நீரின் பாதையை, ஒவ்வொரு துளையின் சரியான பெயருடன் எழுத.",
-            "Compare the three grades in a table and state why the sequence increases efficiency." to
-                "மூன்று நிலைகளையும் அட்டவணையில் ஒப்பிட்டு, வரிசை முன்னேறும்போது திறன் அதிகரிப்பதற்கான காரணத்தைக் கூற.",
-            "Explain why the direction of flow must be shown correctly in a diagram." to
-                "வரைபடத்தில் நீரோட்டத்தின் திசை சரியாகக் காட்டப்பட வேண்டியதன் காரணத்தை விளக்க.",
+            "Trace water flow through the three canal-system types." to
+                "மூன்று வகைக் கால்வாய் அமைப்புகளிலும் நீர் செல்லும் பாதையை விளக்குதல்.",
+            "Identify the position and role of choanocytes." to
+                "கோயனோசைட்டுகளின் இருப்பிடத்தையும் பணியையும் அறிதல்.",
+            "Compare structural complexity and filtering surfaces." to
+                "அமைப்புச் சிக்கலையும் வடிகட்டும் பரப்பையும் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
-            "A sponge is a pump with no moving parts. Its whole way of life, feeding, breathing and removing waste, depends on a current of water that passes through the body, and the current can only be maintained if water has somewhere to enter, somewhere to be filtered and somewhere to leave. The arrangement of these spaces is called the canal system, or aquiferous system, and it is the most useful single guide to the organisation of a sponge." to
-                "கடற்பஞ்சு நகரும் பாகங்கள் இல்லாத ஒரு நீரேற்றி. உணவூட்டம், சுவாசம், கழிவு நீக்கம் என அதன் முழு வாழ்க்கைமுறையும் உடல் வழியே செல்லும் நீரோட்டத்தைச் சார்ந்தது; நீர் நுழைய ஓர் இடம், வடிகட்டப்பட ஓர் இடம், வெளியேற ஓர் இடம் இருந்தால் மட்டுமே இந்த ஓட்டத்தைப் பேண முடியும். இந்த இடங்களின் அமைப்பு கால்வாய் அமைப்பு அல்லது நீர்வழி அமைப்பு எனப்படுகிறது; கடற்பஞ்சின் அமைப்பை அறிய இதுவே மிகப் பயனுள்ள ஒற்றை வழிகாட்டி.",
-            "Three patterns of increasing complexity are recognised: the asconoid, the syconoid and the leuconoid. This chapter describes each, follows the water through it, and explains what the increase in complexity achieves. The patterns are grades of organisation. They are not classes, and unrelated sponges may share a grade." to
-                "அதிகரிக்கும் சிக்கலுடைய மூன்று அமைப்புகள் அடையாளம் காணப்படுகின்றன: அஸ்கோனாய்டு, சைக்கனாய்டு, லியூக்கோனாய்டு. இந்த அத்தியாயம் ஒவ்வொன்றையும் விவரித்து, அதன் வழியே நீரைப் பின்தொடர்ந்து, சிக்கல் அதிகரிப்பதால் என்ன பயன் என விளக்குகிறது. இவை அமைப்பு நிலைகள்; வகுப்புகள் அல்ல; தொடர்பற்ற கடற்பஞ்சுகளும் ஒரே நிலையைப் பகிரலாம்.",
+            "A sponge's canal system carries water past its feeding cells. Compare asconoid, syconoid and leuconoid arrangements by following the water path and the position of choanocytes." to
+                "கடற்பஞ்சின் கால்வாய் அமைப்பு, உணவை வடிகட்டும் செல்கள் வழியாக நீரைச் செலுத்துகிறது. நீரின் பாதையையும் கோயனோசைட்டுகளின் இருப்பிடத்தையும் கொண்டு அஸ்கனாய்டு, சைக்கனாய்டு, லியூகனாய்டு அமைப்புகளை ஒப்பிடலாம்.",
         ),
         sections = listOf(
             bsec("need", "Why a sponge needs a canal system", "கடற்பஞ்சுக்குக் கால்வாய் அமைப்பு ஏன் தேவை",

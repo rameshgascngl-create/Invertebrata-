@@ -6,17 +6,16 @@ object PearlBookChapter {
         lessonId = "u5-pearl",
         title = "Pearl Formation" to "முத்து உருவாக்கம்",
         objectives = listOf(
-            "Describe the structure and composition of the shell and of nacre." to "ஓடு, நாக்கரின் அமைப்பையும் உட்கூறையும் விவரிக்க.",
-            "Explain how a natural pearl forms, and correct the grain-of-sand account." to "இயற்கை முத்து எவ்வாறு உருவாகிறது என விளக்கி, மணல் துகள் கதையைத் திருத்த.",
-            "Describe the steps of culturing a pearl." to "முத்து வளர்ப்பின் படிகளை விவரிக்க.",
-            "Distinguish bead-nucleated from tissue-nucleated pearls." to "மணி-உட்கரு முத்துகளையும் திசு-உட்கரு முத்துகளையும் வேறுபடுத்த.",
-            "State clearly that the pearl oyster is not Pila." to "முத்துச் சிப்பி பைலா அல்ல என்பதைத் தெளிவாகக் கூற.",
+            "Explain the role of the mantle and pearl sac." to
+                "மேண்டில், முத்துப்பை ஆகியவற்றின் பங்கை விளக்குதல்.",
+            "Describe how the pearl's layers are deposited." to
+                "முத்தின் அடுக்குகள் படியும் முறையை விவரித்தல்.",
+            "Distinguish natural and cultured pearls." to
+                "இயற்கை முத்தையும் வளர்ப்பு முத்தையும் வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
-            "A pearl is a hard, rounded concretion of shell material that a mollusc deposits around an irritant or a foreign body inside its soft tissues. Pearls are formed by several groups of bivalves and, rarely, by some gastropods, but the pearls of commerce come from two families of bivalves, the marine pearl oysters and the freshwater mussels. The topic is classed in the syllabus as enrichment, which means that it is a useful application of the biology of the mantle and the shell, and not a core structural type like Pila." to
-                "முத்து என்பது மெல்லுடலி தன் மென்திசுக்களுக்குள் எரிச்சலூட்டும் பொருள் அல்லது அயல் பொருளைச் சுற்றி படிய வைக்கும் ஓட்டுப் பொருளின் கடினமான, உருண்டையான திரட்சி. முத்துகளை இருவோட்டுக் குழுக்கள் பலவும், அரிதாக சில இரைப்பைக்காலிகளும் உருவாக்குகின்றன; ஆனால் வணிக முத்துகள் இருவோட்டுகளின் இரு குடும்பங்களிலிருந்து வருகின்றன: கடல் முத்துச் சிப்பிகள், நன்னீர் சிப்பிகள். பாடத்திட்டத்தில் இத்தலைப்பு செறிவூட்டல் என வகைப்படுத்தப்படுகிறது; அதாவது பைலா போல மைய அமைப்பு வகை அல்ல; மேண்டில், ஓட்டின் உயிரியலின் பயனுள்ள பயன்பாடு.",
-            "Two popular statements about pearls need correction at the outset. The first is that a pearl begins with a grain of sand that has slipped between the shell valves, and the second is that the pearl oyster is the same animal as the edible oyster or the freshwater snail studied earlier in the unit. Neither is a safe statement. The chapter explains what the evidence supports, and marks where the textbooks simplify." to
-                "தொடக்கத்திலேயே திருத்த வேண்டிய இரு பிரபலக் கூற்றுகள் உள்ளன. முதலாவது, ஓட்டு மூடிகளுக்கிடையே நழுவிய மணல் துகளிலிருந்து முத்து தொடங்குகிறது என்பது; இரண்டாவது, முத்துச் சிப்பி உண்ணத்தக்க சிப்பி அல்லது அலகில் முன்பு படித்த நன்னீர் நத்தையின் அதே விலங்கு என்பது. இரண்டும் பாதுகாப்பான கூற்றுகள் அல்ல. சான்று எதை ஆதரிக்கிறது என்பதையும் பாடநூல்கள் எங்கே எளிமைப்படுத்துகின்றன என்பதையும் இவ்வத்தியாயம் விளக்குகிறது.",
+            "A pearl grows through deposits produced by a pearl sac derived from mantle tissue. Its formation can be studied through shell secretion and the distinction between natural and cultured pearls." to
+                "மேண்டில் திசுவிலிருந்து தோன்றும் முத்துப்பை சுரக்கும் படிவுகள் அடுக்குகளாகச் சேர்வதால் முத்து வளர்கிறது. ஓட்டுச் சுரப்புடன் இதன் தொடர்பையும் இயற்கை முத்துக்கும் வளர்ப்பு முத்துக்கும் உள்ள வேறுபாட்டையும் அறியலாம்.",
         ),
         sections = listOf(
             bsec("shell-nacre", "The shell and nacre", "ஓடும் நாக்கரும்",

@@ -6,17 +6,16 @@ object EchinodermataBookChapter {
         lessonId = "u5-echinodermata",
         title = "Phylum Echinodermata: Characters and Classification" to "முட்தோலித் தொகுதி: பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
-            "State the general characters of the phylum Echinodermata." to "முட்தோலித் தொகுதியின் பொதுப் பண்புகளைக் கூற.",
-            "Explain why adult pentaradial symmetry is secondary." to "முதிர்ந்த ஐந்தாரைச் சமச்சீர் இரண்டாம் நிலை என்பதை விளக்க.",
-            "Describe the endoskeleton and the water-vascular system in outline." to "அகச்சட்டகம், நீரோட்டக் குழாய் மண்டலத்தை சுருக்கமாக விவரிக்க.",
-            "Classify the phylum into its five living classes with examples." to "தொகுதியை ஐந்து வாழும் வகுப்புகளாக எடுத்துக்காட்டுகளுடன் வகைப்படுத்த.",
-            "Summarise the evidence for deuterostome affinity." to "இரண்டாம்வாய் உறவுக்கான சான்றுகளைச் சுருக்கிக் கூற.",
+            "Recognise the characteristic echinoderm features." to
+                "முட்தோலிகளின் சிறப்புப் பண்புகளை அறிதல்.",
+            "Compare adult and larval body plans." to
+                "முதிருயிரி, லார்வா உடலமைப்புகளை ஒப்பிடுதல்.",
+            "Distinguish the principal classes with examples." to
+                "முக்கிய வகுப்புகளை எடுத்துக்காட்டுகளுடன் வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
-            "The echinoderms, which include the starfishes, brittle stars, sea urchins, sea cucumbers and sea lilies, are among the most distinctive of animals. They are exclusively marine, they have a skeleton of calcareous plates beneath the skin, and they move on hydraulic tube feet that belong to a system found in no other phylum. The adults are built on a five-part radial plan, and yet they are related to the vertebrates and not to the radially symmetrical jellyfishes, which is a fact that the larvae reveal." to
-                "நட்சத்திர மீன்கள், பிரிட்டில் நட்சத்திரங்கள், கடல் முள்ளெலிகள், கடல் வெள்ளரிகள், கடல் அல்லிகளை உள்ளடக்கிய முட்தோலிகள் விலங்குகளில் மிகத் தனித்தன்மையானவை. அவை முழுவதும் கடல்வாழ்; தோலுக்கு அடியில் சுண்ணாம்புத் தகடுகளாலான கூடு கொண்டவை; வேறெந்தத் தொகுதியிலும் காணப்படாத அமைப்பைச் சேர்ந்த நீரழுத்தக் குழாய் கால்களில் நகர்கின்றன. முதிர்ந்தவை ஐந்துபகுதி ஆரைத் திட்டத்தில் அமைந்திருந்தாலும், ஆரைச் சமச்சீருடைய ஜெல்லிமீன்களுடன் அல்ல, முதுகெலும்பிகளுடன் உறவுடையவை; இதை லார்வாக்கள் வெளிப்படுத்துகின்றன.",
-            "This chapter gives the characters of the phylum, the reasoning that links them to the deuterostomes, and a classification down to the level of the class. The detailed types, Asterias, the water-vascular system, the larvae, and the fossil record, are treated in the chapters that follow, and this chapter prepares the framework for them." to
-                "இவ்வத்தியாயம் தொகுதியின் பண்புகளையும் அவற்றை டியூட்டிரோஸ்டோம்களுடன் இணைக்கும் காரணத்தையும் வகுப்பு நிலை வரையான வகைப்பாட்டையும் தருகிறது. அஸ்டீரியாஸ் வகை, நீரோட்டக் குழாய் மண்டலம், லார்வாக்கள், புதைபடிவப் பதிவு போன்ற விரிவான பகுதிகள் தொடரும் அத்தியாயங்களில் கையாளப்படுகின்றன; இவ்வத்தியாயம் அவற்றுக்கான கட்டமைப்பைத் தயார் செய்கிறது.",
+            "Echinoderms are marine animals with a calcareous endoskeleton and a water-vascular system. Adult and larval symmetry, skeletal structures and tube feet help distinguish the principal classes." to
+                "முட்தோலிகள் கடல்வாழ் விலங்குகள்; சுண்ணாம்பு அகக்கூடும் நீரோட்டக் குழாய் மண்டலமும் அவற்றின் சிறப்புப் பண்புகளாகும். முதிருயிரி, லார்வா சமச்சீர் அமைப்புகளையும் எலும்புத்தகடுகள், குழாய்க்கால்கள் ஆகியவற்றையும் கொண்டு முக்கிய வகுப்புகளை வேறுபடுத்தலாம்.",
         ),
         sections = listOf(
             bsec("characters", "General characters", "பொதுப் பண்புகள்",
