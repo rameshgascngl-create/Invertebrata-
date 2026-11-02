@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.gasczoology.invertebratelab.data.AcademicUnit
+import com.gasczoology.invertebratelab.data.BookReadingPosition
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.Extensions
 import com.gasczoology.invertebratelab.data.LanguagePreferenceRepository
@@ -15,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -43,10 +45,28 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val academicState: StateFlow<AcademicLoadState> = _academicState.asStateFlow()
 
     private val bookReading = com.gasczoology.invertebratelab.data.BookReadingRepository(application)
-    val readingPositions = bookReading.positions.map<Map<String, com.gasczoology.invertebratelab.data.BookReadingPosition>, Map<String, com.gasczoology.invertebratelab.data.BookReadingPosition>?> { it }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
-    fun saveReadingPosition(chapter: String, position: com.gasczoology.invertebratelab.data.BookReadingPosition) {
-        viewModelScope.launch { bookReading.save(chapter, position) }
+    private val _readingPositions = MutableStateFlow<Map<String, BookReadingPosition>?>(null)
+    val readingPositions: StateFlow<Map<String, BookReadingPosition>?> = _readingPositions.asStateFlow()
+    private val pendingReadingPositions = mutableMapOf<String, BookReadingPosition>()
+    private val readingWriteMutex = Mutex()
+    private var storedReadingPositions: Map<String, BookReadingPosition> = emptyMap()
+
+    private fun publishReadingPositions() {
+        // A matching value from an earlier write is not an acknowledgement of queued writes.
+        if (!readingWriteMutex.isLocked) {
+            pendingReadingPositions.entries.removeAll { storedReadingPositions[it.key] == it.value }
+        }
+        _readingPositions.value = storedReadingPositions + pendingReadingPositions
+    }
+
+    fun saveReadingPosition(chapter: String, position: BookReadingPosition) {
+        // Rotation must see the latest offset before the asynchronous disk write completes.
+        pendingReadingPositions[chapter] = position
+        _readingPositions.value = _readingPositions.value.orEmpty() + (chapter to position)
+        viewModelScope.launch {
+            readingWriteMutex.withLock { bookReading.save(chapter, position) }
+            publishReadingPositions()
+        }
     }
 
     val persistedLearning: StateFlow<PersistedLearningLoadState> = learningRepository.learningState
@@ -60,6 +80,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     )
 
     init {
+        viewModelScope.launch {
+            bookReading.positions.collect { stored ->
+                // An older disk emission must never roll back a newer UI checkpoint.
+                storedReadingPositions = stored
+                publishReadingPositions()
+            }
+        }
         viewModelScope.launch(Dispatchers.IO) {
             _academicState.value = try {
                 academicRepository.load().let { units ->

@@ -9,3 +9,8 @@
 # AndroidJUnitRunner calls this shared API before discovering any tests.
 # R8 must retain its name and members across the app and instrumentation APKs.
 -keep class androidx.tracing.Trace { *; }
+
+# The instrumentation APK shares the target's Kotlin/coroutine runtime.
+# Preserve that binary API when the two APKs are processed independently by R8.
+-keep class kotlin.** { *; }
+-keep class kotlinx.coroutines.** { *; }

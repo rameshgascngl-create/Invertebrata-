@@ -30,6 +30,7 @@ finish() {
 trap finish EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
+bash .github/scripts/wait-native-external-storage.sh
 adb shell rm -rf /sdcard/Download/native-functional-evidence
 adb shell mkdir -p /sdcard/Download/native-functional-evidence
 adb shell settings put system font_scale "$scale"

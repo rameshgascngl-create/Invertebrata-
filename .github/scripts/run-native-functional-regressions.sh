@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+bash .github/scripts/wait-native-external-storage.sh
 case "$1" in
   established) exec bash .github/scripts/run-native-api34-tests.sh ;;
   unit23) exec bash .github/scripts/run-unit23-editorial-qa.sh ;;

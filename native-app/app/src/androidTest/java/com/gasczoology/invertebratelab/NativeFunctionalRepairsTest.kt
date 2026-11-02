@@ -156,6 +156,23 @@ class NativeFunctionalRepairsTest {
         for (y in 0 until a.height step 2) for (x in 0 until a.width step 2) if (a.getPixel(x, y) != b.getPixel(x, y)) count++
         return count
     }
+    private fun settledPausedImage(canvas: SemanticsNodeInteraction, expectedPhase: Float): Bitmap {
+        val deadline = android.os.SystemClock.elapsedRealtime() + 1_500
+        var previous = canvas.captureToImage().asAndroidBitmap()
+        while (android.os.SystemClock.elapsedRealtime() < deadline) {
+            Thread.sleep(75)
+            val actualPhase = canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
+            assertTrue("Playback advanced after Pause: $expectedPhase -> $actualPhase",
+                kotlin.math.abs(actualPhase - expectedPhase) <= .0011f)
+            val next = canvas.captureToImage().asAndroidBitmap()
+            if (previous.sameAs(next)) { previous.recycle(); return next }
+            previous.recycle()
+            previous = next
+        }
+        previous.recycle()
+        throw AssertionError("The paused diagram never reached a stable rendered frame")
+    }
+
     @Test fun allFiveSimulatorsMoveRealDiagramPixelsAndPause() {
         rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("r1-home-open-paramecium"))
         rule.onNodeWithTag("r1-home-open-paramecium").performClick(); waitFor("r1-paramecium-lab")
@@ -180,7 +197,7 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag("${c.prefix}-inline-play-pause").performClick()
             val phase = canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("${c.process}: playback did not pause at an intermediate phase: $phase", phase > 0f && phase < 1f)
-            val after = canvas.captureToImage().asAndroidBitmap()
+            val after = settledPausedImage(canvas, phase)
             val changed = changedPixels(before, after)
             assertTrue("${c.process}: Play did not change the diagram ($changed sampled pixels)", changed > 12)
             screenshot("${c.process}-start", before); screenshot("${c.process}-paused", after)
