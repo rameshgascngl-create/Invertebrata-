@@ -628,6 +628,9 @@ private fun ChapterBody(
     var penaeusAppendage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     var penaeusLifeStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     val chapterListState = rememberLazyListState()
+    // A newly selected chapter must start at its heading, not at the prior chapter's offset.
+    // Keep this keyed to the chapter ID: answer reveals and in-chapter state must not reset reading.
+    LaunchedEffect(chapter.id) { chapterListState.scrollToItem(0) }
     val chapterScope = rememberCoroutineScope()
     Scaffold { padding ->
         LazyColumn(
