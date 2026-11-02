@@ -76,6 +76,8 @@ private val romanUnits = listOf("", "I", "II", "III", "IV", "V", "VI", "VII")
 internal fun LazyListScope.bookChapterItems(
     chapter: BookChapter,
     language: AppLanguage,
+    page: com.gasczoology.invertebratelab.data.BookReadingPage? = null,
+    onPageSelected: ((String) -> Unit)? = null,
     onListen: (BilingualText) -> Unit,
 ) {
     val unit = BookLayout.unitNumber(chapter.lessonId)
@@ -84,7 +86,7 @@ internal fun LazyListScope.bookChapterItems(
     val chapterLabel = t(language, "Unit ${romanUnits[unit]} · Chapter $number",
         "அலகு ${romanUnits[unit]} · அத்தியாயம் $number")
 
-    item(key = "book-objectives") {
+    if (page == null || page.id == "objectives") item(key = "book-objectives") {
         Card(modifier = Modifier.fillMaxWidth().testTag("book-objectives")) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(chapterLabel, style = MaterialTheme.typography.labelLarge)
@@ -99,33 +101,37 @@ internal fun LazyListScope.bookChapterItems(
             }
         }
     }
-    item(key = "book-intro") {
+    if (page == null || page.introductionIndex >= 0) item(key = "book-intro") {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.testTag("book-introduction")) {
             Text(t(language, "Introduction", "முன்னுரை"),
                 style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold,
                 modifier = Modifier.semantics { heading() })
-            chapter.introduction.forEach {
+            (if (page == null) chapter.introduction else listOf(chapter.introduction[page.introductionIndex])).forEach {
                 Text(it.value(language), style = MaterialTheme.typography.bodyLarge)
             }
         }
     }
-    item(key = "book-contents") {
+    if (page == null || page.id == "contents") item(key = "book-contents") {
         Card(modifier = Modifier.fillMaxWidth().testTag("book-contents")) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(t(language, "Contents of this chapter", "இந்த அத்தியாயத்தின் உள்ளடக்கம்"),
                     style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold,
                     modifier = Modifier.semantics { heading() })
                 rows.filterIsInstance<BookRow.SectionHeading>().forEach {
-                    Text(it.number + "  " + it.heading.value(language))
+                    val rowIndex = rows.indexOf(it)
+                    Text(it.number + "  " + it.heading.value(language),
+                        modifier = Modifier.clickable(enabled = onPageSelected != null) { onPageSelected?.invoke("row-$rowIndex") }
+                            .padding(vertical = 12.dp).testTag("reading-section-" + it.number))
                 }
             }
         }
     }
-    items(rows.size, key = { "book-row-$it" }) { index ->
-        BookRowView(rows[index], language, onListen)
+    val visibleRows = page?.rowIndices ?: rows.indices.toList()
+    items(visibleRows.size, key = { "book-row-${visibleRows[it]}" }) { index ->
+        BookRowView(rows[visibleRows[index]], language, onListen)
     }
-    item(key = "book-summary") {
+    if (page == null || page.id == "summary") item(key = "book-summary") {
         Card(modifier = Modifier.fillMaxWidth().testTag("book-summary")) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(t(language, "Chapter summary", "அத்தியாயச் சுருக்கம்"),
@@ -135,7 +141,7 @@ internal fun LazyListScope.bookChapterItems(
             }
         }
     }
-    item(key = "book-glossary") {
+    if (page == null || page.id == "glossary") item(key = "book-glossary") {
         val sorted = chapter.definitions.sortedBy { it.term.english.lowercase() }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.testTag("book-glossary")) {
@@ -150,6 +156,7 @@ internal fun LazyListScope.bookChapterItems(
             }
         }
     }
+    if (page == null || page.id == "quick-checks") {
     item(key = "book-quick-checks-heading") {
         Text(t(language, "Check your understanding", "புரிதலைச் சரிபார்க்க"),
             style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold,
@@ -158,7 +165,8 @@ internal fun LazyListScope.bookChapterItems(
     items(chapter.quickChecks.size, key = { "book-qc-$it" }) { index ->
         BookQuickCheckView(chapter.lessonId, index, chapter.quickChecks[index], language)
     }
-    item(key = "book-further-reading") {
+    }
+    if (page == null || page.id == "references") item(key = "book-further-reading") {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp),
             modifier = Modifier.testTag("book-further-reading")) {
             Text(t(language, "Further reading", "மேலும் படிக்க"),

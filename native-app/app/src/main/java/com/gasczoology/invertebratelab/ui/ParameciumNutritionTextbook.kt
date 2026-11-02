@@ -34,7 +34,7 @@ private fun nutritionText(lang: AppLanguage,en: String,ta: String) = if(lang==Ap
 
 @Composable
 internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (BilingualText)->Unit,
-    initialProgress: NutritionProgress,onProgress: (NutritionProgress)->Unit,player: NutritionPlaybackViewModel) {
+    initialProgress: NutritionProgress,onProgress: (NutritionProgress)->Unit,player: NutritionPlaybackViewModel, compact: Boolean = false) {
     var progress by remember { mutableStateOf(initialProgress.normalized()) }
     val persist by rememberUpdatedState(onProgress)
     fun change(next: NutritionProgress) {
@@ -105,9 +105,11 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
         if(id in ParameciumPhysiology.structures.map {it.id} && progress.stageId !in ParameciumPhysiology.stageIds)
             chooseStage(when(id) {"mitochondrion" -> "metabolism";"dissolved-exchange" -> "gas-exchange";else -> "gas-entry"})
         change(progress.copy(selectedStructure=id));speak(ParameciumNutrition.structure(id).explanation) }
+    fun replay() { if (!progress.reducedMotion) { chooseStage("current", false); player.play { change(progress.copy(phasePermille = 1000)) } } }
     val shape=RoundedCornerShape(12.dp)
     val scope=rememberCoroutineScope()
     val requester=remember { BringIntoViewRequester() }
+    if (!compact) {
     Text(nutritionText(language,"5 · Nutrition and cell physiology · Paramecium caudatum","5 · ஊட்டமுறையும் செல் உடலியலும் · Paramecium caudatum"),
         style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
         modifier=Modifier.testTag("r19-textbook-title").semantics { heading() })
@@ -134,6 +136,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 Text(nutritionText(language,"Hear the complete subsection","முழுப் பாடப்பகுதி விளக்கத்தைக் கேள்"))
             }
         }
+    }
     }
     Card(colors=CardDefaults.cardColors(containerColor=Color(0xFFFAF8F3))) {
         Column(Modifier.fillMaxWidth().padding(12.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
@@ -162,6 +165,10 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                     progressBarRangeInfo=ProgressBarRangeInfo(playback.value.phase,0f..1f)
                     customActions=ParameciumNutrition.structures.map { item -> CustomAccessibilityAction(item.name.value(language)) { chooseStructure(item.id);true } }
                 }) { drawNutritionPencil(stage.id,progress.selectedStructure,playback.value.phase) }
+            SimulationTransport(language, "r19", playing, progress.reducedMotion, index > 0, index < ParameciumNutrition.stages.lastIndex,
+                { chooseStage(ParameciumNutrition.stages[index - 1].id) }, ::togglePlayback,
+                { chooseStage(ParameciumNutrition.stages[index + 1].id) }, ::replay,
+                { change(progress.copy(reducedMotion = false)) })
             Text(nutritionText(language,
                 "G oral groove/vestibule · O oral cilia · M cytostome · F cytopharynx · V food vacuole · A acidosome · L lysosome · B vacuolar boundary · S soluble products. Left: ventral orientation only. Upper-right: enlarged oral cutaway. Lower-right: independently enlarged vacuole. Membrane folds, ciliary counts, particle size and timing are schematic; amber particles, stippling and enzyme dots are qualitative teaching cues, not a microscope stain, calibrated pH or resolved proteins. Stippling records early acidification, not sustained low pH. Large grey residues stay enclosed while small soluble products cross the membrane.",
                 "G வாய்ப்பள்ளம்/முன்னறை · O வாய்ப்புறக் குறுஇழை · M செல் வாய் · F சைட்டோஃபாரிங்ஸ் · V உணவு நுண்குமிழ் · A அமிலச் சிறுகுமிழ் · L லைசோசோம் · B நுண்குமிழ்ச் சவ்வு · S கரையும் விளைபொருள்கள். இடது: வயிற்றுப்புறத் திசை மட்டும். மேல் வலது: பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம். கீழ் வலது: தனிப் பெரிதாக்கிய நுண்குமிழ். சவ்வு மடிப்புகள், குறுஇழை எண்ணிக்கை, துகள் அளவு, நேரம் ஆகியவை விளக்கத்திற்கானவை; பழுப்பு நிறத் துகள்களும் புள்ளிகளும் கற்பித்தல் குறிகள்; நுண்ணோக்கிச் சாயம், அளவிட்ட pH அல்லது நேரடிப் புரதக் காட்சி அல்ல. புள்ளிகள் ஆரம்ப அமிலமாதலைக் குறிக்கின்றன; தொடர்ந்து குறைந்த pH அல்ல. சிறிய கரையும் விளைபொருள்கள் சவ்வைக் கடக்கும்போது பெரிய சாம்பல் எச்சங்கள் உள்ளேயே இருக்கும்."),
@@ -212,7 +219,7 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-previous")) { Text(nutritionText(language,"Previous view","முந்தைய காட்சி")) }
             OutlinedButton(onClick={chooseStage(ParameciumNutrition.stages[(index+1).coerceAtMost(ParameciumNutrition.stages.lastIndex)].id)},enabled=index<ParameciumNutrition.stages.lastIndex,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-next")) { Text(nutritionText(language,"Next view","அடுத்த காட்சி")) }
-            OutlinedButton(onClick={chooseStage("current",false)},shape=shape,
+            OutlinedButton(onClick={replay()},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-reset")) { Text(nutritionText(language,"Replay from the beginning","தொடக்கத்திலிருந்து மீண்டும் இயக்கு")) }
             OutlinedButton(onClick={player.pause();change(progress.copy(reducedMotion=!progress.reducedMotion,
                 phasePermille=nutritionPhasePermille(player.state.value.phase)))},shape=shape,

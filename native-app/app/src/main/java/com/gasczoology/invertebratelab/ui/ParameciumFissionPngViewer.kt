@@ -32,12 +32,12 @@ internal fun ParameciumFissionPngViewer(stageId: String, language: AppLanguage) 
     val stagePlates = ParameciumFissionPlateCatalogue.forStage(stageId)
     // Keep existing source plates accessible even where a later-stage PNG is absent.
     // Captions identify the actual depicted stage; never relabel F01-F03 as furrow/daughters.
-    val plates = if (stagePlates.isEmpty()) ParameciumFissionPlateCatalogue.plates else stagePlates
+    val plates = stagePlates
     Column {
         if (stagePlates.isEmpty()) {
             Text(if (language == AppLanguage.TAMIL)
-                "இந்த நிலைக்கான தனிப்படம் இன்னும் இல்லை. கீழே முந்தைய நிலைகளுக்கான கிடைக்கும் மூலப்படங்கள் காட்டப்பட்டுள்ளன; இவை தற்போதைய நிலையைச் சித்தரிக்கவில்லை."
-                else "No dedicated image for this stage yet. The available earlier-stage source plates are shown below; they do not depict the selected stage.",
+                "இந்த நிலைக்கான தனிப்படம் இன்னும் இல்லை. முந்தைய நிலைப் படம் மாற்றாகக் காட்டப்படாது."
+                else "No dedicated image for this stage yet. No earlier-stage plate is substituted.",
                 modifier = Modifier.testTag("paramecium-fission-earlier-stage-disclosure"))
         }
         plates.forEach { plate ->

@@ -36,6 +36,9 @@ class NativeLearningRepository(private val context: Context) {
         val textbookSection = stringPreferencesKey("textbook_section_id")
         val ciliaryStage = intPreferencesKey("ciliary_stage_index")
         val laboratoryTab = stringPreferencesKey("laboratory_tab")
+        val simulationProcess = stringPreferencesKey("simulation_process")
+        val ciliaryPhase = intPreferencesKey("ciliary_phase_permille")
+        val ciliaryReduced = booleanPreferencesKey("ciliary_reduced_motion")
         val nuclearChapter = stringPreferencesKey("r17_nuclear_chapter")
         val dimorphismView = stringPreferencesKey("r17_dimorphism_view")
         val fissionView = stringPreferencesKey("r17_fission_view")
@@ -79,6 +82,9 @@ class NativeLearningRepository(private val context: Context) {
             preferences[Keys.textbookSection] = state.textbookSectionId
             preferences[Keys.ciliaryStage] = state.ciliaryStageIndex
             preferences[Keys.laboratoryTab] = state.laboratoryTab
+            preferences[Keys.simulationProcess] = state.simulationProcess
+            preferences[Keys.ciliaryPhase] = state.ciliaryPhasePermille
+            preferences[Keys.ciliaryReduced] = state.ciliaryReducedMotion
             val progress = state.nuclearProgress.normalized()
             preferences[Keys.nuclearChapter] = progress.chapterId
             preferences[Keys.dimorphismView] = progress.dimorphismView
@@ -124,6 +130,9 @@ class NativeLearningRepository(private val context: Context) {
             textbookSectionId = preferences[Keys.textbookSection] ?: "identity-and-habitat",
             ciliaryStageIndex = preferences[Keys.ciliaryStage] ?: 0,
             laboratoryTab = preferences[Keys.laboratoryTab] ?: "study",
+            simulationProcess = preferences[Keys.simulationProcess] ?: "OSMOREGULATION",
+            ciliaryPhasePermille = preferences[Keys.ciliaryPhase] ?: 0,
+            ciliaryReducedMotion = preferences[Keys.ciliaryReduced] ?: false,
             nutritionProgress = NutritionProgress(
                 stageId = preferences[Keys.nutritionStage] ?: "current",
                 readingId = preferences[Keys.nutritionReading] ?: "5.1",

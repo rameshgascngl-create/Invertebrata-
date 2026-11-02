@@ -33,7 +33,7 @@ private fun waterText(lang: AppLanguage,en: String,ta: String) = if(lang==AppLan
 
 @Composable
 internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (BilingualText)->Unit,
-    initialProgress: WaterBalanceProgress,onProgress: (WaterBalanceProgress)->Unit) {
+    initialProgress: WaterBalanceProgress,onProgress: (WaterBalanceProgress)->Unit, compact: Boolean = false) {
     var progress by remember { mutableStateOf(initialProgress.normalized()) }
     val persist by rememberUpdatedState(onProgress)
     fun change(next: WaterBalanceProgress) { progress=next;persist(next) }
@@ -69,9 +69,18 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
         if(current==ParameciumWaterBalance.stages.lastIndex) return false
         change(progress.copy(stageId=ParameciumWaterBalance.stages[current+1].id,phasePermille=0));return true
     }
+    fun togglePlayback() {
+        if (player.state.value.playing) { player.pause(); change(progress.copy(phasePermille = (player.state.value.phase * 1000).toInt())) }
+        else if (!progress.reducedMotion) {
+            if (player.state.value.phase >= 1f) { player.rewind(); change(progress.copy(phasePermille = 0)) }
+            player.play(::advance)
+        }
+    }
+    fun replay() { if (!progress.reducedMotion) { chooseStage("osmosis", false); player.play(::advance) } }
     val shape=RoundedCornerShape(12.dp)
     val scope=rememberCoroutineScope()
     val requester=remember { BringIntoViewRequester() }
+    if (!compact) {
     Text(waterText(language,"WATER BALANCE · Paramecium caudatum","நீர்ச் சமநிலை · Paramecium caudatum"),
         style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
         modifier=Modifier.testTag("r18-textbook-title").semantics { heading() })
@@ -99,6 +108,7 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
             }
         }
     }
+    }
     Card(colors=CardDefaults.cardColors(containerColor=Color(0xFFFAF8F3))) {
         Column(Modifier.fillMaxWidth().padding(12.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
             Text(waterText(language,"View ","காட்சி ")+"${index+1}/4 — "+stage.heading.value(language),
@@ -121,6 +131,10 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                     progressBarRangeInfo=ProgressBarRangeInfo(playback.phase,0f..1f)
                     customActions=ParameciumWaterBalance.structures.map { item -> CustomAccessibilityAction(item.name.value(language)) { chooseStructure(item.id);true } }
                 }) { drawWaterBalancePencil(stage.id,progress.selectedStructure,playback.phase) }
+            SimulationTransport(language, "r18", playback.playing, progress.reducedMotion, index > 0, index < 3,
+                { chooseStage(ParameciumWaterBalance.stages[index - 1].id) }, ::togglePlayback,
+                { chooseStage(ParameciumWaterBalance.stages[index + 1].id) }, ::replay,
+                { change(progress.copy(reducedMotion = false)) })
             Text(waterText(language,
                 "C reservoir · A ampulla · R collecting canal · S smooth spongiome · D decorated spongiome · P pore. Upper-right: two P. caudatum positions only. Lower-right: separately enlarged P. multimicronucleatum tubules. Representative arms; discontinuity marks omit changing connections. Blue flow is a teaching cue, not a stain or measured water path.",
                 "C மைய நுண்குமிழ் · A விரிந்த பகுதி · R சேகரிப்புக் கால்வாய் · S மென்மையான குழாய் வலை · D துருத்தக் குழாய் வலை · P துளை. மேல் வலது: P. caudatum இன் இரு இடங்கள் மட்டும். கீழ் வலது: தனியாகப் பெரிதாக்கிய P. multimicronucleatum குழாய்கள். பிரதிநிதிக் கிளைகள்; முறிவுக் குறிகள் மாறும் இணைப்புகளை விடுகின்றன. நீல ஓட்டம் கற்பித்தல் குறி; சாயமோ அளவிடப்பட்ட நீர்ப் பாதையோ அல்ல."),
@@ -162,11 +176,7 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                 "கற்பித்தலுக்கான வேகமும் விகிதங்களும்; இயற்கை நிகழ்வுகள் ஒன்றோடொன்று அமையும். மீட்டமைந்த இயக்கம் இடைநிறுத்தத்தில் இருக்கும்."))
             Text(waterText(language,if(playback.playing)"Playing" else "Paused",if(playback.playing)"இயங்குகிறது" else "இடைநிறுத்தம்"),
                 modifier=Modifier.testTag("r18-playback-state"))
-            Button(onClick={if(playback.playing) {player.pause();change(progress.copy(phasePermille=(player.state.value.phase*1000).toInt()))}
-                else {
-                    if(player.state.value.phase>=1f) { player.rewind();change(progress.copy(phasePermille=0)) }
-                    player.play(::advance)
-                }},enabled=!progress.reducedMotion,shape=shape,
+            Button(onClick={togglePlayback()},enabled=!progress.reducedMotion,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-play-pause")) {
                 Text(waterText(language,if(playback.playing)"Pause" else "Play",if(playback.playing)"இடைநிறுத்து" else "இயக்கு"))
             }
@@ -174,7 +184,7 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-previous")) { Text(waterText(language,"Previous view","முந்தைய காட்சி")) }
             OutlinedButton(onClick={chooseStage(ParameciumWaterBalance.stages[(index+1).coerceAtMost(3)].id)},enabled=index<3,shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-next")) { Text(waterText(language,"Next view","அடுத்த காட்சி")) }
-            OutlinedButton(onClick={chooseStage("osmosis",false)},shape=shape,
+            OutlinedButton(onClick={replay()},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r18-reset")) { Text(waterText(language,"Replay from the beginning","தொடக்கத்திலிருந்து மீண்டும் இயக்கு")) }
             OutlinedButton(onClick={player.pause();change(progress.copy(reducedMotion=!progress.reducedMotion,
                 phasePermille=(player.state.value.phase*1000).toInt()))},shape=shape,

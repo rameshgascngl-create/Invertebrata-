@@ -46,7 +46,16 @@ private fun obeliaSettlementFocus(focus: Int): BilingualText? = when (focus) {
 internal fun UnitIITeachingChapter(
     chapter:Chapter, language:AppLanguage,onBack:()->Unit,
     revealedQuestionId:String,onToggle:(A5Question)->Unit,
+    paged: Boolean = true, interactiveOnly: Boolean = false,
 ) {
+    val registeredBook = BookChapters.forLesson(chapter.id)
+    if (paged && registeredBook != null) {
+        UnitBookTeachingChapter(chapter, registeredBook, language, onBack, revealedQuestionId, onToggle,
+            containerPrefix = "u2-reader-", backTag = "u2-back",
+            continuousReader = { UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false) },
+            interactiveReader = { UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false, interactiveOnly = true) })
+        return
+    }
     val lesson=requireNotNull(UnitIILessons.forChapter(chapter.id))
     val book=BookChapters.forLesson(chapter.id)
     val context=LocalContext.current
@@ -80,7 +89,7 @@ internal fun UnitIITeachingChapter(
         contentPadding=PaddingValues(start=16.dp,top=16.dp,end=16.dp,bottom=32.dp),
         verticalArrangement=Arrangement.spacedBy(14.dp)
     ){
-        item(key="header") {
+        if (!interactiveOnly) item(key="header") {
             Column(verticalArrangement=Arrangement.spacedBy(9.dp)) {
                 OutlinedButton(onClick=onBack,modifier=Modifier.heightIn(min=48.dp).testTag("u2-back")){
                     Text(tr(language,"Back to Unit II","அலகு II-க்குத் திரும்பு"))
@@ -130,7 +139,7 @@ internal fun UnitIITeachingChapter(
                             if(playing) playing=false
                             else {if(index>=stages.lastIndex)index=0;playing=true}
                         },modifier=Modifier.heightIn(min=48.dp).weight(1f).testTag("u2-play-pause")){
-                        Text(tr(language,if(playing)"Pause" else "Animate",
+                        Text(tr(language,if(playing)"Pause" else "Play stages",
                             if(playing)"நிறுத்து" else "இயக்கு"))
                     }
                 }
@@ -157,6 +166,7 @@ internal fun UnitIITeachingChapter(
                     "உரை மேலே எப்போதும் இருக்கும்; ஆஃப்லைன் ஒலிக்காக நிறுவப்பட்ட குரல் தேவை."))
             }
         }
+        if (!interactiveOnly) {
         if(book!=null){ bookChapterItems(book,language){narrator.speak(it,language)} } else
         items(lesson.sections,key={it.id}){section->
             Card(modifier=Modifier.fillMaxWidth().testTag("u2-section-"+section.id)) {
@@ -210,6 +220,7 @@ internal fun UnitIITeachingChapter(
                         }
                 }
             }
+        }
         }
     }
 }

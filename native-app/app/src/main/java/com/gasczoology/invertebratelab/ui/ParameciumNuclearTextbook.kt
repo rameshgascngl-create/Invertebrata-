@@ -35,7 +35,7 @@ private fun text(lang: AppLanguage, en: String, ta: String) = if (lang == AppLan
 @Composable
 internal fun ParameciumNuclearTextbook(
     language: AppLanguage, speak: (BilingualText) -> Unit,
-    initialProgress: NuclearLearningProgress, onProgress: (NuclearLearningProgress) -> Unit,
+    initialProgress: NuclearLearningProgress, onProgress: (NuclearLearningProgress) -> Unit, compact: Boolean = false,
 ) {
     // Apply interaction state synchronously. DataStore acknowledgement is asynchronous;
     // ON_STOP must never overwrite a newly selected stage with an older emitted snapshot.
@@ -78,6 +78,14 @@ internal fun ParameciumNuclearTextbook(
         change(next)
         return true
     }
+    fun togglePlayback() {
+        if (player.state.value.playing) { player.pause(); change(progress.copy(phasePermille = (player.state.value.phase * 1000).toInt())) }
+        else if (!progress.reducedMotion) {
+            if (player.state.value.phase >= 1f) { player.rewind(); change(progress.copy(phasePermille = 0)) }
+            player.play(::advance)
+        }
+    }
+    fun replay() { if (!progress.reducedMotion) { chooseView(chapter.views.first().id); player.play(::advance) } }
     val shape = RoundedCornerShape(12.dp)
     val scope = rememberCoroutineScope()
     val requester = remember { BringIntoViewRequester() }
@@ -85,6 +93,7 @@ internal fun ParameciumNuclearTextbook(
         change(progress.copy(selectedNucleus = id))
         speak(ParameciumNuclearBiology.nucleus(id))
     }
+    if (!compact) {
     Text(text(language, "NUCLEAR AND REPRODUCTIVE BIOLOGY · Paramecium caudatum",
         "உட்கரு மற்றும் இனப்பெருக்க உயிரியல் · Paramecium caudatum"),
         style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold,
@@ -126,6 +135,7 @@ internal fun ParameciumNuclearTextbook(
                 Text(text(language, "Hear the complete subsection", "முழுப் பாடப்பகுதி விளக்கத்தைக் கேள்"))
             }
         }
+    }
     }
     Card(colors = CardDefaults.cardColors(containerColor = Color(0xFFFAF8F3))) {
         Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -171,6 +181,10 @@ internal fun ParameciumNuclearTextbook(
                         CustomAccessibilityAction(ParameciumNuclearBiology.nucleusName(id).value(language)) { chooseNucleus(id); true }
                     }
                 }) { drawNuclearPencilPlate(chapter.id, stage, progress.selectedNucleus, playback.phase) }
+            SimulationTransport(language, "r17", playback.playing, progress.reducedMotion, position > 0, position < chapter.views.lastIndex,
+                { chooseView(chapter.views[position - 1].id) }, ::togglePlayback,
+                { chooseView(chapter.views[position + 1].id) }, ::replay,
+                { change(progress.copy(reducedMotion = false)) })
             Text(text(language,
                 "MAC: larger hatched somatic nucleus. MIC: compact germline nucleus. Insets are enlarged independently. Representative chromatin, cilia and oral outline; not a calibrated specimen or chromosome count.",
                 "MAC: பெரிய கோடிட்ட உடலியக்க உட்கரு. MIC: செறிவான மரபுவழி உட்கரு. சிறுபடங்கள் தனித்தனியே பெரிதாக்கப்பட்டன. குரோமாட்டின், குறுஇழைகள், வாய்ப்புறம் பிரதிநிதிக் குறிகள்; அளவுத்திருத்த மாதிரியோ குரோமோசோம் எண்ணிக்கையோ அல்ல."),
@@ -216,7 +230,7 @@ internal fun ParameciumNuclearTextbook(
                 enabled = position < chapter.views.lastIndex, shape = shape, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-next")) {
                 Text(text(language, "Next view", "அடுத்த காட்சி"))
             }
-            OutlinedButton(onClick = { player.rewind(); player.play(::advance) }, enabled = !progress.reducedMotion, shape = shape,
+            OutlinedButton(onClick = { replay() }, enabled = !progress.reducedMotion, shape = shape,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-replay")) {
                 Text(text(language, "Replay from this view", "இக்காட்சியிலிருந்து மீண்டும் இயக்கு"))
             }

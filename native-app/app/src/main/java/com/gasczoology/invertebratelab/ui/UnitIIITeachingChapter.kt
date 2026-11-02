@@ -35,7 +35,16 @@ internal fun UnitIIITeachingChapter(
     onBack: () -> Unit,
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
+    paged: Boolean = true, interactiveOnly: Boolean = false,
 ) {
+    val registeredBook = BookChapters.forLesson(chapter.id)
+    if (paged && registeredBook != null) {
+        UnitBookTeachingChapter(chapter, registeredBook, language, onBack, revealedQuestionId, onToggle,
+            containerPrefix = "u3-reader-", backTag = "u3-back",
+            continuousReader = { UnitIIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false) },
+            interactiveReader = { UnitIIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false, interactiveOnly = true) })
+        return
+    }
     val lesson = requireNotNull(UnitIIILessons.forChapter(chapter.id))
     val book = BookChapters.forLesson(chapter.id)
     val context = LocalContext.current
@@ -64,7 +73,7 @@ internal fun UnitIIITeachingChapter(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
-        item(key = "u3-heading") {
+        if (!interactiveOnly) item(key = "u3-heading") {
             Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
                 OutlinedButton(onClick = onBack,
                     modifier = Modifier.heightIn(min = 48.dp).testTag("u3-back")) {
@@ -152,6 +161,7 @@ internal fun UnitIIITeachingChapter(
                 }
             }
         }
+        if (!interactiveOnly) {
         if (book != null) { bookChapterItems(book, language) { narrator.speak(it, language) } } else
         items(lesson.sections, key = { it.id }) { section ->
             Card(modifier = Modifier.fillMaxWidth().testTag("u3-section-"+section.id)) {
@@ -205,6 +215,7 @@ internal fun UnitIIITeachingChapter(
                         }
                 }
             }
+        }
         }
     }
 }

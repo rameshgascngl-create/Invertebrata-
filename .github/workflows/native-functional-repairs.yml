@@ -1,0 +1,38 @@
+name: Native simulator and paged-reader repairs
+on:
+  push:
+    branches: ['codex/fix-simulators-reading-20261102']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: functional-repairs-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  compile-and-jvm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - uses: gradle/actions/setup-gradle@v4
+        with: {gradle-version: '9.6.0'}
+      - name: Compile application and all instrumentation; run JVM contracts
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest :app:assembleDebug :app:assembleDebugAndroidTest --stacktrace
+      - name: Record exact APK identities
+        if: success()
+        run: |
+          mkdir -p qa-evidence/functional-apk
+          cp native-app/app/build/outputs/apk/debug/*.apk qa-evidence/functional-apk/
+          cp native-app/app/build/outputs/apk/androidTest/debug/*.apk qa-evidence/functional-apk/
+          printf '%s\n' "$GITHUB_SHA" > qa-evidence/functional-apk/commit.txt
+          (cd qa-evidence/functional-apk && sha256sum *.apk > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-functional-debug-${{ github.sha }}
+          path: |
+            qa-evidence/functional-apk/
+            native-app/app/build/test-results/testDebugUnitTest/
+          if-no-files-found: warn

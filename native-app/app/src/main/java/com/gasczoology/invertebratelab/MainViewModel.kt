@@ -42,6 +42,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val academicState: StateFlow<AcademicLoadState> = _academicState.asStateFlow()
 
+    private val bookReading = com.gasczoology.invertebratelab.data.BookReadingRepository(application)
+    val readingPositions = bookReading.positions.map<Map<String, com.gasczoology.invertebratelab.data.BookReadingPosition>, Map<String, com.gasczoology.invertebratelab.data.BookReadingPosition>?> { it }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    fun saveReadingPosition(chapter: String, position: com.gasczoology.invertebratelab.data.BookReadingPosition) {
+        viewModelScope.launch { bookReading.save(chapter, position) }
+    }
+
     val persistedLearning: StateFlow<PersistedLearningLoadState> = learningRepository.learningState
         .map<NativeLearningState, PersistedLearningLoadState> { PersistedLearningLoadState.Ready(it) }
         .stateIn(viewModelScope, SharingStarted.Eagerly, PersistedLearningLoadState.Loading)

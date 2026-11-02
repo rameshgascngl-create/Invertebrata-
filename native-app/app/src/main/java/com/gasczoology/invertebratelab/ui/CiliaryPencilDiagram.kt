@@ -14,7 +14,7 @@ import kotlin.math.sin
 import kotlin.math.min
 
 /** Original enlarged, simplified teaching projection; no microscope measurements. */
-internal fun DrawScope.drawCiliaryPencilDiagram(stage: String, selectedPart: String) {
+internal fun DrawScope.drawCiliaryPencilDiagram(stage: String, selectedPart: String, fraction: Float = 1f) {
     val w = size.width
     val h = size.height
     val ink = PencilAtlasPalette.graphite
@@ -35,13 +35,19 @@ internal fun DrawScope.drawCiliaryPencilDiagram(stage: String, selectedPart: Str
         Offset(w * .93f, baseline + h * .022f), line * .65f)
     for (i in 0 until 11) {
         val x = w * (.10f + .074f * i)
-        val phase = if (stage == "wave") i % 4 else when (stage) {
+        val phase = if (stage == "wave") ((i + fraction * 4) % 4).toInt() else when (stage) {
             "effective" -> 1
             "recovery" -> 2
             else -> 0
         }
-        val lift = h * if (phase == 2 || phase == 3) .16f else .34f
-        val lean = w * when (phase) { 1 -> .055f; 2 -> -.062f; 3 -> -.02f; else -> .01f }
+        val progress = fraction.coerceIn(0f, 1f)
+        val lift = h * when (phase) { 2, 3 -> .34f - .18f * progress; else -> .34f }
+        val lean = w * when (phase) {
+            1 -> -.025f + .080f * progress
+            2 -> .055f - .117f * progress
+            3 -> -.062f + .042f * progress
+            else -> .01f * progress
+        }
         val contour = Path().apply {
             moveTo(x, baseline)
             if (phase == 2 || phase == 3) {

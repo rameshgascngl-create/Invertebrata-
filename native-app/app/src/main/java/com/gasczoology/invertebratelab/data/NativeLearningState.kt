@@ -17,6 +17,9 @@ data class NativeLearningState(
     val textbookSectionId: String = "identity-and-habitat",
     val ciliaryStageIndex: Int = 0,
     val laboratoryTab: String = "study",
+    val simulationProcess: String = "OSMOREGULATION",
+    val ciliaryPhasePermille: Int = 0,
+    val ciliaryReducedMotion: Boolean = false,
     val nuclearProgress: NuclearLearningProgress = NuclearLearningProgress(),
     val waterBalanceProgress: WaterBalanceProgress = WaterBalanceProgress(),
     val nutritionProgress: NutritionProgress = NutritionProgress(),
@@ -36,6 +39,8 @@ data class NativeLearningState(
         val chapter = chapters.singleOrNull { it.id == chapterId }
         val question = chapters.flatMap { it.a5Questions }.singleOrNull { it.id == questionId }
         val textbookState = copy(
+            simulationProcess = simulationProcess.takeIf { value -> ParameciumProcess.entries.any { it.name == value } } ?: "OSMOREGULATION",
+            ciliaryPhasePermille = ciliaryPhasePermille.coerceIn(0, 1000),
             nuclearProgress = nuclearProgress.normalized(),
             waterBalanceProgress = waterBalanceProgress.normalized(),
             nutritionProgress = nutritionProgress.normalized(),

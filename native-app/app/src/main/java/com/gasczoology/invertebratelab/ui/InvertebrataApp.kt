@@ -97,12 +97,13 @@ fun InvertebrataApp(viewModel: MainViewModel) {
     val language by viewModel.language.collectAsState()
     val academicState by viewModel.academicState.collectAsState()
     val persisted by viewModel.persistedLearning.collectAsState()
+    val readingPositions by viewModel.readingPositions.collectAsState()
 
     // Never construct navigation until the disk record and academic corpus load.
     // Remember only the initial route; later writes cannot reset the NavHost.
     val corpus = academicState as? AcademicLoadState.Ready
     val stored = persisted as? PersistedLearningLoadState.Ready
-    if (corpus == null || stored == null) {
+    if (corpus == null || stored == null || readingPositions == null) {
         when (academicState) {
             is AcademicLoadState.Failure ->
                 ErrorScreen((academicState as AcademicLoadState.Failure).reason, language)
@@ -138,6 +139,7 @@ fun InvertebrataApp(viewModel: MainViewModel) {
         }
     }
 
+    androidx.compose.runtime.CompositionLocalProvider(LocalReadingPositions provides ReadingPositionAccess(readingPositions.orEmpty(), viewModel::saveReadingPosition)) {
     NavHost(
         navController = navController,
         startDestination = startRoute,
@@ -328,6 +330,7 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 },
             )
         }
+    }
     }
 }
 
@@ -612,7 +615,8 @@ private fun ChapterBody(
         return
     }
     BookChapters.forLesson(chapter.id)?.let { book ->
-        UnitBookTeachingChapter(chapter, book, language, onBack, revealedQuestionId, onToggle)
+        UnitBookTeachingChapter(chapter, book, language, onBack, revealedQuestionId, onToggle,
+            onOpenFullLesson = onOpenFullLesson, onOpenAnatomy = onOpenAnatomy)
         return
     }
     val restoredLesson = remember(chapter.id) { FiveUnitRestorationLessons.byId[chapter.id] }
