@@ -226,13 +226,42 @@ class NativeReleaseFunctionalTest {
         val result = checkNotNull(node.rangeInfo) { "Diagram has no Android range semantics: " + id }.current
         node.recycle(); return result
     }
+    private fun visibleHeight(id: String): Int {
+        val node = find(id, false) ?: return 0
+        val rect = Rect(); node.getBoundsInScreen(rect); node.recycle()
+        rect.intersect(windowBounds())
+        return maxOf(rect.height(), 0)
+    }
+    /**
+     * ACTION_SHOW_ON_SCREEN scrolls with an animation. Sampling during it captured a 69 px sliver
+     * of a 604 px diagram in the release build (CI run 41411776692), so before and after captures
+     * differed in size. Repeat the action and wait for the layout to settle until the visible
+     * height stops growing.
+     */
+    private fun bringFullyIntoView(id: String) {
+        var last = -1
+        repeat(8) {
+            find(id, false)?.let { node ->
+                node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
+                node.recycle()
+            }
+            instrumentation.waitForIdleSync()
+            var settled = fingerprint()
+            for (poll in 0 until 8) {
+                SystemClock.sleep(90)
+                val now = fingerprint()
+                if (now == settled) break
+                settled = now
+            }
+            val height = visibleHeight(id)
+            if (height == last) return
+            last = height
+        }
+    }
     private fun diagram(id: String): Bitmap {
         // Playback controls may scroll the animated canvas almost completely offscreen.
-        // Bring the actual diagram back into view before sampling its pixels.
-        find(id, false)?.let { node ->
-            node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
-            node.recycle()
-        }
+        // Bring the actual diagram back into view, and let the scroll finish, before sampling pixels.
+        bringFullyIntoView(id)
         val node = scrollTo(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
         val fullHeight = bounds.height()
         var ancestor = node.parent
