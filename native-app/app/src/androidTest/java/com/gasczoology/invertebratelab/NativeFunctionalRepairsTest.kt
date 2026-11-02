@@ -10,6 +10,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
 import com.gasczoology.invertebratelab.ui.ReadingPositionSemantics
 import com.gasczoology.invertebratelab.ui.ReadingCanScrollForwardSemantics
+import com.gasczoology.invertebratelab.ui.ReadingPositionRestoredSemantics
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
@@ -88,8 +89,10 @@ class NativeFunctionalRepairsTest {
             runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id]?.pageId == "introduction-0" } } }
             val beforePosition = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
                 .config[ReadingPositionSemantics]
+            runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id] == beforePosition } } }
             rule.activityRule.scenario.recreate()
             waitFor(root(id, unit))
+            rule.waitUntil(10_000) { rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode().config[ReadingPositionRestoredSemantics] }
             val restoredNode = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
             val restoredPosition = restoredNode.config[ReadingPositionSemantics]
             val atEnd = !restoredNode.config[ReadingCanScrollForwardSemantics]

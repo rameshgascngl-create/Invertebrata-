@@ -262,6 +262,10 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("a5-question-" + fifth.id).assertTextEquals(fifth.question.tamil)
         rule.onNodeWithTag("a5-toggle-" + fifth.id).performScrollTo().performClick()
         val tamilPointTag = "a5-point-" + fifth.id + "-1"
+        // Reveal is published by DataStore after the click; wait for that state.
+        rule.waitUntil(timeoutMillis = 10_000L) {
+            rule.onAllNodesWithTag(tamilPointTag, useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
+        }
         rule.onNodeWithTag("native-assessment").performScrollToNode(hasTestTag(tamilPointTag))
         rule.onNodeWithTag(tamilPointTag)
             .assertTextEquals("1. " + fifth.answerPoints[0].tamil)

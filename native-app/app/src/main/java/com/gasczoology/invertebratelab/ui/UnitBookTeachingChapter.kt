@@ -24,6 +24,7 @@ import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.filterNotNull
 
 internal data class ReadingPositionAccess(
     val positions: Map<String, BookReadingPosition> = emptyMap(),
@@ -32,6 +33,7 @@ internal data class ReadingPositionAccess(
 internal val LocalReadingPositions = staticCompositionLocalOf { ReadingPositionAccess() }
 internal val ReadingPositionSemantics = SemanticsPropertyKey<BookReadingPosition>("BookReadingPosition")
 internal val ReadingCanScrollForwardSemantics = SemanticsPropertyKey<Boolean>("BookCanScrollForward")
+internal val ReadingPositionRestoredSemantics = SemanticsPropertyKey<Boolean>("BookPositionRestored")
 private fun ut(lang: AppLanguage, en: String, ta: String) = if (lang == AppLanguage.TAMIL) ta else en
 
 /** Default logical pages, with a deliberate continuous-reading option for reference work. */
@@ -63,13 +65,16 @@ internal fun UnitBookTeachingChapter(
     var penaeusStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     val pageIndex = pages.indexOfFirst { it.id == pageId }.coerceAtLeast(0)
     val page = pages[pageIndex]
-    val listState = remember(chapter.id, pageId, continuous, referenceGalleryOpen) {
-        val stored = positions.positions[chapter.id]
-        LazyListState(if (!referenceGalleryOpen && stored?.pageId == pageId) stored.itemIndex else 0,
-            if (!referenceGalleryOpen && stored?.pageId == pageId) stored.itemOffset else 0)
+    val restorePosition = remember(chapter.id, pageId, continuous, referenceGalleryOpen) {
+        positions.positions[chapter.id]?.takeIf { !referenceGalleryOpen && it.pageId == pageId }
     }
+    val listState = remember(chapter.id, pageId, continuous, referenceGalleryOpen) {
+        LazyListState(restorePosition?.itemIndex ?: 0, restorePosition?.itemOffset ?: 0)
+    }
+    var positionRestored by remember(listState) { mutableStateOf(false) }
+    var checkpointEnabled by remember(listState) { mutableStateOf(true) }
     val activePage by rememberUpdatedState(pageId)
-    fun savePosition() { if (!referenceGalleryOpen) positions.save(chapter.id, BookReadingPosition(pageId, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset)) }
+    fun savePosition() { if (positionRestored && checkpointEnabled && !continuous && !referenceGalleryOpen) positions.save(chapter.id, BookReadingPosition(pageId, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset)) }
     fun selectPage(id: String) {
         narrator.stop()
         referenceGalleryOpen = false
@@ -92,8 +97,19 @@ internal fun UnitBookTeachingChapter(
         }
     }
     LaunchedEffect(chapter.id, pageId, listState, continuous) {
-        if (!continuous && !referenceGalleryOpen) snapshotFlow { Triple(listState.isScrollInProgress, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset) }
-            .filter { !it.first }.distinctUntilChanged().collect { (_, item, offset) ->
+        // Scaffold bars and window insets can change the first measured viewport.
+        // Reapply the checkpoint after layout, before an initial clamp can replace it.
+        withFrameNanos { }
+        withFrameNanos { }
+        if (!continuous && !referenceGalleryOpen) restorePosition?.let { saved ->
+            listState.scrollToItem(saved.itemIndex, saved.itemOffset)
+            android.util.Log.i("NATIVE_READING", "restore " + chapter.id + " requested=" + saved +
+                " applied=" + listState.firstVisibleItemIndex + "/" + listState.firstVisibleItemScrollOffset +
+                " viewport=" + listState.layoutInfo.viewportSize)
+        }
+        positionRestored = true
+        if (!continuous && !referenceGalleryOpen) snapshotFlow { if (checkpointEnabled) Triple(listState.isScrollInProgress, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset) else null }
+            .filterNotNull().filter { !it.first }.distinctUntilChanged().collect { (_, item, offset) ->
                 positions.save(chapter.id, BookReadingPosition(pageId, item, offset))
             }
     }
@@ -101,7 +117,17 @@ internal fun UnitBookTeachingChapter(
     DisposableEffect(chapter.id, pageId, listState, lifecycle, continuous) {
         val thisPage = pageId
         val observer = LifecycleEventObserver { _, event ->
-            if (event == Lifecycle.Event.ON_STOP) { narrator.stop(); if (!continuous) savePosition() }
+            when (event) {
+                Lifecycle.Event.ON_PAUSE -> {
+                    // Freeze the last reading position before teardown changes the viewport.
+                    savePosition()
+                    checkpointEnabled = false
+                    narrator.stop()
+                }
+                Lifecycle.Event.ON_RESUME -> checkpointEnabled = true
+                Lifecycle.Event.ON_STOP -> narrator.stop()
+                else -> Unit
+            }
         }
         lifecycle.addObserver(observer)
         onDispose {
@@ -155,6 +181,7 @@ internal fun UnitBookTeachingChapter(
             modifier = Modifier.fillMaxSize().padding(padding).testTag(containerPrefix + chapter.id).semantics {
                 this[ReadingPositionSemantics] = BookReadingPosition(pageId, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset)
                 this[ReadingCanScrollForwardSemantics] = listState.canScrollForward
+                this[ReadingPositionRestoredSemantics] = positionRestored
             },
             contentPadding = PaddingValues(start = 16.dp, top = 12.dp, end = 16.dp, bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),

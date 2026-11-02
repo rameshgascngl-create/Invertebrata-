@@ -7,6 +7,8 @@ import android.graphics.Rect
 import android.os.ParcelFileDescriptor
 import android.os.SystemClock
 import android.view.accessibility.AccessibilityNodeInfo
+import android.view.accessibility.AccessibilityEvent
+import java.util.concurrent.atomic.AtomicLong
 import android.view.MotionEvent
 import android.view.InputDevice
 import androidx.test.core.app.ActivityScenario
@@ -31,6 +33,7 @@ class NativeReleaseFunctionalTest {
     private val tamil get() = args.getString("functionalLanguage") == "TAMIL"
     private val language get() = if (tamil) AppLanguage.TAMIL else AppLanguage.ENGLISH
     private lateinit var scenario: ActivityScenario<MainActivity>
+    private val verticalScrollEvents = AtomicLong()
 
     @Before fun launchCleanApplication() {
         runBlocking {
@@ -42,6 +45,9 @@ class NativeReleaseFunctionalTest {
         info.flags = info.flags or AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS or
             AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS or AccessibilityServiceInfo.FLAG_INCLUDE_NOT_IMPORTANT_VIEWS
         automation.serviceInfo = info
+        automation.setOnAccessibilityEventListener { event ->
+            if (event.eventType == AccessibilityEvent.TYPE_VIEW_SCROLLED && event.maxScrollY > 0) verticalScrollEvents.incrementAndGet()
+        }
         scenario = ActivityScenario.launch(MainActivity::class.java)
         scenario.onActivity { it.requestedOrientation =
             if (args.getString("functionalOrientation") == "landscape")
@@ -49,7 +55,10 @@ class NativeReleaseFunctionalTest {
         waitFor("native-home").recycle()
         assertEquals(args.getString("expectedScale")?.toFloat() ?: 1f, context.resources.configuration.fontScale, .06f)
     }
-    @After fun closeApplication() { if (::scenario.isInitialized) scenario.close() }
+    @After fun closeApplication() {
+        if (::scenario.isInitialized) scenario.close()
+        automation.setOnAccessibilityEventListener(null)
+    }
 
     private fun search(predicate: (AccessibilityNodeInfo) -> Boolean): AccessibilityNodeInfo? {
         if (android.os.Build.VERSION.SDK_INT >= 34) automation.clearCache()
@@ -65,7 +74,9 @@ class NativeReleaseFunctionalTest {
         return automation.rootInActiveWindow?.let(::visit)
     }
     private fun find(id: String, visible: Boolean = true) = search {
-        (it.viewIdResourceName == id || it.viewIdResourceName?.endsWith("/" + id) == true) && (!visible || it.isVisibleToUser)
+        val bounds = Rect(); it.getBoundsInScreen(bounds)
+        (it.viewIdResourceName == id || it.viewIdResourceName?.endsWith("/" + id) == true) &&
+            (!visible || (it.isVisibleToUser && bounds.width() > 20 && bounds.height() > 20))
     }
     private fun waitFor(id: String): AccessibilityNodeInfo {
         val until = SystemClock.elapsedRealtime() + 20_000
@@ -114,13 +125,14 @@ class NativeReleaseFunctionalTest {
         SystemClock.sleep(100)
     }
     private fun scroll(action: Int): Boolean {
-        val before = fingerprint(); val bounds = windowBounds()
+        val before = fingerprint(); val scrollEvent = verticalScrollEvents.get(); val bounds = windowBounds()
         val high = bounds.top + bounds.height() * .32f
         val low = bounds.top + bounds.height() * .78f
         if (action == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
             swipe(bounds.exactCenterX(), low, bounds.exactCenterX(), high)
         else swipe(bounds.exactCenterX(), high, bounds.exactCenterX(), low)
-        return before != fingerprint()
+        // A tall image can retain identical clipped bounds while scrolling through it.
+        return before != fingerprint() || verticalScrollEvents.get() != scrollEvent
     }
     private fun horizontal(container: String, id: String): AccessibilityNodeInfo {
         scrollTo(container).recycle()
@@ -215,7 +227,7 @@ class NativeReleaseFunctionalTest {
         node.recycle(); return result
     }
     private fun diagram(id: String): Bitmap {
-        val node = waitFor(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
+        val node = scrollTo(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
         var ancestor = node.parent
         while (ancestor != null) {
             if (ancestor.isScrollable) { val clip = Rect(); ancestor.getBoundsInScreen(clip); bounds.intersect(clip) }
@@ -224,7 +236,8 @@ class NativeReleaseFunctionalTest {
         node.recycle()
         val screen = checkNotNull(automation.takeScreenshot())
         bounds.intersect(0, 0, screen.width, screen.height)
-        assertTrue("Diagram is outside the viewport", bounds.width() > 20 && bounds.height() > 20)
+        if (bounds.width() <= 20 || bounds.height() <= 20) saveScreen("failure-viewport-" + id)
+        assertTrue("Diagram is outside the viewport: " + id + " " + bounds, bounds.width() > 20 && bounds.height() > 20)
         val region = Bitmap.createBitmap(screen, bounds.left, bounds.top, bounds.width(), bounds.height())
         val result = checkNotNull(region.copy(Bitmap.Config.ARGB_8888, false))
         if (region !== screen) region.recycle()
@@ -297,10 +310,13 @@ class NativeReleaseFunctionalTest {
             tap("r1-process-" + c.process); tap(c.stage); c.start?.let(::tap)
             scrollTo(c.prefix + "-inline-play-pause").recycle()
             val before = diagram(c.canvas)
-            tap(c.prefix + "-inline-play-pause")
+            // The transport was reached by touch above. Activate its native action
+            // without moving the viewport away from the diagram being measured.
+            fun playbackControl() = click(checkNotNull(find(c.prefix + "-inline-play-pause", false)), c.prefix + "-inline-play-pause")
+            playbackControl()
             val until = SystemClock.elapsedRealtime() + 8_000
             while (phase(c.canvas) !in .18f.. .8f && SystemClock.elapsedRealtime() < until) SystemClock.sleep(30)
-            tap(c.prefix + "-inline-play-pause"); SystemClock.sleep(150)
+            playbackControl(); SystemClock.sleep(150)
             val stopped = phase(c.canvas); assertTrue(c.process + ": no intermediate pause", stopped > 0f && stopped < 1f)
             val after = diagram(c.canvas)
             assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after) > 12)
