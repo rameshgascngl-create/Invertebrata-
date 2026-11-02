@@ -180,7 +180,9 @@ class NativeReleaseFunctionalTest {
         val directions = if (id == "r1-process-selector")
             listOf(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD, AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
         else listOf(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)
-        for (direction in directions) for (attempt in 0 until 55) {
+        // Tamil 200% pages are several times taller; give those searches a larger scroll budget.
+        val budget = if (context.resources.configuration.fontScale > 1.5f) 140 else 55
+        for (direction in directions) for (attempt in 0 until budget) {
             find(id)?.let { return it }
             find(id, false)?.let { it.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id); it.recycle(); SystemClock.sleep(75) }
             find(id)?.let { return it }
