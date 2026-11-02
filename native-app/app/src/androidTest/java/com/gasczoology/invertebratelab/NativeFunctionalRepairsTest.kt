@@ -82,11 +82,14 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag("reading-page-previous").assertIsNotEnabled()
             rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("book-objectives"))
             rule.onNodeWithTag("book-objectives").assertExists()
-            rule.onNodeWithTag("reading-page-next").performClick()
-            rule.onNodeWithTag("book-objectives").assertDoesNotExist()
+            // Objectives and the introduction share the opening page; the contents list is page 2.
             rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("book-introduction"))
             rule.onNodeWithTag("book-introduction").assertExists()
-            runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id]?.pageId == "introduction-0" } } }
+            rule.onNodeWithTag("reading-page-next").performClick()
+            rule.onNodeWithTag("book-objectives").assertDoesNotExist()
+            rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("reading-open-row-0"))
+            rule.onNodeWithTag("reading-open-row-0").assertExists()
+            runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id]?.pageId == "contents" } } }
             val beforePosition = rule.onNodeWithTag(root(id, unit)).fetchSemanticsNode()
                 .config[ReadingPositionSemantics]
             runBlocking { withTimeout(10_000) { BookReadingRepository(context).positions.first { it[id] == beforePosition } } }
@@ -105,7 +108,7 @@ class NativeFunctionalRepairsTest {
                 beforePosition == restoredPosition || validEndClamp)
             // Restoring the reading offset can leave the lazy header offscreen.
             rule.onNodeWithTag(root(id, unit)).performScrollToIndex(0)
-            rule.onNodeWithTag("reading-page-id").assertContentDescriptionEquals("introduction-0")
+            rule.onNodeWithTag("reading-page-id").assertContentDescriptionEquals("contents")
             screenshot("$id-restored-page")
             openPage(id, unit, "row-0")
             val book = BookChapters.forLesson(id)!!

@@ -321,8 +321,9 @@ class NativeReleaseFunctionalTest {
         for ((unit, id) in listOf(1 to "u1-paramecium", 2 to "u2-sycon", 3 to "u3-fasciola", 4 to "u4-penaeus", 5 to "u5-pila")) {
             enterChapter(unit, id)
             val previous = waitFor("reading-page-previous"); assertFalse(previous.isEnabled); previous.recycle()
-            scrollTo("book-objectives").recycle(); tap("reading-page-next")
-            scrollTo("book-introduction").recycle()
+            // Objectives and the introduction share the opening page; the contents list is page 2.
+            scrollTo("book-objectives").recycle(); scrollTo("book-introduction").recycle()
+            tap("reading-page-next")
             val page = waitText("reading-page-position") { it.startsWith(if (tamil) "பக்கம் 2/" else "Page 2/") }
             scenario.recreate(); waitFor(root(id, unit)).recycle()
             assertEquals(page, text("reading-page-position"))

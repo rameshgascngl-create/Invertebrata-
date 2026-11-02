@@ -10,7 +10,7 @@ class BookReadingPagesTest {
             assertEquals(book.lessonId, BookLayout.rows(book).indices.toList(), pages.flatMap { it.rowIndices })
             assertEquals(book.lessonId, pages.size, pages.map { it.id }.toSet().size)
             assertEquals(book.reviewQuestionIds.map { "practice-$it" }, pages.filter { it.id.startsWith("practice-") }.map { it.id })
-            assertEquals(book.introduction.indices.toList(), pages.filter { it.introductionIndex >= 0 }.map { it.introductionIndex })
+            assertEquals(book.lessonId, if (book.introduction.isEmpty()) emptyList() else listOf(0), pages.filter { it.introductionIndex >= 0 }.map { it.introductionIndex })
             assertTrue(book.lessonId, pages.size > book.sections.size)
             assertTrue(pages.all { it.title.english.isNotBlank() && it.title.tamil.isNotBlank() })
         }
@@ -21,9 +21,31 @@ class BookReadingPagesTest {
             val rows = BookLayout.rows(book)
             BookReadingPages.forChapter(book, book.reviewQuestionIds).filter { it.rowIndices.isNotEmpty() }.forEach { page ->
                 assertTrue("${book.lessonId}/${page.id} ends in a heading", rows[page.rowIndices.last()] is BookRow.Block)
-                assertTrue(page.rowIndices.count { rows[it] is BookRow.Block } <= 2)
+                val blocks = page.rowIndices.count { rows[it] is BookRow.Block }
+                val weight = page.rowIndices.sumOf { BookReadingPages.weight(rows[it]) }
+                assertTrue("${book.lessonId}/${page.id} weighs $weight over ${BookReadingPages.PAGE_BUDGET}",
+                    blocks == 1 || weight <= BookReadingPages.PAGE_BUDGET)
             }
         }
+    }
+
+    /** Pages are packed to a screen's worth; a page that is mostly blank is a defect. */
+    @Test fun bodyPagesAreMostlyFilled() {
+        val fills = ArrayList<Double>()
+        val sparse = ArrayList<String>()
+        BookChapters.all.forEach { book ->
+            val rows = BookLayout.rows(book)
+            val body = BookReadingPages.forChapter(book, book.reviewQuestionIds).filter { it.rowIndices.isNotEmpty() }
+            body.dropLast(1).forEach { page ->            // a chapter's last body page may legitimately be short
+                val fill = page.rowIndices.sumOf { BookReadingPages.weight(rows[it]) }.toDouble() / BookReadingPages.PAGE_BUDGET
+                fills += fill
+                if (fill < .45) sparse += "${book.lessonId}/${page.id}=${"%.2f".format(fill)}"
+            }
+        }
+        val average = fills.average()
+        println("PAGE_FILL average=${"%.2f".format(average)} pages=${fills.size} sparse=${sparse.size}")
+        assertTrue("average page fill $average; sparse pages: ${sparse.take(25)}", average >= .65)
+        assertTrue("too many sparse pages (${sparse.size} of ${fills.size}): ${sparse.take(25)}", sparse.size <= fills.size * .2)
     }
 
     @Test fun formerlyBypassedInteractiveComponentsHaveReadingDestinations() {

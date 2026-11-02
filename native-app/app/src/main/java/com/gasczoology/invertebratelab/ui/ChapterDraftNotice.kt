@@ -22,10 +22,15 @@ internal fun ChapterDraftNotice(
     status: AcademicWorkStatus,
     language: AppLanguage,
     modifier: Modifier = Modifier,
+    compact: Boolean = false,
 ) {
     if (status == AcademicWorkStatus.ACCEPTED) return
+    // The full sentence opens each chapter; later pages keep a one-line reminder so the notice is
+    // still visible without taking two lines of every page.
     Text(
-        text = if (language == AppLanguage.TAMIL)
+        text = if (compact) {
+            if (language == AppLanguage.TAMIL) "வரைவு · அறிவியல் மதிப்பாய்வு நிலுவை" else "Draft · academic review pending"
+        } else if (language == AppLanguage.TAMIL)
             "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன."
         else "Academic review pending: illustrations and Tamil vocabulary remain drafts.",
         style = MaterialTheme.typography.bodySmall,

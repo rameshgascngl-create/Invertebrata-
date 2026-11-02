@@ -41,16 +41,7 @@ object BookFigureLibrary {
         "Original NOAA coral-polyp anatomy diagram · NOAA Ocean Service, Flower Garden Banks National Marine Sanctuary · full native 1000 × 1005 resolution, lossless PNG from source JPEG · US federal public domain · review pending",
         "NOAA மூல பவள பாலிப் உடற்கூறுப் படம் · NOAA Ocean Service, Flower Garden Banks தேசியக் கடல் சரணாலயம் · மூலத் தெளிவுத்திறன் 1000 × 1005, JPEG-யிலிருந்து தர இழப்பின்றி PNG வடிவம் · அமெரிக்க அரசு பொதுப் பயன்பாட்டுப் படம் · மதிப்பாய்வு நிலுவையில்")
 
-    private fun commonsPublicDomain(file: String) = PlateCredit(
-        "Public domain · Wikimedia Commons, File:$file · simplified teaching reference, review pending",
-        "பொதுப் பயன்பாட்டு உரிமை (Public domain) · விக்கிமீடியா காமன்ஸ், File:$file · எளிய கற்பித்தல் குறிப்புப் படம், மதிப்பாய்வு நிலுவையில்")
-
-    /** Author details below were supplied by the app owner from the Commons file pages (2026-10-26)
-     *  and are to be re-checked against those pages before release. */
-    private val trypanosomaCredit = PlateCredit(
-        "Johannahoog · CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0) · Wikimedia Commons, File:Trypanosoma_brucei.svg · converted from SVG to PNG, otherwise unchanged",
-        "Johannahoog · CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0) · விக்கிமீடியா காமன்ஸ், File:Trypanosoma_brucei.svg · SVG-யிலிருந்து PNG ஆக மாற்றப்பட்டது, மற்றபடி மாற்றமில்லை")
-
+    /** Matches the dimensions of the Commons file; the bytes are unverified, so re-check before release. */
     private val plasmodiumCredit = PlateCredit(
         "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · Wikimedia Commons, File:Malaria_Plasmodium_infection_cycle.png · unchanged",
         "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · விக்கிமீடியா காமன்ஸ், File:Malaria_Plasmodium_infection_cycle.png · மாற்றமில்லை")
@@ -58,7 +49,7 @@ object BookFigureLibrary {
     val all: List<BookLibraryFigure> = listOf(
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
         BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa-original", coralNoaa),
-        BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", trypanosomaCredit),
+        BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", aiPlate),
         BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", plasmodiumCredit),
         BookLibraryFigure("pila-excretory-system", "pila/pila_excretory_system", schematic),
         BookLibraryFigure("pila-male-reproductive-system", "pila/pila_male_reproductive_system", schematic),
@@ -73,10 +64,8 @@ object BookFigureLibrary {
         BookLibraryFigure("nereis-trochophore", "nereis/08_trochophore_larva", aiPlate),
         BookLibraryFigure("entamoeba-mature-cyst", "unit1/references/entamoeba_mature_cyst", aiPlate),
         BookLibraryFigure("ascaris-fertilized-egg", "type_studies/ascaris/fertilized-egg", aiPlate),
-        BookLibraryFigure("entamoeba-cycle", "unit1/references/entamoeba",
-            commonsPublicDomain("Entamoeba_histolytica_life_cycle-en.svg")),
-        BookLibraryFigure("leishmania-amastigote", "unit1/references/leishmania",
-            commonsPublicDomain("Leishmania_Intracellular_Amastigote_(NIH_BioArt_872_-_798227).png")),
+        BookLibraryFigure("entamoeba-cycle", "unit1/references/entamoeba", aiPlate),
+        BookLibraryFigure("leishmania-amastigote", "unit1/references/leishmania", aiPlate),
     ) + listOf(
         "insect-tagmata", "metamorphosis", "parasitoid-cycle", "vector-cycle", "leech",
         "polychaete-asexual", "crinoid", "aurelia-cycle", "anemone-section",

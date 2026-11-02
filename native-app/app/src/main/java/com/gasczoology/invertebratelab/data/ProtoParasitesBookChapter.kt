@@ -28,8 +28,8 @@ object ProtoParasitesBookChapter {
                         "Mature four-nucleate cyst of the Entamoeba histolytica / E. dispar complex; morphology alone cannot distinguish the species (teaching illustration; scientific review pending)." to
                         "எண்டமீபா ஹிஸ்டோலிடிகா / ஈ. டிஸ்பார் தொகுதியின் நான்கு உட்கருக்கள் கொண்ட முதிர்ந்த சிஸ்ட்; உருவ அமைப்பை மட்டும் கொண்டு இவ்விரு இனங்களையும் வேறுபடுத்த முடியாது (கற்பித்தல் விளக்கப்படம்; அறிவியல் சரிபார்ப்பு நிலுவையில் உள்ளது)."),
                     bfig("lib/entamoeba-cycle",
-                        "Life cycle of Entamoeba histolytica, from a public-domain reference diagram (English labels). The stages are explained in the text; the diagram is for orientation only.",
-                        "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கைச் சுழற்சி; பொதுப் பயன்பாட்டு வரைபடத்திலிருந்து (ஆங்கிலக் குறிப்புகளுடன்). நிலைகள் உரையில் விளக்கப்பட்டுள்ளன; இப்படம் பொது அறிமுகத்துக்கு மட்டுமே."),
+                        "Life cycle of Entamoeba histolytica, from a teaching illustration (English labels). The stages are explained in the text; the diagram is for orientation only.",
+                        "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கைச் சுழற்சி; கற்பித்தல் விளக்கப்படத்திலிருந்து (ஆங்கிலக் குறிப்புகளுடன்). நிலைகள் உரையில் விளக்கப்பட்டுள்ளன; இப்படம் பொது அறிமுகத்துக்கு மட்டுமே."),
                     bpoints("Life history of Entamoeba histolytica", "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கை வரலாறு",
                         "Mature four-nucleate cysts are swallowed in contaminated food or water." to "மாசுபட்ட உணவு அல்லது நீரில் முதிர்ந்த நான்கு உட்கரு சிஸ்ட்கள் விழுங்கப்படுகின்றன.",
                         "Excystation takes place in the small intestine, and trophozoites are released." to "சிறுகுடலில் சிஸ்ட் நீக்கம் நிகழ்ந்து டிரோபோசோயிட்டுகள் விடுவிக்கப்படுகின்றன.",
@@ -97,8 +97,8 @@ object ProtoParasitesBookChapter {
                     bp("Control rests on measures against the sand fly, which include reducing exposure to its bites, and on the diagnosis and treatment of cases. Since the vector is a small insect that is active mostly at dusk and night, measures such as sleeping under protected nets are among those suggested, though the details of local control are matters for public health authorities. Where animals such as dogs are reservoirs, they are also part of the control of the disease in that area." to
                         "கட்டுப்பாடு மணல் ஈக்கு எதிரான நடவடிக்கைகளில் தங்கியுள்ளது; அதன் கடிக்கு வெளிப்படுவதைக் குறைத்தலும், நோய் நிகழ்வுகளின் நோயறிதல், சிகிச்சையும் அடங்கும். நோய்க்கடத்தி பெரும்பாலும் அந்தி, இரவில் செயல்படும் சிறு பூச்சி என்பதால் பாதுகாக்கப்பட்ட வலைகளுக்குள் உறங்குதல் போன்ற நடவடிக்கைகள் பரிந்துரைக்கப்படுபவற்றுள் அடங்கும்; உள்ளூர் கட்டுப்பாட்டு விவரங்கள் பொதுச் சுகாதார அதிகாரிகளுக்குரியவை. நாய்கள் போன்ற விலங்குகள் சேமிப்பிடங்களாக உள்ள இடங்களில் அவையும் அப்பகுதியில் நோய்க் கட்டுப்பாட்டின் பகுதி."),
                     bfig("lib/leishmania-amastigote",
-                        "A Leishmania amastigote inside a host cell, from a public-domain reference diagram.",
-                        "புரவலர் செல்லுக்குள் இருக்கும் லீஷ்மேனியா அமாஸ்டிகோட்; பொதுப் பயன்பாட்டு வரைபடத்திலிருந்து."),
+                        "A Leishmania amastigote inside a host cell, from a teaching illustration.",
+                        "புரவலர் செல்லுக்குள் இருக்கும் லீஷ்மேனியா அமாஸ்டிகோட்; கற்பித்தல் விளக்கப்படத்திலிருந்து."),
                     bdef("Promastigote", "ப்ரோமாஸ்டிகோட் (Promastigote)", "The slender, flagellated form of Leishmania found in the sand fly." to
                         "மணல் ஈயில் காணப்படும் லீஷ்மேனியாவின் மெல்லிய, கசையுடைய வடிவம்."),
                     bdef("Amastigote", "அமாஸ்டிகோட் (Amastigote)", "The small, rounded form of Leishmania without a free flagellum that multiplies inside macrophages." to
