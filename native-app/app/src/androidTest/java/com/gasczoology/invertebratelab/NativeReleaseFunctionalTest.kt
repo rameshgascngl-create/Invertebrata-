@@ -317,7 +317,7 @@ class NativeReleaseFunctionalTest {
         val cases = listOf(
             Case("osmoregulation", "r18", "r18-water-canvas", "r18-stage-fill", "r18-start-view"),
             Case("ciliary_motion", "ciliary", "ciliary-playback-diagram", "ciliary-playback-select-effective", null),
-            Case("feeding", "r19", "r19-nutrition-canvas", "r19-stage-formation", "r19-start-view"),
+            Case("feeding", "r19-nutrition", "r19-nutrition-canvas", "r19-stage-formation", "r19-start-view"),
             Case("binary_fission", "r17", "r17-nuclear-canvas", "r17-stage-constriction", null),
             Case("conjugation", "r17", "r17-nuclear-canvas", "r17-stage-exchange", null),
         )
