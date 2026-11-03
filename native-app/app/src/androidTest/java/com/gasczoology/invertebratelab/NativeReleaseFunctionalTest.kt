@@ -85,6 +85,7 @@ class NativeReleaseFunctionalTest {
             SystemClock.sleep(75)
         }
         runCatching { saveScreen("failure-" + id) }
+        runCatching { saveHierarchy("failure-" + id) }
         throw AssertionError("Android accessibility node not found: " + id)
     }
     private fun windowBounds(): Rect {
@@ -138,20 +139,43 @@ class NativeReleaseFunctionalTest {
         return scrollLargestContainer(action, before)
     }
     private fun scrollLargestContainer(action: Int, before: String): Boolean {
+        // Vertical containers can be much wider than tall in landscape. Identify
+        // their advertised direction, never their aspect ratio (horizontal rows
+        // also advertise the generic FORWARD/BACKWARD actions).
+        val verticalAction = if (action == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
+            AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_DOWN.id
+        else AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_UP.id
+        val viewport = windowBounds()
+        val eventBefore = verticalScrollEvents.get()
         var best: AccessibilityNodeInfo? = null
         var bestArea = 0
         fun visit(node: AccessibilityNodeInfo) {
-            if (node.isScrollable && node.isVisibleToUser) {
-                val r = Rect(); node.getBoundsInScreen(r)
-                val area = r.width() * r.height()
-                if (r.height() >= r.width() * .6f && area > bestArea) { best = node; bestArea = area }
-            }
-            for (at in 0 until node.childCount) node.getChild(at)?.let(::visit)
+            try {
+                if (node.isScrollable && node.isVisibleToUser &&
+                    node.actionList.any { it.id == verticalAction }) {
+                    val r = Rect(); node.getBoundsInScreen(r)
+                    if (r.intersect(viewport)) {
+                        val area = r.width() * r.height()
+                        if (area > bestArea) {
+                            best?.recycle()
+                            best = AccessibilityNodeInfo.obtain(node)
+                            bestArea = area
+                        }
+                    }
+                }
+                for (at in 0 until node.childCount) node.getChild(at)?.let(::visit)
+            } finally { node.recycle() }
         }
         automation.rootInActiveWindow?.let(::visit)
         val target = best ?: return false
-        val moved = target.performAction(action)
-        instrumentation.waitForIdleSync(); SystemClock.sleep(150)
+        val moved = try { target.performAction(verticalAction) } finally { target.recycle() }
+        instrumentation.waitForIdleSync()
+        // A tall raster can retain the same clipped bounds while moving.
+        // Its platform scroll event still proves the container advanced.
+        repeat(8) {
+            SystemClock.sleep(90)
+            if (before != fingerprint() || verticalScrollEvents.get() != eventBefore) return true
+        }
         return moved && before != fingerprint()
     }
     private fun horizontal(container: String, id: String): AccessibilityNodeInfo {
@@ -177,7 +201,10 @@ class NativeReleaseFunctionalTest {
         find(id)?.let { return it }
         if (id.startsWith("r1-tab-")) return horizontal("r1-module-selector", id)
         if (id.startsWith("r1-process-") && id != "r1-process-selector") return horizontal("r1-process-selector", id)
-        val directions = if (id == "r1-process-selector")
+        // These labels/controls precede the stage/Next button just activated.
+        val searchUpFirst = id == "r1-process-selector" ||
+            id.endsWith("-inline-play-pause") || id == "u4-penaeus-appendage-name"
+        val directions = if (searchUpFirst)
             listOf(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD, AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
         else listOf(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)
         // Tamil 200% pages are several times taller; give those searches a larger scroll budget.
@@ -242,6 +269,28 @@ class NativeReleaseFunctionalTest {
         val destination = "/sdcard/Download/native-functional-evidence/" + name + ".png"
         ParcelFileDescriptor.AutoCloseInputStream(automation.executeShellCommand("cp " + file.absolutePath + " " + destination)).use { it.readBytes() }
         if (supplied == null) bitmap.recycle()
+    }
+    private fun saveHierarchy(name: String) {
+        val out = StringBuilder()
+        fun visit(node: AccessibilityNodeInfo, depth: Int) {
+            try {
+                val r = Rect(); node.getBoundsInScreen(r)
+                out.append("  ".repeat(depth)).append(node.viewIdResourceName)
+                    .append(" visible=").append(node.isVisibleToUser)
+                    .append(" scrollable=").append(node.isScrollable)
+                    .append(" bounds=").append(r)
+                    .append(" actions=").append(node.actionList.map { it.id })
+                    .append(" text=").append(node.text).append('\n')
+                for (at in 0 until node.childCount) node.getChild(at)?.let { visit(it, depth + 1) }
+            } finally { node.recycle() }
+        }
+        automation.rootInActiveWindow?.let { visit(it, 0) }
+        val file = File(context.getExternalFilesDir(null), name + "-hierarchy.txt")
+        file.writeText(out.toString())
+        val destination = "/sdcard/Download/native-functional-evidence/" + name + "-hierarchy.txt"
+        ParcelFileDescriptor.AutoCloseInputStream(
+            automation.executeShellCommand("cp " + file.absolutePath + " " + destination)
+        ).use { it.readBytes() }
     }
     private fun phase(id: String): Float {
         val node = waitFor(id)
