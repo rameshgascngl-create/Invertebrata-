@@ -226,7 +226,7 @@ class NativeReleaseFunctionalTest {
         val result = checkNotNull(node.rangeInfo) { "Diagram has no Android range semantics: " + id }.current
         node.recycle(); return result
     }
-    private fun diagram(id: String): Bitmap {
+    private fun diagram(id: String, captureBounds: Rect): Bitmap {
         // Playback controls may scroll the animated canvas almost completely offscreen.
         // Bring the actual diagram back into view before sampling its pixels.
         find(id, false)?.let { node ->
@@ -247,7 +247,13 @@ class NativeReleaseFunctionalTest {
         assertTrue("Diagram is outside the viewport: " + id + " " + bounds, bounds.width() > 20 && bounds.height() > 20)
         assertTrue("Insufficient visible diagram for pixel comparison: " + id + " visible=" + bounds.height() + " full=" + fullHeight,
             bounds.height() >= fullHeight * .5f)
-        val region = Bitmap.createBitmap(screen, bounds.left, bounds.top, bounds.width(), bounds.height())
+        // Compare identical screen coordinates across frames, never different scroll clips.
+        // A shifted canvas is a real test failure, not permission to resize screenshots.
+        if (captureBounds.isEmpty) captureBounds.set(bounds)
+        assertTrue("Diagram moved outside the fixed capture rectangle: " + id +
+            " fixed=" + captureBounds + " visible=" + bounds, bounds.contains(captureBounds))
+        val region = Bitmap.createBitmap(screen, captureBounds.left, captureBounds.top,
+            captureBounds.width(), captureBounds.height())
         val result = checkNotNull(region.copy(Bitmap.Config.ARGB_8888, false))
         if (region !== screen) region.recycle()
         screen.recycle()
@@ -318,7 +324,8 @@ class NativeReleaseFunctionalTest {
         for (c in cases) {
             tap("r1-process-" + c.process); tap(c.stage); c.start?.let(::tap)
             scrollTo(c.prefix + "-inline-play-pause").recycle()
-            val before = diagram(c.canvas)
+            val captureBounds = Rect()
+            val before = diagram(c.canvas, captureBounds)
             // The transport was reached by touch above. Activate its native action
             // without moving the viewport away from the diagram being measured.
             fun playbackControl() = click(checkNotNull(find(c.prefix + "-inline-play-pause", false)), c.prefix + "-inline-play-pause")
@@ -327,12 +334,12 @@ class NativeReleaseFunctionalTest {
             while (phase(c.canvas) !in .18f.. .8f && SystemClock.elapsedRealtime() < until) SystemClock.sleep(30)
             playbackControl(); SystemClock.sleep(150)
             val stopped = phase(c.canvas); assertTrue(c.process + ": no intermediate pause", stopped > 0f && stopped < 1f)
-            val after = diagram(c.canvas)
+            val after = diagram(c.canvas, captureBounds)
             assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after) > 12)
             saveScreen(c.process + "-release-start", before); saveScreen(c.process + "-release-paused", after)
             SystemClock.sleep(300)
             assertEquals(c.process + ": phase advanced after Pause", stopped, phase(c.canvas), .0011f)
-            val paused = diagram(c.canvas)
+            val paused = diagram(c.canvas, captureBounds)
             assertTrue(c.process + ": pixels moved after Pause", after.sameAs(paused))
             before.recycle(); after.recycle(); paused.recycle()
         }
