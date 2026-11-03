@@ -143,6 +143,14 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             Text(nutritionText(language,"View ","காட்சி ")+"${index+1}/${ParameciumNutrition.stages.size} — "+stage.heading.value(language),
                 style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold,
                 modifier=Modifier.testTag("r19-stage-title").semantics { heading() })
+            // Stage navigation belongs beside the current-stage heading. At 200% Tamil
+            // font scale the old placement below the legend and structure catalogue
+            // made later stages unreachable through the viewport-scrolling test.
+            for((i,item) in ParameciumNutrition.stages.withIndex()) {
+                OutlinedButton(onClick={chooseStage(item.id)},shape=shape,
+                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-stage-"+item.id)
+                        .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
+            }
             if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectIntermediate)
             Button(onClick={scope.launch { requester.bringIntoView() }},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-plate")) {
@@ -186,11 +194,6 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 Text(nutritionText(language,"Replay the selected structure explanation","தேர்ந்தெடுத்த அமைப்பின் விளக்கத்தை மீண்டும் கேள்"))
             }
             Text(stage.explanation.value(language),style=MaterialTheme.typography.bodyLarge,modifier=Modifier.testTag("r19-stage-explanation"))
-            for((i,item) in ParameciumNutrition.stages.withIndex()) {
-                OutlinedButton(onClick={chooseStage(item.id)},shape=shape,
-                    modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-stage-"+item.id)
-                        .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
-            }
             Text(nutritionText(language,
                 "Manual stage selection shows the completed pose. Inspect either endpoint without motion, or play the stage from its start. Playback pauses at this stage’s endpoint; Next view changes the stage. The pose is a teaching frame, not a measured volume.",
                 "கையால் நிலையைத் தேர்ந்தெடுத்தால் முடிவுத் தோற்றம் காட்டப்படும். இயக்கமின்றித் தொடக்க அல்லது முடிவுத் தோற்றத்தைக் காணலாம்; அல்லது தொடக்கத்திலிருந்து நிலையை இயக்கலாம். இந்நிலையின் முடிவில் இயக்கம் இடைநிறுத்தப்படும்; அடுத்த காட்சி நிலையை மாற்றும். இது கற்பித்தல் தோற்றம்; அளவிடப்பட்ட பருமன் அல்ல."))
