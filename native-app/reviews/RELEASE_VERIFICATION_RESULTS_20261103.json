@@ -1,0 +1,228 @@
+{
+  "configurations": [
+    {
+      "configuration": "native-functional-debug-tamil200",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
+          "classname": "com.gasczoology.invertebratelab.NativeFunctionalRepairsTest",
+          "time": "30.980"
+        },
+        {
+          "name": "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+          "classname": "com.gasczoology.invertebratelab.NativeFunctionalRepairsTest",
+          "time": "20.641"
+        },
+        {
+          "name": "parasiteAndPrawnInteractivePagesAreReachable",
+          "classname": "com.gasczoology.invertebratelab.NativeFunctionalRepairsTest",
+          "time": "10.677"
+        }
+      ],
+      "apk_sha256": "199ec2f3a81296c6ad2525e7b1b35a20eef25c8a1621ca19cdeab6477f00f3bc  app-debug-androidTest.apk\n73fee02bb49cf0deac57b491f0a5b8227386dfaa6f2ca7cd0bc8a7f31733571b  app-debug.apk\n"
+    },
+    {
+      "configuration": "native-functional-debug-tamil200landscape",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
+          "classname": "com.gasczoology.invertebratelab.NativeFunctionalRepairsTest",
+          "time": "35.020"
+        },
+        {
+          "name": "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+          "classname": "com.gasczoology.invertebratelab.NativeFunctionalRepairsTest",
+          "time": "22.696"
+        },
+        {
+          "name": "parasiteAndPrawnInteractivePagesAreReachable",
+          "classname": "com.gasczoology.invertebratelab.NativeFunctionalRepairsTest",
+          "time": "12.993"
+        }
+      ],
+      "apk_sha256": "8999169da0e57e80192a93a0b988a03e7c5fe284d9ebf17ff49b42618fbc50fb  app-debug-androidTest.apk\n17e28034ef71399ae298e7c23542340753379cc5d7da933352e3cbed3f4f73da  app-debug.apk\n"
+    },
+    {
+      "configuration": "native-functional-release-english100",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "31.573"
+        },
+        {
+          "name": "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "47.149"
+        },
+        {
+          "name": "parasiteAndPrawnInteractivePagesAreReachable",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "18.768"
+        }
+      ],
+      "apk_sha256": "2df607b3c5075ecb2bf26c617ed761bef1082c8d257bdf0d4fd668c6841a9f66  app-release-androidTest.apk\n60b585b9e1faccf1110bc549324c9f0c56b9a0e079841fc3382674ac1f9d2825  app-release.apk\n"
+    },
+    {
+      "configuration": "native-functional-release-tamil100",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "31.319"
+        },
+        {
+          "name": "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "48.770"
+        },
+        {
+          "name": "parasiteAndPrawnInteractivePagesAreReachable",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "18.930"
+        }
+      ],
+      "apk_sha256": "3d591f72563d58ce39d205fa50330d237cbacde25aa2bc20558087ccccdd6654  app-release-androidTest.apk\n45de49526e84c6ffec84bd4b93e2bd6510ab26784687dfbe513866129e9bbd3f  app-release.apk\n"
+    },
+    {
+      "configuration": "native-functional-release-tamil200",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "77.247"
+        },
+        {
+          "name": "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "115.252"
+        },
+        {
+          "name": "parasiteAndPrawnInteractivePagesAreReachable",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "45.682"
+        }
+      ],
+      "apk_sha256": "41181f30febe130c491e31f83c7885b6ab1851df0319f02e0fa34b1bba3349aa  app-release-androidTest.apk\nd65e6f2a488ebc555b2e22c5306952d5330baa9b6ac049c39b85624fe198b23c  app-release.apk\n"
+    },
+    {
+      "configuration": "native-functional-release-tamil200landscape",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "101.502"
+        },
+        {
+          "name": "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "125.375"
+        },
+        {
+          "name": "parasiteAndPrawnInteractivePagesAreReachable",
+          "classname": "com.gasczoology.invertebratelab.NativeReleaseFunctionalTest",
+          "time": "61.219"
+        }
+      ],
+      "apk_sha256": "007603a486dc6c6c6e5cc8d58f3b189d25d7459543c9c15b1155b6dbb13709a4  app-release-androidTest.apk\ne4874ba95ce4e4d821fb2217fa120807b47b7d36e0e1cf444fa96806fc3f4511  app-release.apk\n"
+    }
+  ],
+  "landscape_nuclear_capture_dimensions": {
+    "binary_fission-release-start.png": [
+      2126,
+      499
+    ],
+    "binary_fission-release-paused.png": [
+      2126,
+      499
+    ],
+    "conjugation-release-start.png": [
+      2126,
+      499
+    ],
+    "conjugation-release-paused.png": [
+      2126,
+      499
+    ]
+  },
+  "audited_at": "2026-11-03",
+  "tested_commit": "727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+  "functional_run": 41569136932,
+  "terminology_run": 41569136959,
+  "jvm": {
+    "tests": 252,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "python": {
+    "tamil": 8,
+    "evidence_classification": 5
+  },
+  "artifacts": [
+    {
+      "id": 13201331341,
+      "name": "native-functional-release-english100-727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+      "digest": "sha256:f5eb4730e05b5def0cb4d20c6e8bedf7bef36b1c519d29b42512dbe84e11903c"
+    },
+    {
+      "id": 13201051851,
+      "name": "native-functional-debug-tamil200landscape-727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+      "digest": "sha256:1787edd77eea60f7532c99fd31bdcb0d81d43a7c622c8bfd558558a7d4e62381"
+    },
+    {
+      "id": 13200647753,
+      "name": "native-functional-release-tamil100-727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+      "digest": "sha256:85fc9d2d5f0650646823942f3370aadf0151e364765284565115aa75317cd81c"
+    },
+    {
+      "id": 13200274386,
+      "name": "native-functional-release-tamil200-727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+      "digest": "sha256:9862fc5ade21757e5b8e8b51abf23ab52e91f2126a16effb6feb8cf7533af781"
+    },
+    {
+      "id": 13200157662,
+      "name": "native-functional-debug-727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+      "digest": "sha256:2057b3b45208fc0b72da69488ac2e7b60258f63f2be65ed391120f4a7e48c77d"
+    },
+    {
+      "id": 13200154694,
+      "name": "native-functional-release-tamil200landscape-727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+      "digest": "sha256:bf448250b90a9bac21c37fa038b77b42d40749559527b7ae7521b52bdfa44230"
+    },
+    {
+      "id": 13200143965,
+      "name": "native-functional-debug-tamil200-727e7f7891ecd2ce42f6aed31083e5a0b74d531a",
+      "digest": "sha256:5c409381356c1fbbbc0f26f7b0ea478fecb4264193e52fc5ef2dd74b1f1fffe4"
+    }
+  ],
+  "limitations": [
+    "API 34 Pixel 6 x86_64 emulators; no physical-device acceptance",
+    "Four release configurations and two debug configurations; eight established regression groups were not rerun in this focused workflow",
+    "No academic, image-rights, Tamil-editorial, signing-key or merge approval inferred"
+  ]
+}

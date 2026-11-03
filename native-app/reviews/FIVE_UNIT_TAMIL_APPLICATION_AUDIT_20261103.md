@@ -54,7 +54,7 @@ Historical syllabus groupings are explicitly distinguished from modern evolution
 
 No new APK, production signing, reviewer approval, physical-device acceptance or full current-commit emulator matrix is implied by this audit. Images, source-rights decisions, the Ascaris gate and all independent acceptance gates are unchanged. Embedded raster labels, specialised flagellar-pocket wording, remaining provenance reconciliation and audible device TTS remain outside the completed checks.
 
-## Confirmed runtime baseline still requires attention
+## Historical runtime baseline — superseded by verified follow-up
 
 The full functional run [41472533403](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/41472533403), at inherited baseline `acb13b6a`, completed **15 jobs passed / 2 jobs failed**. All four debug configurations, release English100/Tamil100, and all eight established regression groups passed. The failing XML artifacts were read directly:
 
@@ -74,3 +74,8 @@ The source configuration remains compile/target SDK 36, minimum SDK 24, version 
 ### Explicit attribution contract
 
 Fifteen library figures now carry an explicit PENDING attribution state, with no unsupported creator or licence claim published. RECORDED means metadata is present, not independently verified rights or academic approval. The previous blanket nonblank-credit tests were replaced with state-specific assertions: recorded credits must be bilingual; pending credits must remain unpublished. All image existence, PNG signature, size and dimension checks remain. Pila must remain academically unaccepted while its attribution is pending. This does not resolve the outstanding source/rights review.
+
+
+## Verified functional follow-up
+
+The inherited failures recorded above were investigated after this source audit. At tested commit `727e7f7891ecd2ce42f6aed31083e5a0b74d531a`, [run 41569136932](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/41569136932) passed all four release configurations (English100, Tamil100, Tamil200 portrait/landscape) and both Tamil200 debug configurations: 18 methods passed, zero failures/errors/skips, verified from raw XML. Current JVM results: 252 passed; eight Tamil Python tests and five evidence-classification tests passed. The old runtime table is historical evidence, not the current cohort status. See [completed release verification](RELEASE_VERIFICATION_COMPLETED_20261103.md) for exact scope and retained release holds.
