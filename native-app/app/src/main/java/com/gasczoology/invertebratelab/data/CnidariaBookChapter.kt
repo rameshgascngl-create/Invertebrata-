@@ -58,7 +58,7 @@ object CnidariaBookChapter {
                     bpoints("Body forms and reproduction", "உடல் வடிவங்களும் இனப்பெருக்கமும்",
                         "Two body forms occur: the polyp and the medusa; one or both may be present in the life cycle." to "இரு உடல் வடிவங்கள் உண்டு: பாலிப், மெடுசா; வாழ்க்கைச் சுழற்சியில் ஒன்று அல்லது இரண்டும் இருக்கலாம்.",
                         "Reproduction is asexual by budding, and sexual by gametes; the sexes are usually separate." to "மொட்டுவிடுவதால் பாலிலாவாகவும் கேமீட்டுகளால் பாலினமாகவும் இனப்பெருக்கம்; பாலினங்கள் பொதுவாகத் தனித்தனி.",
-                        "The fertilised egg develops into a ciliated planula larva in most groups." to "கருவுற்ற முட்டை பெரும்பாலான குழுக்களில் கசையிழை பிளானுலா லார்வாவாக வளர்கிறது.",
+                        "The fertilised egg develops into a ciliated planula larva in most groups." to "கருவுற்ற முட்டை பெரும்பாலான குழுக்களில் குறுஇழை பிளானுலா லார்வாவாக வளர்கிறது.",
                         "Alternation of generations occurs in many hydrozoans and in the scyphozoans, in which an asexual polyp stage alternates with a sexual medusa stage." to "பல ஹைட்ரோசோவாக்களிலும் சிஃபோசோவாக்களிலும் தலைமுறை மாற்றம் நிகழ்கிறது; பாலிலா பாலிப் நிலையும் பாலின மெடுசா நிலையும் மாறிமாறி வருகின்றன.",
                     ),
                     bdef("Diploblastic", "ஈரடுக்கு",

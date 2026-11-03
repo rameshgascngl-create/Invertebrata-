@@ -1,0 +1,413 @@
+{
+  "baseline": "70c9cd547685f515801121b9a93aaa5e6306f855",
+  "scope": "Targeted cilium/flagellum semantic audit, not complete five-unit Tamil certification",
+  "passages": 57,
+  "chapters": 17,
+  "term": "குறுஇழை: established app vocabulary for cilium; Tamil Nadu textbook page-level verification remains pending.",
+  "references": [
+    "https://pubmed.ncbi.nlm.nih.gov/17114401/",
+    "https://pubmed.ncbi.nlm.nih.gov/3225558/"
+  ],
+  "a5": "All five frozen files unchanged; no edits to questions, English text, images, credits or acceptance gates.",
+  "findings": [
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AnnelidModesBookChapter.kt",
+      "line": 34,
+      "english": "The tubicolous polychaetes live in tubes, which they build or secrete and from which many of them never emerge. The fan worm Sabella builds a tube of mud and mucus and extends from the opening a crown of feathery tentacles, the radioles. The crown acts in two ways, for the capture of small food particles from the water, which are carried by cilia to the mouth, and for gas exchange, since it is richly supplied with blood. Serpula secretes a hard calcareous tube, which is fixed to rocks and shells, and the animal is able to close the opening by a plug, the operculum, formed from a modified tentacle.",
+      "before": "குழாய்வாழ் பாலிகீட்டாக்கள் தாம் கட்டும் அல்லது சுரக்கும் குழாய்களில் வாழ்கின்றன; பல ஒருபோதும் வெளியே வருவதில்லை. விசிறிப்புழு சபெல்லா சேறு, சளியால் குழாய் கட்டி அதன் வாயிலிருந்து இறகு போன்ற உணர்கொம்புகளான ரேடியோல்களின் கிரீடத்தை நீட்டுகிறது. கிரீடம் இரு வழிகளில் செயல்படுகிறது: நீரிலிருந்து சிறு உணவுத் துகள்களைப் பிடிக்க; அவை கசையிழைகளால் வாய்க்குக் கொண்டு செல்லப்படுகின்றன; இரத்த விநியோகம் மிகுதியால் வாயுப் பரிமாற்றத்துக்கும். செர்புலா பாறைகள், ஓடுகளில் ஒட்டிய கடினமான சுண்ணாம்புக் குழாயைச் சுரக்கிறது; மாற்றப்பட்ட உணர்கொம்பால் உருவான அடைப்பான் ஆப்பர்குலத்தால் திறப்பை மூட முடியும்.",
+      "after": "குழாய்வாழ் பாலிகீட்டாக்கள் தாம் கட்டும் அல்லது சுரக்கும் குழாய்களில் வாழ்கின்றன; பல ஒருபோதும் வெளியே வருவதில்லை. விசிறிப்புழு சபெல்லா சேறு, சளியால் குழாய் கட்டி அதன் வாயிலிருந்து இறகு போன்ற உணர்கொம்புகளான ரேடியோல்களின் கிரீடத்தை நீட்டுகிறது. கிரீடம் இரு வழிகளில் செயல்படுகிறது: நீரிலிருந்து சிறு உணவுத் துகள்களைப் பிடிக்க; அவை குறுஇழைகளால் வாய்க்குக் கொண்டு செல்லப்படுகின்றன; இரத்த விநியோகம் மிகுதியால் வாயுப் பரிமாற்றத்துக்கும். செர்புலா பாறைகள், ஓடுகளில் ஒட்டிய கடினமான சுண்ணாம்புக் குழாயைச் சுரக்கிறது; மாற்றப்பட்ட உணர்கொம்பால் உருவான அடைப்பான் ஆப்பர்குலத்தால் திறப்பை மூட முடியும்."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AnnelidaBookChapter.kt",
+      "line": 165,
+      "english": "The free-swimming ciliated larva of polychaetes and some other protostomes.",
+      "before": "பாலிகீட்டாக்கள், வேறு சில புரோட்டோஸ்டோம்களின் தனி நீந்தும் கசையிழை லார்வா.",
+      "after": "பாலிகீட்டாக்கள், வேறு சில புரோட்டோஸ்டோம்களின் தனி நீந்தும் குறுஇழை லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AnnelidaBookChapter.kt",
+      "line": 90,
+      "english": "The ciliated funnel of a nephridium that opens into the coelom.",
+      "before": "உடற்குழிக்குள் திறக்கும் நெஃப்ரிடியத்தின் கசையிழைப் புனல்.",
+      "after": "உடற்குழிக்குள் திறக்கும் நெஃப்ரிடியத்தின் குறுஇழைப் புனல்."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AnnelidaBookChapter.kt",
+      "line": 84,
+      "english": "Excretion is by metanephridia, which occur as a pair in most segments. Each has a ciliated funnel, the nephrostome, which opens into the coelom of one segment, and a coiled tubule that passes through the septum behind it into the next segment and opens to the outside by a nephridiopore. Waste and some of the useful materials enter at the funnel, the useful materials are reabsorbed in the tubule, and urine is passed to the outside. The nephridia of earthworms are of several kinds, and they also help to regulate the water content of the body.",
+      "before": "கழிவு நீக்கம் பெரும்பாலான கண்டங்களில் இணையாக உள்ள மெட்டாநெஃப்ரிடியாக்களால். ஒவ்வொன்றுக்கும் ஒரு கண்டத்தின் உடற்குழிக்குள் திறக்கும் கசையிழை புனலான நெஃப்ரோஸ்டோமும், பின்னால் உள்ள தடுப்பு வழியாக அடுத்த கண்டத்துக்குச் சென்று நெஃப்ரிடியோதுளை வழியாக வெளியே திறக்கும் சுருண்ட குழலும் உண்டு. கழிவும் சில பயனுள்ள பொருள்களும் புனலில் நுழைகின்றன; பயனுள்ளவை குழலில் மீள உறிஞ்சப்படுகின்றன; சிறுநீர் வெளியே செல்கிறது. மண்புழுக்களின் நெஃப்ரிடியாக்கள் பல வகை; அவை உடலின் நீர் அளவையும் ஒழுங்குபடுத்த உதவுகின்றன.",
+      "after": "கழிவு நீக்கம் பெரும்பாலான கண்டங்களில் இணையாக உள்ள மெட்டாநெஃப்ரிடியாக்களால். ஒவ்வொன்றுக்கும் ஒரு கண்டத்தின் உடற்குழிக்குள் திறக்கும் குறுஇழை புனலான நெஃப்ரோஸ்டோமும், பின்னால் உள்ள தடுப்பு வழியாக அடுத்த கண்டத்துக்குச் சென்று நெஃப்ரிடியோதுளை வழியாக வெளியே திறக்கும் சுருண்ட குழலும் உண்டு. கழிவும் சில பயனுள்ள பொருள்களும் புனலில் நுழைகின்றன; பயனுள்ளவை குழலில் மீள உறிஞ்சப்படுகின்றன; சிறுநீர் வெளியே செல்கிறது. மண்புழுக்களின் நெஃப்ரிடியாக்கள் பல வகை; அவை உடலின் நீர் அளவையும் ஒழுங்குபடுத்த உதவுகின்றன."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AnnelidaBookChapter.kt",
+      "line": 44,
+      "english": "A tubular excretory organ that opens into the coelom by a ciliated funnel and to the outside by a pore.",
+      "before": "கசையிழை புனல் வழியாக உடற்குழிக்குள்ளும் துளை வழியாக வெளியிலும் திறக்கும் குழல் வடிவ கழிவு நீக்க உறுப்பு.",
+      "after": "குறுஇழை புனல் வழியாக உடற்குழிக்குள்ளும் துளை வழியாக வெளியிலும் திறக்கும் குழல் வடிவ கழிவு நீக்க உறுப்பு."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AsteriasBookChapter.kt",
+      "line": 53,
+      "english": "The coelom is a large cavity that occupies the disc and extends into each arm, and it is filled with coelomic fluid that contains coelomocytes. It surrounds the gut and the gonads, and it extends into the papulae, where the fluid comes close to the sea water for gas exchange. The coelom is ciliated, and the beating of the cilia circulates the fluid. There is no excretory organ of the kind seen in an annelid, and the waste is taken by the coelomocytes, which migrate to the surface, particularly through the papulae, and are shed.",
+      "before": "உடற்குழி வட்டை நிரப்பி ஒவ்வொரு கைக்குள்ளும் நீளும் பெரிய குழி; கொலோமோசைட்டுகள் அடங்கிய உடற்குழித் திரவம் நிரம்பியுள்ளது. அது குடலையும் இனப்பெருக்கச் சுரப்பிகளையும் சூழ்கிறது; பப்புலாக்களுக்குள்ளும் நீள்கிறது; அங்கு திரவம் வாயுப் பரிமாற்றத்துக்காக கடல்நீரை நெருங்குகிறது. உடற்குழி கசையிழை கொண்டது; கசையிழை அசைவு திரவத்தைச் சுற்றோட்டுகிறது. வளைதசைப் புழுவில் உள்ளது போன்ற வெளியேற்ற உறுப்பு இல்லை; கொலோமோசைட்டுகள் கழிவை எடுத்து, குறிப்பாக பப்புலாக்கள் வழியே மேற்பரப்புக்குச் சென்று, வெளியேற்றப்படுகின்றன.",
+      "after": "உடற்குழி வட்டை நிரப்பி ஒவ்வொரு கைக்குள்ளும் நீளும் பெரிய குழி; கொலோமோசைட்டுகள் அடங்கிய உடற்குழித் திரவம் நிரம்பியுள்ளது. அது குடலையும் இனப்பெருக்கச் சுரப்பிகளையும் சூழ்கிறது; பப்புலாக்களுக்குள்ளும் நீள்கிறது; அங்கு திரவம் வாயுப் பரிமாற்றத்துக்காக கடல்நீரை நெருங்குகிறது. உடற்குழி குறுஇழை கொண்டது; குறுஇழை அசைவு திரவத்தைச் சுற்றோட்டுகிறது. வளைதசைப் புழுவில் உள்ளது போன்ற வெளியேற்ற உறுப்பு இல்லை; கொலோமோசைட்டுகள் கழிவை எடுத்து, குறிப்பாக பப்புலாக்கள் வழியே மேற்பரப்புக்குச் சென்று, வெளியேற்றப்படுகின்றன."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CnidariaBookChapter.kt",
+      "line": 61,
+      "english": "The fertilised egg develops into a ciliated planula larva in most groups.",
+      "before": "கருவுற்ற முட்டை பெரும்பாலான குழுக்களில் கசையிழை பிளானுலா லார்வாவாக வளர்கிறது.",
+      "after": "கருவுற்ற முட்டை பெரும்பாலான குழுக்களில் குறுஇழை பிளானுலா லார்வாவாக வளர்கிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CoralsBookChapter.kt",
+      "line": 130,
+      "english": "The ciliated, free-swimming larva of cnidarians, including corals.",
+      "before": "பவளங்கள் உட்பட நிடேரியாக்களின் கசையிழை, சுதந்திரமாக நீந்தும் லார்வா.",
+      "after": "பவளங்கள் உட்பட நிடேரியாக்களின் குறுஇழை, சுதந்திரமாக நீந்தும் லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoAffinitiesBookChapter.kt",
+      "line": 93,
+      "english": "Bilateral ciliated larva",
+      "before": "இருபக்க கசையிழை லார்வா",
+      "after": "இருபக்க குறுஇழை லார்வா"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoAffinitiesBookChapter.kt",
+      "line": 32,
+      "english": "The larvae are ciliated and bilateral, with looping bands of cilia.",
+      "before": "லார்வாக்கள் கசையிழை கொண்டவை, இருபக்கச் சமச்சீருடையவை; வளையக் கசையிழைப் பட்டைகளுடன்.",
+      "after": "லார்வாக்கள் குறுஇழை கொண்டவை, இருபக்கச் சமச்சீருடையவை; வளையக் குறுஇழைப் பட்டைகளுடன்."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 163,
+      "english": "Echinoderm larvae are bilateral and ciliated, which shows that the radial adult is secondary.",
+      "before": "முட்தோலி லார்வாக்கள் இருபக்கச் சமச்சீருடையவை, கசையிழை கொண்டவை; முதிர்ந்த ஆரச்சமச்சீர் இரண்டாம் நிலை என்பதை இது காட்டுகிறது.",
+      "after": "முட்தோலி லார்வாக்கள் இருபக்கச் சமச்சீருடையவை, குறுஇழை கொண்டவை; முதிர்ந்த ஆரச்சமச்சீர் இரண்டாம் நிலை என்பதை இது காட்டுகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 148,
+      "english": "Beating of ciliary bands",
+      "before": "கசையிழைப் பட்டைகளின் துடிப்பு",
+      "after": "குறுஇழைப் பட்டைகளின் துடிப்பு"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 94,
+      "english": "Metamorphosis is the change from the bilateral larva to the pentaradial juvenile, and in the starfishes it takes place after the larva attaches. In the larva the left side of the coelom forms the rudiment of the water-vascular system as a five-lobed structure, and the rudiment grows on the left side of the body, while the right side forms less. The left side of the larva thus becomes the oral surface of the adult, and the right side the aboral surface, and the body is reorganised around the new axis. The larval arms and ciliary bands are absorbed, and the juvenile sets out its first tube feet.",
+      "before": "உருமாற்றம் என்பது இருபக்க லார்வாவிலிருந்து ஐந்தாரை இளவிலங்காக மாறுதல்; நட்சத்திர மீன்களில் லார்வா ஒட்டிய பின் நிகழ்கிறது. லார்வாவில் உடற்குழியின் இடப்பக்கம் நீரோட்டக் குழாய் மண்டலத்தின் அரும்பை ஐந்து மடல் அமைப்பாக உருவாக்குகிறது; அரும்பு உடலின் இடப்பக்கத்தில் வளர, வலப்பக்கம் குறைவாக உருவாகிறது. இவ்வாறு லார்வாவின் இடப்பக்கம் முதிர்ந்ததின் வாய்ப்புற மேற்பரப்பாகவும் வலப்பக்கம் மேற்புற மேற்பரப்பாகவும் மாறுகிறது; உடல் புதிய அச்சைச் சுற்றி மறுசீரமைக்கப்படுகிறது. லார்வாவின் கைகளும் கசையிழைப் பட்டைகளும் உறிஞ்சப்படுகின்றன; இளவிலங்கு தன் முதல் குழாய் கால்களை வெளிப்படுத்துகிறது.",
+      "after": "உருமாற்றம் என்பது இருபக்க லார்வாவிலிருந்து ஐந்தாரை இளவிலங்காக மாறுதல்; நட்சத்திர மீன்களில் லார்வா ஒட்டிய பின் நிகழ்கிறது. லார்வாவில் உடற்குழியின் இடப்பக்கம் நீரோட்டக் குழாய் மண்டலத்தின் அரும்பை ஐந்து மடல் அமைப்பாக உருவாக்குகிறது; அரும்பு உடலின் இடப்பக்கத்தில் வளர, வலப்பக்கம் குறைவாக உருவாகிறது. இவ்வாறு லார்வாவின் இடப்பக்கம் முதிர்ந்ததின் வாய்ப்புற மேற்பரப்பாகவும் வலப்பக்கம் மேற்புற மேற்பரப்பாகவும் மாறுகிறது; உடல் புதிய அச்சைச் சுற்றி மறுசீரமைக்கப்படுகிறது. லார்வாவின் கைகளும் குறுஇழைப் பட்டைகளும் உறிஞ்சப்படுகின்றன; இளவிலங்கு தன் முதல் குழாய் கால்களை வெளிப்படுத்துகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 89,
+      "english": "A barrel-shaped non-feeding larva with several rings of cilia, found in sea cucumbers and crinoids.",
+      "before": "கடல் வெள்ளரிகளிலும் கிரினாய்டுகளிலும் காணப்படும் பல கசையிழை வளையங்களுடன் உருளை வடிவ உண்ணாத லார்வா.",
+      "after": "கடல் வெள்ளரிகளிலும் கிரினாய்டுகளிலும் காணப்படும் பல குறுஇழை வளையங்களுடன் உருளை வடிவ உண்ணாத லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 87,
+      "english": "The feeding larva of many sea cucumbers, with a single looped ciliary band.",
+      "before": "ஒற்றை வளையக் கசையிழைப் பட்டை உடைய பல கடல் வெள்ளரிகளின் உணவூட்ட லார்வா.",
+      "after": "ஒற்றை வளையக் குறுஇழைப் பட்டை உடைய பல கடல் வெள்ளரிகளின் உணவூட்ட லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 85,
+      "english": "Barrel-shaped, with several ciliary rings; does not feed",
+      "before": "பல கசையிழை வளையங்களுடன் உருளை வடிவம்; உண்ணாது",
+      "after": "பல குறுஇழை வளையங்களுடன் உருளை வடிவம்; உண்ணாது"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 84,
+      "english": "One continuous ciliary band; may be followed by a doliolaria",
+      "before": "ஒரே தொடர்ச்சியான கசையிழைப் பட்டை; டோலியோலேரியா தொடரலாம்",
+      "after": "ஒரே தொடர்ச்சியான குறுஇழைப் பட்டை; டோலியோலேரியா தொடரலாம்"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 80,
+      "english": "Soft lobed arms, looping ciliary bands, no skeleton",
+      "before": "மென்மையான மடல் கைகள், வளையக் கசையிழைப் பட்டைகள், கூடு இல்லை",
+      "after": "மென்மையான மடல் கைகள், வளையக் குறுஇழைப் பட்டைகள், கூடு இல்லை"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 73,
+      "english": "The characteristic feeding larva of many sea cucumbers is the auricularia. It is a transparent, bilaterally symmetrical larva with a single continuous ciliated band that runs in loops and lobes around the body, and it resembles the bipinnaria though it is not identical. The auricularia is followed in many species by a barrel-shaped larva with several separate rings of cilia, called the doliolaria, which does not feed, and which settles to the bottom and changes to a young sea cucumber.",
+      "before": "பல கடல் வெள்ளரிகளின் தனிப்பண்பான உணவூட்ட லார்வா ஆரிக்குலேரியா. இது உடலைச் சுற்றி வளையங்களாகவும் மடல்களாகவும் செல்லும் ஒற்றைத் தொடர்ச்சியான கசையிழைப் பட்டை கொண்ட, ஒளி ஊடுருவும், இருபக்கச் சமச்சீர் லார்வா; பிபின்னேரியாவை ஒத்தது, ஆனால் ஒரே மாதிரி அல்ல. பல இனங்களில் ஆரிக்குலேரியாவைத் தொடர்ந்து பல தனிக் கசையிழை வளையங்களுடன் உருளை வடிவ, உண்ணாத, அடியில் படிந்து இளம் கடல் வெள்ளரியாக மாறும் டோலியோலேரியா லார்வா வருகிறது.",
+      "after": "பல கடல் வெள்ளரிகளின் தனிப்பண்பான உணவூட்ட லார்வா ஆரிக்குலேரியா. இது உடலைச் சுற்றி வளையங்களாகவும் மடல்களாகவும் செல்லும் ஒற்றைத் தொடர்ச்சியான குறுஇழைப் பட்டை கொண்ட, ஒளி ஊடுருவும், இருபக்கச் சமச்சீர் லார்வா; பிபின்னேரியாவை ஒத்தது, ஆனால் ஒரே மாதிரி அல்ல. பல இனங்களில் ஆரிக்குலேரியாவைத் தொடர்ந்து பல தனிக் குறுஇழை வளையங்களுடன் உருளை வடிவ, உண்ணாத, அடியில் படிந்து இளம் கடல் வெள்ளரியாக மாறும் டோலியோலேரியா லார்வா வருகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 60,
+      "english": "The sea urchins and brittle stars have a pluteus, which is a bilaterally symmetrical larva supported by long, slender, calcareous rods that hold out the arms. The ciliary band runs along the margins of the arms and the body, and the number and arrangement of the arms differ with the species and with the age of the larva. The pluteus of a sea urchin is called an echinopluteus, and that of a brittle star an ophiopluteus, and the two differ in the number of arms and in the pattern of the skeletal rods. The pluteus is very widely used in teaching of embryology and in laboratory work, because the eggs of sea urchins are easily fertilised and develop rapidly.",
+      "before": "கடல் முள்ளெலிகளுக்கும் பிரிட்டில் நட்சத்திரங்களுக்கும் ப்ளூட்டியஸ் உண்டு; கைகளைத் தாங்கும் நீண்ட, மெல்லிய சுண்ணாம்புக் கம்பிகளால் தாங்கப்படும் இருபக்கச் சமச்சீர் லார்வா. கசையிழைப் பட்டை கைகள், உடலின் ஓரங்களில் செல்கிறது; கைகளின் எண்ணிக்கையும் அமைப்பும் இனத்தையும் லார்வாவின் வயதையும் பொறுத்து மாறும். கடல் முள்ளெலியின் ப்ளூட்டியஸ் எக்கினோப்ளூட்டியஸ்; பிரிட்டில் நட்சத்திரத்தின் ஓஃபியோப்ளூட்டியஸ்; இரண்டும் கைகளின் எண்ணிக்கையிலும் கூட்டுக் கம்பிகளின் அமைப்பிலும் வேறுபடுகின்றன. கடல் முள்ளெலி முட்டைகள் எளிதில் கருவுற்று விரைவாக வளர்வதால் ப்ளூட்டியஸ் கருவியல் கற்பித்தலிலும் ஆய்வகப் பணியிலும் மிக விரிவாகப் பயன்படுகிறது.",
+      "after": "கடல் முள்ளெலிகளுக்கும் பிரிட்டில் நட்சத்திரங்களுக்கும் ப்ளூட்டியஸ் உண்டு; கைகளைத் தாங்கும் நீண்ட, மெல்லிய சுண்ணாம்புக் கம்பிகளால் தாங்கப்படும் இருபக்கச் சமச்சீர் லார்வா. குறுஇழைப் பட்டை கைகள், உடலின் ஓரங்களில் செல்கிறது; கைகளின் எண்ணிக்கையும் அமைப்பும் இனத்தையும் லார்வாவின் வயதையும் பொறுத்து மாறும். கடல் முள்ளெலியின் ப்ளூட்டியஸ் எக்கினோப்ளூட்டியஸ்; பிரிட்டில் நட்சத்திரத்தின் ஓஃபியோப்ளூட்டியஸ்; இரண்டும் கைகளின் எண்ணிக்கையிலும் கூட்டுக் கம்பிகளின் அமைப்பிலும் வேறுபடுகின்றன. கடல் முள்ளெலி முட்டைகள் எளிதில் கருவுற்று விரைவாக வளர்வதால் ப்ளூட்டியஸ் கருவியல் கற்பித்தலிலும் ஆய்வகப் பணியிலும் மிக விரிவாகப் பயன்படுகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 51,
+      "english": "The ciliated feeding larva of many starfishes, with looping ciliary bands and lobed arms.",
+      "before": "வளையக் கசையிழைப் பட்டைகளும் மடல் கைகளும் உடைய பல நட்சத்திர மீன்களின் உணவூட்ட லார்வா.",
+      "after": "வளையக் குறுஇழைப் பட்டைகளும் மடல் கைகளும் உடைய பல நட்சத்திர மீன்களின் உணவூட்ட லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 46,
+      "english": "The characteristic larva of many starfishes is the bipinnaria. It is a bilaterally symmetrical, transparent larva, a fraction of a millimetre to a few millimetres long, with looping ciliary bands that run on the surface, and a pair of lobed arm-like extensions of the body that are set in two groups. The band on the arms and body is used both in swimming and in the collection of unicellular algae, which are driven to the mouth. The gut is complete, with an oesophagus, a stomach and an intestine that opens at the anus.",
+      "before": "பல நட்சத்திர மீன்களின் தனிப்பண்பான லார்வா பிபின்னேரியா. இது இருபக்கச் சமச்சீருடைய, ஒளி ஊடுருவும், ஒரு மில்லிமீட்டரின் பின்னம் முதல் சில மில்லிமீட்டர் நீளமுடைய லார்வா; மேற்பரப்பில் செல்லும் வளையக் கசையிழைப் பட்டைகள், இரு குழுக்களாக அமைந்த உடலின் மடலுடைய கை போன்ற நீட்சிகள் கொண்டது. கைகள், உடலிலுள்ள பட்டை நீந்தவும், வாய்க்குத் தள்ளப்படும் ஒருசெல் பாசிகளைச் சேகரிக்கவும் பயன்படுகிறது. குடல் உணவுக்குழல், இரைப்பை, மலவாயில் திறக்கும் குடலுடன் முழுமையானது.",
+      "after": "பல நட்சத்திர மீன்களின் தனிப்பண்பான லார்வா பிபின்னேரியா. இது இருபக்கச் சமச்சீருடைய, ஒளி ஊடுருவும், ஒரு மில்லிமீட்டரின் பின்னம் முதல் சில மில்லிமீட்டர் நீளமுடைய லார்வா; மேற்பரப்பில் செல்லும் வளையக் குறுஇழைப் பட்டைகள், இரு குழுக்களாக அமைந்த உடலின் மடலுடைய கை போன்ற நீட்சிகள் கொண்டது. கைகள், உடலிலுள்ள பட்டை நீந்தவும், வாய்க்குத் தள்ளப்படும் ஒருசெல் பாசிகளைச் சேகரிக்கவும் பயன்படுகிறது. குடல் உணவுக்குழல், இரைப்பை, மலவாயில் திறக்கும் குடலுடன் முழுமையானது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 39,
+      "english": "A band of cilia used by a larva for swimming and for collecting food.",
+      "before": "லார்வா நீந்தவும் உணவு சேகரிக்கவும் பயன்படுத்தும் கசையிழைப் பட்டை.",
+      "after": "லார்வா நீந்தவும் உணவு சேகரிக்கவும் பயன்படுத்தும் குறுஇழைப் பட்டை."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 39,
+      "english": "Ciliary band",
+      "before": "கசையிழைப் பட்டை (Ciliary band)",
+      "after": "குறுஇழைப் பட்டை (Ciliary band)"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 33,
+      "english": "A hypothetical bilateral ciliated larva used as a model for the larvae of echinoderms and hemichordates.",
+      "before": "முட்தோலிகள், ஹெமிகார்டேட்டுகளின் லார்வாக்களுக்கு மாதிரியாகப் பயன்படும் கற்பனை இருபக்க கசையிழை லார்வா.",
+      "after": "முட்தோலிகள், ஹெமிகார்டேட்டுகளின் லார்வாக்களுக்கு மாதிரியாகப் பயன்படும் கற்பனை இருபக்க குறுஇழை லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 28,
+      "english": "Locomotion and feeding by bands of cilia, with no appendages.",
+      "before": "உறுப்புகள் இன்றி கசையிழைப் பட்டைகளால் இயக்கமும் உணவெடுப்பும்.",
+      "after": "உறுப்புகள் இன்றி குறுஇழைப் பட்டைகளால் இயக்கமும் உணவெடுப்பும்."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "line": 23,
+      "english": "The early larvae of echinoderms differ in detail, but they can be compared to a hypothetical simple larva called the dipleurula, which is bilaterally symmetrical, ciliated, and has a band of cilia that runs in loops over the surface. The dipleurula is a model made by comparing living larvae, and it should not be described as an animal that has been seen. It is useful because it brings together the characters of the larvae of the echinoderms and of the hemichordates, in which the tornaria larva resembles the bipinnaria of the starfishes.",
+      "before": "முட்தோலிகளின் ஆரம்ப லார்வாக்கள் விவரங்களில் வேறுபடுகின்றன; ஆனால் இருபக்கச் சமச்சீருடைய, கசையிழையுடைய, மேற்பரப்பில் வளையங்களாகச் செல்லும் கசையிழைப் பட்டையுடைய டிப்ளூரூலா எனும் கற்பனை எளிய லார்வாவுடன் ஒப்பிடலாம். டிப்ளூரூலா வாழும் லார்வாக்களை ஒப்பிட்டு உருவாக்கிய மாதிரி; பார்க்கப்பட்ட விலங்காக விவரிக்கக் கூடாது. முட்தோலிகள், ஹெமிகார்டேட்டுகளின் லார்வாக்களின் பண்புகளை இணைப்பதால் அது பயனுள்ளது; ஹெமிகார்டேட்டுகளில் டார்னேரியா லார்வா நட்சத்திர மீன்களின் பிபின்னேரியாவை ஒத்தது.",
+      "after": "முட்தோலிகளின் ஆரம்ப லார்வாக்கள் விவரங்களில் வேறுபடுகின்றன; ஆனால் இருபக்கச் சமச்சீருடைய, குறுஇழையுடைய, மேற்பரப்பில் வளையங்களாகச் செல்லும் குறுஇழைப் பட்டையுடைய டிப்ளூரூலா எனும் கற்பனை எளிய லார்வாவுடன் ஒப்பிடலாம். டிப்ளூரூலா வாழும் லார்வாக்களை ஒப்பிட்டு உருவாக்கிய மாதிரி; பார்க்கப்பட்ட விலங்காக விவரிக்கக் கூடாது. முட்தோலிகள், ஹெமிகார்டேட்டுகளின் லார்வாக்களின் பண்புகளை இணைப்பதால் அது பயனுள்ளது; ஹெமிகார்டேட்டுகளில் டார்னேரியா லார்வா நட்சத்திர மீன்களின் பிபின்னேரியாவை ஒத்தது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinodermataBookChapter.kt",
+      "line": 114,
+      "english": "The free-swimming ciliated larva of the starfishes.",
+      "before": "நட்சத்திர மீன்களின் தனி நீந்தும் கசையிழை லார்வா.",
+      "after": "நட்சத்திர மீன்களின் தனி நீந்தும் குறுஇழை லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinodermataBookChapter.kt",
+      "line": 106,
+      "english": "A deuterostome is an animal in which, in typical development, the blastopore becomes the anus and the mouth forms secondarily, and in which the coelom forms from outgrowths of the gut. The echinoderms are deuterostomes on developmental grounds, and molecular studies support the placement. It is supported also by the larvae: bipinnaria in the starfishes, plutei in the sea urchins and brittle stars, and auricularia in the sea cucumbers. The larvae are bilateral, ciliated and free swimming, and resemble each other and the tornaria larva of the hemichordates.",
+      "before": "டியூட்டிரோஸ்டோம் என்பது வழக்கமான வளர்ச்சியில் பிளாஸ்டோபோர் மலவாயாகவும் வாய் இரண்டாம் நிலையாகவும் உருவாகும், உடற்குழி குடலின் வளர்ச்சிகளிலிருந்து உருவாகும் விலங்கு. வளர்ச்சிச் சான்றுகளின் அடிப்படையிலும் மூலக்கூறு ஆய்வுகள் இடத்தை ஆதரிப்பதாலும் முட்தோலிகள் டியூட்டிரோஸ்டோம்கள். லார்வாக்களும் ஆதரிக்கின்றன: நட்சத்திர மீன்களில் பிபின்னேரியா, முள்ளெலிகள், பிரிட்டில் நட்சத்திரங்களில் ப்ளூட்டியஸ், கடல் வெள்ளரிகளில் ஆரிக்குலேரியா. லார்வாக்கள் இருபக்கச் சமச்சீருடையவை, கசையிழை கொண்டவை, தனி நீந்துபவை; ஒன்றுக்கொன்றும் ஹெமிகார்டேட்டுகளின் டார்னேரியா லார்வாவுக்கும் ஒத்தவை.",
+      "after": "டியூட்டிரோஸ்டோம் என்பது வழக்கமான வளர்ச்சியில் பிளாஸ்டோபோர் மலவாயாகவும் வாய் இரண்டாம் நிலையாகவும் உருவாகும், உடற்குழி குடலின் வளர்ச்சிகளிலிருந்து உருவாகும் விலங்கு. வளர்ச்சிச் சான்றுகளின் அடிப்படையிலும் மூலக்கூறு ஆய்வுகள் இடத்தை ஆதரிப்பதாலும் முட்தோலிகள் டியூட்டிரோஸ்டோம்கள். லார்வாக்களும் ஆதரிக்கின்றன: நட்சத்திர மீன்களில் பிபின்னேரியா, முள்ளெலிகள், பிரிட்டில் நட்சத்திரங்களில் ப்ளூட்டியஸ், கடல் வெள்ளரிகளில் ஆரிக்குலேரியா. லார்வாக்கள் இருபக்கச் சமச்சீருடையவை, குறுஇழை கொண்டவை, தனி நீந்துபவை; ஒன்றுக்கொன்றும் ஹெமிகார்டேட்டுகளின் டார்னேரியா லார்வாவுக்கும் ஒத்தவை."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "line": 118,
+      "english": "The ciliated, free-swimming first larva of a fluke, which hatches from the egg and infects a snail.",
+      "before": "முட்டையிலிருந்து பொரிந்து நத்தையைத் தொற்றும், ஃப்ளூக்கின் கசையிழை, நீந்தும் முதல் லார்வா.",
+      "after": "முட்டையிலிருந்து பொரிந்து நத்தையைத் தொற்றும், ஃப்ளூக்கின் குறுஇழை, நீந்தும் முதல் லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "line": 112,
+      "english": "Ciliated, free-swimming, with eye spots",
+      "before": "கசையிழையுடையது, நீந்துவது, கண்புள்ளிகளுடன்",
+      "after": "குறுஇழையுடையது, நீந்துவது, கண்புள்ளிகளுடன்"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "line": 100,
+      "english": "In fresh water the egg embryonates over some weeks and releases a ciliated, free-swimming miracidium.",
+      "before": "நன்னீரில் முட்டை சில வாரங்களில் கரு வளர்ந்து, கசையிழை, சுதந்திரமாக நீந்தும் மிராசிடியத்தை வெளியிடுகிறது.",
+      "after": "நன்னீரில் முட்டை சில வாரங்களில் கரு வளர்ந்து, குறுஇழை, சுதந்திரமாக நீந்தும் மிராசிடியத்தை வெளியிடுகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "line": 47,
+      "english": "The living, non-ciliated outer covering of a fluke, which replaces the epidermis of free-living flatworms.",
+      "before": "தனி வாழ்வுத் தட்டைப்புழுக்களின் எப்பிடெர்மிஸுக்குப் பதிலாக ஃப்ளூக்கின் உயிருள்ள, கசையிழையற்ற வெளி உறை.",
+      "after": "தனி வாழ்வுத் தட்டைப்புழுக்களின் எப்பிடெர்மிஸுக்குப் பதிலாக ஃப்ளூக்கின் உயிருள்ள, குறுஇழையற்ற வெளி உறை."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FootBookChapter.kt",
+      "line": 44,
+      "english": "In Pila the foot is a broad, flat, muscular sole on which the animal creeps over the mud and plants of its pond. The sole is ciliated and rich in mucous glands, and locomotion is produced by waves of muscular contraction that pass along it. The waves are called pedal waves, and in a snail with a broad foot they may pass from the back to the front, so that parts of the sole are lifted and moved forward while the rest is attached. The mucus makes the movement smooth and also gives the grip needed to climb. The pace is slow, which is in keeping with the habit of grazing on algae and plant debris.",
+      "before": "பைலாவில் பாதம் அகன்ற, தட்டையான தசை அடிப்பகுதி; அதன்மீது விலங்கு குளத்தின் சேறு, தாவரங்கள்மேல் ஊர்கிறது. அடிப்பகுதி கசையிழை கொண்டது, சளிச் சுரப்பிகள் நிறைந்தது; அதன் வழியே செல்லும் தசைச் சுருக்க அலைகளால் இயக்கம் உண்டாகிறது. அலைகள் பெடல் அலைகள் எனப்படுகின்றன; அகன்ற பாதம் கொண்ட நத்தையில் அவை பின்னிலிருந்து முன்னுக்குச் செல்லலாம்; எனவே அடிப்பகுதியின் சில பகுதிகள் தூக்கப்பட்டு முன்னே நகர்த்தப்பட மற்றவை ஒட்டியிருக்கும். சளி இயக்கத்தை மென்மையாக்கி ஏறத் தேவையான பிடிப்பையும் தருகிறது. வேகம் மெதுவானது; பாசி, தாவரக் கழிவுகளை மேயும் பழக்கத்துக்கு ஏற்றது.",
+      "after": "பைலாவில் பாதம் அகன்ற, தட்டையான தசை அடிப்பகுதி; அதன்மீது விலங்கு குளத்தின் சேறு, தாவரங்கள்மேல் ஊர்கிறது. அடிப்பகுதி குறுஇழை கொண்டது, சளிச் சுரப்பிகள் நிறைந்தது; அதன் வழியே செல்லும் தசைச் சுருக்க அலைகளால் இயக்கம் உண்டாகிறது. அலைகள் பெடல் அலைகள் எனப்படுகின்றன; அகன்ற பாதம் கொண்ட நத்தையில் அவை பின்னிலிருந்து முன்னுக்குச் செல்லலாம்; எனவே அடிப்பகுதியின் சில பகுதிகள் தூக்கப்பட்டு முன்னே நகர்த்தப்பட மற்றவை ஒட்டியிருக்கும். சளி இயக்கத்தை மென்மையாக்கி ஏறத் தேவையான பிடிப்பையும் தருகிறது. வேகம் மெதுவானது; பாசி, தாவரக் கழிவுகளை மேயும் பழக்கத்துக்கு ஏற்றது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FootBookChapter.kt",
+      "line": 31,
+      "english": "Mucus glands and cilia that assist creeping.",
+      "before": "ஊர்தலுக்கு உதவும் சளி சுரப்பிகளும் கசையிழையும்.",
+      "after": "ஊர்தலுக்கு உதவும் சளி சுரப்பிகளும் குறுஇழையும்."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FootBookChapter.kt",
+      "line": 23,
+      "english": "The foot is a muscular outgrowth of the ventral body wall. It is made of interwoven muscle fibres running in several directions, with connective tissue and blood spaces between them, and it is supplied by a pair of pedal ganglia and the nerves from them. It is richly supplied with gland cells, which secrete mucus, and the surface carries cilia in many species. These features make it suited to creeping on a layer of mucus, which is the starting point for its other uses.",
+      "before": "பாதம் வயிற்றுப்புற உடற்சுவரின் தசை வளர்ச்சி. இது பல திசைகளில் ஓடும் பின்னிய தசை இழைகளாலும் அவற்றுக்கிடையே இணைப்புத் திசு, இரத்த இடைவெளிகளாலும் ஆனது; ஒரு இணை பெடல் நரம்பு செல்திரள்களும் அவற்றிலிருந்து வரும் நரம்புகளும் அதற்கு அளிக்கின்றன. சளி சுரக்கும் சுரப்பி செல்கள் நிறைந்தது; பல இனங்களில் மேற்பரப்பில் கசையிழை உண்டு. இப்பண்புகள் சளி அடுக்கின்மேல் ஊர்வதற்கு ஏற்றவை; இதுவே பிற பயன்பாடுகளின் தொடக்கப் புள்ளி.",
+      "after": "பாதம் வயிற்றுப்புற உடற்சுவரின் தசை வளர்ச்சி. இது பல திசைகளில் ஓடும் பின்னிய தசை இழைகளாலும் அவற்றுக்கிடையே இணைப்புத் திசு, இரத்த இடைவெளிகளாலும் ஆனது; ஒரு இணை பெடல் நரம்பு செல்திரள்களும் அவற்றிலிருந்து வரும் நரம்புகளும் அதற்கு அளிக்கின்றன. சளி சுரக்கும் சுரப்பி செல்கள் நிறைந்தது; பல இனங்களில் மேற்பரப்பில் குறுஇழை உண்டு. இப்பண்புகள் சளி அடுக்கின்மேல் ஊர்வதற்கு ஏற்றவை; இதுவே பிற பயன்பாடுகளின் தொடக்கப் புள்ளி."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/MolluscaBookChapter.kt",
+      "line": 97,
+      "english": "The sexes are separate in most molluscs, though some gastropods are hermaphrodite. In marine forms the fertilised egg undergoes spiral cleavage and develops into a trochophore larva, which in most groups is followed by a veliger, with a shell and a ciliated velum used for swimming and feeding. Many freshwater and land forms have direct development, and some bivalves of fresh water, the unionids, have a special larva, the glochidium, which is a parasite on fish. The trochophore is one of the characters used to relate the molluscs to the annelids.",
+      "before": "பெரும்பாலான மெல்லுடலிகளில் பால் தனி; சில இரைப்பைக்காலிகள் இருபால் உயிரிகள். கடல் வடிவங்களில் கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு ட்ரோகோபோர் லார்வாவாக வளர்கிறது; பெரும்பாலான குழுக்களில் ஓடும் நீந்துதல், உண்ணுதலுக்கான கசையிழை வெலமும் உடைய வெலிகர் தொடர்கிறது. பல நன்னீர், நில வடிவங்களுக்கு நேரடி வளர்ச்சி உண்டு; நன்னீர் இருவோட்டுடலிகளான யூனியோனிட்களுக்கு மீன்களில் ஒட்டுண்ணியான சிறப்பு லார்வா, குளோகிடியம் உண்டு. மெல்லுடலிகளை அனெலிடாக்களுடன் தொடர்புபடுத்தப் பயன்படும் பண்புகளில் ட்ரோகோபோர் ஒன்று.",
+      "after": "பெரும்பாலான மெல்லுடலிகளில் பால் தனி; சில இரைப்பைக்காலிகள் இருபால் உயிரிகள். கடல் வடிவங்களில் கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு ட்ரோகோபோர் லார்வாவாக வளர்கிறது; பெரும்பாலான குழுக்களில் ஓடும் நீந்துதல், உண்ணுதலுக்கான குறுஇழை வெலமும் உடைய வெலிகர் தொடர்கிறது. பல நன்னீர், நில வடிவங்களுக்கு நேரடி வளர்ச்சி உண்டு; நன்னீர் இருவோட்டுடலிகளான யூனியோனிட்களுக்கு மீன்களில் ஒட்டுண்ணியான சிறப்பு லார்வா, குளோகிடியம் உண்டு. மெல்லுடலிகளை அனெலிடாக்களுடன் தொடர்புபடுத்தப் பயன்படும் பண்புகளில் ட்ரோகோபோர் ஒன்று."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/MolluscaBookChapter.kt",
+      "line": 39,
+      "english": "The second larval stage of many molluscs, with a ciliated swimming organ, the velum.",
+      "before": "வெலம் எனும் கசையிழை நீந்தும் உறுப்புடைய பல மெல்லுடலிகளின் இரண்டாம் லார்வா நிலை.",
+      "after": "வெலம் எனும் குறுஇழை நீந்தும் உறுப்புடைய பல மெல்லுடலிகளின் இரண்டாம் லார்வா நிலை."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NereisBookChapter.kt",
+      "line": 109,
+      "english": "The main band of cilia around the middle of a trochophore larva, used in swimming and feeding.",
+      "before": "நீந்துதல், உண்ணுதலுக்குப் பயன்படும் ட்ரோகோபோர் லார்வாவின் நடுவைச் சுற்றியுள்ள முதன்மைக் கசையிழைப் பட்டை.",
+      "after": "நீந்துதல், உண்ணுதலுக்குப் பயன்படும் ட்ரோகோபோர் லார்வாவின் நடுவைச் சுற்றியுள்ள முதன்மைக் குறுஇழைப் பட்டை."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NereisBookChapter.kt",
+      "line": 104,
+      "english": "The fertilised egg undergoes spiral cleavage and develops into a trochophore, a free-swimming larva with a band of cilia, the prototroch, around its middle and a tuft at the apex. It feeds on plankton. The trochophore elongates, acquires segments and chaetae, and becomes a metatrochophore and then a young worm that settles to the bottom, a stage in some species called the nectochaete. The trochophore is an important character linking the annelids with the molluscs, the larvae of which are similar.",
+      "before": "கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு, நடுவில் ப்ரோடோட்ரோக் எனும் கசையிழைப் பட்டையும் உச்சியில் குஞ்சமும் உடைய தனி நீந்தும் லார்வாவான ட்ரோகோஃபோராக வளர்கிறது. அது பிளாங்க்டனை உண்கிறது. ட்ரோகோபோர் நீண்டு கண்டங்களையும் சீட்டாக்களையும் பெற்று மெட்டாட்ரோகோஃபோராகவும் பின்னர் அடிமட்டத்தில் குடியேறும் இளம் புழுவாகவும், சில இனங்களில் நெக்டோகீட் எனப்படும் நிலையாகவும் மாறுகிறது. ட்ரோகோபோர் அனெலிடாக்களை, லார்வாக்கள் ஒத்த மெல்லுடலிகளுடன் இணைக்கும் முக்கியப் பண்பு.",
+      "after": "கருவுற்ற முட்டை சுருள் பிளவுக்குட்பட்டு, நடுவில் ப்ரோடோட்ரோக் எனும் குறுஇழைப் பட்டையும் உச்சியில் குஞ்சமும் உடைய தனி நீந்தும் லார்வாவான ட்ரோகோஃபோராக வளர்கிறது. அது பிளாங்க்டனை உண்கிறது. ட்ரோகோபோர் நீண்டு கண்டங்களையும் சீட்டாக்களையும் பெற்று மெட்டாட்ரோகோஃபோராகவும் பின்னர் அடிமட்டத்தில் குடியேறும் இளம் புழுவாகவும், சில இனங்களில் நெக்டோகீட் எனப்படும் நிலையாகவும் மாறுகிறது. ட்ரோகோபோர் அனெலிடாக்களை, லார்வாக்கள் ஒத்த மெல்லுடலிகளுடன் இணைக்கும் முக்கியப் பண்பு."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NereisBookChapter.kt",
+      "line": 86,
+      "english": "A ciliated chemosensory pit on the head of a polychaete.",
+      "before": "பாலிகீட்டாவின் தலையிலுள்ள கசையிழை வேதி உணர் குழி.",
+      "after": "பாலிகீட்டாவின் தலையிலுள்ள குறுஇழை வேதி உணர் குழி."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NereisBookChapter.kt",
+      "line": 70,
+      "english": "The nervous system consists of a bilobed brain in the prostomium, a pair of circumpharyngeal connectives and a double ventral nerve cord with a ganglion in each segment, from which nerves pass to the muscles and the parapodia. The eyes, palps, tentacles and cirri are the sense organs, and a pair of ciliated pits behind the prostomium, the nuchal organs, are chemoreceptors. The coelom is divided by septa, which in Nereis are thin, and the coelomic fluid serves as the hydrostatic skeleton.",
+      "before": "நரம்பு மண்டலம் புரோஸ்டோமியத்திலுள்ள இருகூறு மூளை, ஓர் இணை தொண்டைச்சுற்று இணைப்பிகள், ஒவ்வொரு கண்டத்திலும் தசைகளுக்கும் பாரபோடியாக்களுக்கும் நரம்புகளை அனுப்பும் ஒரு நரம்புத் திரளுடைய இரட்டை வயிற்றுப்புற நரம்புவடம் ஆகியவற்றைக் கொண்டது. கண்கள், பால்ப்கள், உணர்கொம்புகள், தண்டுகள் உணர்வு உறுப்புகள்; புரோஸ்டோமியத்துக்குப் பின்னுள்ள ஓர் இணை கசையிழைக் குழிகளான நுக்கல் உறுப்புகள் வேதி ஏற்பிகள். உடற்குழி தடுப்புகளால் பிரிக்கப்பட்டுள்ளது; நெரிஸில் அவை மெல்லியவை; உடற்குழி திரவம் நீரழுத்த எலும்புக்கூடாகப் பயன்படுகிறது.",
+      "after": "நரம்பு மண்டலம் புரோஸ்டோமியத்திலுள்ள இருகூறு மூளை, ஓர் இணை தொண்டைச்சுற்று இணைப்பிகள், ஒவ்வொரு கண்டத்திலும் தசைகளுக்கும் பாரபோடியாக்களுக்கும் நரம்புகளை அனுப்பும் ஒரு நரம்புத் திரளுடைய இரட்டை வயிற்றுப்புற நரம்புவடம் ஆகியவற்றைக் கொண்டது. கண்கள், பால்ப்கள், உணர்கொம்புகள், தண்டுகள் உணர்வு உறுப்புகள்; புரோஸ்டோமியத்துக்குப் பின்னுள்ள ஓர் இணை குறுஇழைக் குழிகளான நுக்கல் உறுப்புகள் வேதி ஏற்பிகள். உடற்குழி தடுப்புகளால் பிரிக்கப்பட்டுள்ளது; நெரிஸில் அவை மெல்லியவை; உடற்குழி திரவம் நீரழுத்த எலும்புக்கூடாகப் பயன்படுகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NereisBookChapter.kt",
+      "line": 68,
+      "english": "The circulation is closed. A dorsal vessel carries the blood forwards, a ventral vessel carries it backwards, and the two are joined in each segment by segmental vessels that supply the gut, the body wall and the parapodia. The blood contains a respiratory pigment dissolved in the plasma, and the dorsal vessel is contractile and drives the circulation. Excretion is by paired metanephridia in the segments, each opening into the coelom by a ciliated funnel and to the outside by a pore on the ventral side of the segment behind.",
+      "before": "இரத்த ஓட்டம் மூடியது. முதுகுப்புற நாளம் இரத்தத்தை முன்னோக்கியும் வயிற்றுப்புற நாளம் பின்னோக்கியும் கொண்டு செல்கின்றன; குடல், உடற்சுவர், பாரபோடியாக்களுக்கு விநியோகிக்கும் கண்ட நாளங்களால் ஒவ்வொரு கண்டத்திலும் இரண்டும் இணைகின்றன. இரத்தத்தில் பிளாஸ்மாவில் கரைந்த சுவாச நிறமி உண்டு; முதுகுப்புற நாளம் சுருங்கி ஓட்டத்தை இயக்குகிறது. கழிவு நீக்கம் கண்டங்களிலுள்ள இணை மெட்டாநெஃப்ரிடியாக்களால்; ஒவ்வொன்றும் கசையிழைப் புனலால் உடற்குழிக்குள்ளும் பின்புறக் கண்டத்தின் வயிற்றுப்புறத் துளையால் வெளியேயும் திறக்கிறது.",
+      "after": "இரத்த ஓட்டம் மூடியது. முதுகுப்புற நாளம் இரத்தத்தை முன்னோக்கியும் வயிற்றுப்புற நாளம் பின்னோக்கியும் கொண்டு செல்கின்றன; குடல், உடற்சுவர், பாரபோடியாக்களுக்கு விநியோகிக்கும் கண்ட நாளங்களால் ஒவ்வொரு கண்டத்திலும் இரண்டும் இணைகின்றன. இரத்தத்தில் பிளாஸ்மாவில் கரைந்த சுவாச நிறமி உண்டு; முதுகுப்புற நாளம் சுருங்கி ஓட்டத்தை இயக்குகிறது. கழிவு நீக்கம் கண்டங்களிலுள்ள இணை மெட்டாநெஃப்ரிடியாக்களால்; ஒவ்வொன்றும் குறுஇழைப் புனலால் உடற்குழிக்குள்ளும் பின்புறக் கண்டத்தின் வயிற்றுப்புறத் துளையால் வெளியேயும் திறக்கிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ObeliaBookChapter.kt",
+      "line": 225,
+      "english": "Fertilisation gives a zygote that becomes a ciliated planula, which settles and buds into a new colony.",
+      "before": "கருவுறுதல் கருமுட்டையைத் தருகிறது; அது கசையிழை பிளானுலாவாகி, படிந்து, மொட்டுவிட்டுப் புதிய காலனியாகிறது.",
+      "after": "கருவுறுதல் கருமுட்டையைத் தருகிறது; அது குறுஇழை பிளானுலாவாகி, படிந்து, மொட்டுவிட்டுப் புதிய காலனியாகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ObeliaBookChapter.kt",
+      "line": 151,
+      "english": "The ciliated, solid, free-swimming larva of cnidarians.",
+      "before": "நிடேரியாக்களின் கசையிழை, திண்ம, சுதந்திரமாக நீந்தும் லார்வா.",
+      "after": "நிடேரியாக்களின் குறுஇழை, திண்ம, சுதந்திரமாக நீந்தும் லார்வா."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ObeliaBookChapter.kt",
+      "line": 140,
+      "english": "The zygote develops through a blastula into a ciliated, solid planula larva, which swims freely.",
+      "before": "கருமுட்டை பிளாஸ்டுலா வழியாக கசையிழை, திண்ம பிளானுலா லார்வாவாக வளர்ந்து சுதந்திரமாக நீந்துகிறது.",
+      "after": "கருமுட்டை பிளாஸ்டுலா வழியாக குறுஇழை, திண்ம பிளானுலா லார்வாவாக வளர்ந்து சுதந்திரமாக நீந்துகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyAdaptationsBookChapter.kt",
+      "line": 42,
+      "english": "The first adaptation is the covering of the body. A free-living flatworm has a ciliated epidermis. In flukes and tapeworms this is replaced by a tegument, which is a living syncytial layer that is continuous with cell bodies sunk into the parenchyma below. It is resistant to the digestive enzymes of the host. Its surface can be renewed, and in this way the parasite can alter the proteins on its surface, which assists in avoiding the immune response of the host.",
+      "before": "முதல் தகவமைப்பு உடலின் உறை. தனி வாழ்வுத் தட்டைப்புழுவுக்குக் கசையிழை எப்பிடெர்மிஸ் உண்டு. ஃப்ளூக்குகள், நாடாப்புழுக்களில் இது டெகுமென்ட்டால் மாற்றப்படுகிறது; அது கீழுள்ள பாரங்கைமாவில் மூழ்கிய செல் உடல்களுடன் தொடர்ச்சியான உயிருள்ள சின்சிட்டிய அடுக்கு. இது விருந்தோம்பியின் செரிமான நொதிகளை எதிர்க்கும். அதன் பரப்பு புதுப்பிக்கப்படலாம்; இவ்வாறு ஒட்டுண்ணி தன் பரப்பிலுள்ள புரதங்களை மாற்றி, விருந்தோம்பியின் நோயெதிர்ப்பு எதிர்வினையைத் தவிர்க்க உதவுகிறது.",
+      "after": "முதல் தகவமைப்பு உடலின் உறை. தனி வாழ்வுத் தட்டைப்புழுவுக்குக் குறுஇழை எப்பிடெர்மிஸ் உண்டு. ஃப்ளூக்குகள், நாடாப்புழுக்களில் இது டெகுமென்ட்டால் மாற்றப்படுகிறது; அது கீழுள்ள பாரங்கைமாவில் மூழ்கிய செல் உடல்களுடன் தொடர்ச்சியான உயிருள்ள சின்சிட்டிய அடுக்கு. இது விருந்தோம்பியின் செரிமான நொதிகளை எதிர்க்கும். அதன் பரப்பு புதுப்பிக்கப்படலாம்; இவ்வாறு ஒட்டுண்ணி தன் பரப்பிலுள்ள புரதங்களை மாற்றி, விருந்தோம்பியின் நோயெதிர்ப்பு எதிர்வினையைத் தவிர்க்க உதவுகிறது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+      "line": 114,
+      "english": "The planarian glides by the beating of the cilia of its ventral surface over a film of slime, and it wriggles by contraction of its muscles. The nervous system has a pair of anterior ganglia and two longitudinal nerve cords connected by cross-nerves, giving a ladder-like arrangement. The free-living flatworms are also famous for their power of regeneration, since a piece cut from a planarian may grow into a whole worm, a property that rests on the presence of undifferentiated cells scattered through the parenchyma.",
+      "before": "பிளனேரியன் வயிற்றுப் பரப்பின் கசையிழைகள் சளிப் படலத்தின் மேல் அசைவதால் வழுக்கிச் செல்கிறது; தசைச் சுருக்கத்தால் நெளிகிறது. நரம்பு மண்டலத்தில் ஒரு இணை முன்புற நரம்புத்திரள்களும், குறுக்கு நரம்புகளால் இணைந்த இரு நீளவாக்கு நரம்பு வடங்களும் உள்ளன; ஏணி போன்ற அமைப்பு. தனி வாழ்வுத் தட்டைப்புழுக்கள் மீளுருவாக்கத் திறனுக்கும் பிரபலமானவை; பிளனேரியனிலிருந்து வெட்டிய துண்டு முழுப் புழுவாக வளரலாம்; இத்திறன் பாரங்கைமா முழுவதும் சிதறிய வேறுபடாத செல்களைச் சார்ந்தது.",
+      "after": "பிளனேரியன் வயிற்றுப் பரப்பின் குறுஇழைகள் சளிப் படலத்தின் மேல் அசைவதால் வழுக்கிச் செல்கிறது; தசைச் சுருக்கத்தால் நெளிகிறது. நரம்பு மண்டலத்தில் ஒரு இணை முன்புற நரம்புத்திரள்களும், குறுக்கு நரம்புகளால் இணைந்த இரு நீளவாக்கு நரம்பு வடங்களும் உள்ளன; ஏணி போன்ற அமைப்பு. தனி வாழ்வுத் தட்டைப்புழுக்கள் மீளுருவாக்கத் திறனுக்கும் பிரபலமானவை; பிளனேரியனிலிருந்து வெட்டிய துண்டு முழுப் புழுவாக வளரலாம்; இத்திறன் பாரங்கைமா முழுவதும் சிதறிய வேறுபடாத செல்களைச் சார்ந்தது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+      "line": 94,
+      "english": "Mostly free-living flatworms, found in fresh water, in the sea and in damp places on land. The body is covered with a ciliated epidermis, which contains rod-like bodies called rhabdites. The worm glides over surfaces on a film of mucus. The mouth is ventral and there is a muscular pharynx. Planaria is the common example, and its power of regeneration is well known.",
+      "before": "பெரும்பாலும் தனி வாழ்வுத் தட்டைப்புழுக்கள்; நன்னீர், கடல், நிலத்தின் ஈரமான இடங்களில் காணப்படுகின்றன. உடல் ராப்டைட்டுகள் எனப்படும் கோல் வடிவ உடலங்கள் கொண்ட கசையிழை எப்பிடெர்மிஸால் மூடப்பட்டுள்ளது. புழு சளிப் படலத்தின் மேல் பரப்புகளில் வழுக்கிச் செல்கிறது. வாய் வயிற்றுப் புறத்தில் உள்ளது; தசைத் தொண்டை உண்டு. பிளனேரியா பொதுவான எடுத்துக்காட்டு; அதன் மீளுருவாக்கத் திறன் நன்கு அறியப்பட்டது.",
+      "after": "பெரும்பாலும் தனி வாழ்வுத் தட்டைப்புழுக்கள்; நன்னீர், கடல், நிலத்தின் ஈரமான இடங்களில் காணப்படுகின்றன. உடல் ராப்டைட்டுகள் எனப்படும் கோல் வடிவ உடலங்கள் கொண்ட குறுஇழை எப்பிடெர்மிஸால் மூடப்பட்டுள்ளது. புழு சளிப் படலத்தின் மேல் பரப்புகளில் வழுக்கிச் செல்கிறது. வாய் வயிற்றுப் புறத்தில் உள்ளது; தசைத் தொண்டை உண்டு. பிளனேரியா பொதுவான எடுத்துக்காட்டு; அதன் மீளுருவாக்கத் திறன் நன்கு அறியப்பட்டது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+      "line": 85,
+      "english": "Ciliated epidermis",
+      "before": "கசையிழை எப்பிடெர்மிஸ்",
+      "after": "குறுஇழை எப்பிடெர்மிஸ்"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+      "line": 69,
+      "english": "A hollow excretory cell with a tuft of cilia that begins a protonephridial tubule.",
+      "before": "புரோட்டோநெஃப்ரிடியக் குழாயைத் தொடங்கும், கசையிழைக் கொத்துடைய வெற்று கழிவு நீக்க செல்.",
+      "after": "புரோட்டோநெஃப்ரிடியக் குழாயைத் தொடங்கும், குறுஇழைக் கொத்துடைய வெற்று கழிவு நீக்க செல்."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+      "line": 60,
+      "english": "The excretory organs of flatworms are protonephridia. Each begins in a flame cell, a hollow cell in the parenchyma that has a tuft of beating cilia projecting into its cavity. The beating of the tuft resembles the flicker of a flame when seen under the microscope, and this is how the cell gets its name. The cilia draw fluid in through the fine slits of the wall of the cell and drive it into a capillary tubule. The tubules join to form larger ducts that open to the outside through one or more excretory pores.",
+      "before": "தட்டைப்புழுக்களின் கழிவு நீக்க உறுப்புகள் புரோட்டோநெஃப்ரிடியா. ஒவ்வொன்றும் சுடர் செல்லில் தொடங்குகிறது; பாரங்கைமாவிலுள்ள, குழிக்குள் நீட்டும் அசையும் கசையிழைக் கொத்தைக் கொண்ட வெற்று செல் அது. நுண்ணோக்கியில் இக்கொத்தின் அசைவு சுடரின் படபடப்பைப் போல் தோன்றுவதால் செல்லுக்கு இப்பெயர். கசையிழைகள் செல்சுவரின் நுண் பிளவுகள் வழியாக நீரை இழுத்து நுண்குழாயில் செலுத்துகின்றன. குழாய்கள் இணைந்து பெரிய நாளங்களாகி ஒன்று அல்லது அதற்கு மேற்பட்ட கழிவு நீக்கத் துளைகள் வழியாக வெளியே திறக்கின்றன.",
+      "after": "தட்டைப்புழுக்களின் கழிவு நீக்க உறுப்புகள் புரோட்டோநெஃப்ரிடியா. ஒவ்வொன்றும் சுடர் செல்லில் தொடங்குகிறது; பாரங்கைமாவிலுள்ள, குழிக்குள் நீட்டும் அசையும் குறுஇழைக் கொத்தைக் கொண்ட வெற்று செல் அது. நுண்ணோக்கியில் இக்கொத்தின் அசைவு சுடரின் படபடப்பைப் போல் தோன்றுவதால் செல்லுக்கு இப்பெயர். குறுஇழைகள் செல்சுவரின் நுண் பிளவுகள் வழியாக நீரை இழுத்து நுண்குழாயில் செலுத்துகின்றன. குழாய்கள் இணைந்து பெரிய நாளங்களாகி ஒன்று அல்லது அதற்கு மேற்பட்ட கழிவு நீக்கத் துளைகள் வழியாக வெளியே திறக்கின்றன."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+      "line": 32,
+      "english": "The body is covered by a ciliated epidermis in free-living forms and by a tegument in the parasitic classes.",
+      "before": "தனி வாழ்வு வகைகளில் கசையிழை எப்பிடெர்மிஸாலும், ஒட்டுண்ணி வகுப்புகளில் டெகுமென்ட்டாலும் உடல் மூடப்பட்டுள்ளது.",
+      "after": "தனி வாழ்வு வகைகளில் குறுஇழை எப்பிடெர்மிஸாலும், ஒட்டுண்ணி வகுப்புகளில் டெகுமென்ட்டாலும் உடல் மூடப்பட்டுள்ளது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/TorsionBookChapter.kt",
+      "line": 94,
+      "english": "The larval stage of many molluscs, with a shell, a foot and a ciliated velum used for swimming.",
+      "before": "ஓடு, பாதம், நீந்த உதவும் கசையிழை வெலம் கொண்ட பல மெல்லுடலிகளின் லார்வா நிலை.",
+      "after": "ஓடு, பாதம், நீந்த உதவும் குறுஇழை வெலம் கொண்ட பல மெல்லுடலிகளின் லார்வா நிலை."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/TorsionBookChapter.kt",
+      "line": 64,
+      "english": "The ciliated swimming and feeding organ of the veliger larva.",
+      "before": "வெலிகர் லார்வாவின் கசையிழை நீந்தும், உண்ணும் உறுப்பு.",
+      "after": "வெலிகர் லார்வாவின் குறுஇழை நீந்தும், உண்ணும் உறுப்பு."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/TorsionBookChapter.kt",
+      "line": 58,
+      "english": "A student should know that the consequences of torsion are fairly clear, but the reasons why it evolved are debated. The classical hypothesis, associated with Garstang, is that torsion benefited the larva, because when the larva was alarmed it could withdraw the head and the delicate ciliated swimming organ into the shell first, with the foot following as a plug, and so the head would be protected. A related adult benefit often given is that the head is withdrawn first and the strong foot or operculum closes the shell.",
+      "before": "முறுக்கலின் விளைவுகள் ஓரளவு தெளிவு; ஆனால் அது ஏன் பரிணமித்தது என்பது விவாதிக்கப்படுகிறது என மாணவர் அறிய வேண்டும். கார்ஸ்டாங்குடன் தொடர்புடைய செம்மையான கருதுகோள்: முறுக்கல் லார்வாவுக்கு நன்மை தந்தது; ஏனெனில் லார்வா அச்சமடையும்போது தலையையும் மென்மையான கசையிழை நீந்தும் உறுப்பையும் முதலில் ஓட்டுக்குள் இழுக்க, பாதம் அடைப்பானாகத் தொடர, தலை பாதுகாக்கப்படும். தொடர்புடைய, அடிக்கடி தரப்படும் முதிர்ந்த நன்மை, தலை முதலில் இழுக்கப்பட்டு வலிமையான பாதம் அல்லது ஆப்பர்குலம் ஓட்டை மூடுவது.",
+      "after": "முறுக்கலின் விளைவுகள் ஓரளவு தெளிவு; ஆனால் அது ஏன் பரிணமித்தது என்பது விவாதிக்கப்படுகிறது என மாணவர் அறிய வேண்டும். கார்ஸ்டாங்குடன் தொடர்புடைய செம்மையான கருதுகோள்: முறுக்கல் லார்வாவுக்கு நன்மை தந்தது; ஏனெனில் லார்வா அச்சமடையும்போது தலையையும் மென்மையான குறுஇழை நீந்தும் உறுப்பையும் முதலில் ஓட்டுக்குள் இழுக்க, பாதம் அடைப்பானாகத் தொடர, தலை பாதுகாக்கப்படும். தொடர்புடைய, அடிக்கடி தரப்படும் முதிர்ந்த நன்மை, தலை முதலில் இழுக்கப்பட்டு வலிமையான பாதம் அல்லது ஆப்பர்குலம் ஓட்டை மூடுவது."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/WvsBookChapter.kt",
+      "line": 60,
+      "english": "Each tube foot is a hollow, extensible cylinder with a flattened disc at the tip, and the base of the foot is connected through the skeleton to a muscular bulb, the ampulla, which lies in the coelom. The wall of the foot has longitudinal muscle fibres and connective tissue, and the lining is ciliated. The foot works as a piston. When the ampulla contracts, the valve in the lateral canal closes, so that the fluid is forced into the foot and not back into the radial canal. The fluid pressure extends the foot.",
+      "before": "ஒவ்வொரு குழாய்ப்பாதமும் முனையில் தட்டையான வட்டுடைய வெற்று, நீளக்கூடிய உருளை; பாதத்தின் அடி கூடு வழியே உடற்குழியிலுள்ள தசைக் குமிழான ஆம்புலாவுடன் இணைந்துள்ளது. பாதத்தின் சுவரில் நீள்தசை இழைகளும் இணைப்புத் திசுவும் உள்ளன; உட்புறம் கசையிழை கொண்டது. பாதம் உலக்கையாகச் செயல்படுகிறது. ஆம்புலா சுருங்கும்போது பக்கக் கால்வாயின் வால்வு மூடுகிறது; எனவே திரவம் கதிர்க் கால்வாய்க்குப் பின்னோக்கி அல்லாமல் பாதத்துக்குள் தள்ளப்படுகிறது. திரவ அழுத்தம் பாதத்தை நீட்டுகிறது.",
+      "after": "ஒவ்வொரு குழாய்ப்பாதமும் முனையில் தட்டையான வட்டுடைய வெற்று, நீளக்கூடிய உருளை; பாதத்தின் அடி கூடு வழியே உடற்குழியிலுள்ள தசைக் குமிழான ஆம்புலாவுடன் இணைந்துள்ளது. பாதத்தின் சுவரில் நீள்தசை இழைகளும் இணைப்புத் திசுவும் உள்ளன; உட்புறம் குறுஇழை கொண்டது. பாதம் உலக்கையாகச் செயல்படுகிறது. ஆம்புலா சுருங்கும்போது பக்கக் கால்வாயின் வால்வு மூடுகிறது; எனவே திரவம் கதிர்க் கால்வாய்க்குப் பின்னோக்கி அல்லாமல் பாதத்துக்குள் தள்ளப்படுகிறது. திரவ அழுத்தம் பாதத்தை நீட்டுகிறது."
+    }
+  ]
+}

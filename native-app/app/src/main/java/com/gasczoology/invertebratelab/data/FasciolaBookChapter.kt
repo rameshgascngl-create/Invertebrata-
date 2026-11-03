@@ -45,7 +45,7 @@ object FasciolaBookChapter {
                     bp("The body is covered by a tegument, which is a living layer that is not shed, and the outer surface of which is armed with small backwardly directed spines. Below it lie layers of circular, longitudinal and diagonal muscle, and the rest of the space is filled with parenchyma, in which the organs are embedded. The tegument protects the fluke against the digestive enzymes and the immune reactions of the host, and takes part in absorption and in the exchange of gases. The spines help the worm to hold its place in the duct." to
                         "உடல் உதிர்க்கப்படாத உயிருள்ள அடுக்கான டெகுமென்ட்டால் மூடப்பட்டுள்ளது; அதன் வெளிப்பரப்பில் பின்னோக்கிய சிறு முட்கள் உள்ளன. அதன் கீழே வட்ட, நீளவாக்கு, மூலைவிட்ட தசை அடுக்குகள் உள்ளன; மீதி இடம் உறுப்புகள் பதிந்துள்ள பாரங்கைமாவால் நிரம்பியுள்ளது. டெகுமென்ட் ஃப்ளூக்கை விருந்தோம்பியின் செரிமான நொதிகள், நோயெதிர்ப்பு வினைகளிலிருந்து பாதுகாத்து, உறிஞ்சலிலும் வாயுப் பரிமாற்றத்திலும் பங்கேற்கிறது. முட்கள் புழு நாளத்தில் தன் இடத்தைப் பற்றிக்கொள்ள உதவுகின்றன."),
                     bdef("Tegument", "டெகுமென்ட் (Tegument)", "The living, non-ciliated outer covering of a fluke, which replaces the epidermis of free-living flatworms." to
-                        "தனி வாழ்வுத் தட்டைப்புழுக்களின் எப்பிடெர்மிஸுக்குப் பதிலாக ஃப்ளூக்கின் உயிருள்ள, கசையிழையற்ற வெளி உறை."),
+                        "தனி வாழ்வுத் தட்டைப்புழுக்களின் எப்பிடெர்மிஸுக்குப் பதிலாக ஃப்ளூக்கின் உயிருள்ள, குறுஇழையற்ற வெளி உறை."),
                 )),
             bsec("digestive", "Digestive system", "செரிமான மண்டலம்",
                 blocks = listOf(
@@ -97,7 +97,7 @@ object FasciolaBookChapter {
                         "ஃபாசியோலாவின் வாழ்க்கைச் சுழற்சி இரு விருந்தோம்பிகளுடன் மறைமுகமானது. ஆடு அல்லது மாடு முதன்மை விருந்தோம்பி; அதில் ஃப்ளூக் முதிர்ந்து பாலின இனப்பெருக்கம் செய்கிறது. நன்னீர் நத்தை இடைநிலை விருந்தோம்பி; அதில் லார்வாக்கள் பாலிலா முறையில் பெருகுகின்றன. பகுதிக்கு ஏற்ப நத்தை லிம்னேயா இனம் அல்லது நெருங்கிய பேரினம்."),
                     bpoints("Sequence of the life cycle", "வாழ்க்கைச் சுழற்சியின் வரிசை",
                         "Unembryonated eggs, laid by the adults in the bile ducts, pass with the bile into the intestine and leave the host in the faeces." to "பித்த நாளங்களிலுள்ள முதிர்ந்த புழுக்கள் இடும் கருவளராத முட்டைகள் பித்தத்துடன் குடலுக்குச் சென்று மலத்துடன் வெளியேறுகின்றன.",
-                        "In fresh water the egg embryonates over some weeks and releases a ciliated, free-swimming miracidium." to "நன்னீரில் முட்டை சில வாரங்களில் கரு வளர்ந்து, கசையிழை, சுதந்திரமாக நீந்தும் மிராசிடியத்தை வெளியிடுகிறது.",
+                        "In fresh water the egg embryonates over some weeks and releases a ciliated, free-swimming miracidium." to "நன்னீரில் முட்டை சில வாரங்களில் கரு வளர்ந்து, குறுஇழை, சுதந்திரமாக நீந்தும் மிராசிடியத்தை வெளியிடுகிறது.",
                         "The miracidium swims to a suitable snail and penetrates it." to "மிராசிடியம் தகுந்த நத்தையிடம் நீந்திச் சென்று உள்ளே ஊடுருவுகிறது.",
                         "In the snail it becomes a sporocyst, which gives rise to rediae." to "நத்தையில் அது ஸ்போரோசிஸ்டாகி, ரெடியாக்களைத் தருகிறது.",
                         "The rediae produce numerous cercariae by asexual multiplication, and sometimes a second generation of rediae." to "ரெடியாக்கள் பாலிலா பெருக்கத்தால் எண்ணற்ற செர்க்கேரியாக்களை, சில நேரங்களில் இரண்டாம் தலைமுறை ரெடியாக்களையும், உருவாக்குகின்றன.",
@@ -109,14 +109,14 @@ object FasciolaBookChapter {
                     btable("Larval stages of Fasciola", "ஃபாசியோலாவின் லார்வா நிலைகள்",
                         listOf("Stage" to "நிலை", "Where found" to "காணப்படும் இடம்", "Main feature" to "முதன்மைப் பண்பு"),
                         listOf(
-                            listOf("Miracidium" to "மிராசிடியம்", "Fresh water" to "நன்னீர்", "Ciliated, free-swimming, with eye spots" to "கசையிழையுடையது, நீந்துவது, கண்புள்ளிகளுடன்"),
+                            listOf("Miracidium" to "மிராசிடியம்", "Fresh water" to "நன்னீர்", "Ciliated, free-swimming, with eye spots" to "குறுஇழையுடையது, நீந்துவது, கண்புள்ளிகளுடன்"),
                             listOf("Sporocyst" to "ஸ்போரோசிஸ்ட்", "Snail" to "நத்தை", "Sac-like, produces rediae" to "பை போன்றது, ரெடியாக்களை உருவாக்குகிறது"),
                             listOf("Redia" to "ரெடியா", "Snail" to "நத்தை", "Has mouth and gut, produces cercariae" to "வாயும் குடலும் உண்டு, செர்க்கேரியாக்களை உருவாக்குகிறது"),
                             listOf("Cercaria" to "செர்க்கேரியா", "Leaves the snail" to "நத்தையிலிருந்து வெளியேறுகிறது", "Tailed, swims, encysts" to "வால் உடையது, நீந்தும், உறையும்"),
                             listOf("Metacercaria" to "மெட்டாசெர்க்கேரியா", "On plants or other surfaces" to "தாவரங்கள் அல்லது பிற பரப்புகளில்", "Encysted, infective to the mammal" to "உறையிடப்பட்டது, பாலூட்டிக்குத் தொற்றுவது"),
                         )),
                     bdef("Miracidium", "மிராசிடியம் (Miracidium)", "The ciliated, free-swimming first larva of a fluke, which hatches from the egg and infects a snail." to
-                        "முட்டையிலிருந்து பொரிந்து நத்தையைத் தொற்றும், ஃப்ளூக்கின் கசையிழை, நீந்தும் முதல் லார்வா."),
+                        "முட்டையிலிருந்து பொரிந்து நத்தையைத் தொற்றும், ஃப்ளூக்கின் குறுஇழை, நீந்தும் முதல் லார்வா."),
                     bdef("Sporocyst", "ஸ்போரோசிஸ்ட்", "The saclike second larval stage that develops in the snail and gives rise to rediae." to
                         "நத்தையில் வளர்ந்து ரெடியாக்களைத் தரும் பை போன்ற இரண்டாம் லார்வா நிலை."),
                     bdef("Redia", "ரெடியா (Redia)", "A larval stage in the snail with a mouth and a simple gut, which produces cercariae." to

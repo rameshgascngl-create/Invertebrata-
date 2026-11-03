@@ -42,7 +42,7 @@ object AnnelidaBookChapter {
                     bdef("Chaeta (seta)", "சீட்டா (Chaeta)", "A chitinous bristle that projects from the body wall of an annelid and gives grip in movement." to
                         "அனெலிடாவின் உடற்சுவரிலிருந்து நீண்டு, இயக்கத்தில் பிடிப்பைத் தரும் கைட்டின் மயிர்."),
                     bdef("Metanephridium", "மெட்டாநெஃப்ரிடியம் (Metanephridium)", "A tubular excretory organ that opens into the coelom by a ciliated funnel and to the outside by a pore." to
-                        "கசையிழை புனல் வழியாக உடற்குழிக்குள்ளும் துளை வழியாக வெளியிலும் திறக்கும் குழல் வடிவ கழிவு நீக்க உறுப்பு."),
+                        "குறுஇழை புனல் வழியாக உடற்குழிக்குள்ளும் துளை வழியாக வெளியிலும் திறக்கும் குழல் வடிவ கழிவு நீக்க உறுப்பு."),
                     bnote("Leeches and chaetae", "அட்டைகளும் சீட்டாக்களும்",
                         "The statement that annelids have chaetae has exceptions. Leeches have secondarily lost them, and their coelom is reduced by connective tissue, so write that chaetae are usually present." to
                             "அனெலிடாக்களுக்கு சீட்டாக்கள் உண்டு என்பதற்கு விதிவிலக்குகள் உண்டு. அட்டைகள் அவற்றை இரண்டாம் நிலையில் இழந்துவிட்டன; இணைப்புத் திசுவால் அவற்றின் உடற்குழி குறைக்கப்பட்டுள்ளது; எனவே சீட்டாக்கள் பொதுவாக உண்டு என எழுதுக."),
@@ -82,13 +82,13 @@ object AnnelidaBookChapter {
                     bp("The alimentary canal is a straight tube from the mouth to the anus, and in most annelids it is differentiated into regions, such as the buccal cavity, pharynx, oesophagus, a crop or gizzard in some, and the intestine. The digestive tube runs through the septa, and its absorptive surface is increased in some forms by a fold, the typhlosole, of the dorsal wall of the intestine. Digestion is extracellular." to
                         "செரிமானக் குழாய் வாயிலிருந்து மலவாய் வரை நேரான குழாய்; பெரும்பாலான அனெலிடாக்களில் வாய்க்குழி, தொண்டை, உணவுக்குழல், சிலவற்றில் பயிர் அல்லது அரைப்பான், குடல் எனப் பகுதிகளாகப் பிரிகிறது. செரிமானக் குழாய் தடுப்புகள் வழியே செல்கிறது; சில வடிவங்களில் குடலின் முதுகுச் சுவரின் மடிப்பான டைஃப்ளோசோலால் உறிஞ்சும் பரப்பு அதிகரிக்கிறது. செரிமானம் செல்புறமானது."),
                     bp("Excretion is by metanephridia, which occur as a pair in most segments. Each has a ciliated funnel, the nephrostome, which opens into the coelom of one segment, and a coiled tubule that passes through the septum behind it into the next segment and opens to the outside by a nephridiopore. Waste and some of the useful materials enter at the funnel, the useful materials are reabsorbed in the tubule, and urine is passed to the outside. The nephridia of earthworms are of several kinds, and they also help to regulate the water content of the body." to
-                        "கழிவு நீக்கம் பெரும்பாலான கண்டங்களில் இணையாக உள்ள மெட்டாநெஃப்ரிடியாக்களால். ஒவ்வொன்றுக்கும் ஒரு கண்டத்தின் உடற்குழிக்குள் திறக்கும் கசையிழை புனலான நெஃப்ரோஸ்டோமும், பின்னால் உள்ள தடுப்பு வழியாக அடுத்த கண்டத்துக்குச் சென்று நெஃப்ரிடியோதுளை வழியாக வெளியே திறக்கும் சுருண்ட குழலும் உண்டு. கழிவும் சில பயனுள்ள பொருள்களும் புனலில் நுழைகின்றன; பயனுள்ளவை குழலில் மீள உறிஞ்சப்படுகின்றன; சிறுநீர் வெளியே செல்கிறது. மண்புழுக்களின் நெஃப்ரிடியாக்கள் பல வகை; அவை உடலின் நீர் அளவையும் ஒழுங்குபடுத்த உதவுகின்றன."),
+                        "கழிவு நீக்கம் பெரும்பாலான கண்டங்களில் இணையாக உள்ள மெட்டாநெஃப்ரிடியாக்களால். ஒவ்வொன்றுக்கும் ஒரு கண்டத்தின் உடற்குழிக்குள் திறக்கும் குறுஇழை புனலான நெஃப்ரோஸ்டோமும், பின்னால் உள்ள தடுப்பு வழியாக அடுத்த கண்டத்துக்குச் சென்று நெஃப்ரிடியோதுளை வழியாக வெளியே திறக்கும் சுருண்ட குழலும் உண்டு. கழிவும் சில பயனுள்ள பொருள்களும் புனலில் நுழைகின்றன; பயனுள்ளவை குழலில் மீள உறிஞ்சப்படுகின்றன; சிறுநீர் வெளியே செல்கிறது. மண்புழுக்களின் நெஃப்ரிடியாக்கள் பல வகை; அவை உடலின் நீர் அளவையும் ஒழுங்குபடுத்த உதவுகின்றன."),
                     bp("The nervous system consists of a dorsal bilobed cerebral ganglion, the brain, above the pharynx, a pair of connectives around the pharynx and a ventral nerve cord, which has a ganglion in each segment and gives off segmental nerves. The ventral position of the cord is a feature of annelids, arthropods and some other protostomes. The sense organs include touch receptors, sensitive to chemicals, light-sensitive cells and, in the free-living polychaetes, eyes, tentacles and palps." to
                         "நரம்பு மண்டலம் தொண்டைக்கு மேல் முதுகுப்புற இருகூறு பெருமூளை நரம்புத் திரளான மூளை, தொண்டையைச் சுற்றும் இணைப்பிகள் இரண்டு, ஒவ்வொரு கண்டத்திலும் ஒரு நரம்புத் திரளுடன் கண்ட நரம்புகளை வெளியிடும் வயிற்றுப்புற நரம்புவடம் ஆகியவற்றைக் கொண்டது. வடத்தின் வயிற்றுப்புற நிலை அனெலிடாக்கள், கணுக்காலிகள், வேறு சில புரோட்டோஸ்டோம்களின் பண்பு. உணர்வு உறுப்புகளில் தொடு ஏற்பிகள், வேதிப்பொருள் உணர்வு செல்கள், ஒளி உணர்வு செல்கள், தனிவாழ் பாலிகீட்டாக்களில் கண்கள், உணர்கொம்புகள், பால்ப்கள் அடங்கும்."),
                     bdef("Typhlosole", "டைஃப்ளோசோல் (Typhlosole)", "A longitudinal fold of the dorsal wall of the intestine of an earthworm that increases the area for absorption." to
                         "உறிஞ்சும் பரப்பை அதிகரிக்கும் மண்புழுக் குடலின் முதுகுச் சுவரிலுள்ள நீளவாட்டு மடிப்பு."),
                     bdef("Nephrostome", "நெஃப்ரோஸ்டோம்", "The ciliated funnel of a nephridium that opens into the coelom." to
-                        "உடற்குழிக்குள் திறக்கும் நெஃப்ரிடியத்தின் கசையிழைப் புனல்."),
+                        "உடற்குழிக்குள் திறக்கும் நெஃப்ரிடியத்தின் குறுஇழைப் புனல்."),
                 )),
             bsec("circulation", "Closed circulation", "மூடிய இரத்த ஓட்டம்",
                 blocks = listOf(
@@ -163,7 +163,7 @@ object AnnelidaBookChapter {
                     bdef("Clitellum", "கிளைடெல்லம்", "A glandular band of the body wall, found in oligochaetes and leeches, that secretes the cocoon." to
                         "ஒலிகோகீட்டாக்கள், அட்டைகளில் காணப்படும், கூட்டைச் சுரக்கும் உடற்சுவரின் சுரப்பிப் பட்டை."),
                     bdef("Trochophore", "ட்ரோகோபோர்", "The free-swimming ciliated larva of polychaetes and some other protostomes." to
-                        "பாலிகீட்டாக்கள், வேறு சில புரோட்டோஸ்டோம்களின் தனி நீந்தும் கசையிழை லார்வா."),
+                        "பாலிகீட்டாக்கள், வேறு சில புரோட்டோஸ்டோம்களின் தனி நீந்தும் குறுஇழை லார்வா."),
                     bdef("Hermaphrodite", "இருபால் உயிரி", "An animal that has both male and female reproductive organs in the same individual." to
                         "ஒரே உயிரியில் ஆண், பெண் இனப்பெருக்க உறுப்புகள் இரண்டும் உள்ள விலங்கு."),
                 )),

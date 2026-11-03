@@ -56,13 +56,13 @@ object TorsionBookChapter {
             bsec("advantages", "Why torsion? Hypotheses and evidence", "ஏன் முறுக்கல்? கருதுகோள்களும் சான்றுகளும்",
                 blocks = listOf(
                     bp("A student should know that the consequences of torsion are fairly clear, but the reasons why it evolved are debated. The classical hypothesis, associated with Garstang, is that torsion benefited the larva, because when the larva was alarmed it could withdraw the head and the delicate ciliated swimming organ into the shell first, with the foot following as a plug, and so the head would be protected. A related adult benefit often given is that the head is withdrawn first and the strong foot or operculum closes the shell." to
-                        "முறுக்கலின் விளைவுகள் ஓரளவு தெளிவு; ஆனால் அது ஏன் பரிணமித்தது என்பது விவாதிக்கப்படுகிறது என மாணவர் அறிய வேண்டும். கார்ஸ்டாங்குடன் தொடர்புடைய செம்மையான கருதுகோள்: முறுக்கல் லார்வாவுக்கு நன்மை தந்தது; ஏனெனில் லார்வா அச்சமடையும்போது தலையையும் மென்மையான கசையிழை நீந்தும் உறுப்பையும் முதலில் ஓட்டுக்குள் இழுக்க, பாதம் அடைப்பானாகத் தொடர, தலை பாதுகாக்கப்படும். தொடர்புடைய, அடிக்கடி தரப்படும் முதிர்ந்த நன்மை, தலை முதலில் இழுக்கப்பட்டு வலிமையான பாதம் அல்லது ஆப்பர்குலம் ஓட்டை மூடுவது."),
+                        "முறுக்கலின் விளைவுகள் ஓரளவு தெளிவு; ஆனால் அது ஏன் பரிணமித்தது என்பது விவாதிக்கப்படுகிறது என மாணவர் அறிய வேண்டும். கார்ஸ்டாங்குடன் தொடர்புடைய செம்மையான கருதுகோள்: முறுக்கல் லார்வாவுக்கு நன்மை தந்தது; ஏனெனில் லார்வா அச்சமடையும்போது தலையையும் மென்மையான குறுஇழை நீந்தும் உறுப்பையும் முதலில் ஓட்டுக்குள் இழுக்க, பாதம் அடைப்பானாகத் தொடர, தலை பாதுகாக்கப்படும். தொடர்புடைய, அடிக்கடி தரப்படும் முதிர்ந்த நன்மை, தலை முதலில் இழுக்கப்பட்டு வலிமையான பாதம் அல்லது ஆப்பர்குலம் ஓட்டை மூடுவது."),
                     bp("Other suggestions are that the forward position of the mantle cavity brings the gill and the osphradium to the front, where the animal can sample the water that it is approaching. The hypotheses are not mutually exclusive, and the weight of evidence for each is a matter of continuing study, including the finding that in some species torsion is rapid and muscular. The honest way to write the answer is to say that the protection of the head is the traditional explanation, that other advantages have been proposed, and that the evolutionary cause is not settled." to
                         "மற்ற பரிந்துரைகள், மேண்டில் குழியின் முன் நிலை செவுளையும் ஆஸ்ஃப்ரேடியத்தையும் விலங்கு நெருங்கும் நீரைச் சோதிக்கக்கூடிய முன்புறத்துக்குக் கொண்டுவருவது. கருதுகோள்கள் ஒன்றையொன்று விலக்குவதில்லை; ஒவ்வொன்றுக்குமான சான்றுகளின் எடை தொடர் ஆய்வின் விஷயம்; சில இனங்களில் முறுக்கல் விரைவானது, தசை சார்ந்தது என்ற கண்டுபிடிப்பும் அடங்கும். விடையை நேர்மையாக எழுதும் வழி: தலையின் பாதுகாப்பு மரபு விளக்கம்; பிற நன்மைகள் முன்மொழியப்பட்டுள்ளன; பரிணாமக் காரணம் தீர்க்கப்படவில்லை."),
                     bdef("Hypothesis", "கருதுகோள்", "A proposed explanation that can be tested but has not been established as fact." to
                         "சோதிக்கக்கூடிய ஆனால் உண்மையாக நிறுவப்படாத முன்மொழியப்பட்ட விளக்கம்."),
                     bdef("Velum", "வெலம் (Velum)", "The ciliated swimming and feeding organ of the veliger larva." to
-                        "வெலிகர் லார்வாவின் கசையிழை நீந்தும், உண்ணும் உறுப்பு."),
+                        "வெலிகர் லார்வாவின் குறுஇழை நீந்தும், உண்ணும் உறுப்பு."),
                 )),
             bsec("fouling", "The problem of fouling", "அழுக்கூட்டல் சிக்கல்",
                 blocks = listOf(
@@ -92,7 +92,7 @@ object TorsionBookChapter {
                     bdef("Larval retractor muscle", "லார்வா இழுப்புத் தசை (Larval retractor muscle)", "The asymmetrical muscle of the veliger larva whose contraction contributes to the turning of the shell and visceral mass." to
                         "ஓடு, உள்ளுறுப்புத் திரளைத் திருப்புவதற்குப் பங்களிக்கும் வெலிகர் லார்வாவின் சமச்சீரற்ற தசை."),
                     bdef("Veliger", "வெலிகர் (Veliger)", "The larval stage of many molluscs, with a shell, a foot and a ciliated velum used for swimming." to
-                        "ஓடு, பாதம், நீந்த உதவும் கசையிழை வெலம் கொண்ட பல மெல்லுடலிகளின் லார்வா நிலை."),
+                        "ஓடு, பாதம், நீந்த உதவும் குறுஇழை வெலம் கொண்ட பல மெல்லுடலிகளின் லார்வா நிலை."),
                     bdef("Anticlockwise torsion", "எதிர்கடிகாரத் திசை முறுக்கல் (Anticlockwise torsion)", "The usual direction of the turn, seen from above, which carries right-sided organs to the left." to
                         "மேலிருந்து பார்க்கும்போது வலப்பக்க உறுப்புகளை இடப்புறம் கொண்டுசெல்லும் வழக்கமான திருப்பத் திசை."),
                 )),

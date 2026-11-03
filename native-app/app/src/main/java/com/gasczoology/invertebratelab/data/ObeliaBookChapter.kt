@@ -137,7 +137,7 @@ object ObeliaBookChapter {
                         "The gonangium produces medusa buds on the blastostyle by budding." to "கோனாஞ்சியம் பிளாஸ்டோஸ்டைலில் மெடுசா மொட்டுகளை மொட்டுவிடுதலால் உருவாக்குகிறது.",
                         "The mature medusae leave the gonotheca and swim freely; they are the sexual stage." to "முதிர்ந்த மெடுசாக்கள் கோனோதீகாவை விட்டு சுதந்திரமாக நீந்துகின்றன; இது பாலின நிலை.",
                         "Male and female medusae shed sperm and eggs into the sea water, where fertilisation occurs and a zygote forms." to "ஆண், பெண் மெடுசாக்கள் விந்தணுக்களையும் முட்டைகளையும் கடல் நீரில் விடுகின்றன; கருவுறுதல் நிகழ்ந்து கருமுட்டை உருவாகிறது.",
-                        "The zygote develops through a blastula into a ciliated, solid planula larva, which swims freely." to "கருமுட்டை பிளாஸ்டுலா வழியாக கசையிழை, திண்ம பிளானுலா லார்வாவாக வளர்ந்து சுதந்திரமாக நீந்துகிறது.",
+                        "The zygote develops through a blastula into a ciliated, solid planula larva, which swims freely." to "கருமுட்டை பிளாஸ்டுலா வழியாக குறுஇழை, திண்ம பிளானுலா லார்வாவாக வளர்ந்து சுதந்திரமாக நீந்துகிறது.",
                         "The planula settles on a solid surface, forms the first polyp, and repeated budding gives a new colony." to "பிளானுலா உறுதியான பரப்பில் படிந்து முதல் பாலிப்பை உருவாக்குகிறது; மீண்டும் மீண்டும் மொட்டுவிடுவதால் புதிய காலனி தோன்றுகிறது.",
                     ),
                     bfig("obelia/life-cycle", "The life cycle of Obelia, from the colony and the medusa bud to the free medusa, the zygote, the planula and the young polyp." to
@@ -149,7 +149,7 @@ object ObeliaBookChapter {
                             "ஒபீலியாவின் பாலிப்பும் மெடுசாவும் போல, பாலிலா தலைமுறையும் பாலின தலைமுறையும் மாறிமாறி வரும் வாழ்க்கைச் சுழற்சி."),
                     bdef("Planula", "பிளானுலா",
                         "The ciliated, solid, free-swimming larva of cnidarians." to
-                            "நிடேரியாக்களின் கசையிழை, திண்ம, சுதந்திரமாக நீந்தும் லார்வா."),
+                            "நிடேரியாக்களின் குறுஇழை, திண்ம, சுதந்திரமாக நீந்தும் லார்வா."),
                     bnote("Not Physalia", "பைசாலியா அல்ல",
                         "Obelia is a fixed colony whose zooids are polyps, with the medusa as a separate sexual stage. Physalia, the Portuguese man-of-war, is a floating colony with a gas-filled pneumatophore and several kinds of zooid. Do not describe a pneumatophore in Obelia." to
                             "ஒபீலியா நிலையான காலனி; சூயிட்டுகள் பாலிப்புகள்; மெடுசா தனிப் பாலின நிலை. பைசாலியா, போர்த்துக்கீசிய போர்க்கப்பல் மீன், வாயு நிரம்பிய நியூமட்டோஃபோருடன் பல வகை சூயிட்டுகள் கொண்ட மிதக்கும் காலனி. ஒபீலியாவில் நியூமட்டோஃபோரை விவரிக்க வேண்டாம்."),
@@ -222,7 +222,7 @@ object ObeliaBookChapter {
             "The stem has a non-living chitinous perisarc and a living coenosarc that encloses a common gastrovascular cavity." to "தண்டில் உயிரற்ற கைட்டின் பெரிசார்க்கும், பொதுவான காஸ்ட்ரோவாஸ்குலர் குழியை அடைக்கும் உயிருள்ள சீனோசார்க்கும் உள்ளன.",
             "Hydranths, in hydrothecae, feed; gonangia, in gonothecae, reproduce asexually by producing medusa buds on the blastostyle." to "ஹைட்ரோதீகாவில் உள்ள ஹைட்ராந்துகள் உண்கின்றன; கோனோதீகாவில் உள்ள கோனாஞ்சியங்கள் பிளாஸ்டோஸ்டைலில் மெடுசா மொட்டுகளை உருவாக்கிப் பாலிலா இனப்பெருக்கம் செய்கின்றன.",
             "The medusa is free-swimming, with four radial canals, a ring canal, a velum and statocysts, and produces the gametes." to "மெடுசா சுதந்திரமாக நீந்துவது; நான்கு ஆரக் கால்வாய்கள், வளையக் கால்வாய், வெலம், ஸ்டேட்டோசிஸ்ட்கள் கொண்டது; கேமீட்டுகளை உருவாக்குகிறது.",
-            "Fertilisation gives a zygote that becomes a ciliated planula, which settles and buds into a new colony." to "கருவுறுதல் கருமுட்டையைத் தருகிறது; அது கசையிழை பிளானுலாவாகி, படிந்து, மொட்டுவிட்டுப் புதிய காலனியாகிறது.",
+            "Fertilisation gives a zygote that becomes a ciliated planula, which settles and buds into a new colony." to "கருவுறுதல் கருமுட்டையைத் தருகிறது; அது குறுஇழை பிளானுலாவாகி, படிந்து, மொட்டுவிட்டுப் புதிய காலனியாகிறது.",
             "Polymorphism is the division of labour among genetically alike zooids; it is not the pneumatophore-bearing colony of Physalia." to "பல்வடிவத்தன்மை மரபுப்படி ஒத்த சூயிட்டுகளிடையேயான பணிப் பிரிவினை; நியூமட்டோஃபோர் கொண்ட பைசாலியா காலனி அல்ல.",
             "The life history is metagenesis, an alternation of an asexual polyp and a sexual medusa." to "வாழ்க்கை வரலாறு மெட்டாஜெனிசிஸ்; பாலிலா பாலிப்பும் பாலின மெடுசாவும் மாறிமாறி வருவது.",
         ),

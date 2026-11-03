@@ -29,7 +29,7 @@ object EchinoAffinitiesBookChapter {
                         "The blastopore gives rise to the anus, and the mouth forms secondarily." to "பிளாஸ்டோபோர் மலவாயைத் தருகிறது; வாய் இரண்டாம் நிலையாக உருவாகிறது.",
                         "The coelom is formed as outgrowths of the primitive gut, which is called enterocoely." to "உடற்குழி ஆதிக்குடலின் வளர்ச்சிகளாக உருவாகிறது; இது என்டெரோசீலி எனப்படுகிறது.",
                         "Cleavage is typically radial and indeterminate, so that the cells of the early embryo keep a wide potential." to "பிளவு வழக்கமாக ஆரை, உறுதியற்றது; எனவே ஆரம்பக் கருவின் செல்கள் பரந்த ஆற்றலைத் தக்கவைக்கின்றன.",
-                        "The larvae are ciliated and bilateral, with looping bands of cilia." to "லார்வாக்கள் கசையிழை கொண்டவை, இருபக்கச் சமச்சீருடையவை; வளையக் கசையிழைப் பட்டைகளுடன்.",
+                        "The larvae are ciliated and bilateral, with looping bands of cilia." to "லார்வாக்கள் குறுஇழை கொண்டவை, இருபக்கச் சமச்சீருடையவை; வளையக் குறுஇழைப் பட்டைகளுடன்.",
                     ),
                     bp("These characters must be handled with care. The distinction between the two lineages was first made on the embryo, and it is now supported by molecular evidence, which means that it does not rest on the embryo alone. Not every feature holds in every species, since the details of cleavage and of the formation of the mouth differ, and some deuterostomes depart from the classical description. The examination answer should therefore say the typical characters, and should not imply that each is found without exception." to
                         "இப்பண்புகளைக் கவனமாகக் கையாள வேண்டும். இரு பரம்பரைகளுக்கிடையிலான வேறுபாடு முதலில் கருவில் செய்யப்பட்டது; இப்போது மூலக்கூறுச் சான்றாலும் ஆதரிக்கப்படுகிறது; அதாவது கருவை மட்டும் சார்ந்தது அல்ல. ஒவ்வொரு பண்பும் ஒவ்வோர் இனத்திலும் பொருந்தாது; பிளவு, வாய் உருவாக்கத்தின் விவரங்கள் மாறுபடும்; சில டியூட்டிரோஸ்டோம்கள் செம்மை விளக்கத்திலிருந்து விலகுகின்றன. எனவே தேர்வு விடை வழக்கமான பண்புகளைக் கூற வேண்டும்; ஒவ்வொன்றும் விதிவிலக்கின்றிக் காணப்படுகிறது எனக் குறிப்பிடக் கூடாது."),
@@ -90,7 +90,7 @@ object EchinoAffinitiesBookChapter {
                         listOf(
                             listOf("Germ layers" to "கருவடுக்குகள்", "Three (triploblastic)" to "மூன்று (மூவடுக்கு)", "Two with mesoglea (diploblastic)" to "மீசோகிளியாவுடன் இரண்டு (ஈரடுக்கு)"),
                             listOf("Body cavity" to "உடற்குழி", "A true coelom" to "உண்மையான உடற்குழி", "A gastrovascular cavity; no coelom" to "இரைப்பை-நாளக் குழி; உடற்குழி இல்லை"),
-                            listOf("Larva" to "லார்வா", "Bilateral ciliated larva" to "இருபக்க கசையிழை லார்வா", "Typically a planula" to "பொதுவாக பிளானுலா"),
+                            listOf("Larva" to "லார்வா", "Bilateral ciliated larva" to "இருபக்க குறுஇழை லார்வா", "Typically a planula" to "பொதுவாக பிளானுலா"),
                             listOf("Skeleton" to "கூடு", "Calcareous mesodermal endoskeleton" to "சுண்ணாம்பு மெசோடெர்மல் அகச்சட்டகம்", "No comparable endoskeleton in the group as a whole" to "குழு முழுவதற்கும் ஒப்பிடத்தக்க அகச்சட்டகம் இல்லை"),
                             listOf("Characteristic structures" to "தனிப்பண்பு அமைப்புகள்", "Water-vascular system" to "நீரோட்டக் குழாய் மண்டலம்", "Cnidocytes (stinging cells)" to "நிடோசைட்டுகள் (கொட்டும் செல்கள்)"),
                         )),
