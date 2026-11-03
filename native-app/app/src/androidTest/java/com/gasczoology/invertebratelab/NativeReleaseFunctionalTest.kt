@@ -245,9 +245,14 @@ class NativeReleaseFunctionalTest {
         if (supplied == null) bitmap.recycle()
     }
     private fun phase(id: String): Float {
-        val node = waitFor(id)
-        val result = checkNotNull(node.rangeInfo) { "Diagram has no Android range semantics: " + id }.current
-        node.recycle(); return result
+        // Accessibility's active-window tree can omit a canvas that is above
+        // or below the viewport after the transport button is pressed.
+        // Retrieve the node without requiring visible bounds, and request it
+        // on screen only when Android has genuinely detached the semantics node.
+        val node = find(id, false) ?: scrollTo(id)
+        val range = node.rangeInfo
+        node.recycle()
+        return checkNotNull(range) { "Diagram has no Android range semantics: " + id }.current
     }
     private fun diagram(id: String, captureBounds: Rect): Bitmap {
         // Playback controls may scroll the animated canvas almost completely offscreen.
