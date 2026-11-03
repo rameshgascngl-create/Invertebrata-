@@ -349,9 +349,13 @@ class NativeReleaseFunctionalTest {
             scrollTo(c.prefix + "-inline-play-pause").recycle()
             val captureBounds = Rect()
             val before = diagram(c.canvas, captureBounds)
-            // The transport was reached by touch above. Activate its native action
-            // without moving the viewport away from the diagram being measured.
-            fun playbackControl() = click(checkNotNull(find(c.prefix + "-inline-play-pause", false)), c.prefix + "-inline-play-pause")
+            // The diagram may scroll the transport offscreen at Tamil 200% in landscape.
+            // Reacquire the control by page scrolling before each tap, then let diagram()
+            // restore the same fixed screen rectangle for the paused-frame comparison.
+            fun playbackControl() {
+                val tag = c.prefix + "-inline-play-pause"
+                click(scrollTo(tag), tag)
+            }
             playbackControl()
             val until = SystemClock.elapsedRealtime() + 8_000
             while (phase(c.canvas) !in .18f.. .8f && SystemClock.elapsedRealtime() < until) SystemClock.sleep(30)
