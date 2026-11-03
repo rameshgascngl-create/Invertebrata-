@@ -142,6 +142,13 @@ internal fun ParameciumNuclearTextbook(
             Text(text(language, "View ", "காட்சி ") + (position + 1) + "/" + chapter.views.size + " — " + stage.heading.value(language),
                 style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold,
                 modifier = Modifier.testTag("r17-stage-title").semantics { heading() })
+            // Stage selection precedes lengthy explanatory text and enlarged diagrams.
+            // Keep it reachable at Tamil 200% in portrait and landscape.
+            chapter.views.forEachIndexed { index, view ->
+                OutlinedButton(onClick = { chooseView(view.id) }, shape = shape,
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-stage-" + view.id)
+                        .semantics { selected = view.id == stage.id }) { Text("${index + 1}. " + view.heading.value(language)) }
+            }
             Text(text(language, "Cells shown: ", "காட்டப்படும் செல்கள்: ") + stage.cellCount,
                 modifier = Modifier.testTag("r17-cell-count"))
             Text(text(language, "Germline chromosome sets: ", "மரபுவழிக் குரோமோசோம் தொகுதி: ") +
@@ -198,11 +205,6 @@ internal fun ParameciumNuclearTextbook(
                 modifier = Modifier.testTag("r17-organ-explanation"), style = MaterialTheme.typography.bodyLarge)
             Text(stage.explanation.value(language), modifier = Modifier.testTag("r17-stage-explanation"),
                 style = MaterialTheme.typography.bodyLarge)
-            chapter.views.forEachIndexed { index, view ->
-                OutlinedButton(onClick = { chooseView(view.id) }, shape = shape,
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r17-stage-" + view.id)
-                        .semantics { selected = view.id == stage.id }) { Text("${index + 1}. " + view.heading.value(language)) }
-            }
             Text(text(language,
                 "Illustrative presentation speed; views separate biological events and may overlap in real time. Manual stepping is available. Restored demonstrations stay paused.",
                 "கற்பித்தலுக்கான காட்சி வேகம்; நிகழ்வுகள் தனியாக விளக்கப்படுகின்றன, இயற்கையில் நேரங்கள் ஒன்றோடொன்று அமையலாம். கையால் படிநிலை மாற்றலாம். மீட்டமைந்த காட்சி இடைநிறுத்தத்தில் இருக்கும்."))
