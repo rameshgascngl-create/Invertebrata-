@@ -23,3 +23,8 @@ The other two landscape methods passed.
 The former settle loop accepted one unchanged 90 ms sample and could run before scrollTo had mounted/reached its target. The follow-up reaches the node first, uses the existing nuclear full-plate button (which knows unclipped layout bounds), and requires stable complete bounds for at least 540 ms across consecutive bring-into-view cycles. It fails explicitly if the viewport cannot settle.
 Screenshot equality, changed-pixel count, capture dimension equality, intermediate phase and pause assertions are preserved. No resizing or common-intersection crop is used to make unequal captures pass.
 A second installed-build run is required; this document does not claim that candidate has passed.
+
+
+## Second installed-build run
+
+Tested commit df05b1d53b380025f44d73f803a7b404433a174f, [run 41567444902](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/41567444902). All configurations again passed 3/3 except landscape release (2/3). Raw XML: the simulator method failed with `IllegalStateException: Required value was null` in `allFiveSimulatorsMoveRealDiagramPixelsAndPause$playbackControl`. The test directly required a transport node after moving the full nuclear plate into view; the offscreen control was no longer exported. This is a test navigation assumption, not an animation exception in app code. The next candidate reaches the real transport for every Play/Pause action, then independently restores the complete diagram before capture. It also saves both comparison images before asserting, preserving evidence if comparison fails. No pixel/dimension/phase assertion is removed. A third installed-build run is required.

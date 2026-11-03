@@ -444,17 +444,18 @@ class NativeReleaseFunctionalTest {
             tap("r1-process-" + c.process); if (c.prefix == "r19" || c.prefix == "r17") tap(c.prefix + "-jump-stages"); tap(c.stage); c.start?.let(::tap)
             scrollTo(c.prefix + "-inline-play-pause").recycle()
             val before = diagram(c.canvas)
-            // The transport was reached by touch above. Activate its native action
-            // without moving the viewport away from the diagram being measured.
-            fun playbackControl() = click(checkNotNull(find(c.prefix + "-inline-play-pause", false)), c.prefix + "-inline-play-pause")
+            // Full-plate alignment can legitimately move the transport offscreen
+            // in a short landscape viewport. Reach the actual control for each
+            // action; diagram() independently restores the complete capture area.
+            fun playbackControl() = tap(c.prefix + "-inline-play-pause")
             playbackControl()
             val until = SystemClock.elapsedRealtime() + 8_000
             while (phase(c.canvas) !in .18f.. .8f && SystemClock.elapsedRealtime() < until) SystemClock.sleep(30)
             playbackControl(); SystemClock.sleep(150)
             val stopped = phase(c.canvas); assertTrue(c.process + ": no intermediate pause", stopped > 0f && stopped < 1f)
             val after = diagram(c.canvas)
-            assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after, c.process + " / " + c.canvas) > 12)
             saveScreen(c.process + "-release-start", before); saveScreen(c.process + "-release-paused", after)
+            assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after, c.process + " / " + c.canvas) > 12)
             SystemClock.sleep(300)
             assertEquals(c.process + ": phase advanced after Pause", stopped, phase(c.canvas), .0011f)
             val paused = diagram(c.canvas)
