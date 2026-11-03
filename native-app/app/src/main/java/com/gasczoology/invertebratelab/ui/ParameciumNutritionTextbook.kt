@@ -151,6 +151,20 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-stage-"+item.id)
                         .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
             }
+            // Keep pose inspection reachable before the long figure and glossary at 200% text scale.
+            Text(nutritionText(language,"View pose: ","காட்சித் தோற்றம்: ")+when {
+                pose==2 -> nutritionText(language,"Completed","முடிவு")
+                pose==0 -> nutritionText(language,"Start","தொடக்கம்")
+                else -> nutritionText(language,"Intermediate","இடைநிலை")
+            },modifier=Modifier.testTag("r19-view-pose"))
+            OutlinedButton(onClick={choosePose(false)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-start-view")) {
+                Text(nutritionText(language,"Inspect this stage's starting pose","இந்நிலையின் தொடக்கத் தோற்றத்தைக் காண்க"))
+            }
+            OutlinedButton(onClick={choosePose(true)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-complete-view")) {
+                Text(nutritionText(language,"Inspect this stage's completed pose","இந்நிலையின் முடிவுத் தோற்றத்தைக் காண்க"))
+            }
             if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectIntermediate)
             Button(onClick={scope.launch { requester.bringIntoView() }},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-plate")) {
@@ -197,19 +211,6 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
             Text(nutritionText(language,
                 "Manual stage selection shows the completed pose. Inspect either endpoint without motion, or play the stage from its start. Playback pauses at this stage’s endpoint; Next view changes the stage. The pose is a teaching frame, not a measured volume.",
                 "கையால் நிலையைத் தேர்ந்தெடுத்தால் முடிவுத் தோற்றம் காட்டப்படும். இயக்கமின்றித் தொடக்க அல்லது முடிவுத் தோற்றத்தைக் காணலாம்; அல்லது தொடக்கத்திலிருந்து நிலையை இயக்கலாம். இந்நிலையின் முடிவில் இயக்கம் இடைநிறுத்தப்படும்; அடுத்த காட்சி நிலையை மாற்றும். இது கற்பித்தல் தோற்றம்; அளவிடப்பட்ட பருமன் அல்ல."))
-            Text(nutritionText(language,"View pose: ","காட்சித் தோற்றம்: ")+when {
-                pose==2 -> nutritionText(language,"Completed","முடிவு")
-                pose==0 -> nutritionText(language,"Start","தொடக்கம்")
-                else -> nutritionText(language,"Intermediate","இடைநிலை")
-            },modifier=Modifier.testTag("r19-view-pose"))
-            OutlinedButton(onClick={choosePose(false)},shape=shape,
-                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-start-view")) {
-                Text(nutritionText(language,"Inspect this stage's starting pose","இந்நிலையின் தொடக்கத் தோற்றத்தைக் காண்க"))
-            }
-            OutlinedButton(onClick={choosePose(true)},shape=shape,
-                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-complete-view")) {
-                Text(nutritionText(language,"Inspect this stage's completed pose","இந்நிலையின் முடிவுத் தோற்றத்தைக் காண்க"))
-            }
             Text(nutritionText(language,"Illustrative speed and proportions; real events overlap. Restored playback remains paused.",
                 "கற்பித்தலுக்கான வேகமும் விகிதங்களும்; இயற்கை நிகழ்வுகள் ஒன்றோடொன்று அமையும். மீட்டமைந்த இயக்கம் இடைநிறுத்தத்தில் இருக்கும்."))
             Text(nutritionText(language,if(playing)"Playing" else "Paused",if(playing)"இயங்குகிறது" else "இடைநிறுத்தம்"),
