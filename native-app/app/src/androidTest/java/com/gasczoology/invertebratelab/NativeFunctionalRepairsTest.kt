@@ -209,6 +209,10 @@ class NativeFunctionalRepairsTest {
             val phase = canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("${c.process}: playback did not pause at an intermediate phase: $phase", phase > 0f && phase < 1f)
             val after = settledPausedImage(canvas, phase)
+            assertTrue("${c.process}: diagram capture dimensions changed during playback: " +
+                "${before.width}x${before.height} -> ${after.width}x${after.height}; " +
+                "check scroll clipping and layout before comparing pixels",
+                before.width == after.width && before.height == after.height)
             val changed = changedPixels(before, after)
             assertTrue("${c.process}: Play did not change the diagram ($changed sampled pixels)", changed > 12)
             screenshot("${c.process}-start", before); screenshot("${c.process}-paused", after)
