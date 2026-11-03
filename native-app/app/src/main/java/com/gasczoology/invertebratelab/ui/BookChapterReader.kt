@@ -301,7 +301,7 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
     val bitmap = rememberCanonicalPlateBitmap(
         BookFigureLibrary.stemFor(figure.slot) ?: ("type_studies/" + figure.slot))
     var expanded by rememberSaveable("book-figure-" + figure.slot) { mutableStateOf(false) }
-    val typeStudyCredit = rememberPlateCredit(figure.slot)
+    val typeStudyCredit = rememberPlateCredit(BookFigureLibrary.creditSlotFor(figure.slot))
     val tag = figure.slot.replace('/', '-')
     val parts = parseFigureCaption(figure.caption.value(language))
     val caption = label + "  " + parts.title

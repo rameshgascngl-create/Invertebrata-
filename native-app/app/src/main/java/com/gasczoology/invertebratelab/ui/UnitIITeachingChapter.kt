@@ -160,7 +160,7 @@ internal fun UnitIITeachingChapter(
                         Text(stage.name.value(language))
                     }
                 }
-                Text(tr(language,"Voice state: ","குரல் நிலை: ")+voiceStatus.name)
+                Text(tr(language,"Voice state: ","குரல் நிலை: ")+voiceStatus.displayText(language))
                 Text(tr(language,
                     "Spoken text always remains visible above; offline audio needs an installed voice.",
                     "உரை மேலே எப்போதும் இருக்கும்; ஆஃப்லைன் ஒலிக்காக நிறுவப்பட்ட குரல் தேவை."))

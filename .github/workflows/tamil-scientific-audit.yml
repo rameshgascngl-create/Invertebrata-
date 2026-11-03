@@ -17,10 +17,9 @@ jobs:
         with: {gradle-version: '9.6.0'}
       - name: Semantic regression scan
         run: |
-          python3 -m unittest discover -s tools -p test_tamil_ciliation_meaning.py -v
-          python3 -m unittest discover -s tools -p test_tamil_textbook_alignment.py -v
+          python3 -m unittest discover -s tools -p 'test_tamil_*.py' -v
       - name: Compile and run JVM contracts
-        run: gradle -p native-app :app:testDebugUnitTest --stacktrace
+        run: gradle -p native-app :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin --stacktrace
       - uses: actions/upload-artifact@v4
         if: always()
         with:

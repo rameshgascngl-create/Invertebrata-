@@ -14,7 +14,23 @@ object OfflineVoicePolicy {
     }
 }
 
-enum class NarrationPhase { INITIALIZING, READY, QUEUED, PLAYING, COMPLETE, STOPPED, UNAVAILABLE, ERROR }
+enum class NarrationPhase {
+    INITIALIZING, READY, QUEUED, PLAYING, COMPLETE, STOPPED, UNAVAILABLE, ERROR;
+
+    fun displayText(language: AppLanguage): String {
+        if (language == AppLanguage.ENGLISH) return name
+        return when (this) {
+            INITIALIZING -> "ஒலி வசதி தயாராகிறது"
+            READY -> "ஒலிக்கத் தயார்"
+            QUEUED -> "ஒலிக்கக் காத்திருக்கிறது"
+            PLAYING -> "ஒலிக்கிறது"
+            COMPLETE -> "ஒலித்து முடிந்தது"
+            STOPPED -> "நிறுத்தப்பட்டுள்ளது"
+            UNAVAILABLE -> "ஒலி வசதி கிடைக்கவில்லை"
+            ERROR -> "ஒலிப்பதில் பிழை"
+        }
+    }
+}
 
 /** Reject callbacks from flushed/stopped utterances, including a language change. */
 class NarrationSession {

@@ -102,8 +102,8 @@ internal object RestoredPlateTitles {
         "pila/ctenidium" to BilingualText("Ctenidium and osphradium", "சீனிடியமும் ஆஸ்ப்ரேடியமும்"),
         "pila/torsion" to BilingualText("Gastropod torsion", "வயிற்றுக்காலிகளில் முறுக்கம்"),
         "asterias/external" to BilingualText("Oral and aboral external morphology", "வாய்ப்புற மற்றும் எதிர்வாய்ப்புற புறத்தோற்றம்"),
-        "asterias/water-vascular-system" to BilingualText("Water-vascular system", "நீர்க்குழாய் மண்டலம்"),
-        "asterias/internal" to BilingualText("Asterias rubens dissection — unlabelled source", "Asterias rubens உட்புற உடற்கூறு — பெயர்க்குறிப்பற்ற அசல் வரைபடம்"),
+        "asterias/water-vascular-system" to BilingualText("Water-vascular system", "நீர்க்குழல் மண்டலம்"),
+        "asterias/internal" to BilingualText("Internal anatomy", "உள் உடற்கூறு"),
         "asterias/larval-development" to BilingualText("Bipinnaria and brachiolaria larvae", "பைபின்னாரியா மற்றும் பிராக்கியோலாரியா இளநிலைகள்")
     )
     init {
@@ -231,25 +231,6 @@ internal fun RequiredTypeStudyPlates(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(readable, style = MaterialTheme.typography.titleMedium)
-                    if (study.organismId == "asterias" && raster != null) {
-                        val source = when (plateId) {
-                            "external" -> if (tamil)
-                                "Asterias forbesi · H. L. Clark (1904) · பொதுக் களம் · படம் 1 எதிர்வாய்ப்புறம், படம் 2 வாய்ப்புறம்"
-                                else "Asterias forbesi · H. L. Clark (1904) · public domain · fig. 1 aboral, fig. 2 oral"
-                            "water-vascular-system" -> if (tamil)
-                                "பொதுவான நட்சத்திரமீன் நீர்க்குழாய் வரைபடம் · A. F. Arnold (1903) · பொதுக் களம்; ஐந்து கரங்களின் முழு வரைபடம் அல்ல"
-                                else "Generalized starfish water-vascular schematic · A. F. Arnold (1903) · public domain; not a complete five-arm dissection"
-                            "internal" -> if (tamil)
-                                "Asterias rubens · Hans Hillewaert (2007) · CC BY-SA 4.0 · உறுப்புப் பெயர்கள் இல்லாத வரைபடம்"
-                                else "Asterias rubens · Hans Hillewaert (2007) · CC BY-SA 4.0 · unlabelled dissection"
-                            "larval-development" -> if (tamil)
-                                "Asterias sp. · எர்ன்ஸ்ட் ஹேக்கல் (1904) · பொதுக் களம் · பைபின்னாரியா மற்றும் பிராக்கியோலாரியா"
-                                else "Asterias sp. · Ernst Haeckel (1904) · public domain · bipinnaria and brachiolaria"
-                            else -> ""
-                        }
-                        Text(source, style = MaterialTheme.typography.bodySmall,
-                            modifier = Modifier.testTag("asterias-plate-provenance-" + plateId))
-                    }
                     if (raster == null) {
                         Text(
                             if (tamil) "இந்த உடற்கூறுப் படம் இன்னும் கிடைக்கவில்லை. சரிபார்க்கப்பட்ட படம் சேர்க்கப்பட்டவுடன் இங்கே காணலாம்."

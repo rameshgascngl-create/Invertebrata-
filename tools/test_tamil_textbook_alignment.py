@@ -9,7 +9,7 @@ class TamilTextbookAlignmentTest(unittest.TestCase):
     def test_distinct_physiological_meanings_remain_explicit(self):
         directory=ROOT/'native-app/app/src/main/java/com/gasczoology/invertebratelab/data'
         sycon=(directory/'SyconBookChapter.kt').read_text()
-        self.assertNotIn('பிறவி கருவுறுதல்',sycon)
+        self.assertNotIn('பிறவி கருவுறு',sycon)
         self.assertIn('அயல் கருவுறுதல்',sycon)
         nutrition=(directory/'NutritionBookChapter.kt').read_text()
         self.assertIn('செரிக்காத பொருளை செல்லிலிருந்து வெளியேற்றுதல்',nutrition)

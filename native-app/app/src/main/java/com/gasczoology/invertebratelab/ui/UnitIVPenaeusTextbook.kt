@@ -148,7 +148,7 @@ internal fun UnitIVPenaeusAppendageExplorer(
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
                     .testTag("u4-penaeus-appendage-speak")
             ) { Text(if(ta)"அமைப்பின் விளக்க ஒலி" else "Speak structure explanation offline") }
-            Text((if(ta)"ஒலி நிலை: " else "Offline voice state: ")+voice.name,
+            Text((if(ta)"ஒலி நிலை: " else "Offline voice state: ")+voice.displayText(language),
                 style=MaterialTheme.typography.labelSmall,
                 modifier=Modifier.testTag("u4-penaeus-appendage-voice-state"))
         }

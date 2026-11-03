@@ -1,0 +1,31 @@
+{
+  "status": "PROPOSED_NOT_APPLIED_TO_FROZEN_A5",
+  "baseline": "5f37e01dc071d5c5c5a13f940dc058e6e33d71fb",
+  "file": "native-app/app/src/main/assets/a5/U1_A5_VALIDATED.json",
+  "chapter": "u1-paramecium",
+  "question": 2,
+  "reason": "Ploidy describes chromosome sets, not a count of nuclei or atoms. Preserve n/2n explicitly. Transliteration variants for meiosis are not by themselves classified as scientific errors.",
+  "references": [
+    "https://www.genome.gov/genetics-glossary/Diploid",
+    "https://www.genome.gov/genetics-glossary/haploid",
+    "https://athiyamanteam.com/wp-content/uploads/2019/11/New-TN-Samacheer-Book-12th-Std-Botany-TM-Athiyaman-Team-Part-1.pdf"
+  ],
+  "candidates": [
+    {
+      "json_pointer": "/u1-paramecium/a5_ta/1/1",
+      "point": 2,
+      "proposed": "ஒவ்வொரு இணைவுயிரியிலும் உள்ள இருமடிய (2n) சிற்றுட்கரு குன்றல் பகுப்புக்கு (meiosis) உட்படுகிறது. உருவாகும் நான்கு ஒருமடிய (n) உட்கருக்களில் மூன்று பொதுவாகச் சிதைகின்றன. மீதமுள்ள உட்கரு சமப்பகுப்படைந்து நிலையான முன்கருவையும் இடம்பெயரும் முன்கருவையும் உருவாக்குகிறது."
+    },
+    {
+      "json_pointer": "/u1-paramecium/a5_ta/1/2",
+      "point": 3,
+      "proposed": "இடம்பெயரும் முன்கரு இணைவுயிரிகளுக்கிடையே பரிமாறப்படுகிறது; ஒவ்வொரு உயிரியும் மற்றொன்றிலிருந்து ஒருமடிய (n) முன்கருவைப் பெறுகிறது."
+    },
+    {
+      "json_pointer": "/u1-paramecium/a5_ta/1/3",
+      "point": 4,
+      "proposed": "பெறப்பட்ட இடம்பெயரும் முன்கருவும் நிலையான முன்கருவும் இணைந்து இருமடிய (2n) இணைவுக்கருவை (synkaryon) உருவாக்குகின்றன."
+    }
+  ],
+  "review_note": "Author validation of the frozen answer bank is still required; these candidates do not change the packaged question bank or any academic approval."
+}

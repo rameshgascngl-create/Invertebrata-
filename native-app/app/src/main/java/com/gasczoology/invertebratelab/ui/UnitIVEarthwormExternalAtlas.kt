@@ -258,7 +258,7 @@ internal fun UnitIVEarthwormExternalAtlas(
                     .testTag("u43-earthworm-speak")){
                 Text(if(tamil)"இந்த அமைப்பின் விளக்கத்தைக் கேள்" else "Listen to structure explanation")
             }
-            Text((if(tamil)"ஒலி நிலை: " else "Voice: ")+voice.name,
+            Text((if(tamil)"ஒலி நிலை: " else "Voice: ")+voice.displayText(language),
                 style=MaterialTheme.typography.labelSmall)
         }
     }

@@ -142,8 +142,8 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                     ) {
                         Text(if (tamil) "இந்தப் பாடப்பகுதியைக் கேள்" else "Listen to this section")
                     }
-                    Text(if (tamil) "குரல் நிலை: " + voicePhase.name
-                        else "Voice state: " + voicePhase.name,
+                    Text(if (tamil) "குரல் நிலை: " + voicePhase.displayText(language)
+                        else "Voice state: " + voicePhase.displayText(language),
                         style = MaterialTheme.typography.bodySmall)
                     val selectedScript = section.paragraphs.joinToString(" ") { it.english }
                     if (requestedScript?.english == selectedScript) {

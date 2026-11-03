@@ -1,0 +1,504 @@
+{
+  "baseline": "5f37e01dc071d5c5c5a13f940dc058e6e33d71fb",
+  "date": "2026-11-03",
+  "scope": "All 43 core chapters: systematic source structure/terminology checks; all five frozen A5 files; literal figure routing; 125 other main Kotlin files; selected high-risk scientific passages. This is not a claim of independent line-by-line academic or device acceptance.",
+  "coverage": {
+    "chapters": [
+      {
+        "chapter": "u1-intro",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/IntroInvertebrataBookChapter.kt",
+        "bilingual_pairs_scanned": 163,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u1-protozoa",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ProtozoaBookChapter.kt",
+        "bilingual_pairs_scanned": 162,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u1-paramecium",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ParameciumBookChapter.kt",
+        "bilingual_pairs_scanned": 101,
+        "literal_figure_references": 4
+      },
+      {
+        "chapter": "u1-proto-parasites",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ProtoParasitesBookChapter.kt",
+        "bilingual_pairs_scanned": 140,
+        "literal_figure_references": 4
+      },
+      {
+        "chapter": "u1-nutrition",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NutritionBookChapter.kt",
+        "bilingual_pairs_scanned": 126,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u1-host-parasite",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/HostParasiteBookChapter.kt",
+        "bilingual_pairs_scanned": 128,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u1-locomotion",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/LocomotionBookChapter.kt",
+        "bilingual_pairs_scanned": 119,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-mollusca",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/MolluscaBookChapter.kt",
+        "bilingual_pairs_scanned": 142,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-pila",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PilaBookChapter.kt",
+        "bilingual_pairs_scanned": 116,
+        "literal_figure_references": 6
+      },
+      {
+        "chapter": "u5-torsion",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/TorsionBookChapter.kt",
+        "bilingual_pairs_scanned": 96,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-pearl",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PearlBookChapter.kt",
+        "bilingual_pairs_scanned": 97,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-echinodermata",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinodermataBookChapter.kt",
+        "bilingual_pairs_scanned": 139,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-asterias",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AsteriasBookChapter.kt",
+        "bilingual_pairs_scanned": 108,
+        "literal_figure_references": 4
+      },
+      {
+        "chapter": "u5-echino-larvae",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+        "bilingual_pairs_scanned": 133,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-echino-affinities",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoAffinitiesBookChapter.kt",
+        "bilingual_pairs_scanned": 157,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-fossils",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FossilsBookChapter.kt",
+        "bilingual_pairs_scanned": 141,
+        "literal_figure_references": 0
+      },
+      {
+        "chapter": "u5-foot",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FootBookChapter.kt",
+        "bilingual_pairs_scanned": 110,
+        "literal_figure_references": 0
+      },
+      {
+        "chapter": "u5-wvs",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/WvsBookChapter.kt",
+        "bilingual_pairs_scanned": 127,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u5-cephalopods",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CephalopodsBookChapter.kt",
+        "bilingual_pairs_scanned": 132,
+        "literal_figure_references": 2
+      },
+      {
+        "chapter": "u3-platy",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+        "bilingual_pairs_scanned": 137,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u3-fasciola",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+        "bilingual_pairs_scanned": 115,
+        "literal_figure_references": 3
+      },
+      {
+        "chapter": "u3-platy-adapt",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyAdaptationsBookChapter.kt",
+        "bilingual_pairs_scanned": 110,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u3-aschel",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AschelminthesBookChapter.kt",
+        "bilingual_pairs_scanned": 157,
+        "literal_figure_references": 2
+      },
+      {
+        "chapter": "u3-ascaris",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AscarisBookChapter.kt",
+        "bilingual_pairs_scanned": 123,
+        "literal_figure_references": 4
+      },
+      {
+        "chapter": "u3-nematode-parasites",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NematodeParasitesBookChapter.kt",
+        "bilingual_pairs_scanned": 121,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u3-nematode-adapt",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NematodeAdaptationsBookChapter.kt",
+        "bilingual_pairs_scanned": 93,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u4-annelida",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AnnelidaBookChapter.kt",
+        "bilingual_pairs_scanned": 154,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u4-nereis",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NereisBookChapter.kt",
+        "bilingual_pairs_scanned": 92,
+        "literal_figure_references": 8
+      },
+      {
+        "chapter": "u4-metamerism",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/MetamerismBookChapter.kt",
+        "bilingual_pairs_scanned": 112,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u4-modes-life",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AnnelidModesBookChapter.kt",
+        "bilingual_pairs_scanned": 108,
+        "literal_figure_references": 0
+      },
+      {
+        "chapter": "u4-arthropoda",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ArthropodaBookChapter.kt",
+        "bilingual_pairs_scanned": 151,
+        "literal_figure_references": 2
+      },
+      {
+        "chapter": "u4-penaeus",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PenaeusBookChapter.kt",
+        "bilingual_pairs_scanned": 127,
+        "literal_figure_references": 4
+      },
+      {
+        "chapter": "u4-peripatus",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PeripatusBookChapter.kt",
+        "bilingual_pairs_scanned": 95,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u4-crustacean-larvae",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CrustaceanLarvaeBookChapter.kt",
+        "bilingual_pairs_scanned": 120,
+        "literal_figure_references": 0
+      },
+      {
+        "chapter": "u2-porifera",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PoriferaBookChapter.kt",
+        "bilingual_pairs_scanned": 151,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u2-sycon",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/SyconBookChapter.kt",
+        "bilingual_pairs_scanned": 210,
+        "literal_figure_references": 0
+      },
+      {
+        "chapter": "u2-canals",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PoriferaCanalsBookChapter.kt",
+        "bilingual_pairs_scanned": 128,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u2-reproduction",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PoriferaReproductionBookChapter.kt",
+        "bilingual_pairs_scanned": 136,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u2-cnidaria",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CnidariaBookChapter.kt",
+        "bilingual_pairs_scanned": 178,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u2-obelia",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ObeliaBookChapter.kt",
+        "bilingual_pairs_scanned": 153,
+        "literal_figure_references": 4
+      },
+      {
+        "chapter": "u2-corals",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CoralsBookChapter.kt",
+        "bilingual_pairs_scanned": 147,
+        "literal_figure_references": 1
+      },
+      {
+        "chapter": "u2-coral-economics",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CoralEconomicsBookChapter.kt",
+        "bilingual_pairs_scanned": 104,
+        "literal_figure_references": 0
+      },
+      {
+        "chapter": "u2-polymorphism",
+        "source": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PolymorphismBookChapter.kt",
+        "bilingual_pairs_scanned": 127,
+        "literal_figure_references": 1
+      }
+    ],
+    "bilingual_pairs_scanned": 5586,
+    "literal_figures": 72,
+    "missing_literal_figures": []
+  },
+  "question_bank": {
+    "units": [
+      {
+        "unit": 1,
+        "chapters": 7,
+        "questions": 14,
+        "points": 70
+      },
+      {
+        "unit": 2,
+        "chapters": 9,
+        "questions": 18,
+        "points": 90
+      },
+      {
+        "unit": 3,
+        "chapters": 7,
+        "questions": 14,
+        "points": 70
+      },
+      {
+        "unit": 4,
+        "chapters": 8,
+        "questions": 16,
+        "points": 80
+      },
+      {
+        "unit": 5,
+        "chapters": 12,
+        "questions": 24,
+        "points": 120
+      }
+    ],
+    "total_chapters": 43,
+    "questions_per_language": 86,
+    "answer_points_per_language": 430,
+    "structural_errors": [],
+    "duplicate_english_questions": [],
+    "chapter_id_mismatches": [],
+    "additional_cilia_flagella_candidates": [],
+    "ploidy_candidates": 3,
+    "frozen_files_modified": false
+  },
+  "credits": {
+    "displayedCreditRecords": 46,
+    "provenanceRecords": 39,
+    "notInProvenance": [
+      "pila/shell-specimen-reference",
+      "pila/swainson-1821-pila-ampullacea",
+      "unit1/references/leishmania",
+      "unit1/references/trypanosoma",
+      "unit3/ascaris_type",
+      "unit3/fasciola_type",
+      "fasciola/life-cycle"
+    ],
+    "wordingDifferences": 24,
+    "qualifiedEntries": 32
+  },
+  "corrected": [
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/SyconBookChapter.kt",
+      "before": "பிறவி கருவுறுதலே",
+      "after": "அயல் கருவுறுதலே",
+      "occurrences": 1,
+      "reason": "Inflected cross-fertilisation phrase missed by the first exact-word correction; TN textbook p.63"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "before": "அதன் சூல்நாளம் மெலிஸ் சுரப்பி எனப்படும் ஒருசெல் ஓட்டுச் சுரப்பிகளால் சூழப்பட்ட சிறு அறையான ஊடைப்புக்குச் செல்கிறது.",
+      "after": "அதன் சூல்நாளம், மெலிஸ் சுரப்பி எனப்படும் ஒருசெல் ஓட்டுச் சுரப்பிகளால் சூழப்பட்ட சிறு அறையில் (ootype) திறக்கிறது.",
+      "occurrences": 1,
+      "reason": "Explain specialised anatomy using the existing English account; not a claimed standard textbook Tamil name."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "before": "கருப்பை ஊடைப்பிலிருந்து",
+      "after": "கருப்பை, முட்டை உருவாக்க அறையிலிருந்து (ootype)",
+      "occurrences": 1,
+      "reason": "Preserve the English anatomical anchor."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "before": "முட்டை ஊடைப்பை அடையும் முன்",
+      "after": "முட்டை, முட்டை உருவாக்க அறையை (ootype) அடையும் முன்",
+      "occurrences": 1,
+      "reason": "Replace ambiguous transliteration with anatomical explanation."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "before": "ஊடைப்பு (Ootype)",
+      "after": "முட்டை உருவாக்க அறை (Ootype)",
+      "occurrences": 1,
+      "reason": "Descriptive editorial Tamil, with English term retained; human terminology approval not asserted."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "before": "மெலிஸ் சுரப்பியுடன் ஊடைப்பு",
+      "after": "மெலிஸ் சுரப்பியால் சூழப்பட்ட முட்டை உருவாக்க அறை (ootype)",
+      "occurrences": 1,
+      "reason": "Match the detailed anatomical explanation."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/CnidariaBookChapter.kt",
+      "before": "உடற்சுவரே தொகுதியின் திட்டத்துக்கான திறவுகோல்.",
+      "after": "இந்தத் தொகுதியின் உடலமைப்பைப் புரிந்துகொள்ள உடற்சுவரின் அமைப்பை அறிதல் அடிப்படையாகும்.",
+      "occurrences": 1,
+      "reason": "Replace literal metaphor with clear textbook prose; not a taxonomic-key correction."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FootBookChapter.kt",
+      "before": "திரவம் நீர்நிலைக் கூடாகச் செயல்படுகிறது",
+      "after": "திரவம் நீரழுத்த ஆதார அமைப்பாக (hydrostatic skeleton) செயல்படுகிறது",
+      "occurrences": 1,
+      "reason": "Explain hydraulic support without introducing an unverified canonical Tamil label."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FootBookChapter.kt",
+      "before": "இக்கொள்கை எல்லா சிறப்புப் பாதங்களிலும் தோன்றுகிறது; தோண்டுதல், ஊர்தல், தலைக்காலியின் கரக் கட்டுப்பாடு ஆகியவற்றைப் புரிந்துகொள்ளும் திறவுகோல்.",
+      "after": "இக்கொள்கையின் அடிப்படையில் தோண்டுதல், ஊர்தல், தலைக்காலிகளின் கர இயக்கக் கட்டுப்பாடு ஆகியவற்றைப் புரிந்துகொள்ளலாம்.",
+      "occurrences": 1,
+      "reason": "Replace literal metaphor with instructional Tamil."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NematodeAdaptationsBookChapter.kt",
+      "before": "பூச்சிக் கடியாலோ சதை உண்பதாலோ நிகழும் பரவல் வழியே மீண்டும் கட்டுப்பாட்டின் திறவுகோல்.",
+      "after": "பூச்சிக் கடி அல்லது இறைச்சி உண்பதன் மூலம் பரவும் வழியை அறிந்து அதைத் தடுப்பது தொற்றைக் கட்டுப்படுத்த உதவுகிறது.",
+      "occurrences": 1,
+      "reason": "Clarify transmission/control relationship; not a claim that all taxonomic keys were wrong."
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/FasciolaBookChapter.kt",
+      "before": "மெலிஸ் சுரப்பியால் சூழப்பட்ட ஊடைப்பில்.",
+      "after": "மெலிஸ் சுரப்பியால் சூழப்பட்ட முட்டை உருவாக்க அறையில் (ootype).",
+      "occurrences": 1,
+      "reason": "Keep the quick-check answer consistent with the clarified ootype definition."
+    }
+  ],
+  "other_corrections": {
+    "unconfirmed_library_origins_suppressed": [
+      "nereis-external",
+      "nereis-head",
+      "nereis-parapodium",
+      "nereis-digestive",
+      "nereis-circulatory",
+      "nereis-nervous",
+      "nereis-excretory",
+      "nereis-trochophore",
+      "entamoeba-mature-cyst",
+      "ascaris-fertilized-egg",
+      "entamoeba-cycle",
+      "pila-excretory-system",
+      "pila-male-reproductive-system",
+      "pila-female-reproductive-system",
+      "plasmodium-cycle"
+    ],
+    "registry_fallback": "Resolve library slot to the actual asset credit slot, preserving any evidenced existing source credit.",
+    "tamil_voice_status_screens": 5,
+    "tamil_voice_states": 8,
+    "gallery_water_vascular_title": "நீர்க்குழல் மண்டலம்",
+    "stale_gallery_attribution": "Remove duplicate historical Asterias sources for replaced rasters; source current credits from registry once. Remove old Commons authors/licences from Entamoeba/Plasmodium replacements because SOURCE_PROVENANCE explicitly says they do not cover current files."
+  },
+  "not_retested": [
+    "Current-commit emulator playback/pause pixel matrix",
+    "Physical-device rendering, zoom, large Tamil fonts, back/rotation",
+    "Audible Tamil TTS and voice installation",
+    "Individual biological correctness of each raster and text baked into images",
+    "Every scientific assertion in every paragraph",
+    "Production signing, independent biology/Tamil approvals and legal rights verification"
+  ],
+  "retained": [
+    "All original image bytes and existing acceptance gates",
+    "Both languages of the frozen A5 bank",
+    "Confirmed AI origins for the two user-identified parasite figures",
+    "Explicit historical classification context for Protozoa, Aschelminthes and Turbellaria",
+    "English display/enum identities for narration phases"
+  ],
+  "pending": [
+    "Three frozen-A5 ploidy translations are proposed in a separate review file.",
+    "32 displayed credit records still contain qualified or incomplete source wording; seven lack structured provenance rows, which is not proof of absent embedded credits.",
+    "Embedded raster-label Tamil and flagellar-pocket terminology are not declared approved.",
+    "Runtime and device acceptance are separate from this source audit."
+  ],
+  "evidence_sidecars": [
+    "native-app/app/src/main/assets/type_studies/asterias/ATTRIBUTION.md",
+    "native-app/app/src/main/assets/type_studies/pila/SHELL_MUSEUM_ATTRIBUTION.md",
+    "native-app/app/src/main/assets/type_studies/pila/SWAINSON_1821_COMPARATIVE_ATTRIBUTION.md",
+    "native-app/app/src/main/assets/unit1/references/SOURCE_PROVENANCE.txt"
+  ],
+  "runtime_baseline": {
+    "commit": "acb13b6a781a6f29a8d517b97a92b2d89cf53b38",
+    "run": 41472533403,
+    "jobsPassed": 15,
+    "jobsFailed": 2,
+    "currentAuditCommitRerun": false,
+    "releaseEnglish100": "passed",
+    "releaseTamil100": "passed",
+    "debugConfigurations": "all four passed",
+    "establishedRegressionGroups": "all eight passed",
+    "releaseTamil200": {
+      "passed": 2,
+      "failed": 1,
+      "method": "NativeReleaseFunctionalTest.allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+      "message": "Android accessibility node not found: r17-inline-play-pause"
+    },
+    "releaseTamil200Landscape": {
+      "passed": 1,
+      "failed": 2,
+      "failures": [
+        {
+          "method": "NativeReleaseFunctionalTest.allFiveSimulatorsMoveRealDiagramPixelsAndPause",
+          "message": "Android accessibility node not found: ciliary-inline-play-pause"
+        },
+        {
+          "method": "NativeReleaseFunctionalTest.parasiteAndPrawnInteractivePagesAreReachable",
+          "message": "Android accessibility node not found: u4-penaeus-appendage-name"
+        }
+      ]
+    },
+    "interpretation": "These are repeated accessibility control-lookup failures at 200% Tamil. They do not alone prove an animator/R8 defect or an emulator flake; release acceptance remains unresolved."
+  },
+  "platform_source_checks": {
+    "compileSdk": 36,
+    "targetSdk": 36,
+    "minSdk": 24,
+    "versionName": "1.9.0",
+    "versionCode": 19000,
+    "backupAllowed": false,
+    "declaredUsesPermissions": [],
+    "exportedSourceActivities": [
+      "MainActivity (launcher)"
+    ],
+    "mainKotlinWebViewImportsFound": 0,
+    "limit": "Source declarations only; merged release manifest, signing identity and device/network behaviour not re-audited."
+  }
+}

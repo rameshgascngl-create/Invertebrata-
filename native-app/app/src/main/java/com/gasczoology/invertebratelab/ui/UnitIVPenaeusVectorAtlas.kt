@@ -241,7 +241,7 @@ internal fun UnitIVPenaeusVectorAtlas(
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
                     .testTag("u42-penaeus-selected-speak")
             ) { Text(if(tamil)"உறுப்பின் விளக்கத்தைக் கேள்" else "Listen to this structure (offline)") }
-            Text((if(tamil)"ஒலி நிலை: " else "Voice: ")+voice.name,
+            Text((if(tamil)"ஒலி நிலை: " else "Voice: ")+voice.displayText(language),
                 style=MaterialTheme.typography.labelSmall)
         }
     }
