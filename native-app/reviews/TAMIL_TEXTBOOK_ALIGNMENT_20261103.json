@@ -1,0 +1,106 @@
+{
+  "baseline": "710f85aeb180059addcd197dae0e00208052a16d",
+  "date": "2026-11-03",
+  "scope": "Targeted textbook terminology alignment and confirmed Tamil semantic/grammar corrections; not complete Tamil academic sign-off",
+  "source": {
+    "title": "Government of Tamil Nadu, Higher Secondary First Year Biology–Zoology (Tamil)",
+    "mirror": "https://www.winmeen.com/wp-content/uploads/2020/09/11th-Std-Biology-Zoology-Tamil-Medium_compressed.pdf",
+    "verification": "Full PDF downloaded; text extracted. Water-vascular term visually verified on printed p.29 (PDF p.37).",
+    "pages": {
+      "waterVascular": 29,
+      "ciliatedEpithelium": 47,
+      "crossFertilisation": 63,
+      "egestionGlossary": 280
+    },
+    "sha256": "c591c607ea37383e61edcb797dcdc8dfad4f5c3f4e8527bc1930b7b5988940db"
+  },
+  "retained": [
+    {
+      "term": "கழிவு வெளியேற்றம்",
+      "english": "Egestion",
+      "reason": "Textbook glossary p.280 uses this term; existing app definition explicitly refers to undigested material. No blanket replacement."
+    },
+    {
+      "term": "குறுஇழை",
+      "english": "Cilium",
+      "reason": "Confirmed in textbook epithelial discussion p.47; supports first batch."
+    }
+  ],
+  "pending": [
+    "Taxonomic-key wording requires consistency with the user's approved terminology.",
+    "Flagellar-pocket and specialised UG anatomical terms require term-specific evidence; no invented Tamil or human approval.",
+    "Frozen A5 wording differences are to be reported separately, not silently edited."
+  ],
+  "changes": [
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/SyconBookChapter.kt",
+      "before": "பிறவி கருவுறுதல்",
+      "after": "அயல் கருவுறுதல்",
+      "occurrences": 1,
+      "evidence": "TN textbook printed p.63/PDF p.71"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoAffinitiesBookChapter.kt",
+      "before": "நீரோட்டக் குழாய் மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 2,
+      "evidence": "TN XI Biology–Zoology, printed p.29/PDF p.37"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinoLarvaeBookChapter.kt",
+      "before": "நீரோட்டக் குழாய் மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 4,
+      "evidence": "TN XI Biology–Zoology, printed p.29/PDF p.37"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/WvsBookChapter.kt",
+      "before": "நீரோட்டக் குழாய் மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 8,
+      "evidence": "TN XI Biology–Zoology, printed p.29/PDF p.37"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/WvsBookChapter.kt",
+      "before": "நீர் குருதியோட்ட மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 1,
+      "evidence": "Hydraulic water-vascular system must not be labelled blood circulation; textbook p.29"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/PlatyhelminthesBookChapter.kt",
+      "before": "கழிவு நீக்கமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தல்ம் சுடர் செல்களுடன் கூடிய புரோட்டோநெஃப்ரிடியாவால்.",
+      "after": "சுடர் செல்களைக் கொண்ட புரோட்டோநெஃப்ரிடியாக்கள் கழிவுநீக்கத்தையும் நீர்–உப்புச் சமநிலைப் பராமரிப்பையும் மேற்கொள்கின்றன.",
+      "occurrences": 2,
+      "evidence": "Correct malformed Tamil and explicitly convey osmoregulation"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/EchinodermataBookChapter.kt",
+      "before": "நீரோட்டக் குழாய் மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 11,
+      "evidence": "TN XI Biology–Zoology, printed p.29/PDF p.37"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AsteriasBookChapter.kt",
+      "before": "நீரோட்டக் குழாய் மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 5,
+      "evidence": "TN XI Biology–Zoology, printed p.29/PDF p.37"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AsteriasBookChapter.kt",
+      "before": "நீர் குருதியோட்ட மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 1,
+      "evidence": "Hydraulic water-vascular system must not be labelled blood circulation; textbook p.29"
+    },
+    {
+      "path": "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/AsteriasBookChapter.kt",
+      "before": "நீர்க்குழாய் மண்டல",
+      "after": "நீர்க்குழல் மண்டல",
+      "occurrences": 2,
+      "evidence": "Textbook p.29 exact form"
+    }
+  ]
+}

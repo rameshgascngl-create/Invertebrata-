@@ -21,12 +21,12 @@ class EchinodermTamilTerminologyTest {
             val file = File(sourceDir, chapter)
             assertTrue("Missing textbook chapter: $chapter", file.isFile)
             val text = file.readText(Charsets.UTF_8)
-            for (wrong in listOf("நீர் குருதியோட்ட மண்டலம்", "நீர் நாள மண்டலம்", "நீர்க்குழல் மண்டலம்")) {
+            for (wrong in listOf("நீர் குருதியோட்ட மண்டலம்", "நீர் நாள மண்டலம்")) {
                 assertFalse("$chapter contains obsolete terminology: $wrong", text.contains(wrong))
             }
         }
         val combined = chapters.joinToString("\n") { File(sourceDir, it).readText(Charsets.UTF_8) }
-        assertTrue("Approved water vascular term is missing", combined.contains("நீரோட்டக் குழாய் மண்டலம்"))
+        assertTrue("Tamil Nadu textbook water vascular term is missing", combined.contains("நீர்க்குழல் மண்டலம்"))
     }
 
     @Test fun echinodermChaptersAvoidMalformedTubeFootPlural() {

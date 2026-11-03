@@ -24,7 +24,7 @@ class AsteriasIntroductionReadabilityTest {
     @Test fun waterVascularSystemIsNeverDescribedAsBloodCirculation() {
         val chapter = AsteriasBookChapter.chapter
         val objectivesTamil = chapter.objectives.joinToString(" ") { it.tamil }
-        assertTrue(objectivesTamil.contains("நீர்க்குழாய் மண்டல"))
+        assertTrue(objectivesTamil.contains("நீர்க்குழல் மண்டல"))
         assertFalse(objectivesTamil.contains("நீர் குருதியோட்ட"))
     }
 }
