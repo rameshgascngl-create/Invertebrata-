@@ -15,7 +15,15 @@ package com.gasczoology.invertebratelab.data
  *  - Original schematics drawn by tools/book_figure_gen.py. They carry numerals only; the
  *    key is in the bilingual caption. They are NOT yet reviewed by a subject expert.
  */
-data class BookLibraryFigure(val id: String, val stem: String, val credit: PlateCredit) {
+/** RECORDED means metadata exists; it does not certify rights or academic acceptance. */
+enum class FigureAttributionState { RECORDED, PENDING }
+
+data class BookLibraryFigure(
+    val id: String,
+    val stem: String,
+    val credit: PlateCredit,
+    val attributionState: FigureAttributionState = FigureAttributionState.RECORDED,
+) {
     val slot: String get() = BookFigureLibrary.PREFIX + id
 }
 
@@ -48,21 +56,21 @@ object BookFigureLibrary {
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
         BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa-original", coralNoaa),
         BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", aiPlate),
-        BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", pendingSource),
-        BookLibraryFigure("pila-excretory-system", "pila/pila_excretory_system", pendingSource),
-        BookLibraryFigure("pila-male-reproductive-system", "pila/pila_male_reproductive_system", pendingSource),
-        BookLibraryFigure("pila-female-reproductive-system", "pila/pila_female_reproductive_system", pendingSource),
-        BookLibraryFigure("nereis-external", "nereis/01_external_morphology", pendingSource),
-        BookLibraryFigure("nereis-head", "nereis/02_enlarged_head", pendingSource),
-        BookLibraryFigure("nereis-parapodium", "nereis/03_biramous_parapodium", pendingSource),
-        BookLibraryFigure("nereis-digestive", "nereis/04_digestive_system", pendingSource),
-        BookLibraryFigure("nereis-circulatory", "nereis/05_circulatory_system", pendingSource),
-        BookLibraryFigure("nereis-nervous", "nereis/06_nervous_system", pendingSource),
-        BookLibraryFigure("nereis-excretory", "nereis/07_excretory_system", pendingSource),
-        BookLibraryFigure("nereis-trochophore", "nereis/08_trochophore_larva", pendingSource),
-        BookLibraryFigure("entamoeba-mature-cyst", "unit1/references/entamoeba_mature_cyst", pendingSource),
-        BookLibraryFigure("ascaris-fertilized-egg", "type_studies/ascaris/fertilized-egg", pendingSource),
-        BookLibraryFigure("entamoeba-cycle", "unit1/references/entamoeba", pendingSource),
+        BookLibraryFigure("plasmodium-cycle", "unit1/references/plasmodium", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("pila-excretory-system", "pila/pila_excretory_system", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("pila-male-reproductive-system", "pila/pila_male_reproductive_system", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("pila-female-reproductive-system", "pila/pila_female_reproductive_system", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-external", "nereis/01_external_morphology", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-head", "nereis/02_enlarged_head", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-parapodium", "nereis/03_biramous_parapodium", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-digestive", "nereis/04_digestive_system", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-circulatory", "nereis/05_circulatory_system", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-nervous", "nereis/06_nervous_system", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-excretory", "nereis/07_excretory_system", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("nereis-trochophore", "nereis/08_trochophore_larva", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("entamoeba-mature-cyst", "unit1/references/entamoeba_mature_cyst", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("ascaris-fertilized-egg", "type_studies/ascaris/fertilized-egg", pendingSource, FigureAttributionState.PENDING),
+        BookLibraryFigure("entamoeba-cycle", "unit1/references/entamoeba", pendingSource, FigureAttributionState.PENDING),
         BookLibraryFigure("leishmania-amastigote", "unit1/references/leishmania", aiPlate),
     ) + listOf(
         "insect-tagmata", "metamorphosis", "parasitoid-cycle", "vector-cycle", "leech",
@@ -92,6 +100,7 @@ object BookFigureLibrary {
         stemFor(slot)?.removePrefix("type_studies/") ?: slot
 
     fun creditFor(slot: String): PlateCredit? =
-        if (isLibrarySlot(slot)) byId[slot.removePrefix(PREFIX)]?.credit
+        if (isLibrarySlot(slot)) byId[slot.removePrefix(PREFIX)]
+            ?.takeIf { it.attributionState == FigureAttributionState.RECORDED }?.credit
             ?.takeIf { it.en.isNotBlank() && it.ta.isNotBlank() } else null
 }

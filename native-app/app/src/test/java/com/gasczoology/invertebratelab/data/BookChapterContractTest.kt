@@ -45,12 +45,21 @@ class BookChapterContractTest {
         }
     }
 
-    @Test fun everyLibraryFigureHasAFileAndABilingualCredit() {
+    @Test fun everyLibraryFigureHasAFileAndExplicitAttributionState() {
         BookFigureLibrary.all.forEach { f ->
             assertTrue("No image file for ${f.slot}",
                 File(assets, f.stem + ".png").isFile || File(assets, f.stem + ".webp").isFile)
-            assertTrue(f.slot, f.credit.en.isNotBlank())
-            assertTrue(f.slot, f.credit.ta.any { c -> c in '\u0B80'..'\u0BFF' })
+            when (f.attributionState) {
+                FigureAttributionState.RECORDED -> {
+                    assertTrue(f.slot, f.credit.en.isNotBlank())
+                    assertTrue(f.slot, f.credit.ta.any { c -> c in '\u0B80'..'\u0BFF' })
+                    org.junit.Assert.assertNotNull(f.slot, BookFigureLibrary.creditFor(f.slot))
+                }
+                FigureAttributionState.PENDING -> {
+                    assertTrue(f.slot, f.credit.en.isEmpty() && f.credit.ta.isEmpty())
+                    org.junit.Assert.assertNull(f.slot, BookFigureLibrary.creditFor(f.slot))
+                }
+            }
         }
         assertEquals(BookFigureLibrary.all.size, BookFigureLibrary.slots.size)
     }

@@ -15,7 +15,7 @@ class PilaProductionFigureTest {
         "pila-female-reproductive-system"
     )
 
-    @Test fun pilaFigureSlotsHaveProductionPngsAndBilingualCredits() {
+    @Test fun pilaFigureSlotsHaveProductionPngsAndExplicitPendingCredits() {
         for (id in ids) {
             val slot = "lib/$id"
             val stem = BookFigureLibrary.stemFor(slot)
@@ -28,7 +28,12 @@ class PilaProductionFigureTest {
             val width = java.nio.ByteBuffer.wrap(bytes, 16, 4).int
             val height = java.nio.ByteBuffer.wrap(bytes, 20, 4).int
             assertTrue("Image too small: $image", width >= 1000 && height >= 1000)
-            assertNotNull("Missing bilingual credit for $slot", BookFigureLibrary.creditFor(slot))
+            val figure = BookFigureLibrary.all.single { it.id == id }
+            assertEquals(FigureAttributionState.PENDING, figure.attributionState)
+            org.junit.Assert.assertNull(slot, BookFigureLibrary.creditFor(slot))
+            assertTrue("Pending attribution must not imply academic acceptance",
+                NativeCurriculumManifest.typeStudies.single { it.organismId == "pila" }.status !=
+                    AcademicWorkStatus.ACCEPTED)
         }
     }
 }

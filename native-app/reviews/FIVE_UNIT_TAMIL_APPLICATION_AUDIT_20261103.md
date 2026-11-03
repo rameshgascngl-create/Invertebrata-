@@ -69,3 +69,8 @@ Portrait reported two passed and one failed method; landscape one passed and two
 ## Platform source checks
 
 The source configuration remains compile/target SDK 36, minimum SDK 24, version 1.9.0/code 19000. The source manifest disables backup, declares no `uses-permission` entries and exports the launcher MainActivity. No `android.webkit.WebView` import was found in the retrieved main Kotlin sources. These are source checks only: they do not substitute for inspection of the merged release manifest, a security assessment, real signing-key verification or physical-device tests.
+
+
+### Explicit attribution contract
+
+Fifteen library figures now carry an explicit PENDING attribution state, with no unsupported creator or licence claim published. RECORDED means metadata is present, not independently verified rights or academic approval. The previous blanket nonblank-credit tests were replaced with state-specific assertions: recorded credits must be bilingual; pending credits must remain unpublished. All image existence, PNG signature, size and dimension checks remain. Pila must remain academically unaccepted while its attribution is pending. This does not resolve the outstanding source/rights review.
