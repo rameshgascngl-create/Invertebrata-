@@ -125,13 +125,36 @@ class NativeReleaseFunctionalTest {
         SystemClock.sleep(100)
     }
     private fun scroll(action: Int): Boolean {
-        val before = fingerprint(); val scrollEvent = verticalScrollEvents.get(); val bounds = windowBounds()
-        val high = bounds.top + bounds.height() * .32f
-        val low = bounds.top + bounds.height() * .78f
+        val before = fingerprint()
+        val scrollEvent = verticalScrollEvents.get()
+        val viewport = windowBounds()
+        // At Tamil 200% (particularly in landscape), a centre-screen swipe can
+        // hit a zoomable plate or a nested horizontal strip instead of the page.
+        // Prefer the page's native accessibility scroll action, which does not
+        // depend on where the gesture lands.
+        val page = search { node ->
+            if (!node.isScrollable) false else {
+                val bounds = Rect()
+                node.getBoundsInScreen(bounds)
+                bounds.width() >= viewport.width() * .60f &&
+                    bounds.height() >= viewport.height() * .45f &&
+                    bounds.width() > bounds.height() * .60f
+            }
+        }
+        if (page != null) {
+            val acted = try { page.performAction(action) } finally { page.recycle() }
+            if (acted) {
+                instrumentation.waitForIdleSync()
+                SystemClock.sleep(100)
+                if (before != fingerprint() || verticalScrollEvents.get() != scrollEvent) return true
+            }
+        }
+        // Fallback for accessible pages whose scroll action is unavailable.
+        val high = viewport.top + viewport.height() * .32f
+        val low = viewport.top + viewport.height() * .78f
         if (action == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
-            swipe(bounds.exactCenterX(), low, bounds.exactCenterX(), high)
-        else swipe(bounds.exactCenterX(), high, bounds.exactCenterX(), low)
-        // A tall image can retain identical clipped bounds while scrolling through it.
+            swipe(viewport.exactCenterX(), low, viewport.exactCenterX(), high)
+        else swipe(viewport.exactCenterX(), high, viewport.exactCenterX(), low)
         return before != fingerprint() || verticalScrollEvents.get() != scrollEvent
     }
     private fun horizontal(container: String, id: String): AccessibilityNodeInfo {
