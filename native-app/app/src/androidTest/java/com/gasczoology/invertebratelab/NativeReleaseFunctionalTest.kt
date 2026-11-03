@@ -203,7 +203,8 @@ class NativeReleaseFunctionalTest {
         if (id.startsWith("r1-process-") && id != "r1-process-selector") return horizontal("r1-process-selector", id)
         // These labels/controls precede the stage/Next button just activated.
         val searchUpFirst = id == "r1-process-selector" ||
-            id.endsWith("-inline-play-pause") || id == "u4-penaeus-appendage-name"
+            id.endsWith("-inline-play-pause") || id == "r17-view-plate" ||
+            id == "u4-penaeus-appendage-name"
         val directions = if (searchUpFirst)
             listOf(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD, AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
         else listOf(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)
@@ -297,37 +298,56 @@ class NativeReleaseFunctionalTest {
         val result = checkNotNull(node.rangeInfo) { "Diagram has no Android range semantics: " + id }.current
         node.recycle(); return result
     }
-    private fun visibleHeight(id: String): Int {
-        val node = find(id, false) ?: return 0
-        val rect = Rect(); node.getBoundsInScreen(rect); node.recycle()
-        rect.intersect(windowBounds())
-        return maxOf(rect.height(), 0)
+    private fun diagramBounds(id: String): Rect? {
+        val node = find(id, false) ?: return null
+        val rect = Rect(); node.getBoundsInScreen(rect)
+        var ancestor = node.parent
+        while (ancestor != null) {
+            if (ancestor.isScrollable) {
+                val clip = Rect(); ancestor.getBoundsInScreen(clip)
+                if (!rect.intersect(clip)) rect.setEmpty()
+            }
+            val next = ancestor.parent; ancestor.recycle(); ancestor = next
+        }
+        node.recycle()
+        if (!rect.intersect(windowBounds())) rect.setEmpty()
+        return rect
     }
     /**
-     * ACTION_SHOW_ON_SCREEN scrolls with an animation. Sampling during it captured a 69 px sliver
-     * of a 604 px diagram in the release build (CI run 41411776692), so before and after captures
-     * differed in size. Repeat the action and wait for the layout to settle until the visible
-     * height stops growing.
+     * A clipped node can look stationary before Compose's bring-into-view
+     * animation starts. First mount/reach it, then require a continuous stable
+     * bounds interval; one unchanged 90 ms sample is not a settled viewport.
      */
     private fun bringFullyIntoView(id: String) {
-        var last = -1
+        scrollTo(id).recycle()
+        // Use the nuclear panel's existing full-plate action. Its requester
+        // knows the complete layout bounds even when accessibility reports
+        // only a clipped slice of the Canvas.
+        if (id == "r17-nuclear-canvas") tap("r17-view-plate")
+        var previous: Rect? = null
         repeat(8) {
             find(id, false)?.let { node ->
                 node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id)
                 node.recycle()
             }
             instrumentation.waitForIdleSync()
-            var settled = fingerprint()
-            for (poll in 0 until 8) {
+            var last = diagramBounds(id)
+            var stableSince = SystemClock.elapsedRealtime()
+            val deadline = stableSince + 3_000
+            while (SystemClock.elapsedRealtime() < deadline) {
                 SystemClock.sleep(90)
-                val now = fingerprint()
-                if (now == settled) break
-                settled = now
+                if (android.os.Build.VERSION.SDK_INT >= 34) automation.clearCache()
+                val now = diagramBounds(id)
+                if (now != last) { last = now; stableSince = SystemClock.elapsedRealtime() }
+                if (now != null && now.height() > 20 &&
+                    SystemClock.elapsedRealtime() - stableSince >= 540) break
             }
-            val height = visibleHeight(id)
-            if (height == last) return
-            last = height
+            val current = diagramBounds(id)
+            if (current != null && current.height() > 20 && current == previous) return
+            previous = current
         }
+        runCatching { saveScreen("failure-unstable-" + id); saveHierarchy("failure-unstable-" + id) }
+        throw AssertionError("Diagram viewport did not settle: " + id)
     }
     private fun diagram(id: String): Bitmap {
         // Playback controls may scroll the animated canvas almost completely offscreen.
