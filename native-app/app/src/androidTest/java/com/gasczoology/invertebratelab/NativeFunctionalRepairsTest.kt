@@ -201,11 +201,16 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag(c.stage, true).performScrollTo().performClick()
             c.start?.let { rule.onNodeWithTag(it, true).performScrollTo().performClick() }
             val canvas = rule.onNodeWithTag(c.canvas, true).performScrollTo()
-            rule.onNodeWithTag("${c.prefix}-inline-play-pause").assertIsDisplayed()
+            val control = rule.onNodeWithTag("${c.prefix}-inline-play-pause", true)
+            // The nuclear stage chooser is above the diagram; at 200% Tamil, even
+            // the immediately following transport can be clipped after scrolling
+            // to the canvas. Scroll the actual control into view for each click.
+            control.performScrollTo().assertIsDisplayed()
+            canvas.performScrollTo()
             val before = canvas.captureToImage().asAndroidBitmap()
-            rule.onNodeWithTag("${c.prefix}-inline-play-pause").performClick()
+            control.performScrollTo().performClick()
             rule.waitUntil(10_000) { canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .18f.. .8f }
-            rule.onNodeWithTag("${c.prefix}-inline-play-pause").performClick()
+            control.performScrollTo().performClick()
             val phase = canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("${c.process}: playback did not pause at an intermediate phase: $phase", phase > 0f && phase < 1f)
             val after = settledPausedImage(canvas, phase)
