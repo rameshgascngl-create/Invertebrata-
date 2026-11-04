@@ -1,12 +1,12 @@
 name: Native simulator and paged-reader repairs
 on:
   push:
-    branches: ['codex/fix-simulators-reading-20261102', 'claude/fix-ciliary-release-viewport-20261102']
+    branches: ['codex/fix-simulators-reading-20261102', 'claude/fix-ciliary-release-viewport-20261102', 'qa/tamil-editorial-rights-gate-8a42b096-20261104']
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: functional-repairs-${{ github.ref }}
+  group: functional-repairs-${{ github.ref }}-qa-recovery-20261104
   cancel-in-progress: true
 jobs:
   compile-and-jvm:
