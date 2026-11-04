@@ -56,12 +56,12 @@ class NativeR19TeachingAcceptanceTest {
         try {
             rule.waitUntil(20_000) {
                 rule.onAllNodesWithTag("r1-tab-nutrition",true).fetchSemanticsNodes()
-                    .any { it.config.getOrNull(SemanticsProperties.Selected) == true } &&
+                    .any { it.config[SemanticsProperties.Selected] == true } &&
                 rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()
             }
         } catch (timeout: ComposeTimeoutException) {
             val tabSelected = rule.onAllNodesWithTag("r1-tab-nutrition",true).fetchSemanticsNodes()
-                .any { it.config.getOrNull(SemanticsProperties.Selected) == true }
+                .any { it.config[SemanticsProperties.Selected] == true }
             val labVisible = rule.onAllNodesWithTag("r1-paramecium-lab",true).fetchSemanticsNodes().isNotEmpty()
             val titleVisible = rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()
             val saved = runBlocking { NativeLearningRepository(context).learningState.first() }
