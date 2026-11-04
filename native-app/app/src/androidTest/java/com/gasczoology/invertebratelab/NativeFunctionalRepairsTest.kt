@@ -208,8 +208,32 @@ class NativeFunctionalRepairsTest {
             control.performScrollTo().assertIsDisplayed()
             canvas.performScrollTo()
             val before = canvas.captureToImage().asAndroidBitmap()
+            // Preserve all original playback, movement, and pause assertions.
+            // Record stage-specific evidence when enlarged Tamil UI fails to advance.
+            control.assertIsEnabled()
+            val phaseBeforePlay = canvas.fetchSemanticsNode()
+                .config[SemanticsProperties.ProgressBarRangeInfo].current
+            android.util.Log.i("NATIVE_SIM_QA",
+                "before Play process=${c.process} stage=${c.stage} phase=$phaseBeforePlay")
             control.performScrollTo().performClick()
-            rule.waitUntil(10_000) { canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .18f.. .8f }
+            val observedPhases = mutableListOf<Float>()
+            try {
+                rule.waitUntil(10_000) {
+                    val observed = canvas.fetchSemanticsNode()
+                        .config[SemanticsProperties.ProgressBarRangeInfo].current
+                    if (observedPhases.lastOrNull() != observed) observedPhases.add(observed)
+                    observed in .18f.. .8f
+                }
+            } catch (timeout: ComposeTimeoutException) {
+                val screenshotResult = runCatching { screenshot("${c.process}-phase-timeout") }
+                val message = "process=${c.process}, stage=${c.stage}, " +
+                    "phaseBeforePlay=$phaseBeforePlay, sampledPhases=$observedPhases, " +
+                    "screenshotSaved=${screenshotResult.isSuccess}"
+                android.util.Log.e("NATIVE_SIM_QA", message, timeout)
+                throw AssertionError("Simulator playback did not reach an intermediate phase: $message", timeout)
+            }
+            android.util.Log.i("NATIVE_SIM_QA",
+                "progress reached process=${c.process} phases=$observedPhases")
             control.performScrollTo().performClick()
             val phase = canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("${c.process}: playback did not pause at an intermediate phase: $phase", phase > 0f && phase < 1f)
