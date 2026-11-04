@@ -153,7 +153,7 @@ class NativeR17TeachingAcceptanceTest {
             // Verify that playback starts on the requested biological stage.
             rule.waitUntil(10_000) {
                 rule.onAllNodesWithTag("r17-stage-"+view,true).fetchSemanticsNodes()
-                    .any { it.config.getOrNull(SemanticsProperties.Selected) == true }
+                    .any { it.config[SemanticsProperties.Selected] == true }
             }
             rule.onNodeWithTag("r17-stage-"+view,true)
                 .assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
@@ -181,7 +181,7 @@ class NativeR17TeachingAcceptanceTest {
         // The durable chapter switch is asynchronous; still require the exact stage.
         rule.waitUntil(10_000) {
             rule.onAllNodesWithTag("r17-stage-exchange",true).fetchSemanticsNodes()
-                .any { it.config.getOrNull(SemanticsProperties.Selected) == true }
+                .any { it.config[SemanticsProperties.Selected] == true }
         }
         rule.onNodeWithTag("r17-stage-exchange",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
         rule.onNodeWithTag("r17-reduced-motion",true).performScrollTo().performClick()
