@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: functional-repairs-${{ github.ref }}
+  group: functional-repairs-${{ github.ref }}-qa-recovery-20261104
   cancel-in-progress: true
 jobs:
   compile-and-jvm:
