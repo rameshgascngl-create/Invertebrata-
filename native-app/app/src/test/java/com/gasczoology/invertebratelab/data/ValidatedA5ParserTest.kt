@@ -24,17 +24,48 @@ class ValidatedA5ParserTest {
 
     /**
      * The v1.9.3 recovery files are immutable reference data, not editable lesson content.
-     * QA Tamil editorial edits are strictly limited to three named field types.
+     * QA Tamil edits remain limited to three original field types plus 22 indexed steps_ta replacements.
      * Keep the frozen archives untouched; require exact digests for the candidate edits.
      */
     @Test
     fun packagedA5PreservesFrozenSourceExceptTamilEditorialCandidate() {
         val allowedFields = setOf("q_ta", "q2_ta", "a2_ta")
         val expectedDigest = mapOf(
-            2 to "954b15c51f1e29d3ae28d2c3e7cc23ee35cea2c653b3cfe4368c7a1a0cbe42fd",
-            3 to "d4d8ac1b1cd60ca9c1d0c0ab7b101adb961165d868a938112b8d6e52c208bc0a",
-            4 to "541924877aaceb99ae0d7da4db0fe14dd8f6fea26902828c134637f8805bbdb1",
-            5 to "76798c2170c3e78bffe72c2f802b70a5ab9df56bf6132677a13194d12a7e7fdb",
+            2 to "7f1815871c1c2cffa1e218cccb71babb6b942517690367caf0461e13906593c4",
+            3 to "8c102685e4bdb6a4831c46aa249b94acf2eb40f0b327a16cb4188cef13d5a949",
+            4 to "4e6827b423820fd41157330a8a69df3906c9e6737dd8e9387d2c672f615c673a",
+            5 to "eab557cd3e8cfed510dbe6e9f731877df22c7c014937a4fcac1760275671c311",
+        )
+        val expectedStepIndices = mapOf(
+            2 to mapOf(
+                "u2-sycon" to setOf(1),
+                "u2-corals" to setOf(2),
+                "u2-coral-economics" to setOf(2),
+                "u2-porifera" to setOf(2),
+                "u2-obelia" to setOf(0),
+                "u2-cnidaria" to setOf(0),
+                "u2-reproduction" to setOf(0),
+            ),
+            3 to mapOf(
+                "u3-fasciola" to setOf(5),
+                "u3-ascaris" to setOf(4),
+                "u3-platy" to setOf(3),
+                "u3-nematode-parasites" to setOf(0),
+                "u3-aschel" to setOf(0),
+            ),
+            4 to mapOf(
+                "u4-arthropoda" to setOf(1),
+                "u4-penaeus" to setOf(1),
+                "u4-modes-life" to setOf(0),
+                "u4-metamerism" to setOf(1),
+            ),
+            5 to mapOf(
+                "u5-mollusca" to setOf(1),
+                "u5-echinodermata" to setOf(0, 2),
+                "u5-cephalopods" to setOf(1),
+                "u5-pearl" to setOf(2),
+                "u5-echino-affinities" to setOf(4),
+            ),
         )
         for (unit in 1..5) {
             val originalFile = original(unit)
@@ -52,19 +83,40 @@ class ValidatedA5ParserTest {
             val candidate = JsonParser.parseString(packagedFile.readText(Charsets.UTF_8)).asJsonObject
             assertEquals("Chapter IDs changed in U" + unit, frozen.keySet(), candidate.keySet())
             var editorialFields = 0
+            var stepReplacements = 0
+            val permitted = expectedStepIndices[unit].orEmpty()
             for (id in frozen.keySet()) {
                 val prior = frozen.getAsJsonObject(id)
                 val current = candidate.getAsJsonObject(id)
                 assertEquals("Field set changed for " + id, prior.keySet(), current.keySet())
                 for (key in prior.keySet()) {
-                    if (key in allowedFields) {
-                        assertFalse(
-                            "Expected an explicit editorial replacement in " + id + "." + key,
-                            prior.get(key) == current.get(key),
-                        )
-                        editorialFields++
-                    } else {
-                        assertEquals(
+                    when {
+                        key in allowedFields -> {
+                            assertFalse(
+                                "Expected an explicit editorial replacement in " + id + "." + key,
+                                prior.get(key) == current.get(key),
+                            )
+                            editorialFields++
+                        }
+                        key == "steps_ta" -> {
+                            val before = prior.getAsJsonArray(key)
+                            val after = current.getAsJsonArray(key)
+                            assertEquals("Step count changed in " + id, before.size(), after.size())
+                            val approvedIndices = permitted[id].orEmpty()
+                            assertTrue("Out-of-range step index in " + id,
+                                approvedIndices.all { it >= 0 && it < before.size() })
+                            for (index in 0 until before.size()) {
+                                if (index in approvedIndices) {
+                                    assertFalse("Expected Tamil steps_ta replacement for " + id + "[" + index + "]",
+                                        before[index] == after[index])
+                                    stepReplacements++
+                                } else {
+                                    assertEquals("Unapproved change to steps_ta in " + id + "[" + index + "]",
+                                        before[index], after[index])
+                                }
+                            }
+                        }
+                        else -> assertEquals(
                             "Non-editorial field altered in " + id + "." + key,
                             prior.get(key), current.get(key),
                         )
@@ -73,6 +125,8 @@ class ValidatedA5ParserTest {
             }
             assertEquals("Wrong number of edited fields in U" + unit,
                 expectedChapters[unit - 1] * 3, editorialFields)
+            assertEquals("Wrong number of revised Tamil step items in U" + unit,
+                permitted.values.sumOf { it.size }, stepReplacements)
             val digest = java.security.MessageDigest.getInstance("SHA-256")
                 .digest(packagedFile.readBytes())
                 .joinToString("") { "%02x".format(it.toInt() and 0xff) }
