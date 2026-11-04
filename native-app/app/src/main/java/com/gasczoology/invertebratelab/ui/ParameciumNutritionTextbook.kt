@@ -151,6 +151,14 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-stage-"+item.id)
                         .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
             }
+            // Keep pose controls alongside stage selection; the former placement after\n            // the long anatomical catalogue was not discoverable at Tamil 200% scaling.\n            OutlinedButton(onClick={choosePose(false)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-start-view")) {
+                Text(nutritionText(language,"Inspect this stage's starting pose","இந்நிலையின் தொடக்கத் தோற்றத்தைக் காண்க"))
+            }
+            OutlinedButton(onClick={choosePose(true)},shape=shape,
+                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-complete-view")) {
+                Text(nutritionText(language,"Inspect this stage's completed pose","இந்நிலையின் முடிவுத் தோற்றத்தைக் காண்க"))
+            }
             if(stage.id in ParameciumPhysiology.stageIds) ParameciumPhysiologyPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectIntermediate)
             Button(onClick={scope.launch { requester.bringIntoView() }},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-view-plate")) {
@@ -202,14 +210,6 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 pose==0 -> nutritionText(language,"Start","தொடக்கம்")
                 else -> nutritionText(language,"Intermediate","இடைநிலை")
             },modifier=Modifier.testTag("r19-view-pose"))
-            OutlinedButton(onClick={choosePose(false)},shape=shape,
-                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-start-view")) {
-                Text(nutritionText(language,"Inspect this stage's starting pose","இந்நிலையின் தொடக்கத் தோற்றத்தைக் காண்க"))
-            }
-            OutlinedButton(onClick={choosePose(true)},shape=shape,
-                modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-complete-view")) {
-                Text(nutritionText(language,"Inspect this stage's completed pose","இந்நிலையின் முடிவுத் தோற்றத்தைக் காண்க"))
-            }
             Text(nutritionText(language,"Illustrative speed and proportions; real events overlap. Restored playback remains paused.",
                 "கற்பித்தலுக்கான வேகமும் விகிதங்களும்; இயற்கை நிகழ்வுகள் ஒன்றோடொன்று அமையும். மீட்டமைந்த இயக்கம் இடைநிறுத்தத்தில் இருக்கும்."))
             Text(nutritionText(language,if(playing)"Playing" else "Paused",if(playing)"இயங்குகிறது" else "இடைநிறுத்தம்"),
