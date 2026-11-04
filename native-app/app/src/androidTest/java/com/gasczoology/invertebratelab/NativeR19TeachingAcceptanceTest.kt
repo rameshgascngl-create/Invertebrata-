@@ -52,7 +52,28 @@ class NativeR19TeachingAcceptanceTest {
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(20_000) { rule.onAllNodesWithTag("r1-tab-nutrition").fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("r1-tab-nutrition").performScrollTo().performClick()
-        rule.waitUntil(20_000) { rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty() }
+        // The selected tab and native lesson must both be ready; never bypass a failed route.
+        try {
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag("r1-tab-nutrition",true).fetchSemanticsNodes()
+                    .any { it.config.getOrNull(SemanticsProperties.Selected) == true } &&
+                rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()
+            }
+        } catch (timeout: ComposeTimeoutException) {
+            val tabSelected = rule.onAllNodesWithTag("r1-tab-nutrition",true).fetchSemanticsNodes()
+                .any { it.config.getOrNull(SemanticsProperties.Selected) == true }
+            val labVisible = rule.onAllNodesWithTag("r1-paramecium-lab",true).fetchSemanticsNodes().isNotEmpty()
+            val titleVisible = rule.onAllNodesWithTag("r19-textbook-title",true).fetchSemanticsNodes().isNotEmpty()
+            val saved = runBlocking { NativeLearningRepository(context).learningState.first() }
+            val captured = runCatching { capture("setup-navigation-timeout") }.isSuccess
+            throw AssertionError(
+                "Nutrition navigation failed: tabSelected=$tabSelected labVisible=$labVisible " +
+                "titleVisible=$titleVisible storedTab=${saved.laboratoryTab} " +
+                "storedDestination=${saved.destination} screenshotSaved=$captured", timeout)
+        }
+        rule.onNodeWithTag("r1-tab-nutrition",true)
+            .assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
+        rule.onNodeWithTag("r19-textbook-title",true).assertExists()
     }
     private fun canvas(): SemanticsNodeInteraction {
         rule.onNodeWithTag("r19-view-plate",true).performScrollTo().performClick();rule.waitForIdle()

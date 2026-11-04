@@ -150,6 +150,13 @@ class NativeR17TeachingAcceptanceTest {
         for((chapter,view) in listOf("fission" to "constriction","conjugation" to "exchange")) {
             rule.onNodeWithTag("r17-chapter-"+chapter,true).performScrollTo().performClick()
             rule.onNodeWithTag("r17-stage-"+view,true).performScrollTo().performClick()
+            // Verify that playback starts on the requested biological stage.
+            rule.waitUntil(10_000) {
+                rule.onAllNodesWithTag("r17-stage-"+view,true).fetchSemanticsNodes()
+                    .any { it.config.getOrNull(SemanticsProperties.Selected) == true }
+            }
+            rule.onNodeWithTag("r17-stage-"+view,true)
+                .assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
             val before=canvas().captureToImage().asAndroidBitmap()
             capture(chapter+"-phase-initial")
             rule.onNodeWithTag("r17-play-pause",true).performScrollTo().performClick()
@@ -171,6 +178,11 @@ class NativeR17TeachingAcceptanceTest {
         rule.onNodeWithTag("r17-stage-constriction",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-chapter-conjugation",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-reading-heading",true).assertTextEquals(ParameciumConjugationChapter.chapter.readings[3].heading.value(lang))
+        // The durable chapter switch is asynchronous; still require the exact stage.
+        rule.waitUntil(10_000) {
+            rule.onAllNodesWithTag("r17-stage-exchange",true).fetchSemanticsNodes()
+                .any { it.config.getOrNull(SemanticsProperties.Selected) == true }
+        }
         rule.onNodeWithTag("r17-stage-exchange",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
         rule.onNodeWithTag("r17-reduced-motion",true).performScrollTo().performClick()
         rule.onNodeWithTag("r17-reduced-motion",true).assert(SemanticsMatcher.expectValue(SemanticsProperties.Selected,true))
