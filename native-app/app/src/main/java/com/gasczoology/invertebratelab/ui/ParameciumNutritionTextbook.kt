@@ -151,7 +151,9 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                     modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-stage-"+item.id)
                         .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
             }
-            // Keep pose controls alongside stage selection; the former placement after\n            // the long anatomical catalogue was not discoverable at Tamil 200% scaling.\n            OutlinedButton(onClick={choosePose(false)},shape=shape,
+            // Keep pose controls alongside stage selection; the former placement after
+            // the long anatomical catalogue was not discoverable at Tamil 200% scaling.
+            OutlinedButton(onClick={choosePose(false)},shape=shape,
                 modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-start-view")) {
                 Text(nutritionText(language,"Inspect this stage's starting pose","இந்நிலையின் தொடக்கத் தோற்றத்தைக் காண்க"))
             }
