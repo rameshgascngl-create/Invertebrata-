@@ -8,6 +8,7 @@ on:
       - native/r15-feeding-textbook-20261010
       - claude/student-polish
       - native/n24-paramecium-raster-intake-20261031
+      - qa/native-content-v3-20261107
 
 permissions:
   contents: read
@@ -25,8 +26,46 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Validate staged bilingual v3 JSON asset
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('native-app/app/src/main/assets/content-v3-candidate.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          assert len(data['phyla']) == 10
+          assert len(data['quiz_questions']) == 60
+          for q in data['quiz_questions']:
+              assert all(q.get(k) for k in ('question_en', 'question_ta', 'explanation_en', 'explanation_ta'))
+              assert len(q['options_en']) == len(q['options_ta']) == 4
+              assert type(q['correct']) is int and 0 <= q['correct'] < 4
+          print('Candidate asset structural checks PASS; not integrated into UI')
+          PY
       - name: Assemble native Kotlin debug APK (never production)
         run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Verify candidate asset is packaged unchanged in debug APK
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import pathlib
+          import zipfile
+          src = pathlib.Path("native-app/app/src/main/assets/content-v3-candidate.json")
+          apks = list(pathlib.Path("native-app/app/build/outputs/apk/debug").glob("*.apk"))
+          if len(apks) != 1:
+              raise SystemExit(f"Expected one debug APK, found {len(apks)}: {apks}")
+          with zipfile.ZipFile(apks[0]) as z:
+              asset = "assets/content-v3-candidate.json"
+              if asset not in z.namelist():
+                  raise SystemExit("FAIL: candidate JSON missing from APK assets")
+              packaged = z.read(asset)
+          original = src.read_bytes()
+          if packaged != original:
+              raise SystemExit("FAIL: candidate JSON bytes differ from source")
+          print("PASS: candidate asset packaged byte-for-byte")
+          print("Source SHA256:", hashlib.sha256(original).hexdigest())
+          print("APK SHA256:", hashlib.sha256(apks[0].read_bytes()).hexdigest())
+          print("NOTE: asset presence does not imply UI integration or scientific acceptance")
+          PY
       - name: Independently verify native QA artifact
         run: bash ci/n23e3_verify_native_debug_apk.sh
       - name: Upload QA APK, audit and checksum
