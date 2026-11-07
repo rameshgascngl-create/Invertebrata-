@@ -1,0 +1,26 @@
+name: Content v3 intake validation
+on:
+  push:
+    branches:
+      - qa/content-v3-intake-20261107
+  workflow_dispatch:
+jobs:
+  validate-content-v3:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate bilingual JSON structure
+        run: python3 tools/validate_content_v3_intake.py invertebrata_content_final.json
+      - name: Audit compressed archive without extraction
+        run: python3 tools/audit_content_v3_archive.py invertebrata_update_package.tar.gz > archive-audit.json
+      - name: Upload archive manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-v3-archive-audit
+          path: archive-audit.json
+          if-no-files-found: ignore
