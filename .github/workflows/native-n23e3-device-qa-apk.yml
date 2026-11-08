@@ -9,6 +9,7 @@ on:
       - claude/student-polish
       - native/n24-paramecium-raster-intake-20261031
       - qa/native-content-v3-20261107
+      - qa/image-integrity-audit-20261108
 
 permissions:
   contents: read
@@ -66,6 +67,9 @@ jobs:
           print("APK SHA256:", hashlib.sha256(apks[0].read_bytes()).hexdigest())
           print("NOTE: asset presence does not imply UI integration or scientific acceptance")
           PY
+      - name: Inventory educational raster images in built APK
+        run: |
+          python3 tools/audit_apk_plates.py native-app/app/build/outputs/apk/debug/app-debug.apk --out qa-evidence/n23e3/plate-audit.json
       - name: Independently verify native QA artifact
         run: bash ci/n23e3_verify_native_debug_apk.sh
       - name: Upload QA APK, audit and checksum
