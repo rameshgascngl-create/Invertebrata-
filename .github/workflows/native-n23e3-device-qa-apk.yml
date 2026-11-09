@@ -11,6 +11,7 @@ on:
       - claude/audit-l10n
       - claude/unit1-plates-and-parasite-slots
       - claude/ciliary-width-diagnostic
+      - feat/native-textbook-reader-qa
 
 permissions:
   contents: read

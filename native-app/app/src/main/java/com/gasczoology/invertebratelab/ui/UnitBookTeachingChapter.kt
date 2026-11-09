@@ -22,6 +22,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.gasczoology.invertebratelab.OfflineNarrator
 import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterNotNull
@@ -64,6 +65,13 @@ internal fun UnitBookTeachingChapter(
     var penaeusAppendage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     var penaeusStage by rememberSaveable(chapter.id) { mutableIntStateOf(0) }
     val bookRows = remember(book) { com.gasczoology.invertebratelab.data.BookLayout.rows(book) }
+    val bookmarkAccess by rememberUpdatedState(LocalBookmarks.current)
+    var searchQuery by rememberSaveable(chapter.id) { mutableStateOf("") }
+    val searchHits = remember(book, pages, chapter.a5Questions, searchQuery, language) {
+        BookChapterSearch.search(book, pages, chapter.a5Questions, searchQuery, language)
+    }
+    var searchTarget by remember(chapter.id) { mutableStateOf<BookTarget?>(null) }
+    val scope = rememberCoroutineScope()
     val pageIndex = pages.indexOfFirst { it.id == pageId }.coerceAtLeast(0)
     val page = pages[pageIndex]
     val restorePosition = remember(chapter.id, pageId, continuous, referenceGalleryOpen) {
@@ -83,6 +91,26 @@ internal fun UnitBookTeachingChapter(
         if (id != pageId) pageHistory = pageHistory + pageId
         pageId = id
         positions.save(chapter.id, BookReadingPosition(id))
+    }
+    val hasGalleryToggle = NativeCurriculumManifest.typeStudies.any {
+        it.lessonId == chapter.id && it.organismId in setOf("penaeus", "pila", "asterias")
+    }
+    /** Lazy item index of a chapter row on its page: header, optional toggle, page prefix, then the rows. */
+    fun itemIndexOf(target: BookTarget): Int {
+        val target_page = pages.firstOrNull { it.id == target.pageId } ?: return 0
+        val at = target_page.rowIndices.indexOf(target.rowIndex)
+        if (at < 0) return 0
+        val prefix = (if (target.pageId == "objectives") 1 + (if (target_page.introductionIndex >= 0) 1 else 0) else 0)
+        return 1 + (if (hasGalleryToggle) 1 else 0) + prefix + at
+    }
+    fun openTarget(target: BookTarget) {
+        if (target.pageId == pageId && !continuous && !referenceGalleryOpen) {
+            if (target.rowIndex >= 0) scope.launch { listState.scrollToItem(itemIndexOf(target)) }
+            else scope.launch { listState.scrollToItem(0) }
+        } else {
+            searchTarget = target.takeIf { it.rowIndex >= 0 }
+            selectPage(target.pageId)
+        }
     }
     androidx.activity.compose.BackHandler {
         narrator.stop()
@@ -107,6 +135,10 @@ internal fun UnitBookTeachingChapter(
             android.util.Log.i("NATIVE_READING", "restore " + chapter.id + " requested=" + saved +
                 " applied=" + listState.firstVisibleItemIndex + "/" + listState.firstVisibleItemScrollOffset +
                 " viewport=" + listState.layoutInfo.viewportSize)
+        }
+        searchTarget?.takeIf { it.pageId == pageId }?.let { target ->
+            listState.scrollToItem(itemIndexOf(target))
+            searchTarget = null
         }
         positionRestored = true
         if (!continuous && !referenceGalleryOpen) snapshotFlow { if (checkpointEnabled) Triple(listState.isScrollInProgress, listState.firstVisibleItemIndex, listState.firstVisibleItemScrollOffset) else null }
@@ -163,6 +195,11 @@ internal fun UnitBookTeachingChapter(
                     OutlinedButton(onClick = { selectPage(pages[pageIndex - 1].id) }, enabled = pageIndex > 0,
                         modifier = Modifier.heightIn(min = 48.dp).testTag("reading-page-previous")
                             .semantics { contentDescription = ut(language, "Previous page", "முந்தைய பக்கம்") }) { Text("‹") }
+                    val marked = pageId in bookmarkAccess.bookmarks[chapter.id].orEmpty()
+                    if (pageId != "contents") OutlinedButton(onClick = { bookmarkAccess.toggle(chapter.id, pageId) },
+                        modifier = Modifier.heightIn(min = 48.dp).testTag(if (marked) "reading-bookmark-remove" else "reading-bookmark-add")
+                            .semantics { contentDescription = ut(language, if (marked) "Remove bookmark" else "Add bookmark",
+                                if (marked) "புத்தகக்குறியை நீக்கு" else "புத்தகக்குறி சேர்") }) { Text(if (marked) "★" else "☆") }
                     Text(ut(language, "Page ${pageIndex + 1}/${pages.size}", "பக்கம் ${pageIndex + 1}/${pages.size}"),
                         modifier = Modifier.align(androidx.compose.ui.Alignment.CenterVertically).testTag("reading-page-position"),
                         style = MaterialTheme.typography.bodyMedium)
@@ -219,6 +256,8 @@ internal fun UnitBookTeachingChapter(
             if (referenceGalleryOpen && referenceStudy != null) item { RequiredTypeStudyPlates(referenceStudy, language) }
             else {
                 if (!continuous && pageId == "contents") {
+                    chapterFindItems(chapter.id, pages, bookmarkAccess.bookmarks[chapter.id].orEmpty(), searchQuery,
+                        searchHits, language, { searchQuery = it }, ::openTarget)
                     items(pages, key = { "contents-" + it.id }) { destination ->
                         OutlinedButton(onClick = { selectPage(destination.id) },
                             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("reading-open-" + destination.id)) {

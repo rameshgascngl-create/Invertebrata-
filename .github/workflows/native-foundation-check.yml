@@ -9,6 +9,7 @@ on:
       - claude/audit-l10n
       - claude/fix-home-label-tests
       - claude/unit1-plates-and-parasite-slots
+      - feat/native-textbook-reader-qa
 
 jobs:
   compile-native-foundation:

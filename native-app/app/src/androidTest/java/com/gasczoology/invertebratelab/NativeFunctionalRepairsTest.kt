@@ -34,6 +34,7 @@ class NativeFunctionalRepairsTest {
         runBlocking {
             NativeLearningRepository(context).save(NativeLearningState())
             BookReadingRepository(context).clear()
+            BookmarkRepository(context).clear()
             LanguagePreferenceRepository(context).setLanguage(language)
         }
         rule.activityRule.scenario.recreate()
@@ -135,6 +136,79 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithText(if (tamil) "பின்செல்" else "Back").performClick()
             waitFor("native-home")
         }
+    }
+
+    private fun pageId(): String = rule.onNodeWithTag("reading-page-id").fetchSemanticsNode().config[SemanticsProperties.ContentDescription].first()
+
+    /** Search -> hit -> the reader opens the page that holds the block, with the block on screen. */
+    @Test fun chapterSearchOpensTheMatchingBlockAndBookmarksPersist() {
+        val unit = 1; val id = "u1-paramecium"
+        enterChapter(unit, id)
+        val book = BookChapters.forLesson(id)!!
+        val corpus = ValidatedA5AssetRepository(context).load()
+        val chapter = corpus.flatMap { it.chapters }.single { it.id == id }
+        val pages = BookReadingPages.forChapter(book, chapter.a5Questions.map { it.id })
+        val term = book.definitions.first().term.value(language)
+        val expected = BookChapterSearch.search(book, pages, chapter.a5Questions, term, language)
+        assertTrue("no expected hits for $term", expected.isNotEmpty())
+
+        rule.onNodeWithTag("reading-contents").performClick()
+        rule.waitForIdle()
+        rule.onNodeWithTag("reading-search-field").performTextInput(term)
+        rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-search-hit-0").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("reading-search-count").assertExists()
+        screenshot("search-results-$id")
+        rule.onNodeWithTag("reading-search-hit-0").performClick()
+        rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-page-id").fetchSemanticsNodes().isNotEmpty() }
+        rule.waitUntil(10_000) { pageId() == expected[0].pageId }
+        if (expected[0].rowIndex >= 0) rule.waitUntil(10_000) {
+            rule.onAllNodesWithText(term, substring = true, ignoreCase = true).fetchSemanticsNodes().isNotEmpty()
+        }
+        screenshot("search-opened-$id")
+
+        // A nonsense query reports no match instead of staying silent.
+        rule.onNodeWithTag("reading-contents").performClick()
+        rule.waitForIdle()
+        rule.onNodeWithTag("reading-search-field").performTextClearance()
+        rule.onNodeWithTag("reading-search-field").performTextInput("zzqxjv")
+        rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-search-empty").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("reading-search-field").performTextClearance()
+
+        // Bookmark the opened page, leave, recreate, and find it again from the contents list.
+        val marked = pageId()
+        rule.onNodeWithTag("reading-bookmark-add").performClick()
+        rule.onNodeWithTag("reading-bookmark-remove").assertExists()
+        runBlocking { withTimeout(10_000) { BookmarkRepository(context).bookmarks.first { it[id]?.contains(marked) == true } } }
+        val onDisk = File(context.filesDir, "datastore/book_bookmarks.preferences_pb")
+        assertTrue("bookmark file not written: ${onDisk.absolutePath}", onDisk.exists() && onDisk.length() > 0)
+        rule.activityRule.scenario.recreate()
+        waitFor(root(id, unit))
+        rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-bookmark-remove").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("reading-contents").performClick()
+        rule.waitForIdle()
+        rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("reading-bookmark-$marked"))
+        screenshot("bookmarks-$id")
+        rule.onNodeWithTag("reading-bookmark-$marked").performClick()
+        rule.waitUntil(10_000) { pageId() == marked }
+
+        // Removing it clears it from disk and from the list.
+        rule.onNodeWithTag("reading-bookmark-remove").performClick()
+        runBlocking { withTimeout(10_000) { BookmarkRepository(context).bookmarks.first { it[id].isNullOrEmpty() } } }
+        rule.onNodeWithTag("reading-bookmark-add").assertExists()
+    }
+
+    /** Page ids are language independent, so changing language keeps the reader on the same page. */
+    @Test fun switchingLanguageKeepsTheSemanticPage() {
+        val unit = 1; val id = "u1-paramecium"
+        enterChapter(unit, id)
+        openPage(id, unit, "row-0")
+        rule.waitUntil(10_000) { pageId() == "row-0" }
+        val other = if (language == AppLanguage.TAMIL) AppLanguage.ENGLISH else AppLanguage.TAMIL
+        runBlocking { LanguagePreferenceRepository(context).setLanguage(other) }
+        rule.waitUntil(15_000) { rule.onAllNodesWithText(if (other == AppLanguage.TAMIL) "பின்செல்" else "Back").fetchSemanticsNodes().isNotEmpty() }
+        assertEquals("row-0", pageId())
+        rule.onNodeWithTag("reading-page-position").assertExists()
+        runBlocking { LanguagePreferenceRepository(context).setLanguage(language) }
     }
 
     @Test fun parasiteAndPrawnInteractivePagesAreReachable() {

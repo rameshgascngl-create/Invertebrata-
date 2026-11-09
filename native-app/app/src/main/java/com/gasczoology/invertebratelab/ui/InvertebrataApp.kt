@@ -139,7 +139,11 @@ fun InvertebrataApp(viewModel: MainViewModel) {
         }
     }
 
-    androidx.compose.runtime.CompositionLocalProvider(LocalReadingPositions provides ReadingPositionAccess(readingPositions.orEmpty(), viewModel::saveReadingPosition)) {
+    val bookmarks by viewModel.bookmarks.collectAsState()
+    androidx.compose.runtime.CompositionLocalProvider(
+        LocalReadingPositions provides ReadingPositionAccess(readingPositions.orEmpty(), viewModel::saveReadingPosition),
+        LocalBookmarks provides BookmarkAccess(bookmarks, viewModel::toggleBookmark),
+    ) {
     NavHost(
         navController = navController,
         startDestination = startRoute,

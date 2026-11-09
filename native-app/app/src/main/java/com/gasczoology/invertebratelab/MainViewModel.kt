@@ -5,6 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.BookReadingPosition
+import com.gasczoology.invertebratelab.data.BookmarkRepository
+import com.gasczoology.invertebratelab.data.Bookmarks
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.Extensions
 import com.gasczoology.invertebratelab.data.LanguagePreferenceRepository
@@ -69,6 +71,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    private val bookmarkRepository = BookmarkRepository(application)
+    private val _bookmarks = MutableStateFlow<Map<String, Set<String>>>(emptyMap())
+    val bookmarks: StateFlow<Map<String, Set<String>>> = _bookmarks.asStateFlow()
+    private val bookmarkMutex = Mutex()
+
+    fun toggleBookmark(chapter: String, pageId: String) {
+        // Show the change at once; the disk write below is the source of truth afterwards.
+        _bookmarks.value = Bookmarks.toggle(_bookmarks.value, chapter, pageId)
+        viewModelScope.launch { bookmarkMutex.withLock { bookmarkRepository.toggle(chapter, pageId) } }
+    }
+
     val persistedLearning: StateFlow<PersistedLearningLoadState> = learningRepository.learningState
         .map<NativeLearningState, PersistedLearningLoadState> { PersistedLearningLoadState.Ready(it) }
         .stateIn(viewModelScope, SharingStarted.Eagerly, PersistedLearningLoadState.Loading)
@@ -85,6 +98,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 // An older disk emission must never roll back a newer UI checkpoint.
                 storedReadingPositions = stored
                 publishReadingPositions()
+            }
+        }
+        viewModelScope.launch {
+            bookmarkRepository.bookmarks.collect { stored ->
+                // Only trust disk when no write is in flight; otherwise our optimistic value is newer.
+                if (!bookmarkMutex.isLocked) _bookmarks.value = stored
             }
         }
         viewModelScope.launch(Dispatchers.IO) {
