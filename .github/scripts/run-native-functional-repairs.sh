@@ -39,7 +39,7 @@ adb shell svc data disable
 adb shell settings get system font_scale > qa-evidence/functional/font-scale.txt
 properties=()
 case "$variant" in
-  debug) task=connectedDebugAndroidTest; apkdir=debug; test_class=com.gasczoology.invertebratelab.NativeFunctionalRepairsTest,com.gasczoology.invertebratelab.NativeReaderContinuityTest ;;
+  debug) task=connectedDebugAndroidTest; apkdir=debug; test_class=com.gasczoology.invertebratelab.NativeFunctionalRepairsTest ;;
   release) task=connectedReleaseAndroidTest; apkdir=release; test_class=com.gasczoology.invertebratelab.NativeReleaseFunctionalTest; properties+=(-PfunctionalRelease=true) ;;
   *) exit 2 ;;
 esac
@@ -62,6 +62,16 @@ timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" "$
   -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
   -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle.txt
+if [[ "$variant" == debug ]]; then
+  # Reader continuity (search, bookmarks, language switch, figure viewer) runs second, so the established
+  # tests above run on an untouched emulator. Gradle replaces its results directory on each run: keep the first.
+  cp -R native-app/app/build/outputs/androidTest-results/connected qa-evidence/functional/connected-established
+  timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" --stacktrace --info \
+    -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeReaderContinuityTest \
+    -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
+    -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
+    -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle-continuity.txt
+fi
 python3 - "$test_class" "$variant" <<'PYTEST'
 import pathlib, sys, xml.etree.ElementTree as ET
 expected={
@@ -81,7 +91,9 @@ if sys.argv[2]=="debug":
     )}
 else:
     expected={(sys.argv[1], n) for _, n in expected}
-cases=[case for path in pathlib.Path('native-app/app/build/outputs/androidTest-results/connected').rglob('TEST-*.xml')
+roots=['native-app/app/build/outputs/androidTest-results/connected']
+if sys.argv[2]=="debug": roots.append('qa-evidence/functional/connected-established')
+cases=[case for root in roots for path in pathlib.Path(root).rglob('TEST-*.xml')
        for case in ET.parse(path).getroot().iter('testcase')]
 actual=[(case.get('classname'), case.get('name')) for case in cases]
 assert len(cases)==len(expected) and set(actual)==expected, ("WRONG_FUNCTIONAL_COHORT", actual)
