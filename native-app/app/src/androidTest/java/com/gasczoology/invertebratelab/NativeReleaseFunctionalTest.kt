@@ -85,7 +85,24 @@ class NativeReleaseFunctionalTest {
             SystemClock.sleep(75)
         }
         runCatching { saveScreen("failure-" + id) }
-        throw AssertionError("Android accessibility node not found: " + id)
+        // Say what was on screen: the exact reason (off-screen, too small, wrong page) decides the fix.
+        val seen = ArrayList<String>()
+        runCatching {
+            search { n ->
+                if (n.isVisibleToUser) {
+                    val r = Rect(); n.getBoundsInScreen(r)
+                    val label = (n.viewIdResourceName?.substringAfterLast('/') ?: "") +
+                        (n.text?.toString()?.takeIf { it.isNotBlank() }?.let { "'" + it.take(22) + "'" } ?: "")
+                    if (label.isNotBlank()) seen += label + "@" + r.top + "-" + r.bottom
+                }
+                false
+            }
+        }
+        val target = runCatching { find(id, visible = false) }.getOrNull()
+        val where = target?.let { val r = Rect(); it.getBoundsInScreen(r); "present, visibleToUser=" + it.isVisibleToUser + " bounds=" + r } ?: "absent from the accessibility tree"
+        val display = context.resources.displayMetrics
+        throw AssertionError("Android accessibility node not found: " + id + " [" + where + "; screen=" + display.widthPixels + "x" +
+            display.heightPixels + " fontScale=" + context.resources.configuration.fontScale + "; visible: " + seen.take(45).joinToString(" | ") + "]")
     }
     private fun windowBounds(): Rect {
         val node = checkNotNull(automation.rootInActiveWindow)

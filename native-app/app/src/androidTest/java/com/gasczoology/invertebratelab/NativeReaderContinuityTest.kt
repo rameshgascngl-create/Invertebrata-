@@ -76,7 +76,8 @@ class NativeReaderContinuityTest {
         if (bitmap == null) image.recycle()
     }
 
-    private fun pageId(): String = rule.onNodeWithTag("reading-page-id").fetchSemanticsNode().config[SemanticsProperties.ContentDescription].first()
+    /** The page id comes from the list's own semantics, so it is readable even when the header is scrolled out of view. */
+    private fun pageId(): String = rule.onNodeWithTag(root("u1-paramecium", 1)).fetchSemanticsNode().config[ReadingPositionSemantics].pageId
 
     /** Polls the bookmark file and, on timeout, says what was actually stored. */
     private fun awaitBookmarks(label: String, ok: (Map<String, Set<String>>) -> Boolean) {
