@@ -338,14 +338,6 @@ class NativeReleaseFunctionalTest {
         // Playback controls may scroll the animated canvas almost completely offscreen.
         // Bring the actual diagram back into view, and let the scroll finish, before sampling pixels.
         bringFullyIntoView(id)
-        // In landscape the sticky bars leave little room; if the first alignment left part of the
-        // canvas under a bar, nudge the page and align again so both captures see the same region.
-        for (nudge in 0 until 4) {
-            val (full, shown) = clippedHeights(id) ?: break
-            if (shown >= full) break
-            scroll(if (nudge % 2 == 0) AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
-            bringFullyIntoView(id)
-        }
         val node = scrollTo(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
         val fullHeight = bounds.height()
         var ancestor = node.parent
