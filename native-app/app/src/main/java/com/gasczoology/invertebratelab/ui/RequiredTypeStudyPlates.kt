@@ -308,16 +308,10 @@ internal fun RequiredTypeStudyFullImage(
     var panX by rememberSaveable(title) { mutableFloatStateOf(0f) }
     var panY by rememberSaveable(title) { mutableFloatStateOf(0f) }
     val tamil = language == AppLanguage.TAMIL
+    val landscape = androidx.compose.ui.platform.LocalConfiguration.current.orientation ==
+        android.content.res.Configuration.ORIENTATION_LANDSCAPE
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
-        Column(
-            Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)
-                .statusBarsPadding().navigationBarsPadding().padding(14.dp)
-                .testTag("r2-fullscreen-dialog"),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            // A full textbook figure legend can occupy the entire dialog at
-            // 200% Tamil font scale. Keep its accessible full text in the image
-            // description but display at most two heading lines here.
+        val header: @Composable () -> Unit = {
             Text(
                 title,
                 style = MaterialTheme.typography.titleMedium,
@@ -325,8 +319,10 @@ internal fun RequiredTypeStudyFullImage(
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.testTag("r2-fullscreen-short-title"),
             )
+        }
+        val viewport: @Composable (Modifier) -> Unit = { viewportModifier ->
             Box(
-                Modifier.fillMaxWidth().weight(1f).clipToBounds()
+                viewportModifier.clipToBounds()
                     .testTag("r6-zoom-viewport-clipped")
                     .pointerInput(title) {
                         detectTapGestures(onDoubleTap = {
@@ -361,6 +357,8 @@ internal fun RequiredTypeStudyFullImage(
                     }.testTag("r2-fullscreen-bitmap"),
                 )
             }
+        }
+        val controls: @Composable () -> Unit = {
             Text(
                 if (tamil) "பெரிதாக்கம்: ${(zoom * 100f).roundToInt()}%"
                 else "Zoom: ${(zoom * 100f).roundToInt()}%",
@@ -392,6 +390,23 @@ internal fun RequiredTypeStudyFullImage(
                         Text(if (tamil) "மூடு" else "Close")
                     }
                 }
+            }
+
+        }
+        val frame = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)
+            .statusBarsPadding().navigationBarsPadding().padding(14.dp).testTag("r2-fullscreen-dialog")
+        if (landscape) {
+            // A short, wide screen: the image gets the height, the controls scroll beside it.
+            Row(frame, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Column(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    header(); viewport(Modifier.fillMaxWidth().weight(1f))
+                }
+                Column(Modifier.width(260.dp).fillMaxHeight().verticalScroll(androidx.compose.foundation.rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)) { controls() }
+            }
+        } else {
+            Column(frame, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                header(); viewport(Modifier.fillMaxWidth().weight(1f)); controls()
             }
         }
     }

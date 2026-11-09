@@ -63,14 +63,17 @@ timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" "$
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
   -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle.txt
 if [[ "$variant" == debug ]]; then
-  # Reader continuity (search, bookmarks, language switch, figure viewer) runs second, so the established
-  # tests above run on an untouched emulator. Gradle replaces its results directory on each run: keep the first.
+  # Extra classes run after the established one, so those tests run on an untouched emulator.
+  # Gradle replaces its results directory on each run: keep every earlier set.
   cp -R native-app/app/build/outputs/androidTest-results/connected qa-evidence/functional/connected-established
-  timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" --stacktrace --info \
-    -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeReaderContinuityTest \
-    -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
-    -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
-    -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle-continuity.txt
+  for extra in NativeReaderContinuityTest:continuity NativeMcqPracticeTest:mcq; do
+    [[ "$extra" == NativeMcqPracticeTest:mcq ]] && cp -R native-app/app/build/outputs/androidTest-results/connected qa-evidence/functional/connected-continuity
+    timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" --stacktrace --info \
+      -Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.${extra%%:*} \
+      -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
+      -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
+      -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle-${extra##*:}.txt
+  done
 fi
 python3 - "$test_class" "$variant" <<'PYTEST'
 import pathlib, sys, xml.etree.ElementTree as ET
@@ -81,6 +84,7 @@ expected={
 }
 established="com.gasczoology.invertebratelab.NativeFunctionalRepairsTest"
 continuity="com.gasczoology.invertebratelab.NativeReaderContinuityTest"
+mcq="com.gasczoology.invertebratelab.NativeMcqPracticeTest"
 # The established class runs first, on an untouched emulator; the reader-continuity class runs after it.
 expected={(established, n) for n in expected}
 if sys.argv[2]=="debug":
@@ -88,11 +92,15 @@ if sys.argv[2]=="debug":
         "chapterSearchOpensTheMatchingBlockAndBookmarksPersist",
         "switchingLanguageKeepsTheSemanticPage",
         "figureViewerZoomsSurvivesRecreationAndReturnsToTheSamePage",
+    )} | {(mcq, n) for n in (
+        "fullRunScoresShowsExplanationsAndRetriesOnlyTheMissedQuestion",
+        "positionAndSelectionSurviveRecreation",
+        "anEmptyBankShowsNoQuiz",
     )}
 else:
     expected={(sys.argv[1], n) for _, n in expected}
 roots=['native-app/app/build/outputs/androidTest-results/connected']
-if sys.argv[2]=="debug": roots.append('qa-evidence/functional/connected-established')
+if sys.argv[2]=="debug": roots += ['qa-evidence/functional/connected-established', 'qa-evidence/functional/connected-continuity']
 cases=[case for root in roots for path in pathlib.Path(root).rglob('TEST-*.xml')
        for case in ET.parse(path).getroot().iter('testcase')]
 actual=[(case.get('classname'), case.get('name')) for case in cases]

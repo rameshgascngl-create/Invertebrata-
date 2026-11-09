@@ -72,6 +72,10 @@ internal fun UnitBookTeachingChapter(
     }
     var searchTarget by remember(chapter.id) { mutableStateOf<BookTarget?>(null) }
     val scope = rememberCoroutineScope()
+    // Multiple-choice practice appears only when a validated question file exists for this chapter.
+    val mcqBank = remember(context) { McqAssets.load(context) }
+    val chapterMcq = remember(mcqBank, chapter.id) { mcqBank.forChapter(chapter.id) }
+    var mcqOpen by rememberSaveable(chapter.id) { mutableStateOf(false) }
     val pageIndex = pages.indexOfFirst { it.id == pageId }.coerceAtLeast(0)
     val page = pages[pageIndex]
     val restorePosition = remember(chapter.id, pageId, continuous, referenceGalleryOpen) {
@@ -115,6 +119,7 @@ internal fun UnitBookTeachingChapter(
     androidx.activity.compose.BackHandler {
         narrator.stop()
         when {
+            mcqOpen -> mcqOpen = false
             referenceGalleryOpen -> referenceGalleryOpen = false
             continuous -> continuous = false
             pageHistory.isNotEmpty() -> {
@@ -190,7 +195,7 @@ internal fun UnitBookTeachingChapter(
             }
         },
         bottomBar = {
-            if (!continuous && !referenceGalleryOpen) Column(Modifier.navigationBarsPadding().padding(horizontal = 8.dp)) {
+            if (!continuous && !referenceGalleryOpen && !mcqOpen) Column(Modifier.navigationBarsPadding().padding(horizontal = 8.dp)) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     OutlinedButton(onClick = { selectPage(pages[pageIndex - 1].id) }, enabled = pageIndex > 0,
                         modifier = Modifier.heightIn(min = 48.dp).testTag("reading-page-previous")
@@ -210,7 +215,11 @@ internal fun UnitBookTeachingChapter(
             }
         },
     ) { padding ->
-        if (continuous && continuousReader != null) {
+        if (mcqOpen && chapterMcq.isNotEmpty()) {
+            Box(Modifier.fillMaxSize().padding(padding)) {
+                McqPracticeScreen(chapterMcq, mcqBank.verified, language, { mcqOpen = false }, "mcq-" + chapter.id)
+            }
+        } else if (continuous && continuousReader != null) {
             Box(Modifier.fillMaxSize().padding(padding)) { continuousReader() }
         } else if (!continuous && pageId == "interactive" && interactiveReader != null) {
             Box(Modifier.fillMaxSize().padding(padding)) { interactiveReader() }
@@ -312,6 +321,12 @@ internal fun UnitBookTeachingChapter(
                                 }
                             }
                         }
+                    }
+                }
+                if (chapterMcq.isNotEmpty() && (continuous || pageId == "quick-checks")) item(key = "mcq-entry") {
+                    Button(onClick = { mcqOpen = true }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("mcq-open")) {
+                        Text(ut(language, "Practise multiple-choice questions (${chapterMcq.size})",
+                            "பல்தேர்வு வினாக்களைப் பயிலுக (${chapterMcq.size})"))
                     }
                 }
                 if (chapter.id == "u4-nereis" && (continuous || pageId == "quick-checks")) {
