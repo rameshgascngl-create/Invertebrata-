@@ -39,7 +39,7 @@ adb shell svc data disable
 adb shell settings get system font_scale > qa-evidence/functional/font-scale.txt
 properties=()
 case "$variant" in
-  debug) task=connectedDebugAndroidTest; apkdir=debug; test_class=com.gasczoology.invertebratelab.NativeFunctionalRepairsTest ;;
+  debug) task=connectedDebugAndroidTest; apkdir=debug; test_class=com.gasczoology.invertebratelab.NativeFunctionalRepairsTest,com.gasczoology.invertebratelab.NativeReaderContinuityTest ;;
   release) task=connectedReleaseAndroidTest; apkdir=release; test_class=com.gasczoology.invertebratelab.NativeReleaseFunctionalTest; properties+=(-PfunctionalRelease=true) ;;
   *) exit 2 ;;
 esac
@@ -69,20 +69,24 @@ expected={
     "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
     "parasiteAndPrawnInteractivePagesAreReachable",
 }
+established="com.gasczoology.invertebratelab.NativeFunctionalRepairsTest"
+continuity="com.gasczoology.invertebratelab.NativeReaderContinuityTest"
+# The established class runs first, on an untouched emulator; the reader-continuity class runs after it.
+expected={(established, n) for n in expected}
 if sys.argv[2]=="debug":
-    # Reader continuity tests (search, bookmarks, language switch, figure viewer) run in the debug class only.
-    expected|={
+    expected|={(continuity, n) for n in (
         "chapterSearchOpensTheMatchingBlockAndBookmarksPersist",
         "switchingLanguageKeepsTheSemanticPage",
         "figureViewerZoomsSurvivesRecreationAndReturnsToTheSamePage",
-    }
+    )}
+else:
+    expected={(sys.argv[1], n) for _, n in expected}
 cases=[case for path in pathlib.Path('native-app/app/build/outputs/androidTest-results/connected').rglob('TEST-*.xml')
        for case in ET.parse(path).getroot().iter('testcase')]
-actual=[case.get('name') for case in cases]
+actual=[(case.get('classname'), case.get('name')) for case in cases]
 assert len(cases)==len(expected) and set(actual)==expected, ("WRONG_FUNCTIONAL_COHORT", actual)
-assert all(case.get('classname')==sys.argv[1] for case in cases)
 assert not any(case.find(tag) is not None for case in cases for tag in ('failure','error','skipped')), "NONPASS_FUNCTIONAL_TEST"
-print("VERIFIED_FUNCTIONAL_COHORT", len(cases), sorted(actual))
+print("VERIFIED_FUNCTIONAL_COHORT", len(cases), sorted(n for _, n in actual))
 PYTEST
 cp native-app/app/build/outputs/apk/"$apkdir"/*.apk qa-evidence/functional/
 (cd qa-evidence/functional && sha256sum *.apk > APK-SHA256.txt)
