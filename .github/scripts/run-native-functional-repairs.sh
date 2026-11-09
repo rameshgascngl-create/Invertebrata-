@@ -62,17 +62,24 @@ timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" "$
   -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
   -Pandroid.testInstrumentationRunnerArguments.functionalOrientation="$orientation" 2>&1 | tee qa-evidence/functional/instrumentation-gradle.txt
-python3 - "$test_class" <<'PYTEST'
+python3 - "$test_class" "$variant" <<'PYTEST'
 import pathlib, sys, xml.etree.ElementTree as ET
 expected={
     "defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers",
     "allFiveSimulatorsMoveRealDiagramPixelsAndPause",
     "parasiteAndPrawnInteractivePagesAreReachable",
 }
+if sys.argv[2]=="debug":
+    # Reader continuity tests (search, bookmarks, language switch, figure viewer) run in the debug class only.
+    expected|={
+        "chapterSearchOpensTheMatchingBlockAndBookmarksPersist",
+        "switchingLanguageKeepsTheSemanticPage",
+        "figureViewerZoomsSurvivesRecreationAndReturnsToTheSamePage",
+    }
 cases=[case for path in pathlib.Path('native-app/app/build/outputs/androidTest-results/connected').rglob('TEST-*.xml')
        for case in ET.parse(path).getroot().iter('testcase')]
 actual=[case.get('name') for case in cases]
-assert len(cases)==3 and set(actual)==expected, ("WRONG_FUNCTIONAL_COHORT", actual)
+assert len(cases)==len(expected) and set(actual)==expected, ("WRONG_FUNCTIONAL_COHORT", actual)
 assert all(case.get('classname')==sys.argv[1] for case in cases)
 assert not any(case.find(tag) is not None for case in cases for tag in ('failure','error','skipped')), "NONPASS_FUNCTIONAL_TEST"
 print("VERIFIED_FUNCTIONAL_COHORT", len(cases), sorted(actual))
