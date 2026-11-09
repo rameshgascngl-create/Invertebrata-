@@ -140,6 +140,19 @@ class NativeFunctionalRepairsTest {
 
     private fun pageId(): String = rule.onNodeWithTag("reading-page-id").fetchSemanticsNode().config[SemanticsProperties.ContentDescription].first()
 
+    /** Polls the bookmark file and, on timeout, says what was actually stored. */
+    private fun awaitBookmarks(label: String, ok: (Map<String, Set<String>>) -> Boolean) {
+        val repo = BookmarkRepository(context)
+        val deadline = System.currentTimeMillis() + 10_000
+        var last: Map<String, Set<String>> = emptyMap()
+        while (System.currentTimeMillis() < deadline) {
+            last = runBlocking { repo.bookmarks.first() }
+            if (ok(last)) return
+            Thread.sleep(200)
+        }
+        fail("bookmarks $label: stored = $last")
+    }
+
     /** Names the step in the failure message; Compose test errors do not carry a useful stack here. */
     private fun step(name: String, body: () -> Unit) {
         try { body() } catch (e: Throwable) { throw AssertionError("step '$name': ${e.message}", e) }
@@ -177,7 +190,7 @@ class NativeFunctionalRepairsTest {
         val marked = pageId()
         step("add bookmark") { rule.onNodeWithTag("reading-bookmark-add").performClick() }
         rule.onNodeWithTag("reading-bookmark-remove").assertExists()
-        runBlocking { withTimeout(10_000) { BookmarkRepository(context).bookmarks.first { it[id]?.contains(marked) == true } } }
+        awaitBookmarks("after add of $marked") { it[id]?.contains(marked) == true }
         val onDisk = File(context.filesDir, "datastore/book_bookmarks.preferences_pb")
         assertTrue("bookmark file not written: ${onDisk.absolutePath}", onDisk.exists() && onDisk.length() > 0)
         rule.activityRule.scenario.recreate()
@@ -192,7 +205,7 @@ class NativeFunctionalRepairsTest {
 
         // Removing it clears it from disk and from the list.
         step("remove bookmark") { rule.onNodeWithTag("reading-bookmark-remove").performClick() }
-        runBlocking { withTimeout(10_000) { BookmarkRepository(context).bookmarks.first { it[id].isNullOrEmpty() } } }
+        awaitBookmarks("after remove of $marked") { it[id].isNullOrEmpty() }
         rule.onNodeWithTag("reading-bookmark-add").assertExists()
 
         // A nonsense query reports no match instead of staying silent.
