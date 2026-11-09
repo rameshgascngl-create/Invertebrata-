@@ -102,7 +102,7 @@ class NativeReleaseFunctionalTest {
         val where = target?.let { val r = Rect(); it.getBoundsInScreen(r); "present, visibleToUser=" + it.isVisibleToUser + " bounds=" + r } ?: "absent from the accessibility tree"
         val display = context.resources.displayMetrics
         throw AssertionError("Android accessibility node not found: " + id + " [" + where + "; screen=" + display.widthPixels + "x" +
-            display.heightPixels + " fontScale=" + context.resources.configuration.fontScale + "; visible: " + seen.take(45).joinToString(" | ") + "]")
+            display.heightPixels + " fontScale=" + context.resources.configuration.fontScale + "; scroll:" + scrollTrace + "; visible: " + seen.take(45).joinToString(" | ") + "]")
     }
     private fun windowBounds(): Rect {
         val node = checkNotNull(automation.rootInActiveWindow)
@@ -190,6 +190,7 @@ class NativeReleaseFunctionalTest {
         }
         return waitFor(id)
     }
+    private val scrollTrace = StringBuilder()
     private fun scrollTo(id: String): AccessibilityNodeInfo {
         find(id)?.let { return it }
         if (id.startsWith("r1-tab-")) return horizontal("r1-module-selector", id)
@@ -199,11 +200,17 @@ class NativeReleaseFunctionalTest {
         else listOf(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD, AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)
         // Tamil 200% pages are several times taller; give those searches a larger scroll budget.
         val budget = if (context.resources.configuration.fontScale > 1.5f) 140 else 55
-        for (direction in directions) for (attempt in 0 until budget) {
-            find(id)?.let { return it }
-            find(id, false)?.let { it.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id); it.recycle(); SystemClock.sleep(75) }
-            find(id)?.let { return it }
-            if (!scroll(direction)) break
+        scrollTrace.setLength(0)
+        for (direction in directions) {
+            var steps = 0
+            for (attempt in 0 until budget) {
+                find(id)?.let { return it }
+                find(id, false)?.let { it.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id); it.recycle(); SystemClock.sleep(75) }
+                find(id)?.let { return it }
+                if (!scroll(direction)) { scrollTrace.append(" dir=").append(direction).append(" stopped-after=").append(steps); break }
+                steps++
+                if (attempt == budget - 1) scrollTrace.append(" dir=").append(direction).append(" budget-exhausted=").append(steps)
+            }
         }
         return waitFor(id)
     }
