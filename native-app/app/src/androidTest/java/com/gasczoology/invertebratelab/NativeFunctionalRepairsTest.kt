@@ -173,15 +173,6 @@ class NativeFunctionalRepairsTest {
         }
         screenshot("search-opened-$id")
 
-        // A nonsense query reports no match instead of staying silent.
-        step("open contents") { rule.onNodeWithTag("reading-contents").performClick() }
-        rule.waitForIdle()
-        rule.onNodeWithTag("reading-search-field").performTextClearance()
-        rule.onNodeWithTag("reading-search-field").performTextInput("zzqxjv")
-        rule.onNodeWithTag("reading-search-field").performImeAction()
-        rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-search-empty").fetchSemanticsNodes().isNotEmpty() }
-        rule.onNodeWithTag("reading-search-field").performTextClearance()
-
         // Bookmark the opened page, leave, recreate, and find it again from the contents list.
         val marked = pageId()
         step("add bookmark") { rule.onNodeWithTag("reading-bookmark-add").performClick() }
@@ -203,6 +194,15 @@ class NativeFunctionalRepairsTest {
         step("remove bookmark") { rule.onNodeWithTag("reading-bookmark-remove").performClick() }
         runBlocking { withTimeout(10_000) { BookmarkRepository(context).bookmarks.first { it[id].isNullOrEmpty() } } }
         rule.onNodeWithTag("reading-bookmark-add").assertExists()
+
+        // A nonsense query reports no match instead of staying silent.
+        step("open contents") { rule.onNodeWithTag("reading-contents").performClick() }
+        rule.waitForIdle()
+        rule.onNodeWithTag("reading-search-field").performTextClearance()
+        rule.onNodeWithTag("reading-search-field").performTextInput("zzqxjv")
+        rule.onNodeWithTag("reading-search-field").performImeAction()
+        rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-search-empty").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("reading-search-field").performTextClearance()
     }
 
     /** Page ids are language independent, so changing language keeps the reader on the same page. */
