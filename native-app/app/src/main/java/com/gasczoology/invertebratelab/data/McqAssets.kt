@@ -3,7 +3,7 @@ package com.gasczoology.invertebratelab.data
 import android.content.Context
 
 /**
- * Loads every assets/mcq/*.json bank. No bank ships until a reviewed file is supplied. A file that
+ * Loads every JSON bank in the assets/mcq folder. No bank ships until a reviewed file is supplied. A file that
  * fails validation is rejected whole and logged; students then simply see no quiz, never a partial one.
  */
 object McqAssets {
