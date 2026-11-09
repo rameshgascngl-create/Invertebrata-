@@ -207,7 +207,9 @@ class NativeReleaseFunctionalTest {
                 find(id)?.let { return it }
                 find(id, false)?.let { it.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.id); it.recycle(); SystemClock.sleep(75) }
                 find(id)?.let { return it }
-                if (!scroll(direction)) { scrollTrace.append(" dir=").append(direction).append(" stopped-after=").append(steps); break }
+                // One stalled swipe is not the end of the page: inside a paragraph taller than the screen the
+                // clipped bounds do not change, so confirm with a second attempt before giving up.
+                if (!scroll(direction) && !(SystemClock.sleep(300).let { scroll(direction) })) { scrollTrace.append(" dir=").append(direction).append(" stopped-after=").append(steps); break }
                 steps++
                 if (attempt == budget - 1) scrollTrace.append(" dir=").append(direction).append(" budget-exhausted=").append(steps)
             }
