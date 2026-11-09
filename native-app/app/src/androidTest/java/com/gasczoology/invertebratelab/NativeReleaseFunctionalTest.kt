@@ -142,7 +142,10 @@ class NativeReleaseFunctionalTest {
         SystemClock.sleep(100)
     }
     private fun scroll(action: Int): Boolean {
-        val before = fingerprint(); val scrollEvent = verticalScrollEvents.get(); val bounds = windowBounds()
+        val before = fingerprint(); val scrollEvent = verticalScrollEvents.get()
+        // Sticky bars take a third of a 200% landscape screen, so a swipe aimed at a fraction of the
+        // window can start on the bar and never reach the page. Aim inside the scrollable page instead.
+        val bounds = largestScrollableBounds() ?: windowBounds()
         val high = bounds.top + bounds.height() * .32f
         val low = bounds.top + bounds.height() * .78f
         if (action == AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
@@ -153,6 +156,19 @@ class NativeReleaseFunctionalTest {
         // A swipe that starts on an interactive canvas is consumed by it and never scrolls the page
         // (seen at Tamil 200% in the release build). Ask the largest scrollable container directly.
         return scrollLargestContainer(action, before)
+    }
+    private fun largestScrollableBounds(): Rect? {
+        var best: Rect? = null
+        fun visit(node: AccessibilityNodeInfo) {
+            if (node.isScrollable && node.isVisibleToUser) {
+                val r = Rect(); node.getBoundsInScreen(r)
+                // A horizontal strip (module or process selector) is not the page.
+                if (r.height() >= 300 && r.width() * r.height() > (best?.let { it.width() * it.height() } ?: 0)) best = r
+            }
+            for (at in 0 until node.childCount) node.getChild(at)?.let(::visit)
+        }
+        automation.rootInActiveWindow?.let(::visit)
+        return best
     }
     private fun scrollLargestContainer(action: Int, before: String): Boolean {
         var best: AccessibilityNodeInfo? = null
@@ -274,6 +290,18 @@ class NativeReleaseFunctionalTest {
         val result = checkNotNull(node.rangeInfo) { "Diagram has no Android range semantics: " + id }.current
         node.recycle(); return result
     }
+    /** Full height and the height left after clipping by every scrollable ancestor, or null if absent. */
+    private fun clippedHeights(id: String): Pair<Int, Int>? {
+        val node = find(id, false) ?: return null
+        val r = Rect(); node.getBoundsInScreen(r); val full = r.height()
+        var ancestor = node.parent
+        while (ancestor != null) {
+            if (ancestor.isScrollable) { val clip = Rect(); ancestor.getBoundsInScreen(clip); r.intersect(clip) }
+            val next = ancestor.parent; ancestor.recycle(); ancestor = next
+        }
+        node.recycle()
+        return full to maxOf(r.height(), 0)
+    }
     private fun visibleHeight(id: String): Int {
         val node = find(id, false) ?: return 0
         val rect = Rect(); node.getBoundsInScreen(rect); node.recycle()
@@ -310,6 +338,14 @@ class NativeReleaseFunctionalTest {
         // Playback controls may scroll the animated canvas almost completely offscreen.
         // Bring the actual diagram back into view, and let the scroll finish, before sampling pixels.
         bringFullyIntoView(id)
+        // In landscape the sticky bars leave little room; if the first alignment left part of the
+        // canvas under a bar, nudge the page and align again so both captures see the same region.
+        for (nudge in 0 until 4) {
+            val (full, shown) = clippedHeights(id) ?: break
+            if (shown >= full) break
+            scroll(if (nudge % 2 == 0) AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD else AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
+            bringFullyIntoView(id)
+        }
         val node = scrollTo(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
         val fullHeight = bounds.height()
         var ancestor = node.parent
