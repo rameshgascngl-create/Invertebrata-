@@ -2,10 +2,12 @@ package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -53,10 +55,13 @@ internal fun LazyListScope.chapterFindItems(
     onOpen: (BookTarget) -> Unit,
 ) {
     item(key = "find-search") {
+        val focus = LocalFocusManager.current
         OutlinedTextField(
             value = query, onValueChange = onQuery, singleLine = true,
             label = { Text(f(language, "Search this chapter", "இந்த அத்தியாயத்தில் தேடு")) },
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+            // Search runs as you type; the Search key just puts the keyboard away so results are visible.
+            keyboardActions = KeyboardActions(onSearch = { focus.clearFocus() }),
             modifier = Modifier.fillMaxWidth().testTag("reading-search-field"),
         )
     }

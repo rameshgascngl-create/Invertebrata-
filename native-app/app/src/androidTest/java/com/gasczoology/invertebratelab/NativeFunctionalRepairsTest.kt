@@ -140,6 +140,11 @@ class NativeFunctionalRepairsTest {
 
     private fun pageId(): String = rule.onNodeWithTag("reading-page-id").fetchSemanticsNode().config[SemanticsProperties.ContentDescription].first()
 
+    /** Names the step in the failure message; Compose test errors do not carry a useful stack here. */
+    private fun step(name: String, body: () -> Unit) {
+        try { body() } catch (e: Throwable) { throw AssertionError("step '$name': ${e.message}", e) }
+    }
+
     /** Search -> hit -> the reader opens the page that holds the block, with the block on screen. */
     @Test fun chapterSearchOpensTheMatchingBlockAndBookmarksPersist() {
         val unit = 1; val id = "u1-paramecium"
@@ -152,13 +157,15 @@ class NativeFunctionalRepairsTest {
         val expected = BookChapterSearch.search(book, pages, chapter.a5Questions, term, language)
         assertTrue("no expected hits for $term", expected.isNotEmpty())
 
-        rule.onNodeWithTag("reading-contents").performClick()
+        step("open contents") { rule.onNodeWithTag("reading-contents").performClick() }
         rule.waitForIdle()
         rule.onNodeWithTag("reading-search-field").performTextInput(term)
+        rule.onNodeWithTag("reading-search-field").performImeAction()
         rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-search-hit-0").fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("reading-search-count").assertExists()
         screenshot("search-results-$id")
-        rule.onNodeWithTag("reading-search-hit-0").performClick()
+        rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("reading-search-hit-0"))
+        step("click first hit") { rule.onNodeWithTag("reading-search-hit-0").performClick() }
         rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-page-id").fetchSemanticsNodes().isNotEmpty() }
         rule.waitUntil(10_000) { pageId() == expected[0].pageId }
         if (expected[0].rowIndex >= 0) rule.waitUntil(10_000) {
@@ -167,16 +174,17 @@ class NativeFunctionalRepairsTest {
         screenshot("search-opened-$id")
 
         // A nonsense query reports no match instead of staying silent.
-        rule.onNodeWithTag("reading-contents").performClick()
+        step("open contents") { rule.onNodeWithTag("reading-contents").performClick() }
         rule.waitForIdle()
         rule.onNodeWithTag("reading-search-field").performTextClearance()
         rule.onNodeWithTag("reading-search-field").performTextInput("zzqxjv")
+        rule.onNodeWithTag("reading-search-field").performImeAction()
         rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-search-empty").fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("reading-search-field").performTextClearance()
 
         // Bookmark the opened page, leave, recreate, and find it again from the contents list.
         val marked = pageId()
-        rule.onNodeWithTag("reading-bookmark-add").performClick()
+        step("add bookmark") { rule.onNodeWithTag("reading-bookmark-add").performClick() }
         rule.onNodeWithTag("reading-bookmark-remove").assertExists()
         runBlocking { withTimeout(10_000) { BookmarkRepository(context).bookmarks.first { it[id]?.contains(marked) == true } } }
         val onDisk = File(context.filesDir, "datastore/book_bookmarks.preferences_pb")
@@ -184,15 +192,15 @@ class NativeFunctionalRepairsTest {
         rule.activityRule.scenario.recreate()
         waitFor(root(id, unit))
         rule.waitUntil(10_000) { rule.onAllNodesWithTag("reading-bookmark-remove").fetchSemanticsNodes().isNotEmpty() }
-        rule.onNodeWithTag("reading-contents").performClick()
+        step("open contents") { rule.onNodeWithTag("reading-contents").performClick() }
         rule.waitForIdle()
         rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("reading-bookmark-$marked"))
         screenshot("bookmarks-$id")
-        rule.onNodeWithTag("reading-bookmark-$marked").performClick()
+        step("open bookmark") { rule.onNodeWithTag("reading-bookmark-$marked").performClick() }
         rule.waitUntil(10_000) { pageId() == marked }
 
         // Removing it clears it from disk and from the list.
-        rule.onNodeWithTag("reading-bookmark-remove").performClick()
+        step("remove bookmark") { rule.onNodeWithTag("reading-bookmark-remove").performClick() }
         runBlocking { withTimeout(10_000) { BookmarkRepository(context).bookmarks.first { it[id].isNullOrEmpty() } } }
         rule.onNodeWithTag("reading-bookmark-add").assertExists()
     }
@@ -209,6 +217,38 @@ class NativeFunctionalRepairsTest {
         assertEquals("row-0", pageId())
         rule.onNodeWithTag("reading-page-position").assertExists()
         runBlocking { LanguagePreferenceRepository(context).setLanguage(language) }
+    }
+
+    /** One viewer for book figures: enlarge, zoom, survive rotation, close back to the same page. */
+    @Test fun figureViewerZoomsSurvivesRecreationAndReturnsToTheSamePage() {
+        val unit = 1; val id = "u1-paramecium"
+        enterChapter(unit, id)
+        val book = BookChapters.forLesson(id)!!
+        val rows = BookLayout.rows(book)
+        val chapter = ValidatedA5AssetRepository(context).load().flatMap { it.chapters }.single { it.id == id }
+        val pages = BookReadingPages.forChapter(book, chapter.a5Questions.map { it.id })
+        val figureRow = rows.indexOfFirst { (it as? BookRow.Block)?.block is BookFigure }
+        assertTrue("chapter has no figure", figureRow >= 0)
+        val figure = (rows[figureRow] as BookRow.Block).block as BookFigure
+        val tag = figure.slot.replace('/', '-')
+        val page = pages.first { figureRow in it.rowIndices }
+        openPage(id, unit, page.id)
+        rule.onNodeWithTag(root(id, unit)).performScrollToNode(hasTestTag("r2-plate-bitmap-$tag"))
+        rule.onNodeWithTag("r2-plate-bitmap-$tag").performClick()
+        rule.waitUntil(10_000) { rule.onAllNodesWithTag("r2-fullscreen-bitmap").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("100%", substring = true)
+        rule.onNodeWithTag("r2-zoom-in").performClick()
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
+        screenshot("figure-viewer-zoom-$tag")
+        rule.activityRule.scenario.recreate()
+        rule.waitUntil(15_000) { rule.onAllNodesWithTag("r2-fullscreen-bitmap").fetchSemanticsNodes().isNotEmpty() }
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("200%", substring = true)
+        rule.onNodeWithTag("r2-zoom-reset").performClick()
+        rule.onNodeWithTag("r6-zoom-level").assertTextContains("100%", substring = true)
+        rule.onNodeWithTag("r2-fullscreen-close").performClick()
+        rule.waitUntil(10_000) { rule.onAllNodesWithTag("r2-fullscreen-bitmap").fetchSemanticsNodes().isEmpty() }
+        assertEquals(page.id, pageId())
+        rule.onNodeWithTag("book-figure-$tag").assertExists()
     }
 
     @Test fun parasiteAndPrawnInteractivePagesAreReachable() {

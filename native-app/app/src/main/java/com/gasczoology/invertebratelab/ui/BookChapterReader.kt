@@ -322,7 +322,8 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
                     .testTag("r2-plate-bitmap-$tag"))
             if (expanded) {
                 RequiredTypeStudyFullImage(image = bitmap, title = caption,
-                    language = language, onDismiss = { expanded = false })
+                    language = language, onDismiss = { expanded = false },
+                    credit = (BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit)?.text(language))
             }
         }
         Text(caption, style = MaterialTheme.typography.titleMedium,

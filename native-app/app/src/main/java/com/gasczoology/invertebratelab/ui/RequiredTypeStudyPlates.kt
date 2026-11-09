@@ -300,10 +300,13 @@ internal fun RequiredTypeStudyFullImage(
     title: String,
     language: AppLanguage,
     onDismiss: () -> Unit,
+    /** Creator / AI-generated credit, shown under the figure so it travels with the enlarged image. */
+    credit: String? = null,
 ) {
-    var zoom by remember(title) { mutableFloatStateOf(1f) }
-    var panX by remember(title) { mutableFloatStateOf(0f) }
-    var panY by remember(title) { mutableFloatStateOf(0f) }
+    // Saved, so rotating the phone while zoomed keeps the same view of the figure.
+    var zoom by rememberSaveable(title) { mutableFloatStateOf(1f) }
+    var panX by rememberSaveable(title) { mutableFloatStateOf(0f) }
+    var panY by rememberSaveable(title) { mutableFloatStateOf(0f) }
     val tamil = language == AppLanguage.TAMIL
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         Column(
@@ -364,6 +367,10 @@ internal fun RequiredTypeStudyFullImage(
                 style = MaterialTheme.typography.labelMedium,
                 modifier = Modifier.testTag("r6-zoom-level"),
             )
+            credit?.let {
+                Text(it, style = MaterialTheme.typography.bodySmall, maxLines = 3,
+                    overflow = TextOverflow.Ellipsis, modifier = Modifier.testTag("r2-fullscreen-credit"))
+            }
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { zoom = (zoom / 2f).coerceAtLeast(1f) },
