@@ -101,7 +101,11 @@ class StudentTextbookEditorialAuditTest {
             "Species-verified pencil raster is pending;",
             "Raster present, but anatomical leader/hotspot review is still pending.",
             "Next gate: six species-specific reviewed pencil plates",
-            "accurate organism-specific replacement figures remain pending."
+            "accurate organism-specific replacement figures remain pending.",
+            "Diagram labels and sequence need independent scientific and Tamil review.",
+            "species-specific diagnostic drawings remain outstanding.",
+            "Required concept-specific PNG not yet scientifically verified;",
+            "இனத்திற்குரிய சோதனைப் படங்கள் இன்னும் நிலுவையில் உள்ளன."
         )
         val problems = paths.flatMap { path ->
             val text = File(root, path).readText(Charsets.UTF_8)

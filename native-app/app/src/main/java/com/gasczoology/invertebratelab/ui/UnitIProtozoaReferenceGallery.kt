@@ -41,16 +41,16 @@ private val references=listOf(
         "என்டமீபா ஹிஸ்டோலிட்டிகா — வளர் நிலை, சிஸ்ட், பரவும் வழி",
         "The trophozoite has one nucleus and moves by pseudopodia. A mature cyst usually has four nuclei; cyst ingestion is the principal infection route. A diagnostic image of an E. histolytica/E. dispar cyst cannot identify the species from morphology alone.",
         "வளர் நிலையில் ஓர் உட்கரு காணப்படும்; போலிக்கால்கள் மூலம் நகர்கிறது. முதிர்ந்த சிஸ்டில் பொதுவாக நான்கு உட்கருக்கள் காணப்படும். சிஸ்டை உட்கொள்வதன் மூலம் தொற்று பரவுகிறது. சிஸ்ட் வடிவத்தால் மட்டுமே E. histolytica மற்றும் E. dispar இனங்களைப் பிரித்தறிய இயலாது.",
-        "Public-domain life-cycle artwork, not a verified hand-drawn anatomical master. Diagram labels and sequence need independent scientific and Tamil review.",
-        "பொதுச்சொத்து வாழ்க்கைச் சுழற்சி விளக்கப்படம் மட்டுமே; சரிபார்க்கப்பட்ட பென்சில் உடலமைப்புப் படமல்ல. குறிகளும் வரிசையும் தனித்த மதிப்பாய்வுக்குட்பட்டவை.",
+        "Historical life-cycle diagram. Use the descriptive text to distinguish motile trophozoites from non-motile cysts; the species cannot be diagnosed by cyst appearance alone.",
+        "இது வாழ்க்கைச் சுழற்சி விளக்கப்படம். இயங்கும் டிரோபோசோயிட் நிலையையும் இயங்காத சிஸ்ட் நிலையையும் வேறுபடுத்துக; சிஸ்டின் வடிவத்தால் மட்டும் சிற்றினத்தை உறுதிப்படுத்த முடியாது.",
         "Mariana Ruiz Villarreal (LadyofHats) · public domain",
         "https://commons.wikimedia.org/wiki/File:Entamoeba_histolytica_life_cycle-en.svg"),
     ProtozoaReference("plasmodium","Plasmodium — liver, blood and mosquito stages",
         "பிளாஸ்மோடியம் — கல்லீரல், இரத்தம், கொசு நிலைகள்",
         "An infected female Anopheles mosquito introduces sporozoites. Liver-stage replication precedes erythrocytic ring, trophozoite and schizont stages. Ingested gametocytes develop through fertilisation, ookinete, oocyst and sporozoites in the mosquito.",
         "தொற்றுடைய பெண் அனாபிலிஸ் கொசு ஸ்போரோசோயிட்டுகளை உட்செலுத்துகிறது. கல்லீரல் பெருக்கத்துக்குப் பின் இரத்தச் சிவப்பணுக்களில் வளைய, வளர் மற்றும் ஸ்கிசோன்ட் நிலைகள் ஏற்படுகின்றன. கொசுவில் கேமீட்டுகள் சேர்ந்து ஊகைனீட், ஊசிஸ்ட், ஸ்போரோசோயிட் நிலைகளாக வளர்கின்றன.",
-        "Source life-cycle plate is based on P. falciparum. Do not infer a dormant liver hypnozoite for P. falciparum; species-specific diagnostic drawings remain outstanding.",
-        "இப்படம் P. falciparum அடிப்படையிலானது; இவ்வினத்தில் உறக்க கல்லீரல் ஹிப்னோசோயிட் இருப்பதாகக் கருதக்கூடாது. இனத்திற்குரிய சோதனைப் படங்கள் இன்னும் நிலுவையில் உள்ளன.",
+        "Source life-cycle plate is based on P. falciparum. Do not infer a dormant liver hypnozoite for P. falciparum; liver hypnozoites occur in P. vivax and P. ovale, not P. falciparum.",
+        "இப்படம் P. falciparum அடிப்படையிலானது; இவ்வினத்தில் உறக்க கல்லீரல் ஹிப்னோசோயிட் இருப்பதாகக் கருதக்கூடாது. உறக்க கல்லீரல் நிலையான ஹிப்னோசோயிட்கள் P. vivax, P. ovale ஆகியவற்றில் காணப்படுகின்றன; P. falciparum-இல் இல்லை.",
         "Sina Adl (2025) · CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Malaria_Plasmodium_infection_cycle.png")
 )
 

@@ -71,7 +71,7 @@ private val elaborations = mapOf(
     ),
     "osmoregulation" to detail(
         "Water balance is an active physiological process", "நீர்ச்சமநிலை ஒரு செயற்பாட்டு உடலியல் நிகழ்வு",
-        "In dilute freshwater, inward osmotic water movement creates an ongoing challenge. Membrane transport, collecting compartments and a contractile-vacuole complex contribute to water elimination. Two complexes may occur in the commonly illustrated species, but their positions, arm number and discharge timing must not be presented as fixed measurements on this draft plate.",
+        "In dilute freshwater, inward osmotic water movement creates an ongoing challenge. Membrane transport, collecting compartments and a contractile-vacuole complex contribute to water elimination. Two complexes may occur in the commonly illustrated species, but their positions, arm number and discharge timing must not be presented as fixed measurements in simplified teaching diagrams.",
         "கரைசல் செறிவு குறைந்த நன்னீரில் ஒஸ்மோசிஸ் மூலம் உள்ளே வரும் நீர் தொடர்ச்சியான சவாலை ஏற்படுத்துகிறது. படலவழிப் பொருள் கடத்தல், சேகரிப்புப் பகுதிகள் மற்றும் சுருங்கும் நுண்குமிழ் தொகுதி மிகைநீரை வெளியேற்ற உதவுகின்றன. பொதுவாக விளக்கப்படும் இனத்தில் இரண்டு தொகுதிகள் காணப்படலாம்; ஆனால் அவற்றின் அமைவிடம், சேகரிப்புக் கிளைகளின் எண்ணிக்கை, வெளியேற்ற நேரம் ஆகியவற்றை இவ்வரைபடத்தில் அளவிடப்பட்ட உண்மைகளாகக் காட்டக்கூடாது."
     ),
     "nuclear-dimorphism" to detail(
@@ -185,8 +185,8 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
                 }
             } else {
                 Text(view(language,
-                    "Required concept-specific PNG not yet scientifically verified; the old drawing has been removed.",
-                    "இந்தக் கருத்திற்கான சரிபார்க்கப்பட்ட PNG படம் இன்னும் இல்லை; பழைய வரைபடம் நீக்கப்பட்டது."),
+                    "No separate image is available for this concept. Use the explanation and labelled anatomy gallery.",
+                    "இக்கருத்திற்கான தனிப் படம் இல்லை; பாட விளக்கத்தையும் உடற்கூறு படத் தொகுப்பையும் பயன்படுத்துக."),
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("r14-concept-png-missing-" + figure))
             }
