@@ -31,6 +31,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
@@ -108,7 +109,12 @@ internal fun LazyListScope.bookChapterItems(
                 style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold,
                 modifier = Modifier.semantics { heading() })
             chapter.introduction.forEach {
-                Text(it.value(language), style = MaterialTheme.typography.bodyLarge)
+                Text(
+                    it.value(language),
+                    modifier = Modifier.fillMaxWidth(),
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Justify,
+                )
             }
         }
     }
@@ -240,7 +246,12 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
             modifier = Modifier.fillMaxWidth(),
         ) {
             readingParagraphs(block.text.value(language), language).forEach { segment ->
-                Text(emphasizeAnatomy(segment), style = MaterialTheme.typography.bodyLarge)
+                Text(
+                    emphasizeAnatomy(segment),
+                    modifier = Modifier.fillMaxWidth(),
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Justify,
+                )
             }
         }
         is BookDefinition -> Card(
