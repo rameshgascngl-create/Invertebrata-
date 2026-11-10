@@ -69,7 +69,10 @@ class NativeUnitIIIIIEditorialSmokeTest {
 
         val langName = if (language == AppLanguage.TAMIL) "tamil" else "english"
         rule.onNodeWithTag("language-${langName}").performClick()
-        rule.onNodeWithTag("unit-$unit").performScrollTo().performClick()
+        // A unit below the fold is not composed yet in the richer LazyColumn Home.
+        // Ask the actual Home scroller to compose the requested card first.
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-$unit"))
+        rule.onNodeWithTag("unit-$unit").performClick()
         val unitTag = "native-unit-$unit"
         waitFor(unitTag)
         rule.onNodeWithTag(unitTag)
