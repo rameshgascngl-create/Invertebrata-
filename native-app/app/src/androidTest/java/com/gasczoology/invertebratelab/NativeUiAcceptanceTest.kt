@@ -317,8 +317,11 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithText("Back").performClick()
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
-        rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
+        // Returning from a long book reader may restore the Home list with
+        // Unit 1 outside the composed viewport. Scroll before checking both
+        // Tamil labels, preserving the original scientific-content assertions.
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
