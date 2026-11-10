@@ -165,6 +165,7 @@ class NativeUiAcceptanceTest {
     private fun englishHome() {
         waitFor("native-home")
         rule.onNodeWithTag("language-english").performClick()
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.waitUntil(timeoutMillis = 10_000L) {
             rule.homeUnitOneShows(tamil = false)
         }
@@ -248,6 +249,7 @@ class NativeUiAcceptanceTest {
     fun tamilAnswerAndQuestionPositionSurviveRotation() {
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.waitUntil(timeoutMillis = 10_000L) {
             rule.homeUnitOneShows(tamil = true)
         }
@@ -320,7 +322,7 @@ class NativeUiAcceptanceTest {
         // Returning from a long book reader may restore the Home list with
         // Unit 1 outside the composed viewport. Scroll before checking both
         // Tamil labels, preserving the original scientific-content assertions.
-        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
