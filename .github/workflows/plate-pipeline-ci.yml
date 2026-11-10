@@ -5,6 +5,7 @@ on:
     paths:
       - 'native-app/**'
       - 'tools/**'
+      - 'qa-intake/provisional-figure-inclusion-20261110.json'
       - '.github/workflows/plate-pipeline-ci.yml'
       - '.github/scripts/run-unit1-intro-rendering.sh'
   workflow_dispatch:
@@ -32,6 +33,8 @@ jobs:
           pip install --quiet pillow
           python3 tools/plate_intake.py list | tee plate-inventory.txt
           python3 tools/plate_intake.py check
+      - name: Check provisional student-QA figure decisions (not academic approval)
+        run: python3 tools/check_provisional_figure_inclusion.py
       - name: Verify Paramecium simulator PNG paths against actual packaged assets
         run: |
           python3 - <<'PY'
