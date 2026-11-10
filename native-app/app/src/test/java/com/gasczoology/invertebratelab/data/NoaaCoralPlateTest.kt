@@ -32,7 +32,7 @@ class NoaaCoralPlateTest {
         assertTrue(credit.en.contains("NOAA"))
         assertTrue(credit.en.contains("Flower Garden Banks"))
         assertTrue(credit.ta.contains("பவள"))
-        assertTrue(credit.en.contains("review pending"))
+        assertTrue(credit.en.contains("US federal public domain"))
     }
 
     @Test fun coralLessonDescribesActualSourceNotRemovedSevenNumberDiagram() {

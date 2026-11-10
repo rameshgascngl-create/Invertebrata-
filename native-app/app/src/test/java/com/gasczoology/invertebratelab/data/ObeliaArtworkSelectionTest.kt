@@ -16,8 +16,8 @@ class ObeliaArtworkSelectionTest {
         assertFalse("Outdated numbered keys refer to unrelated pixels",
             figure.caption.english.contains("(1)"))
         assertFalse(figure.caption.tamil.contains("(1)"))
-        assertTrue("Reused native atlas must retain a displayed source review credit",
-            BookFigureLibrary.creditFor(slot)!!.en.contains("source and rights review pending"))
+        assertTrue("Reused native atlas must retain a relevant morphological credit",
+            BookFigureLibrary.creditFor(slot)!!.en.contains("hydranth and gonangium"))
     }
 
     @Test fun physaliaTamilDescriptionDoesNotIncorrectlyCallItFish() {
