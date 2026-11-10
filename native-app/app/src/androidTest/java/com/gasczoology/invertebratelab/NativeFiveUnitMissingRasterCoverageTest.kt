@@ -30,7 +30,10 @@ class NativeFiveUnitMissingRasterCoverageTest {
     }
     private fun enter(unit: Int, chapter: String, tamil: Boolean): String {
         if (tamil) rule.onNodeWithTag("language-tamil").performClick()
-        rule.onNodeWithTag("unit-$unit").performScrollTo().performClick()
+        // At large font sizes, Unit II/III cards start outside the composed viewport.
+        // Scroll the real LazyColumn rather than attempting to scroll an absent child.
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-$unit"))
+        rule.onNodeWithTag("unit-$unit").performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-$unit").fetchSemanticsNodes().isNotEmpty()
         }
