@@ -34,9 +34,9 @@ class HeldFigureTeachingCorrectionsTest {
     @Test fun leishmaniaIsExplicitlyAnAmastigoteOnlyTeachingReference() {
         val credit = BookFigureLibrary.creditFor("lib/leishmania-amastigote")
         assertTrue(credit != null)
-        assertTrue(credit!!.english.contains("AMASTIGOTE ONLY"))
-        assertTrue(credit.english.contains("PROMASTIGOTE"))
-        assertTrue(credit.tamil.contains("புரோமாஸ்டிகோட்"))
-        assertTrue(credit.english.contains("rights not yet verified"))
+        assertTrue(credit!!.en.contains("AMASTIGOTE ONLY"))
+        assertTrue(credit.en.contains("PROMASTIGOTE"))
+        assertTrue(credit.ta.contains("புரோமாஸ்டிகோட்"))
+        assertTrue(credit.en.contains("rights not yet verified"))
     }
 }
