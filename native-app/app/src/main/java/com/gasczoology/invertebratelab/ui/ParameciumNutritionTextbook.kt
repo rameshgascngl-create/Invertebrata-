@@ -200,8 +200,8 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                         .semantics { selected=item.id==stage.id }) { Text("${i+1}. "+item.heading.value(language)) }
             }
             Text(nutritionText(language,
-                "Manual stage selection shows the completed pose. Inspect either endpoint without motion, or play the stage from its start. Playback pauses at this stage’s endpoint; Next view changes the stage. The pose is a teaching frame, not a measured volume.",
-                "கையால் நிலையைத் தேர்ந்தெடுத்தால் முடிவுத் தோற்றம் காட்டப்படும். இயக்கமின்றித் தொடக்க அல்லது முடிவுத் தோற்றத்தைக் காணலாம்; அல்லது தொடக்கத்திலிருந்து நிலையை இயக்கலாம். இந்நிலையின் முடிவில் இயக்கம் இடைநிறுத்தப்படும்; அடுத்த காட்சி நிலையை மாற்றும். இது கற்பித்தல் தோற்றம்; அளவிடப்பட்ட பருமன் அல்ல."))
+                "Select a stage to view its final position. Use Start or Completed for a still view, or Play to watch the change. The animation pauses at the end of each stage; Next view advances to the following stage. The drawings illustrate changes in position, not measured cell volumes.",
+                "ஒரு நிலையைத் தேர்ந்தெடுத்தால் அதன் இறுதித் தோற்றம் காட்டப்படும். இயக்கமற்ற காட்சிக்கு தொடக்கம் அல்லது முடிவு என்பதைத் தேர்ந்தெடுக்கவும்; மாற்றத்தைக் காண இயக்கு என்பதைத் தொடவும். ஒவ்வொரு நிலையின் முடிவிலும் இயக்கம் நிற்கும்; அடுத்த காட்சி அடுத்த நிலைக்குச் செல்லும். இவ்விளக்கப்படங்கள் நிலைமாற்றத்தைக் காட்டுகின்றன; செல் பருமனின் அளவீடுகள் அல்ல."))
             Text(nutritionText(language,"View pose: ","காட்சித் தோற்றம்: ")+when {
                 pose==2 -> nutritionText(language,"Completed","முடிவு")
                 pose==0 -> nutritionText(language,"Start","தொடக்கம்")
