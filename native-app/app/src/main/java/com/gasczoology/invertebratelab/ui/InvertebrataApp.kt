@@ -438,6 +438,10 @@ private fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                ) {
                 Card(
                     shape = RoundedCornerShape(24.dp),
                     colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F3ED)),
@@ -516,8 +520,6 @@ private fun HomeScreen(
                         }
                     }
                 }
-            }
-            item {
                 Text(
                     label(language, "Start exploring", "கற்றலைத் தொடங்குங்கள்"),
                     style = MaterialTheme.typography.titleMedium.copy(
@@ -550,8 +552,6 @@ private fun HomeScreen(
                         )
                     }
                 }
-            }
-            item {
                 Text(
                     label(language, "Explore the units", "பாட அலகுகள்"),
                     style = MaterialTheme.typography.titleMedium.copy(
@@ -559,6 +559,7 @@ private fun HomeScreen(
                     ),
                     color = ink,
                 )
+                }
             }
             items(units, key = { it.number }) { unit ->
                 val tint = unitTints[(unit.number - 1).coerceIn(0, unitTints.lastIndex)]
@@ -596,7 +597,7 @@ private fun HomeScreen(
                             verticalArrangement = Arrangement.spacedBy(3.dp),
                         ) {
                             Text(
-                                label(language, "UNIT ${unit.number}", "அலகு ${unit.number}"),
+                                label(language, "Unit ${unit.number}", "அலகு ${unit.number}"),
                                 style = MaterialTheme.typography.labelSmall.copy(
                                     fontWeight = FontWeight.Bold,
                                 ),
