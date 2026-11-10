@@ -5,6 +5,7 @@ on:
     paths:
       - 'native-app/**'
       - 'tools/**'
+      - 'qa-source-intake/**'
       - 'qa-intake/provisional-figure-inclusion-20261110.json'
       - '.github/workflows/plate-pipeline-ci.yml'
       - '.github/scripts/run-unit1-intro-rendering.sh'
