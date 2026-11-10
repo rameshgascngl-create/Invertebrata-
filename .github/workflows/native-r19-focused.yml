@@ -4,6 +4,7 @@ name: Native R1.9 focused Paramecium completion
     branches:
     - native/r19-paramecium-completion-20261010
     - native/r19-integration-freeze-20261011
+    - feat/native-textbook-reader-qa
   workflow_dispatch: null
 permissions:
   contents: read
