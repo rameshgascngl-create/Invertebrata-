@@ -478,17 +478,14 @@ class NativeReleaseFunctionalTest {
             tap("r1-process-" + c.process); if (c.prefix == "r19" || c.prefix == "r17") tap(c.prefix + "-jump-stages"); tap(c.stage); c.start?.let(::tap)
             val transportId = c.prefix + "-inline-play-pause"
             scrollTo(transportId).recycle()
-            if (c.prefix == "ciliary") {
-                // The stage selector lives below the moving cilia. Transport-first
-                // alignment left only the static inset visible in Tamil portrait
-                // and could move the whole canvas out of the landscape tree.
-                // Align the diagram itself ONCE, then never scroll while recording
-                // the before, paused and stationary frames.
-                scrollTo(c.canvas).recycle()
-                bringFullyIntoView(c.canvas)
-            }
-            fun captureDiagram(): Bitmap =
-                if (c.prefix == "ciliary") diagram(c.canvas, align = false) else diagram(c.canvas)
+            // Position each diagram ONCE before sampling. Re-aligning on every
+            // screenshot invoked an animated accessibility scroll: in release
+            // Tamil 200% landscape it changed the nuclear canvas crop from
+            // 374 to 499 px and made a valid animation look like a failure.
+            // Keep the viewport stationary while the real Compose canvas moves.
+            if (c.prefix == "ciliary") scrollTo(c.canvas).recycle()
+            bringFullyIntoView(c.canvas)
+            fun captureDiagram(): Bitmap = diagram(c.canvas, align = false)
             fun ciliaryBounds(): Rect {
                 val node = waitFor(c.canvas)
                 val rect = Rect()
