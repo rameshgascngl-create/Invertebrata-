@@ -13,7 +13,14 @@ EXPECTED = {
   "03_sycon_development.png": "340fc98a6621931b6c58ebebef4327dd5b187955",
   "09_asterias_dissection.png": "c6305805ce89e85252ea1e57771c996b2e2c195e",
   "10_asterias_larval_reference.png": "6ab2147feb21e71b5445824d3c8657d6ced132a9",
-  "11_leishmania_two_forms.png": "e2e0c22c03f3e1cf30608d6c78cfa897080265d7"
+  "11_leishmania_two_forms.png": "e2e0c22c03f3e1cf30608d6c78cfa897080265d7",
+  "01_paramecium_oral_sourced.png": "3e331971fbe31438b70b4cf3455cdaa0eb216621",
+  "02_sycon_external_sourced.png": "447ea036e973ef11ec0723ab97e4460717b6ec95",
+  "04_obelia_medusa_sourced.png": "45c7322d9ba4c3c3312591544be3f59206eb3da2",
+  "05_obelia_lifecycle_sourced.png": "3255ad4291b461375f2d4d8d5e3be6f5c18f5cd0",
+  "06_ascaris_female_sourced.png": "ed2be05fd0cf3d4c3e7b95e7404b3f7cef14712c",
+  "07_earthworm_excretory_sourced.png": "251d21d084d2895cda5657ef9aaa5bb4ee7fa294",
+  "08_pila_external_sourced.png": "7b99da180ef24ab2faafa4736f4f54a348bc87a4"
 }
 def main():
     actual = {p.name for p in (ROOT/REL).glob("*.png")}
@@ -29,5 +36,5 @@ def main():
         print(f"QA_SOURCE_PNG={filename} {w}x{h} blob={sha}",flush=True)
     assert all(not (ROOT/"native-app/app/src/main/assets/qa_source_plates"/n).exists()
                for n in EXPECTED)
-    print("DEBUG_ONLY_SOURCE_PNG=4; FORMAL_ACADEMIC_GATE=UNCHANGED")
+    print("DEBUG_ONLY_SOURCE_PNG=11; FORMAL_ACADEMIC_GATE=UNCHANGED")
 if __name__=="__main__": main()

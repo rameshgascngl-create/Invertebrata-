@@ -70,6 +70,25 @@ jobs:
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace --info
       - name: Assemble debug APK
         run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Verify all eleven source PNGs are packaged in debug APK
+        run: |
+          python3 - <<'PY'
+          from glob import glob
+          from pathlib import Path
+          from zipfile import ZipFile
+          apk = sorted(glob("native-app/app/build/outputs/apk/debug/*.apk"))[0]
+          src = Path("native-app/app/src/debug/assets/qa_source_plates")
+          names = {p.name for p in src.glob("*.png")}
+          assert len(names) == 11, (len(names), names)
+          with ZipFile(apk) as z:
+              entries = set(z.namelist())
+              for name in sorted(names):
+                  path = "assets/qa_source_plates/" + name
+                  assert path in entries, "MISSING_PACKAGED_SOURCE_PNG " + name
+                  assert z.getinfo(path).file_size > 50000, name
+                  print("QA_APK_PACKAGED_SOURCE_PNG", name)
+          print("QA_SOURCE_PNG_APK_INTEGRITY=11/11")
+          PY
       - name: APK identity guard
         run: |
           APK=$(ls native-app/app/build/outputs/apk/debug/*.apk | head -1)
