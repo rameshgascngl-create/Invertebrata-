@@ -43,3 +43,13 @@ The source-level caption contract was checked manually on the four referenced fi
 - [ ] Independent academic/Tamil/rights sign-off — audit register
 
 This checkpoint is a task specification, not a certification.
+
+## Image register reconciliation — verified against current source
+
+The mandatory plate count of 52 is intentional: 35 type-study diagrams + 9 Unit I replacement/concept diagrams + 8 Nereis diagrams. The asset audit separately inventories 15 supplementary slots and 12 Pila review images, for 79 inventory rows. The 52-slot check is therefore not a stale 43-chapter count and must not be weakened merely to make CI green.
+
+The academic acceptance validator requires an exact source hash, appropriate rights evidence, verified morphology and Tamil, and two distinct reviewers. It is expected to fail closed when approval records are absent. Distinguish this from a compiler or emulator failure.
+
+## CI access limitation at this checkpoint
+
+The connected GitHub action for commit-associated workflow runs only returns pull-request-triggered runs and returned an empty list for this QA branch; this does not establish that push workflows failed to execute. The available GitHub connector does not expose an action to dispatch arbitrary workflows or list all repository Actions runs. No passing build, APK checksum, or device result is asserted here. The next operator with Actions-run access must inspect the runs for the latest exact commit and retrieve their logged artifacts.
