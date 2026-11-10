@@ -197,11 +197,11 @@ internal fun ExpandedProtozoaReferenceImage(
                     overflow=TextOverflow.Ellipsis)
                 Text(
                     if(plasmodium) {
-                        if(tamil) "மூலப் படத்தின் பெரிதாக்கப்பட்ட பகுதிகள்; பென்சில் படமல்ல. ஆய்வு நிலுவை."
-                        else "Enlarged reference excerpts, not pencil art; review pending."
+                        if(tamil) "மூல ஆதாரப் படத்தின் பெரிதாக்கப்பட்ட பகுதிகள்; பென்சில் வரைபடம் அல்ல."
+                        else "Enlarged source-image details; not an original pencil drawing."
                     } else if(tamil)
-                        "ஆதாரப் படம் மட்டுமே; உடலமைப்பு மதிப்பாய்வு நிலுவையில்."
-                    else "Source illustration only; anatomical review remains open.",
+                        "ஆதாரப் படம்; உறுப்பமைப்புகளைப் பாடவிளக்கத்துடன் ஒப்பிட்டறிக."
+                    else "Source illustration; compare the morphology with the chapter explanation.",
                     color=MaterialTheme.colorScheme.error,
                     style=if(plasmodium) MaterialTheme.typography.labelSmall
                           else MaterialTheme.typography.labelMedium,

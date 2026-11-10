@@ -56,9 +56,9 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                 )
                 Text(
                     if (tamil)
-                        "உள்ளடக்க நிலை: அறிவியல் மற்றும் தமிழ் மதிப்பாய்வு நிலுவையில். Metaphire posthuma என்ற இனத்திற்குரிய தகவல்களும் பொதுவான வளையப்புழு தகவல்களும் வேறுபடுத்தப்பட்டுள்ளன."
+                        "Metaphire posthuma சிற்றினத்திற்குரிய பண்புகளும் பொதுவான வளையப்புழு உடற்கூறும் தனித்தனியாக விளக்கப்பட்டுள்ளன."
                     else
-                        "ACADEMIC DRAFT · independent zoological and Tamil review pending. Species-specific facts for Metaphire posthuma are distinguished from general annelid biology.",
+                        "Species-specific features of Metaphire posthuma are distinguished from general annelid anatomy.",
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u4-earthworm-review-hold")
                 )
@@ -69,8 +69,8 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
         }
         item(key = "r2-earthworm-image-only-notice") {
             Text(
-                if (tamil) "மண்புழுவின் புற மற்றும் உள் உடற்கூறு பென்சில் படங்கள் கீழே தனித்தனியாக இணைக்கப்படும்; செயற்கை Canvas உடற்கூறு வரைவு காட்டப்படாது."
-                else "Earthworm external and internal anatomical figures are restored as separate pencil images below; no Canvas anatomy is substituted.",
+                if (tamil) "மண்புழுவின் புற மற்றும் உள் உடற்கூறுப் படங்கள் கீழே தனித்தனியாக உள்ளன; ஒவ்வொன்றையும் பெரிதாக்கிப் பார்க்கலாம்."
+                else "Separate earthworm external and internal anatomical illustrations appear below; open each figure for detailed study.",
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.testTag("r2-earthworm-image-only-notice")
             )

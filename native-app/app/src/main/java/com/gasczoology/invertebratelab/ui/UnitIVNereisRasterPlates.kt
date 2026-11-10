@@ -137,8 +137,8 @@ internal fun UnitIVNereisRasterPlate(index: Int, language: AppLanguage) {
                 )
             }
             Text(
-                if (ta) "பென்சில் பாணியில் உருவாக்கப்பட்ட கற்பித்தல் பட வரைவு. அசல் கையால் வரைந்த ஸ்கேன் அல்ல. தமிழ் பெயர்களுக்கும் உடற்கூறு குறியீடுகளுக்கும் இறுதி கல்வி ஒப்புதல் வழங்கப்படவில்லை."
-                else "Generated pencil-style teaching illustration, not an original pencil scan. Tamil terms and leader-line anatomy still require college-manual and independent zoology approval.",
+                if (ta) "பென்சில் பாணியில் உருவாக்கப்பட்ட கல்வி விளக்கப்படம்; கையால் வரையப்பட்ட மூல ஸ்கேன் அல்ல. உறுப்புப் பெயர்களை படத்துடனும் கீழுள்ள எண் விளக்கத்துடனும் ஒப்பிடுக."
+                else "Generated pencil-style teaching illustration, not an original hand-drawn scan. Match its organ labels with the numbered anatomical key below.",
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("u44-nereis-image-provenance-" + (index + 1)),
             )

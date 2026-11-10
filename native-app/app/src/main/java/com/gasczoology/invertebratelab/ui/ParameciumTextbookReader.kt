@@ -171,8 +171,8 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
     Card {
         Column(Modifier.fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(view(language, "Concept-specific PNG anatomy plate — scientific review pending",
-                "கருத்துக்கேற்ற தனி PNG உடற்கூறுப் படம் — அறிவியல் மதிப்பாய்வு நிலுவையில்"),
+            Text(view(language, "Concept-specific Paramecium anatomy illustration",
+                "பாரமீசியத்தின் குறிப்பிட்ட கருத்துக்கான உடற்கூறு விளக்கப்படம்"),
                 style = MaterialTheme.typography.labelSmall)
             if (bitmap != null) {
                 androidx.compose.foundation.Image(bitmap = bitmap,
@@ -246,8 +246,8 @@ internal fun ParameciumTextbookReader(
                 "Recognise the cortical organelles; trace feeding and digestion; explain osmotic water control and ciliary locomotion; distinguish transverse fission from conjugation; relate microscopy observations to evidence.",
                 "புறப்படல நுண்ணுறுப்புகளை அடையாளம் காணுதல்; உணவூட்டத்தையும் செரிமானத்தையும் வரிசைப்படுத்துதல்; நீர்ச்சமநிலையையும் குறுஇழை இயக்கத்தையும் விளக்குதல்; குறுக்கு இருபிளவையும் இணைவையும் வேறுபடுத்துதல்; நுண்ணோக்கிக் கவனிப்பை ஆதாரத்துடன் இணைத்தல்."))
             Text(view(language,
-                "Scientific and Tamil review pending: original diagrams are teaching schematics, not certified microscopic plates.",
-                "அறிவியல் மற்றும் தமிழ் மதிப்பாய்வு நிலுவை: அசல் படங்கள் கற்பித்தல் விளக்கப்படங்கள்; சான்றளிக்கப்பட்ட நுண்படங்கள் அல்ல."),
+                "The figures are teaching schematics, not direct photomicrographs; use the labelled explanations for structural details.",
+                "இப்படங்கள் கற்பித்தல் விளக்கப்படங்கள்; நேரடி நுண்ணோக்கி ஒளிப்படங்கள் அல்ல. உறுப்பமைப்புகளைப் பாடவிளக்கத்துடன் ஒப்பிட்டறிக."),
                 style = MaterialTheme.typography.bodySmall)
         }
     }

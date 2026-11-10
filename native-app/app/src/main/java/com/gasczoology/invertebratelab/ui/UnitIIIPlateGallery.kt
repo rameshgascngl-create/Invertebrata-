@@ -42,14 +42,14 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text(
-            if (tamil) "உடற்கூறுப் படங்கள் — அறிவியல் மதிப்பாய்வு நிலுவையில்"
-            else "ANATOMICAL PLATES · expert review pending",
+            if (tamil) "உடற்கூறு ஆதாரப் படங்கள்"
+            else "ANATOMICAL REFERENCE PLATES",
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.semantics { heading() }
         )
         Text(
-            if (tamil) "ஆய்வு நிலுவையிலுள்ள படங்களை 2×/4× பெரிதாக்கிப் பார்க்கலாம். நிபுணர் ஒப்புதல் பெறாத நேரடித் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன; கீழுள்ள உறுப்புப் பொத்தான்களைப் பயன்படுத்துக."
-            else "Inspect the original raster at 2×/4× with zoom and pan. Unreviewed image hotspots are disabled; use the accessible organ buttons below.",
+            if (tamil) "படங்களை 2×/4× பெரிதாக்கிப் பார்க்கவும். உறுப்புகளின் பெயர்களையும் விளக்கங்களையும் அறிய கீழுள்ள பொத்தான்களைப் பயன்படுத்துக."
+            else "Enlarge the anatomical image 2×/4× and pan to inspect details. Use the labelled organ buttons below for explanations.",
             style = MaterialTheme.typography.bodySmall
         )
         plates.forEach { plate ->
@@ -77,7 +77,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                     val raster = rememberRequiredRasterBitmap(plate.assetStem)
                     if (raster == null) {
                         Text(
-                            if (tamil) "வரைவுப் படம் இல்லை — மாற்றாகப் போலியான படம் காட்டப்படாது."
+                            if (tamil) "இந்த உடற்கூறுப் படம் தற்போது கிடைக்கவில்லை."
                             else "Anatomical master unavailable — no substitute diagram displayed.",
                             color = MaterialTheme.colorScheme.error,
                             modifier = Modifier.testTag("u3-plate-pending-" + plate.plateId)
@@ -263,16 +263,16 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                         )
                         if (completeAscarisCycle) {
                             Text(
-                                if (tamil) "அஸ்காரிஸ் வாழ்க்கைச் சுழற்சி: CDC DPDx மூலப்படத்தின் கிராஃபைட் நிறத் தோற்றம். இது கையால் வரைந்த அசல் பென்சில் படம் அல்ல. நேரடித் தொடுபுள்ளி ஆய்வு நிலுவையில் உள்ளது."
-                                else "Source: CDC DPDx Ascariasis. Graphite-toned facsimile preserving the original CDC anatomy, labels and arrows; NOT an original pencil drawing. Pixel-coordinate review pending.",
+                                if (tamil) "அஸ்காரிஸ் வாழ்க்கைச் சுழற்சி: CDC DPDx மூலப்படத்தின் கிராஃபைட் நிறத் தோற்றம். இது கையால் வரைந்த அசல் பென்சில் படம் அல்ல. உறுப்பின் விளக்கத்திற்கு கீழுள்ள பொத்தான்களைப் பயன்படுத்துக."
+                                else "Source: CDC DPDx Ascariasis. Graphite-toned facsimile preserving the original CDC anatomy, labels and arrows; NOT an original pencil drawing. Use the source image and chapter text for identification.",
                                 modifier = Modifier.testTag("u3-cdc-complete-life-cycle-credit"),
                                 style = MaterialTheme.typography.bodySmall
                             )
                         }
                         Text(
                             if (tamil)
-                                "படத்தின் நேரடித் தொடுதலும் குறியீட்டுக் கோடுகளும் மூலப்படக் கோண ஆய்வு முடியும் வரை முடக்கப்பட்டுள்ளன. கீழே உள்ள தமிழ்ப் பகுதி விளக்கங்களைத் தேர்ந்தெடுக்கவும்."
-                            else "Direct image taps and leader marks remain disabled until the exact source-pixel positions are reviewed. Accessible narrated stage controls remain available below.",
+                                "உறுப்புப் பெயர்களையும் விளக்கங்களையும் அறிய கீழுள்ள தமிழ்ப் பொத்தான்களைத் தேர்ந்தெடுக்கவும்."
+                            else "Use the labelled stage controls below to hear the explanation; image tapping is not used for organ selection.",
                             color=MaterialTheme.colorScheme.error,
                             style=MaterialTheme.typography.bodySmall,
                             modifier=Modifier.testTag("u3-source-hotspot-review-hold")

@@ -99,9 +99,9 @@ internal fun ParameciumNuclearTextbook(
         "உட்கரு மற்றும் இனப்பெருக்க உயிரியல் · Paramecium caudatum"),
         style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold,
         modifier = Modifier.testTag("r17-textbook-title").semantics { heading() })
-    Text("DRAFT_UNVERIFIED · " + text(language,
-        "Original graphite schematics, not to scale. Biology, geometry and Tamil specialist approval pending.",
-        "அசல் பென்சில் விளக்கப்படங்கள்; அளவுக்கு ஏற்ப அல்ல. உயிரியல், வடிவம், தமிழ் நிபுணர் ஒப்புதல் நிலுவை."),
+    Text(text(language,
+        "Nuclear stages are shown schematically, not to scale. Relative organ sizes and timing are illustrative.",
+        "உட்கரு நிலைகள் விளக்கப்படமாகக் காட்டப்பட்டுள்ளன; அளவுக்கேற்ப அல்ல. உறுப்புகளின் ஒப்பீட்டு அளவும் கால அளவும் விளக்கத்திற்கானவை."),
         modifier = Modifier.testTag("r17-review-status"))
     Text(chapter.heading.value(language) + " · " + (position + 1) + "/" + chapter.views.size + " · " +
         ParameciumNuclearBiology.nucleusName(progress.selectedNucleus).value(language),

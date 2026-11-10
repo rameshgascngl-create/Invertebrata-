@@ -91,8 +91,8 @@ internal fun UnitIIIFullscreenRasterViewer(
                     Image(
                         bitmap = bitmap,
                         contentDescription = plate.title.value(language) +
-                            (if (tamil) " · மூலப்படம், உடற்கூறு ஒப்புதல் நிலுவை"
-                             else " · source bitmap, anatomy review pending"),
+                            (if (tamil) " · உடற்கூறு ஆதாரப் படம்"
+                             else " · source anatomical image"),
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.fillMaxSize()
                             .graphicsLayer {

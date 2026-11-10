@@ -106,9 +106,9 @@ internal fun UnitIFlagellateTypeStudiesHeader(language: AppLanguage) {
         )
         Text(
             if (tamil)
-                "இது கற்றலுக்கான வரைவு. ஆதாரப் படங்கள் உண்மையான பென்சில் வரைபடங்களாகவோ இனநிர்ணய நுண்ணோக்கிப் படங்களாகவோ கருதப்படக்கூடாது. தொடு-புள்ளி, ஒலிவிளக்கம், தனிப் பென்சில் பட ஆய்வு நிலுவையில் உள்ளன."
+                "இப்படங்கள் கசையிழை ஒட்டுண்ணிகளின் வடிவங்களை விளக்குகின்றன. தொற்றும் நிலை, கடத்தி, புரவலன் ஆகியவற்றைக் கொண்டு இனங்களின் வாழ்க்கைச் சுழற்சியை ஒப்பிடுக."
             else
-                "Editorial teaching candidate: these are attributed published reference images, not original pencil anatomical masters or species-diagnostic micrographs. Original plates, reviewed touch hotspots and organ-specific audio remain pending.",
+                "These source illustrations show parasitic flagellate forms. Compare the infective stage, vector and host context rather than treating a schematic as species-diagnostic microscopy.",
             color = MaterialTheme.colorScheme.error,
             modifier = Modifier.testTag("u17-flagellate-academic-hold"),
         )
