@@ -40,8 +40,8 @@ internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selecte
         modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)
             .testTag("r19-cytoproct-inspect-midpoint")) {
         Text(if(language==AppLanguage.TAMIL)
-            "கழிவுவெளியேற்ற இயக்கத்தைத் தொடங்கி இடைநிலையில் நிறுத்து"
-            else "Play and hold a real intermediate egestion frame")
+            "கழிவு வெளியேற்ற இயக்கத்தை இடைநிலையில் நிறுத்திக் காண்க"
+            else "Play and pause at an intermediate stage of egestion")
     }
     OutlinedButton(onClick=onToggle,enabled=enabled,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("r19-cytoproct-inline-play-pause")) {
         Text(if(language==AppLanguage.TAMIL) {if(playing)"இடைநிறுத்து" else "இயக்கு"} else {if(playing)"Pause" else "Play"})
