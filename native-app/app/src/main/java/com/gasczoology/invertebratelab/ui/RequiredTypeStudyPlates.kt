@@ -49,6 +49,8 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.TypeStudyRequirement
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.TypeStudyFigureReviewNotes
+import com.gasczoology.invertebratelab.data.SourcedQaAnatomicalPlates
+import android.content.pm.ApplicationInfo
 import kotlin.math.roundToInt
 
 /**
@@ -219,13 +221,23 @@ internal fun RequiredTypeStudyPlates(
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
                 else -> stem
             }
+            // Original mandatory masters and production image selection remain
+            // untouched. Sourced drawings are visible ONLY in debuggable QA APKs;
+            // release builds retain the held original until academic sign-off.
+            val isDebugQa = (LocalContext.current.applicationInfo.flags and
+                ApplicationInfo.FLAG_DEBUGGABLE) != 0
+            val candidateStem = if (isDebugQa)
+                SourcedQaAnatomicalPlates.byTypeStudy[study.organismId + "/" + plateId] else null
+            val candidateBitmap = candidateStem?.let { rememberCanonicalPlateBitmap(it) }
+            val candidateCredit = if (candidateBitmap != null)
+                SourcedQaAnatomicalPlates.credit[study.organismId + "/" + plateId] else null
             val primaryRaster = rememberCanonicalPlateBitmap(stem)
             // Avoid decoding the same large bitmap twice for plates without a legacy path.
             // A fallback is only needed when the canonical artwork is absent.
             val fallbackRaster = if (primaryRaster == null && fallbackStem != stem) {
                 rememberCanonicalPlateBitmap(fallbackStem)
             } else null
-            val raster = primaryRaster ?: fallbackRaster
+            val raster = candidateBitmap ?: primaryRaster ?: fallbackRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
             val qaHold = TypeStudyFigureReviewNotes.held[study.organismId + "/" + plateId]
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
@@ -235,7 +247,19 @@ internal fun RequiredTypeStudyPlates(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(readable, style = MaterialTheme.typography.titleMedium)
-                    if (qaHold != null) {
+                    if (candidateCredit != null) {
+                        Text(
+                            if (tamil) "ஆதாரப்படத்திலிருந்து பெறப்பட்ட தனி PNG · DEBUG QA காட்சி மட்டும் · இறுதி ஒப்புதல் நிலுவையில் உள்ளது"
+                            else "SOURCE-DOCUMENTED PNG · DEBUG QA ONLY · Scientific approval pending",
+                            style = MaterialTheme.typography.labelMedium,
+                            modifier = Modifier.testTag("r2-plate-source-candidate-" + study.organismId + "-" + plateId),
+                        )
+                        Text(
+                            candidateCredit.value(language),
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.testTag("r2-plate-source-credit-" + study.organismId + "-" + plateId),
+                        )
+                    } else if (qaHold != null) {
                         Text(
                             if (tamil) "QA திருத்தம் தேவை · இப்பெயர்க்குறிப்புகளைத் தேர்வு விடைகளுக்கு நகலெடுக்க வேண்டாம்"
                             else "QA CORRECTION REQUIRED · Do not reproduce unverified image labels",
@@ -310,7 +334,7 @@ internal fun RequiredTypeStudyPlates(
                             RequiredTypeStudyFullImage(
                                 image = raster, title = "${study.scientificName} · ${readable}",
                                 language = language, onDismiss = { expanded = false },
-                                credit = qaHold?.value(language),
+                                credit = candidateCredit?.value(language) ?: qaHold?.value(language),
                             )
                         }
                     }

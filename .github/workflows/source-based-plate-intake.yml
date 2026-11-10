@@ -8,7 +8,7 @@ on:
       - '.github/workflows/source-based-plate-intake.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   download-and-audit:
     runs-on: ubuntu-24.04
@@ -29,3 +29,21 @@ jobs:
           name: zoology-source-verified-review-png
           path: qa-source-intake/downloaded-png-review/
           if-no-files-found: error
+      - name: Stage only three subject-fitting source images in debug assets
+        if: github.ref == 'refs/heads/feat/native-textbook-reader-qa'
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST=native-app/app/src/debug/assets/qa_source_plates
+          mkdir -p "$DEST"
+          for file in 03_sycon_development.png 09_asterias_dissection.png 10_asterias_larval_reference.png; do
+            test -s "qa-source-intake/downloaded-png-review/$file"
+            cp "qa-source-intake/downloaded-png-review/$file" "$DEST/$file"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          if ! git diff --cached --quiet; then
+            git commit -m "QA-only: add three Commons-attributed anatomical PNG reference candidates"
+            git push origin HEAD:feat/native-textbook-reader-qa
+          fi
