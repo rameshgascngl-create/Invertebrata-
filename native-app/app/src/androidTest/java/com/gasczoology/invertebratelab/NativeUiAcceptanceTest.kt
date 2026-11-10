@@ -3,7 +3,6 @@ package com.gasczoology.invertebratelab
 import android.content.pm.ActivityInfo
 import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
-import androidx.compose.ui.test.assertDoesNotExist
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
