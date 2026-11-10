@@ -21,17 +21,68 @@ import org.junit.runner.RunWith
 class NativeFiveUnitRestorationTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
 
+    private fun hasTag(tag: String): Boolean =
+        rule.onAllNodesWithTag(tag, useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
+
+    private fun backToHomeFromRestoredRoute() {
+        // A DataStore reset does not erase NavHost's saved back stack during
+        // ActivityScenario.recreate(). Exit the *actual* restored native screen,
+        // rather than waiting for a Home node that may never be in that stack.
+        repeat(7) {
+            if (hasTag("native-home")) return
+            val unit = (1..Extensions.MAX_UNIT).firstOrNull { hasTag("native-unit-" + it) }
+            when {
+                hasTag("reading-mode-paged") -> {
+                    // Continuous reading can hide the chapter Back control.
+                    rule.onNodeWithTag("reading-mode-paged").performClick()
+                }
+                hasTag("book-back") -> rule.onNodeWithTag("book-back").performClick()
+                hasTag("u2-back") -> rule.onNodeWithTag("u2-back").performClick()
+                hasTag("u3-back") -> rule.onNodeWithTag("u3-back").performClick()
+                unit != null -> {
+                    rule.onNodeWithTag("native-unit-" + unit).performScrollToIndex(0)
+                    val back = if (rule.onAllNodesWithText("Back").fetchSemanticsNodes().isNotEmpty())
+                        "Back" else "பின்செல்"
+                    rule.onNodeWithText(back).performClick()
+                }
+                hasTag("r1-paramecium-lab") || hasTag("native-assessment") -> {
+                    val back = if (rule.onAllNodesWithText("Back").fetchSemanticsNodes().isNotEmpty())
+                        "Back" else "பின்செல்"
+                    rule.onNodeWithText(back).performClick()
+                }
+                else -> throw AssertionError(
+                    "Could not return to Home from restored route. " +
+                    "native-home, book-back, unit, laboratory and assessment tags all absent"
+                )
+            }
+            rule.waitForIdle()
+            rule.waitUntil(10_000) {
+                hasTag("native-home") || hasTag("book-back") || hasTag("reading-mode-paged") ||
+                hasTag("u2-back") || hasTag("u3-back") ||
+                hasTag("r1-paramecium-lab") || hasTag("native-assessment") ||
+                (1..Extensions.MAX_UNIT).any { hasTag("native-unit-" + it) }
+            }
+        }
+        assertTrue("Native navigation could not return to Home after the fixture reset", hasTag("native-home"))
+    }
+
     @Before fun resetHome() {
         runBlocking {
             val ctx = androidx.test.platform.app.InstrumentationRegistry
                 .getInstrumentation().targetContext
             NativeLearningRepository(ctx).save(NativeLearningState())
+            BookReadingRepository(ctx).clear()
             LanguagePreferenceRepository(ctx).setLanguage(AppLanguage.ENGLISH)
         }
         rule.activityRule.scenario.recreate()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+            hasTag("native-home") || hasTag("book-back") || hasTag("reading-mode-paged") ||
+            hasTag("u2-back") || hasTag("u3-back") ||
+            hasTag("r1-paramecium-lab") || hasTag("native-assessment") ||
+            (1..Extensions.MAX_UNIT).any { hasTag("native-unit-" + it) }
         }
+        backToHomeFromRestoredRoute()
+        rule.waitUntil(20_000) { hasTag("native-home") }
     }
 
     /** These five chapters are book chapters; the legacy restoration screen is no longer routed. */
