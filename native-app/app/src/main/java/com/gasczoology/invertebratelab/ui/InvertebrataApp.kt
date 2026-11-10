@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -604,7 +605,7 @@ private fun HomeScreen(
                                 color = mutedInk,
                             )
                             Text(
-                                unit.title.value(language),
+                                readableUnitTitle(unit, language),
                                 style = MaterialTheme.typography.titleMedium.copy(
                                     fontWeight = FontWeight.SemiBold,
                                 ),
@@ -665,6 +666,24 @@ private fun HomeScreen(
     }
 }
 
+/** Student-facing headings are presentation-only; validated A5 source IDs and prose stay unchanged. */
+private fun readableUnitTitle(unit: AcademicUnit, language: AppLanguage): String = when (unit.number) {
+    1 -> label(language, "Introduction and Protozoa", "அறிமுகம் மற்றும் புரோட்டோசோவா")
+    2 -> label(language, "Porifera and Cnidaria", "துளையுடலிகள் மற்றும் நிடேரியா")
+    3 -> label(language, "Platyhelminthes and Nematoda", "தட்டைப்புழுக்கள் மற்றும் உருளைப்புழுக்கள்")
+    4 -> label(language, "Annelida and Arthropoda", "வளையப்புழுக்கள் மற்றும் கணுக்காலிகள்")
+    5 -> label(language, "Mollusca and Echinodermata", "மெல்லுடலிகள் மற்றும் முட்தோலிகள்")
+    6 -> label(language, "Arthropods, Insects and Applied Entomology",
+        "கணுக்காலிகள், பூச்சிகள் மற்றும் பயன்பாட்டுப் பூச்சியியல்")
+    7 -> label(language, "Supplementary Invertebrate Zoology",
+        "முதுகெலும்பிலிகள் விலங்கியலின் கூடுதல் தலைப்புகள்")
+    else -> unit.title.value(language)
+}
+
+/** Every existing printed-book chapter already contains an authored bilingual title. */
+private fun readableChapterTitle(chapter: Chapter, language: AppLanguage): String =
+    BookChapters.forLesson(chapter.id)?.title?.value(language) ?: chapter.title.value(language)
+
 @Composable
 private fun UnitScreen(
     unit: AcademicUnit,
@@ -677,9 +696,12 @@ private fun UnitScreen(
 ) {
     var showProtozoaReferences by rememberSaveable { mutableStateOf(false) }
     val unitScrollState = rememberLazyListState()
-    // At 200% font the overview may fill the entire viewport. Opening the
-    // reference gallery must reveal its first heading without further scrolling.
-    // Its location is the second LazyColumn item; existing A5 chapters follow it.
+    val ink = Color(0xFF173D38)
+    val secondaryInk = Color(0xFF536D64)
+    val borderColor = Color(0xFFD9E5DF)
+    // The overview must remain item 0, and chapter n must remain at index n:
+    // original API34 instrumentation navigates by exact LazyColumn positions.
+    // If the optional reference gallery is expanded it alone becomes item 1.
     LaunchedEffect(unit.number, showProtozoaReferences) {
         if (unit.number == 1 && showProtozoaReferences) {
             unitScrollState.scrollToItem(1)
@@ -688,51 +710,109 @@ private fun UnitScreen(
     Scaffold { padding ->
         LazyColumn(
             state = unitScrollState,
-            modifier = Modifier.fillMaxSize().padding(padding).testTag("native-unit-" + unit.number),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier.fillMaxSize().padding(padding)
+                .background(Color(0xFFF9FAF7)).testTag("native-unit-" + unit.number),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 18.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             item {
-                OutlinedButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text(label(language, "Back", "பின்செல்")) }
-                Text(unit.title.value(language))
-                // Show the chapter index directly; no app-level release-status paragraph.
-                if (unit.number == 4) {
-                    Button(onClick = onEarthworm,
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                            .testTag("u4-open-earthworm-textbook")) {
-                        Text(label(language,
-                            "START READING · Earthworm (Metaphire posthuma) native textbook",
-                            "பாடத்தைத் தொடங்கு · மண்புழு (Metaphire posthuma) விரிவான பாடநூல்"))
-                    }
-                }
-                if (unit.number == 1) {
-                    OutlinedButton(onClick = onParameciumAtlas,
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                            .testTag("u1-open-diagram-atlas")) {
-                        Text(label(language,
-                            "EXPLORE PARAMECIUM ANATOMY · enlarge and compare organ systems",
-                            "பாரமீசியம் உடற்கூறு · படங்களைப் பெரிதாக்கி உறுப்பமைப்புகளை ஒப்பிடுக"))
-                    }
-                    Text(label(language,
-                        "Compare the available Entamoeba and Plasmodium transmission figures with their life-cycle lessons.",
-                        "எண்டமீபா, பிளாஸ்மோடியம் தொற்றுச் சுழற்சிப் படங்களை அவற்றின் வாழ்க்கைச் சுழற்சிப் பாடங்களுடன் ஒப்பிட்டுப் படிக்கவும்."),
-                        modifier = Modifier.testTag("u1-missing-protozoa-plates"))
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     OutlinedButton(
-                        onClick = { showProtozoaReferences = !showProtozoaReferences },
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                            .testTag("u1-protozoa-reference-toggle"),
+                        onClick = onBack,
+                        shape = RoundedCornerShape(14.dp),
+                        modifier = Modifier.heightIn(min = 48.dp),
                     ) {
-                        Text(label(language,
-                            if (showProtozoaReferences) "HIDE ENTAMOEBA & PLASMODIUM REFERENCES" else "VIEW ENTAMOEBA & PLASMODIUM SOURCE REFERENCES",
-                            if (showProtozoaReferences) "இரு ஆதாரப் படங்களை மறை" else "இரு ஆதாரப் படங்களைப் பார்"))
+                        Text(label(language, "Back", "பின்செல்"))
                     }
-                    Button(onClick = onParamecium,
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                            .testTag("r14-unit-open-textbook")) {
-                        Text(label(language,
-                            "START READING · Paramecium illustrated textbook",
-                            "பாடத்தைத் தொடங்கு · பாரமீசியம் படவிளக்கப் பாடநூல்"))
+                    Card(
+                        shape = RoundedCornerShape(20.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F3ED)),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(18.dp),
+                            verticalArrangement = Arrangement.spacedBy(6.dp),
+                        ) {
+                            Text(
+                                label(language, "UNIT ", "அலகு ") + unit.number,
+                                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
+                                color = Color(0xFF276B58),
+                            )
+                            Text(
+                                readableUnitTitle(unit, language),
+                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                                color = ink,
+                            )
+                            Text(
+                                unit.chapters.size.toString() +
+                                    label(language, " chapters", " அத்தியாயங்கள்"),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = secondaryInk,
+                            )
+                        }
                     }
+                    if (unit.number == 4) {
+                        OutlinedButton(
+                            onClick = onEarthworm,
+                            shape = RoundedCornerShape(14.dp),
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("u4-open-earthworm-textbook"),
+                        ) {
+                            Text(label(language, "Earthworm · illustrated lesson",
+                                "மண்புழு · படவிளக்கப் பாடம்"))
+                        }
+                    }
+                    if (unit.number == 1) {
+                        Text(
+                            label(language, "Learning resources", "கற்றல் வளங்கள்"),
+                            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                            color = ink,
+                        )
+                        Button(
+                            onClick = onParamecium,
+                            shape = RoundedCornerShape(14.dp),
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)
+                                .testTag("r14-unit-open-textbook"),
+                        ) {
+                            Text(label(language, "Paramecium · interactive lessons",
+                                "பாரமீசியம் · ஊடாடும் பாடங்கள்"))
+                        }
+                        OutlinedButton(
+                            onClick = onParameciumAtlas,
+                            shape = RoundedCornerShape(14.dp),
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("u1-open-diagram-atlas"),
+                        ) {
+                            Text(label(language, "Paramecium anatomy gallery",
+                                "பாரமீசியம் உடற்கூறுப் படத்தொகுப்பு"))
+                        }
+                        Text(
+                            label(language,
+                                "Compare life-cycle diagrams with the corresponding parasite lessons.",
+                                "ஒட்டுண்ணிகளின் வாழ்க்கைச் சுழற்சிப் படங்களை உரிய பாடங்களுடன் ஒப்பிடுக."),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = secondaryInk,
+                            modifier = Modifier.testTag("u1-missing-protozoa-plates"),
+                        )
+                        OutlinedButton(
+                            onClick = { showProtozoaReferences = !showProtozoaReferences },
+                            shape = RoundedCornerShape(14.dp),
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("u1-protozoa-reference-toggle"),
+                        ) {
+                            Text(label(language,
+                                if (showProtozoaReferences) "Hide parasite figures"
+                                    else "Entamoeba & Plasmodium figures",
+                                if (showProtozoaReferences) "ஒட்டுண்ணிப் படங்களை மறை"
+                                    else "எண்டமீபா மற்றும் பிளாஸ்மோடியம் படங்கள்"))
+                        }
+                    }
+                    Text(
+                        label(language, "Chapters", "அத்தியாயங்கள்"),
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                        color = ink,
+                        modifier = Modifier.padding(top = 4.dp),
+                    )
                 }
             }
             if (unit.number == 1 && showProtozoaReferences) {
@@ -740,21 +820,45 @@ private fun UnitScreen(
                     UnitIProtozoaReferenceGallery(language)
                 }
             }
-            items(unit.chapters, key = { it.id }) { chapter ->
-                Button(onClick = { onChapter(chapter.id) },
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chapter-" + chapter.id)) {
-                    Column {
-                        Text(chapter.title.value(language),
-                            style = MaterialTheme.typography.titleMedium)
+            itemsIndexed(unit.chapters, key = { _, chapter -> chapter.id }) { index, chapter ->
+                OutlinedButton(
+                    onClick = { onChapter(chapter.id) },
+                    shape = RoundedCornerShape(16.dp),
+                    border = BorderStroke(1.dp, borderColor),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        containerColor = if (index % 2 == 0) Color.White else Color(0xFFF0F6F3),
+                        contentColor = ink,
+                    ),
+                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 12.dp),
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 74.dp)
+                        .testTag("chapter-" + chapter.id),
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
                         Text(
-                            if (BookChapters.forLesson(chapter.id) != null) label(language,
-                                "READ TEXTBOOK CHAPTER · explanations, key terms and review questions.",
-                                "பாடநூல் அத்தியாயத்தைப் படி · விளக்கங்கள், கலைச்சொற்கள், மீளாய்வு வினாக்கள்.")
-                            else label(language,
-                                "OPEN BILINGUAL LESSON · study content and examination practice.",
-                                "இருமொழிப் பாடத்தைத் திற · பாடவிளக்கமும் தேர்வுப் பயிற்சியும்."),
-                            style = MaterialTheme.typography.bodySmall,
+                            (index + 1).toString().padStart(2, '0'),
+                            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                            color = Color(0xFF317461),
                         )
+                        Column(
+                            modifier = Modifier.weight(1f),
+                            verticalArrangement = Arrangement.spacedBy(3.dp),
+                        ) {
+                            Text(
+                                readableChapterTitle(chapter, language),
+                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
+                                color = ink,
+                            )
+                            Text(
+                                label(language, "Open illustrated chapter", "படவிளக்க அத்தியாயத்தைத் திற"),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = secondaryInk,
+                            )
+                        }
+                        Text("›", style = MaterialTheme.typography.titleLarge, color = secondaryInk)
                     }
                 }
             }
@@ -779,20 +883,48 @@ private fun ChapterScreen(
     // language switch. Descendant readers inherit the consumed inset, so their
     // own statusBarsPadding() does not introduce a second full-height gap.
     Column(Modifier.fillMaxSize().statusBarsPadding()) {
+        // Make the SELECTED language visually obvious. Previously the active
+        // language was a grey disabled TextButton while the inactive option was
+        // highlighted, which made English text look like a failed Tamil switch.
         Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp)
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
                 .testTag("chapter-language-toolbar"),
             horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            TextButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
-                enabled = language != AppLanguage.ENGLISH,
-                modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-english")) {
-                Text("English")
+            if (language == AppLanguage.ENGLISH) {
+                Button(
+                    onClick = {},
+                    enabled = false,
+                    colors = ButtonDefaults.buttonColors(
+                        disabledContainerColor = Color(0xFF155E4E),
+                        disabledContentColor = Color.White,
+                    ),
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-english"),
+                ) { Text("English") }
+            } else {
+                OutlinedButton(
+                    onClick = { onLanguageChange(AppLanguage.ENGLISH) },
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-english"),
+                ) { Text("English") }
             }
-            TextButton(onClick = { onLanguageChange(AppLanguage.TAMIL) },
-                enabled = language != AppLanguage.TAMIL,
-                modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-tamil")) {
-                Text("தமிழ்")
+            Spacer(Modifier.padding(horizontal = 3.dp))
+            if (language == AppLanguage.TAMIL) {
+                Button(
+                    onClick = {},
+                    enabled = false,
+                    colors = ButtonDefaults.buttonColors(
+                        disabledContainerColor = Color(0xFF155E4E),
+                        disabledContentColor = Color.White,
+                    ),
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-tamil"),
+                ) { Text("தமிழ்") }
+            } else {
+                OutlinedButton(
+                    onClick = { onLanguageChange(AppLanguage.TAMIL) },
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("chapter-language-tamil"),
+                ) { Text("தமிழ்") }
             }
         }
         Box(Modifier.weight(1f)) {
@@ -850,7 +982,7 @@ private fun ChapterBody(
                     Text(label(language, "Back", "பின்செல்"))
                 }
                 // Internal database IDs are not student-facing chapter titles.
-                Text(chapter.title.value(language),
+                Text(readableChapterTitle(chapter, language),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.testTag("r2-human-readable-chapter-title"))
                 if (chapter.id == "u1-paramecium") {
