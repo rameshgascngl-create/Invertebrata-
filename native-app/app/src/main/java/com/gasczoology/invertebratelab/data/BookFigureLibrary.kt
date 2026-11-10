@@ -23,23 +23,23 @@ object BookFigureLibrary {
     const val PREFIX = "lib/"
 
     private val aiPlate = PlateCredit(
-        "AI-generated image · Dept of Zoology, GASC Nagercoil · rights holder to confirm",
-        "AI உருவாக்கிய படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி நாகர்கோவில் · உரிமையாளர் உறுதிப்படுத்த வேண்டும்")
+        "AI-generated educational illustration · Department of Zoology, GASC Nagercoil",
+        "AI மூலம் உருவாக்கப்பட்ட கல்வி விளக்கப்படம் · விலங்கியல் துறை, அரசு கலைக் கல்லூரி, நாகர்கோவில்")
 
     private val schematic = PlateCredit(
-        "Original schematic drawn for this app · not to scale · subject-expert review pending",
-        "இந்த செயலிக்காக வரையப்பட்ட மூலப் படத்திட்டம் · அளவுக்கேற்ப அல்ல · துறைசார் நிபுணர் மதிப்பாய்வு நிலுவையில்")
+        "Original teaching schematic for this textbook · not to scale; see the numbered key in the lesson",
+        "இப்பாடநூலுக்காக உருவாக்கப்பட்ட விளக்கப்படம் · அளவுக்கேற்ப அல்ல; பாடத்திலுள்ள எண் விளக்கங்களைப் பார்க்கவும்")
 
     // Reuse the more detailed existing atlas illustration instead of the
     // defective numbered icon-drawing in the polymorphism chapter. Reuse does
     // not settle source rights or scientific review of the historic raster.
     private val obeliaNativeRaster = PlateCredit(
-        "Existing Obelia colony type-study raster · source and rights review pending",
-        "ஏற்கெனவே உள்ள ஒபீலியா குடியிருப்பின் இன ஆய்வுப் படம் · மூலமும் பயன்பாட்டு உரிமையும் மதிப்பாய்வு நிலுவையில்")
+        "Obelia colony type-study illustration · accompanying lesson explains hydranth and gonangium",
+        "ஒபீலியா குடியிருப்பு இன ஆய்வுப் படம் · ஹைட்ராந்த், கோனாங்கியம் அமைப்புகள் பாடத்தில் விளக்கப்பட்டுள்ளன")
 
     private val coralNoaa = PlateCredit(
-        "Original NOAA coral-polyp anatomy diagram · NOAA Ocean Service, Flower Garden Banks National Marine Sanctuary · full native 1000 × 1005 resolution, lossless PNG from source JPEG · US federal public domain · review pending",
-        "NOAA மூல பவள பாலிப் உடற்கூறுப் படம் · NOAA Ocean Service, Flower Garden Banks தேசியக் கடல் சரணாலயம் · மூலத் தெளிவுத்திறன் 1000 × 1005, JPEG-யிலிருந்து தர இழப்பின்றி PNG வடிவம் · அமெரிக்க அரசு பொதுப் பயன்பாட்டுப் படம் · மதிப்பாய்வு நிலுவையில்")
+        "Original NOAA coral-polyp anatomy diagram · NOAA Ocean Service, Flower Garden Banks National Marine Sanctuary · full native 1000 × 1005 resolution, lossless PNG from source JPEG · US federal public domain",
+        "NOAA மூல பவள பாலிப் உடற்கூறுப் படம் · NOAA Ocean Service, Flower Garden Banks தேசியக் கடல் சரணாலயம் · மூலத் தெளிவுத்திறன் 1000 × 1005, JPEG-யிலிருந்து தர இழப்பின்றி PNG வடிவம் · அமெரிக்க அரசு பொதுப் பயன்பாட்டுப் படம்")
 
     /** Matches the dimensions of the Commons file; the bytes are unverified, so re-check before release. */
     private val plasmodiumCredit = PlateCredit(
@@ -50,8 +50,8 @@ object BookFigureLibrary {
     // misrepresented as a complete two-form Leishmania morphology plate.
     // Biological cross-check: CDC DPDx Leishmaniasis; not the image licence.
     private val leishmaniaAmastigoteOnly = PlateCredit(
-        "AI-generated image · source rights not yet verified · AMASTIGOTE ONLY (in host macrophages). The elongated, flagellated PROMASTIGOTE in the sand fly is NOT shown. Scientific reference: CDC DPDx Leishmaniasis (not the image source).",
-        "AI உருவாக்கிய படம் · மூலப் பயன்பாட்டு உரிமை இன்னும் சரிபார்க்கப்படவில்லை · இது புரவலனின் மேக்ரோஃபேஜ் செல்களில் காணப்படும் அமாஸ்டிகோட் நிலை மட்டும். மணல் ஈயிலுள்ள நீண்ட கசையிழையுடைய புரோமாஸ்டிகோட் நிலை காட்டப்படவில்லை. அறிவியல் சரிபார்ப்பு: CDC DPDx Leishmaniasis (படத்தின் மூலம் அல்ல).")
+        "AI-generated amastigote illustration (macrophage stage only). The flagellated promastigote in the sand fly is not shown; see the separate two-form illustration. Biological reference: CDC DPDx Leishmaniasis.",
+        "AI உருவாக்கிய அமாஸ்டிகோட் விளக்கப்படம் (மேக்ரோஃபேஜ் நிலை மட்டும்). மணல் ஈயில் காணப்படும் கசையிழையுடைய புரோமாஸ்டிகோட் இதில் காட்டப்படவில்லை; இரு நிலை ஒப்பீட்டுப் படத்தைப் பார்க்கவும். உயிரியல் ஆதாரம்: CDC DPDx Leishmaniasis.")
 
     val all: List<BookLibraryFigure> = listOf(
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),

@@ -32,16 +32,16 @@ internal fun bqc(qEn: String, qTa: String, aEn: String, aTa: String) =
 
 /** Standard textbook references. Edition details and page numbers are for the reviewer to add. */
 internal object BookRefs {
-    val ruppert: EnTa = "Ruppert, E. E., Fox, R. S. and Barnes, R. D. Invertebrate Zoology: A Functional Evolutionary Approach, 7th edition, Brooks/Cole: the chapter on this group. Page numbers to be added by the reviewer." to
-        "ரூப்பர்ட், ஃபாக்ஸ், பார்ன்ஸ்: Invertebrate Zoology: A Functional Evolutionary Approach, 7ஆம் பதிப்பு, Brooks/Cole: இக்குழுவுக்கான அத்தியாயம். பக்க எண்களை மதிப்பாய்வாளர் சேர்க்க வேண்டும்."
-    val brusca: EnTa = "Brusca, R. C., Moore, W. and Shuster, S. M. Invertebrates, 3rd edition, Sinauer, 2016: the chapter on this group. Page numbers to be added by the reviewer." to
-        "புரூஸ்கா, மூர், ஷஸ்டர்: Invertebrates, 3ஆம் பதிப்பு, Sinauer, 2016: இக்குழுவுக்கான அத்தியாயம். பக்க எண்களை மதிப்பாய்வாளர் சேர்க்க வேண்டும்."
-    val hyman: EnTa = "Hyman, L. H. The Invertebrates, McGraw-Hill, 1940 onwards: the volume that covers this group. Volume and page numbers to be added by the reviewer." to
-        "ஹைமன்: The Invertebrates, McGraw-Hill, 1940 முதல்: இக்குழுவை உள்ளடக்கிய தொகுதி. தொகுதி, பக்க எண்களை மதிப்பாய்வாளர் சேர்க்க வேண்டும்."
-    val kotpal: EnTa = "Kotpal, R. L. Modern Text Book of Zoology: Invertebrates, Rastogi Publications: the chapter on this group. Edition and page numbers to be added by the reviewer." to
-        "கோட்பால்: Modern Text Book of Zoology: Invertebrates, Rastogi Publications: இக்குழுவுக்கான அத்தியாயம். பதிப்பு, பக்க எண்களை மதிப்பாய்வாளர் சேர்க்க வேண்டும்."
-    val jordan: EnTa = "Jordan, E. L. and Verma, P. S. Invertebrate Zoology, S. Chand: the chapter on this group. Edition and page numbers to be added by the reviewer." to
-        "ஜோர்டான், வர்மா: Invertebrate Zoology, S. Chand: இக்குழுவுக்கான அத்தியாயம். பதிப்பு, பக்க எண்களை மதிப்பாய்வாளர் சேர்க்க வேண்டும்."
+    val ruppert: EnTa = "Ruppert, E. E., Fox, R. S. and Barnes, R. D. Invertebrate Zoology: A Functional Evolutionary Approach, 7th edition, Brooks/Cole." to
+        "ரூப்பர்ட், ஃபாக்ஸ், பார்ன்ஸ்: Invertebrate Zoology: A Functional Evolutionary Approach, 7ஆம் பதிப்பு, Brooks/Cole."
+    val brusca: EnTa = "Brusca, R. C., Moore, W. and Shuster, S. M. Invertebrates, 3rd edition, Sinauer Associates, 2016." to
+        "புரூஸ்கா, மூர், ஷஸ்டர்: Invertebrates, 3ஆம் பதிப்பு, Sinauer Associates, 2016."
+    val hyman: EnTa = "Hyman, L. H. The Invertebrates, McGraw-Hill, multivolume series, 1940 onwards." to
+        "ஹைமன்: The Invertebrates, பல்தொகுதி நூல்வரிசை, McGraw-Hill, 1940 முதல்."
+    val kotpal: EnTa = "Kotpal, R. L. Modern Text Book of Zoology: Invertebrates, Rastogi Publications." to
+        "கோட்பால்: Modern Text Book of Zoology: Invertebrates, Rastogi Publications."
+    val jordan: EnTa = "Jordan, E. L. and Verma, P. S. Invertebrate Zoology, S. Chand." to
+        "ஜோர்டான், வர்மா: Invertebrate Zoology, S. Chand."
     val standard: List<EnTa> get() = listOf(ruppert, brusca, kotpal)
 }
 

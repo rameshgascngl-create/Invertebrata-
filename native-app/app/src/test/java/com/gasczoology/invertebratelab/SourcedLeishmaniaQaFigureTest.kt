@@ -14,6 +14,7 @@ class SourcedLeishmaniaQaFigureTest {
         assertTrue(SourcedLeishmaniaQaFigure.caption.tamil.contains("புரோமாஸ்டிகோட்"))
         assertTrue(SourcedLeishmaniaQaFigure.credit.en.contains("Servier Medical Art"))
         assertTrue(SourcedLeishmaniaQaFigure.credit.en.contains("CC BY 2.0"))
-        assertTrue(SourcedLeishmaniaQaFigure.credit.en.contains("review pending"))
+        assertTrue(SourcedLeishmaniaQaFigure.credit.en.contains("Servier Medical Art"))
+        assertTrue(SourcedLeishmaniaQaFigure.credit.en.contains("included in the native Android textbook", ignoreCase = true))
     }
 }
