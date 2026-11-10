@@ -150,7 +150,8 @@ save("obelia/medusa",im,["obelia_side","obelia_oral"],"Original linework is smal
 
 # 5: original stage-order flow, anchored in actual Obelia colony and medusa source plates.
 im,d=card("05  OBELIA — COMPLETE LIFE-HISTORY SEQUENCE",
-          "Source figures: Hargitt/University of Washington (1905); arrows and stages are original schematic.")
+          "Source figures: Hargitt/University of Washington (1905); arrows and stages are original schematic.",
+          width=2800,height=1940)
 # Two-row eight-step loop, arrows inside margins and unambiguous n/diploid states.
 stages=[
  (1,"Hydroid colony","Sessile / asexual",120,220),
@@ -224,7 +225,11 @@ im,d=card("08  PILA GLOBOSA — EXTERNAL MORPHOLOGY",
 titleline(im,110,180,"Pila globosa specimen")
 titleline(im,1335,180,"Apple snail comparison")
 put(im,images["pila_photo"],(70,275,1230,1380))
-put(im,images["apple_snail_historical"],(1280,275,2430,1380))
+# The source plate holds nine unrelated taxa. Restrict the comparison to its
+# bottom-right figure 9 (the apple snail with extended head/tentacles).
+# The archival snail is Ampullaria, NOT a Pila globosa species identifier.
+apple_nine=images["apple_snail_historical"].crop((760,1550,1487,2372))
+put(im,apple_nine,(1280,275,2430,1380))
 bodylines(im,(90,1430),["In living Pila, eyes arise on small prominences OUTSIDE the tentacle BASES.",
                         "Historical engraving is Ampullaria, NOT identified as Pila globosa.",
                         "If the specimen hides its soft parts, do not infer eye position from the shell."],size=24,leading=49)
