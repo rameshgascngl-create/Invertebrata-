@@ -1,5 +1,16 @@
 package com.gasczoology.invertebratelab.ui
 
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Alignment
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -377,9 +388,8 @@ private fun HomeScreen(
     onParamecium: () -> Unit,
     onPrivacy: () -> Unit,
 ) {
-    // Hidden attribution: seven quick taps on the title open a credit dialog.
-    // pointerInput (not clickable) adds no accessibility semantics, so TalkBack
-    // users never hear a phantom button.
+    // Keep the existing seven-tap credit shortcut without exposing a phantom
+    // TalkBack action. All other actions retain their navigation and test tags.
     var showCredit by remember { mutableStateOf(false) }
     var titleTaps by remember { mutableIntStateOf(0) }
     val lastTitleTap = remember { longArrayOf(0L) }
@@ -394,51 +404,179 @@ private fun HomeScreen(
             },
             title = { Text("INVERTEBRATA") },
             text = {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.testTag("credit-dialog")) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.testTag("credit-dialog"),
+                ) {
                     Text(stringResource(R.string.credit_line))
-                    Text(label(language,
-                        "Government Arts and Science College, Nagercoil",
-                        "அரசு கலை மற்றும் அறிவியல் கல்லூரி, நாகர்கோவில்"),
-                        style = MaterialTheme.typography.bodySmall)
+                    Text(
+                        label(language, "Government Arts and Science College, Nagercoil",
+                            "அரசு கலை மற்றும் அறிவியல் கல்லூரி, நாகர்கோவில்"),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
                 }
             },
         )
     }
+
+    // The home page alone gets a warmer academic palette. Lesson readers and
+    // their approved figure assets remain unchanged.
+    val ink = Color(0xFF173D38)
+    val mutedInk = Color(0xFF506B64)
+    val softBorder = Color(0xFFD8E5DF)
+    val unitTints = listOf(
+        Color(0xFFEAF5F1), Color(0xFFFFF3E6), Color(0xFFF1EEFA),
+        Color(0xFFEAF2FB), Color(0xFFFFF0ED), Color(0xFFF2F6E7),
+        Color(0xFFECF4F6),
+    )
+
     Scaffold { padding ->
         LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(padding).testTag("native-home"),
-            contentPadding = PaddingValues(20.dp),
+            modifier = Modifier.fillMaxSize().padding(padding)
+                .background(Color(0xFFF8FAF7)).testTag("native-home"),
+            contentPadding = PaddingValues(horizontal = 18.dp, vertical = 20.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
-                Text("INVERTEBRATA", style = MaterialTheme.typography.headlineMedium,
-                    modifier = Modifier.pointerInput(Unit) {
-                        detectTapGestures(onTap = {
-                            val now = System.currentTimeMillis()
-                            titleTaps = if (now - lastTitleTap[0] > 1500L) 1 else titleTaps + 1
-                            lastTitleTap[0] = now
-                            if (titleTaps >= 7) { titleTaps = 0; showCredit = true }
-                        })
-                    })
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = { onLanguageChange(AppLanguage.ENGLISH) },
-                        modifier = Modifier.heightIn(min = 48.dp).testTag("language-english")) { Text("English") }
-                    OutlinedButton(onClick = { onLanguageChange(AppLanguage.TAMIL) },
-                        modifier = Modifier.heightIn(min = 48.dp).testTag("language-tamil")) { Text("தமிழ்") }
-                }
-                Button(onClick = onParamecium,
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                        .testTag("r1-home-open-paramecium")) {
-                    Text(label(language, "Read Paramecium — illustrated native textbook",
-                        "பாரமீசியம் — படவிளக்கப் பாடநூலைப் படி"))
+                Card(
+                    shape = RoundedCornerShape(24.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F3ED)),
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().padding(20.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        Text(
+                            label(language, "ZOOLOGY · DIGITAL TEXTBOOK",
+                                "விலங்கியல் · மின்னணுப் பாடநூல்"),
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                fontWeight = FontWeight.Bold,
+                                letterSpacing = 0.5.sp,
+                            ),
+                            color = Color(0xFF306B5A),
+                        )
+                        Text(
+                            "INVERTEBRATA",
+                            style = MaterialTheme.typography.headlineMedium.copy(
+                                fontWeight = FontWeight.ExtraBold,
+                                letterSpacing = 0.3.sp,
+                            ),
+                            color = ink,
+                            modifier = Modifier.pointerInput(Unit) {
+                                detectTapGestures(onTap = {
+                                    val now = System.currentTimeMillis()
+                                    titleTaps = if (now - lastTitleTap[0] > 1500L) 1 else titleTaps + 1
+                                    lastTitleTap[0] = now
+                                    if (titleTaps >= 7) {
+                                        titleTaps = 0
+                                        showCredit = true
+                                    }
+                                })
+                            },
+                        )
+                        Text(
+                            label(language,
+                                "An illustrated guide to invertebrate zoology",
+                                "முதுகெலும்பற்ற விலங்கியல் — படவிளக்கப் பாடநூல்"),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = mutedInk,
+                        )
+                        Spacer(Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            if (language == AppLanguage.ENGLISH) {
+                                Button(
+                                    onClick = { onLanguageChange(AppLanguage.ENGLISH) },
+                                    modifier = Modifier.heightIn(min = 48.dp)
+                                        .testTag("language-english"),
+                                ) { Text("English") }
+                            } else {
+                                OutlinedButton(
+                                    onClick = { onLanguageChange(AppLanguage.ENGLISH) },
+                                    modifier = Modifier.heightIn(min = 48.dp)
+                                        .testTag("language-english"),
+                                ) { Text("English") }
+                            }
+                            if (language == AppLanguage.TAMIL) {
+                                Button(
+                                    onClick = { onLanguageChange(AppLanguage.TAMIL) },
+                                    modifier = Modifier.heightIn(min = 48.dp)
+                                        .testTag("language-tamil"),
+                                ) { Text("தமிழ்") }
+                            } else {
+                                OutlinedButton(
+                                    onClick = { onLanguageChange(AppLanguage.TAMIL) },
+                                    modifier = Modifier.heightIn(min = 48.dp)
+                                        .testTag("language-tamil"),
+                                ) { Text("தமிழ்") }
+                            }
+                        }
+                    }
                 }
             }
-            items(units, key = { it.number }) { unit ->
-                Button(onClick = { onUnit(unit.number) },
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("unit-" + unit.number)) {
+            item {
+                Text(
+                    label(language, "Start exploring", "கற்றலைத் தொடங்குங்கள்"),
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontWeight = FontWeight.Bold,
+                    ),
+                    color = ink,
+                )
+                Spacer(Modifier.height(9.dp))
+                Button(
+                    onClick = onParamecium,
+                    shape = RoundedCornerShape(18.dp),
+                    contentPadding = PaddingValues(16.dp),
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp)
+                        .testTag("r1-home-open-paramecium"),
+                ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        Text("🔬", style = MaterialTheme.typography.headlineSmall)
+                        Text(
+                            label(language,
+                                "Read Paramecium — illustrated native textbook",
+                                "பாரமீசியம் — படவிளக்கப் பாடநூலைப் படி"),
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                fontWeight = FontWeight.SemiBold,
+                            ),
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                }
+            }
+            item {
+                Text(
+                    label(language, "Explore the units", "பாட அலகுகள்"),
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontWeight = FontWeight.Bold,
+                    ),
+                    color = ink,
+                )
+            }
+            items(units, key = { it.number }) { unit ->
+                val tint = unitTints[(unit.number - 1).coerceIn(0, unitTints.lastIndex)]
+                OutlinedButton(
+                    onClick = { onUnit(unit.number) },
+                    shape = RoundedCornerShape(18.dp),
+                    border = BorderStroke(1.dp, softBorder),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        containerColor = tint,
+                        contentColor = ink,
+                    ),
+                    contentPadding = PaddingValues(horizontal = 15.dp, vertical = 14.dp),
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 72.dp)
+                        .testTag("unit-" + unit.number),
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(12.dp),
                     ) {
                         Text(
@@ -453,31 +591,73 @@ private fun HomeScreen(
                             },
                             style = MaterialTheme.typography.headlineMedium,
                         )
-                        Column {
-                            Text(unit.title.value(language),
-                                style = MaterialTheme.typography.titleMedium)
-                            Text(unit.chapters.size.toString() +
-                                label(language, " chapters", " அத்தியாயங்கள்"),
-                                style = MaterialTheme.typography.bodySmall)
+                        Column(
+                            modifier = Modifier.weight(1f),
+                            verticalArrangement = Arrangement.spacedBy(3.dp),
+                        ) {
+                            Text(
+                                label(language, "UNIT ${unit.number}", "அலகு ${unit.number}"),
+                                style = MaterialTheme.typography.labelSmall.copy(
+                                    fontWeight = FontWeight.Bold,
+                                ),
+                                color = mutedInk,
+                            )
+                            Text(
+                                unit.title.value(language),
+                                style = MaterialTheme.typography.titleMedium.copy(
+                                    fontWeight = FontWeight.SemiBold,
+                                ),
+                                color = ink,
+                            )
+                            Text(
+                                unit.chapters.size.toString() +
+                                    label(language, " chapters", " அத்தியாயங்கள்"),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = mutedInk,
+                            )
                         }
+                        Text("›", style = MaterialTheme.typography.headlineSmall, color = mutedInk)
                     }
                 }
             }
             item {
-                Button(onClick = onAssessment, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("a5-assessment")) {
-                    val questionCount = units.filter { it.number <= VALIDATED_UNIT_COUNT }
-                        .sumOf { u -> u.chapters.sumOf { it.a5Questions.size } }
-                    Text(label(language, "Five-mark practice · $questionCount questions", "ஐந்து மதிப்பெண் பயிற்சி · $questionCount வினாக்கள்"))
+                val questionCount = units.filter { it.number <= VALIDATED_UNIT_COUNT }
+                    .sumOf { u -> u.chapters.sumOf { it.a5Questions.size } }
+                Spacer(Modifier.height(4.dp))
+                Button(
+                    onClick = onAssessment,
+                    shape = RoundedCornerShape(18.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF785118),
+                        contentColor = Color.White,
+                    ),
+                    contentPadding = PaddingValues(16.dp),
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)
+                        .testTag("a5-assessment"),
+                ) {
+                    Text(
+                        label(language,
+                            "Five-mark practice · $questionCount questions",
+                            "ஐந்து மதிப்பெண் பயிற்சி · $questionCount வினாக்கள்"),
+                        style = MaterialTheme.typography.titleSmall.copy(
+                            fontWeight = FontWeight.SemiBold,
+                        ),
+                        textAlign = TextAlign.Center,
+                    )
                 }
             }
             item {
                 OutlinedButton(
                     onClick = onPrivacy,
+                    shape = RoundedCornerShape(16.dp),
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("open-privacy-policy"),
                 ) {
-                    Text(label(language, "Privacy policy & developer contact",
-                        "தனியுரிமைக் கொள்கை மற்றும் உருவாக்குநர் தொடர்பு"))
+                    Text(
+                        label(language, "Privacy policy & developer contact",
+                            "தனியுரிமைக் கொள்கை மற்றும் உருவாக்குநர் தொடர்பு"),
+                        textAlign = TextAlign.Center,
+                    )
                 }
             }
         }
