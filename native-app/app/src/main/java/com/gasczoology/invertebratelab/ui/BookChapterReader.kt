@@ -324,8 +324,8 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
     Column(verticalArrangement = Arrangement.spacedBy(6.dp),
         modifier = Modifier.fillMaxWidth().testTag("book-figure-$tag")) {
         if (bitmap == null) {
-            Text(t(language, "This figure is not available in this build.",
-                "இந்தப் படம் இந்த வெளியீட்டில் இல்லை."),
+            Text(t(language, "Figure unavailable.",
+                "படம் கிடைக்கவில்லை."),
                 color = MaterialTheme.colorScheme.error,
                 modifier = Modifier.testTag("r2-plate-missing-$tag"))
         } else {
