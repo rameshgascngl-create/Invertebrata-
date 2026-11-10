@@ -33,6 +33,31 @@ capture_failure_evidence() {
 }
 trap capture_failure_evidence EXIT
 
+# The new native book reader exposes a book-page position at this tag (e.g.
+# "பகுதி 2/12 · ..."). The ciliary stage "4/4" belongs to the separate
+# simulation test, not to the reader header. Validate each independently.
+read_book_position() {
+    python3 - "$1" <<'PY'
+import re
+import sys
+import xml.etree.ElementTree as ET
+
+try:
+    root = ET.parse(sys.argv[1]).getroot()
+    nodes = [node for node in root.iter("node")
+             if node.attrib.get("resource-id") == "r161-learning-position"]
+    if len(nodes) != 1:
+        raise ValueError("Expected exactly one native reader position node")
+    marker = nodes[0].attrib.get("text", "")
+    if not re.fullmatch(r"(?:பகுதி|Page)\s+[1-9][0-9]*/[1-9][0-9]*(?:\s*·\s*.+)?", marker):
+        raise ValueError("Invalid native page-position text: " + repr(marker))
+    print(marker)
+except (OSError, ET.ParseError, ValueError) as error:
+    print("BOOK_POSITION_ERROR: " + str(error), file=sys.stderr)
+    sys.exit(1)
+PY
+}
+
 instrument() {
     local test_class="$1" log_path="$2"
     adb shell am instrument -w -r -e class "$test_class" "$runner" | tee "$log_path"
@@ -76,11 +101,13 @@ printf '%s\n' "$old_pid" > "$evidence/original-pid.txt"
 # through testTagsAsResourceId, not observed by OCR or screen coordinates.
 adb shell uiautomator dump /sdcard/r161-before.xml > "$evidence/ui-before-command.txt" 2>&1
 adb pull /sdcard/r161-before.xml "$evidence/ui-before.xml" >/dev/null
-if ! grep -Fq "r161-learning-position" "$evidence/ui-before.xml" ||
-   ! grep -Fq "4/4" "$evidence/ui-before.xml"; then
+if ! before_book_position="$(read_book_position "$evidence/ui-before.xml")"; then
     result=PRE_KILL_UI_ASSERTION_FAILURE
     exit 1
 fi
+printf '%s\n' "$before_book_position" > "$evidence/book-position-before.txt"
+# Stage 4/4 has already been asserted in the Compose setup test together
+# with its committed DataStore values. Do not confuse it with book pagination.
 
 adb shell dumpsys activity processes > "$evidence/processes-before-home.txt"
 
@@ -177,11 +204,17 @@ printf '%s\n' "$new_pid" > "$evidence/new-pid.txt"
 
 adb shell uiautomator dump /sdcard/r161-after.xml > "$evidence/ui-after-command.txt" 2>&1
 adb pull /sdcard/r161-after.xml "$evidence/ui-after.xml" >/dev/null
-if ! grep -Fq "r161-learning-position" "$evidence/ui-after.xml" ||
-   ! grep -Fq "4/4" "$evidence/ui-after.xml"; then
+if ! after_book_position="$(read_book_position "$evidence/ui-after.xml")"; then
     result=POST_RELAUNCH_UI_ASSERTION_FAILURE
     exit 1
 fi
+printf '%s\n' "$after_book_position" > "$evidence/book-position-after.txt"
+if [[ "$after_book_position" != "$before_book_position" ]]; then
+    result=POST_RELAUNCH_BOOK_POSITION_MISMATCH
+    exit 1
+fi
+# The independent verification class below must still prove ciliary stage 4/4
+# and the original section, language and DataStore state after a new PID.
 # This second instrumentation run does not rewrite the fixture. It verifies
 # the recovered screen and DataStore after a *different* process is observed.
 if ! instrument "$package.NativeR161CiliaryProcessDeathVerifyTest" "$evidence/verify-instrumentation.txt"; then
