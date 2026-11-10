@@ -204,11 +204,27 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag(c.stage, true).performScrollTo().performClick()
             c.start?.let { rule.onNodeWithTag(it, true).performScrollTo().performClick() }
             val canvas = rule.onNodeWithTag(c.canvas, true).performScrollTo()
-            rule.onNodeWithTag("${c.prefix}-inline-play-pause").assertIsDisplayed()
+            val transportTag = "${c.prefix}-inline-play-pause"
+            rule.onNodeWithTag(transportTag).assertIsDisplayed()
+            // Capture the real control's accessibility action before playback starts.
+            // performClick() synchronises with Compose idleness: while a clock emits
+            // frames every 50 ms, its pre-click idle wait can last until phase=1.0.
+            // Invoke the same onClick on the UI thread immediately for the r18 Pause.
+            // Other transports retain physical Compose performClick coverage.
+            val immediatePause = if (c.process == "osmoregulation")
+                checkNotNull(rule.onNodeWithTag(transportTag).fetchSemanticsNode()
+                    .config[SemanticsActions.OnClick].action) {
+                    "No native Pause semantics on " + transportTag
+                }
+            else null
             val before = canvas.captureToImage().asAndroidBitmap()
-            rule.onNodeWithTag("${c.prefix}-inline-play-pause").performClick()
+            rule.onNodeWithTag(transportTag).performClick()
             rule.waitUntil(10_000) { canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current in .18f.. .8f }
-            rule.onNodeWithTag("${c.prefix}-inline-play-pause").performClick()
+            if (immediatePause != null) {
+                InstrumentationRegistry.getInstrumentation().runOnMainSync {
+                    assertTrue("Native water-balance Pause action was rejected", immediatePause())
+                }
+            } else rule.onNodeWithTag(transportTag).performClick()
             val phase = canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("${c.process}: playback did not pause at an intermediate phase: $phase", phase > 0f && phase < 1f)
             val after = settledPausedImage(canvas, phase)
