@@ -19,10 +19,14 @@ import androidx.compose.ui.test.onAllNodesWithTag
 internal fun SemanticsNodeInteractionsProvider.homeUnitOneShows(tamil: Boolean): Boolean {
     val unitCard = onAllNodesWithTag("unit-1", useUnmergedTree = true)
         .fetchSemanticsNodes().firstOrNull() ?: return false
-    fun visibleText(node: SemanticsNode): String =
-        (node.config.getOrNull(SemanticsProperties.Text)
-            ?.joinToString(" ") { it.text }.orEmpty() + " " +
-            node.children.joinToString(" ") { visibleText(it) }).trim()
+    fun visibleText(node: SemanticsNode): String {
+        // The pinned Compose version lacks SemanticsConfiguration.getOrNull().
+        // A missing text property is normal for layout nodes: inspect children.
+        val ownText = runCatching {
+            node.config[SemanticsProperties.Text].joinToString(" ") { item -> item.text }
+        }.getOrDefault("")
+        return (ownText + " " + node.children.joinToString(" ") { visibleText(it) }).trim()
+    }
 
     val text = visibleText(unitCard)
     val unitLabel = if (tamil) "அலகு 1" else "Unit 1"
