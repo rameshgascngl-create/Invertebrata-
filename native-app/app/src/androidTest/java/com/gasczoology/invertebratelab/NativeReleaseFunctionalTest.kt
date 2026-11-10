@@ -483,7 +483,10 @@ class NativeReleaseFunctionalTest {
             // Tamil 200% landscape it changed the nuclear canvas crop from
             // 374 to 499 px and made a valid animation look like a failure.
             // Keep the viewport stationary while the real Compose canvas moves.
-            if (c.prefix == "ciliary") scrollTo(c.canvas).recycle()
+            // Reaching the transport can scroll the preceding canvas out of the
+            // accessibility tree at Tamil 200% landscape. Find every canvas before
+            // requesting alignment; SHOW_ON_SCREEN cannot act on an absent node.
+            scrollTo(c.canvas).recycle()
             bringFullyIntoView(c.canvas)
             fun captureDiagram(): Bitmap = diagram(c.canvas, align = false)
             fun ciliaryBounds(): Rect {
