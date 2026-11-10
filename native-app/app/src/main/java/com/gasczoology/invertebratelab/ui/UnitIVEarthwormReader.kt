@@ -76,8 +76,8 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
             )
         }
         item(key = "u4-earthworm-plate-heading") {
-            Text(if (tamil) "ஆறு தேவைப்படும் உடற்கூறுப் படங்கள்" else
-                "SIX REQUIRED ANATOMICAL PLATES",
+            Text(if (tamil) "மண்புழுவின் ஆறு உடற்கூறுப் படங்கள்" else
+                "SIX EARTHWORM ANATOMICAL PLATES",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.semantics { heading() })
         }
@@ -91,8 +91,8 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                     val raster = rememberRequiredRasterBitmap("type_studies/earthworm/" + plate.first)
                     if (raster == null) {
                         Text(
-                            if (tamil) "இனத்திற்குரிய சரிபார்க்கப்பட்ட பென்சில் படம் இன்னும் இணைக்கப்படவில்லை."
-                            else "Species-verified pencil raster is pending; no invented drawing is displayed.",
+                            if (tamil) "இந்த உறுப்பிற்கான தனிப் படம் இல்லை; பாடத்தின் உடற்கூறு விளக்கத்தைப் பயன்படுத்துக."
+                            else "This structure has no separate illustration in this section; use the anatomical explanation.",
                             color = MaterialTheme.colorScheme.error,
                             modifier = Modifier.testTag("u4-earthworm-plate-pending-" + plate.first)
                         )
@@ -102,8 +102,8 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
                             contentScale = ContentScale.Fit,
                             modifier = Modifier.fillMaxWidth().testTag("u4-earthworm-raster-" + plate.first)
                         )
-                        Text(if (tamil) "படம் காணப்படுகிறது; ஆனால் உடற்கூறு ஆய்வு இன்னும் நிலுவையில் உள்ளது."
-                            else "Raster present, but anatomical leader/hotspot review is still pending.",
+                        Text(if (tamil) "படத்தில் காணப்படும் உறுப்புகளைப் பாட விளக்கத்துடன் ஒப்பிட்டறிக."
+                            else "Compare the organs visible in the illustration with the text descriptions.",
                             color = MaterialTheme.colorScheme.error)
                     }
                     Text(plate.third.value(language),
@@ -165,8 +165,8 @@ internal fun UnitIVEarthwormReader(language: AppLanguage, onBack: () -> Unit) {
         }
         item(key = "u4-earthworm-end") {
             Text(if (tamil)
-                "அடுத்த கட்டம்: இனத்திற்குரிய ஆறு உடற்கூறுப் படங்கள், உறுப்பு தொடுபுள்ளிகள், இயக்க விளக்கங்கள், தனித்த சோதனைகள்."
-            else "Next gate: six species-specific reviewed pencil plates, anchored hotspots, physiological interactions and physical-device verification.",
+                "பாடச்சுருக்கம்: புற, உள் உடற்கூறு, நெஃப்ரிடியாக்கள், இரத்த ஓட்டம், இனப்பெருக்கம் ஆகியவற்றைப் படங்களுடன் ஒப்பிட்டு மீளாய்வு செய்க."
+            else "Chapter summary: revise external and internal morphology, nephridia, circulation and reproduction using the figures and explanations.",
                 modifier = Modifier.testTag("u4-earthworm-next-gate"))
         }
     }

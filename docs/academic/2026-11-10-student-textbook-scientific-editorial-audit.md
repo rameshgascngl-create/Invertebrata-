@@ -32,3 +32,14 @@ The new `StudentTextbookEditorialAuditTest` checks all registered chapters, thei
 - `Pila globosa` morphology: Freshwater Biodiversity Portal of Bangladesh.
 
 **Production note:** No source illustration has been silently changed, no copyright licence has been invented, and no internal release gate was removed to achieve the student-text cleanup.
+
+
+## Supplementary interface and illustration audit (10 November 2026)
+
+The 43-chapter book audit above was supplemented by an examination of legacy/native reading screens which remain reachable alongside the book pages. Corrected outdated statements in the Paramecium reader, Unit I flagellate lesson, protozoan reference gallery, earthworm reader and the sourced Pila illustration credit. The Leishmania flagellate screen now displays the already-integrated amastigote/promastigote PNG with its authentic Servier Medical Art CC BY 2.0 attribution instead of claiming a separate promastigote image is still required.
+
+Pedagogical requirement: use scientific explanations, visible anatomical distinctions, accurate source attribution and bilingual figure captions; do not expose developer review queues or APK sign-off instructions to students. Continue to state genuine scientific limitations, such as species identification from microscopy and the difference between a generalized anatomical illustration and a particular species specimen. The StudentTextbookEditorialAuditTest now guards against reintroducing specific obsolete workflow messages in the native readers.
+
+Biological reference cross-check: CDC DPDx Leishmaniasis (amastigote in mammalian mononuclear phagocytes; elongated anterior-flagellated promastigote in sand flies) and CDC DPDx Ascariasis (female/male morphology, eggs and life history). https://www.cdc.gov/dpdx/leishmaniasis/ ; https://www.cdc.gov/dpdx/ascariasis/.
+
+**Scope remains bounded:** an editorial and targeted scientific review of source content is not equivalent to fresh independent reviewer signatures or a complete visual inspection of every image label, and no scientific fact is to be revised solely to conceal a release-process status.

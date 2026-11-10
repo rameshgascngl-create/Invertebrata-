@@ -93,7 +93,15 @@ class StudentTextbookEditorialAuditTest {
             "scientific review pending.",
             "Review status: DRAFT_UNVERIFIED.",
             "Independent biology approvals: 0/5",
-            "N2.3D1 review records — biology: 0/5"
+            "N2.3D1 review records — biology: 0/5",
+            "Anatomical source-image labels require expert review.",
+            "Image-specific source and review information appears alongside its figure.",
+            "Organism-specific replacement PNG: morphology, Tamil labels and provenance pending verification",
+            "A separate, reviewed promastigote pencil plate is still required.",
+            "Species-verified pencil raster is pending;",
+            "Raster present, but anatomical leader/hotspot review is still pending.",
+            "Next gate: six species-specific reviewed pencil plates",
+            "accurate organism-specific replacement figures remain pending."
         )
         val problems = paths.flatMap { path ->
             val text = File(root, path).readText(Charsets.UTF_8)
