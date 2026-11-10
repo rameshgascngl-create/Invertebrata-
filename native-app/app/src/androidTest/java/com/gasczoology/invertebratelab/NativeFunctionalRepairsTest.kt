@@ -42,8 +42,12 @@ class NativeFunctionalRepairsTest {
             it.requestedOrientation = if (landscape) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
         waitFor("native-home")
-        rule.waitUntil(20_000) { rule.homeUnitOneShows(tamil) }
         rule.waitUntil(20_000) { context.resources.configuration.orientation == if (landscape) android.content.res.Configuration.ORIENTATION_LANDSCAPE else android.content.res.Configuration.ORIENTATION_PORTRAIT }
+        // The richer textbook header can occupy the entire first viewport,
+        // especially at Tamil 200% landscape. Verify the actual Unit 1 card
+        // after scrolling it into composition; do not relax its label assertions.
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
+        rule.waitUntil(20_000) { rule.homeUnitOneShows(tamil) }
         val expected = args.getString("expectedScale")?.toFloat() ?: 1f
         assertEquals("Actual Android font scale", expected, context.resources.configuration.fontScale, .06f)
     }
