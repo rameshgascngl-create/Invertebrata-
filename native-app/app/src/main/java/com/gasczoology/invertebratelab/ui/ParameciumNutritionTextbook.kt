@@ -176,9 +176,20 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
                 Text(nutritionText(language,"Go to the stage list","நிலைப் பட்டியலுக்குச் செல்க"))
             }
             Text(nutritionText(language,
-                "G oral groove/vestibule · O oral cilia · M cytostome · F cytopharynx · V food vacuole · A acidosome · L lysosome · B vacuolar boundary · S soluble products. Left: ventral orientation only. Upper-right: enlarged oral cutaway. Lower-right: independently enlarged vacuole. Membrane folds, ciliary counts, particle size and timing are schematic; amber particles, stippling and enzyme dots are qualitative teaching cues, not a microscope stain, calibrated pH or resolved proteins. Stippling records early acidification, not sustained low pH. Large grey residues stay enclosed while small soluble products cross the membrane.",
-                "G வாய்ப்பள்ளம்/முன்னறை · O வாய்ப்புறக் குறுஇழை · M செல் வாய் · F சைட்டோஃபாரிங்ஸ் · V உணவு நுண்குமிழ் · A அமிலச் சிறுகுமிழ் · L லைசோசோம் · B நுண்குமிழ்ச் சவ்வு · S கரையும் விளைபொருள்கள். இடது: வயிற்றுப்புறத் திசை மட்டும். மேல் வலது: பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம். கீழ் வலது: தனிப் பெரிதாக்கிய நுண்குமிழ். சவ்வு மடிப்புகள், குறுஇழை எண்ணிக்கை, துகள் அளவு, நேரம் ஆகியவை விளக்கத்திற்கானவை; பழுப்பு நிறத் துகள்களும் புள்ளிகளும் கற்பித்தல் குறிகள்; நுண்ணோக்கிச் சாயம், அளவிட்ட pH அல்லது நேரடிப் புரதக் காட்சி அல்ல. புள்ளிகள் ஆரம்ப அமிலமாதலைக் குறிக்கின்றன; தொடர்ந்து குறைந்த pH அல்ல. சிறிய கரையும் விளைபொருள்கள் சவ்வைக் கடக்கும்போது பெரிய சாம்பல் எச்சங்கள் உள்ளேயே இருக்கும்."),
+                "Figure key: G — oral groove/vestibule; O — oral cilia; M — cytostome; F — cytopharynx; V — food vacuole; A — acidosome; L — lysosome; B — vacuolar membrane; S — soluble digestion products.",
+                "படக் குறியீடுகள்: G — வாய்ப்பள்ளம்/முன்னறை; O — வாய்ப்புறக் குறுஇழைகள்; M — செல்வாய்; F — சைட்டோஃபாரிங்ஸ்; V — உணவு நுண்குமிழ்; A — அமிலச் சிறுகுமிழ்; L — லைசோசோம்; B — நுண்குமிழ்ச் சவ்வு; S — கரையக்கூடிய செரிமான விளைபொருள்கள்."),
+                style=MaterialTheme.typography.bodyLarge,
                 modifier=Modifier.testTag("r19-plate-legend"))
+            Text(nutritionText(language,
+                "Reading the figure: Left — whole-cell ventral orientation; upper right — enlarged oral cutaway; lower right — separately enlarged food vacuole. Large indigestible residues remain inside the vacuole, while soluble products cross its membrane.",
+                "படத்தைப் படித்தல்: இடது — முழுச் செல்லின் வயிற்றுப்புறத் தோற்றம்; மேல் வலது — பெரிதாக்கிய வாய்ப்புற வெட்டுத் தோற்றம்; கீழ் வலது — தனியாகப் பெரிதாக்கிய உணவு நுண்குமிழ். செரிக்கப்படாத பெரிய எச்சங்கள் நுண்குமிழுக்குள் தங்குகின்றன; கரையக்கூடிய விளைபொருள்கள் அதன் சவ்வைக் கடக்கின்றன."),
+                style=MaterialTheme.typography.bodyMedium,
+                modifier=Modifier.testTag("r19-plate-orientation"))
+            Text(nutritionText(language,
+                "Scientific note: Membrane folds, cilia, particles and timing are schematic, not measurements. Colours, stippling and enzyme dots are teaching conventions, not microscopic stains, measured pH or directly observed proteins. Stippling indicates early acidification, not continuously low pH.",
+                "அறிவியல் குறிப்பு: சவ்வு மடிப்புகள், குறுஇழைகள், துகள்கள் மற்றும் கால அளவுகள் விளக்கத்திற்கானவை; அளவீடுகள் அல்ல. நிறங்கள், புள்ளிகள் மற்றும் நொதிக் குறிகள் கற்பித்தலுக்கான குறியீடுகள்; நுண்ணோக்கிச் சாயம், அளவிடப்பட்ட pH அல்லது நேரடியாகக் காணப்பட்ட புரதங்கள் அல்ல. புள்ளிகள் தொடக்க அமிலமாதலை மட்டுமே குறிக்கின்றன; தொடர்ந்து குறைந்த pH நிலையை அல்ல."),
+                style=MaterialTheme.typography.bodySmall,
+                modifier=Modifier.testTag("r19-plate-scientific-note"))
             if(stage.id in ParameciumEgestion.stageIds) ParameciumEgestionPlate(language,stage.id,progress.selectedStructure,player,::chooseStructure,!progress.reducedMotion,::togglePlayback,::inspectIntermediate)
             for(item in ParameciumNutrition.structures) {
                 OutlinedButton(onClick={chooseStructure(item.id)},shape=shape,
