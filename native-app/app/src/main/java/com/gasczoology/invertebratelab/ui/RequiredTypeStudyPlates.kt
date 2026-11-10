@@ -50,7 +50,6 @@ import com.gasczoology.invertebratelab.data.TypeStudyRequirement
 import com.gasczoology.invertebratelab.data.BilingualText
 import com.gasczoology.invertebratelab.data.TypeStudyFigureReviewNotes
 import com.gasczoology.invertebratelab.data.SourcedQaAnatomicalPlates
-import android.content.pm.ApplicationInfo
 import kotlin.math.roundToInt
 
 /**
@@ -221,13 +220,10 @@ internal fun RequiredTypeStudyPlates(
                 "obelia/life-cycle" -> "unit2/obelia_lifecycle"
                 else -> stem
             }
-            // Original mandatory masters and production image selection remain
-            // untouched. Sourced drawings are visible ONLY in debuggable QA APKs;
-            // release builds retain the held original until academic sign-off.
-            val isDebugQa = (LocalContext.current.applicationInfo.flags and
-                ApplicationInfo.FLAG_DEBUGGABLE) != 0
-            val candidateStem = if (isDebugQa)
-                SourcedQaAnatomicalPlates.byTypeStudy[study.organismId + "/" + plateId] else null
+            // Owner-approved sourced PNGs are packaged in the main asset set,
+            // not limited to debug builds. Retain legacy masters as fallback.
+            val candidateStem = SourcedQaAnatomicalPlates.byTypeStudy[
+                study.organismId + "/" + plateId]
             val candidateBitmap = candidateStem?.let { rememberCanonicalPlateBitmap(it) }
             val candidateCredit = if (candidateBitmap != null)
                 SourcedQaAnatomicalPlates.credit[study.organismId + "/" + plateId] else null
@@ -249,8 +245,8 @@ internal fun RequiredTypeStudyPlates(
                     Text(readable, style = MaterialTheme.typography.titleMedium)
                     if (candidateCredit != null) {
                         Text(
-                            if (tamil) "ஆதாரப்படத்திலிருந்து பெறப்பட்ட தனி PNG · DEBUG QA காட்சி மட்டும் · இறுதி ஒப்புதல் நிலுவையில் உள்ளது"
-                            else "SOURCE-DOCUMENTED PNG · DEBUG QA ONLY · Scientific approval pending",
+                            if (tamil) "பாடத்தில் சேர்க்கப்பட்ட ஆதாரப்பட PNG · மூலப் படைப்பாளரின் உரிமை விவரங்கள் கீழே"
+                            else "SOURCE-CREDITED PNG · Integrated in the textbook; attribution below",
                             style = MaterialTheme.typography.labelMedium,
                             modifier = Modifier.testTag("r2-plate-source-candidate-" + study.organismId + "-" + plateId),
                         )
@@ -280,7 +276,7 @@ internal fun RequiredTypeStudyPlates(
                             modifier = Modifier.testTag("r2-plate-qa-provisional-" + study.organismId + "-" + plateId),
                         )
                     }
-                    if (study.organismId == "asterias" && raster != null) {
+                    if (study.organismId == "asterias" && raster != null && candidateCredit == null) {
                         val source = when (plateId) {
                             "external" -> if (tamil)
                                 "Asterias forbesi · H. L. Clark (1904) · பொதுக் களம் · படம் 1 எதிர்வாய்ப்புறம், படம் 2 வாய்ப்புறம்"
@@ -316,12 +312,15 @@ internal fun RequiredTypeStudyPlates(
                                 .clickable(onClickLabel = if (tamil) "முழுத்திரையில் பெரிதாக்கு" else "Open full-size image") { expanded = true }
                                 .testTag("r2-plate-bitmap-${study.organismId}-${plateId}"),
                         )
-                        rememberPlateCredit(study.organismId + "/" + plateId)?.let { credit ->
-                            Text(
-                                credit.text(language),
-                                style = MaterialTheme.typography.bodySmall,
-                                modifier = Modifier.testTag("plate-credit-${study.organismId}-${plateId}"),
-                            )
+                        // Never put the old plate's attribution below a new source image.
+                        if (candidateCredit == null) {
+                            rememberPlateCredit(study.organismId + "/" + plateId)?.let { credit ->
+                                Text(
+                                    credit.text(language),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    modifier = Modifier.testTag("plate-credit-${study.organismId}-${plateId}"),
+                                )
+                            }
                         }
                         OutlinedButton(
                             onClick = { expanded = true },

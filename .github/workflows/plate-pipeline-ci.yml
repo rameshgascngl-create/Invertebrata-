@@ -36,7 +36,7 @@ jobs:
           python3 tools/plate_intake.py check
       - name: Check provisional student-QA figure decisions (not academic approval)
         run: python3 tools/check_provisional_figure_inclusion.py
-      - name: Verify three separate source-derived debug PNGs against Git blob digests
+      - name: Verify eleven sourced PNGs in all-build assets against Git blobs
         run: python3 qa-source-intake/verify_staged_debug_assets.py
       - name: Verify Paramecium simulator PNG paths against actual packaged assets
         run: |
@@ -70,14 +70,14 @@ jobs:
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace --info
       - name: Assemble debug APK
         run: gradle -p native-app :app:assembleDebug --stacktrace
-      - name: Verify all eleven source PNGs are packaged in debug APK
+      - name: Verify all eleven textbook source PNGs are packaged in debug APK
         run: |
           python3 - <<'PY'
           from glob import glob
           from pathlib import Path
           from zipfile import ZipFile
           apk = sorted(glob("native-app/app/build/outputs/apk/debug/*.apk"))[0]
-          src = Path("native-app/app/src/debug/assets/qa_source_plates")
+          src = Path("native-app/app/src/main/assets/qa_source_plates")
           names = {p.name for p in src.glob("*.png")}
           assert len(names) == 11, (len(names), names)
           with ZipFile(apk) as z:

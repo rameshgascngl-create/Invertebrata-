@@ -1,8 +1,8 @@
 package com.gasczoology.invertebratelab.data
 
-/** Exact downloadable scientific-source diagrams staged ONLY in debug Android assets.
- * A screenshot or legible PNG does NOT count as two-reviewer scientific acceptance.
- * The old masters and the 52-plate production gate are deliberately unchanged.
+/** Owner-approved, credited scientific-source diagrams in all Android build variants.
+ * The eleven original raster masters remain preserved for history and fallback.
+ * Independent scientific/Tamil reviews and source licences are tracked separately.
  */
 internal object SourcedQaAnatomicalPlates {
     val byTypeStudy: Map<String, String> = mapOf(

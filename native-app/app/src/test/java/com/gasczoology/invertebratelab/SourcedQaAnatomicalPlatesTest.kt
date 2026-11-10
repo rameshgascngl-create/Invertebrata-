@@ -6,7 +6,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SourcedQaAnatomicalPlatesTest {
-    @Test fun tenSourceDocumentedHeldTypeStudyPlatesHaveDebugOverrides() {
+    @Test fun tenSourceDocumentedTypeStudyPlatesHaveStandardBuildOverrides() {
         assertEquals(setOf("sycon/reproduction", "asterias/internal", "asterias/larval-development",
             "paramecium/oral-apparatus","sycon/external","obelia/medusa","obelia/life-cycle",
             "ascaris/female-internal","earthworm/excretory","pila/external"),

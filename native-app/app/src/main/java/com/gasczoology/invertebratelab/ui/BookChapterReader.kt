@@ -25,8 +25,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.platform.LocalContext
-import android.content.pm.ApplicationInfo
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.SpanStyle
@@ -42,6 +40,7 @@ import com.gasczoology.invertebratelab.data.BookDefinition
 import com.gasczoology.invertebratelab.data.BookFigure
 import com.gasczoology.invertebratelab.data.BookFigureLibrary
 import com.gasczoology.invertebratelab.data.SourcedLeishmaniaQaFigure
+import com.gasczoology.invertebratelab.data.SourcedQaAnatomicalPlates
 import com.gasczoology.invertebratelab.data.BookKeyPoints
 import com.gasczoology.invertebratelab.data.BookLayout
 import com.gasczoology.invertebratelab.data.BookNote
@@ -302,16 +301,24 @@ internal fun parseFigureCaption(raw: String): FigureCaptionParts {
 @Composable
 private fun BookFigureView(figure: BookFigure, label: String, language: AppLanguage) {
     val normalStem = BookFigureLibrary.stemFor(figure.slot) ?: ("type_studies/" + figure.slot)
-    val debugBuild = (LocalContext.current.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
-    val sourceCandidate = if (debugBuild && figure.slot == SourcedLeishmaniaQaFigure.slot)
-        rememberCanonicalPlateBitmap(SourcedLeishmaniaQaFigure.assetStem) else null
+    // Both paginated book figures and type-study galleries use the same,
+    // owner-approved source PNGs from main/assets in every build variant.
+    val sourceStem = if (figure.slot == SourcedLeishmaniaQaFigure.slot)
+        SourcedLeishmaniaQaFigure.assetStem
+        else SourcedQaAnatomicalPlates.byTypeStudy[figure.slot]
+    val sourceCandidate = sourceStem?.let { rememberCanonicalPlateBitmap(it) }
     val bitmap = sourceCandidate ?: rememberCanonicalPlateBitmap(normalStem)
     var expanded by rememberSaveable("book-figure-" + figure.slot) { mutableStateOf(false) }
     val typeStudyCredit = rememberPlateCredit(figure.slot)
-    val sourceCredit = if (sourceCandidate != null) SourcedLeishmaniaQaFigure.credit else null
-    val effectiveCredit = sourceCredit ?: BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit
+    val sourceCreditText = if (sourceCandidate == null) null
+        else if (figure.slot == SourcedLeishmaniaQaFigure.slot)
+            SourcedLeishmaniaQaFigure.credit.text(language)
+        else SourcedQaAnatomicalPlates.credit[figure.slot]?.value(language)
+    val effectiveCreditText = sourceCreditText
+        ?: (BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit)?.text(language)
     val tag = figure.slot.replace('/', '-')
-    val parts = parseFigureCaption(if (sourceCandidate != null)
+    val parts = parseFigureCaption(if (sourceCandidate != null &&
+        figure.slot == SourcedLeishmaniaQaFigure.slot)
         SourcedLeishmaniaQaFigure.caption.value(language) else figure.caption.value(language))
     val caption = label + "  " + parts.title
     Column(verticalArrangement = Arrangement.spacedBy(6.dp),
@@ -332,7 +339,7 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
             if (expanded) {
                 RequiredTypeStudyFullImage(image = bitmap, title = caption,
                     language = language, onDismiss = { expanded = false },
-                    credit = effectiveCredit?.text(language))
+                    credit = effectiveCreditText)
             }
         }
         Text(caption, style = MaterialTheme.typography.titleMedium,
@@ -340,8 +347,8 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
             modifier = Modifier.testTag("book-figure-caption-$tag"))
         if (sourceCandidate != null) {
             Text(
-                t(language, "Source-documented two-form PNG · student DEBUG QA only · independent review pending",
-                    "மூல ஆதாரத்துடன் கூடிய இருநிலை PNG · மாணவர் DEBUG QA மட்டும் · தனி மதிப்பாய்வு நிலுவையில் உள்ளது"),
+                t(language, "Source-credited scientific illustration · included in textbook",
+                    "மூல ஆதாரத்துடன் கூடிய அறிவியல் படம் · பாடநூலில் சேர்க்கப்பட்டுள்ளது"),
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("book-leishmania-source-qa"),
             )
@@ -356,8 +363,8 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
                     modifier = Modifier.weight(1f))
             }
         }
-        effectiveCredit?.let {
-            Text(it.text(language), style = MaterialTheme.typography.bodySmall,
+        effectiveCreditText?.let {
+            Text(it, style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("plate-credit-$tag"))
         }
     }

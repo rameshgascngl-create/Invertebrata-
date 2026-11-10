@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Fail if a sourced DEBUG-only anatomical PNG changes without review.
+"""Verify eleven owner-approved images in standard and debug Android assets.
 
-Keep original held raster masters, formal release review register and forty-one
-provisionally accepted source hashes unchanged.
+Keep the original 41 provisionally accepted master image bytes unchanged.
 """
 import hashlib
 from pathlib import Path
 from struct import unpack
 ROOT = Path(__file__).resolve().parents[1]
-REL = Path("native-app/app/src/debug/assets/qa_source_plates")
+REL = Path("native-app/app/src/main/assets/qa_source_plates")
+DEBUG_REL = Path("native-app/app/src/debug/assets/qa_source_plates")
 EXPECTED = {
   "03_sycon_development.png": "340fc98a6621931b6c58ebebef4327dd5b187955",
   "09_asterias_dissection.png": "c6305805ce89e85252ea1e57771c996b2e2c195e",
@@ -34,7 +34,10 @@ def main():
         actual_sha=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
         assert actual_sha==sha,("PNG_BYTES_CHANGED_REVIEW_REQUIRED",filename,actual_sha)
         print(f"QA_SOURCE_PNG={filename} {w}x{h} blob={sha}",flush=True)
-    assert all(not (ROOT/"native-app/app/src/main/assets/qa_source_plates"/n).exists()
-               for n in EXPECTED)
-    print("DEBUG_ONLY_SOURCE_PNG=11; FORMAL_ACADEMIC_GATE=UNCHANGED")
+    # Legacy QA overlay copies are retained byte-identically; never silently
+    # substitute them for the newly installed main textbook source images.
+    for filename in EXPECTED:
+        assert (ROOT/DEBUG_REL/filename).read_bytes() == (ROOT/REL/filename).read_bytes(), filename
+    print("STANDARD_AND_DEBUG_SOURCE_PNG=11/11; OWNER_APPROVED_IMAGE_INCLUSION=YES")
+    print("FORMAL_ACADEMIC_RIGHTS_SIGNOFF=SEPARATE")
 if __name__=="__main__": main()

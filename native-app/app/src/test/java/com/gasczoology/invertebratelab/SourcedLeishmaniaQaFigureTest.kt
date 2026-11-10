@@ -6,7 +6,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SourcedLeishmaniaQaFigureTest {
-    @Test fun plateIsACreditedTwoSourceComparison() {
+    @Test fun twoSourceComparisonIsApprovedForBookInclusion() {
         assertEquals("lib/leishmania-amastigote", SourcedLeishmaniaQaFigure.slot)
         assertTrue(SourcedLeishmaniaQaFigure.assetStem.startsWith("qa_source_plates/"))
         assertTrue(SourcedLeishmaniaQaFigure.caption.english.contains("amastigote"))
