@@ -72,7 +72,9 @@ for config in "ENGLISH 1.0 portrait" "TAMIL 1.0 portrait" "TAMIL 2.0 portrait" "
   adb shell settings get system font_scale > "$evidence/font-scale-$scale.txt"
   adb shell mkdir -p /sdcard/Download/native-anatomy-evidence
   rm -rf native-app/app/build/outputs/androidTest-results/connected native-app/app/build/reports/androidTests/connected
-  if gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
+  # Bound a stalled instrumentation run so EXIT can preserve logcat and device state.
+  # A timeout remains a failure; the exact test-cohort checks below are unchanged.
+  if timeout --signal=TERM --kill-after=30s 15m gradle -p native-app :app:connectedDebugAndroidTest --stacktrace \
     -Pandroid.testInstrumentationRunnerArguments.class="$selected_test" "${quality_args[@]}" \
     -Pandroid.testInstrumentationRunnerArguments.r19Language="$language" \
     -Pandroid.testInstrumentationRunnerArguments.r19Orientation="$orientation" \
