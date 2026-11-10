@@ -73,12 +73,27 @@ class StudentTextbookEditorialAuditTest {
         val root = File("src/main/java/com/gasczoology/invertebratelab/ui")
         val paths = listOf("ChapterDraftNotice.kt", "RequiredTypeStudyPlates.kt",
             "BookChapterReader.kt", "ParameciumTeachingLab.kt",
-            "UnitIVPenaeusTextbook.kt", "InvertebrataApp.kt")
+            "UnitIVPenaeusTextbook.kt", "InvertebrataApp.kt",
+            "UnitIIIPlateGallery.kt", "UnitIIIPlateFullscreenViewer.kt",
+            "UnitIVEarthwormReader.kt", "ParameciumTextbookReader.kt",
+            "ParameciumNuclearTextbook.kt", "UnitIFlagellateTypeStudies.kt",
+            "UnitIVNereisRasterPlates.kt", "UnitIProtozoaReferenceGallery.kt",
+            "CiliaryPlaybackPanel.kt", "McqPracticeScreen.kt",
+            "ParameciumProcessPng.kt", "ParameciumRasterAtlas.kt",
+            "ParameciumWaterBalanceTextbook.kt", "UnitIEntamoebaMorphology.kt",
+            "UnitIStageAtlasCanvas.kt", "ParameciumExternalCanvas.kt")
         val banned = listOf(
             "Academic review pending:", "Draft · academic review pending",
             "ACADEMIC DRAFT:", "FOUR PENCIL-ATLAS MASTERS PENDING",
             "VIEW ANATOMICAL SLOTS · Paramecium replacement plates pending",
-            "Legible for student QA (minor imperfections tolerated)."
+            "Legible for student QA (minor imperfections tolerated).",
+            "PNG REFERENCE — ACADEMIC REVIEW PENDING",
+            "Artwork status: DRAFT_UNVERIFIED",
+            "Expert review pending",
+            "scientific review pending.",
+            "Review status: DRAFT_UNVERIFIED.",
+            "Independent biology approvals: 0/5",
+            "N2.3D1 review records — biology: 0/5"
         )
         val problems = paths.flatMap { path ->
             val text = File(root, path).readText(Charsets.UTF_8)
