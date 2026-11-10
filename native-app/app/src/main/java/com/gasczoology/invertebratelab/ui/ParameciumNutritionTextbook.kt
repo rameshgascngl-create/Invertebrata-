@@ -114,9 +114,9 @@ internal fun ParameciumNutritionTextbook(language: AppLanguage,speak: (Bilingual
     Text(nutritionText(language,"5 · Nutrition and cell physiology · Paramecium caudatum","5 · ஊட்டமுறையும் செல் உடலியலும் · Paramecium caudatum"),
         style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
         modifier=Modifier.testTag("r19-textbook-title").semantics { heading() })
-    Text(ParameciumNutrition.reviewStatus+" · "+nutritionText(language,
-        "Original pencil schematics, not to scale. Whole-cell orientation and enlarged compartments are distinct; specialist approval pending.",
-        "அசல் பென்சில் விளக்கப்படங்கள்; அளவுக்கு ஏற்ப அல்ல. முழுச் செல் திசையும் பெரிதாக்கிய பகுதிகளும் வேறுபடுத்தப்பட்டுள்ளன; நிபுணர் ஒப்புதல் நிலுவை."),
+    Text(nutritionText(language,
+        "Original schematic drawings, not to scale. Whole-cell orientation and enlarged compartments are shown separately; dimensions are illustrative.",
+        "உடற்கூறு விளக்கப்படங்கள் அளவுக்கு ஏற்ப அல்ல. முழுச் செல் தோற்றமும் பெரிதாக்கிய பகுதிகளும் தனித்தனியே காட்டப்பட்டுள்ளன; அளவுகள் விளக்கத்திற்கானவை."),
         modifier=Modifier.testTag("r19-review-status"))
     Text(reading.heading.value(language)+" · "+stage.heading.value(language)+" · "+ParameciumNutrition.structure(progress.selectedStructure).name.value(language),
         modifier=Modifier.testTag("r19-module-position"))

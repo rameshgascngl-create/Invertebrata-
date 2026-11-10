@@ -240,8 +240,8 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
         }
         Text(
             if (language == AppLanguage.TAMIL)
-                "குறிப்பு: இந்த வடிவமும் தொடு-பகுதிகளும் மாதிரி மட்டுமே; சரிபார்க்கப்பட்ட உடலமைப்புப் படம் அல்ல."
-            else "Original graphite-pencil plate; no stock art was copied. Organ counts, positions, density and touch geometry remain unverified illustrations.",
+                "குறிப்பு: உறுப்புகளின் அளவுகள், இடங்கள், தொடுபகுதிகள் ஆகியவை கற்பித்தலுக்கான எளிமைப்படுத்திய மாதிரிகள்; துல்லிய அளவீடுகள் அல்ல."
+            else "Original graphite-pencil plate; no stock art was copied. Organ counts, relative positions, density and touch targets are schematic rather than measured.",
             modifier = Modifier.padding(top = 4.dp),
         )
         if (onJumpToPlate != null) {

@@ -231,8 +231,8 @@ internal fun UnitIVEarthwormExternalAtlas(
                 }
             }
             Text(if(tamil)
-                "டிஜிட்டல் கற்பித்தல் வரைபடம்; உண்மை பென்சில் ஸ்கேன் அல்ல. 40 எடுத்துக்காட்டுக் கண்டங்கள் மட்டுமே. இனச் சிறப்புத் துளைகளின் துல்லிய இடங்கள் அறிவியல் மறுஆய்வில் உள்ளன."
-                else "Original digital teaching schematic, NOT a pencil scan. Forty example segments only; precise species-specific pore positions remain under zoological review.",
+                "டிஜிட்டல் கற்பித்தல் வரைபடம்; உண்மை பென்சில் ஸ்கேன் அல்ல. 40 எடுத்துக்காட்டுக் கண்டங்கள் மட்டுமே. வெவ்வேறு சிற்றினங்களில் துளைகளின் இடங்கள் மாறலாம்; படத்திலிருந்து துல்லிய அளவுகளை நிர்ணயிக்க வேண்டாம்."
+                else "Original digital teaching schematic, NOT a pencil scan. Forty example segments only; exact pore positions may differ by species; do not infer measured coordinates from the diagram.",
                 style=MaterialTheme.typography.bodySmall,
                 modifier=Modifier.testTag("u43-earthworm-schematic-notice"))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
