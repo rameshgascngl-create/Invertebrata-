@@ -56,8 +56,20 @@ internal fun ParameciumEgestionPlate(language: AppLanguage,stage: String,selecte
             customActions=ParameciumEgestion.structures.map { s -> CustomAccessibilityAction(s.name.value(language)) { onSelect(s.id);true } }
         }) { drawEgestion(stage,selected,playback.value.phase) }
     Text(if(language==AppLanguage.TAMIL)
-        "C சைட்டோப்ராக்ட் · R எச்ச நுண்குமிழ் · H மீட்கப்பட்ட சவ்வு. இடது முழுச் செல் திசைக் குறி மட்டும்; வலது தனியாகப் பெரிதாக்கிய புறப்படல வெட்டுத் தோற்றம். மேலே வெளிச்சூழல்; கீழே சைட்டோசால். பெரிய சாம்பல் துகள்கள் செரிக்காத எச்சங்கள்; சைட்டோசாலில் சிதறுவதில்லை. குறுஇழை, நுண்குழல், சவ்வு விகிதங்கள் விளக்கத்திற்கானவை. முழுச் செல் அமைவிடமும் விசை அம்புகளும் பரிசோதனையில் நேரடியாக அளவிடப்பட்டவை அல்ல; விளக்கப்பட மாதிரிகள்."
-        else "C cytoproct · R residue vacuole · H retrieved membrane. Left: whole-cell orientation only. Right: independently enlarged cortical section. Exterior above; cytosol below. Large grey particles are indigestible residues, never scattered in cytosol. Ciliary, microtubular and membrane proportions are schematic. Whole-cell placement and force arrows are illustrative, not directly measured in this drawing.",modifier=Modifier.testTag("r19-egestion-legend"))
+        "படக் குறியீடுகள்: C — சைட்டோப்ராக்ட் (கழிவு வெளியேற்றத் துளை); R — எச்சங்கள் அடங்கிய நுண்குமிழ்; H — மீட்கப்பட்ட சவ்வு."
+        else "Figure key: C — cytoproct (egestion opening); R — residue-containing vacuole; H — retrieved membrane.",
+        style=MaterialTheme.typography.bodyLarge,
+        modifier=Modifier.testTag("r19-egestion-legend"))
+    Text(if(language==AppLanguage.TAMIL)
+        "படத்தைப் படித்தல்: இடது — முழுச் செல்லின் அமைவிடத் தோற்றம்; வலது — தனியாகப் பெரிதாக்கிய செல் புறப்படல வெட்டுத் தோற்றம். மேலே வெளிச்சூழலும் கீழே சைட்டோசாலும் காட்டப்பட்டுள்ளன. செரிக்கப்படாத பெரிய எச்சங்கள் நுண்குமிழுக்குள் இருந்து வெளியேற்றப்படுகின்றன; அவை சைட்டோசாலில் சிதறுவதில்லை."
+        else "Reading the figure: Left — whole-cell orientation; right — separately enlarged cortical section. The exterior is above and the cytosol below. Large indigestible residues remain enclosed until egestion; they are not scattered through the cytosol.",
+        style=MaterialTheme.typography.bodyMedium,
+        modifier=Modifier.testTag("r19-egestion-orientation"))
+    Text(if(language==AppLanguage.TAMIL)
+        "அறிவியல் குறிப்பு: குறுஇழைகள், நுண்குழல்கள் மற்றும் சவ்வுகளின் விகிதங்கள் விளக்கத்திற்கானவை. கழிவு வெளியேற்றத் துளையின் அமைவிடமும் விசையைக் குறிக்கும் அம்புகளும் நேரடி அளவீடுகளைக் குறிக்கவில்லை."
+        else "Scientific note: Ciliary, microtubular and membrane proportions are schematic. The placement of the opening and the force arrows are illustrative, not direct measurements.",
+        style=MaterialTheme.typography.bodySmall,
+        modifier=Modifier.testTag("r19-egestion-scientific-note"))
 }
 
 private fun DrawScope.drawEgestion(stage: String,selected: String,phase: Float) {
