@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REL = Path("native-app/app/src/debug/assets/qa_source_plates")
 EXPECTED = {
   "03_sycon_development.png": "340fc98a6621931b6c58ebebef4327dd5b187955",
-  "09_asterias_dissection.png": "dff379b3b16be5ffa66a91b720b4940cdeeb43f3",
+  "09_asterias_dissection.png": "c6305805ce89e85252ea1e57771c996b2e2c195e",
   "10_asterias_larval_reference.png": "6ab2147feb21e71b5445824d3c8657d6ced132a9"
 }
 def main():

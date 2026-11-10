@@ -38,7 +38,12 @@ jobs:
           mkdir -p "$DEST"
           for file in 03_sycon_development.png 09_asterias_dissection.png 10_asterias_larval_reference.png; do
             test -s "qa-source-intake/downloaded-png-review/$file"
-            cp "qa-source-intake/downloaded-png-review/$file" "$DEST/$file"
+            # Existing academically screened PNG bytes are immutable. A fresh
+            # Commons thumbnail render must never silently replace the staged
+            # version; changes require an explicit reviewed Git commit.
+            if [[ ! -s "$DEST/$file" ]]; then
+              cp "qa-source-intake/downloaded-png-review/$file" "$DEST/$file"
+            fi
           done
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
