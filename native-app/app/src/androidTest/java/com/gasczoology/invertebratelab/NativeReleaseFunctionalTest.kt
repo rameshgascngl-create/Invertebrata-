@@ -472,17 +472,26 @@ class NativeReleaseFunctionalTest {
             tap("r1-process-" + c.process); if (c.prefix == "r19" || c.prefix == "r17") tap(c.prefix + "-jump-stages"); tap(c.stage); c.start?.let(::tap)
             val transportId = c.prefix + "-inline-play-pause"
             scrollTo(transportId).recycle()
-            // Ciliary playback occupies 190 dp in landscape but its transport is
-            // further down the same scroll column. Keep that control as our viewport
-            // anchor for all captures so scrolling cannot imitate animated pixels.
-            fun captureDiagram(): Bitmap {
-                if (c.prefix == "ciliary") {
-                    scrollTo(transportId).recycle()
-                    return diagram(c.canvas, align = false)
-                }
-                return diagram(c.canvas)
+            if (c.prefix == "ciliary") {
+                // The stage selector lives below the moving cilia. Transport-first
+                // alignment left only the static inset visible in Tamil portrait
+                // and could move the whole canvas out of the landscape tree.
+                // Align the diagram itself ONCE, then never scroll while recording
+                // the before, paused and stationary frames.
+                scrollTo(c.canvas).recycle()
+                bringFullyIntoView(c.canvas)
+            }
+            fun captureDiagram(): Bitmap =
+                if (c.prefix == "ciliary") diagram(c.canvas, align = false) else diagram(c.canvas)
+            fun ciliaryBounds(): Rect {
+                val node = waitFor(c.canvas)
+                val rect = Rect()
+                node.getBoundsInScreen(rect)
+                node.recycle()
+                return rect
             }
             val before = captureDiagram()
+            val stationaryBounds = if (c.prefix == "ciliary") ciliaryBounds() else null
             // The transport was reached by touch above. Activate its native action
             // without moving the viewport away from the diagram being measured.
             fun playbackControl() = click(checkNotNull(find(transportId, false)), transportId)
@@ -492,11 +501,18 @@ class NativeReleaseFunctionalTest {
             playbackControl(); SystemClock.sleep(150)
             val stopped = phase(c.canvas); assertTrue(c.process + ": no intermediate pause", stopped > 0f && stopped < 1f)
             val after = captureDiagram()
+            if (stationaryBounds != null) {
+                assertEquals("Ciliary diagram moved on screen during playback; pixels cannot prove motion",
+                    stationaryBounds, ciliaryBounds())
+            }
             assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after, c.process + " / " + c.canvas) > 12)
             saveScreen(c.process + "-release-start", before); saveScreen(c.process + "-release-paused", after)
             SystemClock.sleep(300)
             assertEquals(c.process + ": phase advanced after Pause", stopped, phase(c.canvas), .0011f)
             val paused = captureDiagram()
+            if (stationaryBounds != null) {
+                assertEquals("Ciliary diagram shifted after Pause", stationaryBounds, ciliaryBounds())
+            }
             assertTrue(c.process + ": pixels moved after Pause", after.sameAs(paused))
             before.recycle(); after.recycle(); paused.recycle()
         }
