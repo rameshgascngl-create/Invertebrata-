@@ -342,8 +342,9 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
                     credit = effectiveCreditText)
             }
         }
-        Text(caption, style = MaterialTheme.typography.titleMedium,
+        Text(caption, style = MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.testTag("book-figure-caption-$tag"))
         // At 200% Tamil font these must wrap as independent keyed entries,
         // rather than a single unbroken paragraph under the raster.
@@ -355,8 +356,11 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
                     modifier = Modifier.weight(1f))
             }
         }
+        // Keep source and licence visible, but subordinate to the scientific figure
+        // and caption even at Android's 200% font scale. Attribution text is unchanged.
         effectiveCreditText?.let {
-            Text(it, style = MaterialTheme.typography.bodySmall,
+            Text(it, style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.testTag("plate-credit-$tag"))
         }
     }
