@@ -8,7 +8,7 @@ on:
       - '.github/workflows/remaining-seven-source-review.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   source-figure-review:
     runs-on: ubuntu-24.04
@@ -27,3 +27,29 @@ jobs:
           name: INVERTEBRATA-remaining-seven-source-PNG-review
           path: qa-source-intake/remaining-seven-review/
           if-no-files-found: warn
+      - name: Stage seven reviewed source PNGs as debug-only assets
+        if: github.ref == 'refs/heads/feat/native-textbook-reader-qa'
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC=qa-source-intake/remaining-seven-review
+          DST=native-app/app/src/debug/assets/qa_source_plates
+          mkdir -p "$DST"
+          for file in 01_paramecium_oral_sourced.png 02_sycon_external_sourced.png \
+                      04_obelia_medusa_sourced.png 05_obelia_lifecycle_sourced.png \
+                      06_ascaris_female_sourced.png 07_earthworm_excretory_sourced.png \
+                      08_pila_external_sourced.png; do
+            test -s "$SRC/$file" || { echo "MISSING_SOURCE_PNG $file"; exit 1; }
+            if [[ -e "$DST/$file" ]]; then
+              cmp "$SRC/$file" "$DST/$file" || { echo "CANDIDATE_CHANGED_REVIEW_REQUIRED $file"; exit 1; }
+            else
+              cp "$SRC/$file" "$DST/$file"
+            fi
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DST"
+          if ! git diff --cached --quiet; then
+            git commit -m "QA: stage seven source-based anatomical PNG candidates without overwriting masters"
+            git push origin HEAD:feat/native-textbook-reader-qa
+          fi
