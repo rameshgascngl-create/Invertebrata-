@@ -217,15 +217,21 @@ class NativeReleaseFunctionalTest {
             if (node.isScrollable && node.isVisibleToUser) {
                 val r = Rect(); node.getBoundsInScreen(r)
                 val area = r.width() * r.height()
-                if (r.height() >= r.width() * .6f && area > bestArea) { best = node; bestArea = area }
+                // Landscape at 200% text is wider than it is tall. Do not reject
+                // the vertical lesson page using a portrait aspect-ratio test.
+                // Horizontal stage strips are shallow (<300 px); the reader is not.
+                if (r.height() >= 300 && area > bestArea) { best = node; bestArea = area }
             }
             for (at in 0 until node.childCount) node.getChild(at)?.let(::visit)
         }
         automation.rootInActiveWindow?.let(::visit)
         val target = best ?: return false
+        val eventsBefore = verticalScrollEvents.get()
         val moved = target.performAction(action)
         instrumentation.waitForIdleSync(); SystemClock.sleep(150)
-        return moved && before != fingerprint()
+        // A paragraph taller than the viewport may retain identical accessible
+        // node bounds even when Android reports a real vertical scroll event.
+        return moved && (before != fingerprint() || verticalScrollEvents.get() != eventsBefore)
     }
     private fun horizontal(container: String, id: String): AccessibilityNodeInfo {
         scrollTo(container).recycle()
