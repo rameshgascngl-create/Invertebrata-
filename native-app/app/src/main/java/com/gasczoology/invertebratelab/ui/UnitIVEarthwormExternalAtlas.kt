@@ -231,8 +231,8 @@ internal fun UnitIVEarthwormExternalAtlas(
                 }
             }
             Text(if(tamil)
-                "டிஜிட்டல் கற்பித்தல் வரைபடம்; உண்மை பென்சில் ஸ்கேன் அல்ல. 40 எடுத்துக்காட்டுக் கண்டங்கள் மட்டுமே. வெவ்வேறு சிற்றினங்களில் துளைகளின் இடங்கள் மாறலாம்; படத்திலிருந்து துல்லிய அளவுகளை நிர்ணயிக்க வேண்டாம்."
-                else "Original digital teaching schematic, NOT a pencil scan. Forty example segments only; exact pore positions may differ by species; do not infer measured coordinates from the diagram.",
+                "மண்புழுவின் புறத்தோற்ற அமைப்பைக் காட்டும் விளக்கப்படம். இதில் 40 உடற்கண்டங்கள் எடுத்துக்காட்டாகக் காட்டப்பட்டுள்ளன; இவை முதிர்ந்த மண்புழுவின் மொத்த உடற்கண்டங்களைக் குறிக்கவில்லை. இனங்களைப் பொறுத்து துளைகளின் அமைவிடம் மாறக்கூடும்; குறிக்கப்பட்ட இடங்கள் அளவீட்டின் அடிப்படையிலானவை அல்ல."
+                else "External morphology of an earthworm, showing 40 representative body segments rather than the complete adult segment count. Pore positions are schematic and may vary among species; they are not measured anatomical coordinates.",
                 style=MaterialTheme.typography.bodySmall,
                 modifier=Modifier.testTag("u43-earthworm-schematic-notice"))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
