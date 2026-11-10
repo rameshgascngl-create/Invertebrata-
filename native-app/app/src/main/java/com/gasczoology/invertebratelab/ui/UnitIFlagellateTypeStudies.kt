@@ -10,6 +10,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
+import com.gasczoology.invertebratelab.data.SourcedLeishmaniaQaFigure
 
 /**
  * U1.7: Full native bilingual teaching sections, not a question/answer gallery.
@@ -59,7 +60,7 @@ private val flagellateStudies = listOf(
                 "T. brucei is spread by bites of infected tsetse flies and has multiplying extracellular stages in mammals. T. cruzi is associated with triatomine bugs; infective forms from bug faeces can enter through skin breaks or mucosa, and intracellular amastigotes multiply in mammalian tissues. These are different transmission and tissue cycles.",
                 "T. brucei தொற்று ட்ஸெட்ஸெ ஈ கடியால் பரவுகிறது; பாலூட்டியில் செல்லுக்கு வெளியே பெருகும் நிலைகள் உள்ளன. T. cruzi தொற்று ட்ரையட்டோமைன் பூச்சியின் மலத்திலுள்ள தொற்று நிலைகள் தோல் காயம் அல்லது சளிச்சவ்வு வழி நுழைவதால் ஏற்படலாம்; பாலூட்டி திசுக்களில் செல்லுக்குள்ளான அமாஸ்டிகோட்டுகள் பெருகுகின்றன. இவை வெவ்வேறு பரவும் முறைகளும் திசுச் சுழற்சிகளும் ஆகும்."),
         ),
-        credit = "Organism-specific replacement PNG: morphology, Tamil labels and provenance pending verification",
+        credit = "Bloodstream trypomastigote morphology differs from developmental stages in the tsetse fly.",
         source = "https://www.cdc.gov/dpdx/trypanosomiasisAfrican/index.html",
     ),
     FlagellateStudy(
@@ -79,14 +80,14 @@ private val flagellateStudies = listOf(
                 "தொற்றுடைய பெண் பிளெபோட்டோமைன் மணல் ஈ தோலில் புரோமாஸ்டிகோட்டுகளைச் செலுத்துகிறது. மேக்ரோபேஜ் செல்கள் அவற்றை விழுங்குகின்றன; அவை அமாஸ்டிகோட்டுகளாக மாறி செல்லுக்குள் பிளவடைந்து பெருகுகின்றன. ஒட்டுண்ணி மற்றும் ஓம்புயிரியின் பதிலைப் பொறுத்து தோல், சளிச்சவ்வு அல்லது உள்ளுறுப்பு நோய் ஏற்படலாம்; ஒரு படம் மட்டும் நோய் வகையை நிர்ணயிக்காது."),
             FlagellateStage("vector", "3. Sand fly: motile promastigote stage",
                 "3. மணல் ஈ: இயங்கும் புரோமாஸ்டிகோட் நிலை",
-                "The sand fly acquires amastigotes while feeding on infected tissue. In the fly gut, the parasites transform into elongated flagellated promastigotes and develop into transmissible forms. Unlike the intracellular amastigote, a promastigote has an anterior kinetoplast and a projecting anterior flagellum. A separate, reviewed promastigote pencil plate is still required.",
-                "பாதிக்கப்பட்ட திசுவிலிருந்து இரத்த உணவு எடுக்கும்போது மணல் ஈ அமாஸ்டிகோட்டுகளைப் பெறுகிறது. ஈயின் குடலில் அவை நீண்ட கசையிழை உடைய புரோமாஸ்டிகோட்டுகளாக மாறி தொற்று ஏற்படுத்தும் நிலைகளாக வளர்கின்றன. செல்லுக்குள்ளான அமாஸ்டிகோட்டிலிருந்து வேறுபட்டு, புரோமாஸ்டிகோட்டில் முன்புறக் கைனெட்டோபிளாஸ்டும் முன்நோக்கி நீளும் கசையிழையும் உள்ளன. தனித்த, மதிப்பாய்வு செய்யப்பட்ட புரோமாஸ்டிகோட் பென்சில் படம் இன்னும் தேவை."),
+                "The sand fly acquires amastigotes while feeding on infected tissue. In the fly gut, the parasites transform into elongated flagellated promastigotes and develop into transmissible forms. Unlike the intracellular amastigote, a promastigote has an anterior kinetoplast and a projecting anterior flagellum. The paired textbook illustration shows the amastigote and promastigote as distinct forms.",
+                "பாதிக்கப்பட்ட திசுவிலிருந்து இரத்த உணவு எடுக்கும்போது மணல் ஈ அமாஸ்டிகோட்டுகளைப் பெறுகிறது. ஈயின் குடலில் அவை நீண்ட கசையிழை உடைய புரோமாஸ்டிகோட்டுகளாக மாறி தொற்று ஏற்படுத்தும் நிலைகளாக வளர்கின்றன. செல்லுக்குள்ளான அமாஸ்டிகோட்டிலிருந்து வேறுபட்டு, புரோமாஸ்டிகோட்டில் முன்புறக் கைனெட்டோபிளாஸ்டும் முன்நோக்கி நீளும் கசையிழையும் உள்ளன. பாடநூலின் ஒப்பீட்டுப் படத்தில் அமாஸ்டிகோட், புரோமாஸ்டிகோட் ஆகிய இரண்டு வடிவங்களும் தனித்துக் காட்டப்பட்டுள்ளன."),
             FlagellateStage("limits", "4. Taxonomy and microscopy: limits of identification",
                 "4. வகைப்பாடும் நுண்ணோக்கியும்: இன அடையாள வரம்புகள்",
                 "Leishmania species are not reliably distinguishable by amastigote morphology alone. Tissue microscopy may demonstrate compatible amastigotes, but species identification requires further methods when clinically needed. Distinguish the sand fly vector from the tsetse fly vector of African trypanosomiasis.",
                 "அமாஸ்டிகோட்டின் வடிவத்தை மட்டும் கொண்டு லீஷ்மேனியா இனங்களை நம்பகமாக வேறுபடுத்த முடியாது. திசு நுண்ணோக்கியில் ஒத்த அமாஸ்டிகோட்டுகள் தெரியலாம்; மருத்துவத் தேவைக்கேற்ப இன அடையாளத்திற்கு கூடுதல் சோதனைகள் வேண்டும். ஆப்பிரிக்க டிரிப்பனோசோமியாசிஸைப் பரப்பும் ட்ஸெட்ஸெ ஈயிலிருந்து மணல் ஈயை வேறுபடுத்திக் கற்க வேண்டும்."),
         ),
-        credit = "Organism-specific replacement PNG: morphology, Tamil labels and provenance pending verification",
+        credit = "The amastigote–promastigote comparison is genus-level morphology, not species diagnosis.",
         source = "https://www.cdc.gov/dpdx/leishmaniasis/",
     ),
 )
@@ -126,7 +127,11 @@ internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage)
     val tamil = language == AppLanguage.TAMIL
     // Legacy source cartoons remain archived but are not valid anatomy masters.
     // Only dedicated replacement assets may populate the student illustration slot.
-    val bitmap = rememberRequiredRasterBitmap("unit1/replacements/" + study.id + "_morphology", pngOnly = true)
+    val imageStem = if (study.id == "leishmania") SourcedLeishmaniaQaFigure.assetStem
+        else "unit1/replacements/" + study.id + "_morphology"
+    val bitmap = rememberRequiredRasterBitmap(imageStem, pngOnly = true)
+    val sourceCredit = if (study.id == "leishmania" && bitmap != null)
+        SourcedLeishmaniaQaFigure.credit.text(language) else null
     var expanded by rememberSaveable(study.id) { mutableStateOf(false) }
     Card(modifier = Modifier.fillMaxWidth().testTag("u17-study-" + study.id)) {
         Column(
@@ -140,8 +145,8 @@ internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage)
             )
             if (bitmap == null) {
                 Text(
-                    if (tamil) "பழைய தவறான விளக்கப்படம் மாணவர் பாடத்திலிருந்து நீக்கப்பட்டது. தனித்த அறிவியல்பூர்வ PNG படம், தமிழ் குறியீடுகள், ஆதாரம் சரிபார்க்கப்பட்ட பின்பே காட்டப்படும்."
-                    else "The outdated source illustration was withdrawn. This organism needs its own reviewed anatomical PNG and Tamil labels; the detailed lesson and lifecycle remain available.",
+                    if (tamil) "இந்தப் பகுதியில் தனி உடற்கூறு படம் இல்லை; கீழுள்ள வடிவவியல் விளக்கத்தைப் பயன்படுத்துக."
+                    else "No separate anatomical image is available here; study the structural description below.",
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u17-image-missing-" + study.id),
                 )
@@ -185,8 +190,10 @@ internal fun UnitIFlagellateStudyIntroduction(id: String, language: AppLanguage)
                 if (tamil) study.imageTa else study.imageEn,
                 style = MaterialTheme.typography.labelMedium,
             )
-            Text(study.credit, style = MaterialTheme.typography.labelSmall)
-            Text(study.source, style = MaterialTheme.typography.labelSmall)
+            Text(sourceCredit ?: (if (tamil) "உறுப்பமைப்பைப் பாட விளக்கத்துடன் ஒப்பிடுக." else study.credit),
+                style = MaterialTheme.typography.bodySmall)
+            Text((if (tamil) "உயிரியல் மூலம்: " else "Biological reference: ") + study.source,
+                style = MaterialTheme.typography.labelSmall)
         }
     }
 }

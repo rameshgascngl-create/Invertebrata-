@@ -106,7 +106,7 @@ private val elaborations = mapOf(
     ),
     "laboratory-reasoning" to detail(
         "Evidence table: observed, inferred, schematic", "ஆதாரப் பதிவு: பார்த்தது, ஊகித்தது, விளக்கப்படம்",
-        "Record cell shape and swimming behaviour as direct observations where visible. Label osmoregulatory function or nuclear exchange as interpretations based on experimental knowledge, not as events confirmed in every wet mount. Annotate any unverified figure with 'schematic/not to scale'.",
+        "Record cell shape and swimming behaviour as direct observations where visible. Label osmoregulatory function or nuclear exchange as interpretations based on experimental knowledge, not as events confirmed in every wet mount. Treat simplified figures as schematics, not measurements.",
         "தெளிவாகத் தெரிந்த செல் வடிவம் மற்றும் நீந்தும் நடத்தையை நேரடிக் கவனிப்புகளாகப் பதிவு செய்க. நீர்ச்சமநிலைப் பணி அல்லது அணுக்கருப் பரிமாற்றம் போன்றவற்றை ஆய்வு அறிவின் அடிப்படையிலான விளக்கங்களாகக் குறிப்பிடுக; ஒவ்வொரு ஈரமாதிரியிலும் நேரடியாக நிரூபித்த நிகழ்வுகளாகக் கருத வேண்டாம். உறுதிசெய்யப்படாத ஒவ்வொரு படத்திலும் 'விளக்க வரைபடம்/அளவுக்கு ஏற்ப அல்ல' என்று குறிக்கவும்."
     ),
     "classroom-observation" to detail(
@@ -197,8 +197,8 @@ private fun PencilMechanismFigure(figure: String, language: AppLanguage) {
                     "குறுக்குத் திசை இருபிளவில் இரண்டு மகள் செல்கள் உருவாகின்றன.")
                 "conjugation" -> view(language, "Genetic exchange does not immediately increase the number of cells.",
                     "மரபணுப் பரிமாற்றம் உடனடியாகச் செல் எண்ணிக்கையை அதிகரிக்காது.")
-                else -> view(language, "Anatomical source-image labels require expert review.",
-                    "உடற்கூறு மூலப்படக் குறியீடுகள் நிபுணர் மதிப்பாய்வுக்கு உட்பட்டவை.")
+                else -> view(language, "Compare the source figure with the labelled lesson; some structures are simplified.",
+                    "படத்தைப் பாடநூலின் பெயர்க்குறிப்புகளுடன் ஒப்பிடுக; சில உறுப்புகள் எளிமைப்படுத்தப்பட்டுள்ளன.")
             }, style = MaterialTheme.typography.bodyMedium)
         }
     }
@@ -265,8 +265,8 @@ internal fun ParameciumTextbookReader(
                 "உடற்கூறு படப் பகுதிகளைத் திற"))
         }
         Text(view(language,
-            "Open the anatomy gallery to enlarge each available image. Image-specific source and review information appears alongside its figure.",
-            "உடற்கூறு படத் தொகுப்பிலுள்ள ஒவ்வொரு படத்தையும் பெரிதாக்கிப் பார்க்கலாம். படத்தின் மூலமும் மதிப்பாய்வு நிலையும் அதனருகில் தரப்பட்டுள்ளன."),
+            "Open the anatomy gallery to enlarge each available image. The creator, source and licence are listed with each illustration.",
+            "உடற்கூறு படத் தொகுப்பிலுள்ள ஒவ்வொரு படத்தையும் பெரிதாக்கிப் பார்க்கலாம். படைப்பாளர், மூல ஆதாரம், பயன்பாட்டு உரிமை ஆகியவை படத்துடன் தரப்பட்டுள்ளன."),
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.testTag("u60-retired-repeated-paramecium-image"))
     }

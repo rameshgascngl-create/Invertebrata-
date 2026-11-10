@@ -68,8 +68,8 @@ internal fun UnitIProtozoaReferenceGallery(language:AppLanguage) {
         Text(if(tamil) "என்டமீபா, பிளாஸ்மோடியம் — தொற்றுச் சுழற்சி ஆதாரப் படங்கள்"
              else "Entamoeba and Plasmodium — transmission reference plates",
             style=MaterialTheme.typography.titleLarge)
-        Text(if(tamil) "இரு தொற்றுச் சுழற்சி ஆதாரப் படங்கள் மட்டுமே இங்கு உள்ளன. டிரிப்பனோசோமா, லீஷ்மேனியா பழைய விளக்கப்படங்கள் திரும்பப் பெறப்பட்டுள்ளன; தனித்த புதிய உடற்கூறு படங்கள் நிலுவையில் உள்ளன."
-             else "Two transmission reference plates only. Outdated Trypanosoma and Leishmania illustrations are withdrawn; accurate organism-specific replacement figures remain pending.",
+        Text(if(tamil) "இத்தொகுப்பில் என்டமீபா, பிளாஸ்மோடியம் வாழ்க்கைச் சுழற்சிப் படங்கள் உள்ளன; டிரிப்பனோசோமா, லீஷ்மேனியா வடிவங்களை அவற்றின் தனிப் பாடங்களில் காணலாம்."
+             else "This gallery contains Entamoeba and Plasmodium life-cycle figures. Trypanosoma and Leishmania morphology appears in their separate lessons.",
             color=MaterialTheme.colorScheme.error,modifier=Modifier.testTag("u1-protozoa-reference-hold"))
         references.forEach { record ->
             OutlinedButton(onClick={selected=record.id},modifier=Modifier.fillMaxWidth()
@@ -332,8 +332,8 @@ internal fun ExpandedProtozoaReferenceImage(
                         modifier=Modifier.testTag("u1-plasmodium-details-body"))
                     Spacer(Modifier.height(12.dp))
                     Text(if(tamil)
-                        "இது ஆதாரப் படத்தின் பகுதி மட்டுமே. உயிரியல்/பென்சில் பட ஆய்வு நிலுவையில் உள்ளது."
-                        else "This is a source-reference excerpt. Anatomical and pencil-art review remain pending.",
+                        "இது மூல ஆதாரப் படத்தின் ஒரு பகுதி; உறுப்புகளைப் பாட விளக்கத்துடன் ஒப்பிடுக."
+                        else "This is an excerpt from the attributed reference figure; compare its structures with the chapter.",
                         style=MaterialTheme.typography.bodySmall)
                 }
             },
