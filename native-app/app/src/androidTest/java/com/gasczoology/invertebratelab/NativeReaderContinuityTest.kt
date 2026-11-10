@@ -42,8 +42,11 @@ class NativeReaderContinuityTest {
             it.requestedOrientation = if (landscape) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
         waitFor("native-home")
-        rule.waitUntil(20_000) { rule.homeUnitOneShows(tamil) }
         rule.waitUntil(20_000) { context.resources.configuration.orientation == if (landscape) android.content.res.Configuration.ORIENTATION_LANDSCAPE else android.content.res.Configuration.ORIENTATION_PORTRAIT }
+        // A taller Home header under Tamil 200% landscape places the first unit
+        // outside composition. Bring it into view before checking BOTH labels.
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
+        rule.waitUntil(20_000) { rule.homeUnitOneShows(tamil) }
         val expected = args.getString("expectedScale")?.toFloat() ?: 1f
         assertEquals("Actual Android font scale", expected, context.resources.configuration.fontScale, .06f)
     }
