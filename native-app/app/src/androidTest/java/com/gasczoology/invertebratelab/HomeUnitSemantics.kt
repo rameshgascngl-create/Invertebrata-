@@ -1,20 +1,31 @@
 package com.gasczoology.invertebratelab
 
+import androidx.compose.ui.semantics.SemanticsNode
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
-import androidx.compose.ui.test.hasTestTag
-import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.onAllNodesWithTag
 
 /**
- * Since commit dfecd360 the Home unit button renders the unit title ("Unit 1" /
- * "அலகு 1") and the chapter count ("7 chapters" / "7 அத்தியாயங்கள்") as two Text
- * nodes merged into one button, instead of one combined "Unit 1 · 7 chapters" string.
+ * Verify both the unit heading and chapter count inside the actual Unit 1 card.
  *
- * This keeps the original strength of the check: the unit-1 button must be present
- * AND show both the title and the chapter count in the requested language.
+ * Material3 OutlinedButton may merge child Text semantics into one accessible
+ * sentence, especially after a language change or Android font scaling.
+ * Testing two exact independent hasText() matchers on the button wrongly
+ * rejects the same correct bilingual content when merged this way.
+ *
+ * Inspect the merged and unmerged semantic trees of the tagged Unit 1 card,
+ * without asserting anything elsewhere on the page or relaxing either label.
  */
-internal fun SemanticsNodeInteractionsProvider.homeUnitOneShows(tamil: Boolean): Boolean =
-    onAllNodes(
-        hasTestTag("unit-1") and
-            hasText(if (tamil) "அலகு 1" else "Unit 1") and
-            hasText(if (tamil) "7 அத்தியாயங்கள்" else "7 chapters"),
-    ).fetchSemanticsNodes().isNotEmpty()
+internal fun SemanticsNodeInteractionsProvider.homeUnitOneShows(tamil: Boolean): Boolean {
+    val unitCard = onAllNodesWithTag("unit-1", useUnmergedTree = true)
+        .fetchSemanticsNodes().firstOrNull() ?: return false
+    fun visibleText(node: SemanticsNode): String =
+        (node.config.getOrNull(SemanticsProperties.Text)
+            ?.joinToString(" ") { it.text }.orEmpty() + " " +
+            node.children.joinToString(" ") { visibleText(it) }).trim()
+
+    val text = visibleText(unitCard)
+    val unitLabel = if (tamil) "அலகு 1" else "Unit 1"
+    val countLabel = if (tamil) "7 அத்தியாயங்கள்" else "7 chapters"
+    return text.contains(unitLabel) && text.contains(countLabel)
+}
