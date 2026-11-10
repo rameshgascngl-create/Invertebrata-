@@ -24,6 +24,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Verify student-facing bilingual figure captions
+        run: python3 .github/scripts/check-student-caption-editorial.py
       - name: Compile Kotlin and run JVM unit tests
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
       - name: Prohibit legacy runtime in native module
