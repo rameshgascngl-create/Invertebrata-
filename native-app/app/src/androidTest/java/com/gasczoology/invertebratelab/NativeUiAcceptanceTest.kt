@@ -3,6 +3,7 @@ package com.gasczoology.invertebratelab
 import android.content.pm.ActivityInfo
 import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
+import androidx.compose.ui.test.assertDoesNotExist
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -31,6 +32,7 @@ import com.gasczoology.invertebratelab.data.NativeLearningState
 import com.gasczoology.invertebratelab.data.NativeLessonDrafts
 import com.gasczoology.invertebratelab.data.ParameciumExternalGeometry
 import com.gasczoology.invertebratelab.data.PrototypeCanvasViewport
+import com.gasczoology.invertebratelab.data.SourcedQaAnatomicalPlates
 import com.gasczoology.invertebratelab.data.ValidatedA5AssetRepository
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -290,9 +292,9 @@ class NativeUiAcceptanceTest {
     }
 
     @Test
-    fun parameciumDraftIsReachableInEnglishAndTamilWithoutChangingA5() {
-        // The Paramecium chapter opens in the book reader (not the generic list). It must carry a
-        // visible bilingual draft notice, and its validated A5 questions must be unchanged.
+    fun parameciumBookReaderIsReachableInEnglishAndTamilWithoutChangingA5() {
+        // The Paramecium chapter opens in the student-facing book reader. The obsolete
+        // editorial-review banner must stay out of lessons; validated A5 answers remain unchanged.
         englishHome()
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
@@ -303,8 +305,9 @@ class NativeUiAcceptanceTest {
         val container = readerContainerTag(chapter)
         waitFor(container)
         rule.onNodeWithTag(container).performScrollToIndex(0)
-        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
-            "Academic review pending: illustrations and Tamil vocabulary remain drafts.")
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertDoesNotExist()
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag("book-objectives"))
+        rule.onNodeWithTag("book-objectives").assertExists()
         val first = chapter.a5Questions.first()
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
         rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.english)
@@ -323,8 +326,9 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
         waitFor(container)
         rule.onNodeWithTag(container).performScrollToIndex(0)
-        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
-            "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன.")
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertDoesNotExist()
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag("book-objectives"))
+        rule.onNodeWithTag("book-objectives").assertExists()
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
         rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.tamil)
     }
@@ -352,7 +356,7 @@ class NativeUiAcceptanceTest {
             "paramecium-anatomy-gallery-normal.png",
             rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
                 .fetchSemanticsNode().boundsInRoot,
-            "type_studies/paramecium/oral-apparatus.png",
+            SourcedQaAnatomicalPlates.byTypeStudy.getValue("paramecium/oral-apparatus") + ".png",
         )
     }
 
@@ -691,7 +695,7 @@ class NativeTamilLargeTextAcceptanceTest {
             "paramecium-gallery-tamil200.png",
             rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
                 .fetchSemanticsNode().boundsInRoot,
-            "type_studies/paramecium/oral-apparatus.png",
+            SourcedQaAnatomicalPlates.byTypeStudy.getValue("paramecium/oral-apparatus") + ".png",
         )
     }
 
@@ -917,7 +921,7 @@ class NativeTamilLargeTextAcceptanceTest {
     }
 
     @Test
-    fun parameciumChapterDraftNoticeAndQuestionsAreReachableAtActualTamil200Percent() {
+    fun parameciumBookReaderAndQuestionsAreReachableAtActualTamil200Percent() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         assertTrue(context.resources.configuration.fontScale >= 1.95f)
         rule.waitUntil(timeoutMillis = 20_000L) {
@@ -934,7 +938,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         // The old draft-lesson sections (n22-section-*) are no longer reachable: the Paramecium
         // chapter opens in the book reader. Check what students actually get at 200% Tamil:
-        // the draft notice at the top and the validated questions at the bottom.
+        // the book objectives on the opening page and the validated A5 questions.
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
         val chapter = ValidatedA5AssetRepository(context).load()
@@ -945,7 +949,9 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         showContinuousReader(rule)
         rule.onNodeWithTag(container).performScrollToIndex(0)
-        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists()
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertDoesNotExist()
+        rule.onNodeWithTag(container).performScrollToNode(hasTestTag("book-objectives"))
+        rule.onNodeWithTag("book-objectives").assertExists()
         val last = chapter.a5Questions.last()
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, last)))
         rule.onNodeWithTag(readerQuestionTag(chapter, last)).assertExists()
