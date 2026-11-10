@@ -46,6 +46,13 @@ object BookFigureLibrary {
         "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · Wikimedia Commons, File:Malaria_Plasmodium_infection_cycle.png · unchanged",
         "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · விக்கிமீடியா காமன்ஸ், File:Malaria_Plasmodium_infection_cycle.png · மாற்றமில்லை")
 
+    // This uploaded illustration depicts the amastigote ONLY. It must not be
+    // misrepresented as a complete two-form Leishmania morphology plate.
+    // Biological cross-check: CDC DPDx Leishmaniasis; not the image licence.
+    private val leishmaniaAmastigoteOnly = PlateCredit(
+        "AI-generated image · source rights not yet verified · AMASTIGOTE ONLY (in host macrophages). The elongated, flagellated PROMASTIGOTE in the sand fly is NOT shown. Scientific reference: CDC DPDx Leishmaniasis (not the image source).",
+        "AI உருவாக்கிய படம் · மூலப் பயன்பாட்டு உரிமை இன்னும் சரிபார்க்கப்படவில்லை · இது புரவலனின் மேக்ரோஃபேஜ் செல்களில் காணப்படும் அமாஸ்டிகோட் நிலை மட்டும். மணல் ஈயிலுள்ள நீண்ட கசையிழையுடைய புரோமாஸ்டிகோட் நிலை காட்டப்படவில்லை. அறிவியல் சரிபார்ப்பு: CDC DPDx Leishmaniasis (படத்தின் மூலம் அல்ல).")
+
     val all: List<BookLibraryFigure> = listOf(
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
         BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa-original", coralNoaa),
@@ -65,7 +72,7 @@ object BookFigureLibrary {
         BookLibraryFigure("entamoeba-mature-cyst", "unit1/references/entamoeba_mature_cyst", aiPlate),
         BookLibraryFigure("ascaris-fertilized-egg", "type_studies/ascaris/fertilized-egg", aiPlate),
         BookLibraryFigure("entamoeba-cycle", "unit1/references/entamoeba", aiPlate),
-        BookLibraryFigure("leishmania-amastigote", "unit1/references/leishmania", aiPlate),
+        BookLibraryFigure("leishmania-amastigote", "unit1/references/leishmania", leishmaniaAmastigoteOnly),
     ) + listOf(
         "insect-tagmata", "metamorphosis", "parasitoid-cycle", "vector-cycle", "leech",
         "polychaete-asexual", "crinoid", "aurelia-cycle", "anemone-section",

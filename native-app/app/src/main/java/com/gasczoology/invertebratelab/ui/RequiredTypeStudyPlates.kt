@@ -48,6 +48,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.TypeStudyRequirement
 import com.gasczoology.invertebratelab.data.BilingualText
+import com.gasczoology.invertebratelab.data.TypeStudyFigureReviewNotes
 import kotlin.math.roundToInt
 
 /**
@@ -226,6 +227,7 @@ internal fun RequiredTypeStudyPlates(
             } else null
             val raster = primaryRaster ?: fallbackRaster
             val readable = RestoredPlateTitles.value(study.organismId, plateId, language)
+            val qaHold = TypeStudyFigureReviewNotes.held[study.organismId + "/" + plateId]
             var expanded by rememberSaveable(stem) { mutableStateOf(false) }
             Card(Modifier.fillMaxWidth().testTag("r2-plate-slot-${study.organismId}-${plateId}")) {
                 Column(
@@ -233,6 +235,27 @@ internal fun RequiredTypeStudyPlates(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(readable, style = MaterialTheme.typography.titleMedium)
+                    if (qaHold != null) {
+                        Text(
+                            if (tamil) "QA திருத்தம் தேவை · இப்பெயர்க்குறிப்புகளைத் தேர்வு விடைகளுக்கு நகலெடுக்க வேண்டாம்"
+                            else "QA CORRECTION REQUIRED · Do not reproduce unverified image labels",
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.labelMedium,
+                            modifier = Modifier.testTag("r2-plate-qa-hold-" + study.organismId + "-" + plateId),
+                        )
+                        Text(
+                            qaHold.value(language),
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.testTag("r2-plate-scientific-correction-" + study.organismId + "-" + plateId),
+                        )
+                    } else if (raster != null) {
+                        Text(
+                            if (tamil) "மாணவர் QA பயன்பாட்டிற்கு வாசிக்கத்தக்க படம்; சிறிய குறைகள் அனுமதிக்கப்பட்டுள்ளன. துறைசார் மற்றும் உரிமைச் சரிபார்ப்பு நிலுவையில் உள்ளது."
+                            else "Legible for student QA (minor imperfections tolerated). Independent scientific, Tamil and rights approval pending.",
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.testTag("r2-plate-qa-provisional-" + study.organismId + "-" + plateId),
+                        )
+                    }
                     if (study.organismId == "asterias" && raster != null) {
                         val source = when (plateId) {
                             "external" -> if (tamil)
@@ -287,6 +310,7 @@ internal fun RequiredTypeStudyPlates(
                             RequiredTypeStudyFullImage(
                                 image = raster, title = "${study.scientificName} · ${readable}",
                                 language = language, onDismiss = { expanded = false },
+                                credit = qaHold?.value(language),
                             )
                         }
                     }
