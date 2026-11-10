@@ -48,20 +48,20 @@ internal fun PrivacyPolicyScreen(language: AppLanguage, onBack: () -> Unit) {
         itemsIndexed(blocks) { index, block ->
             val first = block.trim()
             val title = first.startsWith("# ")
-            val heading = first.startsWith("## ")
+            val sectionHeading = first.startsWith("## ")
             Text(
                 text = when {
                     title -> first.removePrefix("# ")
-                    heading -> first.removePrefix("## ")
+                    sectionHeading -> first.removePrefix("## ")
                     else -> first
                 },
                 style = when {
                     title -> MaterialTheme.typography.headlineSmall
-                    heading -> MaterialTheme.typography.titleMedium
+                    sectionHeading -> MaterialTheme.typography.titleMedium
                     else -> MaterialTheme.typography.bodyLarge
                 },
                 modifier = Modifier
-                    .then(if (title || heading) Modifier.semantics { heading() } else Modifier)
+                    .then(if (title || sectionHeading) Modifier.semantics { heading() } else Modifier)
                     .testTag(
                         when {
                             index == 0 -> "privacy-policy-title"
