@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-10",
+  "repo": "rameshgascngl-create/Invertebrata-",
+  "branch": "feat/native-textbook-reader-qa",
+  "disclosure": "Source-based intake only. No source image is yet independently accepted or promoted to Android mandatory masters; preserves all 41 green-ticked and 11 held images.",
+  "format": "Separate PNGs rendered from documented existing works; not AI-generated replications.",
+  "sources": [
+    {
+      "slot": "paramecium/oral-apparatus",
+      "file": "01_paramecium_oral_context.png",
+      "source_file": "Paramecium diagram.png",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Paramecium_diagram.png",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Paramecium_diagram.png",
+      "author": "Deuterostome",
+      "license": "CC BY-SA 3.0",
+      "scope": "REFERENCE_ONLY",
+      "reason": "General Paramecium anatomy, including oral groove, buccal overture and cytostome; NOT a sufficiently enlarged cytopharynx detail"
+    },
+    {
+      "slot": "sycon/reproduction",
+      "file": "03_sycon_development.png",
+      "source_file": "EB1911 Sponges - Development of Sycon raphanus.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:EB1911_Sponges_-_Development_of_Sycon_raphanus.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/EB1911_Sponges_-_Development_of_Sycon_raphanus.jpg",
+      "author": "After F. E. Schulze; Encyclopædia Britannica (1911)",
+      "license": "Public domain (1911 source; Wikimedia Commons statement US)",
+      "scope": "DIRECT_SUBJECT_CANDIDATE",
+      "reason": "Actual Sycon raphanus embryo, larva, attachment and young sponge; no fabricated gemmule development"
+    },
+    {
+      "slot": "ascaris/female-internal",
+      "file": "06_ascaris_female_cross_section.png",
+      "source_file": "Ascaris female 200x section.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ascaris_female_200x_section.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Ascaris_female_200x_section.jpg/1280px-Ascaris_female_200x_section.jpg",
+      "author": "Massimo brizzi",
+      "license": "CC BY-SA 4.0",
+      "scope": "REFERENCE_ONLY",
+      "reason": "Clear histological transverse section of uterus, gut and ovaries; NOT a complete longitudinal female reproductive-system plate"
+    },
+    {
+      "slot": "earthworm/excretory",
+      "file": "07_earthworm_metanephridium.png",
+      "source_file": "Metanephridium.svg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Metanephridium.svg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Metanephridium.svg/1280px-Metanephridium.svg.png",
+      "author": "KDS4444",
+      "license": "CC BY-SA 4.0",
+      "scope": "DIRECT_SUBJECT_CANDIDATE_WITH_LIMITATION",
+      "reason": "Accurate labelled metanephridium; does NOT by itself illustrate distribution of pharyngeal/septal/integumentary types"
+    },
+    {
+      "slot": "asterias/internal",
+      "file": "09_asterias_dissection.png",
+      "source_file": "Asterias rubens, dissection.svg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Asterias_rubens,_dissection.svg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Asterias_rubens%2C_dissection.svg/1280px-Asterias_rubens%2C_dissection.svg.png",
+      "author": "Hans Hillewaert",
+      "license": "CC BY-SA 3.0",
+      "scope": "DIRECT_SUBJECT_CANDIDATE",
+      "reason": "Numbered dissected Asterias rubens with published 1–11 organ key; use accompanying numbered legend"
+    },
+    {
+      "slot": "asterias/larval-development",
+      "file": "10_asterias_larval_reference.png",
+      "source_file": "Haeckel Asteridea Larvae.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Haeckel_Asteridea_Larvae.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Haeckel_Asteridea_Larvae.jpg",
+      "author": "Ernst Haeckel (1904); Chiswick Chap (2013 crop)",
+      "license": "CC BY-SA 3.0 (Commons crop from 1904 public-domain art)",
+      "scope": "DIRECT_SUBJECT_CANDIDATE_WITH_LIMITATION",
+      "reason": "Historical Asterias sp. scaphularia/bipinnaria/brachiolaria views; explanatory caption required to identify panels and source age"
+    }
+  ],
+  "unresolved": [
+    {
+      "slot": "sycon/external",
+      "reason": "A photographed sponge osculum is insufficient as labelled external morphology; still seeking diagnostic licensed illustration."
+    },
+    {
+      "slot": "obelia/medusa",
+      "reason": "Available Commons medusa micrograph is too small to show required anatomy; do not substitute Aurelia/Gonionemus."
+    },
+    {
+      "slot": "obelia/life-cycle",
+      "reason": "The located 1933 book image is cropped at the lower edge and copyright should be reconfirmed; not ready to replace complete cycle."
+    },
+    {
+      "slot": "pila/external",
+      "reason": "Commons Pila globosa images predominantly show shell only; need illustrated soft parts with correctly positioned basal eyes."
+    },
+    {
+      "slot": "leishmania/morphology",
+      "reason": "Requires both amastigote and promastigote forms and source-rights review; existing amastigote-only artwork is not a full replacement."
+    }
+  ]
+}

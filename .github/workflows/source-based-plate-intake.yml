@@ -1,0 +1,31 @@
+name: Source-based zoology PNG intake (review candidates only)
+on:
+  push:
+    branches:
+      - feat/native-textbook-reader-qa
+    paths:
+      - 'qa-source-intake/**'
+      - '.github/workflows/source-based-plate-intake.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  download-and-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-image decoders
+        run: python -m pip install --disable-pip-version-check 'Pillow>=11,<13' 'requests>=2.31,<3'
+      - name: Download exact licensed references and convert to separate PNG candidates
+        run: python qa-source-intake/fetch_source_pngs.py
+      - name: Publish source-by-source provenance and PNG candidates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zoology-source-verified-review-png
+          path: qa-source-intake/downloaded-png-review/
+          if-no-files-found: error
