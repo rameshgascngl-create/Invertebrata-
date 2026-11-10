@@ -25,6 +25,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalContext
+import android.content.pm.ApplicationInfo
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.SpanStyle
@@ -39,6 +41,7 @@ import com.gasczoology.invertebratelab.data.BookChapter
 import com.gasczoology.invertebratelab.data.BookDefinition
 import com.gasczoology.invertebratelab.data.BookFigure
 import com.gasczoology.invertebratelab.data.BookFigureLibrary
+import com.gasczoology.invertebratelab.data.SourcedLeishmaniaQaFigure
 import com.gasczoology.invertebratelab.data.BookKeyPoints
 import com.gasczoology.invertebratelab.data.BookLayout
 import com.gasczoology.invertebratelab.data.BookNote
@@ -298,12 +301,18 @@ internal fun parseFigureCaption(raw: String): FigureCaptionParts {
 
 @Composable
 private fun BookFigureView(figure: BookFigure, label: String, language: AppLanguage) {
-    val bitmap = rememberCanonicalPlateBitmap(
-        BookFigureLibrary.stemFor(figure.slot) ?: ("type_studies/" + figure.slot))
+    val normalStem = BookFigureLibrary.stemFor(figure.slot) ?: ("type_studies/" + figure.slot)
+    val debugBuild = (LocalContext.current.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
+    val sourceCandidate = if (debugBuild && figure.slot == SourcedLeishmaniaQaFigure.slot)
+        rememberCanonicalPlateBitmap(SourcedLeishmaniaQaFigure.assetStem) else null
+    val bitmap = sourceCandidate ?: rememberCanonicalPlateBitmap(normalStem)
     var expanded by rememberSaveable("book-figure-" + figure.slot) { mutableStateOf(false) }
     val typeStudyCredit = rememberPlateCredit(figure.slot)
+    val sourceCredit = if (sourceCandidate != null) SourcedLeishmaniaQaFigure.credit else null
+    val effectiveCredit = sourceCredit ?: BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit
     val tag = figure.slot.replace('/', '-')
-    val parts = parseFigureCaption(figure.caption.value(language))
+    val parts = parseFigureCaption(if (sourceCandidate != null)
+        SourcedLeishmaniaQaFigure.caption.value(language) else figure.caption.value(language))
     val caption = label + "  " + parts.title
     Column(verticalArrangement = Arrangement.spacedBy(6.dp),
         modifier = Modifier.fillMaxWidth().testTag("book-figure-$tag")) {
@@ -323,12 +332,20 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
             if (expanded) {
                 RequiredTypeStudyFullImage(image = bitmap, title = caption,
                     language = language, onDismiss = { expanded = false },
-                    credit = (BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit)?.text(language))
+                    credit = effectiveCredit?.text(language))
             }
         }
         Text(caption, style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.testTag("book-figure-caption-$tag"))
+        if (sourceCandidate != null) {
+            Text(
+                t(language, "Source-documented two-form PNG · student DEBUG QA only · independent review pending",
+                    "மூல ஆதாரத்துடன் கூடிய இருநிலை PNG · மாணவர் DEBUG QA மட்டும் · தனி மதிப்பாய்வு நிலுவையில் உள்ளது"),
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.testTag("book-leishmania-source-qa"),
+            )
+        }
         // At 200% Tamil font these must wrap as independent keyed entries,
         // rather than a single unbroken paragraph under the raster.
         parts.numberedKey.forEach { (number, explanation) ->
@@ -339,7 +356,7 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
                     modifier = Modifier.weight(1f))
             }
         }
-        (BookFigureLibrary.creditFor(figure.slot) ?: typeStudyCredit)?.let {
+        effectiveCredit?.let {
             Text(it.text(language), style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.testTag("plate-credit-$tag"))
         }
