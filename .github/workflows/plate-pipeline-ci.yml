@@ -35,6 +35,8 @@ jobs:
           python3 tools/plate_intake.py check
       - name: Check provisional student-QA figure decisions (not academic approval)
         run: python3 tools/check_provisional_figure_inclusion.py
+      - name: Verify three separate source-derived debug PNGs against Git blob digests
+        run: python3 qa-source-intake/verify_staged_debug_assets.py
       - name: Verify Paramecium simulator PNG paths against actual packaged assets
         run: |
           python3 - <<'PY'
