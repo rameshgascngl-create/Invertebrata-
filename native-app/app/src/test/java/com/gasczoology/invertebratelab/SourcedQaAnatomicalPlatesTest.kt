@@ -15,11 +15,11 @@ class SourcedQaAnatomicalPlatesTest {
     }
     @Test fun scientificSourceCautionsRemain() {
         val credits = SourcedQaAnatomicalPlates.credit
-        assertTrue(credits.getValue("sycon/reproduction").en.contains("not sperm transfer"))
-        assertTrue(credits.getValue("asterias/internal").en.contains("Hans Hillewaert"))
-        assertTrue(credits.getValue("asterias/larval-development").en.contains("bipinnaria"))
-        assertTrue(credits.values.all { it.en.contains("review pending") || it.en.contains("review pending.") ||
-                    it.en.contains("review pending,") || it.en.contains("expert review pending.") ||
-                    it.en.contains("sign-off pending.") })
+        assertTrue(credits.getValue("sycon/reproduction").english.contains("not sperm transfer"))
+        assertTrue(credits.getValue("asterias/internal").english.contains("Hans Hillewaert"))
+        assertTrue(credits.getValue("asterias/larval-development").english.contains("bipinnaria"))
+        assertTrue(credits.values.all { it.english.contains("review pending") || it.english.contains("review pending.") ||
+                    it.english.contains("review pending,") || it.english.contains("expert review pending.") ||
+                    it.english.contains("sign-off pending.") })
     }
 }
