@@ -104,11 +104,43 @@ jobs:
               assert len([x for x in entries if x.startswith("assets/review_only/pila/generated_12/") and x.endswith(".png")])==12, "Unexpected Pila image count"
           print("PILA_12_IN_NATIVE_DEBUG_APK=PASS; SCIENTIFIC_APPROVAL=HOLD")
           PY
-      - name: Upload development debug APK (NOT a release)
+      - name: Record exact-commit APK identity and checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="native-app/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$apk"
+          mkdir -p qa-evidence/apk
+          git rev-parse HEAD > qa-evidence/apk/source-commit.txt
+          test "$(cat qa-evidence/apk/source-commit.txt)" = "$GITHUB_SHA"
+          sha256sum "$apk" > qa-evidence/apk/SHA256SUMS
+          stat -c '%s' "$apk" > qa-evidence/apk/size-bytes.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          apk=Path("native-app/app/build/outputs/apk/debug/app-debug.apk")
+          with ZipFile(apk) as archive:
+              bad=archive.testzip()
+              assert bad is None, f"Corrupt APK archive entry: {bad}"
+              names=archive.namelist()
+              assert "AndroidManifest.xml" in names, "Android manifest missing"
+              assert "classes.dex" in names, "Android bytecode missing"
+          print("QA_APK_ZIP_AND_REQUIRED_ENTRIES=PASS")
+          PY
+          sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          test -n "$sdk"
+          aapt="$(find "$sdk/build-tools" -type f -name aapt | sort -V | tail -1)"
+          test -x "$aapt"
+          "$aapt" dump badging "$apk" > qa-evidence/apk/package-badging.txt
+          grep -q "^package: name='com.gasczoology.invertebratelab'" qa-evidence/apk/package-badging.txt
+          echo "QA_APK_SOURCE_PACKAGE_SHA256=RECORDED"
+      - name: Upload development debug APK with exact-commit evidence (NOT a release)
         uses: actions/upload-artifact@v4
         with:
           name: five-unit-restoration-R7-DEBUG-UNAPPROVED
-          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            native-app/app/build/outputs/apk/debug/app-debug.apk
+            qa-evidence/apk/
           if-no-files-found: error
 
   asset-inventory:
