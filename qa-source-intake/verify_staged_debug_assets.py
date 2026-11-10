@@ -12,7 +12,8 @@ REL = Path("native-app/app/src/debug/assets/qa_source_plates")
 EXPECTED = {
   "03_sycon_development.png": "340fc98a6621931b6c58ebebef4327dd5b187955",
   "09_asterias_dissection.png": "c6305805ce89e85252ea1e57771c996b2e2c195e",
-  "10_asterias_larval_reference.png": "6ab2147feb21e71b5445824d3c8657d6ced132a9"
+  "10_asterias_larval_reference.png": "6ab2147feb21e71b5445824d3c8657d6ced132a9",
+  "11_leishmania_two_forms.png": "e2e0c22c03f3e1cf30608d6c78cfa897080265d7"
 }
 def main():
     actual = {p.name for p in (ROOT/REL).glob("*.png")}
@@ -28,5 +29,5 @@ def main():
         print(f"QA_SOURCE_PNG={filename} {w}x{h} blob={sha}",flush=True)
     assert all(not (ROOT/"native-app/app/src/main/assets/qa_source_plates"/n).exists()
                for n in EXPECTED)
-    print("DEBUG_ONLY_SOURCE_PNG=3; FORMAL_ACADEMIC_GATE=UNCHANGED")
+    print("DEBUG_ONLY_SOURCE_PNG=4; FORMAL_ACADEMIC_GATE=UNCHANGED")
 if __name__=="__main__": main()

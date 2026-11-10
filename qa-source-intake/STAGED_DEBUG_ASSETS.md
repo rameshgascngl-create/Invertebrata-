@@ -14,3 +14,9 @@
 **Not yet replaced:** Paramecium oral detail (source is whole-cell illustration), Sycon external, Obelia medusa and complete life cycle, Ascaris female longitudinal anatomy (source is a transverse micrograph), the full earthworm excretory distribution (source is a single metanephridium), Pila external anatomy, and Leishmania two-form morphology.
 
 For source review downloads and SHA-256 receipt, see the `zoology-source-verified-review-png` artifact at run 42757225058. The exact bytes installed are pinned to Git blobs by `qa-source-intake/verify_staged_debug_assets.py`.
+
+## Fourth image added to QA on 10 November 2026
+
+- **Leishmania amastigote/promastigote comparison:** `native-app/app/src/debug/assets/qa_source_plates/11_leishmania_two_forms.png` (2180 × 1610 pixels), Git blob `e2e0c22c03f3e1cf30608d6c78cfa897080265d7`.
+- Original artworks: **Servier Medical Art**, [amastigote](https://commons.wikimedia.org/wiki/File:Leishmania_amastigote.png) and [promastigote](https://commons.wikimedia.org/wiki/File:Leishmania_promastigote.png), both **CC BY 2.0**. Side-by-side layout and English captions are an adaptation; original anatomical outlines are unmodified.
+- The existing `lib/leishmania-amastigote` chapter figure is conditionally replaced only in a debuggable QA build by a two-form comparison with full bilingual rights credit. It is not in the release asset set. The independent academic and rights gate remains unchanged.
