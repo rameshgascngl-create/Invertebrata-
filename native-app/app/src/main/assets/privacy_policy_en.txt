@@ -1,0 +1,38 @@
+# INVERTEBRATA — Privacy Policy
+
+Effective date: 10 November 2026
+App: INVERTEBRATA (com.gasczoology.invertebratelab)
+Developer and privacy contact: Rajamoni Ramesh, Department of Zoology, Government Arts and Science College, Nagercoil, Tamil Nadu, India.
+Email: rameshgascngl@gmail.com
+
+## What this app does
+
+INVERTEBRATA is a native, offline-first Zoology learning application with lessons, illustrations, reading progress, bookmarks, question practice, and interactive teaching simulations. It does not require an account.
+
+## Personal information and device permissions
+
+The app does not ask you to provide your name, email address, telephone number or location. It does not request Internet, camera, microphone, contacts, phone or SMS permissions. It does not contain advertising, advertising identifiers, third-party analytics or tracking SDKs.
+
+## Information stored on your device
+
+Your selected language, chapter and reading position, bookmarks, practice-answer display state and simulation/learning progress may be saved locally in app-private storage. These settings are used solely to resume your learning experience. The developer does not receive these records; the app has no built-in server upload or account synchronisation.
+
+## Optional spoken lessons
+
+If you choose the text-to-speech feature, lesson text is processed by the Android text-to-speech engine installed or selected on your device. Depending on the provider and its settings, that separate engine may use online processing. Its provider's privacy terms and your device voice settings apply. INVERTEBRATA itself does not request Internet access.
+
+## Sharing, security and retention
+
+The app does not sell, transfer or share locally stored learning records with the developer, advertisers or external services. Android app-private storage protects the preferences from ordinary access by other apps. Android automatic backup is disabled for this app. Locally stored preferences remain until you clear the app's storage or uninstall the app. You can erase them through Android Settings → Apps → INVERTEBRATA → Storage → Clear storage, or by uninstalling INVERTEBRATA.
+
+## Educational images and external services
+
+Some teaching images are attributed to their respective authors or licensors within the app. Their copyrights and licences do not change this data policy. The app does not load images or lessons from remote servers. If you independently visit an external website or use a separate text-to-speech provider, that service may process information under its own policy.
+
+## Children's privacy
+
+The app does not intentionally collect or transmit personal information from children or adults. It is intended for Zoology education; no account, social networking, messaging or targeted advertising is offered. App-store age classifications must reflect the final submitted content.
+
+## Changes and contact
+
+If future versions introduce online features, new data practices or external SDKs, this policy and the app-store Data safety disclosures must be updated before distribution. For questions, privacy requests or grievances, contact Rajamoni Ramesh at rameshgascngl@gmail.com. Because the app stores no developer-side user records, clearing local app storage or uninstalling it removes the data that the app controls on your device.

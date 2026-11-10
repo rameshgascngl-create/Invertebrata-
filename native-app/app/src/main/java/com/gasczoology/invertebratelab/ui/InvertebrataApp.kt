@@ -78,6 +78,7 @@ private object Routes {
     const val ASSESSMENT = "assessment"
     const val PARAMECIUM = "paramecium-interactive-lab"
     const val EARTHWORM = "u4-earthworm-native-textbook"
+    const val PRIVACY = "privacy-policy"
 
     fun unit(number: Int) = "unit/" + number
     fun chapter(id: String) = "chapter/" + id
@@ -168,6 +169,7 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                         answerRevealed = false,
                     )) { navController.navigate(Routes.PARAMECIUM) }
                 },
+                onPrivacy = { navController.navigate(Routes.PRIVACY) },
                 onAssessment = {
                     val selected = questions.firstOrNull { it.id == state.questionId }
                         ?: questions.first()
@@ -310,6 +312,12 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 }
             )
         }
+        composable(Routes.PRIVACY) {
+            PrivacyPolicyScreen(
+                language = language,
+                onBack = { backOrRoute(Routes.HOME) },
+            )
+        }
         composable(Routes.ASSESSMENT) {
             AssessmentScreen(
                 questions = questions,
@@ -367,6 +375,7 @@ private fun HomeScreen(
     onUnit: (Int) -> Unit,
     onAssessment: () -> Unit,
     onParamecium: () -> Unit,
+    onPrivacy: () -> Unit,
 ) {
     // Hidden attribution: seven quick taps on the title open a credit dialog.
     // pointerInput (not clickable) adds no accessibility semantics, so TalkBack
@@ -459,6 +468,16 @@ private fun HomeScreen(
                     val questionCount = units.filter { it.number <= VALIDATED_UNIT_COUNT }
                         .sumOf { u -> u.chapters.sumOf { it.a5Questions.size } }
                     Text(label(language, "Five-mark practice · $questionCount questions", "ஐந்து மதிப்பெண் பயிற்சி · $questionCount வினாக்கள்"))
+                }
+            }
+            item {
+                OutlinedButton(
+                    onClick = onPrivacy,
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("open-privacy-policy"),
+                ) {
+                    Text(label(language, "Privacy policy & developer contact",
+                        "தனியுரிமைக் கொள்கை மற்றும் உருவாக்குநர் தொடர்பு"))
                 }
             }
         }
