@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-10",
+  "scope": "Native Android internal/student QA only, not production",
+  "source_apk_commit": "3860dde83f4d4bf4a9d781f53e2e5eedead27bbe",
+  "source_branch_head": "f7187cfb43b3da8fea42313bfdf9cdc2c151f51a",
+  "source_plate_files_unchanged_since_apk": true,
+  "authorization": "Owner permits inclusion of legible illustrations with minor non-misleading errors",
+  "review_method": "Direct visual examination of all 52 source figures from QA APK and Git content-address pinning",
+  "meaning_of_green_tick": "Provisional suitability for student QA display, not formal scientific/Tamil/copyright approval",
+  "academic_release_gate": "UNCHANGED: independent biology, Tamil and source-rights review still required",
+  "summary": {
+    "total": 52,
+    "green_tick_qa": 41,
+    "hold_correction": 11
+  },
+  "figures": [
+    {
+      "index": 1,
+      "asset_stem": "unit1/replacements/paramecium_external-cilia",
+      "source_path": "native-app/app/src/main/assets/unit1/replacements/paramecium_external-cilia.png",
+      "git_blob_sha1": "4b73c516da6045e0c201de96f077a89ee1e44c6d",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Two right-edge Paramecium labels clipped; main structures still recognizable.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 2,
+      "asset_stem": "unit1/replacements/paramecium_oral-apparatus",
+      "source_path": "native-app/app/src/main/assets/unit1/replacements/paramecium_oral-apparatus.png",
+      "git_blob_sha1": "be4d1ce0a9b19783b088ed5d2ded1e795800aca1",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "305x328 px: oral apparatus and label details are not legible enough after zoom.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 3,
+      "asset_stem": "unit1/replacements/paramecium_contractile-vacuoles",
+      "source_path": "native-app/app/src/main/assets/unit1/replacements/paramecium_contractile-vacuoles.png",
+      "git_blob_sha1": "b1b4bcb8e3d1ffe50da757bbd6aa914a8d1b94ce",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Contractile-vacuole conceptual close-up; use with labelled caption.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 4,
+      "asset_stem": "unit1/replacements/paramecium_locomotion",
+      "source_path": "native-app/app/src/main/assets/unit1/replacements/paramecium_locomotion.png",
+      "git_blob_sha1": "ca31e518fd6047d1d7302bbefa5a1d5f5bd80f7d",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Numbered locomotion diagram needs nearby 1-8 explanatory key.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 5,
+      "asset_stem": "type_studies/sycon/external",
+      "source_path": "native-app/app/src/main/assets/type_studies/sycon/external.webp",
+      "git_blob_sha1": "b53f69bff1784d617006154e715c5b7d66556158",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Photographic specimen does not adequately establish labelled Sycon external morphology.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 6,
+      "asset_stem": "type_studies/sycon/canal-system",
+      "source_path": "native-app/app/src/main/assets/type_studies/sycon/canal-system.webp",
+      "git_blob_sha1": "dd005492c1fb190ec267773af93f9bfd6aac45e4",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 7,
+      "asset_stem": "type_studies/sycon/reproduction",
+      "source_path": "native-app/app/src/main/assets/type_studies/sycon/reproduction.webp",
+      "git_blob_sha1": "f6af412634dba5776edfa669d933974761035f4f",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Unkeyed six-panel Sycon reproduction sequence; stages insufficiently explained.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 8,
+      "asset_stem": "type_studies/obelia/colony",
+      "source_path": "native-app/app/src/main/assets/type_studies/obelia/colony.webp",
+      "git_blob_sha1": "f8965cea40446fb76df5eab4240c8baddfa6d95b",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 9,
+      "asset_stem": "type_studies/obelia/hydranth-gonangium",
+      "source_path": "native-app/app/src/main/assets/type_studies/obelia/hydranth-gonangium.webp",
+      "git_blob_sha1": "b36e8e582863b4357d19fc1bb8904c184eb4b6fd",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Hydranth/gonangium can be recognized; text caption should name both.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 10,
+      "asset_stem": "type_studies/obelia/medusa",
+      "source_path": "native-app/app/src/main/assets/type_studies/obelia/medusa.webp",
+      "git_blob_sha1": "91669707228c047d1c413e4fe00b67a380e3daeb",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Obelia medusa photo lacks discernible teaching anatomy.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 11,
+      "asset_stem": "type_studies/obelia/life-cycle",
+      "source_path": "native-app/app/src/main/assets/type_studies/obelia/life-cycle.webp",
+      "git_blob_sha1": "4a85e3f7e6fe728c21171d88a54697477f4e3948",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Obelia life-cycle is a cropped excerpt, omitting essential stages.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 12,
+      "asset_stem": "type_studies/fasciola/external",
+      "source_path": "native-app/app/src/main/assets/type_studies/fasciola/external.png",
+      "git_blob_sha1": "084d9846a7c37c59acb46bb17d59a758afe8b568",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Fasciola archival labels require enlarged view and a key.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 13,
+      "asset_stem": "type_studies/fasciola/digestive-reproductive",
+      "source_path": "native-app/app/src/main/assets/type_studies/fasciola/digestive-reproductive.png",
+      "git_blob_sha1": "bc4db82428b53b3c22f8e925ae4f6dfedc2a96d8",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Fasciola abbreviated labels need an explanatory caption.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 14,
+      "asset_stem": "type_studies/fasciola/life-cycle",
+      "source_path": "native-app/app/src/main/assets/type_studies/fasciola/life-cycle.png",
+      "git_blob_sha1": "01aea2780bf346aa95addc3c26585c0c372b181b",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Fasciola life cycle requires host-stage legend.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 15,
+      "asset_stem": "type_studies/ascaris/male-female-external",
+      "source_path": "native-app/app/src/main/assets/type_studies/ascaris/male-female-external.png",
+      "git_blob_sha1": "c0de64b532681b807eb3662ba2bbbf0454c1749d",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Ascaris archival anatomical labels require zoom and source-rights checking.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 16,
+      "asset_stem": "type_studies/ascaris/female-internal",
+      "source_path": "native-app/app/src/main/assets/type_studies/ascaris/female-internal.png",
+      "git_blob_sha1": "b6206b719ad63c094adbe842e7f8537666e6a08d",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Narrow Ascaris female internal illustration lacks clearly distinguishable anatomy and labels.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 17,
+      "asset_stem": "type_studies/ascaris/life-cycle",
+      "source_path": "native-app/app/src/main/assets/type_studies/ascaris/life-cycle.png",
+      "git_blob_sha1": "444e07cec2b28d0ae00c07425b584c5ec0f93d06",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Ascaris lifecycle appears usable; recheck exact source attribution before publication.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 18,
+      "asset_stem": "type_studies/earthworm/external-setae",
+      "source_path": "native-app/app/src/main/assets/type_studies/earthworm/external-setae.webp",
+      "git_blob_sha1": "12e54b71afb29d9aeb625a2dd11c05c593c45326",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 19,
+      "asset_stem": "type_studies/earthworm/digestive",
+      "source_path": "native-app/app/src/main/assets/type_studies/earthworm/digestive.webp",
+      "git_blob_sha1": "026642618f5f3dd7dc72ba1c75f09632ab74f221",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 20,
+      "asset_stem": "type_studies/earthworm/circulatory",
+      "source_path": "native-app/app/src/main/assets/type_studies/earthworm/circulatory.webp",
+      "git_blob_sha1": "98bdbfaca6f8ce5e566362f9ab21f7a2ff35965f",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Small earthworm circulation labels: full-screen zoom required.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 21,
+      "asset_stem": "type_studies/earthworm/nervous",
+      "source_path": "native-app/app/src/main/assets/type_studies/earthworm/nervous.webp",
+      "git_blob_sha1": "ced00f3f2dcb270ac246dfc0f68973e15fbe6f8d",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Small earthworm nervous-system labels: full-screen zoom required.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 22,
+      "asset_stem": "type_studies/earthworm/excretory",
+      "source_path": "native-app/app/src/main/assets/type_studies/earthworm/excretory.webp",
+      "git_blob_sha1": "05d189e8e8c343dade6adaf4e6af5035c1a68bdc",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Earthworm excretory plate is 358 px wide with very small labels.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 23,
+      "asset_stem": "type_studies/earthworm/reproductive",
+      "source_path": "native-app/app/src/main/assets/type_studies/earthworm/reproductive.webp",
+      "git_blob_sha1": "1407f44a41b3232da215b8a97914b2ecaf9fbeb5",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 24,
+      "asset_stem": "type_studies/penaeus/external",
+      "source_path": "native-app/app/src/main/assets/type_studies/penaeus/external.webp",
+      "git_blob_sha1": "cb965e0f5d6dad3b878ddd26c50a7576d86ef59a",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 25,
+      "asset_stem": "type_studies/penaeus/appendages",
+      "source_path": "native-app/app/src/main/assets/type_studies/penaeus/appendages.webp",
+      "git_blob_sha1": "e3b8daea471e6c31aaabec3477e9e32de4ea4ef9",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 26,
+      "asset_stem": "type_studies/penaeus/internal",
+      "source_path": "native-app/app/src/main/assets/type_studies/penaeus/internal.webp",
+      "git_blob_sha1": "8513435736cf282708ba1720f1d831838bc0bd80",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Penaeus internal detail is dense; require pinch zoom.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 27,
+      "asset_stem": "type_studies/penaeus/larval-development",
+      "source_path": "native-app/app/src/main/assets/type_studies/penaeus/larval-development.webp",
+      "git_blob_sha1": "df4694f44b8d4f5b098296e3c2091d71ed4cb465",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 28,
+      "asset_stem": "type_studies/pila/external",
+      "source_path": "native-app/app/src/main/assets/type_studies/pila/external.webp",
+      "git_blob_sha1": "4e1e7eb25c320f7c0a7994d845d8a8031dc2761b",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Pila eye-position call-out seems anatomically misleading; eye placement needs correction.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 29,
+      "asset_stem": "type_studies/pila/mantle-cavity",
+      "source_path": "native-app/app/src/main/assets/type_studies/pila/mantle-cavity.webp",
+      "git_blob_sha1": "110fc910310357b3fb41db74f24833ed5a54f068",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Pila mantle-cavity artwork has malformed duplicate wording; central anatomy remains interpretable.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 30,
+      "asset_stem": "type_studies/pila/ctenidium",
+      "source_path": "native-app/app/src/main/assets/type_studies/pila/ctenidium.webp",
+      "git_blob_sha1": "cc7195aa5a3e5695817fd0d7f7ad122c4b2c32f1",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Pila ctenidium is an enlarged crop; label as detail, not complete anatomy.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 31,
+      "asset_stem": "type_studies/pila/torsion",
+      "source_path": "native-app/app/src/main/assets/type_studies/pila/torsion.webp",
+      "git_blob_sha1": "bd89678f3df55b09900d49e7d35b53a22b75064f",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Torsion drawing is general gastropod, not Pila-specific; retain qualification.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 32,
+      "asset_stem": "type_studies/asterias/external",
+      "source_path": "native-app/app/src/main/assets/type_studies/asterias/external.png",
+      "git_blob_sha1": "2de453570a75105431644050333260b8ba231f80",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Archival Asterias external views should accompany labelled explanation.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 33,
+      "asset_stem": "type_studies/asterias/water-vascular-system",
+      "source_path": "native-app/app/src/main/assets/type_studies/asterias/water-vascular-system.png",
+      "git_blob_sha1": "490e31e5f5983f90028b31c082aa0c16bbe71ec8",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 34,
+      "asset_stem": "type_studies/asterias/internal",
+      "source_path": "native-app/app/src/main/assets/type_studies/asterias/internal.png",
+      "git_blob_sha1": "3c7cdeafd35804a99125db254455d8f00602a51b",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Asterias multicolour internal systems overlap and 'digestive cavity' label appears misdirected.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 35,
+      "asset_stem": "type_studies/asterias/larval-development",
+      "source_path": "native-app/app/src/main/assets/type_studies/asterias/larval-development.png",
+      "git_blob_sha1": "cb4ed1843d9be0d0d3a2cb8855ac6f420d198fee",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Asterias larval images are cropped and do not clearly identify developmental stages.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 36,
+      "asset_stem": "unit1/replacements/trypanosoma_morphology",
+      "source_path": "native-app/app/src/main/assets/unit1/references/trypanosoma.png",
+      "git_blob_sha1": "07acdaf6315028a495c1d4b2b339c6e99c65085b",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Trypanosoma trypomastigote is recognizable; source-rights documentation still needed.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 37,
+      "asset_stem": "unit1/replacements/leishmania_morphology",
+      "source_path": "native-app/app/src/main/assets/unit1/references/leishmania.png",
+      "git_blob_sha1": "02d568984f4ae95607bbeeee9298831a93efa96a",
+      "provisional_qa_decision": "HOLD_CORRECTION",
+      "rationale": "Leishmania plate depicts only the amastigote; the required promastigote is missing.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 38,
+      "asset_stem": "unit1/concepts/paramecium_oral_apparatus",
+      "source_path": "native-app/app/src/main/assets/unit1/concepts/paramecium_oral_apparatus.png",
+      "git_blob_sha1": "19271a34846c350417430bdba20366ff41a3587f",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Numbered Paramecium oral apparatus requires in-lesson key.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 39,
+      "asset_stem": "unit1/concepts/paramecium_osmoregulation",
+      "source_path": "native-app/app/src/main/assets/unit1/concepts/paramecium_osmoregulation.png",
+      "git_blob_sha1": "ea61c62a532048e083968c644c8553e2566b6118",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Numbered osmoregulation sequence requires in-lesson key.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 40,
+      "asset_stem": "unit1/concepts/paramecium_nuclear_anatomy",
+      "source_path": "native-app/app/src/main/assets/unit1/concepts/paramecium_nuclear_anatomy.png",
+      "git_blob_sha1": "c68e6a592b5ab61de9e03b378336fe0ef18da0da",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Nuclear schematic is simplified and requires numerical key.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 41,
+      "asset_stem": "unit1/concepts/paramecium_nutrition",
+      "source_path": "native-app/app/src/main/assets/unit1/concepts/paramecium_nutrition.png",
+      "git_blob_sha1": "3fc6aeb9f441ca097654923fa847b09dc97ca4af",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Nutrition process schematic requires numerical key.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 42,
+      "asset_stem": "unit1/concepts/paramecium_ciliary_locomotion",
+      "source_path": "native-app/app/src/main/assets/unit1/concepts/paramecium_ciliary_locomotion.png",
+      "git_blob_sha1": "8c775dc55b89af752f29e62090ef80798d5e974d",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Ciliary detail is 460x372 px; include as supporting image only.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 43,
+      "asset_stem": "unit1/concepts/paramecium_binary_fission",
+      "source_path": "native-app/app/src/main/assets/unit1/concepts/paramecium_binary_fission.png",
+      "git_blob_sha1": "f7dde12e193361f1ac599505138c15306cd2f8b0",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Binary-fission sketch simplified; stage legend required.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 44,
+      "asset_stem": "unit1/concepts/paramecium_conjugation",
+      "source_path": "native-app/app/src/main/assets/unit1/concepts/paramecium_conjugation.png",
+      "git_blob_sha1": "6bd253e555258c1a7edad4b4ec2564a552059e16",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Conjugation is highly schematic; explain that actual nuclear reorganization is more complex.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 45,
+      "asset_stem": "nereis/01_external_morphology",
+      "source_path": "native-app/app/src/main/assets/nereis/01_external_morphology.png",
+      "git_blob_sha1": "bf9f15ed4c002a53ee85a94f10a042a705022e75",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 46,
+      "asset_stem": "nereis/02_enlarged_head",
+      "source_path": "native-app/app/src/main/assets/nereis/02_enlarged_head.png",
+      "git_blob_sha1": "12fff40a2d3cb8b479b84cc1842b81d522bdeb08",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 47,
+      "asset_stem": "nereis/03_biramous_parapodium",
+      "source_path": "native-app/app/src/main/assets/nereis/03_biramous_parapodium.png",
+      "git_blob_sha1": "b60939fb14e8359f8d0fbcce392cc2c3c60993ae",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 48,
+      "asset_stem": "nereis/04_digestive_system",
+      "source_path": "native-app/app/src/main/assets/nereis/04_digestive_system.png",
+      "git_blob_sha1": "21571118b42b9d490f584e98a59cc5ef3b84ace2",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 49,
+      "asset_stem": "nereis/05_circulatory_system",
+      "source_path": "native-app/app/src/main/assets/nereis/05_circulatory_system.png",
+      "git_blob_sha1": "102383abb044482528afec247266cf1f5d1c558e",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 50,
+      "asset_stem": "nereis/06_nervous_system",
+      "source_path": "native-app/app/src/main/assets/nereis/06_nervous_system.png",
+      "git_blob_sha1": "d553fbb5ee6852532f9039f37d961dd2591d35f1",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 51,
+      "asset_stem": "nereis/07_excretory_system",
+      "source_path": "native-app/app/src/main/assets/nereis/07_excretory_system.png",
+      "git_blob_sha1": "95be1119817c86827b33ea562fb8a9dab105be2e",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    },
+    {
+      "index": 52,
+      "asset_stem": "nereis/08_trochophore_larva",
+      "source_path": "native-app/app/src/main/assets/nereis/08_trochophore_larva.png",
+      "git_blob_sha1": "c7e46a55c4483862a5b55d084ee6840a4f4611e1",
+      "provisional_qa_decision": "GREEN_TICK_QA",
+      "rationale": "Visible main features are legible at original resolution or with in-app zoom; minor limitations tolerated.",
+      "independent_scientific_tamil_rights_approval": false
+    }
+  ]
+}
