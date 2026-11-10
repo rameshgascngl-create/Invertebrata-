@@ -55,32 +55,20 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
     val plate = ParameciumAnatomyDraft.plates.single { it.plateId == "external-cilia" }
     var selectedId by rememberSaveable { mutableStateOf("pellicle") }
     val chosen = plate.features.single { it.id == selectedId }
-    // Read-only source traceability: zero authenticated human approvals are
-    // present. Evidence links never become accepted geometric coordinates.
-    val reviewTask = ParameciumN23DReviewDossier.forFeature(selectedId)
-    val humanHandoff = ParameciumN23EReviewerHandoff.forFeature(selectedId)
-    // Offline lookup only: descriptive metadata must never certify specimen xy.
-    val e2Audit = ParameciumN23E2EvidenceIntake
-    val e2Source = when (selectedId) {
-        "cytoproct" -> e2Audit.reference("cil-39181-cytoproct")
-        "trichocysts" -> e2Audit.reference("cil-36755-trichocysts")
-        else -> e2Audit.reference("sacred-heart-type-study")
-    }
-
     Column(
         modifier = modifier.fillMaxWidth().testTag("n23b-external-preview"),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Text(if (language == AppLanguage.TAMIL)
-            "பாரமீசியம் (P. caudatum) — இடமமைவு வரைபட முன்மாதிரி"
-        else "Paramecium caudatum — original pencil atlas draft")
+            "பாரமீசியம் (P. caudatum) — உறுப்பமைவு விளக்கப்படம்"
+        else "Paramecium caudatum — organ-position teaching schematic")
 
         Canvas(
             modifier = plateModifier.fillMaxWidth().height(280.dp)
                 .testTag("n23b-external-canvas")
                 .semantics {
                     contentDescription = if (language == AppLanguage.TAMIL)
-                        "பாரமீசியம் அமைப்பு முன்மாதிரி; கீழே உள்ள உறுப்புப் பொத்தான்கள் மூலம் தேர்வு செய்யலாம்"
+                        "பாரமீசியம் அமைப்பு விளக்கப்படம்; கீழுள்ள உறுப்புப் பொத்தான்களைப் பயன்படுத்தலாம்"
                     else "Paramecium schematic; organ buttons below provide an accessible alternative"
                 }
                 .pointerInput(onOrganSelected) {
@@ -217,117 +205,29 @@ fun ParameciumExternalCanvas(language: AppLanguage, modifier: Modifier = Modifie
             }
         }
 
-        Text(if (language == AppLanguage.TAMIL)
-            "உறுப்புகளின் இடம், தலைப்புகள், தமிழ் சொற்கள் அறிவியல் மதிப்பாய்வுக்கு உட்பட்டவை. தேர்வு செய்ய உறுப்பைத் தொடவும் அல்லது கீழுள்ள பொத்தானைப் பயன்படுத்தவும்."
-        else "Provisional organ positions and Tamil terminology: scientific review pending. Tap a marked region or use the accessible buttons below.")
-
-        Text(if(language==AppLanguage.TAMIL)
-            "கருநிறப் பென்சில் வரைபடம்; தேர்ந்தெடுத்த உறுப்பிற்கு மட்டும் வண்ணக் குறி. நிபுணர் மதிப்பாய்வு நிலுவை."
-        else "Original graphite-pencil anatomical drawing. Amber identifies only the selected structure; expert review pending.",
-            modifier=Modifier.testTag("r13-pencil-atlas-style"))
-
-        // The orientation is explicitly stated to avoid a figure being read
-        // with reversed anterior/posterior or dorsal/ventral axes.
-        val proposedView = ParameciumExternalEvidence.view
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "இப்படம் உறுப்புகளின் இடங்களை விளக்கும் திட்டவரைபடம். உறுப்பைத் தொட்டோ, கீழுள்ள பொத்தானைத் தேர்ந்தெடுத்தோ அதன் பணியை அறியலாம்."
+            else "This is a schematic of relative organ positions. Tap a region or choose an organ button below to read its function.",
+            modifier = Modifier.testTag("n23b-teaching-note"),
+        )
+        Text(
+            if (language == AppLanguage.TAMIL)
+                "பெயர்க்குறிப்புகள் அளவீட்டு இடப்புள்ளிகள் அல்ல; வாய்ப்பள்ளம், சைட்டோபுராக்ட் போன்ற அமைப்புகளின் துல்லிய இடத்தை நுண்ணோக்கிப் படத்துடன் ஒப்பிட்டறிக."
+            else "Landmark positions are illustrative, not microscopy measurements. Compare the oral groove and cytoproct with labelled whole-cell microscopy.",
+            modifier = Modifier.testTag("n23b-geometry-caveat"),
+        )
         Text(
             if (language == AppLanguage.TAMIL)
                 "முன்புறம் (வட்டம்) ←   பின்புறம் (கூர்மை) →   வாய்ப்புறம்: கீழ்ப்பக்கம்"
             else "Anterior (rounded) ←   Posterior (tapered) →   Oral/ventral side: bottom",
             modifier = Modifier.testTag("n23b-orientation"),
         )
-        require(!proposedView.orientationVerifiedAgainstFigure)
-
-
         Text(
             (if (language == AppLanguage.TAMIL) "தேர்ந்தெடுத்த உறுப்பு: "
                 else "Highlighted structure: ") + chosen.label.value(language),
             modifier = Modifier.testTag("n23b-selected-label"),
         )
-        if (!compact) {
-        Text(
-            if (language == AppLanguage.TAMIL)
-                "N2.3D1 மதிப்பாய்வு நிலை — உயிரியல்: 0/5; தமிழ்: 0/5; நேரடி சாதனச் சோதனை: நிலுவை"
-            else "N2.3D1 review records — biology: 0/5; Tamil: 0/5; physical-device QA: pending",
-            modifier = Modifier.testTag("n23d-review-summary"),
-        )
-        Text(
-            (if (language == AppLanguage.TAMIL)
-                "ஆதாரத்தில் உறுதியான தகவல்: " else "Source supports: ") +
-                reviewTask.primary.establishes.value(language),
-            modifier = Modifier.testTag("n23d-source-support"),
-        )
-        Text(
-            (if (language == AppLanguage.TAMIL)
-                "இன்னும் உறுதியாகாதவை: " else "Not yet established: ") +
-                reviewTask.primary.doesNotEstablish.value(language),
-            modifier = Modifier.testTag("n23d-source-limit"),
-        )
-        Text(
-            (if (language == AppLanguage.TAMIL) "மேற்கோள்: " else "Reference: ") + reviewTask.primary.exactLocator +
-                " — " + reviewTask.primary.referenceUrl,
-            modifier = Modifier.testTag("n23d-source-locator"),
-        )
-        Text(
-            (if (language == AppLanguage.TAMIL) "N2.3E1 நிபுணர் மதிப்பாய்வுக் கேள்வி: "
-                else "N2.3E1 expert-review question: ") +
-                humanHandoff.reviewQuestion.value(language),
-            modifier = Modifier.testTag("n23e-review-question"),
-        )
-        Text(
-            (if (language == AppLanguage.TAMIL) "ஆதாரத்தின் வரம்பு: "
-                else "Evidence limitation: ") +
-                humanHandoff.evidenceBoundary.value(language),
-            modifier = Modifier.testTag("n23e-review-boundary"),
-        )
-        Text(
-            if (language == AppLanguage.TAMIL)
-                "நிபுணர் உயிரியல் ஒப்புதல்: 0/5; தமிழ் ஒப்புதல்: 0/5; நேரடி மதிப்பாய்வு நிலுவை"
-            else "Independent biology approvals: 0/5; Tamil approvals: 0/5; human inspection pending",
-            modifier = Modifier.testTag("n23e-review-status"),
-        )
-        Text(
-            if (language == AppLanguage.TAMIL)
-                "N2.3E2 ஆதார அணுகல்: " +
-                    (if (e2Source.access == E2SourceAccess.SEARCH_INDEX_METADATA_ONLY)
-                        "தேடல் குறியீட்டுத் தகவல் மட்டுமே; முதன்மைப் படத்திற்கான நேரடி மதிப்பாய்வு நிலுவை."
-                    else "ஆதார விளக்க உரை சரிபார்க்கப்பட்டது; பட ஒப்புதல் நிலுவை.")
-            else "N2.3E2 source access: " +
-                (if (e2Source.access == E2SourceAccess.SEARCH_INDEX_METADATA_ONLY)
-                    "indexed metadata only; direct reference-image inspection pending."
-                else "source description retrieved; image-level inspection pending."),
-            modifier = Modifier.testTag("n23e2-source-access"),
-        )
-        Text(
-            if (language == AppLanguage.TAMIL)
-                "பட உரிமை: " + when (e2Source.rights) {
-                    E2ImageRights.PUBLIC_DOMAIN_REPORTED_ON_RECORD -> "பதிவில் பொதுச் சொத்து; மீண்டும் உறுதிசெய்ய வேண்டும்."
-                    E2ImageRights.COPYRIGHT_PERMISSION_REQUIRED -> "பயன்படுத்த உரிய அனுமதி தேவை."
-                    else -> "பட மறுபயன்பாட்டுக்கான உரிமை உறுதிப்படுத்தப்படவில்லை."
-                }
-            else "Image rights: " + when (e2Source.rights) {
-                E2ImageRights.PUBLIC_DOMAIN_REPORTED_ON_RECORD -> "record states public domain; reconfirm before reuse."
-                E2ImageRights.COPYRIGHT_PERMISSION_REQUIRED -> "permission required for reproduction."
-                else -> "reuse rights not established for this reference."
-            },
-            modifier = Modifier.testTag("n23e2-image-rights"),
-        )
-        if (selectedId == "cytoproct") {
-            Text(
-                if (language == AppLanguage.TAMIL)
-                    "மூடிய நிலையில் செல் கழிவு வெளியேறும் பகுதி மேடுபோலத் தோன்றும். இவ்வரைபடத்தில் அதன் துல்லியமான இடம் இன்னும் சரிபார்க்கப்படவில்லை."
-                else "Closed cytoproct shown schematically as a ridge; its exact position has not been verified against a whole-cell micrograph.",
-                modifier = Modifier.testTag("n23c2-cytoproct-evidence-limit"),
-            )
-        }
-        if (selectedId == "oral-groove") {
-            Text(
-                if (language == AppLanguage.TAMIL)
-                    "வாய்ப்பள்ளம் வாய்ப்புறத்தில் அமைந்துள்ளது. இவ்வரைபடத்தில் காட்டியுள்ள அதன் வளைவும் துல்லியமான இடமும் முழுச் செல் நுண்ணோக்கிப் படத்துடன் இன்னும் சரிபார்க்கப்படவில்லை."
-                else "The oral groove lies on the oral/ventral surface. Its curve and exact position in this schematic have not been validated against whole-cell microscopy.",
-                modifier = Modifier.testTag("n23c3-oral-geometry-limit"),
-            )
-        }
-        }
         // Explicit large semantic touch targets; Canvas gesture is supplementary.
         for (feature in plate.features) {
             OutlinedButton(
