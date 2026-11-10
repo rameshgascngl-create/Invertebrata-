@@ -135,7 +135,12 @@ class NativeR161QualityAcceptanceTest {
         rule.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
         rule.waitUntil(20_000) { rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("language-english").performClick()
+        // Lazy Home header can hide the Unit 1 card after returning from the lab.
+        // Scroll to it before asserting the exact English label and chapter count.
+        rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.waitUntil(10_000) { rule.homeUnitOneShows(tamil = false) }
+        // The Paramecium launch action is in the preceding header item.
+        rule.onNodeWithTag("native-home").performScrollToIndex(0)
         rule.onNodeWithTag("r1-home-open-paramecium").performScrollTo().performClick()
         rule.waitUntil(20_000) { rule.onAllNodesWithTag("r1-narrate-somatic-cilia", true).fetchSemanticsNodes().isNotEmpty() }
         rule.onNodeWithTag("r1-narrate-somatic-cilia", true).performScrollTo().performClick()
