@@ -40,8 +40,8 @@ private val flagellateStudies = listOf(
         id = "trypanosoma",
         titleEn = "Trypanosoma brucei — structure, movement and host–vector cycle",
         titleTa = "டிரிப்பனோசோமா புரூசை — அமைப்பு, இயக்கம், ஓம்புயிரி–கடத்தி சுழற்சி",
-        imageEn = "Bloodstream trypomastigote figure requires a validated nucleus, posterior kinetoplast, undulating membrane and anterior free flagellum.",
-        imageTa = "இரத்த டிரிப்போமாஸ்டிகோட் படத்தில் உட்கரு, பின்புறக் கைனெட்டோபிளாஸ்ட், அலைவுச் சவ்வு, முன்புறச் சுதந்திரக் கசையிழை சரியாகக் காட்டப்பட வேண்டும்.",
+        imageEn = "In the bloodstream trypomastigote, identify the nucleus, posterior kinetoplast, undulating membrane and anterior free flagellum.",
+        imageTa = "இரத்த டிரிப்போமாஸ்டிகோட்டில் உட்கரு, பின்புறக் கைனெட்டோபிளாஸ்ட், அலைவுச் சவ்வு, முன்புறச் சுதந்திரக் கசையிழை ஆகியவற்றை அடையாளம் காண்க.",
         stages = listOf(
             FlagellateStage("morphology", "1. Bloodstream trypomastigote: identifying structures",
                 "1. இரத்த டிரிப்போமாஸ்டிகோட்: அடையாள அமைப்புகள்",
@@ -67,8 +67,8 @@ private val flagellateStudies = listOf(
         id = "leishmania",
         titleEn = "Leishmania spp. — amastigote, promastigote and sand-fly cycle",
         titleTa = "லீஷ்மேனியா இனங்கள் — அமாஸ்டிகோட், புரோமாஸ்டிகோட், மணல் ஈச் சுழற்சி",
-        imageEn = "Two different Leishmania forms require clearly distinct macrophage amastigote and sand-fly promastigote morphology.",
-        imageTa = "லீஷ்மேனியாவின் மேக்ரோபேஜ் அமாஸ்டிகோட், மணல் ஈ புரோமாஸ்டிகோட் ஆகிய இரு வேறுபட்ட வடிவங்களும் தனித்துப் படம் பெற வேண்டும்.",
+        imageEn = "Compare the rounded macrophage amastigote with the elongated, anteriorly flagellated sand-fly promastigote.",
+        imageTa = "மேக்ரோஃபேஜ் செலிலுள்ள உருண்டை அமாஸ்டிகோட்டையும் மணல் ஈயிலுள்ள நீண்ட முன்கசையிழையுடைய புரோமாஸ்டிகோட்டையும் ஒப்பிடுக.",
         stages = listOf(
             FlagellateStage("morphology", "1. Intracellular amastigote: nucleus and kinetoplast",
                 "1. செல்லுக்குள்ளான அமாஸ்டிகோட்: உட்கரு மற்றும் கைனெட்டோபிளாஸ்ட்",
