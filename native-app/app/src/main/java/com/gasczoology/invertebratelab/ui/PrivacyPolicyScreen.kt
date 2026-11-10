@@ -23,7 +23,7 @@ import com.gasczoology.invertebratelab.data.AppLanguage
 
 /**
  * Accessible, fully offline privacy policy. The canonical English and Tamil policy files
- * are packaged as APK assets; this view performs no network or WebView operations.
+ * are packaged as APK assets; this view uses no browser component or network operations.
  */
 @Composable
 internal fun PrivacyPolicyScreen(language: AppLanguage, onBack: () -> Unit) {
