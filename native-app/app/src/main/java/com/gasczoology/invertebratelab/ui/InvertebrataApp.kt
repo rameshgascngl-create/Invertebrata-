@@ -510,8 +510,8 @@ private fun UnitScreen(
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                             .testTag("u1-open-diagram-atlas")) {
                         Text(label(language,
-                            "VIEW ANATOMICAL SLOTS · Paramecium replacement plates pending",
-                            "பாரமீசியம் உடற்கூறு படப் பகுதிகள் · புதிய படங்கள் நிலுவையில் உள்ளன"))
+                            "EXPLORE PARAMECIUM ANATOMY · enlarge and compare organ systems",
+                            "பாரமீசியம் உடற்கூறு · படங்களைப் பெரிதாக்கி உறுப்பமைப்புகளை ஒப்பிடுக"))
                     }
                     Text(label(language,
                         "Compare the available Entamoeba and Plasmodium transmission figures with their life-cycle lessons.",

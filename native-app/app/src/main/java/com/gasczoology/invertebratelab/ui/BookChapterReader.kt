@@ -345,14 +345,6 @@ private fun BookFigureView(figure: BookFigure, label: String, language: AppLangu
         Text(caption, style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.testTag("book-figure-caption-$tag"))
-        if (sourceCandidate != null) {
-            Text(
-                t(language, "Source-credited scientific illustration · included in textbook",
-                    "மூல ஆதாரத்துடன் கூடிய அறிவியல் படம் · பாடநூலில் சேர்க்கப்பட்டுள்ளது"),
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.testTag("book-leishmania-source-qa"),
-            )
-        }
         // At 200% Tamil font these must wrap as independent keyed entries,
         // rather than a single unbroken paragraph under the raster.
         parts.numberedKey.forEach { (number, explanation) ->

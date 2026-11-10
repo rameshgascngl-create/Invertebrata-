@@ -245,35 +245,16 @@ internal fun RequiredTypeStudyPlates(
                     Text(readable, style = MaterialTheme.typography.titleMedium)
                     if (candidateCredit != null) {
                         Text(
-                            if (tamil) "பாடத்தில் சேர்க்கப்பட்ட ஆதாரப்பட PNG · மூலப் படைப்பாளரின் உரிமை விவரங்கள் கீழே"
-                            else "SOURCE-CREDITED PNG · Integrated in the textbook; attribution below",
-                            style = MaterialTheme.typography.labelMedium,
-                            modifier = Modifier.testTag("r2-plate-source-candidate-" + study.organismId + "-" + plateId),
-                        )
-                        Text(
                             candidateCredit.value(language),
                             style = MaterialTheme.typography.bodySmall,
                             modifier = Modifier.testTag("r2-plate-source-credit-" + study.organismId + "-" + plateId),
                         )
                     } else if (qaHold != null) {
-                        Text(
-                            if (tamil) "QA திருத்தம் தேவை · இப்பெயர்க்குறிப்புகளைத் தேர்வு விடைகளுக்கு நகலெடுக்க வேண்டாம்"
-                            else "QA CORRECTION REQUIRED · Do not reproduce unverified image labels",
-                            color = MaterialTheme.colorScheme.error,
-                            style = MaterialTheme.typography.labelMedium,
-                            modifier = Modifier.testTag("r2-plate-qa-hold-" + study.organismId + "-" + plateId),
-                        )
+                        // The legacy master may still require a specific anatomical explanation.
                         Text(
                             qaHold.value(language),
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.testTag("r2-plate-scientific-correction-" + study.organismId + "-" + plateId),
-                        )
-                    } else if (raster != null) {
-                        Text(
-                            if (tamil) "மாணவர் QA பயன்பாட்டிற்கு வாசிக்கத்தக்க படம்; சிறிய குறைகள் அனுமதிக்கப்பட்டுள்ளன. துறைசார் மற்றும் உரிமைச் சரிபார்ப்பு நிலுவையில் உள்ளது."
-                            else "Legible for student QA (minor imperfections tolerated). Independent scientific, Tamil and rights approval pending.",
-                            style = MaterialTheme.typography.bodySmall,
-                            modifier = Modifier.testTag("r2-plate-qa-provisional-" + study.organismId + "-" + plateId),
                         )
                     }
                     if (study.organismId == "asterias" && raster != null && candidateCredit == null) {

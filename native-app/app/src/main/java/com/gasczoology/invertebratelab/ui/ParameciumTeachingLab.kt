@@ -244,8 +244,8 @@ fun ParameciumTeachingLab(
                         "ஆய்வு இனம்: பாரமீசியம் கௌடேட்டம் · மூலப் புகைப்படத்திலிருந்து பெறப்பட்ட படங்கள் · இணையமின்றி இருமொழி விளக்கம்."),
                         style = MaterialTheme.typography.bodyMedium)
                     Text(bi(language,
-                        "Academic review pending: illustrations and Tamil vocabulary remain drafts.",
-                        "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன."),
+                        "Simulation stages show biological sequences; they do not represent measured laboratory durations.",
+                        "செயல்முறை நிலைகள் உயிரியல் நிகழ்வுகளின் வரிசையை விளக்குகின்றன; அவற்றின் கால அளவு ஆய்வகத்தில் அளவிடப்பட்டது அல்ல."),
                         style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.testTag("r1-review-warning"))
                 }
@@ -501,8 +501,8 @@ private fun VacuoleAtlasSection(
             "சுருங்கும் நுண்குமிழ் சுழற்சியை இயக்குக"))
     }
     Text(bi(language,
-        "Research review pending: radial arms, whole-cell positions and organ outlines are illustrative. A food vacuole is not a collecting arm or contractile vacuole.",
-        "ஆய்வு நிலுவை: ஆரக் கால்வாய்களின் எண்ணிக்கை, செல் முழுவதிலான இடங்கள், உறுப்புகளின் வடிவங்கள் விளக்கத்திற்கானவை மட்டுமே. உணவுக் குமிழ், சேகரிப்புக் கால்வாயோ சுருங்கும் நுண்குமிழோ அல்ல."),
+        "Contractile vacuole, collecting canals and food vacuoles are distinct structures. Canal number and organ positions in this diagram are illustrative, not measured.",
+        "சுருங்கும் நுண்குமிழ், ஆரவழிச் சேகரிப்புக் கால்வாய்கள், உணவு நுண்குமிழ்கள் வெவ்வேறு அமைப்புகள். இப்படத்தில் கால்வாய் எண்ணிக்கையும் உறுப்பு இருப்பிடங்களும் விளக்கத்திற்கானவை; அளவீடுகள் அல்ல."),
         modifier = Modifier.testTag("r11-vacuole-review-warning"))
     Text("Scientific reading: https://pubmed.ncbi.nlm.nih.gov/23919298/")
     Text("Scientific reading: https://www.sciencedirect.com/science/article/pii/S1065699502909376")
@@ -614,8 +614,8 @@ private fun CvcMechanismReviewInset(
             "இச்செயல்நிலையின் ஒலி விளக்கத்தைக் கேள்"))
     }
     Text(bi(language,
-        "Review status: DRAFT_UNVERIFIED. Central lumen size, arm count, spongiome arrangement, membrane-pore geometry and stage timing are NOT measured. Contractile-vacuole discharge is separate from cytoproct egestion.",
-        "மதிப்பாய்வு நிலை: உறுதிப்படுத்தப்படாத வரைவு. நுண்குமிழ் அளவு, கால்வாய் எண்ணிக்கை, ஸ்பாஞ்சியோம் அமைவு, வெளியேற்றத் துளை வடிவு, கால அளவு ஆகியவை அளவீடுகள் அல்ல. நீர் வெளியேற்றமும் செரியாத உணவுக் கழிவு வெளியேற்றமும் வேறுபட்ட செயல்கள்."),
+        "Mechanism schematic, not to scale: central lumen size, canal number, spongiome arrangement and timing are illustrative. Contractile-vacuole discharge expels water; cytoproct egestion expels undigested food.",
+        "இயங்குமுறை விளக்கப்படம்; அளவுக்கேற்ப அல்ல. நுண்குமிழ் அளவு, கால்வாய் எண்ணிக்கை, ஸ்பாஞ்சியோம் அமைப்பு, கால அளவு ஆகியவை விளக்கத்திற்கானவை. சுருங்கும் நுண்குமிழ் நீரை வெளியேற்றுகிறது; சைட்டோபுராக்ட் செரியாத உணவெச்சத்தை வெளியேற்றுகிறது."),
         modifier = Modifier.testTag("r12-cvc-review-warning"))
     Text("Microscopy (P. caudatum collecting canal and spongiome): " +
         "https://www6.pbrc.hawaii.edu/allen/ch10a/46-pca4201.html")

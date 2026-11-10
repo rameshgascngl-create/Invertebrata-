@@ -31,8 +31,8 @@ internal fun UnitIVPenaeusIntroduction(language: AppLanguage) {
             modifier=Modifier.semantics { heading() }.testTag("u4-penaeus-textbook-title"),
         )
         Text(
-            if(ta) "அறிவியல் / தமிழ் ஆசிரியர் மதிப்பாய்வு நிலுவை. உண்மை இனப் பெயர் இல்லாத பொதுவான Penaeus படத்தை குறிப்பிட்ட இனத்தின் உடற்கூறாகக் கருத வேண்டாம்."
-            else "ACADEMIC DRAFT: independent zoology and Tamil editorial approval pending. Genus-level biology is not proof of an identified Penaeus species or a verified anatomical drawing.",
+            if(ta) "Penaeus பேரினத்தில் பல சிற்றினங்கள் உள்ளன. குறிப்பிட்ட சிற்றினத்தின் பண்புகளையும் பொதுவான இறால் உடற்கூற்றையும் வேறுபடுத்திப் படிக்கவும்."
+            else "Penaeus contains several species. Distinguish general prawn anatomy from characters diagnostic of an identified species.",
             color=MaterialTheme.colorScheme.error,
             modifier=Modifier.testTag("u4-penaeus-academic-hold"),
         )
@@ -205,8 +205,8 @@ internal fun UnitIVPenaeusLifeCycleExplorer(
                     .testTag("u4-penaeus-life-speak"),
             ){Text(if(ta)"இந்த வளர்நிலையின் ஒலி விளக்கம்" else "Speak current stage offline")}
             Text(if(ta)
-                "இளநிலை விளக்கம்: அறிவியல் மதிப்பாய்வு நிலுவை; அசல் பென்சில் படமோ செயற்கை உறுப்பு தொடுபுள்ளிகளோ இல்லை."
-                else "Source-referenced development, not an approved pencil plate. Individual morphology and real-device Tamil audio still require review.",
+                "நௌப்ளியஸ், புரோட்டோசோயியா, மைசிஸ், பிந்தைய இளநிலை ஆகியவற்றின் உடலமைப்பை ஒப்பிடுக. வளர்ச்சி நேரம் சிற்றினத்திற்கேற்ப மாறலாம்."
+                else "Compare nauplius, protozoea, mysis and postlarval structures. Developmental duration varies with species and environmental conditions.",
                 color=MaterialTheme.colorScheme.error,
                 modifier=Modifier.testTag("u4-penaeus-life-review-hold"))
         }
@@ -218,8 +218,8 @@ internal fun UnitIVPenaeusAtlasHold(language:AppLanguage) {
     val ta=language==AppLanguage.TAMIL
     Column(verticalArrangement=Arrangement.spacedBy(8.dp),
         modifier=Modifier.fillMaxWidth().testTag("u4-penaeus-atlas-pending")) {
-        Text(if(ta)"நான்கு உடற்கூறு அசல் பென்சில் படங்கள் நிலுவை"
-            else "FOUR PENCIL-ATLAS MASTERS PENDING",
+        Text(if(ta)"நான்கு உடற்கூற்றுப் படிப்பு தலைப்புகள்"
+            else "FOUR ANATOMICAL STUDY TOPICS",
             style=MaterialTheme.typography.titleLarge)
         listOf(
             BilingualText("External with rostrum and appendages","ரோஸ்ட்ரம் மற்றும் இணைக்கால்களுடனான வெளியமைப்பு"),
@@ -230,8 +230,8 @@ internal fun UnitIVPenaeusAtlasHold(language:AppLanguage) {
             Text((i+1).toString()+". "+item.value(language))
         }
         Text(if(ta)
-            "மூல ஆசிரியர், உரிமை, இரண்டு தனித்த விலங்கியல் பரிசோதகர்கள், தமிழ் ஒப்புதல், அசல் பிக்சல் குறியீடுகள் உறுதியாகும்வரை மாணவருக்கான உறுப்புப் படத் தொடுபுள்ளிகள் செயல்படாது."
-            else "No drawing is substituted. Source author, redistribution rights, two independent zoologists, Tamil editing and exact pixel endpoints must be accepted before student-facing organ taps.",
+            "ஒவ்வொரு உறுப்பையும் இன ஆய்வுப் படத்துடனும் அதன் பாட விளக்கத்துடனும் ஒப்பிடுக. படம் காட்டாத விவரங்களை ஊகிக்க வேண்டாம்."
+            else "Compare each organ with the type-study illustration and explanation. Do not infer structures that the figure does not show.",
             color=MaterialTheme.colorScheme.error)
     }
 }
