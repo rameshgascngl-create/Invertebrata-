@@ -49,9 +49,36 @@ class NativeReleaseFunctionalTest {
             if (event.eventType == AccessibilityEvent.TYPE_VIEW_SCROLLED && event.maxScrollY > 0) verticalScrollEvents.incrementAndGet()
         }
         scenario = ActivityScenario.launch(MainActivity::class.java)
-        scenario.onActivity { it.requestedOrientation =
-            if (args.getString("functionalOrientation") == "landscape")
-                ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT }
+        val landscape = args.getString("functionalOrientation") == "landscape"
+        scenario.onActivity {
+            it.requestedOrientation = if (landscape)
+                ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+        // Orientation recreates MainActivity on API 34. A stale Home node can appear
+        // before the new Activity has a stable accessibility window.
+        val readyBy = SystemClock.elapsedRealtime() + 15_000
+        var stableSince = 0L
+        var homeReady = false
+        while (SystemClock.elapsedRealtime() < readyBy) {
+            if (android.os.Build.VERSION.SDK_INT >= 34) automation.clearCache()
+            val window = automation.rootInActiveWindow
+            val rect = Rect()
+            window?.getBoundsInScreen(rect)
+            window?.recycle()
+            val correctOrientation = rect.width() > 20 && rect.height() > 20 &&
+                (if (landscape) rect.width() > rect.height() else rect.height() > rect.width())
+            val home = find("native-home")
+            val ready = correctOrientation && home != null &&
+                scenario.state == androidx.lifecycle.Lifecycle.State.RESUMED
+            home?.recycle()
+            if (ready) {
+                if (stableSince == 0L) stableSince = SystemClock.elapsedRealtime()
+                if (SystemClock.elapsedRealtime() - stableSince >= 750L) { homeReady = true; break }
+            } else stableSince = 0L
+            SystemClock.sleep(100)
+        }
+        assertTrue("MainActivity did not settle in the requested " +
+            (if (landscape) "landscape" else "portrait") + " orientation with Home accessible", homeReady)
         waitFor("native-home").recycle()
         assertEquals(args.getString("expectedScale")?.toFloat() ?: 1f, context.resources.configuration.fontScale, .06f)
     }
@@ -105,9 +132,22 @@ class NativeReleaseFunctionalTest {
             display.heightPixels + " fontScale=" + context.resources.configuration.fontScale + "; scroll:" + scrollTrace + "; visible: " + seen.take(45).joinToString(" | ") + "]")
     }
     private fun windowBounds(): Rect {
-        val node = checkNotNull(automation.rootInActiveWindow)
-        val bounds = Rect(); node.getBoundsInScreen(bounds); node.recycle()
-        return bounds
+        // Android may return null while a requested orientation is recreating the
+        // Activity. Retry the real accessibility root; never invent window bounds.
+        val deadline = SystemClock.elapsedRealtime() + 5_000
+        while (SystemClock.elapsedRealtime() < deadline) {
+            if (android.os.Build.VERSION.SDK_INT >= 34) automation.clearCache()
+            val node = automation.rootInActiveWindow
+            if (node != null) {
+                val bounds = Rect()
+                node.getBoundsInScreen(bounds)
+                node.recycle()
+                if (bounds.width() > 20 && bounds.height() > 20) return bounds
+            }
+            SystemClock.sleep(75)
+        }
+        throw AssertionError("No active accessibility window after Activity recreation" +
+            " (fontScale=" + context.resources.configuration.fontScale + ")")
     }
     private fun fingerprint(): String {
         if (android.os.Build.VERSION.SDK_INT >= 34) automation.clearCache()
@@ -334,11 +374,14 @@ class NativeReleaseFunctionalTest {
             last = height
         }
     }
-    private fun diagram(id: String): Bitmap {
-        // Playback controls may scroll the animated canvas almost completely offscreen.
-        // Bring the actual diagram back into view, and let the scroll finish, before sampling pixels.
-        bringFullyIntoView(id)
-        val node = scrollTo(id); val bounds = Rect(); node.getBoundsInScreen(bounds)
+    private fun diagram(id: String, align: Boolean = true): Bitmap {
+        // Most diagrams need explicit alignment. The ciliary canvas sits immediately
+        // above its transport: align the transport once per capture instead. Asking
+        // SHOW_ON_SCREEN to align the partly visible ciliary canvas moved its viewport
+        // between before/after samples in release Tamil 200% landscape.
+        if (align) bringFullyIntoView(id)
+        val node = if (align) scrollTo(id) else waitFor(id)
+        val bounds = Rect(); node.getBoundsInScreen(bounds)
         val fullHeight = bounds.height()
         var ancestor = node.parent
         while (ancestor != null) {
@@ -427,22 +470,33 @@ class NativeReleaseFunctionalTest {
         )
         for (c in cases) {
             tap("r1-process-" + c.process); if (c.prefix == "r19" || c.prefix == "r17") tap(c.prefix + "-jump-stages"); tap(c.stage); c.start?.let(::tap)
-            scrollTo(c.prefix + "-inline-play-pause").recycle()
-            val before = diagram(c.canvas)
+            val transportId = c.prefix + "-inline-play-pause"
+            scrollTo(transportId).recycle()
+            // Ciliary playback occupies 190 dp in landscape but its transport is
+            // further down the same scroll column. Keep that control as our viewport
+            // anchor for all captures so scrolling cannot imitate animated pixels.
+            fun captureDiagram(): Bitmap {
+                if (c.prefix == "ciliary") {
+                    scrollTo(transportId).recycle()
+                    return diagram(c.canvas, align = false)
+                }
+                return diagram(c.canvas)
+            }
+            val before = captureDiagram()
             // The transport was reached by touch above. Activate its native action
             // without moving the viewport away from the diagram being measured.
-            fun playbackControl() = click(checkNotNull(find(c.prefix + "-inline-play-pause", false)), c.prefix + "-inline-play-pause")
+            fun playbackControl() = click(checkNotNull(find(transportId, false)), transportId)
             playbackControl()
             val until = SystemClock.elapsedRealtime() + 8_000
             while (phase(c.canvas) !in .18f.. .8f && SystemClock.elapsedRealtime() < until) SystemClock.sleep(30)
             playbackControl(); SystemClock.sleep(150)
             val stopped = phase(c.canvas); assertTrue(c.process + ": no intermediate pause", stopped > 0f && stopped < 1f)
-            val after = diagram(c.canvas)
+            val after = captureDiagram()
             assertTrue(c.process + ": diagram pixels did not change", changedPixels(before, after, c.process + " / " + c.canvas) > 12)
             saveScreen(c.process + "-release-start", before); saveScreen(c.process + "-release-paused", after)
             SystemClock.sleep(300)
             assertEquals(c.process + ": phase advanced after Pause", stopped, phase(c.canvas), .0011f)
-            val paused = diagram(c.canvas)
+            val paused = captureDiagram()
             assertTrue(c.process + ": pixels moved after Pause", after.sameAs(paused))
             before.recycle(); after.recycle(); paused.recycle()
         }
