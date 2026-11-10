@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "source_date": "2026-11-10",
+  "status": "SOURCE_QA_CANDIDATE_NOT_ACADEMIC_APPROVAL",
+  "original_qa_acceptance": {
+    "green_ticked": 41,
+    "held": 11,
+    "already_source_debug_integrated": 4,
+    "remaining": 7
+  },
+  "sources": [
+    {
+      "key": "paramecium",
+      "filename": "Paramecium diagram.svg",
+      "creator": "Deuterostome",
+      "license": "CC BY-SA 4.0",
+      "subject": "Paramecium caudatum oral region and whole-cell anatomy",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Paramecium_diagram.svg"
+    },
+    {
+      "key": "sycon",
+      "filename": "Sea sponge diagram.svg",
+      "creator": "Kelvinsong",
+      "license": "CC BY-SA 3.0",
+      "subject": "Generalised syconoid sponge, not species-specific Sycon histology",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Sea_sponge_diagram.svg"
+    },
+    {
+      "key": "obelia_oral",
+      "filename": "FMIB 41684 Obelia diaphana Oral view.jpeg",
+      "creator": "Charles W. Hargitt (1905); University of Washington FMIB",
+      "license": "Public domain (FMIB)",
+      "subject": "Obelia diaphana (=O. geniculata), oral medusa view",
+      "source_page": "https://commons.wikimedia.org/wiki/File:FMIB_41684_Obelia_diaphana_Oral_view.jpeg"
+    },
+    {
+      "key": "obelia_side",
+      "filename": "FMIB 41683 Obelia diaphana.jpeg",
+      "creator": "Charles W. Hargitt (1905); University of Washington FMIB",
+      "license": "Public domain (FMIB)",
+      "subject": "Obelia diaphana medusa side view",
+      "source_page": "https://commons.wikimedia.org/wiki/File:FMIB_41683_Obelia_diaphana.jpeg"
+    },
+    {
+      "key": "obelia_colony",
+      "filename": "FMIB 40529 Obelia dichotoma (Linn).jpeg",
+      "creator": "University of Washington Freshwater and Marine Image Bank (early twentieth-century plate)",
+      "license": "Public domain (FMIB)",
+      "subject": "Obelia dichotoma colonial hydroid",
+      "source_page": "https://commons.wikimedia.org/wiki/File:FMIB_40529_Obelia_dichotoma_(Linn).jpeg"
+    },
+    {
+      "key": "ascaris",
+      "filename": "Pfurtscheller Table 38 a.png",
+      "creator": "Paul Pfurtscheller (pre-1927)",
+      "license": "Public domain",
+      "subject": "Ascaris lumbricoides anatomical plate",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Pfurtscheller_Table_38_a.png"
+    },
+    {
+      "key": "earthworm_segments",
+      "filename": "Oligochaeta anatomy 2.svg",
+      "creator": "Reytan; Xvazquez",
+      "license": "Public domain",
+      "subject": "Oligochaeta segment showing metanephridium and nephrostome",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Oligochaeta_anatomy_2.svg"
+    },
+    {
+      "key": "earthworm_nephridium",
+      "filename": "Metanephridium.svg",
+      "creator": "KDS4444",
+      "license": "CC BY-SA 4.0",
+      "subject": "Lumbricus-type earthworm metanephridium",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Metanephridium.svg"
+    },
+    {
+      "key": "pila_photo",
+      "filename": "Pila globosa.jpg",
+      "creator": "Siyaulhaque (2025)",
+      "license": "CC BY-SA 4.0",
+      "subject": "Photographed Pila globosa specimen",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Pila_globosa.jpg"
+    },
+    {
+      "key": "apple_snail_historical",
+      "filename": "NIE 1905 Abalone, etc.png",
+      "creator": "Unknown author, New International Encyclopaedia (1905)",
+      "license": "Public domain (pre-1931)",
+      "subject": "Historical apple snail (Ampullaria), not identified as Pila globosa",
+      "source_page": "https://commons.wikimedia.org/wiki/File:NIE_1905_Abalone,_etc.png"
+    }
+  ],
+  "targets": [
+    {
+      "id": "paramecium/oral-apparatus",
+      "file": "01_paramecium_oral_sourced.png",
+      "scope": "General whole-cell oral structures, NOT enlarged cytopharynx detail"
+    },
+    {
+      "id": "sycon/external",
+      "file": "02_sycon_external_sourced.png",
+      "scope": "General syconoid sponge, not species-specific Sycon specimen"
+    },
+    {
+      "id": "obelia/medusa",
+      "file": "04_obelia_medusa_sourced.png",
+      "scope": "Obelia-specific historical oral/side views; archival small original figures"
+    },
+    {
+      "id": "obelia/life-cycle",
+      "file": "05_obelia_lifecycle_sourced.png",
+      "scope": "New stage-order flow with FMIB Obelia figures and schematic textual stages, not anatomical tracing"
+    },
+    {
+      "id": "ascaris/female-internal",
+      "file": "06_ascaris_female_sourced.png",
+      "scope": "Historical Ascaris anatomy; female organ position requires expert visual check"
+    },
+    {
+      "id": "earthworm/excretory",
+      "file": "07_earthworm_excretory_sourced.png",
+      "scope": "Source nephridium and metameric structure plus route taxonomy, not Pheretima-specific distribution drawing"
+    },
+    {
+      "id": "pila/external",
+      "file": "08_pila_external_sourced.png",
+      "scope": "Authenticated Pila globosa specimen + historical comparative apple-snail figure; soft-part labels may not be visible"
+    }
+  ]
+}

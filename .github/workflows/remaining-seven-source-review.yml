@@ -1,0 +1,29 @@
+name: INVERTEBRATA remaining-seven sourced PNG review
+on:
+  push:
+    branches: ['feat/native-textbook-reader-qa']
+    paths:
+      - 'qa-source-intake/remaining_seven_sources.json'
+      - 'qa-source-intake/build_remaining_seven_png.py'
+      - '.github/workflows/remaining-seven-source-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-figure-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check 'Pillow>=11,<13' 'requests>=2.31,<3' 'cairosvg>=2.7,<3'
+      - name: Produce seven separate sourced scientific review PNGs and provenance
+        run: python qa-source-intake/build_remaining_seven_png.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: INVERTEBRATA-remaining-seven-source-PNG-review
+          path: qa-source-intake/remaining-seven-review/
+          if-no-files-found: warn
