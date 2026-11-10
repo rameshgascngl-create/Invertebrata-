@@ -184,8 +184,8 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
                         style = MaterialTheme.typography.titleMedium,
                     )
                     Text(
-                        if (tamil) "PNG ஆதாரப் படம்; கல்வி மதிப்பாய்வு நிலுவையில் உள்ளது"
-                        else "PNG REFERENCE — ACADEMIC REVIEW PENDING",
+                        if (tamil) "ஒட்டுண்ணியின் வளர்ச்சி நிலையைக் காட்டும் ஆதார PNG படம்"
+                        else "PARASITE LIFE-STAGE REFERENCE PNG",
                         color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.labelLarge,
                     )
@@ -214,11 +214,11 @@ private fun UnitIStagePng(stage: String, language: AppLanguage, modifier: Modifi
     }
     val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
     if (bitmap != null) {
-        Image(bitmap = bitmap, contentDescription = "Source PNG reference; morphology review pending",
+        Image(bitmap = bitmap, contentDescription = "Source PNG illustrating parasite morphology",
             contentScale = ContentScale.Fit, modifier = modifier.testTag("u115-png-reference"))
     } else {
-        Text(if (language == AppLanguage.TAMIL) "இந்த வளர்ச்சி நிலைக்கான தனிப் PNG படம் இன்னும் சரிபார்க்கப்படவில்லை"
-            else "Stage-specific PNG not yet verified; no substitute drawing",
+        Text(if (language == AppLanguage.TAMIL) "இந்த வளர்ச்சி நிலைக்கான தனிப் PNG படம் இல்லை; பாட விளக்கத்தைக் காண்க"
+            else "No separate PNG is available for this stage; read the stage explanation",
             color = MaterialTheme.colorScheme.error, modifier = modifier.testTag("u115-png-pending"))
     }
 }

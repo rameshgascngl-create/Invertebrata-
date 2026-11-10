@@ -84,9 +84,9 @@ internal fun ParameciumWaterBalanceTextbook(language: AppLanguage,speak: (Biling
     Text(waterText(language,"WATER BALANCE · Paramecium caudatum","நீர்ச் சமநிலை · Paramecium caudatum"),
         style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Bold,
         modifier=Modifier.testTag("r18-textbook-title").semantics { heading() })
-    Text(ParameciumWaterBalance.reviewStatus+" · "+waterText(language,
-        "Original pencil schematics, not to scale. Comparative ultrastructure is labelled; specialist approval pending.",
-        "அசல் பென்சில் விளக்கப்படங்கள்; அளவுக்கு ஏற்ப அல்ல. ஒப்பீட்டு நுண்ணமைப்பு குறிக்கப்பட்டுள்ளது; நிபுணர் ஒப்புதல் நிலுவை."),
+    Text(waterText(language,
+        "Water-balance mechanism diagrams are schematic and not to scale. Sizes and cycle times are illustrative.",
+        "நீர்ச்சமநிலை இயங்குமுறைப் படங்கள் அளவுக்கேற்ப அல்ல; உறுப்பு அளவுகளும் சுழற்சி நேரமும் விளக்கத்திற்கானவை."),
         modifier=Modifier.testTag("r18-review-status"))
     Text("R1.8 · ${progress.stageId} · ${progress.readingId} · ${progress.selectedStructure}",
         modifier=Modifier.testTag("r18-module-position"))

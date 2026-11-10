@@ -83,7 +83,7 @@ internal fun ParameciumCiliaryTextbookPlate(
             )
             Text(
                 ciliaryText(language,
-                    "Ciliary locomotion is shown in a dedicated PNG slot. Basal-body (9 triplets) and axoneme (9+2) ultrastructure require separate, reviewed images.",
+                    "Ciliary locomotion is shown in a dedicated PNG slot. Basal bodies have nine microtubule triplets; motile cilia typically have a 9+2 axoneme. These details are explained separately from the locomotion figure.",
                     "குறுஇழை இயக்கத்திற்கு தனி PNG இடம் உள்ளது. அடித்தளத் துகள் (9 மும்மைகள்), ஆக்சோனீம் (9+2) அமைப்புகளுக்குத் தனியாகச் சரிபார்க்கப்பட்ட படங்கள் தேவை."),
                 style = MaterialTheme.typography.bodyMedium,
             )

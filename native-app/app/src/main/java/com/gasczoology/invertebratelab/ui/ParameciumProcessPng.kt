@@ -45,7 +45,7 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 Image(
                     bitmap = image,
                     contentDescription = if (tamil)
-                        "பாரமீசியத்தின் மூலப்படத்திலிருந்து பெறப்பட்ட PNG பகுதி; இது தனியாகச் சரிபார்க்கப்பட்ட செயல்முறைப் படம் அல்ல. அறிவியல் மதிப்பாய்வு நிலுவையில் உள்ளது."
+                        "பாரமீசியத்தின் மூலப்படத்திலிருந்து எடுக்கப்பட்ட PNG பகுதி; மேலுள்ள இயக்கம் செயன்முறை விளக்க மாதிரி."
                     else "Paramecium reference PNG; use the playback controls above for the teaching model.",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.fillMaxWidth()
@@ -69,23 +69,23 @@ internal fun ParameciumProcessPng(process: ParameciumProcess, language: AppLangu
                 if (expanded) {
                     RequiredTypeStudyFullImage(
                         image = image,
-                        title = if (tamil) "பாரமீசியம் · மதிப்பாய்வு நிலுவைப் படம்" else "Paramecium · source crop under review",
+                        title = if (tamil) "பாரமீசியம் · உடற்கூறு ஆதாரப் படம்" else "Paramecium · source anatomy image",
                         language = language,
                         onDismiss = { expanded = false },
                     )
                 }
                 Text(
                     if (tamil)
-                        "ஆதார PNG படம். மேலுள்ள இயக்கக் கட்டுப்பாடுகள் கற்பித்தல் மாதிரியை இயக்குகின்றன; அறிவியல் மதிப்பாய்வு நிலுவையில் உள்ளது."
-                    else "Reference PNG. The controls above operate the teaching model; scientific, Tamil and rights reviews remain pending.",
+                        "ஆதார PNG படம் நிலையானது; மேலுள்ள இயக்கக் கட்டுப்பாடுகள் செயன்முறை விளக்க மாதிரியை இயக்குகின்றன."
+                    else "The source PNG is a still image. The controls above animate the separate teaching model.",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.testTag("u57-static-png-disclosure"),
                 )
             } else {
                 Text(
                     if (tamil)
-                        "இந்த செயலுக்கான தனிப்பட்ட, அறிவியல் சரிபார்க்கப்பட்ட PNG படம் இன்னும் சேர்க்கப்படவில்லை. தவறான வரைபடம் பயன்படுத்தப்படாது; செயல்நிலை விளக்கம் கீழே உள்ளது."
-                    else "A dedicated, scientifically reviewed PNG for this process is not yet bundled. No unrelated image or vector substitute is shown; follow the stage explanation below.",
+                        "இந்த செயலுக்கு தனிப் PNG படம் இல்லை. கீழே உள்ள செயல்நிலை விளக்கத்தையும் இயக்கக் கட்டுப்பாடுகளையும் பயன்படுத்துக."
+                    else "No separate PNG is available for this process; use the interactive stages and explanations below.",
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.testTag(
                         "u57-paramecium-process-png-missing-" + process.name.lowercase()),

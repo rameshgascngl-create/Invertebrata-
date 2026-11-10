@@ -40,7 +40,7 @@ internal fun McqPracticeScreen(
     androidx.activity.compose.BackHandler { onClose() }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp).testTag("mcq-screen"),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        if (!verified) Text(m(language, "Draft questions · not yet academically verified", "வரைவு வினாக்கள் · அறிவியல் சரிபார்ப்பு நிலுவை"),
+        if (!verified) Text(m(language, "Practice questions · check answers against the chapter explanation", "பயிற்சி வினாக்கள் · விடைகளைப் பாடவிளக்கத்துடன் ஒப்பிட்டுச் சரிபார்க்கவும்"),
             style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.testTag("mcq-draft-notice"))
         val current = session.current

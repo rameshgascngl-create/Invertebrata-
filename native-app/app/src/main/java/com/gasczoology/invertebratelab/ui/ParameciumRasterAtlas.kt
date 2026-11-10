@@ -48,14 +48,14 @@ internal fun ParameciumRasterAtlas(
         else "Vacuoles: distinct physiological systems",
         modifier=Modifier.testTag("r11-vacuole-heading"))
     if(bitmap==null) {
-        Text(if(tamil) "பழைய புகைப்படப் படம் நீக்கப்பட்டது; இந்த உறுப்பிற்கான தனிப் புதிய PNG படம் சரிபார்க்கப்படவில்லை."
-             else "Old photographed drawing retired; the distinct anatomical replacement PNG is pending.",
+        Text(if(tamil) "இந்த உறுப்பிற்கான தனிப் PNG படம் கிடைக்கவில்லை; கீழே உள்ள உறுப்புப் விளக்கத்தைப் பயன்படுத்துக."
+             else "A separate organ PNG is not available here; use the labelled organ explanations below.",
             color=MaterialTheme.colorScheme.error,
             modifier=Modifier.testTag("u1-raster-asset-missing"))
     } else {
         Image(bitmap=bitmap,
-            contentDescription=if(tamil) "பாரமீசியம் உடற்கூறு மாற்றுப் படம்: உறுப்புத் தொடுதல் மதிப்பாய்வு நிலுவையில்"
-                 else "Paramecium anatomical replacement plate; organ hotspots require review",
+            contentDescription=if(tamil) "பாரமீசியம் உடற்கூறுப் படம்; உறுப்புப் பெயர்களைக் கீழுள்ள பொத்தான்களில் காண்க"
+                 else "Paramecium anatomy illustration; organ buttons below identify structures",
             contentScale=ContentScale.Fit,
             modifier=Modifier.fillMaxWidth().height(282.dp)
                 .graphicsLayer {
@@ -81,12 +81,12 @@ internal fun ParameciumRasterAtlas(
             Text(if(tamil) "பெரிதாக்கலை மீட்டமை" else "Reset zoom")
         }
     }
-    Text(if(tamil) "பழைய புகைப்படக் கையோவியம் மாற்றுப் படமாகப் பயன்படுத்தப்படாது. தனிப் PNG படம் மற்றும் அதன் ஆதாரப் பதிவு நிலுவையில் உள்ளன."
-         else "The archived photographed source is not the anatomical replacement. A separately reviewed PNG and provenance record are required.",
+    Text(if(tamil) "படத்தில் உள்ள அமைப்புகளைப் பாடவிளக்கத்துடன் ஒப்பிடுக; உறுப்புகளின் அளவும் இடமும் விளக்கத்திற்கானவை."
+         else "Use the accompanying lesson to interpret organ structures; placement in a schematic is illustrative.",
         style=MaterialTheme.typography.bodySmall,
         modifier=Modifier.testTag("u1-raster-attribution"))
-    Text(if(tamil) "உறுப்பைத் தேர்ந்தெடுக்கவும்; உறுதி செய்யப்படாத படத் தொடுபுள்ளிகள் முடக்கப்பட்டுள்ளன."
-         else "Select an organ below; unverified image hotspots remain disabled.",
+    Text(if(tamil) "உறுப்பின் பெயரையும் விளக்கத்தையும் அறிய கீழுள்ள பொத்தானைத் தேர்ந்தெடுக்கவும்."
+         else "Select an organ below to read its description.",
          style=MaterialTheme.typography.bodySmall)
     ids.forEach { id ->
         val organ=ParameciumLearningEngine.organ(id)

@@ -35,8 +35,8 @@ internal fun UnitIEntamoebaMorphology(language: AppLanguage) {
         )
         Text(
             if (tamil)
-                "விளக்கப் பாடம்: CDC DPDx ஆதாரத்தைப் பின்பற்றுகிறது. இங்கே காட்டப்படும் வரைவுப் படங்கள் நுண்ணோக்கி வழி இன உறுதிப்படுத்தலுக்கானவை அல்ல."
-            else "Teaching lesson based on CDC DPDx morphology. Pencil-style drafts are not microscopy or species-level diagnostic confirmation.",
+                "விளக்கப் பாடம் CDC DPDx உயிரியல் தகவல்களைப் பின்பற்றுகிறது. கற்பித்தல் விளக்கப்படத்தை மட்டும் கொண்டு எண்டமீபா சிற்றினத்தை உறுதிப்படுத்த முடியாது."
+            else "Teaching illustrations follow CDC DPDx morphology; schematic appearance alone cannot establish an Entamoeba species diagnosis.",
             color = MaterialTheme.colorScheme.error,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.testTag("u15-entamoeba-review-hold"),
@@ -88,9 +88,9 @@ internal fun UnitIEntamoebaMorphology(language: AppLanguage) {
         )
         Text(
             if (tamil)
-                "குறிப்பு: அசல் வரைவுப் படங்களுக்கான அறிவியல், தமிழ் மற்றும் தொடு-புள்ளி மதிப்பாய்வு இன்னும் நிலுவையில் உள்ளது."
+                "E. histolytica மற்றும் E. dispar சிஸ்ட்களின் வடிவம் ஒத்துள்ளது; துல்லியமான சிற்றினக் கண்டறிதலுக்கு வேறு ஆய்வக முறைகள் தேவை."
             else
-                "Artwork status: DRAFT_UNVERIFIED. Independent anatomical review, Tamil review and hotspot coordinate approval are pending.",
+                "Entamoeba histolytica and E. dispar cysts are morphologically similar; species determination requires methods beyond appearance alone.",
             color = MaterialTheme.colorScheme.error,
             modifier = Modifier.testTag("u15-entamoeba-pending-acceptance"),
         )
@@ -116,9 +116,9 @@ private fun EntamoebaStage(
             if (image == null) {
                 Text(
                     if (language == AppLanguage.TAMIL)
-                        "தனித்த பென்சில் பாணி படத்திற்கான ஆய்வும் இறக்குமதியும் நிலுவையில் உள்ளன. கீழேயுள்ள ஆதார விளக்கப்படத்தைப் பயன்படுத்தலாம்."
+                        "இந்த நிலைக்கான தனிப் படம் இல்லை. கீழேயுள்ள ஆதார விளக்கப்படத்தையும் பாட உரையையும் பயன்படுத்தவும்."
                     else
-                        "Original graphite-style candidate not yet imported or reviewed; use the attributed reference gallery below.",
+                        "No separate stage image is available here; use the attributed reference gallery and stage description below.",
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.testTag("u15-plate-pending-" + id),
                 )
@@ -132,8 +132,8 @@ private fun EntamoebaStage(
                 )
                 Text(
                     if (language == AppLanguage.TAMIL)
-                        "AI உருவாக்கிய பென்சில் பாணி வரைவு மட்டுமே; கையால் வரையப்பட்ட நுண்ணோக்கிப் படம் அல்ல."
-                    else "AI-generated graphite-style draft only. Not a scanned pencil drawing or diagnostic micrograph.",
+                        "AI மூலம் உருவாக்கப்பட்ட பென்சில் பாணிக் கல்விப் படம்; நேரடி நுண்ணோக்கி ஒளிப்படம் அல்ல."
+                    else "AI-generated graphite-style teaching illustration; not a microscopy image for diagnosis.",
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.labelSmall,
                 )

@@ -56,8 +56,8 @@ internal fun CiliaryPlaybackPanel(
     }) { drawCiliaryPencilDiagram(model.stages[index].id, "cilia", playback.phase) }
     SimulationTransport(language, "ciliary", playback.playing, reduced, index > 0, index < model.stages.lastIndex,
         { choose(index - 1) }, ::toggle, { choose(index + 1) }, ::replay, { reduced = false; checkpoint() })
-    Text(if (tamil) "இயக்கக் கற்பித்தல் மாதிரி · அளவுக்கு ஏற்ப அல்ல; அறிவியல் மதிப்பாய்வு நிலுவையில் உள்ளது."
-        else "Animated teaching model · not to scale; scientific review pending.")
+    Text(if (tamil) "குறுஇழை இயக்க விளக்க மாதிரி · அளவுக்கேற்ப அல்ல; நிலைகளின் நேர அளவு உண்மையான இயக்க வேகம் அல்ல."
+        else "Ciliary-motion teaching model · not to scale; playback time is not measured biological speed.")
     Text(model.stages[index].explanation.value(language))
     model.stages.forEachIndexed { at, stage ->
         OutlinedButton(onClick = { choose(at) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("ciliary-playback-select-" + stage.id)
