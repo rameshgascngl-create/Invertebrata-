@@ -4,10 +4,11 @@ set -euo pipefail
 umask 077
 OUT=release/signed-review
 mkdir -p "$OUT/evidence"
-KEYSTORE="$RUNNER_TEMP/invertebrata-permanent.jks"
+KEYSTORE="$RUNNER_TEMP/invertebrata-permanent.p12"
 CERT="$RUNNER_TEMP/invertebrata-public-cert.pem"
+ALIAS_CHECK="$RUNNER_TEMP/invertebrata-alias-check.txt"
 ALIGNED="$RUNNER_TEMP/INVERTEBRATA-aligned.apk"
-trap 'rm -f "$KEYSTORE" "$CERT" "$ALIGNED"' EXIT
+trap 'rm -f "$KEYSTORE" "$CERT" "$ALIAS_CHECK" "$ALIGNED"' EXIT
 
 for variable in KS_B64 KS_PASS KEY_ALIAS KEY_PASS EXPECTED_CERT_SHA256; do
   if ! printenv "$variable" >/dev/null || [ -z "$(printenv "$variable")" ]; then
@@ -20,11 +21,35 @@ if ! [[ "$expected" =~ ^[0-9A-F]{64}$ ]]; then
   echo "::error::Pinned permanent release/upload certificate fingerprint must be 64 hexadecimal digits."
   exit 2
 fi
-printf '%s' "$KS_B64" | base64 --decode > "$KEYSTORE"
-test -s "$KEYSTORE"
-keytool -list -keystore "$KEYSTORE" -storepass "$KS_PASS" -alias "$KEY_ALIAS" >/dev/null
-keytool -exportcert -rfc -keystore "$KEYSTORE" -storepass "$KS_PASS" -alias "$KEY_ALIAS" > "$CERT"
-actual="$(openssl x509 -in "$CERT" -outform DER | sha256sum | cut -d ' ' -f 1 | tr '[:lower:]' '[:upper:]')"
+# Fail with non-secret diagnostic messages before starting the expensive build.
+if ! printf '%s' "$KS_B64" | base64 --decode > "$KEYSTORE" 2>/dev/null; then
+  echo "::error::KS_B64 is not valid Base64; recopy the verified FINAL-VERIFIED-RELEASE.p12 to the GitHub secret."
+  exit 2
+fi
+if [ ! -s "$KEYSTORE" ]; then
+  echo "::error::KS_B64 decodes to an empty file; replace it with the complete verified .p12 content."
+  exit 2
+fi
+if ! keytool -list -storetype PKCS12 -keystore "$KEYSTORE" -storepass:env KS_PASS >/dev/null 2>&1; then
+  echo "::error::The uploaded PKCS12 keystore cannot be opened with KS_PASS. Make sure KS_B64 and KS_PASS come from the same verified key."
+  exit 2
+fi
+if ! keytool -list -v -storetype PKCS12 -keystore "$KEYSTORE" -storepass:env KS_PASS -alias "$KEY_ALIAS" > "$ALIAS_CHECK" 2>&1; then
+  echo "::error::KEY_ALIAS was not found in the verified keystore. Expected the alias of your permanent private key."
+  exit 2
+fi
+if ! grep -Fq 'Entry type: PrivateKeyEntry' "$ALIAS_CHECK"; then
+  echo "::error::KEY_ALIAS does not identify a private key entry."
+  exit 2
+fi
+if ! keytool -exportcert -rfc -storetype PKCS12 -keystore "$KEYSTORE" -storepass:env KS_PASS -alias "$KEY_ALIAS" > "$CERT" 2>/dev/null; then
+  echo "::error::Unable to export the public signing certificate from the keystore."
+  exit 2
+fi
+if ! actual="$(openssl x509 -in "$CERT" -outform DER | sha256sum | cut -d ' ' -f 1 | tr '[:lower:]' '[:upper:]')"; then
+  echo "::error::Unable to calculate SHA-256 certificate fingerprint."
+  exit 2
+fi
 if [ "$actual" != "$expected" ]; then
   echo "::error::Signing key differs from pinned permanent release/upload certificate; no signing performed."
   exit 2
@@ -32,6 +57,10 @@ fi
 if openssl x509 -in "$CERT" -noout -subject | grep -qi 'Android Debug'; then
   echo "::error::Android Debug certificate is prohibited for store signing."
   exit 2
+fi
+echo "PERMANENT_KEYSTORE_CERTIFICATE_PREFLIGHT=PASS"
+if [[ "${1:-}" == "--preflight" ]]; then
+  exit 0
 fi
 
 BT="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
