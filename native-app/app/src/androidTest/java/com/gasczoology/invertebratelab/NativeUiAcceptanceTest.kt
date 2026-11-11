@@ -39,6 +39,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Ignore
 import androidx.compose.ui.test.performScrollToNode
@@ -318,12 +319,20 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(0)
         rule.onNodeWithText("Back").performClick()
         waitFor("native-home")
-        rule.onNodeWithTag("language-tamil").performClick()
-        // Returning from a long book reader may restore the Home list with
-        // Unit 1 outside the composed viewport. Scroll before checking both
-        // Tamil labels, preserving the original scientific-content assertions.
+        // The returned Home composable may still be completing its navigation
+        // transition; require the actual persisted language switch first.
+        rule.waitForIdle()
+        rule.onNodeWithTag("language-tamil").assertIsDisplayed().performClick()
+        val prefs = com.gasczoology.invertebratelab.data.LanguagePreferenceRepository(
+            InstrumentationRegistry.getInstrumentation().targetContext
+        )
+        rule.waitUntil(timeoutMillis = 20_000L) {
+            runBlocking { prefs.language.first() } == AppLanguage.TAMIL
+        }
+        // Lazy cards may be outside the first viewport after returning from a
+        // long reader. Confirm BOTH exact Tamil labels in the actual card.
         rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
-        rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
+        rule.waitUntil(timeoutMillis = 20_000L) { rule.homeUnitOneShows(tamil = true) }
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
