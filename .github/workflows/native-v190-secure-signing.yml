@@ -43,6 +43,31 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Apply the same lossless illustration optimisation as the 75 MB QA APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install pillow
+          python3 tools/optimise_plates.py --out build/optimised-assets
+          python3 - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          assets=Path("native-app/app/src/main/assets")
+          optimised=Path("build/optimised-assets")
+          rows=json.loads((optimised/"optimisation-manifest.json").read_text())["files"]
+          replaced=0
+          for row in rows:
+              if row["kept_original"]:
+                  continue
+              src=assets/row["source"]
+              dst=assets/row["output"]
+              assert not row["source"].startswith(("unit1/","nereis/","review_only/")), row["source"]
+              if src.suffix.lower() != ".webp":
+                  src.unlink()
+              shutil.copyfile(optimised/row["output"],dst)
+              replaced+=1
+          print(f"LOSSLESS_RELEASE_ILLUSTRATION_OPTIMISATION={replaced} replacements")
+          PY
       - name: Build unsigned release APK and AAB and run JVM tests
         shell: bash
         run: |
