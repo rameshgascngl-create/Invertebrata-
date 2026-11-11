@@ -321,8 +321,10 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(0)
         rule.onNodeWithText("Back").performClick()
         waitFor("native-home")
-        // The returned Home composable may still be completing its navigation
-        // transition; require the actual persisted language switch first.
+        // Home retains the list position at Unit 1 after a book reader closes.
+        // The language controls live inside its header (lazy item 0), so first
+        // reveal that item rather than demanding an off-screen button be visible.
+        rule.onNodeWithTag("native-home").performScrollToIndex(0)
         rule.waitForIdle()
         rule.onNodeWithTag("language-tamil").assertIsDisplayed().performClick()
         val prefs = com.gasczoology.invertebratelab.data.LanguagePreferenceRepository(
