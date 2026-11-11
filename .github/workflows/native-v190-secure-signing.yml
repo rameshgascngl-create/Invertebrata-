@@ -43,6 +43,13 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Test unmodified source assets and run all JVM unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Some tests intentionally require byte-for-byte original PNG source plates.
+          # Run them before the release-only lossless WebP packaging overlay.
+          gradle -p native-app :app:testDebugUnitTest --stacktrace
       - name: Apply the same lossless illustration optimisation as the 75 MB QA APK
         shell: bash
         run: |
@@ -68,11 +75,14 @@ jobs:
               replaced+=1
           print(f"LOSSLESS_RELEASE_ILLUSTRATION_OPTIMISATION={replaced} replacements")
           PY
-      - name: Build unsigned release APK and AAB and run JVM tests
+      - name: Build optimised unsigned release APK and AAB
         shell: bash
         run: |
           set -euo pipefail
-          gradle -p native-app :app:assembleRelease :app:bundleRelease :app:testDebugUnitTest --stacktrace
+          # The original-source JVM test gate has already passed. Release assets
+          # now use verified pixel-identical WebP where smaller; do not rerun
+          # PNG-source integrity tests against the deliberately transformed overlay.
+          gradle -p native-app :app:assembleRelease :app:bundleRelease --stacktrace
       - name: Sign with the existing permanent certificate and verify
         shell: bash
         env:
