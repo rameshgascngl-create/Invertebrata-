@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.assertWidthIsAtLeast
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.geometry.Offset
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.AcademicUnit
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
 import com.gasczoology.invertebratelab.data.NativeLearningState
