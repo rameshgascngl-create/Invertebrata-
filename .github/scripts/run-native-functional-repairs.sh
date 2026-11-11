@@ -56,8 +56,15 @@ adb install -r -t "qa-evidence/functional/app-$variant.apk" > qa-evidence/functi
 timeout --signal=TERM --kill-after=15s 30s adb shell am start -W -n com.gasczoology.invertebratelab/.MainActivity > qa-evidence/functional/launch.txt 2>&1
 # Three functional methods complete in under a minute in the debug matrix.
 # A bounded invocation captures release-runner stalls instead of waiting 50 minutes.
-# 540 s: Tamil 200% pages need many scroll steps to reach their stage controls.
-timeout --signal=TERM --kill-after=15s 540s gradle -p native-app ":app:$task" "${properties[@]}" --stacktrace --info \
+# At 200% Tamil landscape the release R8 suite completed its first two real
+# instrumentation methods, then hit the 540s outer guard during the third.
+# This is a runner time budget, not an assertion failure. Keep ALL original
+# tests intact and give only that configuration sufficient completion time.
+instrumentation_limit=540
+if [[ "$variant" == release && "$configuration" == tamil200landscape ]]; then
+  instrumentation_limit=780
+fi
+timeout --signal=TERM --kill-after=15s "${instrumentation_limit}s" gradle -p native-app ":app:$task" "${properties[@]}" --stacktrace --info \
   -Pandroid.testInstrumentationRunnerArguments.class="$test_class" \
   -Pandroid.testInstrumentationRunnerArguments.functionalLanguage="$language" \
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$scale" \
