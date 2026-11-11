@@ -4,8 +4,8 @@ package com.gasczoology.invertebratelab.data
 object CnidariaBookChapter {
     val chapter = bchapter(
         lessonId = "u2-cnidaria",
-        title = "Phylum Coelenterata (Cnidaria): general characters and classification" to
-            "தொகுதி சீலென்டிரேட்டா (நிடேரியா): பொதுப்பண்புகளும் வகைப்பாடும்",
+        title = "Phylum Cnidaria: general characters and classification" to
+            "தொகுதி நிடேரியா: பொதுப் பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
             "Identify the defining structures of cnidarians." to
                 "நிடேரியன்களின் சிறப்பு அமைப்புகளை அடையாளம் காணுதல்.",
