@@ -39,6 +39,15 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - name: Preflight permanent signing keystore and pinned certificate
+        shell: bash
+        env:
+          KS_B64: ${{ secrets.KS_B64 }}
+          KS_PASS: ${{ secrets.KS_PASS }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.KEY_PASS }}
+          EXPECTED_CERT_SHA256: ${{ secrets.INVERTEBRATA_RELEASE_CERT_SHA256 }}
+        run: bash .github/scripts/sign-native-v190-review.sh --preflight
       - name: Gradle 9.6.0
         uses: gradle/actions/setup-gradle@v4
         with:
