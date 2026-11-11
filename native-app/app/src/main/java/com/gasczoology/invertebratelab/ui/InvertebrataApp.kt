@@ -829,8 +829,8 @@ private fun UnitScreen(
                         containerColor = if (index % 2 == 0) Color.White else Color(0xFFF0F6F3),
                         contentColor = ink,
                     ),
-                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 12.dp),
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 74.dp)
+                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 10.dp),
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp)
                         .testTag("chapter-" + chapter.id),
                 ) {
                     Row(
@@ -851,11 +851,6 @@ private fun UnitScreen(
                                 readableChapterTitle(chapter, language),
                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
                                 color = ink,
-                            )
-                            Text(
-                                label(language, "Open illustrated chapter", "படவிளக்க அத்தியாயத்தைத் திற"),
-                                style = MaterialTheme.typography.labelSmall,
-                                color = secondaryInk,
                             )
                         }
                         Text("›", style = MaterialTheme.typography.titleLarge, color = secondaryInk)
