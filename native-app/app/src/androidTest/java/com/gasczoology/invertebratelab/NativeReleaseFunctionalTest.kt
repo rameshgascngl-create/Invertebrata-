@@ -413,7 +413,7 @@ class NativeReleaseFunctionalTest {
         try {
             tap("u4-penaeus-appendage-next")
             assertTrue(text("u4-penaeus-appendage-name").isNotBlank())
-        } catch (failure: Exception) {
+        } catch (failure: Throwable) {
             runCatching { saveScreen("failure-penaeus-appendages-landscape") }
             throw AssertionError("Penaeus appendages interaction failed", failure)
         }
@@ -421,7 +421,7 @@ class NativeReleaseFunctionalTest {
         try {
             tap("u4-penaeus-life-next")
             saveScreen("penaeus-release-interactive")
-        } catch (failure: Exception) {
+        } catch (failure: Throwable) {
             runCatching { saveScreen("failure-penaeus-larvae-landscape") }
             throw AssertionError("Penaeus larval interaction failed", failure)
         }
