@@ -377,7 +377,8 @@
     ],
     "q5_en": [
       "Give the general characters of Coelenterata/Cnidaria.",
-      "Compare the polyp and medusa forms of cnidarians in five points."
+      "Compare the polyp and medusa forms of cnidarians in five points.",
+      "Explain the structure, feeding and reproduction of Hydra in five points."
     ],
     "a5_en": [
       [
@@ -393,11 +394,19 @@
         "Polyps may be solitary or colonial; medusae are usually solitary individuals, although colonial hydrozoans include specialized medusoid zooids.",
         "Polyps commonly reproduce asexually by budding, whereas medusae commonly function as the sexual, gamete-producing stage where both forms occur.",
         "Obelia illustrates a life cycle with an attached colonial polyp phase and free-swimming sexual medusae; these are life-cycle forms, not separate species."
+      ],
+      [
+        "Hydra is a freshwater cnidarian polyp with an elongated body, basal attachment disc and oral hypostome surrounded by tentacles.",
+        "Its body wall consists of an outer epidermis and inner gastrodermis separated by a thin mesoglea; the gastrovascular cavity has a single mouth opening.",
+        "Cnidocytes, particularly on the tentacles, contain cnidae such as nematocysts that discharge specialised tubules for prey capture and defence.",
+        "Tentacles bring captured prey to the mouth; digestion begins extracellularly in the gastrovascular cavity and is completed intracellularly by gastrodermal cells.",
+        "Hydra commonly reproduces asexually by budding and can reproduce sexually; its regenerative capacity depends on tissue organisation and stem-cell activity."
       ]
     ],
     "q5_ta": [
       "Coelenterata/Cnidaria தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
-      "நிடேரியன்களின் பாலிப் மற்றும் மெடூசா வடிவங்களை ஐந்து அம்சங்களில் ஒப்பிடுக."
+      "நிடேரியன்களின் பாலிப் மற்றும் மெடூசா வடிவங்களை ஐந்து அம்சங்களில் ஒப்பிடுக.",
+      "Hydra-வின் உடலமைப்பு, உணவூட்டம் மற்றும் இனப்பெருக்கத்தை ஐந்து குறிப்புகளாக விளக்குக."
     ],
     "a5_ta": [
       [
@@ -413,6 +422,13 @@
         "பாலிப்புகள் தனியாகவோ கூட்டமாகவோ இருக்கலாம்; மெடூசாக்கள் பொதுவாக தனிநபர்களாக இருக்கும்; எனினும் சில காலனித்துவ ஹைட்ரோசோவன்களில் சிறப்புப் பெற்ற மெடூசாய்டு அலகுகள் உள்ளன.",
         "இரு வடிவங்களும் உள்ள வாழ்க்கைச் சுழற்சிகளில் பாலிப் பொதுவாக மொட்டுவிடுதல் மூலம் பாலிலா இனப்பெருக்கம் செய்கிறது; மெடூசா பொதுவாக கேமீட் உருவாக்கும் பாலின நிலையாக செயல்படுகிறது.",
         "Obelia-வில் தளத்தில் ஒட்டிய கூட்டுப் பாலிப் நிலையும் சுதந்திரமாக நீந்தும் பாலின மெடூசா நிலையும் காணப்படுகின்றன; இவை தனித்த சிற்றினங்கள் அல்ல, ஒரே வாழ்க்கைச் சுழற்சியின் வடிவங்கள்."
+      ],
+      [
+        "Hydra என்பது நன்னீரில் வாழும் நிடேரியப் பாலிப் ஆகும்; நீண்ட உடல், அடிப்புற ஒட்டுத்தட்டு மற்றும் உணர்நீட்சிகளால் சூழப்பட்ட வாய்முனை (hypostome) ஆகியவற்றைக் கொண்டுள்ளது.",
+        "இதன் உடற்சுவர் வெளிப்புற எபிடெர்மிஸ், உட்புற கேஸ்ட்ரோடெர்மிஸ் மற்றும் அவற்றுக்கிடையிலான மெல்லிய மீசோக்ளியா ஆகியவற்றால் ஆனது; உணவுச் செரிமானக் குழிக்கு ஒரே வாய் திறப்பு உள்ளது.",
+        "முக்கியமாக உணர்நீட்சிகளில் உள்ள நிடோசைட்டுகளில் நெமட்டோசிஸ்ட்கள் போன்ற குத்திழை உறைகள் காணப்படுகின்றன; அவற்றின் சிறப்பு இழைகள் இரையைப் பிடிக்கவும் பாதுகாப்பிற்கும் பயன்படுகின்றன.",
+        "உணர்நீட்சிகள் பிடித்த இரையை வாய்க்குக் கொண்டு செல்கின்றன; செரிமானம் முதலில் உணவுச் செரிமானக் குழியில் செல்புறமாகத் தொடங்கி, பின்னர் கேஸ்ட்ரோடெர்மிஸ் செல்களில் செல்உள்ளாக நிறைவடைகிறது.",
+        "Hydra பொதுவாக அரும்புதல் மூலம் பாலிலா இனப்பெருக்கம் செய்கிறது; பாலியல் இனப்பெருக்கமும் நிகழலாம். திசு ஒழுங்கமைப்பும் முதன்மைச் செல்களின் செயல்பாடும் இதன் மீளுருவாக்கத்துக்கு உதவுகின்றன."
       ]
     ]
   },
