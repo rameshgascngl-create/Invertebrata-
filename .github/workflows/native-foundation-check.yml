@@ -32,14 +32,6 @@ jobs:
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
       - name: Compile Android instrumentation tests and assemble debug APK
         run: gradle -p native-app :app:compileDebugAndroidTestKotlin :app:assembleDebug --stacktrace
-      - name: Upload debug QA APK for verification (not store release)
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: invertebrata-native-debug-qa-${{ github.sha }}
-          path: native-app/app/build/outputs/apk/debug/*.apk
-          if-no-files-found: error
-          retention-days: 14
       - name: Validate five-unit bilingual A5 question-answer integrity
         run: |
           python3 - <<'PY'
@@ -70,3 +62,11 @@ jobs:
             echo 'Unexpected INTERNET permission' >&2
             exit 1
           fi
+      - name: Upload debug QA APK for verification (not store release)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: invertebrata-native-debug-qa-${{ github.sha }}
+          path: native-app/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14
