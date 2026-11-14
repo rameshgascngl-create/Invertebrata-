@@ -53,6 +53,18 @@ class SupplementaryScientificContentRegressionTest {
         assertTrue(section.paragraphs.all { it.tamil.length > 100 })
     }
 
+    @Test fun taeniaPreventionDoesNotConfusePorkCookingWithEggTransmission() {
+        val section = UnitIIILessons.forChapter("u3-platy")!!.sections.single {
+            it.id == "taenia-prevention-diagnosis"
+        }
+        val en = section.paragraphs.joinToString(" ") { it.english }
+        assertTrue(en.contains("Pork cooking alone cannot prevent cysticercosis"))
+        assertTrue(en.contains("eggs alone do not reliably distinguish"))
+        assertTrue(en.contains("brain imaging"))
+        assertTrue(section.paragraphs.all { it.tamil.length > 150 })
+        assertTrue(section.scientificSources.any { it.contains("cdc.gov") })
+    }
+
     @Test fun cockroachRespirationAndMetamorphosisRemainDistinct() {
         val section = UnitIVSupplementaryLessons.byId.getValue("u4-arthropoda")
             .sections.single { it.id == "periplaneta-organ-systems" }
