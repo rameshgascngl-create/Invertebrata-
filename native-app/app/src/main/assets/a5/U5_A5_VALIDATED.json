@@ -377,7 +377,8 @@
     ],
     "q5_en": [
       "Give the general characters of Phylum Echinodermata.",
-      "Why is the bilateral larva important when describing an adult radial echinoderm?"
+      "Why is the bilateral larva important when describing an adult radial echinoderm?",
+      "Compare sea urchins and sea cucumbers in five anatomical and functional points."
     ],
     "a5_en": [
       [
@@ -393,11 +394,19 @@
         "Larval and embryological characters support the placement of echinoderms among deuterostomes rather than among radially symmetrical non-bilaterian animals.",
         "Larval types are class-informative, for example bipinnaria in asteroids, plutei in echinoids/ophiuroids and auricularia in holothuroids.",
         "Metamorphosis extensively reorganises the bilateral larva into a pentaradial juvenile, so both larval and adult characters are necessary for understanding echinoderm body organisation."
+      ],
+      [
+        "Sea urchins belong to Echinoidea and usually have a globular or flattened body; sea cucumbers belong to Holothuroidea and have an elongated, flexible body.",
+        "Echinoids possess a rigid test formed by fused calcareous ossicles and movable spines; holothuroids have a leathery body wall with greatly reduced ossicles.",
+        "Many regular sea urchins use Aristotle's lantern for scraping or biting food; sea cucumbers commonly use modified oral tube feet as feeding tentacles.",
+        "Both groups possess a water vascular system, but tube feet, spines and body-wall movements contribute differently to locomotion, feeding and attachment.",
+        "Both are echinoderms with a bilateral larval organisation and an adult body plan derived from pentaradial symmetry; their different forms are class-level specialisations."
       ]
     ],
     "q5_ta": [
       "முட்தோலிகள் (Echinodermata) தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
-      "ஆரைச் சமச்சீருடைய முதிர்ந்த முட்தோலியை விளக்கும் போது இருபக்கச் சமச்சீருடைய லார்வாவை குறிப்பிடுவது ஏன் முக்கியம்?"
+      "ஆரைச் சமச்சீருடைய முதிர்ந்த முட்தோலியை விளக்கும் போது இருபக்கச் சமச்சீருடைய லார்வாவை குறிப்பிடுவது ஏன் முக்கியம்?",
+      "கடல்முள்ளெலிகள் மற்றும் கடல்வெள்ளரிகளை ஐந்து உடலமைப்பு மற்றும் செயல்பாட்டு அம்சங்களில் ஒப்பிடுக."
     ],
     "a5_ta": [
       [
@@ -413,6 +422,13 @@
         "லார்வா மற்றும் கருவளர்ச்சி பண்புகள் முட்தோலிகளை ஆரைச் சமச்சீருடைய பிற விலங்குகளுடன் அல்லாமல் இரண்டாம்வாய் விலங்குகளுடன் இணைக்கின்றன.",
         "லார்வா வகைகள் வகுப்புகளை அறிய உதவுகின்றன; நட்சத்திரமீன்களில் பிபின்னேரியா, கடல் முள்ளெலிகளில்/பிரிட்டில் நட்சத்திரங்களில் ப்ளூட்டியஸ் வகைகள், கடல்வெள்ளரிகளில் ஆரிக்குலேரியா காணப்படுகின்றன.",
         "மெட்டாமார்போசிஸின் போது இருபக்க லார்வா பெருமளவில் மறுசீரமைந்து ஐந்தாரை இளவிலங்காக மாறுகிறது; எனவே முட்தோலி உடலமைப்பைப் புரிந்துகொள்ள லார்வா மற்றும் முதிர்ந்த நிலைகள் இரண்டும் அவசியம்."
+      ],
+      [
+        "கடல்முள்ளெலிகள் Echinoidea வகுப்பைச் சேர்ந்தவை; அவற்றின் உடல் பொதுவாக உருண்டையாகவோ தட்டையாகவோ இருக்கும். கடல்வெள்ளரிகள் Holothuroidea வகுப்பைச் சேர்ந்த நீண்ட, நெகிழ்வான உடலுடையவை.",
+        "கடல்முள்ளெலிகளில் ஒன்றிணைந்த சுண்ணாம்பு எலும்புத்தகடுகளால் ஆன உறுதியான ஓடும் அசையக்கூடிய முட்களும் உள்ளன; கடல்வெள்ளரிகளில் தோல்போன்ற உடற்சுவரும் மிகவும் குறைந்த எலும்புத்துகள்களும் காணப்படுகின்றன.",
+        "பல வழக்கமான கடல்முள்ளெலிகள் உணவைச் சுரண்ட அல்லது கடிக்க அரிஸ்டாட்டிலின் விளக்கு என்னும் தாடை அமைப்பைப் பயன்படுத்துகின்றன; கடல்வெள்ளரிகள் மாற்றமடைந்த வாய்ப்புறக் குழாய்க்கால்களை உணவுபிடிக்கும் உணர்நீட்சிகளாகப் பயன்படுத்துகின்றன.",
+        "இரண்டிலும் நீர்க்குழாய் மண்டலம் உள்ளது; ஆனால் இயக்கம், உணவெடுப்பு மற்றும் பற்றுதல் ஆகியவற்றில் குழாய்க்கால்கள், முட்கள் மற்றும் உடற்சுவர் அசைவுகள் வேறுபட்ட பங்களிப்புகளை வழங்குகின்றன.",
+        "இரண்டும் இருபக்கச் சமச்சீருடைய இளவுயிர் நிலையையும் ஐந்தாரைச் சமச்சீரிலிருந்து உருவான முதிர்ந்த உடலமைப்பையும் கொண்ட முட்தோலிகள்; அவற்றின் வேறுபாடுகள் வகுப்புக்குரிய சிறப்பாக்கங்களாகும்."
       ]
     ]
   },
