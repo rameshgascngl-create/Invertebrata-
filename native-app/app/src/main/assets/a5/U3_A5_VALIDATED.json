@@ -43,7 +43,8 @@
     ],
     "q5_en": [
       "Give the general characters of Phylum Platyhelminthes.",
-      "Explain why cestodes lack an alimentary canal."
+      "Explain why cestodes lack an alimentary canal.",
+      "Describe the structure and transmission of Taenia solium, distinguishing taeniasis from cysticercosis."
     ],
     "a5_en": [
       [
@@ -59,11 +60,19 @@
         "The tegument bears specialized surface structures that greatly increase the area available for absorption.",
         "Energy is therefore invested in attachment, growth and prolific reproduction rather than in maintaining a digestive tract.",
         "Loss of the gut is a specialized adaptation to an endoparasitic mode of life and should be described as functional specialization, not as a value-laden 'degeneration'."
+      ],
+      [
+        "Adult Taenia solium lives in the human small intestine; its scolex has four suckers and an armed rostellum for attachment.",
+        "The ribbon-like strobila is made of proglottids; the tegument absorbs nutrients because the tapeworm has no alimentary canal.",
+        "Humans acquire intestinal taeniasis by eating inadequately cooked pork containing viable cysticerci (larval cysts).",
+        "Pigs usually acquire cysticercosis after swallowing T. solium eggs shed in human faeces; larvae develop into cysticerci in pig tissues.",
+        "Humans may also develop cysticercosis after ingesting eggs by faecal–oral contamination; neurocysticercosis is a tissue infection and is distinct from adult intestinal taeniasis."
       ]
     ],
     "q5_ta": [
       "தொகுதி Platyhelminthes-ன் பொதுப் பண்புகளை எழுதுக.",
-      "நாடாப்புழுக்களில் உணவுக்குழாய் ஏன் காணப்படுவதில்லை என்பதை விளக்குக."
+      "நாடாப்புழுக்களில் உணவுக்குழாய் ஏன் காணப்படுவதில்லை என்பதை விளக்குக.",
+      "Taenia solium-இன் அமைப்பையும் பரவும் முறையையும் விளக்கி, டீனியாசிஸ் மற்றும் சிஸ்டிசெர்கோசிஸ் ஆகியவற்றை வேறுபடுத்துக."
     ],
     "a5_ta": [
       [
@@ -79,6 +88,13 @@
         "டெக்யூமென்ட் உறிஞ்சும் பரப்பை அதிகரிக்கும் சிறப்புப் பெற்ற மேற்பரப்பு அமைப்புகளைக் கொண்டுள்ளது.",
         "எனவே செரிமானக் குழாயை பராமரிப்பதற்குப் பதிலாக பற்றிப்பிடித்தல், வளர்ச்சி மற்றும் அதிக இனப்பெருக்கத்திற்கான அமைப்புகள் சிறப்புபெற்றுள்ளன.",
         "குடல் இல்லாமை உள்ளொட்டுண்ணி வாழ்க்கைக்கான செயல்திறன் மிக்க தழுவலாகும்; இதனை மதிப்பீட்டு சொற்களால் ‘சிதைவு’ எனக் குறிப்பிடாமல் சிறப்பாக்கம் என விளக்க வேண்டும்."
+      ],
+      [
+        "முதிர்ந்த Taenia solium மனிதனின் சிறுகுடலில் வாழ்கிறது; அதன் தலைப்பகுதியான ஸ்கோலெக்ஸில் நான்கு உறிஞ்சிகளும் கொக்கிகளையுடைய ரோஸ்டெல்லமும் உள்ளன.",
+        "நாடாபோன்ற உடல் தொடர்ச்சியான புரோக்ளாட்டிட் துண்டுகளால் ஆனது; உணவுக்குழாய் இல்லாததால் உடற்புற டெகுமென்ட் வழியாக ஊட்டச்சத்துகளை உறிஞ்சுகிறது.",
+        "உயிருள்ள சிஸ்டிசெர்கஸ் புழுக்கட்டிகள் உள்ள சரியாக வேகவைக்கப்படாத பன்றி இறைச்சியை உண்பதால் மனிதனுக்கு குடல் டீனியாசிஸ் ஏற்படுகிறது.",
+        "மனித மலத்துடன் வெளியேறும் T. solium முட்டைகளை விழுங்குவதால் பொதுவாகப் பன்றிகளுக்குச் சிஸ்டிசெர்கோசிஸ் ஏற்படுகிறது; புழுக்கட்டிகள் அவற்றின் திசுக்களில் வளர்கின்றன.",
+        "முட்டைகள் மல–வாய் வழியாக மனிதனுக்குள் சென்றாலும் சிஸ்டிசெர்கோசிஸ் ஏற்படலாம்; நரம்புமண்டலச் சிஸ்டிசெர்கோசிஸ் என்பது திசு நோய்த்தொற்று, குடலில் முதிர்ந்த நாடாப்புழு இருப்பதைக் குறிக்கும் டீனியாசிஸிலிருந்து வேறுபட்டது."
       ]
     ]
   },
