@@ -2,6 +2,9 @@ name: Native foundation check
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - feat/native-textbook-reader-qa
   push:
     branches:
       - native/v193-compose-migration-20261008
