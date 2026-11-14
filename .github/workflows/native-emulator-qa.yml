@@ -32,6 +32,7 @@ jobs:
           fi
           sudo chmod 666 /dev/kvm
       - name: Run actual Android instrumentation tests on emulator
+        timeout-minutes: 55
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35
@@ -47,14 +48,20 @@ jobs:
           script: |
             set -o pipefail
             mkdir -p native-app/app/build/qa-evidence
-            adb shell getprop ro.build.version.sdk | tee native-app/app/build/qa-evidence/device-api.txt
-            gradle -p native-app :app:connectedDebugAndroidTest --stacktrace 2>&1 | tee native-app/app/build/qa-evidence/instrumentation-console.log
-            adb logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat.txt
-      - name: Collect logcat even after test failure
+            export ANDROID_ADB_SERVER_PORT=5037
+            timeout 30s adb -s emulator-5554 shell getprop ro.build.version.sdk | tee native-app/app/build/qa-evidence/device-api.txt
+            set +e
+            timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest --stacktrace --console=plain 2>&1 | tee native-app/app/build/qa-evidence/instrumentation-console.log
+            test_status=${PIPESTATUS[0]}
+            timeout --signal=TERM --kill-after=5s 35s adb -s emulator-5554 logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat.txt 2>&1 || true
+            echo "Instrumentation Gradle exit code: $test_status"
+            exit "$test_status"
+      - name: Collect bounded post-failure diagnostics
         if: always()
+        timeout-minutes: 2
         run: |
           mkdir -p native-app/app/build/qa-evidence
-          adb logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat-final.txt 2>/dev/null || true
+          timeout --signal=TERM --kill-after=5s 25s adb -s emulator-5554 logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat-final.txt 2>&1 || true
       - name: Upload emulator test evidence
         if: always()
         uses: actions/upload-artifact@v4
