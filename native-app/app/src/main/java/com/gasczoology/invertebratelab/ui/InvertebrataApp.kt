@@ -560,8 +560,8 @@ private fun UnitScreen(
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                             .testTag("u1-open-diagram-atlas")) {
                         Text(label(language,
-                            "VIEW ANATOMICAL SLOTS · Paramecium replacement plates pending",
-                            "பாரமீசியம் உடற்கூறு படப் பகுதிகள் · புதிய படங்கள் நிலுவையில் உள்ளன"))
+                            "Paramecium anatomical illustrations",
+                            "பாரமீசியத்தின் உடற்கூறு விளக்கப்படங்கள்"))
                     }
                     Text(label(language,
                         "Compare the available Entamoeba and Plasmodium transmission figures with their life-cycle lessons.",
@@ -594,17 +594,19 @@ private fun UnitScreen(
                 Button(onClick = { onChapter(chapter.id) },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chapter-" + chapter.id)) {
                     Column {
-                        Text(chapter.title.value(language),
-                            style = MaterialTheme.typography.titleMedium)
-                        Text(
-                            if (BookChapters.forLesson(chapter.id) != null) label(language,
-                                "READ TEXTBOOK CHAPTER · explanations, key terms and review questions.",
-                                "பாடநூல் அத்தியாயத்தைப் படி · விளக்கங்கள், கலைச்சொற்கள், மீளாய்வு வினாக்கள்.")
-                            else label(language,
-                                "OPEN BILINGUAL LESSON · study content and examination practice.",
-                                "இருமொழிப் பாடத்தைத் திற · பாடவிளக்கமும் தேர்வுப் பயிற்சியும்."),
-                            style = MaterialTheme.typography.bodySmall,
-                        )
+                        val book = BookChapters.forLesson(chapter.id)
+                        val displayTitle = book?.title?.value(language)
+                            ?.takeIf { it.isNotBlank() && !it.matches(Regex("u[1-5]-[a-z0-9-]+")) }
+                            ?: chapter.title.value(language).takeUnless {
+                                it.matches(Regex("u[1-5]-[a-z0-9-]+"))
+                            }
+                            ?: chapter.id.substringAfter('-').replace('-', ' ')
+                                .replaceFirstChar { it.titlecase() }
+                        Text(displayTitle, style = MaterialTheme.typography.titleMedium)
+                        if (book == null) {
+                            Text(label(language, "Lesson and practice", "பாடமும் பயிற்சியும்"),
+                                style = MaterialTheme.typography.bodySmall)
+                        }
                     }
                 }
             }
