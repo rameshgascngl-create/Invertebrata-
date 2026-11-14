@@ -852,8 +852,8 @@ private fun ChapterBody(
                     Column(Modifier.fillMaxWidth().testTag("u44-nereis-section-"+section.id),
                         verticalArrangement=Arrangement.spacedBy(9.dp)) {
                         Text(section.title.value(language),style=MaterialTheme.typography.titleLarge)
-                        section.paragraphs.forEach { paragraph ->
-                            Text(paragraph.value(language),style=MaterialTheme.typography.bodyLarge)
+                        section.paragraphs.forEachIndexed { pointIndex, paragraph ->
+                            Text("${pointIndex + 1}. " + paragraph.value(language),style=MaterialTheme.typography.bodyLarge)
                         }
                     }
                 }
@@ -918,8 +918,8 @@ private fun ChapterBody(
                         verticalArrangement = Arrangement.spacedBy(9.dp),
                     ) {
                         Text(section.title.value(language),style = MaterialTheme.typography.titleLarge)
-                        section.paragraphs.forEach { p ->
-                            Text(p.value(language),style = MaterialTheme.typography.bodyLarge)
+                        section.paragraphs.forEachIndexed { pointIndex, p ->
+                            Text("${pointIndex + 1}. " + p.value(language),style = MaterialTheme.typography.bodyLarge)
                         }
                     }
                 }
@@ -959,8 +959,8 @@ private fun ChapterBody(
                         verticalArrangement = Arrangement.spacedBy(9.dp)) {
                         Text(section.title.value(language),
                             style = MaterialTheme.typography.titleLarge)
-                        section.paragraphs.forEach { paragraph ->
-                            Text(paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
+                        section.paragraphs.forEachIndexed { pointIndex, paragraph ->
+                            Text("${pointIndex + 1}. " + paragraph.value(language), style = MaterialTheme.typography.bodyLarge)
                         }
                     }
                 }
