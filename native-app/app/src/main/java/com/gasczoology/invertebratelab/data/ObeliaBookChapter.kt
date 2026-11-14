@@ -122,7 +122,7 @@ object ObeliaBookChapter {
                         "ஒபீலியாவின் மெடுசா: மேனுப்ரியம், வாய், ஆர, வளையக் கால்வாய்கள், இனப்பெருக்கச் சுரப்பிகள், விளிம்பு உணர்கொம்புகள், ஸ்டேட்டோசிஸ்ட்கள்."),
                     bdef("Velum", "வெலம் (Velum)",
                         "The shelf of tissue projecting inwards from the margin of a hydrozoan medusa, which narrows the opening of the bell." to
-                            "ஹைட்ரோசோவா மெடுசாவின் மணி விளிம்பிலிருந்து உள்நோக்கி நீட்டும், மணியின் திறப்பைச் சுருக்கும் திசு அலமாரி."),
+                            "ஹைட்ரோசோவா மெடூசாவின் குடை விளிம்பிலிருந்து உட்புறமாக நீளும் மெல்லிய திசு மடிப்பு; குடையின் திறப்பைக் குறுக்கி நீந்தும் இயக்கத்திற்கு உதவுகிறது."),
                     bdef("Manubrium", "மேனுப்ரியம் (Manubrium)",
                         "The tube hanging from the centre of the subumbrella of a medusa, with the mouth at its tip." to
                             "மெடுசாவின் சப்பும்பிரெல்லா மையத்திலிருந்து தொங்கும், முனையில் வாயுடைய குழாய்."),
@@ -137,19 +137,19 @@ object ObeliaBookChapter {
                         "The gonangium produces medusa buds on the blastostyle by budding." to "கோனாஞ்சியம் பிளாஸ்டோஸ்டைலில் மெடுசா மொட்டுகளை மொட்டுவிடுதலால் உருவாக்குகிறது.",
                         "The mature medusae leave the gonotheca and swim freely; they are the sexual stage." to "முதிர்ந்த மெடுசாக்கள் கோனோதீகாவை விட்டு சுதந்திரமாக நீந்துகின்றன; இது பாலின நிலை.",
                         "Male and female medusae shed sperm and eggs into the sea water, where fertilisation occurs and a zygote forms." to "ஆண், பெண் மெடுசாக்கள் விந்தணுக்களையும் முட்டைகளையும் கடல் நீரில் விடுகின்றன; கருவுறுதல் நிகழ்ந்து கருமுட்டை உருவாகிறது.",
-                        "The zygote develops through a blastula into a ciliated, solid planula larva, which swims freely." to "கருமுட்டை பிளாஸ்டுலா வழியாக கசையிழை, திண்ம பிளானுலா லார்வாவாக வளர்ந்து சுதந்திரமாக நீந்துகிறது.",
-                        "The planula settles on a solid surface, forms the first polyp, and repeated budding gives a new colony." to "பிளானுலா உறுதியான பரப்பில் படிந்து முதல் பாலிப்பை உருவாக்குகிறது; மீண்டும் மீண்டும் மொட்டுவிடுவதால் புதிய காலனி தோன்றுகிறது.",
+                        "The zygote develops through a blastula into a ciliated, solid planula larva, which swims freely." to "கருவுற்ற முட்டை தொடர்ச்சியாகப் பிளவடைந்து பிளாஸ்டுலா நிலையை அடைகிறது. பின்னர் உடற்பரப்பில் குறுஇழைகள் (cilia) கொண்ட, பொதுவாகத் திடமான பிளானுலா இளவுயிரியாக வளர்ந்து நீந்துகிறது.",
+                        "The planula settles on a solid surface, forms the first polyp, and repeated budding gives a new colony." to "பிளானுலா இளவுயிரி உறுதியான அடித்தளத்தில் ஒட்டிக்கொண்டு உருமாற்றம் அடைந்து முதல் பாலிப்பை உருவாக்குகிறது. அந்தப் பாலிப்பிலிருந்து தொடர்ந்து மொட்டுகள் தோன்றுவதால் புதிய ஒபீலியா கூட்டுயிரி உருவாகிறது.",
                     ),
                     bfig("obelia/life-cycle", "The life cycle of Obelia, from the colony and the medusa bud to the free medusa, the zygote, the planula and the young polyp." to
                         "ஒபீலியாவின் வாழ்க்கைச் சுழற்சி: காலனி, மெடுசா மொட்டு முதல் தனி மெடுசா, கருமுட்டை, பிளானுலா, இளம் பாலிப் வரை."),
                     bp("The life history is an alternation of an asexual polyp generation with a sexual medusa generation. This kind of life cycle is called metagenesis. It should be noted that the medusa is produced asexually by the polyp, but it is the medusa that makes the gametes, and the polyp itself makes none." to
-                        "இவ்வாழ்க்கை வரலாறு பாலிலா பாலிப் தலைமுறையும் பாலின மெடுசா தலைமுறையும் மாறிமாறி வருவது. இவ்வகை வாழ்க்கைச் சுழற்சி மெட்டாஜெனிசிஸ் எனப்படுகிறது. மெடுசா பாலிப்பால் பாலிலா முறையில் உருவாகிறது, ஆனால் கேமீட்டுகளை உருவாக்குவது மெடுசாவே; பாலிப் தானே எதையும் உருவாக்குவதில்லை என்பதைக் கவனிக்க வேண்டும்."),
+                        "ஒபீலியாவின் வாழ்க்கைச் சுழற்சியில் பாலிலா இனப்பெருக்கம் செய்யும் பாலிப் கூட்டுயிரி நிலையும், பாலின இனப்பெருக்கம் செய்யும் மெடூசா நிலையும் மாறிமாறி வருகின்றன. இவ்வகை வாழ்க்கைச் சுழற்சி தலைமுறை மாற்றம் (metagenesis) எனப்படும். பாலிப் கூட்டுயிரியின் கோனாஞ்சியத்தில் மொட்டுவிடுதல் மூலம் மெடூசாக்கள் உருவாகின்றன; மெடூசாக்களில்தான் விந்தணுக்களும் முட்டைகளும் உருவாகின்றன. எனவே பாலிப் நிலையும் மெடூசா நிலையும் மேற்கொள்ளும் இனப்பெருக்கப் பணிகளைத் தெளிவாக வேறுபடுத்த வேண்டும்."),
                     bdef("Metagenesis", "மெட்டாஜெனிசிஸ் (Metagenesis)",
                         "A life cycle in which an asexual generation alternates with a sexual generation, as the polyp and medusa of Obelia do." to
                             "ஒபீலியாவின் பாலிப்பும் மெடுசாவும் போல, பாலிலா தலைமுறையும் பாலின தலைமுறையும் மாறிமாறி வரும் வாழ்க்கைச் சுழற்சி."),
                     bdef("Planula", "பிளானுலா",
                         "The ciliated, solid, free-swimming larva of cnidarians." to
-                            "நிடேரியாக்களின் கசையிழை, திண்ம, சுதந்திரமாக நீந்தும் லார்வா."),
+                            "நிடேரியன்களில் காணப்படும், உடற்பரப்பில் குறுஇழைகள் கொண்ட, பொதுவாகத் திடமான அமைப்புடைய, நீந்திச் செல்லும் இளவுயிரி."),
                     bnote("Not Physalia", "பைசாலியா அல்ல",
                         "Obelia is a fixed colony whose zooids are polyps, with the medusa as a separate sexual stage. Physalia, the Portuguese man-of-war, is a floating colony with a gas-filled pneumatophore and several kinds of zooid. Do not describe a pneumatophore in Obelia." to
                             "ஒபீலியா நிலையான காலனி; சூயிட்டுகள் பாலிப்புகள்; மெடுசா தனிப் பாலின நிலை. பைசாலியா, போர்த்துக்கீசிய போர்க்கப்பல் மீன், வாயு நிரம்பிய நியூமட்டோஃபோருடன் பல வகை சூயிட்டுகள் கொண்ட மிதக்கும் காலனி. ஒபீலியாவில் நியூமட்டோஃபோரை விவரிக்க வேண்டாம்."),
