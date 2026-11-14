@@ -18,7 +18,7 @@ object CoralEconomicsBookChapter {
                 "பவளப்பாறைகள் மீன்வளத்திற்கும் கடலோரப் பாதுகாப்பிற்கும் மக்களின் வாழ்வாதாரத்திற்கும் உதவுகின்றன. மீன்பிடிப்பு, சுற்றுலா, கடலோர வளர்ச்சிப் பணிகள் ஆகியவற்றை முறையாக நிர்வகிப்பது இப்பயன்களைப் பாதுகாக்க உதவும்.",
         ),
         sections = listOf(
-            bsec("services", "Services of the living reef", "உயிருள்ள முகட்டின் சேவைகள்",
+            bsec("services", "Services of the living reef", "உயிருள்ள பவளப்பாறைகள் வழங்கும் பயன்கள்",
                 subs = listOf(
                     bsub("Fisheries and food", "மீன்பிடியும் உணவும்",
                         bp("A reef provides shelter, breeding grounds and feeding grounds for a very large number of fishes, crustaceans, molluscs and other animals, and many of the fish that are caught in the open sea spend part of their lives on the reef. Reef fisheries support both commercial fishing and the subsistence fishing of coastal communities, and in many tropical countries fish from the reef are a main source of protein for people living near the coast." to
@@ -32,11 +32,11 @@ object CoralEconomicsBookChapter {
                     ),
                     bsub("Tourism and recreation", "சுற்றுலாவும் பொழுதுபோக்கும்",
                         bp("The scenery and the variety of life on a reef attract divers, snorkellers and visitors in boats with glass bottoms, and tourism based on reefs supports hotels, guides, boat operators and many other forms of local employment and income. Because a tourist comes to see a living reef, this is a use that rewards the protection of the reef and not its removal." to
-                            "முகட்டின் காட்சியும் உயிரினப் பன்மையும் மூழ்குபவர்களையும், மூச்சுக்குழாய் நீச்சலர்களையும், கண்ணாடி அடிப்பகுதிப் படகுகளில் வருபவர்களையும் ஈர்க்கின்றன; முகடு சார்ந்த சுற்றுலா விடுதிகள், வழிகாட்டிகள், படகு இயக்குபவர்கள், பிற பல உள்ளூர் வேலைவாய்ப்பு, வருமான வடிவங்களுக்கு ஆதரவளிக்கிறது. சுற்றுலாப் பயணி உயிருள்ள முகட்டைக் காண வருவதால், இது முகட்டை அகற்றுவதை அல்லாமல் அதைப் பாதுகாப்பதைப் பரிசளிக்கும் பயன்பாடு."),
+                            "பவளப்பாறைகளின் அழகும் அங்கு காணப்படும் உயிரினப் பன்மையும் ஆழ்கடல் நீச்சல், நீர்மூழ்கிப் பார்வையிடுதல் மற்றும் கண்ணாடி அடிப்பகுதியுள்ள படகுகளில் பயணம் செய்தல் போன்ற சுற்றுலா நடவடிக்கைகளுக்குப் பயணிகளை ஈர்க்கின்றன. இதனால் விடுதிகள், சுற்றுலா வழிகாட்டிகள், படகு ஓட்டுநர்கள் உள்ளிட்ட பலருக்கு வேலைவாய்ப்பும் வருமானமும் கிடைக்கின்றன. உயிருள்ள பவளப்பாறைகளைக் காணவே சுற்றுலாப் பயணிகள் வருவதால், அவற்றைப் பாதுகாப்பது சுற்றுலாத் தொழிலின் நீடித்த வளர்ச்சிக்கும் அவசியமாகிறது."),
                     ),
                     bsub("Science, medicine and culture", "அறிவியல், மருத்துவம், பண்பாடு",
                         bp("Reef organisms, especially sponges, soft corals and tunicates, make a wide range of chemical compounds for defence, and some of these are the subject of research for drugs against infection and cancer. Reefs are used for teaching and for research on symbiosis, calcification and the effects of climate. In many coastal cultures reefs have a place in tradition and in the identity of the people. These values are difficult to measure in money, but they are real." to
-                            "முகட்டு உயிரிகள், குறிப்பாக கடற்பஞ்சுகள், மென்பவளங்கள், டியூனிகேட்டுகள், தற்காப்புக்காக பலவகை வேதிச் சேர்மங்களை உருவாக்குகின்றன; இவற்றில் சில தொற்று, புற்றுநோய்க்கு எதிரான மருந்துகளுக்கான ஆய்வின் பொருள். முகடுகள் கற்பித்தலுக்கும், கூட்டுயிர், சுண்ணமாக்கம், காலநிலை விளைவுகள் குறித்த ஆய்வுக்கும் பயன்படுகின்றன. பல கடலோரப் பண்பாடுகளில் முகடுகளுக்கு மரபிலும் மக்கள் அடையாளத்திலும் இடம் உண்டு. இம்மதிப்புகளைப் பணத்தில் அளவிடுவது கடினம்; ஆனால் அவை உண்மையானவை."),
+                            "பவளப்பாறைகளில் வாழும் கடற்பஞ்சுகள், மென்பவளங்கள், உறையுடலிகள் (tunicates) போன்ற உயிரினங்கள் தங்களைப் பாதுகாத்துக்கொள்ளப் பல்வேறு வேதிச் சேர்மங்களை உற்பத்தி செய்கின்றன. இவற்றுள் சில சேர்மங்கள் தொற்றுநோய்கள் மற்றும் புற்றுநோய்களுக்கான புதிய மருந்துகளை உருவாக்கும் ஆராய்ச்சிகளில் ஆய்வு செய்யப்படுகின்றன. மேலும், கூட்டுயிர் வாழ்க்கை, சுண்ணாம்புப் படிவு உருவாதல், காலநிலை மாற்றத்தின் தாக்கம் ஆகியவற்றைப் புரிந்துகொள்ளப் பவளப்பாறைகள் முக்கியமான ஆய்வுக் களங்களாக விளங்குகின்றன. பல கடலோர மக்களின் பண்பாடு, மரபு மற்றும் வாழ்வியலுடனும் இவை நெருங்கிய தொடர்புடையவை. இத்தகைய அறிவியல் மற்றும் பண்பாட்டுப் பயன்களைப் பண மதிப்பில் மட்டும் அளவிட முடியாது."),
                         bdef("Ecosystem service", "சூழல்மண்டல சேவை (Ecosystem service)", "A benefit that people obtain from a natural system, such as food, protection from storms or recreation." to
                             "உணவு, புயல் பாதுகாப்பு, பொழுதுபோக்கு போன்று இயற்கை அமைப்பிலிருந்து மக்கள் பெறும் பயன்."),
                     ),
@@ -48,7 +48,7 @@ object CoralEconomicsBookChapter {
                     bp("The cost of this extraction is that the reef itself is lost. A reef that is quarried no longer protects the shore, no longer shelters fish, and no longer attracts visitors, and the income from the blocks or the lime is small in comparison with the long-term value of the services that are lost. For this reason extraction of coral from reefs is restricted by law in India, where corals are protected under the Wildlife (Protection) Act, 1972, and collection and trade are forbidden. The schedule and the current provisions are for the reviewer to confirm." to
                         "இப்பிரித்தெடுப்பின் விலை முகடே இழக்கப்படுவது. குவாரி செய்யப்பட்ட முகடு இனி கரையைக் காக்காது, மீனுக்கு அடைக்கலம் தராது, பார்வையாளர்களை ஈர்க்காது; கற்கள் அல்லது சுண்ணாம்பிலிருந்து வரும் வருமானம் இழக்கப்படும் சேவைகளின் நீண்டகால மதிப்புடன் ஒப்பிட மிகச் சிறியது. இதனால் இந்தியாவில் முகடுகளிலிருந்து பவளம் எடுப்பது சட்டத்தால் கட்டுப்படுத்தப்படுகிறது; வனவிலங்கு (பாதுகாப்பு) சட்டம், 1972-இன் கீழ் பவளங்கள் பாதுகாக்கப்படுகின்றன; சேகரிப்பும் வணிகமும் தடை செய்யப்பட்டுள்ளன. அட்டவணையும் தற்போதைய விதிகளும் மதிப்பாய்வாளர் உறுதிப்படுத்த வேண்டியவை."),
                     btable("Services and extraction compared", "சேவைகளும் பிரித்தெடுப்பும் ஒப்பீடு",
-                        listOf("Feature" to "பண்பு", "Services of the living reef" to "உயிருள்ள முகட்டின் சேவைகள்", "Extraction" to "பிரித்தெடுப்பு"),
+                        listOf("Feature" to "பண்பு", "Services of the living reef" to "உயிருள்ள பவளப்பாறைகள் வழங்கும் பயன்கள்", "Extraction" to "பிரித்தெடுப்பு"),
                         listOf(
                             listOf("Examples" to "எடுத்துக்காட்டுகள்", "Fisheries, shore protection, tourism" to "மீன்பிடி, கரைப் பாதுகாப்பு, சுற்றுலா", "Lime, building blocks, curios" to "சுண்ணாம்பு, கட்டுமானக் கற்கள், அலங்காரப் பொருட்கள்"),
                             listOf("Effect on reef" to "முகட்டின் மீது விளைவு", "Reef remains intact" to "முகடு சேதமின்றி இருக்கும்", "Reef is damaged or destroyed" to "முகடு சேதமடைகிறது அல்லது அழிகிறது"),
@@ -69,7 +69,7 @@ object CoralEconomicsBookChapter {
                 )),
             bsec("damage", "Causes of damage", "சேதத்தின் காரணங்கள்",
                 blocks = listOf(
-                    bpoints("Principal causes of damage to reefs", "முகடுகளுக்குச் சேதத்தின் முதன்மைக் காரணங்கள்",
+                    bpoints("Principal causes of damage to reefs", "பவளப்பாறைகள் சேதமடைவதற்கான முக்கியக் காரணங்கள்",
                         "Heat stress, which causes mass bleaching over large areas and, if prolonged, widespread death of corals." to "வெப்ப அழுத்தம்; பெரும்பரப்பில் பெருமளவு வெளிறலையும், நீடித்தால் பரவலான பவள இறப்பையும் ஏற்படுத்துகிறது.",
                         "Blast fishing, in which explosives shatter the reef to stun fish; poisons such as cyanide used to capture fish for aquaria." to "வெடி மீன்பிடி; மீன்களை மயக்க வெடிபொருட்கள் முகட்டை நொறுக்குகின்றன; மீன்தொட்டிகளுக்கு மீன் பிடிக்கச் சயனைடு போன்ற நஞ்சுகள்.",
                         "Mining of coral for lime and building material, and damage by boat anchors and by trampling." to "சுண்ணாம்பு, கட்டுமானப் பொருளுக்காகப் பவளம் வெட்டுதல்; படகு நங்கூரங்களாலும் மிதிப்பாலும் ஏற்படும் சேதம்.",
