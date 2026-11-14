@@ -42,6 +42,13 @@ internal object FiveUnitRestorationLessons {
                 "நவீன இனவரலாற்று வகைப்பாடு உடலமைப்பு, வளர்ச்சி, மூலக்கூறுத் தொடர்கள் ஆகியவற்றின் மூலம் பொதுமூதாதை குறித்த கருத்துகளைச் சோதிக்கிறது. பழைய பாடத்திட்டக் குழுப்பெயர்கள் தேர்வு ஒப்பீட்டிற்கு உதவினாலும் அவை அனைத்தும் இயற்கைப் பரிணாமக் கிளைகளாக இருக்க வேண்டியதில்லை.")
         )),
         Chapter("u1-protozoa",b("Protozoa: traditional classification and modern interpretation","புரோட்டோசோவா: மரபு வகைப்பாடும் நவீன விளக்கமும்"),listOf(
+            s("comparative-amoeba-euglena-volvox",
+                "Comparative study: Amoeba, Euglena and Volvox",
+                "ஒப்பீட்டு ஆய்வு: அமீபா, யூக்ளீனா மற்றும் வால்வாக்ஸ்",
+                "Amoeba is a unicellular amoebozoan that moves with actin-dependent pseudopodia and engulfs particulate food by phagocytosis. Euglena is a unicellular euglenid that swims chiefly by a flagellum; many species photosynthesise and can also use organic nutrients. Volvox is a colonial green alga whose flagellated cells swim together and obtain energy by photosynthesis.",
+                "அமீபா ஓர் ஒருசெல் அமீபோசோவா உயிரி; ஆக்டின் சார்ந்த போலிக்கால்களால் நகர்ந்து உணவுத்துகள்களை விழுங்குகிறது. யூக்ளீனா சாட்டையிழையால் நீந்தும் ஒருசெல் யூக்ளீனிட்; பல சிற்றினங்கள் ஒளிச்சேர்க்கை செய்வதுடன் கரிம ஊட்டத்தையும் பயன்படுத்தலாம். வால்வாக்ஸ் பல சாட்டையிழைச் செல்களைக் கொண்ட பசும்பாசிக் கூட்டுயிரி; ஒருங்கிணைந்து நீந்தி ஒளிச்சேர்க்கை செய்கிறது.",
+                "Amoeba and Euglena commonly multiply by binary fission; Volvox develops daughter colonies from specialised reproductive cells and can reproduce sexually in suitable conditions. These organisms represent distinct protist lineages: colonial division of labour in Volvox does not make it a direct ancestor of animals.",
+                "அமீபாவும் யூக்ளீனாவும் பொதுவாக இருபிளவால் பெருகுகின்றன; வால்வாக்ஸில் இனப்பெருக்கச் செல்களிலிருந்து சேய்க் கூட்டுயிரிகள் உருவாகின்றன; தகுந்த சூழலில் பாலியல் இனப்பெருக்கமும் நடைபெறலாம். இவை வேறுபட்ட புரோட்டிஸ்ட் வழித்தோன்றல்கள்; வால்வாக்ஸ் விலங்குகளின் நேரடி மூதாதை அல்ல."),
             s("classification",
                 "Traditional classes and limitations",
                 "பாரம்பரிய வகுப்புகளும் வரம்புகளும்",
@@ -282,6 +289,13 @@ internal object FiveUnitRestorationLessons {
                 "கடல் மணிமைய வளர்ப்புமுத்தில் பொதுவாக மற்றொரு சிப்பியின் மேன்டில் திசு பொருத்தப்பட்டு கவனமாக வளர்க்கப்படுகிறது; இருமடிப்போடுகளுக்கு ஏற்ப முறைகள் மாறும். நீர்தரம், நோய், சூழலியல் பாதிப்பையும் விவாதிக்க வேண்டும். நன்னீர் நத்தையான பைலாவை முத்துச் சிப்பியாகக் காட்டக் கூடாது.")
         )),
         Chapter("u5-echinodermata",b("Echinodermata: classification and body plan","முள்தோலிகள்: வகைப்பாடும் உடற்கூறும்"),listOf(
+            s("echinoid-holothuroid-comparison",
+                "Sea urchins and sea cucumbers: comparative anatomy",
+                "கடல்முள்ளெலிகளும் கடல்வெள்ளரிகளும்: ஒப்பீட்டு உடற்கூறு",
+                "Sea urchins (Echinoidea) usually have a globular or flattened body with a rigid test of fused calcareous ossicles and movable spines. Sea cucumbers (Holothuroidea) are elongated, with a flexible body wall and strongly reduced ossicles. Both belong to Echinodermata but show different adult specialisations.",
+                "கடல்முள்ளெலிகள் (Echinoidea) பொதுவாக உருண்டை அல்லது தட்டையான உடலையும் ஒன்றிணைந்த சுண்ணாம்புத் தகடுகளால் ஆன உறுதியான ஓட்டையும் அசையும் முட்களையும் கொண்டவை. கடல்வெள்ளரிகள் (Holothuroidea) நீண்ட நெகிழ்வான உடலையும் மிகவும் குறைந்த எலும்புத்துகள்களையும் கொண்டவை. இரண்டும் முட்தோலிகள்; முதிர்ந்த உடலமைப்பு வேறுபடுகிறது.",
+                "Many regular sea urchins scrape food using Aristotle's lantern, whereas sea cucumbers commonly collect food with modified oral tube feet. Both have a water-vascular system and bilaterally organised larvae; tube feet, spines and body-wall movements contribute differently to locomotion and feeding.",
+                "பல வழக்கமான கடல்முள்ளெலிகள் அரிஸ்டாட்டிலின் விளக்கு எனும் தாடை அமைப்பால் உணவைச் சுரண்டுகின்றன; கடல்வெள்ளரிகள் மாற்றமடைந்த வாய்ப்புறக் குழாய்க்கால்களால் உணவைச் சேகரிக்கின்றன. இரண்டிலும் நீர்க்குழாய் மண்டலமும் இருபக்கச் சமச்சீருடைய இளவுயிரிகளும் உள்ளன; இயக்கத்திலும் உணவெடுப்பிலும் உறுப்புகளின் பங்கு மாறுபடுகிறது."),
             s("characters",
                 "Pentamery, endoskeleton and coelom",
                 "ஐந்தடுக்கு அமைப்பு, உட்கூடு, உடற்குழி",
@@ -492,6 +506,13 @@ internal object FiveUnitRestorationLessons {
                 "டீடெமன் உடல்கள் வளையக்குழாயுடன் தொடர்புடையவை. போலியன் பைகள் முள்தோலி குழுக்களிடையே இருப்பிலும் எண்ணிக்கையிலும் மாறுபடுவதால், இனத்திற்குரிய சான்றின்றி அஸ்டீரியாஸ் படத்தில் சேர்க்கக் கூடாது. உட்புற ஆம்புல்லாவையும் வெளிப்புறக் குழாய்க்காலையும் வேறுபடுத்தி, கரத்தின் வாய்ப்புறத்தில் உள்ள அம்புலாக்ரல் பள்ளத்தையும் அடையாளம் காண வேண்டும்.")
         )),
         Chapter("u5-cephalopods",b("Cephalopods: organisation and adaptations","தலைக்காலிகள்: அமைப்பும் தகவமைப்புகளும்"),listOf(
+            s("sepia-specialisations",
+                "Sepia: cuttlebone, propulsion and sensory specialisations",
+                "செபியா: கடில்போன், நீர்ப்பீச்சு இயக்கம் மற்றும் புலனமைவுகள்",
+                "Sepia has eight arms, two retractile feeding tentacles, lateral swimming fins and a muscular mantle. Its chambered internal calcareous cuttlebone assists buoyancy regulation; the muscular funnel expels water from the mantle cavity for jet propulsion. Fins provide controlled swimming and manoeuvring.",
+                "செபியாவில் எட்டு கரங்கள், உள்ளிழுக்கக்கூடிய இரண்டு இரைபிடிக்கும் நீள்கரங்கள், பக்கவாட்டு நீந்துதுடுப்புகள் மற்றும் தசைமிக்க மேன்டில் உள்ளன. அறைகளையுடைய உட்புறச் சுண்ணாம்புக் கடில்போன் மிதப்புத்தன்மையைக் கட்டுப்படுத்த உதவுகிறது; தசைமிக்க புனல் நீரைப் பீச்சி இயக்கத்தை ஏற்படுத்துகிறது. துடுப்புகள் நீச்சலைக் கட்டுப்படுத்துகின்றன.",
+                "Well-developed camera-type eyes and a complex nervous system support visually guided predation. Chromatophores and other skin structures enable rapid changes in body colour and pattern. These are adaptations of cuttlefish, not evidence that other living molluscs are evolutionarily inferior.",
+                "நன்கு வளர்ந்த கேமரா வகைக் கண்களும் சிக்கலான நரம்பு மண்டலமும் பார்வை சார்ந்த இரைபிடித்தலுக்கு உதவுகின்றன. நிறமணுச் செல்களும் பிற தோல் அமைப்புகளும் உடல் நிறத்தையும் வடிவத்தையும் விரைவாக மாற்றுகின்றன. இவை கடில்ஃபிஷின் தகவமைப்புகள்; மற்ற மெல்லுடலிகள் பரிணாமத்தில் தாழ்ந்தவை என்பதற்கான சான்றல்ல."),
             s("anatomy",
                 "Arms, siphon and mantle",
                 "கரங்கள், புனல், மேன்டில்",

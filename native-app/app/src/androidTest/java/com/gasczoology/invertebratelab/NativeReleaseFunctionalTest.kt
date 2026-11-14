@@ -458,10 +458,22 @@ class NativeReleaseFunctionalTest {
         }
         backToHome(1)
         enterChapter(4, "u4-penaeus")
-        openPage("appendages"); tap("u4-penaeus-appendage-next")
-        assertTrue(text("u4-penaeus-appendage-name").isNotBlank())
-        openPage("larvae"); tap("u4-penaeus-life-next")
-        saveScreen("penaeus-release-interactive")
+        openPage("appendages")
+        try {
+            tap("u4-penaeus-appendage-next")
+            assertTrue(text("u4-penaeus-appendage-name").isNotBlank())
+        } catch (failure: Throwable) {
+            runCatching { saveScreen("failure-penaeus-appendages-landscape") }
+            throw AssertionError("Penaeus appendages interaction failed", failure)
+        }
+        openPage("larvae")
+        try {
+            tap("u4-penaeus-life-next")
+            saveScreen("penaeus-release-interactive")
+        } catch (failure: Throwable) {
+            runCatching { saveScreen("failure-penaeus-larvae-landscape") }
+            throw AssertionError("Penaeus larval interaction failed", failure)
+        }
     }
 
     @Test fun allFiveSimulatorsMoveRealDiagramPixelsAndPause() {
