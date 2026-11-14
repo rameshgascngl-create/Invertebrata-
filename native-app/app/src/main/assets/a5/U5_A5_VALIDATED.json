@@ -964,7 +964,8 @@
     ],
     "q5_en": [
       "List five anatomical features that show the high structural specialisation of cephalopods.",
-      "Explain the economic importance of cephalopods."
+      "Explain the economic importance of cephalopods.",
+      "Describe five specialised anatomical features of Sepia (cuttlefish)."
     ],
     "a5_en": [
       [
@@ -980,11 +981,19 @@
         "Cuttlefish and squid provide commercial by-products such as cuttlebone and ink, which have food, pet-trade, traditional or specialised industrial uses.",
         "Cephalopods are also ecologically important predators and prey; their abundance can influence fishery food webs and the productivity of other exploited species.",
         "Because many stocks are intensively exploited and market demand is high, scientific monitoring and sustainable fishery management are economically important for maintaining long-term yields."
+      ],
+      [
+        "Sepia has a muscular mantle, lateral fins, eight arms and two retractile feeding tentacles that help capture prey.",
+        "Its internal calcareous cuttlebone contains chambers that contribute to buoyancy regulation.",
+        "A muscular funnel expels water from the mantle cavity to produce jet propulsion; fins assist controlled swimming.",
+        "Well-developed camera-type eyes and a complex nervous system support vision, learning and coordinated predatory behaviour.",
+        "Chromatophores and other skin structures permit rapid changes in colour and pattern; this is a specialisation, not evidence that Sepia is evolutionarily 'higher' than all other molluscs."
       ]
     ],
     "q5_ta": [
       "தலைக்காலிகளில் காணப்படும் உயர்ந்த கட்டமைப்புச் சிறப்பாக்கத்தை காட்டும் ஐந்து உடற்கூறு பண்புகளைப் பட்டியலிடுக.",
-      "தலைக்காலிகளின் பொருளாதார முக்கியத்துவத்தை விளக்குக."
+      "தலைக்காலிகளின் பொருளாதார முக்கியத்துவத்தை விளக்குக.",
+      "Sepia (கட்டில்ஃபிஷ்)-வின் சிறப்புற்ற ஐந்து உடலமைப்புப் பண்புகளை விளக்குக."
     ],
     "a5_ta": [
       [
@@ -1000,6 +1009,13 @@
         "கட்ல்ஃபிஷ் மற்றும் ஸ்க்விட் மூலம் கிடைக்கும் கட்ல்போன் மற்றும் மை போன்ற துணைமதிப்புப் பொருட்கள் உணவு, செல்லப்பிராணி வர்த்தகம், பாரம்பரிய அல்லது சில சிறப்பு தொழில்துறை பயன்பாடுகளில் இடம் பெறுகின்றன.",
         "தலைக்காலிகள் கடல் உணவுச் சங்கிலிகளில் முக்கிய வேட்டையாடிகளும் இரைகளுமாக இருப்பதால் அவற்றின் வளம் பிற வணிக மீன்வளங்களின் உற்பத்தியையும் பாதிக்கக்கூடும்.",
         "பல வளங்கள் தீவிரமாகப் பிடிக்கப்படுவதும் சந்தைத் தேவை அதிகமாக இருப்பதும் காரணமாக அறிவியல் கண்காணிப்பும் நிலைத்த மீன்வள மேலாண்மையும் நீண்டகால பொருளாதார மகசூலைப் பேணுவதற்கு அவசியம்."
+      ],
+      [
+        "Sepia-வில் தசையாலான மேன்டில், பக்கவாட்டு நீந்துதுடுப்புகள், எட்டு கரங்கள் மற்றும் இரையைப் பிடிக்கும் வகையில் உள்ளிழுக்கக்கூடிய இரண்டு நீண்ட உணர்நீட்சிகள் உள்ளன.",
+        "உடலுக்குள் காணப்படும் சுண்ணாம்புச் சத்துள்ள கட்டில்போன் (cuttlebone) அறைகள் மிதப்புத்தன்மையைக் கட்டுப்படுத்த உதவுகின்றன.",
+        "தசையாலான புனல் மேன்டில் குழியிலிருந்து நீரை வெளியேற்றி பீச்சியக்க இயக்கத்தை ஏற்படுத்துகிறது; நீந்துதுடுப்புகள் கட்டுப்படுத்தப்பட்ட நீச்சலுக்கு உதவுகின்றன.",
+        "நன்கு வளர்ந்த கேமரா வகைக் கண்களும் சிக்கலான நரம்பு மண்டலமும் பார்வை, கற்றல் மற்றும் ஒருங்கிணைந்த இரைபிடிக்கும் நடத்தைக்கு உதவுகின்றன.",
+        "நிறமணுச் செல்கள் (chromatophores) மற்றும் பிற தோல் அமைப்புகள் நிறத்தையும் வடிவத்தையும் விரைவாக மாற்ற உதவுகின்றன; இதனை மற்ற எல்லா மெல்லுடலிகளையும் விட பரிணாமத்தில் 'உயர்ந்தது' என்பதற்கான சான்றாகக் கருதக்கூடாது."
       ]
     ]
   }
