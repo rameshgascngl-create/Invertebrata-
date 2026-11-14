@@ -1,6 +1,8 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -180,22 +182,22 @@ internal fun UnitBookTeachingChapter(
     }
     Scaffold(
         topBar = {
-            Row(Modifier.fillMaxWidth().statusBarsPadding(), horizontalArrangement = Arrangement.SpaceEvenly) {
+            Row(Modifier.fillMaxWidth().statusBarsPadding().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 if (!(continuous && continuousReader != null)) TextButton(onClick = { savePosition(); onBack() },
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag(backTag)) {
+                    modifier = Modifier.widthIn(min = 104.dp).heightIn(min = 48.dp).testTag(backTag)) {
                     Text(ut(language, "Back", "பின்செல்"))
                 }
-                TextButton(onClick = { selectPage("contents") }, modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("reading-contents")) {
+                TextButton(onClick = { selectPage("contents") }, modifier = Modifier.widthIn(min = 104.dp).heightIn(min = 48.dp).testTag("reading-contents")) {
                     Text(ut(language, "Contents", "பொருளடக்கம்"))
                 }
                 TextButton(onClick = { continuous = !continuous; referenceGalleryOpen = false },
-                    modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag(if (continuous) "reading-mode-paged" else "reading-mode-continuous")) {
+                    modifier = Modifier.widthIn(min = 104.dp).heightIn(min = 48.dp).testTag(if (continuous) "reading-mode-paged" else "reading-mode-continuous")) {
                     Text(ut(language, if (continuous) "Pages" else "All pages", if (continuous) "பக்கங்கள்" else "முழுப் பாடம்"))
                 }
             }
         },
         bottomBar = {
-            if (!continuous && !referenceGalleryOpen && !mcqOpen) Column(Modifier.navigationBarsPadding().padding(horizontal = 8.dp)) {
+            if (!continuous && !referenceGalleryOpen && !mcqOpen) Column(Modifier.padding(horizontal = 8.dp)) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     OutlinedButton(onClick = { selectPage(pages[pageIndex - 1].id) }, enabled = pageIndex > 0,
                         modifier = Modifier.heightIn(min = 48.dp).testTag("reading-page-previous")
@@ -230,7 +232,7 @@ internal fun UnitBookTeachingChapter(
                 this[ReadingCanScrollForwardSemantics] = listState.canScrollForward
                 this[ReadingPositionRestoredSemantics] = positionRestored
             },
-            contentPadding = PaddingValues(start = 16.dp, top = 12.dp, end = 16.dp, bottom = 24.dp),
+            contentPadding = PaddingValues(start = 16.dp, top = 12.dp, end = 16.dp, bottom = 32.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item(key = "header") {
