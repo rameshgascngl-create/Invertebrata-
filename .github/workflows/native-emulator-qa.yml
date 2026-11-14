@@ -7,6 +7,8 @@ on:
       - audit/undergraduate-coverage-register-20261114
     paths:
       - '.github/workflows/native-emulator-qa.yml'
+      - 'native-app/app/src/main/java/**'
+      - 'native-app/app/src/androidTest/**'
 
 permissions:
   contents: read
@@ -49,8 +51,10 @@ jobs:
             set -eu
             mkdir -p native-app/app/build/qa-evidence
             timeout 30s adb -s emulator-5554 shell getprop ro.build.version.sdk > native-app/app/build/qa-evidence/device-api.txt
+            timeout 20s adb -s emulator-5554 shell settings put system font_scale 1.0
+            timeout 20s adb -s emulator-5554 shell settings get system font_scale > native-app/app/build/qa-evidence/font-scale.txt
             set +e
-            timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest --stacktrace --console=plain > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
+            timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.expectedScale=1.0 --stacktrace --console=plain > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
             test_status=$?
             cat native-app/app/build/qa-evidence/instrumentation-console.log
             timeout --signal=TERM --kill-after=5s 35s adb -s emulator-5554 logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat.txt 2>&1 || true
