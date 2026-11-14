@@ -45,7 +45,6 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 40 | NutritionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 41 | HostParasiteBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 42 | LocomotionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 43 | SyconBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 43 | SyconBookChapter | Feeding, digestion, diffusion, budding, fertilisation, inversion, metamorphosis (targeted passages) | Clarified water pathway, intracellular digestion, gametes and embryonic development | Targeted corrections completed; full internal review incomplete | Pending | 572f55d2; 4782db77; a7c7bf5c |
 
-Other chapter outside the initial registry list: `SyconBookChapter` — targeted Tamil corrections of feeding, diffusion, fertilisation, embryonic inversion and metamorphosis; full internal review incomplete; independent acceptance pending; commits `572f55d2`, `4782db77`, `a7c7bf5c`.
 The runtime registry appends `Extensions.bookChapters`; reconcile its count and ordering before claiming this list is the complete 43-chapter corpus.
