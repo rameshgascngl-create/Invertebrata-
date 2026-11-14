@@ -240,8 +240,10 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
             readingParagraphs(block.text.value(language), language).forEachIndexed { index, segment ->
                 // Each complete explanatory segment remains intact; numbering is
                 // a reading aid, not a replacement for definitions or key-point blocks.
-                Text("${index + 1}. " + emphasizeAnatomy(segment),
-                    style = MaterialTheme.typography.bodyLarge)
+                Text(buildAnnotatedString {
+                    append("${index + 1}. ")
+                    append(emphasizeAnatomy(segment))
+                }, style = MaterialTheme.typography.bodyLarge)
             }
         }
         is BookDefinition -> Card(
