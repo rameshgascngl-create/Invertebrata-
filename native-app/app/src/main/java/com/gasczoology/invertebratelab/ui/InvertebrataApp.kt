@@ -371,6 +371,39 @@ private fun HomeScreen(
     // Hidden attribution: seven quick taps on the title open a credit dialog.
     // pointerInput (not clickable) adds no accessibility semantics, so TalkBack
     // users never hear a phantom button.
+    var showPrivacy by rememberSaveable { mutableStateOf(false) }
+    if (showPrivacy) {
+        AlertDialog(
+            onDismissRequest = { showPrivacy = false },
+            title = { Text(label(language, "Privacy policy", "தனியுரிமைக் கொள்கை")) },
+            text = {
+                Column(
+                    modifier = Modifier.heightIn(max = 440.dp).verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Text(label(language,
+                        "INVERTEBRATA is an offline educational application for Zoology lessons, illustrations and practice questions.",
+                        "INVERTEBRATA என்பது விலங்கியல் பாடங்கள், விளக்கப்படங்கள் மற்றும் பயிற்சி வினாக்களுக்கான இணையமின்றி இயங்கும் கல்விச் செயலியாகும்."))
+                    Text(label(language,
+                        "Learning preferences, bookmarks and reading progress are stored locally on this device to support continued study. The app does not require an account and does not request Internet access.",
+                        "மொழித் தேர்வு, புத்தகக்குறிகள் மற்றும் வாசிப்பு முன்னேற்றம் ஆகியவை தொடர்ச்சியான கற்றலுக்காக இச்சாதனத்திலேயே சேமிக்கப்படுகின்றன. கணக்கு தேவையில்லை; இச்செயலி இணைய அணுகல் அனுமதியைக் கோருவதில்லை."))
+                    Text(label(language,
+                        "The application does not include an advertising or analytics service in its current native configuration. Locally stored learning information may be removed by clearing the app's storage or uninstalling it. Clearing storage also removes saved progress.",
+                        "தற்போதைய சொந்த Android பதிப்பில் விளம்பர அல்லது பயன்பாட்டுப் பகுப்பாய்வு சேவை சேர்க்கப்படவில்லை. செயலியின் சேமிப்பகத் தரவை அழிப்பதன் மூலமோ செயலியை நீக்குவதன் மூலமோ உள்ளூரில் சேமிக்கப்பட்ட கற்றல் தகவல்களை நீக்கலாம். சேமிப்பகத்தை அழித்தால் சேமித்த முன்னேற்றமும் நீங்கும்."))
+                    Text(label(language,
+                        "This notice describes the current offline Android build. Review it whenever data-handling features or third-party services change. Academic figure credits are provided separately.",
+                        "இவ்வறிக்கை தற்போதைய இணையமற்ற Android பதிப்புக்குரியது. தரவு கையாளும் அம்சங்கள் அல்லது வெளிச்சேவைகள் மாறினால் இக்கொள்கையை மீளாய்வு செய்ய வேண்டும். கல்வி விளக்கப்படங்களின் மூலக்குறிப்புகள் தனியாக வழங்கப்படுகின்றன."))
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showPrivacy = false },
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("privacy-close")) {
+                    Text(label(language, "Close", "மூடு"))
+                }
+            },
+            modifier = Modifier.testTag("privacy-dialog"),
+        )
+    }
     var showCredit by remember { mutableStateOf(false) }
     var showPrivacy by rememberSaveable { mutableStateOf(false) }
     if (showPrivacy) {
@@ -491,6 +524,15 @@ private fun HomeScreen(
                 OutlinedButton(
                     onClick = { showPrivacy = true },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("privacy-policy"),
+                ) {
+                    Text(label(language, "Privacy policy", "தனியுரிமைக் கொள்கை"))
+                }
+            }
+            item {
+                OutlinedButton(
+                    onClick = { showPrivacy = true },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("privacy-policy-open"),
                 ) {
                     Text(label(language, "Privacy policy", "தனியுரிமைக் கொள்கை"))
                 }
