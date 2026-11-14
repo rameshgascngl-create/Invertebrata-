@@ -30,6 +30,8 @@ jobs:
           gradle-version: '9.6.0'
       - name: Compile Kotlin and run JVM unit tests
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
+      - name: Compile Android instrumentation tests and assemble debug APK
+        run: gradle -p native-app :app:compileDebugAndroidTestKotlin :app:assembleDebug --stacktrace
       - name: Validate five-unit bilingual A5 question-answer integrity
         run: |
           python3 - <<'PY'
