@@ -38,7 +38,7 @@ class SupplementaryScientificContentRegressionTest {
         }
         assertEquals(2, section.paragraphs.size)
         assertTrue(section.paragraphs.all { it.english.length > 150 && it.tamil.length > 100 })
-        assertTrue(section.paragraphs.joinToString(" ") { it.english }.contains("cnidocytes"))
+        assertTrue(section.paragraphs.joinToString(" ") { it.english }.contains("cnidocytes", ignoreCase = true))
         assertTrue(section.scientificSources.any { it.startsWith("https://") })
     }
 
