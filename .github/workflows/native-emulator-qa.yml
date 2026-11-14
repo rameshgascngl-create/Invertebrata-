@@ -1,0 +1,68 @@
+name: Native emulator acceptance QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/undergraduate-coverage-register-20261114
+    paths:
+      - '.github/workflows/native-emulator-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  emulator-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM for Android emulator
+        run: |
+          if [ ! -e /dev/kvm ]; then
+            echo 'BLOCKED: /dev/kvm unavailable on this runner' >&2
+            exit 1
+          fi
+          sudo chmod 666 /dev/kvm
+      - name: Run actual Android instrumentation tests on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          cores: 2
+          ram-size: 3072M
+          heap-size: 512M
+          disk-size: 4096M
+          disable-animations: true
+          emulator-boot-timeout: 600
+          script: |
+            set -o pipefail
+            mkdir -p native-app/app/build/qa-evidence
+            adb shell getprop ro.build.version.sdk | tee native-app/app/build/qa-evidence/device-api.txt
+            gradle -p native-app :app:connectedDebugAndroidTest --stacktrace 2>&1 | tee native-app/app/build/qa-evidence/instrumentation-console.log
+            adb logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat.txt
+      - name: Collect logcat even after test failure
+        if: always()
+        run: |
+          mkdir -p native-app/app/build/qa-evidence
+          adb logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat-final.txt 2>/dev/null || true
+      - name: Upload emulator test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: invertebrata-emulator-evidence-${{ github.sha }}
+          path: |
+            native-app/app/build/outputs/androidTest-results/
+            native-app/app/build/reports/androidTests/
+            native-app/app/build/qa-evidence/
+          if-no-files-found: warn
+          retention-days: 14
