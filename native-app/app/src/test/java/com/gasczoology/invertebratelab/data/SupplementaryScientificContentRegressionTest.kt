@@ -65,6 +65,32 @@ class SupplementaryScientificContentRegressionTest {
         assertTrue(section.scientificSources.any { it.contains("cdc.gov") })
     }
 
+    @Test fun ascarisEggAndLarvalRoutesAreNotConfusedWithHookworm() {
+        val lesson = UnitIIILessons.forChapter("u3-ascaris")!!
+        val lifeCycle = lesson.sections.single { it.id == "life-cycle" }
+        val prevention = lesson.sections.single { it.id == "adaptations-and-prevention" }
+        val english = (lifeCycle.paragraphs + prevention.paragraphs)
+            .joinToString(" ") { it.english }
+        assertTrue(english.contains("embryonated fertile eggs"))
+        assertTrue(english.contains("lungs"))
+        assertTrue(english.contains("without an intermediate host"))
+        assertTrue(english.contains("Skin-penetrating larvae are not its infective stage"))
+        assertTrue((lifeCycle.paragraphs + prevention.paragraphs).all {
+            it.tamil.isNotBlank()
+        })
+    }
+
+    @Test fun fasciolaHostSpecificInfectiveStagesRemainCorrect() {
+        val lesson = UnitIIILessons.forChapter("u3-fasciola")!!
+        val lifeCycle = lesson.sections.single { it.id == "life-cycle" }
+        val english = lifeCycle.paragraphs.joinToString(" ") { it.english }
+        assertTrue(english.contains("miracidium"))
+        assertTrue(english.contains("lymnaeid snail"))
+        assertTrue(english.contains("metacercariae"))
+        assertTrue(english.contains("Miracidia infect snails; metacercariae infect mammals"))
+        assertTrue(lifeCycle.paragraphs.all { it.tamil.isNotBlank() })
+    }
+
     @Test fun cockroachRespirationAndMetamorphosisRemainDistinct() {
         val section = UnitIVSupplementaryLessons.byId.getValue("u4-arthropoda")
             .sections.single { it.id == "periplaneta-organ-systems" }
