@@ -375,7 +375,8 @@
     ],
     "q5_en": [
       "Give the general characters of Phylum Arthropoda.",
-      "Compare an arthropod jointed appendage with an annelid parapodium."
+      "Compare an arthropod jointed appendage with an annelid parapodium.",
+      "Explain the major organ systems and metamorphosis of Periplaneta americana."
     ],
     "a5_en": [
       [
@@ -391,11 +392,19 @@
         "Arthropod appendages may be uniramous or biramous and can be strongly specialised into antennae, mouthparts, walking legs, swimmerets or reproductive structures.",
         "An annelid parapodium is a soft, unjointed lateral body-wall outgrowth, typically divided into notopodium and neuropodium and supported by acicula and chaetae.",
         "Both structures can aid locomotion or respiration, but they differ in construction and evolutionary origin; their superficial functional similarity should not be used to merge annelid and arthropod body plans."
+      ],
+      [
+        "Periplaneta americana has a head, three-segmented thorax and segmented abdomen; the thorax bears three pairs of legs and two pairs of wings.",
+        "Its biting and chewing mouthparts include the labrum, mandibles, maxillae, labium and hypopharynx.",
+        "Air passes through spiracles into branching tracheae and tracheoles; oxygen is delivered mainly through the tracheal system rather than by the haemolymph.",
+        "Malpighian tubules transfer nitrogenous wastes and ions from haemolymph to the gut; the hindgut reabsorbs water and salts.",
+        "Development is hemimetabolous: the egg produces a nymph that undergoes successive moults to become an adult, without a pupal stage."
       ]
     ],
     "q5_ta": [
       "கணுக்காலிகள் (Arthropoda) தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
-      "கணுக்காலியின் மூட்டுடைய இணைப்புறுப்பையும் வளைதசைப் புழுவின் பாராப்போடியத்தையும் ஒப்பிடுக."
+      "கணுக்காலியின் மூட்டுடைய இணைப்புறுப்பையும் வளைதசைப் புழுவின் பாராப்போடியத்தையும் ஒப்பிடுக.",
+      "Periplaneta americana-வின் முக்கிய உறுப்பு மண்டலங்களையும் உருமாற்றத்தையும் விளக்குக."
     ],
     "a5_ta": [
       [
@@ -411,6 +420,13 @@
         "கணுக்காலி இணைப்புறுப்புகள் ஒருகிளை அல்லது இருகிளை அமைப்பாக இருந்து உணர்கொம்பு, வாயுறுப்பு, நடைக்கால், நீந்துறுப்பு அல்லது இனப்பெருக்க உறுப்பாக சிறப்பாக்கப்படலாம்.",
         "வளைதசைப் புழுவின் பாராப்போடியம் மூட்டில்லாத சதைப்பற்றுள்ள உடற்சுவர் நீட்சியாகும்; பொதுவாக நோட்டோபோடியம், நியூரோபோடியம் ஆகிய பகுதிகளுடன் அசிகுலா மற்றும் சீட்டாக்களைக் கொண்டது.",
         "இரண்டும் இயக்கம் அல்லது சுவாசத்திற்கு உதவக்கூடியவை என்றாலும் அவற்றின் கட்டமைப்பும் பரிணாமத் தோற்றமும் வேறுபட்டவை; செயல்பாட்டு ஒற்றுமை மட்டும் இரு தொகுதிகளின் உடலமைப்பை ஒன்றாகக் கருத காரணமல்ல."
+      ],
+      [
+        "Periplaneta americana-வின் உடல் தலை, மூன்று கண்டங்களைக் கொண்ட மார்பு மற்றும் கண்டங்களுடைய வயிறு எனப் பிரிந்துள்ளது; மார்பில் மூன்று இணை கால்களும் இரண்டு இணை இறக்கைகளும் உள்ளன.",
+        "கடித்து மென்று உண்ணும் வாயுறுப்புகளில் லேப்ரம், மண்டிபிள்கள், மேக்சில்லாக்கள், லேபியம் மற்றும் ஹைப்போஃபாரிங்ஸ் ஆகியவை அடங்கும்.",
+        "காற்று சுவாசத்துளைகள் வழியாக நுழைந்து கிளைத்த மூச்சுக்குழல்கள் மற்றும் நுண்மூச்சுக்குழல்களை அடைகிறது; ஆக்சிஜன் பெரும்பாலும் ஹீமோலிம்ப் வழியாக அல்லாமல் இம்மூச்சுக்குழல் அமைப்பு வழியே திசுக்களுக்கு வழங்கப்படுகிறது.",
+        "மால்பீஜியன் குழல்கள் ஹீமோலிம்பிலிருந்து நைட்ரஜன் கழிவுகளையும் அயனிகளையும் குடலுக்குக் கடத்துகின்றன; பின்குடல் நீரையும் உப்புகளையும் மீண்டும் உறிஞ்சுகிறது.",
+        "இது முழுமையற்ற உருமாற்றம் (hemimetabolous development) அடைகிறது; முட்டையிலிருந்து வெளிவரும் இளநிலை உயிரி பலமுறை தோலுரித்து முதிர்ந்த பூச்சியாக மாறுகிறது; கூட்டுப்புழு நிலை இல்லை."
       ]
     ]
   },
