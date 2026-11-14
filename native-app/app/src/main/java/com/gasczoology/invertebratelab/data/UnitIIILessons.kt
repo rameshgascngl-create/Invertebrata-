@@ -18,13 +18,13 @@ object UnitIIILessons {
     val chapterIds = listOf("u3-platy", "u3-fasciola", "u3-platy-adapt", "u3-aschel", "u3-ascaris", "u3-nematode-parasites", "u3-nematode-adapt")
     val chapters: Map<String, NativeBilingualLesson> = linkedMapOf(
         "u3-platy" to lesson("u3-platy", "Platyhelminthes — classification and body plan", "பிளாட்டிஹெல்மின்தஸ் — வகைப்பாடும் உடலமைப்பும்",
-            section(
             section("taenia-disease-distinction", "Taenia solium: taeniasis and cysticercosis", "டீனியா சோலியம்: டீனியாசிஸும் சிஸ்டிசெர்கோசிஸும்",
                 b("Adult Taenia solium inhabits the human small intestine. Its scolex bears four suckers and an armed rostellum; the strobila consists of proglottids. Because it lacks an alimentary canal, the tegument absorbs nutrients. Intestinal taeniasis follows ingestion of inadequately cooked pork containing viable cysticerci.",
                   "முதிர்ந்த டீனியா சோலியம் மனிதச் சிறுகுடலில் வாழ்கிறது. அதன் ஸ்கோலெக்ஸில் நான்கு உறிஞ்சிகளும் கொக்கிகளுடைய ரோஸ்டெல்லமும் உள்ளன; உடல் புரோக்ளாட்டிட்களால் ஆனது. உணவுப்பாதை இல்லாததால் டெகுமென்ட் வழியாக ஊட்டம் உறிஞ்சப்படுகிறது. உயிருள்ள சிஸ்டிசெர்கஸ் உள்ள சரியாக வேகவைக்காத பன்றி இறைச்சியால் குடல் டீனியாசிஸ் ஏற்படுகிறது."),
                 b("Pigs usually develop cysticercosis after ingesting eggs shed in human faeces. Humans can also develop tissue cysticercosis, including neurocysticercosis, by swallowing eggs through faecal–oral contamination. Eating cysticerci causes adult intestinal infection; swallowing eggs causes larval tissue infection. These transmission routes must not be confused.",
                   "மனித மலத்தில் வெளியேறும் முட்டைகளை விழுங்குவதால் பொதுவாகப் பன்றிகளுக்குச் சிஸ்டிசெர்கோசிஸ் ஏற்படுகிறது. மல–வாய் மாசுபாடு வழியாக முட்டைகளை விழுங்கும் மனிதனுக்கும் நரம்புமண்டலம் உட்பட திசுக்களில் சிஸ்டிசெர்கோசிஸ் ஏற்படலாம். சிஸ்டிசெர்கஸ் உள்ள இறைச்சியை உண்பது குடல் முதிர்புழுத் தொற்றை ஏற்படுத்தும்; முட்டைகளை விழுங்குவது திசு இளம்புழுத் தொற்றை ஏற்படுத்தும்."),
-                "https://www.cdc.gov/dpdx/taeniasis/index.html"),"defining-characters", "Diagnostic characters", "வரையறுக்கும் பண்புகள்",
+                "https://www.cdc.gov/dpdx/taeniasis/index.html"),
+            section("defining-characters", "Diagnostic characters", "வரையறுக்கும் பண்புகள்",
                 b("Flatworms are triploblastic, bilaterally symmetrical and dorsoventrally flattened; most have no body cavity. The tissue between the gut and body wall is filled with mesenchyme (parenchyma).",
                   "தட்டைப்புழுக்கள் மூன்று கருவடுக்குகள் கொண்டவை; இருபக்கச் சமச்சீரும் முதுகு–வயிற்றுத் திசையில் தட்டையான உடலும் உடையவை. பெரும்பாலானவற்றில் உடற்குழி இல்லை; குடலுக்கும் உடற்சுவருக்கும் இடையிலான பகுதியை பாரெங்கைமா நிரப்புகிறது."),
                 b("The majority lack specialised circulatory and respiratory organs. Many possess a branched incomplete digestive tract; cestodes are exceptional because the adult tapeworm lacks an alimentary canal.",
