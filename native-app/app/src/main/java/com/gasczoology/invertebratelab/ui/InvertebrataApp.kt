@@ -372,6 +372,39 @@ private fun HomeScreen(
     // pointerInput (not clickable) adds no accessibility semantics, so TalkBack
     // users never hear a phantom button.
     var showCredit by remember { mutableStateOf(false) }
+    var showPrivacy by rememberSaveable { mutableStateOf(false) }
+    if (showPrivacy) {
+        AlertDialog(
+            onDismissRequest = { showPrivacy = false },
+            title = { Text(label(language, "Privacy policy", "தனியுரிமைக் கொள்கை")) },
+            text = {
+                Column(
+                    modifier = Modifier.verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    Text(label(language,
+                        "INVERTEBRATA is an offline Zoology learning application. It does not require an account or request Internet access.",
+                        "INVERTEBRATA இணைய இணைப்பின்றி இயங்கும் விலங்கியல் கற்றல் செயலி. பயனர் கணக்கு தேவையில்லை; இணைய அணுகல் அனுமதியையும் கோருவதில்லை."))
+                    Text(label(language,
+                        "The app stores language selection, reading progress, bookmarks and learning preferences locally on this device to support continued study. These records are not transmitted by the app to a remote server.",
+                        "தொடர்ந்து படிப்பதற்காக மொழித் தேர்வு, வாசிப்பு முன்னேற்றம், புத்தகக்குறிகள் மற்றும் கற்றல் விருப்பங்கள் இந்தச் சாதனத்திலேயே சேமிக்கப்படுகின்றன. இத்தகவல்களைச் செயலி தொலைநிலைச் சேவையகத்திற்கு அனுப்புவதில்லை."))
+                    Text(label(language,
+                        "Android app-data removal or uninstalling the app removes its locally stored learning records, subject to the device's data-management behaviour. The app disables Android automatic backup.",
+                        "Android அமைப்பில் செயலித் தரவை நீக்குதல் அல்லது செயலியை நிறுவல் நீக்கம் செய்தல் மூலம் உள்ளூரில் சேமிக்கப்பட்ட கற்றல் பதிவுகள் சாதனத்தின் தரவு மேலாண்மை நடைமுறைக்கு உட்பட்டு நீக்கப்படும். Android தானியங்குக் காப்புப்பிரதி இச்செயலியில் முடக்கப்பட்டுள்ளது."))
+                    Text(label(language,
+                        "This notice describes the app itself. The privacy practices of the app store and Android operating system are governed by their respective policies.",
+                        "இவ்வறிக்கை செயலியின் தரவு நடைமுறைகளை மட்டும் விளக்குகிறது. செயலி வழங்கும் தளம் மற்றும் Android இயக்க முறைமையின் தனியுரிமை நடைமுறைகள் அவற்றின் தனித்த கொள்கைகளுக்கு உட்பட்டவை."))
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showPrivacy = false },
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("privacy-close")) {
+                    Text(label(language, "Close", "மூடு"))
+                }
+            },
+        )
+    }
+
     var titleTaps by remember { mutableIntStateOf(0) }
     val lastTitleTap = remember { longArrayOf(0L) }
     if (showCredit) {
@@ -452,6 +485,14 @@ private fun HomeScreen(
                                 style = MaterialTheme.typography.bodySmall)
                         }
                     }
+                }
+            }
+            item {
+                OutlinedButton(
+                    onClick = { showPrivacy = true },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("privacy-policy"),
+                ) {
+                    Text(label(language, "Privacy policy", "தனியுரிமைக் கொள்கை"))
                 }
             }
             item {
