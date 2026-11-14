@@ -175,7 +175,7 @@ internal fun UnitIITeachingChapter(
                         style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.SemiBold,
                         modifier=Modifier.semantics{heading()})
                     section.paragraphs.forEachIndexed{at,paragraph->
-                        Text(paragraph.value(language),style=MaterialTheme.typography.bodyLarge,
+                        Text("${at + 1}. " + paragraph.value(language),style=MaterialTheme.typography.bodyLarge,
                             modifier=Modifier.testTag("u2-paragraph-"+section.id+"-"+at))
                     }
                     OutlinedButton(onClick={narrator.speak(BilingualText(
