@@ -237,8 +237,11 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
             verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.fillMaxWidth(),
         ) {
-            readingParagraphs(block.text.value(language), language).forEach { segment ->
-                Text(emphasizeAnatomy(segment), style = MaterialTheme.typography.bodyLarge)
+            readingParagraphs(block.text.value(language), language).forEachIndexed { index, segment ->
+                // Each complete explanatory segment remains intact; numbering is
+                // a reading aid, not a replacement for definitions or key-point blocks.
+                Text("${index + 1}. " + emphasizeAnatomy(segment),
+                    style = MaterialTheme.typography.bodyLarge)
             }
         }
         is BookDefinition -> Card(
