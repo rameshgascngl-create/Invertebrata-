@@ -170,8 +170,8 @@ internal fun UnitIIITeachingChapter(
                     Text(section.heading.value(language),
                         style=MaterialTheme.typography.titleLarge,
                         modifier=Modifier.semantics { heading() })
-                    section.paragraphs.forEach {
-                        Text(it.value(language),
+                    section.paragraphs.forEachIndexed { index, paragraph ->
+                        Text("${index + 1}. " + paragraph.value(language),
                             style=MaterialTheme.typography.bodyLarge)
                     }
                     OutlinedButton(onClick = {
