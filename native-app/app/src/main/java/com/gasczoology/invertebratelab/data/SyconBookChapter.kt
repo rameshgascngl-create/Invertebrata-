@@ -26,7 +26,7 @@ object SyconBookChapter {
         ),
         introduction = listOf(
             b("Sycon is a calcareous sponge built around a syconoid canal system. Its body wall, choanocytes and water flow explain how it feeds, exchanges gases and removes wastes without true organs.",
-                "சைக்கான், சைக்கனாய்டு கால்வாய் அமைப்பைக் கொண்ட சுண்ணாம்புக் கடற்பஞ்சு. உடற்சுவர், கோயனோசைட்டுகள், நீரோட்டம் ஆகியவற்றின் மூலம் உணவூட்டம், வாயுப் பரிமாற்றம், கழிவு நீக்கம் எவ்வாறு நடைபெறுகின்றன என்பதை அறியலாம்."),
+                "சைக்கான் என்பது சைக்கனாய்டு வகைக் கால்வாய் அமைப்பைக் கொண்ட சுண்ணாம்புக் கடற்பஞ்சாகும். இதன் உடற்சுவர் அமைப்பும் கோயனோசைட்டுகளின் செயல்பாடும் நீரோட்டத்தை உருவாக்குகின்றன. இந்த நீரோட்டத்தின் உதவியால் உணவுத் துகள்கள் பிடிக்கப்படுகின்றன; ஆக்சிஜன் உட்செல்லவும் கார்பன் டைஆக்சைடு, கழிவுப் பொருள்கள் ஆகியவை வெளியேறவும் வழி ஏற்படுகிறது. உண்மையான உறுப்புகள் இல்லாமலேயே இச்செயல்கள் நடைபெறுவது சைக்கானின் சிறப்பாகும்."),
         ),
         sections = listOf(
             BookSection(
@@ -56,7 +56,7 @@ object SyconBookChapter {
                     )),
                     BookSubsection(b("Habitat and habit", "வாழிடமும் வாழ்க்கைமுறையும்"), listOf(
                         p("Sycon is a marine animal of shallow coastal water. It is attached to rocks, shells, seaweeds and other firm surfaces, and occurs singly or in small groups. Individuals are usually a few centimetres long and white, cream or greyish in colour. The adult does not move from place to place; only the larva swims.",
-                            "சைக்கான் ஆழமற்ற கடலோர நீரில் வாழும் கடல்வாழ் விலங்கு. பாறைகள், ஓடுகள், கடற்பாசிகள் போன்ற உறுதியான பரப்புகளில் ஒட்டி, தனியாகவோ சிறு கூட்டங்களாகவோ காணப்படுகிறது. பொதுவாக சில சென்டிமீட்டர் நீளமும் வெண்மை, கிரீம் அல்லது சாம்பல் நிறமும் கொண்டவை. முதிர்ந்த உயிரி இடம்விட்டு இடம் நகர்வதில்லை; இளவுயிரி மட்டுமே நீந்துகிறது."),
+                            "சைக்கான் ஆழம் குறைந்த கடலோரப் பகுதிகளில் வாழ்கிறது. பாறைகள், மெல்லுடலிகளின் ஓடுகள், கடற்பாசிகள் போன்ற உறுதியான பரப்புகளில் ஒட்டிக்கொண்டு தனித்தோ சிறு கூட்டங்களாகவோ காணப்படும். இதன் உடல் பொதுவாகச் சில சென்டிமீட்டர் நீளமுடையது; வெள்ளை, வெளிர் மஞ்சள் அல்லது சாம்பல் நிறத்தில் இருக்கலாம். முதிர்ந்த சைக்கான் ஓரிடத்தில் ஒட்டியே வாழ்கிறது. ஆனால் அதன் லார்வா நீரில் நீந்திச் சென்று புதிய இடத்தில் படிந்து வளர்கிறது."),
                         def("Sessile", "நிலைத்த (ஒட்டிவாழ்)",
                             "Permanently attached to a surface and unable to move from place to place in the adult stage.",
                             "முதிர்நிலையில் ஒரு பரப்பில் நிரந்தரமாக ஒட்டிக்கொண்டு இடம்பெயர இயலாத நிலை."),
@@ -68,7 +68,7 @@ object SyconBookChapter {
                 heading = b("External features", "வெளியமைப்பு"),
                 blocks = listOf(
                     p("The body is cylindrical, spindle-shaped or vase-like. It is fixed at the lower, basal end and free at the upper, apical end. Because the body is organised around a central axis that runs from the base to the apex, it is described as radially symmetrical.",
-                        "உடல் உருளை, கதிர் அல்லது குவளை வடிவில் இருக்கும். கீழ் அடிமுனை ஒட்டியிருக்கும்; மேல் நுனி தனித்திருக்கும். அடியிலிருந்து நுனி வரை செல்லும் நடு அச்சைச் சுற்றி உடல் அமைந்திருப்பதால் கதிர்ச் சமச்சீர் உடையதாகக் கூறப்படுகிறது."),
+                        "சைக்கானின் உடல் உருளை, கதிர்க்கோல் அல்லது குவளை போன்ற வடிவங்களில் காணப்படலாம். உடலின் அடிப்பகுதி ஒரு பரப்பில் ஒட்டியிருக்கும்; மேற்பகுதி தனியாக நீண்டு காணப்படும். அடிப்பகுதியிலிருந்து மேற்பகுதி வரை செல்லும் மைய அச்சைச் சுற்றி உடல் உறுப்புகள் அமைந்திருப்பதால், இது ஆரச்சமச்சீர் உடையதாக விவரிக்கப்படுகிறது."),
                     BookFigure("sycon/external",
                         b("External view of Sycon attached to a surface. (Photograph; the species is to be confirmed, see the credit line.)",
                             "பரப்பில் ஒட்டியுள்ள சைக்கானின் வெளித்தோற்றம். (ஒளிப்படம்; இனம் உறுதிப்படுத்தப்பட வேண்டும், மூலக் குறிப்பைப் பார்க்க.)")),
