@@ -197,7 +197,10 @@ internal fun UnitBookTeachingChapter(
             }
         },
         bottomBar = {
-            if (!continuous && !referenceGalleryOpen && !mcqOpen) Column(Modifier.padding(horizontal = 8.dp)) {
+            // Scaffold reserves bottomBar height but does not automatically inset the bar itself.
+            // Keep the controls above the system navigation area; the LazyColumn receives
+            // the resulting measured Scaffold padding, without a second content spacer.
+            if (!continuous && !referenceGalleryOpen && !mcqOpen) Column(Modifier.navigationBarsPadding().padding(horizontal = 8.dp)) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     OutlinedButton(onClick = { selectPage(pages[pageIndex - 1].id) }, enabled = pageIndex > 0,
                         modifier = Modifier.heightIn(min = 48.dp).testTag("reading-page-previous")
