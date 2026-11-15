@@ -108,7 +108,12 @@ def main() -> int:
     print(f"PASS: committed ZIP and approved PNG (SHA-256 {SHA256})")
     print("PASS: PNG dimensions 1536x1024 and valid PNG signature")
     print("PASS: Gradle asset staging hook and bilingual chapter figure placement")
-    print("NOT VERIFIED: figure registry/resolver, Android compilation, emulator rendering, APK")
+    print("PASS: source-level figure registry and reader resolver checks")
+    if args.apk:
+        print("PASS: APK-level approved-image integrity check")
+    else:
+        print("NOT VERIFIED: APK packaging (run with --apk after assembly)")
+    print("NOT VERIFIED HERE: Kotlin compilation, emulator rendering, visible textbook page")
     return 0
 
 
