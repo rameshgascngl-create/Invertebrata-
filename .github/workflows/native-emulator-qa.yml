@@ -29,6 +29,11 @@ jobs:
       matrix:
         api: [34, 35]
         font_scale: ['1.0', '2.0']
+        suite: [full]
+        include:
+          - api: 34
+            font_scale: '2.0'
+            suite: rotation
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     steps:
@@ -70,7 +75,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api }}
-          target: google_apis
+          target: default
           arch: x86_64
           profile: pixel_6
           cores: 2
@@ -79,7 +84,7 @@ jobs:
           disk-size: 4096M
           disable-animations: true
           emulator-boot-timeout: 600
-          script: bash tools/run_native_emulator_qa.sh ${{ matrix.font_scale }}
+          script: bash tools/run_native_emulator_qa.sh ${{ matrix.font_scale }} ${{ matrix.suite }}
       - name: Collect bounded post-failure diagnostics
         if: always()
         timeout-minutes: 2
@@ -90,7 +95,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: invertebrata-emulator-evidence-${{ github.sha }}-api${{ matrix.api }}-font${{ matrix.font_scale }}
+          name: invertebrata-emulator-evidence-${{ github.sha }}-api${{ matrix.api }}-font${{ matrix.font_scale }}-${{ matrix.suite }}
           path: |
             native-app/app/build/outputs/androidTest-results/
             native-app/app/build/reports/androidTests/

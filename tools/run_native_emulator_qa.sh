@@ -2,6 +2,16 @@
 set -eu
 
 expected_scale=$1
+suite=${2:-full}
+test_filter=()
+case "$suite" in
+  full) test_timeout=42m ;;
+  rotation)
+    test_timeout=6m
+    test_filter+=('-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUiAcceptanceTest#tamilAnswerAndQuestionPositionSurviveRotation')
+    ;;
+  *) echo "Unknown emulator test suite: $suite" >&2; exit 2 ;;
+esac
 mkdir -p native-app/app/build/qa-evidence
 adb version > native-app/app/build/qa-evidence/adb-before-tests.txt 2>&1
 adb devices -l >> native-app/app/build/qa-evidence/adb-before-tests.txt 2>&1
@@ -26,6 +36,9 @@ if [ "$boot_ok" -ne 1 ]; then
   exit 1
 fi
 timeout 30s adb -s emulator-5554 shell getprop ro.build.version.sdk > native-app/app/build/qa-evidence/device-api.txt
+timeout 20s adb -s emulator-5554 shell cmd package resolve-activity --brief \
+  -a android.intent.action.MAIN -c android.intent.category.HOME \
+  > native-app/app/build/qa-evidence/home-launcher.txt 2>&1 || true
 timeout 20s adb -s emulator-5554 shell settings put system font_scale "$expected_scale"
 timeout 20s adb -s emulator-5554 shell setprop persist.sys.locale ta-IN || true
 timeout 20s adb -s emulator-5554 shell am broadcast -a android.intent.action.LOCALE_CHANGED || true
@@ -58,7 +71,11 @@ done
 timeout 30s adb -s emulator-5554 shell mkdir -p "${screenshot_paths[@]}"
 
 set +e
-timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.expectedScale="$expected_scale" --stacktrace --console=plain > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
+timeout --signal=TERM --kill-after=30s "$test_timeout" gradle -p native-app :app:connectedDebugAndroidTest \
+  -Pandroid.testInstrumentationRunnerArguments.expectedScale="$expected_scale" \
+  -Pandroid.testInstrumentationRunnerArguments.r161Scale="$expected_scale" \
+  "${test_filter[@]}" --stacktrace --console=plain \
+  > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
 test_status=$?
 evidence_dir=native-app/app/build/qa-evidence/reader-screenshots
 mkdir -p "$evidence_dir"

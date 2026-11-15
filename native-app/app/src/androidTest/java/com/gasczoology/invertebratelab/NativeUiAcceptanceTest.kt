@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab
 
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
 import androidx.compose.ui.test.assertHasClickAction
@@ -252,7 +253,7 @@ class NativeUiAcceptanceTest {
         }
 
         val questions = units.flatMap { it.chapters }.flatMap { it.a5Questions }
-        rule.onNodeWithTag("native-home").performScrollToIndex(6)
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("a5-assessment"))
         rule.onNodeWithTag("a5-assessment").performClick()
         waitFor("native-assessment")
         repeat(4) {
@@ -273,6 +274,10 @@ class NativeUiAcceptanceTest {
         try {
             rule.activityRule.scenario.onActivity {
                 it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            }
+            val context = InstrumentationRegistry.getInstrumentation().targetContext
+            rule.waitUntil(timeoutMillis = 20_000L) {
+                context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
             }
             waitFor("native-assessment")
             val tamilQuestionTag = "a5-question-" + fifth.id
