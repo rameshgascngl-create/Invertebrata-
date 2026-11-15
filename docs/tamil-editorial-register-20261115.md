@@ -36,11 +36,11 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 31 | EchinoAffinitiesBookChapter | Bilateral ciliated larvae, deuterostome and enterocoely definitions (targeted) | Clarified embryological terminology and cilia | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
 | 32 | FootBookChapter | Molluscan pedal cilia, foot surface and hydrostatic support (targeted) | Corrected cilia and hydrostatic skeleton Tamil terminology | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
 | 33 | CephalopodsBookChapter | Cuttlefish, giant axon and chromatophores (targeted) | Corrected unintelligible cuttlefish term and giant-axon description | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
-| 34 | WvsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 35 | FossilsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 36 | IntroInvertebrataBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 37 | ProtozoaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 38 | ParameciumBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 34 | WvsBookChapter | Hydrocoel origin, tube feet and water-vascular anatomy (targeted) | Corrected water-vascular system misrendered as a blood-circulatory system and standardised tube-foot terms | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
+| 35 | FossilsBookChapter | Fossil, preservation bias and mould definitions (targeted) | Corrected the phrasing of geological remains, differential preservation and fossil impressions | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
+| 36 | IntroInvertebrataBookChapter | Taxonomy, taxon and genus definitions (targeted) | Improved scientific Tamil describing rank, taxonomy and related species | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
+| 37 | ProtozoaBookChapter | Unicellular construction, locomotion and the traditional teaching group (targeted) | Distinguished flagella and cilia; improved evolutionary classification and eukaryotic cell terminology | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
+| 38 | ParameciumBookChapter | Ciliary locomotion, power/recovery strokes and labelled figure (targeted) | Improved ciliary beating and metachronal movement phrasing | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
 | 39 | ProtoParasitesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 40 | NutritionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 41 | HostParasiteBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -62,3 +62,5 @@ Arthropod and crustacean batch (2026-11-15): targeted Tamil revisions at `4a5867
 Mollusc and echinoderm batch (2026-11-15): targeted scientific-Tamil corrections in five chapters at `32bbec60`. All independent academic acceptance and complete section-by-section editorial reviews remain pending.
 
 Echinoderm larval biology and cephalopod batch (2026-11-15): targeted Tamil corrections in five chapters, commit `877023c8`. All remain pending complete internal and independent review.
+
+Water-vascular system, fossils and protozoa batch (2026-11-15): targeted corrections at `3de95040` in five chapters; complete and independent academic acceptance pending.
