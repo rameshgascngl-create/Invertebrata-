@@ -34,6 +34,6 @@ class ApprovedParameciumAssetTest {
         val approved = figures.filter { it.slot == "paramecium/reproduction-approved" }
         assertEquals("Approved plate must appear exactly once", 1, approved.size)
         assertTrue(approved.single().caption.english.isNotBlank())
-        assertTrue(approved.single().caption.tamil.any { it in '\\u0B80'..'\\u0BFF' })
+        assertTrue(approved.single().caption.tamil.any { it.code in 0x0B80..0x0BFF })
     }
 }
