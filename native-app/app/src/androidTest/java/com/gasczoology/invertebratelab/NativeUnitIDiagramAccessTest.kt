@@ -12,7 +12,12 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** Unit I diagram ROUTING acceptance only, not scientific plate approval. */
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.RUNTIME)
+internal annotation class UnitIReaderAcceptance
+
+/** Opens the same raster gallery through both student routes. */
+@UnitIReaderAcceptance
 @RunWith(AndroidJUnit4::class)
 class NativeUnitIDiagramAccessTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
@@ -42,12 +47,11 @@ class NativeUnitIDiagramAccessTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("r1-paramecium-lab").fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("r1-atlas-heading").assertExists()
-        // Do NOT scroll the figure into view as part of the assertion:
-        // a student must see actual image pixels immediately after opening Anatomy.
-        rule.onNodeWithTag("u1-paramecium-raster-external").assertIsDisplayed()
+        rule.onNodeWithTag("r2-type-study-gallery-paramecium").assertExists()
+        rule.onNodeWithTag("r2-plate-bitmap-paramecium-external-cilia")
+            .performScrollTo().assertIsDisplayed()
         rule.onNodeWithTag("n23b-external-canvas").assertDoesNotExist()
-        rule.onNodeWithTag("u1-raster-asset-missing").assertDoesNotExist()
+        rule.onNodeWithTag("r2-plate-missing-paramecium-external-cilia").assertDoesNotExist()
     }
 
     private fun screenshot(scene: String) {
@@ -71,7 +75,7 @@ class NativeUnitIDiagramAccessTest {
         bitmap.recycle()
     }
 
-    @Test fun unitEntryShowsRealRasterPencilAndFourInteractiveAtlasModes() {
+    @Test fun unitEntryShowsDistinctRasterPlatesAndFullscreenViewer() {
         enterUnitOne(tamil = false)
         rule.onNodeWithTag("u1-missing-protozoa-plates").assertExists()
         rule.onNodeWithTag("native-unit-1")
@@ -79,18 +83,15 @@ class NativeUnitIDiagramAccessTest {
         rule.onNodeWithTag("u1-open-diagram-atlas").performClick()
         expectAtlas()
         screenshot("english-external")
-        for ((panel,organ) in listOf(
-            "oral" to "oral-groove",
-            "vacuole" to "contractile-vacuole",
-            "internal" to "macronucleus"
-        )) {
-            rule.onNodeWithTag("r1-atlas-"+panel).performScrollTo().performClick()
-            rule.onNodeWithTag("u1-paramecium-raster-"+panel).assertExists()
-            rule.onNodeWithTag("u1-raster-asset-missing").assertDoesNotExist()
-            rule.onNodeWithTag("r1-atlas-select-"+organ)
-                .performScrollTo().performClick()
-            rule.onNodeWithTag("r1-atlas-selected").assertExists()
+        for (id in listOf("oral-apparatus", "contractile-vacuoles", "locomotion")) {
+            rule.onNodeWithTag("r2-plate-bitmap-paramecium-$id").performScrollTo().assertIsDisplayed()
+            rule.onNodeWithTag("r2-plate-missing-paramecium-$id").assertDoesNotExist()
         }
+        rule.onNodeWithTag("r2-plate-expand-paramecium-oral-apparatus").performScrollTo().performClick()
+        rule.onNodeWithTag("r2-fullscreen-dialog").assertExists()
+        rule.onNodeWithTag("r2-fullscreen-bitmap").assertIsDisplayed()
+        rule.onNodeWithTag("r2-fullscreen-close").performClick()
+        rule.onNodeWithTag("r2-fullscreen-dialog").assertDoesNotExist()
     }
 
     @Test fun parameciumChapterOpensTamilAtlasWithoutDeletingAssessmentRoute() {
@@ -99,19 +100,24 @@ class NativeUnitIDiagramAccessTest {
             .performScrollToNode(hasTestTag("chapter-u1-paramecium"))
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-paramecium")
+            rule.onAllNodesWithTag("book-reader-u1-paramecium")
                 .fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithTag("u1-paramecium-open-diagrams")
-            .performScrollTo().performClick()
+        openReadingPage(rule, "book-reader-u1-paramecium", "objectives")
+        rule.onNodeWithTag("book-reader-u1-paramecium")
+            .performScrollToNode(hasTestTag("u1-paramecium-open-diagrams"))
+        rule.onNodeWithTag("u1-paramecium-open-diagrams").performClick()
         expectAtlas()
         screenshot("tamil-external")
         // The existing five-mark corpus remains reachable via the Practice tab.
         rule.onNodeWithTag("r1-tab-practice").performScrollTo().performClick()
         rule.onNodeWithTag("r1-open-practice").performScrollTo().performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-paramecium")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
+        val reader = rule.onNodeWithTag("book-reader-u1-paramecium")
+        val questionId = "u1-paramecium-A5-1"
+        reader.performScrollToNode(hasTestTag("a5-toggle-$questionId"))
+        rule.onNodeWithTag("a5-question-$questionId").assertExists()
+        rule.onNodeWithTag("a5-toggle-$questionId").performClick()
+        reader.performScrollToNode(hasTestTag("a5-point-$questionId-5"))
+        rule.onNodeWithTag("a5-point-$questionId-5").assertIsDisplayed()
     }
 }

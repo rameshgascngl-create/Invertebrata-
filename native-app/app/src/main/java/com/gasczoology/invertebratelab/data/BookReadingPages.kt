@@ -33,7 +33,9 @@ object BookReadingPages {
         }
     }
 
-    fun forChapter(chapter: BookChapter, questionIds: List<String>): List<BookReadingPage> = buildList {
+    fun forChapter(
+        chapter: BookChapter, questionIds: List<String>, includeSourceReview: Boolean = false,
+    ): List<BookReadingPage> = buildList {
         // Objectives and the (short) introduction share the opening page.
         add(BookReadingPage("objectives",
             BilingualText("Objectives and introduction", "நோக்கங்களும் முன்னுரையும்"),
@@ -75,6 +77,9 @@ object BookReadingPages {
             "u1-proto-parasites" -> {
                 add(BookReadingPage("trypanosoma", BilingualText("Trypanosoma life cycle", "டிரிப்பனோசோமா வாழ்க்கைச் சுழற்சி")))
                 add(BookReadingPage("leishmania", BilingualText("Leishmania life cycle", "லீஷ்மேனியா வாழ்க்கைச் சுழற்சி")))
+                if (includeSourceReview) add(BookReadingPage("source-review", BilingualText(
+                    "Flagellate figure review", "கசையிழை ஒட்டுண்ணிப் பட ஆய்வு",
+                )))
             }
             "u4-penaeus" -> {
                 add(BookReadingPage("appendages", BilingualText("Appendage explorer", "இணையுறுப்பு ஆய்வு")))

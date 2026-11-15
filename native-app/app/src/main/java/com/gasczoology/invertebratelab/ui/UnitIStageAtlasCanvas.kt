@@ -40,6 +40,15 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
 
     var plateId by rememberSaveable { mutableStateOf(UnitIStageAtlas.plates.first().id) }
     val plate = requireNotNull(UnitIStageAtlas.get(plateId))
+    val source = when (plate.id) {
+        "brucei-blood" -> "unit1/references/trypanosoma"
+        "leishmania-amastigote" -> "unit1/references/leishmania"
+        else -> null
+    }
+    val bitmap = source?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
+    val sourceDescription = if (tamil) "PNG ஆதாரப் படம். உருவ அமைப்பு மதிப்பாய்வு நிலுவையில் உள்ளது."
+        else "Source PNG reference. Morphology review pending."
+
     var structureId by rememberSaveable(plateId) {
         mutableStateOf(plate.structures.first().id)
     }
@@ -89,9 +98,17 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.testTag("u115-current-stage"),
             )
-            UnitIStagePng(plate.id, language, Modifier.fillMaxWidth().height(255.dp).testTag("u115-concept-canvas"))
+            if (bitmap != null) {
+                Image(bitmap = bitmap, contentDescription = sourceDescription, contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxWidth().height(255.dp).testTag("u115-png-reference"))
+            } else {
+                Text(if (tamil) "இந்த வளர்ச்சி நிலைக்கான தனிப் PNG படம் இன்னும் சரிபார்க்கப்படவில்லை"
+                    else "Stage-specific PNG not yet verified. No substitute drawing is available.",
+                    color = MaterialTheme.colorScheme.error, modifier = Modifier.testTag("u115-png-pending"))
+            }
             OutlinedButton(
                 onClick = { expanded = true },
+                enabled = bitmap != null,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .testTag("u115-enlarge"),
             ) { Text(if (tamil) "PNG படத்தைப் பெரிதாக்கு" else "Enlarge PNG reference") }
@@ -168,7 +185,7 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
         }
     }
 
-    if (expanded) {
+    if (expanded && bitmap != null) {
         Dialog(
             onDismissRequest = { expanded = false },
             properties = DialogProperties(usePlatformDefaultWidth = false),
@@ -189,7 +206,8 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
                         color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.labelLarge,
                     )
-                    UnitIStagePng(plate.id, language, Modifier.fillMaxWidth().weight(1f).testTag("u115-expanded-canvas"))
+                    Image(bitmap = bitmap, contentDescription = sourceDescription, contentScale = ContentScale.Fit,
+                        modifier = Modifier.fillMaxWidth().weight(1f).testTag("u115-expanded-canvas"))
                     Text(
                         if (tamil) structure.explanationTa else structure.explanationEn,
                         style = MaterialTheme.typography.bodyMedium,
@@ -202,24 +220,6 @@ internal fun UnitIStageAtlasChapter(language: AppLanguage) {
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun UnitIStagePng(stage: String, language: AppLanguage, modifier: Modifier) {
-    val stem = when (stage) {
-        "brucei-blood" -> "unit1/references/trypanosoma"
-        "leishmania-amastigote" -> "unit1/references/leishmania"
-        else -> null
-    }
-    val bitmap = stem?.let { rememberRequiredRasterBitmap(it, pngOnly = true) }
-    if (bitmap != null) {
-        Image(bitmap = bitmap, contentDescription = "Source PNG reference; morphology review pending",
-            contentScale = ContentScale.Fit, modifier = modifier.testTag("u115-png-reference"))
-    } else {
-        Text(if (language == AppLanguage.TAMIL) "இந்த வளர்ச்சி நிலைக்கான தனிப் PNG படம் இன்னும் சரிபார்க்கப்படவில்லை"
-            else "Stage-specific PNG not yet verified; no substitute drawing",
-            color = MaterialTheme.colorScheme.error, modifier = modifier.testTag("u115-png-pending"))
     }
 }
 

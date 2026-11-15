@@ -14,6 +14,10 @@ case "$suite" in
     test_timeout=15m
     test_filter+=("-Pandroid.testInstrumentationRunnerArguments.class=$package.NativeUnitIIITeachingTest")
     ;;
+  unit-i)
+    test_timeout=15m
+    test_filter+=("-Pandroid.testInstrumentationRunnerArguments.annotation=$package.UnitIReaderAcceptance")
+    ;;
   process-death) ;;
   *) echo "Unknown emulator test suite: $suite" >&2; exit 2 ;;
 esac

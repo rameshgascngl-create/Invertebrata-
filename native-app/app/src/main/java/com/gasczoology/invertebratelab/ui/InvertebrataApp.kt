@@ -74,13 +74,14 @@ private const val VALIDATED_UNIT_COUNT = 5
 private object Routes {
     const val HOME = "home"
     const val UNIT = "unit/{unitNumber}"
-    const val CHAPTER = "chapter/{chapterId}"
+    const val CHAPTER = "chapter/{chapterId}?practice={practice}"
     const val ASSESSMENT = "assessment"
     const val PARAMECIUM = "paramecium-interactive-lab"
     const val EARTHWORM = "u4-earthworm-native-textbook"
 
     fun unit(number: Int) = "unit/" + number
-    fun chapter(id: String) = "chapter/" + id
+    fun chapter(id: String, practice: Boolean = false) =
+        "chapter/" + id + if (practice) "?practice=true" else ""
 
     fun restoredDestination(state: NativeLearningState): String = when (state.destination) {
         StudyDestination.HOME -> HOME
@@ -232,7 +233,10 @@ fun InvertebrataApp(viewModel: MainViewModel) {
         }
         composable(
             route = Routes.CHAPTER,
-            arguments = listOf(navArgument("chapterId") { type = NavType.StringType }),
+            arguments = listOf(
+                navArgument("chapterId") { type = NavType.StringType },
+                navArgument("practice") { type = NavType.BoolType; defaultValue = false },
+            ),
         ) { entry ->
             val id = entry.arguments?.getString("chapterId")
             val chapter = chapters.singleOrNull { it.id == id }
@@ -242,6 +246,7 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                 ChapterScreen(
                     chapter = chapter,
                     language = language,
+                    startInPractice = entry.arguments?.getBoolean("practice") == true,
                     onLanguageChange = viewModel::setLanguage,
                     onBack = {
                         val returnToLab = navController.previousBackStackEntry?.destination?.route == Routes.PARAMECIUM
@@ -290,12 +295,12 @@ fun InvertebrataApp(viewModel: MainViewModel) {
                         chapterId = "", questionId = "", answerRevealed = false,
                     )) { backOrRoute(Routes.HOME) }
                 },
-                onPractice = { position ->
+                onOpenChapter = { position, practice ->
                     viewModel.persistLearning(position.copy(
                         destination = StudyDestination.CHAPTER, unitNumber = 1,
                         chapterId = "u1-paramecium", questionId = "",
                         answerRevealed = false,
-                    )) { navController.navigate(Routes.chapter("u1-paramecium")) }
+                    )) { navController.navigate(Routes.chapter("u1-paramecium", practice)) }
                 },
             )
         }
@@ -612,6 +617,7 @@ private fun UnitScreen(
 private fun ChapterScreen(
     chapter: Chapter,
     language: AppLanguage,
+    startInPractice: Boolean,
     onLanguageChange: (AppLanguage) -> Unit,
     onBack: () -> Unit,
     onOpenFullLesson: () -> Unit,
@@ -642,7 +648,7 @@ private fun ChapterScreen(
         }
         Box(Modifier.weight(1f)) {
             ChapterBody(chapter, language, onBack, onOpenFullLesson, onOpenAnatomy,
-                revealedQuestionId, onToggle)
+                revealedQuestionId, onToggle, startInPractice)
         }
     }
 }
@@ -656,6 +662,7 @@ private fun ChapterBody(
     onOpenAnatomy: () -> Unit,
     revealedQuestionId: String,
     onToggle: (A5Question) -> Unit,
+    startInPractice: Boolean,
 ) {
     if (chapter.unitNumber == 2) {
         UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle)
@@ -667,7 +674,8 @@ private fun ChapterBody(
     }
     BookChapters.forLesson(chapter.id)?.let { book ->
         UnitBookTeachingChapter(chapter, book, language, onBack, revealedQuestionId, onToggle,
-            onOpenFullLesson = onOpenFullLesson, onOpenAnatomy = onOpenAnatomy)
+            onOpenFullLesson = onOpenFullLesson, onOpenAnatomy = onOpenAnatomy,
+            startInPractice = startInPractice)
         return
     }
     val restoredLesson = remember(chapter.id) { FiveUnitRestorationLessons.byId[chapter.id] }

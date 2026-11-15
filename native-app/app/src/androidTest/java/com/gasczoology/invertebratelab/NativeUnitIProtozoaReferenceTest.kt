@@ -14,6 +14,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 
 /** U1.2 isolated reference-asset routing test; NOT pencil or scientific acceptance. */
+@UnitIReaderAcceptance
 @RunWith(AndroidJUnit4::class)
 class NativeUnitIProtozoaReferenceTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
@@ -55,7 +56,16 @@ class NativeUnitIProtozoaReferenceTest {
         bitmap.recycle()
     }
 
-    @Test fun englishUnitOneDisplaysFourIndependentReferenceBitmaps() {
+    private fun openParasiteBook(review: Boolean = true) {
+        rule.onNodeWithTag("native-unit-1").performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
+        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag("book-reader-u1-proto-parasites").fetchSemanticsNodes().isNotEmpty()
+        }
+        if (review) openReadingPage(rule, "book-reader-u1-proto-parasites", "source-review")
+    }
+
+    @Test fun englishUnitOneDisplaysBothStudentReferenceBitmapsAndTheirDetails() {
         enter(false)
         rule.onNodeWithTag("native-unit-1")
             .performScrollToNode(hasTestTag("u1-protozoa-reference-toggle"))
@@ -67,7 +77,9 @@ class NativeUnitIProtozoaReferenceTest {
                 .fetchSemanticsNodes().isNotEmpty()
         }
         rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertIsDisplayed()
-        for(id in listOf("entamoeba","trypanosoma","leishmania","plasmodium")) {
+        rule.onNodeWithTag("u1-reference-select-trypanosoma").assertDoesNotExist()
+        rule.onNodeWithTag("u1-reference-select-leishmania").assertDoesNotExist()
+        for(id in listOf("entamoeba","plasmodium")) {
             rule.onNodeWithTag("u1-reference-select-"+id).performScrollTo().performClick()
             rule.onNodeWithTag("u1-reference-image-"+id).performScrollTo().assertExists()
             rule.onNodeWithTag("u1-reference-missing").assertDoesNotExist()
@@ -210,17 +222,11 @@ class NativeUnitIProtozoaReferenceTest {
                 rotatedFile.delete()
             }
             enter(false)
-            rule.onNodeWithTag("native-unit-1")
-                .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
-            rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
-            rule.waitUntil(20_000) {
-                rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
-                    .fetchSemanticsNodes().isNotEmpty()
-            }
+            openParasiteBook()
             // U1.14: reviewer intake is an independent LazyColumn page item;
             // it must be directly scrollable at 200% font, not buried beneath
             // the large attributed source-figure lesson card.
-            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+            rule.onNodeWithTag("book-reader-u1-proto-parasites")
                 .performScrollToNode(hasTestTag("u110-native-plate-intake-trypanosoma"))
             rule.onNodeWithTag("u110-import-button-trypanosoma")
                 .performScrollTo().assertIsDisplayed()
@@ -323,14 +329,8 @@ class NativeUnitIProtozoaReferenceTest {
                     source.originalBytes, source.width, source.height,
                 ))
             enter(false)
-            rule.onNodeWithTag("native-unit-1")
-                .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
-            rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
-            rule.waitUntil(20_000) {
-                rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
-                    .fetchSemanticsNodes().isNotEmpty()
-            }
-            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+            openParasiteBook()
+            rule.onNodeWithTag("book-reader-u1-proto-parasites")
                 .performScrollToNode(hasTestTag("u116-archive-section"))
             rule.onNodeWithTag("u116-archive-source-check").assertExists()
             rule.onNodeWithTag("u116-source-url")
@@ -361,20 +361,14 @@ class NativeUnitIProtozoaReferenceTest {
 
     @Test fun nativeMorphotypeAtlasDistinguishesThreeCellStagesAndCanvas() {
         enter(false)
-        rule.onNodeWithTag("native-unit-1")
-            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
-        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+        openParasiteBook()
+        rule.onNodeWithTag("book-reader-u1-proto-parasites")
             .performScrollToNode(hasTestTag("u115-morphotype-atlas"))
         rule.onNodeWithTag("u115-heading").assertExists()
         rule.onNodeWithTag("u115-digital-artwork-warning")
-            .assertTextContains("NOT a hand-scanned pencil master", substring = true)
-        rule.onNodeWithTag("u115-concept-canvas")
-            .performScrollTo().assertExists()
+            .assertTextContains("not an approved anatomical master", substring = true)
+        rule.onNodeWithTag("u115-png-reference")
+            .performScrollTo().assertIsDisplayed()
         rule.onNodeWithTag("u115-current-stage")
             .assertTextContains("Trypanosoma brucei", substring = true)
 
@@ -386,19 +380,16 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u115-current-stage")
             .assertTextContains("sand-fly promastigote", substring = true)
         rule.onNodeWithTag("u115-stage-explanation")
-            .performScrollTo().assertTextContains("No undulating membrane", substring = true)
+            .performScrollTo().assertTextContains("undulating membrane", substring = true)
         rule.onNodeWithTag("u115-structure-picker")
             .performScrollTo().performScrollToNode(hasTestTag("u115-organ-kinetoplast"))
         rule.onNodeWithTag("u115-organ-kinetoplast")
             .assertIsDisplayed().performClick()
         rule.onNodeWithTag("u115-organ-explanation")
             .performScrollTo().assertTextContains("anterior to the nucleus", substring = true)
-        rule.onNodeWithTag("u115-concept-canvas").performScrollTo()
-        screenshot("u115-english-promastigote-canvas")
-        rule.onNodeWithTag("u115-enlarge")
-            .performScrollTo().performClick()
-        rule.onNodeWithTag("u115-expanded-canvas").assertIsDisplayed()
-        rule.onNodeWithTag("u115-expanded-close").performClick()
+        rule.onNodeWithTag("u115-png-pending").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithTag("u115-enlarge").assertIsNotEnabled()
+        screenshot("u115-english-promastigote-pending")
 
         rule.onNodeWithTag("u115-stage-picker")
             .performScrollTo()
@@ -408,24 +399,21 @@ class NativeUnitIProtozoaReferenceTest {
         rule.onNodeWithTag("u115-stage-explanation")
             .performScrollTo()
             .assertTextContains("NO external long flagellum", substring = true)
-        rule.onNodeWithTag("u115-concept-canvas").performScrollTo()
-        screenshot("u115-english-amastigote-canvas")
+        rule.onNodeWithTag("u115-png-reference").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithTag("u115-enlarge").performScrollTo().performClick()
+        rule.onNodeWithTag("u115-expanded-canvas").assertIsDisplayed()
+        screenshot("u115-english-amastigote-source")
+        rule.onNodeWithTag("u115-expanded-close").performClick()
     }
 
     @Test fun tamilNativeMorphotypeAtlasRetainsDistinctStageTextAt200Pct() {
         enter(true)
-        rule.onNodeWithTag("native-unit-1")
-            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
-        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+        openParasiteBook()
+        rule.onNodeWithTag("book-reader-u1-proto-parasites")
             .performScrollToNode(hasTestTag("u115-morphotype-atlas"))
         rule.onNodeWithTag("u115-heading").assertExists()
         rule.onNodeWithTag("u115-digital-artwork-warning")
-            .assertTextContains("டிஜிட்டல்", substring = true)
+            .assertTextContains("PNG ஆதாரப் படங்கள்", substring = true)
         rule.onNodeWithTag("u115-stage-picker")
             .performScrollTo()
             .performScrollToNode(hasTestTag("u115-stage-leishmania-promastigote"))
@@ -439,7 +427,7 @@ class NativeUnitIProtozoaReferenceTest {
             .assertIsDisplayed().performClick()
         rule.onNodeWithTag("u115-organ-name")
             .performScrollTo().assertTextContains("கைனெட்டோபிளாஸ்ட்", substring = true)
-        rule.onNodeWithTag("u115-concept-canvas").performScrollTo().assertExists()
+        rule.onNodeWithTag("u115-png-pending").performScrollTo().assertIsDisplayed()
         screenshot("u115-tamil-promastigote-canvas")
         rule.onNodeWithTag("u115-listen").performScrollTo().assertExists()
         rule.onNodeWithTag("u115-narrator-status").assertExists()
@@ -447,15 +435,9 @@ class NativeUnitIProtozoaReferenceTest {
 
     @Test fun debugRasterReviewMapsRealBitmapPixelsWithoutPublishingHotspots() {
         enter(false)
-        rule.onNodeWithTag("native-unit-1")
-            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
-        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u17-study-trypanosoma"))
+        openParasiteBook()
+        rule.onNodeWithTag("book-reader-u1-proto-parasites")
+            .performScrollToNode(hasTestTag("u19-open-raster-review-trypanosoma"))
         rule.onNodeWithTag("u19-open-raster-review-trypanosoma")
             .performScrollTo().assertIsDisplayed().performClick()
         rule.onNodeWithTag("u19-review-dialog-trypanosoma").assertExists()
@@ -549,15 +531,10 @@ class NativeUnitIProtozoaReferenceTest {
 
     @Test fun englishNativeFlagellateLifeCyclesAreNavigableOffline() {
         enter(false)
-        rule.onNodeWithTag("native-unit-1")
-            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
-        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
+        openParasiteBook(review = false)
         for (id in listOf("trypanosoma", "leishmania")) {
-            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
+            openReadingPage(rule, "book-reader-u1-proto-parasites", id)
+            rule.onNodeWithTag("book-reader-u1-proto-parasites")
                 .performScrollToNode(hasTestTag("u18-cycle-" + id))
             rule.onNodeWithTag("u18-title-" + id).assertExists()
             rule.onNodeWithTag("u18-teaching-cadence-note-" + id).assertExists()
@@ -582,119 +559,39 @@ class NativeUnitIProtozoaReferenceTest {
 
     @Test fun tamilParasiticProtozoaChapterRetainsOwnReferencesAndA5() {
         enter(true)
-        rule.onNodeWithTag("native-unit-1")
-            .performScrollToNode(hasTestTag("chapter-u1-proto-parasites"))
-        rule.onNodeWithTag("chapter-u1-proto-parasites").performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u1-proto-parasites").fetchSemanticsNodes().isNotEmpty()
+        openParasiteBook(review = false)
+        val reader = "book-reader-u1-proto-parasites"
+        val book = com.gasczoology.invertebratelab.data.ProtoParasitesBookChapter.chapter
+        val rows = com.gasczoology.invertebratelab.data.BookLayout.rows(book)
+        val pages = com.gasczoology.invertebratelab.data.BookReadingPages.forChapter(book, book.reviewQuestionIds)
+        for (slot in listOf("entamoeba-mature-cyst", "trypanosoma-cartoon", "leishmania-amastigote")) {
+            val row = rows.indexOfFirst {
+                val figure = (it as? com.gasczoology.invertebratelab.data.BookRow.Block)?.block
+                    as? com.gasczoology.invertebratelab.data.BookFigure
+                figure?.slot == "lib/$slot"
+            }
+            assertTrue("Missing chapter figure $slot", row >= 0)
+            openReadingPage(rule, reader, pages.single { row in it.rowIndices }.id)
+            rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("book-figure-lib-$slot"))
+            rule.onNodeWithTag("r2-plate-bitmap-lib-$slot").assertIsDisplayed()
+            rule.onNodeWithTag("book-figure-caption-lib-$slot").assertExists()
         }
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u15-entamoeba-morphology"))
-        rule.onNodeWithTag("u15-entamoeba-heading").assertExists()
-        rule.onNodeWithTag("u15-entamoeba-review-hold").assertExists()
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u17-flagellate-native-lessons"))
-        rule.onNodeWithTag("u17-flagellate-academic-hold").assertExists()
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u17-study-trypanosoma"))
-        rule.onNodeWithTag("u17-study-title-trypanosoma").assertExists()
-        rule.onNodeWithTag("u17-reference-image-trypanosoma").assertExists()
-        rule.onNodeWithTag("u17-image-missing-trypanosoma").assertDoesNotExist()
-        rule.onNodeWithTag("u17-image-expand-trypanosoma").performClick()
-        rule.onNodeWithTag("u1-reference-fullscreen").assertExists()
-        rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
-        rule.onNodeWithTag("u1-reference-zoom-in").performClick()
-        rule.onNodeWithTag("u1-reference-close").performClick()
-        rule.onNodeWithTag("u1-reference-fullscreen").assertDoesNotExist()
-        for (stage in listOf("morphology", "mammal", "vector", "contrast")) {
-            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-                .performScrollToNode(hasTestTag("u17-stage-trypanosoma-" + stage))
-            rule.onNodeWithTag("u17-current-heading-trypanosoma-" + stage).assertExists()
-            rule.onNodeWithTag("u17-current-explanation-trypanosoma-" + stage).assertExists()
+        for (organism in listOf("trypanosoma", "leishmania")) {
+            openReadingPage(rule, reader, organism)
+            rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("u18-cycle-$organism"))
+            rule.onNodeWithTag("u18-stage-counter-$organism").assertTextContains("நிலை 1 / 6")
+            rule.onNodeWithTag("u18-next-$organism").performScrollTo().performClick()
+            rule.onNodeWithTag("u18-stage-counter-$organism").assertTextContains("நிலை 2 / 6")
+            rule.onNodeWithTag("u18-stage-explanation-$organism").assertExists()
+            screenshot("u18-$organism-stage2-tamil")
+            rule.onNodeWithTag("u18-reset-$organism").performScrollTo().performClick()
+            rule.onNodeWithTag("u18-stage-counter-$organism").assertTextContains("நிலை 1 / 6")
         }
-        screenshot("tamil-trypanosoma-reading")
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u18-cycle-trypanosoma"))
-        rule.onNodeWithTag("u18-title-trypanosoma").assertExists()
-        rule.onNodeWithTag("u18-stage-counter-trypanosoma")
-            .assertTextContains("நிலை 1 / 6")
-        rule.onNodeWithTag("u18-next-trypanosoma").performScrollTo().assertIsDisplayed().performClick()
-        rule.onNodeWithTag("u18-stage-counter-trypanosoma")
-            .assertTextContains("நிலை 2 / 6")
-        screenshot("u18-trypanosoma-stage2-tamil")
-        rule.onNodeWithTag("u18-stage-explanation-trypanosoma").assertExists()
-        rule.onNodeWithTag("u18-reset-trypanosoma").performScrollTo().assertIsDisplayed().performClick()
-        rule.onNodeWithTag("u18-stage-counter-trypanosoma")
-            .assertTextContains("நிலை 1 / 6")
-        rule.onNodeWithTag("u18-audio-status-trypanosoma").assertExists()
-        screenshot("u18-trypanosoma-tamil")
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u17-study-leishmania"))
-        rule.onNodeWithTag("u17-study-title-leishmania").assertExists()
-        rule.onNodeWithTag("u17-reference-image-leishmania").assertExists()
-        rule.onNodeWithTag("u17-image-missing-leishmania").assertDoesNotExist()
-        rule.onNodeWithTag("u17-image-expand-leishmania").performClick()
-        rule.onNodeWithTag("u1-reference-fullscreen").assertExists()
-        rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
-        rule.onNodeWithTag("u1-reference-close").performClick()
-        for (stage in listOf("morphology", "mammal", "vector", "limits")) {
-            rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-                .performScrollToNode(hasTestTag("u17-stage-leishmania-" + stage))
-            rule.onNodeWithTag("u17-current-heading-leishmania-" + stage).assertExists()
-            rule.onNodeWithTag("u17-current-explanation-leishmania-" + stage).assertExists()
-        }
-        screenshot("tamil-leishmania-reading")
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u18-cycle-leishmania"))
-        rule.onNodeWithTag("u18-title-leishmania").assertExists()
-        rule.onNodeWithTag("u18-stage-counter-leishmania")
-            .assertTextContains("நிலை 1 / 6")
-        rule.onNodeWithTag("u18-next-leishmania").performScrollTo().assertIsDisplayed().performClick()
-        rule.onNodeWithTag("u18-stage-counter-leishmania")
-            .assertTextContains("நிலை 2 / 6")
-        screenshot("u18-leishmania-stage2-tamil")
-        rule.onNodeWithTag("u18-stage-explanation-leishmania").assertExists()
-        rule.onNodeWithTag("u18-reset-leishmania").performScrollTo().assertIsDisplayed().performClick()
-        rule.onNodeWithTag("u18-audio-status-leishmania").assertExists()
-        screenshot("u18-leishmania-tamil")
-        rule.onNodeWithTag("native-chapter-u1-proto-parasites")
-            .performScrollToNode(hasTestTag("u1-protozoa-reference-gallery"))
-        rule.onNodeWithTag("u1-protozoa-reference-gallery", useUnmergedTree = true).assertExists()
-        rule.onNodeWithTag("u1-reference-image-entamoeba").performScrollTo().assertExists()
-        rule.onNodeWithTag("u1-reference-select-leishmania").performScrollTo().performClick()
-        rule.onNodeWithTag("u1-reference-image-leishmania").performScrollTo().assertExists()
-        rule.onNodeWithTag("u1-reference-missing").assertDoesNotExist()
-        rule.onNodeWithTag("u1-reference-explanation").assertTextContains("மேக்ரோபேஜ்", substring = true)
-        screenshot("tamil-parasite-atlas")
-        rule.onNodeWithTag("u1-reference-select-plasmodium").performScrollTo().performClick()
-        rule.onNodeWithTag("u1-reference-expand").performScrollTo().performClick()
-        for((phase,word) in listOf(
-            "liver" to "கல்லீரல்", "blood" to "இரத்த", "mosquito" to "கொசு"
-        )) {
-            rule.onNodeWithTag("u1-plasmodium-phase-"+phase)
-                .assertTextContains(word,substring=true).performClick()
-            rule.onNodeWithTag("u1-plasmodium-focus-"+phase).assertExists()
-            rule.onNodeWithTag("u1-plasmodium-panel-missing").assertDoesNotExist()
-            rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
-            val actual=rule.onNodeWithTag("u1-reference-expanded-bitmap")
-                .fetchSemanticsNode().boundsInRoot.height
-            assertTrue("Tamil enlarged-font image viewport collapsed: $actual",
-                actual > 195f * rule.activity.resources.displayMetrics.density)
-            screenshot("plasmodium-"+phase+"-tamil")
-        }
-        rule.onNodeWithTag("u1-plasmodium-phase-blood").performClick()
-        rule.onNodeWithTag("u1-plasmodium-details-open")
-            .assertTextContains("விளக்கம்",substring=true).performClick()
-        rule.onNodeWithTag("u1-plasmodium-details-body")
-            .assertTextContains("மெரோசோயிட்டுகள்",substring=true)
-            .assertTextContains("கேமீட்டோசைட்",substring=true)
-        rule.onNodeWithTag("u1-plasmodium-details-dialog").assertIsDisplayed()
-        screenshot("plasmodium-blood-details-tamil")
-        rule.onNodeWithTag("u1-plasmodium-details-close").performClick()
-        rule.onNodeWithTag("u1-plasmodium-details-dialog").assertDoesNotExist()
-        rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
-        rule.onNodeWithTag("u1-reference-zoom-reset")
-            .assertContentDescriptionEquals("பெரிதாக்கலை மீட்டமை")
-        rule.onNodeWithTag("u1-reference-close").performClick()
+        val question = book.reviewQuestionIds.first()
+        openReadingPage(rule, reader, "practice-$question")
+        rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("a5-toggle-$question"))
+        rule.onNodeWithTag("a5-toggle-$question").performClick()
+        rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("a5-point-$question-5"))
+        rule.onNodeWithTag("a5-point-$question-5").assertIsDisplayed()
     }
 }

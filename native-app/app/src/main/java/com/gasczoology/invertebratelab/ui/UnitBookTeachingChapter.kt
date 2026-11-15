@@ -50,15 +50,22 @@ internal fun UnitBookTeachingChapter(
     referenceGallery: (@Composable (OfflineNarrator) -> Unit)? = null,
     onOpenFullLesson: (() -> Unit)? = null,
     onOpenAnatomy: (() -> Unit)? = null,
+    startInPractice: Boolean = false,
 ) {
     val context = LocalContext.current
     val narrator = remember(context, chapter.id) { OfflineNarrator(context) }
     DisposableEffect(narrator) { onDispose { narrator.close() } }
     LaunchedEffect(language) { narrator.stop() }
     val positions by rememberUpdatedState(LocalReadingPositions.current)
-    val pages = remember(book, chapter.a5Questions) { BookReadingPages.forChapter(book, chapter.a5Questions.map { it.id }) }
+    val sourceReview = chapter.id == "u1-proto-parasites" &&
+        isNativeSourceAuditDebuggable(context.applicationInfo.flags)
+    val pages = remember(book, chapter.a5Questions, sourceReview) {
+        BookReadingPages.forChapter(book, chapter.a5Questions.map { it.id }, sourceReview)
+    }
     var pageId by rememberSaveable(chapter.id) {
-        mutableStateOf(positions.positions[chapter.id]?.pageId?.takeIf { id -> pages.any { it.id == id } } ?: pages.first().id)
+        val practicePage = if (startInPractice) pages.firstOrNull { it.id.startsWith("practice-") } else null
+        val savedPage = positions.positions[chapter.id]?.pageId?.takeIf { id -> pages.any { it.id == id } }
+        mutableStateOf(practicePage?.id ?: savedPage ?: pages.first().id)
     }
     var pageHistory by rememberSaveable(chapter.id) { mutableStateOf(emptyList<String>()) }
     var continuous by rememberSaveable(chapter.id) { mutableStateOf(false) }
@@ -299,7 +306,23 @@ internal fun UnitBookTeachingChapter(
                             UnitIVPenaeusLifeCycleExplorer(language, penaeusStage) { penaeusStage = it }
                         }
                     }
-                    if (chapter.id == "u1-paramecium") item(key = "paramecium-laboratory") {
+                }
+                if (sourceReview && pageId == "source-review" && !continuous) {
+                    item(key = "flagellate-morphotype-preview") { UnitIStageAtlasChapter(language) }
+                    for (organism in listOf("trypanosoma", "leishmania")) {
+                        item(key = "source-intake-$organism") {
+                            UnitIOriginalPencilMasterIntake(organism, language)
+                        }
+                        item(key = "source-calibration-$organism") {
+                            rememberRequiredRasterBitmap("unit1/references/$organism", pngOnly = true)?.let {
+                                NativeRasterReviewerLauncher(organism, it, language)
+                            }
+                        }
+                    }
+                    item(key = "historical-leishmania-source") { UnitIHistoricalPlateSourceSection(language) }
+                }
+                if (chapter.id == "u1-paramecium" && (continuous || pageId == "interactive" || pageId == "objectives")) {
+                    item(key = "paramecium-laboratory") {
                         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             onOpenFullLesson?.let { open -> Button(onClick = open, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("r14-chapter-open-textbook")) {
                                 Text(ut(language, "Open the illustrated laboratory and simulations", "படவிளக்க ஆய்வகத்தையும் இயக்கக் காட்சிகளையும் திற"))

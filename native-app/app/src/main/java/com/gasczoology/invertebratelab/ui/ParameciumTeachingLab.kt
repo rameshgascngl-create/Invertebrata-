@@ -84,7 +84,7 @@ private fun nodes(panel: String): List<AtlasNode> = when(panel) {
 fun ParameciumTeachingLab(
     language: AppLanguage,
     onBack: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
-    onPractice: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
+    onOpenChapter: (com.gasczoology.invertebratelab.data.NativeLearningState, Boolean) -> Unit,
     learningState: com.gasczoology.invertebratelab.data.NativeLearningState,
     onLearningChanged: (com.gasczoology.invertebratelab.data.NativeLearningState) -> Unit,
 ) {
@@ -140,7 +140,11 @@ fun ParameciumTeachingLab(
     }
     fun selectTab(value: String) { narrator.stop(); changeLearning(checkpoint().copy(laboratoryTab = value)) }
     fun leave() { val position = checkpoint(); leaving = true; onBack(position) }
-    fun openChapter() { val position = checkpoint(); leaving = true; onPractice(position) }
+    fun openChapter(practice: Boolean) {
+        val position = checkpoint()
+        leaving = true
+        onOpenChapter(position, practice)
+    }
     val stopAndSave by rememberUpdatedState({ if (!leaving && localLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && localLearning.laboratoryTab in setOf("simulate", "water-balance", "nutrition", "nuclear")) changeLearning(checkpoint()) })
     DisposableEffect(lifecycleOwner) {
         val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
@@ -269,7 +273,7 @@ fun ParameciumTeachingLab(
                     onProgress = { if (localLearning.destination == com.gasczoology.invertebratelab.data.StudyDestination.PARAMECIUM_LAB && localLearning.laboratoryTab == "nuclear") changeLearning(localLearning.copy(nuclearProgress = it)) })
                 "study" -> StudySection(language, ::speak, onAnatomy = { selectTab("anatomy") },
                     onSimulation = { selectTab("simulate") },
-                    learningState = localLearning, onLearningChanged = ::changeLearning, onReadPages = ::openChapter)
+                    learningState = localLearning, onLearningChanged = ::changeLearning, onReadPages = { openChapter(practice = false) })
                 "anatomy" -> Unit // One photographed pencil-source gallery is rendered above, no Canvas anatomy.
                 "simulate" -> SimulatorSection(language, ::speak, localLearning, nutritionPlayer,
                     onChoose = { process ->
@@ -282,7 +286,7 @@ fun ParameciumTeachingLab(
                 else -> {
                     Text(bi(language,"Use the preserved question bank for revision after studying the biology.",
                         "உயிரியலைக் கற்ற பின் ஏற்கெனவே உள்ள வினாவங்கியை மீள்பயிற்சிக்குப் பயன்படுத்தவும்."))
-                    Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick=::openChapter,modifier=Modifier.heightIn(min=48.dp)
+                    Button(shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),onClick={ openChapter(practice = true) },modifier=Modifier.heightIn(min=48.dp)
                         .fillMaxWidth().testTag("r1-open-practice")) {
                         Text(bi(language,"Open Paramecium practice","பாரமீசியம் வினாப் பயிற்சி"))
                     }
