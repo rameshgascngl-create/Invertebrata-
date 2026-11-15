@@ -35,7 +35,7 @@ class ApprovedParameciumAssetTest {
 
         val chapter = ParameciumBookChapter.chapter
         val figures = chapter.allBlocks().filterIsInstance<BookFigure>()
-        val approved = figures.filter { it.slot == "paramecium/reproduction-approved" }
+        val approved = figures.filter { it.slot == "lib/paramecium-reproduction-approved" }
         assertEquals("Approved plate must appear exactly once", 1, approved.size)
         assertTrue(approved.single().caption.english.isNotBlank())
         assertTrue(approved.single().caption.tamil.any { it.code in 0x0B80..0x0BFF })
