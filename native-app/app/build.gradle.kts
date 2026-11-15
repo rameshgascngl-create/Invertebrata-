@@ -153,3 +153,38 @@ android.sourceSets.getByName("debug").assets.srcDir(
 tasks.matching { it.name == "mergeDebugAssets" }.configureEach {
     dependsOn(stageParameciumFissionReview)
 }
+
+
+// Extract the user-approved Paramecium PNG from the committed integration ZIP.
+// The ZIP is retained as the source-of-truth; extraction happens during the build.
+val stageApprovedParamecium = tasks.register("stageApprovedParamecium") {
+    val archive = rootProject.file("../Paramecium_Approved_Integration_Kit.zip")
+    val output = layout.buildDirectory.dir("generated/approvedParameciumAssets")
+    inputs.file(archive)
+    outputs.dir(output)
+    doLast {
+        val expected = "8f54a66d89843688d64108cc6ebacae35db497e2bbb8bcbef4c959eefbb44d51"
+        val entryName = "paramecium_integration/assets/paramecium-reproduction-approved.png"
+        require(archive.isFile) { "Approved Paramecium integration ZIP missing: ${archive.path}" }
+        val bytes = java.util.zip.ZipFile(archive).use { zip ->
+            val entry = zip.getEntry(entryName)
+                ?: error("Approved Paramecium PNG missing from committed ZIP")
+            zip.getInputStream(entry).use { it.readBytes() }
+        }
+        val actual = MessageDigest.getInstance("SHA-256")
+            .digest(bytes).joinToString("") { "%02x".format(it) }
+        require(actual == expected) { "Approved Paramecium PNG checksum mismatch: $actual" }
+        require(bytes.size >= 24 && bytes.copyOfRange(0, 8).contentEquals(
+            byteArrayOf(-119, 80, 78, 71, 13, 10, 26, 10)
+        )) { "Approved Paramecium image is not PNG" }
+        val destination = output.get().asFile.resolve("paramecium/reproduction-approved.png")
+        destination.parentFile.mkdirs()
+        destination.writeBytes(bytes)
+    }
+}
+android.sourceSets.getByName("main").assets.srcDir(
+    layout.buildDirectory.dir("generated/approvedParameciumAssets").get().asFile
+)
+tasks.matching { it.name.startsWith("merge") && it.name.endsWith("Assets") }.configureEach {
+    dependsOn(stageApprovedParamecium)
+}
