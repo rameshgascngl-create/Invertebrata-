@@ -1,6 +1,7 @@
 package com.gasczoology.invertebratelab.ui
 
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.test.assertDoesNotExist
 import androidx.compose.ui.test.assertExists
 import androidx.compose.ui.platform.testTag
@@ -42,7 +43,7 @@ class ApprovedParameciumReaderTest {
         assertTrue("Approved figure must occur on exactly one reading page", matchingPages.size == 1)
         val figurePage = matchingPages.single()
         compose.setContent {
-            InvertebrataTheme {
+            MaterialTheme {
                 LazyColumn(modifier = androidx.compose.ui.Modifier.testTag("paramecium-reader-list")) {
                     bookChapterItems(
                         chapter = chapter,
