@@ -116,7 +116,7 @@ object AnnelidModesBookChapter {
                         listOf("Mode" to "முறை", "Example" to "எடுத்துக்காட்டு", "Movement" to "இயக்கம்", "Feeding" to "உண்ணுதல்", "Gas exchange" to "வாயுப் பரிமாற்றம்"),
                         listOf(
                             listOf("Errant" to "எரண்ட்", "Nereis" to "நெரிஸ்", "Crawling and swimming with parapodia" to "பாரபோடியாக்களால் ஊர்தலும் நீந்தலும்", "Predator or scavenger; eversible pharynx" to "வேட்டையாடி அல்லது தோட்டி; வெளித்தள்ளும் தொண்டை", "Parapodia and body surface" to "பாரபோடியாக்கள், உடல் மேற்பரப்பு"),
-                            listOf("Tube-dwelling" to "குழாய்வாழ்", "Sabella, Serpula" to "சபெல்லா, செர்புலா", "Little; moves within the tube" to "சிறிது; குழாய்க்குள் நகர்கிறது", "Suspension feeding by a crown of tentacles" to "உணர்கொம்புக் கிரீடத்தால் நிலைக்கரைசல் உண்ணுதல்", "Crown of tentacles" to "உணர்கொம்புக் கிரீடம்"),
+                            listOf("Tube-dwelling" to "குழாய்வாழ்", "Sabella, Serpula" to "சபெல்லா, செர்புலா", "Little; moves within the tube" to "சிறிது; குழாய்க்குள் நகர்கிறது", "Suspension feeding by a crown of tentacles" to "உணர்கொம்புக் கிரீடத்தால் நீரில் மிதக்கும் உணவுத் துகள்களை வடிகட்டி உண்ணுதல்", "Crown of tentacles" to "உணர்கொம்புக் கிரீடம்"),
                             listOf("Burrowing" to "துளையிடும்", "Earthworm" to "மண்புழு", "Peristalsis, chaetae anchor" to "அலைச் சுருக்கம், சீட்டா நங்கூரம்", "Deposit feeder" to "படிவு உண்ணி", "Moist skin" to "ஈரத் தோல்"),
                             listOf("Leech-like" to "அட்டை போன்ற", "Hirudinaria" to "ஹிருடினாரியா", "Suckers and looping" to "உறிஞ்சிகளும் வளைந்து நகர்தலும்", "Blood-sucking or predatory" to "இரத்தம் உறிஞ்சும் அல்லது வேட்டையாடும்", "Body surface" to "உடல் மேற்பரப்பு"),
                         )),
