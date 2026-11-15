@@ -21,11 +21,11 @@ object IntroInvertebrataBookChapter {
             bsec("hierarchy", "The taxonomic hierarchy", "வகைப்பாட்டுப் படிநிலை",
                 blocks = listOf(
                     bp("Taxonomic hierarchy arranges organisms in nested ranks, each rank contained within the one above it. In the conventional sequence from the narrowest to the broadest the ranks are species, genus, family, order, class, phylum, kingdom and domain. The species is the basic named rank. Related species are grouped into a genus, related genera into a family, and progressively broader groups form the higher ranks. Each group at any rank is called a taxon, and the plural is taxa." to
-                        "வகைப்பாட்டுப் படிநிலை உயிரிகளை உள்ளடக்கிய தரங்களாக அடுக்குகிறது; ஒவ்வொரு தரமும் அதற்கு மேலுள்ளதற்குள் அடங்கும். குறுகியதிலிருந்து அகன்றது வரை வழக்கமான வரிசையில் தரங்கள்: இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேரிராச்சியம். இனம் அடிப்படைப் பெயரிடப்பட்ட தரம். தொடர்புடைய இனங்கள் பேரினமாகவும், தொடர்புடைய பேரினங்கள் குடும்பமாகவும் தொகுக்கப்படுகின்றன; படிப்படியாக அகன்ற குழுக்கள் உயர் தரங்களை உருவாக்குகின்றன. எந்தத் தரத்திலுமுள்ள ஒவ்வொரு குழுவும் வகைப்பாட்டுக் குழு (வகைப்பாட்டுக் குழு); பன்மை டாக்சா."),
+                        "வகைப்பாட்டில் உயிரினங்கள் ஒன்றுக்குள் ஒன்று அடங்கும் படிநிலைகளாக ஒழுங்குபடுத்தப்படுகின்றன. ஒவ்வொரு படிநிலையும் அதற்கு மேலுள்ள விரிவான குழுவிற்குள் அடங்குகிறது. குறுகியதிலிருந்து அகன்றது வரை வழக்கமான வரிசையில் தரங்கள்: இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain). இனம் அடிப்படைப் பெயரிடப்பட்ட தரம். தொடர்புடைய இனங்கள் பேரினமாகவும், தொடர்புடைய பேரினங்கள் குடும்பமாகவும் தொகுக்கப்படுகின்றன; படிப்படியாக அகன்ற குழுக்கள் உயர் தரங்களை உருவாக்குகின்றன. எந்தத் தரத்திலுமுள்ள ஒவ்வொரு குழுவும் வகைப்பாட்டுக் குழு (வகைப்பாட்டுக் குழு); பன்மை டாக்சா."),
                     btable("The ranks of the hierarchy, with a worked example", "படிநிலைத் தரங்களும் எடுத்துக்காட்டும்",
                         listOf("Rank" to "தரம்", "Example: the freshwater snail" to "எடுத்துக்காட்டு: நன்னீர் நத்தை"),
                         listOf(
-                            listOf("Domain" to "பேரிராச்சியம்", "Eukarya" to "யூகாரியா"),
+                            listOf("Domain" to "பேருலகம் (Domain)", "Eukarya" to "யூகாரியா"),
                             listOf("Kingdom" to "இராச்சியம்", "Animalia" to "அனிமாலியா"),
                             listOf("Phylum" to "தொகுதி", "Mollusca" to "மொலஸ்கா"),
                             listOf("Class" to "வகுப்பு", "Gastropoda" to "காஸ்ட்ரோபோடா"),
@@ -192,7 +192,7 @@ object IntroInvertebrataBookChapter {
                 )),
         ),
         summary = listOf(
-            "The taxonomic hierarchy arranges organisms in nested ranks: species, genus, family, order, class, phylum, kingdom and domain." to "வகைப்பாட்டுப் படிநிலை உயிரிகளை இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேரிராச்சியம் என உள்ளடக்கிய தரங்களாக அடுக்குகிறது.",
+            "The taxonomic hierarchy arranges organisms in nested ranks: species, genus, family, order, class, phylum, kingdom and domain." to "வகைப்பாட்டுப் படிநிலை உயிரிகளை இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain) என உள்ளடக்கிய தரங்களாக அடுக்குகிறது.",
             "A species name is a binomen of genus and specific name, and name-bearing types give an objective reference." to "இனப் பெயர் பேரினம், சிறப்புப் பெயரின் இருசொல்; பெயர்தாங்கி வகை மாதிரிகள் புறவய ஆதாரத்தைத் தருகின்றன.",
             "The rank sequence is a framework, not proof of phylogenetic relationship." to "தரவரிசை கட்டமைப்பு; இனவரலாற்று உறவுக்கான சான்றல்ல.",
             "Invertebrata is an informal collective term and not a single phylum." to "முதுகெலும்பற்றவை முறைசாரா கூட்டுச் சொல்; ஒற்றைத் தொகுதி அல்ல.",
@@ -201,7 +201,7 @@ object IntroInvertebrataBookChapter {
         ),
         checks = listOf(
             bqc("List the ranks of the taxonomic hierarchy from species upwards.", "இனத்திலிருந்து மேல்நோக்கி படிநிலைத் தரங்களைப் பட்டியலிடுக.",
-                "Species, genus, family, order, class, phylum, kingdom, domain.", "இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேரிராச்சியம்."),
+                "Species, genus, family, order, class, phylum, kingdom, domain.", "இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain)."),
             bqc("What is a binomen?", "இருசொல் பெயர் என்றால் என்ன?",
                 "The two-word scientific name of a species: the genus name and the specific name.", "இனத்தின் இருசொல் அறிவியல் பெயர்: பேரினப் பெயரும் சிறப்புப் பெயரும்."),
             bqc("Why is Invertebrata not a single phylum?", "முதுகெலும்பற்றவை ஏன் ஒற்றைத் தொகுதி அல்ல?",

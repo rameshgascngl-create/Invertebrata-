@@ -34,7 +34,7 @@ object ParameciumBookChapter {
                     bdef("Endoplasm", "எண்டோபிளாசம் (Endoplasm)", "The granular, fluid inner cytoplasm that holds the nuclei and vacuoles." to
                         "உட்கருக்களையும் நுண்குமிழ்களையும் கொண்ட துகள்கள் நிறைந்த, திரவமான உள் சைட்டோபிளாசம்."),
                     bdef("Trichocyst", "டிரைக்கோசிஸ்ட் (Trichocyst)", "A spindle-shaped body in the ectoplasm that can discharge a thread, thought to be defensive." to
-                        "ஒரு இழையை வெளியேற்றக்கூடிய, தற்காப்புக்கு எனக் கருதப்படும் எக்டோபிளாசத்திலுள்ள நூற்கதிர் வடிவ உடல்."),
+                        "எக்டோபிளாசத்தில் காணப்படும், தூண்டுதலின்போது நூலிழையை வெளியேற்றக்கூடிய கூர்முனை வடிவ நுண்ணுறுப்பு; தற்காப்பில் பங்காற்றக்கூடும்."),
                     bdef("Basal body", "அடித்தளத் துகள் (Basal body)", "The structure at the base of a cilium from which it grows." to
                         "குறுஇழை வளரும், அதன் அடியிலுள்ள அமைப்பு."),
                 )),
@@ -46,13 +46,13 @@ object ParameciumBookChapter {
                     bp("Swimming therefore follows a spiral path, and the animal can change course. On meeting an obstacle or an unfavourable chemical, the direction of the ciliary beat is reversed for a short time, the animal backs away, and then it turns and swims forward in a new direction. This is the avoiding reaction. The reversal is controlled by changes in the electrical properties of the cell membrane, and it is a standard example of a response in a single cell that is built from simple parts. It should be written as a response of the whole cell, and not as the work of a nervous system, which the animal does not have." to
                         "எனவே நீந்துதல் சுருள் பாதையைப் பின்பற்றுகிறது; விலங்கு திசையை மாற்றலாம். தடை அல்லது சாதகமற்ற வேதிப்பொருளைச் சந்திக்கும்போது சிலியா அசைவின் திசை சிறிது நேரம் தலைகீழாகிறது; விலங்கு பின்வாங்கி, பின்னர் திரும்பி புதிய திசையில் முன்னே நீந்துகிறது. இது தவிர்ப்புத் துலங்கல். தலைகீழாதல் செல் சவ்வின் மின் பண்புகளின் மாற்றங்களால் கட்டுப்படுத்தப்படுகிறது; எளிய பகுதிகளால் கட்டப்பட்ட ஒற்றை செல்லில் துலங்கலுக்கு நிலையான எடுத்துக்காட்டு. இது முழு செல்லின் துலங்கலாக எழுதப்பட வேண்டும்; விலங்குக்கு இல்லாத நரம்பு அமைப்பின் வேலையாக அல்ல."),
                     bdef("Power stroke", "ஆற்றல் வீச்சு (Power stroke)", "The stiff backward sweep of a cilium that drives the water and moves the cell." to
-                        "நீரைத் தள்ளி செல்லை நகர்த்தும் குறுஇழையின் விறைப்பான பின்னோக்கி அசையும் உந்துவீச்சு."),
+                        "குறுஇழை விறைப்பாகப் பின்னோக்கி வீசும்போது நீர் தள்ளப்பட்டு செல் நகர உதவும் உந்துவீச்சு."),
                     bdef("Recovery stroke", "மீட்பு வீச்சு (Recovery stroke)", "The bent forward return of a cilium to its starting position." to
                         "குறுஇழை தொடக்க நிலைக்கு வளைந்து முன்னே திரும்புதல்."),
                     bdef("Metachronal wave", "மெட்டாக்ரோனல் அலை (Metachronal wave)", "The coordinated wave of ciliary beating that passes along the rows of cilia." to
                         "சிலியா வரிசைகள் வழியே செல்லும் ஒருங்கிணைந்த சிலியா அசைவு அலை."),
                     bdef("Avoiding reaction", "தவிர்ப்புத் துலங்கல் (Avoiding reaction)", "The reversal of ciliary beat by which Paramecium backs away from an obstacle and changes direction." to
-                        "பாரமீசியம் தடையிலிருந்து பின்வாங்கி திசை மாற்றும் சிலியா அசைவுத் தலைகீழாதல்."),
+                        "பாரமீசியம் தடையைச் சந்திக்கும்போது குறுஇழைகளின் அசைவுத் திசையை மாற்றிப் பின்வாங்கி, பின்னர் புதிய திசையில் நீந்தும் தவிர்ப்புத் துலங்கல்."),
                 )),
             bsec("feeding", "The oral apparatus, feeding and digestion", "வாய் அமைப்பு, உணவெடுப்பு, செரிமானம்",
                 blocks = listOf(

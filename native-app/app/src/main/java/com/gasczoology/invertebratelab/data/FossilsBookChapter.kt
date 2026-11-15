@@ -25,8 +25,8 @@ object FossilsBookChapter {
                     bp("The consequence is preservation bias. Mineralised hard parts, such as shells, skeletons and exoskeletons, survive burial far more readily than the soft tissues, and so groups with such parts are over-represented, while soft-bodied groups are under-represented. An animal that lives in a place where burial is rapid, such as a sea floor in which sediment accumulates, is more likely to be preserved than one that lives on a rocky shore or in a forest. The fossil record is therefore a biased sample, and the absence of fossils of a group is not evidence that it was rare or absent." to
                         "விளைவு பாதுகாப்புச் சார்பு. ஓடுகள், கூடுகள், புறச்சட்டகங்கள் போன்ற கனிமமாக்கப்பட்ட கடினப் பகுதிகள் மென்திசுக்களை விடப் புதைப்பில் மிகவும் எளிதாகத் தப்புகின்றன; எனவே அத்தகைய பகுதிகளுடைய குழுக்கள் மிகையாகவும் மென்உடல் குழுக்கள் குறைவாகவும் பிரதிநிதித்துவம் பெறுகின்றன. படிவு சேரும் கடலடி போல விரைவாகப் புதைக்கப்படும் இடத்தில் வாழும் விலங்கு, பாறைக் கரை அல்லது காட்டில் வாழ்வதை விட பாதுகாக்கப்பட அதிக வாய்ப்புடையது. எனவே புதைபடிவப் பதிவு சார்புடைய மாதிரி; ஒரு குழுவின் புதைபடிவங்கள் இல்லாதது அது அரிது அல்லது இல்லை என்பதற்குச் சான்றல்ல."),
                     bpoints("Forms of fossil preservation", "புதைபடிவப் பாதுகாப்பின் வடிவங்கள்",
-                        "Original material retained, as in a shell that keeps its mineral." to "கனிமத்தைத் தக்கவைக்கும் ஓடு போல, முதல் பொருள் தக்கவைக்கப்படுதல்.",
-                        "Replacement of the original material by another mineral." to "முதல் பொருள் மற்றொரு கனிமத்தால் மாற்றப்படுதல்.",
+                        "Original material retained, as in a shell that keeps its mineral." to "கனிமப் பகுதிகள் மாறாமல் எஞ்சியுள்ள ஓடு போன்றவற்றில் உயிரியின் மூலப்பொருள் பாதுகாக்கப்படுதல்.",
+                        "Replacement of the original material by another mineral." to "உயிரியின் மூலப்பொருள் வேறொரு கனிமத்தால் பதிலீடு செய்யப்படுதல்.",
                         "A mould, left when the remains dissolve, and a cast, formed when the mould is filled." to "எச்சங்கள் கரையும்போது எஞ்சும் அச்சு; அச்சு நிரப்பப்படும்போது உருவாகும் வார்ப்பு.",
                         "Trace fossils, such as burrows and tracks, which record behaviour and not the body." to "உடலை அல்ல, நடத்தையைப் பதிவு செய்யும் வளைகள், பாதச்சுவடுகள் போன்ற தடய புதைபடிவங்கள்.",
                     ),
@@ -45,7 +45,7 @@ object FossilsBookChapter {
                 blocks = listOf(
                     bp("Fossils are used to date and correlate rocks, which is the subject of biostratigraphy. The principle is that the fauna of the past changed with time in an irreversible way, so that a particular fossil species is found only in rocks of a limited age. If the same fossil is found in rocks in two distant places, the rocks can be correlated in time. A fossil used in this way is an index fossil, or guide fossil." to
                         "புதைபடிவங்கள் பாறைகளுக்கு காலம் குறிக்கவும் ஒப்பிடவும் பயன்படுகின்றன; இது உயிர்படிவ அடுக்கியலின் பொருள். கொள்கை: கடந்த கால விலங்கினம் காலத்துடன் மீளமுடியாத வகையில் மாறியது; எனவே குறிப்பிட்ட புதைபடிவ இனம் வரம்புடைய வயதுப் பாறைகளில் மட்டுமே காணப்படுகிறது. இரு தொலைவிடங்களிலுள்ள பாறைகளில் ஒரே புதைபடிவம் காணப்பட்டால், பாறைகளைக் காலத்தில் ஒப்பிடலாம். இவ்வாறு பயன்படும் புதைபடிவம் வழிகாட்டிப் புதைபடிவம்."),
-                    bpoints("What makes a good index fossil", "நல்ல வழிகாட்டிப் புதைபடிவத்தை உருவாக்குவது",
+                    bpoints("What makes a good index fossil", "சிறந்த வழிகாட்டிப் புதைபடிவத்தின் பண்புகள்",
                         "Rapid evolution, so that each species lasted only a short time." to "ஒவ்வொரு இனமும் குறுகிய காலமே நிலைத்திருக்கும் வகையில் விரைவான பரிணாமம்.",
                         "Wide geographic distribution, so that it can be found in many places." to "பல இடங்களில் காணப்படும் வகையில் பரந்த புவியியல் பரவல்.",
                         "Abundance, so that it is likely to be found." to "கண்டுபிடிக்க வாய்ப்புள்ள வகையில் மிகுதி.",
