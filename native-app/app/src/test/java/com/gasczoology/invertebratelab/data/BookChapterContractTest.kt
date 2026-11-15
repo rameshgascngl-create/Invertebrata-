@@ -51,7 +51,7 @@ class BookChapterContractTest {
             val hasImage = if (f.slot == "lib/paramecium-reproduction-approved") {
                 val archive = File("../../Paramecium_Approved_Integration_Kit.zip")
                 ZipFile(archive).use { zip ->
-                    val entry = zip.getEntry("paramecium_integration/assets/${f.stem.substringAfterLast('/')}.png")
+                    val entry = zip.getEntry("paramecium_integration/assets/${f.id}.png")
                     entry != null && !entry.isDirectory && entry.size > 0
                 }
             } else {

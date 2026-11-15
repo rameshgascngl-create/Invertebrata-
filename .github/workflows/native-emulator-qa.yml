@@ -14,6 +14,8 @@ on:
       - 'native-app/app/src/main/assets/**'
       - 'native-app/app/src/main/res/**'
       - 'native-app/app/src/androidTest/**'
+      - 'native-app/app/src/test/java/**/BookReadingPageCoverageTest.kt'
+      - 'native-app/app/src/test/java/**/BookChapterContractTest.kt'
       - 'native-app/app/build.gradle.kts'
       - 'native-app/build.gradle.kts'
 
