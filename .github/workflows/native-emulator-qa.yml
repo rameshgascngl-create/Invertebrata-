@@ -122,6 +122,21 @@ jobs:
               rm -f native-app/app/build/qa-evidence/post-test-screen.png
               echo "Post-test diagnostic screenshot unavailable" >&2
             fi
+            # Launch the actual native app after instrumentation for a labelled home-screen capture.
+            # This is visual evidence only; it does not certify Tamil locale or lesson screens.
+            if timeout 20s adb -s emulator-5554 shell pm path com.gasczoology.invertebratelab | grep -q 'package:'; then
+              timeout 20s adb -s emulator-5554 shell am force-stop com.gasczoology.invertebratelab || true
+              if timeout 25s adb -s emulator-5554 shell am start -n com.gasczoology.invertebratelab/.MainActivity > native-app/app/build/qa-evidence/home-launch.txt 2>&1; then
+                sleep 5
+                timeout 25s adb -s emulator-5554 exec-out screencap -p > native-app/app/build/qa-evidence/native-home-screen.png 2>/dev/null || true
+                if [ ! -s native-app/app/build/qa-evidence/native-home-screen.png ]; then
+                  rm -f native-app/app/build/qa-evidence/native-home-screen.png
+                  echo "Native home screenshot unavailable" >&2
+                fi
+              fi
+            else
+              echo "Native package not installed; home screenshot unavailable" > native-app/app/build/qa-evidence/home-launch.txt
+            fi
             echo "Instrumentation Gradle exit code: $test_status"
             exit "$test_status"
       - name: Collect bounded post-failure diagnostics
