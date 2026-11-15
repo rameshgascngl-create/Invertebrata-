@@ -87,9 +87,9 @@ class NativeUnitIITeachingTest {
 
     @Test fun tamilSyconStageLinksToCanalFigureAndPractice() {
         val reader = openStages("u2-sycon", tamil = true)
-        selectStage(reader, "prosopyle", "03 · புரோசோபைல்", "ஆரக் கால்வாய்")
+        selectStage(reader, "prosopyle", "03 · புரோசோபைல்", "ஆரக் கால்வாயையும்")
         verifyFigure(reader, "sycon-canal-system", "03 · புரோசோபைல்", zoom = true)
-        selectStage(reader, "apopyle", "05 · அப்போபைல்", "ஸ்பாஞ்சோசீல்")
+        selectStage(reader, "apopyle", "05 · அப்போபைல்", "ஸ்பாஞ்சோசீலுக்குள்")
         verifyFivePointAnswer(reader, "u2-sycon-A5-1")
     }
 

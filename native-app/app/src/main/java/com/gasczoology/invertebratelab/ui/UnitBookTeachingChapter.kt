@@ -306,6 +306,21 @@ internal fun UnitBookTeachingChapter(
                         }
                     }
                 } else bookChapterItems(book, language, if (continuous) null else page, ::selectPage) { narrator.speak(it, language) }
+                if (chapter.id == "u4-penaeus" && !continuous && pageId == "objectives") {
+                    item(key = "penaeus-explorer-links") {
+                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            pages.filter { it.id == "appendages" || it.id == "larvae" }.forEach { explorer ->
+                                OutlinedButton(
+                                    onClick = { selectPage(explorer.id) },
+                                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                        .testTag("penaeus-open-${explorer.id}"),
+                                ) {
+                                    Text(explorer.title.value(language))
+                                }
+                            }
+                        }
+                    }
+                }
                 if (continuous || pageId in setOf("trypanosoma", "leishmania", "appendages", "larvae", "interactive")) {
                     if (chapter.id == "u1-proto-parasites") {
                         if (continuous || pageId == "trypanosoma") item(key = "trypanosoma-cycle") {

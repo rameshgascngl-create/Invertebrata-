@@ -1,12 +1,13 @@
 package com.gasczoology.invertebratelab
 
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.*
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -14,160 +15,121 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class NativeUnitIVPenaeusTest {
-    @get:Rule val rule=createAndroidComposeRule<MainActivity>()
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+    private val context get() = InstrumentationRegistry.getInstrumentation().targetContext
+    private val reader = "book-reader-u4-penaeus"
 
     @Before fun resetToHome() {
         runBlocking {
-            val ctx=androidx.test.platform.app.InstrumentationRegistry
-                .getInstrumentation().targetContext
-            NativeLearningRepository(ctx).save(NativeLearningState())
-            LanguagePreferenceRepository(ctx).setLanguage(AppLanguage.ENGLISH)
+            NativeLearningRepository(context).save(NativeLearningState())
+            LanguagePreferenceRepository(context).setLanguage(AppLanguage.ENGLISH)
         }
         rule.activityRule.scenario.recreate()
+        await("native-home")
+    }
+
+    private fun node(tag: String) = rule.onNodeWithTag(tag, useUnmergedTree = true)
+
+    private fun await(tag: String) {
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag(tag, useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
         }
     }
 
-    private fun enterPrawn(tamil:Boolean) {
-        if(tamil) rule.onNodeWithTag("language-tamil").performClick()
-        rule.onNodeWithTag("unit-4").performScrollTo().performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-unit-4").fetchSemanticsNodes().isNotEmpty()
+    private fun find(tag: String): SemanticsNodeInteraction {
+        node(reader).performScrollToNode(hasTestTag(tag))
+        return node(tag).performScrollTo()
+    }
+
+    private fun enterPrawn(language: AppLanguage) {
+        if (language == AppLanguage.TAMIL) node("language-tamil").performClick()
+        node("unit-4").performScrollTo().performClick()
+        await("native-unit-4")
+        node("native-unit-4").performScrollToNode(hasTestTag("chapter-u4-penaeus"))
+        node("chapter-u4-penaeus").performClick()
+        await(reader)
+        openReadingPage(rule, reader, "objectives")
+        find("book-introduction").assertIsDisplayed()
+    }
+
+    @Test fun englishAppendageExplorerIsReachableFromTheOpeningPage() {
+        enterPrawn(AppLanguage.ENGLISH)
+        find("book-introduction").assert(hasAnyDescendant(hasText("Penaeus indicus", substring = true)))
+        find("penaeus-open-appendages").performClick()
+        find("u4-penaeus-appendage-disclosure").assertTextContains("19 PAIRS", substring = true)
+        for ((index, option) in UnitIVPenaeusTeaching.appendages.withIndex()) {
+            find("u4-penaeus-appendage-name").assertTextEquals(option.names.english)
+            find("u4-penaeus-appendage-count").assertTextContains(
+                option.numberOfPairs.toString(), substring = true
+            )
+            if (index < UnitIVPenaeusTeaching.appendages.lastIndex) {
+                find("u4-penaeus-appendage-next").performClick()
+            }
         }
-        rule.onNodeWithTag("native-unit-4")
-            .performScrollToNode(hasTestTag("chapter-u4-penaeus"))
-        rule.onNodeWithTag("chapter-u4-penaeus").performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u4-penaeus")
-                .fetchSemanticsNodes().isNotEmpty()
+    }
+
+    @Test fun tamilLarvalStagePersistsAcrossPagingAndActualRotation() {
+        enterPrawn(AppLanguage.TAMIL)
+        find("penaeus-open-larvae").performClick()
+        val stages = UnitIVPenaeusTeaching.stages
+        fun assertStage(index: Int) {
+            find("u4-penaeus-life-stage")
+                .assertTextEquals("${index + 1} / ${stages.size} — ${stages[index].name.tamil}")
+        }
+        assertStage(0)
+        find("u4-penaeus-life-next").performClick()
+        assertStage(1)
+        find("u4-penaeus-life-next").performClick()
+        assertStage(2)
+        openReadingPage(rule, reader, "objectives")
+        find("penaeus-open-larvae").performClick()
+        assertStage(2)
+        try {
+            rule.activityRule.scenario.onActivity {
+                it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            }
+            rule.waitUntil(20_000) {
+                context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+            }
+            await(reader)
+            assertStage(2)
+        } finally {
+            rule.activityRule.scenario.onActivity {
+                it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }
+            rule.waitUntil(20_000) {
+                context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+            }
         }
     }
 
-    private fun find(tag:String) {
-        rule.onNodeWithTag("native-chapter-u4-penaeus")
-            .performScrollToNode(hasTestTag(tag))
-    }
-
-    private fun capture(name:String) {
-        rule.waitForIdle()
-        val scale=androidx.test.platform.app.InstrumentationRegistry
-            .getInstrumentation().targetContext.resources.configuration.fontScale
-        val suffix=if(scale>=1.95f)"200" else "100"
-        val path="/sdcard/Download/unit4-qa/unit4-"+suffix+"-"+name+".png"
-        val automation=androidx.test.platform.app.InstrumentationRegistry
-            .getInstrumentation().uiAutomation
-        android.os.ParcelFileDescriptor.AutoCloseInputStream(
-            automation.executeShellCommand("screencap -p "+path)).use { it.readBytes() }
-        val imageBytes=android.os.ParcelFileDescriptor.AutoCloseInputStream(
-            automation.executeShellCommand("cat "+path)).use { it.readBytes() }
-        assertTrue("Source screenshot missing",imageBytes.size>15000)
-        val image=android.graphics.BitmapFactory.decodeByteArray(
-            imageBytes,0,imageBytes.size)
-        assertNotNull("Bad screenshot",image)
-        image!!.recycle()
-    }
-
-    @Test fun englishPrawnHasRealHeadedLessonsAndAnatomyHonesty() {
-        enterPrawn(false)
-        find("u4-penaeus-textbook-title")
-        rule.onNodeWithTag("u4-penaeus-textbook-title")
-            .assertTextContains("Penaeus",substring=true)
-        rule.onNodeWithTag("u4-penaeus-academic-hold").assertExists()
-        find("u4-penaeus-section-classification")
-        rule.onNodeWithTag("u4-penaeus-section-classification").assertExists()
-        find("u4-penaeus-section-respiration")
-        rule.onNodeWithTag("u4-penaeus-section-respiration").assertExists()
-        find("u4-penaeus-appendage-explorer")
-        rule.onNodeWithTag("u4-penaeus-appendage-disclosure").assertExists()
-        rule.onNodeWithTag("u4-penaeus-appendage-count")
-            .assertTextContains("5",substring=true)
-        rule.onNodeWithTag("u4-penaeus-appendage-next")
-            .performScrollTo().performClick()
-        rule.onNodeWithTag("u4-penaeus-appendage-count")
-            .assertTextContains("3",substring=true)
-        capture("penaeus-english-appendages")
-    }
-
-    @Test fun tamilPrawnStageChangesPersistAcrossLazyScrollingAndRotation() {
-        enterPrawn(true)
-        find("u4-penaeus-life-explorer")
-        // First rendered stage is egg; move to nauplius and protozoea.
-        rule.onNodeWithTag("u4-penaeus-life-stage")
-            .assertTextContains("முட்டை",substring=true)
-        rule.onNodeWithTag("u4-penaeus-life-next")
-            .performScrollTo().performClick()
-        rule.onNodeWithTag("u4-penaeus-life-stage")
-            .assertTextContains("நௌப்ளியஸ்",substring=true)
-        rule.onNodeWithTag("u4-penaeus-life-next")
-            .performScrollTo().performClick()
-        rule.onNodeWithTag("u4-penaeus-life-stage")
-            .assertTextContains("புரோட்டோசோயா",substring=true)
-        capture("penaeus-tamil-protozoea")
-        // Lazy-list item may be disposed during scrolling: stage state is
-        // hoisted outside it and must not silently return to egg.
-        find("u4-penaeus-section-classification")
-        find("u4-penaeus-life-explorer")
-        rule.onNodeWithTag("u4-penaeus-life-stage")
-            .assertTextContains("புரோட்டோசோயா",substring=true)
-        capture("penaeus-tamil-stage-retained")
-    }
-
-    @Test fun prawnA5QuestionsAndBackNavigationRemainIntact() {
-        enterPrawn(false)
-        find("u4-penaeus-atlas-pending")
-        rule.onNodeWithTag("u4-penaeus-atlas-pending").assertExists()
-        find("u4-penaeus-a5-original-heading")
-        rule.onNodeWithTag("u4-penaeus-a5-original-heading").assertExists()
-        // The original A5 answer contents are immutable; opening the lesson
-        // must not remove or silently rewrite the two validated questions.
-        val original=NativeCurriculumManifest.a5ChapterIdsByUnit
-            .getValue(4).contains("u4-penaeus")
-        assertTrue(original)
-        rule.onNodeWithTag("native-chapter-u4-penaeus")
-            .performScrollToNode(hasTestTag("a5-card-u4-penaeus-A5-1"))
-        rule.onNodeWithTag("a5-card-u4-penaeus-A5-1").assertExists()
-        capture("penaeus-A5-preserved")
-        rule.onNodeWithTag("native-chapter-u4-penaeus").performScrollToIndex(0)
-        rule.onNodeWithText("Back").performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-unit-4").fetchSemanticsNodes().isNotEmpty()
+    @Test fun prawnFiveMarkAnswerAndEarthwormBackNavigationRemainIntact() {
+        enterPrawn(AppLanguage.ENGLISH)
+        val question = ValidatedA5AssetRepository(context).load().single { it.number == 4 }
+            .chapters.single { it.id == "u4-penaeus" }.a5Questions.first()
+        openReadingPage(rule, reader, "practice-${question.id}")
+        find("a5-question-${question.id}").assertTextEquals(question.question.english)
+        find("a5-toggle-${question.id}").performClick()
+        question.answerPoints.forEachIndexed { index, point ->
+            find("a5-point-${question.id}-${index + 1}").assertTextEquals("${index + 1}. ${point.english}")
         }
-        // The Unit IV LazyColumn may not have composed the Earthworm action
-        // after returning from Penaeus at 200% font. Traverse its scroll
-        // container, preserving the requirement that the original route works.
-        rule.onNodeWithTag("native-unit-4")
-            .performScrollToNode(hasTestTag("u4-open-earthworm-textbook"))
-        rule.onNodeWithTag("u4-open-earthworm-textbook").assertExists().performClick()
-        rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("u4-earthworm-reader")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
-        // Verify that the actual Earthworm teaching reader, not just the
-        // navigation button, is available after the round-trip.
-        rule.onNodeWithTag("u4-earthworm-title", useUnmergedTree = true)
-            .assertTextContains("Metaphire posthuma", substring = true)
-    }
-    @Test fun tamilNativeDiagramSelectsActualNamedVectorStructureAndRetainsSelection() {
-        enterPrawn(true)
-        find("u42-penaeus-vector-atlas")
-        rule.onNodeWithTag("u42-penaeus-schematic-disclosure").assertExists()
-        // Tap a genuine named vector-space target at the known eye anchor.
-        // 100% and 200% fonts use identical proportional diagram coordinates.
-        rule.onNodeWithTag("u42-penaeus-vector-canvas")
-            .performTouchInput { click(percentOffset(.129f, .265f)) }
-        rule.onNodeWithTag("u42-penaeus-selected-name")
-            .assertTextContains("காம்புள்ள", substring = true)
-        // Force LazyColumn to dispose this plate and reconstruct it.
-        find("u4-penaeus-section-practical")
-        find("u42-penaeus-vector-atlas")
-        rule.onNodeWithTag("u42-penaeus-selected-name")
-            .assertTextContains("காம்புள்ள", substring = true)
-        // A tappable accessible label is always offered alongside the canvas.
-        rule.onNodeWithTag("u42-penaeus-select-telson").performScrollTo().performClick()
-        rule.onNodeWithTag("u42-penaeus-selected-name")
-            .assertTextContains("டெல்சன்", substring = true)
-        capture("penaeus-tamil-interactive-telson")
+        node("book-back").performClick()
+        await("native-unit-4")
+        node("native-unit-4").performScrollToNode(hasTestTag("u4-open-earthworm-textbook"))
+        node("u4-open-earthworm-textbook").performClick()
+        await("u4-earthworm-reader")
+        node("u4-earthworm-title").assertTextContains("Metaphire posthuma", substring = true)
     }
 
+    @Test fun tamilPrawnAnatomyOpensTheCanonicalRasterAndCredit() {
+        enterPrawn(AppLanguage.TAMIL)
+        find("book-reference-gallery-toggle-u4-penaeus").performClick()
+        val image = find("r2-plate-bitmap-penaeus-external").assertIsDisplayed()
+        find("plate-credit-penaeus-external").assertIsDisplayed()
+        image.performScrollTo().performClick()
+        node("r2-fullscreen-bitmap").assertIsDisplayed()
+        node("r2-zoom-in").performClick()
+        node("r2-fullscreen-close").performClick()
+        find("r2-plate-bitmap-penaeus-external").assertIsDisplayed()
+    }
 }
