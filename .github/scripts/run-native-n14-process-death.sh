@@ -35,7 +35,8 @@ trap capture_failure_evidence EXIT
 
 instrument() {
     local test_class="$1" log_path="$2"
-    adb shell am instrument -w -r -e class "$test_class" "$runner" | tee "$log_path" || return 1
+    timeout --signal=TERM --kill-after=5s 90s adb shell am instrument -w -r -e class "$test_class" "$runner" |
+        tee "$log_path" || return $?
     grep -Eq '^INSTRUMENTATION_CODE: -1[[:space:]]*$' "$log_path" || return 1
     if grep -Eq 'FAILURES!!!|INSTRUMENTATION_RESULT: shortMsg=|INSTRUMENTATION_FAILED' "$log_path"; then
         return 1
@@ -177,8 +178,15 @@ printf '%s\n' "$new_pid" > "$evidence/new-pid.txt"
 
 # This second instrumentation run does not rewrite the fixture. It verifies
 # the recovered screen and DataStore after a *different* process is observed.
-if ! instrument "$package.NativeProcessDeathVerifyTest" "$evidence/verify-instrumentation.txt"; then
-    result=GENUINE_STATE_RESTORATION_FAILURE
-    exit 1
+result=VERIFY_IN_PROGRESS
+if instrument "$package.NativeProcessDeathVerifyTest" "$evidence/verify-instrumentation.txt"; then
+    result=PASS
+else
+    verify_status=$?
+    if [[ "$verify_status" == 124 || "$verify_status" == 137 ]]; then
+        result=VERIFY_INSTRUMENTATION_TIMEOUT
+    else
+        result=STATE_RESTORATION_VERIFICATION_FAILED
+    fi
+    exit "$verify_status"
 fi
-result=PASS

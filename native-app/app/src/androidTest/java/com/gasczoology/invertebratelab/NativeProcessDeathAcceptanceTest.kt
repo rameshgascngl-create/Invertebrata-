@@ -2,7 +2,9 @@ package com.gasczoology.invertebratelab
 
 import android.util.Log
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onAllNodesWithText
@@ -10,6 +12,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToIndex
+import androidx.compose.ui.test.performScrollToNode
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.AppLanguage
@@ -110,27 +113,34 @@ class NativeProcessDeathVerifyTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val fifth = ValidatedA5AssetRepository(context).load()
             .flatMap { it.chapters }.flatMap { it.a5Questions }[4]
+        val assessmentTag = "native-assessment"
+        val questionTag = "a5-question-" + fifth.id
+        val answerTag = "a5-point-" + fifth.id + "-1"
+        fun assertRestoredAnswer() {
+            rule.waitUntil(timeoutMillis = 20_000L) {
+                rule.onAllNodesWithTag(assessmentTag, useUnmergedTree = true)
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
+            val assessment = rule.onNodeWithTag(assessmentTag, useUnmergedTree = true)
+            assessment.performScrollToNode(hasTestTag(questionTag))
+            rule.onNodeWithTag(questionTag, useUnmergedTree = true).performScrollTo()
+                .assertTextEquals(fifth.question.tamil)
+            assessment.performScrollToNode(hasTestTag(answerTag))
+            rule.onNodeWithTag(answerTag, useUnmergedTree = true).performScrollTo()
+                .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
+        }
         // No fixture mutation here: this must read the previous process's disk.
-        rule.waitUntil(timeoutMillis = 20_000L) {
-            rule.onAllNodesWithTag("native-assessment").fetchSemanticsNodes().isNotEmpty()
-        }
-        rule.onNodeWithTag("a5-question-" + fifth.id).assertTextEquals(fifth.question.tamil)
-        rule.waitUntil(timeoutMillis = 15_000L) {
-            rule.onAllNodesWithTag("a5-point-" + fifth.id + "-1")
-                .fetchSemanticsNodes().isNotEmpty()
-        }
-        rule.onNodeWithTag("a5-point-" + fifth.id + "-1")
-            .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
+        assertRestoredAnswer()
+        Log.i("N14_PROGRESS", "verified restored Tamil question and answer before rotation")
         try {
             rule.activityRule.scenario.onActivity {
                 it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             }
             rule.waitUntil(timeoutMillis = 20_000L) {
-                rule.onAllNodesWithTag("native-assessment").fetchSemanticsNodes().isNotEmpty()
+                context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
             }
-            rule.onNodeWithTag("a5-question-" + fifth.id).assertTextEquals(fifth.question.tamil)
-            rule.onNodeWithTag("a5-point-" + fifth.id + "-1")
-                .assertTextEquals("1. " + fifth.answerPoints[0].tamil)
+            assertRestoredAnswer()
+            Log.i("N14_PROGRESS", "verified restored Tamil question and answer in landscape")
         } finally {
             rule.activityRule.scenario.onActivity {
                 it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
