@@ -28,7 +28,7 @@ object HostParasiteBookChapter {
                         "Two kinds of parasite life cycle (schematic). (A) One host: (1) host, (2) parasite stages inside it, (3) resistant infective stage outside the host, (4) new host of the same species. (B) Two hosts: (5) definitive host, in which the parasite reaches sexual maturity, (6) intermediate host, in which it passes its larval or asexual stages, (7) and (8) transfer between them.",
                         "ஒட்டுண்ணி வாழ்க்கைச் சுழற்சிகளின் இரு வகைகள் (படத்திட்டம்). (A) ஒரே புரவலர்: (1) புரவலர், (2) அதனுள் இருக்கும் ஒட்டுண்ணி நிலைகள், (3) புரவலருக்கு வெளியே தாங்கும் தொற்று நிலை, (4) அதே இனத்தின் புதிய புரவலர். (B) இரு புரவலர்கள்: (5) இறுதிப் புரவலர் (பாலின முதிர்ச்சி அடையும் இடம்), (6) இடைநிலைப் புரவலர் (இளநிலை அல்லது பாலிலா நிலைகள் கழியும் இடம்), (7), (8) அவற்றிடையே நிகழும் மாற்றம்."),
                     bpoints("Two patterns of parasite life cycle", "ஒட்டுண்ணி வாழ்க்கைச் சுழற்சியின் இரு முறைமைகள்",
-                        "Single host: Entamoeba histolytica passes by cysts from person to person." to "ஒற்றை விருந்தோம்பி: எண்டமீபா ஹிஸ்டோலிடிகா கூடுகளாக ஒருவரிடமிருந்து மற்றவருக்குப் பரவுகிறது.",
+                        "Single host: Entamoeba histolytica passes by cysts from person to person." to "ஒற்றை விருந்தோம்பி: எண்டமீபா ஹிஸ்டோலிடிகா சிஸ்ட்கள் (பாதுகாப்பு உறைநிலைகள்) வழியாக ஒருவரிடமிருந்து மற்றொருவருக்குப் பரவுகிறது.",
                         "Two hosts: Plasmodium needs man and the female Anopheles mosquito." to "இரு விருந்தோம்பி: பிளாஸ்மோடியத்துக்கு மனிதனும் பெண் அனாபிலஸ் கொசுவும் தேவை.",
                         "The route of transmission decides the method of prevention." to "பரவல் வழி தடுப்பு முறையைத் தீர்மானிக்கிறது.",
                     ),
@@ -46,7 +46,7 @@ object HostParasiteBookChapter {
             bsec("entamoeba-cycle", "The single-host cycle of Entamoeba", "எண்டமீபாவின் ஒற்றை விருந்தோம்பி சுழற்சி",
                 blocks = listOf(
                     bp("The life cycle of Entamoeba histolytica is completed in man. An infection begins when mature cysts are swallowed in food or water that has been contaminated with faeces. In the small intestine the cyst wall is dissolved and the parasite emerges, which is excystation, and by division produces the trophozoites that live in the large intestine. The trophozoite multiplies by binary fission, and it feeds on bacteria and on the cells and tissue fluids of the host. In many persons it remains in the lumen and causes no symptoms." to
-                        "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கைச் சுழற்சி மனிதனில் நிறைவடைகிறது. மலத்தால் மாசுபட்ட உணவு அல்லது நீரில் முதிர்ந்த கூடுகளை விழுங்கும்போது தொற்று தொடங்குகிறது. சிறுகுடலில் கூட்டுச் சுவர் கரைந்து ஒட்டுண்ணி வெளிவருகிறது, இது கூடு நீக்கம்; பிரிவால் பெருங்குடலில் வாழும் டிரோபோசோயிட்டுகளை உருவாக்குகிறது. டிரோபோசோயிட் இருபிளவால் பெருகி, பாக்டீரியாவையும் விருந்தோம்பியின் செல்கள், திசு நீர்மங்களையும் உண்கிறது. பலரில் அது குழிவிலேயே இருந்து அறிகுறிகளை உண்டாக்குவதில்லை."),
+                        "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கைச் சுழற்சி மனிதனில் நிறைவடைகிறது. மலத்தால் மாசுபட்ட உணவு அல்லது நீரில் தொற்றக்கூடிய முதிர்ந்த சிஸ்ட்களை விழுங்கும்போது தொற்று தொடங்குகிறது. சிறுகுடலில் சிஸ்ட் உறை நீங்கி ஒட்டுண்ணி வெளிவருகிறது; இந்நிகழ்வு சிஸ்ட் உறை நீக்கம் (excystation) எனப்படுகிறது. பிரிவால் பெருங்குடலில் வாழும் டிரோபோசோயிட்டுகளை உருவாக்குகிறது. டிரோபோசோயிட் இருபிளவால் பெருகி, பாக்டீரியாவையும் விருந்தோம்பியின் செல்கள், திசு நீர்மங்களையும் உண்கிறது. பலரில் அது குழிவிலேயே இருந்து அறிகுறிகளை உண்டாக்குவதில்லை."),
                     bp("In some persons the trophozoite penetrates the wall of the large intestine, and in doing so destroys the tissue and produces the ulcers of amoebic dysentery. Through the blood it may be carried to other organs, and the liver is the commonest, where an abscess may form. The trophozoites in the lumen round off and secrete a protective wall to become cysts, and these are passed in the faeces. Since the cyst is the only stage that survives outside the host and infects a new one, the cycle depends on the contamination of food and water by faeces, and no intermediate host or vector is needed." to
                         "சிலரில் டிரோபோசோயிட் பெருங்குடல் சுவரில் ஊடுருவி, அவ்வாறு செய்யும்போது திசுவை அழித்து அமீபிக் வயிற்றுக்கடுப்பின் புண்களை உண்டாக்குகிறது. இரத்தம் வழியாக பிற உறுப்புகளுக்குக் கொண்டுசெல்லப்படலாம்; கல்லீரல் மிகவும் பொதுவானது; அங்கு சீழ்க்கட்டி உருவாகலாம். குழிவிலுள்ள டிரோபோசோயிட்டுகள் உருண்டு பாதுகாப்புச் சுவரைச் சுரந்து கூடுகளாகின்றன; அவை மலத்தில் வெளியேறுகின்றன. விருந்தோம்பிக்கு வெளியே தப்பிப் பிழைத்து புதிய ஒன்றைத் தொற்றும் ஒரே நிலை கூடு என்பதால் சுழற்சி உணவு, நீர் மலத்தால் மாசுபடுவதைச் சார்ந்துள்ளது; இடைநிலை விருந்தோம்பியோ நோய்க்கடத்தியோ தேவையில்லை."),
                     bdef("Binary fission", "இருசமப்பிளவு", "Division of a cell into two equal daughter cells." to
@@ -82,7 +82,7 @@ object HostParasiteBookChapter {
                     bdef("Gametocyte", "கேமீட்டோசைட்", "The sexual stage in the blood of man that goes on to form gametes in the mosquito." to
                         "கொசுவில் கேமட்களை உருவாக்கும் மனித இரத்தத்திலுள்ள பாலின நிலை."),
                     bdef("Oocyst", "ஊசிஸ்ட்", "The cyst on the outer surface of the mosquito's stomach in which sporozoites develop." to
-                        "ஸ்போரோசோயிட்டுகள் வளரும் கொசுவின் இரைப்பை வெளிப்புறத்திலுள்ள கூடு."),
+                        "ஸ்போரோசோயிட்டுகள் உருவாகும், கொசுவின் இரைப்பைச் சுவரின் வெளிப்புறத்திலுள்ள ஊசிஸ்ட் (oocyst)."),
                 )),
             bsec("fever", "Why malarial fever comes in paroxysms", "மலேரியா காய்ச்சல் ஏன் அலைகளாக வருகிறது",
                 blocks = listOf(
@@ -116,7 +116,7 @@ object HostParasiteBookChapter {
                         listOf("Feature" to "பண்பு", "Entamoeba histolytica" to "எண்டமீபா ஹிஸ்டோலிடிகா", "Plasmodium" to "பிளாஸ்மோடியம்"),
                         listOf(
                             listOf("Hosts" to "விருந்தோம்பிகள்", "One host: man" to "ஒரு விருந்தோம்பி: மனிதன்", "Two hosts: man and the female Anopheles" to "இரு விருந்தோம்பி: மனிதனும் பெண் அனோஃபிலிஸும்"),
-                            listOf("Infective stage" to "தொற்றும் நிலை", "Mature cyst" to "முதிர்ந்த கூடு", "Sporozoite" to "ஸ்போரோசோயிட்"),
+                            listOf("Infective stage" to "தொற்றும் நிலை", "Mature cyst" to "முதிர்ந்த சிஸ்ட்", "Sporozoite" to "ஸ்போரோசோயிட்"),
                             listOf("Route of transmission" to "பரவல் வழி", "Faecal contamination of food and water" to "உணவு, நீரின் மல மாசு", "Bite of the infected mosquito" to "தொற்றுற்ற கொசுவின் கடி"),
                             listOf("Principal control" to "முதன்மைக் கட்டுப்பாடு", "Sanitation, safe water and food" to "துப்புரவு, பாதுகாப்பான நீர், உணவு", "Vector control, bite prevention, case treatment" to "நோய்க்கடத்திக் கட்டுப்பாடு, கடி தடுப்பு, நோயாளி சிகிச்சை"),
                         )),

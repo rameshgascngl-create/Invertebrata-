@@ -42,7 +42,7 @@ object ProtoParasitesBookChapter {
                     bdef("Trophozoite", "டிரோபோசோயிட்", "The active, feeding and multiplying stage of a protozoan parasite." to
                         "புரோட்டோசோவா ஒட்டுண்ணியின் உணவுண்ணும், செயல்படும், பெருகக்கூடிய நிலை."),
                     bdef("Excystation", "சிஸ்ட் நீக்கம் (Excystation)", "The emergence of the parasite from its cyst in the host." to
-                        "விருந்தோம்பியில் ஒட்டுண்ணி தன் கூட்டிலிருந்து வெளிவருதல்."),
+                        "விருந்தோம்பியின் உடலில் சிஸ்ட் உறையிலிருந்து ஒட்டுண்ணி வெளிவரும் நிகழ்வு."),
                     bdef("Faecal-oral transmission", "மல-வாய்ப் பரவல் (Faecal-oral transmission)", "Transmission by swallowing material contaminated with faeces." to
                         "மலத்தால் மாசுபட்ட பொருளை விழுங்குவதால் பரவல்."),
                     bdef("Amoebiasis", "அமீபியாசிஸ்", "The disease caused by Entamoeba histolytica." to
@@ -60,7 +60,7 @@ object ProtoParasitesBookChapter {
                         "தூக்க நோய்க் கட்டுப்பாடு நோய்க்கடத்தியையும் தொற்றுற்ற விருந்தோம்பிகளையும் நோக்கியது. மக்கள் செட்ஸி ஈக்களுக்கு வெளிப்படுவதைக் குறைத்தலும், பொருத்தமான இடங்களில் நோய்க்கடத்திக் கட்டுப்பாட்டுத் திட்டங்களும், தொற்றுற்றவரின் கண்காணிப்பு, நோயறிதல், சிகிச்சையும் இதில் அடங்கும். சிகிச்சை மருத்துவ விஷயம்; நோயின் நிலையைப் பொறுத்தது; மருந்துகள் கண்காணிப்பில் பயன்படுத்தப்படுகின்றன. நோயின் பரவல் செட்ஸி ஈக்கள் உள்ள ஆப்பிரிக்காவின் பகுதிகளுக்கு வரம்புக்குட்பட்டது; இது நோய்க்கடத்தியைச் சார்ந்திருப்பதன் விளைவு."),
                     bfig("lib/trypanosoma-cartoon",
                         "A cartoon of Trypanosoma brucei: the cell body with its rounded nucleus and the flagellum running along the cell as a dark line.",
-                        "Trypanosoma brucei-யின் கேலிச்சித்திரப் படம்: செல் உடல், உருண்ட உட்கரு, செல்லின் நீளத்தில் கருங்கோடாக ஓடும் கசையிழை."),
+                        "டிரிப்பனோசோமா புரூசியின் உடலமைப்பைக் காட்டும் விளக்கப்படம்: செல் உடல், உருண்ட உட்கரு, செல்லின் நீளத்தில் கருங்கோடாக ஓடும் கசையிழை."),
                     bdef("Trypanosoma", "டிரிப்பனோசோமா", "A genus of flagellate parasites that live in the blood and tissues of vertebrates." to
                         "முதுகெலும்பிகளின் இரத்தம், திசுக்களில் வாழும் கசையிழை ஒட்டுண்ணிகளின் பேரினம்."),
                     bdef("Tsetse fly", "செட்ஸி ஈ (Tsetse fly)", "A blood-sucking fly of the genus Glossina that transmits Trypanosoma brucei." to
@@ -68,7 +68,7 @@ object ProtoParasitesBookChapter {
                     bdef("Undulating membrane", "அலை சவ்வு (Undulating membrane)", "A fold of the cell surface that connects the flagellum to the body of a trypanosome." to
                         "டிரிப்பனோசோமின் கசையை உடலுடன் இணைக்கும் செல் மேற்பரப்பின் மடிப்பு."),
                     bdef("Vector", "நோய்க்கடத்தி", "An animal, often an insect, that carries a parasite from one host to another." to
-                        "ஒட்டுண்ணியை ஓர் விருந்தோம்பியிலிருந்து மற்றொன்றுக்குக் கொண்டுசெல்லும், பெரும்பாலும் பூச்சியான, விலங்கு."),
+                        "ஒட்டுண்ணியை ஒரு விருந்தோம்பியிலிருந்து மற்றொன்றுக்குக் கொண்டுசெல்லும், பெரும்பாலும் பூச்சியான, விலங்கு."),
                     bdef("Reservoir host", "சேமிப்பு விருந்தோம்பி (Reservoir host)", "An animal in which a parasite lives and from which it can spread to man." to
                         "ஒட்டுண்ணி வாழும், அங்கிருந்து மனிதனுக்குப் பரவக்கூடிய விலங்கு."),
                 )),
