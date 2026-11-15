@@ -375,6 +375,7 @@ private fun HomeScreen(
     var showPrivacy by rememberSaveable { mutableStateOf(false) }
     if (showPrivacy) {
         AlertDialog(
+            modifier = Modifier.testTag("privacy-dialog"),
             onDismissRequest = { showPrivacy = false },
             title = { Text(label(language, "Privacy policy", "தனியுரிமைக் கொள்கை")) },
             text = {
@@ -485,14 +486,6 @@ private fun HomeScreen(
                                 style = MaterialTheme.typography.bodySmall)
                         }
                     }
-                }
-            }
-            item {
-                OutlinedButton(
-                    onClick = { showPrivacy = true },
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("privacy-policy"),
-                ) {
-                    Text(label(language, "Privacy policy", "தனியுரிமைக் கொள்கை"))
                 }
             }
             item {

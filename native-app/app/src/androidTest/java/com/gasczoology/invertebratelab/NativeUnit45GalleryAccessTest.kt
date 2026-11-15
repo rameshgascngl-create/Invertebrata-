@@ -68,8 +68,10 @@ class NativeUnit45GalleryAccessTest {
         val readerTag = "book-reader-$chapter"
         waitFor(readerTag)
         rule.onNodeWithTag("chapter-language-toolbar").assertIsDisplayed()
+        openReadingPage(rule, readerTag, "objectives")
         val toggle = "book-reference-gallery-toggle-$chapter"
-        rule.onNodeWithTag(toggle).assertExists()
+        rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag(toggle))
+        rule.onNodeWithTag(toggle).assertIsDisplayed()
         rule.onNodeWithTag("r2-type-study-gallery-$organism").assertDoesNotExist()
         rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag("book-introduction"))
         rule.onNodeWithTag("book-introduction").assertExists()
@@ -90,6 +92,7 @@ class NativeUnit45GalleryAccessTest {
         rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag(toggle))
         rule.onNodeWithTag(toggle).performClick()
         rule.onNodeWithTag("r2-type-study-gallery-$organism").assertDoesNotExist()
+        openReadingPage(rule, readerTag, "practice-$chapter-A5-1")
         rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag("book-practice-heading"))
         rule.onNodeWithTag("book-practice-heading").assertExists()
         saveScreenshot(chapter, languageName, "restored-practice")
