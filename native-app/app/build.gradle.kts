@@ -1,4 +1,5 @@
 import java.security.MessageDigest
+import java.util.zip.ZipFile
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
@@ -166,7 +167,7 @@ val stageApprovedParamecium = tasks.register("stageApprovedParamecium") {
         val expected = "8f54a66d89843688d64108cc6ebacae35db497e2bbb8bcbef4c959eefbb44d51"
         val entryName = "paramecium_integration/assets/paramecium-reproduction-approved.png"
         require(archive.isFile) { "Approved Paramecium integration ZIP missing: ${archive.path}" }
-        val bytes = java.util.zip.ZipFile(archive).use { zip ->
+        val bytes = ZipFile(archive).use { zip ->
             val entry = zip.getEntry(entryName)
                 ?: error("Approved Paramecium PNG missing from committed ZIP")
             zip.getInputStream(entry).use { it.readBytes() }
