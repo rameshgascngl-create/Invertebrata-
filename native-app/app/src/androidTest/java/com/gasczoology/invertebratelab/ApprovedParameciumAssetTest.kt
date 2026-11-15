@@ -1,5 +1,6 @@
 package com.gasczoology.invertebratelab
 
+import android.graphics.BitmapFactory
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.BookFigure
@@ -26,8 +27,11 @@ class ApprovedParameciumAssetTest {
             "8f54a66d89843688d64108cc6ebacae35db497e2bbb8bcbef4c959eefbb44d51",
             sha,
         )
-        assertEquals(1536, java.nio.ByteBuffer.wrap(bytes, 16, 4).int)
-        assertEquals(1024, java.nio.ByteBuffer.wrap(bytes, 20, 4).int)
+        val decoded = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        assertTrue("Approved plate must decode on Android", decoded != null)
+        assertEquals(1536, decoded!!.width)
+        assertEquals(1024, decoded.height)
+        decoded.recycle()
 
         val chapter = ParameciumBookChapter.chapter
         val figures = chapter.allBlocks().filterIsInstance<BookFigure>()
