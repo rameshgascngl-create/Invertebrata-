@@ -26,11 +26,11 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 21 | PenaeusBookChapter | Telson, chelate walking legs and fishery/aquaculture terminology (targeted) | Corrected telson as terminal abdomen, chelate claw terminology and prawn culture heading | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
 | 22 | PeripatusBookChapter | Lobopod foot, transverse commissure and tracheal respiration (targeted) | Replaced literal 'tree stump' and strengthened anatomical terminology | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
 | 23 | CrustaceanLarvaeBookChapter | Non-penaeid larval section, indirect development and protozoea (targeted) | Corrected crustacean/arthropod category mismatch and natural Tamil for larval feeding and development | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
-| 24 | MolluscaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 25 | PilaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 26 | TorsionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 27 | PearlBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 28 | EchinodermataBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 24 | MolluscaBookChapter | Radula/bivalve comparison, veliger cilia and mantle cavity (targeted) | Corrected erroneous Crustacea reference for bivalves; distinguished cilia in velum and fixed Tamil grammar | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
+| 25 | PilaBookChapter | Dual respiration, pulmonary sac and pedal locomotion (targeted) | Clarified air/water respiration and natural Tamil descriptions of muscular foot | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
+| 26 | TorsionBookChapter | Gastropod 180-degree torsion vs shell coiling (targeted) | Rephrased torsion mechanism and distinguished it from spiral growth | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
+| 27 | PearlBookChapter | Pearl sac and nacre secretion sequence (targeted) | Replaced misleading literal wording for tissue disturbance and concentric nacre deposition | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
+| 28 | EchinodermataBookChapter | Coelom, pedicellaria and bilateral larva terminology (targeted) | Improved coelomic lining, pedicellaria functions and larval symmetry Tamil | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
 | 29 | AsteriasBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 30 | EchinoLarvaeBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 31 | EchinoAffinitiesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -58,3 +58,5 @@ Additional helminth batch (2026-11-15): targeted Tamil corrections in five chapt
 Annelid and nematode batch (2026-11-15): targeted Tamil edits at commit `dc9a0a60`. A separate English-source issue remains for the Nereis pygidium definition; cross-language scientific equivalence requires follow-up before independent acceptance. No chapter in this batch has been accepted in full.
 
 Arthropod and crustacean batch (2026-11-15): targeted Tamil revisions at `4a586740` in five chapters. English source, accepted figures and chapter IDs are preserved. Full internal/independent acceptance remains pending.
+
+Mollusc and echinoderm batch (2026-11-15): targeted scientific-Tamil corrections in five chapters at `32bbec60`. All independent academic acceptance and complete section-by-section editorial reviews remain pending.
