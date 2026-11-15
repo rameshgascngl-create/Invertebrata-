@@ -3,14 +3,14 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 
 | # | Chapter source | Sections reviewed | Scientific/Tamil corrections | Internal review | Independent acceptance | Commit |
 |---:|---|---|---|---|---|---|
-| 1 | PoriferaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 2 | PoriferaCanalsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 3 | PoriferaReproductionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 4 | CnidariaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 1 | PoriferaBookChapter | General characters, sessile habit, cell terminology and feeding heading (targeted) | Corrected fragmentation term and Tamil grammar; standardised choanocyte terminology | Targeted corrections completed; full internal review incomplete | Pending | 0b2af5cc |
+| 2 | PoriferaCanalsBookChapter | Asconoid/syconoid terminology, surface-area/volume explanation, water exchange and diagrams (targeted) | Corrected square/cube scaling explanation, choanocyte usage, diffusive gas exchange and canal terminology | Targeted corrections completed; full internal review incomplete | Pending | 0b2af5cc |
+| 3 | PoriferaReproductionBookChapter | Asexual reproduction, gemmules, gametes, sperm transport, larval development and spawning terminology (targeted) | Replaced erroneous pathogen-carrier wording with sperm-carrier cell; refined broadcast spawning, larval stages and genetic-variation terms | Targeted corrections completed; full internal review incomplete | Pending | 2c453931 |
+| 4 | CnidariaBookChapter | General characters, planula, metagenesis, medusa, symbiosis, velum and exam descriptions (targeted) | Distinguished cilia from flagella in planula; clarified diploid polyp/medusa, velum, cnidarian terminology and natural Tamil | Targeted corrections completed; full internal review incomplete | Pending | 2c453931 |
 | 5 | ObeliaBookChapter | Colony, hydranth, gonangium, medusa, life cycle, histology, physiology, ecology and answer-writing (targeted paragraphs); glossary/table checked selectively | Cnidocyte vs nematocyst; ciliated planula; mesoglea; diffusion; feeding; corrected medusa typo and structured essay answer | Targeted corrections completed; full internal review incomplete (all tables/assessment equivalence not certified) | Pending | e3d718af; f6e0df227c60e38f61ee047922ea3490b57c3e79 |
 | 6 | CoralsBookChapter | Introduction, coral polyp, skeleton, symbiotic dinoflagellates and calcification (targeted passages) | Anthozoan anatomy; mesenteries; reef accretion; gastrodermal symbiosis and photosynthetic nutrient exchange | Targeted corrections completed; full internal review incomplete | Pending | 781e80e9; a859cd596b531076a263da72340160a3ce125d77 |
 | 7 | CoralEconomicsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 8 | PolymorphismBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 8 | PolymorphismBookChapter | Colony definition, division of labour, Obelia zooids, Physalia tentacles and dispersal (targeted) | Corrected mistranslated founder, gene-expression distinction, colony terminology and planula settlement | Targeted corrections completed; full internal review incomplete | Pending | 2c453931 |
 | 9 | PlatyhelminthesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 10 | FasciolaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 11 | PlatyAdaptationsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -50,3 +50,5 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 The runtime registry appends `Extensions.bookChapters`; reconcile its count and ordering before claiming this list is the complete 43-chapter corpus.
 
 Android QA is tracked separately: foundation success for `13315e29` (run 43655862779); emulator acceptance is pending. ADB diagnostics and bounded boot checks were added in `ba10ea4a` but have not yet produced accepted device evidence.
+
+2026-11-15 Tamil source revision: five previously unreviewed chapter files received targeted terminology and scientific-language corrections (commits `2c453931` and `0b2af5cc`). These edits do **not** establish complete chapter review, independent academic acceptance, or Android device QA. Other chapters remain at their documented status.
