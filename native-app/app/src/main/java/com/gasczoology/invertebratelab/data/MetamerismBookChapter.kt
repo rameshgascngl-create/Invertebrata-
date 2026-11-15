@@ -39,7 +39,7 @@ object MetamerismBookChapter {
                     bpoints("Structures repeated segmentally in an annelid", "அனெலிடாவில் கண்ட வாரியாக மீள்வரும் அமைப்புகள்",
                         "A compartment of the coelom bounded by septa." to "தடுப்புகளால் எல்லையிடப்பட்ட உடற்குழி அறை.",
                         "A ganglion of the ventral nerve cord, with a set of segmental nerves." to "வயிற்றுப்புற நரம்புவடத்தின் நரம்புத் திரளும் கண்ட நரம்புகளின் தொகுப்பும்.",
-                        "A pair of nephridia, in most of the segments." to "பெரும்பாலான கண்டங்களில் ஓர் இணை நெஃப்ரிடியாக்கள்.",
+                        "A pair of nephridia, in most of the segments." to "பெரும்பாலான கண்டங்களில் இணையாக அமைந்த நெஃப்ரிடியாக்கள்.",
                         "Circular and longitudinal muscle blocks." to "வட்ட, நீளவாட்டுத் தசைத் தொகுதிகள்.",
                         "Segmental blood vessels, linking the dorsal and ventral longitudinal vessels." to "முதுகுப்புற, வயிற்றுப்புற நீளவாட்டு நாளங்களை இணைக்கும் கண்ட இரத்த நாளங்கள்.",
                         "Chaetae, and in polychaetes parapodia, in every trunk segment." to "ஒவ்வொரு உடற்பகுதிக் கண்டத்திலும் சீட்டாக்கள்; பாலிகீட்டாக்களில் பாரபோடியாக்கள்.",
@@ -48,9 +48,9 @@ object MetamerismBookChapter {
                     bp("The list shows that a segment is a workstation with its own supply of nerves, muscle, vessels and excretory organs. This is the sense in which the term is meant when it is applied to the annelids, and it is the reason for thinking that the pattern is of a deep kind, in which the body is built from repeating modules. Not all of the organs are repeated. The gut passes through all the segments as a single tube, and the dorsal blood vessel is a single longitudinal channel. The reproductive system of the earthworm is restricted to a few segments." to
                         "பட்டியல் கண்டம் தன் நரம்பு, தசை, நாளங்கள், கழிவு உறுப்புகளின் விநியோகத்துடன் கூடிய பணிநிலையம் என்பதைக் காட்டுகிறது. அனெலிடாக்களுக்குப் பயன்படுத்தும்போது சொல் இப்பொருளில் கொள்ளப்படுகிறது; உடல் மீள்வரும் தொகுதிகளால் கட்டப்பட்ட ஆழமான வகை அமைப்பு என்று நினைக்க இதுவே காரணம். எல்லா உறுப்புகளும் மீள்வதில்லை. குடல் ஒற்றைக் குழாயாக எல்லாக் கண்டங்கள் வழியாகவும் செல்கிறது; முதுகுப்புற இரத்த நாளம் ஒரே நீளவாட்டுப் பாதை. மண்புழுவின் இனப்பெருக்க மண்டலம் சில கண்டங்களுக்கு மட்டுமே வரையறுக்கப்பட்டது."),
                     bdef("Ganglion", "நரம்பு செல்திரள்", "A swelling of the nervous system that contains the cell bodies of nerve cells." to
-                        "நரம்பு செல்களின் செல் உடல்களைக் கொண்ட நரம்பு மண்டலத்தின் புடைப்பு."),
+                        "நரம்புச் செல்களின் உடற்பகுதிகள் திரண்டு காணப்படும் நரம்பு மண்டலப் பகுதி."),
                     bdef("Nephridium", "நெஃப்ரிடியம் (Nephridium)", "A tubular excretory organ of annelids and some other invertebrates." to
-                        "அனெலிடாக்கள், வேறு சில முதுகெலும்பற்றவற்றின் குழல் வடிவ கழிவு உறுப்பு."),
+                        "அனெலிடாக்களிலும் வேறு சில முதுகெலும்பற்ற விலங்குகளிலும் காணப்படும் குழாய் வடிவக் கழிவு நீக்க உறுப்பு."),
                 )),
             bsec("growth", "How segments are formed and where", "கண்டங்கள் எவ்வாறு, எங்கு உருவாகின்றன",
                 blocks = listOf(

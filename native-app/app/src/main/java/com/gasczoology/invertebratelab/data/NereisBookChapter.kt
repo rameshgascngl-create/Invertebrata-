@@ -37,7 +37,7 @@ object NereisBookChapter {
                     bdef("Peristomium", "பெரிஸ்டோமியம்", "The first body ring, surrounding the mouth, which bears the tentacular cirri." to
                         "வாயைச் சுற்றியுள்ள முதல் உடல் வளையம்; உணர்கொம்புத் தண்டுகளைத் தாங்குகிறது."),
                     bdef("Pygidium", "பைஜிடியம்", "The terminal part of the body of an annelid, carrying the anus, from which new segments are added." to
-                        "அனெலிடாவின் உடலின் முனைப் பகுதி; மலவாயைத் தாங்குகிறது; புதிய கண்டங்கள் இங்கிருந்து சேர்க்கப்படுகின்றன."),
+                        "அனெலிடாவின் உடலின் இறுதிப்பகுதியான பைஜிடியம் மலவாயைக் கொண்டுள்ளது. புதிய கண்டங்கள் பைஜிடியத்திற்கு முன்புறத்தில் உள்ள வளர்ச்சி மண்டலத்தில் உருவாகின்றன."),
                 )),
             bsec("parapodium", "The parapodium", "பாரபோடியம்",
                 blocks = listOf(
@@ -48,9 +48,9 @@ object NereisBookChapter {
                         "நெரிஸின் இருகிளைப் பாரபோடியம்."),
                     bpoints("Functions of the parapodium", "பாரபோடியத்தின் செயல்கள்",
                         "Locomotion: the parapodia are moved in a coordinated way in crawling and, as paddles, in swimming." to "இயக்கம்: ஊர்தலில் ஒருங்கிணைந்து அசைக்கப்படுகின்றன; நீந்துதலில் துடுப்புகளாகச் செயல்படுகின்றன.",
-                        "Anchorage and traction: the chaetae grip the substratum and help the worm to hold its place in its burrow." to "நங்கூரமும் இழுவையும்: சீட்டாக்கள் அடித்தளத்தைப் பற்றி புழு துளையில் இடத்தைத் தக்கவைக்க உதவுகின்றன.",
+                        "Anchorage and traction: the chaetae grip the substratum and help the worm to hold its place in its burrow." to "பற்றுதலும் முன்னேற்றமும்: சீட்டாக்கள் அடித்தளத்தைப் பற்றிக்கொண்டு, புழு தன் வளைக்குள் நிலைத்திருக்கவும் நகரவும் உதவுகின்றன.",
                         "Respiration: the parapodium is richly supplied with blood vessels, and its large surface is used for gas exchange." to "சுவாசம்: பாரபோடியத்துக்கு இரத்த நாளங்கள் மிகுதி; அதன் பெரிய பரப்பு வாயுப் பரிமாற்றத்துக்குப் பயன்படுகிறது.",
-                        "Sensation: the dorsal and ventral cirri are sensory." to "உணர்தல்: முதுகுப்புற, வயிற்றுப்புறத் தண்டுகள் உணர்வுடையவை.",
+                        "Sensation: the dorsal and ventral cirri are sensory." to "உணர்தல்: முதுகுப்புற மற்றும் வயிற்றுப்புறச் சிறு உணர்கிளைகள் (cirri) தூண்டுதல்களை உணர உதவுகின்றன.",
                     ),
                     bp("In an answer on the parapodium the function of respiration should be linked with the blood supply, since Nereis has no gills of special form. The exchange of gases takes place across the thin surface of the whole body, and the parapodia, which are highly vascular, provide most of the area. The sentence that the parapodium is the respiratory organ of Nereis should be modified: it is a principal site of gas exchange, and the whole surface contributes." to
                         "பாரபோடியம் பற்றிய விடையில் சுவாசச் செயலை இரத்த விநியோகத்துடன் இணைக்க வேண்டும்; ஏனெனில் நெரிஸுக்கு சிறப்பு வடிவச் செவுள்கள் இல்லை. வாயுப் பரிமாற்றம் முழு உடலின் மெல்லிய மேற்பரப்பிலும் நடக்கிறது; அதிக நாளங்களுள்ள பாரபோடியாக்கள் பெரும்பகுதிப் பரப்பைத் தருகின்றன. பாரபோடியமே நெரிஸின் சுவாச உறுப்பு என்ற வாக்கியம் மாற்றப்பட வேண்டும்: அது வாயுப் பரிமாற்றத்தின் ஒரு முதன்மை இடம்; முழு மேற்பரப்பும் பங்களிக்கிறது."),

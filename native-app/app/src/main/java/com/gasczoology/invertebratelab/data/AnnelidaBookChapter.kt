@@ -26,7 +26,7 @@ object AnnelidaBookChapter {
                         "Bilaterally symmetrical, triploblastic, protostome and coelomate, with a body divided into segments." to "இருபக்கச் சமச்சீர், மூவடுக்கு, புரோட்டோஸ்டோம், உடற்குழி உடையவை; உடல் கண்டங்களாகப் பிரிந்துள்ளது.",
                         "The coelom is usually divided by transverse septa into compartments, one to a segment." to "உடற்குழி பொதுவாக குறுக்குத் தடுப்புகளால் ஒரு கண்டத்துக்கு ஒன்றாக அறைகளாகப் பிரிக்கப்படுகிறது.",
                         "The body wall has circular and longitudinal muscles, which act against the coelomic fluid as a hydrostatic skeleton." to "உடற்சுவரில் வட்டத் தசைகளும் நீளவாட்டுத் தசைகளும் உள்ளன; அவை உடற்குழி திரவத்துக்கு எதிராக நீரழுத்த எலும்புக்கூடாகச் செயல்படுகின்றன.",
-                        "Chitinous bristles, the chaetae or setae, are usually present; many polychaetes carry them on fleshy parapodia." to "கைட்டின் மயிர்களான சீட்டாக்கள் பொதுவாக உண்டு; பல பாலிகீட்டாக்கள் அவற்றைச் சதைப்பற்றுள்ள பாரபோடியாக்களில் கொண்டுள்ளன.",
+                        "Chitinous bristles, the chaetae or setae, are usually present; many polychaetes carry them on fleshy parapodia." to "கைட்டினால் ஆன நுண்மயிர்களான சீட்டாக்கள் பொதுவாக உண்டு; பல பாலிகீட்டாக்கள் அவற்றைச் சதைப்பற்றுள்ள பாரபோடியாக்களில் கொண்டுள்ளன.",
                         "The alimentary canal is complete, extending from mouth to anus." to "செரிமானக் குழாய் வாயிலிருந்து மலவாய் வரை முழுமையானது.",
                         "Most have a closed circulatory system, with blood in vessels." to "பெரும்பாலானவற்றுக்கு மூடிய இரத்த ஓட்ட மண்டலம் உண்டு; இரத்தம் நாளங்களில் உள்ளது.",
                         "Excretion is chiefly by paired metanephridia in the segments." to "கழிவு நீக்கம் முக்கியமாக கண்டங்களிலுள்ள இணைந்த மெட்டாநெஃப்ரிடியாக்களால்.",
@@ -40,17 +40,17 @@ object AnnelidaBookChapter {
                     bdef("Protostome", "புரோட்டோஸ்டோம் (Protostome)", "An animal in which the mouth develops from or near the blastopore of the embryo." to
                         "கருவின் பிளாஸ்டோபோரிலிருந்து அல்லது அதன் அருகில் வாய் உருவாகும் விலங்கு."),
                     bdef("Chaeta (seta)", "சீட்டா (Chaeta)", "A chitinous bristle that projects from the body wall of an annelid and gives grip in movement." to
-                        "அனெலிடாவின் உடற்சுவரிலிருந்து நீண்டு, இயக்கத்தில் பிடிப்பைத் தரும் கைட்டின் மயிர்."),
+                        "அனெலிடாவின் உடற்சுவரிலிருந்து நீண்டு, இயக்கத்தில் பிடிப்பைத் தரும் கைட்டினால் ஆன நுண்மயிர்."),
                     bdef("Metanephridium", "மெட்டாநெஃப்ரிடியம் (Metanephridium)", "A tubular excretory organ that opens into the coelom by a ciliated funnel and to the outside by a pore." to
-                        "கசையிழை புனல் வழியாக உடற்குழிக்குள்ளும் துளை வழியாக வெளியிலும் திறக்கும் குழல் வடிவ கழிவு நீக்க உறுப்பு."),
+                        "குறுஇழைகள் (cilia) கொண்ட புனல் வழியாக உடற்குழிக்குள் திறந்து, வெளியேற்றத் துளை வழியாக உடலுக்கு வெளியே திறக்கும் குழாய் வடிவக் கழிவு நீக்க உறுப்பு."),
                     bnote("Leeches and chaetae", "அட்டைகளும் சீட்டாக்களும்",
                         "The statement that annelids have chaetae has exceptions. Leeches have secondarily lost them, and their coelom is reduced by connective tissue, so write that chaetae are usually present." to
                             "அனெலிடாக்களுக்கு சீட்டாக்கள் உண்டு என்பதற்கு விதிவிலக்குகள் உண்டு. அட்டைகள் அவற்றை இரண்டாம் நிலையில் இழந்துவிட்டன; இணைப்புத் திசுவால் அவற்றின் உடற்குழி குறைக்கப்பட்டுள்ளது; எனவே சீட்டாக்கள் பொதுவாக உண்டு என எழுதுக."),
                 )),
-            bsec("metamerism", "True segmentation", "உண்மையான கண்டமாதல்",
+            bsec("metamerism", "True segmentation", "உண்மையான உடற்கண்டமாதல்",
                 blocks = listOf(
                     bp("Segmentation, or metamerism, is the repetition along the axis of the body of a set of similar units. The word is used strictly for the annelids. A body that is merely ringed on the outside is not segmented in this sense, and a worm whose surface bears creases but whose organs are not repeated is not an annelid. What is meant by true metamerism is that the units are repeated internally as well. Each segment has its own compartment of the coelom, its own pair of excretory organs, its own ganglion and nerves, and its own set of muscles, vessels and, in many forms, its own gonads." to
-                        "கண்டமாதல் அல்லது மெட்டாமெரிசம் என்பது உடலின் அச்சில் ஒத்த அலகுகளின் தொகுப்பு மீள்வருவது. இச்சொல் அனெலிடாக்களுக்குக் கண்டிப்பாகப் பயன்படுத்தப்படுகிறது. வெளியே வளையங்கள் மட்டுமுள்ள உடல் இப்பொருளில் கண்டமுடையதல்ல; மேற்பரப்பில் மடிப்புகள் உள்ளன, ஆனால் உறுப்புகள் மீள்வராத புழு அனெலிடா அல்ல. உண்மையான கண்டமாதல் என்பதன் பொருள், அலகுகள் உள்ளேயும் மீள்வருகின்றன என்பது. ஒவ்வொரு கண்டத்துக்கும் தன் உடற்குழி அறை, தன் இணை கழிவு உறுப்புகள், தன் நரம்புத் திரளும் நரம்புகளும், தன் தசைத் தொகுப்பு, நாளங்கள், பல வடிவங்களில் தன் இனப்பெருக்க சுரப்பிகளும் உண்டு."),
+                        "கண்டமாதல் அல்லது மெட்டாமெரிசம் என்பது உடலின் அச்சில் ஒத்த அலகுகளின் தொகுப்பு மீள்வருவது. இச்சொல் அனெலிடாக்களுக்குக் கண்டிப்பாகப் பயன்படுத்தப்படுகிறது. வெளியே வளையங்கள் மட்டுமுள்ள உடல் இப்பொருளில் கண்டமுடையதல்ல; மேற்பரப்பில் மடிப்புகள் உள்ளன, ஆனால் உறுப்புகள் மீள்வராத புழு அனெலிடா அல்ல. உண்மையான உடற்கண்டமாதல் என்பதன் பொருள், அலகுகள் உள்ளேயும் மீள்வருகின்றன என்பது. ஒவ்வொரு கண்டத்துக்கும் தன் உடற்குழி அறை, தன் இணை கழிவு உறுப்புகள், தன் நரம்புத் திரளும் நரம்புகளும், தன் தசைத் தொகுப்பு, நாளங்கள், பல வடிவங்களில் தன் இனப்பெருக்க சுரப்பிகளும் உண்டு."),
                     bp("The septa that separate the compartments are thin partitions of tissue. They allow the coelomic fluid in each compartment to be put under pressure separately, so that a part of the body can be made rigid, or lengthened, or shortened, while the neighbouring part does the reverse. This is what allows a worm to burrow, and it is the first great advantage of the segmented plan. The segments are not all identical, for the anterior segments are specialised to carry the mouth and the sense organs, and a few segments of the earthworm carry the clitellum. The newest segments are added in front of a terminal region, the pygidium, which carries the anus." to
                         "அறைகளைப் பிரிக்கும் தடுப்புகள் திசுவின் மெல்லிய பிரிவுகள். ஒவ்வொரு அறையிலுள்ள உடற்குழி திரவத்தையும் தனித்தனியாக அழுத்தத்தில் வைக்க இவை அனுமதிக்கின்றன; அதனால் உடலின் ஒரு பகுதி விறைப்பாகவோ நீளவோ சுருங்கவோ செய்யப்படலாம்; அருகிலுள்ள பகுதி எதிர்மாறாகச் செய்கிறது. புழு துளையிட இதுவே அனுமதிக்கிறது; கண்டமுடைய அமைப்பின் முதல் பெரிய நன்மை இது. கண்டங்கள் எல்லாம் ஒரே மாதிரியல்ல; முன்புறக் கண்டங்கள் வாயையும் உணர்வு உறுப்புகளையும் தாங்க சிறப்புற்றவை; மண்புழுவின் சில கண்டங்கள் கிளைடெல்லத்தைத் தாங்குகின்றன. புதிய கண்டங்கள் மலவாயைத் தாங்கும் முனைப் பகுதியான பிஜிடியத்துக்கு முன்னால் சேர்க்கப்படுகின்றன."),
                     bdef("Metamerism", "உடற்கண்டமாதல் (Metamerism)", "The repetition of similar body units, each with its own set of organs, along the length of the body." to
@@ -169,8 +169,8 @@ object AnnelidaBookChapter {
                 )),
         ),
         summary = listOf(
-            "Annelids are bilateral, triploblastic, protostome coelomates with true metameric segmentation." to "அனெலிடாக்கள் இருபக்கச் சமச்சீர், மூவடுக்கு, புரோட்டோஸ்டோம், உடற்குழி உடையவை; உண்மையான கண்டமாதல் உடையவை.",
-            "True segmentation repeats the coelom, nerves, excretory organs and muscles, not only the surface rings." to "உண்மையான கண்டமாதல் மேற்பரப்பு வளையங்களை மட்டுமல்ல, உடற்குழி, நரம்புகள், கழிவு உறுப்புகள், தசைகளையும் மீள்கிறது.",
+            "Annelids are bilateral, triploblastic, protostome coelomates with true metameric segmentation." to "அனெலிடாக்கள் இருபக்கச் சமச்சீர், மூவடுக்கு, புரோட்டோஸ்டோம், உடற்குழி உடையவை; உண்மையான உடற்கண்டமாதல் உடையவை.",
+            "True segmentation repeats the coelom, nerves, excretory organs and muscles, not only the surface rings." to "உண்மையான உடற்கண்டமாதல் மேற்பரப்பு வளையங்களை மட்டுமல்ல, உடற்குழி, நரம்புகள், கழிவு உறுப்புகள், தசைகளையும் மீள்கிறது.",
             "Septa divide the coelom, and circular and longitudinal muscles act against the coelomic fluid." to "தடுப்புகள் உடற்குழியைப் பிரிக்கின்றன; வட்ட, நீளவாட்டுத் தசைகள் உடற்குழி திரவத்துக்கு எதிராகச் செயல்படுகின்றன.",
             "Metanephridia excrete, and the nervous system has a dorsal brain and ventral ganglionated cord." to "மெட்டாநெஃப்ரிடியாக்கள் கழிவு நீக்குகின்றன; நரம்பு மண்டலத்தில் முதுகுப்புற மூளையும் வயிற்றுப்புற நரம்பு செல்திரள் வடமும் உள்ளன.",
             "Most annelids have a closed circulation with dorsal and ventral vessels linked by segmental vessels." to "பெரும்பாலான அனெலிடாக்களில் முதுகுப்புற, வயிற்றுப்புற நாளங்கள் கண்ட நாளங்களால் இணைந்த மூடிய இரத்த ஓட்டம் உள்ளது.",
@@ -184,7 +184,7 @@ object AnnelidaBookChapter {
             bqc("Which excretory organs are typical of annelids?", "அனெலிடாக்களுக்கு வழக்கமான கழிவு உறுப்புகள் எவை?",
                 "Segmental metanephridia.", "கண்ட மெட்டாநெஃப்ரிடியாக்கள்."),
             bqc("Why is a worm with ringed skin alone not an annelid?", "தோல் வளையம் மட்டுமுள்ள புழு ஏன் அனெலிடா அல்ல?",
-                "Because the internal organs, coelom and nerves are not repeated; true metamerism is internal as well.", "ஏனெனில் உள் உறுப்புகள், உடற்குழி, நரம்புகள் மீள்வதில்லை; உண்மையான கண்டமாதல் உள்ளேயும் உள்ளது."),
+                "Because the internal organs, coelom and nerves are not repeated; true metamerism is internal as well.", "ஏனெனில் உள் உறுப்புகள், உடற்குழி, நரம்புகள் மீள்வதில்லை; உண்மையான உடற்கண்டமாதல் உள்ளேயும் உள்ளது."),
         ),
     )
 }

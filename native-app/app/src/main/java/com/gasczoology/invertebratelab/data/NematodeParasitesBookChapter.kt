@@ -38,11 +38,11 @@ object NematodeParasitesBookChapter {
                     bp("In India the commonest vector is the mosquito Culex quinquefasciatus, which breeds in dirty water, although other mosquitoes carry the parasite elsewhere. Control is by programmes of mass treatment of the population with drugs that kill the microfilariae, by the reduction of mosquito breeding, and by the avoidance of bites with nets and repellents." to
                         "இந்தியாவில் மிகப் பொதுவான நோய்க்கடத்தி அழுக்கு நீரில் முட்டையிடும் கியூலக்ஸ் குயின்குவாஃபாசியேட்டஸ் கொசு; பிற இடங்களில் வேறு கொசுக்கள் ஒட்டுண்ணியைக் கொண்டு செல்கின்றன. கட்டுப்பாடு மைக்ரோஃபைலேரியாக்களைக் கொல்லும் மருந்துகளால் மக்கள்தொகைக்கு வெகுஜன சிகிச்சைத் திட்டங்கள், கொசு இனப்பெருக்கக் குறைப்பு, வலைகள், விரட்டிகளால் கடிகளைத் தவிர்த்தல் ஆகியவற்றால் அமைகிறது."),
                     bdef("Microfilaria", "மைக்ரோஃபைலேரியா (Microfilaria)", "The larva of a filarial worm that circulates in the blood and is taken up by the mosquito vector." to
-                        "இரத்தத்தில் சுற்றி, கொசு நோய்க்கடத்தியால் எடுக்கப்படும் ஃபைலேரியா புழுவின் லார்வா."),
+                        "விருந்தோம்பியின் இரத்தத்தில் காணப்படும் ஃபைலேரியா புழுவின் இளவுயிரி; கொசு இரத்தம் உறிஞ்சும்போது இதை உட்கொள்கிறது."),
                     bdef("Vector", "நோய்க்கடத்தி", "An animal, such as a mosquito, that carries a parasite from one host to another." to
                         "கொசு போன்று, ஒட்டுண்ணியை ஒரு விருந்தோம்பியிடமிருந்து மற்றொன்றுக்குக் கொண்டு செல்லும் விலங்கு."),
                     bdef("Elephantiasis", "யானைக்கால் நோய் (Elephantiasis)", "Gross swelling and thickening of the skin of the limbs or genitals caused by chronic obstruction of lymph flow in filariasis." to
-                        "ஃபைலேரியாசிஸில் நிணநீர் ஓட்டத் தடையால் ஏற்படும் கால்கள் அல்லது இனப்பெருக்க உறுப்புகளின் தோல் மிகை வீக்கமும் தடிப்பும்."),
+                        "நாட்பட்ட நிணநீர் ஓட்டத் தடையால் கால்கள் அல்லது வெளிப்புற இனப்பெருக்கப் பகுதிகளில் ஏற்படும் கடுமையான வீக்கமும் தோல் தடிப்பும்."),
                     bdef("Viviparous", "விவிபாரஸ் (Viviparous)", "Producing living young instead of eggs." to
                         "முட்டைகளுக்குப் பதில் உயிருள்ள இளம் உயிரிகளை உருவாக்கும்."),
                 )),
@@ -53,7 +53,7 @@ object NematodeParasitesBookChapter {
                     bp("The rule is not absolute. Some strains of the parasite, found in certain regions of the Pacific, are subperiodic, and have larvae in the blood at all times, and sampling practice should follow the local epidemiology. Tests that detect circulating antigen of the adult worm do not depend upon the periodicity of the larvae and can be done at any hour, so the phrase night blood refers specifically to the optimum time for microscopic detection of microfilariae." to
                         "இவ்விதி முழுமையானதல்ல. பசிபிக் சில பகுதிகளில் காணப்படும் ஒட்டுண்ணியின் சில வகைகள் துணை ஆவர்த்தனமுடையவை; எல்லா நேரமும் இரத்தத்தில் லார்வாக்கள் இருக்கும்; மாதிரி எடுக்கும் நடைமுறை உள்ளூர் நோய்ப்பரவலியலைப் பின்பற்ற வேண்டும். முதிர்ந்த புழுவின் சுற்றும் ஆன்டிஜனைக் கண்டறியும் சோதனைகள் லார்வாக்களின் ஆவர்த்தனத்தைச் சார்ந்தவையல்ல; எந்த நேரத்திலும் செய்யலாம்; எனவே இரவு இரத்தம் என்பது மைக்ரோஃபைலேரியாக்களின் நுண்ணோக்கிக் கண்டறிதலுக்கான உகந்த நேரத்தையே குறிக்கிறது."),
                     bdef("Periodicity", "ஆவர்த்தனம் (Periodicity)", "The regular change in the number of microfilariae in the peripheral blood over the twenty-four hours of the day." to
-                        "நாளின் இருபத்துநான்கு மணி நேரத்தில் புற இரத்தத்தில் மைக்ரோஃபைலேரியாக்களின் எண்ணிக்கையில் ஏற்படும் ஒழுங்கான மாற்றம்."),
+                        "ஒரு நாளின் 24 மணி நேரத்தில் புற இரத்தத்தில் காணப்படும் மைக்ரோஃபைலேரியாக்களின் எண்ணிக்கை ஒழுங்காக மாறும் நிகழ்வு."),
                     bnote("Not every vector is Culex", "எல்லா நோய்க்கடத்திகளும் கியூலக்ஸ் அல்ல",
                         "In answers, say that the vector is a mosquito, often Culex in India. Other mosquitoes, such as Anopheles and Aedes, carry the parasite in other parts of the world." to
                             "விடைகளில் நோய்க்கடத்தி கொசு, இந்தியாவில் பெரும்பாலும் கியூலக்ஸ் எனக் கூறுக. உலகின் பிற பகுதிகளில் அனாபிலஸ், ஏடிஸ் போன்ற பிற கொசுக்கள் ஒட்டுண்ணியைக் கொண்டு செல்கின்றன."),
