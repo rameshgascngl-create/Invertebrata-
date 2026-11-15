@@ -17,6 +17,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -140,9 +141,14 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                                 )
                             }
                         }
+                        val plateDescription = if (completeAscarisCycle) {
+                            if (tamil) "சிடிசி டிபிடிஎக்ஸ் அஸ்காரிஸ் முழு வாழ்க்கைச் சுழற்சி: மலத்தில் முட்டைகள், மண்ணில் கருவளர்ச்சி, விழுங்குதல், குடலில் இளவுயிரி வெளியேறுதல், நுரையீரல் இடம்பெயர்ச்சி, மீண்டும் விழுங்குதல், சிறுகுடலில் முதிர்ச்சி"
+                            else "CDC DPDx complete Ascaris life cycle: eggs passed in feces, maturation in soil, infective egg ingestion, intestinal hatching, lung migration, reswallowing and adults in small intestine"
+                        } else plate.title.value(language)
                         BoxWithConstraints(
                             modifier = Modifier.fillMaxWidth().aspectRatio(960f / 1280f)
                                 .clipToBounds()
+                                .semantics { contentDescription = plateDescription }
                                 .testTag("u3-plate-touch-" + plate.plateId)
                                 .pointerInput(plate.assetStem) {
                                     detectTransformGestures { _, pan, change, _ ->
@@ -190,10 +196,7 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                             ) {
                             Image(
                                 bitmap = raster,
-                                contentDescription = if (completeAscarisCycle) {
-                                    if (tamil) "சிடிசி டிபிடிஎக்ஸ் அஸ்காரிஸ் முழு வாழ்க்கைச் சுழற்சி: மலத்தில் முட்டைகள், மண்ணில் கருவளர்ச்சி, விழுங்குதல், குடலில் இளவுயிரி வெளியேறுதல், நுரையீரல் இடம்பெயர்ச்சி, மீண்டும் விழுங்குதல், சிறுகுடலில் முதிர்ச்சி"
-                                    else "CDC DPDx complete Ascaris life cycle: eggs passed in feces, maturation in soil, infective egg ingestion, intestinal hatching, lung migration, reswallowing and adults in small intestine"
-                                } else plate.title.value(language),
+                                contentDescription = null,
                                 contentScale = ContentScale.Fit,
                                 modifier = Modifier.fillMaxSize()
                                     .testTag("u3-plate-bitmap-" + plate.plateId)

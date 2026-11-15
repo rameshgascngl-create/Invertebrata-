@@ -142,7 +142,9 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-zoom-in-external").performScrollTo().performClick()
         rule.onNodeWithTag("u3-zoom-level-external").assertTextContains("4×",substring=true)
         rule.onNodeWithTag("u3-zoom-in-external").assertIsNotEnabled()
-        rule.onNodeWithTag("u3-plate-bitmap-external").performScrollTo().assertIsDisplayed()
+        // Scroll to the fixed viewport. The scaled bitmap extends beyond its clip at 4×.
+        rule.onNodeWithTag("u3-plate-touch-external").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithTag("u3-plate-bitmap-external").assertIsDisplayed()
         capture("fasciola-magnified-4x")
         rule.onNodeWithTag("u3-zoom-reset-external").performScrollTo().performClick()
         rule.onNodeWithTag("u3-zoom-level-external").assertTextContains("1×",substring=true)
@@ -294,7 +296,9 @@ class NativeUnitIIITeachingTest {
         rule.onNodeWithTag("u3-zoom-level-life-cycle").assertTextContains("2×",substring=true)
         rule.onNodeWithTag("u3-zoom-in-life-cycle").performScrollTo().performClick()
         rule.onNodeWithTag("u3-zoom-level-life-cycle").assertTextContains("4×",substring=true)
-        rule.onNodeWithTag("u3-plate-bitmap-life-cycle").performScrollTo().assertIsDisplayed()
+        // Scroll to the fixed viewport. The scaled bitmap extends beyond its clip at 4×.
+        rule.onNodeWithTag("u3-plate-touch-life-cycle").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithTag("u3-plate-bitmap-life-cycle").assertIsDisplayed()
         capture("ascaris-magnified-4x")
         rule.onNodeWithTag("u3-zoom-reset-life-cycle").performScrollTo().performClick()
         rule.onNodeWithTag("u3-zoom-level-life-cycle").assertTextContains("1×",substring=true)
