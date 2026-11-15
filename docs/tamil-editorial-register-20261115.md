@@ -16,11 +16,11 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 11 | PlatyAdaptationsBookChapter | Cestode tegument and nutrient absorption (targeted) | Corrected duplicated surface-area wording and clarified nutrient absorption by tegument | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
 | 12 | AschelminthesBookChapter | Alimentary canal, hydrostatic skeleton and lifestyle terminology (targeted) | Improved scientific Tamil terminology for complete gut, hydrostatic support and nematode life habits | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
 | 13 | AscarisBookChapter | Embryonated infective egg, larval moulting, lung migration and prevention (targeted) | Corrected egg-hatching terminology, larval moulting, direct lifecycle and sanitation explanations | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
-| 14 | NematodeParasitesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 15 | NematodeAdaptationsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 16 | AnnelidaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 17 | NereisBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 18 | MetamerismBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 14 | NematodeParasitesBookChapter | Wuchereria microfilaria, vector feeding, elephantiasis and nocturnal periodicity (targeted) | Corrected mosquito blood-feeding description and natural scientific Tamil for microfilaria and lymphatic swelling | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
+| 15 | NematodeAdaptationsBookChapter | Vector exposure and host-survival terminology (targeted) | Replaced literal statement that mosquitoes 'eat a person' and clarified host survival | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
+| 16 | AnnelidaBookChapter | Metanephridial funnel, chaetae and true segmentation (targeted) | Corrected cilia-versus-flagella wording in metanephridium; improved chaeta and segmentation terminology | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
+| 17 | NereisBookChapter | Pygidium and segment addition, parapodial chaetae and sensory cirri (targeted) | Clarified that new segments arise anterior to pygidium and replaced literal parapodial/sensory translations | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
+| 18 | MetamerismBookChapter | Segmental nephridia, ganglia and excretory anatomy (targeted) | Corrected awkward plural and nerve-ganglion terminology | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
 | 19 | AnnelidModesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 20 | ArthropodaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 21 | PenaeusBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -54,3 +54,5 @@ Android QA is tracked separately: foundation success for `13315e29` (run 4365586
 2026-11-15 Tamil source revision: five previously unreviewed chapter files received targeted terminology and scientific-language corrections (commits `2c453931` and `0b2af5cc`). These edits do **not** establish complete chapter review, independent academic acceptance, or Android device QA. Other chapters remain at their documented status.
 
 Additional helminth batch (2026-11-15): targeted Tamil corrections in five chapters at commit `4828de4e`. Full internal and independent academic acceptance remains pending; English source and accepted diagrams were not changed by this batch.
+
+Annelid and nematode batch (2026-11-15): targeted Tamil edits at commit `dc9a0a60`. A separate English-source issue remains for the Nereis pygidium definition; cross-language scientific equivalence requires follow-up before independent acceptance. No chapter in this batch has been accepted in full.
