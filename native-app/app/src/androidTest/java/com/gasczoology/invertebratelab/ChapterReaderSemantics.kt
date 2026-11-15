@@ -1,6 +1,8 @@
 package com.gasczoology.invertebratelab
 
 import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
+import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -48,4 +50,12 @@ internal fun showContinuousReader(rule: SemanticsNodeInteractionsProvider) {
     if (rule.onAllNodesWithTag("reading-mode-continuous").fetchSemanticsNodes().isNotEmpty()) {
         rule.onNodeWithTag("reading-mode-continuous").performClick()
     }
+}
+
+/** Navigate by the student's Contents control before looking for a row on another page. */
+internal fun openReadingPage(rule: SemanticsNodeInteractionsProvider, readerTag: String, pageId: String) {
+    rule.onNodeWithTag("reading-contents").performClick()
+    val destination = "reading-open-$pageId"
+    rule.onNodeWithTag(readerTag).performScrollToNode(hasTestTag(destination))
+    rule.onNodeWithTag(destination).performClick()
 }

@@ -78,6 +78,7 @@ class NativeNoaaCoralBookTest {
         // addition to semantic checks this documents status-bar clearance.
         capture("chapter-language-$langName-$scaleName")
 
+        showContinuousReader(rule)
         rule.onNodeWithTag("u2-reader-u2-corals")
             .performScrollToNode(hasTestTag("book-figure-lib-coral-polyp"))
         val bitmap = rule.onNodeWithTag("r2-plate-bitmap-lib-coral-polyp")

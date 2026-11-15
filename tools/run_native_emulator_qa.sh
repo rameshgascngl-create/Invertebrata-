@@ -43,9 +43,30 @@ fi
   echo "ro.product.locale=$(timeout 20s adb -s emulator-5554 shell getprop ro.product.locale || true)"
   echo "NOTE: These diagnostics do not establish effective application locale; instrumentation must assert Tamil rendering."
 } > native-app/app/build/qa-evidence/locale-preflight.txt
+# Acceptance tests save real device captures under these shared folders.
+# Prepare the paths used by older tests and include their PNGs in CI evidence.
+screenshot_root=/sdcard/Download
+screenshot_folders=(
+  five-unit-qa native-anatomy-evidence native-functional-evidence noaa-coral-qa
+  pila-biology-qa u1-diagram-qa u1-intro-evidence u12-reference-qa u57-qa
+  u60-qa unit2-qa unit23-editorial-qa unit3-qa unit4-qa unit45-gallery-qa
+)
+screenshot_paths=()
+for folder in "${screenshot_folders[@]}"; do
+  screenshot_paths+=("$screenshot_root/$folder")
+done
+timeout 30s adb -s emulator-5554 shell mkdir -p "${screenshot_paths[@]}"
+
 set +e
 timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.expectedScale="$expected_scale" --stacktrace --console=plain > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
 test_status=$?
+evidence_dir=native-app/app/build/qa-evidence/reader-screenshots
+mkdir -p "$evidence_dir"
+for path in "${screenshot_paths[@]}"; do
+  if ! timeout 10s adb -s emulator-5554 pull "$path" "$evidence_dir/" >> "$evidence_dir/adb-pull.log" 2>&1; then
+    echo "Screenshot pull failed: $path" >&2
+  fi
+done
 cat native-app/app/build/qa-evidence/instrumentation-console.log
 timeout --signal=TERM --kill-after=5s 35s adb -s emulator-5554 logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat.txt 2>&1 || true
 timeout 20s adb -s emulator-5554 shell getprop persist.sys.locale > native-app/app/build/qa-evidence/locale.txt 2>&1 || true

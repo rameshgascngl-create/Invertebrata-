@@ -3,6 +3,7 @@ package com.gasczoology.invertebratelab
 import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -11,10 +12,12 @@ import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToIndex
+import androidx.compose.ui.test.performScrollToNode
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BookLayout
+import com.gasczoology.invertebratelab.data.BookReadingPages
 import com.gasczoology.invertebratelab.data.BookRow
 import com.gasczoology.invertebratelab.data.IntroInvertebrataBookChapter
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
@@ -127,30 +130,35 @@ class NativeUnitIIntroductionBookRenderingTest {
         val sectionRows = rows.withIndex().filter { it.value is BookRow.SectionHeading }
         assertEquals(10, sectionRows.size)
 
-        val reader = rule.onNodeWithTag("book-reader-u1-intro")
-        reader.performScrollToIndex(2)
+        val readerTag = "book-reader-u1-intro"
+        val reader = rule.onNodeWithTag(readerTag)
+        val pages = BookReadingPages.forChapter(book, emptyList())
+        openReadingPage(rule, readerTag, "objectives")
+        reader.performScrollToNode(hasTestTag("book-introduction"))
         rule.onNodeWithTag("book-introduction").assertExists()
         capture("u1-intro-$langName-$scaleName-introduction")
 
-        reader.performScrollToIndex(3)
-        rule.onNodeWithTag("book-contents").assertExists()
-        reader.performScrollToIndex(4 + sectionRows.first().index)
+        rule.onNodeWithTag("reading-contents").performClick()
+        reader.performScrollToNode(hasTestTag("reading-open-objectives"))
+        openReadingPage(rule, readerTag, pages.single { sectionRows.first().index in it.rowIndices }.id)
+        reader.performScrollToNode(hasTestTag("book-section-1.1"))
         val first = sectionRows.first().value as BookRow.SectionHeading
         val firstTitle = if (language == AppLanguage.TAMIL)
             first.heading.tamil else first.heading.english
         assertHeadingWithinViewport("book-section-1.1", "1.1  $firstTitle")
         val firstScreenSha = capture("u1-intro-$langName-$scaleName-first-section")
 
-        reader.performScrollToIndex(4 + sectionRows.last().index)
+        openReadingPage(rule, readerTag, pages.single { sectionRows.last().index in it.rowIndices }.id)
+        reader.performScrollToNode(hasTestTag("book-section-1.10"))
         val last = sectionRows.last().value as BookRow.SectionHeading
         val lastTitle = if (language == AppLanguage.TAMIL)
             last.heading.tamil else last.heading.english
         assertHeadingWithinViewport("book-section-1.10", "1.10  $lastTitle")
         capture("u1-intro-$langName-$scaleName-last-section", previousSha256 = firstScreenSha)
 
-        reader.performScrollToIndex(4 + rows.size)
+        openReadingPage(rule, readerTag, "summary")
+        reader.performScrollToNode(hasTestTag("book-summary"))
         rule.onNodeWithTag("book-summary").assertExists()
-        reader.performScrollToIndex(0)
         rule.onNodeWithTag("book-back").performClick()
         waitFor("native-unit-1")
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(0)

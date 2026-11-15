@@ -1,17 +1,19 @@
 package com.gasczoology.invertebratelab
 
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.performScrollToIndex
+import androidx.compose.ui.test.performScrollToNode
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BookChapter
 import com.gasczoology.invertebratelab.data.BookLayout
+import com.gasczoology.invertebratelab.data.BookReadingPages
 import com.gasczoology.invertebratelab.data.BookRow
 import com.gasczoology.invertebratelab.data.NativeLearningRepository
 import com.gasczoology.invertebratelab.data.NativeLearningState
@@ -59,8 +61,7 @@ class NativeUnitIRevisedChaptersRenderingTest {
             .performClick()
         rule.onNodeWithTag("unit-1").performClick()
         waitFor("native-unit-1")
-        val chapterNumber = BookLayout.chapterNumber(chapter.lessonId)
-        rule.onNodeWithTag("native-unit-1").performScrollToIndex(chapterNumber)
+        rule.onNodeWithTag("native-unit-1").performScrollToNode(hasTestTag("chapter-" + chapter.lessonId))
         rule.onNodeWithTag("chapter-" + chapter.lessonId).performClick()
         val readerTag = "book-reader-" + chapter.lessonId
         waitFor(readerTag)
@@ -71,12 +72,15 @@ class NativeUnitIRevisedChaptersRenderingTest {
         val headings = rows.withIndex().filter { it.value is BookRow.SectionHeading }
         assertTrue("No sections in " + chapter.lessonId, headings.isNotEmpty())
         val reader = rule.onNodeWithTag(readerTag)
-        reader.performScrollToIndex(2)
+        val pages = BookReadingPages.forChapter(chapter, emptyList())
+        openReadingPage(rule, readerTag, "objectives")
+        reader.performScrollToNode(hasTestTag("book-introduction"))
         rule.onNodeWithTag("book-introduction").assertExists()
         for (entry in listOf(headings.first(), headings.last())) {
-            reader.performScrollToIndex(4 + entry.index)
+            openReadingPage(rule, readerTag, pages.single { entry.index in it.rowIndices }.id)
             val heading = entry.value as BookRow.SectionHeading
             val tag = "book-section-" + heading.number
+            reader.performScrollToNode(hasTestTag(tag))
             rule.onNodeWithTag(tag).assertTextEquals(
                 heading.number + "  " +
                     if (language == AppLanguage.TAMIL) heading.heading.tamil else heading.heading.english
@@ -88,9 +92,9 @@ class NativeUnitIRevisedChaptersRenderingTest {
                     rect.left >= root.left - 1f && rect.right <= root.right + 1f &&
                     rect.top >= root.top - 1f && rect.bottom <= root.bottom + 1f)
         }
-        reader.performScrollToIndex(4 + rows.size)
+        openReadingPage(rule, readerTag, "summary")
+        reader.performScrollToNode(hasTestTag("book-summary"))
         rule.onNodeWithTag("book-summary").assertExists()
-        reader.performScrollToIndex(0)
         rule.onNodeWithTag("book-back").performClick()
         waitFor("native-unit-1")
     }
