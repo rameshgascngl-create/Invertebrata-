@@ -41,11 +41,11 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 36 | IntroInvertebrataBookChapter | Taxonomy, taxon and genus definitions (targeted) | Improved scientific Tamil describing rank, taxonomy and related species | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
 | 37 | ProtozoaBookChapter | Unicellular construction, locomotion and the traditional teaching group (targeted) | Distinguished flagella and cilia; improved evolutionary classification and eukaryotic cell terminology | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
 | 38 | ParameciumBookChapter | Ciliary locomotion, power/recovery strokes and labelled figure (targeted) | Improved ciliary beating and metachronal movement phrasing | Targeted corrections completed; full internal review incomplete | Pending | 3de95040 |
-| 39 | ProtoParasitesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 40 | NutritionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 41 | HostParasiteBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 42 | LocomotionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 43 | SyconBookChapter | Feeding, digestion, diffusion, budding, fertilisation, inversion, metamorphosis (targeted passages) | Clarified water pathway, intracellular digestion, gametes and embryonic development | Targeted corrections completed; full internal review incomplete | Pending | 572f55d2; 4782db77; a7c7bf5c |
+| 39 | ProtoParasitesBookChapter | Entamoeba excystation, cyst formation and trophozoite (targeted) | Corrected awkward cyst/intestinal lumen terms and trophozoite definition | Targeted corrections completed; full internal review incomplete | Pending | d832803e |
+| 40 | NutritionBookChapter | Paramecium oral ciliary current, holozoic nutrition and mixotrophy (targeted) | Corrected a Tamil typo and clarified ciliary feeding and modes of nutrition | Targeted corrections completed; full internal review incomplete | Pending | d832803e |
+| 41 | HostParasiteBookChapter | Definitive and intermediate hosts and parasitism (targeted) | Clarified sexual maturity, larval/asexual stages and parasite-host relationship | Targeted corrections completed; full internal review incomplete | Pending | d832803e |
+| 42 | LocomotionBookChapter | Flagellar propulsion, Amoeba endoplasm and axoneme (targeted) | Corrected unidiomatic flagellar wave description and cellular terminology | Targeted corrections completed; full internal review incomplete | Pending | d832803e |
+| 43 | SyconBookChapter | Additional consistency check of choanocyte terminology and cross-fertilisation (targeted) | Standardised choanocyte transliteration and corrected 'birth fertilisation' mistranslation | Targeted corrections completed; full internal review incomplete | Pending | d832803e; 572f55d2; 4782db77; a7c7bf5c |
 
 The runtime registry appends `Extensions.bookChapters`; reconcile its count and ordering before claiming this list is the complete 43-chapter corpus.
 
@@ -64,3 +64,5 @@ Mollusc and echinoderm batch (2026-11-15): targeted scientific-Tamil corrections
 Echinoderm larval biology and cephalopod batch (2026-11-15): targeted Tamil corrections in five chapters, commit `877023c8`. All remain pending complete internal and independent review.
 
 Water-vascular system, fossils and protozoa batch (2026-11-15): targeted corrections at `3de95040` in five chapters; complete and independent academic acceptance pending.
+
+Final registered-source batch (2026-11-15): five targeted chapter corrections in `d832803e`. All 43 listed chapters now have an audit status; this does **not** mean all 43 have undergone complete academic review. Chapters 5–7 retain prior targeted correction history, whereas 40 other chapter files received targeted edits during the 2026-11-15 source sweep. The registry may append Extension chapters at runtime, so the number 43 must not be treated as a verified exhaustive corpus count. Android emulator acceptance and independent Tamil editorial sign-off remain outstanding.
