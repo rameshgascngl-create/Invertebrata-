@@ -64,12 +64,15 @@ class NativeUnitIVEarthwormTest {
         enterEarthworm(false)
         rule.onNodeWithTag("u4-earthworm-title").assertTextContains("Metaphire posthuma",substring=true)
         rule.onNodeWithTag("u4-earthworm-review-hold").assertExists()
-        rule.onNodeWithTag("u4-earthworm-reader")
-            .performScrollToNode(hasTestTag("u4-earthworm-plate-external-setae"))
-        rule.onNodeWithTag("u4-earthworm-plate-pending-external-setae").assertExists()
-        rule.onNodeWithTag("u4-earthworm-reader")
-            .performScrollToNode(hasTestTag("u4-earthworm-plate-reproductive"))
-        rule.onNodeWithTag("u4-earthworm-plate-pending-reproductive").assertExists()
+        // All six source images are now packaged. Missing-image placeholders
+        // are regressions, not the expected state for an accepted build.
+        for (plate in listOf("external-setae", "digestive", "circulatory",
+                "excretory", "nervous", "reproductive")) {
+            rule.onNodeWithTag("u4-earthworm-reader")
+                .performScrollToNode(hasTestTag("u4-earthworm-plate-" + plate))
+            rule.onNodeWithTag("u4-earthworm-raster-" + plate).assertExists()
+            rule.onNodeWithTag("u4-earthworm-plate-pending-" + plate).assertDoesNotExist()
+        }
         rule.onNodeWithTag("u4-earthworm-reader")
             .performScrollToNode(hasTestTag("u4-earthworm-section-digestive"))
         rule.onNodeWithTag("u4-earthworm-section-digestive").assertExists()
@@ -103,10 +106,19 @@ class NativeUnitIVEarthwormTest {
         // This protects the original Penaeus A5 chapter when Earthworm is reopened.
         rule.onNodeWithTag("chapter-u4-penaeus").performClick()
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-chapter-u4-penaeus").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("book-reader-u4-penaeus").fetchSemanticsNodes().isNotEmpty()
         }
-        rule.onNodeWithText("Chapter: u4-penaeus").assertExists()
-        rule.onNodeWithText("Back").performClick()
+        val context = androidx.test.platform.app.InstrumentationRegistry
+            .getInstrumentation().targetContext
+        val firstA5 = ValidatedA5AssetRepository(context).load()
+            .single { it.number == 4 }.chapters
+            .single { it.id == "u4-penaeus" }.a5Questions.first()
+        openReadingPage(rule, "book-reader-u4-penaeus", "practice-" + firstA5.id)
+        rule.onNodeWithTag("book-reader-u4-penaeus")
+            .performScrollToNode(hasTestTag("a5-question-" + firstA5.id))
+        rule.onNodeWithTag("a5-question-" + firstA5.id)
+            .assertTextEquals(firstA5.question.english)
+        rule.onNodeWithTag("book-back").performClick()
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("native-unit-4").fetchSemanticsNodes().isNotEmpty()
         }
@@ -125,29 +137,26 @@ class NativeUnitIVEarthwormTest {
             .assertExists().assertTextContains("Metaphire posthuma", substring = true)
         screenshot("earthworm-return-navigation")
     }
-    @Test fun tamilExternalAtlasTapAndLazyScrollPreserveNamedGenitalPores() {
+    @Test fun tamilEarthwormSixRealPlatesRemainAccessibleAfterLongScroll() {
         enterEarthworm(true)
-        rule.onNodeWithTag("u4-earthworm-reader")
-            .performScrollToNode(hasTestTag("u43-earthworm-external-atlas"))
-        rule.onNodeWithTag("u43-earthworm-schematic-notice").assertExists()
-        // Schematic ventral male openings on segment XVIII, not a raster hotspot.
-        rule.onNodeWithTag("u43-earthworm-canvas")
-            .performTouchInput { click(percentOffset(.44f,.73f)) }
-        rule.onNodeWithTag("u43-earthworm-selected-name")
-            .assertTextContains("ஆண் இனப்பெருக்கத் துளைகள்",substring=true)
-        // A long 200%-Tamil LazyColumn may dispose the diagram item.
+        // The retired synthetic Canvas must not be treated as a required atlas.
+        // Inspect all six real packaged specimens, including the reproductive
+        // structures, without weakening the anatomical-image gate.
+        val plates = listOf("external-setae", "digestive", "circulatory",
+            "excretory", "nervous", "reproductive")
+        for (plate in plates) {
+            rule.onNodeWithTag("u4-earthworm-reader")
+                .performScrollToNode(hasTestTag("u4-earthworm-plate-" + plate))
+            rule.onNodeWithTag("u4-earthworm-raster-" + plate).assertExists()
+            rule.onNodeWithTag("u4-earthworm-plate-pending-" + plate).assertDoesNotExist()
+        }
         rule.onNodeWithTag("u4-earthworm-reader")
             .performScrollToNode(hasTestTag("u4-earthworm-section-excretory"))
+        rule.onNodeWithTag("u4-earthworm-section-excretory").assertExists()
         rule.onNodeWithTag("u4-earthworm-reader")
-            .performScrollToNode(hasTestTag("u43-earthworm-external-atlas"))
-        rule.onNodeWithTag("u43-earthworm-selected-name")
-            .assertTextContains("ஆண் இனப்பெருக்கத் துளைகள்",substring=true)
-        // The original illustrated diagram remains interactive on return.
-        rule.onNodeWithTag("u43-earthworm-canvas")
-            .performTouchInput { click(percentOffset(.37f,.306f)) }
-        rule.onNodeWithTag("u43-earthworm-selected-name")
-            .assertTextContains("கிளிட்டெல்லம்",substring=true)
-        screenshot("earthworm-tamil-external-atlas")
+            .performScrollToNode(hasTestTag("u4-earthworm-plate-reproductive"))
+        rule.onNodeWithTag("u4-earthworm-raster-reproductive").assertExists()
+        screenshot("earthworm-tamil-reproductive-plate")
     }
 
 }
