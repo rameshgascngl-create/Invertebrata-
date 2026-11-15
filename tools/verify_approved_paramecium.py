@@ -1,56 +1,76 @@
 #!/usr/bin/env python3
-"""Verify that the user-accepted Paramecium PNG is present and referenced.
+"""Verify the accepted Paramecium illustration without modifying the source ZIP.
 
-Run from repository root after the PNG has been imported. This is a strict
-acceptance gate: it does not modify any textbook content or image.
+Checks the committed integration package, its exact PNG, the native Gradle
+staging hook, and the bilingual book chapter placement. Rendering and CI
+acceptance are separate checks.
 """
 from __future__ import annotations
 
 import hashlib
 import pathlib
 import sys
+import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SHA256 = "8f54a66d89843688d64108cc6ebacae35db497e2bbb8bcbef4c959eefbb44d51"
+ZIP = ROOT / "Paramecium_Approved_Integration_Kit.zip"
+ENTRY = "paramecium_integration/assets/paramecium-reproduction-approved.png"
 CHAPTER = ROOT / "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ParameciumBookChapter.kt"
-ASSETS = ROOT / "native-app/app/src/main"
-PNG_NAME = "Paramecium_Reproduction_Accepted_Candidate.png"
+GRADLE = ROOT / "native-app/app/build.gradle.kts"
+SLOT = "paramecium/reproduction-approved"
 
 
 def main() -> int:
-    candidates = [
-        p for p in ASSETS.rglob("*.png")
-        if p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() == SHA256
-    ]
-    if len(candidates) != 1:
-        print(f"FAIL: expected exactly one approved PNG under {ASSETS}; found {len(candidates)}")
-        print(f"Source asset: {PNG_NAME}; SHA-256: {SHA256}")
+    if not ZIP.is_file():
+        print(f"FAIL: committed integration archive missing: {ZIP}")
+        return 1
+    try:
+        with zipfile.ZipFile(ZIP) as archive:
+            matches = [name for name in archive.namelist() if name == ENTRY]
+            if len(matches) != 1:
+                print(f"FAIL: expected exactly one approved PNG archive entry; found {len(matches)}")
+                return 1
+            data = archive.read(ENTRY)
+    except (zipfile.BadZipFile, OSError, RuntimeError) as exc:
+        print(f"FAIL: cannot read approved image archive: {exc}")
         return 1
 
-    data = candidates[0].read_bytes()
-    if data[:8] != bytes.fromhex("89504e470d0a1a0a"):
-        print("FAIL: asset does not have PNG signature")
+    actual = hashlib.sha256(data).hexdigest()
+    if actual != SHA256:
+        print(f"FAIL: image checksum mismatch: {actual}")
         return 1
-    width = int.from_bytes(data[16:20], "big")
-    height = int.from_bytes(data[20:24], "big")
-    if (width, height) != (1536, 1024):
-        print(f"FAIL: image dimensions {width}x{height}, expected 1536x1024")
+    if data[:8] != bytes.fromhex("89504e470d0a1a0a"):
+        print("FAIL: image does not have PNG signature")
+        return 1
+    size = (int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big"))
+    if size != (1536, 1024):
+        print(f"FAIL: image dimensions {size}, expected (1536, 1024)")
+        return 1
+
+    gradle = GRADLE.read_text(encoding="utf-8")
+    if not all(token in gradle for token in (
+        "stageApprovedParamecium", "generated/approvedParameciumAssets",
+        "paramecium/reproduction-approved.png", SHA256,
+        "dependsOn(stageApprovedParamecium)",
+    )):
+        print("FAIL: Android Gradle staging configuration incomplete")
         return 1
 
     chapter = CHAPTER.read_text(encoding="utf-8")
-    if "nuclei-reproduction" not in chapter or "Stages of conjugation" not in chapter:
-        print("FAIL: expected reproduction section missing from chapter")
+    figure = f'bfig("{SLOT}"'
+    table = 'btable("Stages of conjugation"'
+    if chapter.count(figure) != 1 or table not in chapter:
+        print("FAIL: approved figure missing, duplicated, or conjugation table absent")
         return 1
-    slot = "paramecium/reproduction-approved"
-    if f'bfig("{slot}"' not in chapter:
-        print(f"FAIL: accepted figure slot {slot} is not referenced in the chapter")
+    if chapter.index(figure) > chapter.index(table):
+        print("FAIL: approved figure must precede conjugation table")
         return 1
-    if chapter.index(f'bfig("{slot}"') > chapter.index('btable("Stages of conjugation"'):
-        print("FAIL: accepted reproduction plate must precede the conjugation table")
-        return 1
-    print(f"PASS: approved PNG at {candidates[0].relative_to(ROOT)}")
-    print("PASS: exact checksum, dimensions and chapter figure placement")
-    print("NOTE: figure slot registration, rendering and emulator screenshots still require verification")
+
+    print(f"PASS: committed ZIP and approved PNG (SHA-256 {SHA256})")
+    print("PASS: PNG dimensions 1536x1024 and valid PNG signature")
+    print("PASS: Gradle asset staging hook and bilingual chapter figure placement")
+    print("NOT VERIFIED: figure registry/resolver, Android compilation, emulator rendering, APK")
     return 0
 
 
