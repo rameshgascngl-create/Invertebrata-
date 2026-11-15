@@ -4,6 +4,7 @@ import android.graphics.BitmapFactory
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.gasczoology.invertebratelab.data.BookFigure
+import com.gasczoology.invertebratelab.data.BookFigureLibrary
 import com.gasczoology.invertebratelab.data.ParameciumBookChapter
 import java.security.MessageDigest
 import org.junit.Assert.assertEquals
@@ -20,6 +21,10 @@ class ApprovedParameciumAssetTest {
     @Test
     fun approvedReproductionPlateIsPackagedAndReferenced() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals(
+            "paramecium/reproduction-approved",
+            BookFigureLibrary.stemFor("lib/paramecium-reproduction-approved"),
+        )
         val bytes = context.assets.open("paramecium/reproduction-approved.png").use { it.readBytes() }
         val sha = MessageDigest.getInstance("SHA-256")
             .digest(bytes).joinToString("") { "%02x".format(it) }
