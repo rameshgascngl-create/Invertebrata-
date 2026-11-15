@@ -92,11 +92,12 @@ class NativeUnitIProtozoaReferenceTest {
         for(phase in listOf("liver","blood","mosquito")) {
             rule.onNodeWithTag("u1-plasmodium-phase-"+phase).performClick()
             rule.onNodeWithTag("u1-plasmodium-focus-"+phase).assertExists()
-            rule.onNodeWithTag("u1-plasmodium-panel-missing").assertDoesNotExist()
+            rule.onNodeWithTag("u1-plasmodium-overview-fallback").assertIsDisplayed()
+            rule.onNodeWithTag("u1-reference-expanded-bitmap").assertContentDescriptionEquals("Plasmodium: All")
             rule.onNodeWithTag("u1-reference-expanded-bitmap").assertIsDisplayed()
             val actual=rule.onNodeWithTag("u1-reference-expanded-bitmap")
                 .fetchSemanticsNode().boundsInRoot.height
-            assertTrue("Plasmodium image collapses at normal font scale: $actual",
+            assertTrue("Plasmodium image viewport collapsed: $actual",
                 actual > 195f * rule.activity.resources.displayMetrics.density)
             screenshot("plasmodium-"+phase+"-english")
         }

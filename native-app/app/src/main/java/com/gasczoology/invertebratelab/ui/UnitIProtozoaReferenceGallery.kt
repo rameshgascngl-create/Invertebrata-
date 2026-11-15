@@ -156,7 +156,8 @@ internal fun ExpandedProtozoaReferenceImage(
     val focusImage=if(plasmodium && focus!="overview")
         rememberRequiredRasterBitmap("unit1/references/plasmodium_"+focus,pngOnly=true)
         else null
-    val displayedImage=if(!plasmodium || focus=="overview") bitmap else focusImage
+    val displayedImage = focusImage ?: bitmap
+    val usingOverview = plasmodium && focus != "overview" && focusImage == null
     val focusLabels=listOf(
         Triple("overview","All","முழு"),
         Triple("liver","Liver","கல்லீரல்"),
@@ -174,8 +175,8 @@ internal fun ExpandedProtozoaReferenceImage(
             "கொசுவில் கேமீட்டுகள், கருவுறுதல், ஊகைனீட், ஊசிஸ்ட், புதிய ஸ்போரோசோயிட்டுகள் உருவாகின்றன."
             else "In the mosquito: gametes, fertilisation, ookinete, oocyst and new sporozoites."
         else -> if(tamil)
-            "அனைத்து நிலைகளும் கொண்ட மூல விளக்கப்படம். தனி விவரங்களுக்கு கீழுள்ள தேர்வுகளைத் தொடுக."
-            else "Full reference overview. Select a focus view for enlarged stage excerpts."
+            "அனைத்து நிலைகளும் கொண்ட மூல விளக்கப்படம். தனி நிலையின் விளக்கத்தைப் படிக்க அதைத் தேர்ந்தெடுக்கவும்."
+            else "Full reference overview. Select a stage to read its explanation."
     }
     Dialog(
         onDismissRequest={detailsVisible=false;onClose()},
@@ -197,8 +198,8 @@ internal fun ExpandedProtozoaReferenceImage(
                     overflow=TextOverflow.Ellipsis)
                 Text(
                     if(plasmodium) {
-                        if(tamil) "மூலப் படத்தின் பெரிதாக்கப்பட்ட பகுதிகள்; பென்சில் படமல்ல. ஆய்வு நிலுவை."
-                        else "Enlarged reference excerpts, not pencil art; review pending."
+                        if(tamil) "மூல ஆதாரப் படம். கிடைக்கும்போது தனி நிலைக்கான படப்பகுதி காட்டப்படும்."
+                        else "Source reference. A cropped view appears when available for the selected stage."
                     } else if(tamil)
                         "ஆதாரப் படம் மட்டுமே; உடலமைப்பு மதிப்பாய்வு நிலுவையில்."
                     else "Source illustration only; anatomical review remains open.",
@@ -250,19 +251,21 @@ internal fun ExpandedProtozoaReferenceImage(
                         }
                     }
                 }
+                if (usingOverview) {
+                    Text(
+                        if (tamil) "தனி நிலைப் படப்பகுதி கிடைக்கவில்லை. முழு ஆதாரப் படம் காட்டப்படுகிறது."
+                        else "Stage crop unavailable. Showing the full reference.",
+                        style = MaterialTheme.typography.labelSmall,
+                        modifier = Modifier.testTag("u1-plasmodium-overview-fallback"),
+                    )
+                }
                 Box(modifier=Modifier.fillMaxWidth().weight(1f).clipToBounds()) {
-                    if(displayedImage==null) {
-                        Text(if(tamil)
-                            "நிலைப் படம் இல்லை; பழைய வரைபடத்திற்கு மாற்றமில்லை."
-                            else "Focus PNG unavailable; no schematic fallback.",
-                            color=MaterialTheme.colorScheme.error,
-                            modifier=Modifier.testTag("u1-plasmodium-panel-missing"))
-                    } else Image(
+                    Image(
                         bitmap=displayedImage,
-                        contentDescription=if(plasmodium)
-                            (if(tamil) "பிளாஸ்மோடியம்: "+focusLabels.first{it.first==focus}.third
-                             else "Plasmodium: "+focusLabels.first{it.first==focus}.second)
-                            else title,
+                        contentDescription = if (plasmodium) {
+                            val shownStage = focusLabels.first { it.first == if (usingOverview) "overview" else focus }
+                            if (tamil) "பிளாஸ்மோடியம்: " + shownStage.third else "Plasmodium: " + shownStage.second
+                        } else title,
                         contentScale=ContentScale.Fit,
                         modifier=Modifier.fillMaxSize()
                             .graphicsLayer {
@@ -281,7 +284,7 @@ internal fun ExpandedProtozoaReferenceImage(
                             }
                             .testTag("u1-reference-expanded-bitmap"),
                     )
-                    if(plasmodium && displayedImage!=null) {
+                    if(plasmodium) {
                         // Semantics-only marker; never stamp labels over the reference image.
                         Box(modifier=Modifier.size(1.dp)
                             .testTag("u1-plasmodium-focus-"+focus))
@@ -332,8 +335,8 @@ internal fun ExpandedProtozoaReferenceImage(
                         modifier=Modifier.testTag("u1-plasmodium-details-body"))
                     Spacer(Modifier.height(12.dp))
                     Text(if(tamil)
-                        "இது ஆதாரப் படத்தின் பகுதி மட்டுமே. உயிரியல்/பென்சில் பட ஆய்வு நிலுவையில் உள்ளது."
-                        else "This is a source-reference excerpt. Anatomical and pencil-art review remain pending.",
+                        "இந்த விளக்கம் தேர்ந்தெடுத்த வாழ்க்கைச் சுழற்சி நிலையைப் பற்றியது."
+                        else "This explanation describes the selected life-cycle stage.",
                         style=MaterialTheme.typography.bodySmall)
                 }
             },
