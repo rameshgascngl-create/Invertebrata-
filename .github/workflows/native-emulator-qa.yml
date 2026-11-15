@@ -38,8 +38,12 @@ jobs:
           mkdir -p native-app/app/build/qa-evidence
           {
             echo "PATH=$PATH"
-            command -v adb
-            adb version
+            if command -v adb >/dev/null 2>&1; then
+              command -v adb
+              adb version
+            else
+              echo "ADB is not on PATH before android-emulator-runner sets up Android SDK tools"
+            fi
             id
             ls -l /dev/kvm
             ps -eo pid,ppid,user,args | grep -E '[a]db|[e]mulator' || true
