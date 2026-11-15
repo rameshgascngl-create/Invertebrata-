@@ -10,13 +10,13 @@ object CnidariaBookChapter {
             "Identify the defining structures of cnidarians." to
                 "நிடேரியன்களின் சிறப்பு அமைப்புகளை அடையாளம் காணுதல்.",
             "Compare polyp and medusa forms." to
-                "பாலிப், மெடூசா வடிவங்களை ஒப்பிடுதல்.",
+                "பாலிப் மற்றும் மெடுசா உடல் வடிவங்களை ஒப்பிடுதல்.",
             "Distinguish the principal classes with examples." to
                 "முக்கிய வகுப்புகளை எடுத்துக்காட்டுகளுடன் வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
             "Cnidarians are aquatic animals characterised by cnidocytes. Their body wall, gastrovascular cavity and polyp or medusa form provide the basis for studying the group." to
-                "கொட்டும் செல்களான நிடோசைட்டுகள் நிடேரியன்களின் சிறப்புப் பண்பாகும். உடற்சுவர், உணவுச் செரிமானக் குழி, பாலிப் மற்றும் மெடூசா வடிவங்கள் ஆகியவற்றைக் கொண்டு இத்தொகுதியைப் படிக்கலாம்.",
+                "கொட்டும் செல்களான நிடோசைட்டுகள் நிடேரியன்களின் சிறப்புப் பண்பாகும். உடற்சுவர், செரிமானத்திற்கும் ஊட்டப்பொருள் கடத்தலுக்கும் உதவும் இரைப்பை–சுற்றோட்டக் குழி, பாலிப் மற்றும் மெடுசா வடிவங்கள் ஆகியவற்றைக் கொண்டு இத்தொகுதியைப் படிக்கலாம்.",
         ),
         sections = listOf(
             bsec("name", "The name of the phylum", "தொகுதியின் பெயர்",
@@ -46,7 +46,7 @@ object CnidariaBookChapter {
                         "Acoelomate: there is no body cavity other than the gut." to "உடற்குழியற்றவை: குடலைத் தவிர வேறு உடற்குழி இல்லை.",
                     ),
                     bpoints("Cnidocytes and the nervous system", "நிடோசைட்டுகளும் நரம்பு மண்டலமும்",
-                        "Stinging cells (cnidocytes) with nematocysts, used to capture prey and for defence, are present, especially on the tentacles." to "நெமட்டோசிஸ்ட் உள்ள கொட்டும் செல்கள் (நிடோசைட்டுகள்) குறிப்பாகக் உணர்கொம்புகளில் உள்ளன; இரை பிடிக்கவும் தற்காப்புக்கும் பயன்படுகின்றன.",
+                        "Stinging cells (cnidocytes) with nematocysts, used to capture prey and for defence, are present, especially on the tentacles." to "நெமட்டோசிஸ்ட் உள்ள கொட்டும் செல்கள் (நிடோசைட்டுகள்) குறிப்பாக உணர்கொம்புகளில் உள்ளன; இரை பிடிக்கவும் தற்காப்புக்கும் பயன்படுகின்றன.",
                         "A nerve net of nerve cells lies at the base of the epidermis and often of the gastrodermis; there is no brain." to "நரம்பு செல்களின் நரம்பு வலை எப்பிடெர்மிஸ் அடியிலும் பெரும்பாலும் காஸ்ட்ரோடெர்மிஸ் அடியிலும் உள்ளது; மூளை இல்லை.",
                         "Epitheliomuscular cells provide a simple muscular system, and sense cells respond to touch and chemicals." to "எப்பிதீலியோதசை செல்கள் எளிய தசை அமைப்பைத் தருகின்றன; உணர் செல்கள் தொடுதலுக்கும் வேதிப்பொருட்களுக்கும் துலங்குகின்றன.",
                     ),
@@ -58,8 +58,8 @@ object CnidariaBookChapter {
                     bpoints("Body forms and reproduction", "உடல் வடிவங்களும் இனப்பெருக்கமும்",
                         "Two body forms occur: the polyp and the medusa; one or both may be present in the life cycle." to "இரு உடல் வடிவங்கள் உண்டு: பாலிப், மெடுசா; வாழ்க்கைச் சுழற்சியில் ஒன்று அல்லது இரண்டும் இருக்கலாம்.",
                         "Reproduction is asexual by budding, and sexual by gametes; the sexes are usually separate." to "மொட்டுவிடுவதால் பாலிலாவாகவும் கேமீட்டுகளால் பாலினமாகவும் இனப்பெருக்கம்; பாலினங்கள் பொதுவாகத் தனித்தனி.",
-                        "The fertilised egg develops into a ciliated planula larva in most groups." to "கருவுற்ற முட்டை பெரும்பாலான குழுக்களில் கசையிழை பிளானுலா லார்வாவாக வளர்கிறது.",
-                        "Alternation of generations occurs in many hydrozoans and in the scyphozoans, in which an asexual polyp stage alternates with a sexual medusa stage." to "பல ஹைட்ரோசோவாக்களிலும் சிஃபோசோவாக்களிலும் தலைமுறை மாற்றம் நிகழ்கிறது; பாலிலா பாலிப் நிலையும் பாலின மெடுசா நிலையும் மாறிமாறி வருகின்றன.",
+                        "The fertilised egg develops into a ciliated planula larva in most groups." to "கருவுற்ற முட்டையிலிருந்து பெரும்பாலான குழுக்களில் குறுஇழைகளால் (cilia) மூடப்பட்ட பிளானுலா இளவுயிரி உருவாகிறது.",
+                        "Alternation of generations occurs in many hydrozoans and in the scyphozoans, in which an asexual polyp stage alternates with a sexual medusa stage." to "பல ஹைட்ரோசோவா மற்றும் சிஃபோசோவா இனங்களின் வாழ்க்கைச் சுழற்சியில் பாலிலா இனப்பெருக்கம் செய்யும் பாலிப் நிலையையும் பாலின இனப்பெருக்கம் செய்யும் மெடுசா நிலையையும் காணலாம். இவ்விரண்டும் இருமடிய உடல்நிலைகள்; மடியஎண் மாற்றம் அல்ல.",
                     ),
                     bdef("Diploblastic", "ஈரடுக்கு",
                         "Having a body built of two germ layers, ectoderm and endoderm, which form the epidermis and gastrodermis." to
@@ -178,18 +178,18 @@ object CnidariaBookChapter {
             bsec("reproduction", "Reproduction, regeneration and symbiosis", "இனப்பெருக்கம், மீளுருவாக்கம், கூட்டுயிரி வாழ்க்கை",
                 blocks = listOf(
                     bp("Cnidarians reproduce asexually by budding, in which a part of the body wall grows out and develops into a new individual, which may separate, as in Hydra, or remain attached to form a colony, as in Obelia. They reproduce sexually by gametes, and many species are dioecious. The fertilised egg develops into a ciliated, free-swimming larva, the planula, which is solid or hollow and has two layers. It settles, and develops into a polyp. Cnidarians also regenerate well, since the interstitial cells can replace the lost tissue.",
-                        "நிடேரியன்கள் மொட்டு விடுதல் மூலம் பாலிலா முறையில் இனப்பெருக்குகின்றன; உடற்சுவரின் ஒரு பகுதி வெளி வளர்ந்து ஹைட்ராவில் போல பிரியலாம் அல்லது ஒபீலியாவில் போல இணைந்திருந்து காலனி உருவாக்கலாம். இனச் செல்கள் மூலம் பால் முறையிலும் இனப்பெருக்குகின்றன; பல இனங்கள் ஒருபாலிகள். கருவுற்ற முட்டை, சிலியா கொண்ட நீந்தும், திடமான அல்லது உள்ளீடற்ற இரு அடுக்கு லார்வாவான பிளானுலாவாக வளர்கிறது. அது படிந்து பாலிப்பாக வளர்கிறது. இடைநிலை செல்கள் இழந்த திசுவை மாற்றுவதால் நிடேரியன்கள் நன்கு மீளுருவாக்குகின்றன."),
+                        "நிடேரியன்கள் மொட்டுவிடுதல் மூலம் பாலிலா இனப்பெருக்கம் செய்கின்றன; உடற்சுவரின் ஒரு பகுதி வெளி வளர்ந்து ஹைட்ராவில் போல பிரியலாம் அல்லது ஒபீலியாவில் போல இணைந்திருந்து காலனி உருவாக்கலாம். இனச் செல்கள் மூலம் பால் முறையிலும் இனப்பெருக்குகின்றன; பல இனங்கள் ஒருபாலிகள். கருவுற்ற முட்டையிலிருந்து குறுஇழைகள் (cilia) கொண்ட, நீந்தும் பிளானுலா இளவுயிரி உருவாகிறது. இனத்திற்கேற்ப அதன் உட்புற அமைப்பு திண்மமாகவோ குழியுடனோ காணப்படலாம். அது படிந்து பாலிப்பாக வளர்கிறது. இடைநிலை செல்கள் இழந்த திசுவை மாற்றுவதால் நிடேரியன்கள் நன்கு மீளுருவாக்குகின்றன."),
                     bp("Many cnidarians live in partnership with algae. The green hydra Hydra viridis contains single-celled green algae in its gastrodermis, and reef-building corals and many sea anemones harbour zooxanthellae. The alga receives shelter and nutrients from the animal, and the animal receives food from the alga. Some sea anemones also live with certain fishes, such as the clownfish, which shelter among the tentacles and are protected from the stings by a mucus coat. These examples are used to illustrate symbiosis, a close association between two kinds of organism.",
-                        "பல நிடேரியன்கள் பாசிகளுடன் கூட்டுறவில் வாழ்கின்றன. பசுமை ஹைட்ரா ஹைட்ரா விரிடிஸின் காஸ்ட்ரோடெர்மிஸில் ஒற்றைச் செல் பச்சைப் பாசிகள் உள்ளன; முகடு கட்டும் பவளங்களும் பல கடல் சாமந்திகளும் சூக்சாந்தெல்லேயைக் கொண்டுள்ளன. பாசி விலங்கிடமிருந்து உறைவிடமும் ஊட்டச்சத்தும், விலங்கு பாசியிடமிருந்து உணவும் பெறுகின்றன. சில கடல் சாமந்திகள் கோமாளி மீன் போன்ற சில மீன்களுடனும் வாழ்கின்றன; அவை உணர்கொம்புகளிடையே தங்கி, சளிப் பூச்சால் கொட்டுதலிலிருந்து பாதுகாக்கப்படுகின்றன. இவ்வெடுத்துக்காட்டுகள் இரு வகை உயிரிகளுக்கிடையிலான நெருக்கமான தொடர்பான கூட்டுயிரி வாழ்க்கையை விளக்கப் பயன்படுகின்றன."),
+                        "பல நிடேரியன்கள் பாசிகளுடன் கூட்டுறவில் வாழ்கின்றன. பசுமை ஹைட்ரா ஹைட்ரா விரிடிஸின் காஸ்ட்ரோடெர்மிஸில் ஒற்றைச் செல் பச்சைப் பாசிகள் உள்ளன; பவளப்பாறைகளை உருவாக்கும் பவளங்களும் பல கடல் சாமந்திகளும் சூக்சாந்தெல்லேயைக் கொண்டுள்ளன. பாசி விலங்கிடமிருந்து உறைவிடமும் ஊட்டச்சத்தும், விலங்கு பாசியிடமிருந்து உணவும் பெறுகின்றன. சில கடல் சாமந்திகள் கோமாளி மீன் போன்ற சில மீன்களுடனும் வாழ்கின்றன; அவை உணர்கொம்புகளிடையே தங்கி, சளிப் பூச்சால் கொட்டுதலிலிருந்து பாதுகாக்கப்படுகின்றன. இவ்வெடுத்துக்காட்டுகள் இரு வகை உயிரிகளுக்கிடையிலான நெருக்கமான தொடர்பான கூட்டுயிரி வாழ்க்கையை விளக்கப் பயன்படுகின்றன."),
                     bdef("Planula", "பிளானுலா", "The ciliated, free-swimming larva of a cnidarian, which settles and develops into a polyp." to
-                        "நிடேரியனின் சிலியா கொண்ட நீந்தும் லார்வா; படிந்து பாலிப்பாக வளர்கிறது."),
+                        "நிடேரியன்களில் காணப்படும் குறுஇழைகளால் மூடப்பட்ட, நீந்தக்கூடிய பிளானுலா இளவுயிரி; பொருத்தமான பரப்பில் படிந்து பாலிப்பாக வளர்கிறது."),
                     bdef("Symbiosis", "கூட்டுயிரி வாழ்க்கை (Symbiosis)", "A close and lasting association between two different kinds of organism." to
                         "இரு வெவ்வேறு வகை உயிரிகளுக்கிடையிலான நெருக்கமான நீடித்த தொடர்பு."),
                 )),
             bsec("answering", "Answering questions on the phylum", "தொகுதி குறித்த வினாக்களுக்கு விடையளித்தல்",
                 blocks = listOf(
                     bp("Examination questions on the phylum ask for the general characters, the nematocyst, the polyp and medusa forms, and the classification. A good answer on the general characters groups the points under symmetry and layers (radial, diploblastic), body cavity and gut (gastrovascular, one opening), the stinging cells, nerve net, and the two forms with the alternation of generations. A question on the polyp and medusa should state that the two forms are variations of one body plan, the medusa being in effect an upside-down polyp with a greatly thickened mesoglea, and it should include a labelled diagram of each.",
-                        "தொகுதி குறித்த தேர்வு வினாக்கள் பொதுப்பண்புகள், நெமட்டோசிஸ்ட், பாலிப், மெடுசா வடிவங்கள், வகைப்பாடு ஆகியவற்றைக் கேட்கின்றன. பொதுப்பண்புகள் குறித்த நல்ல விடை புள்ளிகளை சமச்சீரும் அடுக்குகளும் (ஆரம், ஈரடுக்கு), உடற்குழியும் குடலும் (காஸ்ட்ரோவாஸ்குலர், ஒரே துளை), கொட்டும் செல்கள், நரம்பு வலை, தலைமுறை மாற்றத்துடன் இரு வடிவங்கள் என குழுவாக்குகிறது. பாலிப், மெடுசா குறித்த வினா இரு வடிவங்களும் ஒரே உடல் திட்டத்தின் வேறுபாடுகள் என்றும், மெடுசா மிகத் தடித்த மீசோக்ளியாவுடன் தலைகீழான பாலிப் என்றும் கூற வேண்டும்; ஒவ்வொன்றுக்கும் பெயரிட்ட படம் இருக்க வேண்டும்."),
+                        "தொகுதி குறித்த தேர்வு வினாக்கள் பொதுப்பண்புகள், நெமட்டோசிஸ்ட், பாலிப், மெடுசா வடிவங்கள், வகைப்பாடு ஆகியவற்றைக் கேட்கின்றன. பொதுப்பண்புகள் குறித்த நல்ல விடை புள்ளிகளை சமச்சீரும் அடுக்குகளும் (ஆரம், ஈரடுக்கு), உடற்குழியும் குடலும் (காஸ்ட்ரோவாஸ்குலர், ஒரே துளை), கொட்டும் செல்கள், நரம்பு வலை, தலைமுறை மாற்றத்துடன் இரு வடிவங்கள் என குழுவாக்குகிறது. பாலிப், மெடுசா குறித்த வினா இரு வடிவங்களும் ஒரே உடல் திட்டத்தின் வேறுபாடுகள் என்றும், மெடுசாவின் வாய்ப்பகுதி கீழ்நோக்கி அமைந்திருப்பதையும், பாலிப்பைவிட அதன் மீசோகிளியா பொதுவாக அதிகத் தடிப்புடன் இருப்பதையும் கூற வேண்டும்; ஒவ்வொன்றுக்கும் பெயரிட்ட படம் இருக்க வேண்டும்."),
                     bpoints("Common errors to avoid", "தவிர்க்க வேண்டிய அடிக்கடி நிகழும் பிழைகள்",
                         "Calling the cnidarians triploblastic or giving them an anus." to "நிடேரியன்களை மூவடுக்கு என்றோ குதம் உடையவை என்றோ கூறுதல்.",
                         "Saying that the nematocyst is a cell; it is the capsule within the cnidocyte." to "நெமட்டோசிஸ்ட் செல் என்று கூறுதல்; அது நிடோசைட்டுக்குள் உள்ள காப்ஸ்யூல்.",
@@ -214,7 +214,7 @@ object CnidariaBookChapter {
                 subs = listOf(
                     bsub("Class Hydrozoa", "வகுப்பு ஹைட்ரோசோவா",
                         bp("Mostly small, often colonial, and marine, though Hydra is a freshwater member. The polyp is the dominant stage in many, and the medusa, where present, has a shelf-like velum and is without a gastric partition. The mesoglea has no cells. The gonads are epidermal. Examples are Hydra, Obelia, Physalia and Velella." to
-                            "பெரும்பாலும் சிறியவை, அடிக்கடி காலனி, கடல் வாழ்பவை; ஹைட்ரா நன்னீர் உறுப்பினர். பலவற்றில் பாலிப் முதன்மை நிலை; மெடுசா இருக்குமிடத்து அலமாரி போன்ற வெலம் உண்டு, இரைப்பை பிரிவுகள் இல்லை. மீசோகிளியாவில் செல்கள் இல்லை. இனப்பெருக்கச் சுரப்பிகள் எப்பிடெர்மிஸில் உள்ளன. எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா, பைசாலியா, வெலெல்லா."),
+                            "பெரும்பாலும் சிறிய, பல இனங்களில் கூட்டுயிரிகளாக வாழும் கடல்வாழ் விலங்குகள்; ஹைட்ரா நன்னீர் உறுப்பினர். பலவற்றில் பாலிப் முதன்மை நிலை; மெடுசா இருக்குமிடத்து குடை விளிம்பிலிருந்து உள்நோக்கி நீளும் மெல்லிய திசுமடிப்பான வெலம் உண்டு, இரைப்பை பிரிவுகள் இல்லை. மீசோகிளியாவில் செல்கள் இல்லை. இனப்பெருக்கச் சுரப்பிகள் எப்பிடெர்மிஸில் உள்ளன. எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா, பைசாலியா, வெலெல்லா."),
                     ),
                     bsub("Class Scyphozoa", "வகுப்பு சிஃபோசோவா",
                         bp("The true jellyfishes. The medusa is the dominant stage and the polyp is small and short-lived, or absent. The mesoglea is thick and contains cells. The gonads are gastrodermal, and the gastric cavity has four pouches with gastric filaments. Examples are Aurelia, Rhizostoma and Cassiopeia." to
