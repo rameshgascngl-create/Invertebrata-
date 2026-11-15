@@ -41,8 +41,15 @@ def main() -> int:
     if "nuclei-reproduction" not in chapter or "Stages of conjugation" not in chapter:
         print("FAIL: expected reproduction section missing from chapter")
         return 1
+    slot = "paramecium/reproduction-approved"
+    if f'bfig("{slot}"' not in chapter:
+        print(f"FAIL: accepted figure slot {slot} is not referenced in the chapter")
+        return 1
+    if chapter.index(f'bfig("{slot}"') > chapter.index('btable("Stages of conjugation"'):
+        print("FAIL: accepted reproduction plate must precede the conjugation table")
+        return 1
     print(f"PASS: approved PNG at {candidates[0].relative_to(ROOT)}")
-    print("PASS: exact checksum and dimensions; reproduction section present")
+    print("PASS: exact checksum, dimensions and chapter figure placement")
     print("NOTE: figure slot registration, rendering and emulator screenshots still require verification")
     return 0
 
