@@ -112,12 +112,17 @@ class NativeUnitIDiagramAccessTest {
         // The existing five-mark corpus remains reachable via the Practice tab.
         rule.onNodeWithTag("r1-tab-practice").performScrollTo().performClick()
         rule.onNodeWithTag("r1-open-practice").performScrollTo().performClick()
-        val reader = rule.onNodeWithTag("book-reader-u1-paramecium")
+        val readerTag = "book-reader-u1-paramecium"
         val questionId = "u1-paramecium-A5-1"
+        rule.waitUntil(20_000) {
+            rule.onAllNodesWithTag(readerTag, useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        val reader = rule.onNodeWithTag(readerTag, useUnmergedTree = true)
         reader.performScrollToNode(hasTestTag("a5-toggle-$questionId"))
-        rule.onNodeWithTag("a5-question-$questionId").assertExists()
-        rule.onNodeWithTag("a5-toggle-$questionId").performClick()
+        rule.onNodeWithTag("a5-question-$questionId", useUnmergedTree = true).assertExists()
+        rule.onNodeWithTag("a5-toggle-$questionId", useUnmergedTree = true).performClick()
         reader.performScrollToNode(hasTestTag("a5-point-$questionId-5"))
-        rule.onNodeWithTag("a5-point-$questionId-5").assertIsDisplayed()
+        rule.onNodeWithTag("a5-point-$questionId-5", useUnmergedTree = true).assertIsDisplayed()
     }
 }
