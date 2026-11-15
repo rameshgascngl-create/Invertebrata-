@@ -46,7 +46,7 @@ jobs:
             suite: unit-i
           - api: 35
             font_scale: '2.0'
-            suite: sycon-penaeus
+            suite: penaeus
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     steps:

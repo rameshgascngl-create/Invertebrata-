@@ -22,9 +22,9 @@ case "$suite" in
     test_timeout=15m
     test_filter+=("-Pandroid.testInstrumentationRunnerArguments.annotation=$package.UnitIReaderAcceptance")
     ;;
-  sycon-penaeus)
+  penaeus)
     test_timeout=15m
-    test_filter+=("-Pandroid.testInstrumentationRunnerArguments.class=$package.NativeUnitIITeachingTest#tamilSyconStageLinksToCanalFigureAndPractice,$package.NativeUnitIVPenaeusTest")
+    test_filter+=("-Pandroid.testInstrumentationRunnerArguments.class=$package.NativeUnitIVPenaeusTest")
     ;;
   process-death) ;;
   *) echo "Unknown emulator test suite: $suite" >&2; exit 2 ;;
