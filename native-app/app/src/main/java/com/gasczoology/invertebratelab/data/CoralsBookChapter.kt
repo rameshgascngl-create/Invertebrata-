@@ -15,7 +15,7 @@ object CoralsBookChapter {
         ),
         introduction = listOf(
             "Corals belong to the cnidarian class Anthozoa and have a polyp stage, but no medusa stage. Many reef-building stony corals form colonies whose polyps secrete calcium-carbonate skeletons." to
-                "பவளங்கள் நிடேரியா தொகுதியின் ஆந்தோசோவா வகுப்பைச் சேர்ந்த கடல்வாழ் விலங்குகள். இவற்றின் வாழ்க்கைச் சுழற்சியில் பாலிப் நிலை மட்டுமே காணப்படுகிறது; மெடூசா நிலை இல்லை. பவளப்பாறைகளை உருவாக்கும் பல கற்பவளங்கள் கூட்டுயிரிகளாக வாழ்கின்றன. அவற்றின் பாலிப்புகள் கால்சியம் கார்பனேட்டால் ஆன உறுதியான வெளி எலும்புக்கூட்டைச் சுரக்கின்றன.",
+                "பவளங்கள் நிடேரியா தொகுதியின் ஆந்தோசோவா வகுப்பைச் சேர்ந்த கடல்வாழ் விலங்குகள். இவற்றின் வாழ்க்கைச் சுழற்சியில் பாலிப் நிலை மட்டுமே காணப்படுகிறது; மெடுசா நிலை காணப்படுவதில்லை. பவளப்பாறைகளை உருவாக்கும் பல கற்பவளங்கள் கூட்டுயிரிகளாக வாழ்கின்றன. அவற்றின் பாலிப்புகள் கால்சியம் கார்பனேட்டால் ஆன உறுதியான வெளி எலும்புக்கூட்டைச் சுரக்கின்றன.",
             "A coral reef is an ecosystem built and inhabited by many organisms, not a single animal. Coral–algal symbiosis, suitable water conditions and thermal stress help explain reef growth and bleaching." to
                 "பவளப்பாறை என்பது பல உயிரினங்கள் உருவாக்கி வாழும் சூழல்மண்டலம்; அது ஒற்றை விலங்கு அல்ல. பவள–பாசிக் கூட்டுயிர் வாழ்வு, ஏற்ற நீர்ச் சூழல், வெப்ப அழுத்தம் ஆகியவை பவளப்பாறை வளர்ச்சியையும் வெளிறலையும் விளங்கிக்கொள்ள முக்கியமானவை.",
         ),
@@ -62,9 +62,9 @@ object CoralsBookChapter {
                         "பவள பாலிப் அமரும் கால்சியம் கார்பனேட் கிண்ணம்."),
                     bdef("Septum (plural: septa)", "செப்டம் (பன்மை: செப்டா)", "One of the radiating plates of the coral skeleton inside the calyx." to
                         "கேலிக்ஸினுள் உள்ள பவள எலும்புக்கூட்டின் ஆரமாகப் பரவும் தகடுகளில் ஒன்று."),
-                    bnote("Not all corals build reefs", "எல்லாப் பவளங்களும் முகடு கட்டுவதில்லை",
+                    bnote("Not all corals build reefs", "எல்லாப் பவளங்களும் பவளப்பாறைகளை உருவாக்குவதில்லை",
                         "Sea fans, such as Gorgonia, and sea pens, such as Pennatula, are anthozoans with a flexible skeleton and do not build reefs. Only the stony corals with zooxanthellae make the reef framework." to
-                            "கோர்கோனியா போன்ற கடல் விசிறிகளும் பென்னாட்டுலா போன்ற கடல் எழுதுகோல்களும் வளையும் எலும்புக்கூடு கொண்ட ஆந்தோசோவாக்கள்; முகடு கட்டுவதில்லை. சூக்சாந்தெல்லே உள்ள கல் பவளங்கள் மட்டுமே முகட்டின் கட்டமைப்பை உருவாக்குகின்றன."),
+                            "கோர்கோனியா போன்ற கடல் விசிறிகளும் பென்னாட்டுலா போன்ற கடல் எழுதுகோல்களும் பவளப்பாறைகளின் முதன்மைக் கட்டமைப்பை உருவாக்குவதில்லை. வெப்பமண்டல ஆழமற்ற நீர்ப் பவளப்பாறைகளின் சுண்ணாம்புக் கட்டமைப்பை முதன்மையாக உருவாக்குபவை கூட்டுயிர்ப் பாசிகளுடன் வாழும் கற்பவளங்களே; சுண்ணாம்புப் பாசிகளும் கட்டமைப்பை உறுதிப்படுத்த உதவுகின்றன."),
                 )),
             bsec("zooxanthellae", "Partnership with zooxanthellae", "சூக்சாந்தெல்லேயுடன் கூட்டுறவு",
                 blocks = listOf(
@@ -82,29 +82,29 @@ object CoralsBookChapter {
             bsec("types", "Types of coral reef", "பவளப்பாறை வகைகள்",
                 blocks = listOf(
                     bp("Three kinds of reef are recognised, according to their relation to the land." to
-                        "நிலத்துடனான தொடர்புக்கு ஏற்ப மூன்று வகை முகடுகள் அங்கீகரிக்கப்படுகின்றன."),
+                        "கரையுடனான அமைவிடம் மற்றும் வடிவமைப்பைப் பொறுத்து பவளப்பாறைகள் மூன்று முக்கிய வகைகளாகப் பிரிக்கப்படுகின்றன."),
                     btable("The three principal kinds of coral reef", "பவளப்பாறையின் மூன்று முக்கிய வகைகள்",
                         listOf("Type" to "வகை", "Position" to "அமைவிடம்", "Lagoon" to "கடற்காயல்"),
                         listOf(
-                            listOf("Fringing reef" to "ஓர முகடு", "Grows directly from, or close to, the shore" to "கரையிலிருந்தே அல்லது அதன் அருகிலேயே வளர்கிறது", "None, or a narrow shallow channel" to "இல்லை, அல்லது குறுகிய ஆழமற்ற கால்வாய்"),
-                            listOf("Barrier reef" to "தடுப்பு முகடு", "Lies parallel to the land, separated from it" to "நிலத்துக்கு இணையாக, அதிலிருந்து பிரிந்து கிடக்கிறது", "Broad or deep lagoon between reef and land" to "முகட்டுக்கும் நிலத்துக்கும் இடையே அகன்ற அல்லது ஆழமான கடற்காயல்"),
-                            listOf("Atoll" to "வளைய முகடு", "A ring or oval of reef in open ocean" to "திறந்த கடலில் வளைய அல்லது முட்டை வடிவ முகடு", "Central lagoon enclosed by the reef" to "முகட்டால் சூழப்பட்ட மைய கடற்காயல்"),
+                            listOf("Fringing reef" to "கரையோரப் பவளப்பாறை", "Grows directly from, or close to, the shore" to "கரையிலிருந்தே அல்லது அதன் அருகிலேயே வளர்கிறது", "None, or a narrow shallow channel" to "இல்லை, அல்லது குறுகிய ஆழமற்ற கால்வாய்"),
+                            listOf("Barrier reef" to "தடுப்புப் பவளப்பாறை", "Lies parallel to the land, separated from it" to "நிலத்துக்கு இணையாக, அதிலிருந்து பிரிந்து கிடக்கிறது", "Broad or deep lagoon between reef and land" to "முகட்டுக்கும் நிலத்துக்கும் இடையே அகன்ற அல்லது ஆழமான கடற்காயல்"),
+                            listOf("Atoll" to "வளையப் பவளப்பாறை", "A ring or oval of reef in open ocean" to "திறந்த கடலில் வளைய அல்லது முட்டை வடிவ முகடு", "Central lagoon enclosed by the reef" to "முகட்டால் சூழப்பட்ட மைய கடற்காயல்"),
                         )),
                     bp("The three types are often discussed as stages of one process. A fringing reef forms around a volcanic island; if the island sinks slowly while the coral grows upwards, a lagoon opens between the reef and the shrinking land and the fringing reef becomes a barrier reef; when the island has sunk below the surface, only the ring of reef remains as an atoll. This is Darwin's subsidence theory. It accounts for atolls that rest on volcanic rock, but it is not the only explanation of reef form and does not apply to every reef. The Great Barrier Reef of Australia is the largest barrier reef, and the Maldives and Lakshadweep islands are examples of atolls near India." to
-                        "மூன்று வகைகளும் ஒரே செயல்முறையின் நிலைகளாகப் பெரும்பாலும் விவாதிக்கப்படுகின்றன. எரிமலைத் தீவைச் சுற்றி ஓர முகடு உருவாகிறது; பவளம் மேல்நோக்கி வளரும்போது தீவு மெதுவாக அமிழ்ந்தால், முகட்டுக்கும் சுருங்கும் நிலத்துக்கும் இடையே கடற்காயல் திறந்து, ஓர முகடு தடுப்பு முகடாகிறது; தீவு நீர்மட்டத்துக்குக் கீழே அமிழ்ந்ததும் முகட்டு வளையம் மட்டும் வளைய முகடாக எஞ்சுகிறது. இது டார்வினின் அமிழ்வுக் கோட்பாடு. எரிமலைப் பாறையின் மேல் அமைந்த வளைய முகடுகளை இது விளக்குகிறது; ஆனால் முகட்டு வடிவத்துக்கான ஒரே விளக்கம் அல்ல, எல்லா முகடுகளுக்கும் பொருந்தாது. ஆஸ்திரேலியாவின் பெரும் தடுப்பு முகடு மிகப்பெரிய தடுப்பு முகடு; இந்தியாவுக்கு அருகிலுள்ள மாலத்தீவுகளும் லட்சத்தீவுகளும் வளைய முகடுகளின் எடுத்துக்காட்டுகள்."),
-                    bdef("Fringing reef", "ஓர முகடு (Fringing reef)", "A reef growing directly from or close to the shore." to
+                        "மூன்று வகைகளும் ஒரே செயல்முறையின் நிலைகளாகப் பெரும்பாலும் விவாதிக்கப்படுகின்றன. எரிமலைத் தீவைச் சுற்றி கரையோரப் பவளப்பாறை உருவாகிறது; பவளம் மேல்நோக்கி வளரும்போது தீவு மெதுவாக அமிழ்ந்தால், முகட்டுக்கும் சுருங்கும் நிலத்துக்கும் இடையே கடற்காயல் திறந்து, கரையோரப் பவளப்பாறை தடுப்பு முகடாகிறது; தீவு நீர்மட்டத்துக்குக் கீழே அமிழ்ந்ததும் முகட்டு வளையம் மட்டும் வளைய முகடாக எஞ்சுகிறது. இது டார்வினின் அமிழ்வுக் கோட்பாடு. எரிமலைப் பாறையின் மேல் அமைந்த வளையப் பவளப்பாறைகளை இது விளக்குகிறது; ஆனால் முகட்டு வடிவத்துக்கான ஒரே விளக்கம் அல்ல, எல்லா முகடுகளுக்கும் பொருந்தாது. ஆஸ்திரேலியாவின் பெரும் தடுப்புப் பவளப்பாறை மிகப்பெரிய தடுப்புப் பவளப்பாறை; இந்தியாவுக்கு அருகிலுள்ள மாலத்தீவுகளும் லட்சத்தீவுகளும் வளையப் பவளப்பாறைகளின் எடுத்துக்காட்டுகள்."),
+                    bdef("Fringing reef", "கரையோரப் பவளப்பாறை (Fringing reef)", "A reef growing directly from or close to the shore." to
                         "கரையிலிருந்தே அல்லது அதன் அருகிலேயே வளரும் முகடு."),
-                    bdef("Barrier reef", "தடுப்பு முகடு (Barrier reef)", "A reef separated from the land by a broad or deep lagoon." to
+                    bdef("Barrier reef", "தடுப்புப் பவளப்பாறை (Barrier reef)", "A reef separated from the land by a broad or deep lagoon." to
                         "அகன்ற அல்லது ஆழமான கடற்காயலால் நிலத்திலிருந்து பிரிக்கப்பட்ட முகடு."),
-                    bdef("Atoll", "வளைய முகடு (Atoll)", "A ring- or oval-shaped reef enclosing a central lagoon in the open sea." to
+                    bdef("Atoll", "வளையப் பவளப்பாறை (Atoll)", "A ring- or oval-shaped reef enclosing a central lagoon in the open sea." to
                         "திறந்த கடலில் மைய கடற்காயலைச் சூழ்ந்த வளைய அல்லது முட்டை வடிவ முகடு."),
                     bdef("Lagoon", "கடற்காயல் (Lagoon)", "The body of shallow water between a reef and the land, or enclosed by an atoll." to
                         "முகட்டுக்கும் நிலத்துக்கும் இடையே அல்லது வளைய முகட்டால் சூழப்பட்ட ஆழமற்ற நீர்ப்பகுதி."),
                 )),
-            bsec("conditions", "Conditions for reef growth", "முகடு வளர்ச்சிக்கான நிலைகள்",
+            bsec("conditions", "Conditions for reef growth", "பவளப்பாறை வளர்ச்சிக்குத் தேவையான சூழ்நிலைகள்",
                 blocks = listOf(
-                    bpoints("Requirements of reef-building corals", "முகடு கட்டும் பவளங்களின் தேவைகள்",
-                        "Warm water, generally with a temperature of about 23 to 29 degrees Celsius." to "வெதுவெதுப்பான நீர்; பொதுவாக சுமார் 23 முதல் 29 டிகிரி செல்சியஸ் வெப்பநிலை.",
+                    bpoints("Requirements of reef-building corals", "பவளப்பாறை உருவாக்கும் பவளங்களுக்குத் தேவையான சூழ்நிலைகள்",
+                        "Warm water, generally with a temperature of about 23 to 29 degrees Celsius." to "ஒப்பீட்டளவில் வெப்பமான கடல்நீர்; பொதுவாக சுமார் 23–29°C வெப்பநிலை.",
                         "Shallow, clear water into which sunlight penetrates, since the zooxanthellae need light." to "சூக்சாந்தெல்லேக்கு ஒளி தேவை என்பதால், சூரிய ஒளி ஊடுருவும் ஆழமற்ற, தெளிந்த நீர்.",
                         "Normal ocean salinity; reef corals are damaged by large falls in salinity such as occur near river mouths." to "இயல்பான கடல் உவர்ப்பு; ஆற்று முகத்துவாரங்களுக்கு அருகில் ஏற்படும் பெரிய உவர்ப்புக் குறைவால் பவளங்கள் பாதிக்கப்படுகின்றன.",
                         "Water free of much silt, which would smother the polyps and shade the algae." to "பாலிப்புகளை மூடி, பாசிகளுக்கு நிழலிடும் அதிக வண்டல் இல்லாத நீர்.",
@@ -113,11 +113,11 @@ object CoralsBookChapter {
                     bp("These conditions explain the distribution of reefs. They are found in the tropics, on the eastern sides of continents where warm currents flow, and almost always in water that is not deeper than about fifty metres. The shallow water near the shore also explains why reefs are most affected by human activity." to
                         "இந்நிலைகள் முகடுகளின் பரவலை விளக்குகின்றன. அவை வெப்ப மண்டலத்தில், வெதுவெதுப்பான நீரோட்டங்கள் பாயும் கண்டங்களின் கிழக்குப் பக்கங்களில், கிட்டத்தட்ட எப்போதும் சுமார் ஐம்பது மீட்டருக்கு மிகாத ஆழமுள்ள நீரில் காணப்படுகின்றன. கரைக்கு அருகிலுள்ள ஆழமற்ற நீர், முகடுகள் மனித செயல்பாட்டால் அதிகம் பாதிக்கப்படுவதற்கும் காரணம்."),
                 )),
-            bsec("ecosystem", "The reef as an ecosystem", "முகடு ஒரு சூழல்மண்டலமாக",
+            bsec("ecosystem", "The reef as an ecosystem", "பவளப்பாறை ஒரு சூழல்மண்டலமாக",
                 blocks = listOf(
                     bp("A reef is not one organism. It is a framework built by corals and by calcareous algae, and it provides surfaces, crevices and shelter for a great number of species: sponges, worms, molluscs, crustaceans, echinoderms and fishes. Food chains on a reef are very productive, in spite of the poor water around it, because nutrients are held and recycled within the community, a fact for which the partnership of coral and alga is partly responsible." to
                         "முகடு ஒற்றை உயிரி அல்ல. பவளங்களும் சுண்ணாம்புப் பாசிகளும் கட்டிய கட்டமைப்பு அது; கடற்பஞ்சுகள், புழுக்கள், மெல்லுடலிகள், கிரஸ்டேஷியன்கள், முட்தோலிகள், மீன்கள் என ஏராளமான இனங்களுக்கு பரப்புகள், பிளவுகள், அடைக்கலம் தருகிறது. சுற்றியுள்ள நீர் ஊட்டமற்றது என்றாலும் முகட்டிலுள்ள உணவுச் சங்கிலிகள் மிக உற்பத்தித் திறனுடையவை; ஏனெனில் ஊட்டச்சத்துகள் சமுதாயத்தினுள் பிடித்து மறுசுழற்சி செய்யப்படுகின்றன; இதற்குப் பவளம்-பாசிக் கூட்டுறவு ஓரளவு காரணம்."),
-                    bnote("Reef, not animal", "முகடு, விலங்கு அல்ல",
+                    bnote("Reef, not animal", "பவளப்பாறை என்பது தனி விலங்கு அல்ல",
                         "In answers write that the reef is an ecosystem built by many organisms. Only the coral polyp is the animal, and the reef as a whole is neither an animal nor a single colony." to
                             "விடைகளில் முகடு பல உயிரிகள் கட்டிய சூழல்மண்டலம் என எழுதுக. பவள பாலிப் மட்டுமே விலங்கு; முகடு முழுவதும் விலங்கும் அல்ல, ஒற்றைக் காலனியும் அல்ல."),
                 )),
@@ -126,16 +126,16 @@ object CoralsBookChapter {
                     bp("A colony grows by asexual budding of its polyps, which is also how it increases in size and how a fragment broken from it by a storm may start a new colony. Sexual reproduction supplies the larvae by which a reef is founded and by which a damaged reef is restored. The polyps of most corals form eggs and sperm; some corals are hermaphrodite and others have separate sexes." to
                         "காலனி பாலிப்புகளின் பாலிலா மொட்டுவிடுதலால் வளர்கிறது; இதனாலேயே அது அளவில் பெருகுகிறது, புயலால் உடைந்த துண்டு புதிய காலனியைத் தொடங்கவும் முடிகிறது. பாலின இனப்பெருக்கம் முகடு நிறுவப்படவும் சேதமடைந்த முகடு மீளவும் உதவும் லார்வாக்களை வழங்குகிறது. பெரும்பாலான பவளங்களின் பாலிப்புகள் முட்டைகளையும் விந்தணுக்களையும் உருவாக்குகின்றன; சில பவளங்கள் இருபால் உயிரிகள், சில தனிப் பாலினம்."),
                     bp("In many reef corals the eggs and sperm are released into the water in a brief period, often on a few nights after the full moon in a particular month, so that great numbers of gametes are shed at the same moment by all the colonies of many species on a reef. Other corals brood the larvae inside the polyp. Fertilisation produces a planula, which swims, settles on a firm surface and becomes the first polyp of a new colony. The synchrony improves the chance of fertilisation, but the larvae face heavy loss, and only a small proportion settle in a suitable place." to
-                        "பல முகடு பவளங்களில் முட்டைகளும் விந்தணுக்களும் குறுகிய காலத்தில், பெரும்பாலும் குறிப்பிட்ட மாதத்தில் முழு நிலவுக்குப் பின் சில இரவுகளில், நீரில் வெளியிடப்படுகின்றன; இதனால் முகட்டிலுள்ள பல இனங்களின் எல்லாக் காலனிகளும் ஒரே தருணத்தில் பெருந்தொகை கேமீட்டுகளை வெளியிடுகின்றன. வேறு பவளங்கள் லார்வாக்களை பாலிப்புக்குள் அடைகாக்கின்றன. கருவுறுதல் பிளானுலாவைத் தருகிறது; அது நீந்தி, உறுதியான பரப்பில் படிந்து புதிய காலனியின் முதல் பாலிப்பாகிறது. ஒத்திசைவு கருவுறுதல் வாய்ப்பை உயர்த்துகிறது; ஆனால் லார்வாக்கள் பெருமளவு இழப்பைச் சந்திக்கின்றன; சிறிய பகுதியே தகுந்த இடத்தில் படிகிறது."),
+                        "பல முகடு பவளங்களில் முட்டைகளும் விந்தணுக்களும் குறுகிய காலத்தில், பெரும்பாலும் குறிப்பிட்ட மாதத்தில் முழு நிலவுக்குப் பின் சில இரவுகளில், நீரில் வெளியிடப்படுகின்றன; இதனால் முகட்டிலுள்ள பல இனங்களின் எல்லாக் காலனிகளும் ஒரே தருணத்தில் பெருந்தொகை கேமீட்டுகளை வெளியிடுகின்றன. வேறு பவளங்கள் லார்வாக்களை பாலிப்புக்குள் அடைகாக்கின்றன. கருவுற்ற முட்டை வளர்ந்து குறுஇழைகள் கொண்ட பிளானுலா இளவுயிரியாகிறது; அது நீந்தி, பொருத்தமான உறுதியான பரப்பில் படிந்து புதிய கூட்டுயிரியின் முதல் பாலிப்பாக வளர்கிறது. ஒத்திசைவு கருவுறுதல் வாய்ப்பை உயர்த்துகிறது; ஆனால் லார்வாக்கள் பெருமளவு இழப்பைச் சந்திக்கின்றன; சிறிய பகுதியே தகுந்த இடத்தில் படிகிறது."),
                     bdef("Planula", "பிளானுலா", "The ciliated, free-swimming larva of cnidarians, including corals." to
-                        "பவளங்கள் உட்பட நிடேரியாக்களின் கசையிழை, சுதந்திரமாக நீந்தும் லார்வா."),
+                        "பவளங்கள் உள்ளிட்ட நிடேரியா விலங்குகளில் காணப்படும், குறுஇழைகளால் (cilia) மூடப்பட்டு நீந்தக்கூடிய பிளானுலா இளவுயிரி."),
                     bdef("Broadcast spawning", "பரப்பு முட்டையிடல் (Broadcast spawning)", "The release of eggs and sperm into the water, where fertilisation takes place." to
                         "முட்டைகளையும் விந்தணுக்களையும் நீரில் வெளியிடுதல்; அங்கு கருவுறுதல் நிகழ்கிறது."),
                 )),
             bsec("india", "Coral reefs of India", "இந்தியாவின் பவளப்பாறைகள்",
                 blocks = listOf(
                     bp("Coral reefs in Indian waters occur in the Gulf of Mannar and Palk Bay on the south-east coast, the Gulf of Kachchh in the west, the Lakshadweep islands, which are atolls, and the Andaman and Nicobar islands, which have fringing reefs. The Gulf of Mannar, off the coast of Tamil Nadu, is a marine biosphere reserve with a rich reef fauna. The reefs of the area support fisheries on which many coastal people depend, and are exposed to the stresses of bleaching, sedimentation and destructive fishing that are described in this chapter." to
-                        "இந்திய நீரில் பவளப்பாறைகள் தென்கிழக்குக் கடற்கரையின் மன்னார் வளைகுடா, பாக் விரிகுடாவிலும், மேற்கில் கச்சு வளைகுடாவிலும், வளைய முகடுகளான லட்சத்தீவுகளிலும், ஓர முகடுகள் உள்ள அந்தமான், நிகோபார் தீவுகளிலும் உள்ளன. தமிழகக் கடற்கரையை ஒட்டிய மன்னார் வளைகுடா வளமான முகட்டு விலங்கினம் கொண்ட கடல் உயிர்க்கோளக் காப்பகம். அப்பகுதியின் முகடுகள் பல கடலோர மக்கள் சார்ந்துள்ள மீன்பிடித்தொழிலுக்கு ஆதரவளிக்கின்றன; இந்த அத்தியாயத்தில் விவரிக்கப்பட்டுள்ள வெளிறல், வண்டல் படிவு, அழிவுமிக்க மீன்பிடி ஆகிய அழுத்தங்களுக்கும் உட்படுகின்றன."),
+                        "இந்திய நீரில் பவளப்பாறைகள் தென்கிழக்குக் கடற்கரையின் மன்னார் வளைகுடா, பாக் விரிகுடாவிலும், மேற்கில் கச்சு வளைகுடாவிலும், வளையப் பவளப்பாறைகளான லட்சத்தீவுகளிலும், கரையோரப் பவளப்பாறைகள் உள்ள அந்தமான், நிகோபார் தீவுகளிலும் உள்ளன. தமிழகக் கடற்கரையை ஒட்டிய மன்னார் வளைகுடா வளமான முகட்டு விலங்கினம் கொண்ட கடல் உயிர்க்கோளக் காப்பகம். அப்பகுதியின் முகடுகள் பல கடலோர மக்கள் சார்ந்துள்ள மீன்பிடித்தொழிலுக்கு ஆதரவளிக்கின்றன; இந்த அத்தியாயத்தில் விவரிக்கப்பட்டுள்ள வெளிறல், வண்டல் படிவு, அழிவுமிக்க மீன்பிடி ஆகிய அழுத்தங்களுக்கும் உட்படுகின்றன."),
                 )),
             bsec("kinds", "Kinds of coral: stony, soft and horny", "பவள வகைகள்: கல், மென்மை, கொம்பு",
                 blocks = listOf(
@@ -184,7 +184,7 @@ object CoralsBookChapter {
             bsec("answering", "Answering questions on corals", "பவளங்கள் குறித்த வினாக்களுக்கு விடையளித்தல்",
                 blocks = listOf(
                     bp("The questions on corals fall into four groups: the structure and skeleton of the polyp, the partnership with zooxanthellae, the types and formation of reefs, and bleaching and conservation. For the first, a labelled diagram of the polyp in its calyx with septa and tentacles is expected. For the second, the benefits to both partners should be stated. For the third, the three reef types should be tabulated, with the Darwin sequence from fringing reef to barrier reef to atoll as an explanation. For the fourth, causes, process and consequences should be separated.",
-                        "பவளங்கள் குறித்த வினாக்கள் நான்கு குழுக்களாகின்றன: பாலிப்பின் அமைப்பும் எலும்புக்கூடும், சூக்சாந்தெல்லேயுடனான கூட்டுறவு, முகடுகளின் வகைகளும் உருவாக்கமும், வெளிறலும் பாதுகாப்பும். முதலாவதற்கு கேலிக்ஸ், செப்டா, உணர்கொம்புகளுடன் பாலிப்பின் பெயரிட்ட படம் எதிர்பார்க்கப்படுகிறது. இரண்டாவதற்கு இரு கூட்டாளிகளுக்கும் ஏற்படும் நன்மைகளைக் கூற வேண்டும். மூன்றாவதற்கு மூன்று முகட்டு வகைகளை அட்டவணைப்படுத்தி, ஓர முகடு, தடுப்பு முகடு, வளைய முகடு என்ற டார்வின் வரிசையை விளக்கமாகத் தர வேண்டும். நான்காவதற்கு காரணங்கள், செயல்முறை, விளைவுகளைப் பிரித்துக் கூற வேண்டும்."),
+                        "பவளங்கள் குறித்த வினாக்கள் நான்கு குழுக்களாகின்றன: பாலிப்பின் அமைப்பும் எலும்புக்கூடும், சூக்சாந்தெல்லேயுடனான கூட்டுறவு, முகடுகளின் வகைகளும் உருவாக்கமும், வெளிறலும் பாதுகாப்பும். முதலாவதற்கு கேலிக்ஸ், செப்டா, உணர்கொம்புகளுடன் பாலிப்பின் பெயரிட்ட படம் எதிர்பார்க்கப்படுகிறது. இரண்டாவதற்கு இரு கூட்டாளிகளுக்கும் ஏற்படும் நன்மைகளைக் கூற வேண்டும். மூன்றாவதற்கு மூன்று முகட்டு வகைகளை அட்டவணைப்படுத்தி, கரையோரப் பவளப்பாறை, தடுப்புப் பவளப்பாறை, வளையப் பவளப்பாறை என்ற டார்வின் வரிசையை விளக்கமாகத் தர வேண்டும். நான்காவதற்கு காரணங்கள், செயல்முறை, விளைவுகளைப் பிரித்துக் கூற வேண்டும்."),
                     bpoints("Frequent errors to avoid", "தவிர்க்க வேண்டிய அடிக்கடி நிகழும் பிழைகள்",
                         "Saying that the coral is a plant, or that the zooxanthellae are the coral's own cells." to "பவளம் தாவரம் என்றோ, சூக்சாந்தெல்லே பவளத்தின் சொந்த செல்கள் என்றோ கூறுதல்.",
                         "Giving the polyp six tentacles in a soft coral, which has eight." to "மென் பவளத்தின் பாலிப்புக்கு ஆறு உணர்கொம்புகள் தருதல்; அதற்கு எட்டு உள்ளன.",
@@ -224,7 +224,7 @@ object CoralsBookChapter {
             bqc("What are zooxanthellae?", "சூக்சாந்தெல்லே என்றால் என்ன?",
                 "Symbiotic photosynthetic dinoflagellates living in the cells of reef-building corals.", "முகடு கட்டும் பவளங்களின் செல்களில் வாழும் கூட்டுயிர் ஒளிச்சேர்க்கை டைனோஃபிளாஜெல்லேட்டுகள்."),
             bqc("Name the three main types of coral reef.", "பவளப்பாறையின் மூன்று முக்கிய வகைகளைக் குறிப்பிடுக.",
-                "Fringing reef, barrier reef and atoll.", "ஓர முகடு, தடுப்பு முகடு, வளைய முகடு."),
+                "Fringing reef, barrier reef and atoll.", "கரையோரப் பவளப்பாறை, தடுப்புப் பவளப்பாறை, வளையப் பவளப்பாறை."),
             bqc("Why do reef-building corals need clear, shallow water?", "முகடு கட்டும் பவளங்களுக்கு ஏன் தெளிந்த, ஆழமற்ற நீர் தேவை?",
                 "Their zooxanthellae need sunlight for photosynthesis, and silt would smother the polyps.", "அவற்றின் சூக்சாந்தெல்லேக்கு ஒளிச்சேர்க்கைக்கு சூரிய ஒளி தேவை; வண்டல் பாலிப்புகளை மூடிவிடும்."),
             bqc("Is a bleached coral always dead?", "வெளிறிய பவளம் எப்போதும் இறந்ததா?",
