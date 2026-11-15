@@ -66,11 +66,9 @@ jobs:
           script: |
             set -eu
             mkdir -p native-app/app/build/qa-evidence
-            {
-              adb version
-              adb devices -l
-              ss -ltnp '( sport = :5037 )' || true
-            } > native-app/app/build/qa-evidence/adb-before-tests.txt 2>&1
+            adb version > native-app/app/build/qa-evidence/adb-before-tests.txt 2>&1
+            adb devices -l >> native-app/app/build/qa-evidence/adb-before-tests.txt 2>&1
+            ss -ltnp '( sport = :5037 )' >> native-app/app/build/qa-evidence/adb-before-tests.txt 2>&1 || true
             if ! timeout 20s adb -s emulator-5554 get-state | grep -qx device; then
               echo "ADB device unavailable; attempting one bounded server restart" >&2
               timeout 15s adb kill-server || true
