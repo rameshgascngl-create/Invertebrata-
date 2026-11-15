@@ -32,15 +32,15 @@ object ProtoParasitesBookChapter {
                         "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கைச் சுழற்சி; கற்பித்தல் விளக்கப்படத்திலிருந்து (ஆங்கிலக் குறிப்புகளுடன்). நிலைகள் உரையில் விளக்கப்பட்டுள்ளன; இப்படம் பொது அறிமுகத்துக்கு மட்டுமே."),
                     bpoints("Life history of Entamoeba histolytica", "எண்டமீபா ஹிஸ்டோலிடிகாவின் வாழ்க்கை வரலாறு",
                         "Mature four-nucleate cysts are swallowed in contaminated food or water." to "மாசுபட்ட உணவு அல்லது நீரில் முதிர்ந்த நான்கு உட்கரு சிஸ்ட்கள் விழுங்கப்படுகின்றன.",
-                        "Excystation takes place in the small intestine, and trophozoites are released." to "சிறுகுடலில் சிஸ்ட் நீக்கம் நிகழ்ந்து டிரோபோசோயிட்டுகள் விடுவிக்கப்படுகின்றன.",
+                        "Excystation takes place in the small intestine, and trophozoites are released." to "சிறுகுடலில் சிஸ்ட் உறை திறந்து, ஒட்டுண்ணியின் செயற்படும் நிலைகளான டிரோபோசோயிட்டுகள் வெளியேறுகின்றன.",
                         "Trophozoites colonise the large intestine and multiply by binary fission." to "டிரோபோசோயிட்டுகள் பெருங்குடலில் குடியேறி இருபிளவால் பெருகுகின்றன.",
                         "Some invade the wall, causing ulcers, and may spread to the liver." to "சில சுவரில் ஊடுருவி புண்களை உண்டாக்கி கல்லீரலுக்குப் பரவலாம்.",
-                        "Cysts form in the lumen and are passed in the faeces to infect new hosts." to "சிஸ்ட்கள் குழிவில் உருவாகி மலத்தில் வெளியேறி புதிய விருந்தோம்பிகளைத் தொற்றுகின்றன.",
+                        "Cysts form in the lumen and are passed in the faeces to infect new hosts." to "சிஸ்ட்கள் குடலின் உட்குழியில் உருவாகி மலத்தில் வெளியேறி புதிய விருந்தோம்பிகளைத் தொற்றுகின்றன.",
                     ),
                     bp("The disease caused is amoebiasis. Control rests on safe water and food and on sanitation, because the infection spreads through the faecal contamination of the things that people swallow. These are principles of public health, and they include protecting water supplies from sewage, washing the hands, washing and cooking foods properly, and the treatment of infected persons under medical direction. Boiling of drinking water is effective against the cysts, which makes the contrast with sleeping sickness, described below, instructive." to
                         "உண்டாக்கும் நோய் அமீபிக் வயிற்றுக்கடுப்பு (அமீபியாசிஸ்). மக்கள் விழுங்கும் பொருட்களின் மல மாசு மூலம் தொற்று பரவுவதால் கட்டுப்பாடு பாதுகாப்பான நீர், உணவு, துப்புரவை நம்பியுள்ளது. இவை பொதுச் சுகாதாரக் கொள்கைகள்; கழிவுநீரிலிருந்து நீர் வழங்கல்களைப் பாதுகாத்தல், கை கழுவுதல், உணவுகளை முறையாகக் கழுவிச் சமைத்தல், மருத்துவ வழிகாட்டுதலில் தொற்றுற்றவருக்கு சிகிச்சை ஆகியவை அடங்கும். குடிநீரைக் கொதிக்க வைப்பது சிஸ்ட்களுக்கு எதிராக திறன் மிக்கது; கீழே விவரிக்கப்படும் தூக்க நோயுடனான வேறுபாடு பயனுள்ள பாடமாகிறது."),
                     bdef("Trophozoite", "டிரோபோசோயிட்", "The active, feeding and multiplying stage of a protozoan parasite." to
-                        "புரோட்டோசோவா ஒட்டுண்ணியின் செயல்படும், உண்ணும், பெருகும் நிலை."),
+                        "புரோட்டோசோவா ஒட்டுண்ணியின் உணவுண்ணும், செயல்படும், பெருகக்கூடிய நிலை."),
                     bdef("Excystation", "சிஸ்ட் நீக்கம் (Excystation)", "The emergence of the parasite from its cyst in the host." to
                         "விருந்தோம்பியில் ஒட்டுண்ணி தன் கூட்டிலிருந்து வெளிவருதல்."),
                     bdef("Faecal-oral transmission", "மல-வாய்ப் பரவல் (Faecal-oral transmission)", "Transmission by swallowing material contaminated with faeces." to

@@ -33,13 +33,13 @@ object HostParasiteBookChapter {
                         "The route of transmission decides the method of prevention." to "பரவல் வழி தடுப்பு முறையைத் தீர்மானிக்கிறது.",
                     ),
                     bdef("Parasite", "ஒட்டுண்ணி", "An organism that lives on or in another and obtains food from it to the host's disadvantage." to
-                        "மற்றொன்றின்மீது அல்லது உள்ளே வாழ்ந்து விருந்தோம்பியின் தீமைக்கு அதனிடமிருந்து உணவைப் பெறும் உயிரி."),
+                        "மற்றொரு உயிரியின் (விருந்தோம்பியின்) உடற்பரப்பிலோ உடலுக்குள்ளோ வாழ்ந்து, அதன் வளங்களைப் பெற்று அதற்குத் தீங்கு விளைவிக்கக்கூடிய உயிரி."),
                     bdef("Host", "விருந்தோம்பி", "The organism that harbours and feeds a parasite." to
                         "ஒட்டுண்ணியைத் தாங்கி உணவளிக்கும் உயிரி."),
                     bdef("Definitive host", "முதன்மை விருந்தோம்பி (Definitive host)", "The host in which the parasite undergoes sexual reproduction or reaches maturity." to
-                        "ஒட்டுண்ணி பாலினப்பெருக்கம் செய்யும் அல்லது முதிர்ச்சி அடையும் விருந்தோம்பி."),
+                        "ஒட்டுண்ணியின் பாலின இனப்பெருக்கம் நடைபெறும் அல்லது அது பாலின முதிர்ச்சியை அடையும் விருந்தோம்பி."),
                     bdef("Intermediate host", "இடைநிலை விருந்தோம்பி (Intermediate host)", "The host in which the parasite passes its larval or asexual stages." to
-                        "ஒட்டுண்ணி குஞ்சு அல்லது பாலிலாப் நிலைகளைக் கடக்கும் விருந்தோம்பி."),
+                        "ஒட்டுண்ணி தனது இளவுயிரி அல்லது பாலிலா இனப்பெருக்க நிலைகளைக் கடக்கும் விருந்தோம்பி."),
                     bdef("Life cycle", "வாழ்க்கைச் சுழற்சி (Life cycle)", "The whole series of stages through which an organism passes in the course of its development and reproduction." to
                         "ஒரு உயிரி வளர்ச்சி, பெருக்கத்தின்போது கடக்கும் நிலைகளின் முழுத் தொடர்."),
                 )),
