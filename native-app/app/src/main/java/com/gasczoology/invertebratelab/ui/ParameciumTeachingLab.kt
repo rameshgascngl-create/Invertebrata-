@@ -202,6 +202,12 @@ fun ParameciumTeachingLab(
                 val at = sections.indexOfFirst { it.id == localLearning.textbookSectionId }.coerceAtLeast(0)
                 Text(bi(language, "Section ", "பகுதி ") + "${at + 1}/${sections.size} · " + sections[at].heading.value(language),
                     modifier = Modifier.testTag("r161-learning-position"))
+                if (sections[at].id == "pellicle-and-cilia") {
+                    val stageCount = ParameciumLearningEngine.simulation(ParameciumProcess.CILIARY_MOTION).stages.size
+                    val stageNumber = localLearning.ciliaryStageIndex.coerceIn(0, stageCount - 1) + 1
+                    Text(bi(language, "Ciliary movement stage", "குறுஇழை இயக்க நிலை") + " $stageNumber/$stageCount",
+                        modifier = Modifier.testTag("r161-ciliary-resume-stage"))
+                }
             }
             if (tab == "nuclear") {
                 val p = localLearning.nuclearProgress

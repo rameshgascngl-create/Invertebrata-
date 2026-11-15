@@ -77,7 +77,7 @@ printf '%s\n' "$old_pid" > "$evidence/original-pid.txt"
 adb shell uiautomator dump /sdcard/r161-before.xml > "$evidence/ui-before-command.txt" 2>&1
 adb pull /sdcard/r161-before.xml "$evidence/ui-before.xml" >/dev/null
 if ! grep -Fq "r161-learning-position" "$evidence/ui-before.xml" ||
-   ! grep -Fq "4/4" "$evidence/ui-before.xml"; then
+   ! grep -Eq '<node [^>]*text="[^"]*4/4"[^>]*resource-id="r161-ciliary-resume-stage"' "$evidence/ui-before.xml"; then
     result=PRE_KILL_UI_ASSERTION_FAILURE
     exit 1
 fi
