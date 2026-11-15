@@ -21,11 +21,11 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 16 | AnnelidaBookChapter | Metanephridial funnel, chaetae and true segmentation (targeted) | Corrected cilia-versus-flagella wording in metanephridium; improved chaeta and segmentation terminology | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
 | 17 | NereisBookChapter | Pygidium and segment addition, parapodial chaetae and sensory cirri (targeted) | Clarified that new segments arise anterior to pygidium and replaced literal parapodial/sensory translations | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
 | 18 | MetamerismBookChapter | Segmental nephridia, ganglia and excretory anatomy (targeted) | Corrected awkward plural and nerve-ganglion terminology | Targeted corrections completed; full internal review incomplete | Pending | dc9a0a60 |
-| 19 | AnnelidModesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 20 | ArthropodaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 21 | PenaeusBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 22 | PeripatusBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 23 | CrustaceanLarvaeBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 19 | AnnelidModesBookChapter | Tube-dwelling, deposit feeding and suspension-feeding concepts (targeted) | Replaced misleading 'solution-feeding' term with suspended-particle feeding and clarified deposit-feeder heading | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
+| 20 | ArthropodaBookChapter | Respiration, muscle and sex characters; ecdysis definition (targeted) | Improved natural scientific Tamil for muscular, respiratory and cuticle-moulting descriptions | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
+| 21 | PenaeusBookChapter | Telson, chelate walking legs and fishery/aquaculture terminology (targeted) | Corrected telson as terminal abdomen, chelate claw terminology and prawn culture heading | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
+| 22 | PeripatusBookChapter | Lobopod foot, transverse commissure and tracheal respiration (targeted) | Replaced literal 'tree stump' and strengthened anatomical terminology | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
+| 23 | CrustaceanLarvaeBookChapter | Non-penaeid larval section, indirect development and protozoea (targeted) | Corrected crustacean/arthropod category mismatch and natural Tamil for larval feeding and development | Targeted corrections completed; full internal review incomplete | Pending | 4a586740 |
 | 24 | MolluscaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 25 | PilaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 26 | TorsionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -56,3 +56,5 @@ Android QA is tracked separately: foundation success for `13315e29` (run 4365586
 Additional helminth batch (2026-11-15): targeted Tamil corrections in five chapters at commit `4828de4e`. Full internal and independent academic acceptance remains pending; English source and accepted diagrams were not changed by this batch.
 
 Annelid and nematode batch (2026-11-15): targeted Tamil edits at commit `dc9a0a60`. A separate English-source issue remains for the Nereis pygidium definition; cross-language scientific equivalence requires follow-up before independent acceptance. No chapter in this batch has been accepted in full.
+
+Arthropod and crustacean batch (2026-11-15): targeted Tamil revisions at `4a586740` in five chapters. English source, accepted figures and chapter IDs are preserved. Full internal/independent acceptance remains pending.
