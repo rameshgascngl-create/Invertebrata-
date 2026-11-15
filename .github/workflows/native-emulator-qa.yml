@@ -10,6 +10,7 @@ on:
       - 'Paramecium_Approved_Integration_Kit.zip'
       - 'tools/verify_approved_paramecium.py'
       - 'tools/run_native_emulator_qa.sh'
+      - '.github/scripts/run-native-*-process-death.sh'
       - 'native-app/app/src/main/java/**'
       - 'native-app/app/src/main/assets/**'
       - 'native-app/app/src/main/res/**'
@@ -33,10 +34,13 @@ jobs:
         include:
           - api: 34
             font_scale: '2.0'
-            suite: rotation
+            suite: process-death
+          - api: 35
+            font_scale: '2.0'
+            suite: process-death
           - api: 35
             font_scale: '1.0'
-            suite: reader
+            suite: unit-iii
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     steps:
@@ -48,6 +52,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+          cache-read-only: false
       - name: Verify committed Paramecium image before emulator
         run: python3 tools/verify_approved_paramecium.py
       - name: Enable KVM for Android emulator
@@ -103,5 +108,6 @@ jobs:
             native-app/app/build/outputs/androidTest-results/
             native-app/app/build/reports/androidTests/
             native-app/app/build/qa-evidence/
+            qa-evidence/
           if-no-files-found: warn
           retention-days: 14

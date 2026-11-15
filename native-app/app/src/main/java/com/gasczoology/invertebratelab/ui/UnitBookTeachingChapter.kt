@@ -47,6 +47,7 @@ internal fun UnitBookTeachingChapter(
     containerPrefix: String = "book-reader-", backTag: String = "book-back",
     continuousReader: (@Composable () -> Unit)? = null,
     interactiveReader: (@Composable () -> Unit)? = null,
+    referenceGallery: (@Composable (OfflineNarrator) -> Unit)? = null,
     onOpenFullLesson: (() -> Unit)? = null,
     onOpenAnatomy: (() -> Unit)? = null,
 ) {
@@ -98,9 +99,12 @@ internal fun UnitBookTeachingChapter(
         pageId = id
         positions.save(chapter.id, BookReadingPosition(id))
     }
-    val hasGalleryToggle = NativeCurriculumManifest.typeStudies.any {
-        it.lessonId == chapter.id && it.organismId in setOf("penaeus", "pila", "asterias")
+    val referenceStudy = remember(chapter.id) {
+        NativeCurriculumManifest.typeStudies.firstOrNull {
+            it.lessonId == chapter.id && it.organismId in setOf("penaeus", "pila", "asterias")
+        }
     }
+    val hasGalleryToggle = referenceStudy != null || referenceGallery != null
     /** Lazy item index of a chapter row on its page: header, optional toggle, page prefix, then the rows. */
     fun itemIndexOf(target: BookTarget): Int {
         val target_page = pages.firstOrNull { it.id == target.pageId } ?: return 0
@@ -173,11 +177,6 @@ internal fun UnitBookTeachingChapter(
         onDispose {
             lifecycle.removeObserver(observer)
             if (!continuous && activePage == thisPage) savePosition()
-        }
-    }
-    val referenceStudy = remember(chapter.id) {
-        NativeCurriculumManifest.typeStudies.firstOrNull {
-            it.lessonId == chapter.id && it.organismId in setOf("penaeus", "pila", "asterias")
         }
     }
     Scaffold(
@@ -260,15 +259,19 @@ internal fun UnitBookTeachingChapter(
                     }
                 }
             }
-            if (referenceStudy != null) item(key = "optional-reference-gallery-toggle") {
+            if (hasGalleryToggle) item(key = "optional-reference-gallery-toggle") {
                 OutlinedButton(onClick = { referenceGalleryOpen = !referenceGalleryOpen },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("book-reference-gallery-toggle-" + chapter.id)) {
                     Text(ut(language, if (referenceGalleryOpen) "Return to textbook" else "Open anatomical reference gallery",
                         if (referenceGalleryOpen) "பாடநூலுக்குத் திரும்பு" else "உடற்கூறு ஆதாரப் படத் தொகுப்பைத் திற"))
                 }
             }
-            if (referenceGalleryOpen && referenceStudy != null) item { RequiredTypeStudyPlates(referenceStudy, language) }
-            else {
+            if (referenceGalleryOpen) {
+                when {
+                    referenceGallery != null -> item { referenceGallery(narrator) }
+                    referenceStudy != null -> item { RequiredTypeStudyPlates(referenceStudy, language) }
+                }
+            } else {
                 if (!continuous && pageId == "contents") {
                     chapterFindItems(chapter.id, pages, bookmarkAccess.bookmarks[chapter.id].orEmpty(), searchQuery,
                         searchHits, language, { searchQuery = it }, ::openTarget)

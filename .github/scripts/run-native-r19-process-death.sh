@@ -40,8 +40,8 @@ trap capture_failure_evidence EXIT
 instrument() {
     local test_class="$1" log_path="$2"
     adb shell am instrument -w -r -e class "$test_class" \
-      -e r19RecoveryChapter "$chapter" -e r19RecoveryStage "$stage" -e r19RecoveryReading "$reading" -e r19RecoveryPhase "$saved_phase" "$runner" | tee "$log_path"
-    grep -q 'INSTRUMENTATION_CODE: -1' "$log_path"
+      -e r19RecoveryChapter "$chapter" -e r19RecoveryStage "$stage" -e r19RecoveryReading "$reading" -e r19RecoveryPhase "$saved_phase" "$runner" | tee "$log_path" || return 1
+    grep -Eq '^INSTRUMENTATION_CODE: -1[[:space:]]*$' "$log_path" || return 1
     if grep -Eq 'FAILURES!!!|INSTRUMENTATION_RESULT: shortMsg=|INSTRUMENTATION_FAILED' "$log_path"; then
         return 1
     fi

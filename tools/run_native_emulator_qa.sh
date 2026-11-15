@@ -4,16 +4,25 @@ set -eu
 expected_scale=$1
 suite=${2:-full}
 test_filter=()
+package=com.gasczoology.invertebratelab
+process_death_classes=(
+  NativeProcessDeathSetupTest NativeProcessDeathVerifyTest
+  NativeR161CiliaryProcessDeathSetupTest NativeR161CiliaryProcessDeathVerifyTest
+  NativeR17ProcessDeathSetupTest NativeR17ProcessDeathVerifyTest
+  NativeR18ProcessDeathSetupTest NativeR18ProcessDeathVerifyTest
+  NativeR19ProcessDeathSetupTest NativeR19ProcessDeathVerifyTest
+)
 case "$suite" in
-  full) test_timeout=42m ;;
-  rotation)
-    test_timeout=6m
-    test_filter+=('-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUiAcceptanceTest#tamilAnswerAndQuestionPositionSurviveRotation')
+  full)
+    test_timeout=42m
+    excluded=$(printf '%s,' "${process_death_classes[@]/#/$package.}")
+    test_filter+=("-Pandroid.testInstrumentationRunnerArguments.notClass=${excluded%,}")
     ;;
-  reader)
-    test_timeout=8m
-    test_filter+=('-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeReleaseFunctionalTest#defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers')
+  unit-iii)
+    test_timeout=15m
+    test_filter+=("-Pandroid.testInstrumentationRunnerArguments.class=$package.NativeUnitIIITeachingTest")
     ;;
+  process-death) ;;
   *) echo "Unknown emulator test suite: $suite" >&2; exit 2 ;;
 esac
 mkdir -p native-app/app/build/qa-evidence
@@ -96,12 +105,41 @@ if [[ -n "$launcher" && "$launcher" != com.gasczoology.invertebratelab ]]; then
 fi
 
 set +e
-timeout --signal=TERM --kill-after=30s "$test_timeout" gradle -p native-app :app:connectedDebugAndroidTest \
-  -Pandroid.testInstrumentationRunnerArguments.expectedScale="$expected_scale" \
-  -Pandroid.testInstrumentationRunnerArguments.r161Scale="$expected_scale" \
-  "${test_filter[@]}" --stacktrace --console=plain \
-  > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
-test_status=$?
+console=native-app/app/build/qa-evidence/instrumentation-console.log
+test_status=0
+if [[ "$suite" == process-death ]]; then
+  # These paired assertions require a verified old PID, shell termination and
+  # independent relaunch. The dedicated drivers supply those preconditions.
+  for driver in n14 r161 r17 r18 r19; do
+    echo "Running $driver process-death driver" >> "$console"
+    timeout --signal=TERM --kill-after=10s 7m bash ".github/scripts/run-native-$driver-process-death.sh" \
+      >> "$console" 2>&1
+    status=$?
+    echo "$driver process-death exit code: $status" >> "$console"
+    if [[ "$status" != 0 ]]; then test_status=$status; fi
+  done
+else
+  for attempt in 1 2; do
+    output="${console%.log}-attempt-$attempt.log"
+    timeout --signal=TERM --kill-after=30s "$test_timeout" gradle -p native-app :app:connectedDebugAndroidTest \
+      -Pandroid.testInstrumentationRunnerArguments.expectedScale="$expected_scale" \
+      -Pandroid.testInstrumentationRunnerArguments.r161Scale="$expected_scale" \
+      -Pandroid.testInstrumentationRunnerArguments.r17Scale="$expected_scale" \
+      -Pandroid.testInstrumentationRunnerArguments.r18Scale="$expected_scale" \
+      -Pandroid.testInstrumentationRunnerArguments.r19Scale="$expected_scale" \
+      "${test_filter[@]}" --stacktrace --console=plain > "$output" 2>&1
+    test_status=$?
+    cp "$output" "$console"
+    if [[ "$attempt" == 1 && "$test_status" != 0 ]] &&
+      grep -q 'Received status code 429' "$output" &&
+      ! grep -q 'Running tests on devices:' "$output"; then
+      echo "Dependency repository rate-limited the build; retrying once in 25 seconds"
+      sleep 25
+    else
+      break
+    fi
+  done
+fi
 if [[ -n "$launcher_watch_pid" ]]; then
   kill "$launcher_watch_pid" 2>/dev/null || true
   wait "$launcher_watch_pid" 2>/dev/null || true

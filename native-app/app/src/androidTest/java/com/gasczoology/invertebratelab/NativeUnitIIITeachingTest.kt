@@ -29,7 +29,7 @@ class NativeUnitIIITeachingTest {
         }
     }
 
-    private fun openChapter(id: String, tamil: Boolean) {
+    private fun openChapter(id: String, tamil: Boolean, openGallery: Boolean = false) {
         if (tamil) rule.onNodeWithTag("language-tamil").performClick()
         rule.onNodeWithTag("unit-3").performScrollTo().performClick()
         rule.waitUntil(20_000) {
@@ -41,7 +41,14 @@ class NativeUnitIIITeachingTest {
         rule.waitUntil(20_000) {
             rule.onAllNodesWithTag("u3-reader-"+id).fetchSemanticsNodes().isNotEmpty()
         }
-        showContinuousReader(rule)
+        if (openGallery) {
+            val toggle = "book-reference-gallery-toggle-$id"
+            rule.onNodeWithTag("u3-required-plate-gallery").assertDoesNotExist()
+            rule.onNodeWithTag("u3-reader-$id").performScrollToNode(hasTestTag(toggle))
+            rule.onNodeWithTag(toggle).performClick()
+        } else {
+            showContinuousReader(rule)
+        }
     }
 
     private fun capture(scene: String) {
@@ -104,7 +111,7 @@ class NativeUnitIIITeachingTest {
     }
 
     @Test fun sourcedFasciolaPlateRejectsObsoleteTouchCoordinates() {
-        openChapter("u3-fasciola",false)
+        openChapter("u3-fasciola", false, openGallery = true)
         for (plate in listOf("external","digestive-reproductive","life-cycle")) {
             rule.onNodeWithTag("u3-reader-u3-fasciola")
                 .performScrollToNode(hasTestTag("u3-plate-bitmap-"+plate))
@@ -210,7 +217,7 @@ class NativeUnitIIITeachingTest {
     }
 
     @Test fun tamilAscarisPlateUsesAccessibleUnmappedOrganControl() {
-        openChapter("u3-ascaris",true)
+        openChapter("u3-ascaris", true, openGallery = true)
         for (plate in listOf("male-female-external","female-internal","life-cycle")) {
             rule.onNodeWithTag("u3-reader-u3-ascaris")
                 .performScrollToNode(hasTestTag("u3-plate-bitmap-"+plate))
@@ -235,7 +242,7 @@ class NativeUnitIIITeachingTest {
     }
 
     @Test fun cdcCompleteAscarisSourceAndTamilCycleNarrationAreAccessible() {
-        openChapter("u3-ascaris",true)
+        openChapter("u3-ascaris", true, openGallery = true)
         // Capture REAL onscreen decoded graphite pixels at both font scales,
         // before scrolling down to the accessible organ controls.
         rule.onNodeWithTag("u3-reader-u3-ascaris")
@@ -422,7 +429,7 @@ class NativeUnitIIITeachingTest {
                 UnitIIIPencilScanCandidateStore.validate(
                     "type_studies/ascaris/nonexistent",original)
             }.isFailure)
-            openChapter("u3-fasciola",false)
+            openChapter("u3-fasciola", false, openGallery = true)
             rule.onNodeWithTag("u3-reader-u3-fasciola")
                 .performScrollToNode(hasTestTag("u36-open-source-intake-external"))
             rule.onNodeWithTag("u36-open-source-intake-external")
@@ -467,7 +474,7 @@ class NativeUnitIIITeachingTest {
         val stem="type_studies/ascaris/life-cycle"
         UnitIIIPencilScanCandidateStore.discard(ctx,stem)
         try {
-            openChapter("u3-ascaris",true)
+            openChapter("u3-ascaris", true, openGallery = true)
             rule.onNodeWithTag("u3-reader-u3-ascaris")
                 .performScrollToNode(hasTestTag("u36-open-source-intake-life-cycle"))
             rule.onNodeWithTag("u36-open-source-intake-life-cycle")

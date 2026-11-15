@@ -39,8 +39,13 @@ internal fun UnitIIITeachingChapter(
 ) {
     val registeredBook = BookChapters.forLesson(chapter.id)
     if (paged && registeredBook != null) {
+        val referenceGallery: (@Composable (OfflineNarrator) -> Unit)? =
+            if (UnitIIIPlateCatalog.forChapter(chapter.id).isNotEmpty()) {
+                { narrator -> UnitIIIPlateGallery(chapter.id, language, narrator) }
+            } else null
         UnitBookTeachingChapter(chapter, registeredBook, language, onBack, revealedQuestionId, onToggle,
             containerPrefix = "u3-reader-", backTag = "u3-back",
+            referenceGallery = referenceGallery,
             continuousReader = { UnitIIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false) },
             interactiveReader = { UnitIIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false, interactiveOnly = true) })
         return
