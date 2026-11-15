@@ -47,13 +47,17 @@ internal fun UnitIITeachingChapter(
     chapter:Chapter, language:AppLanguage,onBack:()->Unit,
     revealedQuestionId:String,onToggle:(A5Question)->Unit,
     paged: Boolean = true, interactiveOnly: Boolean = false,
+    onOpenFigure: ((String) -> Unit)? = null,
 ) {
     val registeredBook = BookChapters.forLesson(chapter.id)
     if (paged && registeredBook != null) {
         UnitBookTeachingChapter(chapter, registeredBook, language, onBack, revealedQuestionId, onToggle,
             containerPrefix = "u2-reader-", backTag = "u2-back",
             continuousReader = { UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false) },
-            interactiveReader = { UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle, paged = false, interactiveOnly = true) })
+            interactiveReader = { openFigure ->
+                UnitIITeachingChapter(chapter, language, onBack, revealedQuestionId, onToggle,
+                    paged = false, interactiveOnly = true, onOpenFigure = openFigure)
+            })
         return
     }
     val lesson=requireNotNull(UnitIILessons.forChapter(chapter.id))
@@ -125,11 +129,33 @@ internal fun UnitIITeachingChapter(
                     "ஒவ்வொரு படிநிலையையும் தேர்ந்தெடுத்து உடற்கூறுப் பண்புகளை அறிந்து விளக்கத்தைக் கேட்கலாம்."))
                 // Biology sequence is narrated text and stage controls, NOT a
                 // second raster/Canvas anatomical display. One image per plate.
-                Text(stages[index.coerceIn(stages.indices)].name.value(language),
+                val stage = stages[index.coerceIn(stages.indices)]
+                Text(stage.name.value(language),
                     style=MaterialTheme.typography.titleMedium,fontWeight=FontWeight.Bold,
                     modifier=Modifier.testTag("u2-selected-stage"))
-                Text(stages[index.coerceIn(stages.indices)].explanation.value(language),
+                Text(stage.explanation.value(language),
                     modifier=Modifier.testTag("u2-stage-explanation"))
+                val figureSlot = when (chapter.id) {
+                    "u2-sycon" -> "sycon/canal-system"
+                    "u2-obelia" -> when (stage.id) {
+                        "colony" -> "obelia/colony"
+                        "hydranth", "gonangium" -> "obelia/hydranth-gonangium"
+                        "medusa" -> "obelia/medusa"
+                        else -> "obelia/life-cycle"
+                    }
+                    else -> null
+                }
+                if (onOpenFigure != null && figureSlot != null) {
+                    OutlinedButton(
+                        onClick = {
+                            playing = false
+                            onOpenFigure(figureSlot)
+                        },
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("u2-open-stage-figure"),
+                    ) {
+                        Text(tr(language, "Open textbook figure", "பாடநூல் படத்தைத் திற"))
+                    }
+                }
                 Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick={playing=false;index=0},
                         modifier=Modifier.heightIn(min=48.dp).weight(1f).testTag("u2-reset")) {

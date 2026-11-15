@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -46,7 +47,7 @@ internal fun UnitBookTeachingChapter(
     revealedQuestionId: String, onToggle: (A5Question) -> Unit,
     containerPrefix: String = "book-reader-", backTag: String = "book-back",
     continuousReader: (@Composable () -> Unit)? = null,
-    interactiveReader: (@Composable () -> Unit)? = null,
+    interactiveReader: (@Composable ((String) -> Unit) -> Unit)? = null,
     referenceGallery: (@Composable (OfflineNarrator) -> Unit)? = null,
     onOpenFullLesson: (() -> Unit)? = null,
     onOpenAnatomy: (() -> Unit)? = null,
@@ -81,6 +82,7 @@ internal fun UnitBookTeachingChapter(
         BookChapterSearch.search(book, pages, chapter.a5Questions, searchQuery, language)
     }
     var searchTarget by remember(chapter.id) { mutableStateOf<BookTarget?>(null) }
+    val interactiveReaderState = rememberSaveableStateHolder()
     val scope = rememberCoroutineScope()
     // Multiple-choice practice appears only when a validated question file exists for this chapter.
     val mcqBank = remember(context) { McqAssets.load(context) }
@@ -233,7 +235,18 @@ internal fun UnitBookTeachingChapter(
         } else if (continuous && continuousReader != null) {
             Box(Modifier.fillMaxSize().padding(padding)) { continuousReader() }
         } else if (!continuous && pageId == "interactive" && interactiveReader != null) {
-            Box(Modifier.fillMaxSize().padding(padding)) { interactiveReader() }
+            Box(Modifier.fillMaxSize().padding(padding)) {
+                interactiveReaderState.SaveableStateProvider(chapter.id) {
+                    interactiveReader { slot ->
+                        val rowIndex = bookRows.indexOfFirst { row ->
+                            ((row as? BookRow.Block)?.block as? BookFigure)?.slot == slot
+                        }
+                        pages.firstOrNull { rowIndex in it.rowIndices }?.let { figurePage ->
+                            openTarget(BookTarget(figurePage.id, rowIndex))
+                        }
+                    }
+                }
+            }
         } else LazyColumn(
             state = listState,
             modifier = Modifier.fillMaxSize().padding(padding).testTag(containerPrefix + chapter.id).semantics {
