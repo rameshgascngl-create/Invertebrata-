@@ -28,7 +28,7 @@ def main() -> int:
         return 1
 
     data = candidates[0].read_bytes()
-    if data[:8] != b"\\x89PNG\\r\\n\\x1a\\n":
+    if data[:8] != bytes.fromhex("89504e470d0a1a0a"):
         print("FAIL: asset does not have PNG signature")
         return 1
     width = int.from_bytes(data[16:20], "big")
