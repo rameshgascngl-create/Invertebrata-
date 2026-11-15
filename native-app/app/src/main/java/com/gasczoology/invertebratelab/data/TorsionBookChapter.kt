@@ -26,10 +26,10 @@ object TorsionBookChapter {
                     bp("It must be kept apart from coiling. Coiling is the spiral growth of the shell and the visceral mass, which may take place in the same way in a torted or an untorted animal, and which has the function of packing a long body into a compact shell. Torsion is a rotation, and coiling is a pattern of growth. The two are separate, though in the history of the gastropods they are connected, since a coiled shell with a mantle cavity at the back would be awkward, and some authors have discussed whether the coiled shell came first. The student needs to say only that they are separate processes." to
                         "இதை சுருள் சுற்றலிலிருந்து வேறுபடுத்த வேண்டும். சுருள் சுற்றல் ஓடு, உள்ளுறுப்புத் திரளின் சுருள் வளர்ச்சி; முறுக்கப்பட்ட அல்லது முறுக்கப்படாத விலங்கில் ஒரே விதமாக நிகழலாம்; நீண்ட உடலை சிறிய ஓட்டுக்குள் அடைப்பது அதன் செயல். முறுக்கல் ஒரு சுழற்சி; சுருள் சுற்றல் ஒரு வளர்ச்சி முறை. இரண்டும் தனி; ஆனால் இரைப்பைக்காலிகளின் வரலாற்றில் அவை தொடர்புடையவை: பின்புறம் மேண்டில் குழியுடன் சுருண்ட ஓடு தொந்தரவானது; சுருண்ட ஓடு முதலில் வந்ததா என சில ஆசிரியர்கள் விவாதித்துள்ளனர். அவை தனிச் செயல்முறைகள் என்று மட்டும் மாணவர் கூற வேண்டும்."),
                     bdef("Torsion", "முறுக்கல் (Torsion)", "The rotation of the visceral mass, mantle and shell through about 180 degrees relative to the head and foot in the development of a gastropod." to
-                        "இரைப்பைக்காலியின் வளர்ச்சியில், தலை, பாதத்தைப் பொறுத்து உள்ளுறுப்புத் திரள், மேண்டில், ஓடு சுமார் 180 பாகை சுழலுதல்."),
+                        "இரைப்பைக்காலி இளவுயிரி வளர்ச்சியின்போது, தலை மற்றும் பாதத்தை ஒப்பிடும்போது உள்ளுறுப்புத் திரள், மேண்டில், ஓடு ஆகியவை சுமார் 180° சுழலும் நிகழ்வு."),
                     bdef("Coiling", "சுருள் சுற்றல் (Coiling)", "The spiral growth of the shell and visceral mass, which is distinct from torsion." to
-                        "முறுக்கலிலிருந்து வேறுபட்ட, ஓடு, உள்ளுறுப்புத் திரளின் சுருள் வளர்ச்சி."),
-                    bnote("Torsion is not coiling", "முறுக்கல் சுருள் சுற்றல் அல்ல",
+                        "முறுக்கலிலிருந்து வேறுபட்டதாக, ஓடும் உள்ளுறுப்புத் திரளும் சுருளாக வளரும் நிகழ்வு."),
+                    bnote("Torsion is not coiling", "முறுக்கலும் ஓட்டின் சுருள் வளர்ச்சியும் ஒன்றல்ல",
                         "Torsion turns the mantle cavity forward. Coiling is the spiral growth of the shell. Write them as two separate processes." to
                             "முறுக்கல் மேண்டில் குழியை முன்னே திருப்புகிறது. சுருள் சுற்றல் ஓட்டின் சுருள் வளர்ச்சி. இரண்டையும் தனிச் செயல்முறைகளாக எழுதுக."),
                 )),

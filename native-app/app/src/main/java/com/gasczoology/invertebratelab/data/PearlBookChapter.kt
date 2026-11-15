@@ -45,10 +45,10 @@ object PearlBookChapter {
                         "Shell and pearl (schematic). (A) Section through the shell and mantle: (1) periostracum, the thin outer organic layer, (2) middle calcareous layer, (3) nacreous layer, (4) mantle epithelium, which secretes the shell, (5) mantle tissue. (B) A pearl in section: (6) nucleus, (7) layers of nacre, (8) pearl sac of mantle epithelium, (9) host tissue.",
                         "ஓடும் முத்தும் (படத்திட்டம்). (A) ஓடு, மேண்டில் வழி வெட்டு: (1) பெரியோஸ்ட்ரகம், மெல்லிய கரிம வெளி அடுக்கு, (2) நடு சுண்ணாம்பு அடுக்கு, (3) நாக்கர் அடுக்கு, (4) ஓட்டைச் சுரக்கும் மேண்டில் மேலணி, (5) மேண்டில் திசு. (B) முத்தின் வெட்டுத்தோற்றம்: (6) மையக்கரு, (7) நாக்கர் அடுக்குகள், (8) மேண்டில் மேலணியாலான முத்துப் பை, (9) புரவலர் திசு."),
                     bpoints("Steps in the formation of a natural pearl", "இயற்கை முத்து உருவாக்கத்தின் படிகள்",
-                        "A stimulus such as an injury, a parasite or a fragment of tissue disturbs the mantle." to "காயம், ஒட்டுண்ணி அல்லது திசுத் துண்டு போன்ற தூண்டுதல் மேண்டிலைக் குழப்புகிறது.",
+                        "A stimulus such as an injury, a parasite or a fragment of tissue disturbs the mantle." to "காயம், ஒட்டுண்ணித் தாக்கம் அல்லது திசுத் துண்டு போன்ற காரணிகளால் மேண்டில் திசுவில் மாற்றம் ஏற்படலாம்.",
                         "A small group of mantle epithelial cells is displaced into the connective tissue." to "மேண்டில் மேலணி செல்களின் சிறு குழு இணைப்புத் திசுவுக்குள் இடம்பெயர்கிறது.",
-                        "The cells proliferate and enclose a pearl sac." to "செல்கள் பெருகி முத்துப் பையை உள்ளடக்குகின்றன.",
-                        "The sac secretes concentric layers of nacre round the centre." to "பை மையத்தைச் சுற்றி ஒருமைய நாக்கர் அடுக்குகளைச் சுரக்கிறது.",
+                        "The cells proliferate and enclose a pearl sac." to "இடம்பெயர்ந்த மேலணிச் செல்கள் பெருகி, முத்துப் பை என்ற மூடிய அமைப்பை உருவாக்குகின்றன.",
+                        "The sac secretes concentric layers of nacre round the centre." to "முத்துப் பையின் மேலணிச் செல்கள் மையத்தைச் சுற்றி ஒன்றன்பின் ஒன்றாக நாக்கர் அடுக்குகளைச் சுரக்கின்றன.",
                         "The pearl grows slowly and may remain in the tissue or lie free in the cavity." to "முத்து மெதுவாக வளர்ந்து திசுவில் இருக்கலாம் அல்லது குழியில் தளர்வாக இருக்கலாம்.",
                     ),
                     bdef("Pearl sac", "முத்துப் பை (Pearl sac)", "The closed sac of mantle epithelium that secretes nacre around the centre of a pearl." to

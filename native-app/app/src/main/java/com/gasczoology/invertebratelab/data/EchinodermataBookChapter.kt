@@ -37,11 +37,11 @@ object EchinodermataBookChapter {
                     bdef("Ossicle", "ஆஸிக்கிள் (Ossicle)", "A small calcareous plate or piece of the echinoderm skeleton." to
                         "முட்தோலிக் கூட்டின் சிறு சுண்ணாம்புத் தகடு அல்லது துண்டு."),
                     bdef("Pedicellaria", "பெடிசல்லேரியா (Pedicellaria)", "A small pincer-like structure on the surface of some echinoderms that keeps the surface clean and may protect it." to
-                        "சில முட்தோலிகளின் மேற்பரப்பில் மேற்பரப்பைத் தூய்மையாக வைத்து பாதுகாக்கக்கூடிய சிறு இடுக்கி போன்ற அமைப்பு."),
+                        "சில முட்தோலிகளின் உடற்பரப்பில் காணப்படும் சிறிய இடுக்கி போன்ற அமைப்பு; உடற்பரப்பைத் தூய்மைப்படுத்தவும் தற்காப்பிற்கும் உதவலாம்."),
                     bdef("Coelomate", "உண்மையான உடற்குழியுடையது (Coelomate)", "An animal with a true coelom, a cavity lined by mesoderm." to
-                        "மெசோடெர்ம் வரிசையிட்ட உடற்குழியான உண்மையான உடற்குழி கொண்ட விலங்கு."),
+                        "மீசோடெர்மால் உள்ளுறையிடப்பட்ட உண்மையான உடற்குழியைக் கொண்ட விலங்கு."),
                 )),
-            bsec("symmetry", "Pentaradial symmetry and the bilateral larva", "ஐந்தாரைச் சமச்சீரும் இருபக்க லார்வாவும்",
+            bsec("symmetry", "Pentaradial symmetry and the bilateral larva", "ஐந்தாரைச் சமச்சீரும் இருபக்கச் சமச்சீருடைய இளவுயிரியும்",
                 blocks = listOf(
                     bp("The adult echinoderm can be divided into similar parts around a central axis, usually five, and this is described as pentaradial symmetry. The student must understand that this symmetry is secondary. The larvae are bilaterally symmetrical, and the radial form arises during metamorphosis, when the bilateral larva is extensively reorganised into a pentaradial juvenile. The fossil record and the larvae both suggest that the ancestors of the echinoderms were bilateral animals, and that radial symmetry was acquired along with a sedentary or slow way of life." to
                         "முதிர்ந்த முட்தோலியை மையச் சுற்றி, வழக்கமாக ஐந்து, ஒத்த பகுதிகளாகப் பிரிக்கலாம்; இது ஐந்தாரைச் சமச்சீர் எனப்படுகிறது. இச்சமச்சீர் இரண்டாம் நிலை என்பதை மாணவர் புரிந்துகொள்ள வேண்டும். லார்வாக்கள் இருபக்கச் சமச்சீருடையவை; உருமாற்றத்தின்போது இருபக்க லார்வா ஐந்தாரை இளவிலங்காக விரிவாக மறுசீரமைக்கப்படும்போது ஆரை வடிவம் தோன்றுகிறது. முட்தோலிகளின் மூதாதையர் இருபக்க விலங்குகள் என்றும் ஆரச்சமச்சீர் அமர்ந்த அல்லது மெதுவான வாழ்க்கை முறையுடன் பெறப்பட்டது என்றும் புதைபடிவப் பதிவும் லார்வாக்களும் சுட்டுகின்றன."),
