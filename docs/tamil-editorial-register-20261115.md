@@ -7,8 +7,8 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 2 | PoriferaCanalsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 3 | PoriferaReproductionBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 4 | CnidariaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 5 | ObeliaBookChapter | Colony, hydranth, gonangium, medusa, life history, histology, physiology, ecology (targeted passages) | Cnidocyte vs nematocyst; cellular layers; ciliated planula; medusa budding; diffusion; growth; further identification and tables audit needed | Targeted corrections completed; full internal review incomplete | Pending | e3d718af1f42aadcfc8b99afe332b4d52c296581 |
-| 6 | CoralsBookChapter | Introduction, coral polyp, skeleton (targeted passages) | Anthozoan polyp vs medusa; mesenteries; skeleton and reef accretion | Targeted corrections completed; full internal review incomplete | Pending | 781e80e9345da252495774e8b29813a17ec259aa |
+| 5 | ObeliaBookChapter | Colony, hydranth, gonangium, medusa, life cycle, histology, physiology, ecology and answer-writing (targeted paragraphs); glossary/table checked selectively | Cnidocyte vs nematocyst; ciliated planula; mesoglea; diffusion; feeding; corrected medusa typo and structured essay answer | Targeted corrections completed; full internal review incomplete (all tables/assessment equivalence not certified) | Pending | e3d718af; f6e0df227c60e38f61ee047922ea3490b57c3e79 |
+| 6 | CoralsBookChapter | Introduction, coral polyp, skeleton, symbiotic dinoflagellates and calcification (targeted passages) | Anthozoan anatomy; mesenteries; reef accretion; gastrodermal symbiosis and photosynthetic nutrient exchange | Targeted corrections completed; full internal review incomplete | Pending | 781e80e9; a859cd596b531076a263da72340160a3ce125d77 |
 | 7 | CoralEconomicsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 8 | PolymorphismBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 9 | PlatyhelminthesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -48,3 +48,5 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 43 | SyconBookChapter | Feeding, digestion, diffusion, budding, fertilisation, inversion, metamorphosis (targeted passages) | Clarified water pathway, intracellular digestion, gametes and embryonic development | Targeted corrections completed; full internal review incomplete | Pending | 572f55d2; 4782db77; a7c7bf5c |
 
 The runtime registry appends `Extensions.bookChapters`; reconcile its count and ordering before claiming this list is the complete 43-chapter corpus.
+
+Android QA is tracked separately: foundation success for `13315e29` (run 43655862779); emulator acceptance is pending. ADB diagnostics and bounded boot checks were added in `ba10ea4a` but have not yet produced accepted device evidence.
