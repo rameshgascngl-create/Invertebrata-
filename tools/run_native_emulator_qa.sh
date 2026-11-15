@@ -9,6 +9,10 @@ case "$suite" in
   full)
     test_timeout=42m
     test_filter+=("-Pandroid.testInstrumentationRunnerArguments.notAnnotation=$package.RequiresProcessDeathDriver")
+    if [[ "$expected_scale" == '1.0' ]]; then
+      # Both classes explicitly require an actual system font scale of 2.0.
+      test_filter+=("-Pandroid.testInstrumentationRunnerArguments.notClass=$package.NativeR16Tamil200AcceptanceTest,$package.NativeTamilLargeTextAcceptanceTest")
+    fi
     ;;
   unit-iii)
     test_timeout=15m

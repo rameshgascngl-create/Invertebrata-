@@ -3,6 +3,7 @@ package com.gasczoology.invertebratelab
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.semantics.SemanticsNode
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertTrue
 import kotlin.math.max
@@ -11,6 +12,9 @@ import kotlin.math.sqrt
 
 /** The ciliary-locomotion teaching plate is this PNG (PNG-only policy). */
 internal const val CILIARY_PNG_ASSET = "unit1/concepts/paramecium_ciliary_locomotion.png"
+
+internal fun SemanticsNode.plateBoundsOnScreen(): Rect =
+    boundsInRoot.translate(positionOnScreen - positionInRoot)
 
 internal fun loadAssetBitmap(path: String): Bitmap =
     checkNotNull(
@@ -69,8 +73,7 @@ internal fun correlation(a: DoubleArray, b: DoubleArray): Double {
  * screen, a text placeholder, or a different picture correlates poorly. This replaces the
  * old "pencil-paper colour" pixel count, which only described the removed Canvas drawing.
  *
- * [nodeBounds] is the tagged node's boundsInRoot in pixels; the image is centred in it.
- * Assumes the Compose root is at the screen origin (full-screen, edge-to-edge activity).
+ * [nodeBounds] is the tagged node's visible bounds in screen pixels; the image is centred in it.
  */
 internal fun assertPlateShowsAsset(
     screenshot: Bitmap,

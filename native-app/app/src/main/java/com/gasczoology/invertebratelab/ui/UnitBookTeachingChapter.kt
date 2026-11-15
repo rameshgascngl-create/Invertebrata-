@@ -113,7 +113,8 @@ internal fun UnitBookTeachingChapter(
             it.lessonId == chapter.id && it.organismId in setOf("penaeus", "pila", "asterias")
         }
     }
-    val hasGalleryToggle = referenceStudy != null || referenceGallery != null
+    val hasNereisGallery = chapter.id == "u4-nereis"
+    val hasGalleryToggle = referenceStudy != null || referenceGallery != null || hasNereisGallery
     /** Lazy item index of a chapter row on its page: header, optional toggle, page prefix, then the rows. */
     fun itemIndexOf(target: BookTarget): Int {
         val target_page = pages.firstOrNull { it.id == target.pageId } ?: return 0
@@ -290,6 +291,9 @@ internal fun UnitBookTeachingChapter(
                 when {
                     referenceGallery != null -> item { referenceGallery(narrator) }
                     referenceStudy != null -> item { RequiredTypeStudyPlates(referenceStudy, language) }
+                    hasNereisGallery -> items(8, key = { "u44-nereis-plate-$it" }) {
+                        UnitIVNereisStaticPlate(it, language)
+                    }
                 }
             } else {
                 if (!continuous && pageId == "contents") {
@@ -372,9 +376,6 @@ internal fun UnitBookTeachingChapter(
                         Text(ut(language, "Practise multiple-choice questions (${chapterMcq.size})",
                             "பல்தேர்வு வினாக்களைப் பயிலுக (${chapterMcq.size})"))
                     }
-                }
-                if (chapter.id == "u4-nereis" && (continuous || pageId == "quick-checks")) {
-                    items((0..7).toList(), key = { "u44-nereis-plate-$it" }) { UnitIVNereisStaticPlate(it, language) }
                 }
             }
         }

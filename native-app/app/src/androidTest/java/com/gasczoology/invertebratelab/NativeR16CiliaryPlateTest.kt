@@ -173,7 +173,7 @@ class NativeR16CiliaryPlateTest {
             // Canvas. Evidence: the screenshot region where the PNG is drawn must
             // correlate with the PNG asset itself (blank screens/placeholders do not).
             val plateBounds = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
-                .fetchSemanticsNode().boundsInRoot
+                .fetchSemanticsNode().plateBoundsOnScreen()
             assertPlateShowsAsset(bitmap, plateBounds, loadAssetBitmap(CILIARY_PNG_ASSET))
         } finally {
             bitmap.recycle()

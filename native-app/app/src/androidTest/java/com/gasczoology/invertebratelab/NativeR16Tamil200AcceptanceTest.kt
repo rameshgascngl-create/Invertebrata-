@@ -74,8 +74,9 @@ class NativeR16Tamil200AcceptanceTest {
         rule.onNodeWithTag("r16-view-ciliary-plate", useUnmergedTree = true)
             .performScrollTo().assertHeightIsAtLeast(48.dp).performClick()
         rule.waitForIdle()
-        val diagram = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
-            .fetchSemanticsNode().boundsInRoot
+        val plate = rule.onNodeWithTag("r16-ciliary-png", useUnmergedTree = true)
+            .fetchSemanticsNode()
+        val diagram = plate.boundsInRoot
         val root = rule.onRoot().fetchSemanticsNode().boundsInRoot
         assertTrue("Actual Tamil 200% viewport clipping: diagram=" + diagram +
             " root=" + root,
@@ -95,7 +96,7 @@ class NativeR16Tamil200AcceptanceTest {
         try {
             assertTrue(image.width > 100 && image.height > 100)
             // PNG-only policy: compare the real Tamil 200% screenshot region with the PNG asset.
-            assertPlateShowsAsset(image, diagram, loadAssetBitmap(CILIARY_PNG_ASSET))
+            assertPlateShowsAsset(image, plate.plateBoundsOnScreen(), loadAssetBitmap(CILIARY_PNG_ASSET))
         } finally {
             image.recycle()
         }

@@ -13,6 +13,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class NativeUnitIVNereisTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()
+    private val readerTag = "book-reader-u4-nereis"
+    private val galleryToggle = "book-reference-gallery-toggle-u4-nereis"
 
     @Before fun resetState() {
         runBlocking {
@@ -35,12 +37,34 @@ class NativeUnitIVNereisTest {
             .performScrollToNode(hasTestTag("chapter-u4-nereis"))
         rule.onNodeWithTag("chapter-u4-nereis").performClick()
         rule.waitUntil(20_000){
-            rule.onAllNodesWithTag("native-chapter-u4-nereis").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag(readerTag).fetchSemanticsNodes().isNotEmpty()
         }
+        openReadingPage(rule, readerTag, "objectives")
+        find("chapter-draft-notice")
+        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists()
+        find("book-objectives")
+        toggleGallery()
     }
     private fun find(tag:String) {
-        rule.onNodeWithTag("native-chapter-u4-nereis")
+        rule.onNodeWithTag(readerTag)
             .performScrollToNode(hasTestTag(tag))
+    }
+
+    private fun toggleGallery() {
+        find(galleryToggle)
+        rule.onNodeWithTag(galleryToggle).performScrollTo().performClick()
+    }
+
+    private fun verifyOriginalQuestion(language: AppLanguage) {
+        val context = androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext
+        val question = ValidatedA5AssetRepository(context).load().single { it.number == 4 }
+            .chapters.single { it.id == "u4-nereis" }.a5Questions.first()
+        openReadingPage(rule, readerTag, "practice-${question.id}")
+        val questionTag = "a5-question-${question.id}"
+        find(questionTag)
+        rule.onNodeWithTag(questionTag, useUnmergedTree = true).assertTextEquals(
+            question.question.value(language)
+        )
     }
     // Check the ORIGINAL APK PNG pixels against actual SurfaceFlinger output.
     // The previous test expected the obsolete Canvas cream-paper colour and
@@ -169,8 +193,8 @@ class NativeUnitIVNereisTest {
         val serial=index.toString().padStart(2,'0')
         val drawing="u44-nereis-pencil-style-drawing-"+index
         find(drawing)
-        val node=rule.onNodeWithTag(drawing).assertIsDisplayed()
-        val box=node.fetchSemanticsNode().boundsInWindow
+        val node=rule.onNodeWithTag(drawing).performScrollTo().assertIsDisplayed()
+        val box=node.fetchSemanticsNode().plateBoundsOnScreen()
         val content=rule.activity.window.decorView
         // The whole figure must fit inside the screenshot; a mere 1 px
         // intersection does not count as evidence of a usable plate.
@@ -190,11 +214,11 @@ class NativeUnitIVNereisTest {
     // LazyColumn.scrollToNode only brings the containing Card into view;
     // it does NOT necessarily scroll to a descendant term in a tall Card.
     private fun scrollUntilLegendTermVisible(tag:String):Boolean {
-        val list=rule.onNodeWithTag("native-chapter-u4-nereis")
+        val list=rule.onNodeWithTag(readerTag)
         val h=rule.activity.window.decorView.height.toFloat()
         var scrolled=false
         for(attempt in 0..9) {
-            val target=rule.onNodeWithTag(tag).fetchSemanticsNode().boundsInWindow
+            val target=rule.onNodeWithTag(tag).fetchSemanticsNode().plateBoundsOnScreen()
             if(target.top>=130f && target.bottom<=h-170f) return scrolled
             if(target.top<130f) {
                 list.performTouchInput {
@@ -208,7 +232,7 @@ class NativeUnitIVNereisTest {
             scrolled=true
             rule.waitForIdle()
         }
-        val target=rule.onNodeWithTag(tag).fetchSemanticsNode().boundsInWindow
+        val target=rule.onNodeWithTag(tag).fetchSemanticsNode().plateBoundsOnScreen()
         org.junit.Assert.assertTrue(
             "Nereis final legend term not in viewport: $tag bounds=$target screen=$h",
             target.top>=130f && target.bottom<=h-170f
@@ -218,8 +242,6 @@ class NativeUnitIVNereisTest {
 
     @Test fun eightStaticNoninteractiveNereisPlatesAndOriginalA5() {
         enter(false)
-        find("u44-nereis-introduction")
-        rule.onNodeWithTag("u44-nereis-editorial-disclosure").assertExists()
         for(i in 1..8) {
             capturePlate("english",i)
             find("u44-nereis-image-provenance-"+i)
@@ -227,11 +249,8 @@ class NativeUnitIVNereisTest {
             find("u44-nereis-plate-"+i+"-term-0")
             rule.onNodeWithTag("u44-nereis-plate-"+i+"-term-0").assertIsDisplayed()
         }
-        find("u44-nereis-lessons-heading")
-        rule.onNodeWithTag("u44-nereis-lessons-heading")
-            .assertTextContains("14 EXPLANATORY",substring=true)
-        find("a5-card-u4-nereis-A5-1")
-        rule.onNodeWithTag("a5-card-u4-nereis-A5-1").assertExists()
+        toggleGallery()
+        verifyOriginalQuestion(AppLanguage.ENGLISH)
     }
 
     @Test fun tamilPlateLegendsAndSubstantiveNereisBiologyAtLargeFonts() {
@@ -261,11 +280,16 @@ class NativeUnitIVNereisTest {
         find("u44-nereis-plate-8-term-1")
         rule.onNodeWithTag("u44-nereis-plate-8-term-1")
             .assertTextContains("புரோட்டோட்ரோக்",substring=true)
-        find("u44-nereis-section-larvae")
-        rule.onNodeWithTag("u44-nereis-section-larvae").assertExists()
-        find("u44-nereis-section-parapodia")
-        rule.onNodeWithTag("u44-nereis-section-parapodia").assertExists()
-        find("u44-nereis-static-plate-3")
+        toggleGallery()
+        showContinuousReader(rule)
+        val book = requireNotNull(BookChapters.forLesson("u4-nereis"))
+        for (sectionId in listOf("parapodium", "reproduction")) {
+            val section = book.sections.single { it.id == sectionId }
+            val tag = "book-section-${BookLayout.chapterNumber(book.lessonId)}.${book.sections.indexOf(section) + 1}"
+            find(tag)
+            rule.onNodeWithTag(tag, useUnmergedTree = true)
+                .assertTextContains(section.heading.tamil, substring = true)
+        }
     }
     @Test fun fullscreenStaticPencilPlateZoomControlsWorkInTamilAndReturnToReader() {
         enter(true)
@@ -288,8 +312,8 @@ class NativeUnitIVNereisTest {
         rule.onNodeWithTag("u55-nereis-fullscreen-dialog-3").assertDoesNotExist()
         find("u44-nereis-pencil-style-drawing-3")
         rule.onNodeWithTag("u44-nereis-pencil-style-drawing-3").assertExists()
-        find("a5-card-u4-nereis-A5-1")
-        rule.onNodeWithTag("a5-card-u4-nereis-A5-1").assertExists()
+        toggleGallery()
+        verifyOriginalQuestion(AppLanguage.TAMIL)
     }
 
 }

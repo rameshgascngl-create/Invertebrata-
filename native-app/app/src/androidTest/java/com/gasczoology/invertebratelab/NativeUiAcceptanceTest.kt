@@ -356,7 +356,7 @@ class NativeUiAcceptanceTest {
         saveGalleryEvidenceScreenshot(
             "paramecium-anatomy-gallery-normal.png",
             rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
-                .fetchSemanticsNode().boundsInRoot,
+                .fetchSemanticsNode().plateBoundsOnScreen(),
             "type_studies/paramecium/oral-apparatus.png",
         )
     }
@@ -695,7 +695,7 @@ class NativeTamilLargeTextAcceptanceTest {
         saveGalleryEvidenceScreenshot(
             "paramecium-gallery-tamil200.png",
             rule.onNodeWithTag("r2-plate-bitmap-paramecium-oral-apparatus", useUnmergedTree = true)
-                .fetchSemanticsNode().boundsInRoot,
+                .fetchSemanticsNode().plateBoundsOnScreen(),
             "type_studies/paramecium/oral-apparatus.png",
         )
     }
