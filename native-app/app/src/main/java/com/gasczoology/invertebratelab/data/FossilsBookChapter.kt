@@ -31,13 +31,13 @@ object FossilsBookChapter {
                         "Trace fossils, such as burrows and tracks, which record behaviour and not the body." to "உடலை அல்ல, நடத்தையைப் பதிவு செய்யும் வளைகள், பாதச்சுவடுகள் போன்ற தடய புதைபடிவங்கள்.",
                     ),
                     bdef("Fossil", "புதைபடிவம்", "The preserved remains or traces of an organism from the geological past." to
-                        "புவியியல் கடந்த காலத்தின் உயிரியின் பாதுகாக்கப்பட்ட எச்சங்கள் அல்லது தடயங்கள்."),
+                        "புவியியல் கடந்த காலத்தில் வாழ்ந்த உயிரிகளின் பாதுகாக்கப்பட்ட எச்சங்கள் அல்லது அவற்றின் செயல்பாட்டுத் தடயங்கள்."),
                     bdef("Taphonomy", "டாஃபோனமி (Taphonomy)", "The study of the processes that affect an organism from death to fossilisation." to
                         "இறப்பிலிருந்து புதைபடிவமாதல் வரை உயிரியைப் பாதிக்கும் செயல்முறைகளின் ஆய்வு."),
                     bdef("Preservation bias", "பாதுகாப்புச் சார்பு (Preservation bias)", "The over-representation of organisms with durable hard parts in the fossil record." to
-                        "புதைபடிவப் பதிவில் நீடித்த கடினப் பகுதிகளுடைய உயிரிகளின் மிகைப் பிரதிநிதித்துவம்."),
+                        "புதைபடிவப் பதிவில் கடினமான, நீண்டகாலம் நிலைத்திருக்கக்கூடிய உடற்பகுதிகளைக் கொண்ட உயிரிகள் அளவுக்கு அதிகமாகப் பதிவாகும் சார்பு."),
                     bdef("Mould", "அச்சு", "An impression left in rock by a dissolved organism." to
-                        "கரைந்த உயிரியால் பாறையில் எஞ்சிய பதிவு."),
+                        "உயிரியின் எச்சங்கள் கரைந்தபின் பாறையில் எஞ்சும் அதன் வடிவப் பதிப்பு."),
                     bdef("Trace fossil", "தடய புதைபடிவம் (Trace fossil)", "A fossil that records the activity of an organism, such as a track or burrow." to
                         "பாதச்சுவடு, வளை போன்ற உயிரியின் செயல்பாட்டைப் பதிவு செய்யும் புதைபடிவம்."),
                 )),

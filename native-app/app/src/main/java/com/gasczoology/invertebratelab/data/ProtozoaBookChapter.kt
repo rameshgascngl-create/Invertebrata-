@@ -32,7 +32,7 @@ object ProtozoaBookChapter {
                         "Pseudopodia, flagella and cilia describe locomotion, but do not establish common ancestry." to
                             "போலிக்கால்கள், கசையிழைகள், குறுஇழைகள் ஆகியவை இடம்பெயர்ச்சியைக் குறிக்கின்றன; ஒரே மூதாதை வழியை நிரூபிப்பதில்லை.",
                         "Use the syllabus's historical groups while recognising modern phylogenetic evidence." to
-                            "பாடத்திட்டத்தின் மரபுவழிக் குழுக்களைப் படிக்கும்போதே நவீன பரிணாம உறவுச் சான்றுகளையும் கருத்தில் கொள்ள வேண்டும்."),
+                            "பாடத்திட்டத்தில் இடம்பெறும் மரபுவழிக் குழுக்களைக் கற்கும்போது, அவற்றின் நவீன பரிணாம உறவுகள் பற்றிய சான்றுகளையும் கருத்தில் கொள்ள வேண்டும்."),
                     bdef("Protozoa", "புரோட்டோசோவா", "A traditional teaching group of mostly unicellular eukaryotic protists; not a single natural clade." to
                         "பெரும்பாலும் ஒருசெல் யூகேரியோட் புரோட்டிஸ்டுகளின் மரபுவழிக் கற்பித்தல் குழு; ஒற்றை இயற்கைக் கிளை அல்ல."),
                     bdef("Protist", "புரோட்டிஸ்ட் (Protist)", "A eukaryotic organism that is not an animal, a plant or a fungus, and is mostly unicellular." to
@@ -45,9 +45,9 @@ object ProtozoaBookChapter {
             bsec("characters", "General characters", "பொதுப் பண்புகள்",
                 blocks = listOf(
                     bpoints("The general characters of Protozoa", "புரோட்டோசோவாவின் பொதுப் பண்புகள்",
-                        "Each organism is a single eukaryotic cell with a nucleus and membrane-bound organelles." to "ஒவ்வோர் உயிரியும் உட்கருவும் சவ்வுடைய நுண்ணுறுப்புகளுமுடைய ஒற்றை யூகேரியோட் செல்.",
+                        "Each organism is a single eukaryotic cell with a nucleus and membrane-bound organelles." to "ஒவ்வோர் உயிரியும் உட்கருவையும் சவ்வால் சூழப்பட்ட நுண்ணுறுப்புகளையும் கொண்ட ஒற்றை யூகேரியோட் செல்லால் ஆனது.",
                         "The cell surface may be a plasma membrane only, or a specialised pellicle." to "செல் மேற்பரப்பு பிளாஸ்மா சவ்வு மட்டும் அல்லது சிறப்பு பெல்லிக்கிளாக இருக்கலாம்.",
-                        "Locomotion, when present, is by pseudopodia, flagella or cilia; some parasitic forms lack conspicuous locomotory organelles in important stages." to "இயக்கம் இருந்தால் போலிக்கால்கள், கசைகள் அல்லது சிலியாக்களால்; சில ஒட்டுண்ணி வடிவங்களில் முக்கிய நிலைகளில் தெளிவான இயக்க நுண்ணுறுப்புகள் இல்லை.",
+                        "Locomotion, when present, is by pseudopodia, flagella or cilia; some parasitic forms lack conspicuous locomotory organelles in important stages." to "இடப்பெயர்ச்சி உள்ள வகைகளில் போலிக்கால்கள், கசையிழைகள் (flagella) அல்லது குறுஇழைகள் (cilia) உதவுகின்றன. சில ஒட்டுண்ணிகளின் குறிப்பிட்ட நிலைகளில் தெளிவான இயக்க நுண்ணுறுப்புகள் காணப்படுவதில்லை.",
                         "Nutrition may be holozoic, saprozoic, photosynthetic or mixotrophic according to the organism." to "ஊட்டம் உயிரியைப் பொறுத்து ஹோலோசோயிக், சாப்ரோசோயிக், ஒளிச்சேர்க்கை அல்லது கலப்பூட்டமாக இருக்கலாம்.",
                         "Freshwater forms often have contractile vacuoles for osmoregulation." to "நன்னீர் வடிவங்களுக்கு சவ்வூடுபரவல் ஒழுங்குபடுத்தலுக்கு சுருங்கும் நுண்குமிழ்கள் பெரும்பாலும் உண்டு.",
                         "Reproduction is usually asexual by fission; sexual processes occur in several groups." to "இனப்பெருக்கம் வழக்கமாக பிளவால் பாலிலா முறை; பல குழுக்களில் பாலின முறைகளும் நிகழ்கின்றன.",

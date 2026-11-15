@@ -34,13 +34,13 @@ object IntroInvertebrataBookChapter {
                     bp("The sequence is a framework for classification, and the order of ranks is not proof of the relationship between the taxa. A genus and a family do not exist as discoverable objects in the same way as an individual animal. The ranks are conventions by which the groups that biologists recognise are given a place, and the grouping itself is a hypothesis. Whether a group is natural, in the sense that it includes an ancestor and all of its descendants, must be inferred from evidence, and the rank in the table does not decide it." to
                         "வரிசை வகைப்பாட்டுக்கான கட்டமைப்பு; தரங்களின் வரிசை டாக்சாக்களுக்கிடையிலான உறவுக்கான சான்றல்ல. பேரினமும் குடும்பமும் தனி விலங்கு போலக் கண்டறியக்கூடிய பொருட்களாக இல்லை. உயிரியலாளர்கள் அங்கீகரிக்கும் குழுக்களுக்கு இடம் தரும் மரபுகள் தரங்கள்; தொகுப்பே ஒரு கருதுகோள். ஒரு குழு மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் பொருளில் இயற்கையானதா என்பது சான்றிலிருந்து ஊகிக்கப்பட வேண்டும்; அட்டவணையிலுள்ள தரம் அதை முடிவு செய்யாது."),
                     bdef("Taxonomy", "வகைப்பாட்டியல் (Taxonomy)", "The science of describing, naming and classifying organisms." to
-                        "உயிரிகளை விவரித்து, பெயரிட்டு, வகைப்படுத்தும் அறிவியல்."),
+                        "உயிரினங்களை விவரித்தல், அறிவியல் பெயரிடுதல் மற்றும் வகைப்படுத்துதல் பற்றிய அறிவியல்."),
                     bdef("Taxon", "வகைப்பாட்டுக் குழு (Taxon)", "A group of organisms at any rank that is recognised in classification." to
-                        "வகைப்பாட்டில் அங்கீகரிக்கப்படும் எந்தத் தரத்திலுமுள்ள உயிரிகளின் குழு."),
+                        "வகைப்பாட்டின் எந்தப் படிநிலையிலும் அங்கீகரிக்கப்படும் உயிரினங்களின் குழு."),
                     bdef("Species", "இனம்", "The basic rank of classification, to which a scientific name is given." to
                         "அறிவியல் பெயர் தரப்படும் வகைப்பாட்டின் அடிப்படைத் தரம்."),
                     bdef("Genus", "பேரினம்", "A group of related species." to
-                        "தொடர்புடைய இனங்களின் குழு."),
+                        "நெருங்கிய பரிணாம உறவு கொண்ட இனங்கள் அடங்கிய வகைப்பாட்டுக் குழு."),
                     bdef("Phylum", "தொகுதி", "A major group of animals defined by a basic body plan." to
                         "அடிப்படை உடல் திட்டத்தால் வரையறுக்கப்படும் விலங்குகளின் முக்கியக் குழு."),
                 )),
