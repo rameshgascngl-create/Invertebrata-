@@ -98,6 +98,19 @@ jobs:
             timeout 20s adb -s emulator-5554 shell setprop persist.sys.locale ta-IN || true
             timeout 20s adb -s emulator-5554 shell am broadcast -a android.intent.action.LOCALE_CHANGED || true
             timeout 20s adb -s emulator-5554 shell settings get system font_scale > native-app/app/build/qa-evidence/font-scale.txt
+            actual_scale="$(tr -d '\r\n' < native-app/app/build/qa-evidence/font-scale.txt)"
+            if [ "$actual_scale" != "${{ matrix.font_scale }}" ]; then
+              echo "Font scale mismatch: requested ${{ matrix.font_scale }}, observed $actual_scale" >&2
+              exit 1
+            fi
+            {
+              echo "requested_locale=ta-IN"
+              echo "persist.sys.locale=$(timeout 20s adb -s emulator-5554 shell getprop persist.sys.locale || true)"
+              echo "persist.sys.language=$(timeout 20s adb -s emulator-5554 shell getprop persist.sys.language || true)"
+              echo "system_locales=$(timeout 20s adb -s emulator-5554 shell settings get system system_locales || true)"
+              echo "ro.product.locale=$(timeout 20s adb -s emulator-5554 shell getprop ro.product.locale || true)"
+              echo "NOTE: These diagnostics do not establish effective application locale; instrumentation must assert Tamil rendering."
+            } > native-app/app/build/qa-evidence/locale-preflight.txt
             set +e
             timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.expectedScale=${{ matrix.font_scale }} --stacktrace --console=plain > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
             test_status=$?
@@ -105,6 +118,10 @@ jobs:
             timeout --signal=TERM --kill-after=5s 35s adb -s emulator-5554 logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat.txt 2>&1 || true
             timeout 20s adb -s emulator-5554 shell getprop persist.sys.locale > native-app/app/build/qa-evidence/locale.txt 2>&1 || true
             timeout 25s adb -s emulator-5554 exec-out screencap -p > native-app/app/build/qa-evidence/post-test-screen.png 2>/dev/null || true
+            if [ ! -s native-app/app/build/qa-evidence/post-test-screen.png ]; then
+              rm -f native-app/app/build/qa-evidence/post-test-screen.png
+              echo "Post-test diagnostic screenshot unavailable" >&2
+            fi
             echo "Instrumentation Gradle exit code: $test_status"
             exit "$test_status"
       - name: Collect bounded post-failure diagnostics
