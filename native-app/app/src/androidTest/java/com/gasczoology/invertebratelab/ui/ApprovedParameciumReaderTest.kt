@@ -4,6 +4,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.test.assertDoesNotExist
 import androidx.compose.ui.test.assertExists
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -55,7 +58,9 @@ class ApprovedParameciumReaderTest {
             }
         }
         val figureTag = "lib-paramecium-reproduction-approved"
-        compose.onNodeWithTag("r2-plate-bitmap-$figureTag").assertExists()
+        compose.onNodeWithTag("paramecium-reader-list")
+            .performScrollToNode(hasTestTag("book-figure-$figureTag"))
+        compose.onNodeWithTag("r2-plate-bitmap-$figureTag").assertExists().assertIsDisplayed()
         compose.onNodeWithTag("book-figure-caption-$figureTag").assertExists()
         compose.onNodeWithTag("r2-plate-missing-$figureTag").assertDoesNotExist()
     }
