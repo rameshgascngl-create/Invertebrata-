@@ -71,6 +71,22 @@ def main() -> int:
         print("FAIL: approved figure must precede conjugation table")
         return 1
 
+    library_path = ROOT / "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/BookFigureLibrary.kt"
+    reader_path = ROOT / "native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/BookChapterReader.kt"
+    library = library_path.read_text(encoding="utf-8")
+    reader = reader_path.read_text(encoding="utf-8")
+    registered = 'BookLibraryFigure("paramecium-reproduction-approved", "paramecium/reproduction-approved"'
+    if library.count(registered) != 1:
+        print("FAIL: approved figure must be registered exactly once with its actual asset stem")
+        return 1
+    if 'BookFigureLibrary.stemFor(figure.slot)' not in reader:
+        print("FAIL: book reader no longer resolves registered library figures")
+        return 1
+    if 'rememberCanonicalPlateBitmap(' not in reader:
+        print("FAIL: book reader no longer loads canonical plate bitmap")
+        return 1
+    print("PASS: approved figure registered in book figure library and used by reader")
+
     if args.apk:
         if not args.apk.is_file():
             print(f'FAIL: APK missing: {args.apk}')
