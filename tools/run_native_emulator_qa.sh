@@ -10,6 +10,10 @@ case "$suite" in
     test_timeout=6m
     test_filter+=('-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeUiAcceptanceTest#tamilAnswerAndQuestionPositionSurviveRotation')
     ;;
+  reader)
+    test_timeout=8m
+    test_filter+=('-Pandroid.testInstrumentationRunnerArguments.class=com.gasczoology.invertebratelab.NativeReleaseFunctionalTest#defaultPagesAcrossAllFiveUnitsKeepPositionContentsAndExactAnswers')
+    ;;
   *) echo "Unknown emulator test suite: $suite" >&2; exit 2 ;;
 esac
 mkdir -p native-app/app/build/qa-evidence
@@ -70,6 +74,27 @@ for folder in "${screenshot_folders[@]}"; do
 done
 timeout 30s adb -s emulator-5554 shell mkdir -p "${screenshot_paths[@]}"
 
+# The stock emulator launcher can leave its boot-time ANR dialog above our app.
+# Only recover the resolved HOME process. Leave app and other system ANRs visible.
+launcher=$(tr -d '\r' < native-app/app/build/qa-evidence/home-launcher.txt |
+  sed -nE 's|^([[:alnum:]_]+(\.[[:alnum:]_]+)+)/[^[:space:]]+$|\1|p' | tail -1)
+launcher_watch_pid=
+if [[ -n "$launcher" && "$launcher" != com.gasczoology.invertebratelab ]]; then
+  (
+    for attempt in {1..30}; do
+      if timeout 8s adb -s emulator-5554 shell dumpsys window windows |
+        grep -Fq "Application Not Responding: $launcher}"; then
+        echo "Detected emulator HOME ANR for $launcher"
+        timeout 10s adb -s emulator-5554 shell am force-stop --user 0 "$launcher"
+        timeout 8s adb -s emulator-5554 shell dumpsys window windows > native-app/app/build/qa-evidence/launcher-recovery-windows.txt
+        break
+      fi
+      sleep 2
+    done
+  ) > native-app/app/build/qa-evidence/launcher-recovery.txt 2>&1 &
+  launcher_watch_pid=$!
+fi
+
 set +e
 timeout --signal=TERM --kill-after=30s "$test_timeout" gradle -p native-app :app:connectedDebugAndroidTest \
   -Pandroid.testInstrumentationRunnerArguments.expectedScale="$expected_scale" \
@@ -77,6 +102,10 @@ timeout --signal=TERM --kill-after=30s "$test_timeout" gradle -p native-app :app
   "${test_filter[@]}" --stacktrace --console=plain \
   > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
 test_status=$?
+if [[ -n "$launcher_watch_pid" ]]; then
+  kill "$launcher_watch_pid" 2>/dev/null || true
+  wait "$launcher_watch_pid" 2>/dev/null || true
+fi
 evidence_dir=native-app/app/build/qa-evidence/reader-screenshots
 mkdir -p "$evidence_dir"
 for path in "${screenshot_paths[@]}"; do

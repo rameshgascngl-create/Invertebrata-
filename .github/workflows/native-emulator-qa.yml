@@ -34,6 +34,9 @@ jobs:
           - api: 34
             font_scale: '2.0'
             suite: rotation
+          - api: 35
+            font_scale: '1.0'
+            suite: reader
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     steps:
