@@ -7,6 +7,8 @@ on:
       - audit/undergraduate-coverage-register-20261114
     paths:
       - '.github/workflows/native-emulator-qa.yml'
+      - 'Paramecium_Approved_Integration_Kit.zip'
+      - 'tools/verify_approved_paramecium.py'
       - 'native-app/app/src/main/java/**'
       - 'native-app/app/src/main/assets/**'
       - 'native-app/app/src/main/res/**'
@@ -35,6 +37,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Verify committed Paramecium image before emulator
+        run: python3 tools/verify_approved_paramecium.py
       - name: Enable KVM for Android emulator
         run: |
           if [ ! -e /dev/kvm ]; then
