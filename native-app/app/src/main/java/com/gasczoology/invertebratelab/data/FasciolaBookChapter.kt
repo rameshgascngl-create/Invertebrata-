@@ -97,26 +97,26 @@ object FasciolaBookChapter {
                         "ஃபாசியோலாவின் வாழ்க்கைச் சுழற்சி இரு விருந்தோம்பிகளுடன் மறைமுகமானது. ஆடு அல்லது மாடு முதன்மை விருந்தோம்பி; அதில் ஃப்ளூக் முதிர்ந்து பாலின இனப்பெருக்கம் செய்கிறது. நன்னீர் நத்தை இடைநிலை விருந்தோம்பி; அதில் லார்வாக்கள் பாலிலா முறையில் பெருகுகின்றன. பகுதிக்கு ஏற்ப நத்தை லிம்னேயா இனம் அல்லது நெருங்கிய பேரினம்."),
                     bpoints("Sequence of the life cycle", "வாழ்க்கைச் சுழற்சியின் வரிசை",
                         "Unembryonated eggs, laid by the adults in the bile ducts, pass with the bile into the intestine and leave the host in the faeces." to "பித்த நாளங்களிலுள்ள முதிர்ந்த புழுக்கள் இடும் கருவளராத முட்டைகள் பித்தத்துடன் குடலுக்குச் சென்று மலத்துடன் வெளியேறுகின்றன.",
-                        "In fresh water the egg embryonates over some weeks and releases a ciliated, free-swimming miracidium." to "நன்னீரில் முட்டை சில வாரங்களில் கரு வளர்ந்து, கசையிழை, சுதந்திரமாக நீந்தும் மிராசிடியத்தை வெளியிடுகிறது.",
+                        "In fresh water the egg embryonates over some weeks and releases a ciliated, free-swimming miracidium." to "நன்னீரில் முட்டை சில வாரங்களில் கரு வளர்ந்து, குறுஇழைகளால் (cilia) மூடப்பட்டு சுதந்திரமாக நீந்தும் மிராசிடியத்தை வெளியிடுகிறது.",
                         "The miracidium swims to a suitable snail and penetrates it." to "மிராசிடியம் தகுந்த நத்தையிடம் நீந்திச் சென்று உள்ளே ஊடுருவுகிறது.",
-                        "In the snail it becomes a sporocyst, which gives rise to rediae." to "நத்தையில் அது ஸ்போரோசிஸ்டாகி, ரெடியாக்களைத் தருகிறது.",
+                        "In the snail it becomes a sporocyst, which gives rise to rediae." to "நத்தைக்குள் நுழைந்த மிராசிடியம் ஸ்போரோசிஸ்டாக மாறுகிறது; அதிலிருந்து ரெடியா நிலைகள் உருவாகின்றன.",
                         "The rediae produce numerous cercariae by asexual multiplication, and sometimes a second generation of rediae." to "ரெடியாக்கள் பாலிலா பெருக்கத்தால் எண்ணற்ற செர்க்கேரியாக்களை, சில நேரங்களில் இரண்டாம் தலைமுறை ரெடியாக்களையும், உருவாக்குகின்றன.",
                         "The tailed cercariae leave the snail, swim briefly, lose their tails and encyst on water plants or other surfaces as metacercariae." to "வால் உள்ள செர்க்கேரியாக்கள் நத்தையை விட்டு வெளியேறி, சிறிது நீந்தி, வாலை இழந்து, நீர்த் தாவரங்கள் அல்லது பிற பரப்புகளில் மெட்டாசெர்க்கேரியாக்களாக உறைகின்றன.",
-                        "A grazing mammal swallows the metacercariae with the plants or water, and the cycle is completed." to "மேயும் பாலூட்டி தாவரங்கள் அல்லது நீருடன் மெட்டாசெர்க்கேரியாக்களை விழுங்க, சுழற்சி நிறைவடைகிறது.",
+                        "A grazing mammal swallows the metacercariae with the plants or water, and the cycle is completed." to "மேயும் பாலூட்டிகள் நீர்த்தாவரங்கள் அல்லது நீருடன் தொற்றுநிலை மெட்டாசெர்க்கேரியாக்களை உட்கொள்கின்றன. அவை விருந்தோம்பியின் உடலில் வளர்ந்து முதிர்ந்த புழுக்களாகும்போது வாழ்க்கைச் சுழற்சி தொடர்கிறது.",
                     ),
                     bfig("fasciola/life-cycle", "The life cycle of Fasciola hepatica, from the egg and miracidium through the stages in the snail, sporocyst, redia and cercaria, to the metacercaria and the adult in the bile duct." to
                         "ஃபாசியோலா ஹெப்பாட்டிகாவின் வாழ்க்கைச் சுழற்சி: முட்டை, மிராசிடியத்திலிருந்து நத்தையிலுள்ள ஸ்போரோசிஸ்ட், ரெடியா, செர்க்கேரியா வழியாக மெட்டாசெர்க்கேரியா, பித்த நாளத்திலுள்ள முதிர்ந்த புழு வரை."),
                     btable("Larval stages of Fasciola", "ஃபாசியோலாவின் லார்வா நிலைகள்",
                         listOf("Stage" to "நிலை", "Where found" to "காணப்படும் இடம்", "Main feature" to "முதன்மைப் பண்பு"),
                         listOf(
-                            listOf("Miracidium" to "மிராசிடியம்", "Fresh water" to "நன்னீர்", "Ciliated, free-swimming, with eye spots" to "கசையிழையுடையது, நீந்துவது, கண்புள்ளிகளுடன்"),
+                            listOf("Miracidium" to "மிராசிடியம்", "Fresh water" to "நன்னீர்", "Ciliated, free-swimming, with eye spots" to "குறுஇழைகள் கொண்டது; நீந்தக்கூடியது; கண்புள்ளிகள் உடையது"),
                             listOf("Sporocyst" to "ஸ்போரோசிஸ்ட்", "Snail" to "நத்தை", "Sac-like, produces rediae" to "பை போன்றது, ரெடியாக்களை உருவாக்குகிறது"),
                             listOf("Redia" to "ரெடியா", "Snail" to "நத்தை", "Has mouth and gut, produces cercariae" to "வாயும் குடலும் உண்டு, செர்க்கேரியாக்களை உருவாக்குகிறது"),
                             listOf("Cercaria" to "செர்க்கேரியா", "Leaves the snail" to "நத்தையிலிருந்து வெளியேறுகிறது", "Tailed, swims, encysts" to "வால் உடையது, நீந்தும், உறையும்"),
                             listOf("Metacercaria" to "மெட்டாசெர்க்கேரியா", "On plants or other surfaces" to "தாவரங்கள் அல்லது பிற பரப்புகளில்", "Encysted, infective to the mammal" to "உறையிடப்பட்டது, பாலூட்டிக்குத் தொற்றுவது"),
                         )),
                     bdef("Miracidium", "மிராசிடியம் (Miracidium)", "The ciliated, free-swimming first larva of a fluke, which hatches from the egg and infects a snail." to
-                        "முட்டையிலிருந்து பொரிந்து நத்தையைத் தொற்றும், ஃப்ளூக்கின் கசையிழை, நீந்தும் முதல் லார்வா."),
+                        "முட்டையிலிருந்து பொரிந்து நத்தையைத் தொற்றும், ஃப்ளூக்கின் குறுஇழைகளால் மூடப்பட்ட, நீந்தும் முதல் இளவுயிரி."),
                     bdef("Sporocyst", "ஸ்போரோசிஸ்ட்", "The saclike second larval stage that develops in the snail and gives rise to rediae." to
                         "நத்தையில் வளர்ந்து ரெடியாக்களைத் தரும் பை போன்ற இரண்டாம் லார்வா நிலை."),
                     bdef("Redia", "ரெடியா (Redia)", "A larval stage in the snail with a mouth and a simple gut, which produces cercariae." to
@@ -129,7 +129,7 @@ object FasciolaBookChapter {
                         "The cycle of Fasciola includes both a sporocyst and a redia. It should not be confused with the cycle of some other flukes, and the metacercaria is the stage that infects the mammal, not the cercaria." to
                             "ஃபாசியோலாவின் சுழற்சியில் ஸ்போரோசிஸ்ட், ரெடியா இரண்டும் உள்ளன. சில பிற ஃப்ளூக்குகளின் சுழற்சியுடன் குழப்பக் கூடாது; பாலூட்டியைத் தொற்றும் நிலை மெட்டாசெர்க்கேரியா; செர்க்கேரியா அல்ல."),
                 )),
-            bsec("adaptations", "Adaptations to the life in the bile duct", "பித்த நாளத்தில் வாழ்வுக்கான தகவமைப்புகள்",
+            bsec("adaptations", "Adaptations to the life in the bile duct", "பித்த நாள வாழ்விற்கேற்ற தகவமைப்புகள்",
                 blocks = listOf(
                     bp("Each feature of the adult fluke can be related to its habitat. The flat, leaf-like shape gives it a large surface for absorption and lets it lie in the narrow lumen of a duct. The oral and ventral suckers and the spiny tegument hold it against the flow of bile. The tegument resists the digestive juices and the immune attack of the host. The gut is branched, so that food reaches every part of a body that has no circulatory system. The reproductive system is large and hermaphrodite, and a single fluke can lay thousands of eggs a day, which compensates for the improbability that any one egg will find a snail.",
                         "முதிர்ந்த புழுவின் ஒவ்வொரு பண்பையும் அதன் வாழிடத்துடன் தொடர்புபடுத்தலாம். தட்டையான இலை போன்ற வடிவம் உறிஞ்சுவதற்குப் பெரிய பரப்பைத் தந்து, நாளத்தின் குறுகிய இடைவெளியில் கிடக்க அனுமதிக்கிறது. வாய், வயிற்று உறிஞ்சிகளும் முள் கொண்ட டெகுமென்டும் பித்தத்தின் ஓட்டத்துக்கு எதிராக அதைப் பிடித்து வைக்கின்றன. டெகுமென்ட் விருந்தோம்பியின் செரிமான நீர்களையும் நோயெதிர்ப்புத் தாக்குதலையும் எதிர்க்கிறது. சுற்றோட்ட மண்டலமற்ற உடலின் ஒவ்வொரு பகுதிக்கும் உணவு சென்றடையும்படி குடல் கிளைத்துள்ளது. இனப்பெருக்க மண்டலம் பெரியது, இருபால் தன்மை கொண்டது; ஒற்றைப் புழு நாளொன்றுக்குப் பல ஆயிரம் முட்டைகளையிட முடியும்; எந்த ஒரு முட்டையும் நத்தையைக் கண்டுபிடிக்கும் வாய்ப்பு குறைவு என்பதை இது ஈடுசெய்கிறது."),

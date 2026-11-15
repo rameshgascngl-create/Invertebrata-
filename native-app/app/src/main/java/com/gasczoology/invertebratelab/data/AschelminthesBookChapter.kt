@@ -40,10 +40,10 @@ object AschelminthesBookChapter {
                     bpoints("Body cavity and muscles", "உடற்குழியும் தசைகளும்",
                         "The body cavity is a fluid-filled pseudocoelom, lying between the body wall and the gut and not lined by mesoderm on its inner side." to "உடற்குழி திரவம் நிறைந்த போலி உடற்குழி; உடற்சுவருக்கும் குடலுக்கும் இடையில் உள்ளது; உட்புறம் மீசோடெர்மால் மூடப்படவில்லை.",
                         "The body wall has longitudinal muscles only; circular muscles are absent." to "உடற்சுவரில் நீளவாக்கு தசைகள் மட்டுமே; வட்ட தசைகள் இல்லை.",
-                        "The cuticle, muscles and fluid of the pseudocoelom together form a hydrostatic skeleton." to "கியூட்டிகிள், தசைகள், போலி உடற்குழி திரவம் ஆகியவை இணைந்து நீரியல் எலும்புக்கூட்டை உருவாக்குகின்றன.",
+                        "The cuticle, muscles and fluid of the pseudocoelom together form a hydrostatic skeleton." to "கியூட்டிகிள், தசைகள், போலி உடற்குழி திரவம் ஆகியவை இணைந்து நீரழுத்தச் சட்டகத்தை (hydrostatic skeleton) உருவாக்குகின்றன.",
                     ),
                     bpoints("Systems of the body", "உடல் மண்டலங்கள்",
-                        "The alimentary canal is complete and straight, with a separate mouth and anus." to "உணவுக்குழல் முழுமையானது, நேரானது; தனி வாய், மலவாய் உண்டு.",
+                        "The alimentary canal is complete and straight, with a separate mouth and anus." to "செரிமானக் குழாய் முழுமையானதும் நேரானதுமாக உள்ளது; தனித்தனி வாய், மலவாய் திறப்புகள் உள்ளன.",
                         "Circulatory and respiratory systems are absent; the pseudocoelomic fluid transports substances." to "சுற்றோட்ட, சுவாச மண்டலங்கள் இல்லை; போலி உடற்குழி திரவம் பொருட்களைக் கடத்துகிறது.",
                         "The excretory system has no flame cells; it consists of an H-shaped system of canals in the lateral lines or of gland cells." to "கழிவு நீக்க மண்டலத்தில் சுடர் செல்கள் இல்லை; பக்கக் கோடுகளிலுள்ள H வடிவ கால்வாய் அமைப்பு அல்லது சுரப்பி செல்களைக் கொண்டது.",
                         "The nervous system is a ring around the pharynx with longitudinal nerve cords, of which the dorsal and ventral are the main ones." to "நரம்பு மண்டலம் தொண்டையைச் சுற்றிய வளையமும் நீளவாக்கு நரம்பு வடங்களும்; முதுகு, வயிற்று வடங்கள் முதன்மையானவை.",
@@ -160,7 +160,7 @@ object AschelminthesBookChapter {
                     bdef("Acanthocephala", "அகாந்தோசெஃபாலா (Acanthocephala)", "A group of gut parasites with a spiny retractable proboscis and no digestive tract." to
                         "முள் நிறைந்த உள்ளிழுக்கத்தக்க துதிக்கையும் செரிமானக் குழாயின்மையும் கொண்ட குடல் ஒட்டுண்ணிகளின் குழு."),
                 )),
-            bsec("lifestyles", "Ways of life within the nematodes", "நெமட்டோடாக்களுக்குள் வாழ்க்கை முறைகள்",
+            bsec("lifestyles", "Ways of life within the nematodes", "நெமட்டோடாக்களின் வாழ்வியல் முறைகள்",
                 blocks = listOf(
                     bp("Few groups of animals show so wide a range of habits on so uniform a body plan. Free-living nematodes feed on bacteria, fungi, algae or other small animals. Plant parasites pierce root or leaf cells with a hollow, spear-like stylet and suck out the contents. Animal parasites live in the gut, the blood, the lymph vessels or the tissues of vertebrates and invertebrates, and some of them are transmitted by blood-sucking insects.",
                         "இவ்வளவு ஒரே மாதிரியான உடலமைப்பில் இத்தனை பரந்த வாழ்க்கை முறைகளைக் காட்டும் விலங்கு குழுக்கள் சில. தனி வாழ்வு நெமட்டோடாக்கள் பாக்டீரியா, பூஞ்சை, பாசி அல்லது பிற சிறு விலங்குகளை உண்கின்றன. தாவர ஒட்டுண்ணிகள் வேர் அல்லது இலை செல்களை உள்ளீடற்ற ஈட்டி போன்ற ஸ்டைலெட்டால் துளைத்து உள்ளடக்கத்தை உறிஞ்சுகின்றன. விலங்கு ஒட்டுண்ணிகள் முதுகெலும்பிகள், முதுகெலும்பற்றவற்றின் குடல், இரத்தம், நிணநீர்க் குழாய்கள் அல்லது திசுக்களில் வாழ்கின்றன; சில இரத்தம் உறிஞ்சும் பூச்சிகளால் பரப்பப்படுகின்றன."),
@@ -206,7 +206,7 @@ object AschelminthesBookChapter {
             "A tough cuticle covers the body and is moulted during growth." to "கடினமான கியூட்டிகிள் உடலை மூடி, வளர்ச்சியின்போது உதிர்க்கப்படுகிறது.",
             "The body cavity is a fluid-filled pseudocoelom; the gut is complete, with mouth and anus." to "உடற்குழி திரவம் நிறைந்த போலி உடற்குழி; குடல் முழுமையானது, வாயும் மலவாயும் உண்டு.",
             "Only longitudinal muscles are present, so movement is a whip-like thrash and not peristalsis." to "நீளவாக்கு தசைகள் மட்டுமே இருப்பதால், இயக்கம் சாட்டை போன்ற அலைவு; பெரிஸ்டால்சிஸ் அல்ல.",
-            "The cuticle, muscles and pseudocoelomic fluid form a hydrostatic skeleton." to "கியூட்டிகிள், தசைகள், போலி உடற்குழி திரவம் நீரியல் எலும்புக்கூட்டை உருவாக்குகின்றன.",
+            "The cuticle, muscles and pseudocoelomic fluid form a hydrostatic skeleton." to "கியூட்டிகிள், தசைகள், போலி உடற்குழி திரவம் நீரழுத்தச் சட்டகத்தை (hydrostatic skeleton) உருவாக்குகின்றன.",
             "Sexes are usually separate, and the female is often larger." to "பாலினங்கள் பொதுவாகத் தனித்தனி; பெண் பெரும்பாலும் பெரியது.",
         ),
         checks = listOf(
