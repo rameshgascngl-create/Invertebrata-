@@ -6,6 +6,7 @@ import org.junit.Assert.assertThrows
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
+import java.util.zip.ZipFile
 
 /** Editorial floor for book-style chapters. It checks structure, not the science. */
 class BookChapterContractTest {
@@ -47,8 +48,16 @@ class BookChapterContractTest {
 
     @Test fun everyLibraryFigureHasAFileAndABilingualCredit() {
         BookFigureLibrary.all.forEach { f ->
-            assertTrue("No image file for ${f.slot}",
-                File(assets, f.stem + ".png").isFile || File(assets, f.stem + ".webp").isFile)
+            val hasImage = if (f.slot == "lib/paramecium-reproduction-approved") {
+                val archive = File("../../Paramecium_Approved_Integration_Kit.zip")
+                ZipFile(archive).use { zip ->
+                    val entry = zip.getEntry("paramecium_integration/assets/${f.stem.substringAfterLast('/')}.png")
+                    entry != null && !entry.isDirectory && entry.size > 0
+                }
+            } else {
+                File(assets, f.stem + ".png").isFile || File(assets, f.stem + ".webp").isFile
+            }
+            assertTrue("No image file for ${f.slot}", hasImage)
             assertTrue(f.slot, f.credit.en.isNotBlank())
             assertTrue(f.slot, f.credit.ta.any { c -> c in '\u0B80'..'\u0BFF' })
         }
