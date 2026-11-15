@@ -266,8 +266,8 @@ internal fun UnitIIIPlateGallery(chapterId: String, language: AppLanguage, narra
                         )
                         if (completeAscarisCycle) {
                             Text(
-                                if (tamil) "அஸ்காரிஸ் வாழ்க்கைச் சுழற்சி: CDC DPDx மூலப்படத்தின் கிராஃபைட் நிறத் தோற்றம். இது கையால் வரைந்த அசல் பென்சில் படம் அல்ல. நேரடித் தொடுபுள்ளி ஆய்வு நிலுவையில் உள்ளது."
-                                else "Source: CDC DPDx Ascariasis. Graphite-toned facsimile preserving the original CDC anatomy, labels and arrows; NOT an original pencil drawing. Pixel-coordinate review pending.",
+                                if (tamil) "மூலம்: CDC DPDx அஸ்காரிஸ் வாழ்க்கைச் சுழற்சி விளக்கப்படம். மூல வண்ணப்படத்தின் உடற்கூறு, குறியீடுகள், அம்புக்குறிகள் ஆகியவை பாதுகாக்கப்பட்டுள்ளன. நேரடித் தொடுபுள்ளி ஆய்வு நிலுவையில் உள்ளது."
+                                else "Source: CDC DPDx Ascariasis. The full-colour source retains the original anatomy, labels and arrows. Pixel-coordinate review pending.",
                                 modifier = Modifier.testTag("u3-cdc-complete-life-cycle-credit"),
                                 style = MaterialTheme.typography.bodySmall
                             )

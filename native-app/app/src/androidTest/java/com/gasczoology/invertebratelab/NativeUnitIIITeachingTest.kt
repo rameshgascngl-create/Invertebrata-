@@ -29,7 +29,7 @@ class NativeUnitIIITeachingTest {
         }
     }
 
-    private fun openChapter(id: String, tamil: Boolean, openGallery: Boolean = false) {
+    private fun openChapter(id: String, tamil: Boolean, openGallery: Boolean = false, paged: Boolean = false) {
         if (tamil) rule.onNodeWithTag("language-tamil").performClick()
         rule.onNodeWithTag("unit-3").performScrollTo().performClick()
         rule.waitUntil(20_000) {
@@ -46,9 +46,22 @@ class NativeUnitIIITeachingTest {
             rule.onNodeWithTag("u3-required-plate-gallery").assertDoesNotExist()
             rule.onNodeWithTag("u3-reader-$id").performScrollToNode(hasTestTag(toggle))
             rule.onNodeWithTag(toggle).performClick()
-        } else {
+        } else if (!paged) {
             showContinuousReader(rule)
         }
+    }
+
+    private fun showBookFigure(chapterId: String, slot: String) {
+        val book = checkNotNull(BookChapters.forLesson(chapterId))
+        val rows = BookLayout.rows(book)
+        val index = rows.indexOfFirst { row -> row is BookRow.Block && (row.block as? BookFigure)?.slot == slot }
+        check(index >= 0) { "Missing book figure $slot" }
+        val page = BookReadingPages.forChapter(book, book.reviewQuestionIds).single { index in it.rowIndices }
+        val reader = "u3-reader-$chapterId"
+        openReadingPage(rule, reader, page.id)
+        val figureTag = slot.replace('/', '-')
+        rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("book-figure-$figureTag"))
+        rule.onNodeWithTag("r2-plate-bitmap-$figureTag").assertIsDisplayed()
     }
 
     private fun capture(scene: String) {
@@ -71,43 +84,39 @@ class NativeUnitIIITeachingTest {
     }
 
     @Test fun fasciolaHasDistinctHistoricalLessonFigureAndOrderedSimulation() {
-        openChapter("u3-fasciola",false)
-        rule.onNodeWithTag("u3-lesson-title").assertExists()
-        rule.onNodeWithTag("u3-draft-warning").assertDoesNotExist()
-        rule.onNodeWithTag("u3-reader-u3-fasciola")
-            .performScrollToNode(hasTestTag("u3-static-pencil-raster"))
-        rule.onNodeWithTag("u3-static-pencil-raster").assertExists()
-        rule.onNodeWithTag("u3-static-pencil-raster").performScrollTo()
+        openChapter("u3-fasciola", false, paged = true)
+        showBookFigure("u3-fasciola", "fasciola/external")
         capture("fasciola-historical")
         rule.onNodeWithTag("u3-pencil-master-pending").assertDoesNotExist()
+        openReadingPage(rule, "u3-reader-u3-fasciola", "interactive")
         rule.onNodeWithTag("u3-reader-u3-fasciola")
             .performScrollToNode(hasTestTag("u3-interactive-life-cycle"))
         rule.onNodeWithTag("u3-stage-miracidium-1")
             .performScrollTo().performClick()
         rule.onNodeWithTag("u3-current-life-stage")
             .performScrollTo().assertTextContains("miracidium",substring=true,ignoreCase=true)
+        openReadingPage(rule, "u3-reader-u3-fasciola", "practice-u3-fasciola-A5-1")
         rule.onNodeWithTag("u3-reader-u3-fasciola")
-            .performScrollToNode(hasTestTag("u3-practice-heading"))
-        rule.onNodeWithTag("u3-practice-heading").assertExists()
+            .performScrollToNode(hasTestTag("book-practice-heading"))
+        rule.onNodeWithTag("u3-question-u3-fasciola-A5-1").assertExists()
     }
 
     @Test fun ascarisHasNoSnailAndHasCorrectLungMigration() {
-        openChapter("u3-ascaris",true)
-        rule.onNodeWithTag("u3-reader-u3-ascaris")
-            .performScrollToNode(hasTestTag("u3-static-pencil-raster"))
-        rule.onNodeWithTag("u3-static-pencil-raster").assertExists()
-        rule.onNodeWithTag("u3-static-pencil-raster").performScrollTo()
+        openChapter("u3-ascaris", true, paged = true)
+        showBookFigure("u3-ascaris", "ascaris/male-female-external")
         capture("ascaris-historical")
         rule.onNodeWithTag("u3-pencil-master-pending").assertDoesNotExist()
+        openReadingPage(rule, "u3-reader-u3-ascaris", "interactive")
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-interactive-life-cycle"))
         rule.onNodeWithTag("u3-stage-lung-3")
             .performScrollTo().performClick()
         rule.onNodeWithTag("u3-current-life-stage")
             .performScrollTo().assertTextContains("நுரையீரல்",substring=true)
+        openReadingPage(rule, "u3-reader-u3-ascaris", "practice-u3-ascaris-A5-1")
         rule.onNodeWithTag("u3-reader-u3-ascaris")
-            .performScrollToNode(hasTestTag("u3-practice-heading"))
-        rule.onNodeWithTag("u3-practice-heading").assertExists()
+            .performScrollToNode(hasTestTag("book-practice-heading"))
+        rule.onNodeWithTag("u3-question-u3-ascaris-A5-1").assertExists()
     }
 
     @Test fun sourcedFasciolaPlateRejectsObsoleteTouchCoordinates() {
@@ -245,34 +254,30 @@ class NativeUnitIIITeachingTest {
 
     @Test fun cdcCompleteAscarisSourceAndTamilCycleNarrationAreAccessible() {
         openChapter("u3-ascaris", true, openGallery = true)
-        // Capture REAL onscreen decoded graphite pixels at both font scales,
+        // Capture the decoded CDC figure on screen at both font scales,
         // before scrolling down to the accessible organ controls.
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-plate-bitmap-life-cycle"))
         rule.onNodeWithTag("u3-plate-bitmap-life-cycle").assertIsDisplayed()
-        capture("ascaris-graphite-bitmap-visible")
+        capture("ascaris-cdc-bitmap-visible")
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-cdc-complete-life-cycle-credit"))
         rule.onNodeWithTag("u3-cdc-complete-life-cycle-credit")
             .assertTextContains("CDC DPDx",substring=true)
-        // Verify a real graphite-tone raster is packaged, not the former
-        // full-colour source or unreviewed generative scene reconstruction.
-        val ctx=androidx.test.platform.app.InstrumentationRegistry
-            .getInstrumentation().targetContext
-        ctx.assets.open("type_studies/ascaris/life-cycle.png").use { stream ->
-            val bitmap=checkNotNull(android.graphics.BitmapFactory.decodeStream(stream))
-            org.junit.Assert.assertEquals(960,bitmap.width)
-            org.junit.Assert.assertEquals(1280,bitmap.height)
-            for(y in 90 until 1180 step 73) for(x in 40 until 930 step 47) {
-                val pix=bitmap.getPixel(x,y)
-                val rr=android.graphics.Color.red(pix)
-                val gg=android.graphics.Color.green(pix)
-                val bb=android.graphics.Color.blue(pix)
-                org.junit.Assert.assertTrue("Chromatic artwork at ($x,$y)",
-                    kotlin.math.abs(rr-gg)<=3 && kotlin.math.abs(gg-bb)<=4)
-            }
-            bitmap.recycle()
-        }
+        // The source record pins the bundled, resized full-colour CDC raster.
+        val ctx = androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext
+        val bytes = ctx.assets.open("type_studies/ascaris/life-cycle.png").use { it.readBytes() }
+        val sha256 = java.security.MessageDigest.getInstance("SHA-256").digest(bytes)
+            .joinToString("") { "%02x".format(it) }
+        org.junit.Assert.assertEquals(
+            "Bundled CDC life-cycle raster identity",
+            "6fdc10fe1296238cf738b54592465f6185f4e9b77d7849339626eb15c56caac0",
+            sha256,
+        )
+        val bitmap = checkNotNull(android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size))
+        org.junit.Assert.assertEquals(960, bitmap.width)
+        org.junit.Assert.assertEquals(1280, bitmap.height)
+        bitmap.recycle()
         rule.onNodeWithTag("u3-reader-u3-ascaris")
             .performScrollToNode(hasTestTag("u3-hotspot-life-cycle-unfertilized"))
         rule.onNodeWithTag("u3-hotspot-life-cycle-unfertilized")
@@ -518,7 +523,15 @@ class NativeUnitIIITeachingTest {
             rule.waitUntil(20_000) {
                 rule.onAllNodesWithTag("u3-reader-"+id).fetchSemanticsNodes().isNotEmpty()
             }
-            rule.onNodeWithTag("u3-lesson-title").assertExists()
+            val book = BookChapters.forLesson(id)
+            if (book == null) {
+                rule.onNodeWithTag("u3-lesson-title").assertExists()
+            } else {
+                val reader = "u3-reader-$id"
+                openReadingPage(rule, reader, "objectives")
+                rule.onNodeWithTag(reader).performScrollToNode(hasTestTag("book-objectives"))
+                rule.onNodeWithTag("book-practice-heading").assertDoesNotExist()
+            }
             rule.onNodeWithTag("u3-back").performClick()
             rule.waitUntil(20_000) {
                 rule.onAllNodesWithTag("native-unit-3").fetchSemanticsNodes().isNotEmpty()
