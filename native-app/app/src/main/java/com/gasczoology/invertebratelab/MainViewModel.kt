@@ -86,9 +86,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         .map<NativeLearningState, PersistedLearningLoadState> { PersistedLearningLoadState.Ready(it) }
         .stateIn(viewModelScope, SharingStarted.Eagerly, PersistedLearningLoadState.Loading)
 
-    val language: StateFlow<AppLanguage> = preferences.language.stateIn(
+    // Display a deliberate language choice immediately, including after navigating
+    // back from a book at 200% font. Persist on disk without flashing the prior
+    // language while a DataStore write is pending.
+    private val pendingLanguage = MutableStateFlow<AppLanguage?>(null)
+    private val languageWriteMutex = Mutex()
+    private var languageEditGeneration = 0L
+    val language: StateFlow<AppLanguage> = kotlinx.coroutines.flow.combine(
+        preferences.language, pendingLanguage,
+    ) { stored, requested -> requested ?: stored }.stateIn(
         scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
+        started = SharingStarted.Eagerly,
         initialValue = AppLanguage.ENGLISH,
     )
 
@@ -128,6 +136,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun setLanguage(language: AppLanguage) {
-        viewModelScope.launch { preferences.setLanguage(language) }
+        // A rapid English→Tamil→English sequence must not finish out of order.
+        val generation = ++languageEditGeneration
+        pendingLanguage.value = language
+        viewModelScope.launch {
+            languageWriteMutex.withLock {
+                if (generation != languageEditGeneration) return@withLock
+                try {
+                    preferences.setLanguage(language)
+                } finally {
+                    if (generation == languageEditGeneration) pendingLanguage.value = null
+                }
+            }
+        }
     }
 }

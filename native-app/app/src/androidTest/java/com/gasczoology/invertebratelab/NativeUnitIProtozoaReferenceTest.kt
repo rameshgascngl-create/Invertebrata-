@@ -332,10 +332,15 @@ class NativeUnitIProtozoaReferenceTest {
             enter(false)
             openParasiteBook()
             val review = rule.onNodeWithTag("book-reader-u1-proto-parasites", useUnmergedTree = true)
-            review.performScrollToNode(hasTestTag("u116-archive-source-check"))
-            rule.onNodeWithTag("u116-archive-source-check", useUnmergedTree = true).assertExists()
-            review.performScrollToNode(hasTestTag("u116-source-url"))
+            // Scroll to the stable LazyColumn item first. The historical source
+            // bytes load asynchronously and can change nested card geometry.
+            // Continue to require the real fingerprint card and original URL.
+            review.performScrollToNode(hasTestTag("u116-archive-section"))
+            rule.onNodeWithTag("u116-archive-section", useUnmergedTree = true).assertExists()
+            rule.onNodeWithTag("u116-archive-source-check", useUnmergedTree = true)
+                .performScrollTo().assertExists()
             rule.onNodeWithTag("u116-source-url", useUnmergedTree = true)
+                .performScrollTo()
                 .assertTextContains("Leishmania_donovani_", substring = true)
             rule.onNodeWithTag("u116-refresh-source")
                 .performScrollTo().performClick()
