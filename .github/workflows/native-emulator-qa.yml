@@ -8,7 +8,11 @@ on:
     paths:
       - '.github/workflows/native-emulator-qa.yml'
       - 'native-app/app/src/main/java/**'
+      - 'native-app/app/src/main/assets/**'
+      - 'native-app/app/src/main/res/**'
       - 'native-app/app/src/androidTest/**'
+      - 'native-app/app/build.gradle.kts'
+      - 'native-app/build.gradle.kts'
 
 permissions:
   contents: read
