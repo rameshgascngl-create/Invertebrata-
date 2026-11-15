@@ -28,13 +28,13 @@ object FootBookChapter {
                         "A ventral, muscular organ, broad and flat in the simple form." to "வயிற்றுப்புற, தசை உறுப்பு; எளிய வடிவில் அகன்று தட்டையானது.",
                         "Interwoven muscles with blood spaces that act as a hydrostatic skeleton." to "நீர்நிலைக் கூடாகச் செயல்படும் இரத்த இடைவெளிகளுடன் பின்னிய தசைகள்.",
                         "Pedal ganglia and nerves control its movement." to "பெடல் நரம்பு செல்திரள்களும் நரம்புகளும் அசைவைக் கட்டுப்படுத்துகின்றன.",
-                        "Mucus glands and cilia that assist creeping." to "ஊர்தலுக்கு உதவும் சளி சுரப்பிகளும் கசையிழையும்.",
+                        "Mucus glands and cilia that assist creeping." to "ஊர்வதற்கு உதவும் சளிச் சுரப்பிகளும் குறுஇழைகளும் (cilia).",
                     ),
                     bdef("Foot", "பாதம்", "The ventral muscular organ of a mollusc, used for creeping, burrowing, attachment or, in modified form, for other functions." to
                         "ஊர்தல், தோண்டுதல், ஒட்டுதல் அல்லது மாறிய வடிவில் பிற செயல்களுக்குப் பயன்படும் மெல்லுடலியின் வயிற்றுப்புற தசை உறுப்பு."),
                     bdef("Pedal ganglion", "பெடல் நரம்பு செல்திரள் (Pedal ganglion)", "A ganglion in the foot that controls its movement." to
                         "பாதத்தின் அசைவைக் கட்டுப்படுத்தும் அதிலுள்ள நரம்பு செல்திரள்."),
-                    bdef("Hydrostatic skeleton", "நீர்ம சட்டகம்", "A fluid-filled body region that gives support and allows movement when muscles act against the fluid." to
+                    bdef("Hydrostatic skeleton", "நீரழுத்தச் சட்டகம்", "A fluid-filled body region that gives support and allows movement when muscles act against the fluid." to
                         "தசைகள் திரவத்துக்கு எதிராகச் செயல்படும்போது ஆதரவும் இயக்கமும் தரும் திரவம் நிரம்பிய உடற்பகுதி."),
                     bdef("Homologous", "ஒத்தமைவான", "Having the same evolutionary origin, whatever the function." to
                         "செயல் எதுவாயினும் ஒரே பரிணாமத் தோற்றம் கொண்ட."),
@@ -42,7 +42,7 @@ object FootBookChapter {
             bsec("gastropod", "The foot of a gastropod: Pila", "இரைப்பைக்காலியின் பாதம்: பைலா",
                 blocks = listOf(
                     bp("In Pila the foot is a broad, flat, muscular sole on which the animal creeps over the mud and plants of its pond. The sole is ciliated and rich in mucous glands, and locomotion is produced by waves of muscular contraction that pass along it. The waves are called pedal waves, and in a snail with a broad foot they may pass from the back to the front, so that parts of the sole are lifted and moved forward while the rest is attached. The mucus makes the movement smooth and also gives the grip needed to climb. The pace is slow, which is in keeping with the habit of grazing on algae and plant debris." to
-                        "பைலாவில் பாதம் அகன்ற, தட்டையான தசை அடிப்பகுதி; அதன்மீது விலங்கு குளத்தின் சேறு, தாவரங்கள்மேல் ஊர்கிறது. அடிப்பகுதி கசையிழை கொண்டது, சளிச் சுரப்பிகள் நிறைந்தது; அதன் வழியே செல்லும் தசைச் சுருக்க அலைகளால் இயக்கம் உண்டாகிறது. அலைகள் பெடல் அலைகள் எனப்படுகின்றன; அகன்ற பாதம் கொண்ட நத்தையில் அவை பின்னிலிருந்து முன்னுக்குச் செல்லலாம்; எனவே அடிப்பகுதியின் சில பகுதிகள் தூக்கப்பட்டு முன்னே நகர்த்தப்பட மற்றவை ஒட்டியிருக்கும். சளி இயக்கத்தை மென்மையாக்கி ஏறத் தேவையான பிடிப்பையும் தருகிறது. வேகம் மெதுவானது; பாசி, தாவரக் கழிவுகளை மேயும் பழக்கத்துக்கு ஏற்றது."),
+                        "பைலாவில் பாதம் அகன்ற, தட்டையான தசை அடிப்பகுதி; அதன்மீது விலங்கு குளத்தின் சேறு, தாவரங்கள்மேல் ஊர்கிறது. பாதத்தின் அடிப்பரப்பு குறுஇழைகள் கொண்டது, சளிச் சுரப்பிகள் நிறைந்தது; அதன் வழியே செல்லும் தசைச் சுருக்க அலைகளால் இயக்கம் உண்டாகிறது. அலைகள் பெடல் அலைகள் எனப்படுகின்றன; அகன்ற பாதம் கொண்ட நத்தையில் அவை பின்னிலிருந்து முன்னுக்குச் செல்லலாம்; எனவே அடிப்பகுதியின் சில பகுதிகள் தூக்கப்பட்டு முன்னே நகர்த்தப்பட மற்றவை ஒட்டியிருக்கும். சளி இயக்கத்தை மென்மையாக்கி ஏறத் தேவையான பிடிப்பையும் தருகிறது. வேகம் மெதுவானது; பாசி, தாவரக் கழிவுகளை மேயும் பழக்கத்துக்கு ஏற்றது."),
                     bp("The foot of Pila has a second modification, which is the operculum. This is a horny plate attached to the upper and hinder part of the foot, and when the foot is withdrawn into the shell the operculum comes to lie across the aperture, shutting it like a lid. It protects the soft body from predators and from drying when the pond dries and the snail is exposed, which relates to the habit of the animal of withdrawing into its shell during dry seasons. Whether the snail should be described as aestivating in a given situation should be stated cautiously, as it depends on conditions." to
                         "பைலாவின் பாதத்துக்கு இரண்டாம் மாற்றம் உண்டு: ஆப்பர்குலம். இது பாதத்தின் மேல், பின் பகுதியில் ஒட்டிய கொம்புத் தகடு; பாதம் ஓட்டுக்குள் இழுக்கப்படும்போது ஆப்பர்குலம் வாய்த்துளையின் குறுக்கே மூடியாக வந்து மூடுகிறது. வேட்டையாடிகளிடமிருந்தும், குளம் வற்றி நத்தை வெளிப்படும்போது உலர்வதிலிருந்தும் மென்உடலைப் பாதுகாக்கிறது; வறண்ட பருவங்களில் ஓட்டுக்குள் பின்வாங்கும் விலங்கின் பழக்கத்துடன் தொடர்புடையது. குறிப்பிட்ட சூழ்நிலையில் நத்தை கோடைத் தூக்கத்தில் உள்ளது எனக் கூறுவது நிலைமையைச் சார்ந்தது என்பதால் எச்சரிக்கையுடன் கூறப்பட வேண்டும்."),
                     bp("The foot is also related to torsion and the shell. The head and the foot can be withdrawn into the shell, which sits like a hood over the hump of the viscera, and the operculum seals the retreat. The head and foot are the parts that did not turn in torsion, which is why the foot and the sole are still oriented forward in the torted animal." to
@@ -143,7 +143,7 @@ object FootBookChapter {
                 )),
         ),
         summary = listOf(
-            "The molluscan foot is a ventral muscular organ that works with a hydrostatic skeleton of blood spaces." to "மெல்லுடலிப் பாதம் இரத்த இடைவெளிகளின் நீர்ம சட்டகம்டன் செயல்படும் வயிற்றுப்புற தசை உறுப்பு.",
+            "The molluscan foot is a ventral muscular organ that works with a hydrostatic skeleton of blood spaces." to "மெல்லுடலிப் பாதம் இரத்த இடைவெளிகளின் நீரழுத்தச் சட்டகம்டன் செயல்படும் வயிற்றுப்புற தசை உறுப்பு.",
             "In Pila the foot is a creeping sole with pedal waves, and it carries the operculum." to "பைலாவில் பாதம் பெடல் அலைகளுடன் ஊரும் அடிப்பகுதி; ஆப்பர்குலத்தையும் தாங்குகிறது.",
             "In Unio the foot is a wedge used for burrowing; in some bivalves a byssus gland fixes the animal." to "யூனியோவில் பாதம் தோண்டும் ஆப்பு; சில இருவோடுகளில் பிணைப்பிழைச் சுரப்பி விலங்கை நிலைநிறுத்துகிறது.",
             "In cephalopods the foot forms arms around the head and the funnel for jet propulsion." to "தலைக்காலிகளில் பாதம் தலையைச் சுற்றிய கைகளையும் பீச்சு உந்துதலுக்கான குழலையும் உருவாக்குகிறது.",

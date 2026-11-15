@@ -29,18 +29,18 @@ object EchinoAffinitiesBookChapter {
                         "The blastopore gives rise to the anus, and the mouth forms secondarily." to "பிளாஸ்டோபோர் மலவாயைத் தருகிறது; வாய் இரண்டாம் நிலையாக உருவாகிறது.",
                         "The coelom is formed as outgrowths of the primitive gut, which is called enterocoely." to "உடற்குழி ஆதிக்குடலின் வளர்ச்சிகளாக உருவாகிறது; இது என்டெரோசீலி எனப்படுகிறது.",
                         "Cleavage is typically radial and indeterminate, so that the cells of the early embryo keep a wide potential." to "பிளவு வழக்கமாக ஆரை, உறுதியற்றது; எனவே ஆரம்பக் கருவின் செல்கள் பரந்த ஆற்றலைத் தக்கவைக்கின்றன.",
-                        "The larvae are ciliated and bilateral, with looping bands of cilia." to "லார்வாக்கள் கசையிழை கொண்டவை, இருபக்கச் சமச்சீருடையவை; வளையக் கசையிழைப் பட்டைகளுடன்.",
+                        "The larvae are ciliated and bilateral, with looping bands of cilia." to "இளவுயிரிகள் குறுஇழைகள் (cilia) கொண்ட இருபக்கச் சமச்சீர் உடையவை; உடலைச் சுற்றிக் குறுஇழைப் பட்டைகள் அமைந்துள்ளன.",
                     ),
                     bp("These characters must be handled with care. The distinction between the two lineages was first made on the embryo, and it is now supported by molecular evidence, which means that it does not rest on the embryo alone. Not every feature holds in every species, since the details of cleavage and of the formation of the mouth differ, and some deuterostomes depart from the classical description. The examination answer should therefore say the typical characters, and should not imply that each is found without exception." to
                         "இப்பண்புகளைக் கவனமாகக் கையாள வேண்டும். இரு பரம்பரைகளுக்கிடையிலான வேறுபாடு முதலில் கருவில் செய்யப்பட்டது; இப்போது மூலக்கூறுச் சான்றாலும் ஆதரிக்கப்படுகிறது; அதாவது கருவை மட்டும் சார்ந்தது அல்ல. ஒவ்வொரு பண்பும் ஒவ்வோர் இனத்திலும் பொருந்தாது; பிளவு, வாய் உருவாக்கத்தின் விவரங்கள் மாறுபடும்; சில டியூட்டிரோஸ்டோம்கள் செம்மை விளக்கத்திலிருந்து விலகுகின்றன. எனவே தேர்வு விடை வழக்கமான பண்புகளைக் கூற வேண்டும்; ஒவ்வொன்றும் விதிவிலக்கின்றிக் காணப்படுகிறது எனக் குறிப்பிடக் கூடாது."),
                     bdef("Protostome", "புரோட்டோஸ்டோம் (Protostome)", "An animal in which the blastopore becomes, or is closely associated with, the mouth." to
                         "பிளாஸ்டோபோர் வாயாகும் அல்லது வாயுடன் நெருங்கிய தொடர்புடைய விலங்கு."),
                     bdef("Deuterostome", "டியூட்டிரோஸ்டோம்", "An animal in which the blastopore becomes the anus and the mouth forms secondarily." to
-                        "பிளாஸ்டோபோர் மலவாயாகி வாய் இரண்டாம் நிலையாக உருவாகும் விலங்கு."),
+                        "கருவின் பிளாஸ்டோபோர் பொதுவாக மலவாயாக மாறி, வாய் பின்னர் உருவாகும் வளர்ச்சித்திட்டத்தை உடைய விலங்கு."),
                     bdef("Blastopore", "பிளாஸ்டோபோர் (Blastopore)", "The first opening of the embryo into the primitive gut." to
                         "ஆதிக்குடலுக்குள் கருவின் முதல் திறப்பு."),
                     bdef("Enterocoely", "என்டெரோசீலி (Enterocoely)", "The formation of the coelom from outgrowths of the gut." to
-                        "குடலின் வளர்ச்சிகளிலிருந்து உடற்குழி உருவாதல்."),
+                        "ஆதிக்குடலின் வெளிப்புற முளைப்புகளிலிருந்து உடற்குழி உருவாகும் முறை."),
                     bdef("Indeterminate cleavage", "உறுதியற்ற பிளவு (Indeterminate cleavage)", "Cleavage in which the cells of the early embryo keep the potential to form a whole animal." to
                         "ஆரம்பக் கரு செல்கள் முழு விலங்கை உருவாக்கும் ஆற்றலைத் தக்கவைக்கும் பிளவு."),
                 )),

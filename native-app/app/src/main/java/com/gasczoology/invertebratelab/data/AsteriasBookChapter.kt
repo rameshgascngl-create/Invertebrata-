@@ -29,22 +29,22 @@ object AsteriasBookChapter {
                         "The madreporite, a sieve-like calcareous plate, lies towards the margin of the disc between two arms." to "மேட்ரிபோரைட், சல்லடை போன்ற சுண்ணாம்புத் தகடு, இரு கைகளுக்கிடையே வட்டின் விளிம்பை நோக்கி அமைந்துள்ளது.",
                         "The anus is a small opening near the centre of the disc." to "மலவாய் வட்டின் மையத்தருகே சிறு திறப்பு.",
                         "Blunt calcareous spines are scattered over the surface, with pedicellariae at their bases." to "மழுங்கிய சுண்ணாம்பு முட்கள் மேற்பரப்பில் சிதறியுள்ளன; அடியில் பெடிசல்லேரியாக்கள்.",
-                        "Thin-walled papulae, or dermal branchiae, project between the ossicles and take part in gas exchange." to "மெல்லிய சுவர் பப்புலாக்கள் அல்லது தோல் செவுள்கள் ஆஸிக்கிள்களுக்கிடையே துருத்தி வாயுப் பரிமாற்றத்தில் பங்கேற்கின்றன.",
+                        "Thin-walled papulae, or dermal branchiae, project between the ossicles and take part in gas exchange." to "மெல்லிய சுவருடைய பப்புலாக்கள் (தோல் செவுள்கள்) ஆஸிக்கிள்களுக்கிடையே துருத்தி வாயுப் பரிமாற்றத்தில் பங்கேற்கின்றன.",
                     ),
                     bpoints("The oral surface", "வாய்ப்புற மேற்பரப்பு",
                         "The mouth lies in the centre of the disc, surrounded by a soft peristome." to "வாய் வட்டின் மையத்தில், மென்மையான பெரிஸ்டோம் சூழ, அமைந்துள்ளது.",
                         "An ambulacral groove runs along the middle of each arm from the mouth to the tip." to "ஒவ்வொரு கையின் நடுவிலும் வாயிலிருந்து நுனி வரை ஆம்புலாக்ரல் பள்ளம் செல்கிறது.",
                         "Rows of tube feet lie in the groove, protected at the sides by movable spines." to "பள்ளத்தில் குழாய் கால்களின் வரிசைகள் உள்ளன; பக்கங்களில் அசையும் முட்கள் பாதுகாக்கின்றன.",
-                        "At the tip of each arm a short terminal tentacle and a red eyespot, which detects light, are present." to "ஒவ்வொரு கர நுனியிலும் குறுகிய இறுதி உணர்கொம்பும் ஒளியை உணரும் சிவப்புக் கண்புள்ளியும் உள்ளன.",
+                        "At the tip of each arm a short terminal tentacle and a red eyespot, which detects light, are present." to "ஒவ்வொரு கையின் நுனியிலும் குறுகிய இறுதி உணர்கொம்பும் ஒளியை உணரும் சிவப்புக் கண்புள்ளியும் உள்ளன.",
                     ),
                     bdef("Disc", "வட்டு", "The central region of the starfish body from which the arms radiate." to
                         "கைகள் கதிர்போல் பிரியும் நட்சத்திர மீன் உடலின் மையப் பகுதி."),
                     bdef("Ambulacral groove", "ஆம்புலாக்ரல் பள்ளம் (Ambulacral groove)", "The groove along the oral side of each arm that holds the tube feet." to
-                        "குழாய்ப்பாதங்களைக் கொண்ட, ஒவ்வொரு கையின் வாய்ப்புறத்தில் செல்லும் பள்ளம்."),
+                        "குழாய்க் கால்களைக் கொண்ட, ஒவ்வொரு கையின் வாய்ப்புறத்தில் செல்லும் பள்ளம்."),
                     bdef("Peristome", "பெரிஸ்டோம் (Peristome)", "The soft membranous area surrounding the mouth." to
                         "வாயைச் சுற்றிய மென்மையான சவ்வுப் பகுதி."),
                     bdef("Eyespot", "கண்புள்ளி (Eyespot)", "A simple photoreceptive organ at the tip of each arm." to
-                        "ஒவ்வொரு கர நுனியிலும் உள்ள எளிய ஒளியுணர் உறுப்பு."),
+                        "ஒவ்வொரு கையின் நுனியிலும் உள்ள எளிய ஒளியுணர் உறுப்பு."),
                 )),
             bsec("body-wall", "Body wall, skeleton and coelom", "உடற்சுவர், கூடு, உடற்குழி",
                 blocks = listOf(
