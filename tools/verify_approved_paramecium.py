@@ -8,6 +8,7 @@ acceptance are separate checks.
 from __future__ import annotations
 
 import hashlib
+import argparse
 import pathlib
 import sys
 import zipfile
@@ -22,6 +23,9 @@ SLOT = "paramecium/reproduction-approved"
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--apk', type=pathlib.Path)
+    args = parser.parse_args()
     if not ZIP.is_file():
         print(f"FAIL: committed integration archive missing: {ZIP}")
         return 1
@@ -67,6 +71,24 @@ def main() -> int:
         print("FAIL: approved figure must precede conjugation table")
         return 1
 
+    if args.apk:
+        if not args.apk.is_file():
+            print(f'FAIL: APK missing: {args.apk}')
+            return 1
+        try:
+            with zipfile.ZipFile(args.apk) as apk:
+                name = 'assets/paramecium/reproduction-approved.png'
+                if apk.namelist().count(name) != 1:
+                    print(f'FAIL: approved PNG not packaged exactly once at {name}')
+                    return 1
+                packaged = apk.read(name)
+        except (zipfile.BadZipFile, OSError, RuntimeError) as exc:
+            print(f'FAIL: APK inspection error: {exc}')
+            return 1
+        if hashlib.sha256(packaged).hexdigest() != SHA256:
+            print('FAIL: packaged PNG differs from approved image')
+            return 1
+        print('PASS: approved PNG is packaged unchanged in APK')
     print(f"PASS: committed ZIP and approved PNG (SHA-256 {SHA256})")
     print("PASS: PNG dimensions 1536x1024 and valid PNG signature")
     print("PASS: Gradle asset staging hook and bilingual chapter figure placement")
