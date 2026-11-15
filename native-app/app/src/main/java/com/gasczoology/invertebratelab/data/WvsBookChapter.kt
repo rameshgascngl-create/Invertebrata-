@@ -4,7 +4,7 @@ package com.gasczoology.invertebratelab.data
 object WvsBookChapter {
     val chapter = bchapter(
         lessonId = "u5-wvs",
-        title = "The Water-Vascular System" to "நீரோட்டக் குழாய் மண்டலம்",
+        title = "The Water-Vascular System" to "நீர்க்குழாய் மண்டலம்",
         objectives = listOf(
             "Identify the principal canals and associated structures." to
                 "முக்கிய கால்வாய்களையும் இணைந்த அமைப்புகளையும் அடையாளம் காணுதல்.",
@@ -15,16 +15,16 @@ object WvsBookChapter {
         ),
         introduction = listOf(
             "The water-vascular system consists of fluid-filled canals connected to tube feet. Following the canals and examining tube-foot action helps explain movement, attachment and feeding in echinoderms." to
-                "நீரோட்டக் குழாய் மண்டலம், திரவம் நிறைந்த கால்வாய்களையும் அவற்றுடன் இணைந்த குழாய்க்கால்களையும் கொண்டது. கால்வாய்களின் தொடரையும் குழாய்க்கால்களின் செயலையும் அறிந்தால், முட்தோலிகளின் இயக்கம், ஒட்டுதல், உணவூட்டம் ஆகியவற்றைப் புரிந்துகொள்ளலாம்.",
+                "நீர்க்குழாய் மண்டலம், திரவம் நிறைந்த கால்வாய்களையும் அவற்றுடன் இணைந்த குழாய்க்கால்களையும் கொண்டது. கால்வாய்களின் தொடரையும் குழாய்க்கால்களின் செயலையும் அறிந்தால், முட்தோலிகளின் இயக்கம், ஒட்டுதல், உணவூட்டம் ஆகியவற்றைப் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("definition", "Definition and origin", "வரையறையும் தோற்றமும்",
                 blocks = listOf(
                     bp("The water-vascular system is a coelom-derived hydraulic network of canals, unique to the echinoderms. In the embryo and larva, the left side of the coelom forms a series of outgrowths, among them the hydrocoel, and the hydrocoel becomes the canal system of the adult. The origin from the coelom means that the fluid inside is a coelomic fluid, similar to sea water in its salts, with coelomocytes and a little protein, and not simply sea water that has been drawn in." to
-                        "நீரோட்டக் குழாய் மண்டலம் முட்தோலிகளுக்கே உரிய, உடற்குழியிலிருந்து தோன்றிய கால்வாய்களின் நீரழுத்த வலைப்பின்னல். கருவிலும் லார்வாவிலும் உடற்குழியின் இடப்பக்கம் ஹைட்ரோசீல் உள்ளிட்ட வளர்ச்சித் தொடரை உருவாக்குகிறது; ஹைட்ரோசீல் முதிர்ந்ததின் கால்வாய் அமைப்பாகிறது. உடற்குழியிலிருந்து தோற்றம் என்பதால் உள்ளிருக்கும் திரவம் உடற்குழித் திரவம்; உப்புகளில் கடல்நீரை ஒத்தது; கொலோமோசைட்டுகளும் சிறிது புரதமும் கொண்டது; உள்ளிழுக்கப்பட்ட கடல்நீர் மட்டுமல்ல."),
+                        "நீர்க்குழாய் மண்டலம் முட்தோலிகளுக்கே உரிய, உடற்குழியிலிருந்து தோன்றிய கால்வாய்களின் நீரழுத்த வலைப்பின்னல். கருவிலும் லார்வாவிலும் உடற்குழியின் இடப்பக்கம் ஹைட்ரோசீல் உள்ளிட்ட வளர்ச்சித் தொடரை உருவாக்குகிறது; ஹைட்ரோசீல் முதிர்ந்ததின் கால்வாய் அமைப்பாகிறது. உடற்குழியிலிருந்து தோற்றம் என்பதால் உள்ளிருக்கும் திரவம் உடற்குழித் திரவம்; உப்புகளில் கடல்நீரை ஒத்தது; கொலோமோசைட்டுகளும் சிறிது புரதமும் கொண்டது; உள்ளிழுக்கப்பட்ட கடல்நீர் மட்டுமல்ல."),
                     bp("The system has three kinds of parts. There are the main canals, which are the ring canal and the radial canals; the lateral canals and ampullae, which connect the main canals to the feet; and the tube feet, which are the working end-organs. The madreporite and the stone canal connect the system to the outside, and in some echinoderms there are other accessory parts, such as Tiedemann's bodies and Polian vesicles, whose details vary and are not required in this answer." to
                         "அமைப்புக்கு மூன்று வகைப் பகுதிகள் உண்டு: முதன்மைக் கால்வாய்களான வளையக் கால்வாயும் கதிர்க் கால்வாய்களும்; முதன்மைக் கால்வாய்களை பாதங்களுடன் இணைக்கும் பக்கக் கால்வாய்களும் ஆம்புலாக்களும்; வேலை செய்யும் முனை உறுப்புகளான குழாய்ப்பாதங்களும். மேட்ரிபோரைட்டும் கல் கால்வாயும் அமைப்பை வெளியுடன் இணைக்கின்றன; சில முட்தோலிகளில் டீடிமன் உடல்கள், போலியன் பைகள் போன்ற பிற துணைப் பகுதிகள் உள்ளன; விவரங்கள் மாறுபடும்; இவ்விடையில் தேவையில்லை."),
-                    bdef("Water-vascular system", "நீரோட்டக் குழாய் மண்டலம்", "A coelom-derived hydraulic system of canals and tube feet unique to echinoderms." to
+                    bdef("Water-vascular system", "நீர்க்குழாய் மண்டலம்", "A coelom-derived hydraulic system of canals and tube feet unique to echinoderms." to
                         "முட்தோலிகளுக்கே உரிய, உடற்குழியிலிருந்து தோன்றிய கால்வாய்கள், குழாய்ப்பாதங்களின் நீரழுத்த அமைப்பு."),
                     bdef("Hydrocoel", "ஹைட்ரோசீல் (Hydrocoel)", "The part of the larval coelom that gives rise to the water-vascular system." to
                         "நீர்க்குழாய் மண்டலத்தை உருவாக்கும் இளவுயிரியின் உடற்குழிப் பகுதி."),
@@ -33,7 +33,7 @@ object WvsBookChapter {
                 )),
             bsec("pathway", "The pathway of canals", "கால்வாய்ப் பாதை",
                 blocks = listOf(
-                    bfig("asterias/water-vascular-system", "The water-vascular system of a starfish: madreporite, stone canal, ring canal, radial canals, lateral canals, ampullae and tube feet." to "நட்சத்திரமீனின் நீரோட்டக் குழாய் மண்டலம்: மேட்ரிபோரைட், கல் கால்வாய், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், பக்கக் கால்வாய்கள், ஆம்புலாக்கள், குழாய்க் கால்கள்."),
+                    bfig("asterias/water-vascular-system", "The water-vascular system of a starfish: madreporite, stone canal, ring canal, radial canals, lateral canals, ampullae and tube feet." to "நட்சத்திரமீனின் நீர்க்குழாய் மண்டலம்: மேட்ரிபோரைட், கல் கால்வாய், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், பக்கக் கால்வாய்கள், ஆம்புலாக்கள், குழாய்க் கால்கள்."),
                     bpoints("The pathway, in order", "பாதை, வரிசையாக",
                         "The madreporite, a porous plate on the aboral surface, communicates with the system and helps to regulate its fluid." to "மேற்புறத்திலுள்ள துளைகளுடைய தகடான மேட்ரிபோரைட் அமைப்புடன் தொடர்புகொண்டு அதன் திரவத்தை ஒழுங்குபடுத்த உதவுகிறது.",
                         "A stone canal, with calcareous deposits in its wall, connects the madreporite to the ring canal." to "சுவரில் சுண்ணாம்புப் படிவுகளுடைய கல் கால்வாய் மேட்ரிபோரைட்டை வளையக் கால்வாயுடன் இணைக்கிறது.",
@@ -58,7 +58,7 @@ object WvsBookChapter {
             bsec("mechanism", "The mechanism of a tube foot", "குழாய்ப்பாதத்தின் செயல்முறை",
                 blocks = listOf(
                     bp("Each tube foot is a hollow, extensible cylinder with a flattened disc at the tip, and the base of the foot is connected through the skeleton to a muscular bulb, the ampulla, which lies in the coelom. The wall of the foot has longitudinal muscle fibres and connective tissue, and the lining is ciliated. The foot works as a piston. When the ampulla contracts, the valve in the lateral canal closes, so that the fluid is forced into the foot and not back into the radial canal. The fluid pressure extends the foot." to
-                        "ஒவ்வொரு குழாய்ப்பாதமும் முனையில் தட்டையான வட்டுடைய வெற்று, நீளக்கூடிய உருளை; பாதத்தின் அடி கூடு வழியே உடற்குழியிலுள்ள தசைக் குமிழான ஆம்புலாவுடன் இணைந்துள்ளது. பாதத்தின் சுவரில் நீள்தசை இழைகளும் இணைப்புத் திசுவும் உள்ளன; உட்புறம் கசையிழை கொண்டது. பாதம் உலக்கையாகச் செயல்படுகிறது. ஆம்புலா சுருங்கும்போது பக்கக் கால்வாயின் வால்வு மூடுகிறது; எனவே திரவம் கதிர்க் கால்வாய்க்குப் பின்னோக்கி அல்லாமல் பாதத்துக்குள் தள்ளப்படுகிறது. திரவ அழுத்தம் பாதத்தை நீட்டுகிறது."),
+                        "ஒவ்வொரு குழாய்ப்பாதமும் முனையில் தட்டையான வட்டுடைய வெற்று, நீளக்கூடிய உருளை; பாதத்தின் அடி கூடு வழியே உடற்குழியிலுள்ள தசைக் குமிழான ஆம்புலாவுடன் இணைந்துள்ளது. பாதத்தின் சுவரில் நீள்தசை இழைகளும் இணைப்புத் திசுவும் உள்ளன; உட்புறம் கசையிழை கொண்டது. ஆம்புலா தசையால் சுருங்கி திரவத்தை குழாய்க்காலுக்குள் செலுத்தும் பம்பைப் போலச் செயல்படுகிறது. ஆம்புலா சுருங்கும்போது பக்கக் கால்வாயின் வால்வு மூடுகிறது; எனவே திரவம் கதிர்க் கால்வாய்க்குப் பின்னோக்கி அல்லாமல் பாதத்துக்குள் தள்ளப்படுகிறது. திரவ அழுத்தம் பாதத்தை நீட்டுகிறது."),
                     bp("A step is a sequence of four actions: extension, attachment, contraction and release. The extended foot touches the surface and the disc attaches, by an adhesive secretion, and then the longitudinal muscle of the foot contracts and shortens it, drawing the body forward over the point of attachment. The disc then releases, aided by a second secretion, and the foot is carried forward for the next step. The ampulla refills from the radial canal as the foot retracts. The feet work in waves along the arms, with each foot at a different stage, so that the animal moves smoothly." to
                         "ஒரு அடி நான்கு செயல்களின் வரிசை: நீள்தல், ஒட்டுதல், சுருங்குதல், விடுபடுதல். நீட்டப்பட்ட பாதம் மேற்பரப்பைத் தொட்டு வட்டு ஒட்டும் சுரப்பால் ஒட்டுகிறது; பின்னர் பாதத்தின் நீள்தசை சுருங்கி அதைக் குட்டையாக்கி உடலை ஒட்டிய புள்ளிமேல் முன்னே இழுக்கிறது. வட்டு இரண்டாம் சுரப்பின் உதவியுடன் விடுபடுகிறது; அடுத்த அடிக்காக பாதம் முன்னே கொண்டுசெல்லப்படுகிறது. பாதம் உள்வாங்கும்போது ஆம்புலா கதிர்க் கால்வாயிலிருந்து மீண்டும் நிரம்புகிறது. பாதங்கள் கைகளில் அலைகளாக, ஒவ்வொன்றும் வெவ்வேறு நிலையில், செயல்படுகின்றன; எனவே விலங்கு மென்மையாக நகர்கிறது."),
                     btable("The cycle of a tube foot", "குழாய்ப்பாதச் சுழற்சி",
@@ -70,7 +70,7 @@ object WvsBookChapter {
                             listOf("Release" to "விடுபடுதல்", "The disc lets go and the foot is carried forward" to "வட்டு விடுபட்டு பாதம் முன்னே கொண்டுசெல்லப்படுகிறது", "Release secretion; fluid returns to the ampulla" to "விடுவிக்கும் சுரப்பு; திரவம் ஆம்புலாவுக்குத் திரும்புகிறது"),
                         )),
                     bp("Attachment is by adhesion, and not simply by suction, though the disc and its muscles have some part in the grip, and the glue is released and removed in cycles. A tube foot is thus a self-contained working unit of a muscle, a valve, a bulb of fluid and an adhesive disc." to
-                        "ஒட்டுதல் ஒட்டுக்கூடு; வெறும் உறிஞ்சுதல் அல்ல; வட்டும் அதன் தசைகளும் பிடிப்பில் ஓரளவு பங்கு வகிக்கின்றன; பசை சுழற்சிகளில் வெளியிடப்பட்டு அகற்றப்படுகிறது. எனவே குழாய்க் கால் தசை, வால்வு, திரவக் குமிழ், ஒட்டும் வட்டு ஆகியவற்றாலான தனித்து இயங்கும் வேலை அலகு."),
+                        "குழாய்க்கால் மேற்பரப்பில் ஒட்டுவதற்கு ஒட்டும் சுரப்புகள் உதவுகின்றன; இதை வெறும் உறிஞ்சுதல் என்று விளக்கக் கூடாது; வட்டும் அதன் தசைகளும் பிடிப்பில் ஓரளவு பங்கு வகிக்கின்றன; பசை சுழற்சிகளில் வெளியிடப்பட்டு அகற்றப்படுகிறது. எனவே குழாய்க் கால் தசை, வால்வு, திரவக் குமிழ், ஒட்டும் வட்டு ஆகியவற்றாலான தனித்து இயங்கும் வேலை அலகு."),
                     bdef("Ampulla", "ஆம்புலா (Ampulla)", "A muscular bulb at the base of a tube foot whose contraction drives fluid into the foot." to
                         "சுருங்கி திரவத்தைப் பாதத்துக்குள் செலுத்தும் குழாய்ப்பாதத்தின் அடியிலுள்ள தசைக் குமிழ்."),
                     bdef("Podium", "போடியம் (Podium)", "The extensible part of the tube foot outside the skeleton." to
@@ -83,7 +83,7 @@ object WvsBookChapter {
             bsec("development", "Origin of the system in development", "வளர்ச்சியில் அமைப்பின் தோற்றம்",
                 blocks = listOf(
                     bp("The water-vascular system arises in the larva from the coelom. The archenteron gives off coelomic pouches, and the left anterior pouch becomes the hydrocoel, which is the rudiment of the system. The hydrocoel opens to the outside by a pore, grows into a ring around the oesophagus of the developing adult and sends out five outgrowths that become the radial canals. The tube feet bud off from the radial canals. This coelomic origin explains why the system is lined by a ciliated coelomic epithelium and why its fluid is similar to that of the body cavity.",
-                        "நீரோட்டக் குழாய் மண்டலம் லார்வாவில் சீலோமிலிருந்து தோன்றுகிறது. ஆர்க்கென்டரான் சீலோம் பைகளை வெளியிடுகிறது; இடது முன் பை ஹைட்ரோசீலாகிறது; அதுவே மண்டலத்தின் அரும்பு. ஹைட்ரோசீல் ஒரு துளை வழியே வெளியே திறந்து, வளரும் முதிர்ந்ததின் உணவுக்குழலைச் சுற்றி வளையமாக வளர்ந்து, ஆரக் கால்வாய்களாகும் ஐந்து நீட்சிகளை அனுப்புகிறது. குழல் கால்கள் ஆரக் கால்வாய்களிலிருந்து மொட்டுவிடுகின்றன. இச்சீலோம் தோற்றம், மண்டலம் சிலியா கொண்ட சீலோம் எப்பிதீலியத்தால் மூடப்பட்டிருப்பதையும், அதன் திரவம் உடற்குழி திரவத்தை ஒத்திருப்பதையும் விளக்குகிறது."),
+                        "நீர்க்குழாய் மண்டலம் லார்வாவில் சீலோமிலிருந்து தோன்றுகிறது. ஆர்க்கென்டரான் சீலோம் பைகளை வெளியிடுகிறது; இடது முன் பை ஹைட்ரோசீலாகிறது; அதுவே மண்டலத்தின் அரும்பு. ஹைட்ரோசீல் ஒரு துளை வழியே வெளியே திறந்து, வளரும் முதிர்ந்ததின் உணவுக்குழலைச் சுற்றி வளையமாக வளர்ந்து, ஆரக் கால்வாய்களாகும் ஐந்து நீட்சிகளை அனுப்புகிறது. குழல் கால்கள் ஆரக் கால்வாய்களிலிருந்து மொட்டுவிடுகின்றன. இச்சீலோம் தோற்றம், மண்டலம் சிலியா கொண்ட சீலோம் எப்பிதீலியத்தால் மூடப்பட்டிருப்பதையும், அதன் திரவம் உடற்குழி திரவத்தை ஒத்திருப்பதையும் விளக்குகிறது."),
                     bp("Because of this origin, the system is often described as a coelomic derivative and not as an organ system that has no counterpart in other animals. Its pentaradial arrangement is imposed on the larval structure at metamorphosis, when the left side of the larva becomes the oral surface of the young echinoderm. This provides the clearest link between the radial adult and the bilateral larva, and it is the reason why the system appears so often in the questions on larvae and symmetry.",
                         "இத்தோற்றம் காரணமாக, மண்டலம் பிற விலங்குகளில் ஒப்பாக்கம் இல்லாத உறுப்பு மண்டலமாக அல்லாமல் சீலோம் வழிப்பெறல் எனப் பெரும்பாலும் விவரிக்கப்படுகிறது. அதன் ஐந்தாரை அமைப்பு உருமாற்றத்தில் லார்வா அமைப்பின் மீது திணிக்கப்படுகிறது; அப்போது லார்வாவின் இடப்பக்கம் இளம் எக்கைனோடெர்மின் வாய்ப்புறமாகிறது. இது ஆரச்சமச்சீர் முதிர்ந்ததுக்கும் இருபக்கச் சமச்சீர் லார்வாவுக்கும் இடையிலான தெளிவான தொடர்பை அளிக்கிறது; லார்வா, சமச்சீர் பற்றிய வினாக்களில் மண்டலம் அடிக்கடி வருவதற்கு இதுவே காரணம்."),
                 )),
@@ -168,7 +168,7 @@ object WvsBookChapter {
                 )),
         ),
         summary = listOf(
-            "The water-vascular system is a coelom-derived hydraulic canal network unique to the echinoderms." to "நீரோட்டக் குழாய் மண்டலம் முட்தோலிகளுக்கே உரிய உடற்குழியிலிருந்து தோன்றிய நீரழுத்தக் கால்வாய் வலைப்பின்னல்.",
+            "The water-vascular system is a coelom-derived hydraulic canal network unique to the echinoderms." to "நீர்க்குழாய் மண்டலம் முட்தோலிகளுக்கே உரிய உடற்குழியிலிருந்து தோன்றிய நீரழுத்தக் கால்வாய் வலைப்பின்னல்.",
             "Pathway: madreporite, stone canal, ring canal, radial canals, lateral canals, ampullae, tube feet." to "பாதை: மேட்ரிபோரைட், கல் கால்வாய், வளையக் கால்வாய், கதிர்க் கால்வாய்கள், பக்கக் கால்வாய்கள், ஆம்புலாக்கள், குழாய்க் கால்கள்.",
             "The pathway is anatomical, not a continuous one-way flow of sea water through every foot." to "பாதை உடற்கூறியல்; ஒவ்வொரு பாதம் வழியேயும் தொடர் ஒருதிசை கடல்நீர் ஓட்டம் அல்ல.",
             "Ampullary contraction, with the lateral canal valve closed, extends the foot; the foot muscles retract it." to "பக்கக் கால்வாய் வால்வு மூடிய நிலையில் ஆம்புலா சுருங்கி பாதத்தை நீட்டுகிறது; பாதத் தசைகள் உள்ளிழுக்கின்றன.",
@@ -176,7 +176,7 @@ object WvsBookChapter {
             "Tube feet help to open bivalve prey by sustained traction; they do not crush the shell." to "குழாய்க் கால்கள் தொடர்ந்த இழுவையால் இருவோட்டு இரையைத் திறக்க உதவுகின்றன; ஓட்டை நொறுக்குவதில்லை.",
         ),
         checks = listOf(
-            bqc("Where does the water-vascular system arise in the embryo?", "கருவில் நீரோட்டக் குழாய் மண்டலம் எங்கிருந்து தோன்றுகிறது?",
+            bqc("Where does the water-vascular system arise in the embryo?", "கருவில் நீர்க்குழாய் மண்டலம் எங்கிருந்து தோன்றுகிறது?",
                 "From part of the coelom, the hydrocoel.", "உடற்குழியின் ஒரு பகுதியான ஹைட்ரோசீலிலிருந்து."),
             bqc("What closes when the ampulla contracts, and why?", "ஆம்புலா சுருங்கும்போது எது மூடுகிறது, ஏன்?",
                 "The valve in the lateral canal, so that fluid is forced into the tube foot and not back into the radial canal.", "பக்கக் கால்வாயின் வால்வு; எனவே திரவம் கதிர்க் கால்வாய்க்குப் பின்னோக்கிச் செல்லாமல் குழாய்ப்பாதத்துக்குள் தள்ளப்படுகிறது."),
