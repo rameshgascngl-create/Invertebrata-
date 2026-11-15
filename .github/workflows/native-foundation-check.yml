@@ -36,6 +36,8 @@ jobs:
         run: gradle -p native-app :app:compileReleaseKotlin --stacktrace
       - name: Compile Android instrumentation tests and assemble debug APK
         run: gradle -p native-app :app:compileDebugAndroidTestKotlin :app:assembleDebug --stacktrace
+      - name: Verify approved Paramecium PNG is packaged in debug APK
+        run: python3 tools/verify_approved_paramecium.py --apk native-app/app/build/outputs/apk/debug/app-debug.apk
       - name: Validate five-unit bilingual A5 question-answer integrity
         run: |
           python3 - <<'PY'
