@@ -28,6 +28,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Verify approved Paramecium illustration archive and chapter integration
+        run: python3 tools/verify_approved_paramecium.py
       - name: Compile Kotlin and run JVM unit tests
         run: gradle -p native-app :app:compileDebugKotlin :app:testDebugUnitTest --stacktrace
       - name: Compile release Kotlin without signing or publishing
