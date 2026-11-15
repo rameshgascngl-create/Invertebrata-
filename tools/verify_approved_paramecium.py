@@ -19,7 +19,7 @@ ZIP = ROOT / "Paramecium_Approved_Integration_Kit.zip"
 ENTRY = "paramecium_integration/assets/paramecium-reproduction-approved.png"
 CHAPTER = ROOT / "native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ParameciumBookChapter.kt"
 GRADLE = ROOT / "native-app/app/build.gradle.kts"
-SLOT = "paramecium/reproduction-approved"
+SLOT = "lib/paramecium-reproduction-approved"
 
 
 def main() -> int:
