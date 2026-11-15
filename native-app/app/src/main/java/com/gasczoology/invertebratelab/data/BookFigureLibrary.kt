@@ -47,6 +47,9 @@ object BookFigureLibrary {
         "Sina Adl · CC BY 4.0 (creativecommons.org/licenses/by/4.0) · விக்கிமீடியா காமன்ஸ், File:Malaria_Plasmodium_infection_cycle.png · மாற்றமில்லை")
 
     val all: List<BookLibraryFigure> = listOf(
+        BookLibraryFigure("paramecium-reproduction-approved", "paramecium/reproduction-approved", PlateCredit(
+            "Approved Paramecium reproduction schematic · AI-generated educational illustration · source: user-approved integration kit",
+            "ஏற்றுக்கொள்ளப்பட்ட பாரமீசியம் இனப்பெருக்க விளக்கப்படம் · கல்விக்கான செயற்கை நுண்ணறிவு படம் · மூலம்: பயனர் ஒப்புதல் பெற்ற படத் தொகுப்பு")),
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
         BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa-original", coralNoaa),
         BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", aiPlate),
