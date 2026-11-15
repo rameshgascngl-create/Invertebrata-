@@ -15,6 +15,11 @@ permissions:
 
 jobs:
   emulator-smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [34, 35]
+        font_scale: ['1.0', '2.0']
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     steps:
@@ -53,7 +58,7 @@ jobs:
         timeout-minutes: 55
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: ${{ matrix.api }}
           target: google_apis
           arch: x86_64
           profile: pixel_6
@@ -89,13 +94,17 @@ jobs:
               exit 1
             fi
             timeout 30s adb -s emulator-5554 shell getprop ro.build.version.sdk > native-app/app/build/qa-evidence/device-api.txt
-            timeout 20s adb -s emulator-5554 shell settings put system font_scale 1.0
+            timeout 20s adb -s emulator-5554 shell settings put system font_scale ${{ matrix.font_scale }}
+            timeout 20s adb -s emulator-5554 shell setprop persist.sys.locale ta-IN || true
+            timeout 20s adb -s emulator-5554 shell am broadcast -a android.intent.action.LOCALE_CHANGED || true
             timeout 20s adb -s emulator-5554 shell settings get system font_scale > native-app/app/build/qa-evidence/font-scale.txt
             set +e
-            timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.expectedScale=1.0 --stacktrace --console=plain > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
+            timeout --signal=TERM --kill-after=30s 42m gradle -p native-app :app:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.expectedScale=${{ matrix.font_scale }} --stacktrace --console=plain > native-app/app/build/qa-evidence/instrumentation-console.log 2>&1
             test_status=$?
             cat native-app/app/build/qa-evidence/instrumentation-console.log
             timeout --signal=TERM --kill-after=5s 35s adb -s emulator-5554 logcat -d -v threadtime > native-app/app/build/qa-evidence/logcat.txt 2>&1 || true
+            timeout 20s adb -s emulator-5554 shell getprop persist.sys.locale > native-app/app/build/qa-evidence/locale.txt 2>&1 || true
+            timeout 25s adb -s emulator-5554 exec-out screencap -p > native-app/app/build/qa-evidence/post-test-screen.png 2>/dev/null || true
             echo "Instrumentation Gradle exit code: $test_status"
             exit "$test_status"
       - name: Collect bounded post-failure diagnostics
@@ -108,7 +117,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: invertebrata-emulator-evidence-${{ github.sha }}
+          name: invertebrata-emulator-evidence-${{ github.sha }}-api${{ matrix.api }}-font${{ matrix.font_scale }}
           path: |
             native-app/app/build/outputs/androidTest-results/
             native-app/app/build/reports/androidTests/
