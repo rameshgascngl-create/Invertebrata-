@@ -5,18 +5,10 @@ expected_scale=$1
 suite=${2:-full}
 test_filter=()
 package=com.gasczoology.invertebratelab
-process_death_classes=(
-  NativeProcessDeathSetupTest NativeProcessDeathVerifyTest
-  NativeR161CiliaryProcessDeathSetupTest NativeR161CiliaryProcessDeathVerifyTest
-  NativeR17ProcessDeathSetupTest NativeR17ProcessDeathVerifyTest
-  NativeR18ProcessDeathSetupTest NativeR18ProcessDeathVerifyTest
-  NativeR19ProcessDeathSetupTest NativeR19ProcessDeathVerifyTest
-)
 case "$suite" in
   full)
     test_timeout=42m
-    excluded=$(printf '%s,' "${process_death_classes[@]/#/$package.}")
-    test_filter+=("-Pandroid.testInstrumentationRunnerArguments.notClass=${excluded%,}")
+    test_filter+=("-Pandroid.testInstrumentationRunnerArguments.notAnnotation=$package.RequiresProcessDeathDriver")
     ;;
   unit-iii)
     test_timeout=15m

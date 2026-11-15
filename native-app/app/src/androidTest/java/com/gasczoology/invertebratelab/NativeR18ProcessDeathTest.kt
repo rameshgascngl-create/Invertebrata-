@@ -17,6 +17,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /** External deterministic driver must prove background AM state, old PID gone and a new PID. */
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR18ProcessDeathSetupTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()
@@ -42,6 +43,7 @@ class NativeR18ProcessDeathSetupTest {
     }
 }
 
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR18ProcessDeathVerifyTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()

@@ -19,6 +19,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /** Only qualifies with the external ActivityManager/PID driver between classes. */
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR161CiliaryProcessDeathSetupTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
@@ -50,6 +51,7 @@ class NativeR161CiliaryProcessDeathSetupTest {
     }
 }
 
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR161CiliaryProcessDeathVerifyTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()

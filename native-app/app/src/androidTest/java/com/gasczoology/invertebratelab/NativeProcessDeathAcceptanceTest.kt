@@ -27,11 +27,17 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** Runs only with the host driver that proves termination and restart of the app PID. */
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.RUNTIME)
+internal annotation class RequiresProcessDeathDriver
+
 /**
  * Two separate instrumentation entrypoints. The shell driver must terminate the
  * original *app process* between them and prove the original PID disappeared.
  * Running these tests consecutively without the external PID gate is NOT N1.4.
  */
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeProcessDeathSetupTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
@@ -95,6 +101,7 @@ class NativeProcessDeathSetupTest {
     }
 }
 
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeProcessDeathVerifyTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()

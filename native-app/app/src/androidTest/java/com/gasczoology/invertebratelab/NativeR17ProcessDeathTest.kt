@@ -22,6 +22,7 @@ private val recoveryStage get() = recoveryArg("r17RecoveryStage", "germline")
 private val recoveryReading get() = recoveryArg("r17RecoveryReading", "1.3")
 
 /** Only accepted with external ActivityManager background-state, am-kill and PID proof. */
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR17ProcessDeathSetupTest {
     @get:Rule val rule = createAndroidComposeRule<MainActivity>()
@@ -46,6 +47,7 @@ class NativeR17ProcessDeathSetupTest {
     }
 }
 
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR17ProcessDeathVerifyTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()

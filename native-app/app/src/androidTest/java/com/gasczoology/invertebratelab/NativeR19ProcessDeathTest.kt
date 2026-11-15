@@ -18,6 +18,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR19ProcessDeathSetupTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()
@@ -55,6 +56,7 @@ class NativeR19ProcessDeathSetupTest {
 }
 
 /** Deliberately performs no fixture writes: external driver must establish a genuinely different PID. */
+@RequiresProcessDeathDriver
 @RunWith(AndroidJUnit4::class)
 class NativeR19ProcessDeathVerifyTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()
