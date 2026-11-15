@@ -31,11 +31,11 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 26 | TorsionBookChapter | Gastropod 180-degree torsion vs shell coiling (targeted) | Rephrased torsion mechanism and distinguished it from spiral growth | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
 | 27 | PearlBookChapter | Pearl sac and nacre secretion sequence (targeted) | Replaced misleading literal wording for tissue disturbance and concentric nacre deposition | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
 | 28 | EchinodermataBookChapter | Coelom, pedicellaria and bilateral larva terminology (targeted) | Improved coelomic lining, pedicellaria functions and larval symmetry Tamil | Targeted corrections completed; full internal review incomplete | Pending | 32bbec60 |
-| 29 | AsteriasBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 30 | EchinoLarvaeBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 31 | EchinoAffinitiesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 32 | FootBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 33 | CephalopodsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 29 | AsteriasBookChapter | Papulae, ambulacral groove and arm morphology (targeted) | Corrected branchial, tube-foot and arm-tip wording | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
+| 30 | EchinoLarvaeBookChapter | Dipleurula concept, ciliary bands and lecithotrophic larva (targeted) | Distinguished larval cilia from flagella and clarified bilaterally symmetrical larval model | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
+| 31 | EchinoAffinitiesBookChapter | Bilateral ciliated larvae, deuterostome and enterocoely definitions (targeted) | Clarified embryological terminology and cilia | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
+| 32 | FootBookChapter | Molluscan pedal cilia, foot surface and hydrostatic support (targeted) | Corrected cilia and hydrostatic skeleton Tamil terminology | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
+| 33 | CephalopodsBookChapter | Cuttlefish, giant axon and chromatophores (targeted) | Corrected unintelligible cuttlefish term and giant-axon description | Targeted corrections completed; full internal review incomplete | Pending | 877023c8 |
 | 34 | WvsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 35 | FossilsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 36 | IntroInvertebrataBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -60,3 +60,5 @@ Annelid and nematode batch (2026-11-15): targeted Tamil edits at commit `dc9a0a6
 Arthropod and crustacean batch (2026-11-15): targeted Tamil revisions at `4a586740` in five chapters. English source, accepted figures and chapter IDs are preserved. Full internal/independent acceptance remains pending.
 
 Mollusc and echinoderm batch (2026-11-15): targeted scientific-Tamil corrections in five chapters at `32bbec60`. All independent academic acceptance and complete section-by-section editorial reviews remain pending.
+
+Echinoderm larval biology and cephalopod batch (2026-11-15): targeted Tamil corrections in five chapters, commit `877023c8`. All remain pending complete internal and independent review.
