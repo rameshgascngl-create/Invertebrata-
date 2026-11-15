@@ -92,7 +92,7 @@ object ObeliaBookChapter {
                         "ஒபீலியா காலனியில் வெவ்வேறு பணிகளுக்கான வெவ்வேறு வடிவ சூயிட்டுகள் உள்ளன. ஹைட்ராந்துகள் உண்கின்றன; கோனாஞ்சியங்கள் இனப்பெருக்கம் செய்கின்றன. ஹைட்ராந்துகள் பெறுவதை, உண்ண இயலாத கோனாஞ்சியங்களுடன் சீனோசார்க் பகிர்கிறது. இதுவே பல்வடிவத்தன்மை; காலனி உறுப்பினர்களுக்கிடையிலான பணிப் பிரிவினை. இந்நிகழ்வு தனி அத்தியாயத்தில் கையாளப்படுகிறது; அங்கு ஒபீலியா, பைசாலியாவின் மேலும் சிறப்புப் பெற்ற பல்வடிவத்தன்மையுடன் ஒப்பிடப்படுகிறது."),
                     bnote("One genotype", "ஒரே மரபணுவகை",
                         "All the zooids of a colony are genetically alike because they arise by budding from one planula. Their different forms result from the way they develop, and not from different genes." to
-                            "காலனியின் அனைத்து சூயிட்டுகளும் ஒரே பிளானுலா இளவுயிரியிலிருந்து வளர்ந்த பாலிப்பின் மொட்டுவிடுதலால் உருவாவதால் மரபணு அமைப்பில் பொதுவாக ஒத்தவை. அவற்றின் வெவ்வேறு வடிவங்கள் அவை வளரும் விதத்தால் ஏற்படுகின்றன; ஒரே அடிப்படை மரபணுக்கள் வெவ்வேறு முறையில் வெளிப்படுவதால்."),
+                            "காலனியின் அனைத்து சூயிட்டுகளும் ஒரே பிளானுலா இளவுயிரியிலிருந்து வளர்ந்த பாலிப்பின் மொட்டுவிடுதலால் உருவாவதால் மரபணு அமைப்பில் பொதுவாக ஒத்தவை. ஒரே அடிப்படை மரபணுக்கள் வெவ்வேறு செல்களில் வெவ்வேறு முறையில் வெளிப்படுவதால் சூயிட்டுகள் தனித்த வடிவங்களையும் பணிகளையும் பெறுகின்றன."),
                     bdef("Polymorphism", "பல்வடிவத்தன்மை (Polymorphism)",
                         "The occurrence of zooids of different forms and functions in one colony." to
                             "ஒரே காலனியில் வெவ்வேறு வடிவம், பணி கொண்ட சூயிட்டுகள் இருத்தல்."),
@@ -152,7 +152,7 @@ object ObeliaBookChapter {
                             "நிடேரியன்களில் காணப்படும், உடற்பரப்பில் குறுஇழைகள் கொண்ட, பொதுவாகத் திடமான அமைப்புடைய, நீந்திச் செல்லும் இளவுயிரி."),
                     bnote("Not Physalia", "பைசாலியா அல்ல",
                         "Obelia is a fixed colony whose zooids are polyps, with the medusa as a separate sexual stage. Physalia, the Portuguese man-of-war, is a floating colony with a gas-filled pneumatophore and several kinds of zooid. Do not describe a pneumatophore in Obelia." to
-                            "ஒபீலியா நிலையான காலனி; சூயிட்டுகளில் உணவூட்டும் மற்றும் இனப்பெருக்கப் பாலிப்புகள் உள்ளன; மெடுசா தனியாக நீந்தும் பாலின இனப்பெருக்க நிலை. பைசாலியா, போர்த்துக்கீசியக் கடற்போர்க்கப்பல் என அழைக்கப்படும் மிதக்கும் ஹைட்ரோசோவா கூட்டுயிரி, வாயு நிரம்பிய நியூமட்டோஃபோருடன் பல வகை சூயிட்டுகள் கொண்ட மிதக்கும் காலனி. ஒபீலியாவில் நியூமட்டோஃபோரை விவரிக்க வேண்டாம்."),
+                            "ஒபீலியா நிலையான காலனி; சூயிட்டுகளில் உணவூட்டும் மற்றும் இனப்பெருக்கப் பாலிப்புகள் உள்ளன; மெடுசா தனியாக நீந்தும் பாலின இனப்பெருக்க நிலை. பைசாலியா (Physalia) என்பது 'போர்த்துக்கீசியக் கடற்போர்க்கப்பல்' என்று அழைக்கப்படும் மிதக்கும் ஹைட்ரோசோவா கூட்டுயிரி. இதில் வாயு நிரம்பிய நியூமட்டோஃபோரும் வெவ்வேறு பணிகளைச் செய்யும் பல வகைச் சூயிட்டுகளும் உள்ளன. ஒபீலியாவில் நியூமட்டோஃபோரை விவரிக்க வேண்டாம்."),
                 )),
             bsec("histology", "The body wall and its cells", "உடற்சுவரும் அதன் செல்களும்",
                 blocks = listOf(
@@ -179,7 +179,7 @@ object ObeliaBookChapter {
                     bdef("Cnidoblast", "நிடோபிளாஸ்ட்", "A stinging cell of a cnidarian, which contains a nematocyst." to
                         "நெமட்டோசிஸ்ட் கொண்ட நிடேரியாவின் கொட்டும் செல்."),
                     bdef("Nematocyst", "நெமட்டோசிஸ்ட்", "The capsule of a cnidoblast, in which a thread is coiled that is shot out to capture prey." to
-                        "இரையைப் பிடிக்கச் சுடப்படும் நூல் சுருண்டுள்ள நிடோசைட்டு செல்லுக்குள் காணப்படும் சிறப்புப் கொட்டும் உறை."),
+                        "நிடோசைட்டு செல்லுக்குள் காணப்படும், சுருண்ட நூலிழையைக் கொண்ட கொட்டும் உறை; இரையைப் பிடிக்கவும் தற்காப்பிற்கும் உதவுகிறது."),
                     bdef("Interstitial cell", "இடைநிலை செல் (Interstitial cell)", "An unspecialised cell of a hydroid that can develop into other kinds of cell." to
                         "பிற வகை செல்களாக வளரக்கூடிய ஹைட்ராய்டின் சிறப்புப் பெறாத செல்."),
                     bdef("Nerve net", "நரம்பு வலை", "A diffuse network of nerve cells, without a brain, in the body wall of a cnidarian." to
@@ -222,7 +222,7 @@ object ObeliaBookChapter {
             "The stem has a non-living chitinous perisarc and a living coenosarc that encloses a common gastrovascular cavity." to "தண்டில் உயிரற்ற கைட்டின் பெரிசார்க்கும், பொதுவான காஸ்ட்ரோவாஸ்குலர் குழியை அடைக்கும் உயிருள்ள சீனோசார்க்கும் உள்ளன.",
             "Hydranths, in hydrothecae, feed; gonangia, in gonothecae, reproduce asexually by producing medusa buds on the blastostyle." to "ஹைட்ரோதீகாவில் உள்ள ஹைட்ராந்துகள் உண்கின்றன; கோனோதீகாவில் உள்ள கோனாஞ்சியங்கள் பிளாஸ்டோஸ்டைலில் மெடுசா மொட்டுகளை உருவாக்கிப் பாலிலா இனப்பெருக்கம் செய்கின்றன.",
             "The medusa is free-swimming, with four radial canals, a ring canal, a velum and statocysts, and produces the gametes." to "மெடுசா சுதந்திரமாக நீந்துவது; நான்கு ஆரக் கால்வாய்கள், வளையக் கால்வாய், வெலம், ஸ்டேட்டோசிஸ்ட்கள் கொண்டது; கேமீட்டுகளை உருவாக்குகிறது.",
-            "Fertilisation gives a zygote that becomes a ciliated planula, which settles and buds into a new colony." to "கருவுறுதலால் உருவாகும் கருவுற்ற முட்டை குறுஇழைகளால் (cilia) மூடப்பட்ட பிளானுலா இளவுயிரிவாகி, படிந்து, மொட்டுவிட்டுப் புதிய கூட்டுயிரியாக வளர்கிறது.",
+            "Fertilisation gives a zygote that becomes a ciliated planula, which settles and buds into a new colony." to "கருவுற்ற முட்டையிலிருந்து குறுஇழைகளால் (cilia) மூடப்பட்ட பிளானுலா இளவுயிரி உருவாகிறது. அது பொருத்தமான பரப்பில் படிந்து பாலிப்பாக வளர்கிறது; அந்தப் பாலிப்பிலிருந்து மொட்டுவிடுதலால் புதிய கூட்டுயிரி உருவாகிறது.",
             "Polymorphism is the division of labour among genetically alike zooids; it is not the pneumatophore-bearing colony of Physalia." to "பல்வடிவத்தன்மை மரபுப்படி ஒத்த சூயிட்டுகளிடையேயான பணிப் பிரிவினை; நியூமட்டோஃபோர் கொண்ட பைசாலியா காலனி அல்ல.",
             "The life history is metagenesis, an alternation of an asexual polyp and a sexual medusa." to "வாழ்க்கை வரலாறு மெட்டாஜெனிசிஸ்; பாலிலா பாலிப்பும் பாலின மெடுசாவும் மாறிமாறி வருவது.",
         ),
