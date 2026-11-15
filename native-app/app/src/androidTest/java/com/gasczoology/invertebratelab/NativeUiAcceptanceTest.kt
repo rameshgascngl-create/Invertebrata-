@@ -313,6 +313,7 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
             "Academic review pending: illustrations and Tamil vocabulary remain drafts.")
         val first = chapter.a5Questions.first()
+        openReadingPage(rule, container, "practice-" + first.id)
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
         rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.english)
         rule.onNodeWithTag(container).performScrollToIndex(0)
@@ -322,6 +323,9 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithText("Back").performClick()
         waitFor("native-home")
         rule.onNodeWithTag("language-tamil").performClick()
+        // The unit card may be outside the LazyColumn viewport at 200% font.
+        // Scroll it into composition, then check its actual bilingual text.
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
         rule.onNodeWithTag("native-home").performScrollToIndex(1)
         rule.onNodeWithTag("unit-1").performClick()
@@ -332,6 +336,7 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag(container).performScrollToIndex(0)
         rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
             "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன.")
+        openReadingPage(rule, container, "practice-" + first.id)
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
         rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.tamil)
     }
