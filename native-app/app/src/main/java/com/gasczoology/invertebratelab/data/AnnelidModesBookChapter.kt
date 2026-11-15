@@ -41,10 +41,10 @@ object AnnelidModesBookChapter {
                         "விசிறிப்புழுவின் கிரீடத்திலுள்ள, உண்ணுதல், சுவாசத்துக்குப் பயன்படும் இறகு போன்ற உணர்கொம்புகளில் ஒன்று."),
                     bdef("Operculum", "ஆப்பர்குலம் (Operculum)", "A plug or lid, as that formed from a tentacle of Serpula, which closes the opening of the tube." to
                         "செர்புலாவின் உணர்கொம்பால் உருவானது போல, குழாயின் திறப்பை மூடும் அடைப்பான் அல்லது மூடி."),
-                    bdef("Suspension feeding", "நிலைக்கரைசல் உண்ணுதல் (Suspension feeding)", "Feeding on small particles that are removed from the surrounding water." to
-                        "சுற்றியுள்ள நீரிலிருந்து எடுக்கப்படும் சிறு துகள்களை உண்ணுதல்."),
+                    bdef("Suspension feeding", "மிதவைத் துகளுண்ணுதல் (Suspension feeding)", "Feeding on small particles that are removed from the surrounding water." to
+                        "சுற்றியுள்ள நீரில் மிதக்கும் நுண்துகள்களை வடிகட்டிப் பெற்று உணவாக உட்கொள்ளுதல்."),
                 )),
-            bsec("burrowing", "Burrowing deposit feeders: the earthworm", "துளையிடும் படிவு உண்ணிகள்: மண்புழு",
+            bsec("burrowing", "Burrowing deposit feeders: the earthworm", "மண்ணில் வளையமைத்து வாழும் கரிமத் துகளுண்ணிகள்: மண்புழு",
                 blocks = listOf(
                     bp("Earthworms burrow in soil, and a related group of oligochaetes lives in the mud of fresh water. The earthworm has a small head with no tentacles or eyes, no parapodia, and a few short chaetae in each segment. It moves by peristalsis. Waves of contraction of the circular muscles make the segments thin and long and push the front of the body forward, and then waves of longitudinal contraction shorten and thicken the segments and draw the rear up. The chaetae of the thickened segments are projected and anchor the body against the wall of the burrow." to
                         "மண்புழுக்கள் மண்ணில் துளையிடுகின்றன; தொடர்புடைய ஒலிகோகீட்டாக் குழு நன்னீர்ச் சேற்றில் வாழ்கிறது. மண்புழுவுக்கு உணர்கொம்புகள், கண்கள் இல்லாத சிறிய தலை, பாரபோடியாக்கள் இல்லை, ஒவ்வொரு கண்டத்திலும் சில குட்டைச் சீட்டாக்கள் உள்ளன. அலைச் சுருக்கத்தால் நகர்கிறது. வட்டத் தசைச் சுருக்க அலைகள் கண்டங்களை மெலிந்து நீளச் செய்து உடலின் முன்பகுதியை முன்னே தள்ளுகின்றன; பின்னர் நீளவாட்டுச் சுருக்க அலைகள் கண்டங்களைக் குட்டையாக்கித் தடிக்கச் செய்து பின் பகுதியை இழுக்கின்றன. தடித்த கண்டங்களின் சீட்டாக்கள் வெளியே நீண்டு துளையின் சுவருக்கு எதிராக உடலை நங்கூரமிடுகின்றன."),

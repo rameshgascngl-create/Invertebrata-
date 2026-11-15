@@ -31,7 +31,7 @@ object CrustaceanLarvaeBookChapter {
                     bdef("Plankton", "மிதவை உயிரிகள்", "Organisms that drift in the water and are carried by currents." to
                         "நீரில் மிதந்து நீரோட்டங்களால் கொண்டு செல்லப்படும் உயிரிகள்."),
                     bdef("Indirect development", "மறைமுக வளர்ச்சி", "Development in which a larval stage separates the egg from the adult." to
-                        "முட்டைக்கும் முதிர்ந்ததற்கும் இடையே லார்வா நிலை உள்ள வளர்ச்சி."),
+                        "முட்டையிலிருந்து வெளிவரும் இளவுயிரி, முதிர்ந்த வடிவத்தை அடையும் முன் தனித்த வளர்ச்சி நிலைகளைக் கடக்கும் முறை."),
                 )),
             bsec("penaeid", "The penaeid sequence", "பெனியிட் வரிசை",
                 blocks = listOf(
@@ -45,12 +45,12 @@ object CrustaceanLarvaeBookChapter {
                         listOf("Stage" to "நிலை", "Appendages and eyes" to "உறுப்புகளும் கண்களும்", "Feeding" to "உண்ணுதல்", "Swimming organs" to "நீந்தும் உறுப்புகள்"),
                         listOf(
                             listOf("Nauplius" to "நாப்ளியஸ்", "Three pairs; median eye" to "மூன்று இணை; நடுக்கண்", "Does not feed; yolk" to "உண்பதில்லை; மஞ்சள் கரு", "Antennules, antennae, mandibles" to "ஆன்டென்யூல்கள், ஆன்டென்னாக்கள், மாண்டிபிள்கள்"),
-                            listOf("Protozoea" to "புரோட்டோசோயியா", "Mouthparts and first thoracic limbs; compound eyes" to "வாய்ப்பகுதிகள், முதல் மார்புக் கால்கள்; கூட்டுக் கண்கள்", "Feeds on small plankton" to "சிறு மிதவையை உண்கிறது", "Mainly antennae" to "முக்கியமாக ஆன்டென்னாக்கள்"),
+                            listOf("Protozoea" to "புரோட்டோசோயியா", "Mouthparts and first thoracic limbs; compound eyes" to "வாய்ப்பகுதிகள், முதல் மார்புக் கால்கள்; கூட்டுக் கண்கள்", "Feeds on small plankton" to "சிறிய மிதவை உயிரிகளை உண்கிறது", "Mainly antennae" to "முக்கியமாக ஆன்டென்னாக்கள்"),
                             listOf("Mysis" to "மைசிஸ்", "Thoracic limbs complete; stalked eyes" to "மார்புக் கால்கள் முழுமை; காம்புக் கண்கள்", "Feeds actively" to "சுறுசுறுப்பாக உண்கிறது", "Thoracic appendages" to "மார்பு உறுப்புகள்"),
                             listOf("Postlarva" to "போஸ்ட்லார்வா", "All adult appendages" to "முதிர்ந்தவற்றின் அனைத்து உறுப்புகளும்", "Feeds like a juvenile" to "இளையதைப் போல உண்கிறது", "Pleopods" to "ப்ளியோபோடுகள்"),
                         )),
                     bdef("Protozoea", "புரோட்டோசோயியா (Protozoea)", "The second larva of a penaeid prawn, which begins to feed and acquires a carapace." to
-                        "பெனியிட் இறாலின் இரண்டாம் லார்வா; உண்ணத் தொடங்கி ஓட்டைப் பெறுகிறது."),
+                        "பெனியிட் இறாலின் நாப்ளியஸ் நிலைக்கு அடுத்த இளவுயிரி; வெளிப்புற ஓடு வளரத் தொடங்கி உணவுண்ணும் நிலையாக மாறுகிறது."),
                     bdef("Stadium", "ஸ்டேடியம் (Stadium)", "The period between two moults; also the stage of the animal during it." to
                         "இரு தோலுரித்தல்களுக்கிடைப்பட்ட காலம்; அக்காலத்தில் விலங்கின் நிலையும்."),
                     bdef("Nursery area", "நாற்றங்கால் பகுதி (Nursery area)", "A sheltered place, such as an estuary, in which the young of a species grow." to
@@ -78,7 +78,7 @@ object CrustaceanLarvaeBookChapter {
                     bdef("Grazer", "மேய்வான் (Grazer)", "An animal that feeds on small plants or algae." to
                         "சிறு தாவரங்கள் அல்லது பாசிகளை உண்ணும் விலங்கு."),
                 )),
-            bsec("others", "Larvae of other crustaceans", "பிற கணுக்காலிகளின் லார்வாக்கள்",
+            bsec("others", "Larvae of other crustaceans", "பிற ஓட்டுடலிகளின் இளவுயிரிகள்",
                 blocks = listOf(
                     bp("The nauplius is the most widespread larva of the Crustacea, and the student should see the penaeid prawn and the crab as two examples among many. In copepods such as Cyclops the egg hatches as a nauplius and the animal passes through several naupliar stages and then through copepodid stages that resemble the small adult before it matures. In barnacles the nauplius is followed by a distinctive larva called the cypris, which does not feed. It selects a surface, attaches to it by the first antennae using a cement, and then metamorphoses into the young sessile barnacle. The cypris is the larva that settles, and its choice of a surface decides where the adult will spend its life.",
                         "நாப்ளியஸ் கிரஸ்டேஷியாவில் மிகப் பரவலான லார்வா; பெனியிட் இறாலும் நண்டும் பல எடுத்துக்காட்டுகளில் இரண்டு என மாணவர் காண வேண்டும். சைக்ளாப்ஸ் போன்ற கோப்பிபாட்களில் முட்டை நாப்ளியஸாகப் பொரிந்து, பல நாப்ளியஸ் நிலைகளையும், பின்னர் சிறு முதிர்ந்தவை போன்ற கோப்பிபோடிட் நிலைகளையும் கடந்து முதிர்கிறது. பார்னக்கிள்களில் நாப்ளியஸைத் தொடர்ந்து சிப்ரிஸ் எனும் தனித்தன்மை வாய்ந்த லார்வா வருகிறது; அது உண்பதில்லை. அது ஒரு பரப்பைத் தேர்ந்து, முதல் உணர்கொம்புகளால் சிமெண்ட் கொண்டு ஒட்டி, இளம் நிலையான பார்னக்கிளாக உருமாறுகிறது. படியும் லார்வா சிப்ரிஸே; அது தேர்ந்தெடுக்கும் பரப்பே முதிர்ந்தது எங்கே வாழ்நாளைக் கழிக்கும் என்பதை முடிவு செய்கிறது."),

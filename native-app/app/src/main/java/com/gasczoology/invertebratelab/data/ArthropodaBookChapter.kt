@@ -28,8 +28,8 @@ object ArthropodaBookChapter {
                         "Paired, jointed appendages are arranged segmentally and are specialised for walking, feeding, sensation and reproduction." to "இணை, மூட்டுள்ள உறுப்புகள் கண்ட வாரியாக அமைந்து நடத்தல், உண்ணுதல், உணர்தல், இனப்பெருக்கத்துக்குச் சிறப்புறுகின்றன.",
                         "The true coelom is reduced; the main body cavity is a haemocoel, and the circulation is generally open, with a dorsal heart." to "உண்மை உடற்குழி குறைக்கப்பட்டுள்ளது; முதன்மை உடற்குழி ஹீமோசீல்; இரத்த ஓட்டம் பொதுவாகத் திறந்தது; முதுகுப்புற இதயம் உண்டு.",
                         "The nervous system is ventral and ganglionated, with a dorsal brain, and the gut is complete." to "நரம்பு மண்டலம் வயிற்றுப்புறம், நரம்புத் திரளுடையது; முதுகுப்புற மூளை உண்டு; குடல் முழுமையானது.",
-                        "Respiration is by gills, tracheae, book lungs or other specialised surfaces, depending on the group." to "சுவாசம் குழுவைப் பொறுத்து செவுள்கள், மூச்சுக்குழாய்கள், புத்தக நுரையீரல்கள் அல்லது பிற சிறப்புப் பரப்புகளால்.",
-                        "Striated muscle is usual, and the sexes are generally separate." to "வரியுடைய தசை வழக்கம்; பால் பொதுவாகத் தனி.",
+                        "Respiration is by gills, tracheae, book lungs or other specialised surfaces, depending on the group." to "வாழும் குழுவிற்கேற்பச் செவுள்கள், மூச்சுக்குழாய் அமைப்பு, புத்தக நுரையீரல்கள் அல்லது பிற சிறப்பு மேற்பரப்புகள் மூலம் சுவாசம் நடைபெறுகிறது.",
+                        "Striated muscle is usual, and the sexes are generally separate." to "வரித்தசைகள் பொதுவாகக் காணப்படுகின்றன; பாலினங்களும் பெரும்பாலும் தனித்தனியாக உள்ளன.",
                     ),
                     bp("Some further characters complete the picture. The nervous system has a dorsal brain, which is a fusion of the ganglia of the first segments, connectives round the gut and a ventral cord of paired ganglia, which in many groups are fused. The sense organs are well developed, and include compound eyes made of many units, simple eyes, antennae that detect touch and chemicals, and in many, organs of balance and hearing. Muscle is striated and attached to the inside of the exoskeleton. The sexes are generally separate, fertilisation is often internal, and development may be direct or may pass through larval stages, of which the crustacean larvae in a later chapter are examples." to
                         "மேலும் சில பண்புகள் படத்தை நிறைவு செய்கின்றன. நரம்பு மண்டலத்தில் முதல் கண்டங்களின் நரம்பு செல்திரள்களின் இணைவான முதுகுப்புற மூளை, குடலைச் சுற்றும் இணைப்பிகள், பல குழுக்களில் இணைந்த இணை நரம்பு செல்திரள்களுடைய வயிற்றுப்புற வடம் உள்ளன. உணர்வு உறுப்புகள் நன்கு வளர்ந்தவை; பல அலகுகளாலான கூட்டுக் கண்கள், எளிய கண்கள், தொடு, வேதிப்பொருள்களை உணரும் உணர்கொம்புகள், பலவற்றில் சமநிலை, கேட்கும் உறுப்புகள் அடங்கும். தசை வரியுடையது; வெளிக்கூட்டின் உட்புறத்தில் இணைகிறது. பால் பொதுவாகத் தனி; கருவுறுதல் பெரும்பாலும் உள்ளுக்குள்; வளர்ச்சி நேரடியாகவோ லார்வா நிலைகள் வழியாகவோ இருக்கலாம்; அவற்றுக்கு பிந்தைய அத்தியாயத்தின் கிரஸ்டேஷியன் லார்வாக்கள் எடுத்துக்காட்டுகள்."),
@@ -52,7 +52,7 @@ object ArthropodaBookChapter {
                         "Arthropod cuticle in section (schematic): (1) thin waxy outer layer, (2) thick layers containing chitin and protein, (3) epidermis, which secretes the cuticle, (4) thin, flexible cuticle at a joint.",
                         "ஆர்த்ரோபோட் புறத்தோலின் வெட்டுத்தோற்றம் (படத்திட்டம்): (1) மெல்லிய மெழுகு வெளியடுக்கு, (2) கைட்டினும் புரதமும் கொண்ட தடித்த அடுக்குகள், (3) புறத்தோலைச் சுரக்கும் மேற்றோல், (4) மூட்டில் உள்ள மெல்லிய, நெகிழ்வான புறத்தோல்."),
                     bdef("Ecdysis", "எக்டைசிஸ் (Ecdysis)", "The moulting of the cuticle by which an arthropod grows." to
-                        "ஆர்த்ரோபோடா வளர்வதற்கான தோலுரித்தல்."),
+                        "கணுக்காலிகள் வளர்ச்சியின்போது பழைய புறத்தோலை உதிர்த்து புதிய புறத்தோலை உருவாக்கும் நிகழ்வு."),
                     bdef("Exuvia", "எக்சூவியம் (Exuvia)", "The cast-off cuticle left after a moult." to
                         "உதிர்த்தலுக்குப் பின் எஞ்சும் கழற்றப்பட்ட புறத்தோல்."),
                     bdef("Sclerotisation", "ஸ்க்ளெரோடைசேஷன் (Sclerotisation)", "The hardening of the cuticle by the cross-linking of its proteins." to
@@ -188,7 +188,7 @@ object ArthropodaBookChapter {
         ),
         checks = listOf(
             bqc("What is ecdysis?", "எக்டைசிஸ் என்றால் என்ன?",
-                "The moulting of the cuticle by which an arthropod grows.", "ஆர்த்ரோபோடா வளர்வதற்கான தோலுரித்தல்."),
+                "The moulting of the cuticle by which an arthropod grows.", "கணுக்காலிகள் வளர்ச்சியின்போது பழைய புறத்தோலை உதிர்த்து புதிய புறத்தோலை உருவாக்கும் நிகழ்வு."),
             bqc("Name four teaching classes of Arthropoda.", "ஆர்த்ரோபோடாவின் நான்கு கற்பித்தல் வகுப்புகளைப் பெயரிடுக.",
                 "Crustacea, Insecta, Arachnida and Myriapoda.", "கிரஸ்டேஷியா, இன்செக்டா, அராக்னிடா, மையரியாபோடா."),
             bqc("What is the main body cavity of an arthropod?", "ஆர்த்ரோபோடாவின் முதன்மை உடற்குழி எது?",
