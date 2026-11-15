@@ -33,6 +33,18 @@ jobs:
             exit 1
           fi
           sudo chmod 666 /dev/kvm
+      - name: Capture ADB environment before emulator startup
+        run: |
+          mkdir -p native-app/app/build/qa-evidence
+          {
+            echo "PATH=$PATH"
+            command -v adb
+            adb version
+            id
+            ls -l /dev/kvm
+            ps -eo pid,ppid,user,args | grep -E '[a]db|[e]mulator' || true
+            ss -ltnp '( sport = :5037 )' || true
+          } > native-app/app/build/qa-evidence/adb-preflight.txt 2>&1
       - name: Run actual Android instrumentation tests on emulator
         timeout-minutes: 55
         uses: reactivecircus/android-emulator-runner@v2
@@ -50,6 +62,30 @@ jobs:
           script: |
             set -eu
             mkdir -p native-app/app/build/qa-evidence
+            {
+              adb version
+              adb devices -l
+              ss -ltnp '( sport = :5037 )' || true
+            } > native-app/app/build/qa-evidence/adb-before-tests.txt 2>&1
+            if ! timeout 20s adb -s emulator-5554 get-state | grep -qx device; then
+              echo "ADB device unavailable; attempting one bounded server restart" >&2
+              timeout 15s adb kill-server || true
+              timeout 20s adb start-server
+              timeout 30s adb -s emulator-5554 wait-for-device
+            fi
+            timeout 20s adb -s emulator-5554 get-state | grep -qx device
+            boot_ok=0
+            for attempt in $(seq 1 30); do
+              if [ "$(timeout 10s adb -s emulator-5554 shell getprop sys.boot_completed | tr -d '\r')" = "1" ]; then
+                boot_ok=1
+                break
+              fi
+              sleep 5
+            done
+            if [ "$boot_ok" -ne 1 ]; then
+              echo "Emulator failed to reach sys.boot_completed=1" >&2
+              exit 1
+            fi
             timeout 30s adb -s emulator-5554 shell getprop ro.build.version.sdk > native-app/app/build/qa-evidence/device-api.txt
             timeout 20s adb -s emulator-5554 shell settings put system font_scale 1.0
             timeout 20s adb -s emulator-5554 shell settings get system font_scale > native-app/app/build/qa-evidence/font-scale.txt
