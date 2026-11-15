@@ -11,11 +11,11 @@ Source: `BookChapters.kt` order; statuses indicate editorial work only, never de
 | 6 | CoralsBookChapter | Introduction, coral polyp, skeleton, symbiotic dinoflagellates and calcification (targeted passages) | Anthozoan anatomy; mesenteries; reef accretion; gastrodermal symbiosis and photosynthetic nutrient exchange | Targeted corrections completed; full internal review incomplete | Pending | 781e80e9; a859cd596b531076a263da72340160a3ce125d77 |
 | 7 | CoralEconomicsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 8 | PolymorphismBookChapter | Colony definition, division of labour, Obelia zooids, Physalia tentacles and dispersal (targeted) | Corrected mistranslated founder, gene-expression distinction, colony terminology and planula settlement | Targeted corrections completed; full internal review incomplete | Pending | 2c453931 |
-| 9 | PlatyhelminthesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 10 | FasciolaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 11 | PlatyAdaptationsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 12 | AschelminthesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
-| 13 | AscarisBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
+| 9 | PlatyhelminthesBookChapter | Body covering, flame cells and general reproduction statements (targeted) | Corrected cilia/flagella terminology for free-living flatworms, water-balance grammar and internal fertilisation description | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
+| 10 | FasciolaBookChapter | Miracidium, snail stages, infective metacercaria and life-cycle narration (targeted) | Corrected ciliated miracidium terminology, sporocyst/redia sequence and natural host-transmission explanations | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
+| 11 | PlatyAdaptationsBookChapter | Cestode tegument and nutrient absorption (targeted) | Corrected duplicated surface-area wording and clarified nutrient absorption by tegument | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
+| 12 | AschelminthesBookChapter | Alimentary canal, hydrostatic skeleton and lifestyle terminology (targeted) | Improved scientific Tamil terminology for complete gut, hydrostatic support and nematode life habits | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
+| 13 | AscarisBookChapter | Embryonated infective egg, larval moulting, lung migration and prevention (targeted) | Corrected egg-hatching terminology, larval moulting, direct lifecycle and sanitation explanations | Targeted corrections completed; full internal review incomplete | Pending | 4828de4e |
 | 14 | NematodeParasitesBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 15 | NematodeAdaptationsBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
 | 16 | AnnelidaBookChapter | Not yet systematically reviewed | No full-chapter review established | Not yet reviewed | Pending | — |
@@ -52,3 +52,5 @@ The runtime registry appends `Extensions.bookChapters`; reconcile its count and 
 Android QA is tracked separately: foundation success for `13315e29` (run 43655862779); emulator acceptance is pending. ADB diagnostics and bounded boot checks were added in `ba10ea4a` but have not yet produced accepted device evidence.
 
 2026-11-15 Tamil source revision: five previously unreviewed chapter files received targeted terminology and scientific-language corrections (commits `2c453931` and `0b2af5cc`). These edits do **not** establish complete chapter review, independent academic acceptance, or Android device QA. Other chapters remain at their documented status.
+
+Additional helminth batch (2026-11-15): targeted Tamil corrections in five chapters at commit `4828de4e`. Full internal and independent academic acceptance remains pending; English source and accepted diagrams were not changed by this batch.
