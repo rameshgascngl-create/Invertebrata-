@@ -27,8 +27,8 @@ object PoriferaReproductionBookChapter {
                         listOf(
                             listOf("Gametes" to "கேமீட்டுகள்", "Not formed" to "உருவாவதில்லை", "Eggs and sperm formed" to "முட்டையும் விந்தணுவும் உருவாகின்றன"),
                             listOf("Methods" to "முறைகள்", "Budding, fragmentation, gemmules" to "மொட்டு விடுதல், துண்டாக்கம், ஜெம்யூல்கள்", "Fertilisation, larva, metamorphosis" to "கருவுறுதல், லார்வா, உருமாற்றம்"),
-                            listOf("Offspring" to "சந்ததி", "Genetically identical clone" to "மரபுப்படி ஒத்த நகல்", "Genetically new individual" to "மரபுப்படி புதிய உயிரி"),
-                            listOf("Main role" to "முதன்மைப் பணி", "Stay in place, survive bad seasons" to "இடத்தில் நிலைத்தல், பாதகமான பருவங்களில் உயிர்வாழ்தல்", "Disperse and recombine genes" to "பரவுதல், மரபணுக்களை மறுசேர்த்தல்"),
+                            listOf("Offspring" to "சந்ததி", "Genetically identical clone" to "மரபணு அமைப்பில் ஒத்த நகல் உயிரி", "Genetically new individual" to "புதிய மரபணுச் சேர்க்கையைக் கொண்ட சந்ததி"),
+                            listOf("Main role" to "முதன்மைப் பணி", "Stay in place, survive bad seasons" to "அதே வாழிடத்தில் நிலைத்திருத்தல்; பாதகமான பருவங்களிலும் உயிர்வாழ்தல்", "Disperse and recombine genes" to "பரவுதல், மரபணுக்களை மறுசேர்த்தல்"),
                         )),
                     bdef("Sessile", "ஒட்டி வாழும்",
                         "Attached to a surface and not able to move from place to place, as the adult sponge is." to
@@ -74,7 +74,7 @@ object PoriferaReproductionBookChapter {
                                 "லார்வா கருவுற்ற முட்டையிலிருந்து தோன்றி நீந்துகிறது; ஜெம்யூல் கேமீட்டுகள் இன்றி உருவாகி, நீந்தாமல், தாயின் நகலைத் தருகிறது. ஜெம்யூலை லார்வா எனக் கூறுவது விடைகளில் தொடர்ந்து வரும் பிழை."),
                     ),
                 )),
-            bsec("sexual", "Sexual reproduction", "பாலின இனப்பெருக்கம்",
+            bsec("sexual", "Sexual reproduction", "பாலியல் இனப்பெருக்கம்",
                 subs = listOf(
                     bsub("Gametes and the sexes", "கேமீட்டுகளும் பாலினங்களும்",
                         bp("Sponges have no gonads. Eggs and sperm arise from cells of the mesohyl, usually from archaeocytes or from choanocytes, and they develop in the body of the sponge. Many sponges are hermaphrodite, producing both kinds of gamete, but usually at different times, so that self-fertilisation is avoided. Others have separate sexes. Sperm commonly appear in great numbers, and a mature sponge may release them in a cloud that can be seen from the surface." to
