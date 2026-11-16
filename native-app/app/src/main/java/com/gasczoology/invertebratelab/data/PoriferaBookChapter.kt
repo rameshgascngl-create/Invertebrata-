@@ -211,9 +211,9 @@ object PoriferaBookChapter {
                     bpoints("Points to include in a five-mark answer", "ஐந்து மதிப்பெண் விடையில் சேர்க்க வேண்டியவை",
                         "Definition and position: aquatic, mostly marine, sessile, cellular grade." to "வரையறையும் இடமும்: நீர்வாழ், பெரும்பாலும் கடல்வாழ், நிலைத்த, செல்மட்டம்.",
                         "Ostia, oscula and the aquiferous system with choanocytes." to "ஆஸ்டியா, ஆஸ்குலம், கோயனோசைட்டுகளுடன் கூடிய நீர்வழி அமைப்பு.",
-                        "Skeleton of spicules, spongin or both." to "ஊசிகள், ஸ்பாஞ்சின் அல்லது இரண்டாலான எலும்புக்கூடு.",
+                        "Skeleton of spicules, spongin or both." to "நுண்முள்கள், ஸ்பாஞ்சின் இழைகள் அல்லது இரண்டும் சேர்ந்த எலும்புக்கூடு.",
                         "Intracellular digestion, diffusion for gas exchange and excretion, and the absence of organs and nerves." to "செல்லுக்குள் செரிமானம், வாயுப் பரிமாற்றம், கழிவு நீக்கத்துக்கு விரவல்; உறுப்புகளும் நரம்புகளும் இல்லாமை.",
-                        "Reproduction by budding, fragmentation, gemmules and gametes, and the larva." to "மொட்டு விடுதல், துண்டாக்கம், ஜெம்யூல், இனச்செல்கள் மூலம் இனப்பெருக்கம்; இளவுயிரி."),
+                        "Reproduction by budding, fragmentation and gemmules (asexual), and by gametes (sexual), often with a free-swimming larva." to "மொட்டு விடுதல், துண்டாதல், ஜெம்யூல் உருவாக்கம் ஆகியவற்றால் பாலிலா இனப்பெருக்கமும், இனச்செல்கள் மூலம் பாலியல் இனப்பெருக்கமும் நடைபெறுகின்றன; பல இனங்களில் நீந்திச் செல்லும் இளவுயிரி நிலை காணப்படுகிறது."),
                 )),
         ),
         summary = listOf(
