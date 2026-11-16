@@ -106,14 +106,14 @@ object WvsBookChapter {
             bsec("functions", "Functions of the system", "அமைப்பின் செயல்கள்",
                 blocks = listOf(
                     bpoints("What the system does", "அமைப்பு என்ன செய்கிறது",
-                        "Locomotion, by waves of extension, attachment, contraction and release along the ambulacral grooves." to "ஆம்புலாக்ரல் பள்ளங்களில் நீள்தல், ஒட்டுதல், சுருங்குதல், விடுபடுதல் அலைகளால் இயக்கம்.",
-                        "Attachment to rock and other surfaces, and holding prey." to "பாறை, பிற மேற்பரப்புகளில் ஒட்டுதலும் இரையைப் பிடித்தலும்.",
-                        "Feeding, by holding and handling prey, and by moving particles in the sea cucumbers and crinoids." to "இரையைப் பிடித்துக் கையாளுதல், கடல் வெள்ளரிகள், கிரினாய்டுகளில் துகள்களை நகர்த்துவதன் மூலம் உணவெடுப்பு.",
-                        "Gas exchange, across the thin walls of the feet." to "பாதங்களின் மெல்லிய சுவர்கள் வழியே வாயுப் பரிமாற்றம்.",
-                        "Sensory function, since the feet bear sensory cells and touch the surroundings." to "பாதங்கள் உணர்வு செல்களைத் தாங்கி சூழலைத் தொடுவதால் உணர்வு செயல்.",
+                        "Locomotion, by waves of extension, attachment, contraction and release along the ambulacral grooves." to "ஆம்புலாக்ரல் பள்ளங்களின் வழியே குழாய்க்கால்கள் அலைபோன்று நீண்டு, பற்றிக்கொண்டு, சுருங்கி, விடுபடுவதன் மூலம் இடப்பெயர்ச்சி.",
+                        "Attachment to rock and other surfaces, and holding prey." to "பாறைகள் மற்றும் பிற மேற்பரப்புகளில் பற்றிக்கொள்ளுதலும் இரையைப் பிடித்திருத்தலும்.",
+                        "Feeding, by holding and handling prey, and by moving particles in the sea cucumbers and crinoids." to "இரையைப் பிடித்துக் கையாளுதல், கடல் வெள்ளரிகள் மற்றும் கிரினாய்டுகளில் உணவுத் துகள்களை நகர்த்துவதன் மூலம் உணவுண்ணுதல்.",
+                        "Gas exchange, across the thin walls of the feet." to "குழாய்க்கால்களின் மெல்லிய சுவர்களின் வழியாக வாயுப் பரிமாற்றம்.",
+                        "Sensory function, since the feet bear sensory cells and touch the surroundings." to "குழாய்க்கால்களில் உள்ள உணர்வேற்பிச் செல்கள் சுற்றுச்சூழலைத் தொட்டு உணர உதவுகின்றன.",
                     ),
                     bp("The balance among these differs between the classes. In the starfishes and sea urchins the feet are the means of walking. In the brittle stars the feet are not used much for walking, since the arms are moved by muscles in a snake-like manner, and the feet help in feeding and sensing. In the sea cucumbers the tube feet around the mouth are modified into tentacles for feeding, and the feet on the body may be reduced or absent in some groups. In the crinoids the tube feet are used in feeding on particles, and in the gas exchange. The organ is the same, but its use is varied, as is shown by the scheme of the classes." to
-                        "இச்செயல்களுக்கிடையிலான சமநிலை வகுப்புகளிடையே வேறுபடுகிறது. நட்சத்திர மீன்கள், கடல் முள்ளெலிகளில் பாதங்கள் நடக்கும் வழிமுறை. பிரிட்டில் நட்சத்திரங்களில் கைகள் பாம்பு போல தசைகளால் அசைக்கப்படுவதால் பாதங்கள் நடக்க அதிகம் பயன்படுவதில்லை; உண்ணவும் உணரவும் உதவுகின்றன. கடல் வெள்ளரிகளில் வாயைச் சுற்றிய குழாய்க்கால்கள் உண்பதற்கான உணர்கொம்புகளாக மாறியுள்ளன; உடலிலுள்ள பாதங்கள் சில குழுக்களில் குறைந்தவை அல்லது இல்லாதவை. கிரினாய்டுகளில் குழாய்க்கால்கள் துகள்களை உண்ணவும் வாயுப் பரிமாற்றத்திலும் பயன்படுகின்றன. உறுப்பு ஒன்றே; பயன்பாடு வேறுபடுகிறது; வகுப்புகளின் திட்டம் இதைக் காட்டுகிறது."),
+                        "இச்செயல்பாடுகளின் முக்கியத்துவம் வெவ்வேறு முட்தோலி வகுப்புகளுக்கிடையே மாறுபடுகிறது. நட்சத்திர மீன்கள், கடல் முள்ளெலிகளில் குழாய்க்கால்கள் இடப்பெயர்ச்சிக்குப் பயன்படுகின்றன. உடையக்கூடிய நட்சத்திரமீன்களில் கரங்கள் தசைகளின் உதவியால் பாம்பைப் போன்று அசைவதால் பாதங்கள் நடக்க அதிகம் பயன்படுவதில்லை; உண்ணவும் உணரவும் உதவுகின்றன. கடல் வெள்ளரிகளில் வாயைச் சுற்றிய குழாய்க்கால்கள் உணவைச் சேகரிக்கும் பற்றுநீட்சிகளாக மாறியுள்ளன; உடலிலுள்ள பாதங்கள் சில குழுக்களில் குறைந்தவை அல்லது இல்லாதவை. கிரினாய்டுகளில் குழாய்க்கால்கள் துகள்களை உண்ணவும் வாயுப் பரிமாற்றத்திலும் பயன்படுகின்றன. அடிப்படை உறுப்பு ஒன்றாக இருந்தாலும் அதன் செயல்பாடுகள் வேறுபடுகின்றன; வகுப்புகளின் திட்டம் இதைக் காட்டுகிறது."),
                     bdef("Ambulacral groove", "ஆம்புலாக்ரல் பள்ளம் (Ambulacral groove)", "The groove along the oral side of a starfish arm that carries the tube feet." to
                         "குழாய்க்காலங்களைக் கொண்ட நட்சத்திரமீனின் கையின் வாய்ப்புறப் பள்ளம்."),
                     bdef("Ambulacrum", "ஆம்புலாக்ரம் (Ambulacrum)", "A radial zone of the body that carries the tube feet." to
@@ -123,30 +123,30 @@ object WvsBookChapter {
                 )),
             bsec("classes", "The system across the classes", "வகுப்புகளில் அமைப்பு",
                 blocks = listOf(
-                    btable("Use of the tube feet in the five classes", "ஐந்து வகுப்புகளில் குழாய்க்காலப் பயன்பாடு",
+                    btable("Use of the tube feet in the five classes", "ஐந்து வகுப்புகளில் குழாய்க்கால்களின் பயன்பாடுகள்",
                         listOf("Class" to "வகுப்பு", "Principal use of the tube feet" to "குழாய்க்கால்களின் முதன்மைப் பயன்"),
                         listOf(
-                            listOf("Asteroidea" to "அஸ்டீராய்டியா", "Walking, attachment, handling prey" to "நடத்தல், ஒட்டுதல், இரையைக் கையாளுதல்"),
-                            listOf("Ophiuroidea" to "ஓஃபியூராய்டியா", "Feeding and sensing; the arms do most of the moving" to "உண்ணுதல், உணர்தல்; இயக்கத்தின் பெரும்பகுதியைக் கைகள் செய்கின்றன"),
-                            listOf("Echinoidea" to "எக்கினாய்டியா", "Walking and attachment, together with the spines" to "முட்களுடன் இணைந்து நடத்தலும் ஒட்டுதலும்"),
-                            listOf("Holothuroidea" to "ஹோலோதூரோய்டியா", "Oral tube feet are modified to feeding tentacles" to "வாய்ப்புறக் குழாய்க்கால்கள் உணவெடுக்கும் உணர்கொம்புகளாக மாறியுள்ளன"),
+                            listOf("Asteroidea" to "அஸ்டீராய்டியா", "Walking, attachment, handling prey" to "நடந்து செல்லுதல், பற்றிக்கொள்ளுதல் மற்றும் இரையைக் கையாளுதல்"),
+                            listOf("Ophiuroidea" to "ஓஃபியூராய்டியா", "Feeding and sensing; the arms do most of the moving" to "உணவுண்ணுதல் மற்றும் உணர்தல்; இடப்பெயர்ச்சிக்கு முக்கியமாகக் கரங்கள் பயன்படுகின்றன"),
+                            listOf("Echinoidea" to "எக்கினாய்டியா", "Walking and attachment, together with the spines" to "முட்களுடன் இணைந்து இடப்பெயர்ச்சிக்கும் பற்றுதலுக்கும் உதவுதல்"),
+                            listOf("Holothuroidea" to "ஹோலோதூரோய்டியா", "Oral tube feet are modified to feeding tentacles" to "வாய்ப்புறக் குழாய்க்கால்கள் உணவைச் சேகரிக்கும் பற்றுநீட்சிகளாக மாற்றமடைந்துள்ளன"),
                             listOf("Crinoidea" to "கிரினாய்டியா", "Collecting food particles; gas exchange" to "உணவுத் துகள்களைச் சேகரித்தல்; வாயுப் பரிமாற்றம்"),
                         )),
                     bp("The table is a summary of the general use in each class, and the details differ between species. What it shows is that a single system has been adapted to the different habits of the classes, and that the starfish is the example in which the system is most directly connected to walking. The student should not assume that every class walks on its tube feet." to
-                        "அட்டவணை ஒவ்வொரு வகுப்பிலும் பொதுப் பயன்பாட்டின் சுருக்கம்; விவரங்கள் இனங்களுக்கிடையே வேறுபடும். ஒரே அமைப்பு வகுப்புகளின் வெவ்வேறு பழக்கங்களுக்கு ஏற்ப மாற்றப்பட்டுள்ளது என்பதையும், நட்சத்திரமீனே அமைப்பு நடத்தலுடன் மிக நேரடியாக இணைந்த எடுத்துக்காட்டு என்பதையும் இது காட்டுகிறது. ஒவ்வொரு வகுப்பும் தன் குழாய்க்காலங்களில் நடக்கிறது என மாணவர் கருதக்கூடாது."),
+                        "அட்டவணை ஒவ்வொரு வகுப்பிலும் பொதுப் பயன்பாட்டின் சுருக்கம்; செயல்பாட்டு விவரங்கள் இனத்திற்கு இனம் மாறுபடுகின்றன. ஒரே அமைப்பு வெவ்வேறு வகுப்புகளின் வாழ்க்கை முறைகளுக்கு ஏற்ப தகவமைந்துள்ளது என்பதையும், நட்சத்திரமீனே அமைப்பு நடத்தலுடன் மிக நேரடியாக இணைந்த எடுத்துக்காட்டு என்பதையும் இது காட்டுகிறது. ஒவ்வொரு வகுப்பும் தன் குழாய்க்காலங்களில் நடக்கிறது என மாணவர் கருதக்கூடாது."),
                     bdef("Tentacle", "உணர்கொம்பு", "A slender, flexible extension of the body used for feeding or sensing, as in the oral tube feet of sea cucumbers." to
                         "கடல் வெள்ளரிகளின் வாய்ப்புறக் குழாய்க்கால்கள் போல உண்ணவோ உணரவோ பயன்படும் மெல்லிய, நெகிழும் உடல் நீட்சி."),
                 )),
             bsec("feeding", "Tube feet and the opening of bivalves", "குழாய்க்காலங்களும் இருவோடு திறத்தலும்",
                 blocks = listOf(
                     bp("Asterias is a predator of bivalves, and the tube feet are its means of getting at the soft tissue of the prey. Many tube feet attach firmly to the two valves of the bivalve. The starfish arches its body over the prey and pulls on the valves with sustained force. The coordinated hydraulic extension and the muscular tension in the numerous feet give a steady pull, and not a single violent opening. The pull acts against the adductor muscle of the bivalve, which holds the valves closed." to
-                        "அஸ்டீரியாஸ் இருவோடுகளை வேட்டையாடுகிறது; இரையின் மென்திசுவை அடைய குழாய்க்கால்கள் அதன் வழிமுறை. பல குழாய்க்கால்கள் இருவோட்டின் இரு மூடிகளிலும் உறுதியாக ஒட்டுகின்றன. நட்சத்திர மீன் இரைமேல் உடலை வளைத்து தொடர்ந்த விசையுடன் மூடிகளை இழுக்கிறது. எண்ணற்ற பாதங்களில் ஒருங்கிணைந்த நீரழுத்த நீட்சியும் தசை இழுவிசையும் ஒரே வன்முறைத் திறப்பை அல்ல, நிலையான இழுப்பைத் தருகின்றன. மூடிகளை மூடி வைக்கும் இருவோட்டின் உட்புற இழுப்புத் தசைக்கு எதிராக இழுப்பு செயல்படுகிறது."),
+                        "அஸ்டீரியாஸ் இருவோடுகளை வேட்டையாடுகிறது; இரையின் மென்மையான திசுக்களை அடைவதற்கு அதன் குழாய்க்கால்கள் உதவுகின்றன. பல குழாய்க்கால்கள் இரட்டை ஓட்டின் இரு ஓடுகளிலும் உறுதியாகப் பற்றிக்கொள்கின்றன. நட்சத்திர மீன் இரையின் மீது உடலை வளைத்து ஓடுகளைத் தொடர்ந்து இழுக்கிறது. எண்ணற்ற பாதங்களில் ஒருங்கிணைந்த நீரழுத்த நீட்சியும் தசை இழுவிசையும் ஒரே தடவையில் வலுவாகத் திறப்பதற்குப் பதிலாகத் தொடர்ச்சியான இழுவிசையை அளிக்கின்றன. மூடிகளை மூடி வைக்கும் இருவோட்டின் ஓடுகளை மூடும் இணைப்புத் தசைக்கு எதிராக இழுப்பு செயல்படுகிறது."),
                     bp("When the adductor muscle of the bivalve fatigues, a small gap opens between the valves, and a very small gap is enough. The starfish then everts its cardiac stomach through its mouth and inserts it into the gap. Digestive enzymes act on the prey outside the body of the starfish, and the liquefied tissue is taken into the stomach. It follows that the tube feet assist in opening the prey, and do not crush the shell. The explanation of the feeding in terms of the tube feet is therefore an explanation of how the prey is opened, and the digestion that follows is a separate matter, treated in the chapter on Asterias." to
-                        "இருவோட்டின் உட்புற இழுப்புத் தசை சோர்வடையும்போது மூடிகளுக்கிடையே சிறு இடைவெளி திறக்கிறது; மிகச் சிறு இடைவெளியே போதும். நட்சத்திர மீன் பின்னர் தன் கார்டியாக் இரைப்பையை வாய் வழியே புரட்டி இடைவெளிக்குள் செருகுகிறது. செரிமான நொதிகள் நட்சத்திரமீனின் உடலுக்கு வெளியே இரைமேல் செயல்படுகின்றன; திரவமான திசு இரைப்பைக்குள் எடுக்கப்படுகிறது. எனவே குழாய்க்கால்கள் இரையைத் திறக்க உதவுகின்றன; ஓட்டை நொறுக்குவதில்லை. குழாய்க்காலங்களால் உணவெடுப்பை விளக்குவது இரை எவ்வாறு திறக்கப்படுகிறது என்பதை விளக்குவதாகும்; தொடரும் செரிமானம் தனி விஷயம்; அஸ்டீரியாஸ் அத்தியாயத்தில் கையாளப்படுகிறது."),
-                    bdef("Adductor muscle", "உட்புற இழுப்புத் தசை (Adductor muscle)", "The muscle that holds the two valves of a bivalve shut." to
+                        "இருவோட்டின் ஓடுகளை மூடும் இணைப்புத் தசை சோர்வடையும்போது மூடிகளுக்கிடையே சிறு இடைவெளி திறக்கிறது; மிகச் சிறிய இடைவெளியே இதற்குப் போதுமானதாகும். நட்சத்திர மீன் பின்னர் தன் கார்டியாக் இரைப்பையை வாய் வழியாக வெளியே புரட்டி அந்த இடைவெளிக்குள் செலுத்துகிறது. செரிமான நொதிகள் நட்சத்திரமீனின் உடலுக்கு வெளியே இரைமேல் செயல்படுகின்றன; திரவமாக்கப்பட்ட இரைத் திசுக்கள் இரைப்பைக்குள் எடுத்துக்கொள்ளப்படுகின்றன. எனவே குழாய்க்கால்கள் இரையைத் திறக்க உதவுகின்றன; ஓடுகளை நொறுக்குவதில்லை. குழாய்க்காலங்களால் உணவெடுப்பை விளக்குவது இரை எவ்வாறு திறக்கப்படுகிறது என்பதை விளக்குவதாகும்; தொடரும் செரிமானம் தனி விஷயம்; அஸ்டீரியாஸ் அத்தியாயத்தில் கையாளப்படுகிறது."),
+                    bdef("Adductor muscle", "ஓடுகளை மூடும் இணைப்புத் தசை (Adductor muscle)", "The muscle that holds the two valves of a bivalve shut." to
                         "இருவோட்டின் இரு மூடிகளையும் மூடி வைக்கும் தசை."),
                     bdef("Fatigue", "சோர்வு", "The reduction of the force of a muscle after sustained use." to
-                        "தொடர்ந்த பயன்பாட்டுக்குப் பின் தசையின் விசை குறைதல்."),
+                        "தொடர்ச்சியான செயல்பாட்டிற்குப் பிறகு தசை உருவாக்கும் விசை குறைதல்."),
                     bdef("Extra-oral digestion", "வாய்க்கு வெளிப்புறச் செரிமானம் (Extra-oral digestion)", "Digestion of food outside the body by enzymes secreted onto it." to
                         "உணவின்மீது சுரக்கப்படும் நொதிகளால் உடலுக்கு வெளியே நடைபெறும் செரிமானம்."),
                 )),
@@ -173,7 +173,7 @@ object WvsBookChapter {
             "The pathway is anatomical, not a continuous one-way flow of sea water through every foot." to "பாதை உடற்கூறியல்; ஒவ்வொரு பாதம் வழியேயும் தொடர் ஒருதிசை கடல்நீர் ஓட்டம் அல்ல.",
             "Ampullary contraction, with the lateral canal valve closed, extends the foot; the foot muscles retract it." to "பக்கக் கால்வாய் வால்வு மூடிய நிலையில் ஆம்புலா சுருங்கி பாதத்தை நீட்டுகிறது; பாதத் தசைகள் உள்ளிழுக்கின்றன.",
             "The system serves locomotion, attachment, feeding, gas exchange and sensing." to "அமைப்பு இயக்கம், ஒட்டுதல், உணவெடுப்பு, வாயுப் பரிமாற்றம், உணர்வுக்குப் பயன்படுகிறது.",
-            "Tube feet help to open bivalve prey by sustained traction; they do not crush the shell." to "குழாய்க்கால்கள் தொடர்ந்த இழுவையால் இருவோட்டு இரையைத் திறக்க உதவுகின்றன; ஓட்டை நொறுக்குவதில்லை.",
+            "Tube feet help to open bivalve prey by sustained traction; they do not crush the shell." to "குழாய்க்கால்கள் தொடர்ந்த இழுவையால் இருவோட்டு இரையைத் திறக்க உதவுகின்றன; ஓடுகளை நொறுக்குவதில்லை.",
         ),
         checks = listOf(
             bqc("Where does the water-vascular system arise in the embryo?", "கருவில் நீர்க்குழல் மண்டலம் எங்கிருந்து தோன்றுகிறது?",
@@ -183,7 +183,7 @@ object WvsBookChapter {
             bqc("Name the four stages of a tube-foot step.", "குழாய்க்கால அடியின் நான்கு நிலைகளைப் பெயரிடுக.",
                 "Extension, attachment, contraction and release.", "நீள்தல், ஒட்டுதல், சுருங்குதல், விடுபடுதல்."),
             bqc("Do tube feet crush the shell of a bivalve?", "குழாய்க்கால்கள் இருவோட்டின் ஓட்டை நொறுக்குமா?",
-                "No. They pull the valves apart until the adductor fatigues; the stomach then does the digestion.", "இல்லை. உட்புற இழுப்புத் தசை சோர்வடையும் வரை மூடிகளை இழுத்துப் பிரிக்கின்றன; பின்னர் இரைப்பை செரிக்கிறது."),
+                "No. They pull the valves apart until the adductor fatigues; the stomach then does the digestion.", "இல்லை. ஓடுகளை மூடும் இணைப்புத் தசை சோர்வடையும் வரை மூடிகளை இழுத்துப் பிரிக்கின்றன; பின்னர் இரைப்பை செரிக்கிறது."),
         ),
     )
 }
