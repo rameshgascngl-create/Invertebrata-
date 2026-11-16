@@ -39,7 +39,7 @@ internal object FiveUnitRestorationLessons {
                 "Identify an animal by comparing observed diagnostic characters against reliable descriptions. Species, genus, family, order, class, phylum and kingdom are nested conventional ranks. A binomial species name contains the genus followed by the specific epithet, rather than two independent classification ranks.",
                 "உயிரினத்தை அடையாளம் காணப் பார்வையில் கண்ட வேறுபடுத்தும் பண்புகளை நம்பத்தகுந்த விளக்கங்களுடன் ஒப்பிட வேண்டும். இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, உலகம் ஆகியவை அடுக்கமைந்த வகைப்பாட்டு நிலைகள். இருசொற் அறிவியல் பெயரில் பேரினப் பெயரைத் தொடர்ந்து இனச்சிறப்புப் பெயரடை வருகிறது; அவை இரண்டு தனி நிலைகள் அல்ல.",
                 "Modern phylogenetic classification tests hypotheses of common ancestry using morphology, development and molecular sequences. Traditional syllabus groupings remain useful for exam comparison, but do not necessarily correspond to natural evolutionary clades.",
-                "நவீன இனவரலாற்று வகைப்பாடு உடலமைப்பு, வளர்ச்சி, மூலக்கூறுத் தொடர்கள் ஆகியவற்றின் மூலம் பொதுமூதாதை குறித்த கருத்துகளைச் சோதிக்கிறது. பழைய பாடத்திட்டக் குழுப்பெயர்கள் தேர்வு ஒப்பீட்டிற்கு உதவினாலும் அவை அனைத்தும் இயற்கைப் பரிணாமக் கிளைகளாக இருக்க வேண்டியதில்லை.")
+                "நவீன இனவரலாற்று வகைப்பாடு உடலமைப்பு, வளர்ச்சி, மூலக்கூறுத் தொடர்கள் ஆகியவற்றின் மூலம் பொது மூதாதை குறித்த கருதுகோள்களைச் சோதிக்கிறது. பழைய பாடத்திட்டக் குழுப்பெயர்கள் தேர்வு ஒப்பீட்டிற்கு உதவினாலும் அவை அனைத்தும் இயற்கைப் பரிணாமக் கிளைகளாக இருக்க வேண்டியதில்லை.")
         )),
         Chapter("u1-protozoa",b("Protozoa: traditional classification and modern interpretation","புரோட்டோசோவா: மரபு வகைப்பாடும் நவீன விளக்கமும்"),listOf(
             s("comparative-amoeba-euglena-volvox",
@@ -101,7 +101,7 @@ internal object FiveUnitRestorationLessons {
                 "Entamoeba histolytica is transmitted by ingestion of mature cysts from contaminated food or water. Trophozoites colonize the large intestine and may invade tissue in some infections.",
                 "என்டமீபா ஹிஸ்டோலிட்டிகாவின் முதிர்ந்த சிஸ்டுகள் மாசடைந்த உணவு அல்லது நீர் மூலம் உடலுக்குள் செல்கின்றன. வளர் நிலைகள் பெருங்குடலில் வாழ்கின்றன; சில தொற்றுகளில் திசுக்களுக்குள் ஊடுருவலாம்.",
                 "Morphology alone may not separate E. histolytica from E. dispar. Microscopy observations, diagnostic methods and the limits of the evidence should be explicitly distinguished.",
-                "உருவ அமைப்பை மட்டும் கொண்டு E. histolytica மற்றும் E. dispar ஆகியவற்றை உறுதியாகப் பிரிக்க முடியாது. நுண்ணோக்கி காண்புகள், நோயறிதல் முறைகள், அவற்றின் வரம்புகள் ஆகியவற்றைப் பிரித்துக் கூற வேண்டும்."),
+                "உருவ அமைப்பை மட்டும் கொண்டு E. histolytica மற்றும் E. dispar ஆகியவற்றை உறுதியாகப் பிரிக்க முடியாது. நுண்ணோக்கியில் காணப்படும் பண்புகள், நோயறிதல் முறைகள், அவற்றின் வரம்புகள் ஆகியவற்றைப் பிரித்துக் கூற வேண்டும்."),
             s("plasmodium",
                 "Plasmodium and the mosquito vector",
                 "பிளாஸ்மோடியமும் கொசு கடத்தலும்",
@@ -122,7 +122,7 @@ internal object FiveUnitRestorationLessons {
                 "Pseudopodia, flagella and cilia",
                 "போலிக்கால்கள், கசையிழைகள், குறுஇழைகள்",
                 "Amoeboid crawling involves actin-dependent cell-shape changes and transient pseudopodia. Flagellate swimming is driven by coordinated axonemal bending; ciliates coordinate numerous shorter cilia.",
-                "அமீபா இயக்கத்தில் ஆக்டின் சார்ந்த செல்வடிவ மாற்றங்களும் தற்காலிக போலிக்கால்களும் பங்கேற்கின்றன. கசையிழை அசைவில் ஆக்சோநீமின் வளைவும் குறுஇழையுயிரிகளில் பல குறுஇழைகளின் ஒத்திசைவும் செயல்படுகின்றன.",
+                "அமீபா இயக்கத்தில் ஆக்டின் சார்ந்த செல்லின் வடிவ மாற்றங்களும் தற்காலிகப் போலிக்கால்களும் பங்கேற்கின்றன. கசையிழை அசைவில் ஆக்சோநீமின் வளைவும் குறுஇழையுயிரிகளில் பல குறுஇழைகளின் ஒத்திசைவும் செயல்படுகின்றன.",
                 "The traditional locomotory grouping can aid microscope recognition but does not provide reliable phylogenetic classification. Apicomplexan gliding is fundamentally different from ciliary swimming.",
                 "மரபு இயக்க அடிப்படையிலான பிரிவு நுண்ணோக்கி அடையாளத்திற்கு உதவலாம்; ஆனால் பரிணாம வகைப்பாட்டுக்கு போதாது. அபிகாம்ப்ளெக்சா வழுக்கிச் செல்லும் இயக்கம் குறுஇழை நீச்சலிலிருந்து மாறுபடுகிறது."),
             s("paramecium",
@@ -413,7 +413,7 @@ internal object FiveUnitRestorationLessons {
                 "Bilateral echinoderm larvae help explain the evolutionary transformation toward radial adult bodies. Similar developmental features alone, however, cannot replace a well-supported phylogenetic tree.",
                 "முள்தோலிகளின் இருபக்கச் சமச்சீர் இளம் நிலைகள் முதிர்நிலையின் ஆரச் சமச்சீர் உருவாக்கத்தைப் புரிந்துகொள்ள உதவுகின்றன. ஒத்த கருவளர்ச்சி பண்புகள் மட்டும் இனவரலாற்று மரத்தை மாற்ற முடியாது.",
                 "Discuss shared ancestry, convergent characters and secondary changes as separate hypotheses. Never present the traditional term 'connecting link' as proof of direct descent.",
-                "பொது மூதாதை, ஒத்த இயல்பு தனித்த தோற்றம், இரண்டாம் நிலை மாற்றம் ஆகிய கருத்துக்களை வேறுபடுத்த வேண்டும். ‘இணைப்புயிரி’ என்ற பழைய சொல்லை நேரடி வம்சத் தோற்றச் சான்றாகக் கூறக் கூடாது."),
+                "பொது மூதாதை, பொது மூதாதையால் ஏற்பட்ட ஒத்த பண்புகள், தனித்த பரிணாமத் தோற்றத்தால் ஏற்பட்ட ஒத்த பண்புகள், இரண்டாம் நிலை மாற்றங்கள் ஆகிய கருத்துக்களை வேறுபடுத்த வேண்டும். ‘இணைப்புயிரி’ என்ற பழைய சொல்லை நேரடி வம்சத் தோற்றச் சான்றாகக் கூறக் கூடாது."),
             s("phylogeny-evidence",
                 "Ambulacraria and the evidence for deuterostome affinities",
                 "அம்புலாக்ரேரியாவும் டியூட்டரோஸ்டோம் உறவுச் சான்றுகளும்",
