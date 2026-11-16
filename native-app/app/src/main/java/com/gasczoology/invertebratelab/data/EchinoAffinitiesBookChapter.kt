@@ -7,32 +7,32 @@ object EchinoAffinitiesBookChapter {
         title = "Affinities of the Echinoderms" to "முட்தோலிகளின் உறவுமுறை",
         objectives = listOf(
             "Identify the evidence used to infer evolutionary relationships." to
-                "பரிணாம உறவுகளை அறிய உதவும் சான்றுகளை அடையாளம் காணுதல்.",
+                "பரிணாம உறவுகளை ஊகித்தறிய உதவும் சான்றுகளை அடையாளம் காணுதல்.",
             "Compare echinoderms with hemichordates and chordates." to
                 "முட்தோலிகளை அரைநாணிகளுடனும் நாணிகளுடனும் ஒப்பிடுதல்.",
             "Distinguish shared ancestry from superficial resemblance." to
-                "பொது மூதாதை வழி ஒற்றுமையை மேலோட்டமான தோற்ற ஒற்றுமையிலிருந்து வேறுபடுத்துதல்.",
+                "பொது மூதாதையிடமிருந்து பெறப்பட்ட பண்புகளின் ஒற்றுமையை மேலோட்டமான தோற்ற ஒற்றுமையிலிருந்து வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
             "Embryonic development, larval structure and molecular evidence inform echinoderm relationships. Compare these lines of evidence with adult anatomy when considering affinities with hemichordates and chordates." to
                 "கருவளர்ச்சி, லார்வா அமைப்பு, மூலக்கூறு ஆதாரங்கள் ஆகியவை முட்தோலிகளின் பரிணாம உறவுகளை விளக்குகின்றன. அரைநாணிகளுடனும் நாணிகளுடனும் ஒப்பிடும்போது, இச்சான்றுகளையும் முதிருயிரியின் உடலமைப்பையும் சேர்த்துப் பார்க்க வேண்டும்.",
         ),
         sections = listOf(
-            bsec("deuterostome", "The deuterostome characters", "டியூட்டிரோஸ்டோம் பண்புகள்",
+            bsec("deuterostome", "The deuterostome characters", "இரண்டாம்வாயின விலங்குகளின் பண்புகள்",
                 blocks = listOf(
                     bp("The animals with a bilateral body plan have been divided into two great lineages, the protostomes and the deuterostomes, according to the way in which the mouth and anus form in the embryo. In a classical deuterostome the blastopore, the first opening of the embryo, becomes the anus, and the mouth forms later as a new opening. In the protostomes the blastopore becomes the mouth, or at least the mouth forms near it. The echinoderms are deuterostomes in the characters of their development, and their larvae have the characteristic form of the deuterostome larva." to
-                        "இருபக்க உடல் திட்டம் கொண்ட விலங்குகள், கருவில் வாயும் மலவாயும் உருவாகும் விதத்தின்படி புரோட்டோஸ்டோம்கள், டியூட்டிரோஸ்டோம்கள் என்ற இரு பெரும் பரம்பரைகளாகப் பிரிக்கப்பட்டுள்ளன. செம்மையான டியூட்டிரோஸ்டோமில் கருவின் முதல் திறப்பான பிளாஸ்டோபோர் மலவாயாகிறது; வாய் பின்னர் புதிய திறப்பாக உருவாகிறது. புரோட்டோஸ்டோம்களில் பிளாஸ்டோபோர் வாயாகிறது அல்லது குறைந்தது வாய் அதன் அருகே உருவாகிறது. முட்தோலிகள் தம் வளர்ச்சிப் பண்புகளில் டியூட்டிரோஸ்டோம்கள்; அவற்றின் லார்வாக்கள் டியூட்டிரோஸ்டோம் லார்வாவின் தனிப்பண்பு வடிவம் கொண்டவை."),
+                        "இருபக்கச் சமச்சீருடைய உடலமைப்பைக் கொண்ட விலங்குகள், கருவில் வாயும் மலவாயும் உருவாகும் விதத்தின்படி புரோட்டோஸ்டோம்கள், டியூட்டிரோஸ்டோம்கள் என்ற இரு பெரும் பரம்பரைகளாகப் பிரிக்கப்பட்டுள்ளன. வழக்கமான இரண்டாம்வாயினக் கருவளர்ச்சி முறையில் கருவளர்ச்சியில் தோன்றும் தொடக்கத் திறப்பான பிளாஸ்டோபோர் மலவாயாகிறது; வாய் பின்னர் புதிய திறப்பாக உருவாகிறது. புரோட்டோஸ்டோம்களில் பிளாஸ்டோபோர் வாயாகிறது அல்லது குறைந்தது வாய் அதன் அருகே உருவாகிறது. முட்தோலிகள் தம் வளர்ச்சிப் பண்புகளில் டியூட்டிரோஸ்டோம்கள்; அவற்றின் லார்வாக்கள் இரண்டாம்வாயின விலங்குகளின் லார்வாவுக்குரிய தனிப்பண்பு வடிவம் கொண்டவை."),
                     bfig("lib/blastopore-fate",
                         "The fate of the blastopore (schematic). The red spot is the blastopore and the opening it becomes; the blue spot is the second opening that forms later. (A) Protostome: the blastopore becomes the mouth. (B) Deuterostome, as in the echinoderms: the blastopore becomes the anus. (1) blastopore, (2) archenteron, (3) mouth, (4) anus.",
                         "பிளாஸ்டோபோரின் விதி (படத்திட்டம்). சிவப்புப் புள்ளி பிளாஸ்டோபோரும் அது ஆகும் துளையும்; நீலப் புள்ளி பின்னர் உருவாகும் இரண்டாவது துளை. (A) புரோட்டோஸ்டோம்: பிளாஸ்டோபோர் வாயாகிறது. (B) டியூட்டிரோஸ்டோம், எக்கைனோடெர்ம்களில் போல: பிளாஸ்டோபோர் மலவாயாகிறது. (1) பிளாஸ்டோபோர், (2) ஆர்கென்டிரான், (3) வாய், (4) மலவாய்."),
-                    bpoints("Developmental characters shared by the echinoderms and other deuterostomes", "முட்தோலிகளும் பிற டியூட்டிரோஸ்டோம்களும் பகிரும் வளர்ச்சிப் பண்புகள்",
-                        "The blastopore gives rise to the anus, and the mouth forms secondarily." to "டியூட்டிரோஸ்டோம் வளர்ச்சியின் வழக்கமான வடிவில் பிளாஸ்டோபோர் மலவாயாக மாறுகிறது; வாய் பின்னர் தனியாக உருவாகிறது.",
+                    bpoints("Developmental characters shared by the echinoderms and other deuterostomes", "முட்தோலிகளும் பிற இரண்டாம்வாயின விலங்குகளும் பகிரும் வளர்ச்சிப் பண்புகள்",
+                        "The blastopore gives rise to the anus, and the mouth forms secondarily." to "இரண்டாம்வாயினக் கருவளர்ச்சியின் வழக்கமான வடிவில் பிளாஸ்டோபோர் மலவாயாக மாறுகிறது; வாய் பின்னர் தனியாக உருவாகிறது.",
                         "The coelom is formed as outgrowths of the primitive gut, which is called enterocoely." to "ஆதிக்குடலிலிருந்து பை போன்ற நீட்சிகள் தோன்றி உடற்குழியை உருவாக்கும் முறை என்டெரோசீலி எனப்படுகிறது.",
                         "Cleavage is typically radial and indeterminate, so that the cells of the early embryo keep a wide potential." to "ஆரம்பக் கருவின் பிளவுகள் பொதுவாக ஆரச்சமச்சீருடனும் விதிநிர்ணயிக்கப்படாத வளர்ச்சித் திறனுடனும் நடைபெறுகின்றன. ஆகவே ஆரம்பக் கருச் செல்கள் பல்வேறு வளர்ச்சிப் பாதைகளை மேற்கொள்ளும் திறனைத் தக்கவைக்கின்றன.",
                         "The larvae are ciliated and bilateral, with looping bands of cilia." to "இளவுயிரிகள் குறுஇழைகள் (cilia) கொண்ட இருபக்கச் சமச்சீர் உடையவை; உடலைச் சுற்றிக் குறுஇழைப் பட்டைகள் அமைந்துள்ளன.",
                     ),
                     bp("These characters must be handled with care. The distinction between the two lineages was first made on the embryo, and it is now supported by molecular evidence, which means that it does not rest on the embryo alone. Not every feature holds in every species, since the details of cleavage and of the formation of the mouth differ, and some deuterostomes depart from the classical description. The examination answer should therefore say the typical characters, and should not imply that each is found without exception." to
-                        "இப்பண்புகளைக் கவனமாகக் கையாள வேண்டும். இரு பரம்பரைகளுக்கிடையிலான வேறுபாடு முதலில் கருவில் செய்யப்பட்டது; இப்போது மூலக்கூறுச் சான்றாலும் ஆதரிக்கப்படுகிறது; அதாவது கருவை மட்டும் சார்ந்தது அல்ல. ஒவ்வொரு பண்பும் ஒவ்வோர் இனத்திலும் பொருந்தாது; பிளவு, வாய் உருவாக்கத்தின் விவரங்கள் மாறுபடும்; சில டியூட்டிரோஸ்டோம்கள் செம்மை விளக்கத்திலிருந்து விலகுகின்றன. எனவே தேர்வு விடை வழக்கமான பண்புகளைக் கூற வேண்டும்; ஒவ்வொன்றும் விதிவிலக்கின்றிக் காணப்படுகிறது எனக் குறிப்பிடக் கூடாது."),
+                        "இப்பண்புகளைக் கவனமாகக் கையாள வேண்டும். இவ்விரு பரிணாமக் கிளைகளுக்கிடையிலான வேறுபாடு முதலில் கருவளர்ச்சிப் பண்புகளின் அடிப்படையில் வரையறுக்கப்பட்டது; இப்போது மூலக்கூறுச் சான்றாலும் ஆதரிக்கப்படுகிறது; அதாவது கருவை மட்டும் சார்ந்தது அல்ல. ஒவ்வொரு பண்பும் ஒவ்வோர் இனத்திலும் பொருந்தாது; பிளவு, வாய் உருவாக்கத்தின் விவரங்கள் மாறுபடும்; சில டியூட்டிரோஸ்டோம்கள் வழக்கமான விளக்கத்திலிருந்து விலகுகின்றன. எனவே தேர்வு விடை வழக்கமான பண்புகளைக் கூற வேண்டும்; ஒவ்வொன்றும் விதிவிலக்கின்றிக் காணப்படுகிறது எனக் குறிப்பிடக் கூடாது."),
                     bdef("Protostome", "புரோட்டோஸ்டோம் (Protostome)", "An animal in which the blastopore becomes, or is closely associated with, the mouth." to
                         "பிளாஸ்டோபோர் வாயாகும் அல்லது வாயுடன் நெருங்கிய தொடர்புடைய விலங்கு."),
                     bdef("Deuterostome", "டியூட்டிரோஸ்டோம்", "An animal in which the blastopore becomes the anus and the mouth forms secondarily." to
@@ -40,9 +40,9 @@ object EchinoAffinitiesBookChapter {
                     bdef("Blastopore", "பிளாஸ்டோபோர் (Blastopore)", "The first opening of the embryo into the primitive gut." to
                         "ஆதிக்குடலுக்குள் கருவின் முதல் திறப்பு."),
                     bdef("Enterocoely", "என்டெரோசீலி (Enterocoely)", "The formation of the coelom from outgrowths of the gut." to
-                        "ஆதிக்குடலின் வெளிப்புற முளைப்புகளிலிருந்து உடற்குழி உருவாகும் முறை."),
-                    bdef("Indeterminate cleavage", "உறுதியற்ற பிளவு (Indeterminate cleavage)", "Cleavage in which the cells of the early embryo keep the potential to form a whole animal." to
-                        "ஆரம்பக் கரு செல்கள் முழு விலங்கை உருவாக்கும் ஆற்றலைத் தக்கவைக்கும் பிளவு."),
+                        "ஆதிக்குடலிலிருந்து உருவாகும் பை போன்ற வெளிநீட்சிகளிலிருந்து உடற்குழி உருவாகும் முறை."),
+                    bdef("Indeterminate cleavage", "விதிநிர்ணயிக்கப்படாத பிளவு (Indeterminate cleavage)", "Cleavage in which the cells of the early embryo keep the potential to form a whole animal." to
+                        "ஆரம்பக் கருச் செல்கள் முழுமையான உயிரியாக வளரக்கூடிய திறனைத் தக்கவைக்கும் பிளவு."),
                 )),
             bsec("ambulacraria", "Ambulacraria: echinoderms and hemichordates", "அம்புலாக்ரேரியா: முட்தோலிகளும் ஹெமிகார்டேட்டுகளும்",
                 blocks = listOf(
@@ -150,7 +150,7 @@ object EchinoAffinitiesBookChapter {
             bsec("skeleton", "The skeleton as a character", "ஒரு பண்பாக எலும்புக்கூடு",
                 blocks = listOf(
                     bp("The skeleton of an echinoderm is made of ossicles of calcium carbonate in the form of calcite, formed in the mesoderm beneath the epidermis. Each ossicle has a porous, lattice-like structure called stereom, which combines strength with lightness and is found in no other animals in the same form. This internal skeleton is therefore comparable in position, though not in material, to the skeleton of a vertebrate, which is also formed by the mesoderm, and the echinoderm skeleton has been used in the argument that both are deuterostome features. The comparison must, however, be made cautiously, since the skeletons of the two groups differ in material and in structure, and the resemblance is one of position and origin only.",
-                        "எக்கைனோடெர்மின் எலும்புக்கூடு எப்பிடெர்மிஸின் கீழ் மீசோடெர்மில் உருவாகும், கால்சைட் வடிவ கால்சியம் கார்பனேட் ஆஸிக்கிள்களால் ஆனது. ஒவ்வொரு ஆசிகிளுக்கும் வலிமையையும் இலேசையும் இணைக்கும் ஸ்டீரியோம் எனும் துளையுடைய வலை போன்ற அமைப்பு உள்ளது; வேறு விலங்குகளில் அதே வடிவில் காணப்படுவதில்லை. எனவே இவ்வுட்புற எலும்புக்கூடு, பொருளில் அல்லாமல் நிலையில், மீசோடெர்மாலும் உருவாகும் முதுகெலும்பியின் எலும்புக்கூட்டுடன் ஒப்பிடத்தக்கது; இரண்டும் டியூட்டிரோஸ்டோம் பண்புகள் என்ற வாதத்தில் எக்கைனோடெர்ம் எலும்புக்கூடு பயன்பட்டுள்ளது. எனினும் இரு குழுக்களின் எலும்புக்கூடுகள் பொருளிலும் அமைப்பிலும் வேறுபடுவதால், ஒப்பீடு எச்சரிக்கையுடன் செய்யப்பட வேண்டும்; ஒற்றுமை நிலை, தோற்றத்தில் மட்டுமே."),
+                        "எக்கைனோடெர்மின் எலும்புக்கூடு எப்பிடெர்மிஸின் கீழ் மீசோடெர்மில் உருவாகும், கால்சைட் வடிவ கால்சியம் கார்பனேட் ஆஸிக்கிள்களால் ஆனது. ஒவ்வொரு ஆசிகிளுக்கும் வலிமையையும் இலேசையும் இணைக்கும் ஸ்டீரியோம் எனும் துளையுடைய வலை போன்ற அமைப்பு உள்ளது; வேறு விலங்குகளில் அதே வடிவில் காணப்படுவதில்லை. எனவே இவ்வுட்புற எலும்புக்கூடு, பொருளில் அல்லாமல் நிலையில், மீசோடெர்மாலும் உருவாகும் முதுகெலும்பியின் எலும்புக்கூட்டுடன் ஒப்பிடத்தக்கது; இரண்டும் இரண்டாம்வாயின விலங்குகளின் பண்புகள் என்ற வாதத்தில் எக்கைனோடெர்ம் எலும்புக்கூடு பயன்பட்டுள்ளது. எனினும் இரு குழுக்களின் எலும்புக்கூடுகள் பொருளிலும் அமைப்பிலும் வேறுபடுவதால், ஒப்பீடு எச்சரிக்கையுடன் செய்யப்பட வேண்டும்; ஒற்றுமை நிலை, தோற்றத்தில் மட்டுமே."),
                     bdef("Stereom", "ஸ்டீரியோம் (Stereom)", "The porous, lattice-like calcite structure of an echinoderm ossicle." to
                         "எக்கைனோடெர்ம் ஆசிகிளின் துளையுடைய வலை போன்ற கால்சைட் அமைப்பு."),
                 )),
