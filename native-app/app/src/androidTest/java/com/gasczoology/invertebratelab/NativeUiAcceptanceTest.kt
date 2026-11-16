@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor
 import androidx.compose.ui.test.assertHasClickAction
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextEquals
@@ -40,6 +41,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 import kotlinx.coroutines.runBlocking
 import org.junit.Ignore
@@ -141,17 +143,8 @@ private fun saveN23bReviewScreenshot(fileName: String) {
  */
 @RunWith(AndroidJUnit4::class)
 class NativeUiAcceptanceTest {
-    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
-
-    // Isolation only: persistence intentionally survives individual instrumentation
-    // tests, so each existing N1.3 assertion needs a clean navigation fixture.
-    @Before fun resetLearningPosition() {
-        runBlocking {
-            NativeLearningRepository(InstrumentationRegistry.getInstrumentation().targetContext)
-                .save(NativeLearningState())
-        }
-        rule.activityRule.scenario.recreate()
-    }
+    val rule = createAndroidComposeRule<MainActivity>()
+    @get:Rule val launchRule = RuleChain.outerRule(resetNativeLearningBeforeLaunch()).around(rule)
 
     private val units: List<AcademicUnit> by lazy {
         ValidatedA5AssetRepository(InstrumentationRegistry.getInstrumentation().targetContext).load()
@@ -166,7 +159,8 @@ class NativeUiAcceptanceTest {
 
     private fun englishHome() {
         waitFor("native-home")
-        rule.onNodeWithTag("language-english").performClick()
+        rule.onNodeWithTag("language-english").performScrollTo().performClick()
+        rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.waitUntil(timeoutMillis = 10_000L) {
             rule.homeUnitOneShows(tamil = false)
         }
@@ -296,49 +290,54 @@ class NativeUiAcceptanceTest {
         }
     }
 
+    @UnitIReaderAcceptance
     @Test
     fun parameciumDraftIsReachableInEnglishAndTamilWithoutChangingA5() {
-        // The Paramecium chapter opens in the book reader (not the generic list). It must carry a
-        // visible bilingual draft notice, and its validated A5 questions must be unchanged.
         englishHome()
-        rule.onNodeWithTag("native-home").performScrollToIndex(1)
-        rule.onNodeWithTag("unit-1").performClick()
-        waitFor("native-unit-1")
-        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
-        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
         val chapter = units.first().chapters.single { it.id == "u1-paramecium" }
-        val container = readerContainerTag(chapter)
-        waitFor(container)
-        rule.onNodeWithTag(container).performScrollToIndex(0)
-        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
-            "Academic review pending: illustrations and Tamil vocabulary remain drafts.")
         val first = chapter.a5Questions.first()
-        openReadingPage(rule, container, "practice-" + first.id)
-        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
-        rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.english)
-        rule.onNodeWithTag(container).performScrollToIndex(0)
+        val container = readerContainerTag(chapter)
+        val unit = "native-unit-1"
+        val chapterButton = "chapter-${chapter.id}"
+        fun openParamecium() {
+            rule.onNodeWithTag("unit-1").performScrollTo().performClick()
+            waitFor(unit)
+            rule.onNodeWithTag(unit).performScrollToNode(hasTestTag(chapterButton))
+            rule.onNodeWithTag(chapterButton).performScrollTo().performClick()
+            rule.waitUntil(20_000) {
+                rule.onAllNodesWithTag(container, useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
+            }
+            openReadingPage(rule, container, "objectives")
+        }
+
+        fun verifyNoticeAndQuestion(notice: String, question: String) {
+            val noticeTag = "chapter-draft-notice"
+            rule.onNodeWithTag(container, useUnmergedTree = true).performScrollToNode(hasTestTag(noticeTag))
+            rule.onNodeWithTag(noticeTag, useUnmergedTree = true).performScrollTo().assertTextEquals(notice)
+            openReadingPage(rule, container, "practice-" + first.id)
+            val questionTag = readerQuestionTag(chapter, first)
+            rule.onNodeWithTag(container, useUnmergedTree = true).performScrollToNode(hasTestTag(questionTag))
+            rule.onNodeWithTag(questionTag, useUnmergedTree = true).performScrollTo().assertTextEquals(question)
+        }
+
+        openParamecium()
+        verifyNoticeAndQuestion(
+            "Academic review pending: illustrations and Tamil vocabulary remain drafts.",
+            first.question.english,
+        )
         leaveReader(rule, chapter)
-        waitFor("native-unit-1")
-        rule.onNodeWithTag("native-unit-1").performScrollToIndex(0)
+        waitFor(unit)
+        rule.onNodeWithTag(unit).performScrollToIndex(0)
         rule.onNodeWithText("Back").performClick()
         waitFor("native-home")
-        rule.onNodeWithTag("language-tamil").performClick()
-        // The unit card may be outside the LazyColumn viewport at 200% font.
-        // Scroll it into composition, then check its actual bilingual text.
+        rule.onNodeWithTag("language-tamil").performScrollTo().assertIsDisplayed().performClick()
         rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
-        rule.onNodeWithTag("native-home").performScrollToIndex(1)
-        rule.onNodeWithTag("unit-1").performClick()
-        waitFor("native-unit-1")
-        rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
-        rule.onNodeWithTag("chapter-u1-paramecium").performClick()
-        waitFor(container)
-        rule.onNodeWithTag(container).performScrollToIndex(0)
-        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists().assertTextEquals(
-            "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன.")
-        openReadingPage(rule, container, "practice-" + first.id)
-        rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, first)))
-        rule.onNodeWithTag(readerQuestionTag(chapter, first)).assertTextEquals(first.question.tamil)
+        openParamecium()
+        verifyNoticeAndQuestion(
+            "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன.",
+            first.question.tamil,
+        )
     }
 
     // Plate gallery students can actually reach from the Anatomy tab (organ-level selection is

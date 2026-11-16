@@ -10,6 +10,25 @@ import androidx.compose.ui.test.performClick
 import com.gasczoology.invertebratelab.data.A5Question
 import com.gasczoology.invertebratelab.data.BookChapters
 import com.gasczoology.invertebratelab.data.Chapter
+import androidx.test.platform.app.InstrumentationRegistry
+import com.gasczoology.invertebratelab.data.AppLanguage
+import com.gasczoology.invertebratelab.data.LanguagePreferenceRepository
+import com.gasczoology.invertebratelab.data.NativeLearningRepository
+import com.gasczoology.invertebratelab.data.NativeLearningState
+import kotlinx.coroutines.runBlocking
+import org.junit.rules.ExternalResource
+
+/** Reset stored learning before the activity creates its navigation host. */
+internal fun resetNativeLearningBeforeLaunch(language: AppLanguage? = null): ExternalResource =
+    object : ExternalResource() {
+        override fun before() {
+            val context = InstrumentationRegistry.getInstrumentation().targetContext
+            runBlocking {
+                NativeLearningRepository(context).save(NativeLearningState())
+                language?.let { LanguagePreferenceRepository(context).setLanguage(it) }
+            }
+        }
+    }
 
 /**
  * Which screen a chapter really opens in. Mirrors ChapterBody in InvertebrataApp.kt:

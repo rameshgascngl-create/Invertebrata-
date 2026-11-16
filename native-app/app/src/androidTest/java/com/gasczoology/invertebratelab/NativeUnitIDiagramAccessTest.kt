@@ -12,7 +12,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@Target(AnnotationTarget.CLASS)
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
 internal annotation class UnitIReaderAcceptance
 

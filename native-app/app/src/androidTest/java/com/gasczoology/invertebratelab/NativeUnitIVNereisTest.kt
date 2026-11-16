@@ -4,27 +4,22 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.gasczoology.invertebratelab.data.*
-import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
+import org.junit.rules.RuleChain
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class NativeUnitIVNereisTest {
-    @get:Rule val rule=createAndroidComposeRule<MainActivity>()
+    val rule = createAndroidComposeRule<MainActivity>()
+    @get:Rule val launchRule = RuleChain.outerRule(resetNativeLearningBeforeLaunch(AppLanguage.ENGLISH)).around(rule)
     private val readerTag = "book-reader-u4-nereis"
     private val galleryToggle = "book-reference-gallery-toggle-u4-nereis"
 
-    @Before fun resetState() {
-        runBlocking {
-            val ctx=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext
-            NativeLearningRepository(ctx).save(NativeLearningState())
-            LanguagePreferenceRepository(ctx).setLanguage(AppLanguage.ENGLISH)
-        }
-        rule.activityRule.scenario.recreate()
+    @Before fun awaitHome() {
         rule.waitUntil(20_000) {
-            rule.onAllNodesWithTag("native-home").fetchSemanticsNodes().isNotEmpty()
+            rule.onAllNodesWithTag("native-home", useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty()
         }
     }
     private fun enter(tamil:Boolean) {
