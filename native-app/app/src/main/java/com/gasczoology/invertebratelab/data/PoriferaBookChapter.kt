@@ -22,7 +22,7 @@ object PoriferaBookChapter {
             bsec("meaning", "The name and the animal", "பெயரும் விலங்கும்",
                 blocks = listOf(
                     bp("The name Porifera comes from the Latin words porus, a pore, and ferre, to bear, and means pore-bearing. It describes the most obvious feature of the body: it is perforated by countless small pores through which water enters, and by one or more larger openings through which water leaves." to
-                        "துளையுடலிகள் என்ற பெயர் லத்தீன் சொற்களான porus (துளை), ferre (தாங்குதல்) என்பவற்றிலிருந்து வந்தது; துளை தாங்குவது என்று பொருள். உடலின் மிகத் தெளிவான பண்பை இது குறிக்கிறது: எண்ணற்ற சிறு துளைகள் வழியாக நீர் உள்ளே வருகிறது; ஒன்று அல்லது அதற்கு மேற்பட்ட பெரிய துளைகள் வழியாக வெளியேறுகிறது."),
+                        "Porifera என்ற பெயர் லத்தீன் மொழியின் porus (துளை), ferre (தாங்குதல்) ஆகிய சொற்களிலிருந்து பெறப்பட்டது; இதன் பொருள் ‘துளைகளைத் தாங்குபவை’ என்பதாகும். உடலின் மிகத் தெளிவான பண்பை இது குறிக்கிறது: எண்ணற்ற சிறு துளைகள் வழியாக நீர் உள்ளே வருகிறது; ஒன்று அல்லது அதற்கு மேற்பட்ட பெரிய துளைகள் வழியாக வெளியேறுகிறது."),
                     bdef("Porifera", "துளையுடலிகள்",
                         "The phylum of aquatic, mostly marine and sessile animals whose body is perforated by pores and traversed by a system of canals and chambers through which water is driven. The cells are organised at the cellular grade and do not form true organs." to
                             "துளைகள் நிறைந்த உடலும் நீர் செலுத்தப்படும் கால்வாய், அறை அமைப்பும் கொண்ட, பெரும்பாலும் கடல்வாழ், நிலைத்த விலங்குகளின் தொகுதி; செல்கள் செல்மட்ட அமைப்பில் உள்ளன, உண்மையான உறுப்புகளை உருவாக்குவதில்லை."),
@@ -32,8 +32,8 @@ object PoriferaBookChapter {
                     bdef("Sessile", "ஒட்டி வாழும்",
                         "Permanently attached to a surface and unable to move from place to place in the adult stage." to
                             "முதிர்ந்த உயிரி ஒரு பரப்பில் நிரந்தரமாக ஒட்டியிருந்து, இடத்திலிருந்து இடம் நகர முடியாத நிலை."),
-                    bp("Sponges occur from the shore to the deep sea. Most are marine; one family, the Spongillidae, lives in fresh water. They are attached to rocks, shells, roots or coral, and take many shapes: crusts, cups, tubes, vases, branches and masses. Some are only a few millimetres across, while others reach more than a metre." to
-                        "கடற்பஞ்சுகள் கடற்கரை முதல் ஆழ்கடல் வரை காணப்படுகின்றன. பெரும்பாலானவை கடல்வாழ்; ஸ்பாஞ்சில்லிடே என்ற ஒரு குடும்பம் நன்னீரில் வாழ்கிறது. பாறை, ஓடு, வேர், பவளம் ஆகியவற்றில் ஒட்டி, படலம், கிண்ணம், குழாய், குவளை, கிளை, திரள் எனப் பல வடிவங்களில் உள்ளன. சில இனங்கள் சில மில்லிமீட்டர் அளவிலேயே காணப்படுகின்றன; வேறு சில இனங்கள் ஒரு மீட்டருக்கும் மேல் வளரக்கூடும்."),
+                    bp("Sponges occur from the shore to the deep sea. Most are marine; freshwater sponges include members of the family Spongillidae. They are attached to rocks, shells, roots or coral, and take many shapes: crusts, cups, tubes, vases, branches and masses. Some are only a few millimetres across, while others reach more than a metre." to
+                        "கடற்பஞ்சுகள் கடற்கரை முதல் ஆழ்கடல் வரை காணப்படுகின்றன. பெரும்பாலானவை கடல்வாழ்; ஸ்பாஞ்சில்லிடே (Spongillidae) குடும்பத்தைச் சேர்ந்த கடற்பஞ்சுகள் உள்ளிட்ட சில வகைகள் நன்னீரில் வாழ்கின்றன. பாறை, ஓடு, வேர், பவளம் ஆகியவற்றில் ஒட்டி, படலம், கிண்ணம், குழாய், குவளை, கிளை, திரள் எனப் பல வடிவங்களில் உள்ளன. சில இனங்கள் சில மில்லிமீட்டர் அளவிலேயே காணப்படுகின்றன; வேறு சில இனங்கள் ஒரு மீட்டருக்கும் மேல் வளரக்கூடும்."),
                 )),
             bsec("general-characters", "General characters", "பொதுப் பண்புகள்",
                 blocks = listOf(
@@ -44,7 +44,7 @@ object PoriferaBookChapter {
                         "The body is asymmetrical or radially symmetrical and is perforated by many ostia and one or more oscula." to "உடல் சமச்சீரற்றது அல்லது கதிர்ச் சமச்சீர் உடையது; பல ஆஸ்டியாவும் ஒன்று அல்லது அதற்கு மேற்பட்ட ஆஸ்குலமும் உள்ளன.",
                         "The organisation is cellular: there are no true tissues or organs." to "அமைப்பு செல்மட்டத்தில் உள்ளது; உண்மையான திசுக்களோ உறுப்புகளோ இல்லை.",
                         "A system of canals and chambers, the aquiferous system, carries a current of water through the body." to "கால்வாய், அறை அமைப்பான நீர்வழி அமைப்பு உடல் வழியாக நீரோட்டத்தைச் செலுத்துகிறது.",
-                        "Flagellated collar cells, the choanocytes, line the canals or chambers and drive the water current." to "கசையிழை காலர் செல்களான கோயனோசைட்டுகள் கால்வாய்கள் அல்லது அறைகளை வரிசையாக மூடி நீரோட்டத்தை உருவாக்குகின்றன.",
+                        "Flagellated collar cells, the choanocytes, line the canals or chambers and drive the water current." to "கசையிழையுடைய காலர் செல்களான கோயனோசைட்டுகள், கடற்பஞ்சின் அமைப்பைப் பொறுத்து குறிப்பிட்ட கால்வாய்கள் அல்லது கசையிழை அறைகளின் உட்புறத்தில் அமைந்து நீரோட்டத்தை உருவாக்குகின்றன.",
                         "The skeleton is made of calcareous or siliceous spicules, of spongin fibres, or of both." to "எலும்புக்கூடு சுண்ணாம்பு அல்லது சிலிக்கா ஊசிகள், ஸ்பாஞ்சின் இழைகள் அல்லது இரண்டாலும் ஆனது.",
                         "Digestion is mainly intracellular; there is no mouth or digestive tract." to "செரிமானம் முக்கியமாக செல்லுக்குள் நடைபெறுகிறது; வாயோ செரிமானக் குழாயோ இல்லை.",
                         "There are no nervous system, sense organs, circulatory organs or excretory organs; gas exchange and excretion occur by diffusion into the flowing water." to "நரம்பு மண்டலம், உணர்வு உறுப்புகள், சுற்றோட்ட உறுப்புகள், கழிவு நீக்க உறுப்புகள் இல்லை; வாயுப் பரிமாற்றமும் கழிவு நீக்கமும் ஓடும் நீருடன் விரவல் மூலம் நடைபெறுகின்றன.",
@@ -61,11 +61,11 @@ object PoriferaBookChapter {
                     btable("Principal cell types of a sponge", "கடற்பஞ்சின் முதன்மை செல் வகைகள்",
                         listOf("Cell" to "செல்", "Position" to "இடம்", "Function" to "பணி"),
                         listOf(
-                            listOf("Pinacocyte" to "பினாகோசைட்", "Outer surface and lining of canals" to "வெளிப்பரப்பு, கால்வாய் உள்ளடுக்கு", "Protection and covering" to "பாதுகாப்பும் மூடுதலும்"),
+                            listOf("Pinacocyte" to "பினாகோசைட்", "Outer surface and lining of canals" to "வெளிப்பரப்பிலும் சில கால்வாய்களின் உட்புறத்திலும்", "Protection and covering" to "பாதுகாப்பும் மூடுதலும்"),
                             listOf("Porocyte" to "போரோசைட்", "Wall, forming a pore" to "சுவரில், துளையை அமைத்து", "Admits water" to "நீரை உள்ளே அனுமதிக்கிறது"),
                             listOf("Choanocyte" to "கோயனோசைட்", "Lining of canals or chambers" to "கால்வாய், அறை உள்ளடுக்கு", "Drives the current and traps food" to "நீரோட்டத்தை உருவாக்கி உணவைப் பிடிக்கிறது"),
                             listOf("Archaeocyte" to "ஆர்க்கியோசைட்", "Mesohyl" to "மீசோஹைல்", "Digests and carries food; changes into other cells" to "உணவைச் செரித்துக் கடத்துகிறது; பிற செல்களாக மாறுகிறது"),
-                            listOf("Sclerocyte" to "ஸ்கிளீரோசைட்", "Mesohyl" to "மீசோஹைல்", "Secretes spicules" to "ஊசிகளைச் சுரக்கிறது"),
+                            listOf("Sclerocyte" to "ஸ்கிளீரோசைட்", "Mesohyl" to "மீசோஹைல்", "Secretes spicules" to "எலும்புக்கூட்டு நுண்முள்களை உருவாக்குகிறது"),
                             listOf("Spongocyte" to "ஸ்பாஞ்சோசைட்", "Mesohyl" to "மீசோஹைல்", "Secretes spongin fibres" to "ஸ்பாஞ்சின் இழைகளைச் சுரக்கிறது"),
                             listOf("Myocyte" to "மயோசைட்", "Around oscula and ostia" to "ஆஸ்குலம், ஆஸ்டியாவைச் சுற்றி", "Contracts slowly to narrow openings" to "மெதுவாகச் சுருங்கி துளைகளைக் குறுக்குகிறது"),
                         )),
@@ -186,7 +186,7 @@ object PoriferaBookChapter {
                     bp("The phylum is examined through its general characters, the cell types and their functions, the skeleton and the classification. An answer on the general characters should be brief and organised: cellular grade of organisation, aquiferous system, sessile and asymmetrical or radially symmetrical body, spicules or spongin, and the absence of organs and nerves. The question on the cells is best answered with a table of the cell, its position and its function, and the question on classification with a table of the three classes, the type of spicule and the examples. The three canal types and the reproduction have their own chapters, to which the student may cross-refer.",
                         "தொகுதி பொதுப்பண்புகள், செல் வகைகளும் பணிகளும், எலும்புக்கூடு, வகைப்பாடு வழியாகத் தேர்வு செய்யப்படுகிறது. பொதுப்பண்புகள் குறித்த விடை சுருக்கமாகவும் ஒழுங்காகவும் இருக்க வேண்டும்: செல் நிலை அமைப்பு, நீர்க்கால்வாய் மண்டலம், அசையா, சமச்சீரற்ற அல்லது ஆரச்சமச்சீர் உடல், நுண்முள்கள் அல்லது ஸ்பாஞ்ஜின், உறுப்புகள், நரம்புகளின்மை. செல்கள் குறித்த வினாவுக்கு செல், இடம், பணி அட்டவணையும், வகைப்பாடு வினாவுக்கு மூன்று வகுப்புகள், நுண்முள் வகை, எடுத்துக்காட்டுகளின் அட்டவணையும் சிறந்தவை. மூன்று கால்வாய் வகைகளுக்கும் இனப்பெருக்கத்துக்கும் தனி அத்தியாயங்கள் உள்ளன; மாணவர் குறுக்குக் குறிப்பிடலாம்."),
                     bpoints("Frequent errors to avoid", "தவிர்க்க வேண்டிய அடிக்கடி நிகழும் பிழைகள்",
-                        "Describing the sponge as a plant, or as having tissues and organs." to "கடற்பஞ்சை தாவரம் என்றோ திசுக்களும் உறுப்புகளும் உடையது என்றோ விவரித்தல்.",
+                        "Describing the sponge as a plant, or as having tissues and organs." to "கடற்பஞ்சைத் தாவரம் எனக் கருதுவதும், அதற்கு உண்மையான திசுக்களும் உறுப்புகளும் உள்ளன எனக் கூறுவதும் தவறு.",
                         "Saying that the water enters by the osculum; it enters by the pores and leaves by the osculum." to "நீர் ஆஸ்குலம் வழியே உள்ளே வருகிறது என்று கூறுதல்; அது துளைகள் வழியே உள்ளே வந்து ஆஸ்குலம் வழியே வெளியேறுகிறது.",
                         "Placing the flagella on the pinacocytes; they belong to the choanocytes." to "கசையிழைகளை பினாக்கோசைட்டுகளில் இடுதல்; அவை கோயனோசைட்டுகளுக்கு உரியவை.",
                         "Giving siliceous spicules to the Calcarea or calcareous ones to the Hexactinellida." to "கால்கேரியாவுக்கு சிலிக்கா நுண்முள்களையோ ஹெக்சாக்டினெல்லிடாவுக்கு சுண்ணாம்பு நுண்முள்களையோ தருதல்.",
