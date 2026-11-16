@@ -462,7 +462,7 @@ internal object FiveUnitRestorationLessons {
                 "தலைக்காலிகளின் புனலும் கரங்களும் மெல்லுடலியின் தலை–பாதத் தொகுதி மாற்றங்களுடன் தொடர்புடையவை. அவற்றை சாதாரண வயிற்றுப்புற ஊரும் பாதமாகக் காட்டக் கூடாது."),
             s("function",
                 "Muscle, substrate and observation",
-                "தசைகள், பற்றும் பரப்பு, உற்றுநோக்கல்",
+                "தசைகள், அடித்தளப் பரப்பு, உற்றுநோக்கல்",
                 "Foot movement depends on muscular hydrostatic forces, adhesion and interaction with the substrate. Snails may alter pace and contact area in response to surface roughness and moisture.",
                 "பாத இயக்கம் தசை நீரழுத்தம், ஒட்டுதல், அடித்தளத் தொடர்பு ஆகியவற்றைப் பொறுத்தது. பரப்பின் கரடுமுரடான தன்மை மற்றும் ஈரத்திற்கு ஏற்ப நத்தை இயக்கத்தை மாற்றலாம்.",
                 "For a Pila practical plate, separate the broad creeping sole, operculum attachment and head tentacles. Do not confuse the foot with mantle lobes or the visceral mass.",
