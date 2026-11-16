@@ -76,7 +76,7 @@ internal object FiveUnitRestorationLessons {
                 "Holozoic, holophytic and absorptive nutrition",
                 "விலங்குண்ணல், ஒளிச்சேர்க்கை, உறிஞ்சல்",
                 "Paramecium uses a specialised oral apparatus to concentrate particulate food, form food vacuoles and digest contents intracellularly. Pseudopod-bearing amoebae may engulf particles by phagocytosis.",
-                "பாரமீசியத்தில் வாய்ப்பள்ளமும் உணவெடுக்கும் உறுப்புகளும் உணவுத்துகள்களைச் சேர்த்து உணவுக் குமிழ்களை உருவாக்குகின்றன; செல்லுக்குள்ளேயே செரிமானம் நடைபெறுகிறது. அமீபாவில் போலிக்கால்கள் மூலம் துகள்களை விழுங்க முடியும்.",
+                "பாரமீசியத்தில் வாய்ப்பள்ளமும் அதனுடன் தொடர்புடைய உணவெடுக்கும் அமைப்புகளும் உணவுத்துகள்களைச் சேர்த்து உணவுக் குமிழ்களை உருவாக்குகின்றன; செல்லுக்குள்ளேயே செரிமானம் நடைபெறுகிறது. அமீபாவில் போலிக்கால்கள் மூலம் துகள்களை விழுங்க முடியும்.",
                 "Some photosynthetic protists synthesize organic matter while others absorb dissolved nutrients; these nutritional modes are not synonymous with modern zoological classes.",
                 "சில ஒளிச்சேர்க்கை புரோட்டிஸ்டுகள் கரிம உணவைத் தயாரிக்கின்றன; மற்றவை கரைந்த ஊட்டச்சத்துகளை உறிஞ்சுகின்றன. இவ்வுணவு முறைகள் நவீன வகைப்பாட்டு வகுப்புகளுடன் நேரடியாக ஒத்துப்போவதில்லை."),
             s("digestion",
@@ -106,7 +106,7 @@ internal object FiveUnitRestorationLessons {
                 "Plasmodium and the mosquito vector",
                 "பிளாஸ்மோடியமும் கொசு கடத்தலும்",
                 "In human malaria, an infected female Anopheles mosquito introduces sporozoites; liver development precedes repeated erythrocytic cycles. Sexual development and sporogony take place in the mosquito.",
-                "மலேரியாவில் தொற்றுடைய பெண் அனாபிலிஸ் கொசு ஸ்போரோசோயிட்டுகளை உட்செலுத்துகிறது. கல்லீரல் வளர்ச்சியைத் தொடர்ந்து இரத்தச் சிவப்பணு சுழற்சிகள் நடைபெறுகின்றன. பால்சார் வளர்ச்சியும் ஸ்போராகனியும் கொசுவில் நிகழ்கின்றன.",
+                "மலேரியாவில் தொற்றுடைய பெண் அனாபிலிஸ் கொசு ஸ்போரோசோயிட்டுகளை உட்செலுத்துகிறது. கல்லீரல் வளர்ச்சியைத் தொடர்ந்து இரத்தச் சிவப்பணு சுழற்சிகள் நடைபெறுகின்றன. பாலியல் நிகழ்வுகளும் ஸ்போராகனி நிகழ்வும் கொசுவில் நிகழ்கின்றன.",
                 "Liver hypnozoites are associated with P. vivax and P. ovale, not P. falciparum. Any life-cycle figure must identify its species scope and correctly mark infective stages.",
                 "கல்லீரல் உறக்க ஹிப்னோசோயிட்கள் P. vivax மற்றும் P. ovale ஆகியவற்றுடன் தொடர்புடையவை; P. falciparum இல் அவை இல்லை. வாழ்க்கைச் சுழற்சிப் படம் எந்த இனத்தைச் சுட்டுகிறது என்பதைத் தெளிவாகக் குறிப்பிட வேண்டும்."),
             s("contrast-infective-stages",
@@ -115,7 +115,7 @@ internal object FiveUnitRestorationLessons {
                 "Entamoeba histolytica is commonly transmitted when a mature cyst is swallowed with contaminated food or water. Excystation produces trophozoites in the intestine, and cysts shed in faeces support onward transmission. Some infections remain intestinal, while invasive disease can affect the colon and liver.",
                 "என்டமீபா ஹிஸ்டோலிட்டிகா பொதுவாக மாசடைந்த உணவு அல்லது நீரில் உள்ள முதிர்ந்த சிஸ்டை விழுங்குவதால் பரவுகிறது. குடலில் சிஸ்ட் உறைநீங்கி வளர் நிலைகள் உருவாகின்றன; மலத்துடன் வெளியேறும் சிஸ்டுகள் தொற்றைப் பரப்புகின்றன. சில தொற்றுகள் குடலிலேயே இருந்தாலும் ஊடுருவும் நோய் பெருங்குடலையும் கல்லீரலையும் பாதிக்கலாம்.",
                 "An infected female Anopheles mosquito inoculates Plasmodium sporozoites during biting. Asexual development takes place in the human liver and blood, whereas fertilisation and subsequent sexual development occur in the mosquito. The mosquito is the definitive host in the classical sexual-reproduction sense; these parasites do not share an infective stage.",
-                "தொற்றுடைய பெண் அனாபிலிஸ் கொசு கடிக்கும்போது பிளாஸ்மோடியத்தின் ஸ்போரோசோயிட்டுகளை உட்செலுத்துகிறது. மனிதரின் கல்லீரலிலும் இரத்தத்திலும் பாலிலாப் பெருக்கம் நடைபெறுகிறது; பாலணு இணைவும் அடுத்த பாலின வளர்ச்சியும் கொசுவில் நிகழ்கின்றன. ஆகவே பாலினப்பெருக்க அடிப்படையில் கொசு இறுதிப் புரவலன்; இரு ஒட்டுண்ணிகளுக்கும் ஒரே தொற்றுநிலை கிடையாது.")
+                "தொற்றுடைய பெண் அனாபிலிஸ் கொசு கடிக்கும்போது பிளாஸ்மோடியத்தின் ஸ்போரோசோயிட்டுகளை உட்செலுத்துகிறது. மனிதரின் கல்லீரலிலும் இரத்தத்திலும் பாலிலா இனப்பெருக்கம் நடைபெறுகிறது; பாலணு இணைவும் அடுத்த பாலின வளர்ச்சியும் கொசுவில் நிகழ்கின்றன. ஆகவே பாலினப்பெருக்க அடிப்படையில் கொசு இறுதிப் புரவலன்; இரு ஒட்டுண்ணிகளுக்கும் ஒரே தொற்றுநிலை கிடையாது.")
         )),
         Chapter("u1-locomotion",b("Locomotion in protozoan teaching organisms","புரோட்டோசோவா உயிரிகளின் இயக்கம்"),listOf(
             s("organelles",
@@ -136,7 +136,7 @@ internal object FiveUnitRestorationLessons {
                 "Cilia, flagella and pseudopodia: mechanisms and limits",
                 "குறுஇழை, கசையிழை, போலிக்கால்: இயக்க செயல்முறைகள்",
                 "Numerous short cilia beat with coordinated effective and recovery strokes, while longer eukaryotic flagella use bending waves to propel cells. Their usual motile axoneme has nine peripheral microtubule doublets and a central pair; the anchoring basal body instead commonly contains nine triplets.",
-                "பல சிறிய குறுஇழைகள் செயலடி, மீட்படி அசைவுகளை ஒருங்கிணைத்து இயக்கத்தை உருவாக்குகின்றன; நீண்ட மெய்க்கருவுயிர்க் கசையிழைகளின் வளைவு அலைகள் செல்களை முன்னேற்றுகின்றன. இயங்கும் உள்இழை அமைப்பில் பொதுவாக ஒன்பது இரட்டைக் நுண்குழல்களும் மையத்தில் ஓர் இணையும் உள்ளன; அடித்தளத் துகளில் ஒன்பது மூன்றடுக்குத் தொகுதிகள் காணப்படும்.",
+                "பல சிறிய குறுஇழைகள் செயலடி, மீட்படி அசைவுகளை ஒருங்கிணைத்து இயக்கத்தை உருவாக்குகின்றன; நீண்ட மெய்க்கருவுயிர்க் கசையிழைகளின் வளைவு அலைகள் செல்களை முன்னேற்றுகின்றன. குறுஇழை மற்றும் கசையிழைகளின் உள்கட்டமைப்பில் பொதுவாக ஒன்பது இரட்டைக் நுண்குழல்களும் மையத்தில் ஓர் இணையும் உள்ளன; அடித்தளத் துகளில் ஒன்பது மூன்றடுக்குத் தொகுதிகள் காணப்படும்.",
                 "Pseudopodia form by local actin-dependent deformation of cytoplasm and membrane, allowing crawling and particle engulfment. Visible swimming or creeping can be described with a light microscope, but detailed axonemal ultrastructure requires higher-resolution evidence.",
                 "போலிக்கால்கள் ஆக்டினைச் சார்ந்த சைட்டோபிளாசம், சவ்வு மாற்றங்களால் உருவாகி ஊர்வதற்கும் உணவுத் துகள்களைச் சூழ்வதற்கும் உதவுகின்றன. நீந்துதல் அல்லது ஊர்தலை ஒளி நுண்ணோக்கியில் விவரிக்கலாம்; நுண்குழல்களின் மிகநுண் அமைப்பை உறுதிப்படுத்த அதிகத் தெளிவுள்ள ஆய்வு தேவை.")
         )),
