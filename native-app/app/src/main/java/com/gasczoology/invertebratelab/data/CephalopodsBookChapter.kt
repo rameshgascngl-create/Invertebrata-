@@ -100,37 +100,37 @@ object CephalopodsBookChapter {
                     bdef("Beak", "அலகு", "The pair of horny jaws at the mouth of a cephalopod." to
                         "தலைக்காலியின் வாயிலுள்ள இணைக் கொம்புத் தாடைகள்."),
                 )),
-            bsec("diversity", "Diversity and the shell", "பன்முகத்தன்மையும் ஓடும்",
+            bsec("diversity", "Diversity and the shell", "பல்வகைத் தன்மையும் ஓட்டின் அமைப்பும்",
                 blocks = listOf(
                     bp("The living cephalopods fall into the nautiluses, with an external coiled shell divided into chambers, and the coleoids, in which the shell is reduced or internal. The cuttlefishes have a chalky internal cuttlebone, the squids a thin horny pen, and the octopuses have lost the shell almost entirely. The evolution of the shell is related to the history of the class, since the ammonites, which had coiled chambered shells, were abundant in the Mesozoic and are extinct, and they are important in the fossil record." to
-                        "வாழும் தலைக்காலிகள் அறைகளாகப் பிரிந்த வெளிப்புற சுருள் ஓடுடைய நாட்டிலஸ்களாகவும், ஓடு குறைந்த அல்லது உட்புறமாக உள்ள கோலியாய்டுகளாகவும் பிரிகின்றன. கட்ல்மீன்களுக்கு சுண்ணாம்பு உட்புற கட்டில்எலும்பு, ஸ்குவிட்களுக்கு மெல்லிய கொம்புப் பேனா உண்டு; ஆக்டோபஸ்கள் ஓட்டை கிட்டத்தட்ட முழுவதும் இழந்துள்ளன. சுருள் அறை ஓடுடைய அம்மோனைட்டுகள் மீசோசோயிக் காலத்தில் மிகுதியாக இருந்து அழிந்துவிட்டன; புதைபடிவப் பதிவில் முக்கியமானவை; ஓட்டின் பரிணாமம் வகுப்பின் வரலாற்றுடன் தொடர்புடையது."),
-                    btable("Living cephalopods compared", "வாழும் தலைக்காலிகள் ஒப்பீடு",
+                        "வாழும் தலைக்காலிகள் உட்புற அறைகளாகப் பிரிக்கப்பட்ட வெளிப்புறச் சுருள் ஓட்டைக் கொண்ட நாட்டிலஸ் வகைகளாகவும், ஓடு சிறிதாகக் குறைந்தோ உட்புறமாக அமைந்தோ உள்ள கோலியாய்டு வகைகளாகவும் பிரிகின்றன. கட்ல்மீன்களுக்கு சுண்ணாம்புப் பொருளாலான உட்புறக் கட்ல்போன் (cuttlebone), ஸ்குவிட்களுக்கு மெல்லிய கொம்புப் பொருளாலான பென் (pen) எனப்படும் ஓட்டு எச்சம் உண்டு; ஆக்டோபஸ்கள் ஓட்டை கிட்டத்தட்ட முழுவதும் இழந்துள்ளன. அறைகளாகப் பிரிந்த சுருள் ஓடுகளைக் கொண்ட அம்மோனைட்டுகள் இடைஉயிரூழிக் காலத்தில் (Mesozoic) மிகுதியாக வாழ்ந்து பின்னர் அழிந்துவிட்டன; புதைபடிவப் பதிவில் முக்கியமானவை; ஓட்டின் பரிணாமம் வகுப்பின் வரலாற்றுடன் தொடர்புடையது."),
+                    btable("Living cephalopods compared", "தற்காலத்தில் வாழும் தலைக்காலிகளின் ஒப்பீடு",
                         listOf("Group" to "குழு", "Example" to "எடுத்துக்காட்டு", "Shell" to "ஓடு", "Note" to "குறிப்பு"),
                         listOf(
-                            listOf("Nautiloidea" to "நாட்டிலாய்டியா", "Nautilus" to "நாட்டிலஸ்", "External, coiled and chambered" to "வெளிப்புற, சுருள், அறைகளுடையது", "Many arms without suckers" to "உறிஞ்சிகளற்ற பல கைகள்"),
-                            listOf("Cuttlefish" to "கட்ல்மீன்", "Sepia" to "செப்பியா", "Internal cuttlebone" to "உட்புற கட்டில்எலும்பு", "Ten arms: eight arms and two tentacles" to "பத்து கைகள்: எட்டு கைகள், இரு உணர்கொம்புகள்"),
-                            listOf("Squid" to "ஸ்குவிட்", "Loligo" to "லோலிகோ", "Internal horny pen" to "உட்புற கொம்புப் பேனா", "Streamlined body with fins" to "துடுப்புகளுடன் நீரோட்ட வடிவ உடல்"),
-                            listOf("Octopus" to "ஆக்டோபஸ்", "Octopus" to "ஆக்டோபஸ்", "Shell almost lost" to "ஓடு கிட்டத்தட்ட இழப்பு", "Eight arms; rounded body" to "எட்டு கைகள்; உருண்ட உடல்"),
+                            listOf("Nautiloidea" to "நாட்டிலாய்டியா", "Nautilus" to "நாட்டிலஸ்", "External, coiled and chambered" to "வெளிப்புறமாக அமைந்த சுருள் வடிவ அறைகளுடைய ஓடு", "Many arms without suckers" to "உறிஞ்சிகள் இல்லாத ஏராளமான கரங்கள்"),
+                            listOf("Cuttlefish" to "கட்ல்மீன்", "Sepia" to "செப்பியா", "Internal cuttlebone" to "உட்புறக் கட்ல்போன் ஓடு", "Ten arms: eight arms and two tentacles" to "பத்து பற்றுறுப்புகள்: எட்டு கரங்களும் இரண்டு நீண்ட பற்றுநீட்சிகளும்"),
+                            listOf("Squid" to "ஸ்குவிட்", "Loligo" to "லோலிகோ", "Internal horny pen" to "உட்புறக் கொம்புப் பொருளாலான பென்", "Streamlined body with fins" to "துடுப்புகளுடன் நீரில் எளிதாக நகரும் நீரோட்டத் தகவமைப்புடைய உடல்"),
+                            listOf("Octopus" to "ஆக்டோபஸ்", "Octopus" to "ஆக்டோபஸ்", "Shell almost lost" to "ஓடு ஏறத்தாழ முழுவதுமாக மறைந்துள்ளது", "Eight arms; rounded body" to "எட்டு கரங்கள்; உருண்டையான உடல்"),
                         )),
-                    bdef("Cuttlebone", "கட்டில்எலும்பு (Cuttlebone)", "The chalky internal shell of a cuttlefish." to
-                        "கட்டில்மீனின் சுண்ணாம்பு உட்புற ஓடு."),
+                    bdef("Cuttlebone", "கட்ல்போன் (Cuttlebone)", "The chalky internal shell of a cuttlefish." to
+                        "கட்ல்மீனில் காணப்படும் சுண்ணாம்புப் பொருளாலான உட்புற ஓடு."),
                     bdef("Ammonite", "அம்மோனைட் (Ammonite)", "An extinct cephalopod with a coiled chambered shell, important as an index fossil." to
-                        "சுருள் அறை ஓடுடைய, வழிகாட்டிப் புதைபடிவமாக முக்கியமான அழிந்த தலைக்காலி."),
+                        "அறைகளுடன் கூடிய சுருள் ஓட்டைக் கொண்ட, வழிகாட்டிப் புதைபடிவமாக முக்கியத்துவம் வாய்ந்த அழிந்துபோன தலைக்காலி."),
                     bdef("Nautilus", "நாட்டிலஸ் (Nautilus)", "A living cephalopod with an external coiled chambered shell." to
                         "வெளிப்புற சுருள் அறை ஓடுடைய வாழும் தலைக்காலி."),
                 )),
             bsec("reproduction", "Reproduction and life history in outline", "இனப்பெருக்கமும் வாழ்க்கை வரலாறும் சுருக்கமாக",
                 blocks = listOf(
                     bp("The sexes are separate, and fertilisation is internal. In the male coleoids one arm is modified, in the form called the hectocotylus, to transfer packets of sperm called spermatophores to the female. The eggs are large and rich in yolk, and they are laid in capsules or strings, and in many species they are attached to a surface and sometimes guarded by the female. Development is direct, so there is no free larva of the kind that is seen in the gastropods and bivalves, and the young hatch as small versions of the adult. Many coleoids have a short life, and breed once." to
-                        "பாலினங்கள் தனி; கருவுறுதல் உட்புறம். ஆண் கோலியாய்டுகளில் ஒரு கை ஹெக்டோகோட்டிலஸ் எனும் வடிவில் மாற்றப்பட்டு, ஸ்பெர்மட்டோஃபோர்கள் எனும் விந்துப் பொட்டலங்களைப் பெண்ணுக்கு மாற்றுகிறது. முட்டைகள் பெரியவை, கருவுணவு நிறைந்தவை; உறைகளில் அல்லது சரங்களில் இடப்படுகின்றன; பல இனங்களில் மேற்பரப்பில் ஒட்டப்பட்டு சில சமயம் பெண்ணால் காக்கப்படுகின்றன. வளர்ச்சி நேரடியானது; இரைப்பைக்காலிகள், இருவோடுகளில் காணப்படும் வகை தனி லார்வா இல்லை; இளவை முதிர்ந்ததின் சிறு வடிவங்களாகப் பொரிக்கின்றன. பல கோலியாய்டுகளுக்கு குறுகிய ஆயுள்; ஒருமுறை இனப்பெருக்கம் செய்கின்றன."),
+                        "ஆண், பெண் தனித்தனியாகக் காணப்படுகின்றன; உட்கருவுறுதல் நடைபெறுகிறது. ஆண் கோலியாய்டுகளில் ஒரு கரம் ஹெக்டோகோட்டிலஸ் (hectocotylus) எனப்படும் சிறப்பமைப்பாக மாற்றமடைந்து, ஸ்பெர்மட்டோஃபோர்கள் எனும் விந்தணுப் பொட்டலங்களைப் பெண் விலங்கிற்கு மாற்றுகிறது. முட்டைகள் அளவில் பெரியவையாகவும் அதிக அளவு கருவுணவைக் கொண்டவையாகவும் உள்ளன; உறைகளுக்குள்ளோ சரம் போன்ற தொகுதிகளாகவோ இடப்படுகின்றன; பல இனங்களில் மேற்பரப்பில் ஒட்டப்பட்டு சில சமயம் பெண்ணால் காக்கப்படுகின்றன. வளர்ச்சி நேரடியானது; இரைப்பைக்காலிகள், இருவோடுகளில் காணப்படும் வகை தனி லார்வா இல்லை; குஞ்சுகள் முதிர்ந்த உயிரிகளின் சிறிய வடிவங்களைப் போன்று முட்டைகளிலிருந்து வெளிவருகின்றன. பல கோலியாய்டுகள் குறுகிய ஆயுளைக் கொண்டவை; அவை வாழ்நாளில் ஒருமுறை மட்டுமே இனப்பெருக்கம் செய்கின்றன."),
                     bp("The general statements about life span and the pattern of breeding apply to many coleoids, and they differ among species, so that exact figures should be taken from the studies of the particular species. For the purposes of the syllabus, the useful point is that direct development with large yolky eggs is another contrast with the other molluscs that were studied earlier in the unit." to
-                        "ஆயுள், இனப்பெருக்க முறை பற்றிய பொதுக் கூற்றுகள் பல கோலியாய்டுகளுக்குப் பொருந்தும்; இனங்களிடையே வேறுபடும்; எனவே சரியான எண்களை குறிப்பிட்ட இனத்தின் ஆய்வுகளிலிருந்து எடுக்க வேண்டும். பாடத்திட்டத்தின் நோக்கத்துக்கு, பெரிய கருவுணவு முட்டைகளுடன் நேரடி வளர்ச்சி, அலகில் முன்பு படித்த பிற மெல்லுடலிகளுடன் மற்றொரு வேறுபாடு என்பதே பயனுள்ள புள்ளி."),
+                        "ஆயுள், இனப்பெருக்க முறை பற்றிய பொதுக் கூற்றுகள் பல கோலியாய்டுகளுக்குப் பொருந்தும்; இனங்களிடையே வேறுபடும்; எனவே துல்லியமான ஆயுட்காலம் மற்றும் இனப்பெருக்க விவரங்களை அந்தந்த இனத்தைப் பற்றிய ஆய்வுகளிலிருந்து பெற வேண்டும். பாடத்திட்டத்தின் நோக்கத்துக்கு, பெரிய கருவுணவு முட்டைகளுடன் நேரடி வளர்ச்சி, இந்த அலகில் முன்பு கற்ற பிற மெல்லுடலிகளிலிருந்து வேறுபடுத்தும் மற்றொரு பண்பு என்பதே பயனுள்ள புள்ளி."),
                     bdef("Hectocotylus", "ஹெக்டோகோட்டிலஸ் (Hectocotylus)", "The modified arm of a male cephalopod used to transfer spermatophores." to
-                        "விந்துப் பொட்டலங்களை மாற்றப் பயன்படும் ஆண் தலைக்காலியின் மாறிய கை."),
+                        "விந்தணுப் பொட்டலங்களைப் பெண் விலங்கிற்கு மாற்றப் பயன்படும் ஆண் தலைக்காலியின் மாறிய கை."),
                     bdef("Spermatophore", "ஸ்பெர்மட்டோஃபோர் (Spermatophore)", "A packet containing sperm that is transferred to the female." to
                         "பெண்ணுக்கு மாற்றப்படும் விந்து அடங்கிய பொட்டலம்."),
                     bdef("Direct development", "நேரடி வளர்ச்சி (Direct development)", "Development in which the young hatch in the form of small adults, with no free larva." to
-                        "தனி லார்வா இன்றி இளவை சிறு முதிர்ந்தவையாகப் பொரிக்கும் வளர்ச்சி."),
+                        "தனியாக வாழும் லார்வா நிலை இன்றி, இளம் உயிரிகள் முதிர்ந்த உயிரிகளின் சிறிய வடிவங்களைப் போன்று முட்டையிலிருந்து வெளிவரும் வளர்ச்சி."),
                 )),
             bsec("economic", "Economic importance", "பொருளாதார முக்கியத்துவம்",
                 blocks = listOf(
