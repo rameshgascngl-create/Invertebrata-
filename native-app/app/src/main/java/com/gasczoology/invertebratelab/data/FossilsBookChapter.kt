@@ -4,29 +4,29 @@ package com.gasczoology.invertebratelab.data
 object FossilsBookChapter {
     val chapter = bchapter(
         lessonId = "u5-fossils",
-        title = "Invertebrate Fossils" to "முதுகெலும்பற்ற புதைபடிவங்கள்",
+        title = "Invertebrate Fossils" to "முதுகெலும்பற்ற விலங்குகளின் புதைபடிவங்கள்",
         objectives = listOf(
             "Recognise representative invertebrate fossils." to
-                "முக்கிய முதுகெலும்பற்ற புதைபடிவங்களை அடையாளம் காணுதல்.",
+                "பிரதிநிதித்துவ முதுகெலும்பற்ற விலங்குகளின் புதைபடிவங்களை அடையாளம் காணுதல்.",
             "Compare modes of preservation and geological significance." to
-                "பாதுகாப்புமுறைகளையும் புவியியல் முக்கியத்துவத்தையும் ஒப்பிடுதல்.",
+                "புதைபடிவங்கள் பாதுகாக்கப்படும் முறைகளையும் அவற்றின் புவியியல் முக்கியத்துவத்தையும் ஒப்பிடுதல்.",
             "Interpret fossils as evidence of past life and environments." to
-                "புதைபடிவங்களைக் கடந்தகால உயிர்கள், சூழல்களுக்கான சான்றுகளாக விளக்குதல்.",
+                "புதைபடிவங்களைப் பழங்கால உயிரினங்களுக்கும் அவை வாழ்ந்த சூழல்களுக்கும் உரிய சான்றுகளாக விளக்குதல்.",
         ),
         introduction = listOf(
             "Invertebrate fossils preserve evidence of past organisms and environments. Their form, preservation and position in rock layers help reconstruct biological history." to
-                "முதுகெலும்பற்ற விலங்குகளின் புதைபடிவங்கள் பழங்கால உயிர்களையும் சூழல்களையும் அறிய உதவுகின்றன. அவற்றின் வடிவம், பாதுகாப்புமுறை, பாறை அடுக்கில் உள்ள இடம் ஆகியவற்றைக் கொண்டு உயிர்களின் வரலாற்றை விளக்கலாம்.",
+                "முதுகெலும்பற்ற விலங்குகளின் புதைபடிவங்கள் பழங்கால உயிர்களையும் சூழல்களையும் அறிய உதவுகின்றன. அவற்றின் வடிவம், பாதுகாப்புமுறை, பாறை அடுக்குகளில் அவை காணப்படும் நிலை ஆகியவற்றைக் கொண்டு உயிர்களின் வரலாற்றை விளக்கலாம்.",
         ),
         sections = listOf(
-            bsec("preservation", "Fossilisation and preservation bias", "புதைபடிவமாதலும் பாதுகாப்புச் சார்பும்",
+            bsec("preservation", "Fossilisation and preservation bias", "புதைபடிவமாக்கமும் பாதுகாப்பில் ஏற்படும் சார்பும்",
                 blocks = listOf(
                     bp("For an organism to become a fossil, its remains must be buried quickly, before scavengers and decay destroy them, and must be preserved through the changes that accompany burial and the formation of rock. The study of what happens to an organism from death to the fossil is called taphonomy. Different processes preserve different things: the original material may remain, as in shells that keep their mineral; the remains may be replaced by a mineral, or dissolved to leave a mould, which may be filled to make a cast; and soft animals may leave traces, such as burrows and tracks." to
-                        "ஓர் உயிரியின் எச்சங்கள் புதைபடிவமாகப் பாதுகாக்கப்படுவதற்கு, அவை பிணந்தின்னி உயிரிகளாலும் சிதைவு செயல்முறைகளாலும் அழிக்கப்படுவதற்கு முன் பெரும்பாலும் விரைவாகப் புதைய வேண்டும்; புதைப்புடனும் பாறை உருவாக்கத்துடனும் வரும் மாற்றங்கள் வழியே பாதுகாக்கப்பட வேண்டும். ஓர் உயிரி இறந்ததிலிருந்து அதன் எச்சங்கள் புதைபடிவமாக மாறும் வரை நடைபெறும் மாற்றங்களை ஆராய்வது டாஃபோனமி (taphonomy) எனப்படும். வெவ்வேறு செயல்முறைகள் வெவ்வேறு பொருட்களைப் பாதுகாக்கின்றன: சில ஓடுகளில் உள்ள கனிமப் பொருள் மாற்றமின்றிப் பாதுகாக்கப்படலாம்; எச்சங்கள் கனிமத்தால் மாற்றப்படலாம் அல்லது கரைந்து அச்சை விடலாம்; அது நிரப்பப்பட்டு வார்ப்பாகலாம்; மென்மையான உடலுடைய விலங்குகளின் செயல்பாடுகள் வளைத் தடங்கள், ஊர்ந்த சுவடுகள் போன்ற தடயப் புதைபடிவங்களாகப் பதிவாகலாம்."),
+                        "ஓர் உயிரியின் எச்சங்கள் புதைபடிவமாகப் பாதுகாக்கப்படுவதற்கு, அவை பிணந்தின்னி உயிரிகளாலும் சிதைவு செயல்முறைகளாலும் அழிக்கப்படுவதற்கு முன் பெரும்பாலும் விரைவாகப் புதைய வேண்டும்; புதையுண்ட நிலையிலும் பாறை உருவாகும் செயல்முறையிலும் நிகழும் மாற்றங்களைக் கடந்து பாதுகாக்கப்பட வேண்டும். ஓர் உயிரி இறந்த பிறகு அதன் எச்சங்கள் புதைபடிவமாக மாறும் வரையிலான மாற்றங்களை ஆராயும் அறிவியல் பிரிவு டாஃபோனமி (taphonomy) எனப்படும். வெவ்வேறு புதைபடிவமாக்கச் செயல்முறைகள் வெவ்வேறு வகையான எச்சங்களைப் பாதுகாக்கின்றன: சில ஓடுகளில் உள்ள கனிமப் பொருள் மாற்றமின்றிப் பாதுகாக்கப்படலாம்; உயிரி எச்சங்கள் வேறு கனிமங்களால் பதிலீடு செய்யப்படலாம்; அல்லது கரைந்து அச்சுப் பதிவை விட்டுச் செல்லலாம்; அந்த அச்சு நிரம்பும்போது வார்ப்புப் புதைபடிவம் உருவாகலாம்; மென்மையான உடலுடைய விலங்குகளின் செயல்பாடுகள் வளைத் தடங்கள், ஊர்ந்த சுவடுகள் போன்ற தடயப் புதைபடிவங்களாகப் பதிவாகலாம்."),
                     bp("The consequence is preservation bias. Mineralised hard parts, such as shells, skeletons and exoskeletons, survive burial far more readily than the soft tissues, and so groups with such parts are over-represented, while soft-bodied groups are under-represented. An animal that lives in a place where burial is rapid, such as a sea floor in which sediment accumulates, is more likely to be preserved than one that lives on a rocky shore or in a forest. The fossil record is therefore a biased sample, and the absence of fossils of a group is not evidence that it was rare or absent." to
-                        "விளைவு பாதுகாப்புச் சார்பு. ஓடுகள், எலும்புக்கூடுகள், புறச்சட்டகங்கள் போன்ற கனிமத்தால் உறுதியான உடற்பகுதிகள் மென்மையான திசுக்களைவிடப் புதைபடிவமாகப் பாதுகாக்கப்படுவதற்கான வாய்ப்பு அதிகம்; எனவே அத்தகைய பகுதிகளுடைய குழுக்கள் மிகையாகவும் மென்உடல் குழுக்கள் குறைவாகவும் பிரதிநிதித்துவம் பெறுகின்றன. படிவு சேரும் கடலடி போல விரைவாகப் புதைக்கப்படும் இடத்தில் வாழும் விலங்கு, பாறைக் கரை அல்லது காட்டில் வாழ்வதை விட பாதுகாக்கப்பட அதிக வாய்ப்புடையது. ஆகவே புதைபடிவப் பதிவு கடந்தகால உயிரினப் பல்வகைமையின் முழுமையான பிரதிநிதியல்ல. ஒரு குழுவின் புதைபடிவங்கள் கிடைக்காததால் மட்டும் அக்குழு அரிதாக இருந்தது அல்லது அப்போது வாழவில்லை என்று முடிவு செய்ய முடியாது."),
-                    bpoints("Forms of fossil preservation", "புதைபடிவப் பாதுகாப்பின் வடிவங்கள்",
+                        "இதன் விளைவாகப் புதைபடிவப் பாதுகாப்பில் சார்பு ஏற்படுகிறது. ஓடுகள், எலும்புக்கூடுகள், புறச்சட்டகங்கள் போன்ற கனிமத்தால் உறுதியான உடற்பகுதிகள் மென்மையான திசுக்களைவிடப் புதைபடிவமாகப் பாதுகாக்கப்படுவதற்கான வாய்ப்பு அதிகம்; எனவே அத்தகைய பகுதிகளுடைய குழுக்கள் மிகையாகவும் மென்மையான உடலுடைய உயிரினக் குழுக்கள் குறைவாகவும் புதைபடிவப் பதிவில் இடம்பெறுகின்றன. வண்டற்படிவுகள் விரைவாகச் சேரும் கடலடிப் பகுதிகளைப் போன்ற இடங்களில் வாழும் விலங்கு, பாறைக் கரை அல்லது காட்டில் வாழ்வதை விட பாதுகாக்கப்பட அதிக வாய்ப்புடையது. ஆகவே புதைபடிவப் பதிவு கடந்தகால உயிரினப் பல்வகைமையின் முழுமையான பிரதிநிதியல்ல. ஒரு குழுவின் புதைபடிவங்கள் கிடைக்காததால் மட்டும் அக்குழு அரிதாக இருந்தது அல்லது அப்போது வாழவில்லை என்று முடிவு செய்ய முடியாது."),
+                    bpoints("Forms of fossil preservation", "புதைபடிவங்கள் பாதுகாக்கப்படும் முறைகள்",
                         "Original material retained, as in a shell that keeps its mineral." to "கனிமப் பகுதிகள் மாறாமல் எஞ்சியுள்ள ஓடு போன்றவற்றில் உயிரியின் மூலப்பொருள் பாதுகாக்கப்படுதல்.",
-                        "Replacement of the original material by another mineral." to "உயிரியின் மூலப்பொருள் வேறொரு கனிமத்தால் பதிலீடு செய்யப்படுதல்.",
+                        "Replacement of the original material by another mineral." to "உயிரியின் அசல் பொருள் வேறொரு கனிமத்தால் மாற்றீடு செய்யப்படுதல்.",
                         "A mould, left when the remains dissolve, and a cast, formed when the mould is filled." to "எச்சங்கள் கரையும்போது எஞ்சும் அச்சு; அச்சு நிரப்பப்படும்போது உருவாகும் வார்ப்பு.",
                         "Trace fossils, such as burrows and tracks, which record behaviour and not the body." to "உடலை அல்ல, நடத்தையைப் பதிவு செய்யும் வளைகள், பாதச்சுவடுகள் போன்ற தடய புதைபடிவங்கள்.",
                     ),
@@ -150,7 +150,7 @@ object FossilsBookChapter {
                     bdef("Mass extinction", "பெரும் அழிவு (Mass extinction)", "An event in which a large proportion of the species on Earth disappears within a geologically short interval." to
                         "புவியியல் அளவில் குறுகிய இடைவெளியில் பூமியின் இனங்களில் பெரும்பகுதி மறையும் நிகழ்வு."),
                 )),
-            bsec("india", "Invertebrate fossils in India and Tamil Nadu", "இந்தியாவிலும் தமிழ்நாட்டிலும் முதுகெலும்பற்ற புதைபடிவங்கள்",
+            bsec("india", "Invertebrate fossils in India and Tamil Nadu", "இந்தியாவிலும் தமிழ்நாட்டிலும் முதுகெலும்பற்ற விலங்குகளின் புதைபடிவங்கள்",
                 blocks = listOf(
                     bp("India has a rich record of invertebrate fossils. Of particular interest to students in Tamil Nadu are the Cretaceous marine rocks of the Ariyalur region, which are known for fossil molluscs, including ammonites, bivalves and gastropods, together with corals, echinoids and other groups, and which have been studied for a long time by geologists. The rocks of the Himalayan region have, among other fossils, ammonites of the Jurassic, which are traditionally collected and are worshipped in some parts of the country as saligrams. The student should know that fossils are found in sedimentary rocks, and that the places where they are found are protected in some cases for research and teaching.",
                         "இந்தியாவில் முதுகெலும்பற்ற புதைபடிவங்களின் வளமான பதிவு உள்ளது. தமிழ்நாட்டு மாணவர்களுக்கு குறிப்பாக ஆர்வமூட்டுபவை அரியலூர் பகுதியின் கிரட்டேசியஸ் கடல் பாறைகள்; அவை அம்மோனைட்டுகள், இருவோடுடையவை, இரைப்பைக்காலிகள் உள்ளிட்ட புதைபடிவ மெல்லுடலிகளுக்கும் பவளங்கள், எக்கினாய்டுகள், பிற குழுக்களுக்கும் அறியப்பட்டவை; நீண்டகாலமாக புவியியலாளர்களால் ஆய்வு செய்யப்பட்டுள்ளன. இமயமலைப் பகுதிப் பாறைகளில் பிற புதைபடிவங்களுடன் ஜுராசிக் அம்மோனைட்டுகள் உள்ளன; அவை பாரம்பரியமாகச் சேகரிக்கப்பட்டு நாட்டின் சில பகுதிகளில் சாளக்கிராமங்களாக வழிபடப்படுகின்றன. புதைபடிவங்கள் படிவுப் பாறைகளில் காணப்படுகின்றன என்றும், அவை காணப்படும் இடங்கள் சில நேரங்களில் ஆய்வு, கற்பித்தலுக்காகப் பாதுகாக்கப்படுகின்றன என்றும் மாணவர் அறிய வேண்டும்."),
