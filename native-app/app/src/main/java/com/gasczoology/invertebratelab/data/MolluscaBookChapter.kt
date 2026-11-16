@@ -4,7 +4,7 @@ package com.gasczoology.invertebratelab.data
 object MolluscaBookChapter {
     val chapter = bchapter(
         lessonId = "u5-mollusca",
-        title = "Phylum Mollusca: general characters and classification" to "தொகுதி மொலஸ்கா: பொதுப் பண்புகளும் வகைப்பாடும்",
+        title = "Phylum Mollusca: general characters and classification" to "மெல்லுடலிகள் (மொலஸ்கா): பொதுப் பண்புகளும் வகைப்பாடும்",
         objectives = listOf(
             "Recognise the main features of the molluscan body plan." to
                 "மெல்லுடலிகளின் அடிப்படை உடலமைப்பை அறிதல்.",
@@ -15,29 +15,29 @@ object MolluscaBookChapter {
         ),
         introduction = listOf(
             "The molluscan body plan centres on the mantle, visceral mass and muscular foot. Their modifications explain the diversity of shells, feeding methods and movements in the phylum." to
-                "மேண்டில், உடற்பை, தசைமிகு பாதம் ஆகியவை மெல்லுடலிகளின் அடிப்படை உடற்பகுதிகளாகும். இப்பகுதிகளில் ஏற்பட்ட மாற்றங்களைக் கொண்டு ஓடு, உணவூட்டம், இயக்கம் ஆகியவற்றின் வேறுபாடுகளைப் புரிந்துகொள்ளலாம்.",
+                "மேண்டில், உள்ளுறுப்புத் திரள், தசையாலான பாதம் ஆகியவை மெல்லுடலிகளின் அடிப்படை உடற்பகுதிகளாகும். இப்பகுதிகளில் ஏற்பட்ட மாற்றங்களைக் கொண்டு ஓடு, உணவூட்டம், இயக்கம் ஆகியவற்றின் வேறுபாடுகளைப் புரிந்துகொள்ளலாம்.",
         ),
         sections = listOf(
             bsec("general-characters", "General characters", "பொதுப் பண்புகள்",
                 blocks = listOf(
                     bp("Molluscs are triploblastic protostomes with a soft, usually unsegmented body. Bilateral symmetry is the basic condition, though a secondary asymmetry appears in the gastropods as a result of torsion and coiling. The true coelom is reduced to the cavity round the heart, the pericardial cavity, and to the cavity of the gonads, and the main body cavity is a haemocoel. The absence of segmentation is one of the features that separate the molluscs from the annelids and the arthropods, in spite of the resemblance of the early development." to
-                        "மெல்லுடலிகள் மென்மையான, பொதுவாகக் கண்டமற்ற உடல் உடைய மூவடுக்கு புரோட்டோஸ்டோம்கள். இருபக்கச் சமச்சீர் அடிப்படை நிலை; ஆனால் இரைப்பைக்காலிகளில் முறுக்கலும் சுருள் உருவாக்கமும் காரணமாக இரண்டாம் நிலை சமச்சீரின்மை தோன்றுகிறது. உண்மை உடற்குழி இதயத்தைச் சுற்றிய பெரிகார்டியல் குழிக்கும் இனப்பெருக்க சுரப்பிகளின் குழிக்கும் குறைக்கப்பட்டுள்ளது; முதன்மை உடற்குழி ஹீமோசீல். தொடக்க வளர்ச்சியின் ஒற்றுமை இருந்தாலும், கண்டமாதல் இல்லாமை மெல்லுடலிகளை அனெலிடாக்கள், ஆர்த்ரோபோடாக்களிலிருந்து பிரிக்கும் பண்புகளில் ஒன்று."),
+                        "மெல்லுடலிகள் மென்மையான, பொதுவாகக் கண்டங்களற்ற உடலைக் கொண்ட மூன்று கருப்படலங்களைக் கொண்ட முதல்வாயின விலங்குகள். இருபக்கச் சமச்சீர் அடிப்படை நிலை; ஆனால் இரைப்பைக்காலிகளில் முறுக்கலும் சுருள் உருவாக்கமும் காரணமாக இரண்டாம் நிலைச் சமச்சீரின்மை ஏற்படுகிறது. உண்மையான உடற்குழி இதயத்தைச் சுற்றிய பெரிகார்டியல் குழியாகவும் இனப்பெருக்கச் சுரப்பிகளின் குழியாகவும் குறைந்துள்ளது; உடலின் பெரும்பகுதியில் இரத்தம் நிறைந்த ஹீமோசீல் காணப்படுகிறது. தொடக்க வளர்ச்சியின் ஒற்றுமை இருந்தாலும், கண்டமாதல் இல்லாமை மெல்லுடலிகளை அனெலிடாக்கள், ஆர்த்ரோபோடாக்களிலிருந்து பிரிக்கும் பண்புகளில் ஒன்று."),
                     bpoints("Characters to be listed in an answer", "விடையில் பட்டியலிட வேண்டிய பண்புகள்",
-                        "Triploblastic, protostome, soft-bodied and usually unsegmented, with basic bilateral symmetry; gastropods are secondarily asymmetrical." to "மூவடுக்கு, புரோட்டோஸ்டோம், மென்மையான உடல், பொதுவாகக் கண்டமற்றவை; அடிப்படை இருபக்கச் சமச்சீர்; இரைப்பைக்காலிகள் இரண்டாம் நிலையில் சமச்சீரற்றவை.",
-                        "The body has a head, a muscular ventral foot and a visceral mass covered dorsally by the mantle." to "உடலில் தலை, தசை வயிற்றுப்புறப் பாதம், முதுகில் மேண்டிலால் மூடிய உள்ளுறுப்புத் திரள் உள்ளன.",
-                        "The mantle forms the mantle cavity and in many species secretes a calcareous shell; the cavity contains the gills and the openings of the excretory, digestive and reproductive systems." to "மேண்டில் மேண்டில் குழியை உருவாக்கி, பல இனங்களில் சுண்ணாம்பு ஓட்டைச் சுரக்கிறது; குழியில் செவுள்களும் கழிவு, செரிமான, இனப்பெருக்க மண்டலத் துளைகளும் உள்ளன.",
+                        "Triploblastic, protostome, soft-bodied and usually unsegmented, with basic bilateral symmetry; gastropods are secondarily asymmetrical." to "மூன்று கருப்படலங்களைக் கொண்ட முதல்வாயின, மென்மையான உடலுடைய விலங்குகள், பொதுவாகக் கண்டமற்றவை; அடிப்படை இருபக்கச் சமச்சீர்; இரைப்பைக்காலிகள் இரண்டாம் நிலையில் சமச்சீரற்றவை.",
+                        "The body has a head, a muscular ventral foot and a visceral mass covered dorsally by the mantle." to "உடலில் தலை, வயிற்றுப்புறத்தில் தசையாலான பாதம், முதுகுப்புறத்தில் மேண்டிலால் மூடப்பட்ட உள்ளுறுப்புத் திரள் உள்ளன.",
+                        "The mantle forms the mantle cavity and in many species secretes a calcareous shell; the cavity contains the gills and the openings of the excretory, digestive and reproductive systems." to "மேண்டில் மேண்டில் குழியை உருவாக்கி, பல இனங்களில் சுண்ணாம்பு ஓட்டைச் சுரக்கிறது; அக்குழியில் செவுள்களும் கழிவு நீக்க, செரிமான மற்றும் இனப்பெருக்க மண்டலங்களின் திறப்புகளும் காணப்படுகின்றன.",
                         "A radula is present in most classes for scraping or cutting food, but is absent in bivalves." to "பெரும்பாலான வகுப்புகளில் உணவைச் சுரண்ட அல்லது வெட்ட ராடுலா உண்டு; இரட்டை ஓடுடைய மெல்லுடலிகளில் (Bivalvia) இல்லை.",
-                        "The true coelom is reduced and the main cavity is a haemocoel; the circulation is generally open, but closed in cephalopods." to "உண்மை உடற்குழி குறைக்கப்பட்டுள்ளது; முதன்மைக் குழி ஹீமோசீல்; இரத்த ஓட்டம் பொதுவாகத் திறந்தது; தலைகாலிகளில் மூடியது.",
-                        "Excretion is by one or more pairs of kidneys, which open into the pericardial cavity and to the mantle cavity." to "கழிவு நீக்கம் பெரிகார்டியல் குழிக்குள்ளும் மேண்டில் குழிக்குள்ளும் திறக்கும் ஒன்று அல்லது அதற்கு மேற்பட்ட இணை சிறுநீரகங்களால்.",
-                        "The nervous system has paired ganglia, cerebral, pedal and visceral, joined by connectives and cords." to "நரம்பு மண்டலத்தில் பெருமூளை, பாத, உள்ளுறுப்பு இணை நரம்பு செல்திரள்கள் இணைப்பிகள், வடங்களால் இணைகின்றன.",
-                        "Development is commonly through a trochophore and a veliger larva in marine groups." to "கடல் குழுக்களில் வளர்ச்சி பொதுவாக ட்ரோகோபோர், வெலிகர் லார்வா வழியாக.",
+                        "The true coelom is reduced and the main cavity is a haemocoel; the circulation is generally open, but closed in cephalopods." to "உண்மையான உடற்குழி மிகவும் குறைந்துள்ளது; முதன்மைக் குழி ஹீமோசீல்; இரத்த ஓட்ட மண்டலம் பொதுவாகத் திறந்த வகையிலும் தலைக்காலிகளில் மூடிய வகையிலும் அமைந்துள்ளது.",
+                        "Excretion is by one or more pairs of kidneys, which open into the pericardial cavity and to the mantle cavity." to "கழிவு நீக்கம் ஒன்று அல்லது அதற்கு மேற்பட்ட இணைச் சிறுநீரகங்கள் மூலம் நடைபெறுகிறது; அவை பெரிகார்டியல் குழியுடனும் மேண்டில் குழியுடனும் தொடர்புடைய திறப்புகளைக் கொண்டுள்ளன.",
+                        "The nervous system has paired ganglia, cerebral, pedal and visceral, joined by connectives and cords." to "நரம்பு மண்டலத்தில் மூளை, பாதம் மற்றும் உள்ளுறுப்புகளுடன் தொடர்புடைய இணை நரம்புச் செல்திரள்கள் காணப்படுகின்றன; அவை நரம்பு இணைப்புகளாலும் நரம்பு வடங்களாலும் இணைக்கப்பட்டுள்ளன.",
+                        "Development is commonly through a trochophore and a veliger larva in marine groups." to "பல கடல்வாழ் மெல்லுடலிகளில் ட்ரோகோபோர் மற்றும் வெலிகர் லார்வா நிலைகள் வழியாக வளர்ச்சி நடைபெறுகிறது.",
                     ),
                     bdef("Visceral mass", "உள்ளுறுப்புத் திரள் (Visceral mass)", "The part of the molluscan body that contains the organs of digestion, circulation, excretion and reproduction." to
-                        "செரிமான, இரத்த ஓட்ட, கழிவு நீக்க, இனப்பெருக்க உறுப்புகள் அடங்கிய மெல்லுடலி உடலின் பகுதி."),
+                        "செரிமானம், இரத்த ஓட்டம், கழிவு நீக்கம் மற்றும் இனப்பெருக்கம் ஆகியவற்றுக்கான உள்ளுறுப்புகள் அடங்கிய மெல்லுடலியின் உடற்பகுதி."),
                     bdef("Mantle", "மேண்டில் (Mantle)", "A fold of the body wall that covers the visceral mass and secretes the shell." to
                         "உள்ளுறுப்புத் திரளை மூடி, ஓட்டைச் சுரக்கும் உடற்சுவர் மடிப்பு."),
                     bdef("Veliger", "வெலிகர் (Veliger)", "The second larval stage of many molluscs, with a ciliated swimming organ, the velum." to
-                        "வெலம் எனும் குறுஇழைகள் (cilia) கொண்ட நீச்சல் மடிப்புடைய பல மெல்லுடலிகளின் இரண்டாம் லார்வா நிலை."),
+                        "வெலம் எனப்படும் குறுஇழைகளைக் கொண்ட நீச்சல் உறுப்புடைய பல மெல்லுடலிகளில் காணப்படும் இரண்டாவது லார்வா நிலை."),
                 )),
             bsec("mantle", "The mantle, the mantle cavity and the shell", "மேண்டில், மேண்டில் குழி, ஓடு",
                 blocks = listOf(
@@ -164,7 +164,7 @@ object MolluscaBookChapter {
                 )),
         ),
         summary = listOf(
-            "Molluscs are triploblastic protostomes with a soft, unsegmented body: head, muscular foot, visceral mass and mantle." to "மெல்லுடலிகள் மென்மையான, கண்டமற்ற உடல்: தலை, தசைப் பாதம், உள்ளுறுப்புத் திரள், மேண்டில் உடைய மூவடுக்கு புரோட்டோஸ்டோம்கள்.",
+            "Molluscs are triploblastic protostomes with a soft, unsegmented body: head, muscular foot, visceral mass and mantle." to "மெல்லுடலிகள் மென்மையான, கண்டமற்ற உடல்: தலை, தசைப் பாதம், உள்ளுறுப்புத் திரள், மேண்டில் உடைய மூன்று கருப்படலங்களைக் கொண்ட முதல்வாயின விலங்குகள்.",
             "The mantle forms the mantle cavity with the gills, and secretes the shell in many species." to "மேண்டில் செவுள்களுடன் மேண்டில் குழியை உருவாக்கி, பல இனங்களில் ஓட்டைச் சுரக்கிறது.",
             "The shell is an optional product: it varies from one piece to two valves, eight plates or an internal remnant." to "ஓடு விருப்பப் பொருள்: ஒரு துண்டு, இரு ஓடுகள், எட்டு தகடுகள் அல்லது உள் எச்சமாக மாறுகிறது.",
             "The radula is a rasping ribbon of teeth and is absent in bivalves." to "ராடுலா சுரண்டும் பற்களின் ரிப்பன்; இருவோட்டுடலிகளில் இல்லை.",
