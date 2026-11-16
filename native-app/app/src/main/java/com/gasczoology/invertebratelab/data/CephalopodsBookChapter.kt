@@ -7,27 +7,27 @@ object CephalopodsBookChapter {
         title = "Cephalopoda: Specialised Molluscs" to "தலைக்காலிகள்: சிறப்படைந்த மெல்லுடலிகள்",
         objectives = listOf(
             "Identify the characteristic cephalopod structures." to
-                "தலைக்காலிகளின் சிறப்பு அமைப்புகளை அறிதல்.",
+                "தலைக்காலிகளுக்குரிய தனிச்சிறப்பான உடலமைப்புகளை அடையாளம் காணுதல்.",
             "Relate locomotion, senses and organ systems to their functions." to
-                "இயக்கம், உணர்திறன், உறுப்பு மண்டலங்களை அவற்றின் பணிகளுடன் தொடர்புபடுத்துதல்.",
+                "இடப்பெயர்ச்சி, உணருறுப்புகள் மற்றும் உறுப்பு மண்டலங்களின் அமைப்புகளை அவற்றின் செயல்பாடுகளுடன் தொடர்புபடுத்துதல்.",
             "Compare representative cephalopods and their shells." to
-                "முக்கிய தலைக்காலிகளையும் அவற்றின் ஓடுகளையும் ஒப்பிடுதல்.",
+                "பிரதிநிதித்துவத் தலைக்காலி விலங்குகளையும் அவற்றின் ஓடுகளையும் ஒப்பிடுதல்.",
         ),
         introduction = listOf(
             "Cephalopods show extensive modification of the molluscan head and foot. Their arms, funnel, sensory organs and circulation can be related to an active marine way of life." to
-                "தலைக்காலிகளில் மெல்லுடலிகளின் தலை, பாதம் ஆகியவை குறிப்பிடத்தக்க மாற்றங்களைப் பெற்றுள்ளன. கரங்கள், புனல், உணருறுப்புகள், இரத்த ஓட்டம் ஆகியவற்றைக் கடல்வாழ் செயல்மிக்க வாழ்முறையுடன் தொடர்புபடுத்திப் படிக்கலாம்.",
+                "தலைக்காலிகளில் மெல்லுடலிகளின் தலை, பாதம் ஆகியவை குறிப்பிடத்தக்க மாற்றங்களைப் பெற்றுள்ளன. கரங்கள், புனல், உணருறுப்புகள், இரத்த ஓட்டம் ஆகியவற்றைக் கடலில் சுறுசுறுப்பாக இயங்கும் வாழ்க்கை முறையுடன் தொடர்புபடுத்திப் படிக்கலாம்.",
         ),
         sections = listOf(
-            bsec("meaning", "What advanced can fairly mean", "மேம்பட்ட என்பதன் நியாயமான பொருள்",
+            bsec("meaning", "What advanced can fairly mean", "‘மேம்பட்ட’ என்ற சொல்லின் அறிவியல் பொருள்",
                 blocks = listOf(
                     bp("A claim of advancement is useful in an answer only when it is attached to features. The correct way to phrase it is that cephalopods are advanced in the sense that they show a number of derived characters, which are not found in most other molluscs, and which together support an active predatory life. Those characters are cephalisation and a large brain, camera-type eyes, a closed circulatory system, a foot reorganised into arms and a funnel, a powerful mantle musculature, and the ability to change colour. The list is the argument." to
-                        "மேம்பாட்டுக் கூற்று பண்புகளுடன் இணைக்கப்படும்போது மட்டுமே விடையில் பயனுள்ளது. சரியான சொற்றொடர்: பெரும்பாலான பிற மெல்லுடலிகளில் காணப்படாத, ஒன்றாகச் சுறுசுறுப்பான வேட்டை வாழ்க்கையை ஆதரிக்கும் பல மாறிய பண்புகளை தலைக்காலிகள் காட்டுவதால் மேம்பட்டவை. அப்பண்புகள்: தலையாக்கமும் பெரிய மூளையும், புகைப்படக் கருவி வகைக் கண்கள், மூடிய சுற்றோட்ட அமைப்பு, கைகளும் குழலுமாக மறுசீரமைந்த பாதம், வலிமையான மேண்டில் தசை, நிறம் மாற்றும் திறன். பட்டியலே வாதம்."),
+                        "ஒரு விலங்குக் குழுவை ‘மேம்பட்டது’ என்று குறிப்பிடும்போது அதற்குரிய குறிப்பிட்ட பண்புகளை விளக்கினால்தான் அக்கூற்று அறிவியல் பொருள் பெறும். சரியான சொற்றொடர்: பெரும்பாலான பிற மெல்லுடலிகளில் காணப்படாத, ஒன்றாகச் சுறுசுறுப்பான வேட்டை வாழ்க்கையை ஆதரிக்கும் பல பரிணாமப் புதுப்பண்புகளைக் கொண்டிருப்பதால் தலைக்காலிகள் குறிப்பிட்ட செயல்பாடுகளில் உயர்ந்த சிறப்படைதலைக் காட்டுகின்றன. அப்பண்புகள்: தலையாக்கமும் பெரிய மூளையும், ஒளிப்படக் கருவியைப் போன்ற பிம்பம் உருவாக்கும் கண்கள், மூடிய சுற்றோட்ட அமைப்பு, கரங்களாகவும் புனலாகவும் மாற்றமடைந்த பாதம், வலிமையான மேலுறைத் தசைகள், நிறம் மாற்றும் திறன். இந்தப் பண்புகளே அக்கருத்துக்கான அறிவியல் ஆதாரங்களாகும்."),
                     bpoints("Five features that show high specialisation", "உயர் சிறப்படைதலைக் காட்டும் ஐந்து பண்புகள்",
-                        "Pronounced cephalisation, with a large centralised brain." to "பெரிய மைய மூளையுடன் வெளிப்படையான தலையாக்கம்.",
-                        "Complex, image-forming camera-type eyes." to "கேமராவைப் போன்று தெளிவான பிம்பத்தை உருவாக்கும் சிக்கலான கண்கள்.",
+                        "Pronounced cephalisation, with a large centralised brain." to "பெரிய மைய மூளையுடன் தெளிவாக வளர்ச்சியடைந்த தலைப்படைதல்.",
+                        "Complex, image-forming camera-type eyes." to "ஒளிப்படக் கருவியைப் போன்று தெளிவான பிம்பத்தை உருவாக்கும் சிக்கலான கண்கள்.",
                         "A closed circulatory system, with branchial hearts in the coleoids." to "கோலியாய்டுகளில் செவுள் இதயங்களுடன் மூடிய சுற்றோட்ட அமைப்பு.",
-                        "A foot modified into arms and a funnel for jet propulsion." to "கைகளாகவும் பீச்சு உந்துதலுக்கான குழலாகவும் மாறிய பாதம்.",
-                        "Chromatophores for signalling and camouflage, with rapid movement." to "தகவல் சமிக்ஞைக்கும் மறைநிறமாற்றத்திற்கும் உதவும் நிறமாற்றச் செல்களும் வேகமான இடப்பெயர்ச்சித் திறனும் உள்ளன.",
+                        "A foot modified into arms and a funnel for jet propulsion." to "கரங்களாகவும் நீர்ப் பீச்சு உந்துதலுக்கான புனலாகவும் மாறிய பாதம்.",
+                        "Chromatophores for signalling and camouflage, with rapid movement." to "தகவல் பரிமாற்றத்திற்கும் சூழலுடன் நிறம் பொருந்தும் மறைவுத்திறனுக்கும் உதவும் நிறமாற்றச் செல்களும் வேகமான இடப்பெயர்ச்சித் திறனும் உள்ளன.",
                     ),
                     bdef("Cephalopoda", "தலைக்காலிகள் (Cephalopoda)", "The class of molluscs including squids, cuttlefishes, octopuses and nautiluses, with arms around the head." to
                         "தலையைச் சுற்றிய கைகளுடைய ஸ்குவிட்கள், கட்ல்மீன்கள், ஆக்டோபஸ்கள், நாட்டிலஸ்கள் உள்ளிட்ட மெல்லுடலி வகுப்பு."),
@@ -181,7 +181,7 @@ object CephalopodsBookChapter {
                 )),
         ),
         summary = listOf(
-            "Advanced should be justified by named features: cephalisation, camera-type eyes, closed circulation, foot-derived arms and funnel, and chromatophores." to "மேம்பட்ட என்பது பெயரிட்ட பண்புகளால் நியாயப்படுத்தப்பட வேண்டும்: தலையாக்கம், புகைப்படக் கருவி வகைக் கண்கள், மூடிய சுற்றோட்டம், பாதத்திலிருந்து உருவான கைகளும் குழலும், குரோமட்டோஃபோர்கள்.",
+            "Advanced should be justified by named features: cephalisation, camera-type eyes, closed circulation, foot-derived arms and funnel, and chromatophores." to "மேம்பட்ட என்பது பெயரிட்ட பண்புகளால் நியாயப்படுத்தப்பட வேண்டும்: தலையாக்கம், ஒளிப்படக் கருவியைப் போன்ற பிம்பம் உருவாக்கும் கண்கள், மூடிய சுற்றோட்டம், பாதத்திலிருந்து உருவான கைகளும் குழலும், குரோமட்டோஃபோர்கள்.",
             "The nervous system is a circumoesophageal brain in a cartilaginous cranium, with giant axons in many coleoids." to "நரம்பு அமைப்பு குருத்தெலும்புக் கபாலத்தில் உணவுக்குழல் சுற்று மூளை; பல கோலியாய்டுகளில் ராட்சத அச்சுவடங்கள்.",
             "The cephalopod eye is a camera-type eye that evolved independently of the vertebrate eye." to "தலைக்காலிக் கண் முதுகெலும்பிக் கண்ணிலிருந்து தனித்துப் பரிணமித்த புகைப்படக் கருவி வகைக் கண்.",
             "Coleoids have a closed circulation with a systemic heart and two branchial hearts." to "கோலியாய்டுகளுக்கு உடல் இதயம், இரு செவுள் இதயங்களுடன் மூடிய சுற்றோட்டம் உண்டு.",
@@ -194,7 +194,7 @@ object CephalopodsBookChapter {
             bqc("Where are the branchial hearts, and what do they do?", "செவுள் இதயங்கள் எங்கு உள்ளன, என்ன செய்கின்றன?",
                 "At the base of each gill; they drive blood through the gills.", "ஒவ்வொரு செவுளின் அடியில்; செவுள்கள் வழியே இரத்தத்தைச் செலுத்துகின்றன."),
             bqc("Is the cephalopod eye homologous with the vertebrate eye?", "தலைக்காலிக் கண் முதுகெலும்பிக் கண்ணுடன் ஒத்தமைவா?",
-                "No. Both are camera-type eyes that evolved independently, an example of convergence.", "இல்லை. இரண்டும் தனித்துப் பரிணமித்த புகைப்படக் கருவி வகைக் கண்கள்; குவிவுக்கு எடுத்துக்காட்டு."),
+                "No. Both are camera-type eyes that evolved independently, an example of convergence.", "இல்லை. இரண்டும் தனித்துப் பரிணமித்த ஒளிப்படக் கருவியைப் போன்ற பிம்பம் உருவாக்கும் கண்கள்; குவிவுக்கு எடுத்துக்காட்டு."),
             bqc("Name two by-products of cuttlefish and squid.", "கட்ல்மீன், ஸ்குவிட்டின் இரு துணைப் பொருட்களைப் பெயரிடுக.",
                 "Cuttlebone and ink.", "கட்டில்எலும்பு, மை."),
         ),
