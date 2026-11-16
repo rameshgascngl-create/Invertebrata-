@@ -44,8 +44,8 @@ object FossilsBookChapter {
             bsec("index", "Index fossils and biostratigraphy", "வழிகாட்டிப் புதைபடிவங்களும் உயிர்படிவ அடுக்கியலும்",
                 blocks = listOf(
                     bp("Fossils are used to date and correlate rocks, which is the subject of biostratigraphy. The principle is that the fauna of the past changed with time in an irreversible way, so that a particular fossil species is found only in rocks of a limited age. If the same fossil is found in rocks in two distant places, the rocks can be correlated in time. A fossil used in this way is an index fossil, or guide fossil." to
-                        "புதைபடிவங்களைப் பயன்படுத்திப் பாறை அடுக்குகளின் ஒப்பீட்டு வயதை அறிந்து, வெவ்வேறு இடங்களிலுள்ள அடுக்குகளை காலவரிசையில் தொடர்புபடுத்தலாம். இதுவே உயிர்ப்படிவ அடுக்கியல் (biostratigraphy) ஆய்வின் அடிப்படையாகும். கொள்கை: கடந்த கால விலங்கினம் காலத்துடன் மீளமுடியாத வகையில் மாறியது; எனவே குறிப்பிட்ட புதைபடிவ இனம் வரம்புடைய வயதுப் பாறைகளில் மட்டுமே காணப்படுகிறது. இரு தொலைவிடங்களிலுள்ள பாறைகளில் ஒரே தொல்லுயிர்ப் படிவம் காணப்பட்டால், அப்பாறைகளின் புவியியல் காலத் தொடர்பை நிறுவலாம். இவ்வாறு பயன்படும் தொல்லுயிர்ப் படிவம் வழிகாட்டிப் தொல்லுயிர்ப் படிவம்."),
-                    bpoints("What makes a good index fossil", "சிறந்த வழிகாட்டிப் தொல்லுயிர்ப் படிவத்தின் பண்புகள்",
+                        "புதைபடிவங்களைப் பயன்படுத்திப் பாறை அடுக்குகளின் ஒப்பீட்டு வயதை அறிந்து, வெவ்வேறு இடங்களிலுள்ள அடுக்குகளை காலவரிசையில் தொடர்புபடுத்தலாம். இதுவே உயிர்ப்படிவ அடுக்கியல் (biostratigraphy) ஆய்வின் அடிப்படையாகும். கொள்கை: கடந்த கால விலங்கினம் காலத்துடன் மீளமுடியாத வகையில் மாறியது; எனவே குறிப்பிட்ட புதைபடிவ இனம் வரம்புடைய வயதுப் பாறைகளில் மட்டுமே காணப்படுகிறது. இரு தொலைவிடங்களிலுள்ள பாறைகளில் ஒரே தொல்லுயிர்ப் படிவம் காணப்பட்டால், அப்பாறைகளின் புவியியல் காலத் தொடர்பை நிறுவலாம். இவ்வாறு பயன்படும் தொல்லுயிர்ப் படிவம் வழிகாட்டித் தொல்லுயிர்ப் படிவம்."),
+                    bpoints("What makes a good index fossil", "சிறந்த வழிகாட்டித் தொல்லுயிர்ப் படிவத்தின் பண்புகள்",
                         "Rapid evolution, so that each species lasted only a short time." to "ஒவ்வொரு இனமும் குறுகிய காலமே நிலைத்திருக்கும் வகையில் விரைவான பரிணாமம்.",
                         "Wide geographic distribution, so that it can be found in many places." to "பல இடங்களில் காணப்படும் வகையில் பரந்த புவியியல் பரவல்.",
                         "Abundance, so that it is likely to be found." to "கண்டறியப்படுவதற்கான வாய்ப்பு அதிகமாக இருக்கும்படி மிகுதியாகக் காணப்படுதல்.",
@@ -54,7 +54,7 @@ object FossilsBookChapter {
                     ),
                     bp("It is important not to overstate the point. Not every species of a trilobite, ammonite or crinoid is equally useful as an index fossil. A species that lived for a very long time, or in a narrow habitat, or that is rare, is of little use for correlation. The groups discussed in this chapter provide many index fossils, and that is a statement about the groups as sources of candidates, and not a claim that each of their species is an index fossil." to
                         "இந்தக் கருத்தை அளவுக்கு மீறிப் பொதுமைப்படுத்தக் கூடாது. டிரைலோபைட், அம்மோனைட், கிரினாய்டின் ஒவ்வொரு இனமும் வழிகாட்டிப் தொல்லுயிர்ப் படிவமாக சமமாகப் பயன்படாது. மிக நீண்ட காலம் வாழ்ந்த, குறுகிய வாழிடப் பரவலைக் கொண்ட அல்லது அரிதாகக் காணப்படும் இனம் ஒப்பீட்டுக்குச் சிறிதே பயன்படும். இவ்வத்தியாயத்தில் குறிப்பிடப்படும் குழுக்களைச் சேர்ந்த பல இனங்கள் வழிகாட்டிப் புதைபடிவங்களாகப் பயன்படுகின்றன. ஆனால் அக்குழுக்களின் எல்லா இனங்களும் அதே அளவில் காலவரிசை ஒப்பீட்டுக்குப் பயன்படுகின்றன என்று பொருளல்ல."),
-                    bdef("Index fossil", "வழிகாட்டிப் தொல்லுயிர்ப் படிவம் (Index fossil)", "A fossil that is widespread, abundant and restricted in time, and so is used to date and correlate rocks." to
+                    bdef("Index fossil", "வழிகாட்டித் தொல்லுயிர்ப் படிவம் (Index fossil)", "A fossil that is widespread, abundant and restricted in time, and so is used to date and correlate rocks." to
                         "பரவலான, மிகுதியான, காலத்தில் வரம்புடைய, எனவே பாறை அடுக்குகளின் ஒப்பீட்டு வயதை நிர்ணயிக்கவும் அவற்றைத் தொடர்புபடுத்தவும் பயன்படும் தொல்லுயிர்ப் படிவம்."),
                     bdef("Biostratigraphy", "உயிர்ப்படிவ அடுக்கியல் (Biostratigraphy)", "The use of fossils to date and correlate rock layers." to
                         "பாறை அடுக்குகளின் ஒப்பீட்டு வயதை நிர்ணயிக்கவும் தொடர்புபடுத்தவும் புதைபடிவங்களைப் பயன்படுத்துதல்."),
@@ -84,7 +84,7 @@ object FossilsBookChapter {
                         "An ammonite is a cephalopod with a chambered shell. A coiled shell alone does not make an animal a snail." to
                             "அம்மோனைட் அறைகளாகப் பிரிந்த ஓட்டைக் கொண்ட தலைக்காலி. சுருள் ஓடு மட்டும் விலங்கை நத்தையாக்காது."),
                     bdef("Ammonite", "அம்மோனைட் (Ammonite)", "An extinct cephalopod with a planispirally coiled, chambered shell; an important Mesozoic index fossil." to
-                        "சுற்றுத்தளச் சுருள், அறை ஓடுடைய அழிந்த தலைக்காலி; முக்கிய மீசோசோயிக் வழிகாட்டிப் தொல்லுயிர்ப் படிவம்."),
+                        "சுற்றுத்தளச் சுருள், அறை ஓடுடைய அழிந்த தலைக்காலி; முக்கிய மீசோசோயிக் வழிகாட்டித் தொல்லுயிர்ப் படிவம்."),
                     bdef("Septum", "தடுப்புச் சுவர் (Septum)", "A partition between the chambers of a cephalopod shell." to
                         "தலைக்காலியின் ஓட்டில் அடுத்தடுத்த அறைகளைப் பிரிக்கும் தடுப்புச் சுவர்."),
                     bdef("Suture", "சூச்சர் (Suture)", "The line where a septum meets the outer wall of the shell." to
@@ -137,7 +137,7 @@ object FossilsBookChapter {
                             listOf("Cenozoic" to "செனோசோயிக்", "About 66 million years ago to the present" to "ஏறத்தாழ 6.6 கோடி ஆண்டுகளுக்கு முன் முதல் இன்று வரை", "Modern molluscs, foraminifera, echinoids, crustaceans" to "நவீன மெல்லுடலிகள், ஃபோராமினிஃபெரா, எக்கினாய்டுகள், கிரஸ்டேஷியன்கள்", "Continuing" to "தொடர்கிறது"),
                         )),
                     bp("The ages quoted here are rounded, and the student should use the dates in the prescribed text. The point to learn is the order of the groups, since an index fossil is useful only when it is placed in the right part of the sequence.",
-                        "இங்கு குறிப்பிடப்பட்டுள்ள கால அளவுகள் தோராயமாக முழு எண்களாக்கப்பட்டவை; மாணவர் பரிந்துரைக்கப்பட்ட நூலின் காலங்களையே பயன்படுத்த வேண்டும். மாணவர்கள் முக்கியமாக அறிய வேண்டியது இக்குழுக்களின் காலவரிசையாகும்; ஏனெனில் வழிகாட்டிப் தொல்லுயிர்ப் படிவம் புவியியல் காலவரிசையில் சரியான இடத்தில் பொருத்தப்படும்போதே பயனுள்ளதாகும்."),
+                        "இங்கு குறிப்பிடப்பட்டுள்ள கால அளவுகள் தோராயமாக முழு எண்களாக்கப்பட்டவை; மாணவர் பரிந்துரைக்கப்பட்ட நூலின் காலங்களையே பயன்படுத்த வேண்டும். மாணவர்கள் முக்கியமாக அறிய வேண்டியது இக்குழுக்களின் காலவரிசையாகும்; ஏனெனில் வழிகாட்டித் தொல்லுயிர்ப் படிவம் புவியியல் காலவரிசையில் சரியான இடத்தில் பொருத்தப்படும்போதே பயனுள்ளதாகும்."),
                     bdef("Geological time scale", "புவியியல் காலஅளவு (Geological time scale)", "The division of Earth's history into eras, periods and epochs, based on the sequence of rocks and fossils." to
                         "பாறை அடுக்குகளும் தொல்லுயிர்ப் படிவங்களும் காணப்படும் வரிசையின் அடிப்படையில் பூமியின் வரலாற்றை ஊழிகள், காலங்கள், பருவங்களாகப் பிரித்தல்."),
                 )),
@@ -184,16 +184,16 @@ object FossilsBookChapter {
         ),
         summary = listOf(
             "Fossils are biased towards organisms with mineralised hard parts, which is a preservation bias." to "தொல்லுயிர்ப் படிவங்கள் கனிமமயமான கடின உடற்பகுதிகளைக் கொண்ட உயிரினங்கள் அதிகமாகப் பாதுகாக்கப்படும் சார்பைக் கொண்டுள்ளன; இது படிவப் பாதுகாப்பில் ஏற்படும் சார்பு.",
-            "A good index fossil evolves rapidly, is widespread and abundant, and has a restricted time range." to "நல்ல வழிகாட்டிப் தொல்லுயிர்ப் படிவம் விரைவாகப் பரிணமிக்கிறது, பரவலானது, மிகுதியானது, வரம்புடைய கால எல்லை உடையது.",
-            "Trilobites are extinct Palaeozoic arthropods useful in biostratigraphy." to "டிரைலோபைட்டுகள் உயிர்படிவ அடுக்கியலில் பயனுள்ள அழிந்த பேலியோசோயிக் கணுக்காலிகள்.",
+            "A good index fossil evolves rapidly, is widespread and abundant, and has a restricted time range." to "சிறந்த வழிகாட்டித் தொல்லுயிர்ப் படிவத்துக்குரிய இனம் விரைவாகப் பரிணமித்திருக்க வேண்டும்; பரந்த புவியியல் பரவல், மிகுதியான எண்ணிக்கை மற்றும் குறுகிய புவியியல் காலவரம்பு ஆகிய பண்புகளைக் கொண்டிருக்க வேண்டும்.",
+            "Trilobites are extinct Palaeozoic arthropods useful in biostratigraphy." to "டிரைலோபைட்டுகள் பேலியோசோயிக் ஊழியில் வாழ்ந்து அழிந்த, உயிர்ப்படிவ அடுக்கியல் ஆய்வில் பயனுள்ள கணுக்காலிகள்.",
             "Ammonites are extinct cephalopods with chambered coiled shells and are not gastropods." to "அம்மோனைட்டுகள் அறைகளாகப் பிரிந்த சுருள் ஓட்டைக் கொண்ட அழிந்துபோன தலைக்காலிகள்; இரைப்பைக்காலிகள் அல்ல.",
             "Crinoid columnals and calyx plates are common fossils that record ancient marine communities." to "கிரினாய்டு கொலும்னல்களும் கேலிக்ஸ் தகடுகளும் பண்டைய கடல் உயிரினச் சமூகங்களுக்கான சான்றுகளை வழங்கும் பொதுவான தொல்லுயிர்ப் படிவங்கள்.",
             "Foraminiferans and radiolarians fossilise well; the poor record of naked protozoans is a bias, not proof of rarity." to "ஃபோராமினிஃபெரன்களும் ரேடியோலேரியன்களும் நன்கு தொல்லுயிர்ப் படிவங்களாகப் பாதுகாக்கப்படுகின்றன; கனிமக் கூடு இல்லாத புரோட்டோசோவாக்களின் தொல்லுயிர்ப் படிவப் பதிவு குறைவாக இருப்பது பாதுகாப்பில் ஏற்படும் சார்பினாலாகும்; அவை அரிதாக வாழ்ந்தன என்பதற்கான சான்றல்ல.",
         ),
         checks = listOf(
-            bqc("Why are soft-bodied animals poorly represented as fossils?", "மென்உடல் விலங்குகள் புதைபடிவங்களாக ஏன் குறைவாகப் பிரதிநிதித்துவம் பெறுகின்றன?",
+            bqc("Why are soft-bodied animals poorly represented as fossils?", "மென்மையான உடலுடைய விலங்குகள் தொல்லுயிர்ப் படிவப் பதிவில் ஏன் குறைவாகக் காணப்படுகின்றன?",
                 "Their tissues decay quickly and lack mineralised hard parts, so they are rarely preserved.", "அவற்றின் மென்மையான திசுக்கள் விரைவாகச் சிதைவடைகின்றன; கனிமமயமான கடின உடற்பகுதிகள் இல்லாததால் அவை தொல்லுயிர்ப் படிவங்களாக அரிதாகவே பாதுகாக்கப்படுகின்றன."),
-            bqc("Name four properties of a good index fossil.", "நல்ல வழிகாட்டிப் தொல்லுயிர்ப் படிவத்தின் நான்கு பண்புகளைப் பெயரிடுக.",
+            bqc("Name four properties of a good index fossil.", "நல்ல வழிகாட்டித் தொல்லுயிர்ப் படிவத்தின் நான்கு பண்புகளைப் பெயரிடுக.",
                 "Rapid evolution, wide distribution, abundance and a restricted time range.", "விரைவான பரிணாம மாற்றம், பரந்த புவியியல் பரவல், மிகுதியாகக் காணப்படுதல் மற்றும் குறுகிய புவியியல் காலவரம்பு."),
             bqc("To which class does an ammonite belong?", "அம்மோனைட் எந்த வகுப்பைச் சேர்ந்தது?",
                 "Cephalopoda, not Gastropoda.", "தலைக்காலிகள் (Cephalopoda) வகுப்பைச் சேர்ந்தது; இரைப்பைக்காலிகள் (Gastropoda) வகுப்பைச் சேர்ந்ததல்ல."),
