@@ -75,7 +75,7 @@ object AnnelidaBookChapter {
                     bdef("Parapodium", "பாரபோடியம் (Parapodium)", "A fleshy lateral outgrowth of a segment of a polychaete, carrying chaetae and often gills." to
                         "பாலிகீட்டாவின் கண்டத்தின் சதைப்பற்றுள்ள பக்க வளர்ச்சி; சீட்டாக்களையும் பெரும்பாலும் செவுள்களையும் தாங்குகிறது."),
                     bdef("Hydrostatic skeleton", "நீர்ம சட்டகம்", "A body fluid under pressure that gives the muscles something to act against." to
-                        "தசைகள் எதிராகச் செயல்பட ஏதேனும் தரும் அழுத்தத்தில் உள்ள உடல் திரவம்."),
+                        "தசைகள் சுருங்கும்போது அவற்றின் விசையை எதிர்த்துத் தாங்கி உடலுக்கு ஆதரவு அளிக்கும் அழுத்தமுள்ள உடல் திரவம்."),
                 )),
             bsec("systems", "Gut, excretion, nerves and sense organs", "குடல், கழிவு நீக்கம், நரம்புகள், உணர்வு உறுப்புகள்",
                 blocks = listOf(
@@ -88,7 +88,7 @@ object AnnelidaBookChapter {
                     bdef("Typhlosole", "டைஃப்ளோசோல் (Typhlosole)", "A longitudinal fold of the dorsal wall of the intestine of an earthworm that increases the area for absorption." to
                         "உறிஞ்சும் பரப்பை அதிகரிக்கும் மண்புழுக் குடலின் முதுகுச் சுவரிலுள்ள நீளவாட்டு மடிப்பு."),
                     bdef("Nephrostome", "நெஃப்ரோஸ்டோம்", "The ciliated funnel of a nephridium that opens into the coelom." to
-                        "உடற்குழிக்குள் திறக்கும் நெஃப்ரிடியத்தின் கசையிழைப் புனல்."),
+                        "உடற்குழிக்குள் திறக்கும் நெஃப்ரிடியத்தின் குறுஇழைகளைக் கொண்ட புனல்."),
                 )),
             bsec("circulation", "Closed circulation", "மூடிய இரத்த ஓட்டம்",
                 blocks = listOf(
@@ -163,7 +163,7 @@ object AnnelidaBookChapter {
                     bdef("Clitellum", "கிளைடெல்லம்", "A glandular band of the body wall, found in oligochaetes and leeches, that secretes the cocoon." to
                         "ஒலிகோகீட்டாக்கள், அட்டைகளில் காணப்படும், கூட்டைச் சுரக்கும் உடற்சுவரின் சுரப்பிப் பட்டை."),
                     bdef("Trochophore", "ட்ரோகோபோர்", "The free-swimming ciliated larva of polychaetes and some other protostomes." to
-                        "பாலிகீட்டாக்கள், வேறு சில புரோட்டோஸ்டோம்களின் தனி நீந்தும் கசையிழை லார்வா."),
+                        "பாலிகீட்டாக்களிலும் வேறு சில புரோட்டோஸ்டோம் விலங்குகளிலும் காணப்படும், குறுஇழைகளால் நீந்தும் இளவுயிரி நிலை."),
                     bdef("Hermaphrodite", "இருபால் உயிரி", "An animal that has both male and female reproductive organs in the same individual." to
                         "ஒரே உயிரியில் ஆண், பெண் இனப்பெருக்க உறுப்புகள் இரண்டும் உள்ள விலங்கு."),
                 )),
