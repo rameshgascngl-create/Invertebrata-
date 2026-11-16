@@ -4,24 +4,24 @@ package com.gasczoology.invertebratelab.data
 object IntroInvertebrataBookChapter {
     val chapter = bchapter(
         lessonId = "u1-intro",
-        title = "Introduction to the Invertebrata" to "முதுகெலும்பற்றவை அறிமுகம்",
+        title = "Introduction to the Invertebrata" to "முதுகெலும்பற்ற விலங்குகள் — அறிமுகம்",
         objectives = listOf(
             "Recognise the scope and diversity of invertebrate zoology." to
-                "முதுகெலும்பற்ற விலங்கியலின் பரப்பையும் உயிரினப் பல்வகைமையையும் அறிதல்.",
+                "முதுகெலும்பற்ற விலங்கியல் ஆய்வின் பரப்பையும் முதுகெலும்பற்ற விலங்குகளின் பல்வகைமையையும் அறிதல்.",
             "Use body-plan features to compare animal groups." to
-                "உடலமைப்புப் பண்புகளைக் கொண்டு விலங்குத் தொகுதிகளை ஒப்பிடுதல்.",
+                "உடலமைப்புத் திட்டத்தின் பண்புகளை அடிப்படையாகக் கொண்டு விலங்குக் குழுக்களை ஒப்பிடுதல்.",
             "Apply basic classification terms with suitable examples." to
-                "அடிப்படை வகைப்பாட்டுச் சொற்களை உரிய எடுத்துக்காட்டுகளுடன் பயன்படுத்துதல்.",
+                "வகைப்பாட்டியலின் அடிப்படைச் சொற்களைப் பொருத்தமான எடுத்துக்காட்டுகளுடன் பயன்படுத்துதல்.",
         ),
         introduction = listOf(
             "Invertebrates are animals without a vertebral column. Comparing symmetry, body cavities, segmentation and organ systems provides a framework for studying their major groups." to
-                "முதுகெலும்புத் தொடர் இல்லாத விலங்குகள் முதுகெலும்பற்றவை எனப்படுகின்றன. உடல் சமச்சீர், உடற்குழி, கண்ட அமைப்பு, உறுப்பு மண்டலங்கள் ஆகியவற்றை ஒப்பிட்டு அவற்றின் முக்கியத் தொகுதிகளை அறியலாம்.",
+                "முதுகெலும்புத் தொடர் இல்லாத விலங்குகள் முதுகெலும்பற்ற விலங்குகள் எனப்படுகின்றன. உடற்சமச்சீர், உடற்குழி, உடற்கண்ட அமைப்பு மற்றும் உறுப்பு மண்டலங்கள் ஆகியவற்றை ஒப்பிட்டு அவற்றின் முக்கியத் தொகுதிகளை அறியலாம்.",
         ),
         sections = listOf(
-            bsec("hierarchy", "The taxonomic hierarchy", "வகைப்பாட்டுப் படிநிலை",
+            bsec("hierarchy", "The taxonomic hierarchy", "வகைப்பாட்டியலின் படிநிலை அமைப்பு",
                 blocks = listOf(
                     bp("Taxonomic hierarchy arranges organisms in nested ranks, each rank contained within the one above it. In the conventional sequence from the narrowest to the broadest the ranks are species, genus, family, order, class, phylum, kingdom and domain. The species is the basic named rank. Related species are grouped into a genus, related genera into a family, and progressively broader groups form the higher ranks. Each group at any rank is called a taxon, and the plural is taxa." to
-                        "வகைப்பாட்டில் உயிரினங்கள் ஒன்றுக்குள் ஒன்று அடங்கும் படிநிலைகளாக ஒழுங்குபடுத்தப்படுகின்றன. ஒவ்வொரு படிநிலையும் அதற்கு மேலுள்ள விரிவான குழுவிற்குள் அடங்குகிறது. குறுகியதிலிருந்து அகன்றது வரை வழக்கமான வரிசையில் தரங்கள்: இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain). இனம் அடிப்படைப் பெயரிடப்பட்ட தரம். தொடர்புடைய இனங்கள் பேரினமாகவும், தொடர்புடைய பேரினங்கள் குடும்பமாகவும் தொகுக்கப்படுகின்றன; படிப்படியாக அகன்ற குழுக்கள் உயர் தரங்களை உருவாக்குகின்றன. வகைப்பாட்டின் எந்தப் படிநிலையிலும் அங்கீகரிக்கப்படும் குழு டாக்சான் (taxon) எனப்படும்; அதன் பன்மை டாக்சா (taxa)."),
+                        "வகைப்பாட்டில் உயிரினங்கள் ஒன்றினுள் மற்றொன்று அடங்கும் வகைப்பாட்டுப் படிநிலைகளில் ஒழுங்குபடுத்தப்படுகின்றன. ஒவ்வொரு படிநிலையும் அதற்கு மேலுள்ள விரிவான குழுவிற்குள் அடங்குகிறது. மிகக் குறுகிய வகைப்பாட்டுப் பிரிவிலிருந்து மிக விரிவான பிரிவு வரையிலான வழக்கமான படிநிலைகள்: இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain). இனம் என்பது பெயரிடப்பட்ட வகைப்பாட்டின் அடிப்படைப் படிநிலையாகும். தொடர்புடைய இனங்கள் பேரினமாகவும், தொடர்புடைய பேரினங்கள் குடும்பமாகவும் தொகுக்கப்படுகின்றன; இவ்வாறே படிப்படியாக விரிவான குழுக்கள் உயர்நிலை வகைப்பாட்டுப் பிரிவுகளை உருவாக்குகின்றன. வகைப்பாட்டின் எந்தப் படிநிலையிலும் வரையறுக்கப்பட்டுள்ள உயிரினக் குழு டாக்சான் (taxon) எனப்படும்; அதன் பன்மை டாக்சா (taxa)."),
                     btable("The ranks of the hierarchy, with a worked example", "படிநிலைத் தரங்களும் எடுத்துக்காட்டும்",
                         listOf("Rank" to "தரம்", "Example: the freshwater snail" to "எடுத்துக்காட்டு: நன்னீர் நத்தை"),
                         listOf(
@@ -32,7 +32,7 @@ object IntroInvertebrataBookChapter {
                             listOf("Genus" to "பேரினம்", "Pila" to "பைலா"),
                         )),
                     bp("The sequence is a framework for classification, and the order of ranks is not proof of the relationship between the taxa. A genus and a family do not exist as discoverable objects in the same way as an individual animal. The ranks are conventions by which the groups that biologists recognise are given a place, and the grouping itself is a hypothesis. Whether a group is natural, in the sense that it includes an ancestor and all of its descendants, must be inferred from evidence, and the rank in the table does not decide it." to
-                        "வகைப்பாட்டுப் படிநிலைகள் உயிரினங்களை ஒழுங்குபடுத்த உதவும் ஒரு கட்டமைப்பாகும். ஆனால் ஒரு குழுவுக்கு வழங்கப்படும் படிநிலை மட்டுமே அதன் பரிணாம உறவுக்கான சான்றாகாது. தனி விலங்கை நேரடியாகக் காண்பதைப் போலப் பேரினத்தையோ குடும்பத்தையோ காண முடியாது. இவை சான்றுகளின் அடிப்படையில் வகுக்கப்படும் வகைப்பாட்டுக் குழுக்கள்; அவற்றுக்கிடையிலான உறவுகள் ஆய்வின் மூலம் சோதிக்கப்பட வேண்டியவை. ஒரு குழு மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் பொருளில் இயற்கையானதா என்பது சான்றிலிருந்து ஊகிக்கப்பட வேண்டும்; அட்டவணையிலுள்ள தரம் அதை முடிவு செய்யாது."),
+                        "வகைப்பாட்டியலின் படிநிலை அமைப்புகள் உயிரினங்களை ஒழுங்குபடுத்த உதவும் ஒரு கட்டமைப்பாகும். ஆனால் ஒரு குழுவுக்கு வழங்கப்படும் படிநிலை மட்டுமே அதன் பரிணாம உறவுக்கான சான்றாகாது. தனி விலங்கை நேரடியாகக் காண்பதைப் போலப் பேரினத்தையோ குடும்பத்தையோ காண முடியாது. இவை சான்றுகளின் அடிப்படையில் வகுக்கப்படும் வகைப்பாட்டுக் குழுக்கள்; அவற்றுக்கிடையிலான உறவுகள் ஆய்வின் மூலம் சோதிக்கப்பட வேண்டியவை. ஒரு குழு மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் பொருளில் இயற்கையானதா என்பது சான்றிலிருந்து ஊகிக்கப்பட வேண்டும்; அட்டவணையிலுள்ள தரம் அதை முடிவு செய்யாது."),
                     bdef("Taxonomy", "வகைப்பாட்டியல் (Taxonomy)", "The science of describing, naming and classifying organisms." to
                         "உயிரினங்களை விவரித்தல், அறிவியல் பெயரிடுதல் மற்றும் வகைப்படுத்துதல் பற்றிய அறிவியல்."),
                     bdef("Taxon", "வகைப்பாட்டுக் குழு (Taxon)", "A group of organisms at any rank that is recognised in classification." to
@@ -152,7 +152,7 @@ object IntroInvertebrataBookChapter {
             bsec("answering", "Answering questions in this introductory part", "இந்த அறிமுகப் பகுதியின் வினாக்களுக்கு விடையளித்தல்",
                 blocks = listOf(
                     bp("The introduction is examined as short notes: the taxonomic hierarchy, binomial nomenclature, type specimen, the principle of priority, and the characters used in classification. For each, a definition, one rule or example and a worked name are enough. The hierarchy is best given as a column of ranks with a single animal taken through all of them, and the answer should say that the ranks are conventions. For binomial nomenclature the points are the two words, the capital letter on the genus, the italics, and the author citation. For the question on whether Invertebrata is a phylum, the answer is that it is not, since it is a negative, collective term for a paraphyletic assemblage of some thirty phyla.",
-                        "இந்த அறிமுகப் பகுதியிலிருந்து தேர்வுகளில் பொதுவாகச் சிறுகுறிப்பு வினாக்கள் கேட்கப்படலாம்: வகைப்பாட்டுப் படிநிலை, இருசொல் பெயரிடல், வகை மாதிரி, முன்னுரிமைக் கோட்பாடு, வகைப்பாட்டில் பயன்படும் பண்புகள். ஒவ்வொன்றுக்கும் வரையறை, ஒரு விதி அல்லது எடுத்துக்காட்டு, ஒரு பெயர் போதுமானவை. படிநிலை தரங்களின் பத்தியாக ஒரே விலங்கின் வகைப்பாட்டை இனம் முதல் பேருலகம் வரை வரிசையாக எடுத்துக்காட்டுவது சிறந்தது; வகைப்பாட்டுப் படிநிலைகள் அறிவியல் தகவல்களை ஒழுங்குபடுத்தும் மரபுகளாகும் என்பதையும் குறிப்பிட வேண்டும். இருசொல் பெயரிடலுக்கு இரு சொற்கள், பேரினப் பெயரில் பெரிய எழுத்து, சாய்வெழுத்து, ஆசிரியர் குறிப்பு ஆகியவை புள்ளிகள். முதுகெலும்பற்றவை தொகுதியா என்ற வினாவுக்கு, இல்லை; முதுகெலும்புத் தொடர் இல்லாத பல்வேறு விலங்குத் தொகுதிகளைக் குறிக்கும் முறைசாரா கூட்டுச் சொல் என்பதே சரியான விடை. இது தனித்த இயற்கையான பரிணாமக் கிளையல்ல."),
+                        "இந்த அறிமுகப் பகுதியிலிருந்து தேர்வுகளில் பொதுவாகச் சிறுகுறிப்பு வினாக்கள் கேட்கப்படலாம்: வகைப்பாட்டியலின் படிநிலை அமைப்பு, இருசொல் பெயரிடல், வகை மாதிரி, முன்னுரிமைக் கோட்பாடு, வகைப்பாட்டில் பயன்படும் பண்புகள். ஒவ்வொன்றுக்கும் வரையறை, ஒரு விதி அல்லது எடுத்துக்காட்டு, ஒரு பெயர் போதுமானவை. படிநிலை தரங்களின் பத்தியாக ஒரே விலங்கின் வகைப்பாட்டை இனம் முதல் பேருலகம் வரை வரிசையாக எடுத்துக்காட்டுவது சிறந்தது; வகைப்பாட்டியலின் படிநிலை அமைப்புகள் அறிவியல் தகவல்களை ஒழுங்குபடுத்தும் மரபுகளாகும் என்பதையும் குறிப்பிட வேண்டும். இருசொல் பெயரிடலுக்கு இரு சொற்கள், பேரினப் பெயரில் பெரிய எழுத்து, சாய்வெழுத்து, ஆசிரியர் குறிப்பு ஆகியவை புள்ளிகள். முதுகெலும்பற்றவை தொகுதியா என்ற வினாவுக்கு, இல்லை; முதுகெலும்புத் தொடர் இல்லாத பல்வேறு விலங்குத் தொகுதிகளைக் குறிக்கும் முறைசாரா கூட்டுச் சொல் என்பதே சரியான விடை. இது தனித்த இயற்கையான பரிணாமக் கிளையல்ல."),
                     bpoints("Frequent errors to avoid", "தவிர்க்க வேண்டிய அடிக்கடி நிகழும் பிழைகள்",
                         "Writing the species name with a capital letter or the genus name without one." to "இனப் பெயரைப் பெரிய எழுத்திலும் பேரினப் பெயரைச் சிறிய எழுத்திலும் எழுதுதல்.",
                         "Treating the ranks as natural objects rather than conventions of classification." to "தரங்களை வகைப்பாட்டு மரபுகளாக அல்லாமல் இயற்கைப் பொருட்களாகக் கருதுதல்.",
@@ -192,7 +192,7 @@ object IntroInvertebrataBookChapter {
                 )),
         ),
         summary = listOf(
-            "The taxonomic hierarchy arranges organisms in nested ranks: species, genus, family, order, class, phylum, kingdom and domain." to "வகைப்பாட்டுப் படிநிலை உயிரிகளை இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain) என உள்ளடக்கிய தரங்களாக அடுக்குகிறது.",
+            "The taxonomic hierarchy arranges organisms in nested ranks: species, genus, family, order, class, phylum, kingdom and domain." to "வகைப்பாட்டியலின் படிநிலை அமைப்பு உயிரிகளை இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain) என உள்ளடக்கிய தரங்களாக அடுக்குகிறது.",
             "A species name is a binomen of genus and specific name, and name-bearing types give an objective reference." to "இனப் பெயர் பேரினம், சிறப்புப் பெயரின் இருசொல்; பெயர்தாங்கி வகை மாதிரிகள் புறவய ஆதாரத்தைத் தருகின்றன.",
             "The rank sequence is a framework, not proof of phylogenetic relationship." to "தரவரிசை கட்டமைப்பு; இனவரலாற்று உறவுக்கான சான்றல்ல.",
             "Invertebrata is an informal collective term and not a single phylum." to "முதுகெலும்பற்றவை முறைசாரா கூட்டுச் சொல்; ஒற்றைத் தொகுதி அல்ல.",
