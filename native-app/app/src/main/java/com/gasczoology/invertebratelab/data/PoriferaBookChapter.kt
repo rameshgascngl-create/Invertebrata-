@@ -70,8 +70,8 @@ object PoriferaBookChapter {
                             listOf("Myocyte" to "மயோசைட்", "Around oscula and ostia" to "ஆஸ்குலம், ஆஸ்டியாவைச் சுற்றி", "Contracts slowly to narrow openings" to "மெதுவாகச் சுருங்கி துளைகளைக் குறுக்குகிறது"),
                         )),
                     bdef("Pinacocyte", "பினாகோசைட்",
-                        "A flat cell that forms the outer covering of the sponge and lines the incurrent canals and the central cavity." to
-                            "கடற்பஞ்சின் வெளி மூடியையும் உட்செல்லும் கால்வாய்கள், நடுக்குழி ஆகியவற்றின் உள்ளடுக்கையும் அமைக்கும் தட்டை செல்."),
+                        "A flattened cell of the pinacoderm that covers the sponge surface and, in appropriate canal-system grades, lines incurrent canals and the spongocoel." to
+                            "கடற்பஞ்சின் வெளிப்புறப் பினாகோடெர்மை அமைக்கும் தட்டையான செல். கால்வாய் அமைப்பைப் பொறுத்து உட்செல்லும் கால்வாய்களிலும் ஸ்பாஞ்சோசீலின் உட்பரப்பிலும் காணப்படலாம்."),
                     bdef("Choanocyte", "கோயனோசைட் (Choanocyte; காலர் செல்)",
                         "A flagellated cell with a collar of microvilli round the base of the flagellum. It creates the water current and captures food particles." to
                             "கசையிழையின் அடியில் நுண்விரல் காலர் கொண்ட செல்; நீரோட்டத்தை உருவாக்கி உணவுத் துகள்களைப் பிடிக்கிறது."),
@@ -87,8 +87,8 @@ object PoriferaBookChapter {
                 )),
             bsec("skeleton", "The skeleton", "எலும்புக்கூடு",
                 blocks = listOf(
-                    bp("The skeleton gives the soft body its shape and holds the canals open. It consists of spicules, of spongin, or of both, and its nature is the main character used to separate the classes." to
-                        "எலும்புக்கூடு மென்மையான உடலுக்கு வடிவம் தந்து கால்வாய்களைத் திறந்து வைத்திருக்கிறது. இது ஊசிகள், ஸ்பாஞ்சின் அல்லது இரண்டாலும் ஆனது; வகுப்புகளைப் பிரிக்கப் பயன்படும் முக்கியப் பண்பு இதன் தன்மையே."),
+                    bp("The skeleton gives the soft body its shape and holds the canals open. It consists of spicules, of spongin, or of both, and its composition and spicule structure are important characters in traditional classification." to
+                        "எலும்புக்கூடு மென்மையான உடலுக்கு வடிவம் தந்து கால்வாய்களைத் திறந்து வைத்திருக்கிறது. இது ஊசிகள், ஸ்பாஞ்சின் அல்லது இரண்டாலும் ஆனது; மரபுவழி வகைப்பாட்டில் எலும்புக்கூட்டின் வேதியியல் தன்மையும் நுண்முள்களின் அமைப்பும் முக்கியப் பண்புகளாகப் பயன்படுகின்றன."),
                 ),
                 subs = listOf(
                     bsub("Spicules", "ஊசிகள்",
@@ -117,8 +117,8 @@ object PoriferaBookChapter {
                 )),
             bsec("position", "Position among the animals", "விலங்குகளிடையே இடம்",
                 blocks = listOf(
-                    bp("Because sponges have no true tissues, older textbooks placed them in a separate group, the Parazoa, beside the Eumetazoa, which includes all animals with true tissues. The name is still met in examinations, but it does not describe a natural group, and it is used only for convenience." to
-                        "கடற்பஞ்சுகளுக்கு உண்மையான திசுக்கள் இல்லாததால், உண்மைத் திசுக்கள் கொண்ட எல்லா விலங்குகளும் அடங்கிய யூமெட்டாசோவாவுக்கு அருகே பழைய பாடநூல்கள் அவற்றைப் பாராசோவா என்ற தனிக் குழுவில் வைத்தன. இப்பெயர் இன்றும் தேர்வுகளில் வருகிறது; ஆனால் இது இயற்கையான குழுவைக் குறிக்காது; வசதிக்காக மட்டுமே பயன்படுகிறது."),
+                    bp("Because sponges have no true tissues, older textbooks placed them in a separate group, the Parazoa, beside the Eumetazoa, which includes all animals with true tissues. The name remains in older teaching schemes; its taxonomic scope and phylogenetic interpretation depend on the classification used, so it should not be treated as a current formal sponge class." to
+                        "கடற்பஞ்சுகளுக்கு உண்மையான திசுக்கள் இல்லாததால், உண்மைத் திசுக்கள் கொண்ட எல்லா விலங்குகளும் அடங்கிய யூமெட்டாசோவாவுக்கு அருகே பழைய பாடநூல்கள் அவற்றைப் பாராசோவா என்ற தனிக் குழுவில் வைத்தன. இப்பெயர் பழைய பாடநூல் வகைப்பாடுகளில் காணப்படுகிறது. இதன் வகைப்பாட்டு எல்லையும் பரிணாமப் பொருளும் பயன்படுத்தப்படும் வகைப்பாட்டைப் பொறுத்து மாறுவதால், இதைத் துளையுடலிகளின் நவீன முறையான வகுப்பாகக் கருதக் கூடாது."),
                     bp("Sponges are the descendants of one of the earliest branches of animal life, and their choanocytes resemble the collared flagellate cells of the choanoflagellates, the protists thought to be the closest living relatives of animals. This resemblance is the main evidence cited for an origin of animals from a colonial, collared flagellate ancestor. The exact order in which sponges and other early animal groups branched is still being investigated." to
                         "கடற்பஞ்சுகள் விலங்கு வாழ்வின் மிக ஆரம்பக் கிளைகளில் ஒன்றின் வழித்தோன்றல்கள்; அவற்றின் கோயனோசைட்டுகள், விலங்குகளின் மிக நெருங்கிய வாழும் உறவினர்களாகக் கருதப்படும் புரோட்டிஸ்டுகளான கோனோஃபிளாஜெல்லேட்டுகளின் காலர் கசையிழை செல்களை ஒத்துள்ளன. விலங்குகள் காலர் கசையிழை கொண்ட கூட்டு மூதாதையிடமிருந்து தோன்றின என்பதற்குக் காட்டப்படும் முக்கிய சான்று இந்த ஒற்றுமையே. கடற்பஞ்சுகளும் பிற ஆரம்ப விலங்குக் குழுக்களும் எந்த வரிசையில் கிளைத்தன என்பது இன்னும் ஆராயப்படுகிறது."),
                     bdef("Parazoa", "பாராசோவா",
@@ -220,7 +220,7 @@ object PoriferaBookChapter {
             "Porifera are aquatic, mostly marine, sessile animals perforated by ostia and oscula and organised at the cellular grade." to "துளையுடலிகள் ஆஸ்டியா, ஆஸ்குலம் துளைகள் கொண்ட, செல்மட்ட அமைப்புடைய, நீர்வாழ், பெரும்பாலும் கடல்வாழ், நிலைத்த விலங்குகள்.",
             "A current of water driven by choanocytes passes through the aquiferous system and brings food and oxygen." to "கோயனோசைட்டுகள் செலுத்தும் நீரோட்டம் நீர்வழி அமைப்பில் சென்று உணவையும் ஆக்சிஜனையும் கொண்டுவருகிறது.",
             "The main cells are pinacocytes, porocytes, choanocytes, archaeocytes, sclerocytes, spongocytes and myocytes." to "முதன்மை செல்கள் பினாகோசைட், போரோசைட், கோயனோசைட், ஆர்க்கியோசைட், ஸ்கிளீரோசைட், ஸ்பாஞ்சோசைட், மயோசைட்.",
-            "The skeleton is of calcareous or siliceous spicules, of spongin, or of both, and it separates the classes." to "எலும்புக்கூடு சுண்ணாம்பு அல்லது சிலிக்கா ஊசிகள், ஸ்பாஞ்சின் அல்லது இரண்டாலும் ஆனது; வகுப்புகளை இதுவே பிரிக்கிறது.",
+            "The skeleton contains calcareous or siliceous spicules, spongin fibres, or both; its characters help distinguish traditional sponge classes." to "எலும்புக்கூடு சுண்ணாம்பு அல்லது சிலிக்கா நுண்முள்கள், ஸ்பாஞ்சின் இழைகள் அல்லது இரண்டையும் கொண்டிருக்கலாம்; அதன் பண்புகள் மரபுவழி வகைப்பாட்டில் வகுப்புகளை வேறுபடுத்த உதவுகின்றன.",
             "The classes are Calcarea, Hexactinellida and Demospongiae; Homoscleromorpha is recognised in modern schemes." to "வகுப்புகள் கால்கேரியா, ஹெக்சாக்டினெல்லிடா, டெமோஸ்பாஞ்சியே; நவீன வகைப்பாடுகளில் ஹோமோஸ்கிளீரோமார்ஃபாவும் ஏற்கப்படுகிறது.",
             "Archaeocytes and other plastic cells make regeneration possible; this is distinct from gemmule formation." to "ஆர்க்கியோசைட்டுகளும் பிற மாற்றத்திறன் செல்களும் மீளுருவாக்கத்தை சாத்தியமாக்குகின்றன; இது ஜெம்யூல் உருவாக்கத்திலிருந்து வேறுபட்டது.",
         ),
