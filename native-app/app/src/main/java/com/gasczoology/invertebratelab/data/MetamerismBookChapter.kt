@@ -61,7 +61,7 @@ object MetamerismBookChapter {
                     bdef("Growth zone", "வளர்ச்சி மண்டலம் (Growth zone)", "The region just in front of the pygidium from which new segments are formed." to
                         "புதிய கண்டங்கள் உருவாகும் பிஜிடியத்துக்கு சற்று முன்னுள்ள பகுதி."),
                     bdef("Tagmatisation", "டேக்மாதல் (Tagmatisation)", "The grouping of segments into regions of the body, each with its own function." to
-                        "கண்டங்கள் ஒவ்வொன்றும் தன் செயலுடன் உடலின் பகுதிகளாகத் தொகுக்கப்படுதல்."),
+                        "வெவ்வேறு பணிகளைச் செய்யும் வகையில் பல கண்டங்கள் ஒன்றிணைந்து தனித்த உடற்பகுதிகளாக அமைதல்."),
                 )),
             bsec("advantages", "Advantages of metamerism", "உடற்கண்டமாதலின் நன்மைகள்",
                 blocks = listOf(
@@ -98,7 +98,7 @@ object MetamerismBookChapter {
                     bdef("Prostomium", "புரோஸ்டோமியம்", "The unsegmented lobe in front of the mouth in an annelid, bearing sensory structures; it is not counted as a segment." to
                         "அனெலிடாவில் வாய்க்கு முன்னுள்ள கண்டமற்ற மடல்; உணர் அமைப்புகளைத் தாங்குகிறது; கண்டமாக எண்ணப்படுவதில்லை."),
                     bdef("Pygidium", "பைஜிடியம்", "The unsegmented terminal part of an annelid that bears the anus and from which new segments are added." to
-                        "குதத்தைத் தாங்கும், புதிய கண்டங்கள் சேர்க்கப்படும் அனெலிடாவின் கண்டமற்ற முடிவுப் பகுதி."),
+                        "மலவாயைக் கொண்ட அனெலிடாவின் கண்டமற்ற பின்முனைப் பகுதி; புதிய கண்டங்கள் இதற்கு முன்புறத்திலுள்ள வளர்ச்சி மண்டலத்தில் உருவாகின்றன."),
                 )),
             bsec("beyond", "Segmentation in other animals", "பிற விலங்குகளில் கண்டமாதல்",
                 blocks = listOf(
@@ -169,7 +169,7 @@ object MetamerismBookChapter {
             bqc("Name three structures repeated in each annelid segment.", "ஒவ்வொரு அனெலிடா கண்டத்திலும் மீள்வரும் மூன்று அமைப்புகளைப் பெயரிடுக.",
                 "Any three of: a coelomic compartment, a ganglion, a pair of nephridia, muscles, segmental vessels.", "உடற்குழி அறை, நரம்பு செல்திரள், இணை நெஃப்ரிடியாக்கள், தசைகள், கண்ட நாளங்கள் ஆகியவற்றில் ஏதேனும் மூன்று."),
             bqc("Are the rings on a nematode a sign of metamerism?", "நெமட்டோடாவின் வளையங்கள் உடற்கண்டமாதலின் அடையாளமா?",
-                "No; they are superficial cuticular annulations without repeated internal organs.", "இல்லை; மீள்வரும் உள் உறுப்புகள் இல்லாத மேலோட்டமான புறத்தோல் வளையங்கள்."),
+                "No; they are superficial cuticular annulations without repeated internal organs.", "இல்லை; அவை உள்ளுறுப்புகளின் கண்டவாரியான மீளமைப்புடன் தொடர்பில்லாத, கியூட்டிகிளின் மேற்பரப்பு வளையங்கள்."),
         ),
     )
 }
