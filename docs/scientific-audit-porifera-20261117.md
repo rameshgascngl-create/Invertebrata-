@@ -22,3 +22,13 @@
 5. Preserve `DRAFT_UNVERIFIED` until an independent reviewer signs off.
 
 **Current phase result:** Initial scientific issue register created. **Not scientifically certified.** No APK generated.
+
+
+## 17 November 2026 — source corrections and references
+
+- **POR-SCI-01 resolved in source** (`f91b8617c6ea28df78f3ba77f8a2e2ddb25547c4`): `PoriferaReproductionBookChapter.kt` larval description, larval-type comparison table and definitions now distinguish motile larval **cilia** (குறுஇழைகள்) from adult choanocyte **flagellum** (கசையிழை). Sponge literature sometimes uses both English labels for the larval motile projections; the chapter now consistently distinguishes the developmental contexts. Sources: Bergquist et al. (1977), DOI 10.1016/0040-8166(77)90058-1, https://pubmed.ncbi.nlm.nih.gov/898174/ ; *Reproduction and Development in Calcareous Sponges: A Panorama of the Last Two Centuries*, https://pmc.ncbi.nlm.nih.gov/articles/PMC13336810/ .
+- **POR-SCI-02 source correction** (`90041063ab5fabea10f48e920d9282a5f3da70c0`): `PoriferaReproductionBookChapter.kt`, “Settlement and inversion” and its definition/note, previously conflated **embryonic inversion before larval release** with **cell rearrangement after settlement**. English and Tamil now distinguish these events and avoid generalising developmental sequences across all sponges. Sources: https://pmc.ncbi.nlm.nih.gov/articles/PMC11164562/ ; Amano & Hori (1993), DOI 10.1080/07924259.1993.9672327; https://pubmed.ncbi.nlm.nih.gov/31036299/ .
+- **POR-SCI-03 partly reference-checked, no change**: Choanocyte flagella drive inward water flow through pores to chambers, then outward through excurrent canals/osculum; feeding is intracellular. Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC9077847/ . Broader sponge nutrition and osmoregulation claims still need complete reference review.
+- **POR-SCI-04 not closed**: Source figure IDs and captions need comparison with actual artwork, licence and attribution. A source-caption inspection alone is insufficient.
+
+**Certification decision:** NOT SCIENTIFICALLY REVIEWED. The whole Porifera corpus and illustrations have not been independently validated. Preserve `DRAFT_UNVERIFIED`. No Android build or emulator test executed in this session.
