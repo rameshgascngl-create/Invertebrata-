@@ -67,28 +67,28 @@ object ProtozoaBookChapter {
                     bdef("Cilium", "குறுஇழை", "A short hair-like projection of the cell, found in large numbers, used for movement or for feeding." to
                         "இடப்பெயர்ச்சிக்கும் உணவெடுப்புக்கும் உதவும், செல்லின் மேற்பரப்பில் அதிக எண்ணிக்கையில் காணப்படும் குறுகிய முடி போன்ற நீட்சி."),
                 )),
-            bsec("nutrition-osmo", "Nutrition and osmoregulation", "ஊட்டமும் சவ்வூடுபரவல் ஒழுங்குபடுத்தலும்",
+            bsec("nutrition-osmo", "Nutrition and osmoregulation", "ஊட்ட முறைகளும் நீர்ச் சமநிலை ஒழுங்குபடுத்தலும்",
                 blocks = listOf(
                     bp("Protozoa differ in the manner in which they obtain food. Many are holozoic, or phagotrophic, which means that they ingest solid food, such as bacteria, algae or other protozoa, into food vacuoles in which it is digested. Others are saprozoic, or osmotrophic, and absorb dissolved nutrients across the surface of the cell. Some, such as Euglena, are photosynthetic, and have chloroplasts, and a number are mixotrophic, with more than one way of feeding. The parasites obtain nutrients from the host in ways that are described in a later chapter." to
-                        "புரோட்டோசோவாக்கள் உணவைப் பெறும் முறையில் வேறுபடுகின்றன. பல ஹோலோசோயிக் அல்லது பேகோட்ரோஃபிக்; அதாவது பாக்டீரியா, பாசி, பிற புரோட்டோசோவா போன்ற திட உணவை உணவு நுண்குமிழ்களுக்குள் உட்கொண்டு அங்கு செரிக்கின்றன. மற்றவை சாப்ரோசோயிக் அல்லது ஆஸ்மோட்ரோஃபிக்; கரைந்த ஊட்டங்களை செல் மேற்பரப்பு வழியே உறிஞ்சுகின்றன. யூக்ளினா போன்ற சில ஒளிச்சேர்க்கை செய்து பசுங்கணிகங்கள் கொண்டவை; பல கலப்பூட்டமுடையவை, ஒன்றுக்கு மேற்பட்ட உண்ணும் வழிகளுடன். ஒட்டுண்ணிகள் விருந்தோம்பியிடமிருந்து ஊட்டங்களைப் பெறும் வழிகள் பிந்தைய அத்தியாயத்தில் விவரிக்கப்படுகின்றன."),
+                        "புரோட்டோசோவாக்கள் உணவைப் பெறும் முறையில் வேறுபடுகின்றன. பல வகைகள் ஹோலோசோயிக் (holozoic) அல்லது பேகோட்ரோஃபிக் (phagotrophic) ஊட்டமுடையவை; அதாவது பாக்டீரியா, பாசி, பிற புரோட்டோசோவா போன்ற திட உணவை உணவு நுண்குமிழ்களுக்குள் உட்கொண்டு அங்கு செரிக்கின்றன. மற்ற சில வகைகள் சாப்ரோசோயிக் (saprozoic) அல்லது ஆஸ்மோட்ரோஃபிக் (osmotrophic) ஊட்டமுடையவை; கரைந்துள்ள ஊட்டப்பொருட்களைச் செல் மேற்பரப்பின் வழியாக உறிஞ்சுகின்றன. யூக்ளினா போன்ற சில ஒளிச்சேர்க்கை செய்து பசுங்கணிகங்கள் கொண்டவை; மேலும் சில உயிரினங்கள் ஒன்றுக்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்தும் கலப்பூட்டமுடையவை. ஒட்டுண்ணிகள் ஓம்புயிரியிடமிருந்து ஊட்டப்பொருட்களைப் பெறும் முறைகள் பிந்தைய அத்தியாயத்தில் விவரிக்கப்படுகின்றன."),
                     bp("Freshwater protozoa face a problem of water balance. The water outside is hypotonic to the cytoplasm, which means that it has a lower concentration of dissolved substances, and so water enters the cell continuously by osmosis. Without a means of removal, the cell would swell and burst. Many freshwater forms have contractile vacuoles, which collect the excess water from the cytoplasm, and periodically fill and contract to expel it to the outside. Marine forms and parasites living in the body fluids of a host often have no contractile vacuole, or a less active one, since the surrounding fluid is closer in concentration to the cytoplasm." to
-                        "நன்னீரில் கரைந்துள்ள பொருட்களின் செறிவு பொதுவாகச் செல்லின் சைட்டோபிளாசத்தைவிடக் குறைவாக இருக்கும். எனவே நன்னீர், செல்லுடன் ஒப்பிடும்போது ஹைப்போடானிக் (hypotonic) தன்மை கொண்டது. இந்தச் செறிவு வேறுபாட்டால் சவ்வூடுபரவல் மூலம் நீர் தொடர்ந்து செல்லுக்குள் நுழைகிறது. அகற்றும் வழி இல்லாவிட்டால் செல் வீங்கி வெடிக்கும். பல நன்னீர் ஒருசெல் உயிரிகளில் சுருங்கும் நுண்குமிழ்கள் மிகை நீரைச் சேகரிக்கின்றன. இவை குறிப்பிட்ட இடைவெளிகளில் நிரம்பிச் சுருங்குவதன் மூலம் நீரைச் செல்லுக்கு வெளியேற்றுகின்றன; இதனால் நீர்ச்சமநிலை பேணப்படுகிறது. சுற்றியுள்ள திரவம் சைட்டோபிளாசத்துக்குச் செறிவில் நெருக்கமாக இருப்பதால் கடல் வடிவங்கள், விருந்தோம்பியின் உடல் திரவங்களில் வாழும் ஒட்டுண்ணிகளுக்கு பெரும்பாலும் சுருங்கும் நுண்குமிழ் இல்லை அல்லது குறைவாக இயங்குகிறது."),
+                        "நன்னீரில் கரைந்துள்ள பொருட்களின் செறிவு பொதுவாகச் செல்லின் சைட்டோபிளாசத்தில் உள்ள கரைபொருட்களின் செறிவைவிடக் குறைவாக இருக்கும். எனவே எனவே செல்லின் சைட்டோபிளாசத்துடன் ஒப்பிடும்போது நன்னீர் குறைசெறிவுடைய (hypotonic) கரைசலாகும். இந்தச் செறிவு வேறுபாட்டால் சவ்வூடுபரவல் மூலம் நீர் தொடர்ந்து செல்லுக்குள் நுழைகிறது. இவ்வாறு நுழையும் அதிகப்படியான நீரை வெளியேற்ற இயலாவிட்டால் செல் வீங்கி வெடிக்கக்கூடும். பல நன்னீர் ஒருசெல் உயிரிகளில் சுருங்கும் நுண்குமிழ்கள் மிகை நீரைச் சேகரிக்கின்றன. இந்நுண்குமிழ்கள் குறிப்பிட்ட இடைவெளிகளில் நீரால் நிரம்பி, பின்னர் சுருங்கி மிகை நீரைச் செல்லுக்கு வெளியேற்றுகின்றன; இதனால் நீர்ச்சமநிலை பேணப்படுகிறது. சுற்றியுள்ள திரவம் சைட்டோபிளாசத்துக்குச் செறிவில் நெருக்கமாக இருப்பதால் கடல் வடிவங்கள், ஓம்புயிரியின் உடல் திரவங்களில் வாழும் ஒட்டுண்ணிகளுக்கு பெரும்பாலும் சுருங்கும் நுண்குமிழ் இல்லை அல்லது குறைந்த செயல்திறனுடன் இயங்குகிறது."),
                     bpoints("Modes of nutrition in protozoa", "புரோட்டோசோவாவின் ஊட்ட முறைகள்",
                         "Holozoic: ingestion of solid food into food vacuoles." to "ஹோலோசோயிக்: உணவு நுண்குமிழ்களுக்குள் திட உணவை உட்கொள்ளுதல்.",
-                        "Saprozoic: absorption of dissolved nutrients." to "சாப்ரோசோயிக்: கரைந்த ஊட்டங்களை உறிஞ்சுதல்.",
-                        "Photosynthetic: manufacture of food by chloroplasts, as in Euglena." to "ஒளிச்சேர்க்கை: யூக்ளினா போல பசுங்கணிகங்களால் உணவு தயாரித்தல்.",
-                        "Mixotrophic: a combination of two or more of these." to "கலப்பு ஊட்டம்: இவற்றில் இரண்டு அல்லது அதற்கு மேற்பட்டவற்றின் சேர்க்கை.",
+                        "Saprozoic: absorption of dissolved nutrients." to "சாப்ரோசோயிக்: கரைந்த ஊட்டப்பொருட்களை உறிஞ்சுதல்.",
+                        "Photosynthetic: manufacture of food by chloroplasts, as in Euglena." to "ஒளிச்சேர்க்கை: யூக்ளினா போல பசுங்கணிகங்களின் உதவியால் ஒளிச்சேர்க்கை செய்து உணவு தயாரித்தல்.",
+                        "Mixotrophic: a combination of two or more of these." to "கலப்பு ஊட்டம்: இவற்றில் இரண்டு அல்லது அதற்கு மேற்பட்ட ஊட்ட முறைகளை இணைத்துப் பயன்படுத்துதல்.",
                     ),
                     bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம் (Holozoic nutrition)", "Nutrition by ingestion and internal digestion of solid food particles." to
-                        "திட உணவுத் துகள்களை உட்கொண்டு உள்ளே செரிக்கும் ஊட்டம்."),
+                        "திட உணவுத் துகள்களை உட்கொண்டு செல்லினுள் செரித்துப் பெறும் ஊட்ட முறை."),
                     bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம் (Saprozoic nutrition)", "Nutrition by absorption of dissolved organic substances." to
-                        "கரைந்த கரிமப் பொருட்களை உறிஞ்சும் ஊட்டம்."),
+                        "கரைந்துள்ள கரிமப் பொருட்களை உறிஞ்சிப் பெறும் ஊட்ட முறை."),
                     bdef("Mixotrophy", "கலப்பு ஊட்டம் (Mixotrophy)", "The use of more than one mode of nutrition, such as photosynthesis and ingestion." to
                         "ஒளிச்சேர்க்கை, உட்கொள்ளுதல் போன்ற ஒன்றுக்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்துதல்."),
                     bdef("Contractile vacuole", "சுருங்கும் நுண்குமிழ் (Contractile vacuole)", "An organelle that collects and expels excess water from the cell." to
-                        "செல்லிலிருந்து மிகை நீரைச் சேகரித்து வெளியேற்றும் நுண்ணுறுப்பு."),
+                        "செல்லினுள் உள்ள அதிகப்படியான நீரைச் சேகரித்து வெளியேற்றும் நுண்ணுறுப்பு."),
                     bdef("Hypotonic", "ஹைப்போடானிக் (Hypotonic)", "Having a lower concentration of dissolved substances than another solution." to
-                        "மற்றொரு கரைசலை விடக் குறைந்த கரைபொருள் செறிவு உடைய."),
+                        "மற்றொரு கரைசலுடன் ஒப்பிடும்போது குறைந்த கரைபொருள் செறிவைக் கொண்ட நிலை."),
                 )),
             bsec("reproduction", "Reproduction and encystment", "இனப்பெருக்கமும் சிஸ்ட் உருவாதலும்",
                 blocks = listOf(
