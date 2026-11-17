@@ -155,7 +155,7 @@ object ParameciumBookChapter {
         summary = listOf(
             "Paramecium is a slipper-shaped ciliate with a firm pellicle, thousands of cilia in rows, and trichocysts in the ectoplasm." to "பாரமீசியம் செருப்பு வடிவமுள்ள குறுஇழையுயிரியாகும்; உறுதியான பெல்லிக்கிள், வரிசையாக அமைந்த ஆயிரக்கணக்கான குறுஇழைகள், எக்டோபிளாசத்தில் டிரைக்கோசிஸ்ட்கள் ஆகியவற்றைக் கொண்டுள்ளது.",
             "Swimming results from metachronal beating of cilia; the avoiding reaction reverses the beat." to "குறுஇழைகளின் மெட்டாக்ரோனல் அசைவால் நீந்துதல் நடைபெறுகிறது; தவிர்ப்புத் துலங்கலின்போது குறுஇழைகளின் அசைவுத் திசை தற்காலிகமாக மாறுகிறது.",
-            "Ciliary currents drive food through the oral groove, cytostome and cytopharynx into food vacuoles, and residue leaves at the cytoproct." to "குறுஇழைகள் உருவாக்கும் நீரோட்டங்கள் உணவை வாய்ப் பள்ளம், சைட்டோஸ்டோம், சைட்டோஃபாரிங்ஸ் வழியே உணவு நுண்குமிழ்களுக்குள் செலுத்துகின்றன; எச்சம் சைட்டோபிராக்ட் (செல் கழிவுத்துளை) வழியாக வெளியேறுகிறது.",
+            "Ciliary currents drive food through the oral groove, cytostome and cytopharynx into food vacuoles, and residue leaves at the cytoproct." to "குறுஇழைகள் உருவாக்கும் நீரோட்டம் உணவை வாய்ப் பள்ளம், சைட்டோஸ்டோம், சைட்டோஃபாரிங்ஸ் வழியாக உணவு நுண்குமிழ்களுக்குக் கொண்டுசெல்கிறது; செரிக்கப்படாத உணவு எச்சம் சைட்டோபிராக்ட் எனப்படும் செல் கழிவுத்துளை வழியாக வெளியேற்றப்படுகிறது.",
             "Two contractile vacuoles with collecting canals expel the water that enters by osmosis." to "சேகரிப்புக் கால்வாய்களைக் கொண்ட இரண்டு சுருங்கும் நுண்குமிழ்கள் சவ்வூடுபரவல் மூலம் செல்லுக்குள் நுழையும் அதிகப்படியான நீரை வெளியேற்றுகின்றன.",
             "There is a macronucleus and a micronucleus; fission is transverse." to "ஒரு பெருஉட்கருவும் ஒரு சிறுஉட்கருவும் காணப்படுகின்றன; இருசமப்பிளவு குறுக்குத் திசையில் நிகழ்கிறது.",
             "Conjugation exchanges haploid pronuclei and produces new nuclei, but it does not increase the number of cells." to "இணைவின்போது ஒருமடிய முன்உட்கருக்கள் பரிமாறப்பட்டு புதிய உட்கருக்கள் உருவாகின்றன; ஆனால் இணைவு மட்டும் செல்களின் எண்ணிக்கையை அதிகரிப்பதில்லை.",
@@ -164,7 +164,7 @@ object ParameciumBookChapter {
             bqc("What gives Paramecium its definite shape?", "பாரமீசியத்துக்கு நிலையான உடல்வடிவத்தை அளிப்பது எது?",
                 "The firm but flexible pellicle.", "உறுதியான ஆனால் நெகிழும் பெல்லிக்கிள்."),
             bqc("Where is undigested residue expelled?", "செரிக்கப்படாத உணவு எச்சம் எங்கு வெளியேற்றப்படுகிறது?",
-                "At the cytoproct (cytopyge).", "சைட்டோபிராக்ட் (செல் கழிவுத்துளை) வழியாக (சைட்டோபைஜ்)."),
+                "At the cytoproct (cytopyge).", "சைட்டோபிராக்ட் எனப்படும் செல் கழிவுத்துளை வழியாக; இது சைட்டோபைஜ் (cytopyge) என்றும் அழைக்கப்படுகிறது."),
             bqc("How many contractile vacuoles does Paramecium caudatum have, and what do they do?", "பாரமீசியம் காடேட்டத்தில் எத்தனை சுருங்கும் நுண்குமிழ்கள் உள்ளன? அவற்றின் பணி என்ன?",
                 "Two; they collect and expel the excess water that enters by osmosis.", "இரண்டு; சவ்வூடுபரவல் மூலம் செல்லுக்குள் நுழையும் அதிகப்படியான நீரைச் சேகரித்து வெளியேற்றுகின்றன."),
             bqc("Does conjugation increase the number of Paramecium cells?", "இணைவினால் பாரமீசியம் செல்களின் எண்ணிக்கை நேரடியாக அதிகரிக்கிறதா?",
