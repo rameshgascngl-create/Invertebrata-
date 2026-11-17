@@ -118,20 +118,20 @@ object ProtozoaBookChapter {
                     bdef("Food chain", "உணவுச் சங்கிலி", "A sequence of organisms in which each is the food of the next." to
                         "ஒவ்வொன்றும் அடுத்ததற்கு உணவாக இருக்கும் உயிரிகளின் வரிசை."),
                 )),
-            bsec("classes", "The traditional groups", "மரபுவழிக் குழுக்கள்",
+            bsec("classes", "The traditional groups", "மரபுவழி வகைப்பாட்டுக் குழுக்கள்",
                 blocks = listOf(
                     bp("Older zoology textbooks often arranged protozoans into four broad groups using locomotory structures and parasitic life history. This is a historical teaching scheme, not a modern phylogenetic classification: the groups do not together form one natural evolutionary lineage. The first was the Sarcodina, or Rhizopoda, which move by pseudopodia, as in Amoeba. The second was the Mastigophora, or Flagellata, which move by flagella, as in Euglena. The third was the Ciliata, or Ciliophora, which move by cilia, as in Paramecium. The fourth was the Sporozoa, which are parasites that have no obvious organs of locomotion in the main phase of the life cycle, as in Plasmodium." to
                         "பழைய விலங்கியல் பாடநூல்களில் இயக்க உறுப்புகளையும் ஒட்டுண்ணி வாழ்க்கை முறையையும் அடிப்படையாகக் கொண்டு புரோட்டோசோவாக்கள் நான்கு பெரும் குழுக்களாகப் பிரிக்கப்பட்டன. இது வரலாற்றில் பயன்படுத்தப்பட்ட கற்பித்தல் வகைப்பாடே தவிர நவீன பரிணாம உறவியல் வகைப்பாடு அல்ல; இக்குழுக்கள் அனைத்தும் சேர்ந்து ஒரே இயற்கையான பரிணாம வழித்தோன்றலை உருவாக்குவதில்லை. முதலாவது சார்கோடினா அல்லது ரைசோபோடா; அமீபாவைப் போலப் போலிக்கால்களால் இடம்பெயர்பவை. இரண்டாவது மாஸ்டிகோஃபோரா அல்லது ஃபிளாஜெல்லேட்டா; யூக்ளீனாவைப் போலக் கசையிழைகளால் இடம்பெயர்பவை. மூன்றாவது சிலியேட்டா அல்லது சிலியோஃபோரா; பாரமீசியத்தைப் போலக் குறுஇழைகளால் இடம்பெயர்பவை. நான்காவது ஸ்போரோசோவா; பிளாஸ்மோடியம் போல வாழ்க்கைச் சுழற்சியின் முக்கிய நிலையில் தெளிவான இயக்க உறுப்புகள் இல்லாத ஒட்டுண்ணிகள்."),
                     bfig("lib/protozoan-groups",
                         "Organelles of locomotion in four traditional groups (schematic): (A) a cell moving by pseudopodia, (B) a flagellate with one flagellum, (C) a ciliate covered with cilia, (D) a sporozoan cell, drawn without the organelles of the other three. (1) pseudopodium, (2) nucleus, (3) flagellum, (4) cilia.",
-                        "நான்கு மரபுவழிக் குழுக்களின் இயக்க நுண்ணுறுப்புகள் (படத்திட்டம்): (A) போலிக்கால்களால் நகரும் செல், (B) ஒரு கசையிழையைக் கொண்ட உயிரினம், (C) குறுஇழைகளால் சூழப்பட்ட குறுஇழையுயிரி, (D) மற்ற மூன்றின் நுண்ணுறுப்புகள் இல்லாமல் வரையப்பட்ட ஸ்போரோசோவா செல். (1) போலிக்கால், (2) உட்கரு, (3) கசையிழை, (4) குறுஇழைகள்."),
-                    btable("The four traditional groups", "நான்கு மரபுவழிக் குழுக்கள்",
+                        "நான்கு மரபுவழிக் குழுக்களின் இயக்க நுண்ணுறுப்புகள் (படத்திட்டம்): (A) போலிக்கால்களால் நகரும் செல், (B) ஒரு கசையிழையைக் கொண்ட உயிரினம், (C) குறுஇழைகளால் சூழப்பட்ட குறுஇழையுயிரி, (D) மற்ற மூன்று குழுக்களுக்குரிய இயக்க நுண்ணுறுப்புகள் காட்டப்படாத ஸ்போரோசோவா செல். (1) போலிக்கால், (2) உட்கரு, (3) கசையிழை, (4) குறுஇழைகள்."),
+                    btable("The four traditional groups", "நான்கு மரபுவழி வகைப்பாட்டுக் குழுக்கள்",
                         listOf("Traditional group" to "மரபுவழிக் குழு", "Locomotion" to "இயக்கம்", "Example" to "எடுத்துக்காட்டு", "Mode of life" to "வாழ்க்கை முறை"),
                         listOf(
                             listOf("Sarcodina (Rhizopoda)" to "சார்கோடினா (ரைசோபோடா)", "Pseudopodia" to "போலிக்கால்கள்", "Amoeba" to "அமீபா", "Free-living or parasitic" to "தனித்து வாழும் அல்லது ஒட்டுண்ணி"),
                             listOf("Mastigophora (Flagellata)" to "மாஸ்டிகோஃபோரா (ஃபிளாஜெல்லேட்டா)", "Flagella" to "கசையிழைகள்", "Euglena" to "யூக்ளினா", "Free-living or parasitic" to "தனித்து வாழும் அல்லது ஒட்டுண்ணி"),
                             listOf("Ciliata (Ciliophora)" to "சிலியேட்டா (சிலியோஃபோரா)", "Cilia" to "குறுஇழைகள்", "Paramecium" to "பாரமீசியம்", "Mostly free-living" to "பெரும்பாலும் தனித்து வாழ்வது"),
-                            listOf("Sporozoa" to "ஸ்போரோசோவா", "None obvious in the main phase" to "முக்கிய நிலையில் தெளிவாக இல்லை", "Plasmodium" to "பிளாஸ்மோடியம்", "Parasitic" to "ஒட்டுண்ணி"),
+                            listOf("Sporozoa" to "ஸ்போரோசோவா", "None obvious in the main phase" to "வாழ்க்கைச் சுழற்சியின் முக்கிய நிலையில் தெளிவான இயக்க நுண்ணுறுப்புகள் இல்லை", "Plasmodium" to "பிளாஸ்மோடியம்", "Parasitic" to "ஒட்டுண்ணி"),
                         )),
                     bp("These names should be recognised as syllabus and historical terminology. Modern studies have shown that the groups defined by the organ of locomotion do not each represent one lineage, and that the parasites placed in the Sporozoa are, for the most part, the apicomplexans, which belong to a group of their own. The ciliates form a coherent group, the Ciliophora. A student will use the traditional names in the course, but should be ready to say that the classification has been revised." to
                         "இவை பாடத்திட்டத்தில் தொடர்ந்து பயன்படுத்தப்படும் மரபுவழி வகைப்பாட்டுப் பெயர்கள் என்பதை நினைவில் கொள்ள வேண்டும். இயக்க உறுப்பால் வரையறுக்கப்பட்ட குழுக்கள் ஒவ்வொன்றும் ஒரே பரிணாமக் கிளையைக் குறிக்கவில்லை என்றும், ஸ்போரோசோவாவில் வைக்கப்பட்ட ஒட்டுண்ணிகள் பெரும்பாலும் தனிக் குழுவான அபிகாம்ப்ளெக்சன்கள் என்றும் நவீன ஆய்வுகள் காட்டியுள்ளன. குறுஇழையுயிரிகள் சிலியோஃபோரா (Ciliophora) எனப்படும் தனித்த பரிணாமக் குழுவைச் சேர்ந்தவை. பாடத்திட்ட வினாக்களுக்கு மரபுவழிப் பெயர்களைப் பயன்படுத்தலாம்; அவை நவீன பரிணாம உறவியல் ஆய்வுகளால் திருத்தப்பட்டுள்ளன என்பதையும் குறிப்பிட வேண்டும்."),
@@ -142,14 +142,14 @@ object ProtozoaBookChapter {
                     bdef("Ciliophora", "சிலியோஃபோரா (Ciliophora)", "The ciliates, protozoa that have cilia and, typically, two kinds of nucleus." to
                         "குறுஇழைகளையும் பொதுவாக இருவகை உட்கருக்களையும் கொண்ட புரோட்டோசோவாக்களான குறுஇழையுயிரிகள்."),
                     bdef("Apicomplexa", "அபிகாம்ப்ளெக்ஸா (Apicomplexa)", "A group of parasitic protists with a characteristic apical complex, including Plasmodium." to
-                        "பிளாஸ்மோடியம் உள்ளிட்ட, தனிப்பண்பு நுனித் தொகுப்புடைய ஒட்டுண்ணி புரோட்டிஸ்டுகளின் குழு."),
+                        "பிளாஸ்மோடியம் உள்ளிட்ட, தனித்துவமான நுனிக் கூட்டமைப்பைக் (apical complex) கொண்ட ஒட்டுண்ணி புரோட்டிஸ்டுகளின் குழு."),
                 )),
             bsec("ciliata-sporozoa", "Ciliata and Sporozoa compared", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
                 blocks = listOf(
                     btable("Ciliata compared with Sporozoa", "சிலியேட்டாவும் ஸ்போரோசோவாவும் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Ciliata" to "சிலியேட்டா", "Sporozoa" to "ஸ்போரோசோவா"),
                         listOf(
-                            listOf("Group" to "குழு", "Corresponds broadly to the ciliates, Ciliophora" to "பரவலாக சிலியேட்டுகளான சிலியோஃபோராவுக்கு ஒத்தது", "Largely the parasitic apicomplexans; a historical term" to "பெரும்பாலும் ஒட்டுண்ணி அபிகாம்ப்ளெக்சன்கள்; வரலாற்றுச் சொல்"),
+                            listOf("Group" to "குழு", "Corresponds broadly to the ciliates, Ciliophora" to "பெரும்பாலும் சிலியோஃபோரா (Ciliophora) எனப்படும் குறுஇழையுயிரிகளைக் குறிக்கிறது", "Largely the parasitic apicomplexans; a historical term" to "பெரும்பாலும் அபிகாம்ப்ளெக்சா ஒட்டுண்ணிகளைக் குறிக்கும் வரலாற்றுப் பெயர்"),
                             listOf("Locomotion" to "இயக்கம்", "Numerous short cilia" to "அதிக எண்ணிக்கையிலான குறுஇழைகள்", "Adults generally lack cilia and ordinary locomotory organelles; specialised motile stages occur" to "முதிர்ந்தவற்றுக்கு பொதுவாக சிலியாக்களும் வழக்கமான இயக்க நுண்ணுறுப்புகளும் இல்லை; சிறப்பு இயங்கும் நிலைகள் உண்டு"),
                             listOf("Nuclei" to "உட்கருக்கள்", "Nuclear dimorphism: a macronucleus and one or more micronuclei" to "உட்கரு இருவடிவம்: ஒரு பெருஉட்கருவும் ஒன்று அல்லது அதற்கு மேற்பட்ட சிறுஉட்கருக்களும்", "No macro- and micronuclear organisation" to "பெருஉட்கரு–சிறுஉட்கரு எனும் இருவகை உட்கரு அமைப்பு இல்லை"),
                             listOf("Feeding" to "உணவெடுப்பு", "Many feed through an oral apparatus and cytostome; often free-living" to "பலவும் வாய் அமைப்பு, சைட்டோஸ்டோம் வழியே உண்கின்றன; பெரும்பாலும் தனித்து வாழ்வன", "Obligate parasites that obtain nutrients from host-associated environments" to "விருந்தோம்பி சூழலிலிருந்து ஊட்டங்களைப் பெறும் கட்டாய ஒட்டுண்ணிகள்"),
@@ -198,10 +198,10 @@ object ProtozoaBookChapter {
         summary = listOf(
             "Protozoa is a traditional teaching group of mostly unicellular eukaryotic protists and not one natural clade." to "புரோட்டோசோவா பெரும்பாலும் ஒருசெல் யூகேரியோட்டு புரோட்டிஸ்டுகளை உள்ளடக்கிய மரபுவழிக் கற்பித்தல் பிரிவு; இவ்வுயிரிகள் அனைத்தும் ஒரே பரிணாம வழித்தோன்றல் கிளையைச் சேர்ந்தவை அல்ல.",
             "Each organism is a single cell that performs all functions through organelles." to "ஒவ்வோர் உயிரினமும் ஒரே உயிரணுவால் ஆனது; அதன் நுண்ணுறுப்புகள் அனைத்து வாழ்க்கைச் செயல்களையும் மேற்கொள்கின்றன.",
-            "Locomotion is by pseudopodia, flagella or cilia, and nutrition may be holozoic, saprozoic, photosynthetic or mixotrophic." to "இயக்கம் போலிக்கால்கள், கசையிழைகள் அல்லது சிலியாக்களால்; ஊட்டம் ஹோலோசோயிக், சாப்ரோசோயிக், ஒளிச்சேர்க்கை அல்லது கலப்பூட்டமாக இருக்கலாம்.",
+            "Locomotion is by pseudopodia, flagella or cilia, and nutrition may be holozoic, saprozoic, photosynthetic or mixotrophic." to "இடப்பெயர்ச்சி போலிக்கால்கள், கசையிழைகள் அல்லது குறுஇழைகள் மூலம் நடைபெறலாம்; ஊட்டம் ஹோலோசோயிக், சாப்ரோசோயிக், ஒளிச்சேர்க்கை அல்லது கலப்பூட்ட முறையில் அமையலாம்.",
             "Freshwater forms use contractile vacuoles to expel the water that enters by osmosis." to "நன்னீரில் வாழும் பல வகைகள் சவ்வூடுபரவல் மூலம் நுழையும் அதிகப்படியான நீரை வெளியேற்றச் சுருங்கும் நுண்குமிழ்களைப் பயன்படுத்துகின்றன.",
             "Reproduction is usually by fission; sexual processes include conjugation, and cysts help survival." to "இனப்பெருக்கம் பொதுவாகப் பிளவுறுதல் மூலம் நடைபெறுகிறது; பாலினச் செயல்முறைகளில் இணைவு அடங்கும்; சிஸ்ட் நிலைகள் சாதகமற்ற சூழலிலும் உயிர்வாழ உதவுகின்றன.",
-            "Ciliata and Sporozoa differ in locomotion, nuclei, feeding, life cycle and mode of life." to "சிலியேட்டாவும் ஸ்போரோசோவாவும் இயக்கம், உட்கருக்கள், உணவெடுப்பு, வாழ்க்கைச் சுழற்சி, வாழ்க்கை முறையில் வேறுபடுகின்றன.",
+            "Ciliata and Sporozoa differ in locomotion, nuclei, feeding, life cycle and mode of life." to "சிலியேட்டாவும் ஸ்போரோசோவாவும் இடப்பெயர்ச்சி, உட்கரு அமைப்பு, உணவெடுப்பு, வாழ்க்கைச் சுழற்சி மற்றும் வாழ்முறை ஆகியவற்றில் வேறுபடுகின்றன.",
         ),
         checks = listOf(
             bqc("Why is Protozoa called a traditional teaching group?", "புரோட்டோசோவா ஏன் மரபுவழிக் கற்பித்தல் குழு எனப்படுகிறது?",
