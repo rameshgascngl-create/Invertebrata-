@@ -9,6 +9,7 @@ name: Native five-unit restoration — compile, assets and academic hold
       - claude/unit1-plates-and-parasite-slots
       - feat/native-textbook-reader-qa
       - audit/undergraduate-coverage-register-20261114
+      - audit/tamil-terminology-completion-20261117
   workflow_dispatch:
 
 permissions:
