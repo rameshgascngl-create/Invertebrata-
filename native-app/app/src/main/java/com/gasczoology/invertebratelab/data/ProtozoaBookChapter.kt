@@ -4,20 +4,20 @@ package com.gasczoology.invertebratelab.data
 object ProtozoaBookChapter {
     val chapter = bchapter(
         lessonId = "u1-protozoa",
-        title = "Protozoa: Characters and Traditional Groups" to "புரோட்டோசோவா: பண்புகளும் மரபுவழிக் குழுக்களும்",
+        title = "Protozoa: Characters and Traditional Groups" to "புரோட்டோசோவா: பொதுப்பண்புகளும் மரபுவழி வகைப்பாட்டுக் குழுக்களும்",
         objectives = listOf(
             "Recognise the principal features of unicellular eukaryotes." to
-                "ஒற்றைசெல் யூகேரியோட்டுகளின் முக்கியப் பண்புகளை அறிதல்.",
+                "ஒருசெல் யூகேரியோட்டு உயிரினங்களின் முக்கியப் பண்புகளை அறிதல்.",
             "Compare the traditional groups with examples." to
-                "மரபுவழிக் குழுக்களை எடுத்துக்காட்டுகளுடன் ஒப்பிடுதல்.",
+                "மரபுவழி வகைப்பாட்டுக் குழுக்களைப் பொருத்தமான எடுத்துக்காட்டுகளுடன் ஒப்பிடுதல்.",
             "Distinguish syllabus terminology from modern evolutionary classification." to
-                "பாடத்திட்டச் சொற்பயன்பாட்டை நவீன பரிணாம வகைப்பாட்டிலிருந்து வேறுபடுத்துதல்.",
+                "பாடத்திட்டத்தில் பயன்படுத்தப்படும் மரபுவழிச் சொற்களை நவீன பரிணாம வகைப்பாட்டிலிருந்து வேறுபடுத்தி அறிதல்.",
         ),
         introduction = listOf(
             "Protozoa is a traditional name for diverse, mostly unicellular eukaryotes. Many move using pseudopodia, flagella or cilia. A single cell carries out nutrition, removal of metabolic wastes and reproduction; many freshwater forms also regulate excess water entering by osmosis, often using contractile vacuoles. Examples include Amoeba, Euglena, Paramecium and Plasmodium. They occur in freshwater, marine and moist terrestrial habitats; some are parasites." to
-                "புரோட்டோசோவா என்பது பல்வேறு பரிணாமக் கிளைகளைச் சேர்ந்த, பெரும்பாலும் ஒருசெல் யூகேரியோட்டு உயிரிகளுக்கான மரபுவழிப் பெயர். பல உயிரிகள் போலிக்கால்கள், கசையிழைகள் அல்லது குறுஇழைகள் மூலம் இடம்பெயர்கின்றன. ஒரே செல் உணவூட்டம், வளர்சிதை மாற்றக் கழிவுகளை வெளியேற்றுதல், இனப்பெருக்கம் ஆகிய செயல்களைச் செய்கிறது. நன்னீரில் வாழும் பல வகைகளில் சவ்வூடுபரவலால் உள்ளே வரும் அதிகப்படியான நீர் சுருங்கும் நுண்குமிழ்களின் உதவியால் வெளியேற்றப்பட்டு நீர்ச் சமநிலை பேணப்படுகிறது. அமீபா, யூக்ளீனா, பாரமீசியம், பிளாஸ்மோடியம் ஆகியவை எடுத்துக்காட்டுகள். இவை நன்னீர், கடல், ஈரமான நில வாழிடங்களில் காணப்படுகின்றன. சில இனங்கள் ஒட்டுண்ணிகளாக வாழ்கின்றன.",
+                "புரோட்டோசோவா என்பது பல்வேறு பரிணாமக் கிளைகளைச் சேர்ந்த, பெரும்பாலும் ஒருசெல் யூகேரியோட்டு உயிரிகளுக்கான மரபுவழிப் பெயர். இவற்றில் பல உயிரினங்கள் போலிக்கால்கள், கசையிழைகள் (flagella) அல்லது குறுஇழைகள் (cilia) ஆகியவற்றைப் பயன்படுத்தி இடம்பெயர்கின்றன. ஒரே உயிரணுவே உணவூட்டம், வளர்சிதை மாற்றக் கழிவுகளை வெளியேற்றுதல் மற்றும் இனப்பெருக்கம் ஆகிய செயல்களை மேற்கொள்கிறது. நன்னீரில் வாழும் பல வகைகளில் சவ்வூடுபரவல் மூலம் உயிரணுவுக்குள் நுழையும் அதிகப்படியான நீர் சுருங்கும் நுண்குமிழ்கள் (contractile vacuoles) வழியாக வெளியேற்றப்பட்டு நீர்ச் சமநிலை பராமரிக்கப்படுகிறது. அமீபா, யூக்ளீனா, பாரமீசியம், பிளாஸ்மோடியம் ஆகியவை எடுத்துக்காட்டுகள். இவை நன்னீர், கடல் மற்றும் ஈரப்பதமுள்ள நிலவாழிடங்களில் காணப்படுகின்றன. சில இனங்கள் ஒட்டுண்ணிகளாக வாழ்கின்றன.",
             "This syllabus retains Protozoa as a teaching category, not a single natural evolutionary group. Modern classification places its members in several eukaryotic lineages. In examinations, describe the traditional groups, but distinguish that historical arrangement from evidence-based evolutionary relationships." to
-                "இப்பாடத்திட்டத்தில் புரோட்டோசோவா என்ற பெயர் கற்பித்தல் வசதிக்காகப் பயன்படுத்தப்படுகிறது; இது ஒரே இயற்கையான பரிணாமக் குழுவைக் குறிக்காது. நவீன வகைப்பாட்டில் இவ்வுயிரிகள் பல யூகேரியோட்டு பரிணாமக் கிளைகளில் இடம்பெறுகின்றன. தேர்வில் மரபுவழிக் குழுக்களின் பண்புகளை விளக்கும்போது, அவை பரிணாம உறவை நேரடியாகக் காட்டுவதில்லை என்பதையும் குறிப்பிட வேண்டும்.",
+                "இப்பாடத்திட்டத்தில் புரோட்டோசோவா என்ற பெயர் கற்பித்தலுக்கான மரபுவழி வகைப்பாட்டுப் பிரிவாகப் பயன்படுத்தப்படுகிறது; இது ஒரே இயற்கையான பரிணாமக் குழுவைக் குறிக்காது. நவீன வகைப்பாட்டில் இவ்வுயிரிகள் பல யூகேரியோட்டு பரிணாமக் கிளைகளில் இடம்பெறுகின்றன. தேர்வில் மரபுவழிக் குழுக்களின் பண்புகளை விளக்கும்போது, அந்த மரபுவழி வகைப்பாடு சான்றுகளின் அடிப்படையில் அறியப்படும் பரிணாம உறவுகளிலிருந்து வேறுபடுகிறது என்பதையும் குறிப்பிட வேண்டும்.",
         ),
         sections = listOf(
             bsec("meaning", "What the name Protozoa means", "புரோட்டோசோவா என்ற பெயரின் பொருள்",
