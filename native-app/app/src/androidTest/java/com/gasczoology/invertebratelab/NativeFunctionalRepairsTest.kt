@@ -211,6 +211,10 @@ class NativeFunctionalRepairsTest {
             rule.onNodeWithTag("${c.prefix}-inline-play-pause").performClick()
             val phase = canvas.fetchSemanticsNode().config[SemanticsProperties.ProgressBarRangeInfo].current
             assertTrue("${c.process}: playback did not pause at an intermediate phase: $phase", phase > 0f && phase < 1f)
+            // Playback buttons can scroll the canvas partly out of the viewport.
+            // Restore its visible position before comparing sampled animation pixels.
+            canvas.performScrollTo()
+            rule.waitForIdle()
             val after = settledPausedImage(canvas, phase)
             val changed = changedPixels(before, after)
             assertTrue("${c.process}: Play did not change the diagram ($changed sampled pixels)", changed > 12)
