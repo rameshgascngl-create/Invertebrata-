@@ -4,24 +4,24 @@ package com.gasczoology.invertebratelab.data
 object HostParasiteBookChapter {
     val chapter = bchapter(
         lessonId = "u1-host-parasite",
-        title = "Host–Parasite Relationships: Entamoeba and Plasmodium" to "விருந்தோம்பி–ஒட்டுண்ணி உறவுகள்: எண்டமீபாவும் பிளாஸ்மோடியமும்",
+        title = "Host–Parasite Relationships: Entamoeba and Plasmodium" to "ஓம்புயிரி–ஒட்டுண்ணி உறவுகள்: எண்டமீபா மற்றும் பிளாஸ்மோடியம்",
         objectives = listOf(
             "Define the main terms used in host–parasite relationships." to
-                "விருந்தோம்பி–ஒட்டுண்ணி உறவுக்கான அடிப்படைச் சொற்களை வரையறுத்தல்.",
+                "ஓம்புயிரி–ஒட்டுண்ணி உறவுகளுக்குரிய முக்கியக் கலைச்சொற்களை வரையறுத்தல்.",
             "Compare Entamoeba and Plasmodium life cycles." to
-                "எண்டமீபா, பிளாஸ்மோடியம் வாழ்க்கைச் சுழற்சிகளை ஒப்பிடுதல்.",
+                "எண்டமீபா மற்றும் பிளாஸ்மோடியத்தின் வாழ்க்கைச் சுழற்சிகளை ஒப்பிடுதல்.",
             "Relate parasite activity and host responses to disease." to
-                "ஒட்டுண்ணியின் செயல்களையும் விருந்தோம்பியின் எதிர்வினைகளையும் நோய்ப்பாதிப்புடன் தொடர்புபடுத்துதல்.",
+                "ஒட்டுண்ணியின் செயல்பாடுகளையும் ஓம்புயிரியின் துலங்கல்களையும் நோய் உருவாகும் முறையுடன் தொடர்புபடுத்துதல்.",
         ),
         introduction = listOf(
             "A parasite uses resources provided by its host. Entamoeba and Plasmodium illustrate how host tissues, parasite development and host responses interact during infection." to
-                "ஒட்டுண்ணி, விருந்தோம்பியின் வளங்களைப் பயன்படுத்தி வாழ்கிறது. எண்டமீபா, பிளாஸ்மோடியம் ஆகியவற்றின் மூலம் விருந்தோம்பித் திசுக்கள், ஒட்டுண்ணியின் வளர்ச்சி, விருந்தோம்பியின் எதிர்வினை ஆகியவற்றுக்கு இடையிலான தொடர்பை அறியலாம்.",
+                "ஒட்டுண்ணி ஓம்புயிரி வழங்கும் வளங்களைப் பயன்படுத்தி வாழ்கிறது. எண்டமீபா மற்றும் பிளாஸ்மோடியம் ஆகியவற்றின் எடுத்துக்காட்டுகள் மூலம் ஓம்புயிரியின் திசுக்கள், ஒட்டுண்ணியின் வளர்ச்சிநிலைகள் மற்றும் ஓம்புயிரியின் துலங்கல்கள் ஆகியவை தொற்றின்போது எவ்வாறு ஒன்றோடொன்று தொடர்புகொள்கின்றன என்பதை அறியலாம்.",
         ),
         sections = listOf(
-            bsec("terms", "Parasites, hosts and life cycles", "ஒட்டுண்ணிகள், விருந்தோம்பிகள், வாழ்க்கைச் சுழற்சிகள்",
+            bsec("terms", "Parasites, hosts and life cycles", "ஒட்டுண்ணிகள், ஓம்புயிரிகள் மற்றும் வாழ்க்கைச் சுழற்சிகள்",
                 blocks = listOf(
                     bp("The host in which the parasite reaches sexual maturity, or in which it undergoes sexual reproduction, is called the definitive host, and the host in which it passes its larval or asexual stages is the intermediate host. The terms are used with care in the malarial parasite, because the usage differs in older and newer books. In the older usage, the mosquito, in which the sexual reproduction takes place, is the definitive host and man is the intermediate host. Definitions of the two terms vary between texts, and the student should state which usage is followed and give the facts that support it." to
-                        "ஒட்டுண்ணி பாலினமுதிர்ச்சி அடையும் அல்லது பாலினப்பெருக்கம் செய்யும் விருந்தோம்பி முதன்மை விருந்தோம்பி; அதன் குஞ்சு அல்லது பாலிலாப் நிலைகளைக் கடக்கும் விருந்தோம்பி இடைநிலை விருந்தோம்பி. மலேரியா ஒட்டுண்ணியில் இச்சொற்கள் கவனத்துடன் பயன்படுத்தப்படுகின்றன; ஏனெனில் பழைய, புதிய நூல்களில் பயன்பாடு வேறுபடுகிறது. பழைய பயன்பாட்டில் பாலினப்பெருக்கம் நடைபெறும் கொசு முதன்மை விருந்தோம்பி; மனிதன் இடைநிலை விருந்தோம்பி. இரு சொற்களின் வரையறைகள் நூல்களுக்கிடையே வேறுபடுகின்றன; எந்தப் பயன்பாடு பின்பற்றப்படுகிறது என்பதைக் கூறி அதற்கு ஆதரவான உண்மைகளைத் தர மாணவர் கடமைப்பட்டவர்."),
+                        "ஒட்டுண்ணி பாலின முதிர்ச்சி அடையும் அல்லது பாலினப்பெருக்கம் நடைபெறும் ஓம்புயிரி இறுதி ஓம்புயிரி (definitive host) எனப்படுகிறது; ஒட்டுண்ணியின் இளநிலை அல்லது பாலிலாப் பெருக்க நிலைகள் நடைபெறும் ஓம்புயிரி இடைநிலை ஓம்புயிரி (intermediate host) எனப்படுகிறது. மலேரியா ஒட்டுண்ணியைப் பற்றிக் குறிப்பிடும்போது இச்சொற்களைக் கவனமாகப் பயன்படுத்த வேண்டும்; ஏனெனில் பழைய மற்றும் புதிய நூல்களில் இவற்றின் பயன்பாடு வேறுபடலாம். பழைய வழக்கின்படி பாலினப்பெருக்கம் நடைபெறும் கொசு இறுதி ஓம்புயிரியாகவும் மனிதன் இடைநிலை ஓம்புயிரியாகவும் குறிப்பிடப்படுகின்றனர். இரு சொற்களின் வரையறைகள் நூல்களுக்கிடையே வேறுபடுகின்றன; எந்தப் பயன்பாடு பின்பற்றப்படுகிறது என்பதைக் கூறி அதற்கு ஆதரவான உண்மைகளைத் தர மாணவர் விளக்க வேண்டும்."),
                     bp("A vector is an animal that carries the parasite from one host to another. The mosquito is a vector of the malarial parasite, and in this case it is not a passive carrier but a necessary host, since part of the life cycle of Plasmodium can be completed only in the mosquito. A mechanical vector, such as a fly that carries the cysts of Entamoeba on its feet, differs in that the parasite does not develop in it. A life cycle is the whole series of stages through which a parasite passes from the infection of one host to the infection of the next." to
                         "நோய்க்கடத்தி என்பது ஒட்டுண்ணியை ஓர் விருந்தோம்பியிலிருந்து மற்றொன்றுக்குக் கொண்டுசெல்லும் விலங்கு. கொசு மலேரியா ஒட்டுண்ணியின் நோய்க்கடத்தி; இங்கு அது செயலற்ற நோய்க்கடத்தியல்ல, அவசியமான விருந்தோம்பி; ஏனெனில் பிளாஸ்மோடியத்தின் வாழ்க்கைச் சுழற்சியின் ஒரு பகுதி கொசுவில் மட்டுமே நிறைவேறும். எண்டமீபாவின் சிஸ்டுகளைத் தனது கால்கள் அல்லது உடற்பரப்பில் ஒட்டிக்கொண்டு உணவுப் பொருட்களுக்குக் கடத்தும் ஈ, நோய்க்கிருமிகளைச் செயலற்ற முறையில் கடத்துவதற்கு எடுத்துக்காட்டு. இவ்வாறு கடத்தப்படும் போது ஒட்டுண்ணி ஈயின் உடலில் வளர்ச்சியடைவதோ பெருகுவதோ இல்லை. வாழ்க்கைச் சுழற்சி என்பது ஓர் விருந்தோம்பியின் தொற்றிலிருந்து அடுத்ததின் தொற்று வரை ஒட்டுண்ணி கடக்கும் நிலைகளின் முழுத் தொடர்."),
                     bfig("lib/host-cycles",
