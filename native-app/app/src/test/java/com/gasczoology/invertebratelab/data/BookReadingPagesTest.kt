@@ -16,6 +16,25 @@ class BookReadingPagesTest {
         }
     }
 
+    @Test fun everyContentsSectionResolvesToAnExistingPackedPage() {
+        var packedSections = 0
+        BookChapters.all.forEach { book ->
+            val rows = BookLayout.rows(book)
+            val pages = BookReadingPages.forChapter(book, book.reviewQuestionIds)
+            val bodyPages = pages.filter { it.rowIndices.isNotEmpty() }
+            rows.forEachIndexed { index, row ->
+                if (row is BookRow.SectionHeading) {
+                    val containing = bodyPages.filter { index in it.rowIndices }
+                    assertEquals("${book.lessonId}: section ${row.number} has no unique page", 1, containing.size)
+                    val pageId = containing.single().id
+                    assertTrue("${book.lessonId}: invalid contents destination $pageId", pages.any { it.id == pageId })
+                    if (pageId != "row-$index") packedSections++
+                }
+            }
+        }
+        assertTrue("Test corpus must exercise packed sections", packedSections > 0)
+    }
+
     @Test fun sectionHeadingsNeverTrailThePreviousPage() {
         BookChapters.all.forEach { book ->
             val rows = BookLayout.rows(book)
