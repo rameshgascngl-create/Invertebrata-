@@ -57,8 +57,10 @@ timeout 20s adb -s emulator-5554 shell cmd package resolve-activity --brief \
   -a android.intent.action.MAIN -c android.intent.category.HOME \
   > native-app/app/build/qa-evidence/home-launcher.txt 2>&1 || true
 timeout 20s adb -s emulator-5554 shell settings put system font_scale "$expected_scale"
-timeout 20s adb -s emulator-5554 shell setprop persist.sys.locale ta-IN || true
-timeout 20s adb -s emulator-5554 shell am broadcast -a android.intent.action.LOCALE_CHANGED || true
+# Do not attempt privileged system-locale mutation here. Android shell cannot
+# reliably set persist.sys.locale or broadcast LOCALE_CHANGED. The app provides
+# its own language selector, and Android instrumentation explicitly selects
+# Tamil and asserts rendered Tamil text. This remains a real-device assertion.
 timeout 20s adb -s emulator-5554 shell settings get system font_scale > native-app/app/build/qa-evidence/font-scale.txt
 actual_scale="$(tr -d '\r\n' < native-app/app/build/qa-evidence/font-scale.txt)"
 if [ "$actual_scale" != "$expected_scale" ]; then
@@ -66,12 +68,14 @@ if [ "$actual_scale" != "$expected_scale" ]; then
   exit 1
 fi
 {
-  echo "requested_locale=ta-IN"
+  echo "system_locale_override=not_attempted (shell restriction)"
+  echo "app_language_selection=instrumentation selects Tamil through the app language selector"
+  echo "app_tamil_verification=instrumentation asserts visible Tamil text at the tested font scale"
   echo "persist.sys.locale=$(timeout 20s adb -s emulator-5554 shell getprop persist.sys.locale || true)"
   echo "persist.sys.language=$(timeout 20s adb -s emulator-5554 shell getprop persist.sys.language || true)"
   echo "system_locales=$(timeout 20s adb -s emulator-5554 shell settings get system system_locales || true)"
   echo "ro.product.locale=$(timeout 20s adb -s emulator-5554 shell getprop ro.product.locale || true)"
-  echo "NOTE: These diagnostics do not establish effective application locale; instrumentation must assert Tamil rendering."
+  echo "NOTE: System locale readings are diagnostic only; actual Tamil rendering is validated by instrumentation."
 } > native-app/app/build/qa-evidence/locale-preflight.txt
 # Acceptance tests save real device captures under these shared folders.
 # Prepare the paths used by older tests and include their PNGs in CI evidence.
