@@ -23,6 +23,11 @@ on:
 permissions:
   contents: read
 
+# Keep in-flight nine-job emulator evidence stable when new commits arrive.
+concurrency:
+  group: native-emulator-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   emulator-smoke:
     strategy:
