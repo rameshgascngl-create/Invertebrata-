@@ -31,6 +31,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.gasczoology.invertebratelab.data.AppLanguage
 import com.gasczoology.invertebratelab.data.BilingualText
@@ -240,8 +241,12 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
             readingParagraphs(block.text.value(language), language).forEach { segment ->
                 // Sentence-boundary chunks are layout fragments, not separate
                 // scientific learning points. Only BookKeyPoints are numbered.
-                Text(emphasizeAnatomy(segment),
-                    style = MaterialTheme.typography.bodyLarge)
+                Text(
+                    emphasizeAnatomy(segment),
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier.fillMaxWidth(),
+                )
             }
         }
         is BookDefinition -> Card(
