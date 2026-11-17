@@ -45,8 +45,18 @@ class NativeUnitIRevisedChaptersRenderingTest {
     }
 
     private fun waitFor(tag: String) {
-        rule.waitUntil(timeoutMillis = 30_000L) {
-            rule.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
+        try {
+            rule.waitUntil(timeoutMillis = 30_000L) {
+                rule.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
+            }
+        } catch (error: androidx.compose.ui.test.ComposeTimeoutException) {
+            val config = InstrumentationRegistry.getInstrumentation()
+                .targetContext.resources.configuration
+            throw AssertionError(
+                "Unit I reader navigation timed out waiting for tag=$tag " +
+                    "fontScale=${config.fontScale} orientation=${config.orientation}",
+                error
+            )
         }
     }
 
