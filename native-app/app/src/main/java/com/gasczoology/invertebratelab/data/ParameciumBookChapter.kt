@@ -4,21 +4,21 @@ package com.gasczoology.invertebratelab.data
 object ParameciumBookChapter {
     val chapter = bchapter(
         lessonId = "u1-paramecium",
-        title = "Paramecium: The Ciliate Type" to "பாரமீசியம்: சிலியேட்டு வகை உயிரி",
+        title = "Paramecium: The Ciliate Type" to "பாரமீசியம்: குறுஇழையுயிரிக்கான எடுத்துக்காட்டு",
         objectives = listOf(
             "Identify the organelles and their functions." to
-                "நுண்ணுறுப்புகளையும் அவற்றின் பணிகளையும் அறிதல்.",
+                "பாரமீசியத்தின் நுண்ணுறுப்புகளை அடையாளம் கண்டு அவற்றின் பணிகளை விளக்குதல்.",
             "Explain feeding, ciliary movement and water balance." to
-                "உணவூட்டம், குறுஇழை இயக்கம், நீர்ச் சமநிலையை விளக்குதல்.",
+                "உணவெடுப்பு, குறுஇழைகளால் நடைபெறும் இடப்பெயர்ச்சி மற்றும் நீர்ச் சமநிலை ஒழுங்குபடுத்தலை விளக்குதல்.",
             "Compare binary fission and conjugation." to
-                "இருபிளவையும் இணைவையும் ஒப்பிடுதல்.",
+                "இருசமப்பிளவையும் இணைவையும் (conjugation) ஒப்பிடுதல்.",
         ),
         introduction = listOf(
             "Paramecium is a freshwater ciliate whose organelles carry out the functions of a complete organism. Follow feeding, ciliary movement, water balance and reproduction through the corresponding structures and processes." to
-                "பாரமீசியம் நன்னீரில் வாழும் குறுஇழையுயிரி. அதன் நுண்ணுறுப்புகள் உணவூட்டம், இயக்கம், நீர்ச் சமநிலை, இனப்பெருக்கம் ஆகிய பணிகளைச் செய்கின்றன; ஒவ்வொரு செயலையும் அதற்குரிய அமைப்புடன் தொடர்புபடுத்திப் படிக்கலாம்.",
+                "பாரமீசியம் நன்னீரில் வாழும் குறுஇழைகளைக் கொண்ட ஒருசெல் உயிரினமாகும். அதன் நுண்ணுறுப்புகள் உணவெடுப்பு, குறுஇழை இயக்கம், நீர்ச் சமநிலை பேணுதல் மற்றும் இனப்பெருக்கம் ஆகிய வாழ்க்கைச் செயல்களை மேற்கொள்கின்றன; ஒவ்வொரு செயலையும் அதற்குரிய அமைப்புடன் தொடர்புபடுத்திப் படிக்கலாம்.",
         ),
         sections = listOf(
-            bsec("external", "External form, pellicle and cilia", "வெளிப்புற வடிவம், பெல்லிக்கிள், சிலியாக்கள்",
+            bsec("external", "External form, pellicle and cilia", "வெளிப்புற வடிவம், பெல்லிக்கிள் மற்றும் குறுஇழைகள்",
                 blocks = listOf(
                     bp("The body of Paramecium caudatum is elongated and shaped like a slipper, which is the origin of the popular name slipper animalcule. The front end is rounded and the hind end is more pointed, and the body is slightly flattened. The body has a definite shape, in contrast with Amoeba, because it is covered by a firm but flexible pellicle. On the oral side there is a shallow oral groove, which runs backwards from the front part of the body to the mouth, and which is the structure that distinguishes the oral surface from the opposite, aboral surface." to
                         "பாரமீசியம் காடேட்டத்தின் உடல் நீளமானது, செருப்பு வடிவம்; இதுவே செருப்பு நுண்விலங்கு என்ற பொதுப் பெயரின் மூலம். முன்முனை உருண்டையும் பின்முனை கூர்மையும் கொண்டது; உடல் சிறிது தட்டையானது. உறுதியான ஆனால் நெகிழும் பெல்லிக்கிளால் மூடப்பட்டிருப்பதால் அமீபாவுக்கு மாறாக உடலுக்கு திட்டவட்டமான வடிவம் உண்டு. வாய்ப்புறத்தில் உடலின் முன்பகுதியிலிருந்து வாய் வரை பின்னோக்கிச் செல்லும் ஆழமற்ற வாய்ப் பள்ளம் உள்ளது; இதன் மூலம் வாய்ப்புற மேற்பரப்பையும் அதற்கு எதிரான புற மேற்பரப்பையும் வேறுபடுத்தி அறியலாம்."),
