@@ -117,11 +117,19 @@ internal fun LazyListScope.bookChapterItems(
                 Text(t(language, "Contents of this chapter", "இந்த அத்தியாயத்தின் உள்ளடக்கம்"),
                     style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold,
                     modifier = Modifier.semantics { heading() })
-                rows.filterIsInstance<BookRow.SectionHeading>().forEach {
-                    val rowIndex = rows.indexOf(it)
-                    Text(it.number + "  " + it.heading.value(language),
-                        modifier = Modifier.clickable(enabled = onPageSelected != null) { onPageSelected?.invoke("row-$rowIndex") }
-                            .padding(vertical = 12.dp).testTag("reading-section-" + it.number))
+                // A logical page may contain several sections. Its ID belongs to the
+                // first row only, so a later section's row index is NOT a page ID.
+                val bodyPages = com.gasczoology.invertebratelab.data.BookReadingPages
+                    .forChapter(chapter, chapter.reviewQuestionIds)
+                rows.forEachIndexed { rowIndex, row ->
+                    if (row is BookRow.SectionHeading) {
+                        val targetPage = bodyPages.firstOrNull { rowIndex in it.rowIndices }?.id
+                        Text(row.number + "  " + row.heading.value(language),
+                            modifier = Modifier.clickable(
+                                enabled = onPageSelected != null && targetPage != null,
+                            ) { targetPage?.let { onPageSelected?.invoke(it) } }
+                                .padding(vertical = 12.dp).testTag("reading-section-" + row.number))
+                    }
                 }
             }
         }
