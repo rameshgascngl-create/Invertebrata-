@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - audit/undergraduate-coverage-register-20261114
+      - audit/tamil-terminology-completion-20261117
     paths:
       - '.github/workflows/native-emulator-qa.yml'
       - 'Paramecium_Approved_Integration_Kit.zip'
