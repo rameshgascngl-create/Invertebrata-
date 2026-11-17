@@ -38,8 +38,21 @@ class NativeUnitIIIIIEditorialSmokeTest {
         waitFor("native-home")
     }
 
-    private fun waitFor(tag: String) = rule.waitUntil(30_000) {
-        rule.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
+    private fun waitFor(tag: String) {
+        try {
+            rule.waitUntil(30_000) {
+                rule.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
+            }
+        } catch (error: ComposeTimeoutException) {
+            // Retain the strict timeout; identify the missing navigation stage
+            // and actual font scale instead of reporting an anonymous wait.
+            throw AssertionError(
+                "Editorial reader navigation timed out waiting for tag=$tag " +
+                    "fontScale=${context.resources.configuration.fontScale} " +
+                    "orientation=${context.resources.configuration.orientation}",
+                error
+            )
+        }
     }
 
     private fun screenshot(chapter: String, language: String, location: String) {
