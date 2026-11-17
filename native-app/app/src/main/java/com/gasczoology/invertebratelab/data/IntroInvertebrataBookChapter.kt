@@ -32,13 +32,13 @@ object IntroInvertebrataBookChapter {
                             listOf("Genus" to "பேரினம்", "Pila" to "பைலா"),
                         )),
                     bp("The sequence is a framework for classification, and the order of ranks is not proof of the relationship between the taxa. A genus and a family do not exist as discoverable objects in the same way as an individual animal. The ranks are conventions by which the groups that biologists recognise are given a place, and the grouping itself is a hypothesis. Whether a group is natural, in the sense that it includes an ancestor and all of its descendants, must be inferred from evidence, and the rank in the table does not decide it." to
-                        "வகைப்பாட்டுப் படிநிலை அமைப்பு உயிரினங்களை ஒழுங்குபடுத்துவதற்கான ஒரு கட்டமைப்பாகும். ஆனால் ஒரு குழுவுக்கு அளிக்கப்படும் வகைப்பாட்டுப் படிநிலை மட்டும் அதன் பரிணாம உறவுக்குச் சான்றாகாது. தனி விலங்கைக் காண்பதுபோல் பேரினத்தையோ குடும்பத்தையோ தனிப்பட்ட பொருளாக நேரடியாகக் காண இயலாது. இவை சான்றுகளின் அடிப்படையில் வகுக்கப்படும் வகைப்பாட்டுக் குழுக்கள்; அவற்றுக்கிடையிலான உறவுகள் ஆய்வின் மூலம் சோதிக்கப்பட வேண்டியவை. ஒரு குழு பொது மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் இயற்கைக் குழுவா என்பதைச் சான்றுகளின் அடிப்படையில் தீர்மானிக்க வேண்டும்; அட்டவணையிலுள்ள வகைப்பாட்டுப் படிநிலை அதை முடிவு செய்யாது."),
+                        "வகைப்பாட்டுப் படிநிலை அமைப்பு உயிரினங்களை ஒழுங்குபடுத்துவதற்கான ஒரு கட்டமைப்பாகும். ஆனால் ஒரு குழுவுக்கு அளிக்கப்படும் வகைப்பாட்டுப் படிநிலை மட்டும் அதன் பரிணாம உறவுக்குச் சான்றாகாது. தனி விலங்கைக் காண்பதுபோல் பேரினத்தையோ குடும்பத்தையோ தனிப்பட்ட பொருளாக நேரடியாகக் காண இயலாது. இவை சான்றுகளின் அடிப்படையில் வகுக்கப்படும் வகைப்பாட்டுக் குழுக்கள்; அவற்றுக்கிடையிலான உறவுகள் ஆய்வின் மூலம் சோதிக்கப்பட வேண்டியவை. ஒரு குழு பொது மூதாதையையும் அதன் எல்லா வழித்தோன்றல்களையும் உள்ளடக்கும் இயற்கைக் குழுவா என்பதைச் சான்றுகளின் அடிப்படையில் தீர்மானிக்க வேண்டும்; அட்டவணையிலுள்ள வகைப்பாட்டுப் படிநிலை மட்டும் அதைத் தீர்மானிக்காது."),
                     bdef("Taxonomy", "வகைப்பாட்டியல் (Taxonomy)", "The science of describing, naming and classifying organisms." to
                         "உயிரினங்களை விவரித்தல், அறிவியல் பெயரிடுதல் மற்றும் வகைப்படுத்துதல் பற்றிய அறிவியல்."),
                     bdef("Taxon", "வகைப்பாட்டுக் குழு (Taxon)", "A group of organisms at any rank that is recognised in classification." to
                         "வகைப்பாட்டின் எந்தப் படிநிலையிலும் அங்கீகரிக்கப்படும் உயிரினங்களின் குழு."),
                     bdef("Species", "இனம்", "The basic rank of classification, to which a scientific name is given." to
-                        "அறிவியல் பெயர் தரப்படும் வகைப்பாட்டின் அடிப்படைத் வகைப்பாட்டுப் படிநிலை."),
+                        "அறிவியல் பெயர் தரப்படும் வகைப்பாட்டின் அடிப்படை வகைப்பாட்டுப் படிநிலை."),
                     bdef("Genus", "பேரினம்", "A group of related species." to
                         "நெருங்கிய பரிணாம உறவு கொண்ட இனங்கள் அடங்கிய வகைப்பாட்டுக் குழு."),
                     bdef("Phylum", "தொகுதி", "A major group of animals defined by a basic body plan." to
@@ -195,7 +195,7 @@ object IntroInvertebrataBookChapter {
             "The taxonomic hierarchy arranges organisms in nested ranks: species, genus, family, order, class, phylum, kingdom and domain." to "வகைப்பாட்டுப் படிநிலை அமைப்பு உயிரினங்களை இனம், பேரினம், குடும்பம், வரிசை, வகுப்பு, தொகுதி, இராச்சியம், பேருலகம் (Domain) என ஒன்றினுள் மற்றொன்று அடங்கும் படிநிலைகளில் ஒழுங்குபடுத்துகிறது.",
             "A species name is a binomen of genus and specific name, and name-bearing types give an objective reference." to "ஓர் இனத்தின் அறிவியல் பெயர் பேரினப் பெயர் மற்றும் இனச் சிறப்புப் பெயர் ஆகிய இரண்டு சொற்களைக் கொண்டது; பெயர்தாங்கும் வகை மாதிரிகள் அப்பெயருக்குப் புறவயமான மேற்கோளாக விளங்குகின்றன.",
             "The rank sequence is a framework, not proof of phylogenetic relationship." to "வகைப்பாட்டுப் படிநிலைகளின் வரிசை உயிரினங்களை ஒழுங்குபடுத்தும் கட்டமைப்பாகும்; அது மட்டுமே பரிணாம உறவுக்கான சான்றாகாது.",
-            "Invertebrata is an informal collective term and not a single phylum." to "முதுகெலும்பற்றவை என்பது பல விலங்குத் தொகுதிகளை உள்ளடக்கும் முறைசாரா கூட்டுப் பெயர்; அது தனி விலங்குத் தொகுதி அல்ல.",
+            "Invertebrata is an informal collective term and not a single phylum." to "முதுகெலும்பற்றவை என்பது பல விலங்குத் தொகுதிகளை உள்ளடக்கிய முறைசாரா கூட்டுப் பெயர்; அது தனி விலங்குத் தொகுதி அல்ல.",
             "Lack of a vertebral column is a negative character; some invertebrate animals are chordates." to "முதுகெலும்புத் தொடர் இல்லாதிருப்பது ஓர் இன்மைப் பண்பாகும்; முதுகெலும்பற்ற விலங்குகளில் சில முதுகுநாணித் தொகுதியைச் சேர்ந்தவை.",
             "The phyla differ in organisation, symmetry, germ layers, body cavity, segmentation and development." to "விலங்குத் தொகுதிகள் உடலமைப்பு நிலை, உடற்சமச்சீர், கருவடுக்குகளின் எண்ணிக்கை, உடற்குழி, உடற்கண்ட அமைப்பு மற்றும் கருவளர்ச்சி ஆகியவற்றில் வேறுபடுகின்றன.",
         ),
