@@ -76,27 +76,27 @@ object LocomotionBookChapter {
                     bdef("Avoiding reaction", "தவிர்ப்புத் துலங்கல் (Avoiding reaction)", "The behaviour of a ciliate that reverses, turns and swims off in a new direction on meeting an obstacle or an unfavourable condition." to
                         "தடையை அல்லது சாதகமற்ற நிலையைச் சந்திக்கும்போது சிலியேட் பின்னோக்கி, திரும்பி புதிய திசையில் நீந்தும் நடத்தை."),
                 )),
-            bsec("compare", "Cilia and flagella compared", "குறுஇழைகளும் கசைகளும் ஒப்பீடு",
+            bsec("compare", "Cilia and flagella compared", "குறுஇழைகளும் கசையிழைகளும் — ஒப்பீடு",
                 blocks = listOf(
                     bp("Cilia and flagella are often treated as two separate things, and they are distinguished by number, length and the pattern of the beat. Cilia are numerous, short, and beat in coordinated waves, while flagella are few, long, and beat in a wave-like or whip-like manner. These are differences of degree and of habit and not of kind, since the internal structure is the same. The two are built on a core of microtubules called the axoneme, arranged in the pattern of nine pairs of microtubules around a central pair, which is written as 9+2. The axoneme arises from a basal body, a structure with a different arrangement of microtubules, in the cytoplasm at the base." to
-                        "குறுஇழைகளும் கசைகளும் பெரும்பாலும் இரு தனிப் பொருட்களாகக் கருதப்படுகின்றன; எண்ணிக்கை, நீளம், அடிப்பு முறைமையால் வேறுபடுத்தப்படுகின்றன. குறுஇழைகள் ஏராளம், குறுகியவை, ஒருங்கிணைந்த அலைகளாக அடிக்கின்றன; கசைகள் குறைவு, நீளம், அலை அல்லது சவுக்கு போல அடிக்கின்றன. உள்ளமைப்பு ஒன்றே என்பதால் இவை வகையின் அல்ல, அளவின், பழக்கத்தின் வேறுபாடுகள். இரண்டும் ஆக்சோனீம் எனப்படும் நுண்குழல்களின் மையத்தில் அமைந்தவை; ஒரு மைய இணையைச் சுற்றி ஒன்பது நுண்குழல் இணைகளின் முறைமையில், 9+2 என எழுதப்படுவது. ஆக்சோனீம் அடியிலுள்ள சைட்டோபிளாசத்தில் நுண்குழல்களின் வேறுபட்ட அமைப்புடைய அடிப்படை உடலிலிருந்து எழுகிறது."),
-                    btable("Cilia and flagella", "குறுஇழைகளும் கசைகளும்",
-                        listOf("Feature" to "பண்பு", "Cilia" to "குறுஇழைகள்", "Flagella" to "கசைகள்"),
+                        "குறுஇழைகளும் கசையிழைகளும் பொதுவாகத் தனித்தனியாகக் குறிப்பிடப்பட்டாலும், அவற்றின் எண்ணிக்கை, நீளம் மற்றும் அசைவு முறை ஆகியவற்றின் அடிப்படையிலேயே வேறுபடுத்தப்படுகின்றன. குறுஇழைகள் எண்ணிக்கையில் அதிகமாகவும் நீளத்தில் குறுகியவையாகவும் இருந்து ஒருங்கிணைந்த அலைகளாக அசைகின்றன; கசையிழைகள் பொதுவாகக் குறைந்த எண்ணிக்கையிலும் அதிக நீளத்துடனும் இருந்து அலைபோல அல்லது சவுக்குபோல அசைகின்றன. இவற்றின் உள்ளமைப்பு ஒரே அடிப்படையில் அமைந்திருப்பதால் வேறுபாடு அடிப்படை அமைப்பில் அல்ல; அளவு மற்றும் அசைவு முறையிலேயே உள்ளது. இரண்டிலும் ஆக்சோனீம் (axoneme) எனப்படும் நுண்குழல் உள்ளமைப்பு உள்ளது; ஒரு மைய நுண்குழல் இணையைச் சுற்றி ஒன்பது புற நுண்குழல் இணைகள் அமைந்திருப்பதால் இது 9+2 அமைப்பு எனப்படுகிறது. ஆக்சோனீம் செல்லின் சைட்டோபிளாசத்தில் உள்ள, வேறுபட்ட நுண்குழல் அமைப்புடைய அடித்தளத் துகளிலிருந்து (basal body) தோன்றுகிறது."),
+                    btable("Cilia and flagella", "குறுஇழைகளும் கசையிழைகளும்",
+                        listOf("Feature" to "பண்பு", "Cilia" to "குறுஇழைகள்", "Flagella" to "கசையிழைகள்"),
                         listOf(
                             listOf("Number" to "எண்ணிக்கை", "Numerous" to "ஏராளம்", "One or a few" to "ஒன்று அல்லது சில"),
                             listOf("Length" to "நீளம்", "Short" to "குறுகிய", "Long" to "நீண்ட"),
-                            listOf("Pattern of beat" to "அடிப்பு முறைமை", "Effective and recovery strokes, in metachronal waves" to "பயனுள்ள, மீட்பு வீச்சுகள்; மெட்டாக்ரோனல் அலைகளில்", "Wave-like or whip-like undulation" to "அலை அல்லது சவுக்கு போன்ற நெளிவு"),
+                            listOf("Pattern of beat" to "அடிப்பு முறைமை", "Effective and recovery strokes, in metachronal waves" to "செயல்திறன் மற்றும் மீட்பு வீச்சுகள்; மெட்டாக்ரோனல் அலைகளாக", "Wave-like or whip-like undulation" to "அலைபோன்ற அல்லது சவுக்குபோன்ற நெளிவு அசைவு"),
                             listOf("Internal structure" to "உள்ளமைப்பு", "Microtubule axoneme (9+2)" to "நுண்குழல் ஆக்சோனீம் (9+2)", "Microtubule axoneme (9+2)" to "நுண்குழல் ஆக்சோனீம் (9+2)"),
                             listOf("Example" to "எடுத்துக்காட்டு", "Paramecium" to "பாரமீசியம்", "Euglena" to "யூக்ளினா"),
                         )),
                     bp("The common basis explains why the two are treated together in more advanced work, and why the distinction is not a sharp one. Some organisms have structures that are intermediate in number or in length, and the terms are applied by convention. The student who writes that cilia and flagella are 'completely different organelles' makes a false statement, and the student who writes that they differ in number, length and manner of beat while they share the 9+2 axoneme is both correct and complete." to
-                        "பொது அடிப்படை, மேம்பட்ட ஆய்வில் இரண்டும் ஏன் ஒன்றாகக் கருதப்படுகின்றன, வேறுபாடு ஏன் கூர்மையானதல்ல என்பதை விளக்குகிறது. சில உயிரிகளுக்கு எண்ணிக்கை அல்லது நீளத்தில் இடைப்பட்ட அமைப்புகள் உண்டு; சொற்கள் மரபால் பயன்படுத்தப்படுகின்றன. குறுஇழைகளும் கசைகளும் 'முற்றிலும் வேறுபட்ட உறுப்புகள்' என எழுதும் மாணவர் தவறான கூற்றைச் செய்கிறார்; அவை எண்ணிக்கை, நீளம், அடிக்கும் முறையில் வேறுபட்டு 9+2 ஆக்சோனீமைப் பகிர்கின்றன என எழுதும் மாணவர் சரியாகவும் முழுமையாகவும் எழுதுகிறார்."),
+                        "பொதுவான உள்ளமைப்பே மேம்பட்ட ஆய்வுகளில் இவ்விரண்டும் ஏன் ஒன்றாகக் கருதப்படுகின்றன என்பதையும் அவற்றுக்கிடையேயான வேறுபாடு ஏன் முற்றிலும் தனித்துவமானதல்ல என்பதையும் விளக்குகிறது. சில உயிரினங்களில் எண்ணிக்கையிலோ நீளத்திலோ இடைநிலைப் பண்புடைய அமைப்புகள் காணப்படுவதால், இச்சொற்கள் மரபுவழிப் பயன்பாட்டின் அடிப்படையில் வழங்கப்படுகின்றன. குறுஇழைகளும் கசையிழைகளும் 'முற்றிலும் வேறுபட்ட நுண்ணுறுப்புகள்' என்று எழுதுவது தவறாகும்; இவை எண்ணிக்கை, நீளம் மற்றும் அசைவு முறையில் வேறுபட்டாலும் 9+2 ஆக்சோனீம் உள்ளமைப்பைப் பகிர்கின்றன என்று விளக்குவது சரியான முழுமையான விடையாகும்."),
                     bdef("Axoneme", "ஆக்சோனீம்", "The core of microtubules of a cilium or flagellum, with nine peripheral pairs around a central pair." to
-                        "குறுஇழை அல்லது கசையின் நுண்குழல் மையம்; ஒரு மைய இணையைச் சுற்றி ஒன்பது புற இணைகள்."),
+                        "குறுஇழை அல்லது கசையிழையின் நுண்குழல் உள்ளமைப்பு; மையத்திலுள்ள ஒரு நுண்குழல் இணையைச் சுற்றி ஒன்பது புற நுண்குழல் இணைகள் அமைந்திருக்கும்."),
                     bdef("Microtubule", "நுண்குழல்", "A hollow protein tube of the cytoskeleton that forms part of cilia and flagella." to
-                        "குறுஇழைகள், கசைகளின் பகுதியாக அமையும் சைட்டோஸ்கெலிட்டனின் வெற்றுப் புரதக் குழாய்."),
+                        "குறுஇழைகள் மற்றும் கசையிழைகளின் அமைப்பில் பங்குபெறும் செல் எலும்புக்கூட்டின் உள்ளீடற்ற புரதக் குழாய்."),
                     bdef("Basal body", "அடித்தளத் துகள் (Basal body)", "The structure in the cytoplasm at the base of a cilium or flagellum from which the axoneme arises." to
-                        "அடியில் சைட்டோபிளாசத்தில் உள்ள, ஆக்சோனீம் எழும் அமைப்பு."),
+                        "குறுஇழை அல்லது கசையிழையின் அடிப்பகுதியில் சைட்டோபிளாசத்திற்குள் அமைந்து, ஆக்சோனீம் தோன்றுவதற்கான அடிப்படை அமைப்பு."),
                 )),
             bsec("habitat", "Locomotion and habitat", "இயக்கமும் வாழிடமும்",
                 blocks = listOf(
