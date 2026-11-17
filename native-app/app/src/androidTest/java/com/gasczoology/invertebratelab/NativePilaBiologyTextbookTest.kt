@@ -76,7 +76,7 @@ class NativePilaBiologyTextbookTest {
 
         showContinuousReader(rule)
         val egg = if (language == AppLanguage.TAMIL)
-            "வெண்மையான சுண்ணாம்புச் சத்துடைய" else "pale, calcareous eggs"
+            "வெளிர் நிறமுடைய, கால்சியச் சத்தால் கடினமான உறையைக் கொண்ட" else "pale, calcareous eggs"
         rule.onNodeWithTag(reader).performScrollToNode(hasText(egg, substring = true))
         rule.onNodeWithText(egg, substring = true).assertExists()
         capture(lang, "egg-laying", scale)
