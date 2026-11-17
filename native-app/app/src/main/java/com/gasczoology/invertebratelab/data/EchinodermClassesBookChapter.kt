@@ -55,7 +55,7 @@ object EchinodermClassesBookChapter {
                         bdef("Pentacrinoid", "பென்டாகிரைனாய்டு (Pentacrinoid)", "The stalked young stage of a feather star, attached for some weeks before it breaks free." to
                             "இறகு நட்சத்திரத்தின் தண்டுடைய இளம் நிலை; பிரிவதற்கு முன் சில வாரங்கள் இணைந்திருக்கும்."),
                     ),
-                    bsub("Feeding and the water vascular system", "உணவூட்டமும் நீரோட்டக் குழாய் மண்டலம்யும்",
+                    bsub("Feeding and the water vascular system", "உணவூட்டமும் நீரோட்டக் குழாய் மண்டலமும்",
                         bp("A crinoid is a suspension feeder. It holds the arms up in the current like a fan, and the tube feet along the pinnules, which are without suckers, catch the particles of plankton and detritus, which are wrapped in mucus and carried down the ambulacral grooves by cilia to the mouth. The tube feet therefore serve in feeding and in gas exchange, and not in locomotion. The water vascular system has no madreporite on the surface, but has many small pores in the tegmen. In this the crinoids differ from the starfishes, a point for the student to remember." to
                             "கிரைனாய்டு தொங்கல் துகள் உண்ணி. அது கைகளை விசிறிபோல நீரோட்டத்தில் உயர்த்துகிறது; பின்னூல்களில் உறிஞ்சிகள் இல்லாத குழாய் கால்கள் பிளாங்க்டன், சிதைவுத் துகள்களைப் பிடிக்கின்றன; அவை சளியில் சுற்றப்பட்டு சிலியாக்களால் நடைப்பள்ளங்கள் வழியே வாய்க்கு எடுத்துச் செல்லப்படுகின்றன. எனவே குழாய் கால்கள் உணவூட்டம், வாயுப் பரிமாற்றத்தில் பயன்படுகின்றன; இடப்பெயர்ச்சியில் அல்ல. நீரோட்டக் குழாய் மண்டலம்க்கு மேற்பரப்பில் மேட்ரிபோரைட் இல்லை; டெக்மனில் பல சிறு துளைகள் உண்டு. இதில் கிரைனாய்டுகள் நட்சத்திர மீன்களிலிருந்து வேறுபடுகின்றன; மாணவர் நினைவில் கொள்ள வேண்டிய புள்ளி."),
                     ),
