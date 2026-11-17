@@ -104,6 +104,27 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 600
           script: bash tools/run_native_emulator_qa.sh ${{ matrix.font_scale }} ${{ matrix.suite }}
+      - name: Summarise instrumentation failures
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root = Path("native-app/app/build/outputs/androidTest-results")
+          reports = list(root.rglob("*.xml")) if root.is_dir() else []
+          print(f"ANDROID_TEST_XML_REPORTS={len(reports)}")
+          for report in reports:
+              try:
+                  tree = ET.parse(report)
+              except (ET.ParseError, OSError) as exc:
+                  print(f"ANDROID_TEST_XML_PARSE_WARNING {report}: {exc}")
+                  continue
+              for case in tree.iter("testcase"):
+                  failures = list(case.findall("failure")) + list(case.findall("error"))
+                  for failure in failures:
+                      print("FAILED_TEST_XML", case.get("classname", ""),
+                            case.get("name", ""), failure.get("message", "")[:500])
+          PY
       - name: Collect bounded post-failure diagnostics
         if: always()
         timeout-minutes: 2
