@@ -28,24 +28,24 @@ object NutritionBookChapter {
                         "ஹோலோஃபைடிக் ஊட்டம், ஒளிச்சேர்க்கை தன்னூட்டம் எனவும் அழைக்கப்படுவது, பச்சையம் கொண்ட பசுங்கணிகங்களில் ஒளி, கார்பன் டைஆக்சைடு மற்றும் நீரைப் பயன்படுத்தி ஒளிச்சேர்க்கை மூலம் உணவு தயாரிப்பதாகும். யூக்ளீனா இதற்கான பொதுவான எடுத்துக்காட்டாகும்; பொருத்தமான ஊடகத்தில் ஒளியில் வளர்க்கப்படும்போது அது ஒளிச்சேர்க்கை செய்யும் உயிரினமாகச் செயல்படுகிறது. ஒளிச்சேர்க்கையின் விளைபொருள் ஸ்டார்ச்சாக அல்லாமல் யூக்ளீனாய்டுகளுக்கே உரிய கார்போஹைட்ரேட்டான பாராமைலான் (paramylon) வடிவில் சேமிக்கப்படுகிறது."),
                     bp("Mixotrophic nutrition is the combination of more than one mode in the same organism. Euglena can photosynthesise in the light and can absorb dissolved organic matter, and in the dark, or when light is poor, it may depend on the absorbed organic matter. Some ciliates and other protozoa obtain a part of their food from algae that live within the cell as symbionts, while they also ingest particles in the holozoic manner. Mixotrophy shows that the four terms are not rigid compartments." to
                         "கலப்பூட்டம் என்பது ஒரே உயிரினம் ஒன்றுக்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்துவதாகும். யூக்ளினா ஒளியில் ஒளிச்சேர்க்கை செய்யவும் கரைந்த கரிமப் பொருளை உறிஞ்சவும் முடியும்; இருளில் அல்லது ஒளி குறைவாக இருக்கும்போது உறிஞ்சிய கரிமப் பொருளைச் சார்ந்திருக்கலாம். சில குறுஇழையுயிரிகளும் பிற புரோட்டோசோவாக்களும் செல்லுக்குள் கூட்டுயிரிகளாக வாழும் பாசிகளிடமிருந்து உணவின் ஒரு பகுதியைப் பெறுகின்றன; அதே நேரம் ஹோலோசோயிக் முறையில் துகள்களையும் உட்கொள்கின்றன. இந்த நான்கு ஊட்ட முறைகளும் முற்றிலும் தனித்தனியான நிலையான பிரிவுகள் அல்ல என்பதை கலப்பூட்டம் காட்டுகிறது."),
-                    btable("Modes of nutrition in Protozoa", "புரோட்டோசோவாவில் ஊட்டமுறைகள்",
-                        listOf("Mode" to "முறை", "What happens" to "என்ன நிகழ்கிறது", "Example" to "எடுத்துக்காட்டு"),
+                    btable("Modes of nutrition in Protozoa", "புரோட்டோசோவாக்களில் ஊட்ட முறைகள்",
+                        listOf("Mode" to "முறை", "What happens" to "நடைபெறும் செயல்முறை", "Example" to "எடுத்துக்காட்டு"),
                         listOf(
-                            listOf("Holozoic (phagotrophic)" to "ஹோலோசோயிக் (ஃபேகோட்ரோஃபிக்)", "Solid food is ingested and digested in food vacuoles" to "திண்ம உணவு உட்கொள்ளப்பட்டு உணவு நுண்குமிழ்களில் செரிக்கப்படுகிறது", "Amoeba, Paramecium" to "அமீபா, பாரமீசியம்"),
-                            listOf("Saprozoic (osmotrophic)" to "சாப்ரோசோயிக் (ஆஸ்மோட்ரோஃபிக்)", "Dissolved organic matter is absorbed across the surface" to "கரைந்த கரிமப் பொருள் மேற்பரப்பு வழியே உறிஞ்சப்படுகிறது", "Many parasitic protozoa" to "பல ஒட்டுண்ணி புரோட்டோசோவாக்கள்"),
-                            listOf("Holophytic (photoautotrophic)" to "ஹோலோஃபைடிக் (ஒளிச்சேர்க்கை தன்னூட்டம்)", "Food is made by photosynthesis in chloroplasts" to "பசுங்கணிகங்களில் ஒளிச்சேர்க்கையால் உணவு தயாரிக்கப்படுகிறது", "Euglena in the light" to "ஒளியில் யூக்ளினா"),
-                            listOf("Mixotrophic" to "கலப்பு", "Two or more modes combined" to "இரண்டு அல்லது மேற்பட்ட முறைகளின் இணைப்பு", "Euglena; ciliates with algal symbionts" to "யூக்ளினா; பாசிக் கூட்டுயிர் உள்ள சிலியேட்டுகள்"),
+                            listOf("Holozoic (phagotrophic)" to "விலங்குணவு முறை (ஹோலோசோயிக் / ஃபேகோட்ரோஃபிக்)", "Solid food is ingested and digested in food vacuoles" to "திட உணவுத் துகள்கள் உட்கொள்ளப்பட்டு உணவு நுண்குமிழ்களுக்குள் செரிக்கப்படுகின்றன", "Amoeba, Paramecium" to "அமீபா, பாரமீசியம்"),
+                            listOf("Saprozoic (osmotrophic)" to "கரைந்த கரிமப்பொருள் உறிஞ்சும் முறை (சாப்ரோசோயிக் / ஆஸ்மோட்ரோஃபிக்)", "Dissolved organic matter is absorbed across the surface" to "கரைந்த கரிமப் பொருட்கள் செல் மேற்பரப்பின் வழியாக உறிஞ்சப்படுகின்றன", "Many parasitic protozoa" to "பல ஒட்டுண்ணி புரோட்டோசோவாக்கள்"),
+                            listOf("Holophytic (photoautotrophic)" to "தாவர உணவூட்ட முறை (ஹோலோஃபைடிக் / ஒளிச்சேர்க்கைத் தன்னூட்டம்)", "Food is made by photosynthesis in chloroplasts" to "பசுங்கணிகங்களில் ஒளிச்சேர்க்கையால் உணவு தயாரிக்கப்படுகிறது", "Euglena in the light" to "ஒளியில் வளரும் யூக்ளீனா"),
+                            listOf("Mixotrophic" to "கலப்பூட்ட முறை", "Two or more modes combined" to "ஒரே உயிரினம் இரண்டு அல்லது அதற்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்துதல்", "Euglena; ciliates with algal symbionts" to "யூக்ளீனா; செல்லுக்குள் கூட்டுயிர் பாசிகளைக் கொண்ட குறுஇழையுயிரிகள்"),
                         )),
-                    bdef("Holozoic nutrition", "ஹோலோசோயிக் ஊட்டம் (Holozoic nutrition)", "Nutrition by the ingestion of solid food, which is digested inside the cell." to
+                    bdef("Holozoic nutrition", "விலங்குணவு முறை (Holozoic nutrition)", "Nutrition by the ingestion of solid food, which is digested inside the cell." to
                         "திட உணவுத் துகள்களை உட்கொண்டு, அவற்றைச் செல்லுக்குள் செரிக்கும் ஊட்டமுறை."),
-                    bdef("Saprozoic nutrition", "சாப்ரோசோயிக் ஊட்டம் (Saprozoic nutrition)", "Nutrition by the absorption of dissolved organic substances from the surroundings." to
-                        "சுற்றுப்புறத்திலிருந்து கரைந்த கரிமப் பொருட்களை உறிஞ்சும் ஊட்டம்."),
-                    bdef("Holophytic nutrition", "ஹோலோஃபைடிக் ஊட்டம் (Holophytic nutrition)", "Nutrition by photosynthesis, the plant-like manufacture of food from simple substances using light." to
-                        "ஒளியைப் பயன்படுத்தி எளிய பொருட்களிலிருந்து உணவு தயாரிக்கும் தாவரம் போன்ற ஒளிச்சேர்க்கை ஊட்டம்."),
-                    bdef("Mixotrophy", "கலப்பு ஊட்டம் (Mixotrophy)", "The use of more than one mode of nutrition by the same organism." to
-                        "ஒரே உயிரி சூழலுக்கேற்ப ஒன்றுக்கு மேற்பட்ட ஊட்டமுறைகளைப் பயன்படுத்தும் பண்பு."),
+                    bdef("Saprozoic nutrition", "கரைந்த கரிமப்பொருள் உறிஞ்சும் ஊட்டமுறை (Saprozoic nutrition)", "Nutrition by the absorption of dissolved organic substances from the surroundings." to
+                        "சுற்றுப்புற ஊடகத்தில் கரைந்துள்ள கரிமப் பொருட்களைச் செல் மேற்பரப்பின் வழியாக உறிஞ்சி ஊட்டம் பெறுதல்."),
+                    bdef("Holophytic nutrition", "தாவர உணவூட்ட முறை (Holophytic nutrition)", "Nutrition by photosynthesis, the plant-like manufacture of food from simple substances using light." to
+                        "ஒளியின் ஆற்றலைப் பயன்படுத்தி எளிய பொருட்களிலிருந்து ஒளிச்சேர்க்கை மூலம் உணவு தயாரிக்கும் தாவரங்களைப் போன்ற ஊட்டமுறை."),
+                    bdef("Mixotrophy", "கலப்பூட்ட முறை (Mixotrophy)", "The use of more than one mode of nutrition by the same organism." to
+                        "ஒரே உயிரினம் ஒன்றுக்கு மேற்பட்ட ஊட்ட முறைகளைப் பயன்படுத்தும் பண்பு."),
                     bdef("Paramylon", "பாராமைலான் (Paramylon)", "The storage carbohydrate of Euglena and other euglenoids, which is not starch." to
-                        "ஸ்டார்ச் அல்லாத, யூக்ளினாவிலும் பிற யூக்ளினாய்டுகளிலும் உள்ள சேமிப்புக் கார்போஹைட்ரேட்."),
+                        "ஸ்டார்ச்சிலிருந்து வேறுபட்ட, யூக்ளீனா மற்றும் பிற யூக்ளீனாய்டுகளில் சேமிக்கப்படும் கார்போஹைட்ரேட்."),
                 )),
             bsec("amoeba", "Feeding in Amoeba", "அமீபாவில் உணவூட்டல்",
                 blocks = listOf(
