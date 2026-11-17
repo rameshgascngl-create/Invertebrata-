@@ -166,7 +166,7 @@ object ProtoParasitesBookChapter {
         ),
         summary = listOf(
             "Entamoeba histolytica has a direct life cycle; four-nucleate cysts are swallowed, and amoebiasis is controlled by safe water, food and sanitation." to "எண்டமீபா ஹிஸ்டோலிடிகாவுக்கு நேரடி வாழ்க்கைச் சுழற்சி உள்ளது; நான்கு உட்கருக்களைக் கொண்ட முதிர்ந்த சிஸ்ட்கள் உட்கொள்ளப்படுவதால் தொற்று ஏற்படுகிறது. பாதுகாப்பான நீர், உணவு மற்றும் சுற்றுப்புறத் தூய்மை மூலம் அமீபியாசிஸைக் கட்டுப்படுத்தலாம்.",
-            "Trypanosoma brucei is a flagellate of blood and lymph transmitted by the tsetse fly; it causes sleeping sickness." to "டிரிப்பனோசோமா புரூசி செட்ஸி ஈயால் பரவும், இரத்தம், நிணநீரின் கசையிழையுயிரி; தூக்க நோயை உண்டாக்குகிறது.",
+            "Trypanosoma brucei is a flagellate of blood and lymph transmitted by the tsetse fly; it causes sleeping sickness." to "டிரிப்பனோசோமா புரூசி இரத்தத்திலும் நிணநீரிலும் வாழும் கசையிழையுடைய ஒட்டுண்ணியாகும்; செட்ஸி ஈ மூலம் பரவி தூக்க நோயை ஏற்படுத்துகிறது.",
             "Boiling water does not control sleeping sickness because the route of transmission is the bite of the vector." to "தூக்க நோய் நோய்க்கடத்தியான செட்ஸி ஈ கடிப்பதால் பரவுவதால், குடிநீரைக் கொதிக்க வைப்பது இந்நோயின் பரவலைத் தடுக்காது.",
             "Leishmania lives as amastigotes in macrophages and is transmitted by sand flies, causing the leishmaniases." to "லீஷ்மேனியா மேக்ரோஃபேஜ் செல்களுக்குள் அமாஸ்டிகோட் வடிவில் வாழ்கிறது; மணல் ஈக்கள் மூலம் பரவி பல்வேறு லீஷ்மேனியாசிஸ் நோய்களை ஏற்படுத்துகிறது.",
             "The control of each parasite follows its route of transmission." to "ஒவ்வொரு ஒட்டுண்ணியையும் கட்டுப்படுத்தும் முறைகள் அது பரவும் வழியை அடிப்படையாகக் கொண்டவை.",
