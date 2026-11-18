@@ -11,7 +11,7 @@ object NereisBookChapter {
             "Relate organ systems to an active marine habit." to
                 "உறுப்பு மண்டலங்களைக் கடல்வாழ் செயல்மிக்க வாழ்முறையுடன் தொடர்புபடுத்துதல்.",
             "Explain epitoky and the reproductive sequence." to
-                "எபிடோகியையும் இனப்பெருக்க நிலை வரிசையையும் விளக்குதல்.",
+                "எபிடோகி உருமாற்றத்தையும் அதனுடன் தொடர்புடைய இனப்பெருக்க நிகழ்வுகளையும் விளக்குதல்.",
         ),
         introduction = listOf(
             "Nereis is a marine polychaete with parapodia suited to movement and gas exchange. Its jaws, sensory structures and reproductive changes illustrate an active annelid way of life." to
@@ -150,7 +150,7 @@ object NereisBookChapter {
             bsec("epitoky", "Epitoky", "எபிடோகி",
                 blocks = listOf(
                     bp("Epitoky is the transformation of a benthic, non-reproductive nereidid, called an atoke, into a specialised swimming reproductive form, the epitoke. The word has been used for the whole change of the body, and the older name for the form, heteronereis, is still met in books. The change takes place as the worm reaches sexual maturity, and its effect is to fit the animal for life in the open water, where it will release its gametes." to
-                        "எபிடோகி என்பது அடிமட்டத்தில் வாழும், இனப்பெருக்கத்துக்கு முன்பட்ட அடோக் (atoke) நிலை, நீந்தி இனப்பெருக்கம் செய்ய ஏற்ற எபிடோக் (epitoke) வடிவமாக உருமாறும் நிகழ்வு. இச்சொல் உடலின் முழு மாற்றத்துக்கும் பயன்படுத்தப்பட்டுள்ளது; வடிவத்தின் பழைய பெயரான ஹெட்டிரோநெரிஸ் நூல்களில் இன்னும் காணப்படுகிறது. புழு பாலியல் முதிர்ச்சியடையும் காலத்தில் இவ்வுருமாற்றம் நிகழலாம்; நீரில் நீந்திச் சென்று இனச்செல்களை வெளியிடுவதற்கேற்ற உடலமைப்பு உருவாகிறது."),
+                        "எபிடோகி என்பது அடிமட்டத்தில் வாழும், இனப்பெருக்கத்துக்கு முன்பட்ட அடோக் (atoke) நிலை, நீந்தி இனப்பெருக்கம் செய்ய ஏற்ற எபிடோக் (epitoke) வடிவமாக உருமாறும் நிகழ்வு. இச்சொல் உடலின் முழு மாற்றத்துக்கும் பயன்படுத்தப்பட்டுள்ளது; வடிவத்தின் பழைய பெயரான ஹெட்டிரோநீரிஸ் நூல்களில் இன்னும் காணப்படுகிறது. புழு பாலியல் முதிர்ச்சியடையும் காலத்தில் இவ்வுருமாற்றம் நிகழலாம்; நீரில் நீந்திச் சென்று இனச்செல்களை வெளியிடுவதற்கேற்ற உடலமைப்பு உருவாகிறது."),
                     bpoints("What changes in the epitoke", "எபிடோக்கில் மாறுவது என்ன",
                         "The parapodia enlarge and develop flattened natatory lobes, with paddle-like chaetae, for swimming." to "நீந்துவதற்கு பாரபோடியாக்கள் பெரிதாகி, துடுப்பு போன்ற சீட்டாக்களுடன் தட்டையான நீந்தும் மடல்களை உருவாக்குகின்றன.",
                         "In the conventional textbook example, an anterior region remains relatively non-natatory while posterior parapodia are modified for swimming and gametes accumulate; the arrangement varies between species and sexes." to "பாடநூல்களில் விளக்கப்படும் வழக்கமான எடுத்துக்காட்டில் முன்புறம் அதிகம் மாற்றமடையாமல் இருக்கும்; பின்புறப் பாரபோடியாக்கள் நீந்துவதற்கேற்ப மாற்றமடைகின்றன. இப்பிரிவும் இனச்செல்களின் பரவலும் இனங்களுக்கும் பாலினங்களுக்கும் இடையே மாறுபடலாம்.",
