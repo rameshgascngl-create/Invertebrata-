@@ -44,6 +44,7 @@ jobs:
           nematoda = (root / 'AschelminthesBookChapter.kt').read_text(encoding='utf-8')
           ascaris = (root / 'AscarisBookChapter.kt').read_text(encoding='utf-8')
           nematode_parasites = (root / 'NematodeParasitesBookChapter.kt').read_text(encoding='utf-8')
+          nematode_adaptations = (root / 'NematodeAdaptationsBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -115,6 +116,17 @@ jobs:
           assert 'ஏறத்தாழ 5–10 நாட்களில் இரண்டு முறை தோலுரித்த பிறகு' in nematode_parasites
           assert 'ஃபைலேரிஃபார்ம் (L3) லார்வாக்களாக' in nematode_parasites
           assert 'குடற்புழுத் தொற்றின் வழக்கமான அறிகுறி' not in nematode_parasites
+          assert 'கியூட்டிகிள் (cuticle) என்னும் உயிரற்ற வெளி உறை' in nematode_adaptations
+          assert 'புறத்தோல் (எப்பிடெர்மிஸ்) செல்கள் சுரக்கின்றன' in nematode_adaptations
+          assert 'கியூட்டிகிள் (Cuticle)' in nematode_adaptations
+          assert 'நீரழுத்த எலும்புக்கூடு' in nematode_adaptations
+          assert 'இவை வாழ்க்கைச் சுழற்சியின் மூன்று தனி வகைகள் அல்ல' in nematode_adaptations
+          assert 'Wuchereria has no free-living soil stage:' in nematode_adaptations
+          assert 'are deposited on the skin during a blood meal, and enter through the bite wound' in nematode_adaptations
+          assert 'கொசு இரத்தம் உறிஞ்சும்போது தொற்றுநிலை L3 லார்வா தோல்மேல்' in nematode_adaptations
+          assert 'ஊசிப்புழுவான என்டெரோபியஸ்' in nematode_adaptations
+          assert 'not a demonstrated universal immune-evasion mechanism' in nematode_adaptations
+          assert 'கொலாஜன் நிறைந்த புறத்தோல் விருந்தோம்பியின் இயந்திர' not in nematode_adaptations
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
