@@ -109,6 +109,12 @@ jobs:
           assert 'கொசு கடித்த காயம் வழியாக உடலுக்குள் நுழைகின்றன' in nematode_parasites
           assert 'இடைநிலை விருந்தோம்பியாகவும் நோய்க்கடத்தியாகவும் செயல்படுகிறது' in nematode_parasites
           assert 'மூன்றில் எதற்கும் ட்ரீமட்டோடா, செஸ்டோடாவில்' not in nematode_parasites
+          assert 'ஊசிப்புழு எனப்படும் சிறிய வெள்ளை நிற நெமட்டோடா' in nematode_parasites
+          assert 'சீக்கம் (caecum) பகுதியை அடைந்து' in nematode_parasites
+          assert 'autoinfection' in nematode_parasites
+          assert 'ஏறத்தாழ 5–10 நாட்களில் இரண்டு முறை தோலுரித்த பிறகு' in nematode_parasites
+          assert 'ஃபைலேரிஃபார்ம் (L3) லார்வாக்களாக' in nematode_parasites
+          assert 'குடற்புழுத் தொற்றின் வழக்கமான அறிகுறி' not in nematode_parasites
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
