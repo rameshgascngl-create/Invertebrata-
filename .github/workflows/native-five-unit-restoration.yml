@@ -239,12 +239,15 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Install reviewer worksheet dependency
-        run: python3 -m pip install --disable-pip-version-check "openpyxl==3.1.5"
+      - name: Install reviewer worksheet dependency in isolated environment
+        run: |
+          python3 -m venv /tmp/invertebrata-review-env
+          /tmp/invertebrata-review-env/bin/python -m pip install --disable-pip-version-check "openpyxl==3.1.5"
       - name: Generate 52-plate reviewer worksheet from actual source bytes
         run: |
+          source /tmp/invertebrata-review-env/bin/activate
           mkdir -p qa-evidence/five-unit-review-handoff
-          python3 tools/make_review_sheet.py --out qa-evidence/five-unit-review-handoff/plate-review-sheet.xlsx
+          /tmp/invertebrata-review-env/bin/python tools/make_review_sheet.py --out qa-evidence/five-unit-review-handoff/plate-review-sheet.xlsx
           python3 - <<'PY'
           from openpyxl import load_workbook
           from pathlib import Path
