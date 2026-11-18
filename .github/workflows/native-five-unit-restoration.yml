@@ -295,6 +295,22 @@ jobs:
           path: qa-evidence/five-unit-review-images/mandatory-52-review-images.zip
           if-no-files-found: error
 
+  owner-image-acceptance:
+    # Explicit owner's decision: retain all 52 current textbook images.
+    # This is not an independent biology/Tamil review or rights licence.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify owner acceptance against exact 52 source rasters
+        run: python3 tools/verify_owner_image_acceptance.py --out qa-evidence/owner-image-acceptance.json
+      - name: Preserve owner-accepted image manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-52-owner-accepted-image-register
+          path: qa-evidence/owner-image-acceptance.json
+          if-no-files-found: error
+
   independent-academic-review:
     needs: asset-inventory
     runs-on: ubuntu-24.04
@@ -350,4 +366,4 @@ jobs:
         if: always()
         run: |
           echo "This job verifies native display and missing-asset warnings, NOT scientific acceptance."
-          echo "All 52 mandatory raster files are present, but independent science, Tamil and rights sign-off is incomplete; student-facing release stays blocked."
+          echo "Project owner accepted all 52 present mandatory images for textbook use; this does not attest independent biology, Tamil or rights clearance."
