@@ -10,7 +10,7 @@ Regenerate whenever a plate changes: a sign-off is bound to the SHA-256 of the e
 Usage:  python tools/make_review_sheet.py [--out plate-review-sheet.xlsx]
 Needs:  pip install openpyxl
 """
-import argparse, collections, runpy
+import argparse, collections, json, runpy
 from pathlib import Path
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, PatternFill
@@ -38,6 +38,11 @@ def main():
     a = ap.parse_args()
     audit = runpy.run_path(str(a.repo_root / ".github/scripts/audit-five-unit-assets.py"))["audit"]
     plates = [x for x in audit(a.repo_root) if x["required"]]
+    # Existing provenance is a reference for reviewers, NOT evidence of a licence
+    # or a substitute for checking the exact source and the displayed pixels.
+    provenance = json.loads(
+        (a.repo_root / "provenance/plates.json").read_text(encoding="utf-8")
+    )["plates"]
     by_hash = collections.defaultdict(list)
     for p in plates:
         if p["sha256"]:
@@ -58,6 +63,8 @@ def main():
         "If an image is changed after sign-off, regenerate this sheet and review again.",
         "Rows marked MISSING have no image yet: they cannot be reviewed until a plate is added.",
         "Rows with a note about identical files share the same image bytes with another slot.",
+        "Recorded provenance fields at the right are historical UNVERIFIED notes: verify independently.",
+        "Do not copy a recorded author, licence or visual-defect note into reviewer approval without evidence.",
         "",
         "Then run:  python tools/import_review_sheet.py --sheet <this file> --check",
         "The importer rejects incomplete rows and refuses to write a partial or invalid record.",
@@ -68,8 +75,10 @@ def main():
     ins.column_dimensions["A"].width = 110
 
     ws = wb.create_sheet("Plates")
+    reference_columns = ["recorded_author_UNVERIFIED", "recorded_license_UNVERIFIED",
+                         "recorded_source_url_UNVERIFIED", "recorded_defect_notes_UNVERIFIED"]
     head = ["unit", "organism", "plate", "asset_stem", "image_file", "state", "sha256_now",
-            "repo_note"] + [c for c, _ in INPUT_COLUMNS]
+            "repo_note"] + [c for c, _ in INPUT_COLUMNS] + reference_columns
     ws.append(head)
     for p in plates:
         notes = []
@@ -78,8 +87,12 @@ def main():
         twins = [s for s in by_hash.get(p["sha256"], []) if s != p["required_stem"]] if p["sha256"] else []
         if twins:
             notes.append("identical bytes also used by: " + ", ".join(twins))
+        recorded = provenance.get(p["required_stem"], {})
         ws.append([p["unit"], p["organism"], p["plate"], p["required_stem"], p["file"], p["state"],
-                   p["sha256"] or "", "; ".join(notes)] + [""] * len(INPUT_COLUMNS))
+                   p["sha256"] or "", "; ".join(notes)] + [""] * len(INPUT_COLUMNS) + [
+                       str(recorded.get("author") or ""), str(recorded.get("license") or ""),
+                       str(recorded.get("source_url") or ""), str(recorded.get("notes") or ""),
+                   ])
 
     blue = PatternFill("solid", fgColor="D9E8F5")
     grey = PatternFill("solid", fgColor="E7E6E6")
@@ -87,7 +100,7 @@ def main():
     for c in range(1, len(head) + 1):
         cell = ws.cell(row=1, column=c)
         cell.font = Font(bold=True)
-        cell.fill = blue if c > 8 else grey
+        cell.fill = blue if 9 <= c < 9 + len(INPUT_COLUMNS) else grey
         cell.alignment = Alignment(wrap_text=True, vertical="top")
     for ci, (name, hint) in enumerate(INPUT_COLUMNS, start=9):
         ws.cell(row=1, column=ci).value = name + "\n(" + hint + ")"
@@ -95,7 +108,7 @@ def main():
     for r in range(2, ws.max_row + 1):
         for c in range(1, 9):
             ws.cell(row=r, column=c).fill = amber if (c == 8 and ws.cell(row=r, column=8).value) else grey
-    widths = [6, 12, 22, 44, 48, 20, 22, 44] + [22, 24, 24, 34, 22, 34, 14, 14, 14, 14, 12, 30]
+    widths = [6, 12, 22, 44, 48, 20, 22, 44] + [22, 24, 24, 34, 22, 34, 14, 14, 14, 14, 12, 30] + [35, 40, 45, 65]
     for i, w in enumerate(widths, 1):
         ws.column_dimensions[ws.cell(row=1, column=i).column_letter].width = w
     ws.freeze_panes = "E2"
