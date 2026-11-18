@@ -49,6 +49,7 @@ jobs:
           nereis = (root / 'NereisBookChapter.kt').read_text(encoding='utf-8')
           metamerism = (root / 'MetamerismBookChapter.kt').read_text(encoding='utf-8')
           annelid_modes = (root / 'AnnelidModesBookChapter.kt').read_text(encoding='utf-8')
+          arthropoda = (root / 'ArthropodaBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -175,6 +176,22 @@ jobs:
           assert 'some components, such as chaetae and segmental septa, are reduced or absent in leeches' in annelid_modes
           assert 'bdef("Scavenger", "தோட்டி (Scavenger)"' not in annelid_modes
           assert '(1) வாழிடம், (2) உணவூட்ட முறை, (3) வாழ்முறைக்கேற்ற உடலமைப்புத் தகவமைப்புகள்' in annelid_modes
+          assert 'புறத்தோ' not in arthropoda
+          assert 'உயிருள்ள மேற்றோல் (எப்பிடெர்மிஸ்)' in arthropoda
+          assert 'கியூட்டிகிளைச் சுரக்கும் மேற்றோல்' in arthropoda
+          assert 'The periodic shedding of the old cuticle (ecdysis)' in arthropoda
+          assert 'traditional Crustacea is paraphyletic relative to hexapods' in arthropoda
+          assert 'மையரியாபோடாவில் பல வகுப்புகள் உள்ளன' in arthropoda
+          assert 'Peripatus belongs to the separate phylum Onychophora' in arthropoda
+          assert 'தனித் தொகுதியான ஓனிக்கோஃபோரா' in arthropoda
+          assert 'Internal fertilisation is widespread in terrestrial forms' in arthropoda
+          assert 'not universal across Arthropoda' in arthropoda
+          assert 'Some insects instead undergo little or no metamorphosis.' in arthropoda
+          assert 'கார்போரா அலாட்டா (corpora allata)' in arthropoda
+          assert 'lessonId = "u4-arthropoda"' in arthropoda
+          assert arthropoda.count('bfig(') == 2
+          assert arthropoda.count('bqc(') == 4
+          assert arthropoda.count('bsec(') == 11
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
