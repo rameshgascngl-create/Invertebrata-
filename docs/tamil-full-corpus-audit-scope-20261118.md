@@ -15,8 +15,14 @@ The register `docs/tamil-editorial-register-20261115.md` documents targeted edit
 
 - `PoriferaBookChapter.kt`: 13 Tamil replacements involving consistent pinacocyte/spongin spelling, bioerosion explanation, microbial defence, medicinal relevance and exam-answer language.
 - `PoriferaCanalsBookChapter.kt`: 15 Tamil replacements involving asconoid/leuconoid and Leucosolenia spelling, choanocyte filtration, water-flow regulation, rhagon explanation and examination guidance.
-- Both chapters remain **IN PROGRESS**: these are source-language corrections, not full independent content or on-device rendering acceptance.
-- Original English chapter strings, image files and credits, chapter IDs, curriculum registration and A5 JSON records are unchanged.
+- Chapters #3–#5 now also have targeted bilingual editorial work:
+  - `PoriferaReproductionBookChapter.kt`: 45 phrase/term instances amended (32 rules). Corrected **embryonic inversion** (exposes larval cilia before release) versus **post-settlement reorganisation** (larval cells contribute to new tissues); revised English and Tamil life-cycle captions, summary, examination guidance and quick-check answer. Improved gemmule, archaeocyte and reproduction terminology.
+  - `CnidariaBookChapter.kt`: 34 Tamil instances amended (28 main changes plus 6 anatomical-term normalisations). Corrected `Physalia` misidentified as a fish; standardised `எப்பிதீலியத் தசைச் செல்கள்`; clarified nematocyst and digestion explanations and polyp/medusa reproductive roles.
+  - `ObeliaBookChapter.kt`: 49 phrase/term instances amended (25 rules). Replaced `கூட்டுயிரி` with the more precise colonial `காலனி` in relevant Obelia passages; clarified feeding and reproductive zooids, coenosarc and Obelia metagenesis. Repaired a scientifically misleading English summary comparing Obelia and `Physalia`.
+- **Chapters #1–#5 remain IN PROGRESS**, not fully line-by-line reviewed or independently certified.
+- English was intentionally corrected only where scientific meaning was inconsistent (the amphiblastula inversion/settlement descriptions in #3 and the Obelia-versus-Physalia summary in #5); English chapter strings in #1, #2 and #4 remain unchanged.
+- Original images and credits, chapter IDs, curriculum registration and frozen A5 JSON assessment records remain unchanged.
+- Scientific references for embryonic inversion and separate settlement events: https://pmc.ncbi.nlm.nih.gov/articles/PMC11164562/ , https://sicb.org/abstracts/development-of-the-amphiblastula-of-the-calcareous-sponge-sycon-coactum/ and https://www.tandfonline.com/doi/abs/10.1080/07924259.1993.9672327 .
 
 ## Required completion checks (every chapter, including extensions)
 
