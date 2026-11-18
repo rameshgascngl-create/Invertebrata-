@@ -232,6 +232,37 @@ jobs:
           echo "No production tag or Play/Indus submission is allowed from this R1 workflow."
 
 
+  reviewer-handoff:
+    # Produce a blank, hash-bound sign-off worksheet for independent reviewers.
+    # This is a handoff artifact, NOT a sign-off or an academic PASS.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install reviewer worksheet dependency
+        run: python3 -m pip install --disable-pip-version-check "openpyxl==3.1.5"
+      - name: Generate 52-plate reviewer worksheet from actual source bytes
+        run: |
+          python3 tools/make_review_sheet.py --out qa-evidence/five-unit-review-handoff/plate-review-sheet.xlsx
+          python3 - <<'PY'
+          from openpyxl import load_workbook
+          from pathlib import Path
+          p=Path("qa-evidence/five-unit-review-handoff/plate-review-sheet.xlsx")
+          wb=load_workbook(p,read_only=True,data_only=True)
+          rows=list(wb["Plates"].iter_rows(values_only=True))
+          assert len(rows)==53,("expected header and 52 mandatory plates",len(rows))
+          assert len({r[3] for r in rows[1:]})==52
+          assert all(r[5]=="PRESENT_UNVERIFIED" and len(str(r[6]))==64 for r in rows[1:])
+          assert all(not r[8] for r in rows[1:]),"worksheet must not preapprove plates"
+          print("INDEPENDENT_REVIEW_WORKSHEET=52/52 HASH_BOUND; APPROVED=0")
+          PY
+      - name: Upload independent review handoff worksheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-52-plate-independent-review-sheet
+          path: qa-evidence/five-unit-review-handoff/plate-review-sheet.xlsx
+          if-no-files-found: error
+
   independent-academic-review:
     needs: asset-inventory
     runs-on: ubuntu-24.04
@@ -287,4 +318,4 @@ jobs:
         if: always()
         run: |
           echo "This job verifies native display and missing-asset warnings, NOT scientific acceptance."
-          echo "Mandatory anatomical plates are missing; student-facing release stays blocked."
+          echo "All 52 mandatory raster files are present, but independent science, Tamil and rights sign-off is incomplete; student-facing release stays blocked."
