@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "decision": "ACCEPT_ALL_CURRENT_MANDATORY_ILLUSTRATIONS",
+  "scope": "Use existing 52 mandatory illustration files in INVERTEBRATA textbook and QA builds; do not reject or replace on aesthetic grounds without a newly verified substantive defect.",
+  "authorisation": "Explicit project-owner instruction: Accept all images",
+  "decision_date": "2026-11-18",
+  "expected_mandatory_slots": 52,
+  "academic_review_status": "NOT_ATTESTED",
+  "rights_clearance_status": "NOT_ATTESTED",
+  "note": "This records the owner's acceptance for app use, not independent anatomy, Tamil or copyright sign-off. Image bytes and previous provenance remain unchanged."
+}
