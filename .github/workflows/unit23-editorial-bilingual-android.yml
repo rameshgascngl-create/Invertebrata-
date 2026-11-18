@@ -45,6 +45,7 @@ jobs:
           ascaris = (root / 'AscarisBookChapter.kt').read_text(encoding='utf-8')
           nematode_parasites = (root / 'NematodeParasitesBookChapter.kt').read_text(encoding='utf-8')
           nematode_adaptations = (root / 'NematodeAdaptationsBookChapter.kt').read_text(encoding='utf-8')
+          annelida = (root / 'AnnelidaBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -127,6 +128,16 @@ jobs:
           assert 'ஊசிப்புழுவான என்டெரோபியஸ்' in nematode_adaptations
           assert 'not a demonstrated universal immune-evasion mechanism' in nematode_adaptations
           assert 'கொலாஜன் நிறைந்த புறத்தோல் விருந்தோம்பியின் இயந்திர' not in nematode_adaptations
+          assert 'Segmentation also occurs in arthropods and chordates' in annelida
+          assert 'உடற்கண்டமாதல் கணுக்காலிகள் மற்றும் முதுகுநாணுள்ள விலங்குகளிலும் காணப்படுகிறது' in annelida
+          assert 'The word is used strictly for the annelids.' not in annelida
+          assert 'reproductive organs are often restricted to particular segments' in annelida
+          assert '(1) கியூட்டிகிள், (2) புறத்தோல் (எப்பிடெர்மிஸ்)' in annelida
+          assert 'நீரழுத்த எலும்புக்கூடு' in annelida
+          assert 'Shared developmental features, including trochophore-type larvae' in annelida
+          assert 'making the old Polychaeta grouping paraphyletic' in annelida
+          assert 'should not be declared impossible in all earthworms' in annelida
+          assert 'கிளைட்டெல்லம்' not in annelida
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
