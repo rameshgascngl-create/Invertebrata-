@@ -50,16 +50,17 @@ def main() -> None:
         for item in manifest:
             archive.write(root / item["review_file"].removeprefix("review-images/"), item["review_file"])
         archive.writestr("REVIEW_NOT_APPROVAL.txt",
-            "INVERTEBRATA - 52 exact source images for independent review.\\n"
-            "Images are candidates, NOT scientifically or legally approved.\\n"
-            "Review original anatomy, labels, mobile legibility, source and rights.\\n"
-            "Use the separate hash-bound reviewer worksheet for sign-off.\\n")
+            "INVERTEBRATA - 52 exact source images for independent review.\n"
+            "Images are candidates, NOT scientifically or legally approved.\n"
+            "Review original anatomy, labels, mobile legibility, source and rights.\n"
+            "Use the separate hash-bound reviewer worksheet for sign-off.\n")
         archive.writestr("image-manifest.json",
-                         json.dumps(manifest, ensure_ascii=False, indent=2) + "\\n")
+                         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
     with ZipFile(args.out) as archive:
         assert archive.testzip() is None, "Corrupt reviewer ZIP"
         for item in manifest:
             assert hashlib.sha256(archive.read(item["review_file"])).hexdigest() == item["sha256"]
+        assert json.loads(archive.read("image-manifest.json")) == manifest
     print(f"REVIEW_IMAGE_BUNDLE=52/52 EXACT_BYTES VERIFIED; ACADEMIC_APPROVAL=HOLD")
     print(f"REVIEW_BUNDLE_SIZE={args.out.stat().st_size}")
 
