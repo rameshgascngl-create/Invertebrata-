@@ -40,6 +40,8 @@ jobs:
           polymorphism = (root / 'PolymorphismBookChapter.kt').read_text(encoding='utf-8')
           platy = (root / 'PlatyhelminthesBookChapter.kt').read_text(encoding='utf-8')
           fasciola = (root / 'FasciolaBookChapter.kt').read_text(encoding='utf-8')
+          adaptations = (root / 'PlatyAdaptationsBookChapter.kt').read_text(encoding='utf-8')
+          nematoda = (root / 'AschelminthesBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -79,6 +81,19 @@ jobs:
           assert 'குடல் குருட்டுக் கிளைகள் (சீக்கா)' in fasciola
           assert 'stage infective to the mammalian definitive host' in fasciola
           assert 'பாலூட்டியைத் தொற்றும் மெட்டாசெர்க்கேரியா' in fasciola
+          assert 'many species are hermaphroditic, although Schistosoma flukes have separate sexes' in adaptations
+          assert 'பெருகி ஏராளமான செர்க்கேரியாக்களை உருவாக்குகின்றன' in adaptations
+          assert 'மெட்டாசெர்க்கேரியா நிலைக்கு மாறும்போது பாலூட்டியைத் தொற்றும் திறனைப் பெறுகின்றன' in adaptations
+          assert 'மிராசிடியம் குறுஇழைகள் (cilia) கொண்ட' in adaptations
+          assert 'taeniasis' in adaptations and 'cysticercosis' in adaptations
+          assert 'நரம்பியல் பாதிப்புகள் ஏற்படக்கூடும்' in adaptations
+          assert 'ஒரு பரப்பில் கூடு கட்டிய மெட்டாசெர்க்காரியா' not in adaptations
+          assert 'அனைத்து விலங்குகளும் ஒரே தனிப்பட்ட இயற்கை மரபுக் குழுவை உருவாக்குவதில்லை' in nematoda
+          assert 'நீரழுத்த எலும்புக்கூடு (hydrostatic skeleton)' in nematoda
+          assert 'Parasitic nematode life cycles may be direct' in nematoda
+          assert 'skin penetration is a route of infection, not a third life-cycle category' in nematoda
+          assert 'தனியான மூன்றாவது வாழ்க்கைச் சுழற்சி வகை அல்ல' in nematoda
+          assert 'நெமட்டோடா மற்றும் மண்புழுவின் இயக்க ஒப்பீடு' in nematoda
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
