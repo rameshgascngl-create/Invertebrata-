@@ -46,6 +46,7 @@ jobs:
           nematode_parasites = (root / 'NematodeParasitesBookChapter.kt').read_text(encoding='utf-8')
           nematode_adaptations = (root / 'NematodeAdaptationsBookChapter.kt').read_text(encoding='utf-8')
           annelida = (root / 'AnnelidaBookChapter.kt').read_text(encoding='utf-8')
+          nereis = (root / 'NereisBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -138,6 +139,19 @@ jobs:
           assert 'making the old Polychaeta grouping paraphyletic' in annelida
           assert 'should not be declared impossible in all earthworms' in annelida
           assert 'கிளைட்டெல்லம்' not in annelida
+          assert 'நீரிஸ்: உடலமைப்பு' in nereis
+          assert 'நெரிஸ்' not in nereis
+          assert 'மெல்லிய கியூட்டிகிள் வெளி உறை' in nereis
+          assert 'ஒவ்வொரு பாரபோடியமும் நோட்டோபோடியம், நியூரோபோடியம்' in nereis
+          assert 'அசிகுலம் (aciculum)' in nereis
+          assert 'முதுகுப்புற உணர்தண்டும் (dorsal cirrus)' in nereis
+          assert 'bdef("Cirrus", "உணர்தண்டு (சிரஸ்)"' in nereis
+          assert 'Some trochophore larvae feed on plankton' in nereis
+          assert 'exact release mechanism differs among nereidid species' in nereis
+          assert 'Regenerative capacity varies among polychaetes' in nereis
+          assert 'avoiding a claim that all nereidids die after spawning' in nereis
+          assert 'arrangement varies between species and sexes' in nereis
+          assert 'நீரிஸின் ட்ரோகோஃபோர் இளவுயிரி' in nereis
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
