@@ -271,6 +271,24 @@ jobs:
           path: qa-evidence/five-unit-review-handoff/
           if-no-files-found: error
 
+  reviewer-image-bundle:
+    # Distribute all currently packaged candidate rasters for independent
+    # anatomical, rights and legibility review. This is not image acceptance.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package 52 source images with their exact SHA-256 hashes
+        run: |
+          python3 tools/package_mandatory_review_images.py \
+            --out qa-evidence/five-unit-review-images/mandatory-52-review-images.zip
+      - name: Upload reviewer image source bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-unit-52-candidate-image-masters
+          path: qa-evidence/five-unit-review-images/mandatory-52-review-images.zip
+          if-no-files-found: error
+
   independent-academic-review:
     needs: asset-inventory
     runs-on: ubuntu-24.04
