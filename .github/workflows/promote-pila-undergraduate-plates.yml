@@ -1,0 +1,52 @@
+name: Promote three Pila undergraduate teaching plates
+on:
+  push:
+    branches: [feat/plate-pipeline]
+    paths:
+      - .github/workflows/promote-pila-undergraduate-plates.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/plate-pipeline
+          persist-credentials: true
+      - name: Copy verified Pila review assets to production
+        shell: python
+        run: |
+          from pathlib import Path
+          import struct
+          names = ["pila_excretory_system.png", "pila_male_reproductive_system.png", "pila_female_reproductive_system.png"]
+          source = Path("native-app/app/src/debug/assets/review_only/pila")
+          target = Path("native-app/app/src/main/assets/pila")
+          target.mkdir(parents=True, exist_ok=True)
+          for name in names:
+              data = (source / name).read_bytes()
+              assert data[:8] == bytes.fromhex("89504e470d0a1a0a"), name
+              w, h = struct.unpack(">II", data[16:24])
+              assert w >= 1000 and h >= 1000, f"Resolution too low: {name}"
+              dest = target / name
+              if dest.exists():
+                  assert dest.read_bytes() == data, f"Existing production image differs: {name}"
+              else:
+                  dest.write_bytes(data)
+              print(f"Production image: {dest} ({w}x{h})")
+      - name: Commit three production PNGs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/main/assets/pila/pila_excretory_system.png native-app/app/src/main/assets/pila/pila_male_reproductive_system.png native-app/app/src/main/assets/pila/pila_female_reproductive_system.png
+          if ! git diff --cached --quiet; then
+            git diff --cached --check
+            git commit -m 'Integrate three Pila undergraduate figures into production assets'
+            git push origin HEAD:feat/plate-pipeline
+          fi
+          echo 'Production assets copied; Android compilation and device rendering still require verification.' >> "$GITHUB_STEP_SUMMARY"

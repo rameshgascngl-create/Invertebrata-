@@ -1,0 +1,60 @@
+name: Stage three Pila undergraduate PNG plates
+on:
+  push:
+    branches: [feat/plate-pipeline]
+    paths:
+      - pila_undergraduate_3_plates.zip
+      - .github/workflows/stage-pila-undergraduate-plates.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage-pila-review:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/plate-pipeline
+          persist-credentials: true
+      - name: Validate ZIP and stage only three PNG files
+        shell: python
+        run: |
+          from pathlib import Path
+          from zipfile import ZipFile
+          import struct, hashlib
+          archive = Path("pila_undergraduate_3_plates.zip")
+          names = (
+              "pila_excretory_system.png",
+              "pila_male_reproductive_system.png",
+              "pila_female_reproductive_system.png",
+          )
+          assert archive.is_file(), "Upload pila_undergraduate_3_plates.zip to repository root first"
+          with ZipFile(archive) as z:
+              assert set(z.namelist()) == set(names) | {"README.txt"}, "Unexpected ZIP entries"
+              for name in names:
+                  raw = z.read(name)
+                  assert raw[:8] == bytes.fromhex("89504e470d0a1a0a"), f"Not PNG: {name}"
+                  width, height = struct.unpack(">II", raw[16:24])
+                  assert width >= 1000 and height >= 1000, f"Image below 1000px: {name} ({width}x{height})"
+                  dest = Path("native-app/app/src/debug/assets/review_only/pila") / name
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  if dest.exists():
+                      assert dest.read_bytes() == raw, f"Different file already exists: {dest}"
+                  else:
+                      dest.write_bytes(raw)
+                  print(f"{name}: {width}x{height}; sha256={hashlib.sha256(raw).hexdigest()}")
+      - name: Commit only review-only images
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/debug/assets/review_only/pila/pila_excretory_system.png native-app/app/src/debug/assets/review_only/pila/pila_male_reproductive_system.png native-app/app/src/debug/assets/review_only/pila/pila_female_reproductive_system.png
+          if ! git diff --cached --quiet; then
+            git diff --cached --check
+            git commit -m 'Stage three Pila undergraduate plates for native reader review'
+            git push origin HEAD:feat/plate-pipeline
+          fi
+          echo 'Three Pila images staged in debug review-only assets; not yet production-linked.' >> "$GITHUB_STEP_SUMMARY"

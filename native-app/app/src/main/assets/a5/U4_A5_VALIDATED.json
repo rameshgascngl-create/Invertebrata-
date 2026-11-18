@@ -1,0 +1,668 @@
+{
+  "u4-annelida": {
+    "id": "u4-annelida",
+    "q_en": "Give general characters and classification of Annelida up to classes.",
+    "q_ta": "வளைதசையுடலி பொதுப் பண்புகளும் வகைப்பாடும்.",
+    "steps_en": [
+      "True metamerism + septate coelom.",
+      "Setae; often closed vessels; ventral cord.",
+      "Polychaeta, Oligochaeta, Hirudinea.",
+      "Metanephridia.",
+      "Not every ringed worm."
+    ],
+    "steps_ta": [
+      "உண்மை உடற்கண்டம்.",
+      "சீட்டா மூடிய குழாய்.",
+      "மூன்று வகுப்பு.",
+      "மெட்டானெஃப்ரிடியம்.",
+      "எல்லா வளையமும் அனெலிட் அல்ல."
+    ],
+    "q2_en": [
+      "What is a septum?",
+      "Name three classes of Annelida."
+    ],
+    "a2_en": [
+      [
+        "Partition between coelomic compartments."
+      ],
+      [
+        "Polychaeta, Oligochaeta, Hirudinea."
+      ]
+    ],
+    "q2_ta": [
+      "சீப்டம் என்றால்?",
+      "மூன்று வகுப்பு."
+    ],
+    "a2_ta": [
+      [
+        "குழிப் பிரிவுச் சுவர்."
+      ],
+      [
+        "பாலிகீட்டா ஒலிகோகீட்டா ஹிருடினியா."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of Phylum Annelida.",
+      "Describe closed circulation in annelids in five points."
+    ],
+    "a5_en": [
+      [
+        "Annelids are bilaterally symmetrical, triploblastic protostome coelomates with true metameric segmentation.",
+        "The coelom is commonly divided by septa; circular and longitudinal body-wall muscles act against coelomic fluid as a hydrostatic skeleton.",
+        "Chitinous chaetae/setae are usually present; many polychaetes bear them on parapodia, whereas leeches secondarily lack chaetae.",
+        "The alimentary canal is complete; most annelids possess a closed vascular system, although circulatory modifications occur in some groups.",
+        "Excretion is mainly by segmental metanephridia and the nervous system includes a ventral nerve cord with segmental ganglia; gas exchange occurs through the body surface or parapodia."
+      ],
+      [
+        "In most annelids, blood remains within vessels rather than flowing freely through the main body cavity.",
+        "A dorsal and a ventral longitudinal vessel form the principal channels and are linked by transverse segmental vessels.",
+        "Smaller vessels and capillary networks distribute blood to the gut, body wall and other tissues.",
+        "Respiratory pigments such as haemoglobin may occur dissolved in the plasma and assist transport of respiratory gases.",
+        "Contractions of vessels and associated pumps maintain circulation that supports the metabolically active, segmentally arranged musculature; some annelids show secondary modifications of this plan."
+      ]
+    ],
+    "q5_ta": [
+      "வளைதசைப் புழுக்கள் (Annelida) தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
+      "வளைதசைப் புழுக்களில் மூடிய இரத்தச் சுற்றோட்டத்தை ஐந்து குறிப்புகளில் விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "வளைதசைப் புழுக்கள் இருபக்கச் சமச்சீருடைய, மூவடுக்குத் திசுக்களைக் கொண்ட, முதல்வாய் உயிரிகளான உண்மையான உடற்குழி உடைய விலங்குகள்; உடல் உண்மையான கண்டங்களாகப் (metameres) பிரிந்துள்ளது.",
+        "உடற்குழி பொதுவாக இடைத்தடுப்புச் சுவர்களால் (septa) பிரிக்கப்படுகிறது; வளைய மற்றும் நீள்வாட்டுத் தசைகள் உடற்குழித் திரவத்துடன் சேர்ந்து நீரழுத்த எலும்புக்கூடாக செயல்படுகின்றன.",
+        "கைட்டின் தன்மையுடைய சீட்டாக்கள்/முட்கள் (chaetae) பொதுவாக உள்ளன; பல பல்சீட்டாப் புழுக்களில் அவை பாராப்போடியங்களில் காணப்படும்; அட்டைகளில் அவை இரண்டாம் நிலையாக இழக்கப்பட்டுள்ளன.",
+        "செரிமானக் குழாய் முழுமையானது; பெரும்பாலான வளைதசைப் புழுக்களில் மூடிய இரத்த நாள அமைப்பு உள்ளது; சில குழுக்களில் இதன் மாற்றங்கள் காணப்படுகின்றன.",
+        "கழிவுநீக்கம் பெரும்பாலும் கண்டவாரியான மெட்டாநெஃப்ரிடியாக்களால் நடைபெறும்; வயிற்றுப்புற நரம்புக்கயிற்றில் கண்டவாரி நரம்புக்கணுக்கள் உள்ளன; உடற்பரப்பு அல்லது பாராப்போடியங்கள் வழியாக வாயுப் பரிமாற்றம் நடைபெறும்."
+      ],
+      [
+        "பெரும்பாலான வளைதசைப் புழுக்களில் இரத்தம் உடற்குழியில் சுதந்திரமாகப் பரவாமல் இரத்த நாளங்களுக்குள் மட்டுமே ஓடுகிறது.",
+        "முதுகுப்புற மற்றும் வயிற்றுப்புற நீள்வாட்டுச் சிரைகள் முதன்மை நாளங்களாக இருந்து, அவை கண்டவாரியான குறுக்குநாளங்களால் இணைக்கப்படுகின்றன.",
+        "சிறு நாளங்கள் மற்றும் நுண் இரத்த நாள வலைகள் குடல், உடற்சுவர் மற்றும் பிற திசுக்களுக்கு இரத்தத்தை வழங்குகின்றன.",
+        "ஹீமோகுளோபின் போன்ற சுவாச நிறமிகள் இரத்தத் திரவத்தில் கரைந்திருக்கலாம்; இவை சுவாச வாயுக்களின் கடத்தலுக்கு உதவுகின்றன.",
+        "இரத்த நாளங்களின் சுருக்கமும் தொடர்புடைய தள்ளும் அமைப்புகளும் இரத்த ஓட்டத்தை பராமரித்து கண்டவாரித் தசைகளின் செயலுக்கு ஆதரவளிக்கின்றன; சில வளைதசைப் புழுக்களில் இந்த அடிப்படை அமைப்பில் இரண்டாம் நிலை மாற்றங்கள் உள்ளன."
+      ]
+    ]
+  },
+  "u4-nereis": {
+    "id": "u4-nereis",
+    "q_en": "Give a detailed account of Nereis.",
+    "q_ta": "நீரிஸ் விரிவான கணக்கு.",
+    "steps_en": [
+      "Errant polychaete head.",
+      "Biramous parapodium jobs.",
+      "Serial gut, vessels, cord, nephridia.",
+      "Trochophore.",
+      "Epitoky is transformation."
+    ],
+    "steps_ta": [
+      "எரான்ட் தலை.",
+      "இருகிளைப் பாராப்போடியம்.",
+      "தொடர் உறுப்புகள்.",
+      "ட்ரோக்கோஃபோர்.",
+      "எப்பிட்டோகி மாற்றம்."
+    ],
+    "q2_en": [
+      "What is an aciculum?",
+      "Name the larva of many polychaetes."
+    ],
+    "a2_en": [
+      [
+        "Supporting rod in a parapodium."
+      ],
+      [
+        "Trochophore."
+      ]
+    ],
+    "q2_ta": [
+      "அசிக்குலா என்றால்?",
+      "பாலிகீட் லார்வா."
+    ],
+    "a2_ta": [
+      [
+        "பாராப்போடிய ஆதாரக் கோல்."
+      ],
+      [
+        "ட்ரோக்கோஃபோர்."
+      ]
+    ],
+    "q5_en": [
+      "Describe the structure of a parapodium in Nereis and state its functions.",
+      "Explain epitoky in nereidid polychaetes."
+    ],
+    "a5_en": [
+      [
+        "Most trunk segments bear a paired, fleshy biramous parapodium.",
+        "Each parapodium has a dorsal notopodium and a ventral neuropodium.",
+        "The lobes are internally supported by acicula and carry bundles of chaetae that provide traction.",
+        "Dorsal and ventral cirri have mainly sensory roles, and the richly vascular parapodium provides a large respiratory surface.",
+        "Coordinated parapodial movements are used in crawling and swimming, while the chaetae assist anchorage and propulsion."
+      ],
+      [
+        "Epitoky is the reproductive transformation of an atokous benthic nereidid into a specialised swimming reproductive form called an epitoke.",
+        "Parapodia may enlarge and develop natatory lobes and paddle-like chaetae; the body may become differentiated into non-natatory and natatory regions.",
+        "The eyes commonly enlarge and parts of the musculature and digestive system may be remodelled as sexual maturity is reached.",
+        "Mature epitokes often swarm into the water column and release gametes for external fertilisation.",
+        "The degree of epitokous change differs among species and between sexes; many nereidids are semelparous, so the exact morphology and post-spawning survival must not be generalised to every species."
+      ]
+    ],
+    "q5_ta": [
+      "நெரீஸில் பாராப்போடியத்தின் அமைப்பையும் அதன் பணிகளையும் விளக்குக.",
+      "நெரீடிட் பல்சீட்டாப் புழுக்களில் எப்பிட்டோகி (epitoky) நிகழ்வை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "உடலின் பெரும்பாலான கண்டங்களில் இணையாக அமைந்த, சதைப்பற்றுள்ள இருகிளைப் பாராப்போடியங்கள் காணப்படுகின்றன.",
+        "ஒவ்வொரு பாராப்போடியத்திலும் முதுகுப்புற நோட்டோபோடியம் மற்றும் வயிற்றுப்புற நியூரோபோடியம் ஆகிய இரண்டு முக்கியப் பகுதிகள் உள்ளன.",
+        "இந்தப் பகுதிகளுக்கு உள்ளே அசிகுலா (acicula) ஆதரவளிக்கின்றன; வெளியே காணப்படும் சீட்டாக்கள் பற்றுதல் மற்றும் தள்ளுதலுக்கு உதவுகின்றன.",
+        "முதுகு மற்றும் வயிற்றுச் சிர்ரிகள் முக்கியமாக உணர்வுப் பணிகளில் ஈடுபடுகின்றன; அதிக இரத்த நாளங்களைக் கொண்ட பாராப்போடியம் சுவாசப் பரப்பையும் வழங்குகிறது.",
+        "பாராப்போடியங்களின் ஒருங்கிணைந்த அசைவுகள் ஊர்வதற்கும் நீந்துவதற்கும் உதவுகின்றன; சீட்டாக்கள் பற்றுதல் மற்றும் முன்னேற்றத்தை மேம்படுத்துகின்றன."
+      ],
+      [
+        "எப்பிட்டோகி என்பது அடித்தளத்தில் வாழும் இனப்பெருக்கமற்ற ஆட்டோக் (atoke) வடிவம், நீந்தும் இனப்பெருக்க வடிவமான எப்பிட்டோக் (epitoke) ஆக மாறும் நிகழ்வாகும்.",
+        "பாராப்போடியங்கள் பெரிதாகி நீந்துதலுக்கான மடல்கள் மற்றும் துடுப்பு போன்ற சீட்டாக்கள் உருவாகலாம்; உடல் நீந்தாத மற்றும் நீந்தும் பகுதிகளாக வேறுபடலாம்.",
+        "கண்கள் பொதுவாகப் பெரிதாகின்றன; பாலியல் முதிர்ச்சியுடன் சில தசைகள் மற்றும் செரிமான அமைப்பில் மறுசீரமைப்பு நிகழலாம்.",
+        "முதிர்ந்த எப்பிட்டோக்கள் பெரும்பாலும் நீர்மட்டப் பகுதியில் கூட்டமாக நீந்தி இனப்பெருக்க அணுக்களை வெளியிட்டு வெளிப்புறக் கருவுறுதலை ஏற்படுத்துகின்றன.",
+        "எப்பிட்டோகி மாற்றத்தின் அளவு சிற்றினங்களுக்கும் பாலினங்களுக்கும் இடையில் மாறுபடும்; பல நெரீடிட்கள் ஒருமுறை இனப்பெருக்கும் (semelparous) தன்மையுடையவை என்பதால் ஒரே மாதிரியான மாற்றத்தையும் இறப்பையும் எல்லா சிற்றினங்களுக்கும் பொதுப்படுத்தக் கூடாது."
+      ]
+    ]
+  },
+  "u4-metamerism": {
+    "id": "u4-metamerism",
+    "q_en": "Write an essay on metamerism in annelids.",
+    "q_ta": "வளைதசையுடலி உடற்கண்டம்.",
+    "steps_en": [
+      "Definition: septate coelomic repeats.",
+      "Local pressure / growth at pygidium.",
+      "Tagmata of head.",
+      "Not cuticle rings.",
+      "Not cestode proglottids."
+    ],
+    "steps_ta": [
+      "சீப்டக் குழித் தொடர்.",
+      "உள்ளூர் அழுத்தம் பிகிடியம்.",
+      "தலை தகுதியம்.",
+      "கியூட்டிக்கிள் வளையம் அல்ல.",
+      "புரோக்ளாட்டிட் அல்ல."
+    ],
+    "q2_en": [
+      "Where are new segments added?",
+      "Why is a cestode proglottid not metamerism?"
+    ],
+    "a2_en": [
+      [
+        "In front of the pygidium."
+      ],
+      [
+        "It is a reproductive packet, not a septate coelomic workstation."
+      ]
+    ],
+    "q2_ta": [
+      "புதிய கண்டம் எங்கே?",
+      "புரோக்ளாட்டிட் ஏன் உடற்கண்டம் அல்ல?"
+    ],
+    "a2_ta": [
+      [
+        "பிகிடியத்துக்கு முன்."
+      ],
+      [
+        "இனப்பெருக்கக் கட்டு; சீப்டக் குழி அல்ல."
+      ]
+    ],
+    "q5_en": [
+      "Explain metamerism in annelids.",
+      "Compare an annelid metamere, a nematode cuticular annulation and a tapeworm proglottid."
+    ],
+    "a5_en": [
+      [
+        "Metamerism is the serial repetition of similar body units along the longitudinal axis.",
+        "In a typical annelid, external segmentation corresponds broadly with internal coelomic compartments separated by septa.",
+        "Several structures are repeated segmentally, including ganglia, nephridia, muscles and blood vessels.",
+        "Partitioning of the coelom permits local hydrostatic pressure and coordinated waves of circular and longitudinal muscle contraction.",
+        "True segmentation improves locomotor control and permits regional specialisation and localised function or repair without making every segment identical."
+      ],
+      [
+        "An annelid metamere is a true body segment with internal coelomic partitioning and repeated organ systems.",
+        "The transverse rings of a nematode are superficial cuticular annulations; they do not correspond to repeated coelomic compartments or true metamerism.",
+        "A cestode proglottid is a serial reproductive unit produced from the neck and contains repeated reproductive organs; it is not a coelomic segment.",
+        "All three may produce a superficially repeated external appearance, but their internal organisation and developmental origin are different.",
+        "Therefore the terms metamere, annulation and proglottid should not be interchanged or used as evidence of close phylogenetic relationship."
+      ]
+    ],
+    "q5_ta": [
+      "வளைதசைப் புழுக்களில் உடற்கண்ட அமைப்பு (metamerism) பற்றி விளக்குக.",
+      "வளைதசைப் புழுவின் உண்மைக் கண்டம், நூற்புழுவின் மேற்புற வளையம் மற்றும் நாடாப்புழுவின் புரோக்ளாட்டிட் ஆகியவற்றை ஒப்பிடுக."
+    ],
+    "a5_ta": [
+      [
+        "உடற்கண்ட அமைப்பு என்பது உடலின் நீள அச்சில் ஒத்த அமைப்புடைய பகுதிகள் தொடர்ச்சியாக மீண்டும் மீண்டும் அமைதலாகும்.",
+        "ஒரு வழக்கமான வளைதசைப் புழுவில் வெளிப்புறக் கண்டப் பிரிவுகள், இடைத்தடுப்புச் சுவர்களால் பிரிக்கப்பட்ட உடற்குழிப் பகுதிகளுடன் பொதுவாக ஒத்துப்போகின்றன.",
+        "நரம்புக்கணுக்கள், நெஃப்ரிடியாக்கள், தசைகள் மற்றும் இரத்த நாளங்கள் போன்ற பல அமைப்புகள் கண்டவாரியாக மீண்டும் காணப்படுகின்றன.",
+        "உடற்குழி தனித்தனி பகுதிகளாகப் பிரிவதால் உள்ளூர் நீரழுத்தம் உருவாகி வளைய மற்றும் நீள்வாட்டுத் தசைகளின் ஒருங்கிணைந்த அலைபோன்ற சுருக்கம் சாத்தியமாகிறது.",
+        "உண்மையான கண்ட அமைப்பு இயக்கக் கட்டுப்பாட்டை மேம்படுத்தி, பகுதிவாரியான சிறப்பாக்கத்தையும் உள்ளூர் செயல்பாடு அல்லது பழுதுபார்த்தலையும் அனுமதிக்கிறது; எல்லா கண்டங்களும் முற்றிலும் ஒரே மாதிரியாக இருக்க வேண்டியதில்லை."
+      ],
+      [
+        "வளைதசைப் புழுவின் மெட்டாமியர் என்பது உள்ளே உடற்குழிப் பிரிவுகளும் மீண்டும் வரும் உறுப்புகளும் கொண்ட உண்மையான உடற்கண்டமாகும்.",
+        "நூற்புழுவின் குறுக்கு வளையங்கள் புறத்தோலின் மேற்பரப்பு வளையங்களே; அவற்றுக்கு உள்வழி உடற்குழிப் பிரிவுகளோ உண்மையான மெட்டாமெரிசமோ இல்லை.",
+        "நாடாப்புழுவின் புரோக்ளாட்டிட் கழுத்துப் பகுதியிலிருந்து உருவாகும் தொடர்ச்சியான இனப்பெருக்க அலகாகும்; அது உடற்குழியுடைய உண்மைக் கண்டம் அல்ல.",
+        "மூன்றிலும் வெளிப்புறமாக தொடர் அமைப்பு போலத் தோன்றினாலும் அவற்றின் உள் அமைப்பும் வளர்ச்சித் தோற்றமும் வேறுபட்டவை.",
+        "எனவே மெட்டாமியர், மேற்புற வளையம் மற்றும் புரோக்ளாட்டிட் என்ற சொற்களை ஒன்றுக்கொன்று மாற்றிப் பயன்படுத்தவோ, அவை நெருங்கிய பரிணாம உறவை நிரூபிப்பதாகக் கருதவோ கூடாது."
+      ]
+    ]
+  },
+  "u4-modes-life": {
+    "id": "u4-modes-life",
+    "q_en": "Write an essay on modes of life in annelids.",
+    "q_ta": "வளைதசையுடலி வாழ்முறைகள்.",
+    "steps_en": [
+      "Errant / tubicolous / soil / leech.",
+      "Same coelom, different tools.",
+      "Examples.",
+      "Mode ≠ extra class.",
+      "Oxygen and sediment."
+    ],
+    "steps_ta": [
+      "எரான்ட் குழாய் மண் அட்டை.",
+      "அதே குழி.",
+      "எடுத்துக்காட்டு.",
+      "வாழ்வு வகுப்பு அல்ல.",
+      "ஆக்சிஜன் வண்டல்."
+    ],
+    "q2_en": [
+      "Give one errant and one tubicolous example.",
+      "How does a leech stay on a host?"
+    ],
+    "a2_en": [
+      [
+        "Nereis; Sabella / Serpula (any taught tube worm)."
+      ],
+      [
+        "Suckers + mucus / cutting jaws as taught."
+      ]
+    ],
+    "q2_ta": [
+      "எரான்ட் குழாய் எடுத்துக்காட்டு.",
+      "அட்டை எப்படிப் பிடிக்கும்?"
+    ],
+    "a2_ta": [
+      [
+        "நீரிஸ்; குழாய் புழு."
+      ],
+      [
+        "உறிஞ்சி."
+      ]
+    ],
+    "q5_en": [
+      "Describe four major modes of annelid life with examples.",
+      "Explain how the segmental hydrostatic body plan is modified to support different annelid modes of life."
+    ],
+    "a5_en": [
+      [
+        "Errant polychaetes such as Nereis are active marine crawlers or swimmers and may be predators or scavengers.",
+        "Sedentary or tubicolous polychaetes such as Sabella or Serpula live in tubes and often use specialised appendages for feeding and ventilation.",
+        "Earthworms are burrowing terrestrial or freshwater deposit feeders that move by peristalsis and anchorage of chaetae.",
+        "Leeches are mainly predatory or ectoparasitic forms that use anterior and posterior suckers for attachment and locomotion.",
+        "These are ecological modes rather than formal taxonomic classes and each is associated with characteristic modifications of locomotory, feeding and respiratory structures."
+      ],
+      [
+        "In many annelids, coelomic fluid resists contraction of the body-wall muscles and functions as a hydrostatic skeleton.",
+        "Septa divide the coelom into compartments, allowing local changes in pressure and efficient peristaltic or undulatory movement.",
+        "Chaetae and parapodia provide anchorage, traction or propulsion according to the mode of life.",
+        "Tube-dwelling forms retain segmental musculature but modify appendages and feeding structures for remaining within and ventilating a tube.",
+        "Leeches are an important exception: their coelom is greatly reduced and locomotion depends strongly on body-wall musculature and suckers, so the annelid body plan is modified rather than used identically in all four modes."
+      ]
+    ],
+    "q5_ta": [
+      "வளைதசைப் புழுக்களின் நான்கு முக்கிய வாழ்வுமுறைகளை எடுத்துக்காட்டுகளுடன் விளக்குக.",
+      "வளைதசைப் புழுக்களின் கண்டவாரி நீரழுத்த உடலமைப்பு வெவ்வேறு வாழ்வுமுறைகளுக்கு எவ்வாறு மாற்றமடைகிறது என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "நெரீஸ் போன்ற சுதந்திரமாகச் சுற்றும் பல்சீட்டாப் புழுக்கள் கடலில் ஊர்ந்து அல்லது நீந்தி செயற்படும்; அவை வேட்டையாடிகளாகவோ சிதைவுண்ணிகளாகவோ இருக்கலாம்.",
+        "சபெல்லா அல்லது செர்புலா போன்ற குழாய்வாழ் பல்சீட்டாப் புழுக்கள் குழாய்களில் தங்கி, உணவுப்பிடித்தல் மற்றும் நீரோட்டத்திற்கு சிறப்பான உறுப்புகளைப் பயன்படுத்துகின்றன.",
+        "மண்புழுக்கள் நிலம் அல்லது நன்னீர்ச் சூழலில் மண்ணைத் தோண்டிச் செல்லும் படிவுண்ணிகள்; தசை அலைகளும் சீட்டாக்களின் பற்றுதலும் அவற்றின் இயக்கத்திற்கு உதவுகின்றன.",
+        "அட்டைகள் பெரும்பாலும் வேட்டையாடும் அல்லது வெளிப்புற ஒட்டுண்ணி வடிவங்கள்; முன் மற்றும் பின் உறிஞ்சிகளால் பற்றிக் கொண்டு நகர்கின்றன.",
+        "இவை முறையான வகைப்பாட்டு வகுப்புகள் அல்ல; சூழலியல் வாழ்வுமுறைகள். ஒவ்வொன்றிலும் இயக்கம், உணவெடுப்பு மற்றும் சுவாச அமைப்புகள் அதற்கேற்ப மாற்றமடைந்துள்ளன."
+      ],
+      [
+        "பல வளைதசைப் புழுக்களில் உடற்குழித் திரவம் உடற்சுவர் தசைகளின் சுருக்கத்திற்கு எதிராகச் செயல்பட்டு நீரழுத்த எலும்புக்கூடாகிறது.",
+        "இடைத்தடுப்புச் சுவர்கள் உடற்குழியைப் பகுதிகளாகப் பிரிப்பதால் உள்ளூர் அழுத்த மாற்றமும் திறமையான தசை அலை இயக்கமும் சாத்தியமாகிறது.",
+        "சீட்டாக்கள் மற்றும் பாராப்போடியங்கள் வாழ்வுமுறைக்கு ஏற்ப பற்றுதல், இழுவை அல்லது நீந்தும் தள்ளுதலை வழங்குகின்றன.",
+        "குழாய்வாழ் வடிவங்கள் கண்டவாரித் தசைகளைத் தக்கவைத்துக் கொண்டு, குழாய்க்குள் நிலைநிற்றல், நீரோட்டம் மற்றும் உணவெடுப்பிற்கு உறுப்புகளை மாற்றியமைத்துள்ளன.",
+        "அட்டைகள் முக்கிய விதிவிலக்காகும்; அவற்றில் உடற்குழி மிகவும் குறைக்கப்பட்டு உடற்சுவர் தசைகளும் உறிஞ்சிகளும் இயக்கத்தில் முதன்மை பெறுகின்றன. எனவே ஒரே உடற்குழி அமைப்பு எல்லா வாழ்வுமுறைகளிலும் மாற்றமின்றி பயன்படுத்தப்படுவதில்லை."
+      ]
+    ]
+  },
+  "u4-arthropoda": {
+    "id": "u4-arthropoda",
+    "q_en": "Give general characters and classification of Arthropoda up to classes.",
+    "q_ta": "கணுக்காலி பொதுப் பண்புகளும் வகைப்பாடும்.",
+    "steps_en": [
+      "Exoskeleton, jointed limbs, haemocoel, ecdysis.",
+      "Tagmata.",
+      "Crustacea Insecta Arachnida Myriapoda.",
+      "Lever vs annelid bag.",
+      "Open circulation."
+    ],
+    "steps_ta": [
+      "புறவெலும்பு கணு ஹீமோசீல் உரிதல்.",
+      "தகுதியம்.",
+      "நான்கு வகுப்பு.",
+      "நெம்புகோல் vs பை.",
+      "திறந்த சுற்றோட்டம்."
+    ],
+    "q2_en": [
+      "What is ecdysis?",
+      "Name four teaching classes of Arthropoda."
+    ],
+    "a2_en": [
+      [
+        "Moult of the cuticle to grow."
+      ],
+      [
+        "Crustacea, Insecta, Arachnida, Myriapoda."
+      ]
+    ],
+    "q2_ta": [
+      "எக்டிசிஸ் என்றால்?",
+      "நான்கு வகுப்பு."
+    ],
+    "a2_ta": [
+      [
+        "வளர உரிதல்."
+      ],
+      [
+        "கிரஸ்டேசியா இன்செக்டா அராக்னிடா மைரியாபோடா."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of Phylum Arthropoda.",
+      "Compare an arthropod jointed appendage with an annelid parapodium."
+    ],
+    "a5_en": [
+      [
+        "Arthropods are bilaterally symmetrical, triploblastic protostomes with a segmented body commonly organised into tagmata.",
+        "The body is covered by a chitinous exoskeleton that provides protection and muscle attachment and is periodically shed during ecdysis.",
+        "Paired jointed appendages are segmentally arranged and become specialised for locomotion, feeding, sensation and reproduction.",
+        "The true coelom is reduced; the principal body cavity is a haemocoel and circulation is generally open with a dorsal heart.",
+        "The nervous system is ventral and ganglionated; the gut is complete, while respiration occurs by gills, tracheae, book lungs or other specialised surfaces according to the group."
+      ],
+      [
+        "An arthropod appendage is a cuticle-covered, segmented structure with true joints between podomeres.",
+        "Its muscles act across articulations and against the exoskeleton, so the limb functions as a system of mechanical levers.",
+        "Arthropod appendages may be uniramous or biramous and can be strongly specialised into antennae, mouthparts, walking legs, swimmerets or reproductive structures.",
+        "An annelid parapodium is a soft, unjointed lateral body-wall outgrowth, typically divided into notopodium and neuropodium and supported by acicula and chaetae.",
+        "Both structures can aid locomotion or respiration, but they differ in construction and evolutionary origin; their superficial functional similarity should not be used to merge annelid and arthropod body plans."
+      ]
+    ],
+    "q5_ta": [
+      "கணுக்காலிகள் (Arthropoda) தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
+      "கணுக்காலியின் மூட்டுடைய இணைப்புறுப்பையும் வளைதசைப் புழுவின் பாராப்போடியத்தையும் ஒப்பிடுக."
+    ],
+    "a5_ta": [
+      [
+        "கணுக்காலிகள் இருபக்கச் சமச்சீருடைய, மூவடுக்குத் திசுக்களைக் கொண்ட முதல்வாய் விலங்குகள்; கண்டமுடைய உடல் பொதுவாக தக்மாட்டாக்களாக (tagmata) ஒருங்கிணைக்கப்பட்டுள்ளது.",
+        "உடலை கைட்டின் தன்மையுடைய புறஎலும்புக்கூடு மூடியுள்ளது; இது பாதுகாப்பையும் தசை பற்றுதலையும் அளிக்கிறது மற்றும் வளர்ச்சியின் போது எக்டிசிஸ் மூலம் உரிக்கப்படுகிறது.",
+        "இணையாக அமைந்த மூட்டுடைய இணைப்புறுப்புகள் கண்டவாரியாக இருந்து இயக்கம், உணவெடுப்பு, உணர்வு மற்றும் இனப்பெருக்கத்திற்காக சிறப்பாக்கப்படுகின்றன.",
+        "உண்மையான உடற்குழி குறைக்கப்பட்டுள்ளது; முக்கிய உடற்குழி ஹீமோசீல் ஆகும்; பொதுவாக முதுகுப்புற இதயத்துடன் திறந்த இரத்தச் சுற்றோட்டம் உள்ளது.",
+        "நரம்பு அமைப்பு வயிற்றுப்புற நரம்புக்கயிறும் நரம்புக்கணுக்களும் கொண்டது; செரிமானக் குழாய் முழுமையானது; குழுவைப் பொறுத்து செவுள்கள், மூச்சுக்குழல்கள், புத்தக நுரையீரல்கள் போன்ற அமைப்புகள் சுவாசத்தில் ஈடுபடுகின்றன."
+      ],
+      [
+        "கணுக்காலியின் இணைப்புறுப்பு புறஎலும்புக்கூட்டால் மூடப்பட்ட பல பகுதிகளைக் கொண்டது; அவற்றுக்கு இடையில் உண்மையான மூட்டுகள் உள்ளன.",
+        "தசைகள் மூட்டுகளைக் கடந்து புறஎலும்புக்கூட்டில் பற்றுவதால் இணைப்புறுப்பின் பகுதிகள் நெம்புகோல் அமைப்பைப் போல இயங்குகின்றன.",
+        "கணுக்காலி இணைப்புறுப்புகள் ஒருகிளை அல்லது இருகிளை அமைப்பாக இருந்து உணர்கொம்பு, வாயுறுப்பு, நடைக்கால், நீந்துறுப்பு அல்லது இனப்பெருக்க உறுப்பாக சிறப்பாக்கப்படலாம்.",
+        "வளைதசைப் புழுவின் பாராப்போடியம் மூட்டில்லாத சதைப்பற்றுள்ள உடற்சுவர் நீட்சியாகும்; பொதுவாக நோட்டோபோடியம், நியூரோபோடியம் ஆகிய பகுதிகளுடன் அசிகுலா மற்றும் சீட்டாக்களைக் கொண்டது.",
+        "இரண்டும் இயக்கம் அல்லது சுவாசத்திற்கு உதவக்கூடியவை என்றாலும் அவற்றின் கட்டமைப்பும் பரிணாமத் தோற்றமும் வேறுபட்டவை; செயல்பாட்டு ஒற்றுமை மட்டும் இரு தொகுதிகளின் உடலமைப்பை ஒன்றாகக் கருத காரணமல்ல."
+      ]
+    ]
+  },
+  "u4-penaeus": {
+    "id": "u4-penaeus",
+    "q_en": "Give a detailed account of Penaeus indicus.",
+    "q_ta": "பெனியஸ் இண்டிகஸ் விரிவான கணக்கு.",
+    "steps_en": [
+      "Paper name + Fenneropenaeus one line.",
+      "Tagmata and tail fan.",
+      "Appendage roster + jobs.",
+      "Hepatopancreas, heart, gills.",
+      "Nauplius–mysis sequence.",
+      "Petasma / thelycum."
+    ],
+    "steps_ta": [
+      "பாடப் பெயர் + நவீன ஒரு வரி.",
+      "தகுதியம் விசிறி.",
+      "உறுப்புப் பட்டியல்.",
+      "சுரப்பி இதயம் செவுள்.",
+      "லார்வா வரிசை.",
+      "பெட்டாஸ்மா தெலிக்கம்."
+    ],
+    "q2_en": [
+      "What is a petasma?",
+      "Name the first larva."
+    ],
+    "a2_en": [
+      [
+        "Male copulatory modification of pleopods."
+      ],
+      [
+        "Nauplius."
+      ]
+    ],
+    "q2_ta": [
+      "பெட்டாஸ்மா என்றால்?",
+      "முதல் லார்வா."
+    ],
+    "a2_ta": [
+      [
+        "ஆண் ப்ளியோபாட் மாற்றம்."
+      ],
+      [
+        "நாப்ளியஸ்."
+      ]
+    ],
+    "q5_en": [
+      "Describe the tagmata of Penaeus and relate its principal appendages to their functions.",
+      "Why should Fenneropenaeus be mentioned briefly when answering on Penaeus indicus?"
+    ],
+    "a5_en": [
+      [
+        "The body is divided into a cephalothorax, formed by the fused head and thorax under the carapace, and a segmented abdomen.",
+        "Antennules and antennae are chiefly sensory; antennules also bear statocysts concerned with equilibrium.",
+        "Mandibles, maxillulae, maxillae and three pairs of maxillipeds handle and process food and help generate feeding/respiratory currents.",
+        "Five pairs of pereiopods are used mainly for walking and food handling; in penaeids the first three pairs are chelate.",
+        "Abdominal pleopods are used in swimming, while the uropods together with the telson form the tail fan for rapid backward escape."
+      ],
+      [
+        "The prescribed syllabus name Penaeus indicus should be retained as the examination-facing name.",
+        "The current WoRMS treatment accepts the species as Penaeus (Fenneropenaeus) indicus H. Milne Edwards, 1837.",
+        "Fenneropenaeus has also been used at genus rank in alternative or older classifications, so mentioning it once clarifies the nomenclatural history.",
+        "These names refer to the same Indian white prawn species; the anatomical characters being studied do not change because of the taxonomic rank assigned to Fenneropenaeus.",
+        "After this clarification, the answer should concentrate on the prescribed morphology, appendages, systems and life history rather than becoming a synonymy discussion."
+      ]
+    ],
+    "q5_ta": [
+      "பெனேயஸ் உடலின் தக்மாட்டாக்களையும் முக்கிய இணைப்புறுப்புகளின் பணிகளையும் விளக்குக.",
+      "Penaeus indicus பற்றிய விடையில் Fenneropenaeus என்ற பெயரை ஏன் சுருக்கமாக மட்டும் குறிப்பிட வேண்டும்?"
+    ],
+    "a5_ta": [
+      [
+        "உடல், தலை மற்றும் மார்பு இணைந்து காரப்பேஸால் மூடப்பட்ட தலைமார்பு (cephalothorax) மற்றும் கண்டங்களைக் கொண்ட வயிற்றுப்பகுதி என இரண்டு முக்கிய தக்மாட்டாக்களாகப் பிரிகிறது.",
+        "முதல் உணர்கொம்புகள் (antennules) மற்றும் இரண்டாம் உணர்கொம்புகள் (antennae) முக்கியமாக உணர்வுப் பணிகளில் ஈடுபடுகின்றன; முதல் உணர்கொம்புகளில் சமநிலையை உணரும் ஸ்டேட்டோசிஸ்ட்களும் உள்ளன.",
+        "மண்டிபிள்கள், மேக்சில்லுலாக்கள், மேக்சில்லாக்கள் மற்றும் மூன்று இணை மேக்சில்லிபெட்கள் உணவைப் பிடித்தல், செயலாக்குதல் மற்றும் உணவு/சுவாச நீரோட்டத்தை உருவாக்குதல் ஆகியவற்றில் உதவுகின்றன.",
+        "ஐந்து இணை பேரியோபோட்கள் முக்கியமாக நடப்பதற்கும் உணவைக் கையாளுவதற்கும் பயன்படுகின்றன; பெனேயிட் இறால்களில் முதல் மூன்று இணைகள் நகமுடையவை.",
+        "வயிற்றுப்புற பிளியோபோட்கள் நீந்துவதற்குப் பயன்படுகின்றன; யூரோபோட்கள் மற்றும் டெல்சன் சேர்ந்து வால் விசிறியை உருவாக்கி திடீர் பின்னோக்கித் தப்பிச் செல்ல உதவுகின்றன."
+      ],
+      [
+        "பாடத்திட்டத்தில் வழங்கப்பட்டுள்ள Penaeus indicus என்ற பெயரையே தேர்வு விடையில் முதன்மையாகப் பயன்படுத்த வேண்டும்.",
+        "தற்போதைய WoRMS வகைப்பாட்டில் இந்தச் சிற்றினம் Penaeus (Fenneropenaeus) indicus H. Milne Edwards, 1837 என ஏற்றுக்கொள்ளப்பட்டுள்ளது.",
+        "Fenneropenaeus என்ற பெயர் சில மாற்று அல்லது பழைய வகைப்பாடுகளில் பேரின நிலை பெயராகவும் பயன்படுத்தப்பட்டதால், பெயரியல் தெளிவிற்காக அதை ஒருமுறை குறிப்பிடுவது பொருத்தமானது.",
+        "இந்தப் பெயர்கள் ஒரே இந்திய வெள்ளை இறால் சிற்றினத்தைக் குறிக்கின்றன; Fenneropenaeus-க்கு வழங்கப்படும் வகைப்பாட்டு நிலை மாறுவதால் நாம் படிக்கும் உடற்கூறு பண்புகள் மாறுவதில்லை.",
+        "இந்தத் தெளிவுக்குப் பிறகு விடை, பெயரியல் விவாதத்தை நீட்டிக்காமல் பாடத்திட்டத்தில் கேட்கப்பட்ட புறஅமைப்பு, இணைப்புறுப்புகள், உடல் அமைப்புகள் மற்றும் வாழ்க்கை வரலாற்றில் கவனம் செலுத்த வேண்டும்."
+      ]
+    ]
+  },
+  "u4-peripatus": {
+    "id": "u4-peripatus",
+    "q_en": "Write an essay on the affinities of Peripatus.",
+    "q_ta": "பெரிப்பாட்டஸ் உறவுகள்.",
+    "steps_en": [
+      "Onychophora, not a glued chimera.",
+      "Annelid-like column.",
+      "Arthropod-like column.",
+      "Unique slime / velvet.",
+      "Conclude with the modern view: Onychophora is a distinct panarthropod lineage close to Arthropoda, not a literal living 'connecting link'."
+    ],
+    "steps_ta": [
+      "ஓனிக்கோஃபோரா.",
+      "அனெலிட் நெடுவரிசை.",
+      "கணுக்காலி நெடுவரிசை.",
+      "சளி வெல்வெட்.",
+      "நவீன கருத்துடன் முடிக்கவும்: Onychophora என்பது Arthropoda-க்கு நெருங்கிய தனித்த panarthropod கிளை; நேரடி வாழும் ‘connecting link’ அல்ல."
+    ],
+    "q2_en": [
+      "Name the phylum of Peripatus.",
+      "What is a lobopod?"
+    ],
+    "a2_en": [
+      [
+        "Onychophora."
+      ],
+      [
+        "Unjointed fleshy walking stump."
+      ]
+    ],
+    "q2_ta": [
+      "பெரிப்பாட்டஸ் தொகுதி.",
+      "லோபோபாட் என்றால்?"
+    ],
+    "a2_ta": [
+      [
+        "ஓனிக்கோஃபோரா."
+      ],
+      [
+        "கணுவற்ற சதை நடைக் கால்."
+      ]
+    ],
+    "q5_en": [
+      "Discuss the affinities of Peripatus (Onychophora), including the modern phylogenetic interpretation.",
+      "Why should a living Peripatus not be described as the direct ancestor of arthropods?"
+    ],
+    "a5_en": [
+      [
+        "Peripatus is a velvet worm belonging to Phylum Onychophora, a panarthropod lineage distinct from both Annelida and Euarthropoda.",
+        "Arthropod-like features include a chitinous cuticle that is moulted, a haemocoel with open circulation, tracheal respiration in terrestrial forms and segmentally arranged paired appendages bearing claws.",
+        "Traditional annelid-like comparisons include the worm-like body, segmentally arranged nephridia and a dermomuscular body wall, but these similarities do not place Onychophora within Annelida.",
+        "Characteristic onychophoran features include soft unjointed lobopod legs, oral papillae connected with adhesive slime glands and a velvety cuticle.",
+        "Modern molecular and morphological evidence places Onychophora within Panarthropoda, commonly as the living sister lineage of Arthropoda; the old expression 'connecting link' should therefore be treated as historical shorthand, not literal ancestry."
+      ],
+      [
+        "Living Peripatus species are modern terminal lineages, not unchanged survivors of the actual ancestor of arthropods.",
+        "Phylogenetic analyses generally recover Onychophora as a sister lineage to Arthropoda within Panarthropoda, which implies common ancestry rather than direct descent of arthropods from a living Peripatus.",
+        "Some annelid-like similarities are ancestral or convergent characters and are not evidence that Peripatus is an intermediate organism halfway between two modern phyla.",
+        "Onychophorans possess their own derived specialisations, including lobopod limbs, slime glands and distinctive reproductive and sensory features.",
+        "Transitions toward the arthropod body plan are reconstructed from phylogeny and fossil stem-panarthropods; they should not be assigned to any extant Peripatus species as a direct ancestral condition."
+      ]
+    ],
+    "q5_ta": [
+      "பெரிப்பாட்டஸ் (Onychophora) இன் உறவுப் பண்புகளை நவீன இனவரலாற்று விளக்கத்துடன் விவரிக்கவும்.",
+      "உயிருடன் வாழும் பெரிப்பாட்டஸை கணுக்காலிகளின் நேரடி மூதாதையாக ஏன் குறிப்பிடக் கூடாது?"
+    ],
+    "a5_ta": [
+      [
+        "பெரிப்பாட்டஸ் ஒரு வெல்வெட் புழுவாகும்; இது Onychophora தொகுதியைச் சேர்ந்த பனார்த்ரோபோடா (Panarthropoda) வரிசையின் உறுப்பினராக இருந்து Annelida மற்றும் உண்மைக் கணுக்காலிகள் (Euarthropoda) இரண்டிலிருந்தும் தனித்துவமானது.",
+        "கணுக்காலிகளை ஒத்த பண்புகளில் உரியும் கைட்டின் புறத்தோல், ஹீமோசீலுடன் திறந்த இரத்தச் சுற்றோட்டம், நிலவாழ் வடிவங்களில் மூச்சுக்குழல் சுவாசம் மற்றும் நகமுடைய இணை இணைப்புறுப்புகள் அடங்கும்.",
+        "பாரம்பரியமாக வளைதசைப் புழுக்களை ஒத்ததாகக் கூறப்படும் பண்புகளில் புழுவைப் போன்ற உடல், கண்டவாரி நெஃப்ரிடியாக்கள் மற்றும் தோல்-தசை உடற்சுவர் அடங்கும்; ஆனால் இவை Onychophora-வை Annelida-வில் சேர்க்கும் ஆதாரமல்ல.",
+        "மூட்டில்லாத மென்மையான லோபோபோட் கால்கள், ஒட்டும் சளிச் சுரப்பிகளுடன் இணைந்த வாய்ப்புற பப்பில்லாக்கள் மற்றும் மென்மையான வெல்வெட் போன்ற புறத்தோல் ஆகியவை Onychophora-வின் சிறப்புப் பண்புகளாகும்.",
+        "நவீன மூலக்கூறு மற்றும் உருவவியல் ஆதாரங்கள் Onychophora-வை Panarthropoda-வில், பொதுவாக Arthropoda-வின் உயிருடன் உள்ள சகோதர மரபாகக் காட்டுகின்றன; எனவே 'இணைப்புப் பாலம்' என்பது வரலாற்றுச் சுருக்கமாக மட்டுமே கருதப்பட வேண்டும்; நேரடி மூதாதை என பொருள் கொள்ளக் கூடாது."
+      ],
+      [
+        "இன்றைய பெரிப்பாட்டஸ் சிற்றினங்கள் நவீன இறுதி மரபுகள்; அவை கணுக்காலிகளின் உண்மையான மூதாதையின் மாற்றமற்ற உயிர்வாழும் வடிவங்கள் அல்ல.",
+        "இனவரலாற்று ஆய்வுகள் Onychophora-வை பொதுவாக Panarthropoda-வில் Arthropoda-வின் சகோதர மரபாகக் காட்டுகின்றன; இது பொதுவான மூதாதையைச் சுட்டுகிறது, உயிருடன் உள்ள பெரிப்பாட்டஸிலிருந்து கணுக்காலிகள் நேரடியாக உருவானதாக அல்ல.",
+        "சில வளைதசைப் புழு போன்ற ஒற்றுமைகள் பழமையான பண்புகளாகவோ தனித்தனியாக உருவான ஒத்திசைவு பண்புகளாகவோ இருக்கலாம்; அவை இரண்டு நவீன தொகுதிகளுக்கு நடுவிலான இடைநிலை உயிரி என்ற ஆதாரமல்ல.",
+        "லோபோபோட் கால்கள், சளிச் சுரப்பிகள் மற்றும் தனித்துவமான இனப்பெருக்க/உணர்வு பண்புகள் போன்ற தமக்கே உரிய பெறப்பட்ட சிறப்பாக்கங்கள் Onychophora-வில் உள்ளன.",
+        "கணுக்காலி உடலமைப்பை நோக்கிய பரிணாம மாற்றங்கள் இனவரலாறும் புதைபடிவத் தண்டு-பனார்த்ரோபோட்களும் மூலம் மீள்கட்டமைக்கப்படுகின்றன; எந்த உயிருடன் உள்ள பெரிப்பாட்டஸ் சிற்றினத்தையும் நேரடி மூதாதை எனக் குறிப்பிடக் கூடாது."
+      ]
+    ]
+  },
+  "u4-crustacean-larvae": {
+    "id": "u4-crustacean-larvae",
+    "q_en": "Give an account of larval forms in Crustacea.",
+    "q_ta": "ஓடுடலி லார்வா வடிவங்கள்.",
+    "steps_en": [
+      "Nauplius: 3 pairs + median eye.",
+      "Zoea / protozoea.",
+      "Mysis / post-larva.",
+      "Feeding grade changes.",
+      "No insect caterpillars."
+    ],
+    "steps_ta": [
+      "நாப்ளியஸ் மூன்று இணை.",
+      "சோயா.",
+      "மைசிஸ் பின்லார்வா.",
+      "ஊட்டத் தரம்.",
+      "பூச்சி இல்லை."
+    ],
+    "q2_en": [
+      "How many appendage pairs has a nauplius?",
+      "Name two later grades."
+    ],
+    "a2_en": [
+      [
+        "Three (+ median eye)."
+      ],
+      [
+        "Zoea / protozoea; mysis / post-larva."
+      ]
+    ],
+    "q2_ta": [
+      "நாப்ளியஸில் எத்தனை இணை?",
+      "பின் தரங்கள்."
+    ],
+    "a2_ta": [
+      [
+        "மூன்று."
+      ],
+      [
+        "சோயா; மைசிஸ் / பின்லார்வா."
+      ]
+    ],
+    "q5_en": [
+      "Outline the major larval sequence in penaeid prawns and explain why crustacean larval sequences must be stated taxon-specifically.",
+      "Why may a brachyuran crab life-cycle diagram begin with a zoea rather than a free-swimming nauplius?"
+    ],
+    "a5_en": [
+      [
+        "In penaeid prawns, hatching produces a nauplius with three functional pairs of appendages; the naupliar stages are non-feeding and use yolk reserves.",
+        "The nauplius moults through protozoeal stages, which begin active feeding and progressively develop a more complex cephalothoracic organisation.",
+        "Protozoea is followed by mysis stages; the larva becomes shrimp-like and swimming is mainly by thoracic appendages while pleopods are developing.",
+        "The first postlarva resembles a small juvenile shrimp; pleopods become functional and later postlarvae of many penaeids migrate into nursery habitats.",
+        "This nauplius → protozoea → mysis → postlarva sequence is characteristic of penaeids, not a universal sequence for all Crustacea; other crustacean groups have different or abbreviated larval series."
+      ],
+      [
+        "In many brachyuran crabs, naupliar development is completed within the egg, so a free-swimming nauplius is not released.",
+        "The usual first free-living planktonic larva is a zoea, although the number of zoeal stages varies among crab groups.",
+        "The last zoea normally moults into a megalopa, a transitional stage between planktonic zoea and the benthic juvenile crab.",
+        "Some brachyurans show abbreviated or direct development, so even the usual zoea–megalopa sequence can be reduced.",
+        "Therefore a life-cycle diagram must follow the actual taxon: absence of a free nauplius does not justify imposing a penaeid larval sequence on a crab."
+      ]
+    ],
+    "q5_ta": [
+      "பெனேயிட் இறால்களின் முக்கிய லார்வா வரிசையை விளக்கி, ஓடுடலிகளின் லார்வா வரிசையை ஏன் குழுவுக்கேற்ப குறிப்பிட வேண்டும் என்பதை எழுதுக.",
+      "உண்மையான நண்டுகளின் (Brachyura) வாழ்க்கைச் சுழற்சி வரைபடம் சுதந்திரமாக நீந்தும் நாப்ளியஸுக்கு பதிலாக சோயாவிலிருந்து ஏன் தொடங்கலாம்?"
+    ],
+    "a5_ta": [
+      [
+        "பெனேயிட் இறால்களில் முட்டையிலிருந்து மூன்று செயல்படும் இணைப்புறுப்பு இணைகளைக் கொண்ட நாப்ளியஸ் வெளிவருகிறது; நாப்ளியஸ் நிலைகள் உணவெடுக்காமல் கருவளையச் சேமிப்பை பயன்படுத்துகின்றன.",
+        "நாப்ளியஸ் பல முறை தோலுரிந்து புரோட்டோசோயா நிலைகளாக மாறுகிறது; இந்நிலைகள் செயலில் உணவெடுக்கத் தொடங்கி தலைமார்பு அமைப்பு படிப்படியாகச் சிக்கலடைகிறது.",
+        "புரோட்டோசோயாவைத் தொடர்ந்து மைசிஸ் நிலைகள் வருகின்றன; லார்வா சிறிய இறாலைப் போன்றதாகி, பிளியோபோட்கள் வளர்ந்து கொண்டிருக்கும் போது மார்புற இணைப்புறுப்புகள் நீந்துதலில் முக்கிய பங்கு வகிக்கின்றன.",
+        "முதல் பிந்தைய லார்வா சிறிய இளம்இறாலைப் போன்றிருக்கும்; பிளியோபோட்கள் செயல்படத் தொடங்குகின்றன; பல பெனேயிட்களில் பின்னர் பிந்தைய லார்வாக்கள் வளர்ப்பிடச் சூழல்களுக்கு இடம்பெயர்கின்றன.",
+        "நாப்ளியஸ் → புரோட்டோசோயா → மைசிஸ் → பிந்தைய லார்வா என்ற வரிசை பெனேயிட்களுக்கு உரியது; எல்லா ஓடுடலிகளுக்கும் பொதுவான ஒரே லார்வா வரிசை அல்ல. பிற குழுக்களில் வேறு அல்லது சுருக்கப்பட்ட வளர்ச்சிவரிசைகள் காணப்படுகின்றன."
+      ],
+      [
+        "பல உண்மையான நண்டுகளில் நாப்ளியஸ் வளர்ச்சி முட்டைக்குள்ளேயே நிறைவடைகிறது; ஆகையால் சுதந்திரமாக நீந்தும் நாப்ளியஸ் வெளியே வராது.",
+        "பொதுவாக முதல் சுதந்திர பிளாங்க்டன் லார்வா சோயா (zoea) ஆகும்; சோயா நிலைகளின் எண்ணிக்கை நண்டு குழுக்களுக்கேற்ப மாறுபடும்.",
+        "கடைசி சோயா பொதுவாக மெகலோபா (megalopa) நிலையாக மாறுகிறது; இது பிளாங்க்டன் சோயாவுக்கும் அடித்தள இளநண்டுக்கும் இடையிலான இடைமாற்று நிலையாகும்.",
+        "சில Brachyura-வில் சுருக்கப்பட்ட அல்லது நேரடி வளர்ச்சி இருப்பதால் வழக்கமான சோயா–மெகலோபா வரிசையும் குறைக்கப்படலாம்.",
+        "எனவே வாழ்க்கைச் சுழற்சி வரைபடம் குறிப்பிட்ட குழுவின் உண்மையான வளர்ச்சியைப் பின்பற்ற வேண்டும்; சுதந்திர நாப்ளியஸ் இல்லாததால் பெனேயிட் இறாலின் லார்வா வரிசையை நண்டுக்கு திணிக்கக் கூடாது."
+      ]
+    ]
+  }
+}

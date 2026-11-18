@@ -1,0 +1,84 @@
+name: R6 recover source-backed Paramecium pencil photograph crops
+'on':
+  push:
+    branches:
+      - native/five-unit-restoration-r6-paramecium-20261018
+    paths:
+      - .github/workflows/r6-restore-unit1-pencil.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: r6-pinned-paramecium-import-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  restore-pinned-artwork:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download exact four-pencil-crop GitHub artifact
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38658499836
+          github-token: ${{ github.token }}
+          repository: rameshgascngl-create/Invertebrata-
+          name: unit1-paramecium-png-masters
+          path: native-app/app/src/main/assets/unit1
+      - name: Check source hashes and copy only three anatomically matching type-study images
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, shutil, struct
+          root=Path("native-app/app/src/main/assets")
+          sources={
+              "external":"0c06f6a0f541ce5abbd72e27dbab5b403df90d4f0a9f638d8992e5bb17e04f65",
+              "internal":"dbf9c3a4ae8039f45e8d71b69cd69a1797b6dddc622c0a1e6970b146a43bb8d6",
+              "oral":"ec7b628d84c4bce20113a21ea0f2284fd83eb9d521f3c1585732dd9b494c4e90",
+              "vacuole":"e4292ffff9cdb2a02c384bbcee82d6cdbbdf0f6a5368257c9c7b1fdbcc8277cf",
+          }
+          target={
+              "external":"external-cilia",
+              "oral":"oral-apparatus",
+              "vacuole":"contractile-vacuoles",
+          }
+          for name,expected in sources.items():
+              src=root/"unit1"/("paramecium_"+name+".png")
+              data=src.read_bytes()
+              assert data[:8]==bytes.fromhex("89504e470d0a1a0a"),str(src)
+              assert data[12:16]==b"IHDR" and struct.unpack(">II",data[16:24])==(1700,1900)
+              assert hashlib.sha256(data).hexdigest()==expected,str(src)
+              if name in target:
+                  dest=root/"type_studies/paramecium"/(target[name]+".png")
+                  dest.parent.mkdir(parents=True,exist_ok=True)
+                  shutil.copyfile(src,dest)
+                  assert dest.read_bytes()==data
+                  print("TYPE_STUDY_SOURCE_BYTES=PASS",dest,expected)
+              else:
+                  print("SUPPLEMENTARY_ONLY_NOT_LOCOMOTION",src)
+          assert not (root/"type_studies/paramecium/locomotion.png").exists()
+          print("R6_MAPPED_FROM_SINGLE_PHOTOGRAPH=3; NOT_FOUR_INDEPENDENT_PLATES")
+          PY
+      - name: Commit byte-preserved source images to native Android assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add native-app/app/src/main/assets/unit1/paramecium_*.png
+          git add native-app/app/src/main/assets/type_studies/paramecium/{external-cilia,oral-apparatus,contractile-vacuoles}.png
+          if git diff --cached --quiet;then
+            echo "PARAMECIUM_SOURCE_ALREADY_RESTORED"
+          else
+            files="$(git diff --cached --name-only | wc -l | tr -d ' ')"
+            [[ "$files" == 7 ]] || { echo "Wrong image count: $files";exit 1; }
+            git commit -m "assets(r6): restore authentic photographed-pencil Paramecium source and three matched crops [unapproved]"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

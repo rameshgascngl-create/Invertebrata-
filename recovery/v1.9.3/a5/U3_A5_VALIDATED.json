@@ -1,0 +1,589 @@
+{
+  "u3-platy": {
+    "id": "u3-platy",
+    "q_en": "Give general characters and classification of Platyhelminthes up to classes.",
+    "q_ta": "தட்டைப்புழு பொதுப் பண்புகளும் வகைப்பாடும்.",
+    "steps_en": [
+      "Acoelomate, flat, parenchyma.",
+      "Flame cells.",
+      "Turbellaria, Trematoda, Cestoda.",
+      "Gut incomplete or absent.",
+      "Parasitic shift preview."
+    ],
+    "steps_ta": [
+      "உடற்குழியற்ற தட்டையான.",
+      "சுடர்செல்.",
+      "மூன்று வகுப்பு.",
+      "குடல் முழுமை அல்ல.",
+      "ஒட்டுண்ணி மாற்றம்."
+    ],
+    "q2_en": [
+      "What is parenchyma?",
+      "Name the three classes of Platyhelminthes."
+    ],
+    "a2_en": [
+      [
+        "Cellular packing that fills the acoelomate body."
+      ],
+      [
+        "Turbellaria, Trematoda, Cestoda."
+      ]
+    ],
+    "q2_ta": [
+      "பரன்கைமா என்றால்?",
+      "மூன்று வகுப்பு."
+    ],
+    "a2_ta": [
+      [
+        "உடற்குழியற்ற நிரவல் திசு."
+      ],
+      [
+        "டர்பெல்லேரியா ட்ரெமடோடா செஸ்டோடா."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of Phylum Platyhelminthes.",
+      "Explain why cestodes lack an alimentary canal."
+    ],
+    "a5_en": [
+      [
+        "Platyhelminthes are bilaterally symmetrical, triploblastic, dorsoventrally flattened, unsegmented acoelomate animals.",
+        "The body space between the body wall and gut is filled with mesenchyme; true coelom is absent.",
+        "Most forms have an incomplete, often branched digestive system with a mouth but no separate anus; cestodes lack a digestive tract entirely.",
+        "Excretion and osmoregulation are performed by protonephridia with flame cells.",
+        "The phylum includes free-living and parasitic forms; traditional teaching groups include turbellarians, trematodes and cestodes, represented respectively by planarians, Fasciola and tapeworms."
+      ],
+      [
+        "Adult cestodes live in the intestine of a vertebrate host, where enzymatic digestion by the host has already converted food into absorbable nutrients.",
+        "They have no mouth or alimentary canal and instead absorb nutrients across the metabolically active tegument.",
+        "The tegument bears specialized surface structures that greatly increase the area available for absorption.",
+        "Energy is therefore invested in attachment, growth and prolific reproduction rather than in maintaining a digestive tract.",
+        "Loss of the gut is a specialized adaptation to an endoparasitic mode of life and should be described as functional specialization, not as a value-laden 'degeneration'."
+      ]
+    ],
+    "q5_ta": [
+      "தொகுதி Platyhelminthes-ன் பொதுப் பண்புகளை எழுதுக.",
+      "நாடாப்புழுக்களில் உணவுக்குழாய் ஏன் காணப்படுவதில்லை என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "Platyhelminthes இருபக்கச் சமச்சீருடைய, மூன்று கருமூல அடுக்குகளைக் கொண்ட, முதுகு–வயிற்றுத் திசையில் தட்டையான, கண்டங்களற்ற உடற்குழியற்ற (acoelomate) விலங்குகள்.",
+        "உடற்சுவருக்கும் குடலுக்கும் இடையிலான பகுதி மெசென்கைம் திசுவால் நிரம்பியிருக்கும்; உண்மையான சீலம் இல்லை.",
+        "பெரும்பாலானவற்றில் வாயுடன் கூடிய முழுமையற்ற, பல கிளைகளாக இருக்கக்கூடிய செரிமான அமைப்பு உள்ளது; தனித்த குதத்துவாரம் இல்லை; cestodes-ல் செரிமானக் குழாய் முற்றிலும் இல்லை.",
+        "கழிவுநீக்கமும் நீர்உப்புச் சமநிலையும் சுடர்செல்கள் கொண்ட புரோட்டோநெஃப்ரிடியா மூலம் நடைபெறுகின்றன.",
+        "இத்தொகுதியில் சுதந்திரவாழ் மற்றும் ஒட்டுண்ணி வடிவங்கள் உள்ளன; பாரம்பரிய பாடத்திட்டக் குழுக்களில் turbellarians, trematodes, cestodes ஆகியவை முறையே பிளானேரியா, Fasciola, நாடாப்புழு போன்ற எடுத்துக்காட்டுகளால் விளக்கப்படுகின்றன."
+      ],
+      [
+        "முதிர்ந்த cestodes முதுகெலும்பி புரவலனின் குடலில் வாழ்கின்றன; அங்கு புரவலனின் செரிமான நொதிகள் உணவை ஏற்கெனவே உறிஞ்சத்தக்க சத்துகளாக மாற்றியுள்ளன.",
+        "இவற்றில் வாயும் உணவுக்குழாயும் இல்லை; அதற்கு பதிலாக செயற்பாட்டு டெக்யூமென்ட் வழியாகச் சத்துகள் நேரடியாக உறிஞ்சப்படுகின்றன.",
+        "டெக்யூமென்ட் உறிஞ்சும் பரப்பை அதிகரிக்கும் சிறப்புப் பெற்ற மேற்பரப்பு அமைப்புகளைக் கொண்டுள்ளது.",
+        "எனவே செரிமானக் குழாயை பராமரிப்பதற்குப் பதிலாக பற்றிப்பிடித்தல், வளர்ச்சி மற்றும் அதிக இனப்பெருக்கத்திற்கான அமைப்புகள் சிறப்புபெற்றுள்ளன.",
+        "குடல் இல்லாமை உள்ளொட்டுண்ணி வாழ்க்கைக்கான செயல்திறன் மிக்க தழுவலாகும்; இதனை மதிப்பீட்டு சொற்களால் ‘சிதைவு’ எனக் குறிப்பிடாமல் சிறப்பாக்கம் என விளக்க வேண்டும்."
+      ]
+    ]
+  },
+  "u3-fasciola": {
+    "id": "u3-fasciola",
+    "q_en": "Give a detailed account of Fasciola hepatica.",
+    "q_ta": "ஃபாசியோலா விரிவான கணக்கு.",
+    "steps_en": [
+      "Bile-duct leaf fluke; two suckers; tegument.",
+      "Branched caeca; no anus.",
+      "Flame cells.",
+      "Hermaphrodite packing.",
+      "Cycle with sporocyst AND redia.",
+      "Metacercaria on aquatic vegetation or other wet substrates; mammal path."
+    ],
+    "steps_ta": [
+      "பித்தநாள இலை; இரு உறிஞ்சி.",
+      "கிளை குடல்.",
+      "சுடர்செல்.",
+      "இருபால்.",
+      "ஸ்போரோசிஸ்ட் மற்றும் ரீடியா.",
+      "மெட்டாசெர்கேரியா புல்."
+    ],
+    "q2_en": [
+      "Name both suckers.",
+      "Which larval stage is missing if you skip redia?"
+    ],
+    "a2_en": [
+      [
+        "Oral sucker and acetabulum (ventral)."
+      ],
+      [
+        "Redia — do not jump sporocyst to cercaria only."
+      ]
+    ],
+    "q2_ta": [
+      "இரு உறிஞ்சி.",
+      "ரீடியா தவிர்த்தால்?"
+    ],
+    "a2_ta": [
+      [
+        "வாய்; அசிடாபுலம்."
+      ],
+      [
+        "ரீடியா விடாதே."
+      ]
+    ],
+    "q5_en": [
+      "Describe the life cycle of Fasciola hepatica in correct sequence.",
+      "Trace the migration of juvenile Fasciola in the mammalian definitive host."
+    ],
+    "a5_en": [
+      [
+        "Unembryonated eggs produced by adults in the bile ducts pass with bile into the intestine and leave the definitive host in faeces; in freshwater they embryonate and release miracidia.",
+        "Each miracidium penetrates a suitable freshwater snail, the intermediate host.",
+        "Within the snail the parasite develops through sporocyst and redial stages, producing numerous cercariae by asexual multiplication.",
+        "Cercariae leave the snail and encyst on aquatic vegetation or other substrates as metacercariae, the infective stage for the mammalian host.",
+        "After metacercariae are ingested, juveniles migrate to the liver and bile ducts, mature into adults and produce eggs, completing the cycle."
+      ],
+      [
+        "Infection begins when a mammal ingests metacercariae attached to aquatic vegetation or contaminated material.",
+        "The metacercariae excyst in the duodenum, and the juvenile flukes penetrate the intestinal wall into the peritoneal cavity.",
+        "They reach the liver, penetrate its capsule and migrate through the hepatic parenchyma.",
+        "Juveniles enter the biliary ducts, where they mature into adult flukes.",
+        "Adults produce eggs in the bile ducts; eggs pass with bile into the intestine and are eliminated in faeces."
+      ]
+    ],
+    "q5_ta": [
+      "Fasciola hepatica-வின் வாழ்க்கைச் சுழற்சியை சரியான வரிசையில் விளக்குக.",
+      "பாலூட்டி இறுதிப் புரவலனில் இளம் Fasciola செல்லும் இடம்பெயர்வு பாதையை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "பித்தநாளங்களில் வாழும் முதிர்ந்த புழுக்கள் உருவாக்கும் கருவுறாத முட்டைகள் பித்தத்துடன் குடலுக்குச் சென்று மலத்தின் வழியாக வெளியேறுகின்றன; நன்னீரில் கருவளர்ச்சி பெற்று மிராசிடியம் வெளியேறுகிறது.",
+        "ஒவ்வொரு மிராசிடியமும் ஏற்ற நன்னீர் நத்தையை, அதாவது இடைநிலைப் புரவலனை, ஊடுருவுகிறது.",
+        "நத்தைக்குள் ஒட்டுண்ணி ஸ்போரோசிஸ்ட் மற்றும் ரீடியா நிலைகளைக் கடந்து பாலிலா பெருக்கத்தால் பல செர்கேரியாக்களை உருவாக்குகிறது.",
+        "செர்கேரியாக்கள் நத்தையிலிருந்து வெளியேறி நீர்த் தாவரங்கள் அல்லது பிற மேற்பரப்புகளில் மெட்டாசெர்கேரியாக உறைகின்றன; இதுவே பாலூட்டி புரவலனுக்கான தொற்றுநிலை.",
+        "மெட்டாசெர்கேரியா விழுங்கப்பட்ட பின் இளம் புழுக்கள் கல்லீரல் மற்றும் பித்தநாளங்களுக்கு இடம்பெயர்ந்து முதிர்ந்த புழுக்களாகி முட்டைகளை உருவாக்குவதன் மூலம் சுழற்சி நிறைவடைகிறது."
+      ],
+      [
+        "நீர்த் தாவரங்கள் அல்லது மாசுபட்ட பொருட்களில் ஒட்டியுள்ள மெட்டாசெர்கேரியாக்களை பாலூட்டி விழுங்கும்போது தொற்று தொடங்குகிறது.",
+        "மெட்டாசெர்கேரியா டூஒடினத்தில் உறையிலிருந்து வெளிவந்து, இளம் புழுக்கள் குடல் சுவரை ஊடுருவி பெரிடோனியல் குழிக்குச் செல்கின்றன.",
+        "அவை கல்லீரலை அடைந்து அதன் உறையைத் துளைத்து கல்லீரல் பாரென்கைமா வழியாக இடம்பெயர்கின்றன.",
+        "பின்னர் பித்தநாளங்களுக்குள் நுழைந்து முதிர்ந்த புழுக்களாக வளர்கின்றன.",
+        "முதிர்ந்த புழுக்கள் பித்தநாளங்களில் முட்டைகளை உருவாக்குகின்றன; அவை பித்தத்துடன் குடலுக்குச் சென்று மலத்துடன் வெளியேறுகின்றன."
+      ]
+    ]
+  },
+  "u3-platy-adapt": {
+    "id": "u3-platy-adapt",
+    "q_en": "Write an essay on parasitic adaptations in Platyhelminthes.",
+    "q_ta": "தட்டைப்புழு ஒட்டுண்ணித் தழுவல்கள்.",
+    "steps_en": [
+      "Three jobs: station, enzymes, eggs.",
+      "Tegument.",
+      "Holdfast.",
+      "Anaerobiosis.",
+      "Polyembryony in snail.",
+      "Sense organs shrink."
+    ],
+    "steps_ta": [
+      "மூன்று பணி.",
+      "டெக்யூமென்ட்.",
+      "பிடிப்பு.",
+      "காற்றில்லா.",
+      "நத்தை பெருக்கம்.",
+      "உணர்வு சுருக்கம்."
+    ],
+    "q2_en": [
+      "Name two holdfast organs of flukes.",
+      "Why are sense organs reduced in adult flukes?"
+    ],
+    "a2_en": [
+      [
+        "Oral sucker; acetabulum (hooks in some tapeworms)."
+      ],
+      [
+        "Host is the habitat; energy goes to eggs not eyes."
+      ]
+    ],
+    "q2_ta": [
+      "இரண்டு பிடிப்பு உறுப்பு.",
+      "உணர்வு உறுப்பு சுருக்கம்."
+    ],
+    "a2_ta": [
+      [
+        "வாயுறிஞ்சி அசிடாபுலம்."
+      ],
+      [
+        "புரவலனே வாழிடம்; முட்டைக்கு ஆற்றல்."
+      ]
+    ],
+    "q5_en": [
+      "Explain the principal parasitic adaptations of trematodes and cestodes.",
+      "Explain the role of the snail intermediate host in the life cycle and transmission of Fasciola."
+    ],
+    "a5_en": [
+      [
+        "A resistant, physiologically active tegument protects the parasite from host conditions and, especially in cestodes, also participates in nutrient absorption.",
+        "Attachment organs are well developed: trematodes such as Fasciola possess suckers, whereas cestodes possess a scolex with attachment structures appropriate to the species.",
+        "Digestive and sensory structures may be reduced in endoparasitic forms; cestodes lack a gut and absorb pre-digested nutrients across the tegument.",
+        "Reproductive capacity is high, with extensive gonads and production of large numbers of eggs, compensating for heavy losses during transmission.",
+        "Complex life cycles use specialized larval stages and intermediate hosts; in trematodes, asexual multiplication in the snail greatly increases the number of transmissible cercariae."
+      ],
+      [
+        "The freshwater snail is the obligatory intermediate host in the normal life cycle of Fasciola hepatica.",
+        "The miracidium penetrates a suitable snail and transforms into a sporocyst.",
+        "Sporocysts give rise to rediae, and rediae produce cercariae; this intramolluscan clonal multiplication greatly amplifies parasite numbers within one infected snail.",
+        "Cercariae leave the snail, swim briefly and encyst on aquatic vegetation or other substrates as metacercariae infective to the definitive host.",
+        "Thus snail ecology strongly influences transmission; control combines safe food/water practices and livestock/human treatment with appropriate management of snail habitats where indicated."
+      ]
+    ],
+    "q5_ta": [
+      "ட்ரெமட்டோடுகள் மற்றும் cestodes-ல் காணப்படும் முக்கிய ஒட்டுண்ணித் தழுவல்களை விளக்குக.",
+      "Fasciola-வின் வாழ்க்கைச் சுழற்சி மற்றும் பரவலில் நத்தை இடைநிலைப் புரவலனின் பங்கை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "எதிர்ப்புத்திறன் மற்றும் உடலியக்கச் செயற்பாடு கொண்ட டெக்யூமென்ட் புரவலன் சூழலிலிருந்து ஒட்டுண்ணியைப் பாதுகாக்கிறது; குறிப்பாக cestodes-ல் சத்துறிஞ்சுதலிலும் பங்கெடுக்கிறது.",
+        "பற்றிப்பிடிக்கும் உறுப்புகள் சிறப்பாக வளர்ந்துள்ளன: Fasciola போன்ற ட்ரெமட்டோடுகளில் உறிஞ்சிகள் உள்ளன; cestodes-ல் சிற்றினத்திற்கேற்ற பற்றிப்பிடிப்பு அமைப்புகளுடன் ஸ்கோலெக்ஸ் உள்ளது.",
+        "உள்ளொட்டுண்ணிகளில் சில செரிமான மற்றும் உணர்வு அமைப்புகள் குறைக்கப்பட்டிருக்கலாம்; cestodes-ல் குடல் இல்லாமல் டெக்யூமென்ட் வழியே செரிமானமடைந்த சத்துகள் உறிஞ்சப்படுகின்றன.",
+        "இனப்பெருக்கத் திறன் மிக அதிகம்; விரிவான இனப்பெருக்க உறுப்புகளும் பெருமளவு முட்டை உற்பத்தியும் பரவலின் போது ஏற்படும் அதிக இழப்பை ஈடுசெய்கின்றன.",
+        "சிக்கலான வாழ்க்கைச் சுழற்சிகளில் சிறப்பான இளநிலைகளும் இடைநிலைப் புரவலன்களும் பயன்படுகின்றன; ட்ரெமட்டோடுகளில் நத்தைக்குள் நடைபெறும் பாலிலா பெருக்கம் தொற்றுப்பரவக்கூடிய செர்கேரியாக்களின் எண்ணிக்கையை அதிகரிக்கிறது."
+      ],
+      [
+        "Fasciola hepatica-வின் இயல்பான வாழ்க்கைச் சுழற்சியில் நன்னீர் நத்தை கட்டாய இடைநிலைப் புரவலனாக செயல்படுகிறது.",
+        "மிராசிடியம் ஏற்ற நத்தையை ஊடுருவி ஸ்போரோசிஸ்டாக மாறுகிறது.",
+        "ஸ்போரோசிஸ்டுகள் ரீடியாக்களை உருவாக்குகின்றன; ரீடியாக்கள் செர்கேரியாக்களை உருவாக்குகின்றன; இதனால் ஒரே பாதிக்கப்பட்ட நத்தைக்குள் ஒட்டுண்ணி எண்ணிக்கை பாலிலா முறையில் மிக அதிகமாகிறது.",
+        "செர்கேரியாக்கள் நத்தையிலிருந்து வெளியேறி சிறிது நேரம் நீந்தி, நீர்த் தாவரங்கள் அல்லது பிற மேற்பரப்புகளில் இறுதிப் புரவலனுக்குத் தொற்றக்கூடிய மெட்டாசெர்கேரியாக உறைகின்றன.",
+        "எனவே நத்தையின் சூழலியல் பரவலைப் பாதிக்கிறது; கட்டுப்பாட்டில் பாதுகாப்பான உணவு/நீர், மனிதர் மற்றும் கால்நடைகளுக்கான சிகிச்சை, தேவையான இடங்களில் நத்தை வாழிட மேலாண்மை ஆகியவை இணைக்கப்படுகின்றன."
+      ]
+    ]
+  },
+  "u3-aschel": {
+    "id": "u3-aschel",
+    "q_en": "Give general characters of Aschelminthes and the place of Nematoda.",
+    "q_ta": "Aschelminthes பொதுப் பண்புகளும் நெமடோடா இடமும்.",
+    "steps_en": [
+      "Paper name vs living Nematoda.",
+      "Cuticle + pseudocoelom + longitudinal muscle.",
+      "Complete gut.",
+      "Thrash not peristalsis.",
+      "Dioecious usual."
+    ],
+    "steps_ta": [
+      "பாடப் பெயர் vs நெமடோடா.",
+      "கியூட்டிக்கிள் போலிக் குழி நீளத் தசை.",
+      "முழுக் குடல்.",
+      "அடித்து ஆட்டம்.",
+      "வேறுபால்."
+    ],
+    "q2_en": [
+      "What is a pseudocoelom?",
+      "Which muscles does a nematode use to thrash?"
+    ],
+    "a2_en": [
+      [
+        "Body cavity not fully lined by mesoderm as a coelom is."
+      ],
+      [
+        "Longitudinal only."
+      ]
+    ],
+    "q2_ta": [
+      "போலி உடற்குழி என்றால்?",
+      "நெமடோட் எந்தத் தசை?"
+    ],
+    "a2_ta": [
+      [
+        "முழு மீசோடெர்ம் பாயல் இல்லை."
+      ],
+      [
+        "நீளத் தசை மட்டும்."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of the syllabus group Aschelminthes, with emphasis on Nematoda.",
+      "Why do nematodes show whip-like undulation rather than earthworm-like peristalsis?"
+    ],
+    "a5_en": [
+      [
+        "In the traditional syllabus, Aschelminthes is a historical grouping of pseudocoelomate worm-like animals; modern zoology treats Nematoda as a distinct phylum.",
+        "Nematodes are bilaterally symmetrical, triploblastic, unsegmented and cylindrical, usually tapering at both ends.",
+        "A tough, flexible cuticle covers the body and is periodically moulted during growth.",
+        "The body cavity is a fluid-filled pseudocoelom and the alimentary canal is complete, with a separate mouth and anus.",
+        "The body wall has longitudinal muscles only; sexes are usually separate in familiar forms such as Ascaris, often with sexual dimorphism."
+      ],
+      [
+        "Nematodes possess longitudinal body-wall muscles but lack the circular muscle layer used in annelid peristalsis.",
+        "The fluid-filled pseudocoelom, elastic cuticle and body wall together act as a hydrostatic skeleton.",
+        "Alternating contraction of longitudinal muscles on opposite sides bends the body from side to side, producing sinusoidal or whip-like movement.",
+        "Because circular muscles are absent, a nematode cannot alternately elongate and shorten body regions in the same way as an earthworm.",
+        "Earthworms combine circular and longitudinal muscles with a segmented, septate coelomic hydrostatic skeleton and setal anchorage, so their peristaltic locomotion is mechanically different."
+      ]
+    ],
+    "q5_ta": [
+      "பாடத்திட்டத்தில் உள்ள Aschelminthes குழுவின் பொதுப் பண்புகளை, குறிப்பாக Nematoda-வை மையமாகக் கொண்டு எழுதுக.",
+      "நெமட்டோடுகள் மண்புழுவைப் போன்ற பெரிஸ்டால்டிக் இயக்கத்திற்கு பதிலாக சாட்டைபோன்ற அலை இயக்கம் காட்டுவதன் காரணத்தை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "பாரம்பரிய பாடத்திட்டத்தில் Aschelminthes என்பது போலி உடற்குழியுடைய புழுவடிவ உயிரினங்களைச் சேர்த்த வரலாற்றுக் குழுப்பெயர்; நவீன விலங்கியலில் Nematoda தனித்த தொகுதியாகக் கருதப்படுகிறது.",
+        "நெமட்டோடுகள் இருபக்கச் சமச்சீருடைய, மூன்று கருமூல அடுக்குடைய, கண்டங்களற்ற, உருளை வடிவ உடலுடையவை; பொதுவாக இரு முனைகளும் மெல்லியதாகின்றன.",
+        "உடலை வலுவான ஆனால் நெகிழ்வான கியூட்டிக்கிள் மூடியுள்ளது; வளர்ச்சியின் போது அது காலமுறைப்படி உரிந்து மாற்றப்படுகிறது.",
+        "உடற்குழி திரவம் நிறைந்த போலிசீலம்; உணவுக்குழாய் தனித்த வாய் மற்றும் குதத்துவாரம் கொண்ட முழுமையான அமைப்பாகும்.",
+        "உடற்சுவரில் நீள்வாட்டுத் தசைகள் மட்டுமே உள்ளன; Ascaris போன்ற பரிச்சயமான வடிவங்களில் பால்கள் பொதுவாகப் பிரிந்தும் பால்வேறுபாடும் காணப்படுகிறது."
+      ],
+      [
+        "நெமட்டோடுகளின் உடற்சுவரில் நீள்வாட்டுத் தசைகள் உள்ளன; ஆனால் அனெலிடுகளின் பெரிஸ்டால்டிக் இயக்கத்தில் பயன்படும் வளையத் தசை அடுக்கு இல்லை.",
+        "திரவம் நிறைந்த போலிசீலம், நெகிழ்வான கியூட்டிக்கிள் மற்றும் உடற்சுவர் சேர்ந்து நீரழுத்த எலும்புக்கூடாக செயல்படுகின்றன.",
+        "உடலின் எதிரெதிர் பக்க நீள்வாட்டுத் தசைகள் மாறிமாறிச் சுருங்குவதால் உடல் பக்கவாட்டில் வளைந்து சைனுசாய்டு அல்லது சாட்டைபோன்ற அலை இயக்கம் உருவாகிறது.",
+        "வளையத் தசைகள் இல்லாததால் மண்புழுவைப் போல உடற்பகுதிகளை மாறிமாறி நீட்டவும் குறுக்கவும் செய்து பெரிஸ்டால்டிக் முறையில் நகர முடியாது.",
+        "மண்புழுவில் வளைய மற்றும் நீள்வாட்டுத் தசைகள், தடுப்புச்சுவர்களால் பிரிக்கப்பட்ட சீலமிக் நீரழுத்த எலும்புக்கூடு மற்றும் சீட்டா பற்றுதல் ஆகியவை இணைந்து செயல்படுவதால் அதன் இயக்கவியல் வேறுபட்டது."
+      ]
+    ]
+  },
+  "u3-ascaris": {
+    "id": "u3-ascaris",
+    "q_en": "Give a detailed account of Ascaris lumbricoides.",
+    "q_ta": "அஸ்காரிஸ் விரிவான கணக்கு.",
+    "steps_en": [
+      "Dimorphism; three lips.",
+      "Wall triad.",
+      "Straight gut.",
+      "Embryonated egg infective.",
+      "Liver–lung–swallow.",
+      "No intermediate host."
+    ],
+    "steps_ta": [
+      "பால் வேறுபாடு.",
+      "சுவர் முக்கூட்டு.",
+      "நேர்க் குடல்.",
+      "கருவுற்ற முட்டை.",
+      "கல்லீரல் நுரையீரல்.",
+      "இடைப்புரவலன் இல்லை."
+    ],
+    "q2_en": [
+      "How many lips?",
+      "Infective stage for humans."
+    ],
+    "a2_en": [
+      [
+        "Three."
+      ],
+      [
+        "Embryonated egg."
+      ]
+    ],
+    "q2_ta": [
+      "எத்தனை உதடு?",
+      "நுழைவு நிலை."
+    ],
+    "a2_ta": [
+      [
+        "மூன்று."
+      ],
+      [
+        "கருவுற்ற முட்டை."
+      ]
+    ],
+    "q5_en": [
+      "Describe the life cycle of Ascaris lumbricoides.",
+      "Explain why the life cycle of Ascaris does not require a snail or other intermediate host."
+    ],
+    "a5_en": [
+      [
+        "Adult Ascaris live in the lumen of the human small intestine; fertilized eggs are passed with faeces.",
+        "In warm, moist, shaded soil, fertilized eggs embryonate and develop to the infective larvated-egg stage.",
+        "Humans acquire infection by swallowing infective eggs on contaminated food, water, soil or hands; larvae hatch in the intestine.",
+        "Larvae penetrate the intestinal mucosa, travel through the circulation to the lungs, enter alveoli, ascend the bronchial tree to the pharynx and are swallowed.",
+        "After returning to the small intestine, larvae mature into adults and females produce eggs, completing a direct soil-transmitted life cycle."
+      ],
+      [
+        "Ascaris has a direct (monoxenous) life cycle: one definitive host is sufficient for development to adulthood and reproduction.",
+        "The environmentally resistant fertilized egg develops to the infective stage in soil rather than inside an intermediate animal host.",
+        "After the egg is swallowed, larval migration through liver/circulation and lungs occurs within the same human host before return to the intestine.",
+        "No miracidium, cercaria or metacercaria stage is present, and no snail is required, unlike Fasciola.",
+        "Control therefore focuses on sanitation, safe disposal of faeces, hand and food hygiene, and treatment of infected people rather than interruption of a snail intermediate host."
+      ]
+    ],
+    "q5_ta": [
+      "Ascaris lumbricoides-ன் வாழ்க்கைச் சுழற்சியை விளக்குக.",
+      "Ascaris வாழ்க்கைச் சுழற்சிக்கு நத்தை அல்லது வேறு இடைநிலைப் புரவலன் ஏன் தேவையில்லை என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "முதிர்ந்த Ascaris மனிதனின் சிறுகுடல் உட்பகுதியில் வாழ்கிறது; கருவுற்ற முட்டைகள் மலத்துடன் வெளியேறுகின்றன.",
+        "வெப்பமான, ஈரமான, நிழலுள்ள மண்ணில் கருவுற்ற முட்டைகள் கருவளர்ச்சி பெற்று தொற்றக்கூடிய லார்வா கொண்ட முட்டை நிலையை அடைகின்றன.",
+        "மாசுபட்ட உணவு, நீர், மண் அல்லது கைகள் வழியாக தொற்றுமுட்டைகளை விழுங்குவதால் மனிதனுக்கு தொற்று ஏற்படுகிறது; குடலில் லார்வாக்கள் வெளிவருகின்றன.",
+        "லார்வாக்கள் குடல் ம்யூகோசாவை ஊடுருவி இரத்த ஓட்டம் வழியாக நுரையீரலை அடைந்து அல்வியோலைக்குள் நுழைகின்றன; பின்னர் பிராங்கியல் மரம் வழியாக தொண்டைக்குச் சென்று மீண்டும் விழுங்கப்படுகின்றன.",
+        "மீண்டும் சிறுகுடலை அடைந்த லார்வாக்கள் முதிர்ந்த புழுக்களாக வளர்ந்து முட்டைகளை உற்பத்தி செய்கின்றன; இதனால் நேரடி மண்-வழிப் பரவும் வாழ்க்கைச் சுழற்சி நிறைவடைகிறது."
+      ],
+      [
+        "Ascaris நேரடி (monoxenous) வாழ்க்கைச் சுழற்சி கொண்டது; முதிர்ச்சி மற்றும் இனப்பெருக்கத்திற்குப் ஒரே இறுதிப் புரவலன் போதுமானது.",
+        "கருவுற்ற எதிர்ப்புத்திறன் மிக்க முட்டை இடைநிலை விலங்கு புரவலனுக்குள் அல்லாமல் மண்ணிலேயே தொற்றுநிலையாக வளர்கிறது.",
+        "முட்டை விழுங்கப்பட்ட பின் கல்லீரல்/இரத்த ஓட்டம் மற்றும் நுரையீரல் வழியாக லார்வா இடம்பெயர்வது அதே மனிதப் புரவலனுக்குள்ளேயே நடைபெற்று பின்னர் குடலுக்குத் திரும்புகிறது.",
+        "Fasciola போல மிராசிடியம், செர்கேரியா அல்லது மெட்டாசெர்கேரியா நிலைகள் இல்லை; நத்தை இடைநிலைப் புரவலனும் தேவையில்லை.",
+        "எனவே கட்டுப்பாட்டில் நத்தை கட்டுப்பாட்டை விட கழிவுநீர்/மலச் சுகாதாரம், கைக்கழுவுதல், உணவுப் பாதுகாப்பு மற்றும் பாதிக்கப்பட்டவர்களின் சிகிச்சை முக்கியமானவை."
+      ]
+    ]
+  },
+  "u3-nematode-parasites": {
+    "id": "u3-nematode-parasites",
+    "q_en": "Write notes on Wuchereria, Enterobius and Ancylostoma.",
+    "q_ta": "வுச்செரேரியா என்டோபியஸ் ஆன்கிலோஸ்டோமா குறிப்புகள்.",
+    "steps_en": [
+      "Three columns: portal, stage, address, sign.",
+      "Filaria: Culex, lymph, elephantiasis.",
+      "Pinworm: anus, scratch.",
+      "Hookworm: skin, blood, anaemia.",
+      "No cercaria."
+    ],
+    "steps_ta": [
+      "மூன்று நெடுவரிசை.",
+      "ஃபைலேரியா நிணநீர்.",
+      "பினோர்ம் ஆசனம்.",
+      "ஹூக்வோர்ம் தோல் சோகை.",
+      "செர்கேரியா இல்லை."
+    ],
+    "q2_en": [
+      "Vector of Wuchereria bancrofti.",
+      "Where does Enterobius lay eggs?"
+    ],
+    "a2_en": [
+      [
+        "Culex (paper usual)."
+      ],
+      [
+        "Perianal skin."
+      ]
+    ],
+    "q2_ta": [
+      "வுச்செரேரியா வெக்டர்.",
+      "என்டோபியஸ் முட்டை எங்கே?"
+    ],
+    "a2_ta": [
+      [
+        "குலெக்ஸ்."
+      ],
+      [
+        "ஆசனச் சருமம்."
+      ]
+    ],
+    "q5_en": [
+      "Compare Wuchereria bancrofti, Enterobius vermicularis and Ancylostoma duodenale with reference to transmission, infective stage, habitat, major effect and control.",
+      "Why is night blood collection traditionally used for microscopic diagnosis of Wuchereria bancrofti in most endemic settings?"
+    ],
+    "a5_en": [
+      [
+        "Wuchereria bancrofti is mosquito-borne; third-stage larvae enter through the mosquito bite wound, adults inhabit lymphatic vessels, and disease may cause lymphatic dysfunction; control includes programme-based treatment and vector-bite reduction.",
+        "Enterobius vermicularis is acquired mainly by ingestion of infective embryonated eggs; adults inhabit the caecum/colon and gravid females lay eggs on perianal skin, causing nocturnal pruritus; control emphasizes hand, nail, clothing and household hygiene plus treatment.",
+        "Ancylostoma duodenale is a soil-transmitted hookworm; infective filariform L3 larvae commonly penetrate skin, adults attach to the small-intestinal mucosa and blood loss can cause iron-deficiency anaemia.",
+        "For hookworm, sanitation, footwear and treatment reduce transmission; oral transmission can also occur with A. duodenale, so route should not be reduced to skin penetration alone.",
+        "The three parasites therefore differ fundamentally in vector dependence, infective stage and site: lymphatic filarial larva via mosquito, embryonated pinworm egg by ingestion, and infective hookworm L3 from contaminated soil."
+      ],
+      [
+        "In most endemic populations, Wuchereria bancrofti microfilariae show nocturnal periodicity, with greater numbers in peripheral blood at night.",
+        "For microscopy, collecting peripheral blood at night—commonly after about 8 p.m.—therefore increases the chance of detecting microfilariae.",
+        "This periodicity is an adaptation of parasite distribution in the host and often corresponds ecologically with the feeding times of local mosquito vectors, but the vector is not universally Culex.",
+        "Some geographic strains are subperiodic, so sampling practice should follow local epidemiology rather than treating nocturnality as an absolute rule everywhere.",
+        "Circulating filarial antigen tests are not governed by microfilarial nocturnal periodicity and may be performed at other times, so 'night blood' specifically refers to optimizing microscopic microfilaria detection."
+      ]
+    ],
+    "q5_ta": [
+      "Wuchereria bancrofti, Enterobius vermicularis மற்றும் Ancylostoma duodenale ஆகியவற்றை பரவல், தொற்றுநிலை, வாழிடம், முக்கிய பாதிப்பு மற்றும் கட்டுப்பாடு ஆகிய அம்சங்களில் ஒப்பிடுக.",
+      "பெரும்பாலான தொற்றுப்பகுதிகளில் Wuchereria bancrofti-யை நுண்ணோக்கியில் கண்டறிய இரவு நேர இரத்த மாதிரி பாரம்பரியமாகப் பயன்படுத்தப்படுவதன் காரணத்தை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "Wuchereria bancrofti கொசு வழியாகப் பரவுகிறது; மூன்றாம் நிலை லார்வா கொசுக் கடியிடத்தின் வழியாக நுழைகிறது; முதிர்ந்த புழுக்கள் நிணநாளங்களில் வாழ்ந்து நிணநீர் செயலிழப்பை ஏற்படுத்தலாம்; திட்டமிட்ட மருந்தளித்தலும் கொசுக்கடி குறைப்பும் கட்டுப்பாட்டில் பயன்படுகின்றன.",
+        "Enterobius vermicularis தொற்றக்கூடிய கருவளர்ந்த முட்டைகளை விழுங்குவதால் பெரும்பாலும் பரவுகிறது; முதிர்ந்த புழுக்கள் சீகம்/பெருங்குடலில் வாழ்கின்றன; கருவுற்ற பெண் இரவில் குதச்சுற்றுத் தோலில் முட்டையிட்டு அரிப்பை ஏற்படுத்துகிறது; கைகள், நகங்கள், உடைகள், வீட்டு சுகாதாரம் மற்றும் சிகிச்சை முக்கியம்.",
+        "Ancylostoma duodenale மண் வழிப் பரவும் கொக்கிப்புழு; தொற்றக்கூடிய filariform L3 லார்வா பொதுவாக தோலை ஊடுருவுகிறது; முதிர்ந்த புழுக்கள் சிறுகுடல் ம்யூகோசாவில் ஒட்டி இரத்த இழப்பால் இரும்புச்சத்து குறைபாட்டு இரத்தசோகையை ஏற்படுத்தலாம்.",
+        "கொக்கிப்புழு கட்டுப்பாட்டில் சுகாதாரம், காலணி அணிதல் மற்றும் சிகிச்சை உதவுகின்றன; A. duodenale வாய்வழியாகவும் தொற்றக்கூடியதால் பரவலை தோல் ஊடுருவலுக்கு மட்டும் கட்டுப்படுத்திக் கூறக்கூடாது.",
+        "எனவே இம்மூன்றும் வெக்டர் சார்பு, தொற்றுநிலை மற்றும் வாழிடத்தில் அடிப்படையாக வேறுபடுகின்றன: கொசு வழி நிணநீர் ஃபிலேரியல் L3, விழுங்கப்படும் pinworm கருவளர்ந்த முட்டை, மாசுபட்ட மண்ணிலிருந்து hookworm L3 ஆகியவை முறையே முக்கிய தொற்றுநிலைகள்."
+      ],
+      [
+        "பெரும்பாலான தொற்றுப்பகுதிகளில் Wuchereria bancrofti மைக்ரோஃபிலேரியாக்கள் இரவுநேர காலமுறைத் தன்மை காட்டி இரவில் புற இரத்தத்தில் அதிக எண்ணிக்கையில் காணப்படுகின்றன.",
+        "எனவே நுண்ணோக்கி பரிசோதனைக்காக இரவில்—பொதுவாக இரவு 8 மணிக்குப் பிறகு—புற இரத்தம் எடுப்பது மைக்ரோஃபிலேரியாவைக் கண்டறியும் வாய்ப்பை அதிகரிக்கிறது.",
+        "இந்த காலமுறைத் தன்மை புரவலனுக்குள் ஒட்டுண்ணி பகிர்வின் உயிரியல் ஒழுங்காகும்; அது பல இடங்களில் உள்ளூர் கொசு வெக்டர்களின் உணவெடுக்கும் நேரத்துடன் சூழலியல் ஒத்திசைவை காட்டலாம்; ஆனால் வெக்டர் எங்கும் Culex மட்டுமல்ல.",
+        "சில புவியியல் வகைகளில் subperiodic தன்மை காணப்படுவதால் இரவுநேர விதியை உலகளாவிய மாறாத விதியாகக் கருதாமல் உள்ளூர் தொற்றியல் தகவலைப் பின்பற்ற வேண்டும்.",
+        "சுற்றிவரும் ஃபிலேரியல் ஆன்டிஜன் பரிசோதனைகள் மைக்ரோஃபிலேரியாவின் இரவுநேர காலமுறையால் கட்டுப்படுவதில்லை; ஆகவே ‘இரவு இரத்தம்’ என்பது குறிப்பாக நுண்ணோக்கி மைக்ரோஃபிலேரியா கண்டறிதலை மேம்படுத்துவதைக் குறிக்கிறது."
+      ]
+    ]
+  },
+  "u3-nematode-adapt": {
+    "id": "u3-nematode-adapt",
+    "q_en": "Write an essay on parasitic adaptations in nematodes.",
+    "q_ta": "நெமடோட் ஒட்டுண்ணித் தழுவல்கள்.",
+    "steps_en": [
+      "Cuticle and moult.",
+      "Site feeding tools differ.",
+      "Egg vs vector vs soil larva.",
+      "Thrash in a tube.",
+      "No fluke suckers/rediae."
+    ],
+    "steps_ta": [
+      "கியூட்டிக்கிள் உரிதல்.",
+      "ஊட்டக் கருவி வேறு.",
+      "முட்டை வெக்டர் மண்.",
+      "குழாயில் ஆட்டம்.",
+      "உறிஞ்சி ரீடியா இல்லை."
+    ],
+    "q2_en": [
+      "Name one leaving stage that is not an egg.",
+      "Why moult inside a host?"
+    ],
+    "a2_en": [
+      [
+        "Microfilaria (Wuchereria) or skin-penetrating larva (hookworm)."
+      ],
+      [
+        "Cuticle must be shed for growth even in a parasite."
+      ]
+    ],
+    "q2_ta": [
+      "முட்டை அல்லாத வெளியேறும் நிலை.",
+      "புரவலனில் உரிதல் ஏன்?"
+    ],
+    "a2_ta": [
+      [
+        "மைக்ரோஃபிலேரியா அல்லது தோல் லார்வா."
+      ],
+      [
+        "வளர்ச்சிக்குக் கியூட்டிக்கிள் உரிய வேண்டும்."
+      ]
+    ],
+    "q5_en": [
+      "Explain major adaptations of parasitic nematodes.",
+      "Compare environmentally transmitted stages of soil-transmitted nematodes with the vector-borne transmission of Wuchereria and relate these differences to control."
+    ],
+    "a5_en": [
+      [
+        "A tough collagen-rich cuticle protects parasitic nematodes against mechanical and chemical conditions in the host and forms part of the body-wall hydrostatic system.",
+        "Feeding and attachment structures are specialized for the habitat: for example, hookworms use a buccal capsule with teeth/cutting structures to attach to intestinal mucosa, whereas different nematodes possess different mouthparts.",
+        "High reproductive output and resistant or developmentally arrested transmission stages increase the probability that some offspring reach a new host.",
+        "Life cycles are matched to transmission route: some species use long-lived eggs or soil larvae, while filarial nematodes use blood-feeding arthropod vectors in which infective larvae develop.",
+        "These are nematode-specific adaptations; trematode suckers or cestode scolices should not be copied indiscriminately into a nematode answer."
+      ],
+      [
+        "In Ascaris, the fertilized egg embryonates in suitable soil and is swallowed; sanitation, hand hygiene and safe food interrupt faecal–oral transmission.",
+        "In human hookworms, eggs hatch in soil and develop into infective filariform L3 larvae; footwear, sanitation and treatment reduce exposure and contamination.",
+        "Wuchereria bancrofti does not rely on a free-living soil stage: a mosquito ingests microfilariae, within which they develop to infective L3 larvae that are transmitted during a later blood meal.",
+        "Temperature, moisture and vector ecology influence transmission, but their effects differ among soil eggs, soil larvae and mosquito-borne filarial stages; one environmental rule should not be applied to all nematodes.",
+        "Control must therefore match the life cycle: sanitation/hygiene for Ascaris, sanitation plus footwear for hookworm, and programme-based antifilarial measures together with vector-bite reduction for lymphatic filariasis."
+      ]
+    ],
+    "q5_ta": [
+      "ஒட்டுண்ணி நெமட்டோடுகளில் காணப்படும் முக்கிய தழுவல்களை விளக்குக.",
+      "மண் வழிப் பரவும் நெமட்டோடுகளின் சூழல் தொற்றுநிலைகளை Wuchereria-வின் வெக்டர் வழிப் பரவலுடன் ஒப்பிட்டு, அவை கட்டுப்பாட்டை எவ்வாறு தீர்மானிக்கின்றன என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "கொலாஜன் நிறைந்த வலுவான கியூட்டிக்கிள் புரவலனுக்குள் உள்ள இயந்திர மற்றும் வேதியியல் சூழலிலிருந்து ஒட்டுண்ணி நெமட்டோடுகளைப் பாதுகாக்கிறது; இது உடற்சுவரின் நீரழுத்த அமைப்பிலும் பங்கு கொள்கிறது.",
+        "வாழிடத்திற்கேற்ற உணவூட்டும் மற்றும் பற்றிப்பிடிக்கும் அமைப்புகள் சிறப்புபெற்றுள்ளன; எடுத்துக்காட்டாக hookworm-கள் குடல் ம்யூகோசாவை பற்றுவதற்கு பற்கள்/வெட்டும் அமைப்புகளைக் கொண்ட வாய்க்காப்சூலைப் பயன்படுத்துகின்றன; பிற நெமட்டோடுகளில் வேறுபட்ட வாயமைப்புகள் காணப்படுகின்றன.",
+        "அதிக இனப்பெருக்கம் மற்றும் எதிர்ப்புத்திறன் மிக்க அல்லது வளர்ச்சி நிறுத்தப்பட்ட பரவல் நிலைகள் சில சந்ததிகள் புதிய புரவலனை அடையும் வாய்ப்பை அதிகரிக்கின்றன.",
+        "வாழ்க்கைச் சுழற்சி பரவல் முறைக்கேற்ப அமைந்துள்ளது; சிலவற்றில் நீண்டகாலம் நிலைக்கும் முட்டைகள் அல்லது மண் லார்வாக்கள் உள்ளன; ஃபிலேரியல் நெமட்டோடுகள் இரத்தம் உறிஞ்சும் அர்த்ரோபோட் வெக்டர்களைப் பயன்படுத்துகின்றன.",
+        "இவை நெமட்டோடுகளுக்கேற்ற தழுவல்கள்; ட்ரெமட்டோடுகளின் உறிஞ்சிகள் அல்லது cestodes-ன் ஸ்கோலெக்ஸ் போன்றவற்றை நெமட்டோடு விடையில் பொதுவாகச் சேர்க்கக்கூடாது."
+      ],
+      [
+        "Ascaris-ல் கருவுற்ற முட்டை ஏற்ற மண்ணில் தொற்றுநிலையாக வளர்ந்து பின்னர் விழுங்கப்படுகிறது; மலச் சுகாதாரம், கைக்கழுவுதல் மற்றும் உணவுப் பாதுகாப்பு மல–வாய் பரவலைத் தடுக்கின்றன.",
+        "மனித hookworm-களில் முட்டைகள் மண்ணில் பொரிந்து தொற்றக்கூடிய filariform L3 லார்வாவாக வளர்கின்றன; காலணி, சுகாதாரம் மற்றும் சிகிச்சை வெளிப்பாட்டையும் மண் மாசுபாட்டையும் குறைக்கின்றன.",
+        "Wuchereria bancrofti-க்கு சுதந்திர மண் நிலை இல்லை; கொசு மைக்ரோஃபிலேரியாக்களை இரத்தத்துடன் எடுத்துக்கொள்கிறது; கொசுக்குள் அவை தொற்றக்கூடிய L3 ஆக வளர்ந்து அடுத்த இரத்த உணவின்போது மனிதனுக்குப் பரவுகின்றன.",
+        "வெப்பநிலை, ஈரப்பதம் மற்றும் வெக்டர் சூழலியல் பரவலைப் பாதிக்கின்றன; ஆனால் மண் முட்டை, மண் லார்வா மற்றும் கொசு வழி ஃபிலேரியல் நிலைகளில் அவற்றின் தாக்கம் வேறுபடுகிறது; ஒரே சூழல் விதியை எல்லா நெமட்டோடுகளுக்கும் பயன்படுத்தக்கூடாது.",
+        "எனவே கட்டுப்பாடு வாழ்க்கைச் சுழற்சிக்கேற்ப இருக்க வேண்டும்: Ascaris-க்கு சுகாதாரம்/கைக்கழுவுதல், hookworm-க்கு சுகாதாரம் மற்றும் காலணி, lymphatic filariasis-க்கு திட்டமிட்ட எதிர்-ஃபிலேரியல் நடவடிக்கைகள் மற்றும் கொசுக்கடி குறைப்பு."
+      ]
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+name: Import NOAA coral polyp source PNG
+on:
+  push:
+    branches: ['feat/plate-pipeline']
+    paths: ['.github/workflows/import-noaa-coral-plate.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-coral-image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install --quiet Pillow
+      - name: Import high-resolution public-domain NOAA-derived coral plate with provenance
+        run: |
+          python3 - <<'PY'
+          from io import BytesIO
+          from pathlib import Path
+          from PIL import Image, ImageFile
+          import datetime, hashlib, json, time, urllib.request
+          Image.MAX_IMAGE_PIXELS = 20_000_000
+          ImageFile.LOAD_TRUNCATED_IMAGES = False
+          dst = Path('native-app/app/src/main/assets/book_figures/coral-polyp-noaa.png')
+          record = Path('provenance/coral_polyp_noaa.json')
+          if dst.exists():
+              raise SystemExit('Image already exists: refusing to overwrite')
+          sources = [
+            ('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Coral_polyp_en.svg/1920px-Coral_polyp_en.svg.png',
+              'Wikimedia Commons, Coral polyp en.svg (1920 px PNG rendition)',
+              'NOAA original, vector redraw MarkusZi, English labels Earlza; public-domain mark on Commons file page'),
+            ('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Coral_polyp_en.svg/960px-Coral_polyp_en.svg.png',
+              'Wikimedia Commons, Coral polyp en.svg (960 px PNG rendition)',
+              'NOAA original, vector redraw MarkusZi, English labels Earlza; public-domain mark on Commons file page'),
+            ('https://nmsflowergarden.blob.core.windows.net/flowergarden-prod/media/archive/img/edulibrary/polypanatomy1000.jpg',
+              'NOAA Flower Garden Banks coral-polyp educational anatomy JPEG (native resolution)',
+              'NOAA Ocean Service original, US Federal Government public-domain work'),
+          ]
+          candidate = None
+          for url, desc, author in sources:
+              for attempt in range(2):
+                  try:
+                      request = urllib.request.Request(url, headers={
+                        'User-Agent': 'InvertebrataZoologyEducationalApp/1.0 (academic offline illustration; contact via GitHub)'
+                      })
+                      with urllib.request.urlopen(request, timeout=22) as response:
+                          payload = response.read(12_000_000)
+                      im = Image.open(BytesIO(payload))
+                      im.load()
+                      if im.width < 900 or im.height < 900 or im.width > 4000 or im.height > 5000:
+                          raise ValueError(f'Unacceptable source dimensions {im.size}')
+                      if im.format not in ('PNG', 'JPEG'):
+                          raise ValueError(f'Unexpected source format: {im.format}')
+                      candidate = (im, payload, url, desc, author)
+                      break
+                  except Exception as exc:
+                      print(f'Attempt {attempt+1} failed for {url}: {exc}')
+                      time.sleep(2)
+              if candidate:
+                  break
+          if candidate is None:
+              raise SystemExit('No verified public-domain source could be downloaded: no commit made')
+          im, payload, url, desc, author = candidate
+          dst.parent.mkdir(parents=True, exist_ok=True)
+          if im.format == 'PNG':
+              dst.write_bytes(payload)
+          else:
+              # Lossless PNG representation of the full native-resolution NOAA JPEG.
+              im.convert('RGB').save(dst, format='PNG', optimize=True)
+          saved = Image.open(dst)
+          saved.verify()
+          digest = hashlib.sha256(dst.read_bytes()).hexdigest()
+          meta = {
+              'asset': str(dst),
+              'source_url': url,
+              'source_page': 'https://commons.wikimedia.org/wiki/File:Coral_polyp_en.svg' if 'wikimedia' in url else 'https://flowergarden.noaa.gov/education/coralbasics.html',
+              'source_description': desc,
+              'attribution': author,
+              'license_basis': 'NOAA source is a U.S. Federal Government work; Commons file page marks its NOAA-derived English SVG public domain',
+              'format': 'PNG',
+              'width': im.width, 'height': im.height,
+              'sha256': digest,
+              'academic_review_status': 'DRAFT_UNVERIFIED',
+              'label_validation': 'Compare visible source labels with NOAA Flower Garden Banks anatomy and separate skeletal septa from tissue mesenteries before release.',
+              'retrieved_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          record.parent.mkdir(exist_ok=True)
+          record.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + '\n')
+          print('CORAL_PNG_IMPORTED', json.dumps(meta, indent=2))
+          PY
+      - name: Commit sourced raster and complete provenance (never overwrite existing drawings)
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/main/assets/book_figures/coral-polyp-noaa.png provenance/coral_polyp_noaa.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Import sourced NOAA coral polyp anatomy PNG with provenance"
+          git push origin HEAD:feat/plate-pipeline

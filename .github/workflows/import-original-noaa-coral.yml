@@ -1,0 +1,70 @@
+name: Import original NOAA coral anatomy without SVG label errors
+on:
+  push:
+    branches: ['feat/plate-pipeline']
+    paths: ['.github/workflows/import-original-noaa-coral.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python3 -m pip install --quiet pillow
+      - name: Fetch NOAA source pixels and retain exact native dimensions
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from io import BytesIO
+          from PIL import Image
+          import hashlib, json, urllib.request, datetime
+          source='https://nmsflowergarden.blob.core.windows.net/flowergarden-prod/media/archive/img/edulibrary/polypanatomy1000.jpg'
+          path=Path('native-app/app/src/main/assets/book_figures/coral-polyp-noaa-original.png')
+          meta=Path('provenance/coral_polyp_noaa_original.json')
+          if path.exists(): raise SystemExit('Refusing to overwrite previously imported original')
+          req=urllib.request.Request(source,headers={'User-Agent':'GASCNagercoil-Zoology-Source-Audit/1.0'})
+          with urllib.request.urlopen(req,timeout=40) as r:
+              payload=r.read(12_000_000)
+          image=Image.open(BytesIO(payload))
+          image.load()
+          assert image.format=='JPEG',image.format
+          assert image.width>=900 and image.height>=900,image.size
+          assert image.width<=4000 and image.height<=5000,image.size
+          path.parent.mkdir(parents=True,exist_ok=True)
+          image.convert('RGB').save(path,format='PNG',optimize=True)
+          verified=Image.open(path)
+          verified.load()
+          assert verified.size==image.size,'No resampling or size reduction is permitted'
+          sha=hashlib.sha256(path.read_bytes()).hexdigest()
+          meta.parent.mkdir(exist_ok=True)
+          meta.write_text(json.dumps({
+              'asset':str(path),
+              'source_page':'https://flowergarden.noaa.gov/education/coralbasics.html',
+              'source_url':source,
+              'author':'NOAA Ocean Service, Flower Garden Banks National Marine Sanctuary',
+              'license':'Public domain — original NOAA U.S. government educational illustration',
+              'native_jpeg_sha256':hashlib.sha256(payload).hexdigest(),
+              'png_sha256':sha,
+              'width':verified.width,'height':verified.height,
+              'original_source_resolution_preserved':True,
+              'transform':'RGB PNG lossless re-encoding of NOAA JPEG decoded source; NO scaling and NO relabeling',
+              'scientific_review':'DRAFT_UNVERIFIED; must pass device screenshot and labels audit',
+              'reason':'Wikimedia SVG derivative contains mistaken Gastropod label not present in NOAA native artwork',
+              'retrieved_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()
+          },indent=2)+'\n')
+          print('NOAA_ORIGINAL_PNG',verified.size,sha)
+          PY
+      - name: Preserve original source PNG and provenance in branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native-app/app/src/main/assets/book_figures/coral-polyp-noaa-original.png provenance/coral_polyp_noaa_original.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Import original NOAA polyp plate to avoid erroneous SVG label"
+          git push origin HEAD:feat/plate-pipeline

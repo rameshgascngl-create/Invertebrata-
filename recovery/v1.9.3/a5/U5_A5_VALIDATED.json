@@ -1,0 +1,1006 @@
+{
+  "u5-mollusca": {
+    "id": "u5-mollusca",
+    "q_en": "Give general characters and classification of Mollusca up to classes.",
+    "q_ta": "மெல்லுடலி பொதுப் பண்புகளும் வகைப்பாடும்.",
+    "steps_en": [
+      "Mantle, foot, radula (except bivalves).",
+      "Mantle-cavity workshop.",
+      "Gastropoda Bivalvia Cephalopoda Polyplacophora.",
+      "Shell is optional product.",
+      "Circulation note."
+    ],
+    "steps_ta": [
+      "மேன்டில் கால் ரேடுலா.",
+      "பட்டறைக் குழி.",
+      "நான்கு வகுப்பு.",
+      "ஓடு கட்டாயம் அல்ல.",
+      "சுற்றோட்டக் குறிப்பு."
+    ],
+    "q2_en": [
+      "What is a radula?",
+      "Name four classes used in this paper."
+    ],
+    "a2_en": [
+      [
+        "Toothed chitinous ribbon for rasping (absent in bivalves)."
+      ],
+      [
+        "Gastropoda, Bivalvia, Cephalopoda, Polyplacophora."
+      ]
+    ],
+    "q2_ta": [
+      "ரேடுலா என்றால்?",
+      "நான்கு வகுப்பு."
+    ],
+    "a2_ta": [
+      [
+        "பல் நாடா; இருசங்கிலில் இல்லை."
+      ],
+      [
+        "வயிற்றுக்காலி இருசங்கி தலைக்காலி பலதகடு."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of Phylum Mollusca.",
+      "Explain the major modifications of the molluscan foot in different classes."
+    ],
+    "a5_en": [
+      [
+        "Molluscs are triploblastic protostomes with a soft, usually unsegmented body; bilateral symmetry is basic although secondary asymmetry occurs in gastropods.",
+        "The body typically consists of a head, a muscular ventral foot and a visceral mass covered dorsally by the mantle.",
+        "The mantle forms the mantle cavity and secretes a calcareous shell in many species; the mantle cavity houses gills and the openings of excretory, digestive and reproductive systems.",
+        "A radula is present in most molluscan classes for scraping or cutting food, but it is absent in bivalves.",
+        "The true coelom is reduced and a haemocoel forms the main body cavity; circulation is generally open, whereas cephalopods have a closed vascular system."
+      ],
+      [
+        "The molluscan foot is a homologous muscular ventral body region that has been modified for different modes of locomotion and feeding.",
+        "In gastropods it forms a broad creeping sole moved by muscular waves, often aided by mucus.",
+        "In bivalves it is commonly a laterally compressed wedge or hatchet-shaped burrowing organ; some bivalves also produce byssus threads from a pedal gland for attachment.",
+        "In cephalopods the foot is extensively reorganised: its anterior part contributes to the arms or tentacles and another part forms the funnel used in jet propulsion.",
+        "In scaphopods the foot is conical and adapted for burrowing; these variations demonstrate modification of the same basic molluscan body region rather than the presence of unrelated structures."
+      ]
+    ],
+    "q5_ta": [
+      "மெல்லுடலிகள் (Mollusca) தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
+      "மெல்லுடலிகளின் பாதம் வெவ்வேறு வகுப்புகளில் எவ்வாறு மாற்றமடைந்துள்ளது என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "மெல்லுடலிகள் மூவடுக்குத் திசுக்களைக் கொண்ட முதல்வாய் விலங்குகள்; உடல் மென்மையானதும் பொதுவாகக் கண்டங்களற்றதுமாகும். அடிப்படை உடலமைப்பு இருபக்கச் சமச்சீருடையது; காஸ்ட்ரோபோடுகளில் இரண்டாம் நிலை அசமச்சீர் தோன்றுகிறது.",
+        "உடல் பொதுவாகத் தலை, தசைமிக்க வயிற்றுப்புறப் பாதம் மற்றும் உள்ளுறுப்பு திரள் ஆகிய பகுதிகளைக் கொண்டது; உள்ளுறுப்பு திரளை முதுகுப்புற மாந்தல் மூடுகிறது.",
+        "மாந்தல் மாந்தல் குழியை உருவாக்கி பல சிற்றினங்களில் சுண்ணாம்பு ஓட்டையும் சுரக்கிறது; மாந்தல் குழியில் செவுள்களும் கழிவு, செரிமான மற்றும் இனப்பெருக்கத் துளைகளும் திறக்கின்றன.",
+        "பெரும்பாலான மெல்லுடலி வகுப்புகளில் உணவைச் சுரண்டவோ வெட்டவோ ரேடுலா காணப்படுகிறது; இரட்டை ஓட்டுடலிகளில் அது இல்லை.",
+        "உண்மையான உடற்குழி மிகவும் குறைக்கப்பட்டு ஹீமோசீல் முக்கிய உடற்குழியாக உள்ளது; பொதுவாக திறந்த இரத்தச் சுற்றோட்டம் காணப்படும், ஆனால் தலைக்காலிகளில் மூடிய இரத்தச் சுற்றோட்டம் உள்ளது."
+      ],
+      [
+        "மெல்லுடலிகளின் பாதம் ஒரே பரிணாமத் தோற்றமுடைய தசைமிக்க வயிற்றுப்புற உடற்பகுதி; பல்வேறு இயக்க மற்றும் உணவெடுப்பு முறைகளுக்கேற்ப அது மாற்றமடைந்துள்ளது.",
+        "காஸ்ட்ரோபோடுகளில் அது அகன்ற ஊர்வுத் தளமாக இருந்து தசை அலைகளாலும் பொதுவாகச் சளியாலும் நகர்கிறது.",
+        "இரட்டை ஓட்டுடலிகளில் பாதம் பொதுவாக பக்கவாட்டில் தட்டையான ஆப்பு அல்லது கோடரி வடிவத் தோண்டும் உறுப்பாகும்; சிலவற்றில் பாதச் சுரப்பி பைசஸ் நூல்களைச் சுரந்து பற்றுதலுக்கு உதவுகிறது.",
+        "தலைக்காலிகளில் பாதம் மிகுந்த மாற்றமடைந்து அதன் முன்பகுதி கரங்கள்/தொடுகொம்புகளாகவும் மற்றொரு பகுதி ஜெட் இயக்கத்திற்கான புனலாகவும் அமைந்துள்ளது.",
+        "ஸ்காபோபோடுகளில் பாதம் கூம்பு வடிவமுடைய தோண்டும் உறுப்பாகும்; இவ்வேறுபாடுகள் அனைத்தும் ஒரே அடிப்படை மெல்லுடலி பாதத்தின் மாற்றங்களாகும்."
+      ]
+    ]
+  },
+  "u5-pila": {
+    "id": "u5-pila",
+    "q_en": "Give a detailed account of Pila globosa.",
+    "q_ta": "பைலா விரிவான கணக்கு.",
+    "steps_en": [
+      "Amphibious univalve + operculum.",
+      "Ctenidium + pulmonary sac.",
+      "Osphradium, radula.",
+      "Already torted adult.",
+      "Not a bivalve; not Unio."
+    ],
+    "steps_ta": [
+      "நீர்-நில ஒரு வால்வு.",
+      "செவுள் + நுரையீரல் பை.",
+      "ஆஸ்ஃப்ரேடியம் ரேடுலா.",
+      "ஏற்கனவே முறுக்கியது.",
+      "இருசங்கு அல்ல."
+    ],
+    "q2_en": [
+      "Name the lid of Pila.",
+      "Two breathing tools in Pila."
+    ],
+    "a2_en": [
+      [
+        "Operculum."
+      ],
+      [
+        "Ctenidium in water; pulmonary sac in air."
+      ]
+    ],
+    "q2_ta": [
+      "பைலா மூடி.",
+      "இரண்டு மூச்சுக் கருவி."
+    ],
+    "a2_ta": [
+      [
+        "ஆபர்குலம்."
+      ],
+      [
+        "டெனிடியம்; நுரையீரல் பை."
+      ]
+    ],
+    "q5_en": [
+      "Describe the respiratory adaptations that make Pila amphibious.",
+      "Compare Pila with a freshwater mussel such as Unio."
+    ],
+    "a5_en": [
+      [
+        "Pila possesses a monopectinate ctenidium in the branchial chamber; it is the principal organ for aquatic respiration.",
+        "A highly vascular pulmonary sac in the mantle cavity functions as a lung during aerial respiration and when oxygen availability in water is low.",
+        "The left nuchal lobe can form an inhalant respiratory siphon for water or air, while the right nuchal lobe helps conduct the outgoing water current during aquatic respiration.",
+        "The epitaenia separates branchial and pulmonary regions of the mantle cavity and helps maintain appropriate respiratory currents; the pulmonary opening communicates with the pulmonary chamber.",
+        "The operculum helps protect the retracted animal and reduces water loss during unfavourable conditions; the osphradium samples incoming water chemically but is a sensory organ, not a respiratory organ."
+      ],
+      [
+        "Pila is a gastropod, whereas Unio is a bivalve mollusc.",
+        "Pila has one spirally coiled univalve shell, usually closed by an operculum; Unio has two lateral shell valves joined by a dorsal hinge.",
+        "Pila has a distinct head with tentacles and eyes and possesses a radula; Unio has a greatly reduced head and no radula.",
+        "The Pila foot is broad and adapted mainly for creeping, whereas the Unio foot is laterally compressed and adapted chiefly for burrowing.",
+        "Pila undergoes gastropod torsion and has a gastropod pallial arrangement; Unio is untorted and freshwater unionid mussels characteristically produce a glochidium larva, which is not a larval stage of Pila."
+      ]
+    ],
+    "q5_ta": [
+      "பைலாவை நீர் மற்றும் நில வாழ்விற்கு ஏற்ற இருவாழ்வுத் தன்மை கொண்டதாக மாற்றும் சுவாசத் தழுவல்களை விளக்குக.",
+      "பைலாவை யூனியோ போன்ற நன்னீர் இரட்டை ஓட்டுடலியுடன் ஒப்பிடுக."
+    ],
+    "a5_ta": [
+      [
+        "பைலாவின் மாந்தல் குழியின் செவுள் அறையில் ஒருபக்க இலைவரிசையுடைய க்டீனிடியம் உள்ளது; இது நீர்ச் சுவாசத்தின் முக்கிய உறுப்பாகும்.",
+        "மாந்தல் குழியில் அதிக இரத்த நாளங்களைக் கொண்ட நுரையீரல் பை உள்ளது; இது காற்றுச் சுவாசத்திலும் நீரில் ஆக்சிஜன் குறைவாக இருக்கும் நிலையிலும் நுரையீரலாகச் செயல்படுகிறது.",
+        "இடது கழுத்துமடல் நீர் அல்லது காற்றை உள்ளிழுக்கும் சுவாச சைஃபனாக நீளமடைய முடியும்; நீர்ச் சுவாசத்தின் போது வலது கழுத்துமடல் வெளியேறும் நீரோட்டத்திற்கு உதவுகிறது.",
+        "எபிடீனியா மாந்தல் குழியை செவுள் மற்றும் நுரையீரல் பகுதிகளாகப் பிரித்து தகுந்த சுவாச நீரோட்டத்தை பராமரிக்க உதவுகிறது; நுரையீரல் திறப்பு நுரையீரல் அறையுடன் தொடர்புடையது.",
+        "ஓப்பர்குலம் உடலை ஓட்டுக்குள் இழுத்தபோது பாதுகாப்பளித்து மோசமான சூழலில் நீரிழப்பைக் குறைக்கிறது; ஆஸ்ஃப்ரேடியம் வரும் நீரின் வேதியியல் தன்மையை உணரும் உணர்வு உறுப்பு மட்டுமே, சுவாச உறுப்பு அல்ல."
+      ],
+      [
+        "பைலா காஸ்ட்ரோபோடா வகுப்பைச் சேர்ந்தது; யூனியோ இரட்டை ஓட்டுடலி (Bivalvia) ஆகும்.",
+        "பைலாவில் ஒற்றை சுருள் ஓடு உள்ளது; அதை ஓப்பர்குலம் மூட முடியும். யூனியோவில் முதுகுப்புற இணைப்பால் சேர்ந்த இரண்டு பக்க ஓட்டுத் தகடுகள் உள்ளன.",
+        "பைலாவில் தொடுகொம்புகளும் கண்களும் கொண்ட தெளிவான தலை மற்றும் ரேடுலா உள்ளன; யூனியோவில் தலை மிகவும் குறைக்கப்பட்டு ரேடுலா இல்லை.",
+        "பைலாவின் பாதம் அகன்றதாக இருந்து முக்கியமாக ஊர்வதற்கு ஏற்றது; யூனியோவின் பாதம் பக்கவாட்டில் தட்டையானதாக இருந்து பெரும்பாலும் தோண்டுவதற்கு ஏற்றது.",
+        "பைலாவில் காஸ்ட்ரோபோடுகளுக்குரிய முறுக்கு (torsion) ஏற்படுகிறது; யூனியோவில் முறுக்கு இல்லை. நன்னீர் யூனியன் இரட்டை ஓட்டுடலிகளில் குளோகிடியம் லார்வா காணப்படும்; அது பைலாவின் லார்வா நிலை அல்ல."
+      ]
+    ]
+  },
+  "u5-torsion": {
+    "id": "u5-torsion",
+    "q_en": "Write an essay on torsion in gastropods.",
+    "q_ta": "வயிற்றுக்காலி முறுக்கு.",
+    "steps_en": [
+      "Larval 180° viscera.",
+      "Cavity forward; streptoneury.",
+      "Benefit and fouling cost.",
+      "Coiling ≠ torsion.",
+      "Pila already torted."
+    ],
+    "steps_ta": [
+      "லார்வா 180°.",
+      "குழி முன்; ஸ்ட்ரெப்டோநியூரி.",
+      "பயன் கழிவுச் செலவு.",
+      "சுருள் ≠ முறுக்கு.",
+      "பைலா முறுக்கியது."
+    ],
+    "q2_en": [
+      "How many degrees is torsion?",
+      "Torsion versus coiling in one line."
+    ],
+    "a2_en": [
+      [
+        "About 180° of the viscera in the veliger."
+      ],
+      [
+        "Torsion turns the cavity forward; coiling is shell spiral growth."
+      ]
+    ],
+    "q2_ta": [
+      "முறுக்கு எத்தனை பாகை?",
+      "முறுக்கு vs சுருள்."
+    ],
+    "a2_ta": [
+      [
+        "சுமார் 180°."
+      ],
+      [
+        "குழி முன்; ஓட்டுச் சுழல் வேறு."
+      ]
+    ],
+    "q5_en": [
+      "Describe gastropod torsion and its principal consequences.",
+      "What is fouling in a torted gastropod, and what is meant by secondary detorsion?"
+    ],
+    "a5_en": [
+      [
+        "Torsion is the larval rotation of the visceral mass, mantle and shell by about 180° relative to the head and foot; it is distinct from spiral coiling of the shell.",
+        "As a result, the mantle cavity, ctenidium and anus are brought from a posterior to an anterior position above or near the head.",
+        "The alimentary canal becomes U-shaped and the pleurovisceral nerve connectives become crossed in many fully torted gastropods, producing streptoneury.",
+        "Anterior placement of the mantle cavity can permit the head to be withdrawn first into the shell and protected by the foot or operculum.",
+        "Torsion also creates asymmetry and places the anus close to the head and respiratory current, producing the potential fouling problem."
+      ],
+      [
+        "Fouling refers to the risk that faecal and excretory material discharged from the anteriorly placed anus may contaminate the head region or inhalant respiratory current.",
+        "Gastropods reduce this problem in several ways, including separation of inhalant and exhalant currents and asymmetrical loss or displacement of pallial organs.",
+        "Secondary detorsion is a partial or extensive evolutionary reversal of the torted condition in some derived gastropod lineages, especially within Heterobranchia.",
+        "Detorsion can move the mantle cavity and anus away from the anterior position and may be associated with uncrossing of the visceral nerve loop (euthyneury).",
+        "Pila retains the torted gastropod condition; it should not be illustrated or described as a detorted gastropod."
+      ]
+    ],
+    "q5_ta": [
+      "காஸ்ட்ரோபோடுகளில் முறுக்கு (torsion) நிகழ்வையும் அதன் முக்கிய விளைவுகளையும் விளக்குக.",
+      "முறுக்கமடைந்த காஸ்ட்ரோபோடுகளில் 'fouling' என்றால் என்ன? இரண்டாம் நிலை முறுக்கு நீக்கம் (detorsion) என்றால் என்ன?"
+    ],
+    "a5_ta": [
+      [
+        "முறுக்கு என்பது லார்வா வளர்ச்சியின் போது உள்ளுறுப்பு திரள், மாந்தல் மற்றும் ஓடு ஆகியவை தலை-பாதத்துடன் ஒப்பிடும்போது சுமார் 180° சுழலும் நிகழ்வாகும்; இது ஓட்டின் சுருள் உருவாக்கத்திலிருந்து வேறுபட்டது.",
+        "இதன் விளைவாக மாந்தல் குழி, க்டீனிடியம் மற்றும் குதத்துவாரம் பின்புற இடத்திலிருந்து தலைக்கு மேல் அல்லது அருகிலுள்ள முன்புற இடத்துக்கு வருகின்றன.",
+        "செரிமானக் குழாய் U வடிவமாகிறது; முழுமையாக முறுக்கமடைந்த பல காஸ்ட்ரோபோடுகளில் ப்ளூரோ-விசரல் நரம்பு இணைப்புகள் குறுக்கப்பட்டு ஸ்ட்ரெப்டோநியூரி உருவாகிறது.",
+        "மாந்தல் குழி முன்புறம் வருவது தலைப்பகுதியை முதலில் ஓட்டுக்குள் இழுத்து பாதம் அல்லது ஓப்பர்குலம் மூலம் பாதுகாக்க உதவக்கூடும்.",
+        "முறுக்கு அசமச்சீரையும் உருவாக்கி குதத்துவாரத்தை தலை மற்றும் சுவாச நீரோட்டத்திற்கு அருகில் கொண்டுவருவதால் கழிவுக் கலப்பு பிரச்சினைக்கு வாய்ப்பு ஏற்படுகிறது."
+      ],
+      [
+        "முன்புறத்துக்கு வந்த குதத்துவாரம் வழியாக வெளியேறும் மலம் மற்றும் கழிவுகள் தலைப்பகுதி அல்லது உள்ளிழுக்கும் சுவாச நீரோட்டத்தை மாசுபடுத்தும் அபாயமே fouling ஆகும்.",
+        "உள்வரும் மற்றும் வெளியேறும் நீரோட்டங்களைப் பிரித்தல் மற்றும் சில பல்லியல் உறுப்புகளின் அசமச்சீர் இழப்பு அல்லது இடமாற்றம் போன்ற பல முறைகளால் இந்தச் சிக்கல் குறைக்கப்படுகிறது.",
+        "சில உயர்வடைந்த காஸ்ட்ரோபோட் மரபுகளில், குறிப்பாக Heterobranchia-வில், முறுக்க நிலை பரிணாம ரீதியாக ஒரு பகுதி அல்லது அதிக அளவில் மீண்டும் பின்வாங்குவது இரண்டாம் நிலை detorsion ஆகும்.",
+        "Detorsion காரணமாக மாந்தல் குழியும் குதத்துவாரமும் முன்புறத்திலிருந்து விலகலாம்; விசரல் நரம்பு வளையம் மீண்டும் குறுக்கமின்றி அமைவது euthyneury எனப்படும்.",
+        "பைலா முறுக்கமடைந்த காஸ்ட்ரோபோட் அமைப்பையே தக்கவைத்துள்ளது; அதை detorsion ஏற்பட்ட வடிவமாகக் காட்டவோ விவரிக்கவோ கூடாது."
+      ]
+    ]
+  },
+  "u5-pearl": {
+    "id": "u5-pearl",
+    "q_en": "Write an essay on pearl formation.",
+    "q_ta": "முத்து உருவாக்கம்.",
+    "steps_en": [
+      "Irritant.",
+      "Mantle epithelium / pearl sac.",
+      "Nacre = shell lining brick.",
+      "Culture: nucleus + graft.",
+      "Commercial oyster not Pila.",
+      "Years."
+    ],
+    "steps_ta": [
+      "எரிச்சல்.",
+      "மேற்றோல் பை.",
+      "நேக்கர் ஓட்டுச் செங்கல்.",
+      "வளர்ப்பு அணு ஒட்டு.",
+      "பைலா வணிகச் சிப்பி அல்ல.",
+      "ஆண்டுகள்."
+    ],
+    "q2_en": [
+      "What is nacre?",
+      "Name the epithelium that makes a pearl sac."
+    ],
+    "a2_en": [
+      [
+        "Aragonite + organic sheets; mother-of-pearl brick."
+      ],
+      [
+        "Mantle epithelium."
+      ]
+    ],
+    "q2_ta": [
+      "நேக்கர் என்றால்?",
+      "முத்துப் பை மேற்றோல்."
+    ],
+    "a2_ta": [
+      [
+        "அரகோனைட் தாள்கள்."
+      ],
+      [
+        "மேன்டில் மேற்றோல்."
+      ]
+    ],
+    "q5_en": [
+      "Enrichment: Explain natural pearl formation scientifically.",
+      "Enrichment: Differentiate cultured pearl production from the type study of Pila."
+    ],
+    "a5_en": [
+      [
+        "A natural pearl forms without human intervention when mantle epithelial cells become displaced or implanted within connective tissue, often after injury, parasitic invasion or another disturbance.",
+        "The displaced epithelial cells proliferate to form a pearl sac around the affected site or nucleus.",
+        "The pearl-sac epithelium secretes concentric layers of calcium carbonate and organic matrix; in nacreous pearl oysters these layers may form nacre.",
+        "Continued secretion over time produces the pearl, whose shape and internal structure depend on the site, the pearl sac and any material enclosed within it.",
+        "The common 'grain of sand' explanation is therefore an oversimplification: a foreign particle is not required in every natural pearl and the essential biological agent is pearl-sac epithelium."
+      ],
+      [
+        "Pearl culture deliberately initiates pearl-sac formation in suitable pearl oysters or mussels; Pila is an apple snail used for gastropod type-study anatomy, not a standard commercial pearl oyster.",
+        "In bead-cultured marine pearls, a shell-bead nucleus is inserted together with a small graft of donor mantle tissue, commonly into the gonad of the host pearl oyster.",
+        "Epithelial cells from the mantle graft proliferate around the bead to form a pearl sac and then secrete nacre or other shell material around the nucleus.",
+        "Not all cultured pearls contain a bead nucleus: tissue-nucleated freshwater cultured pearls and some non-bead cultured pearls demonstrate that 'bead + graft' is not a universal formula.",
+        "Thus natural pearls arise without deliberate human implantation, cultured pearls are human-initiated biomineralisation, and neither process should be taught as a reproductive or torsion feature of Pila."
+      ]
+    ],
+    "q5_ta": [
+      "விரிவுப்பயிற்சி: இயற்கை முத்து உருவாக்கத்தை அறிவியல் ரீதியாக விளக்குக.",
+      "விரிவுப்பயிற்சி: வளர்ப்பு முத்து உற்பத்தியையும் பைலா வகை ஆய்வையும் வேறுபடுத்துக."
+    ],
+    "a5_ta": [
+      [
+        "மனிதத் தலையீடு இன்றி, காயம், ஒட்டுண்ணி தாக்கம் அல்லது வேறு தூண்டுதலால் மாந்தல் எபிதீலியல் செல்கள் இணைப்புத் திசுவுக்குள் இடம்பெயர்ந்து பதியும்போது இயற்கை முத்து உருவாகலாம்.",
+        "இடம்பெயர்ந்த எபிதீலியல் செல்கள் பெருகி பாதிக்கப்பட்ட பகுதி அல்லது உள்ளிருக்கும் பொருளைச் சுற்றி முத்துப்பையை (pearl sac) உருவாக்குகின்றன.",
+        "முத்துப்பையின் எபிதீலியம் கால்சியம் கார்பனேட் மற்றும் கரிம மேட்ரிக்ஸ் அடுக்குகளைச் சுரக்கிறது; நேக்கர் உருவாக்கும் முத்துச் சிப்பிகளில் இவை முத்துத்தாய் அடுக்குகளாக அமைவலாம்.",
+        "தொடர்ச்சியான சுரப்பு காலப்போக்கில் முத்தை உருவாக்குகிறது; அதன் வடிவமும் உள் அமைப்பும் முத்துப்பையின் இடம், அமைப்பு மற்றும் அதற்குள் உள்ள பொருள் போன்ற காரணிகளால் நிர்ணயிக்கப்படுகின்றன.",
+        "'மண்துகள் புகுந்ததால் மட்டும் முத்து உருவாகும்' என்ற விளக்கம் மிகைப்படுத்தப்பட்ட எளிமைப்படுத்தலாகும்; எல்லா இயற்கை முத்துகளிலும் வெளிப்பொருள் அவசியமில்லை, முத்துப்பை எபிதீலியமே முக்கிய உயிரியல் காரணியாகும்."
+      ],
+      [
+        "முத்துச் சிப்பி அல்லது முத்து மஸ்ஸல் போன்ற ஏற்ற உயிரிகளில் முத்துப்பை உருவாக்கத்தை மனிதர் நோக்கமுடன் தொடங்குவது வளர்ப்பு முத்து உற்பத்தியாகும்; பைலா காஸ்ட்ரோபோட் வகை ஆய்விற்குப் பயன்படும் ஆப்பிள் நத்தை, வழக்கமான வணிக முத்துச் சிப்பி அல்ல.",
+        "மணிக்கரு கொண்ட கடல் வளர்ப்பு முத்துகளில், ஓட்டிலிருந்து செய்யப்பட்ட மணிக்கருவுடன் தான உயிரியின் மாந்தல் திசுத் துண்டும் பொதுவாக பெறுநர் முத்துச் சிப்பியின் இனப்பெருக்கச் சுரப்பிக்குள் பதிக்கப்படுகிறது.",
+        "மாந்தல் திசுத் துண்டிலுள்ள எபிதீலியல் செல்கள் மணிக்கருவைச் சுற்றி பெருகி முத்துப்பையை உருவாக்கி அதன் மேல் நேக்கர் அல்லது பிற ஓட்டுப் பொருளைச் சுரக்கின்றன.",
+        "எல்லா வளர்ப்பு முத்துகளிலும் மணிக்கரு இருக்காது; திசு மட்டும் பதிக்கப்பட்ட நன்னீர் வளர்ப்பு முத்துகள் மற்றும் சில மணிக்கருவற்ற வளர்ப்பு முத்துகள் 'மணிக்கரு + திசுத் துண்டு' என்பது எல்லா முறைகளுக்கும் பொதுவான விதி அல்ல என்பதை காட்டுகின்றன.",
+        "எனவே இயற்கை முத்து மனிதத் தலையீடு இன்றி உருவாகிறது; வளர்ப்பு முத்து மனிதர் தொடங்கும் உயிரியல் கனிமப்படிவமாகும்; இவற்றை பைலாவின் இனப்பெருக்கம் அல்லது முறுக்கு பண்பாகக் கற்பிக்கக் கூடாது."
+      ]
+    ]
+  },
+  "u5-echinodermata": {
+    "id": "u5-echinodermata",
+    "q_en": "Give general characters and classification of Echinodermata up to classes.",
+    "q_ta": "முட்தோலி பொதுப் பண்புகளும் வகைப்பாடும்.",
+    "steps_en": [
+      "Pentaradial adult; bilateral larva.",
+      "Water-vascular path.",
+      "Ossicles.",
+      "Five classes.",
+      "State that deuterostome affinity is supported by developmental and molecular evidence; Echinodermata + Hemichordata form Ambulacraria."
+    ],
+    "steps_ta": [
+      "ஐந்தரை முதிர் இருபக்க லார்வா.",
+      "நீர்-நாளம்.",
+      "எலும்புச்சிறு.",
+      "ஐந்து வகுப்பு.",
+      "Deuterostome affinity developmental மற்றும் molecular ஆதாரங்களால் ஆதரிக்கப்படுகிறது; Echinodermata + Hemichordata = Ambulacraria எனக் குறிப்பிடவும்."
+    ],
+    "q2_en": [
+      "What is unique about the water-vascular system?",
+      "Name five classes."
+    ],
+    "a2_en": [
+      [
+        "Hydraulic tube feet plumbed to a madreporite; no other phylum in this paper walks that way."
+      ],
+      [
+        "Asteroidea, Ophiuroidea, Echinoidea, Holothuroidea, Crinoidea."
+      ]
+    ],
+    "q2_ta": [
+      "நீர்-நாளத் தனிமை.",
+      "ஐந்து வகுப்பு."
+    ],
+    "a2_ta": [
+      [
+        "மேட்ரிபோரைட் குழாய்கால்; இப்பாடத்தில் வேறு தொகுதி இல்லை."
+      ],
+      [
+        "நட்சத்திரம் பாம்பு முள் வெள்ளரி அல்லி."
+      ]
+    ],
+    "q5_en": [
+      "Give the general characters of Phylum Echinodermata.",
+      "Why is the bilateral larva important when describing an adult radial echinoderm?"
+    ],
+    "a5_en": [
+      [
+        "Echinoderms are exclusively marine, triploblastic coelomate deuterostomes.",
+        "Adults usually show secondary pentaradial symmetry, whereas their early larvae are bilaterally symmetrical.",
+        "A mesodermal endoskeleton of calcareous ossicles supports the body and may bear spines and pedicellariae.",
+        "A unique water-vascular system with tube feet functions in locomotion, attachment, feeding and gas exchange.",
+        "A distinct head is absent; the nervous system is organised mainly as a nerve ring and radial nerves, and many echinoderms show strong regenerative ability with predominantly external fertilisation."
+      ],
+      [
+        "The bilateral larva demonstrates that adult pentaradial symmetry is a secondary condition acquired during metamorphosis.",
+        "It helps distinguish echinoderm radial symmetry from the fundamentally different radial body plan of cnidarians.",
+        "Larval and embryological characters support the placement of echinoderms among deuterostomes rather than among radially symmetrical non-bilaterian animals.",
+        "Larval types are class-informative, for example bipinnaria in asteroids, plutei in echinoids/ophiuroids and auricularia in holothuroids.",
+        "Metamorphosis extensively reorganises the bilateral larva into a pentaradial juvenile, so both larval and adult characters are necessary for understanding echinoderm body organisation."
+      ]
+    ],
+    "q5_ta": [
+      "முட்தோலிகள் (Echinodermata) தொகுதியின் பொதுப் பண்புகளை எழுதுக.",
+      "ஆரைச் சமச்சீருடைய முதிர்ந்த முட்தோலியை விளக்கும் போது இருபக்கச் சமச்சீருடைய லார்வாவை குறிப்பிடுவது ஏன் முக்கியம்?"
+    ],
+    "a5_ta": [
+      [
+        "முட்தோலிகள் முழுவதும் கடல்வாழ், மூவடுக்குத் திசுக்களைக் கொண்ட, உண்மையான உடற்குழியுடைய இரண்டாம்வாய் விலங்குகள்.",
+        "முதிர்ந்த விலங்குகள் பொதுவாக இரண்டாம் நிலை ஐந்தாரைச் சமச்சீரைக் காட்டுகின்றன; ஆரம்ப லார்வாக்கள் இருபக்கச் சமச்சீருடையவை.",
+        "மெசோடெர்மிலிருந்து உருவாகும் சுண்ணாம்பு ஆஸிக்கிள்கள் உட்கூட்டாக அமைந்து உடலைத் தாங்குகின்றன; அவற்றுடன் முட்களும் பெடிசல்லேரியாக்களும் காணப்படலாம்.",
+        "தனித்துவமான நீர்-நாள அமைப்பும் குழாய்ப்பாதங்களும் இயக்கம், பற்றுதல், உணவெடுப்பு மற்றும் வாயுப் பரிமாற்றத்தில் செயல்படுகின்றன.",
+        "தெளிவான தலை இல்லை; நரம்பு வளையமும் கதிர் நரம்புகளும் முக்கிய நரம்பு அமைப்பாக உள்ளன; பல முட்தோலிகள் சிறந்த மீளுருவாக்கத் திறனையும் பெரும்பாலும் வெளிப்புறக் கருவுறுதலையும் காட்டுகின்றன."
+      ],
+      [
+        "இருபக்கச் சமச்சீருடைய லார்வா, முதிர்ந்த விலங்கின் ஐந்தாரைச் சமச்சீர் வளர்ச்சியின் போது இரண்டாம் நிலையாக உருவானது என்பதைத் தெளிவுபடுத்துகிறது.",
+        "இதனால் முட்தோலிகளின் ஆரைச் சமச்சீரை குழியுடலிகளின் வேறுபட்ட அடிப்படை ஆரை உடலமைப்புடன் குழப்பாமல் இருக்க முடிகிறது.",
+        "லார்வா மற்றும் கருவளர்ச்சி பண்புகள் முட்தோலிகளை ஆரைச் சமச்சீருடைய பிற விலங்குகளுடன் அல்லாமல் இரண்டாம்வாய் விலங்குகளுடன் இணைக்கின்றன.",
+        "லார்வா வகைகள் வகுப்புகளை அறிய உதவுகின்றன; நட்சத்திரமீன்களில் பிபின்னேரியா, கடல் முள்ளெலிகளில்/பிரிட்டில் நட்சத்திரங்களில் ப்ளூட்டியஸ் வகைகள், கடல்வெள்ளரிகளில் ஆரிக்குலேரியா காணப்படுகின்றன.",
+        "மெட்டாமார்போசிஸின் போது இருபக்க லார்வா பெருமளவில் மறுசீரமைந்து ஐந்தாரை இளவிலங்காக மாறுகிறது; எனவே முட்தோலி உடலமைப்பைப் புரிந்துகொள்ள லார்வா மற்றும் முதிர்ந்த நிலைகள் இரண்டும் அவசியம்."
+      ]
+    ]
+  },
+  "u5-asterias": {
+    "id": "u5-asterias",
+    "q_en": "Give a detailed account of Asterias.",
+    "q_ta": "அஸ்டீரியாஸ் விரிவான கணக்கு.",
+    "steps_en": [
+      "Two faces; madreporite aboral.",
+      "Water path + ampullae.",
+      "Eversible cardiac stomach; caeca in arms.",
+      "Nerve ring; no brain.",
+      "Regeneration."
+    ],
+    "steps_ta": [
+      "இரு முகம் மேல் மேட்ரிபோரைட்.",
+      "நீர் பாதை ஆம்புலா.",
+      "புரளும் இரைப்பை.",
+      "நரம்பு வளையம்.",
+      "மீள உருவாக்கம்."
+    ],
+    "q2_en": [
+      "On which face is the madreporite?",
+      "What does the cardiac stomach do?"
+    ],
+    "a2_en": [
+      [
+        "Aboral."
+      ],
+      [
+        "Everts into prey and starts digestion outside the disc."
+      ]
+    ],
+    "q2_ta": [
+      "மேட்ரிபோரைட் எந்த முகம்?",
+      "கார்டியாக் இரைப்பை பணி."
+    ],
+    "a2_ta": [
+      [
+        "மேல்முகம்."
+      ],
+      [
+        "இரைக்குள் புரண்டு வெளியே செரிக்கும்."
+      ]
+    ],
+    "q5_en": [
+      "Trace the water-vascular pathway in Asterias.",
+      "Compare the aboral and oral surfaces of Asterias."
+    ],
+    "a5_en": [
+      [
+        "Seawater communicates with the water-vascular system through the sieve-like madreporite on the aboral surface.",
+        "The madreporite leads through the stone canal to the ring canal surrounding the mouth.",
+        "From the ring canal, a radial canal runs along the ambulacral region of each arm.",
+        "Short lateral canals, provided with valves, connect each radial canal to the ampulla–tube-foot units.",
+        "Contraction of an ampulla forces fluid into its podium to extend the tube foot, while tube-foot muscles aid retraction; the system is hydraulic and should not be represented as a simple continuous one-way bulk seawater stream."
+      ],
+      [
+        "The aboral surface bears the madreporite, anus, calcareous spines, dermal papulae and numerous pedicellariae.",
+        "The oral surface has the centrally placed mouth.",
+        "An ambulacral groove extends along the oral side of each arm from the mouth towards the tip.",
+        "Rows of tube feet project within the ambulacral grooves and function in locomotion, attachment and feeding.",
+        "A terminal tentacle and photoreceptive eyespot occur near the tip of each arm; oral and aboral landmarks should be kept distinct in diagrams and answers."
+      ]
+    ],
+    "q5_ta": [
+      "அஸ்டீரியாஸில் நீர்-நாள அமைப்பின் பாதையைத் தொடர்ச்சியாக விளக்குக.",
+      "அஸ்டீரியாஸின் மேற்புற (aboral) மற்றும் வாய்ப்புற (oral) மேற்பரப்புகளை ஒப்பிடுக."
+    ],
+    "a5_ta": [
+      [
+        "மேற்புறத்தில் உள்ள சல்லடை போன்ற மேட்ரெபோரைட் வழியாக கடல்நீர் நீர்-நாள அமைப்புடன் தொடர்பு கொள்கிறது.",
+        "மேட்ரெபோரைட்டிலிருந்து கல் கால்வாய் வழியாக வாயைச் சுற்றியுள்ள வளையக் கால்வாய்க்கு தொடர்பு செல்கிறது.",
+        "வளையக் கால்வாயிலிருந்து ஒவ்வொரு கரத்தின் ஆம்புலாக்ரல் பகுதியில் ஒரு கதிர்க் கால்வாய் நீள்கிறது.",
+        "வால்வுகளைக் கொண்ட குறுகிய பக்கக் கால்வாய்கள் ஒவ்வொரு கதிர்க் கால்வாயையும் ஆம்புலா–குழாய்ப்பாத அலகுகளுடன் இணைக்கின்றன.",
+        "ஆம்புலா சுருங்கும்போது திரவம் போடியத்திற்குள் தள்ளப்பட்டு குழாய்ப்பாதம் நீள்கிறது; குழாய்ப்பாதத் தசைகள் அதை மீண்டும் இழுக்க உதவுகின்றன. இது நீரழுத்த அமைப்பு; இடைவிடாத ஒருதிசை கடல்நீர் ஓட்டமாகக் காட்டக் கூடாது."
+      ],
+      [
+        "மேற்புறத்தில் மேட்ரெபோரைட், குதத்துவாரம், சுண்ணாம்பு முட்கள், தோல்சுவாசப் பப்புலாக்கள் மற்றும் பல பெடிசல்லேரியாக்கள் காணப்படுகின்றன.",
+        "வாய்ப்புற மேற்பரப்பின் மையத்தில் வாய் அமைந்துள்ளது.",
+        "ஒவ்வொரு கரத்தின் வாய்ப்புறத்தில் வாயிலிருந்து கர நுனிவரை ஆம்புலாக்ரல் பள்ளம் நீள்கிறது.",
+        "ஆம்புலாக்ரல் பள்ளங்களில் குழாய்ப்பாதங்களின் வரிசைகள் காணப்பட்டு இயக்கம், பற்றுதல் மற்றும் உணவெடுப்பில் ஈடுபடுகின்றன.",
+        "ஒவ்வொரு கர நுனியிலும் இறுதித் தொடு உறுப்பும் ஒளியுணரும் கண்புள்ளியும் காணப்படுகின்றன; வரைபடங்களிலும் விடைகளிலும் வாய்ப்புற மற்றும் மேற்புற அடையாளங்களைத் தெளிவாக வேறுபடுத்த வேண்டும்."
+      ]
+    ]
+  },
+  "u5-echino-larvae": {
+    "id": "u5-echino-larvae",
+    "q_en": "Give an account of larval forms in echinoderms.",
+    "q_ta": "முட்தோலி லார்வா வடிவங்கள்.",
+    "steps_en": [
+      "Bilateral plankton.",
+      "Bipinnaria–brachiolaria.",
+      "Pluteus types.",
+      "Auricularia–doliolaria.",
+      "Not nauplius.",
+      "Secondary radial adult."
+    ],
+    "steps_ta": [
+      "இருபக்க பிளாங்க்டன்.",
+      "பிபினேரியா பிராக்கியோலேரியா.",
+      "ப்ளூட்டியஸ்.",
+      "ஆரிக்குலேரியா.",
+      "நாப்ளியஸ் அல்ல.",
+      "இரண்டாம் ஆரை."
+    ],
+    "q2_en": [
+      "Name the asteroid pair of larvae.",
+      "Pluteus belongs to which classes?"
+    ],
+    "a2_en": [
+      [
+        "Bipinnaria then brachiolaria."
+      ],
+      [
+        "Echinoidea and Ophiuroidea."
+      ]
+    ],
+    "q2_ta": [
+      "நட்சத்திர லார்வாச் சோடி.",
+      "ப்ளூட்டியஸ் வகுப்புகள்."
+    ],
+    "a2_ta": [
+      [
+        "பிபினேரியா பிராக்கியோலேரியா."
+      ],
+      [
+        "முள் தோலி பாம்பு நட்சத்திரம்."
+      ]
+    ],
+    "q5_en": [
+      "Match the major echinoderm larval forms with their classes.",
+      "Why is an asteroid bipinnaria not homologous with a crustacean nauplius?"
+    ],
+    "a5_en": [
+      [
+        "Bipinnaria is a characteristic feeding larva of many Asteroidea (sea stars).",
+        "Brachiolaria is a later attachment-stage larva in many asteroids and develops from a bipinnaria in those life histories.",
+        "Echinopluteus is the pluteus larva of Echinoidea, whereas ophiopluteus is the corresponding pluteus form of Ophiuroidea.",
+        "Auricularia is the characteristic feeding larva of many Holothuroidea and may be followed by a doliolaria stage.",
+        "Crinoids commonly have a doliolaria-type larva; larval series vary among species, so class associations should be stated without implying that every member follows an identical sequence."
+      ],
+      [
+        "Bipinnaria belongs to an echinoderm deuterostome lineage, whereas nauplius belongs to crustacean arthropods within Ecdysozoa.",
+        "Bipinnaria is a bilaterally symmetrical ciliated larva with looping ciliary bands and a complete digestive tract.",
+        "A nauplius is an unsegmented crustacean larva characterised by three functional pairs of appendages and commonly a median naupliar eye.",
+        "Bipinnaria swims and feeds mainly by its ciliary bands, whereas naupliar locomotion is generated chiefly by beating appendages.",
+        "The two larvae are therefore not homologous; their shared planktonic lifestyle is a functional similarity, not evidence of close ancestry."
+      ]
+    ],
+    "q5_ta": [
+      "முக்கிய முட்தோலி லார்வா வடிவங்களை அவற்றின் வகுப்புகளுடன் பொருத்துக.",
+      "நட்சத்திரமீன் பிபின்னேரியா லார்வா ஓடுடலியின் நாப்ளியஸுடன் ஏன் ஒத்துறுப்பு (homologous) அல்ல?"
+    ],
+    "a5_ta": [
+      [
+        "பிபின்னேரியா பல Asteroidea (நட்சத்திரமீன்) சிற்றினங்களில் காணப்படும் உணவெடுக்கும் லார்வாவாகும்.",
+        "பிராக்கியோலேரியா பல நட்சத்திரமீன்களில் பிபின்னேரியாவிலிருந்து உருவாகும் பிந்தைய பற்றுதல் லார்வா நிலையாகும்.",
+        "Echinoidea-வில் ப்ளூட்டியஸ் லார்வா எக்கினோப்ளூட்டியஸ் எனவும் Ophiuroidea-வில் ஒபியோப்ளூட்டியஸ் எனவும் அழைக்கப்படுகிறது.",
+        "ஆரிக்குலேரியா பல Holothuroidea-வின் உணவெடுக்கும் லார்வாவாகும்; அதைத் தொடர்ந்து டோலியோலேரியா நிலை வரலாம்.",
+        "Crinoidea-வில் பொதுவாக டோலியோலேரியா வகை லார்வா காணப்படுகிறது; சிற்றினங்களுக்கு இடையில் வளர்ச்சி வரிசை மாறுபடுவதால் எல்லா உறுப்பினர்களுக்கும் ஒரே வரிசை என பொதுப்படுத்தக் கூடாது."
+      ],
+      [
+        "பிபின்னேரியா இரண்டாம்வாய் மரபைச் சேர்ந்த முட்தோலி லார்வா; நாப்ளியஸ் எக்டிசோசோவா மரபில் உள்ள ஓடுடலி கணுக்காலியின் லார்வா.",
+        "பிபின்னேரியா இருபக்கச் சமச்சீருடைய, வளையமிட்டு செல்லும் குறுஇழைப் பட்டைகளும் முழுமையான செரிமானக் குழாயும் கொண்ட லார்வாவாகும்.",
+        "நாப்ளியஸ் கண்டங்களற்ற ஓடுடலி லார்வா; மூன்று செயல்படும் இணைப்புறுப்பு இணைகளும் பொதுவாக ஒரு நடுவண் நாப்ளியஸ் கணும் அதன் அடையாளப் பண்புகளாகும்.",
+        "பிபின்னேரியா முக்கியமாக குறுஇழைப் பட்டைகளால் நீந்தி உணவெடுக்கிறது; நாப்ளியஸில் இணைப்புறுப்புகளின் துடிப்பு நீந்துதலில் முதன்மை பெறுகிறது.",
+        "எனவே இரு லார்வாக்களும் ஒத்துறுப்புகள் அல்ல; இரண்டும் பிளாங்க்டனில் வாழ்வது செயல்பாட்டு ஒற்றுமை மட்டுமே, நெருங்கிய மூதாதை உறவின் ஆதாரம் அல்ல."
+      ]
+    ]
+  },
+  "u5-echino-affinities": {
+    "id": "u5-echino-affinities",
+    "q_en": "Write an essay on affinities of echinoderms.",
+    "q_ta": "முட்தோலி உறவுகள்.",
+    "steps_en": [
+      "Deuterostome characters.",
+      "Not Chordata extras.",
+      "Hemichordate neighbour.",
+      "Not Cnidaria.",
+      "Larva decides."
+    ],
+    "steps_ta": [
+      "டியூட்டரோஸ்டோம்.",
+      "நாண்விலங்கு கூடுதல் இல்லை.",
+      "ஹெமிக்கார்டேட்டா அண்டை.",
+      "குழியுடலி அல்ல.",
+      "லார்வா முடிவு."
+    ],
+    "q2_en": [
+      "Name the developmental club of echinoderms.",
+      "One character that is not chordate."
+    ],
+    "a2_en": [
+      [
+        "Deuterostomes."
+      ],
+      [
+        "No notochord / no dorsal hollow nerve cord as the adult plan."
+      ]
+    ],
+    "q2_ta": [
+      "முட்தோலி வளர்ச்சிக் கழகம்.",
+      "நாண்விலங்கு அல்லாத ஒரு பண்பு."
+    ],
+    "a2_ta": [
+      [
+        "டியூட்டரோஸ்டோம்."
+      ],
+      [
+        "நாண் / முதுகு நரம்புக் குழாய் இல்லை."
+      ]
+    ],
+    "q5_en": [
+      "Enrichment: Explain the phylogenetic affinities of Echinodermata.",
+      "Enrichment: Explain why adult radial symmetry does not make echinoderms close relatives of Cnidaria."
+    ],
+    "a5_en": [
+      [
+        "Echinoderms are deuterostomes, sharing the deuterostome developmental ground plan with hemichordates and chordates.",
+        "Modern molecular and morphological evidence places Echinodermata together with Hemichordata in the clade Ambulacraria.",
+        "Ambulacrarians share important developmental features, including coelomic organisation and similarities between dipleurula-type echinoderm larvae and the tornaria larva of enteropneust hemichordates.",
+        "Ambulacraria is related to Chordata within Deuterostomia, but echinoderms lack the defining chordate synapomorphies such as a notochord and dorsal hollow nerve cord.",
+        "The bilateral larval organisation and deuterostome development are therefore more informative for deep affinity than the secondary pentaradial symmetry of the adult."
+      ],
+      [
+        "Adult echinoderm pentaradial symmetry is a secondary condition developed from a bilaterally symmetrical larva, whereas cnidarians have a fundamentally different non-bilaterian radial body plan.",
+        "Echinoderms are triploblastic coelomates; cnidarians are diploblastic animals with mesoglea and no true coelomic body cavity.",
+        "Echinoderms are deuterostomes with bilateral larval stages, whereas cnidarians possess a different developmental organisation and typically a planula larva.",
+        "Echinoderms have a calcareous mesodermal endoskeleton and a water-vascular system; cnidarians possess a gastrovascular cavity and the diagnostic stinging cells called cnidocytes.",
+        "Thus superficial adult radial symmetry is not a reliable indicator of close relationship between the two phyla."
+      ]
+    ],
+    "q5_ta": [
+      "விரிவுப்பயிற்சி: முட்தோலிகளின் இனவரலாற்று உறவுகளை விளக்குக.",
+      "விரிவுப்பயிற்சி: முதிர்ந்த உடலில் ஆரைச் சமச்சீர் இருப்பதால் முட்தோலிகள் குழியுடலிகளின் நெருங்கிய உறவினர் ஆகிவிடாதது ஏன்?"
+    ],
+    "a5_ta": [
+      [
+        "முட்தோலிகள் இரண்டாம்வாய் விலங்குகள்; ஹெமிக்கார்டேட்டுகள் மற்றும் கார்டேட்டுகளுடன் இரண்டாம்வாய் வளர்ச்சியின் அடிப்படை அமைப்பைப் பகிர்கின்றன.",
+        "நவீன மூலக்கூறு மற்றும் உருவவியல் ஆதாரங்கள் Echinodermata மற்றும் Hemichordata ஆகியவற்றை Ambulacraria என்ற ஒரே கிளேடில் அமைக்கின்றன.",
+        "உடற்குழி அமைப்பு மற்றும் முட்தோலிகளின் டிப்ளூருலா வகை லார்வாக்களுக்கும் என்டரோப்னியூஸ்ட் ஹெமிக்கார்டேட்டுகளின் டோர்னேரியா லார்வாவுக்கும் உள்ள ஒற்றுமைகள் போன்ற வளர்ச்சி பண்புகள் Ambulacraria உறவை ஆதரிக்கின்றன.",
+        "Ambulacraria, Deuterostomia-வில் Chordata-வுடன் உறவுடையது; ஆனால் முட்தோலிகளில் நோட்டோகார்டு மற்றும் முதுகுப்புற வெற்றிட நரம்புக்கயிறு போன்ற கார்டேட் தனிப்பண்புகள் இல்லை.",
+        "எனவே ஆழமான இனவரலாற்று உறவை விளக்க இருபக்க லார்வா அமைப்பும் இரண்டாம்வாய் வளர்ச்சியும், முதிர்ந்த உடலின் இரண்டாம் நிலை ஐந்தாரைச் சமச்சீரைவிட அதிகத் தகவல் தருகின்றன."
+      ],
+      [
+        "முட்தோலிகளின் முதிர்ந்த ஐந்தாரைச் சமச்சீர், இருபக்கச் சமச்சீருடைய லார்வாவிலிருந்து இரண்டாம் நிலையாக உருவாகிறது; குழியுடலிகளின் ஆரை உடலமைப்பு முற்றிலும் வேறுபட்ட அடிப்படை அமைப்பாகும்.",
+        "முட்தோலிகள் மூவடுக்குத் திசுக்களைக் கொண்ட உண்மையான உடற்குழி விலங்குகள்; குழியுடலிகள் இரட்டையடுக்குத் திசுக்களைக் கொண்டவை மற்றும் உண்மையான உடற்குழி இல்லை.",
+        "முட்தோலிகள் இரண்டாம்வாய் விலங்குகளாகவும் இருபக்க லார்வா நிலைகளைக் கொண்டவையாகவும் உள்ளன; குழியுடலிகளின் வளர்ச்சி அமைப்பு வேறுபட்டது மற்றும் பொதுவாக பிளானுலா லார்வா காணப்படுகிறது.",
+        "முட்தோலிகளில் சுண்ணாம்பு உட்கூடும் நீர்-நாள அமைப்பும் உள்ளன; குழியுடலிகளில் காஸ்ட்ரோவாஸ்குலர் குழியும் தனிச்சிறப்பான நிடோசைட்டுகளும் காணப்படுகின்றன.",
+        "ஆகவே முதிர்ந்த உடலின் மேலோட்ட ஆரைச் சமச்சீர் மட்டும் இந்த இரு தொகுதிகளும் நெருங்கிய உறவினர் என நிரூபிக்காது."
+      ]
+    ]
+  },
+  "u5-fossils": {
+    "id": "u5-fossils",
+    "q_en": "Write an essay on invertebrate fossils of teaching importance.",
+    "q_ta": "பாட முக்கியத்துவ முதுகுநாணற்ற புதைபடிவங்கள்.",
+    "steps_en": [
+      "Hard-part bias.",
+      "Index logic.",
+      "Trilobite arthropod.",
+      "Ammonite cephalopod ≠ gastropod.",
+      "Crinoid echinoderm.",
+      "Living types in the dish are not fossils."
+    ],
+    "steps_ta": [
+      "கடின உறுப்புச் சார்பு.",
+      "குறியீட்டு தர்க்கம்.",
+      "ட்ரைலோபைட் கணுக்காலி.",
+      "அமோனைட் தலைக்காலி.",
+      "கிரினாய்ட் முட்தோலி.",
+      "பாத்திர உயிரி புதைபடிவம் அல்ல."
+    ],
+    "q2_en": [
+      "Give the index-fossil rule in brief.",
+      "Ammonites belong to which class?"
+    ],
+    "a2_en": [
+      [
+        "Short range + wide map + easy ID."
+      ],
+      [
+        "Cephalopoda (Mollusca), not Gastropoda."
+      ]
+    ],
+    "q2_ta": [
+      "குறியீட்டு விதி.",
+      "அமோனைட் வகுப்பு."
+    ],
+    "a2_ta": [
+      [
+        "குறுகிய காலம் பரந்த வரைபடம் எளிய இனங்காணல்."
+      ],
+      [
+        "தலைக்காலி; வயிற்றுக்காலி அல்ல."
+      ]
+    ],
+    "q5_en": [
+      "Enrichment: Write zoological notes on trilobites, ammonites and crinoid fossils.",
+      "Enrichment: Why are soft-bodied protozoans poorly represented as fossils, and what important exceptions occur?"
+    ],
+    "a5_en": [
+      [
+        "Trilobites are extinct marine arthropods with a calcified, segmented exoskeleton; their rapid evolutionary turnover and wide distribution make many species useful for Palaeozoic biostratigraphy.",
+        "Ammonites are extinct cephalopod molluscs with planispirally coiled, chambered shells and diagnostic suture patterns; many ammonite lineages are important Mesozoic index fossils.",
+        "Crinoids are echinoderms; their calcareous ossicles, particularly stem columnals and calyx plates, commonly fossilise and record ancient marine communities.",
+        "These groups illustrate preservation bias because mineralised hard parts survive burial far more readily than most soft tissues.",
+        "Index-fossil value depends on rapid evolution, wide distribution, abundance and a restricted time range; not every trilobite, ammonite or crinoid species is equally useful as an index fossil."
+      ],
+      [
+        "Naked protozoan cells consist mainly of soft cytoplasm and membranes that decay rapidly after death, so they have low preservation potential under ordinary conditions.",
+        "Absence of mineralised hard parts makes many soft-bodied unicellular forms especially vulnerable to taphonomic loss.",
+        "Important exceptions are abundant: foraminiferans produce calcareous tests and radiolarians produce siliceous skeletons that can fossilise extremely well.",
+        "Such microfossils are widely used in biostratigraphy, palaeoenvironmental reconstruction and correlation of sedimentary sequences.",
+        "Therefore poor preservation of soft-bodied forms is a taphonomic bias and must not be interpreted as proof that unicellular organisms were rare in ancient ecosystems."
+      ]
+    ],
+    "q5_ta": [
+      "விரிவுப்பயிற்சி: ட்ரைலோபைட்கள், அம்மோனைட்கள் மற்றும் கிரினாய்ட் புதைபடிவங்கள் பற்றி விலங்கியல் குறிப்புகள் எழுதுக.",
+      "விரிவுப்பயிற்சி: மென்மையான உடலுடைய புரோட்டோசோவா புதைபடிவங்களில் ஏன் குறைவாகக் காணப்படுகின்றன? முக்கிய விதிவிலக்குகள் யாவை?"
+    ],
+    "a5_ta": [
+      [
+        "ட்ரைலோபைட்கள் சுண்ணாம்பு கலந்த கண்டமுடைய புறஎலும்புக்கூடுடன் வாழ்ந்த, தற்போது அழிந்த கடல்வாழ் கணுக்காலிகள்; வேகமான பரிணாம மாற்றமும் பரந்த பரவலும் காரணமாக பல சிற்றினங்கள் பாலியோசோயிக் கால உயிரடுக்கியல் ஆய்வில் பயன்படுகின்றன.",
+        "அம்மோனைட்கள் தட்டையான சுருள் அமைப்புடைய அறைகளைக் கொண்ட ஓடும் அடையாளத் தையல் கோடுகளும் உள்ள அழிந்த தலைக்காலி மெல்லுடலிகள்; பல அம்மோனைட் மரபுகள் மெசோசோயிக் காலத்தின் முக்கிய குறியீட்டுப் புதைபடிவங்களாகும்.",
+        "கிரினாய்ட்கள் முட்தோலிகள்; அவற்றின் சுண்ணாம்பு ஆஸிக்கிள்கள், குறிப்பாக தண்டு வளையத் துண்டுகள் மற்றும் கலிக்ஸ் தகடுகள், பொதுவாகப் புதைபடிவமடைந்து பழைய கடல் சமூகங்களைப் பற்றிய தகவலை வழங்குகின்றன.",
+        "கனிமமடைந்த கடினப் பகுதிகள் பெரும்பாலான மென்மையான திசுக்களைவிட புதையுண்ட பிறகும் எளிதாகத் தப்பிப்பதால் இக்குழுக்கள் புதைபடிவு பாதுகாப்புச் சார்பை விளக்குகின்றன.",
+        "குறியீட்டுப் புதைபடிவ மதிப்பு வேகமான பரிணாமம், பரந்த பரவல், அதிகக் கிடைப்பு மற்றும் குறுகிய கால வரம்பைப் பொறுத்தது; ஒவ்வொரு ட்ரைலோபைட், அம்மோனைட் அல்லது கிரினாய்ட் சிற்றினமும் சமமாக நல்ல குறியீட்டுப் புதைபடிவம் அல்ல."
+      ],
+      [
+        "ஓடு இல்லாத புரோட்டோசோவா செல்கள் பெரும்பாலும் மென்மையான சைட்டோபிளாஸம் மற்றும் சவ்வுகளால் ஆனதால் இறந்த பின் விரைவாகச் சிதைந்து சாதாரண சூழலில் புதைபடிவமாகப் பாதுகாக்கப்படுவது குறைவு.",
+        "கனிமமடைந்த கடினப் பகுதிகள் இல்லாதது பல மென்மையான ஒருசெல் வடிவங்களின் புதைபடிவு வாய்ப்பை மேலும் குறைக்கிறது.",
+        "ஆனால் முக்கிய விதிவிலக்குகள் ஏராளம்: ஃபோராமினிஃபெராக்கள் சுண்ணாம்பு டெஸ்ட்களையும் ரேடியோலேரியன்கள் சிலிகா எலும்பமைப்பையும் உருவாக்குவதால் அவை மிகவும் நன்றாகப் புதைபடிவமடையலாம்.",
+        "இத்தகைய நுண்புதைபடிவங்கள் உயிரடுக்கியல், பழைய சூழல் மீள்கட்டமைப்பு மற்றும் படிவப் பாறை அடுக்குகளை ஒப்பிடுதல் ஆகியவற்றில் பரவலாகப் பயன்படுத்தப்படுகின்றன.",
+        "எனவே மென்மையான வடிவங்கள் குறைவாகப் பாதுகாக்கப்படுவது புதைபடிவு உருவாக்கச் சார்பைக் காட்டுகிறது; பழைய சூழல்களில் ஒருசெல் உயிரிகள் அரிதாக இருந்தன என்பதற்கான ஆதாரம் அல்ல."
+      ]
+    ]
+  },
+  "u5-foot": {
+    "id": "u5-foot",
+    "q_en": "Discuss, with reference to Pila, Unio and a cephalopod, the structural modifications of the molluscan foot and relate each modification to its mode of life.",
+    "q_ta": "பைலா, யூனியோ மற்றும் ஒரு தலைக்காலியைக் குறிப்பிட்டு, மெல்லுடலிப் பாதத்தின் அமைப்பு மாற்றங்களை விவாதித்து ஒவ்வொன்றையும் அதன் வாழ்முறையுடன் தொடர்புபடுத்துக.",
+    "steps_en": [
+      "State the foot as one ventral muscular organ, with pedal muscles and a pedal ganglion.",
+      "Gastropod (Pila): broad ciliated creeping sole, pedal wave, operculum.",
+      "Bivalve (Unio): wedge-shaped digging foot; byssus in sedentary forms.",
+      "Cephalopod: foot re-formed into arms/tentacles and the funnel for jet propulsion.",
+      "Conclude that homologous pedal structures have diverged into class-specific functional specialisations; do not imply a linear ladder of living classes."
+    ],
+    "steps_ta": [
+      "பாதத்தை ஒரே வயிற்றுப்புற தசை உறுப்பாக, பாத தசைகள் மற்றும் பாத நரம்புக் கணுவுடன் கூறவும்.",
+      "காஸ்ட்ரோபோட் (பைலா): அகன்ற குறுஇழை ஊர்வுத் தளம், பாத அலை, ஓப்பர்குலம்.",
+      "பைவால்வ் (யூனியோ): ஆப்பு வடிவ தோண்டும் பாதம்; நிலைபேறு வடிவங்களில் பைசஸ்.",
+      "தலைக்காலி: கரங்கள்/தொடுஉறுப்புகள் மற்றும் ஜெட் இயக்கத்திற்கான புனலாக மறுவடிவமைக்கப்பட்ட பாதம்.",
+      "ஒப்புருவான pedal அமைப்புகள் class-க்கு உரிய functional specialisation-களாக மாறியுள்ளன என்று முடிக்கவும்; வாழும் class-களை நேர்கோட்டு ladder ஆகக் காட்ட வேண்டாம்."
+    ],
+    "q2_en": [
+      "Define the byssus and state which molluscan class typically possesses it.",
+      "Name the foot-derived structure that cephalopods use for jet propulsion."
+    ],
+    "a2_en": [
+      [
+        "Proteinaceous threads secreted by a gland at the base of the foot; typical of sedentary bivalves such as mussels."
+      ],
+      [
+        "The funnel (siphon), through which water is expelled from the mantle cavity."
+      ]
+    ],
+    "q2_ta": [
+      "பைசஸ் என்றால் என்ன, எந்த வகுப்பில் பொதுவாக காணப்படுகிறது?",
+      "தலைக்காலிகள் ஜெட் இயக்கத்திற்குப் பயன்படுத்தும் பாத வழித்தோன்றலைப் பெயரிடுக."
+    ],
+    "a2_ta": [
+      [
+        "பாதத்தின் அடிப்பகுதியில் உள்ள சுரப்பியிலிருந்து சுரக்கப்படும் புரத இழைகள்; மஸல் போன்ற நிலைபேறு பைவால்வுகளில் பொதுவானது."
+      ],
+      [
+        "புனல் (சைஃபான்); மேண்டில் குழியிலிருந்து நீர் இதன் வழியாக வெளியேற்றப்படுகிறது."
+      ]
+    ],
+    "q5_en": [
+      "Compare the foot of a gastropod and a bivalve.",
+      "Explain why the cephalopod funnel is considered a modified part of the molluscan foot."
+    ],
+    "a5_en": [
+      [
+        "Both structures are modifications of the homologous muscular ventral foot of the basic molluscan body plan.",
+        "In a gastropod the foot is usually broad and flat and functions as a creeping sole; locomotion is produced by muscular pedal waves and is often aided by mucus.",
+        "In many shelled gastropods, including Pila, the operculum is attached to the posterior dorsal region of the foot and closes the shell aperture when the animal retracts.",
+        "In a bivalve the foot is commonly laterally compressed and wedge- or hatchet-shaped; muscular action and haemolymph pressure extend it into the substratum for burrowing.",
+        "Some bivalves possess a byssus gland associated with the foot and secrete byssal threads for attachment, showing further modification of the pedal region."
+      ],
+      [
+        "The class name Cephalopoda reflects extensive reorganisation of the ancestral molluscan foot around the head.",
+        "The anterior part of the foot contributes to the circumoral arms or tentacles, while another portion is modified into the muscular funnel or hyponome.",
+        "Mantle contraction raises pressure in the mantle cavity and water is expelled through the funnel, producing jet propulsion.",
+        "The funnel can be directed to steer the animal and also conducts the excurrent respiratory stream together with wastes or ink when released.",
+        "Thus its position near the head does not make it a mantle siphon: developmental and comparative morphology identify the funnel as a specialised derivative of the molluscan foot."
+      ]
+    ],
+    "q5_ta": [
+      "காஸ்ட்ரோபோடு மற்றும் இரட்டை ஓட்டுடலியின் பாதங்களை ஒப்பிடுக.",
+      "தலைக்காலியின் புனல் மெல்லுடலி பாதத்தின் மாற்றமடைந்த பகுதி என ஏன் கருதப்படுகிறது என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "இரண்டுமே அடிப்படை மெல்லுடலி உடலமைப்பில் உள்ள ஒரே பரிணாமத் தோற்றமுடைய தசைமிக்க வயிற்றுப்புற பாதத்தின் மாற்றங்களாகும்.",
+        "காஸ்ட்ரோபோடுகளில் பாதம் பொதுவாக அகன்ற தட்டையான ஊர்வுத் தளமாக இருந்து தசைப் பாத அலைகளால் நகர்கிறது; சளி இயக்கத்தை எளிதாக்குகிறது.",
+        "பைலா உள்ளிட்ட பல ஓடுடைய காஸ்ட்ரோபோடுகளில் ஓப்பர்குலம் பாதத்தின் பின்முதுகுப் பகுதியில் பற்றியிருந்து உடல் உள்ளிழுக்கும் போது ஓட்டுத் திறப்பை மூடுகிறது.",
+        "இரட்டை ஓட்டுடலிகளில் பாதம் பொதுவாக பக்கவாட்டில் தட்டையான ஆப்பு அல்லது கோடரி வடிவமுடையது; தசைச் செயலும் ஹீமோலிம்ப் அழுத்தமும் அதை படிவத்துக்குள் நீட்டித்து தோண்ட உதவுகின்றன.",
+        "சில இரட்டை ஓட்டுடலிகளில் பாதத்துடன் தொடர்புடைய பைசஸ் சுரப்பி பற்றுதலுக்கான பைசஸ் நூல்களை உருவாக்குகிறது; இது பாதப்பகுதியின் மேலும் ஒரு சிறப்பாக்கமாகும்."
+      ],
+      [
+        "Cephalopoda என்ற வகுப்புப் பெயரே மூதாதை மெல்லுடலி பாதம் தலைப்பகுதியைச் சுற்றி பெரிதும் மறுசீரமைந்ததைக் குறிக்கிறது.",
+        "பாதத்தின் முன்பகுதி வாயைச் சுற்றியுள்ள கரங்கள் அல்லது தொடுகொம்புகளாகவும் மற்றொரு பகுதி தசைமிக்க புனல் அல்லது ஹைப்போனோமாகவும் மாறியுள்ளது.",
+        "மாந்தல் சுருங்கும்போது மாந்தல் குழியின் அழுத்தம் உயர்ந்து புனல் வழியாக நீர் வேகமாக வெளியேறுவதால் ஜெட் இயக்கம் உருவாகிறது.",
+        "புனலைத் திசைமாற்றி விலங்கு நகரும் திசையை மாற்ற முடியும்; வெளியேறும் சுவாச நீர், கழிவுகள் மற்றும் வெளியிடப்படும் போது மை ஆகியவையும் அதே வெளியேற்றப் பாதையைப் பயன்படுத்துகின்றன.",
+        "எனவே தலைக்கு அருகில் இருப்பதால் அது மாந்தல் சைஃபன் ஆகிவிடாது; வளர்ச்சி மற்றும் ஒப்பீட்டு உடற்கூறு அதை மெல்லுடலி பாதத்தின் சிறப்பான மாற்றமாகக் காட்டுகின்றன."
+      ]
+    ]
+  },
+  "u5-wvs": {
+    "id": "u5-wvs",
+    "q_en": "With a labelled diagram, describe the water-vascular system of Asterias and explain how it operates the tube feet during locomotion and feeding.",
+    "q_ta": "குறியிடப்பட்ட வரைபடத்துடன் ஆஸ்டீரியாஸின் நீர்க்குழல் தொகுதியை விவரித்து, இயக்கம் மற்றும் உணவூட்டலின்போது அது குழாய்ப்பாதங்களை எவ்வாறு இயக்குகிறது எனவும் விளக்குக.",
+    "steps_en": [
+      "Define the water-vascular system as a coelom-derived hydraulic canal network unique to echinoderms.",
+      "Trace the pathway: madreporite → stone canal → ring canal → radial canals → lateral canals → ampulla → tube foot.",
+      "Explain the ampulla/tube-foot piston mechanism (extension by ampullar contraction, retraction by tube-foot muscle).",
+      "Relate to locomotion: coordinated waves of extension–attachment–contraction–release along the ambulacral groove.",
+      "Relate to feeding: sustained tube-foot traction opening bivalve prey for the everted cardiac stomach."
+    ],
+    "steps_ta": [
+      "நீர்க்குழல் தொகுதியை உடற்குழி-வழித்தோன்றல் நீரழுத்தக் கால்வாய் வலைப்பின்னலாக வரையறு.",
+      "பாதையை விவரி: மேட்ரெபோரைட் → கல் கால்வாய் → வளையக் கால்வாய் → கதிர்க் கால்வாய்கள் → பக்கக் கால்வாய்கள் → ஆம்புலா → குழாய்ப்பாதம்.",
+      "ஆம்புலா/குழாய்ப்பாத பிஸ்டன் இயக்கத்தை விளக்கு (ஆம்புலா சுருக்கத்தால் நீட்சி, குழாய்ப்பாத தசையால் சுருக்கம்).",
+      "இயக்கத்துடன் தொடர்புபடுத்து: ஆம்புலாக்ரல் பள்ளம் வழியே நீட்சி–பற்றுதல்–சுருக்கம்–விடுதலை அலைகள்.",
+      "உணவூட்டலுடன் தொடர்புபடுத்து: வெளிப்புரண்ட கார்டியாக் இரைப்பைக்காக பைவால்வ் இரையைத் திறக்கும் தொடர்ச்சியான குழாய்ப்பாத இழுவிசை."
+    ],
+    "q2_en": [
+      "Name the external sieve plate that communicates with the water-vascular system.",
+      "What is the function of the ampulla?"
+    ],
+    "a2_en": [
+      [
+        "The madreporite; it connects internally with the stone canal and contributes to fluid exchange/volume regulation."
+      ],
+      [
+        "Its contraction forces fluid into the tube foot, extending it hydraulically."
+      ]
+    ],
+    "q2_ta": [
+      "Water-vascular system வெளிச்சூழலுடன் தொடர்பு கொள்ளும் சல்லடைத் தட்டைப் பெயரிடுக.",
+      "ஆம்புலாவின் பணி என்ன?"
+    ],
+    "a2_ta": [
+      [
+        "Madreporite; இது உள்ளே stone canal-உடன் இணைந்து fluid exchange/volume regulation-க்கு பங்களிக்கிறது."
+      ],
+      [
+        "அதன் சுருக்கம் நீரை குழாய்ப்பாதத்திற்குள் தள்ளி நீரழுத்த முறையில் நீட்டுகிறது."
+      ]
+    ],
+    "q5_en": [
+      "Trace the anatomical canal connection from the madreporite to a tube-foot unit.",
+      "Explain how tube feet assist Asterias in opening bivalve prey."
+    ],
+    "a5_en": [
+      [
+        "The aboral madreporite is a porous plate that communicates with the water-vascular system and helps regulate its fluid.",
+        "A stone canal connects the madreporite to the circumoral ring canal.",
+        "Five radial canals arise from the ring canal and extend along the ambulacral region of the arms.",
+        "Paired lateral canals with valves connect each radial canal to individual ampulla–tube-foot units.",
+        "Ampullary contraction moves fluid into the podium to extend the tube foot; the pathway is an anatomical hydraulic connection, not a claim of continuous one-way bulk seawater flow through every tube foot."
+      ],
+      [
+        "Many tube feet attach firmly to the two valves of a bivalve prey item.",
+        "Coordinated hydraulic extension and muscular tension by numerous tube feet produce a sustained pulling force rather than a single violent opening action.",
+        "When the adductor muscles of the bivalve fatigue, even a small gap between the valves can be sufficient for feeding.",
+        "Asterias everts its cardiac stomach through the mouth and inserts it into the gap.",
+        "Digestive enzymes act on the prey outside the sea star's body and the liquefied tissues are taken into the stomach; tube feet therefore assist prey opening but do not crush the shell."
+      ]
+    ],
+    "q5_ta": [
+      "மேட்ரெபோரைட்டிலிருந்து ஒரு குழாய்ப்பாத அலகு வரையிலான நீர்-நாள கால்வாய் இணைப்பைத் தொடர்ச்சியாக விளக்குக.",
+      "அஸ்டீரியாஸ் இரட்டை ஓட்டுடைய இரையைத் திறக்க குழாய்ப்பாதங்கள் எவ்வாறு உதவுகின்றன என்பதை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "மேற்புற மேட்ரெபோரைட் பல நுண்துளைகள் கொண்ட தகடாக இருந்து நீர்-நாள அமைப்புடன் தொடர்பு கொண்டு அதன் திரவ நிலையை ஒழுங்குபடுத்த உதவுகிறது.",
+        "கல் கால்வாய் மேட்ரெபோரைட்டை வாயைச் சுற்றிய வளையக் கால்வாயுடன் இணைக்கிறது.",
+        "வளையக் கால்வாயிலிருந்து ஐந்து கதிர்க் கால்வாய்கள் தோன்றி ஒவ்வொரு கரத்தின் ஆம்புலாக்ரல் பகுதியிலும் நீள்கின்றன.",
+        "வால்வுகளைக் கொண்ட இணை பக்கக் கால்வாய்கள் ஒவ்வொரு கதிர்க் கால்வாயையும் தனித்தனி ஆம்புலா–குழாய்ப்பாத அலகுகளுடன் இணைக்கின்றன.",
+        "ஆம்புலா சுருக்கம் திரவத்தை போடியத்திற்குள் தள்ளி குழாய்ப்பாதத்தை நீட்டுகிறது; இது உடற்கூறியல் நீரழுத்த இணைப்பு ஆகும், ஒவ்வொரு குழாய்ப்பாதத்திலும் கடல்நீர் இடைவிடாமல் ஒருதிசையில் பாய்கிறது என்ற பொருள் அல்ல."
+      ],
+      [
+        "பல குழாய்ப்பாதங்கள் இரட்டை ஓட்டுடைய இரையின் இரண்டு ஓட்டுத் தகடுகளிலும் உறுதியாகப் பற்றுகின்றன.",
+        "பல குழாய்ப்பாதங்களின் ஒருங்கிணைந்த நீரழுத்த நீட்டிப்பும் தசை இழுவிசையும் ஒரே திடீர் விசைக்கு பதிலாக நீடித்த இழுப்புவிசையை உருவாக்குகின்றன.",
+        "இரையின் அடக்டர் தசைகள் சோர்ந்தபோது ஓட்டுகளுக்கிடையே உருவாகும் சிறிய இடைவெளியே உணவெடுப்பிற்கு போதுமானதாக இருக்கலாம்.",
+        "அஸ்டீரியாஸ் தனது கார்டியாக் இரைப்பையை வாய் வழியாக வெளிப்புரட்டி அந்த இடைவெளிக்குள் செலுத்துகிறது.",
+        "செரிமான நொதிகள் உடலுக்கு வெளியே இரைத் திசுக்களில் செயல்பட்டு அவற்றை திரவமாக்குகின்றன; பின்னர் அவை இரைப்பைக்குள் எடுத்துக்கொள்ளப்படுகின்றன. எனவே குழாய்ப்பாதங்கள் ஓட்டை நசுக்காமல் திறப்பதற்கு உதவுகின்றன."
+      ]
+    ]
+  },
+  "u5-cephalopods": {
+    "id": "u5-cephalopods",
+    "q_en": "Justify the statement 'Cephalopods are advanced molluscs', discussing nervous, sensory, circulatory and locomotory features, and comment on their economic importance.",
+    "q_ta": "'தலைக்காலிகள் மேம்பட்ட மொல்லஸ்க்குகள்' என்ற கூற்றை நியாயப்படுத்தி, நரம்பு, உணர், சுற்றோட்டம் மற்றும் இயக்கப் பண்புகளை விவாதித்து, அவற்றின் பொருளாதார முக்கியத்துவத்தையும் குறிப்பிடுக.",
+    "steps_en": [
+      "State the claim: advancement judged by a specific set of derived features, not general superiority.",
+      "Nervous system: cephalisation, single circumoesophageal brain in a cartilaginous cranium, giant axons.",
+      "Sense organs: camera-type eye with lens/iris/retina; statocysts for balance.",
+      "Circulation: closed system; in coleoids, two branchial hearts drive blood through the gills and a systemic heart supplies the body, unlike the open haemocoel of most molluscs.",
+      "Locomotion: foot-derived arms and funnel producing jet propulsion.",
+      "Add economic importance: major fisheries, food and export value, cuttlebone trade."
+    ],
+    "steps_ta": [
+      "கூற்றை கூறு: மேம்பாடு என்பது பொதுவான மேலான்மை அல்ல, குறிப்பிட்ட வழித்தோன்றல் பண்புகளின் தொகுப்பால் தீர்மானிக்கப்படுகிறது.",
+      "நரம்பு மண்டலம்: தலைமை வளர்ச்சி, குருத்தெலும்பு மண்டையோட்டில் ஒரே வாய்ச்சுற்று மூளை, பெரிய அச்சுத்திசுக்கள்.",
+      "உணர் உறுப்புகள்: லென்ஸ்/ஐரிஸ்/ரெட்டினா கொண்ட கேமரா வகைக் கண்; சமநிலைக்கான ஸ்டேட்டோசிஸ்ட்.",
+      "சுற்றோட்டம்: மூடிய சுற்றோட்டத் தொகுதி; குறிப்பாக coleoids-ல் இரண்டு செவுள் இதயங்கள் செவுள்களுக்கு இரத்தத்தை செலுத்துகின்றன; ஒரு systemic heart உடலுக்குச் செலுத்துகிறது. இது பெரும்பாலான பிற மொல்லஸ்க்குகளின் திறந்த haemocoel-இலிருந்து வேறுபடும்.",
+      "இயக்கம்: ஜெட் இயக்கத்தை உருவாக்கும் பாத வழித்தோன்றலான கரங்களும் புனலும்.",
+      "பொருளாதார முக்கியத்துவத்தைச் சேர்: முக்கிய மீன்வளங்கள், உணவு மற்றும் ஏற்றுமதி மதிப்பு, கட்டில்போன் வர்த்தகம்."
+    ],
+    "q2_en": [
+      "Define cephalisation.",
+      "Name the structure that boosts blood pressure into a cephalopod's gill."
+    ],
+    "a2_en": [
+      [
+        "Concentration of ganglia into a single brain-like mass at the head end."
+      ],
+      [
+        "The branchial (accessory) heart at the base of each gill."
+      ]
+    ],
+    "q2_ta": [
+      "தலைமை வளர்ச்சியை வரையறு.",
+      "தலைக்காலியின் செவுளுக்குள் இரத்த அழுத்தத்தை அதிகரிக்கும் அமைப்பைப் பெயரிடுக."
+    ],
+    "a2_ta": [
+      [
+        "தலைப் பகுதியில் நரம்புக் கணுக்கள் ஒரு மூளை போன்ற தொகுதியாக குவிதல்."
+      ],
+      [
+        "ஒவ்வொரு செவுளின் அடிப்பகுதியிலும் உள்ள செவுள் இதயம் (துணை இதயம்)."
+      ]
+    ],
+    "q5_en": [
+      "List five anatomical features that show the high structural specialisation of cephalopods.",
+      "Explain the economic importance of cephalopods."
+    ],
+    "a5_en": [
+      [
+        "Cephalopods show pronounced cephalisation with a large, centralised brain and highly developed sensory and behavioural control.",
+        "They possess complex image-forming camera-type eyes and rapid neural conduction; giant axons in many coleoids support fast escape responses.",
+        "Unlike most molluscs, cephalopods have a closed circulatory system; coleoids possess a systemic heart and two branchial hearts that support efficient gill perfusion.",
+        "The molluscan foot is extensively modified into circumoral arms or tentacles and a muscular funnel used for directed jet propulsion.",
+        "Powerful mantle musculature, active predatory feeding, chromatophore-based signalling/camouflage and rapid locomotion together support an unusually active molluscan lifestyle; 'highly specialised' is preferable to a ladder-like term such as 'advanced'."
+      ],
+      [
+        "Squid, cuttlefish and octopuses support major capture fisheries and are widely consumed as high-value seafood.",
+        "Harvesting, processing, freezing, drying, transport and export of cephalopods generate income and employment in many coastal economies.",
+        "Cuttlefish and squid provide commercial by-products such as cuttlebone and ink, which have food, pet-trade, traditional or specialised industrial uses.",
+        "Cephalopods are also ecologically important predators and prey; their abundance can influence fishery food webs and the productivity of other exploited species.",
+        "Because many stocks are intensively exploited and market demand is high, scientific monitoring and sustainable fishery management are economically important for maintaining long-term yields."
+      ]
+    ],
+    "q5_ta": [
+      "தலைக்காலிகளில் காணப்படும் உயர்ந்த கட்டமைப்புச் சிறப்பாக்கத்தை காட்டும் ஐந்து உடற்கூறு பண்புகளைப் பட்டியலிடுக.",
+      "தலைக்காலிகளின் பொருளாதார முக்கியத்துவத்தை விளக்குக."
+    ],
+    "a5_ta": [
+      [
+        "தலைக்காலிகளில் பெரிய மையப்படுத்தப்பட்ட மூளையுடன் மிகுந்த தலைமை வளர்ச்சி காணப்படுகிறது; உணர்வு மற்றும் நடத்தை கட்டுப்பாடு மிகவும் மேம்பட்டுள்ளது.",
+        "சிக்கலான படம் உருவாக்கும் கேமரா வகைக் கண்களும் வேகமான நரம்புக் கடத்தலும் உள்ளன; பல கோலியாய்டுகளில் பெரிய அச்சுத்திசுக்கள் திடீர் தப்பிச் செல்லும் செயலை வேகப்படுத்துகின்றன.",
+        "பெரும்பாலான மெல்லுடலிகளுக்கு மாறாக தலைக்காலிகளில் மூடிய இரத்தச் சுற்றோட்டம் உள்ளது; கோலியாய்டுகளில் ஒரு மைய இதயமும் இரண்டு செவுள் இதயங்களும் செவுள்களுக்கு திறமையான இரத்த ஓட்டத்தை வழங்குகின்றன.",
+        "மெல்லுடலி பாதம் வாயைச் சுற்றிய கரங்கள் அல்லது தொடுகொம்புகளாகவும் திசைமாற்றக்கூடிய ஜெட் இயக்கத்திற்கான தசைமிக்க புனலாகவும் மிகுந்த மாற்றமடைந்துள்ளது.",
+        "வலிமையான மாந்தல் தசைகள், செயலில் வேட்டையாடும் உணவுமுறை, நிறமணுச் செல்கள் மூலம் தகவல்தொடர்பு/மறைவு மற்றும் விரைவான இயக்கம் ஆகியவை மிகவும் செயற்பாட்டு மெல்லுடலி வாழ்க்கைக்கு ஆதரவளிக்கின்றன; பரிணாம ஏணி உணர்வைத் தரும் 'மேம்பட்ட' என்பதற்குப் பதிலாக 'மிகச் சிறப்பாக்கப்பட்ட' என்பது துல்லியமான சொல்."
+      ],
+      [
+        "ஸ்க்விட், கட்ல்ஃபிஷ் மற்றும் ஆக்டோபஸ் போன்ற தலைக்காலிகள் முக்கியப் பிடிப்புமீன்வளங்களை ஆதரித்து உயர்மதிப்புடைய கடலுணவாகப் பரவலாகப் பயன்படுத்தப்படுகின்றன.",
+        "பிடித்தல், செயலாக்கம், உறைபாதுகாப்பு, உலர்த்தல், போக்குவரத்து மற்றும் ஏற்றுமதி ஆகிய துறைகள் பல கடலோரப் பொருளாதாரங்களில் வருமானத்தையும் வேலைவாய்ப்பையும் உருவாக்குகின்றன.",
+        "கட்ல்ஃபிஷ் மற்றும் ஸ்க்விட் மூலம் கிடைக்கும் கட்ல்போன் மற்றும் மை போன்ற துணைமதிப்புப் பொருட்கள் உணவு, செல்லப்பிராணி வர்த்தகம், பாரம்பரிய அல்லது சில சிறப்பு தொழில்துறை பயன்பாடுகளில் இடம் பெறுகின்றன.",
+        "தலைக்காலிகள் கடல் உணவுச் சங்கிலிகளில் முக்கிய வேட்டையாடிகளும் இரைகளுமாக இருப்பதால் அவற்றின் வளம் பிற வணிக மீன்வளங்களின் உற்பத்தியையும் பாதிக்கக்கூடும்.",
+        "பல வளங்கள் தீவிரமாகப் பிடிக்கப்படுவதும் சந்தைத் தேவை அதிகமாக இருப்பதும் காரணமாக அறிவியல் கண்காணிப்பும் நிலைத்த மீன்வள மேலாண்மையும் நீண்டகால பொருளாதார மகசூலைப் பேணுவதற்கு அவசியம்."
+      ]
+    ]
+  }
+}

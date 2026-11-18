@@ -1,0 +1,67 @@
+name: Paramecium Native QA
+on:
+  push:
+    branches: [feat/plate-pipeline]
+    paths:
+      - 'native-app/**'
+      - 'F01_vegetative_PROVISIONAL.png'
+      - 'F02_micronuclear_mitosis_PROVISIONAL.png'
+      - 'F03_chromosome_segregation_PROVISIONAL.png'
+      - '.github/workflows/paramecium-native-qa.yml'
+  workflow_dispatch:
+
+jobs:
+  native-debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Locate preinstalled Android SDK
+        run: |
+          test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" || test -x "$ANDROID_HOME/cmdline-tools/16.0/bin/sdkmanager"
+          echo "ANDROID_HOME=$ANDROID_HOME"
+      - name: Add SDK command-line tools to PATH
+        run: |
+          if test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"; then
+            echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          else
+            echo "$ANDROID_HOME/cmdline-tools/16.0/bin" >> "$GITHUB_PATH"
+          fi
+      - name: Accept Android SDK licences
+        run: yes | sdkmanager --licenses >/dev/null || test "${PIPESTATUS[1]}" -eq 0
+      - name: Install Android SDK 36
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Compile Kotlin and run JVM tests
+        working-directory: native-app
+        run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Verify packaged Paramecium assets
+        run: |
+          python3 - <<'PY'
+          import glob, zipfile
+          apk=glob.glob('native-app/app/build/outputs/apk/debug/*.apk')
+          assert len(apk)==1, f'Expected one debug APK, found {apk}'
+          with zipfile.ZipFile(apk[0]) as z:
+              names=set(z.namelist())
+              for f in ('F01_vegetative_PROVISIONAL.png',
+                        'F02_micronuclear_mitosis_PROVISIONAL.png',
+                        'F03_chromosome_segregation_PROVISIONAL.png'):
+                  path='assets/paramecium/fission/'+f
+                  assert path in names, f'Missing APK asset: {path}'
+                  assert z.getinfo(path).file_size > 1024
+          print('F01-F03 packaged in debug APK')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: paramecium-native-qa-debug-apk
+          path: native-app/app/build/outputs/apk/debug/*.apk
+          retention-days: 7

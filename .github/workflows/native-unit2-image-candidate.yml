@@ -1,0 +1,189 @@
+name: Unit II scanned atlas candidate - native compile and real screenshots
+'on':
+  push:
+    branches:
+      - native/u2-scanned-plate-candidate-20261011
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compile-kotlin-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare deterministic corrected WebP source masters
+        run: |
+          python3 -m venv /tmp/u2pillow
+          /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
+          /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
+          /tmp/u2pillow/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/u2pillow/bin/python ci/build_obelia_settlement_1933_png.py
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Archive WebP image sources used for Android acceptance
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-built-webp-masters
+          path: native-app/app/src/main/assets/unit2/*
+          if-no-files-found: error
+      - name: Enforce Unit II raster-only artwork contract
+        run: |
+          /tmp/u2pillow/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root=Path("native-app/app/src/main/assets/unit2")
+          chapter=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIITeachingChapter.kt").read_text()
+          image_ui=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/UnitIIImagePlate.kt").read_text()
+          loader=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/RequiredRasterBitmap.kt").read_text()
+          policy=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/RasterArtworkPolicy.kt").read_text()
+          manifest=Path("native-app/app/src/main/java/com/gasczoology/invertebratelab/data/NativeCurriculumManifest.kt").read_text()
+          assert "SyconCanalCanvas" not in chapter and "ObeliaColonyCanvas" not in chapter, "Legacy Canvas anatomy present"
+          assert "fallback()" not in image_ui and "u2-raster-bitmap-visible" in image_ui, "Raster-only adapter not enforced"
+          assert "rememberRequiredRasterBitmap(stem, pngOnly=lifeHistory)" in image_ui, "Obelia life cycle can silently revert to obsolete WebP"
+          assert 'else if (settlement) "unit2/obelia_settlement"' in image_ui, "Settlement must use independent pencil raster plate"
+          assert "obeliaSettlementTargets" in image_ui, "Settlement hotspots missing"
+          assert "RasterArtworkPolicy.selectAsset(" in loader, "Shared raster loader bypassed policy"
+          assert "PNG first" in policy and '"png", "webp"' in policy, "Approved raster formats changed"
+          for organism in ("sycon","obelia","fasciola","ascaris","earthworm","penaeus","pila","asterias"):
+              assert f'TypeStudyRequirement("{organism}"' in manifest, f"Future-type-study raster contract missing: {organism}"
+          for name in ("sycon_plate","obelia_colony","obelia_lifecycle","obelia_settlement"):
+              file=next((root/(name+ext) for ext in (".png",".webp") if (root/(name+ext)).exists()),None)
+              assert file is not None, f"Missing labelled raster plate: {name}"
+              with Image.open(file) as im:
+                  im.verify()
+              with Image.open(file) as im:
+                  assert im.width>0 and im.height>0, f"Invalid raster geometry: {file}"
+                  assert im.format in ("PNG","WEBP"), f"Non-raster or unsupported image: {file}"
+                  assert (file.suffix.lower()==".png" and im.format=="PNG") or (file.suffix.lower()==".webp" and im.format=="WEBP"), f"Image extension/contents mismatch: {file}"
+                  if im.width<900 or im.height<600:
+                      print(f"ARTWORK_QUALITY_HOLD={file} dimensions={im.size}; acceptance gate runs independently")
+                  print(f"RASTER_ASSET={file} dimensions={im.size} format={im.format}")
+          print("RASTER_ONLY_SOURCE_GATE=PASS; ARTWORK_ACADEMIC_APPROVAL=PENDING")
+          PY
+      - name: Source and JVM compile gate
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+      - name: Preserve corrected source master evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-restored-source-webp-candidate
+          path: native-app/app/src/main/assets/unit2/*
+          if-no-files-found: error
+      - name: Record explicit image-asset blocker
+        run: |
+          echo "SOURCE COMPILATION IS NOT ARTWORK, DEVICE, OR ACADEMIC ACCEPTANCE"
+          for f in sycon_plate.webp obelia_colony.webp obelia_lifecycle.webp; do
+            p="native-app/app/src/main/assets/unit2/$f"
+            if [ -s "$p" ]; then
+              echo "ASSET PRESENT (still scientifically unverified): $f"
+            else
+              echo "::warning::ASSET PENDING: $p"
+            fi
+          done
+          echo "Human anatomy, Tamil review, hotspots and device QA remain PENDING."
+
+  unit2-artwork-quality-gate:
+    needs: compile-kotlin-candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require full-resolution source pencil plates
+        run: |
+          python3 -m venv /tmp/unit2art
+          /tmp/unit2art/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/unit2art/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/unit2art/bin/python ci/build_obelia_settlement_1933_png.py
+          /tmp/unit2art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root = Path("native-app/app/src/main/assets/unit2")
+          for stem in ("sycon_plate", "obelia_colony", "obelia_lifecycle"):
+              path = next((root/(stem+extension)
+                           for extension in (".png", ".webp")
+                           if (root/(stem+extension)).exists()), None)
+              assert path is not None, f"Missing mandatory raster master: {stem}"
+              with Image.open(path) as im:
+                  assert im.format in ("PNG","WEBP"), f"Not an actual PNG/WebP: {path}"
+                  assert im.width>=900 and im.height>=600, (
+                      f"REPLACE ARTWORK, NOT UPSCALE: {path} {im.size}; "
+                      "minimum 900x600. Keep Unit II artwork release on HOLD."
+                  )
+                  print(f"ARTWORK_DIMENSIONS_PASS={path}: {im.size}")
+          PY
+          echo "Dimensions alone do not establish scanned-pencil origin or zoological correctness."
+          echo "Human pencil texture, anatomy, leader and Tamil sign-off remain mandatory."
+
+  native-unit-two-android:
+    needs: compile-kotlin-candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare deterministic corrected WebP source masters
+        run: |
+          python3 -m venv /tmp/u2pillow
+          /tmp/u2pillow/bin/pip install --disable-pip-version-check Pillow==11.3.0
+          /tmp/u2pillow/bin/python ci/repair_unit2_plate_masters.py
+          /tmp/u2pillow/bin/python ci/refine_unit2_sycon_prosopyle.py
+          /tmp/u2pillow/bin/python ci/build_obelia_1933_lifecycle_png.py
+          /tmp/u2pillow/bin/python ci/build_obelia_settlement_1933_png.py
+          sha256sum native-app/app/src/main/assets/unit2/*.webp native-app/app/src/main/assets/unit2/*.png
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Validate Sycon and Obelia navigation on Android API34 at genuine Tamil200 scale
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit2-screenshot-audit.sh
+      - name: Preserve Android XML and screenshot test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-image-candidate-api34-evidence
+          path: qa-evidence/unit2-screenshots/
+          if-no-files-found: error
+
+      - name: Build exact candidate debug APK for physical handset QA
+        if: success()
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve installable physical-device QA APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit2-corrected-plate-device-qa-debug-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Record image promotion hold — independent academic/device gates
+        if: always()
+        run: |
+          echo "Unit II engineering evidence is not an artwork acceptance decision."
+          echo "HOLD: verify Sycon prosopyle/apopyle aperture locations on source image."
+          echo "HOLD: verify Obelia gonangium, gonotheca and medusa-bud details."
+          echo "HOLD: physical-device touch, TalkBack, offline TTS and Tamil review."
+          echo "No workflow may automatically commit or promote provisional WebP images."

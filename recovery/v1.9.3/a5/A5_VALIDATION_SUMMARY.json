@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "branch": "recovery/v193-academic-a5-20261008",
+  "audited_head_before_summary_commit": "2cc85d0bd723ca587cc8395e9266de6d2c2024c3",
+  "total_questions": 86,
+  "unique_question_ids": 86,
+  "duplicate_question_ids": 0,
+  "unit_counts": {
+    "U1": 14,
+    "U2": 18,
+    "U3": 14,
+    "U4": 16,
+    "U5": 24
+  },
+  "final_status": {
+    "PASS": 86,
+    "FAIL": 0,
+    "BLOCKED": 0
+  },
+  "original_scientific_verdicts": {
+    "PASS": 47,
+    "FAIL": 39,
+    "BLOCKED": 0
+  },
+  "scientific_failures_corrected": 39,
+  "tamil_review": {
+    "reviewed": 86,
+    "original_PASS": 5,
+    "original_FAIL": 81,
+    "original_BLOCKED": 0,
+    "corrections_required": 81
+  },
+  "deterministic_checks": {
+    "chapter_count": 43,
+    "bilingual_required_fields_complete": true,
+    "every_question_has_five_english_points": true,
+    "every_question_has_five_tamil_points": true,
+    "chapter_unit_mappings_valid": true,
+    "supporting_reference_present_for_every_question": true,
+    "no_unvalidated_questions": true
+  },
+  "unit_commits": {
+    "U1": "0086b35e360803be823599c1f79aa0a5c1ea33f9",
+    "U2": "07fb65f737ce4033c024c91a4267a90e62a976ba",
+    "U3": "ebfbec524c2032e33b9d0a1d985d4eb01e9a8587",
+    "U4": "850fe16370baa37e18b37d7870bbf6259edf9ee5",
+    "U5": "2cc85d0bd723ca587cc8395e9266de6d2c2024c3"
+  },
+  "note": "This report certifies the recovered A5 validation corpus. It does not claim that the corrected A5 bank has yet been merged into the application academic payload, and it does not approve P0/P1 diagrams or an Android release."
+}

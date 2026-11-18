@@ -1,0 +1,45 @@
+name: Extract Asterias source reference PNGs
+on:
+  push:
+    branches:
+      - native/u56-gallery-touch-zoom-20261018
+    paths:
+      - .github/workflows/asterias-extract-reference-review.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract-reference-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch with main reference
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Extract only three original reference PNGs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git show origin/main:asterias_source_based_review.zip > /tmp/asterias_source_based_review.zip
+          unzip -t /tmp/asterias_source_based_review.zip
+          mkdir -p native-app/app/src/debug/assets/review_only/asterias
+          for file in digestive_reference_ONLY.png water_vascular_reference_ONLY.png body_wall_reference_ONLY.png; do
+            unzip -p /tmp/asterias_source_based_review.zip "$file" > "native-app/app/src/debug/assets/review_only/asterias/$file"
+            test -s "native-app/app/src/debug/assets/review_only/asterias/$file"
+          done
+          sha256sum native-app/app/src/debug/assets/review_only/asterias/*reference_ONLY.png
+      - name: Commit reference-only assets without promoting them
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add native-app/app/src/debug/assets/review_only/asterias/*reference_ONLY.png
+          if git diff --cached --quiet; then
+            echo "All three reference files already match"
+          else
+            git commit -m "Extract uploaded Asterias source reference PNGs for editorial review"
+            git push origin HEAD:native/u56-gallery-touch-zoom-20261018
+          fi

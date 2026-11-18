@@ -1,0 +1,50 @@
+name: Audit scanned Obelia settlement source
+'on':
+  push:
+    branches:
+      - native/u2-scanned-plate-candidate-20261011
+    paths:
+      - '.github/workflows/obelia-settlement-source-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historic-settlement-scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire primary, hand-illustrated Obelia 1933 figure 66
+        run: |
+          python3 -m pip install --disable-pip-version-check Pillow==11.3.0
+          python3 - <<'PY'
+          import urllib.request
+          import hashlib, json
+          from pathlib import Path
+          from PIL import Image
+          root=Path('qa-evidence/obelia-settlement-source')
+          root.mkdir(parents=True,exist_ok=True)
+          url='https://live.staticflickr.com/7757/18197697381_d89d1d6e91_b.jpg'
+          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (academic provenance review)'})
+          with urllib.request.urlopen(req,timeout=35) as response:
+              data=response.read(15_000_000)
+          assert len(data)>50000, 'Image source too small'
+          original=root/'Wolcott_1933_Fig66_Obelia_source.jpg'
+          original.write_bytes(data)
+          im=Image.open(original)
+          assert im.format=='JPEG'
+          assert min(im.size)>=450,f'Original image too small: {im.size}'
+          info={'url':url,'sha256':hashlib.sha256(data).hexdigest(),
+                'dimensions':im.size,'source':'Wolcott (1933) Animal Biology, fig. 66',
+                'copyright':'Flickr Internet Archive Book Images marks public domain',
+                'academic_approval':'PENDING'}
+          (root/'source.json').write_text(json.dumps(info,indent=2))
+          print(info)
+          PY
+      - name: Archive scan for independent anatomy and texture review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: obelia-settlement-historic-source
+          path: qa-evidence/obelia-settlement-source/
+          if-no-files-found: warn

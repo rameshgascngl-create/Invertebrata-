@@ -1,0 +1,16 @@
+{
+  "asset": "native-app/app/src/main/assets/book_figures/coral-polyp-noaa-original.png",
+  "source_page": "https://flowergarden.noaa.gov/education/coralbasics.html",
+  "source_url": "https://nmsflowergarden.blob.core.windows.net/flowergarden-prod/media/archive/img/edulibrary/polypanatomy1000.jpg",
+  "author": "NOAA Ocean Service, Flower Garden Banks National Marine Sanctuary",
+  "license": "Public domain \u2014 original NOAA U.S. government educational illustration",
+  "native_jpeg_sha256": "017b176a4bd8298151fbde19d3c42c8153e90cb56eb4e325ceb13ae281788e9b",
+  "png_sha256": "0bdc2bab45339da873ef2879ac4acd5f59948f8e1fea2e377ff3d699a92cac62",
+  "width": 1000,
+  "height": 1005,
+  "original_source_resolution_preserved": true,
+  "transform": "RGB PNG lossless re-encoding of NOAA JPEG decoded source; NO scaling and NO relabeling",
+  "scientific_review": "DRAFT_UNVERIFIED; must pass device screenshot and labels audit",
+  "reason": "Wikimedia SVG derivative contains mistaken Gastropod label not present in NOAA native artwork",
+  "retrieved_utc": "2026-10-29T13:04:54.608445+00:00"
+}

@@ -1,0 +1,52 @@
+package com.gasczoology.invertebratelab.data
+
+/** Registry of chapters authored in the printed-book format. Others still use the flat lessons. */
+object BookChapters {
+    val all: List<BookChapter> = listOf(
+        PoriferaBookChapter.chapter,
+        PoriferaCanalsBookChapter.chapter,
+        PoriferaReproductionBookChapter.chapter,
+        CnidariaBookChapter.chapter,
+        ObeliaBookChapter.chapter,
+        CoralsBookChapter.chapter,
+        CoralEconomicsBookChapter.chapter,
+        PolymorphismBookChapter.chapter,
+        PlatyhelminthesBookChapter.chapter,
+        FasciolaBookChapter.chapter,
+        PlatyAdaptationsBookChapter.chapter,
+        AschelminthesBookChapter.chapter,
+        AscarisBookChapter.chapter,
+        NematodeParasitesBookChapter.chapter,
+        NematodeAdaptationsBookChapter.chapter,
+        AnnelidaBookChapter.chapter,
+        NereisBookChapter.chapter,
+        MetamerismBookChapter.chapter,
+        AnnelidModesBookChapter.chapter,
+        ArthropodaBookChapter.chapter,
+        PenaeusBookChapter.chapter,
+        PeripatusBookChapter.chapter,
+        CrustaceanLarvaeBookChapter.chapter,
+        MolluscaBookChapter.chapter,
+        PilaBookChapter.chapter,
+        TorsionBookChapter.chapter,
+        PearlBookChapter.chapter,
+        EchinodermataBookChapter.chapter,
+        AsteriasBookChapter.chapter,
+        EchinoLarvaeBookChapter.chapter,
+        EchinoAffinitiesBookChapter.chapter,
+        FootBookChapter.chapter,
+        CephalopodsBookChapter.chapter,
+        WvsBookChapter.chapter,
+        FossilsBookChapter.chapter,
+        IntroInvertebrataBookChapter.chapter,
+        ProtozoaBookChapter.chapter,
+        ParameciumBookChapter.chapter,
+        ProtoParasitesBookChapter.chapter,
+        NutritionBookChapter.chapter,
+        HostParasiteBookChapter.chapter,
+        LocomotionBookChapter.chapter,
+        SyconBookChapter.chapter,
+    ) + Extensions.bookChapters
+    val byLesson: Map<String, BookChapter> = all.associateBy { it.lessonId }
+    fun forLesson(lessonId: String): BookChapter? = byLesson[lessonId]
+}

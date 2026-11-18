@@ -1,0 +1,363 @@
+name: Unit I U1.2 four protozoan reference plates - exact commit QA
+'on':
+  push:
+    branches:
+      - native/u12-protozoa-reference-plates-20261015
+      - native/u13-protozoa-fullscreen-atlas-20261015
+      - native/u14-protozoa-reference-fit-20261015
+      - native/u15-entamoeba-original-artwork-candidate-20261015
+      - native/u16-plasmodium-readable-panels-20261015
+      - native/u17-flagellate-bilingual-type-studies-20261015
+      - native/u18-flagellate-offline-lifecycle-20261015
+      - native/u19-anatomy-pixel-calibration-20261015
+      - native/u19a-lifecycle-200pct-correction-20261015
+      - native/u110-anatomy-source-morphotypes-20261015
+      - native/u111-image-first-review-accessibility-20261015
+      - native/u112-pixel-endpoint-review-20261016
+      - native/u113-pencil-intake-unification-20261016
+      - native/u114-scan-orientation-mobile-qa-20261016
+      - native/u115-morphotype-canvas-atlas-20261016
+      - native/u116-historical-plate-authenticity-crops-20261016
+      - native/u19a-lifecycle-200pct-correction-20261015
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-u12-protozoa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile-and-corpus:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Verify native source routes and immutable A5 JSONs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('native-app/app/src/main/java/com/gasczoology/invertebratelab')
+          nav=(root/'ui/InvertebrataApp.kt').read_text()
+          gallery=(root/'ui/UnitIProtozoaReferenceGallery.kt').read_text()
+          for marker in ('u1-protozoa-reference-toggle','u1-protozoa-reference-panel',
+                         'u1-independent-protozoa-reference-atlas',
+                         'u1-open-diagram-atlas','u1-paramecium-open-diagrams'):
+              assert marker in nav,marker
+          for organism in ('entamoeba','trypanosoma','leishmania','plasmodium'):
+              assert organism in gallery and 'u1-reference-image-' in gallery,organism
+          lesson=(root/'ui/UnitIEntamoebaMorphology.kt').read_text()
+          for marker in ('u15-entamoeba-heading','u15-entamoeba-review-hold',
+                         'u15-plate-pending-', 'DRAFT_UNVERIFIED',
+                         'id = "trophozoite"','id = "mature_cyst"'):
+              assert marker in lesson,marker
+          assert 'UnitIEntamoebaMorphology(language)' in nav
+          assert 'u15-entamoeba-native-textbook' in nav
+          flagellates=(root/'ui/UnitIFlagellateTypeStudies.kt').read_text()
+          for marker in ('u17-flagellate-academic-hold',
+                         'u17-study-title-', 'u17-reference-image-',
+                         'u17-image-missing-', 'u17-stage-',
+                         'trypanosomiasisAfrican', 'dpdx/leishmaniasis'):
+              assert marker in flagellates,marker
+          assert 'UnitIFlagellateTypeStudiesHeader(language)' in nav
+          for organism, stages in (('trypanosoma',('morphology','mammal','vector','contrast')),
+                                   ('leishmania',('morphology','mammal','vector','limits'))):
+              assert 'UnitIFlagellateStudyIntroduction("'+organism+'", language)' in nav
+              for stage in stages:
+                  assert ('UnitIFlagellateLessonSection("'+organism+'", "'+stage+'", language)') in nav
+          assert 'u17-image-expand-' in flagellates
+          assert 'u17-flagellate-native-heading' in nav
+          cycle=(root/'ui/UnitIFlagellateLifeCycleSimulator.kt').read_text()
+          model=(root/'data/UnitIFlagellateLifeCycles.kt').read_text()
+          assert 'Crossfade(' in cycle and 'OfflineNarrator(' in cycle
+          assert 'selectedStage: Int' in cycle and 'onStageChange: (Int) -> Unit' in cycle
+          assert 'rememberSaveable(chapter.id)' in nav and 'LaunchedEffect(' in cycle
+          assert 'u18-cycle-' in cycle and 'u18-audio-status-' in cycle
+          for organism in ('trypanosoma', 'leishmania'):
+              assert ('UnitIFlagellateLifeCycleSimulator("'+organism+'", language, ') in nav
+          assert nav.index('u18-trypanosoma-life-cycle') < nav.index('items(chapter.a5Questions')
+          assert nav.index('u18-leishmania-life-cycle') < nav.index('items(chapter.a5Questions')
+          for token in ('"metacyclic"', '"binary-fission"', '"procyclic"',
+                        '"amastigotes"', '"phagocytosis"', '"proboscis"'):
+              assert token in model,token
+          assert 'webview' not in cycle.lower()
+          calibration=(root/'data/NativeRasterCalibration.kt').read_text()
+          audit=(root/'ui/UnitIAnatomyRasterAudit.kt').read_text()
+          assert 'NativeRasterCalibration.hit(' in audit
+          assert 'NativeRasterCalibration.project(' in audit
+          assert 'Image(contentScale = ContentScale.Fit)' in calibration
+          assert 'FLAG_DEBUGGABLE' in audit
+          assert 'if (!isNativeSourceAuditDebuggable(context.applicationInfo.flags)) return' in audit
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
+          assert 'source_sha256' in audit and 'Export draft JSON' in audit
+          anatomy=(root/'data/UnitIAnatomyReviewDescriptions.kt').read_text()
+          assert 'mammalian_bloodstream_trypomastigote' in anatomy
+          assert 'intracellular_mammalian_amastigote' in anatomy
+          assert 'sand_fly_promastigote' not in anatomy and 'return false' in anatomy
+          assert 'UnitIAnatomyReviewDescriptions.forOrganism' in audit
+          assert 'u110-review-speak-' in audit and 'OfflineNarrator(' in audit
+          assert audit.index('u111-image-selection-') < audit.index('u111-source-raster-visible-')
+          assert audit.index('u111-source-raster-visible-') < audit.index('u110-review-explanation-')
+          assert 'testTag("u111-source-raster-visible-" + organism)' in audit
+          refine=(root/'data/NativeDraftPixelRefinement.kt').read_text()
+          assert 'NativeDraftPixelRefinement.nudge(' in audit
+          assert 'u112-selected-pixel-' in audit
+          assert 'u112-nudge-' in audit
+          assert 'u112-unverified-coordinate-note-' in audit
+          assert 'if (x.isFinite()' not in refine  # no silent clamp or guess
+          assert 'x >= imageWidth.toFloat()' in refine
+          assert 'RasterPixelLocation(' in refine
+          assert 'NativeDraftPixelRefinementTest' in (
+              Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeDraftPixelRefinementTest.kt').read_text()
+          )
+          assert 'screenshot("u112-trypanosoma-pixel-refinement")' in (
+              Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt').read_text()
+          )
+          assert 'screenshot("u111-trypanosoma-image-first")' in (
+              Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt').read_text()
+          )
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
+          assert 'UnitIAnatomyReviewDescriptionsTest' in (
+              Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/UnitIAnatomyReviewDescriptionsTest.kt').read_text()
+          )
+          assert 'NativeRasterReviewerLauncher(' in flagellates
+          scanner=(root/'data/NativePencilMasterStore.kt').read_text()
+          intake=(root/'ui/UnitIOriginalPencilMasterIntake.kt').read_text()
+          android=Path('native-app/app/src/androidTest/java/com/gasczoology/invertebratelab/NativeUnitIProtozoaReferenceTest.kt').read_text()
+          for organism in ('trypanosoma', 'leishmania'):
+              assert ('UnitIOriginalPencilMasterIntake("'+organism+'", language)') in nav
+              assert ('u114-'+organism+'-pencil-scan-intake') in nav
+              assert nav.index('u17-'+organism+'-figure') < nav.index('u114-'+organism+'-pencil-scan-intake')
+          assert 'UnitIOriginalPencilMasterIntake(' not in flagellates
+          assert 'isNativeSourceAuditDebuggable(context.applicationInfo.flags)' in intake
+          assert 'ActivityResultContracts.OpenDocument()' in intake
+          assert 'NativePencilMasterStore.importDocument(' in intake
+          assert 'NativeImportedPlateReviewer(' in intake
+          assert 'sourceHashOverride = sha256' in audit
+          assert 'UNVERIFIED_IMPORTED_STAGE_REQUIRES_SCIENTIFIC_REVIEW' in audit
+          assert audit.index('u111-source-raster-visible-') < audit.index('u113-private-stage-hold-')
+          assert 'enabled = !isPrivateCandidate' in audit
+          assert 'source_kind' in audit and 'source_sha256' in audit
+          assert 'app-private:u110_unverified_pencil_candidates/' in audit
+          assert 'DRAFT_UNVERIFIED_NO_ANATOMY_SIGNOFF' in audit
+          assert 'openInputStream(uri)' in scanner
+          assert 'inJustDecodeBounds = true' in scanner
+          assert 'sourceSha256 = digest(bytes)' in scanner
+          assert 'MAX_PIXELS' in scanner and 'MAX_BYTES' in scanner
+          assert 'sourceOrientationAccepted(format, bytes)' in scanner
+          assert 'ExifInterface.TAG_ORIENTATION' in scanner
+          assert 'ExifInterface.ORIENTATION_ROTATE_90' in android
+          assert 'EXIF-rotated anatomical scan accepted' in android
+          assert 'u110-candidate-image-' in intake
+          assert 'Dispatchers.Default' in intake
+          assert 'WebView' not in scanner and 'WebView' not in intake
+          assert 'androidOriginalPencilScanIntakeIsOfflineHashBoundAndDebugOnly' in android
+          assert len(android.split('@Test fun ')) - 1 == 8
+          assert 'u113-private-stage-hold-trypanosoma' in android
+          assert 'screenshot("u110-imported-review")' in android
+          atlas=(root/'data/UnitIStageAtlas.kt').read_text()
+          atlas_ui=(root/'ui/UnitIStageAtlasCanvas.kt').read_text()
+          atlas_jvm=Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/UnitIStageAtlasTest.kt').read_text()
+          assert 'UnitIStageAtlasChapter(language)' in nav
+          assert nav.index('u115-three-morphotype-conceptual-atlas') < nav.index('items(chapter.a5Questions')
+          for morphotype in ('brucei-blood','leishmania-amastigote','leishmania-promastigote'):
+              assert '"'+morphotype+'"' in atlas
+          assert 'No undulating membrane' in atlas
+          assert 'NO external long flagellum' in atlas
+          assert 'posterior' in atlas and 'anterior' in atlas
+          assert 'Canvas(' in atlas_ui and 'LazyRow(' in atlas_ui
+          assert 'OfflineNarrator(' in atlas_ui
+          assert 'NOT a hand-scanned pencil master' in atlas_ui
+          assert 'UnitIStageAtlasTest' in atlas_jvm
+          assert 'tamilNativeMorphotypeAtlasRetainsDistinctStageTextAt200Pct' in android
+          assert 'nativeMorphotypeAtlasDistinguishesThreeCellStagesAndCanvas' in android
+          assert 'screenshot("u115-tamil-promastigote-canvas")' in android
+          historical=(root/'data/UnitIHistoricalPlateArchive.kt').read_text()
+          crop_ui=(root/'ui/UnitIHistoricalPlateCropReviewer.kt').read_text()
+          hist_test=Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/UnitIHistoricalPlateArchiveTest.kt').read_text()
+          assert 'UnitIHistoricalPlateSourceSection(language)' in nav
+          assert nav.index('u116-historical-leishmania-print-crop-review') < nav.index('items(chapter.a5Questions')
+          assert '3a08d99564510b548416ffb0bb4318eef68c1948' in historical
+          assert '314025' in historical and '1552' in historical and '1584' in historical
+          assert 'tissue-a-e' in historical and 'culture-f-o' in historical
+          assert 'UNVERIFIED_FLAGELLATED_CULTURE' in historical
+          assert 'exactSourceMatches(' in crop_ui
+          assert 'NativeHistoricalCropEncoding.png(' in crop_ui
+          assert 'DRAFT_FIGURE_CROP_NOT_ANATOMY_SIGNOFF' in crop_ui
+          assert 'u116-source-identity' in crop_ui
+          assert 'u116-export-png' in crop_ui
+          assert 'UnitIHistoricalPlateArchiveTest' in hist_test
+          assert 'historical1922ArchiveRejectsUnmatchedRasterAndBlocksCropExport' in android
+          assert 'screenshot("u116-unmatched-archive-identity")' in android
+          assert 'WebView' not in crop_ui and 'javascript' not in crop_ui.lower()
+          assert 'NativeRasterCalibrationTest' in (
+              Path('native-app/app/src/test/java/com/gasczoology/invertebratelab/NativeRasterCalibrationTest.kt').read_text()
+          )
+          assert nav.index('u17-flagellate-native-heading') < nav.index('items(chapter.a5Questions')
+          assert 'UnitIFlagellateLessonSection(' in flagellates
+          assert 'OutlinedButton(\n                    onClick = { selected = stage.id }' not in flagellates
+          assert 'rememberRequiredRasterBitmap(' in gallery
+          assert 'u1-reference-missing' in gallery
+          manifest=(root/'data/NativeCurriculumManifest.kt').read_text()
+          assert 'EXISTING_A5_CHAPTER_COUNT = 43' in manifest
+          for n in range(1,6):
+              p=Path(f'native-app/app/src/main/assets/a5/U{n}_A5_VALIDATED.json')
+              assert p.is_file() and p.stat().st_size>0,p
+          print('UNIT_I_FOUR_REFERENCES=INTEGRATED_AS_DRAFT')
+          print('ORIGINAL_SCANNED_PENCIL_PLATES=NOT_ACCEPTED')
+          PY
+      - name: Render actual photographed Paramecium source and four independent licensed protozoa references
+        run: |
+          python3 -m venv /tmp/u12art
+          /tmp/u12art/bin/pip install --disable-pip-version-check Pillow==11.3.0 CairoSVG==2.8.2
+          /tmp/u12art/bin/python ci/build_unit1_paramecium_pencil_masters.py
+          /tmp/u12art/bin/python ci/build_unit1_protozoa_reference_plates.py
+      - name: Verify all eight real source-derived PNG assets
+        run: |
+          /tmp/u12art/bin/python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          root=Path('native-app/app/src/main/assets/unit1')
+          assert len(list(root.glob('paramecium_*.png')))==4
+          ids=('entamoeba','trypanosoma','leishmania','plasmodium')
+          for id in ids:
+              p=root/'references'/f'{id}.png'
+              assert p.is_file() and p.stat().st_size>100_000,p
+              with Image.open(p) as im:
+                  assert im.format=='PNG' and im.size==(2100,1900),(p,im.size)
+          for phase in ('liver','blood','mosquito'):
+              p=root/'references'/f'plasmodium_{phase}.png'
+              assert p.is_file() and p.stat().st_size>90_000,p
+              with Image.open(p) as im:
+                  assert im.format=='PNG' and im.size[0]==1220 and im.size[1]>=800,p
+          print('UNIT1_ALL_EIGHT_PNG_ASSETS=PASS')
+          print('PLASMODIUM_FOCUS_PANELS=PASS source excerpts only; not pencil artworks')
+          PY
+      - name: Store exactly built offline images for same-commit emulator and APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u12-source-derived-assets
+          path: native-app/app/src/main/assets/unit1/
+          if-no-files-found: error
+      - name: Compile debug AND release Kotlin; run instrumentation compilation and JVM tests
+        run: gradle -p native-app :app:compileDebugKotlin :app:compileReleaseKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
+
+  android-ui:
+    needs: compile-and-corpus
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore same-run images before compiling Android app
+        uses: actions/download-artifact@v4
+        with:
+          name: unit1-u12-source-derived-assets
+          path: native-app/app/src/main/assets/unit1
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Enable emulator hardware acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Exercise all four source-backed native reference images offline at 100 and 200 percent
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: default
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-boot-timeout: 900
+          script: bash .github/scripts/run-unit1-protozoa-references.sh
+      - name: Preserve exact commit XML, device captures and logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u12-api34-reference-evidence
+          path: qa-evidence/unit1-references/
+          if-no-files-found: warn
+      - name: Assemble engineering native QA APK
+        if: success()
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Preserve debug APK, never signed production release
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit1-u12-debug-qa-apk
+          path: native-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+      - name: Explicit source/academic/device hold
+        if: always()
+        run: |
+          echo 'These are four different cited reference illustrations, NOT four original pencil anatomical masters.'
+          echo 'Plasmodium reference follows P. falciparum; Leishmania image is genus level ONLY.'
+          echo 'Plasmodium: overview plus three source-image focus excerpts, not new original pencil plates.'
+          echo 'U1.7 contains full native bilingual Trypanosoma and Leishmania lessons with referenced rasters; original pencil atlases and hotspot/TTS reviews remain pending.'
+          echo 'U1.8 native Compose lifecycle playback is pedagogical sequencing only. Native Android offline narrator is not a reviewed organ-hotspot audio recording.'
+          echo 'U1.9 coordinate calibration is DEBUG-only and exports explicitly UNVERIFIED source-pixel marks; no student anatomy hotspots are deployed.'
+          echo 'Scientific anatomy, hotspots, Tamil and physical-device audible speech remain OPEN.'
+          echo 'No production promotion or Unit I final acceptance authorized.'
+
+  # U1.14: This push workflow does not produce pull_request-triggered runs.
+  # Publish a minimal legacy commit STATUS *after* both engineering jobs finish
+  # so external review tools can inspect the exact SHA. Academic signoff and
+  # physical-device acceptance are never implied by this CI-only status.
+  report-engineering-commit-status:
+    name: Report exact-commit native engineering CI status
+    needs: [compile-and-corpus, android-ui]
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      statuses: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CI_COMPILE: ${{ needs.compile-and-corpus.result }}
+      CI_ANDROID: ${{ needs.android-ui.result }}
+    steps:
+      - name: Report status only after Kotlin and Android QA job results
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os
+          passed = os.environ['CI_COMPILE'] == 'success' and os.environ['CI_ANDROID'] == 'success'
+          body = {
+              'state': 'success' if passed else 'failure',
+              'description': (
+                  'Kotlin/JVM + API34 offline 100%/200% CI passed; academic/device HOLD'
+                  if passed else 'Kotlin/JVM or API34 CI did not pass; academic/device HOLD'
+              ),
+              'context': 'invertebrata/unit1-native-engineering-ci-only',
+              'target_url': (
+                  'https://github.com/' + os.environ['GITHUB_REPOSITORY'] +
+                  '/actions/runs/' + os.environ['GITHUB_RUN_ID']
+              ),
+          }
+          with open(os.environ['RUNNER_TEMP'] + '/u114-engineering-status.json', 'w') as out:
+              json.dump(body, out)
+          print('Engineering CI status:', body['state'])
+          PY
+          curl --fail-with-body --silent --show-error --retry 2 --max-time 30 \
+            -X POST \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            --data-binary @"${RUNNER_TEMP}/u114-engineering-status.json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            > "${RUNNER_TEMP}/u114-commit-status-response.json"
+          echo "Exact-SHA engineering CI status published; academic/artwork/device release HOLD remains."
