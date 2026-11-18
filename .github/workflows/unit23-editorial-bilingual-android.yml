@@ -51,6 +51,7 @@ jobs:
           annelid_modes = (root / 'AnnelidModesBookChapter.kt').read_text(encoding='utf-8')
           arthropoda = (root / 'ArthropodaBookChapter.kt').read_text(encoding='utf-8')
           penaeus = (root / 'PenaeusBookChapter.kt').read_text(encoding='utf-8')
+          peripatus = (root / 'PeripatusBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -207,6 +208,18 @@ jobs:
           assert penaeus.count('bsec(') == 9
           assert penaeus.count('bfig(') == 4
           assert penaeus.count('bqc(') == 4
+          assert 'Haemocyanin has been identified in the haemolymph' in peripatus
+          assert 'ஹீமோசயனின் கண்டறியப்பட்டுள்ளது' in peripatus
+          assert 'உயிருள்ள மேற்றோல் (எப்பிடெர்மிஸ்)' in peripatus
+          assert 'short atrium bearing a tuft of fine, mostly unbranched tracheal tubules' in peripatus
+          assert 'sperm transfer differs among lineages' in peripatus
+          assert 'டைஃப்லோபெரிபேட்டஸ் வில்லியம்சோனி' in peripatus
+          assert 'that record belongs to Onychophora, not to the genus Peripatus' in peripatus
+          assert 'The blood contains no respiratory pigment.' not in peripatus
+          assert 'இரத்தத்தில் சுவாச நிறமி இல்லை.' not in peripatus
+          assert peripatus.count('bsec(') == 9
+          assert peripatus.count('bfig(') == 1
+          assert peripatus.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
