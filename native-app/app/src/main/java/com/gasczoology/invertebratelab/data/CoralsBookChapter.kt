@@ -63,8 +63,8 @@ object CoralsBookChapter {
                     bdef("Septum (plural: septa)", "செப்டம் (பன்மை: செப்டா)", "One of the radiating plates of the coral skeleton inside the calyx." to
                         "கேலிக்ஸினுள் உள்ள பவள எலும்புக்கூட்டின் ஆரமாகப் பரவும் தகடுகளில் ஒன்று."),
                     bnote("Not all corals build reefs", "எல்லாப் பவளங்களும் பவளப்பாறைகளை உருவாக்குவதில்லை",
-                        "Sea fans, such as Gorgonia, and sea pens, such as Pennatula, are anthozoans with a flexible skeleton and do not build reefs. Only the stony corals with zooxanthellae make the reef framework." to
-                            "கோர்கோனியா போன்ற கடல் விசிறிகளும் பென்னாட்டுலா போன்ற கடல் எழுதுகோல்களும் பவளப்பாறைகளின் முதன்மைக் கட்டமைப்பை உருவாக்குவதில்லை. வெப்பமண்டல ஆழமற்ற நீர்ப் பவளப்பாறைகளின் சுண்ணாம்புக் கட்டமைப்பை முதன்மையாக உருவாக்குபவை கூட்டுயிர்ப் பாசிகளுடன் வாழும் கற்பவளங்களே; சுண்ணாம்புப் பாசிகளும் கட்டமைப்பை உறுதிப்படுத்த உதவுகின்றன."),
+                        "Sea fans, such as Gorgonia, and sea pens, such as Pennatula, are anthozoans with a flexible skeleton and do not build reefs. Zooxanthellate stony corals are the main builders of the shallow tropical reef framework; calcareous algae also help bind and strengthen that structure." to
+                            "கோர்கோனியா போன்ற கடல் விசிறிகளும் பென்னாட்டுலா போன்ற கடல் எழுதுகோல்களும் பவளப்பாறைகளின் முதன்மைக் கட்டமைப்பை உருவாக்குவதில்லை. வெப்பமண்டல ஆழமற்ற நீர்ப் பவளப்பாறைகளின் சுண்ணாம்புக் கட்டமைப்பை முதன்மையாக உருவாக்குபவை கூட்டுயிர் நுண்பாசிகளுடன் வாழும் கற்பவளங்களாகும்; சுண்ணாம்புப் பாசிகளும் எலும்புக்கூடுகளை இணைத்து அந்தக் கட்டமைப்பை உறுதிப்படுத்த உதவுகின்றன."),
                 )),
             bsec("zooxanthellae", "Partnership with zooxanthellae", "சூக்சாந்தெல்லேயுடன் கூட்டுறவு",
                 blocks = listOf(
