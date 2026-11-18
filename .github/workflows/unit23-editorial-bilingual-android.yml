@@ -1,7 +1,7 @@
 name: Unit II-III textbook bilingual Android acceptance
 on:
   push:
-    branches: ['feat/plate-pipeline', 'claude/audit-l10n', 'claude/fix-home-label-tests']
+    branches: ['feat/plate-pipeline', 'claude/audit-l10n', 'claude/fix-home-label-tests', 'fix/tamil-porifera-reader-bilingual-20261118']
     paths:
       - 'native-app/**'
       - '.github/scripts/run-unit23-editorial-qa.sh'
@@ -27,6 +27,26 @@ jobs:
         with: { gradle-version: '9.6.0' }
       - name: Check Bash syntax
         run: bash -n .github/scripts/run-unit23-editorial-qa.sh
+      - name: Guard corrected scientific Tamil and amphiblastula stage sequence
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data')
+          reproduction = (root / 'PoriferaReproductionBookChapter.kt').read_text(encoding='utf-8')
+          cnidaria = (root / 'CnidariaBookChapter.kt').read_text(encoding='utf-8')
+          obelia = (root / 'ObeliaBookChapter.kt').read_text(encoding='utf-8')
+          assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
+          assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
+          assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
+          assert 'புரட்டல் கசையிழை செல்களை உள்ளே கொண்டு வருகிறது' not in reproduction
+          assert 'போர்த்துக்கீசிய போர்க்கப்பல் மீனும்' not in cnidaria
+          assert 'பைசாலியா (Physalia) காலனி நிடேரிய உயிரி' in cnidaria
+          assert 'எப்பிதீலியோதசை' not in cnidaria
+          assert 'கூட்டுயிரி' not in obelia
+          assert 'கசைகள் உள்ளடக்கத்தைக் கலக்குதல்' not in obelia
+          assert 'காலனி' in obelia and 'பாலியல் இனப்பெருக்கம்' in obelia
+          print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
+          PY
       - name: Compile and test exact active branch
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - uses: actions/upload-artifact@v4
