@@ -260,11 +260,15 @@ jobs:
           assert all(not r[8] for r in rows[1:]),"worksheet must not preapprove plates"
           print("INDEPENDENT_REVIEW_WORKSHEET=52/52 HASH_BOUND; APPROVED=0")
           PY
+      - name: Compare visible image credits with recorded provenance
+        run: |
+          python3 tools/audit_plate_credit_consistency.py \
+            --out qa-evidence/five-unit-review-handoff/plate-credit-consistency.json
       - name: Upload independent review handoff worksheet
         uses: actions/upload-artifact@v4
         with:
           name: five-unit-52-plate-independent-review-sheet
-          path: qa-evidence/five-unit-review-handoff/plate-review-sheet.xlsx
+          path: qa-evidence/five-unit-review-handoff/
           if-no-files-found: error
 
   independent-academic-review:
