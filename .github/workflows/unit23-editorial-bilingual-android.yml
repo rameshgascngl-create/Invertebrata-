@@ -205,7 +205,7 @@ jobs:
           assert 'Penaeus (Fenneropenaeus) indicus' in penaeus
           assert 'இனப்பெருக்கத்துக்காகச் கட்டுப்படுத்தப்பட்ட சூழலில் இனப்பெருக்கத்திற்காகப்' not in penaeus
           assert penaeus.count('bsec(') == 9
-          assert penaeus.count('bfig(') == 3
+          assert penaeus.count('bfig(') == 4
           assert penaeus.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
