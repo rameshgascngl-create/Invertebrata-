@@ -130,7 +130,7 @@ object NematodeAdaptationsBookChapter {
                 )),
         ),
         summary = listOf(
-            "The collagen-rich cuticle protects the worm against mechanical and chemical conditions in the host and works with the body fluid as a hydrostatic skeleton." to "கொலாஜன் நிறைந்த புறத்தோல் விருந்தோம்பியின் இயந்திர, வேதியியல் நிலைமைகளிலிருந்து புழுவைப் பாதுகாத்து, உடல் திரவத்துடன் நீரழுத்த எலும்புக்கூடாகச் செயல்படுகிறது.",
+            "The collagen-rich cuticle protects the worm against mechanical and chemical conditions in the host and works with the body fluid as a hydrostatic skeleton." to "கொலாஜன் நிறைந்த கியூட்டிகிள், விருந்தோம்பியின் குடலில் ஏற்படும் இயந்திர அழுத்தம் மற்றும் செரிமான நொதிகளின் தாக்கத்திலிருந்து புழுவைப் பாதுகாக்கிறது; உடற்குழித் திரவம், தசைகள் ஆகியவற்றுடன் சேர்ந்து நீரழுத்த ஆதரவு அமைப்பாகச் செயல்படுகிறது.",
             "Nematodes grow by moulting, and moults separate the numbered larval stages even inside the host." to "நெமட்டோடாக்கள் வளர்ச்சியின்போது கியூட்டிகிளை உரிக்கின்றன; விருந்தோம்பியின் உடலுக்குள்ளும் ஒவ்வொரு தோலுரித்தலுக்குப் பின்னர் அடுத்த எண்ணிடப்பட்ட இளவுயிரி நிலை உருவாகிறது.",
             "Mouthparts fit the habitat: a simple mouth in the lumen feeder, and a buccal capsule with teeth in the hookworm." to "வாய்ப்பகுதிகள் வாழிடத்துக்குப் பொருந்துகின்றன: குடலின் உட்குழியிலுள்ள உணவை உட்கொள்ளும் அஸ்காரிஸில் எளிய வாய்; கொக்கிப்புழுவில் பற்களுடன் வாய்க் காப்ஸ்யூல்.",
             "High reproductive output and resistant eggs or larvae raise the chance that some offspring reach a new host." to "அதிக சந்ததி உற்பத்தியும் பாதகமான சூழலைத் தாங்கும் முட்டை அல்லது லார்வா நிலைகளும், சில சந்ததிகள் ஏற்ற புதிய விருந்தோம்பியை அடையும் வாய்ப்பை அதிகரிக்கின்றன.",
