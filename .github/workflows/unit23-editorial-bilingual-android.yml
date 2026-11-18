@@ -35,6 +35,9 @@ jobs:
           reproduction = (root / 'PoriferaReproductionBookChapter.kt').read_text(encoding='utf-8')
           cnidaria = (root / 'CnidariaBookChapter.kt').read_text(encoding='utf-8')
           obelia = (root / 'ObeliaBookChapter.kt').read_text(encoding='utf-8')
+          corals = (root / 'CoralsBookChapter.kt').read_text(encoding='utf-8')
+          economics = (root / 'CoralEconomicsBookChapter.kt').read_text(encoding='utf-8')
+          polymorphism = (root / 'PolymorphismBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -45,6 +48,21 @@ jobs:
           assert 'கூட்டுயிரி' not in obelia
           assert 'கசைகள் உள்ளடக்கத்தைக் கலக்குதல்' not in obelia
           assert 'காலனி' in obelia and 'பாலியல் இனப்பெருக்கம்' in obelia
+          assert 'காலனிகளாக வாழ்கின்றன' in corals
+          assert 'கால்சிப்ளாஸ்டிக்' not in corals
+          assert 'காலிகோபிளாஸ்டிக் எப்பிடெர்மிஸ்' in corals
+          assert 'Only the stony corals with zooxanthellae make the reef framework.' not in corals
+          assert 'Zooxanthellate stony corals are the main builders' in corals
+          assert 'பவளப்பாறை என்பது ஒற்றை உயிரி அல்ல' in corals
+          assert 'முகடு கால்சியம் கார்பனேட்டின் தொழிற்சாலை' not in economics
+          assert 'பவளக் காலனிகள் உயிர்வாழ வேண்டும்' in economics
+          assert 'Schedule I of the Wild Life (Protection) Act' in economics
+          assert 'அட்டவணை I-இல்' in economics
+          assert 'சமூகப் பூச்சிகளின் சாதிகளில்' not in polymorphism
+          assert 'சமூகப் பூச்சிகளின் பணிவகுப்புகளில்' in polymorphism
+          assert 'நீண்ட மீன்பிடி உணர்கொம்புகள்' not in polymorphism
+          assert 'Hydrozoans show this division of labour despite lacking a centralised brain' in polymorphism
+          assert 'வாயு மிதவையால் கடல்மேற்பரப்பில் தாங்கப்படுவது' in polymorphism
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
