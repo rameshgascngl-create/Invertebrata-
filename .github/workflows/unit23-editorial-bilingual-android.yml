@@ -47,6 +47,7 @@ jobs:
           nematode_adaptations = (root / 'NematodeAdaptationsBookChapter.kt').read_text(encoding='utf-8')
           annelida = (root / 'AnnelidaBookChapter.kt').read_text(encoding='utf-8')
           nereis = (root / 'NereisBookChapter.kt').read_text(encoding='utf-8')
+          metamerism = (root / 'MetamerismBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -152,6 +153,15 @@ jobs:
           assert 'avoiding a claim that all nereidids die after spawning' in nereis
           assert 'arrangement varies between species and sexes' in nereis
           assert 'நீரிஸின் ட்ரோகோஃபோர் இளவுயிரி' in nereis
+          assert 'new segments are formed in the growth zone immediately anterior to the pygidium' in metamerism
+          assert 'பைஜிடியம் தனியாக ஒரு உண்மையான கண்டம் அல்ல' in metamerism
+          assert 'paired blocks of paraxial mesoderm called somites' in metamerism
+          assert 'நடுப்படைத் திசுவால் ஆன சோமைட்டுகள் (somites)' in metamerism
+          assert 'மேற்பரப்பில் கியூட்டிகிள் வளையம்' in metamerism
+          assert 'repeated blocks of muscle called somites' not in metamerism
+          assert 'இந்த ஒற்றுமை எல்லா இடங்களிலும் முழுமையாக இருப்பதில்லை' in metamerism
+          assert 'ஒவ்வொரு கண்டமும் தனியாக உயிர்வாழும்' in metamerism
+          assert 'அனெலிடாக்களில் காணப்படும் உண்மையான உடற்கண்டமாதலுக்கு இது இணையானதல்ல' in metamerism
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
