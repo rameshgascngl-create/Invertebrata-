@@ -243,6 +243,7 @@ jobs:
         run: python3 -m pip install --disable-pip-version-check "openpyxl==3.1.5"
       - name: Generate 52-plate reviewer worksheet from actual source bytes
         run: |
+          mkdir -p qa-evidence/five-unit-review-handoff
           python3 tools/make_review_sheet.py --out qa-evidence/five-unit-review-handoff/plate-review-sheet.xlsx
           python3 - <<'PY'
           from openpyxl import load_workbook
