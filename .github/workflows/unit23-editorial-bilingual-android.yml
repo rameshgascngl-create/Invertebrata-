@@ -38,6 +38,8 @@ jobs:
           corals = (root / 'CoralsBookChapter.kt').read_text(encoding='utf-8')
           economics = (root / 'CoralEconomicsBookChapter.kt').read_text(encoding='utf-8')
           polymorphism = (root / 'PolymorphismBookChapter.kt').read_text(encoding='utf-8')
+          platy = (root / 'PlatyhelminthesBookChapter.kt').read_text(encoding='utf-8')
+          fasciola = (root / 'FasciolaBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -63,6 +65,21 @@ jobs:
           assert 'நீண்ட மீன்பிடி உணர்கொம்புகள்' not in polymorphism
           assert 'Hydrozoans show this division of labour despite lacking a centralised brain' in polymorphism
           assert 'வாயு மிதவையால் கடல்மேற்பரப்பில் தாங்கப்படுவது' in polymorphism
+          assert 'கசையிழைக் கொத்துடைய வெற்று கழிவு நீக்க செல்' not in platy
+          assert 'குறுஇழைக் கற்றையைக் கொண்ட கழிவுநீக்கச் செல்' in platy
+          assert 'கசையிழை எப்பிடெர்மிஸ்' not in platy
+          assert 'குறுஇழைகள் கொண்ட புறத்தோல்' in platy
+          assert 'உறிஞ்சிப் புழுக்கள் (ஃப்ளூக்குகள்)' in platy
+          assert 'not direct representatives of the ancestors of other bilaterians' in platy
+          assert 'நேரடி மூதாதையர்களாகக் கருதக் கூடாது' in platy
+          assert 'ஊடைப்பு' not in fasciola
+          assert 'முட்டை உருவாக்க அறை (Ootype)' in fasciola
+          assert 'முதன்மை விருந்தோம்பி' not in fasciola
+          assert 'இறுதி விருந்தோம்பி' in fasciola
+          assert 'குடல் குருட்டுக் கிளைகள் (சீக்கா)' in fasciola
+          assert 'stage infective to the mammalian definitive host' in fasciola
+          assert 'பாலூட்டியைத் தொற்றும் மெட்டாசெர்க்கேரியா' in fasciola
+          assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
