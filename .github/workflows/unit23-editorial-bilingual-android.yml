@@ -82,7 +82,7 @@ jobs:
           assert 'stage infective to the mammalian definitive host' in fasciola
           assert 'பாலூட்டியைத் தொற்றும் மெட்டாசெர்க்கேரியா' in fasciola
           assert 'many species are hermaphroditic, although Schistosoma flukes have separate sexes' in adaptations
-          assert 'பெருகி ஏராளமான செர்க்கேரியாக்களை உருவாக்குகின்றன' in adaptations
+          assert 'ஸ்போரோசிஸ்ட் மற்றும் ரெடியா நிலைகள் பாலிலா முறையில் பெருகிப் புதிய லார்வாக்களை உருவாக்குகின்றன' in adaptations
           assert 'மெட்டாசெர்க்கேரியா நிலைக்கு மாறும்போது பாலூட்டியைத் தொற்றும் திறனைப் பெறுகின்றன' in adaptations
           assert 'மிராசிடியம் குறுஇழைகள் (cilia) கொண்ட' in adaptations
           assert 'taeniasis' in adaptations and 'cysticercosis' in adaptations
