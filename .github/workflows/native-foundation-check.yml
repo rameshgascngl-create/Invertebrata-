@@ -14,6 +14,7 @@ on:
       - claude/unit1-plates-and-parasite-slots
       - feat/native-textbook-reader-qa
       - audit/undergraduate-coverage-register-20261114
+      - fix/tamil-porifera-reader-bilingual-20261118
 
 jobs:
   compile-native-foundation:
