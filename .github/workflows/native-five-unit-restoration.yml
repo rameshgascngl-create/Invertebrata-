@@ -258,6 +258,12 @@ jobs:
           assert len({r[3] for r in rows[1:]})==52
           assert all(r[5]=="PRESENT_UNVERIFIED" and len(str(r[6]))==64 for r in rows[1:])
           assert all(not r[8] for r in rows[1:]),"worksheet must not preapprove plates"
+          assert rows[0][20:24] == (
+              "recorded_author_UNVERIFIED", "recorded_license_UNVERIFIED",
+              "recorded_source_url_UNVERIFIED", "recorded_defect_notes_UNVERIFIED"
+          ), "Unverified provenance columns missing or moved"
+          assert any("confirm" in str(r[21]).lower() for r in rows[1:]), "Recorded rights caveats absent"
+          assert any(str(r[23]).strip() for r in rows[1:]), "Recorded review notes absent"
           print("INDEPENDENT_REVIEW_WORKSHEET=52/52 HASH_BOUND; APPROVED=0")
           PY
       - name: Compare visible image credits with recorded provenance
