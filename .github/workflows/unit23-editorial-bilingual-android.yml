@@ -48,6 +48,7 @@ jobs:
           annelida = (root / 'AnnelidaBookChapter.kt').read_text(encoding='utf-8')
           nereis = (root / 'NereisBookChapter.kt').read_text(encoding='utf-8')
           metamerism = (root / 'MetamerismBookChapter.kt').read_text(encoding='utf-8')
+          annelid_modes = (root / 'AnnelidModesBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -162,6 +163,18 @@ jobs:
           assert 'இந்த ஒற்றுமை எல்லா இடங்களிலும் முழுமையாக இருப்பதில்லை' in metamerism
           assert 'ஒவ்வொரு கண்டமும் தனியாக உயிர்வாழும்' in metamerism
           assert 'அனெலிடாக்களில் காணப்படும் உண்மையான உடற்கண்டமாதலுக்கு இது இணையானதல்ல' in metamerism
+          assert 'இறகுபோன்ற ரேடியோல்கள் (radioles)' in annelid_modes
+          assert 'குறுஇழைகளின் (cilia) அசைவால் வாயை நோக்கிக் கொண்டு செல்லப்படுகின்றன' in annelid_modes
+          assert 'மாற்றமடைந்த ரேடியோலின் முனையில் உள்ள ஆப்பர்குலம்' in annelid_modes
+          assert 'வட்டத் தசைகள் சுருங்கும்போது உடற்கண்டங்கள் நீளமாகவும் மெலிதாகவும்' in annelid_modes
+          assert 'jaws cut the skin for feeding rather than serving as the principal attachment organs' in annelid_modes
+          assert 'தாடைகள் தோலை வெட்டி உணவு பெற உதவுகின்றன' in annelid_modes
+          assert 'obtaining organic nutrients from its chemosynthetic bacterial symbionts' in annelid_modes
+          assert 'This shows that the annelid body plan can support a way of life without feeding at all.' not in annelid_modes
+          assert 'pigment distribution varies between groups' in annelid_modes
+          assert 'some components, such as chaetae and segmental septa, are reduced or absent in leeches' in annelid_modes
+          assert 'bdef("Scavenger", "தோட்டி (Scavenger)"' not in annelid_modes
+          assert '(1) வாழிடம், (2) உணவூட்ட முறை, (3) வாழ்முறைக்கேற்ற உடலமைப்புத் தகவமைப்புகள்' in annelid_modes
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
