@@ -50,6 +50,7 @@ jobs:
           metamerism = (root / 'MetamerismBookChapter.kt').read_text(encoding='utf-8')
           annelid_modes = (root / 'AnnelidModesBookChapter.kt').read_text(encoding='utf-8')
           arthropoda = (root / 'ArthropodaBookChapter.kt').read_text(encoding='utf-8')
+          penaeus = (root / 'PenaeusBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -193,6 +194,19 @@ jobs:
           assert arthropoda.count('bqc(') == 4
           assert arthropoda.count('bsec(') == 11
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
+          assert 'cuticular denticles and ridges' in penaeus
+          assert 'கியூட்டிகிளால் ஆன நுண்பற்களும்' in penaeus
+          assert 'large gastric teeth typical of some other decapods' in penaeus
+          assert 'The terminal, unsegmented structure behind the sixth abdominal segment' in penaeus
+          assert 'non-feeding nauplii develop through protozoea and mysis' in penaeus
+          assert 'உணவுண்ணாத நாப்ளியஸ்கள்' in penaeus
+          assert 'moult-inhibiting hormone (MIH) is synthesised in the eyestalk X-organ' in penaeus
+          assert 'எக்டிஸ்டீராய்டுகள் ஒய்-உறுப்புகளில்' in penaeus
+          assert 'Penaeus (Fenneropenaeus) indicus' in penaeus
+          assert 'இனப்பெருக்கத்துக்காகச் கட்டுப்படுத்தப்பட்ட சூழலில் இனப்பெருக்கத்திற்காகப்' not in penaeus
+          assert penaeus.count('bsec(') == 9
+          assert penaeus.count('bfig(') == 3
+          assert penaeus.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
