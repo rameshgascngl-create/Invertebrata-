@@ -42,6 +42,8 @@ jobs:
           fasciola = (root / 'FasciolaBookChapter.kt').read_text(encoding='utf-8')
           adaptations = (root / 'PlatyAdaptationsBookChapter.kt').read_text(encoding='utf-8')
           nematoda = (root / 'AschelminthesBookChapter.kt').read_text(encoding='utf-8')
+          ascaris = (root / 'AscarisBookChapter.kt').read_text(encoding='utf-8')
+          nematode_parasites = (root / 'NematodeParasitesBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -94,6 +96,19 @@ jobs:
           assert 'skin penetration is a route of infection, not a third life-cycle category' in nematoda
           assert 'தனியான மூன்றாவது வாழ்க்கைச் சுழற்சி வகை அல்ல' in nematoda
           assert 'நெமட்டோடா மற்றும் மண்புழுவின் இயக்க ஒப்பீடு' in nematoda
+          assert 'The eggs pass out in the faeces unembryonated.' in ascaris
+          assert 'கருவுற்ற முட்டைகள் ஏற்ற வெப்பமும் ஈரப்பதமும் உள்ள மண்ணில்' in ascaris
+          assert 'scientific review pending' not in ascaris
+          assert 'அறிவியல் சரிபார்ப்பு நிலுவையில் உள்ளது' not in ascaris
+          assert 'ஆண்புழுவில் குடலும் இனப்பெருக்கக் குழாயும் குளோயாக்காவில் திறக்கின்றன' in ascaris
+          assert 'it does not involve an intermediate host.' in ascaris
+          assert 'இளவுயிரி கொண்ட முட்டை (Larvated egg)' in ascaris
+          assert 'நீரழுத்த எலும்புக்கூடாகச் செயல்படுகிறது' in ascaris
+          assert 'both a developmental intermediate host and a vector' in nematode_parasites
+          assert 'deposited on the skin during a later mosquito blood meal' in nematode_parasites
+          assert 'கொசு கடித்த காயம் வழியாக உடலுக்குள் நுழைகின்றன' in nematode_parasites
+          assert 'இடைநிலை விருந்தோம்பியாகவும் நோய்க்கடத்தியாகவும் செயல்படுகிறது' in nematode_parasites
+          assert 'மூன்றில் எதற்கும் ட்ரீமட்டோடா, செஸ்டோடாவில்' not in nematode_parasites
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
