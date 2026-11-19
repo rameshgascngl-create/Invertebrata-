@@ -5,6 +5,14 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+// Kotlin 2.3 Compose crash-stack group-key mapping is optional. AGP 9.4 can
+// request org.jetbrains.kotlin:compose-group-mapping:2.3.10 during release
+// packaging even when the artifact is unavailable from Google/Maven Central.
+// This does not disable Compose, R8 minification, or the app's source maps.
+composeCompiler {
+    includeComposeMappingFile.set(false)
+}
+
 val functionalRelease = providers.gradleProperty("functionalRelease").orNull == "true"
 
 android {
