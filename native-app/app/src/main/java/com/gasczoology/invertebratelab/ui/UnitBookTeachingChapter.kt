@@ -191,17 +191,22 @@ internal fun UnitBookTeachingChapter(
     }
     Scaffold(
         topBar = {
-            Row(Modifier.fillMaxWidth().statusBarsPadding().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            // Keep every navigation action visible in landscape and at large font scales.
+            Row(Modifier.fillMaxWidth().statusBarsPadding(), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
                 if (!(continuous && continuousReader != null)) TextButton(onClick = { savePosition(); onBack() },
-                    modifier = Modifier.widthIn(min = 104.dp).heightIn(min = 48.dp).testTag(backTag)) {
-                    Text(ut(language, "Back", "பின்செல்"))
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag(backTag)) {
+                    Text(ut(language, "Back", "பின்செல்"), maxLines = 2,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                 }
-                TextButton(onClick = { selectPage("contents") }, modifier = Modifier.widthIn(min = 104.dp).heightIn(min = 48.dp).testTag("reading-contents")) {
-                    Text(ut(language, "Contents", "பொருளடக்கம்"))
+                TextButton(onClick = { selectPage("contents") },
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("reading-contents")) {
+                    Text(ut(language, "Contents", "பொருளடக்கம்"), maxLines = 2,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                 }
                 TextButton(onClick = { continuous = !continuous; referenceGalleryOpen = false },
-                    modifier = Modifier.widthIn(min = 104.dp).heightIn(min = 48.dp).testTag(if (continuous) "reading-mode-paged" else "reading-mode-continuous")) {
-                    Text(ut(language, if (continuous) "Pages" else "All pages", if (continuous) "பக்கங்கள்" else "முழுப் பாடம்"))
+                    modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag(if (continuous) "reading-mode-paged" else "reading-mode-continuous")) {
+                    Text(ut(language, if (continuous) "Pages" else "All pages", if (continuous) "பக்கங்கள்" else "முழுப் பாடம்"),
+                        maxLines = 2, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                 }
             }
         },
@@ -219,7 +224,7 @@ internal fun UnitBookTeachingChapter(
                         modifier = Modifier.heightIn(min = 48.dp).testTag(if (marked) "reading-bookmark-remove" else "reading-bookmark-add")
                             .semantics { contentDescription = ut(language, if (marked) "Remove bookmark" else "Add bookmark",
                                 if (marked) "புத்தகக்குறியை நீக்கு" else "புத்தகக்குறி சேர்") }) { Text(if (marked) "★" else "☆") }
-                    Text(ut(language, "Page ${pageIndex + 1}/${pages.size}", "பக்கம் ${pageIndex + 1}/${pages.size}"),
+                    Text("${pageIndex + 1}/${pages.size}",
                         modifier = Modifier.align(androidx.compose.ui.Alignment.CenterVertically).testTag("reading-page-position"),
                         style = MaterialTheme.typography.bodyMedium)
                     Button(onClick = { selectPage(pages[pageIndex + 1].id) }, enabled = pageIndex < pages.lastIndex,
@@ -268,7 +273,7 @@ internal fun UnitBookTeachingChapter(
                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     Text(book.title.value(language), style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold, maxLines = 2, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
-                    ChapterDraftNotice(book.status, language, compact = !continuous && pageIndex > 0 && pageId != "contents")
+                    // Academic review status remains in book metadata; do not display internal workflow labels to learners.
                     if (!continuous) {
                         val labelModifier = Modifier.testTag("reading-page-id").semantics {
                             contentDescription = page.id; heading()
