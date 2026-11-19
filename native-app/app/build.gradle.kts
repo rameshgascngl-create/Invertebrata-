@@ -191,6 +191,7 @@ android.sourceSets.getByName("main").assets.srcDir(
 // 9 does not reject release lint tasks for an implicit generated-directory input.
 tasks.matching {
     (it.name.startsWith("merge") && it.name.endsWith("Assets")) ||
+        (it.name.startsWith("lintVital") && it.name.endsWith("Release")) ||
         it.name == "generateReleaseLintVitalReportModel"
 }.configureEach {
     dependsOn(stageApprovedParamecium)
