@@ -54,6 +54,7 @@ jobs:
           peripatus = (root / 'PeripatusBookChapter.kt').read_text(encoding='utf-8')
           crustacean_larvae = (root / 'CrustaceanLarvaeBookChapter.kt').read_text(encoding='utf-8')
           mollusca = (root / 'MolluscaBookChapter.kt').read_text(encoding='utf-8')
+          pila = (root / 'PilaBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -258,6 +259,28 @@ jobs:
           assert mollusca.count('bfig(') == 1
           assert mollusca.count('btable(') == 2
           assert mollusca.count('bqc(') == 4
+          assert 'a right branchial chamber, which contains the ctenidium' in pila
+          assert 'a left pulmonary chamber' in pila
+          assert 'வலப்புறச் செவுள் அறை' in pila
+          assert 'இடப்புற நுரையீரல் அறை' in pila
+          assert 'branchial chamber on the left' not in pila
+          assert 'pulmonary sac on the right' not in pila
+          assert 'separate, highly vascular pulmonary sac opens into the pulmonary chamber' in pila
+          assert 'left inhalant channel' in pila
+          assert 'right exhalant channel' in pila
+          assert 'right branchial chamber from the left pulmonary chamber' in pila
+          assert 'anterior and posterior renal chambers' in pila
+          assert 'முன்புறச் சிறுநீரக அறை, பின்புறச் சிறுநீரக அறை' in pila
+          assert 'uric-acid accumulation and storage excretion' in pila
+          assert 'continually ventilates the lung at its active rate' in pila
+          assert 'ommatophores' in pila
+          assert 'ஓமாட்டோஃபோர்' in pila
+          assert 'The glochidium.' in pila
+          assert 'lessonId = "u5-pila"' in pila
+          assert pila.count('bsec(') == 8
+          assert pila.count('bfig(') == 6
+          assert pila.count('btable(') == 1
+          assert pila.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
