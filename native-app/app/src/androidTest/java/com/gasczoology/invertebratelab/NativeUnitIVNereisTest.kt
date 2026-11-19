@@ -36,7 +36,7 @@ class NativeUnitIVNereisTest {
         }
         openReadingPage(rule, readerTag, "objectives")
         // Student-facing textbook pages must not show internal review workflow notices.
-        rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).assertCountEquals(0)
+        rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).fetchSemanticsNodes().isEmpty().let { check(it) }
         find("book-objectives")
         toggleGallery()
     }
