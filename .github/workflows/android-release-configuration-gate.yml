@@ -1,0 +1,21 @@
+name: Android release configuration gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/undergraduate-coverage-register-20261114
+    paths:
+      - tools/verify_android_release_configuration.py
+      - native-app/app/src/main/AndroidManifest.xml
+      - native-app/app/build.gradle.kts
+      - .github/workflows/android-release-configuration-gate.yml
+
+jobs:
+  configuration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify manifest and release configuration without rebuilding or rerunning academic suites
+        run: python3 tools/verify_android_release_configuration.py
