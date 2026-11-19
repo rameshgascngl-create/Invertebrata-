@@ -9,6 +9,7 @@ on:
       - .github/workflows/native-release-packaging-candidate.yml
       - tools/inspect_release_apk.py
       - tools/inspect_release_bundle.py
+      - tools/verify_release_provenance.py
 
 permissions:
   contents: read
@@ -39,6 +40,10 @@ jobs:
           mkdir -p native-app/app/build/release-evidence
           git rev-parse HEAD > native-app/app/build/release-evidence/commit-sha.txt
           sha256sum native-app/app/build/outputs/apk/release/app-release-unsigned.apk native-app/app/build/outputs/bundle/release/app-release.aab > native-app/app/build/release-evidence/SHA256SUMS
+      - name: Verify artifact provenance matches triggering commit
+        env:
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: python3 tools/verify_release_provenance.py --expected-commit "$SOURCE_COMMIT"
       - name: Upload unsigned candidate for internal analysis only
         uses: actions/upload-artifact@v4
         with:
