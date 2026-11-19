@@ -378,7 +378,7 @@ class NativeReleaseFunctionalTest {
             // Objectives and the introduction share the opening page; the contents list is page 2.
             scrollTo("book-objectives").recycle(); scrollTo("book-introduction").recycle()
             tap("reading-page-next")
-            val page = waitText("reading-page-position") { it.startsWith(if (tamil) "பக்கம் 2/" else "Page 2/") }
+            val page = waitText("reading-page-position") { it.matches(Regex("2/[1-9][0-9]*")) }
             scenario.recreate(); waitFor(root(id, unit)).recycle()
             assertEquals(page, text("reading-page-position"))
             saveScreen(id + "-release-restored-page")
