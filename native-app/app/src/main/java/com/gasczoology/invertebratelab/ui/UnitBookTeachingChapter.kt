@@ -214,21 +214,22 @@ internal fun UnitBookTeachingChapter(
             // Scaffold reserves bottomBar height but does not automatically inset the bar itself.
             // Keep the controls above the system navigation area; the LazyColumn receives
             // the resulting measured Scaffold padding, without a second content spacer.
-            if (!continuous && !referenceGalleryOpen && !mcqOpen) Column(Modifier.navigationBarsPadding().padding(horizontal = 8.dp)) {
+            if (!continuous && !referenceGalleryOpen && !mcqOpen) Column(Modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 8.dp, vertical = 4.dp)) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     OutlinedButton(onClick = { selectPage(pages[pageIndex - 1].id) }, enabled = pageIndex > 0,
-                        modifier = Modifier.heightIn(min = 48.dp).testTag("reading-page-previous")
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("reading-page-previous")
                             .semantics { contentDescription = ut(language, "Previous page", "முந்தைய பக்கம்") }) { Text("‹") }
                     val marked = pageId in bookmarkAccess.bookmarks[chapter.id].orEmpty()
                     if (pageId != "contents") OutlinedButton(onClick = { bookmarkAccess.toggle(chapter.id, pageId) },
-                        modifier = Modifier.heightIn(min = 48.dp).testTag(if (marked) "reading-bookmark-remove" else "reading-bookmark-add")
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag(if (marked) "reading-bookmark-remove" else "reading-bookmark-add")
                             .semantics { contentDescription = ut(language, if (marked) "Remove bookmark" else "Add bookmark",
                                 if (marked) "புத்தகக்குறியை நீக்கு" else "புத்தகக்குறி சேர்") }) { Text(if (marked) "★" else "☆") }
                     Text("${pageIndex + 1}/${pages.size}",
-                        modifier = Modifier.align(androidx.compose.ui.Alignment.CenterVertically).testTag("reading-page-position"),
+                        modifier = Modifier.weight(1f).align(androidx.compose.ui.Alignment.CenterVertically).testTag("reading-page-position"),
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
                         style = MaterialTheme.typography.bodyMedium)
                     Button(onClick = { selectPage(pages[pageIndex + 1].id) }, enabled = pageIndex < pages.lastIndex,
-                        modifier = Modifier.heightIn(min = 48.dp).testTag("reading-page-next")
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp).testTag("reading-page-next")
                             .semantics { contentDescription = ut(language, "Next page", "அடுத்த பக்கம்") }) { Text("›") }
                 }
             }
