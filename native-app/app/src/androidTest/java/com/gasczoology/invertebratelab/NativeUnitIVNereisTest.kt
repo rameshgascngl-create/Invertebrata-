@@ -35,8 +35,8 @@ class NativeUnitIVNereisTest {
             rule.onAllNodesWithTag(readerTag).fetchSemanticsNodes().isNotEmpty()
         }
         openReadingPage(rule, readerTag, "objectives")
-        find("chapter-draft-notice")
-        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists()
+        // Student-facing textbook pages must not show internal review workflow notices.
+        rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).assertCountEquals(0)
         find("book-objectives")
         toggleGallery()
     }
