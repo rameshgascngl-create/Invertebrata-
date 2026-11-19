@@ -8,6 +8,13 @@ on:
     paths:
       - .github/workflows/native-installable-qa-apk.yml
       - tools/inspect_installable_qa_apk.py
+      - native-app/app/src/main/**
+      - native-app/app/src/debug/**
+      - native-app/app/build.gradle.kts
+      - native-app/build.gradle.kts
+      - native-app/settings.gradle.kts
+      - native-app/gradle.properties
+      - native-app/app/proguard-rules.pro
 
 permissions:
   contents: read
