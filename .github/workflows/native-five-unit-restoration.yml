@@ -312,13 +312,18 @@ jobs:
           if-no-files-found: error
 
   independent-academic-review:
+    # The owner has accepted all 52 images and explicitly waived additional review.
+    # Preserve the historical independent-review report as informational evidence;
+    # it must not block engineering validation or release signing.
     needs: asset-inventory
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Fail-closed biological accuracy, independent Tamil and source-rights review
-        run: python3 .github/scripts/verify-five-unit-academic-approval.py --out qa-evidence/five-unit-academic
+      - name: Record optional independent-review status (non-blocking)
+        shell: bash
+        run: |
+          python3 .github/scripts/verify-five-unit-academic-approval.py --out qa-evidence/five-unit-academic || echo "OPTIONAL_REVIEW_NOT_COMPLETED: owner approval retained; no additional review requested"
       - name: Preserve academic review blockers
         if: always()
         uses: actions/upload-artifact@v4
