@@ -28,6 +28,13 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
+      - name: Prepare Android SDK build tools
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0"
+          test -x "$ANDROID_HOME/build-tools/36.0.0/apksigner"
+          test -x "$ANDROID_HOME/build-tools/36.0.0/zipalign"
       - name: Build native unsigned APK and AAB
         run: gradle -p native-app :app:assembleRelease :app:bundleRelease --stacktrace
       - name: Inspect unsigned artifacts
@@ -54,10 +61,11 @@ jobs:
           "$tools/zipalign" -f -p 4 native-app/app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/release/aligned.apk"
           "$tools/apksigner" sign --ks "$RUNNER_TEMP/signing/upload.p12" --ks-pass env:KS_PASS --ks-key-alias "$KEY_ALIAS" --key-pass env:KEY_PASS --out "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.apk" "$RUNNER_TEMP/release/aligned.apk"
           "$tools/apksigner" verify --verbose --print-certs "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.apk" > "$RUNNER_TEMP/release/apk-signature.txt"
-          grep -qi "F8069391B6C329BFD01DBC9761EC6BA46627FDE6481DC97A8E103A2CEA26C9E2" <(tr -d ':' < "$RUNNER_TEMP/release/apk-signature.txt")
+          apk_cert="$(sed -n 's/.*Signer #1 certificate SHA-256 digest: //p' "$RUNNER_TEMP/release/apk-signature.txt" | head -1 | tr -d ':[:space:]' | tr '[:lower:]' '[:upper:]')"
+          test "$apk_cert" = "$actual"
           cp native-app/app/build/outputs/bundle/release/app-release.aab "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.aab"
           jarsigner -keystore "$RUNNER_TEMP/signing/upload.p12" -storepass "$KS_PASS" -keypass "$KEY_PASS" -sigalg SHA256withRSA -digestalg SHA-256 "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.aab" "$KEY_ALIAS"
-          jarsigner -verify "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.aab"
+          jarsigner -verify -strict "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.aab"
           rm "$RUNNER_TEMP/release/aligned.apk"
           sha256sum "$RUNNER_TEMP/release/"*.apk "$RUNNER_TEMP/release/"*.aab > "$RUNNER_TEMP/release/SHA256SUMS"
           git rev-parse HEAD > "$RUNNER_TEMP/release/SOURCE_COMMIT.txt"
