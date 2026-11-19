@@ -1,0 +1,69 @@
+name: INVERTEBRATA native v1.9.0 permanent-key signed release
+on:
+  workflow_dispatch:
+    inputs:
+      qa_approved:
+        description: "Type QA_APPROVED after verifying this exact source on devices"
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  sign-native-release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    steps:
+      - name: Require explicit QA authorisation
+        env:
+          QA_APPROVED: ${{ inputs.qa_approved }}
+        run: test "$QA_APPROVED" = "QA_APPROVED"
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Build native unsigned APK and AAB
+        run: gradle -p native-app :app:assembleRelease :app:bundleRelease --stacktrace
+      - name: Inspect unsigned artifacts
+        run: |
+          python3 tools/inspect_release_apk.py native-app/app/build/outputs/apk/release/app-release-unsigned.apk
+          python3 tools/inspect_release_bundle.py native-app/app/build/outputs/bundle/release/app-release.aab
+      - name: Sign with existing permanent identity and verify certificate
+        env:
+          KS_B64: ${{ secrets.KS_B64 }}
+          KS_PASS: ${{ secrets.KS_PASS }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.KEY_PASS }}
+        run: |
+          set -euo pipefail
+          test -n "$KS_B64" && test -n "$KS_PASS" && test -n "$KEY_PASS"
+          test "$KEY_ALIAS" = "invertebrata-upload"
+          mkdir -p "$RUNNER_TEMP/signing" "$RUNNER_TEMP/release"
+          printf '%s' "$KS_B64" | base64 -d > "$RUNNER_TEMP/signing/upload.p12"
+          chmod 600 "$RUNNER_TEMP/signing/upload.p12"
+          actual="$(keytool -list -v -keystore "$RUNNER_TEMP/signing/upload.p12" -storepass "$KS_PASS" -alias "$KEY_ALIAS" | sed -n 's/.*SHA256: //p' | head -1 | tr -d ':[:space:]' | tr '[:lower:]' '[:upper:]')"
+          test "$actual" = "F8069391B6C329BFD01DBC9761EC6BA46627FDE6481DC97A8E103A2CEA26C9E2"
+          tools="$ANDROID_HOME/build-tools/36.0.0"
+          test -x "$tools/apksigner"
+          "$tools/zipalign" -f -p 4 native-app/app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/release/aligned.apk"
+          "$tools/apksigner" sign --ks "$RUNNER_TEMP/signing/upload.p12" --ks-pass env:KS_PASS --ks-key-alias "$KEY_ALIAS" --key-pass env:KEY_PASS --out "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.apk" "$RUNNER_TEMP/release/aligned.apk"
+          "$tools/apksigner" verify --verbose --print-certs "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.apk" > "$RUNNER_TEMP/release/apk-signature.txt"
+          grep -qi "F8069391B6C329BFD01DBC9761EC6BA46627FDE6481DC97A8E103A2CEA26C9E2" <(tr -d ':' < "$RUNNER_TEMP/release/apk-signature.txt")
+          cp native-app/app/build/outputs/bundle/release/app-release.aab "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.aab"
+          jarsigner -keystore "$RUNNER_TEMP/signing/upload.p12" -storepass "$KS_PASS" -keypass "$KEY_PASS" -sigalg SHA256withRSA -digestalg SHA-256 "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.aab" "$KEY_ALIAS"
+          jarsigner -verify "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.0-signed.aab"
+          rm "$RUNNER_TEMP/release/aligned.apk"
+          sha256sum "$RUNNER_TEMP/release/"*.apk "$RUNNER_TEMP/release/"*.aab > "$RUNNER_TEMP/release/SHA256SUMS"
+          git rev-parse HEAD > "$RUNNER_TEMP/release/SOURCE_COMMIT.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: INVERTEBRATA-v1.9.0-PERMANENT-KEY-SIGNED-${{ github.sha }}
+          path: ${{ runner.temp }}/release/
+          if-no-files-found: error
+          retention-days: 14
