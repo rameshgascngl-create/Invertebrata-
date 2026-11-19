@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - audit/undergraduate-coverage-register-20261114
-      - integrate/v191-tamil-chapters-20261119
     paths:
       - '.github/workflows/native-v190-permanent-signed-release.yml'
       - 'native-app/build.gradle.kts'
