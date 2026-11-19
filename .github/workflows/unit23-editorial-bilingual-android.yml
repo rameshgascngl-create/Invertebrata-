@@ -53,6 +53,7 @@ jobs:
           penaeus = (root / 'PenaeusBookChapter.kt').read_text(encoding='utf-8')
           peripatus = (root / 'PeripatusBookChapter.kt').read_text(encoding='utf-8')
           crustacean_larvae = (root / 'CrustaceanLarvaeBookChapter.kt').read_text(encoding='utf-8')
+          mollusca = (root / 'MolluscaBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -239,6 +240,24 @@ jobs:
           assert crustacean_larvae.count('btable(') == 2
           assert crustacean_larvae.count('bfig(') == 0
           assert crustacean_larvae.count('bqc(') == 4
+          assert 'the head or foot is reduced or modified in several groups' in mollusca
+          assert 'the number and microstructure of the mineralised layers vary' in mollusca
+          assert 'nacre is not universal' in mollusca
+          assert 'நாக்கர் எல்லா ஓடுகளிலும் இருப்பதில்லை' in mollusca
+          assert 'not a universal second stage of all molluscs' in mollusca
+          assert 'cephalopods develop directly' in mollusca
+          assert 'தலைக்காலிகளில் நேரடி வளர்ச்சி நிகழ்கிறது' in mollusca
+          assert 'this structure is not present in every bivalve' in mollusca
+          assert 'a sand grain is not a necessary nucleus' in mollusca
+          assert 'polished shell bead and a small mantle epithelial graft' in mollusca
+          assert 'மணல்துகளே முத்தின் கட்டாய மையப்பொருள் அல்ல' in mollusca
+          assert 'most bivalves filter feed, although some are predators' in mollusca
+          assert 'radula is absent in bivalves' in mollusca
+          assert 'இருவோடுடையவற்றில் அது காணப்படுவதில்லை' in mollusca
+          assert mollusca.count('bsec(') == 9
+          assert mollusca.count('bfig(') == 1
+          assert mollusca.count('btable(') == 2
+          assert mollusca.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
