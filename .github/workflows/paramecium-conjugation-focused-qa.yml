@@ -1,0 +1,22 @@
+name: Paramecium conjugation focused QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/undergraduate-coverage-register-20261114
+    paths:
+      - tools/verify_paramecium_conjugation_integration.py
+      - native-app/app/src/main/assets/paramecium/conjugation-provisional.png
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/data/BookFigureLibrary.kt
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ParameciumBookChapter.kt
+      - .github/workflows/paramecium-conjugation-focused-qa.yml
+
+jobs:
+  verify-new-plate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify only newly integrated conjugation figure
+        run: python3 tools/verify_paramecium_conjugation_integration.py
