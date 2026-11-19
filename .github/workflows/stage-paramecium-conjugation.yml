@@ -7,6 +7,9 @@ on:
       - audit/undergraduate-coverage-register-20261114
     paths:
       - .github/workflows/stage-paramecium-conjugation.yml
+      - tools/import_paramecium_conjugation_png.py
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/data/BookFigureLibrary.kt
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/data/ParameciumBookChapter.kt
 
 permissions:
   contents: write
