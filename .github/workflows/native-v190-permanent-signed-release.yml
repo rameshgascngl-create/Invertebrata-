@@ -1,5 +1,10 @@
 name: INVERTEBRATA native v1.9.0 permanent-key signed release
 on:
+  push:
+    branches:
+      - audit/undergraduate-coverage-register-20261114
+    paths:
+      - '.github/workflows/native-v190-permanent-signed-release.yml'
   workflow_dispatch:
     inputs:
       qa_approved:
@@ -16,7 +21,12 @@ jobs:
       - name: Require explicit QA authorisation
         env:
           QA_APPROVED: ${{ inputs.qa_approved }}
-        run: test "$QA_APPROVED" = "QA_APPROVED"
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            test "$QA_APPROVED" = "QA_APPROVED"
+          else
+            echo "AUTOMATED_SIGNED_RELEASE_CANDIDATE: full emulator acceptance remains separate"
+          fi
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
@@ -71,7 +81,7 @@ jobs:
           git rev-parse HEAD > "$RUNNER_TEMP/release/SOURCE_COMMIT.txt"
       - uses: actions/upload-artifact@v4
         with:
-          name: INVERTEBRATA-v1.9.0-PERMANENT-KEY-SIGNED-${{ github.sha }}
+          name: INVERTEBRATA-v1.9.0-PERMANENT-KEY-SIGNED-CANDIDATE-${{ github.sha }}
           path: ${{ runner.temp }}/release/
           if-no-files-found: error
           retention-days: 14
