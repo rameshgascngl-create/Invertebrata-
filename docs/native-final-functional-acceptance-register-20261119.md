@@ -2,7 +2,7 @@
 
 **Scope:** Five units, 43 book chapters, English/Tamil, Kotlin/Jetpack Compose, offline textbook.
 **Branch:** `audit/undergraduate-coverage-register-20261114`.
-**Status:** Evidence collection pending. **NOT TESTED** is not a failure and must never be reported as PASS.
+**Status (19 November 2026):** Automated v1.9.1 packaging, signing, foundation, five-unit and 9/9 emulator matrix have passed at exact code SHA `7b27c8c372b4e4afae9aea6763e466f2f7e14c4c`. Physical-device upgrade, accessibility review, publisher credentials and app-store acceptance remain separate. **NOT TESTED** is not a failure and must never be reported as PASS.
 **Preservation:** No changes to accepted illustrations, captions, chapter text, academic tests, or image credits.
 
 ## Evidence rules
@@ -13,10 +13,10 @@ Each row requires (1) exact source commit, (2) workflow run URL or physical-devi
 
 | ID | Required check | Environment / method | Current result | Evidence |
 |---|---|---|---|---|
-| PKG-01 | Debug APK assembles and is signed with a QA-only key | `native-installable-qa-apk.yml`; `apksigner verify` | NOT VERIFIED | No accessible successful run or artifact |
-| PKG-02 | Release APK and AAB assemble; shrinker succeeds | `native-release-packaging-candidate.yml` | NOT VERIFIED | No accessible successful run or artifact |
-| PKG-03 | Exact source SHA and SHA-256 match APK/AAB | CI provenance scripts | NOT VERIFIED | Await build artifact |
-| PKG-04 | Installable QA APK installs and launches | API 34 and API 35 emulator or physical Android device | NOT TESTED | Await install session |
+| PKG-01 | Debug APK assembles and is signed with a QA-only key | `native-installable-qa-apk.yml` | PASS (CI package) | [Run 44517314478](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517314478); direct installation of this downloaded artifact on a physical device is a separate check |
+| PKG-02 | Release APK and AAB assemble; shrinker succeeds | `native-release-packaging-candidate.yml` | PASS (CI) | [Unsigned package run 44517314326](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517314326); [signed release run 44517314159](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517314159) |
+| PKG-03 | Exact source SHA and SHA-256 match APK/AAB | CI provenance and signed archive SHA256SUMS | PASS (artifact integrity) | Commit `7b27c8c3`; signed APK SHA-256 `b120928c989836faca05261af7e0578ed243a2a5a8e5d24e48a399f79e19339b`; AAB SHA-256 `800d31164e797c89701dfd9eed9b2849afcb1979dc3f5f4146995259b09cb8a6` |
+| PKG-04 | Installable QA APK installs and launches | API 34 and API 35 emulator or physical Android device | PARTIAL | API 34/35 `connectedDebugAndroidTest` installed and exercised debug app; separate installation of the packaged QA artifact and physical-device signed APK upgrade is NOT TESTED |
 | READER-01 | All five units and 43 chapters open | English and Tamil, normal font | NOT TESTED | Capture chapter coverage result |
 | READER-02 | Previous/Next pagination, page indicator, no empty fixed-height pages | Short/long chapters, portrait/landscape | NOT TESTED | Capture screenshots and traversal |
 | READER-03 | Definition/section differentiation and readable text | English/Tamil, normal and 200% font | NOT TESTED | Compare screenshots |
@@ -32,6 +32,28 @@ Each row requires (1) exact source commit, (2) workflow run URL or physical-devi
 | STORE-01 | Privacy policy public URL, Data safety declaration and production signing | Store submission checklist | PENDING | User-controlled signing and store metadata |
 | STORE-02 | Final Play Console upload/validation | Signed release AAB | PENDING | Play Console receipt |
 
+## Current-commit automated evidence (newer than original register)
+
+| Pipeline | GitHub Actions | Result |
+| --- | --- | --- |
+| Foundation checks | [44517313934](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517313934) | PASS |
+| Five-unit restoration | [44517314054](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517314054) | PASS |
+| Release configuration | [44517313974](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517313974) | PASS |
+| Unsigned release packaging (APK and AAB) | [44517314326](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517314326) | PASS |
+| Signed permanent-key release APK and AAB | [44517314159](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517314159) | PASS |
+| Installable debug QA APK | [44517314478](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517314478) | PASS |
+| API 34/35 emulator acceptance matrix | [44517315092](https://github.com/rameshgascngl-create/Invertebrata-/actions/runs/44517315092) | **9/9 PASS**, including API 34 200% font full suite, process-death, Unit I/III and Penaeus suites |
+
+The tested **application-code commit** is `7b27c8c3`. Subsequent changes `b2ba64d9`, `2f2accb8` and `a1b5fa0c` affect only privacy and store documentation, not packaged Android application source. Store screenshots are historical real captures from `2828ca51`; verify visual equivalence with the final build before uploading.
+
+### Remaining independent publisher checks
+
+- Confirm direct installation and in-place upgrade using the signed v1.9.1 APK on an actual Android device, retaining existing user data and certificate continuity.
+- Confirm public privacy policy: [INVERTEBRATA privacy policy](https://github.com/rameshgascngl-create/Invertebrata-/blob/audit/undergraduate-coverage-register-20261114/docs/PRIVACY_POLICY.md).
+- Enter an actual monitored developer support email, complete account verification/KYC, and select accurate age-target and education category declarations.
+- Confirm that image reuse and provenance comply with the app-store's developer policies. Owner teaching-use acceptance has been recorded and must not be mistaken for a third-party licence.
+- Finalise the [PhonePe submission metadata packet](https://github.com/rameshgascngl-create/Invertebrata-/blob/audit/undergraduate-coverage-register-20261114/docs/store/PHONEPE_SUBMISSION_1.9.1.md), preview the eight screenshots and icon, then submit and preserve the dashboard receipt.
+
 ## Required emulator configurations
 
 Use API 34 and API 35. For each, cover English 100%, Tamil 100%, and Tamil 200% in portrait and landscape. Also run an accessibility session with TalkBack and an offline session. Existing successful results at earlier commits may be referenced as historical evidence only; rerun only the tests needed to establish current-commit acceptance.
@@ -45,4 +67,4 @@ Use API 34 and API 35. For each, cover English 100%, Tamil 100%, and Tamil 200% 
 5. Mark each row PASS/FAIL only with evidence; attach run links and screenshots. Keep unrelated items NOT TESTED.
 6. Treat production release signing, store privacy metadata and Play Console acceptance as separate gates.
 
-**Release decision:** BLOCKED until packaging, installation, and essential functional acceptance have current-commit evidence. Do not call an unsigned release APK installable or a debug-signed QA APK store-ready.
+**Release decision:** AUTOMATED ANDROID BUILD + EMULATOR MATRIX ACCEPTED FOR THE v1.9.1 RELEASE CANDIDATE. Publisher submission remains conditional upon physical-device upgrade/signing continuity, an accessible privacy-policy URL, publisher support email/account verification, accurate listing disclosures and resolution of applicable illustration usage rights. A successful emulator job is not a certificate of every untested usability or accessibility scenario.
