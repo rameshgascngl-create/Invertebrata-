@@ -52,6 +52,7 @@ jobs:
           arthropoda = (root / 'ArthropodaBookChapter.kt').read_text(encoding='utf-8')
           penaeus = (root / 'PenaeusBookChapter.kt').read_text(encoding='utf-8')
           peripatus = (root / 'PeripatusBookChapter.kt').read_text(encoding='utf-8')
+          crustacean_larvae = (root / 'CrustaceanLarvaeBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -220,6 +221,24 @@ jobs:
           assert peripatus.count('bsec(') == 9
           assert peripatus.count('bfig(') == 1
           assert peripatus.count('bqc(') == 4
+          assert 'the form present between successive moults is an instar' in crustacean_larvae
+          assert 'வளர்ச்சி வடிவம் இன்ஸ்டார் (instar)' in crustacean_larvae
+          assert 'may become stalked during the later protozoeal substages' in crustacean_larvae
+          assert 'பிந்தைய புரோட்டோசோயியா துணைநிலைகளில் கண்கள் காம்புடையவையாக' in crustacean_larvae
+          assert 'setose exopods of the first two maxillipeds' in crustacean_larvae
+          assert 'இளம் இறாலை ஒத்த, தொடர்ந்து முதிர்ச்சியடையும் இணையுறுப்புகள்' in crustacean_larvae
+          assert 'In slipper lobsters (Scyllaridae) the corresponding stage is called the nisto' in crustacean_larvae
+          assert 'முள் லாப்ஸ்டர் (பாலினூரிடே)' in crustacean_larvae
+          assert 'Phyllosoma, nisto' in crustacean_larvae
+          assert 'kentrogon' in crustacean_larvae and 'vermigon' in crustacean_larvae
+          assert 'கியூட்டிகிளை உதிர்த்து வளர்கிறது' in crustacean_larvae
+          assert 'antennules (first antennae)' in crustacean_larvae
+          assert 'modern molecular phylogeny' in crustacean_larvae
+          assert 'Finally the first postlarva has all the appendages of the adult.' not in crustacean_larvae
+          assert crustacean_larvae.count('bsec(') == 9
+          assert crustacean_larvae.count('btable(') == 2
+          assert crustacean_larvae.count('bfig(') == 0
+          assert crustacean_larvae.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
