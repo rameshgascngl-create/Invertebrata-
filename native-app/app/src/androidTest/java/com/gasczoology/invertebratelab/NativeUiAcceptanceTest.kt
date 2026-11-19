@@ -312,7 +312,7 @@ class NativeUiAcceptanceTest {
 
         fun verifyReaderAndQuestion(question: String) {
             // Internal academic workflow warnings were deliberately removed from student pages.
-            rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).assertCountEquals(0)
+            rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).fetchSemanticsNodes().isEmpty().let { check(it) }
             openReadingPage(rule, container, "practice-" + first.id)
             val questionTag = readerQuestionTag(chapter, first)
             rule.onNodeWithTag(container, useUnmergedTree = true).performScrollToNode(hasTestTag(questionTag))
@@ -1010,7 +1010,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         showContinuousReader(rule)
         rule.onNodeWithTag(container).performScrollToIndex(0)
-        rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).assertCountEquals(0)
+        rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).fetchSemanticsNodes().isEmpty().let { check(it) }
         val last = chapter.a5Questions.last()
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, last)))
         rule.onNodeWithTag(readerQuestionTag(chapter, last)).assertExists()
