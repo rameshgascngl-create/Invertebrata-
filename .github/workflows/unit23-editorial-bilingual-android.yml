@@ -56,6 +56,7 @@ jobs:
           mollusca = (root / 'MolluscaBookChapter.kt').read_text(encoding='utf-8')
           pila = (root / 'PilaBookChapter.kt').read_text(encoding='utf-8')
           torsion = (root / 'TorsionBookChapter.kt').read_text(encoding='utf-8')
+          pearl = (root / 'PearlBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -301,6 +302,29 @@ jobs:
           assert torsion.count('bfig(') == 1
           assert torsion.count('bqc(') == 4
           assert 'lessonId = "u5-torsion"' in torsion
+          assert 'some molluscan pearls have non-nacreous mineral structures' in pearl
+          assert 'நாக்கர் இல்லாத முத்துகளையும் உருவாக்கக்கூடும்' in pearl
+          assert 'traditional term conchiolin refers broadly' in pearl
+          assert 'கொஞ்சியோலின்' in pearl
+          assert 'A functional pearl-sac epithelium is central to typical pearl formation' in pearl
+          assert 'a bead is not required in tissue-only freshwater culture' in pearl
+          assert 'மணியின்றித் திசு ஒட்டுதலையும் செய்யலாம்' in pearl
+          assert 'the graft has a different biological role' in pearl
+          assert 'a natural blister pearl is an attached pearl-related growth' in pearl.lower()
+          assert 'distinct from a simple shell blister' in pearl
+          assert 'most species filter feed, but some are predatory' in pearl
+          assert 'not simply on their thickness' in pearl
+          assert 'not necessarily an identical foreign-body trigger' in pearl
+          assert 'pearls may be nacreous or non-nacreous' in pearl
+          assert 'நாக்கர் முத்துகளும் நாக்கர் அல்லாத முத்துகளும்' in pearl
+          assert 'commercial pearl-oyster culture should not be confused with the anatomy and biology of Pila' in pearl.lower()
+          assert 'A pearl is a concretion of nacre formed by a pearl sac' not in pearl
+          assert 'The main structural protein of the organic matrix of molluscan shells.' not in pearl
+          assert 'A pearl formed in an oyster or mussel after a human operation that supplies a nucleus and mantle tissue.' not in pearl
+          assert 'lessonId = "u5-pearl"' in pearl
+          assert pearl.count('bsec(') == 9
+          assert pearl.count('bfig(') == 1
+          assert pearl.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
