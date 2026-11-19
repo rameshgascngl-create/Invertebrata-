@@ -1,0 +1,22 @@
+name: Native privacy and accessibility source gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/undergraduate-coverage-register-20261114
+    paths:
+      - tools/verify_native_privacy_accessibility.py
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/InvertebrataApp.kt
+      - native-app/app/src/main/java/com/gasczoology/invertebratelab/ui/BookChapterReader.kt
+      - native-app/app/src/main/AndroidManifest.xml
+      - .github/workflows/native-privacy-accessibility-gate.yml
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify existing privacy and accessibility contract
+        run: python3 tools/verify_native_privacy_accessibility.py
