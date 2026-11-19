@@ -1,0 +1,23 @@
+{
+  "asset_id": "paramecium_conjugation_owner_approved_provisional",
+  "filename": "paramecium_conjugation_owner_approved_provisional.png",
+  "source_type": "AI-generated original raster illustration",
+  "created_utc_date": "2026-11-19",
+  "dimensions_px": [1672, 941],
+  "bytes": 2521564,
+  "sha256": "5db2d73e912cae0cd96ead08cd2500d380592bee94904a4857897ad08bcc4181",
+  "status": "OWNER_APPROVED_PROVISIONAL_NOT_INDEPENDENTLY_VALIDATED",
+  "binary_committed": false,
+  "integrated_in_android": false,
+  "review_register": "docs/paramecium-reproduction-plate-acceptance-20261119.md",
+  "verification_tool": "tools/verify_paramecium_conjugation_intake.py",
+  "rights": "AI-generated image; platform terms and release rights require confirmation",
+  "language": "English labels only; Tamil editorial review not completed",
+  "scientific_holds": [
+    "Check reciprocal migration arrows and leader-line endpoints",
+    "Separate post-conjugation nuclear reorganisation from later vegetative fission",
+    "Verify oral groove orientation and pairing surfaces"
+  ],
+  "display_policy": "Optional provisional full-screen reference with zoom; do not replace existing approved illustrations or mark independently reviewed",
+  "release_holds": ["zoology", "Tamil", "source-rights", "API34 Tamil 100%/200% screenshots", "physical-device"]
+}
