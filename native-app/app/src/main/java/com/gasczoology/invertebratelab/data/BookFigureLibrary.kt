@@ -50,6 +50,9 @@ object BookFigureLibrary {
         BookLibraryFigure("paramecium-reproduction-approved", "paramecium/reproduction-approved", PlateCredit(
             "Approved Paramecium reproduction schematic · AI-generated educational illustration · source: user-approved integration kit",
             "ஏற்றுக்கொள்ளப்பட்ட பாரமீசியம் இனப்பெருக்க விளக்கப்படம் · கல்விக்கான செயற்கை நுண்ணறிவு படம் · மூலம்: பயனர் ஒப்புதல் பெற்ற படத் தொகுப்பு")),
+        BookLibraryFigure("paramecium-conjugation-provisional", "paramecium/conjugation-provisional", PlateCredit(
+            "Paramecium conjugation · AI-generated provisional teaching plate · owner-approved, independent scientific and rights review pending",
+            "பாரமீசியம் இணைவு · செயற்கை நுண்ணறிவால் உருவாக்கப்பட்ட தற்காலிகக் கற்பித்தல் படம் · பயனர் ஒப்புதல் பெற்றது; அறிவியல் மற்றும் பயன்பாட்டு உரிமை மதிப்பாய்வு நிலுவையில்")),
         BookLibraryFigure("obelia-colony", "type_studies/obelia/colony", obeliaNativeRaster),
         BookLibraryFigure("coral-polyp", "book_figures/coral-polyp-noaa-original", coralNoaa),
         BookLibraryFigure("trypanosoma-cartoon", "unit1/references/trypanosoma", aiPlate),
