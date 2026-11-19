@@ -186,6 +186,12 @@ val stageApprovedParamecium = tasks.register("stageApprovedParamecium") {
 android.sourceSets.getByName("main").assets.srcDir(
     layout.buildDirectory.dir("generated/approvedParameciumAssets").get().asFile
 )
-tasks.matching { it.name.startsWith("merge") && it.name.endsWith("Assets") }.configureEach {
+// Both asset packaging and Android lint model generation inspect the staged
+// main-source-set assets. Declare the producer dependency explicitly so Gradle
+// 9 does not reject release lint tasks for an implicit generated-directory input.
+tasks.matching {
+    (it.name.startsWith("merge") && it.name.endsWith("Assets")) ||
+        it.name == "generateReleaseLintVitalReportModel"
+}.configureEach {
     dependsOn(stageApprovedParamecium)
 }
