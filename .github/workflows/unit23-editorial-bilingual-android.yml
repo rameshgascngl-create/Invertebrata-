@@ -1,7 +1,7 @@
 name: Unit II-III textbook bilingual Android acceptance
 on:
   push:
-    branches: ['feat/plate-pipeline', 'claude/audit-l10n', 'claude/fix-home-label-tests']
+    branches: ['feat/plate-pipeline', 'claude/audit-l10n', 'claude/fix-home-label-tests', 'fix/tamil-porifera-reader-bilingual-20261118']
     paths:
       - 'native-app/**'
       - '.github/scripts/run-unit23-editorial-qa.sh'
@@ -27,6 +27,338 @@ jobs:
         with: { gradle-version: '9.6.0' }
       - name: Check Bash syntax
         run: bash -n .github/scripts/run-unit23-editorial-qa.sh
+      - name: Guard corrected scientific Tamil and amphiblastula stage sequence
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('native-app/app/src/main/java/com/gasczoology/invertebratelab/data')
+          reproduction = (root / 'PoriferaReproductionBookChapter.kt').read_text(encoding='utf-8')
+          cnidaria = (root / 'CnidariaBookChapter.kt').read_text(encoding='utf-8')
+          obelia = (root / 'ObeliaBookChapter.kt').read_text(encoding='utf-8')
+          corals = (root / 'CoralsBookChapter.kt').read_text(encoding='utf-8')
+          economics = (root / 'CoralEconomicsBookChapter.kt').read_text(encoding='utf-8')
+          polymorphism = (root / 'PolymorphismBookChapter.kt').read_text(encoding='utf-8')
+          platy = (root / 'PlatyhelminthesBookChapter.kt').read_text(encoding='utf-8')
+          fasciola = (root / 'FasciolaBookChapter.kt').read_text(encoding='utf-8')
+          adaptations = (root / 'PlatyAdaptationsBookChapter.kt').read_text(encoding='utf-8')
+          nematoda = (root / 'AschelminthesBookChapter.kt').read_text(encoding='utf-8')
+          ascaris = (root / 'AscarisBookChapter.kt').read_text(encoding='utf-8')
+          nematode_parasites = (root / 'NematodeParasitesBookChapter.kt').read_text(encoding='utf-8')
+          nematode_adaptations = (root / 'NematodeAdaptationsBookChapter.kt').read_text(encoding='utf-8')
+          annelida = (root / 'AnnelidaBookChapter.kt').read_text(encoding='utf-8')
+          nereis = (root / 'NereisBookChapter.kt').read_text(encoding='utf-8')
+          metamerism = (root / 'MetamerismBookChapter.kt').read_text(encoding='utf-8')
+          annelid_modes = (root / 'AnnelidModesBookChapter.kt').read_text(encoding='utf-8')
+          arthropoda = (root / 'ArthropodaBookChapter.kt').read_text(encoding='utf-8')
+          penaeus = (root / 'PenaeusBookChapter.kt').read_text(encoding='utf-8')
+          peripatus = (root / 'PeripatusBookChapter.kt').read_text(encoding='utf-8')
+          crustacean_larvae = (root / 'CrustaceanLarvaeBookChapter.kt').read_text(encoding='utf-8')
+          mollusca = (root / 'MolluscaBookChapter.kt').read_text(encoding='utf-8')
+          pila = (root / 'PilaBookChapter.kt').read_text(encoding='utf-8')
+          torsion = (root / 'TorsionBookChapter.kt').read_text(encoding='utf-8')
+          pearl = (root / 'PearlBookChapter.kt').read_text(encoding='utf-8')
+          echinodermata = (root / 'EchinodermataBookChapter.kt').read_text(encoding='utf-8')
+          assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
+          assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
+          assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
+          assert 'புரட்டல் கசையிழை செல்களை உள்ளே கொண்டு வருகிறது' not in reproduction
+          assert 'போர்த்துக்கீசிய போர்க்கப்பல் மீனும்' not in cnidaria
+          assert 'பைசாலியா (Physalia) காலனி நிடேரிய உயிரி' in cnidaria
+          assert 'எப்பிதீலியோதசை' not in cnidaria
+          assert 'கூட்டுயிரி' not in obelia
+          assert 'கசைகள் உள்ளடக்கத்தைக் கலக்குதல்' not in obelia
+          assert 'காலனி' in obelia and 'பாலியல் இனப்பெருக்கம்' in obelia
+          assert 'காலனிகளாக வாழ்கின்றன' in corals
+          assert 'கால்சிப்ளாஸ்டிக்' not in corals
+          assert 'காலிகோபிளாஸ்டிக் எப்பிடெர்மிஸ்' in corals
+          assert 'Only the stony corals with zooxanthellae make the reef framework.' not in corals
+          assert 'Zooxanthellate stony corals are the main builders' in corals
+          assert 'பவளப்பாறை என்பது ஒற்றை உயிரி அல்ல' in corals
+          assert 'முகடு கால்சியம் கார்பனேட்டின் தொழிற்சாலை' not in economics
+          assert 'பவளக் காலனிகள் உயிர்வாழ வேண்டும்' in economics
+          assert 'Schedule I of the Wild Life (Protection) Act' in economics
+          assert 'அட்டவணை I-இல்' in economics
+          assert 'சமூகப் பூச்சிகளின் சாதிகளில்' not in polymorphism
+          assert 'சமூகப் பூச்சிகளின் பணிவகுப்புகளில்' in polymorphism
+          assert 'நீண்ட மீன்பிடி உணர்கொம்புகள்' not in polymorphism
+          assert 'Hydrozoans show this division of labour despite lacking a centralised brain' in polymorphism
+          assert 'வாயு மிதவையால் கடல்மேற்பரப்பில் தாங்கப்படுவது' in polymorphism
+          assert 'கசையிழைக் கொத்துடைய வெற்று கழிவு நீக்க செல்' not in platy
+          assert 'குறுஇழைக் கற்றையைக் கொண்ட கழிவுநீக்கச் செல்' in platy
+          assert 'கசையிழை எப்பிடெர்மிஸ்' not in platy
+          assert 'குறுஇழைகள் கொண்ட புறத்தோல்' in platy
+          assert 'உறிஞ்சிப் புழுக்கள் (ஃப்ளூக்குகள்)' in platy
+          assert 'not direct representatives of the ancestors of other bilaterians' in platy
+          assert 'நேரடி மூதாதையர்களாகக் கருதக் கூடாது' in platy
+          assert 'ஊடைப்பு' not in fasciola
+          assert 'முட்டை உருவாக்க அறை (Ootype)' in fasciola
+          assert 'முதன்மை விருந்தோம்பி' not in fasciola
+          assert 'இறுதி விருந்தோம்பி' in fasciola
+          assert 'குடல் குருட்டுக் கிளைகள் (சீக்கா)' in fasciola
+          assert 'stage infective to the mammalian definitive host' in fasciola
+          assert 'பாலூட்டியைத் தொற்றும் மெட்டாசெர்க்கேரியா' in fasciola
+          assert 'many species are hermaphroditic, although Schistosoma flukes have separate sexes' in adaptations
+          assert 'ஸ்போரோசிஸ்ட் மற்றும் ரெடியா நிலைகள் பாலிலா முறையில் பெருகிப் புதிய லார்வாக்களை உருவாக்குகின்றன' in adaptations
+          assert 'மெட்டாசெர்க்கேரியா நிலைக்கு மாறும்போது பாலூட்டியைத் தொற்றும் திறனைப் பெறுகின்றன' in adaptations
+          assert 'மிராசிடியம் குறுஇழைகள் (cilia) கொண்ட' in adaptations
+          assert 'taeniasis' in adaptations and 'cysticercosis' in adaptations
+          assert 'நரம்பியல் பாதிப்புகள் ஏற்படக்கூடும்' in adaptations
+          assert 'ஒரு பரப்பில் கூடு கட்டிய மெட்டாசெர்க்காரியா' not in adaptations
+          assert 'அனைத்து விலங்குகளும் ஒரே தனிப்பட்ட இயற்கை மரபுக் குழுவை உருவாக்குவதில்லை' in nematoda
+          assert 'நீரழுத்த எலும்புக்கூடு (hydrostatic skeleton)' in nematoda
+          assert 'Parasitic nematode life cycles may be direct' in nematoda
+          assert 'skin penetration is a route of infection, not a third life-cycle category' in nematoda
+          assert 'தனியான மூன்றாவது வாழ்க்கைச் சுழற்சி வகை அல்ல' in nematoda
+          assert 'நெமட்டோடா மற்றும் மண்புழுவின் இயக்க ஒப்பீடு' in nematoda
+          assert 'The eggs pass out in the faeces unembryonated.' in ascaris
+          assert 'கருவுற்ற முட்டைகள் ஏற்ற வெப்பமும் ஈரப்பதமும் உள்ள மண்ணில்' in ascaris
+          assert 'scientific review pending' not in ascaris
+          assert 'அறிவியல் சரிபார்ப்பு நிலுவையில் உள்ளது' not in ascaris
+          assert 'ஆண்புழுவில் குடலும் இனப்பெருக்கக் குழாயும் குளோயாக்காவில் திறக்கின்றன' in ascaris
+          assert 'it does not involve an intermediate host.' in ascaris
+          assert 'இளவுயிரி கொண்ட முட்டை (Larvated egg)' in ascaris
+          assert 'நீரழுத்த எலும்புக்கூடாகச் செயல்படுகிறது' in ascaris
+          assert 'both a developmental intermediate host and a vector' in nematode_parasites
+          assert 'deposited on the skin during a later mosquito blood meal' in nematode_parasites
+          assert 'கொசு கடித்த காயம் வழியாக உடலுக்குள் நுழைகின்றன' in nematode_parasites
+          assert 'இடைநிலை விருந்தோம்பியாகவும் நோய்க்கடத்தியாகவும் செயல்படுகிறது' in nematode_parasites
+          assert 'மூன்றில் எதற்கும் ட்ரீமட்டோடா, செஸ்டோடாவில்' not in nematode_parasites
+          assert 'ஊசிப்புழு எனப்படும் சிறிய வெள்ளை நிற நெமட்டோடா' in nematode_parasites
+          assert 'சீக்கம் (caecum) பகுதியை அடைந்து' in nematode_parasites
+          assert 'autoinfection' in nematode_parasites
+          assert 'ஏறத்தாழ 5–10 நாட்களில் இரண்டு முறை தோலுரித்த பிறகு' in nematode_parasites
+          assert 'ஃபைலேரிஃபார்ம் (L3) லார்வாக்களாக' in nematode_parasites
+          assert 'குடற்புழுத் தொற்றின் வழக்கமான அறிகுறி' not in nematode_parasites
+          assert 'கியூட்டிகிள் (cuticle) என்னும் உயிரற்ற வெளி உறை' in nematode_adaptations
+          assert 'புறத்தோல் (எப்பிடெர்மிஸ்) செல்கள் சுரக்கின்றன' in nematode_adaptations
+          assert 'கியூட்டிகிள் (Cuticle)' in nematode_adaptations
+          assert 'நீரழுத்த எலும்புக்கூடு' in nematode_adaptations
+          assert 'இவை வாழ்க்கைச் சுழற்சியின் மூன்று தனி வகைகள் அல்ல' in nematode_adaptations
+          assert 'Wuchereria has no free-living soil stage:' in nematode_adaptations
+          assert 'are deposited on the skin during a blood meal, and enter through the bite wound' in nematode_adaptations
+          assert 'கொசு இரத்தம் உறிஞ்சும்போது தொற்றுநிலை L3 லார்வா தோல்மேல்' in nematode_adaptations
+          assert 'ஊசிப்புழுவான என்டெரோபியஸ்' in nematode_adaptations
+          assert 'not a demonstrated universal immune-evasion mechanism' in nematode_adaptations
+          assert 'கொலாஜன் நிறைந்த புறத்தோல் விருந்தோம்பியின் இயந்திர' not in nematode_adaptations
+          assert 'Segmentation also occurs in arthropods and chordates' in annelida
+          assert 'உடற்கண்டமாதல் கணுக்காலிகள் மற்றும் முதுகுநாணுள்ள விலங்குகளிலும் காணப்படுகிறது' in annelida
+          assert 'The word is used strictly for the annelids.' not in annelida
+          assert 'reproductive organs are often restricted to particular segments' in annelida
+          assert '(1) கியூட்டிகிள், (2) புறத்தோல் (எப்பிடெர்மிஸ்)' in annelida
+          assert 'நீரழுத்த எலும்புக்கூடு' in annelida
+          assert 'Shared developmental features, including trochophore-type larvae' in annelida
+          assert 'making the old Polychaeta grouping paraphyletic' in annelida
+          assert 'should not be declared impossible in all earthworms' in annelida
+          assert 'கிளைட்டெல்லம்' not in annelida
+          assert 'நீரிஸ்: உடலமைப்பு' in nereis
+          assert 'நெரிஸ்' not in nereis
+          assert 'மெல்லிய கியூட்டிகிள் வெளி உறை' in nereis
+          assert 'ஒவ்வொரு பாரபோடியமும் நோட்டோபோடியம், நியூரோபோடியம்' in nereis
+          assert 'அசிகுலம் (aciculum)' in nereis
+          assert 'முதுகுப்புற உணர்தண்டும் (dorsal cirrus)' in nereis
+          assert 'bdef("Cirrus", "உணர்தண்டு (சிரஸ்)"' in nereis
+          assert 'Some trochophore larvae feed on plankton' in nereis
+          assert 'exact release mechanism differs among nereidid species' in nereis
+          assert 'Regenerative capacity varies among polychaetes' in nereis
+          assert 'avoiding a claim that all nereidids die after spawning' in nereis
+          assert 'arrangement varies between species and sexes' in nereis
+          assert 'நீரிஸின் ட்ரோகோஃபோர் இளவுயிரி' in nereis
+          assert 'new segments are formed in the growth zone immediately anterior to the pygidium' in metamerism
+          assert 'பைஜிடியம் தனியாக ஒரு உண்மையான கண்டம் அல்ல' in metamerism
+          assert 'paired blocks of paraxial mesoderm called somites' in metamerism
+          assert 'நடுப்படைத் திசுவால் ஆன சோமைட்டுகள் (somites)' in metamerism
+          assert 'மேற்பரப்பில் கியூட்டிகிள் வளையம்' in metamerism
+          assert 'repeated blocks of muscle called somites' not in metamerism
+          assert 'இந்த ஒற்றுமை எல்லா இடங்களிலும் முழுமையாக இருப்பதில்லை' in metamerism
+          assert 'ஒவ்வொரு கண்டமும் தனியாக உயிர்வாழும்' in metamerism
+          assert 'அனெலிடாக்களில் காணப்படும் உண்மையான உடற்கண்டமாதலுக்கு இது இணையானதல்ல' in metamerism
+          assert 'இறகுபோன்ற ரேடியோல்கள் (radioles)' in annelid_modes
+          assert 'குறுஇழைகளின் (cilia) அசைவால் வாயை நோக்கிக் கொண்டு செல்லப்படுகின்றன' in annelid_modes
+          assert 'மாற்றமடைந்த ரேடியோலின் முனையில் உள்ள ஆப்பர்குலம்' in annelid_modes
+          assert 'வட்டத் தசைகள் சுருங்கும்போது உடற்கண்டங்கள் நீளமாகவும் மெலிதாகவும்' in annelid_modes
+          assert 'jaws cut the skin for feeding rather than serving as the principal attachment organs' in annelid_modes
+          assert 'தாடைகள் தோலை வெட்டி உணவு பெற உதவுகின்றன' in annelid_modes
+          assert 'obtaining organic nutrients from its chemosynthetic bacterial symbionts' in annelid_modes
+          assert 'This shows that the annelid body plan can support a way of life without feeding at all.' not in annelid_modes
+          assert 'pigment distribution varies between groups' in annelid_modes
+          assert 'some components, such as chaetae and segmental septa, are reduced or absent in leeches' in annelid_modes
+          assert 'bdef("Scavenger", "தோட்டி (Scavenger)"' not in annelid_modes
+          assert '(1) வாழிடம், (2) உணவூட்ட முறை, (3) வாழ்முறைக்கேற்ற உடலமைப்புத் தகவமைப்புகள்' in annelid_modes
+          assert 'புறத்தோ' not in arthropoda
+          assert 'உயிருள்ள மேற்றோல் (எப்பிடெர்மிஸ்)' in arthropoda
+          assert 'கியூட்டிகிளைச் சுரக்கும் மேற்றோல்' in arthropoda
+          assert 'The periodic shedding of the old cuticle (ecdysis)' in arthropoda
+          assert 'traditional Crustacea is paraphyletic relative to hexapods' in arthropoda
+          assert 'மையரியாபோடாவில் பல வகுப்புகள் உள்ளன' in arthropoda
+          assert 'Peripatus belongs to the separate phylum Onychophora' in arthropoda
+          assert 'தனித் தொகுதியான ஓனிக்கோஃபோரா' in arthropoda
+          assert 'Internal fertilisation is widespread in terrestrial forms' in arthropoda
+          assert 'not universal across Arthropoda' in arthropoda
+          assert 'Some insects instead undergo little or no metamorphosis.' in arthropoda
+          assert 'கார்போரா அலாட்டா (corpora allata)' in arthropoda
+          assert 'lessonId = "u4-arthropoda"' in arthropoda
+          assert arthropoda.count('bfig(') == 2
+          assert arthropoda.count('bqc(') == 4
+          assert arthropoda.count('bsec(') == 11
+          assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
+          assert 'cuticular denticles and ridges' in penaeus
+          assert 'கியூட்டிகிளால் ஆன நுண்பற்களும்' in penaeus
+          assert 'large grinding teeth typical of some other decapods' in penaeus
+          assert 'The terminal, unsegmented structure behind the sixth abdominal segment' in penaeus
+          assert 'non-feeding nauplii develop through protozoea and mysis' in penaeus
+          assert 'உணவுண்ணாத நாப்ளியஸ்கள்' in penaeus
+          assert 'moult-inhibiting hormone (MIH) is synthesised in the eyestalk X-organ' in penaeus
+          assert 'எக்டிஸ்டீராய்டுகள் ஒய்-உறுப்புகளில்' in penaeus
+          assert 'Penaeus (Fenneropenaeus) indicus' in penaeus
+          assert 'இனப்பெருக்கத்துக்காகச் கட்டுப்படுத்தப்பட்ட சூழலில் இனப்பெருக்கத்திற்காகப்' not in penaeus
+          assert penaeus.count('bsec(') == 9
+          assert penaeus.count('bfig(') == 4
+          assert penaeus.count('bqc(') == 4
+          assert 'Haemocyanin has been identified in the haemolymph' in peripatus
+          assert 'ஹீமோசயனின் கண்டறியப்பட்டுள்ளது' in peripatus
+          assert 'உயிருள்ள மேற்றோல் (எப்பிடெர்மிஸ்)' in peripatus
+          assert 'short atrium bearing a tuft of fine, mostly unbranched tracheal tubules' in peripatus
+          assert 'sperm transfer differs among lineages' in peripatus
+          assert 'டைஃப்லோபெரிபேட்டஸ் வில்லியம்சோனி' in peripatus
+          assert 'that record belongs to Onychophora, not to the genus Peripatus' in peripatus
+          assert 'The blood contains no respiratory pigment.' not in peripatus
+          assert 'இரத்தத்தில் சுவாச நிறமி இல்லை.' not in peripatus
+          assert peripatus.count('bsec(') == 9
+          assert peripatus.count('bfig(') == 1
+          assert peripatus.count('bqc(') == 4
+          assert 'the form present between successive moults is an instar' in crustacean_larvae
+          assert 'வளர்ச்சி வடிவம் இன்ஸ்டார் (instar)' in crustacean_larvae
+          assert 'may become stalked during the later protozoeal substages' in crustacean_larvae
+          assert 'பிந்தைய புரோட்டோசோயியா துணைநிலைகளில் கண்கள் காம்புடையவையாக' in crustacean_larvae
+          assert 'setose exopods of the first two maxillipeds' in crustacean_larvae
+          assert 'இளம் இறாலை ஒத்த, தொடர்ந்து முதிர்ச்சியடையும் இணையுறுப்புகள்' in crustacean_larvae
+          assert 'In slipper lobsters (Scyllaridae) the corresponding stage is called the nisto' in crustacean_larvae
+          assert 'முள் லாப்ஸ்டர் (பாலினூரிடே)' in crustacean_larvae
+          assert 'Phyllosoma, nisto' in crustacean_larvae
+          assert 'kentrogon' in crustacean_larvae and 'vermigon' in crustacean_larvae
+          assert 'கியூட்டிகிளை உதிர்த்து வளர்கிறது' in crustacean_larvae
+          assert 'antennules (first antennae)' in crustacean_larvae
+          assert 'modern molecular phylogeny' in crustacean_larvae
+          assert 'Finally the first postlarva has all the appendages of the adult.' not in crustacean_larvae
+          assert crustacean_larvae.count('bsec(') == 9
+          assert crustacean_larvae.count('btable(') == 2
+          assert crustacean_larvae.count('bfig(') == 0
+          assert crustacean_larvae.count('bqc(') == 4
+          assert 'the head or foot is reduced or modified in several groups' in mollusca
+          assert 'the number and microstructure of the mineralised layers vary' in mollusca
+          assert 'nacre is not universal' in mollusca
+          assert 'நாக்கர் எல்லா ஓடுகளிலும் இருப்பதில்லை' in mollusca
+          assert 'not a universal second stage of all molluscs' in mollusca
+          assert 'cephalopods develop directly' in mollusca
+          assert 'தலைக்காலிகளில் நேரடி வளர்ச்சி நிகழ்கிறது' in mollusca
+          assert 'this structure is not present in every bivalve' in mollusca
+          assert 'a sand grain is not a necessary nucleus' in mollusca
+          assert 'polished shell bead and a small mantle epithelial graft' in mollusca
+          assert 'மணல்துகளே முத்தின் கட்டாய மையப்பொருள் அல்ல' in mollusca
+          assert 'most bivalves filter feed, although some are predators' in mollusca
+          assert 'radula is absent in bivalves' in mollusca
+          assert 'இருவோடுடையவற்றில் அது காணப்படுவதில்லை' in mollusca
+          assert mollusca.count('bsec(') == 9
+          assert mollusca.count('bfig(') == 1
+          assert mollusca.count('btable(') == 2
+          assert mollusca.count('bqc(') == 4
+          assert 'a right branchial chamber, which contains the ctenidium' in pila
+          assert 'a left pulmonary chamber' in pila
+          assert 'வலப்புறச் செவுள் அறை' in pila
+          assert 'இடப்புற நுரையீரல் அறை' in pila
+          assert 'branchial chamber on the left' not in pila
+          assert 'pulmonary sac on the right' not in pila
+          assert 'separate, highly vascular pulmonary sac opens into the pulmonary chamber' in pila
+          assert 'left inhalant channel' in pila
+          assert 'right exhalant channel' in pila
+          assert 'right branchial chamber from the left pulmonary chamber' in pila
+          assert 'anterior and posterior renal chambers' in pila
+          assert 'முன்புறச் சிறுநீரக அறை, பின்புறச் சிறுநீரக அறை' in pila
+          assert 'uric-acid accumulation and storage excretion' in pila
+          assert 'continually ventilates the lung at its active rate' in pila
+          assert 'ommatophores' in pila
+          assert 'ஓமாட்டோஃபோர்' in pila
+          assert 'The glochidium.' in pila
+          assert 'lessonId = "u5-pila"' in pila
+          assert pila.count('bsec(') == 8
+          assert pila.count('bfig(') == 6
+          assert pila.count('btable(') == 1
+          assert pila.count('bqc(') == 4
+          assert 'in Pila the relevant developmental stages occur within the egg' in torsion
+          assert 'பைலாவில் இத்தொடக்க வளர்ச்சி நிலைகள் முட்டைக்குள்ளேயே நிகழ்கின்றன' in torsion
+          assert 'It takes place during the development of the free-swimming veliger larva' not in torsion
+          assert 'a universal two-stage, muscle-driven mechanism should not be assumed' in torsion
+          assert 'asymmetric cell proliferation and signalling' in torsion
+          assert 'எல்லா வயிற்றுக்காலிகளிலும் தசை இயக்கும் ஒரே இருகட்ட நிகழ்முறையே உள்ளது எனப் பொதுமைப்படுத்தக்கூடாது' in torsion
+          assert 'depends on the viewing orientation' in torsion
+          assert 'viewing position and fixed reference region' in torsion
+          assert 'right branchial chamber' in torsion
+          assert 'left pulmonary chamber' in torsion
+          assert 'one kidney with two renal chambers' in torsion
+          assert 'வலப்புறச் செவுள் அறையில் ஒரு க்டீனிடியம்' in torsion
+          assert 'the specific side cannot be generalised to every species' in torsion
+          assert 'should not be described as necessarily having a separate left and right opening' in torsion
+          assert 'the original right gill and kidney are therefore the ones found on the left' not in torsion
+          assert torsion.count('bsec(') == 9
+          assert torsion.count('bfig(') == 1
+          assert torsion.count('bqc(') == 4
+          assert 'lessonId = "u5-torsion"' in torsion
+          assert 'some molluscan pearls have non-nacreous mineral structures' in pearl
+          assert 'நாக்கர் இல்லாத முத்துகளையும் உருவாக்கக்கூடும்' in pearl
+          assert 'traditional term conchiolin refers broadly' in pearl
+          assert 'கொஞ்சியோலின்' in pearl
+          assert 'A functional pearl-sac epithelium is central to typical pearl formation' in pearl
+          assert 'a bead is not required in tissue-only freshwater culture' in pearl
+          assert 'மணியின்றித் திசு ஒட்டுதலையும் செய்யலாம்' in pearl
+          assert 'the graft has a different biological role' in pearl
+          assert 'a natural blister pearl is an attached pearl-related growth' in pearl.lower()
+          assert 'distinct from a simple shell blister' in pearl
+          assert 'most species filter feed, but some are predatory' in pearl
+          assert 'not simply on their thickness' in pearl
+          assert 'not necessarily an identical foreign-body trigger' in pearl
+          assert 'pearls may be nacreous or non-nacreous' in pearl
+          assert 'நாக்கர் முத்துகளும் நாக்கர் அல்லாத முத்துகளும்' in pearl
+          assert 'commercial pearl-oyster culture should not be confused with the anatomy and biology of pila' in pearl.lower()
+          assert 'A pearl is a concretion of nacre formed by a pearl sac' not in pearl
+          assert 'The main structural protein of the organic matrix of molluscan shells.' not in pearl
+          assert 'A pearl formed in an oyster or mussel after a human operation that supplies a nucleus and mantle tissue.' not in pearl
+          assert 'lessonId = "u5-pearl"' in pearl
+          assert pearl.count('bsec(') == 9
+          assert pearl.count('bfig(') == 1
+          assert pearl.count('bqc(') == 4
+          assert 'central region or nucleus if present (not always an implanted bead)' in pearl
+          assert 'எல்லாவற்றிலும் பதிக்கப்பட்ட மணி இருப்பதில்லை' in pearl
+          assert 'some other pearls instead have a non-nacreous structure' in pearl
+          assert 'thick nacre alone does not guarantee high lustre' in pearl
+          assert 'தடிமன் மட்டுமே அதிக ஒளிர்வை உறுதிப்படுத்தாது' in pearl
+          assert 'நீரோட்டக் குழாய் மண்டலம்' in echinodermata
+          assert 'நீர்க்குழல் மண்டலம்' not in echinodermata
+          assert 'specialised fluid rather than a continuous stream of ordinary seawater' in echinodermata
+          assert 'In a typical sea star' in echinodermata
+          assert 'holothurians generally have an internal madreporite' in echinodermata
+          assert 'crinoids lack the typical external madreporite' in echinodermata
+          assert 'கடல் வெள்ளரிகளில் மேட்ரிபோரைட் பொதுவாக உட்புறத்திலும்' in echinodermata
+          assert 'external and often aboral in sea stars, but internal or differently placed' in echinodermata
+          assert 'hydrocoel, derived from the left mesocoel' in echinodermata
+          assert 'ஹைட்ரோசீல் (hydrocoel)' in echinodermata
+          assert 'porous three-dimensional lattice called stereom' in echinodermata
+          assert 'skeletogenic cells (sclerocytes)' in echinodermata
+          assert 'ஸ்டீரியோம் (stereom)' in echinodermata
+          assert 'not every species releases a long-lived free-swimming larva' in echinodermata
+          assert 'followed by a brachiolaria stage' in echinodermata
+          assert 'பிராக்கியோலேரியா (brachiolaria)' in echinodermata
+          assert 'some species lack an anus' in echinodermata
+          assert 'the cardiac stomach can be everted' in echinodermata
+          assert '11 July 2001' in echinodermata
+          assert '11 ஜூலை 2001' in echinodermata
+          assert 'reproduce late, their populations recover slowly' not in echinodermata
+          assert 'lessonId = "u5-echinodermata"' in echinodermata
+          assert echinodermata.count('bsec(') == 11
+          assert echinodermata.count('bfig(') == 1
+          assert echinodermata.count('btable(') == 1
+          assert echinodermata.count('bqc(') == 4
+          print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
+          PY
       - name: Compile and test exact active branch
         run: gradle -p native-app :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin :app:testDebugUnitTest --stacktrace
       - uses: actions/upload-artifact@v4
