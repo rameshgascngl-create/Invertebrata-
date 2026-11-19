@@ -7,6 +7,10 @@ on:
       - '.github/workflows/native-v190-permanent-signed-release.yml'
       - 'native-app/build.gradle.kts'
       - 'native-app/app/build.gradle.kts'
+      - 'native-app/app/src/main/java/**'
+      - 'native-app/app/src/main/assets/**'
+      - 'native-app/app/src/main/res/**'
+      - 'Paramecium_Approved_Integration_Kit.zip'
   workflow_dispatch:
     inputs:
       qa_approved:

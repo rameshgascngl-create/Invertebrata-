@@ -33,14 +33,14 @@ object CnidariaBookChapter {
             bsec("characters", "General characters", "பொதுப்பண்புகள்",
                 blocks = listOf(
                     bp("The characters are best learned in groups: where cnidarians live, how their bodies are built, how they feed and digest, and how they reproduce." to
-                        "பண்புகளைக் குழுக்களாகக் கற்பது சிறந்தது: நிடேரியாக்கள் எங்கு வாழ்கின்றன, உடல் எவ்வாறு கட்டப்பட்டுள்ளது, எவ்வாறு உண்டு செரிக்கின்றன, எவ்வாறு இனப்பெருக்கம் செய்கின்றன."),
+                        "வாழிடம், உடலமைப்பு, உணவூட்டம், செரிமானம், இனப்பெருக்கம் ஆகிய தலைப்புகளின் கீழ் நிடேரியன்களின் பொதுப் பண்புகளைத் தொகுத்துப் படிப்பது எளிது."),
                     bpoints("Habitat and symmetry", "வாழிடமும் சமச்சீரும்",
                         "Aquatic animals, nearly all marine; a few, such as Hydra, live in fresh water." to "நீர்வாழ் விலங்குகள், கிட்டத்தட்ட அனைத்தும் கடலில்; ஹைட்ரா போன்ற சிலவே நன்னீரில்.",
-                        "Solitary or colonial, and attached (sessile) or free-swimming." to "தனித்தவை அல்லது காலனி; ஒட்டி வாழ்பவை அல்லது சுதந்திரமாக நீந்துபவை.",
+                        "Solitary or colonial, and attached (sessile) or free-swimming." to "தனித்து அல்லது காலனியாக வாழ்பவை; ஒரு பரப்பில் ஒட்டியிருப்பவை அல்லது சுதந்திரமாக நீந்துபவை.",
                         "Radial or biradial symmetry, in which the parts are arranged around a central axis passing through the mouth." to "ஆரச்சமச்சீர் அல்லது இருபக்க ஆரச்சமச்சீர்; பாகங்கள் வாய் வழியே செல்லும் மைய அச்சைச் சுற்றி அமைந்துள்ளன.",
                     ),
                     bpoints("Body construction", "உடல் கட்டமைப்பு",
-                        "Tissue grade of organisation: cells are organised into tissues but not into true organs or organ systems." to "திசு நிலை அமைப்பு: செல்கள் திசுக்களாக ஒழுங்கமைந்துள்ளன; உண்மையான உறுப்புகளாகவோ உறுப்பு மண்டலங்களாகவோ அல்ல.",
+                        "Tissue grade of organisation: cells are organised into tissues but not into true organs or organ systems." to "திசு நிலை அமைப்பு: செல்கள் திசுக்களாக ஒழுங்கமைந்துள்ளன; ஆனால் நன்கு வேறுபட்ட உண்மையான உறுப்புகளும் உறுப்பு மண்டலங்களும் இல்லை.",
                         "Diploblastic: the body wall has an outer epidermis and an inner gastrodermis." to "ஈரடுக்கு உடலுடையவை: உடற்சுவரில் வெளி எப்பிடெர்மிஸ், உள் காஸ்ட்ரோடெர்மிஸ்.",
                         "Between the two layers lies the mesoglea, a jelly-like, non-cellular layer, which in some forms contains wandering cells." to "இரு அடுக்குகளுக்கிடையே மீசோகிளியா என்ற ஜெல்லி போன்ற செல்லற்ற அடுக்கு உள்ளது; சில வடிவங்களில் அதில் அலையும் செல்கள் உள்ளன.",
                         "Acoelomate: there is no body cavity other than the gut." to "உடற்குழியற்றவை: குடலைத் தவிர வேறு உடற்குழி இல்லை.",
@@ -48,7 +48,7 @@ object CnidariaBookChapter {
                     bpoints("Cnidocytes and the nervous system", "நிடோசைட்டுகளும் நரம்பு மண்டலமும்",
                         "Stinging cells (cnidocytes) with nematocysts, used to capture prey and for defence, are present, especially on the tentacles." to "நெமட்டோசிஸ்ட் உள்ள கொட்டும் செல்கள் (நிடோசைட்டுகள்) குறிப்பாக உணர்கொம்புகளில் உள்ளன; இரை பிடிக்கவும் தற்காப்புக்கும் பயன்படுகின்றன.",
                         "A nerve net of nerve cells lies at the base of the epidermis and often of the gastrodermis; there is no brain." to "நரம்பு செல்களின் நரம்பு வலை எப்பிடெர்மிஸ் அடியிலும் பெரும்பாலும் காஸ்ட்ரோடெர்மிஸ் அடியிலும் உள்ளது; மூளை இல்லை.",
-                        "Epitheliomuscular cells provide a simple muscular system, and sense cells respond to touch and chemicals." to "எப்பிதீலியோதசை செல்கள் எளிய தசை அமைப்பைத் தருகின்றன; உணர் செல்கள் தொடுதலுக்கும் வேதிப்பொருட்களுக்கும் துலங்குகின்றன.",
+                        "Epitheliomuscular cells provide a simple muscular system, and sense cells respond to touch and chemicals." to "எப்பிதீலியத் தசைச் செல்கள் உடல் சுருங்குவதற்கான எளிய இயக்க அமைப்பை உருவாக்குகின்றன; உணர் செல்கள் தொடுதலுக்கும் வேதிப்பொருட்களுக்கும் துலங்குகின்றன.",
                     ),
                     bpoints("Digestion and excretion", "செரிமானமும் வெளியேற்றமும்",
                         "The digestive cavity is a gastrovascular cavity (coelenteron) with a single opening, the mouth, which also serves as the anus." to "செரிமானக் குழி காஸ்ட்ரோவாஸ்குலர் குழி (சீலென்டிரான்); ஒரே திறப்பான வாய் மலவாயாகவும் செயல்படுகிறது.",
@@ -57,7 +57,7 @@ object CnidariaBookChapter {
                     ),
                     bpoints("Body forms and reproduction", "உடல் வடிவங்களும் இனப்பெருக்கமும்",
                         "Two body forms occur: the polyp and the medusa; one or both may be present in the life cycle." to "இரு உடல் வடிவங்கள் உண்டு: பாலிப், மெடுசா; வாழ்க்கைச் சுழற்சியில் ஒன்று அல்லது இரண்டும் இருக்கலாம்.",
-                        "Reproduction is asexual by budding, and sexual by gametes; the sexes are usually separate." to "மொட்டுவிடுவதால் பாலிலாவாகவும் கேமீட்டுகளால் பாலினமாகவும் இனப்பெருக்கம்; பாலினங்கள் பொதுவாகத் தனித்தனி.",
+                        "Reproduction is asexual by budding, and sexual by gametes; the sexes are usually separate." to "மொட்டுவிடுதல் மூலம் பாலிலா முறையிலும் இனச்செல்கள் மூலம் பாலியல் முறையிலும் இனப்பெருக்கம் நடைபெறுகிறது; பல இனங்களில் ஆண், பெண் பாலினங்கள் தனித்தனியாகக் காணப்படுகின்றன.",
                         "The fertilised egg develops into a ciliated planula larva in most groups." to "கருவுற்ற முட்டையிலிருந்து பெரும்பாலான குழுக்களில் குறுஇழைகளால் (cilia) மூடப்பட்ட பிளானுலா இளவுயிரி உருவாகிறது.",
                         "Alternation of generations occurs in many hydrozoans and in the scyphozoans, in which an asexual polyp stage alternates with a sexual medusa stage." to "பல ஹைட்ரோசோவா மற்றும் சிஃபோசோவா இனங்களின் வாழ்க்கைச் சுழற்சியில் பாலிலா இனப்பெருக்கம் செய்யும் பாலிப் நிலையையும் பாலின இனப்பெருக்கம் செய்யும் மெடுசா நிலையையும் காணலாம். இவ்விரண்டும் இருமடிய உடல்நிலைகள்; மடியஎண் மாற்றம் அல்ல.",
                     ),
@@ -77,23 +77,23 @@ object CnidariaBookChapter {
             bsec("body-wall", "The body wall", "உடற்சுவர்",
                 blocks = listOf(
                     bp("The body wall is the key to the plan of the phylum. Its outer layer, the epidermis, is a covering epithelium that contains epitheliomuscular cells, sensory cells, nerve cells, gland cells, interstitial cells and the cnidocytes. The epitheliomuscular cells have contractile extensions at their bases, running along the length of the body, and by their action the animal shortens or bends." to
-                        "உடற்சுவரே தொகுதியின் திட்டத்துக்கான திறவுகோல். அதன் வெளியடுக்கான எப்பிடெர்மிஸ் மூடும் எப்பிதீலியம்; அதில் எப்பிதீலியோதசை செல்கள், உணர் செல்கள், நரம்பு செல்கள், சுரப்பி செல்கள், இடைநிலை செல்கள், நிடோசைட்டுகள் உள்ளன. எப்பிதீலியோதசை செல்களின் அடிப்பகுதியில் உடலின் நீளவாக்கில் செல்லும் சுருங்கும் நீட்சிகள் உள்ளன; அவற்றின் செயலால் விலங்கு சுருங்குகிறது அல்லது வளைகிறது."),
+                        "உடற்சுவரே தொகுதியின் திட்டத்துக்கான திறவுகோல். அதன் வெளியடுக்கான எப்பிடெர்மிஸ் மூடும் எப்பிதீலியம்; அதில் எப்பிதீலியத் தசைச் செல்கள், உணர் செல்கள், நரம்பு செல்கள், சுரப்பி செல்கள், இடைநிலை செல்கள், நிடோசைட்டுகள் உள்ளன. எப்பிதீலியத் தசைச் செல்களின் அடிப்பகுதியில் உடலின் நீளவாக்கில் செல்லும் சுருங்கும் நீட்சிகள் உள்ளன; அவற்றின் செயலால் விலங்கு சுருங்குகிறது அல்லது வளைகிறது."),
                     bp("The inner layer, the gastrodermis, lines the gastrovascular cavity. Its nutritive-muscular cells engulf particles of food, and its gland cells discharge enzymes into the cavity. Between the two layers lies the mesoglea, which supports the body like a thin skeleton. In hydrozoans it is a thin layer without cells; in scyphozoans it is thick and contains wandering cells, and forms the main mass of the jellyfish." to
                         "உள்ளடுக்கான காஸ்ட்ரோடெர்மிஸ் காஸ்ட்ரோவாஸ்குலர் குழியை மூடுகிறது. அதன் ஊட்ட-தசை செல்கள் உணவுத் துகள்களை விழுங்குகின்றன; சுரப்பி செல்கள் நொதிகளைக் குழிக்குள் வெளியிடுகின்றன. இரு அடுக்குகளுக்கிடையே உள்ள மீசோகிளியா மெல்லிய எலும்புக்கூடுபோல் உடலைத் தாங்குகிறது. ஹைட்ரோசோவாக்களில் அது செல்களற்ற மெல்லிய அடுக்கு; சிஃபோசோவாக்களில் தடித்து அலையும் செல்களைக் கொண்டு ஜெல்லிமீனின் பெரும்பகுதியாக அமைகிறது."),
                     bpoints("Cell types of the epidermis", "எப்பிடெர்மிஸின் செல் வகைகள்",
-                        "Epitheliomuscular cells: cover the body and contract." to "எப்பிதீலியோதசை செல்கள்: உடலை மூடி சுருங்குகின்றன.",
-                        "Sensory and nerve cells: receive stimuli and form the nerve net." to "உணர், நரம்பு செல்கள்: தூண்டல்களைப் பெற்று நரம்பு வலையை உருவாக்குகின்றன.",
+                        "Epitheliomuscular cells: cover the body and contract." to "எப்பிதீலியத் தசைச் செல்கள்: உடலை மூடி சுருங்குகின்றன.",
+                        "Sensory and nerve cells: receive stimuli and form the nerve net." to "உணர் செல்கள் தூண்டல்களை உணர்கின்றன; நரம்பு செல்கள் தகவலைக் கடத்தும் நரம்பு வலையை உருவாக்குகின்றன.",
                         "Cnidocytes: capture prey and defend." to "நிடோசைட்டுகள்: இரை பிடித்துத் தற்காக்கின்றன.",
                         "Interstitial cells: small, undifferentiated cells that replace the others and form gametes in many hydrozoans." to "இடைநிலை செல்கள்: மற்றவற்றை மாற்றும் சிறிய வேறுபாடற்ற செல்கள்; பல ஹைட்ரோசோவாக்களில் கேமீட்டுகளை உருவாக்குகின்றன.",
                         "Gland cells: secrete mucus and, at the base, adhesive material." to "சுரப்பி செல்கள்: சளியையும், அடியில் ஒட்டும் பொருளையும் சுரக்கின்றன.",
                     ),
-                    bdef("Epitheliomuscular cell", "எப்பிதீலியோதசை செல் (Epitheliomuscular cell)",
+                    bdef("Epitheliomuscular cell", "எப்பிதீலியத் தசைச் செல் (Epitheliomuscular cell)",
                         "A cell of the cnidarian epidermis that forms part of the covering epithelium and has a contractile base." to
                             "நிடேரியாவின் எப்பிடெர்மிஸில் மூடும் எப்பிதீலியத்தின் பகுதியாகவும், சுருங்கும் அடிப்பகுதி கொண்டதாகவும் உள்ள செல்."),
                     bdef("Interstitial cell", "இடைநிலை செல் (Interstitial cell)",
                         "A small, undifferentiated cell lying between the other cells, able to change into cnidocytes, nerve cells or gametes." to
                             "மற்ற செல்களுக்கிடையே உள்ள, நிடோசைட்டுகளாகவோ நரம்பு செல்களாகவோ கேமீட்டுகளாகவோ மாறக்கூடிய, சிறிய வேறுபாடற்ற செல்."),
-                    bnote("Two layers, not three", "இரு அடுக்கு; மூன்று அல்ல",
+                    bnote("Two layers, not three", "இரு கருப்படலங்கள்; மூன்று அல்ல",
                         "The mesoglea is not a germ layer. It is secreted by the two cell layers, which is why the animal is called diploblastic and not triploblastic." to
                             "மீசோகிளியா கருப்படலம் அல்ல; இரு செல் அடுக்குகளாலும் சுரக்கப்படுகிறது; எனவே விலங்கு இரு அடுக்குடையது (டிப்ளோபிளாஸ்டிக்) எனப்படுகிறது; மூன்று அடுக்குடையது அல்ல."),
                 )),
@@ -138,17 +138,17 @@ object CnidariaBookChapter {
                             listOf("Mouth" to "வாய்", "Directed upwards" to "மேல்நோக்கி", "Directed downwards" to "கீழ்நோக்கி"),
                             listOf("Mesoglea" to "மீசோகிளியா", "Thin" to "மெல்லியது", "Thick and jelly-like" to "தடித்தது, ஜெல்லி போன்றது"),
                             listOf("Number of individuals" to "உயிரிகளின் எண்ணிக்கை", "Solitary or colonial" to "தனித்தது அல்லது காலனி", "Usually solitary" to "பொதுவாகத் தனித்தது"),
-                            listOf("Reproduction" to "இனப்பெருக்கம்", "Commonly asexual by budding" to "பொதுவாக மொட்டு விடுதல் மூலம் பாலிலா", "Commonly sexual, forms gametes" to "பொதுவாகப் பாலினம்; கேமீட்டுகளை உருவாக்கும்"),
+                            listOf("Reproduction" to "இனப்பெருக்கம்", "Commonly asexual by budding" to "பொதுவாக மொட்டுவிடுதலால் பாலிலா இனப்பெருக்கம்", "Commonly sexual, forms gametes" to "பொதுவாகப் பாலியல் இனப்பெருக்கம்; இனச்செல்களை உருவாக்கும்"),
                         )),
                     bdef("Polyp", "பாலிப்",
                         "The attached, cylindrical, usually asexual body form of a cnidarian, with the mouth and tentacles at the free end." to
-                            "நிடேரியாவின் ஒட்டிய, உருளை வடிவ, பொதுவாகப் பாலிலா உடல் வடிவம்; வாயும் உணர்கொம்புகளும் தனித்த முனையில்."),
+                            "நிடேரியாவின் ஒட்டிய, உருளை வடிவ, பொதுவாகப் பாலிலா இனப்பெருக்கம் செய்யும் உடல் வடிவம்; வாயும் உணர்கொம்புகளும் தனித்த முனையில்."),
                     bdef("Medusa", "மெடுசா",
                         "The free-swimming, bell-shaped, usually sexual body form of a cnidarian." to
-                            "நிடேரியாவின் சுதந்திரமாக நீந்தும், மணி வடிவ, பொதுவாகப் பாலின உடல் வடிவம்."),
+                            "நிடேரியாவின் சுதந்திரமாக நீந்தும், மணி வடிவ, பொதுவாகப் பாலியல் இனப்பெருக்கத்தில் பங்கேற்கும் உடல் வடிவம்."),
                     bdef("Alternation of generations", "தலைமுறை மாற்றம்",
                         "A life cycle in which an asexual stage, the polyp, and a sexual stage, the medusa, follow each other." to
-                            "பாலிலா நிலையான பாலிப்பும் பாலின நிலையான மெடுசாவும் ஒன்றையொன்று தொடரும் வாழ்க்கைச் சுழற்சி."),
+                            "பாலிலா நிலையான பாலிப்பும் பாலியல் இனப்பெருக்க நிலையான மெடுசாவும் ஒன்றையொன்று தொடரும் வாழ்க்கைச் சுழற்சி."),
                     bnote("Forms of one life cycle", "ஒரே சுழற்சியின் வடிவங்கள்",
                         "The polyp and the medusa of a species are two forms of one life cycle. They are not two species." to
                             "ஓர் இனத்தின் பாலிப்பும் மெடுசாவும் ஒரே சுழற்சியின் இரு வடிவங்கள்; இரு இனங்கள் அல்ல."),
@@ -156,9 +156,9 @@ object CnidariaBookChapter {
             bsec("nutrition", "Feeding and digestion", "உணவூட்டமும் செரிமானமும்",
                 blocks = listOf(
                     bp("Cnidarians are carnivores. The tentacles, armed with nematocysts, catch small animals such as crustaceans and larvae of fishes, paralyse them and pass them to the mouth, which opens into the gastrovascular cavity. The same opening serves for the intake of food and for the discharge of the undigested remains, since the gut has only one opening. Digestion begins outside the cells (extracellular) in the cavity, where enzymes secreted by gland cells of the gastrodermis break the food into small pieces. The particles are then taken into the cells of the gastrodermis by phagocytosis and digestion is completed inside the cells (intracellular).",
-                        "நிடேரியன்கள் ஊனுண்ணிகள். நெமட்டோசிஸ்ட்டுகள் கொண்ட உணர்கொம்புகள் கிரஸ்டேஷியன்கள், மீன் லார்வாக்கள் போன்ற சிறு விலங்குகளைப் பிடித்து, அவற்றை மரத்துப்போகச் செய்து, காஸ்ட்ரோவாஸ்குலர் குழியில் திறக்கும் வாய்க்குக் கொண்டு செல்கின்றன. குடலுக்கு ஒரே துளை இருப்பதால் அதே துளை உணவை உட்கொள்ளவும் செரிக்காத எச்சத்தை வெளியேற்றவும் பயன்படுகிறது. செரிமானம் குழியில் செல்களுக்கு வெளியே (புறச்செல்) தொடங்குகிறது; அங்கு காஸ்ட்ரோடெர்மிஸின் சுரப்பி செல்கள் சுரக்கும் நொதிகள் உணவைச் சிறு துண்டுகளாக்குகின்றன. பின்னர் துகள்கள் காஸ்ட்ரோடெர்மிஸ் செல்களுக்குள் செல்விழுங்கலால் எடுக்கப்பட்டு, செரிமானம் செல்களுக்குள் (அகச்செல்) முடிகிறது."),
+                        "நிடேரியன்கள் ஊனுண்ணிகள். நெமட்டோசிஸ்ட்டுகள் கொண்ட உணர்கொம்புகள் கிரஸ்டேஷியன்கள், மீன் லார்வாக்கள் போன்ற சிறு விலங்குகளைப் பிடித்து, அவற்றை இயக்கமற்றதாக்கி, காஸ்ட்ரோவாஸ்குலர் குழியில் திறக்கும் வாய்க்குக் கொண்டு செல்கின்றன. குடலுக்கு ஒரே துளை இருப்பதால் அதே துளை உணவை உட்கொள்ளவும் செரிக்காத எச்சத்தை வெளியேற்றவும் பயன்படுகிறது. செரிமானம் குழியில் செல்களுக்கு வெளியே (புறச்செல்) தொடங்குகிறது; அங்கு காஸ்ட்ரோடெர்மிஸின் சுரப்பி செல்கள் சுரக்கும் நொதிகள் உணவைச் சிறு துண்டுகளாக்குகின்றன. பின்னர் உணவுத் துகள்கள் காஸ்ட்ரோடெர்மிஸ் செல்களால் செல்விழுங்கல் முறையில் உட்கொள்ளப்பட்டு, செரிமானம் செல்களுக்குள் (அகச்செல்) முடிகிறது."),
                     bp("The cnidarians therefore show an intermediate stage between the entirely intracellular digestion of sponges and the entirely extracellular digestion of higher animals. The distribution of food through the body is by the gastrovascular cavity, which in large forms such as the jellyfish is extended into canals, and no circulatory or respiratory systems are needed because every cell is close to either the water or the cavity, and gases pass by diffusion.",
-                        "இவ்வாறு நிடேரியன்கள் கடற்பஞ்சுகளின் முழுமையான அகச்செல் செரிமானத்துக்கும் உயர் விலங்குகளின் முழுமையான புறச்செல் செரிமானத்துக்கும் இடைப்பட்ட நிலையைக் காட்டுகின்றன. உடல் முழுவதும் உணவு பரவல் காஸ்ட்ரோவாஸ்குலர் குழி மூலம் நிகழ்கிறது; ஜெல்லிமீன் போன்ற பெரிய வடிவங்களில் அது கால்வாய்களாக நீள்கிறது; ஒவ்வொரு செல்லும் நீருக்கோ குழிக்கோ அருகிலிருப்பதால் சுற்றோட்ட, சுவாச மண்டலங்கள் தேவையில்லை; வாயுக்கள் பரவலால் கடக்கின்றன."),
+                        "இவ்வாறு நிடேரியன்கள் கடற்பஞ்சுகளில் காணப்படும் அகச்செல் செரிமானத்துடன் ஒப்பிடும்போது, நிடேரியன்களில் புறச்செல் செரிமானமும் அகச்செல் செரிமானமும் இணைந்து நடைபெறுவதைக் காணலாம். உடல் முழுவதும் உணவு பரவல் காஸ்ட்ரோவாஸ்குலர் குழி மூலம் நிகழ்கிறது; ஜெல்லிமீன் போன்ற பெரிய வடிவங்களில் அது கால்வாய்களாக நீள்கிறது; ஒவ்வொரு செல்லும் நீருக்கோ குழிக்கோ அருகிலிருப்பதால் சுற்றோட்ட, சுவாச மண்டலங்கள் தேவையில்லை; வாயுக்கள் பரவலால் கடக்கின்றன."),
                     bdef("Extracellular digestion", "புறச்செல் செரிமானம் (Extracellular digestion)", "Digestion that takes place in the cavity of the gut, outside the cells, by enzymes that the cells secrete." to
                         "செல்கள் சுரக்கும் நொதிகளால், செல்களுக்கு வெளியே குடல் குழியில் நிகழும் செரிமானம்."),
                     bdef("Intracellular digestion", "அகச்செல் செரிமானம் (Intracellular digestion)", "Digestion that takes place inside the cells, in food vacuoles, after the food particles have been engulfed." to
@@ -167,7 +167,7 @@ object CnidariaBookChapter {
             bsec("nerves", "Nerve net, movement and sense organs", "நரம்பு வலை, இயக்கம், உணர் உறுப்புகள்",
                 blocks = listOf(
                     bp("The nervous system of a cnidarian is a nerve net, a network of nerve cells that lies at the base of the epidermis and the gastrodermis and is joined by synapses. There is no brain. A stimulus applied at any point spreads outward through the net in all directions, and so the animal responds as a whole. In many species there are also more rapid conducting paths, and the medusae have concentrations of nerve cells near the margin of the bell, which co-ordinate the swimming pulses.",
-                        "நிடேரியனின் நரம்பு மண்டலம் நரம்பு வலை; எப்பிடெர்மிஸ், காஸ்ட்ரோடெர்மிஸ் அடிப்பகுதியில் அமைந்து சினாப்சுகளால் இணைக்கப்பட்ட நரம்பு செல்களின் வலைப்பின்னல். மூளை இல்லை. எந்தப் புள்ளியிலும் தரப்படும் தூண்டல் வலை வழியே எல்லாத் திசைகளிலும் பரவுகிறது; எனவே விலங்கு முழுமையாகப் பதிலளிக்கிறது. பல இனங்களில் வேகமான கடத்து வழிகளும் உள்ளன; மெடுசாக்களுக்கு மணியின் விளிம்பருகே நீந்தும் துடிப்புகளை ஒருங்கிணைக்கும் நரம்பு செல் குவிப்புகள் உள்ளன."),
+                        "நிடேரியனின் நரம்பு மண்டலம் நரம்பு வலை; எப்பிடெர்மிஸ் மற்றும் காஸ்ட்ரோடெர்மிஸ் அடிப்பகுதிகளில் அமைந்து, சினாப்சுகள் மூலம் தொடர்புடைய நரம்பு செல்களால் ஆன வலைப்பின்னல். மூளை இல்லை. எந்தப் புள்ளியிலும் தரப்படும் தூண்டல் வலை வழியே எல்லாத் திசைகளிலும் பரவுகிறது; எனவே விலங்கின் பல பகுதிகள் ஒருங்கிணைந்த பதில்வினையைக் காட்டுகின்றன. பல இனங்களில் வேகமான கடத்து வழிகளும் உள்ளன; மெடுசாக்களுக்கு மணியின் விளிம்பருகே நீந்தும் துடிப்புகளை ஒருங்கிணைக்கும் நரம்பு செல் குவிப்புகள் உள்ளன."),
                     bp("The medusae have the best developed sense organs in the phylum. In the scyphozoan jellyfish, groups of sense organs called rhopalia lie in notches at the edge of the bell, and each contains a statocyst for balance and, in many species, light-sensitive ocelli. In the box jellyfish (Cubozoa), the rhopalia include eyes with a lens, which are the most complex eyes found in any cnidarian. Polyps have simpler sense, chiefly the sensory cells of the tentacles that respond to touch and to chemicals from the prey.",
                         "மெடுசாக்களுக்கு இத்தொகுதியில் மிகச் சிறந்த உணர் உறுப்புகள் உள்ளன. சிஃபோசோவா ஜெல்லிமீன்களில் ரோபேலியா எனப்படும் உணர் உறுப்புத் தொகுதிகள் மணியின் விளிம்பிலுள்ள வெட்டுகளில் அமைந்துள்ளன; ஒவ்வொன்றிலும் சமநிலைக்கான ஸ்டேட்டோசிஸ்டும், பல இனங்களில் ஒளியுணர் ஓசெல்லிகளும் உள்ளன. பெட்டி ஜெல்லிமீன்களில் (கியூபோசோவா) ரோபேலியாவில் லென்ஸ் கொண்ட கண்கள் உள்ளன; எந்த நிடேரியனிலும் காணப்படும் மிகச் சிக்கலான கண்கள் இவையே. பாலிப்புகளுக்கு எளிய உணர்வு; முக்கியமாக தொடுதலுக்கும் இரையின் வேதிப்பொருட்களுக்கும் பதிலளிக்கும் உணர்கொம்புகளின் உணர் செல்கள்."),
                     bdef("Nerve net", "நரம்பு வலை", "A diffuse network of nerve cells without a brain, found in cnidarians, through which a stimulus spreads in all directions." to
@@ -191,16 +191,16 @@ object CnidariaBookChapter {
                     bp("Examination questions on the phylum ask for the general characters, the nematocyst, the polyp and medusa forms, and the classification. A good answer on the general characters groups the points under symmetry and layers (radial, diploblastic), body cavity and gut (gastrovascular, one opening), the stinging cells, nerve net, and the two forms with the alternation of generations. A question on the polyp and medusa should state that the two forms are variations of one body plan, the medusa being in effect an upside-down polyp with a greatly thickened mesoglea, and it should include a labelled diagram of each.",
                         "தொகுதி குறித்த தேர்வு வினாக்கள் பொதுப்பண்புகள், நெமட்டோசிஸ்ட், பாலிப், மெடுசா வடிவங்கள், வகைப்பாடு ஆகியவற்றைக் கேட்கின்றன. பொதுப்பண்புகள் குறித்த நல்ல விடை புள்ளிகளை சமச்சீரும் அடுக்குகளும் (ஆரம், ஈரடுக்கு), உடற்குழியும் குடலும் (காஸ்ட்ரோவாஸ்குலர், ஒரே துளை), கொட்டும் செல்கள், நரம்பு வலை, தலைமுறை மாற்றத்துடன் இரு வடிவங்கள் என குழுவாக்குகிறது. பாலிப், மெடுசா குறித்த வினா இரு வடிவங்களும் ஒரே உடல் திட்டத்தின் வேறுபாடுகள் என்றும், மெடுசாவின் வாய்ப்பகுதி கீழ்நோக்கி அமைந்திருப்பதையும், பாலிப்பைவிட அதன் மீசோகிளியா பொதுவாக அதிகத் தடிப்புடன் இருப்பதையும் கூற வேண்டும்; ஒவ்வொன்றுக்கும் பெயரிட்ட படம் இருக்க வேண்டும்."),
                     bpoints("Common errors to avoid", "தவிர்க்க வேண்டிய அடிக்கடி நிகழும் பிழைகள்",
-                        "Calling the cnidarians triploblastic or giving them an anus." to "நிடேரியன்களை மூவடுக்கு என்றோ குதம் உடையவை என்றோ கூறுதல்.",
+                        "Calling the cnidarians triploblastic or giving them an anus." to "நிடேரியன்களை மூவடுக்குடைய விலங்குகள் என்றோ தனி மலவாய் கொண்டவை என்றோ கூறுவது தவறு.",
                         "Saying that the nematocyst is a cell; it is the capsule within the cnidocyte." to "நெமட்டோசிஸ்ட் செல் என்று கூறுதல்; அது நிடோசைட்டுக்குள் உள்ள காப்ஸ்யூல்.",
-                        "Giving Aurelia a dominant polyp; in Aurelia the medusa is the conspicuous stage." to "ஆரீலியாவில் ஆதிக்கமுள்ள பாலிப் என்று தருதல்; ஆரீலியாவில் மெடுசாவே மிகத் தெரியும் நிலை.",
+                        "Giving Aurelia a dominant polyp; in Aurelia the medusa is the conspicuous stage." to "ஆரீலியாவில் ஆதிக்கமுள்ள பாலிப் என்று தருதல்; ஆரீலியாவில் மெடுசா நிலையே தெளிவாகக் காணப்படும் முதன்மை நிலையாகும்.",
                         "Attributing a brain or a circulatory system to the phylum." to "தொகுதிக்கு மூளையோ சுற்றோட்ட மண்டலமோ உண்டு எனக் கூறுதல்.",
                     ),
                 )),
             bsec("classification", "Classification into classes", "வகுப்புகளாக வகைப்படுத்துதல்",
                 blocks = listOf(
                     bp("The paper requires classification of the phylum up to classes. Three classes are recognised in the syllabus: Hydrozoa, Scyphozoa and Anthozoa. Modern classifications also recognise further groups, such as the Cubozoa (box jellies), but the three-class scheme is that on which the paper is set and it is followed here." to
-                        "வினாத்தாள் தொகுதியை வகுப்புகள் வரை வகைப்படுத்தக் கேட்கிறது. பாடத்திட்டத்தில் மூன்று வகுப்புகள் அங்கீகரிக்கப்படுகின்றன: ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா. நவீன வகைப்பாடுகள் கியூபோசோவா (பெட்டி ஜெல்லிகள்) போன்ற மேலும் குழுக்களையும் ஏற்கின்றன; ஆனால் தாள் அமைந்துள்ள மூன்று வகுப்பு முறையே இங்கு பின்பற்றப்படுகிறது."),
+                        "வினாத்தாள் தொகுதியை வகுப்புகள் வரை வகைப்படுத்தக் கேட்கிறது. இப்பாடத்திட்டத்தில் மூன்று வகுப்புகள் குறிப்பிடப்பட்டுள்ளன: ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா. நவீன வகைப்பாடுகள் கியூபோசோவா (பெட்டி ஜெல்லிகள்) போன்ற மேலும் குழுக்களையும் ஏற்கின்றன; ஆனால் இப்பாடத்திட்டத்தின் மூன்று வகுப்பு முறையே இங்கு பின்பற்றப்படுகிறது."),
                     btable("Classes of the phylum compared", "தொகுதியின் வகுப்புகள் ஒப்பீடு",
                         listOf("Feature" to "பண்பு", "Hydrozoa" to "ஹைட்ரோசோவா", "Scyphozoa" to "சிஃபோசோவா", "Anthozoa" to "ஆந்தோசோவா"),
                         listOf(
@@ -214,7 +214,7 @@ object CnidariaBookChapter {
                 subs = listOf(
                     bsub("Class Hydrozoa", "வகுப்பு ஹைட்ரோசோவா",
                         bp("Mostly small, often colonial, and marine, though Hydra is a freshwater member. The polyp is the dominant stage in many, and the medusa, where present, has a shelf-like velum and is without a gastric partition. The mesoglea has no cells. The gonads are epidermal. Examples are Hydra, Obelia, Physalia and Velella." to
-                            "பெரும்பாலும் சிறிய, பல இனங்களில் கூட்டுயிரிகளாக வாழும் கடல்வாழ் விலங்குகள்; ஹைட்ரா நன்னீர் உறுப்பினர். பலவற்றில் பாலிப் முதன்மை நிலை; மெடுசா இருக்குமிடத்து குடை விளிம்பிலிருந்து உள்நோக்கி நீளும் மெல்லிய திசுமடிப்பான வெலம் உண்டு, இரைப்பை பிரிவுகள் இல்லை. மீசோகிளியாவில் செல்கள் இல்லை. இனப்பெருக்கச் சுரப்பிகள் எப்பிடெர்மிஸில் உள்ளன. எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா, பைசாலியா, வெலெல்லா."),
+                            "பெரும்பாலும் சிறிய, பல இனங்களில் காலனிகளாக இணைந்து வாழும் கடல்வாழ் விலங்குகள்; ஹைட்ரா நன்னீர் உறுப்பினர். பலவற்றில் பாலிப் முதன்மை நிலை; மெடுசா இருக்குமிடத்து குடை விளிம்பிலிருந்து உள்நோக்கி நீளும் மெல்லிய திசுமடிப்பான வெலம் உண்டு, இரைப்பை பிரிவுகள் இல்லை. மீசோகிளியாவில் செல்கள் இல்லை. இனப்பெருக்கச் சுரப்பிகள் எப்பிடெர்மிஸில் உள்ளன. எடுத்துக்காட்டுகள்: ஹைட்ரா, ஒபீலியா, பைசாலியா, வெலெல்லா."),
                     ),
                     bsub("Class Scyphozoa", "வகுப்பு சிஃபோசோவா",
                         bp("The true jellyfishes. The medusa is the dominant stage and the polyp is small and short-lived, or absent. The mesoglea is thick and contains cells. The gonads are gastrodermal, and the gastric cavity has four pouches with gastric filaments. Examples are Aurelia, Rhizostoma and Cassiopeia." to
@@ -228,15 +228,15 @@ object CnidariaBookChapter {
             bsec("importance", "The place of the group in the animal kingdom", "விலங்கு உலகில் இக்குழுவின் இடம்",
                 blocks = listOf(
                     bp("Cnidarians show the first division of labour among cells that is organised into tissues. The nerve net, the epitheliomuscular cells and the cnidocytes are simple versions of a nervous system, muscles and weapons, and the gastrovascular cavity is a gut which digests partly outside the cells. They are thus a useful illustration of how a more complex animal may be built from a more elementary one." to
-                        "திசுக்களாக ஒழுங்கமைந்த செல்களிடையேயான பணிப் பிரிவினையை நிடேரியாக்கள் முதன்முதலாகக் காட்டுகின்றன. நரம்பு வலை, எப்பிதீலியோதசை செல்கள், நிடோசைட்டுகள் ஆகியவை நரம்பு மண்டலம், தசைகள், ஆயுதங்களின் எளிய வடிவங்கள்; காஸ்ட்ரோவாஸ்குலர் குழி ஓரளவு செல்லுக்கு வெளியே செரிக்கும் குடல். எளிய விலங்கிலிருந்து சிக்கலான விலங்கு எவ்வாறு கட்டமைக்கப்படலாம் என்பதற்கு இவை பயனுள்ள எடுத்துக்காட்டு."),
+                        "திசுக்களாக ஒழுங்கமைந்த செல்களிடையேயான பணிப் பிரிவினையை நிடேரியாக்கள் முதன்முதலாகக் காட்டுகின்றன. நரம்பு வலை, எப்பிதீலியத் தசைச் செல்கள், நிடோசைட்டுகள் ஆகியவை நரம்புத் தகவல் கடத்தல், சுருங்கும் இயக்கம், இரைபிடித்தல் மற்றும் தற்காப்பு ஆகிய பணிகளுக்கான சிறப்பு அமைப்புகள்; காஸ்ட்ரோவாஸ்குலர் குழி ஓரளவு செல்லுக்கு வெளியே செரிக்கும் குடல். திசுமட்ட உடலமைப்பில் செல்களின் பணிப் பிரிவினையை விளக்க இவை சிறந்த எடுத்துக்காட்டுகளாகும்."),
                     bp("Their importance outside the laboratory is also large. Reef-building corals form the structures that shelter a great part of the animals of the sea, and the group includes the dangerous box jellies and the Portuguese man-of-war. The next chapters treat the colonial hydroid Obelia, the corals and polymorphism." to
-                        "ஆய்வகத்துக்கு வெளியிலும் இவற்றின் முக்கியத்துவம் பெரிது. பவளப்பாறை உருவாக்கும் பவளங்கள் கடலின் விலங்குகளில் பெரும்பகுதிக்கு அடைக்கலம் தரும் அமைப்புகளை உருவாக்குகின்றன; ஆபத்தான பெட்டி ஜெல்லிகளும் போர்த்துக்கீசிய போர்க்கப்பல் மீனும் இக்குழுவில் உள்ளன. அடுத்த அத்தியாயங்கள் காலனி ஹைட்ராய்டான ஒபீலியா, பவளங்கள், பல்வடிவத்தன்மை ஆகியவற்றைக் கையாளுகின்றன."),
+                        "ஆய்வகத்துக்கு வெளியிலும் இவற்றின் முக்கியத்துவம் பெரிது. பவளப்பாறை உருவாக்கும் பவளங்கள் கடலின் விலங்குகளில் பெரும்பகுதிக்கு அடைக்கலம் தரும் அமைப்புகளை உருவாக்குகின்றன; ஆபத்தான பெட்டி ஜெல்லிமீன்களும், போர்த்துக்கீசியப் போர்க்கப்பல் எனப்படும் பைசாலியா (Physalia) காலனி நிடேரிய உயிரியும் இத்தொகுதியில் அடங்குகின்றன. அடுத்த அத்தியாயங்கள் காலனி ஹைட்ராய்டான ஒபீலியா, பவளங்கள், பல்வடிவத்தன்மை ஆகியவற்றைக் கையாளுகின்றன."),
                 )),
         ),
         summary = listOf(
             "Cnidaria (Coelenterata) are radially symmetrical, diploblastic, acoelomate animals of the tissue grade with a gastrovascular cavity and one opening." to "நிடேரியா (சீலென்டிரேட்டா) ஆரச்சமச்சீர், இரு அடுக்கு, உடற்குழியற்ற, திசு நிலை விலங்குகள்; காஸ்ட்ரோவாஸ்குலர் குழியும் ஒரே திறப்பும் கொண்டவை.",
             "A jelly-like mesoglea lies between the epidermis and the gastrodermis." to "எப்பிடெர்மிஸுக்கும் காஸ்ட்ரோடெர்மிஸுக்கும் இடையே ஜெல்லி போன்ற மீசோகிளியா உள்ளது.",
-            "Cnidocytes with nematocysts are the diagnostic feature; a nematocyst discharges once and is replaced." to "நெமட்டோசிஸ்ட் உள்ள நிடோசைட்டுகளே அடையாளப் பண்பு; நெமட்டோசிஸ்ட் ஒருமுறை வெளியேற்றி மாற்றப்படுகிறது.",
+            "Cnidocytes with nematocysts are the diagnostic feature; a nematocyst discharges once and is replaced." to "நெமட்டோசிஸ்ட் உள்ள நிடோசைட்டுகளே அடையாளப் பண்பு; நெமட்டோசிஸ்ட் அதன் நூலிழையை ஒருமுறை மட்டுமே வெளிப்படுத்துகிறது; பின்னர் புதிய நிடோசைட் உருவாகிறது.",
             "There is a nerve net but no brain, and no excretory, respiratory or circulatory organs." to "நரம்பு வலை உண்டு; மூளையும் கழிவு, சுவாச, சுற்றோட்ட உறுப்புகளும் இல்லை.",
             "The polyp is attached and mouth-up; the medusa is free-swimming and mouth-down; they are two forms of one life cycle." to "பாலிப் ஒட்டியது, வாய் மேல்நோக்கியது; மெடுசா நீந்துவது, வாய் கீழ்நோக்கியது; இவை ஒரே சுழற்சியின் இரு வடிவங்கள்.",
             "Hydrozoa are usually polyp-dominant, Scyphozoa medusa-dominant, and Anthozoa have only polyps." to "ஹைட்ரோசோவா பொதுவாகப் பாலிப் முதன்மை, சிஃபோசோவா மெடுசா முதன்மை, ஆந்தோசோவாவில் பாலிப் மட்டும்.",
@@ -244,8 +244,8 @@ object CnidariaBookChapter {
         ),
         checks = listOf(
             bqc("What does a nematocyst do?", "நெமட்டோசிஸ்ட் என்ன செய்கிறது?",
-                "It fires a thread to capture prey or to defend the animal.", "இரை பிடிக்க அல்லது தற்காப்புக்கு ஓர் இழையைச் சுடுகிறது."),
-            bqc("Name the three classes on the paper.", "தாளில் உள்ள மூன்று வகுப்புகளைக் குறிப்பிடுக.",
+                "It fires a thread to capture prey or to defend the animal.", "இரையைப் பிடிக்க அல்லது தற்காக்க, சுருண்டுள்ள நூலிழையை மிக வேகமாக வெளிப்படுத்துகிறது."),
+            bqc("Name the three classes on the paper.", "இப்பாடத்திட்டத்தில் இடம்பெறும் மூன்று வகுப்புகளைக் குறிப்பிடுக.",
                 "Hydrozoa, Scyphozoa and Anthozoa.", "ஹைட்ரோசோவா, சிஃபோசோவா, ஆந்தோசோவா."),
             bqc("Which class has no medusa?", "எந்த வகுப்பில் மெடுசா இல்லை?",
                 "Anthozoa.", "ஆந்தோசோவா."),
