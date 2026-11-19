@@ -14,7 +14,7 @@ object PearlBookChapter {
                 "இயற்கை முத்தையும் வளர்ப்பு முத்தையும் வேறுபடுத்துதல்.",
         ),
         introduction = listOf(
-            "A pearl is a mineral–organic concretion secreted within a mollusc, usually by mantle-derived pearl-sac epithelium. Many familiar pearl-oyster pearls are nacreous, but some molluscan pearls have non-nacreous mineral structures. Pearl formation can be understood through shell secretion and the distinction between natural and cultured pearls." to
+            "A pearl is a mineral–organic concretion produced by mantle-derived pearl-sac cells. Many pearl-oyster pearls contain nacre, but some molluscan pearls have non-nacreous mineral structures. This chapter compares natural and cultured pearls and explains shell secretion." to
                 "மெல்லுடலியின் உடலுக்குள் உருவாகும் கனிம–கரிமத் திரட்சியே முத்தாகும்; பொதுவாக மேண்டிலிலிருந்து தோன்றிய முத்துப்பையின் மேலணிச் செல்கள் அதைச் சுரக்கின்றன. முத்துச் சிப்பிகளின் பல முத்துகள் நாக்கர் படலங்களால் ஆனவை; ஆனால் சில மெல்லுடலிகளில் நாக்கர் அல்லாத கனிம அமைப்புடைய முத்துகளும் உருவாகின்றன. ஓட்டுச் சுரப்புடன் இதன் தொடர்பையும் இயற்கை முத்துக்கும் வளர்ப்பு முத்துக்கும் உள்ள வேறுபாட்டையும் அறியலாம்.",
         ),
         sections = listOf(
