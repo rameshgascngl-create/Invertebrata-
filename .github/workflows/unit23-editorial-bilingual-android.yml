@@ -57,6 +57,7 @@ jobs:
           pila = (root / 'PilaBookChapter.kt').read_text(encoding='utf-8')
           torsion = (root / 'TorsionBookChapter.kt').read_text(encoding='utf-8')
           pearl = (root / 'PearlBookChapter.kt').read_text(encoding='utf-8')
+          echinodermata = (root / 'EchinodermataBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -330,6 +331,32 @@ jobs:
           assert 'some other pearls instead have a non-nacreous structure' in pearl
           assert 'thick nacre alone does not guarantee high lustre' in pearl
           assert 'தடிமன் மட்டுமே அதிக ஒளிர்வை உறுதிப்படுத்தாது' in pearl
+          assert 'நீரோட்டக் குழாய் மண்டலம்' in echinodermata
+          assert 'நீர்க்குழல் மண்டலம்' not in echinodermata
+          assert 'specialised fluid rather than a continuous stream of ordinary seawater' in echinodermata
+          assert 'In a typical sea star' in echinodermata
+          assert 'holothurians generally have an internal madreporite' in echinodermata
+          assert 'crinoids lack the typical external madreporite' in echinodermata
+          assert 'கடல் வெள்ளரிகளில் மேட்ரிபோரைட் பொதுவாக உட்புறத்திலும்' in echinodermata
+          assert 'external and often aboral in sea stars, but internal or differently placed' in echinodermata
+          assert 'hydrocoel, derived from the left mesocoel' in echinodermata
+          assert 'ஹைட்ரோசீல் (hydrocoel)' in echinodermata
+          assert 'porous three-dimensional lattice called stereom' in echinodermata
+          assert 'skeletogenic cells (sclerocytes)' in echinodermata
+          assert 'ஸ்டீரியோம் (stereom)' in echinodermata
+          assert 'not every species releases a long-lived free-swimming larva' in echinodermata
+          assert 'followed by a brachiolaria stage' in echinodermata
+          assert 'பிராக்கியோலேரியா (brachiolaria)' in echinodermata
+          assert 'some species lack an anus' in echinodermata
+          assert 'the cardiac stomach can be everted' in echinodermata
+          assert '11 July 2001' in echinodermata
+          assert '11 ஜூலை 2001' in echinodermata
+          assert 'reproduce late, their populations recover slowly' not in echinodermata
+          assert 'lessonId = "u5-echinodermata"' in echinodermata
+          assert echinodermata.count('bsec(') == 11
+          assert echinodermata.count('bfig(') == 1
+          assert echinodermata.count('btable(') == 1
+          assert echinodermata.count('bqc(') == 4
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
