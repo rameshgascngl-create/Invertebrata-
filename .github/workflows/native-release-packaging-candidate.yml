@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - audit/undergraduate-coverage-register-20261114
+      - integrate/v191-tamil-chapters-20261119
     paths:
       - .github/workflows/native-release-packaging-candidate.yml
       - tools/inspect_release_apk.py
