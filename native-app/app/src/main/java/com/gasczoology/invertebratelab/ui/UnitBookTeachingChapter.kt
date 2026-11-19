@@ -225,7 +225,11 @@ internal fun UnitBookTeachingChapter(
                             .semantics { contentDescription = ut(language, if (marked) "Remove bookmark" else "Add bookmark",
                                 if (marked) "புத்தகக்குறியை நீக்கு" else "புத்தகக்குறி சேர்") }) { Text(if (marked) "★" else "☆") }
                     Text("${pageIndex + 1}/${pages.size}",
-                        modifier = Modifier.weight(1f).align(androidx.compose.ui.Alignment.CenterVertically).testTag("reading-page-position"),
+                        modifier = Modifier.weight(1f).align(androidx.compose.ui.Alignment.CenterVertically)
+                            .testTag("reading-page-position")
+                            .semantics { contentDescription = ut(language,
+                                "Page ${pageIndex + 1} of ${pages.size}",
+                                "பக்கம் ${pageIndex + 1} / ${pages.size}") },
                         textAlign = androidx.compose.ui.text.style.TextAlign.Center,
                         style = MaterialTheme.typography.bodyMedium)
                     Button(onClick = { selectPage(pages[pageIndex + 1].id) }, enabled = pageIndex < pages.lastIndex,
