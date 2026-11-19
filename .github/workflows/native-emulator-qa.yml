@@ -124,6 +124,15 @@ jobs:
                   for failure in failures:
                       print("FAILED_TEST_XML", case.get("classname", ""),
                             case.get("name", ""), failure.get("message", "")[:500])
+                      # The XML message is frequently empty: preserve the actual
+                      # assertion/stack trace so failures can be grouped by cause.
+                      detail = (failure.text or "").strip()
+                      if detail:
+                          print("FAILED_TEST_TRACE_BEGIN", report.name)
+                          print("\\n".join(detail.splitlines()[:35])[:5000])
+                          print("FAILED_TEST_TRACE_END")
+                      else:
+                          print("FAILED_TEST_TRACE_MISSING", report.name)
           PY
       - name: Collect bounded post-failure diagnostics
         if: always()
