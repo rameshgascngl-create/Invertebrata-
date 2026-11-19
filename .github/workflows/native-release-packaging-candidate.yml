@@ -2,6 +2,13 @@ name: Native release packaging candidate
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - audit/undergraduate-coverage-register-20261114
+    paths:
+      - .github/workflows/native-release-packaging-candidate.yml
+      - tools/inspect_release_apk.py
+      - tools/inspect_release_bundle.py
 
 permissions:
   contents: read
@@ -13,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: audit/undergraduate-coverage-register-20261114
+          ref: \${{ github.sha }}
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -21,14 +28,24 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.6.0'
-      - name: Build release APK without debug signing or publishing
-        run: gradle -p native-app :app:assembleRelease --stacktrace
+      - name: Build unsigned release APK and AAB without publishing
+        run: gradle -p native-app :app:assembleRelease :app:bundleRelease --stacktrace
       - name: Inspect release APK archive
         run: python3 tools/inspect_release_apk.py native-app/app/build/outputs/apk/release/app-release-unsigned.apk
+      - name: Inspect release AAB archive
+        run: python3 tools/inspect_release_bundle.py native-app/app/build/outputs/bundle/release/app-release.aab
+      - name: Record exact build provenance
+        run: |
+          mkdir -p native-app/app/build/release-evidence
+          git rev-parse HEAD > native-app/app/build/release-evidence/commit-sha.txt
+          sha256sum native-app/app/build/outputs/apk/release/app-release-unsigned.apk native-app/app/build/outputs/bundle/release/app-release.aab > native-app/app/build/release-evidence/SHA256SUMS
       - name: Upload unsigned candidate for internal analysis only
         uses: actions/upload-artifact@v4
         with:
           name: invertebrata-UNSIGNED-release-candidate-${{ github.sha }}
-          path: native-app/app/build/outputs/apk/release/app-release-unsigned.apk
+          path: |
+            native-app/app/build/outputs/apk/release/app-release-unsigned.apk
+            native-app/app/build/outputs/bundle/release/app-release.aab
+            native-app/app/build/release-evidence/*
           if-no-files-found: error
           retention-days: 7
