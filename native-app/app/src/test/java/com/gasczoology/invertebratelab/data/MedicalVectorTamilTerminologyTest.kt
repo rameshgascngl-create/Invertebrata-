@@ -23,6 +23,7 @@ class MedicalVectorTamilTerminologyTest {
         assertTrue(chapter.contains(
             "It depends on the pathogen; development or multiplication occurs in the vector"))
         assertFalse(chapter.contains("the pathogen cannot complete its life cycle without it"))
+        assertFalse(chapter.contains("which is necessary for its life cycle"))
         assertTrue(chapter.contains("நோய்க்கடத்தியினுள் வளர்ச்சி அல்லது பெருக்கத்துடன் பரவுதல்"))
     }
 
