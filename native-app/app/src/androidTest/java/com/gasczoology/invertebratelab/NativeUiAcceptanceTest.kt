@@ -310,10 +310,9 @@ class NativeUiAcceptanceTest {
             openReadingPage(rule, container, "objectives")
         }
 
-        fun verifyNoticeAndQuestion(notice: String, question: String) {
-            val noticeTag = "chapter-draft-notice"
-            rule.onNodeWithTag(container, useUnmergedTree = true).performScrollToNode(hasTestTag(noticeTag))
-            rule.onNodeWithTag(noticeTag, useUnmergedTree = true).performScrollTo().assertTextEquals(notice)
+        fun verifyReaderAndQuestion(question: String) {
+            // Internal academic workflow warnings were deliberately removed from student pages.
+            rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).assertCountEquals(0)
             openReadingPage(rule, container, "practice-" + first.id)
             val questionTag = readerQuestionTag(chapter, first)
             rule.onNodeWithTag(container, useUnmergedTree = true).performScrollToNode(hasTestTag(questionTag))
@@ -321,10 +320,7 @@ class NativeUiAcceptanceTest {
         }
 
         openParamecium()
-        verifyNoticeAndQuestion(
-            "Academic review pending: illustrations and Tamil vocabulary remain drafts.",
-            first.question.english,
-        )
+        verifyReaderAndQuestion(first.question.english)
         leaveReader(rule, chapter)
         waitFor(unit)
         rule.onNodeWithTag(unit).performScrollToIndex(0)
@@ -334,10 +330,7 @@ class NativeUiAcceptanceTest {
         rule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("unit-1"))
         rule.waitUntil(timeoutMillis = 10_000L) { rule.homeUnitOneShows(tamil = true) }
         openParamecium()
-        verifyNoticeAndQuestion(
-            "அறிவியல் மதிப்பாய்வு நிலுவை: வரைபடங்களும் தமிழ் சொற்களும் வரைவு நிலையில் உள்ளன.",
-            first.question.tamil,
-        )
+        verifyReaderAndQuestion(first.question.tamil)
     }
 
     // Plate gallery students can actually reach from the Anatomy tab (organ-level selection is
@@ -1006,7 +999,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         // The old draft-lesson sections (n22-section-*) are no longer reachable: the Paramecium
         // chapter opens in the book reader. Check what students actually get at 200% Tamil:
-        // the draft notice at the top and the validated questions at the bottom.
+        // no internal review warning, and validated questions at the bottom.
         rule.onNodeWithTag("native-unit-1").performScrollToIndex(3)
         rule.onNodeWithTag("chapter-u1-paramecium").performClick()
         val chapter = ValidatedA5AssetRepository(context).load()
@@ -1017,7 +1010,7 @@ class NativeTamilLargeTextAcceptanceTest {
         }
         showContinuousReader(rule)
         rule.onNodeWithTag(container).performScrollToIndex(0)
-        rule.onNodeWithTag("chapter-draft-notice", useUnmergedTree = true).assertExists()
+        rule.onAllNodesWithTag("chapter-draft-notice", useUnmergedTree = true).assertCountEquals(0)
         val last = chapter.a5Questions.last()
         rule.onNodeWithTag(container).performScrollToNode(hasTestTag(readerQuestionTag(chapter, last)))
         rule.onNodeWithTag(readerQuestionTag(chapter, last)).assertExists()
