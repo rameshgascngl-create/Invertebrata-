@@ -199,7 +199,7 @@ jobs:
           assert 'மிகப் பெரிய எண்ணிக்கையிலான தொற்றும் லார்வாக்களைத் தருகிறது' not in fasciola
           assert 'cuticular denticles and ridges' in penaeus
           assert 'கியூட்டிகிளால் ஆன நுண்பற்களும்' in penaeus
-          assert 'large gastric teeth typical of some other decapods' in penaeus
+          assert 'large grinding teeth typical of some other decapods' in penaeus
           assert 'The terminal, unsegmented structure behind the sixth abdominal segment' in penaeus
           assert 'non-feeding nauplii develop through protozoea and mysis' in penaeus
           assert 'உணவுண்ணாத நாப்ளியஸ்கள்' in penaeus
