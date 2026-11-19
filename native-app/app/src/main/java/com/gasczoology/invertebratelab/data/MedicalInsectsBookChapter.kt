@@ -147,7 +147,7 @@ object MedicalInsectsBookChapter {
         ),
         checks = listOf(
             bqc("Distinguish mechanical from biological transmission.", "நோய்க்கிருமிகளைச் சுமந்து பரப்புதலையும் கடத்தியினுள் கிருமிகள் வளர்ந்து அல்லது பெருகிப் பரவுதலையும் வேறுபடுத்துக.",
-                "In mechanical transmission the pathogen is carried without developing, while in biological transmission it multiplies or develops in the vector, which is necessary for its life cycle.", "சுமந்து பரப்பும் முறையில் நோய்க்கிருமி கடத்தியினுள் வளர்ச்சியடையாமல் அல்லது பெருகாமல் எடுத்துச் செல்லப்படுகிறது; உயிரியல் பரவலில் அது கடத்தியில் பெருகுகிறது அல்லது வளர்கிறது; வாழ்க்கைச் சுழற்சிக்கு அது அவசியம்."),
+                "In mechanical transmission, the vector carries the pathogen without its developing or multiplying there. In biological transmission, the pathogen develops, multiplies, or both in the vector; whether a particular vector is essential depends on the pathogen.", "சுமந்து பரப்பும் முறையில் நோய்க்கிருமி கடத்தியினுள் வளர்ச்சியடையாமலும் பெருகாமலும் எடுத்துச் செல்லப்படுகிறது. உயிரியல் வழிப் பரவலில் கிருமி கடத்தியினுள் வளர்ச்சியடைகிறது, பெருகுகிறது அல்லது இரண்டும் நிகழ்கின்றன; குறிப்பிட்ட கடத்தி அவசியமா என்பது நோய்க்கிருமியைப் பொறுத்தது."),
             bqc("Name the vector of kala-azar in India.", "இந்தியாவில் காலா-அசாரின் கடத்தியைக் குறிப்பிடுக.",
                 "The sandfly, Phlebotomus argentipes.", "மணல் ஈ - Phlebotomus argentipes."),
             bqc("How does a larva of Anopheles rest at the water surface?", "அனோபிலிஸ் புழு நீர்ப்பரப்பில் எவ்வாறு ஓய்வெடுக்கிறது?",
