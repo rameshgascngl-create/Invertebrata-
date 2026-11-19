@@ -252,7 +252,7 @@ private fun BookBlockView(block: BookBlock, label: String?, language: AppLanguag
                 Text(
                     emphasizeAnatomy(segment),
                     style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Justify,
+                    textAlign = TextAlign.Start, // Prevent extreme inter-word gaps in Tamil and large-font layouts.
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
