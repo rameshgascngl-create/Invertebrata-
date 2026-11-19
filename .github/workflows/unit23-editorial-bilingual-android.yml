@@ -325,6 +325,11 @@ jobs:
           assert pearl.count('bsec(') == 9
           assert pearl.count('bfig(') == 1
           assert pearl.count('bqc(') == 4
+          assert 'central region or nucleus if present (not always an implanted bead)' in pearl
+          assert 'எல்லாவற்றிலும் பதிக்கப்பட்ட மணி இருப்பதில்லை' in pearl
+          assert 'some other pearls instead have a non-nacreous structure' in pearl
+          assert 'thick nacre alone does not guarantee high lustre' in pearl
+          assert 'தடிமன் மட்டுமே அதிக ஒளிர்வை உறுதிப்படுத்தாது' in pearl
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
