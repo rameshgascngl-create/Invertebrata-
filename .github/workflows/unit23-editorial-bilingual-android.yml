@@ -318,7 +318,7 @@ jobs:
           assert 'not necessarily an identical foreign-body trigger' in pearl
           assert 'pearls may be nacreous or non-nacreous' in pearl
           assert 'நாக்கர் முத்துகளும் நாக்கர் அல்லாத முத்துகளும்' in pearl
-          assert 'commercial pearl-oyster culture should not be confused with the anatomy and biology of Pila' in pearl.lower()
+          assert 'commercial pearl-oyster culture should not be confused with the anatomy and biology of pila' in pearl.lower()
           assert 'A pearl is a concretion of nacre formed by a pearl sac' not in pearl
           assert 'The main structural protein of the organic matrix of molluscan shells.' not in pearl
           assert 'A pearl formed in an oyster or mussel after a human operation that supplies a nucleus and mantle tissue.' not in pearl
