@@ -5,6 +5,8 @@ on:
       - audit/undergraduate-coverage-register-20261114
     paths:
       - '.github/workflows/native-v190-permanent-signed-release.yml'
+      - 'native-app/build.gradle.kts'
+      - 'native-app/app/build.gradle.kts'
   workflow_dispatch:
     inputs:
       qa_approved:
