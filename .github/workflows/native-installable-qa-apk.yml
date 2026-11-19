@@ -1,0 +1,47 @@
+name: Native installable QA APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/undergraduate-coverage-register-20261114
+    paths:
+      - .github/workflows/native-installable-qa-apk.yml
+      - tools/inspect_installable_qa_apk.py
+
+permissions:
+  contents: read
+
+jobs:
+  build-installable-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6.0'
+      - name: Assemble signed debug QA APK (no repeated academic suites)
+        run: gradle -p native-app :app:assembleDebug --stacktrace
+      - name: Verify APK and its debug signature
+        run: python3 tools/inspect_installable_qa_apk.py native-app/app/build/outputs/apk/debug/app-debug.apk
+      - name: Record source and SHA-256
+        run: |
+          mkdir -p native-app/app/build/qa-evidence
+          git rev-parse HEAD > native-app/app/build/qa-evidence/commit-sha.txt
+          sha256sum native-app/app/build/outputs/apk/debug/app-debug.apk > native-app/app/build/qa-evidence/SHA256SUMS
+      - name: Upload installable QA artifact (not for store submission)
+        uses: actions/upload-artifact@v4
+        with:
+          name: INVERTEBRATA-installable-debug-QA-${{ github.sha }}
+          path: |
+            native-app/app/build/outputs/apk/debug/app-debug.apk
+            native-app/app/build/qa-evidence/*
+          if-no-files-found: error
+          retention-days: 14
