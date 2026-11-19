@@ -10,6 +10,12 @@ on:
       - tools/inspect_release_apk.py
       - tools/inspect_release_bundle.py
       - tools/verify_release_provenance.py
+      - native-app/app/src/main/**
+      - native-app/app/build.gradle.kts
+      - native-app/build.gradle.kts
+      - native-app/settings.gradle.kts
+      - native-app/gradle.properties
+      - native-app/app/proguard-rules.pro
 
 permissions:
   contents: read
