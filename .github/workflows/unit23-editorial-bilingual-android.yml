@@ -55,6 +55,7 @@ jobs:
           crustacean_larvae = (root / 'CrustaceanLarvaeBookChapter.kt').read_text(encoding='utf-8')
           mollusca = (root / 'MolluscaBookChapter.kt').read_text(encoding='utf-8')
           pila = (root / 'PilaBookChapter.kt').read_text(encoding='utf-8')
+          torsion = (root / 'TorsionBookChapter.kt').read_text(encoding='utf-8')
           assert 'Embryonic inversion exposes the cilia before the amphiblastula is released' in reproduction
           assert 'கருவளர்ச்சிக் காலப் புரட்டலால் ஆம்ஃபிபிளாஸ்டுலா' in reproduction
           assert 'inversion brings the flagellated cells to the inside' not in reproduction.lower()
@@ -281,6 +282,25 @@ jobs:
           assert pila.count('bfig(') == 6
           assert pila.count('btable(') == 1
           assert pila.count('bqc(') == 4
+          assert 'in Pila the relevant developmental stages occur within the egg' in torsion
+          assert 'பைலாவில் இத்தொடக்க வளர்ச்சி நிலைகள் முட்டைக்குள்ளேயே நிகழ்கின்றன' in torsion
+          assert 'It takes place during the development of the free-swimming veliger larva' not in torsion
+          assert 'a universal two-stage, muscle-driven mechanism should not be assumed' in torsion
+          assert 'asymmetric cell proliferation and signalling' in torsion
+          assert 'எல்லா வயிற்றுக்காலிகளிலும் தசை இயக்கும் ஒரே இருகட்ட நிகழ்முறையே உள்ளது எனப் பொதுமைப்படுத்தக்கூடாது' in torsion
+          assert 'depends on the viewing orientation' in torsion
+          assert 'viewing position and fixed reference region' in torsion
+          assert 'right branchial chamber' in torsion
+          assert 'left pulmonary chamber' in torsion
+          assert 'one kidney with two renal chambers' in torsion
+          assert 'வலப்புறச் செவுள் அறையில் ஒரு க்டீனிடியம்' in torsion
+          assert 'the specific side cannot be generalised to every species' in torsion
+          assert 'should not be described as necessarily having a separate left and right opening' in torsion
+          assert 'the original right gill and kidney are therefore the ones found on the left' not in torsion
+          assert torsion.count('bsec(') == 9
+          assert torsion.count('bfig(') == 1
+          assert torsion.count('bqc(') == 4
+          assert 'lessonId = "u5-torsion"' in torsion
           print('TAMIL_EDIT_CORRECTIONS=PASS; INDEPENDENT_EDITORIAL_ACCEPTANCE=NOT_CLAIMED')
           PY
       - name: Compile and test exact active branch
