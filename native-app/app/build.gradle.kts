@@ -26,10 +26,9 @@ android {
         minSdk = 24
         targetSdk = 36
 
-        // Preserve the currently accepted release identity during migration.
-        // Do not change without explicit release approval.
-        versionCode = 19001
-        versionName = "1.9.1"
+        // Version advanced for the next Appstore update; retain package name and signing key.
+        versionCode = 19002
+        versionName = "1.9.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

@@ -1,4 +1,4 @@
-name: INVERTEBRATA native v1.9.1 permanent-key signed release
+name: INVERTEBRATA native v1.9.2 permanent-key signed release
 on:
   push:
     branches:
@@ -37,6 +37,13 @@ jobs:
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
+      - name: Verify version code and name for the new Appstore submission
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Eq 'versionCode = 19002' native-app/app/build.gradle.kts
+          grep -Eq 'versionName = "1.9.2"' native-app/app/build.gradle.kts
+          echo "VERSION_IDENTITY=1.9.2 (19002)"
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -86,25 +93,25 @@ jobs:
           tools="$ANDROID_HOME/build-tools/36.0.0"
           test -x "$tools/apksigner"
           "$tools/zipalign" -f -p 4 native-app/app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/release/aligned.apk"
-          "$tools/apksigner" sign --ks "$RUNNER_TEMP/signing/upload.p12" --ks-pass env:KS_PASS --ks-key-alias "$KEY_ALIAS" --key-pass env:KEY_PASS --out "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.1-signed.apk" "$RUNNER_TEMP/release/aligned.apk"
-          "$tools/apksigner" verify --verbose --print-certs "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.1-signed.apk" > "$RUNNER_TEMP/release/apk-signature.txt"
+          "$tools/apksigner" sign --ks "$RUNNER_TEMP/signing/upload.p12" --ks-pass env:KS_PASS --ks-key-alias "$KEY_ALIAS" --key-pass env:KEY_PASS --out "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.2-signed.apk" "$RUNNER_TEMP/release/aligned.apk"
+          "$tools/apksigner" verify --verbose --print-certs "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.2-signed.apk" > "$RUNNER_TEMP/release/apk-signature.txt"
           apk_cert="$(sed -n 's/.*Signer #1 certificate SHA-256 digest: //p' "$RUNNER_TEMP/release/apk-signature.txt" | head -1 | tr -d ':[:space:]' | tr '[:lower:]' '[:upper:]')"
           test "$apk_cert" = "$actual"
-          cp native-app/app/build/outputs/bundle/release/app-release.aab "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.1-signed.aab"
-          jarsigner -keystore "$RUNNER_TEMP/signing/upload.p12" -storepass "$KS_PASS" -keypass "$KEY_PASS" -sigalg SHA256withRSA -digestalg SHA-256 "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.1-signed.aab" "$KEY_ALIAS"
+          cp native-app/app/build/outputs/bundle/release/app-release.aab "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.2-signed.aab"
+          jarsigner -keystore "$RUNNER_TEMP/signing/upload.p12" -storepass "$KS_PASS" -keypass "$KEY_PASS" -sigalg SHA256withRSA -digestalg SHA-256 "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.2-signed.aab" "$KEY_ALIAS"
           # Android upload keys are intentionally self-signed. Strict JAR verification
           # rejects their untrusted PKIX chain even when the archive signature is valid.
           # Verify the actual JAR signature and assert the expected signer identity.
-          jarsigner -verify -verbose -certs "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.1-signed.aab" > "$RUNNER_TEMP/release/aab-signature.txt"
+          jarsigner -verify -verbose -certs "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.2-signed.aab" > "$RUNNER_TEMP/release/aab-signature.txt"
           grep -q 'jar verified' "$RUNNER_TEMP/release/aab-signature.txt"
-          aab_cert="$(keytool -printcert -jarfile "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.1-signed.aab" | sed -n 's/.*SHA256: //p' | head -1 | tr -d ':[:space:]' | tr '[:lower:]' '[:upper:]')"
+          aab_cert="$(keytool -printcert -jarfile "$RUNNER_TEMP/release/INVERTEBRATA-v1.9.2-signed.aab" | sed -n 's/.*SHA256: //p' | head -1 | tr -d ':[:space:]' | tr '[:lower:]' '[:upper:]')"
           test "$aab_cert" = "$actual"
           rm "$RUNNER_TEMP/release/aligned.apk"
           sha256sum "$RUNNER_TEMP/release/"*.apk "$RUNNER_TEMP/release/"*.aab > "$RUNNER_TEMP/release/SHA256SUMS"
           git rev-parse HEAD > "$RUNNER_TEMP/release/SOURCE_COMMIT.txt"
       - uses: actions/upload-artifact@v4
         with:
-          name: INVERTEBRATA-v1.9.1-PERMANENT-KEY-SIGNED-CANDIDATE-${{ github.sha }}
+          name: INVERTEBRATA-v1.9.2-PERMANENT-KEY-SIGNED-CANDIDATE-${{ github.sha }}
           path: ${{ runner.temp }}/release/
           if-no-files-found: error
           retention-days: 14
