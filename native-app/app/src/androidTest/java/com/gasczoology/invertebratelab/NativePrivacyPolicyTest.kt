@@ -4,6 +4,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
@@ -28,6 +29,7 @@ class NativePrivacyPolicyTest {
         composeRule.onNodeWithTag("native-home").performScrollToNode(hasTestTag("privacy-policy-open"))
         composeRule.onNodeWithTag("privacy-policy-open").performClick()
         composeRule.onNodeWithTag("privacy-dialog").assertIsDisplayed()
+        composeRule.onNodeWithText("rameshgascngl@gmail.com", substring = true).assertExists()
         composeRule.onNodeWithTag("privacy-close").performClick()
         composeRule.onNodeWithTag("privacy-dialog").assertDoesNotExist()
         composeRule.onNodeWithTag("privacy-policy-open").assertIsDisplayed()

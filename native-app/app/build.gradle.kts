@@ -27,8 +27,8 @@ android {
         targetSdk = 36
 
         // Version advanced for the next Appstore update; retain package name and signing key.
-        versionCode = 19002
-        versionName = "1.9.2"
+        versionCode = 19003
+        versionName = "1.9.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

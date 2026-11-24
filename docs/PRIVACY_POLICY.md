@@ -29,11 +29,17 @@ The app store, operating system, and any optional text-to-speech provider are se
 ## Changes to this policy
 Any material change to the app's data practices will require an updated version of this notice and, where relevant, updated app-store disclosures.
 
-## Contact
-For questions about the application's privacy or accessibility, use the project's public issue tracker:  
+## Developer contact and grievance redressal
+**Developer and privacy grievance contact:** Dr. R. Ramesh  
+**Email:** [rameshgascngl@gmail.com](mailto:rameshgascngl@gmail.com)  
+**Institution:** Department of Zoology, Government Arts and Science College, Nagercoil, Tamil Nadu, India
+
+For privacy questions, complaints, personal-data requests or accessibility concerns, contact the developer privately at the email address above. The developer will address enquiries in accordance with applicable laws.
+
+For non-sensitive project discussions, the public issue tracker is available:  
 https://github.com/rameshgascngl-create/Invertebrata-/issues
 
-Please do **not** include personal or sensitive information in a public GitHub issue. For private support, use the developer contact details shown on the app-store listing.
+Please do **not** include personal or sensitive information in a public GitHub issue. For private support and privacy grievances, email rameshgascngl@gmail.com. Do not post private information publicly.
 
 ---
 
@@ -51,4 +57,8 @@ INVERTEBRATA ஆங்கிலம், தமிழ் ஆகிய மொழி
 
 விருப்பத்தேர்வாக உள்ள வாசித்துக் காட்டும் வசதி, சாதனத்தில் நிறுவப்பட்டுள்ள உரையிலிருந்து பேச்சாக மாற்றும் சேவையைப் பயன்படுத்துகிறது. அந்தச் சேவையின் தனியுரிமை நடைமுறைகள் தனித்தனியாக இருக்கலாம்.
 
-தனியுரிமை குறித்த கேள்விகளுக்கு மேலுள்ள GitHub திட்டத்தின் பொது issue பக்கத்தைப் பயன்படுத்தலாம். அதில் தனிப்பட்ட அல்லது இரகசியத் தகவல்களைப் பதிவிட வேண்டாம். தனிப்பட்ட உதவிக்கு செயலி வழங்கும் தளத்தில் குறிப்பிடப்பட்டுள்ள உருவாக்குநர் தொடர்புத் தகவல்களைப் பயன்படுத்தவும்.
+**உருவாக்குநர் மற்றும் தனியுரிமைக் குறைதீர்ப்புத் தொடர்பு:** முனைவர் இரா. ரமேஷ்  
+**மின்னஞ்சல்:** [rameshgascngl@gmail.com](mailto:rameshgascngl@gmail.com)  
+**நிறுவனம்:** விலங்கியல் துறை, அரசு கலை மற்றும் அறிவியல் கல்லூரி, நாகர்கோவில், தமிழ்நாடு, இந்தியா.
+
+தனியுரிமை தொடர்பான கேள்விகள், புகார்கள் மற்றும் தனிப்பட்ட உதவிக்காக மேற்கண்ட மின்னஞ்சல் முகவரியைத் தொடர்புகொள்ளவும். பொதுவான திட்டத் தகவல்களுக்கு GitHub issue பக்கத்தைப் பயன்படுத்தலாம். அங்கு தனிப்பட்ட அல்லது இரகசியத் தகவல்களைப் பதிவிட வேண்டாம்.

@@ -400,6 +400,9 @@ private fun HomeScreen(
                     Text(label(language,
                         "This notice describes the app itself. The privacy practices of the app store and Android operating system are governed by their respective policies.",
                         "இவ்வறிக்கை செயலியின் தரவு நடைமுறைகளை மட்டும் விளக்குகிறது. செயலி வழங்கும் தளம் மற்றும் Android இயக்க முறைமையின் தனியுரிமை நடைமுறைகள் அவற்றின் தனித்த கொள்கைகளுக்கு உட்பட்டவை."))
+                    Text(label(language,
+                        "Developer and privacy grievance contact: Dr. R. Ramesh, Department of Zoology, Government Arts and Science College, Nagercoil, Tamil Nadu, India. Email: rameshgascngl@gmail.com. Send privacy questions and grievances to this address.",
+                        "உருவாக்குநர் மற்றும் தனியுரிமைக் குறைதீர்ப்புத் தொடர்பு: முனைவர் இரா. ரமேஷ், விலங்கியல் துறை, அரசு கலை மற்றும் அறிவியல் கல்லூரி, நாகர்கோவில், தமிழ்நாடு, இந்தியா. மின்னஞ்சல்: rameshgascngl@gmail.com. தனியுரிமைக் கேள்விகள் மற்றும் புகார்களை இந்த முகவரிக்கு அனுப்பவும்."))
                 }
             },
             confirmButton = {
