@@ -1,0 +1,26 @@
+name: App Store Compliance Audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compliance-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Android application
+        uses: actions/checkout@v4
+
+      - name: Clone compliance tool
+        run: |
+          git clone --depth 1 \
+            https://github.com/mjmirza/app-store-compliance.git \
+            "$RUNNER_TEMP/app-store-compliance"
+
+      - name: Run compliance scan
+        run: |
+          bash "$RUNNER_TEMP/app-store-compliance/agent-os/hooks/app-store-compliance-guard.sh" \
+            "$GITHUB_WORKSPACE"
